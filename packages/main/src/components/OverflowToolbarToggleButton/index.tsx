@@ -25,7 +25,11 @@ const OverflowToolbarToggleButton = forwardRef(
     const { children, ...rest } = props;
     const { inPopover } = useContext(OverflowPopoverContext);
 
-    return <ToggleButton {...props}>{inPopover ? children : ''}</ToggleButton>;
+    return (
+      <ToggleButton {...rest} ref={ref}>
+        {inPopover ? children : ''}
+      </ToggleButton>
+    );
   }
 );
 

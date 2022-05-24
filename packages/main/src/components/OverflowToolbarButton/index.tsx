@@ -24,7 +24,11 @@ const OverflowToolbarButton = forwardRef((props: OverflowToolbarButtonPropTypes,
   const { children, ...rest } = props;
   const { inPopover } = useContext(OverflowPopoverContext);
 
-  return <Button {...props}>{inPopover ? children : ''}</Button>;
+  return (
+    <Button {...rest} ref={ref}>
+      {inPopover ? children : ''}
+    </Button>
+  );
 });
 
 OverflowToolbarButton.displayName = 'OverflowToolbarButton';
