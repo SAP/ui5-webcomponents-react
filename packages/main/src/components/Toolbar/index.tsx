@@ -24,7 +24,6 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { ToolbarDesign, ToolbarStyle } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { PopoverDomRef } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
@@ -103,7 +102,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     design,
     active,
     style,
-    tooltip,
     className,
     onClick,
     slot,
@@ -114,8 +112,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     overflowPopoverRef,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('Toolbar', props.tooltip);
 
   const classes = useStyles();
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
@@ -283,7 +279,6 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
     <CustomTag
-      title={tooltip}
       style={styleWithMinWidth}
       className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
       ref={componentRef}

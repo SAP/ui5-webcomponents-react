@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
@@ -49,9 +48,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
 const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, id, titleText, className, style, tooltip, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('ObjectPageSubSection', props.tooltip);
+  const { children, id, titleText, className, style, ...rest } = props;
 
   if (!id) {
     throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
@@ -63,16 +60,7 @@ const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, r
   const subSectionClassName = clsx(classes.objectPageSubSection, className);
 
   return (
-    <div
-      ref={ref}
-      role="region"
-      style={style}
-      title={tooltip}
-      tabIndex={-1}
-      {...rest}
-      className={subSectionClassName}
-      id={htmlId}
-    >
+    <div ref={ref} role="region" style={style} tabIndex={-1} {...rest} className={subSectionClassName} id={htmlId}>
       <div
         role="heading"
         aria-level={4}

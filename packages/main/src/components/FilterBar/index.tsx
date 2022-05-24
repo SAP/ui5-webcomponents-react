@@ -27,7 +27,6 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Button } from '../../webComponents/Button';
 import { DialogDomRef } from '../../webComponents/Dialog';
@@ -244,7 +243,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     hideToggleFiltersButton,
     style,
     className,
-    tooltip,
     slot,
     search,
     variants,
@@ -264,8 +262,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     onRestore,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('FilterBar', props.tooltip);
 
   const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
   const [mountFilters, setMountFilters] = useState(true);
@@ -644,7 +640,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         ref={componentRef}
         className={cssClasses}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
-        title={tooltip}
         slot={slot}
         {...rest}
       >

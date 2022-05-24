@@ -14,24 +14,28 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
 import { Table } from '../../webComponents/Table';
 import { TableColumn } from '../../webComponents/TableColumn';
-import { ManageViewsTableRows } from './MangeViewsTableRows';
+import { ManageViewsTableRows } from './ManageViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
-addCustomCSSWithScoping(
-  'ui5-dialog',
-  `
-  :host([data-component-name="VariantManagementManageViewsDialog"]) .ui5-popup-content{
-    padding: 0;
+const styles = {
+  manageViewsDialog: {
+    '&::part(content)': {
+      padding: 0
+    },
+    '&::part(footer)': {
+      padding: 0
+    }
   }
-  `
-);
+};
+
+const useStyles = createUseStyles(styles, { name: 'ManageViewsDialog' });
 
 interface ManageViewsDialogPropTypes {
   children: ReactNode | ReactNode[];
@@ -75,6 +79,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
   const [invalidVariants, setInvalidVariants] = useState<Record<string, HTMLInputElement>>({});
+
+  const classes = useStyles();
 
   const columns = (
     <>
@@ -165,6 +171,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   return createPortal(
     <Dialog
+      className={classes.manageViewsDialog}
       style={{ width: isPhone() || isTablet() ? '100%' : '70vw' }}
       data-component-name="VariantManagementManageViewsDialog"
       ref={manageViewsRef}

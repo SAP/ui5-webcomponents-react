@@ -5,6 +5,7 @@ import React, { FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef
 import { createPortal } from 'react-dom';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
 import { ToggleButton, ToggleButtonDomRef } from '../../webComponents/ToggleButton';
@@ -104,7 +105,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   }, []);
 
   return (
-    <>
+    <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       <ToggleButton
         ref={toggleBtnRef}
         design={ButtonDesign.Transparent}
@@ -129,6 +130,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         </Popover>,
         portalContainer
       )}
-    </>
+    </OverflowPopoverContext.Provider>
   );
 };
