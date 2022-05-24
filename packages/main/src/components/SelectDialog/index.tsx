@@ -20,7 +20,6 @@ import { ListMode } from '../../enums/ListMode';
 import { ToolbarDesign } from '../../enums/ToolbarDesign';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
@@ -184,8 +183,6 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     onBeforeOpen,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('SelectDialog', props.tooltip);
 
   const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');

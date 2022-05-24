@@ -22,6 +22,7 @@ export const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     [ObjectPageCssVariables.lastSectionMargin]: 0,
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
@@ -50,7 +51,8 @@ export const styles = {
     }
   },
   headerCollapsed: {
-    [DynamicPageCssVariables.headerDisplay]: 'none'
+    [DynamicPageCssVariables.headerDisplay]: 'none',
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
   },
   headerContainer: {
     marginBottom: '0.25rem',
@@ -68,7 +70,7 @@ export const styles = {
     '&[data-not-clickable="false"]': {
       backgroundColor: `${ThemingParameters.sapObjectHeader_Hover_Background}`,
       '& [data-component-name="DynamicPageTitle"]': {
-        backgroundColor: ThemingParameters.sapTile_Active_Background
+        backgroundColor: ThemingParameters.sapObjectHeader_Hover_Background
       }
     }
   },

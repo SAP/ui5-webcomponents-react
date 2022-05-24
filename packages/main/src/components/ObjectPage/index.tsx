@@ -29,13 +29,13 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { AvatarPropTypes } from '../../webComponents/Avatar';
 import { List } from '../../webComponents/List';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { TabContainer } from '../../webComponents/TabContainer';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
@@ -168,7 +168,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     imageShapeCircle,
     className,
     style,
-    tooltip,
     slot,
     showHideHeaderButton,
     children,
@@ -183,8 +182,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     portalContainer,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('ObjectPage', props.tooltip);
 
   const classes = useStyles();
 
@@ -476,7 +473,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   );
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimout = useRef(0);
-  const onToggleHeaderContentVisibility = (e) => {
+  const onToggleHeaderContentVisibility = useCallback((e) => {
     scrollTimout.current = performance.now() + 500;
     if (!e.detail.visible) {
       objectPageRef.current?.classList.add(classes.headerCollapsed);
@@ -484,7 +481,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       setScrolledHeaderExpanded(true);
       objectPageRef.current?.classList.remove(classes.headerCollapsed);
     }
-  };
+  }, []);
 
   const objectPageClasses = clsx(
     classes.objectPage,
@@ -723,14 +720,18 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     [classes.headerHoverStyles]
   );
 
+  const objectPageStyles = { ...style };
+  if (headerContentHeight === 0) {
+    objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+  }
+
   return (
     <div
       data-component-name="ObjectPage"
       slot={slot}
       className={objectPageClasses}
-      style={style}
+      style={objectPageStyles}
       ref={componentRef}
-      title={tooltip}
       onScroll={onObjectPageScroll}
       {...propsWithoutOmitted}
     >

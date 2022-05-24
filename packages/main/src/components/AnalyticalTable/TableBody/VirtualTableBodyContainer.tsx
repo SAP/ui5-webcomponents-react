@@ -16,7 +16,8 @@ export const VirtualTableBodyContainer = (props) => {
     internalRowHeight,
     handleExternalScroll,
     visibleRows,
-    popInRowHeight
+    popInRowHeight,
+    dataLength
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -30,19 +31,16 @@ export const VirtualTableBodyContainer = (props) => {
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());
-  const prevRowsLength = useRef(rows.length);
+  const prevDataLength = useRef(dataLength);
 
   useEffect(() => {
-    if (prevRowsLength.current > rows.length) {
+    if (prevDataLength.current > dataLength) {
       firedInfiniteLoadEvents.current.clear();
       parentRef.current.scrollTop = 0;
       lastScrollTop.current = 0;
     }
-  }, [rows.length, prevRowsLength.current]);
-
-  useEffect(() => {
-    prevRowsLength.current = rows.length;
-  }, [rows.length]);
+    prevDataLength.current = dataLength;
+  }, [dataLength]);
 
   const onScroll = useCallback(
     (event) => {

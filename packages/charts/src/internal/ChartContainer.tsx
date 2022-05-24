@@ -60,18 +60,7 @@ class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCoun
 }
 
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const {
-    Placeholder,
-    loading = false,
-    dataset,
-    style,
-    className,
-    tooltip,
-    slot,
-    children,
-    resizeDebounce,
-    ...rest
-  } = props;
+  const { Placeholder, loading = false, dataset, style, className, slot, children, resizeDebounce, ...rest } = props;
   useStyles();
 
   const internalStyles: CSSProperties = {
@@ -85,7 +74,7 @@ const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, re
   };
 
   return (
-    <div ref={ref} style={internalStyles} className={className} title={tooltip} slot={slot} {...rest}>
+    <div ref={ref} style={internalStyles} className={className} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}

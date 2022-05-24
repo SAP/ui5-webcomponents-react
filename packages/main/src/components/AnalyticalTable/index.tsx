@@ -21,7 +21,6 @@ import React, {
   forwardRef,
   MutableRefObject,
   ReactNode,
-  ReactText,
   Ref,
   RefObject,
   useCallback,
@@ -53,7 +52,6 @@ import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { getRandomId } from '../../internal/getRandomId';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { FlexBox } from '../FlexBox';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
@@ -546,7 +544,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     subRowsKey,
     tableHooks,
     tableInstance,
-    tooltip,
     visibleRowCountMode,
     visibleRows,
     withNavigationHighlight,
@@ -563,7 +560,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     ...rest
   } = props;
 
-  useDeprecationNoticeForTooltip('AnalyticalTable', props.tooltip);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${getRandomId()}`).current;
 
@@ -921,7 +917,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   );
 
   return (
-    <div className={className} style={inlineStyle} title={tooltip} ref={analyticalTableRef} {...propsWithoutOmitted}>
+    <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
       {header && (
         <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
           {header}
@@ -1002,6 +998,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
               rows={rows}
               handleExternalScroll={handleBodyScroll}
               visibleRows={internalVisibleRowCount}
+              dataLength={data?.length}
             >
               <VirtualTableBody
                 classes={classes}

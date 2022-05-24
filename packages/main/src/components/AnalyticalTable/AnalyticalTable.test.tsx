@@ -648,18 +648,12 @@ describe('AnalyticalTable', () => {
   });
 
   test('render rows', () => {
-    Object.defineProperties(window.HTMLElement.prototype, {
-      clientHeight: {
-        value: 100,
-        configurable: true
-      }
-    });
     window.HTMLElement.prototype.getBoundingClientRect = function () {
       return {
-        height: 100
+        height: 132
       };
     };
-    const { asFragment, rerender } = render(
+    const { rerender } = render(
       <AnalyticalTable
         data={[...data, ...moreData]}
         columns={columns}
@@ -668,18 +662,14 @@ describe('AnalyticalTable', () => {
     );
 
     const tableContainer = screen.getByRole('grid', { hidden: true });
-    expect(tableContainer.getAttribute('data-per-page')).toBe('2');
-    // expect(asFragment()).toMatchSnapshot();
 
-    Object.defineProperties(window.HTMLElement.prototype, {
-      clientHeight: {
-        value: 1000,
-        configurable: true
-      }
-    });
+    // header height cannot be mocked w/o mocking all other elements using `offsetHeight`
+    // this causes `data-per-page` to have one more row than expected (the header)
+    expect(tableContainer.getAttribute('data-per-page')).toBe('3');
+
     window.HTMLElement.prototype.getBoundingClientRect = function () {
       return {
-        height: 1000
+        height: 1320
       };
     };
 
@@ -690,8 +680,7 @@ describe('AnalyticalTable', () => {
         visibleRowCountMode={TableVisibleRowCountMode.Auto}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
-    // expect(asFragment()).toMatchSnapshot();
+    expect(tableContainer.getAttribute('data-per-page')).toBe('30');
 
     //test if visibleRows prop is ignored when row-count-mode is "Auto"
     rerender(
@@ -702,7 +691,7 @@ describe('AnalyticalTable', () => {
         visibleRows={1337}
       />
     );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('22');
+    expect(tableContainer.getAttribute('data-per-page')).toBe('30');
 
     //test default visibleRow count
     rerender(
@@ -729,6 +718,10 @@ describe('AnalyticalTable', () => {
   test('resize vertically', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       clientHeight: {
+        value: 0,
+        configurable: true
+      },
+      offsetHeight: {
         value: 0,
         configurable: true
       }
@@ -1051,16 +1044,27 @@ describe('AnalyticalTable', () => {
     expect(cb).toBeCalledTimes(2);
     expect(click).toBeCalledTimes(3);
 
+    // a11y
+    expect(selectionCells[0]).toHaveAttribute('aria-disabled', 'true');
+    expect(selectionCells[0]).not.toHaveAttribute('aria-label');
+    expect(selectionCells[1]).not.toHaveAttribute('aria-disabled');
+    expect(selectionCells[1]).toHaveAttribute('aria-label');
+
     const extCells = cells.filter(
       (item) => item.getAttribute('aria-colindex') && item.getAttribute('aria-colindex') !== '1'
     );
+
     let counter = 2;
     extCells.forEach((item, index) => {
       fireEvent.click(item);
       expect(click).toBeCalledTimes(3 + index + 1);
+      // non selectable cells
       if (index <= 3) {
+        expect(item).not.toHaveAttribute('aria-label');
         expect(cb).toBeCalledTimes(2);
+        // selectable cells
       } else {
+        expect(item).toHaveAttribute('aria-label');
         counter++;
         expect(cb).toBeCalledTimes(counter);
       }

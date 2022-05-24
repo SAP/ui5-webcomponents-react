@@ -163,6 +163,8 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   onValueHelpTrigger?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**

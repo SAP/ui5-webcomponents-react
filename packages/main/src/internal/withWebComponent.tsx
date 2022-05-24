@@ -41,7 +41,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
-  const hasTooltipProp = regularProperties.includes('tooltip');
   const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
     const { className, children, waitForDefine, ...rest } = props;
     //@ts-ignore
@@ -134,17 +133,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
 
     useEffect(() => {
-      if (rest.tooltip && !hasTooltipProp) {
-        // strip ui5 prefix and convert to PascalCase
-        const componentName = tagName.substring(3).replace(/(^\w|-\w)/g, (text) => text.replace(/-/, '').toUpperCase());
-        deprecationNotice(
-          componentName,
-          '`tooltip` has been deprecated, please use the native `title` attribute instead.'
-        );
-      }
-    }, [rest.tooltip]);
-
-    useEffect(() => {
       if (waitForDefine && !isDefined) {
         customElements.whenDefined(Component as unknown as string).then(() => {
           setIsDefined(true);
@@ -159,7 +147,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     return (
       <Component
         ref={componentRef}
-        title={hasTooltipProp ? null : rest.tooltip}
         {...booleanProps}
         {...regularProps}
         {...nonWebComponentRelatedProps}

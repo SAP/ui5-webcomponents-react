@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.23.1",
+  "version": "0.23.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -30,12 +30,12 @@
     "build:assets": "node ../../scripts/generate-assets/index.js"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.23.1",
+    "@ui5/webcomponents-react-base": "^0.23.2",
     "clsx": "1.1.1",
     "lit-html": "^2.0.1",
     "react-content-loader": "6.2.0",
     "react-jss": "10.9.0",
-    "react-table": "7.7.0",
+    "react-table": "7.8.0",
     "react-virtual": "2.10.4"
   },
   "peerDependencies": {

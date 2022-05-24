@@ -1,7 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 export const DynamicPageCssVariables = {
-  headerDisplay: '--ui5wcr_DynamicPage_header_display'
+  headerDisplay: '--ui5wcr_DynamicPage_header_display',
+  titleFontSize: '--ui5wcr_DynamicPage_title_fontsize'
 };
 
 export const styles = {
@@ -15,10 +16,12 @@ export const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    [DynamicPageCssVariables.headerDisplay]: 'block'
+    [DynamicPageCssVariables.headerDisplay]: 'block',
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize
   },
   headerCollapsed: {
     [DynamicPageCssVariables.headerDisplay]: 'none',
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize,
     '& $anchorBar > section[role="navigation"]': {
       top: '-0.025rem'
     }

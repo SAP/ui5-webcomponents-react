@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.1...v0.23.2) (2022-05-03)
+
+
+### Bug Fixes
+
+* **ActionSheet:** always align button content to start ([#2887](https://github.com/SAP/ui5-webcomponents-react/issues/2887)) ([252a273](https://github.com/SAP/ui5-webcomponents-react/commit/252a27382fc7cae2c19ee9cdfce6c5cf492c9d98))
+* **cra-template-seed:** correct Portugues translations ([#2886](https://github.com/SAP/ui5-webcomponents-react/issues/2886)) ([e25f597](https://github.com/SAP/ui5-webcomponents-react/commit/e25f59730a91daf1a311e6a2075c11e11a2d5d87))
+* **DynamicPage/ObjectPage:** implement Horizon Theme for Title and Anchor Buttons ([#2894](https://github.com/SAP/ui5-webcomponents-react/issues/2894)) ([442e0d2](https://github.com/SAP/ui5-webcomponents-react/commit/442e0d205e9d61bf5105fcf2170c8e026b7fce5f))
+* **ObjectPage:** fix Section and SubSection Styles for Horizon theme family ([#2904](https://github.com/SAP/ui5-webcomponents-react/issues/2904)) ([ffec199](https://github.com/SAP/ui5-webcomponents-react/commit/ffec1996daa1334a6168a076a4db53715099f19f))
+* **Toolbar:** correctly align icon-only buttons in overflow popover ([#2893](https://github.com/SAP/ui5-webcomponents-react/issues/2893)) ([8c40522](https://github.com/SAP/ui5-webcomponents-react/commit/8c40522a8490bb270930ac96fecbf73d36724779))
+
+
+
+
+
 ## [0.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.0...v0.23.1) (2022-04-28)
 
 

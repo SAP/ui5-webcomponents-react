@@ -38,7 +38,6 @@ import { TitleLevel } from '../../enums/TitleLevel';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
@@ -125,6 +124,10 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * Indicates that Apply Automatically is visible in the Save View and the Manage Views dialogs.
    */
   hideApplyAutomatically?: boolean;
+  /**
+   * Indicates that the Author is visible in the Manage Views dialog.
+   */
+  hideCreatedBy?: boolean;
   /**
    * Indicates that the Save View dialog button is visible.
    */
@@ -232,7 +235,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
-    tooltip,
     placement,
     level,
     onSelect,
@@ -247,6 +249,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     hideManageVariants,
     hideApplyAutomatically,
     hideSetAsDefault,
+    hideCreatedBy,
     hideSaveAs,
     dirtyStateText,
     dirtyState,
@@ -255,8 +258,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     portalContainer,
     ...rest
   } = props;
-
-  useDeprecationNoticeForTooltip('VariantManagement', props.tooltip);
 
   const classes = useStyles();
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
@@ -452,7 +453,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
 
   return (
-    <div className={variantManagementClasses} style={style} title={tooltip} {...rest} ref={ref}>
+    <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant
@@ -573,6 +574,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             handleSaveManageViews={handleSaveManageViews}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}
+            showCreatedBy={!hideCreatedBy}
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
             portalContainer={portalContainer}

@@ -91,6 +91,8 @@ export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonPr
   valueStateMessage?: ReactNode;
   /**
    * Fired when the input operation has finished by clicking the "OK" button or when the text in the input field has changed and the focus leaves the input field.
+   *
+   *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
   onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
   /**

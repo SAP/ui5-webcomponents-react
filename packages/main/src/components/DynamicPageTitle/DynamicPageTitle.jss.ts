@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const DynamicPageTitleStyles = {
   container: {
@@ -24,6 +25,9 @@ export const DynamicPageTitleStyles = {
       backgroundColor: ThemingParameters.sapObjectHeader_Hover_Background
     }
   },
+  phone: {
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
+  },
   iEClass: {
     position: 'fixed',
     // page width - padding - scrollbar
@@ -38,24 +42,35 @@ export const DynamicPageTitleStyles = {
     alignItems: 'baseline'
   },
   title: {
-    color: ThemingParameters.sapGroup_TitleTextColor,
-    fontSize: ThemingParameters.sapFontHeader3Size,
+    fontFamily: ThemingParameters.sapObjectHeader_Title_FontFamily,
+    color: ThemingParameters.sapObjectHeader_Title_TextColor,
+    fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,
     paddingTop: '0.3125rem',
     overflowWrap: 'break-word',
-    hyphens: 'auto'
+    hyphens: 'auto',
+    '& > *': {
+      fontFamily: ThemingParameters.sapObjectHeader_Title_FontFamily,
+      color: ThemingParameters.sapObjectHeader_Title_TextColor,
+      fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,
+      paddingTop: '0.3125rem',
+      overflowWrap: 'break-word',
+      hyphens: 'auto'
+    }
   },
-  subTitleRight: {
-    color: ThemingParameters.sapContent_LabelColor,
+  subTitle: {
+    color: ThemingParameters.sapObjectHeader_Subtitle_TextColor,
     fontSize: ThemingParameters.sapFontSize,
     overflowWrap: 'break-word',
-    hyphens: 'auto'
+    hyphens: 'auto',
+    '& > *': {
+      color: ThemingParameters.sapObjectHeader_Subtitle_TextColor,
+      fontSize: ThemingParameters.sapFontSize,
+      overflowWrap: 'break-word',
+      hyphens: 'auto'
+    }
   },
   subTitleBottom: {
-    color: ThemingParameters.sapContent_LabelColor,
-    fontSize: ThemingParameters.sapFontSize,
-    marginTop: '0.25rem',
-    overflowWrap: 'break-word',
-    hyphens: 'auto'
+    marginTop: '0.25rem'
   },
   content: {
     display: 'flex',

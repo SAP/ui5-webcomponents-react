@@ -42,7 +42,7 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
     }
   } else if (
     (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
-    row.id === '__ui5wcr__internal_selection_column'
+    column.id === '__ui5wcr__internal_selection_column'
   ) {
     if (row.isSelected) {
       updatedCellProps['aria-selected'] = 'true';

@@ -34,16 +34,7 @@ const EXTENDED_PROP_DESCRIPTION = {
 
 const CUSTOM_DESCRIPTION_REPLACE = {
   Avatar: {
-    icon: (desc) => {
-      return desc.replace(
-        `   * import "@ui5/webcomponents-icons/dist/{icon\\_name}.js"  
-   * 
-   * <ui5-avatar icon-src="employee">`,
-        `   * \`import "@ui5/webcomponents-icons/dist/{icon\\_name}.js"\`
-   *
-   * \`<Avatar icon="employee">\``
-      );
-    }
+    icon: (desc) => desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``)
   },
   ComboBox: {
     children: (desc) => {
@@ -165,6 +156,18 @@ const CUSTOM_DESCRIPTION_REPLACE = {
     }
   }
 };
+// todo: add StepInput when `onInput` is available (https://github.com/SAP/ui5-webcomponents/issues/5177)
+const INPUT_COMPONENTS = new Set([
+  'ComboBox',
+  'DatePicker',
+  'DateRangePicker',
+  'DateTimePicker',
+  'Input',
+  'MultiComboBox',
+  'MultiInput',
+  'TextArea',
+  'TimePicker'
+]);
 
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
@@ -375,7 +378,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
   //todo remove after 'react-docgen' can handle this
   args.push(`style: {}`);
   args.push(`className: ''`);
-  args.push(`tooltip: ''`);
   args.push(`slot: ''`);
   args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
@@ -634,9 +636,17 @@ allWebComponents
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
         }
         importStatements.push(...eventParameters.importStatements);
+        let onChangeDescription;
+        if (INPUT_COMPONENTS.has(componentSpec.module) && eventSpec.name === 'change') {
+          onChangeDescription = `
+      *
+      *__Note:__ This event is NOT the same as the native \`onChange\` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use \`onInput\` instead. `;
+        }
         slotsAndEvents.push(dedent`
       /**
-       * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}
+       * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}${
+          onChangeDescription ?? ''
+        }
        */
        ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);

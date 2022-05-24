@@ -25,7 +25,6 @@ import { TitleLevel } from '../../enums/TitleLevel';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';
@@ -156,9 +155,7 @@ const useStyles = createUseStyles(
 );
 
 const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
-  const { children, groupItems, showDetailsPageHeader, className, onItemSelect, tooltip, ...rest } = props;
-
-  useDeprecationNoticeForTooltip('MessageView', props.tooltip);
+  const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
 
   const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);
 
@@ -201,7 +198,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const outerClasses = clsx(classes.container, className, selectedMessage && classes.showDetails);
 
   return (
-    <div ref={componentRef} title={tooltip} {...rest} className={outerClasses}>
+    <div ref={componentRef} {...rest} className={outerClasses}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage

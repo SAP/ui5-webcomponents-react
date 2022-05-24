@@ -91,6 +91,15 @@ export const styles = {
     '& [ui5-button][icon-only]::part(button)': {
       padding: 'revert'
     },
+    '& [ui5-toggle-button]': {
+      marginBottom: '0.25rem'
+    },
+    '& [ui5-toggle-button]::part(button)': {
+      justifyContent: 'flex-start'
+    },
+    '& [ui5-toggle-button][icon-only]::part(button)': {
+      padding: 'revert'
+    },
     '& :last-child': {
       marginBottom: 0
     }

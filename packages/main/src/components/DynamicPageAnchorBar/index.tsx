@@ -18,35 +18,7 @@ import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useDeprecationNoticeForTooltip } from '../../internal/useDeprecationNotiveForTooltip';
-import { Button } from '../../webComponents/Button';
-import { ToggleButton } from '../../webComponents/ToggleButton';
-
-addCustomCSSWithScoping(
-  'ui5-button',
-  `
-  :host([data-ui5wcr-dynamic-page-header-action]){
-    width: 1.375rem;
-    height: 1.375rem;
-    min-width: 1.375rem;
-  }
-  :host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
-    padding: 0;
-  }`
-);
-addCustomCSSWithScoping(
-  'ui5-toggle-button',
-  `
-    :host([data-ui5wcr-dynamic-page-header-action]){
-    width: 1.375rem;
-    height: 1.375rem;
-    min-width: 1.375rem;
-  }
-  :host([data-ui5wcr-dynamic-page-header-action]) .ui5-button-root {
-    padding: 0;
-  }`
-);
+import { Button, ToggleButton } from '../../webComponents';
 
 const anchorBarStyles = {
   anchorBarActionButton: {
@@ -55,6 +27,8 @@ const anchorBarStyles = {
     marginLeft: `-0.6875rem`,
     left: '50%',
     zIndex: 3,
+    '--_ui5_button_base_min_width': '1.5rem',
+    '--_ui5_button_base_height': '1.5rem',
     '&:before, &:after': {
       content: '""',
       position: 'absolute',
@@ -62,12 +36,15 @@ const anchorBarStyles = {
       top: '50%',
       height: '0.0625rem'
     },
+    '&:not([pressed])': {
+      backgroundColor: ThemingParameters.sapObjectHeader_Background
+    },
     '&:before': {
       right: '100%',
-      backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`
+      backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapObjectHeader_BorderColor}, transparent)`
     },
     '&:after': {
-      backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, rgba(8,84,160,0))`,
+      backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapObjectHeader_BorderColor}, transparent)`,
       left: '100%'
     }
   },
@@ -79,10 +56,7 @@ const anchorBarStyles = {
   anchorBarActionButtonPinnable: {},
   anchorBarActionPinnableAndExpandable: {
     '&$anchorBarActionButtonPinnable': {
-      marginLeft: '0.25rem',
-      '&:before': {
-        backgroundColor: 'white'
-      }
+      marginLeft: '0.25rem'
     },
     '&$anchorBarActionButtonExpandable': {
       marginLeft: '-1.75rem'
@@ -90,10 +64,7 @@ const anchorBarStyles = {
   },
   anchorBarActionPinnableAndExpandableRtl: {
     '&$anchorBarActionButtonPinnable': {
-      marginRight: '0.25rem',
-      '&:before': {
-        backgroundColor: 'white'
-      }
+      marginRight: '0.25rem'
     },
     '&$anchorBarActionButtonExpandable': {
       marginRight: '-1.75rem'
@@ -158,7 +129,6 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
     style,
     a11yConfig
   } = props;
-  useDeprecationNoticeForTooltip('DynamicPageAnchorBar', props.tooltip);
 
   const classes = useStyles();
   const [componentRef, anchorBarRef] = useSyncRef<HTMLElement>(ref);
