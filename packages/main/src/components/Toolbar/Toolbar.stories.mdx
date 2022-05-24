@@ -10,6 +10,7 @@ import {
   Select,
   Switch,
   Text,
+  ToggleButton,
   ToolbarDesign,
   ToolbarSeparator,
   ToolbarSpacer,
@@ -22,6 +23,7 @@ import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
 <Meta
   title="Layouts & Floorplans / Toolbar"
   component={Toolbar}
+  subcomponents={{ OverflowToolbarButton, OverflowToolbarToggleButton }}
   argTypes={{
     children: { control: { disable: true } },
     as: { control: { disable: true } }
@@ -199,6 +201,46 @@ If the horizontally available space isn't enough to fit all items in it, an over
           <Button>Button Four</Button>
           <OverflowToolbarButton icon="edit">Edit</OverflowToolbarButton>
           <OverflowToolbarToggleButton icon="favorite">Favorite</OverflowToolbarToggleButton>
+        </Toolbar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### OverflowToolbarButton & OverflowToolbarToggleButton
+
+With the `OverflowToolbarButton` and `OverflowToolbarToggleButton` it is possible to display the text of a `Button` with an icon only in the overflow popover of the `Toolbar`.
+Both components accept the same `props` as the standard `Button` component, with the difference that `icon` is now required and `children` are only rendered inside the popover.
+
+<Canvas>
+  <Story name="OverflowToolbarButton & OverflowToolbarToggleButton">
+    {(args) => {
+      return (
+        <Toolbar {...args} style={{ width: '500px', ...args.style }}>
+          <Button icon="edit" tooltip="Text always visible">
+            Default Button
+          </Button>
+          <OverflowToolbarButton icon="edit" tooltip="Text only visible in popover">
+            OverflowToolbarButton (only visible in popover)
+          </OverflowToolbarButton>
+          <ToggleButton icon="favorite" tooltip="Text always visible">
+            Default ToggleButton
+          </ToggleButton>
+          <OverflowToolbarToggleButton icon="favorite" tooltip="Text only visible in popover">
+            OverflowToolbarToggleButton (only visible in popover)
+          </OverflowToolbarToggleButton>
+          <Button icon="edit" tooltip="Text always visible">
+            Default Button
+          </Button>
+          <OverflowToolbarButton icon="edit" tooltip="Text only visible in popover">
+            OverflowToolbarButton (only visible in popover)
+          </OverflowToolbarButton>
+          <ToggleButton icon="favorite" tooltip="Text always visible">
+            Default ToggleButton
+          </ToggleButton>
+          <OverflowToolbarToggleButton icon="favorite" tooltip="Text only visible in popover">
+            OverflowToolbarToggleButton (only visible in popover)
+          </OverflowToolbarToggleButton>
         </Toolbar>
       );
     }}
