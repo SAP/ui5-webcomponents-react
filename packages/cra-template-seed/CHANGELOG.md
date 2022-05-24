@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.2...v0.24.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* **cra-template-seed:** use `onInput` for react change events ([#2913](https://github.com/SAP/ui5-webcomponents-react/issues/2913)) ([fbc971f](https://github.com/SAP/ui5-webcomponents-react/commit/fbc971f15b67f3b0eed6e62e70efdfe6bc676805))
+
+
+
+
+
 ## [0.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.1...v0.23.2) (2022-05-03)
 
 

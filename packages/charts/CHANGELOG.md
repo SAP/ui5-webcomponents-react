@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.2...v0.24.0) (2022-05-24)
+
+
+### chore
+
+* remove deprecated `tooltip`, `useConsolidatedRef` and `StyleClassHelper` ([#2909](https://github.com/SAP/ui5-webcomponents-react/issues/2909)) ([57eacda](https://github.com/SAP/ui5-webcomponents-react/commit/57eacda9b108337d7520677b963dc3fcfb78d450))
+
+
+### BREAKING CHANGES
+
+* The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`)
+* The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
+* The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement  your own `className` helper.
+
+
+
+
+
 # [0.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.22.8...v0.23.0) (2022-04-22)
 
 

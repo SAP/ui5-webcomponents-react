@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.2...v0.24.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* **AnalyticalTable - useRowDisableSelection:** correct a11y attributes for disabled rows ([#2920](https://github.com/SAP/ui5-webcomponents-react/issues/2920)) ([f0d8ebc](https://github.com/SAP/ui5-webcomponents-react/commit/f0d8ebc713e4657801143a49f1dbe1d699bded80))
+* **AnalyticalTable:** correct virtualization behavior when scaled via CSS ([#2976](https://github.com/SAP/ui5-webcomponents-react/issues/2976)) ([65fbdc9](https://github.com/SAP/ui5-webcomponents-react/commit/65fbdc9d7826aef8dba44d6c24b3219db350396f))
+* **AnalyticalTable:** don't scroll to top when collapsing rows ([#2931](https://github.com/SAP/ui5-webcomponents-react/issues/2931)) ([782b2e7](https://github.com/SAP/ui5-webcomponents-react/commit/782b2e713ccc6160ac52792edde75f9c502451e3))
+* **AnalyticalTable:** don't wrap Header elements inside `Text` ([#2981](https://github.com/SAP/ui5-webcomponents-react/issues/2981)) ([fe290e7](https://github.com/SAP/ui5-webcomponents-react/commit/fe290e76442c04a41f29b78a2eeffd13637beb6f))
+* **cra-template-seed:** use `onInput` for react change events ([#2913](https://github.com/SAP/ui5-webcomponents-react/issues/2913)) ([fbc971f](https://github.com/SAP/ui5-webcomponents-react/commit/fbc971f15b67f3b0eed6e62e70efdfe6bc676805))
+* **DynamicPageTitle:** reduce title font-size for small devices ([#2940](https://github.com/SAP/ui5-webcomponents-react/issues/2940)) ([cddea31](https://github.com/SAP/ui5-webcomponents-react/commit/cddea3178fcde28d654b2613d8852fe3d4170a25))
+* **Modals:** support React 18 by rendering Portals instead of creating new roots ([#2932](https://github.com/SAP/ui5-webcomponents-react/issues/2932)) ([f1d2bd3](https://github.com/SAP/ui5-webcomponents-react/commit/f1d2bd39eccab718e8a33839ff40186ffd8f68f7)), closes [#2730](https://github.com/SAP/ui5-webcomponents-react/issues/2730)
+* **VariantManagement:** correct `valueState` behavior ([#2927](https://github.com/SAP/ui5-webcomponents-react/issues/2927)) ([a69f388](https://github.com/SAP/ui5-webcomponents-react/commit/a69f3883b99c44ec4379fa3aab2a558275c39756))
+
+
+### chore
+
+* remove deprecated `tooltip`, `useConsolidatedRef` and `StyleClassHelper` ([#2909](https://github.com/SAP/ui5-webcomponents-react/issues/2909)) ([57eacda](https://github.com/SAP/ui5-webcomponents-react/commit/57eacda9b108337d7520677b963dc3fcfb78d450))
+
+
+### Features
+
+* **OverflowToolbarButton:** add option to display text of a button only in toolbar popover ([#2971](https://github.com/SAP/ui5-webcomponents-react/issues/2971)) ([3ca8885](https://github.com/SAP/ui5-webcomponents-react/commit/3ca8885b553a99cc88762a8c25e77f79674acc40))
+* **VariantManagement:** add hideCreatedBy property ([#2914](https://github.com/SAP/ui5-webcomponents-react/issues/2914)) ([3cc390c](https://github.com/SAP/ui5-webcomponents-react/commit/3cc390c749bf4d00f28d68006980cd873c25f777))
+
+
+### Reverts
+
+* Revert "fix(AnalyticalTable): don't wrap Header elements inside `Text` (#2981)" ([545defa](https://github.com/SAP/ui5-webcomponents-react/commit/545defa540bd4228b1c47f3f7587162a3f377bb4)), closes [#2981](https://github.com/SAP/ui5-webcomponents-react/issues/2981)
+
+
+### BREAKING CHANGES
+
+* **Modals:** In order to use the `Modals` helper, you **must** wrap your Application into the `<ThemeProvider />` component. For most users this should not be a breaking change as the `<ThemeProvider />` was required for other purposes already.
+* The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`)
+* The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
+* The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement  your own `className` helper.
+
+
+
+
+
 ## [0.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.1...v0.23.2) (2022-05-03)
 
 
