@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo } from 'react';
 import { useVirtual } from 'react-virtual';
+import { useRect } from '../../../internal/useRect';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
@@ -74,7 +75,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       },
       [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
     ),
-    overscan
+    overscan,
+    useObserver: useRect
   });
   const columnVirtualizer = useVirtual({
     size: visibleColumns.length,
@@ -86,7 +88,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: overscanCountHorizontal,
+    useObserver: useRect
   });
 
   reactWindowRef.current = {
