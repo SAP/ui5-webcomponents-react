@@ -140,15 +140,11 @@ describe('Modals - hooks', function () {
     expect(screen.getByTestId('messagebox')).toHaveAttribute('open');
   });
 
-  test(Modals.useShowToast.name, () => {
-    jest.useFakeTimers();
+  test(Modals.useShowToast.name, async () => {
     render(
       <TestComponent hookFn={Modals.useShowToast} modalProps={{ children: 'Toast Content', 'data-testid': 'toast' }} />
     );
     fireEvent.click(screen.getByText('Open Modal'));
-    jest.runOnlyPendingTimers();
-    expect(screen.getByText('Toast Content')).toBeVisible();
-    expect(screen.getByTestId('toast')).toHaveAttribute('open');
-    jest.useRealTimers();
+    expect(screen.getByText('Toast Content')).toBeInTheDocument();
   });
 });
