@@ -24,6 +24,8 @@ export * from './components/ObjectPage';
 export * from './components/ObjectPageSection';
 export * from './components/ObjectPageSubSection';
 export * from './components/ObjectStatus';
+export * from './components/OverflowToolbarButton';
+export * from './components/OverflowToolbarToggleButton';
 export * from './components/ResponsiveGridLayout';
 export * from './components/SelectDialog';
 export * from './components/SplitterElement';
