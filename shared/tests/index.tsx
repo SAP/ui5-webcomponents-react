@@ -1,7 +1,7 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
+import { ThemeProvider } from '../../packages/main/src/components/ThemeProvider';
 import React, { ReactElement } from 'react';
 import { JssProvider } from 'react-jss';
-import { I18nProvider } from '../../packages/main/src/internal/I18nProvider';
 
 const generateId = (rule, sheet) => {
   return `${sheet.options.classNamePrefix}${rule.key}`;
@@ -9,9 +9,9 @@ const generateId = (rule, sheet) => {
 
 const WithJSSProvider = ({ children }) => {
   return (
-    <I18nProvider>
-      <JssProvider generateId={generateId}>{children}</JssProvider>
-    </I18nProvider>
+    <JssProvider generateId={generateId}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </JssProvider>
   );
 };
 

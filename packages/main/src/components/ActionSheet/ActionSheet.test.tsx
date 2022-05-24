@@ -1,23 +1,20 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { ActionSheet } from './index';
-import { PopoverDomRef } from '../../webComponents/Popover';
-import { Button } from '../../webComponents/Button';
-import { Label } from '../../webComponents/Label';
 import React, { createRef, RefObject } from 'react';
+import { Button, Label, PopoverDomRef } from '../../webComponents';
+import { ActionSheet } from './index';
 
 describe('ActionSheet', () => {
   test('Render without Crashing', () => {
-    const ref = createRef();
-    const wrapper = render(
-      <ActionSheet className="myCustomClass" ref={ref}>
+    const { container } = render(
+      <ActionSheet className="myCustomClass">
         <Button>Accept</Button>
         <Button>Reject</Button>
         <Button>This is my super long text!</Button>
       </ActionSheet>
     );
 
-    expect(wrapper.container.parentElement).toMatchSnapshot();
+    expect(container.parentElement).toMatchSnapshot();
   });
 
   test('Button Click handler', () => {
