@@ -1,12 +1,12 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject, useRef } from 'react';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { CustomListItem } from '../../webComponents';
+import { CustomListItem, Panel, TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
@@ -96,6 +96,39 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const inlineStyle = { [transformMarginRight]: '1rem', ...style };
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+
+  if (!inFB) {
+    return (
+      //todo height
+      <TableRow>
+        <TableCell>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            {/*todo margin*/}
+            <Text style={{ marginBottom: '0.25rem' }}>{label}</Text>
+            {withValues && children}
+          </FlexBox>
+        </TableCell>
+        {!withValues && (
+          //todo a11y
+          <TableCell style={{ width: '25%' }}>
+            <div
+              style={{
+                flexGrow: 1,
+                textAlign: 'center',
+                color: ThemingParameters.sapNeutralColor,
+                fontSize: '24px',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale'
+              }}
+            >
+              •
+            </div>
+          </TableCell>
+        )}
+      </TableRow>
+    );
+  }
+
   if (!inFB) {
     return (
       /*todo rtl, somehow only active :active effect if really clicked on li (try :focus-within)*/

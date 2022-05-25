@@ -15,27 +15,18 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import React, {
-  Children,
-  cloneElement,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState
-} from 'react';
+import React, { Children, cloneElement, useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap, ListMode } from '../../enums';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { TitleLevel } from '../../enums/TitleLevel';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { CustomListItem, List } from '../../webComponents';
+import { Panel, Table, TableCell, TableColumn, TableRow } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
-import { CheckBox } from '../../webComponents/CheckBox';
 import { Dialog } from '../../webComponents/Dialog';
 import { Icon } from '../../webComponents/Icon';
 import { Input } from '../../webComponents/Input';
@@ -44,7 +35,7 @@ import { SegmentedButton } from '../../webComponents/SegmentedButton';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem';
 import { Select } from '../../webComponents/Select';
 import { Title } from '../../webComponents/Title';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem';
+import { FilterGroupItem, FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import { Toolbar } from '../Toolbar';
@@ -52,12 +43,17 @@ import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
-//todo doesn't work
-const userEvent = (e, type, child) => {
-  if (typeof child.props.children.props?.[type] === 'function') {
-    child.props.children.props[type](e);
-  }
-};
+//todo table is too high
+addCustomCSSWithScoping(
+  'ui5-table',
+  `
+:host([data-component-name="FilterBarDialogPanelTable"]) thead {
+  height:0;
+  visibility: hidden;
+  display: table-footer-group;
+}
+ `
+);
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialogV2 = (props) => {
@@ -90,9 +86,10 @@ export const FilterDialogV2 = (props) => {
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
   //todo init false
-  const [showValues, toggleValues] = useReducer((prev) => !prev, true);
+  const [showValues, toggleValues] = useReducer((prev) => !prev, false);
   const [selectedItems, setSelectedItems] = useState({});
-  const [set, setSet] = useState(true);
+  //todo init true
+  const [isListView, setIsListView] = useState(false);
   const [selectedItem, setSelectedItem] = useState(true);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -171,7 +168,9 @@ export const FilterDialogV2 = (props) => {
     }
   };
 
-  const timeout = useRef();
+  const handleViewChange = (e) => {
+    setIsListView(e.detail.selectedItem.dataset.id === 'list');
+  };
 
   const renderChildren = () => {
     return children
@@ -189,46 +188,28 @@ export const FilterDialogV2 = (props) => {
           filterItemProps = filterValue(filterBarItemRef, child);
         }
         if (!child.props.children) return child;
-        return cloneElement<FilterGroupItemPropTypes & { 'data-with-values': boolean; 'data-selected': boolean }>(
-          child,
-          {
-            'data-with-values': showValues,
-            'data-selected': selectedItem,
-            children: {
-              ...child.props.children,
-              props: {
-                ...child.props.children.props,
-                ...filterItemProps,
-                onClick: (e) => {
-                  clearTimeout(timeout.current);
-                  userEvent(e, 'onClick', child);
-                },
-                onKeyDown: (e) => {
-                  if (e.code === 'Enter' || e.code === 'Space') {
-                    clearTimeout(timeout.current);
-                  }
-                  // todo: workaround for https://github.com/SAP/ui5-webcomponents/issues/974
-                  if (e.code === 'Space') {
-                    e.target.value += ' ';
-                  }
-                  userEvent(e, 'onKeyDown', child);
-                },
-                onKeyUp: (e) => {
-                  if (e.code === 'Enter' || e.code === 'Space') {
-                    clearTimeout(timeout.current);
-                  }
-                  userEvent(e, 'onKeyUp', child);
-                }
-              },
-              ref: (node) => {
-                if (node) {
-                  dialogRefs.current[child.key] = node;
-                  syncRef(child.props.children.ref, node);
-                }
+        return cloneElement<
+          FilterGroupItemPropTypes & {
+            'data-with-values': boolean;
+            'data-selected': boolean;
+          }
+        >(child, {
+          'data-with-values': showValues,
+          'data-selected': selectedItem,
+          children: {
+            ...child.props.children,
+            props: {
+              ...child.props.children.props,
+              ...filterItemProps
+            },
+            ref: (node) => {
+              if (node) {
+                dialogRefs.current[child.key] = node;
+                syncRef(child.props.children.ref, node);
               }
             }
           }
-        );
+        });
       });
   };
 
@@ -257,43 +238,55 @@ export const FilterDialogV2 = (props) => {
     const filterGroups = Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
-        const filters = groups[item].map((el) => {
-          return (
-            <div
-              data-component-name="FilterDialogSingleFilterContainer"
-              className={classes.singleFilter}
-              key={`${el.key}-container`}
-              ref={(node) => {
-                if (node) {
-                  dialogFilters.push(node.children?.[0]?.children?.[0]?.children?.[1]);
-                }
-              }}
-            >
-              {el}
-              <CheckBox
-                role="checkbox"
-                checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
-                onChange={handleCheckBoxChange(el)}
-                disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
-              />
-            </div>
-          );
-        });
         return (
-          <div className={classes.groupContainer} key={item}>
-            <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
-              <Title
-                level={TitleLevel.H5}
-                className={index === 0 ? classes.groupTitle : ''}
-                title={item === 'default' ? basicText : item}
-              >
-                {item === 'default' ? basicText : item}
-              </Title>
-              {index === 0 && <Text wrapping={false}>{showOnFilterBarText}</Text>}
-            </FlexBox>
-            <div className={classes.filters}>{filters}</div>
-          </div>
+          <Panel headerText={item === 'default' ? basicText : item} className={classes.groupPanel}>
+            {/*todo create component*/}
+            <Table
+              className={classes.table}
+              mode={TableMode.MultiSelect}
+              data-component-name="FilterBarDialogPanelTable"
+            >
+              {groups[item]}
+            </Table>
+          </Panel>
         );
+        // const filters = groups[item].map((el) => {
+        //   return (
+        //     <div
+        //       data-component-name="FilterDialogSingleFilterContainer"
+        //       className={classes.singleFilter}
+        //       key={`${el.key}-container`}
+        //       ref={(node) => {
+        //         if (node) {
+        //           dialogFilters.push(node.children?.[0]?.children?.[0]?.children?.[1]);
+        //         }
+        //       }}
+        //     >
+        //       {el}
+        //       <CheckBox
+        //         role="checkbox"
+        //         checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
+        //         onChange={handleCheckBoxChange(el)}
+        //         disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
+        //       />
+        //     </div>
+        //   );
+        // });
+        // return (
+        //   <div className={classes.groupContainer} key={item}>
+        //     <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
+        //       <Title
+        //         level={TitleLevel.H5}
+        //         className={index === 0 ? classes.groupTitle : ''}
+        //         title={item === 'default' ? basicText : item}
+        //       >
+        //         {item === 'default' ? basicText : item}
+        //       </Title>
+        //       {index === 0 && <Text wrapping={false}>{showOnFilterBarText}</Text>}
+        //     </FlexBox>
+        //     <div className={classes.filters}>{filters}</div>
+        //   </div>
+        // );
       });
     dialogFilterRefs.current = dialogFilters;
     return filterGroups;
@@ -377,9 +370,10 @@ export const FilterDialogV2 = (props) => {
           <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
             {showValues ? 'Hide Values' : 'Show Values'}
           </Button>
-          <SegmentedButton>
-            <SegmentedButtonItem icon="list" />
-            <SegmentedButtonItem icon="group-2" />
+          <SegmentedButton onSelectionChange={handleViewChange}>
+            {/*todo a11y*/}
+            <SegmentedButtonItem icon="list" data-id="list" pressed={isListView} />
+            <SegmentedButtonItem icon="group-2" data-id="group" pressed={!isListView} />
           </SegmentedButton>
         </Toolbar>
         {showSearch && (
@@ -395,60 +389,26 @@ export const FilterDialogV2 = (props) => {
           </FlexBox>
         )}
       </FlexBox>
-      <List
-        onItemClick={(e) => {
-          // e.isMarked = 'button';
-          // todo save the clicked item here, add a timeout and cancel it if filter item is clicked
-          e.preventDefault();
-          timeout.current = setTimeout(() => {
-            setSelectedItem((prev) => !prev);
-          });
-          console.log('li-click', e);
-        }}
-        //todo change visible items
-        onSelectionChange={(e) => {
-          console.log('change', e);
-
-          // setSelectedItems(
-          //   e.detail.selectedItems.reduce(
-          //     (acc: Record<string, any>, cur: HTMLElement) => ({ ...acc, [cur.dataset.uuid]: true }),
-          //     {}
-          //   )
-          // );
-          // if (typeof handleSelectionChange === 'function') {
-          //   //todo element was rect node previously, check how this can be achieved
-          //   handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
-          // }
-          // setToggledFilters((old) => ({ ...old, [element.key]: e.target.checked }));
-          // console.log(e, e.detail.selectedItems, e.detail.previouslySelectedItems);
-        }}
-        mode={ListMode.MultiSelect}
-        header={
-          <FlexBox
-            alignItems={FlexBoxAlignItems.Center}
-            //todo rtl
-            style={{
-              paddingLeft: '0.5rem',
-              paddingRight: '1rem',
-              height: 'var(--_ui5_list_item_base_height)',
-              backgroundColor: ThemingParameters.sapList_HeaderBackground
-            }}
-            wrap={FlexBoxWrap.NoWrap}
-          >
-            <Icon
-              interactive
-              name="clear-all"
-              style={{ cursor: 'pointer', padding: '0 var(--_ui5_checkbox_wrapper_padding)' }}
-            />
-            <FlexBox style={{ flexGrow: 1 }}>
-              <Text style={{ flexBasis: '80%' }}>Filter</Text>
-              {!showValues && <Text style={{ flexGrow: 1, textAlign: 'center' }}>Active</Text>}
-            </FlexBox>
-          </FlexBox>
+      <Table
+        hideNoData={!isListView}
+        className={classes.table}
+        /*todo implement special handling for multi select in group view*/
+        mode={TableMode.MultiSelect}
+        columns={
+          //todo i18n
+          <>
+            <TableColumn>Field</TableColumn>
+            {!showValues && (
+              <TableColumn className={classes.tHactive} style={{ width: '25%' }}>
+                Active
+              </TableColumn>
+            )}
+          </>
         }
       >
-        {renderChildren()}
-      </List>
+        {isListView && renderChildren()}
+      </Table>
+      {!isListView && renderGroups()}
     </Dialog>,
     portalContainer
   );

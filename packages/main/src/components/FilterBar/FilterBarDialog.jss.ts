@@ -1,6 +1,21 @@
 import { CssSizeVariables, spacing } from '@ui5/webcomponents-react-base';
 
 const styles = {
+  tHactive: {
+    '&::part(column)': {
+      textAlign: 'center'
+    }
+  },
+  table: {
+    '--_ui5_input_width': '100%'
+  },
+  groupPanel: {
+    '&::part(content)': {
+      padding: 0
+    }
+  },
+
+  // todo check old
   dialogComponent: {
     '&::part(content), &::part(footer), &::part(header)': {
       padding: 0
