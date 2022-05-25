@@ -25,7 +25,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **OverflowToolbarButton:** add option to display text of a button only in toolbar popover ([#2971](https://github.com/SAP/ui5-webcomponents-react/issues/2971)) ([3ca8885](https://github.com/SAP/ui5-webcomponents-react/commit/3ca8885b553a99cc88762a8c25e77f79674acc40))
+* **OverflowToolbarButton & OverflowToolbarToggleButton:** add option to display text of a button only in toolbar popover ([#2971](https://github.com/SAP/ui5-webcomponents-react/issues/2971)) ([3ca8885](https://github.com/SAP/ui5-webcomponents-react/commit/3ca8885b553a99cc88762a8c25e77f79674acc40))
 * **VariantManagement:** add hideCreatedBy property ([#2914](https://github.com/SAP/ui5-webcomponents-react/issues/2914)) ([3cc390c](https://github.com/SAP/ui5-webcomponents-react/commit/3cc390c749bf4d00f28d68006980cd873c25f777))
 
 
