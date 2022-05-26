@@ -14,6 +14,10 @@ interface RangeSliderAttributes {
    */
   startValue?: number;
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines whether the slider is in disabled state.
    */
   disabled?: boolean;
@@ -69,7 +73,7 @@ export interface RangeSliderPropTypes extends RangeSliderAttributes, Omit<Common
  */
 const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   'ui5-range-slider',
-  ['endValue', 'startValue', 'labelInterval', 'max', 'min', 'step'],
+  ['endValue', 'startValue', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input']
