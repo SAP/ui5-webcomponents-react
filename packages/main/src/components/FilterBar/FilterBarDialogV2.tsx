@@ -43,17 +43,33 @@ import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBarDialog.jss';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
-//todo table is too high
 addCustomCSSWithScoping(
   'ui5-table',
   `
+/* hide table header of panel table */
 :host([data-component-name="FilterBarDialogPanelTable"]) thead {
-  height:0;
-  visibility: hidden;
-  display: table-footer-group;
+  visibility: collapse;
+}
+/* don't display border of panel table */
+:host([data-component-name="FilterBarDialogPanelTable"]) table {
+  border-collapse: unset;
+}
+
+:host([data-component-name="FilterBarDialogPanelTable"]) .ui5-table-root {
+  border-bottom: none;
+}
+/* don't display select all checkbox */
+:host([data-component-name="FilterBarDialogPanelTable"]) thead th.ui5-table-select-all-column [ui5-checkbox],
+:host([data-component-name="FilterBarDialogTable"]) thead th.ui5-table-select-all-column [ui5-checkbox] {
+ visibility: hidden;
 }
  `
 );
+
+const compareObjects = (firstObj, secondObj) =>
+  Object.keys(firstObj).find((first) =>
+    Object.keys(secondObj).every((second) => firstObj[second] !== secondObj[first])
+  );
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialogV2 = (props) => {
@@ -85,12 +101,8 @@ export const FilterDialogV2 = (props) => {
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
-  //todo init false
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
-  const [selectedItems, setSelectedItems] = useState({});
-  //todo init true
-  const [isListView, setIsListView] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(true);
+  const [isListView, setIsListView] = useState(true);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -195,7 +207,11 @@ export const FilterDialogV2 = (props) => {
           }
         >(child, {
           'data-with-values': showValues,
-          'data-selected': selectedItem,
+          // todo needed?
+          'data-selected':
+            child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
+          // todo key?
+          'data-react-key': child.key,
           children: {
             ...child.props.children,
             props: {
@@ -213,15 +229,34 @@ export const FilterDialogV2 = (props) => {
       });
   };
 
-  const handleCheckBoxChange = useCallback(
-    (element) => (e) => {
-      if (handleSelectionChange) {
-        handleSelectionChange(enrichEventWithDetails(e, { element, checked: e.target.checked }));
-      }
-      setToggledFilters((old) => ({ ...old, [element.key]: e.target.checked }));
-    },
-    [setToggledFilters, handleSelectionChange]
-  );
+  //todo simplify
+  // todo live update inside the dialog (list/group view), don't reset on view change
+  const handleCheckBoxChange = (e) => {
+    const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
+      (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
+      {}
+    );
+    const rowsByKey = e.detail.selectedRows.reduce(
+      (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
+      {}
+    );
+
+    const changedRowKey =
+      e.detail.previouslySelectedRows > e.detail.selectedRows
+        ? compareObjects(prevRowsByKey, rowsByKey)
+        : compareObjects(rowsByKey, prevRowsByKey);
+
+    const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
+
+    if (typeof handleSelectionChange === 'function') {
+      //todo breaking change, element was previously react component
+      handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
+    }
+
+    setToggledFilters((prev) => {
+      return { ...prev, [changedRowKey]: element.selected };
+    });
+  };
   const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
@@ -240,11 +275,11 @@ export const FilterDialogV2 = (props) => {
       .map((item, index) => {
         return (
           <Panel headerText={item === 'default' ? basicText : item} className={classes.groupPanel}>
-            {/*todo create component*/}
             <Table
               className={classes.table}
               mode={TableMode.MultiSelect}
               data-component-name="FilterBarDialogPanelTable"
+              onSelectionChange={handleCheckBoxChange}
             >
               {groups[item]}
             </Table>
@@ -291,8 +326,6 @@ export const FilterDialogV2 = (props) => {
     dialogFilterRefs.current = dialogFilters;
     return filterGroups;
   };
-
-  console.log(selectedItem);
 
   return createPortal(
     <Dialog
@@ -362,7 +395,7 @@ export const FilterDialogV2 = (props) => {
       >
         {/*todo a11y maybe use header tags here*/}
         <Toolbar style={{ paddingBottom: '0.25rem' }} className={classes.subheader}>
-          {/*// todo i18n, cb*/}
+          {/*// todo i18n, cb, children*/}
           <Select>
             <Option selected>All</Option>
           </Select>
@@ -390,10 +423,12 @@ export const FilterDialogV2 = (props) => {
         )}
       </FlexBox>
       <Table
+        data-component-name="FilterBarDialogTable"
         hideNoData={!isListView}
         className={classes.table}
         /*todo implement special handling for multi select in group view*/
         mode={TableMode.MultiSelect}
+        onSelectionChange={handleCheckBoxChange}
         columns={
           //todo i18n
           <>

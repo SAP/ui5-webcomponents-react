@@ -63,7 +63,7 @@ import {
     {(args) => {
       return (
         <FilterBar {...args} showSearchOnFiltersDialog>
-          <FilterGroupItem label="StepInput">
+          <FilterGroupItem label="StepInput" visibleInFilterBar={false}>
             <StepInput
               onClick={(e) => {
                 console.log('click');

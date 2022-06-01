@@ -99,8 +99,8 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 
   if (!inFB) {
     return (
-      //todo height
-      <TableRow>
+      //todo height, data-react-key
+      <TableRow data-react-key={props['data-react-key']} selected={selected}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             {/*todo margin*/}
