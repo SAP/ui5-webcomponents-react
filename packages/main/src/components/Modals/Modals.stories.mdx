@@ -22,7 +22,7 @@ We are offering those helpers methods both as hooks and static methods:
 
 Use this hook when you are in a React context where you are allowed to use hooks.
 Calling the hook returns a memoized function, which you can execute to show the popup by passing the props and an optional container.
-__This should always be the preferred option!__
+**This should always be the preferred option!**
 
 `Modals.showXZY`
 
@@ -71,7 +71,7 @@ const { ref, close } = Modals.showDialog(props, container);
 
 | Parameter     | Description                                                                           |
 | ------------- | ------------------------------------------------------------------------------------- |
-| `props`       | All supported `Dialog` props (see table below). `open` will always be set to `true`.    |
+| `props`       | All supported `Dialog` props (see table below). `open` will always be set to `true`.  |
 | _`container`_ | Optional container where the `Dialog` should be mounted. Defaults to `document.body`. |
 
 **Return Value**
@@ -128,7 +128,7 @@ const { ref, close } = Modals.showPopover(props, container);
 
 | Parameter     | Description                                                                            |
 | ------------- | -------------------------------------------------------------------------------------- |
-| `props`       | All supported `Popover` props (see table below).`open` will always be set to `true`.    |
+| `props`       | All supported `Popover` props (see table below).`open` will always be set to `true`.   |
 | _`container`_ | Optional container where the `Popover` should be mounted. Defaults to `document.body`. |
 
 **Return Value**
@@ -185,7 +185,7 @@ const { ref, close } = Modals.showResponsivePopover(props, container);
 
 | Parameter     | Description                                                                                      |
 | ------------- | ------------------------------------------------------------------------------------------------ |
-| `props`       | All supported `ResponsivePopover` props (see table below). `open` will always be set to `true`.    |
+| `props`       | All supported `ResponsivePopover` props (see table below). `open` will always be set to `true`.  |
 | _`container`_ | Optional container where the `ResponsivePopover` should be mounted. Defaults to `document.body`. |
 
 **Return Value**
@@ -240,7 +240,7 @@ const { ref, close } = Modals.showMessageBox(props, container);
 
 | Parameter     | Description                                                                               |
 | ------------- | ----------------------------------------------------------------------------------------- |
-| `props`       | All supported `MessageBox` props (see table below). `open` will always be set to `true`.    |
+| `props`       | All supported `MessageBox` props (see table below). `open` will always be set to `true`.  |
 | _`container`_ | Optional container where the `MessageBox` should be mounted. Defaults to `document.body`. |
 
 **Return Value**
