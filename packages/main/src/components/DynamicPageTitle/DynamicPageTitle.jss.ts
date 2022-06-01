@@ -52,7 +52,6 @@ export const DynamicPageTitleStyles = {
       fontFamily: ThemingParameters.sapObjectHeader_Title_FontFamily,
       color: ThemingParameters.sapObjectHeader_Title_TextColor,
       fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,
-      paddingTop: '0.3125rem',
       overflowWrap: 'break-word',
       hyphens: 'auto'
     }
