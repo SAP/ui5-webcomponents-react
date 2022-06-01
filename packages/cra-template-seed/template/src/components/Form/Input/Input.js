@@ -13,7 +13,7 @@ const Input = ({ field, form: { touched, errors }, labelText, style, ...props })
     width: '100%',
   };
 
-  const { onChange, ...formikProps } = field;
+  const { onChange, onBlur, ...formikProps } = field;
 
   return (
     <FieldBase labelText={labelText} required={props.required} for={props.for} showColon={props.showColon}>
@@ -25,6 +25,7 @@ const Input = ({ field, form: { touched, errors }, labelText, style, ...props })
         {...props}
         {...formikProps}
         onInput={onChange}
+        onChange={onBlur}
       />
     </FieldBase>
   );
