@@ -55,13 +55,17 @@ import { Dialog } from './index';
               setDialogOpen(false);
             }}
             footer={
-              <Button
-                onClick={() => {
-                  setDialogOpen(false);
-                }}
-              >
-                Close
-              </Button>
+              <Bar
+                endContent={
+                  <Button
+                    onClick={() => {
+                      setDialogOpen(false);
+                    }}
+                  >
+                    Close
+                  </Button>
+                }
+              />
             }
           />
         </>

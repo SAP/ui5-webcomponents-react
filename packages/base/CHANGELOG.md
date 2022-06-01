@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.24.0...v0.25.0) (2022-06-01)
+
+
+### Features
+
+* update [@ui5/webcomponents to 1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) ([#2997](https://github.com/SAP/ui5-webcomponents-react/issues/2997)) ([25a0d2f](https://github.com/SAP/ui5-webcomponents-react/commit/25a0d2f36fe3e194c1435a1a906247116c14ffba))
+
+
+
+
+
+# [0.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.2...v0.24.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* **DynamicPageTitle:** reduce title font-size for small devices ([#2940](https://github.com/SAP/ui5-webcomponents-react/issues/2940)) ([cddea31](https://github.com/SAP/ui5-webcomponents-react/commit/cddea3178fcde28d654b2613d8852fe3d4170a25))
+
+
+### chore
+
+* remove deprecated `tooltip`, `useConsolidatedRef` and `StyleClassHelper` ([#2909](https://github.com/SAP/ui5-webcomponents-react/issues/2909)) ([57eacda](https://github.com/SAP/ui5-webcomponents-react/commit/57eacda9b108337d7520677b963dc3fcfb78d450))
+
+
+### BREAKING CHANGES
+
+* The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`)
+* The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
+* The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement  your own `className` helper.
+
+
+
+
+
 ## [0.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.1...v0.23.2) (2022-05-03)
 
 

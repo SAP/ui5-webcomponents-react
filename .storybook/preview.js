@@ -47,7 +47,7 @@ export const argTypes = {
 const ThemeProviderDecorator = makeDecorator({
   name: 'ThemeProvider',
   parameterName: 'ThemeProvider',
-  wrapper: (getStory, context) => {
+  wrapper: (Story, context) => {
     const { theme, contentDensity, direction } = context.globals;
 
     useEffect(() => {
@@ -67,7 +67,11 @@ const ThemeProviderDecorator = makeDecorator({
       setTheme(theme);
     }, [theme]);
 
-    return <ThemeProvider>{getStory(context)}</ThemeProvider>;
+    return (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    );
   }
 });
 

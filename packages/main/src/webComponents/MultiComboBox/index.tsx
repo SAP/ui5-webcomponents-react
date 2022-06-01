@@ -8,6 +8,14 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface MultiComboBoxAttributes {
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines if the user input will be prevented, if no matching item has been found
    */
   allowCustomValues?: boolean;
@@ -111,7 +119,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
-  ['filter', 'placeholder', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
   ['allowCustomValues', 'disabled', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']

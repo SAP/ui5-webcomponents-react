@@ -8,7 +8,7 @@ const TextArea = ({ field, form: { touched, errors }, labelText, rows, style, ..
   const errorMsg = touched[field.name] && errors[field.name];
   const errorState = errorMsg ? ValueState.Error : ValueState.None;
 
-  const { onChange, ...formikProps } = field;
+  const { onChange, onBlur, ...formikProps } = field;
 
   return (
     <FieldBase labelText={labelText} required={props.required} for={props.for} showColon={props.showColon}>
@@ -21,6 +21,7 @@ const TextArea = ({ field, form: { touched, errors }, labelText, rows, style, ..
         {...props}
         {...formikProps}
         onInput={onChange}
+        onChange={onBlur}
       />
     </FieldBase>
   );
