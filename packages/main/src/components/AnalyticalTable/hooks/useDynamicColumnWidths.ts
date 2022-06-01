@@ -10,14 +10,17 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns } }) => [
-  ...deps,
-  state.tableClientWidth,
-  state.hiddenColumns.length,
-  visibleColumns?.length,
-  webComponentsReactProperties.scaleWidthMode,
-  webComponentsReactProperties.loading
-];
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data } }) => {
+  const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
+  return [
+    ...deps,
+    state.tableClientWidth,
+    state.hiddenColumns.length,
+    visibleColumns?.length,
+    webComponentsReactProperties.scaleWidthMode,
+    isLoadingPlaceholder
+  ];
+};
 
 const columns = (columns, { instance }) => {
   if (!instance.state || !instance.rows) {
