@@ -20,13 +20,17 @@ interface IconAttributes {
   interactive?: boolean;
   /**
    * Defines the unique identifier (icon name) of the component.
-   * To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * To browse all available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">SAP Icons</ui5-link>, <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT" class="api-table-content-cell-link">SAP Fiori Tools</ui5-link> and <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">SAP Business Suite</ui5-link> collections.
    * Example:
    * `name='add'`, `name='delete'`, `name='employee'`.
    *
    * **Note:** To use the SAP Fiori Tools icons, you need to set the `tnt` prefix in front of the icon's name.
    * Example:
    * `name='tnt/antenna'`, `name='tnt/actor'`, `name='tnt/api'`.
+   *
+   * **Note:** To use the SAP Business Suite icons, you need to set the `business-suite` prefix in front of the icon's name.
+   * Example:
+   * `name='business-suite/3d'`, `name='business-suite/1x2-grid-layout'`, `name='business-suite/4x4-grid-layout'`.
    */
   name?: string;
   /**
@@ -40,13 +44,8 @@ export interface IconDomRef extends IconAttributes, Ui5DomRef {}
 export interface IconPropTypes extends IconAttributes, CommonProps {}
 
 /**
- * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element; or as a visually appealing clickable area in the form of an icon button.
- *
- * A large set of built-in icons is available and they can be used by setting the `name` property on the `Icon`. But before using an icon, you need to import the desired icon.
- * For the standard icon collection, you have to import an icon from the `@ui5/webcomponents-icons` package:
- * `import "@ui5/webcomponents-icons/dist/employee.js";`
- * For the SAP Fiori Tools icon collection (supported since 1.0.0-rc.10), you have to import an icon from the `@ui5/webcomponents-icons-tnt` package:
- * `import "@ui5/webcomponents-icons-tnt/dist/antenna.js";`
+ * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element,
+ * or as an interactive element that can be focused and clicked.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</ui5-link>
  */

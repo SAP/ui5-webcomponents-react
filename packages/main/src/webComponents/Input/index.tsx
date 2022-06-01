@@ -23,6 +23,8 @@ interface InputAttributes {
   disabled?: boolean;
   /**
    * Sets the maximum number of characters available in the input field.
+   *
+   * **Note:** This property is not compatible with the Input type InputType.Number. If the Input type is set to Number, the maxlength value is ignored.
    */
   maxlength?: number;
   /**
@@ -33,6 +35,10 @@ interface InputAttributes {
    * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
+  /**
+   * Defines whether the value will be autcompleted to match an item
+   */
+  noTypeahead?: boolean;
   /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
@@ -177,7 +183,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
 const Input = withWebComponent<InputPropTypes, InputDomRef>(
   'ui5-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['disabled', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
+  ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );

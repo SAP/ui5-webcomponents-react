@@ -100,7 +100,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when the `Close` button of any item is clicked
    *
-   * **Note:** This event is applicable to `NotificationListItem` items only, not to be confused with `onItemDelete`.
+   * **Note:** This event is only applicable to list items that can be closed (such as notification list items), not to be confused with `onItemDelete`.
    */
   onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**
@@ -112,7 +112,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
-   * **Note:** This event is applicable to `NotificationListItemBase` items only.
+   * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    */
   onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
   /**

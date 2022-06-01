@@ -10,6 +10,10 @@ interface SliderAttributes {
    */
   value?: number;
   /**
+   * Defines the accessible aria name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines whether the slider is in disabled state.
    */
   disabled?: boolean;
@@ -65,7 +69,7 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
  */
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
-  ['value', 'labelInterval', 'max', 'min', 'step'],
+  ['value', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input']
