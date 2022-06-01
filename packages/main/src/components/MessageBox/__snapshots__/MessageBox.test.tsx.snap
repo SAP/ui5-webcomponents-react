@@ -14,6 +14,8 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -71,6 +73,8 @@ exports[`MessageBox Confirm 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -127,6 +131,8 @@ exports[`MessageBox Custom Action Text 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -184,6 +190,8 @@ exports[`MessageBox Custom Button 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -273,6 +281,8 @@ exports[`MessageBox Error 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="message-error"
         ui5-icon=""
       />
@@ -322,6 +332,8 @@ exports[`MessageBox Highlight 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="hint"
         ui5-icon=""
       />
@@ -371,6 +383,8 @@ exports[`MessageBox Information 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="message-information"
         ui5-icon=""
       />
@@ -420,6 +434,8 @@ exports[`MessageBox No Title 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -476,6 +492,8 @@ exports[`MessageBox Not open 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="message-success"
         ui5-icon=""
       />
@@ -525,6 +543,8 @@ exports[`MessageBox Show 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="question-mark"
         ui5-icon=""
       />
@@ -582,6 +602,8 @@ exports[`MessageBox Success 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="message-success"
         ui5-icon=""
       />
@@ -680,6 +702,8 @@ exports[`MessageBox Warning 1`] = `
       slot="header"
     >
       <ui5-icon
+        accessible-role="presentation"
+        aria-hidden="true"
         name="message-warning"
         ui5-icon=""
       />
