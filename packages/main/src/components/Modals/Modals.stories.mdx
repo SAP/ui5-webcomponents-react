@@ -2,7 +2,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { MessageBoxTypes } from '../../enums';
-import { Button, Dialog, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
+import { Bar, Button, Dialog, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
 import { MessageBox } from '../MessageBox';
 import { Modals } from './index';
 
@@ -43,7 +43,7 @@ You can pass the props and an optional container directly.
             const { close } = showDialog({
               headerText: 'Dialog Title',
               children: "I'm a Dialog!",
-              footer: <Button onClick={() => close()}>Close</Button>
+              footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
             });
           }}
         >

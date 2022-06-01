@@ -1,4 +1,7 @@
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import '@ui5/webcomponents-icons/dist/activate.js';
 import {
   Bar,
   Button,
@@ -7,17 +10,14 @@ import {
   FlexBoxAlignItems,
   Link,
   MessageItem,
-  MessageView,
+  ResponsivePopover,
   Text,
   Title,
   TitleLevel,
-  ResponsivePopover,
   ValueState
 } from '@ui5/webcomponents-react';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import '@ui5/webcomponents-icons/dist/activate.js';
 import { useRef, useState } from 'react';
+import { MessageView } from './index';
 
 <Meta
   title="User Feedback / MessageView"
@@ -95,7 +95,7 @@ import { useRef, useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTable story="^" />
 
 <br />
 
@@ -142,6 +142,7 @@ to get back to the list view.
           <Dialog
             ref={dialogRef}
             style={{ width: '400px' }}
+            className="popupNoContentPadding"
             header={
               <Bar
                 startContent={
@@ -161,13 +162,17 @@ to get back to the list view.
               />
             }
             footer={
-              <Button
-                onClick={() => {
-                  dialogRef.current.close();
-                }}
-              >
-                Close
-              </Button>
+              <Bar
+                endContent={
+                  <Button
+                    onClick={() => {
+                      dialogRef.current?.close();
+                    }}
+                  >
+                    Close
+                  </Button>
+                }
+              />
             }
           >
             <MessageView
