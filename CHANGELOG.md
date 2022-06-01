@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.24.0...v0.25.0) (2022-06-01)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't reset column widths on data load if data already exists ([#3012](https://github.com/SAP/ui5-webcomponents-react/issues/3012)) ([1b0331d](https://github.com/SAP/ui5-webcomponents-react/commit/1b0331d1c2553414d70f6ab3d22c7fd8b3ca1c77))
+* **cra-template-seed:** improve formik bindings ([#3010](https://github.com/SAP/ui5-webcomponents-react/issues/3010)) ([a62556d](https://github.com/SAP/ui5-webcomponents-react/commit/a62556df6bc27d21dcf9c2d26bba631ac0a77a79)), closes [#2911](https://github.com/SAP/ui5-webcomponents-react/issues/2911)
+* **DynamicPageTitle:** remove unnecessary padding on heading ([#3013](https://github.com/SAP/ui5-webcomponents-react/issues/3013)) ([cffcc2e](https://github.com/SAP/ui5-webcomponents-react/commit/cffcc2e7b030e0f3288db456130c15e89979acdf))
+* **MessageBox:** remove default header icons from a11y tree ([#3016](https://github.com/SAP/ui5-webcomponents-react/issues/3016)) ([73aed44](https://github.com/SAP/ui5-webcomponents-react/commit/73aed44f205b4970c7a443a3c9ca0d465f43ed87))
+
+
+### Features
+
+* update [@ui5/webcomponents to 1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) ([#2997](https://github.com/SAP/ui5-webcomponents-react/issues/2997)) ([25a0d2f](https://github.com/SAP/ui5-webcomponents-react/commit/25a0d2f36fe3e194c1435a1a906247116c14ffba))
+
+
+
+
+
 # [0.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.23.2...v0.24.0) (2022-05-24)
 
 
