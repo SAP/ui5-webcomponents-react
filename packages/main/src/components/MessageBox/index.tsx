@@ -33,7 +33,7 @@ import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
-import { Icon } from '../../webComponents/Icon';
+import { Icon, IconPropTypes } from '../../webComponents/Icon';
 import { Title } from '../../webComponents/Title';
 import { Text } from '../Text';
 import styles from './MessageBox.jss';
@@ -107,19 +107,20 @@ const createUniqueIds = (internalActions) => {
 
 const getIcon = (icon, type) => {
   if (isValidElement(icon)) return icon;
+  const iconProps = { 'aria-hidden': 'true', accessibleRole: 'presentation' } as IconPropTypes;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return <Icon name="question-mark" />;
+      return <Icon name="question-mark" {...iconProps} />;
     case MessageBoxTypes.Error:
-      return <Icon name="message-error" />;
+      return <Icon name="message-error" {...iconProps} />;
     case MessageBoxTypes.Information:
-      return <Icon name="message-information" />;
+      return <Icon name="message-information" {...iconProps} />;
     case MessageBoxTypes.Success:
-      return <Icon name="message-success" />;
+      return <Icon name="message-success" {...iconProps} />;
     case MessageBoxTypes.Warning:
-      return <Icon name="message-warning" />;
+      return <Icon name="message-warning" {...iconProps} />;
     case MessageBoxTypes.Highlight:
-      return <Icon name="hint" />;
+      return <Icon name="hint" {...iconProps} />;
     default:
       return null;
   }
