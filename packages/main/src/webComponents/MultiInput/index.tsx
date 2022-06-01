@@ -27,6 +27,8 @@ interface MultiInputAttributes {
   disabled?: boolean;
   /**
    * Sets the maximum number of characters available in the input field.
+   *
+   * **Note:** This property is not compatible with the Input type InputType.Number. If the Input type is set to Number, the maxlength value is ignored.
    */
   maxlength?: number;
   /**
@@ -37,6 +39,10 @@ interface MultiInputAttributes {
    * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
+  /**
+   * Defines whether the value will be autcompleted to match an item
+   */
+  noTypeahead?: boolean;
   /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
@@ -197,7 +203,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['showValueHelpIcon', 'disabled', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
+  ['showValueHelpIcon', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
   ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
 );

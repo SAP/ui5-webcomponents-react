@@ -7,11 +7,11 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface SwitchAttributes {
   /**
-   * Sets the accessible aria name of the component.
+   * Sets the accessible aria name of the component. **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an `accessibleName`. Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
    */
   accessibleName?: string;
   /**
-   * Receives id(or many ids) of the elements that label the component.
+   * Receives id(or many ids) of the elements that label the component. **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an `accessibleName`. Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
    */
   accessibleNameRef?: string;
   /**
