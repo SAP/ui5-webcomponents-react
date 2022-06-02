@@ -66,11 +66,32 @@ addCustomCSSWithScoping(
  `
 );
 
+//todo active is not implemented
+const getActiveFilters = (activeFilterAttribute, filter) => {
+  switch (activeFilterAttribute) {
+    case 'all':
+      return true;
+    case 'visible':
+      return filter.props?.visibleInFilterBar;
+    case 'active':
+      //todo
+      return true;
+    case 'visibleAndActive':
+      //todo
+      return true;
+    case 'mandatory':
+      return filter.props?.required;
+    default:
+      return true;
+  }
+};
+
 const compareObjects = (firstObj, secondObj) =>
   Object.keys(firstObj).find((first) =>
     Object.keys(secondObj).every((second) => firstObj[second] !== secondObj[first])
   );
-
+// todo "active" implementation
+// todo required implementation
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 export const FilterDialogV2 = (props) => {
   const {
@@ -103,6 +124,8 @@ export const FilterDialogV2 = (props) => {
   const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
   const [isListView, setIsListView] = useState(true);
+  const [selectedFilters, setSelectedFilters] = useState(null);
+  const [filteredAttribute, setFilteredAttribute] = useState('all');
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -140,6 +163,7 @@ export const FilterDialogV2 = (props) => {
   };
 
   const handleClose = (e) => {
+    setSelectedFilters(null);
     stopPropagation(e);
     if (!showGoButton) {
       handleSave(e);
@@ -190,7 +214,8 @@ export const FilterDialogV2 = (props) => {
         return (
           !!item?.props &&
           item.props?.visible &&
-          (item.props?.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0)
+          (item.props?.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0) &&
+          getActiveFilters(filteredAttribute, item)
         );
       })
       .map((child) => {
@@ -207,9 +232,10 @@ export const FilterDialogV2 = (props) => {
           }
         >(child, {
           'data-with-values': showValues,
-          // todo needed?
           'data-selected':
-            child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
+            selectedFilters !== null
+              ? !!selectedFilters[child.key]
+              : child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
           // todo key?
           'data-react-key': child.key,
           children: {
@@ -229,8 +255,11 @@ export const FilterDialogV2 = (props) => {
       });
   };
 
-  //todo simplify
-  // todo live update inside the dialog (list/group view), don't reset on view change
+  const handleAttributeFilterChange = (e) => {
+    setFilteredAttribute(e.detail.selectedOption.dataset.id);
+  };
+
+  //todo can be simplified?
   const handleCheckBoxChange = (e) => {
     const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
       (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
@@ -240,6 +269,7 @@ export const FilterDialogV2 = (props) => {
       (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
       {}
     );
+    setSelectedFilters({ ...prevRowsByKey, ...rowsByKey });
 
     const changedRowKey =
       e.detail.previouslySelectedRows > e.detail.selectedRows
@@ -395,16 +425,30 @@ export const FilterDialogV2 = (props) => {
       >
         {/*todo a11y maybe use header tags here*/}
         <Toolbar style={{ paddingBottom: '0.25rem' }} className={classes.subheader}>
-          {/*// todo i18n, cb, children*/}
-          <Select>
-            <Option selected>All</Option>
+          {/*// todo i18n, a11y*/}
+          <Select onChange={handleAttributeFilterChange} title="Show Fields by Attribute">
+            <Option selected={filteredAttribute === 'all'} data-id="all">
+              All
+            </Option>
+            <Option selected={filteredAttribute === 'visible'} data-id="visible">
+              Visible
+            </Option>
+            <Option selected={filteredAttribute === 'active'} data-id="active">
+              Active
+            </Option>
+            <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
+              Visible and Active
+            </Option>
+            <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
+              Mandatory
+            </Option>
           </Select>
           <ToolbarSpacer />
           <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
             {showValues ? 'Hide Values' : 'Show Values'}
           </Button>
           <SegmentedButton onSelectionChange={handleViewChange}>
-            {/*todo a11y*/}
+            {/*todo a11y i18n*/}
             <SegmentedButtonItem icon="list" data-id="list" pressed={isListView} />
             <SegmentedButtonItem icon="group-2" data-id="group" pressed={!isListView} />
           </SegmentedButton>

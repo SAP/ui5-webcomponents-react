@@ -85,7 +85,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const inFB = props['data-in-fb'];
   const withValues = props['data-with-values'];
   const selected = props['data-selected'];
-  console.log(selected);
+
   const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
 
   const isRtl = useIsRTL(filterGroupItemRef);
@@ -104,13 +104,21 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             {/*todo margin*/}
-            <Text style={{ marginBottom: '0.25rem' }}>{label}</Text>
+            <Label
+              style={{ marginBottom: '0.25rem', color: ThemingParameters.sapTextColor }}
+              title={labelTooltip ?? label}
+              required={required}
+            >
+              {label}
+            </Label>
             {withValues && children}
           </FlexBox>
         </TableCell>
         {!withValues && (
           //todo a11y
           <TableCell style={{ width: '25%' }}>
+            {/*todo: use icon when wc fixed anti aliasing issue*/}
+            {/*<Icon name="circle-task-2" style={{ transform: 'scale(-50%)' }} />*/}
             <div
               style={{
                 flexGrow: 1,
@@ -129,41 +137,6 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     );
   }
 
-  if (!inFB) {
-    return (
-      /*todo rtl, somehow only active :active effect if really clicked on li (try :focus-within)*/
-      <CustomListItem
-        style={{ paddingLeft: '0.5rem', padding: '0.25rem 0 0.25rem 0.5rem' }}
-        selected={typeof selected === 'boolean' ? selected : required || visibleInFilterBar}
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ width: '100%' }} wrap={FlexBoxWrap.NoWrap}>
-          <FlexBox style={{ flexBasis: '80%' }} direction={FlexBoxDirection.Column}>
-            <Text>{label}</Text>
-            {withValues && children}
-          </FlexBox>
-          {/*todo: use icon when wc fixed anti aliasing issue*/}
-          {/*<Icon name="circle-task-2" style={{ transform: 'scale(-50%)' }} />*/}
-          {!withValues && (
-            <div
-              style={{
-                flexGrow: 1,
-                textAlign: 'center',
-                color: ThemingParameters.sapNeutralColor,
-                fontSize: '24px',
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale'
-              }}
-            >
-              •
-            </div>
-          )}
-        </FlexBox>
-      </CustomListItem>
-    );
-  }
   return (
     <div ref={componentRef} slot={slot} {...rest} className={styleClasses} style={inFB ? inlineStyle : emptyObject}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
