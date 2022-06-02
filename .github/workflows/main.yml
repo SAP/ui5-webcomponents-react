@@ -16,13 +16,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.2.0
+      - uses: actions/setup-node@v3.2.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
 
       - uses: preactjs/compressed-size-action@2.5.0
         with:
@@ -30,31 +28,6 @@ jobs:
           pattern: 'packages/**/dist/**/*.js'
           exclude: 'packages/**/src/dist/**'
           compression: 'gzip'
-
-  deploy-next-docs:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.2.0
-      with:
-        node-version-file: '.nvmrc'
-
-    - name: Install and Build
-      run: |
-        yarn install
-        yarn build:storybook
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: .out # The folder the action should deploy.
-        target-folder: master
-        clean: true
 
   test-and-build:
     name: 'Install, Test & Build'
@@ -69,10 +42,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3.2.0
+      - uses: actions/setup-node@v3.2.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
       - name: install dependencies
         run: yarn install
       - name: run tests
@@ -86,9 +59,29 @@ jobs:
       - name: build project
         run: yarn build
 
-  reuse-compliance:
+  deploy-next-docs:
+    needs: ['test-and-build']
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-      - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v1.1
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install and Build
+        run: |
+          yarn install
+          yarn build:storybook
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: .out # The folder the action should deploy.
+          target-folder: master
+          clean: true
