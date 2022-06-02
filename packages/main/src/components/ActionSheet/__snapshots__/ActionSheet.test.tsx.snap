@@ -5,6 +5,7 @@ exports[`ActionSheet Render without Crashing 1`] = `
   Object {}
   <div />
   <ui5-responsive-popover
+    accessible-name="Available Actions"
     class="ActionSheet-actionSheet myCustomClass"
     data-actionsheet="true"
     horizontal-align="Center"
@@ -13,40 +14,57 @@ exports[`ActionSheet Render without Crashing 1`] = `
     vertical-align="Center"
   >
     <div
-      aria-label="Available Actions"
       data-component-name="ActionSheetMobileContent"
       role="application"
     >
       <ui5-button
-        aria-label="1 of 3 Accept"
+        aria-describedby="__button:r0:-actionSheetHiddenText"
         data-action-btn-index="0"
         design="Transparent"
-        role="button"
         tabindex="0"
         ui5-button=""
       >
         Accept
       </ui5-button>
+      <span
+        aria-hidden="true"
+        class="ActionSheet-hiddenText"
+        id="__button:r0:-actionSheetHiddenText"
+      >
+        1 of 3
+      </span>
       <ui5-button
-        aria-label="2 of 3 Reject"
+        aria-describedby="__button:r1:-actionSheetHiddenText"
         data-action-btn-index="1"
         design="Transparent"
-        role="button"
         tabindex="-1"
         ui5-button=""
       >
         Reject
       </ui5-button>
+      <span
+        aria-hidden="true"
+        class="ActionSheet-hiddenText"
+        id="__button:r1:-actionSheetHiddenText"
+      >
+        2 of 3
+      </span>
       <ui5-button
-        aria-label="3 of 3 This is my super long text!"
+        aria-describedby="__button:r2:-actionSheetHiddenText"
         data-action-btn-index="2"
         design="Transparent"
-        role="button"
         tabindex="-1"
         ui5-button=""
       >
         This is my super long text!
       </ui5-button>
+      <span
+        aria-hidden="true"
+        class="ActionSheet-hiddenText"
+        id="__button:r2:-actionSheetHiddenText"
+      >
+        3 of 3
+      </span>
     </div>
   </ui5-responsive-popover>
 </body>
@@ -74,6 +92,7 @@ exports[`ActionSheet does not crash with other component 1`] = `
   }
   <div />
   <ui5-responsive-popover
+    accessible-name="Available Actions"
     class="ActionSheet-actionSheet"
     data-actionsheet="true"
     horizontal-align="Center"
@@ -82,20 +101,25 @@ exports[`ActionSheet does not crash with other component 1`] = `
     vertical-align="Center"
   >
     <div
-      aria-label="Available Actions"
       data-component-name="ActionSheetMobileContent"
       role="application"
     >
-      <ui5-label
-        aria-label="1 of 1 I should not crash"
+      <ui5-button
+        aria-describedby="__button:r9:-actionSheetHiddenText"
         data-action-btn-index="0"
         design="Transparent"
-        role="button"
         tabindex="0"
-        ui5-label=""
+        ui5-button=""
       >
         I should not crash
-      </ui5-label>
+      </ui5-button>
+      <span
+        aria-hidden="true"
+        class="ActionSheet-hiddenText"
+        id="__button:r9:-actionSheetHiddenText"
+      >
+        1 of 1
+      </span>
     </div>
   </ui5-responsive-popover>
 </body>

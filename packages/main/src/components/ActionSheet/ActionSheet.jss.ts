@@ -36,6 +36,9 @@ const styles = {
     '& > *': {
       margin: '0.25rem 0'
     }
+  },
+  hiddenText: {
+    display: 'none !important'
   }
 };
 
