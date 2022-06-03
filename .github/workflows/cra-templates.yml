@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v3.2.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
       - name: create new project
         run: |
           yarn create react-app cra-template --template file:./packages/cra-template
@@ -51,6 +52,7 @@ jobs:
         uses: actions/setup-node@v3.2.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
       - name: create new project
         run: |
           yarn create react-app cra-template-seed --template file:./packages/cra-template-seed

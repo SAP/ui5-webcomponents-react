@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v3.2.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
 
       - name: Install, test and build
         run: |
@@ -47,23 +48,48 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: Deploy Release Docs
-        run: yarn deploy:storybook
-        env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  deploy-docs:
+    needs: [ 'build-and-release' ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-      - name: Build Next Docs
-        run: yarn build:storybook
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
 
-      - name: Deploy Next Docs
+      - name: Build Storybook
+        run: |
+          yarn install --frozen-lockfile
+          yarn build:storybook
+
+      - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
-          target-folder: master
           clean: true
+          clean-exclude: 'main'
 
-      - uses: actions/github-script@v6
+  release-comments:
+    needs: [ 'build-and-release' ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Add release comments to issues and PRs
+        uses: actions/github-script@v6
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:

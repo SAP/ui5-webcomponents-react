@@ -592,7 +592,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 * All UI5 Web Components Wrappers have been updated to `@ui5/webcomponents@1.0.0-rc.12`, please check the [release notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.12) as well.
-* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#replaced-component-page) for more details.
+* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page#replaced-component-page) for more details.
 * **Table**: prop `hasMore` has been removed, use `growing` instead
 * **Table**: prop `loadMoreText` has been renamed to `moreText `
 * **Table**: prop `loadMoreSubtext` has been renamed to `moreSubtext`
@@ -1031,7 +1031,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
+* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/main/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/main//CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
 
 
 ### BREAKING CHANGES
@@ -2422,7 +2422,7 @@ use the property allowCustomValues, note built in validation is enabled by defau
 
 
 
-## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
+## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
 
@@ -2430,12 +2430,12 @@ use the property allowCustomValues, note built in validation is enabled by defau
 
 
 
-## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
+## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
 
 
 ### Code Refactoring
 
-* **base:** Merge `styles` and `utils` into `base` ([#38](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/issues/38)) ([9309505](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/commit/9309505)), closes [#34](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/base/issues/34)
+* **base:** Merge `styles` and `utils` into `base` ([#38](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base/issues/38)) ([9309505](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base/commit/9309505)), closes [#34](https://github.com/SAP/ui5-webcomponents-react/tree/main//packages/base/issues/34)
 
 
 ### BREAKING CHANGES
