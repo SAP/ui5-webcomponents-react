@@ -1064,7 +1064,7 @@ Co-authored-by: Harbarth, Lukas <lukas.harbarth@sap.com>
 ### BREAKING CHANGES
 
 * All UI5 Web Components Wrappers have been updated to `@ui5/webcomponents@1.0.0-rc.12`, please check the [release notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.12) as well.
-* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#replaced-component-page) for more details.
+* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page#replaced-component-page) for more details.
 * **Table**: prop `hasMore` has been removed, use `growing` instead
 * **Table**: prop `loadMoreText` has been renamed to `moreText `
 * **Table**: prop `loadMoreSubtext` has been renamed to `moreSubtext`
@@ -1072,7 +1072,7 @@ Co-authored-by: Harbarth, Lukas <lukas.harbarth@sap.com>
 * **Calendar**: prop `selection` has been renamed to `selectionMode`
 * **Calendar**: prop `timestamp ` has been removed
 * **Slider**: unused prop `children` has been removed
-* **ThemeProvider:** The `ThemeProvider` context is now simplified to provide only an object with `ThemingParameters`, all other properties have been removed. For details on the migration check out our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#themeprovider-context-changes).
+* **ThemeProvider:** The `ThemeProvider` context is now simplified to provide only an object with `ThemingParameters`, all other properties have been removed. For details on the migration check out our [migration guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page#themeprovider-context-changes).
 
 
 
@@ -1988,7 +1988,7 @@ Co-authored-by: Harbarth, Lukas <lukas.harbarth@sap.com>
 
 * **AnalyticalTable:** add infiniteScroll and keyboard navigation for cells ([#397](https://github.com/SAP/ui5-webcomponents-react/issues/397)) ([c6b64ba](https://github.com/SAP/ui5-webcomponents-react/commit/c6b64ba2256f7e238d48e1dd72f244c24c96e396))
 * **AnalyticalTable:** add possibility to clear sorting in column header ([#399](https://github.com/SAP/ui5-webcomponents-react/issues/399)) ([137da3f](https://github.com/SAP/ui5-webcomponents-react/commit/137da3fea2d390595afe18c13858166f2adc5461))
-* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/master/CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
+* **Framework:** update to ui5-webcomponents-rc.6 ([#392](https://github.com/SAP/ui5-webcomponents-react/issues/392)) ([84a3f90](https://github.com/SAP/ui5-webcomponents-react/commit/84a3f905f48e5ef12526a026b68a3c8faf4b5fe0)), closes [/github.com/SAP/ui5-webcomponents/blob/main/CHANGELOG.md#100-rc6-2020-03-27](https://github.com//github.com/SAP/ui5-webcomponents/blob/main/CHANGELOG.md/issues/100-rc6-2020-03-27) [#349](https://github.com/SAP/ui5-webcomponents-react/issues/349)
 * **ThemeProvider:** add global css classes ([#400](https://github.com/SAP/ui5-webcomponents-react/issues/400)) ([d0c811d](https://github.com/SAP/ui5-webcomponents-react/commit/d0c811d981dce2684776de19e90b3c31fec84636))
 
 
@@ -4274,10 +4274,10 @@ Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/
 
 
 
-## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
+## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
 
 
-* * chore(Web Components): Updated Web Components to v0.13.1 (#39) ([e7f6164](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/commit/e7f6164)), closes [#39](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/issues/39) [#36](https://github.com/SAP/ui5-webcomponents-react/issues/36)
+* * chore(Web Components): Updated Web Components to v0.13.1 (#39) ([e7f6164](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/commit/e7f6164)), closes [#39](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/issues/39) [#36](https://github.com/SAP/ui5-webcomponents-react/issues/36)
 
 
 ### BREAKING CHANGES
@@ -4297,7 +4297,7 @@ Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-we
 
 
 
-## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
+## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
 
 
 ### Code Refactoring
@@ -4318,7 +4318,7 @@ Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-we
 
 
 
-## [0.3.2-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.2-rc.1...v0.3.2-rc.2) (2019-06-17)
+## [0.3.2-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.2-rc.1...v0.3.2-rc.2) (2019-06-17)
 
 
 ### Features
@@ -4334,7 +4334,7 @@ Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-we
 
 
 
-## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
+## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-react
 
@@ -4342,7 +4342,7 @@ Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-we
 
 
 
-## [0.3.2-rc.0](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.1-rc.2...v0.3.2-rc.0) (2019-06-14)
+## [0.3.2-rc.0](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.1-rc.2...v0.3.2-rc.0) (2019-06-14)
 
 
 ### Features
@@ -4359,7 +4359,7 @@ Please refer to the [UI5 Web Components Changelog](https://github.com/SAP/ui5-we
 
 
 
-## [0.3.1-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/main/compare/v0.3.1-rc.1...v0.3.1-rc.2) (2019-06-13)
+## [0.3.1-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/compare/v0.3.1-rc.1...v0.3.1-rc.2) (2019-06-13)
 
 
 ### Features
