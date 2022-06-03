@@ -49,6 +49,7 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
+  // todo breaking change: removed from dialog
   /**
    * Defines the search field next to the variants of the `FilterBar`.
    *
@@ -97,14 +98,17 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note:__ Clicking on the button will open the filter configuration dialog, where you can add/remove filters to the `FilterBar`.
    */
   showFilterConfiguration?: boolean;
+  //todo deprecated
   /**
    * Defines whether the "Clear" button is displayed in the filter configuration dialog.
    */
   showClearButton?: boolean;
+  // todo note that it's now "Reset"
   /**
    * Defines whether the "Restore" button is displayed in the filter configuration dialog.
    */
   showRestoreButton?: boolean;
+  // todo deprecated
   /**
    * Defines whether the "Go" button is displayed in the filter configuration dialog.
    */
@@ -238,10 +242,12 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     activeFiltersCount,
     showClearOnFB,
     showGoOnFB,
-    showGo,
+    // todo deprecated
+    // showGo,
     showFilterConfiguration,
     showRestoreOnFB,
-    showClearButton,
+    // todo deprecated
+    // showClearButton,
     showRestoreButton,
     showSearchOnFiltersDialog,
     hideToggleFiltersButton,
@@ -290,6 +296,10 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
   const filtersText = useToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
+
+  // dialog
+  const [isListView, setIsListView] = useState(true);
+  const [filteredAttribute, setFilteredAttribute] = useState('all');
 
   const isRtl = useIsRTL(filterBarRef);
   const transformRightRTL = isRtl ? 'Left' : 'Right';
@@ -449,7 +459,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       });
   };
   const handleRestoreFilters = (e, source, filterElements) => {
-    if (source === 'dialog' && showGo) {
+    if (source === 'dialog') {
+      console.log('reset');
       setDialogOpen(false);
       setDialogOpen(true);
     } else if (source === 'filterBar' && showGoOnFB) {
@@ -457,6 +468,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       setMountFilters(true);
     }
     if (onRestore) {
+      //todo breaking change: search has been removed from filter dialog
       onRestore(enrichEventWithDetails(e, { source, ...filterElements }));
     }
   };
@@ -620,22 +632,21 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           filterBarRefs={filterRefs}
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
-          onGo={onGo}
           handleRestoreFilters={handleRestoreFilters}
-          searchValue={searchRef.current?.children[0].value}
           handleSearchValueChange={setSearchValue}
-          showClearButton={showClearButton}
           showRestoreButton={showRestoreButton}
           showSearch={showSearchOnFiltersDialog}
           renderFBSearch={search}
-          handleClearFilters={onFiltersDialogClear}
           handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
-          showGoButton={showGo}
           handleDialogSearch={onFiltersDialogSearch}
           handleDialogCancel={onFiltersDialogCancel}
           portalContainer={portalContainer}
           dialogRef={dialogRef}
+          isListView={isListView}
+          setIsListView={setIsListView}
+          filteredAttribute={filteredAttribute}
+          setFilteredAttribute={setFilteredAttribute}
         >
           {safeChildren()}
         </FilterDialogV2>

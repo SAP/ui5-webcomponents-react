@@ -28,6 +28,7 @@ const variants = (
 );
 const search = <Input placeholder={'Search'} />;
 
+// todo update tests
 describe('FilterBar', () => {
   it('Render without crashing - default props', () => {
     const { asFragment } = render(

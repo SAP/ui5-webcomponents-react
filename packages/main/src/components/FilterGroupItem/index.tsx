@@ -97,6 +97,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
 
+  // todo use context instead of data attributes
   if (!inFB) {
     return (
       //todo height, data-react-key

@@ -7,24 +7,19 @@ import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-ba
 import {
   BASIC,
   CANCEL,
-  CLEAR,
   FILTERS,
-  GO,
-  RESTORE,
-  SAVE,
-  SEARCH_FOR_FILTERS,
-  SHOW_ON_FILTER_BAR
+  OK,
+  SEARCH_FOR_FILTERS
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import React, { Children, cloneElement, useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
+import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
-import { ButtonDesign } from '../../enums/ButtonDesign';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { Panel, Table, TableCell, TableColumn, TableRow } from '../../webComponents';
+import { Panel, Table, TableColumn } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog } from '../../webComponents/Dialog';
@@ -37,11 +32,10 @@ import { Select } from '../../webComponents/Select';
 import { Title } from '../../webComponents/Title';
 import { FilterGroupItem, FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
-import { Text } from '../Text';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBarDialog.jss';
-import { filterValue, renderSearchWithValue, syncRef } from './utils';
+import { filterValue, syncRef } from './utils';
 
 addCustomCSSWithScoping(
   'ui5-table',
@@ -93,28 +87,51 @@ const compareObjects = (firstObj, secondObj) =>
 // todo "active" implementation
 // todo required implementation
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
-export const FilterDialogV2 = (props) => {
+
+// todo enhance types
+interface FilterDialogPropTypes {
+  filterBarRefs: any;
+  open: boolean;
+  handleDialogClose: any;
+  children: any;
+  showRestoreButton: boolean;
+  showSearch: boolean;
+  renderFBSearch: any;
+  handleRestoreFilters: any;
+  handleDialogSave: any;
+  handleSearchValueChange: any;
+  handleSelectionChange: any;
+  handleDialogSearch: any;
+  handleDialogCancel: any;
+  portalContainer: any;
+  dialogRef: any;
+  isListView: boolean;
+  setIsListView: any;
+  filteredAttribute: string;
+  setFilteredAttribute: any;
+}
+
+export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
   const {
     filterBarRefs,
     open,
     handleDialogClose,
     children,
-    showClearButton,
     showRestoreButton,
-    showGoButton,
     showSearch,
     renderFBSearch,
-    handleClearFilters,
     handleRestoreFilters,
     handleDialogSave,
-    searchValue,
     handleSearchValueChange,
-    onGo,
     handleSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
     portalContainer,
-    dialogRef
+    dialogRef,
+    isListView,
+    setIsListView,
+    filteredAttribute,
+    setFilteredAttribute
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
@@ -123,21 +140,15 @@ export const FilterDialogV2 = (props) => {
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
-  const [isListView, setIsListView] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState(null);
-  const [filteredAttribute, setFilteredAttribute] = useState('all');
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const basicText = i18nBundle.getText(BASIC);
   const cancelText = i18nBundle.getText(CANCEL);
-  const clearText = i18nBundle.getText(CLEAR);
-  const restoreText = i18nBundle.getText(RESTORE);
-  const saveText = i18nBundle.getText(SAVE);
+  const okText = i18nBundle.getText(OK);
   const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
-  const showOnFilterBarText = i18nBundle.getText(SHOW_ON_FILTER_BAR);
   const filtersTitle = i18nBundle.getText(FILTERS);
-  const goText = i18nBundle.getText(GO);
 
   useEffect(() => {
     if (open) {
@@ -162,46 +173,33 @@ export const FilterDialogV2 = (props) => {
     }
   };
 
-  const handleClose = (e) => {
+  const handleClose = (e, isCancel = false) => {
     setSelectedFilters(null);
     stopPropagation(e);
-    if (!showGoButton) {
+    if (!isCancel) {
       handleSave(e);
       return;
     }
     handleDialogClose(e);
   };
 
-  const handleDialogGo = (e) => {
-    if (typeof onGo === 'function') {
-      handleSave(e, true);
-    }
-  };
-
   const handleCancel = (e) => {
     if (handleDialogCancel) {
       handleDialogCancel(enrichEventWithDetails(e));
     }
-    handleDialogClose(e);
+    handleDialogClose(e, true);
   };
 
   const getFilterElements = () => {
-    const search = searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`);
     return {
       filters: dialogFilterRefs.current,
-      search,
       dialogSearch: dialogSearchRef.current
     };
   };
 
   const handleRestore = (e) => {
+    setSelectedFilters(null);
     handleRestoreFilters(e, 'dialog', getFilterElements());
-  };
-
-  const handleClear = (e) => {
-    if (typeof handleClearFilters === 'function') {
-      handleClearFilters(enrichEventWithDetails(e, getFilterElements()));
-    }
   };
 
   const handleViewChange = (e) => {
@@ -234,7 +232,7 @@ export const FilterDialogV2 = (props) => {
           'data-with-values': showValues,
           'data-selected':
             selectedFilters !== null
-              ? !!selectedFilters[child.key]
+              ? !!selectedFilters?.[child.key]?.selected
               : child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
           // todo key?
           'data-react-key': child.key,
@@ -304,7 +302,11 @@ export const FilterDialogV2 = (props) => {
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
         return (
-          <Panel headerText={item === 'default' ? basicText : item} className={classes.groupPanel}>
+          <Panel
+            headerText={item === 'default' ? basicText : item}
+            className={classes.groupPanel}
+            key={`${item === 'default' ? basicText : item}${index}`}
+          >
             <Table
               className={classes.table}
               mode={TableMode.MultiSelect}
@@ -315,43 +317,6 @@ export const FilterDialogV2 = (props) => {
             </Table>
           </Panel>
         );
-        // const filters = groups[item].map((el) => {
-        //   return (
-        //     <div
-        //       data-component-name="FilterDialogSingleFilterContainer"
-        //       className={classes.singleFilter}
-        //       key={`${el.key}-container`}
-        //       ref={(node) => {
-        //         if (node) {
-        //           dialogFilters.push(node.children?.[0]?.children?.[0]?.children?.[1]);
-        //         }
-        //       }}
-        //     >
-        //       {el}
-        //       <CheckBox
-        //         role="checkbox"
-        //         checked={el.props.visibleInFilterBar || el.props.required || el.type.displayName !== 'FilterGroupItem'}
-        //         onChange={handleCheckBoxChange(el)}
-        //         disabled={el.props.required || el.type.displayName !== 'FilterGroupItem'}
-        //       />
-        //     </div>
-        //   );
-        // });
-        // return (
-        //   <div className={classes.groupContainer} key={item}>
-        //     <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
-        //       <Title
-        //         level={TitleLevel.H5}
-        //         className={index === 0 ? classes.groupTitle : ''}
-        //         title={item === 'default' ? basicText : item}
-        //       >
-        //         {item === 'default' ? basicText : item}
-        //       </Title>
-        //       {index === 0 && <Text wrapping={false}>{showOnFilterBarText}</Text>}
-        //     </FlexBox>
-        //     <div className={classes.filters}>{filters}</div>
-        //   </div>
-        // );
       });
     dialogFilterRefs.current = dialogFilters;
     return filterGroups;
@@ -375,8 +340,12 @@ export const FilterDialogV2 = (props) => {
           <Title level={TitleLevel.H4} title={filtersTitle}>
             {filtersTitle}
           </Title>
-          {/*todo i18n, cb*/}
-          <Button design={ButtonDesign.Transparent}>Reset</Button>
+          {/*todo i18n*/}
+          {showRestoreButton && (
+            <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
+              Reset
+            </Button>
+          )}
         </FlexBox>
       }
       footer={
@@ -384,28 +353,12 @@ export const FilterDialogV2 = (props) => {
           design={BarDesign.Footer}
           endContent={
             <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-              {showGoButton && (
-                <Button
-                  onClick={handleDialogGo}
-                  design={ButtonDesign.Emphasized}
-                  title={goText}
-                  data-component-name="FilterBarDialogGoBtn"
-                >
-                  {goText}
-                </Button>
-              )}
-              {showClearButton && (
-                <Button onClick={handleClear} data-component-name="FilterBarDialogClearBtn">
-                  {clearText}
-                </Button>
-              )}
-              {showRestoreButton && (
-                <Button onClick={handleRestore} data-component-name="FilterBarDialogRestoreBtn">
-                  {restoreText}
-                </Button>
-              )}
-              <Button onClick={handleSave} data-component-name="FilterBarDialogSaveBtn">
-                {saveText}
+              <Button
+                onClick={handleSave}
+                data-component-name="FilterBarDialogSaveBtn"
+                design={ButtonDesign.Emphasized}
+              >
+                {okText}
               </Button>
               <Button
                 design={ButtonDesign.Transparent}
@@ -470,7 +423,6 @@ export const FilterDialogV2 = (props) => {
         data-component-name="FilterBarDialogTable"
         hideNoData={!isListView}
         className={classes.table}
-        /*todo implement special handling for multi select in group view*/
         mode={TableMode.MultiSelect}
         onSelectionChange={handleCheckBoxChange}
         columns={
@@ -488,81 +440,6 @@ export const FilterDialogV2 = (props) => {
         {isListView && renderChildren()}
       </Table>
       {!isListView && renderGroups()}
-    </Dialog>,
-    portalContainer
-  );
-
-  //todo old
-
-  return createPortal(
-    <Dialog
-      ref={dialogRef}
-      header={
-        <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Center} className={classes.header}>
-          <Title level={TitleLevel.H4} title={filtersTitle}>
-            {filtersTitle}
-          </Title>
-          {showSearch && (
-            <Input
-              placeholder={searchForFiltersText}
-              onInput={handleSearch}
-              icon={<Icon name="search" />}
-              ref={dialogSearchRef}
-            />
-          )}
-        </FlexBox>
-      }
-      footer={
-        <Bar
-          design={BarDesign.Footer}
-          endContent={
-            <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-              {showGoButton && (
-                <Button
-                  onClick={handleDialogGo}
-                  design={ButtonDesign.Emphasized}
-                  title={goText}
-                  data-component-name="FilterBarDialogGoBtn"
-                >
-                  {goText}
-                </Button>
-              )}
-              {showClearButton && (
-                <Button onClick={handleClear} data-component-name="FilterBarDialogClearBtn">
-                  {clearText}
-                </Button>
-              )}
-              {showRestoreButton && (
-                <Button onClick={handleRestore} data-component-name="FilterBarDialogRestoreBtn">
-                  {restoreText}
-                </Button>
-              )}
-              <Button onClick={handleSave} data-component-name="FilterBarDialogSaveBtn">
-                {saveText}
-              </Button>
-              <Button
-                design={ButtonDesign.Transparent}
-                onClick={handleCancel}
-                data-component-name="FilterBarDialogCancelBtn"
-              >
-                {cancelText}
-              </Button>
-            </FlexBox>
-          }
-        />
-      }
-      onAfterClose={handleClose}
-      data-component-name="FilterBarDialog"
-    >
-      <div className={classes.dialog} data-component-name="FilterBarDialogContent">
-        {renderFBSearch && (
-          <div className={classes.fbSearch} ref={searchRef}>
-            <span />
-            {renderSearchWithValue(renderFBSearch, searchValue)}
-          </div>
-        )}
-        {renderGroups()}
-      </div>
     </Dialog>,
     portalContainer
   );
