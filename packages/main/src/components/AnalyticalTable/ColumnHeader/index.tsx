@@ -219,7 +219,13 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onKeyUp={handleHeaderCellKeyUp}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
-          <Text title={tooltip} wrapping={false} style={textStyle} className={classes.text}>
+          <Text
+            title={tooltip}
+            wrapping={false}
+            style={textStyle}
+            className={classes.text}
+            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${id}`}
+          >
             {children}
           </Text>
           <div

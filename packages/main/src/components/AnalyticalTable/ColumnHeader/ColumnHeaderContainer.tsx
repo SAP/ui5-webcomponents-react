@@ -15,7 +15,6 @@ const styles = {
     top: 0,
     zIndex: 1,
     cursor: 'col-resize',
-    willChange: 'transform',
     '&:hover, &:active': {
       backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor
     }
