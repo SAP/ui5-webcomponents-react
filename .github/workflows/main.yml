@@ -67,7 +67,6 @@ jobs:
     needs: ['test-and-build']
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -87,5 +86,5 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
-          target-folder: master
+          target-folder: main
           clean: true

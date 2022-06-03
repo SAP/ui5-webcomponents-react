@@ -518,7 +518,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### BREAKING CHANGES
 
 * All UI5 Web Components Wrappers have been updated to `@ui5/webcomponents@1.0.0-rc.12`, please check the [release notes](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.12) as well.
-* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/master/?path=/docs/migration-guide--page#replaced-component-page) for more details.
+* **Page**: Replaced custom component with `ui5-page` web component. Please check our [migration guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page#replaced-component-page) for more details.
 * **Table**: prop `hasMore` has been removed, use `growing` instead
 * **Table**: prop `loadMoreText` has been renamed to `moreText `
 * **Table**: prop `loadMoreSubtext` has been renamed to `moreSubtext`
@@ -887,7 +887,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **charts:** replace deprecated charts with new implementation. In case your imports contain a `next` path segment, please remove this segment. Example: `import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';` becomes `import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';`. For further details please take a look into our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/master/docs/MigrationGuide.md#095---charts-migration).
+* **charts:** replace deprecated charts with new implementation. In case your imports contain a `next` path segment, please remove this segment. Example: `import { BarChart } from '@ui5/webcomponents-react-charts/lib/next/BarChart';` becomes `import { BarChart } from '@ui5/webcomponents-react-charts/lib/BarChart';`. For further details please take a look into our [Migration Guide](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/MigrationGuide.md#095---charts-migration).
 
 
 
@@ -2514,7 +2514,7 @@ Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/
 
 
 
-## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
+## [0.3.2-rc.4](https://github.com/SAP/ui5-webcomponents-react/tree/main//packages/charts/compare/v0.3.2-rc.3...v0.3.2-rc.4) (2019-06-24)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
 
@@ -2522,12 +2522,12 @@ Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/
 
 
 
-## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
+## [0.3.2-rc.3](https://github.com/SAP/ui5-webcomponents-react/tree/main//packages/charts/compare/v0.3.2-rc.2...v0.3.2-rc.3) (2019-06-24)
 
 
 ### Code Refactoring
 
-* **base:** Merge `styles` and `utils` into `base` ([#38](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/issues/38)) ([9309505](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/commit/9309505)), closes [#34](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/issues/34)
+* **base:** Merge `styles` and `utils` into `base` ([#38](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/issues/38)) ([9309505](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/commit/9309505)), closes [#34](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/issues/34)
 
 
 ### BREAKING CHANGES
@@ -2543,7 +2543,7 @@ Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/
 
 
 
-## [0.3.2-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/compare/v0.3.2-rc.1...v0.3.2-rc.2) (2019-06-17)
+## [0.3.2-rc.2](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/compare/v0.3.2-rc.1...v0.3.2-rc.2) (2019-06-17)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
 
@@ -2551,7 +2551,7 @@ Please also check the [UI5 Web Components Release Notes](https://github.com/SAP/
 
 
 
-## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/charts/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
+## [0.3.2-rc.1](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/compare/v0.3.2-rc.0...v0.3.2-rc.1) (2019-06-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
 
