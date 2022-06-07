@@ -179,6 +179,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       placementType={PopoverPlacementType.Bottom}
       ref={ref}
       className={classes.popover}
+      onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
     >
