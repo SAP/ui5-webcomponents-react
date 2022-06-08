@@ -57,7 +57,11 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
   );
 
   return (
-    <FlexBox direction={FlexBoxDirection.Column} style={{ position: 'relative' }}>
+    <FlexBox
+      direction={FlexBoxDirection.Column}
+      style={{ position: 'relative' }}
+      data-component-name="AnalyticalTableVerticalScrollbarContainer"
+    >
       <div
         style={{
           height: `${internalRowHeight}px`
@@ -70,7 +74,9 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
           height: tableRef.current ? `${tableBodyHeight}px` : '0'
         }}
         onScroll={handleVerticalScrollBarScroll}
+        data-native-scrollbar={props['data-native-scrollbar']}
         className={`${GlobalStyleClasses.sapScrollBar} ${classes.scrollbar}`}
+        data-component-name="AnalyticalTableVerticalScrollbar"
       >
         <div
           style={{
