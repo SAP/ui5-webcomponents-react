@@ -14,6 +14,7 @@ interface VerticalScrollbarProps {
   handleVerticalScrollBarScroll: any;
   popInRowHeight: number;
   tableBodyHeight: number;
+  'data-native-scrollbar'?: any;
 }
 
 const styles = {
