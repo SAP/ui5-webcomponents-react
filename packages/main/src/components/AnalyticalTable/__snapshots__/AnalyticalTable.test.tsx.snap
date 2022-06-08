@@ -2212,6 +2212,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
         </div>
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          data-component-name="AnalyticalTableVerticalScrollbarContainer"
           style="position: relative;"
         >
           <div
@@ -2220,6 +2221,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
+            data-component-name="AnalyticalTableVerticalScrollbar"
             style="height: 220px;"
           >
             <div
@@ -2676,6 +2678,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         </div>
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          data-component-name="AnalyticalTableVerticalScrollbarContainer"
           style="position: relative;"
         >
           <div
@@ -2684,6 +2687,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
+            data-component-name="AnalyticalTableVerticalScrollbar"
             style="height: 220px;"
           >
             <div
@@ -8957,6 +8961,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="AnalyticalTableVerticalScrollbarContainer"
         style="position: relative;"
       >
         <div
@@ -8965,6 +8970,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
+          data-component-name="AnalyticalTableVerticalScrollbar"
           style="height: 220px;"
         >
           <div
@@ -9417,6 +9423,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="AnalyticalTableVerticalScrollbarContainer"
         style="position: relative;"
       >
         <div
@@ -9425,6 +9432,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
+          data-component-name="AnalyticalTableVerticalScrollbar"
           style="height: 220px;"
         >
           <div

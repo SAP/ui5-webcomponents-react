@@ -168,6 +168,10 @@ All globally available style classes are tracked in the `GlobalStyleClasses` enu
 | -------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `sapScrollBar` | If added to an container that supports scrolling, the scrollbar will be styled according to the Fiori guidelines. |
 
+#### Use default browser scrollbar
+
+Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent these components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
+
 ### Style your own components
 
 It's quite likely that you have to create some custom components when you are building an app.

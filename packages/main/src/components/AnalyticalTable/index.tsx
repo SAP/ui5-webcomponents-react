@@ -935,6 +935,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           data-per-page={internalVisibleRowCount}
           data-component-name="AnalyticalTableContainer"
           ref={tableRef}
+          data-native-scrollbar={props['data-native-scrollbar']}
           className={tableClasses}
         >
           <div className={classes.tableHeaderBackgroundElement} />
@@ -1037,6 +1038,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             rows={rows}
             handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
             ref={verticalScrollBarRef}
+            data-native-scrollbar={props['data-native-scrollbar']}
           />
         )}
       </FlexBox>
