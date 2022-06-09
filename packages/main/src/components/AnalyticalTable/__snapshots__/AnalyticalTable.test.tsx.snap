@@ -489,6 +489,13 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -981,6 +988,13 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -1422,6 +1436,13 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -1868,6 +1889,13 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -2234,6 +2262,13 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -2700,6 +2735,13 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -3196,6 +3238,13 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -3744,6 +3793,13 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -4229,6 +4285,13 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
         </div>
       </div>
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -4905,6 +4968,13 @@ exports[`AnalyticalTable Tree Table 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -5397,6 +5467,13 @@ exports[`AnalyticalTable custom row height 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -5778,6 +5855,13 @@ exports[`AnalyticalTable expose table instance 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -6396,6 +6480,13 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -6839,6 +6930,13 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -8160,6 +8258,13 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -8621,6 +8726,13 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -8983,6 +9095,13 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -9445,6 +9564,13 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -9885,6 +10011,13 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -10269,6 +10402,13 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -10825,6 +10965,13 @@ exports[`AnalyticalTable render subcomponents 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -11041,6 +11188,13 @@ exports[`AnalyticalTable render without data 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -11921,6 +12075,13 @@ exports[`AnalyticalTable resize vertically 1`] = `
         title="Drag to resize"
       />
     </div>
+    <span
+      aria-hidden="true"
+      class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+      id="smartScaleModeHelper-1337"
+    >
+      ""
+    </span>
   </div>
   <div
     class="VerticalResizer-resizer"
@@ -13660,6 +13821,13 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -14204,6 +14372,13 @@ exports[`AnalyticalTable with highlight row 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -14685,6 +14860,13 @@ exports[`AnalyticalTable with initial column order 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
 
@@ -15217,5 +15399,12 @@ exports[`AnalyticalTable without selection Column 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  >
+    ""
+  </span>
 </DocumentFragment>
 `;
