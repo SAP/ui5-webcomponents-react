@@ -20,9 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v3.2.0
+        uses: actions/setup-node@v3.3.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
       - name: create new project
         run: |
           yarn create react-app cra-template --template file:./packages/cra-template
@@ -48,9 +49,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v3.2.0
+        uses: actions/setup-node@v3.3.0
         with:
           node-version-file: '.nvmrc'
+          cache: 'yarn'
       - name: create new project
         run: |
           yarn create react-app cra-template-seed --template file:./packages/cra-template-seed

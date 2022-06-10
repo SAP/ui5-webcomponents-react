@@ -66,6 +66,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -106,6 +107,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -146,6 +148,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -186,6 +189,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -554,6 +558,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -594,6 +599,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -634,6 +640,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -674,6 +681,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -1042,6 +1050,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -1082,6 +1091,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -1122,6 +1132,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -1162,6 +1173,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -1471,6 +1483,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -1511,6 +1524,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -1551,6 +1565,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                     title="Friend Name"
                   >
                     Friend Name
@@ -1591,6 +1606,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                   >
                     <span>
                       Friend Age
@@ -1625,6 +1641,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_navigation_column"
                   >
                     <div
                       style="width: 6px;"
@@ -1913,6 +1930,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -2194,6 +2212,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
         </div>
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          data-component-name="AnalyticalTableVerticalScrollbarContainer"
           style="position: relative;"
         >
           <div
@@ -2202,6 +2221,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
+            data-component-name="AnalyticalTableVerticalScrollbar"
             style="height: 220px;"
           >
             <div
@@ -2276,6 +2296,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -2316,6 +2337,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -2656,6 +2678,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         </div>
         <div
           class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          data-component-name="AnalyticalTableVerticalScrollbarContainer"
           style="position: relative;"
         >
           <div
@@ -2664,6 +2687,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
           />
           <div
             class="sapScrollBar VerticalScrollbar-scrollbar"
+            data-component-name="AnalyticalTableVerticalScrollbar"
             style="height: 220px;"
           >
             <div
@@ -2749,6 +2773,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -2789,6 +2814,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -2829,6 +2855,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                     title="Friend Name"
                   >
                     Friend Name
@@ -2869,6 +2896,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                   >
                     <span>
                       Friend Age
@@ -3234,6 +3262,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_highlight_column"
                   >
                     <div
                       style="width: 6px;"
@@ -3268,6 +3297,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                   />
                   <div
                     class="TableColumnHeader-iconContainer"
@@ -3305,6 +3335,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -3345,6 +3376,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -3385,6 +3417,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                     title="Friend Name"
                   >
                     Friend Name
@@ -3425,6 +3458,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                   >
                     <span>
                       Friend Age
@@ -3772,6 +3806,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -3812,6 +3847,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                   >
                     <span>
                       Friend Age
@@ -3853,6 +3889,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                     title="Friend Name"
                   >
                     Friend Name
@@ -3893,6 +3930,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -4254,6 +4292,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 >
                   <ui5-checkbox
                     style="cursor: pointer; vertical-align: middle;"
@@ -4299,6 +4338,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -4339,6 +4379,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -4379,6 +4420,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -4419,6 +4461,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -4931,6 +4974,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -4971,6 +5015,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -5011,6 +5056,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -5051,6 +5097,7 @@ exports[`AnalyticalTable custom row height 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -5408,6 +5455,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -5448,6 +5496,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -5488,6 +5537,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -5779,6 +5829,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
@@ -5816,6 +5867,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -5856,6 +5908,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -5896,6 +5949,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -5936,6 +5990,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -6399,6 +6454,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -6439,6 +6495,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -6479,6 +6536,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -6519,6 +6577,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -6553,6 +6612,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_navigation_column"
                 >
                   <div
                     style="width: 6px;"
@@ -6830,6 +6890,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 >
                   <ui5-checkbox
                     checked="true"
@@ -6877,6 +6938,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -6917,6 +6979,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -6957,6 +7020,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -6997,6 +7061,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -8146,6 +8211,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
@@ -8183,6 +8249,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -8223,6 +8290,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -8263,6 +8331,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -8303,6 +8372,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -8609,6 +8679,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -8890,6 +8961,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="AnalyticalTableVerticalScrollbarContainer"
         style="position: relative;"
       >
         <div
@@ -8898,6 +8970,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
+          data-component-name="AnalyticalTableVerticalScrollbar"
           style="height: 220px;"
         >
           <div
@@ -8968,6 +9041,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -9008,6 +9082,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -9348,6 +9423,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        data-component-name="AnalyticalTableVerticalScrollbarContainer"
         style="position: relative;"
       >
         <div
@@ -9356,6 +9432,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
         />
         <div
           class="sapScrollBar VerticalScrollbar-scrollbar"
+          data-component-name="AnalyticalTableVerticalScrollbar"
           style="height: 220px;"
         >
           <div
@@ -9426,6 +9503,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -9466,6 +9544,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -9864,6 +9943,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Name"
                 >
                   Name
@@ -9904,6 +9984,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -9944,6 +10025,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                 >
                   <ui5-button
                     design="Default"
@@ -10245,6 +10327,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -10285,6 +10368,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -10325,6 +10409,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -10365,6 +10450,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -10808,6 +10894,7 @@ exports[`AnalyticalTable render without data 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -10848,6 +10935,7 @@ exports[`AnalyticalTable render without data 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -10888,6 +10976,7 @@ exports[`AnalyticalTable render without data 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -10928,6 +11017,7 @@ exports[`AnalyticalTable render without data 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -11010,6 +11100,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                     title="Full Name"
                   >
                     Name
@@ -11050,6 +11141,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                     title="Age"
                   >
                     Age
@@ -11090,6 +11182,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                     title="Friend Name"
                   >
                     Friend Name
@@ -11130,6 +11223,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
                 >
                   <span
                     class="Text-text Text-noWrap TableColumnHeader-text"
+                    data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                   >
                     <span>
                       Friend Age
@@ -13143,6 +13237,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -13183,6 +13278,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -13223,6 +13319,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -13263,6 +13360,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -13624,6 +13722,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_highlight_column"
                 >
                   <div
                     style="width: 6px;"
@@ -13658,6 +13757,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
                   class="TableColumnHeader-iconContainer"
@@ -13695,6 +13795,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -13735,6 +13836,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -13775,6 +13877,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -13815,6 +13918,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -14158,6 +14262,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -14198,6 +14303,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age
@@ -14239,6 +14345,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -14279,6 +14386,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -14646,6 +14754,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
                   title="Full Name"
                 >
                   Name
@@ -14686,6 +14795,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
                   title="Age"
                 >
                   Age
@@ -14726,6 +14836,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
                   title="Friend Name"
                 >
                   Friend Name
@@ -14766,6 +14877,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               >
                 <span
                   class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
                 >
                   <span>
                     Friend Age

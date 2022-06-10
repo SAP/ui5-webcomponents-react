@@ -16,7 +16,7 @@ You can find an interactive documentation in our [Storybook](https://sap.github.
 
 ## Contribute
 
-Please check our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-react/blob/master/CONTRIBUTING.md).
+Please check our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-react/blob/main/CONTRIBUTING.md).
 
 ## License
 

@@ -1,5 +1,5 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Button } from '@ui5/webcomponents-react';
+import { Meta } from '@storybook/addon-docs';
+import { MessageStrip, Link } from '@ui5/webcomponents-react';
 import { Footer } from '@docs/Footer';
 
 <Meta title="Getting Started" />
@@ -23,7 +23,7 @@ In addition to that, UI5 Web Components for React is providing complex component
 ## Requirements
 
 - [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
-- [Node.js](https://nodejs.org/) (**version 12 or higher** ⚠️)
+- [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
 
 ## Getting Started
 
@@ -53,7 +53,7 @@ yarn create react-app my-app --template @ui5/webcomponents-react
 
 You can create a new React app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
 This template delivers several out-of-the-box components, scripts and configurations.
-For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/master/packages/cra-template-seed).
+For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template-seed).
 
 ```sh
 npx create-react-app my-app --template @ui5/webcomponents-react-seed
@@ -110,7 +110,15 @@ Then, you can use the Button in your app:
 
 ### Theming
 
-UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
+UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` and `sap_horizon` Theme families built in.
+
+<MessageStrip hideCloseButton>
+  All UI5 Web Components fully support the Horizon theme family, but for custom UI5 Web Components for React components
+  (e.g. ObjectPage, AnalyticalTable, etc.) it's still in development, so it could be possible to encounter discrepancies
+  in the design. If you notice one please feel free to open an{' '}
+  <Link href="https://github.com/SAP/ui5-webcomponents-react/issues/new/choose">issue</Link>.
+</MessageStrip>
+
 In case you want to change your applications' theme, you have to import a couple of modules:
 
 ```js
@@ -127,6 +135,11 @@ Available Themes:
 - `sap_belize`
 - `sap_belize_hcb`
 - `sap_belize_hcw`
+
+- `sap_horizon`
+- `sap_horizon_dark`
+- `sap_horizon_hcb`
+- `sap_horizon_hcw`
 
 ### Configure Compact/Cozy setting
 

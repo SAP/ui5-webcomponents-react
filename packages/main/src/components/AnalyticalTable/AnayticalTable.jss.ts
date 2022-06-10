@@ -87,7 +87,6 @@ const styles = {
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     boxSizing: 'border-box',
     display: 'flex',
-    willChange: 'transform',
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },
