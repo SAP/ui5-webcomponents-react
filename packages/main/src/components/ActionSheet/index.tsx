@@ -89,7 +89,7 @@ function ActionSheetButton(props: ActionSheetButtonPropTypes) {
   return (
     <Button
       // aria-describedby={ariaTextId}
-      accessibleName={`${buttonProps.children as string}   ${i18nBundle.getText(X_OF_Y, index + 1, totalLength)}`}
+      accessibleName={`${buttonProps.children as string} ${i18nBundle.getText(X_OF_Y, index + 1, totalLength)}`}
       {...buttonProps}
       design={ButtonDesign.Transparent}
       data-action-btn-index={index}
