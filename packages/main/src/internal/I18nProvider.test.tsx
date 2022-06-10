@@ -116,6 +116,6 @@ describe('I18nProvider', () => {
       </ThemeProvider>
     );
 
-    expect(await screen.findByText('13 of 37')).toBeInTheDocument();
+    expect(await screen.findByText('Item 13 of 37')).toBeInTheDocument();
   });
 });
