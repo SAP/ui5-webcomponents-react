@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.0...v0.25.1) (2022-06-10)
+
+
+### Bug Fixes
+
+* **ActionSheet:** remove repetitive aria announcements ([#3050](https://github.com/SAP/ui5-webcomponents-react/issues/3050)) ([cdec3de](https://github.com/SAP/ui5-webcomponents-react/commit/cdec3defcd5f7b414edfed662eb065c15d447d41))
+* **AnalyticalTable:** allow disabling custom scrollbar styles w/o using CSS ([#3040](https://github.com/SAP/ui5-webcomponents-react/issues/3040)) ([cbf79a5](https://github.com/SAP/ui5-webcomponents-react/commit/cbf79a54edc9013d5f36a143b0c8e2d4e57fdac8))
+* **AnalyticalTable:** don't bubble up click event of th popover ([#3034](https://github.com/SAP/ui5-webcomponents-react/issues/3034)) ([a506c8a](https://github.com/SAP/ui5-webcomponents-react/commit/a506c8ad6e42d529ecc00eb313de08370fab5c29))
+* **AnalyticalTable:** improve table scroll & resizer drag performance ([#3028](https://github.com/SAP/ui5-webcomponents-react/issues/3028)) ([1e10461](https://github.com/SAP/ui5-webcomponents-react/commit/1e1046112c5553159dd0ee0bf85a5ff70771e359))
+
+
+
+
+
 # [0.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.24.0...v0.25.0) (2022-06-01)
 
 
