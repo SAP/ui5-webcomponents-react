@@ -1,4 +1,3 @@
-import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
@@ -13,6 +12,7 @@ import {
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ListGrowingMode } from '../../enums/ListGrowingMode';
@@ -27,6 +27,7 @@ import { Icon } from '../../webComponents/Icon';
 import { Input } from '../../webComponents/Input';
 import { List, ListPropTypes } from '../../webComponents/List';
 import { Title } from '../../webComponents/Title';
+import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import { Toolbar } from '../Toolbar';
 
@@ -35,6 +36,12 @@ const useStyles = createUseStyles(
     dialog: {
       '&::part(content)': {
         padding: 0
+      }
+    },
+    footer: {
+      height: 'var(--_ui5_dialog_content_min_height)', // TODO Remove this line after UI5 Web Components 1.5.0 is released
+      '& > *': {
+        marginInlineStart: '0.5rem'
       }
     },
     spread: { width: '100%' },
@@ -273,23 +280,6 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
       data-component-name="SelectDialog"
       ref={componentRef}
       className={clsx(classes.dialog, className)}
-      footer={
-        <Bar
-          design={BarDesign.Footer}
-          endContent={
-            <>
-              <Button onClick={handleClose} design={ButtonDesign.Transparent}>
-                {i18nBundle.getText(CANCEL)}
-              </Button>
-              {mode === ListMode.MultiSelect && (
-                <Button onClick={handleConfirm} design={ButtonDesign.Emphasized}>
-                  {confirmButtonText ?? i18nBundle.getText(SELECT)}
-                </Button>
-              )}
-            </>
-          }
-        />
-      }
       onAfterClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
     >
@@ -359,6 +349,22 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
       >
         {listMounted && children}
       </List>
+      <FlexBox
+        slot="footer"
+        fitContainer
+        alignItems={FlexBoxAlignItems.Center}
+        justifyContent={FlexBoxJustifyContent.End}
+        className={classes.footer}
+      >
+        {mode === ListMode.MultiSelect && (
+          <Button onClick={handleConfirm} design={ButtonDesign.Emphasized}>
+            {confirmButtonText ?? i18nBundle.getText(SELECT)}
+          </Button>
+        )}
+        <Button onClick={handleClose} design={ButtonDesign.Transparent}>
+          {i18nBundle.getText(CANCEL)}
+        </Button>
+      </FlexBox>
     </Dialog>
   );
 });
