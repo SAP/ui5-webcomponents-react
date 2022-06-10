@@ -16,7 +16,7 @@ const style = {
     zIndex: 100,
   },
   emptySpace: {
-    paddingTop: '44px',
+    paddingTop: 'var(--_ui5_shellbar_root_height)',
   },
 };
 
