@@ -7,7 +7,6 @@ import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import {
   Button,
   ButtonPropTypes,
@@ -79,30 +78,28 @@ if (isPhone()) {
 }
 
 interface ActionSheetButtonPropTypes extends ButtonPropTypes {
-  classes: ReturnType<typeof useStyles>;
   index: number;
   totalLength: number;
 }
 
 function ActionSheetButton(props: ActionSheetButtonPropTypes) {
-  const { classes, index, totalLength, ...buttonProps } = props;
+  const { index, totalLength, ...buttonProps } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const id = useIsomorphicId();
 
-  const ariaTextId = `__button${id}-actionSheetHiddenText`;
   return (
-    <>
-      <Button
-        aria-describedby={ariaTextId}
-        {...buttonProps}
-        design={ButtonDesign.Transparent}
-        data-action-btn-index={index}
-      />
-      <span id={ariaTextId} aria-hidden="true" className={classes.hiddenText}>
-        {i18nBundle.getText(X_OF_Y, index + 1, totalLength)}
-      </span>
-    </>
+    <Button
+      // aria-describedby={ariaTextId}
+      accessibleName={`${buttonProps.children as string}   ${i18nBundle.getText(X_OF_Y, index + 1, totalLength)}`}
+      {...buttonProps}
+      design={ButtonDesign.Transparent}
+      data-action-btn-index={index}
+    />
   );
+  // const id = useIsomorphicId();
+  // const ariaTextId = `__button${id}-actionSheetHiddenText`;
+  // <span id={ariaTextId} aria-hidden="true" className={classes.hiddenText}>
+  //   {i18nBundle.getText(X_OF_Y, index + 1, totalLength)}
+  // </span>
 }
 
 /**
@@ -167,7 +164,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
         key={index}
         index={index}
         totalLength={childrenArray.length}
-        classes={classes}
         tabIndex={focusedItem === index ? 0 : -1}
         {...element.props}
         onClick={(e) => {
