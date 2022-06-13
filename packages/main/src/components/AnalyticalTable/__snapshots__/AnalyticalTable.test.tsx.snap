@@ -6,7 +6,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:r4:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -21,7 +21,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r4:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -492,7 +492,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r4:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -505,7 +505,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:r3:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -520,7 +520,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r3:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -991,7 +991,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r3:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -1004,7 +1004,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:r2:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -1019,7 +1019,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r2:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -1439,7 +1439,7 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r2:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -1459,7 +1459,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
       >
         <div
           aria-colcount="5"
-          aria-labelledby="titlebar-:rr:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="2"
           class="AnalyticalTable-table sapScrollBar AnalyticalTable-hasNavigationIndicator"
           data-component-name="AnalyticalTableContainer"
@@ -1892,7 +1892,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:rr:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -1913,7 +1913,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
       >
         <div
           aria-colcount="1"
-          aria-labelledby="titlebar-:rp:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -2265,7 +2265,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:rp:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -2286,7 +2286,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
       >
         <div
           aria-colcount="2"
-          aria-labelledby="titlebar-:rm:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -2738,7 +2738,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:rm:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -2755,7 +2755,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
-        id="titlebar-:r9:"
+        id="titlebar-1337"
         style="min-height: 1.5rem; display: flex; align-items: center;"
       >
         <ui5-title
@@ -2770,7 +2770,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
       >
         <div
           aria-colcount="4"
-          aria-labelledby="titlebar-:r9:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -3241,7 +3241,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:r9:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -3258,7 +3258,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
-        id="titlebar-:re:"
+        id="titlebar-1337"
         style="min-height: 1.5rem; display: flex; align-items: center;"
       >
         <ui5-title
@@ -3273,7 +3273,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
       >
         <div
           aria-colcount="6"
-          aria-labelledby="titlebar-:re:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="2"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -3796,7 +3796,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:re:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -3817,7 +3817,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
       >
         <div
           aria-colcount="4"
-          aria-labelledby="titlebar-:r7:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="5"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -4288,7 +4288,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:r7:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -4302,7 +4302,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:r1:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -4317,7 +4317,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
     >
       <div
         aria-colcount="5"
-        aria-labelledby="titlebar-:r1:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -4971,7 +4971,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r1:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -4984,7 +4984,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; --sapWcrAnalyticalTableRowHeight: 60px; visibility: hidden;"
   >
     <div
-      id="titlebar-:r5:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -4999,7 +4999,7 @@ exports[`AnalyticalTable custom row height 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r5:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -5470,7 +5470,7 @@ exports[`AnalyticalTable custom row height 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r5:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -5487,7 +5487,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
     >
       <div
         aria-colcount="3"
-        aria-labelledby="titlebar-:rt:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -5858,7 +5858,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rt:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -5875,7 +5875,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
     >
       <div
         aria-colcount="5"
-        aria-labelledby="titlebar-:rf:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -6483,7 +6483,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rf:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -6500,7 +6500,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
     >
       <div
         aria-colcount="5"
-        aria-labelledby="titlebar-:rq:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar AnalyticalTable-hasNavigationIndicator"
         data-component-name="AnalyticalTableContainer"
@@ -6933,7 +6933,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rq:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -6950,7 +6950,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
     >
       <div
         aria-colcount="5"
-        aria-labelledby="titlebar-:ru:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="11"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -8261,7 +8261,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:ru:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -8278,7 +8278,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
     >
       <div
         aria-colcount="5"
-        aria-labelledby="titlebar-:rs:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -8729,7 +8729,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rs:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -8746,7 +8746,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
     >
       <div
         aria-colcount="1"
-        aria-labelledby="titlebar-:rn:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -9098,7 +9098,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rn:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -9115,7 +9115,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
     >
       <div
         aria-colcount="2"
-        aria-labelledby="titlebar-:rl:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -9567,7 +9567,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rl:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -9584,7 +9584,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
     >
       <div
         aria-colcount="2"
-        aria-labelledby="titlebar-:rl:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -10014,7 +10014,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rl:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -10031,7 +10031,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
     >
       <div
         aria-colcount="3"
-        aria-labelledby="titlebar-:r0:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -10405,7 +10405,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r0:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -10422,7 +10422,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:rg:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -10968,7 +10968,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rg:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -10981,7 +10981,7 @@ exports[`AnalyticalTable render without data 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:ra:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -10996,7 +10996,7 @@ exports[`AnalyticalTable render without data 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:ra:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="0"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -11191,7 +11191,7 @@ exports[`AnalyticalTable render without data 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:ra:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -11209,7 +11209,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
       >
         <div
           aria-colcount="4"
-          aria-labelledby="titlebar-:ri:"
+          aria-labelledby="titlebar-1337"
           aria-rowcount="8"
           class="AnalyticalTable-table sapScrollBar"
           data-component-name="AnalyticalTableContainer"
@@ -12078,7 +12078,7 @@ exports[`AnalyticalTable resize vertically 1`] = `
     <span
       aria-hidden="true"
       class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-      id="smartScaleModeHelper-:ri:"
+      id="smartScaleModeHelper-1337"
     >
       ""
     </span>
@@ -13338,7 +13338,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:r8:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -13353,7 +13353,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r8:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -13824,7 +13824,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r8:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -13837,7 +13837,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:rd:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -13852,7 +13852,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
     >
       <div
         aria-colcount="6"
-        aria-labelledby="titlebar-:rd:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="2"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -14375,7 +14375,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rd:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -14392,7 +14392,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:r6:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -14863,7 +14863,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:r6:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
@@ -14876,7 +14876,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      id="titlebar-:rb:"
+      id="titlebar-1337"
       style="min-height: 1.5rem; display: flex; align-items: center;"
     >
       <ui5-title
@@ -14891,7 +14891,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
     >
       <div
         aria-colcount="4"
-        aria-labelledby="titlebar-:rb:"
+        aria-labelledby="titlebar-1337"
         aria-rowcount="5"
         class="AnalyticalTable-table sapScrollBar"
         data-component-name="AnalyticalTableContainer"
@@ -15402,7 +15402,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
   <span
     aria-hidden="true"
     class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-:rb:"
+    id="smartScaleModeHelper-1337"
   >
     ""
   </span>
