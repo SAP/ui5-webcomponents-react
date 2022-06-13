@@ -28,11 +28,10 @@ interface IColumnMeta {
   headerPx: number;
   headerDefinesWidth?: boolean;
 }
-const stringToPx = (str, id) => {
+const stringToPx = (dataPoint, id) => {
   const ruler = document.getElementById(`smartScaleModeHelper-${id}`);
   if (ruler) {
-    ruler.innerHTML = str;
-    console.log(str);
+    ruler.innerHTML = `${dataPoint}`;
     return ruler.offsetWidth;
   }
   return 0;
@@ -62,10 +61,7 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, visi
           const dataPoint = item.values?.[columnIdOrAccessor];
           let val = 0;
           if (dataPoint) {
-            if (typeof dataPoint === 'string')
-              val = stringToPx(dataPoint, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
-            if (typeof dataPoint === 'number')
-              val = stringToPx(dataPoint + '', webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
+            val = stringToPx(dataPoint, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
           }
           return acc + val;
         }, 0) / (rowSample.length || 1);

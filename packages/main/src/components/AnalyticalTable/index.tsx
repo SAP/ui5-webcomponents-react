@@ -47,12 +47,12 @@ import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
 import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
 import { TableSelectionMode } from '../../enums/TableSelectionMode';
 import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
+import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Text } from '../Text';
 import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { getRandomId } from '../../internal/getRandomId';
 import { FlexBox } from '../FlexBox';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
@@ -503,8 +503,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
-const uniqueId = getRandomId();
-
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -562,9 +560,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     NoDataComponent,
     ...rest
   } = props;
-
+  const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const titleBarId = useRef(`titlebar-${getRandomId()}`).current;
+  const titleBarId = useRef(`titlebar-${uniqueId}`).current;
 
   const classes = useStyles();
 
