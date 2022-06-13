@@ -3,6 +3,7 @@ import { Footer } from '@docs/Footer';
 import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
 import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
 import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
+import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
@@ -18,6 +19,7 @@ import {
   FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxJustifyContent,
+  Label,
   MessageStrip,
   Panel,
   SegmentedButton,
@@ -375,6 +377,72 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
   isTreeTable
   tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
   reactTableOptions={{ selectSubRows: true }}
+/>
+```
+
+### Manual control of selected lines
+
+The `useManualRowSelect` plugin hook allows controlling the selected rows manually. It accepts a parameter (`manualRowSelectedKey`) which defaults to `isSelected`.
+If this key is found on the original data row, and it is `true`, this row will be manually selected.
+
+<Canvas>
+  <Story name="Plugin: useManualRowSelect" args={{ data: dataManualSelect }}>
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsedCode, setCollapsedCode] = useReducer((coll) => !coll, true);
+      const [data, toggleFirstRowSelected] = useReducer((prev) => {
+        const [, ...updatedData] = prev;
+        if (prev[0].isSelected) {
+          return [{ ...prev[0], isSelected: false }, ...updatedData];
+        } else {
+          return [{ ...prev[0], isSelected: true }, ...updatedData];
+        }
+      }, args.data);
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useManualRowSelect example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <Button onClick={toggleFirstRowSelected}>Toggle `isSelected` of 1st row</Button>
+              <br />
+              <Label>Clicking this button will refresh the data array passed to the `data` prop.</Label>
+              <br />
+              <br />
+              <AnalyticalTable
+                selectionMode={TableSelectionMode.MultiSelect}
+                data={data}
+                columns={args.columns}
+                tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
+              />
+              <Button onClick={setCollapsedCode}>Show first entries in data array</Button>
+              {!collapsedCode && (
+                <FlexBox direction="Column">
+                  <span>{JSON.stringify(data[0], null, 2)}</span>
+                  <span>{JSON.stringify(data[1], null, 2)}</span>
+                  <span>{JSON.stringify(data[2], null, 2)}</span>
+                  <span>{JSON.stringify(data[3], null, 2)}</span>
+                  <span>{JSON.stringify(data[4], null, 2)}</span>
+                  <span>...</span>
+                </FlexBox>
+              )}
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+```jsx
+<AnalyticalTable
+  selectionMode={TableSelectionMode.MultiSelect}
+  data={data}
+  columns={columns}
+  // you could also omit the `'isSelected'`, as this is the default value
+  tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
 />
 ```
 
