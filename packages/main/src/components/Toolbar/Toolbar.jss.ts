@@ -52,13 +52,13 @@ export const styles = {
   toolbar: {
     width: '100%',
     '& >:first-child:not(.spacer)': {
-      margin: '0 0.25rem 0 0.5rem'
+      marginInline: '0.5rem 0.25rem'
     },
     '& >:last-child:not(.spacer)': {
-      margin: '0 0.5rem 0 0.25rem'
+      marginInline: '0.25rem 0.5rem'
     },
     '& > *:not(first-child):not(last-child):not(.spacer)': {
-      margin: '0 0.25rem'
+      marginInline: '0.25rem'
     },
     display: 'flex',
     alignItems: 'center',
@@ -66,7 +66,7 @@ export const styles = {
   },
   overflowButtonContainer: {
     display: 'flex',
-    marginRight: '0.5rem'
+    marginInline: '0 0.5rem'
   },
   popover: {
     '&[ui5-popover]::part(content)': {
