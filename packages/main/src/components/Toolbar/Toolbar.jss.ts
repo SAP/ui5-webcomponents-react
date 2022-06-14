@@ -52,7 +52,7 @@ export const styles = {
   toolbar: {
     width: '100%',
     '& >:first-child:not(.spacer)': {
-      margin: '0 0.25rem 0 0'
+      margin: '0 0.25rem 0 0.5rem'
     },
     '& >:last-child:not(.spacer)': {
       margin: '0 0.5rem 0 0.25rem'
