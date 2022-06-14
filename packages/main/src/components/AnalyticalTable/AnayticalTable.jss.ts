@@ -165,6 +165,12 @@ const styles = {
   },
   valueStateInformation: {
     backgroundColor: ThemingParameters.sapInformationColor
+  },
+  hiddenSmartColMeasure: {
+    visibility: 'hidden',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    height: 0
   }
 };
 
