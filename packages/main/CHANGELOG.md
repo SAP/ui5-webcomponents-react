@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.1...v0.25.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Toolbar:** add margin for first child & fix rtl margins ([#3062](https://github.com/SAP/ui5-webcomponents-react/issues/3062)) ([b5af72e](https://github.com/SAP/ui5-webcomponents-react/commit/b5af72e13d71553b9c2d7822d0244a0463aca365)), closes [#3055](https://github.com/SAP/ui5-webcomponents-react/issues/3055)
+
+
+### Features
+
+* **AnalyticalTable:** add `useManualRowSelect` plugin hook ([#3056](https://github.com/SAP/ui5-webcomponents-react/issues/3056)) ([c2fb172](https://github.com/SAP/ui5-webcomponents-react/commit/c2fb172ce8c910b1c63a32a50700f3eceebebcb9))
+* **AnalyticalTable:** improve "Smart" `scaleWidthMode` ([#3044](https://github.com/SAP/ui5-webcomponents-react/issues/3044)) ([5cbba91](https://github.com/SAP/ui5-webcomponents-react/commit/5cbba91581fccc294775b3853598e898225822e5))
+
+
+
+
+
 ## [0.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.0...v0.25.1) (2022-06-10)
 
 
