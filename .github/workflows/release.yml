@@ -14,6 +14,8 @@ jobs:
     environment:
       name: 'npm'
       url: 'https://www.npmjs.com/package/@ui5/webcomponents-react'
+    outputs:
+      release_sha: ${{ steps.publish.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -44,15 +46,19 @@ jobs:
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
             --conventional-graduate \
             --create-release github
+
+          echo "::set-output name=sha::$(git rev-parse HEAD)"
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
   deploy-docs:
-    needs: [ 'build-and-release' ]
+    needs: ['build-and-release']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{needs.build-and-release.outputs.release_sha}}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.3.0
@@ -74,10 +80,12 @@ jobs:
           clean-exclude: 'main'
 
   release-comments:
-    needs: [ 'build-and-release' ]
+    needs: ['build-and-release']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{needs.build-and-release.outputs.release_sha}}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.3.0
