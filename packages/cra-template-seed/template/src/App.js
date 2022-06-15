@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ThemeProvider } from '@ui5/webcomponents-react';
 
 import ErrorBoundary from './pages/Fallback/ErrorBoundary';
 import Shell from './components/Shell/Shell';
@@ -23,18 +22,16 @@ const App = () => {
   const { t } = useTranslation();
 
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <BrowserRouter>
-          <Helmet title={t('helmet.title.app')} />
-          <Shell title={t('shell.title')} />
-          <ErrorBoundary>
-            <Router />
-          </ErrorBoundary>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <Helmet title={t('helmet.title.app')} />
+        <Shell title={t('shell.title')} />
+        <ErrorBoundary>
+          <Router />
+        </ErrorBoundary>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 

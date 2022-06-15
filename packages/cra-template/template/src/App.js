@@ -5,14 +5,13 @@ import {
   FlexBoxJustifyContent,
   Link,
   LinkDesign,
-  ShellBar,
-  ThemeProvider
+  ShellBar
 } from '@ui5/webcomponents-react';
 import './App.css';
 
 function App() {
   return (
-    <ThemeProvider>
+    <>
       <ShellBar primaryTitle="UI5 Web Components for React Template" />
       <FlexBox
         style={{ width: '100%', height: '100vh' }}
@@ -24,7 +23,7 @@ function App() {
           Getting Started with UI5 Web Component for React
         </Link>
       </FlexBox>
-    </ThemeProvider>
+    </>
   );
 }
 

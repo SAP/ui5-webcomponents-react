@@ -102,9 +102,6 @@ beforeEach(async () => {
   window.scrollTo = jest.fn();
   setupMatchMedia();
 
-  await import('@ui5/webcomponents/dist/Assets.js');
-  await import('@ui5/webcomponents-fiori/dist/Assets.js');
-  await import('@ui5/webcomponents-icons/dist/Assets.js');
   await import('@ui5/webcomponents-react/dist/Assets.js');
 });
 
