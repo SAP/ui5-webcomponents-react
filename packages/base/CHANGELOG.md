@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.3...v0.25.4) (2022-06-15)
+
+
+### Bug Fixes
+
+* simplify asset imports & improve i18n provider and docs ([#3079](https://github.com/SAP/ui5-webcomponents-react/issues/3079)) ([374a5d3](https://github.com/SAP/ui5-webcomponents-react/commit/374a5d339b4d9493cf04d7aa95161c2514b3cdc1))
+
+
+
+
+
 ## [0.25.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.2...v0.25.3) (2022-06-15)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
