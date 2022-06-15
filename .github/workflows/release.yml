@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{needs.build-and-release.outputs.release_sha}}
+          ref: ${{ needs.build-and-release.outputs.release_sha }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.3.0
@@ -85,7 +85,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{needs.build-and-release.outputs.release_sha}}
+          ref: ${{ needs.build-and-release.outputs.release_sha }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.3.0
