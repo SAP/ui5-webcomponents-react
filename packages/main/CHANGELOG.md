@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.2...v0.25.3) (2022-06-15)
+
+
+### Bug Fixes
+
+* prevent webpack export error in React 16 and 17 ([#3075](https://github.com/SAP/ui5-webcomponents-react/issues/3075)) ([d4afe80](https://github.com/SAP/ui5-webcomponents-react/commit/d4afe80c388806c53416385b824b7ac239d1b6b0))
+
+
+
+
+
 ## [0.25.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.1...v0.25.2) (2022-06-14)
 
 
