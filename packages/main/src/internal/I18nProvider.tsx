@@ -27,21 +27,8 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
     isSyncedWithWindow.current = true;
   }
 
-  const setI18nBundle = useCallback((name: string, bundle: I18nBundle) => {
-    setI18nBundles({
-      payload: {
-        [name]: bundle
-      }
-    });
-    localBundles.current[name] = bundle;
-  }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-    const fetchI18n = async () => {
-      const bundles = await Promise.all(
-        Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))
-      );
+  const updateBundles = useCallback(() => {
+    Promise.all(Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))).then((bundles) => {
       const bundleMap = bundles.reduce(
         (acc, bundle) => ({
           ...acc,
@@ -49,16 +36,23 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
         }),
         {}
       );
-      if (isMounted) {
-        setI18nBundles({
-          payload: bundleMap
-        });
-      }
-    };
-    attachLanguageChange(fetchI18n);
+      setI18nBundles({
+        payload: bundleMap
+      });
+    });
+  }, []);
+
+  const setI18nBundle = useCallback((name: string, bundle: I18nBundle) => {
+    localBundles.current[name] = bundle;
+    updateBundles();
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    attachLanguageChange(updateBundles);
     return () => {
       isMounted = false;
-      detachLanguageChange(fetchI18n);
+      detachLanguageChange(updateBundles);
     };
   }, []);
 

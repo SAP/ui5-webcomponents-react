@@ -23,18 +23,16 @@ const App = () => {
   const { t } = useTranslation();
 
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <BrowserRouter>
-          <Helmet title={t('helmet.title.app')} />
-          <Shell title={t('shell.title')} />
-          <ErrorBoundary>
-            <Router />
-          </ErrorBoundary>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <Helmet title={t('helmet.title.app')} />
+        <Shell title={t('shell.title')} />
+        <ErrorBoundary>
+          <Router />
+        </ErrorBoundary>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 

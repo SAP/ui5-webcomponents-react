@@ -3,11 +3,16 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<App />);
+root.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

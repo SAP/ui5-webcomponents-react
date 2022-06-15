@@ -1,12 +1,9 @@
 import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
-import '@ui5/webcomponents-fiori/dist/Assets.js';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import '@ui5/webcomponents-icons/dist/Assets.js';
 import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-react/dist/Assets';
-import '@ui5/webcomponents/dist/Assets.js';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useEffect } from 'react';
 import 'tocbot/dist/tocbot.css';
