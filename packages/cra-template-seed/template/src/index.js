@@ -4,7 +4,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './util/i18n';
 import App from './App';
-import { ThemeProvider } from '@storybook/theming';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
