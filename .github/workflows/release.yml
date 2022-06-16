@@ -10,7 +10,7 @@ on:
         default: 'patch'
       prerelease:
         type: boolean
-        description: 'Flag whether this release should be a pre-release'
+        description: 'pre-release'
         required: false
         default: false
 
