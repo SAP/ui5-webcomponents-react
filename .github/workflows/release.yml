@@ -56,9 +56,11 @@ jobs:
 
       ### Deploy release storybook ###
       - name: Build Storybook
+        if: ${{ github.event.inputs.prerelease == 'false' }}
         run: yarn build:storybook
 
       - name: Deploy Docs
+        if: ${{ github.event.inputs.prerelease == 'false' }}
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # The branch the action should deploy to.
