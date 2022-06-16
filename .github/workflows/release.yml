@@ -5,7 +5,7 @@ on:
     inputs:
       release_type:
         type: string
-        description: 'Release Type: patch | minor | major'
+        description: 'Release Type: (pre)patch | (pre)minor | (pre)major'
         required: true
         default: 'patch'
       prerelease:
