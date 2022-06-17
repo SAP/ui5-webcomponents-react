@@ -1,7 +1,8 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, Source } from '@storybook/addon-docs';
 import { MyCustomElement } from './styling/MyCustomElement';
 import { ThemeProvider, MessageStrip } from '@ui5/webcomponents-react';
 import { BarComponent, FaultyBarComponent } from './knowledgeBaseExamples/slotExamples';
+import { CreateAccountForm } from './knowledgeBaseExamples/formExamples';
 import { TableOfContent } from '../.storybook/components/TableOfContent';
 import { Footer } from '@docs/Footer';
 
@@ -218,5 +219,177 @@ This would then be the result:
 <ThemeProvider>
   <MyCustomElement />
 </ThemeProvider>
+
+## Form Handling
+
+This guide demonstrates the use of the `Form` component.
+
+### #1 Example with UI5 Web Components for React
+
+This Form is implemented with the `Form` component from UI5 Web Components for React.
+The children of the `Form` should only be `FormGroup` and `FormItem` in order to preserve the intended design. The children of `FormGroup` should only be `FormItem` and the children of `FormItem` can be an arbitrary React Node.
+
+You can then create a form with UI5 Web Components for React as follows. Also you can find this example in a Codesandbox. [![Edit wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/wcr-form-5f9c24?fontsize=14&hidenavigation=1&theme=dark)
+
+<details>
+    <summary>Show code</summary>
+
+```jsx
+import React, { useState } from 'react';
+import {
+  ThemeProvider,
+  Form,
+  FormGroup,
+  FormItem,
+  Input,
+  Option,
+  Select,
+  CheckBox,
+  InputType,
+  Button,
+  MultiComboBox,
+  MultiComboBoxItem,
+  DatePicker
+} from '@ui5/webcomponents-react';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+
+export default function CreateAccountForm() {
+  const initialValues = {
+    email: '',
+    password: '',
+    country: 'Germany',
+    birthday: '',
+    payment: [],
+    terms: false
+  };
+
+  const [values, setValues] = useState(initialValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value
+    });
+  };
+
+  const handleSelectionChange = (e) => {
+    const selected = [];
+    Object.entries(e.detail.items).forEach(([key, val]) => {
+      selected.push(val.text);
+    });
+    setValues({
+      ...values,
+      payment: selected
+    });
+  };
+
+  const handleSubmit = (e) => {
+    alert(JSON.stringify(values, null, 2));
+    console.log(values);
+  };
+
+  return (
+    <ThemeProvider>
+      <Form>
+        <FormGroup titleText={'Create Account'}>
+          <FormItem label={'Email'}>
+            <Input name="email" type={InputType.Email} value={values.email} onInput={handleInputChange} />
+          </FormItem>
+          <FormItem label={'Password'}>
+            <Input name="password" type={InputType.Password} value={values.password} onInput={handleInputChange} />
+          </FormItem>
+          <FormItem label={'Country'}>
+            <Select
+              name="country"
+              value={values.country}
+              onChange={(e) =>
+                setValues({
+                  ...values,
+                  country: e.detail.selectedOption.innerText
+                })
+              }
+            >
+              <Option>Germany</Option>
+              <Option>France</Option>
+              <Option>Italy</Option>
+            </Select>
+          </FormItem>
+          <FormItem label={'Date of Birth'}>
+            <DatePicker
+              value={values.birthday}
+              onChange={(e) => {
+                setValues({
+                  ...values,
+                  payment: e.detail.value
+                });
+              }}
+            />
+          </FormItem>
+          <FormItem label={'Payment methods'}>
+            <MultiComboBox onSelectionChange={handleSelectionChange}>
+              <MultiComboBoxItem text="Credit card" />
+              <MultiComboBoxItem text="PayPal" />
+              <MultiComboBoxItem text="Bank transfer" />
+            </MultiComboBox>
+          </FormItem>
+          <FormItem>
+            <CheckBox
+              required
+              name="terms"
+              text="I accept the terms of service"
+              value={values.terms}
+              onChange={(e) =>
+                setValues({
+                  ...values,
+                  terms: e.target.checked
+                })
+              }
+            />
+          </FormItem>
+          <FormItem>
+            <Button onClick={handleSubmit}>Submit</Button>
+          </FormItem>
+        </FormGroup>
+      </Form>
+    </ThemeProvider>
+  );
+}
+```
+
+</details>
+
+Now the `AccountForm` would compile to this:
+
+<CreateAccountForm />
+
+Note: Whenever a component has a custom event (e.g. onChange event from `DatePicker`), the corresponding value should be fetched via event.detail (not event.target). This will give you the correct updated value since the internal input has already been updated. At the time the event is fired, however, it is not yet updated and therefore event.target might also not be updated yet.
+
+### #2 Example with UI5 Web Components for React and Formik + Yup
+
+Input components from UI5 Web Components for React can be used with external libraries like Formik and Yup.
+Formik is an open source form library for React and React Native (https://formik.org/).
+Yup is a schema builder for runtime value parsing and validation (https://github.com/jquense/yup).
+
+Formik keeps track of your form's state and then exposes it plus a few reusable methods and event handlers (handleChange, handleBlur, and handleSubmit) to your form via props
+It comes with a few extra components to make life easier and less verbose like `Form`, `Field`, and `ErrorMessage`.
+Also Formik has a special config option for Yup called validationSchema.
+
+To inject an input component from UI5 Web Components for React the `Field` component has a prop called `as`.
+This can either be a React component or the name of an HTML element to render. Formik will automagically inject onChange, onBlur, name, and value props of the field designated by the name prop to the (custom) component.
+
+```jsx
+<Field as={Input} />
+```
+
+You can find a Codesandbox that will showcase the use of the input components from UI5 Web Components for React together with Formik and Yup.
+[![Edit formik + wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/formik-wcr-form-bt7jd2?autoresize=1&fontsize=14&hidenavigation=1&theme=dark)
+
+Note: The onChange event from the `Input` UI5 Web Component is not the same as the native onChange event of React. If you want to simulate that behavior, please use onInput instead.
+onChange here: This event is NOT the same as the native onChange event of React. If you want to simulate that behavior, please use onInput instead.
+
+```jsx
+<Field as={Input} name="email" type={InputType.Email} onInput={formik.handleChange} />
+```
 
 <Footer />
