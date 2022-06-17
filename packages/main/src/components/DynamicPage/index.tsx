@@ -121,6 +121,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
+  const isToggledRef = useRef(false);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -193,6 +194,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const onToggleHeaderContentInternal = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
   };
 
@@ -216,6 +220,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     if (typeof props?.onScroll === 'function') {
       props.onScroll(e);
     }
@@ -230,7 +237,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   }
 
   useEffect(() => {
-    if (typeof onToggleHeaderContent === 'function') {
+    if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
       onToggleHeaderContent(!!headerContentHeight);
     }
   }, [!!headerContentHeight]);
