@@ -67,6 +67,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
       role?: string;
     };
   };
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
 }
 
 /**
@@ -101,6 +105,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     className,
     footer,
     a11yConfig,
+    onToggleHeaderContent,
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
@@ -116,6 +121,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
   );
+  const isToggledRef = useRef(false);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -187,7 +193,10 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   };
 
-  const onToggleHeaderContent = (e) => {
+  const onToggleHeaderContentInternal = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
   };
 
@@ -211,6 +220,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     if (typeof props?.onScroll === 'function') {
       props.onScroll(e);
     }
@@ -223,6 +235,12 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   if (headerContentHeight === 0) {
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
+
+  useEffect(() => {
+    if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
+      onToggleHeaderContent(!!headerContentHeight);
+    }
+  }, [!!headerContentHeight]);
 
   return (
     <div
@@ -242,7 +260,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           className: headerTitle?.props?.className
             ? `${responsivePaddingClass} ${headerTitle.props.className}`
             : responsivePaddingClass,
-          onToggleHeaderContentVisibility: onToggleHeaderContent
+          onToggleHeaderContentVisibility: onToggleHeaderContentInternal
         })}
       {headerContent &&
         cloneElement(headerContent, {

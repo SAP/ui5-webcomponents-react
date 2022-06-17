@@ -103,6 +103,10 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   onSelectedSectionChange?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
 
   // appearance
   /**
@@ -171,7 +175,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     slot,
     showHideHeaderButton,
     children,
-    onSelectedSectionChange,
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
@@ -180,6 +183,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     a11yConfig,
     placeholder,
     portalContainer,
+    onSelectedSectionChange,
+    onToggleHeaderContent,
     ...rest
   } = props;
 
@@ -200,6 +205,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
+  const isToggledRef = useRef(false);
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -234,6 +240,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     anchorBarRef,
     { noHeader: !headerTitle && !headerContent }
   );
+
+  useEffect(() => {
+    if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
+      onToggleHeaderContent(!!headerContentHeight);
+    }
+  }, [!!headerContentHeight]);
 
   const avatar = useMemo(() => {
     if (!image) {
@@ -474,6 +486,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimout = useRef(0);
   const onToggleHeaderContentVisibility = useCallback((e) => {
+    isToggledRef.current = true;
     scrollTimout.current = performance.now() + 500;
     if (!e.detail.visible) {
       objectPageRef.current?.classList.add(classes.headerCollapsed);
@@ -669,6 +682,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
+      if (!isToggledRef.current) {
+        isToggledRef.current = true;
+      }
       if (scrollTimout.current >= performance.now()) {
         return;
       }
@@ -696,17 +712,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         setScrolledHeaderExpanded(false);
       }
     },
-    [
-      scrollTimout.current,
-      topHeaderHeight,
-      headerPinned,
-      props.onScroll,
-      objectPageRef.current,
-      scrolledHeaderExpanded,
-      prevScrollTop.current,
-      selectedSubSectionId,
-      scrollTimeout.current
-    ]
+    [topHeaderHeight, headerPinned, props.onScroll, scrolledHeaderExpanded, selectedSubSectionId]
   );
 
   const onHoverToggleButton = useCallback(
