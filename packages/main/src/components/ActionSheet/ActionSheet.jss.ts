@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, CssSizeVariables } from '@ui5/webcomponents-react-base';
 
 const styles = {
   /*
@@ -9,6 +9,7 @@ const styles = {
       padding: '0.1875rem 0.375rem'
     },
     '& [ui5-button]': {
+      margin: CssSizeVariables.sapWcrButtonTopBottomPadding,
       display: 'block'
     },
     '& [ui5-button]:not([data-cancel-btn])::part(button)': {
