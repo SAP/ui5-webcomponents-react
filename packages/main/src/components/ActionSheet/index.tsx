@@ -194,11 +194,9 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
   const handleKeyDown = (e) => {
     const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
     if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
-      e.preventDefault();
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
     }
     if (e.key === 'ArrowUp' && currentIndex > 0) {
-      e.preventDefault();
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
     }
   };
