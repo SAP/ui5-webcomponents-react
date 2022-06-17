@@ -4,9 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release Type: patch | minor | major'
+        type: string
+        description: 'Release Type: (pre)patch | (pre)minor | (pre)major'
         required: true
         default: 'patch'
+      prerelease:
+        type: boolean
+        description: 'pre-release'
+        required: false
+        default: false
 
 jobs:
   build-and-release:
@@ -14,8 +20,6 @@ jobs:
     environment:
       name: 'npm'
       url: 'https://www.npmjs.com/package/@ui5/webcomponents-react'
-    outputs:
-      release_sha: ${{ steps.publish.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -30,7 +34,7 @@ jobs:
 
       - name: Install, test and build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn test
           yarn build
         env:
@@ -44,34 +48,19 @@ jobs:
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
-            --conventional-graduate \
+            ${{ (github.event.inputs.prerelease == 'true' && '--conventional-prerelease') || '--conventional-graduate' }} \
             --create-release github
-
-          echo "::set-output name=sha::$(git rev-parse HEAD)"
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-  deploy-docs:
-    needs: ['build-and-release']
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ needs.build-and-release.outputs.release_sha }}
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.3.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
+      ### Deploy release storybook ###
       - name: Build Storybook
-        run: |
-          yarn install --frozen-lockfile
-          yarn build:storybook
+        if: ${{ github.event.inputs.prerelease == 'false' }}
+        run: yarn build:storybook
 
       - name: Deploy Docs
+        if: ${{ github.event.inputs.prerelease == 'false' }}
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # The branch the action should deploy to.
@@ -79,23 +68,7 @@ jobs:
           clean: true
           clean-exclude: 'main'
 
-  release-comments:
-    needs: ['build-and-release']
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ needs.build-and-release.outputs.release_sha }}
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.3.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
+      ### Semantic Release Bot comments for issues and PRs ###
       - name: Add release comments to issues and PRs
         uses: actions/github-script@v6
         env:
@@ -109,3 +82,4 @@ jobs:
 
             console.log('Create issue comments for lerna version: ', version);
             await script({ github: github.rest, context, core, version })
+

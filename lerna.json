@@ -18,6 +18,7 @@
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
+      "preDistTag": "next",
       "message": "chore(release): publish %s [ci skip]"
     }
   }
