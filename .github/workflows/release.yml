@@ -48,7 +48,7 @@ jobs:
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
-            ${{ (github.event.inputs.prerelease == 'true' && '--conventional-graduate') || '--conventional-prerelease' }} \
+            ${{ (github.event.inputs.prerelease == 'true' && '--conventional-prerelease') || '--conventional-graduate' }} \
             --create-release github
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
