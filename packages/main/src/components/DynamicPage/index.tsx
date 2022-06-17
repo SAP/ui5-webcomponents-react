@@ -67,6 +67,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
       role?: string;
     };
   };
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
 }
 
 /**
@@ -101,6 +105,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     className,
     footer,
     a11yConfig,
+    onToggleHeaderContent,
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
@@ -187,7 +192,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   };
 
-  const onToggleHeaderContent = (e) => {
+  const onToggleHeaderContentInternal = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
   };
 
@@ -224,6 +229,12 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
+  useEffect(() => {
+    if (typeof onToggleHeaderContent === 'function') {
+      onToggleHeaderContent(!!headerContentHeight);
+    }
+  }, [!!headerContentHeight]);
+
   return (
     <div
       ref={componentRef}
@@ -242,7 +253,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           className: headerTitle?.props?.className
             ? `${responsivePaddingClass} ${headerTitle.props.className}`
             : responsivePaddingClass,
-          onToggleHeaderContentVisibility: onToggleHeaderContent
+          onToggleHeaderContentVisibility: onToggleHeaderContentInternal
         })}
       {headerContent &&
         cloneElement(headerContent, {

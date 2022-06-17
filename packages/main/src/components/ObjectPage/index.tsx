@@ -103,6 +103,10 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   onSelectedSectionChange?: (
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
 
   // appearance
   /**
@@ -171,7 +175,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     slot,
     showHideHeaderButton,
     children,
-    onSelectedSectionChange,
     selectedSectionId,
     alwaysShowContentHeader,
     showTitleInHeaderContent,
@@ -180,6 +183,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     a11yConfig,
     placeholder,
     portalContainer,
+    onSelectedSectionChange,
+    onToggleHeaderContent,
     ...rest
   } = props;
 
@@ -724,6 +729,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   if (headerContentHeight === 0) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
+
+  useEffect(() => {
+    if (typeof onToggleHeaderContent === 'function') {
+      onToggleHeaderContent(!!headerContentHeight);
+    }
+  }, [!!headerContentHeight]);
 
   return (
     <div
