@@ -84,7 +84,7 @@ export function CreateAccountForm() {
               onChange={(e) => {
                 setValues({
                   ...values,
-                  payment: e.detail.value
+                  birthday: e.detail.value
                 });
               }}
             ></DatePicker>
