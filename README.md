@@ -41,17 +41,14 @@ You can find our documentation under the following links:
 
 - [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main) - Fiori 3 Components<br/>
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react)
-  [![](https://badgen.net/npm/v/@ui5/webcomponents-react/next?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react)
   [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react)](https://bundlephobia.com/result?p=@ui5/webcomponents-react)
 
 - [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts) - Fiori Charts<br />
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react-charts?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
-  [![](https://badgen.net/npm/v/@ui5/webcomponents-react-charts/next?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
   [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react-charts)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts)
 
 - [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base) - Utils<br />
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react-base?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
-  [![](https://badgen.net/npm/v/@ui5/webcomponents-react-base/next?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
   [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react-base)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-base)
 
 - [@ui5/cra-template-webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template) - Template for `create-react-app` <br/>
