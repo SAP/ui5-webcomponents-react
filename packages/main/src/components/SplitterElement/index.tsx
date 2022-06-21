@@ -86,9 +86,6 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
     }
   }, [reset, size]);
 
-  if (reset) {
-    return null;
-  }
   return (
     <div
       ref={componentRef}
