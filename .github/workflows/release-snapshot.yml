@@ -41,7 +41,7 @@ jobs:
             --exact \
             --no-push \
             --no-git-tag-version \
-            --dist-tag dev \
+            --pre-dist-tag dev \
             --allow-branch ${current_branch}
 
         env:
