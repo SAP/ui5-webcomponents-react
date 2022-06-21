@@ -7,7 +7,6 @@ import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useEffect } from 'react';
 import 'tocbot/dist/tocbot.css';
-import { DocsPage } from './components/DocsPage';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -15,7 +14,6 @@ const argTypesCategoryCommonProps = {
 
 export const parameters = {
   viewMode: 'docs',
-  docs: { page: DocsPage },
   actions: { argTypesRegex: '^on.*' },
   controls: {
     sort: 'requiredFirst'
@@ -24,7 +22,14 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['Getting Started', 'Migration Guide', 'Knowledge Base', 'Internationalization', 'Public Utils']
+      order: [
+        'Getting Started',
+        'Knowledge Base',
+        'Internationalization',
+        'Public Utils',
+        'Change Log',
+        'Migration Guide'
+      ]
     }
   },
   chromatic: { pauseAnimationAtEnd: true }
