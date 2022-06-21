@@ -12,10 +12,12 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data } }) => {
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
+  const hasRows = rows?.length > 0;
   return [
     ...deps,
+    hasRows,
     state.tableClientWidth,
     state.hiddenColumns.length,
     visibleColumns?.length,
@@ -161,7 +163,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return columns;
   }
 
-  //map columns to visibleColumns
+  // map columns to visibleColumns
   const visibleColumns = instance.visibleColumns
     .map((visCol) => {
       const column = columns.find((col) => {
