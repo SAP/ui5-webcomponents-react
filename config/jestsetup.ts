@@ -4,6 +4,7 @@ import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
 import '@ui5/webcomponents-react/dist/Assets.js';
+import { registerLocaleDataLoader } from '@ui5/webcomponents-base/dist/asset-registries/LocaleData.js';
 
 const DEFAULT_REACT_VERSION = '18';
 
@@ -102,6 +103,10 @@ beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
   setupMatchMedia();
+
+  registerLocaleDataLoader('en', async (runtimeLocaleId) => {
+    return (await fetch(`https://ui5.sap.com/1.60.2/resources/sap/ui/core/cldr/en.json`)).json();
+  });
 
   // await import('@ui5/webcomponents-react/dist/Assets.js');
 });
