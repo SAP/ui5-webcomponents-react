@@ -643,7 +643,6 @@ exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
