@@ -3,7 +3,9 @@
 exports[`Calendar Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-calendar
+    data-sap-ui-fastnavgroup="true"
     selection-mode="Single"
+    ui5-calendar=""
   />
 </DocumentFragment>
 `;

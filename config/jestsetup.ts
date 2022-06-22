@@ -103,12 +103,6 @@ beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
   setupMatchMedia();
-
-  registerLocaleDataLoader('en', async (runtimeLocaleId) => {
-    return (await fetch(`https://ui5.sap.com/1.60.2/resources/sap/ui/core/cldr/en.json`)).json();
-  });
-
-  // await import('@ui5/webcomponents-react/dist/Assets.js');
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);
