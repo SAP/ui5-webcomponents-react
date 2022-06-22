@@ -3,6 +3,8 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
+import '@ui5/webcomponents-react/dist/Assets.js';
+import { registerLocaleDataLoader } from '@ui5/webcomponents-base/dist/asset-registries/LocaleData.js';
 
 const DEFAULT_REACT_VERSION = '18';
 
@@ -101,8 +103,6 @@ beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
   setupMatchMedia();
-
-  await import('@ui5/webcomponents-react/dist/Assets.js');
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);
