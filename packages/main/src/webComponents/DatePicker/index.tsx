@@ -140,11 +140,11 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<DatePickerDomRef, { value: string; valid: boolean }>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string; valid: boolean }>) => void;
+  onInput?: (event: Ui5CustomEvent<DatePickerDomRef, { value: string; valid: boolean }>) => void;
 }
 
 /**

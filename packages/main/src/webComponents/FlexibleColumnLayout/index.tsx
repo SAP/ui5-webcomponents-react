@@ -109,7 +109,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
    */
   onLayoutChange?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      FlexibleColumnLayoutDomRef,
       {
         layout: FCLLayout | keyof typeof FCLLayout;
         columnLayout: unknown[];

@@ -39,7 +39,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    */
   onCancel?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      ViewSettingsDialogDomRef,
       { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
     >
   ) => void;
@@ -48,7 +48,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    */
   onConfirm?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      ViewSettingsDialogDomRef,
       { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
     >
   ) => void;

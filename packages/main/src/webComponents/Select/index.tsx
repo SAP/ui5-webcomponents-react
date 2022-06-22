@@ -76,7 +76,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
   /**
    * Fired when the selected option changes.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLSelectElement, { selectedOption: HTMLElement }>) => void;
+  onChange?: (event: Ui5CustomEvent<SelectDomRef, { selectedOption: HTMLElement }>) => void;
 }
 
 /**

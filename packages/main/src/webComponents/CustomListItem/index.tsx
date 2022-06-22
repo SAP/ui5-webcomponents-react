@@ -33,7 +33,7 @@ export interface CustomListItemPropTypes extends CustomListItemAttributes, Commo
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<CustomListItemDomRef>) => void;
 }
 
 /**

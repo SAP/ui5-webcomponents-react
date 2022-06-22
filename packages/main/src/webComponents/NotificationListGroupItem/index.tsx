@@ -71,11 +71,11 @@ export interface NotificationListGroupItemPropTypes extends NotificationListGrou
   /**
    * Fired when the `NotificationListItemBase` is expanded/collapsed by user interaction.
    */
-  onToggle?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
 }
 
 /**

@@ -77,7 +77,7 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
    */
   onLayoutChange?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      DynamicSideContentDomRef,
       {
         currentBreakpoint: string;
         previousBreakpoint: string;

@@ -162,31 +162,31 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   /**
    * Fired when a token is about to be deleted.
    */
-  onTokenDelete?: (event: Ui5CustomEvent<HTMLInputElement, { token: HTMLElement }>) => void;
+  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, { token: HTMLElement }>) => void;
   /**
    * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
    */
-  onValueHelpTrigger?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onValueHelpTrigger?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
   /**
    * Fired when the value of the component changes at each keystroke, and when a suggestion item has been selected.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement; targetRef: HTMLElement }>
+    event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement; targetRef: HTMLElement }>
   ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

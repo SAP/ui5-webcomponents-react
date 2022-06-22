@@ -38,7 +38,7 @@ export interface SideNavigationPropTypes extends SideNavigationAttributes, Commo
   /**
    * Fired when the selection has changed via user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<SideNavigationDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

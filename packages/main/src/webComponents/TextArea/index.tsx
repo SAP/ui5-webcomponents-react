@@ -113,11 +113,11 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
+  onChange?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
   /**
    * Fired when the value of the component changes at each keystroke or when something is pasted.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
+  onInput?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 }
 
 /**

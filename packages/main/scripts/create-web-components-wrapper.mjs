@@ -228,7 +228,7 @@ const getEventParameters = (name, parameters) => {
 
   const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
 
-  const eventTarget = Utils.getEventTargetForComponent(name);
+  const eventTarget = `${name}DomRef`;
 
   if (resolvedEventParameters.length === 0) {
     return {

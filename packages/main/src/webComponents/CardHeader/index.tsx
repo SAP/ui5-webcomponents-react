@@ -46,7 +46,7 @@ export interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonPr
    *
    * **Note:** The event would be fired only if the `interactive` property is set to true.
    */
-  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClick?: (event: Ui5CustomEvent<CardHeaderDomRef>) => void;
 }
 
 /**

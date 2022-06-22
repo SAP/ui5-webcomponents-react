@@ -1,7 +1,8 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
@@ -65,7 +66,7 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
    *
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: (event: Ui5CustomEvent<SegmentedButtonItemDomRef>) => void;
 }
 
 /**

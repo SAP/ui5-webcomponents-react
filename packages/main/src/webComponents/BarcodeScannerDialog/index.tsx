@@ -21,11 +21,13 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
   /**
    * Fires when the scan fails with error.
    */
-  onScanError?: (event: Ui5CustomEvent<HTMLElement, { message: string }>) => void;
+  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { message: string }>) => void;
   /**
    * Fires when the scan is completed successfuuly.
    */
-  onScanSuccess?: (event: Ui5CustomEvent<HTMLElement, { text: string; rawBytes: Record<string, unknown> }>) => void;
+  onScanSuccess?: (
+    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { text: string; rawBytes: Record<string, unknown> }>
+  ) => void;
 }
 
 /**

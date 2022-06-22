@@ -52,7 +52,7 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
   /**
    * Fired when the component checked state changes.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<SwitchDomRef>) => void;
 }
 
 /**

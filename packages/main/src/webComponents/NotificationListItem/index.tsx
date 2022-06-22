@@ -88,7 +88,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef>) => void;
 }
 
 /**

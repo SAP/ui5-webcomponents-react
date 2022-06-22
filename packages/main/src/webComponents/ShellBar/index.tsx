@@ -119,27 +119,27 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
   /**
    * Fired, when the co pilot is activated.
    */
-  onCoPilotClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement }>) => void;
+  onCoPilotClick?: (event: Ui5CustomEvent<ShellBarDomRef, { targetRef: HTMLElement }>) => void;
   /**
    * Fired, when the logo is activated.
    */
-  onLogoClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement }>) => void;
+  onLogoClick?: (event: Ui5CustomEvent<ShellBarDomRef, { targetRef: HTMLElement }>) => void;
   /**
    * Fired, when a menu item is activated **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    */
-  onMenuItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onMenuItemClick?: (event: Ui5CustomEvent<ShellBarDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired, when the notification icon is activated.
    */
-  onNotificationsClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement }>) => void;
+  onNotificationsClick?: (event: Ui5CustomEvent<ShellBarDomRef, { targetRef: HTMLElement }>) => void;
   /**
    * Fired, when the product switch icon is activated. **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    */
-  onProductSwitchClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement }>) => void;
+  onProductSwitchClick?: (event: Ui5CustomEvent<ShellBarDomRef, { targetRef: HTMLElement }>) => void;
   /**
    * Fired, when the profile slot is present.
    */
-  onProfileClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement }>) => void;
+  onProfileClick?: (event: Ui5CustomEvent<ShellBarDomRef, { targetRef: HTMLElement }>) => void;
 }
 
 /**

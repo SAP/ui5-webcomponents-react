@@ -60,7 +60,7 @@ export interface PanelPropTypes extends PanelAttributes, CommonProps {
   /**
    * Fired when the component is expanded/collapsed by user interaction.
    */
-  onToggle?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onToggle?: (event: Ui5CustomEvent<PanelDomRef>) => void;
 }
 
 /**

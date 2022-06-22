@@ -74,29 +74,29 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
    */
-  onFileNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onFileNameClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the `fileName` property gets changed.
    *
    * **Note:** An edit button is displayed on each item, when the `UploadCollectionItem` `type` property is set to `Detail`.
    */
-  onRename?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onRename?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the retry button is pressed.
    *
    * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
    */
-  onRetry?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onRetry?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the terminate button is pressed.
    *
    * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
-  onTerminate?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onTerminate?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 }
 
 /**

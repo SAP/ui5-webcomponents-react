@@ -71,7 +71,7 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
   /**
    * Fired when a tab is selected.
    */
-  onTabSelect?: (event: Ui5CustomEvent<HTMLElement, { tab: HTMLElement; tabIndex: number }>) => void;
+  onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, { tab: HTMLElement; tabIndex: number }>) => void;
 }
 
 /**

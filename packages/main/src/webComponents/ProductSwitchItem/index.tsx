@@ -47,7 +47,7 @@ export interface ProductSwitchItemPropTypes extends ProductSwitchItemAttributes,
   /**
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
-  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClick?: (event: Ui5CustomEvent<ProductSwitchItemDomRef>) => void;
 }
 
 /**

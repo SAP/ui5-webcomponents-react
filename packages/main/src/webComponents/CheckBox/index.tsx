@@ -87,7 +87,7 @@ export interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps,
   /**
    * Fired when the component checked state changes.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<CheckBoxDomRef>) => void;
 }
 
 /**
