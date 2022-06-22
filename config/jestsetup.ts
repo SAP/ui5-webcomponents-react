@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
-import('@ui5/webcomponents-react/dist/Assets.js');
+import '@ui5/webcomponents-react/dist/Assets.js';
 
 const DEFAULT_REACT_VERSION = '18';
 
