@@ -232,7 +232,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const dynamicPageStyles = { ...style };
-  if (headerContentHeight === 0) {
+  if (headerContentHeight === 0 && headerContent) {
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 

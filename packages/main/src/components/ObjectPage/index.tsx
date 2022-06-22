@@ -727,7 +727,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   );
 
   const objectPageStyles = { ...style };
-  if (headerContentHeight === 0) {
+  if (headerContentHeight === 0 && headerContent) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
