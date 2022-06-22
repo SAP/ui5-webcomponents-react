@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.4...v0.25.5) (2022-06-22)
+
+
+### Bug Fixes
+
+* **ActionSheet:** don't scroll page on keyDown/Up, correct margin of buttons ([#3093](https://github.com/SAP/ui5-webcomponents-react/issues/3093)) ([da2c5a4](https://github.com/SAP/ui5-webcomponents-react/commit/da2c5a442e3ffad9f2099493132821543069e7ee)), closes [#3092](https://github.com/SAP/ui5-webcomponents-react/issues/3092)
+* **AnalyticalTable:** adjust column scaling on data change ([#3102](https://github.com/SAP/ui5-webcomponents-react/issues/3102)) ([328fc7b](https://github.com/SAP/ui5-webcomponents-react/commit/328fc7b04d21c7db2576cb7652219e3d72146d9a))
+* **DynamicPageTitle:** use "large" font size for title if no `headerContent` is set ([#3109](https://github.com/SAP/ui5-webcomponents-react/issues/3109)) ([40eef51](https://github.com/SAP/ui5-webcomponents-react/commit/40eef51dbced691ea2b83ea6daebe59c459dafdb))
+* **SplitterElement:** don't remount component on reset ([#3103](https://github.com/SAP/ui5-webcomponents-react/issues/3103)) ([84ef289](https://github.com/SAP/ui5-webcomponents-react/commit/84ef289c47a443daa906f8b99f58f319c924813b))
+
+
+### Features
+
+* **ObjectPage & DynamicPage:** add `onToggleHeaderContent` event ([#3094](https://github.com/SAP/ui5-webcomponents-react/issues/3094)) ([e5bcb5a](https://github.com/SAP/ui5-webcomponents-react/commit/e5bcb5a725141714e93647740c538ddbb40e99fd)), closes [#3091](https://github.com/SAP/ui5-webcomponents-react/issues/3091)
+
+
+
+
+
 ## [0.25.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.3...v0.25.4) (2022-06-15)
 
 
