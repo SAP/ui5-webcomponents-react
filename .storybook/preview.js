@@ -1,12 +1,13 @@
+import '@ui5/webcomponents-base/dist/features/F6Navigation.js';
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import '@ui5/webcomponents-react/dist/Assets';
+import '@ui5/webcomponents-icons/dist/AllIcons.js';
+import 'tocbot/dist/tocbot.css';
 import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
-import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-react/dist/Assets';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useEffect } from 'react';
-import 'tocbot/dist/tocbot.css';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -22,14 +23,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Getting Started',
-        'Knowledge Base',
-        'Internationalization',
-        'Public Utils',
-        'Change Log',
-        'Migration Guide'
-      ]
+      order: ['Getting Started', 'Change Log', 'Migration Guide', 'Knowledge Base']
     }
   },
   chromatic: { pauseAnimationAtEnd: true }
