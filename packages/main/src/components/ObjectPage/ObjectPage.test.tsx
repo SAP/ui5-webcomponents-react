@@ -1,4 +1,4 @@
-import { render } from '@shared/tests';
+import { screen, render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 import {
@@ -178,14 +178,12 @@ describe('ObjectPage', () => {
   });
 
   test('with anchor-bar', () => {
-    const { asFragment, queryByTitle, rerender, container } = render(
-      renderComponent({ headerTitle, headerContent, footer })
-    );
-    expect(queryByTitle('Expand Header')).toBeNull();
-    expect(queryByTitle('Pin Header')).toBeNull();
+    const { asFragment, container, rerender } = render(renderComponent({ headerTitle, headerContent, footer }));
+    expect(container.querySelector('[tooltip="Expand Header"]')).toBeNull();
+    expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
     rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true }));
-    expect(queryByTitle('Expand Header')).toBeVisible();
-    expect(queryByTitle('Pin Header')).toBeNull();
+    expect(container.querySelector('[tooltip="Expand Header"]')).toBeVisible();
+    expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
 
     //needs mocking, otherwise won't work
     /* rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true, headerContentPinnable: true }));
