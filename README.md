@@ -124,20 +124,17 @@ npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
-You will find this component most likely in `src/App.js`:
+You will find this component most likely in `src/index.js`:
 
 ```jsx
 import { ThemeProvider } from '@ui5/webcomponents-react';
 ...
-render() {
-  return (
-    <div>
-      <ThemeProvider>
-        <MyApp />
-      </ThemeProvider>
-    </div>
-  );
-}
+const root = createRoot(document.getElementById("root"));
+root.render(
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+);
 ```
 
 Then you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />

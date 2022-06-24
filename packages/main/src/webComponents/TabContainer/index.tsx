@@ -58,14 +58,14 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
    * Defines the button which will open the overflow menu. If nothing is provided to this slot, the default button will be used.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   overflowButton?: ReactNode;
   /**
    * Defines the button which will open the start overflow menu if available. If nothing is provided to this slot, the default button will be used.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   startOverflowButton?: ReactNode;
   /**

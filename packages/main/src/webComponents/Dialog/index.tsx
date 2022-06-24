@@ -81,7 +81,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
    * Defines the footer HTML Element.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   footer?: ReactNode | ReactNode[];
   /**
@@ -90,7 +90,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   header?: ReactNode | ReactNode[];
   /**

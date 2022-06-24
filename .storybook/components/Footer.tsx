@@ -13,7 +13,7 @@ import { ThemingParameters, useResponsiveContentPadding } from '@ui5/webcomponen
 import React, { useRef } from 'react';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 
-export const Footer = () => {
+export const Footer = ({ style }) => {
   const popoverRef = useRef(null);
   const footerRef = useRef(null);
   const responsivePaddingClass = useResponsiveContentPadding(footerRef.current);
@@ -37,7 +37,8 @@ export const Footer = () => {
           left: 0,
           right: 0,
           height: 'auto',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          ...style
         }}
       >
         <FlexBox
