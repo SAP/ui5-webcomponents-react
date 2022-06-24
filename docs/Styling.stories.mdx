@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/addon-docs';
+import { MyCustomElement } from './styling/MyCustomElement';
+import { ThemeProvider } from '@ui5/webcomponents-react';
+import { Footer } from '@docs/Footer';
+
+<Meta title="Knowledge Base/Styling" />
+
+# Styling
+
+You can easily change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
+Per default, we are injecting the Fiori 3 theme parameters as CSS Variables into the `<head>`.
+If you want to change the color of all texts, you can do that by creating another `style` tag with the following content:
+
+```html
+<style>
+  :root {
+    --sapTextColor: limegreen;
+  }
+</style>
+```
+
+As a consequence, all HTML Elements in the subtree where this style was applied are now displaying their texts in `limegreen` instead of `#32363a` which would be the default value for Fiori 3.
+You can change CSS Variables on any level - in the head, or on every single element by using either CSS classes or element style.
+
+A full list of all supported CSS Variables can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/main/packages/base/src/styling/ThemingParameters.ts)
+or in the [SAPUI5 Theming Parameters Toolbox](https://sapui5.hana.ondemand.com/test-resources/sap/m/demokit/theming/webapp/index.html).
+
+### Reuse global style classes
+
+The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
+All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react/dist/GlobalStyleClasses";`.
+
+| CSS Class      | Description                                                                                                       |
+| -------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `sapScrollBar` | If added to an container that supports scrolling, the scrollbar will be styled according to the Fiori guidelines. |
+
+#### Use default browser scrollbar
+
+Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent these components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
+
+### Style your own components
+
+It's quite likely that you have to create some custom components when you are building an app.
+In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming.
+If you want to style your components with the `react-jss` syntax, you can use our custom `jss` styling hook.
+
+`react-jss` comes already as a dependency of `@ui5/webcomponents-react` to your project - but we recommend adding it to your `package.json` as well.
+**Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
+
+You can then create a custom component by following this recipe:
+
+```jsx
+import React from 'react';
+import { createUseStyles } from 'react-jss';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+
+const styles = {
+  container: {
+    backgroundColor: ThemingParameters.sapBackgroundColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
+
+const useStyles = createUseStyles(styles, { name: 'MyCustomElement' });
+
+const MyCustomElement = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
+        My Text
+      </span>
+    </div>
+  );
+};
+```
+
+This would then be the result:
+
+<ThemeProvider>
+  <MyCustomElement />
+</ThemeProvider>
+
+<Footer />
