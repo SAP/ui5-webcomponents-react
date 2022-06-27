@@ -13,9 +13,7 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "sideEffects": [
-    "./polyfill/*"
-  ],
+  "sideEffects": false,
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc"
