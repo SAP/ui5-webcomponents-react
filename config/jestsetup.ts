@@ -1,8 +1,6 @@
 import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.cjs';
 import '@testing-library/jest-dom';
-import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
-import 'whatwg-fetch';
 import '@ui5/webcomponents-react/dist/Assets.js';
 
 const DEFAULT_REACT_VERSION = '18';
@@ -80,12 +78,6 @@ const setupMatchMedia = () => {
   });
 };
 
-Object.defineProperty(globalThis, 'crypto', {
-  value: {
-    randomUUID: () => `1337`
-  }
-});
-
 const consoleError = console.error;
 console.error = (message: string | Error, ...args) => {
   if (typeof message === 'string' && message.includes('Error: Could not parse CSS stylesheet')) {
@@ -102,6 +94,18 @@ beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
   setupMatchMedia();
+  const mockIntersectionObserver = jest.fn();
+  mockIntersectionObserver.mockReturnValue({
+    observe: () => null,
+    unobserve: () => null,
+    disconnect: () => null
+  });
+  window.IntersectionObserver = mockIntersectionObserver;
+  Object.defineProperty(globalThis, 'crypto', {
+    value: {
+      randomUUID: () => `1337`
+    }
+  });
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);
