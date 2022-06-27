@@ -72,6 +72,7 @@
     "webComponents",
     "wrappers",
     "CHANGELOG.md",
+    "jestSetup.js",
     "LICENSE",
     "NOTICE.txt",
     "README.md"

@@ -17,20 +17,55 @@ or the [changelog](?path=/docs/change-log--page)._
 
 <TableOfContent headingSelector="h2.sbdocs-h2" />
 
-## Migrating from 0.23.x to 0.24.0
+## From 0.25.x to 0.26.0
+
+### Removed polyfills
+
+In 0.26.0, we have removed the polyfill imports `@ui5/webcomponents-react-base/polyfill/Safari` (all features supported now) and `@ui5/webcomponents-react-base/polyfill/IE11` (end of life).
+As a consequence, the internal dependencies of `@ui5/webcomponents-react-base` are cleaned up as well,
+so you'll most likely need to install `resize-observer-polyfill` on your own for running tests with Jest (see next section).
+
+```shell
+npm install resize-observer-polyfill --save-dev
+# or if you are using yarn
+yarn add resize-observer-polyfill --dev
+```
+
+### Improved Jest Setup
+
+In order to run Tests with Jest, there has always been the need of adding additional polyfills to the Jest environment.
+With 0.26.0, things are changing a little:
+
+1. You have to install `resize-observer-polyfill` on your own because it's not longer a dependency of `@ui5/webcomponents-react-base`.
+   ```
+   npm install resize-observer-polyfill --save-dev
+   ```
+2. We now offer an improved way of adding the additional APIs to the Jest environment by exposing a file which is setting up the
+   jest environment for you. You can import it via `import '@ui5/webcomponents-react/jestSetup.js';`.
+
+If you are using `create-react-app`, your simplified `src/setupTests.js` file looks like:
+
+```js
+import ResizeObserverPolyfill from 'resize-observer-polyfill';
+import '@ui5/webcomponents-react/jestSetup.js';
+
+window.ResizeObserver = ResizeObserverPolyfill;
+```
+
+## From 0.23.x to 0.24.0
 
 - The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
 - The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
 - The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement your own `className` constructor.
 
-## Migrating from 0.21.x to 0.22.0
+## From 0.21.x to 0.22.0
 
 **useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
 
 You will not need to change anything in your app's code base, since all components should already be wrapped by the `ThemeProvider`, but now you have to make sure that even your test components are wrapped inside of it.
 Otherwise, translatable components will likely not render.
 
-## Migrating from 0.19.x to 0.20.0
+## From 0.19.x to 0.20.0
 
 ### Changed TypeScript `interfaces` for `ref`
 
@@ -97,7 +132,7 @@ Affected Interfaces:
 - `MessageViewDomRef`<br />
   new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
 
-## Migrating from 0.18.x to 0.19.0
+## From 0.18.x to 0.19.0
 
 ### VariantManagement
 
@@ -146,7 +181,7 @@ Removed all deprecated values and enum keys that consisted of uppercase letters 
 - **`TableSelectionMode`:** `NONE`, `SINGLE_SELECT`, `MULTI_SELECT` has been transformed to PascalCase notation.
 - **`TableVisibleRowCountMode`:** `FIXED`, `AUTO`, `INTERACTIVE` has been transformed to PascalCase notation.
 
-## Migrating from 0.17.x to 0.18.0
+## From 0.17.x to 0.18.0
 
 In this release, the UI5 Web Components have renamed lots of properties in order to pave the way to the 1.0.0 release.
 You can check the list of all breaking changes of the UI5 Web Components [here](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.0-rc.15).<br />
@@ -356,7 +391,7 @@ The SegmentedButton no longer accepts `ToggleButton` as children but expects `Se
 
 <br />
 
-## Migrating from 0.16.x to 0.17.0
+## From 0.16.x to 0.17.0
 
 ### Consolidate API of ObjectPage and DynamicPage
 
@@ -514,7 +549,7 @@ If you need this check, you'll need to replace it with `window.retina || window.
 The `Logger` and `LogLevel` have been removed without any replacement, you can use `console.log/warn/info/error` as replacements.
 In case you need the full functionality of the `Logger`, feel free to copy the [source code](https://github.com/SAP/ui5-webcomponents-react/blob/7e060c85d9a247ceb296a9e720d8d393ed68782e/packages/base/src/utils/Logger.ts) into your project.
 
-## Migrating from 0.15.x to 0.16.0
+## From 0.15.x to 0.16.0
 
 <br />
 
@@ -552,7 +587,7 @@ Now:
 </FilterBar>
 ```
 
-## Migrating from 0.14.x to 0.15.0
+## From 0.14.x to 0.15.0
 
 <br />
 
@@ -594,7 +629,7 @@ npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/
   </a> after the codemod finishes for consistent formatting.
 </MessageStrip>
 
-## Migrating from 0.13.x to 0.14.0
+## From 0.13.x to 0.14.0
 
 <br />
 
@@ -737,7 +772,7 @@ const pleaseWaitText = i18nBundle.getText('PLEASE_WAIT');
 const withParameters = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
 ```
 
-## Migrating from 0.12.x to 0.13.0
+## From 0.12.x to 0.13.0
 
 <br />
 
@@ -865,7 +900,7 @@ will become
 />
 ```
 
-## Migrating from 0.11.x to 0.12.0
+## From 0.11.x to 0.12.0
 
 <br />
 
@@ -876,7 +911,7 @@ If you previously had `import "@ui5/webcomponents-icons/dist/icons/accept.js"`, 
 
 <br />
 
-## Migrating from 0.10.x to 0.11.0
+## From 0.10.x to 0.11.0
 
 <br />
 
@@ -924,7 +959,7 @@ Example:
 Furthermore, the `onDelete` event is removed as the Token shouldn’t be used as a standalone component.
 Most probably, you will use the `Token` as child of `MultiInput` - there you can listen to the `onTokenDelete` event.
 
-## Migrating from 0.9.x to 0.10.0
+## From 0.9.x to 0.10.0
 
 <br />
 
@@ -1069,7 +1104,7 @@ const MyComponent = () => {
 };
 ```
 
-## Migrating from 0.8.x to 0.9.0
+## From 0.8.x to 0.9.0
 
 Migrating your app from 0.8.x to 0.9.0 requires a few updates to the API properties, this includes dependencies, theming, event handling and prop changes.
 
