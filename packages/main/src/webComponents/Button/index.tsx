@@ -1,10 +1,9 @@
-import { withWebComponent } from '../../internal/withWebComponent';
+import '@ui5/webcomponents/dist/Button.js';
+import { MouseEventHandler, ReactNode } from 'react';
+import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import '@ui5/webcomponents/dist/Button.js';
-import { ButtonDesign } from '../../enums';
-import { ReactNode } from 'react';
-import { MouseEventHandler } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent';
 
 interface ButtonAttributes {
   /**
