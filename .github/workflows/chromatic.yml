@@ -4,7 +4,7 @@ on: push
 
 jobs:
   chromatic:
-    if: ${{ github.actor == 'Harbarth, Lukas' }}
+    if: ${{ github.actor == 'Lukas742' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
