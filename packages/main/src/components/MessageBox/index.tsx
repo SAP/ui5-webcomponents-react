@@ -23,7 +23,7 @@ import {
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactElement, ReactNode, Ref, useState } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { MessageBoxActions } from '../../enums/MessageBoxActions';
@@ -127,7 +127,7 @@ const getIcon = (icon, type) => {
   }
 };
 
-const getActions = (actions, type): string[] => {
+const getActions = (actions, type): (string | ReactNode)[] => {
   if (actions && actions.length > 0) {
     return actions;
   }
@@ -216,8 +216,9 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const getInitialFocus = () => {
     const indexOfInitialFocus = internalActions.indexOf(initialFocus);
-    if (indexOfInitialFocus !== -1 && typeof internalActions[indexOfInitialFocus] === 'string') {
-      return `${internalActions[indexOfInitialFocus]}-${uniqueIds[indexOfInitialFocus]}`;
+    const actionToFocus = internalActions[indexOfInitialFocus] as string;
+    if (typeof actionToFocus === 'string') {
+      return `${actionToFocus}-${uniqueIds[indexOfInitialFocus]}`;
     }
     return initialFocus;
   };
@@ -256,26 +257,29 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
         {internalActions.map((action, index) => {
           if (typeof action !== 'string' && isValidElement(action)) {
             return cloneElement<ButtonPropTypes | { 'data-action': string }>(action, {
-              onClick: (action as ReactElement<ButtonPropTypes>)?.props?.onClick
+              onClick: action?.props?.onClick
                 ? (e) => {
-                    (action as ReactElement<ButtonPropTypes>)?.props?.onClick(e);
+                    action?.props?.onClick(e);
                     handleOnClose(e);
                   }
                 : handleOnClose,
               'data-action': action?.props?.['data-action'] ?? `${index}: custom action`
             });
           }
-          return (
-            <Button
-              id={`${action}-${uniqueIds[index]}`}
-              key={`${action}-${index}`}
-              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
-              onClick={handleOnClose}
-              data-action={action}
-            >
-              {actionTranslations[action] ?? action}
-            </Button>
-          );
+          if (typeof action === 'string') {
+            return (
+              <Button
+                id={`${action}-${uniqueIds[index]}`}
+                key={`${action}-${index}`}
+                design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+                onClick={handleOnClose}
+                data-action={action}
+              >
+                {actionTranslations[action] ?? action}
+              </Button>
+            );
+          }
+          return null;
         })}
       </footer>
     </Dialog>
