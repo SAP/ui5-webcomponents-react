@@ -84,7 +84,7 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
    *
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<ButtonDomRef>;
 }
 
 /**

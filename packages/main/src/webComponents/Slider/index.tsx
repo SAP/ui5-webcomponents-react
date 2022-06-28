@@ -55,11 +55,11 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<SliderDomRef>) => void;
   /**
    * Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<SliderDomRef>) => void;
 }
 
 /**

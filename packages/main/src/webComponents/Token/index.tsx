@@ -35,7 +35,7 @@ export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSe
   /**
    * Fired when the the component is selected by user interaction with mouse or by clicking space.
    */
-  onSelect?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onSelect?: (event: Ui5CustomEvent<TokenDomRef>) => void;
 }
 
 /**

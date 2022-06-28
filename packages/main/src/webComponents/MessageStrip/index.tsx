@@ -46,7 +46,7 @@ export interface MessageStripPropTypes extends MessageStripAttributes, CommonPro
   /**
    * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
    */
-  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClose?: (event: Ui5CustomEvent<MessageStripDomRef>) => void;
 }
 
 /**

@@ -46,7 +46,7 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
   /**
    * Fired when the user selects a color.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { color: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, { color: string }>) => void;
 }
 
 /**

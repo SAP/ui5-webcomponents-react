@@ -87,11 +87,11 @@ export interface MessageBoxPropTypes
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });

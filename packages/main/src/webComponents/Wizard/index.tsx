@@ -20,7 +20,7 @@ export interface WizardPropTypes extends WizardAttributes, CommonProps {
    * Fired when the step is changed by user interaction - either with scrolling, or by clicking on the steps within the component header.
    */
   onStepChange?: (
-    event: Ui5CustomEvent<HTMLElement, { step: HTMLElement; previousStep: HTMLElement; changeWithClick: boolean }>
+    event: Ui5CustomEvent<WizardDomRef, { step: HTMLElement; previousStep: HTMLElement; changeWithClick: boolean }>
   ) => void;
 }
 

@@ -60,17 +60,17 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    *
    * **Note:** The `onDrop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
    */
-  onDrop?: DragEventHandler<HTMLElement>;
+  onDrop?: DragEventHandler<UploadCollectionDomRef>;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<UploadCollectionDomRef, { selectedItems: unknown[] }>) => void;
 }
 
 /**

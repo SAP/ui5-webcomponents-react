@@ -61,15 +61,15 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
    * Fired when the display area is clicked.
    * The display area is the central area that contains the enlarged content of the currently selected item.
    */
-  onDisplayAreaClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onDisplayAreaClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
   /**
    * Fired when the thumbnails overflow button is clicked.
    */
-  onOverflowClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onOverflowClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
   /**
    * Fired when selection is changed by user interaction.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

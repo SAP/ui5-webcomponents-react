@@ -100,19 +100,19 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   /**
    * Fired after the component is closed. **This event does not bubble.**
    */
-  onAfterClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onAfterClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
   /**
    * Fired after the component is opened. **This event does not bubble.**
    */
-  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<HTMLElement, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, { escPressed: boolean }>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 /**

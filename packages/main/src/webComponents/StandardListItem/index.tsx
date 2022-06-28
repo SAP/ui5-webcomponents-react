@@ -66,7 +66,7 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<HTMLLIElement>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<StandardListItemDomRef>) => void;
 }
 
 /**

@@ -104,20 +104,20 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
    *
    * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    */
-  onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onLoadMore?: (event: Ui5CustomEvent<TableDomRef>) => void;
   /**
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    */
-  onPopinChange?: (event: Ui5CustomEvent<HTMLElement, { poppedColumns: unknown[] }>) => void;
+  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, { poppedColumns: unknown[] }>) => void;
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onRowClick?: (event: Ui5CustomEvent<HTMLElement, { row: HTMLElement }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, { row: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<HTMLElement, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
+    event: Ui5CustomEvent<TableDomRef, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
   ) => void;
 }
 

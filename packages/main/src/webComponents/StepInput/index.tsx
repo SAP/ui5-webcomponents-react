@@ -91,7 +91,7 @@ export interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProp
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<StepInputDomRef>) => void;
 }
 
 /**

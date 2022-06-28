@@ -90,17 +90,17 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
   /**
    * Fired when typing in input.
    *
    * **Note:** filterValue property is updated, input is changed.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
   /**
    * Fired when selection is changed by user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

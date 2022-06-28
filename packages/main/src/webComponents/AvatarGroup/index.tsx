@@ -48,11 +48,13 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
   /**
    * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
    */
-  onClick?: (event: Ui5CustomEvent<HTMLElement, { targetRef: HTMLElement; overflowButtonClicked: boolean }>) => void;
+  onClick?: (
+    event: Ui5CustomEvent<AvatarGroupDomRef, { targetRef: HTMLElement; overflowButtonClicked: boolean }>
+  ) => void;
   /**
    * Fired when the count of visible `Avatar` elements in the component has changed
    */
-  onOverflow?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onOverflow?: (event: Ui5CustomEvent<AvatarGroupDomRef>) => void;
 }
 
 /**
