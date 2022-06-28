@@ -621,16 +621,21 @@ allWebComponents
       .forEach((eventSpec) => {
         let eventParameters;
         if (eventSpec.native === 'true') {
+          const eventTarget = `${componentSpec.module}DomRef`;
           if (eventSpec.name === 'click') {
             eventParameters = {
-              tsType: 'MouseEventHandler<HTMLElement>',
+              tsType: `MouseEventHandler<${eventTarget}>`,
               importStatements: ["import { MouseEventHandler } from 'react';"]
             };
           } else if (eventSpec.name === 'drop') {
             eventParameters = {
-              tsType: 'DragEventHandler<HTMLElement>',
+              tsType: `DragEventHandler<${eventTarget}>`,
               importStatements: ["import { DragEventHandler } from 'react';"]
             };
+          } else {
+            console.warn(
+              `----------------------\n${componentSpec.module}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
+            );
           }
         } else {
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);

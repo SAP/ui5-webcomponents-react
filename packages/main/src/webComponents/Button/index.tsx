@@ -1,9 +1,10 @@
-import '@ui5/webcomponents/dist/Button.js';
-import { MouseEventHandler, ReactNode } from 'react';
-import { ButtonDesign } from '../../enums';
+import { withWebComponent } from '../../internal/withWebComponent';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import '@ui5/webcomponents/dist/Button.js';
+import { ButtonDesign } from '../../enums';
+import { ReactNode } from 'react';
+import { MouseEventHandler } from 'react';
 
 interface ButtonAttributes {
   /**
@@ -84,7 +85,7 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
    *
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<ButtonDomRef>;
 }
 
 /**
