@@ -3,7 +3,7 @@ import { OverflowToolbarToggleButton } from './index';
 import { renderWithDefine } from '@shared/tests';
 import React from 'react';
 import { Toolbar } from '../Toolbar';
-import { ToggleButton } from '../../ToggleButton';
+import { ToggleButton } from '../../webComponents';
 
 describe('OverflowToolbarToggleButton', () => {
   test('Show only icon when not in overflow', async () => {

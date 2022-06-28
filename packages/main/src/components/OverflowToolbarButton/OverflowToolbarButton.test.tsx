@@ -2,7 +2,7 @@ import { createCustomPropsTest } from '@shared/tests/utils';
 import { OverflowToolbarButton } from './index';
 import { renderWithDefine } from '@shared/tests';
 import React from 'react';
-import { Button } from '../../Button';
+import { Button } from '../../webComponents';
 import { Toolbar } from '../Toolbar';
 
 describe('OverflowToolbarButton', () => {
