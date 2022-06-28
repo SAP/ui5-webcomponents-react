@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.25.4",
+  "version": "0.25.5",
   "description": "Base for ui5-webcomponents-react",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -21,7 +21,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "core-js": "3.23.2",
+    "core-js": "3.23.3",
     "intersection-observer": "0.12.0",
     "resize-observer-polyfill": "1.5.1",
     "smoothscroll-polyfill": "0.4.4"

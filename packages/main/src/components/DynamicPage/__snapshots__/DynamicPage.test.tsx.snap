@@ -264,12 +264,12 @@ exports[`DynamicPage always show content header 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -643,7 +643,6 @@ exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
@@ -656,12 +655,12 @@ exports[`DynamicPage render footer 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -957,12 +956,12 @@ exports[`DynamicPage with content 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -1952,12 +1951,12 @@ exports[`DynamicPage without content 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
