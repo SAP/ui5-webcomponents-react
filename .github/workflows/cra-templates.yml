@@ -2,13 +2,15 @@ name: cra-templates
 
 on:
   push:
+    branches:
+      - 'main'
     paths:
-      - packages/cra-template/**/*
-      - packages/cra-template-seed/**/*
+      - 'packages/cra-template/**/*'
+      - 'packages/cra-template-seed/**/*'
   pull_request:
     paths:
-      - packages/cra-template/**/*
-      - packages/cra-template-seed/**/*
+      - 'packages/cra-template/**/*'
+      - 'packages/cra-template-seed/**/*'
 
 jobs:
   cra-template:
