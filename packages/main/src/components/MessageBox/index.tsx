@@ -31,6 +31,7 @@ import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon, IconPropTypes } from '../../webComponents/Icon';
@@ -96,7 +97,7 @@ export interface MessageBoxPropTypes
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
-const createUniqueIds = (internalActions) => {
+const createUniqueIds = (internalActions): (string | null)[] => {
   return internalActions.map((action) => {
     if (typeof action === 'string') {
       return `${performance.now() + Math.random()}`.split('.')[1];
@@ -126,7 +127,7 @@ const getIcon = (icon, type) => {
   }
 };
 
-const getActions = (actions, type) => {
+const getActions = (actions, type): string[] => {
   if (actions && actions.length > 0) {
     return actions;
   }
@@ -215,7 +216,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const getInitialFocus = () => {
     const indexOfInitialFocus = internalActions.indexOf(initialFocus);
-    if (~indexOfInitialFocus && typeof internalActions[indexOfInitialFocus] === 'string') {
+    if (indexOfInitialFocus && typeof internalActions[indexOfInitialFocus] === 'string') {
       return `${internalActions[indexOfInitialFocus]}-${uniqueIds[indexOfInitialFocus]}`;
     }
     return initialFocus;
@@ -226,6 +227,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
   // @ts-ignore
   const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
 
+  const messageBoxId = useIsomorphicId();
+
   return (
     <Dialog
       open={open}
@@ -235,7 +238,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}
-      accessibleName={accessibleName ?? `${titleToRender() ?? ''} ${typeof children === 'string' ? children : ''}`}
+      accessibleNameRef={`${messageBoxId}-title ${messageBoxId}-text`}
       initialFocus={getInitialFocus()}
       data-type={type}
     >
@@ -243,10 +246,12 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
         <header slot="header" className={classes.header}>
           {iconToRender}
           {iconToRender && <span className={classes.spacer} />}
-          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
+          <Title id={`${messageBoxId}-title`} level={TitleLevel.H2}>
+            {titleToRender()}
+          </Title>
         </header>
       )}
-      <Text>{children}</Text>
+      <Text id={`${messageBoxId}-text`}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
           if (typeof action !== 'string' && isValidElement(action)) {
