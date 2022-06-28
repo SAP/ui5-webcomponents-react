@@ -216,7 +216,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const getInitialFocus = () => {
     const indexOfInitialFocus = internalActions.indexOf(initialFocus);
-    if (indexOfInitialFocus && typeof internalActions[indexOfInitialFocus] === 'string') {
+    if (indexOfInitialFocus !== -1 && typeof internalActions[indexOfInitialFocus] === 'string') {
       return `${internalActions[indexOfInitialFocus]}-${uniqueIds[indexOfInitialFocus]}`;
     }
     return initialFocus;
