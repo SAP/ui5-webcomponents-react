@@ -1,14 +1,12 @@
-import { Device } from '@ui5/webcomponents-react-base';
-
 const styles = {
   filterItem: {
     marginBottom: '1rem',
-    flexBasis: Device.isIE() ? '13.125rem' : 'var(--_ui5wcr_filter_group_item_flex_basis)',
-    maxWidth: Device.isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))',
+    flexBasis: 'var(--_ui5wcr_filter_group_item_flex_basis)',
+    maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))',
     flexGrow: 1,
     flexShrink: 0,
     '&[data-with-toolbar=false]': {
-      maxWidth: Device.isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)'
+      maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)'
     }
   },
   filterItemDialog: {
