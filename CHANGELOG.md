@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.5...v0.25.6) (2022-06-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** announce column header popover with screen readers ([#3159](https://github.com/SAP/ui5-webcomponents-react/issues/3159)) ([6b18a4b](https://github.com/SAP/ui5-webcomponents-react/commit/6b18a4bc094b17736e57cf54bb0525901075dfd6)), closes [#3132](https://github.com/SAP/ui5-webcomponents-react/issues/3132)
+* **DynamicPage:** fix tooltip and aria-label for anchor bar buttons ([#3122](https://github.com/SAP/ui5-webcomponents-react/issues/3122)) ([b696d54](https://github.com/SAP/ui5-webcomponents-react/commit/b696d54ea936956a96809221c8d3bc3756c5b897))
+* **Form:** fix alignment of last group row ([#3155](https://github.com/SAP/ui5-webcomponents-react/issues/3155)) ([f819d7f](https://github.com/SAP/ui5-webcomponents-react/commit/f819d7fb0e0f40c420f9ffe3990eb4da45ccf970))
+* **MessageBox:** avoid duplicate aria announcement ([#3153](https://github.com/SAP/ui5-webcomponents-react/issues/3153)) ([344b977](https://github.com/SAP/ui5-webcomponents-react/commit/344b97706710ffef2e614e8667da065143a51120))
+
+
+
+
+
 ## [0.25.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.4...v0.25.5) (2022-06-22)
 
 
