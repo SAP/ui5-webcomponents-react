@@ -1,5 +1,5 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { DEVIATION, TARGET, ARIA_DESC_CARD_HEADER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -10,6 +10,7 @@ import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
 import { ObjectStatus } from '../ObjectStatus';
 import styles from './AnalyticalCardHeader.jss';
@@ -134,16 +135,33 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     valueState === ValueState.Success && classes.good
   );
 
-  const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
+  const shouldRenderContent = [value, unit, deviation, target].some(Boolean);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
+  const headerId = useIsomorphicId();
+
   return (
-    <div ref={ref} className={headerClasses} style={style} {...rest} onClick={onClick}>
+    <div
+      ref={ref}
+      className={headerClasses}
+      style={style}
+      id={headerId}
+      data-sap-ui-fastnavgroup="true"
+      tabIndex={-1}
+      role="heading"
+      aria-roledescription={i18nBundle.getText(ARIA_DESC_CARD_HEADER)}
+      aria-labelledby={`${headerId}-title`}
+      {...rest}
+      onClick={onClick}
+      slot={'header'}
+    >
       <div className={classes.headerContent}>
         <div className={classes.headerTitles}>
           <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-            <div className={classes.headerText}>{titleText}</div>
+            <div className={classes.headerText} id={`${headerId}-title`}>
+              {titleText}
+            </div>
             {counter && (
               <ObjectStatus className={classes.counter} state={counterState}>
                 {counter}

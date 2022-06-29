@@ -9,16 +9,14 @@ const styles = {
   },
   cardHeader: {
     ...spacing.sapUiContentPadding,
-    outlineOffset: '-0.125rem',
-    boxShadow: ThemingParameters.sapContent_HeaderShadow,
-    borderBottom: `0.0625rem solid ${ThemingParameters.sapTile_SeparatorColor}`,
     backgroundColor: ThemingParameters.sapTile_Background,
     fontFamily: ThemingParameters.sapFontHeaderFamily,
     '&:hover': {
-      backgroundColor: ThemingParameters.sapList_Hover_Background
+      backgroundColor: ThemingParameters.sapTile_Hover_Background,
+      boxShadow: ThemingParameters.sapContent_Shadow2
     },
     '&:active': {
-      backgroundColor: ThemingParameters.sapList_Hover_Background
+      backgroundColor: ThemingParameters.sapTile_Active_Background
     }
   },
   arrowIndicatorShape: {
@@ -56,31 +54,29 @@ const styles = {
   },
   headerText: {
     fontFamily: ThemingParameters.sapFontHeaderFamily,
-    fontWeight: 'normal', // was ThemingParameters.sapUiFontHeaderWeight
-    fontSize: ThemingParameters.sapFontHeader5Size,
+    fontWeight: `var(--sapFontHeaderWeight, bold)`,
+    fontSize: ThemingParameters.sapFontHeader6Size,
     color: ThemingParameters.sapTile_TitleTextColor,
     overflow: 'hidden',
-    display: '-webkit-box',
-    lineHeight: '18px',
-    maxHeight: '54px' /* height * number of lines */,
     WebkitLineClamp: '3' /* number of lines to show */,
-    WebkitBoxOrient: 'vertical'
-  },
-  subHeaderText: {
-    overflow: 'hidden',
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontWeight: 'normal',
-    fontSize: ThemingParameters.sapFontSize,
-    color: ThemingParameters.sapTile_TextColor,
-    textAlign: 'left',
+    WebkitBoxOrient: 'vertical',
     whiteSpace: 'normal',
     wordWrap: 'break-word',
+    textAlign: 'left',
+    textOverflow: 'ellipsis'
+  },
+  subHeaderText: {
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    fontWeight: 'normal',
+    color: ThemingParameters.sapTile_TextColor,
+    whiteSpace: 'normal',
+    wordWrap: 'break-word',
+    overflow: 'hidden',
+    textAlign: 'left',
     textOverflow: 'ellipsis',
     marginTop: '0.5rem',
     width: '100%',
-    display: '-webkit-box',
-    lineHeight: '16px',
-    maxHeight: '32px',
     WebkitLineClamp: '2',
     WebkitBoxOrient: 'vertical'
   },
