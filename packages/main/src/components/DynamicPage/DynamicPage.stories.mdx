@@ -37,6 +37,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
   title="Layouts & Floorplans / DynamicPage"
   component={DynamicPage}
   subcomponents={{ DynamicPageTitle, DynamicPageHeader }}
+  parameters={{
+    chromatic: { delay: 1000 }
+  }}
   argTypes={{
     title: {
       control: { disable: true }
