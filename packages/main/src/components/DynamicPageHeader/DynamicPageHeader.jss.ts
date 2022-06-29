@@ -1,4 +1,4 @@
-import { Device, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const DynamicPageHeaderStyles = {
@@ -9,6 +9,6 @@ export const DynamicPageHeaderStyles = {
     paddingTop: '1rem',
     paddingBottom: '1rem',
     display: `var(${DynamicPageCssVariables.headerDisplay})`,
-    overflow: Device.isIE() ? 'visible' : 'hidden'
+    overflow: 'hidden'
   }
 };

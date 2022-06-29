@@ -4,8 +4,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 import { unsafeStatic } from 'lit-html/static.js';
+import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 
 const scopeTag = (tag, tags, suffix) => {
   const resultTag = suffix && (tags || []).includes(tag) ? `${tag}-${suffix}` : tag;
@@ -72,7 +72,7 @@ class ObjectPageAnchorTab extends Tab {
               </span>`
             : undefined}
           ${context.withSubSections
-            ? html`<${scopeTag('ui5-icon', tags, suffix)}
+            ? html` <${scopeTag('ui5-icon', tags, suffix)}
                 name="slim-arrow-down"
                 class="objectPageSubSectionsIcon"
                 interactive

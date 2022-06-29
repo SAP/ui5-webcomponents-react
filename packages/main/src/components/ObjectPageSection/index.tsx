@@ -1,8 +1,8 @@
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './ObjectPageSection.jss';
-import clsx from 'clsx';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   /**

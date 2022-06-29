@@ -9,8 +9,8 @@ import { Button } from '../../webComponents/Button';
 import { AnalyticalTable } from './index';
 import {
   useIndeterminateRowSelection,
-  useRowDisableSelection,
-  useManualRowSelect
+  useManualRowSelect,
+  useRowDisableSelection
 } from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [

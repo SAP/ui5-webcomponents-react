@@ -1,6 +1,5 @@
 import {
   debounce,
-  Device,
   enrichEventWithDetails,
   ThemingParameters,
   useResponsiveContentPadding,
