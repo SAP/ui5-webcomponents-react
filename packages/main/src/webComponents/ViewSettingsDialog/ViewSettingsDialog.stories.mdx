@@ -3,7 +3,8 @@ import { ViewSettingsDialog } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -12,6 +13,9 @@ import { useRef } from 'react';
   argTypes={{
     filterItems: { control: { disable: true } },
     sortItems: { control: { disable: true } }
+  }}
+  parameters={{
+    chromatic: { delay: 1000 }
   }}
   args={{
     filterItems: (
@@ -59,6 +63,11 @@ import { useRef } from 'react';
   <Story name="Default">
     {(args) => {
       const ref = useRef();
+      useEffect(() => {
+        if (isChromatic) {
+          ref.current.show();
+        }
+      });
       return (
         <>
           <Button

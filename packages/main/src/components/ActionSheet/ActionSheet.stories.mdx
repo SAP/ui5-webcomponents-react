@@ -7,6 +7,7 @@ import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
 import { Button } from '../../webComponents/Button';
 import { ActionSheet } from './index';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ActionSheet"
@@ -40,7 +41,7 @@ import { ActionSheet } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [actionSheetOpen, setActionSheetOpen] = useState(args.open);
+      const [actionSheetOpen, setActionSheetOpen] = useState(isChromatic ?? args.open);
       return (
         <div>
           <Button

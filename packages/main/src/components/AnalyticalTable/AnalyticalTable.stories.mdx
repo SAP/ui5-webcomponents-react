@@ -8,6 +8,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
@@ -240,7 +241,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
     {(args) => {
       const disableRowFunc = (row) => row.original.age < 40;
       const [isFunc, setIsFunc] = useState(true);
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useRowDisableSelection example">
           {collapsed ? (
@@ -340,7 +341,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 <Canvas>
   <Story name="Plugin: useIndeterminateRowSelection" args={{ data: dataTree }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useIndeterminateRowSelection example">
@@ -388,7 +389,7 @@ If this key is found on the original data row, and it is `true`, this row will b
 <Canvas>
   <Story name="Plugin: useManualRowSelect" args={{ data: dataManualSelect }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       const [collapsedCode, setCollapsedCode] = useReducer((coll) => !coll, true);
       const [data, toggleFirstRowSelected] = useReducer((prev) => {
         const [, ...updatedData] = prev;
@@ -545,7 +546,7 @@ The instance of the `AnalyticalTable` exposes methods for scrolling to a specifi
 <Canvas>
   <Story name="Tree Table" args={{ data: dataTree, isTreeTable: true }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
           {collapsed ? (
@@ -614,7 +615,7 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
           }, 2000);
         }
       }, [loading, args.data, offset.current]);
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show infinite scroll table">
           {collapsed ? (
@@ -1175,7 +1176,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
         },
         [selectedRow]
       );
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with navigation indicator">
           {collapsed ? (

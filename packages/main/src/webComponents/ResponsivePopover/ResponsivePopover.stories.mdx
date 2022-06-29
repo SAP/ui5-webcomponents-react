@@ -14,6 +14,7 @@ import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { ResponsivePopover } from './index';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -45,7 +46,7 @@ import { ResponsivePopover } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(args.open);
+      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(isChromatic ?? args.open);
       return (
         <>
           <Button
