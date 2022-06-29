@@ -46,7 +46,7 @@ class ObjectPageAnchorTab extends Tab {
 
   static get stripTemplate() {
     return (context, tags, suffix) => {
-      return html` <div
+      return html`<div
         id="${ifDefined(context._id)}"
         class="${ifDefined(context.stripClasses)}"
         tabindex="${ifDefined(context._tabIndex)}"
