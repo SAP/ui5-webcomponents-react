@@ -15,6 +15,7 @@ import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { Popover } from './index';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / Popover"
@@ -41,7 +42,7 @@ import { Popover } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [popoverIsOpen, setPopoverIsOpen] = useState(args.open);
+      const [popoverIsOpen, setPopoverIsOpen] = useState(isChromatic || args.open);
       return (
         <>
           <Button
