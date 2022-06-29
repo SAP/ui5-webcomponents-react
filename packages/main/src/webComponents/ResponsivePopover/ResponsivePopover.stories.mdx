@@ -46,7 +46,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(isChromatic ?? args.open);
+      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(isChromatic || args.open);
       return (
         <>
           <Button

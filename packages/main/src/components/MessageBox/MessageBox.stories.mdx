@@ -38,7 +38,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [open, setOpen] = useState(isChromatic ?? args.open);
+      const [open, setOpen] = useState(isChromatic || args.open);
       const onButtonClick = () => {
         setOpen(true);
       };

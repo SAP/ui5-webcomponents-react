@@ -31,7 +31,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
         { img: Pc2, description: 'HT-10', text: 'Gaming PC' },
         { img: Pc1, description: 'HT-20', text: 'Business PC' }
       ];
-      const [open, setOpen] = useState(isChromatic ?? args.open);
+      const [open, setOpen] = useState(isChromatic || args.open);
       const onButtonClick = () => {
         setOpen(true);
       };

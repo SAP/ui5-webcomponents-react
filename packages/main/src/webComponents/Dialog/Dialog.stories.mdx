@@ -35,7 +35,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [dialogOpen, setDialogOpen] = useState(isChromatic ?? args.open);
+      const [dialogOpen, setDialogOpen] = useState(isChromatic || args.open);
       useEffect(() => {
         setDialogOpen(args.open);
       }, [args.open]);
