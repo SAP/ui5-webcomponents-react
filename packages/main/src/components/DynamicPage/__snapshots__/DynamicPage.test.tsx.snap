@@ -277,7 +277,7 @@ exports[`DynamicPage always show content header 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>
@@ -454,7 +454,7 @@ exports[`DynamicPage hider header button 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     >
       <form
         class="Form-form Form-labelSpan4"
@@ -668,7 +668,7 @@ exports[`DynamicPage render footer 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 1rem;"
+      style="padding-bottom: 1rem;"
     />
     <div
       class="DynamicPage-footer"
@@ -969,7 +969,7 @@ exports[`DynamicPage with content 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     >
       <form
         class="Form-form Form-labelSpan4"
@@ -1964,7 +1964,7 @@ exports[`DynamicPage without content 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>
