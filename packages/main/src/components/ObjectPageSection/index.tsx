@@ -1,28 +1,27 @@
 import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 import styles from './ObjectPageSection.jss';
 import clsx from 'clsx';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
-  /**
-   * Defines the title of the `ObjectPageSection`.
-   */
-  titleText?: string;
   /**
    * Defines the ID of the `ObjectPageSection`.<br />
    * __Note:__ The `id` is taken into account when the section selection changes.
    */
   id: string;
   /**
-   * Defines whether the title is always displayed in uppercase.
-   */
-  titleTextUppercase?: boolean;
-  /**
    * Defines the content of the `ObjectPageSection`.
    */
   children: ReactNode | ReactNode[];
+  /**
+   * Defines the title of the `ObjectPageSection`.
+   */
+  titleText?: string;
+  /**
+   * Defines whether the title is always displayed in uppercase.
+   */
+  titleTextUppercase?: boolean;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
@@ -34,9 +33,6 @@ const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: Re
 
   const classes = useStyles();
 
-  if (!id) {
-    throw new EmptyIdPropException('ObjectPageSection requires a unique ID property!');
-  }
   const htmlId = `ObjectPageSection-${id}`;
 
   const titleClasses = clsx(classes.title, titleTextUppercase && classes.uppercase);

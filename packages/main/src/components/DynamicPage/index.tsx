@@ -119,7 +119,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
-    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
+    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
   const isToggledRef = useRef(false);
 
@@ -164,9 +164,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
-      if (!Device.isIE()) {
-        setHeaderState(HEADER_STATES.AUTO);
-      }
+      setHeaderState(HEADER_STATES.AUTO);
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
       dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
@@ -211,12 +209,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   useEffect(() => {
     if (alwaysShowContentHeader) {
       setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-    } else if (!Device.isIE()) {
-      setHeaderState(HEADER_STATES.AUTO);
     }
   }, [alwaysShowContentHeader, setHeaderState]);
 
-  const anchorBarClasses = clsx(classes.anchorBar, Device.isIE() && classes.iEClass);
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
@@ -273,7 +268,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         })}
       <FlexBox
         data-component-name="DynamicPageAnchorBarContainer"
-        className={anchorBarClasses}
+        className={classes.anchorBar}
         ref={anchorBarRef}
         style={{
           top:
@@ -293,23 +288,11 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           a11yConfig={a11yConfig}
         />
       </FlexBox>
-      {Device.isIE() && (
-        <div
-          className={classes.iEBackgroundElement}
-          style={{
-            height: `${headerContentHeight + topHeaderHeight}px`,
-            width: `calc(100% - ${
-              dynamicPageRef?.current?.clientHeight < dynamicPageRef?.current?.scrollHeight ? '18px' : '0px'
-            })`
-          }}
-        />
-      )}
       <div
         ref={contentRef}
         data-component-name="DynamicPageContent"
         className={`${classes.contentContainer} ${responsivePaddingClass}`}
         style={{
-          marginTop: Device.isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
           paddingBottom: footer ? '1rem' : 0
         }}
       >

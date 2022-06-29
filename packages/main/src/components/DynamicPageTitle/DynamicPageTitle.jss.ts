@@ -28,11 +28,6 @@ export const DynamicPageTitleStyles = {
   phone: {
     [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
   },
-  iEClass: {
-    position: 'fixed',
-    // page width - padding - scrollbar
-    width: 'calc(100% - 18px - 4rem)'
-  },
   breadcrumbs: {
     minWidth: '50%',
     padding: '0.5rem 0 0.25rem 0'

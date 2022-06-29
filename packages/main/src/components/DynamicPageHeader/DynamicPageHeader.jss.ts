@@ -10,10 +10,5 @@ export const DynamicPageHeaderStyles = {
     paddingBottom: '1rem',
     display: `var(${DynamicPageCssVariables.headerDisplay})`,
     overflow: Device.isIE() ? 'visible' : 'hidden'
-  },
-  iEClass: {
-    position: 'fixed',
-    // page width - padding - scrollbar
-    width: 'calc(100% - 18px - 4rem)'
   }
 };

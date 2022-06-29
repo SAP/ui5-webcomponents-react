@@ -44,7 +44,7 @@ const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElem
   }, [headerPinned, topHeaderHeight, style]);
 
   const classes = useStyles();
-  const classNames = clsx(classes.header, className, Device.isIE() && classes.iEClass);
+  const classNames = clsx(classes.header, className);
 
   return (
     <div ref={ref} {...rest} className={classNames} data-component-name="DynamicPageHeader" style={headerStyles}>
