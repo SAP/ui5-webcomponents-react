@@ -93,6 +93,9 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
         accessor: '.',
         width: 100,
         disableResizing: true,
+        disableGroupBy: true,
+        disableFilters: true,
+        disableSortBy: true,
         Cell: ({ cell, row }) => {
           // console.log('This is your row data', row.original);
           return (
