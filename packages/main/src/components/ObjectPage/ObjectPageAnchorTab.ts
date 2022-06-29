@@ -72,7 +72,7 @@ class ObjectPageAnchorTab extends Tab {
               </span>`
             : undefined}
           ${context.withSubSections
-            ? html` <${scopeTag('ui5-icon', tags, suffix)}
+            ? html`<${scopeTag('ui5-icon', tags, suffix)}
                 name="slim-arrow-down"
                 class="objectPageSubSectionsIcon"
                 interactive
