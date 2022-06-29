@@ -5,6 +5,7 @@ import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 import { useReducer, useState } from 'react';
 import {
   Badge,
@@ -142,7 +143,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
     args={{ alwaysShowContentHeader: true, showHideHeaderButton: true, headerContentPinnable: true }}
   >
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with fixed header.">
           {collapsed ? (
@@ -207,7 +208,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
               ]
         );
       };
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with Variants">
           {collapsed ? (
@@ -257,7 +258,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 <Canvas>
   <Story name="with floating footer">
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with floating footer">
           {collapsed ? (
