@@ -22,7 +22,7 @@ module.exports = {
   core: {
     builder: 'webpack5'
   },
-  webpack: async (config) => {
+  webpackFinal: async (config) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
