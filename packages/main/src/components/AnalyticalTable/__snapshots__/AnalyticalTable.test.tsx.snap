@@ -3574,7 +3574,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               >
                 <div
                   aria-colindex="1"
-                  aria-label="Success To select the row, press the spacebar"
+                  aria-label="Success To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="0"
@@ -3593,7 +3593,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="2"
-                  aria-label=" To select the row, press the spacebar"
+                  aria-label=" To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="1"
@@ -3612,7 +3612,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="3"
-                  aria-label="Fra To select the row, press the spacebar"
+                  aria-label="Fra To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="2"
@@ -3633,7 +3633,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="4"
-                  aria-label="40 To select the row, press the spacebar"
+                  aria-label="40 To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="3"
@@ -3654,7 +3654,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="5"
-                  aria-label="MAR To select the row, press the spacebar"
+                  aria-label="MAR To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="4"
@@ -3675,7 +3675,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="6"
-                  aria-label="28 To select the row, press the spacebar"
+                  aria-label="28 To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="5"
@@ -3703,7 +3703,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               >
                 <div
                   aria-colindex="1"
-                  aria-label=" To select the row, press the spacebar"
+                  aria-label=" To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="0"
@@ -3721,7 +3721,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="2"
-                  aria-label=" To select the row, press the spacebar"
+                  aria-label=" To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="1"
@@ -3740,7 +3740,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="3"
-                  aria-label="bla To select the row, press the spacebar"
+                  aria-label="bla To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="2"
@@ -3761,7 +3761,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="4"
-                  aria-label="20 To select the row, press the spacebar"
+                  aria-label="20 To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="3"
@@ -3782,7 +3782,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="5"
-                  aria-label="Nei To select the row, press the spacebar"
+                  aria-label="Nei To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="4"
@@ -3803,7 +3803,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                 </div>
                 <div
                   aria-colindex="6"
-                  aria-label="50 To select the row, press the spacebar"
+                  aria-label="50 To select the row, press the spacebar."
                   aria-selected="false"
                   class="AnalyticalTable-tableCell"
                   data-column-index="5"
@@ -4597,7 +4597,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -4632,7 +4632,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  aria-label="To expand the row, press the spacebar"
+                  aria-label="To expand the row, press the spacebar."
                   style="cursor: pointer; padding-left: 0px;"
                   title="Toggle Row Expanded"
                 >
@@ -4653,7 +4653,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -4677,7 +4677,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -4701,7 +4701,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -4732,7 +4732,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -4755,7 +4755,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -4777,7 +4777,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -4801,7 +4801,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -4825,7 +4825,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -4856,7 +4856,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4865,7 +4865,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4874,7 +4874,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4883,7 +4883,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4892,7 +4892,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4908,7 +4908,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4917,7 +4917,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4926,7 +4926,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4935,7 +4935,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4944,7 +4944,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4960,7 +4960,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4969,7 +4969,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4978,7 +4978,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4987,7 +4987,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -4996,7 +4996,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6162,7 +6162,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To unselect the row, press the spacebar"
+                aria-label=" To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -6181,7 +6181,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="Fra To unselect the row, press the spacebar"
+                aria-label="Fra To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -6202,7 +6202,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To unselect the row, press the spacebar"
+                aria-label="40 To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -6223,7 +6223,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To unselect the row, press the spacebar"
+                aria-label="MAR To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -6244,7 +6244,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To unselect the row, press the spacebar"
+                aria-label="28 To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -6272,7 +6272,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -6291,7 +6291,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -6312,7 +6312,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -6333,7 +6333,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -6354,7 +6354,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -6382,7 +6382,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6391,7 +6391,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6400,7 +6400,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6409,7 +6409,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6418,7 +6418,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6434,7 +6434,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6443,7 +6443,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6452,7 +6452,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6461,7 +6461,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6470,7 +6470,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6486,7 +6486,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6495,7 +6495,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6504,7 +6504,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6513,7 +6513,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -6522,7 +6522,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -7256,7 +7256,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7294,7 +7294,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer; padding-right: 0px;"
                   title="Toggle Row Expanded"
                 >
@@ -7315,7 +7315,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -7339,7 +7339,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -7363,7 +7363,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -7394,7 +7394,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7432,7 +7432,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -7453,7 +7453,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -7477,7 +7477,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="longlonglong To select the row, press the spacebar"
+                aria-label="longlonglong To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -7501,7 +7501,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -7532,7 +7532,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7570,7 +7570,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -7591,7 +7591,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -7615,7 +7615,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="DEF To select the row, press the spacebar"
+                aria-label="DEF To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -7639,7 +7639,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -7671,7 +7671,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To unselect the row, press the spacebar"
+                aria-label=" To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7708,7 +7708,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -7729,7 +7729,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To unselect the row, press the spacebar"
+                aria-label="40 To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -7753,7 +7753,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="mnop To unselect the row, press the spacebar"
+                aria-label="mnop To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -7777,7 +7777,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To unselect the row, press the spacebar"
+                aria-label="28 To unselect the row, press the spacebar."
                 aria-selected="true"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -7808,7 +7808,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7843,7 +7843,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  aria-label="To expand the row, press the spacebar"
+                  aria-label="To expand the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -7864,7 +7864,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -7888,7 +7888,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -7912,7 +7912,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -7943,7 +7943,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -7966,7 +7966,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="Fra To select the row, press the spacebar"
+                aria-label="Fra To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -7988,7 +7988,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -8012,7 +8012,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -8036,7 +8036,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -8067,7 +8067,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -8102,7 +8102,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  aria-label="To expand the row, press the spacebar"
+                  aria-label="To expand the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -8123,7 +8123,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -8147,7 +8147,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -8171,7 +8171,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -8202,7 +8202,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -8225,7 +8225,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -8247,7 +8247,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -8271,7 +8271,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -8295,7 +8295,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -8685,7 +8685,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -8708,7 +8708,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -8729,7 +8729,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -8750,7 +8750,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -8771,7 +8771,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -10734,7 +10734,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -10853,7 +10853,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
               >
                 <span
                   aria-expanded="true"
-                  aria-label="To collapse the row, press the spacebar"
+                  aria-label="To collapse the row, press the spacebar."
                   style="cursor: pointer;"
                   title="Toggle Row Expanded"
                 >
@@ -14225,7 +14225,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label="Success To select the row, press the spacebar"
+                aria-label="Success To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -14244,7 +14244,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -14263,7 +14263,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="Fra To select the row, press the spacebar"
+                aria-label="Fra To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -14284,7 +14284,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -14305,7 +14305,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -14326,7 +14326,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="6"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="5"
@@ -14354,7 +14354,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -14372,7 +14372,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -14391,7 +14391,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -14412,7 +14412,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -14433,7 +14433,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="5"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="4"
@@ -14454,7 +14454,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
               </div>
               <div
                 aria-colindex="6"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="5"
@@ -15204,7 +15204,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label="Fra To select the row, press the spacebar"
+                aria-label="Fra To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -15225,7 +15225,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="40 To select the row, press the spacebar"
+                aria-label="40 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -15246,7 +15246,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="MAR To select the row, press the spacebar"
+                aria-label="MAR To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -15267,7 +15267,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="28 To select the row, press the spacebar"
+                aria-label="28 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -15295,7 +15295,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label="bla To select the row, press the spacebar"
+                aria-label="bla To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="0"
@@ -15316,7 +15316,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="2"
-                aria-label="20 To select the row, press the spacebar"
+                aria-label="20 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="1"
@@ -15337,7 +15337,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="3"
-                aria-label="Nei To select the row, press the spacebar"
+                aria-label="Nei To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="2"
@@ -15358,7 +15358,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               </div>
               <div
                 aria-colindex="4"
-                aria-label="50 To select the row, press the spacebar"
+                aria-label="50 To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 data-column-index="3"
@@ -15386,7 +15386,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15395,7 +15395,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15404,7 +15404,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15413,7 +15413,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15429,7 +15429,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15438,7 +15438,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15447,7 +15447,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15456,7 +15456,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15472,7 +15472,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15481,7 +15481,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15490,7 +15490,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
@@ -15499,7 +15499,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
+                aria-label=" To select the row, press the spacebar."
                 aria-selected="false"
                 class="AnalyticalTable-tableCell"
                 role="cell"
