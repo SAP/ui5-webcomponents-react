@@ -569,6 +569,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
+  const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
 
   const classes = useStyles();
 
@@ -634,6 +635,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         renderRowSubComponent,
         alwaysShowSubComponent,
         reactWindowRef,
+        showOverlay,
         uniqueId
       },
       ...reactTableOptions
@@ -939,18 +941,23 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           data-component-name="AnalyticalTableContainerWithScrollbar"
         >
           {showOverlay && (
-            <div
-              tabIndex={0}
-              aria-label={invalidTableA11yText}
-              role="region"
-              data-component-name="AnalyticalTableOverlay"
-              className={classes.overlay}
-            />
+            <>
+              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+                {invalidTableA11yText}
+              </span>
+              <div
+                tabIndex={0}
+                aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
+                role="region"
+                data-component-name="AnalyticalTableOverlay"
+                className={classes.overlay}
+              />
+            </>
           )}
           <div
             aria-labelledby={titleBarId}
             {...getTableProps()}
-            tabIndex={0}
+            tabIndex={showOverlay ? -1 : 0}
             role="grid"
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}

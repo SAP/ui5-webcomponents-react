@@ -188,6 +188,9 @@ const styles = {
     position: 'absolute',
     whiteSpace: 'nowrap',
     height: 0
+  },
+  hiddenA11yText: {
+    display: 'none'
   }
 };
 
