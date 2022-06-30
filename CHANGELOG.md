@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.6...v0.25.7) (2022-06-30)
+
+
+### Features
+
+* **AnalyticalTable:** add `showOverlay` prop ([#3167](https://github.com/SAP/ui5-webcomponents-react/issues/3167)) ([6a19602](https://github.com/SAP/ui5-webcomponents-react/commit/6a1960219bf5c3e349b11dbd9c0bda190e6c932b)), closes [#3134](https://github.com/SAP/ui5-webcomponents-react/issues/3134)
+
+
+
+
+
 ## [0.25.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.5...v0.25.6) (2022-06-29)
 
 
