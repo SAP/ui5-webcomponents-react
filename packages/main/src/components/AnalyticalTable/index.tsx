@@ -300,7 +300,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
-   * Setting this property to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
+   * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
    */
   showOverlay?: boolean;
   /**
