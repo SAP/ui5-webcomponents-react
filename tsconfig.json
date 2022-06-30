@@ -10,8 +10,9 @@
       "@docs/*": [".storybook/components/*"],
       "@shared/*": ["shared/*"],
       "@ui5/webcomponents-react": ["node_modules/@ui5/webcomponents-react/src/index.ts"],
-      "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/src/*"],
-      "@ui5/webcomponents-react-base": ["node_modules/@ui5/webcomponents-react-base/src/index.ts"]
+      "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/*"],
+      "@ui5/webcomponents-react-base": ["node_modules/@ui5/webcomponents-react-base/src/index.ts"],
+      "@ui5/webcomponents-react-charts": ["node_modules/@ui5/webcomponents-react-charts/src/index.ts"]
     },
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
