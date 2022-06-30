@@ -375,11 +375,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
     }
   });
-  //todo remove after 'react-docgen' can handle this
-  args.push(`style: {}`);
-  args.push(`className: ''`);
-  args.push(`slot: ''`);
-  args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
 
   let formattedDescription = description
