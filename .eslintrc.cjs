@@ -4,8 +4,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
     'plugin:storybook/recommended'
