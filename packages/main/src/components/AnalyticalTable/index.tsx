@@ -12,7 +12,8 @@ import {
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
@@ -299,6 +300,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
+   * Setting this property to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
+   */
+  showOverlay?: boolean;
+  /**
    * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
    */
   noDataText?: string;
@@ -540,6 +545,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     selectedRowIds,
     selectionBehavior,
     selectionMode,
+    showOverlay,
     sortable,
     style,
     subRowsKey,
@@ -586,6 +592,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
+  const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
@@ -927,7 +934,19 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           </TitleBar>
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
-        <FlexBox>
+        <FlexBox
+          className={classes.tableContainerWithScrollBar}
+          data-component-name="AnalyticalTableContainerWithScrollbar"
+        >
+          {showOverlay && (
+            <div
+              tabIndex={0}
+              aria-label={invalidTableA11yText}
+              role="region"
+              data-component-name="AnalyticalTableOverlay"
+              className={classes.overlay}
+            />
+          )}
           <div
             aria-labelledby={titleBarId}
             {...getTableProps()}
