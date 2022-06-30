@@ -134,7 +134,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'AvatarColorScheme[]': {
       return {
         importStatement: `import { AvatarColorScheme } from '../../enums';`,
-        tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
+        tsType: `(AvatarColorScheme | keyof typeof AvatarColorScheme)[]`,
         enum: `AvatarColorScheme`,
         isEnum: true
       };
