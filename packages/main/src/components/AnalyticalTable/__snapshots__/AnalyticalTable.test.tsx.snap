@@ -17,7 +17,8 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -520,7 +521,8 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -1023,7 +1025,8 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -1467,7 +1470,8 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="5"
@@ -1925,7 +1929,8 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="1"
@@ -2299,7 +2304,8 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="2"
@@ -2785,7 +2791,8 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
         </ui5-title>
       </div>
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="4"
@@ -3292,7 +3299,8 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
         </ui5-title>
       </div>
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="6"
@@ -3840,7 +3848,8 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="4"
@@ -4340,7 +4349,8 @@ exports[`AnalyticalTable Tree Table 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="5"
@@ -5026,7 +5036,8 @@ exports[`AnalyticalTable custom row height 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -5518,7 +5529,8 @@ exports[`AnalyticalTable expose table instance 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="3"
@@ -5909,7 +5921,8 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="5"
@@ -6538,7 +6551,8 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="5"
@@ -6992,7 +7006,8 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="5"
@@ -8324,7 +8339,8 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="5"
@@ -8796,7 +8812,8 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="1"
@@ -9166,7 +9183,8 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="2"
@@ -9637,7 +9655,8 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="2"
@@ -10086,7 +10105,8 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="3"
@@ -10480,7 +10500,8 @@ exports[`AnalyticalTable render subcomponents 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -11058,7 +11079,8 @@ exports[`AnalyticalTable render without data 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -11275,7 +11297,8 @@ exports[`AnalyticalTable resize vertically 1`] = `
       style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
     >
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+        data-component-name="AnalyticalTableContainerWithScrollbar"
       >
         <div
           aria-colcount="4"
@@ -13423,7 +13446,8 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -13926,7 +13950,8 @@ exports[`AnalyticalTable with highlight row 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="6"
@@ -14470,7 +14495,8 @@ exports[`AnalyticalTable with initial column order 1`] = `
     style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; visibility: hidden;"
   >
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"
@@ -14969,7 +14995,8 @@ exports[`AnalyticalTable without selection Column 1`] = `
       </ui5-title>
     </div>
     <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
     >
       <div
         aria-colcount="4"

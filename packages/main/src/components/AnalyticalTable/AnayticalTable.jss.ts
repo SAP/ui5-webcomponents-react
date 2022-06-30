@@ -14,6 +14,23 @@ const styles = {
     fontWeight: 'normal',
     backgroundColor: ThemingParameters.sapList_Background
   },
+  tableContainerWithScrollBar: {
+    position: 'relative'
+  },
+  overlay: {
+    position: 'absolute',
+    zIndex: 1,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: ThemingParameters.sapGroup_ContentBackground,
+    opacity: 0.8,
+    '&:focus': {
+      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
+    }
+  },
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '& div:first-child $th': {
@@ -171,6 +188,9 @@ const styles = {
     position: 'absolute',
     whiteSpace: 'nowrap',
     height: 0
+  },
+  hiddenA11yText: {
+    display: 'none'
   }
 };
 

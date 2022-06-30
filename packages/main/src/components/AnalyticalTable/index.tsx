@@ -12,7 +12,8 @@ import {
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
@@ -299,6 +300,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
+   * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
+   */
+  showOverlay?: boolean;
+  /**
    * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
    */
   noDataText?: string;
@@ -540,6 +545,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     selectedRowIds,
     selectionBehavior,
     selectionMode,
+    showOverlay,
     sortable,
     style,
     subRowsKey,
@@ -563,6 +569,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
+  const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
 
   const classes = useStyles();
 
@@ -586,6 +593,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
+  const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
@@ -627,6 +635,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         renderRowSubComponent,
         alwaysShowSubComponent,
         reactWindowRef,
+        showOverlay,
         uniqueId
       },
       ...reactTableOptions
@@ -927,11 +936,28 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           </TitleBar>
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
-        <FlexBox>
+        <FlexBox
+          className={classes.tableContainerWithScrollBar}
+          data-component-name="AnalyticalTableContainerWithScrollbar"
+        >
+          {showOverlay && (
+            <>
+              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+                {invalidTableA11yText}
+              </span>
+              <div
+                tabIndex={0}
+                aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
+                role="region"
+                data-component-name="AnalyticalTableOverlay"
+                className={classes.overlay}
+              />
+            </>
+          )}
           <div
             aria-labelledby={titleBarId}
             {...getTableProps()}
-            tabIndex={0}
+            tabIndex={showOverlay ? -1 : 0}
             role="grid"
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}

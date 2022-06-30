@@ -1286,12 +1286,23 @@ describe('AnalyticalTable', () => {
         disableSortBy: true
       }
     ];
-    const { container } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
+    const { container } = render(<AnalyticalTable data={data} columns={columns} />);
     const firstColHeader = container.querySelector('[id="name"]');
     const secondColHeader = container.querySelector('[id="age"]');
 
     expect(firstColHeader).toHaveAttribute('aria-haspopup', 'menu');
     expect(secondColHeader).not.toHaveAttribute('aria-haspopup');
+  });
+
+  test('overlay', () => {
+    const { rerender, container } = render(<AnalyticalTable data={data} columns={columns} showOverlay />);
+    const overlay = container.querySelector('[data-component-name="AnalyticalTableOverlay"]');
+
+    expect(overlay).toBeInTheDocument();
+
+    rerender(<AnalyticalTable data={data} columns={columns} />);
+
+    expect(overlay).not.toBeInTheDocument();
   });
 
   createCustomPropsTest(AnalyticalTable);
