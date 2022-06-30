@@ -3,13 +3,14 @@ import { MultiComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
+import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 
 <Meta
   title="Inputs / MultiComboBox"
   component={MultiComboBox}
-  subcomponents={{ MultiComboBoxItem }}
+  subcomponents={{ MultiComboBoxGroupItem, MultiComboBoxItem }}
   argTypes={{
     children: { control: { disable: true } },
     icon: { control: { disable: true } },

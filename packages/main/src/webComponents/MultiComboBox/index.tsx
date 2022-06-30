@@ -30,6 +30,10 @@ interface MultiComboBoxAttributes {
    */
   filter?: string;
   /**
+   * Defines whether the value will be autcompleted to match an item
+   */
+  noTypeahead?: boolean;
+  /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
   placeholder?: string;
@@ -120,7 +124,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
-  ['allowCustomValues', 'disabled', 'readonly', 'required'],
+  ['allowCustomValues', 'disabled', 'noTypeahead', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change']
 );

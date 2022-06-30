@@ -45,7 +45,7 @@ export interface PanelDomRef extends PanelAttributes, Ui5DomRef {}
 
 export interface PanelPropTypes extends PanelAttributes, CommonProps {
   /**
-   * Determines the content of the component. The content is visible only when the component is expanded.
+   * Defines the content of the component. The content is visible only when the component is expanded.
    */
   children?: ReactNode | ReactNode[];
   /**

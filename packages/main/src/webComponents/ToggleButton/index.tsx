@@ -36,9 +36,9 @@ interface ToggleButtonAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the icon to be displayed as graphical element within the component. The SAP-icons font provides numerous options.
+   * Defines the icon, displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * Example: See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Example: See all the available icons within the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -46,7 +46,7 @@ interface ToggleButtonAttributes {
    */
   iconEnd?: boolean;
   /**
-   * When set to `true`, the component will automatically submit the nearest form element upon `press`.
+   * When set to `true`, the component will automatically submit the nearest HTML form element on `press`.
    *
    * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */

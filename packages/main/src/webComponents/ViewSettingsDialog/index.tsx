@@ -14,6 +14,11 @@ interface ViewSettingsDialogAttributes {
 
 export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
   /**
+   * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog need to set its initial settings. The `ViewSettingsDialog` throws an event called "before-open", this can be used as trigger point. The object should have the following format: `{ { "sortOrder" : "Ascending", "sortBy" : "Name", "filters" : [{"Filter 1": ["Some filter 1", "Some filter 2"]}, {"Filter 2": ["Some filter 4"]}]} }`
+   * @param {string} settings - A value to be set as predefined settings.
+   */
+  setConfirmedSettings: (settings: string) => void;
+  /**
    * Shows the dialog.
    */
   show: () => void;
@@ -34,6 +39,10 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   sortItems?: ReactNode | ReactNode[];
+  /**
+   * Fired before the component is opened. **This event does not bubble.**
+   */
+  onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
   /**
    * Fired when cancel button is activated.
    */
@@ -64,7 +73,7 @@ const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSet
   [],
   ['sortDescending'],
   ['filterItems', 'sortItems'],
-  ['cancel', 'confirm']
+  ['before-open', 'cancel', 'confirm']
 );
 
 ViewSettingsDialog.displayName = 'ViewSettingsDialog';
