@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
   const firstVisibleCell = noData
@@ -33,9 +33,16 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
 };
 
 const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data } }) => {
+  const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
-  const tableRef = webComponentsReactProperties.tableRef;
   const noData = data.length === 0;
+
+  useEffect(() => {
+    if (showOverlay && currentlyFocusedCell.current) {
+      currentlyFocusedCell.current.tabIndex = -1;
+      currentlyFocusedCell.current = null;
+    }
+  }, [showOverlay]);
 
   const onTableBlur = useCallback(
     (e) => {
@@ -234,6 +241,9 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
     },
     [currentlyFocusedCell.current, tableRef.current]
   );
+  if (showOverlay) {
+    return tableProps;
+  }
   return [tableProps, { onFocus: onTableFocus, onKeyDown: onKeyboardNavigation, onBlur: onTableBlur }];
 };
 

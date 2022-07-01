@@ -1272,5 +1272,38 @@ describe('AnalyticalTable', () => {
     expect(row2).not.toHaveAttribute('data-is-selected');
   });
 
+  test('a11y - header popover announcement', () => {
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        disableGroupBy: true,
+        disableFilters: true,
+        disableSortBy: true
+      }
+    ];
+    const { container } = render(<AnalyticalTable data={data} columns={columns} />);
+    const firstColHeader = container.querySelector('[id="name"]');
+    const secondColHeader = container.querySelector('[id="age"]');
+
+    expect(firstColHeader).toHaveAttribute('aria-haspopup', 'menu');
+    expect(secondColHeader).not.toHaveAttribute('aria-haspopup');
+  });
+
+  test('overlay', () => {
+    const { rerender, container } = render(<AnalyticalTable data={data} columns={columns} showOverlay />);
+    const overlay = container.querySelector('[data-component-name="AnalyticalTableOverlay"]');
+
+    expect(overlay).toBeInTheDocument();
+
+    rerender(<AnalyticalTable data={data} columns={columns} />);
+
+    expect(overlay).not.toBeInTheDocument();
+  });
+
   createCustomPropsTest(AnalyticalTable);
 });
