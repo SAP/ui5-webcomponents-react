@@ -10,41 +10,10 @@ const styles = {
   cardHeader: {
     ...spacing.sapUiContentPadding,
     backgroundColor: ThemingParameters.sapTile_Background,
-    fontFamily: ThemingParameters.sapFontHeaderFamily,
-    '&:hover': {
-      backgroundColor: ThemingParameters.sapTile_Hover_Background,
-      boxShadow: ThemingParameters.sapContent_Shadow2
-    },
-    '&:active': {
-      backgroundColor: ThemingParameters.sapTile_Active_Background
-    }
-  },
-  arrowIndicatorShape: {
-    width: 0,
-    height: 0
-  },
-  arrowUp: {
-    borderLeft: '8px solid transparent',
-    borderRight: '8px solid transparent',
-    borderBottom: '8px solid'
-  },
-  arrowDown: {
-    borderLeft: '8px solid transparent',
-    borderRight: '8px solid transparent',
-    borderTop: '8px solid'
-  },
-  arrowRight: {
-    borderLeft: `8px solid `,
-    borderTop: '8px solid transparent',
-    borderBottom: '8px solid transparent'
+    fontFamily: ThemingParameters.sapFontHeaderFamily
   },
   cardHeaderClickable: {
     cursor: 'pointer'
-  },
-  headerContent: {
-    marginLeft: '1rem',
-    marginRight: '1rem',
-    position: 'relative'
   },
   headerTitles: {
     overflow: 'hidden',
@@ -54,7 +23,7 @@ const styles = {
   },
   headerText: {
     fontFamily: ThemingParameters.sapFontHeaderFamily,
-    fontWeight: `var(--sapFontHeaderWeight, bold)`,
+    fontWeight: `var(--sapFontHeaderWeight)`,
     fontSize: ThemingParameters.sapFontHeader6Size,
     color: ThemingParameters.sapTile_TitleTextColor,
     overflow: 'hidden',
@@ -86,14 +55,10 @@ const styles = {
     lineHeight: 'normal',
     textAlign: 'right'
   },
-  currency: {
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    color: ThemingParameters.sapTile_TextColor,
-    overflow: 'hidden',
-    marginLeft: '0.25rem',
-    textAlign: 'right'
+  unitOfMeasurement: {
+    marginInlineStart: '0.25rem',
+    paddingInlineStart: '0.25rem',
+    borderInlineStart: `1px solid ${ThemingParameters.sapTile_TextColor}`
   },
   helpIcon: {
     position: 'absolute',
@@ -101,52 +66,64 @@ const styles = {
     top: '0'
   },
   kpiContent: {
-    fontWeight: 'normal',
-    marginTop: '0.5rem',
-    color: ThemingParameters.sapTile_TextColor,
-    width: '100%',
-    boxSizing: 'border-box'
-  },
-  valueAndUnit: {
     display: 'flex',
-    alignItems: 'end',
-    color: ThemingParameters.sapNeutralTextColor
+    alignItems: 'flex-start',
+    marginTop: '0.25rem'
+  },
+  // KPI BLOCK
+  mainIndicator: {
+    color: ThemingParameters.sapNeutralTextColor,
+    display: 'inline-flex',
+    justifyContent: 'flex-start',
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    textAlign: 'right',
+    textOverflow: 'ellipsis',
+    fontSize: '2.25rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontWeight: 'normal'
   },
   value: {
-    fontSize: '2rem',
-    maxWidth: '135px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    display: 'block'
-  },
-  unit: {
-    marginLeft: '0.25rem',
-    fontSize: '1rem'
+    paddingBlockStart: '0.125rem',
+    height: '2.875rem',
+    fontFamily: ThemingParameters.sapFontLightFamily
   },
   indicatorAndUnit: {
+    display: 'grid',
+    textOverflow: 'ellipsis',
+    textAlign: 'center',
+    height: '2.125rem',
+    paddingInlineStart: '0.375rem',
+    paddingBlock: '0.5rem 0.375rem'
+  },
+  indicator: {
+    gridColumn: 1,
+    gridRow: 1,
+    width: ThemingParameters.sapFontSmallSize,
+    height: ThemingParameters.sapFontSmallSize,
+    color: 'currentColor'
+  },
+  unit: {
+    gridColumn: 1,
+    gridRow: 1,
+    marginTop: '0.9375rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSmallSize
+  },
+  indicatorGap: {
+    flex: '1 0 1rem',
+    maxWidth: '3rem'
+  },
+  sideIndicators: {
     display: 'flex',
-    height: '2rem',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
-  },
-  targetAndDeviation: {
-    width: '60%',
-    paddingBottom: '0.25rem',
-    textAlign: 'right',
-    fontSize: ThemingParameters.sapFontSmallSize,
-    color: ThemingParameters.sapTile_TextColor
-  },
-  targetAndDeviationColumn: {
-    maxWidth: '45%',
-    marginLeft: '1rem'
-  },
-  targetAndDeviationValue: {
-    color: ThemingParameters.sapTile_TitleTextColor,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    padding: '0.5rem 0',
+    minWidth: 0,
+    '& > *': {
+      marginInlineEnd: '1rem'
+    },
+    '&:last-child': {
+      marginInlineEnd: 0
+    }
   },
   description: {
     fontFamily: ThemingParameters.sapFontFamily,
@@ -174,8 +151,8 @@ const styles = {
   critical: {
     color: ThemingParameters.sapCriticalTextColor
   },
-  none: {
-    color: ThemingParameters.sapNeutralTextColor
+  info: {
+    color: ThemingParameters.sapInformativeTextColor
   }
 };
 
