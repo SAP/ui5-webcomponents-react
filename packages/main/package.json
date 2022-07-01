@@ -45,8 +45,8 @@
     "@ui5/webcomponents-base": "~1.4.0",
     "@ui5/webcomponents-fiori": "~1.4.0",
     "@ui5/webcomponents-icons": "~1.4.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
