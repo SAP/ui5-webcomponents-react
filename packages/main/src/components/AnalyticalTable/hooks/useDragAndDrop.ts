@@ -12,7 +12,7 @@ export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resize
 
   const handleDragStart = useCallback(
     (e) => {
-      if (resizeInfo.isResizingColumn) {
+      if (resizeInfo.isResizingColumn || !e.target.draggable) {
         e.preventDefault();
         return;
       }
