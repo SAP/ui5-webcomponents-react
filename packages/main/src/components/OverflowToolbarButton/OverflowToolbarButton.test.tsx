@@ -1,7 +1,7 @@
 import { renderWithDefine } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
-import { Button } from '../../Button';
+import { Button } from '../../webComponents';
 import { Toolbar } from '../Toolbar';
 import { OverflowToolbarButton } from './index';
 

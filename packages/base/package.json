@@ -13,18 +13,10 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "sideEffects": [
-    "./polyfill/*"
-  ],
+  "sideEffects": false,
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc"
-  },
-  "dependencies": {
-    "core-js": "3.23.3",
-    "intersection-observer": "0.12.0",
-    "resize-observer-polyfill": "1.5.1",
-    "smoothscroll-polyfill": "0.4.4"
   },
   "peerDependencies": {
     "@types/react": "*",
