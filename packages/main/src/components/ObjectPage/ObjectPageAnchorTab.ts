@@ -4,8 +4,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import Tab from '@ui5/webcomponents/dist/Tab.js';
 import TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 import { unsafeStatic } from 'lit-html/static.js';
+import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from 'react';
 
 const scopeTag = (tag, tags, suffix) => {
   const resultTag = suffix && (tags || []).includes(tag) ? `${tag}-${suffix}` : tag;
@@ -46,7 +46,7 @@ class ObjectPageAnchorTab extends Tab {
 
   static get stripTemplate() {
     return (context, tags, suffix) => {
-      return html` <div
+      return html`<div
         id="${ifDefined(context._id)}"
         class="${ifDefined(context.stripClasses)}"
         tabindex="${ifDefined(context._tabIndex)}"

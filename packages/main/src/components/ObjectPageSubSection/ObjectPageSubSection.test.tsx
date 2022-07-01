@@ -9,10 +9,5 @@ describe('ObjectPageSubSection', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('No ID should throw', () => {
-    const renderer = () => render(<ObjectPageSubSection titleText="test">Content</ObjectPageSubSection>);
-    expect(renderer).toThrow();
-  });
-
   createCustomPropsTest(ObjectPageSubSection);
 });

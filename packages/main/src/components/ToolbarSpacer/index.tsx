@@ -1,5 +1,5 @@
-import { CommonProps } from '../../interfaces/CommonProps';
 import React, { forwardRef, Ref } from 'react';
+import { CommonProps } from '../../interfaces/CommonProps';
 
 export type ToolbarSpacerPropTypes = CommonProps;
 
