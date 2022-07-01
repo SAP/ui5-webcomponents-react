@@ -77,7 +77,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     }
   },
   MultiComboBox: {
@@ -121,7 +121,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     },
     tokens: (description) => {
       return description.replace(
@@ -504,7 +504,7 @@ const resolveInheritedAttributes = (componentSpec) => {
   // Generated file - do not change manually! 
   
   /**
-   * ${spec.description ?? spec.basename}
+   * ${replaceTagNameWithModuleName(spec.description ?? spec.basename)}
    */
    export enum ${spec.basename} {
      ${properties.join(',\n\n')}
