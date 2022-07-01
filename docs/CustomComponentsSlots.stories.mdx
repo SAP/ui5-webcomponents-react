@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs';
+import { BarComponent, FaultyBarComponent } from './knowledgeBaseExamples/slotExamples';
+import { Footer } from '@docs/Footer';
+
+<Meta title="Knowledge Base/Handling Slots" />
+
+# Adding custom components to slots
+
+With our wrapper we provide an easy way to consume the `slots` of the UI5 Web Components by attaching them to a `prop`.
+In most cases you don't have to take anything into account, and the props can be used in a typical React way. However, there is an exception with custom components:
+
+```jsx
+const BarStart = () => {
+  return <div>Start</div>;
+};
+const BarEnd = () => {
+  return <Button>Close</Button>;
+};
+export const BarComponent = () => {
+  return (
+    <Bar startContent={<BarStart />} endContent={<BarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
+  );
+};
+```
+
+The `BarComponent` would compile to this:
+
+<FaultyBarComponent />
+
+As you can see, both custom components are not displayed.
+Our wrapper does add the `slot` prop to the custom component, but the most outer HTML-Element/component (e.g. `<div>Start</div>`) does not accept it and therefore cannot use it.
+
+To fix this the `slot` prop must also be passed to the outer element of the component:
+
+```jsx
+const BarStart = (props) => {
+  return <div slot={props.slot}>Start</div>;
+};
+const BarEnd = (props) => {
+  return <Button slot={props.slot}>Close</Button>;
+};
+export const BarComponent = () => {
+  return (
+    <Bar startContent={<BarStart />} endContent={<BarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
+  );
+};
+```
+
+Now the `BarComponent` would compile to this:
+
+<BarComponent />
+
+<div style={{ height: 'var(--_ui5_bar_base_height)' }} />
+<Footer style={{ position: 'fixed', bottom: 0, zIndex: 2, maxHeight: 'var(--_ui5_bar_base_height)' }} />

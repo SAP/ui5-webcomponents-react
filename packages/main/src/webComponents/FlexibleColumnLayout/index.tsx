@@ -87,21 +87,21 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
    * Defines the content in the end column.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   endColumn?: ReactNode;
   /**
    * Defines the content in the middle column.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   midColumn?: ReactNode;
   /**
    * Defines the content in the start column.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   startColumn?: ReactNode;
   /**
@@ -109,7 +109,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
    */
   onLayoutChange?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      FlexibleColumnLayoutDomRef,
       {
         layout: FCLLayout | keyof typeof FCLLayout;
         columnLayout: unknown[];

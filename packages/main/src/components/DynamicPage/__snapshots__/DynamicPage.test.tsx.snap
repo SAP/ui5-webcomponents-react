@@ -264,12 +264,12 @@ exports[`DynamicPage always show content header 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -277,7 +277,7 @@ exports[`DynamicPage always show content header 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>
@@ -454,7 +454,7 @@ exports[`DynamicPage hider header button 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     >
       <form
         class="Form-form Form-labelSpan4"
@@ -470,7 +470,7 @@ exports[`DynamicPage hider header button 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -490,7 +490,7 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         />
@@ -515,7 +515,7 @@ exports[`DynamicPage hider header button 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -535,7 +535,7 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 4;"
+          style="grid-column-start: 13; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -568,7 +568,7 @@ exports[`DynamicPage hider header button 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -588,7 +588,7 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -615,7 +615,7 @@ exports[`DynamicPage hider header button 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -643,7 +643,6 @@ exports[`DynamicPage render footer 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPage-anchorBar"
@@ -656,12 +655,12 @@ exports[`DynamicPage render footer 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -669,7 +668,7 @@ exports[`DynamicPage render footer 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 1rem;"
+      style="padding-bottom: 1rem;"
     />
     <div
       class="DynamicPage-footer"
@@ -957,12 +956,12 @@ exports[`DynamicPage with content 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -970,7 +969,7 @@ exports[`DynamicPage with content 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     >
       <form
         class="Form-form Form-labelSpan4"
@@ -986,7 +985,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1006,7 +1005,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         />
@@ -1031,7 +1030,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1051,7 +1050,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 4;"
+          style="grid-column-start: 13; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1084,7 +1083,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1104,7 +1103,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1131,7 +1130,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1164,7 +1163,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1184,7 +1183,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         />
@@ -1209,7 +1208,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1229,7 +1228,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 4;"
+          style="grid-column-start: 13; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1262,7 +1261,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1282,7 +1281,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1309,7 +1308,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1342,7 +1341,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1362,7 +1361,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         />
@@ -1387,7 +1386,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1407,7 +1406,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 4;"
+          style="grid-column-start: 13; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1440,7 +1439,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1460,7 +1459,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1487,7 +1486,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1520,7 +1519,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1540,7 +1539,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         />
@@ -1565,7 +1564,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1585,7 +1584,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 4;"
+          style="grid-column-start: 13; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1618,7 +1617,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 3;"
+          style="grid-column-start: 1; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1638,7 +1637,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 1; grid-row-start: 4;"
+          style="grid-column-start: 1; grid-row-start: 4; padding-bottom: 1rem;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1665,7 +1664,7 @@ exports[`DynamicPage with content 1`] = `
         </h6>
         <ui5-label
           class="FormItem-label"
-          style="grid-column-start: 13; grid-row-start: 3;"
+          style="grid-column-start: 13; grid-row-start: 3; padding-bottom: 0px;"
           ui5-label=""
           wrapping-type="Normal"
         >
@@ -1952,12 +1951,12 @@ exports[`DynamicPage without content 1`] = `
         role="navigation"
       >
         <ui5-button
-          aria-label="Expand Header"
+          accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
-          title="Expand Header"
+          tooltip="Expand Header"
           ui5-button=""
         />
       </section>
@@ -1965,7 +1964,7 @@ exports[`DynamicPage without content 1`] = `
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
       data-component-name="DynamicPageContent"
-      style="margin-top: 0px; padding-bottom: 0px;"
+      style="padding-bottom: 0px;"
     />
   </div>
 </DocumentFragment>

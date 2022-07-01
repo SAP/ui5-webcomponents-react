@@ -40,7 +40,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
   /**
    * Fires when a `BreadcrumbsItem` is clicked. **Note:** You can prevent browser location change by calling `event.preventDefault()`.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<BreadcrumbsDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

@@ -2,7 +2,8 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Button, Menu, MenuItem } from '../';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / Menu"
@@ -10,6 +11,9 @@ import { useRef } from 'react';
   subcomponents={{ MenuItem }}
   argTypes={{
     children: { control: { disable: true } }
+  }}
+  parameters={{
+    chromatic: { delay: 1000 }
   }}
 />
 
@@ -23,9 +27,16 @@ import { useRef } from 'react';
   <Story name="Default">
     {(args) => {
       const ref = useRef();
+      const btnRef = useRef(null);
+      useEffect(() => {
+        if (isChromatic) {
+          ref.current.showAt(btnRef.current);
+        }
+      }, []);
       return (
         <>
           <Button
+            ref={btnRef}
             onClick={(e) => {
               ref.current.showAt(e.target);
             }}

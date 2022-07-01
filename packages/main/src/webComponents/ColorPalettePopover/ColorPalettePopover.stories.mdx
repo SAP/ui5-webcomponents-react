@@ -4,8 +4,9 @@ import { ColorPalettePopover } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ColorPalettePopover"
@@ -14,6 +15,9 @@ import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
   argTypes={{
     children: { control: { disable: true } },
     defaultColor: { control: { type: 'color' } }
+  }}
+  parameters={{
+    chromatic: { delay: 1000 }
   }}
 />
 
@@ -27,12 +31,20 @@ import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
   <Story name="Default">
     {(args) => {
       const popoverRef = useRef(null);
+      const btnRef = useRef(null);
+      useEffect(() => {
+        if (isChromatic) {
+          popoverRef.current.showAt(btnRef.current);
+        }
+      }, []);
       const onButtonClick = (e) => {
         popoverRef.current.showAt(e.target);
       };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Button onClick={onButtonClick} ref={btnRef}>
+            Open Popover
+          </Button>
           <ColorPalettePopover {...args} ref={popoverRef}>
             <ColorPaletteItem value="pink" />
             <ColorPaletteItem value="darkblue" />

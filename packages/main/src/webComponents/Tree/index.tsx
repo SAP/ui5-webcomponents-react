@@ -57,36 +57,36 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
    * **Note:** When the `header` slot is set, the `headerText` property is ignored.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   header?: ReactNode | ReactNode[];
   /**
    * Fired when a tree item is activated.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the Delete button of any tree item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the mouse cursor leaves the tree item borders.
    */
-  onItemMouseout?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemMouseout?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the mouse cursor enters the tree item borders.
    */
-  onItemMouseover?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemMouseover?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
-  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+    event: Ui5CustomEvent<TreeDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
   ) => void;
 }
 

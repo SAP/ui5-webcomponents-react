@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import { Footer } from '@docs/Footer';
 
-<Meta title="Internationalization" />
+<Meta title="Knowledge Base/Internationalization" />
 
 # Setup Internationalization (i18n)
 
@@ -11,11 +11,9 @@ In order to achieve this, most UI5 Web Components packages ship their assets as 
 
 **Prerequisite: This guide requires `@ui5/webcomponents-react@^0.14.0` and `@ui5/webcomponents@^1.0.0-rc.12` or newer.**
 
-In order to make your app translatable into various languages, you need to import the following assets:
+In order to make your app translatable into various languages, you need to import the following asset:
 
 ```js
-import '@ui5/webcomponents/dist/Assets.js';
-import '@ui5/webcomponents-fiori/dist/Assets.js';
 import '@ui5/webcomponents-react/dist/Assets';
 ```
 
@@ -32,7 +30,7 @@ _Please also read the [general configuration](https://sap.github.io/ui5-webcompo
   When using custom translations, you have to enable the <code>fetchDefaultLanguage</code> option for UI5 Web
   Components. If it is not set, your default language translations (english) will be missing. Learn more about it{' '}
   <a
-    href="https://github.com/SAP/ui5-webcomponents/blob/main/docs/Configuration.md#fetchDefaultLanguage"
+    href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#fetchDefaultLanguage"
     target="_blank"
   >
     here
@@ -45,9 +43,14 @@ _Please also read the [general configuration](https://sap.github.io/ui5-webcompo
 | File                                 | Content                    |
 | ------------------------------------ | -------------------------- |
 | `assets/messagebundle_de.properties` | `PLEASE_WAIT=Bitte warten` |
-| `assets/messagebundle_fr.properties` | `PLEASE_WAIT=Patientez.`   |
+| `assets/messagebundle_fr.properties` | `PLEASE_WAIT=Patientez`    |
 | `assets/messagebundle_es.properties` | `PLEASE_WAIT=Espere`       |
 | `assets/messagebundle_en.properties` | `PLEASE_WAIT=Please wait`  |
+
+<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
+  If you used <code>create-react-app</code> to create your React application, you can use the <code>public</code> folder
+  to store your resource files.
+</MessageStrip>
 
 **2. Register the `i18n` assets**
 
@@ -73,7 +76,9 @@ registerI18nLoader('myApp', 'de', async () => {
 });
 ```
 
-_Note:_ This is just asset registration, no data will be fetched at that point.
+<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
+  This is just asset registration, no data will be fetched at that point.
+</MessageStrip>
 
 **3. Use your translated texts in your components**
 
@@ -129,7 +134,9 @@ const i18nBundle = useI18nBundle('myApp');
 const carouselText = i18nBundle.getText('CAROUSEL_DOT_TEXT', 5, 20);
 ```
 
-This would resolve this text:<br />
+This would resolve to this text:<br />
 `Item 5 of 20 displayed`
+
+<div style={{ flexGrow: 1 }} />
 
 <Footer />

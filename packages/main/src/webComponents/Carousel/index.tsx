@@ -64,7 +64,7 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
   /**
    * Fired whenever the page changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
-  onNavigate?: (event: Ui5CustomEvent<HTMLElement, { selectedIndex: number }>) => void;
+  onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, { selectedIndex: number }>) => void;
 }
 
 /**

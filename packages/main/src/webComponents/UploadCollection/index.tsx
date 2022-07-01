@@ -52,7 +52,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    * **Note:** If `header` slot is provided, the labelling of the `UploadCollection` is a responsibility of the application developer. `accessibleName` should be used.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   header?: ReactNode | ReactNode[];
   /**
@@ -60,17 +60,17 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    *
    * **Note:** The `onDrop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
    */
-  onDrop?: DragEventHandler<HTMLElement>;
+  onDrop?: DragEventHandler<UploadCollectionDomRef>;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<UploadCollectionDomRef, { selectedItems: unknown[] }>) => void;
 }
 
 /**

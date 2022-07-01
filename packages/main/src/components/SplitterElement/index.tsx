@@ -2,8 +2,8 @@ import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponent
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 
 const useStyles = createUseStyles(
   {
@@ -86,9 +86,6 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
     }
   }, [reset, size]);
 
-  if (reset) {
-    return null;
-  }
   return (
     <div
       ref={componentRef}

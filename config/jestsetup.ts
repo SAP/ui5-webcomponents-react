@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'whatwg-fetch';
+import '@ui5/webcomponents-react/dist/Assets.js';
 
 const DEFAULT_REACT_VERSION = '18';
 
@@ -14,7 +15,8 @@ jest.mock('react', () => {
   };
   const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
 
-  return jest.requireActual(packages[version]);
+  //@ts-ignore
+  return { ...jest.requireActual(packages[version]), useId: () => '1337' };
 });
 
 jest.mock('react-dom', () => {
@@ -100,11 +102,6 @@ beforeEach(async () => {
   (window as any).ResizeObserver = ResizeObserver;
   window.scrollTo = jest.fn();
   setupMatchMedia();
-
-  await import('@ui5/webcomponents/dist/Assets.js');
-  await import('@ui5/webcomponents-fiori/dist/Assets.js');
-  await import('@ui5/webcomponents-icons/dist/Assets.js');
-  await import('@ui5/webcomponents-react/dist/Assets.js');
 });
 
 expect.addSnapshotSerializer(contentLoaderSerializer);

@@ -1,6 +1,5 @@
 import {
   debounce,
-  Device,
   enrichEventWithDetails,
   ThemingParameters,
   useResponsiveContentPadding,
@@ -67,6 +66,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
       role?: string;
     };
   };
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
 }
 
 /**
@@ -101,6 +104,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     className,
     footer,
     a11yConfig,
+    onToggleHeaderContent,
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
@@ -114,8 +118,9 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
-    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : Device.isIE() ? HEADER_STATES.VISIBLE : HEADER_STATES.AUTO
+    alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
+  const isToggledRef = useRef(false);
 
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight } = useObserveHeights(
@@ -158,9 +163,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
 
   useEffect(() => {
     const oneTimeScrollHandler = () => {
-      if (!Device.isIE()) {
-        setHeaderState(HEADER_STATES.AUTO);
-      }
+      setHeaderState(HEADER_STATES.AUTO);
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
       dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
@@ -187,7 +190,10 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     }
   };
 
-  const onToggleHeaderContent = (e) => {
+  const onToggleHeaderContentInternal = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
   };
 
@@ -202,15 +208,15 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   useEffect(() => {
     if (alwaysShowContentHeader) {
       setHeaderState(HEADER_STATES.VISIBLE_PINNED);
-    } else if (!Device.isIE()) {
-      setHeaderState(HEADER_STATES.AUTO);
     }
   }, [alwaysShowContentHeader, setHeaderState]);
 
-  const anchorBarClasses = clsx(classes.anchorBar, Device.isIE() && classes.iEClass);
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
   const onDynamicPageScroll = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
     if (typeof props?.onScroll === 'function') {
       props.onScroll(e);
     }
@@ -220,9 +226,15 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const dynamicPageStyles = { ...style };
-  if (headerContentHeight === 0) {
+  if (headerContentHeight === 0 && headerContent) {
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
+
+  useEffect(() => {
+    if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
+      onToggleHeaderContent(!!headerContentHeight);
+    }
+  }, [!!headerContentHeight]);
 
   return (
     <div
@@ -242,7 +254,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           className: headerTitle?.props?.className
             ? `${responsivePaddingClass} ${headerTitle.props.className}`
             : responsivePaddingClass,
-          onToggleHeaderContentVisibility: onToggleHeaderContent
+          onToggleHeaderContentVisibility: onToggleHeaderContentInternal
         })}
       {headerContent &&
         cloneElement(headerContent, {
@@ -255,7 +267,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         })}
       <FlexBox
         data-component-name="DynamicPageAnchorBarContainer"
-        className={anchorBarClasses}
+        className={classes.anchorBar}
         ref={anchorBarRef}
         style={{
           top:
@@ -275,23 +287,11 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           a11yConfig={a11yConfig}
         />
       </FlexBox>
-      {Device.isIE() && (
-        <div
-          className={classes.iEBackgroundElement}
-          style={{
-            height: `${headerContentHeight + topHeaderHeight}px`,
-            width: `calc(100% - ${
-              dynamicPageRef?.current?.clientHeight < dynamicPageRef?.current?.scrollHeight ? '18px' : '0px'
-            })`
-          }}
-        />
-      )}
       <div
         ref={contentRef}
         data-component-name="DynamicPageContent"
         className={`${classes.contentContainer} ${responsivePaddingClass}`}
         style={{
-          marginTop: Device.isIE() ? `${headerContentHeight + topHeaderHeight + 34}px` : 0,
           paddingBottom: footer ? '1rem' : 0
         }}
       >

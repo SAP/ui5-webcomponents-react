@@ -18,13 +18,13 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { MessageViewContext } from '../../internal/MessageViewContext';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { MessageViewContext } from '../../internal/MessageViewContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';

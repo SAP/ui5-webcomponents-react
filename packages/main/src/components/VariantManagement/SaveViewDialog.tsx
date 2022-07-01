@@ -12,13 +12,13 @@ import {
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { SelectedVariant } from '../../internal/VariantManagementContext';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { SelectedVariant } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
+import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
 import { Input } from '../../webComponents/Input';
@@ -26,8 +26,8 @@ import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 
 interface SaveViewDialogPropTypes {
-  onAfterClose: (event: Ui5CustomEvent<HTMLElement>) => void;
-  handleSave: (event: Ui5CustomEvent<HTMLElement>, selectedVariant: SelectedVariant) => void;
+  onAfterClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  handleSave: (event: Ui5CustomEvent<ButtonDomRef>, selectedVariant: SelectedVariant) => void;
   selectedVariant: SelectedVariant;
   showShare: boolean;
   showApplyAutomatically: boolean;

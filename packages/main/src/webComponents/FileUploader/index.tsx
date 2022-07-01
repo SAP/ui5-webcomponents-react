@@ -76,13 +76,13 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLElement, { files: FileList }>) => void;
+  onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, { files: FileList }>) => void;
 }
 
 /**

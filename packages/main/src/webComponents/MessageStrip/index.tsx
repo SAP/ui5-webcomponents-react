@@ -40,13 +40,13 @@ export interface MessageStripPropTypes extends MessageStripAttributes, CommonPro
    * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   icon?: ReactNode;
   /**
    * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
    */
-  onClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClose?: (event: Ui5CustomEvent<MessageStripDomRef>) => void;
 }
 
 /**

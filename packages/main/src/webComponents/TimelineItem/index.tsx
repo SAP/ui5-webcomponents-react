@@ -42,7 +42,7 @@ export interface TimelineItemPropTypes extends TimelineItemAttributes, CommonPro
    *
    * **Note:** The event will not be fired if the `name-clickable` attribute is not set.
    */
-  onNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onNameClick?: (event: Ui5CustomEvent<TimelineItemDomRef>) => void;
 }
 
 /**

@@ -1,19 +1,23 @@
 import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
+import { AnalyticalTableColumnDefinition } from '../index';
 
 const ROW_SAMPLE_SIZE = 20;
 const DEFAULT_HEADER_NUM_CHAR = 10;
 const MAX_WIDTH = 700;
+const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
 // a function, which approximates header px sizes given a character length
 const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data } }) => {
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
+  const hasRows = rows?.length > 0;
   return [
     ...deps,
+    hasRows,
     state.tableClientWidth,
     state.hiddenColumns.length,
     visibleColumns?.length,
@@ -21,13 +25,137 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, vi
     isLoadingPlaceholder
   ];
 };
+interface IColumnMeta {
+  contentPxAvg: number;
+  headerPx: number;
+  headerDefinesWidth?: boolean;
+}
+const stringToPx = (dataPoint, id) => {
+  const ruler = document.getElementById(`smartScaleModeHelper-${id}`);
+  if (ruler) {
+    ruler.innerHTML = `${dataPoint}`;
+    return ruler.offsetWidth;
+  }
+  return 0;
+};
+const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, visibleColumns) => {
+  const { rows, state, webComponentsReactProperties } = instance;
+  const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
+  const { tableClientWidth: totalWidth } = state;
 
-const columns = (columns, { instance }) => {
+  const columnMeta: Record<string, IColumnMeta> = visibleColumns.reduce(
+    (metadata: Record<string, IColumnMeta>, column) => {
+      const columnIdOrAccessor = (column.id ?? column.accessor) as string;
+      if (
+        column.id === '__ui5wcr__internal_selection_column' ||
+        column.id === '__ui5wcr__internal_highlight_column' ||
+        column.id === '__ui5wcr__internal_navigation_column'
+      ) {
+        metadata[columnIdOrAccessor] = {
+          headerPx: column.width || column.minWidth || 60,
+          contentPxAvg: 0
+        };
+        return metadata;
+      }
+
+      const contentPxAvg =
+        rowSample.reduce((acc, item) => {
+          const dataPoint = item.values?.[columnIdOrAccessor];
+          let val = 0;
+          if (dataPoint) {
+            val = stringToPx(dataPoint, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
+          }
+          return acc + val;
+        }, 0) / (rowSample.length || 1);
+
+      metadata[columnIdOrAccessor] = {
+        headerPx:
+          typeof column.Header === 'string'
+            ? Math.max(stringToPx(column.Header, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX, 60)
+            : 60,
+        contentPxAvg: contentPxAvg
+      };
+      return metadata;
+    },
+    {}
+  );
+
+  let totalContentPxAvgPrio1 = 0;
+  let totalNumberColPrio2 = 0;
+
+  // width reserved by predefined widths or columns defined by header
+  const reservedWidth: number = visibleColumns.reduce((acc, column) => {
+    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
+    const { contentPxAvg, headerPx } = columnMeta[columnIdOrAccessor];
+
+    if (contentPxAvg > headerPx) {
+      if (!column.minWidth && !column.width) {
+        totalContentPxAvgPrio1 += columnMeta[columnIdOrAccessor].contentPxAvg;
+        totalNumberColPrio2++;
+        return acc;
+      } else {
+        return acc + Math.max(column.minWidth || 0, column.width || 0);
+      }
+    } else {
+      if (!column.minWidth && !column.width) {
+        totalNumberColPrio2++;
+      }
+      let max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
+      columnMeta[columnIdOrAccessor].headerDefinesWidth = true;
+      return acc + max;
+    }
+  }, 0);
+
+  const availableWidthPrio1 = totalWidth - reservedWidth;
+  let availableWidthPrio2 = availableWidthPrio1;
+
+  // Step 1: Give columns defined by content more space (priority 1)
+  const visibleColumnsAdaptedPrio1 = visibleColumns.map((column) => {
+    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
+    const meta = columnMeta[columnIdOrAccessor];
+    if (meta && !column.minWidth && !column.width && !meta.headerDefinesWidth) {
+      let targetWidth;
+      const { contentPxAvg, headerPx } = meta;
+      if (availableWidthPrio1 > 0) {
+        const factor = contentPxAvg / totalContentPxAvgPrio1;
+        targetWidth = Math.min(availableWidthPrio1 * factor, contentPxAvg);
+        availableWidthPrio2 -= targetWidth;
+      }
+      return {
+        ...column,
+        nextWidth: targetWidth || headerPx
+      };
+    }
+    return column;
+  });
+  // Step 2: Give all columns more space (priority 2)
+  return visibleColumnsAdaptedPrio1.map((column) => {
+    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
+    const meta = columnMeta[columnIdOrAccessor];
+    const { headerPx } = meta;
+    if (meta && !column.minWidth && !column.width) {
+      let targetWidth = column.nextWidth || headerPx;
+      if (availableWidthPrio2 > 0) {
+        targetWidth = targetWidth + availableWidthPrio2 * (1 / totalNumberColPrio2);
+      }
+      return {
+        ...column,
+        width: targetWidth
+      };
+    } else {
+      return {
+        ...column,
+        width: Math.max(column.width || 0, 60, headerPx)
+      };
+    }
+  });
+};
+
+const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   if (!instance.state || !instance.rows) {
     return columns;
   }
   const { rows, state } = instance;
-
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
   const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
@@ -35,7 +163,7 @@ const columns = (columns, { instance }) => {
     return columns;
   }
 
-  //map columns to visibleColumns
+  // map columns to visibleColumns
   const visibleColumns = instance.visibleColumns
     .map((visCol) => {
       const column = columns.find((col) => {
@@ -49,6 +177,10 @@ const columns = (columns, { instance }) => {
       return column ?? false;
     })
     .filter(Boolean);
+
+  if (scaleWidthMode === TableScaleWidthMode.Smart) {
+    return smartColumns(columns, instance, visibleColumns);
+  }
 
   const calculateDefaultTableWidth = () => {
     const columnsWithWidthProperties = visibleColumns
@@ -207,7 +339,7 @@ const columns = (columns, { instance }) => {
 
   let availableWidth = totalWidth - reservedWidth;
 
-  if (scaleWidthMode === TableScaleWidthMode.Smart || availableWidth > 0) {
+  if (availableWidth > 0) {
     if (scaleWidthMode === TableScaleWidthMode.Grow) {
       reservedWidth = visibleColumns.reduce((acc, column) => {
         const { minHeaderWidth } = columnMeta[column.id ?? column.accessor];
@@ -218,7 +350,7 @@ const columns = (columns, { instance }) => {
 
     return columns.map((column) => {
       const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
-      const meta = columnMeta[column.id ?? column.accessor];
+      const meta = columnMeta[column.id ?? (column.accessor as string)];
       if (isColumnVisible && meta) {
         const { minHeaderWidth, contentCharAvg } = meta;
         const additionalSpaceFactor = totalCharNum > 0 ? contentCharAvg / totalCharNum : 1 / visibleColumns.length;
@@ -239,7 +371,7 @@ const columns = (columns, { instance }) => {
   // TableScaleWidthMode Grow
   return columns.map((column) => {
     const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
-    const meta = columnMeta[column.id ?? column.accessor];
+    const meta = columnMeta[column.id ?? (column.accessor as string)];
     if (isColumnVisible && meta) {
       const { fullWidth } = meta;
       return {

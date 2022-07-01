@@ -1,4 +1,4 @@
-import { ThemingParameters, spacing } from '@ui5/webcomponents-react-base';
+import { spacing, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   card: {

@@ -23,7 +23,7 @@ import {
   YES
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactElement, ReactNode, Ref, useState } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { MessageBoxActions } from '../../enums/MessageBoxActions';
@@ -31,6 +31,7 @@ import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon, IconPropTypes } from '../../webComponents/Icon';
@@ -87,16 +88,16 @@ export interface MessageBoxPropTypes
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
   /**
    * Fired after the component is opened. This event does not bubble.
    */
-  onAfterOpen?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
-const createUniqueIds = (internalActions) => {
+const createUniqueIds = (internalActions): (string | null)[] => {
   return internalActions.map((action) => {
     if (typeof action === 'string') {
       return `${performance.now() + Math.random()}`.split('.')[1];
@@ -126,7 +127,7 @@ const getIcon = (icon, type) => {
   }
 };
 
-const getActions = (actions, type) => {
+const getActions = (actions, type): (string | ReactNode)[] => {
   if (actions && actions.length > 0) {
     return actions;
   }
@@ -215,8 +216,9 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const getInitialFocus = () => {
     const indexOfInitialFocus = internalActions.indexOf(initialFocus);
-    if (~indexOfInitialFocus && typeof internalActions[indexOfInitialFocus] === 'string') {
-      return `${internalActions[indexOfInitialFocus]}-${uniqueIds[indexOfInitialFocus]}`;
+    const actionToFocus = internalActions[indexOfInitialFocus] as string;
+    if (typeof actionToFocus === 'string') {
+      return `${actionToFocus}-${uniqueIds[indexOfInitialFocus]}`;
     }
     return initialFocus;
   };
@@ -225,6 +227,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   // @ts-ignore
   const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
+
+  const messageBoxId = useIsomorphicId();
 
   return (
     <Dialog
@@ -235,7 +239,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
       {...restWithoutOmitted}
-      accessibleName={accessibleName ?? `${titleToRender() ?? ''} ${typeof children === 'string' ? children : ''}`}
+      accessibleNameRef={`${messageBoxId}-title ${messageBoxId}-text`}
       initialFocus={getInitialFocus()}
       data-type={type}
     >
@@ -243,34 +247,39 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
         <header slot="header" className={classes.header}>
           {iconToRender}
           {iconToRender && <span className={classes.spacer} />}
-          <Title level={TitleLevel.H2}>{titleToRender()}</Title>
+          <Title id={`${messageBoxId}-title`} level={TitleLevel.H2}>
+            {titleToRender()}
+          </Title>
         </header>
       )}
-      <Text>{children}</Text>
+      <Text id={`${messageBoxId}-text`}>{children}</Text>
       <footer slot="footer" className={classes.footer}>
         {internalActions.map((action, index) => {
           if (typeof action !== 'string' && isValidElement(action)) {
             return cloneElement<ButtonPropTypes | { 'data-action': string }>(action, {
-              onClick: (action as ReactElement<ButtonPropTypes>)?.props?.onClick
+              onClick: action?.props?.onClick
                 ? (e) => {
-                    (action as ReactElement<ButtonPropTypes>)?.props?.onClick(e);
+                    action?.props?.onClick(e);
                     handleOnClose(e);
                   }
                 : handleOnClose,
               'data-action': action?.props?.['data-action'] ?? `${index}: custom action`
             });
           }
-          return (
-            <Button
-              id={`${action}-${uniqueIds[index]}`}
-              key={`${action}-${index}`}
-              design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
-              onClick={handleOnClose}
-              data-action={action}
-            >
-              {actionTranslations[action] ?? action}
-            </Button>
-          );
+          if (typeof action === 'string') {
+            return (
+              <Button
+                id={`${action}-${uniqueIds[index]}`}
+                key={`${action}-${index}`}
+                design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
+                onClick={handleOnClose}
+                data-action={action}
+              >
+                {actionTranslations[action] ?? action}
+              </Button>
+            );
+          }
+          return null;
         })}
       </footer>
     </Dialog>

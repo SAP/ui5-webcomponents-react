@@ -19,16 +19,18 @@ jobs:
         uses: actions/setup-node@v3.3.0
         with:
           node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install, test and build
         run: |
           yarn install
+          yarn test
           yarn build
+        env:
+          REACTJS_VERSION: 18
 
       - name: publish
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
@@ -39,7 +41,7 @@ jobs:
             --exact \
             --no-push \
             --no-git-tag-version \
-            --dist-tag dev \
+            --pre-dist-tag dev \
             --allow-branch ${current_branch}
 
         env:

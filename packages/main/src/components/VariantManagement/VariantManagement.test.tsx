@@ -277,13 +277,13 @@ describe('VariantManagement', () => {
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
-    getByText('Please specify a view name');
+    getByText('Please specify a view name.');
 
     fireEvent.input(inputField, { target: { value: 'VariantItem 1' } });
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
-    getByText('A file with this name already exists');
+    getByText('A file with this name already exists.');
 
     // valid entry & save
     fireEvent.input(inputField, { target: { value: 'Updated!' } });
@@ -293,8 +293,8 @@ describe('VariantManagement', () => {
     });
 
     fireEvent.click(saveBtn);
-    expect(queryByText('Please specify a view name')).toBeNull();
-    expect(queryByText('A file with this name already exists')).toBeNull();
+    expect(queryByText('Please specify a view name.')).toBeNull();
+    expect(queryByText('A file with this name already exists.')).toBeNull();
     expect(cb).toHaveBeenCalledTimes(1);
     expect(dialog).not.toBeInTheDocument();
     expect(cb.mock.results[0].value.children).toBe('Updated!');

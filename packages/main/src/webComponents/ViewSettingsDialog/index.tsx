@@ -24,14 +24,14 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    * Defines the `filterItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/FilterItem";`
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   filterItems?: ReactNode | ReactNode[];
   /**
    * Defines the list of items against which the user could sort data. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/SortItem";`
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   sortItems?: ReactNode | ReactNode[];
   /**
@@ -39,7 +39,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    */
   onCancel?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      ViewSettingsDialogDomRef,
       { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
     >
   ) => void;
@@ -48,7 +48,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
    */
   onConfirm?: (
     event: Ui5CustomEvent<
-      HTMLElement,
+      ViewSettingsDialogDomRef,
       { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
     >
   ) => void;

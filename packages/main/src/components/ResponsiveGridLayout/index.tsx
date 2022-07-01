@@ -1,8 +1,8 @@
-import { CommonProps } from '../../interfaces/CommonProps';
+import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss';
-import clsx from 'clsx';
 
 export interface ResponsiveGridLayoutPropTypes extends CommonProps {
   /**

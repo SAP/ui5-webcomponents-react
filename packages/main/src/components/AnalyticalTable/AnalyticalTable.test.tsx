@@ -7,7 +7,11 @@ import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
 import { ValueState } from '../../enums/ValueState';
 import { Button } from '../../webComponents/Button';
 import { AnalyticalTable } from './index';
-import { useIndeterminateRowSelection, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
+import {
+  useIndeterminateRowSelection,
+  useManualRowSelect,
+  useRowDisableSelection
+} from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [
   {
@@ -1197,6 +1201,108 @@ describe('AnalyticalTable', () => {
       target: { scrollY: 100 }
     });
     expect(scroll).toHaveBeenCalledTimes(1);
+  });
+
+  const manualSelectData = [
+    {
+      name: 'Selected',
+      age: 40,
+      friend: {
+        name: 'MAR',
+        age: 28
+      },
+      isSelected: true
+    },
+    {
+      name: 'Not selected',
+      age: 20,
+      friend: {
+        name: 'Nei',
+        age: 50
+      },
+      isSelected: false
+    },
+    {
+      name: 'Not selected2',
+      age: 20,
+      friend: {
+        name: 'Nei',
+        age: 50
+      }
+    }
+  ];
+  test('plugin hook: useManualRowSelect', () => {
+    const { getByText, rerender } = render(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.MultiSelect}
+        data={manualSelectData}
+        columns={columns}
+        tableHooks={[useManualRowSelect('isSelected')]}
+      />
+    );
+    const row0 = getByText('Selected').parentNode.parentNode;
+    const row1 = getByText('Not selected').parentNode.parentNode;
+    const row2 = getByText('Not selected2').parentNode.parentNode;
+    expect(row0).toHaveAttribute('data-is-selected');
+    expect(row1).not.toHaveAttribute('data-is-selected');
+    expect(row2).not.toHaveAttribute('data-is-selected');
+
+    const [, ...updatedManualSelectData] = manualSelectData;
+    rerender(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.MultiSelect}
+        data={[
+          {
+            name: 'Selected',
+            age: 40,
+            friend: {
+              name: 'MAR',
+              age: 28
+            },
+            isSelected: false
+          },
+          ...updatedManualSelectData
+        ]}
+        columns={columns}
+        tableHooks={[useManualRowSelect('isSelected')]}
+      />
+    );
+    expect(row0).not.toHaveAttribute('data-is-selected');
+    expect(row1).not.toHaveAttribute('data-is-selected');
+    expect(row2).not.toHaveAttribute('data-is-selected');
+  });
+
+  test('a11y - header popover announcement', () => {
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        disableGroupBy: true,
+        disableFilters: true,
+        disableSortBy: true
+      }
+    ];
+    const { container } = render(<AnalyticalTable data={data} columns={columns} />);
+    const firstColHeader = container.querySelector('[id="name"]');
+    const secondColHeader = container.querySelector('[id="age"]');
+
+    expect(firstColHeader).toHaveAttribute('aria-haspopup', 'menu');
+    expect(secondColHeader).not.toHaveAttribute('aria-haspopup');
+  });
+
+  test('overlay', () => {
+    const { rerender, container } = render(<AnalyticalTable data={data} columns={columns} showOverlay />);
+    const overlay = container.querySelector('[data-component-name="AnalyticalTableOverlay"]');
+
+    expect(overlay).toBeInTheDocument();
+
+    rerender(<AnalyticalTable data={data} columns={columns} />);
+
+    expect(overlay).not.toBeInTheDocument();
   });
 
   createCustomPropsTest(AnalyticalTable);

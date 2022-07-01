@@ -12,7 +12,8 @@ import {
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
@@ -51,8 +52,9 @@ import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { getRandomId } from '../../internal/getRandomId';
+import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
+import { Text } from '../Text';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
@@ -298,6 +300,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
+   * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
+   */
+  showOverlay?: boolean;
+  /**
    * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
    */
   noDataText?: string;
@@ -363,7 +369,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the column growing behaviour. Possible Values:
    *
-   * - **Default**: Every column without fixed width gets the maximum available space of the table.
+   * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
    *
@@ -539,6 +545,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     selectedRowIds,
     selectionBehavior,
     selectionMode,
+    showOverlay,
     sortable,
     style,
     subRowsKey,
@@ -559,9 +566,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     NoDataComponent,
     ...rest
   } = props;
-
+  const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const titleBarId = useRef(`titlebar-${getRandomId()}`).current;
+  const titleBarId = useRef(`titlebar-${uniqueId}`).current;
+  const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
 
   const classes = useStyles();
 
@@ -585,6 +593,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
+  const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
@@ -625,7 +634,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         markNavigatedRow,
         renderRowSubComponent,
         alwaysShowSubComponent,
-        reactWindowRef
+        reactWindowRef,
+        showOverlay,
+        uniqueId
       },
       ...reactTableOptions
     },
@@ -917,143 +928,165 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   );
 
   return (
-    <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
-      {header && (
-        <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
-          {header}
-        </TitleBar>
-      )}
-      {extension && <div ref={extensionRef}>{extension}</div>}
-      <FlexBox>
-        <div
-          aria-labelledby={titleBarId}
-          {...getTableProps()}
-          tabIndex={0}
-          role="grid"
-          aria-rowcount={rows.length}
-          aria-colcount={visibleColumns.length}
-          data-per-page={internalVisibleRowCount}
-          data-component-name="AnalyticalTableContainer"
-          ref={tableRef}
-          data-native-scrollbar={props['data-native-scrollbar']}
-          className={tableClasses}
+    <>
+      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
+        {header && (
+          <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
+            {header}
+          </TitleBar>
+        )}
+        {extension && <div ref={extensionRef}>{extension}</div>}
+        <FlexBox
+          className={classes.tableContainerWithScrollBar}
+          data-component-name="AnalyticalTableContainerWithScrollbar"
         >
-          <div className={classes.tableHeaderBackgroundElement} />
-          {headerGroups.map((headerGroup) => {
-            let headerProps: Record<string, unknown> = {};
-            if (headerGroup.getHeaderGroupProps) {
-              headerProps = headerGroup.getHeaderGroupProps();
-            }
+          {showOverlay && (
+            <>
+              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+                {invalidTableA11yText}
+              </span>
+              <div
+                tabIndex={0}
+                aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
+                role="region"
+                data-component-name="AnalyticalTableOverlay"
+                className={classes.overlay}
+              />
+            </>
+          )}
+          <div
+            aria-labelledby={titleBarId}
+            {...getTableProps()}
+            tabIndex={showOverlay ? -1 : 0}
+            role="grid"
+            aria-rowcount={rows.length}
+            aria-colcount={visibleColumns.length}
+            data-per-page={internalVisibleRowCount}
+            data-component-name="AnalyticalTableContainer"
+            ref={tableRef}
+            data-native-scrollbar={props['data-native-scrollbar']}
+            className={tableClasses}
+          >
+            <div className={classes.tableHeaderBackgroundElement} />
+            {headerGroups.map((headerGroup) => {
+              let headerProps: Record<string, unknown> = {};
+              if (headerGroup.getHeaderGroupProps) {
+                headerProps = headerGroup.getHeaderGroupProps();
+              }
 
-            return (
-              tableRef.current && (
-                <ColumnHeaderContainer
-                  ref={headerRef}
-                  key={headerProps.key as string}
-                  reactWindowRef={reactWindowRef}
-                  tableRef={tableRef}
-                  resizeInfo={tableState.columnResizing}
-                  visibleColumnsWidth={visibleColumnsWidth}
-                  headerProps={headerProps}
-                  headerGroup={headerGroup}
-                  overscanCountHorizontal={overscanCountHorizontal}
-                  onSort={onSort}
-                  onGroupByChanged={onGroupByChanged}
-                  onDragStart={handleDragStart}
-                  onDragOver={handleDragOver}
-                  onDrop={handleOnDrop}
-                  onDragEnter={handleDragEnter}
-                  onDragEnd={handleOnDragEnd}
-                  dragOver={dragOver}
-                  isRtl={isRtl}
-                  portalContainer={portalContainer}
-                />
-              )
-            );
-          })}
-          {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-          {loading && props.data?.length === 0 && (
-            <TablePlaceholder
-              isRtl={isRtl}
-              columns={visibleColumns}
-              rows={props.minRows}
-              style={noDataStyles}
-              rowHeight={internalRowHeight}
-              tableWidth={totalColumnsWidth}
-            />
-          )}
-          {!loading && props.data?.length === 0 && (
-            <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
-          )}
-          {props.data?.length > 0 && tableRef.current && (
-            <VirtualTableBodyContainer
-              tableBodyHeight={tableBodyHeight}
-              totalColumnsWidth={totalColumnsWidth}
-              parentRef={parentRef}
-              classes={classes}
-              infiniteScroll={infiniteScroll}
-              infiniteScrollThreshold={infiniteScrollThreshold}
-              onLoadMore={onLoadMore}
-              internalRowHeight={internalRowHeight}
-              popInRowHeight={popInRowHeight}
-              rows={rows}
-              handleExternalScroll={handleBodyScroll}
-              visibleRows={internalVisibleRowCount}
-              dataLength={data?.length}
-            >
-              <VirtualTableBody
+              return (
+                tableRef.current && (
+                  <ColumnHeaderContainer
+                    ref={headerRef}
+                    key={headerProps.key as string}
+                    reactWindowRef={reactWindowRef}
+                    tableRef={tableRef}
+                    resizeInfo={tableState.columnResizing}
+                    visibleColumnsWidth={visibleColumnsWidth}
+                    headerProps={headerProps}
+                    headerGroup={headerGroup}
+                    overscanCountHorizontal={overscanCountHorizontal}
+                    onSort={onSort}
+                    onGroupByChanged={onGroupByChanged}
+                    onDragStart={handleDragStart}
+                    onDragOver={handleDragOver}
+                    onDrop={handleOnDrop}
+                    onDragEnter={handleDragEnter}
+                    onDragEnd={handleOnDragEnd}
+                    dragOver={dragOver}
+                    isRtl={isRtl}
+                    portalContainer={portalContainer}
+                  />
+                )
+              );
+            })}
+            {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+            {loading && props.data?.length === 0 && (
+              <TablePlaceholder
+                isRtl={isRtl}
+                columns={visibleColumns}
+                rows={props.minRows}
+                style={noDataStyles}
+                rowHeight={internalRowHeight}
+                tableWidth={totalColumnsWidth}
+              />
+            )}
+            {!loading && props.data?.length === 0 && (
+              <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+            )}
+            {props.data?.length > 0 && tableRef.current && (
+              <VirtualTableBodyContainer
+                tableBodyHeight={tableBodyHeight}
+                totalColumnsWidth={totalColumnsWidth}
+                parentRef={parentRef}
                 classes={classes}
-                prepareRow={prepareRow}
-                rows={rows}
-                minRows={minRows}
-                reactWindowRef={reactWindowRef}
-                isTreeTable={isTreeTable}
+                infiniteScroll={infiniteScroll}
+                infiniteScrollThreshold={infiniteScrollThreshold}
+                onLoadMore={onLoadMore}
                 internalRowHeight={internalRowHeight}
                 popInRowHeight={popInRowHeight}
+                rows={rows}
+                handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
-                alternateRowColor={alternateRowColor}
-                overscanCount={overscanCount}
-                tableRef={tableRef}
-                parentRef={parentRef}
-                visibleColumns={visibleColumns}
-                visibleColumnsWidth={visibleColumnsWidth}
-                overscanCountHorizontal={overscanCountHorizontal}
-                renderRowSubComponent={renderRowSubComponent}
-                alwaysShowSubComponent={alwaysShowSubComponent}
-                markNavigatedRow={markNavigatedRow}
-                isRtl={isRtl}
-                subComponentsHeight={tableState.subComponentsHeight}
-                dispatch={dispatch}
-              />
-            </VirtualTableBodyContainer>
+                dataLength={data?.length}
+              >
+                <VirtualTableBody
+                  classes={classes}
+                  prepareRow={prepareRow}
+                  rows={rows}
+                  minRows={minRows}
+                  reactWindowRef={reactWindowRef}
+                  isTreeTable={isTreeTable}
+                  internalRowHeight={internalRowHeight}
+                  popInRowHeight={popInRowHeight}
+                  visibleRows={internalVisibleRowCount}
+                  alternateRowColor={alternateRowColor}
+                  overscanCount={overscanCount}
+                  tableRef={tableRef}
+                  parentRef={parentRef}
+                  visibleColumns={visibleColumns}
+                  visibleColumnsWidth={visibleColumnsWidth}
+                  overscanCountHorizontal={overscanCountHorizontal}
+                  renderRowSubComponent={renderRowSubComponent}
+                  alwaysShowSubComponent={alwaysShowSubComponent}
+                  markNavigatedRow={markNavigatedRow}
+                  isRtl={isRtl}
+                  subComponentsHeight={tableState.subComponentsHeight}
+                  dispatch={dispatch}
+                />
+              </VirtualTableBodyContainer>
+            )}
+          </div>
+          {(tableState.isScrollable === undefined || tableState.isScrollable) && (
+            <VerticalScrollbar
+              tableBodyHeight={tableBodyHeight}
+              internalRowHeight={internalRowHeight}
+              popInRowHeight={popInRowHeight}
+              tableRef={tableRef}
+              minRows={minRows}
+              rows={rows}
+              handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
+              ref={verticalScrollBarRef}
+              data-native-scrollbar={props['data-native-scrollbar']}
+            />
           )}
-        </div>
-        {(tableState.isScrollable === undefined || tableState.isScrollable) && (
-          <VerticalScrollbar
-            tableBodyHeight={tableBodyHeight}
-            internalRowHeight={internalRowHeight}
+        </FlexBox>
+        {visibleRowCountMode === TableVisibleRowCountMode.Interactive && (
+          <VerticalResizer
             popInRowHeight={popInRowHeight}
-            tableRef={tableRef}
-            minRows={minRows}
-            rows={rows}
-            handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
-            ref={verticalScrollBarRef}
-            data-native-scrollbar={props['data-native-scrollbar']}
+            hasPopInColumns={tableState?.popInColumns?.length > 0}
+            analyticalTableRef={analyticalTableRef}
+            dispatch={dispatch}
+            extensionsHeight={extensionsHeight}
+            internalRowHeight={internalRowHeight}
+            portalContainer={portalContainer}
           />
         )}
-      </FlexBox>
-      {visibleRowCountMode === TableVisibleRowCountMode.Interactive && (
-        <VerticalResizer
-          popInRowHeight={popInRowHeight}
-          hasPopInColumns={tableState?.popInColumns?.length > 0}
-          analyticalTableRef={analyticalTableRef}
-          dispatch={dispatch}
-          extensionsHeight={extensionsHeight}
-          internalRowHeight={internalRowHeight}
-          portalContainer={portalContainer}
-        />
-      )}
-    </div>
+      </div>
+      <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
+        ""
+      </Text>
+    </>
   );
 });
 

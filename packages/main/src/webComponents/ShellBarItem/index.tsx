@@ -25,7 +25,7 @@ export interface ShellBarItemPropTypes extends ShellBarItemAttributes, Omit<Comm
   /**
    * Fired, when the item is pressed.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<ShellBarItemDomRef>;
 }
 
 /**

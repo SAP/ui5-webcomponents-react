@@ -79,7 +79,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    * Defines the icon to be displayed in the component.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   icon?: ReactNode;
   /**
@@ -89,7 +89,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -97,19 +97,19 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
   /**
    * Fired when the value of the component changes at each keystroke.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
   /**
    * Fired when the dropdown is opened or closed.
    */
-  onOpenChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onOpenChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<HTMLInputElement, { items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, { items: unknown[] }>) => void;
 }
 
 /**

@@ -228,7 +228,7 @@ const getEventParameters = (name, parameters) => {
 
   const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
 
-  const eventTarget = Utils.getEventTargetForComponent(name);
+  const eventTarget = `${name}DomRef`;
 
   if (resolvedEventParameters.length === 0) {
     return {
@@ -375,11 +375,6 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
     }
   });
-  //todo remove after 'react-docgen' can handle this
-  args.push(`style: {}`);
-  args.push(`className: ''`);
-  args.push(`slot: ''`);
-  args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
 
   let formattedDescription = description
@@ -534,7 +529,7 @@ const propDescription = (componentSpec, property) => {
     formattedDescription += `
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
   }
 
   return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
@@ -621,16 +616,21 @@ allWebComponents
       .forEach((eventSpec) => {
         let eventParameters;
         if (eventSpec.native === 'true') {
+          const eventTarget = `${componentSpec.module}DomRef`;
           if (eventSpec.name === 'click') {
             eventParameters = {
-              tsType: 'MouseEventHandler<HTMLElement>',
+              tsType: `MouseEventHandler<${eventTarget}>`,
               importStatements: ["import { MouseEventHandler } from 'react';"]
             };
           } else if (eventSpec.name === 'drop') {
             eventParameters = {
-              tsType: 'DragEventHandler<HTMLElement>',
+              tsType: `DragEventHandler<${eventTarget}>`,
               importStatements: ["import { DragEventHandler } from 'react';"]
             };
+          } else {
+            console.warn(
+              `----------------------\n${componentSpec.module}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
+            );
           }
         } else {
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);

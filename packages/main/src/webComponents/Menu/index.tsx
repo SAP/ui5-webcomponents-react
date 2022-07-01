@@ -32,7 +32,7 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
   /**
    * Fired when an item is being clicked.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: Record<string, unknown>; text: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, { item: Record<string, unknown>; text: string }>) => void;
 }
 
 /**

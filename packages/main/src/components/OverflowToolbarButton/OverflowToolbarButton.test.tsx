@@ -1,9 +1,9 @@
-import { createCustomPropsTest } from '@shared/tests/utils';
-import { OverflowToolbarButton } from './index';
 import { renderWithDefine } from '@shared/tests';
+import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 import { Button } from '../../Button';
 import { Toolbar } from '../Toolbar';
+import { OverflowToolbarButton } from './index';
 
 describe('OverflowToolbarButton', () => {
   test('Show only icon when not in overflow', async () => {

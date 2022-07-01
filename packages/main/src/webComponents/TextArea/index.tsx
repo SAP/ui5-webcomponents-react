@@ -105,7 +105,7 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
    * **Note:** The `valueStateMessage` would be displayed if the component has `valueState` of type `Information`, `Warning` or `Error`.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -113,11 +113,11 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
+  onChange?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
   /**
    * Fired when the value of the component changes at each keystroke or when something is pasted.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLTextAreaElement>) => void;
+  onInput?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 }
 
 /**

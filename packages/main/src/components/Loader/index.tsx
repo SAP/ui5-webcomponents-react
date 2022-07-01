@@ -1,10 +1,10 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { LoaderType } from '../../enums/LoaderType';
-import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { LoaderType } from '../../enums/LoaderType';
+import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Loader.jss';
 
 export interface LoaderPropTypes extends CommonProps {

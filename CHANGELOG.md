@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.6...v0.25.7) (2022-06-30)
+
+
+### Features
+
+* **AnalyticalTable:** add `showOverlay` prop ([#3167](https://github.com/SAP/ui5-webcomponents-react/issues/3167)) ([6a19602](https://github.com/SAP/ui5-webcomponents-react/commit/6a1960219bf5c3e349b11dbd9c0bda190e6c932b)), closes [#3134](https://github.com/SAP/ui5-webcomponents-react/issues/3134)
+
+
+
+
+
+## [0.25.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.5...v0.25.6) (2022-06-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** announce column header popover with screen readers ([#3159](https://github.com/SAP/ui5-webcomponents-react/issues/3159)) ([6b18a4b](https://github.com/SAP/ui5-webcomponents-react/commit/6b18a4bc094b17736e57cf54bb0525901075dfd6)), closes [#3132](https://github.com/SAP/ui5-webcomponents-react/issues/3132)
+* **DynamicPage:** fix tooltip and aria-label for anchor bar buttons ([#3122](https://github.com/SAP/ui5-webcomponents-react/issues/3122)) ([b696d54](https://github.com/SAP/ui5-webcomponents-react/commit/b696d54ea936956a96809221c8d3bc3756c5b897))
+* **Form:** fix alignment of last group row ([#3155](https://github.com/SAP/ui5-webcomponents-react/issues/3155)) ([f819d7f](https://github.com/SAP/ui5-webcomponents-react/commit/f819d7fb0e0f40c420f9ffe3990eb4da45ccf970))
+* **MessageBox:** avoid duplicate aria announcement ([#3153](https://github.com/SAP/ui5-webcomponents-react/issues/3153)) ([344b977](https://github.com/SAP/ui5-webcomponents-react/commit/344b97706710ffef2e614e8667da065143a51120))
+
+
+
+
+
+## [0.25.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.4...v0.25.5) (2022-06-22)
+
+
+### Bug Fixes
+
+* **ActionSheet:** don't scroll page on keyDown/Up, correct margin of buttons ([#3093](https://github.com/SAP/ui5-webcomponents-react/issues/3093)) ([da2c5a4](https://github.com/SAP/ui5-webcomponents-react/commit/da2c5a442e3ffad9f2099493132821543069e7ee)), closes [#3092](https://github.com/SAP/ui5-webcomponents-react/issues/3092)
+* **AnalyticalTable:** adjust column scaling on data change ([#3102](https://github.com/SAP/ui5-webcomponents-react/issues/3102)) ([328fc7b](https://github.com/SAP/ui5-webcomponents-react/commit/328fc7b04d21c7db2576cb7652219e3d72146d9a))
+* **DynamicPageTitle:** use "large" font size for title if no `headerContent` is set ([#3109](https://github.com/SAP/ui5-webcomponents-react/issues/3109)) ([40eef51](https://github.com/SAP/ui5-webcomponents-react/commit/40eef51dbced691ea2b83ea6daebe59c459dafdb))
+* **SplitterElement:** don't remount component on reset ([#3103](https://github.com/SAP/ui5-webcomponents-react/issues/3103)) ([84ef289](https://github.com/SAP/ui5-webcomponents-react/commit/84ef289c47a443daa906f8b99f58f319c924813b))
+
+
+### Features
+
+* **ObjectPage & DynamicPage:** add `onToggleHeaderContent` event ([#3094](https://github.com/SAP/ui5-webcomponents-react/issues/3094)) ([e5bcb5a](https://github.com/SAP/ui5-webcomponents-react/commit/e5bcb5a725141714e93647740c538ddbb40e99fd)), closes [#3091](https://github.com/SAP/ui5-webcomponents-react/issues/3091)
+
+
+
+
+
+## [0.25.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.3...v0.25.4) (2022-06-15)
+
+
+### Bug Fixes
+
+* simplify asset imports & improve i18n provider and docs ([#3079](https://github.com/SAP/ui5-webcomponents-react/issues/3079)) ([374a5d3](https://github.com/SAP/ui5-webcomponents-react/commit/374a5d339b4d9493cf04d7aa95161c2514b3cdc1))
+
+
+
+
+
+## [0.25.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.2...v0.25.3) (2022-06-15)
+
+
+### Bug Fixes
+
+* prevent webpack export error in React 16 and 17 ([#3075](https://github.com/SAP/ui5-webcomponents-react/issues/3075)) ([d4afe80](https://github.com/SAP/ui5-webcomponents-react/commit/d4afe80c388806c53416385b824b7ac239d1b6b0))
+
+
+
+
+
+## [0.25.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.1...v0.25.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* **cra-template-seed:** Shell: use shellbar height css variable instead of fixed value ([#3054](https://github.com/SAP/ui5-webcomponents-react/issues/3054)) ([c95ad10](https://github.com/SAP/ui5-webcomponents-react/commit/c95ad101270848a66f86d2ace35a371c73fc5d3a))
+* **Toolbar:** add margin for first child & fix rtl margins ([#3062](https://github.com/SAP/ui5-webcomponents-react/issues/3062)) ([b5af72e](https://github.com/SAP/ui5-webcomponents-react/commit/b5af72e13d71553b9c2d7822d0244a0463aca365)), closes [#3055](https://github.com/SAP/ui5-webcomponents-react/issues/3055)
+
+
+### Features
+
+* **AnalyticalTable:** add `useManualRowSelect` plugin hook ([#3056](https://github.com/SAP/ui5-webcomponents-react/issues/3056)) ([c2fb172](https://github.com/SAP/ui5-webcomponents-react/commit/c2fb172ce8c910b1c63a32a50700f3eceebebcb9))
+* **AnalyticalTable:** improve "Smart" `scaleWidthMode` ([#3044](https://github.com/SAP/ui5-webcomponents-react/issues/3044)) ([5cbba91](https://github.com/SAP/ui5-webcomponents-react/commit/5cbba91581fccc294775b3853598e898225822e5))
+
+
+
+
+
 ## [0.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.0...v0.25.1) (2022-06-10)
 
 

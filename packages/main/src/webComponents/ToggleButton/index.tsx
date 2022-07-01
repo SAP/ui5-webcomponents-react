@@ -88,7 +88,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
    *
    * **Note:** The event will not be fired if the `disabled` property is set to `true`.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<ToggleButtonDomRef>;
 }
 
 /**
