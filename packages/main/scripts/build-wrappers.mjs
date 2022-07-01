@@ -28,13 +28,3 @@ for (const file of allFiles) {
   content = content.replaceAll(/import '@ui5\/webcomponents(-fiori)?\/dist.+\n/g, '');
   fs.writeFileSync(resolve(tmpDir, file), content);
 }
-
-// adjust deprecation notices
-fs.readdirSync(tmpDir)
-  .filter((file) => fs.statSync(resolve(tmpDir, file)).isFile())
-  .forEach((file) => {
-    let content = fs.readFileSync(resolve(tmpDir, file)).toString();
-    content = content.replaceAll('@ui5/webcomponents-react/dist', '@ui5/webcomponents-react/wrappers');
-    content = content.replaceAll(`'@ui5/webcomponents-react'`, `'@ui5/webcomponents-react/wrappers'`);
-    fs.writeFileSync(resolve(tmpDir, file), content);
-  });

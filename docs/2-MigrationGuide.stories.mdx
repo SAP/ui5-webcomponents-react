@@ -19,6 +19,27 @@ or the [changelog](?path=/docs/change-log--page)._
 
 ## From 0.25.x to 0.26.0
 
+### Removed deprecated entrypoints
+
+In version 0.26.0, we have removed several legacy exports which have been deprecated a couple of months ago.
+This affects all exports using the following pattern:
+
+```js
+import { COMPONENT_NAME } from '@ui5/webcomponents-react/dist/COMPONENT_NAME';
+import { UTIL_NAME } from '@ui5/webcomponents-react-base/dist/UTIL_NAME';
+import { CHART_NAME } from '@ui5/webcomponents-react-charts/dist/CHART_NAME';
+```
+
+You can now shorten all your imports by removing the `/dist/NAME` part to match the following pattern:
+
+```js
+import { COMPONENT_NAME } from '@ui5/webcomponents-react';
+import { UTIL_NAME } from '@ui5/webcomponents-react-base';
+import { CHART_NAME } from '@ui5/webcomponents-react-charts';
+```
+
+In case the file you are trying to import is not available, please raise an [issue](https://github.com/SAP/ui5-webcomponents-react/issues/new?labels=bug&template=bug_report.md).
+
 ### Removed polyfills
 
 In 0.26.0, we have removed the polyfill imports `@ui5/webcomponents-react-base/polyfill/Safari` (all features supported now) and `@ui5/webcomponents-react-base/polyfill/IE11` (end of life).
