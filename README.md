@@ -63,7 +63,7 @@ You can find our documentation under the following links:
 
 ## Requirements
 
-- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
 - [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
 
 <!-- *********************************************************************** -->

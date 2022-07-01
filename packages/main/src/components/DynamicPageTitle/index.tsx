@@ -132,12 +132,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   const [isPhone, setIsPhone] = useState(
     Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
   );
-  const containerClasses = clsx(
-    classes.container,
-    isPhone && classes.phone,
-    className,
-    Device.isIE() && classes.iEClass
-  );
+  const containerClasses = clsx(classes.container, isPhone && classes.phone, className);
 
   const actionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
   const navActionsOverflowPopoverRef = useRef<PopoverDomRef>(null);

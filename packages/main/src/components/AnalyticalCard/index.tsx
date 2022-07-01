@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Card, CardDomRef } from '../../Card';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Card, CardDomRef } from '../../webComponents';
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardPropTypes extends CommonProps {
