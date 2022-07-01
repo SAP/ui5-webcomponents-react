@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Grid } from './index';
 import React from 'react';
 import { GridPosition } from '../../enums/GridPosition';
+import { Grid } from './index';
 
 const GridContent = () => (
   <>

@@ -1,8 +1,8 @@
-import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
 import { render, screen } from '@shared/tests';
-import { FlexBox } from './index';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { createChangeTagNameTest, createCustomPropsTest } from '@shared/tests/utils';
 import * as React from 'react';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { FlexBox } from './index';
 
 describe('FlexBox', () => {
   test('JustifyContent: End', () => {

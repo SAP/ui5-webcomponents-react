@@ -4,7 +4,8 @@ import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / Toast"
@@ -14,11 +15,10 @@ import { useRef } from 'react';
   }}
   args={{
     placement: ToastPlacement.BottomCenter,
-    children: 'Toast Text',
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    children: 'Toast Text'
+  }}
+  parameters={{
+    chromatic: { delay: 1000 }
   }}
 />
 
@@ -60,6 +60,11 @@ export const MyComponentWithAToast() {
       const showToast = () => {
         toast.current.show();
       };
+      useEffect(() => {
+        if (isChromatic) {
+          toast.current.show();
+        }
+      }, []);
       return (
         <>
           <Toast ref={toast} duration={args.duration} placement={args.placement}>

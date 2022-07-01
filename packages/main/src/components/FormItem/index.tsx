@@ -98,12 +98,11 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
   }
 
   const inlineLabelStyles = () => {
-    const styles = { gridColumnStart, gridRowStart };
+    const styles = { gridColumnStart, gridRowStart, paddingBottom: lastGroupItem ? '1rem' : 0 };
     if (CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName)) {
       return {
         ...styles,
-        alignSelf: 'center',
-        paddingBottom: lastGroupItem ? '1rem' : 0
+        alignSelf: 'center'
       };
     }
     return styles;

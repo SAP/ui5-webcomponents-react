@@ -1,7 +1,7 @@
-import { createUseStyles } from 'react-jss';
-import React, { forwardRef, ReactNode, Ref } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
 import clsx from 'clsx';
+import React, { forwardRef, ReactNode, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
+import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './AnalyticalCard.jss';
 
 export interface AnalyticalCardPropTypes extends CommonProps {
