@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/StandardListItem.js';
 import { ReactNode } from 'react';
-import { ListItemType, ValueState } from '../../enums';
+import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

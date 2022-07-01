@@ -1,5 +1,5 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode, MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';

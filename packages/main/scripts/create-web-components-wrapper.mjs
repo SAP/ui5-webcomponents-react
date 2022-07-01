@@ -288,11 +288,13 @@ const createWebComponentWrapper = async (
     componentDescription = '';
   }
 
+  const domRef = Utils.createDomRef(componentSpec, importStatements);
+
   const imports = [
     `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
-      componentSpec.module
+        componentSpec.module
     }.js';`,
-    ...importStatements
+    ...new Set(importStatements)
   ];
 
   return await renderComponentWrapper({
@@ -309,7 +311,7 @@ const createWebComponentWrapper = async (
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,
     defaultProps,
-    domRef: Utils.createDomRef(componentSpec)
+    domRef
   });
 };
 
@@ -702,7 +704,7 @@ allWebComponents
         mainDescription,
         attributes,
         slotsAndEvents,
-        [...new Set(importStatements)],
+        importStatements,
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)

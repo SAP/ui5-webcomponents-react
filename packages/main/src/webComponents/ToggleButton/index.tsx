@@ -1,5 +1,5 @@
 import '@ui5/webcomponents/dist/ToggleButton.js';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode, MouseEventHandler } from 'react';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
