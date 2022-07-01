@@ -5,7 +5,6 @@ packages/base/dist
 packages/base/Device
 packages/base/hooks
 packages/base/lib
-packages/base/polyfill
 packages/base/scripts
 packages/base/styling
 packages/base/types

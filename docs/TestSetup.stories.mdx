@@ -20,51 +20,19 @@ Here you need to tell `jest` to transpile the UI5 Web Components as well as the 
 }
 ```
 
-Since the UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver`, `IntersectionObserver`, `fetch` and `matchMedia` API, you'll need to polyfill all of them.
+Since some components of UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver` API, you'll need to add a polyfill for it.
+Our recommendation is the `resize-observer-polyfill` package, you can install it by running `npm install resize-observer-polyfill --save-dev`.
+
+All other prerequisites of the UI5 Web Components for React Library can be fulfilled by importing our jest setup file:
+`import '@ui5/webcomponents-react/jestSetup.js';`
+
 Therefore, create (or edit) your `src/setupTests.js` file as follows:
 
 ```js
 import ResizeObserverPolyfill from 'resize-observer-polyfill';
-import 'intersection-observer';
-import 'whatwg-fetch';
+import '@ui5/webcomponents-react/jestSetup.js';
 
-const setupMatchMedia = () => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => {
-      const maxWidth = parseInt(/max-width:(?<maxWidth>\d+)px/.exec(query)?.groups?.maxWidth);
-      const minWidth = parseInt(/min-width:(?<minWidth>\d+)px/.exec(query)?.groups?.minWidth);
-
-      let matches =
-        (minWidth ? minWidth <= window.innerWidth : true) && (maxWidth ? window.innerWidth <= maxWidth : true);
-
-      if (query === '(orientation: landscape)') {
-        matches = window.innerWidth > window.innerHeight;
-      }
-
-      return {
-        matches,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn()
-      };
-    })
-  });
-};
-
-beforeEach(() => {
-  Object.defineProperty(globalThis, 'crypto', {
-    value: {
-      randomUUID: () => '1'
-    }
-  });
-  setupMatchMedia();
-  window.ResizeObserver = ResizeObserverPolyfill;
-});
+window.ResizeObserver = ResizeObserverPolyfill;
 ```
 
 <MessageStrip hideCloseButton>
