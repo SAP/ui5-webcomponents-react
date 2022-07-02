@@ -9,8 +9,27 @@ const styles = {
   },
   cardHeader: {
     ...spacing.sapUiContentPadding,
+    position: 'relative',
     backgroundColor: ThemingParameters.sapTile_Background,
-    fontFamily: ThemingParameters.sapFontHeaderFamily
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
+    '&:focus:before': {
+      outline: 'none',
+      content: '""',
+      position: 'absolute',
+      border: 'var(--_ui5_card_header_focus_border)',
+      pointerEvents: 'none',
+      top: 'var(--_ui5_card_header_focus_offset)',
+      left: 'var(--_ui5_card_header_focus_offset)',
+      right: 'var(--_ui5_card_header_focus_offset)',
+      bottom: 'var(--_ui5_card_header_focus_offset)',
+      borderTopLeftRadius: 'var(--_ui5_card_header_focus_radius)',
+      borderTopRightRadius: 'var(--_ui5_card_header_focus_radius)',
+      borderBottomLeftRadius: 'var(--_ui5_card_header_focus_bottom_radius)',
+      borderBottomRightRadius: 'var(--_ui5_card_header_focus_bottom_radius)'
+    },
+    '&:focus-visible': {
+      outline: 'none'
+    }
   },
   cardHeaderClickable: {
     cursor: 'pointer'
