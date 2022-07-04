@@ -73,6 +73,57 @@ import '@ui5/webcomponents-react/jestSetup.js';
 window.ResizeObserver = ResizeObserverPolyfill;
 ```
 
+### New API for `AnalyticalCardHeader`
+
+The `AnalyticalCardHeader` component has been refactored to match the latest design specifications.
+As a consequence, the API has changed:
+
+```jsx
+function OldApi() {
+  return (
+    <AnalyticalCardHeader
+      titleText="Title"
+      subtitleText="Subtitle"
+      arrowIndicator={DeviationIndicator.Up} // renamed to `trend`
+      showIndicator={true} // removed, please use `trend={DeviationIndicator.None}` in future
+      indicatorState={ValueState.Error} // removed without replacement
+      value="100"
+      unit="k" // renamed to `scale`
+      valueState={ValueState.Success} // renamed to `state`, allowed enum values coming from `ValueColor`
+      target="100" // replaced with `children`. Use the `NumericSideIndicator` component.
+      deviation="50" // replaced with `children`. Use the `NumericSideIndicator` component.
+      description="Additional Description"
+      counter="Hello Counter" // renamed to `status`
+      counterState={ValueState.Error} // removed without replacement
+      currency="CURRENCY" // renamed to `unitOfMeasurement`
+      onClick={(e) => {}}
+    />
+  );
+}
+
+// will become
+
+function NewAPI() {
+  return (
+    <AnalyticalCardHeader
+      titleText="Title"
+      subtitleText="Subtitle"
+      trend={DeviationIndicator.Up}
+      value="100"
+      scale="k"
+      state={ValueColor.Good}
+      description="Additional Description"
+      status="Hello Counter"
+      unitOfMeasurement="CURRENCY"
+      onClick={(e) => {}}
+    >
+      <NumericSideIndicator titleText="Target" number="100" />
+      <NumericSideIndicator titleText="Deviation" number="50" />
+    </AnalyticalCardHeader>
+  );
+}
+```
+
 ## From 0.23.x to 0.24.0
 
 - The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
