@@ -111,7 +111,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     state === ValueColor.Good && classes.good,
     state === ValueColor.Error && classes.error,
     state === ValueColor.Critical && classes.critical,
-    state === ValueColor.Neutral && classes.info
+    state === ValueColor.Neutral && classes.neutral
   );
 
   const shouldRenderContent = [value, scale, children].some(Boolean);
@@ -172,7 +172,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
       </div>
       {shouldRenderContent && (
         <div className={classes.kpiContent}>
-          <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel}>
+          <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel} role="img">
             <span className={classes.value}>{value}</span>
             <div className={classes.indicatorAndUnit}>
               {trend !== DeviationIndicator.None && (

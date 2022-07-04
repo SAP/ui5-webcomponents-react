@@ -184,7 +184,7 @@ const styles = {
   critical: {
     color: ThemingParameters.sapCriticalTextColor
   },
-  info: {
+  neutral: {
     color: ThemingParameters.sapNeutralTextColor
   }
 };

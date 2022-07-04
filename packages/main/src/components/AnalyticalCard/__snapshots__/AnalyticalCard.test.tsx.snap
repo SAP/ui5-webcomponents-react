@@ -2,8 +2,8 @@
 
 exports[`Analytical Card Render without Crashing 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div
       class="AnalyticalCard-content"
@@ -14,33 +14,38 @@ exports[`Analytical Card Render without Crashing 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;
 
 exports[`Analytical Card with AnalyticalCardHeader 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div
+      aria-labelledby="1337-title 1337-subtitle 1337-unitOfMeasurement 1337-mainIndicator  1337-details"
+      aria-roledescription="Card Header"
       class="AnalyticalCardHeader-cardHeader"
+      data-sap-ui-fastnavgroup="true"
+      id="1337"
+      role="group"
+      slot="header"
+      tabindex="0"
     >
       <div
-        class="AnalyticalCardHeader-headerContent"
+        class="AnalyticalCardHeader-headerTitles"
       >
         <div
-          class="AnalyticalCardHeader-headerTitles"
+          class="AnalyticalCardHeader-headerFirstLine"
         >
-          <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          <span
+            class="AnalyticalCardHeader-headerText"
+            id="1337-title"
+            role="heading"
           >
-            <div
-              class="AnalyticalCardHeader-headerText"
-            >
-              Header Title
-            </div>
-          </div>
+            Header Title
+          </span>
         </div>
       </div>
     </div>
@@ -53,14 +58,14 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;
 
 exports[`Analytical Card with custom header 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div>
       I'm a header!
@@ -74,6 +79,6 @@ exports[`Analytical Card with custom header 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;
