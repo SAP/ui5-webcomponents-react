@@ -1,13 +1,12 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
+import { LineChart } from '@ui5/webcomponents-react-charts';
+import { DeviationIndicator, ValueColor } from '../../enums';
+import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { AnalyticalCard } from './index';
-import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
-import { DeviationIndicator } from '../../enums/DeviationIndicator';
-import { ValueState } from '../../enums/ValueState';
-import { LineChart } from '@ui5/webcomponents-react-charts';
 
 <Meta
   title="Data Display / AnalyticalCard"
@@ -62,19 +61,16 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
             <AnalyticalCardHeader
               titleText="Title"
               subtitleText="Subtitle"
-              arrowIndicator={DeviationIndicator.Down}
+              trend={DeviationIndicator.Down}
               value="65.34"
-              valueState={ValueState.Error}
-              unit="K"
-              target="100k"
-              deviation="-34.7%"
+              state={ValueColor.Error}
+              scale="K"
               description="Description"
-              counter="Counter"
-              counterState={ValueState.Success}
-              currency="EUR"
+              status="Counter"
+              unitOfMeasurement="EUR"
             >
               <NumericSideIndicator titleText="Target" number="100" unit="k" />
-              <NumericSideIndicator titleText="Deviation" number="34.7" unit="%" state={ValueState.Warning} />
+              <NumericSideIndicator titleText="Deviation" number="34.7" unit="%" state={ValueColor.Critical} />
             </AnalyticalCardHeader>
           }
         >
@@ -110,30 +106,30 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
     args={{
       titleText: 'Project Cost',
       subtitleText: 'All active Projects',
-      arrowIndicator: DeviationIndicator.Down,
-      indicatorState: ValueState.Success,
+      trend: DeviationIndicator.Down,
       value: '100',
-      valueState: ValueState.Success,
-      unit: 'M',
-      target: '120M',
-      deviation: '-16.67%',
-      showIndicator: true,
+      state: ValueColor.Good,
+      scale: 'M',
       description: 'Current Year',
-      counter: '+',
-      counterState: ValueState.Success,
-      currency: 'USD'
+      status: '+',
+      unitOfMeasurement: 'USD'
     }}
     argTypes={{
-      titleText: { description: 'Defines the title of the `AnalyticalCardHeader`.' },
-      subtitleText: { description: 'Defines the sub title of the `AnalyticalCardHeader`.' },
-      value: { description: 'Defines the value of the `AnalyticalCardHeader`.' },
-      unit: { description: 'Defines the unit displayed next to the value of the `AnalyticalCardHeader`.' },
-      target: { description: 'Defines the target value.' },
-      deviation: { description: 'Defines the deviation value.' },
-      showIndicator: { description: 'Defines whether the deviation indicator should be displayed.' },
-      description: { description: 'Defines the description below the value of the `AnalyticalCardHeader`.' },
-      counter: { description: 'Defines the counter in the upper right corner of the `AnalyticalCardHeader`.' },
-      currency: { description: 'Defines the currency.' },
+      titleText: { description: 'The title of the card' },
+      subtitleText: { description: 'The subtitle of the card' },
+      trend: {
+        description: 'The direction of the trend arrow. Shows deviation for the value of the main number indicator.'
+      },
+      value: { description: 'The numeric value of the main number indicator.' },
+      scale: {
+        description:
+          'Defines the unit of measurement (scaling prefix) for the main indicator. Financial characters can be used for currencies and counters. The International System of Units (SI) prefixes can be used.'
+      },
+      description: { description: 'Additional text which adds more details to what is shown in the numeric header.' },
+      status: { description: 'Defines the status text.' },
+      unitOfMeasurement: {
+        description: 'General unit of measurement for the header. Displayed as side information to the subtitle.'
+      },
       onClick: { description: 'Fired when the `AnalyticalCardHeader` header is clicked.' },
       header: { table: { disable: true } },
       children: { table: { disable: true } },
@@ -169,19 +165,14 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
             <AnalyticalCardHeader
               titleText={args.titleText}
               subtitleText={args.subtitleText}
-              arrowIndicator={args.arrowIndicator}
-              indicatorState={args.indicatorState}
+              trend={args.trend}
               value={args.value}
-              valueState={args.valueState}
-              unit={args.unit}
-              target={args.target}
-              deviation={args.deviation}
+              state={args.state}
+              scale={args.scale}
               onClick={args.onClick}
-              showIndicator={args.showIndicator}
               description={args.description}
-              counter={args.counter}
-              counterState={args.counterState}
-              currency={args.currency}
+              status={args.status}
+              unitOfMeasurement={args.unitOfMeasurement}
             />
           }
         >
