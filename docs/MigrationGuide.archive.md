@@ -1,141 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
-import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import { TableOfContent } from '../.storybook/components/TableOfContent';
-import { Footer } from '@docs/Footer';
-
-<Meta title="Migration Guide" />
-
-# Migration Guide
-
-<br />
-
-_The most important breaking changes of the corresponding releases are outlined here.
-For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
-or the [changelog](?path=/docs/change-log--page)._
-
-<br />
-
-<TableOfContent headingSelector="h2.sbdocs-h2" />
-
-## From 0.25.x to 0.26.0
-
-### Removed deprecated entrypoints
-
-In version 0.26.0, we have removed several legacy exports which have been deprecated a couple of months ago.
-This affects all exports using the following pattern:
-
-```js
-import { COMPONENT_NAME } from '@ui5/webcomponents-react/dist/COMPONENT_NAME';
-import { UTIL_NAME } from '@ui5/webcomponents-react-base/dist/UTIL_NAME';
-import { CHART_NAME } from '@ui5/webcomponents-react-charts/dist/CHART_NAME';
-```
-
-You can now shorten all your imports by removing the `/dist/NAME` part to match the following pattern:
-
-```js
-import { COMPONENT_NAME } from '@ui5/webcomponents-react';
-import { UTIL_NAME } from '@ui5/webcomponents-react-base';
-import { CHART_NAME } from '@ui5/webcomponents-react-charts';
-```
-
-In case the file you are trying to import is not available, please raise an [issue](https://github.com/SAP/ui5-webcomponents-react/issues/new?labels=bug&template=bug_report.md).
-
-### Removed polyfills
-
-In 0.26.0, we have removed the polyfill imports `@ui5/webcomponents-react-base/polyfill/Safari` (all features supported now) and `@ui5/webcomponents-react-base/polyfill/IE11` (end of life).
-As a consequence, the internal dependencies of `@ui5/webcomponents-react-base` are cleaned up as well,
-so you'll most likely need to install `resize-observer-polyfill` on your own for running tests with Jest (see next section).
-
-```shell
-npm install resize-observer-polyfill --save-dev
-# or if you are using yarn
-yarn add resize-observer-polyfill --dev
-```
-
-### Improved Jest Setup
-
-In order to run Tests with Jest, there has always been the need of adding additional polyfills to the Jest environment.
-With 0.26.0, things are changing a little:
-
-1. You have to install `resize-observer-polyfill` on your own because it's not longer a dependency of `@ui5/webcomponents-react-base`.
-   ```
-   npm install resize-observer-polyfill --save-dev
-   ```
-2. We now offer an improved way of adding the additional APIs to the Jest environment by exposing a file which is setting up the
-   jest environment for you. You can import it via `import '@ui5/webcomponents-react/jestSetup.js';`.
-
-If you are using `create-react-app`, your simplified `src/setupTests.js` file looks like:
-
-```js
-import ResizeObserverPolyfill from 'resize-observer-polyfill';
-import '@ui5/webcomponents-react/jestSetup.js';
-
-window.ResizeObserver = ResizeObserverPolyfill;
-```
-
-### New API for `AnalyticalCardHeader`
-
-The `AnalyticalCardHeader` component has been refactored to match the latest design specifications.
-As a consequence, the API has changed:
-
-```jsx
-function OldApi() {
-  return (
-    <AnalyticalCardHeader
-      titleText="Title"
-      subtitleText="Subtitle"
-      arrowIndicator={DeviationIndicator.Up} // renamed to `trend`
-      showIndicator={true} // removed, please use `trend={DeviationIndicator.None}` in future
-      indicatorState={ValueState.Error} // removed without replacement
-      value="100"
-      unit="k" // renamed to `scale`
-      valueState={ValueState.Success} // renamed to `state`, allowed enum values coming from `ValueColor`
-      target="100" // replaced with `children`. Use the `NumericSideIndicator` component.
-      deviation="50" // replaced with `children`. Use the `NumericSideIndicator` component.
-      description="Additional Description"
-      counter="Hello Counter" // renamed to `status`
-      counterState={ValueState.Error} // removed without replacement
-      currency="CURRENCY" // renamed to `unitOfMeasurement`
-      onClick={(e) => {}}
-    />
-  );
-}
-
-// will become
-
-function NewAPI() {
-  return (
-    <AnalyticalCardHeader
-      titleText="Title"
-      subtitleText="Subtitle"
-      trend={DeviationIndicator.Up}
-      value="100"
-      scale="k"
-      state={ValueColor.Good}
-      description="Additional Description"
-      status="Hello Counter"
-      unitOfMeasurement="CURRENCY"
-      onClick={(e) => {}}
-    >
-      <NumericSideIndicator titleText="Target" number="100" />
-      <NumericSideIndicator titleText="Deviation" number="50" />
-    </AnalyticalCardHeader>
-  );
-}
-```
-
-## From 0.23.x to 0.24.0
-
-- The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
-- The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
-- The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement your own `className` constructor.
-
-## From 0.21.x to 0.22.0
-
-**useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
-
-You will not need to change anything in your app's code base, since all components should already be wrapped by the `ThemeProvider`, but now you have to make sure that even your test components are wrapped inside of it.
-Otherwise, translatable components will likely not render.
+# Migration Guide Archive for older versions
 
 ## From 0.19.x to 0.20.0
 
@@ -173,36 +36,36 @@ function MyNewComponent() {
 Affected Interfaces:
 
 - `Ui5BarcodeScannerDialogDomRef` <br />
-  new import: `import { BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';`
+new import: `import { BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';`
 - `Ui5CarouselDomRef`<br />
-  new import: `import { CarouselDomRef } from '@ui5/webcomponents-react/dist/Carousel';`
+new import: `import { CarouselDomRef } from '@ui5/webcomponents-react/dist/Carousel';`
 - `Ui5DatePickerDomRef`<br />
-  new import: `import { DatePickerDomRef } from '@ui5/webcomponents-react/dist/DatePicker';`
+new import: `import { DatePickerDomRef } from '@ui5/webcomponents-react/dist/DatePicker';`
 - `Ui5DateRangePickerDomRef`<br />
-  new import: `import { DateRangePickerDomRef } from '@ui5/webcomponents-react/dist/DateRangePicker';`
+new import: `import { DateRangePickerDomRef } from '@ui5/webcomponents-react/dist/DateRangePicker';`
 - `Ui5DateTimePickerDomRef`<br />
-  new import: `import { DateTimePickerDomRef } from '@ui5/webcomponents-react/dist/DateTimePicker';`
+new import: `import { DateTimePickerDomRef } from '@ui5/webcomponents-react/dist/DateTimePicker';`
 - `Ui5DialogDomRef`<br />
-  new import: `import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';`
+new import: `import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';`
 - `Ui5PopoverDomRef`<br />
-  new import: `import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';`
+new import: `import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';`
 - `Ui5ResponsivePopoverDomRef`<br />
-  new import: `import { ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';`
+new import: `import { ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';`
 - `Ui5ShellBarDomRef`<br />
-  new import: `import { ShellBarDomRef } from '@ui5/webcomponents-react/dist/ShellBar';`
+new import: `import { ShellBarDomRef } from '@ui5/webcomponents-react/dist/ShellBar';`
 - `Ui5TimePickerDomRef`<br />
-  new import: `import { TimePickerDomRef } from '@ui5/webcomponents-react/dist/TimePicker';`
+new import: `import { TimePickerDomRef } from '@ui5/webcomponents-react/dist/TimePicker';`
 - `Ui5ToastDomRef`<br />
-  new import: `import { ToastDomRef } from '@ui5/webcomponents-react/dist/Toast';`
+new import: `import { ToastDomRef } from '@ui5/webcomponents-react/dist/Toast';`
 - `Ui5TreeDomRef`<br />
-  new import: `import { TreeDomRef } from '@ui5/webcomponents-react/dist/Tree';`
+new import: `import { TreeDomRef } from '@ui5/webcomponents-react/dist/Tree';`
 - `Ui5TreeItemDomRef`<br />
-  new import: `import { TreeItemDomRef } from '@ui5/webcomponents-react/dist/TreeItem';`
+new import: `import { TreeItemDomRef } from '@ui5/webcomponents-react/dist/TreeItem';`
 
 - `AnalyticalTableDomRef`<br />
-  new import: `import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/dist/AnalyticalTable';`
+new import: `import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/dist/AnalyticalTable';`
 - `MessageViewDomRef`<br />
-  new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
+new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
 
 ## From 0.18.x to 0.19.0
 
@@ -269,15 +132,11 @@ npx ui5wcr-codemod renamePropsV18 src
 npx ui5wcr-codemod renamePropsV18 src --typescript
 ```
 
-<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
-  Please make sure that you have committed all changes before running this codemod.
-  <br />
-  Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run{' '}
-  <a href="https://prettier.io" target="_blank">
-    Prettier
-  </a>{' '}
-  after the codemod finishes for consistent formatting.
-</MessageStrip>
+> **Note**
+> Please make sure that you have committed all changes before running this codemod.
+> Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run{' '}
+> [Prettier](https://prettier.io) after the codemod finishes for consistent formatting.
+
 
 ### Avatar
 
@@ -476,7 +335,7 @@ We streamlined those APIs by adding components used by the `DynamicPage` to the 
 - `header` has been renamed to `headerContent`.
 - **`DynamicPageTitle`:** `subHeading` has been renamed to `subheading`.
 - **`DynamicPageHeader`:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
-  <br />
+<br />
   <br />
   Example for aligning items next to each other:
 
@@ -558,10 +417,8 @@ Setting the title section of the `ObjectPage`:
 
 ### Device Cleanup
 
-<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
-  As the <code>Device</code> was never mentioned as a public module in our documentation, most of those changes will
-  most probably not affect you. They are mainly mentioned for the sake of completeness.
-</MessageStrip>
+> **Warning**
+> As the <code>Device</code> was never mentioned as a public module in our documentation, most of those changes will most probably not affect you. They are mainly mentioned for the sake of completeness.
 
 The `@ui5/webcomponents-react-base Device` was initially copied from the OpenUI5 project, but most of the methods were unused. In this release, we are cleaning up unused methods:
 
@@ -595,23 +452,23 @@ Following those changes, we removed the `rangeSetName` parameter from the `useVi
 All the following checks are always returning `true` in our supported browser, so we have removed:
 
 - `supportPointerEvents`<br />
-  [CanIUse](https://caniuse.com/?search=pointer%20events)<br />
-  Replacement: `'onpointerdown' in window`
+[CanIUse](https://caniuse.com/?search=pointer%20events)<br />
+Replacement: `'onpointerdown' in window`
 - `supportInputPlaceholder`<br />
-  [CanIUse Input](https://caniuse.com/?search=input%20placeholder), [CanIUse TextArea](https://caniuse.com/?search=text%20area%20placeholder)<br />
-  Replacement: `'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea')`
+[CanIUse Input](https://caniuse.com/?search=input%20placeholder), [CanIUse TextArea](https://caniuse.com/?search=text%20area%20placeholder)<br />
+Replacement: `'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea')`
 - `supportWebSocket`<br />
-  [CanIUse](https://caniuse.com/?search=web%20socket)<br />
-  Replacement: `'WebSocket' in window && window.WebSocket.CLOSING === 2`
+[CanIUse](https://caniuse.com/?search=web%20socket)<br />
+Replacement: `'WebSocket' in window && window.WebSocket.CLOSING === 2`
 - `supportMatchMedia`<br />
-  [CanIUse](https://caniuse.com/?search=matchMedia)<br />
-  Replacement: `'matchMedia' in window`
+[CanIUse](https://caniuse.com/?search=matchMedia)<br />
+Replacement: `'matchMedia' in window`
 - `supportMatchMediaListener`<br />
-  [CanIUse](https://caniuse.com/mdn-api_mediaquerylistevent_matches)<br />
-  Replacement: `'matchMedia' in window && window.matchMedia('all and (max-width:0px)'))`
+[CanIUse](https://caniuse.com/mdn-api_mediaquerylistevent_matches)<br />
+Replacement: `'matchMedia' in window && window.matchMedia('all and (max-width:0px)'))`
 - `supportOrientation`<br />
-  [CanIUse](https://caniuse.com/mdn-api_window_deviceorientation_event)<br />
-  Replacement: `'DeviceOrientationEvent' in window`
+[CanIUse](https://caniuse.com/mdn-api_window_deviceorientation_event)<br />
+Replacement: `'DeviceOrientationEvent' in window`
 
 In addition to that, we removed the `supportRetina` check as it was never used in our codebase.
 If you need this check, you'll need to replace it with `window.retina || window.devicePixelRatio >= 2`.
@@ -690,15 +547,15 @@ npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/
 ```
 
 <MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
-  Please make sure that you have committed all changes before running this codemod.
-  <br />
-  <br />
-  Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run <a
+    Please make sure that you have committed all changes before running this codemod.
+    <br />
+    <br />
+    Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run <a
     href="https://prettier.io"
     target="_blank"
-  >
+>
     Prettier
-  </a> after the codemod finishes for consistent formatting.
+</a> after the codemod finishes for consistent formatting.
 </MessageStrip>
 
 ## From 0.13.x to 0.14.0
@@ -899,15 +756,15 @@ were only used internally and are mentioned here for the sake of completeness.
 - `Device.orientation.landscape` is replaced by `getOrientation().landscape` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.orientation.portrait` is replaced by `getOrientation().portrait` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.orientation.attachHandler` is replaced by `attachOrientationChangeHandler` (`'import { attachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `attachOrientationChangeHandler`.
+In addition, the second, optional parameter `oListener` got removed from `attachOrientationChangeHandler`.
 - `Device.orientation.detachHandler` is replaced by `detachOrientationChangeHandler` (`'import { detachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `detachOrientationChangeHandler`.
+In addition, the second, optional parameter `oListener` got removed from `detachOrientationChangeHandler`.
 - `Device.resize.width` is replaced by `getWindowSize().width` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.resize.height` is replaced by `getWindowSize().height` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.resize.attachHandler` is replaced by `attachResizeHandler` (`'import { attachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `attachResizeHandler`.
+In addition, the second, optional parameter `oListener` got removed from `attachResizeHandler`.
 - `Device.resize.detachHandler` is replaced by `detachResizeHandler` (`'import { detachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `detachResizeHandler`.
+In addition, the second, optional parameter `oListener` got removed from `detachResizeHandler`.
 
 <br />
 
@@ -916,9 +773,9 @@ were only used internally and are mentioned here for the sake of completeness.
 - `Device.media.initRangeSet` is replaced by `initRangeSet` (`'import { initRangeSet } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.media.removeRangeSet` is replaced by `removeRangeSet` (`'import { removeRangeSet } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.media.attachHandler` is replaced by `attachHandler` (`'import { attachHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `attachHandler`.
+In addition, the second, optional parameter `oListener` got removed from `attachHandler`.
 - `Device.media.detachHandler` is replaced by `detachHandler` (`'import { detachHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-  In addition, the second, optional parameter `oListener` got removed from `detachHandler`.
+In addition, the second, optional parameter `oListener` got removed from `detachHandler`.
 
 <br />
 
@@ -1084,7 +941,7 @@ The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
 - **AnalyticalTable**: Remove prop `busyIndicatorEnabled` as this was duplicate to `loading`. The visibility of the busy indicator is now solely controlled by the prop loading.
 - **FormItem** / **FormGroup**: Those two components are now abstract components, so you can't add any styles, refs, classNames, etc them.
 - **ShellBar**: the prop `logo` is now accepting a `ReactNode` instead of a `string` which is pointing to an image.
-  Example:
+Example:
 
 ```js
 <ShellBar logo={<img slot="logo" src="../../../assets/images/sap-logo-svg.svg" />} />
@@ -1099,7 +956,7 @@ This requires a couple of changes on your side:
 1. Change the import from `@ui5/webcomponents-react-charts/lib/[ChartType]` to `@ui5/webcomponents-react-charts/lib/[ChartType]`
 2. Don't split the dataset into labels and single dataset entries as before, you can pass your dataset "as-is" to the chart.
 3. Your labels are now part of the dataset, but you need to tell the chart which element of the data is your dimension
-   Use the `dimensions` prop for that.
+Use the `dimensions` prop for that.
 4. Instead of passing multiple datasets with their own data into the datasets prop, define your `measures` by specifying at least the `accessor`.
 
 To illustrate the required changes, you can find the migration of a bar chart with two bars per dimension below:
@@ -1238,7 +1095,7 @@ yarn add @ui5/webcomponents-icons
 
 ### Configure content density
 
-Configuration of compact size is removed.  
+Configuration of compact size is removed.
 The default configuration is `Cozy`, to enable `Compact`, provide the `ui5-content-density-compact` CSS class to any of your HTML elements, and it applies compact size to all of its children.
 
 Add `ui5-content-density-compact` to your `<body>` element to apply compact setting to the whole app:
@@ -1269,7 +1126,7 @@ import '@ui5/webcomponents/dist/Assets';
 import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or UploadCollection
 ```
 
-Now you can call `setTheme` with a string parameter of the new theme.  
+Now you can call `setTheme` with a string parameter of the new theme.
 Available Themes:
 
 - `sap_fiori_3` (default)
@@ -1506,5 +1363,3 @@ ShellBar:
 
 - props:
 - `profile`: Is now a slot where you should use the `Avatar` component.
-
-<Footer />

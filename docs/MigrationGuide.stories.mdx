@@ -1,0 +1,143 @@
+import { Meta } from '@storybook/addon-docs';
+import { TableOfContent } from '../.storybook/components/TableOfContent';
+import { Footer } from '@docs/Footer';
+
+<Meta title="Migration Guide" />
+
+# Migration Guide
+
+<br />
+
+_The most important breaking changes of the corresponding releases are outlined here.
+For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
+or the [changelog](?path=/docs/change-log--page)._
+
+<br />
+
+<TableOfContent headingSelector="h2" />
+
+## From 0.25.x to 0.26.0
+
+### Removed deprecated entrypoints
+
+In version 0.26.0, we have removed several legacy exports which have been deprecated a couple of months ago.
+This affects all exports using the following pattern:
+
+```js
+import { COMPONENT_NAME } from '@ui5/webcomponents-react/dist/COMPONENT_NAME';
+import { UTIL_NAME } from '@ui5/webcomponents-react-base/dist/UTIL_NAME';
+import { CHART_NAME } from '@ui5/webcomponents-react-charts/dist/CHART_NAME';
+```
+
+You can now shorten all your imports by removing the `/dist/NAME` part to match the following pattern:
+
+```js
+import { COMPONENT_NAME } from '@ui5/webcomponents-react';
+import { UTIL_NAME } from '@ui5/webcomponents-react-base';
+import { CHART_NAME } from '@ui5/webcomponents-react-charts';
+```
+
+In case the file you are trying to import is not available, please raise an [issue](https://github.com/SAP/ui5-webcomponents-react/issues/new?labels=bug&template=bug_report.md).
+
+### Removed polyfills
+
+In 0.26.0, we have removed the polyfill imports `@ui5/webcomponents-react-base/polyfill/Safari` (all features supported now) and `@ui5/webcomponents-react-base/polyfill/IE11` (end of life).
+As a consequence, the internal dependencies of `@ui5/webcomponents-react-base` are cleaned up as well,
+so you'll most likely need to install `resize-observer-polyfill` on your own for running tests with Jest (see next section).
+
+```shell
+npm install resize-observer-polyfill --save-dev
+# or if you are using yarn
+yarn add resize-observer-polyfill --dev
+```
+
+### Improved Jest Setup
+
+In order to run Tests with Jest, there has always been the need of adding additional polyfills to the Jest environment.
+With 0.26.0, things are changing a little:
+
+1. You have to install `resize-observer-polyfill` on your own because it's not longer a dependency of `@ui5/webcomponents-react-base`.
+   ```
+   npm install resize-observer-polyfill --save-dev
+   ```
+2. We now offer an improved way of adding the additional APIs to the Jest environment by exposing a file which is setting up the
+   jest environment for you. You can import it via `import '@ui5/webcomponents-react/jestSetup.js';`.
+
+If you are using `create-react-app`, your simplified `src/setupTests.js` file looks like:
+
+```js
+import ResizeObserverPolyfill from 'resize-observer-polyfill';
+import '@ui5/webcomponents-react/jestSetup.js';
+
+window.ResizeObserver = ResizeObserverPolyfill;
+```
+
+### New API for `AnalyticalCardHeader`
+
+The `AnalyticalCardHeader` component has been refactored to match the latest design specifications.
+As a consequence, the API has changed:
+
+```jsx
+function OldApi() {
+  return (
+    <AnalyticalCardHeader
+      titleText="Title"
+      subtitleText="Subtitle"
+      arrowIndicator={DeviationIndicator.Up} // renamed to `trend`
+      showIndicator={true} // removed, please use `trend={DeviationIndicator.None}` in future
+      indicatorState={ValueState.Error} // removed without replacement
+      value="100"
+      unit="k" // renamed to `scale`
+      valueState={ValueState.Success} // renamed to `state`, allowed enum values coming from `ValueColor`
+      target="100" // replaced with `children`. Use the `NumericSideIndicator` component.
+      deviation="50" // replaced with `children`. Use the `NumericSideIndicator` component.
+      description="Additional Description"
+      counter="Hello Counter" // renamed to `status`
+      counterState={ValueState.Error} // removed without replacement
+      currency="CURRENCY" // renamed to `unitOfMeasurement`
+      onClick={(e) => {}}
+    />
+  );
+}
+
+// will become
+
+function NewAPI() {
+  return (
+    <AnalyticalCardHeader
+      titleText="Title"
+      subtitleText="Subtitle"
+      trend={DeviationIndicator.Up}
+      value="100"
+      scale="k"
+      state={ValueColor.Good}
+      description="Additional Description"
+      status="Hello Counter"
+      unitOfMeasurement="CURRENCY"
+      onClick={(e) => {}}
+    >
+      <NumericSideIndicator titleText="Target" number="100" />
+      <NumericSideIndicator titleText="Deviation" number="50" />
+    </AnalyticalCardHeader>
+  );
+}
+```
+
+## From 0.23.x to 0.24.0
+
+- The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
+- The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
+- The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement your own `className` constructor.
+
+## From 0.21.x to 0.22.0
+
+**useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
+
+You will not need to change anything in your app's code base, since all components should already be wrapped by the `ThemeProvider`, but now you have to make sure that even your test components are wrapped inside of it.
+Otherwise, translatable components will likely not render.
+
+## Older releases
+
+If you are looking for migration guides for folder releases, please take a look into our [Migration Guide Archive](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/MigrationGuide.archive.mdx).
+
+<Footer />
