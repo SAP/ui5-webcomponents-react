@@ -114,9 +114,17 @@ import { AnalyticalCard } from './index';
       unitOfMeasurement: 'USD'
     }}
     argTypes={{
+      state: {
+        description: `The semantic color which represents the state of the main number indicator.
+Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>`,
+        control: 'select',
+        options: ValueColor
+      },
       titleText: { description: 'The title of the card' },
       subtitleText: { description: 'The subtitle of the card' },
       trend: {
+        control: 'select',
+        options: DeviationIndicator,
         description: 'The direction of the trend arrow. Shows deviation for the value of the main number indicator.'
       },
       value: { description: 'The numeric value of the main number indicator.' },
