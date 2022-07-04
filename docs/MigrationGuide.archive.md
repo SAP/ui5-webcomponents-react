@@ -133,9 +133,8 @@ npx ui5wcr-codemod renamePropsV18 src --typescript
 ```
 
 > **Note**
-> Please make sure that you have committed all changes before running this codemod.
-> Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run{' '}
-> [Prettier](https://prettier.io) after the codemod finishes for consistent formatting.
+> Please make sure that you have committed all changes before running this codemod. 
+> Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run [Prettier](https://prettier.io) after the codemod finishes for consistent formatting.
 
 
 ### Avatar
@@ -418,7 +417,7 @@ Setting the title section of the `ObjectPage`:
 ### Device Cleanup
 
 > **Warning**
-> As the <code>Device</code> was never mentioned as a public module in our documentation, most of those changes will most probably not affect you. They are mainly mentioned for the sake of completeness.
+> As the `Device` was never mentioned as a public module in our documentation, most of those changes will most probably not affect you. They are mainly mentioned for the sake of completeness.
 
 The `@ui5/webcomponents-react-base Device` was initially copied from the OpenUI5 project, but most of the methods were unused. In this release, we are cleaning up unused methods:
 
@@ -546,17 +545,9 @@ npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/
 npx jscodeshift --transform node_modules/@ui5/webcomponents-react-base/codemods/transformLibToDist.js --extensions js,jsx,ts,tsx --parser tsx src
 ```
 
-<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
-    Please make sure that you have committed all changes before running this codemod.
-    <br />
-    <br />
-    Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run <a
-    href="https://prettier.io"
-    target="_blank"
->
-    Prettier
-</a> after the codemod finishes for consistent formatting.
-</MessageStrip>
+> **Note**
+> Please make sure that you have committed all changes before running this codemod.
+> Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run [Prettier](https://prettier.io) after the codemod finishes for consistent formatting.
 
 ## From 0.13.x to 0.14.0
 
