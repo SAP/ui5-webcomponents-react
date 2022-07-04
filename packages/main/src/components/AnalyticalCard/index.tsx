@@ -26,7 +26,9 @@ const AnalyticalCard = forwardRef((props: AnalyticalCardPropTypes, ref: Ref<Card
   return (
     <Card ref={ref} {...rest}>
       {header}
-      <div className={classes.content}>{children}</div>
+      <div className={classes.content} aria-role="group">
+        {children}
+      </div>
     </Card>
   );
 });

@@ -6,6 +6,7 @@ exports[`Analytical Card Render without Crashing 1`] = `
     ui5-card=""
   >
     <div
+      aria-role="group"
       class="AnalyticalCard-content"
     >
       <span
@@ -24,32 +25,66 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
     ui5-card=""
   >
     <div
-      aria-labelledby="1337-title 1337-subtitle 1337-unitOfMeasurement 1337-mainIndicator  1337-details"
+      aria-labelledby="1337-title 1337-mainIndicator"
       aria-roledescription="Card Header"
       class="AnalyticalCardHeader-cardHeader"
       data-sap-ui-fastnavgroup="true"
       id="1337"
-      role="group"
+      role="heading"
       slot="header"
       tabindex="0"
     >
       <div
-        class="AnalyticalCardHeader-headerTitles"
+        tabindex="-1"
       >
         <div
-          class="AnalyticalCardHeader-headerFirstLine"
+          class="AnalyticalCardHeader-headerTitles"
         >
-          <span
-            class="AnalyticalCardHeader-headerText"
-            id="1337-title"
-            role="heading"
+          <div
+            class="AnalyticalCardHeader-headerFirstLine"
           >
-            Header Title
-          </span>
+            <span
+              aria-level="3"
+              class="AnalyticalCardHeader-headerText"
+              id="1337-title"
+              role="heading"
+            >
+              Header Title
+            </span>
+          </div>
+        </div>
+        <div
+          class="AnalyticalCardHeader-kpiContent"
+        >
+          <div
+            aria-label="undefinedundefined
+"
+            class="AnalyticalCardHeader-mainIndicator"
+            id="1337-mainIndicator"
+            role="img"
+          >
+            <span
+              class="AnalyticalCardHeader-value"
+            />
+            <div
+              class="AnalyticalCardHeader-indicatorAndUnit"
+            >
+              <div
+                class="AnalyticalCardHeader-unit"
+              />
+            </div>
+          </div>
+          <div
+            class="AnalyticalCardHeader-indicatorGap"
+          />
+          <div
+            class="AnalyticalCardHeader-sideIndicators"
+          />
         </div>
       </div>
     </div>
     <div
+      aria-role="group"
       class="AnalyticalCard-content"
     >
       <span
@@ -71,6 +106,7 @@ exports[`Analytical Card with custom header 1`] = `
       I'm a header!
     </div>
     <div
+      aria-role="group"
       class="AnalyticalCard-content"
     >
       <span

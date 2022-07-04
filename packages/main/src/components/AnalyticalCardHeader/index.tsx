@@ -11,11 +11,12 @@ import {
   SEMANTIC_COLOR_NEUTRAL
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
-import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
+import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DeviationIndicator, ValueColor } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useIsomorphicId } from '../../internal/useIsomorphicId';
+import { flattenFragments } from '../../internal/utils';
 import { Icon } from '../../webComponents';
 import styles from './AnalyticalCardHeader.jss';
 
@@ -100,6 +101,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     trend,
     style,
     children,
+    id,
     ...rest
   } = props;
   const classes = useStyles();
@@ -114,13 +116,13 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     state === ValueColor.Neutral && classes.neutral
   );
 
-  const shouldRenderContent = [value, scale, children].some(Boolean);
-
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  const headerId = useIsomorphicId();
+  const uniqueHeaderId = useIsomorphicId();
+  const headerId = id ?? uniqueHeaderId;
 
-  const sideIndicatorIds = Children.toArray(children).map((child, idx) => {
+  const sideIndicators = flattenFragments(children);
+  const sideIndicatorIds: string[] = Children.toArray(sideIndicators).map((child: ReactElement, idx) => {
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
 
@@ -135,6 +137,24 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
     kpiAriaLabel += i18nBundle.getText(semanticColorMap.get(state) ?? '');
   }
 
+  let cardLabelledBy = `${headerId}-title`;
+  if (subtitleText) {
+    cardLabelledBy += ` ${headerId}-subtitle`;
+  }
+  if (unitOfMeasurement) {
+    cardLabelledBy += ` ${headerId}-unitOfMeasurement`;
+  }
+
+  cardLabelledBy += ` ${headerId}-mainIndicator`;
+
+  for (const sideIndicatorId of sideIndicatorIds) {
+    cardLabelledBy += ` ${sideIndicatorId}`;
+  }
+
+  if (description) {
+    cardLabelledBy += ` ${headerId}-description`;
+  }
+
   return (
     <div
       ref={ref}
@@ -143,34 +163,32 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
       id={headerId}
       data-sap-ui-fastnavgroup="true"
       tabIndex={0}
-      role="group"
+      role="heading"
       aria-roledescription={i18nBundle.getText(ARIA_DESC_CARD_HEADER)}
-      aria-labelledby={`${headerId}-title ${headerId}-subtitle ${headerId}-unitOfMeasurement ${headerId}-mainIndicator ${sideIndicatorIds.join(
-        ' '
-      )} ${headerId}-details`}
+      aria-labelledby={cardLabelledBy}
       {...rest}
       onClick={onClick}
       slot={'header'}
     >
-      <div className={classes.headerTitles}>
-        <div className={classes.headerFirstLine}>
-          <span role="heading" className={classes.headerText} id={`${headerId}-title`}>
-            {titleText}
-          </span>
-          {status && <span className={classes.status}>{status}</span>}
-        </div>
-        {(subtitleText || unitOfMeasurement) && (
-          <div className={classes.headerSecondLine}>
-            <span id={`${headerId}-subtitle`}>{subtitleText}</span>
-            {unitOfMeasurement && (
-              <span id={`${headerId}-unitOfMeasurement`} className={classes.unitOfMeasurement}>
-                {unitOfMeasurement}
-              </span>
-            )}
+      <div tabIndex={-1}>
+        <div className={classes.headerTitles}>
+          <div className={classes.headerFirstLine}>
+            <span role="heading" aria-level={3} className={classes.headerText} id={`${headerId}-title`}>
+              {titleText}
+            </span>
+            {status && <span className={classes.status}>{status}</span>}
           </div>
-        )}
-      </div>
-      {shouldRenderContent && (
+          {(subtitleText || unitOfMeasurement) && (
+            <div className={classes.headerSecondLine}>
+              <span id={`${headerId}-subtitle`}>{subtitleText}</span>
+              {unitOfMeasurement && (
+                <span id={`${headerId}-unitOfMeasurement`} className={classes.unitOfMeasurement}>
+                  {unitOfMeasurement}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
         <div className={classes.kpiContent}>
           <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel} role="img">
             <span className={classes.value}>{value}</span>
@@ -183,19 +201,19 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
           </div>
           <div className={classes.indicatorGap} />
           <div className={classes.sideIndicators}>
-            {Children.map(children, (child, index) => {
-              return cloneElement(child, {
-                id: child.props.id ?? `${headerId}-indicator${index}`
+            {sideIndicators.map((sideIndicator: ReactElement, index) => {
+              return cloneElement(sideIndicator, {
+                id: sideIndicator.props.id ?? `${headerId}-indicator${index}`
               });
             })}
           </div>
         </div>
-      )}
-      {description && (
-        <div id={`${headerId}-details`} className={classes.description}>
-          {description}
-        </div>
-      )}
+        {description && (
+          <div id={`${headerId}-description`} className={classes.description}>
+            {description}
+          </div>
+        )}
+      </div>
     </div>
   );
 });

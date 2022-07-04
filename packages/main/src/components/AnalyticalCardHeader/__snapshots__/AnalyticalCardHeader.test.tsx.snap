@@ -3,125 +3,130 @@
 exports[`AnalyticalCardHeader with all string props 1`] = `
 <DocumentFragment>
   <div
-    aria-labelledby="1337-title 1337-subtitle 1337-unitOfMeasurement 1337-mainIndicator 1337-indicator0 1337-indicator1 1337-details"
+    aria-labelledby="1337-title 1337-subtitle 1337-unitOfMeasurement 1337-mainIndicator 1337-indicator0 1337-indicator1 1337-description"
     aria-roledescription="Card Header"
     class="AnalyticalCardHeader-cardHeader"
     data-sap-ui-fastnavgroup="true"
     id="1337"
-    role="group"
+    role="heading"
     slot="header"
     tabindex="0"
   >
     <div
-      class="AnalyticalCardHeader-headerTitles"
+      tabindex="-1"
     >
       <div
-        class="AnalyticalCardHeader-headerFirstLine"
+        class="AnalyticalCardHeader-headerTitles"
       >
-        <span
-          class="AnalyticalCardHeader-headerText"
-          id="1337-title"
-          role="heading"
+        <div
+          class="AnalyticalCardHeader-headerFirstLine"
         >
-          Title
-        </span>
+          <span
+            aria-level="3"
+            class="AnalyticalCardHeader-headerText"
+            id="1337-title"
+            role="heading"
+          >
+            Title
+          </span>
+        </div>
+        <div
+          class="AnalyticalCardHeader-headerSecondLine"
+        >
+          <span
+            id="1337-subtitle"
+          >
+            Subtitle
+          </span>
+          <span
+            class="AnalyticalCardHeader-unitOfMeasurement"
+            id="1337-unitOfMeasurement"
+          >
+            Unit
+          </span>
+        </div>
       </div>
       <div
-        class="AnalyticalCardHeader-headerSecondLine"
+        class="AnalyticalCardHeader-kpiContent"
       >
-        <span
-          id="1337-subtitle"
-        >
-          Subtitle
-        </span>
-        <span
-          class="AnalyticalCardHeader-unitOfMeasurement"
-          id="1337-unitOfMeasurement"
-        >
-          Unit
-        </span>
-      </div>
-    </div>
-    <div
-      class="AnalyticalCardHeader-kpiContent"
-    >
-      <div
-        aria-label="Valueundefined
+        <div
+          aria-label="Valueundefined
 "
-        class="AnalyticalCardHeader-mainIndicator"
-        id="1337-mainIndicator"
-        role="img"
-      >
-        <span
-          class="AnalyticalCardHeader-value"
-        >
-          Value
-        </span>
-        <div
-          class="AnalyticalCardHeader-indicatorAndUnit"
-        >
-          <div
-            class="AnalyticalCardHeader-unit"
-          />
-        </div>
-      </div>
-      <div
-        class="AnalyticalCardHeader-indicatorGap"
-      />
-      <div
-        class="AnalyticalCardHeader-sideIndicators"
-      >
-        <div
-          class="NumericSideIndicator-numericSideIndicator"
-          id="1337-indicator0"
+          class="AnalyticalCardHeader-mainIndicator"
+          id="1337-mainIndicator"
+          role="img"
         >
           <span
-            class="NumericSideIndicator-title"
+            class="AnalyticalCardHeader-value"
           >
-            Target
+            Value
           </span>
           <div
-            class="NumericSideIndicator-valueContainer"
+            class="AnalyticalCardHeader-indicatorAndUnit"
           >
-            <span
-              class="Text-text NumericSideIndicator-number"
-            >
-              100
-            </span>
-            <span
-              class="Text-text NumericSideIndicator-unit"
+            <div
+              class="AnalyticalCardHeader-unit"
             />
           </div>
         </div>
         <div
-          class="NumericSideIndicator-numericSideIndicator"
-          id="1337-indicator1"
+          class="AnalyticalCardHeader-indicatorGap"
+        />
+        <div
+          class="AnalyticalCardHeader-sideIndicators"
         >
-          <span
-            class="NumericSideIndicator-title"
-          >
-            Deviation
-          </span>
           <div
-            class="NumericSideIndicator-valueContainer NumericSideIndicator-stateError"
+            class="NumericSideIndicator-numericSideIndicator"
+            id="1337-indicator0"
           >
             <span
-              class="Text-text NumericSideIndicator-number"
+              class="NumericSideIndicator-title"
             >
-              50
+              Target
             </span>
+            <div
+              class="NumericSideIndicator-valueContainer"
+            >
+              <span
+                class="Text-text NumericSideIndicator-number"
+              >
+                100
+              </span>
+              <span
+                class="Text-text NumericSideIndicator-unit"
+              />
+            </div>
+          </div>
+          <div
+            class="NumericSideIndicator-numericSideIndicator"
+            id="1337-indicator1"
+          >
             <span
-              class="Text-text NumericSideIndicator-unit"
-            />
+              class="NumericSideIndicator-title"
+            >
+              Deviation
+            </span>
+            <div
+              class="NumericSideIndicator-valueContainer NumericSideIndicator-stateError"
+            >
+              <span
+                class="Text-text NumericSideIndicator-number"
+              >
+                50
+              </span>
+              <span
+                class="Text-text NumericSideIndicator-unit"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="AnalyticalCardHeader-description"
-      id="1337-details"
-    >
-      Description
+      <div
+        class="AnalyticalCardHeader-description"
+        id="1337-description"
+      >
+        Description
+      </div>
     </div>
   </div>
 </DocumentFragment>
