@@ -8,11 +8,17 @@ import prettierConfigRaw from '../../prettier.config.cjs';
 
 const eslint = new ESLint({
   overrideConfig: {
+    parser: '@typescript-eslint/parser',
     parserOptions: {
-      project: path.join(PATHS.packages, 'main', 'tsconfig.json')
+      project: path.join(PATHS.packages, 'main', 'tsconfig.json'),
+      ecmaFeatures: {
+        jsx: true
+      },
+      tsconfigRootDir: PATHS.root
     },
     rules: {
-      'import/no-unresolved': 'off'
+      'import/no-unresolved': 'off',
+      '@typescript-eslint/no-empty-interface': 'off'
     }
   },
   fix: true

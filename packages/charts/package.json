@@ -19,7 +19,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "clsx": "1.1.1",
+    "clsx": "1.2.0",
     "react-content-loader": "6.2.0",
     "recharts": "2.1.9"
   },
