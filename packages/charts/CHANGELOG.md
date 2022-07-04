@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.7...v0.26.0) (2022-07-04)
+
+
+### chore
+
+* increase minimum react version to 16.14.0 ([#3177](https://github.com/SAP/ui5-webcomponents-react/issues/3177)) ([bd3d499](https://github.com/SAP/ui5-webcomponents-react/commit/bd3d499b64ce418dd6ef28ac2a61bd84018683ed))
+* remove deprecated entrypoints ([#3154](https://github.com/SAP/ui5-webcomponents-react/issues/3154)) ([e58f733](https://github.com/SAP/ui5-webcomponents-react/commit/e58f7331d1017528dacce10562d928fa2e7862b6))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.5.0 ([#3170](https://github.com/SAP/ui5-webcomponents-react/issues/3170)) ([43aebfd](https://github.com/SAP/ui5-webcomponents-react/commit/43aebfd123137fcce082978b79a38c8da7138b28))
+
+
+### BREAKING CHANGES
+
+* **@ui5/webcomponents-react**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove deprecated `usePassThroughHtmlProps` hook
+* **@ui5/webcomponents-react-charts**: remove all deprecated entrypoints
+* minimum required version of `react` and `react-dom` bumped to `16.14.0` in order to use the new `jsx-transform`.
+
+
+
+
+
 ## [0.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.0...v0.25.1) (2022-06-10)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
