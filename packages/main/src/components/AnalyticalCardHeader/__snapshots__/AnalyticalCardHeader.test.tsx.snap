@@ -12,9 +12,7 @@ exports[`AnalyticalCardHeader with all string props 1`] = `
     slot="header"
     tabindex="0"
   >
-    <div
-      tabindex="-1"
-    >
+    <div>
       <div
         class="AnalyticalCardHeader-headerTitles"
       >
@@ -121,12 +119,12 @@ exports[`AnalyticalCardHeader with all string props 1`] = `
           </div>
         </div>
       </div>
-      <div
+      <span
         class="AnalyticalCardHeader-description"
         id="1337-description"
       >
         Description
-      </div>
+      </span>
     </div>
   </div>
 </DocumentFragment>

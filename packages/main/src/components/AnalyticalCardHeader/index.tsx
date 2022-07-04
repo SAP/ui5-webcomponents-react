@@ -170,7 +170,7 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
       onClick={onClick}
       slot={'header'}
     >
-      <div tabIndex={-1}>
+      <div>
         <div className={classes.headerTitles}>
           <div className={classes.headerFirstLine}>
             <span role="heading" aria-level={3} className={classes.headerText} id={`${headerId}-title`}>
@@ -209,9 +209,9 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
           </div>
         </div>
         {description && (
-          <div id={`${headerId}-description`} className={classes.description}>
+          <span id={`${headerId}-description`} className={classes.description}>
             {description}
-          </div>
+          </span>
         )}
       </div>
     </div>
