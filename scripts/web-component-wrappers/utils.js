@@ -342,8 +342,13 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
  * @param {object} componentSpec
  * @return {string}
  */
-export const formatDescription = (description, componentSpec) => {
-  let desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+export const formatDescription = (description, componentSpec, isJSDoc = true) => {
+  let desc;
+  if (isJSDoc) {
+    desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+  } else {
+    desc = turndownService.turndown((description || '').trim());
+  }
   desc = replaceEventNamesInDescription(desc, componentSpec);
   return desc;
 };
