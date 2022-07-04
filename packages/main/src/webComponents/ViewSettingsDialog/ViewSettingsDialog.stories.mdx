@@ -2,6 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ViewSettingsDialog } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ViewSettingsDialogDescription.md';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
@@ -88,6 +89,8 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 <ArgsTable story="." />
 
+<Description />
+
 ## Methods
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
@@ -95,13 +98,5 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name     | Parameters | Description       |
 | -------- | ---------- | ----------------- |
 | **show** | &mdash;    | Shows the dialog. |
-
-## Structure
-
-A `ViewSettingsDialog` consists of a header, content, and a footer for action buttons. The `ViewSettingsDialog` is usually displayed at the center of the screen.
-
-## Responsive Behavior
-
-`ViewSettingsDialog` stretches on full screen on phones.
 
 <Footer />

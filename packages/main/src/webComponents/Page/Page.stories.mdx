@@ -7,6 +7,7 @@ import { Bar } from '../Bar';
 import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './PageDescription.md';
 import { ButtonDesign } from '../../ButtonDesign';
 
 <Meta
@@ -117,18 +118,6 @@ import { ButtonDesign } from '../../ButtonDesign';
 
 <ArgsTable story="." />
 
-## Structure
-
-### Header
-
-The top most area of the page is occupied by the header. The standard header includes a navigation button and a title.
-
-### Content
-
-The content occupies the main part of the page. Only the content area is scrollable by default. This can be prevented by setting `enableScrolling` to `false`.
-
-### Footer
-
-The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the `floatingFooter` property.
+<Description />
 
 <Footer />

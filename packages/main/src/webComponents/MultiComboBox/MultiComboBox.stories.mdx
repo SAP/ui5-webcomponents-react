@@ -6,6 +6,7 @@ import { MultiComboBoxItem } from '../MultiComboBoxItem';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './MultiComboBoxDescription.md';
 
 <Meta
   title="Inputs / MultiComboBox"
@@ -47,27 +48,6 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Structure
-
-The `MultiComboBox` consists of the following elements:
-
-- Tokenizer - a list of tokens with selected options.
-- Input field - displays the selected option/s as token/s. Users can type to filter the list.
-- Drop-down arrow - expands\\collapses the option list.
-- Option list - the list of available options.
-
-## Keyboard Handling
-
-The `MultiComboBox` provides advanced keyboard handling.
-
-### Picker
-
-If the `MultiComboBox` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
-
-### Tokens
-
-- Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
-- Delete - deletes the token and focuses the previous token.
-- Backspace - deletes the token and focus the next token.
+<Description />
 
 <Footer />
