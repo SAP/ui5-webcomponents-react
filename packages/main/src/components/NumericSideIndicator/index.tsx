@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { forwardRef, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ValueState } from '../../enums';
+import { ValueColor } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Text } from '../Text';
 import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss';
@@ -14,7 +14,7 @@ interface NumericSideIndicatorPropTypes extends CommonProps {
   /**
    * The semantic color which represents the state of the side indicator.
    */
-  state?: ValueState;
+  state?: ValueColor;
   /**
    * The title of the indicator
    */
@@ -37,7 +37,7 @@ export const NumericSideIndicator = forwardRef((props: NumericSideIndicatorPropT
   return (
     <div ref={ref} className={clsx(classes.numericSideIndicator, className)} {...rest}>
       <span className={classes.title}>{titleText}</span>
-      <div className={clsx(classes.valueContainer, Reflect.get(classes, `valueState${state}`))}>
+      <div className={clsx(classes.valueContainer, Reflect.get(classes, `state${state}`))}>
         <Text className={classes.number}>{number}</Text>
         <Text className={classes.unit}>{unit}</Text>
       </div>
@@ -48,5 +48,5 @@ export const NumericSideIndicator = forwardRef((props: NumericSideIndicatorPropT
 NumericSideIndicator.displayName = 'NumericSideIndicator';
 
 NumericSideIndicator.defaultProps = {
-  state: ValueState.None
+  state: ValueColor.None
 };

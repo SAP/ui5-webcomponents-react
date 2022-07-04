@@ -35,28 +35,28 @@ export const NumericSideIndicatorStyles = {
     wordWrap: 'break-word',
     wordBreak: 'break-word'
   },
-  valueStateSuccess: {
+  stateGood: {
     color: ThemingParameters.sapPositiveTextColor,
     '& $number, $unit': {
       color: ThemingParameters.sapPositiveTextColor
     }
   },
-  valueStateError: {
+  stateError: {
     color: ThemingParameters.sapNegativeTextColor,
     '& $number, $unit': {
       color: ThemingParameters.sapNegativeTextColor
     }
   },
-  valueStateWarning: {
+  stateCritical: {
     color: ThemingParameters.sapCriticalTextColor,
     '& $number, $unit': {
       color: ThemingParameters.sapCriticalTextColor
     }
   },
-  valueStateInformation: {
-    color: ThemingParameters.sapInformativeTextColor,
+  stateNeutral: {
+    color: ThemingParameters.sapNeutralTextColor,
     '& $number, $unit': {
-      color: ThemingParameters.sapInformativeTextColor
+      color: ThemingParameters.sapNeutralTextColor
     }
   }
 };
