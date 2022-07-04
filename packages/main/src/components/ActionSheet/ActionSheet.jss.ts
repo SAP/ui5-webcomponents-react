@@ -1,4 +1,4 @@
-import { ThemingParameters, CssSizeVariables } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   /*

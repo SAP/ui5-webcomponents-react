@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
+import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import dedent from 'dedent';
 import fs from 'fs';
 import path from 'path';
@@ -382,6 +383,7 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
 
   return `${renderStory({
     name: componentName,
+    since: versionInfo[componentSpec.since],
     imports: [...enumImports, ...additionalComponentImports],
     additionalComponentDocs,
     selectArgTypes,

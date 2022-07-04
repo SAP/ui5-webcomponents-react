@@ -19,14 +19,14 @@
     "build": "tsc"
   },
   "dependencies": {
-    "clsx": "1.1.1",
+    "clsx": "1.2.0",
     "react-content-loader": "6.2.0",
     "recharts": "2.1.9"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "^0.26.0",
     "@ui5/webcomponents-react-base": "^0.26.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-jss": "^10.0.4"
   },
   "publishConfig": {

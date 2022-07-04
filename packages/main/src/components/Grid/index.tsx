@@ -1,15 +1,6 @@
-import { Device, useViewportRange } from '@ui5/webcomponents-react-base';
+import { useViewportRange } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  CSSProperties,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  Ref,
-  useCallback
-} from 'react';
+import React, { Children, CSSProperties, forwardRef, ReactElement, ReactNode, Ref, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -77,21 +68,6 @@ const getIndentFromString = (indent, currentRange) => {
   return indentConfig?.groups[currentRange] ?? DefaultIndentMap.get(currentRange);
 };
 
-const getIECellPlacement = (col, row, span) => {
-  let colStart;
-  let safeSpan = parseInt(span);
-  const added = col + safeSpan;
-  if (added <= 12) {
-    colStart = col + 1;
-    col = added;
-  } else {
-    colStart = 1;
-    col = safeSpan;
-    row++;
-  }
-  return [col, row, colStart];
-};
-
 const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
@@ -122,21 +98,6 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
       const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);
       if (indentSpan && indentSpan > 0) {
         childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
-      }
-      if (Device.isIE()) {
-        return childrenWithGridLayout.map((item, index) => {
-          let colStart;
-          if (childrenWithGridLayout.length === 2 && index === 0) {
-            [column, row, colStart] = getIECellPlacement(column, row, indentSpan);
-            return cloneElement(item, {
-              style: { marginRight: vSpacing, marginBottom: hSpacing, msGridRow: row, msGridColumn: colStart }
-            });
-          }
-          [column, row, colStart] = getIECellPlacement(column, row, childSpan);
-          return cloneElement(item, {
-            style: { marginRight: vSpacing, marginBottom: hSpacing, msGridRow: row, msGridColumn: colStart }
-          });
-        });
       }
       return childrenWithGridLayout;
     },

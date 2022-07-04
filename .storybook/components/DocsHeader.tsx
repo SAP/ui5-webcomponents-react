@@ -1,5 +1,5 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
-import { Badge, FlexBox, FlexBoxAlignItems, Link } from '@ui5/webcomponents-react';
+import { FlexBox, FlexBoxAlignItems, Label, Link, Text } from '@ui5/webcomponents-react';
 import React, { useContext } from 'react';
 import { GitHubLogo } from '../../.storybook/components/GitHub-Mark';
 import { Import } from '../../.storybook/components/Import';
@@ -29,22 +29,43 @@ const Links = () => {
   );
 };
 
+export const InfoTable = ({ since }) => {
+  return (
+    <table className="infoTable">
+      <tbody>
+        <tr>
+          <th>
+            <Label>Usage</Label>
+          </th>
+          <td>
+            <Import />
+          </td>
+        </tr>
+        {since && (
+          <tr>
+            <th>
+              <Label>Available since</Label>
+            </th>
+            <td>
+              <Text>{since}</Text>
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
+};
+
 export const DocsHeader = ({ since }) => {
   return (
     <>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
         <Title />
-        {since && (
-          <>
-            &nbsp; &nbsp;
-            <Badge colorScheme="7">Since {since}</Badge>
-          </>
-        )}
         <span style={{ flexGrow: 1 }} />
         <Links />
       </FlexBox>
       <Subtitle />
-      <Import />
+      <InfoTable since={since} />
       <Description />
       <TableOfContent />
     </>

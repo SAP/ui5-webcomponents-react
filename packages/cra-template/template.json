@@ -10,6 +10,9 @@
       "@testing-library/user-event": "^14.1.0",
       "web-vitals": "^2.1.0"
     },
+    "devDependencies": {
+      "resize-observer-polyfill": "1.5.1"
+    },
     "eslintConfig": {
       "extends": ["react-app", "react-app/jest"]
     },

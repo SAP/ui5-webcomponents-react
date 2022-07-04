@@ -72,7 +72,6 @@ export interface FilterBarPropTypes extends CommonProps {
    * Defines the width of the `FilterGroupItems`.
    *
    * __Note:__ If your filter elements (e.g. `DateRangePicker`) have an internal `minWidth`, please make sure to overwrite it with `minWidth:'auto'` or the corresponding `filterContainerWidth` otherwise it can lead to unintended behavior.
-   * __Note:__ This prop is not supported with IE11, there it defaults to `13.125rem`.
    */
   filterContainerWidth?: CSSProperties['width'];
   /**
