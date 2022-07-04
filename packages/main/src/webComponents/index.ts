@@ -43,6 +43,7 @@ export * from './Menu';
 export * from './MenuItem';
 export * from './MessageStrip';
 export * from './MultiComboBox';
+export * from './MultiComboBoxGroupItem';
 export * from './MultiComboBoxItem';
 export * from './MultiInput';
 export * from './NotificationAction';

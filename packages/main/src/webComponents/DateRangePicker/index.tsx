@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 import { ReactNode } from 'react';
-import { CalendarType, ValueState } from '../../enums';
+import { ValueState, CalendarType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

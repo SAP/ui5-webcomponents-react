@@ -5,6 +5,9 @@ import { {{name}} } from './index';
 {{/each}}
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+{{#if hasDescription}}
+import Description from './{{name}}Description.md';
+{{/if}}
 
 <Meta
   title="Components / {{name}}"
@@ -43,6 +46,10 @@ import { Footer } from '@docs/Footer';
 ## Properties
 
 <ArgsTable story="."/>
+
+{{#if hasDescription}}
+<Description />
+{{/if}}
 
 {{#if methods}}
 ## Methods

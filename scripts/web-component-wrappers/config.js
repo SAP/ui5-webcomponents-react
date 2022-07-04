@@ -46,6 +46,7 @@ COMPONENTS_WITHOUT_DEMOS.add('TreeItem');
 COMPONENTS_WITHOUT_DEMOS.add('ProductSwitchItem');
 COMPONENTS_WITHOUT_DEMOS.add('MediaGalleryItem');
 COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxItem');
+COMPONENTS_WITHOUT_DEMOS.add('MultiComboBoxGroupItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationItem');
 COMPONENTS_WITHOUT_DEMOS.add('SideNavigationSubItem');
 COMPONENTS_WITHOUT_DEMOS.add('SortItem');

@@ -78,7 +78,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     }
   },
   MultiComboBox: {
@@ -122,7 +122,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     },
     tokens: (description) => {
       return description.replace(
@@ -289,11 +289,13 @@ const createWebComponentWrapper = async (
     componentDescription = '';
   }
 
+  const domRef = Utils.createDomRef(componentSpec, importStatements);
+
   const imports = [
     `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
       componentSpec.module
     }.js';`,
-    ...importStatements
+    ...new Set(importStatements)
   ];
 
   return await renderComponentWrapper({
@@ -310,11 +312,11 @@ const createWebComponentWrapper = async (
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,
     defaultProps,
-    domRef: Utils.createDomRef(componentSpec)
+    domRef
   });
 };
 
-const createWebComponentDemo = (componentSpec, componentProps, description) => {
+const createWebComponentDemo = (componentSpec, componentProps, hasDescription) => {
   const componentName = componentSpec.module;
   const enumImports = [];
   const selectArgTypes = [];
@@ -371,29 +373,13 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
     }
     if (prop.isEnum) {
-      selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
+      const type = prop.tsType.split(' ')[0];
+      selectArgTypes.push(`${prop.name}: ${type}`);
       const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-      args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
+      args.push(`${prop.name}: ${type}${defaultValue}`);
     }
   });
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-
-  let formattedDescription = description
-    .replace(/<br>/g, `<br/>`)
-    .replace(/\s\s+/g, ' ')
-    .replace(/h3/g, 'h2')
-    .replace(/h4/g, 'h3');
-
-  try {
-    if (formattedDescription) {
-      formattedDescription = Utils.formatDescription(formattedDescription, componentSpec);
-    }
-  } catch (e) {
-    formattedDescription = '';
-    console.warn(
-      `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
-    );
-  }
 
   return `${renderStory({
     name: componentName,
@@ -403,8 +389,9 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
     selectArgTypes,
     customArgTypes,
     args,
-    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
-  })}\n${formattedDescription}`;
+    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [],
+    hasDescription
+  })}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -504,7 +491,7 @@ const resolveInheritedAttributes = (componentSpec) => {
   // Generated file - do not change manually! 
   
   /**
-   * ${spec.description ?? spec.basename}
+   * ${replaceTagNameWithModuleName(spec.description ?? spec.basename)}
    */
    export enum ${spec.basename} {
      ${properties.join(',\n\n')}
@@ -704,7 +691,7 @@ allWebComponents
         mainDescription,
         attributes,
         slotsAndEvents,
-        [...new Set(importStatements)],
+        importStatements,
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
@@ -726,13 +713,43 @@ allWebComponents
       }
 
       // create demo
-      if (
-        CREATE_SINGLE_COMPONENT === componentSpec.module ||
-        (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-          !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
-      ) {
-        const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      if (!COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)) {
+        let formattedDescription = description
+          .replace(/<br>/g, `<br/>`)
+          .replace(/\s\s+/g, ' ')
+          .replace(/h3/g, 'h2')
+          .replace(/h4/g, 'h3');
+
+        try {
+          if (formattedDescription) {
+            formattedDescription = Utils.formatDescription(formattedDescription, componentSpec, false);
+          }
+        } catch (e) {
+          formattedDescription = '';
+          console.warn(
+            `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
+          );
+        }
+        // create component description
+        if (formattedDescription) {
+          fs.writeFileSync(
+            path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
+            formattedDescription
+          );
+        }
+        // create story file (demo)
+        if (
+          CREATE_SINGLE_COMPONENT === componentSpec.module ||
+          !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+        ) {
+          const webComponentDemo = createWebComponentDemo(
+            componentSpec,
+            allComponentProperties,
+            description,
+            !!formattedDescription
+          );
+          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+        }
       }
     }
   });

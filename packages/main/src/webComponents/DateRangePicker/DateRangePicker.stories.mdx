@@ -9,6 +9,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './DateRangePickerDescription.md';
 
 <Meta
   title="Inputs / DateRangePicker"
@@ -40,6 +41,8 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
+<Description />
+
 ## Methods
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
@@ -52,9 +55,5 @@ This component exposes public methods. You can invoke them directly on the insta
 | **isOpen**         | &mdash;                                                                                                                                                            | Checks if the picker is open.                                                                                                                              |
 | **isValid**        | <dl><dt className="methodText">**value**</dt><dd className="methodText">A value to be tested against the current date format</dd><dd><code>string</code></dd></dl> | Checks if a value is valid against the current date format of the DatePicker.                                                                              |
 | **openPicker**     | &mdash;                                                                                                                                                            | Opens the picker.                                                                                                                                          |
-
-## Usage
-
-The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices).
 
 <Footer />

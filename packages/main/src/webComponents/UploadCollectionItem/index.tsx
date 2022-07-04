@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import { ReactNode } from 'react';
-import { ListItemType, UploadState } from '../../enums';
+import { UploadState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

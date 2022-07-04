@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the growing mode, used in the <code>ui5-table</code>.
+ * Defines the growing mode, used in the <code>Table</code>.
  */
 export enum TableGrowingMode {
   /**

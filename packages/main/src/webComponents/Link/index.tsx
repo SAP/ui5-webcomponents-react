@@ -1,7 +1,8 @@
 import '@ui5/webcomponents/dist/Link.js';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { LinkDesign, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
@@ -81,7 +82,9 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
   /**
    * Fired when the component is triggered either with a mouse/tap or by using the Enter key.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: (
+    event: Ui5CustomEvent<LinkDomRef, { altKey: boolean; ctrlKey: boolean; metaKey: boolean; shiftKey: boolean }>
+  ) => void;
 }
 
 /**

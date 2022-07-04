@@ -1,5 +1,5 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode, MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -22,9 +22,9 @@ interface SegmentedButtonItemAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the icon to be displayed as graphical element within the component. The SAP-icons font provides numerous options.
+   * Defines the icon, displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * Example: See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Example: See all the available icons within the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**

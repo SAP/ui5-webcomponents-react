@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines where the <code>ui5-toast</code> will be placed.
+ * Defines where the <code>Toast</code> will be placed.
  */
 export enum ToastPlacement {
   /**

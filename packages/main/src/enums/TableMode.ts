@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the type of <code>ui5-table</code>.
+ * Defines the type of <code>Table</code>.
  */
 export enum TableMode {
   /**

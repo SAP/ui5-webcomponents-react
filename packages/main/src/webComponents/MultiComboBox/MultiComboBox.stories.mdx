@@ -3,13 +3,15 @@ import { MultiComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
+import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './MultiComboBoxDescription.md';
 
 <Meta
   title="Inputs / MultiComboBox"
   component={MultiComboBox}
-  subcomponents={{ MultiComboBoxItem }}
+  subcomponents={{ MultiComboBoxGroupItem, MultiComboBoxItem }}
   argTypes={{
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
@@ -46,27 +48,36 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Structure
+<Description />
 
-The `MultiComboBox` consists of the following elements:
+# More Examples
 
-- Tokenizer - a list of tokens with selected options.
-- Input field - displays the selected option/s as token/s. Users can type to filter the list.
-- Drop-down arrow - expands\\collapses the option list.
-- Option list - the list of available options.
+## MultiComboBox with Grouping of Items
 
-## Keyboard Handling
-
-The `MultiComboBox` provides advanced keyboard handling.
-
-### Picker
-
-If the `MultiComboBox` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
-
-### Tokens
-
-- Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
-- Delete - deletes the token and focuses the previous token.
-- Backspace - deletes the token and focus the next token.
+<Canvas>
+  <Story name="Grouping">
+    {(args) => {
+      return (
+        <MultiComboBox {...args}>
+          <MultiComboBoxGroupItem text="Asia"></MultiComboBoxGroupItem>
+          <MultiComboBoxItem text="Afghanistan"></MultiComboBoxItem>
+          <MultiComboBoxItem text="China"></MultiComboBoxItem>
+          <MultiComboBoxItem text="India"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Indonesia"></MultiComboBoxItem>
+          <MultiComboBoxGroupItem text="Europe"></MultiComboBoxGroupItem>
+          <MultiComboBoxItem text="Austria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Bulgaria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Germany"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Italy"></MultiComboBoxItem>
+          <MultiComboBoxGroupItem text="North America"></MultiComboBoxGroupItem>
+          <MultiComboBoxItem text="Canada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Granada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Haiti"></MultiComboBoxItem>
+          <MultiComboBoxItem text="United States"></MultiComboBoxItem>
+        </MultiComboBox>
+      );
+    }}
+  </Story>
+</Canvas>
 
 <Footer />

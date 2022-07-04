@@ -7,7 +7,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface BarAttributes {
   /**
-   * Defines the `Bar` design.
+   * Defines the component's design.
    *
    * **Note:** Available options are:
    *

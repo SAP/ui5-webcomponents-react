@@ -1,5 +1,5 @@
 import '@ui5/webcomponents/dist/SuggestionItem.js';
-import { ListItemType, ValueState } from '../../enums';
+import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
