@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { ReactNode } from 'react';
-import { Priority, WrappingType } from '../../enums';
+import { WrappingType, Priority } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

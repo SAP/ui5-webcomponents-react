@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Different types of Arrow Placement for <code>ui5-carousel</code>.
+ * Different types of Arrow Placement for <code>Carousel</code>.
  */
 export enum CarouselArrowsPlacement {
   /**

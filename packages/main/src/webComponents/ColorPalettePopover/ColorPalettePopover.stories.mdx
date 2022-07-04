@@ -4,6 +4,7 @@ import { ColorPalettePopover } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ColorPalettePopoverDescription.md';
 import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { isChromatic } from '../../../../../.storybook/utils';
@@ -69,9 +70,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 <ArgsTable story="." />
 
-## Usage
-
-The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker. For the `ColorPalettePopover`
+<Description />
 
 ## Methods
 

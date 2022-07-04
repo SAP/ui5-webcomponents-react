@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Different date selection modes for <code>ui5-calendar</code>.
+ * Different date selection modes for <code>Calendar</code>.
  */
 export enum CalendarSelectionMode {
   /**

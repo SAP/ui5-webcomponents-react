@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 import { ReactNode } from 'react';
-import { AvatarColorScheme, AvatarGroupType } from '../../enums';
+import { AvatarGroupType, AvatarColorScheme } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

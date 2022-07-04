@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the type of <code>ui5-list</code>.
+ * Defines the type of <code>List</code>.
  */
 export enum ListMode {
   /**

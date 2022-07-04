@@ -2,6 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { RangeSlider } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './RangeSliderDescription.md';
 
 <Meta
   title="Inputs / RangeSlider"
@@ -29,31 +30,6 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Structure
-
-The most important properties of the Range Slider are:
-
-- min - The minimum value of the slider range
-- max - The maximum value of the slider range
-- value - The current value of the slider
-- step - Determines the increments in which the slider will move
-- showTooltip - Determines if a tooltip should be displayed above the handle
-- showTickmarks - Displays a visual divider between the step values
-- labelInterval - Labels some or all of the tickmarks with their values.
-
-### Notes:
-
-###
-
-- The right and left handle can be moved individually and their positions could therefore switch.
-- The entire range can be moved along the interval.
-
-## Usage
-
-The most common usecase is to select and move sub-ranges on a continuous numerical scale.
-
-## Responsive Behavior
-
-You can move the currently selected range by clicking on it and dragging it along the interval.
+<Description />
 
 <Footer />

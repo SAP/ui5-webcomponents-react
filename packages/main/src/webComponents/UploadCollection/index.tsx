@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import { DragEventHandler, ReactNode } from 'react';
+import { ReactNode, DragEventHandler } from 'react';
 import { ListMode } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
