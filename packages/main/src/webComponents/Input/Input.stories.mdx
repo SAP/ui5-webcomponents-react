@@ -63,9 +63,9 @@ and the `showSuggestions` prop is set to `true`.
 
 <Canvas>
   <Story name="with SuggestionItem">
-    {(args) => {
+    {() => {
       return (
-        <Input showSuggestions placeholder="click here to show suggestions" style={{ width: '400px' }}>
+        <Input showSuggestions placeholder="type anything to show suggestions" style={{ width: '400px' }}>
           <SuggestionGroupItem text="A Group" />
           <SuggestionItem icon="globe" text="United States" additionalText={'USA'} description={'My Description'} />
           <SuggestionItem icon="globe" text="Bulgaria" iconEnd />
