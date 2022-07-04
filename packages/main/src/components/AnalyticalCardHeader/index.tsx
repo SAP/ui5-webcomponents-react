@@ -66,6 +66,8 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
 
   /**
    * Additional side number indicators. For example "Deviation" and "Target". Not more than two side indicators should be used.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `NumericSideIndicator` in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
 }
