@@ -4,6 +4,7 @@ import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ToastDescription.md';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
 
@@ -22,7 +23,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.9.0" />
 <br />
 
 ## Show a toast
@@ -81,6 +82,8 @@ export const MyComponentWithAToast() {
 
 <ArgsTable story="." />
 
+<Description />
+
 ## Methods
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
@@ -88,20 +91,5 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name     | Parameters | Description                   |
 | -------- | ---------- | ----------------------------- |
 | **show** | &mdash;    | Shows the <code>Toast</code>. |
-
-## Usage
-
-### When to use:
-
-- You want to display a short success or information message.
-- You do not want to interrupt users while they are performing an action.
-- You want to confirm a successful action.
-
-### When not to use:
-
-- You want to display error or warning message.
-- You want to interrupt users while they are performing an action.
-- You want to make sure that users read the message before they leave the page.
-- You want users to be able to copy some part of the message text.
 
 <Footer />

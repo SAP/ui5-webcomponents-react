@@ -5,6 +5,7 @@ import { Avatar } from '../Avatar';
 import { StandardListItem } from '../StandardListItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ShellBarDescription.md';
 import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../../../../.storybook/demoImages/Person.png';
 
@@ -36,7 +37,7 @@ import image from '../../../../../.storybook/demoImages/Person.png';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.4.0" />
 
 <br />
 
@@ -63,7 +64,9 @@ import image from '../../../../../.storybook/demoImages/Person.png';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTable story="." />
+
+<Description />
 
 ## Methods
 

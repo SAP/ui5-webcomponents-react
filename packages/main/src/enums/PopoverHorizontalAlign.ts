@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the horizontal alignment of <code>ui5-popover</code>
+ * Defines the horizontal alignment of <code>Popover</code>
  */
 export enum PopoverHorizontalAlign {
   /**

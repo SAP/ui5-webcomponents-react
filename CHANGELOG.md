@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.7...v0.26.0) (2022-07-04)
+
+
+### Bug Fixes
+
+* **AnalyticalCard:** implement latest specs and fix accessibility ([#3183](https://github.com/SAP/ui5-webcomponents-react/issues/3183)) ([8b7e6de](https://github.com/SAP/ui5-webcomponents-react/commit/8b7e6de94de8c8aee2832a0263ec6ac3534a725e))
+* **AnalyticalTable:** `disableDragAndDrop` always disables drag and drop of column ([#3182](https://github.com/SAP/ui5-webcomponents-react/issues/3182)) ([f02c107](https://github.com/SAP/ui5-webcomponents-react/commit/f02c107128fe289ba23f02dff1e091858623cb32))
+
+
+### chore
+
+* increase minimum react version to 16.14.0 ([#3177](https://github.com/SAP/ui5-webcomponents-react/issues/3177)) ([bd3d499](https://github.com/SAP/ui5-webcomponents-react/commit/bd3d499b64ce418dd6ef28ac2a61bd84018683ed))
+* remove deprecated entrypoints ([#3154](https://github.com/SAP/ui5-webcomponents-react/issues/3154)) ([e58f733](https://github.com/SAP/ui5-webcomponents-react/commit/e58f7331d1017528dacce10562d928fa2e7862b6))
+* remove polyfills for IE11 and Safari ([#3138](https://github.com/SAP/ui5-webcomponents-react/issues/3138)) ([558fe71](https://github.com/SAP/ui5-webcomponents-react/commit/558fe7106eb4839b5443e5215f1a013729cd2f2c))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.5.0 ([#3170](https://github.com/SAP/ui5-webcomponents-react/issues/3170)) ([43aebfd](https://github.com/SAP/ui5-webcomponents-react/commit/43aebfd123137fcce082978b79a38c8da7138b28))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalCard:** The `AnalyticalCardHeader` has been refactored completely to match the latest design specifications. Please take a look at our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page).
+* **@ui5/webcomponents-react**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove deprecated `usePassThroughHtmlProps` hook
+* **@ui5/webcomponents-react-charts**: remove all deprecated entrypoints
+* The polyfills `@ui5/webcomponents-react-base/polyfill/Safari.js` and `@ui5/webcomponents-react-base/polyfill/IE11.js` and their dependencies have been removed. You will now most likely need to install `resize-observer-polyfill` on your own to run your jest tests. More Details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page).
+* minimum required version of `react` and `react-dom` bumped to `16.14.0` in order to use the new `jsx-transform`.
+
+
+
+
+
 ## [0.25.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.6...v0.25.7) (2022-06-30)
 
 

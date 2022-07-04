@@ -24,13 +24,13 @@
   "dependencies": {
     "@storybook/addon-a11y": "6.5.9",
     "@storybook/addon-essentials": "6.5.9",
-    "@storybook/react": "6.5.9",
-    "@storybook/theming": "6.5.9",
     "@storybook/builder-webpack5": "6.5.9",
     "@storybook/manager-webpack5": "6.5.9",
-    "@ui5/webcomponents": "~1.4.0",
-    "@ui5/webcomponents-fiori": "~1.4.0",
-    "@ui5/webcomponents-icons": "~1.4.0",
+    "@storybook/react": "6.5.9",
+    "@storybook/theming": "6.5.9",
+    "@ui5/webcomponents": "1.5.0",
+    "@ui5/webcomponents-fiori": "1.5.0",
+    "@ui5/webcomponents-icons": "1.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.2.1",
@@ -50,8 +50,8 @@
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.4.0",
-    "@ui5/webcomponents-tools": "~1.4.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "@ui5/webcomponents-tools": "1.5.0",
     "chromatic": "^6.5.3",
     "dedent": "^0.7.0",
     "eslint": "^7.10.0",
@@ -79,11 +79,11 @@
     "react-17": "npm:react@^17.0.2",
     "react-dom-16": "npm:react-dom@^16.14.0",
     "react-dom-17": "npm:react-dom@^17.0.2",
+    "resize-observer-polyfill": "1.5.1",
     "rimraf": "^3.0.1",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "turndown": "^7.0.0",
-    "typescript": "4.7.4",
-    "whatwg-fetch": "^3.6.2"
+    "typescript": "4.7.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [

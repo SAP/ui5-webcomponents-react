@@ -5,6 +5,7 @@ import { CalendarType } from '../../enums/CalendarType';
 import { CalendarDate } from '../CalendarDate';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './CalendarDescription.md';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
@@ -24,7 +25,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.13.0" />
 
 <br />
 
@@ -42,41 +43,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 
 <ArgsTable story="." />
 
-## Usage
-
-The user can navigate to a particular date by:
-
-- Pressing over a month inside the months view
-- Pressing over a year inside the years view
-
-The user can confirm a date selection by pressing over a date inside the days view.
-
-## Keyboard Handling
-
-The `Calendar` provides advanced keyboard handling. If the `Calendar` is focused the user can choose a picker by using the following shortcuts:
-
-- \[F4\] - Shows month picker
-- \[SHIFT\] + \[F4\] - Shows year picker
-
-When a picker is showed and focused the user can use the following keyboard shortcuts in order to perform a navigation:  
-\- Day picker:
-
-- \[PAGEUP\] - Navigate to the previous month
-- \[PAGEDOWN\] - Navigate to the next month
-- \[SHIFT\] + \[PAGEUP\] - Navigate to the previous year
-- \[SHIFT\] + \[PAGEDOWN\] - Navigate to the next year
-- \[CTRL\] + \[SHIFT\] + \[PAGEUP\] - Navigate ten years backwards
-- \[CTRL\] + \[SHIFT\] + \[PAGEDOWN\] - Navigate ten years forwards
-
-\- Month picker:
-
-- \[PAGEUP\] - Navigate to the previous month
-- \[PAGEDOWN\] - Navigate to the next month
-
-\- Year picker:
-
-- \[PAGEUP\] - Navigate to the previous year range
-- \[PAGEDOWN\] - Navigate the next year range
+<Description />
 
 # More Examples
 

@@ -12,6 +12,7 @@ import { StandardListItem } from '../StandardListItem';
 import { List } from '../List';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './PanelDescription.md';
 
 <Meta
   title="Layouts & Floorplans / Panel"
@@ -57,27 +58,7 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Guidelines:
-
-- Nesting two or more panels is not recommended.
-- Do not stack too many panels on one page.
-
-## Structure
-
-A panel consists of a title bar with a header text or custom header.  
-The content area can contain an arbitrary set of controls. The header is clickable and can be used to toggle between the expanded and collapsed state. It includes an icon which rotates depending on the state.  
-The custom header can be set through the `header` slot and it may contain arbitraray content, such as: title, buttons or any other HTML elements.  
-**Note:** the custom header is not clickable out of the box, but in this case the icon is interactive and allows to show/hide the content area.
-
-## Responsive Behavior
-
-- If the width of the panel is set to 100% (default), the panel and its children are resized responsively, depending on its parent container.
-- If the panel has a fixed height, it will take up the space even if the panel is collapsed.
-- When the panel is expandable (the `fixed` property is set to `false`), an arrow icon (pointing to the right) appears in front of the header.
-- When the animation is activated, expand/collapse uses a smooth animation to open or close the content area.
-- When the panel expands/collapses, the arrow icon rotates 90 degrees clockwise/counter-clockwise.
-
-<br />
+<Description />
 
 # More Examples
 

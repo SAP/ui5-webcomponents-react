@@ -1,9 +1,9 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "~1.4.0",
-      "@ui5/webcomponents-fiori": "~1.4.0",
-      "@ui5/webcomponents-icons": "~1.4.0",
+      "@ui5/webcomponents": "~1.5.0",
+      "@ui5/webcomponents-fiori": "~1.5.0",
+      "@ui5/webcomponents-icons": "~1.5.0",
       "@ui5/webcomponents-react": "latest",
       "axios": "^0.26.1",
       "formik": "^2.2.9",
@@ -28,7 +28,8 @@
       "msw": "^0.39.1",
       "nodemon": "^2.0.15",
       "npm-run-all": "^4.1.5",
-      "prettier": "^2.5.1"
+      "prettier": "^2.5.1",
+      "resize-observer-polyfill": "1.5.1"
     },
     "scripts": {
       "start:mock-server": "nodemon --watch server --exec npx json-server --p 3001 server/mockserver.js --routes server/routes.json",

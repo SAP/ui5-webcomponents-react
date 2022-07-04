@@ -5,6 +5,7 @@ import { TreeItem } from '../TreeItem';
 import { ListMode } from '../../enums/ListMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './TreeDescription.md';
 import '@ui5/webcomponents-icons/dist/copy.js';
 import '@ui5/webcomponents-icons/dist/paste.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
@@ -24,7 +25,7 @@ import { useState } from 'react';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -62,7 +63,9 @@ import { useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTable story="." />
+
+<Description />
 
 ## Methods
 
@@ -71,12 +74,6 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name     | Parameters                                                                                                                                                                                               | Description                                                                 |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | **walk** | <dl><dt className="methodText">**callback**</dt><dd className="methodText">function to execute on each node of the tree with 2 arguments: the node and the level</dd><dd><code>function</code></dd></dl> | Perform Depth-First-Search walk on the tree and run a callback on each node |
-
-## Keyboard Handling
-
-`Tree` provides advanced keyboard handling. You can use the up/down arrow keys to navigate to the previous/next item in the list, representing the tree, regardless of nesting, but also the left/right arrow keys to drill down and go up the tree. If you press the right arrow on a tree node, it will expand, if not expanded. If you press the right arrow key once more, the first child of this node will be selected. If you press the left arrow on a tree node, it will collapse, if expanded. If you press the left arrow key once more, the parent node of this tree node will be selected.
-
-<br />
 
 # More Examples
 

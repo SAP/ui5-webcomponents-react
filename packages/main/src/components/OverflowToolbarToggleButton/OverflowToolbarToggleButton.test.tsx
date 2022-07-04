@@ -1,8 +1,8 @@
 import { renderWithDefine } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
-import { ToggleButton } from '../../ToggleButton';
 import { Toolbar } from '../Toolbar';
+import { ToggleButton } from '../../webComponents';
 import { OverflowToolbarToggleButton } from './index';
 
 describe('OverflowToolbarToggleButton', () => {

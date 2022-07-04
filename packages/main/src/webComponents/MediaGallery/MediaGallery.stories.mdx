@@ -1,5 +1,6 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './MediaGalleryDescription.md';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { MediaGallery } from './index';
 import { MediaGalleryItem } from '../MediaGalleryItem';
@@ -23,7 +24,7 @@ import { Toast } from '../Toast';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.21.0" />
 
 <br />
 
@@ -62,15 +63,7 @@ import { Toast } from '../Toast';
 
 <ArgsTable story="." />
 
-## Keyboard Handling
-
-The `MediaGallery` provides advanced keyboard handling.
-When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items:
-
-- \[UP/DOWN\] - Navigates up and down the items
-- \[HOME\] - Navigates to first item
-- \[END\] - Navigates to the last item
-- \[SPACE/ENTER\] - Select an item
+<Description />
 
 ## More Examples
 

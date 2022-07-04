@@ -6,7 +6,7 @@ import { googlecode } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 export const ImportStatement = ({ children }: { children: string }) => {
   return (
     <SyntaxHighlighter
-      customStyle={{ padding: '10px 0', whiteSpace: 'pre-wrap', fontSize: 14 }}
+      customStyle={{ whiteSpace: 'pre-wrap', fontSize: 14, padding: 0, margin: 0 }}
       language="javascript"
       style={googlecode}
     >
