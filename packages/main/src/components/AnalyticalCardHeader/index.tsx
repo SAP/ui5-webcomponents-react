@@ -1,61 +1,63 @@
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { ARIA_DESC_CARD_HEADER } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import {
+  ARIA_DESC_CARD_HEADER,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL
+} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviationIndicator, FlexBoxJustifyContent, FlexBoxWrap, ValueState } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Icon } from '../../webComponents';
-import { FlexBox } from '../FlexBox';
-import { ObjectStatus } from '../ObjectStatus';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
-   * Defines the title text of the `AnalyticalCardHeader`.
+   * The title of the card
    */
   titleText?: string;
   /**
-   * Defines the subtitle text of the `AnalyticalCardHeader`.
+   * The subtitle of the card
    */
   subtitleText?: string;
   /**
-   * Defines the orientation of the deviation indicator.
+   * The direction of the trend arrow. Shows deviation for the value of the main number indicator.
    */
-  arrowIndicator?: DeviationIndicator | keyof typeof DeviationIndicator;
+  trend?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
-   * Defines the value of the `AnalyticalCardHeader`.
+   * The numeric value of the main number indicator.
    */
   value?: string;
   /**
-   * Defines the unit displayed next to the value of the `AnalyticalCardHeader`.
+   * Defines the unit of measurement (scaling prefix) for the main indicator.
+   * Financial characters can be used for currencies and counters. The International System of Units (SI) prefixes can be used.
    */
-  unit?: string;
+  scale?: string;
   /**
-   * Defines the value state of the value.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
+   * The semantic color which represents the state of the main number indicator.
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>
    */
-  valueState?: ValueState | keyof typeof ValueState;
+  state?: ValueColor | keyof typeof ValueColor;
   /**
-   * Defines the description below the value of the `AnalyticalCardHeader`.
+   * Additional text which adds more details to what is shown in the numeric header.
    */
   description?: string;
   /**
-   * Defines the counter in the upper right corner of the `AnalyticalCardHeader`.
+   * Defines the status text.
    */
-  counter?: string;
+  status?: string;
   /**
-   * Defines the value state of the counter.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * General unit of measurement for the header. Displayed as side information to the subtitle.
    */
-  counterState?: ValueState | keyof typeof ValueState;
-  /**
-   * Defines the currency.
-   */
-  currency?: string;
+  unitOfMeasurement?: string;
   /**
    * Fired when the `AnalyticalCardHeader` is clicked.
    */
@@ -71,20 +73,31 @@ const useStyles = createUseStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 
+const semanticColorMap = new Map<AnalyticalCardHeaderPropTypes['state'], any>([
+  [ValueColor.Neutral, SEMANTIC_COLOR_NEUTRAL],
+  [ValueColor.Good, SEMANTIC_COLOR_GOOD],
+  [ValueColor.Critical, SEMANTIC_COLOR_CRITICAL],
+  [ValueColor.Error, SEMANTIC_COLOR_ERROR]
+]);
+
+const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
+  [DeviationIndicator.Up, NUMERICCONTENT_DEVIATION_UP],
+  [DeviationIndicator.Down, NUMERICCONTENT_DEVIATION_DOWN]
+]);
+
 export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     titleText,
     subtitleText,
     value,
-    unit,
-    valueState,
+    scale,
+    state,
     onClick,
     className,
     description,
-    counter,
-    counterState,
-    currency,
-    arrowIndicator,
+    status,
+    unitOfMeasurement,
+    trend,
     style,
     children,
     ...rest
@@ -95,13 +108,13 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
 
   const valueAndUnitClasses = clsx(
     classes.mainIndicator,
-    valueState === ValueState.Success && classes.good,
-    valueState === ValueState.Error && classes.error,
-    valueState === ValueState.Warning && classes.critical,
-    valueState === ValueState.Information && classes.info
+    state === ValueColor.Good && classes.good,
+    state === ValueColor.Error && classes.error,
+    state === ValueColor.Critical && classes.critical,
+    state === ValueColor.Neutral && classes.info
   );
 
-  const shouldRenderContent = [value, unit, children].some(Boolean);
+  const shouldRenderContent = [value, scale, children].some(Boolean);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -110,6 +123,17 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
   const sideIndicatorIds = Children.toArray(children).map((child, idx) => {
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
+
+  let kpiAriaLabel = `${value}${scale}\n`;
+
+  if (trend && trend !== DeviationIndicator.None) {
+    kpiAriaLabel += i18nBundle.getText(deviationMap.get(trend) ?? '');
+    kpiAriaLabel += '\n';
+  }
+
+  if (state && state !== ValueColor.None) {
+    kpiAriaLabel += i18nBundle.getText(semanticColorMap.get(state) ?? '');
+  }
 
   return (
     <div
@@ -129,22 +153,18 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
       slot={'header'}
     >
       <div className={classes.headerTitles}>
-        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-          <div className={classes.headerText} id={`${headerId}-title`}>
+        <div className={classes.headerFirstLine}>
+          <span role="heading" className={classes.headerText} id={`${headerId}-title`}>
             {titleText}
-          </div>
-          {counter && (
-            <ObjectStatus className={classes.counter} state={counterState}>
-              {counter}
-            </ObjectStatus>
-          )}
-        </FlexBox>
-        {(subtitleText || currency) && (
-          <div className={classes.subHeaderText}>
+          </span>
+          {status && <span className={classes.status}>{status}</span>}
+        </div>
+        {(subtitleText || unitOfMeasurement) && (
+          <div className={classes.headerSecondLine}>
             <span id={`${headerId}-subtitle`}>{subtitleText}</span>
-            {currency && (
+            {unitOfMeasurement && (
               <span id={`${headerId}-unitOfMeasurement`} className={classes.unitOfMeasurement}>
-                {currency}
+                {unitOfMeasurement}
               </span>
             )}
           </div>
@@ -152,16 +172,13 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
       </div>
       {shouldRenderContent && (
         <div className={classes.kpiContent}>
-          <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`}>
+          <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel}>
             <span className={classes.value}>{value}</span>
             <div className={classes.indicatorAndUnit}>
-              {arrowIndicator !== DeviationIndicator.None && (
-                <Icon
-                  className={clsx(classes.indicator)}
-                  name={arrowIndicator === DeviationIndicator.Up ? iconUp : iconDown}
-                />
+              {trend !== DeviationIndicator.None && (
+                <Icon className={clsx(classes.indicator)} name={trend === DeviationIndicator.Up ? iconUp : iconDown} />
               )}
-              <div className={classes.unit}>{unit}</div>
+              <div className={classes.unit}>{scale}</div>
             </div>
           </div>
           <div className={classes.indicatorGap} />
@@ -186,7 +203,6 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
 
 AnalyticalCardHeader.defaultProps = {
-  arrowIndicator: DeviationIndicator.None,
-  valueState: ValueState.None,
-  counterState: ValueState.None
+  trend: DeviationIndicator.None,
+  state: ValueColor.None
 };

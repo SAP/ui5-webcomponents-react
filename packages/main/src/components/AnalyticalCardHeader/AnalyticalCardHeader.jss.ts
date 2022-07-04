@@ -11,7 +11,6 @@ const styles = {
     ...spacing.sapUiContentPadding,
     position: 'relative',
     backgroundColor: ThemingParameters.sapTile_Background,
-    fontFamily: ThemingParameters.sapFontHeaderFamily,
     '&:focus:before': {
       outline: 'none',
       content: '""',
@@ -35,10 +34,38 @@ const styles = {
     cursor: 'pointer'
   },
   headerTitles: {
+    flex: '1 1 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minWidth: '0',
+    width: '100%'
+  },
+  headerFirstLine: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%'
+  },
+  headerSecondLine: {
+    position: 'relative',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSize,
+    fontWeight: 'normal',
+    color: ThemingParameters.sapTile_TextColor,
+    minHeight: '1rem',
+    flexGrow: '1',
+    margin: '0.25rem 0 0 0',
+    display: 'flex',
+    alignItems: 'flex-end',
+    whiteSpace: 'normal',
+    wordWrap: 'break-word',
     overflow: 'hidden',
     textAlign: 'left',
-    whiteSpace: 'normal',
-    wordWrap: 'break-word'
+    textOverflow: 'ellipsis',
+    marginTop: '0.5rem',
+    width: '100%',
+    WebkitLineClamp: '2',
+    WebkitBoxOrient: 'vertical'
   },
   headerText: {
     fontFamily: ThemingParameters.sapFontHeaderFamily,
@@ -53,26 +80,13 @@ const styles = {
     textAlign: 'left',
     textOverflow: 'ellipsis'
   },
-  subHeaderText: {
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    color: ThemingParameters.sapTile_TextColor,
-    whiteSpace: 'normal',
-    wordWrap: 'break-word',
-    overflow: 'hidden',
-    textAlign: 'left',
-    textOverflow: 'ellipsis',
-    marginTop: '0.5rem',
-    width: '100%',
-    WebkitLineClamp: '2',
-    WebkitBoxOrient: 'vertical'
-  },
-  counter: {
+  status: {
     fontSize: ThemingParameters.sapFontSmallSize,
-    margin: '0.188rem 0  0 1rem',
+    color: ThemingParameters.sapTile_TextColor,
     lineHeight: 'normal',
-    textAlign: 'right'
+    textAlign: 'right',
+    marginInlineStart: '1rem',
+    marginBlockStart: '0.125rem'
   },
   unitOfMeasurement: {
     marginInlineStart: '0.25rem',
@@ -171,7 +185,7 @@ const styles = {
     color: ThemingParameters.sapCriticalTextColor
   },
   info: {
-    color: ThemingParameters.sapInformativeTextColor
+    color: ThemingParameters.sapNeutralTextColor
   }
 };
 
