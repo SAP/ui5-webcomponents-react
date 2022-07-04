@@ -70,6 +70,7 @@ export * from './ToastPlacement';
 export * from './ToolbarDesign';
 export * from './ToolbarStyle';
 export * from './UploadState';
+export * from './ValueColor';
 export * from './ValueState';
 export * from './VerticalAlign';
 export * from './WrappingType';
