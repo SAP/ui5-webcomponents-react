@@ -50,7 +50,12 @@ describe('SelectDialog', () => {
     const afterClose = jest.fn();
     const selectionChange = jest.fn();
     const { getByText } = await renderWithDefine(
-      <SelectDialog onConfirm={confirm} onAfterClose={afterClose} listProps={{ onSelectionChange: selectionChange }}>
+      <SelectDialog
+        onConfirm={confirm}
+        rememberSelections
+        onAfterClose={afterClose}
+        listProps={{ onSelectionChange: selectionChange }}
+      >
         {listItems}
       </SelectDialog>,
       ['ui5-list', 'ui5-li']
