@@ -49,7 +49,7 @@
     "@types/node": "^16.0.0",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.0",
     "@ui5/webcomponents-tools": "1.5.0",
     "chromatic": "^6.5.3",
