@@ -52,7 +52,7 @@ SAP uses [the standard DCO text of the Linux Foundation](https://developercertif
 1. Please let us know, that you want to work on the issue you've filed in the [issue tracker](https://github.com/SAP/ui5-webcomponents-react/issues).
 2. If the issue is marked with the `contribution welcome` tag, we'll assign you right away, otherwise we will check if some more information our guidance is needed and only then assign you to it.
 3. Once you are assigned to the issue, you are ready to go.
-4. Fork the `ui5-webcomponents-react` repository into your GitHub account, create a branch and apply your change. Please don't work directly on the `main` or `master` branch of your fork. This will help to update your fork in the future more easily.
+4. Fork the `ui5-webcomponents-react` repository into your GitHub account, create a branch and apply your change. Please don't work directly on the `main` branch of your fork. This will help to update your fork in the future more easily.
 5. Commit and push your change on that branch.
    Please follow our [Development Conventions and Guidelines](/docs/Guidelines.md).
 6. Create a pull request from your branch into `ui5-webcomponents-react`-`main` branch.
