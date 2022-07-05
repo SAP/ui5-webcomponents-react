@@ -20,7 +20,6 @@ import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import {
   Button,
   Dialog,
@@ -101,8 +100,12 @@ const useStyles = createUseStyles(
 
 interface ListDomRefWithPrivateAPIs extends ListDomRef {
   get hasData(): boolean;
+
   getSelectedItems(): HTMLElement[];
+
   deselectSelectedItems(): void;
+
+  focusFirstItem(): void;
 }
 
 export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'> {
@@ -214,6 +217,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     onSearchInput,
     onSearchReset,
     onBeforeOpen,
+    onAfterOpen,
     ...rest
   } = props;
 
@@ -231,6 +235,13 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     if (mode === ListMode.MultiSelect && listRef.current?.hasData) {
       setSelectedItems(listRef.current?.getSelectedItems() ?? []);
     }
+  };
+
+  const handleAfterOpen = (e) => {
+    if (typeof onAfterOpen === 'function') {
+      onAfterOpen(e);
+    }
+    listRef.current?.focusFirstItem();
   };
 
   const handleSearchInput = (e) => {
@@ -298,18 +309,15 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     }
   };
 
-  const uniqueId = useIsomorphicId();
-
   return (
     <Dialog
-      id={`${uniqueId}-select-dialog`}
-      initialFocus={`${uniqueId}-list`}
       {...rest}
       data-component-name="SelectDialog"
       ref={componentRef}
       className={clsx(classes.dialog, className)}
       onAfterClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
+      onAfterOpen={handleAfterOpen}
     >
       <div className={classes.headerContent} slot="header">
         {showClearButton && headerTextAlignCenter && (
@@ -366,7 +374,6 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
         </Toolbar>
       )}
       <List
-        id={`${uniqueId}-list`}
         {...listProps}
         ref={listComponentRef}
         growing={growing}
