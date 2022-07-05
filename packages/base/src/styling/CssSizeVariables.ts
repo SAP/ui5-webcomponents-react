@@ -13,7 +13,9 @@ export enum CssSizeVariablesNames {
   sapWcrFormGroupTitleHeight = '--sapWcrFormGroupTitleHeight',
   sapWcrMessageViewListItemHeightSingle = '--sapWcrMessageViewListItemHeightSingle',
   sapWcrMessageViewListItemHeightByLine = '--sapWcrMessageViewListItemHeightByLine',
-  sapWcrSplitterSize = '--sapWcrSplitterSize'
+  sapWcrSplitterSize = '--sapWcrSplitterSize',
+  sapWcrDialogHeaderHeight = '--sapWcrDialogHeaderHeight',
+  sapWcrDialogSubHeaderHeight = '--sapWcrDialogSubHeaderHeight'
 }
 
 export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
@@ -36,7 +38,9 @@ export const CozySizes = {
   [CssSizeVariablesNames.sapWcrFormGroupTitleHeight]: `2.75rem`,
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle]: `2.75rem`,
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine]: `3.325rem`,
-  [CssSizeVariablesNames.sapWcrSplitterSize]: `1rem`
+  [CssSizeVariablesNames.sapWcrSplitterSize]: `1rem`,
+  [CssSizeVariablesNames.sapWcrDialogHeaderHeight]: '2.75rem',
+  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '3rem'
 };
 
 export const CompactSizes = {
@@ -53,5 +57,7 @@ export const CompactSizes = {
   [CssSizeVariablesNames.sapWcrToolbarSeparatorHeight]: `1.5rem`,
   [CssSizeVariablesNames.sapWcrFormGroupTitleHeight]: `2rem`,
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle]: `2rem`,
-  [CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine]: `3.25rem`
+  [CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine]: `3.25rem`,
+  [CssSizeVariablesNames.sapWcrDialogHeaderHeight]: '2.5rem',
+  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '2.25rem'
 };
