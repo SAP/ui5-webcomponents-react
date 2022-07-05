@@ -7,44 +7,18 @@ exports[`SelectDialog Basic 1`] = `
     data-component-name="SelectDialog"
     ui5-dialog=""
   >
-    <ui5-bar
-      data-sap-ui-fastnavgroup="true"
-      design="Footer"
-      slot="footer"
-      ui5-bar=""
-    >
-      <ui5-button
-        design="Transparent"
-        slot="endContent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow SelectDialog-spread"
-      data-sap-ui-fastnavgroup="true"
-      design="Header"
+    <div
+      class="SelectDialog-headerContent"
       slot="header"
-      ui5-bar=""
     >
       <ui5-title
+        class="SelectDialog-title"
         level="H2"
-        slot="startContent"
         ui5-title=""
       />
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow"
-      data-component-name="SelectDialogSubHeader"
-      data-sap-ui-fastnavgroup="true"
-      design="Subheader"
-      slot="header"
-      ui5-bar=""
-    >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread"
+        class="SelectDialog-input"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -60,7 +34,7 @@ exports[`SelectDialog Basic 1`] = `
           ui5-icon=""
         />
       </ui5-input>
-    </ui5-bar>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
@@ -70,6 +44,17 @@ exports[`SelectDialog Basic 1`] = `
       separators="All"
       ui5-list=""
     />
+    <div
+      class="SelectDialog-footer"
+      slot="footer"
+    >
+      <ui5-button
+        design="Transparent"
+        ui5-button=""
+      >
+        Cancel
+      </ui5-button>
+    </div>
   </ui5-dialog>
 </DocumentFragment>
 `;
@@ -84,62 +69,25 @@ exports[`SelectDialog MultiSelect 1`] = `
     style="z-index: 106; display: flex; top: 384px; left: 512px;"
     ui5-dialog=""
   >
-    <ui5-bar
-      data-sap-ui-fastnavgroup="true"
-      design="Footer"
-      slot="footer"
-      ui5-bar=""
-    >
-      <ui5-button
-        class="ui5-bar-content"
-        design="Transparent"
-        slot="endContent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-      <ui5-button
-        class="ui5-bar-content"
-        design="Emphasized"
-        slot="endContent"
-        ui5-button=""
-      >
-        Select
-      </ui5-button>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow SelectDialog-spread"
-      data-sap-ui-fastnavgroup="true"
-      design="Header"
+    <div
+      class="SelectDialog-headerContent"
       slot="header"
-      ui5-bar=""
     >
+      <ui5-title
+        class="SelectDialog-title"
+        level="H2"
+        ui5-title=""
+      />
       <ui5-button
-        class="ui5-bar-content"
+        class="SelectDialog-clearBtn"
         design="Transparent"
-        slot="endContent"
         ui5-button=""
       >
         Clear
       </ui5-button>
-      <ui5-title
-        class="ui5-bar-content"
-        level="H2"
-        slot="startContent"
-        ui5-title=""
-      />
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow"
-      data-component-name="SelectDialogSubHeader"
-      data-sap-ui-fastnavgroup="true"
-      design="Subheader"
-      slot="header"
-      ui5-bar=""
-    >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread ui5-bar-content"
+        class="SelectDialog-input"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -155,7 +103,7 @@ exports[`SelectDialog MultiSelect 1`] = `
           ui5-icon=""
         />
       </ui5-input>
-    </ui5-bar>
+    </div>
     <div
       class="Toolbar-outerContainer Toolbar-info SelectDialog-infoBar"
     >
@@ -205,7 +153,6 @@ exports[`SelectDialog MultiSelect 1`] = `
         description="description1"
         has-border=""
         has-title=""
-        selected=""
         type="Active"
         ui5-li=""
       >
@@ -219,7 +166,6 @@ exports[`SelectDialog MultiSelect 1`] = `
         description="description2"
         has-border=""
         has-title=""
-        selected=""
         type="Active"
         ui5-li=""
       >
@@ -252,6 +198,23 @@ exports[`SelectDialog MultiSelect 1`] = `
         Product4
       </ui5-li>
     </ui5-list>
+    <div
+      class="SelectDialog-footer"
+      slot="footer"
+    >
+      <ui5-button
+        design="Emphasized"
+        ui5-button=""
+      >
+        Select
+      </ui5-button>
+      <ui5-button
+        design="Transparent"
+        ui5-button=""
+      >
+        Cancel
+      </ui5-button>
+    </div>
   </ui5-dialog>
 </DocumentFragment>
 `;
@@ -263,51 +226,18 @@ exports[`SelectDialog confirmButtonText 1`] = `
     data-component-name="SelectDialog"
     ui5-dialog=""
   >
-    <ui5-bar
-      data-sap-ui-fastnavgroup="true"
-      design="Footer"
-      slot="footer"
-      ui5-bar=""
-    >
-      <ui5-button
-        design="Transparent"
-        slot="endContent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-      <ui5-button
-        design="Emphasized"
-        slot="endContent"
-        ui5-button=""
-      >
-        Exterminate
-      </ui5-button>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow SelectDialog-spread"
-      data-sap-ui-fastnavgroup="true"
-      design="Header"
+    <div
+      class="SelectDialog-headerContent"
       slot="header"
-      ui5-bar=""
     >
       <ui5-title
+        class="SelectDialog-title"
         level="H2"
-        slot="startContent"
         ui5-title=""
       />
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow"
-      data-component-name="SelectDialogSubHeader"
-      data-sap-ui-fastnavgroup="true"
-      design="Subheader"
-      slot="header"
-      ui5-bar=""
-    >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread"
+        class="SelectDialog-input"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -323,7 +253,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
           ui5-icon=""
         />
       </ui5-input>
-    </ui5-bar>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
@@ -333,6 +263,23 @@ exports[`SelectDialog confirmButtonText 1`] = `
       separators="All"
       ui5-list=""
     />
+    <div
+      class="SelectDialog-footer"
+      slot="footer"
+    >
+      <ui5-button
+        design="Emphasized"
+        ui5-button=""
+      >
+        Exterminate
+      </ui5-button>
+      <ui5-button
+        design="Transparent"
+        ui5-button=""
+      >
+        Cancel
+      </ui5-button>
+    </div>
   </ui5-dialog>
 </DocumentFragment>
 `;
@@ -344,44 +291,18 @@ exports[`SelectDialog with children 1`] = `
     data-component-name="SelectDialog"
     ui5-dialog=""
   >
-    <ui5-bar
-      data-sap-ui-fastnavgroup="true"
-      design="Footer"
-      slot="footer"
-      ui5-bar=""
-    >
-      <ui5-button
-        design="Transparent"
-        slot="endContent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow SelectDialog-spread"
-      data-sap-ui-fastnavgroup="true"
-      design="Header"
+    <div
+      class="SelectDialog-headerContent"
       slot="header"
-      ui5-bar=""
     >
       <ui5-title
+        class="SelectDialog-title"
         level="H2"
-        slot="startContent"
         ui5-title=""
       />
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow"
-      data-component-name="SelectDialogSubHeader"
-      data-sap-ui-fastnavgroup="true"
-      design="Subheader"
-      slot="header"
-      ui5-bar=""
-    >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread"
+        class="SelectDialog-input"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -397,7 +318,7 @@ exports[`SelectDialog with children 1`] = `
           ui5-icon=""
         />
       </ui5-input>
-    </ui5-bar>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
@@ -463,6 +384,17 @@ exports[`SelectDialog with children 1`] = `
         Product4
       </ui5-li>
     </ui5-list>
+    <div
+      class="SelectDialog-footer"
+      slot="footer"
+    >
+      <ui5-button
+        design="Transparent"
+        ui5-button=""
+      >
+        Cancel
+      </ui5-button>
+    </div>
   </ui5-dialog>
 </DocumentFragment>
 `;
@@ -474,46 +406,20 @@ exports[`SelectDialog with headerText 1`] = `
     data-component-name="SelectDialog"
     ui5-dialog=""
   >
-    <ui5-bar
-      data-sap-ui-fastnavgroup="true"
-      design="Footer"
-      slot="footer"
-      ui5-bar=""
-    >
-      <ui5-button
-        design="Transparent"
-        slot="endContent"
-        ui5-button=""
-      >
-        Cancel
-      </ui5-button>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow SelectDialog-spread"
-      data-sap-ui-fastnavgroup="true"
-      design="Header"
+    <div
+      class="SelectDialog-headerContent"
       slot="header"
-      ui5-bar=""
     >
       <ui5-title
+        class="SelectDialog-title"
         level="H2"
-        slot="startContent"
         ui5-title=""
       >
         Select Dialog
       </ui5-title>
-    </ui5-bar>
-    <ui5-bar
-      class="SelectDialog-noShadow"
-      data-component-name="SelectDialogSubHeader"
-      data-sap-ui-fastnavgroup="true"
-      design="Subheader"
-      slot="header"
-      ui5-bar=""
-    >
       <ui5-input
         accessible-name="Search"
-        class="SelectDialog-spread"
+        class="SelectDialog-input"
         placeholder="Search"
         type="Text"
         ui5-input=""
@@ -529,7 +435,7 @@ exports[`SelectDialog with headerText 1`] = `
           ui5-icon=""
         />
       </ui5-input>
-    </ui5-bar>
+    </div>
     <ui5-list
       accessible-role="list"
       busy-delay="1000"
@@ -595,6 +501,17 @@ exports[`SelectDialog with headerText 1`] = `
         Product4
       </ui5-li>
     </ui5-list>
+    <div
+      class="SelectDialog-footer"
+      slot="footer"
+    >
+      <ui5-button
+        design="Transparent"
+        ui5-button=""
+      >
+        Cancel
+      </ui5-button>
+    </div>
   </ui5-dialog>
 </DocumentFragment>
 `;

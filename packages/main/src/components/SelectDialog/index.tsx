@@ -15,7 +15,7 @@ import {
   SELECT,
   SELECTED
 } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums';

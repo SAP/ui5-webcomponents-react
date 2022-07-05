@@ -31,14 +31,19 @@ describe('SelectDialog', () => {
     const { asFragment, getByText, rerender } = render(
       <SelectDialog headerText="Select Dialog">{listItems}</SelectDialog>
     );
-    expect(getByText('Select Dialog')).toHaveAttribute('slot', 'startContent');
+    expect(getByText('Select Dialog')).toHaveStyle({
+      gridColumnStart: 'titleStart',
+      gridColumnEnd: 'titleCenter'
+    });
     expect(asFragment()).toMatchSnapshot();
     rerender(
       <SelectDialog headerText="Select Dialog" headerTextAlignCenter>
         {listItems}
       </SelectDialog>
     );
-    expect(getByText('Select Dialog')).not.toHaveAttribute('slot', 'startContent');
+    expect(getByText('Select Dialog')).toHaveStyle({
+      gridArea: 'titleCenter'
+    });
   });
   test('SingleSelect', async () => {
     const confirm = jest.fn();
@@ -48,7 +53,7 @@ describe('SelectDialog', () => {
       <SelectDialog onConfirm={confirm} onAfterClose={afterClose} listProps={{ onSelectionChange: selectionChange }}>
         {listItems}
       </SelectDialog>,
-      ['ui5-li']
+      ['ui5-list', 'ui5-li']
     );
     const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
     dialog.show();
