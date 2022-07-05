@@ -35,6 +35,7 @@ import {
 } from '../..';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
+import { useOnColumnResize } from './pluginHooks/useOnColumnResize';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -160,7 +161,21 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 ## Example
 
 <Canvas withSource="none">
-  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
+  <Story name="Default">
+    {(args) => (
+      <AnalyticalTable
+        {...args}
+        tableHooks={[
+          useOnColumnResize(
+            (e) => {
+              console.log(e);
+            },
+            { liveUpdate: true }
+          )
+        ]}
+      />
+    )}
+  </Story>
 </Canvas>
 
 ### Code
