@@ -14,14 +14,10 @@ interface useOnColumnResizeOptions {
   wait?: number;
 }
 
-type useOnColumnResizeFunc = (e: {
-  columnWidth: number;
-  instance: Record<string, any>;
-  header: Record<string, any>;
-}) => void;
+type useOnColumnResizeFunc = (e: { columnWidth: number; header: Record<string, any> }) => void;
 
 /**
- * Plugin Hook for firing an event when a column is resized.
+ * Plugin Hook that adds a callback which is fired on column resize.
  *
  * @param {event} callback Fired when the column is resized by dragging the "Resizer".
  * @param {Object=} options Additional options.
@@ -33,7 +29,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
   const useGetResizerProps = (props, { header, instance }) => {
     const updatingColumnWidth = instance.state.columnResizing?.columnWidths[header.id];
     const prevHeaderIsResizing = useRef(undefined);
-    const eventParams = { columnWidth: updatingColumnWidth, instance, header };
+    const eventParams = { columnWidth: updatingColumnWidth, header };
 
     useEffect(() => {
       if (updatingColumnWidth && options?.liveUpdate) {
@@ -42,7 +38,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
       return () => {
         debouncedEvent.cancel();
       };
-    }, [updatingColumnWidth, options?.liveUpdate, eventParams]);
+    }, [updatingColumnWidth, options?.liveUpdate]);
 
     useEffect(() => {
       if (!options?.liveUpdate) {
@@ -54,7 +50,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
           prevHeaderIsResizing.current = true;
         }
       }
-    }, [header.isResizing, options?.liveUpdate, eventParams]);
+    }, [header.isResizing, options?.liveUpdate]);
 
     return props;
   };

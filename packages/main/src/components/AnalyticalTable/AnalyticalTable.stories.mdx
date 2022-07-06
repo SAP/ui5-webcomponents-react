@@ -16,10 +16,13 @@ import {
   Badge,
   BusyIndicator,
   Button,
+  CheckBox,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxJustifyContent,
+  Input,
+  InputType,
   Label,
   MessageStrip,
   Panel,
@@ -35,7 +38,6 @@ import {
 } from '../..';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useOnColumnResize } from './pluginHooks/useOnColumnResize';
 
 <Meta
   title="Data Display / AnalyticalTable"
@@ -161,21 +163,7 @@ import { useOnColumnResize } from './pluginHooks/useOnColumnResize';
 ## Example
 
 <Canvas withSource="none">
-  <Story name="Default">
-    {(args) => (
-      <AnalyticalTable
-        {...args}
-        tableHooks={[
-          useOnColumnResize(
-            (e) => {
-              console.log(e);
-            },
-            { liveUpdate: true }
-          )
-        ]}
-      />
-    )}
-  </Story>
+  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
 </Canvas>
 
 ### Code
@@ -597,6 +585,105 @@ If this key is found on the original data row, and it is `true`, this row will b
   // you could also omit the `'isSelected'`, as this is the default value
   tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
 />
+```
+
+### Callback for column resize
+
+The `useOnColumnResize` plugin hook allows firing a callback when a columns size has changed by dragging the "Resizer".
+The first parameter is the callback itself (`e: { columnWidth: number; header: Record<string, any> }) => void;`), the second one are the optional `options` for controlling how often the callback should fire.
+
+`options`:
+
+- `liveUpdate`: If `liveUpdate` is `true`, the resize function will fire every time the width has changed depending on the `options.wait` delay.
+- `wait`: The number of milliseconds for which the calls are to be delayed. **Defaults to `100`**. (Only has an effect if `liveUpdate` is `true`)
+
+_ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
+
+<Canvas withSource="none">
+  <Story name="Plugin: useOnColumnResize">
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const [useColResizeEvent, setUseColResizeEvent] = useState({});
+      const [liveUpdate, setLiveUpdate] = useState(false);
+      const [wait, setWait] = useState(500);
+      const handleLiveUpdateChange = (e) => {
+        setLiveUpdate(e.target.checked);
+      };
+      const handleWaitChange = (e) => {
+        setWait(parseInt(e.target.value));
+      };
+      const handleColWidthUpdate = (e) => {
+        setUseColResizeEvent(e);
+      };
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useOnColumnResize example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <AnalyticalTable
+                extension={
+                  <>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                      <Label>liveUpdate: </Label>
+                      <CheckBox onChange={handleLiveUpdateChange} checked={liveUpdate} />
+                    </FlexBox>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                      <Label>wait: </Label>
+                      <Input onInput={handleWaitChange} type={InputType.Number} value={`${wait}`} />
+                    </FlexBox>
+                    <br />
+                  </>
+                }
+                data={args.data}
+                columns={args.columns}
+                tableHooks={[AnalyticalTableHooks.useOnColumnResize(handleColWidthUpdate, { liveUpdate, wait })]}
+              />
+              {!!Object.keys(useColResizeEvent).length && (
+                <FlexBox direction={FlexBoxDirection.Column}>
+                  <br />
+                  <Text>Last fired callback of changed column:</Text>
+                  <br />
+                  <FlexBox>
+                    <Label>Column:</Label>
+                    <Text>{useColResizeEvent.header.id}</Text>
+                  </FlexBox>
+                  <FlexBox>
+                    <Label>Width:</Label>
+                    <Text>{useColResizeEvent.columnWidth}</Text>
+                  </FlexBox>
+                </FlexBox>
+              )}
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Code
+
+```jsx
+const TableComponent = (props) => {
+  const handleColumResize = (e) => {
+    console.log(e.columnWidth, e.header);
+  };
+  return (
+    <AnalyticalTable
+      data={props.data}
+      columns={props.columns}
+      tableHooks={[
+        AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
+          liveUpdate: false,
+          wait: 500
+        })
+      ]}
+    />
+  );
+};
 ```
 
 <br />
