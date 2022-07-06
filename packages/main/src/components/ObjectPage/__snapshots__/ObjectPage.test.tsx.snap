@@ -878,6 +878,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       <ui5-illustrated-message
         data-testid="no-data"
         name="NoData"
+        size="Auto"
         ui5-illustrated-message=""
       />
     </div>
