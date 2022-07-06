@@ -605,7 +605,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       const [useColResizeEvent, setUseColResizeEvent] = useState({});
       const [liveUpdate, setLiveUpdate] = useState(false);
-      const [wait, setWait] = useState(500);
+      const [wait, setWait] = useState(100);
       const handleLiveUpdateChange = (e) => {
         setLiveUpdate(e.target.checked);
       };
@@ -678,7 +678,7 @@ const TableComponent = (props) => {
       tableHooks={[
         AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
           liveUpdate: false,
-          wait: 500
+          wait: 100
         })
       ]}
     />
