@@ -1,4 +1,4 @@
-import { fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
+import { screen, fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
 import React from 'react';
 import { ListMode } from '../../enums/ListMode';
 import { DialogDomRef } from '../../webComponents/Dialog';
@@ -81,6 +81,7 @@ describe('SelectDialog', () => {
     const clear = jest.fn();
     const { asFragment, getByText } = await renderWithDefine(
       <SelectDialog
+        rememberSelections
         showClearButton
         mode={ListMode.MultiSelect}
         onConfirm={confirm}
@@ -105,12 +106,12 @@ describe('SelectDialog', () => {
     expect(li).not.toHaveAttribute('selected');
     fireEvent.click(wcListItem);
     expect(li).toHaveAttribute('selected');
-    getByText('Selected: 1');
+    expect(getByText('Selected: 1')).toBeVisible();
 
     expect(li2).not.toHaveAttribute('selected');
     fireEvent.click(wcListItem2);
     expect(li2).toHaveAttribute('selected');
-    getByText('Selected: 2');
+    expect(getByText('Selected: 2')).toBeVisible();
 
     expect(confirm).not.toHaveBeenCalled();
     expect(afterClose).not.toHaveBeenCalled();
@@ -126,10 +127,11 @@ describe('SelectDialog', () => {
 
     dialog.show();
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText('Selected: 2')).toBeVisible();
 
     fireEvent.click(getByText('Clear'));
     expect(clear).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText('Selected: 2')).not.toBeInTheDocument();
   });
 
   test('Search', () => {
