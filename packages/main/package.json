@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@ui5/webcomponents-react-base": "^0.26.0",
-    "clsx": "1.2.0",
+    "clsx": "1.2.1",
     "lit-html": "^2.0.1",
     "react-content-loader": "6.2.0",
     "react-jss": "10.9.0",
