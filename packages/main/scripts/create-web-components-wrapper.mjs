@@ -22,7 +22,7 @@ import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
-const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
+const CREATE_SINGLE_COMPONENT = process.argv[2] || "SegmentedButtonItem";
 
 const EXCLUDE_LIST = [];
 
@@ -312,7 +312,11 @@ const createWebComponentWrapper = async (
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,
     defaultProps,
-    domRef
+    domRef,
+    baseComponentName:
+      typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
+        ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
+        : componentSpec.module
   });
 };
 
@@ -526,7 +530,7 @@ const propDescription = (componentSpec, property) => {
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
-  .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
+  .filter((spec) => !PRIVATE_COMPONENTS[spec.module])
   .map(resolveInheritedAttributes)
   .forEach(async (componentSpec) => {
     const attributes = [];
@@ -713,7 +717,7 @@ allWebComponents
       }
 
       // create demo
-      if (!COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module)) {
+      if (!COMPONENTS_WITHOUT_DEMOS[componentSpec.module]) {
         let formattedDescription = description
           .replace(/<br>/g, `<br/>`)
           .replace(/\s\s+/g, ' ')

@@ -56,7 +56,7 @@ export interface SuggestionItemPropTypes extends SuggestionItemAttributes, Commo
 /**
  * The `SuggestionItem` represents the suggestion item of the `Input`
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemDomRef>(
   'ui5-suggestion-item',
