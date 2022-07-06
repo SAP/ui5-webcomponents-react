@@ -42,7 +42,7 @@ export interface NotificationActionPropTypes extends NotificationActionAttribute
 /**
  * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationAction" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const NotificationAction = withWebComponent<NotificationActionPropTypes, NotificationActionDomRef>(
   'ui5-notification-action',

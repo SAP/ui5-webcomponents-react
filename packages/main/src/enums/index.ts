@@ -24,6 +24,7 @@ export * from './FlexBoxJustifyContent';
 export * from './FlexBoxWrap';
 export * from './GlobalStyleClasses';
 export * from './GridPosition';
+export * from './IllustrationMessageSize';
 export * from './IllustrationMessageType';
 export * from './IndicationColor';
 export * from './InputType';
