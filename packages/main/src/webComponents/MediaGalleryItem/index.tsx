@@ -46,7 +46,7 @@ export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, C
  *
  * **Note:** `MediaGalleryItem` is not supported when used outside of `MediaGallery`.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MediaGalleryItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MediaGallery" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGalleryItemDomRef>(
   'ui5-media-gallery-item',
