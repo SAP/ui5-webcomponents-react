@@ -1,4 +1,5 @@
-import { I18nContext } from './context/I18nContext';
+import { getI18nContext, I18nContext } from './context/I18nContext';
+
 import * as Device from './Device';
 import * as hooks from './hooks';
 import * as spacing from './styling/spacing';
@@ -8,4 +9,4 @@ export * from './styling/CssSizeVariables';
 export * from './utils/index';
 export * from './hooks';
 
-export { I18nContext, ThemingParameters, Device, hooks, spacing };
+export { getI18nContext, I18nContext, ThemingParameters, Device, hooks, spacing };
