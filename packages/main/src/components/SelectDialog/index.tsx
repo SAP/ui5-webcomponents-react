@@ -174,7 +174,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    */
   onSearch?: (event: Ui5CustomEvent<{ value: string }>) => void;
   /**
-   * This event will be fired when the reset button has been clicked in the search field.
+   * This event will be fired when the reset button has been clicked in the search field or when the dialog is closed.
    */
   onSearchReset?: (event: Ui5CustomEvent<{ prevValue: string }>) => void;
   /**
@@ -304,6 +304,10 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
     if (typeof onAfterClose === 'function') {
       onAfterClose(e);
     }
+    if (typeof onSearchReset === 'function') {
+      onSearchReset(enrichEventWithDetails(e, { prevValue: searchValue }));
+    }
+    setSearchValue('');
     if (!rememberSelections) {
       listRef.current?.deselectSelectedItems();
     }
