@@ -54,7 +54,7 @@
     "@ui5/webcomponents-tools": "1.5.0",
     "chromatic": "^6.5.3",
     "dedent": "^0.7.0",
-    "eslint": "^7.10.0",
+    "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prefer-arrow": "^1.2.2",
