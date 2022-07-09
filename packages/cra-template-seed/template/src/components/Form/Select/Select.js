@@ -16,9 +16,21 @@ const Select = ({ field, options, labelText, form: { touched, errors, setFieldVa
 
   return (
     <FieldBase labelText={labelText} required={props.required} for={props.for} showColon={props.showColon}>
-      <UI5Select data-testid="select-wrapper" valueState={errorState} style={innerStyle} onChange={(e) => setFieldValue(field.name, e.detail.selectedOption.dataset.id)} {...props}>
+      <UI5Select
+        data-testid="select-wrapper"
+        valueState={errorState}
+        style={innerStyle}
+        onChange={(e) => setFieldValue(field.name, e.detail.selectedOption.dataset.id)}
+        {...props}
+      >
         {options.map((option) => (
-          <Option data-testid="select-option-wrapper" key={option.id} data-id={option.id} selected={option.id === field.value} value={option.id}>
+          <Option
+            data-testid="select-option-wrapper"
+            key={option.id}
+            data-id={option.id}
+            selected={option.id === field.value}
+            value={option.id}
+          >
             {option.text}
           </Option>
         ))}

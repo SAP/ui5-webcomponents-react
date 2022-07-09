@@ -24,12 +24,22 @@ const TodoListPaginatedItems = () => {
           <br />
           <List onItemClick={navToTodoEditPage}>
             {data.content.map((todo) => (
-              <StandardListItem data-id={todo.id} key={todo.id} additionalText={todo.description} additionalTextState="None">
+              <StandardListItem
+                data-id={todo.id}
+                key={todo.id}
+                additionalText={todo.description}
+                additionalTextState="None"
+              >
                 {todo.name}
               </StandardListItem>
             ))}
           </List>
-          <Pagination numberOfElements={data.numberOfElements} totalPages={data.totalPages} selectedPage={data.number} setPage={(params) => setPage(params)} />
+          <Pagination
+            numberOfElements={data.numberOfElements}
+            totalPages={data.totalPages}
+            selectedPage={data.number}
+            setPage={(params) => setPage(params)}
+          />
         </>
       )}
     </div>
