@@ -1,5 +1,5 @@
-import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { CommonProps } from '@ui5/webcomponents-react';
+import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
