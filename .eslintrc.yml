@@ -37,6 +37,7 @@ rules:
         caseInsensitive: true
   import/no-duplicates: 'error'
 overrides:
+  # add config for all TypeScript files
   - files:
       - '*.ts'
       - '*.tsx'
@@ -66,3 +67,11 @@ overrides:
       - 'packages/main/src/webComponents/*/index.tsx'
     rules:
       '@typescript-eslint/no-empty-interface': 'off'
+
+  # disable prop types check for Analytical Table Defaults (TODO might change for react-table v8)
+  - files:
+      - 'packages/main/src/components/AnalyticalTable/defaults/**/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.ts'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.tsx'
+    rules:
+      'react/prop-types': 'off'
