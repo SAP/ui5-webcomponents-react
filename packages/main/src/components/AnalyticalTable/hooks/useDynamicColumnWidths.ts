@@ -100,7 +100,7 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, visi
       if (!column.minWidth && !column.width) {
         totalNumberColPrio2++;
       }
-      let max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
+      const max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
       columnMeta[columnIdOrAccessor].headerDefinesWidth = true;
       return acc + max;
     }

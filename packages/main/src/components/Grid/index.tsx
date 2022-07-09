@@ -84,14 +84,14 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
     className
   );
 
-  let column = 0;
-  let row = 1;
+  const column = 0;
+  const row = 1;
   const renderGridElements = useCallback(
     (child: ReactElement<any>) => {
       if (!child) return null;
 
       const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
-      let childClass = classes[`gridSpan${childSpan}`];
+      const childClass = classes[`gridSpan${childSpan}`];
 
       const childrenWithGridLayout = [<div className={childClass}>{child}</div>];
 

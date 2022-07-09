@@ -582,7 +582,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   // calculates the number of spacers depending on the available width inside the row
   const renderSpacers = () => {
     if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
-      let spacers = [];
+      const spacers = [];
       const filterItemsWidth = calculatedChildren.length * firstChildWidth;
       //early return if enough space is available
       if (filterAreaWidth - filterBarButtonsWidth > filterItemsWidth) {

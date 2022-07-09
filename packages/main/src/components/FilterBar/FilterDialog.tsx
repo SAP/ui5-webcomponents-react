@@ -186,7 +186,7 @@ export const FilterDialog = (props) => {
   const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
-    let dialogFilters = [];
+    const dialogFilters = [];
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {

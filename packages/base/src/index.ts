@@ -1,5 +1,4 @@
 import { getI18nContext, I18nContext } from './context/I18nContext';
-
 import * as Device from './Device';
 import * as hooks from './hooks';
 import * as spacing from './styling/spacing';

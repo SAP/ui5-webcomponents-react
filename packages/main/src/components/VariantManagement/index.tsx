@@ -320,7 +320,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const handleSaveManageViews = (e, payload) => {
     const { defaultView, updatedRows, deletedRows } = payload;
-    let callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
+    const callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     setSafeChildren((prev) =>
       Children.toArray(
         prev.map((child: ComponentElement<any, any>) => {
