@@ -225,6 +225,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const iconToRender = getIcon(icon, type);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
 

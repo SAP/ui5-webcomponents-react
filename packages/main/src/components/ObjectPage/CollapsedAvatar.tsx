@@ -59,7 +59,6 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     } else {
       return React.cloneElement(image, {
         size: AvatarSize.S,
-        // @ts-ignore
         className: image.props?.className
           ? `${classes.imageContainer} ${image.props?.className}`
           : classes.imageContainer

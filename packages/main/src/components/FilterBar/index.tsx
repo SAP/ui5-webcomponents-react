@@ -421,6 +421,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
               child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
                 prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(',')))
         ) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const { [child.key]: omit, ...rest } = dialogRefs;
           setDialogRefs(rest);

@@ -93,6 +93,7 @@ const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
       const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
       const childClass = classes[`gridSpan${childSpan}`];
 
+      // eslint-disable-next-line react/jsx-key
       const childrenWithGridLayout = [<div className={childClass}>{child}</div>];
 
       const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);

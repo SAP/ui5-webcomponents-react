@@ -45,6 +45,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   // eslint-disable-next-line react/display-name
   const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
     const { className, children, waitForDefine, ...rest } = props;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});

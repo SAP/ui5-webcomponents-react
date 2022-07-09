@@ -200,6 +200,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const scrollEvent = useRef();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
