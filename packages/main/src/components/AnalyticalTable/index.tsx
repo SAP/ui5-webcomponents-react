@@ -135,7 +135,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
    */
-  filter?: string | Function;
+  filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
   // useGlobalFilter
   /**
