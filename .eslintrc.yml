@@ -22,7 +22,7 @@ settings:
     version: detect
 rules:
   camelcase:
-    - error
+    - 'error'
     - allow:
         - sap_fiori_3
         - sap_fiori_3_dark
@@ -36,12 +36,17 @@ rules:
         - sap_horizon_hcb
         - sap_horizon_hcw
   import/order:
-    - error
+    - 'error'
     - newlines-between: never
       alphabetize:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
+  import/no-unresolved:
+    - 'error'
+    - ignore:
+        - '@ui5/webcomponents-react'
+        - '@ui5/webcomponents-react-base'
 overrides:
   # add config for all TypeScript files
   - files:
