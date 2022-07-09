@@ -1084,7 +1084,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         )}
       </div>
       <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
-        ""
+        {''}
       </Text>
     </>
   );
