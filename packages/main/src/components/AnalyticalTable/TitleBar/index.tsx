@@ -21,3 +21,5 @@ export const TitleBar = forwardRef((props: TitleBarProps, ref: Ref<HTMLDivElemen
     </div>
   );
 });
+
+TitleBar.displayName = 'TitleBar';

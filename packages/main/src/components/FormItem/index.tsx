@@ -74,6 +74,7 @@ const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', stri
  * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
+  // eslint-disable-next-line react/prop-types
   const { label, children, columnIndex, rowIndex, labelSpan, lastGroupItem } = props as InternalProps;
 
   const classes = useStyles();

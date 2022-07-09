@@ -41,6 +41,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
+  // displayName will be assigned in the individual files
+  // eslint-disable-next-line react/display-name
   const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
     const { className, children, waitForDefine, ...rest } = props;
     //@ts-ignore

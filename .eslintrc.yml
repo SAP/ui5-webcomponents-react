@@ -73,5 +73,6 @@ overrides:
       - 'packages/main/src/components/AnalyticalTable/defaults/**/*.tsx'
       - 'packages/main/src/components/AnalyticalTable/hooks/*.ts'
       - 'packages/main/src/components/AnalyticalTable/hooks/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx'
     rules:
       'react/prop-types': 'off'
