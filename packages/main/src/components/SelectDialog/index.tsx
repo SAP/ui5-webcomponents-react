@@ -40,7 +40,8 @@ const useStyles = createUseStyles(
     dialog: {
       '&::part(header)': {
         paddingBottom: '0.25rem',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginBottom: 0
       },
       '&::part(content)': {
         padding: 0
