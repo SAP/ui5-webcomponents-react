@@ -158,7 +158,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     emphasizedAction,
     onClose,
     initialFocus,
-    accessibleName,
     ...rest
   } = props;
 
@@ -227,7 +226,7 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
+  const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
 
   const messageBoxId = useIsomorphicId();
 

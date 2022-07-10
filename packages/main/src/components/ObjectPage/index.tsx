@@ -312,7 +312,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
       const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
+      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
         return objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);

@@ -335,7 +335,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             }
           }
           if (Object.keys(updatedRows).includes(child.props.children)) {
-            const { currentVariant, ...rest } = updatedRows[child.props.children];
+            const { currentVariant: _0, ...rest } = updatedRows[child.props.children];
             updatedProps = { ...updatedProps, ...rest };
           }
           if (deletedRows.has(child.props.children)) {

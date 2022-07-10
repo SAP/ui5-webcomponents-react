@@ -423,7 +423,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          const { [child.key]: omit, ...rest } = dialogRefs;
+          const { [child.key]: _omit, ...rest } = dialogRefs;
           setDialogRefs(rest);
         }
         prevChildren.current[child.key] = child.props.children.props;

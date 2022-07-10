@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { deprecationNotice, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, {
   Children,
   cloneElement,
