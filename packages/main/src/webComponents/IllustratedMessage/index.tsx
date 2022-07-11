@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import { ReactNode } from 'react';
-import { IllustrationMessageType } from '../../enums';
+import { IllustrationMessageType, IllustrationMessageSize } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -111,6 +111,20 @@ interface IllustratedMessageAttributes {
    */
   name?: IllustrationMessageType | keyof typeof IllustrationMessageType;
   /**
+   * Determines which illustration breakpoint variant is used.
+   *
+   * Available options are:
+   *
+   * *   `Auto`
+   * *   `Base`
+   * *   `Spot`
+   * *   `Dialog`
+   * *   `Scene`
+   *
+   * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component are displayed differently on the different breakpoints/illustration sizes.
+   */
+  size?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
+  /**
    * Defines the subtitle of the component.
    *
    * **Note:** Using this property, the default subtitle text of illustration will be overwritten.
@@ -156,7 +170,7 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
  */
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
-  ['name', 'subtitleText', 'titleText'],
+  ['name', 'size', 'subtitleText', 'titleText'],
   [],
   ['subtitle'],
   []
@@ -165,7 +179,8 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
 IllustratedMessage.displayName = 'IllustratedMessage';
 
 IllustratedMessage.defaultProps = {
-  name: IllustrationMessageType.BeforeSearch
+  name: IllustrationMessageType.BeforeSearch,
+  size: IllustrationMessageSize.Auto
 };
 
 export { IllustratedMessage };

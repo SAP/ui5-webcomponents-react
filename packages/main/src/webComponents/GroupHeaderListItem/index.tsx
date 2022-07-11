@@ -28,7 +28,7 @@ export interface GroupHeaderListItemPropTypes extends GroupHeaderListItemAttribu
 /**
  * The `GroupHeaderListItem` is a special list item, used only to separate other list items into logical groups
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/GroupHeaderListItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes, GroupHeaderListItemDomRef>(
   'ui5-li-groupheader',

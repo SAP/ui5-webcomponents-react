@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.0...v0.26.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* add `IllustrationMessageSize` enum ([#3211](https://github.com/SAP/ui5-webcomponents-react/issues/3211)) ([44bdbf7](https://github.com/SAP/ui5-webcomponents-react/commit/44bdbf79ae0eb28b3e81148edb5a2ca443feaece))
+* **i18n:** register context only once ([#3217](https://github.com/SAP/ui5-webcomponents-react/issues/3217)) ([b9d7f20](https://github.com/SAP/ui5-webcomponents-react/commit/b9d7f205413a5c308999728c38839a926a1a6fc6))
+
+
+
+
+
 # [0.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.7...v0.26.0) (2022-07-04)
 
 

@@ -39,7 +39,7 @@ export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
 /**
  * `MenuItem` is the item to use inside a `Menu`. An arbitrary hierarchy structure can be represented by recursively nesting menu items.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MenuItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Menu" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',

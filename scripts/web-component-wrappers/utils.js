@@ -160,6 +160,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
     case 'FCLLayout':
+    case 'IllustrationMessageSize':
     case 'IllustrationMessageType':
     case 'InputType':
     case 'LinkDesign':
