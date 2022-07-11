@@ -71,6 +71,10 @@ overrides:
       # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
       '@typescript-eslint/no-floating-promises': 'warn'
 
+      '@typescript-eslint/no-unused-vars':
+        - 'error'
+        - varsIgnorePattern: '^_'
+
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
       - 'packages/main/src/webComponents/*/index.tsx'
