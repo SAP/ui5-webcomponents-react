@@ -12,13 +12,13 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "clean": "lerna run clean --stream && rimraf coverage",
-    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{ts,tsx,mdx}\"",
+    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
-    "prepare": "husky install",
+    "prepare": "husky install && lerna run build:i18n",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook"
   },
   "dependencies": {

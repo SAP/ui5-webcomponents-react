@@ -19,8 +19,7 @@ export enum CssSizeVariablesNames {
 }
 
 export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
-  // @ts-ignore
-  get: (target: CssSizeVariablesNames, prop: string): string => `var(${target[prop] as string})`
+  get: (target, prop: string): string => `var(${target[prop] as string})`
 });
 
 export const CozySizes = {

@@ -101,7 +101,6 @@ export interface FormPropTypes extends CommonProps {
 
 const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
   React.Children.map(reactChildren, (child) => {
-    // @ts-ignore
     if (child.type?.displayName === 'FormItem') {
       return cloneElement(child, { labelSpan: currentLabelSpan });
     }

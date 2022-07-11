@@ -1,4 +1,4 @@
-import { CommonProps } from '@ui5/webcomponents-react/interfaces/CommonProps';
+import { CommonProps } from '@ui5/webcomponents-react';
 import { ComponentType, ReactNode } from 'react';
 import { TooltipProps } from 'recharts';
 import { ICartesianChartConfig } from './ICartesianChartConfig';

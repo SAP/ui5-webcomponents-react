@@ -4,7 +4,19 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
+import {
+  enrichEventWithDetails,
+  useI18nBundle,
+  useIsomorphicLayoutEffect,
+  useIsomorphicId
+} from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { MessageBoxActions } from '../../enums/MessageBoxActions';
+import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
+import { TitleLevel } from '../../enums/TitleLevel';
 import {
   ABORT,
   CANCEL,
@@ -21,17 +33,9 @@ import {
   SUCCESS,
   WARNING,
   YES
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import clsx from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { MessageBoxActions } from '../../enums/MessageBoxActions';
-import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
-import { TitleLevel } from '../../enums/TitleLevel';
+} from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon, IconPropTypes } from '../../webComponents/Icon';
@@ -158,7 +162,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     emphasizedAction,
     onClose,
     initialFocus,
-    accessibleName,
     ...rest
   } = props;
 
@@ -225,8 +228,9 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
 
   const iconToRender = getIcon(icon, type);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { footer, headerText, onAfterClose, ...restWithoutOmitted } = rest;
+  const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
 
   const messageBoxId = useIsomorphicId();
 

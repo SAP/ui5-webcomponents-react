@@ -1,8 +1,8 @@
 import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import { SEPARATOR } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
+import { SEPARATOR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 
 const styles = {

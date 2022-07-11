@@ -116,7 +116,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
 
   const toggleRowSelectedProps = (rowProps, { row }) => {
     if (disableRowAccessor(row) === true) {
-      const { title, ...updatedRowProps } = rowProps;
+      const { title: _0, ...updatedRowProps } = rowProps;
       return updatedRowProps;
     }
     return rowProps;

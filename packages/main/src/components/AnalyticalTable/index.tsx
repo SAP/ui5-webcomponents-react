@@ -4,17 +4,9 @@ import {
   ThemingParameters,
   useI18nBundle,
   useIsomorphicLayoutEffect,
-  useIsRTL
+  useIsRTL,
+  useIsomorphicId
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_NODE,
-  COLLAPSE_PRESS_SPACE,
-  EXPAND_NODE,
-  EXPAND_PRESS_SPACE,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -53,8 +45,16 @@ import {
   ValueState,
   VerticalAlign
 } from '../../enums';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import styles from './AnayticalTable.jss';
@@ -1088,7 +1088,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         )}
       </div>
       <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
-        ""
+        {''}
       </Text>
     </>
   );

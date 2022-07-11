@@ -8,15 +8,10 @@ import {
   useIsRTL,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_HEADER,
-  EXPAND_HEADER,
-  PIN_HEADER,
-  UNPIN_HEADER
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
+import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Button, ToggleButton } from '../../webComponents';
 

@@ -50,7 +50,7 @@ export interface SplitterElementPropTypes extends CommonProps {
  * content can be completely collapsed.
  */
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, style, className, minSize, size, resizable, ...rest } = props;
+  const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
   const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 0 auto' } : {};

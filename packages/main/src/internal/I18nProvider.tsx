@@ -19,6 +19,7 @@ const bundleReducer = (currentBundles: I18nBundleMap, action: { payload: I18nBun
 export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   const [i18nBundles, setI18nBundles] = useReducer(bundleReducer, {});
   const localBundles = useRef<I18nBundleMap>({});
+  const isMounted = useRef(false);
 
   const updateBundles = useCallback(() => {
     Promise.all(Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))).then((bundles) => {
@@ -29,9 +30,11 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
         }),
         {}
       );
-      setI18nBundles({
-        payload: bundleMap
-      });
+      if (isMounted.current) {
+        setI18nBundles({
+          payload: bundleMap
+        });
+      }
     });
   }, []);
 
@@ -41,10 +44,10 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
+    isMounted.current = true;
     attachLanguageChange(updateBundles);
     return () => {
-      isMounted = false;
+      isMounted.current = false;
       detachLanguageChange(updateBundles);
     };
   }, []);
