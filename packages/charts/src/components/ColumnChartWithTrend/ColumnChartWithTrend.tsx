@@ -110,7 +110,6 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       onClick,
       noLegend,
       noAnimation,
-      tooltipConfig,
       onDataPointClick,
       onLegendClick,
       ChartPlaceholder,
@@ -155,7 +154,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       }
     } as TooltipProps<any, any>;
 
-    const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
+    const { chartConfig: _0, dimensions: _1, measures: _2, tooltipConfig: _3, ...propsWithoutOmitted } = rest;
 
     return (
       <div

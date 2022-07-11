@@ -193,10 +193,8 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       const availableWidth = outerContainer.current.getBoundingClientRect().width;
       let consumedWidth = 0;
       let lastIndex = null;
-      let lastFitWidth = 0;
       if (availableWidth - OVERFLOW_BUTTON_WIDTH <= 0) {
         lastIndex = -1;
-        lastFitWidth = 0;
       } else {
         let prevItemsAreSpacer = true;
         controlMetaData.current.forEach((item, index) => {
@@ -207,21 +205,18 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             if (index === controlMetaData.current.length - 1) {
               if (consumedWidth + nextWidth <= availableWidth - 8) {
                 lastIndex = index;
-                lastFitWidth = consumedWidth + nextWidth;
               } else if (index === 0 || prevItemsAreSpacer) {
                 lastIndex = index - 1;
               }
             } else {
               if (consumedWidth + nextWidth <= availableWidth - OVERFLOW_BUTTON_WIDTH) {
                 lastIndex = index;
-                lastFitWidth = consumedWidth + nextWidth;
               }
               if (
                 consumedWidth < availableWidth - OVERFLOW_BUTTON_WIDTH &&
                 consumedWidth + nextWidth >= availableWidth - OVERFLOW_BUTTON_WIDTH
               ) {
                 lastIndex = index - 1;
-                lastFitWidth = 0;
               }
             }
             if (prevItemsAreSpacer && !item.isSpacer) {

@@ -26,6 +26,7 @@ interface RowSubComponent {
   alwaysShowSubComponent: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RowSubComponent = (props: RowSubComponent) => {
   const { subComponentsHeight, virtualRow, dispatch, row, rowHeight, children, rows, alwaysShowSubComponent } = props;
   const subComponentRef = useRef(null);
