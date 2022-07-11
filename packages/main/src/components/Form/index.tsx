@@ -101,6 +101,7 @@ export interface FormPropTypes extends CommonProps {
 
 const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
   React.Children.map(reactChildren, (child) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (child.type?.displayName === 'FormItem') {
       return cloneElement(child, { labelSpan: currentLabelSpan });
