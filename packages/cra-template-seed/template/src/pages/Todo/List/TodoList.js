@@ -25,7 +25,10 @@ const TodoList = () => {
       <Link onClick={() => navigate(ROUTES.BUGGY)}>Test Error Page</Link>
       <br />
       <br />
-      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction
+        allowedAuthorities={['canAccessDropApplication']}
+        authorityKey="permissions"
+      >
         <Title level={TitleLevel.H3}>Component Validator</Title>
         <p>
           <Text>Drop Application (this is a restricted text and you should not see unless you have access)</Text>

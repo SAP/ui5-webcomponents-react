@@ -145,3 +145,5 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     </div>
   );
 });
+
+ColumnHeaderContainer.displayName = 'ColumnHeaderContainer';

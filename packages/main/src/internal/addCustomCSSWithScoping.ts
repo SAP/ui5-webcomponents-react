@@ -1,6 +1,6 @@
+import { boot } from '@ui5/webcomponents-base/dist/Boot.js';
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
-import { boot } from '@ui5/webcomponents-base/dist/Boot.js';
 
 export const addCustomCSSWithScoping = (baseTagName: string, customCSS: string) => {
   boot().then(() => {

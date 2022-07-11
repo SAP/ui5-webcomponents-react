@@ -125,7 +125,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const textStyle = (() => {
     let margin = 0;
-    let style: CSSProperties = {};
+    const style: CSSProperties = {};
 
     if (column.hAlign) {
       style.textAlign = column.hAlign.toLowerCase() as any;

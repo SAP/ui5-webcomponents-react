@@ -1,5 +1,5 @@
 const generateGridSpans = () => {
-  let gridSpan = {};
+  const gridSpan = {};
   for (let i = 1; i <= 12; i++) {
     gridSpan[`gridSpan${i}`] = { gridColumn: `span ${i}`, ['-ms-grid-column-span']: i };
   }

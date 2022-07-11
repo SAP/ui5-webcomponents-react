@@ -48,7 +48,7 @@ jobs:
           cache: 'yarn'
 
       - name: install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: run tests
         run: yarn test --runInBand
@@ -62,6 +62,23 @@ jobs:
 
       - name: build project
         run: yarn build
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.3.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: run eslint
+        run: yarn lint
+
 
   deploy-next-docs:
     needs: ['test-and-build']
@@ -78,7 +95,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn build:storybook
 
       - name: Deploy 🚀

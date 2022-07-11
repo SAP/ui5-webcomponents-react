@@ -200,6 +200,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef: RefObject<HTMLDivElement> = useRef();
   const scrollEvent = useRef();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef: RefObject<HTMLDivElement> = useRef();
@@ -280,7 +281,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           `#ObjectPageSection-${sectionId}`
         )?.offsetTop;
         if (!isNaN(childOffset)) {
-          let safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
+          const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
           if (topHeaderHeight) {
             prevTopHeaderHeight.current = topHeaderHeight;
           }
@@ -311,7 +312,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
       const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement, index) => {
+      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
         return objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);

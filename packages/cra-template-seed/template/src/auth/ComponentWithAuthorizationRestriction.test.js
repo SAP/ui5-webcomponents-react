@@ -20,7 +20,10 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
     const childText = 'inner text';
 
     render(
-      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction
+        allowedAuthorities={['canAccessDropApplication']}
+        authorityKey="permissions"
+      >
         <p>{childText}</p>
       </ComponentWithAuthorizationRestriction>,
       { route: '/todo/all' },
@@ -34,7 +37,10 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
     const childText = 'inner text';
 
     render(
-      <ComponentWithAuthorizationRestriction allowedAuthorities={['canAccessDropApplication']} authorityKey="permissions">
+      <ComponentWithAuthorizationRestriction
+        allowedAuthorities={['canAccessDropApplication']}
+        authorityKey="permissions"
+      >
         <p>{childText}</p>
       </ComponentWithAuthorizationRestriction>,
       { route: '/todo/all' },

@@ -38,11 +38,9 @@ export * from './components/ToolbarSeparator';
 export * from './components/ToolbarSpacer';
 export * from './components/VariantManagement';
 export * from './components/VariantManagement/VariantItem';
-export * from './interfaces/CommonProps';
-export * from './interfaces/Ui5CustomEvent';
-export * from './interfaces/Ui5DomRef';
 export * from './internal/withWebComponent';
 export * from './enums';
+export * from './interfaces';
 export * from './webComponents';
 
 export { AnalyticalTableHooks };

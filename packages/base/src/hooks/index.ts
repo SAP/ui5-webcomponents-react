@@ -1,4 +1,5 @@
 import { I18nBundle, useI18nBundle } from './useI18nBundle';
+import { useIsomorphicId } from './useIsomorphicId';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 import { useIsRTL } from './useIsRTL';
 import { useResponsiveContentPadding } from './useResponsiveContentPadding';
@@ -12,5 +13,6 @@ export {
   useIsRTL,
   useResponsiveContentPadding,
   useSyncRef,
-  useViewportRange
+  useViewportRange,
+  useIsomorphicId
 };

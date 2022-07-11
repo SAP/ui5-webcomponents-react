@@ -3,7 +3,9 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     jsx: true
-  project: tsconfig.json
+  project:
+    - './tsconfig.json'
+    - './packages/*/tsconfig.json'
 env:
   browser: true
 extends:
@@ -19,116 +21,71 @@ settings:
   react:
     version: detect
 rules:
-  react-hooks/rules-of-hooks: error
-  react-hooks/exhaustive-deps: warn
   camelcase:
-    - error
+    - 'error'
     - allow:
         - sap_fiori_3
         - sap_fiori_3_dark
+        - sap_fiori_3_hcb
+        - sap_fiori_3_hcw
         - sap_belize
         - sap_belize_hcb
         - sap_belize_hcw
         - sap_horizon
         - sap_horizon_dark
-  complexity: 'off'
-  constructor-super: error
-  dot-notation: error
-  eqeqeq:
-    - error
-    - smart
-  guard-for-in: error
-  id-match: error
-  max-classes-per-file:
-    - error
-    - 1
-  no-bitwise: error
-  no-caller: error
-  no-cond-assign: error
-  no-console: error
-  no-debugger: error
-  no-empty: error
-  no-eval: error
-  no-fallthrough: 'off'
-  no-invalid-this: 'off'
-  no-irregular-whitespace: 'off'
-  no-new-wrappers: error
-  no-shadow:
-    - error
-    - hoist: all
-  no-throw-literal: error
-  no-undef-init: error
-  no-underscore-dangle: error
-  no-unsafe-finally: error
-  no-unused-expressions: error
-  no-unused-labels: error
-  no-var: error
-  object-shorthand: error
-  one-var:
-    - error
-    - never
-  prefer-arrow/prefer-arrow-functions:
-    - error
-    - allowStandaloneDeclarations: true
-  prefer-const: error
-  radix: 'off'
-  react/jsx-no-bind: 'off'
-  react/jsx-key: error
-  react/jsx-boolean-value: error
-  react/no-string-refs: error
-  react/self-closing-comp: error
-  spaced-comment: error
-  use-isnan: error
-  valid-typeof: 'off'
+        - sap_horizon_hcb
+        - sap_horizon_hcw
   import/order:
-    - error
+    - 'error'
     - newlines-between: never
       alphabetize:
         order: asc
         caseInsensitive: true
-  import/no-duplicates: 2
+  import/no-duplicates: 'error'
+  import/no-unresolved:
+    - 'error'
+    - ignore:
+        - '@ui5/webcomponents-react'
+        - '@ui5/webcomponents-react-base'
 overrides:
+  # add config for all TypeScript files
   - files:
       - '*.ts'
       - '*.tsx'
     plugins:
       - '@typescript-eslint'
     extends:
-      - plugin:@typescript-eslint/recommended
-      - plugin:@typescript-eslint/recommended-requiring-type-checking
+      - 'plugin:@typescript-eslint/recommended'
+      - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
     rules:
-      '@typescript-eslint/array-type': error
-      '@typescript-eslint/ban-ts-comment': warn
-      '@typescript-eslint/consistent-type-assertions': error
-      '@typescript-eslint/explicit-member-accessibility':
-        - 'off'
-        - accessibility: explicit
-      '@typescript-eslint/indent': 'off'
-      '@typescript-eslint/member-delimiter-style':
-        - error
-        - multiline:
-            delimiter: semi
-            requireLast: true
-          singleline:
-            delimiter: semi
-            requireLast: false
-      '@typescript-eslint/member-ordering': 'off'
-      '@typescript-eslint/no-parameter-properties': 'off'
-      '@typescript-eslint/no-use-before-define': 'off'
+      # disabled some rules from the recommended preset
+      '@typescript-eslint/no-empty-function': 'off'
       '@typescript-eslint/no-unsafe-member-access': 'off'
-      '@typescript-eslint/no-unsafe-assignment': 'off'
+      '@typescript-eslint/no-unsafe-argument': 'off'
       '@typescript-eslint/no-unsafe-return': 'off'
+      '@typescript-eslint/no-unsafe-assignment': 'off'
       '@typescript-eslint/no-unsafe-call': 'off'
-      '@typescript-eslint/no-floating-promises': 'off'
-      '@typescript-eslint/prefer-for-of': error
-      '@typescript-eslint/prefer-function-type': error
-      '@typescript-eslint/quotes': 'off'
-      '@typescript-eslint/semi':
-        - error
-        - always
-      '@typescript-eslint/space-within-parens':
-        - 'off'
-        - never
-      '@typescript-eslint/type-annotation-spacing': error
-      '@typescript-eslint/unified-signatures': error
-      '@typescript-eslint/no-empty-interface': warn
+      '@typescript-eslint/restrict-plus-operands': 'off'
+      '@typescript-eslint/restrict-template-expressions': 'off'
+
+      # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
+      '@typescript-eslint/no-floating-promises': 'warn'
+
+      '@typescript-eslint/no-unused-vars':
+        - 'error'
+        - varsIgnorePattern: '^_'
+
+  # Generated Web Component Wrappers might contain empty interfaces
+  - files:
+      - 'packages/main/src/webComponents/*/index.tsx'
+    rules:
+      '@typescript-eslint/no-empty-interface': 'off'
+
+  # disable prop types check for Analytical Table Defaults (TODO might change for react-table v8)
+  - files:
+      - 'packages/main/src/components/AnalyticalTable/defaults/**/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.ts'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx'
+    rules:
+      'react/prop-types': 'off'
