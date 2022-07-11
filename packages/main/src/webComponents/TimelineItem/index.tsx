@@ -48,7 +48,7 @@ export interface TimelineItemPropTypes extends TimelineItemAttributes, CommonPro
 /**
  * An entry posted on the timeline
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>(
   'ui5-timeline-item',

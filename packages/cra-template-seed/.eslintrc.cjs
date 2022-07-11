@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['../../.eslintrc.cjs'],
+  extends: ['../../.eslintrc.yml'],
   rules: {
     'import/order': 'off',
     'import/no-unresolved': 'off',

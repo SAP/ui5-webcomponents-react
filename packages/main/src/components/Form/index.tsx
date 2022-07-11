@@ -99,6 +99,18 @@ export interface FormPropTypes extends CommonProps {
   as?: keyof HTMLElementTagNameMap;
 }
 
+const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
+  React.Children.map(reactChildren, (child) => {
+    // @ts-ignore
+    if (child.type?.displayName === 'FormItem') {
+      return cloneElement(child, { labelSpan: currentLabelSpan });
+    }
+    if (child.type?.displayName === 'FormGroup') {
+      return cloneElement(child, { children: clonedChildrenForSingleColumn(child.props.children, currentLabelSpan) });
+    }
+    return child;
+  });
+
 const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
@@ -164,7 +176,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const currentLabelSpan = labelSpanMap.get(currentRange);
 
   const [formGroups, updatedTitle] = useMemo(() => {
-    const computedFormGroups: any[] = [];
+    const computedFormGroups = [];
     if (Children.count(children) === 1 && !titleText) {
       const singleChild = Array.isArray(children) ? children[0] : children;
       if (singleChild?.props?.title?.length > 0) {
@@ -174,7 +186,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
 
     const currentColumnCount = currentNumberOfColumns;
     if (currentColumnCount === 1) {
-      return [children, titleText];
+      return [clonedChildrenForSingleColumn(children, currentLabelSpan), titleText];
     }
 
     const rows = [];
