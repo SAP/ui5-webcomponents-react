@@ -90,9 +90,15 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
       <FlexBox
         direction={FlexBoxDirection.Column}
         alignItems={FlexBoxAlignItems.Start}
-        style={{ gridColumnStart, gridRowStart, gridColumnEnd: 'span 12', placeItems: 'flex-start' }}
+        style={{
+          gridColumnStart,
+          gridRowStart,
+          gridColumnEnd: 'span 12',
+          placeItems: 'flex-start',
+          paddingBottom: '0.625rem'
+        }}
       >
-        {renderLabel(label, classes, {})}
+        {renderLabel(label, classes, { paddingBottom: '0.25rem' })}
         {children}
       </FlexBox>
     );
