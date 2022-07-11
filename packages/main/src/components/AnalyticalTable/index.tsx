@@ -42,15 +42,17 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { TextAlign } from '../../enums/TextAlign';
-import { ValueState } from '../../enums/ValueState';
-import { VerticalAlign } from '../../enums/VerticalAlign';
+import {
+  AnalyticalTableScrollMode,
+  GlobalStyleClasses,
+  TableScaleWidthMode,
+  TableSelectionBehavior,
+  TableSelectionMode,
+  TableVisibleRowCountMode,
+  TextAlign,
+  ValueState,
+  VerticalAlign
+} from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
@@ -66,6 +68,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
+import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
@@ -135,7 +138,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
    */
-  filter?: string | Function;
+  filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
   // useGlobalFilter
   /**
@@ -648,6 +651,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useExpanded,
     useRowSelect,
     useResizeColumns,
+    useResizeColumnsConfig,
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
