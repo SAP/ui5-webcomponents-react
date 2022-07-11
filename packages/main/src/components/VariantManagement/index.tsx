@@ -3,17 +3,6 @@ import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import {
-  CANCEL,
-  MANAGE,
-  MY_VIEWS,
-  RESET,
-  SAVE,
-  SAVE_AS,
-  SEARCH,
-  SEARCH_VARIANT,
-  SELECT_VIEW
-} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -35,6 +24,17 @@ import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { ListMode } from '../../enums/ListMode';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { TitleLevel } from '../../enums/TitleLevel';
+import {
+  CANCEL,
+  MANAGE,
+  MY_VIEWS,
+  RESET,
+  SAVE,
+  SAVE_AS,
+  SEARCH,
+  SEARCH_VARIANT,
+  SELECT_VIEW
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';

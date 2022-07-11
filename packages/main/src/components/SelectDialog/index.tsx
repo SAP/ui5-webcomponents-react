@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -10,6 +9,7 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ListGrowingMode } from '../../enums/ListGrowingMode';
 import { ListMode } from '../../enums/ListMode';
 import { ToolbarDesign } from '../../enums/ToolbarDesign';
+import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { Bar } from '../../webComponents/Bar';

@@ -10,6 +10,13 @@ import {
   useIsomorphicLayoutEffect,
   useIsomorphicId
 } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { MessageBoxActions } from '../../enums/MessageBoxActions';
+import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
+import { TitleLevel } from '../../enums/TitleLevel';
 import {
   ABORT,
   CANCEL,
@@ -27,13 +34,6 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults';
-import clsx from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { MessageBoxActions } from '../../enums/MessageBoxActions';
-import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
-import { TitleLevel } from '../../enums/TitleLevel';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';

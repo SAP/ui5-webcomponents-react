@@ -5,7 +5,6 @@ import {
   useIsomorphicLayoutEffect,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { SHOW_MORE } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   cloneElement,
@@ -23,6 +22,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ToolbarDesign, ToolbarStyle } from '../../enums';
+import { SHOW_MORE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { PopoverDomRef } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';

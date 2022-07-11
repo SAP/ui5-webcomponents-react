@@ -7,15 +7,6 @@ import {
   useIsRTL,
   useIsomorphicId
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_NODE,
-  COLLAPSE_PRESS_SPACE,
-  EXPAND_NODE,
-  EXPAND_PRESS_SPACE,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
-} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -52,6 +43,15 @@ import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
 import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';

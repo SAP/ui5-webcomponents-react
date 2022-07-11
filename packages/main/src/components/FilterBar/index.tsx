@@ -1,5 +1,4 @@
 import { debounce, enrichEventWithDetails, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -17,6 +16,7 @@ import { createUseStyles } from 'react-jss';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';

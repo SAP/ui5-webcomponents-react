@@ -1,4 +1,7 @@
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import React, { useReducer, useRef, useState } from 'react';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { ValueState } from '../../enums/ValueState';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
@@ -12,9 +15,6 @@ import {
   UNSELECTED_AS_FAVORITE,
   VIEW
 } from '../../i18n/i18n-defaults';
-import React, { useReducer, useRef, useState } from 'react';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { ValueState } from '../../enums/ValueState';
 import { Button } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
 import { Icon } from '../../webComponents/Icon';
