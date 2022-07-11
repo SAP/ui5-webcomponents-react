@@ -37,6 +37,10 @@ await rename(
   path.resolve(SRC_I18N_PROPERTIES, 'i18n-defaults.ts')
 );
 
+spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n-defaults.ts')], {
+  stdio: [1, 2, 3]
+});
+
 // generate JSON Imports
 spawnSync(
   'node',
