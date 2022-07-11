@@ -9,7 +9,7 @@ import {
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';

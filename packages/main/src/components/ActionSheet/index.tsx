@@ -1,6 +1,6 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { deprecationNotice, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { Children, forwardRef, ReactElement, Ref, useEffect, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';

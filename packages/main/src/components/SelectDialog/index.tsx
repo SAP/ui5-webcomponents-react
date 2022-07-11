@@ -1,14 +1,7 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import {
-  CANCEL,
-  CLEAR,
-  RESET,
-  SEARCH,
-  SELECT,
-  SELECTED
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';

@@ -9,7 +9,7 @@ import {
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
   VIEW
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign } from '../../enums/ButtonDesign';

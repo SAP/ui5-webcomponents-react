@@ -21,7 +21,7 @@ import {
   SUCCESS,
   WARNING,
   YES
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';

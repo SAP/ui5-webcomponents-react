@@ -14,7 +14,7 @@ import {
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE,
   INVALID_TABLE
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,

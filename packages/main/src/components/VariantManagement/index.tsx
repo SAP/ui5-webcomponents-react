@@ -13,7 +13,7 @@ import {
   SEARCH,
   SEARCH_VARIANT,
   SELECT_VIEW
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,

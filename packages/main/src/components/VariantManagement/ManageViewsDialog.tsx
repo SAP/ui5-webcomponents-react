@@ -3,15 +3,7 @@ import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/favorite.js';
 import '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import {
-  APPLY_AUTOMATICALLY,
-  CANCEL,
-  CREATED_BY,
-  DEFAULT,
-  SAVE,
-  SHARING,
-  VIEW
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { APPLY_AUTOMATICALLY, CANCEL, CREATED_BY, DEFAULT, SAVE, SHARING, VIEW } from '../../i18n/i18n-defaults';
 import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';

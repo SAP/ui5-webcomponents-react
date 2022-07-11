@@ -10,7 +10,7 @@ import {
   SAVE,
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';

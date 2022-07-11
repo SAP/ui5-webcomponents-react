@@ -1,13 +1,5 @@
 import { debounce, enrichEventWithDetails, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import {
-  ADAPT_FILTERS,
-  CLEAR,
-  FILTERS,
-  GO,
-  HIDE_FILTER_BAR,
-  RESTORE,
-  SHOW_FILTER_BAR
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,

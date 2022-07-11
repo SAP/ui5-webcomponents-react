@@ -1,12 +1,6 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import {
-  CLEAR_SORTING,
-  GROUP,
-  SORT_ASCENDING,
-  SORT_DESCENDING,
-  UNGROUP
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
 import React, { RefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';

@@ -1,5 +1,5 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { PLEASE_WAIT } from '../../i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';

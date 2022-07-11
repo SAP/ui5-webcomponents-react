@@ -11,7 +11,7 @@ import {
   SPECIFY_VIEW_NAME,
   UNSELECTED_AS_FAVORITE,
   VIEW
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults';
 import React, { useReducer, useRef, useState } from 'react';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ValueState } from '../../enums/ValueState';
