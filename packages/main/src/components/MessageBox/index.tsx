@@ -4,7 +4,12 @@ import '@ui5/webcomponents-icons/dist/message-information.js';
 import '@ui5/webcomponents-icons/dist/message-success.js';
 import '@ui5/webcomponents-icons/dist/message-warning.js';
 import '@ui5/webcomponents-icons/dist/question-mark.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
+import {
+  enrichEventWithDetails,
+  useI18nBundle,
+  useIsomorphicLayoutEffect,
+  useIsomorphicId
+} from '@ui5/webcomponents-react-base';
 import {
   ABORT,
   CANCEL,
@@ -31,7 +36,6 @@ import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
 import { Icon, IconPropTypes } from '../../webComponents/Icon';

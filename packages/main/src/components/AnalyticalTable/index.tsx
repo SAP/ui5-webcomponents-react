@@ -4,7 +4,8 @@ import {
   ThemingParameters,
   useI18nBundle,
   useIsomorphicLayoutEffect,
-  useIsRTL
+  useIsRTL,
+  useIsomorphicId
 } from '@ui5/webcomponents-react-base';
 import {
   COLLAPSE_NODE,
@@ -52,7 +53,6 @@ import { TextAlign } from '../../enums/TextAlign';
 import { ValueState } from '../../enums/ValueState';
 import { VerticalAlign } from '../../enums/VerticalAlign';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import styles from './AnayticalTable.jss';
