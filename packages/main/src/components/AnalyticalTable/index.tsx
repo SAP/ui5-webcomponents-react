@@ -461,10 +461,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   onRowSelected?: (
     e?: CustomEvent<{
-      allRowsSelected?: boolean;
+      allRowsSelected: boolean;
       row?: Record<string, unknown>;
       isSelected?: boolean;
-      selectedFlatRows?: Record<string, unknown>[] | string[];
+      selectedFlatRows: Record<string, unknown>[] | string[];
     }>
   ) => void;
   /**

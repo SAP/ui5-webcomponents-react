@@ -203,7 +203,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         className={className}
         style={{
           ...style,
-          cursor: hasPopover ? 'pointer' : 'auto',
           borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
         }}
         aria-haspopup={hasPopover ? 'menu' : undefined}

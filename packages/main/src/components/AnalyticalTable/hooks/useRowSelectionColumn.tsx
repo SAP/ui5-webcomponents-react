@@ -4,10 +4,9 @@ import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
 import { TableSelectionMode } from '../../../enums/TableSelectionMode';
 import { CheckBox } from '../../../webComponents/CheckBox';
 
-const divStyle = { width: '100%', height: '100%', cursor: 'pointer' };
 const customCheckBoxStyling = {
-  cursor: 'pointer',
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  pointerEvents: 'none'
 };
 
 /*
@@ -35,25 +34,15 @@ const Header = (instance) => {
   );
 };
 
-const Cell = ({ row, webComponentsReactProperties: { selectionBehavior, selectionMode } }) => {
-  const handleCellClick = (e) => {
-    if (TableSelectionBehavior.RowSelector === selectionBehavior) {
-      row.getRowProps().onClick(e, true);
-    }
-  };
-
-  if (row.isGrouped && selectionMode === TableSelectionMode.SingleSelect) {
-    return null;
-  }
+const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
   if (selectionMode === TableSelectionMode.SingleSelect) {
-    return <div style={divStyle} onClick={handleCellClick} data-name="internal_selection_column" />;
+    return null;
   }
 
   return (
     <CheckBox
       {...row.getToggleRowSelectedProps()}
       tabIndex={-1}
-      onChange={handleCellClick}
       style={customCheckBoxStyling}
       data-name="internal_selection_column"
     />
@@ -75,6 +64,7 @@ const headerProps = (
     }
   }
 ) => {
+  const style = { ...props.style, cursor: 'pointer' };
   if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
     const onClick = (e) => {
       toggleAllRowsSelected();
@@ -95,7 +85,8 @@ const headerProps = (
         onClick(e);
       }
     };
-    return [props, { onClick, onKeyDown }];
+
+    return [props, { onClick, onKeyDown, style }];
   }
   return props;
 };
@@ -157,7 +148,16 @@ const columns = (currentColumns, { instance }) => {
   ];
 };
 
+const getCellProps = (props, { cell }) => {
+  if (cell.column.id === '__ui5wcr__internal_selection_column') {
+    const style = { ...props.style, cursor: 'pointer' };
+    return [props, { style }];
+  }
+  return props;
+};
+
 export const useRowSelectionColumn = (hooks) => {
+  hooks.getCellProps.push(getCellProps);
   hooks.getHeaderProps.push(headerProps);
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnDeps);

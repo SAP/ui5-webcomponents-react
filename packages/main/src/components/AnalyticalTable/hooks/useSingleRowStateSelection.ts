@@ -4,8 +4,8 @@ import { TableSelectionMode } from '../../../enums/TableSelectionMode';
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, flatRows } = instance;
-  const handleRowSelect = (e, selectionCellClick = false) => {
-    const isSelectionCell = selectionCellClick || e.target.dataset.selectionCell === 'true';
+  const handleRowSelect = (e) => {
+    const isSelectionCell = e.target.dataset.selectionCell === 'true';
     if (
       e.target?.dataset?.name !== 'internal_selection_column' &&
       !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
