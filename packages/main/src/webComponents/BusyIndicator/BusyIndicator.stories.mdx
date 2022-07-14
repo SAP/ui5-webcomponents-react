@@ -5,6 +5,7 @@ import { Select } from '../Select';
 import { Text } from '../../components/Text';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './BusyIndicatorDescription.md';
 
 <Meta
   title="User Feedback / BusyIndicator"
@@ -19,7 +20,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.4.0" />
 
 <br />
 
@@ -37,14 +38,7 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Usage
-
-For the `BusyIndicator` you can define the size of the indicator, as well as whether it is shown or hidden. In order to hide it, use the html attribute `hidden` or `display: none;`
-
-In order to show busy state for an HTML element, simply nest the HTML element in a `BusyIndicator` instance.  
-**Note:** Since `BusyIndicator` has `display: inline-block;` by default and no width of its own, whenever you need to wrap a block-level element, you should set `display: block` to the busy indicator as well.
-
-<br />
+<Description />
 
 # More Examples
 

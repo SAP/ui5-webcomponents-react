@@ -78,7 +78,7 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
   /**
    * Fired when the component checked state changes.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<RadioButtonDomRef>) => void;
 }
 
 /**

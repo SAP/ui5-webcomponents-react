@@ -9,95 +9,89 @@ const styles = {
   },
   cardHeader: {
     ...spacing.sapUiContentPadding,
-    outlineOffset: '-0.125rem',
-    boxShadow: ThemingParameters.sapContent_HeaderShadow,
-    borderBottom: `0.0625rem solid ${ThemingParameters.sapTile_SeparatorColor}`,
+    position: 'relative',
     backgroundColor: ThemingParameters.sapTile_Background,
-    fontFamily: ThemingParameters.sapFontHeaderFamily,
-    '&:hover': {
-      backgroundColor: ThemingParameters.sapList_Hover_Background
+    '&:focus:before': {
+      outline: 'none',
+      content: '""',
+      position: 'absolute',
+      border: 'var(--_ui5_card_header_focus_border)',
+      pointerEvents: 'none',
+      top: 'var(--_ui5_card_header_focus_offset)',
+      left: 'var(--_ui5_card_header_focus_offset)',
+      right: 'var(--_ui5_card_header_focus_offset)',
+      bottom: 'var(--_ui5_card_header_focus_offset)',
+      borderTopLeftRadius: 'var(--_ui5_card_header_focus_radius)',
+      borderTopRightRadius: 'var(--_ui5_card_header_focus_radius)',
+      borderBottomLeftRadius: 'var(--_ui5_card_header_focus_bottom_radius)',
+      borderBottomRightRadius: 'var(--_ui5_card_header_focus_bottom_radius)'
     },
-    '&:active': {
-      backgroundColor: ThemingParameters.sapList_Hover_Background
+    '&:focus-visible': {
+      outline: 'none'
     }
-  },
-  arrowIndicatorShape: {
-    width: 0,
-    height: 0
-  },
-  arrowUp: {
-    borderLeft: '8px solid transparent',
-    borderRight: '8px solid transparent',
-    borderBottom: '8px solid'
-  },
-  arrowDown: {
-    borderLeft: '8px solid transparent',
-    borderRight: '8px solid transparent',
-    borderTop: '8px solid'
-  },
-  arrowRight: {
-    borderLeft: `8px solid `,
-    borderTop: '8px solid transparent',
-    borderBottom: '8px solid transparent'
   },
   cardHeaderClickable: {
     cursor: 'pointer'
   },
-  headerContent: {
-    marginLeft: '1rem',
-    marginRight: '1rem',
-    position: 'relative'
-  },
   headerTitles: {
-    overflow: 'hidden',
-    textAlign: 'left',
-    whiteSpace: 'normal',
-    wordWrap: 'break-word'
+    flex: '1 1 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minWidth: '0',
+    width: '100%'
   },
-  headerText: {
-    fontFamily: ThemingParameters.sapFontHeaderFamily,
-    fontWeight: 'normal', // was ThemingParameters.sapUiFontHeaderWeight
-    fontSize: ThemingParameters.sapFontHeader5Size,
-    color: ThemingParameters.sapTile_TitleTextColor,
-    overflow: 'hidden',
-    display: '-webkit-box',
-    lineHeight: '18px',
-    maxHeight: '54px' /* height * number of lines */,
-    WebkitLineClamp: '3' /* number of lines to show */,
-    WebkitBoxOrient: 'vertical'
+  headerFirstLine: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%'
   },
-  subHeaderText: {
-    overflow: 'hidden',
+  headerSecondLine: {
+    position: 'relative',
     fontFamily: ThemingParameters.sapFontFamily,
-    fontWeight: 'normal',
     fontSize: ThemingParameters.sapFontSize,
+    fontWeight: 'normal',
     color: ThemingParameters.sapTile_TextColor,
-    textAlign: 'left',
+    minHeight: '1rem',
+    flexGrow: '1',
+    margin: '0.25rem 0 0 0',
+    display: 'flex',
+    alignItems: 'flex-end',
     whiteSpace: 'normal',
     wordWrap: 'break-word',
+    overflow: 'hidden',
+    textAlign: 'left',
     textOverflow: 'ellipsis',
     marginTop: '0.5rem',
     width: '100%',
-    display: '-webkit-box',
-    lineHeight: '16px',
-    maxHeight: '32px',
     WebkitLineClamp: '2',
     WebkitBoxOrient: 'vertical'
   },
-  counter: {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    margin: '0.188rem 0  0 1rem',
-    lineHeight: 'normal',
-    textAlign: 'right'
-  },
-  currency: {
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    fontWeight: 'normal',
-    color: ThemingParameters.sapTile_TextColor,
+  headerText: {
+    fontFamily: ThemingParameters.sapFontHeaderFamily,
+    fontWeight: `var(--sapFontHeaderWeight)`,
+    fontSize: ThemingParameters.sapFontHeader6Size,
+    color: ThemingParameters.sapTile_TitleTextColor,
     overflow: 'hidden',
-    marginLeft: '0.25rem',
-    textAlign: 'right'
+    WebkitLineClamp: '3' /* number of lines to show */,
+    WebkitBoxOrient: 'vertical',
+    whiteSpace: 'normal',
+    wordWrap: 'break-word',
+    textAlign: 'left',
+    textOverflow: 'ellipsis'
+  },
+  status: {
+    fontSize: ThemingParameters.sapFontSmallSize,
+    color: ThemingParameters.sapTile_TextColor,
+    lineHeight: 'normal',
+    textAlign: 'right',
+    marginInlineStart: '1rem',
+    marginBlockStart: '0.125rem'
+  },
+  unitOfMeasurement: {
+    marginInlineStart: '0.25rem',
+    paddingInlineStart: '0.25rem',
+    borderInlineStart: `1px solid ${ThemingParameters.sapTile_TextColor}`
   },
   helpIcon: {
     position: 'absolute',
@@ -105,52 +99,64 @@ const styles = {
     top: '0'
   },
   kpiContent: {
-    fontWeight: 'normal',
-    marginTop: '0.5rem',
-    color: ThemingParameters.sapTile_TextColor,
-    width: '100%',
-    boxSizing: 'border-box'
-  },
-  valueAndUnit: {
     display: 'flex',
-    alignItems: 'end',
-    color: ThemingParameters.sapNeutralTextColor
+    alignItems: 'flex-start',
+    marginTop: '0.25rem'
+  },
+  // KPI BLOCK
+  mainIndicator: {
+    color: ThemingParameters.sapNeutralTextColor,
+    display: 'inline-flex',
+    justifyContent: 'flex-start',
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    textAlign: 'right',
+    textOverflow: 'ellipsis',
+    fontSize: '2.25rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontWeight: 'normal'
   },
   value: {
-    fontSize: '2rem',
-    maxWidth: '135px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    display: 'block'
-  },
-  unit: {
-    marginLeft: '0.25rem',
-    fontSize: '1rem'
+    paddingBlockStart: '0.125rem',
+    height: '2.875rem',
+    fontFamily: ThemingParameters.sapFontLightFamily
   },
   indicatorAndUnit: {
+    display: 'grid',
+    textOverflow: 'ellipsis',
+    textAlign: 'center',
+    height: '2.125rem',
+    paddingInlineStart: '0.375rem',
+    paddingBlock: '0.5rem 0.375rem'
+  },
+  indicator: {
+    gridColumn: 1,
+    gridRow: 1,
+    width: ThemingParameters.sapFontSmallSize,
+    height: ThemingParameters.sapFontSmallSize,
+    color: 'currentColor'
+  },
+  unit: {
+    gridColumn: 1,
+    gridRow: 1,
+    marginTop: '0.9375rem',
+    fontFamily: ThemingParameters.sapFontFamily,
+    fontSize: ThemingParameters.sapFontSmallSize
+  },
+  indicatorGap: {
+    flex: '1 0 1rem',
+    maxWidth: '3rem'
+  },
+  sideIndicators: {
     display: 'flex',
-    height: '2rem',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
-  },
-  targetAndDeviation: {
-    width: '60%',
-    paddingBottom: '0.25rem',
-    textAlign: 'right',
-    fontSize: ThemingParameters.sapFontSmallSize,
-    color: ThemingParameters.sapTile_TextColor
-  },
-  targetAndDeviationColumn: {
-    maxWidth: '45%',
-    marginLeft: '1rem'
-  },
-  targetAndDeviationValue: {
-    color: ThemingParameters.sapTile_TitleTextColor,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    padding: '0.5rem 0',
+    minWidth: 0,
+    '& > *': {
+      marginInlineEnd: '1rem'
+    },
+    '&:last-child': {
+      marginInlineEnd: 0
+    }
   },
   description: {
     fontFamily: ThemingParameters.sapFontFamily,
@@ -178,7 +184,7 @@ const styles = {
   critical: {
     color: ThemingParameters.sapCriticalTextColor
   },
-  none: {
+  neutral: {
     color: ThemingParameters.sapNeutralTextColor
   }
 };

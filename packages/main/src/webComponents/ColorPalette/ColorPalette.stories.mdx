@@ -4,6 +4,7 @@ import { ColorPaletteItem } from '../ColorPaletteItem';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ColorPaletteDescription.md';
 
 <Meta
   title="Data Display / ColorPalette"
@@ -14,7 +15,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.14.0" />
 
 <br />
 
@@ -47,8 +48,6 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Usage
-
-The `ColorPalette` is meant for users that need to select a color from a predefined set. To define the colors, use the `ColorPaletteItem` component as child inside the `ColorPalette`.
+<Description />
 
 <Footer />

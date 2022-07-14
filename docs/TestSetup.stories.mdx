@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs';
+import { MessageStrip } from '@ui5/webcomponents-react';
+import { Footer } from '@docs/Footer';
+
+<Meta title="Knowledge Base/Test Setup" />
+
+# Test Setup
+
+This guide is applicable if you are using a standard `create-react-app` setup.
+
+`create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
+Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
+`package.json:`
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
+  }
+}
+```
+
+Since some components of UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver` API, you'll need to add a polyfill for it.
+Our recommendation is the `resize-observer-polyfill` package, you can install it by running `npm install resize-observer-polyfill --save-dev`.
+
+All other prerequisites of the UI5 Web Components for React Library can be fulfilled by importing our jest setup file:
+`import '@ui5/webcomponents-react/jestSetup.js';`
+
+Therefore, create (or edit) your `src/setupTests.js` file as follows:
+
+```js
+import ResizeObserverPolyfill from 'resize-observer-polyfill';
+import '@ui5/webcomponents-react/jestSetup.js';
+
+window.ResizeObserver = ResizeObserverPolyfill;
+```
+
+<MessageStrip hideCloseButton>
+  Please note that you must also wrap your components in the `ThemeProvider` component for testing, otherwise components
+  with translations will probably not render.
+</MessageStrip>
+
+Now you should be able to run your test by using `npm run test` or `yarn test`.
+
+<div style={{ height: 'var(--_ui5_bar_base_height)' }} />
+<Footer style={{ position: 'fixed', bottom: 0, zIndex: 2, maxHeight: 'var(--_ui5_bar_base_height)' }} />

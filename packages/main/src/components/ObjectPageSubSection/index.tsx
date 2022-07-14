@@ -4,13 +4,8 @@ import React, { forwardRef, ReactNode, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { EmptyIdPropException } from '../ObjectPage/EmptyIdPropException';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
-  /**
-   * Defines the title of the `ObjectPageSubSection`.
-   */
-  titleText?: string;
   /**
    * Defines the ID of the `ObjectPageSubSection`.
    */
@@ -19,6 +14,10 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
    * Defines the content of the `ObjectPageSubSection`.
    */
   children: ReactNode | ReactNode[];
+  /**
+   * Defines the title of the `ObjectPageSubSection`.
+   */
+  titleText?: string;
 }
 
 const styles = {
@@ -49,10 +48,6 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  */
 const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<HTMLDivElement>) => {
   const { children, id, titleText, className, style, ...rest } = props;
-
-  if (!id) {
-    throw new EmptyIdPropException('ObjectPageSubSection requires a unique ID property!');
-  }
 
   const htmlId = `ObjectPageSubSection-${id}`;
 

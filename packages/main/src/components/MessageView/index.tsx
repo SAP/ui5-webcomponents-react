@@ -4,7 +4,6 @@ import '@ui5/webcomponents-icons/dist/information.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ALL, LIST_NO_DATA } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -18,13 +17,14 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { MessageViewContext } from '../../internal/MessageViewContext';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { ValueState } from '../../enums/ValueState';
+import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { MessageViewContext } from '../../internal/MessageViewContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';

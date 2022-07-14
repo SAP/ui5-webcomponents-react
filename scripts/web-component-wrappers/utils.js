@@ -8,11 +8,17 @@ import prettierConfigRaw from '../../prettier.config.cjs';
 
 const eslint = new ESLint({
   overrideConfig: {
+    parser: '@typescript-eslint/parser',
     parserOptions: {
-      project: path.join(PATHS.packages, 'main', 'tsconfig.json')
+      project: path.join(PATHS.packages, 'main', 'tsconfig.json'),
+      ecmaFeatures: {
+        jsx: true
+      },
+      tsconfigRootDir: PATHS.root
     },
     rules: {
-      'import/no-unresolved': 'off'
+      'import/no-unresolved': 'off',
+      '@typescript-eslint/no-empty-interface': 'off'
     }
   },
   fix: true
@@ -134,7 +140,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'AvatarColorScheme[]': {
       return {
         importStatement: `import { AvatarColorScheme } from '../../enums';`,
-        tsType: `Array<${property.type} | keyof typeof ${property.type}>`,
+        tsType: `(AvatarColorScheme | keyof typeof AvatarColorScheme)[]`,
         enum: `AvatarColorScheme`,
         isEnum: true
       };
@@ -154,6 +160,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
     case 'FCLLayout':
+    case 'IllustrationMessageSize':
     case 'IllustrationMessageType':
     case 'InputType':
     case 'LinkDesign':
@@ -199,42 +206,6 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
   }
 };
 
-export const getEventTargetForComponent = (componentName) => {
-  switch (componentName) {
-    case 'CheckBox':
-    case 'ComboBox':
-    case 'DatePicker':
-    case 'DateRangePicker':
-    case 'DateTimePicker':
-    case 'DurationPicker':
-    case 'Input':
-    case 'MultiComboBox':
-    case 'MultiInput':
-    case 'RangeSlider':
-    case 'RatingIndicator':
-    case 'Slider':
-    case 'StepInput':
-    case 'Switch':
-    case 'TimePicker':
-    case 'RadioButton':
-      return 'HTMLInputElement';
-    case 'Option':
-      return 'HTMLOptionElement';
-    case 'Button':
-    case 'SegmentedButton':
-      return 'HTMLButtonElement';
-    case 'Select':
-      return 'HTMLSelectElement';
-    case 'StandardListItem':
-      return 'HTMLLIElement';
-    case 'TextArea':
-      return 'HTMLTextAreaElement';
-
-    default:
-      return 'HTMLElement';
-  }
-};
-
 export const runEsLint = async (text, name) => {
   const [result] = await eslint.lintText(text, {
     filePath: `packages/main/src/webComponents/${name}/index.tsx`
@@ -247,9 +218,7 @@ export const runEsLint = async (text, name) => {
   return result.output;
 };
 
-export const createDomRef = (componentSpec) => {
-  const importStatements = new Set();
-
+export const createDomRef = (componentSpec, importStatements) => {
   const isOptionalParameter = (p) => {
     return p.optional || p.hasOwnProperty('defaultValue');
   };
@@ -266,7 +235,7 @@ export const createDomRef = (componentSpec) => {
       tsType = 'Date';
     } else {
       const tsDefinition = getTypeDefinitionForProperty(param);
-      importStatements.add(tsDefinition.importStatement);
+      importStatements.push(tsDefinition.importStatement);
       tsType = tsDefinition.tsType;
     }
     return tsType;
@@ -276,7 +245,7 @@ export const createDomRef = (componentSpec) => {
     componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.readonly === 'true') ?? []
   ).map((prop) => {
     const tsDefinition = getTypeDefinitionForProperty(prop);
-    importStatements.add(tsDefinition.importStatement);
+    importStatements.push(tsDefinition.importStatement);
     return dedent`
     /**
      * ${formatDescription(prop.description, componentSpec)}
@@ -307,14 +276,6 @@ export const createDomRef = (componentSpec) => {
       switch (method.returnValue.type) {
         case 'Promise':
           returnValue = 'Promise<void>';
-          break;
-        //todo: remove this case when > wc-1.1.2 is released
-        case 'String':
-          if (method.name === 'toggleContents') {
-            returnValue = 'void';
-            break;
-          }
-          returnValue = 'string';
           break;
         default:
           returnValue = method.returnValue.type;
@@ -388,8 +349,13 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
  * @param {object} componentSpec
  * @return {string}
  */
-export const formatDescription = (description, componentSpec) => {
-  let desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+export const formatDescription = (description, componentSpec, isJSDoc = true) => {
+  let desc;
+  if (isJSDoc) {
+    desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+  } else {
+    desc = turndownService.turndown((description || '').trim());
+  }
   desc = replaceEventNamesInDescription(desc, componentSpec);
   return desc;
 };

@@ -12,7 +12,15 @@ const descrOptions = [
 
 describe('Select.js Test Suite', () => {
   test('should have rendered with the fieldbase', () => {
-    render(<Select labelText="Text Content" name="description" options={descrOptions} field={{ name: 'description' }} form={{ touched: { name: 'description' }, errors: { name: 'description' } }} />);
+    render(
+      <Select
+        labelText="Text Content"
+        name="description"
+        options={descrOptions}
+        field={{ name: 'description' }}
+        form={{ touched: { name: 'description' }, errors: { name: 'description' } }}
+      />,
+    );
 
     const fieldbase = screen.getByTestId('fieldbase-wrapper');
     const component = screen.getByTestId('select-wrapper');

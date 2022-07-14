@@ -12,10 +12,12 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data } }) => {
+const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
+  const hasRows = rows?.length > 0;
   return [
     ...deps,
+    hasRows,
     state.tableClientWidth,
     state.hiddenColumns.length,
     visibleColumns?.length,
@@ -98,7 +100,7 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, visi
       if (!column.minWidth && !column.width) {
         totalNumberColPrio2++;
       }
-      let max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
+      const max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
       columnMeta[columnIdOrAccessor].headerDefinesWidth = true;
       return acc + max;
     }
@@ -161,7 +163,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return columns;
   }
 
-  //map columns to visibleColumns
+  // map columns to visibleColumns
   const visibleColumns = instance.visibleColumns
     .map((visCol) => {
       const column = columns.find((col) => {

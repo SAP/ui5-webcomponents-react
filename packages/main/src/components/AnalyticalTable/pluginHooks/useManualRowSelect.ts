@@ -5,7 +5,7 @@ import { useEffect } from 'react';
  *
  * @param {string} manualRowSelectedKey - If this key is found on the original data row, and it is true, this row will be manually selected. __Defaults to `"isSelected"`__.
  */
-export const useManualRowSelect = (manualRowSelectedKey: string = 'isSelected') => {
+export const useManualRowSelect = (manualRowSelectedKey = 'isSelected') => {
   const instanceAfterData = ({ flatRows, toggleRowSelected }) => {
     useEffect(() => {
       flatRows.forEach(({ id, original }) => {

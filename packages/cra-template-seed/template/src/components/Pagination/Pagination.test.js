@@ -24,7 +24,13 @@ const sixButtonsPagination = {
 
 describe('Pagination.js Test Suite', () => {
   beforeEach(() => {
-    render(<Pagination numberOfElements={sixButtonsPagination.numberOfElements} totalPages={sixButtonsPagination.totalPages} selectedPage={sixButtonsPagination.number} />);
+    render(
+      <Pagination
+        numberOfElements={sixButtonsPagination.numberOfElements}
+        totalPages={sixButtonsPagination.totalPages}
+        selectedPage={sixButtonsPagination.number}
+      />,
+    );
   });
 
   test('should have 6 buttons (< 2 3 4 5 6 >) with 61 records and a size of 10', () => {
@@ -100,7 +106,13 @@ describe('Pagination.js Test Suite', () => {
   });
 
   test('should have button < disabled when first page is selected in a example with 2 pages', () => {
-    render(<Pagination numberOfElements={fourButtonsPagination.numberOfElements} totalPages={fourButtonsPagination.totalPages} selectedPage={fourButtonsPagination.number} />);
+    render(
+      <Pagination
+        numberOfElements={fourButtonsPagination.numberOfElements}
+        totalPages={fourButtonsPagination.totalPages}
+        selectedPage={fourButtonsPagination.number}
+      />,
+    );
 
     const pagination = screen.getAllByTestId('pagination-wrapper')[1];
     const leftarrow = screen.getAllByTestId('leftarrow-pagination-wrapper')[1];

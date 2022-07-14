@@ -28,6 +28,7 @@ const debounce = (func: DebouncedFunction, wait: number) => {
   };
 
   const debounced = function (..._args: unknown[]) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     context = this;
     args = _args;
     previous = now();

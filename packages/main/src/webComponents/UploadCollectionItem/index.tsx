@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import { ReactNode } from 'react';
-import { ListItemType, UploadState } from '../../enums';
+import { UploadState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -66,7 +66,7 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
    * **Note:** Use `Icon` or `img` for the intended design.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   thumbnail?: ReactNode;
   /**
@@ -74,35 +74,35 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
    */
-  onFileNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onFileNameClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the `fileName` property gets changed.
    *
    * **Note:** An edit button is displayed on each item, when the `UploadCollectionItem` `type` property is set to `Detail`.
    */
-  onRename?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onRename?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the retry button is pressed.
    *
    * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
    */
-  onRetry?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onRetry?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the terminate button is pressed.
    *
    * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
-  onTerminate?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onTerminate?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 }
 
 /**
  * A component to be used within the `UploadCollection`.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollectionItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',

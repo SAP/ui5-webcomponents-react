@@ -3,88 +3,128 @@
 exports[`AnalyticalCardHeader with all string props 1`] = `
 <DocumentFragment>
   <div
+    aria-labelledby="1337-title 1337-subtitle 1337-unitOfMeasurement 1337-mainIndicator 1337-indicator0 1337-indicator1 1337-description"
+    aria-roledescription="Card Header"
     class="AnalyticalCardHeader-cardHeader"
+    data-sap-ui-fastnavgroup="true"
+    id="1337"
+    role="heading"
+    slot="header"
+    tabindex="0"
   >
-    <div
-      class="AnalyticalCardHeader-headerContent"
-    >
+    <div>
       <div
         class="AnalyticalCardHeader-headerTitles"
       >
         <div
-          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          class="AnalyticalCardHeader-headerFirstLine"
         >
-          <div
+          <span
+            aria-level="3"
             class="AnalyticalCardHeader-headerText"
+            id="1337-title"
+            role="heading"
           >
             Title
-          </div>
+          </span>
         </div>
         <div
-          class="AnalyticalCardHeader-subHeaderText"
+          class="AnalyticalCardHeader-headerSecondLine"
         >
-          Subtitle
+          <span
+            id="1337-subtitle"
+          >
+            Subtitle
+          </span>
+          <span
+            class="AnalyticalCardHeader-unitOfMeasurement"
+            id="1337-unitOfMeasurement"
+          >
+            Unit
+          </span>
         </div>
       </div>
       <div
-        class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsEnd FlexBox-flexWrapNoWrap AnalyticalCardHeader-kpiContent"
+        class="AnalyticalCardHeader-kpiContent"
       >
         <div
-          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+          aria-label="Valueundefined
+"
+          class="AnalyticalCardHeader-mainIndicator"
+          id="1337-mainIndicator"
+          role="img"
         >
+          <span
+            class="AnalyticalCardHeader-value"
+          >
+            Value
+          </span>
           <div
-            class="AnalyticalCardHeader-valueAndUnit"
+            class="AnalyticalCardHeader-indicatorAndUnit"
           >
             <div
-              class="AnalyticalCardHeader-value"
-            >
-              Value
-            </div>
-            <div
-              class="AnalyticalCardHeader-indicatorAndUnit"
-            >
-              <div
-                class="AnalyticalCardHeader-unit"
-              >
-                Unit
-              </div>
-            </div>
+              class="AnalyticalCardHeader-unit"
+            />
           </div>
         </div>
         <div
-          class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviation"
+          class="AnalyticalCardHeader-indicatorGap"
+        />
+        <div
+          class="AnalyticalCardHeader-sideIndicators"
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            class="NumericSideIndicator-numericSideIndicator"
+            id="1337-indicator0"
           >
-            <span>
+            <span
+              class="NumericSideIndicator-title"
+            >
               Target
             </span>
-            <span
-              class="AnalyticalCardHeader-targetAndDeviationValue"
+            <div
+              class="NumericSideIndicator-valueContainer"
             >
-              TargetDesc
-            </span>
+              <span
+                class="Text-text NumericSideIndicator-number"
+              >
+                100
+              </span>
+              <span
+                class="Text-text NumericSideIndicator-unit"
+              />
+            </div>
           </div>
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionColumn FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalCardHeader-targetAndDeviationColumn"
+            class="NumericSideIndicator-numericSideIndicator"
+            id="1337-indicator1"
           >
-            <span>
+            <span
+              class="NumericSideIndicator-title"
+            >
               Deviation
             </span>
-            <span
-              class="AnalyticalCardHeader-targetAndDeviationValue"
+            <div
+              class="NumericSideIndicator-valueContainer NumericSideIndicator-stateError"
             >
-              DeviationDesc
-            </span>
+              <span
+                class="Text-text NumericSideIndicator-number"
+              >
+                50
+              </span>
+              <span
+                class="Text-text NumericSideIndicator-unit"
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div
+      <span
         class="AnalyticalCardHeader-description"
+        id="1337-description"
       >
         Description
-      </div>
+      </span>
     </div>
   </div>
 </DocumentFragment>

@@ -52,11 +52,11 @@ export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<Common
   /**
    * Fired when the user clicks on the arrow action.
    */
-  onArrowClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onArrowClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
   /**
    * Fired when the user clicks on the default action.
    */
-  onClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
 }
 
 /**

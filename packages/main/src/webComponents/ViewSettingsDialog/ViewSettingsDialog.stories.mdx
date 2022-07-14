@@ -2,8 +2,10 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ViewSettingsDialog } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ViewSettingsDialogDescription.md';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -12,6 +14,9 @@ import { useRef } from 'react';
   argTypes={{
     filterItems: { control: { disable: true } },
     sortItems: { control: { disable: true } }
+  }}
+  parameters={{
+    chromatic: { delay: 999 }
   }}
   args={{
     filterItems: (
@@ -49,7 +54,7 @@ import { useRef } from 'react';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.20.0" />
 
 <br />
 
@@ -59,6 +64,11 @@ import { useRef } from 'react';
   <Story name="Default">
     {(args) => {
       const ref = useRef();
+      useEffect(() => {
+        if (isChromatic) {
+          ref.current.show();
+        }
+      });
       return (
         <>
           <Button
@@ -79,6 +89,8 @@ import { useRef } from 'react';
 
 <ArgsTable story="." />
 
+<Description />
+
 ## Methods
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
@@ -86,13 +98,5 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name     | Parameters | Description       |
 | -------- | ---------- | ----------------- |
 | **show** | &mdash;    | Shows the dialog. |
-
-## Structure
-
-A `ViewSettingsDialog` consists of a header, content, and a footer for action buttons. The `ViewSettingsDialog` is usually displayed at the center of the screen.
-
-## Responsive Behavior
-
-`ViewSettingsDialog` stretches on full screen on phones.
 
 <Footer />

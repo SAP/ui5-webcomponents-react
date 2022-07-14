@@ -22,7 +22,7 @@ In addition to that, UI5 Web Components for React is providing complex component
 
 ## Requirements
 
-- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
 - [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
 
 ## Getting Started
@@ -79,20 +79,17 @@ npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
-You will find this component most likely in `src/App.js`:
+You will find this component most likely in `src/index.js`:
 
 ```jsx
 import { ThemeProvider } from '@ui5/webcomponents-react';
 ...
-render() {
-  return (
-    <div>
-      <ThemeProvider>
-        <MyApp />
-      </ThemeProvider>
-    </div>
-  );
-}
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
 ```
 
 Then you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />
@@ -163,8 +160,7 @@ Example - `Popover` with `Ref` type declaration:
 
 ```tsx
 import React, { useRef } from 'react';
-import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
-import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
+import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
 
 export default function App() {
   const popoverRef = useRef<PopoverDomRef>(null);
@@ -180,6 +176,11 @@ export default function App() {
   );
 }
 ```
+
+### Feature Registration
+
+`@ui5/webcomponents` offers a variety of [feature (side-effect) imports](https://sap.github.io/ui5-webcomponents/playground/getting-started/using-features/) that are available with `@ui5/webcomponents-react` as well.
+To use them you have to make sure they are imported before any other imports!
 
 ### Support
 

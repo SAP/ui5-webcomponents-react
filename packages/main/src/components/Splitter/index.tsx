@@ -1,13 +1,13 @@
 import {
+  CssSizeVariables,
   ThemingParameters,
   useI18nBundle,
   useIsRTL,
-  useSyncRef,
-  CssSizeVariables
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { PRESS_ARROW_KEYS_TO_MOVE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Icon } from '../../webComponents/Icon';
 

@@ -42,13 +42,13 @@ export interface TimelineItemPropTypes extends TimelineItemAttributes, CommonPro
    *
    * **Note:** The event will not be fired if the `name-clickable` attribute is not set.
    */
-  onNameClick?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onNameClick?: (event: Ui5CustomEvent<TimelineItemDomRef>) => void;
 }
 
 /**
  * An entry posted on the timeline
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TimelineItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Timeline" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>(
   'ui5-timeline-item',

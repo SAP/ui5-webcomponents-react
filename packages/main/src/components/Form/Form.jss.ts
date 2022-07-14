@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const labelSpanClasses = () => {
-  let styleClasses = {};
+  const styleClasses = {};
   for (let i = 1; i <= 11; i++) {
     styleClasses[`labelSpan${i}`] = {
       '--ui5wcr_form_content_span': 12 - i,
@@ -75,7 +75,8 @@ const styles = {
   labelSpan12: {
     '--ui5wcr_form_content_span': 12,
     '--ui5wcr_form_label_text_align': 'start',
-    '--ui5wcr_form_label_span': 12
+    '--ui5wcr_form_label_span': 12,
+    rowGap: 0
   }
 };
 

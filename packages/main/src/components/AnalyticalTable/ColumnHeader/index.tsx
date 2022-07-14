@@ -125,7 +125,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
   const textStyle = (() => {
     let margin = 0;
-    let style: CSSProperties = {};
+    const style: CSSProperties = {};
 
     if (column.hAlign) {
       style.textAlign = column.hAlign.toLowerCase() as any;
@@ -206,6 +206,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           cursor: hasPopover ? 'pointer' : 'auto',
           borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
         }}
+        aria-haspopup={hasPopover ? 'menu' : undefined}
         role={role}
         draggable={isDraggable}
         onDragEnter={onDragEnter}

@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the <code>ui5-title</code> level
+ * Defines the <code>Title</code> level
  */
 export enum TitleLevel {
   /**

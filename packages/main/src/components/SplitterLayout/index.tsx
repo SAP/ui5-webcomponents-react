@@ -13,8 +13,8 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { SplitterElementPropTypes } from '../SplitterElement';
 import { styles } from './SplitterLayout.jss';
 import { useConcatSplitterElements } from './useConcatSplitterElements';

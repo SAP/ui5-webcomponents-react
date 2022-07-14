@@ -45,20 +45,20 @@ export interface PagePropTypes extends PageAttributes, CommonProps {
    * Defines the footer HTML Element.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   footer?: ReactNode;
   /**
    * Defines the header HTML Element.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   header?: ReactNode;
 }
 
 /**
- * The `Page` is a container control that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
+ * The `Page` is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</ui5-link>
  */

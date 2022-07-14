@@ -1,5 +1,4 @@
-import React, { forwardRef, isValidElement, ReactNode, ReactText, Ref, useRef } from 'react';
-import { getRandomId } from '../../../internal/getRandomId';
+import React, { forwardRef, isValidElement, ReactNode, Ref } from 'react';
 import { Title } from '../../../webComponents/Title';
 
 const styles = {
@@ -9,7 +8,7 @@ const styles = {
 };
 
 export interface TitleBarProps {
-  children: ReactText | ReactNode;
+  children: ReactNode;
   titleBarId: string;
 }
 
@@ -22,3 +21,5 @@ export const TitleBar = forwardRef((props: TitleBarProps, ref: Ref<HTMLDivElemen
     </div>
   );
 });
+
+TitleBar.displayName = 'TitleBar';

@@ -5,7 +5,7 @@ export interface IChartMeasure {
    * A string containing the path to the dataset key this line should display.
    * Supports object structures by using '`parent.child'`. Can also be a getter.
    */
-  accessor: string | Function;
+  accessor: string | ((data: any) => any);
   /**
    * any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
    */

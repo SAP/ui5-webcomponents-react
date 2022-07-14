@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.3.0
+        uses: actions/setup-node@v3.4.0
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
@@ -41,7 +41,7 @@ jobs:
             --exact \
             --no-push \
             --no-git-tag-version \
-            --dist-tag dev \
+            --pre-dist-tag dev \
             --allow-branch ${current_branch}
 
         env:

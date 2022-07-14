@@ -1,11 +1,11 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { deprecationNotice, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { Children, forwardRef, ReactElement, Ref, useEffect, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
+import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import {
   Button,
@@ -194,9 +194,11 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
   const handleKeyDown = (e) => {
     const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
     if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
+      e.preventDefault();
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
     }
     if (e.key === 'ArrowUp' && currentIndex > 0) {
+      e.preventDefault();
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
     }
   };

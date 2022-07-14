@@ -5,6 +5,7 @@ import { BreadcrumbsSeparatorStyle } from '../../enums/BreadcrumbsSeparatorStyle
 import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './BreadcrumbsDescription.md';
 
 <Meta
   title="Layouts & Floorplans / Breadcrumbs"
@@ -19,7 +20,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.18.0" />
 
 <br />
 
@@ -43,18 +44,6 @@ import { Footer } from '@docs/Footer';
 
 <ArgsTable story="." />
 
-## Keyboard Handling
-
-The `Breadcrumbs` provides advanced keyboard handling.
-
-- \[F4, ALT+UP, ALT+DOWN, SPACE, ENTER\] - If the dropdown arrow is focused - opens/closes the drop-down.
-- \[SPACE, ENTER\] - Activates the focused item and triggers the `item-click` event.
-- \[ESC\] - Closes the drop-down.
-- \[LEFT\] - If the drop-down is closed - navigates one item to the left.
-- \[RIGHT\] - If the drop-down is closed - navigates one item to the right.
-- \[UP\] - If the drop-down is open - moves focus to the next item.
-- \[DOWN\] - If the drop-down is open - moves focus to the previous item.
-- \[HOME\] - Navigates to the first item.
-- \[END\] - Navigates to the last item.
+<Description />
 
 <Footer />

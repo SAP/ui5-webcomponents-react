@@ -3,17 +3,6 @@ import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import {
-  CANCEL,
-  MANAGE,
-  MY_VIEWS,
-  RESET,
-  SAVE,
-  SAVE_AS,
-  SEARCH,
-  SEARCH_VARIANT,
-  SELECT_VIEW
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -35,6 +24,17 @@ import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { ListMode } from '../../enums/ListMode';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { TitleLevel } from '../../enums/TitleLevel';
+import {
+  CANCEL,
+  MANAGE,
+  MY_VIEWS,
+  RESET,
+  SAVE,
+  SAVE_AS,
+  SEARCH,
+  SEARCH_VARIANT,
+  SELECT_VIEW
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
@@ -320,7 +320,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
 
   const handleSaveManageViews = (e, payload) => {
     const { defaultView, updatedRows, deletedRows } = payload;
-    let callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
+    const callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     setSafeChildren((prev) =>
       Children.toArray(
         prev.map((child: ComponentElement<any, any>) => {
@@ -335,7 +335,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             }
           }
           if (Object.keys(updatedRows).includes(child.props.children)) {
-            const { currentVariant, ...rest } = updatedRows[child.props.children];
+            const { currentVariant: _0, ...rest } = updatedRows[child.props.children];
             updatedProps = { ...updatedProps, ...rest };
           }
           if (deletedRows.has(child.props.children)) {

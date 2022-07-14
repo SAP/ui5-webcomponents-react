@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.0...v0.26.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* add `IllustrationMessageSize` enum ([#3211](https://github.com/SAP/ui5-webcomponents-react/issues/3211)) ([44bdbf7](https://github.com/SAP/ui5-webcomponents-react/commit/44bdbf79ae0eb28b3e81148edb5a2ca443feaece))
+* **i18n:** register context only once ([#3217](https://github.com/SAP/ui5-webcomponents-react/issues/3217)) ([b9d7f20](https://github.com/SAP/ui5-webcomponents-react/commit/b9d7f205413a5c308999728c38839a926a1a6fc6))
+
+
+
+
+
+# [0.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.7...v0.26.0) (2022-07-04)
+
+
+### Bug Fixes
+
+* **AnalyticalCard:** implement latest specs and fix accessibility ([#3183](https://github.com/SAP/ui5-webcomponents-react/issues/3183)) ([8b7e6de](https://github.com/SAP/ui5-webcomponents-react/commit/8b7e6de94de8c8aee2832a0263ec6ac3534a725e))
+* **AnalyticalTable:** `disableDragAndDrop` always disables drag and drop of column ([#3182](https://github.com/SAP/ui5-webcomponents-react/issues/3182)) ([f02c107](https://github.com/SAP/ui5-webcomponents-react/commit/f02c107128fe289ba23f02dff1e091858623cb32))
+
+
+### chore
+
+* increase minimum react version to 16.14.0 ([#3177](https://github.com/SAP/ui5-webcomponents-react/issues/3177)) ([bd3d499](https://github.com/SAP/ui5-webcomponents-react/commit/bd3d499b64ce418dd6ef28ac2a61bd84018683ed))
+* remove deprecated entrypoints ([#3154](https://github.com/SAP/ui5-webcomponents-react/issues/3154)) ([e58f733](https://github.com/SAP/ui5-webcomponents-react/commit/e58f7331d1017528dacce10562d928fa2e7862b6))
+* remove polyfills for IE11 and Safari ([#3138](https://github.com/SAP/ui5-webcomponents-react/issues/3138)) ([558fe71](https://github.com/SAP/ui5-webcomponents-react/commit/558fe7106eb4839b5443e5215f1a013729cd2f2c))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.5.0 ([#3170](https://github.com/SAP/ui5-webcomponents-react/issues/3170)) ([43aebfd](https://github.com/SAP/ui5-webcomponents-react/commit/43aebfd123137fcce082978b79a38c8da7138b28))
+
+
+### BREAKING CHANGES
+
+* **AnalyticalCard:** The `AnalyticalCardHeader` has been refactored completely to match the latest design specifications. Please take a look at our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page).
+* **@ui5/webcomponents-react**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove deprecated `usePassThroughHtmlProps` hook
+* **@ui5/webcomponents-react-charts**: remove all deprecated entrypoints
+* The polyfills `@ui5/webcomponents-react-base/polyfill/Safari.js` and `@ui5/webcomponents-react-base/polyfill/IE11.js` and their dependencies have been removed. You will now most likely need to install `resize-observer-polyfill` on your own to run your jest tests. More Details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page).
+* minimum required version of `react` and `react-dom` bumped to `16.14.0` in order to use the new `jsx-transform`.
+
+
+
+
+
+## [0.25.7](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.6...v0.25.7) (2022-06-30)
+
+
+### Features
+
+* **AnalyticalTable:** add `showOverlay` prop ([#3167](https://github.com/SAP/ui5-webcomponents-react/issues/3167)) ([6a19602](https://github.com/SAP/ui5-webcomponents-react/commit/6a1960219bf5c3e349b11dbd9c0bda190e6c932b)), closes [#3134](https://github.com/SAP/ui5-webcomponents-react/issues/3134)
+
+
+
+
+
+## [0.25.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.5...v0.25.6) (2022-06-29)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** announce column header popover with screen readers ([#3159](https://github.com/SAP/ui5-webcomponents-react/issues/3159)) ([6b18a4b](https://github.com/SAP/ui5-webcomponents-react/commit/6b18a4bc094b17736e57cf54bb0525901075dfd6)), closes [#3132](https://github.com/SAP/ui5-webcomponents-react/issues/3132)
+* **DynamicPage:** fix tooltip and aria-label for anchor bar buttons ([#3122](https://github.com/SAP/ui5-webcomponents-react/issues/3122)) ([b696d54](https://github.com/SAP/ui5-webcomponents-react/commit/b696d54ea936956a96809221c8d3bc3756c5b897))
+* **Form:** fix alignment of last group row ([#3155](https://github.com/SAP/ui5-webcomponents-react/issues/3155)) ([f819d7f](https://github.com/SAP/ui5-webcomponents-react/commit/f819d7fb0e0f40c420f9ffe3990eb4da45ccf970))
+* **MessageBox:** avoid duplicate aria announcement ([#3153](https://github.com/SAP/ui5-webcomponents-react/issues/3153)) ([344b977](https://github.com/SAP/ui5-webcomponents-react/commit/344b97706710ffef2e614e8667da065143a51120))
+
+
+
+
+
+## [0.25.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.4...v0.25.5) (2022-06-22)
+
+
+### Bug Fixes
+
+* **ActionSheet:** don't scroll page on keyDown/Up, correct margin of buttons ([#3093](https://github.com/SAP/ui5-webcomponents-react/issues/3093)) ([da2c5a4](https://github.com/SAP/ui5-webcomponents-react/commit/da2c5a442e3ffad9f2099493132821543069e7ee)), closes [#3092](https://github.com/SAP/ui5-webcomponents-react/issues/3092)
+* **AnalyticalTable:** adjust column scaling on data change ([#3102](https://github.com/SAP/ui5-webcomponents-react/issues/3102)) ([328fc7b](https://github.com/SAP/ui5-webcomponents-react/commit/328fc7b04d21c7db2576cb7652219e3d72146d9a))
+* **DynamicPageTitle:** use "large" font size for title if no `headerContent` is set ([#3109](https://github.com/SAP/ui5-webcomponents-react/issues/3109)) ([40eef51](https://github.com/SAP/ui5-webcomponents-react/commit/40eef51dbced691ea2b83ea6daebe59c459dafdb))
+* **SplitterElement:** don't remount component on reset ([#3103](https://github.com/SAP/ui5-webcomponents-react/issues/3103)) ([84ef289](https://github.com/SAP/ui5-webcomponents-react/commit/84ef289c47a443daa906f8b99f58f319c924813b))
+
+
+### Features
+
+* **ObjectPage & DynamicPage:** add `onToggleHeaderContent` event ([#3094](https://github.com/SAP/ui5-webcomponents-react/issues/3094)) ([e5bcb5a](https://github.com/SAP/ui5-webcomponents-react/commit/e5bcb5a725141714e93647740c538ddbb40e99fd)), closes [#3091](https://github.com/SAP/ui5-webcomponents-react/issues/3091)
+
+
+
+
+
 ## [0.25.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.3...v0.25.4) (2022-06-15)
 
 

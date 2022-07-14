@@ -4,8 +4,10 @@ import { ColorPalettePopover } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { useRef } from 'react';
+import Description from './ColorPalettePopoverDescription.md';
+import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ColorPalettePopover"
@@ -15,9 +17,12 @@ import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
     children: { control: { disable: true } },
     defaultColor: { control: { type: 'color' } }
   }}
+  parameters={{
+    chromatic: { delay: 1000 }
+  }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.20.0" />
 
 <br />
 
@@ -27,12 +32,20 @@ import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
   <Story name="Default">
     {(args) => {
       const popoverRef = useRef(null);
+      const btnRef = useRef(null);
+      useEffect(() => {
+        if (isChromatic) {
+          popoverRef.current.showAt(btnRef.current);
+        }
+      }, []);
       const onButtonClick = (e) => {
         popoverRef.current.showAt(e.target);
       };
       return (
         <>
-          <Button onClick={onButtonClick}>Open Popover</Button>
+          <Button onClick={onButtonClick} ref={btnRef}>
+            Open Popover
+          </Button>
           <ColorPalettePopover {...args} ref={popoverRef}>
             <ColorPaletteItem value="pink" />
             <ColorPaletteItem value="darkblue" />
@@ -57,9 +70,7 @@ import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 
 <ArgsTable story="." />
 
-## Usage
-
-The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker. For the `ColorPalettePopover`
+<Description />
 
 ## Methods
 

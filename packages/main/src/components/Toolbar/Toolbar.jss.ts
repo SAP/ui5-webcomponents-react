@@ -31,7 +31,7 @@ export const styles = {
     }
   },
   info: {
-    // This color is most similar to darken(@sapUiBaseColor, 10)
+    height: '2rem', // always 2 rem both in Compact and Cozy
     backgroundColor: ThemingParameters.sapList_HeaderBorderColor,
     '&$active': {
       backgroundColor: ThemingParameters.sapInfobar_Active_Background,

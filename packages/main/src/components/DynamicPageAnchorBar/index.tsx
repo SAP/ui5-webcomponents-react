@@ -8,15 +8,10 @@ import {
   useIsRTL,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_HEADER,
-  EXPAND_HEADER,
-  PIN_HEADER,
-  UNPIN_HEADER
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
+import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Button, ToggleButton } from '../../webComponents';
 
@@ -175,8 +170,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
-          title={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          aria-label={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
         />
       )}
       {shouldRenderHeaderPinnableButton && (
@@ -190,8 +185,8 @@ const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElemen
           )}
           pressed={headerPinned}
           onClick={onPinHeader}
-          title={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
-          aria-label={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          accessibleName={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
         />
       )}
     </section>

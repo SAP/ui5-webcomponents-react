@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
+import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import dedent from 'dedent';
 import fs from 'fs';
 import path from 'path';
@@ -77,7 +78,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     }
   },
   MultiComboBox: {
@@ -121,7 +122,7 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    *  </code>
    * </pre>`
       );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '`<SuggestionItem>`');
+      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     },
     tokens: (description) => {
       return description.replace(
@@ -228,7 +229,7 @@ const getEventParameters = (name, parameters) => {
 
   const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
 
-  const eventTarget = Utils.getEventTargetForComponent(name);
+  const eventTarget = `${name}DomRef`;
 
   if (resolvedEventParameters.length === 0) {
     return {
@@ -288,11 +289,13 @@ const createWebComponentWrapper = async (
     componentDescription = '';
   }
 
+  const domRef = Utils.createDomRef(componentSpec, importStatements);
+
   const imports = [
     `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
       componentSpec.module
     }.js';`,
-    ...importStatements
+    ...new Set(importStatements)
   ];
 
   return await renderComponentWrapper({
@@ -309,11 +312,15 @@ const createWebComponentWrapper = async (
     slotProps: slotProps.filter((name) => name !== 'children'),
     eventProps,
     defaultProps,
-    domRef: Utils.createDomRef(componentSpec)
+    domRef,
+    baseComponentName:
+      typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
+        ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
+        : componentSpec.module
   });
 };
 
-const createWebComponentDemo = (componentSpec, componentProps, description) => {
+const createWebComponentDemo = (componentSpec, componentProps, hasDescription) => {
   const componentName = componentSpec.module;
   const enumImports = [];
   const selectArgTypes = [];
@@ -370,44 +377,25 @@ const createWebComponentDemo = (componentSpec, componentProps, description) => {
       customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
     }
     if (prop.isEnum) {
-      selectArgTypes.push(`${prop.name}: ${prop.tsType}`);
+      const type = prop.tsType.split(' ')[0];
+      selectArgTypes.push(`${prop.name}: ${type}`);
       const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-      args.push(`${prop.name}: ${prop.tsType}${defaultValue}`);
+      args.push(`${prop.name}: ${type}${defaultValue}`);
     }
   });
-  //todo remove after 'react-docgen' can handle this
-  args.push(`style: {}`);
-  args.push(`className: ''`);
-  args.push(`slot: ''`);
-  args.push(`ref: null`);
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-
-  let formattedDescription = description
-    .replace(/<br>/g, `<br/>`)
-    .replace(/\s\s+/g, ' ')
-    .replace(/h3/g, 'h2')
-    .replace(/h4/g, 'h3');
-
-  try {
-    if (formattedDescription) {
-      formattedDescription = Utils.formatDescription(formattedDescription, componentSpec);
-    }
-  } catch (e) {
-    formattedDescription = '';
-    console.warn(
-      `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
-    );
-  }
 
   return `${renderStory({
     name: componentName,
+    since: versionInfo[componentSpec.since],
     imports: [...enumImports, ...additionalComponentImports],
     additionalComponentDocs,
     selectArgTypes,
     customArgTypes,
     args,
-    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? []
-  })}\n${formattedDescription}`;
+    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [],
+    hasDescription
+  })}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -507,7 +495,7 @@ const resolveInheritedAttributes = (componentSpec) => {
   // Generated file - do not change manually! 
   
   /**
-   * ${spec.description ?? spec.basename}
+   * ${replaceTagNameWithModuleName(spec.description ?? spec.basename)}
    */
    export enum ${spec.basename} {
      ${properties.join(',\n\n')}
@@ -534,7 +522,7 @@ const propDescription = (componentSpec, property) => {
     formattedDescription += `
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).`;
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
   }
 
   return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
@@ -542,7 +530,7 @@ const propDescription = (componentSpec, property) => {
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
-  .filter((spec) => !PRIVATE_COMPONENTS.has(spec.module))
+  .filter((spec) => !PRIVATE_COMPONENTS[spec.module])
   .map(resolveInheritedAttributes)
   .forEach(async (componentSpec) => {
     const attributes = [];
@@ -621,16 +609,21 @@ allWebComponents
       .forEach((eventSpec) => {
         let eventParameters;
         if (eventSpec.native === 'true') {
+          const eventTarget = `${componentSpec.module}DomRef`;
           if (eventSpec.name === 'click') {
             eventParameters = {
-              tsType: 'MouseEventHandler<HTMLElement>',
+              tsType: `MouseEventHandler<${eventTarget}>`,
               importStatements: ["import { MouseEventHandler } from 'react';"]
             };
           } else if (eventSpec.name === 'drop') {
             eventParameters = {
-              tsType: 'DragEventHandler<HTMLElement>',
+              tsType: `DragEventHandler<${eventTarget}>`,
               importStatements: ["import { DragEventHandler } from 'react';"]
             };
+          } else {
+            console.warn(
+              `----------------------\n${componentSpec.module}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
+            );
           }
         } else {
           eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
@@ -702,7 +695,7 @@ allWebComponents
         mainDescription,
         attributes,
         slotsAndEvents,
-        [...new Set(importStatements)],
+        importStatements,
         defaultProps,
         (componentSpec.properties || [])
           .filter(filterNonPublicAttributes)
@@ -724,13 +717,43 @@ allWebComponents
       }
 
       // create demo
-      if (
-        CREATE_SINGLE_COMPONENT === componentSpec.module ||
-        (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-          !COMPONENTS_WITHOUT_DEMOS.has(componentSpec.module))
-      ) {
-        const webComponentDemo = createWebComponentDemo(componentSpec, allComponentProperties, description);
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+      if (!COMPONENTS_WITHOUT_DEMOS[componentSpec.module]) {
+        let formattedDescription = description
+          .replace(/<br>/g, `<br/>`)
+          .replace(/\s\s+/g, ' ')
+          .replace(/h3/g, 'h2')
+          .replace(/h4/g, 'h3');
+
+        try {
+          if (formattedDescription) {
+            formattedDescription = Utils.formatDescription(formattedDescription, componentSpec, false);
+          }
+        } catch (e) {
+          formattedDescription = '';
+          console.warn(
+            `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
+          );
+        }
+        // create component description
+        if (formattedDescription) {
+          fs.writeFileSync(
+            path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
+            formattedDescription
+          );
+        }
+        // create story file (demo)
+        if (
+          CREATE_SINGLE_COMPONENT === componentSpec.module ||
+          !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+        ) {
+          const webComponentDemo = createWebComponentDemo(
+            componentSpec,
+            allComponentProperties,
+            description,
+            !!formattedDescription
+          );
+          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+        }
       }
     }
   });

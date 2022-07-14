@@ -2,19 +2,11 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ColorPicker } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ColorPickerDescription.md';
 
-<Meta
-  title="Inputs / ColorPicker"
-  component={ColorPicker}
-  args={{
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
-  }}
-/>
+<Meta title="Inputs / ColorPicker" component={ColorPicker} />
 
-<DocsHeader />
+<DocsHeader since="0.14.0" />
 
 <br />
 
@@ -31,5 +23,7 @@ import { Footer } from '@docs/Footer';
 ## Properties
 
 <ArgsTable story="." />
+
+<Description />
 
 <Footer />

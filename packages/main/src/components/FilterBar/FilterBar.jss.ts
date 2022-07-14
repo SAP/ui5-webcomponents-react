@@ -1,4 +1,3 @@
-import { isIE } from '@ui5/webcomponents-base/dist/Device.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
@@ -66,15 +65,15 @@ const styles = {
     marginTop: 0,
     flexGrow: 1,
     flexShrink: 0,
-    maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
-    flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+    maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+    flexBasis: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
   },
   lastSpacer: {
     height: 'var(--_ui5_input_height)',
     flexGrow: 1,
     flexShrink: 0,
-    maxWidth: isIE() ? '26.25rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
-    flexBasis: isIE() ? '13.125rem' : 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
+    maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
+    flexBasis: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
   }
 };
 

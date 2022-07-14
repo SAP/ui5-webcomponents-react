@@ -148,6 +148,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           });
         }
         return (
+          // eslint-disable-next-line react/jsx-key
           <div
             {...rowProps}
             style={{
@@ -205,6 +206,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 contentToRender = 'Cell';
               }
               return (
+                // eslint-disable-next-line react/jsx-key
                 <div
                   {...cellProps}
                   data-visible-column-index={visibleColumnIndex}

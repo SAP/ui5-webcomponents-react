@@ -1,7 +1,20 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, Select, TextArea } from '../..';
+import {
+  CheckBox,
+  Form,
+  FormGroup,
+  FormItem,
+  Input,
+  InputType,
+  Label,
+  Link,
+  Option,
+  Select,
+  Text,
+  TextArea
+} from '../..';
 
 <Meta
   title="Layouts & Floorplans / Form"
@@ -43,17 +56,17 @@ import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, S
   <Story name="Default">
     {(args) => (
       <Form {...args}>
-        <FormItem label={'Sole Form Item'}>
+        <FormItem label="Sole Form Item">
           <Input type={InputType.Text} />
         </FormItem>
-        <FormGroup titleText={'Personal Data'}>
-          <FormItem label={'Name'}>
+        <FormGroup titleText="Personal Data">
+          <FormItem label="Name">
             <Input type={InputType.Text} />
           </FormItem>
           <FormItem label={<Label>Address</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={'Country'}>
+          <FormItem label="Country">
             <Select>
               <Option>Germany</Option>
               <Option>France</Option>
@@ -70,32 +83,32 @@ import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, S
               placeholder="The styles of the Label of the TextArea FormItem is set to: alignSelf: 'start', paddingTop: '0.25rem'"
             />
           </FormItem>
-          <FormItem label={'Home address'}>
+          <FormItem label="Home address">
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText={'Company Data'}>
+        <FormGroup titleText="Company Data">
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={'Company Address'}>
+          <FormItem label="Company Address">
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={'Company City'}>
+          <FormItem label="Company City">
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={'Company Country'}>
+          <FormItem label="Company Country">
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={'Number of Employees'}>
-            <Input type={InputType.Number} value={'5000'} disabled />
+          <FormItem label="Number of Employees">
+            <Input type={InputType.Number} value="5000" disabled />
           </FormItem>
-          <FormItem label={'Member of Partner Network'}>
+          <FormItem label="Member of Partner Network">
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText={'Marketing Data'}>
-          <FormItem label={'Email'}>
+        <FormGroup titleText="Marketing Data">
+          <FormItem label="Email">
             <Input type={InputType.Email} />
           </FormItem>
           <FormItem label="Company Email">
@@ -103,6 +116,25 @@ import { CheckBox, Form, FormGroup, FormItem, Input, InputType, Label, Option, S
           </FormItem>
           <FormItem label="I want to receive the newsletter">
             <CheckBox />
+          </FormItem>
+        </FormGroup>
+        <FormGroup titleText="Contact">
+          <FormItem label="Website">
+            <Link href={'https://sap.github.io/ui5-webcomponents-react'}>
+              https://sap.github.io/ui5-webcomponents-react
+            </Link>
+          </FormItem>
+          <FormItem label="Email">
+            <Link>some.one@sap.com</Link>
+          </FormItem>
+          <FormItem label="Slack">
+            <Link href={'https://openui5.slack.com/archives/CSQEJ2J04'}>#webcomponents-react</Link>
+          </FormItem>
+          <FormItem label="Company">
+            <Text>SAP</Text>
+          </FormItem>
+          <FormItem label="Company Headquarter">
+            <Text>Walldorf, Germany</Text>
           </FormItem>
         </FormGroup>
       </Form>

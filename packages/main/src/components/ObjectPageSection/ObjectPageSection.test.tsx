@@ -22,10 +22,5 @@ describe('ObjectPageSection', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('Empty Id Prop', () => {
-    const renderer = () => render(<ObjectPageSection />);
-    expect(renderer).toThrow();
-  });
-
   createCustomPropsTest(ObjectPageSection);
 });

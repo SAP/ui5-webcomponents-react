@@ -4,16 +4,9 @@ import {
   ThemingParameters,
   useI18nBundle,
   useIsomorphicLayoutEffect,
-  useIsRTL
+  useIsRTL,
+  useIsomorphicId
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_NODE,
-  COLLAPSE_PRESS_SPACE,
-  EXPAND_NODE,
-  EXPAND_PRESS_SPACE,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -41,19 +34,29 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
-import { Text } from '../Text';
-import { TextAlign } from '../../enums/TextAlign';
-import { ValueState } from '../../enums/ValueState';
-import { VerticalAlign } from '../../enums/VerticalAlign';
+import {
+  AnalyticalTableScrollMode,
+  GlobalStyleClasses,
+  TableScaleWidthMode,
+  TableSelectionBehavior,
+  TableSelectionMode,
+  TableVisibleRowCountMode,
+  TextAlign,
+  ValueState,
+  VerticalAlign
+} from '../../enums';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { FlexBox } from '../FlexBox';
+import { Text } from '../Text';
 import styles from './AnayticalTable.jss';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
@@ -65,6 +68,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
+import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
@@ -134,7 +138,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
    */
-  filter?: string | Function;
+  filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
   // useGlobalFilter
   /**
@@ -299,6 +303,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
+   * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
+   */
+  showOverlay?: boolean;
+  /**
    * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
    */
   noDataText?: string;
@@ -364,7 +372,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the column growing behaviour. Possible Values:
    *
-   * - **Default**: Every column without fixed width gets the maximum available space of the table.
+   * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
    *
@@ -540,6 +548,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     selectedRowIds,
     selectionBehavior,
     selectionMode,
+    showOverlay,
     sortable,
     style,
     subRowsKey,
@@ -563,6 +572,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
+  const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
 
   const classes = useStyles();
 
@@ -586,6 +596,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     return props.data;
   }, [props.data, minRows]);
 
+  const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
@@ -627,6 +638,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         renderRowSubComponent,
         alwaysShowSubComponent,
         reactWindowRef,
+        showOverlay,
         uniqueId
       },
       ...reactTableOptions
@@ -639,6 +651,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useExpanded,
     useRowSelect,
     useResizeColumns,
+    useResizeColumnsConfig,
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
@@ -927,11 +940,28 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           </TitleBar>
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
-        <FlexBox>
+        <FlexBox
+          className={classes.tableContainerWithScrollBar}
+          data-component-name="AnalyticalTableContainerWithScrollbar"
+        >
+          {showOverlay && (
+            <>
+              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+                {invalidTableA11yText}
+              </span>
+              <div
+                tabIndex={0}
+                aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
+                role="region"
+                data-component-name="AnalyticalTableOverlay"
+                className={classes.overlay}
+              />
+            </>
+          )}
           <div
             aria-labelledby={titleBarId}
             {...getTableProps()}
-            tabIndex={0}
+            tabIndex={showOverlay ? -1 : 0}
             role="grid"
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}
@@ -1058,7 +1088,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         )}
       </div>
       <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
-        ""
+        {''}
       </Text>
     </>
   );
