@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ThemeProvider,
   Form,
@@ -12,105 +12,88 @@ import {
   Button,
   MultiComboBox,
   MultiComboBoxItem,
-  DatePicker
+  DatePicker,
+  Label
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 
-export function CreateAccountForm() {
-  const initialValues = {
-    email: '',
-    password: '',
-    country: 'Germany',
-    birthday: '',
-    payment: [],
-    terms: false
+export function RegisterForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [country, setCountry] = useState('Germany');
+  const [birthday, setBirthday] = useState('');
+  const [payment, setPayment] = useState([]);
+  const [terms, setTerms] = useState(false);
+
+  const handleSubmit = (e) => {
+    const values = {
+      email: email,
+      password: password,
+      country: country,
+      birthday: birthday,
+      payment: payment,
+      terms: terms
+    };
+    alert(JSON.stringify(values, null, 2));
+    console.log(values);
+    //prevent page reload
+    e.preventDefault();
   };
-
-  const [values, setValues] = React.useState(initialValues);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value
-    });
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
   };
-
-  const handleSelectionChange = (e) => {
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    setCountry(e.detail.selectedOption.innerText);
+  };
+  const handleBirthdayChange = (e) => {
+    setBirthday(e.detail.value);
+  };
+  const handlePaymentSelectionChange = (e) => {
     const selected = [];
     Object.entries(e.detail.items).forEach(([key, val]) => {
       selected.push(val.text);
     });
-    setValues({
-      ...values,
-      payment: selected
-    });
+    setPayment(selected);
   };
-
-  const handleSubmit = (e) => {
-    alert(JSON.stringify(values, null, 2));
-    console.log(values);
+  const handleTermsChange = (e) => {
+    setTerms(e.target.checked);
   };
 
   return (
     <ThemeProvider>
-      <Form>
-        <FormGroup titleText={'Create Account'}>
-          <FormItem label={'Email'}>
-            <Input name="email" type={InputType.Email} value={values.email} onInput={handleInputChange} />
+      <Form onSubmit={handleSubmit}>
+        <FormGroup titleText="Create Account">
+          <FormItem label={<Label required>Email</Label>}>
+            <Input name="email" required type={InputType.Email} value={email} onInput={handleEmailInput} />
           </FormItem>
-          <FormItem label={'Password'}>
-            <Input name="password" type={InputType.Password} value={values.password} onInput={handleInputChange} />
+          <FormItem label={<Label required>Password</Label>}>
+            <Input name="password" required type={InputType.Password} value={password} onInput={handlePasswordInput} />
           </FormItem>
-          <FormItem label={'Country'}>
-            <Select
-              name="country"
-              value={values.country}
-              onChange={(e) =>
-                setValues({
-                  ...values,
-                  country: e.detail.selectedOption.innerText
-                })
-              }
-            >
+          <FormItem label="Country">
+            <Select name="country" onChange={handleCountryChange}>
               <Option>Germany</Option>
               <Option>France</Option>
               <Option>Italy</Option>
             </Select>
           </FormItem>
-          <FormItem label={'Date of Birth'}>
-            <DatePicker
-              value={values.birthday}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  birthday: e.detail.value
-                });
-              }}
-            ></DatePicker>
+          <FormItem label="Date of Birth">
+            <DatePicker value={birthday} onChange={handleBirthdayChange}></DatePicker>
           </FormItem>
-          <FormItem label={'Payment methods'}>
-            <MultiComboBox onSelectionChange={handleSelectionChange}>
+          <FormItem label="Payment methods">
+            <MultiComboBox onSelectionChange={handlePaymentSelectionChange}>
               <MultiComboBoxItem text="Credit card" />
               <MultiComboBoxItem text="PayPal" />
               <MultiComboBoxItem text="Bank transfer" />
             </MultiComboBox>
           </FormItem>
-          <FormItem label={'I accept the terms of service'}>
-            <CheckBox
-              required
-              name="terms"
-              value={values.terms}
-              onChange={(e) =>
-                setValues({
-                  ...values,
-                  terms: e.target.checked
-                })
-              }
-            />
+          <FormItem label="I accept the terms of service">
+            <CheckBox required name="terms" checked={terms} onChange={handleTermsChange} />
           </FormItem>
-          <FormItem label={''}>
-            <Button onClick={handleSubmit}>Submit</Button>
+          <FormItem label="">
+            <Button submits>Submit</Button>
           </FormItem>
         </FormGroup>
       </Form>

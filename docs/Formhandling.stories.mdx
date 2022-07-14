@@ -1,0 +1,178 @@
+import { Meta } from '@storybook/addon-docs';
+import { RegisterForm } from './knowledgeBaseExamples/formExamples';
+import { Footer } from '@docs/Footer';
+
+<Meta title="Knowledge Base/Form Handling" />
+
+# Form Handling
+
+This guide demonstrates the use of the `Form` component.
+
+## #1 Example with UI5 Web Components for React
+
+This Form is implemented with the `Form` component from UI5 Web Components for React.
+The children of the `Form` should only be `FormGroup` and `FormItem` in order to preserve the intended design. The children of `FormGroup` should only be `FormItem` and the children of `FormItem` can be an arbitrary React Node.
+
+You can then create a form with UI5 Web Components for React as follows. Also, you can find this example in a Codesandbox.
+
+[![Edit wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/wcr-form-5f9c24?fontsize=14&hidenavigation=1&theme=dark)
+
+<details>
+    <summary>Show code</summary>
+
+```jsx
+import React, { useState } from 'react';
+import {
+  ThemeProvider,
+  Form,
+  FormGroup,
+  FormItem,
+  Input,
+  Option,
+  Select,
+  CheckBox,
+  InputType,
+  Button,
+  MultiComboBox,
+  MultiComboBoxItem,
+  DatePicker,
+  Label
+} from '@ui5/webcomponents-react';
+//For the submits property of the button to have effect, you must add the following import
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+
+export default function RegisterForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [country, setCountry] = useState('Germany');
+  const [birthday, setBirthday] = useState('');
+  const [payment, setPayment] = useState([]);
+  const [terms, setTerms] = useState(false);
+
+  const handleSubmit = (e) => {
+    const values = {
+      email: email,
+      password: password,
+      country: country,
+      birthday: birthday,
+      payment: payment,
+      terms: terms
+    };
+    alert(JSON.stringify(values, null, 2));
+    console.log(values);
+    //prevent page reload
+    e.preventDefault();
+  };
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    setCountry(e.detail.selectedOption.innerText);
+  };
+  const handleBirthdayChange = (e) => {
+    setBirthday(e.detail.value);
+  };
+  const handlePaymentSelectionChange = (e) => {
+    const selected = [];
+    Object.entries(e.detail.items).forEach(([key, val]) => {
+      selected.push(val.text);
+    });
+    setPayment(selected);
+  };
+  const handleTermsChange = (e) => {
+    setTerms(e.target.checked);
+  };
+
+  return (
+    <ThemeProvider>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup titleText="Create Account">
+          <FormItem label={<Label required>Email</Label>}>
+            <Input name="email" required type={InputType.Email} value={email} onInput={handleEmailInput} />
+          </FormItem>
+          <FormItem label={<Label required>Password</Label>}>
+            <Input name="password" required type={InputType.Password} value={password} onInput={handlePasswordInput} />
+          </FormItem>
+          <FormItem label="Country">
+            <Select name="country" onChange={handleCountryChange}>
+              <Option>Germany</Option>
+              <Option>France</Option>
+              <Option>Italy</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="Date of Birth">
+            <DatePicker value={birthday} onChange={handleBirthdayChange}></DatePicker>
+          </FormItem>
+          <FormItem label="Payment methods">
+            <MultiComboBox onSelectionChange={handlePaymentSelectionChange}>
+              <MultiComboBoxItem text="Credit card" />
+              <MultiComboBoxItem text="PayPal" />
+              <MultiComboBoxItem text="Bank transfer" />
+            </MultiComboBox>
+          </FormItem>
+          <FormItem>
+            <CheckBox
+              required
+              name="terms"
+              text="I accept the terms of service"
+              checked={terms}
+              onChange={handleTermsChange}
+            />
+          </FormItem>
+          <FormItem>
+            <Button submits>Submit</Button>
+          </FormItem>
+        </FormGroup>
+      </Form>
+    </ThemeProvider>
+  );
+}
+```
+
+</details>
+
+Now the `RegisterForm` would compile to this:
+
+<RegisterForm />
+
+For the submits property of the `Button` to have effect, you must add the following import to your project: `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`
+
+Whenever a component has a custom event (e.g. onChange event from `DatePicker`), the corresponding value should be fetched via event.detail (not event.target). This will give you the correct updated value since the internal input has already been updated. At the time the event is fired, however, it is not yet updated and therefore event.target might also not be updated yet.
+
+By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React.js applications because it would cause you to lose the state.
+To prevent the default browser behavior, you have to use `e.preventDefault()` in the `onSubmit` event.
+
+## #2 Example with UI5 Web Components for React and Formik + Yup
+
+Input components from UI5 Web Components for React can be used with external libraries like Formik and Yup.
+Formik is an open source form library for React and React Native (https://formik.org/).
+Yup is a schema builder for runtime value parsing and validation (https://github.com/jquense/yup).
+
+Formik keeps track of your form's state and then exposes it plus a few reusable methods and event handlers (handleChange, handleBlur, and handleSubmit) to your form via props
+It comes with a few extra components to make life easier and less verbose like `<Formik>`, `<Form>`, `<Field>`, and `<ErrorMessage>`.
+Another option is to utilize `useFormik()`. This is a custom React hook that will return all Formik state and helpers directly.
+Formik uses `useFormik()` to create the `<Formik>` component.
+
+Also Formik has a special config option for Yup called `validationSchema`.
+
+To inject an input component from UI5 Web Components for React the `Field` component has a prop called `as`.
+This can either be a React component or the name of an HTML element to render. Formik will automagically inject onChange, onBlur, name, and value props of the field designated by the name prop to the (custom) component.
+
+```jsx
+<Field as={Input} />
+```
+
+You can find a Codesandbox that will showcase the use of the input components from UI5 Web Components for React together with Formik and Yup.
+
+[![Edit formik + wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/formik-wcr-form-bt7jd2?autoresize=1&fontsize=14&hidenavigation=1&theme=dark)
+
+Note: The onChange event from the `Input` UI5 Web Component is not the same as the native onChange event of React. If you want to simulate that behavior, please use onInput instead.
+
+```jsx
+<Field as={Input} name="email" type={InputType.Email} onInput={formik.handleChange} />
+```
+
+<Footer />
