@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { useEffect } from 'react';
+import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
 
 const getParentIndicesRecursive = (rowId) => {
   const parentIndices = {};

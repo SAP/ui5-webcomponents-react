@@ -37,7 +37,9 @@ export const serverCustom = (apiUrl, data) => {
 };
 
 // re-export everything
+// eslint-disable-next-line import/export
 export * from '@testing-library/react';
 
 // override render method
+// eslint-disable-next-line import/export
 export { customRender as render };

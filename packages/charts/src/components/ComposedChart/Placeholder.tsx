@@ -1,6 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
 
 const barContentVertical = (
   <>
@@ -44,7 +45,12 @@ const lineContentHorizontal = (
   </>
 );
 
-export const ComposedChartPlaceholder = ({ layout, measures }) => {
+interface ComposedChartPlaceholderPropTypes {
+  layout: 'vertical' | 'horizontal';
+  measures: (IChartMeasure & { type: string })[];
+}
+
+export const ComposedChartPlaceholder = ({ layout, measures }: ComposedChartPlaceholderPropTypes) => {
   const distinctElements = new Set(measures.map((item) => item.type));
 
   return (

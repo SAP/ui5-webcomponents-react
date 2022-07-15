@@ -15,6 +15,7 @@ const getHeaderGroupProps = (headerGroupProps, { instance }) => {
 };
 
 const getHeaderProps = (columnProps, { instance, column }) => {
+  const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {
     width: column.totalWidth
@@ -27,7 +28,9 @@ const getHeaderProps = (columnProps, { instance, column }) => {
   ) {
     style.padding = 0;
   }
-
+  if (hasPopover) {
+    style.cursor = 'pointer';
+  }
   return [
     columnProps,
     {
@@ -43,14 +46,7 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
-  const {
-    classes,
-    selectionBehavior,
-    selectionMode,
-    alternateRowColor,
-    renderRowSubComponent,
-    alwaysShowSubComponent
-  } = webComponentsReactProperties;
+  const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
   const rowCanBeSelected =

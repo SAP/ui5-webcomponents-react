@@ -4,17 +4,9 @@ import {
   ThemingParameters,
   useI18nBundle,
   useIsomorphicLayoutEffect,
-  useIsRTL
+  useIsRTL,
+  useIsomorphicId
 } from '@ui5/webcomponents-react-base';
-import {
-  COLLAPSE_NODE,
-  COLLAPSE_PRESS_SPACE,
-  EXPAND_NODE,
-  EXPAND_PRESS_SPACE,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   ComponentType,
@@ -42,17 +34,27 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { AnalyticalTableScrollMode } from '../../enums/AnalyticalTableScrollMode';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { TableScaleWidthMode } from '../../enums/TableScaleWidthMode';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { TextAlign } from '../../enums/TextAlign';
-import { ValueState } from '../../enums/ValueState';
-import { VerticalAlign } from '../../enums/VerticalAlign';
+import {
+  AnalyticalTableScrollMode,
+  GlobalStyleClasses,
+  TableScaleWidthMode,
+  TableSelectionBehavior,
+  TableSelectionMode,
+  TableVisibleRowCountMode,
+  TextAlign,
+  ValueState,
+  VerticalAlign
+} from '../../enums';
+import {
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  INVALID_TABLE
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import styles from './AnayticalTable.jss';
@@ -66,6 +68,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
 import { usePopIn } from './hooks/usePopIn';
+import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
@@ -135,7 +138,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
    */
-  filter?: string | Function;
+  filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
   // useGlobalFilter
   /**
@@ -230,7 +233,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   disableDragAndDrop?: boolean;
 
-  // all other custom properties or [React Table](https://react-table.tanstack.com/) column options
+  // all other custom properties of [React Table](https://react-table-v7.tanstack.com/) column options
   [key: string]: any;
 }
 
@@ -342,6 +345,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   sortable?: boolean;
   /**
    * Defines whether columns are groupable.
+   *
+   * __Note:__ This prop has no effect when `isTreeTable` is true or `renderRowSubComponent` is set.
    */
   groupable?: boolean;
   /**
@@ -394,7 +399,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   globalFilterValue?: string;
   /**
-   * Additional options which will be passed to [react-table´s useTable hook](https://react-table.tanstack.com/docs/api/useTable#table-options)
+   * Additional options which will be passed to [react-table´s useTable hook](https://react-table-v7.tanstack.com/docs/api/useTable#table-options)
    */
   reactTableOptions?: Record<string, unknown>;
   /**
@@ -458,10 +463,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   onRowSelected?: (
     e?: CustomEvent<{
-      allRowsSelected?: boolean;
+      allRowsSelected: boolean;
       row?: Record<string, unknown>;
       isSelected?: boolean;
-      selectedFlatRows?: Record<string, unknown>[] | string[];
+      selectedFlatRows: Record<string, unknown>[] | string[];
     }>
   ) => void;
   /**
@@ -499,7 +504,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
 
   /**
    * Exposes the internal table instance.
-   * This object will contain all [instance properties](https://react-table.tanstack.com/docs/api/useTable#instance-properties)
+   * This object will contain all [instance properties](https://react-table-v7.tanstack.com/docs/api/useTable#instance-properties)
    * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
    * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
    *
@@ -648,6 +653,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useExpanded,
     useRowSelect,
     useResizeColumns,
+    useResizeColumnsConfig,
     useRowSelectionColumn,
     useSingleRowStateSelection,
     useRowHighlight,
@@ -1084,7 +1090,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         )}
       </div>
       <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
-        ""
+        {''}
       </Text>
     </>
   );

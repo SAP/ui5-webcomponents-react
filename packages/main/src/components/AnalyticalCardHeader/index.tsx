@@ -1,6 +1,10 @@
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
+import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react';
+import { createUseStyles } from 'react-jss';
+import { DeviationIndicator, ValueColor } from '../../enums';
 import {
   ARIA_DESC_CARD_HEADER,
   NUMERICCONTENT_DEVIATION_DOWN,
@@ -9,13 +13,8 @@ import {
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import clsx from 'clsx';
-import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react';
-import { createUseStyles } from 'react-jss';
-import { DeviationIndicator, ValueColor } from '../../enums';
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { useIsomorphicId } from '../../internal/useIsomorphicId';
 import { flattenFragments } from '../../internal/utils';
 import { Icon } from '../../webComponents';
 import styles from './AnalyticalCardHeader.jss';

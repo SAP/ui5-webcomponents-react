@@ -1,13 +1,4 @@
 import { debounce, enrichEventWithDetails, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import {
-  ADAPT_FILTERS,
-  CLEAR,
-  FILTERS,
-  GO,
-  HIDE_FILTER_BAR,
-  RESTORE,
-  SHOW_FILTER_BAR
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -25,6 +16,7 @@ import { createUseStyles } from 'react-jss';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
@@ -421,8 +413,9 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
               child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
                 prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(',')))
         ) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          const { [child.key]: omit, ...rest } = dialogRefs;
+          const { [child.key]: _omit, ...rest } = dialogRefs;
           setDialogRefs(rest);
         }
         prevChildren.current[child.key] = child.props.children.props;
@@ -582,7 +575,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   // calculates the number of spacers depending on the available width inside the row
   const renderSpacers = () => {
     if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
-      let spacers = [];
+      const spacers = [];
       const filterItemsWidth = calculatedChildren.length * firstChildWidth;
       //early return if enough space is available
       if (filterAreaWidth - filterBarButtonsWidth > filterItemsWidth) {

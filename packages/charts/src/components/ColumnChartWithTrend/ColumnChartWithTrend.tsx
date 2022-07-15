@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useRef } from 'react';
+import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -92,15 +92,6 @@ const measureDefaults = {
   opacity: 1
 };
 
-const getRandomId = () => {
-  if ('randomUUID' in crypto) {
-    // @ts-ignore
-    return crypto.randomUUID();
-  }
-  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
-  return uint32.toString(16);
-};
-
 const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
 
 type AvailableChartTypes = 'line' | 'bar' | string;
@@ -118,14 +109,13 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       onClick,
       noLegend,
       noAnimation,
-      tooltipConfig,
       onDataPointClick,
       onLegendClick,
       ChartPlaceholder,
       ...rest
     } = props;
 
-    const syncId = useRef(getRandomId()).current;
+    const syncId = useIsomorphicId();
 
     const chartConfig = {
       yAxisVisible: false,
@@ -163,7 +153,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
       }
     } as TooltipProps<any, any>;
 
-    const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
+    const { chartConfig: _0, dimensions: _1, measures: _2, tooltipConfig: _3, ...propsWithoutOmitted } = rest;
 
     return (
       <div

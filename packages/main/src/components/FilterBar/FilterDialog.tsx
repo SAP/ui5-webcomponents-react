@@ -1,5 +1,14 @@
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
+import { BarDesign } from '../../enums/BarDesign';
+import { ButtonDesign } from '../../enums/ButtonDesign';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
+import { TitleLevel } from '../../enums/TitleLevel';
 import {
   BASIC,
   CANCEL,
@@ -10,16 +19,7 @@ import {
   SAVE,
   SEARCH_FOR_FILTERS,
   SHOW_ON_FILTER_BAR
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
-import React, { Children, cloneElement, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
-import { BarDesign } from '../../enums/BarDesign';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
-import { TitleLevel } from '../../enums/TitleLevel';
+} from '../../i18n/i18n-defaults';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
@@ -186,7 +186,7 @@ export const FilterDialog = (props) => {
   const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
-    let dialogFilters = [];
+    const dialogFilters = [];
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {

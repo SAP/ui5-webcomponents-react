@@ -64,6 +64,8 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
     };
     dynamicPageFooter?: {
       role?: string;
+      'aria-label'?: string;
+      'aria-labelledby'?: string;
     };
   };
   /**
@@ -112,8 +114,10 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const anchorBarRef = useRef<HTMLDivElement>();
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
   const contentRef = useRef<HTMLDivElement>();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [componentRefTopHeader, topHeaderRef] = useSyncRef(headerTitle?.ref);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
 
@@ -303,6 +307,8 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
           style={{ position: isOverflowing ? 'sticky' : 'absolute' }}
           data-component-name="DynamicPageFooter"
           role={a11yConfig?.dynamicPageFooter?.role ?? 'contentinfo'}
+          aria-label={a11yConfig?.dynamicPageFooter?.['aria-label']}
+          aria-labelledby={a11yConfig?.dynamicPageFooter?.['aria-labelledby']}
         >
           {footer}
         </div>

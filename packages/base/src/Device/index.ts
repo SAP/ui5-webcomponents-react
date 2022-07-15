@@ -11,8 +11,6 @@ let bResize = false;
 let iOrientationTimeout;
 let iClearFlagTimeout;
 let [iWindowWidthOld, iWindowHeightOld] = getActualWindowSize();
-let bKeyboardOpen = false;
-let iLastResizeTime;
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
 
 interface IOrientation {
@@ -107,7 +105,6 @@ const handleMobileOrientationResizeChange = (evt) => {
     }
 
     const [iWindowWidthNew, iWindowHeightNew] = getActualWindowSize();
-    const iTime = new Date().getTime();
     // skip multiple resize events by only one orientationchange
     if (iWindowHeightNew === iWindowHeightOld && iWindowWidthNew === iWindowWidthOld) {
       return;
@@ -116,18 +113,10 @@ const handleMobileOrientationResizeChange = (evt) => {
     // on mobile devices opening the keyboard on some devices leads to a resize event
     // in this case only the height changes, not the width
     if (iWindowHeightOld !== iWindowHeightNew && iWindowWidthOld === iWindowWidthNew) {
-      // Asus Transformer tablet fires two resize events when orientation changes while keyboard is open.
-      // Between these two events, only the height changes. The check of if keyboard is open has to be skipped because
-      // it may be judged as keyboard closed but the keyboard is still
-      // open which will affect the orientation detection
-      if (!iLastResizeTime || iTime - iLastResizeTime > 300) {
-        bKeyboardOpen = iWindowHeightNew < iWindowHeightOld;
-      }
       handleResizeChange();
     } else {
       iWindowWidthOld = iWindowWidthNew;
     }
-    iLastResizeTime = iTime;
     iWindowHeightOld = iWindowHeightNew;
 
     if (iClearFlagTimeout) {
