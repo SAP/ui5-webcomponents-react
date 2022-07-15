@@ -13,11 +13,11 @@ const useStyles = createUseStyles({
   strip: { marginBottom: '10px' }
 });
 
-interface ArgsTableWithNoteProptypes {
+interface ArgsTableWithNotePropTypes {
   hideHTMLPropsNote?: boolean;
 }
 
-export const ArgsTableWithNote = (args: ArgsTableWithNoteProptypes & React.ComponentProps<typeof ArgsTable>) => {
+export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & React.ComponentProps<typeof ArgsTable>) => {
   const { hideHTMLPropsNote, ...rest } = args;
   const classes = useStyles();
   if (hideHTMLPropsNote) {
