@@ -926,7 +926,7 @@ The prop expects a function with an optional parameter containing the `row` inst
 
 **Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
 
-<ArgsTableWithNote story="with subcomponents" />
+<ArgsTableWithNote story="with subcomponents" hideHTMLPropsNote />
 
 <Canvas withSource="none">
   <Story
@@ -981,7 +981,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       tableInstance: { table: { disable: true } },
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
-      portalContainer: { table: { disable: true } }
+      portalContainer: { table: { disable: true } },
+      showOverlay: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -1106,7 +1107,7 @@ const TableWithSubcomponents = (props) => {
 
 By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
 
-<ArgsTableWithNote story="Adjust number of rows to container height" />
+<ArgsTableWithNote story="Adjust number of rows to container height" hideHTMLPropsNote />
 
 <Canvas withSource="none">
   <Story
@@ -1164,6 +1165,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       portalContainer: { table: { disable: true } },
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
+      showOverlay: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -1191,7 +1193,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
 
 ## Responsively display columns on small devices (Pop-In)
 
-<ArgsTableWithNote story="Responsive columns" />
+<ArgsTableWithNote story="Responsive columns" hideHTMLPropsNote />
 
 To responsively hide columns or move content to the first column, you can add the `responsiveMinWidth` column option. If
 you want the column to "pop-in" the `responsivePopIn` has to be set to `true`, otherwise the column will be hidden when the
@@ -1306,6 +1308,7 @@ In the example below you can have a look at this behavior:
       tableInstance: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
+      showOverlay: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
