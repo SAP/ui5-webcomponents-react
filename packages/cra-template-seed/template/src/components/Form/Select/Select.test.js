@@ -7,7 +7,7 @@ import Select from '../Select/Select';
 const descrOptions = [
   { id: 'LOW', text: 'Low' },
   { id: 'MEDIUM', text: 'Medium' },
-  { id: 'HIGH', text: 'High' },
+  { id: 'HIGH', text: 'High' }
 ];
 
 describe('Select.js Test Suite', () => {
@@ -19,7 +19,7 @@ describe('Select.js Test Suite', () => {
         options={descrOptions}
         field={{ name: 'description' }}
         form={{ touched: { name: 'description' }, errors: { name: 'description' } }}
-      />,
+      />
     );
 
     const fieldbase = screen.getByTestId('fieldbase-wrapper');
@@ -37,7 +37,7 @@ describe('Select.js Test Suite', () => {
         options={descrOptions}
         field={{ name: 'description', value: 'MEDIUM' }}
         form={{ touched: { name: 'description' }, errors: { name: 'description' } }}
-      />,
+      />
     );
 
     const component = screen.getByTestId('select-wrapper');

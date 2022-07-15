@@ -10,7 +10,7 @@ const NavBack = ({
   text = i18n.t('components.navback.text'),
   icon = 'nav-back',
   design = ButtonDesign.Transparent,
-  disabled = false,
+  disabled = false
 }) => {
   const navigate = useNavigate();
 
@@ -34,5 +34,5 @@ const NavBack = ({
 export default NavBack;
 
 export const NavBackIcon = {
-  NONE: '',
+  NONE: ''
 };

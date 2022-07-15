@@ -7,7 +7,7 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
   const GET_USER_LOGGED_RESPONSE = {
     id: 'UG9rZW1vbjowMDE=',
     name: 'testeeeeeeeeeeeeeeeee',
-    permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
+    permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication']
   };
 
   const server = serverCustom('/v1/user/logged', GET_USER_LOGGED_RESPONSE);
@@ -26,7 +26,7 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
       >
         <p>{childText}</p>
       </ComponentWithAuthorizationRestriction>,
-      { route: '/todo/all' },
+      { route: '/todo/all' }
     );
     const child = await waitFor(() => screen.getByText(childText));
 
@@ -43,7 +43,7 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
       >
         <p>{childText}</p>
       </ComponentWithAuthorizationRestriction>,
-      { route: '/todo/all' },
+      { route: '/todo/all' }
     );
     const child = screen.queryByAltText(childText);
 

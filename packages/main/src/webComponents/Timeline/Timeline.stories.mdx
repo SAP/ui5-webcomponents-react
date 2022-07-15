@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Timeline } from './index';
 import { TimelineItem } from '../TimelineItem';
 import { DocsHeader } from '@docs/DocsHeader';
@@ -39,7 +40,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="Default" />
 
 <br />
 
@@ -92,6 +93,6 @@ An entry posted on the timeline
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable TimelineItem" />
+<ArgsTableWithNote story="with customizable TimelineItem" />
 
 <Footer />

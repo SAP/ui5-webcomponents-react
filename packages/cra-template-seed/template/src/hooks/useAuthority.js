@@ -9,7 +9,7 @@ export const useHasAccess = (allowedAuthorities, authorityKey) => {
       const result = await Request.get('/v1/user/logged');
       return result.data;
     },
-    null,
+    null
   );
 
   if (isLoading) {

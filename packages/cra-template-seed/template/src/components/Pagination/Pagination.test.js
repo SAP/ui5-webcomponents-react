@@ -7,19 +7,19 @@ import { Pagination } from './Pagination';
 const fourButtonsPagination = {
   numberOfElements: 11,
   totalPages: 2,
-  number: 0,
+  number: 0
 };
 
 const fourButtonsSelectedAtLastPagination = {
   numberOfElements: 11,
   totalPages: 2,
-  number: 1,
+  number: 1
 };
 
 const sixButtonsPagination = {
   numberOfElements: 61,
   totalPages: 7,
-  number: 3,
+  number: 3
 };
 
 describe('Pagination.js Test Suite', () => {
@@ -29,7 +29,7 @@ describe('Pagination.js Test Suite', () => {
         numberOfElements={sixButtonsPagination.numberOfElements}
         totalPages={sixButtonsPagination.totalPages}
         selectedPage={sixButtonsPagination.number}
-      />,
+      />
     );
   });
 
@@ -72,7 +72,7 @@ describe('Pagination.js Test Suite', () => {
         totalPages={sixButtonsPagination.totalPages}
         selectedPage={sixButtonsPagination.number}
         setPage={(params) => setSelectedPageCount(params)}
-      />,
+      />
     );
     const pagination = screen.getAllByTestId('pagination-wrapper')[1];
     const afterArrow = screen.getAllByTestId('afterarrow-pagination-wrapper')[1];
@@ -94,7 +94,7 @@ describe('Pagination.js Test Suite', () => {
         totalPages={sixButtonsPagination.totalPages}
         selectedPage={sixButtonsPagination.number}
         setPage={(params) => setSelectedPageCount(params)}
-      />,
+      />
     );
     const pagination = screen.getAllByTestId('pagination-wrapper')[1];
     const leftArrow = screen.getAllByTestId('leftarrow-pagination-wrapper')[1];
@@ -111,7 +111,7 @@ describe('Pagination.js Test Suite', () => {
         numberOfElements={fourButtonsPagination.numberOfElements}
         totalPages={fourButtonsPagination.totalPages}
         selectedPage={fourButtonsPagination.number}
-      />,
+      />
     );
 
     const pagination = screen.getAllByTestId('pagination-wrapper')[1];
@@ -127,7 +127,7 @@ describe('Pagination.js Test Suite', () => {
         numberOfElements={fourButtonsSelectedAtLastPagination.numberOfElements}
         totalPages={fourButtonsSelectedAtLastPagination.totalPages}
         selectedPage={fourButtonsSelectedAtLastPagination.number}
-      />,
+      />
     );
 
     const afterarrow = screen.getAllByTestId('afterarrow-pagination-wrapper')[1];

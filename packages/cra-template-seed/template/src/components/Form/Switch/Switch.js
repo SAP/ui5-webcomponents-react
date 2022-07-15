@@ -5,8 +5,8 @@ import FieldBase from '../FieldBase/FieldBase';
 
 const style = {
   switch: {
-    width: 'min-content',
-  },
+    width: 'min-content'
+  }
 };
 
 const Switch = ({ field, form: { values, setFieldValue }, labelText, ...props }) => {

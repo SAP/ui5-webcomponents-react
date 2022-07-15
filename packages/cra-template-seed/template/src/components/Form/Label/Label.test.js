@@ -9,7 +9,7 @@ describe('Label.js Test Suite', () => {
     render(
       <Label>
         <p data-testid="inner-text-wrapper">inner text</p>
-      </Label>,
+      </Label>
     );
 
     const component = screen.getByTestId('label-wrapper');

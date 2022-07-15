@@ -6,18 +6,18 @@ import {
   FlexBoxJustifyContent,
   Icon,
   List,
-  Text,
+  Text
 } from '@ui5/webcomponents-react';
 import { spacing } from '@ui5/webcomponents-react-base';
 import PopoverInfo from '../Info/PopoverInfo';
 
 const style = {
   flexbox: {
-    width: '100%',
+    width: '100%'
   },
   popover: {
-    width: '35%',
-  },
+    width: '35%'
+  }
 };
 
 const PopoverListItems = ({ popoverRef, title, items }) => {

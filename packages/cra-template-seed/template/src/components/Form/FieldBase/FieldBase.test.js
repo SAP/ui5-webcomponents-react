@@ -9,7 +9,7 @@ describe('FieldBase.js Test Suite', () => {
     render(
       <FieldBase labelText="Text Content">
         <p data-testid="inner-component-wrapper">Some Inner Text</p>
-      </FieldBase>,
+      </FieldBase>
     );
   });
 
