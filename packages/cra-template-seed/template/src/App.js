@@ -13,9 +13,9 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 1000 * 60, // 5 minutes
-      cacheTime: Infinity, // do not delete stale data
-    },
-  },
+      cacheTime: Infinity // do not delete stale data
+    }
+  }
 });
 
 const App = () => {

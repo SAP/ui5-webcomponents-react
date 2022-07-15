@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ShellBar } from './index';
 import { ShellBarItem } from '../ShellBarItem';
 import { Avatar } from '../Avatar';
@@ -64,7 +65,7 @@ import image from '../../../../../.storybook/demoImages/Person.png';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Description />
 
@@ -131,7 +132,7 @@ This component exposes public methods. You can invoke them directly on the insta
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable ShellBarItem" />
+<ArgsTableWithNote story="with customizable ShellBarItem" />
 
 ### Recipe: How to open a popover on ShellBarItem click?
 

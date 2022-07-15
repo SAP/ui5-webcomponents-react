@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/download.js';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
@@ -61,7 +62,7 @@ import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="Default" />
 
 ## Prevent event bubbling of Toolbar items
 
@@ -168,7 +169,7 @@ line.
 If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.<br/>
 **Note:** You can change the width of the toolbar by dragging the `width` slider in the table below.
 
-<ArgsTable story="With overflow button" />
+<ArgsTableWithNote story="With overflow button" />
 
 <Canvas>
   <Story

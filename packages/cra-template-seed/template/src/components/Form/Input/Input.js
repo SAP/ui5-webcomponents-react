@@ -10,7 +10,7 @@ const Input = ({ field, form: { touched, errors }, labelText, style, ...props })
   const innerStyle = {
     ...style,
     ...spacing.sapUiTinyMarginBottom,
-    width: '100%',
+    width: '100%'
   };
 
   const { onChange, onBlur, ...formikProps } = field;

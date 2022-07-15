@@ -11,7 +11,7 @@ const Select = ({ field, options, labelText, form: { touched, errors, setFieldVa
   const innerStyle = {
     ...style,
     ...spacing.sapUiTinyMarginBottom,
-    width: '100%',
+    width: '100%'
   };
 
   return (

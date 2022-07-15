@@ -13,11 +13,11 @@ const style = {
   shell: {
     position: 'fixed',
     width: '100%',
-    zIndex: 100,
+    zIndex: 100
   },
   emptySpace: {
-    paddingTop: 'var(--_ui5_shellbar_root_height)',
-  },
+    paddingTop: 'var(--_ui5_shellbar_root_height)'
+  }
 };
 
 const Shell = ({ title, ...props }) => {
@@ -29,15 +29,15 @@ const Shell = ({ title, ...props }) => {
       {
         description: t('shell.button.user.settings.item.languageSwitch'),
         icon: 'user-settings',
-        children: <LanguageSwitch />,
+        children: <LanguageSwitch />
       },
       {
         description: t('shell.button.user.settings.item.themeSwitch'),
         icon: 'customize',
-        children: <ThemeSwitch />,
-      },
+        children: <ThemeSwitch />
+      }
     ],
-    [t],
+    [t]
   );
 
   return (

@@ -8,21 +8,21 @@ import {
   FlexBoxJustifyContent,
   Link,
   Title,
-  TitleLevel,
+  TitleLevel
 } from '@ui5/webcomponents-react';
 
 import { ROUTES } from '../../routes/Routes';
 
 const style = {
   wrapper: {
-    width: '100%',
+    width: '100%'
   },
   image: {
-    width: '30%',
+    width: '30%'
   },
   reloadButton: {
-    cursor: 'pointer',
-  },
+    cursor: 'pointer'
+  }
 };
 
 const Fallback = ({ image, altImage, text, reload }) => {

@@ -10,7 +10,7 @@ export const Pagination = ({
   totalPages,
   selectedPage,
   setPage,
-  style = spacing.sapUiMediumMargin,
+  style = spacing.sapUiMediumMargin
 }) => {
   if (!numberOfElements) return null;
 
@@ -128,5 +128,5 @@ Pagination.propTypes = {
   totalItems: PropTypes.number,
   totalPages: PropTypes.number,
   selectedPage: PropTypes.number,
-  setPage: PropTypes.func,
+  setPage: PropTypes.func
 };

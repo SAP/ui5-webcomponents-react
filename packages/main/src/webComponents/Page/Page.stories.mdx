@@ -1,7 +1,8 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './PageDescription.md';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { BarDesign, ButtonDesign } from '../../enums';
 import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
 import { Bar } from '../Bar';
@@ -60,7 +61,7 @@ import { DefaultStory } from './Page.stories';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Description />
 
