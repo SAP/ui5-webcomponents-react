@@ -924,14 +924,15 @@ describe('AnalyticalTable', () => {
     const firstBodyRow = getAllByRole('row')[1];
     fireEvent.click(firstBodyRow);
 
-    expect(callback).toBeCalled();
-
-    const selectionColumn = firstBodyRow.querySelector('[data-name="internal_selection_column"]');
-    fireEvent.click(selectionColumn);
     expect(callback).toBeCalledTimes(1);
 
-    fireEvent.click(getByText('Fra'));
+    const selectionColumn = firstBodyRow.querySelector('[data-selection-cell="true"]');
+
+    fireEvent.click(selectionColumn);
     expect(callback).toBeCalledTimes(2);
+
+    fireEvent.click(getByText('Fra'));
+    expect(callback).toBeCalledTimes(3);
   });
 
   test('RTL: pop-in columns: w/ pop-ins & hidden column', () => {

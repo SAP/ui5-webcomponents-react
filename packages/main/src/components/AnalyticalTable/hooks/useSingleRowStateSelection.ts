@@ -4,7 +4,8 @@ import { TableSelectionMode } from '../../../enums/TableSelectionMode';
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, flatRows } = instance;
-  const handleRowSelect = (e, selectionCellClick = false) => {
+  const handleRowSelect = (e) => {
+    const isSelectionCell = e.target.dataset.selectionCell === 'true';
     if (
       e.target?.dataset?.name !== 'internal_selection_column' &&
       !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
@@ -13,13 +14,13 @@ const getRowProps = (rowProps, { row, instance }) => {
       return;
     }
 
-    // dont select empty rows
+    // don't select empty rows
     const isEmptyRow = row.original?.emptyRow;
     if (isEmptyRow) {
       return;
     }
 
-    // dont select grouped rows
+    // don't select grouped rows
     if (row.isGrouped) {
       return;
     }
@@ -34,8 +35,8 @@ const getRowProps = (rowProps, { row, instance }) => {
       return;
     }
 
-    // dont continue if the row was clicked and selection mode is row selector only
-    if (selectionBehavior === TableSelectionBehavior.RowSelector && !selectionCellClick) {
+    // don't continue if the row was clicked and selection mode is row selector only
+    if (selectionBehavior === TableSelectionBehavior.RowSelector && !isSelectionCell) {
       return;
     }
 
@@ -57,14 +58,9 @@ const getRowProps = (rowProps, { row, instance }) => {
         allRowsSelected: false
       };
       if (selectionMode === TableSelectionMode.MultiSelect) {
-        const isRowSelected = selectionCellClick ? row.isSelected : !row.isSelected;
-        if (selectionCellClick) {
-          payload.isSelected = row.isSelected;
-        }
-        payload.selectedFlatRows = isRowSelected
+        payload.selectedFlatRows = !row.isSelected
           ? [...selectedFlatRows, row]
           : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
-
         if (payload.selectedFlatRows.length === flatRows.length) {
           payload.allRowsSelected = true;
         }
@@ -76,12 +72,12 @@ const getRowProps = (rowProps, { row, instance }) => {
   return [
     rowProps,
     {
-      onKeyDown: (e, selectionCellClick = false) => {
+      onKeyDown: (e) => {
         if (e.key === 'Enter' || e.code === 'Space') {
           if (!webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
             e.preventDefault();
           }
-          handleRowSelect(e, selectionCellClick || e.target.dataset.selectionCell === 'true');
+          handleRowSelect(e);
         }
       },
       onClick: handleRowSelect
