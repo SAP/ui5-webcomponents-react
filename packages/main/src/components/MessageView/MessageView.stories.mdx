@@ -21,7 +21,6 @@ import { MessageView } from './index';
 
 <Meta
   title="User Feedback / MessageView"
-  component={MessageView}
   subcomponents={{ MessageItem }}
   args={{
     showDetailsPageHeader: true,
@@ -73,7 +72,12 @@ import { MessageView } from './index';
     ]
   }}
   argTypes={{
+    showDetailsPageHeader: { description: 'Defines whether the header of the details page will be shown.' },
+    groupItems: { description: 'Defines whether the messages are grouped or not.' },
+    onItemSelect: { description: 'Event is fired when the details of a message are shown.', action: 'onItemSelect' },
     children: {
+      description: `A list with message items. If only one item is provided, the initial page will be the details page for the item.\n\n
+**Note:** Although this prop accepts all HTML Elements, it is strongly recommended that you only use \`Message\` in order to preserve the intended design.`,
       control: { disable: true }
     }
   }}
