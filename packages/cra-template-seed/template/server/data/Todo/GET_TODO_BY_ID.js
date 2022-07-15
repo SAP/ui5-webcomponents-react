@@ -6,7 +6,7 @@ module.exports = {
       name: 'Task 1',
       completed: true,
       priority: 'HIGH',
-      type: 'PERSONAL',
-    },
-  },
+      type: 'PERSONAL'
+    }
+  }
 };

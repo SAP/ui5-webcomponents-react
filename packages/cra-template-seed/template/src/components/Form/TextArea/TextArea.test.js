@@ -12,7 +12,7 @@ describe('TextArea.js Test Suite', () => {
         name="description"
         field={{ name: 'description' }}
         form={{ touched: { name: 'description' }, errors: { name: 'description' } }}
-      />,
+      />
     );
 
     const fieldbase = screen.getByTestId('fieldbase-wrapper');

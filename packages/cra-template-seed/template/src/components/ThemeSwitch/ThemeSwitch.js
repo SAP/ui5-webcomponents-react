@@ -7,8 +7,8 @@ import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 
 const style = {
   select: {
-    width: '100%',
-  },
+    width: '100%'
+  }
 };
 
 const themeOptions = [
@@ -16,7 +16,7 @@ const themeOptions = [
   { value: 'sap_fiori_3_dark', title: 'shell.button.user.settings.item.themeSwitch.option.dark' },
   { value: 'sap_belize', title: 'shell.button.user.settings.item.themeSwitch.option.belize' },
   { value: 'sap_fiori_3_hcb', title: 'shell.button.user.settings.item.themeSwitch.option.highContrastBlack' },
-  { value: 'sap_fiori_3_hcw', title: 'shell.button.user.settings.item.themeSwitch.option.highContrastWhite' },
+  { value: 'sap_fiori_3_hcw', title: 'shell.button.user.settings.item.themeSwitch.option.highContrastWhite' }
 ];
 
 const ThemeSwitch = () => {

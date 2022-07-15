@@ -10,7 +10,7 @@ import {
   InputType,
   Title,
   TitleLevel,
-  SwitchDesign,
+  SwitchDesign
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/paper-plane.js';
 
@@ -23,20 +23,20 @@ import NavBack, { NavBackIcon } from '../../../components/NavBack/NavBack';
 
 const style = {
   putWrapperUp: {
-    marginTop: '-50px',
-  },
+    marginTop: '-50px'
+  }
 };
 
 const typeOptions = [
   { id: 'WORK', text: 'Work' },
   { id: 'PERSONAL', text: 'Personal' },
-  { id: 'SCHOOL', text: 'School' },
+  { id: 'SCHOOL', text: 'School' }
 ];
 
 const priorityOptions = [
   { id: 'LOW', text: 'Low' },
   { id: 'MEDIUM', text: 'Medium' },
-  { id: 'HIGH', text: 'High' },
+  { id: 'HIGH', text: 'High' }
 ];
 
 const TodoEditForm = ({ data, onSubmitHandler }) => {

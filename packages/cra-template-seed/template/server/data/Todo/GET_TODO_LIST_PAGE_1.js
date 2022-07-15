@@ -4,8 +4,8 @@ module.exports = {
       id: '5Uxfhxka1Zga1o1DE=',
       description: '011',
       name: 'Task 11',
-      completed: false,
-    },
+      completed: false
+    }
   ],
   pageable: {
     sort: { sorted: true, unsorted: false, empty: false },
@@ -13,7 +13,7 @@ module.exports = {
     pageNumber: 1,
     pageSize: 10,
     unpaged: false,
-    paged: true,
+    paged: true
   },
   totalPages: 2,
   last: true,
@@ -23,5 +23,5 @@ module.exports = {
   sort: { sorted: true, unsorted: false, empty: false },
   numberOfElements: 1,
   first: false,
-  empty: false,
+  empty: false
 };

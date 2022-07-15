@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Tree } from './index';
 import { BusyIndicator } from '../BusyIndicator';
 import { TreeItem } from '../TreeItem';
@@ -63,7 +64,7 @@ import { useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Description />
 
@@ -133,7 +134,7 @@ tree items.
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable TreeItem" />
+<ArgsTableWithNote story="with customizable TreeItem" />
 
 <br />
 

@@ -1,4 +1,5 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { {{name}} } from './index';
 {{#each imports}}
 {{{this}}}
@@ -45,7 +46,7 @@ import Description from './{{name}}Description.md';
 
 ## Properties
 
-<ArgsTable story="."/>
+<ArgsTableWithNote story="."/>
 
 {{#if hasDescription}}
 <Description />

@@ -6,7 +6,7 @@ jest.mock('./Request');
 const GET_USER_LOGGED_RESPONSE = {
   id: 'UG9rZW1vbjowMDE=',
   name: 'testeeeeeeeeeeeeeeeee',
-  permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication'],
+  permissions: ['canAccessTodoListPage', 'canAccessTodoEditPage', 'canAccessDropApplication']
 };
 
 const requestUrl = '/v1/user/logged';
