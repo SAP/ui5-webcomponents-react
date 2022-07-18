@@ -6,8 +6,8 @@ exports[`Analytical Card Render without Crashing 1`] = `
     ui5-card=""
   >
     <div
-      aria-role="group"
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
@@ -82,8 +82,8 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
       </div>
     </div>
     <div
-      aria-role="group"
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
@@ -104,8 +104,8 @@ exports[`Analytical Card with custom header 1`] = `
       I'm a header!
     </div>
     <div
-      aria-role="group"
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
