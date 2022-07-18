@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { LineChart } from '@ui5/webcomponents-react-charts';
 import { DeviationIndicator, ValueColor } from '../../enums';
@@ -88,7 +89,7 @@ import { AnalyticalCard } from './index';
 
 ## Properties
 
-<ArgsTable story="^" />
+<ArgsTableWithNote story="^" />
 
 <br />
 <br />
@@ -196,6 +197,6 @@ Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></l
   </Story>
 </Canvas>
 
-<ArgsTable story="Customizable header" />
+<ArgsTableWithNote story="Customizable header" />
 
 <Footer />

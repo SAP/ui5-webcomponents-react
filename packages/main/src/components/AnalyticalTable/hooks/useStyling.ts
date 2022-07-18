@@ -15,6 +15,7 @@ const getHeaderGroupProps = (headerGroupProps, { instance }) => {
 };
 
 const getHeaderProps = (columnProps, { instance, column }) => {
+  const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {
     width: column.totalWidth
@@ -27,7 +28,9 @@ const getHeaderProps = (columnProps, { instance, column }) => {
   ) {
     style.padding = 0;
   }
-
+  if (hasPopover) {
+    style.cursor = 'pointer';
+  }
   return [
     columnProps,
     {

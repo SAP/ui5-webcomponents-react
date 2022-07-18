@@ -6,8 +6,8 @@ import i18n, { getSupportedLanguageResources } from '../../util/i18n';
 
 const style = {
   select: {
-    width: '100%',
-  },
+    width: '100%'
+  }
 };
 
 const LanguageSwitch = () => {

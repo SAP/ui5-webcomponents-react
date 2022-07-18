@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Input } from './index';
 import { InputType } from '../../enums/InputType';
 import { ValueState } from '../../enums/ValueState';
@@ -44,7 +45,7 @@ import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Description />
 
@@ -80,6 +81,6 @@ and the `showSuggestions` prop is set to `true`.
   </Story>
 </Canvas>
 
-<ArgsTable of={SuggestionItem} story="with SuggestionItem" />
+<ArgsTableWithNote of={SuggestionItem} story="with SuggestionItem" />
 
 <Footer />

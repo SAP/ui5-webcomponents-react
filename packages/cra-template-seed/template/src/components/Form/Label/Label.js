@@ -7,7 +7,7 @@ const Label = ({ style, ...props }) => {
   const innerStyle = {
     ...style,
     ...spacing.sapUiTinyMarginBottom,
-    lineHeight: '20px',
+    lineHeight: '20px'
   };
 
   return (

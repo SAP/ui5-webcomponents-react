@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MessageBoxTypes } from '../../enums';
 import { Bar, Button, Dialog, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
 import { MessageBox } from '../MessageBox';
@@ -84,7 +85,7 @@ The `showDialog` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `Dialog`.                           |
 
 <Panel header={<h4 className="noMargin">Dialog Props</h4>} collapsed>
-  <ArgsTable components={{ Dialog }} exclude={['open', 'ref']} />
+  <ArgsTableWithNote components={{ Dialog }} exclude={['open', 'ref']} />
 </Panel>
 
 ## Popover
@@ -141,7 +142,7 @@ The `showPopover` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `Popover`.                       |
 
 <Panel header={<h4 className="noMargin">Popover Props</h4>} collapsed>
-  <ArgsTable components={{ Popover }} exclude={['open', 'ref']} />
+  <ArgsTableWithNote components={{ Popover }} exclude={['open', 'ref']} />
 </Panel>
 
 ## ResponsivePopover
@@ -198,7 +199,7 @@ The `showResponsivePopover` method returns an object with the following properti
 | `close()` | Convenience Method for closing the `ResponsivePopover`.                       |
 
 <Panel header={<h4 className="noMargin">ResponsivePopover Props</h4>} collapsed>
-  <ArgsTable components={{ ResponsivePopover }} exclude={['open', 'ref']} />
+  <ArgsTableWithNote components={{ ResponsivePopover }} exclude={['open', 'ref']} />
 </Panel>
 
 ## MessageBox
@@ -253,7 +254,7 @@ The `showMessageBox` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `MessageBox`.                       |
 
 <Panel header={<h4 className="noMargin">MessageBox Props</h4>} collapsed>
-  <ArgsTable components={{ MessageBox }} exclude={['open', 'ref']} />
+  <ArgsTableWithNote components={{ MessageBox }} exclude={['open', 'ref']} />
 </Panel>
 
 ## Toast
@@ -307,7 +308,7 @@ The`showToast` method returns an object with the following properties:
 | `ref`    | React `RefObject` which can be used to interact with the `Toast`. |
 
 <Panel header={<h4 className="noMargin">Toast Props </h4>} collapsed>
-  <ArgsTable components={{ Toast }} exclude={['ref']} />
+  <ArgsTableWithNote components={{ Toast }} exclude={['ref']} />
 </Panel>
 
 <br />

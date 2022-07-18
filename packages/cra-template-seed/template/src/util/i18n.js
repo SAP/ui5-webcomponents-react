@@ -10,13 +10,13 @@ const SUPPORTED_LANGUAGES = {
   en: {
     translation: translationEN,
     code: 'en-US',
-    textKey: 'shell.button.user.settings.item.languageSwitch.en',
+    textKey: 'shell.button.user.settings.item.languageSwitch.en'
   },
   pt: {
     translation: translationPT,
     code: 'pt',
-    textKey: 'shell.button.user.settings.item.languageSwitch.pt',
-  },
+    textKey: 'shell.button.user.settings.item.languageSwitch.pt'
+  }
 };
 
 export const getSupportedLanguageResources = () => {
@@ -34,13 +34,13 @@ i18n
     debug: true,
     keySeparator: false,
     interpolation: {
-      escapeValue: false,
+      escapeValue: false
     },
     resources: SUPPORTED_LANGUAGES,
     react: {
-      useSuspense: false,
+      useSuspense: false
     },
-    fallbackLng: 'en',
+    fallbackLng: 'en'
   });
 
 export default i18n;

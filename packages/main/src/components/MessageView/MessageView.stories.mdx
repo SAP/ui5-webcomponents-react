@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/activate.js';
 import {
   Bar,
@@ -21,7 +22,6 @@ import { MessageView } from './index';
 
 <Meta
   title="User Feedback / MessageView"
-  component={MessageView}
   subcomponents={{ MessageItem }}
   args={{
     showDetailsPageHeader: true,
@@ -73,7 +73,12 @@ import { MessageView } from './index';
     ]
   }}
   argTypes={{
+    showDetailsPageHeader: { description: 'Defines whether the header of the details page will be shown.' },
+    groupItems: { description: 'Defines whether the messages are grouped or not.' },
+    onItemSelect: { description: 'Event is fired when the details of a message are shown.', action: 'onItemSelect' },
     children: {
+      description: `A list with message items. If only one item is provided, the initial page will be the details page for the item.\n\n
+**Note:** Although this prop accepts all HTML Elements, it is strongly recommended that you only use \`Message\` in order to preserve the intended design.`,
       control: { disable: true }
     }
   }}
@@ -95,7 +100,7 @@ import { MessageView } from './index';
 
 ## Properties
 
-<ArgsTable story="^" />
+<ArgsTableWithNote story="^" />
 
 <br />
 

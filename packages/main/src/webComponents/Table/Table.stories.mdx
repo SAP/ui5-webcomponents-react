@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Table } from './index';
 import { TableColumn } from '../TableColumn';
 import { TableRow } from '../TableRow';
@@ -95,7 +96,7 @@ import { useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Description />
 
@@ -205,7 +206,7 @@ The `TableColumn` component allows defining column specific properties that are 
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable TableColumn" />
+<ArgsTableWithNote story="with customizable TableColumn" />
 
 ## Growing Table
 

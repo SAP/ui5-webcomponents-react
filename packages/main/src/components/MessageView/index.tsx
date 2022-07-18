@@ -51,7 +51,7 @@ export interface MessageViewPropTypes extends CommonProps {
   groupItems?: boolean;
 
   /**
-   * Defines whether the header of details page will be shown.
+   * Defines whether the header of the details page will be shown.
    */
   showDetailsPageHeader?: boolean;
 
@@ -63,7 +63,7 @@ export interface MessageViewPropTypes extends CommonProps {
   children: ReactNode | ReactNode[];
 
   /**
-   * Event is fired when the details of a message are shown
+   * Event is fired when the details of a message are shown.
    */
   onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
 }

@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/document.js';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
@@ -60,7 +61,7 @@ import { UploadCollection } from './index';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="Default" />
 
 ## Handling drag and drop of files
 
@@ -165,7 +166,7 @@ export const UploadCollectionComponent = () => {
   </Story>
 </Canvas>
 
-<ArgsTable story="with UploadCollectionItem" />
+<ArgsTableWithNote story="with UploadCollectionItem" />
 
 <br />
 
