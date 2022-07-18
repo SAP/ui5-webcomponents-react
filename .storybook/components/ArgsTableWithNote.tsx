@@ -1,6 +1,6 @@
 import { ArgsTable } from '@storybook/addon-docs';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -15,10 +15,16 @@ const useStyles = createUseStyles({
 
 interface ArgsTableWithNotePropTypes {
   hideHTMLPropsNote?: boolean;
+  /**
+   * Customize the text of the note above the table.
+   *
+   * Defaults to: "This component supports all HTML attributes."
+   */
+  noteText?: ReactNode | ReactNode[];
 }
 
 export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & React.ComponentProps<typeof ArgsTable>) => {
-  const { hideHTMLPropsNote, ...rest } = args;
+  const { hideHTMLPropsNote, noteText, ...rest } = args;
   const classes = useStyles();
   if (hideHTMLPropsNote) {
     return <ArgsTable {...rest} />;
@@ -26,7 +32,7 @@ export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & React.Compo
   return (
     <div className={classes.tableContainer}>
       <MessageStrip design={MessageStripDesign.Information} hideCloseButton className={classes.strip}>
-        This component supports all HTML attributes.
+        {noteText ?? 'This component supports all HTML attributes.'}
       </MessageStrip>
       <ArgsTable {...rest} />
     </div>

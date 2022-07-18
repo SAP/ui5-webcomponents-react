@@ -61,6 +61,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
       maxDate: { table: { disable: true } },
       minDate: { table: { disable: true } },
       primaryCalendarType: { table: { disable: true } },
+      secondaryCalendarType: { table: { disable: true } },
       children: { table: { disable: true } },
       onSelectedDatesChange: { table: { disable: true } },
       style: { table: { disable: true } },
@@ -81,6 +82,9 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
   </Story>
 </Canvas>
 
-<ArgsTableWithNote story="with CalendarDate" />
+<ArgsTableWithNote
+  story="with CalendarDate"
+  noteText={`The props in the table below are part of the "CalendarDate" component.`}
+/>
 
 <Footer />

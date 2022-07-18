@@ -169,7 +169,7 @@ line.
 If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.<br/>
 **Note:** You can change the width of the toolbar by dragging the `width` slider in the table below.
 
-<ArgsTableWithNote story="With overflow button" />
+<ArgsTableWithNote story="With overflow button" hideHTMLPropsNote />
 
 <Canvas>
   <Story
@@ -191,7 +191,8 @@ If the horizontally available space isn't enough to fit all items in it, an over
       onOverflowChange: { table: { disable: true } },
       className: { table: { disable: true } },
       style: { table: { disable: true } },
-      tooltip: { table: { disable: true } }
+      tooltip: { table: { disable: true } },
+      overflowPopoverRef: { table: { disable: true } }
     }}
   >
     {(args) => {
