@@ -1,14 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import { ShellBar } from './index';
-import { ShellBarItem } from '../ShellBarItem';
-import { Avatar } from '../Avatar';
-import { StandardListItem } from '../StandardListItem';
+import { Avatar, Popover, ShellBar, ShellBarItem, StandardListItem } from '../..';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './ShellBarDescription.md';
 import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../../../../.storybook/demoImages/Person.png';
+import { useRef } from 'react';
 
 <Meta
   title="Layouts & Floorplans / ShellBar"
@@ -91,17 +89,15 @@ This component exposes public methods. You can invoke them directly on the insta
     args={{
       count: '2',
       icon: 'add',
-      stableDomRef: undefined,
       text: 'add'
     }}
     argTypes={{
       count: { description: `Defines the count displayed in the top-right corner.` },
       icon: { description: `Defines the name of the item's icon.` },
-      stableDomRef: { description: `Defines the stable selector that you can use via getStableDomRef method.` },
       text: {
         description: `Defines the item text.<br /><br />__Note:__ <code>text</code> will only be visible in mobile view.`
       },
-      onItemClick: {
+      onClick: {
         description: `Fired, when the item is pressed.<br /><br />__Note:__ To get the DOM reference of the clicked \`ShellBarItem\`, use \`event.detail.targetRef\`.`
       },
       notificationsCount: { table: { disable: true } },
@@ -121,18 +117,33 @@ This component exposes public methods. You can invoke them directly on the insta
       onMenuItemClick: { table: { disable: true } },
       onNotificationsClick: { table: { disable: true } },
       onProductSwitchClick: { table: { disable: true } },
-      onProfileClick: { table: { disable: true } }
+      onProfileClick: { table: { disable: true } },
+      className: { table: { disable: true } },
+      style: { table: { disable: true } }
     }}
   >
-    {(args) => (
-      <ShellBar>
-        <ShellBarItem {...args} />
-      </ShellBar>
-    )}
+    {(args) => {
+      const popoverRef = useRef(null);
+      const handleShellBarItemClick = (e) => {
+        args.onClick(e);
+        popoverRef.current.showAt(e.detail.targetRef);
+      };
+      return (
+        <>
+          <ShellBar>
+            <ShellBarItem {...args} onClick={handleShellBarItemClick} />
+          </ShellBar>
+          <Popover ref={popoverRef}>Hello there!</Popover>
+        </>
+      );
+    }}
   </Story>
 </Canvas>
 
-<ArgsTableWithNote story="with customizable ShellBarItem" />
+<ArgsTableWithNote
+  story="with customizable ShellBarItem"
+  noteText={`The props in the table below are part of the "ShellBarItem" component.`}
+/>
 
 ### Recipe: How to open a popover on ShellBarItem click?
 

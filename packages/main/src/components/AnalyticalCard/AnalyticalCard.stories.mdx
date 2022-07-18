@@ -139,8 +139,10 @@ Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></l
         description: 'General unit of measurement for the header. Displayed as side information to the subtitle.'
       },
       onClick: { description: 'Fired when the `AnalyticalCardHeader` header is clicked.' },
+      children: {
+        description: `Additional side number indicators. For example "Deviation" and "Target". Not more than two side indicators should be used.\n\n__Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use \`NumericSideIndicator\` in order to preserve the intended design.\n\n __This prop is not required!__`
+      },
       header: { table: { disable: true } },
-      children: { table: { disable: true } },
       ref: { table: { disable: true } }
     }}
   >
@@ -170,18 +172,10 @@ Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></l
       return (
         <AnalyticalCard
           header={
-            <AnalyticalCardHeader
-              titleText={args.titleText}
-              subtitleText={args.subtitleText}
-              trend={args.trend}
-              value={args.value}
-              state={args.state}
-              scale={args.scale}
-              onClick={args.onClick}
-              description={args.description}
-              status={args.status}
-              unitOfMeasurement={args.unitOfMeasurement}
-            />
+            <AnalyticalCardHeader {...args}>
+              <NumericSideIndicator titleText="Indicator1" number="12" />
+              <NumericSideIndicator titleText="Indicator2" number="5" />
+            </AnalyticalCardHeader>
           }
         >
           <LineChart
@@ -197,6 +191,15 @@ Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></l
   </Story>
 </Canvas>
 
-<ArgsTableWithNote story="Customizable header" />
+<ArgsTableWithNote
+  story="Customizable header"
+  noteText={
+    <>
+      {`The props in the table below are part of the "AnalyticalCardHeader" component.`}
+      <br />
+      {`This component supports all HTML attributes.`}
+    </>
+  }
+/>
 
 <Footer />
