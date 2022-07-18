@@ -138,11 +138,12 @@ Now the `RegisterForm` would compile to this:
 
 <RegisterForm />
 
-For the submits property of the `Button` to have effect, you must add the following import to your project: `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`
+For the submits property of the `Button` to have effect, you must add the following import to your project `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`.The import creates an internal native `Input` component inside the web-component,
+so that it can be submitted not only via submit button press, but also by pressing the enter key in most components. Basically, the import should enable web-components to behave like native input elements in a form.
 
 Whenever a component has a custom event (e.g. onChange event from `DatePicker`), the corresponding value should be fetched via event.detail (not event.target). This will give you the correct updated value since the internal input has already been updated. At the time the event is fired, however, it is not yet updated and therefore event.target might also not be updated yet.
 
-By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React.js applications because it would cause you to lose the state.
+By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React applications because it would cause you to lose the state.
 To prevent the default browser behavior, you have to use `e.preventDefault()` in the `onSubmit` event.
 
 ## #2 Example with UI5 Web Components for React and Formik + Yup
@@ -151,12 +152,12 @@ Input components from UI5 Web Components for React can be used with external lib
 Formik is an open source form library for React and React Native (https://formik.org/).
 Yup is a schema builder for runtime value parsing and validation (https://github.com/jquense/yup).
 
-Formik keeps track of your form's state and then exposes it plus a few reusable methods and event handlers (handleChange, handleBlur, and handleSubmit) to your form via props
-It comes with a few extra components to make life easier and less verbose like `<Formik>`, `<Form>`, `<Field>`, and `<ErrorMessage>`.
-Another option is to utilize `useFormik()`. This is a custom React hook that will return all Formik state and helpers directly.
+Formik keeps track of your form's state and then exposes it plus a few reusable methods and event handlers,handleChange, handleBlur, and handleSubmit], to your form via props
+It comes with a few extra components to make life easier and less verbose like `<Formik>`, `<Form>`, `<Field>`, and `<ErrorMessage>` ([see more](https://formik.org/docs/api/formik#props-1)).
+Another option is to utilize `useFormik()` ([see more](https://formik.org/docs/api/useFormik)). This is a custom React hook that will return all Formik state and helpers directly.
 Formik uses `useFormik()` to create the `<Formik>` component.
 
-Also Formik has a special config option for Yup called `validationSchema`.
+Also, Formik has a special config option for Yup called `validationSchema`.
 
 To inject an input component from UI5 Web Components for React the `Field` component has a prop called `as`.
 This can either be a React component or the name of an HTML element to render. Formik will automagically inject onChange, onBlur, name, and value props of the field designated by the name prop to the (custom) component.
