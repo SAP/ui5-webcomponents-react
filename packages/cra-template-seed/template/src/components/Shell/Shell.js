@@ -13,11 +13,11 @@ const style = {
   shell: {
     position: 'fixed',
     width: '100%',
-    zIndex: 100,
+    zIndex: 100
   },
   emptySpace: {
-    paddingTop: '44px',
-  },
+    paddingTop: 'var(--_ui5_shellbar_root_height)'
+  }
 };
 
 const Shell = ({ title, ...props }) => {
@@ -29,15 +29,15 @@ const Shell = ({ title, ...props }) => {
       {
         description: t('shell.button.user.settings.item.languageSwitch'),
         icon: 'user-settings',
-        children: <LanguageSwitch />,
+        children: <LanguageSwitch />
       },
       {
         description: t('shell.button.user.settings.item.themeSwitch'),
         icon: 'customize',
-        children: <ThemeSwitch />,
-      },
+        children: <ThemeSwitch />
+      }
     ],
-    [t],
+    [t]
   );
 
   return (
@@ -46,14 +46,20 @@ const Shell = ({ title, ...props }) => {
         data-testid="shell-wrapper"
         primaryTitle={title}
         style={style.shell}
-        logo={<img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
+        logo={
+          <img alt={t('shell.logo.alt')} src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />
+        }
         onLogoClick={() => navigate(ROUTES.HOME)}
         profile={<Avatar icon="customer" shape={AvatarShape.Circle} />}
         onProfileClick={(e) => popoverConfigItemsRef.current.showAt(e.detail.targetRef)}
         {...props}
       />
       <div data-testid="emptySpace-wrapper" style={style.emptySpace} />
-      <PopoverListItems popoverRef={popoverConfigItemsRef} title={t('shell.button.user.settings')} items={popoverItems} />
+      <PopoverListItems
+        popoverRef={popoverConfigItemsRef}
+        title={t('shell.button.user.settings')}
+        items={popoverItems}
+      />
     </>
   );
 };

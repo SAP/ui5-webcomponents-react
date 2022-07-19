@@ -1,4 +1,6 @@
-import { useRowDisableSelection } from './useRowDisableSelection';
 import { useIndeterminateRowSelection } from './useIndeterminateRowSelection';
+import { useManualRowSelect } from './useManualRowSelect';
+import { useOnColumnResize } from './useOnColumnResize';
+import { useRowDisableSelection } from './useRowDisableSelection';
 
-export { useRowDisableSelection, useIndeterminateRowSelection };
+export { useIndeterminateRowSelection, useManualRowSelect, useOnColumnResize, useRowDisableSelection };

@@ -1,9 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { NotificationListGroupItem } from './index';
 import { Priority } from '../../enums/Priority';
 import { NotificationAction } from '../NotificationAction';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './NotificationListGroupItemDescription.md';
 import { Fragment } from 'react';
 import { NotificationListItem } from '../NotificationListItem';
 import { Avatar } from '../Avatar';
@@ -21,15 +23,11 @@ import { AvatarSize } from '../../enums/AvatarSize';
     showClose: true,
     showCounter: true,
     titleText: 'Orders',
-    priority: Priority.None,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    priority: Priority.None
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -108,10 +106,8 @@ import { AvatarSize } from '../../enums/AvatarSize';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-The component can be used in a standard `List`.
+<Description />
 
 <Footer />

@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { deprecationNotice, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, {
   Children,
   cloneElement,
@@ -41,8 +41,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   slotProperties: string[],
   eventProperties: string[]
 ) => {
+  // displayName will be assigned in the individual files
+  // eslint-disable-next-line react/display-name
   const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
     const { className, children, waitForDefine, ...rest } = props;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
     const eventRegistry = useRef<Record<string, EventHandler>>({});

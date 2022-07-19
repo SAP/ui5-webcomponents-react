@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import { Button, ButtonDesign, FlexBox, FlexBoxAlignItems, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
 import { spacing } from '@ui5/webcomponents-react-base';
 
-export const Pagination = ({ shouldDisableAll, numberOfElements, totalPages, selectedPage, setPage, style = spacing.sapUiMediumMargin }) => {
+export const Pagination = ({
+  shouldDisableAll,
+  numberOfElements,
+  totalPages,
+  selectedPage,
+  setPage,
+  style = spacing.sapUiMediumMargin
+}) => {
   if (!numberOfElements) return null;
 
   let disablePrevious = false;
@@ -33,8 +40,18 @@ export const Pagination = ({ shouldDisableAll, numberOfElements, totalPages, sel
   };
 
   return (
-    <FlexBox data-testid="pagination-wrapper" alignItems={FlexBoxAlignItems.Start} style={style} justifyContent={FlexBoxJustifyContent.Center}>
-      <Button data-testid="leftarrow-pagination-wrapper" disabled={disablePrevious || shouldDisableAll} design={ButtonDesign.Transparent} onClick={setPreviousPage}>
+    <FlexBox
+      data-testid="pagination-wrapper"
+      alignItems={FlexBoxAlignItems.Start}
+      style={style}
+      justifyContent={FlexBoxJustifyContent.Center}
+    >
+      <Button
+        data-testid="leftarrow-pagination-wrapper"
+        disabled={disablePrevious || shouldDisableAll}
+        design={ButtonDesign.Transparent}
+        onClick={setPreviousPage}
+      >
         {'<'}
       </Button>
 
@@ -51,28 +68,56 @@ export const Pagination = ({ shouldDisableAll, numberOfElements, totalPages, sel
       )}
 
       {hasPreviousPage && (
-        <Button data-testid="previousPage-pagination-wrapper" disabled={shouldDisableAll} design={ButtonDesign.Transparent} style={spacing.sapUiTinyMarginEnd} onClick={() => setPage(previousPage)}>
+        <Button
+          data-testid="previousPage-pagination-wrapper"
+          disabled={shouldDisableAll}
+          design={ButtonDesign.Transparent}
+          style={spacing.sapUiTinyMarginEnd}
+          onClick={() => setPage(previousPage)}
+        >
           {previousPage + 1}
         </Button>
       )}
 
-      <Button data-testid="selectedPage-pagination-wrapper" disabled={shouldDisableAll} style={spacing.sapUiTinyMarginEnd} design={ButtonDesign.Emphasized}>
+      <Button
+        data-testid="selectedPage-pagination-wrapper"
+        disabled={shouldDisableAll}
+        style={spacing.sapUiTinyMarginEnd}
+        design={ButtonDesign.Emphasized}
+      >
         {selectedPage + 1}
       </Button>
 
       {hasNextPage && (
-        <Button data-testid="nextPage-pagination-wrapper" disabled={shouldDisableAll} design={ButtonDesign.Transparent} style={spacing.sapUiTinyMarginEnd} onClick={() => setPage(nextPage)}>
+        <Button
+          data-testid="nextPage-pagination-wrapper"
+          disabled={shouldDisableAll}
+          design={ButtonDesign.Transparent}
+          style={spacing.sapUiTinyMarginEnd}
+          onClick={() => setPage(nextPage)}
+        >
           {nextPage + 1}
         </Button>
       )}
 
       {hasMoreNextPages && (
-        <Button data-testid="moreNextPage-pagination-wrapper" disabled={shouldDisableAll} design={ButtonDesign.Transparent} style={spacing.sapUiTinyMarginEnd} onClick={() => setPage(moreNextPage)}>
+        <Button
+          data-testid="moreNextPage-pagination-wrapper"
+          disabled={shouldDisableAll}
+          design={ButtonDesign.Transparent}
+          style={spacing.sapUiTinyMarginEnd}
+          onClick={() => setPage(moreNextPage)}
+        >
           {moreNextPage + 1}
         </Button>
       )}
 
-      <Button data-testid="afterarrow-pagination-wrapper" disabled={disableNext || shouldDisableAll} design={ButtonDesign.Transparent} onClick={setNextPage}>
+      <Button
+        data-testid="afterarrow-pagination-wrapper"
+        disabled={disableNext || shouldDisableAll}
+        design={ButtonDesign.Transparent}
+        onClick={setNextPage}
+      >
         {'>'}
       </Button>
     </FlexBox>
@@ -83,5 +128,5 @@ Pagination.propTypes = {
   totalItems: PropTypes.number,
   totalPages: PropTypes.number,
   selectedPage: PropTypes.number,
-  setPage: PropTypes.func,
+  setPage: PropTypes.func
 };

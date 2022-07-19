@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.25.0",
+  "version": "0.26.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -18,20 +18,15 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf components dist tmp wrappers webComponents",
-    "build": "npm-run-all -s build:i18n build:tsc build:wrappers build:redirects",
+    "clean": "rimraf dist tmp wrappers",
+    "build": "npm-run-all -s build:i18n build:tsc build:wrappers",
     "build:tsc": "tsc",
     "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json && rimraf tmp",
-    "build:redirects": "node scripts/build-redirects.mjs",
-    "build:i18n": "npm-run-all -s build:i18n-bundles build:i18n-default build:i18n-imports build:assets",
-    "build:i18n-bundles": "mkdirp dist/assets/i18n && node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/toJSON.js src/i18n dist/assets/i18n",
-    "build:i18n-default": "node ../../node_modules/@ui5/webcomponents-tools/lib/i18n/defaults.js src/i18n dist/assets/i18n && tsc dist/assets/i18n/i18n-defaults.js --allowJs --declaration --emitDeclarationOnly --declarationDir dist/assets/i18n",
-    "build:i18n-imports": "mkdirp dist/json-imports && node ../../node_modules/@ui5/webcomponents-tools/lib/generate-json-imports/i18n.js dist/assets/i18n dist/json-imports/",
-    "build:assets": "node ../../scripts/generate-assets/index.js"
+    "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.25.0",
-    "clsx": "1.1.1",
+    "@ui5/webcomponents-react-base": "^0.26.2",
+    "clsx": "1.2.1",
     "lit-html": "^2.0.1",
     "react-content-loader": "6.2.0",
     "react-jss": "10.9.0",
@@ -41,12 +36,12 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.4.0",
-    "@ui5/webcomponents-base": "~1.4.0",
-    "@ui5/webcomponents-fiori": "~1.4.0",
-    "@ui5/webcomponents-icons": "~1.4.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "@ui5/webcomponents": "~1.5.0",
+    "@ui5/webcomponents-base": "~1.5.0",
+    "@ui5/webcomponents-fiori": "~1.5.0",
+    "@ui5/webcomponents-icons": "~1.5.0",
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -66,12 +61,10 @@
     "access": "public"
   },
   "files": [
-    "components",
     "dist",
-    "interfaces",
-    "webComponents",
     "wrappers",
     "CHANGELOG.md",
+    "jestSetup.js",
     "LICENSE",
     "NOTICE.txt",
     "README.md"

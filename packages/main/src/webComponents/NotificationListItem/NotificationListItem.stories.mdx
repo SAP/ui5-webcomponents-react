@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { NotificationListItem } from './index';
 import { Avatar } from '../Avatar';
 import { AvatarColorScheme } from '../../enums/AvatarColorScheme';
@@ -11,6 +12,7 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { WrappingType } from '../../enums/WrappingType';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './NotificationListItemDescription.md';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
@@ -29,14 +31,11 @@ import '@ui5/webcomponents-icons/dist/employee.js';
     priority: Priority.None,
     children:
       'And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.',
-    style: { width: '600px' },
-    className: '',
-    slot: '',
-    ref: null
+    style: { width: '600px' }
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -67,13 +66,9 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-The component can be used in a standard `List`.
-
-<br />
+<Description />
 
 # More Examples
 

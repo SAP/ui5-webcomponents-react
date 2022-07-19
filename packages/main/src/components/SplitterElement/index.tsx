@@ -2,8 +2,8 @@ import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponent
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
 
 const useStyles = createUseStyles(
   {
@@ -50,7 +50,7 @@ export interface SplitterElementPropTypes extends CommonProps {
  * content can be completely collapsed.
  */
 const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
-  const { children, style, className, minSize, size, resizable, ...rest } = props;
+  const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
   const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 0 auto' } : {};
@@ -86,9 +86,6 @@ const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObj
     }
   }, [reset, size]);
 
-  if (reset) {
-    return null;
-  }
   return (
     <div
       ref={componentRef}

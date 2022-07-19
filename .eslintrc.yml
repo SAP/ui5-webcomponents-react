@@ -1,0 +1,91 @@
+---
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  project:
+    - './tsconfig.json'
+    - './packages/*/tsconfig.json'
+env:
+  browser: true
+extends:
+  - plugin:react/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+  - plugin:prettier/recommended
+  - plugin:storybook/recommended
+plugins:
+  - prefer-arrow
+  - react-hooks
+settings:
+  react:
+    version: detect
+rules:
+  camelcase:
+    - 'error'
+    - allow:
+        - sap_fiori_3
+        - sap_fiori_3_dark
+        - sap_fiori_3_hcb
+        - sap_fiori_3_hcw
+        - sap_belize
+        - sap_belize_hcb
+        - sap_belize_hcw
+        - sap_horizon
+        - sap_horizon_dark
+        - sap_horizon_hcb
+        - sap_horizon_hcw
+  import/order:
+    - 'error'
+    - newlines-between: never
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+  import/no-duplicates: 'error'
+  import/no-unresolved:
+    - 'error'
+    - ignore:
+        - '@ui5/webcomponents-react'
+        - '@ui5/webcomponents-react-base'
+overrides:
+  # add config for all TypeScript files
+  - files:
+      - '*.ts'
+      - '*.tsx'
+    plugins:
+      - '@typescript-eslint'
+    extends:
+      - 'plugin:@typescript-eslint/recommended'
+      - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+    rules:
+      # disabled some rules from the recommended preset
+      '@typescript-eslint/no-empty-function': 'off'
+      '@typescript-eslint/no-unsafe-member-access': 'off'
+      '@typescript-eslint/no-unsafe-argument': 'off'
+      '@typescript-eslint/no-unsafe-return': 'off'
+      '@typescript-eslint/no-unsafe-assignment': 'off'
+      '@typescript-eslint/no-unsafe-call': 'off'
+      '@typescript-eslint/restrict-plus-operands': 'off'
+      '@typescript-eslint/restrict-template-expressions': 'off'
+
+      # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
+      '@typescript-eslint/no-floating-promises': 'warn'
+
+      '@typescript-eslint/no-unused-vars':
+        - 'error'
+        - varsIgnorePattern: '^_'
+
+  # Generated Web Component Wrappers might contain empty interfaces
+  - files:
+      - 'packages/main/src/webComponents/*/index.tsx'
+    rules:
+      '@typescript-eslint/no-empty-interface': 'off'
+
+  # disable prop types check for Analytical Table Defaults (TODO might change for react-table v8)
+  - files:
+      - 'packages/main/src/components/AnalyticalTable/defaults/**/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.ts'
+      - 'packages/main/src/components/AnalyticalTable/hooks/*.tsx'
+      - 'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx'
+    rules:
+      'react/prop-types': 'off'

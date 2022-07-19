@@ -21,7 +21,7 @@ export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, C
 /**
  *
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FilterItemOption" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ViewSettingsDialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemOptionDomRef>(
   'ui5-filter-item-option',

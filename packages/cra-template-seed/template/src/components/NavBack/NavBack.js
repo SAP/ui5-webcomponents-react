@@ -6,12 +6,25 @@ import { spacing } from '@ui5/webcomponents-react-base';
 
 import i18n from '../../util/i18n';
 
-const NavBack = ({ text = i18n.t('components.navback.text'), icon = 'nav-back', design = ButtonDesign.Transparent, disabled = false }) => {
+const NavBack = ({
+  text = i18n.t('components.navback.text'),
+  icon = 'nav-back',
+  design = ButtonDesign.Transparent,
+  disabled = false
+}) => {
   const navigate = useNavigate();
 
   return (
     <FlexBox style={spacing.sapUiTinyMargin}>
-      <Button data-testid="navback-wrapper" design={design} disabled={disabled} icon={icon} iconEnd={false} onClick={() => navigate(-1)} submits={false}>
+      <Button
+        data-testid="navback-wrapper"
+        design={design}
+        disabled={disabled}
+        icon={icon}
+        iconEnd={false}
+        onClick={() => navigate(-1)}
+        submits={false}
+      >
         {text}
       </Button>
     </FlexBox>
@@ -21,5 +34,5 @@ const NavBack = ({ text = i18n.t('components.navback.text'), icon = 'nav-back', 
 export default NavBack;
 
 export const NavBackIcon = {
-  NONE: '',
+  NONE: ''
 };

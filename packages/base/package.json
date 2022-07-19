@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "0.25.0",
+  "version": "0.26.2",
   "description": "Base for ui5-webcomponents-react",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -13,23 +13,15 @@
   },
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "sideEffects": [
-    "./polyfill/*"
-  ],
+  "sideEffects": false,
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc"
   },
-  "dependencies": {
-    "core-js": "3.22.8",
-    "intersection-observer": "0.12.0",
-    "resize-observer-polyfill": "1.5.1",
-    "smoothscroll-polyfill": "0.4.4"
-  },
   "peerDependencies": {
     "@types/react": "*",
-    "@ui5/webcomponents-base": "~1.4.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "@ui5/webcomponents-base": "~1.5.0",
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {

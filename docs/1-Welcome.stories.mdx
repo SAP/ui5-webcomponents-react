@@ -1,5 +1,5 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Button } from '@ui5/webcomponents-react';
+import { Meta } from '@storybook/addon-docs';
+import { MessageStrip, Link } from '@ui5/webcomponents-react';
 import { Footer } from '@docs/Footer';
 
 <Meta title="Getting Started" />
@@ -22,8 +22,8 @@ In addition to that, UI5 Web Components for React is providing complex component
 
 ## Requirements
 
-- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.8.0 or higher**)
-- [Node.js](https://nodejs.org/) (**version 12 or higher** ⚠️)
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
+- [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
 
 ## Getting Started
 
@@ -79,20 +79,17 @@ npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
-You will find this component most likely in `src/App.js`:
+You will find this component most likely in `src/index.js`:
 
 ```jsx
 import { ThemeProvider } from '@ui5/webcomponents-react';
 ...
-render() {
-  return (
-    <div>
-      <ThemeProvider>
-        <MyApp />
-      </ThemeProvider>
-    </div>
-  );
-}
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
 ```
 
 Then you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />
@@ -110,7 +107,15 @@ Then, you can use the Button in your app:
 
 ### Theming
 
-UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` Theme built in.
+UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` and `sap_horizon` Theme families built in.
+
+<MessageStrip hideCloseButton>
+  All UI5 Web Components fully support the Horizon theme family, but for custom UI5 Web Components for React components
+  (e.g. ObjectPage, AnalyticalTable, etc.) it's still in development, so it could be possible to encounter discrepancies
+  in the design. If you notice one please feel free to open an{' '}
+  <Link href="https://github.com/SAP/ui5-webcomponents-react/issues/new/choose">issue</Link>.
+</MessageStrip>
+
 In case you want to change your applications' theme, you have to import a couple of modules:
 
 ```js
@@ -127,6 +132,11 @@ Available Themes:
 - `sap_belize`
 - `sap_belize_hcb`
 - `sap_belize_hcw`
+
+- `sap_horizon`
+- `sap_horizon_dark`
+- `sap_horizon_hcb`
+- `sap_horizon_hcw`
 
 ### Configure Compact/Cozy setting
 
@@ -150,8 +160,7 @@ Example - `Popover` with `Ref` type declaration:
 
 ```tsx
 import React, { useRef } from 'react';
-import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
-import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';
+import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
 
 export default function App() {
   const popoverRef = useRef<PopoverDomRef>(null);
@@ -167,6 +176,11 @@ export default function App() {
   );
 }
 ```
+
+### Feature Registration
+
+`@ui5/webcomponents` offers a variety of [feature (side-effect) imports](https://sap.github.io/ui5-webcomponents/playground/getting-started/using-features/) that are available with `@ui5/webcomponents-react` as well.
+To use them you have to make sure they are imported before any other imports!
 
 ### Support
 

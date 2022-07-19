@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.1...v0.26.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* **SelectDialog:** support horizon themes ([#3198](https://github.com/SAP/ui5-webcomponents-react/issues/3198)) ([2bc8539](https://github.com/SAP/ui5-webcomponents-react/commit/2bc8539f61a230ab7b0b3ebed98edfa40efa71ec))
+
+
+
+
+
+## [0.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.0...v0.26.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* **i18n:** register context only once ([#3217](https://github.com/SAP/ui5-webcomponents-react/issues/3217)) ([b9d7f20](https://github.com/SAP/ui5-webcomponents-react/commit/b9d7f205413a5c308999728c38839a926a1a6fc6))
+
+
+
+
+
+# [0.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.7...v0.26.0) (2022-07-04)
+
+
+### chore
+
+* increase minimum react version to 16.14.0 ([#3177](https://github.com/SAP/ui5-webcomponents-react/issues/3177)) ([bd3d499](https://github.com/SAP/ui5-webcomponents-react/commit/bd3d499b64ce418dd6ef28ac2a61bd84018683ed))
+* remove deprecated entrypoints ([#3154](https://github.com/SAP/ui5-webcomponents-react/issues/3154)) ([e58f733](https://github.com/SAP/ui5-webcomponents-react/commit/e58f7331d1017528dacce10562d928fa2e7862b6))
+* remove polyfills for IE11 and Safari ([#3138](https://github.com/SAP/ui5-webcomponents-react/issues/3138)) ([558fe71](https://github.com/SAP/ui5-webcomponents-react/commit/558fe7106eb4839b5443e5215f1a013729cd2f2c))
+
+
+### Features
+
+* update @ui5/webcomponents to 1.5.0 ([#3170](https://github.com/SAP/ui5-webcomponents-react/issues/3170)) ([43aebfd](https://github.com/SAP/ui5-webcomponents-react/commit/43aebfd123137fcce082978b79a38c8da7138b28))
+
+
+### BREAKING CHANGES
+
+* **@ui5/webcomponents-react**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove all deprecated entrypoints
+* **@ui5/webcomponents-react-base**: remove deprecated `usePassThroughHtmlProps` hook
+* **@ui5/webcomponents-react-charts**: remove all deprecated entrypoints
+* The polyfills `@ui5/webcomponents-react-base/polyfill/Safari.js` and `@ui5/webcomponents-react-base/polyfill/IE11.js` and their dependencies have been removed. You will now most likely need to install `resize-observer-polyfill` on your own to run your jest tests. More Details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--page).
+* minimum required version of `react` and `react-dom` bumped to `16.14.0` in order to use the new `jsx-transform`.
+
+
+
+
+
+## [0.25.6](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.5...v0.25.6) (2022-06-29)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
+## [0.25.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.4...v0.25.5) (2022-06-22)
+
+
+### Bug Fixes
+
+* **ActionSheet:** don't scroll page on keyDown/Up, correct margin of buttons ([#3093](https://github.com/SAP/ui5-webcomponents-react/issues/3093)) ([da2c5a4](https://github.com/SAP/ui5-webcomponents-react/commit/da2c5a442e3ffad9f2099493132821543069e7ee)), closes [#3092](https://github.com/SAP/ui5-webcomponents-react/issues/3092)
+
+
+
+
+
+## [0.25.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.3...v0.25.4) (2022-06-15)
+
+
+### Bug Fixes
+
+* simplify asset imports & improve i18n provider and docs ([#3079](https://github.com/SAP/ui5-webcomponents-react/issues/3079)) ([374a5d3](https://github.com/SAP/ui5-webcomponents-react/commit/374a5d339b4d9493cf04d7aa95161c2514b3cdc1))
+
+
+
+
+
+## [0.25.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.2...v0.25.3) (2022-06-15)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
+## [0.25.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.1...v0.25.2) (2022-06-14)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
+## [0.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.25.0...v0.25.1) (2022-06-10)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+
+
+
+
 # [0.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.24.0...v0.25.0) (2022-06-01)
 
 

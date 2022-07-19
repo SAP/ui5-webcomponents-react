@@ -1,8 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { TextArea } from './index';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './TextAreaDescription.md';
 
 <Meta
   title="Inputs / TextArea"
@@ -11,11 +13,7 @@ import { Footer } from '@docs/Footer';
     valueStateMessage: { control: { disable: true } }
   }}
   args={{
-    valueState: ValueState.None,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    valueState: ValueState.None
   }}
 />
 
@@ -35,6 +33,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 <Footer />

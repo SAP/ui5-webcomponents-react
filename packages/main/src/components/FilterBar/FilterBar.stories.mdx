@@ -1,6 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import {
   ComboBox,
@@ -44,11 +45,7 @@ import {
       </VariantManagement>
     ),
     filterContainerWidth: '13.125rem',
-    showFilterConfiguration: true,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    showFilterConfiguration: true
   }}
 />
 
@@ -146,7 +143,7 @@ import {
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="Default" />
 
 <br />
 
@@ -250,6 +247,6 @@ import {
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable FilterGroupItem" />
+<ArgsTableWithNote story="with customizable FilterGroupItem" />
 
 <Footer />

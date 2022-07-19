@@ -25,13 +25,13 @@ export interface ShellBarItemPropTypes extends ShellBarItemAttributes, Omit<Comm
   /**
    * Fired, when the item is pressed.
    */
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<ShellBarItemDomRef>;
 }
 
 /**
  * The `ShellBarItem` represents a custom item, that might be added to the `ShellBar`.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBarItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>(
   'ui5-shellbar-item',

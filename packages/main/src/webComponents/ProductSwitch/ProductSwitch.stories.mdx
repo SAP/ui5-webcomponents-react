@@ -1,8 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ProductSwitch } from './index';
 import { ProductSwitchItem } from '../ProductSwitchItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ProductSwitchDescription.md';
 import '@ui5/webcomponents-icons/dist/business-objects-experience.js';
 import '@ui5/webcomponents-icons/dist/contacts.js';
 import '@ui5/webcomponents-icons/dist/flight.js';
@@ -39,7 +41,7 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.7.0" />
 
 <br />
 
@@ -67,6 +69,8 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 <Footer />

@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Badge } from './index';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '../Icon';
@@ -6,6 +7,7 @@ import { FlexBox } from '../../components/FlexBox';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './BadgeDescription.md';
 
 <Meta
   title="Data Display / Badge"
@@ -16,15 +18,11 @@ import { Footer } from '@docs/Footer';
   }}
   args={{
     children: 'Badge Text',
-    icon: <Icon name="employee" />,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    icon: <Icon name="employee" />
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.4.0" />
 
 <br />
 
@@ -40,13 +38,9 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage Guidelines
-
-- If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.
-- When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be fully displayed.
-- Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.
+<Description />
 
 # More Examples
 

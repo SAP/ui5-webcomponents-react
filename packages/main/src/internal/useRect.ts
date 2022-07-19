@@ -33,7 +33,7 @@ export function useRect(nodeRef, initialRect = { width: 0, height: 0 }) {
       return;
     }
 
-    const observer = new ResizeObserver((rect) => {
+    const observer = new ResizeObserver(() => {
       dispatch({ rect: { width: element.offsetWidth, height: element.offsetHeight } });
     });
 

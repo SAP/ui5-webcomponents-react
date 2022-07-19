@@ -43,7 +43,7 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
   /**
    * The event is fired when the value changes.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<RatingIndicatorDomRef>) => void;
 }
 
 /**

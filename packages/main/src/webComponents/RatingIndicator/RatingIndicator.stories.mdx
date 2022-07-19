@@ -1,11 +1,13 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { RatingIndicator } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './RatingIndicatorDescription.md';
 
 <Meta title="Inputs / RatingIndicator" component={RatingIndicator} />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -21,19 +23,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-The recommended number of icons is between 5 and 7.
-
-## Responsive Behavior
-
-You can change the size of the Rating Indicator by changing its `font-size` CSS property.  
-Example: `<RatingIndicator style="font-size: 3rem;"></RatingIndicator>`
-
-## Usage
-
-For the `RatingIndicator`
+<Description />
 
 <Footer />

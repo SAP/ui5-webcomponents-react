@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the layout of the content displayed in the <code>ui5-media-gallery-item</code>.
+ * Defines the layout of the content displayed in the <code>MediaGalleryItem</code>.
  */
 export enum MediaGalleryItemLayout {
   /**

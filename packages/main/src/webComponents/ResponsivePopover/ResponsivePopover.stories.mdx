@@ -1,6 +1,8 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import Description from './ResponsivePopoverDescription.md';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { useState } from 'react';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
@@ -14,6 +16,7 @@ import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { ResponsivePopover } from './index';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -36,7 +39,7 @@ import { ResponsivePopover } from './index';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.9.0" />
 
 <br />
 
@@ -45,7 +48,7 @@ import { ResponsivePopover } from './index';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(args.open);
+      const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(isChromatic || args.open);
       return (
         <>
           <Button
@@ -72,7 +75,9 @@ import { ResponsivePopover } from './index';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 ## Methods
 
@@ -84,12 +89,6 @@ This component exposes public methods. You can invoke them directly on the insta
 | **showAt**     | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd><dt className="methodText">**preventInitialFocus** _optional_)</dt><dd className="methodText">Prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Opens popover on desktop and dialog on mobile.                                                                            |
 | **applyFocus** | &mdash;                                                                                                                                                                                                                                                                                                                                   | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.          |
 | **isOpen**     | &mdash;                                                                                                                                                                                                                                                                                                                                   | Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default. |
-
-## Usage
-
-Use it when you want to make sure that all the content is visible on any device
-
-<br />
 
 ## Opening ResponsivePopovers
 

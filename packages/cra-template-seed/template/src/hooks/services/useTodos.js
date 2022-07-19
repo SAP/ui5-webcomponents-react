@@ -8,14 +8,14 @@ export const useTodos = (page) => {
     async () => {
       const { data } = await Request.get('/v1/todo/all', {
         params: {
-          page,
-        },
+          page
+        }
       });
       return data;
     },
     {
-      keepPreviousData: true,
-    },
+      keepPreviousData: true
+    }
   );
 };
 

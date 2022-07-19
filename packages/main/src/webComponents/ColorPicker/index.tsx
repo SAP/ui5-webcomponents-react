@@ -20,7 +20,7 @@ export interface ColorPickerPropTypes extends ColorPickerAttributes, Omit<Common
   /**
    * Fired when the the selected color is changed
    */
-  onChange?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onChange?: (event: Ui5CustomEvent<ColorPickerDomRef>) => void;
 }
 
 /**

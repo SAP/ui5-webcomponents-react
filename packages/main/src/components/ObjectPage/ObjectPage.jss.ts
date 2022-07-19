@@ -88,10 +88,6 @@ export const styles = {
     },
     cursor: 'pointer'
   },
-  iEClass: {
-    position: 'fixed',
-    width: 'calc(100% - 18px)'
-  },
   headerImage: {
     minWidth: '5rem',
     maxWidth: '5rem',

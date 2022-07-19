@@ -1,4 +1,4 @@
-import { fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
+import { screen, fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
 import React from 'react';
 import { ListMode } from '../../enums/ListMode';
 import { DialogDomRef } from '../../webComponents/Dialog';
@@ -31,24 +31,34 @@ describe('SelectDialog', () => {
     const { asFragment, getByText, rerender } = render(
       <SelectDialog headerText="Select Dialog">{listItems}</SelectDialog>
     );
-    expect(getByText('Select Dialog')).toHaveAttribute('slot', 'startContent');
+    expect(getByText('Select Dialog')).toHaveStyle({
+      gridColumnStart: 'titleStart',
+      gridColumnEnd: 'titleCenter'
+    });
     expect(asFragment()).toMatchSnapshot();
     rerender(
       <SelectDialog headerText="Select Dialog" headerTextAlignCenter>
         {listItems}
       </SelectDialog>
     );
-    expect(getByText('Select Dialog')).not.toHaveAttribute('slot', 'startContent');
+    expect(getByText('Select Dialog')).toHaveStyle({
+      gridArea: 'titleCenter'
+    });
   });
   test('SingleSelect', async () => {
     const confirm = jest.fn();
     const afterClose = jest.fn();
     const selectionChange = jest.fn();
     const { getByText } = await renderWithDefine(
-      <SelectDialog onConfirm={confirm} onAfterClose={afterClose} listProps={{ onSelectionChange: selectionChange }}>
+      <SelectDialog
+        onConfirm={confirm}
+        rememberSelections
+        onAfterClose={afterClose}
+        listProps={{ onSelectionChange: selectionChange }}
+      >
         {listItems}
       </SelectDialog>,
-      ['ui5-li']
+      ['ui5-list', 'ui5-li']
     );
     const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
     dialog.show();
@@ -71,6 +81,7 @@ describe('SelectDialog', () => {
     const clear = jest.fn();
     const { asFragment, getByText } = await renderWithDefine(
       <SelectDialog
+        rememberSelections
         showClearButton
         mode={ListMode.MultiSelect}
         onConfirm={confirm}
@@ -95,12 +106,12 @@ describe('SelectDialog', () => {
     expect(li).not.toHaveAttribute('selected');
     fireEvent.click(wcListItem);
     expect(li).toHaveAttribute('selected');
-    getByText('Selected: 1');
+    expect(getByText('Selected: 1')).toBeVisible();
 
     expect(li2).not.toHaveAttribute('selected');
     fireEvent.click(wcListItem2);
     expect(li2).toHaveAttribute('selected');
-    getByText('Selected: 2');
+    expect(getByText('Selected: 2')).toBeVisible();
 
     expect(confirm).not.toHaveBeenCalled();
     expect(afterClose).not.toHaveBeenCalled();
@@ -116,10 +127,11 @@ describe('SelectDialog', () => {
 
     dialog.show();
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText('Selected: 2')).toBeVisible();
 
     fireEvent.click(getByText('Clear'));
     expect(clear).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText('Selected: 2')).not.toBeInTheDocument();
   });
 
   test('Search', () => {

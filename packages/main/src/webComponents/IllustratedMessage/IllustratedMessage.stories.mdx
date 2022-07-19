@@ -1,8 +1,10 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { IllustratedMessage } from './index';
 import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './IllustratedMessageDescription.md';
 import '@ui5/webcomponents-fiori/dist/illustrations/BeforeSearch.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoActivities.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
@@ -86,7 +88,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/tnt/UnsuccessfulAuth';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.18.0" />
 
 <br />
 
@@ -102,10 +104,8 @@ import '@ui5/webcomponents-fiori/dist/illustrations/tnt/UnsuccessfulAuth';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-`IllustratedMessage` is meant to be used inside container component, for example a `Card`, a `Dialog` or a `Page`.
+<Description />
 
 <Footer />

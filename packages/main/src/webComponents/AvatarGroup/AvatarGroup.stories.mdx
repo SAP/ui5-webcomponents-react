@@ -1,9 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { AvatarGroup } from './index';
 import { AvatarGroupType } from '../../enums/AvatarGroupType';
 import { Avatar } from '../Avatar';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './AvatarGroupDescription.md';
 
 <Meta
   title="Data Display / AvatarGroup"
@@ -17,7 +19,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.13.0" />
 
 <br />
 
@@ -44,23 +46,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Responsive Behavior
-
-When the available space is less than the width required to display all avatars, an overflow visualization appears as a button placed at the end with the same shape and size as the avatars. The visualization displays the number of avatars that have overflowed and are not currently visible.
-
-## Usage
-
-Use the `AvatarGroup` if:
-
-- You want to display a group of avatars.
-- You want to display several avatars which have something in common.
-
-Do not use the `AvatarGroup` if:
-
-- You want to display a single avatar.
-- You want to display a gallery for simple images.
-- You want to use it for other visual content than avatars.
+<Description />
 
 <Footer />

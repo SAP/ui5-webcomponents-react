@@ -7,8 +7,8 @@ import PopoverInfo from './PopoverInfo';
 
 const popoverInfoRef = {
   current: {
-    showAt: jest.fn(),
-  },
+    showAt: jest.fn()
+  }
 };
 
 describe('PopoverInfo.js Test Suite', () => {
@@ -19,7 +19,7 @@ describe('PopoverInfo.js Test Suite', () => {
           Open Popover
         </p>
         <PopoverInfo popoverRef={popoverInfoRef} title="Some Title" />
-      </>,
+      </>
     );
   });
 
@@ -58,7 +58,7 @@ describe('PopoverInfo.js Test Suite', () => {
           Open Popover
         </p>
         <PopoverInfo popoverRef={popoverInfoRef} />
-      </>,
+      </>
     );
 
     const opener = screen.getAllByTestId('opener-wrapper')[1];

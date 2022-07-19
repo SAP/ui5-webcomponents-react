@@ -6,6 +6,5 @@ export enum CustomVariables {
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {
-  // @ts-ignore
-  get: (target: CustomVariables, prop: string): string => `var(${target[prop] as string})`
+  get: (target, prop: string): string => `var(${target[prop] as string})`
 });

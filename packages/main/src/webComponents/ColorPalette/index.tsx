@@ -17,7 +17,7 @@ export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonPro
   /**
    * Fired when the user selects a color.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { color: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ColorPaletteDomRef, { color: string }>) => void;
 }
 
 /**

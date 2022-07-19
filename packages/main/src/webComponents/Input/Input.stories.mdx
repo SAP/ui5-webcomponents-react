@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Input } from './index';
 import { InputType } from '../../enums/InputType';
 import { ValueState } from '../../enums/ValueState';
@@ -9,6 +10,7 @@ import { SuggestionItem } from '../SuggestionItem';
 import { SuggestionGroupItem } from '../SuggestionGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './InputDescription.md';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 <Meta
@@ -43,7 +45,9 @@ import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 <br />
 
@@ -60,9 +64,9 @@ and the `showSuggestions` prop is set to `true`.
 
 <Canvas>
   <Story name="with SuggestionItem">
-    {(args) => {
+    {() => {
       return (
-        <Input showSuggestions placeholder="click here to show suggestions" style={{ width: '400px' }}>
+        <Input showSuggestions placeholder="type anything to show suggestions" style={{ width: '400px' }}>
           <SuggestionGroupItem text="A Group" />
           <SuggestionItem icon="globe" text="United States" additionalText={'USA'} description={'My Description'} />
           <SuggestionItem icon="globe" text="Bulgaria" iconEnd />
@@ -77,6 +81,6 @@ and the `showSuggestions` prop is set to `true`.
   </Story>
 </Canvas>
 
-<ArgsTable of={SuggestionItem} story="with SuggestionItem" />
+<ArgsTableWithNote of={SuggestionItem} story="with SuggestionItem" />
 
 <Footer />

@@ -1,198 +1,219 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { DEVIATION, TARGET } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import iconDown from '@ui5/webcomponents-icons/dist/down.js';
+import iconUp from '@ui5/webcomponents-icons/dist/up.js';
+import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, MouseEventHandler, Ref, useMemo } from 'react';
+import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviationIndicator } from '../../enums/DeviationIndicator';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
-import { ValueState } from '../../enums/ValueState';
+import { DeviationIndicator, ValueColor } from '../../enums';
+import {
+  ARIA_DESC_CARD_HEADER,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL
+} from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { FlexBox } from '../FlexBox';
-import { ObjectStatus } from '../ObjectStatus';
+import { flattenFragments } from '../../internal/utils';
+import { Icon } from '../../webComponents';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
-   * Defines the title text of the `AnalyticalCardHeader`.
+   * The title of the card
    */
   titleText?: string;
   /**
-   * Defines the subtitle text of the `AnalyticalCardHeader`.
+   * The subtitle of the card
    */
   subtitleText?: string;
   /**
-   * Defines the orientation of the deviation indicator.
+   * The direction of the trend arrow. Shows deviation for the value of the main number indicator.
    */
-  arrowIndicator?: DeviationIndicator | keyof typeof DeviationIndicator;
+  trend?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
-   * Defines whether the deviation indicator should be displayed.
-   */
-  showIndicator?: boolean;
-  /**
-   * Defines the value state of the deviation indicator.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
-   */
-  indicatorState?: ValueState | keyof typeof ValueState;
-  /**
-   * Defines the value of the `AnalyticalCardHeader`.
+   * The numeric value of the main number indicator.
    */
   value?: string;
   /**
-   * Defines the unit displayed next to the value of the `AnalyticalCardHeader`.
+   * Defines the unit of measurement (scaling prefix) for the main indicator.
+   * Financial characters can be used for currencies and counters. The International System of Units (SI) prefixes can be used.
    */
-  unit?: string;
+  scale?: string;
   /**
-   * Defines the value state of the value.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li></ul>
+   * The semantic color which represents the state of the main number indicator.
+   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>
    */
-  valueState?: ValueState | keyof typeof ValueState;
+  state?: ValueColor | keyof typeof ValueColor;
   /**
-   * Defines the target value.
-   */
-  target?: string;
-  /**
-   * Defines the deviation value.
-   */
-  deviation?: string;
-  /**
-   * Defines the description below the value of the `AnalyticalCardHeader`.
+   * Additional text which adds more details to what is shown in the numeric header.
    */
   description?: string;
   /**
-   * Defines the counter in the upper right corner of the `AnalyticalCardHeader`.
+   * Defines the status text.
    */
-  counter?: string;
+  status?: string;
   /**
-   * Defines the value state of the counter.
-   * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * General unit of measurement for the header. Displayed as side information to the subtitle.
    */
-  counterState?: ValueState | keyof typeof ValueState;
-  /**
-   * Defines the currency.
-   */
-  currency?: string;
+  unitOfMeasurement?: string;
   /**
    * Fired when the `AnalyticalCardHeader` is clicked.
    */
   onClick?: MouseEventHandler<HTMLDivElement>;
+
+  /**
+   * Additional side number indicators. For example "Deviation" and "Target". Not more than two side indicators should be used.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `NumericSideIndicator` in order to preserve the intended design.
+   */
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(styles, {
   name: 'AnalyticalCardHeader'
 });
 
+const semanticColorMap = new Map<AnalyticalCardHeaderPropTypes['state'], any>([
+  [ValueColor.Neutral, SEMANTIC_COLOR_NEUTRAL],
+  [ValueColor.Good, SEMANTIC_COLOR_GOOD],
+  [ValueColor.Critical, SEMANTIC_COLOR_CRITICAL],
+  [ValueColor.Error, SEMANTIC_COLOR_ERROR]
+]);
+
+const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
+  [DeviationIndicator.Up, NUMERICCONTENT_DEVIATION_UP],
+  [DeviationIndicator.Down, NUMERICCONTENT_DEVIATION_DOWN]
+]);
+
 export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
     titleText,
     subtitleText,
     value,
-    unit,
-    target,
-    deviation,
-    valueState,
+    scale,
+    state,
     onClick,
-    showIndicator,
     className,
     description,
-    counter,
-    counterState,
-    currency,
-    indicatorState,
-    arrowIndicator,
+    status,
+    unitOfMeasurement,
+    trend,
     style,
+    children,
+    id,
     ...rest
   } = props;
   const classes = useStyles();
 
-  const indicatorIcon = useMemo(() => {
-    const arrowClasses = clsx(
-      classes.arrowIndicatorShape,
-      arrowIndicator === DeviationIndicator.Up && classes.arrowUp,
-      arrowIndicator === DeviationIndicator.Down && classes.arrowDown,
-      arrowIndicator === DeviationIndicator.None && classes.arrowRight,
-      !(arrowIndicator in DeviationIndicator) && classes.arrowRight,
-      indicatorState === ValueState.Success && classes.good,
-      indicatorState === ValueState.Error && classes.error,
-      indicatorState === ValueState.Warning && classes.critical,
-      indicatorState === ValueState.Information && classes.none,
-      indicatorState === ValueState.None && classes.none,
-      !(indicatorState in ValueState) && classes.none
-    );
-
-    return <div className={arrowClasses} />;
-  }, [arrowIndicator, indicatorState, classes]);
-
   const headerClasses = clsx(classes.cardHeader, onClick && classes.cardHeaderClickable, className);
 
   const valueAndUnitClasses = clsx(
-    classes.valueAndUnit,
-    valueState === ValueState.Error && classes.error,
-    valueState === ValueState.Warning && classes.critical,
-    valueState === ValueState.Success && classes.good
+    classes.mainIndicator,
+    state === ValueColor.Good && classes.good,
+    state === ValueColor.Error && classes.error,
+    state === ValueColor.Critical && classes.critical,
+    state === ValueColor.Neutral && classes.neutral
   );
-
-  const shouldRenderContent = [value, unit, deviation, target].some((v) => !!v);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
+  const uniqueHeaderId = useIsomorphicId();
+  const headerId = id ?? uniqueHeaderId;
+
+  const sideIndicators = flattenFragments(children);
+  const sideIndicatorIds: string[] = Children.toArray(sideIndicators).map((child: ReactElement, idx) => {
+    return child.props?.id ?? `${headerId}-indicator${idx}`;
+  });
+
+  let kpiAriaLabel = `${value}${scale}\n`;
+
+  if (trend && trend !== DeviationIndicator.None) {
+    kpiAriaLabel += i18nBundle.getText(deviationMap.get(trend) ?? '');
+    kpiAriaLabel += '\n';
+  }
+
+  if (state && state !== ValueColor.None) {
+    kpiAriaLabel += i18nBundle.getText(semanticColorMap.get(state) ?? '');
+  }
+
+  let cardLabelledBy = `${headerId}-title`;
+  if (subtitleText) {
+    cardLabelledBy += ` ${headerId}-subtitle`;
+  }
+  if (unitOfMeasurement) {
+    cardLabelledBy += ` ${headerId}-unitOfMeasurement`;
+  }
+
+  cardLabelledBy += ` ${headerId}-mainIndicator`;
+
+  for (const sideIndicatorId of sideIndicatorIds) {
+    cardLabelledBy += ` ${sideIndicatorId}`;
+  }
+
+  if (description) {
+    cardLabelledBy += ` ${headerId}-description`;
+  }
+
   return (
-    <div ref={ref} className={headerClasses} style={style} {...rest} onClick={onClick}>
-      <div className={classes.headerContent}>
+    <div
+      ref={ref}
+      className={headerClasses}
+      style={style}
+      id={headerId}
+      data-sap-ui-fastnavgroup="true"
+      tabIndex={0}
+      role="heading"
+      aria-roledescription={i18nBundle.getText(ARIA_DESC_CARD_HEADER)}
+      aria-labelledby={cardLabelledBy}
+      {...rest}
+      onClick={onClick}
+      slot={'header'}
+    >
+      <div>
         <div className={classes.headerTitles}>
-          <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} wrap={FlexBoxWrap.NoWrap}>
-            <div className={classes.headerText}>{titleText}</div>
-            {counter && (
-              <ObjectStatus className={classes.counter} state={counterState}>
-                {counter}
-              </ObjectStatus>
-            )}
-          </FlexBox>
-          {(subtitleText || currency) && (
-            <div className={classes.subHeaderText}>
-              {subtitleText}
-              {currency && ` | ${currency}`}
+          <div className={classes.headerFirstLine}>
+            <span role="heading" aria-level={3} className={classes.headerText} id={`${headerId}-title`}>
+              {titleText}
+            </span>
+            {status && <span className={classes.status}>{status}</span>}
+          </div>
+          {(subtitleText || unitOfMeasurement) && (
+            <div className={classes.headerSecondLine}>
+              <span id={`${headerId}-subtitle`}>{subtitleText}</span>
+              {unitOfMeasurement && (
+                <span id={`${headerId}-unitOfMeasurement`} className={classes.unitOfMeasurement}>
+                  {unitOfMeasurement}
+                </span>
+              )}
             </div>
           )}
         </div>
-        {shouldRenderContent && (
-          <FlexBox direction={FlexBoxDirection.Row} className={classes.kpiContent} alignItems={FlexBoxAlignItems.End}>
-            <FlexBox direction={FlexBoxDirection.Row}>
-              <div className={valueAndUnitClasses}>
-                <div className={classes.value}>{value}</div>
-                <div className={classes.indicatorAndUnit}>
-                  {showIndicator && indicatorIcon}
-                  <div className={classes.unit}>{unit}</div>
-                </div>
-              </div>
-            </FlexBox>
-            <FlexBox direction={FlexBoxDirection.Row} wrap={FlexBoxWrap.NoWrap} className={classes.targetAndDeviation}>
-              {target && (
-                <FlexBox
-                  direction={FlexBoxDirection.Column}
-                  className={classes.targetAndDeviationColumn}
-                  wrap={FlexBoxWrap.NoWrap}
-                >
-                  <span>{i18nBundle.getText(TARGET)}</span>
-                  <span className={classes.targetAndDeviationValue}>{target}</span>
-                </FlexBox>
+        <div className={classes.kpiContent}>
+          <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel} role="img">
+            <span className={classes.value}>{value}</span>
+            <div className={classes.indicatorAndUnit}>
+              {trend !== DeviationIndicator.None && (
+                <Icon className={clsx(classes.indicator)} name={trend === DeviationIndicator.Up ? iconUp : iconDown} />
               )}
-              {deviation && (
-                <FlexBox
-                  direction={FlexBoxDirection.Column}
-                  className={classes.targetAndDeviationColumn}
-                  wrap={FlexBoxWrap.NoWrap}
-                >
-                  <span>{i18nBundle.getText(DEVIATION)}</span>
-                  <span className={classes.targetAndDeviationValue}>{deviation}</span>
-                </FlexBox>
-              )}
-            </FlexBox>
-          </FlexBox>
+              <div className={classes.unit}>{scale}</div>
+            </div>
+          </div>
+          <div className={classes.indicatorGap} />
+          <div className={classes.sideIndicators}>
+            {sideIndicators.map((sideIndicator: ReactElement, index) => {
+              return cloneElement(sideIndicator, {
+                id: sideIndicator.props.id ?? `${headerId}-indicator${index}`
+              });
+            })}
+          </div>
+        </div>
+        {description && (
+          <span id={`${headerId}-description`} className={classes.description}>
+            {description}
+          </span>
         )}
-        {description && <div className={classes.description}>{description}</div>}
       </div>
     </div>
   );
@@ -201,8 +222,6 @@ export const AnalyticalCardHeader = forwardRef((props: AnalyticalCardHeaderPropT
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
 
 AnalyticalCardHeader.defaultProps = {
-  arrowIndicator: DeviationIndicator.None,
-  indicatorState: ValueState.None,
-  valueState: ValueState.None,
-  counterState: ValueState.None
+  trend: DeviationIndicator.None,
+  state: ValueColor.None
 };

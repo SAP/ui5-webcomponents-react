@@ -1,8 +1,8 @@
 import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { Loader } from './index';
-import { LoaderType } from '../../enums/LoaderType';
 import React from 'react';
+import { LoaderType } from '../../enums/LoaderType';
+import { Loader } from './index';
 
 describe('Loader', () => {
   test('indeterminate', () => {

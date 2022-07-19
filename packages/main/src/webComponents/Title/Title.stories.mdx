@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Title } from './index';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { DocsHeader } from '@docs/DocsHeader';
@@ -12,11 +13,7 @@ import { Footer } from '@docs/Footer';
   }}
   args={{
     level: TitleLevel.H2,
-    children: 'Title Text',
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    children: 'Title Text'
   }}
 />
 
@@ -36,6 +33,6 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Footer />

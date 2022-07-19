@@ -7,7 +7,7 @@ export const ROUTES = {
   TODO_LIST: '/todo/all',
   NOT_FOUND: '/notFound',
   BUGGY: '/buggy',
-  ANY: '/*',
+  ANY: '/*'
 };
 
 /**

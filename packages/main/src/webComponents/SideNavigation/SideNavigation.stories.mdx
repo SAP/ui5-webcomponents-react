@@ -1,9 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { SideNavigation } from './index';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './SideNavigationDescription.md';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/group.js';
 import '@ui5/webcomponents-icons/dist/locate-me.js';
@@ -21,15 +23,9 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
     fixedItems: { control: { disable: true } },
     header: { control: { disable: true } }
   }}
-  args={{
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
-  }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -66,13 +62,9 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-Use the available `SideNavigationItem` and `SideNavigationSubItem` components to build your menu. The items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level. You must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.
-
-<br />
+<Description />
 
 # More Examples
 
@@ -87,18 +79,26 @@ Use the available `SideNavigationItem` and `SideNavigationSubItem` components to
       expanded: true,
       icon: 'wrench',
       selected: false,
-      text: 'Customizable Item'
+      text: 'Customizable Item',
+      wholeItemToggleable: false
     }}
     argTypes={{
       collapsed: { table: { disable: true } },
       fixedItems: { table: { disable: true } },
+      header: { table: { disable: true } },
+      onSelectionChange: { table: { disable: true } },
+      className: { table: { disable: true } },
+      style: { table: { disable: true } },
       expanded: { description: `Defines if the item is expanded` },
       icon: {
-        description: `Defines the icon of the item. <br><br><br/><br/>The SAP-icons font provides numerous options. <br> See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
+        description: `Defines the icon of the item. \n\nThe SAP-icons font provides numerous options. See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.`
       },
       selected: { description: `Defines whether the subitem is selected` },
       text: { description: `Defines the text of the item.` },
-      children: { description: `If you wish to nest menus, you can pass inner menu items to the default slot.` }
+      children: { description: `If you wish to nest menus, you can pass inner menu items to the default slot.` },
+      wholeItemToggleable: {
+        description: `Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the \`click\` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.`
+      }
     }}
   >
     {(args) => {
@@ -114,6 +114,9 @@ Use the available `SideNavigationItem` and `SideNavigationSubItem` components to
   </Story>
 </Canvas>
 
-<ArgsTable story="Customizable SideNavigationItem" />
+<ArgsTableWithNote
+  story="Customizable SideNavigationItem"
+  noteText={`The props in the table below are part of the "SideNavigationItem" component.`}
+/>
 
 <Footer />

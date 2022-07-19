@@ -1,18 +1,19 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
+import { deprecationNotice, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, cloneElement, forwardRef, ReactElement, Ref, useCallback, useReducer, useRef } from 'react';
+import React, { Children, forwardRef, ReactElement, Ref, useEffect, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
+import { ButtonDesign } from '../../enums';
+import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { Button, ButtonPropTypes } from '../../webComponents/Button';
 import {
+  Button,
+  ButtonPropTypes,
   ResponsivePopover,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
-} from '../../webComponents/ResponsivePopover';
+} from '../../webComponents';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
@@ -76,6 +77,31 @@ if (isPhone()) {
   );
 }
 
+interface ActionSheetButtonPropTypes extends ButtonPropTypes {
+  index: number;
+  totalLength: number;
+}
+
+function ActionSheetButton(props: ActionSheetButtonPropTypes) {
+  const { index, totalLength, ...buttonProps } = props;
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
+  return (
+    <Button
+      // aria-describedby={ariaTextId}
+      accessibleName={`${buttonProps.children as string} ${i18nBundle.getText(X_OF_Y, index + 1, totalLength)}`}
+      {...buttonProps}
+      design={ButtonDesign.Transparent}
+      data-action-btn-index={index}
+    />
+  );
+  // const id = useIsomorphicId();
+  // const ariaTextId = `__button${id}-actionSheetHiddenText`;
+  // <span id={ariaTextId} aria-hidden="true" className={classes.hiddenText}>
+  //   {i18nBundle.getText(X_OF_Y, index + 1, totalLength)}
+  // </span>
+}
+
 /**
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
@@ -107,6 +133,16 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
     ...rest
   } = props;
 
+  // deprecations
+  useEffect(() => {
+    if (a11yConfig?.actionSheetMobileContent?.ariaLabel) {
+      deprecationNotice(
+        'ActionSheet',
+        `Using 'a11yConfig.actionSheetMobileContent.ariaLabel' is deprecated and will be removed in the next minor release. Please use the 'accessibleName' prop instead.`
+      );
+    }
+  }, [a11yConfig?.actionSheetMobileContent?.ariaLabel]);
+
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
   const [componentRef, popoverRef] = useSyncRef(ref);
@@ -122,58 +158,51 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
     popoverRef.current.close();
   };
 
-  const onActionButtonClicked = (handler) => (e) => {
-    popoverRef.current.close();
-    if (typeof handler === 'function') {
-      handler(e);
-    }
-  };
-
-  const handleFocus = (handler) => (e) => {
-    if (typeof handler === 'function') {
-      handler(e);
-    }
-    setFocusedItem(e);
-  };
-
-  const handleKeyDown = useCallback(
-    (e) => {
-      const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
-      if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
-        actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
-      }
-      if (e.key === 'ArrowUp' && currentIndex > 0) {
-        actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
-      }
-    },
-    [childrenLength, actionBtnsRef.current]
-  );
-
   const renderActionSheetButton = (element, index: number, childrenArray) => {
-    return cloneElement(element, {
-      role: 'button',
-      'aria-label': `${i18nBundle.getText(X_OF_Y, index + 1, childrenArray.length)} ${element.props?.children}`,
-      key: index,
-      tabIndex: focusedItem === index ? 0 : -1,
-      ...element.props,
-      design: ButtonDesign.Transparent,
-      onClick: onActionButtonClicked(element.props?.onClick),
-      onFocus: handleFocus(element.props?.onFocus),
-      'data-action-btn-index': index
-    });
+    return (
+      <ActionSheetButton
+        key={index}
+        index={index}
+        totalLength={childrenArray.length}
+        tabIndex={focusedItem === index ? 0 : -1}
+        {...element.props}
+        onClick={(e) => {
+          popoverRef.current.close();
+          if (typeof element.props?.onClick === 'function') {
+            element.props?.onClick(e);
+          }
+        }}
+        onFocus={(e) => {
+          if (typeof element.props?.onFocus === 'function') {
+            element.props?.onFocus(e);
+          }
+          setFocusedItem(e);
+        }}
+      />
+    );
   };
 
-  const handleAfterOpen = useCallback(
-    (e) => {
-      if (isPhone()) {
-        actionBtnsRef.current.querySelector(`[data-action-btn-index="${focusedItem}"]`).focus();
-      }
-      if (typeof onAfterOpen === 'function') {
-        onAfterOpen(e);
-      }
-    },
-    [onAfterOpen, actionBtnsRef.current, focusedItem]
-  );
+  const handleAfterOpen = (e) => {
+    if (isPhone()) {
+      actionBtnsRef.current.querySelector(`[data-action-btn-index="${focusedItem}"]`).focus();
+    }
+    if (typeof onAfterOpen === 'function') {
+      onAfterOpen(e);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
+    if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
+      e.preventDefault();
+      actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
+    }
+    if (e.key === 'ArrowUp' && currentIndex > 0) {
+      e.preventDefault();
+      actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
+    }
+  };
+
   const displayHeader = alwaysShowHeader || isPhone();
   return createPortal(
     <ResponsivePopover
@@ -192,6 +221,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       onAfterClose={onAfterClose}
       onBeforeClose={onBeforeClose}
       onBeforeOpen={onBeforeOpen}
+      accessibleName={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
       {...rest}
       onAfterOpen={handleAfterOpen}
       ref={componentRef}
@@ -202,7 +232,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
         className={isPhone() ? classes.contentMobile : undefined}
         data-component-name="ActionSheetMobileContent"
         role={a11yConfig?.actionSheetMobileContent?.role ?? 'application'}
-        aria-label={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
         onKeyDown={handleKeyDown}
         ref={actionBtnsRef}
       >

@@ -28,7 +28,7 @@ export interface SideNavigationSubItemPropTypes extends SideNavigationSubItemAtt
 /**
  * The `SideNavigationSubItem` is intended to be used inside a `SideNavigationItem` only.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigationSubItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigation" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',

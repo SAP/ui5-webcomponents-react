@@ -11,9 +11,9 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 1000 * 60, // 5 minutes
-      cacheTime: Infinity, // do not delete stale data
-    },
-  },
+      cacheTime: Infinity // do not delete stale data
+    }
+  }
 });
 
 const customRender = (ui, { route = ROUTES.HOME, ...renderOptions } = {}) => {
@@ -32,12 +32,14 @@ export const serverCustom = (apiUrl, data) => {
   return setupServer(
     rest.get(`*${apiUrl}`, (req, res, ctx) => {
       return res(ctx.json(data));
-    }),
+    })
   );
 };
 
 // re-export everything
+// eslint-disable-next-line import/export
 export * from '@testing-library/react';
 
 // override render method
+// eslint-disable-next-line import/export
 export { customRender as render };

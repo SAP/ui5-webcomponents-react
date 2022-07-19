@@ -2,11 +2,12 @@
 
 exports[`Analytical Card Render without Crashing 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
@@ -14,38 +15,75 @@ exports[`Analytical Card Render without Crashing 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;
 
 exports[`Analytical Card with AnalyticalCardHeader 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div
+      aria-labelledby="1337-title 1337-mainIndicator"
+      aria-roledescription="Card Header"
       class="AnalyticalCardHeader-cardHeader"
+      data-sap-ui-fastnavgroup="true"
+      id="1337"
+      role="heading"
+      slot="header"
+      tabindex="0"
     >
-      <div
-        class="AnalyticalCardHeader-headerContent"
-      >
+      <div>
         <div
           class="AnalyticalCardHeader-headerTitles"
         >
           <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
+            class="AnalyticalCardHeader-headerFirstLine"
           >
-            <div
+            <span
+              aria-level="3"
               class="AnalyticalCardHeader-headerText"
+              id="1337-title"
+              role="heading"
             >
               Header Title
+            </span>
+          </div>
+        </div>
+        <div
+          class="AnalyticalCardHeader-kpiContent"
+        >
+          <div
+            aria-label="undefinedundefined
+"
+            class="AnalyticalCardHeader-mainIndicator"
+            id="1337-mainIndicator"
+            role="img"
+          >
+            <span
+              class="AnalyticalCardHeader-value"
+            />
+            <div
+              class="AnalyticalCardHeader-indicatorAndUnit"
+            >
+              <div
+                class="AnalyticalCardHeader-unit"
+              />
             </div>
           </div>
+          <div
+            class="AnalyticalCardHeader-indicatorGap"
+          />
+          <div
+            class="AnalyticalCardHeader-sideIndicators"
+          />
         </div>
       </div>
     </div>
     <div
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
@@ -53,20 +91,21 @@ exports[`Analytical Card with AnalyticalCardHeader 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;
 
 exports[`Analytical Card with custom header 1`] = `
 <DocumentFragment>
-  <div
-    class="AnalyticalCard-card"
+  <ui5-card
+    ui5-card=""
   >
     <div>
       I'm a header!
     </div>
     <div
       class="AnalyticalCard-content"
+      role="group"
     >
       <span
         class="Text-text"
@@ -74,6 +113,6 @@ exports[`Analytical Card with custom header 1`] = `
         I'm a content!
       </span>
     </div>
-  </div>
+  </ui5-card>
 </DocumentFragment>
 `;

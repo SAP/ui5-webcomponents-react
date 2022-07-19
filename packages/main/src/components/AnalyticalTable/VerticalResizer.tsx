@@ -1,8 +1,8 @@
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import { DRAG_TO_RESIZE } from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults';
 
 const verticalResizerStyles = {
   container: {

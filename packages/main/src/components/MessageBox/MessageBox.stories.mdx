@@ -1,8 +1,10 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { useEffect, useState } from 'react';
 import { Button, MessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
+import { isChromatic } from '../../../../../.storybook/utils';
 
 <Meta
   title="Modals & Popovers / MessageBox"
@@ -23,6 +25,9 @@ import { Button, MessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
     type: MessageBoxTypes.Confirm,
     children: 'Press "Escape" to close the MessageBox.'
   }}
+  parameters={{
+    chromatic: { delay: 1000 }
+  }}
 />
 
 <DocsHeader />
@@ -34,7 +39,7 @@ import { Button, MessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const [open, setOpen] = useState(false);
+      const [open, setOpen] = useState(isChromatic || args.open);
       const onButtonClick = () => {
         setOpen(true);
       };
@@ -57,7 +62,7 @@ import { Button, MessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 ## Methods
 

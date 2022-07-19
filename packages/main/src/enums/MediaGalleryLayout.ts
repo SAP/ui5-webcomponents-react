@@ -1,7 +1,7 @@
 // Generated file - do not change manually!
 
 /**
- * Defines the layout type of the thumbnails list of the `MediaGallery` component.
+ * Defines the layout type of the thumbnails list of the <code>MediaGallery</code> component.
  */
 export enum MediaGalleryLayout {
   /**

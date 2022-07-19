@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { List } from './index';
 import { ProgressIndicator } from '../ProgressIndicator';
 import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
@@ -15,6 +16,7 @@ import { CustomListItem } from '../CustomListItem';
 import { GroupHeaderListItem } from '../GroupHeaderListItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ListDescription.md';
 import '@ui5/webcomponents-icons/dist/employee.js';
 
 <Meta
@@ -55,7 +57,9 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 <br />
 
@@ -65,8 +69,8 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 
 ## StandardListItem
 
-The <code>StandardListItem</code> represents the simplest type of item for a <code>StandardListItemst</code>. This is a
-list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>
+The `StandardListItem` represents the simplest type of an item in a `List`. It is a
+list item, providing the most common use cases like displaying a `text`, `image` and `icon`.
 
 <Canvas>
   <Story
@@ -100,13 +104,24 @@ list item, providing the most common use cases such as <code>text</code>, <code>
         description: `Defines the state of the <code>additionalTextState</code>. <br> Available options are: <code>"None"</code> (by default), <code>"Success"</code>, <code>"Warning"</code>, <code>"Information"</code> and <code>"Erorr"</code>.`
       },
       type: {
-        description: `Defines the visual indication and behavior of the list items. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while with type <code>Inactive</code> and <code>Detail</code> - will not.`
+        description: `Defines the visual indication and behavior of the list items. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while with type <code>Inactive</code> and <code>Detail</code> - will not.`,
+        control: { type: 'select' },
+        options: ListItemType
       },
-      selected: { description: `Defines the selected state of the <code>ListItem</code>.` },
+      selected: {
+        description: `Defines the selected state of the <code>ListItem</code>.`
+      },
       children: {
         description: `Defines the text of the <code>StandardListItem</code>. <br><br> <b>Note:</b> Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.`
       },
+      onDetailClick: {
+        description: `Fired when the user clicks on the detail button when type is \`Detail\`.`,
+        control: { action: 'onDetailClick' }
+      },
+      accessibleNameRef: { table: { disable: true } },
+      accessibleRole: { table: { disable: true } },
       busy: { table: { disable: true } },
+      busyDelay: { table: { disable: true } },
       footerText: { table: { disable: true } },
       headerText: { table: { disable: true } },
       growing: { table: { disable: true } },
@@ -133,7 +148,10 @@ list item, providing the most common use cases such as <code>text</code>, <code>
   </Story>
 </Canvas>
 
-<ArgsTable story="with StandardListItem" />
+<ArgsTableWithNote
+  story="with StandardListItem"
+  noteText={`The props in the table below are part of the "StandardListItem" component.`}
+/>
 
 <br />
 

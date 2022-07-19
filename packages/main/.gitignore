@@ -9,3 +9,4 @@
 /scripts/wrapperGeneration/dist
 /dist
 /wrappers
+src/i18n/i18n-defaults.ts

@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MultiInput } from './index';
 import { InputType } from '../../enums/InputType';
 import { ValueState } from '../../enums/ValueState';
@@ -20,14 +21,11 @@ import { Footer } from '@docs/Footer';
   args={{
     type: InputType.Text,
     valueState: ValueState.None,
-    style: { width: '400px' },
-    className: '',
-    slot: '',
-    ref: null
+    style: { width: '400px' }
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.11.0" />
 
 <br />
 
@@ -63,7 +61,7 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 ## Render SuggestionItems
 

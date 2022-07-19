@@ -1,17 +1,18 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import { AnalyticalCard } from './index';
-import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
-import { DeviationIndicator } from '../../enums/DeviationIndicator';
-import { ValueState } from '../../enums/ValueState';
 import { LineChart } from '@ui5/webcomponents-react-charts';
+import { DeviationIndicator, ValueColor } from '../../enums';
+import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
+import { NumericSideIndicator } from '../NumericSideIndicator';
+import { AnalyticalCard } from './index';
 
 <Meta
   title="Data Display / AnalyticalCard"
   component={AnalyticalCard}
-  subcomponents={{ AnalyticalCardHeader }}
+  subcomponents={{ AnalyticalCardHeader, NumericSideIndicator }}
   argTypes={{
     header: {
       control: { disable: true }
@@ -59,21 +60,18 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
         <AnalyticalCard
           header={
             <AnalyticalCardHeader
-              titleText="Title"
-              subtitleText="Sub Title"
-              arrowIndicator={DeviationIndicator.Down}
-              indicatorState={ValueState.Success}
-              value="Value"
-              valueState={ValueState.Success}
-              unit="Unit"
-              target="Target"
-              deviation="Deviation"
-              showIndicator
-              description="Description"
-              counter="Counter"
-              counterState={ValueState.Success}
-              currency="EUR"
-            />
+              titleText="Project Cloud Transformation"
+              subtitleText="Revenue"
+              unitOfMeasurement="EUR"
+              trend={DeviationIndicator.Down}
+              value="65.34"
+              state={ValueColor.Error}
+              scale="K"
+              description="Q1, 2018"
+            >
+              <NumericSideIndicator titleText="Target" number="100" unit="k" />
+              <NumericSideIndicator titleText="Deviation" number="34.7" unit="%" state={ValueColor.Critical} />
+            </AnalyticalCardHeader>
           }
         >
           <LineChart
@@ -91,7 +89,7 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="^" />
 
 <br />
 <br />
@@ -108,33 +106,43 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
     args={{
       titleText: 'Project Cost',
       subtitleText: 'All active Projects',
-      arrowIndicator: DeviationIndicator.Down,
-      indicatorState: ValueState.Success,
+      trend: DeviationIndicator.Down,
       value: '100',
-      valueState: ValueState.Success,
-      unit: 'M',
-      target: '120M',
-      deviation: '-16.67%',
-      showIndicator: true,
+      state: ValueColor.Good,
+      scale: 'M',
       description: 'Current Year',
-      counter: '+',
-      counterState: ValueState.Success,
-      currency: 'USD'
+      status: '+',
+      unitOfMeasurement: 'USD'
     }}
     argTypes={{
-      titleText: { description: 'Defines the title of the `AnalyticalCardHeader`.' },
-      subtitleText: { description: 'Defines the sub title of the `AnalyticalCardHeader`.' },
-      value: { description: 'Defines the value of the `AnalyticalCardHeader`.' },
-      unit: { description: 'Defines the unit displayed next to the value of the `AnalyticalCardHeader`.' },
-      target: { description: 'Defines the target value.' },
-      deviation: { description: 'Defines the deviation value.' },
-      showIndicator: { description: 'Defines whether the deviation indicator should be displayed.' },
-      description: { description: 'Defines the description below the value of the `AnalyticalCardHeader`.' },
-      counter: { description: 'Defines the counter in the upper right corner of the `AnalyticalCardHeader`.' },
-      currency: { description: 'Defines the currency.' },
+      state: {
+        description: `The semantic color which represents the state of the main number indicator.
+Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>`,
+        control: 'select',
+        options: ValueColor
+      },
+      titleText: { description: 'The title of the card' },
+      subtitleText: { description: 'The subtitle of the card' },
+      trend: {
+        control: 'select',
+        options: DeviationIndicator,
+        description: 'The direction of the trend arrow. Shows deviation for the value of the main number indicator.'
+      },
+      value: { description: 'The numeric value of the main number indicator.' },
+      scale: {
+        description:
+          'Defines the unit of measurement (scaling prefix) for the main indicator. Financial characters can be used for currencies and counters. The International System of Units (SI) prefixes can be used.'
+      },
+      description: { description: 'Additional text which adds more details to what is shown in the numeric header.' },
+      status: { description: 'Defines the status text.' },
+      unitOfMeasurement: {
+        description: 'General unit of measurement for the header. Displayed as side information to the subtitle.'
+      },
       onClick: { description: 'Fired when the `AnalyticalCardHeader` header is clicked.' },
+      children: {
+        description: `Additional side number indicators. For example "Deviation" and "Target". Not more than two side indicators should be used.\n\n__Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use \`NumericSideIndicator\` in order to preserve the intended design.\n\n __This prop is not required!__`
+      },
       header: { table: { disable: true } },
-      children: { table: { disable: true } },
       ref: { table: { disable: true } }
     }}
   >
@@ -164,23 +172,10 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
       return (
         <AnalyticalCard
           header={
-            <AnalyticalCardHeader
-              titleText={args.titleText}
-              subtitleText={args.subtitleText}
-              arrowIndicator={args.arrowIndicator}
-              indicatorState={args.indicatorState}
-              value={args.value}
-              valueState={args.valueState}
-              unit={args.unit}
-              target={args.target}
-              deviation={args.deviation}
-              onClick={args.onClick}
-              showIndicator={args.showIndicator}
-              description={args.description}
-              counter={args.counter}
-              counterState={args.counterState}
-              currency={args.currency}
-            />
+            <AnalyticalCardHeader {...args}>
+              <NumericSideIndicator titleText="Indicator1" number="12" />
+              <NumericSideIndicator titleText="Indicator2" number="5" />
+            </AnalyticalCardHeader>
           }
         >
           <LineChart
@@ -196,6 +191,15 @@ import { LineChart } from '@ui5/webcomponents-react-charts';
   </Story>
 </Canvas>
 
-<ArgsTable story="Customizable header" />
+<ArgsTableWithNote
+  story="Customizable header"
+  noteText={
+    <>
+      {`The props in the table below are part of the "AnalyticalCardHeader" component.`}
+      <br />
+      {`This component supports all HTML attributes.`}
+    </>
+  }
+/>
 
 <Footer />

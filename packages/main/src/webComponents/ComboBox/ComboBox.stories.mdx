@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
@@ -11,6 +12,7 @@ import { ComboBoxItem } from '../ComboBoxItem';
 import { ComboBoxGroupItem } from '../ComboBoxGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ComboBoxDescription.md';
 
 <Meta
   title="Inputs / ComboBox"
@@ -27,7 +29,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.9.0" />
 
 <br />
 
@@ -51,25 +53,9 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Structure
-
-The `ComboBox` consists of the following elements:
-
-- Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.
-- Drop-down arrow - expands\\collapses the option list.
-- Option list - the list of available options.
-
-## Keyboard Handling
-
-The `ComboBox` provides advanced keyboard handling.
-
-### Picker
-
-If the `ComboBox` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys.
-
-<br />
+<Description />
 
 # More Examples
 

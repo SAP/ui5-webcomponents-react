@@ -29,8 +29,8 @@ interface AvatarAttributes {
    */
   colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
   /**
-   * Defines the name of the UI5 Icon, that would be displayed.
-   * **Note:** If `image` slot is provided, the property would be ignored.
+   * Defines the name of the UI5 Icon, that will be displayed.
+   * **Note:** If `image` slot is provided, the property will be ignored.
    * **Note:** You should import the desired icon first, then use its name as "icon".
    *
    * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
@@ -46,7 +46,7 @@ interface AvatarAttributes {
    */
   initials?: string;
   /**
-   * Defines if the avatar is interactive (focusable and pressable)
+   * Defines if the avatar is interactive (focusable and pressable).
    */
   interactive?: boolean;
   /**
@@ -78,15 +78,13 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
    * Receives the desired `<img>` tag **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *
-   * **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
-   *
-   * `Avatar:not(:defined) {  visibility: hidden;   }   `
+   * `Avatar:not(:defined) {    visibility: hidden;   }   `
    */
   children?: ReactNode;
 }
 
 /**
- * An image-like control that has different display options for representing images and icons in different shapes and sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
+ * An image-like component that has different display options for representing images and icons in different shapes and sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
  */

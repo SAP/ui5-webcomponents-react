@@ -1,10 +1,12 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 import { useReducer, useState } from 'react';
 import {
   Badge,
@@ -36,6 +38,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
   title="Layouts & Floorplans / DynamicPage"
   component={DynamicPage}
   subcomponents={{ DynamicPageTitle, DynamicPageHeader }}
+  parameters={{
+    chromatic: { delay: 1000 }
+  }}
   argTypes={{
     title: {
       control: { disable: true }
@@ -130,7 +135,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 # More Examples
 
@@ -142,7 +147,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
     args={{ alwaysShowContentHeader: true, showHideHeaderButton: true, headerContentPinnable: true }}
   >
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with fixed header.">
           {collapsed ? (
@@ -207,7 +212,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
               ]
         );
       };
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with Variants">
           {collapsed ? (
@@ -257,7 +262,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 <Canvas>
   <Story name="with floating footer">
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with floating footer">
           {collapsed ? (

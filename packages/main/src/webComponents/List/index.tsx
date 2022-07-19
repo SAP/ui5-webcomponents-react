@@ -90,42 +90,42 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
    * **Note:** When `header` is set, the `headerText` property is ignored.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   header?: ReactNode | ReactNode[];
   /**
    * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
-  onItemClick?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the `Close` button of any item is clicked
    *
    * **Note:** This event is only applicable to list items that can be closed (such as notification list items), not to be confused with `onItemDelete`.
    */
-  onItemClose?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemClose?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    */
-  onItemToggle?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
-  onLoadMore?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<HTMLElement, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+    event: Ui5CustomEvent<ListDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
   ) => void;
 }
 

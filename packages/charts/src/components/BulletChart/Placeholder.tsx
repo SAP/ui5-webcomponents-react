@@ -1,6 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import { IChartMeasure } from '../../interfaces/IChartMeasure';
 
 const barContentVertical = (
   <>
@@ -38,7 +39,12 @@ const barContentHorizontal = (
   </>
 );
 
-export const BulletChartPlaceholder = ({ layout, measures }) => {
+interface BulletChartPlaceholderPropTypes {
+  layout: 'vertical' | 'horizontal';
+  measures: (IChartMeasure & { type: string })[];
+}
+
+export const BulletChartPlaceholder = ({ layout, measures }: BulletChartPlaceholderPropTypes) => {
   const distinctElements = new Set(measures.map((item) => item.type));
 
   return (

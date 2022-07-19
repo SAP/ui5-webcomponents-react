@@ -1,7 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Slider } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './SliderDescription.md';
 
 <Meta
   title="Inputs / Slider"
@@ -9,15 +11,9 @@ import { Footer } from '@docs/Footer';
   argTypes={{
     children: { control: { disable: true } }
   }}
-  args={{
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
-  }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.13.0" />
 
 <br />
 
@@ -33,29 +29,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Structure
-
-The most important properties of the Slider are:
-
-- min - The minimum value of the slider range
-- max - The maximum value of the slider range
-- value - The current value of the slider
-- step - Determines the increments in which the slider will move
-- showTooltip - Determines if a tooltip should be displayed above the handle
-- showTickmarks - Displays a visual divider between the step values
-- labelInterval - Labels some or all of the tickmarks with their values.
-
-## Usage
-
-The most common usecase is to select values on a continuous numerical scale (e.g. temperature, volume, etc. ).
-
-## Responsive Behavior
-
-The `Slider` component adjusts to the size of its parent container by recalculating and resizing the width of the control. You can move the slider handle in several different ways:
-
-- Drag and drop to the desired value
-- Click/tap on the range bar to move the handle to that location
+<Description />
 
 <Footer />

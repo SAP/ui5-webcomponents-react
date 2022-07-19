@@ -5,8 +5,8 @@ const style = {
   centered: {
     minWidth: isPhone() ? '80%' : '50%',
     padding: '1rem',
-    margin: '0 auto',
-  },
+    margin: '0 auto'
+  }
 };
 
 const CenteredContent = (props) => {

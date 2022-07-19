@@ -3,10 +3,13 @@ import { Footer } from '@docs/Footer';
 import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
 import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
 import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
+import { isChromatic } from '../../../../../.storybook/utils';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
@@ -14,10 +17,14 @@ import {
   Badge,
   BusyIndicator,
   Button,
+  CheckBox,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxJustifyContent,
+  Input,
+  InputType,
+  Label,
   MessageStrip,
   Panel,
   SegmentedButton,
@@ -36,6 +43,9 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 <Meta
   title="Data Display / AnalyticalTable"
   component={AnalyticalTable}
+  parameters={{
+    chromatic: { delay: 1000 }
+  }}
   args={{
     data: dataLarge,
     columns: [
@@ -90,12 +100,18 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
         accessor: '.',
         width: 100,
         disableResizing: true,
-        Cell: ({ cell, row }) => {
+        disableGroupBy: true,
+        disableFilters: true,
+        disableSortBy: true,
+        Cell: (instance) => {
+          const { cell, row, webComponentsReactProperties } = instance;
+          // disable buttons if overlay is active to prevent focus
+          const isOverlay = webComponentsReactProperties.showOverlay;
           // console.log('This is your row data', row.original);
           return (
             <FlexBox>
-              <Button icon="edit" />
-              <Button icon="delete" />
+              <Button icon="edit" disabled={isOverlay} />
+              <Button icon="delete" disabled={isOverlay} />
             </FlexBox>
           );
         }
@@ -147,13 +163,135 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 
 ## Example
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
 </Canvas>
 
+### Code
+
+<details>
+    
+    <summary>Show Code</summary>
+
+```jsx
+<AnalyticalTable
+  columns={[
+    {
+      Header: 'Name',
+      accessor: 'name',
+      headerTooltip: 'Full Name'
+    },
+    {
+      Header: 'Age',
+      accessor: 'age',
+      className: 'superCustomClass',
+      disableFilters: false,
+      disableGroupBy: true,
+      disableSortBy: false,
+      hAlign: 'End'
+    },
+    {
+      Header: 'Friend Name',
+      accessor: 'friend.name'
+    },
+    {
+      accessor: 'friend.age',
+      hAlign: 'End',
+      Header: () => <span>Friend Age</span>,
+      filter: (rows, accessor, filterValue) => {
+        if (filterValue === 'all') {
+          return rows;
+        }
+        if (filterValue === 'true') {
+          return rows.filter((row) => row.values[accessor] >= 21);
+        }
+        return rows.filter((row) => row.values[accessor] < 21);
+      },
+      Filter: ({ column }) => {
+        return (
+          <select
+            onChange={(event) => column.setFilter(event.target.value)}
+            style={{ width: '100%' }}
+            value={column.filterValue ? column.filterValue : 'all'}
+          >
+            <option value="all">Show All</option>
+            <option value="true">Can Drink</option>
+            <option value="false">Can't Drink</option>
+          </select>
+        );
+      }
+    },
+    {
+      Cell: (instance) => {
+        const { cell, row, webComponentsReactProperties } = instance;
+        // disable buttons if overlay is active to prevent focus
+        const isOverlay = webComponentsReactProperties.showOverlay;
+        // console.log('This is your row data', row.original);
+        return (
+          <FlexBox>
+            <Button icon="edit" disabled={isOverlay} />
+            <Button icon="delete" disabled={isOverlay} />
+          </FlexBox>
+        );
+      },
+      Header: 'Actions',
+      accessor: '.',
+      disableFilters: true,
+      disableGroupBy: true,
+      disableResizing: true,
+      disableSortBy: true,
+      id: 'actions',
+      width: 100
+    }
+  ]}
+  data={[
+    {
+      age: 80,
+      friend: {
+        age: 68,
+        name: 'Carver Vance'
+      },
+      name: 'Allen Best',
+      status: 'Success'
+    },
+    {
+      age: 31,
+      friend: {
+        age: 70,
+        name: 'Strickland Gallegos'
+      },
+      name: 'Combs Fleming',
+      status: 'None'
+    }
+    // shortened for readability
+  ]}
+  filterable
+  groupBy={[]}
+  groupable
+  header="Table Title"
+  infiniteScroll
+  onColumnsReordered={() => {}}
+  onGroup={() => {}}
+  onLoadMore={() => {}}
+  onRowClick={() => {}}
+  onRowExpandChange={() => {}}
+  onRowSelected={() => {}}
+  onSort={() => {}}
+  onTableScroll={() => {}}
+  rowHeight={44}
+  selectedRowIds={{
+    3: true
+  }}
+  selectionMode="SingleSelect"
+  withRowHighlight
+/>
+```
+
+</details>
+
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="Default" />
 
 ## Column Properties
 
@@ -227,7 +365,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 **Note:** The "Select All" checkbox is not available with this hook.
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="Plugin: useRowDisableSelection"
     args={{
@@ -238,7 +376,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
     {(args) => {
       const disableRowFunc = (row) => row.original.age < 40;
       const [isFunc, setIsFunc] = useState(true);
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useRowDisableSelection example">
           {collapsed ? (
@@ -279,6 +417,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
                   data={args.data}
                   columns={args.columns}
                   selectionMode={args.selectionMode}
+                  selectionBehavior={args.selectionBehavior}
                   tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
                   visibleRows={10}
                   header={`All with "disableSelection: true" are not selectable`}
@@ -293,6 +432,10 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 </Canvas>
 
 #### Code
+
+<details>
+
+<summary>Show Code</summary>
 
 ```jsx
 const WithFunctionParameter = () => {
@@ -328,6 +471,8 @@ const data = [
 };
 ```
 
+</details>
+
 ### MultiSelect with indeterminate state
 
 The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
@@ -335,10 +480,10 @@ When using this hook, it is recommended to also select all sub-rows when selecti
 
 _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Plugin: useIndeterminateRowSelection" args={{ data: dataTree }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useIndeterminateRowSelection example">
@@ -378,6 +523,171 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 />
 ```
 
+### Manual control of selected lines
+
+The `useManualRowSelect` plugin hook allows controlling the selected rows manually. It accepts a parameter (`manualRowSelectedKey`) which defaults to `isSelected`.
+If this key is found on the original data row, and it is `true`, this row will be manually selected.
+
+<Canvas withSource="none">
+  <Story name="Plugin: useManualRowSelect" args={{ data: dataManualSelect }}>
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const [collapsedCode, setCollapsedCode] = useReducer((coll) => !coll, true);
+      const [data, toggleFirstRowSelected] = useReducer((prev) => {
+        const [, ...updatedData] = prev;
+        if (prev[0].isSelected) {
+          return [{ ...prev[0], isSelected: false }, ...updatedData];
+        } else {
+          return [{ ...prev[0], isSelected: true }, ...updatedData];
+        }
+      }, args.data);
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useManualRowSelect example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <Button onClick={toggleFirstRowSelected}>Toggle `isSelected` of 1st row</Button>
+              <br />
+              <Label>Clicking this button will refresh the data array passed to the `data` prop.</Label>
+              <br />
+              <br />
+              <AnalyticalTable
+                selectionMode={TableSelectionMode.MultiSelect}
+                data={data}
+                columns={args.columns}
+                tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
+              />
+              <Button onClick={setCollapsedCode}>Show first entries in data array</Button>
+              {!collapsedCode && (
+                <FlexBox direction="Column">
+                  <span>{JSON.stringify(data[0], null, 2)}</span>
+                  <span>{JSON.stringify(data[1], null, 2)}</span>
+                  <span>{JSON.stringify(data[2], null, 2)}</span>
+                  <span>{JSON.stringify(data[3], null, 2)}</span>
+                  <span>{JSON.stringify(data[4], null, 2)}</span>
+                  <span>...</span>
+                </FlexBox>
+              )}
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+```jsx
+<AnalyticalTable
+  selectionMode={TableSelectionMode.MultiSelect}
+  data={data}
+  columns={columns}
+  // you could also omit the `'isSelected'`, as this is the default value
+  tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
+/>
+```
+
+### Callback for column resize
+
+The `useOnColumnResize` plugin hook allows firing a callback when a columns size has changed by dragging the "Resizer".
+The first parameter is the callback itself (`e: { columnWidth: number; header: Record<string, any> }) => void;`), the second one are the optional `options` for controlling how often the callback should fire.
+
+`options`:
+
+- `liveUpdate`: If `liveUpdate` is `true`, the resize function will fire every time the width has changed depending on the `options.wait` delay.
+- `wait`: The number of milliseconds for which the calls are to be delayed. **Defaults to `100`**. (Only has an effect if `liveUpdate` is `true`)
+
+_ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
+
+<Canvas withSource="none">
+  <Story name="Plugin: useOnColumnResize">
+    {(args) => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const [useColResizeEvent, setUseColResizeEvent] = useState({});
+      const [liveUpdate, setLiveUpdate] = useState(false);
+      const [wait, setWait] = useState(100);
+      const handleLiveUpdateChange = (e) => {
+        setLiveUpdate(e.target.checked);
+      };
+      const handleWaitChange = (e) => {
+        setWait(parseInt(e.target.value));
+      };
+      const handleColWidthUpdate = (e) => {
+        setUseColResizeEvent(e);
+      };
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show useOnColumnResize example">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <>
+              <AnalyticalTable
+                extension={
+                  <>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                      <Label>liveUpdate: </Label>
+                      <CheckBox onChange={handleLiveUpdateChange} checked={liveUpdate} />
+                    </FlexBox>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                      <Label>wait: </Label>
+                      <Input onInput={handleWaitChange} type={InputType.Number} value={`${wait}`} />
+                    </FlexBox>
+                    <br />
+                  </>
+                }
+                data={args.data}
+                columns={args.columns}
+                tableHooks={[AnalyticalTableHooks.useOnColumnResize(handleColWidthUpdate, { liveUpdate, wait })]}
+              />
+              {!!Object.keys(useColResizeEvent).length && (
+                <FlexBox direction={FlexBoxDirection.Column}>
+                  <br />
+                  <Text>Last fired callback of changed column:</Text>
+                  <br />
+                  <FlexBox>
+                    <Label>Column:</Label>
+                    <Text>{useColResizeEvent.header.id}</Text>
+                  </FlexBox>
+                  <FlexBox>
+                    <Label>Width:</Label>
+                    <Text>{useColResizeEvent.columnWidth}</Text>
+                  </FlexBox>
+                </FlexBox>
+              )}
+            </>
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Code
+
+```jsx
+const TableComponent = (props) => {
+  const handleColumResize = (e) => {
+    console.log(e.columnWidth, e.header);
+  };
+  return (
+    <AnalyticalTable
+      data={props.data}
+      columns={props.columns}
+      tableHooks={[
+        AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
+          liveUpdate: false,
+          wait: 100
+        })
+      ]}
+    />
+  );
+};
+```
+
 <br />
 
 ## Recipes
@@ -407,7 +717,7 @@ export const TableWithCustomHook = (props) => {
 ```
 
 With the `customHook` callback you can plugin in all available hooks. Please note that some hooks need a return value (e.g. `columns`) which is then always the first parameter of the function, and others are not allowed to return a value (e.g. `useTable`).
-For further details please refer to the [`react-table` documentation](https://react-table.tanstack.com/docs/api/overview).
+For further details please refer to the [`react-table` documentation](https://react-table-v7.tanstack.com/docs/api/overview).
 
 ### How to select rows containing active elements
 
@@ -455,7 +765,7 @@ React.useEffect(() => {
 />
 ```
 
-For more details on this behavior you can double check the [react-table docs](https://react-table.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+For more details on this behavior you can double check the [react-table docs](https://react-table-v7.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
 
 ### How to scroll to a specific row/offset?
 
@@ -474,10 +784,10 @@ The instance of the `AnalyticalTable` exposes methods for scrolling to a specifi
 
 ## Tree Table
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Tree Table" args={{ data: dataTree, isTreeTable: true }}>
     {(args) => {
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show Tree Table">
           {collapsed ? (
@@ -528,7 +838,7 @@ In this example the default key for sub row detection is used (`subRows`), you c
 
 The table initially contains 50 rows, when the last 10 rows are reached the table will load more data.
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Infinite Scrolling">
     {(args) => {
       const [data, setData] = useState(args.data.slice(0, 50));
@@ -546,7 +856,7 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
           }, 2000);
         }
       }, [loading, args.data, offset.current]);
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show infinite scroll table">
           {collapsed ? (
@@ -571,6 +881,10 @@ The table initially contains 50 rows, when the last 10 rows are reached the tabl
 </Canvas>
 
 ### Code
+
+<details>
+
+<summary>Show Code</summary>
 
 ```jsx
 const InfiniteScrollTable = (props) => {
@@ -603,6 +917,8 @@ const InfiniteScrollTable = (props) => {
 };
 ```
 
+</details>
+
 ## AnalyticalTable with subcomponents
 
 Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
@@ -610,9 +926,9 @@ The prop expects a function with an optional parameter containing the `row` inst
 
 **Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
 
-<ArgsTable story="with subcomponents" />
+<ArgsTableWithNote story="with subcomponents" hideHTMLPropsNote />
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="with subcomponents"
     args={{ data: dataSmall }}
@@ -665,7 +981,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       tableInstance: { table: { disable: true } },
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
-      portalContainer: { table: { disable: true } }
+      portalContainer: { table: { disable: true } },
+      showOverlay: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -725,6 +1042,10 @@ The prop expects a function with an optional parameter containing the `row` inst
 
 ### Code
 
+<details>
+
+<summary>Show Code</summary>
+
 ```jsx
 const TableWithSubcomponents = (props) => {
   const renderRowSubComponent = (row) => {
@@ -780,13 +1101,15 @@ const TableWithSubcomponents = (props) => {
 };
 ```
 
+</details>
+
 ## Adjust the number of visible rows to the container height
 
 By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
 
-<ArgsTable story="Adjust number of rows to container height" />
+<ArgsTableWithNote story="Adjust number of rows to container height" hideHTMLPropsNote />
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="Adjust number of rows to container height"
     args={{ visibleRowCountMode: TableVisibleRowCountMode.Auto, containerHeight: 250 }}
@@ -842,6 +1165,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       portalContainer: { table: { disable: true } },
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
+      showOverlay: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -869,7 +1193,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
 
 ## Responsively display columns on small devices (Pop-In)
 
-<ArgsTable story="Responsive columns" />
+<ArgsTableWithNote story="Responsive columns" hideHTMLPropsNote />
 
 To responsively hide columns or move content to the first column, you can add the `responsiveMinWidth` column option. If
 you want the column to "pop-in" the `responsivePopIn` has to be set to `true`, otherwise the column will be hidden when the
@@ -882,7 +1206,7 @@ In the example below you can have a look at this behavior:
 - `600`: The content of the "Age" column is moved to the first column (`responsiveMinWidth: 601`) and receives a custom header.
 - `400`: The content of the "Friend Name" column is moved to the first column and the "Friend Age" column is hidden (`responsiveMinWidth: 401`). The "Friend Name" column also receives a custom header.
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="Responsive columns"
     args={{
@@ -984,6 +1308,7 @@ In the example below you can have a look at this behavior:
       tableInstance: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
+      showOverlay: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
@@ -1091,7 +1416,7 @@ With the `markNavigatedRow` callback it is possible to define when and how many 
 
 Click on any of the rows in the example below to display the "navigated" indicator in the navigation-column.
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="with navigation indicator"
     args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: dataSmall }}
@@ -1107,7 +1432,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
         },
         [selectedRow]
       );
-      const [collapsed, setCollapsed] = useReducer((coll) => !coll, true);
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with navigation indicator">
           {collapsed ? (

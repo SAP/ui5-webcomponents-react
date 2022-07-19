@@ -1,23 +1,21 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ProgressIndicator } from './index';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './ProgressIndicatorDescription.md';
 
 <Meta
   title="Data Display / ProgressIndicator"
   component={ProgressIndicator}
   args={{
     valueState: ValueState.None,
-    value: 50,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    value: 50
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -33,11 +31,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Responsive Behavior
-
-You can change the size of the Rating Indicator by changing its `width` or `height` CSS properties.  
-Example: `<ProgressIndicator style={{height: "2rem", width: "6rem"}} />` For the `ProgressIndicator`
+<Description />
 
 <Footer />

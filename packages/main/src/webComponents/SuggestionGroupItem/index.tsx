@@ -17,7 +17,7 @@ export interface SuggestionGroupItemPropTypes extends SuggestionGroupItemAttribu
 /**
  * The `SuggestionGroupItem` is type of suggestion item, that can be used to split the `Input` suggestions into groups
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SuggestionGroupItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, SuggestionGroupItemDomRef>(
   'ui5-suggestion-group-item',

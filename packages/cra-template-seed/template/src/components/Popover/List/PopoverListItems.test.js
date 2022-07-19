@@ -7,19 +7,19 @@ import PopoverListItems from './PopoverListItems';
 
 const popoverListItemsRef = {
   current: {
-    showAt: jest.fn(),
-  },
+    showAt: jest.fn()
+  }
 };
 
 const popoverItems = [
   {
     children: 'Language Switch',
-    icon: 'user-settings',
+    icon: 'user-settings'
   },
   {
     children: 'Theme Switch',
-    icon: 'customize',
-  },
+    icon: 'customize'
+  }
 ];
 
 describe('PopoverListItems.js Test Suite', () => {
@@ -30,7 +30,7 @@ describe('PopoverListItems.js Test Suite', () => {
           Open Popover
         </p>
         <PopoverListItems popoverRef={popoverListItemsRef} title="Some Title" items={popoverItems} />
-      </>,
+      </>
     );
   });
 

@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Token } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
@@ -10,15 +11,11 @@ import { Footer } from '@docs/Footer';
     closeIcon: { control: { disable: true } }
   }}
   args={{
-    text: 'Token',
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    text: 'Token'
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.11.0" />
 
 <br />
 
@@ -32,6 +29,6 @@ import { Footer } from '@docs/Footer';
   </Story>
 </Canvas>
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
 <Footer />

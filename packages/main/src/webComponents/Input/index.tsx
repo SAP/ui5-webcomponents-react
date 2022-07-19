@@ -132,7 +132,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * Defines the icon to be displayed in the component.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   icon?: ReactNode | ReactNode[];
   /**
@@ -145,7 +145,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base--page#adding-custom-components-to-slots).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   valueStateMessage?: ReactNode | ReactNode[];
   /**
@@ -153,21 +153,19 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onChange?: (event: Ui5CustomEvent<InputDomRef>) => void;
   /**
    * Fired when the value of the component changes at each keystroke, and when a suggestion item has been selected.
    */
-  onInput?: (event: Ui5CustomEvent<HTMLInputElement>) => void;
+  onInput?: (event: Ui5CustomEvent<InputDomRef>) => void;
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
-  onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement; targetRef: HTMLElement }>
-  ) => void;
+  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement; targetRef: HTMLElement }>) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<HTMLInputElement, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

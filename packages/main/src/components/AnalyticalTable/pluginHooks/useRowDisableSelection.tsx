@@ -20,7 +20,8 @@ const headerProps = (
   }
 ) => {
   if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
-    return [props, { onClick: undefined, onKeyDown: undefined }];
+    const style = { ...props.style, cursor: 'auto' };
+    return [props, { onClick: undefined, onKeyDown: undefined, style }];
   }
   return props;
 };
@@ -105,7 +106,8 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     ) {
       const { 'aria-label': _0, ...updatedCellProps } = cellProps;
       if (column.id === '__ui5wcr__internal_selection_column') {
-        return { ...updatedCellProps, 'aria-disabled': true };
+        const style = { ...cellProps.style, cursor: 'auto' };
+        return { ...updatedCellProps, 'aria-disabled': true, style };
       }
       const { 'aria-selected': _1, ...updatedCellProsWithOutSelected } = updatedCellProps;
       return updatedCellProsWithOutSelected;
@@ -116,7 +118,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
 
   const toggleRowSelectedProps = (rowProps, { row }) => {
     if (disableRowAccessor(row) === true) {
-      const { title, ...updatedRowProps } = rowProps;
+      const { title: _0, ...updatedRowProps } = rowProps;
       return updatedRowProps;
     }
     return rowProps;

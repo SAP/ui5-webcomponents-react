@@ -1,11 +1,13 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Switch } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './SwitchDescription.md';
 
 <Meta title="Inputs / Switch" component={Switch} />
 
-<DocsHeader />
+<DocsHeader since="0.4.0" />
 
 <br />
 
@@ -21,10 +23,8 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Keyboard Handling
-
-The state can be changed by pressing the Space and Enter keys.
+<Description />
 
 <Footer />

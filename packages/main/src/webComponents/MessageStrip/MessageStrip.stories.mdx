@@ -1,10 +1,12 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MessageStrip } from './index';
 import { MessageStripDesign } from '../../enums/MessageStripDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '../Icon';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './MessageStripDescription.md';
 
 <Meta
   title="Data Display / MessageStrip"
@@ -19,7 +21,7 @@ import { Footer } from '@docs/Footer';
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.4.0" />
 
 <br />
 
@@ -35,17 +37,11 @@ import { Footer } from '@docs/Footer';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
 
-## Usage
-
-For the `MessageStrip` component, you can define whether it displays an icon in the beginning, and a close button. Moreover, its size and background can be controlled with CSS.
-
-<b />
+<Description />
 
 # More Examples
-
-<b />
 
 ## MessageStrip with Icon
 

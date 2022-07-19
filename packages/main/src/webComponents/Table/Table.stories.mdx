@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Table } from './index';
 import { TableColumn } from '../TableColumn';
 import { TableRow } from '../TableRow';
@@ -8,6 +9,7 @@ import { TableGroupRow } from '../TableGroupRow';
 import { TableGrowingMode } from '../../enums/TableGrowingMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './TableDescription.md';
 import { useState } from 'react';
 
 <Meta
@@ -94,7 +96,9 @@ import { useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 <br />
 
@@ -133,17 +137,26 @@ The `TableColumn` component allows defining column specific properties that are 
       minWidth: {
         description: `Defines the minimum table width required to display this column. By default it is always displayed. <br><br> The responsive behavior of the <code>Table</code> is determined by this property. As an example, by setting <code>minWidth</code> property to <code>40em</code> shows this column on tablet (and desktop) but hides it on mobile. <br> For further responsive design options, see <code>demandPopin</code> property.`
       },
-      popinText: { description: `he text for the column when it pops in.` },
-      noDataText: { table: { disable: true } },
-      hideNoData: { table: { disable: true } },
-      stickyColumnHeader: { table: { disable: true } },
-      columns: { control: { table: true } },
-      onPopinChange: { table: { disable: true } },
-      onRowClick: { table: { disable: true } },
+      popinText: { description: `The text for the column when it pops in.` },
       children: {
         description: `Defines the content of the column header.`,
         control: { disable: false }
-      }
+      },
+      noDataText: { table: { disable: true } },
+      hideNoData: { table: { disable: true } },
+      stickyColumnHeader: { table: { disable: true } },
+      columns: { table: { disable: true } },
+      onPopinChange: { table: { disable: true } },
+      accessibleName: { table: { disable: true } },
+      accessibleNameRef: { table: { disable: true } },
+      busy: { table: { disable: true } },
+      busyDelay: { table: { disable: true } },
+      growing: { table: { disable: true } },
+      growingButtonSubtext: { table: { disable: true } },
+      growingButtonText: { table: { disable: true } },
+      mode: { table: { disable: true } },
+      onLoadMore: { table: { disable: true } },
+      onSelectionChange: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -202,7 +215,16 @@ The `TableColumn` component allows defining column specific properties that are 
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable TableColumn" />
+<ArgsTableWithNote
+  story="with customizable TableColumn"
+  noteText={
+    <>
+      {`The props in the table below are part of the "TableColumn" component.`}
+      <br />
+      {`This component supports all HTML attributes.`}
+    </>
+  }
+/>
 
 ## Growing Table
 

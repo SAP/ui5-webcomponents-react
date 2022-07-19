@@ -1,15 +1,18 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Tree } from './index';
 import { BusyIndicator } from '../BusyIndicator';
 import { TreeItem } from '../TreeItem';
 import { ListMode } from '../../enums/ListMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import Description from './TreeDescription.md';
 import '@ui5/webcomponents-icons/dist/copy.js';
 import '@ui5/webcomponents-icons/dist/paste.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
 import '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import { useState } from 'react';
+import { ValueState } from '../../enums';
 
 <Meta
   title="Data Display / Tree"
@@ -20,15 +23,11 @@ import { useState } from 'react';
     header: { control: { disable: true } }
   }}
   args={{
-    mode: ListMode.None,
-    style: {},
-    className: '',
-    slot: '',
-    ref: null
+    mode: ListMode.None
   }}
 />
 
-<DocsHeader />
+<DocsHeader since="0.10.0" />
 
 <br />
 
@@ -66,7 +65,9 @@ import { useState } from 'react';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgsTableWithNote story="." />
+
+<Description />
 
 ## Methods
 
@@ -75,12 +76,6 @@ This component exposes public methods. You can invoke them directly on the insta
 | Name     | Parameters                                                                                                                                                                                               | Description                                                                 |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | **walk** | <dl><dt className="methodText">**callback**</dt><dd className="methodText">function to execute on each node of the tree with 2 arguments: the node and the level</dd><dd><code>function</code></dd></dl> | Perform Depth-First-Search walk on the tree and run a callback on each node |
-
-## Keyboard Handling
-
-`Tree` provides advanced keyboard handling. You can use the up/down arrow keys to navigate to the previous/next item in the list, representing the tree, regardless of nesting, but also the left/right arrow keys to drill down and go up the tree. If you press the right arrow on a tree node, it will expand, if not expanded. If you press the right arrow key once more, the first child of this node will be selected. If you press the left arrow on a tree node, it will collapse, if expanded. If you press the left arrow key once more, the parent node of this tree node will be selected.
-
-<br />
 
 # More Examples
 
@@ -99,7 +94,10 @@ tree items.
       hasChildren: true,
       icon: 'wrench',
       selected: false,
-      text: 'Customizable TreeItem'
+      text: 'Customizable TreeItem',
+      additionalText: 'Additional Text',
+      additionalTextState: ValueState.None,
+      indeterminate: false
     }}
     argTypes={{
       expanded: {
@@ -112,8 +110,16 @@ tree items.
       selected: {
         description: `Defines whether the tree node is selected by the user. Only has effect if the <code>Tree</code> is in one of the following modes: in <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code>.`
       },
+      additionalText: { description: `Defines the \`additionalText\`, displayed in the end of the tree item.` },
+      additionalTextState: {
+        description: `Defines the state of the \`additionalText\`.\n\nAvailable options are: \`"None"\` (by default), \`"Success"\`, \`"Warning"\`, \`"Information"\` and \`"Erorr"\`.`,
+        control: { type: 'select', options: ValueState }
+      },
       text: { description: `Defines the text of the tree item.` },
       children: { description: `Defines the items of this <code>TreeItem</code>.` },
+      indeterminate: {
+        description: `Defines whether the selection of a tree node is displayed as partially selected.\n\n**Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the \`indeterminate\` and \`selected\` properties: \n* If a tree node has both \`selected\` and \`indeterminate\` set to \`true\`, it is displayed as partially selected.\n*   If a tree node has \`selected\` set to \`true\` and \`indeterminate\` set to \`false\`, it is displayed as selected.\n*   If a tree node has \`selected\` set to \`false\`, it is displayed as not selected regardless of the value of the \`indeterminate\` property.\n\n**Note:** This property takes effect only when the \`Tree\` is in \`MultiSelect\` mode.`
+      },
       footerText: { table: { disable: true } },
       headerText: { table: { disable: true } },
       mode: { table: { disable: true } },
@@ -122,7 +128,11 @@ tree items.
       onItemClick: { table: { disable: true } },
       onItemDelete: { table: { disable: true } },
       onItemToggle: { table: { disable: true } },
-      onSelectionChange: { table: { disable: true } }
+      onSelectionChange: { table: { disable: true } },
+      onItemMouseout: { table: { disable: true } },
+      className: { table: { disable: true } },
+      style: { table: { disable: true } },
+      onItemMouseover: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -140,7 +150,10 @@ tree items.
   </Story>
 </Canvas>
 
-<ArgsTable story="with customizable TreeItem" />
+<ArgsTableWithNote
+  story="with customizable TreeItem"
+  noteText={`The props in the table below are part of the "TreeItem" component.`}
+/>
 
 <br />
 
