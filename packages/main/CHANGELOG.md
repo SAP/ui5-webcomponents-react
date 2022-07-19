@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.1...v0.26.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* **AnalyticalCard:** fix screen reader announcement for content section ([#3258](https://github.com/SAP/ui5-webcomponents-react/issues/3258)) ([fd7faaf](https://github.com/SAP/ui5-webcomponents-react/commit/fd7faaf345c2a073eae63c1f1ebd4636735ffd02))
+* **AnalyticalTable:** correct `detail` in `onRowSelected` callback ([#3235](https://github.com/SAP/ui5-webcomponents-react/issues/3235)) ([c6e9909](https://github.com/SAP/ui5-webcomponents-react/commit/c6e9909eae9d584405b65b897133c9307ca8041c)), closes [#3147](https://github.com/SAP/ui5-webcomponents-react/issues/3147)
+* **AnalyticalTable:** prevent focus change on column resize ([#3221](https://github.com/SAP/ui5-webcomponents-react/issues/3221)) ([1deb82d](https://github.com/SAP/ui5-webcomponents-react/commit/1deb82d65313fe79ba597a1be42d8ec8136bf48d)), closes [#3220](https://github.com/SAP/ui5-webcomponents-react/issues/3220)
+* **Form:** add padding between vertical aligned `FormItem`s ([#3210](https://github.com/SAP/ui5-webcomponents-react/issues/3210)) ([ee7f9f1](https://github.com/SAP/ui5-webcomponents-react/commit/ee7f9f184938e0e63f93c50e045b45b923943617))
+* **NumericSideIndicator:** export prop-types interface ([#3257](https://github.com/SAP/ui5-webcomponents-react/issues/3257)) ([e348f30](https://github.com/SAP/ui5-webcomponents-react/commit/e348f30b44d450e6a15c2e7d4df5b83167c008f1))
+* **SelectDialog:** support horizon themes ([#3198](https://github.com/SAP/ui5-webcomponents-react/issues/3198)) ([2bc8539](https://github.com/SAP/ui5-webcomponents-react/commit/2bc8539f61a230ab7b0b3ebed98edfa40efa71ec))
+
+
+### Features
+
+* **AnalyticalTable:** add `useOnColumnResize` plugin hook ([#3197](https://github.com/SAP/ui5-webcomponents-react/issues/3197)) ([844a8f3](https://github.com/SAP/ui5-webcomponents-react/commit/844a8f3e3dfb63c82008d64d35f3610fabdc7959)), closes [#3195](https://github.com/SAP/ui5-webcomponents-react/issues/3195)
+* **DynamicPage:** add more aria options to `a11yConfig` ([#3240](https://github.com/SAP/ui5-webcomponents-react/issues/3240)) ([fb40a2a](https://github.com/SAP/ui5-webcomponents-react/commit/fb40a2aef368c5824014f389422f536d59af12c3))
+
+
+
+
+
 ## [0.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.0...v0.26.1) (2022-07-07)
 
 
