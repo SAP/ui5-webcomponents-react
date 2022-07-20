@@ -6,6 +6,10 @@ import Description from './ViewSettingsDialogDescription.md';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import SortItemDescription from '../SortItem/SortItemDescription.md';
+import FilterItemDescription from '../FilterItem/FilterItemDescription.md';
+import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -95,8 +99,23 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
 
-| Name     | Parameters | Description       |
-| -------- | ---------- | ----------------- |
-| **show** | &mdash;    | Shows the dialog. |
+| Name                     | Parameters                                                                                                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **setConfirmedSettings** | <dl><dt className="methodText">**settings**</dt><dd className="methodText">A value to be set as predefined settings.</dd><dd><code>string</code></dd></dl> | Sets a JavaScript object, as settings to the <code>ui5-view-settings-dialog</code>. This method can be used after the dialog is initially open, as the dialog need to set its initial settings. The <code>ui5-view-settings-dialog</code> throws an event called "before-open", this can be used as trigger point. The object should have the following format: <code>{ { "sortOrder" : "Ascending", "sortBy" : "Name", "filters" : [{"Filter 1": ["Some filter 1", "Some filter 2"]}, {"Filter 2": ["Some filter 4"]}]} }</code> |
+| **show**                 | &mdash;                                                                                                                                                    | Shows the dialog.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+<SubcomponentsSection />
+
+## SortItem
+
+<SortItemDescription />
+
+## FilterItem
+
+<FilterItemDescription />
+
+## FilterItemOption
+
+<FilterItemOptionDescription />
 
 <Footer />
