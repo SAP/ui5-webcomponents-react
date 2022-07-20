@@ -21,7 +21,7 @@ import {
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
 
-// To only create a single component, replace "false" with the component (module) name or an array with multiple components
+// To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
 const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
