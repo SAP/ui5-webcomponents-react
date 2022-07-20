@@ -9,6 +9,12 @@ import { Footer } from '@docs/Footer';
 {{#if hasDescription}}
 import Description from './{{name}}Description.md';
 {{/if}}
+{{#if additionalComponentDocs}}
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+{{#each additionalComponentDocs}}
+import {{this}}Description from '../{{this}}/{{this}}Description.md'
+{{/each}}
+{{/if}}
 
 <Meta
   title="Components / {{name}}"
@@ -60,6 +66,17 @@ This component exposes public methods. You can invoke them directly on the insta
 |----|----------|-----------|
 {{#each methods}}
 |**{{name}}**|{{> methodParameters parameters=parameters}}|{{{description}}}|
+{{/each}}
+{{/if}}
+
+{{#if additionalComponentDocs}}
+
+<SubcomponentsSection />
+
+{{#each additionalComponentDocs}}
+## {{this}}
+
+<{{this}}Description />
 {{/each}}
 {{/if}}
 
