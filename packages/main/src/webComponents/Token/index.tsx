@@ -41,7 +41,7 @@ export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSe
 /**
  * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Token" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
   'ui5-token',
