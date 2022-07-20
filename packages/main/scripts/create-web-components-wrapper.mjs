@@ -385,7 +385,6 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
     }
   });
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-  console.log([...enumImports, ...additionalComponentImports]);
   return `${renderStory({
     name: componentName,
     since: versionInfo[componentSpec.since],
