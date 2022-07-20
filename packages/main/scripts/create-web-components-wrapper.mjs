@@ -687,9 +687,7 @@ allWebComponents
     }
 
     if (
-      (CREATE_SINGLE_COMPONENT === componentSpec.module ||
-        !CREATE_SINGLE_COMPONENT ||
-        CREATE_SINGLE_COMPONENT?.includes(componentSpec.module)) &&
+      (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
       const regularPropsToOmit = new Set(['boolean', 'Boolean', 'object', 'Object']);
@@ -745,7 +743,6 @@ allWebComponents
         // create story file (demo)
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          CREATE_SINGLE_COMPONENT?.includes(componentSpec.module) ||
           !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
         ) {
           const webComponentDemo = createWebComponentDemo(
