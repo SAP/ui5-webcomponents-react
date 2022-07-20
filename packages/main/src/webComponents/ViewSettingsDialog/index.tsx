@@ -14,10 +14,10 @@ interface ViewSettingsDialogAttributes {
 
 export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
   /**
-   * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog need to set its initial settings. The `ViewSettingsDialog` throws an event called "before-open", this can be used as trigger point. The object should have the following format: `{ { "sortOrder" : "Ascending", "sortBy" : "Name", "filters" : [{"Filter 1": ["Some filter 1", "Some filter 2"]}, {"Filter 2": ["Some filter 4"]}]} }`
-   * @param {string} settings - A value to be set as predefined settings.
+   * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog need to set its initial settings. The `ViewSettingsDialog` throws an event called "before-open", this can be used as trigger point. The object should have the following format: `{sortOrder: "Ascending", sortBy: "Name", filters: [{Filter 1: ["Some filter 1", "Some filter 2"]}, {Filter 2: ["Some filter 4"]}]}`
+   * @param {Object} settings - A value to be set as predefined settings.
    */
-  setConfirmedSettings: (settings: string) => void;
+  setConfirmedSettings: (settings: Object) => void;
   /**
    * Shows the dialog.
    */
