@@ -31,7 +31,7 @@ import { FilterDialogV2 } from './FilterBarDialogV2';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
-//todo missing props: useSnapshot, header (use headerText instead)
+//todo missing props: useSnapshot
 //todo changed props:
 //todo deprecated props: showClearButton
 export interface FilterBarPropTypes extends CommonProps {
