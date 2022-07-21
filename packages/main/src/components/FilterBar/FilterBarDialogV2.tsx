@@ -4,19 +4,13 @@ import '@ui5/webcomponents-icons/dist/list.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base/src';
-import {
-  BASIC,
-  CANCEL,
-  FILTERS,
-  OK,
-  SEARCH_FOR_FILTERS
-} from '@ui5/webcomponents-react/dist/assets/i18n/i18n-defaults';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
 import { TitleLevel } from '../../enums/TitleLevel';
+import { BASIC, CANCEL, FILTERS, OK, SEARCH_FOR_FILTERS } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Panel, Table, TableColumn } from '../../webComponents';

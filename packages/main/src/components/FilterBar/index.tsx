@@ -48,13 +48,14 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note:__ If `useToolbar` is `false` this prop has no effect.
    */
   search?: ReactElement<InputPropTypes>;
+  // todo variant was replaced with header
   /**
-   * Defines the variants of the `FilterBar`.
+   * Specifies header text or variant management that is shown in the toolbar on the first position
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement`, `Text` or `Title` in order to preserve the intended design.
    * __Note:__ If `useToolbar` is `false` this prop has no effect.
    */
-  variants?: ReactNode;
+  header?: ReactNode;
   /**
    * Defines whether the toolbar on top of the filter items is displayed.
    *
@@ -145,7 +146,7 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   onToggleFilters?: (event: CustomEvent<{ visible: boolean; filters: HTMLElement[]; search: HTMLElement }>) => void;
   /**
-   * The event is fired when the "Save" button of the filter configuration dialog is clicked.
+   * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
   onFiltersDialogSave?: (
     event: CustomEvent<{
@@ -189,6 +190,7 @@ export interface FilterBarPropTypes extends CommonProps {
    * The event is fired when the "Clear" button is clicked.
    */
   onClear?: (event: CustomEvent<{ dialogSearch: HTMLElement; filters: HTMLElement[]; search: HTMLElement }>) => void;
+  //todo check when fired
   /**
    * The event is fired when the "Go" button is clicked.
    */
@@ -219,7 +221,7 @@ const resizeObserverEntryWidth = (entry) => {
 
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
- * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement`, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
+ * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement` or a title, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
  */
 const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
@@ -246,7 +248,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     className,
     slot,
     search,
-    variants,
+    header,
     as,
     portalContainer,
 
@@ -491,6 +493,16 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
   const ToolbarButtons = (
     <>
+      {showGoOnFB && (
+        <Button onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
+          {goText}
+        </Button>
+      )}
+      {!hideToggleFiltersButton && useToolbar && (
+        <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+          {showFilters ? hideFilterBarText : showFilterBarText}
+        </Button>
+      )}
       {showClearOnFB && (
         <Button onClick={handleClear} design={ButtonDesign.Transparent}>
           {clearText}
@@ -501,21 +513,11 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           {restoreText}
         </Button>
       )}
-      {!hideToggleFiltersButton && useToolbar && (
-        <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
-          {showFilters ? hideFilterBarText : showFilterBarText}
-        </Button>
-      )}
       {showFilterConfiguration && (
-        <Button onClick={handleDialogOpen} aria-haspopup="dialog">
+        <Button onClick={handleDialogOpen} aria-haspopup="dialog" design={ButtonDesign.Transparent}>
           {`${filtersText}${
             activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
           }`}
-        </Button>
-      )}
-      {showGoOnFB && (
-        <Button onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
-          {goText}
         </Button>
       )}
     </>
@@ -656,8 +658,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           <>
             {useToolbar && (
               <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
-                {variants}
-                {variants && search && <ToolbarSeparator />}
+                {header}
+                {header && search && <ToolbarSeparator />}
                 {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
                 {hasButtons && <ToolbarSpacer />}
                 {ToolbarButtons}

@@ -18,6 +18,7 @@ import {
   Select,
   StepInput,
   Switch,
+  Title,
   Token,
   VariantItem,
   VariantManagement
@@ -30,7 +31,7 @@ import {
   argTypes={{
     activeFiltersCount: { control: 'number' },
     search: { control: { disable: true } },
-    variants: { control: { disable: true } },
+    header: { control: { disable: true } },
     children: { control: { disable: true } },
     portalContainer: { control: { disable: true } },
     filterContainerWidth: { control: 'text' },
@@ -38,12 +39,7 @@ import {
   }}
   args={{
     search: <Input placeholder={'Search'} />,
-    variants: (
-      <VariantManagement>
-        <VariantItem>Variant 1</VariantItem>
-        <VariantItem selected>Variant 2</VariantItem>
-      </VariantManagement>
-    ),
+    header: <Title>Test</Title>,
     filterContainerWidth: '13.125rem',
     showFilterConfiguration: true
   }}
@@ -195,7 +191,7 @@ import {
       showRestoreButton: { table: { disable: true } },
       showSearchOnFiltersDialog: { table: { disable: true } },
       search: { table: { disable: true } },
-      variants: { table: { disable: true } },
+      header: { table: { disable: true } },
       onToggleFilters: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
       onFiltersDialogOpen: { table: { disable: true } },
