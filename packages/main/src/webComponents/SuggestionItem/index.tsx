@@ -12,7 +12,7 @@ interface SuggestionItemAttributes {
   /**
    * Defines the state of the `additionalText`.
    *
-   * Available options are: `"None"` (by default), `"Success"`, `"Information"`, `"Warning"` and `"Erorr"`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Information"`, `"Warning"` and `"Error"`.
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
   /**

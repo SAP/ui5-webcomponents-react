@@ -1,9 +1,9 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "~1.5.0",
-      "@ui5/webcomponents-fiori": "~1.5.0",
-      "@ui5/webcomponents-icons": "~1.5.0",
+      "@ui5/webcomponents": "0.0.0-9c26e8e4f",
+      "@ui5/webcomponents-fiori": "0.0.0-9c26e8e4f",
+      "@ui5/webcomponents-icons": "0.0.0-9c26e8e4f",
       "@ui5/webcomponents-react": "latest",
       "axios": "^0.26.1",
       "formik": "^2.2.9",

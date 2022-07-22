@@ -12,7 +12,7 @@ interface TreeItemAttributes {
   additionalText?: string;
   /**
    * Defines the state of the `additionalText`.
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
   /**
