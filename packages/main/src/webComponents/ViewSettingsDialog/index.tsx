@@ -20,7 +20,7 @@ export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, 
    * @param {string} settings.sortBy - sort by
    * @param {Array.<Object>} settings.filters - filters
    */
-  setConfirmedSettings: (settings: Object) => void;
+  setConfirmedSettings: (settings: Record<string, unknown>) => void;
   /**
    * Shows the dialog.
    */
