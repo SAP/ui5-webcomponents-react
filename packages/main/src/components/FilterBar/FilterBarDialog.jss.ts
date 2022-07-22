@@ -1,4 +1,8 @@
 import { CssSizeVariables, spacing } from '@ui5/webcomponents-react-base';
+import { Device } from '@ui5/webcomponents-react-base';
+const phoneStyles = Device.isPhone()
+  ? { maxWidth: '100%', maxHeight: '100%', height: '100%', width: '100%', borderRadius: 0, top: 0, left: 0 }
+  : {};
 
 const styles = {
   tHactive: {
@@ -17,9 +21,11 @@ const styles = {
 
   // todo check old
   dialogComponent: {
+    width: '40rem',
     '&::part(content), &::part(footer), &::part(header)': {
       padding: 0
-    }
+    },
+    ...phoneStyles
   },
   dialog: {
     ...spacing.sapUiContentPadding,
@@ -41,8 +47,12 @@ const styles = {
     }
   },
   subheader: {
+    paddingBottom: '0.25rem',
     '& [data-component-name="ToolbarContent"] >:last-child': {
       margin: 0
+    },
+    '& [data-component-name="ToolbarContent"] >:first-child': {
+      marginInline: '0 0.25rem '
     }
   },
   footer: {

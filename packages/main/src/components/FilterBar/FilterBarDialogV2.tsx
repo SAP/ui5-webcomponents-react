@@ -323,7 +323,6 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
       onAfterClose={handleClose}
       resizable
       draggable
-      style={{ width: '40rem' }}
       className={classes.dialogComponent}
       header={
         <FlexBox
@@ -371,7 +370,7 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
         style={{ padding: '0 1rem', boxShadow: ThemingParameters.sapContent_HeaderShadow }}
       >
         {/*todo a11y maybe use header tags here*/}
-        <Toolbar style={{ paddingBottom: '0.25rem' }} className={classes.subheader}>
+        <Toolbar className={classes.subheader}>
           {/*// todo i18n, a11y*/}
           <Select onChange={handleAttributeFilterChange} title="Show Fields by Attribute">
             <Option selected={filteredAttribute === 'all'} data-id="all">

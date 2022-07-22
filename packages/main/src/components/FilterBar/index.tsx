@@ -1,4 +1,11 @@
-import { debounce, enrichEventWithDetails, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
+import {
+  debounce,
+  Device,
+  enrichEventWithDetails,
+  useI18nBundle,
+  useIsRTL,
+  useSyncRef
+} from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -31,6 +38,9 @@ import { FilterDialogV2 } from './FilterBarDialogV2';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
+const isPhone = Device.isPhone();
+const isTablet = Device.isTablet();
+
 //todo missing props: useSnapshot
 //todo changed props:
 //todo deprecated props: showClearButton
@@ -62,10 +72,11 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note__: If set to `false`, `variants`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   useToolbar?: boolean;
+  // todo breaking filterBarExpanded changed to:
   /**
    * Defines whether the `FilterBar` is expanded.
    */
-  filterBarExpanded?: boolean;
+  hideFilterBar?: boolean;
   /**
    * Defines the width of the `FilterGroupItems`.
    *
@@ -229,7 +240,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     children,
     useToolbar,
     loading,
-    filterBarExpanded,
+    hideFilterBar,
     considerGroupName,
     filterContainerWidth,
     activeFiltersCount,
@@ -265,8 +276,16 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     onRestore,
     ...rest
   } = props;
-
-  const [showFilters, setShowFilters] = useState(useToolbar ? filterBarExpanded : true);
+  const initiallyShowFilters = (() => {
+    if (useToolbar) {
+      if (hideFilterBar !== undefined) {
+        return hideFilterBar;
+      }
+      return !isTablet;
+    }
+    return true;
+  })();
+  const [showFilters, setShowFilters] = useState(initiallyShowFilters);
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchValue, setSearchValue] = useState<string>(undefined);
@@ -312,12 +331,17 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   }, [children, setToggledFilters]);
 
   useEffect(() => {
-    setShowFilters(useToolbar ? filterBarExpanded : true);
-  }, [setShowFilters, useToolbar, filterBarExpanded]);
+    if (hideFilterBar !== undefined) {
+      setShowFilters(useToolbar ? !hideFilterBar : true);
+    }
+  }, [setShowFilters, useToolbar, hideFilterBar]);
 
   const classes = useStyles();
 
-  const filterAreaClasses = clsx(classes.filterArea, showFilters ? classes.filterAreaOpen : classes.filterAreaClosed);
+  const filterAreaClasses = clsx(
+    classes.filterArea,
+    showFilters && !isPhone ? classes.filterAreaOpen : classes.filterAreaClosed
+  );
 
   const getFilterElements = () => {
     const search = searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`);
@@ -454,7 +478,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   };
   const handleRestoreFilters = (e, source, filterElements) => {
     if (source === 'dialog') {
-      console.log('reset');
       setDialogOpen(false);
       setDialogOpen(true);
     } else if (source === 'filterBar' && showGoOnFB) {
@@ -498,7 +521,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           {goText}
         </Button>
       )}
-      {!hideToggleFiltersButton && useToolbar && (
+      {!hideToggleFiltersButton && useToolbar && !isPhone && (
         <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
           {showFilters ? hideFilterBarText : showFilterBarText}
         </Button>
@@ -660,7 +683,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
               <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
                 {header}
                 {header && search && <ToolbarSeparator />}
-                {search && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
+                {search && !isPhone && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
                 {hasButtons && <ToolbarSpacer />}
                 {ToolbarButtons}
               </Toolbar>
@@ -706,7 +729,6 @@ FilterBar.defaultProps = {
   as: 'div',
   filterContainerWidth: '13.125rem',
   useToolbar: true,
-  filterBarExpanded: true,
   portalContainer: document.body
 };
 
