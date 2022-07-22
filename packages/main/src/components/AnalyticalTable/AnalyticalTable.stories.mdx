@@ -50,11 +50,13 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     data: dataLarge,
     columns: [
       {
+        width: 400,
         Header: 'Name',
         headerTooltip: 'Full Name', // A more extensive description!
         accessor: 'name' // String-based value accessors!
       },
       {
+        width: 400,
         Header: 'Age',
         accessor: 'age',
         hAlign: TextAlign.End,
@@ -68,6 +70,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
         accessor: 'friend.name'
       },
       {
+        width: 400,
         Header: () => <span>Friend Age</span>,
         accessor: 'friend.age',
         hAlign: TextAlign.End,
@@ -164,7 +167,12 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 ## Example
 
 <Canvas withSource="none">
-  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
+  <Story name="Default">
+    {(args) => {
+      const data = args.data.map((item, index) => ({ ...item, name: index }));
+      return <AnalyticalTable {...args} data={data} />;
+    }}
+  </Story>
 </Canvas>
 
 ### Code

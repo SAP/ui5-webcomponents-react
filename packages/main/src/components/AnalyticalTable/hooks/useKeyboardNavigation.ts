@@ -1,13 +1,23 @@
 import { useCallback, useEffect, useRef } from 'react';
 
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
-  const firstVisibleCell = noData
-    ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
-    : target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
-  if (firstVisibleCell) {
-    firstVisibleCell.tabIndex = 0;
-    firstVisibleCell.focus();
-    currentlyFocusedCell.current = firstVisibleCell;
+  // todo: wip
+  if (target.dataset.componentName === 'AnalyticalTableContainer') {
+    const rowElements = target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]').children;
+    // todo: replace visible-row-index with overscanCount -> need to refactor how the default overscanCount is defined
+    const middleRowCell = target.querySelector(
+      `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
+    );
+    middleRowCell.focus();
+  } else {
+    const firstVisibleCell = noData
+      ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
+      : target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
+    if (firstVisibleCell) {
+      firstVisibleCell.tabIndex = 0;
+      firstVisibleCell.focus();
+      currentlyFocusedCell.current = firstVisibleCell;
+    }
   }
 };
 
@@ -244,7 +254,14 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
   if (showOverlay) {
     return tableProps;
   }
-  return [tableProps, { onFocus: onTableFocus, onKeyDown: onKeyboardNavigation, onBlur: onTableBlur }];
+  return [
+    tableProps,
+    {
+      onFocus: onTableFocus,
+      onKeyDown: onKeyboardNavigation,
+      onBlur: onTableBlur
+    }
+  ];
 };
 
 export const useKeyboardNavigation = (hooks) => {
