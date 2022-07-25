@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface RadioButtonAttributes {
   /**
+   * Defines the accessible ARIA name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the IDs of the elements that label the component.
    */
   accessibleNameRef?: string;
@@ -89,7 +93,7 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
  */
 const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(
   'ui5-radio-button',
-  ['accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'readonly'],
   [],
   ['change']

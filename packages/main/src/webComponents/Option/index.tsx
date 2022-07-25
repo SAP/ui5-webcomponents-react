@@ -12,7 +12,7 @@ interface OptionAttributes {
   /**
    * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled component is noninteractive.
+   * **Note:** A disabled component is hidden.
    */
   disabled?: boolean;
   /**

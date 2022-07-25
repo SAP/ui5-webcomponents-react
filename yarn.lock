@@ -4560,50 +4560,50 @@
     "@typescript-eslint/types" "5.7.0"
     eslint-visitor-keys "^3.0.0"
 
-"@ui5/webcomponents-base@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-1.5.0.tgz#a248a696d654ae0278e0b0587eb323458a079c89"
-  integrity sha512-6219P1s9hL9ib6eqB463J2O/ko1dFTg0C7xgd8BSLEkup3NI+GTRqfhuy6x9uKzUQyUzGs4AaeMq99ITVFNYqQ==
+"@ui5/webcomponents-base@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-1.6.0.tgz#844cda867f86bf842300666fa47d146d0d004543"
+  integrity sha512-8NzvNUF5K4rSkM0IarN1gZdQbR2xgzGK0G3ATWxPfh6g/jdgJfdoZvkbr5PdUVCRvz5QEC/TTBmc63l6edm8GQ==
   dependencies:
     lit-html "^2.0.1"
 
-"@ui5/webcomponents-fiori@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.5.0.tgz#090a0a95c3e823016d9f8ee08cf8006d6c2e457e"
-  integrity sha512-czC6YHjWOWdSaUjrgws2NAfnBb2IIRZDv4ncDIVZzOV80xSURKln5duXGNBt7EMXMfZ7pyrFFJZxchjRFrQJ8w==
+"@ui5/webcomponents-fiori@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.6.0.tgz#015042bb59f8cbcd017d734cac056634952a1dd7"
+  integrity sha512-WkFYfLcX+XduO/UsopV943lbptre+jj2bzmJfxUWBmBaXYCg6ilausMc82ubv4A6KJc8dMYFCVOkBJeOFcb2IQ==
   dependencies:
-    "@ui5/webcomponents" "1.5.0"
-    "@ui5/webcomponents-base" "1.5.0"
-    "@ui5/webcomponents-icons" "1.5.0"
-    "@ui5/webcomponents-theming" "1.5.0"
+    "@ui5/webcomponents" "1.6.0"
+    "@ui5/webcomponents-base" "1.6.0"
+    "@ui5/webcomponents-icons" "1.6.0"
+    "@ui5/webcomponents-theming" "1.6.0"
     "@zxing/library" "^0.18.3"
 
-"@ui5/webcomponents-icons@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.5.0.tgz#fec94172f8d468c5185d6a2200fb67f7dfd127d9"
-  integrity sha512-w+Ggb0/PpUN7aZJjgqBQPtZgYlPZOsCKl7Ff6wV6v28JRzAgPDf82VyMbi8kx4DcA/tRFLINAilhCzyWqJQ6Eg==
+"@ui5/webcomponents-icons@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.6.0.tgz#fb68b3af53dfd676e1526c64d38021d9788cf28a"
+  integrity sha512-RXa6DjJScs2x3mTLQbtWRTqcFLGhPl2SBFKjFuBFVDJ08ueMkb53pXoB67hw1WJfdc8qMz+u7SvS8B2uRmshSw==
   dependencies:
-    "@ui5/webcomponents-base" "1.5.0"
+    "@ui5/webcomponents-base" "1.6.0"
 
-"@ui5/webcomponents-localization@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-localization/-/webcomponents-localization-1.5.0.tgz#ac15e18c9d089cfcd64e2649caa5769d81f6acda"
-  integrity sha512-rV3izh0KTEY8IWaAu7KojNKqmWr7hWuM9DBCAaTbXzSHIArO5Vc4cXkntqtKPnZwt+ysENSkgE/s3BjnU+XYFA==
+"@ui5/webcomponents-localization@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-localization/-/webcomponents-localization-1.6.0.tgz#6685c7c2ce2cf4deede19ac274f52a88d7f64ba3"
+  integrity sha512-dCju7lgyoq3rhzSgjYcKlAZiKxTXwCG5lfuhVfmTFTXwgUTLKEEKWn63nBmtoH6Wmn9Hgp+JwXhELgwoWhuXPg==
   dependencies:
-    "@ui5/webcomponents-base" "1.5.0"
+    "@ui5/webcomponents-base" "1.6.0"
 
-"@ui5/webcomponents-theming@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-theming/-/webcomponents-theming-1.5.0.tgz#8c319b7182a2ea4a856ad2cc823d351a34a69377"
-  integrity sha512-gdx17x07kBjpQtoHMkkQX4sXpWU5V/nsRNtMmyOWK4Mg6VLOgoMA9/HdHAKIiZdCsVix2ejUQCXOWV/ODYmdTg==
+"@ui5/webcomponents-theming@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-theming/-/webcomponents-theming-1.6.0.tgz#97756bcef554f35dba6ead4a37d6d16a0c37f523"
+  integrity sha512-cQOPKw3Tjuu0bMkZmZtOYdkgHo/BwD54nqTU1bSn8I1GgSGeLwUS2rEtRxXBTANAuEdYdChNy66QVkN3I0vTmw==
   dependencies:
     "@sap-theming/theming-base-content" "11.1.38"
-    "@ui5/webcomponents-base" "1.5.0"
+    "@ui5/webcomponents-base" "1.6.0"
 
-"@ui5/webcomponents-tools@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.5.0.tgz#d3763bcdd3df49faa07d6fea86b6b666bd986158"
-  integrity sha512-it9WMduSyoIlAfOIux4zB16o17/EQoOCf0sRtaIiPrVLmBGASRR8jXgq3TrZOxlwuCeyBxCvMdP54h7zHkbKog==
+"@ui5/webcomponents-tools@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.6.0.tgz#705f694fe9145630c5394a6d3998c935f35990a4"
+  integrity sha512-P3OZktLaNHsACN3z7nhV95c2yh0sY5pY93mjh/1+iycRzwofQhGd924ycvSnjZ6QVKNWLoUk31oCcLZhLxFgEg==
   dependencies:
     "@wdio/cli" "^7.19.7"
     "@wdio/devtools-service" "^7.19.7"
@@ -4648,15 +4648,15 @@
     wdio-chromedriver-service "^7.3.2"
     zx "^4.3.0"
 
-"@ui5/webcomponents@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-1.5.0.tgz#505ec62b4cd956dd50550c48fa576fe6a60dcc22"
-  integrity sha512-55KF/l+ckgt/iqUQk4HYyMzYp4IwymGhiPSBSTHigAwvUzoK2D3xwA0CTDmkMD1Dheba86BCq4SOFAo+sB7aJw==
+"@ui5/webcomponents@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents/-/webcomponents-1.6.0.tgz#f84e13f16e5a3e710f62c3192ad58cb914ec04e1"
+  integrity sha512-rbS0T/ytL85G3OV3ZWcVmHuJGaJiIyI1GQQuBPjROWUHWVLNgFHQylCDdAG5odpUZHnyslWFJ02qGftM+mn+rQ==
   dependencies:
-    "@ui5/webcomponents-base" "1.5.0"
-    "@ui5/webcomponents-icons" "1.5.0"
-    "@ui5/webcomponents-localization" "1.5.0"
-    "@ui5/webcomponents-theming" "1.5.0"
+    "@ui5/webcomponents-base" "1.6.0"
+    "@ui5/webcomponents-icons" "1.6.0"
+    "@ui5/webcomponents-localization" "1.6.0"
+    "@ui5/webcomponents-theming" "1.6.0"
 
 "@ungap/promise-all-settled@1.1.2":
   version "1.1.2"
