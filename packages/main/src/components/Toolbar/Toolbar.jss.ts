@@ -82,22 +82,13 @@ export const styles = {
     padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column',
-    '& [ui5-button]': {
+    '& [ui5-toggle-button], & [ui5-button]': {
       marginBottom: '0.25rem'
     },
-    '& [ui5-button]::part(button)': {
-      justifyContent: 'flex-start'
+    '& [ui5-button]::part(button) ,& [ui5-toggle-button]::part(button)': {
+      justifyContent: 'start'
     },
-    '& [ui5-button][icon-only]::part(button)': {
-      padding: 'revert'
-    },
-    '& [ui5-toggle-button]': {
-      marginBottom: '0.25rem'
-    },
-    '& [ui5-toggle-button]::part(button)': {
-      justifyContent: 'flex-start'
-    },
-    '& [ui5-toggle-button][icon-only]::part(button)': {
+    '& [ui5-button][icon-only]::part(button), & [ui5-toggle-button][icon-only]::part(button)': {
       padding: 'revert'
     },
     '& :last-child': {
