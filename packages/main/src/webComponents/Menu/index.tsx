@@ -27,6 +27,8 @@ export interface MenuDomRef extends MenuAttributes, Ui5DomRef {
 export interface MenuPropTypes extends MenuAttributes, CommonProps {
   /**
    * Defines the items of this component.
+   *
+   * **Note:** Use `MenuItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
