@@ -12665,7 +12665,7 @@ lazystream@^1.0.0:
   dependencies:
     readable-stream "^2.0.5"
 
-lerna@^5.0.0:
+lerna@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/lerna/-/lerna-5.2.0.tgz#eac37e40e111ae1bbc2f0716718915043e0fb0a3"
   integrity sha512-JbjmGhS8ja5lmTnwZhtDiFxkthR2chhA3QAyRPZDm3ptgZhZbAKsgIj4SdEQvZcepU4ixPlX9d3lIzbzlQFPAg==
@@ -14378,7 +14378,7 @@ nwsapi@^2.2.0:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
-nx@14.4.3, "nx@>=14.4.3 < 16":
+nx@14.4.3, "nx@>=14.4.3 < 16", nx@^14.4.3:
   version "14.4.3"
   resolved "https://registry.yarnpkg.com/nx/-/nx-14.4.3.tgz#27a1aea9ffaf143800c20006ed20f9a26f4610a3"
   integrity sha512-XPaoEAfJI9056qdwTvkutQSwwA3iihqNDwhvk3dmgpT35j8Uzm/y67goACaCUBCjP2dIQqXfNfJVWQIpcG3MTw==
