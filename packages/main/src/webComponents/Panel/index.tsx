@@ -8,11 +8,11 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface PanelAttributes {
   /**
-   * Defines the accessible aria name of the component.
+   * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
   /**
-   * Sets the accessible aria role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
+   * Sets the accessible ARIA role of the component. Depending on the usage, you can change the role from the default `Form` to `Region` or `Complementary`.
    */
   accessibleRole?: PanelAccessibleRole | keyof typeof PanelAccessibleRole;
   /**
