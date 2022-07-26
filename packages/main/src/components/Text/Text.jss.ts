@@ -11,7 +11,11 @@ export const TextStyles = {
     boxSizing: 'border-box',
     whiteSpace: 'pre-line',
     wordWrap: 'break-word',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    '&::selection': {
+      background: ThemingParameters.sapSelectedColor,
+      color: ThemingParameters.sapContent_ContrastTextColor
+    }
   },
   renderWhitespace: {
     whiteSpace: 'pre-wrap'
