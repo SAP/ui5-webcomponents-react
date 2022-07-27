@@ -6,7 +6,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface BreadcrumbsItemAttributes {
   /**
-   * Defines the accessible aria name of the item.
+   * Defines the accessible ARIA name of the item.
    */
   accessibleName?: string;
   /**

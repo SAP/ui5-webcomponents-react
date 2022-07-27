@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.26.2",
+  "version": "0.27.0",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -25,21 +25,21 @@
     "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.26.2",
+    "@ui5/webcomponents-react-base": "^0.27.0",
     "clsx": "1.2.1",
     "lit-html": "^2.0.1",
     "react-content-loader": "6.2.0",
-    "react-jss": "10.9.0",
+    "react-jss": "^10.9.0",
     "react-table": "7.8.0",
     "react-virtual": "2.10.4"
   },
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.5.0",
-    "@ui5/webcomponents-base": "~1.5.0",
-    "@ui5/webcomponents-fiori": "~1.5.0",
-    "@ui5/webcomponents-icons": "~1.5.0",
+    "@ui5/webcomponents": "~1.6.0",
+    "@ui5/webcomponents-base": "~1.6.0",
+    "@ui5/webcomponents-fiori": "~1.6.0",
+    "@ui5/webcomponents-icons": "~1.6.0",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },

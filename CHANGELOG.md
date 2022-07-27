@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.2...v0.27.0) (2022-07-25)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove empty grouped rows ([#3273](https://github.com/SAP/ui5-webcomponents-react/issues/3273)) ([50d38a7](https://github.com/SAP/ui5-webcomponents-react/commit/50d38a703cf638ea871d2213e74dd08576bc3aca)), closes [#3266](https://github.com/SAP/ui5-webcomponents-react/issues/3266)
+* **Toolbar:** align `iconEnd` button content to start ([#3281](https://github.com/SAP/ui5-webcomponents-react/issues/3281)) ([028259d](https://github.com/SAP/ui5-webcomponents-react/commit/028259df6c165bd8efe8e6b7a95f523685b340e8))
+
+
+### Features
+
+* update `@ui5/webcomponents` to 1.6.0 ([#3283](https://github.com/SAP/ui5-webcomponents-react/issues/3283)) ([230d5de](https://github.com/SAP/ui5-webcomponents-react/commit/230d5de0475db9d06e5eeacee37bc5724839c503))
+
+
+
+
+
 ## [0.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.1...v0.26.2) (2022-07-19)
 
 

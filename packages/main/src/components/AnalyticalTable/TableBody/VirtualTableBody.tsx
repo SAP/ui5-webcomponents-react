@@ -121,7 +121,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       {rowVirtualizer.virtualItems.map((virtualRow, visibleRowIndex) => {
         const row = rows[virtualRow.index];
         const rowIndexWithHeader = virtualRow.index + 1;
-        if (!row) {
+        if (!row || row.groupByVal === 'undefined') {
           return (
             <div
               key={`empty_row_${virtualRow.index}`}

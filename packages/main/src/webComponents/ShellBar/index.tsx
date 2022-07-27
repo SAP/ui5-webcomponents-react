@@ -63,6 +63,10 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
    */
   readonly profileDomRef: ReactNode;
   /**
+   * An object of strings that defines additional accessibility roles for further customization. It supports the following fields: - `logoRole`: the accessibility role for the `logo`
+   */
+  accessibilityRoles: Record<string, unknown>;
+  /**
    * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `profileButtonTitle`: defines the tooltip for the profile button - `logoTitle`: defines the tooltip for the logo
    */
   accessibilityTexts: Record<string, unknown>;
