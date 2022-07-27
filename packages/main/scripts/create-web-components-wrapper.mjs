@@ -19,6 +19,7 @@ import {
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -330,9 +331,9 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
   console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
-  const additionalComponentImports = additionalComponentDocs.map(
-    (component) => `import { ${component} } from '@ui5/webcomponents-react/dist/${component}';`
-  );
+  const additionalComponentImports = componentSpec.hasOwnProperty('appenddocs')
+    ? [`import { ${componentSpec.appenddocs.replaceAll(' ', ', ')} } from '../..';`]
+    : [];
 
   componentProps.forEach((prop) => {
     if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
@@ -384,7 +385,6 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
     }
   });
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-
   return `${renderStory({
     name: componentName,
     since: versionInfo[componentSpec.since],
@@ -717,23 +717,21 @@ allWebComponents
       }
 
       // create demo
-      if (!COMPONENTS_WITHOUT_DEMOS[componentSpec.module]) {
-        let formattedDescription = description
-          .replace(/<br>/g, `<br/>`)
-          .replace(/\s\s+/g, ' ')
-          .replace(/h3/g, 'h2')
-          .replace(/h4/g, 'h3');
-
-        try {
-          if (formattedDescription) {
-            formattedDescription = Utils.formatDescription(formattedDescription, componentSpec, false);
-          }
-        } catch (e) {
-          formattedDescription = '';
-          console.warn(
-            `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
-          );
-        }
+      const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
+      // create subcomponent description
+      if (typeof componentWithoutDemo === 'string') {
+        const subComponentDescription = `${formatDemoDescription(
+          mainDescription,
+          componentSpec,
+          false
+        )}\n${formatDemoDescription(description, componentSpec, false)}`;
+        fs.writeFileSync(
+          path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
+          subComponentDescription
+        );
+      }
+      if (!componentWithoutDemo) {
+        const formattedDescription = formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
           fs.writeFileSync(

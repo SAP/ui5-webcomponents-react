@@ -18,6 +18,10 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './ListDescription.md';
 import '@ui5/webcomponents-icons/dist/employee.js';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import StandardListItemDescription from '../StandardListItem/StandardListItemDescription.md';
+import CustomListItemDescription from '../CustomListItem/CustomListItemDescription.md';
+import GroupHeaderListItemDescription from '../GroupHeaderListItem/GroupHeaderListItemDescription.md';
 
 <Meta
   title="Data Display / List"
@@ -204,5 +208,19 @@ The <code>GroupHeaderListItem</code> is a special list item, used only to separa
     }}
   </Story>
 </Canvas>
+
+<SubcomponentsSection />
+
+## StandardListItem
+
+<StandardListItemDescription />
+
+## CustomListItem
+
+<CustomListItemDescription />
+
+## GroupHeaderListItem
+
+<GroupHeaderListItemDescription />
 
 <Footer />

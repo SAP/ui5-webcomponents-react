@@ -56,7 +56,8 @@ export const COMPONENTS_WITHOUT_DEMOS = {
   UploadCollectionItem: 'UploadCollection',
   NotificationAction: 'NotificationListItem',
   WizardStep: 'Wizard',
-  MenuItem: 'Menu'
+  MenuItem: 'Menu',
+  Token: 'MultiInput'
 };
 
 export const KNOWN_EVENTS = new Set(['click', 'input', 'submit', 'change', 'select', 'drop']);
