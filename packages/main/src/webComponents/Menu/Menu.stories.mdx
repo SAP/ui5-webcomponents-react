@@ -6,6 +6,8 @@ import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Button, Menu, MenuItem } from '../';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import MenuItemDescription from '../MenuItem/MenuItemDescription.md';
 
 <Meta
   title="Modals & Popovers / Menu"
@@ -73,5 +75,11 @@ This component exposes public methods. You can invoke them directly on the insta
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
 | **close**  | &mdash;                                                                                                                                                      | Closes the Menu.                        |
 | **showAt** | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is shown at</dd><dd><code>HTMLElement</code></dd></dl> | Shows the Menu near the opener element. |
+
+<SubcomponentsSection />
+
+## MenuItem
+
+<MenuItemDescription />
 
 <Footer />
