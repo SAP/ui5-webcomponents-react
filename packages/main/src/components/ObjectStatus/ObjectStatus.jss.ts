@@ -54,10 +54,10 @@ const styles = {
     height: '1rem',
     lineHeight: '1rem',
     verticalAlign: 'top',
-    paddingRight: '0.25rem',
+    paddingInlineEnd: '0.25rem',
 
     '&:only-child': {
-      paddingRight: 0
+      paddingInlineEnd: 0
     }
   },
 
