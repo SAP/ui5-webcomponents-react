@@ -57,7 +57,7 @@ const styles = {
     paddingInlineEnd: '0.25rem',
 
     '&:only-child': {
-      paddingRight: 0
+      paddingInlineEnd: 0
     }
   },
 
