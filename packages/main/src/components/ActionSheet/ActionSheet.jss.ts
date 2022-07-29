@@ -1,5 +1,5 @@
-import { CustomVariables, CustomThemingParameters } from './../../themes/CustomVariables';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CustomThemingParameters } from './../../themes/CustomVariables';
 
 const styles = {
   /*
