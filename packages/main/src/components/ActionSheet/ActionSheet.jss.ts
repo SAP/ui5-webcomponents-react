@@ -1,3 +1,4 @@
+import { CustomVariables, CustomThemingParameters } from './../../themes/CustomVariables';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
@@ -17,12 +18,12 @@ const styles = {
     },
     '&::part(header)': {
       background: 'transparent',
-      boxShadow: 'none'
+      boxShadow: CustomThemingParameters.ActionSheetHeaderBoxShadow
     }
   },
   actionSheetMobile: {
     '&::part(content)': {
-      padding: '0.1875rem 0.375rem 0 0.375rem'
+      padding: '0 !important'
     }
   },
   contentMobile: {
@@ -31,9 +32,9 @@ const styles = {
     boxSizing: 'border-box',
     overflow: 'auto',
     maxHeight: '82vh',
-    borderTopLeftRadius: ThemingParameters.sapElement_BorderCornerRadius,
-    borderTopRightRadius: ThemingParameters.sapElement_BorderCornerRadius,
-    boxShadow: ThemingParameters.sapContent_Shadow2,
+    borderTopLeftRadius: CustomThemingParameters.ActionSheetTopBorderRadius,
+    borderTopRightRadius: CustomThemingParameters.ActionSheetTopBorderRadius,
+    boxShadow: CustomThemingParameters.ActionSheetBoxShadow,
     '& > *': {
       margin: '0.25rem 0'
     }
