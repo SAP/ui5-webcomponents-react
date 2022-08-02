@@ -10,7 +10,6 @@ import React, {
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
-  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -37,6 +36,7 @@ export interface ColumnHeaderProps {
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
+  uniqueId: string;
 
   //getHeaderProps()
   id: string;
@@ -107,7 +107,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     visibleColumnIndex,
     onClick,
     onKeyDown,
-    portalContainer
+    portalContainer,
+    uniqueId
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -179,13 +180,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
+  const uniqueColumnId = `${column.id}-${uniqueId}`;
 
-  const targetRef = useRef();
   if (!column) return null;
-
   return (
     <div
-      ref={targetRef}
+      id={uniqueColumnId}
       style={{
         position: 'absolute',
         top: 0,
@@ -238,13 +238,13 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             {column.isGrouped && <Icon name="group-2" />}
           </div>
         </div>
-        {hasPopover && targetRef.current && (
+        {hasPopover && popoverOpen && (
           <ColumnHeaderModal
             isRtl={isRtl}
             column={column}
             onSort={onSort}
             onGroupBy={onGroupBy}
-            targetRef={targetRef}
+            uniqueColumnId={uniqueColumnId}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
             portalContainer={portalContainer}
