@@ -10,7 +10,6 @@ import React, {
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
-  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
