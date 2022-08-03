@@ -15,6 +15,7 @@ import {
 } from '../../../scripts/web-component-wrappers/config.js';
 import {
   renderComponentWrapper,
+  renderMethods,
   renderStory,
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
@@ -738,6 +739,24 @@ allWebComponents
             path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
             formattedDescription
           );
+        }
+        // create methods table
+        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
+        if (publicMethods.length) {
+          const methods = `${renderMethods({
+            name: componentSpec.module,
+            methods: publicMethods
+          })}`;
+          const hasMethodsTable = fs
+            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+            .toString()
+            .search(`<${componentSpec.module}Methods />`);
+          if (hasMethodsTable === -1) {
+            console.warn(
+              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+            );
+          }
+          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
         if (

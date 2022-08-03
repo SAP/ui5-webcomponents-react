@@ -12,8 +12,11 @@ import Description from './{{name}}Description.md';
 {{#if additionalComponentDocs}}
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 {{#each additionalComponentDocs}}
-import {{this}}Description from '../{{this}}/{{this}}Description.md'
+import {{this}}Description from '../{{this}}/{{this}}Description.md';
 {{/each}}
+{{/if}}
+{{#if methods}}
+import {{name}}Methods from './{{name}}Methods.md';
 {{/if}}
 
 <Meta
@@ -59,14 +62,7 @@ import {{this}}Description from '../{{this}}/{{this}}Description.md'
 {{/if}}
 
 {{#if methods}}
-## Methods
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-|Name|Parameters|Description|
-|----|----------|-----------|
-{{#each methods}}
-|**{{name}}**|{{> methodParameters parameters=parameters}}|{{{description}}}|
-{{/each}}
+<{{name}}Methods />
 {{/if}}
 
 {{#if additionalComponentDocs}}
