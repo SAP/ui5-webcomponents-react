@@ -751,7 +751,7 @@ allWebComponents
             .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
             .toString()
             .search(`<${componentSpec.module}Methods />`);
-          if (!hasMethodsTable) {
+          if (hasMethodsTable === -1) {
             console.warn(
               `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
             );
