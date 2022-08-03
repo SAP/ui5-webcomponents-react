@@ -8,6 +8,7 @@ import { Footer } from '@docs/Footer';
 import Description from './ToastDescription.md';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
+import ToastMethods from './ToastMethods.md';
 
 <Meta
   title="Modals & Popovers / Toast"
@@ -85,12 +86,6 @@ export const MyComponentWithAToast() {
 
 <Description />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name     | Parameters | Description                   |
-| -------- | ---------- | ----------------------------- |
-| **show** | &mdash;    | Shows the <code>Toast</code>. |
+<ToastMethods />
 
 <Footer />
