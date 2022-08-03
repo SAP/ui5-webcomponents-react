@@ -15,6 +15,8 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
   author?: string;
   /**
    * Indicates if favorites can be created.
+   *
+   * __Note:__ Has no effect if `showOnlyFavorites` is falsy in the `VariantMangament`.
    */
   favorite?: boolean;
   /**
@@ -36,7 +38,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
   /**
    * If set to false, the user is allowed to change the item's data.
    *
-   * __Note:__ When set to true, no "Save" button will be displayed for the the `VariantItem` when the `VariantManagement` is in `dirtyState`.
+   * __Note:__ When set to true, no "Save" button will be displayed for the `VariantItem` when the `VariantManagement` is in `dirtyState`.
    */
   readOnly?: boolean;
   /**

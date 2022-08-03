@@ -403,7 +403,7 @@ describe('VariantManagement', () => {
   test('Manage Views interactions', async () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = await renderWithDefine(
-      <VariantManagement onSaveManageViews={cb}>
+      <VariantManagement onSaveManageViews={cb} showOnlyFavorites>
         {[
           ...TwoVariantItems,
           <VariantItem isDefault key="2">

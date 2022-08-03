@@ -35,6 +35,7 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   showCreatedBy: boolean;
+  showOnlyFavorites?: boolean;
   changedVariantNames: Map<string, any>;
   setChangedVariantNames: (varNames: any) => void;
   setInvalidVariants: (invalidVars: any) => void;
@@ -61,7 +62,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     applyAutomatically,
     author,
     setInvalidVariants,
-    hideDelete
+    hideDelete,
+    showOnlyFavorites
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -149,20 +151,22 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   };
   return (
     <TableRow data-id={children} key={`${children}`}>
-      <TableCell>
-        {isDefault ? (
-          <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
-        ) : (
-          <Icon
-            aria-label={a11yFavoriteText}
-            title={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
-            name={iconName}
-            interactive
-            style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
-            onClick={onFavoriteClick}
-          />
-        )}
-      </TableCell>
+      {showOnlyFavorites && (
+        <TableCell>
+          {isDefault ? (
+            <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
+          ) : (
+            <Icon
+              aria-label={a11yFavoriteText}
+              title={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
+              name={iconName}
+              interactive
+              style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
+              onClick={onFavoriteClick}
+            />
+          )}
+        </TableCell>
+      )}
       <TableCell>{renderView()}</TableCell>
       {showShare && <TableCell>{global ? publicText : privateText}</TableCell>}
       {showSetAsDefault && (
