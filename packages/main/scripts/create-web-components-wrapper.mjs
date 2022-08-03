@@ -743,9 +743,7 @@ allWebComponents
         // create methods table
         const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
         if (publicMethods.length) {
-          const formattedMethods = JSON.parse(
-            JSON.stringify(publicMethods).replaceAll(/\\n/g, '').replaceAll(/<br>/g, '')
-          );
+          const formattedMethods = JSON.parse(JSON.stringify(publicMethods).replaceAll(/\\n|<br>/g, ''));
           const methods = `${renderMethods({
             name: componentSpec.module,
             methods: formattedMethods
