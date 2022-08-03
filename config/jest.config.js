@@ -23,7 +23,7 @@ export default {
     '<rootDir>/packages/cra-template/',
     '<rootDir>/packages/cra-template-seed/'
   ],
-  transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html))'],
+  transformIgnorePatterns: ['node_modules/(?!(@ui5|lit-html|d3|internmap))'],
   moduleNameMapper: {
     '^@shared/(.*)$': '<rootDir>/shared/$1',
     '^@ui5/webcomponents-react/dist/([Aa]ssets.*)$': '<rootDir>/packages/main/dist/$1',
