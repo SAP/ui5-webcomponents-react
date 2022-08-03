@@ -4,7 +4,7 @@ import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
 import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
 import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
 import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
-import { Canvas, Meta, Source, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
@@ -178,8 +178,8 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 ### Code
 
 <details>
-    
-    <summary>Show Code</summary>
+
+<summary>Show Code</summary>
 
 ```jsx
 <AnalyticalTable
@@ -785,6 +785,24 @@ The instance of the `AnalyticalTable` exposes methods for scrolling to a specifi
 - `horizontalScrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
 
 `offset` is measured in `px` and `index` in rows. `align` places the item/offset at the corresponding position of the visible scroll area (`'auto'` brings the item/offset into the visible scroll area either at the start or end, depending on which is closer). The default value for `align` is `'start'`.
+
+### How to manually sort, filter or group the table?
+
+For e.g. server side sorting, filtering or grouping, the default behavior of the table can be prevented. When setting the following `reactTableOption` the event is still fired and the indicator still set, but the internal data stays the same.
+If you wish to implement your own data manipulation outside the table you can use:
+
+```jsx
+<AnalyticalTable
+  ...
+  reactTableOptions={{
+    manualSortBy: true,
+    manualFilters: true,
+    manualGroupBy: true
+  }}
+/>
+```
+
+For more information please take a look at the [React Table v7 docs](https://react-table-v7.tanstack.com/docs/api/overview).
 
 # More Examples
 

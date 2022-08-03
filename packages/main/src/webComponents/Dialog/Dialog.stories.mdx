@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
+import { BarDesign } from '../../enums';
 import Description from './DialogDescription.md';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-icons/dist/settings.js';
@@ -58,6 +59,7 @@ import { isChromatic } from '../../../../../.storybook/utils';
             }}
             footer={
               <Bar
+                design={BarDesign.Footer}
                 endContent={
                   <Button
                     onClick={() => {

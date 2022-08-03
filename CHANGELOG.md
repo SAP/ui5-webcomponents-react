@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.0...v0.27.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* **ActionSheet:** update to latest design specs for Quartz and Horizon ([#3308](https://github.com/SAP/ui5-webcomponents-react/issues/3308)) ([e6f984a](https://github.com/SAP/ui5-webcomponents-react/commit/e6f984ab7312b3e7ea362955208f09ea2cd3dff6))
+* **AnalyticalTable:** support whitespace input in filter, close column popover on keystroke selection ([#3324](https://github.com/SAP/ui5-webcomponents-react/issues/3324)) ([5207f74](https://github.com/SAP/ui5-webcomponents-react/commit/5207f743b12b6d4f9236538144831a17e1d5a507))
+* **ObjectStatus:** correct icon padding in RTL ([#3300](https://github.com/SAP/ui5-webcomponents-react/issues/3300)) ([c09139b](https://github.com/SAP/ui5-webcomponents-react/commit/c09139bb5670f252fbaa899a6cf94155c3a699f9))
+* **Text:** update text selection color ([#3301](https://github.com/SAP/ui5-webcomponents-react/issues/3301)) ([e024bcb](https://github.com/SAP/ui5-webcomponents-react/commit/e024bcb6e9642335e76ce8b4a74003bcb523d899))
+
+
+
+
+
+# [0.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.2...v0.27.0) (2022-07-25)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove empty grouped rows ([#3273](https://github.com/SAP/ui5-webcomponents-react/issues/3273)) ([50d38a7](https://github.com/SAP/ui5-webcomponents-react/commit/50d38a703cf638ea871d2213e74dd08576bc3aca)), closes [#3266](https://github.com/SAP/ui5-webcomponents-react/issues/3266)
+* **Toolbar:** align `iconEnd` button content to start ([#3281](https://github.com/SAP/ui5-webcomponents-react/issues/3281)) ([028259d](https://github.com/SAP/ui5-webcomponents-react/commit/028259df6c165bd8efe8e6b7a95f523685b340e8))
+
+
+### Features
+
+* update `@ui5/webcomponents` to 1.6.0 ([#3283](https://github.com/SAP/ui5-webcomponents-react/issues/3283)) ([230d5de](https://github.com/SAP/ui5-webcomponents-react/commit/230d5de0475db9d06e5eeacee37bc5724839c503))
+
+
+
+
+
 ## [0.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.1...v0.26.2) (2022-07-19)
 
 

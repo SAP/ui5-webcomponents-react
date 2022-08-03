@@ -1,5 +1,5 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { deprecationNotice, ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { deprecationNotice, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { Children, forwardRef, ReactElement, Ref, useEffect, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -7,6 +7,7 @@ import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 import {
   Button,
   ButtonPropTypes,
@@ -61,17 +62,16 @@ if (isPhone()) {
     top: auto !important;
     bottom: 0;
     height: auto;
-    border-radius: 0;
-    background-color: transparent;
-    box-shadow: none;
+    border-radius: ${CustomThemingParameters.ActionSheetMobileHeaderBorderRadius};
+    background-color: ${CustomThemingParameters.ActionSheetMobileHeaderBackground};
+    box-shadow: ${CustomThemingParameters.ActionSheetMobileHeaderBoxShadow};
     box-sizing: border-box;
     min-height: unset;
   }
   :host([data-actionsheet]) [ui5-title] {
-    color: ${ThemingParameters.sapContent_ContrastTextColor} !important;
+    color: ${CustomThemingParameters.ActionSheetMobileHeaderTextColor} !important;
     text-shadow: none;
     text-align: start !important;
-    padding-left:1rem !important;
   }
   `
   );

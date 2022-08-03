@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/decline.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { RefObject, useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
@@ -24,9 +24,9 @@ export interface ColumnHeaderModalProperties {
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   open: boolean;
   setPopoverOpen: (open: boolean) => void;
-  targetRef: RefObject<any>;
   portalContainer: Element;
   isRtl: boolean;
+  uniqueColumnId: string;
 }
 
 const styles = {
@@ -48,7 +48,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, targetRef, portalContainer, isRtl } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, uniqueColumnId } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -118,31 +118,18 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           }
           break;
       }
-      if (ref.current) {
-        ref.current.close();
-      }
+      setPopoverOpen(false);
     },
-    [column, ref, onGroupBy, onSort]
+    [column, ref, onGroupBy, onSort, setPopoverOpen]
   );
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
-  useEffect(() => {
-    const popoverInstance = ref.current;
-    if (open) {
-      popoverInstance?.showAt(targetRef.current);
-    }
-  }, [open, targetRef.current, ref.current]);
-
-  const onAfterClose = useCallback(
-    (e) => {
-      stopPropagation(e);
-      ref?.current?.close();
-      setPopoverOpen(false);
-    },
-    [setPopoverOpen]
-  );
+  const onAfterClose = (e) => {
+    stopPropagation(e);
+    setPopoverOpen(false);
+  };
 
   const onAfterOpen = () => {
     listRef.current?.children?.[0]?.focus();
@@ -165,7 +152,12 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   })();
 
-  if (!open) return null;
+  const handleCustomLiKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      setPopoverOpen(false);
+    }
+  };
+
   return createPortal(
     <Popover
       hideArrow
@@ -176,8 +168,10 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
+      open={open}
+      opener={uniqueColumnId}
     >
-      <List onItemClick={handleSort} ref={listRef}>
+      <List onItemClick={handleSort} ref={listRef} onKeyDown={stopPropagation}>
         {isSortedAscending && (
           <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
@@ -200,7 +194,11 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
         {showFilter && !column.isGrouped && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
-          <CustomListItem type={ListItemType.Inactive} className={classes.filterListItem}>
+          <CustomListItem
+            type={ListItemType.Inactive}
+            className={classes.filterListItem}
+            onKeyDown={handleCustomLiKeyDown}
+          >
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
               <Icon name="filter" className={classes.filterIcon} />
               <Filter column={column} popoverRef={ref} />
