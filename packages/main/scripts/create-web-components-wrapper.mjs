@@ -743,9 +743,12 @@ allWebComponents
         // create methods table
         const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
         if (publicMethods.length) {
+          const formattedMethods = JSON.parse(
+            JSON.stringify(publicMethods).replaceAll(/\\n/g, '').replaceAll(/<br>/g, '')
+          );
           const methods = `${renderMethods({
             name: componentSpec.module,
-            methods: publicMethods
+            methods: formattedMethods
           })}`;
           const hasMethodsTable = fs
             .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
