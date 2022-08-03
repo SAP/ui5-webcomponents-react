@@ -15,6 +15,7 @@ import {
 } from '../../../scripts/web-component-wrappers/config.js';
 import {
   renderComponentWrapper,
+  renderMethods,
   renderStory,
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
@@ -738,6 +739,15 @@ allWebComponents
             path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
             formattedDescription
           );
+        }
+        // create methods table
+        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
+        const methods = `${renderMethods({
+          name: componentSpec.module,
+          methods: publicMethods
+        })}`;
+        if (publicMethods.length) {
+          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
         if (
