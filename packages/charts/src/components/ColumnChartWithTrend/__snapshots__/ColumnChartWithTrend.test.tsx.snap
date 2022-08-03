@@ -26,7 +26,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           >
             <defs>
               <clippath
-                id="recharts9-clip"
+                id="recharts11-clip"
               >
                 <rect
                   height="360"
@@ -51,7 +51,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
             >
               <path
                 class="recharts-curve recharts-line-curve"
-                d="M35.541666666666664,251.4285714285714C45.23611111111111,172.14285714285717,54.93055555555556,92.85714285714289,64.625,84.2857142857143C74.31944444444444,75.71428571428574,84.01388888888889,80.00000000000001,93.70833333333333,71.42857142857144C103.40277777777777,62.85714285714287,113.09722222222223,20,122.79166666666667,20C132.48611111111111,20,142.18055555555554,251.4285714285714,151.87499999999997,251.4285714285714C161.56944444444443,251.4285714285714,171.26388888888886,84.2857142857143,180.95833333333331,84.2857142857143C190.65277777777777,84.2857142857143,200.3472222222222,354.28571428571433,210.04166666666666,354.28571428571433C219.7361111111111,354.28571428571433,229.43055555555554,97.14285714285714,239.12499999999997,97.14285714285714C248.81944444444443,97.14285714285714,258.51388888888886,122.85714285714286,268.2083333333333,122.85714285714286C277.90277777777777,122.85714285714286,287.59722222222223,58.571428571428555,297.2916666666667,58.571428571428555C306.98611111111114,58.571428571428555,316.68055555555554,71.42857142857144,326.375,71.42857142857144C336.06944444444446,71.42857142857144,345.76388888888886,45.71428571428572,355.4583333333333,20"
+                d="M35.541666666666664,320C45.23611111111111,283,54.93055555555556,246,64.625,242C74.31944444444444,238,84.01388888888889,240,93.70833333333333,236C103.40277777777777,232,113.09722222222223,212,122.79166666666667,212C132.48611111111111,212,142.18055555555554,320,151.87499999999997,320C161.56944444444443,320,171.26388888888886,242,180.95833333333331,242C190.65277777777777,242,200.3472222222222,368,210.04166666666666,368C219.7361111111111,368,229.43055555555554,248,239.12499999999997,248C248.81944444444443,248,258.51388888888886,260.00000000000006,268.2083333333333,260.00000000000006C277.90277777777777,260.00000000000006,287.59722222222223,229.99999999999997,297.2916666666667,229.99999999999997C306.98611111111114,229.99999999999997,316.68055555555554,236,326.375,236C336.06944444444446,236,345.76388888888886,224,355.4583333333333,212"
                 fill="none"
                 height="360"
                 name="Users"
@@ -64,10 +64,59 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                 width="349"
               />
             </g>
+            <g
+              class="recharts-layer recharts-bar"
+            >
+              <g
+                class="recharts-layer recharts-bar-rectangles"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                </g>
+              </g>
+            </g>
           </svg>
           <div
             class="recharts-tooltip-wrapper"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+            tabindex="0"
           >
             <div
               class="recharts-default-tooltip"
@@ -103,7 +152,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           >
             <defs>
               <clippath
-                id="recharts12-clip"
+                id="recharts16-clip"
               >
                 <rect
                   height="330"
@@ -868,6 +917,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           <div
             class="recharts-tooltip-wrapper"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+            tabindex="0"
           >
             <div
               class="recharts-default-tooltip"
@@ -1150,7 +1200,7 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
             >
               <path
                 class="recharts-curve recharts-line-curve"
-                d="M35.541666666666664,251.4285714285714C45.23611111111111,172.14285714285717,54.93055555555556,92.85714285714289,64.625,84.2857142857143C74.31944444444444,75.71428571428574,84.01388888888889,80.00000000000001,93.70833333333333,71.42857142857144C103.40277777777777,62.85714285714287,113.09722222222223,20,122.79166666666667,20C132.48611111111111,20,142.18055555555554,251.4285714285714,151.87499999999997,251.4285714285714C161.56944444444443,251.4285714285714,171.26388888888886,84.2857142857143,180.95833333333331,84.2857142857143C190.65277777777777,84.2857142857143,200.3472222222222,354.28571428571433,210.04166666666666,354.28571428571433C219.7361111111111,354.28571428571433,229.43055555555554,97.14285714285714,239.12499999999997,97.14285714285714C248.81944444444443,97.14285714285714,258.51388888888886,122.85714285714286,268.2083333333333,122.85714285714286C277.90277777777777,122.85714285714286,287.59722222222223,58.571428571428555,297.2916666666667,58.571428571428555C306.98611111111114,58.571428571428555,316.68055555555554,71.42857142857144,326.375,71.42857142857144C336.06944444444446,71.42857142857144,345.76388888888886,45.71428571428572,355.4583333333333,20"
+                d="M35.541666666666664,320C45.23611111111111,283,54.93055555555556,246,64.625,242C74.31944444444444,238,84.01388888888889,240,93.70833333333333,236C103.40277777777777,232,113.09722222222223,212,122.79166666666667,212C132.48611111111111,212,142.18055555555554,320,151.87499999999997,320C161.56944444444443,320,171.26388888888886,242,180.95833333333331,242C190.65277777777777,242,200.3472222222222,368,210.04166666666666,368C219.7361111111111,368,229.43055555555554,248,239.12499999999997,248C248.81944444444443,248,258.51388888888886,260.00000000000006,268.2083333333333,260.00000000000006C277.90277777777777,260.00000000000006,287.59722222222223,229.99999999999997,297.2916666666667,229.99999999999997C306.98611111111114,229.99999999999997,316.68055555555554,236,326.375,236C336.06944444444446,236,345.76388888888886,224,355.4583333333333,212"
                 fill="none"
                 height="360"
                 name="Users"
@@ -1163,10 +1213,59 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                 width="349"
               />
             </g>
+            <g
+              class="recharts-layer recharts-bar"
+            >
+              <g
+                class="recharts-layer recharts-bar-rectangles"
+              >
+                <g
+                  class="recharts-layer"
+                >
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                  <g
+                    class="recharts-layer recharts-bar-rectangle"
+                  />
+                </g>
+              </g>
+            </g>
           </svg>
           <div
             class="recharts-tooltip-wrapper"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+            tabindex="0"
           >
             <div
               class="recharts-default-tooltip"
@@ -1201,7 +1300,7 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           >
             <defs>
               <clippath
-                id="recharts4-clip"
+                id="recharts6-clip"
               >
                 <rect
                   height="330"
@@ -1966,6 +2065,7 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           <div
             class="recharts-tooltip-wrapper"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+            tabindex="0"
           >
             <div
               class="recharts-default-tooltip"
