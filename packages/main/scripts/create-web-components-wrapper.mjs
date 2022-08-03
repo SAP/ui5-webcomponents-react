@@ -742,11 +742,20 @@ allWebComponents
         }
         // create methods table
         const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
-        const methods = `${renderMethods({
-          name: componentSpec.module,
-          methods: publicMethods
-        })}`;
         if (publicMethods.length) {
+          const methods = `${renderMethods({
+            name: componentSpec.module,
+            methods: publicMethods
+          })}`;
+          const hasMethodsTable = fs
+            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+            .toString()
+            .search(`<${componentSpec.module}Methods />`);
+          if (!hasMethodsTable) {
+            console.warn(
+              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+            );
+          }
           fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
