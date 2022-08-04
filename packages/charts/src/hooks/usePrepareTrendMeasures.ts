@@ -15,6 +15,13 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
 
     measures?.forEach((measure, index) => {
       if (measure.type === 'bar') {
+        lineMeasures.push({
+          ...measure,
+          opacity: 0,
+          hideDataLabel: true,
+          showDot: false,
+          formatter: defaultFormatter
+        });
         columnMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
           formatter: defaultFormatter,
@@ -42,8 +49,10 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       const reducedLineValues = {};
 
       lineMeasures.forEach((line) => {
-        reducedLineValues[`__${line.accessor}`] = getValueByDataKey(data, line.accessor);
-        reducedLineValues[line.accessor] = 0;
+        if (line.type === 'line') {
+          reducedLineValues[`__${line.accessor}`] = getValueByDataKey(data, line.accessor);
+          reducedLineValues[line.accessor] = 0;
+        }
       });
 
       columnDataset.push({

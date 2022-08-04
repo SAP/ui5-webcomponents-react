@@ -312,7 +312,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           } else {
             axisProps.dataKey = dimension.accessor;
             axisProps.tick = <XAxisTicks config={dimension} />;
-            axisProps.scale = 'band';
             axisProps.hide = !chartConfig.xAxisVisible;
             axisProps.xAxisId = index;
             axisProps.height = xAxisHeights[index];

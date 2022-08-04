@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.0...v0.27.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* **ActionSheet:** update to latest design specs for Quartz and Horizon ([#3308](https://github.com/SAP/ui5-webcomponents-react/issues/3308)) ([e6f984a](https://github.com/SAP/ui5-webcomponents-react/commit/e6f984ab7312b3e7ea362955208f09ea2cd3dff6))
+* **AnalyticalTable:** support whitespace input in filter, close column popover on keystroke selection ([#3324](https://github.com/SAP/ui5-webcomponents-react/issues/3324)) ([5207f74](https://github.com/SAP/ui5-webcomponents-react/commit/5207f743b12b6d4f9236538144831a17e1d5a507))
+* **ObjectStatus:** correct icon padding in RTL ([#3300](https://github.com/SAP/ui5-webcomponents-react/issues/3300)) ([c09139b](https://github.com/SAP/ui5-webcomponents-react/commit/c09139bb5670f252fbaa899a6cf94155c3a699f9))
+* **Text:** update text selection color ([#3301](https://github.com/SAP/ui5-webcomponents-react/issues/3301)) ([e024bcb](https://github.com/SAP/ui5-webcomponents-react/commit/e024bcb6e9642335e76ce8b4a74003bcb523d899))
+
+
+
+
+
 # [0.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.2...v0.27.0) (2022-07-25)
 
 

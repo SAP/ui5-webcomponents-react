@@ -35,6 +35,9 @@ const componentTemplate = Handlebars.compile(
 );
 
 const storyTemplate = Handlebars.compile(fs.readFileSync(new URL('./StoryTemplate.hbs', import.meta.url)).toString());
+const methodsTemplate = Handlebars.compile(
+  fs.readFileSync(new URL('./MethodsTemplate.hbs', import.meta.url)).toString()
+);
 
 export const renderComponentWrapper = async (params) => {
   return prettier.format(await Utils.runEsLint(componentTemplate(params), params.name), Utils.prettierConfig);
@@ -42,6 +45,10 @@ export const renderComponentWrapper = async (params) => {
 
 export const renderStory = (params) => {
   return prettier.format(storyTemplate(params), { ...Utils.prettierConfig, parser: 'mdx' });
+};
+
+export const renderMethods = (params) => {
+  return prettier.format(methodsTemplate(params), { ...Utils.prettierConfig, parser: 'markdown' });
 };
 
 export const renderTest = (params) => {
