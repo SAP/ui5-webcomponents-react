@@ -8,7 +8,7 @@ const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
     const middleRowCell = target.querySelector(
       `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
     );
-    middleRowCell.focus({ preventScroll: true });
+    middleRowCell?.focus({ preventScroll: true });
   } else {
     const firstVisibleCell = noData
       ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
