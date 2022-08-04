@@ -422,9 +422,7 @@ describe('Toolbar', () => {
     render(
       <Toolbar
         style={{ width: '50px' }}
-        overflowButton={
-          <ToggleButton data-testid="btn" icon="menu2" design={ButtonDesign.Transparent} onClick={console.log} />
-        }
+        overflowButton={<ToggleButton data-testid="btn" icon="menu2" design={ButtonDesign.Transparent} />}
       >
         <Button>Button One</Button>
         <Input />
