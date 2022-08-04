@@ -9,6 +9,7 @@ import Description from './ColorPalettePopoverDescription.md';
 import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { isChromatic } from '../../../../../.storybook/utils';
+import ColorPalettePopoverMethods from './ColorPalettePopoverMethods.md';
 
 <Meta
   title="Modals & Popovers / ColorPalettePopover"
@@ -73,13 +74,6 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 <Description />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name            | Parameters                                                                                                                                                    | Description                                                                                                                          |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **openPopover** | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd></dl> | Shows the ColorPalettePopover. <b>Note:</b> The method is deprecated and will be removed in future, use <code>showAt</code> instead. |
-| **showAt**      | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd></dl> | Shows the ColorPalettePopover.                                                                                                       |
+<ColorPalettePopoverMethods />
 
 <Footer />

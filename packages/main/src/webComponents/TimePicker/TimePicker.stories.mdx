@@ -5,6 +5,7 @@ import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './TimePickerDescription.md';
+import TimePickerMethods from './TimePickerMethods.md';
 
 <Meta
   title="Inputs / TimePicker"
@@ -37,15 +38,6 @@ import Description from './TimePickerDescription.md';
 
 <Description />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name            | Parameters                                                                                                                                                           | Description                                                                                                                                                         |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **closePicker** | &mdash;                                                                                                                                                              | Closes the picker                                                                                                                                                   |
-| **formatValue** | <dl><dt className="methodText">**oDate**</dt><dd className="methodText">A Java Script date object to be formatted as string</dd><dd><code>object</code></dd></dl>    | Formats a Java Script date object into a string representing a locale date and time according to the <code>formatPattern</code> property of the TimePicker instance |
-| **isOpen**      | &mdash;                                                                                                                                                              | Checks if a value is valid against the current date format of the TimePicker                                                                                        |
-| **isValid**     | <dl><dt className="methodText">**value**</dt><dd className="methodText">The value to be tested against the current date format</dd><dd><code>string</code></dd></dl> | Checks if a value is valid against the current format patternt of the TimePicker.                                                                                   |
+<TimePickerMethods />
 
 <Footer />

@@ -9,6 +9,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import TokenDescription from '../Token/TokenDescription.md';
+import MultiInputMethods from './MultiInputMethods.md';
 
 <Meta
   title="Inputs / MultiInput"
@@ -65,17 +66,7 @@ import TokenDescription from '../Token/TokenDescription.md';
 
 <ArgsTableWithNote story="." />
 
-## Render SuggestionItems
-
-The `MultiInput` component supports rendering `SuggestionItems`. An example on how to use them can be found [here](?path=/docs/inputs-input--with-suggestion-item).
-
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name           | Parameters | Description                                                                                                       |
-| -------------- | ---------- | ----------------------------------------------------------------------------------------------------------------- |
-| **openPicker** | &mdash;    | Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open. |
+<MultiInputMethods />
 
 <SubcomponentsSection />
 
