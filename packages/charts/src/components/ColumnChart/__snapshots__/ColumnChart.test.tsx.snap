@@ -886,7 +886,6 @@ exports[`ColumnChart Check onClick events 1`] = `
         <div
           class="recharts-tooltip-wrapper"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
         >
           <div
             class="recharts-default-tooltip"
@@ -1913,7 +1912,6 @@ exports[`ColumnChart Render chart with data 1`] = `
         <div
           class="recharts-tooltip-wrapper"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
         >
           <div
             class="recharts-default-tooltip"
@@ -2817,7 +2815,6 @@ exports[`ColumnChart onLegendClick should not crash when invalid handler is prov
         <div
           class="recharts-tooltip-wrapper"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
         >
           <div
             class="recharts-default-tooltip"
