@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
+
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
-  // todo: wip
   if (target.dataset.componentName === 'AnalyticalTableContainer') {
     const rowElements = target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]').children;
-    // todo: replace visible-row-index with overscanCount -> need to refactor how the default overscanCount is defined
     const middleRowCell = target.querySelector(
       `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
     );
-    middleRowCell.focus();
+    middleRowCell.focus({ preventScroll: true });
   } else {
     const firstVisibleCell = noData
       ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
@@ -54,14 +54,11 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
     }
   }, [showOverlay]);
 
-  const onTableBlur = useCallback(
-    (e) => {
-      if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
-        currentlyFocusedCell.current = null;
-      }
-    },
-    [currentlyFocusedCell.current]
-  );
+  const onTableBlur = (e) => {
+    if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
+      currentlyFocusedCell.current = null;
+    }
+  };
 
   const onTableFocus = useCallback(
     (e) => {
@@ -77,7 +74,7 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             e.target.querySelector(`div[data-column-index-sub="${columnIndex}"][data-row-index-sub="${rowIndex}"]`)
           ) {
             currentlyFocusedCell.current.tabIndex = 0;
-            currentlyFocusedCell.current.focus();
+            currentlyFocusedCell.current.focus({ preventScroll: true });
           } else {
             getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
           }
@@ -103,6 +100,13 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 
   const onKeyboardNavigation = useCallback(
     (e) => {
+      // check if target is cell and if so proceed from there
+      if (
+        !currentlyFocusedCell.current &&
+        CELL_DATA_ATTRIBUTES.every((item) => Object.keys(e.target.dataset).includes(item))
+      ) {
+        currentlyFocusedCell.current = e.target;
+      }
       if (currentlyFocusedCell.current) {
         const columnIndex = parseInt(currentlyFocusedCell.current.dataset.columnIndex, 10);
         const rowIndex = parseInt(currentlyFocusedCell.current.dataset.rowIndex, 10);
