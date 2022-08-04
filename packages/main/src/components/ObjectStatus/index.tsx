@@ -1,7 +1,7 @@
-import '@ui5/webcomponents-icons/dist/hint.js';
-import '@ui5/webcomponents-icons/dist/status-critical.js';
-import '@ui5/webcomponents-icons/dist/status-negative.js';
-import '@ui5/webcomponents-icons/dist/status-positive.js';
+import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
+import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
+import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
+import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -64,13 +64,13 @@ export interface ObjectStatusPropTypes extends CommonProps {
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon name="status-negative" />;
+      return <Icon name={errorIcon} />;
     case ValueState.Success:
-      return <Icon name="status-positive" />;
+      return <Icon name={successIcon} />;
     case ValueState.Warning:
-      return <Icon name="status-critical" />;
+      return <Icon name={alertIcon} />;
     case ValueState.Information:
-      return <Icon name="hint" />;
+      return <Icon name={informationIcon} />;
     default:
       return null;
   }
