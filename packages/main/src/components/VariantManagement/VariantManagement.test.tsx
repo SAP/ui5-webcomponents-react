@@ -336,7 +336,7 @@ describe('VariantManagement', () => {
         }
       }
     ];
-    const { getByText } = render(
+    const { getByText, rerender } = render(
       <VariantManagement>
         {variantItems.map((item, index) => (
           <VariantItem key={index} {...item.props}>
@@ -352,27 +352,52 @@ describe('VariantManagement', () => {
     expect(dialog).toHaveAttribute('header-text', 'Manage Views');
     expect(dialog.isOpen()).toBeTruthy();
 
-    const manageViewsRowTest = (variantItems) => {
+    const manageViewsRowTest = (variantItems, showOnlyFavorites) => {
       variantItems.forEach((item) => {
         const { rowId, props } = item;
-        const { favorite, children, labelReadOnly, isDefault, hideDelete, global, applyAutomatically, author } = props;
+        const { favorite, labelReadOnly, isDefault, hideDelete, global, applyAutomatically, author } = props;
         const row = table.querySelector(`ui5-table-row[data-id="${rowId}"]`);
-
-        if (labelReadOnly) {
-          expect(screen.getAllByText(rowId)).toHaveLength(2);
+        if (showOnlyFavorites) {
+          if (labelReadOnly) {
+            if (favorite || isDefault) {
+              expect(screen.getAllByText(rowId)).toHaveLength(2);
+            } else {
+              expect(screen.getAllByText(rowId)).toHaveLength(1);
+            }
+          } else {
+            if (favorite || isDefault) {
+              expect(screen.getAllByText(rowId)).toHaveLength(1);
+              expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+            } else {
+              expect(screen.queryByText(rowId)).toBeNull();
+              expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+            }
+          }
         } else {
-          expect(screen.getAllByText(rowId)).toHaveLength(1);
-          expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+          if (labelReadOnly) {
+            expect(screen.getAllByText(rowId)).toHaveLength(2);
+          } else {
+            expect(screen.getAllByText(rowId)).toHaveLength(1);
+            expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+          }
         }
 
-        if (isDefault) {
-          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Selected as Favorite');
-          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Unselected as Favorite');
-        } else {
-          if (favorite) {
-            expect(row.querySelector(`ui5-icon[name="favorite"]`)).toHaveAttribute('title', 'Selected as Favorite');
+        if (showOnlyFavorites) {
+          if (isDefault) {
+            expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Selected as Favorite');
+            expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute(
+              'title',
+              'Unselected as Favorite'
+            );
           } else {
-            expect(row.querySelector(`ui5-icon[name="unfavorite"]`)).toHaveAttribute('title', 'Unselected as Favorite');
+            if (favorite) {
+              expect(row.querySelector(`ui5-icon[name="favorite"]`)).toHaveAttribute('title', 'Selected as Favorite');
+            } else {
+              expect(row.querySelector(`ui5-icon[name="unfavorite"]`)).toHaveAttribute(
+                'title',
+                'Unselected as Favorite'
+              );
+            }
           }
         }
 
@@ -397,13 +422,23 @@ describe('VariantManagement', () => {
         }
       });
     };
-    manageViewsRowTest(variantItems);
+    manageViewsRowTest(variantItems, false);
+    rerender(
+      <VariantManagement showOnlyFavorites>
+        {variantItems.map((item, index) => (
+          <VariantItem key={index} {...item.props}>
+            {item.rowId}
+          </VariantItem>
+        ))}
+      </VariantManagement>
+    );
+    manageViewsRowTest(variantItems, true);
   });
 
   test('Manage Views interactions', async () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = await renderWithDefine(
-      <VariantManagement onSaveManageViews={cb}>
+      <VariantManagement onSaveManageViews={cb} showOnlyFavorites>
         {[
           ...TwoVariantItems,
           <VariantItem isDefault key="2">
