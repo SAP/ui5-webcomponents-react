@@ -39,12 +39,14 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    * Defines the button shown when the `Toolbar` goes into overflow.
    *
    * __Note:__ It is strongly recommended that you only use `ToggleButton` in icon only mode in order to preserve the intended design.
+   *
    * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
    */
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   /**
-   * Defines the visual style of the `Toolbar`.<br />
-   * <b>Note:</b> The visual styles are theme-dependent.
+   * Defines the visual style of the `Toolbar`.
+   *
+   * __Note:__ The visual styles are theme-dependent.
    */
   toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
   /**
