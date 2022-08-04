@@ -1,6 +1,6 @@
-import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
-import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
+import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
+import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import clsx from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
