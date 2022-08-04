@@ -1,14 +1,15 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { ButtonPropTypes } from '../../webComponents';
 import { Popover, PopoverDomRef } from '../../webComponents/Popover';
-import { ToggleButton, ToggleButtonDomRef } from '../../webComponents/ToggleButton';
+import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/ToggleButton';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
@@ -19,6 +20,7 @@ interface OverflowPopoverProps {
   numberOfAlwaysVisibleItems?: number;
   showMoreText: string;
   overflowPopoverRef?: Ref<PopoverDomRef>;
+  overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
 }
 
 const isPhone = Device.isPhone();
@@ -32,7 +34,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowContentRef,
     numberOfAlwaysVisibleItems,
     showMoreText,
-    overflowPopoverRef
+    overflowPopoverRef,
+    overflowButton
   } = props;
 
   const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
@@ -104,17 +107,30 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     });
   }, []);
 
+  const clonedOverflowButtonClick = (e) => {
+    if (typeof overflowButton?.props?.onClick === 'function') {
+      overflowButton.props.onClick(e);
+    }
+    if (!e.defaultPrevented) {
+      handleToggleButtonClick(e);
+    }
+  };
+
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
-      <ToggleButton
-        ref={toggleBtnRef}
-        design={ButtonDesign.Transparent}
-        icon="overflow"
-        onClick={handleToggleButtonClick}
-        pressed={pressed}
-        accessibleName={showMoreText}
-        tooltip={showMoreText}
-      />
+      {overflowButton ? (
+        cloneElement(overflowButton, { onClick: clonedOverflowButtonClick })
+      ) : (
+        <ToggleButton
+          ref={toggleBtnRef}
+          design={ButtonDesign.Transparent}
+          icon="overflow"
+          onClick={handleToggleButtonClick}
+          pressed={pressed}
+          accessibleName={showMoreText}
+          tooltip={showMoreText}
+        />
+      )}
       {createPortal(
         <Popover
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
