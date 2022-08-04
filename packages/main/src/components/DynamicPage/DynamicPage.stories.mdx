@@ -6,6 +6,8 @@ import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
+import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/menu2';
 import { isChromatic } from '../../../../../.storybook/utils';
 import { useReducer, useState } from 'react';
 import {
@@ -28,6 +30,7 @@ import {
   PageBackgroundDesign,
   Panel,
   Title,
+  ToggleButton,
   ValueState,
   VariantItem,
   VariantManagement
@@ -288,6 +291,75 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
             </DynamicPage>
           )}
         </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With custom actions and navigationActions overflow button
+
+With the `actionsOverflowButton` and the `navigationActionsOverflowButton` it is possible to change the overflow button of the respective actions toolbar.
+The `navigationActionsOverflowButton` is only displayed, if the `navigationActions` toolbar is used. (width < 1280px)
+
+<Canvas>
+  <Story name="with custom overflow button">
+    {() => {
+      const titleProps = {
+        actionsOverflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />,
+        navigationActionsOverflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />,
+        actions: (
+          <>
+            <Button key={'edit'} design={ButtonDesign.Emphasized}>
+              Edit
+            </Button>
+            <Button key={'delete'} design={ButtonDesign.Transparent}>
+              Delete
+            </Button>
+            <Button key={'copy'} design={ButtonDesign.Transparent}>
+              Copy
+            </Button>
+            <Button key={'action'} icon="action" design={ButtonDesign.Transparent}>
+              Action
+            </Button>
+            <Button design={ButtonDesign.Transparent}>Create</Button>
+          </>
+        ),
+        navigationActions: (
+          <>
+            <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+            <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
+            <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
+            <Button design={ButtonDesign.Transparent}>
+              Loooooooooooooooooooooooooooooooooooong navigation actions Button
+            </Button>
+          </>
+        )
+      };
+      return (
+        <>
+          <DynamicPage
+            style={{ width: '1000px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={<Title>Custom overflow buttons for navigationActions and actions (width: 1000px)</Title>}
+              />
+            }
+          />
+          <DynamicPage
+            style={{ width: '1300px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={<Title>Custom overflow buttons for navigationActions and actions (width: 1300px)</Title>}
+              />
+            }
+          />
+        </>
       );
     }}
   </Story>
