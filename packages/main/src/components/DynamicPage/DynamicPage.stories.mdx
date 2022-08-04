@@ -296,9 +296,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
   </Story>
 </Canvas>
 
-## With custom actions and navigationActions overflow button
+## DynamicPage with custom actions and navigationActions overflow button
 
-With the `actionsOverflowButton` and the `navigationActionsOverflowButton` it is possible to change the overflow button of the respective actions toolbar.
+With the `actionsOverflowButton` and the `navigationActionsOverflowButton` props of the `DynamicPageTitle` it is possible to change the overflow button of the respective actions toolbar.
 The `navigationActionsOverflowButton` is only displayed, if the `navigationActions` toolbar is used. (width < 1280px)
 
 <Canvas>
@@ -355,7 +355,7 @@ The `navigationActionsOverflowButton` is only displayed, if the `navigationActio
             headerTitle={
               <DynamicPageTitle
                 {...titleProps}
-                header={<Title>Custom overflow buttons for navigationActions and actions (width: 1300px)</Title>}
+                header={<Title>Custom overflow buttons for actions (width: 1300px)</Title>}
               />
             }
           />
