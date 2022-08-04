@@ -158,6 +158,12 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
+  const handleListKeyDown = (e) => {
+    if (e.key !== 'Escape') {
+      stopPropagation(e);
+    }
+  };
+
   return createPortal(
     <Popover
       hideArrow
@@ -171,7 +177,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       open={open}
       opener={uniqueColumnId}
     >
-      <List onItemClick={handleSort} ref={listRef} onKeyDown={stopPropagation}>
+      <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
         {isSortedAscending && (
           <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
             {clearSortingText}
