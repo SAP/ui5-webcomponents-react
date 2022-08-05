@@ -76,7 +76,7 @@ import { Icon, IndicationColor, Label, ObjectStatus, ValueState } from '../..';
 ## ObjectStatus with Icon only
 
 <Canvas>
-  <Story name="with Icon only" args={{ children: null }}>
+  <Story name="with Icon only" args={{ icon: <Icon name="sys-cancel" />, children: null }}>
     {(args) => {
       return <ObjectStatus {...args} />;
     }}
