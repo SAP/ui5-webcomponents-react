@@ -19,7 +19,7 @@ import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { flattenFragments } from '../../internal/utils';
-import { PopoverDomRef } from '../../webComponents';
+import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
@@ -71,6 +71,27 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    */
   showSubHeaderRight?: boolean;
   /**
+   * Defines the button shown when the content of the `actions` goes into overflow.
+   *
+   * __Note:__ If the width of the `DynamicPageTitle` is less than 1280px the `navigationActions` are displayed inside the `actions` toolbar, so only this overflow button is rendered.
+   *
+   * __Note:__ It is strongly recommended that you only use `ToggleButton` in icon only mode in order to preserve the intended design.
+   *
+   * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
+   *
+   */
+  actionsOverflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  /**
+   * Defines the button shown when the content of the `navigationActions` goes into overflow.
+   *
+   * __Note:__ If the width of the `DynamicPageTitle` is less than 1280px the `navigationActions` are displayed inside the `actions` toolbar, so in this case this prop has no effect.
+   *
+   * __Note:__ It is strongly recommended that you only use `ToggleButton` in icon only mode in order to preserve the intended design.
+   *
+   * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
+   */
+  navigationActionsOverflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  /**
    * Fired when the content of the `actions` or `navigationActions` toolbar overflow popover has been changed.
    */
   onToolbarOverflowChange?: (event: {
@@ -121,6 +142,8 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     style,
     onToggleHeaderContentVisibility,
     onToolbarOverflowChange,
+    actionsOverflowButton,
+    navigationActionsOverflowButton,
     ...rest
   } = props as InternalProps;
 
@@ -213,6 +236,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
           )}
           {showNavigationInTopArea && (
             <Toolbar
+              overflowButton={navigationActionsOverflowButton}
               design={ToolbarDesign.Auto}
               toolbarStyle={ToolbarStyle.Clear}
               active
@@ -256,6 +280,7 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
           <Toolbar
+            overflowButton={actionsOverflowButton}
             design={ToolbarDesign.Auto}
             toolbarStyle={ToolbarStyle.Clear}
             active
