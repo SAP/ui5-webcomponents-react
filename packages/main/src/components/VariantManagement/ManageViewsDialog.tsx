@@ -46,6 +46,7 @@ interface ManageViewsDialogPropTypes {
   showCreatedBy: boolean;
   variantNames: string[];
   portalContainer: Element;
+  showOnlyFavorites?: boolean;
 }
 
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
@@ -58,7 +59,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showSetAsDefault,
     showCreatedBy,
     variantNames,
-    portalContainer
+    portalContainer,
+    showOnlyFavorites
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
@@ -76,7 +78,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const columns = (
     <>
-      <TableColumn key="favorite-variant-item" />
+      {showOnlyFavorites && <TableColumn key="favorite-variant-item" />}
       <TableColumn>{viewHeaderText}</TableColumn>
       {showShare && (
         <TableColumn demandPopin minWidth={600}>
@@ -202,6 +204,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               showSetAsDefault={showSetAsDefault}
               showCreatedBy={showCreatedBy}
               key={itemProps?.children}
+              showOnlyFavorites={showOnlyFavorites}
             />
           );
         })}

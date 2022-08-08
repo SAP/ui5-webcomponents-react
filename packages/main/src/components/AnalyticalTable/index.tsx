@@ -1002,6 +1002,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
+                    uniqueId={uniqueId}
                   />
                 )
               );

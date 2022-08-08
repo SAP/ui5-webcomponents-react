@@ -3,15 +3,18 @@ import { createChangeTagNameTest } from '@shared/tests/utils';
 import React, { createRef } from 'react';
 import {
   Button,
+  ButtonDesign,
   Input,
   PopoverDomRef,
   Text,
+  ToggleButton,
   ToolbarDesign,
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle
 } from '../..';
 import { Toolbar } from './index';
+import '@ui5/webcomponents-icons/dist/menu2.js';
 
 describe('Toolbar', () => {
   test('Renders with default Props', () => {
@@ -401,6 +404,32 @@ describe('Toolbar', () => {
     // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
     // expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     // expect(overflowBtn.shadowRoot.querySelector('button')).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('custom overflow button', () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 200),
+        height: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      };
+    });
+    render(
+      <Toolbar
+        style={{ width: '50px' }}
+        overflowButton={<ToggleButton data-testid="btn" icon="menu2" design={ButtonDesign.Transparent} />}
+      >
+        <Button>Button One</Button>
+        <Input />
+      </Toolbar>
+    );
+    expect(screen.getByTestId('btn')).toBeInTheDocument();
+    // testing e.preventDefault is not possible as the shadow root is always empty and the click event is never called
   });
 
   createChangeTagNameTest(Toolbar);

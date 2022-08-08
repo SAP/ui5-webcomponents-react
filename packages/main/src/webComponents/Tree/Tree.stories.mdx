@@ -13,6 +13,9 @@ import '@ui5/webcomponents-icons/dist/wrench.js';
 import '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import { useState } from 'react';
 import { ValueState } from '../../enums';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import TreeItemDescription from '../TreeItem/TreeItemDescription.md';
+import TreeMethods from './TreeMethods.md';
 
 <Meta
   title="Data Display / Tree"
@@ -69,13 +72,7 @@ import { ValueState } from '../../enums';
 
 <Description />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name     | Parameters                                                                                                                                                                                               | Description                                                                 |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **walk** | <dl><dt className="methodText">**callback**</dt><dd className="methodText">function to execute on each node of the tree with 2 arguments: the node and the level</dd><dd><code>function</code></dd></dl> | Perform Depth-First-Search walk on the tree and run a callback on each node |
+<TreeMethods />
 
 # More Examples
 
@@ -241,5 +238,11 @@ const LazyLoadingTree = () => {
   );
 };
 ```
+
+<SubcomponentsSection />
+
+## TreeItem
+
+<TreeItemDescription />
 
 <Footer />

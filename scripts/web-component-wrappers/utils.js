@@ -359,3 +359,23 @@ export const formatDescription = (description, componentSpec, isJSDoc = true) =>
   desc = replaceEventNamesInDescription(desc, componentSpec);
   return desc;
 };
+
+export const formatDemoDescription = (description, componentSpec, replaceHeadingTags = true) => {
+  let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
+  if (replaceHeadingTags) {
+    formattedDescription = formattedDescription.replace(/h3/g, 'h2').replace(/h4/g, 'h3');
+  }
+
+  try {
+    if (formattedDescription) {
+      formattedDescription = formatDescription(formattedDescription, componentSpec, false);
+    }
+  } catch (e) {
+    formattedDescription = '';
+    console.warn(
+      `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
+    );
+  }
+
+  return formattedDescription;
+};

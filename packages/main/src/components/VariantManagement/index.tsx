@@ -110,6 +110,8 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   dirtyStateText?: string;
   /**
    * Indicates that the 'Favorites' feature is used. Only variants marked as favorites will be displayed in the variant list.
+   *
+   * __Note:__ Only if `showOnlyFavorites` is set to `true` favorites can be changed.
    */
   showOnlyFavorites?: boolean;
   /**
@@ -578,6 +580,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
             portalContainer={portalContainer}
+            showOnlyFavorites={showOnlyFavorites}
           >
             {safeChildren}
           </ManageViewsDialog>

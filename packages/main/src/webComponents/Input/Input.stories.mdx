@@ -12,6 +12,10 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './InputDescription.md';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md';
+import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md';
+import InputMethods from './InputMethods.md';
 
 <Meta
   title="Inputs / Input"
@@ -82,5 +86,16 @@ and the `showSuggestions` prop is set to `true`.
 </Canvas>
 
 <ArgsTableWithNote of={SuggestionItem} story="with SuggestionItem" />
+<InputMethods />
+
+<SubcomponentsSection />
+
+## SuggestionItem
+
+<SuggestionItemDescription />
+
+## SuggestionGroupItem
+
+<SuggestionGroupItemDescription />
 
 <Footer />

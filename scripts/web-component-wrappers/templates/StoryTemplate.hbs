@@ -9,6 +9,15 @@ import { Footer } from '@docs/Footer';
 {{#if hasDescription}}
 import Description from './{{name}}Description.md';
 {{/if}}
+{{#if additionalComponentDocs}}
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+{{#each additionalComponentDocs}}
+import {{this}}Description from '../{{this}}/{{this}}Description.md';
+{{/each}}
+{{/if}}
+{{#if methods}}
+import {{name}}Methods from './{{name}}Methods.md';
+{{/if}}
 
 <Meta
   title="Components / {{name}}"
@@ -53,13 +62,18 @@ import Description from './{{name}}Description.md';
 {{/if}}
 
 {{#if methods}}
-## Methods
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+<{{name}}Methods />
+{{/if}}
 
-|Name|Parameters|Description|
-|----|----------|-----------|
-{{#each methods}}
-|**{{name}}**|{{> methodParameters parameters=parameters}}|{{{description}}}|
+{{#if additionalComponentDocs}}
+
+<SubcomponentsSection />
+
+{{#each additionalComponentDocs}}
+## {{this}}
+
+<{{this}}Description />
+
 {{/each}}
 {{/if}}
 

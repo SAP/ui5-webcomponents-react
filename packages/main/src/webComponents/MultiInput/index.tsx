@@ -12,7 +12,7 @@ interface MultiInputAttributes {
    */
   showValueHelpIcon?: boolean;
   /**
-   * Defines the accessible aria name of the component.
+   * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
   /**

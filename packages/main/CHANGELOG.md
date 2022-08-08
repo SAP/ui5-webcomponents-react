@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.1...v0.27.2) (2022-08-08)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** allow adding columns in runtime ([#3328](https://github.com/SAP/ui5-webcomponents-react/issues/3328)) ([0fd7b6f](https://github.com/SAP/ui5-webcomponents-react/commit/0fd7b6f2e708cfbe313004f9efd914f5d4aec0ef))
+* **AnalyticalTable:** allow closing the column popover with ESC again ([#3336](https://github.com/SAP/ui5-webcomponents-react/issues/3336)) ([7b60248](https://github.com/SAP/ui5-webcomponents-react/commit/7b60248407e193f73d1ff9c361b8b37182063903))
+* **AnalyticalTable:** don't scroll when horizontal scrollbar is clicked ([#3286](https://github.com/SAP/ui5-webcomponents-react/issues/3286)) ([68bf828](https://github.com/SAP/ui5-webcomponents-react/commit/68bf828e2a5075bb366ca1749a401f60c367a650)), closes [#3285](https://github.com/SAP/ui5-webcomponents-react/issues/3285)
+* **FilterBar:** use emphasized design for "Save" if "Go" is not set ([#3344](https://github.com/SAP/ui5-webcomponents-react/issues/3344)) ([e169821](https://github.com/SAP/ui5-webcomponents-react/commit/e1698216f4189874a6e9f19bf60568370aefc17a))
+* **ObjectStatus:** update to latest design specs for Belize, Quartz and Horizon ([#3340](https://github.com/SAP/ui5-webcomponents-react/issues/3340)) ([f90077d](https://github.com/SAP/ui5-webcomponents-react/commit/f90077de24eef165d54472f1256226cad5a1e0b7))
+* **VariantManagement:** only show favorite column if `showOnlyFavorites` is `true` ([#3331](https://github.com/SAP/ui5-webcomponents-react/issues/3331)) ([c44f80a](https://github.com/SAP/ui5-webcomponents-react/commit/c44f80a9d4e8a8d3df3fe5083ded501e265ea82e))
+
+
+### Features
+
+* **DynamicPageTitle:** add `actionsOverflowButton` and `navigationActionsOverflowButton` ([#3338](https://github.com/SAP/ui5-webcomponents-react/issues/3338)) ([6b04c98](https://github.com/SAP/ui5-webcomponents-react/commit/6b04c980b1b9832c1bdcd53a2ebed09c71774e50)), closes [#3253](https://github.com/SAP/ui5-webcomponents-react/issues/3253)
+* **Toolbar:** add `overflowButton` prop ([#3337](https://github.com/SAP/ui5-webcomponents-react/issues/3337)) ([40f66c0](https://github.com/SAP/ui5-webcomponents-react/commit/40f66c0a932b3b517a001c26a710a4b3aa8adf5d))
+
+
+
+
+
+## [0.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.0...v0.27.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* **ActionSheet:** update to latest design specs for Quartz and Horizon ([#3308](https://github.com/SAP/ui5-webcomponents-react/issues/3308)) ([e6f984a](https://github.com/SAP/ui5-webcomponents-react/commit/e6f984ab7312b3e7ea362955208f09ea2cd3dff6))
+* **AnalyticalTable:** support whitespace input in filter, close column popover on keystroke selection ([#3324](https://github.com/SAP/ui5-webcomponents-react/issues/3324)) ([5207f74](https://github.com/SAP/ui5-webcomponents-react/commit/5207f743b12b6d4f9236538144831a17e1d5a507))
+* **ObjectStatus:** correct icon padding in RTL ([#3300](https://github.com/SAP/ui5-webcomponents-react/issues/3300)) ([c09139b](https://github.com/SAP/ui5-webcomponents-react/commit/c09139bb5670f252fbaa899a6cf94155c3a699f9))
+* **Text:** update text selection color ([#3301](https://github.com/SAP/ui5-webcomponents-react/issues/3301)) ([e024bcb](https://github.com/SAP/ui5-webcomponents-react/commit/e024bcb6e9642335e76ce8b4a74003bcb523d899))
+
+
+
+
+
+# [0.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.2...v0.27.0) (2022-07-25)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** remove empty grouped rows ([#3273](https://github.com/SAP/ui5-webcomponents-react/issues/3273)) ([50d38a7](https://github.com/SAP/ui5-webcomponents-react/commit/50d38a703cf638ea871d2213e74dd08576bc3aca)), closes [#3266](https://github.com/SAP/ui5-webcomponents-react/issues/3266)
+* **Toolbar:** align `iconEnd` button content to start ([#3281](https://github.com/SAP/ui5-webcomponents-react/issues/3281)) ([028259d](https://github.com/SAP/ui5-webcomponents-react/commit/028259df6c165bd8efe8e6b7a95f523685b340e8))
+
+
+### Features
+
+* update `@ui5/webcomponents` to 1.6.0 ([#3283](https://github.com/SAP/ui5-webcomponents-react/issues/3283)) ([230d5de](https://github.com/SAP/ui5-webcomponents-react/commit/230d5de0475db9d06e5eeacee37bc5724839c503))
+
+
+
+
+
 ## [0.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.26.1...v0.26.2) (2022-07-19)
 
 

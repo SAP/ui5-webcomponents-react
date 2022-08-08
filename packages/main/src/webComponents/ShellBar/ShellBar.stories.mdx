@@ -7,6 +7,9 @@ import Description from './ShellBarDescription.md';
 import '@ui5/webcomponents-icons/dist/add.js';
 import image from '../../../../../.storybook/demoImages/Person.png';
 import { useRef } from 'react';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md';
+import ShellBarMethods from './ShellBarMethods.md';
 
 <Meta
   title="Layouts & Floorplans / ShellBar"
@@ -67,13 +70,7 @@ import { useRef } from 'react';
 
 <Description />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name              | Parameters | Description                                                                                                                                                   |
-| ----------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **closeOverflow** | &mdash;    | Closes the overflow area. Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event |
+<ShellBarMethods />
 
 <br />
 
@@ -165,5 +162,11 @@ const ShellBarComponent = () => {
   );
 };
 ```
+
+<SubcomponentsSection />
+
+## ShellBarItem
+
+<ShellBarItemDescription />
 
 <Footer />
