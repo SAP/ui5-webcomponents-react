@@ -274,6 +274,13 @@ export const FilterDialog = (props) => {
                   {goText}
                 </Button>
               )}
+              <Button
+                onClick={handleSave}
+                data-component-name="FilterBarDialogSaveBtn"
+                design={showGoButton ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+              >
+                {saveText}
+              </Button>
               {showClearButton && (
                 <Button onClick={handleClear} data-component-name="FilterBarDialogClearBtn">
                   {clearText}
@@ -284,9 +291,6 @@ export const FilterDialog = (props) => {
                   {restoreText}
                 </Button>
               )}
-              <Button onClick={handleSave} data-component-name="FilterBarDialogSaveBtn">
-                {saveText}
-              </Button>
               <Button
                 design={ButtonDesign.Transparent}
                 onClick={handleCancel}
