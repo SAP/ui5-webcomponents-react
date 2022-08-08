@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.1...v0.27.2) (2022-08-08)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+
+
+
+
 ## [0.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.0...v0.27.1) (2022-08-02)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

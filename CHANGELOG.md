@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.1...v0.27.2) (2022-08-08)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** allow adding columns in runtime ([#3328](https://github.com/SAP/ui5-webcomponents-react/issues/3328)) ([0fd7b6f](https://github.com/SAP/ui5-webcomponents-react/commit/0fd7b6f2e708cfbe313004f9efd914f5d4aec0ef))
+* **AnalyticalTable:** allow closing the column popover with ESC again ([#3336](https://github.com/SAP/ui5-webcomponents-react/issues/3336)) ([7b60248](https://github.com/SAP/ui5-webcomponents-react/commit/7b60248407e193f73d1ff9c361b8b37182063903))
+* **AnalyticalTable:** don't scroll when horizontal scrollbar is clicked ([#3286](https://github.com/SAP/ui5-webcomponents-react/issues/3286)) ([68bf828](https://github.com/SAP/ui5-webcomponents-react/commit/68bf828e2a5075bb366ca1749a401f60c367a650)), closes [#3285](https://github.com/SAP/ui5-webcomponents-react/issues/3285)
+* **FilterBar:** use emphasized design for "Save" if "Go" is not set ([#3344](https://github.com/SAP/ui5-webcomponents-react/issues/3344)) ([e169821](https://github.com/SAP/ui5-webcomponents-react/commit/e1698216f4189874a6e9f19bf60568370aefc17a))
+* **ObjectStatus:** update to latest design specs for Belize, Quartz and Horizon ([#3340](https://github.com/SAP/ui5-webcomponents-react/issues/3340)) ([f90077d](https://github.com/SAP/ui5-webcomponents-react/commit/f90077de24eef165d54472f1256226cad5a1e0b7))
+* **VariantManagement:** only show favorite column if `showOnlyFavorites` is `true` ([#3331](https://github.com/SAP/ui5-webcomponents-react/issues/3331)) ([c44f80a](https://github.com/SAP/ui5-webcomponents-react/commit/c44f80a9d4e8a8d3df3fe5083ded501e265ea82e))
+
+
+### Features
+
+* **DynamicPageTitle:** add `actionsOverflowButton` and `navigationActionsOverflowButton` ([#3338](https://github.com/SAP/ui5-webcomponents-react/issues/3338)) ([6b04c98](https://github.com/SAP/ui5-webcomponents-react/commit/6b04c980b1b9832c1bdcd53a2ebed09c71774e50)), closes [#3253](https://github.com/SAP/ui5-webcomponents-react/issues/3253)
+* **Toolbar:** add `overflowButton` prop ([#3337](https://github.com/SAP/ui5-webcomponents-react/issues/3337)) ([40f66c0](https://github.com/SAP/ui5-webcomponents-react/commit/40f66c0a932b3b517a001c26a710a4b3aa8adf5d))
+
+
+
+
+
 ## [0.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.0...v0.27.1) (2022-08-02)
 
 
