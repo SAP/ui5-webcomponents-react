@@ -1,4 +1,4 @@
-import { debounce, Device, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, deprecationNotice, Device, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -21,7 +21,7 @@ import { stopPropagation } from '../../internal/stopPropagation';
 import { flattenFragments } from '../../internal/utils';
 import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
-import { Toolbar } from '../Toolbar';
+import { Toolbar, ToolbarPropTypes } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ActionsSpacer } from './ActionsSpacer';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
@@ -71,6 +71,8 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    */
   showSubHeaderRight?: boolean;
   /**
+   * __deprecated__ - Please use `overflowButton` of the `actionsToolbarProps` instead.
+   *
    * Defines the button shown when the content of the `actions` goes into overflow.
    *
    * __Note:__ If the width of the `DynamicPageTitle` is less than 1280px the `navigationActions` are displayed inside the `actions` toolbar, so only this overflow button is rendered.
@@ -79,9 +81,12 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    *
    * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
    *
+   * @deprecated Please use `overflowButton` of the `actionsToolbarProps` instead.
    */
   actionsOverflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   /**
+   * __deprecated__ - Please use `overflowButton` of the `navigationActionsToolbarProps` instead.
+   *
    * Defines the button shown when the content of the `navigationActions` goes into overflow.
    *
    * __Note:__ If the width of the `DynamicPageTitle` is less than 1280px the `navigationActions` are displayed inside the `actions` toolbar, so in this case this prop has no effect.
@@ -89,10 +94,16 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * __Note:__ It is strongly recommended that you only use `ToggleButton` in icon only mode in order to preserve the intended design.
    *
    * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
+   *
+   * @deprecated Please use `overflowButton` of the `navigationActionsToolbarProps` instead.
    */
   navigationActionsOverflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   /**
+   * __deprecated__ - Please use `onOverflowChange` of the respective toolbar props object instead (`actionsToolbarProps` or `navigationActionsToolbarProps`)
+   *
    * Fired when the content of the `actions` or `navigationActions` toolbar overflow popover has been changed.
+   *
+   * @deprecated Please use `onOverflowChange` of the respective toolbar props object instead (`actionsToolbarProps` or `navigationActionsToolbarProps`)
    */
   onToolbarOverflowChange?: (event: {
     toolbarElements: HTMLElement[];
@@ -100,6 +111,18 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
     target: HTMLElement;
     origin: 'actions' | 'navigationActions';
   }) => void;
+  /**
+   * Use this prop to customize the "actions" `Toolbar`.
+   *
+   * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
+   */
+  actionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active' | 'overflowPopoverRef'>;
+  /**
+   * Use this prop to customize the "navigationActions" `Toolbar`.
+   *
+   * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
+   */
+  navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active' | 'overflowPopoverRef'>;
 }
 
 interface InternalProps extends DynamicPageTitlePropTypes {
@@ -144,6 +167,8 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     onToolbarOverflowChange,
     actionsOverflowButton,
     navigationActionsOverflowButton,
+    actionsToolbarProps,
+    navigationActionsToolbarProps,
     ...rest
   } = props as InternalProps;
 
@@ -168,6 +193,25 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
   }, [isMounted]);
 
   const { onClick: _0, ...propsWithoutOmitted } = rest;
+
+  // todo: remove deprecation notice & deprecated props implementation
+  useEffect(() => {
+    if (onToolbarOverflowChange) {
+      deprecationNotice(
+        'onToolbarOverflowChange',
+        '`onToolbarOverflowChange` is deprecated. Please use the respective toolbar props object instead (`actionsToolbarProps` or `navigationActionsToolbarProps`)'
+      );
+    }
+    if (actionsOverflowButton) {
+      deprecationNotice('actionsOverflowButton', 'Please use `overflowButton` of the `actionsToolbarProps` instead.');
+    }
+    if (navigationActionsOverflowButton) {
+      deprecationNotice(
+        'navigationActionsOverflowButton',
+        'Please use `overflowButton` of the `navigationActionsToolbarProps` instead.'
+      );
+    }
+  }, []);
 
   const onHeaderClick = useCallback(
     (e) => {
@@ -218,6 +262,20 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
     }
   };
 
+  const handleActionsToolbarClick = (e) => {
+    stopPropagation(e);
+    if (typeof actionsToolbarProps?.onClick === 'function') {
+      actionsToolbarProps.onClick(e);
+    }
+  };
+
+  const handleNavigationActionsToolbarClick = (e) => {
+    stopPropagation(e);
+    if (typeof navigationActionsToolbarProps?.onClick === 'function') {
+      navigationActionsToolbarProps.onClick(e);
+    }
+  };
+
   return (
     <FlexBox
       className={containerClasses}
@@ -236,15 +294,16 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
           )}
           {showNavigationInTopArea && (
             <Toolbar
-              overflowButton={navigationActionsOverflowButton}
+              {...navigationActionsToolbarProps}
+              overflowButton={navigationActionsToolbarProps?.overflowButton ?? navigationActionsOverflowButton}
+              className={clsx(classes.toolbar, navigationActionsToolbarProps?.className)}
+              onClick={handleNavigationActionsToolbarClick}
+              data-component-name="DynamicPageTitleNavActions"
+              onOverflowChange={navigationActionsToolbarProps?.onOverflowChange ?? handleToolbarsOverflowChange}
+              overflowPopoverRef={navActionsOverflowPopoverRef}
               design={ToolbarDesign.Auto}
               toolbarStyle={ToolbarStyle.Clear}
               active
-              className={classes.toolbar}
-              onClick={stopPropagation}
-              data-component-name="DynamicPageTitleNavActions"
-              onOverflowChange={handleToolbarsOverflowChange}
-              overflowPopoverRef={navActionsOverflowPopoverRef}
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
               {enhanceActionsWithClick(navigationActions, navActionsOverflowPopoverRef)}
@@ -280,14 +339,15 @@ const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
           <Toolbar
-            overflowButton={actionsOverflowButton}
+            {...actionsToolbarProps}
+            overflowButton={actionsToolbarProps?.overflowButton ?? actionsOverflowButton}
             design={ToolbarDesign.Auto}
             toolbarStyle={ToolbarStyle.Clear}
             active
-            className={classes.toolbar}
-            onClick={stopPropagation}
+            className={clsx(classes.toolbar, actionsToolbarProps?.className)}
+            onClick={handleActionsToolbarClick}
             data-component-name="DynamicPageTitleActions"
-            onOverflowChange={handleToolbarsOverflowChange}
+            onOverflowChange={actionsToolbarProps?.onOverflowChange ?? handleToolbarsOverflowChange}
             overflowPopoverRef={actionsOverflowPopoverRef}
           >
             <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
