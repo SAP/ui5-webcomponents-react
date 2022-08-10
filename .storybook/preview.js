@@ -51,8 +51,7 @@ const ThemeProviderDecorator = makeDecorator({
     useEffect(() => {
       const onAnchorClick = (e) => {
         const { hash } = e.currentTarget;
-        const { origin, search } = window.parent.location;
-        window.parent.location.replace(`${origin}/${search}${hash}`);
+        window.parent.location.replace('#' + hash.replace(/^#/, ''));
       };
       const toKebabCase = (str) =>
         str &&
