@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.2...v0.27.3) (2022-08-10)
+
+
+### Bug Fixes
+
+* **jestSetup:** make mocked crypto API writable ([#3355](https://github.com/SAP/ui5-webcomponents-react/issues/3355)) ([fd39f9a](https://github.com/SAP/ui5-webcomponents-react/commit/fd39f9a1c6edeb69af28439d0a6c3a91e38cd3b9))
+
+
+### Features
+
+* **DynamicPageTitle:** allow a subset of `Toolbar` props to be passed to each toolbar ([#3354](https://github.com/SAP/ui5-webcomponents-react/issues/3354)) ([0dede0a](https://github.com/SAP/ui5-webcomponents-react/commit/0dede0a61bf6ce7a2885f74a00ff99edb983f6ee)), closes [#3353](https://github.com/SAP/ui5-webcomponents-react/issues/3353)
+
+
+
+
+
 ## [0.27.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.1...v0.27.2) (2022-08-08)
 
 
