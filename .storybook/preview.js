@@ -134,6 +134,8 @@ const ThemeProviderDecorator = makeDecorator({
 
 export const decorators = [ThemeProviderDecorator];
 
+const DEPRECATED_THEMES = new Set(['sap_belize_hcb', 'sap_belize_hcw']);
+
 export const globalTypes = {
   theme: {
     title: 'Theme',
@@ -141,10 +143,12 @@ export const globalTypes = {
     defaultValue: Themes.sap_fiori_3,
     toolbar: {
       title: 'Theme',
-      items: Object.keys(Themes).map((themeKey) => ({
-        value: themeKey,
-        title: themeKey
-      }))
+      items: Object.keys(Themes)
+        .filter((key) => !DEPRECATED_THEMES.has(key))
+        .map((themeKey) => ({
+          value: themeKey,
+          title: themeKey
+        }))
     }
   },
   contentDensity: {
