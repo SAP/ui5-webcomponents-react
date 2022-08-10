@@ -7,7 +7,7 @@ import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -45,6 +45,7 @@ const ThemeProviderDecorator = makeDecorator({
   parameterName: 'ThemeProvider',
   wrapper: (Story, context) => {
     const { theme, contentDensity, direction } = context.globals;
+    const svgRef = useRef();
 
     // todo remove this once mdx anchors are working again (https://github.com/storybookjs/storybook/issues/18395)
     useEffect(() => {
@@ -60,7 +61,6 @@ const ThemeProviderDecorator = makeDecorator({
           .map((x) => x.toLowerCase())
           .join('-');
 
-      const svg = document.getElementById('temporary-svg');
       const toc = document.getElementById('toc-container');
 
       if (toc?.querySelector('ul')?.children.length) {
@@ -83,7 +83,7 @@ const ThemeProviderDecorator = makeDecorator({
         ae.setAttribute('tab-index', '-1');
         ae.setAttribute('href', `#${toKebabCase(item.textContent)}`);
         ae.addEventListener('click', onAnchorClick);
-        const clonedSvg = svg.cloneNode(true);
+        const clonedSvg = svgRef.current.cloneNode(true);
         clonedSvg.removeAttribute('style');
         ae.append(clonedSvg);
         item.setAttribute('id', toKebabCase(item.textContent));
@@ -111,6 +111,7 @@ const ThemeProviderDecorator = makeDecorator({
     return (
       <ThemeProvider>
         <svg
+          ref={svgRef}
           viewBox="0 0 16 16"
           version="1.1"
           width="16"
