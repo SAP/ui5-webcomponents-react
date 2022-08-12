@@ -5,6 +5,7 @@ import React, {
   cloneElement,
   CSSProperties,
   forwardRef,
+  ReactNode,
   ReactElement,
   Ref,
   useEffect,
@@ -23,7 +24,7 @@ export interface FormPropTypes extends CommonProps {
    * Components that are placed into Form. Please use only `FormGroup` and `FormItem` in order to preserve the
    * intended design.
    */
-  children: ReactElement | ReactElement[];
+  children: ReactNode | ReactNode[];
   /**
    * Form title
    */
@@ -101,10 +102,10 @@ export interface FormPropTypes extends CommonProps {
 
 const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
   React.Children.map(reactChildren, (child) => {
-    if (child.type?.displayName === 'FormItem') {
+    if (child?.type?.displayName === 'FormItem') {
       return cloneElement(child, { labelSpan: currentLabelSpan });
     }
-    if (child.type?.displayName === 'FormGroup') {
+    if (child?.type?.displayName === 'FormGroup') {
       return cloneElement(child, { children: clonedChildrenForSingleColumn(child.props.children, currentLabelSpan) });
     }
     return child;
@@ -177,7 +178,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups = [];
     if (Children.count(children) === 1 && !titleText) {
-      const singleChild = Array.isArray(children) ? children[0] : children;
+      const singleChild = (Array.isArray(children) ? children[0] : children) as ReactElement;
       if (singleChild?.props?.title?.length > 0) {
         return [cloneElement(singleChild, { title: null }), singleChild.props.title];
       }
