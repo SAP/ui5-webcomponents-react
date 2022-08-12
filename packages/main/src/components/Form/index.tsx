@@ -179,7 +179,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     const computedFormGroups = [];
     if (Children.count(children) === 1 && !titleText) {
       const singleChild = (Array.isArray(children) ? children[0] : children) as ReactElement;
-      if ((singleChild?.props?.title?.length as number) > 0) {
+      if (singleChild?.props?.title?.length > 0) {
         return [cloneElement(singleChild, { title: null }), singleChild.props.title];
       }
     }
