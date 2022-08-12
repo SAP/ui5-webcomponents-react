@@ -5,7 +5,7 @@ import React, {
   cloneElement,
   CSSProperties,
   forwardRef,
-  ReactElement,
+  ReactNode,
   Ref,
   useEffect,
   useMemo,
@@ -23,7 +23,7 @@ export interface FormPropTypes extends CommonProps {
    * Components that are placed into Form. Please use only `FormGroup` and `FormItem` in order to preserve the
    * intended design.
    */
-  children: ReactElement | ReactElement[];
+  children: ReactNode | ReactNode[];
   /**
    * Form title
    */
