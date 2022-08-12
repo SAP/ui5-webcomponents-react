@@ -13,6 +13,9 @@ const SIZE_L = 1200;
 const SIZE_XL = 1600;
 const component = (
   <Form titleText={'Test form'}>
+    {false}
+    {null}
+    {undefined}
     <FormGroup titleText={'Group 1'}>
       <FormItem label={'item 1'}>
         <Input type={InputType.Text} />
