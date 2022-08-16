@@ -10,5 +10,10 @@ export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.ActionSheetMobileHeaderBackground]: `transparent`,
   [CustomVariables.ActionSheetMobileHeaderBorderRadius]: `0`,
   [CustomVariables.ActionSheetMobileHeaderBoxShadow]: `none`,
-  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapContent_ContrastTextColor
+  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapContent_ContrastTextColor,
+  [CustomVariables.SplitterContentBorderColor]: ThemingParameters.sapHighlightColor,
+  [CustomVariables.SplitterIconColor]: ThemingParameters.sapButton_Lite_TextColor,
+  [CustomVariables.SplitterBarOutline]: `none`,
+  [CustomVariables.SplitterBarBorderStyle]: `none`,
+  [CustomVariables.SplitterBarBorderFocus]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`
 };

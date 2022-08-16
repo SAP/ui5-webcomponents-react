@@ -10,5 +10,6 @@ export const sapHorizonDarkParameters: Partial<Record<CustomVariables, string>> 
   [CustomVariables.ActionSheetMobileHeaderBackground]: ThemingParameters.sapPageHeader_Background,
   [CustomVariables.ActionSheetMobileHeaderBorderRadius]: ThemingParameters.sapPopover_BorderCornerRadius,
   [CustomVariables.ActionSheetMobileHeaderBoxShadow]: ThemingParameters.sapContent_Shadow2,
-  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapPageHeader_TextColor
+  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapPageHeader_TextColor,
+  [CustomVariables.SplitterContentBorderColor]: ThemingParameters.sapGroup_ContentBorderColor
 };

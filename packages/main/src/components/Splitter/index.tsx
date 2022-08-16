@@ -3,13 +3,15 @@ import {
   ThemingParameters,
   useI18nBundle,
   useIsRTL,
-  useSyncRef
+  useSyncRef,
+  useCurrentTheme
 } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../webComponents/Icon';
+import { Button, Icon } from '../../webComponents';
 
 const useStyles = createUseStyles(
   {
@@ -18,21 +20,25 @@ const useStyles = createUseStyles(
       position: 'relative',
       display: 'flex',
       willChange: 'flex',
-      border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} transparent`,
       backgroundColor: ThemingParameters.sapShell_Background,
       alignItems: 'center',
       justifyContent: 'center',
       boxSizing: 'border-box',
-      '&:focus': {
-        border: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
-        outline: 'none'
-      },
       '&[data-splitter-vertical=horizontal]': {
+        marginLeft: '0.5rem',
+        marginRight: '0.5rem',
         cursor: 'col-resize',
+        borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
+        borderRight: CustomThemingParameters.SplitterBarBorderStyle,
         minWidth: CssSizeVariables.sapWcrSplitterSize,
         width: CssSizeVariables.sapWcrSplitterSize,
         height: '100%',
         flexDirection: 'column',
+        '&:focus': {
+          border: CustomThemingParameters.SplitterBarBorderFocus,
+          outlineOffset: '-0.20rem',
+          outline: CustomThemingParameters.SplitterBarOutline
+        },
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '0.0625rem 100%',
@@ -40,22 +46,30 @@ const useStyles = createUseStyles(
           height: '4rem'
         },
         '& $lineBefore': {
-          backgroundImage: `linear-gradient(to top, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to top, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         },
         '& $icon': {
           padding: '0.5rem 0',
           zIndex: 1
         },
         '& $lineAfter': {
-          backgroundImage: `linear-gradient(to bottom, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to bottom, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         }
       },
       '&[data-splitter-vertical=vertical]': {
+        borderTop: CustomThemingParameters.SplitterBarBorderStyle,
+        borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
         cursor: 'row-resize',
         minHeight: CssSizeVariables.sapWcrSplitterSize,
         height: CssSizeVariables.sapWcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
+        '&:focus': {
+          outlineOffset: '-0.20rem',
+          outlineStyle: 'dotted',
+          outlineWidth: '0.15rem',
+          outlineColor: ThemingParameters.sapGroup_ContentBorderColor
+        },
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
@@ -63,14 +77,14 @@ const useStyles = createUseStyles(
           height: CssSizeVariables.sapWcrSplitterSize
         },
         '& $lineBefore': {
-          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         },
         '& $icon': {
           padding: '0 0.5rem',
           zIndex: 1
         },
         '& $lineAfter': {
-          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         }
       },
       '&[data-splitter-vertical=verticalRtl]': {
@@ -86,14 +100,14 @@ const useStyles = createUseStyles(
           height: CssSizeVariables.sapWcrSplitterSize
         },
         '& $lineBefore': {
-          backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         },
         '& $icon': {
           padding: '0 0.5rem',
           zIndex: 1
         },
         '& $lineAfter': {
-          backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapHighlightColor}, transparent)`
+          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         }
       },
       '&:hover': {
@@ -103,8 +117,15 @@ const useStyles = createUseStyles(
         }
       }
     },
+    gripButton: {
+      minWidth: '1.5rem !important',
+      height: '1.625rem',
+      backgroundColor: `${ThemingParameters.sapShell_Background}`,
+      zIndex: '1',
+      margin: '0.18753rem'
+    },
     icon: {
-      color: ThemingParameters.sapHighlightColor
+      color: CustomThemingParameters.SplitterIconColor
     },
     lineBefore: {
       backgroundPosition: 'center',
@@ -343,6 +364,15 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     setIsSiblings(isRtl && !vertical ? ['nextSibling', 'previousSibling'] : ['previousSibling', 'nextSibling']);
   }, [isRtl, vertical]);
 
+  const currentTheme = useCurrentTheme();
+  const isHighContrast =
+    currentTheme == 'sap_fiori_3_hcb' ||
+    currentTheme == 'sap_fiori_3_hcw' ||
+    currentTheme == 'sap_horizon_hcb' ||
+    currentTheme == 'sap_horizon_hcw'
+      ? true
+      : false;
+
   return (
     <div
       className={classes.splitter}
@@ -359,7 +389,11 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
     >
       <div className={classes.lineBefore} />
-      <Icon className={classes.icon} name={vertical ? 'horizontal-grip' : 'vertical-grip'} />
+      {isHighContrast ? (
+        <Button className={classes.gripButton} tabIndex={-1} icon={vertical ? 'horizontal-grip' : 'vertical-grip'} />
+      ) : (
+        <Icon className={classes.icon} name={vertical ? 'horizontal-grip' : 'vertical-grip'} />
+      )}
       <div className={classes.lineAfter} />
     </div>
   );

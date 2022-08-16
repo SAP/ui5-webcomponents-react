@@ -10,5 +10,9 @@ export const sapHorizonHcwParameters: Partial<Record<CustomVariables, string>> =
   [CustomVariables.ActionSheetMobileHeaderBackground]: ThemingParameters.sapPageHeader_Background,
   [CustomVariables.ActionSheetMobileHeaderBorderRadius]: ThemingParameters.sapPopover_BorderCornerRadius,
   [CustomVariables.ActionSheetMobileHeaderBoxShadow]: ThemingParameters.sapContent_Shadow2,
-  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapPageHeader_TextColor
+  [CustomVariables.ActionSheetMobileHeaderTextColor]: ThemingParameters.sapPageHeader_TextColor,
+  [CustomVariables.SplitterContentBorderColor]: ThemingParameters.sapGroup_ContentBorderColor,
+  [CustomVariables.SplitterBarBorderStyle]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`,
+  [CustomVariables.SplitterBarOutline]: `0.15rem dotted ${ThemingParameters.sapGroup_ContentBorderColor}`,
+  [CustomVariables.SplitterBarBorderFocus]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`
 };

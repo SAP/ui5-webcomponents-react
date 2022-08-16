@@ -9,7 +9,12 @@ export enum CustomVariables {
   ActionSheetMobileHeaderBackground = '--ui5wcr_ActionSheet_MobileHeaderBackground',
   ActionSheetMobileHeaderBoxShadow = '--ui5wcr_ActionSheet_MobileHeaderBoxShadow',
   ActionSheetMobileHeaderBorderRadius = '--ui5wcr_ActionSheet_MobileHeaderBorderRadius',
-  ActionSheetMobileHeaderTextColor = '--ui5wcr_ActionSheet_MobileHeaderTextColor'
+  ActionSheetMobileHeaderTextColor = '--ui5wcr_ActionSheet_MobileHeaderTextColor',
+  SplitterContentBorderColor = '--ui5wcr_Splitter_ContentBorderColor',
+  SplitterIconColor = '--ui5wcr_Splitter_IconColor',
+  SplitterBarBorderStyle = '--ui5wcr_Splitter_BarBorderStyle',
+  SplitterBarBorderFocus = '--ui5wcr_Splitter_BarBorderFocus',
+  SplitterBarOutline = '--ui5wcr_Splitter_BarOutline'
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {

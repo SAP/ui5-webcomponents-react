@@ -5,6 +5,7 @@ import { useIsRTL } from './useIsRTL';
 import { useResponsiveContentPadding } from './useResponsiveContentPadding';
 import { useSyncRef } from './useSyncRef';
 import { useViewportRange } from './useViewportRange';
+import { useCurrentTheme } from './useCurrentTheme';
 
 export {
   I18nBundle,
@@ -14,5 +15,6 @@ export {
   useResponsiveContentPadding,
   useSyncRef,
   useViewportRange,
-  useIsomorphicId
+  useIsomorphicId,
+  useCurrentTheme
 };
