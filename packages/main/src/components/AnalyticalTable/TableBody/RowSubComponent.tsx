@@ -1,7 +1,7 @@
+import { VirtualItem } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { VirtualItem } from 'react-virtual';
 
 const styles = {
   subcomponent: {
@@ -17,7 +17,8 @@ const useStyles = createUseStyles(styles, { name: 'RowSubComponent' });
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
-  virtualRow: VirtualItem;
+  //todo
+  virtualRow: VirtualItem<any>;
   dispatch: (e: { type: string; payload?: any }) => void;
   row: any;
   rowHeight: number;

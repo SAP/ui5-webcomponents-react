@@ -1,3 +1,4 @@
+import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
   enrichEventWithDetails,
@@ -932,6 +933,18 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     GlobalStyleClasses.sapScrollBar,
     withNavigationHighlight && classes.hasNavigationIndicator
   );
+  const columnVirtualizer = useVirtualizer({
+    count: visibleColumnsWidth.length,
+    getScrollElement: () => tableRef.current,
+    estimateSize: useCallback(
+      (index) => {
+        return visibleColumnsWidth[index];
+      },
+      [visibleColumnsWidth]
+    ),
+    horizontal: true,
+    overscan: overscanCountHorizontal
+  });
 
   return (
     <>
@@ -1003,6 +1016,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     uniqueId={uniqueId}
+                    virtualizer={columnVirtualizer}
                   />
                 )
               );
@@ -1060,6 +1074,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   isRtl={isRtl}
                   subComponentsHeight={tableState.subComponentsHeight}
                   dispatch={dispatch}
+                  columnVirtualizer={columnVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}

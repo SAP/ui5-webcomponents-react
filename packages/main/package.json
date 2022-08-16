@@ -31,7 +31,7 @@
     "react-content-loader": "6.2.0",
     "react-jss": "^10.9.0",
     "react-table": "7.8.0",
-    "react-virtual": "2.10.4"
+    "@tanstack/react-virtual": "3.0.0-beta.18"
   },
   "peerDependencies": {
     "@types/react": "*",

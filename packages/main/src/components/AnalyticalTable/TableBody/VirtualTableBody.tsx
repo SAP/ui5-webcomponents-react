@@ -1,8 +1,7 @@
+import { useVirtualizer } from '@tanstack/react-virtual';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import React, { MutableRefObject, ReactNode, useCallback, useMemo } from 'react';
-import { useVirtual } from 'react-virtual';
-import { useRect } from '../../../internal/useRect';
+import React, { MutableRefObject, ReactNode, useMemo } from 'react';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
@@ -28,6 +27,8 @@ interface VirtualTableBodyProps {
   alwaysShowSubComponent: boolean;
   dispatch?: (e: { type: string; payload?: any }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
+  //todo
+  columnVirtualizer: any;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -42,26 +43,24 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     visibleRows,
     overscanCount,
     visibleColumns,
-    tableRef,
-    visibleColumnsWidth,
     parentRef,
-    overscanCountHorizontal,
     renderRowSubComponent,
     popInRowHeight,
     markNavigatedRow,
     isRtl,
     alwaysShowSubComponent,
     dispatch,
-    subComponentsHeight
+    subComponentsHeight,
+    columnVirtualizer
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
 
-  const rowVirtualizer = useVirtual({
-    size: itemCount,
-    parentRef: parentRef,
+  const rowVirtualizer = useVirtualizer({
+    count: itemCount,
+    getScrollElement: () => parentRef.current,
     estimateSize: React.useCallback(
       (index) => {
         if (
@@ -75,21 +74,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       },
       [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
     ),
-    overscan,
-    useObserver: useRect
-  });
-  const columnVirtualizer = useVirtual({
-    size: visibleColumns.length,
-    parentRef: tableRef,
-    estimateSize: useCallback(
-      (index) => {
-        return visibleColumnsWidth[index];
-      },
-      [visibleColumnsWidth]
-    ),
-    horizontal: true,
-    overscan: overscanCountHorizontal,
-    useObserver: useRect
+    overscan
   });
 
   reactWindowRef.current = {
@@ -114,11 +99,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       data-component-name="AnalyticalTableBodyScrollableContainer"
       style={{
         position: 'relative',
-        height: `${rowVirtualizer.totalSize}px`,
-        width: `${columnVirtualizer.totalSize}px`
+        height: `${rowVirtualizer.getTotalSize()}px`,
+        width: `${columnVirtualizer.getTotalSize()}px`
       }}
     >
-      {rowVirtualizer.virtualItems.map((virtualRow, visibleRowIndex) => {
+      {rowVirtualizer.getVirtualItems().map((virtualRow, visibleRowIndex) => {
         const row = rows[virtualRow.index];
         const rowIndexWithHeader = virtualRow.index + 1;
         if (!row || row.groupByVal === 'undefined') {
@@ -171,7 +156,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 {RowSubComponent}
               </SubComponent>
             )}
-            {columnVirtualizer.virtualItems.map((virtualColumn, visibleColumnIndex) => {
+            {columnVirtualizer.getVirtualItems().map((virtualColumn, visibleColumnIndex) => {
               const cell = row.cells[virtualColumn.index];
               const directionStyles = isRtl
                 ? {
@@ -179,7 +164,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     right: 0
                   }
                 : { transform: `translateX(${virtualColumn.start}px)`, left: 0 };
-
               if (!cell) {
                 return null;
               }

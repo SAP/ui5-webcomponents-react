@@ -1,8 +1,7 @@
+import { VirtualItem } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment, MutableRefObject, Ref, useCallback } from 'react';
+import React, { forwardRef, Fragment, MutableRefObject, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useVirtual, VirtualItem } from 'react-virtual';
-import { useRect } from '../../../internal/useRect';
 import { ColumnHeader } from './index';
 
 const styles = {
@@ -20,7 +19,7 @@ const styles = {
     }
   }
 };
-
+//todo remove unused props
 interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
   headerGroup: Record<string, any>;
@@ -40,6 +39,8 @@ interface ColumnHeaderContainerProps {
   isRtl: boolean;
   portalContainer: Element;
   uniqueId: string;
+  //todo
+  virtualizer: any;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -56,33 +57,18 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     onDragEnter,
     onDragEnd,
     dragOver,
-    tableRef,
-    visibleColumnsWidth,
-    overscanCountHorizontal,
     resizeInfo,
     reactWindowRef,
     isRtl,
     portalContainer,
-    uniqueId
+    uniqueId,
+    virtualizer
   } = props;
-  const columnVirtualizer = useVirtual({
-    size: visibleColumnsWidth.length,
-    parentRef: tableRef,
-    estimateSize: useCallback(
-      (index) => {
-        return visibleColumnsWidth[index];
-      },
-      [visibleColumnsWidth]
-    ),
-    horizontal: true,
-    overscan: overscanCountHorizontal,
-    useObserver: useRect
-  });
 
   reactWindowRef.current = {
     ...reactWindowRef.current,
-    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
-    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+    horizontalScrollToOffset: virtualizer.scrollToOffset,
+    horizontalScrollToIndex: virtualizer.scrollToIndex
   };
 
   const classes = useStyles();
@@ -90,11 +76,12 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
   return (
     <div
       {...headerProps}
-      style={{ width: `${columnVirtualizer.totalSize}px` }}
+      style={{ width: `${virtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
     >
-      {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem, index) => {
+      {/*todo type*/}
+      {virtualizer.getVirtualItems().map((virtualColumn: VirtualItem<any>, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;
