@@ -14,7 +14,8 @@ export enum CustomVariables {
   SplitterIconColor = '--ui5wcr_Splitter_IconColor',
   SplitterBarBorderStyle = '--ui5wcr_Splitter_BarBorderStyle',
   SplitterBarBorderFocus = '--ui5wcr_Splitter_BarBorderFocus',
-  SplitterBarOutline = '--ui5wcr_Splitter_BarOutline'
+  SplitterBarOutline = '--ui5wcr_Splitter_BarOutline',
+  SplitterBarBorderFix = '--ui5wcr_Splitter_BarBorderHighContrastFix'
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {

@@ -35,7 +35,10 @@ const useStyles = createUseStyles(
         height: '100%',
         flexDirection: 'column',
         '&:focus': {
-          border: CustomThemingParameters.SplitterBarBorderFocus,
+          borderTop: CustomThemingParameters.SplitterBarBorderFix,
+          borderRight: CustomThemingParameters.SplitterBarBorderFocus,
+          borderBottom: CustomThemingParameters.SplitterBarBorderFix,
+          borderLeft: CustomThemingParameters.SplitterBarBorderFocus,
           outlineOffset: '-0.20rem',
           outline: CustomThemingParameters.SplitterBarOutline
         },
@@ -65,10 +68,12 @@ const useStyles = createUseStyles(
         width: '100%',
         flexDirection: 'row',
         '&:focus': {
+          borderTop: CustomThemingParameters.SplitterBarBorderFocus,
+          borderRight: CustomThemingParameters.SplitterBarBorderFix,
+          borderBottom: CustomThemingParameters.SplitterBarBorderFocus,
+          borderLeft: CustomThemingParameters.SplitterBarBorderFix,
           outlineOffset: '-0.20rem',
-          outlineStyle: 'dotted',
-          outlineWidth: '0.15rem',
-          outlineColor: ThemingParameters.sapGroup_ContentBorderColor
+          outline: CustomThemingParameters.SplitterBarOutline
         },
 
         '& $lineBefore, & $lineAfter': {
@@ -121,8 +126,7 @@ const useStyles = createUseStyles(
       minWidth: '1.5rem !important',
       height: '1.625rem',
       backgroundColor: `${ThemingParameters.sapShell_Background}`,
-      zIndex: '1',
-      margin: '0.18753rem'
+      zIndex: '1'
     },
     icon: {
       color: CustomThemingParameters.SplitterIconColor
