@@ -32,8 +32,7 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  //todo
-  virtualColumn: VirtualItem<any>;
+  virtualColumn: VirtualItem<Record<string, any>>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;

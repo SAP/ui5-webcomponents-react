@@ -164,7 +164,32 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 ## Example
 
 <Canvas withSource="none">
-  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
+  <Story name="Default">
+    {(args) => {
+      const ref = useRef();
+      const cols = [
+        ...args.columns,
+        ...new Array(200).fill('.').map((item, index) => ({
+          Header: 'Test',
+          Cell: () => 'Test',
+          id: `${index}`
+        }))
+      ];
+      const data = args.data.slice(0, 1);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              ref.current.horizontalScrollToItem(60);
+            }}
+          >
+            scroll
+          </Button>
+          <AnalyticalTable {...args} data={args.data} columns={args.columns} ref={ref} />
+        </>
+      );
+    }}
+  </Story>
 </Canvas>
 
 ### Code

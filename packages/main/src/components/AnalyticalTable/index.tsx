@@ -579,7 +579,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const classes = useStyles();
 
-  const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
+  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
 
   const isRtl = useIsRTL(analyticalTableRef);
@@ -640,7 +640,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         markNavigatedRow,
         renderRowSubComponent,
         alwaysShowSubComponent,
-        reactWindowRef,
+        scrollToRef,
         showOverlay,
         uniqueId
       },
@@ -945,6 +945,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     horizontal: true,
     overscan: overscanCountHorizontal
   });
+  scrollToRef.current = {
+    ...scrollToRef.current,
+    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
+    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+  };
 
   return (
     <>
@@ -998,13 +1003,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   <ColumnHeaderContainer
                     ref={headerRef}
                     key={headerProps.key as string}
-                    reactWindowRef={reactWindowRef}
-                    tableRef={tableRef}
                     resizeInfo={tableState.columnResizing}
-                    visibleColumnsWidth={visibleColumnsWidth}
                     headerProps={headerProps}
                     headerGroup={headerGroup}
-                    overscanCountHorizontal={overscanCountHorizontal}
                     onSort={onSort}
                     onGroupByChanged={onGroupByChanged}
                     onDragStart={handleDragStart}
@@ -1016,7 +1017,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     uniqueId={uniqueId}
-                    virtualizer={columnVirtualizer}
+                    columnVirtualizer={columnVirtualizer}
                   />
                 )
               );
@@ -1056,7 +1057,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   prepareRow={prepareRow}
                   rows={rows}
                   minRows={minRows}
-                  reactWindowRef={reactWindowRef}
+                  scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
                   popInRowHeight={popInRowHeight}

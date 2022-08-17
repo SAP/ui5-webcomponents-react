@@ -2,33 +2,33 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import React, { MutableRefObject, ReactNode, useMemo } from 'react';
+import { ScrollToRefType } from '../interfaces';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
   prepareRow: (row: unknown) => void;
-  rows: any[];
+  rows: Record<string, any>[];
   minRows: number;
-  reactWindowRef: MutableRefObject<any>;
+  scrollToRef: MutableRefObject<ScrollToRefType>;
   isTreeTable: boolean;
   internalRowHeight: number;
   visibleRows: number;
   alternateRowColor: boolean;
   overscanCount: number;
-  visibleColumns: any[];
-  tableRef: MutableRefObject<any>;
-  visibleColumnsWidth: any[];
-  parentRef: MutableRefObject<any>;
+  visibleColumns: Record<string, unknown>[];
+  tableRef: MutableRefObject<HTMLDivElement>;
+  visibleColumnsWidth: number[];
+  parentRef: MutableRefObject<HTMLDivElement>;
   overscanCountHorizontal: number;
-  renderRowSubComponent: (row?: any) => ReactNode;
+  renderRowSubComponent: (row?: Record<string, unknown>) => ReactNode;
   popInRowHeight: number;
   isRtl: boolean;
-  markNavigatedRow?: (row?: Record<any, any>) => boolean;
+  markNavigatedRow?: (row?: Record<string, unknown>) => boolean;
   alwaysShowSubComponent: boolean;
-  dispatch?: (e: { type: string; payload?: any }) => void;
+  dispatch?: (e: { type: string; payload?: Record<string, unknown> }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
-  //todo
-  columnVirtualizer: any;
+  columnVirtualizer: Record<string, any>;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -37,7 +37,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     prepareRow,
     rows,
     minRows,
-    reactWindowRef,
+    scrollToRef,
     isTreeTable,
     internalRowHeight,
     visibleRows,
@@ -77,8 +77,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     overscan
   });
 
-  reactWindowRef.current = {
-    ...reactWindowRef.current,
+  scrollToRef.current = {
+    ...scrollToRef.current,
     scrollToOffset: rowVirtualizer.scrollToOffset,
     scrollToIndex: rowVirtualizer.scrollToIndex
   };

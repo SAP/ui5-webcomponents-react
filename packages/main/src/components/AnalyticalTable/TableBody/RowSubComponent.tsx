@@ -1,6 +1,6 @@
 import { VirtualItem } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const styles = {
@@ -17,13 +17,12 @@ const useStyles = createUseStyles(styles, { name: 'RowSubComponent' });
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
-  //todo
-  virtualRow: VirtualItem<any>;
-  dispatch: (e: { type: string; payload?: any }) => void;
-  row: any;
+  virtualRow: VirtualItem<Record<string, unknown>>;
+  dispatch: (e: { type: string; payload?: Record<string, unknown> }) => void;
+  row: Record<string, unknown>;
   rowHeight: number;
-  children: any;
-  rows: any[];
+  children: ReactNode | ReactNode[];
+  rows: Record<string, unknown>[];
   alwaysShowSubComponent: boolean;
 }
 

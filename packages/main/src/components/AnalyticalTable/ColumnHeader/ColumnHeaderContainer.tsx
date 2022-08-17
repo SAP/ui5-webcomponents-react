@@ -1,6 +1,6 @@
-import { VirtualItem } from '@tanstack/react-virtual';
+import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment, MutableRefObject, Ref } from 'react';
+import React, { forwardRef, Fragment, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ColumnHeader } from './index';
 
@@ -19,28 +19,23 @@ const styles = {
     }
   }
 };
-//todo remove unused props
+
 interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupByChanged: (e: CustomEvent<{ column?: any; isGrouped?: boolean }>) => void;
+  onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
   onDragStart: any;
   onDragOver: any;
   onDrop: any;
   onDragEnter: any;
   onDragEnd: any;
   dragOver: any;
-  tableRef: MutableRefObject<any>;
-  visibleColumnsWidth: any[];
-  overscanCountHorizontal: number;
   resizeInfo: Record<string, unknown>;
-  reactWindowRef: MutableRefObject<any>;
   isRtl: boolean;
   portalContainer: Element;
   uniqueId: string;
-  //todo
-  virtualizer: any;
+  columnVirtualizer: Virtualizer;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -58,30 +53,22 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     onDragEnd,
     dragOver,
     resizeInfo,
-    reactWindowRef,
     isRtl,
     portalContainer,
     uniqueId,
-    virtualizer
+    columnVirtualizer
   } = props;
-
-  reactWindowRef.current = {
-    ...reactWindowRef.current,
-    horizontalScrollToOffset: virtualizer.scrollToOffset,
-    horizontalScrollToIndex: virtualizer.scrollToIndex
-  };
 
   const classes = useStyles();
 
   return (
     <div
       {...headerProps}
-      style={{ width: `${virtualizer.getTotalSize()}px` }}
+      style={{ width: `${columnVirtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
     >
-      {/*todo type*/}
-      {virtualizer.getVirtualItems().map((virtualColumn: VirtualItem<any>, index) => {
+      {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem<Record<string, unknown>>, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;
