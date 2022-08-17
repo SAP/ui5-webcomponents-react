@@ -17,8 +17,3 @@ export function useCurrentTheme(): string {
 
   return theme;
 }
-
-export function useIsIonTheme(): boolean {
-  const theme = useCurrentTheme();
-  return theme === 'ion';
-}

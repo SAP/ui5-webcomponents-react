@@ -370,10 +370,10 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
 
   const currentTheme = useCurrentTheme();
   const isHighContrast =
-    currentTheme == 'sap_fiori_3_hcb' ||
-    currentTheme == 'sap_fiori_3_hcw' ||
-    currentTheme == 'sap_horizon_hcb' ||
-    currentTheme == 'sap_horizon_hcw'
+    currentTheme === 'sap_fiori_3_hcb' ||
+    currentTheme === 'sap_fiori_3_hcw' ||
+    currentTheme === 'sap_horizon_hcb' ||
+    currentTheme === 'sap_horizon_hcw'
       ? true
       : false;
 
