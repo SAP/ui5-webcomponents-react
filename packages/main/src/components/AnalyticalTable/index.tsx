@@ -4,9 +4,9 @@ import {
   enrichEventWithDetails,
   ThemingParameters,
   useI18nBundle,
+  useIsomorphicId,
   useIsomorphicLayoutEffect,
-  useIsRTL,
-  useIsomorphicId
+  useIsRTL
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
@@ -51,9 +51,9 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  INVALID_TABLE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
+  UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { FlexBox } from '../FlexBox';
@@ -382,6 +382,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
   /**
+   * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
+   *
+   * __Note:__ If `transform: scale()` is used, this prop is mandatory, otherwise it will lead to unwanted behavior and design.
+   */
+  scaleXFactor?: number;
+  /**
    * Defines the columns order by their `accessor` or `id`.
    */
   columnOrder?: string[];
@@ -514,6 +520,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
+const measureElement = (scaleFactor) => (el) => {
+  return el.getBoundingClientRect().width / scaleFactor;
+};
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -570,6 +579,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
+    scaleXFactor,
     ...rest
   } = props;
   const uniqueId = useIsomorphicId();
@@ -933,6 +943,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     GlobalStyleClasses.sapScrollBar,
     withNavigationHighlight && classes.hasNavigationIndicator
   );
+
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
     getScrollElement: () => tableRef.current,
@@ -943,7 +954,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: overscanCountHorizontal,
+    measureElement: scaleXFactor != null ? measureElement(scaleXFactor) : undefined
   });
   scrollToRef.current = {
     ...scrollToRef.current,

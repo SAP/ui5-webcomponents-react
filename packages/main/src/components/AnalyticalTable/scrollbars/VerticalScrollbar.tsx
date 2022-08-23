@@ -50,7 +50,7 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
   const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight, tableBodyHeight } =
     props;
   const classes = useStyles();
-  const hasHorizontalScrollbar = tableRef?.current?.clientWidth !== tableRef?.current?.scrollWidth;
+  const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 
   const horizontalScrollbarSectionStyles = clsx(
     classes.bottomSection,

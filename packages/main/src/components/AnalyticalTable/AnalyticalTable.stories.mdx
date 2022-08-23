@@ -165,30 +165,17 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 
 <Canvas withSource="none">
   <Story name="Default">
-    {(args) => {
-      const ref = useRef();
-      const cols = [
-        ...args.columns,
-        ...new Array(200).fill('.').map((item, index) => ({
-          Header: 'Test',
-          Cell: () => 'Test',
-          id: `${index}`
-        }))
-      ];
-      const data = args.data.slice(0, 1);
-      return (
-        <>
-          <Button
-            onClick={() => {
-              ref.current.horizontalScrollToItem(60);
-            }}
-          >
-            scroll
-          </Button>
-          <AnalyticalTable {...args} data={args.data} columns={args.columns} ref={ref} />
-        </>
-      );
-    }}
+    {(args) => (
+      <>
+        <button onClick={console.log}>
+          Click<button onClick={console.log}>Click</button>
+        </button>
+        <Button onClick={console.log}>
+          Click<Button onClick={console.log}>Click</Button>
+        </Button>
+        <AnalyticalTable {...args} data={args.data.slice(0, 2)} />
+      </>
+    )}
   </Story>
 </Canvas>
 
@@ -1025,7 +1012,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
-      showOverlay: { table: { disable: true } }
+      showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -1209,6 +1197,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -1352,6 +1341,7 @@ In the example below you can have a look at this behavior:
       portalContainer: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
