@@ -164,19 +164,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
 ## Example
 
 <Canvas withSource="none">
-  <Story name="Default">
-    {(args) => (
-      <>
-        <button onClick={console.log}>
-          Click<button onClick={console.log}>Click</button>
-        </button>
-        <Button onClick={console.log}>
-          Click<Button onClick={console.log}>Click</Button>
-        </Button>
-        <AnalyticalTable {...args} data={args.data.slice(0, 2)} />
-      </>
-    )}
-  </Story>
+  <Story name="Default">{(args) => <AnalyticalTable {...args} />}</Story>
 </Canvas>
 
 ### Code
