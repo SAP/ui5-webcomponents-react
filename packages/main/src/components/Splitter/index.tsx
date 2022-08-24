@@ -124,7 +124,13 @@ const useStyles = createUseStyles(
       minWidth: '1.5rem !important',
       height: '1.625rem',
       backgroundColor: `${ThemingParameters.sapShell_Background}`,
-      zIndex: '1'
+      zIndex: '1',
+      '&:active': {
+        zIndex: '2'
+      },
+      '&:hover': {
+        backgroundColor: CustomThemingParameters.SplitterGripHoverColor
+      }
     },
     icon: {
       color: CustomThemingParameters.SplitterIconColor
