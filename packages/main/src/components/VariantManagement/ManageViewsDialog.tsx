@@ -7,7 +7,16 @@ import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEff
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/ButtonDesign';
-import { APPLY_AUTOMATICALLY, CANCEL, CREATED_BY, DEFAULT, SAVE, SHARING, VIEW } from '../../i18n/i18n-defaults';
+import {
+  APPLY_AUTOMATICALLY,
+  CANCEL,
+  CREATED_BY,
+  DEFAULT,
+  MANAGE_VIEWS,
+  SAVE,
+  SHARING,
+  VIEW
+} from '../../i18n/i18n-defaults';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
@@ -70,6 +79,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const defaultHeaderText = i18nBundle.getText(DEFAULT);
   const applyAutomaticallyHeaderText = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const createdByHeaderText = i18nBundle.getText(CREATED_BY);
+  const manageViewsText = i18nBundle.getText(MANAGE_VIEWS);
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
   const [invalidVariants, setInvalidVariants] = useState<Record<string, HTMLInputElement>>({});
@@ -170,7 +180,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       data-component-name="VariantManagementManageViewsDialog"
       ref={manageViewsRef}
       onAfterClose={onAfterClose}
-      headerText="Manage Views"
+      headerText={manageViewsText}
       footer={
         <Bar
           endContent={
