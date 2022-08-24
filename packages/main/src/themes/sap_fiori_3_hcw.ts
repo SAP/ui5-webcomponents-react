@@ -8,6 +8,5 @@ export const sapFioriHcwParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.SplitterBarBorderStyle]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`,
   [CustomVariables.SplitterBarOutline]: `0.15rem dotted ${ThemingParameters.sapGroup_ContentBorderColor}`,
   [CustomVariables.SplitterBarBorderFocus]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`,
-  [CustomVariables.SplitterBarBorderFix]: `none`,
-  [CustomVariables.SplitterGripHoverColor]: '#ec8b46'
+  [CustomVariables.SplitterBarBorderFix]: `none`
 };

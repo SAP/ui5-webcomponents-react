@@ -15,6 +15,5 @@ export const sapHorizonHcbParameters: Partial<Record<CustomVariables, string>> =
   [CustomVariables.SplitterBarBorderStyle]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`,
   [CustomVariables.SplitterBarOutline]: `0.15rem dotted ${ThemingParameters.sapGroup_ContentBorderColor}`,
   [CustomVariables.SplitterBarBorderFocus]: `solid ${ThemingParameters.sapGroup_ContentBorderColor} 0.0625rem`,
-  [CustomVariables.SplitterBarBorderFix]: `none`,
-  [CustomVariables.SplitterGripHoverColor]: '#795100'
+  [CustomVariables.SplitterBarBorderFix]: `none`
 };

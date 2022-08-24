@@ -16,6 +16,5 @@ export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.SplitterBarOutline]: `none`,
   [CustomVariables.SplitterBarBorderStyle]: `none`,
   [CustomVariables.SplitterBarBorderFocus]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`,
-  [CustomVariables.SplitterBarBorderFix]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`,
-  [CustomVariables.SplitterGripHoverColor]: 'none'
+  [CustomVariables.SplitterBarBorderFix]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`
 };
