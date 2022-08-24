@@ -25,8 +25,6 @@ const useStyles = createUseStyles(
       justifyContent: 'center',
       boxSizing: 'border-box',
       '&[data-splitter-vertical=horizontal]': {
-        marginLeft: '0.5rem',
-        marginRight: '0.5rem',
         cursor: 'col-resize',
         borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
         borderRight: CustomThemingParameters.SplitterBarBorderStyle,
