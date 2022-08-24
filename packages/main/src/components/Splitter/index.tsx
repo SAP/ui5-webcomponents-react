@@ -8,6 +8,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../enums';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
@@ -25,8 +26,6 @@ const useStyles = createUseStyles(
       justifyContent: 'center',
       boxSizing: 'border-box',
       '&[data-splitter-vertical=horizontal]': {
-        marginLeft: '0.5rem',
-        marginRight: '0.5rem',
         cursor: 'col-resize',
         borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
         borderRight: CustomThemingParameters.SplitterBarBorderStyle,
@@ -125,8 +124,10 @@ const useStyles = createUseStyles(
     gripButton: {
       minWidth: '1.5rem !important',
       height: '1.625rem',
-      backgroundColor: `${ThemingParameters.sapShell_Background}`,
-      zIndex: '1'
+      zIndex: '1',
+      '&:active': {
+        zIndex: '2'
+      }
     },
     icon: {
       color: CustomThemingParameters.SplitterIconColor
@@ -392,7 +393,12 @@ const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>)
     >
       <div className={classes.lineBefore} />
       {isHighContrast ? (
-        <Button className={classes.gripButton} tabIndex={-1} icon={vertical ? 'horizontal-grip' : 'vertical-grip'} />
+        <Button
+          className={classes.gripButton}
+          tabIndex={-1}
+          icon={vertical ? 'horizontal-grip' : 'vertical-grip'}
+          design={ButtonDesign.Transparent}
+        />
       ) : (
         <Icon className={classes.icon} name={vertical ? 'horizontal-grip' : 'vertical-grip'} />
       )}
