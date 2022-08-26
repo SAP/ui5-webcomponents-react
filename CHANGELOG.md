@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.3...v0.27.4) (2022-08-26)
+
+
+### Bug Fixes
+
+* **AnalyticalTable - useOnColumnResize:** don't crash when more than 6 rows are rendered ([#3423](https://github.com/SAP/ui5-webcomponents-react/issues/3423)) ([87c21b8](https://github.com/SAP/ui5-webcomponents-react/commit/87c21b89cf7873add1b69e9debdf568974bf72c6))
+* **SplitterLayout:** adjust design to comply with guidelines ([#3374](https://github.com/SAP/ui5-webcomponents-react/issues/3374)) ([a738c06](https://github.com/SAP/ui5-webcomponents-react/commit/a738c06b585088e1ac25ef087bd3caf44309a699))
+* **SplitterLayout:** correct margin & grip button styles ([#3410](https://github.com/SAP/ui5-webcomponents-react/issues/3410)) ([3c62c8c](https://github.com/SAP/ui5-webcomponents-react/commit/3c62c8c12aa209ea3f6588e585ae4d1369e237ef))
+* **useSyncRef:** add useCallback to avoid unnecessary rerenders ([#3381](https://github.com/SAP/ui5-webcomponents-react/issues/3381)) ([6de1d27](https://github.com/SAP/ui5-webcomponents-react/commit/6de1d2792ccde94ccfb1303db726562ab2375681))
+* **VariantManagement:** translate "Manage Views" heading ([#3400](https://github.com/SAP/ui5-webcomponents-react/issues/3400)) ([5906a3f](https://github.com/SAP/ui5-webcomponents-react/commit/5906a3fdf196fb53e15b10d5ec55973fc9f30d05)), closes [#3397](https://github.com/SAP/ui5-webcomponents-react/issues/3397)
+
+
+### Features
+
+* **Form:** support conditional rendering of form items ([#3363](https://github.com/SAP/ui5-webcomponents-react/issues/3363)) ([94ddad0](https://github.com/SAP/ui5-webcomponents-react/commit/94ddad0519023e666543e08bf67e939d3e7296e7)), closes [#3362](https://github.com/SAP/ui5-webcomponents-react/issues/3362)
+
+
+
+
+
 ## [0.27.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.2...v0.27.3) (2022-08-10)
 
 
