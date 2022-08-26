@@ -4,7 +4,7 @@ import { flattenFragments } from './utils';
 describe('utils', function () {
   test('flattenFragments - no fragment', () => {
     expect(flattenFragments(<span>Hello World!</span>)).toMatchInlineSnapshot(`
-      Array [
+      [
         <span>
           Hello World!
         </span>,
@@ -21,7 +21,7 @@ describe('utils', function () {
         </>
       )
     ).toMatchInlineSnapshot(`
-      Array [
+      [
         <span>
           Hello World!
         </span>,
@@ -52,7 +52,7 @@ describe('utils', function () {
         1
       )
     ).toMatchInlineSnapshot(`
-      Array [
+      [
         <span>
           Hello World!
         </span>,
@@ -99,7 +99,7 @@ describe('utils', function () {
         Infinity
       )
     ).toMatchInlineSnapshot(`
-      Array [
+      [
         <span>
           Hello World!
         </span>,
