@@ -179,6 +179,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               }
               const cellProps = cell.getCellProps();
               if (row.original?.emptyRow) {
+                // eslint-disable-next-line react/jsx-key
                 return <div {...cellProps} />;
               }
               let contentToRender;
