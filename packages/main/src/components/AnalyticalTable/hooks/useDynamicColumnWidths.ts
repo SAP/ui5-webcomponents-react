@@ -18,7 +18,7 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, vi
   return [
     ...deps,
     hasRows,
-    state.tableClientWidth,
+    !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
     visibleColumns?.length,
     webComponentsReactProperties.scaleWidthMode,
