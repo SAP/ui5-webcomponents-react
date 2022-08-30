@@ -408,7 +408,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
           </ReferenceLine>
         )}
         {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
-        {tooltipConfig.active !== false && (
+        {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}

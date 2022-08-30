@@ -296,7 +296,7 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
               />
             ))}
         </Pie>
-        {tooltipConfig.active !== false && (
+        {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
