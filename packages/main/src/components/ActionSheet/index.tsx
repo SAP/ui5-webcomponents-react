@@ -30,6 +30,9 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
   showCancelButton?: boolean;
   /**
    * Defines whether the `header` or `headerText` should always be displayed or only on mobile devices.
+   * __Deprecated__: This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
+   *
+   * @deprecated This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
    */
   alwaysShowHeader?: boolean;
   /**
@@ -202,6 +205,12 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
     }
   };
+
+  useEffect(() => {
+    if (alwaysShowHeader) {
+      deprecationNotice('ActionSheet', `The prop 'alwaysShowHeader' is deprecated and will be removed in v0.29.0`);
+    }
+  }, [alwaysShowHeader]);
 
   const displayHeader = alwaysShowHeader || isPhone();
   return createPortal(
