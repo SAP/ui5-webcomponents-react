@@ -407,13 +407,16 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
             <Label>{chartConfig.referenceLine.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          labelFormatter={labelFormatter}
-          contentStyle={tooltipContentStyle}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            labelFormatter={labelFormatter}
+            {...tooltipConfig}
+          />
+        )}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

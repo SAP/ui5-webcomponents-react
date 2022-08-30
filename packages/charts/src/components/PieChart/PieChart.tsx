@@ -296,14 +296,16 @@ const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<H
               />
             ))}
         </Pie>
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          contentStyle={tooltipContentStyle}
-          itemStyle={chartConfig.tooltipItemStyle}
-          labelStyle={chartConfig.tooltipLabelStyle}
-          {...tooltipConfig}
-        />
+        {tooltipConfig.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            itemStyle={chartConfig.tooltipItemStyle}
+            labelStyle={chartConfig.tooltipLabelStyle}
+            {...tooltipConfig}
+          />
+        )}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
