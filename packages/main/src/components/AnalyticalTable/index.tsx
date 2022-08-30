@@ -316,6 +316,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   rowHeight?: number;
   /**
+   * Defines whether the table should retain its column width, when a column has been manually resized and the container width has changed.
+   */
+  retainColumnWidth?: boolean;
+  /**
    * Defines whether the table should display rows with alternating row colors.
    */
   alternateRowColor?: boolean;
@@ -553,6 +557,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     overscanCount,
     overscanCountHorizontal,
     portalContainer,
+    retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
     rowHeight,
@@ -913,6 +918,15 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight, totalColumnsWidth]);
 
+  useEffect(() => {
+    if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: true });
+    }
+    if (tableState.tableColResized && !retainColumnWidth) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: undefined });
+    }
+  }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
+
   const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
   const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
@@ -1009,7 +1023,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
               if (headerGroup.getHeaderGroupProps) {
                 headerProps = headerGroup.getHeaderGroupProps();
               }
-
               return (
                 tableRef.current && (
                   <ColumnHeaderContainer
