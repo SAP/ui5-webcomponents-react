@@ -46,7 +46,13 @@ import styles from './MessageBox.jss';
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
-  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
+  extends Omit<DialogPropTypes, 'accessibleNameRef' | 'children' | 'footer' | 'headerText' | 'onAfterClose'> {
+  /**
+   * Defines the IDs of the elements that label the component.
+   *
+   * __Note:__ Per default the prop receives the ID of the header and the content.
+   */
+  accessibleNameRef?: string;
   /**
    * Flag whether the Message Box should be opened or closed
    */
@@ -242,8 +248,8 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
       style={style}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      {...restWithoutOmitted}
       accessibleNameRef={`${messageBoxId}-title ${messageBoxId}-text`}
+      {...restWithoutOmitted}
       initialFocus={getInitialFocus()}
       data-type={type}
     >
