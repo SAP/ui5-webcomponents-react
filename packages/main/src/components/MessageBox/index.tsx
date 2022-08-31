@@ -50,7 +50,7 @@ export interface MessageBoxPropTypes
   /**
    * Defines the IDs of the elements that label the component.
    *
-   * __Note:__ Per default the prop receives the ID of the header and the content.
+   * __Note:__ Per default the prop receives the IDs of the header and the content.
    */
   accessibleNameRef?: string;
   /**
