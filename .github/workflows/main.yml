@@ -64,6 +64,7 @@ jobs:
         run: yarn build
 
   test-cypress:
+    needs: ['test-jest-and-build']
     name: 'Cypress Test'
     runs-on: ubuntu-latest
     steps:
