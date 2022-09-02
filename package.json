@@ -12,6 +12,8 @@
     "postinstall": "rimraf node_modules/@types/mocha",
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
+    "test:cypress": "lerna run build && cypress run --component && lerna run clean",
+    "test:all": "yarn test:cypress && yarn test",
     "clean": "lerna run clean --stream && rimraf coverage",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint": "eslint packages",
