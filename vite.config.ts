@@ -8,7 +8,6 @@ const __dirname = dirname(__filename);
 
 const root = path.resolve(__dirname, '..');
 
-
 // https://vitejs.dev/config/
 
 export default defineConfig({
