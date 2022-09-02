@@ -64,7 +64,7 @@ jobs:
         run: yarn build
 
   test-cypress:
-    name: "Cypress Test"
+    name: 'Cypress Test'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -93,7 +93,7 @@ jobs:
         run: yarn lint
 
   deploy-next-docs:
-    needs: ['test-and-build']
+    needs: ['test-jest-and-build']
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "lib": ["es2019", "dom"],
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node", "@testing-library/cypress"]
   },
   "include": ["**/*.ts"]
 }
