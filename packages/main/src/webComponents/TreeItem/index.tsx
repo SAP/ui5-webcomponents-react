@@ -31,7 +31,7 @@ interface TreeItemAttributes {
   /**
    * Defines whether the selection of a tree node is displayed as partially selected.
    *
-   * **Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
+   * **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
    *
    * *   If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.
    * *   If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.

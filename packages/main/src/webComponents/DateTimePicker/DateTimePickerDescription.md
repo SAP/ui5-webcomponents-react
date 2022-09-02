@@ -7,7 +7,7 @@ The user can set date/time by:
 *   using the calendar and the time selectors
 *   typing in the input field
 
-Programatically, to set date/time for the `DateTimePicker`, use the `value` property
+Programmatically, to set date/time for the `DateTimePicker`, use the `value` property
 
 ## Formatting
 

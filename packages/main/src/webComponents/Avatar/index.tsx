@@ -37,7 +37,7 @@ interface AvatarAttributes {
    *
    * `<Avatar icon="employee">`
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -76,6 +76,21 @@ export interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
 
 export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
+   * Defines the optional badge that will be used for visual affordance. **Note:** While the slot allows for custom badges, to achieve the Fiori design, please use `Badge` with `Icon` in the corresponding `icon` slot, without text nodes.
+   *
+   * Example:
+   *
+   * <Avatar>
+   *     <Badge slot="badge">
+   *         <Icon slot="icon" name="employee"></Icon>
+   *     </Badge>
+   * </Avatar>
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  badge?: ReactNode;
+  /**
    * Receives the desired `<img>` tag **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *
    * `Avatar:not(:defined) {    visibility: hidden;   }   `
@@ -92,7 +107,7 @@ const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
   ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
   ['interactive'],
-  [],
+  ['badge'],
   []
 );
 

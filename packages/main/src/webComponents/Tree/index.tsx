@@ -86,7 +86,10 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<TreeDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+    event: Ui5CustomEvent<
+      TreeDomRef,
+      { selectedItems: unknown[]; previouslySelectedItems: unknown[]; targetItem: HTMLElement }
+    >
   ) => void;
 }
 
