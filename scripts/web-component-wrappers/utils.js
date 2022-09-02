@@ -145,6 +145,12 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
         isEnum: true
       };
     }
+    case 'DOMReference': {
+      return {
+        importStatement: null,
+        tsType: `string | HTMLElement`
+      };
+    }
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
