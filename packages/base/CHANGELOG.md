@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.4...v0.27.5) (2022-09-02)
+
+
+### Bug Fixes
+
+* **SplitterLayout:** correctly detect runtime change of `dir` on component ([#3447](https://github.com/SAP/ui5-webcomponents-react/issues/3447)) ([4939532](https://github.com/SAP/ui5-webcomponents-react/commit/493953256b9bc81487ad5f66decfe9e76792eb2f)), closes [#3446](https://github.com/SAP/ui5-webcomponents-react/issues/3446)
+
+
+
+
+
 ## [0.27.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.3...v0.27.4) (2022-08-26)
 
 
