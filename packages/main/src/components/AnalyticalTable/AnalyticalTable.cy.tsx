@@ -187,18 +187,18 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-9').should('be.visible');
     cy.findByText('Name-10').should('not.be.visible');
     cy.findByTitle('Drag to resize')
-      .trigger('mousedown', { pageY: 494 })
+      .trigger('mousedown')
       .trigger('mousemove', { pageY: 742, force: true })
       .trigger('mouseup', { pageY: 742 });
     cy.findByRole('grid').should('have.attr', 'data-per-page', '15');
     cy.findByText('Name-14').should('be.visible');
     cy.findByText('Name-15').should('not.be.visible');
     cy.findByTitle('Drag to resize')
-      .trigger('mousedown', { pageY: 742 })
+      .trigger('mousedown')
       .trigger('mousemove', { pageY: 200, force: true })
       .trigger('mouseup', { pageY: 200 });
-    cy.findByRole('grid').should('have.attr', 'data-per-page', '2');
-    cy.findByText('Name-1').should('be.visible');
-    cy.findByText('Name-2').should('not.be.visible');
+    cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
+    cy.findByText('Name-2').should('be.visible');
+    cy.findByText('Name-3').should('not.be.visible');
   });
 });
