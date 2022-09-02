@@ -13,7 +13,7 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "lerna run build && cypress run --component && lerna run clean",
-    "cypress:open": "lerna run build && cypress open --component --browser chrome && lerna run clean",
+    "cypress:open": "cypress open --component --browser chrome",
     "test:all": "yarn test:cypress && yarn test",
     "clean": "lerna run clean --stream && rimraf coverage",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
@@ -45,6 +45,7 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
+    "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^8.0.0",
     "@testing-library/cypress": "^8.0.3",
     "@testing-library/jest-dom": "^5.11.4",
@@ -92,7 +93,8 @@
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turndown": "^7.0.0",
     "typescript": "4.8.2",
-    "vite": "^3.0.9"
+    "vite": "^3.0.9",
+    "vite-plugin-istanbul": "^3.0.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
