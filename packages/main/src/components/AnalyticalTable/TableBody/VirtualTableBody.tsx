@@ -157,6 +157,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
             }}
+            aria-rowindex={virtualRow.index + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent

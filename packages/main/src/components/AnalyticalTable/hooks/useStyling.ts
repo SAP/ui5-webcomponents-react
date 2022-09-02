@@ -62,8 +62,7 @@ const getRowProps = (rowProps, { instance, row }) => {
 
   const newRowProps = {
     className,
-    role: 'row',
-    'aria-rowindex': row.index + 1
+    role: 'row'
   };
 
   if (rowCanBeSelected) {

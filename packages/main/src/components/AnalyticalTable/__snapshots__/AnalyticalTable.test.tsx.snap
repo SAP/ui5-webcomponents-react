@@ -7400,7 +7400,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="2"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(44px); position: absolute;"
@@ -7538,7 +7538,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="3"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(88px); position: absolute;"
@@ -7676,7 +7676,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="4"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               data-is-selected=""
               role="row"
@@ -7814,7 +7814,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="1"
+              aria-rowindex="5"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(176px); position: absolute;"
@@ -7949,7 +7949,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="6"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(220px); position: absolute;"
@@ -8073,7 +8073,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="3"
+              aria-rowindex="7"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(264px); position: absolute;"
@@ -8208,7 +8208,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               </div>
             </div>
             <div
-              aria-rowindex="2"
+              aria-rowindex="8"
               class="AnalyticalTable-tr AnalyticalTable-trActive"
               role="row"
               style="height: 44px; transform: translateY(308px); position: absolute;"
