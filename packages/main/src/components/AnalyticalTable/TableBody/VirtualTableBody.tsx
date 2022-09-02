@@ -120,7 +120,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     >
       {rowVirtualizer.virtualItems.map((virtualRow, visibleRowIndex) => {
         const row = rows[virtualRow.index];
-        console.log(virtualRow.index, row);
         const rowIndexWithHeader = virtualRow.index + 1;
         if (!row || row.groupByVal === 'undefined') {
           return (
