@@ -7,16 +7,13 @@ import '@ui5/webcomponents-icons/dist/question-mark.js';
 import {
   enrichEventWithDetails,
   useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useIsomorphicId
+  useIsomorphicId,
+  useIsomorphicLayoutEffect
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { MessageBoxActions } from '../../enums/MessageBoxActions';
-import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
-import { TitleLevel } from '../../enums/TitleLevel';
+import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel } from '../../enums';
 import {
   ABORT,
   CANCEL,
@@ -36,10 +33,16 @@ import {
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { Button, ButtonPropTypes } from '../../webComponents/Button';
-import { Dialog, DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog';
-import { Icon, IconPropTypes } from '../../webComponents/Icon';
-import { Title } from '../../webComponents/Title';
+import {
+  Button,
+  ButtonPropTypes,
+  Dialog,
+  DialogDomRef,
+  DialogPropTypes,
+  Icon,
+  IconPropTypes,
+  Title
+} from '../../webComponents';
 import { Text } from '../Text';
 import styles from './MessageBox.jss';
 
