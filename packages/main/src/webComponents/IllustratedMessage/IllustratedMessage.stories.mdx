@@ -1,28 +1,10 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import { IllustratedMessage } from './index';
-import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './IllustratedMessageDescription.md';
-import '@ui5/webcomponents-fiori/dist/illustrations/BeforeSearch.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoActivities.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoMail.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoMail_v1.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoEntries.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoNotifications.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoSavedItems.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoSavedItems_v1.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoSearchResults.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoTasks.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/NoTasks_v1.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoadImage.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/UnableToUpload.js';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddColumn.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddPeople.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/BalloonSky.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/BeforeSearch.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/Connection.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/EmptyCalendar.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/EmptyList.js';
@@ -30,7 +12,18 @@ import '@ui5/webcomponents-fiori/dist/illustrations/EmptyPlanningCalendar.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/ErrorScreen.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/FilterTable.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/GroupTable.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoActivities.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoEntries.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoFilterResults.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoMail.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoMail_v1.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoNotifications.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoSavedItems.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoSavedItems_v1.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoSearchResults.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoTasks.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoTasks_v1.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/PageNotFound.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/ReloadScreen.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/ResizeColumn.js';
@@ -57,7 +50,6 @@ import '@ui5/webcomponents-fiori/dist/illustrations/SuccessCheckMark.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/SuccessHighFive.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/SuccessScreen.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/Tent.js';
-import '@ui5/webcomponents-fiori/dist/illustrations/UploadCollection.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/CodePlaceholder';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/Company';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/ExternalLink';
@@ -76,6 +68,15 @@ import '@ui5/webcomponents-fiori/dist/illustrations/tnt/Success';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/SuccessfulAuth';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/Unlock';
 import '@ui5/webcomponents-fiori/dist/illustrations/tnt/UnsuccessfulAuth';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoadImage.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UnableToUpload.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/UploadCollection.js';
+import { MessageStripDesign } from '../../enums';
+import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
+import { MessageStrip } from '../MessageStrip';
+import Description from './IllustratedMessageDescription.md';
+import { IllustratedMessage } from './index';
 
 <Meta
   title="User Feedback / IllustratedMessage"
@@ -107,5 +108,28 @@ import '@ui5/webcomponents-fiori/dist/illustrations/tnt/UnsuccessfulAuth';
 <ArgsTableWithNote story="." />
 
 <Description />
+
+## Fully customizable title
+
+<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
+  As the <code>title</code> slot name collides with the standard HTML <code>title</code> attribute, using the{' '}
+  <code>title</code> prop will not work. <br />
+  You must pass the <code>title</code> slot as part of the components <code>children</code>.
+</MessageStrip>
+
+In some cases you might need to fully customize the title element of the `IllustratedMessage`.
+You can achieve this by using the `title` slot.
+
+**Note:** Using this slot, the default title text of illustration and the value of `titleText` property will be overwritten.
+
+```jsx
+<IllustratedMessage>
+  <h5 slot="title">This is my fully customized title</h5>
+</IllustratedMessage>
+```
+
+<IllustratedMessage>
+  <h5 slot="title">This is my fully customized title</h5>
+</IllustratedMessage>
 
 <Footer />
