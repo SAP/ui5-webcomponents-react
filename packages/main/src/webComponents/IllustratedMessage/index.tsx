@@ -142,7 +142,7 @@ interface IllustratedMessageAttributes {
 
 export interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
 
-export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, Omit<CommonProps, 'title'> {
+export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, CommonProps {
   /**
    * Defines the component actions.
    */
