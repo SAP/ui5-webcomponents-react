@@ -20,6 +20,7 @@ exports[`ObjectPage Default with Sections 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -28,27 +29,27 @@ exports[`ObjectPage Default with Sections 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -173,6 +174,7 @@ exports[`ObjectPage Default with SubSections 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -181,37 +183,91 @@ exports[`ObjectPage Default with SubSections 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -485,6 +541,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -493,37 +550,91 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           selected="true"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -645,6 +756,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -682,6 +794,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -690,13 +803,13 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text=""
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -755,6 +868,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -763,13 +877,13 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text=""
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
       </ui5-tabcontainer>
     </div>
@@ -966,6 +1080,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -974,37 +1089,91 @@ exports[`ObjectPage with anchor-bar 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -1298,6 +1467,7 @@ exports[`ObjectPage with footer 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -1306,37 +1476,91 @@ exports[`ObjectPage with footer 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -1646,6 +1870,7 @@ exports[`ObjectPage with header 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -1654,37 +1879,91 @@ exports[`ObjectPage with header 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -2033,6 +2312,7 @@ exports[`ObjectPage with img 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -2041,37 +2321,91 @@ exports[`ObjectPage with img 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -2430,6 +2764,7 @@ exports[`ObjectPage with img 2`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -2438,37 +2773,91 @@ exports[`ObjectPage with img 2`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -2785,6 +3174,7 @@ exports[`ObjectPage with title 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -2793,37 +3183,91 @@ exports[`ObjectPage with title 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -3146,6 +3590,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       style="top: 0px;"
     >
       <ui5-tabcontainer
+        class="ObjectPage-tabContainerComponent"
         collapsed="true"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
@@ -3154,37 +3599,91 @@ exports[`ObjectPage with title, header & footer 1`] = `
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
       >
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="0"
           data-section-id="1"
+          design="Default"
           selected="true"
           text="Title Section 1"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="1"
           data-section-id="2"
+          design="Default"
           text="Title Section 2"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
+          ui5-tab=""
         />
-        <ui5-object-page-anchor-tab
+        <ui5-tab
           data-index="2"
           data-section-id="3"
+          design="Default"
           text="Title Section 3"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
-        <ui5-object-page-anchor-tab
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="3"
+            data-section-id="3.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 3.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
+        <ui5-tab
           data-index="3"
           data-section-id="4"
+          design="Default"
           text="Title Section 4"
-          ui5-object-page-anchor-tab=""
-          ui5-tab="true"
-          with-sub-sections="true"
-        />
+          ui5-tab=""
+        >
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.1"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.1"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.2"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.2"
+            ui5-tab=""
+          />
+          <ui5-tab
+            data-is-sub-tab="true"
+            data-parent-id="4"
+            data-section-id="4.3"
+            design="Default"
+            slot="subTabs"
+            text="Title SubSection 4.3"
+            ui5-tab=""
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div

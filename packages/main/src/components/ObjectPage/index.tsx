@@ -19,16 +19,12 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize } from '../../enums/AvatarSize';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { ObjectPageMode } from '../../enums/ObjectPageMode';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
+import { CommonProps } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { AvatarPropTypes } from '../../webComponents/Avatar';
-import { Tab } from '../../webComponents/Tab';
-import { TabContainer } from '../../webComponents/TabContainer';
+import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
@@ -801,16 +797,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                         data-section-id={item.props.id}
                         text={item.props.titleText}
                         // todo enable selected with `selectedSubSectionId`
-                        // selected={false}
-                      >
-                        noop
-                      </Tab>
+                        // selected={item.props.id === selectedSubSectionId}
+                      />
                     );
                   })}
-                >
-                  {/*ToDo: remove this line when ui5-wc supports empty tabs*/}
-                  noop
-                </Tab>
+                />
               );
             })}
           </TabContainer>
