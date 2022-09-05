@@ -44,7 +44,7 @@ addCustomCSSWithScoping(
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
-   * Defines the the upper, always static, title section of the `ObjectPage`.
+   * Defines the upper, always static, title section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `DynamicPageTitle` is set to `true` by default.
@@ -80,12 +80,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * Defines the ID of the currently `ObjectPageSubSection` section.
    */
   selectedSubSectionId?: string;
-  /**
-   * Defines where modals are rendered into via `React.createPortal`.
-   *
-   * Defaults to: `document.body`
-   */
-  portalContainer?: Element;
   /**
    * Fired when the selected section changes.
    */
@@ -171,7 +165,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContentPinnable,
     a11yConfig,
     placeholder,
-    portalContainer,
     onSelectedSectionChange,
     onToggleHeaderContent,
     ...rest
@@ -830,8 +823,7 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false,
-  portalContainer: document.body
+  showHideHeaderButton: false
 };
 
 export { ObjectPage };
