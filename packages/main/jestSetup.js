@@ -54,6 +54,7 @@ globalThis.IntersectionObserver = mockIntersectionObserver;
 
 Object.defineProperty(globalThis, 'crypto', {
   value: {
-    randomUUID: () => `1337`
-  }
+    randomUUID: jest.fn().mockReturnValue('1337')
+  },
+  writable: true
 });

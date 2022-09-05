@@ -208,8 +208,8 @@ exports[`Toolbar ToolbarSpacer 1`] = `
 
 exports[`Toolbar overflow menu 1`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
+  {
+    Symbol(SameObject caches): {
       "childNodes": NodeList [
         <span
           aria-live="polite"
@@ -321,8 +321,8 @@ exports[`Toolbar overflow menu 1`] = `
 
 exports[`Toolbar overflow menu 2`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
+  {
+    Symbol(SameObject caches): {
       "childNodes": NodeList [
         <span
           aria-live="polite"
@@ -434,8 +434,8 @@ exports[`Toolbar overflow menu 2`] = `
 
 exports[`Toolbar overflow menu 3`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
+  {
+    Symbol(SameObject caches): {
       "childNodes": NodeList [
         <span
           aria-live="polite"

@@ -26,37 +26,47 @@ type useOnColumnResizeFunc = (e: { columnWidth: number; header: Record<string, a
  */
 export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: useOnColumnResizeOptions) => {
   const debouncedEvent = debounce(callback, options?.wait ?? 100);
-  const useGetResizerProps = (props, { header, instance }) => {
-    const updatingColumnWidth = instance.state.columnResizing?.columnWidths[header.id];
+
+  const useInstance = (instance) => {
+    const { state, columns } = instance;
+    const { columnResizing } = state;
+    const { isResizingColumn, columnWidths } = columnResizing;
     const prevHeaderIsResizing = useRef(undefined);
-    const eventParams = { columnWidth: updatingColumnWidth, header };
 
     useEffect(() => {
-      if (updatingColumnWidth && options?.liveUpdate) {
-        debouncedEvent(eventParams);
+      if (isResizingColumn && options?.liveUpdate) {
+        const currentHeader = columns.find((item) => item.id === isResizingColumn);
+        debouncedEvent({
+          columnWidth: columnWidths[isResizingColumn],
+          header: currentHeader
+        });
       }
-      return () => {
-        debouncedEvent.cancel();
-      };
-    }, [updatingColumnWidth, options?.liveUpdate]);
+    }, [columnResizing, options?.liveUpdate, columns]);
+
+    useEffect(() => {
+      if (options?.liveUpdate) {
+        return () => debouncedEvent.cancel();
+      }
+    }, [options?.liveUpdate]);
 
     useEffect(() => {
       if (!options?.liveUpdate) {
-        if (!header.isResizing && prevHeaderIsResizing.current) {
-          callback(eventParams);
-          prevHeaderIsResizing.current = false;
+        const currentHeader = columns.find((item) => item.id === prevHeaderIsResizing.current);
+        if (isResizingColumn) {
+          prevHeaderIsResizing.current = isResizingColumn;
         }
-        if (header.isResizing) {
-          prevHeaderIsResizing.current = true;
+        if (!isResizingColumn && prevHeaderIsResizing.current) {
+          callback({
+            columnWidth: columnWidths[prevHeaderIsResizing.current],
+            header: currentHeader
+          });
         }
       }
-    }, [header.isResizing, options?.liveUpdate]);
-
-    return props;
+    }, [columnResizing, options?.liveUpdate, columns]);
   };
 
   const useOnColumnResizeHooks = (hooks) => {
-    hooks.getResizerProps.push(useGetResizerProps);
+    hooks.useFinalInstance.push(useInstance);
   };
 
   useOnColumnResizeHooks.pluginName = 'useOnColumnResize';

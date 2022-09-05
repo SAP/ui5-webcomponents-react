@@ -306,12 +306,15 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             <Label>{chartConfig.referenceLineX.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          contentStyle={tooltipContentStyle}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig?.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            {...tooltipConfig}
+          />
+        )}
         {children}
       </ScatterChartLib>
     </ChartContainer>

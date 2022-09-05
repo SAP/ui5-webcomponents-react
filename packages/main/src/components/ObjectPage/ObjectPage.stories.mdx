@@ -301,15 +301,20 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
 
 ## ObjectPage with custom actions and navigationActions overflow button
 
-With the `actionsOverflowButton` and the `navigationActionsOverflowButton` props of the `DynamicPageTitle` it is possible to change the overflow button of the respective actions toolbar.
-The `navigationActionsOverflowButton` is only displayed, if the `navigationActions` toolbar is used. (width < 1280px)
+The `DynamicPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
+With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `overflowButton` prop.
+`navigationActionsToolbarProps` only has an effect, if the `navigationActions` toolbar is used. (width < 1280px)
 
 <Canvas>
   <Story name="with custom overflow button">
     {() => {
       const titleProps = {
-        actionsOverflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />,
-        navigationActionsOverflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />,
+        actionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />
+        },
+        navigationActionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />
+        },
         actions: (
           <>
             <Button key={'edit'} design={ButtonDesign.Emphasized}>

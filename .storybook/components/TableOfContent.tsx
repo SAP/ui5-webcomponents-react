@@ -93,7 +93,7 @@ export const TableOfContent = ({ headingSelector = 'h2.sbdocs-h2, h3.sbdocs-h3, 
     <>
       <h3 className={classes.header}>Contents</h3>
       <div className={classes.fixedContainer}>
-        <div className={`js-toc ${classes.toc}`} />
+        <div className={`js-toc ${classes.toc}`} id="toc-container" />
       </div>
     </>
   );

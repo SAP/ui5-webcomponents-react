@@ -1,3 +1,4 @@
+import { useCurrentTheme } from './useCurrentTheme';
 import { I18nBundle, useI18nBundle } from './useI18nBundle';
 import { useIsomorphicId } from './useIsomorphicId';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
@@ -14,5 +15,6 @@ export {
   useResponsiveContentPadding,
   useSyncRef,
   useViewportRange,
-  useIsomorphicId
+  useIsomorphicId,
+  useCurrentTheme
 };

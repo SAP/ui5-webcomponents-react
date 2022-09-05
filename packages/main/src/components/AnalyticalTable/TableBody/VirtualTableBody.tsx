@@ -157,6 +157,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute'
             }}
+            aria-rowindex={virtualRow.index + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
@@ -185,6 +186,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               }
               const cellProps = cell.getCellProps();
               if (row.original?.emptyRow) {
+                // eslint-disable-next-line react/jsx-key
                 return <div {...cellProps} />;
               }
               let contentToRender;
