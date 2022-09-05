@@ -31,7 +31,7 @@ export interface MessageItemPropTypes extends CommonProps {
   subtitleText?: ReactNode;
 
   /**
-   * Defines the number of messages for a given message.
+   * Defines the number of messages for a given message type.
    */
   counter?: number;
 
@@ -195,7 +195,7 @@ const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>
 MessageItem.displayName = 'MessageItem';
 
 MessageItem.defaultProps = {
-  type: ValueState.None
+  type: ValueState.Error
 };
 
 export { MessageItem };
