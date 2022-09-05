@@ -152,6 +152,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             ref={(node) => {
               virtualRow.measureElement(node);
             }}
+            aria-rowindex={virtualRow.index + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "0.27.4",
+  "version": "0.27.5",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -25,7 +25,7 @@
     "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {
-    "@ui5/webcomponents-react-base": "^0.27.4",
+    "@ui5/webcomponents-react-base": "^0.27.5",
     "clsx": "1.2.1",
     "lit-html": "^2.0.1",
     "react-content-loader": "6.2.0",

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.4...v0.27.5) (2022-09-02)
+
+
+### Bug Fixes
+
+* **ActionSheet:** deprecate `alwaysShowHeader` prop ([#3448](https://github.com/SAP/ui5-webcomponents-react/issues/3448)) ([43e8bd7](https://github.com/SAP/ui5-webcomponents-react/commit/43e8bd7b52561c74e39cd82c40cdace7e80d2128))
+* **AnalyticalTable:** update `aria-rowindex` when row order changes ([#3461](https://github.com/SAP/ui5-webcomponents-react/issues/3461)) ([83dacd7](https://github.com/SAP/ui5-webcomponents-react/commit/83dacd74b10de52ff782c4ee4296b2365949f922))
+* **SplitterLayout:** correctly detect runtime change of `dir` on component ([#3447](https://github.com/SAP/ui5-webcomponents-react/issues/3447)) ([4939532](https://github.com/SAP/ui5-webcomponents-react/commit/493953256b9bc81487ad5f66decfe9e76792eb2f)), closes [#3446](https://github.com/SAP/ui5-webcomponents-react/issues/3446)
+
+
+### Features
+
+* **AnalyticalTable:** add `retainColumnWidth` prop ([#3445](https://github.com/SAP/ui5-webcomponents-react/issues/3445)) ([4f6e4ea](https://github.com/SAP/ui5-webcomponents-react/commit/4f6e4eaaaa60f6d297159dc2374e0cf58759e111)), closes [#3444](https://github.com/SAP/ui5-webcomponents-react/issues/3444)
+* **MessageBox:** allow customization of `accessibleNameRef` ([#3453](https://github.com/SAP/ui5-webcomponents-react/issues/3453)) ([7fe78ca](https://github.com/SAP/ui5-webcomponents-react/commit/7fe78ca2f9a1a8e96f10decd46d9d822fa26ae28))
+
+
+
+
+
 ## [0.27.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.3...v0.27.4) (2022-08-26)
 
 

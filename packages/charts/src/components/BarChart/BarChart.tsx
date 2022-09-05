@@ -360,13 +360,16 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             <Label>{chartConfig.referenceLine.label}</Label>
           </ReferenceLine>
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          contentStyle={tooltipContentStyle}
-          labelFormatter={labelFormatter}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig?.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            labelFormatter={labelFormatter}
+            {...tooltipConfig}
+          />
+        )}
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

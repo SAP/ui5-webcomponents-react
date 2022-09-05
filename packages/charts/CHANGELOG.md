@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.4...v0.27.5) (2022-09-02)
+
+
+### Bug Fixes
+
+* **charts:** allow hiding of tooltips  ([#3449](https://github.com/SAP/ui5-webcomponents-react/issues/3449)) ([ee0ab04](https://github.com/SAP/ui5-webcomponents-react/commit/ee0ab04e96822fa8879ec9cc305b0d28e195789b))
+
+
+
+
+
 ## [0.27.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.3...v0.27.4) (2022-08-26)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
