@@ -13,3 +13,5 @@ packages/main/scripts/wrapperGeneration/json
 .awcache
 examples/seed-test
 scripts/web-component-wrappers/interfaces.json
+/jest-coverage
+/cypress-coverage

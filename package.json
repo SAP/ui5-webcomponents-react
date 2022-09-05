@@ -13,9 +13,10 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "lerna run build && cypress run --component && lerna run clean",
-    "cypress:open": "cypress open --component --browser chrome",
+    "cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test:all": "yarn test:cypress && yarn test",
-    "clean": "lerna run clean --stream && rimraf coverage",
+    "test:combine-reports": "node scripts/combineTestReports.mjs",
+    "clean": "lerna run clean --stream",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
@@ -116,6 +117,12 @@
       "last 1 edge version",
       "last 1 safari version",
       "last 1 firefox version"
+    ]
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "reporter": [
+      "json"
     ]
   }
 }

@@ -2,8 +2,8 @@ import PATHS from './paths.js';
 
 export default {
   rootDir: PATHS.root,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['lcov', 'text'],
+  coverageDirectory: 'jest-coverage',
+  coverageReporters: ['lcov', 'text', 'json'],
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/{base,charts,main}/src/**/*.{ts,tsx}',

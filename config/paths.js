@@ -13,9 +13,11 @@ const PATHS = {
   test: path.join(root, 'test'),
   shared: path.join(root, 'shared'),
   coverage: path.join(root, 'coverage'),
+  jestCoverage: path.join(root, 'jest-coverage'),
+  cypressCoverage: path.join(root, 'cypress-coverage'),
   nycOutput: path.join(root, '.nyc_output'),
   nodeModules: path.join(root, 'node_modules'),
-  packages: path.join(root, 'packages'),
+  packages: path.join(root, 'packages')
 };
 
 export default PATHS;
