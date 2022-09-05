@@ -4556,6 +4556,13 @@
   dependencies:
     lit-html "^2.0.1"
 
+"@ui5/webcomponents-base@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-base/-/webcomponents-base-1.7.0.tgz#ed0a735eef3d8ec42c00dbf9205e75f62703d669"
+  integrity sha512-I+GgXk8iy/V9nE3j8lP+iqt+yKgMxBCn2cULOADz+3Gty9YGBaG4dN+enwTzOQxHZnBZJJK68bZrE3Z0IrrmMw==
+  dependencies:
+    lit-html "^2.0.1"
+
 "@ui5/webcomponents-fiori@1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@ui5/webcomponents-fiori/-/webcomponents-fiori-1.6.0.tgz#015042bb59f8cbcd017d734cac056634952a1dd7"
@@ -4573,6 +4580,13 @@
   integrity sha512-RXa6DjJScs2x3mTLQbtWRTqcFLGhPl2SBFKjFuBFVDJ08ueMkb53pXoB67hw1WJfdc8qMz+u7SvS8B2uRmshSw==
   dependencies:
     "@ui5/webcomponents-base" "1.6.0"
+
+"@ui5/webcomponents-icons@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-icons/-/webcomponents-icons-1.7.0.tgz#6ebe29bfd6105d6b63451fab9900f926bd762428"
+  integrity sha512-bmlIYkQq3TnvS58+sJt15lc0RcNtzoji19e6/65X955UpGgualeSG59D20ErAk2IQj8rfa1Aa04M5wuxg4mPcw==
+  dependencies:
+    "@ui5/webcomponents-base" "1.7.0"
 
 "@ui5/webcomponents-localization@1.6.0":
   version "1.6.0"
