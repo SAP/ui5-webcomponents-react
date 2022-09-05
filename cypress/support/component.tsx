@@ -14,6 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import '@cypress/code-coverage/support';
 import './commands';
 import { ThemeProvider } from '@ui5/webcomponents-react';
 import '@testing-library/cypress/add-commands';
