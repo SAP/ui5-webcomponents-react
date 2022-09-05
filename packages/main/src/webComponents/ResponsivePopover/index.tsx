@@ -88,7 +88,7 @@ interface ResponsivePopoverAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface ResponsivePopoverDomRef extends ResponsivePopoverAttributes, Ui5DomRef {
+export interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttributes, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at
    */
