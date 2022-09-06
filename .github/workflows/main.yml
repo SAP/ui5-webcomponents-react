@@ -98,7 +98,7 @@ jobs:
         run: yarn lint
 
   deploy-next-docs:
-    needs: ['test-jest-and-build']
+    needs: ['test-cypress']
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
