@@ -61,7 +61,6 @@ jobs:
           path: temp/jest-coverage
 
   test-cypress:
-    needs: ['test-jest-and-build']
     name: 'Cypress Test'
     runs-on: ubuntu-latest
     steps:
@@ -98,7 +97,7 @@ jobs:
         run: yarn lint
 
   deploy-next-docs:
-    needs: ['test-cypress']
+    needs: ['test-jest-and-build', 'test-cypress']
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
