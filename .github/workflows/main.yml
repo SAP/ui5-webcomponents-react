@@ -95,7 +95,7 @@ jobs:
       - name: Install and Build
         run: |
           yarn install --frozen-lockfile
-          yarn build:storybook
+          yarn build
 
   coveralls:
     needs: ['test-jest', 'test-cypress']
