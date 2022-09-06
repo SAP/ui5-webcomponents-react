@@ -15,5 +15,6 @@ export default defineConfig({
   includeShadowDom: true,
   viewportWidth: 1920,
   viewportHeight: 1080,
-  video: false
+  video: false,
+  screenshotOnRunFailure: false
 });

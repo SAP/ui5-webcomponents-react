@@ -13,7 +13,7 @@
     "pretest": "rimraf coverage && lerna run build:i18n",
     "test": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "lerna run build && cypress run --component && lerna run clean",
-    "cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
+    "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test:all": "yarn test:cypress && yarn test",
     "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "lerna run clean --stream && rimraf coverage",
