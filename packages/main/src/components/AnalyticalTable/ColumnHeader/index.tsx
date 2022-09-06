@@ -37,6 +37,7 @@ export interface ColumnHeaderProps {
   children: ReactNode | ReactNode[];
   portalContainer: Element;
   uniqueId: string;
+  scaleXFactor?: number;
 
   //getHeaderProps()
   id: string;
@@ -108,7 +109,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onClick,
     onKeyDown,
     portalContainer,
-    uniqueId
+    uniqueId,
+    scaleXFactor
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -195,7 +197,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
-        ref={(node) => virtualColumn.measureElement(node)}
+        ref={(node) => {
+          const clientRect = node?.getBoundingClientRect();
+          if (clientRect && scaleXFactor > 0) {
+            const scaledGetBoundingClientRect = () => ({ ...clientRect, width: clientRect.width / scaleXFactor });
+            const updatedNode = { ...node, getBoundingClientRect: scaledGetBoundingClientRect };
+            virtualColumn.measureElement(updatedNode);
+          } else {
+            virtualColumn.measureElement(node);
+          }
+        }}
         data-visible-column-index={visibleColumnIndex}
         data-visible-row-index={0}
         data-row-index={0}

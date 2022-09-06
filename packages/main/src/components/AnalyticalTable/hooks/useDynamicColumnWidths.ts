@@ -15,6 +15,7 @@ const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
+
   return [
     ...deps,
     hasRows,
@@ -22,7 +23,8 @@ const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, vi
     state.hiddenColumns.length,
     visibleColumns?.length,
     webComponentsReactProperties.scaleWidthMode,
-    isLoadingPlaceholder
+    isLoadingPlaceholder,
+    webComponentsReactProperties.scaleXFactor
   ];
 };
 interface IColumnMeta {

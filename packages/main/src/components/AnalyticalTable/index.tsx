@@ -524,9 +524,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
-const measureElement = (scaleFactor) => (el) => {
-  return el.getBoundingClientRect().width / scaleFactor;
-};
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -657,7 +654,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         alwaysShowSubComponent,
         scrollToRef,
         showOverlay,
-        uniqueId
+        uniqueId,
+        scaleXFactor
       },
       ...reactTableOptions
     },
@@ -968,9 +966,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: overscanCountHorizontal,
-    measureElement: scaleXFactor != null ? measureElement(scaleXFactor) : undefined
+    overscan: overscanCountHorizontal
   });
+
   scrollToRef.current = {
     ...scrollToRef.current,
     horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
@@ -1043,6 +1041,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     portalContainer={portalContainer}
                     uniqueId={uniqueId}
                     columnVirtualizer={columnVirtualizer}
+                    scaleXFactor={scaleXFactor}
                   />
                 )
               );

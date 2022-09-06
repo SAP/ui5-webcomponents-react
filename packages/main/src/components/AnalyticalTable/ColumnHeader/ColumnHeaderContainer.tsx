@@ -36,6 +36,7 @@ interface ColumnHeaderContainerProps {
   portalContainer: Element;
   uniqueId: string;
   columnVirtualizer: Virtualizer;
+  scaleXFactor?: number;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -56,7 +57,8 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     isRtl,
     portalContainer,
     uniqueId,
-    columnVirtualizer
+    columnVirtualizer,
+    scaleXFactor
   } = props;
 
   const classes = useStyles();
@@ -113,6 +115,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
               isRtl={isRtl}
               portalContainer={portalContainer}
               uniqueId={uniqueId}
+              scaleXFactor={scaleXFactor}
             >
               {column.render('Header')}
             </ColumnHeader>
