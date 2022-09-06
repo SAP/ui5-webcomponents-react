@@ -61,6 +61,7 @@ jobs:
           path: temp/jest-coverage
 
   test-cypress:
+    needs: ['test-jest-and-build']
     name: 'Cypress Test'
     runs-on: ubuntu-latest
     steps:
