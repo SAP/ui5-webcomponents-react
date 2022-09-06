@@ -1,6 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 name: CI
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -31,8 +35,23 @@ jobs:
           exclude: 'packages/**/src/dist/**'
           compression: 'gzip'
 
+  install-npm:
+    name: 'Install Dependencies'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.4.1
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install and Build
+        run: yarn install --frozen-lockfile
+
   test-jest:
-    name: 'Install & Jest Test'
+    needs: ['install-npm']
+    name: 'Jest Test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
