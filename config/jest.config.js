@@ -11,6 +11,7 @@ export default {
     '!**/src/enums/*',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
+    '!**/*.cy.{ts,tsx}',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
