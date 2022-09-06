@@ -2,7 +2,7 @@ import PATHS from './paths.js';
 
 export default {
   rootDir: PATHS.root,
-  coverageDirectory: 'jest-coverage',
+  coverageDirectory: 'temp/jest-coverage',
   coverageReporters: ['lcov', 'text', 'json'],
   collectCoverage: false,
   collectCoverageFrom: [

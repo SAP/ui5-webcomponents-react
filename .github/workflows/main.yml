@@ -55,10 +55,10 @@ jobs:
         env:
           REACTJS_VERSION: ${{ matrix.react }}
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@1.1.3
+      - uses: actions/upload-artifact@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: jest-coverage
+          path: temp/jest-coverage
 
   test-cypress:
     name: 'Cypress Test'
@@ -74,10 +74,11 @@ jobs:
           browser: chrome
           component: true
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@1.1.3
+      - uses: actions/upload-artifact@v3
+        if: always()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: cypress-coverage
+          path: temp/cypress-coverage
 
   lint:
     runs-on: ubuntu-latest

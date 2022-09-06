@@ -3,15 +3,18 @@ import { copyFileSync, mkdirSync, renameSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT_DIR = fileURLToPath(new URL('../', import.meta.url));
-const REPORTS_DIR = fileURLToPath(new URL('../reports', import.meta.url));
+const ROOT_DIR = fileURLToPath(new URL('../temp', import.meta.url));
+const REPORTS_DIR = fileURLToPath(new URL('../temp/reports', import.meta.url));
 
 // create reports dir
 mkdirSync(REPORTS_DIR, { recursive: true });
 
 // move cypress and jest coverage reports
-copyFileSync(new URL('../cypress-coverage/coverage-final.json', import.meta.url), join(REPORTS_DIR, 'cypress.json'));
-copyFileSync(new URL('../jest-coverage/coverage-final.json', import.meta.url), join(REPORTS_DIR, 'jest.json'));
+copyFileSync(
+  new URL('../temp/cypress-coverage/coverage-final.json', import.meta.url),
+  join(REPORTS_DIR, 'cypress.json')
+);
+copyFileSync(new URL('../temp/jest-coverage/coverage-final.json', import.meta.url), join(REPORTS_DIR, 'jest.json'));
 
 // merge coverage reports
 spawnSync('npx', ['--yes', 'nyc', 'merge', 'reports'], { stdio: [0, 1, 2], cwd: ROOT_DIR });
@@ -32,7 +35,7 @@ spawnSync(
     '--reporter',
     'html',
     '--report-dir',
-    'coverage'
+    'temp/coverage'
   ],
   {
     stdio: [0, 1, 2],
