@@ -35,7 +35,7 @@ jobs:
           exclude: 'packages/**/src/dist/**'
           compression: 'gzip'
 
-  install-npm:
+  install:
     name: 'Install Dependencies'
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +50,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
   test-jest:
-    needs: ['install-npm']
+    needs: ['install']
     name: 'Jest Test'
     runs-on: ubuntu-latest
     strategy:
@@ -80,6 +80,7 @@ jobs:
           path: temp/jest-coverage
 
   test-cypress:
+    needs: ['install']
     name: 'Cypress Test'
     runs-on: ubuntu-latest
     steps:
