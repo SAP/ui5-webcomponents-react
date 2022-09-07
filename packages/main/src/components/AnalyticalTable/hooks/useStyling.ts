@@ -1,8 +1,6 @@
 import { CSSProperties } from 'react';
 import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
 import { TableSelectionMode } from '../../../enums/TableSelectionMode';
-import { TextAlign } from '../../../enums/TextAlign';
-import { VerticalAlign } from '../../../enums/VerticalAlign';
 import { resolveCellAlignment } from '../util';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
