@@ -1,9 +1,4 @@
-import '@ui5/webcomponents-icons/dist/hint.js';
-import '@ui5/webcomponents-icons/dist/message-error.js';
-import '@ui5/webcomponents-icons/dist/message-information.js';
-import '@ui5/webcomponents-icons/dist/message-success.js';
-import '@ui5/webcomponents-icons/dist/message-warning.js';
-import '@ui5/webcomponents-icons/dist/question-mark.js';
+import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import {
   enrichEventWithDetails,
   useI18nBundle,
@@ -13,7 +8,7 @@ import {
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel } from '../../enums';
+import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';
 import {
   ABORT,
   CANCEL,
@@ -21,7 +16,6 @@ import {
   CONFIRMATION,
   DELETE,
   ERROR,
-  HIGHLIGHT,
   IGNORE,
   INFORMATION,
   NO,
@@ -49,7 +43,7 @@ import styles from './MessageBox.jss';
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
-  extends Omit<DialogPropTypes, 'accessibleNameRef' | 'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
+  extends Omit<DialogPropTypes,  'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
   /**
    * Defines the IDs of the elements that label the component.
    *
@@ -124,19 +118,24 @@ const getIcon = (icon, type) => {
   const iconProps = { 'aria-hidden': 'true', accessibleRole: 'presentation' } as IconPropTypes;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return <Icon name="question-mark" {...iconProps} />;
-    case MessageBoxTypes.Error:
-      return <Icon name="message-error" {...iconProps} />;
-    case MessageBoxTypes.Information:
-      return <Icon name="message-information" {...iconProps} />;
-    case MessageBoxTypes.Success:
-      return <Icon name="message-success" {...iconProps} />;
-    case MessageBoxTypes.Warning:
-      return <Icon name="message-warning" {...iconProps} />;
-    case MessageBoxTypes.Highlight:
-      return <Icon name="hint" {...iconProps} />;
+      return <Icon name={iconSysHelp} {...iconProps} />;
     default:
       return null;
+  }
+};
+
+const convertMessageBoxTypeToState = (type: MessageBoxTypes) => {
+  switch (type) {
+    case MessageBoxTypes.Information:
+      return ValueState.Information;
+    case MessageBoxTypes.Success:
+      return ValueState.Success;
+    case MessageBoxTypes.Warning:
+      return ValueState.Warning;
+    case MessageBoxTypes.Error:
+      return ValueState.Error;
+    default:
+      return ValueState.None;
   }
 };
 
@@ -163,8 +162,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     type,
     children,
     className,
-    style,
-    slot,
     titleText,
     icon,
     actions,
@@ -205,8 +202,6 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
         return i18nBundle.getText(SUCCESS);
       case MessageBoxTypes.Warning:
         return i18nBundle.getText(WARNING);
-      case MessageBoxTypes.Highlight:
-        return i18nBundle.getText(HIGHLIGHT);
       default:
         return null;
     }
@@ -235,28 +230,29 @@ const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef
     return initialFocus;
   };
 
-  const iconToRender = getIcon(icon, type);
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
+
+  const iconToRender = getIcon(icon, type);
+  const needsCustomHeader = !props.header && !!iconToRender;
 
   const messageBoxId = useIsomorphicId();
 
   return (
     <Dialog
       open={open}
-      slot={slot}
       ref={ref}
-      style={style}
       className={messageBoxClassNames}
       onAfterClose={open ? handleOnClose : stopPropagation}
-      accessibleNameRef={`${messageBoxId}-title ${messageBoxId}-text`}
+      accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       {...restWithoutOmitted}
+      headerText={titleToRender()}
+      state={convertMessageBoxTypeToState(type as MessageBoxTypes)}
       initialFocus={getInitialFocus()}
       data-type={type}
     >
-      {!props.header && (
+      {needsCustomHeader && (
         <header slot="header" className={classes.header}>
           {iconToRender}
           {iconToRender && <span className={classes.spacer} />}
