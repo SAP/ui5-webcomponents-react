@@ -58,6 +58,7 @@ jobs:
         react: [16, 17, 18]
     env:
       CI: true
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@v3
 
@@ -101,7 +102,7 @@ jobs:
           path: temp/cypress-coverage
 
   build:
-    needs: ['test-jest', 'test-cypress']
+    needs: ['install']
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
