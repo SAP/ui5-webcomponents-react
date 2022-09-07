@@ -1225,237 +1225,190 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             </div>
           </div>
         </div>
-        <svg
-          aria-labelledby="TITLE_ARIA_ID"
-          height="220"
-          role="img"
-          style="height: 220px; width: 240px;"
-          width="240"
+        <div
+          style="width: 240px; height: 220px;"
         >
-          <title
-            id="TITLE_ARIA_ID"
+          <div
+            class="AnalyticalTablePlaceholder--row"
           >
-            Loading...
-          </title>
-          <rect
-            clip-path="STYLE-URL"
-            height="100%"
-            role="presentation"
-            style="fill: STYLE-URL;"
-            width="100%"
-            x="0"
-            y="0"
-          />
-          <defs>
-            <clippath
-              id="DIFF_ID"
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
             >
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="2"
-                y="22"
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
               />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="62"
-                y="22"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="122"
-                y="22"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="182"
-                y="22"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="2"
-                y="66"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="62"
-                y="66"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="122"
-                y="66"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="182"
-                y="66"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="2"
-                y="110"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="62"
-                y="110"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="122"
-                y="110"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="182"
-                y="110"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="2"
-                y="154"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="62"
-                y="154"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="122"
-                y="154"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="182"
-                y="154"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="2"
-                y="198"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="62"
-                y="198"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="122"
-                y="198"
-              />
-              <rect
-                height="16"
-                rx="2"
-                ry="8"
-                width="56"
-                x="182"
-                y="198"
-              />
-            </clippath>
-            <lineargradient
-              id="DIFF_ID"
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
             >
-              <stop
-                offset="0%"
-                stop-color="var(--sapContent_ImagePlaceholderBackground)"
-                stop-opacity="var(--sapContent_DisabledOpacity)"
-              >
-                <animate
-                  attributeName="offset"
-                  dur="2s"
-                  keyTimes="0; 0.25; 1"
-                  repeatCount="indefinite"
-                  values="-2; -2; 1"
-                />
-              </stop>
-              <stop
-                offset="50%"
-                stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
-                stop-opacity="1"
-              >
-                <animate
-                  attributeName="offset"
-                  dur="2s"
-                  keyTimes="0; 0.25; 1"
-                  repeatCount="indefinite"
-                  values="-1; -1; 2"
-                />
-              </stop>
-              <stop
-                offset="100%"
-                stop-color="var(--sapContent_ImagePlaceholderBackground)"
-                stop-opacity="var(--sapContent_DisabledOpacity)"
-              >
-                <animate
-                  attributeName="offset"
-                  dur="2s"
-                  keyTimes="0; 0.25; 1"
-                  repeatCount="indefinite"
-                  values="0; 0; 3"
-                />
-              </stop>
-            </lineargradient>
-          </defs>
-        </svg>
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+          </div>
+          <div
+            class="AnalyticalTablePlaceholder--row"
+          >
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+          </div>
+          <div
+            class="AnalyticalTablePlaceholder--row"
+          >
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+          </div>
+          <div
+            class="AnalyticalTablePlaceholder--row"
+          >
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+          </div>
+          <div
+            class="AnalyticalTablePlaceholder--row"
+          >
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+            <div
+              class="AnalyticalTablePlaceholder--cellContainer"
+              style="width: 60px; align-items: center;"
+            >
+              <div
+                class="AnalyticalTablePlaceholder--cell AnalyticalTablePlaceholder--animation"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
