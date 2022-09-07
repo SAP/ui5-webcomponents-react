@@ -767,7 +767,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
     const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
-    parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    if (analyticalTableRef.current?.parentElement) {
+      parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    }
     return () => {
       debouncedHeightObserverFn.cancel();
       debouncedWidthObserverFn.cancel();

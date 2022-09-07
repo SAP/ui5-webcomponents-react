@@ -2,8 +2,8 @@ import PATHS from './paths.js';
 
 export default {
   rootDir: PATHS.root,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['lcov', 'text'],
+  coverageDirectory: 'temp/jest-coverage',
+  coverageReporters: ['lcov', 'text', 'json'],
   collectCoverage: false,
   collectCoverageFrom: [
     'packages/{base,charts,main}/src/**/*.{ts,tsx}',
@@ -11,6 +11,7 @@ export default {
     '!**/src/enums/*',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
+    '!**/*.cy.{ts,tsx}',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
     '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
