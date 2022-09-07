@@ -1,4 +1,6 @@
+import { CSSProperties } from 'react';
 import { defaultOrderByFn } from 'react-table';
+import { TextAlign, VerticalAlign } from '../../../enums';
 
 export const orderByFn = (rows, functions, directions) => {
   const wrapSortFn = (sortFn, index) => {
@@ -111,3 +113,46 @@ export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-TOGGLE-BUTTON',
   'UI5-UPLOAD-COLLECTION'
 ]);
+
+export const resolveCellAlignment = (column) => {
+  const style: CSSProperties = {};
+
+  switch (column.hAlign) {
+    case TextAlign.Begin:
+      style.justifyContent = 'flex-start';
+      style.textAlign = 'start';
+      break;
+    case TextAlign.Center:
+      style.justifyContent = 'center';
+      style.textAlign = 'center';
+      break;
+    case TextAlign.End:
+      style.justifyContent = 'flex-end';
+      style.textAlign = 'end';
+      break;
+    case TextAlign.Left:
+      style.justifyContent = 'left';
+      style.textAlign = 'left';
+      break;
+    case TextAlign.Right:
+      style.justifyContent = 'right';
+      style.textAlign = 'right';
+      break;
+    case TextAlign.Initial:
+      style.justifyContent = 'initial';
+      style.textAlign = 'initial';
+      break;
+  }
+  switch (column.vAlign) {
+    case VerticalAlign.Bottom:
+      style.alignItems = 'flex-end';
+      break;
+    case VerticalAlign.Middle:
+      style.alignItems = 'center';
+      break;
+    case VerticalAlign.Top:
+      style.alignItems = 'flex-start';
+      break;
+  }
+  return style;
+};

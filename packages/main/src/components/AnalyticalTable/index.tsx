@@ -1022,14 +1022,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             })}
             {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
             {loading && props.data?.length === 0 && (
-              <TablePlaceholder
-                isRtl={isRtl}
-                columns={visibleColumns}
-                rows={props.minRows}
-                style={noDataStyles}
-                rowHeight={internalRowHeight}
-                tableWidth={totalColumnsWidth}
-              />
+              <TablePlaceholder columns={visibleColumns} rows={props.minRows} style={noDataStyles} />
             )}
             {!loading && props.data?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
