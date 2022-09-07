@@ -70,7 +70,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: run tests
-        run: yarn test --runInBand
+        run: yarn test:jest --runInBand
         env:
           REACTJS_VERSION: ${{ matrix.react }}
 
