@@ -204,7 +204,11 @@ describe('AnalyticalTable', () => {
   });
 
   it('scrollTo', () => {
-    const ScrollTable = (props) => {
+    interface ScrollTableProps {
+      scrollFn: string;
+      args: Array<string | number>;
+    }
+    const ScrollTable = (props: ScrollTableProps) => {
       const { scrollFn, args } = props;
       const tableRef = useRef(null);
       const handleScroll = () => {
