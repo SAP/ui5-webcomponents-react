@@ -1,8 +1,7 @@
 import { CSSProperties } from 'react';
 import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
 import { TableSelectionMode } from '../../../enums/TableSelectionMode';
-import { TextAlign } from '../../../enums/TextAlign';
-import { VerticalAlign } from '../../../enums/VerticalAlign';
+import { resolveCellAlignment } from '../util';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;
@@ -79,45 +78,7 @@ const getRowProps = (rowProps, { instance, row }) => {
 
 const getCellProps = (cellProps, { cell: { column }, instance }) => {
   const { classes } = instance.webComponentsReactProperties;
-  const style: CSSProperties = { width: `${column.totalWidth}px` };
-
-  switch (column.hAlign) {
-    case TextAlign.Begin:
-      style.justifyContent = 'flex-start';
-      style.textAlign = 'start';
-      break;
-    case TextAlign.Center:
-      style.justifyContent = 'center';
-      style.textAlign = 'center';
-      break;
-    case TextAlign.End:
-      style.justifyContent = 'flex-end';
-      style.textAlign = 'end';
-      break;
-    case TextAlign.Left:
-      style.justifyContent = 'left';
-      style.textAlign = 'left';
-      break;
-    case TextAlign.Right:
-      style.justifyContent = 'right';
-      style.textAlign = 'right';
-      break;
-    case TextAlign.Initial:
-      style.justifyContent = 'initial';
-      style.textAlign = 'initial';
-      break;
-  }
-  switch (column.vAlign) {
-    case VerticalAlign.Bottom:
-      style.alignItems = 'flex-end';
-      break;
-    case VerticalAlign.Middle:
-      style.alignItems = 'center';
-      break;
-    case VerticalAlign.Top:
-      style.alignItems = 'flex-start';
-      break;
-  }
+  const style: CSSProperties = { width: `${column.totalWidth}px`, ...resolveCellAlignment(column) };
 
   let className = classes.tableCell;
   if (column.className) {

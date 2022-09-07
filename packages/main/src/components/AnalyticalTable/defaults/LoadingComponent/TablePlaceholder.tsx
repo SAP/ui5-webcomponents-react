@@ -1,68 +1,87 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, useMemo } from 'react';
-import ContentLoader from 'react-content-loader';
+import clsx from 'clsx';
+import React, { CSSProperties, FC } from 'react';
+import { createUseStyles } from 'react-jss';
+import { resolveCellAlignment } from '../../util';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
-type RowProps = { columns: any[]; y: number; row: number };
-const TableRow: FC<RowProps> = ({ columns, y, row }: RowProps) => {
-  let columnOffset = 0;
-  return (
-    <>
-      {columns.map((column, i) => {
-        const el = (
-          <rect
-            key={`column-${i}-row-${row}`}
-            x={columnOffset + 2}
-            y={y}
-            rx="2"
-            ry="8"
-            width={column.totalWidth - 4}
-            height="16"
-          />
-        );
-        columnOffset += column.totalWidth;
-        return el;
-      })}
-    </>
-  );
-};
+const useStyles = createUseStyles(
+  {
+    '@keyframes placeholderShimmer': {
+      '0%': {
+        backgroundPositionX: '100%'
+      },
+      '100%': {
+        backgroundPositionX: '0'
+      }
+    },
+    animation: {
+      animationDuration: '2s',
+      animationFillMode: 'forwards',
+      animationIterationCount: 'infinite',
+      animationName: '$placeholderShimmer',
+      animationTimingFunction: 'linear',
+      backgroundImage: ThemingParameters.sapContent_Placeholderloading_Gradient,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '1000px 104px'
+    },
+    row: {
+      display: 'flex',
+      alignItems: 'center',
+      height: 'var(--sapWcrAnalyticalTableRowHeight)'
+    },
+    cellContainer: {
+      display: 'flex',
+      paddingInline: '0.25rem',
+      boxSizing: 'border-box'
+    },
+    cell: {
+      height: ThemingParameters.sapFontSize,
+      width: '60%',
+      borderRadius: ThemingParameters.sapElement_BorderCornerRadius
+    }
+  },
+  { name: 'AnalyticalTablePlaceholder ' }
+);
 
-type Props = {
+interface TablePlaceholderPropTypes {
   columns: any[];
   rows: number;
   style: CSSProperties;
-  rowHeight: number;
-  tableWidth: number;
-  isRtl: boolean;
-};
-export const TablePlaceholder: FC<Props> = (props: Props) => {
-  const { columns, rows, style, rowHeight, tableWidth, isRtl } = props;
+}
 
-  const height = rows * rowHeight;
+export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
+  const { columns, rows, style } = props;
 
-  const innerStyles = useMemo(() => {
-    return {
-      backgroundColor: ThemingParameters.sapList_Background,
-      ...style
-    };
-  }, [style, ThemingParameters.sapList_Background]);
+  const classes = useStyles();
 
   return (
-    <ContentLoader
-      style={innerStyles}
-      height={height}
-      width={tableWidth}
-      rtl={isRtl}
-      speed={2}
-      backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
-      foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
-      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
+    <div
+      style={{
+        backgroundColor: ThemingParameters.sapList_Background,
+        width: '100%',
+        ...style
+      }}
     >
-      {getArrayOfLength(rows).map((_, index) => (
-        <TableRow key={index} columns={columns} y={rowHeight * index + rowHeight / 2} row={index} />
-      ))}
-    </ContentLoader>
+      {getArrayOfLength(rows).map((_, index) => {
+        return (
+          <div className={classes.row} key={`row-${index}`}>
+            {columns.map((col) => {
+              return (
+                <div
+                  key={`row${index}-${col.id}`}
+                  className={classes.cellContainer}
+                  style={{ width: col.totalWidth, ...resolveCellAlignment(col) }}
+                >
+                  <div className={clsx(classes.cell, classes.animation)} />
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
