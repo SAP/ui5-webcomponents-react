@@ -20,6 +20,8 @@ exports[`ComposedChart Check onClick events 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts8-clip"
@@ -795,6 +797,8 @@ exports[`ComposedChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -820,6 +824,8 @@ exports[`ComposedChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -849,6 +855,8 @@ exports[`ComposedChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -870,8 +878,9 @@ exports[`ComposedChart Check onClick events 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -996,6 +1005,8 @@ exports[`ComposedChart Render chart with data 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts1-clip"
@@ -1771,6 +1782,8 @@ exports[`ComposedChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -1796,6 +1809,8 @@ exports[`ComposedChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -1825,6 +1840,8 @@ exports[`ComposedChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -1846,8 +1863,9 @@ exports[`ComposedChart Render chart with data 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -1885,6 +1903,8 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts15-clip"
@@ -2660,6 +2680,8 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2685,6 +2707,8 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -2714,6 +2738,8 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -2735,8 +2761,9 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
