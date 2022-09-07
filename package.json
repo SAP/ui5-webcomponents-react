@@ -10,9 +10,13 @@
     "build": "node scripts/build.js",
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
     "postinstall": "rimraf node_modules/@types/mocha",
-    "pretest": "rimraf coverage && lerna run build:i18n",
-    "test": "jest --config=config/jest.config.js --coverage",
-    "clean": "lerna run clean --stream && rimraf coverage",
+    "pretest": "rimraf temp && lerna run build",
+    "test:jest": "jest --config=config/jest.config.js --coverage",
+    "test:cypress": "cypress run --component",
+    "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
+    "test": "yarn test:cypress && yarn test",
+    "test:combine-reports": "node scripts/combineTestReports.mjs",
+    "clean": "lerna run clean --stream && rimraf temp",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
@@ -42,7 +46,9 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
+    "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^8.0.0",
+    "@testing-library/cypress": "^8.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^13.0.0",
     "@testing-library/react-17": "npm:@testing-library/react@^12.1.4",
@@ -53,7 +59,9 @@
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.30.0",
     "@ui5/webcomponents-tools": "1.6.0",
+    "@vitejs/plugin-react": "^2.0.1",
     "chromatic": "^6.5.3",
+    "cypress": "^10.7.0",
     "dedent": "^0.7.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.0.0",
@@ -84,7 +92,9 @@
     "rimraf": "^3.0.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turndown": "^7.0.0",
-    "typescript": "4.8.2"
+    "typescript": "4.8.2",
+    "vite": "^3.0.9",
+    "vite-plugin-istanbul": "^3.0.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
@@ -106,6 +116,26 @@
       "last 1 edge version",
       "last 1 safari version",
       "last 1 firefox version"
+    ]
+  },
+  "nyc": {
+    "report-dir": "temp/cypress-coverage",
+    "temp-dir": "temp/.nyc_output",
+    "reporter": [
+      "json"
+    ],
+    "include": [
+      "packages/{base,charts,main}/src/**/*.{ts,tsx}"
+    ],
+    "exclude": [
+      "**/src/interfaces/*",
+      "**/src/enums/*",
+      "**/*.stories.tsx",
+      "**/*.jss.ts",
+      "**/*.test.{ts,tsx}",
+      "**/node_modules/**",
+      "packages/*/src/index.ts",
+      "packages/main/src/components/AnalyticalTable/types/*"
     ]
   }
 }
