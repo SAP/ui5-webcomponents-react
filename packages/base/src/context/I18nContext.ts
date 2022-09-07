@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { I18nBundle } from '../hooks';
+import type { I18nBundle } from '../hooks';
 
 export const I18nContext = createContext<{
   i18nBundles: Record<string, I18nBundle>;
