@@ -152,7 +152,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     const observer = new IntersectionObserver(debouncedObserverFn, {
       root: dynamicPageRef.current,
       threshold: 0.98,
-      rootMargin: '0px 0px -60px 0px' // negative bottom margin for footer height
+      rootMargin: '0px 0px -70px 0px' // negative bottom margin for footer height
     });
 
     if (contentRef.current) {
