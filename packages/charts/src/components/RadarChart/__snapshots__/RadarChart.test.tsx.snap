@@ -22,6 +22,8 @@ exports[`RadarChart Check onClick events 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts5-clip"
@@ -870,6 +872,8 @@ exports[`RadarChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -895,6 +899,8 @@ exports[`RadarChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -920,6 +926,8 @@ exports[`RadarChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -937,8 +945,9 @@ exports[`RadarChart Check onClick events 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -978,6 +987,8 @@ exports[`RadarChart Check onClick events 2`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts13-clip"
@@ -1826,6 +1837,8 @@ exports[`RadarChart Check onClick events 2`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -1851,6 +1864,8 @@ exports[`RadarChart Check onClick events 2`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -1876,6 +1891,8 @@ exports[`RadarChart Check onClick events 2`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -1893,8 +1910,9 @@ exports[`RadarChart Check onClick events 2`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -2020,6 +2038,8 @@ exports[`RadarChart Render chart with data 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts1-clip"
@@ -2868,6 +2888,8 @@ exports[`RadarChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2893,6 +2915,8 @@ exports[`RadarChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2918,6 +2942,8 @@ exports[`RadarChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2935,8 +2961,9 @@ exports[`RadarChart Render chart with data 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -2976,6 +3003,8 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts9-clip"
@@ -3824,6 +3853,8 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3849,6 +3880,8 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3874,6 +3907,8 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3891,8 +3926,9 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-          tabindex="0"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"

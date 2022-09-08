@@ -315,6 +315,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   rowHeight?: number;
   /**
+   * Defines whether the table should retain its column width, when a column has been manually resized and the container width has changed.
+   */
+  retainColumnWidth?: boolean;
+  /**
    * Defines whether the table should display rows with alternating row colors.
    */
   alternateRowColor?: boolean;
@@ -543,6 +547,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     overscanCount,
     overscanCountHorizontal,
     portalContainer,
+    retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
     rowHeight,
@@ -753,7 +758,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
     const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
-    parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    if (analyticalTableRef.current?.parentElement) {
+      parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    }
     return () => {
       debouncedHeightObserverFn.cancel();
       debouncedWidthObserverFn.cancel();
@@ -902,6 +909,15 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight, totalColumnsWidth]);
 
+  useEffect(() => {
+    if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: true });
+    }
+    if (tableState.tableColResized && !retainColumnWidth) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: undefined });
+    }
+  }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
+
   const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
   const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
@@ -979,7 +995,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
               if (headerGroup.getHeaderGroupProps) {
                 headerProps = headerGroup.getHeaderGroupProps();
               }
-
               return (
                 tableRef.current && (
                   <ColumnHeaderContainer
@@ -1009,14 +1024,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             })}
             {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
             {loading && props.data?.length === 0 && (
-              <TablePlaceholder
-                isRtl={isRtl}
-                columns={visibleColumns}
-                rows={props.minRows}
-                style={noDataStyles}
-                rowHeight={internalRowHeight}
-                tableWidth={totalColumnsWidth}
-              />
+              <TablePlaceholder columns={visibleColumns} rows={props.minRows} style={noDataStyles} />
             )}
             {!loading && props.data?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />

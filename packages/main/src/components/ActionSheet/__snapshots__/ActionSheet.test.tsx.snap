@@ -2,7 +2,7 @@
 
 exports[`ActionSheet Render without Crashing 1`] = `
 <body>
-  Object {}
+  {}
   <div />
   <ui5-responsive-popover
     accessible-name="Available Actions"
@@ -51,8 +51,8 @@ exports[`ActionSheet Render without Crashing 1`] = `
 
 exports[`ActionSheet does not crash with other component 1`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
+  {
+    Symbol(SameObject caches): {
       "childNodes": NodeList [
         <span
           aria-live="polite"

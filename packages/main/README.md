@@ -5,7 +5,7 @@ React components with Fiori compliant style by leveraging [UI5 Web Components](h
 ## Installation
 
 ```bash
-npm install @ui5/webcomponents-react --save
+npm install @ui5/webcomponents-react
 ```
 
 ## Documentation

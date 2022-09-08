@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.4...v0.27.5) (2022-09-02)
+
+
+### Bug Fixes
+
+* **ActionSheet:** deprecate `alwaysShowHeader` prop ([#3448](https://github.com/SAP/ui5-webcomponents-react/issues/3448)) ([43e8bd7](https://github.com/SAP/ui5-webcomponents-react/commit/43e8bd7b52561c74e39cd82c40cdace7e80d2128))
+* **AnalyticalTable:** update `aria-rowindex` when row order changes ([#3461](https://github.com/SAP/ui5-webcomponents-react/issues/3461)) ([83dacd7](https://github.com/SAP/ui5-webcomponents-react/commit/83dacd74b10de52ff782c4ee4296b2365949f922))
+* **SplitterLayout:** correctly detect runtime change of `dir` on component ([#3447](https://github.com/SAP/ui5-webcomponents-react/issues/3447)) ([4939532](https://github.com/SAP/ui5-webcomponents-react/commit/493953256b9bc81487ad5f66decfe9e76792eb2f)), closes [#3446](https://github.com/SAP/ui5-webcomponents-react/issues/3446)
+
+
+### Features
+
+* **AnalyticalTable:** add `retainColumnWidth` prop ([#3445](https://github.com/SAP/ui5-webcomponents-react/issues/3445)) ([4f6e4ea](https://github.com/SAP/ui5-webcomponents-react/commit/4f6e4eaaaa60f6d297159dc2374e0cf58759e111)), closes [#3444](https://github.com/SAP/ui5-webcomponents-react/issues/3444)
+* **MessageBox:** allow customization of `accessibleNameRef` ([#3453](https://github.com/SAP/ui5-webcomponents-react/issues/3453)) ([7fe78ca](https://github.com/SAP/ui5-webcomponents-react/commit/7fe78ca2f9a1a8e96f10decd46d9d822fa26ae28))
+
+
+
+
+
+## [0.27.4](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.3...v0.27.4) (2022-08-26)
+
+
+### Bug Fixes
+
+* **AnalyticalTable - useOnColumnResize:** don't crash when more than 6 rows are rendered ([#3423](https://github.com/SAP/ui5-webcomponents-react/issues/3423)) ([87c21b8](https://github.com/SAP/ui5-webcomponents-react/commit/87c21b89cf7873add1b69e9debdf568974bf72c6))
+* **SplitterLayout:** adjust design to comply with guidelines ([#3374](https://github.com/SAP/ui5-webcomponents-react/issues/3374)) ([a738c06](https://github.com/SAP/ui5-webcomponents-react/commit/a738c06b585088e1ac25ef087bd3caf44309a699))
+* **SplitterLayout:** correct margin & grip button styles ([#3410](https://github.com/SAP/ui5-webcomponents-react/issues/3410)) ([3c62c8c](https://github.com/SAP/ui5-webcomponents-react/commit/3c62c8c12aa209ea3f6588e585ae4d1369e237ef))
+* **VariantManagement:** translate "Manage Views" heading ([#3400](https://github.com/SAP/ui5-webcomponents-react/issues/3400)) ([5906a3f](https://github.com/SAP/ui5-webcomponents-react/commit/5906a3fdf196fb53e15b10d5ec55973fc9f30d05)), closes [#3397](https://github.com/SAP/ui5-webcomponents-react/issues/3397)
+
+
+### Features
+
+* **Form:** support conditional rendering of form items ([#3363](https://github.com/SAP/ui5-webcomponents-react/issues/3363)) ([94ddad0](https://github.com/SAP/ui5-webcomponents-react/commit/94ddad0519023e666543e08bf67e939d3e7296e7)), closes [#3362](https://github.com/SAP/ui5-webcomponents-react/issues/3362)
+
+
+
+
+
+## [0.27.3](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.2...v0.27.3) (2022-08-10)
+
+
+### Bug Fixes
+
+* **jestSetup:** make mocked crypto API writable ([#3355](https://github.com/SAP/ui5-webcomponents-react/issues/3355)) ([fd39f9a](https://github.com/SAP/ui5-webcomponents-react/commit/fd39f9a1c6edeb69af28439d0a6c3a91e38cd3b9))
+
+
+### Features
+
+* **DynamicPageTitle:** allow a subset of `Toolbar` props to be passed to each toolbar ([#3354](https://github.com/SAP/ui5-webcomponents-react/issues/3354)) ([0dede0a](https://github.com/SAP/ui5-webcomponents-react/commit/0dede0a61bf6ce7a2885f74a00ff99edb983f6ee)), closes [#3353](https://github.com/SAP/ui5-webcomponents-react/issues/3353)
+
+
+
+
+
 ## [0.27.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.1...v0.27.2) (2022-08-08)
 
 

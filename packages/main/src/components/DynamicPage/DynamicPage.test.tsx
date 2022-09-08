@@ -453,12 +453,20 @@ describe('DynamicPage', () => {
         style={{ width: '50px' }}
         headerTitle={
           <DynamicPageTitle
-            actionsOverflowButton={<ToggleButton data-testid="actionBtn" icon="question-mark" />}
-            navigationActionsOverflowButton={<ToggleButton data-testid="navActionBtn" icon="question-mark" />}
+            actionsToolbarProps={{ overflowButton: <ToggleButton data-testid="actionBtn" icon="question-mark" /> }}
+            navigationActionsToolbarProps={{
+              overflowButton: <ToggleButton data-testid="navActionBtn" icon="question-mark" />
+            }}
             actions={
               <>
                 <Button>Actions Button 1</Button>
                 <Button>Actions Button 2</Button>
+              </>
+            }
+            navigationActions={
+              <>
+                <Button>Navigation Actions Button 1</Button>
+                <Button>Navigation Actions Button 2</Button>
               </>
             }
           />

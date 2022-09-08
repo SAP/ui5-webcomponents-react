@@ -18,15 +18,15 @@ describe('useLabelFormatter', () => {
     const { result } = renderHook(() => usePrepareDimensionsAndMeasures(dimensions, measures));
 
     expect(result.current.dimensions).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "a",
         },
       ]
     `);
     expect(result.current.measures).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "b",
         },
       ]
@@ -38,16 +38,16 @@ describe('useLabelFormatter', () => {
       usePrepareDimensionsAndMeasures(dimensions, measures, { dimensionDefault: true }, { measureDefault: true })
     );
     expect(result.current.dimensions).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "a",
           "dimensionDefault": true,
         },
       ]
     `);
     expect(result.current.measures).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "b",
           "measureDefault": true,
         },
@@ -68,16 +68,16 @@ describe('useLabelFormatter', () => {
       )
     );
     expect(result.current.dimensions).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "a",
           "dimensionDefault": true,
         },
       ]
     `);
     expect(result.current.measures).toMatchInlineSnapshot(`
-      Array [
-        Object {
+      [
+        {
           "accessor": "b",
           "measureDefault": true,
         },

@@ -1,7 +1,7 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { deprecationNotice, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, Ref, useEffect, useReducer, useRef } from 'react';
+import React, { Children, forwardRef, ReactElement, ReactNode, Ref, useEffect, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
@@ -17,7 +17,20 @@ import {
 } from '../../webComponents';
 import styles from './ActionSheet.jss';
 
-export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'children'> {
+export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
+  /**
+   * Defines the header text. Will be shown in the header area on phone devices. This prop will be ignored in tablets and desktop browsers.
+   *
+   * **Note:** If `header` slot is provided, the `headerText` is ignored.
+   */
+  headerText?: string;
+  /**
+   * Defines the header HTML Element. Will be shown in the header area on phone devices. This prop will be ignored in tablets and desktop browsers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  header?: ReactNode | ReactNode[];
   /**
    * Defines the actions of the `ActionSheet`.
    *
@@ -30,6 +43,10 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
   showCancelButton?: boolean;
   /**
    * Defines whether the `header` or `headerText` should always be displayed or only on mobile devices.
+   *
+   * __Deprecation Notice__: This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
+   *
+   * @deprecated This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
    */
   alwaysShowHeader?: boolean;
   /**
@@ -103,8 +120,15 @@ function ActionSheetButton(props: ActionSheetButtonPropTypes) {
 }
 
 /**
- * The `ActionSheet` holds a list of buttons from which the user can select to complete an action. <br />
+ * The `ActionSheet` holds a list of buttons from which the user can select to complete an action.
+ *
  * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
+ *
+ * ### Guidelines
+ * - Always display text or text and icons for the actions. Do not use icons only.
+ * - Always provide a Cancel button on mobile phones.
+ * - Avoid scrolling on action sheets.
+ *
  */
 const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<ResponsivePopoverDomRef>) => {
   const {
@@ -202,6 +226,13 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
     }
   };
+
+  // TODO remove this block before releasing v0.29.0
+  useEffect(() => {
+    if (alwaysShowHeader) {
+      deprecationNotice('ActionSheet', `The prop 'alwaysShowHeader' is deprecated and will be removed in v0.29.0`);
+    }
+  }, [alwaysShowHeader]);
 
   const displayHeader = alwaysShowHeader || isPhone();
   return createPortal(

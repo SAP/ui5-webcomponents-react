@@ -24,6 +24,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
             viewBox="0 0 400 400"
             width="400"
           >
+            <title />
+            <desc />
             <defs>
               <clippath
                 id="recharts11-clip"
@@ -115,8 +117,9 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           </svg>
           <div
             class="recharts-tooltip-wrapper"
+            role="dialog"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-            tabindex="0"
+            tabindex="-1"
           >
             <div
               class="recharts-default-tooltip"
@@ -150,6 +153,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
             viewBox="0 0 400 400"
             width="400"
           >
+            <title />
+            <desc />
             <defs>
               <clippath
                 id="recharts16-clip"
@@ -870,6 +875,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                   viewBox="0 0 32 32"
                   width="14"
                 >
+                  <title />
+                  <desc />
                   <path
                     class="recharts-legend-icon"
                     d="M0,16h10.666666666666666
@@ -899,6 +906,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                   viewBox="0 0 32 32"
                   width="14"
                 >
+                  <title />
+                  <desc />
                   <path
                     class="recharts-legend-icon"
                     d="M0,4h32v24h-32z"
@@ -916,8 +925,9 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           </div>
           <div
             class="recharts-tooltip-wrapper"
+            role="dialog"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-            tabindex="0"
+            tabindex="-1"
           >
             <div
               class="recharts-default-tooltip"
@@ -1173,6 +1183,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
             viewBox="0 0 400 400"
             width="400"
           >
+            <title />
+            <desc />
             <defs>
               <clippath
                 id="recharts1-clip"
@@ -1264,8 +1276,9 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           </svg>
           <div
             class="recharts-tooltip-wrapper"
+            role="dialog"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-            tabindex="0"
+            tabindex="-1"
           >
             <div
               class="recharts-default-tooltip"
@@ -1298,6 +1311,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
             viewBox="0 0 400 400"
             width="400"
           >
+            <title />
+            <desc />
             <defs>
               <clippath
                 id="recharts6-clip"
@@ -2018,6 +2033,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                   viewBox="0 0 32 32"
                   width="14"
                 >
+                  <title />
+                  <desc />
                   <path
                     class="recharts-legend-icon"
                     d="M0,16h10.666666666666666
@@ -2047,6 +2064,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                   viewBox="0 0 32 32"
                   width="14"
                 >
+                  <title />
+                  <desc />
                   <path
                     class="recharts-legend-icon"
                     d="M0,4h32v24h-32z"
@@ -2064,8 +2083,9 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           </div>
           <div
             class="recharts-tooltip-wrapper"
+            role="dialog"
             style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
-            tabindex="0"
+            tabindex="-1"
           >
             <div
               class="recharts-default-tooltip"

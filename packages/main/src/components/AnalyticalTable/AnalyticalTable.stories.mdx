@@ -729,8 +729,8 @@ For other elements or components, we recommend disabling event propagation by se
 
 ### How to stop the table state from automatically resetting when the data changes
 
-By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes.
-In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop:
+By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes. It will also reset all manually resized columns if the container width changes.
+In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop or for column resize the `retainColumnWidth` prop.
 
 ```jsx
 const [data, setData] = React.useState([])
@@ -751,6 +751,9 @@ React.useEffect(() => {
 <AnalyticalTable
   columns={columns}
   data={data}
+  // disable auto reset of columns width if a column has been manually resized
+  retainColumnWidth
+  // react-table options
   reactTableOptions={{
     // ... any other options you want to set
     autoResetHiddenColumns: !skipPageResetRef.current,
