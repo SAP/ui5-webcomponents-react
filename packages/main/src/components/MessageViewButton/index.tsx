@@ -2,7 +2,7 @@ import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { forwardRef, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
