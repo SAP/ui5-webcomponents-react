@@ -13,7 +13,13 @@ on:
         default: 'sf'
 
 jobs:
+  test:
+    uses: './.github/workflows/test.yml'
+    with:
+      reportCoverage: false
+
   build-and-release:
+    needs: ['test']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
@@ -30,13 +36,10 @@ jobs:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install, test and build
+      - name: Install and build
         run: |
           yarn install
-          yarn test
           yarn build
-        env:
-          REACTJS_VERSION: 18
 
       - name: publish
         run: |
@@ -48,4 +51,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-
