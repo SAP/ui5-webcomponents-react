@@ -2,44 +2,12 @@ import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-ba
 
 const style = {
   messageBox: {
-    '--sapContent_Shadow0': 'none',
-    '&::part(header)': {
-      boxShadow: `inset 0 -0.0625rem var(--messageBoxBorderColor), ${ThemingParameters.sapContent_HeaderShadow}`
-    },
-    '&[data-type="Error"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapErrorBorderColor,
-      '& $header': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNegativeElementColor
-      }
-    },
-    '&[data-type="Warning"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapWarningBorderColor,
-      '& $header': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapCriticalElementColor
-      }
-    },
-    '&[data-type="Success"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapSuccessBorderColor,
-      '& $header': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapPositiveElementColor
-      }
-    },
     '&[data-type="Confirm"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapNeutralBorderColor,
+      '&::part(header)': {
+        boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapNeutralBorderColor}, ${ThemingParameters.sapContent_HeaderShadow}`
+      },
       '& $header': {
         '--sapContent_NonInteractiveIconColor': ThemingParameters.sapNeutralElementColor
-      }
-    },
-    '&[data-type="Information"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapInformationBorderColor,
-      '& $header': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
-      }
-    },
-    '&[data-type="Highlight"]': {
-      '--messageBoxBorderColor': ThemingParameters.sapInformationBorderColor,
-      '& $header': {
-        '--sapContent_NonInteractiveIconColor': ThemingParameters.sapInformativeElementColor
       }
     }
   },
