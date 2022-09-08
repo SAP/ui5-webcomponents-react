@@ -43,7 +43,7 @@ import styles from './MessageBox.jss';
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
-  extends Omit<DialogPropTypes,  'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
+  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
   /**
    * Defines the IDs of the elements that label the component.
    *
