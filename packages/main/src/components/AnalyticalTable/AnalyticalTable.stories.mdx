@@ -1003,7 +1003,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
-      showOverlay: { table: { disable: true } }
+      showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -1187,6 +1188,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       adjustTableHeightOnPopIn: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -1330,6 +1332,7 @@ In the example below you can have a look at this behavior:
       portalContainer: { table: { disable: true } },
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
+      scaleXFactor: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {

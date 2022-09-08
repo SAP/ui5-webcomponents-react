@@ -1,11 +1,12 @@
+import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
   enrichEventWithDetails,
   ThemingParameters,
   useI18nBundle,
+  useIsomorphicId,
   useIsomorphicLayoutEffect,
-  useIsRTL,
-  useIsomorphicId
+  useIsRTL
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
@@ -50,9 +51,9 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  INVALID_TABLE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
+  UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { FlexBox } from '../FlexBox';
@@ -385,6 +386,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
   /**
+   * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
+   *
+   * __Note:__ If `transform: scale()` is used, this prop is mandatory, otherwise it will lead to unwanted behavior and design.
+   */
+  scaleXFactor?: number;
+  /**
    * Defines the columns order by their `accessor` or `id`.
    */
   columnOrder?: string[];
@@ -574,6 +581,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
+    scaleXFactor,
     ...rest
   } = props;
   const uniqueId = useIsomorphicId();
@@ -583,7 +591,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const classes = useStyles();
 
-  const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
+  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
 
   const isRtl = useIsRTL(analyticalTableRef);
@@ -644,9 +652,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         markNavigatedRow,
         renderRowSubComponent,
         alwaysShowSubComponent,
-        reactWindowRef,
+        scrollToRef,
         showOverlay,
-        uniqueId
+        uniqueId,
+        scaleXFactor
       },
       ...reactTableOptions
     },
@@ -949,6 +958,25 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     withNavigationHighlight && classes.hasNavigationIndicator
   );
 
+  const columnVirtualizer = useVirtualizer({
+    count: visibleColumnsWidth.length,
+    getScrollElement: () => tableRef.current,
+    estimateSize: useCallback(
+      (index) => {
+        return visibleColumnsWidth[index];
+      },
+      [visibleColumnsWidth]
+    ),
+    horizontal: true,
+    overscan: overscanCountHorizontal
+  });
+
+  scrollToRef.current = {
+    ...scrollToRef.current,
+    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
+    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+  };
+
   return (
     <>
       <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
@@ -1000,13 +1028,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   <ColumnHeaderContainer
                     ref={headerRef}
                     key={headerProps.key as string}
-                    reactWindowRef={reactWindowRef}
-                    tableRef={tableRef}
                     resizeInfo={tableState.columnResizing}
-                    visibleColumnsWidth={visibleColumnsWidth}
                     headerProps={headerProps}
                     headerGroup={headerGroup}
-                    overscanCountHorizontal={overscanCountHorizontal}
                     onSort={onSort}
                     onGroupByChanged={onGroupByChanged}
                     onDragStart={handleDragStart}
@@ -1018,6 +1042,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     uniqueId={uniqueId}
+                    columnVirtualizer={columnVirtualizer}
+                    scaleXFactor={scaleXFactor}
                   />
                 )
               );
@@ -1050,24 +1076,22 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   prepareRow={prepareRow}
                   rows={rows}
                   minRows={minRows}
-                  reactWindowRef={reactWindowRef}
+                  scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
                   popInRowHeight={popInRowHeight}
                   visibleRows={internalVisibleRowCount}
                   alternateRowColor={alternateRowColor}
                   overscanCount={overscanCount}
-                  tableRef={tableRef}
                   parentRef={parentRef}
                   visibleColumns={visibleColumns}
-                  visibleColumnsWidth={visibleColumnsWidth}
-                  overscanCountHorizontal={overscanCountHorizontal}
                   renderRowSubComponent={renderRowSubComponent}
                   alwaysShowSubComponent={alwaysShowSubComponent}
                   markNavigatedRow={markNavigatedRow}
                   isRtl={isRtl}
                   subComponentsHeight={tableState.subComponentsHeight}
                   dispatch={dispatch}
+                  columnVirtualizer={columnVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}

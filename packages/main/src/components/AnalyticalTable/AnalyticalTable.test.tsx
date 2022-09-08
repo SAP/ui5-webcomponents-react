@@ -253,6 +253,38 @@ const dataTree = [
 
 describe('AnalyticalTable', () => {
   beforeEach(() => {
+    window.HTMLElement.prototype.getBoundingClientRect = function () {
+      return {
+        height: 400,
+        width: 170
+      };
+    };
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 400,
+        configurable: true
+      },
+      offsetHeight: {
+        value: 400,
+        configurable: true
+      },
+      offsetWidth: {
+        value: 170,
+        configurable: true
+      },
+      clientWidth: {
+        value: 170,
+        configurable: true
+      },
+      scrollWidth: {
+        value: 170,
+        configurable: true
+      },
+      scrollHeight: {
+        value: 170,
+        configurable: true
+      }
+    });
     window = Object.assign(window, { innerWidth: 1440 });
   });
 
@@ -449,60 +481,6 @@ describe('AnalyticalTable', () => {
     );
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('Check for scrollTo and scrollToItem functions', () => {
-    let tableRef;
-    const UsingTable = (props) => {
-      tableRef = useRef(null);
-      return (
-        <AnalyticalTable
-          style={{ width: '170px' }}
-          ref={tableRef}
-          header="Table Title"
-          data={data}
-          columns={columns}
-          visibleRows={1}
-          minRows={1}
-        />
-      );
-    };
-
-    const { getByRole } = render(<UsingTable />);
-
-    // Check existence + type
-    expect(typeof tableRef.current.scrollTo).toBe('function');
-    expect(typeof tableRef.current.scrollToItem).toBe('function');
-    expect(typeof tableRef.current.horizontalScrollTo).toBe('function');
-    expect(typeof tableRef.current.horizontalScrollToItem).toBe('function');
-
-    // call functions
-    const tableBodyRef = tableRef.current.querySelector("div[class^='AnalyticalTable-tbody']");
-    const tableContainerRef = getByRole('grid', { hidden: true });
-
-    act(() => {
-      tableRef.current.scrollToItem(1, 'start');
-    });
-
-    expect(tableBodyRef.scrollTop).toBe(44);
-
-    act(() => {
-      tableRef.current.scrollTo(2);
-    });
-
-    expect(tableBodyRef.scrollTop).toBe(2);
-
-    act(() => {
-      tableRef.current.horizontalScrollToItem(1, 'start');
-    });
-
-    expect(tableContainerRef.scrollLeft).toBe(150);
-
-    act(() => {
-      tableRef.current.horizontalScrollTo(2);
-    });
-
-    expect(tableContainerRef.scrollLeft).toBe(2);
   });
 
   test('with highlight row', () => {

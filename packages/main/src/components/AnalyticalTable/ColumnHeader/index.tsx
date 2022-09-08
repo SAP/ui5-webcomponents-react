@@ -1,3 +1,4 @@
+import { VirtualItem } from '@tanstack/react-virtual';
 import '@ui5/webcomponents-icons/dist/filter.js';
 import '@ui5/webcomponents-icons/dist/group-2.js';
 import '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -13,7 +14,6 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { VirtualItem } from 'react-virtual';
 import { Icon } from '../../../webComponents/Icon';
 import { Text } from '../../Text';
 import { ColumnType } from '../types/ColumnType';
@@ -32,11 +32,12 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  virtualColumn: VirtualItem;
+  virtualColumn: VirtualItem<Record<string, any>>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
   uniqueId: string;
+  scaleXFactor?: number;
 
   //getHeaderProps()
   id: string;
@@ -108,7 +109,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onClick,
     onKeyDown,
     portalContainer,
-    uniqueId
+    uniqueId,
+    scaleXFactor
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -159,6 +161,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
+
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
@@ -194,6 +197,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
+        ref={(node) => {
+          const clientRect = node?.getBoundingClientRect();
+          if (clientRect && scaleXFactor > 0) {
+            const scaledGetBoundingClientRect = () => ({ ...clientRect, width: clientRect.width / scaleXFactor });
+            const updatedNode = { ...node, getBoundingClientRect: scaledGetBoundingClientRect };
+            virtualColumn.measureElement(updatedNode);
+          } else {
+            virtualColumn.measureElement(node);
+          }
+        }}
         data-visible-column-index={visibleColumnIndex}
         data-visible-row-index={0}
         data-row-index={0}

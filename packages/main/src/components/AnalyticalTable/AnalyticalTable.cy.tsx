@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { TableVisibleRowCountMode, ValueState } from '../../enums';
+import { Button } from '../../webComponents';
 import { AnalyticalTable } from './index';
 
 const columns = [
@@ -200,5 +201,56 @@ describe('AnalyticalTable', () => {
     cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
     cy.findByText('Name-2').should('be.visible');
     cy.findByText('Name-3').should('not.be.visible');
+  });
+
+  it('scrollTo', () => {
+    interface ScrollTableProps {
+      scrollFn: string;
+      args: Array<string | number>;
+    }
+    const ScrollTable = (props: ScrollTableProps) => {
+      const { scrollFn, args } = props;
+      const tableRef = useRef(null);
+      const handleScroll = () => {
+        tableRef.current[scrollFn](...args);
+      };
+      return (
+        <>
+          <Button onClick={handleScroll}>Click</Button>
+          <AnalyticalTable
+            data-testid="table"
+            style={{ width: '170px' }}
+            ref={tableRef}
+            header="Table Title"
+            data={data}
+            columns={columns}
+            visibleRows={1}
+            minRows={1}
+          />
+        </>
+      );
+    };
+    cy.mount(<ScrollTable scrollFn="scrollToItem" args={[1, 'start']} />);
+    cy.findByText('A').should('be.visible');
+    // should not be rendered due to virtualization
+    cy.findByText('B').should('not.exist');
+    cy.findByText('Click').click();
+    cy.findByText('B').should('be.visible');
+    cy.findByText('A').should('not.exist');
+
+    cy.mount(<ScrollTable scrollFn="scrollTo" args={[50]} />);
+    cy.findByText('Click').click();
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('equal', 50);
+
+    cy.mount(<ScrollTable scrollFn="horizontalScrollToItem" args={[1, 'start']} />);
+    cy.findByText('A').should('be.visible');
+    cy.findByText('28').should('not.be.visible');
+    cy.findByText('Click').click();
+    cy.findByText('28').should('be.visible');
+    cy.findByText('A').should('not.be.visible');
+
+    cy.mount(<ScrollTable scrollFn="horizontalScrollTo" args={[20]} />);
+    cy.findByText('Click').click();
+    cy.findByRole('grid').invoke('scrollLeft').should('equal', 20);
   });
 });
