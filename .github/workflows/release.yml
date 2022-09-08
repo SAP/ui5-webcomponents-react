@@ -15,7 +15,13 @@ on:
         default: false
 
 jobs:
+  test:
+    uses: './.github/workflows/test.yml'
+    with:
+      reportCoverage: false
+
   build-and-release:
+    needs: ['test']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
@@ -32,13 +38,10 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Install, test and build
+      - name: Install and build
         run: |
           yarn install --frozen-lockfile
-          yarn test
           yarn build
-        env:
-          REACTJS_VERSION: 18
 
       - name: publish
         run: |

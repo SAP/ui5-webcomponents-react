@@ -18,6 +18,26 @@ or the [changelog](?path=/docs/change-log--page)._
 
 ## From 0.27.x to 0.28.0
 
+### AnalyticalTable: Scaling the table
+
+Scaling the table via the CSS `scale()` function is now only supported if the abscissa (`sx`) is passed to the `scaleXFactor` prop. `scaleXFactor` only accepts values of type `number`.
+
+Before 0.28.0:
+
+```jsx
+<div style={{ transform: 'scale(0.5)' }}>
+  <AnalyticalTable data={data} columns={columns} />
+</div>
+```
+
+Now:
+
+```jsx
+<div style={{ transform: 'scale(0.5)' }}>
+  <AnalyticalTable data={data} columns={columns} scaleXFactor={0.5} />
+</div>
+```
+
 ### MessageItem: new default value for `type`
 
 The default value `type` value of the `MessageItem` component has been changed from `ValueState.None` to `ValueState.Error`.
