@@ -36,21 +36,33 @@ exports[`ObjectPage Default with Sections 1`] = `
           selected="true"
           text="Title 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
           design="Default"
           text="Title 3"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -190,14 +202,22 @@ exports[`ObjectPage Default with SubSections 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -213,7 +233,11 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -222,7 +246,11 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -231,6 +259,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -248,7 +283,11 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -257,7 +296,11 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -266,6 +309,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -556,14 +606,22 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           design="Default"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -580,7 +638,11 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -589,7 +651,11 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -598,6 +664,13 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -615,7 +688,11 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -624,7 +701,11 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -633,6 +714,13 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -810,7 +898,11 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
           selected="true"
           text=""
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -884,7 +976,11 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
           selected="true"
           text=""
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
       </ui5-tabcontainer>
     </div>
     <div
@@ -1096,14 +1192,22 @@ exports[`ObjectPage with anchor-bar 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -1119,7 +1223,11 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1128,7 +1236,11 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1137,6 +1249,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -1154,7 +1273,11 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1163,7 +1286,11 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1172,6 +1299,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -1483,14 +1617,22 @@ exports[`ObjectPage with footer 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -1506,7 +1648,11 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1515,7 +1661,11 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1524,6 +1674,13 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -1541,7 +1698,11 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1550,7 +1711,11 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1559,6 +1724,13 @@ exports[`ObjectPage with footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -1886,14 +2058,22 @@ exports[`ObjectPage with header 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -1909,7 +2089,11 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1918,7 +2102,11 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -1927,6 +2115,13 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -1944,7 +2139,11 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1953,7 +2152,11 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -1962,6 +2165,13 @@ exports[`ObjectPage with header 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -2328,14 +2538,22 @@ exports[`ObjectPage with img 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -2351,7 +2569,11 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -2360,7 +2582,11 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -2369,6 +2595,13 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -2386,7 +2619,11 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -2395,7 +2632,11 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -2404,6 +2645,13 @@ exports[`ObjectPage with img 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -2780,14 +3028,22 @@ exports[`ObjectPage with img 2`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -2803,7 +3059,11 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -2812,7 +3072,11 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -2821,6 +3085,13 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -2838,7 +3109,11 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -2847,7 +3122,11 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -2856,6 +3135,13 @@ exports[`ObjectPage with img 2`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -3190,14 +3476,22 @@ exports[`ObjectPage with title 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -3213,7 +3507,11 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -3222,7 +3520,11 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -3231,6 +3533,13 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -3248,7 +3557,11 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -3257,7 +3570,11 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -3266,6 +3583,13 @@ exports[`ObjectPage with title 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
@@ -3606,14 +3930,22 @@ exports[`ObjectPage with title, header & footer 1`] = `
           selected="true"
           text="Title Section 1"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="1"
           data-section-id="2"
           design="Default"
           text="Title Section 2"
           ui5-tab=""
-        />
+        >
+          <span
+            style="display: none;"
+          />
+        </ui5-tab>
         <ui5-tab
           data-index="2"
           data-section-id="3"
@@ -3629,7 +3961,11 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -3638,7 +3974,11 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="3"
@@ -3647,6 +3987,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 3.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
         <ui5-tab
@@ -3664,7 +4011,11 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.1"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -3673,7 +4024,11 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.2"
             ui5-tab=""
-          />
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
           <ui5-tab
             data-is-sub-tab="true"
             data-parent-id="4"
@@ -3682,6 +4037,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
             slot="subTabs"
             text="Title SubSection 4.3"
             ui5-tab=""
+          >
+            <span
+              style="display: none;"
+            />
+          </ui5-tab>
+          <span
+            style="display: none;"
           />
         </ui5-tab>
       </ui5-tabcontainer>
