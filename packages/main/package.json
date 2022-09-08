@@ -27,7 +27,6 @@
   "dependencies": {
     "@ui5/webcomponents-react-base": "^0.27.5",
     "clsx": "1.2.1",
-    "lit-html": "^2.0.1",
     "react-jss": "^10.9.0",
     "react-table": "7.8.0",
     "@tanstack/react-virtual": "3.0.0-beta.18"
@@ -35,10 +34,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.6.0",
-    "@ui5/webcomponents-base": "~1.6.0",
-    "@ui5/webcomponents-fiori": "~1.6.0",
-    "@ui5/webcomponents-icons": "~1.6.0",
+    "@ui5/webcomponents": "~1.7.1",
+    "@ui5/webcomponents-base": "~1.7.1",
+    "@ui5/webcomponents-fiori": "~1.7.1",
+    "@ui5/webcomponents-icons": "~1.7.1",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },

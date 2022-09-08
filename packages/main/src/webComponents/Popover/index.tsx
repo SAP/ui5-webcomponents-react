@@ -41,7 +41,7 @@ interface PopoverAttributes {
    */
   modal?: boolean;
   /**
-   * Defines the opener id of the element that the popover is shown at
+   * Defines the ID of the element that the popover is shown at
    */
   opener?: string;
   /**
@@ -88,7 +88,11 @@ interface PopoverAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface PopoverDomRef extends PopoverAttributes, Ui5DomRef {
+export interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5DomRef {
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at
+   */
+  opener?: string | HTMLElement;
   /**
    * Shows the popover.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at

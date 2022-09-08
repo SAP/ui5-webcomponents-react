@@ -5,6 +5,7 @@ exports[`SelectDialog Basic 1`] = `
   <ui5-dialog
     class="SelectDialog-dialog"
     data-component-name="SelectDialog"
+    state="None"
     ui5-dialog=""
   >
     <div
@@ -64,6 +65,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
   <ui5-dialog
     class="SelectDialog-dialog"
     data-component-name="SelectDialog"
+    state="None"
     ui5-dialog=""
   >
     <div
@@ -129,6 +131,7 @@ exports[`SelectDialog with children 1`] = `
   <ui5-dialog
     class="SelectDialog-dialog"
     data-component-name="SelectDialog"
+    state="None"
     ui5-dialog=""
   >
     <div
@@ -244,6 +247,7 @@ exports[`SelectDialog with headerText 1`] = `
   <ui5-dialog
     class="SelectDialog-dialog"
     data-component-name="SelectDialog"
+    state="None"
     ui5-dialog=""
   >
     <div

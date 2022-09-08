@@ -7,6 +7,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     class="MessageBox-messageBox"
     data-type="Confirm"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -68,6 +69,7 @@ exports[`MessageBox Confirm 1`] = `
     class="MessageBox-messageBox"
     data-type="Confirm"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -128,6 +130,7 @@ exports[`MessageBox Custom Action Text 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -189,6 +192,7 @@ exports[`MessageBox Custom Button 1`] = `
     class="MessageBox-messageBox"
     data-type="Confirm"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -242,6 +246,7 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
     class="MessageBox-messageBox"
     data-type="FOO_BAR"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -284,6 +289,7 @@ exports[`MessageBox Error 1`] = `
     class="MessageBox-messageBox"
     data-type="Error"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -337,6 +343,7 @@ exports[`MessageBox Highlight 1`] = `
     class="MessageBox-messageBox"
     data-type="Highlight"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -390,6 +397,7 @@ exports[`MessageBox Information 1`] = `
     class="MessageBox-messageBox"
     data-type="Information"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -443,6 +451,7 @@ exports[`MessageBox No Title 1`] = `
     class="MessageBox-messageBox"
     data-type="Confirm"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -503,6 +512,7 @@ exports[`MessageBox Not open 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Success"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -556,6 +566,7 @@ exports[`MessageBox Show 1`] = `
     class="MessageBox-messageBox"
     data-type="Confirm"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -617,6 +628,7 @@ exports[`MessageBox Success 1`] = `
     class="MessageBox-messageBox"
     data-type="Success"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -670,6 +682,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
     class="MessageBox-messageBox"
     data-type="Success"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
@@ -721,6 +734,7 @@ exports[`MessageBox Warning 1`] = `
     class="MessageBox-messageBox"
     data-type="Warning"
     open="true"
+    state="None"
     ui5-dialog=""
   >
     <header
