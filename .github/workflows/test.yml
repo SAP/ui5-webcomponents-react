@@ -9,8 +9,8 @@ on:
         required: false
 
 jobs:
-  test-jest:
-    name: 'Jest Test'
+  jest:
+    name: 'Jest'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -39,8 +39,8 @@ jobs:
           name: jest-coverage
           path: temp/jest-coverage
 
-  test-cypress:
-    name: 'Cypress Test'
+  cypress:
+    name: 'Cypress'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,7 +61,7 @@ jobs:
 
   coveralls:
     if: ${{ inputs.reportCoverage }}
-    needs: ['test-jest', 'test-cypress']
+    needs: ['jest', 'cypress']
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
