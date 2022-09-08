@@ -632,6 +632,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
   const onTabItemSelect = (event) => {
+    event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
     if (isSubTab) {
       handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
@@ -789,12 +790,17 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                         data-is-sub-tab
                         data-section-id={item.props.id}
                         text={item.props.titleText}
-                        // todo enable selected with `selectedSubSectionId`
-                        // selected={item.props.id === selectedSubSectionId}
-                      />
+                        selected={item.props.id === selectedSubSectionId || undefined}
+                      >
+                        {/*ToDo: workaround for nested tab selection*/}
+                        <span style={{ display: 'none' }} />
+                      </Tab>
                     );
                   })}
-                />
+                >
+                  {/*ToDo: workaround for nested tab selection*/}
+                  <span style={{ display: 'none' }} />
+                </Tab>
               );
             })}
           </TabContainer>
