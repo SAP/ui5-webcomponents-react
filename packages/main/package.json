@@ -2,9 +2,23 @@
   "name": "@ui5/webcomponents-react",
   "version": "1.8.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./wrappers": {
+      "types": "./wrappers/index.d.ts",
+      "default": "./wrappers/index.js"
+    },
+    "./package.json": "./package.json",
+    "./jestSetup": "./jestSetup.js",
+    "./*": "./*"
+  },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
     "type": "git",
