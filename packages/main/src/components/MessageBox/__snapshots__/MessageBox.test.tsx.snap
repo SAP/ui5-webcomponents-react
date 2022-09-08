@@ -6,6 +6,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Confirmation"
     open="true"
     state="None"
     ui5-dialog=""
@@ -17,7 +18,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -68,6 +69,7 @@ exports[`MessageBox Confirm 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Confirmation"
     open="true"
     state="None"
     ui5-dialog=""
@@ -79,7 +81,7 @@ exports[`MessageBox Confirm 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -130,6 +132,7 @@ exports[`MessageBox Custom Action Text 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Confirmation"
     state="None"
     ui5-dialog=""
   >
@@ -140,7 +143,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -191,6 +194,7 @@ exports[`MessageBox Custom Button 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Confirmation"
     open="true"
     state="None"
     ui5-dialog=""
@@ -202,7 +206,7 @@ exports[`MessageBox Custom Button 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -242,23 +246,12 @@ exports[`MessageBox Custom Button 1`] = `
 exports[`MessageBox Don't crash on unknown type 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="FOO_BAR"
     open="true"
     state="None"
     ui5-dialog=""
   >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      />
-    </header>
     <span
       class="Text-text"
       id="1337-text"
@@ -285,34 +278,13 @@ exports[`MessageBox Don't crash on unknown type 1`] = `
 exports[`MessageBox Error 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Error"
+    header-text="Error"
     open="true"
-    state="None"
+    state="Error"
     ui5-dialog=""
   >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-icon
-        accessible-role="presentation"
-        aria-hidden="true"
-        name="message-error"
-        ui5-icon=""
-      />
-      <span
-        class="MessageBox-spacer"
-      />
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      >
-        Error
-      </ui5-title>
-    </header>
     <span
       class="Text-text"
       id="1337-text"
@@ -336,91 +308,16 @@ exports[`MessageBox Error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MessageBox Highlight 1`] = `
-<DocumentFragment>
-  <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
-    class="MessageBox-messageBox"
-    data-type="Highlight"
-    open="true"
-    state="None"
-    ui5-dialog=""
-  >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-icon
-        accessible-role="presentation"
-        aria-hidden="true"
-        name="hint"
-        ui5-icon=""
-      />
-      <span
-        class="MessageBox-spacer"
-      />
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      >
-        Highlight
-      </ui5-title>
-    </header>
-    <span
-      class="Text-text"
-      id="1337-text"
-    >
-      My Message Box Content
-    </span>
-    <footer
-      class="MessageBox-footer"
-      slot="footer"
-    >
-      <ui5-button
-        data-action="OK"
-        design="Emphasized"
-        id="0"
-        ui5-button=""
-      >
-        OK
-      </ui5-button>
-    </footer>
-  </ui5-dialog>
-</DocumentFragment>
-`;
-
 exports[`MessageBox Information 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Information"
+    header-text="Information"
     open="true"
-    state="None"
+    state="Information"
     ui5-dialog=""
   >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-icon
-        accessible-role="presentation"
-        aria-hidden="true"
-        name="message-information"
-        ui5-icon=""
-      />
-      <span
-        class="MessageBox-spacer"
-      />
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      >
-        Information
-      </ui5-title>
-    </header>
     <span
       class="Text-text"
       id="1337-text"
@@ -450,6 +347,7 @@ exports[`MessageBox No Title 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Confirmation"
     open="true"
     state="None"
     ui5-dialog=""
@@ -461,7 +359,7 @@ exports[`MessageBox No Title 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -509,33 +407,12 @@ exports[`MessageBox No Title 1`] = `
 exports[`MessageBox Not open 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Success"
-    state="None"
+    header-text="Custom Success"
+    state="Success"
     ui5-dialog=""
   >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-icon
-        accessible-role="presentation"
-        aria-hidden="true"
-        name="message-success"
-        ui5-icon=""
-      />
-      <span
-        class="MessageBox-spacer"
-      />
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      >
-        Custom Success
-      </ui5-title>
-    </header>
     <span
       class="Text-text"
       id="1337-text"
@@ -565,6 +442,7 @@ exports[`MessageBox Show 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Confirm"
+    header-text="Custom"
     open="true"
     state="None"
     ui5-dialog=""
@@ -576,7 +454,7 @@ exports[`MessageBox Show 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="question-mark"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -624,34 +502,13 @@ exports[`MessageBox Show 1`] = `
 exports[`MessageBox Success 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Success"
+    header-text="Success"
     open="true"
-    state="None"
+    state="Success"
     ui5-dialog=""
   >
-    <header
-      class="MessageBox-header"
-      slot="header"
-    >
-      <ui5-icon
-        accessible-role="presentation"
-        aria-hidden="true"
-        name="message-success"
-        ui5-icon=""
-      />
-      <span
-        class="MessageBox-spacer"
-      />
-      <ui5-title
-        id="1337-title"
-        level="H2"
-        ui5-title=""
-      >
-        Success
-      </ui5-title>
-    </header>
     <span
       class="Text-text"
       id="1337-text"
@@ -681,8 +538,9 @@ exports[`MessageBox Success w/ custom title 1`] = `
     accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Success"
+    header-text="Custom Success"
     open="true"
-    state="None"
+    state="Success"
     ui5-dialog=""
   >
     <header
@@ -730,9 +588,43 @@ exports[`MessageBox Success w/ custom title 1`] = `
 exports[`MessageBox Warning 1`] = `
 <DocumentFragment>
   <ui5-dialog
-    accessible-name-ref="1337-title 1337-text"
     class="MessageBox-messageBox"
     data-type="Warning"
+    header-text="Warning"
+    open="true"
+    state="Warning"
+    ui5-dialog=""
+  >
+    <span
+      class="Text-text"
+      id="1337-text"
+    >
+      My Message Box Content
+    </span>
+    <footer
+      class="MessageBox-footer"
+      slot="footer"
+    >
+      <ui5-button
+        data-action="OK"
+        design="Emphasized"
+        id="0"
+        ui5-button=""
+      >
+        OK
+      </ui5-button>
+    </footer>
+  </ui5-dialog>
+</DocumentFragment>
+`;
+
+exports[`MessageBox undefined 1`] = `
+<DocumentFragment>
+  <ui5-dialog
+    accessible-name-ref="1337-title 1337-text"
+    class="MessageBox-messageBox"
+    data-type="Confirm"
+    header-text="Confirmation"
     open="true"
     state="None"
     ui5-dialog=""
@@ -744,7 +636,7 @@ exports[`MessageBox Warning 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
-        name="message-warning"
+        name="sys-help-2"
         ui5-icon=""
       />
       <span
@@ -755,7 +647,7 @@ exports[`MessageBox Warning 1`] = `
         level="H2"
         ui5-title=""
       >
-        Warning
+        Confirmation
       </ui5-title>
     </header>
     <span
@@ -775,6 +667,14 @@ exports[`MessageBox Warning 1`] = `
         ui5-button=""
       >
         OK
+      </ui5-button>
+      <ui5-button
+        data-action="Cancel"
+        design="Transparent"
+        id="1"
+        ui5-button=""
+      >
+        Cancel
       </ui5-button>
     </footer>
   </ui5-dialog>
