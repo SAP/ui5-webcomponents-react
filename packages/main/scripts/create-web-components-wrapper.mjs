@@ -296,7 +296,6 @@ const createWebComponentWrapper = async (
   try {
     componentDescription = Utils.formatDescription(description, componentSpec);
     if (CUSTOM_MAIN_DESCRIPTION[componentSpec.module]) {
-      console.log(componentDescription);
       componentDescription = CUSTOM_MAIN_DESCRIPTION[componentSpec.module](componentDescription);
     }
   } catch (e) {
