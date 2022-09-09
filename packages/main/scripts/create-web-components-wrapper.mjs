@@ -35,6 +35,17 @@ const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
 };
 
+// use JSDoc syntax here
+const CUSTOM_MAIN_DESCRIPTION = {
+  IllustratedMessage: (desc) => {
+    return dedent`
+${desc}
+* 
+*__Note:__ The \`title\` slot collides with the native HTML \`title\` attribute, so to customize the title (heading) of the component you need to pass it as slot. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-illustratedmessage--default-story#fully-customizable-title).
+`;
+  }
+};
+
 const CUSTOM_DESCRIPTION_REPLACE = {
   Avatar: {
     icon: (desc) => desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``)
@@ -284,6 +295,10 @@ const createWebComponentWrapper = async (
   let componentDescription;
   try {
     componentDescription = Utils.formatDescription(description, componentSpec);
+    if (CUSTOM_MAIN_DESCRIPTION[componentSpec.module]) {
+      console.log(componentDescription);
+      componentDescription = CUSTOM_MAIN_DESCRIPTION[componentSpec.module](componentDescription);
+    }
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
@@ -423,7 +438,12 @@ const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, eve
 };
 
 const recursivePropertyResolver = (componentSpec, { properties, slots, events, methods }) => {
-  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events, methods });
+  assignComponentPropertiesToMaps(componentSpec, {
+    properties,
+    slots,
+    events,
+    methods
+  });
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
@@ -462,7 +482,12 @@ const resolveInheritedAttributes = (componentSpec) => {
   const slots = new Map();
   const events = new Map();
   const methods = new Map();
-  recursivePropertyResolver(componentSpec, { properties, slots, events, methods });
+  recursivePropertyResolver(componentSpec, {
+    properties,
+    slots,
+    events,
+    methods
+  });
 
   componentSpec.properties = Array.from(properties.values());
   componentSpec.slots = Array.from(slots.values());
@@ -686,6 +711,7 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
+    // fill index
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
