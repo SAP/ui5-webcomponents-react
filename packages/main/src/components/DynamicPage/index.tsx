@@ -48,6 +48,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * React element which defines the footer content.
    *
+   * __Note:__ To preserve the intended design, please use only non-content based `height` values (`px`, `rem`, `vh`, etc.) as height of the `DynamicPage`.
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
    */
   footer?: ReactElement;
