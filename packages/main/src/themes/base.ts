@@ -3,6 +3,7 @@ import { CustomVariables } from './CustomVariables';
 
 export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.ObjectPageSectionTitleFontFamily]: ThemingParameters.sapFontFamily,
+  [CustomVariables.ObjectPageSectionTitleTextDecoration]: 'none',
   [CustomVariables.ObjectPageSectionBorderTop]: `0.0625rem solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
   [CustomVariables.ObjectPageSubSectionBackgroundColor]: `transparent`,
   [CustomVariables.ObjectPageSubSectionBorderRadius]: `0`,
