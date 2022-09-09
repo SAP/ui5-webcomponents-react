@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.28.0...v0.28.1) (2022-09-09)
+
+
+### Bug Fixes
+
+* **Loader:** apply correct styles ([#3502](https://github.com/SAP/ui5-webcomponents-react/issues/3502)) ([371b9a1](https://github.com/SAP/ui5-webcomponents-react/commit/371b9a13b67bb787b02bcc624138ae09c2118097))
+* **ObjectPageSection:** fix styles for horizon high contrast themes ([#3501](https://github.com/SAP/ui5-webcomponents-react/issues/3501)) ([f689496](https://github.com/SAP/ui5-webcomponents-react/commit/f689496e295add0d66c70202349238cfb0c9dc53))
+* **Toolbar:** don't crash on unmount if customElement is not defined ([#3500](https://github.com/SAP/ui5-webcomponents-react/issues/3500)) ([992d1ea](https://github.com/SAP/ui5-webcomponents-react/commit/992d1eae63cb937f632fbe251416249afb3debf0)), closes [#3499](https://github.com/SAP/ui5-webcomponents-react/issues/3499)
+
+
+
+
+
 # [0.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.5...v0.28.0) (2022-09-08)
 
 
