@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
-import { Device, useIsomorphicId, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -38,7 +38,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowButton
   } = props;
   const uniqueId = useIsomorphicId();
-  const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
 
@@ -125,7 +124,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         <Popover
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
-          ref={componentRef}
+          ref={overflowPopoverRef}
           open={pressed}
           opener={overflowButton?.props?.id ?? uniqueId}
           onAfterClose={handleClose}
