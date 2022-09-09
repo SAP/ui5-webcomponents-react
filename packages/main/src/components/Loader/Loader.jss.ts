@@ -25,12 +25,10 @@ export const styles = {
     '&$loaderIndeterminate': {
       background: `linear-gradient(
       to right,
-      rgba(8, 84, 160, 0) 0px,
-      rgba(8, 84, 160, 1) calc(50% - 2rem),
+      transparent 0px,
       ${ThemingParameters.sapContent_BusyColor} calc(50% - 2rem),
       ${ThemingParameters.sapContent_BusyColor} calc(50% + 2rem),
-      rgba(8, 84, 160, 1) calc(50% + 2rem),
-      rgba(8, 84, 160, 0) 100%
+      transparent 100%
     )`,
       backgroundSize: '40%',
       backgroundRepeat: 'repeat-y',
