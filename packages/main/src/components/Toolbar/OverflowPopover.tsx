@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
-import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useIsomorphicId, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -37,38 +37,27 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowPopoverRef,
     overflowButton
   } = props;
-
+  const uniqueId = useIsomorphicId();
   const [componentRef, popoverRef] = useSyncRef<PopoverDomRef>(overflowPopoverRef);
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
 
-  const handleToggleButtonClick = useCallback(
-    (e) => {
-      e.stopPropagation();
-      if (popoverRef.current) {
-        if (!pressed) {
-          popoverRef.current.showAt(e.target);
-          setPressed(true);
-        } else {
-          popoverRef.current.close();
-        }
-      }
-    },
-    [pressed]
-  );
+  const handleToggleButtonClick = (e) => {
+    e.stopPropagation();
+    if (!pressed) {
+      setPressed(true);
+    } else {
+      setPressed(false);
+    }
+  };
 
-  useEffect(() => {
-    return () => {
-      if (popoverRef.current) {
-        popoverRef.current.close();
-      }
-    };
-  }, []);
-
-  const handleOpen = () => {
+  const handleBeforeOpen = () => {
     if (toggleBtnRef.current) {
       toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
+  };
+  const handleAfterOpen = () => {
+    setPressed(true);
   };
 
   const handleClose = (e) => {
@@ -119,7 +108,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       {overflowButton ? (
-        cloneElement(overflowButton, { onClick: clonedOverflowButtonClick })
+        cloneElement(overflowButton, { onClick: clonedOverflowButtonClick, id: overflowButton?.props?.id ?? uniqueId })
       ) : (
         <ToggleButton
           ref={toggleBtnRef}
@@ -129,6 +118,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           pressed={pressed}
           accessibleName={showMoreText}
           tooltip={showMoreText}
+          id={uniqueId}
         />
       )}
       {createPortal(
@@ -136,8 +126,11 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
+          open={pressed}
+          opener={overflowButton?.props?.id ?? uniqueId}
           onAfterClose={handleClose}
-          onBeforeOpen={handleOpen}
+          onBeforeOpen={handleBeforeOpen}
+          onAfterOpen={handleAfterOpen}
           hideArrow
         >
           <div className={classes.popoverContent} ref={overflowContentRef}>
