@@ -510,14 +510,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                         </Button>
                       )}
                       {showCancelButton && (
-                        <Button
-                          onClick={handleClose}
-                          design={
-                            !inErrorState && (showSaveBtn || !hideSaveAs || !hideManageVariants)
-                              ? ButtonDesign.Transparent
-                              : ButtonDesign.Emphasized
-                          }
-                        >
+                        <Button onClick={handleClose} design={ButtonDesign.Transparent}>
                           {cancelText}
                         </Button>
                       )}
