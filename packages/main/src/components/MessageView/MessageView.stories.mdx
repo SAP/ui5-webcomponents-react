@@ -20,6 +20,7 @@ import { useRef, useState } from 'react';
 import { MessageView } from './index';
 import { generateMessageItems } from '../../../../../.storybook/mockData/generateMessageItems.js';
 import { MessageViewButton } from '../MessageViewButton';
+import { ButtonDesign } from '../../enums';
 
 <Meta
   title="User Feedback / MessageView"
@@ -151,7 +152,7 @@ to get back to the list view.
           <Dialog
             ref={dialogRef}
             style={{ width: '400px' }}
-            className="popupNoContentPadding"
+            className="contentPartNoPadding headerPartNoPadding"
             header={
               <Bar
                 startContent={
@@ -159,10 +160,12 @@ to get back to the list view.
                     {isOnDetailsPage && (
                       <Button
                         icon="slim-arrow-left"
+                        design={ButtonDesign.Transparent}
                         onClick={() => {
                           setIsOnDetailsPage(false);
                           messageViewRef.current.navigateBack();
                         }}
+                        style={{ marginInline: '0 0.5rem' }}
                       />
                     )}
                     <Title level={TitleLevel.H4}>Messages</Title>
@@ -215,10 +218,12 @@ function MyComponent() {
               {isOnDetailsPage && (
                 <Button
                   icon="slim-arrow-left"
+                  design={ButtonDesign.Transparent}
                   onClick={() => {
                     setIsOnDetailsPage(false);
                     messageViewRef.current.navigateBack();
                   }}
+                  style={{ marginInline: '0 0.5rem' }}
                 />
               )}
               <Title level={TitleLevel.H4}>Messages</Title>
@@ -247,6 +252,8 @@ function MyComponent() {
   <Story name="with MessageViewButton">
     {() => {
       const ref = useRef();
+      const messageViewRef = useRef();
+      const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
       const numberOfItems = {
         information: 2,
         warning: 5,
@@ -262,8 +269,41 @@ function MyComponent() {
               ref.current.showAt(e.target);
             }}
           />
-          <ResponsivePopover ref={ref} headerText="Messages" className="popupNoContentPadding">
-            <MessageView groupItems>{generateMessageItems(numberOfItems)}</MessageView>
+          <ResponsivePopover
+            ref={ref}
+            headerText="Messages"
+            className="contentPartNoPadding headerPartNoPadding"
+            header={
+              <Bar
+                startContent={
+                  <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                    {isOnDetailsPage && (
+                      <Button
+                        design={ButtonDesign.Transparent}
+                        icon="slim-arrow-left"
+                        onClick={() => {
+                          setIsOnDetailsPage(false);
+                          messageViewRef.current.navigateBack();
+                        }}
+                        style={{ marginInline: '0 0.5rem' }}
+                      />
+                    )}
+                    <Title level={TitleLevel.H4}>Messages</Title>
+                  </FlexBox>
+                }
+              />
+            }
+          >
+            <MessageView
+              ref={messageViewRef}
+              showDetailsPageHeader={false}
+              groupItems
+              onItemSelect={() => {
+                setIsOnDetailsPage(true);
+              }}
+            >
+              {generateMessageItems(numberOfItems)}
+            </MessageView>
           </ResponsivePopover>
         </>
       );
