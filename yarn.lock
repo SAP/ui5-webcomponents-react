@@ -7120,16 +7120,7 @@ cli-spinners@2.6.1, cli-spinners@^2.1.0, cli-spinners@^2.5.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.6.1.tgz#adc954ebe281c37a6319bfa401e6dd2488ffb70d"
   integrity sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==
 
-cli-table3@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.1.tgz#36ce9b7af4847f288d3cdd081fbd09bf7bd237b8"
-  integrity sha512-w0q/enDHhPLq44ovMGdQeeDLvwxwavsJX7oQGYt/LrBlYsyaxyDnp6z3QzFut/6kLLKnlcUVJLrpB7KBfgG/RA==
-  dependencies:
-    string-width "^4.2.0"
-  optionalDependencies:
-    colors "1.4.0"
-
-cli-table3@~0.6.1:
+cli-table3@^0.6.1, cli-table3@~0.6.1:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.2.tgz#aaf5df9d8b5bf12634dc8b3040806a0c07120d2a"
   integrity sha512-QyavHCaIC80cMivimWu4aWHilIpiDpfm3hGmqAmXVL1UsnbLuBSMd21hTX6VY4ZSDSM73ESLeF8TOYId3rBTbw==
@@ -7305,11 +7296,6 @@ colorette@^2.0.16, colorette@^2.0.17:
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.17.tgz#5dd4c0d15e2984b7433cb4a9f2ead45063b80c47"
   integrity sha512-hJo+3Bkn0NCHybn9Tu35fIeoOKGOk5OCC32y4Hz2It+qlCO2Q3DeQ1hRn/tDDMQKRYUEzqsl7jbF6dYKjlE60g==
-
-colors@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
-  integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
 colors@~0.6.2:
   version "0.6.2"
@@ -8133,9 +8119,9 @@ cyclist@^1.0.1:
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
 cypress@^10.7.0:
-  version "10.7.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-10.7.0.tgz#2d37f8b9751c6de33ee48639cb7e67a2ce593231"
-  integrity sha512-gTFvjrUoBnqPPOu9Vl5SBHuFlzx/Wxg/ZXIz2H4lzoOLFelKeF7mbwYUOzgzgF0oieU2WhJAestQdkgwJMMTvQ==
+  version "10.8.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-10.8.0.tgz#12a681f2642b6f13d636bab65d5b71abdb1497a5"
+  integrity sha512-QVse0dnLm018hgti2enKMVZR9qbIO488YGX06nH5j3Dg1isL38DwrBtyrax02CANU6y8F4EJUuyW6HJKw1jsFA==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -8156,7 +8142,7 @@ cypress@^10.7.0:
     dayjs "^1.10.4"
     debug "^4.3.2"
     enquirer "^2.3.6"
-    eventemitter2 "^6.4.3"
+    eventemitter2 "6.4.7"
     execa "4.1.0"
     executable "^4.1.1"
     extract-zip "2.0.1"
@@ -9706,7 +9692,7 @@ event-stream@=3.3.4:
     stream-combiner "~0.0.4"
     through "~2.3.1"
 
-eventemitter2@^6.4.3:
+eventemitter2@6.4.7:
   version "6.4.7"
   resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.4.7.tgz#a7f6c4d7abf28a14c1ef3442f21cb306a054271d"
   integrity sha512-tYUSVOGeQPKt/eC1ABfhHy5Xd96N3oIijJvN3O9+TsC28T5V9yX9oEfEK5faP0EFSNVOG97qtAS68GBrQB2hDg==
