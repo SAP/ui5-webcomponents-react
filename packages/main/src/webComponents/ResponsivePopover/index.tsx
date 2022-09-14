@@ -41,7 +41,7 @@ interface ResponsivePopoverAttributes {
    */
   modal?: boolean;
   /**
-   * Defines the opener id of the element that the popover is shown at
+   * Defines the ID of the element that the popover is shown at
    */
   opener?: string;
   /**
@@ -88,7 +88,11 @@ interface ResponsivePopoverAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface ResponsivePopoverDomRef extends ResponsivePopoverAttributes, Ui5DomRef {
+export interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttributes, 'opener'>, Ui5DomRef {
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at
+   */
+  opener?: string | HTMLElement;
   /**
    * Closes the popover/dialog.
    */

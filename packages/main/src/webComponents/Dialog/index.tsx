@@ -1,5 +1,6 @@
 import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
+import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -25,6 +26,11 @@ interface DialogAttributes {
    * **Note:** Upon resizing, externally defined height and width styling will be ignored.
    */
   resizable?: boolean;
+  /**
+   * Defines the state of the `Dialog`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   */
+  state?: ValueState | keyof typeof ValueState;
   /**
    * Determines whether the component should be stretched to fullscreen.
    *
@@ -124,12 +130,16 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
+  ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Dialog.displayName = 'Dialog';
+
+Dialog.defaultProps = {
+  state: ValueState.None
+};
 
 export { Dialog };

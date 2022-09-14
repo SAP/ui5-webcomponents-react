@@ -102,6 +102,8 @@ const styles = {
     width: '100%',
     color: ThemingParameters.sapList_TextColor,
     borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    // needed for vertical virtualization
+    marginBottom: '-1px',
     boxSizing: 'border-box',
     display: 'flex',
     '&:hover': {

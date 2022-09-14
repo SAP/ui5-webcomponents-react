@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v0.28.0...v0.28.1) (2022-09-09)
+
+
+### Bug Fixes
+
+* **Loader:** apply correct styles ([#3502](https://github.com/SAP/ui5-webcomponents-react/issues/3502)) ([371b9a1](https://github.com/SAP/ui5-webcomponents-react/commit/371b9a13b67bb787b02bcc624138ae09c2118097))
+* **ObjectPageSection:** fix styles for horizon high contrast themes ([#3501](https://github.com/SAP/ui5-webcomponents-react/issues/3501)) ([f689496](https://github.com/SAP/ui5-webcomponents-react/commit/f689496e295add0d66c70202349238cfb0c9dc53))
+* **Toolbar:** don't crash on unmount if customElement is not defined ([#3500](https://github.com/SAP/ui5-webcomponents-react/issues/3500)) ([992d1ea](https://github.com/SAP/ui5-webcomponents-react/commit/992d1eae63cb937f632fbe251416249afb3debf0)), closes [#3499](https://github.com/SAP/ui5-webcomponents-react/issues/3499)
+
+
+
+
+
+# [0.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.5...v0.28.0) (2022-09-08)
+
+
+### Bug Fixes
+
+* **AnalyticalTable:** don't show unnecessary horizontal scrollbar  ([#3432](https://github.com/SAP/ui5-webcomponents-react/issues/3432)) ([1b69421](https://github.com/SAP/ui5-webcomponents-react/commit/1b694213bd88087c88c13afb7afcea691852ac25)), closes [#3376](https://github.com/SAP/ui5-webcomponents-react/issues/3376) [#3369](https://github.com/SAP/ui5-webcomponents-react/issues/3369)
+* **DynamicPage:** prevent footer from "jumping" in rare cases ([#3486](https://github.com/SAP/ui5-webcomponents-react/issues/3486)) ([7da82a0](https://github.com/SAP/ui5-webcomponents-react/commit/7da82a0df546c540e3924cbde5e5fa9d87b0397d)), closes [#3388](https://github.com/SAP/ui5-webcomponents-react/issues/3388)
+* **MessageBox:** use Dialog `state` for better accessibility ([#3488](https://github.com/SAP/ui5-webcomponents-react/issues/3488)) ([d05cd76](https://github.com/SAP/ui5-webcomponents-react/commit/d05cd767f32240b364fadfd330bfa412f357f56f)), closes [#3480](https://github.com/SAP/ui5-webcomponents-react/issues/3480) [#3431](https://github.com/SAP/ui5-webcomponents-react/issues/3431) [#3375](https://github.com/SAP/ui5-webcomponents-react/issues/3375)
+* **MessageViewButton:** fix bad import ([#3492](https://github.com/SAP/ui5-webcomponents-react/issues/3492)) ([f398cac](https://github.com/SAP/ui5-webcomponents-react/commit/f398cacced3d8042a9db6808c215a2ca68222ea3))
+
+
+### Code Refactoring
+
+* **TablePlaceholder:** use css animation instead of svg ([#3487](https://github.com/SAP/ui5-webcomponents-react/issues/3487)) ([63961d1](https://github.com/SAP/ui5-webcomponents-react/commit/63961d1c2b58fef2b0e87f447851f0a90deafba3))
+
+
+### Features
+
+* **MessageViewButton:** introduce component ([#3345](https://github.com/SAP/ui5-webcomponents-react/issues/3345)) ([38d2162](https://github.com/SAP/ui5-webcomponents-react/commit/38d21627463d5b8152e6b34462d517b28603969d))
+* update @ui5/webcomponents to 1.7.1 ([#3465](https://github.com/SAP/ui5-webcomponents-react/issues/3465)) ([0426462](https://github.com/SAP/ui5-webcomponents-react/commit/0426462352e567b3a421ba8c7d8aa28d650be1e8))
+
+
+### BREAKING CHANGES
+
+* **MessageBox:** `MessageBoxTypes.Highlight` has been removed as it was
+not specified by the Fiori guidelines.
+* **AnalyticalTable:** __AnalyticalTable:__ Scaling the table via the CSS
+`scale()` function is now only supported if the scaleFactor is passed to
+the `scaleXFactor` prop.
+* **TablePlaceholder:** removed props `rowHeight`, `tableWidth` and `isRtl`. Those values are now inherited via CSS.
+
+
+
+
+
 ## [0.27.5](https://github.com/SAP/ui5-webcomponents-react/compare/v0.27.4...v0.27.5) (2022-09-02)
 
 

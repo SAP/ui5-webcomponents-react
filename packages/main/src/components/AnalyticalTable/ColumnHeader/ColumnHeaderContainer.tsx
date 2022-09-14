@@ -1,8 +1,7 @@
+import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment, MutableRefObject, Ref, useCallback } from 'react';
+import React, { forwardRef, Fragment, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useVirtual, VirtualItem } from 'react-virtual';
-import { useRect } from '../../../internal/useRect';
 import { ColumnHeader } from './index';
 
 const styles = {
@@ -25,21 +24,19 @@ interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupByChanged: (e: CustomEvent<{ column?: any; isGrouped?: boolean }>) => void;
+  onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
   onDragStart: any;
   onDragOver: any;
   onDrop: any;
   onDragEnter: any;
   onDragEnd: any;
   dragOver: any;
-  tableRef: MutableRefObject<any>;
-  visibleColumnsWidth: any[];
-  overscanCountHorizontal: number;
   resizeInfo: Record<string, unknown>;
-  reactWindowRef: MutableRefObject<any>;
   isRtl: boolean;
   portalContainer: Element;
   uniqueId: string;
+  columnVirtualizer: Virtualizer;
+  scaleXFactor?: number;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -56,45 +53,24 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
     onDragEnter,
     onDragEnd,
     dragOver,
-    tableRef,
-    visibleColumnsWidth,
-    overscanCountHorizontal,
     resizeInfo,
-    reactWindowRef,
     isRtl,
     portalContainer,
-    uniqueId
+    uniqueId,
+    columnVirtualizer,
+    scaleXFactor
   } = props;
-  const columnVirtualizer = useVirtual({
-    size: visibleColumnsWidth.length,
-    parentRef: tableRef,
-    estimateSize: useCallback(
-      (index) => {
-        return visibleColumnsWidth[index];
-      },
-      [visibleColumnsWidth]
-    ),
-    horizontal: true,
-    overscan: overscanCountHorizontal,
-    useObserver: useRect
-  });
-
-  reactWindowRef.current = {
-    ...reactWindowRef.current,
-    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
-    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
-  };
 
   const classes = useStyles();
 
   return (
     <div
       {...headerProps}
-      style={{ width: `${columnVirtualizer.totalSize}px` }}
+      style={{ width: `${columnVirtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
     >
-      {columnVirtualizer.virtualItems.map((virtualColumn: VirtualItem, index) => {
+      {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem<Record<string, unknown>>, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;
@@ -139,6 +115,7 @@ export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerPro
               isRtl={isRtl}
               portalContainer={portalContainer}
               uniqueId={uniqueId}
+              scaleXFactor={scaleXFactor}
             >
               {column.render('Header')}
             </ColumnHeader>

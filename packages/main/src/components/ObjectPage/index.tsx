@@ -18,30 +18,19 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize } from '../../enums/AvatarSize';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { ObjectPageMode } from '../../enums/ObjectPageMode';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
+import { CommonProps } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
-import { stopPropagation } from '../../internal/stopPropagation';
 import { useObserveHeights } from '../../internal/useObserveHeights';
-import { AvatarPropTypes } from '../../webComponents/Avatar';
-import { List } from '../../webComponents/List';
-import { Popover, PopoverDomRef } from '../../webComponents/Popover';
-import { StandardListItem } from '../../webComponents/StandardListItem';
-import { TabContainer } from '../../webComponents/TabContainer';
+import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
-import { ObjectPageAnchorButton } from './ObjectPageAnchorButton';
 import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
 
 addCustomCSSWithScoping(
@@ -55,7 +44,7 @@ addCustomCSSWithScoping(
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
-   * Defines the the upper, always static, title section of the `ObjectPage`.
+   * Defines the upper, always static, title section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `DynamicPageTitle` is set to `true` by default.
@@ -91,12 +80,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * Defines the ID of the currently `ObjectPageSubSection` section.
    */
   selectedSubSectionId?: string;
-  /**
-   * Defines where modals are rendered into via `React.createPortal`.
-   *
-   * Defaults to: `document.body`
-   */
-  portalContainer?: Element;
   /**
    * Fired when the selected section changes.
    */
@@ -182,7 +165,6 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     headerContentPinnable,
     a11yConfig,
     placeholder,
-    portalContainer,
     onSelectedSectionChange,
     onToggleHeaderContent,
     ...rest
@@ -470,7 +452,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     (e) => {
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
-        const sectionId = e.detail.section.props?.id;
+        const sectionId = e.detail.sectionId;
         setInternalSelectedSectionId(sectionId);
 
         const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
@@ -479,8 +461,8 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         });
         debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
-      const subSection = e.detail.subSection;
-      setSelectedSubSectionId(subSection.props.id);
+      const subSectionId = e.detail.subSectionId;
+      setSelectedSubSectionId(subSectionId);
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
   );
@@ -649,37 +631,18 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
-  const onTabItemSelect = useCallback(
-    (event) => {
-      const { sectionId, index } = event.detail.tab.dataset;
-      const section = safeGetChildrenArray<ReactElement>(children).find((el) => el.props.id == sectionId);
+  const onTabItemSelect = (event) => {
+    event.preventDefault();
+    const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
+    if (isSubTab) {
+      handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
+    } else {
+      const section = safeGetChildrenArray<ReactElement>(children).find((el) => {
+        return el.props.id == sectionId;
+      });
       handleOnSectionSelected(event, section?.props?.id, index, section);
-    },
-    [children]
-  );
-  const [popoverContent, setPopoverContent] = useState<ReactElement>(null);
-  const popoverRef = useRef<PopoverDomRef>(null);
-  const onShowSubSectionPopover = useCallback(
-    (e, section) => {
-      setPopoverContent(section);
-      popoverRef.current.showAt(e.detail.targetRef);
-    },
-    [setPopoverContent, popoverRef]
-  );
-
-  const onSubSectionClick = useCallback(
-    (e) => {
-      const selectedId = e.detail.item.dataset.key;
-      const subSection = popoverContent.props.children
-        .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
-        .find((item) => item.props.id === selectedId);
-      if (subSection) {
-        handleOnSubSectionSelected(enrichEventWithDetails(e, { section: popoverContent, subSection }));
-      }
-      popoverRef.current.close();
-    },
-    [handleOnSubSectionSelected, popoverRef, popoverContent]
-  );
+    }
+  };
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
@@ -800,41 +763,47 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
                 : `${topHeaderHeight}px`
           }}
         >
-          <TabContainer collapsed fixed onTabSelect={onTabItemSelect} data-component-name="ObjectPageTabContainer">
+          <TabContainer
+            collapsed
+            fixed
+            onTabSelect={onTabItemSelect}
+            data-component-name="ObjectPageTabContainer"
+            className={classes.tabContainerComponent}
+          >
             {safeGetChildrenArray(children).map((section: ReactElement, index) => {
               if (!section.props) return null;
+              const subTabs = safeGetChildrenArray<any>(section.props.children).filter(
+                (subSection) => subSection?.type?.displayName === 'ObjectPageSubSection'
+              );
               return (
-                <ObjectPageAnchorButton
+                <Tab
                   key={`Anchor-${section.props?.id}`}
-                  section={section}
-                  index={index}
-                  selected={internalSelectedSectionId === section.props?.id}
-                  onShowSubSectionPopover={onShowSubSectionPopover}
-                />
+                  data-index={index}
+                  data-section-id={section.props.id}
+                  text={section.props.titleText}
+                  selected={internalSelectedSectionId === section.props?.id || undefined}
+                  subTabs={subTabs.map((item) => {
+                    return (
+                      <Tab
+                        data-parent-id={section.props.id}
+                        key={item.props.id}
+                        data-is-sub-tab
+                        data-section-id={item.props.id}
+                        text={item.props.titleText}
+                        selected={item.props.id === selectedSubSectionId || undefined}
+                      >
+                        {/*ToDo: workaround for nested tab selection*/}
+                        <span style={{ display: 'none' }} />
+                      </Tab>
+                    );
+                  })}
+                >
+                  {/*ToDo: workaround for nested tab selection*/}
+                  <span style={{ display: 'none' }} />
+                </Tab>
               );
             })}
           </TabContainer>
-          {createPortal(
-            <Popover
-              className={classes.subSectionPopover}
-              placementType={PopoverPlacementType.Bottom}
-              horizontalAlign={PopoverHorizontalAlign.Left}
-              hideArrow
-              ref={popoverRef}
-              onAfterClose={stopPropagation}
-            >
-              <List onItemClick={onSubSectionClick}>
-                {popoverContent?.props?.children
-                  .filter((item) => item?.type?.displayName === 'ObjectPageSubSection')
-                  .map((item) => (
-                    <StandardListItem key={item.props.id} data-key={item.props.id}>
-                      {item.props.titleText}
-                    </StandardListItem>
-                  ))}
-              </List>
-            </Popover>,
-            portalContainer
-          )}
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
@@ -860,8 +829,7 @@ ObjectPage.defaultProps = {
   image: null,
   mode: ObjectPageMode.Default,
   imageShapeCircle: false,
-  showHideHeaderButton: false,
-  portalContainer: document.body
+  showHideHeaderButton: false
 };
 
 export { ObjectPage };

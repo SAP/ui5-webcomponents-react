@@ -170,6 +170,8 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## Variant Management as Title
 
+**Note:** To prevent the `click` event of the `VariantManagement` component from bubbling up and collapsing/expanding the `DynamicPageHeader`, please call `event.stopPropagation()` inside the `onClick` callback of the `VariantManagement`.
+
 <Canvas>
   <Story name="with Variants">
     {(args) => {
@@ -216,6 +218,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
         );
       };
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const handleClick = (e) => {
+        e.stopPropagation();
+      };
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with Variants">
           {collapsed ? (
@@ -240,7 +245,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
                     </Breadcrumbs>
                   }
                   header={
-                    <VariantManagement onSelect={selectVariant}>
+                    <VariantManagement onSelect={selectVariant} onClick={handleClick}>
                       <VariantItem selected={headerVariant === 'Header Variant 1'}>Header Variant 1</VariantItem>
                       <VariantItem selected={headerVariant === 'Header Variant 2'}>Header Variant 2</VariantItem>
                     </VariantManagement>
