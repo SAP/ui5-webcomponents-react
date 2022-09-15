@@ -6,6 +6,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(true);
+
   useEffect(() => {
     const headerIntersectionObserver = new IntersectionObserver(
       ([header]) => {
@@ -66,6 +67,16 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   }, [headerContentRef?.current, setHeaderContentHeight, isIntersecting]);
   const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
+  useEffect(() => {
+    if (isIntersecting) {
+      // todo maybe use calculation of topHeader here
+      objectPage.current.scrollTop = 0;
+    }
+    if (!isIntersecting) {
+      // todo maybe use calculation of topHeader here
+      objectPage.current.scrollTop = totalHeaderHeight;
+    }
+  }, [isIntersecting, totalHeaderHeight]);
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
 };
