@@ -69,11 +69,9 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
   useEffect(() => {
     if (isIntersecting) {
-      // todo maybe use calculation of topHeader here
       objectPage.current.scrollTop = 0;
     }
     if (!isIntersecting) {
-      // todo maybe use calculation of topHeader here
       objectPage.current.scrollTop = totalHeaderHeight;
     }
   }, [isIntersecting, totalHeaderHeight]);
