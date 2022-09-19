@@ -524,6 +524,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
+// When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
+const sortTypesFallback = {
+  undefined: () => undefined
+};
+
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -625,6 +630,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
+      sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
         translatableTexts: {
           expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
