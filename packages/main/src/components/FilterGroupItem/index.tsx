@@ -1,16 +1,15 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums';
+import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { CustomListItem, Panel, TableCell, TableRow } from '../../webComponents';
+import { TableCell, TableRow, TableRowDomRef } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
-import { Text } from '../Text';
 import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
@@ -59,6 +58,10 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
    */
   considerGroupName?: boolean;
+  /**
+   * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
+   */
+  active?: boolean;
 }
 
 /**
@@ -79,6 +82,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     loading,
     className,
     slot,
+    active,
     ...rest
   } = props;
 
@@ -101,7 +105,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   if (!inFB) {
     return (
       //todo height, data-react-key
-      <TableRow data-react-key={props['data-react-key']} selected={selected}>
+      <TableRow data-react-key={props['data-react-key']} selected={selected} data-fbd-disabled={required}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             {/*todo margin*/}
@@ -120,18 +124,20 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
           <TableCell style={{ width: '25%' }}>
             {/*todo: use icon when wc fixed anti aliasing issue*/}
             {/*<Icon name="circle-task-2" style={{ transform: 'scale(-50%)' }} />*/}
-            <div
-              style={{
-                flexGrow: 1,
-                textAlign: 'center',
-                color: ThemingParameters.sapNeutralColor,
-                fontSize: '24px',
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale'
-              }}
-            >
-              •
-            </div>
+            {active ? (
+              <div
+                style={{
+                  flexGrow: 1,
+                  textAlign: 'center',
+                  color: ThemingParameters.sapNeutralColor,
+                  fontSize: '24px',
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale'
+                }}
+              >
+                •
+              </div>
+            ) : null}
           </TableCell>
         )}
       </TableRow>

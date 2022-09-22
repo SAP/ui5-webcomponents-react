@@ -54,7 +54,13 @@ addCustomCSSWithScoping(
  `
 );
 
-//todo active is not implemented
+//todo: remove this when it's possible to disable the selection of a row (https://github.com/SAP/ui5-webcomponents/issues/5662)
+addCustomCSSWithScoping(
+  'ui5-table-row',
+  `:host([data-fbd-disabled="true"]) .ui5-table-multi-select-cell [ui5-checkbox] { pointer-events: none;}`
+);
+
+//todo: add method to customize select
 const getActiveFilters = (activeFilterAttribute, filter) => {
   switch (activeFilterAttribute) {
     case 'all':
@@ -62,11 +68,9 @@ const getActiveFilters = (activeFilterAttribute, filter) => {
     case 'visible':
       return filter.props?.visibleInFilterBar;
     case 'active':
-      //todo
-      return true;
+      return filter.props?.active;
     case 'visibleAndActive':
-      //todo
-      return true;
+      return filter.props?.visibleInFilterBar && filter.props?.active;
     case 'mandatory':
       return filter.props?.required;
     default:
@@ -229,6 +233,7 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
               ? !!selectedFilters?.[child.key]?.selected
               : child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
           // todo key?
+          //@ts-ignore
           'data-react-key': child.key,
           children: {
             ...child.props.children,
@@ -253,6 +258,7 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
 
   //todo can be simplified?
   const handleCheckBoxChange = (e) => {
+    e.preventDefault();
     const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
       (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
       {}
