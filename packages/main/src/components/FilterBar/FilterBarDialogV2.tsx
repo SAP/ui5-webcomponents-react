@@ -10,7 +10,25 @@ import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
 import { BarDesign } from '../../enums/BarDesign';
 import { TitleLevel } from '../../enums/TitleLevel';
-import { BASIC, CANCEL, FILTERS, OK, SEARCH_FOR_FILTERS } from '../../i18n/i18n-defaults';
+import {
+  ACTIVE,
+  ALL,
+  BASIC,
+  CANCEL,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTERS,
+  GROUP_VIEW,
+  HIDE_VALUES,
+  LIST_VIEW,
+  MANDATORY,
+  OK,
+  RESET,
+  SEARCH_FOR_FILTERS,
+  SHOW_VALUES,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE
+} from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { Panel, Table, TableColumn } from '../../webComponents';
@@ -82,8 +100,7 @@ const compareObjects = (firstObj, secondObj) =>
   Object.keys(firstObj).find((first) =>
     Object.keys(secondObj).every((second) => firstObj[second] !== secondObj[first])
   );
-// todo "active" implementation
-// todo required implementation
+
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 
 // todo enhance types
@@ -147,6 +164,18 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
   const okText = i18nBundle.getText(OK);
   const searchForFiltersText = i18nBundle.getText(SEARCH_FOR_FILTERS);
   const filtersTitle = i18nBundle.getText(FILTERS);
+  const resetText = i18nBundle.getText(RESET);
+  const allText = i18nBundle.getText(ALL);
+  const activeText = i18nBundle.getText(ACTIVE);
+  const visibleText = i18nBundle.getText(VISIBLE);
+  const visibleAndActiveText = i18nBundle.getText(VISIBLE_AND_ACTIVE);
+  const mandatoryText = i18nBundle.getText(MANDATORY);
+  const listViewText = i18nBundle.getText(LIST_VIEW);
+  const groupViewText = i18nBundle.getText(GROUP_VIEW);
+  const showValuesText = i18nBundle.getText(SHOW_VALUES);
+  const hideValuesText = i18nBundle.getText(HIDE_VALUES);
+  const fieldText = i18nBundle.getText(FIELD);
+  const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
   useEffect(() => {
     if (open) {
@@ -339,10 +368,9 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
           <Title level={TitleLevel.H4} title={filtersTitle}>
             {filtersTitle}
           </Title>
-          {/*todo i18n*/}
           {showRestoreButton && (
             <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
-              Reset
+              {resetText}
             </Button>
           )}
         </FlexBox>
@@ -377,32 +405,30 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
       >
         {/*todo a11y maybe use header tags here*/}
         <Toolbar className={classes.subheader}>
-          {/*// todo i18n, a11y*/}
-          <Select onChange={handleAttributeFilterChange} title="Show Fields by Attribute">
+          <Select onChange={handleAttributeFilterChange} title={fieldsByAttributeText}>
             <Option selected={filteredAttribute === 'all'} data-id="all">
-              All
+              {allText}
             </Option>
             <Option selected={filteredAttribute === 'visible'} data-id="visible">
-              Visible
+              {visibleText}
             </Option>
             <Option selected={filteredAttribute === 'active'} data-id="active">
-              Active
+              {activeText}
             </Option>
             <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
-              Visible and Active
+              {visibleAndActiveText}
             </Option>
             <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
-              Mandatory
+              {mandatoryText}
             </Option>
           </Select>
           <ToolbarSpacer />
           <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
-            {showValues ? 'Hide Values' : 'Show Values'}
+            {showValues ? hideValuesText : showValuesText}
           </Button>
           <SegmentedButton onSelectionChange={handleViewChange}>
-            {/*todo a11y i18n*/}
-            <SegmentedButtonItem icon="list" data-id="list" pressed={isListView} />
-            <SegmentedButtonItem icon="group-2" data-id="group" pressed={!isListView} />
+            <SegmentedButtonItem icon="list" data-id="list" pressed={isListView} accessibleName={listViewText} />
+            <SegmentedButtonItem icon="group-2" data-id="group" pressed={!isListView} accessibleName={groupViewText} />
           </SegmentedButton>
         </Toolbar>
         {showSearch && (
@@ -425,12 +451,11 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
         mode={TableMode.MultiSelect}
         onSelectionChange={handleCheckBoxChange}
         columns={
-          //todo i18n
           <>
-            <TableColumn>Field</TableColumn>
+            <TableColumn>{fieldText}</TableColumn>
             {!showValues && (
               <TableColumn className={classes.tHactive} style={{ width: '25%' }}>
-                Active
+                {activeText}
               </TableColumn>
             )}
           </>
