@@ -3,11 +3,13 @@ import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import 'tocbot/dist/tocbot.css';
+import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
 import React, { useEffect, useRef } from 'react';
+import languages from './components/languageCodes.json';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -44,8 +46,12 @@ const ThemeProviderDecorator = makeDecorator({
   name: 'ThemeProvider',
   parameterName: 'ThemeProvider',
   wrapper: (Story, context) => {
-    const { theme, contentDensity, direction } = context.globals;
+    const { theme, contentDensity, direction, language } = context.globals;
     const svgRef = useRef();
+
+    useEffect(() => {
+      setLanguage(language);
+    }, [language]);
 
     // todo remove this once mdx anchors are working again (https://github.com/storybookjs/storybook/issues/18395)
     useEffect(() => {
@@ -179,7 +185,6 @@ export const globalTypes = {
     description: 'Text Direction',
     defaultValue: 'ltr',
     toolbar: {
-      // title: 'Direction',
       icon: 'transfer',
       items: [
         {
@@ -191,6 +196,15 @@ export const globalTypes = {
           title: 'RTL'
         }
       ]
+    }
+  },
+  language: {
+    title: 'Languages',
+    description: 'Languages',
+    defaultValue: 'en',
+    toolbar: {
+      icon: 'globe',
+      items: languages.map((item) => ({ value: item.id, title: item.language }))
     }
   }
 };
