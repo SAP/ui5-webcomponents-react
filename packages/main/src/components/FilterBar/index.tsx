@@ -27,7 +27,7 @@ import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBar.jss';
-import { FilterDialog } from './FilterBarDialog';
+import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
 const isPhone = Device.isPhone();
