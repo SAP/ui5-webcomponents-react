@@ -126,7 +126,7 @@ interface FilterDialogPropTypes {
   setFilteredAttribute: any;
 }
 
-export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
+export const FilterDialog = (props: FilterDialogPropTypes) => {
   const {
     filterBarRefs,
     open,
@@ -399,10 +399,7 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
         />
       }
     >
-      <FlexBox
-        direction={FlexBoxDirection.Column}
-        style={{ padding: '0 1rem', boxShadow: ThemingParameters.sapContent_HeaderShadow }}
-      >
+      <FlexBox direction={FlexBoxDirection.Column}>
         {/*todo a11y maybe use header tags here*/}
         <Toolbar className={classes.subheader}>
           <Select onChange={handleAttributeFilterChange} title={fieldsByAttributeText}>
@@ -432,14 +429,14 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
           </SegmentedButton>
         </Toolbar>
         {showSearch && (
-          <FlexBox style={{ height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' }}>
+          <FlexBox className={classes.searchInputContainer}>
             {/*todo  clear btn*/}
             <Input
               placeholder={searchForFiltersText}
               onInput={handleSearch}
               icon={<Icon name="search" />}
               ref={dialogSearchRef}
-              style={{ width: '100%' }}
+              className={classes.searchInput}
             />
           </FlexBox>
         )}
@@ -453,11 +450,7 @@ export const FilterDialogV2 = (props: FilterDialogPropTypes) => {
         columns={
           <>
             <TableColumn>{fieldText}</TableColumn>
-            {!showValues && (
-              <TableColumn className={classes.tHactive} style={{ width: '25%' }}>
-                {activeText}
-              </TableColumn>
-            )}
+            {!showValues && <TableColumn className={classes.tHactive}>{activeText}</TableColumn>}
           </>
         }
       >

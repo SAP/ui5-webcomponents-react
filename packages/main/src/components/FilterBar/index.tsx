@@ -34,8 +34,7 @@ import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
 import styles from './FilterBar.jss';
-import { FilterDialogV2 } from './FilterBarDialogV2';
-import { FilterDialog } from './FilterDialog';
+import { FilterDialog } from './FilterBarDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 
 const isPhone = Device.isPhone();
@@ -106,9 +105,8 @@ export interface FilterBarPropTypes extends CommonProps {
    * Defines whether the "Clear" button is displayed in the filter configuration dialog.
    */
   showClearButton?: boolean;
-  // todo note that it's now "Reset"
   /**
-   * Defines whether the "Restore" button is displayed in the filter configuration dialog.
+   * Defines whether the "Reset" button is displayed in the filter configuration dialog.
    */
   showRestoreButton?: boolean;
   // todo deprecated
@@ -313,9 +311,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const [isListView, setIsListView] = useState(true);
   const [filteredAttribute, setFilteredAttribute] = useState('all');
 
-  const isRtl = useIsRTL(filterBarRef);
-  const transformRightRTL = isRtl ? 'Left' : 'Right';
-
   useEffect(() => {
     Children.toArray(children).forEach((item: ReactElement<any>) => {
       setToggledFilters((prev) => {
@@ -340,7 +335,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
   const filterAreaClasses = clsx(
     classes.filterArea,
-    showFilters && !isPhone ? classes.filterAreaOpen : classes.filterAreaClosed
+    showFilters && (!isPhone || (isPhone && !useToolbar)) ? classes.filterAreaOpen : classes.filterAreaClosed
   );
 
   const getFilterElements = () => {
@@ -627,15 +622,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       // deduct width of buttons container of the empty space in the last row to calculate number of spacers
       const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth);
       for (let i = 0; i < numberOfSpacers; i++) {
-        spacers.push(
-          <div
-            key={`filter-spacer-${i}`}
-            className={classes.spacer}
-            style={{
-              [`margin${transformRightRTL}`]: '1rem'
-            }}
-          />
-        );
+        spacers.push(<div key={`filter-spacer-${i}`} className={classes.spacer} />);
       }
       return spacers;
     }
@@ -645,7 +632,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   return (
     <>
       {dialogOpen && showFilterConfiguration && (
-        <FilterDialogV2
+        <FilterDialog
           filterBarRefs={filterRefs}
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
@@ -666,7 +653,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           setFilteredAttribute={setFilteredAttribute}
         >
           {safeChildren()}
-        </FilterDialogV2>
+        </FilterDialog>
       )}
       <CustomTag
         ref={componentRef}
@@ -697,20 +684,11 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
                     <div
                       style={{
                         width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
-                        minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
-                        [`margin${transformRightRTL}`]: '1rem'
+                        minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px'
                       }}
                       className={classes.lastSpacer}
                     >
-                      <div
-                        className={classes.filterBarButtons}
-                        ref={filterBarButtonsRef}
-                        style={{
-                          [`margin${transformRightRTL}`]: '1rem',
-                          left: isRtl ? 0 : 'auto',
-                          right: isRtl ? 'auto' : 0
-                        }}
-                      >
+                      <div className={classes.filterBarButtons} ref={filterBarButtonsRef}>
                         {ToolbarButtons}
                       </div>
                     </div>
