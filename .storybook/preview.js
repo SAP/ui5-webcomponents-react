@@ -205,7 +205,7 @@ export const globalTypes = {
   language: {
     title: 'Languages',
     description: 'Languages',
-    defaultValue: 'locale',
+    defaultValue: 'local',
     toolbar: {
       icon: 'globe',
       items: languages.map((item) => ({ value: item.id, title: item.language }))
