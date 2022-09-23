@@ -42,6 +42,7 @@ const isTablet = Device.isTablet();
 - showGo: removed
 - showRestoreButton: new name showResetButton
 - onFiltersDialogSelectionChange: element was previously React component array now HTML element array
+- onFiltersDialogClear: removed
 
 
  */
@@ -156,12 +157,6 @@ export interface FilterBarPropTypes extends CommonProps {
     }>
   ) => void;
   /**
-   * The event is fired when the "Clear" button of the filter configuration dialog is clicked.
-   */
-  onFiltersDialogClear?: (
-    event: CustomEvent<{ dialogSearch: HTMLElement; filters: HTMLElement[]; search: HTMLElement }>
-  ) => void;
-  /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked.
    */
   onFiltersDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
@@ -252,7 +247,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     onFiltersDialogCancel,
     onFiltersDialogClose,
     onFiltersDialogSave,
-    onFiltersDialogClear,
     onClear,
     onFiltersDialogSelectionChange,
     onFiltersDialogSearch,

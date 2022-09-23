@@ -5,9 +5,15 @@ import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
-import { BarDesign } from '../../enums';
-import { TitleLevel } from '../../enums';
+import {
+  BarDesign,
+  ButtonDesign,
+  FlexBoxAlignItems,
+  FlexBoxDirection,
+  FlexBoxJustifyContent,
+  TableMode,
+  TitleLevel
+} from '../../enums';
 import {
   ACTIVE,
   ALL,
@@ -46,7 +52,7 @@ import {
   Select,
   Title
 } from '../../webComponents';
-import { FilterGroupItem, FilterGroupItemPropTypes } from '../FilterGroupItem';
+import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSpacer } from '../ToolbarSpacer';
@@ -138,10 +144,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     children,
     showRestoreButton,
     showSearch,
-    renderFBSearch,
     handleRestoreFilters,
     handleDialogSave,
-    handleSearchValueChange,
     handleSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
@@ -154,7 +158,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   } = props;
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
-  const searchRef = useRef(null);
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
@@ -317,7 +320,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
-    let dialogFilters = [];
+    const dialogFilters = [];
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {
