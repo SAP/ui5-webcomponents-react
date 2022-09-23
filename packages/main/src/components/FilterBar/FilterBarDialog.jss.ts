@@ -23,11 +23,6 @@ const styles = {
   searchInput: {
     width: '100%'
   },
-  headerContainer: {
-    paddingBlock: 0,
-    paddingInline: '1rem',
-    boxShadow: ThemingParameters.sapContent_HeaderShadow
-  },
   dialogComponent: {
     width: '40rem',
     '&::part(content), &::part(footer), &::part(header)': {
@@ -46,6 +41,11 @@ const styles = {
     '& ui5-input': {
       width: '100%'
     }
+  },
+  subheaderContainer: {
+    paddingBlock: 0,
+    paddingInline: '1rem',
+    boxShadow: ThemingParameters.sapContent_HeaderShadow
   },
   subheader: {
     paddingBlockEnd: '0.25rem',

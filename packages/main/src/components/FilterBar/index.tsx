@@ -1,11 +1,4 @@
-import {
-  debounce,
-  Device,
-  enrichEventWithDetails,
-  useI18nBundle,
-  useIsRTL,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, Device, enrichEventWithDetails, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -27,7 +20,7 @@ import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTE
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
-import { Button } from '../../webComponents/Button';
+import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { InputPropTypes } from '../../webComponents/Input';
 import { Toolbar } from '../Toolbar';
@@ -40,8 +33,6 @@ import { filterValue, renderSearchWithValue, syncRef } from './utils';
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();
 
-//todo missing props: useSnapshot
-//todo changed props:
 //todo deprecated props: showClearButton
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -68,7 +59,7 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines whether the toolbar on top of the filter items is displayed.
    *
-   * __Note__: If set to `false`, `variants`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
+   * __Note__: If set to `false`, `header`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   useToolbar?: boolean;
   // todo breaking filterBarExpanded changed to:
@@ -154,6 +145,7 @@ export interface FilterBarPropTypes extends CommonProps {
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible: boolean; filters: HTMLElement[]; search: HTMLElement }>) => void;
+  //todo description for live mode
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
@@ -296,7 +288,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const prevSearchInputPropsValueRef = useRef<string>();
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef(null);
-  const [componentRef, filterBarRef] = useSyncRef<HTMLDivElement>(ref);
+  const filterBtnRef = useRef<ButtonDomRef>(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -387,6 +379,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       onFiltersDialogClose(enrichEventWithDetails(e));
     }
     setDialogOpen(false);
+    filterBtnRef.current?.focus();
   };
 
   const handleGoOnFb = (e) => {
@@ -532,7 +525,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         </Button>
       )}
       {showFilterConfiguration && (
-        <Button onClick={handleDialogOpen} aria-haspopup="dialog" design={ButtonDesign.Transparent}>
+        <Button onClick={handleDialogOpen} aria-haspopup="dialog" design={ButtonDesign.Transparent} ref={filterBtnRef}>
           {`${filtersText}${
             activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
           }`}
@@ -656,7 +649,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         </FilterDialog>
       )}
       <CustomTag
-        ref={componentRef}
+        ref={ref}
         className={cssClasses}
         style={{ ['--_ui5wcr_filter_group_item_flex_basis']: filterContainerWidth, ...style } as CSSProperties}
         slot={slot}

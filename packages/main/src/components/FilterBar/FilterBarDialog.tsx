@@ -3,7 +3,6 @@ import '@ui5/webcomponents-icons/dist/group-2.js';
 import '@ui5/webcomponents-icons/dist/list.js';
 import '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -254,6 +253,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           FilterGroupItemPropTypes & {
             'data-with-values': boolean;
             'data-selected': boolean;
+            'data-react-key': boolean;
           }
         >(child, {
           'data-with-values': showValues,
@@ -261,8 +261,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             selectedFilters !== null
               ? !!selectedFilters?.[child.key]?.selected
               : child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
-          // todo key?
-          //@ts-ignore
           'data-react-key': child.key,
           children: {
             ...child.props.children,
@@ -285,7 +283,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setFilteredAttribute(e.detail.selectedOption.dataset.id);
   };
 
-  //todo can be simplified?
   const handleCheckBoxChange = (e) => {
     e.preventDefault();
     const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
@@ -359,6 +356,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       resizable
       draggable
       className={classes.dialogComponent}
+      preventFocusRestore
       header={
         <FlexBox
           alignItems={FlexBoxAlignItems.Center}
@@ -399,10 +397,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         />
       }
     >
-      <FlexBox direction={FlexBoxDirection.Column}>
-        {/*todo a11y maybe use header tags here*/}
+      <FlexBox direction={FlexBoxDirection.Column} className={classes.subheaderContainer}>
         <Toolbar className={classes.subheader}>
-          <Select onChange={handleAttributeFilterChange} title={fieldsByAttributeText}>
+          <Select
+            onChange={handleAttributeFilterChange}
+            title={fieldsByAttributeText}
+            accessibleName={fieldsByAttributeText}
+          >
             <Option selected={filteredAttribute === 'all'} data-id="all">
               {allText}
             </Option>
@@ -430,10 +431,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         </Toolbar>
         {showSearch && (
           <FlexBox className={classes.searchInputContainer}>
-            {/*todo  clear btn*/}
             <Input
+              noTypeahead
               placeholder={searchForFiltersText}
               onInput={handleSearch}
+              showClearIcon
               icon={<Icon name="search" />}
               ref={dialogSearchRef}
               className={classes.searchInput}
