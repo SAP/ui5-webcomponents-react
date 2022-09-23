@@ -41,6 +41,7 @@ const isTablet = Device.isTablet();
 - filterBarExpanded: new name hideFilterBar
 - showGo: removed
 - showRestoreButton: new name showResetButton
+- onFiltersDialogSelectionChange: element was previously React component array now HTML element array
 
 
  */

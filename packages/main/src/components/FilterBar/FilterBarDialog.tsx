@@ -82,7 +82,7 @@ addCustomCSSWithScoping(
   `:host([data-fbd-disabled="true"]) .ui5-table-multi-select-cell [ui5-checkbox] { pointer-events: none;}`
 );
 
-//todo: add method to customize select
+//todo: ? add method to customize select
 const getActiveFilters = (activeFilterAttribute, filter) => {
   switch (activeFilterAttribute) {
     case 'all':
@@ -307,7 +307,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
 
     if (typeof handleSelectionChange === 'function') {
-      //todo breaking change, element was previously react component
       handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
     }
 
