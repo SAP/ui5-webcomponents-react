@@ -1,4 +1,4 @@
-import { CssSizeVariables, Device, spacing, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, Device, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const phoneStyles = Device.isPhone()
   ? { maxWidth: '100%', maxHeight: '100%', height: '100%', width: '100%', borderRadius: 0, top: 0, left: 0 }
