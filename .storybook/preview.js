@@ -50,7 +50,7 @@ const ThemeProviderDecorator = makeDecorator({
     const svgRef = useRef();
 
     useEffect(() => {
-      if (language === 'locale') {
+      if (language === 'local') {
         setLanguage(null);
       } else {
         setLanguage(language);
