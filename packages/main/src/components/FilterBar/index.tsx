@@ -1,4 +1,4 @@
-import { debounce, Device, enrichEventWithDetails, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -33,7 +33,17 @@ import { filterValue, renderSearchWithValue, syncRef } from './utils';
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();
 
-//todo deprecated props: showClearButton
+/* todo: breaking changes:
+
+- showClearButton: removed
+- search: not available in dialog anymore
+- variant: new name header
+- filterBarExpanded: new name hideFilterBar
+- showGo: removed
+- showRestoreButton: new name showResetButton
+
+
+ */
 export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the filters of the `FilterBar`.
@@ -41,14 +51,12 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
-  // todo breaking change: removed from dialog
   /**
-   * Defines the search field next to the variants of the `FilterBar`.
+   * Defines the search field next to the header of the `FilterBar`.
    *
    * __Note:__ If `useToolbar` is `false` this prop has no effect.
    */
   search?: ReactElement<InputPropTypes>;
-  // todo variant was replaced with header
   /**
    * Specifies header text or variant management that is shown in the toolbar on the first position
    *
@@ -62,7 +70,6 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note__: If set to `false`, `header`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   useToolbar?: boolean;
-  // todo breaking filterBarExpanded changed to:
   /**
    * Defines whether the `FilterBar` is expanded.
    */
@@ -91,20 +98,10 @@ export interface FilterBarPropTypes extends CommonProps {
    * __Note:__ Clicking on the button will open the filter configuration dialog, where you can add/remove filters to the `FilterBar`.
    */
   showFilterConfiguration?: boolean;
-  //todo deprecated
-  /**
-   * Defines whether the "Clear" button is displayed in the filter configuration dialog.
-   */
-  showClearButton?: boolean;
   /**
    * Defines whether the "Reset" button is displayed in the filter configuration dialog.
    */
-  showRestoreButton?: boolean;
-  // todo deprecated
-  /**
-   * Defines whether the "Go" button is displayed in the filter configuration dialog.
-   */
-  showGo?: boolean;
+  showResetButton?: boolean;
   /**
    * Defines whether the "Hide/Show Filters" button is displayed in the `FilterBar`.
    *
@@ -236,13 +233,9 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     activeFiltersCount,
     showClearOnFB,
     showGoOnFB,
-    // todo deprecated
-    // showGo,
     showFilterConfiguration,
     showRestoreOnFB,
-    // todo deprecated
-    // showClearButton,
-    showRestoreButton,
+    showResetButton,
     showSearchOnFiltersDialog,
     hideToggleFiltersButton,
     style,
@@ -631,9 +624,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           handleDialogClose={handleDialogClose}
           handleRestoreFilters={handleRestoreFilters}
           handleSearchValueChange={setSearchValue}
-          showRestoreButton={showRestoreButton}
+          showRestoreButton={showResetButton}
           showSearch={showSearchOnFiltersDialog}
-          renderFBSearch={search}
           handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
           handleDialogSearch={onFiltersDialogSearch}

@@ -1,12 +1,12 @@
 import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject, useRef } from 'react';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { TableCell, TableRow, TableRowDomRef } from '../../webComponents';
+import { TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
@@ -18,7 +18,8 @@ const emptyObject = {};
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   /**
-   * Content of the `FilterGroupItem`.<br />
+   * Content of the `FilterGroupItem`.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.
    */
   children: ReactElement;
@@ -104,11 +105,9 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   // todo use context instead of data attributes
   if (!inFB) {
     return (
-      //todo height, data-react-key
       <TableRow data-react-key={props['data-react-key']} selected={selected} data-fbd-disabled={required}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
-            {/*todo margin*/}
             <Label
               style={{ marginBottom: '0.25rem', color: ThemingParameters.sapTextColor }}
               title={labelTooltip ?? label}
@@ -120,7 +119,6 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
           </FlexBox>
         </TableCell>
         {!withValues && (
-          //todo a11y
           <TableCell style={{ width: '25%' }}>
             {/*todo: use icon when wc fixed anti aliasing issue*/}
             {/*<Icon name="circle-task-2" style={{ transform: 'scale(-50%)' }} />*/}

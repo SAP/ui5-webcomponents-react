@@ -1,6 +1,6 @@
 const styles = {
   filterItem: {
-    marginBottom: '1rem',
+    marginBlockEnd: '1rem',
     flexBasis: 'var(--_ui5wcr_filter_group_item_flex_basis)',
     maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))',
     flexGrow: 1,

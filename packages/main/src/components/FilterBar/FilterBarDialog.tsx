@@ -1,14 +1,13 @@
-import '@ui5/webcomponents-icons/dist/clear-all.js';
-import '@ui5/webcomponents-icons/dist/group-2.js';
-import '@ui5/webcomponents-icons/dist/list.js';
-import '@ui5/webcomponents-icons/dist/search.js';
+import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
+import listIcon from '@ui5/webcomponents-icons/dist/list.js';
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TableMode } from '../../enums';
-import { BarDesign } from '../../enums/BarDesign';
-import { TitleLevel } from '../../enums/TitleLevel';
+import { BarDesign } from '../../enums';
+import { TitleLevel } from '../../enums';
 import {
   ACTIVE,
   ALL,
@@ -28,19 +27,25 @@ import {
   VISIBLE,
   VISIBLE_AND_ACTIVE
 } from '../../i18n/i18n-defaults';
+import { Ui5CustomEvent } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { Panel, Table, TableColumn } from '../../webComponents';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { Dialog } from '../../webComponents/Dialog';
-import { Icon } from '../../webComponents/Icon';
-import { Input } from '../../webComponents/Input';
-import { Option } from '../../webComponents/Option';
-import { SegmentedButton } from '../../webComponents/SegmentedButton';
-import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem';
-import { Select } from '../../webComponents/Select';
-import { Title } from '../../webComponents/Title';
+import {
+  DialogDomRef,
+  Panel,
+  Table,
+  TableColumn,
+  Bar,
+  Button,
+  Dialog,
+  Icon,
+  Input,
+  Option,
+  SegmentedButton,
+  SegmentedButtonItem,
+  Select,
+  Title
+} from '../../webComponents';
 import { FilterGroupItem, FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
@@ -102,27 +107,27 @@ const compareObjects = (firstObj, secondObj) =>
 
 const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
 
-// todo enhance types
 interface FilterDialogPropTypes {
   filterBarRefs: any;
   open: boolean;
-  handleDialogClose: any;
+  handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
   children: any;
   showRestoreButton: boolean;
   showSearch: boolean;
-  renderFBSearch: any;
-  handleRestoreFilters: any;
-  handleDialogSave: any;
-  handleSearchValueChange: any;
-  handleSelectionChange: any;
-  handleDialogSearch: any;
-  handleDialogCancel: any;
-  portalContainer: any;
-  dialogRef: any;
+  handleRestoreFilters: (e, source, filterElements) => void;
+  handleDialogSave: (e, newRefs, updatedToggledFilters, go?: boolean) => void;
+  handleSearchValueChange: React.Dispatch<React.SetStateAction<string>>;
+  handleSelectionChange?: (
+    event: CustomEvent<{ elements: Record<string, HTMLElement>; toggledElements?: Record<string, HTMLElement> }>
+  ) => void;
+  handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
+  handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  portalContainer: Element;
+  dialogRef: React.MutableRefObject<DialogDomRef>;
   isListView: boolean;
-  setIsListView: any;
+  setIsListView: React.Dispatch<React.SetStateAction<boolean>>;
   filteredAttribute: string;
-  setFilteredAttribute: any;
+  setFilteredAttribute: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -189,9 +194,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setSearchString(e.target.value);
   };
   const handleSave = (e, go = false) => {
-    if (renderFBSearch) {
-      handleSearchValueChange(searchRef.current?.children[1].value);
-    }
     if (go) {
       handleDialogSave(e, dialogRefs.current, toggledFilters, true);
     } else {
@@ -213,6 +215,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     if (handleDialogCancel) {
       handleDialogCancel(enrichEventWithDetails(e));
     }
+    // todo check this
     handleDialogClose(e, true);
   };
 
@@ -249,6 +252,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           filterItemProps = filterValue(filterBarItemRef, child);
         }
         if (!child.props.children) return child;
+
         return cloneElement<
           FilterGroupItemPropTypes & {
             'data-with-values': boolean;
@@ -425,8 +429,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             {showValues ? hideValuesText : showValuesText}
           </Button>
           <SegmentedButton onSelectionChange={handleViewChange}>
-            <SegmentedButtonItem icon="list" data-id="list" pressed={isListView} accessibleName={listViewText} />
-            <SegmentedButtonItem icon="group-2" data-id="group" pressed={!isListView} accessibleName={groupViewText} />
+            <SegmentedButtonItem icon={listIcon} data-id="list" pressed={isListView} accessibleName={listViewText} />
+            <SegmentedButtonItem
+              icon={group2Icon}
+              data-id="group"
+              pressed={!isListView}
+              accessibleName={groupViewText}
+            />
           </SegmentedButton>
         </Toolbar>
         {showSearch && (
@@ -436,7 +445,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               placeholder={searchForFiltersText}
               onInput={handleSearch}
               showClearIcon
-              icon={<Icon name="search" />}
+              icon={<Icon name={searchIcon} />}
               ref={dialogSearchRef}
               className={classes.searchInput}
             />
