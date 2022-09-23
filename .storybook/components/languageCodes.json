@@ -1,5 +1,9 @@
 [
   {
+    "id": "locale",
+    "language": "Use local language"
+  },
+  {
     "id": "ar",
     "language": "Arabic (Standard)"
   },

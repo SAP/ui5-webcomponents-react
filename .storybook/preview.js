@@ -50,7 +50,11 @@ const ThemeProviderDecorator = makeDecorator({
     const svgRef = useRef();
 
     useEffect(() => {
-      setLanguage(language);
+      if (language === 'locale') {
+        setLanguage(null);
+      } else {
+        setLanguage(language);
+      }
     }, [language]);
 
     // todo remove this once mdx anchors are working again (https://github.com/storybookjs/storybook/issues/18395)
@@ -201,7 +205,7 @@ export const globalTypes = {
   language: {
     title: 'Languages',
     description: 'Languages',
-    defaultValue: 'en',
+    defaultValue: 'locale',
     toolbar: {
       icon: 'globe',
       items: languages.map((item) => ({ value: item.id, title: item.language }))
