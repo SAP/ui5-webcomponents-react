@@ -66,9 +66,15 @@ const styles = {
       '--ui5wcr_form_full_span': 'span 144'
     }
   },
+  solid: {
+    backgroundColor: ThemingParameters.sapGroup_ContentBackground
+  },
+  transparent: {
+    backgroundColor: 'transparent'
+  },
   formTitle: {
-    borderBottom: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
-    marginBottom: '1.75rem',
+    borderBlockEnd: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
+    marginBlockEnd: '1.75rem',
     gridColumn: 'var(--ui5wcr_form_full_span)'
   },
   ...labelSpanClasses(),

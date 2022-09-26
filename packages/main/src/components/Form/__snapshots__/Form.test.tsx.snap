@@ -3,7 +3,7 @@
 exports[`Create a Form should use a single FormGroup's heading as a Form heading if one is not set 1`] = `
 <DocumentFragment>
   <form
-    class="Form-form Form-labelSpan4"
+    class="Form-form Form-labelSpan4 Form-transparent"
     data-columns="2"
   >
     <h6
@@ -60,7 +60,7 @@ exports[`Create a Form should use a single FormGroup's heading as a Form heading
 exports[`Create a Form size rate L; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
   <form
-    class="Form-form Form-labelSpan4"
+    class="Form-form Form-labelSpan4 Form-transparent"
     data-columns="1"
   >
     <ui5-title
@@ -73,6 +73,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
     <h6
       aria-label="Group 1"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 1"
     >
       Group 1
@@ -121,6 +122,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
     <h6
       aria-label="Group 2"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 2"
     >
       Group 2
@@ -173,7 +175,7 @@ exports[`Create a Form size rate L; should create Label and Element with 33% and
 exports[`Create a Form size rate M; should create Label and Element with 16% and 83% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
   <form
-    class="Form-form Form-labelSpan2"
+    class="Form-form Form-labelSpan2 Form-transparent"
     data-columns="1"
   >
     <ui5-title
@@ -186,6 +188,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
     <h6
       aria-label="Group 1"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 1"
     >
       Group 1
@@ -234,6 +237,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
     <h6
       aria-label="Group 2"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 2"
     >
       Group 2
@@ -286,7 +290,7 @@ exports[`Create a Form size rate M; should create Label and Element with 16% and
 exports[`Create a Form size rate S; should create Label and Element with 100% width and display: block for top FormItem div 1`] = `
 <DocumentFragment>
   <form
-    class="Form-form Form-labelSpan12"
+    class="Form-form Form-labelSpan12 Form-transparent"
     data-columns="1"
   >
     <ui5-title
@@ -299,6 +303,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
     <h6
       aria-label="Group 1"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 1"
     >
       Group 1
@@ -345,6 +350,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
     <h6
       aria-label="Group 2"
       class="FormGroup-title"
+      data-component-name="FormGroupTitle"
       title="Group 2"
     >
       Group 2
@@ -395,7 +401,7 @@ exports[`Create a Form size rate S; should create Label and Element with 100% wi
 exports[`Create a Form size rate XL; should create Label and Element with 33% and 66% width respectively and display: flex for top FormItem div 1`] = `
 <DocumentFragment>
   <form
-    class="Form-form Form-labelSpan4"
+    class="Form-form Form-labelSpan4 Form-transparent"
     data-columns="2"
   >
     <ui5-title
