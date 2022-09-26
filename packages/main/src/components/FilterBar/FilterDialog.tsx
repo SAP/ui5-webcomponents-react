@@ -8,11 +8,11 @@ import { createUseStyles } from 'react-jss';
 import {
   BarDesign,
   ButtonDesign,
-  FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxJustifyContent,
   TableMode,
-  TitleLevel
+  TitleLevel,
+  ToolbarStyle
 } from '../../enums';
 import {
   ACTIVE,
@@ -37,19 +37,19 @@ import { Ui5CustomEvent } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { stopPropagation } from '../../internal/stopPropagation';
 import {
-  DialogDomRef,
-  Panel,
-  Table,
-  TableColumn,
   Bar,
   Button,
   Dialog,
+  DialogDomRef,
   Icon,
   Input,
   Option,
+  Panel,
   SegmentedButton,
   SegmentedButtonItem,
   Select,
+  Table,
+  TableColumn,
   Title
 } from '../../webComponents';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
@@ -88,7 +88,6 @@ addCustomCSSWithScoping(
   `:host([data-fbd-disabled="true"]) .ui5-table-multi-select-cell [ui5-checkbox] { pointer-events: none;}`
 );
 
-//todo: ? add method to customize select
 const getActiveFilters = (activeFilterAttribute, filter) => {
   switch (activeFilterAttribute) {
     case 'all':
@@ -364,20 +363,21 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       className={classes.dialogComponent}
       preventFocusRestore
       header={
-        <FlexBox
-          alignItems={FlexBoxAlignItems.Center}
-          className={classes.header}
-          justifyContent={FlexBoxJustifyContent.SpaceBetween}
-        >
-          <Title level={TitleLevel.H4} title={filtersTitle}>
-            {filtersTitle}
-          </Title>
-          {showRestoreButton && (
-            <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
-              {resetText}
-            </Button>
-          )}
-        </FlexBox>
+        <Bar
+          design={BarDesign.Header}
+          startContent={
+            <Title level={TitleLevel.H4} title={filtersTitle}>
+              {filtersTitle}
+            </Title>
+          }
+          endContent={
+            showRestoreButton && (
+              <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
+                {resetText}
+              </Button>
+            )
+          }
+        />
       }
       footer={
         <Bar
@@ -404,7 +404,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       }
     >
       <FlexBox direction={FlexBoxDirection.Column} className={classes.subheaderContainer}>
-        <Toolbar className={classes.subheader}>
+        <Toolbar className={classes.subheader} toolbarStyle={ToolbarStyle.Clear}>
           <Select
             onChange={handleAttributeFilterChange}
             title={fieldsByAttributeText}
