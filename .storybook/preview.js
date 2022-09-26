@@ -7,8 +7,9 @@ import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
-import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
+import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
 import React, { useEffect, useRef } from 'react';
+import { MAPPED_THEMES } from './utils';
 import languages from './components/languageCodes.json';
 
 const argTypesCategoryCommonProps = {
@@ -149,21 +150,14 @@ const ThemeProviderDecorator = makeDecorator({
 
 export const decorators = [ThemeProviderDecorator];
 
-const DEPRECATED_THEMES = new Set(['sap_belize_hcb', 'sap_belize_hcw']);
-
 export const globalTypes = {
   theme: {
     title: 'Theme',
     description: 'Fiori Theme',
-    defaultValue: Themes.sap_fiori_3,
+    defaultValue: 'sap_horizon',
     toolbar: {
       title: 'Theme',
-      items: Object.keys(Themes)
-        .filter((key) => !DEPRECATED_THEMES.has(key))
-        .map((themeKey) => ({
-          value: themeKey,
-          title: themeKey
-        }))
+      items: MAPPED_THEMES
     }
   },
   contentDensity: {
