@@ -67,6 +67,8 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   }, [headerContentRef?.current, setHeaderContentHeight, isIntersecting]);
   const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
+
+  // necessary for dynamically changed font size of the title
   useEffect(() => {
     if (isIntersecting) {
       objectPage.current.scrollTop = 0;
