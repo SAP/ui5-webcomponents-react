@@ -1,0 +1,186 @@
+[
+  {
+    "id": "local",
+    "language": "Local language"
+  },
+  {
+    "id": "ar",
+    "language": "Arabic (Standard)"
+  },
+  {
+    "id": "bg",
+    "language": "Bulgarian"
+  },
+  {
+    "id": "ca",
+    "language": "Catalan"
+  },
+  {
+    "id": "cs",
+    "language": "Czech"
+  },
+  {
+    "id": "cy",
+    "language": "Welsh"
+  },
+  {
+    "id": "da",
+    "language": "Danish"
+  },
+  {
+    "id": "de",
+    "language": "German (Standard)"
+  },
+  {
+    "id": "el",
+    "language": "Greek"
+  },
+  {
+    "id": "en",
+    "language": "English"
+  },
+  {
+    "id": "en_GB",
+    "language": "British English"
+  },
+  {
+    "id": "es",
+    "language": "Spanish"
+  },
+  {
+    "id": "es_MX",
+    "language": "Mexican Spanish"
+  },
+  {
+    "id": "et",
+    "language": "Estonian"
+  },
+  {
+    "id": "fi",
+    "language": "Finnish"
+  },
+  {
+    "id": "fr",
+    "language": "French (Standard)"
+  },
+  {
+    "id": "fr_CA",
+    "language": "Canadian French"
+  },
+  {
+    "id": "hi",
+    "language": "Hindi"
+  },
+  {
+    "id": "hr",
+    "language": "Croatian"
+  },
+  {
+    "id": "hu",
+    "language": "Hungarian"
+  },
+  {
+    "id": "in",
+    "language": "Indonesian"
+  },
+  {
+    "id": "it",
+    "language": "Italian (Standard)"
+  },
+  {
+    "id": "iw",
+    "language": "Hebrew"
+  },
+  {
+    "id": "ja",
+    "language": "Japanese"
+  },
+  {
+    "id": "kk",
+    "language": "Kazakh"
+  },
+  {
+    "id": "ko",
+    "language": "Korean"
+  },
+  {
+    "id": "lt",
+    "language": "Lithuanian"
+  },
+  {
+    "id": "lv",
+    "language": "Latvian"
+  },
+  {
+    "id": "ms",
+    "language": "Malay"
+  },
+  {
+    "id": "nl",
+    "language": "Dutch (Standard)"
+  },
+  {
+    "id": "no",
+    "language": "Norwegian"
+  },
+  {
+    "id": "pl",
+    "language": "Polish"
+  },
+  {
+    "id": "pt_PT",
+    "language": "Portuguese (Portugal)"
+  },
+  {
+    "id": "pt",
+    "language": "Portuguese"
+  },
+  {
+    "id": "ro",
+    "language": "Romanian"
+  },
+  {
+    "id": "ru",
+    "language": "Russian"
+  },
+  {
+    "id": "sh",
+    "language": "Slovenian"
+  },
+  {
+    "id": "sk",
+    "language": "Slovak"
+  },
+  {
+    "id": "sl",
+    "language": "Slovenian"
+  },
+  {
+    "id": "sv",
+    "language": "Swedish"
+  },
+  {
+    "id": "th",
+    "language": "Thai"
+  },
+  {
+    "id": "tr",
+    "language": "Turkish"
+  },
+  {
+    "id": "uk",
+    "language": "Ukrainian"
+  },
+  {
+    "id": "vi",
+    "language": "Vietnamese"
+  },
+  {
+    "id": "zh_CN",
+    "language": "Chinese - Simplified"
+  },
+  {
+    "id": "zh_TW",
+    "language": "Chinese - Traditional"
+  }
+]
