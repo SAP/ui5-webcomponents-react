@@ -498,7 +498,12 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         </Button>
       )}
       {!hideToggleFiltersButton && useToolbar && !isPhone && (
-        <Button onClick={handleToggle} design={ButtonDesign.Transparent} className={classes.showFiltersBtn}>
+        <Button
+          onClick={handleToggle}
+          design={ButtonDesign.Transparent}
+          className={classes.showFiltersBtn}
+          aria-live="polite"
+        >
           {showFilters ? hideFilterBarText : showFilterBarText}
         </Button>
       )}
