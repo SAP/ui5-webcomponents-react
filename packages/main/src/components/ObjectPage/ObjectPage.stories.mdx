@@ -31,6 +31,7 @@ import {
   ObjectPageSubSection,
   ObjectStatus,
   Text,
+  Title,
   ToggleButton,
   ValueState
 } from '../..';
@@ -354,7 +355,11 @@ With these objectes it's possible to e.g. configure the overflow button displaye
             headerTitle={
               <DynamicPageTitle
                 {...titleProps}
-                header={<Title>Custom overflow buttons for navigationActions and actions (width: 1000px)</Title>}
+                header={
+                  <Title wrappingType="Normal">
+                    Custom overflow buttons for navigationActions and actions (width: 1000px)
+                  </Title>
+                }
               />
             }
           />
