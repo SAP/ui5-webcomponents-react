@@ -3,11 +3,14 @@ import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import 'tocbot/dist/tocbot.css';
+import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
-import { ContentDensity, ThemeProvider, Themes } from '@ui5/webcomponents-react';
+import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
 import React, { useEffect, useRef } from 'react';
+import { MAPPED_THEMES } from './utils';
+import languages from './components/languageCodes.json';
 
 const argTypesCategoryCommonProps = {
   table: { category: 'Common props' }
@@ -44,8 +47,16 @@ const ThemeProviderDecorator = makeDecorator({
   name: 'ThemeProvider',
   parameterName: 'ThemeProvider',
   wrapper: (Story, context) => {
-    const { theme, contentDensity, direction } = context.globals;
+    const { theme, contentDensity, direction, language } = context.globals;
     const svgRef = useRef();
+
+    useEffect(() => {
+      if (language === 'local') {
+        setLanguage(null);
+      } else {
+        setLanguage(language);
+      }
+    }, [language]);
 
     // todo remove this once mdx anchors are working again (https://github.com/storybookjs/storybook/issues/18395)
     useEffect(() => {
@@ -139,21 +150,14 @@ const ThemeProviderDecorator = makeDecorator({
 
 export const decorators = [ThemeProviderDecorator];
 
-const DEPRECATED_THEMES = new Set(['sap_belize_hcb', 'sap_belize_hcw']);
-
 export const globalTypes = {
   theme: {
     title: 'Theme',
     description: 'Fiori Theme',
-    defaultValue: Themes.sap_fiori_3,
+    defaultValue: 'sap_horizon',
     toolbar: {
       title: 'Theme',
-      items: Object.keys(Themes)
-        .filter((key) => !DEPRECATED_THEMES.has(key))
-        .map((themeKey) => ({
-          value: themeKey,
-          title: themeKey
-        }))
+      items: MAPPED_THEMES
     }
   },
   contentDensity: {
@@ -179,7 +183,6 @@ export const globalTypes = {
     description: 'Text Direction',
     defaultValue: 'ltr',
     toolbar: {
-      // title: 'Direction',
       icon: 'transfer',
       items: [
         {
@@ -191,6 +194,15 @@ export const globalTypes = {
           title: 'RTL'
         }
       ]
+    }
+  },
+  language: {
+    title: 'Languages',
+    description: 'Languages',
+    defaultValue: 'local',
+    toolbar: {
+      icon: 'globe',
+      items: languages.map((item) => ({ value: item.id, title: item.language }))
     }
   }
 };
