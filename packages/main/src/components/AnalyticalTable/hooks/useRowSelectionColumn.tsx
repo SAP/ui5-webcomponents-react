@@ -35,7 +35,7 @@ const Header = (instance) => {
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
-  if (selectionMode === TableSelectionMode.SingleSelect) {
+  if (selectionMode === TableSelectionMode.SingleSelect || row.isGrouped) {
     return null;
   }
 
