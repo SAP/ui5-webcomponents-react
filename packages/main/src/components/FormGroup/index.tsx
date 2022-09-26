@@ -21,13 +21,13 @@ const useStyles = createUseStyles(
       alignItems: 'center',
       height: CssSizeVariables.sapWcrFormGroupTitleHeight,
       lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
-      fontFamily: ThemingParameters.sapFontFamily,
-      color: ThemingParameters.sapTextColor,
-      fontSize: ThemingParameters.sapFontSize,
+      fontFamily: ThemingParameters.sapFontHeaderFamily,
+      color: ThemingParameters.sapGroup_TitleTextColor,
+      fontSize: ThemingParameters.sapFontHeader6Size,
       fontWeight: 'bold',
       backgroundColor: ThemingParameters.sapGroup_TitleBackground,
       margin: 0,
-      paddingTop: '1rem'
+      marginBlockStart: '1rem'
     },
     spacer: { height: '1rem', gridColumn: 'span 12' }
   },
@@ -44,7 +44,7 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
 
   return (
     <>
-      <h6 className={classes.title} title={titleText} aria-label={titleText}>
+      <h6 className={classes.title} title={titleText} aria-label={titleText} data-component-name="FormGroupTitle">
         {titleText}
       </h6>
       {children}
