@@ -58,7 +58,7 @@ const headerProps = (
   {
     instance: {
       flatRows,
-      webComponentsReactProperties: { onRowSelected, selectionMode },
+      webComponentsReactProperties: { onRowSelect, selectionMode },
       toggleAllRowsSelected,
       isAllRowsSelected
     }
@@ -68,8 +68,8 @@ const headerProps = (
   if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
     const onClick = (e) => {
       toggleAllRowsSelected();
-      if (typeof onRowSelected === 'function') {
-        onRowSelected(
+      if (typeof onRowSelect === 'function') {
+        onRowSelect(
           // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
           enrichEventWithDetails(e, {
             allRowsSelected: !isAllRowsSelected,
