@@ -48,7 +48,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
 
   /**
    * The `header` is positioned in the `DynamicPageTitle` left area.
-   * Use this aggregation to display a `Title` (or any other component that serves as a header)
+   * Use this prop to display a `Title` (or any other component that serves as a heading).
    */
   header?: ReactNode;
   /**

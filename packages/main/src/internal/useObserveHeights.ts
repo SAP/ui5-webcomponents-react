@@ -6,6 +6,7 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(true);
+
   useEffect(() => {
     const headerIntersectionObserver = new IntersectionObserver(
       ([header]) => {
@@ -66,6 +67,16 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   }, [headerContentRef?.current, setHeaderContentHeight, isIntersecting]);
   const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
+
+  // necessary for dynamically changed font size of the title
+  useEffect(() => {
+    if (isIntersecting) {
+      objectPage.current.scrollTop = 0;
+    }
+    if (!isIntersecting) {
+      objectPage.current.scrollTop = totalHeaderHeight;
+    }
+  }, [isIntersecting, totalHeaderHeight]);
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
 };
