@@ -868,7 +868,7 @@ describe('AnalyticalTable', () => {
         <AnalyticalTable
           data={dataWithDisableSelectProp}
           columns={columns}
-          onRowSelected={cb}
+          onRowSelect={cb}
           onRowClick={click}
           selectionMode={TableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
@@ -967,7 +967,7 @@ describe('AnalyticalTable', () => {
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
         tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelected={cb}
+        onRowSelect={cb}
         selectedRowIds={{ '1': true }}
       />
     );
@@ -1021,7 +1021,7 @@ describe('AnalyticalTable', () => {
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
         tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelected={cb}
+        onRowSelect={cb}
         selectedRowIds={{
           '0.0.0.0.0': true,
           '1': true
