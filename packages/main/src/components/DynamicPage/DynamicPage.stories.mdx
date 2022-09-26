@@ -355,7 +355,11 @@ With these objects it's possible to e.g. configure the overflow button displayed
             headerTitle={
               <DynamicPageTitle
                 {...titleProps}
-                header={<Title>Custom overflow buttons for navigationActions and actions (width: 1000px)</Title>}
+                header={
+                  <Title wrappingType="Normal">
+                    Custom overflow buttons for navigationActions and actions (width: 1000px)
+                  </Title>
+                }
               />
             }
           />
