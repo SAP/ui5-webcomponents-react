@@ -1,6 +1,8 @@
 import React, { CSSProperties } from 'react';
 import { TextAlign } from '../../../../enums/TextAlign';
 import { Icon } from '../../../../webComponents/Icon';
+import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 
 const tableGroupExpandCollapseIcon = {
   color: 'var(--sapContent_IconColor)',
@@ -20,10 +22,7 @@ export const Grouped = (props) => {
   return (
     <>
       <span {...row.getToggleRowExpandedProps({ style })}>
-        <Icon
-          name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
-          style={tableGroupExpandCollapseIcon}
-        />
+        <Icon name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow} style={tableGroupExpandCollapseIcon} />
       </span>
       {cell.render('Cell')}
     </>

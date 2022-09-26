@@ -1,4 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 const styles = {
   table: {
@@ -34,15 +35,15 @@ const styles = {
   tableHeaderRow: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     '& div:first-child $th': {
-      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+      borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`
     }
   },
   hasNavigationIndicator: {
     '& $tableHeaderRow :nth-last-child(2) $th': {
-      borderRight: 'none'
+      borderInlineEnd: 'none'
     },
     '& $tr :nth-last-child(2)': {
-      borderRight: 'none'
+      borderInlineEnd: 'none'
     }
   },
   tableHeaderBackgroundElement: {
@@ -59,14 +60,21 @@ const styles = {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     color: ThemingParameters.sapList_HeaderTextColor,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
-    borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
+    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     padding: `0 0.5rem`,
     textAlign: 'start',
     boxSizing: 'border-box',
+    '&:hover': {
+      backgroundColor: ThemingParameters.sapList_Hover_Background,
+      color: CustomThemingParameters.AnalyticalTableHeaderActiveTextColor
+    },
+    '&:active': {
+      backgroundColor: ThemingParameters.sapList_Active_Background,
+      color: CustomThemingParameters.AnalyticalTableHeaderActiveTextColor
+    },
     '&[data-column-id="__ui5wcr__internal_highlight_column"]': {
-      borderRight: '1px solid transparent'
+      borderInlineEnd: '1px solid transparent'
     },
     '&:last-child': {
       '& [data-resizer]': {
@@ -75,7 +83,7 @@ const styles = {
     },
     '&:focus': {
       '&[data-column-id="__ui5wcr__internal_selection_column"]': {
-        borderLeft: '1px solid transparent'
+        borderInlineStart: '1px solid transparent'
       },
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
       outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
@@ -132,13 +140,25 @@ const styles = {
   },
   tableGroupHeader: {
     '&$tr': {
+      fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
       backgroundColor: `${ThemingParameters.sapList_TableGroupHeaderBackground}`,
       border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
       color: ThemingParameters.sapList_TextColor,
       '& $tableCell': {
-        borderRight: 'none'
+        borderInlineEnd: 'none'
       }
     }
+  },
+  tableText: {
+    display: 'inline-block',
+    fontSize: ThemingParameters.sapFontSize,
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    fontWeight: 'normal',
+    overflow: 'hidden',
+    wordWrap: 'normal',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
   },
   tableCell: {
     height: '100%',

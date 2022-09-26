@@ -4,6 +4,7 @@ import React, { forwardRef, Ref, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../../enums/FlexBoxDirection';
 import { GlobalStyleClasses } from '../../../enums/GlobalStyleClasses';
+import { CustomThemingParameters } from '../../../themes/CustomVariables';
 import { FlexBox } from '../../FlexBox';
 
 interface VerticalScrollbarProps {
@@ -20,9 +21,8 @@ interface VerticalScrollbarProps {
 const styles = {
   headerSection: {
     boxSizing: 'border-box',
-    borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
     backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   scrollbar: {
