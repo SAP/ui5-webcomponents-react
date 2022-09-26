@@ -266,7 +266,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   );
 
   const prevChildren = useRef(React.Children.toArray(children));
-  const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60)).current;
+  const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
+
+  useEffect(() => {
+    debouncedOverflowChange.current = debounce(onOverflowChange, 60);
+  }, [onOverflowChange]);
+
   useEffect(() => {
     const haveChildrenChanged = prevChildren.current.length !== React.Children.toArray(children).length;
     if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
@@ -277,14 +282,14 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
-      debouncedOverflowChange({
+      debouncedOverflowChange.current({
         toolbarElements,
         overflowElements,
         target: outerContainer.current
       });
     }
     return () => {
-      debouncedOverflowChange.cancel();
+      debouncedOverflowChange.current.cancel();
     };
   }, [lastVisibleIndex, children, debouncedOverflowChange]);
 
