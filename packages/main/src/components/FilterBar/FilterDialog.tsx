@@ -50,6 +50,8 @@ import {
   Select,
   Table,
   TableColumn,
+  TableDomRef,
+  TableRowDomRef,
   Title
 } from '../../webComponents';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
@@ -112,12 +114,14 @@ interface FilterDialogPropTypes {
   handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
   children: any;
   showRestoreButton: boolean;
-  showSearch: boolean;
   handleRestoreFilters: (e, source, filterElements) => void;
-  handleDialogSave: (e, newRefs, updatedToggledFilters, go?: boolean) => void;
+  handleDialogSave: (e, newRefs, updatedToggledFilters) => void;
   handleSearchValueChange: React.Dispatch<React.SetStateAction<string>>;
   handleSelectionChange?: (
-    event: CustomEvent<{ elements: Record<string, HTMLElement>; toggledElements?: Record<string, HTMLElement> }>
+    event: Ui5CustomEvent<
+      TableDomRef,
+      { element: TableRowDomRef; checked: boolean; selectedRows: unknown[]; previouslySelectedRows: unknown[] }
+    >
   ) => void;
   handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
   handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
@@ -127,6 +131,7 @@ interface FilterDialogPropTypes {
   setIsListView: React.Dispatch<React.SetStateAction<boolean>>;
   filteredAttribute: string;
   setFilteredAttribute: React.Dispatch<React.SetStateAction<string>>;
+  onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -136,12 +141,12 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     handleDialogClose,
     children,
     showRestoreButton,
-    showSearch,
     handleRestoreFilters,
     handleDialogSave,
     handleSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
+    onAfterFiltersDialogOpen,
     portalContainer,
     dialogRef,
     isListView,
@@ -189,12 +194,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     }
     setSearchString(e.target.value);
   };
-  const handleSave = (e, go = false) => {
-    if (go) {
-      handleDialogSave(e, dialogRefs.current, toggledFilters, true);
-    } else {
-      handleDialogSave(e, dialogRefs.current, toggledFilters);
-    }
+  const handleSave = (e) => {
+    handleDialogSave(e, dialogRefs.current, toggledFilters);
   };
 
   const handleClose = (e, isCancel = false) => {
@@ -211,22 +212,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     if (handleDialogCancel) {
       handleDialogCancel(enrichEventWithDetails(e));
     }
-    // todo check this
-    handleDialogClose(e, true);
-  };
-
-  const getFilterElements = () => {
-    return {
-      filters: dialogFilterRefs.current,
-      dialogSearch: dialogSearchRef.current
-    };
+    handleDialogClose(e);
   };
 
   const handleRestore = (e) => {
     setSelectedFilters(null);
-    handleRestoreFilters(e, 'dialog', getFilterElements());
+    handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
   };
-
   const handleViewChange = (e) => {
     setIsListView(e.detail.selectedItem.dataset.id === 'list');
   };
@@ -310,10 +302,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       return { ...prev, [changedRowKey]: element.selected };
     });
   };
-  const dialogFilterRefs = useRef([]);
   const renderGroups = () => {
     const groups = {};
-    const dialogFilters = [];
     Children.forEach(renderChildren(), (child) => {
       const childGroups = child.props.groupName ?? 'default';
       if (groups[childGroups]) {
@@ -343,7 +333,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           </Panel>
         );
       });
-    dialogFilterRefs.current = dialogFilters;
     return filterGroups;
   };
 
@@ -352,6 +341,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       ref={dialogRef}
       data-component-name="FilterBarDialog"
       onAfterClose={handleClose}
+      onAfterOpen={onAfterFiltersDialogOpen}
       resizable
       draggable
       className={classes.dialogComponent}
@@ -434,19 +424,17 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             />
           </SegmentedButton>
         </Toolbar>
-        {showSearch && (
-          <FlexBox className={classes.searchInputContainer}>
-            <Input
-              noTypeahead
-              placeholder={searchForFiltersText}
-              onInput={handleSearch}
-              showClearIcon
-              icon={<Icon name={searchIcon} />}
-              ref={dialogSearchRef}
-              className={classes.searchInput}
-            />
-          </FlexBox>
-        )}
+        <FlexBox className={classes.searchInputContainer}>
+          <Input
+            noTypeahead
+            placeholder={searchForFiltersText}
+            onInput={handleSearch}
+            showClearIcon
+            icon={<Icon name={searchIcon} />}
+            ref={dialogSearchRef}
+            className={classes.searchInput}
+          />
+        </FlexBox>
       </FlexBox>
       <Table
         data-component-name="FilterBarDialogTable"

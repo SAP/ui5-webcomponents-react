@@ -19,6 +19,7 @@ import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { TableDomRef, TableRowDomRef } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { DialogDomRef } from '../../webComponents/Dialog';
@@ -43,6 +44,14 @@ const isTablet = Device.isTablet();
 - showRestoreButton: new name showResetButton
 - onFiltersDialogSelectionChange: element was previously React component array now HTML element array
 - onFiltersDialogClear: removed
+- showSearchOnFiltersDialog: removed
+- onRestore: dialogSearch removed
+- onGo: toggledElements removed
+- onClear: dialogSearch removed
+- onFiltersDialogSelectionChange: type changed to UI5CustomEvent, elements & toggledElements removed, element & checked added
+- onFiltersDialogOpen: removed dialog
+- onAfterFiltersDialogOpen: new prop
+
 
 
  */
@@ -121,10 +130,6 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   loading?: boolean;
   /**
-   * Defines whether a search field for filters is displayed in the filter configuration dialog.
-   */
-  showSearchOnFiltersDialog?: boolean;
-  /**
    * Defines whether the "Restore" button is displayed in the `FilterBar`.
    */
   showRestoreOnFB?: boolean;
@@ -146,7 +151,6 @@ export interface FilterBarPropTypes extends CommonProps {
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: CustomEvent<{ visible: boolean; filters: HTMLElement[]; search: HTMLElement }>) => void;
-  //todo description for live mode
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
@@ -161,22 +165,29 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked.
    */
-  onFiltersDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onFiltersDialogCancel?: (event: Ui5CustomEvent) => void;
   /**
    * The event is fired when the filter configuration dialog is opened.
    *
    * __Note:__ By adding `event.preventDefault()` to the function body, opening the dialog is prevented and you can add your own custom component. Even though this is possible, we highly recommend using the default dialog in order to preserve the intended design.
    */
-  onFiltersDialogOpen?: (event: CustomEvent<{ dialog: HTMLElement }>) => void;
+  onFiltersDialogOpen?: (event: CustomEvent) => void;
+  /**
+   * The event is fired after the filter configuration dialog has been opened.
+   */
+  onAfterFiltersDialogOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
-  onFiltersDialogClose?: (event: Ui5CustomEvent<HTMLElement>) => void;
+  onFiltersDialogClose?: (event: Ui5CustomEvent) => void;
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
   onFiltersDialogSelectionChange?: (
-    event: CustomEvent<{ elements: Record<string, HTMLElement>; toggledElements?: Record<string, HTMLElement> }>
+    event: Ui5CustomEvent<
+      TableDomRef,
+      { element: TableRowDomRef; checked: boolean; selectedRows: unknown[]; previouslySelectedRows: unknown[] }
+    >
   ) => void;
   /**
    * The event is fired on input in the filter configuration dialog search field.
@@ -185,15 +196,13 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  onClear?: (event: CustomEvent<{ dialogSearch: HTMLElement; filters: HTMLElement[]; search: HTMLElement }>) => void;
-  //todo check when fired
+  onClear?: (event: CustomEvent<{ filters: HTMLElement[]; search: HTMLElement }>) => void;
   /**
    * The event is fired when the "Go" button is clicked.
    */
   onGo?: (
     event: CustomEvent<{
       elements: Record<string, HTMLElement>;
-      toggledElements?: Record<string, HTMLElement>;
       filters: HTMLElement[];
       search: HTMLElement;
     }>
@@ -202,7 +211,7 @@ export interface FilterBarPropTypes extends CommonProps {
    * The event is fired when the "Restore" button is clicked.
    */
   onRestore?: (
-    event: CustomEvent<{ source: string; filters: HTMLElement[]; search: HTMLElement; dialogSearch?: HTMLElement }>
+    event: CustomEvent<{ source: string; filters: HTMLElement[] | TableRowDomRef[]; search?: HTMLElement }>
   ) => void;
 }
 
@@ -234,7 +243,6 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     showFilterConfiguration,
     showRestoreOnFB,
     showResetButton,
-    showSearchOnFiltersDialog,
     hideToggleFiltersButton,
     style,
     className,
@@ -246,6 +254,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
 
     onToggleFilters,
     onFiltersDialogOpen,
+    onAfterFiltersDialogOpen,
     onFiltersDialogCancel,
     onFiltersDialogClose,
     onFiltersDialogSave,
@@ -336,16 +345,14 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   };
 
   const [executeGo, setExecuteGo] = useState(false);
-  const handleDialogSave = (e, newRefs, updatedToggledFilters, go = false) => {
+  const handleDialogSave = (e, newRefs, updatedToggledFilters) => {
     setDialogRefs(newRefs);
+
     const details = {
       elements: newRefs,
       toggledElements: { ...toggledFilters, ...updatedToggledFilters },
       ...getFilterElements()
     };
-    if (typeof onGo === 'function' && go) {
-      setExecuteGo(enrichEventWithDetails(e, details));
-    }
 
     setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
     if (onFiltersDialogSave) {
@@ -355,12 +362,13 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   };
 
   const handleDialogOpen = (e) => {
-    setDialogOpen(true);
-    if (onFiltersDialogOpen) {
-      onFiltersDialogOpen(enrichEventWithDetails(e, { dialog: dialogRef.current }));
+    if (typeof onFiltersDialogOpen === 'function') {
+      onFiltersDialogOpen(e);
     }
     if (e.defaultPrevented) {
       setDialogOpen(false);
+    } else {
+      setDialogOpen(true);
     }
   };
 
@@ -455,18 +463,19 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
       });
   };
   const handleRestoreFilters = (e, source, filterElements) => {
-    if (source === 'dialog') {
-      setDialogOpen(false);
-      setDialogOpen(true);
-    } else if (source === 'filterBar' && showGoOnFB) {
+    if (source === 'filterBar' && showGoOnFB) {
       setMountFilters(false);
-      setMountFilters(true);
     }
     if (onRestore) {
-      //todo breaking change: search has been removed from filter dialog
       onRestore(enrichEventWithDetails(e, { source, ...filterElements }));
     }
   };
+
+  useEffect(() => {
+    if (!mountFilters) {
+      setMountFilters(true);
+    }
+  }, [mountFilters]);
 
   const handleFBRestore = (e) => {
     handleRestoreFilters(e, 'filterBar', getFilterElements());
@@ -627,11 +636,11 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
           handleRestoreFilters={handleRestoreFilters}
           handleSearchValueChange={setSearchValue}
           showRestoreButton={showResetButton}
-          showSearch={showSearchOnFiltersDialog}
           handleSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}
           handleDialogSearch={onFiltersDialogSearch}
           handleDialogCancel={onFiltersDialogCancel}
+          onAfterFiltersDialogOpen={onAfterFiltersDialogOpen}
           portalContainer={portalContainer}
           dialogRef={dialogRef}
           isListView={isListView}
@@ -650,7 +659,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
         {...rest}
       >
         {loading ? (
-          <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} />
+          <BusyIndicator active className={classes.loadingContainer} size={BusyIndicatorSize.Large} delay={0} />
         ) : (
           <>
             {useToolbar && (
