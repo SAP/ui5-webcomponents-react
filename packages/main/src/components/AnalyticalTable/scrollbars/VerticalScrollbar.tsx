@@ -21,26 +21,21 @@ interface VerticalScrollbarProps {
 const styles = {
   headerSection: {
     boxSizing: 'border-box',
-    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
+    borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
     borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
     backgroundColor: ThemingParameters.sapList_HeaderBackground
   },
   scrollbar: {
     overflowY: 'auto',
-    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    boxSizing: 'border-box'
+    borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`
   },
   bottomSection: {
     flexGrow: 1,
-    backgroundColor: ThemingParameters.sapList_HeaderBackground,
+    backgroundColor: ThemingParameters.sapList_FooterBackground,
     boxSizing: 'border-box',
-    borderRight: 'none',
-    borderBottom: 'none'
-  },
-  bottomSectionWithScrollbar: {
-    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline
   }
 };
 
@@ -52,10 +47,7 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
   const classes = useStyles();
   const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 
-  const horizontalScrollbarSectionStyles = clsx(
-    classes.bottomSection,
-    hasHorizontalScrollbar && classes.bottomSectionWithScrollbar
-  );
+  const horizontalScrollbarSectionStyles = clsx(hasHorizontalScrollbar && classes.bottomSection);
 
   return (
     <FlexBox

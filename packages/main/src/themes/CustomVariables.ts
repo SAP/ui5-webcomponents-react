@@ -17,6 +17,8 @@ export enum CustomVariables {
   SplitterBarBorderFocus = '--ui5wcr_Splitter_BarBorderFocus',
   SplitterBarOutline = '--ui5wcr_Splitter_BarOutline',
   SplitterBarBorderFix = '--ui5wcr_Splitter_BarBorderHighContrastFix',
+  AnalyticalTableOuterBorderBlock = '--ui5wcr-AnalyticalTable-OuterBorderBlock',
+  AnalyticalTableOuterBorderInline = '--ui5wcr-AnalyticalTable-OuterBorderInline',
   AnalyticalTableHeaderFontFamily = '--ui5wcr-AnalyticalTable-HeaderFontFamily',
   AnalyticalTableHeaderBorderWidth = '--ui5wcr-AnalyticalTable-HeaderBorderWidth',
   AnalyticalTableHeaderActiveTextColor = '--ui5wcr-AnalyticalTable-HeaderActiveTextColor'

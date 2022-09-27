@@ -18,6 +18,8 @@ export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.SplitterBarBorderStyle]: `none`,
   [CustomVariables.SplitterBarBorderFocus]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`,
   [CustomVariables.SplitterBarBorderFix]: `${ThemingParameters.sapContent_FocusWidth} solid ${ThemingParameters.sapContent_FocusColor}`,
+  [CustomVariables.AnalyticalTableOuterBorderBlock]: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+  [CustomVariables.AnalyticalTableOuterBorderInline]: `1px solid ${ThemingParameters.sapList_BorderColor}`,
   [CustomVariables.AnalyticalTableHeaderFontFamily]: ThemingParameters.sapFontFamily,
   [CustomVariables.AnalyticalTableHeaderActiveTextColor]: ThemingParameters.sapList_HeaderTextColor,
   [CustomVariables.AnalyticalTableHeaderBorderWidth]: '0.0625rem'

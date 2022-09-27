@@ -19,5 +19,6 @@ export const sapHorizonHcwParameters: Partial<Record<CustomVariables, string>> =
   [CustomVariables.SplitterBarBorderFix]: `none`,
   [CustomVariables.AnalyticalTableHeaderFontFamily]: ThemingParameters.sapFontBoldFamily,
   [CustomVariables.AnalyticalTableHeaderActiveTextColor]: ThemingParameters.sapContent_ContrastTextColor,
-  [CustomVariables.AnalyticalTableHeaderBorderWidth]: '0.188rem'
+  [CustomVariables.AnalyticalTableHeaderBorderWidth]: '0.188rem',
+  [CustomVariables.AnalyticalTableOuterBorderInline]: 'none'
 };

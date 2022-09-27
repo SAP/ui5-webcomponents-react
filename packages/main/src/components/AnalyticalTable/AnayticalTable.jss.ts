@@ -53,16 +53,18 @@ const styles = {
     right: 0,
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
-    borderTop: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
+    borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
+    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
   },
   th: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     color: ThemingParameters.sapList_HeaderTextColor,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
+    borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
     borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
     borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    padding: `0 0.5rem`,
+    paddingInline: ` 0.5rem`,
     textAlign: 'start',
     boxSizing: 'border-box',
     '&:hover': {
@@ -94,6 +96,7 @@ const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     scrollBarWidth: 'none !important',
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
       width: 0,
