@@ -1,20 +1,16 @@
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import { ThemingParameters } from '@ui5/webcomponents-react-base/src';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { TableCell, TableRow } from '../../webComponents';
+import { Icon, TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
-
-const emptyObject = {};
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   /**
@@ -91,51 +87,24 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const withValues = props['data-with-values'];
   const selected = props['data-selected'];
 
-  const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
-
-  const isRtl = useIsRTL(filterGroupItemRef);
-  const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
-
-  const styleClasses = clsx(className, inFB ? classes.filterItem : classes.filterItemDialog);
-
-  const inlineStyle = { [transformMarginRight]: '1rem', ...style };
-
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
 
   // todo use context instead of data attributes
   if (!inFB) {
     return (
+      // todo remove data attribute when table rows can be disabled
       <TableRow data-react-key={props['data-react-key']} selected={selected} data-fbd-disabled={required}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
-            <Label
-              style={{ marginBottom: '0.25rem', color: ThemingParameters.sapTextColor }}
-              title={labelTooltip ?? label}
-              required={required}
-            >
+            <Label className={classes.dialogCellLabel} title={labelTooltip ?? label} required={required}>
               {label}
             </Label>
             {withValues && children}
           </FlexBox>
         </TableCell>
         {!withValues && (
-          <TableCell style={{ width: '25%' }}>
-            {/*todo: use icon when wc fixed anti aliasing issue*/}
-            {/*<Icon name="circle-task-2" style={{ transform: 'scale(-50%)' }} />*/}
-            {active ? (
-              <div
-                style={{
-                  flexGrow: 1,
-                  textAlign: 'center',
-                  color: ThemingParameters.sapNeutralColor,
-                  fontSize: '24px',
-                  WebkitFontSmoothing: 'antialiased',
-                  MozOsxFontSmoothing: 'grayscale'
-                }}
-              >
-                •
-              </div>
-            ) : null}
+          <TableCell className={classes.dialogActiveCell}>
+            {active && <Icon name="circle-task-2" className={classes.dialogActiveIcon} />}
           </TableCell>
         )}
       </TableRow>
@@ -143,7 +112,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   }
 
   return (
-    <div ref={componentRef} slot={slot} {...rest} className={styleClasses} style={inFB ? inlineStyle : emptyObject}>
+    <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required}>
