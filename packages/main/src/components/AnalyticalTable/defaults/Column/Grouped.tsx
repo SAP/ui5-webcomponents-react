@@ -1,8 +1,8 @@
-import React, { CSSProperties } from 'react';
-import { TextAlign } from '../../../../enums/TextAlign';
-import { Icon } from '../../../../webComponents/Icon';
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
+import React, { CSSProperties } from 'react';
+import { TextAlign } from '../../../../enums';
+import { Icon } from '../../../../webComponents';
 
 const tableGroupExpandCollapseIcon = {
   color: 'var(--sapContent_IconColor)',
