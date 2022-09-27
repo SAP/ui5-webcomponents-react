@@ -82,12 +82,6 @@ addCustomCSSWithScoping(
  `
 );
 
-//todo: remove this when it's possible to disable the selection of a row (https://github.com/SAP/ui5-webcomponents/issues/5662)
-addCustomCSSWithScoping(
-  'ui5-table-row',
-  `:host([data-fbd-disabled="true"]) .ui5-table-multi-select-cell [ui5-checkbox] { pointer-events: none;}`
-);
-
 const getActiveFilters = (activeFilterAttribute, filter) => {
   switch (activeFilterAttribute) {
     case 'all':

@@ -92,8 +92,8 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   // todo use context instead of data attributes
   if (!inFB) {
     return (
-      // todo remove data attribute when table rows can be disabled
-      <TableRow data-react-key={props['data-react-key']} selected={selected} data-fbd-disabled={required}>
+      //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
+      <TableRow data-react-key={props['data-react-key']} selected={selected}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label className={classes.dialogCellLabel} title={labelTooltip ?? label} required={required}>
