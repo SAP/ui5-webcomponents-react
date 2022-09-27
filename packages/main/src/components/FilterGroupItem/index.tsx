@@ -1,6 +1,5 @@
-import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
@@ -17,7 +16,7 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Content of the `FilterGroupItem`.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `DatePicker` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.
    */
   children: ReactElement;
   /**
@@ -87,7 +86,6 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const inFB = props['data-in-fb'];
   const withValues = props['data-with-values'];
   const selected = props['data-selected'];
-  const uniqueId = useIsomorphicId();
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
 
@@ -113,28 +111,19 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     );
   }
 
-  let accessibleNameRef = `label-${uniqueId}`;
-  if (!children?.props?.required) {
-    accessibleNameRef += ` aria-required-${uniqueId}`;
-  }
-
   return (
     <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
-          <Label title={labelTooltip ?? label} required={required} id={`label-${uniqueId}`}>
+          <Label title={labelTooltip ?? label} required={required}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
           ${label}`}
           </Label>
         </FlexBox>
-        {/*todo i18n*/}
-        <span style={{ display: 'none' }} aria-hidden id={`aria-required-${uniqueId}`}>
-          required
-        </span>
         {loading ? (
           <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
         ) : (
-          cloneElement(children, { accessibleNameRef })
+          children
         )}
       </div>
     </div>
