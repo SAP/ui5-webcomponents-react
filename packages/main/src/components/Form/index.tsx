@@ -5,8 +5,8 @@ import React, {
   cloneElement,
   CSSProperties,
   forwardRef,
-  ReactNode,
   ReactElement,
+  ReactNode,
   Ref,
   useEffect,
   useMemo,
@@ -14,7 +14,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { TitleLevel } from '../../enums/TitleLevel';
+import { FormBackgroundDesign, TitleLevel } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Title } from '../../webComponents/Title';
 import { styles } from './Form.jss';
@@ -25,6 +25,10 @@ export interface FormPropTypes extends CommonProps {
    * intended design.
    */
   children: ReactNode | ReactNode[];
+  /**
+   * Specifies the background color of the Form content.
+   */
+  backgroundDesign?: FormBackgroundDesign;
   /**
    * Form title
    */
@@ -118,20 +122,21 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
  */
 const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const {
-    titleText,
+    as,
+    backgroundDesign,
     children,
-    className,
-    slot,
-    style,
     columnsS,
     columnsM,
     columnsL,
     columnsXL,
+    className,
     labelSpanS,
     labelSpanM,
     labelSpanL,
     labelSpanXL,
-    as,
+    slot,
+    titleText,
+    style,
     ...rest
   } = props;
 
@@ -273,7 +278,12 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     return [computedFormGroups, titleText];
   }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
 
-  const formClassNames = clsx(classes.form, classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`], className);
+  const formClassNames = clsx(
+    classes.form,
+    classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`],
+    classes[backgroundDesign.toLowerCase()],
+    className
+  );
 
   const CustomTag = as as React.ElementType;
   return (
@@ -299,6 +309,7 @@ Form.displayName = 'Form';
 
 Form.defaultProps = {
   as: 'form',
+  backgroundDesign: FormBackgroundDesign.Transparent,
   columnsS: 1,
   columnsM: 1,
   columnsL: 1,

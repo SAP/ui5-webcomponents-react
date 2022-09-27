@@ -138,7 +138,10 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     selectionMode: TableSelectionMode.SingleSelect,
     selectionBehavior: TableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.Fixed
+    visibleRowCountMode: TableVisibleRowCountMode.Fixed,
+    // TODO remove after deprecations have been removed
+    onColumnsReordered: null,
+    onRowSelected: null
   }}
   argTypes={{
     data: { control: { disable: true } },
@@ -270,12 +273,12 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
   groupable
   header="Table Title"
   infiniteScroll
-  onColumnsReordered={() => {}}
+  onColumnsReorder={() => {}}
   onGroup={() => {}}
   onLoadMore={() => {}}
   onRowClick={() => {}}
   onRowExpandChange={() => {}}
-  onRowSelected={() => {}}
+  onRowSelect={() => {}}
   onSort={() => {}}
   onTableScroll={() => {}}
   rowHeight={44}
@@ -980,8 +983,10 @@ The prop expects a function with an optional parameter containing the `row` inst
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
       onRowSelected: { table: { disable: true } },
+      onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
       onColumnsReordered: { table: { disable: true } },
+      onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
       tableHooks: { table: { disable: true } },
@@ -1004,7 +1009,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       onTableScroll: { table: { disable: true } },
       portalContainer: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
-      scaleXFactor: { table: { disable: true } }
+      scaleXFactor: { table: { disable: true } },
+      retainColumnWidth: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -1162,8 +1168,10 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
       onRowSelected: { table: { disable: true } },
+      onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
       onColumnsReordered: { table: { disable: true } },
+      onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
       tableHooks: { table: { disable: true } },
@@ -1189,6 +1197,7 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
       scaleXFactor: { table: { disable: true } },
+      retainColumnWidth: { table: { disable: true } },
       containerHeight: {
         options: [250, 500, 750, 1000],
         control: {
@@ -1223,6 +1232,8 @@ you want the column to "pop-in" the `responsivePopIn` has to be set to `true`, o
 `responsiveMinWidth` exceeds the table width. It's also possible to change the header of the pop-in column by setting the
 `PopInHeader` option.
 
+**Note:** It is recommended to offer column options such as filtering, sorting and grouping only for columns that are always displayed.
+
 In the example below you can have a look at this behavior:
 
 - `800`: The content of the "Action" column is moved to the first column (`responsiveMinWidth: 801`)
@@ -1242,6 +1253,7 @@ In the example below you can have a look at this behavior:
           accessor: 'name'
         },
         {
+          disableSortBy: true,
           responsivePopIn: true,
           responsiveMinWidth: 601,
           PopInHeader: 'Custom Header Text (age)',
@@ -1249,6 +1261,7 @@ In the example below you can have a look at this behavior:
           accessor: 'age'
         },
         {
+          disableSortBy: true,
           responsivePopIn: true,
           responsiveMinWidth: 401,
           Header: 'Friend Name',
@@ -1257,12 +1270,9 @@ In the example below you can have a look at this behavior:
           },
           accessor: 'friend.name'
         },
+        { disableSortBy: true, responsiveMinWidth: 401, Header: 'Friend Age', accessor: 'friend.age' },
         {
-          responsiveMinWidth: 401,
-          Header: 'Friend Age',
-          accessor: 'friend.age'
-        },
-        {
+          disableSortBy: true,
           responsivePopIn: true,
           responsiveMinWidth: 801,
           id: 'actions',
@@ -1307,8 +1317,10 @@ In the example below you can have a look at this behavior:
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
       onRowSelected: { table: { disable: true } },
+      onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
       onColumnsReordered: { table: { disable: true } },
+      onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
       tableHooks: { table: { disable: true } },
@@ -1333,6 +1345,7 @@ In the example below you can have a look at this behavior:
       onTableScroll: { table: { disable: true } },
       showOverlay: { table: { disable: true } },
       scaleXFactor: { table: { disable: true } },
+      retainColumnWidth: { table: { disable: true } },
       containerWidth: {
         options: [400, 600, 800, 'auto'],
         control: {
@@ -1447,7 +1460,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
   >
     {(args) => {
       const [selectedRow, setSelectedRow] = useState();
-      const onRowSelected = (e) => {
+      const onRowSelect = (e) => {
         setSelectedRow(e.detail.row);
       };
       const markNavigatedRow = useCallback(
@@ -1470,7 +1483,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
               withNavigationHighlight
               selectionMode={args.selectionMode}
               markNavigatedRow={markNavigatedRow}
-              onRowSelected={onRowSelected}
+              onRowSelect={onRowSelect}
             />
           )}
         </Panel>
@@ -1484,7 +1497,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
 ```jsx
 export const TableWithNavigationIndicators = () => {
   const [selectedRow, setSelectedRow] = useState();
-  const onRowSelected = (e) => {
+  const onRowSelect = (e) => {
     setSelectedRow(e.detail.row);
   };
   const markNavigatedRow = useCallback(
@@ -1500,7 +1513,7 @@ export const TableWithNavigationIndicators = () => {
       withNavigationHighlight
       selectionMode={selectionMode}
       markNavigatedRow={markNavigatedRow}
-      onRowSelected={onRowSelected}
+      onRowSelect={onRowSelect}
     />
   );
 };

@@ -67,6 +67,8 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   /**
    * Defines where modals are rendered into via `React.createPortal`.
    *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
+   *
    * Defaults to: `document.body`
    */
   portalContainer?: Element;
@@ -265,21 +267,34 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
+  const prevChildren = useRef(React.Children.toArray(children));
+  const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
+
   useEffect(() => {
-    if (lastVisibleIndex !== null && typeof onOverflowChange === 'function') {
+    debouncedOverflowChange.current = debounce(onOverflowChange, 60);
+  }, [onOverflowChange]);
+
+  useEffect(() => {
+    const haveChildrenChanged = prevChildren.current.length !== React.Children.toArray(children).length;
+    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
+      prevChildren.current = React.Children.toArray(children);
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
       const overflowElements = overflowContentRef.current?.children;
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
-      onOverflowChange({
+      debouncedOverflowChange.current({
         toolbarElements,
         overflowElements,
         target: outerContainer.current
       });
     }
-  }, [lastVisibleIndex]);
+    return () => {
+      debouncedOverflowChange.current.cancel();
+    };
+  }, [lastVisibleIndex, children, debouncedOverflowChange]);
+
   const CustomTag = as as React.ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (

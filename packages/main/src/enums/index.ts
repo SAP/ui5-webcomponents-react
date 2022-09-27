@@ -22,6 +22,7 @@ export * from './FlexBoxAlignItems';
 export * from './FlexBoxDirection';
 export * from './FlexBoxJustifyContent';
 export * from './FlexBoxWrap';
+export * from './FormBackgroundDesign';
 export * from './GlobalStyleClasses';
 export * from './GridPosition';
 export * from './IllustrationMessageSize';

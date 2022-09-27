@@ -25,7 +25,7 @@ const getRowProps = (rowProps, { row, instance }) => {
       return;
     }
 
-    const { selectionBehavior, selectionMode, onRowSelected, onRowClick } = webComponentsReactProperties;
+    const { selectionBehavior, selectionMode, onRowSelect, onRowClick } = webComponentsReactProperties;
 
     if (typeof onRowClick === 'function' && e.target?.dataset?.name !== 'internal_selection_column') {
       onRowClick(enrichEventWithDetails(e, { row }));
@@ -50,7 +50,7 @@ const getRowProps = (rowProps, { row, instance }) => {
     instance.toggleRowSelected(row.id);
 
     // fire event
-    if (typeof onRowSelected === 'function') {
+    if (typeof onRowSelect === 'function') {
       const payload = {
         row,
         isSelected: !row.isSelected,
@@ -65,7 +65,7 @@ const getRowProps = (rowProps, { row, instance }) => {
           payload.allRowsSelected = true;
         }
       }
-      onRowSelected(enrichEventWithDetails(e, payload));
+      onRowSelect(enrichEventWithDetails(e, payload));
     }
   };
 

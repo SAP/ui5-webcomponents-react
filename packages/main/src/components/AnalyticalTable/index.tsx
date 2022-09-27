@@ -1,6 +1,7 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
+  deprecationNotice,
   enrichEventWithDetails,
   ThemingParameters,
   useI18nBundle,
@@ -275,7 +276,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   minRows?: number;
   /**
-   * Defines how the table table will render visible rows.
+   * Defines how the table will render visible rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
    * - __"Auto":__ The table automatically fills the height of the surrounding container.
@@ -450,6 +451,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
    *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
+   *
    * Defaults to: `document.body`
    */
   portalContainer?: Element;
@@ -471,8 +474,22 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
   /**
    * Fired when a row is selected or unselected.
+   * __Deprecated: Please use `onRowSelect` instead.__
+   *
+   * @deprecated Please use `onRowSelect` instead.
    */
   onRowSelected?: (
+    e?: CustomEvent<{
+      allRowsSelected: boolean;
+      row?: Record<string, unknown>;
+      isSelected?: boolean;
+      selectedFlatRows: Record<string, unknown>[] | string[];
+    }>
+  ) => void;
+  /**
+   * Fired when a row is selected or unselected.
+   */
+  onRowSelect?: (
     e?: CustomEvent<{
       allRowsSelected: boolean;
       row?: Record<string, unknown>;
@@ -490,8 +507,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
   /**
    * Fired when the columns order is changed.
+   * __Deprecated: Please use `onColumnsReorder` instead.__
+   *
+   * @deprecated Please use `onColumnsReorder` instead.
    */
   onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+
+  /**
+   * Fired when the columns order is changed.
+   */
+  onColumnsReorder?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   /**
    * Fired when the `infiniteScrollThreshold` is reached.
    *
@@ -524,6 +549,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
+// When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
+const sortTypesFallback = {
+  undefined: () => undefined
+};
+
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -537,6 +567,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     className,
     columnOrder,
     columns,
+    data: rawData,
     extension,
     filterable,
     globalFilterValue,
@@ -572,11 +603,14 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     visibleRows,
     withNavigationHighlight,
     withRowHighlight,
+    onColumnsReordered,
+    onColumnsReorder,
     onGroup,
     onLoadMore,
     onRowClick,
     onRowExpandChange,
     onRowSelected,
+    onRowSelect,
     onSort,
     onTableScroll,
     LoadingComponent,
@@ -598,18 +632,33 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
-  const data = useMemo(() => {
-    if (props.data.length === 0) {
-      return props.data;
+  // deprecations
+  useEffect(() => {
+    if (typeof onRowSelected === 'function') {
+      deprecationNotice('AnalyticalTable', `'onRowSelected' is deprecated. Please use 'onRowSelect' instead.`);
     }
-    if (minRows > props.data.length) {
-      const missingRows: number = minRows - props.data.length;
+  }, [onRowSelected]);
+  useEffect(() => {
+    if (typeof onColumnsReordered === 'function') {
+      deprecationNotice(
+        'AnalyticalTable',
+        `'onColumnsReordered' is deprecated. Please use 'onColumnsReorder' instead.`
+      );
+    }
+  }, [onColumnsReordered]);
+
+  const data = useMemo(() => {
+    if (rawData.length === 0) {
+      return rawData;
+    }
+    if (minRows > rawData.length) {
+      const missingRows: number = minRows - rawData.length;
       const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
 
-      return [...props.data, ...emptyRows];
+      return [...rawData, ...emptyRows];
     }
-    return props.data;
-  }, [props.data, minRows]);
+    return rawData;
+  }, [rawData, minRows]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
@@ -625,6 +674,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
+      sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
         translatableTexts: {
           expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
@@ -639,7 +689,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         selectionMode,
         selectionBehavior,
         classes,
-        onRowSelected,
+        onRowSelect: onRowSelect ?? onRowSelected,
         onRowClick,
         onRowExpandChange,
         isTreeTable,
@@ -879,15 +929,13 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    props,
+    onColumnsReorder ?? onColumnsReordered,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
     tableInternalColumns
   );
-
-  const { onColumnsReordered: _0, data: _1, ...propsWithoutOmitted } = rest;
 
   const inlineStyle = useMemo(() => {
     const tableStyles = {
@@ -979,7 +1027,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   return (
     <>
-      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
+      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...rest}>
         {header && (
           <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
             {header}
@@ -1048,14 +1096,14 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                 )
               );
             })}
-            {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-            {loading && props.data?.length === 0 && (
-              <TablePlaceholder columns={visibleColumns} rows={props.minRows} style={noDataStyles} />
+            {loading && rawData?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+            {loading && rawData?.length === 0 && (
+              <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
-            {!loading && props.data?.length === 0 && (
+            {!loading && rawData?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
             )}
-            {props.data?.length > 0 && tableRef.current && (
+            {rawData?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={totalColumnsWidth}

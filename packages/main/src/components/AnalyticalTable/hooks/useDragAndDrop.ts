@@ -5,9 +5,14 @@ const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resizeInfo, columns: any[]) => {
-  const { onColumnsReordered } = props;
-
+export const useDragAndDrop = (
+  onColumnsReorder: (e: CustomEvent) => void,
+  isRtl,
+  setColumnOrder,
+  columnOrder,
+  resizeInfo,
+  columns: any[]
+) => {
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
@@ -48,14 +53,14 @@ export const useDragAndDrop = (props, isRtl, setColumnOrder, columnOrder, resize
       setColumnOrder(tempCols);
 
       const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
-      onColumnsReordered(
+      onColumnsReorder(
         enrichEventWithDetails(e, {
           columnsNewOrder,
           column: columns[draggedColIdx]
         })
       );
     },
-    [columnOrder, onColumnsReordered, columns]
+    [columnOrder, onColumnsReorder, columns]
   );
 
   const handleOnDragEnd = useCallback(() => {

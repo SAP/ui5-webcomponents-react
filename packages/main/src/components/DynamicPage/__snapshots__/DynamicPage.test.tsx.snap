@@ -457,7 +457,7 @@ exports[`DynamicPage hider header button 1`] = `
       style="padding-bottom: 0px;"
     >
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -555,7 +555,7 @@ exports[`DynamicPage hider header button 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -972,7 +972,7 @@ exports[`DynamicPage with content 1`] = `
       style="padding-bottom: 0px;"
     >
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
       >
@@ -1070,7 +1070,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -1150,7 +1150,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -1248,7 +1248,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -1328,7 +1328,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem; z-index: 0;"
       >
@@ -1426,7 +1426,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -1506,7 +1506,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
@@ -1604,7 +1604,7 @@ exports[`DynamicPage with content 1`] = `
         </div>
       </form>
       <form
-        class="Form-form Form-labelSpan4"
+        class="Form-form Form-labelSpan4 Form-transparent"
         data-columns="4"
         style="padding-bottom: 2rem;"
       >
