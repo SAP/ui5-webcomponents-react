@@ -14,6 +14,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import { CustomThemingParameters } from '../../../themes/CustomVariables';
 import { Icon } from '../../../webComponents/Icon';
 import { Text } from '../../Text';
 import { ColumnType } from '../types/ColumnType';
@@ -55,12 +56,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'begin',
     alignItems: 'center',
-    textAlign: 'left',
-    fontFamily: ThemingParameters.sapFontFamily,
+    textAlign: 'start',
+    fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapList_TextColor,
-    background: ThemingParameters.sapList_HeaderBackground,
+    color: 'inherit',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     maxWidth: '100%',
@@ -71,6 +71,8 @@ const styles = {
     boxSizing: 'border-box'
   },
   text: {
+    color: 'inherit',
+    fontFamily: 'inherit',
     width: '100%',
     textAlign: 'start'
   },
@@ -216,7 +218,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         className={className}
         style={{
           ...style,
-          borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
+          borderInlineStart: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
         }}
         aria-haspopup={hasPopover ? 'menu' : undefined}
         role={role}

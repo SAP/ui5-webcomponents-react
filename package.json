@@ -14,7 +14,7 @@
     "test:jest": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "cypress run --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
-    "test": "yarn test:cypress && yarn test",
+    "test": "yarn test:cypress && yarn test:jest",
     "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "lerna run clean --stream && rimraf temp",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
