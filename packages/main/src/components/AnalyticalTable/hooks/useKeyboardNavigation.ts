@@ -181,7 +181,7 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
               // scroll to show full cell if it's only partial visible
-              newElement.scrollIntoView();
+              newElement.scrollIntoView({ block: 'nearest' });
             }
             break;
           }
@@ -193,7 +193,7 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
               // scroll to show full cell if it's only partial visible
-              newElement.scrollIntoView();
+              newElement.scrollIntoView({ block: 'nearest' });
             }
             break;
           }
