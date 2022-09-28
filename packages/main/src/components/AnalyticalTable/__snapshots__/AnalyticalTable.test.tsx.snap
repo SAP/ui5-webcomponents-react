@@ -34,6 +34,9 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -538,6 +541,9 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -1046,6 +1052,9 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -1444,6 +1453,9 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -1908,6 +1920,9 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
             class="AnalyticalTable-tableHeaderBackgroundElement"
           />
           <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
+          />
+          <div
             class="AnalyticalTable-tableHeaderRow"
             data-component-name="AnalyticalTableHeaderRow"
             role="row"
@@ -2280,6 +2295,9 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -2767,6 +2785,9 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -3277,6 +3298,9 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -3822,6 +3846,9 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
             class="AnalyticalTable-tableHeaderBackgroundElement"
           />
           <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
+          />
+          <div
             class="AnalyticalTable-tableHeaderRow"
             data-component-name="AnalyticalTableHeaderRow"
             role="row"
@@ -4323,6 +4350,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -5015,6 +5045,9 @@ exports[`AnalyticalTable custom row height 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -5510,6 +5543,9 @@ exports[`AnalyticalTable expose table instance 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -5901,6 +5937,9 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -6526,6 +6565,9 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -6982,6 +7024,9 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -8320,6 +8365,9 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -8796,6 +8844,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -9164,6 +9215,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -9638,6 +9692,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -10088,6 +10145,9 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -10482,6 +10542,9 @@ exports[`AnalyticalTable render subcomponents 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -11065,6 +11128,9 @@ exports[`AnalyticalTable render without data 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -11293,6 +11359,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -11799,6 +11868,9 @@ exports[`AnalyticalTable with highlight row 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -12340,6 +12412,9 @@ exports[`AnalyticalTable with initial column order 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -12840,6 +12915,9 @@ exports[`AnalyticalTable without selection Column 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
