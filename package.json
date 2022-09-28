@@ -97,8 +97,12 @@
     "vite-plugin-istanbul": "^3.0.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mdx}": [
-      "prettier -config ./prettier.config.cjs --write"
+    "*.{md,mdx,json}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "prettier --write",
+      "eslint"
     ]
   },
   "type": "module",
