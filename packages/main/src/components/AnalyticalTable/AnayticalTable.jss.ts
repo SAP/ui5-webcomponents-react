@@ -54,8 +54,15 @@ const styles = {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
-    borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
-    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`
+  },
+  tableBodyBackgroundElement: {
+    boxSizing: 'border-box',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`
   },
   th: {
     height: CssSizeVariables.sapWcrAnalyticalTableRowHeight,

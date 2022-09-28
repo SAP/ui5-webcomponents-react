@@ -949,22 +949,17 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     }
 
     if (tableState.tableClientWidth > 0) {
-      const styles = {
+      return {
         ...tableStyles,
         ...style
       } as CSSProperties;
-
-      if (totalColumnsWidth < tableState.tableClientWidth) {
-        return { ...styles, borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}` };
-      }
-      return styles;
     }
     return {
       ...tableStyles,
       ...style,
       visibility: 'hidden'
     } as CSSProperties;
-  }, [tableState.tableClientWidth, style, rowHeight, totalColumnsWidth]);
+  }, [tableState.tableClientWidth, style, rowHeight]);
 
   useEffect(() => {
     if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
@@ -1066,6 +1061,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             className={tableClasses}
           >
             <div className={classes.tableHeaderBackgroundElement} />
+            <div className={classes.tableBodyBackgroundElement} />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {

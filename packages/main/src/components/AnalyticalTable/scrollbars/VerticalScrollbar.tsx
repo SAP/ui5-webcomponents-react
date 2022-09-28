@@ -24,12 +24,16 @@ const styles = {
     borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
     borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
     borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
-    backgroundColor: ThemingParameters.sapList_HeaderBackground
+    backgroundColor: ThemingParameters.sapList_HeaderBackground,
+    borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    marginInlineStart: '-1px'
   },
   scrollbar: {
     overflowY: 'auto',
     borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
-    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
+    borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    marginInlineStart: '-1px'
   },
   bottomSection: {
     flexGrow: 1,
@@ -74,7 +78,8 @@ export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref:
         <div
           style={{
             height: `${Math.max(minRows, rows.length) * popInRowHeight}px`,
-            width: '1px'
+            width: '1px',
+            backgroundColor: ThemingParameters.sapList_Background
           }}
         />
       </div>
