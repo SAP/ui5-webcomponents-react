@@ -3,7 +3,6 @@ import {
   debounce,
   deprecationNotice,
   enrichEventWithDetails,
-  ThemingParameters,
   useI18nBundle,
   useIsomorphicId,
   useIsomorphicLayoutEffect,
