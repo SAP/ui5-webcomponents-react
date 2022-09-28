@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
@@ -86,8 +86,20 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   const inFB = props['data-in-fb'];
   const withValues = props['data-with-values'];
   const selected = props['data-selected'];
+  const filterContainerRef = useRef();
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+
+  useEffect(() => {
+    if (required && children && !loading && children?.props?.required === undefined) {
+      const inputElemement = filterContainerRef.current.children[filterContainerRef.current.children.length - 1];
+      if (customElements.get(inputElemement)) {
+        inputElemement.shadowRoot.firstElementChild.setAttribute('aria-required', 'true');
+      } else {
+        inputElemement.setAttribute('aria-required', 'true');
+      }
+    }
+  }, [required, children?.props?.required, loading]);
 
   // todo use context instead of data attributes
   if (!inFB) {
@@ -113,7 +125,10 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
 
   return (
     <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
-      <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
+      <div
+        className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}
+        ref={filterContainerRef}
+      >
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
