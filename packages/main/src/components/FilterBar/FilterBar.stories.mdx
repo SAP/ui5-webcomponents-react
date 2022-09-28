@@ -67,7 +67,7 @@ import {
           <FilterGroupItem label="RatingIndicator" required>
             <RatingIndicator />
           </FilterGroupItem>
-          <FilterGroupItem label="MultiInput" active required>
+          <FilterGroupItem label="MultiInput" active>
             <MultiInput
               tokens={
                 <>
@@ -79,13 +79,13 @@ import {
               }
             />
           </FilterGroupItem>
-          <FilterGroupItem label="Input" required>
+          <FilterGroupItem label="Input">
             <Input placeholder="Placeholder" />
           </FilterGroupItem>
           <FilterGroupItem label="Switch">
             <Switch />
           </FilterGroupItem>
-          <FilterGroupItem label="SELECT w/ initial selected" loading required>
+          <FilterGroupItem label="SELECT w/ initial selected">
             <Select>
               <Option>Option 1</Option>
               <Option selected>Option 2</Option>
@@ -93,7 +93,7 @@ import {
               <Option>Option 4</Option>
             </Select>
           </FilterGroupItem>
-          <FilterGroupItem label="SELECT w/o initial selected" required>
+          <FilterGroupItem label="SELECT w/o initial selected">
             <Select>
               <Option data-key="Test 1" selected icon="add">
                 Test 1
