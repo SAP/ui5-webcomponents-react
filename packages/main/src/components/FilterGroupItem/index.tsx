@@ -75,7 +75,6 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     visible,
     visibleInFilterBar,
     children,
-    style,
     loading,
     className,
     slot,

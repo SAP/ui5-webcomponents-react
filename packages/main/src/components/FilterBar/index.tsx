@@ -39,7 +39,7 @@ const isTablet = Device.isTablet();
 - showClearButton: removed
 - search: not available in dialog anymore
 - variant: new name header
-- filterBarExpanded: new name hideFilterBar
+- filterBarExpanded: new name filterBarCollapsed
 - showGo: removed
 - showRestoreButton: new name showResetButton
 - onFiltersDialogSelectionChange: element was previously React component array now HTML element array
@@ -84,7 +84,7 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines whether the `FilterBar` is expanded.
    */
-  hideFilterBar?: boolean;
+  filterBarCollapsed?: boolean;
   /**
    * Defines the width of the `FilterGroupItems`.
    *
@@ -234,7 +234,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
     children,
     useToolbar,
     loading,
-    hideFilterBar,
+    filterBarCollapsed,
     considerGroupName,
     filterContainerWidth,
     activeFiltersCount,
@@ -267,8 +267,8 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   } = props;
   const initiallyShowFilters = (() => {
     if (useToolbar) {
-      if (hideFilterBar !== undefined) {
-        return hideFilterBar;
+      if (filterBarCollapsed !== undefined) {
+        return filterBarCollapsed;
       }
       return !isTablet;
     }
@@ -317,10 +317,10 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   }, [children, setToggledFilters]);
 
   useEffect(() => {
-    if (hideFilterBar !== undefined) {
-      setShowFilters(useToolbar ? !hideFilterBar : true);
+    if (filterBarCollapsed !== undefined) {
+      setShowFilters(useToolbar ? !filterBarCollapsed : true);
     }
-  }, [setShowFilters, useToolbar, hideFilterBar]);
+  }, [setShowFilters, useToolbar, filterBarCollapsed]);
 
   const classes = useStyles();
 
