@@ -56,7 +56,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'begin',
     alignItems: 'center',
-    textAlign: 'left',
+    textAlign: 'start',
     fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
