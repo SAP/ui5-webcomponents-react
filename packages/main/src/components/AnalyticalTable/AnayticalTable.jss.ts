@@ -112,7 +112,7 @@ const styles = {
     left: 0,
     width: '100%',
     color: ThemingParameters.sapList_TextColor,
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     // needed for vertical virtualization
     marginBottom: '-1px',
     boxSizing: 'border-box',
@@ -121,7 +121,7 @@ const styles = {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&[data-is-selected]': {
-      borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
+      borderBlockEnd: `1px solid ${ThemingParameters.sapList_SelectionBorderColor}`,
       backgroundColor: ThemingParameters.sapList_SelectionBackgroundColor
     },
     '&[data-is-selected]:hover': {
@@ -135,7 +135,7 @@ const styles = {
     '&:active': {
       backgroundColor: ThemingParameters.sapList_Active_Background,
       '& $tableCell': {
-        borderRight: `1px solid ${ThemingParameters.sapList_Active_Background}`,
+        borderInlineEnd: `1px solid ${ThemingParameters.sapList_Active_Background}`,
         color: `${ThemingParameters.sapList_Active_TextColor}`,
         '--sapTextColor': ThemingParameters.sapList_Active_TextColor
       }
@@ -166,11 +166,11 @@ const styles = {
   tableCell: {
     height: '100%',
     boxSizing: 'border-box',
-    borderRight: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+    borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`,
     display: 'inline-flex',
     padding: '0 0.5rem',
     '&:first-child': {
-      borderLeft: `1px solid ${ThemingParameters.sapList_BorderColor}`
+      borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`
     },
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -194,7 +194,7 @@ const styles = {
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    borderBlockEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
   },
   valueStateSuccess: {
     backgroundColor: ThemingParameters.sapSuccessColor
