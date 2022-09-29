@@ -92,7 +92,7 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
   if (!inFB) {
     return (
       //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
-      <TableRow data-react-key={props['data-react-key']} selected={selected}>
+      <TableRow data-react-key={props['data-react-key']} selected={selected} data-required={required}>
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label className={classes.dialogCellLabel} title={labelTooltip ?? label} required={required}>

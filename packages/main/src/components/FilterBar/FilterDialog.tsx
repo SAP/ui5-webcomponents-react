@@ -161,6 +161,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
   const [selectedFilters, setSelectedFilters] = useState(null);
+  const [forceRequired, setForceRequired] = useState<undefined | TableRowDomRef>();
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -285,7 +286,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
       {}
     );
-    setSelectedFilters({ ...prevRowsByKey, ...rowsByKey });
 
     const changedRowKey =
       e.detail.previouslySelectedRows > e.detail.selectedRows
@@ -293,6 +293,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         : compareObjects(rowsByKey, prevRowsByKey);
 
     const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
+
+    // todo: workaround until specific rows can be disabled
+    if (element.dataset?.required === 'true') {
+      setForceRequired(element);
+      return;
+    }
+
+    setSelectedFilters({ ...prevRowsByKey, ...rowsByKey });
 
     if (typeof handleSelectionChange === 'function') {
       handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
@@ -302,6 +310,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       return { ...prev, [changedRowKey]: element.selected };
     });
   };
+
+  useEffect(() => {
+    if (forceRequired) {
+      forceRequired.setAttribute('selected', 'false');
+      setForceRequired(undefined);
+    }
+  }, [forceRequired]);
+
   const renderGroups = () => {
     const groups = {};
     Children.forEach(renderChildren(), (child) => {
