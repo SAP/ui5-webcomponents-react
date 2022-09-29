@@ -28,9 +28,7 @@ describe('VariantManagement', () => {
   test('Selection', async () => {
     const cb = jest.fn((e) => e.detail);
     const { getByTitle, getAllByText, getByText } = await renderWithDefine(
-      <VariantManagement onSelect={cb} showCancelButton>
-        {TwoVariantItems}
-      </VariantManagement>,
+      <VariantManagement onSelect={cb}>{TwoVariantItems}</VariantManagement>,
       ['ui5-li']
     );
     const wcListItem = screen.getByText('VariantItem 1');
@@ -40,7 +38,6 @@ describe('VariantManagement', () => {
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     const btn = getByTitle('Select View');
     const heading = getAllByText('VariantItem 2')[0];
-    const closeBtn = getByText('Cancel');
 
     // initial selected Item
     expect(heading).toHaveTextContent('VariantItem 2');
@@ -57,14 +54,10 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.selectedVariant.children).toBe('VariantItem 1');
     expect(cb.mock.results[0].value.selectedVariant.variantItem).toBeInTheDocument();
 
-    // close popover
-    fireEvent.click(closeBtn);
-    expect(popover.isOpen()).toBeFalsy();
+    await popover.close();
     // open by clicking on heading
     fireEvent.click(getAllByText('VariantItem 1')[0]);
     expect(popover.isOpen()).toBeTruthy();
-    fireEvent.click(closeBtn);
-    expect(popover.isOpen()).toBeFalsy();
   });
 
   test('Disabled', () => {
@@ -155,8 +148,6 @@ describe('VariantManagement', () => {
     rerender(<VariantManagement hideManageVariants>{TwoVariantItems}</VariantManagement>);
     getByText('Save As');
     expect(queryByText('Manage')).toBeNull();
-    rerender(<VariantManagement showCancelButton>{TwoVariantItems}</VariantManagement>);
-    getByText('Cancel');
   });
 
   test('In error state', () => {
@@ -193,11 +184,6 @@ describe('VariantManagement', () => {
     const input = getByPlaceholderText('Search');
     fireEvent.input(input, { target: { value: 'VariantItem 10' } });
     expect(document.querySelectorAll('ui5-li')).toHaveLength(1);
-
-    const resetIcon = getByTitle('Reset');
-    fireEvent.click(resetIcon);
-    expect(input).toHaveValue('');
-    expect(document.querySelectorAll('ui5-li')).toHaveLength(10);
 
     const [a, ...rest] = variantItems;
     rerender(<VariantManagement>{rest}</VariantManagement>);
