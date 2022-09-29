@@ -3,7 +3,7 @@
 exports[`Scatter Chart Check onClick events 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -996,7 +996,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
 exports[`Scatter Chart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <svg
       aria-labelledby="TITLE_ARIA_ID"
@@ -1123,7 +1123,7 @@ exports[`Scatter Chart Loading placeholder 1`] = `
 exports[`Scatter Chart Render chart with data 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -2186,7 +2186,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
 exports[`Scatter Chart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
