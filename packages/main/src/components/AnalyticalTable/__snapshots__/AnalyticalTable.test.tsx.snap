@@ -34,510 +34,7 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
-          class="AnalyticalTable-tableHeaderRow"
-          data-component-name="AnalyticalTableHeaderRow"
-          role="row"
-          style="width: 680px;"
-        >
-          <div
-            class="Resizer-resizer"
-            data-resizer="true"
-            draggable="false"
-            role="separator"
-            style="left: 60px; transform: translateX(-50%);"
-          />
-          <div
-            id="name-1337"
-            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
-          >
-            <div
-              aria-haspopup="menu"
-              class="AnalyticalTable-th"
-              data-column-id="name"
-              data-column-index="0"
-              data-row-index="0"
-              data-visible-column-index="0"
-              data-visible-row-index="0"
-              draggable="true"
-              id="name"
-              role="columnheader"
-              style="position: relative; width: 60px; cursor: pointer;"
-              tabindex="-1"
-            >
-              <div
-                class="TableColumnHeader-header"
-              >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
-                  title="Full Name"
-                >
-                  Name
-                </span>
-                <div
-                  class="TableColumnHeader-iconContainer"
-                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
-                  style="right: 0.5rem;"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="Resizer-resizer"
-            data-resizer="true"
-            draggable="false"
-            role="separator"
-            style="left: 120px; transform: translateX(-50%);"
-          />
-          <div
-            id="age-1337"
-            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
-          >
-            <div
-              aria-haspopup="menu"
-              class="AnalyticalTable-th"
-              data-column-id="age"
-              data-column-index="1"
-              data-row-index="0"
-              data-visible-column-index="1"
-              data-visible-row-index="0"
-              draggable="true"
-              id="age"
-              role="columnheader"
-              style="position: relative; width: 60px; cursor: pointer;"
-              tabindex="-1"
-            >
-              <div
-                class="TableColumnHeader-header"
-              >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
-                  title="Age"
-                >
-                  Age
-                </span>
-                <div
-                  class="TableColumnHeader-iconContainer"
-                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
-                  style="right: 0.5rem;"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="Resizer-resizer"
-            data-resizer="true"
-            draggable="false"
-            role="separator"
-            style="left: 180px; transform: translateX(-50%);"
-          />
-          <div
-            id="friend.name-1337"
-            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
-          >
-            <div
-              aria-haspopup="menu"
-              class="AnalyticalTable-th"
-              data-column-id="friend.name"
-              data-column-index="2"
-              data-row-index="0"
-              data-visible-column-index="2"
-              data-visible-row-index="0"
-              draggable="true"
-              id="friend.name"
-              role="columnheader"
-              style="position: relative; width: 60px; cursor: pointer;"
-              tabindex="-1"
-            >
-              <div
-                class="TableColumnHeader-header"
-              >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
-                  title="Friend Name"
-                >
-                  Friend Name
-                </span>
-                <div
-                  class="TableColumnHeader-iconContainer"
-                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
-                  style="right: 0.5rem;"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="Resizer-resizer"
-            data-resizer="true"
-            draggable="false"
-            role="separator"
-            style="left: 237px; transform: translateX(-50%);"
-          />
-          <div
-            id="friend.age-1337"
-            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
-          >
-            <div
-              aria-haspopup="menu"
-              class="AnalyticalTable-th"
-              data-column-id="friend.age"
-              data-column-index="3"
-              data-row-index="0"
-              data-visible-column-index="3"
-              data-visible-row-index="0"
-              draggable="true"
-              id="friend.age"
-              role="columnheader"
-              style="position: relative; width: 60px; cursor: pointer;"
-              tabindex="-1"
-            >
-              <div
-                class="TableColumnHeader-header"
-              >
-                <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
-                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
-                >
-                  <span>
-                    Friend Age
-                  </span>
-                </span>
-                <div
-                  class="TableColumnHeader-iconContainer"
-                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
-                  style="right: 0.5rem;"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="AnalyticalTable-tbody"
-          data-component-name="AnalyticalTableBody"
-          style="position: relative; overflow-y: auto; height: 220px; width: 240px;"
-        >
-          <div
-            data-component-name="AnalyticalTableBodyScrollableContainer"
-            style="position: relative; height: 2000px; width: 680px;"
-          >
-            <div
-              aria-rowindex="1"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="transform: translateY(0px); position: absolute; box-sizing: border-box; height: 44px;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                data-column-index="0"
-                data-row-index="1"
-                data-selection-cell="false"
-                data-visible-column-index="0"
-                data-visible-row-index="1"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="Fra"
-                >
-                  Fra
-                </span>
-              </div>
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                data-column-index="1"
-                data-row-index="1"
-                data-selection-cell="false"
-                data-visible-column-index="1"
-                data-visible-row-index="1"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="40"
-                >
-                  40
-                </span>
-              </div>
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                data-column-index="2"
-                data-row-index="1"
-                data-selection-cell="false"
-                data-visible-column-index="2"
-                data-visible-row-index="1"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="MAR"
-                >
-                  MAR
-                </span>
-              </div>
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                data-column-index="3"
-                data-row-index="1"
-                data-selection-cell="false"
-                data-visible-column-index="3"
-                data-visible-row-index="1"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="28"
-                >
-                  28
-                </span>
-              </div>
-            </div>
-            <div
-              aria-rowindex="2"
-              class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
-              role="row"
-              style="transform: translateY(400px); position: absolute; box-sizing: border-box; height: 44px;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                data-column-index="0"
-                data-row-index="2"
-                data-selection-cell="false"
-                data-visible-column-index="0"
-                data-visible-row-index="2"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="bla"
-                >
-                  bla
-                </span>
-              </div>
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                data-column-index="1"
-                data-row-index="2"
-                data-selection-cell="false"
-                data-visible-column-index="1"
-                data-visible-row-index="2"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="20"
-                >
-                  20
-                </span>
-              </div>
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                data-column-index="2"
-                data-row-index="2"
-                data-selection-cell="false"
-                data-visible-column-index="2"
-                data-visible-row-index="2"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="Nei"
-                >
-                  Nei
-                </span>
-              </div>
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                data-column-index="3"
-                data-row-index="2"
-                data-selection-cell="false"
-                data-visible-column-index="3"
-                data-visible-row-index="2"
-                role="cell"
-                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
-                tabindex="-1"
-              >
-                <span
-                  class="Text-text Text-noWrap"
-                  title="50"
-                >
-                  50
-                </span>
-              </div>
-            </div>
-            <div
-              aria-rowindex="3"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="transform: translateY(800px); position: absolute; box-sizing: border-box; height: 44px;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="4"
-              class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
-              role="row"
-              style="transform: translateY(1200px); position: absolute; box-sizing: border-box; height: 44px;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-            <div
-              aria-rowindex="5"
-              class="AnalyticalTable-tr"
-              role="row"
-              style="transform: translateY(1600px); position: absolute; box-sizing: border-box; height: 44px;"
-            >
-              <div
-                aria-colindex="1"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="2"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="3"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-              <div
-                aria-colindex="4"
-                class="AnalyticalTable-tableCell"
-                role="cell"
-                style="width: 60px; align-items: center;"
-                tabindex="-1"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span
-    aria-hidden="true"
-    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
-    id="smartScaleModeHelper-1337"
-  />
-</DocumentFragment>
-`;
-
-exports[`AnalyticalTable Loading - Loader 1`] = `
-<DocumentFragment>
-  <div
-    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
-  >
-    <div
-      id="titlebar-1337"
-      style="min-height: 1.5rem; display: flex; align-items: center;"
-    >
-      <ui5-title
-        level="H2"
-        ui5-title=""
-      >
-        Table Title
-      </ui5-title>
-    </div>
-    <div
-      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
-      data-component-name="AnalyticalTableContainerWithScrollbar"
-    >
-      <div
-        aria-colcount="4"
-        aria-labelledby="titlebar-1337"
-        aria-rowcount="5"
-        class="AnalyticalTable-table sapScrollBar"
-        data-component-name="AnalyticalTableContainer"
-        data-per-page="15"
-        role="grid"
-        tabindex="0"
-      >
-        <div
-          class="AnalyticalTable-tableHeaderBackgroundElement"
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -747,7 +244,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -766,7 +263,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -785,7 +282,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -804,7 +301,516 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
+                  title="28"
+                >
+                  28
+                </span>
+              </div>
+            </div>
+            <div
+              aria-rowindex="2"
+              class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
+              role="row"
+              style="transform: translateY(400px); position: absolute; box-sizing: border-box; height: 44px;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="2"
+                data-selection-cell="false"
+                data-visible-column-index="0"
+                data-visible-row-index="2"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="bla"
+                >
+                  bla
+                </span>
+              </div>
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="2"
+                data-selection-cell="false"
+                data-visible-column-index="1"
+                data-visible-row-index="2"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="20"
+                >
+                  20
+                </span>
+              </div>
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="2"
+                data-selection-cell="false"
+                data-visible-column-index="2"
+                data-visible-row-index="2"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="Nei"
+                >
+                  Nei
+                </span>
+              </div>
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="2"
+                data-selection-cell="false"
+                data-visible-column-index="3"
+                data-visible-row-index="2"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="50"
+                >
+                  50
+                </span>
+              </div>
+            </div>
+            <div
+              aria-rowindex="3"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="transform: translateY(800px); position: absolute; box-sizing: border-box; height: 44px;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="4"
+              class="AnalyticalTable-tr AnalyticalTable-alternateRowColor"
+              role="row"
+              style="transform: translateY(1200px); position: absolute; box-sizing: border-box; height: 44px;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+            <div
+              aria-rowindex="5"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="transform: translateY(1600px); position: absolute; box-sizing: border-box; height: 44px;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                role="cell"
+                style="width: 60px; align-items: center;"
+                tabindex="-1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    aria-hidden="true"
+    class="Text-text AnalyticalTable-hiddenSmartColMeasure"
+    id="smartScaleModeHelper-1337"
+  />
+</DocumentFragment>
+`;
+
+exports[`AnalyticalTable Loading - Loader 1`] = `
+<DocumentFragment>
+  <div
+    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column;"
+  >
+    <div
+      id="titlebar-1337"
+      style="min-height: 1.5rem; display: flex; align-items: center;"
+    >
+      <ui5-title
+        level="H2"
+        ui5-title=""
+      >
+        Table Title
+      </ui5-title>
+    </div>
+    <div
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap AnalyticalTable-tableContainerWithScrollBar"
+      data-component-name="AnalyticalTableContainerWithScrollbar"
+    >
+      <div
+        aria-colcount="4"
+        aria-labelledby="titlebar-1337"
+        aria-rowcount="5"
+        class="AnalyticalTable-table sapScrollBar"
+        data-component-name="AnalyticalTableContainer"
+        data-per-page="15"
+        role="grid"
+        tabindex="0"
+      >
+        <div
+          class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableHeaderRow"
+          data-component-name="AnalyticalTableHeaderRow"
+          role="row"
+          style="width: 680px;"
+        >
+          <div
+            class="Resizer-resizer"
+            data-resizer="true"
+            draggable="false"
+            role="separator"
+            style="left: 60px; transform: translateX(-50%);"
+          />
+          <div
+            id="name-1337"
+            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
+          >
+            <div
+              aria-haspopup="menu"
+              class="AnalyticalTable-th"
+              data-column-id="name"
+              data-column-index="0"
+              data-row-index="0"
+              data-visible-column-index="0"
+              data-visible-row-index="0"
+              draggable="true"
+              id="name"
+              role="columnheader"
+              style="position: relative; width: 60px; cursor: pointer;"
+              tabindex="-1"
+            >
+              <div
+                class="TableColumnHeader-header"
+              >
+                <span
+                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-name"
+                  title="Full Name"
+                >
+                  Name
+                </span>
+                <div
+                  class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-name"
+                  style="right: 0.5rem;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="Resizer-resizer"
+            data-resizer="true"
+            draggable="false"
+            role="separator"
+            style="left: 120px; transform: translateX(-50%);"
+          />
+          <div
+            id="age-1337"
+            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
+          >
+            <div
+              aria-haspopup="menu"
+              class="AnalyticalTable-th"
+              data-column-id="age"
+              data-column-index="1"
+              data-row-index="0"
+              data-visible-column-index="1"
+              data-visible-row-index="0"
+              draggable="true"
+              id="age"
+              role="columnheader"
+              style="position: relative; width: 60px; cursor: pointer;"
+              tabindex="-1"
+            >
+              <div
+                class="TableColumnHeader-header"
+              >
+                <span
+                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-age"
+                  title="Age"
+                >
+                  Age
+                </span>
+                <div
+                  class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-age"
+                  style="right: 0.5rem;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="Resizer-resizer"
+            data-resizer="true"
+            draggable="false"
+            role="separator"
+            style="left: 180px; transform: translateX(-50%);"
+          />
+          <div
+            id="friend.name-1337"
+            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
+          >
+            <div
+              aria-haspopup="menu"
+              class="AnalyticalTable-th"
+              data-column-id="friend.name"
+              data-column-index="2"
+              data-row-index="0"
+              data-visible-column-index="2"
+              data-visible-row-index="0"
+              draggable="true"
+              id="friend.name"
+              role="columnheader"
+              style="position: relative; width: 60px; cursor: pointer;"
+              tabindex="-1"
+            >
+              <div
+                class="TableColumnHeader-header"
+              >
+                <span
+                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.name"
+                  title="Friend Name"
+                >
+                  Friend Name
+                </span>
+                <div
+                  class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.name"
+                  style="right: 0.5rem;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="Resizer-resizer"
+            data-resizer="true"
+            draggable="false"
+            role="separator"
+            style="left: 237px; transform: translateX(-50%);"
+          />
+          <div
+            id="friend.age-1337"
+            style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
+          >
+            <div
+              aria-haspopup="menu"
+              class="AnalyticalTable-th"
+              data-column-id="friend.age"
+              data-column-index="3"
+              data-row-index="0"
+              data-visible-column-index="3"
+              data-visible-row-index="0"
+              draggable="true"
+              id="friend.age"
+              role="columnheader"
+              style="position: relative; width: 60px; cursor: pointer;"
+              tabindex="-1"
+            >
+              <div
+                class="TableColumnHeader-header"
+              >
+                <span
+                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  data-component-name="AnalyticalTableHeaderHeaderContentContainer-friend.age"
+                >
+                  <span>
+                    Friend Age
+                  </span>
+                </span>
+                <div
+                  class="TableColumnHeader-iconContainer"
+                  data-component-name="AnalyticalTableHeaderIconsContainer-friend.age"
+                  style="right: 0.5rem;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="AnalyticalTable-tbody"
+          data-component-name="AnalyticalTableBody"
+          style="position: relative; overflow-y: auto; height: 220px; width: 240px;"
+        >
+          <div
+            data-component-name="AnalyticalTableBodyScrollableContainer"
+            style="position: relative; height: 2000px; width: 680px;"
+          >
+            <div
+              aria-rowindex="1"
+              class="AnalyticalTable-tr"
+              role="row"
+              style="transform: translateY(0px); position: absolute; box-sizing: border-box; height: 44px;"
+            >
+              <div
+                aria-colindex="1"
+                class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="1"
+                data-selection-cell="false"
+                data-visible-column-index="0"
+                data-visible-row-index="1"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="Fra"
+                >
+                  Fra
+                </span>
+              </div>
+              <div
+                aria-colindex="2"
+                class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="1"
+                data-selection-cell="false"
+                data-visible-column-index="1"
+                data-visible-row-index="1"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="40"
+                >
+                  40
+                </span>
+              </div>
+              <div
+                aria-colindex="3"
+                class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="1"
+                data-selection-cell="false"
+                data-visible-column-index="2"
+                data-visible-row-index="1"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
+                  title="MAR"
+                >
+                  MAR
+                </span>
+              </div>
+              <div
+                aria-colindex="4"
+                class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="1"
+                data-selection-cell="false"
+                data-visible-column-index="3"
+                data-visible-row-index="1"
+                role="cell"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
+                tabindex="-1"
+              >
+                <span
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -830,7 +836,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -849,7 +855,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -868,7 +874,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -887,7 +893,7 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -1044,6 +1050,9 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -1446,6 +1455,9 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
             class="AnalyticalTable-tableHeaderBackgroundElement"
           />
           <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
+          />
+          <div
             class="AnalyticalTable-tableHeaderRow"
             data-component-name="AnalyticalTableHeaderRow"
             role="row"
@@ -1689,7 +1701,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Fra"
                   >
                     Fra
@@ -1708,7 +1720,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="40"
                   >
                     40
@@ -1727,7 +1739,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="MAR"
                   >
                     MAR
@@ -1746,7 +1758,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="28"
                   >
                     28
@@ -1788,7 +1800,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="bla"
                   >
                     bla
@@ -1807,7 +1819,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="20"
                   >
                     20
@@ -1826,7 +1838,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Nei"
                   >
                     Nei
@@ -1845,7 +1857,7 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="50"
                   >
                     50
@@ -1906,6 +1918,9 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -1992,7 +2007,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text Text-noWrap"
+                        class="AnalyticalTable-tableText"
                         title="Fra"
                       >
                         Fra
@@ -2098,7 +2113,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text Text-noWrap"
+                        class="AnalyticalTable-tableText"
                         title="bla"
                       >
                         bla
@@ -2242,7 +2257,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
             />
           </div>
           <div
-            class="VerticalScrollbar-bottomSection"
+            class=""
           />
         </div>
       </div>
@@ -2280,6 +2295,9 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -2409,7 +2427,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text Text-noWrap"
+                        class="AnalyticalTable-tableText"
                         title="Fra"
                       >
                         Fra
@@ -2501,7 +2519,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="40"
                   >
                     40
@@ -2534,7 +2552,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                       style="height: 44px;"
                     >
                       <span
-                        class="Text-text Text-noWrap"
+                        class="AnalyticalTable-tableText"
                         title="bla"
                       >
                         bla
@@ -2626,7 +2644,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="20"
                   >
                     20
@@ -2718,7 +2736,7 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
             />
           </div>
           <div
-            class="VerticalScrollbar-bottomSection"
+            class=""
           />
         </div>
       </div>
@@ -2767,6 +2785,9 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -2976,7 +2997,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Fra"
                   >
                     Fra
@@ -2995,7 +3016,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="40"
                   >
                     40
@@ -3014,7 +3035,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="MAR"
                   >
                     MAR
@@ -3033,7 +3054,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="28"
                   >
                     28
@@ -3059,7 +3080,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="bla"
                   >
                     bla
@@ -3078,7 +3099,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="20"
                   >
                     20
@@ -3097,7 +3118,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Nei"
                   >
                     Nei
@@ -3116,7 +3137,7 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="50"
                   >
                     50
@@ -3277,6 +3298,9 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -3589,7 +3613,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Fra"
                   >
                     Fra
@@ -3610,7 +3634,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="40"
                   >
                     40
@@ -3631,7 +3655,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="MAR"
                   >
                     MAR
@@ -3652,7 +3676,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="28"
                   >
                     28
@@ -3712,7 +3736,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="bla"
                   >
                     bla
@@ -3733,7 +3757,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="20"
                   >
                     20
@@ -3754,7 +3778,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Nei"
                   >
                     Nei
@@ -3775,7 +3799,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="50"
                   >
                     50
@@ -3820,6 +3844,9 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
         >
           <div
             class="AnalyticalTable-tableHeaderBackgroundElement"
+          />
+          <div
+            class="AnalyticalTable-tableBodyBackgroundElement"
           />
           <div
             class="AnalyticalTable-tableHeaderRow"
@@ -4025,7 +4052,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="40"
                   >
                     40
@@ -4044,7 +4071,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="28"
                   >
                     28
@@ -4063,7 +4090,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="MAR"
                   >
                     MAR
@@ -4082,7 +4109,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Fra"
                   >
                     Fra
@@ -4108,7 +4135,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="20"
                   >
                     20
@@ -4127,7 +4154,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="50"
                   >
                     50
@@ -4146,7 +4173,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="Nei"
                   >
                     Nei
@@ -4165,7 +4192,7 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                   tabindex="-1"
                 >
                   <span
-                    class="Text-text Text-noWrap"
+                    class="AnalyticalTable-tableText"
                     title="bla"
                   >
                     bla
@@ -4323,6 +4350,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -4609,7 +4639,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -4633,7 +4663,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -4657,7 +4687,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -4681,7 +4711,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -4733,7 +4763,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -4757,7 +4787,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -4781,7 +4811,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -4805,7 +4835,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                   style="padding-left: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -5015,6 +5045,9 @@ exports[`AnalyticalTable custom row height 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -5222,7 +5255,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -5241,7 +5274,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -5260,7 +5293,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -5279,7 +5312,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -5305,7 +5338,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -5324,7 +5357,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -5343,7 +5376,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -5362,7 +5395,7 @@ exports[`AnalyticalTable custom row height 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -5508,6 +5541,9 @@ exports[`AnalyticalTable expose table instance 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -5674,7 +5710,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -5693,7 +5729,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -5712,7 +5748,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -5738,7 +5774,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -5757,7 +5793,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -5776,7 +5812,7 @@ exports[`AnalyticalTable expose table instance 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -5901,6 +5937,9 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -6159,7 +6198,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -6180,7 +6219,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -6201,7 +6240,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -6222,7 +6261,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -6264,7 +6303,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -6285,7 +6324,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -6306,7 +6345,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -6327,7 +6366,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -6524,6 +6563,9 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -6769,7 +6811,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -6788,7 +6830,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -6807,7 +6849,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -6826,7 +6868,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -6868,7 +6910,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -6887,7 +6929,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -6906,7 +6948,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -6925,7 +6967,7 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -6982,6 +7024,9 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -7273,7 +7318,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -7297,7 +7342,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7321,7 +7366,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -7345,7 +7390,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -7411,7 +7456,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="asd"
                 >
                   asd
@@ -7435,7 +7480,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7459,7 +7504,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="longlonglong"
                 >
                   longlonglong
@@ -7483,7 +7528,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -7549,7 +7594,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="ABC"
                 >
                   ABC
@@ -7573,7 +7618,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7597,7 +7642,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="DEF"
                 >
                   DEF
@@ -7621,7 +7666,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -7687,7 +7732,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="GHijkl"
                 >
                   GHijkl
@@ -7711,7 +7756,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7735,7 +7780,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="mnop"
                 >
                   mnop
@@ -7759,7 +7804,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -7822,7 +7867,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -7846,7 +7891,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7870,7 +7915,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -7894,7 +7939,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -7946,7 +7991,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -7970,7 +8015,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -7994,7 +8039,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -8018,7 +8063,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -8081,7 +8126,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -8105,7 +8150,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -8129,7 +8174,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -8153,7 +8198,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -8205,7 +8250,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
               >
                 <span />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -8229,7 +8274,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -8253,7 +8298,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -8277,7 +8322,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -8318,6 +8363,9 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -8582,7 +8630,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -8601,7 +8649,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -8620,7 +8668,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -8639,7 +8687,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -8690,7 +8738,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -8711,7 +8759,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -8732,7 +8780,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -8753,7 +8801,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -8794,6 +8842,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -8880,7 +8931,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="Fra"
                     >
                       Fra
@@ -8986,7 +9037,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="bla"
                     >
                       bla
@@ -9130,7 +9181,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
           />
         </div>
         <div
-          class="VerticalScrollbar-bottomSection"
+          class=""
         />
       </div>
     </div>
@@ -9164,6 +9215,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -9293,7 +9347,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="Fra"
                     >
                       Fra
@@ -9385,7 +9439,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -9418,7 +9472,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="bla"
                     >
                       bla
@@ -9510,7 +9564,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -9602,7 +9656,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
           />
         </div>
         <div
-          class="VerticalScrollbar-bottomSection"
+          class=""
         />
       </div>
     </div>
@@ -9636,6 +9690,9 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -9765,7 +9822,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="Fra"
                     >
                       Fra
@@ -9857,7 +9914,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -9890,7 +9947,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                     style="height: 44px;"
                   >
                     <span
-                      class="Text-text Text-noWrap"
+                      class="AnalyticalTable-tableText"
                       title="bla"
                     >
                       bla
@@ -9982,7 +10039,7 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -10086,6 +10143,9 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -10255,7 +10315,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -10293,7 +10353,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -10319,7 +10379,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -10357,7 +10417,7 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -10482,6 +10542,9 @@ exports[`AnalyticalTable render subcomponents 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -10718,7 +10781,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -10740,7 +10803,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -10762,7 +10825,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -10784,7 +10847,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -10837,7 +10900,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   />
                 </span>
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -10859,7 +10922,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -10881,7 +10944,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -10903,7 +10966,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                   style="padding-right: 0px;"
                 />
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -11063,6 +11126,9 @@ exports[`AnalyticalTable render without data 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -11295,6 +11361,9 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
           class="AnalyticalTable-tableHeaderBackgroundElement"
         />
         <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
+        />
+        <div
           class="AnalyticalTable-tableHeaderRow"
           data-component-name="AnalyticalTableHeaderRow"
           role="row"
@@ -11502,7 +11571,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -11521,7 +11590,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -11540,7 +11609,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -11559,7 +11628,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -11585,7 +11654,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -11604,7 +11673,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -11623,7 +11692,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -11642,7 +11711,7 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -11799,6 +11868,9 @@ exports[`AnalyticalTable with highlight row 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -12111,7 +12183,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -12132,7 +12204,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -12153,7 +12225,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -12174,7 +12246,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -12234,7 +12306,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -12255,7 +12327,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -12276,7 +12348,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -12297,7 +12369,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -12338,6 +12410,9 @@ exports[`AnalyticalTable with initial column order 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -12543,7 +12618,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -12562,7 +12637,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -12581,7 +12656,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -12600,7 +12675,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -12626,7 +12701,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -12645,7 +12720,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50
@@ -12664,7 +12739,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -12683,7 +12758,7 @@ exports[`AnalyticalTable with initial column order 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -12840,6 +12915,9 @@ exports[`AnalyticalTable without selection Column 1`] = `
       >
         <div
           class="AnalyticalTable-tableHeaderBackgroundElement"
+        />
+        <div
+          class="AnalyticalTable-tableBodyBackgroundElement"
         />
         <div
           class="AnalyticalTable-tableHeaderRow"
@@ -13051,7 +13129,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Fra"
                 >
                   Fra
@@ -13072,7 +13150,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="40"
                 >
                   40
@@ -13093,7 +13171,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="MAR"
                 >
                   MAR
@@ -13114,7 +13192,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="28"
                 >
                   28
@@ -13142,7 +13220,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="bla"
                 >
                   bla
@@ -13163,7 +13241,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="20"
                 >
                   20
@@ -13184,7 +13262,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="Nei"
                 >
                   Nei
@@ -13205,7 +13283,7 @@ exports[`AnalyticalTable without selection Column 1`] = `
                 tabindex="-1"
               >
                 <span
-                  class="Text-text Text-noWrap"
+                  class="AnalyticalTable-tableText"
                   title="50"
                 >
                   50

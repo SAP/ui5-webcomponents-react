@@ -9,6 +9,7 @@ import {
   Dialog,
   FlexBox,
   FlexBoxAlignItems,
+  FlexBoxJustifyContent,
   Link,
   MessageItem,
   ResponsivePopover,
@@ -174,17 +175,23 @@ to get back to the list view.
               />
             }
             footer={
-              <Bar
-                endContent={
-                  <Button
-                    onClick={() => {
-                      dialogRef.current?.close();
-                    }}
-                  >
-                    Close
-                  </Button>
-                }
-              />
+              <FlexBox
+                alignItems={FlexBoxAlignItems.Center}
+                justifyContent={FlexBoxJustifyContent.End}
+                style={{
+                  width: '100%',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <Button
+                  design={ButtonDesign.Transparent}
+                  onClick={() => {
+                    dialogRef.current?.close();
+                  }}
+                >
+                  Close
+                </Button>
+              </FlexBox>
             }
           >
             <MessageView
@@ -292,6 +299,26 @@ function MyComponent() {
                   </FlexBox>
                 }
               />
+            }
+            footer={
+              <FlexBox
+                alignItems={FlexBoxAlignItems.Center}
+                justifyContent={FlexBoxJustifyContent.End}
+                style={{
+                  paddingBlock: '0.25rem',
+                  width: '100%',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <Button
+                  design={ButtonDesign.Transparent}
+                  onClick={() => {
+                    ref.current?.close();
+                  }}
+                >
+                  Close
+                </Button>
+              </FlexBox>
             }
           >
             <MessageView

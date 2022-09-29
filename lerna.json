@@ -2,10 +2,8 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.28.1",
+  "packages": ["packages/*"],
+  "version": "0.28.2",
   "npmClient": "yarn",
   "command": {
     "version": {
