@@ -313,7 +313,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   useEffect(() => {
     if (forceRequired) {
-      forceRequired.setAttribute('selected', 'false');
+      forceRequired.setAttribute('selected', 'true');
       setForceRequired(undefined);
     }
   }, [forceRequired]);
