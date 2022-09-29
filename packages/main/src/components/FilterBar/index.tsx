@@ -13,14 +13,12 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { ToolbarStyle } from '../../enums/ToolbarStyle';
 import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { TableDomRef, TableRowDomRef } from '../../webComponents';
-import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { InputPropTypes } from '../../webComponents/Input';
