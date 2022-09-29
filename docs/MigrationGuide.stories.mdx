@@ -18,6 +18,56 @@ or the [changelog](?path=/docs/change-log--page)._
 
 ## From 0.28.x to 1.0.1
 
+### FilterBar: implement new design specification
+
+The Design for the `FilterBar` component had some major updates, so we've updated the component accordingly.
+One of these changes is, that the optional Search field (passed via the `search` prop), is no longer available in the `Filters` dialog.
+
+**The following props are removed without replacement as they are no longer specified by the design:**
+
+- `showClearButton`
+- `showGo`
+- `onFiltersDialogClear`
+- `showSearchOnFiltersDialog`
+- `loading` <br />
+  In order to place a loading indicator on the `FilterBar`, please wrap it into the `BusyIndicator` component.
+
+**The following props have been renamed without further modifications:**
+
+- `variant` --> `header`
+- `showRestoreButton` --> `showResetButton`
+
+**The following props have been renamed and changed their logic for a more streamlined API:**
+
+- `filterBarExpanded` --> `filterBarCollapsed` <br />
+  Previously, `filterBarExpanded` was defaulted to `true`. This prop has been replaced by `filterBarCollapsed` with the default value of `false`.
+- `showFilterConfiguration` --> `hideFilterConfiguration` <br />
+  Previously, `showFilterConfiguration` was defaulted to `true`. This prop has been replaced by `hideFilterConfiguration` with the default value of `false`.
+- `useToolbar` --> `hideToolbar` <br />
+  If you wanted to hide the toolbar of the `FilterBar`, you could set the prop `useToolbar` to `false` in earlier versions. This prop has been replaced by `hideToolbar={true}`.
+
+**Full Migration Example (removed props are not listed for brevity):**
+
+```jsx
+// component with 0.28.x
+<FilterBar
+    variant={<Title>Header</Title>}
+    showRestoreButton
+    filterBarExpanded={false}
+    showFilterConfiguration={false}
+    useToolbar={false}
+/>
+
+// becomes with 1.0.0
+<FilterBar
+    header={<Title>Header</Title>}
+    showResetButton
+    filterBarCollapsed
+    hideFilterConfiguration
+    hideToolbar
+/>
+```
+
 ### VariantManagement: removed option to show the "Cancel" button
 
 The "Cancel" button is not part of the design guidelines anymore, so the prop `showCancelButton` has been removed without replacement.

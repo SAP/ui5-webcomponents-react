@@ -13,15 +13,10 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { ToolbarStyle } from '../../enums/ToolbarStyle';
+import { ButtonDesign, ToolbarStyle } from '../../enums';
 import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { TableDomRef, TableRowDomRef } from '../../webComponents';
-import { Button, ButtonDomRef } from '../../webComponents/Button';
-import { DialogDomRef } from '../../webComponents/Dialog';
-import { InputPropTypes } from '../../webComponents/Input';
+import { CommonProps, Ui5CustomEvent } from '../../interfaces';
+import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
@@ -34,24 +29,13 @@ const isTablet = Device.isTablet();
 
 /* todo: breaking changes:
 
-- showClearButton: removed
-- search: not available in dialog anymore
-- variant: new name header
-- filterBarExpanded: new name filterBarCollapsed
-- showGo: removed
-- showRestoreButton: new name showResetButton
 - onFiltersDialogSelectionChange: element was previously React component array now HTML element array
-- onFiltersDialogClear: removed
-- showSearchOnFiltersDialog: removed
 - onRestore: dialogSearch removed
 - onGo: toggledElements removed
 - onClear: dialogSearch removed
 - onFiltersDialogSelectionChange: type changed to UI5CustomEvent, elements & toggledElements removed, element & checked added
 - onFiltersDialogOpen: removed dialog
 - onAfterFiltersDialogOpen: new prop
-- loading: removed
-- showFilterConfiguration: renamed to hideFilterConfiguration and inverted
-- useToolbar: renamed to hideToolbar and inverted
 
 
  */
@@ -82,7 +66,7 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   hideToolbar?: boolean;
   /**
-   * Defines whether the `FilterBar` is expanded.
+   * Defines whether the `FilterBar` is collapsed.
    */
   filterBarCollapsed?: boolean;
   /**
