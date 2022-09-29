@@ -6,8 +6,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
     style="display: flex; flex-direction: column;"
   >
     <div
-      class="has-click-handler"
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
+      class="ChartContainer-container has-click-handler"
+      style="height: calc(undefined * 0.2);"
     >
       <div
         class="recharts-responsive-container"
@@ -135,8 +135,8 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
       </div>
     </div>
     <div
-      class="has-click-handler"
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
+      class="ChartContainer-container has-click-handler"
+      style="height: calc(undefined * 0.8);"
     >
       <div
         class="recharts-responsive-container"
@@ -952,7 +952,8 @@ exports[`ColumnChartWithTrend Loading placeholder 1`] = `
     style="display: flex; flex-direction: column;"
   >
     <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
+      class="ChartContainer-container"
+      style="height: calc(undefined * 0.2);"
     >
       <svg
         aria-labelledby="TITLE_ARIA_ID"
@@ -1034,7 +1035,8 @@ exports[`ColumnChartWithTrend Loading placeholder 1`] = `
       </svg>
     </div>
     <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
+      class="ChartContainer-container"
+      style="height: calc(undefined * 0.8);"
     >
       <svg
         aria-labelledby="TITLE_ARIA_ID"
@@ -1166,7 +1168,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
     style="display: flex; flex-direction: column;"
   >
     <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.2); position: relative;"
+      class="ChartContainer-container"
+      style="height: calc(undefined * 0.2);"
     >
       <div
         class="recharts-responsive-container"
@@ -1294,7 +1297,8 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
       </div>
     </div>
     <div
-      style="font-family: var(--sapFontFamily); width: 100%; height: calc(undefined * 0.8); position: relative;"
+      class="ChartContainer-container"
+      style="height: calc(undefined * 0.8);"
     >
       <div
         class="recharts-responsive-container"
