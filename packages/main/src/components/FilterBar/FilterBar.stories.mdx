@@ -2,7 +2,6 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import '@ui5/webcomponents-icons/dist/nav-back.js';
 import {
   ComboBox,
   ComboBoxItem,
@@ -19,9 +18,7 @@ import {
   StepInput,
   Switch,
   Title,
-  Token,
-  VariantItem,
-  VariantManagement
+  Token
 } from '../..';
 
 <Meta
@@ -40,8 +37,7 @@ import {
   args={{
     search: <Input placeholder={'Search'} />,
     header: <Title>Test</Title>,
-    filterContainerWidth: '13.125rem',
-    showFilterConfiguration: true
+    filterContainerWidth: '13.125rem'
   }}
 />
 
@@ -55,14 +51,9 @@ import {
   <Story name="Default">
     {(args) => {
       return (
-        <FilterBar {...args} showSearchOnFiltersDialog showRestoreButton>
-          <FilterGroupItem label="StepInput" visibleInFilterBar={false}>
-            <StepInput
-              onClick={(e) => {
-                console.log('click');
-                e.stopPropagation();
-              }}
-            />
+        <FilterBar {...args}>
+          <FilterGroupItem label="StepInput">
+            <StepInput />
           </FilterGroupItem>
           <FilterGroupItem label="RatingIndicator" required>
             <RatingIndicator />
@@ -172,11 +163,8 @@ import {
       visibleInFilterBar: {
         description: `Defines whether the filter is visible in the \`FilterBar\` or only in the filter configuration dialog.`
       },
-      useToolbar: { table: { disable: true } },
-      loading: {
-        description: `Defines whether a loading indicator should be shown in the \`FilterGroupItem\`.`
-      },
-      filterBarExpanded: { table: { disable: true } },
+      hideToolbar: { table: { disable: true } },
+      filterBarCollapsed: { table: { disable: true } },
       considerGroupName: {
         description: `Defines whether the \`groupName\` of the \`FilterGroupItems\` is displayed in the filter configuration dialog.`
       },
@@ -184,12 +172,9 @@ import {
       filterContainerWidth: { table: { disable: true } },
       showClearOnFB: { table: { disable: true } },
       showGoOnFB: { table: { disable: true } },
-      showGo: { table: { disable: true } },
-      showFilterConfiguration: { table: { disable: true } },
+      hideFilterConfiguration: { table: { disable: true } },
       showRestoreOnFB: { table: { disable: true } },
-      showClearButton: { table: { disable: true } },
-      showRestoreButton: { table: { disable: true } },
-      showSearchOnFiltersDialog: { table: { disable: true } },
+      showResetButton: { table: { disable: true } },
       search: { table: { disable: true } },
       header: { table: { disable: true } },
       onToggleFilters: { table: { disable: true } },
@@ -198,7 +183,6 @@ import {
       onFiltersDialogCancel: { table: { disable: true } },
       onFiltersDialogClose: { table: { disable: true } },
       onFiltersDialogSave: { table: { disable: true } },
-      onFiltersDialogClear: { table: { disable: true } },
       onClear: { table: { disable: true } },
       onFiltersDialogSelectionChange: { table: { disable: true } },
       onFiltersDialogSearch: { table: { disable: true } },
@@ -209,7 +193,6 @@ import {
       label: 'FilterGroupItem',
       groupName: 'Customizable',
       labelTooltip: 'custom label tooltip',
-      loading: false,
       required: false,
       visible: true,
       visibleInFilterBar: true,
@@ -218,12 +201,11 @@ import {
   >
     {(args) => {
       return (
-        <FilterBar showFilterConfiguration considerGroupName showSearchOnFiltersDialog>
+        <FilterBar considerGroupName>
           <FilterGroupItem
             label={args.label}
             groupName={args.groupName}
             labelTooltip={args.labelTooltip}
-            loading={args.loading}
             required={args.required}
             visible={args.visible}
             visibleInFilterBar={args.visibleInFilterBar}
