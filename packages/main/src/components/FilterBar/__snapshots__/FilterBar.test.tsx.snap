@@ -121,6 +121,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             </div>
             <ui5-button
               aria-label="Select View"
+              class="VariantManagement-navDownBtn ui5-content-density-compact"
               design="Transparent"
               icon="navigation-down-arrow"
               title="Select View"
