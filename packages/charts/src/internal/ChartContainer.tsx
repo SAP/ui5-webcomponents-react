@@ -1,5 +1,6 @@
 import { Label, Loader, type CommonProps } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
@@ -28,6 +29,14 @@ const loaderStyles: CSSProperties = {
 };
 
 const chartContainerStyles = {
+  container: {
+    fontSize: ThemingParameters.sapFontSmallSize,
+    color: ThemingParameters.sapTextColor,
+    fontFamily: ThemingParameters.sapFontFamily,
+    width: '100%',
+    height: '400px',
+    position: 'relative'
+  },
   '@global': {
     '.has-click-handler': {
       '& .recharts-pie-sector, .recharts-bar-rectangles, .recharts-active-dot, .recharts-area-dot': {
@@ -59,21 +68,11 @@ class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCoun
 }
 
 const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
-  const { Placeholder, loading = false, dataset, style, className, slot, children, resizeDebounce, ...rest } = props;
-  useStyles();
-
-  const internalStyles: CSSProperties = {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    color: ThemingParameters.sapTextColor,
-    fontFamily: ThemingParameters.sapFontFamily,
-    width: '100%',
-    height: '400px',
-    position: 'relative',
-    ...(style ?? {})
-  };
+  const { Placeholder, loading = false, dataset, className, slot, children, resizeDebounce, ...rest } = props;
+  const classes = useStyles();
 
   return (
-    <div ref={ref} style={internalStyles} className={className} slot={slot} {...rest}>
+    <div ref={ref} className={clsx(classes.container, className)} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}
