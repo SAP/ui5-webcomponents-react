@@ -1,6 +1,8 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { createUseStyles } from 'react-jss';
+import { BarDesign } from '../../enums';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
@@ -24,6 +26,20 @@ import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
 import { Input } from '../../webComponents/Input';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
+
+const useStyles = createUseStyles(
+  {
+    dialog: {
+      '&::part(footer)': {
+        borderBlockStart: 'none',
+        padding: 0
+      }
+    },
+    input: { width: '100%', marginBlock: '0.1875rem' },
+    checkBoxesContainer: { paddingInline: '0.5rem' }
+  },
+  { name: 'SaveViewDialogStyles' }
+);
 
 interface SaveViewDialogPropTypes {
   onAfterClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
@@ -50,6 +66,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const classes = useStyles();
+  const uniqueId = useIsomorphicId();
 
   const cancelText = i18nBundle.getText(CANCEL);
   const saveText = i18nBundle.getText(SAVE);
@@ -114,11 +132,13 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
 
   return createPortal(
     <Dialog
+      className={classes.dialog}
       ref={saveViewDialogRef}
       headerText={headingText}
       onAfterClose={onAfterClose}
       footer={
         <Bar
+          design={BarDesign.Footer}
           endContent={
             <>
               <Button design={ButtonDesign.Emphasized} onClick={onSave}>
@@ -133,14 +153,14 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       }
     >
       <FlexBox direction={FlexBoxDirection.Column} alignItems={FlexBoxAlignItems.Start}>
-        <Label for="view" showColon>
+        <Label for={`view-${uniqueId}`} showColon>
           {inputLabelText}
         </Label>
         <Input
-          accessibleName="view"
+          accessibleName={inputLabelText}
           ref={inputRef}
-          style={{ width: '100%', margin: '0.1875rem 0' }}
-          id="view"
+          className={classes.input}
+          id={`view-${uniqueId}`}
           value={variantName}
           valueState={!variantNameInvalid ? 'None' : 'Error'}
           valueStateMessage={<div>{variantNameInvalid}</div>}
@@ -149,7 +169,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         <FlexBox
           alignItems={FlexBoxAlignItems.Start}
           direction={FlexBoxDirection.Column}
-          style={{ padding: '0 0.5rem' }}
+          className={classes.checkBoxesContainer}
         >
           {showSetAsDefault && <CheckBox onChange={handleChangeDefault} text={defaultCbLabel} checked={isDefault} />}
           {showShare && <CheckBox onChange={handleChangePublic} text={publicCbLabel} checked={isPublic} />}

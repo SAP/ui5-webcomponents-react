@@ -3,7 +3,7 @@
 exports[`PieChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -440,7 +440,7 @@ exports[`PieChart Check onClick events 1`] = `
 exports[`PieChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <svg
       aria-labelledby="TITLE_ARIA_ID"
@@ -526,7 +526,7 @@ exports[`PieChart Loading placeholder 1`] = `
 exports[`PieChart Render circle chart with data 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -963,7 +963,7 @@ exports[`PieChart Render circle chart with data 1`] = `
 exports[`PieChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"

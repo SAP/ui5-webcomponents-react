@@ -1,3 +1,6 @@
+import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
+import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
+import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
 import { ButtonDesign } from '../../enums/ButtonDesign';
@@ -82,7 +85,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
   }, !!favorite);
-  const iconName = internalFavorite ? 'favorite' : 'unfavorite';
+  const iconName = internalFavorite ? favoriteIcon : unfavoriteIcon;
   const inputRef = useRef(undefined);
 
   const [variantNameInvalid, setVariantNameInvalid] = useState<boolean | string>(false);
@@ -154,11 +157,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       {showOnlyFavorites && (
         <TableCell>
           {isDefault ? (
-            <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
+            <Icon name={favoriteIcon} style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
           ) : (
             <Icon
               aria-label={a11yFavoriteText}
-              title={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
+              title={iconName === favoriteIcon ? favoriteIconTitleText : unfavoriteIconTitleText}
               name={iconName}
               interactive
               style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
@@ -197,7 +200,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
           <Button
             title={a11yDeleteText}
             accessibleName={a11yDeleteText}
-            icon="decline"
+            icon={declineIcon}
             design={ButtonDesign.Transparent}
             onClick={handleDelete}
             data-children={children}
