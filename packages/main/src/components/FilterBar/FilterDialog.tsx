@@ -427,7 +427,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             </Option>
           </Select>
           <ToolbarSpacer />
-          <Button design={ButtonDesign.Transparent} onClick={toggleValues}>
+          <Button design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
             {showValues ? hideValuesText : showValuesText}
           </Button>
           <SegmentedButton onSelectionChange={handleViewChange}>
