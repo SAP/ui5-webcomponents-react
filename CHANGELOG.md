@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.28.2...v1.0.0-rc.0) (2022-09-30)
+
+### Bug Fixes
+
+- **charts:** allow overwriting internal styles via stylesheet or inline ([#3594](https://github.com/SAP/ui5-webcomponents-react/issues/3594)) ([689a44c](https://github.com/SAP/ui5-webcomponents-react/commit/689a44c69cac01fdc1485761240b3a208efd3543))
+- **VariantManagement:** adjust component to design specs ([#3588](https://github.com/SAP/ui5-webcomponents-react/issues/3588)) ([751c14c](https://github.com/SAP/ui5-webcomponents-react/commit/751c14c50bdd8aa3726d7fafba226b3b17d60e66))
+
+### chore
+
+- remove deprecated props ([#3597](https://github.com/SAP/ui5-webcomponents-react/issues/3597)) ([1cab34e](https://github.com/SAP/ui5-webcomponents-react/commit/1cab34e34725557233e5d35e569d59fa6dc8956d))
+
+### Features
+
+- **FilterBar:** update to latest UX specs ([#2731](https://github.com/SAP/ui5-webcomponents-react/issues/2731)) ([a37183f](https://github.com/SAP/ui5-webcomponents-react/commit/a37183fdca33d46bb77e0946f1a5bf0741bb8641)), closes [#3152](https://github.com/SAP/ui5-webcomponents-react/issues/3152) [#3124](https://github.com/SAP/ui5-webcomponents-react/issues/3124) [#2968](https://github.com/SAP/ui5-webcomponents-react/issues/2968) [#2808](https://github.com/SAP/ui5-webcomponents-react/issues/2808)
+- prepare peer dependencies for 1.0.0 ([#3596](https://github.com/SAP/ui5-webcomponents-react/issues/3596)) ([0724381](https://github.com/SAP/ui5-webcomponents-react/commit/07243818291472ca1e1b8ab45863f9c76b152247))
+
+### BREAKING CHANGES
+
+- **ActionSheet**: The prop `alwaysShowHeader` has been removed.
+- **ActionSheet**: The prop `a11yConfig.actionSheetMobileContent.ariaLabel` has been removed. Please use `accessibleName` instead.
+- **AnalyticalTable**: The props `onRowSelected` and `onColumnsReordered` have been removed. Please use `onRowSelect` and `onColumnsReorder` instead.
+- **DynamicPageTitle**: The props `actionsOverflowButton`, `navigationActionsOverflowButton` and `onToolbarOverflowChange` have been removed. Please use the `overflowButton` and `onOverflowChange` properties of the `actionsToolbarProps` and `navigationActionsToolbarProps` props instead. More details can be found in our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page).
+- **FilterBar:** The FilterBar was completely overhauled to adjust to
+  the latest design specs. You can find all breaking changes in our
+  [MigrationGuide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--page).
+- **VariantManagement:** **VariantManagement:** `showCancelButton` prop has been
+  removed without replacement.
+
 ## [0.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v0.28.1...v0.28.2) (2022-09-28)
 
 ### Bug Fixes
