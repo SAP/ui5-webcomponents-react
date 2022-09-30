@@ -1,9 +1,10 @@
-import { useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
+import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Icon, TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
@@ -11,11 +12,10 @@ import styles from './FilterGroupItem.jss';
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
-const emptyObject = {};
-
 export interface FilterGroupItemPropTypes extends CommonProps {
   /**
-   * Content of the `FilterGroupItem`.<br />
+   * Content of the `FilterGroupItem`.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.
    */
   children: ReactElement;
@@ -55,6 +55,10 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
    */
   considerGroupName?: boolean;
+  /**
+   * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
+   */
+  active?: boolean;
 }
 
 /**
@@ -71,26 +75,43 @@ export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref:
     visible,
     visibleInFilterBar,
     children,
-    style,
     loading,
     className,
     slot,
+    active,
     ...rest
   } = props;
 
   const inFB = props['data-in-fb'];
-  const [componentRef, filterGroupItemRef] = useSyncRef<HTMLDivElement>(ref);
-
-  const isRtl = useIsRTL(filterGroupItemRef);
-  const transformMarginRight = isRtl ? 'marginLeft' : 'marginRight';
-
-  const styleClasses = clsx(className, inFB ? classes.filterItem : classes.filterItemDialog);
-
-  const inlineStyle = { [transformMarginRight]: '1rem', ...style };
+  const withValues = props['data-with-values'];
+  const selected = props['data-selected'];
 
   if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+
+  // todo use context instead of data attributes
+  if (!inFB) {
+    return (
+      //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
+      <TableRow data-react-key={props['data-react-key']} selected={selected} data-required={required}>
+        <TableCell>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Label className={classes.dialogCellLabel} title={labelTooltip ?? label} required={required}>
+              {label}
+            </Label>
+            {withValues && children}
+          </FlexBox>
+        </TableCell>
+        {!withValues && (
+          <TableCell className={classes.dialogActiveCell}>
+            {active && <Icon name="circle-task-2" className={classes.dialogActiveIcon} />}
+          </TableCell>
+        )}
+      </TableRow>
+    );
+  }
+
   return (
-    <div ref={componentRef} slot={slot} {...rest} className={styleClasses} style={inFB ? inlineStyle : emptyObject}>
+    <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required}>

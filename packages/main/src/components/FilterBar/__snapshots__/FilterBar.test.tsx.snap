@@ -22,11 +22,24 @@ exports[`FilterBar Render without crashing - default props 1`] = `
           data-component-name="ToolbarChildContainer"
         >
           <ui5-button
+            aria-live="polite"
             class="FilterBar-showFiltersBtn"
             design="Transparent"
             ui5-button=""
           >
             Hide Filter Bar
+          </ui5-button>
+        </div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
+          <ui5-button
+            aria-haspopup="dialog"
+            design="Transparent"
+            ui5-button=""
+          >
+            Filters
           </ui5-button>
         </div>
       </div>
@@ -39,7 +52,7 @@ exports[`FilterBar Render without crashing - default props 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 13.125rem;"
+        style="width: 13.125rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -161,6 +174,30 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           data-component-name="ToolbarChildContainer"
         >
           <ui5-button
+            design="Emphasized"
+            ui5-button=""
+          >
+            Go
+          </ui5-button>
+        </div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
+          <ui5-button
+            aria-live="polite"
+            class="FilterBar-showFiltersBtn"
+            design="Transparent"
+            ui5-button=""
+          >
+            Hide Filter Bar
+          </ui5-button>
+        </div>
+        <div
+          class="Toolbar-childContainer"
+          data-component-name="ToolbarChildContainer"
+        >
+          <ui5-button
             design="Transparent"
             ui5-button=""
           >
@@ -183,34 +220,11 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
           data-component-name="ToolbarChildContainer"
         >
           <ui5-button
-            class="FilterBar-showFiltersBtn"
+            aria-haspopup="dialog"
             design="Transparent"
             ui5-button=""
           >
-            Hide Filter Bar
-          </ui5-button>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-        >
-          <ui5-button
-            aria-haspopup="dialog"
-            design="Default"
-            ui5-button=""
-          >
             Filters (1337)
-          </ui5-button>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-        >
-          <ui5-button
-            design="Emphasized"
-            ui5-button=""
-          >
-            Go
           </ui5-button>
         </div>
       </div>
@@ -223,7 +237,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -251,7 +265,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -277,7 +291,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -313,7 +327,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -361,7 +375,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -424,7 +438,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -469,7 +483,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
         class="FilterGroupItem-filterItem"
         data-in-fb="true"
         data-with-toolbar="true"
-        style="margin-right: 1rem; width: 12rem;"
+        style="width: 12rem;"
       >
         <div
           class="FilterGroupItem-innerFilterItemContainer"
@@ -490,94 +504,6 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
             ui5-date-picker=""
             value-state="None"
           />
-        </div>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`FilterBar Toggle FilterBar filters 1`] = `
-<DocumentFragment>
-  <div
-    class="FilterBar-outerContainer FilterBar-outerContainerWithToolbar"
-    style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
-  >
-    <div
-      class="Toolbar-outerContainer Toolbar-clear FilterBar-filterBarHeader"
-    >
-      <div
-        class="Toolbar-toolbar"
-        data-component-name="ToolbarContent"
-      >
-        <span
-          class="spacer"
-          style="flex-grow: 1;"
-        />
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-        >
-          <ui5-button
-            class="FilterBar-showFiltersBtn"
-            design="Transparent"
-            ui5-button=""
-          >
-            Show Filter Bar
-          </ui5-button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="FilterBar-filterArea FilterBar-filterAreaClosed"
-      style="position: relative;"
-    >
-      <div
-        class="FilterGroupItem-filterItem"
-        data-in-fb="true"
-        data-with-toolbar="true"
-        style="margin-right: 1rem; width: 13.125rem;"
-      >
-        <div
-          class="FilterGroupItem-innerFilterItemContainer"
-        >
-          <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
-          >
-            <ui5-label
-              title="Classification"
-              ui5-label=""
-            >
-              
-          Classification
-            </ui5-label>
-          </div>
-          <ui5-select
-            ui5-select=""
-            value-state="None"
-          >
-            <ui5-option
-              ui5-option=""
-            >
-              Option 1
-            </ui5-option>
-            <ui5-option
-              selected="true"
-              ui5-option=""
-            >
-              Option 2
-            </ui5-option>
-            <ui5-option
-              ui5-option=""
-            >
-              Option 3
-            </ui5-option>
-            <ui5-option
-              ui5-option=""
-            >
-              Option 4
-            </ui5-option>
-          </ui5-select>
         </div>
       </div>
     </div>
@@ -1606,84 +1532,4 @@ exports[`FilterBar Toggle Filters Dialog 2`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`FilterBar useToolbar 1`] = `
-<DocumentFragment>
-  <div
-    class="FilterBar-outerContainer"
-    style="--_ui5wcr_filter_group_item_flex_basis: 13.125rem;"
-  >
-    <div
-      class="FilterBar-filterArea FilterBar-filterAreaOpen"
-      style="position: relative;"
-    >
-      <div
-        class="FilterGroupItem-filterItem"
-        data-in-fb="true"
-        data-testid="filter-item"
-        data-with-toolbar="false"
-        style="margin-right: 1rem; width: 13.125rem;"
-      >
-        <div
-          class="FilterGroupItem-innerFilterItemContainer"
-        >
-          <div
-            class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap"
-          >
-            <ui5-label
-              title="Classification"
-              ui5-label=""
-            >
-              
-          Classification
-            </ui5-label>
-          </div>
-          <ui5-select
-            ui5-select=""
-            value-state="None"
-          >
-            <ui5-option
-              ui5-option=""
-            >
-              Option 1
-            </ui5-option>
-            <ui5-option
-              selected="true"
-              ui5-option=""
-            >
-              Option 2
-            </ui5-option>
-            <ui5-option
-              ui5-option=""
-            >
-              Option 3
-            </ui5-option>
-            <ui5-option
-              ui5-option=""
-            >
-              Option 4
-            </ui5-option>
-          </ui5-select>
-        </div>
-      </div>
-      <div
-        class="FilterBar-lastSpacer"
-        style="width: 120px; min-width: 120px; margin-right: 1rem;"
-      >
-        <div
-          class="FilterBar-filterBarButtons"
-          style="margin-right: 1rem; right: 0px;"
-        >
-          <ui5-button
-            design="Emphasized"
-            ui5-button=""
-          >
-            Go
-          </ui5-button>
-        </div>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
 `;
