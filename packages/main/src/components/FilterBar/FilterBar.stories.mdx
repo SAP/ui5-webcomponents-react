@@ -288,7 +288,7 @@ This is a basic example of how the FilterBar could be used inside an app.
         <>
           <FilterBar>
             <FilterGroupItem label="Age" active={!!age} required>
-              <StepInput value={age} onInput={handleAgeChange} />
+              <StepInput value={age} onChange={handleAgeChange} />
             </FilterGroupItem>
             <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
               <MultiComboBox onSelectionChange={handleCountriesChange}>
