@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "1.0.1-rc.0",
+  "version": "1.0.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@tanstack/react-virtual": "3.0.0-beta.18",
-    "@ui5/webcomponents-react-base": "^1.0.1-rc.0",
+    "@ui5/webcomponents-react-base": "^1.0.1",
     "clsx": "1.2.1",
     "react-jss": "^10.9.0",
     "react-table": "7.8.0"

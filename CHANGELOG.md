@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1-rc.0...v1.0.1) (2022-09-30)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix keyboard navigation with no-data placeholder ([#3600](https://github.com/SAP/ui5-webcomponents-react/issues/3600)) ([513b20c](https://github.com/SAP/ui5-webcomponents-react/commit/513b20cc49aa67934deb6467e6aa7d74a08d18eb))
+
 ## [1.0.1-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0-rc.0...v1.0.1-rc.0) (2022-09-30)
 
 ### Bug Fixes
