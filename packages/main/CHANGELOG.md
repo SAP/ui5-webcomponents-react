@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.0-rc.0...v1.0.1-rc.0) (2022-09-30)
+
+### Bug Fixes
+
+- **DynamicPageTitle:** fix subHeader default placement ([#3598](https://github.com/SAP/ui5-webcomponents-react/issues/3598)) ([d6b05a2](https://github.com/SAP/ui5-webcomponents-react/commit/d6b05a2a48e32f9f4c911129ce44d48d947e5c5f))
+
 # [1.0.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v0.28.2...v1.0.0-rc.0) (2022-09-30)
 
 ### Bug Fixes
