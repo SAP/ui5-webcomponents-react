@@ -395,7 +395,7 @@ const FilterBarComponent = (args) => {
     <>
       <FilterBar>
         <FilterGroupItem label="Age" active={!!age} required>
-          <StepInput value={age} onInput={handleAgeChange} />
+          <StepInput value={age} onChange={handleAgeChange} />
         </FilterGroupItem>
         <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
           <MultiComboBox onSelectionChange={handleCountriesChange}>
