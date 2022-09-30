@@ -18,6 +18,28 @@ or the [changelog](?path=/docs/change-log--page)._
 
 ## From 0.28.x to 1.0.1
 
+### Removal of deprecated props
+
+The following props were deprecated in previous versions and have now been removed.
+
+**ActionSheet**
+
+The prop `alwaysShowHeader` has been removed as is not specified by the Fiori Design Guidelines. <br />
+In addition, the `a11yConfig.actionSheetMobileContent.ariaLabel` has been removed as well. You can use the `accessibleName` prop as replacement.
+
+**AnalyticalTable**
+
+The props `onRowSelected` and `onColumnsReordered` have been removed in favor for a more streamlined naming pattern. <br />
+Please use the new prop names `onRowSelect` and `onColumnsReorder`.
+
+**DynamicPageTitle**
+
+The props `actionsOverflowButton` and `navigationActionsOverflowButton` have been removed. <br />
+If needed, you can pass a custom overflow button for the respective toolbar by using the `actionsToolbarProps={{ overflowButton: <Button />}}` and `navigationActionsToolbarProps={{ overflowButton: <Button />}}` props.
+
+In addition, the `onToolbarOverflowChange` event has been removed as well. Previously, this event contained a property `origin` with the value of `actions` or `navigationActions` in order to distinguish between the toolbars. <br />
+Please use `onOverflowChange` of the respective toolbar props object instead (`actionsToolbarProps={{ onOverflowChange: yourHandler }}` and `navigationActionsToolbarProps={{ onOverflowChange: yourHandlerForNavigationActions }}`).
+
 ### VariantManagement: removed option to show the "Cancel" button
 
 The "Cancel" button is not part of the design guidelines anymore, so the prop `showCancelButton` has been removed without replacement.

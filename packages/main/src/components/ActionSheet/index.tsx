@@ -1,7 +1,7 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { deprecationNotice, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, ReactNode, Ref, useEffect, useReducer, useRef } from 'react';
+import React, { Children, forwardRef, ReactElement, ReactNode, Ref, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
@@ -42,20 +42,11 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    */
   showCancelButton?: boolean;
   /**
-   * Defines whether the `header` or `headerText` should always be displayed or only on mobile devices.
-   *
-   * __Deprecation Notice__: This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
-   *
-   * @deprecated This prop is not specified by the Fiori Guidelines, so it will be removed with v0.29.0
-   */
-  alwaysShowHeader?: boolean;
-  /**
    * Defines internally used a11y properties.
    */
   a11yConfig?: {
     actionSheetMobileContent?: {
       role?: string;
-      ariaLabel?: string;
     };
   };
   /**
@@ -136,7 +127,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
   const {
     a11yConfig,
     allowTargetOverlap,
-    alwaysShowHeader,
     children,
     className,
     footer,
@@ -158,16 +148,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
     onBeforeOpen,
     ...rest
   } = props;
-
-  // deprecations
-  useEffect(() => {
-    if (a11yConfig?.actionSheetMobileContent?.ariaLabel) {
-      deprecationNotice(
-        'ActionSheet',
-        `Using 'a11yConfig.actionSheetMobileContent.ariaLabel' is deprecated and will be removed in the next minor release. Please use the 'accessibleName' prop instead.`
-      );
-    }
-  }, [a11yConfig?.actionSheetMobileContent?.ariaLabel]);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -229,14 +209,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
     }
   };
 
-  // TODO remove this block before releasing v0.29.0
-  useEffect(() => {
-    if (alwaysShowHeader) {
-      deprecationNotice('ActionSheet', `The prop 'alwaysShowHeader' is deprecated and will be removed in v0.29.0`);
-    }
-  }, [alwaysShowHeader]);
-
-  const displayHeader = alwaysShowHeader || isPhone();
+  const displayHeader = isPhone();
   return createPortal(
     <ResponsivePopover
       style={style}
@@ -254,7 +227,7 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
       onAfterClose={onAfterClose}
       onBeforeClose={onBeforeClose}
       onBeforeOpen={onBeforeOpen}
-      accessibleName={a11yConfig?.actionSheetMobileContent?.ariaLabel ?? i18nBundle.getText(AVAILABLE_ACTIONS)}
+      accessibleName={i18nBundle.getText(AVAILABLE_ACTIONS)}
       {...rest}
       onAfterOpen={handleAfterOpen}
       ref={componentRef}
@@ -289,7 +262,6 @@ const ActionSheet = forwardRef((props: ActionSheetPropTypes, ref: Ref<Responsive
 
 ActionSheet.defaultProps = {
   showCancelButton: true,
-  alwaysShowHeader: true,
   portalContainer: document.body
 };
 

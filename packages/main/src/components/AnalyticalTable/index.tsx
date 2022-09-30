@@ -1,7 +1,6 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
-  deprecationNotice,
   enrichEventWithDetails,
   useI18nBundle,
   useIsomorphicId,
@@ -473,20 +472,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
   /**
    * Fired when a row is selected or unselected.
-   * __Deprecated: Please use `onRowSelect` instead.__
-   *
-   * @deprecated Please use `onRowSelect` instead.
-   */
-  onRowSelected?: (
-    e?: CustomEvent<{
-      allRowsSelected: boolean;
-      row?: Record<string, unknown>;
-      isSelected?: boolean;
-      selectedFlatRows: Record<string, unknown>[] | string[];
-    }>
-  ) => void;
-  /**
-   * Fired when a row is selected or unselected.
    */
   onRowSelect?: (
     e?: CustomEvent<{
@@ -504,14 +489,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when a row is expanded or collapsed
    */
   onRowExpandChange?: (e?: CustomEvent<{ row: unknown; column: unknown }>) => void;
-  /**
-   * Fired when the columns order is changed.
-   * __Deprecated: Please use `onColumnsReorder` instead.__
-   *
-   * @deprecated Please use `onColumnsReorder` instead.
-   */
-  onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
-
   /**
    * Fired when the columns order is changed.
    */
@@ -602,13 +579,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     visibleRows,
     withNavigationHighlight,
     withRowHighlight,
-    onColumnsReordered,
     onColumnsReorder,
     onGroup,
     onLoadMore,
     onRowClick,
     onRowExpandChange,
-    onRowSelected,
     onRowSelect,
     onSort,
     onTableScroll,
@@ -630,21 +605,6 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const isRtl = useIsRTL(analyticalTableRef);
 
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
-
-  // deprecations
-  useEffect(() => {
-    if (typeof onRowSelected === 'function') {
-      deprecationNotice('AnalyticalTable', `'onRowSelected' is deprecated. Please use 'onRowSelect' instead.`);
-    }
-  }, [onRowSelected]);
-  useEffect(() => {
-    if (typeof onColumnsReordered === 'function') {
-      deprecationNotice(
-        'AnalyticalTable',
-        `'onColumnsReordered' is deprecated. Please use 'onColumnsReorder' instead.`
-      );
-    }
-  }, [onColumnsReordered]);
 
   const data = useMemo(() => {
     if (rawData.length === 0) {
@@ -688,7 +648,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         selectionMode,
         selectionBehavior,
         classes,
-        onRowSelect: onRowSelect ?? onRowSelected,
+        onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
         isTreeTable,
@@ -928,7 +888,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    onColumnsReorder ?? onColumnsReordered,
+    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
@@ -1198,7 +1158,6 @@ AnalyticalTable.defaultProps = {
   selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
-  onColumnsReordered: () => {},
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,

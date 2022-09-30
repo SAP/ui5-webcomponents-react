@@ -138,10 +138,7 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     selectionMode: TableSelectionMode.SingleSelect,
     selectionBehavior: TableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.Fixed,
-    // TODO remove after deprecations have been removed
-    onColumnsReordered: null,
-    onRowSelected: null
+    visibleRowCountMode: TableVisibleRowCountMode.Fixed
   }}
   argTypes={{
     data: { control: { disable: true } },
@@ -982,10 +979,8 @@ The prop expects a function with an optional parameter containing the `row` inst
       infiniteScrollThreshold: { table: { disable: true } },
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
-      onRowSelected: { table: { disable: true } },
       onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
-      onColumnsReordered: { table: { disable: true } },
       onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
@@ -1167,10 +1162,8 @@ By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCount
       infiniteScrollThreshold: { table: { disable: true } },
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
-      onRowSelected: { table: { disable: true } },
       onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
-      onColumnsReordered: { table: { disable: true } },
       onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
@@ -1316,10 +1309,8 @@ In the example below you can have a look at this behavior:
       infiniteScrollThreshold: { table: { disable: true } },
       onSort: { table: { disable: true } },
       onGroup: { table: { disable: true } },
-      onRowSelected: { table: { disable: true } },
       onRowSelect: { table: { disable: true } },
       onRowExpandChange: { table: { disable: true } },
-      onColumnsReordered: { table: { disable: true } },
       onColumnsReorder: { table: { disable: true } },
       onLoadMore: { table: { disable: true } },
       reactTableOptions: { table: { disable: true } },
