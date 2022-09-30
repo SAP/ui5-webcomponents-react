@@ -27,18 +27,6 @@ import { filterValue, renderSearchWithValue, syncRef } from './utils';
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();
 
-/* todo: breaking changes:
-
-- onFiltersDialogSelectionChange: element was previously React component array now HTML element array
-- onRestore: dialogSearch removed
-- onGo: toggledElements removed
-- onClear: dialogSearch removed
-- onFiltersDialogSelectionChange: type changed to UI5CustomEvent, elements & toggledElements removed, element & checked added
-- onFiltersDialogOpen: removed dialog
-- onAfterFiltersDialogOpen: new prop
-
-
- */
 export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the filters of the `FilterBar`.

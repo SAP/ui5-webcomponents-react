@@ -1,6 +1,6 @@
+import { Footer } from '@docs/Footer';
 import { Meta } from '@storybook/addon-docs';
 import { TableOfContent } from '../.storybook/components/TableOfContent';
-import { Footer } from '@docs/Footer';
 
 <Meta title="Migration Guide" />
 
@@ -46,7 +46,21 @@ One of these changes is, that the optional Search field (passed via the `search`
 - `useToolbar` --> `hideToolbar` <br />
   If you wanted to hide the toolbar of the `FilterBar`, you could set the prop `useToolbar` to `false` in earlier versions. This prop has been replaced by `hideToolbar={true}`.
 
-**Full Migration Example (removed props are not listed for brevity):**
+**The following event handlers have changed their payload:**
+
+- `onFiltersDialogSelectionChange` <br />
+  The event type changed to `UI5CustomEvent` and the properties `elements` and `toggledElements` have been removed. <br />
+  You can now use `element` to access the most recently interacted row and `checked` to get the current selection state.
+  If you need to access all selected rows, you can use the `selectedRows` property.
+- `onRestore` and `onClear` <br />
+  The `dialogSearch` property has been removed from the event payload as the search field in the dialog is no longer available.
+- `onGo` <br />
+  The `toggledElements` property has been removed
+- `onFiltersDialogOpen` <br />
+  The property `dialog` has been removed. If you need to access the filter dialog HTML element, you might use the new prop `onAfterFiltersDialogOpen`
+  on the `FilterBar` which is fired after the filter dialog has been opened.
+
+**Migration Example (removed props and event handlers are not listed for brevity):**
 
 ```jsx
 // component with 0.28.x
@@ -143,9 +157,11 @@ In order to run Tests with Jest, there has always been the need of adding additi
 With 0.26.0, things are changing a little:
 
 1. You have to install `resize-observer-polyfill` on your own because it's not longer a dependency of `@ui5/webcomponents-react-base`.
-   ```
-   npm install resize-observer-polyfill --save-dev
-   ```
+
+```
+npm install resize-observer-polyfill --save-dev
+```
+
 2. We now offer an improved way of adding the additional APIs to the Jest environment by exposing a file which is setting up the
    jest environment for you. You can import it via `import '@ui5/webcomponents-react/jestSetup.js';`.
 
