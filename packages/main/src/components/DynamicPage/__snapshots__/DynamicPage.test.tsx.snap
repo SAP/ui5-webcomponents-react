@@ -77,7 +77,6 @@ exports[`DynamicPage always show content header 1`] = `
           <div
             class="DynamicPageTitle-content"
             data-component-name="DynamicPageTitleContent"
-            style="padding-left: 0.5rem;"
           >
             <ui5-badge
               color-scheme="1"
@@ -770,7 +769,6 @@ exports[`DynamicPage with content 1`] = `
           <div
             class="DynamicPageTitle-content"
             data-component-name="DynamicPageTitleContent"
-            style="padding-left: 0.5rem;"
           >
             <ui5-badge
               color-scheme="1"
@@ -1765,7 +1763,6 @@ exports[`DynamicPage without content 1`] = `
           <div
             class="DynamicPageTitle-content"
             data-component-name="DynamicPageTitleContent"
-            style="padding-left: 0.5rem;"
           >
             <ui5-badge
               color-scheme="1"

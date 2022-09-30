@@ -1048,7 +1048,6 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
@@ -1126,7 +1125,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
@@ -2473,7 +2471,6 @@ exports[`ObjectPage with img 1`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
@@ -2968,7 +2965,6 @@ exports[`ObjectPage with img 2`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
@@ -3446,7 +3442,6 @@ exports[`ObjectPage with title 1`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
@@ -3875,7 +3870,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
             <div
               class="DynamicPageTitle-content"
               data-component-name="DynamicPageTitleContent"
-              style="padding-left: 0.5rem;"
             >
               HeaderTitle
             </div>
