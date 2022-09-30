@@ -3,7 +3,10 @@ import { useCallback, useEffect, useRef } from 'react';
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
 
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
-  if (target.dataset.componentName === 'AnalyticalTableContainer') {
+  if (
+    target.dataset.componentName === 'AnalyticalTableContainer' &&
+    target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]')
+  ) {
     const rowElements = target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]').children;
     const middleRowCell = target.querySelector(
       `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
