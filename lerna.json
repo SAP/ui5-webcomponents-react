@@ -11,8 +11,7 @@
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]",
-      "forcePublish": true
+      "message": "chore(release): publish %s [ci skip]"
     },
     "publish": {
       "allowBranch": "main",
@@ -20,8 +19,7 @@
       "yes": true,
       "preid": "rc",
       "preDistTag": "next",
-      "message": "chore(release): publish %s [ci skip]",
-      "forcePublish": true
+      "message": "chore(release): publish %s [ci skip]"
     }
   }
 }
