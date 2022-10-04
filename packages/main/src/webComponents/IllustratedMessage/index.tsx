@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface IllustratedMessageAttributes {
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines the illustration name that will be displayed in the component.
    *
    * Available illustrations are:
@@ -172,7 +176,7 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
  */
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
-  ['name', 'size', 'subtitleText', 'titleText'],
+  ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleText'],
   [],
   ['subtitle'],
   []
