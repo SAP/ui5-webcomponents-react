@@ -4864,10 +4864,10 @@
     "@sap-theming/theming-base-content" "11.1.41"
     "@ui5/webcomponents-base" "1.7.1"
 
-"@ui5/webcomponents-tools@1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.7.1.tgz#175eb8f096009252c1982e6d1792e624493e24de"
-  integrity sha512-kmS5DLcMmPezUAnv/V2cGfAuCqUVN+I5UTEYOUL4qZvkdIIfm7E1Ys6ZQwrEeMP4aVpfdMaE/PoLeeGrXhDWAA==
+"@ui5/webcomponents-tools@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.8.0.tgz#b72065c71b32fa44ad986cc9f7a6eb7da8cae220"
+  integrity sha512-OTU72WZzGN5XX+YJyXmjwbVm1QcS3E+Ci1DZ4zKcE+UskLAjErQ3qnVX35P/gd9u1mjUG0wso9ptjOm+umEwcg==
   dependencies:
     "@wdio/cli" "^7.19.7"
     "@wdio/devtools-service" "^7.19.7"
@@ -16421,15 +16421,7 @@ postcss-selector-parser@^3.0.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.7.tgz#48404830a635113a71fd79397de8209ed05a66fc"
-  integrity sha512-U+b/Deoi4I/UmE6KOVPpnhS7I7AYdKbhGcat+qTQ27gycvaACvNEw11ba6RrkwVmDVRW7sigWgLj4/KbbJjeDA==
-  dependencies:
-    cssesc "^3.0.0"
-    util-deprecate "^1.0.2"
-
-postcss-selector-parser@^6.0.10:
+postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.10.tgz#79b61e2c0d1bfc2602d549e11d0876256f8df88d"
   integrity sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==
