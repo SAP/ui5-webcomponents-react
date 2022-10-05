@@ -635,7 +635,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
     // necessary for scrolling to section with expanded header
-    if (index && index !== '0' && headerContentHeight > 0) {
+    if (index !== '0' && headerContentHeight > 0) {
       objectPageRef.current.scrollTop = headerContentHeight;
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
