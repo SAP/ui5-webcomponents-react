@@ -106,8 +106,9 @@ const styles = {
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
-      width: 0,
-      height: 0
+      width: '0 !important',
+      height: '0 !important',
+      display: 'none !important'
     }
   },
   alternateRowColor: {

@@ -634,15 +634,25 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const onTabItemSelect = (event) => {
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
-    if (isSubTab) {
-      handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
+    const scroll = () => {
+      if (isSubTab) {
+        handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
+      } else {
+        const section = safeGetChildrenArray<ReactElement>(children).find((el) => {
+          return el.props.id == sectionId;
+        });
+        handleOnSectionSelected(event, section?.props?.id, index, section);
+      }
+    };
+    // necessary for scrolling to section with expanded header
+    if (index !== '0' && headerContentHeight > 0) {
+      objectPageRef.current.scrollTop = headerContentHeight;
+      setTimeout(scroll, 100);
     } else {
-      const section = safeGetChildrenArray<ReactElement>(children).find((el) => {
-        return el.props.id == sectionId;
-      });
-      handleOnSectionSelected(event, section?.props?.id, index, section);
+      scroll();
     }
   };
+
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
