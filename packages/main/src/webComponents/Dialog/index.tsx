@@ -11,6 +11,8 @@ interface DialogAttributes {
    * Determines whether the component is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The component can be draggable only in desktop mode.
+   *
+   * **Note:** This property overrides the default HTML "draggable" attribute native behavior. When "draggable" is set to true, the native browser "draggable" behavior is prevented and only the Dialog custom logic ("draggable by its header") works.
    */
   draggable?: boolean;
   /**

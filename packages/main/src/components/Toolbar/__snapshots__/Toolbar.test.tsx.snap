@@ -290,11 +290,11 @@ exports[`Toolbar overflow menu 1`] = `
         data-component-name="ToolbarOverflowButtonContainer"
       >
         <ui5-toggle-button
-          accessible-name="Show More"
+          accessible-name="Show more"
           design="Transparent"
           icon="overflow"
           id="1337"
-          tooltip="Show More"
+          tooltip="Show more"
           ui5-toggle-button=""
         />
       </div>

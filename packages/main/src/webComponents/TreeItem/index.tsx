@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TreeItemAttributes {
   /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the `additionalText`, displayed in the end of the tree item.
    */
   additionalText?: string;
@@ -72,7 +76,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'icon', 'text'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'indeterminate', 'selected'],
   [],
   []
