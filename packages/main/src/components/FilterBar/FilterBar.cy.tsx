@@ -181,21 +181,21 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for Filters').shadow().find('input').type('S');
-    cy.findByPlaceholderText('Search for Filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').shadow().find('input').type('S');
+    cy.findByPlaceholderText('Search for filters').trigger('input');
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for Filters').shadow().find('input').type('W', { force: true });
-    cy.findByPlaceholderText('Search for Filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').shadow().find('input').type('W', { force: true });
+    cy.findByPlaceholderText('Search for filters').trigger('input');
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 1);
 
-    cy.findByPlaceholderText('Search for Filters').shadow().find('ui5-icon').click();
+    cy.findByPlaceholderText('Search for filters').shadow().find('ui5-icon').click();
 
     cy.findAllByText('INPUT').should('have.length', 2);
     cy.findAllByText('SWITCH').should('have.length', 2);

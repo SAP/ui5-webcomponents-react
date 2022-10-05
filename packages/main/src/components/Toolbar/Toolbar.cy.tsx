@@ -64,7 +64,7 @@ describe('Toolbar', () => {
     cy.get('[data-testid="toolbar-item3"]').should('not.be.visible');
 
     // open
-    cy.get(`[tooltip="Show More"]`).click();
+    cy.get(`[tooltip="Show more"]`).click().as('Open Overflow Popover');
 
     cy.findByText('Item1').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('be.visible');
@@ -73,8 +73,10 @@ describe('Toolbar', () => {
     cy.viewport(500, 500);
 
     // close
-    cy.get(`[tooltip="Show More"]`).click();
-    cy.wait(1000);
+    cy.get(`[tooltip="Show more"]`).click().as('Close Overflow Popover');
+    // fallback close
+    cy.get('body').click();
+    cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
 

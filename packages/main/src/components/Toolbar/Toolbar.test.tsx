@@ -114,7 +114,7 @@ describe('Toolbar', () => {
     const updatedItem1frag = getByText('Item1');
     const updatedItem2frag = getByText('Item2');
     const updatedItem3frag = getByText('Item3');
-    expect(queryByTitle('Show More')).toBeNull();
+    expect(queryByTitle('Show more')).toBeNull();
     expect(updatedItem1frag).toBeInTheDocument();
     expect(updatedItem2frag).toBeInTheDocument();
     expect(updatedItem3frag).toBeInTheDocument();
@@ -278,12 +278,12 @@ describe('Toolbar', () => {
       ['ui5-popover']
     );
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     fireEvent.click(getAllByText('Button One')[1]);
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    fireEvent.click(container.querySelector(`[tooltip="Show More"]`));
-    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    fireEvent.click(container.querySelector(`[tooltip="Show more"]`));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     fireEvent.change(getAllByPlaceholderText('Input')[1], { target: { value: ':)' } });
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
   });
@@ -309,7 +309,7 @@ describe('Toolbar', () => {
       </Toolbar>,
       ['ui5-popover', 'ui5-button']
     );
-    const overflowBtn = container.querySelector(`[tooltip="Show More"]`);
+    const overflowBtn = container.querySelector(`[tooltip="Show more"]`);
     await waitFor(() => overflowBtn.shadowRoot.querySelector('button'));
     const srOverflowBtn = overflowBtn.shadowRoot.querySelector('button');
 
@@ -317,7 +317,7 @@ describe('Toolbar', () => {
     expect(srOverflowBtn).toHaveAttribute('aria-haspopup', 'menu');
 
     // todo: overflowPopoverRef.current.showAt never resolves
-    // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     // expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     // expect(overflowBtn.shadowRoot.querySelector('button')).toHaveAttribute('aria-expanded', 'true');
   });

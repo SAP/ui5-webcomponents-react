@@ -10,6 +10,10 @@ interface MenuItemAttributes {
    */
   accessibleName?: string;
   /**
+   * Defines the `additionalText`, displayed in the end of the menu item. **Note:** The additional text would not be displayed if the item has a submenu.
+   */
+  additionalText?: string;
+  /**
    * Defines whether `MenuItem` is in disabled state.
    *
    * **Note:** A disabled `MenuItem` is noninteractive.
@@ -47,7 +51,7 @@ export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'icon', 'text'],
+  ['accessibleName', 'additionalText', 'icon', 'text'],
   ['disabled', 'startsSection'],
   [],
   []
