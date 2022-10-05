@@ -631,9 +631,14 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
-  const onTabItemSelect = (event) => {
+  const onTabItemSelect = async (event) => {
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
+    // necessary for scrolling to section with expanded header
+    if (index && index !== '0' && headerContentHeight > 0) {
+      objectPageRef.current.scrollTop = headerContentHeight;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
     if (isSubTab) {
       handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
     } else {
@@ -766,7 +771,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           <TabContainer
             collapsed
             fixed
-            onTabSelect={onTabItemSelect}
+            onTabSelect={(e) => {
+              void onTabItemSelect(e);
+            }}
             data-component-name="ObjectPageTabContainer"
             className={classes.tabContainerComponent}
           >
