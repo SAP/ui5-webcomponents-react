@@ -7,6 +7,9 @@ import {
   ComboBoxItem,
   DatePicker,
   DateRangePicker,
+  DynamicPage,
+  DynamicPageHeader,
+  DynamicPageTitle,
   FilterBar,
   FilterGroupItem,
   FlexBox,
@@ -23,7 +26,9 @@ import {
   Switch,
   Text,
   Title,
-  Token
+  Token,
+  VariantItem,
+  VariantManagement
 } from '../..';
 import { useState } from 'react';
 
@@ -58,10 +63,10 @@ import { useState } from 'react';
     {(args) => {
       return (
         <FilterBar {...args}>
-          <FilterGroupItem label="StepInput">
-            <StepInput />
+          <FilterGroupItem label="StepInput" required>
+            <StepInput required />
           </FilterGroupItem>
-          <FilterGroupItem label="RatingIndicator" required>
+          <FilterGroupItem label="RatingIndicator">
             <RatingIndicator />
           </FilterGroupItem>
           <FilterGroupItem label="MultiInput" active>
@@ -288,7 +293,7 @@ This is a basic example of how the FilterBar could be used inside an app.
         <>
           <FilterBar>
             <FilterGroupItem label="Age" active={!!age} required>
-              <StepInput value={age} onChange={handleAgeChange} />
+              <StepInput value={age} onChange={handleAgeChange} required />
             </FilterGroupItem>
             <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
               <MultiComboBox onSelectionChange={handleCountriesChange}>
@@ -395,7 +400,7 @@ const FilterBarComponent = (args) => {
     <>
       <FilterBar>
         <FilterGroupItem label="Age" active={!!age} required>
-          <StepInput value={age} onChange={handleAgeChange} />
+          <StepInput value={age} onChange={handleAgeChange} required />
         </FilterGroupItem>
         <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
           <MultiComboBox onSelectionChange={handleCountriesChange}>
@@ -462,5 +467,122 @@ const FilterBarComponent = (args) => {
 ```
 
 </details>
+
+## FilterBar in a DynamicPage
+
+When a FilterBar is used inside e.g. a DynamicPage, `hideToolbar` should be set to `true`, since the `VariantManagement` of
+the page is then responsible for the different views.
+
+<Canvas>
+  <Story name="in DynamicPage">
+    {(args) => {
+      return (
+        <DynamicPage
+          headerTitle={
+            <DynamicPageTitle
+              interact
+              header={
+                <VariantManagement
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  <VariantItem>Variant 1</VariantItem>
+                  <VariantItem selected>Variant 2</VariantItem>
+                </VariantManagement>
+              }
+            />
+          }
+          headerContent={
+            <DynamicPageHeader>
+              <FilterBar {...args} hideToolbar>
+                <FilterGroupItem label="StepInput">
+                  <StepInput />
+                </FilterGroupItem>
+                <FilterGroupItem label="MultiInput" active required>
+                  <MultiInput
+                    required
+                    tokens={
+                      <>
+                        <Token text="Argentina" selected />
+                        <Token text="Bulgaria" />
+                        <Token text="England" />
+                        <Token text="Finland" />
+                      </>
+                    }
+                  />
+                </FilterGroupItem>
+                <FilterGroupItem label="Input">
+                  <Input placeholder="Placeholder" />
+                </FilterGroupItem>
+                <FilterGroupItem label="Switch" visibleInFilterBar={false}>
+                  <Switch />
+                </FilterGroupItem>
+                <FilterGroupItem label="SELECT w/ initial selected" visibleInFilterBar={false}>
+                  <Select>
+                    <Option>Option 1</Option>
+                    <Option selected>Option 2</Option>
+                    <Option>Option 3</Option>
+                    <Option>Option 4</Option>
+                  </Select>
+                </FilterGroupItem>
+                <FilterGroupItem label="SELECT w/o initial selected" visibleInFilterBar={false}>
+                  <Select>
+                    <Option data-key="Test 1" selected icon="add">
+                      Test 1
+                    </Option>
+                    <Option data-key="Test 2" icon="add">
+                      Test 2
+                    </Option>
+                    <Option data-key="Test 3" icon="add">
+                      Test 3
+                    </Option>
+                    <Option data-key="Test 4" icon="add">
+                      Test 4
+                    </Option>
+                    <Option data-key="Test 5" icon="add">
+                      Test 5
+                    </Option>
+                  </Select>
+                </FilterGroupItem>
+                <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
+                  <MultiComboBox>
+                    <MultiComboBoxItem text="MultiComboBoxItem 1" />
+                    <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+                    <MultiComboBoxItem text="MultiComboBoxItem 3" />
+                    <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
+                  </MultiComboBox>
+                </FilterGroupItem>
+                <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" visibleInFilterBar={false}>
+                  <ComboBox>
+                    <ComboBoxItem text="ComboBoxItem 1" />
+                    <ComboBoxItem text="ComboBoxItem 2" />
+                    <ComboBoxItem text="ComboBoxItem 3" />
+                    <ComboBoxItem text="ComboBoxItem 4" />
+                  </ComboBox>
+                </FilterGroupItem>
+                <FilterGroupItem label="Date Picker" groupName="Group 2">
+                  <DateRangePicker style={{ minWidth: 'auto' }} />
+                </FilterGroupItem>
+              </FilterBar>
+            </DynamicPageHeader>
+          }
+        >
+          <div
+            style={{
+              background: 'cadetblue',
+              height: '200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Text style={{ color: 'white' }}>Content</Text>
+          </div>
+        </DynamicPage>
+      );
+    }}
+  </Story>
+</Canvas>
 
 <Footer />
