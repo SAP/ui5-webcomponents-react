@@ -11,6 +11,7 @@ interface RadialChartConfig {
   margin?: { top?: number; right?: number; bottom?: number; left?: number };
   innerRadius?: number | string;
   outerRadius?: number | string;
+
   [rest: string]: any;
 }
 

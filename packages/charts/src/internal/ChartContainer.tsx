@@ -1,4 +1,4 @@
-import { Label, Loader, type CommonProps } from '@ui5/webcomponents-react';
+import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref } from 'react';

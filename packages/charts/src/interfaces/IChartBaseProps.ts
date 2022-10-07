@@ -55,12 +55,14 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   /**
    * Defines possible configurations of the chart.
    *
-   * <h4>Possible properties</h4>
+   * <h4>Properties available on all charts:</h4>
    *
    * - `margin`: Sets the margin of the chart container. Receives a object with four possible properties (`right`, `left`, `top`, `bottom`) that expect a number as value.
    * - `legendPosition`: Position of the legend. Can be one of the following: `"top"`, `"left"`, `"right"`, `"bottom"`
    * - `legendHorizontalAlign`: Alignment of the legend. Can be one of the following: `"left"`, `"center"`, `"right"`
    * - `resizeDebounce`: Number that sets the amount of delay time the chart waits when resizing.
+   *
+   * Please note that depending on the chart type, the `chartConfig` prop may accept more properties.
    */
   chartConfig?: T & {
     /**

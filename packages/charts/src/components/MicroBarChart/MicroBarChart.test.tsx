@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { render, screen, fireEvent } from '@shared/tests/index';
-import { MicroBarChart } from './MicroBarChart';
 import { createChartRenderTest, createLoadingPlaceholderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
+import { fireEvent, render, screen } from '@shared/tests/index';
 import { createCustomPropsTest } from '@shared/tests/utils';
+import * as React from 'react';
+import { MicroBarChart } from './MicroBarChart';
 
 const text1 = 'January';
 const text2 = 'February';
