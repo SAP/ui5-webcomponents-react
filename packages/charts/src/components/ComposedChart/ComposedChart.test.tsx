@@ -1,13 +1,13 @@
 import { render } from '@shared/tests';
-import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { ComposedChart } from './index';
 import {
   createLoadingPlaceholderTest,
   createOnClickChartTest,
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
+import * as React from 'react';
+import { complexDataSet } from '../../resources/DemoProps';
+import { ComposedChart } from './index';
 
 enum ComposedChartChildrenQuery {
   'area' = 'g.recharts-area-dots',

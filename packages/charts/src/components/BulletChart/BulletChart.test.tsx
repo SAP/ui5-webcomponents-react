@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { BulletChart } from './BulletChart';
 import {
   createChartRenderTest,
   createLoadingPlaceholderTest,
@@ -8,6 +5,9 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
+import * as React from 'react';
+import { complexDataSet } from '../../resources/DemoProps';
+import { BulletChart } from './BulletChart';
 
 const dimensions = [
   {

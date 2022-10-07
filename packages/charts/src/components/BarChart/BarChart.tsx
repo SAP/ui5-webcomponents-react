@@ -6,7 +6,6 @@ import {
   Brush,
   CartesianGrid,
   Cell,
-  Label,
   LabelList,
   Legend,
   ReferenceLine,
@@ -161,6 +160,7 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
     secondXAxisConfig: {},
     ...props.chartConfig
   };
+  const referenceLine = chartConfig.referenceLine;
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -355,10 +355,13 @@ const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<H
             wrapperStyle={legendPosition}
           />
         )}
-        {chartConfig.referenceLine && (
-          <ReferenceLine stroke={chartConfig.referenceLine.color} x={chartConfig.referenceLine.value}>
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+        {referenceLine && (
+          <ReferenceLine
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            x={referenceLine?.value ?? referenceLine?.x}
+            label={referenceLine?.label}
+          />
         )}
         {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (

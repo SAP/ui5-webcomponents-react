@@ -1,4 +1,4 @@
-import { XAxisProps, YAxisProps } from 'recharts';
+import { ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
 
 export interface ICartesianChartConfig {
   yAxisVisible?: boolean;
@@ -20,12 +20,14 @@ export interface ICartesianChartConfig {
     name?: string;
     color?: string;
   };
-
+  /**
+   * If this property is set, a reference line will be shown.
+   * Please note that this property also allows setting all properties described [here](https://recharts.org/en-US/api/ReferenceLine), but we only recommend setting `label`,`value` and `color` to preserve the intended design.
+   */
   referenceLine?: {
-    label: string;
-    value: number;
-    color: string;
-  };
+    value?: number;
+    color?: string;
+  } & ReferenceLineProps;
   /**
    * Defines possible configurations for the `YAxis`.
    *

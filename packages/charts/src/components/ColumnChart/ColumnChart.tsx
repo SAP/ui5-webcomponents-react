@@ -6,7 +6,6 @@ import {
   Brush,
   CartesianGrid,
   Cell,
-  Label,
   LabelList,
   Legend,
   ReferenceLine,
@@ -158,6 +157,7 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
     secondYAxisConfig: {},
     ...props.chartConfig
   };
+  const { referenceLine } = chartConfig;
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -349,10 +349,14 @@ const ColumnChart: FC<ColumnChartProps> = forwardRef((props: ColumnChartProps, r
             wrapperStyle={legendPosition}
           />
         )}
-        {chartConfig.referenceLine && (
-          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId="left">
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+        {referenceLine && (
+          <ReferenceLine
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            y={referenceLine?.value ?? referenceLine?.y}
+            yAxisId={referenceLine?.yAxisId ?? 'left'}
+            label={referenceLine?.label}
+          />
         )}
         {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (

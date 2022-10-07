@@ -2,9 +2,9 @@ import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from 
 import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   CartesianGrid,
-  Label,
   Legend,
   ReferenceLine,
+  ReferenceLineProps,
   Scatter,
   ScatterChart as ScatterChartLib,
   Tooltip,
@@ -57,10 +57,9 @@ interface ScatterDataObject {
 
 interface IScatterChartConfig extends ICartesianChartConfig {
   referenceLineX?: {
-    label: string;
-    value: number;
-    color: string;
-  };
+    value?: number;
+    color?: string;
+  } & ReferenceLineProps;
 }
 
 export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartConfig>, 'dataset'> {
@@ -157,6 +156,7 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
     resizeDebounce: 250,
     ...props.chartConfig
   };
+  const { referenceLine, referenceLineX } = chartConfig;
 
   const { measures } = usePrepareDimensionsAndMeasures([], props.measures, {}, measureDefaults);
 
@@ -296,15 +296,21 @@ const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps
             wrapperStyle={legendPosition}
           />
         )}
-        {chartConfig.referenceLine && (
-          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value}>
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+        {referenceLine && (
+          <ReferenceLine
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            y={referenceLine?.value ?? referenceLine?.y}
+            label={referenceLine?.label}
+          />
         )}
-        {chartConfig.referenceLineX && (
-          <ReferenceLine stroke={chartConfig.referenceLineX.color} x={chartConfig.referenceLineX.value}>
-            <Label>{chartConfig.referenceLineX.label}</Label>
-          </ReferenceLine>
+        {referenceLineX && (
+          <ReferenceLine
+            {...referenceLineX}
+            stroke={referenceLineX?.color ?? referenceLineX?.stroke}
+            x={referenceLineX?.value ?? referenceLineX?.x}
+            label={referenceLineX?.label}
+          />
         )}
         {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
