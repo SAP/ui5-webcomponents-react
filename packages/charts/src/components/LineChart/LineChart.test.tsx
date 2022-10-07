@@ -1,7 +1,3 @@
-import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { LineChart } from './LineChart';
-import { createCustomPropsTest } from '@shared/tests/utils';
 import {
   createChartRenderTest,
   createLoadingPlaceholderTest,
@@ -9,6 +5,10 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { defaultMeasuresFormatter } from '@shared/tests/formatter';
+import { createCustomPropsTest } from '@shared/tests/utils';
+import * as React from 'react';
+import { complexDataSet } from '../../resources/DemoProps';
+import { LineChart } from './LineChart';
 
 const dimensions = [
   {
