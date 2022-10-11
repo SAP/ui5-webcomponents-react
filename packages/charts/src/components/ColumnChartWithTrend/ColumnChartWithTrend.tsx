@@ -4,6 +4,7 @@ import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
+import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -45,7 +46,8 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ColumnChartWithTrendProps extends Omit<IChartBaseProps, 'syncId'> {
+export interface ColumnChartWithTrendProps
+  extends Omit<IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>, 'syncId'> {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
