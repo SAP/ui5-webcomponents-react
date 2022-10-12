@@ -510,7 +510,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   NoDataComponent?: ComponentType<any>;
   /**
-   * Component that will be rendered when the table is loading and has no data.
+   * Component that will be rendered when the table is loading and has data.
    */
   LoadingComponent?: ComponentType<any>;
 
