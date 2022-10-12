@@ -72,9 +72,10 @@ describe('Toolbar', () => {
 
     cy.viewport(500, 500);
 
-    // fuzzy - remount component instead
-    // cy.get(`[tooltip="Show more"]`).click().as('Close Overflow Popover');
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    // close
+    cy.get(`[tooltip="Show more"]`).click().as('Close Overflow Popover');
+    // fallback close
+    cy.get('body').click();
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
