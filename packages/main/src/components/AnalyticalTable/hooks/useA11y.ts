@@ -6,17 +6,22 @@ interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
   'aria-expanded'?: string | boolean;
   'aria-label'?: string;
+  'aria-colindex'?: number;
 }
 
 const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => {
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { alwaysShowSubComponent, renderRowSubComponent, translatableTexts, selectionMode, selectionBehavior } =
     instance.webComponentsReactProperties;
+  const updatedCellProps: UpdatedCellProptypes = { 'aria-colindex': columnIndex + 1 }; // aria index is 1 based, not 0
+
+  if (row.original?.emptyRow) {
+    return [cellProps, updatedCellProps];
+  }
 
   const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
   const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);
 
-  const updatedCellProps: UpdatedCellProptypes = {};
   const userCols = instance.visibleColumns.filter(
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&
@@ -53,13 +58,7 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
     }
   }
 
-  return [
-    cellProps,
-    {
-      ...updatedCellProps,
-      'aria-colindex': columnIndex + 1 // aria index is 1 based, not 0
-    }
-  ];
+  return [cellProps, updatedCellProps];
 };
 
 export const useA11y = (hooks) => {
