@@ -22,7 +22,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**
-   * Determines whether the `headerContent` is shown.
+   * Defines whether the `headerContent` is hidden by scrolling down.
    */
   alwaysShowContentHeader?: boolean;
   /**
@@ -34,7 +34,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   headerContentPinnable?: boolean;
   /**
-   * Defines the the upper, always static, title section of the `DynamicPage`.
+   * Defines the upper, always static, title section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
@@ -126,16 +126,21 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
   );
   const isToggledRef = useRef(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight } = useObserveHeights(
+  const { topHeaderHeight, headerContentHeight, totalHeaderHeight } = useObserveHeights(
     dynamicPageRef,
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader: false }
+    {
+      noHeader: false,
+      fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED,
+      isOverflowing
+    }
   );
-  const [isOverflowing, setIsOverflowing] = useState(false);
+
 
   const classes = useStyles();
   const dynamicPageClasses = clsx(
@@ -240,7 +245,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       onToggleHeaderContent(!!headerContentHeight);
     }
   }, [!!headerContentHeight]);
-
+  console.log('totalHeaderHeight', totalHeaderHeight);
   return (
     <div
       ref={componentRef}
@@ -264,6 +269,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       {headerContent &&
         cloneElement(headerContent, {
           ref: componentRefHeaderContent,
+          style: !headerContentHeight ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
           className: headerContent.props.className
             ? `${responsivePaddingClass} ${headerContent.props.className}`
             : responsivePaddingClass,
@@ -301,6 +307,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         }}
       >
         {children}
+        {/*<div style={{ height: `${500}px`, background: 'red', width: '100%' }} />*/}
       </div>
       {footer && (
         <div
@@ -323,8 +330,7 @@ DynamicPage.displayName = 'DynamicPage';
 DynamicPage.defaultProps = {
   backgroundDesign: PageBackgroundDesign.Solid,
   showHideHeaderButton: true,
-  headerContentPinnable: true,
-  alwaysShowContentHeader: false
+  headerContentPinnable: true
 };
 
 export { DynamicPage };

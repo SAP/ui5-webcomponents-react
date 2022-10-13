@@ -30,7 +30,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  */
 const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;
-
+  console.log('headerPinned:', headerPinned);
   const headerStyles = useMemo(() => {
     if (headerPinned) {
       return {

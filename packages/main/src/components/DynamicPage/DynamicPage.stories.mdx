@@ -36,6 +36,7 @@ import {
   VariantManagement
 } from '../..';
 import { ProductsTable } from '../../../../../.storybook/components/ProductsTable';
+import { TestComp } from './TstComp';
 
 <Meta
   title="Layouts & Floorplans / DynamicPage"
@@ -127,13 +128,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 ## Example
 
 <Canvas>
-  <Story name="Default">
-    {(args) => (
-      <DynamicPage {...args}>
-        <ProductsTable />
-      </DynamicPage>
-    )}
-  </Story>
+  <Story name="Default">{(args) => <TestComp />}</Story>
 </Canvas>
 
 ## Properties

@@ -1,33 +1,77 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 declare const ResizeObserver;
 
-export const useObserveHeights = (objectPage, topHeader, headerContentRef, anchorBarRef, { noHeader }) => {
+export const useObserveHeights = (
+  objectPage,
+  topHeader,
+  headerContentRef,
+  anchorBarRef,
+  { noHeader, fixedHeader = false, isOverflowing = true }
+) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(true);
 
-  useEffect(() => {
-    const headerIntersectionObserver = new IntersectionObserver(
-      ([header]) => {
-        if (header.isIntersecting) {
-          setIsIntersecting(true);
-        } else {
-          setIsIntersecting(false);
-          setHeaderContentHeight(0);
-        }
-      },
-      { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage?.current, threshold: 0.3 }
-    );
+  
+  console.log(isOverflowing);
 
-    if (headerContentRef?.current) {
-      headerIntersectionObserver.observe(headerContentRef.current);
+  const prevHeaderContentHeight = useRef(0);
+  const prevScrollTop = useRef(0);
+  const scroll = (e) => {
+    const scrollDown = prevScrollTop.current <= e.target.scrollTop;
+    prevScrollTop.current = e.target.scrollTop;
+    console.log(e.target.scrollTop);
+    if (scrollDown && e.target.scrollTop >= headerContentHeight && !prevHeaderContentHeight.current) {
+      // debugger;
+      console.log('hidden', headerContentHeight);
+      prevHeaderContentHeight.current = headerContentHeight;
+      setIsIntersecting(false);
+      setHeaderContentHeight(0);
+    } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && prevHeaderContentHeight.current) {
+      // debugger;
+      console.log('not hidden', topHeaderHeight);
+      // setHeaderContentHeight(prevHeaderContentHeight.current);
+      setIsIntersecting(true);
+      prevHeaderContentHeight.current = 0;
     }
+  };
 
+  // console.log('headerContentHeight', headerContentHeight);
+
+  useEffect(() => {
+    if (!fixedHeader) {
+      objectPage.current.addEventListener('scroll', scroll);
+    }
     return () => {
-      headerIntersectionObserver.disconnect();
+      objectPage.current?.removeEventListener('scroll', scroll);
     };
-  }, [topHeaderHeight, setHeaderContentHeight, headerContentRef.current, setIsIntersecting]);
+  }, [scroll, fixedHeader]);
+
+  // useEffect(() => {
+  //   const headerIntersectionObserver = new IntersectionObserver(
+  //     ([header]) => {
+  //       if (header.isIntersecting) {
+  //         setIsIntersecting(true);
+  //         console.log('intersecting');
+  //       } else {
+  //         setIsIntersecting(false);
+  //         console.log('not intersecting');
+  //         setHeaderContentHeight(0);
+  //       }
+  //     },
+  //     // { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage?.current, threshold: 0.3 }
+  //     { rootMargin: `-${topHeaderHeight}px 0px 0px 0px`, root: objectPage?.current }
+  //   );
+  //
+  //   if (headerContentRef?.current) {
+  //     headerIntersectionObserver.observe(headerContentRef.current);
+  //   }
+  //
+  //   return () => {
+  //     headerIntersectionObserver.disconnect();
+  //   };
+  // }, [topHeaderHeight, setHeaderContentHeight, headerContentRef.current, setIsIntersecting]);
 
   // top header
   useEffect(() => {
@@ -68,15 +112,18 @@ export const useObserveHeights = (objectPage, topHeader, headerContentRef, ancho
   const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
 
-  // necessary for dynamically changed font size of the title
-  useEffect(() => {
-    if (isIntersecting) {
-      objectPage.current.scrollTop = 0;
-    }
-    if (!isIntersecting) {
-      objectPage.current.scrollTop = totalHeaderHeight;
-    }
-  }, [isIntersecting, totalHeaderHeight]);
+  // // necessary for dynamically changed font size of the title
+  // useLayoutEffect(() => {
+  //   if (isIntersecting) {
+  //     console.log('up');
+  //     objectPage.current.scrollTop = 0;
+  //   }
+  //   if (!isIntersecting) {
+  //     console.log('down');
+  //     objectPage.current.scrollTop = totalHeaderHeight;
+  //     debugger;
+  //   }
+  // }, [isIntersecting, totalHeaderHeight]);
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight };
 };

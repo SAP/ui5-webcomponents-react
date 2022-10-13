@@ -221,7 +221,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
-    { noHeader: !headerTitle && !headerContent }
+    { noHeader: !headerTitle && !headerContent, fixedHeader: headerPinned }
   );
 
   useEffect(() => {
@@ -599,6 +599,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       return React.cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
+        style: !headerContentHeight ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
