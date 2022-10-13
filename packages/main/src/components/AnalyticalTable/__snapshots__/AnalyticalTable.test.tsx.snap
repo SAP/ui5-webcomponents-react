@@ -400,29 +400,45 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -435,29 +451,45 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -470,29 +502,45 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -909,29 +957,45 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -944,29 +1008,45 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -979,29 +1059,45 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -2202,8 +2298,12 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="3"
+                  data-visible-column-index="0"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 600px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -2216,8 +2316,12 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="4"
+                  data-visible-column-index="0"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 600px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -2230,8 +2334,12 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="5"
+                  data-visible-column-index="0"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 600px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -2660,15 +2768,23 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="3"
+                  data-visible-column-index="0"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="3"
+                  data-visible-column-index="1"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -2681,15 +2797,23 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="4"
+                  data-visible-column-index="0"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="4"
+                  data-visible-column-index="1"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -2702,15 +2826,23 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="5"
+                  data-visible-column-index="0"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="5"
+                  data-visible-column-index="1"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 400px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -3153,29 +3285,45 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="3"
+                  data-visible-column-index="0"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="3"
+                  data-visible-column-index="1"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="3"
+                  data-visible-column-index="2"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="3"
+                  data-visible-column-index="3"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -3188,29 +3336,45 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="4"
+                  data-visible-column-index="0"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="4"
+                  data-visible-column-index="1"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="4"
+                  data-visible-column-index="2"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="4"
+                  data-visible-column-index="3"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -3223,29 +3387,45 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="5"
+                  data-visible-column-index="0"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="5"
+                  data-visible-column-index="1"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="5"
+                  data-visible-column-index="2"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="5"
+                  data-visible-column-index="3"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -4208,29 +4388,45 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="3"
+                  data-visible-column-index="0"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="3"
+                  data-visible-column-index="1"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="3"
+                  data-visible-column-index="2"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="3"
+                  data-visible-column-index="3"
+                  data-visible-row-index="3"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -4243,29 +4439,45 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="4"
+                  data-visible-column-index="0"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="4"
+                  data-visible-column-index="1"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="4"
+                  data-visible-column-index="2"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="4"
+                  data-visible-column-index="3"
+                  data-visible-row-index="4"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -4278,29 +4490,45 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
                 <div
                   aria-colindex="1"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="0"
+                  data-row-index="5"
+                  data-visible-column-index="0"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="2"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="1"
+                  data-row-index="5"
+                  data-visible-column-index="1"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="3"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="2"
+                  data-row-index="5"
+                  data-visible-column-index="2"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
                   aria-colindex="4"
                   class="AnalyticalTable-tableCell"
+                  data-column-index="3"
+                  data-row-index="5"
+                  data-visible-column-index="3"
+                  data-visible-row-index="5"
                   role="cell"
-                  style="width: 60px; align-items: center;"
+                  style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                   tabindex="-1"
                 />
               </div>
@@ -4850,47 +5078,57 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="3"
+                data-visible-column-index="4"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(680px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -4902,47 +5140,57 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="4"
+                data-visible-column-index="4"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(680px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -4954,47 +5202,57 @@ exports[`AnalyticalTable Tree Table 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="5"
+                data-visible-column-index="4"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(680px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5411,29 +5669,45 @@ exports[`AnalyticalTable custom row height 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5446,29 +5720,45 @@ exports[`AnalyticalTable custom row height 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5481,29 +5771,45 @@ exports[`AnalyticalTable custom row height 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 60px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5828,22 +6134,34 @@ exports[`AnalyticalTable expose table instance 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5856,22 +6174,34 @@ exports[`AnalyticalTable expose table instance 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -5884,22 +6214,34 @@ exports[`AnalyticalTable expose table instance 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -6381,47 +6723,57 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="3"
+                data-visible-column-index="4"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-680px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -6433,47 +6785,57 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="4"
+                data-visible-column-index="4"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-680px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -6485,47 +6847,57 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="cursor: pointer; width: 47px; align-items: center; padding: 0px;"
+                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="5"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="4"
+                data-row-index="5"
+                data-visible-column-index="4"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-680px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9126,8 +9498,12 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 600px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9140,8 +9516,12 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 600px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9154,8 +9534,12 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 600px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9580,15 +9964,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9601,15 +9993,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -9622,15 +10022,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10055,15 +10463,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10076,15 +10492,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10097,15 +10521,23 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 400px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 284px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10433,22 +10865,34 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10461,22 +10905,34 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10489,22 +10945,34 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -10981,31 +11449,46 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -11017,31 +11500,46 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -11053,31 +11551,46 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-expanded="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -11727,29 +12240,45 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -11762,29 +12291,45 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -11797,29 +12342,45 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -12774,29 +13335,45 @@ exports[`AnalyticalTable with initial column order 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -12809,29 +13386,45 @@ exports[`AnalyticalTable with initial column order 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -12844,29 +13437,45 @@ exports[`AnalyticalTable with initial column order 1`] = `
               <div
                 aria-colindex="1"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(340px); left: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(510px); left: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -13298,38 +13907,46 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="3"
+                data-visible-column-index="0"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="3"
+                data-visible-column-index="1"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="3"
+                data-visible-column-index="2"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="3"
+                data-visible-column-index="3"
+                data-visible-row-index="3"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -13341,38 +13958,46 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="4"
+                data-visible-column-index="0"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="4"
+                data-visible-column-index="1"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="4"
+                data-visible-column-index="2"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="4"
+                data-visible-column-index="3"
+                data-visible-row-index="4"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
@@ -13384,38 +14009,46 @@ exports[`AnalyticalTable without selection Column 1`] = `
             >
               <div
                 aria-colindex="1"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="0"
+                data-row-index="5"
+                data-visible-column-index="0"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="2"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="1"
+                data-row-index="5"
+                data-visible-column-index="1"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="3"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="2"
+                data-row-index="5"
+                data-visible-column-index="2"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-340px); right: 0px;"
                 tabindex="-1"
               />
               <div
                 aria-colindex="4"
-                aria-label=" To select the row, press the spacebar"
-                aria-selected="false"
                 class="AnalyticalTable-tableCell"
+                data-column-index="3"
+                data-row-index="5"
+                data-visible-column-index="3"
+                data-visible-row-index="5"
                 role="cell"
-                style="width: 60px; align-items: center;"
+                style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(-510px); right: 0px;"
                 tabindex="-1"
               />
             </div>
