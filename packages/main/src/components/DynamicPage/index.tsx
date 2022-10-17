@@ -21,7 +21,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    */
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**
-   * Defines whether the `headerContent` is hidden by scrolling down.
+   * Defines whether the `headerContent` can be hidden by scrolling down.
    */
   alwaysShowContentHeader?: boolean;
   /**
@@ -315,7 +315,6 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         }}
       >
         {children}
-        {/*<div style={{ height: `${500}px`, background: 'red', width: '100%' }} />*/}
       </div>
       {footer && (
         <div
