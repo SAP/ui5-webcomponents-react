@@ -9,6 +9,7 @@ import '@ui5/webcomponents-icons/dist/phone.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import TimelineItemDescription from '../TimelineItem/TimelineItemDescription.md';
+import { Div } from './CodeGen';
 
 <Meta
   title="Data Display / Timeline"
@@ -32,7 +33,7 @@ import TimelineItemDescription from '../TimelineItem/TimelineItemDescription.md'
         <Timeline {...args}>
           <TimelineItem titleText="Schedule Call" subtitleText="2019/01/01" icon="phone" name={`John Smith `} />
           <TimelineItem titleText="Weekly Sync - CP Design" subtitleText="2019/01/02" icon="calendar">
-            <div>MR SOF02 2.43</div>
+            {Div}
           </TimelineItem>
         </Timeline>
       );
@@ -87,7 +88,7 @@ An entry posted on the timeline
         <Timeline>
           <TimelineItem {...args} />
           <TimelineItem titleText="Weekly Sync - CP Design" subtitleText="2019/01/02" icon="calendar">
-            <div>MR SOF02 2.43</div>
+            {Div}
           </TimelineItem>
         </Timeline>
       );
