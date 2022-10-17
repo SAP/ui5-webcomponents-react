@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "lerna run build:i18n && start-storybook -p 6006",
-    "build": "node scripts/build.js",
+    "build": "lerna run build",
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
     "postinstall": "rimraf node_modules/@types/mocha",
     "pretest": "rimraf temp && lerna run build",
