@@ -8,9 +8,8 @@ import {
 import clsx from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { PageBackgroundDesign } from '../../enums/PageBackgroundDesign';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
+import { CommonProps } from '../../interfaces';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
@@ -128,19 +127,19 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const isToggledRef = useRef(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState(undefined);
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight, totalHeaderHeight } = useObserveHeights(
+  const { topHeaderHeight, headerCollapsed } = useObserveHeights(
     dynamicPageRef,
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
     {
       noHeader: false,
-      fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED,
-      isOverflowing
-    }
+      fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED
+    },
+    headerCollapsedInternal
   );
-
 
   const classes = useStyles();
   const dynamicPageClasses = clsx(
@@ -174,6 +173,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   useEffect(() => {
     const oneTimeScrollHandler = () => {
       setHeaderState(HEADER_STATES.AUTO);
+      setHeaderCollapsedInternal(true);
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
       dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
@@ -193,6 +193,14 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     });
   };
 
+  useEffect(() => {
+    if (headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE) {
+      setHeaderCollapsedInternal(false);
+    } else if (headerState === HEADER_STATES.HIDDEN_PINNED || headerState === HEADER_STATES.HIDDEN) {
+      setHeaderCollapsedInternal(true);
+    }
+  }, [headerState]);
+
   const onHoverToggleButton = (e) => {
     if (topHeaderRef.current) {
       topHeaderRef.current.style.backgroundColor =
@@ -204,7 +212,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
     if (!isToggledRef.current) {
       isToggledRef.current = true;
     }
-    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed !== true }));
   };
 
   const handleHeaderPinnedChange = (headerWillPin) => {
@@ -236,16 +244,16 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const dynamicPageStyles = { ...style };
-  if (headerContentHeight === 0 && headerContent) {
+  if (headerCollapsed === true && headerContent) {
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
   useEffect(() => {
     if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
-      onToggleHeaderContent(!!headerContentHeight);
+      onToggleHeaderContent(headerCollapsed !== true);
     }
-  }, [!!headerContentHeight]);
-  console.log('totalHeaderHeight', totalHeaderHeight);
+  }, [headerCollapsed]);
+
   return (
     <div
       ref={componentRef}
@@ -269,7 +277,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
       {headerContent &&
         cloneElement(headerContent, {
           ref: componentRefHeaderContent,
-          style: !headerContentHeight ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
+          style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
           className: headerContent.props.className
             ? `${responsivePaddingClass} ${headerContent.props.className}`
             : responsivePaddingClass,
@@ -290,7 +298,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         <DynamicPageAnchorBar
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
-          headerContentVisible={!!headerContentHeight}
+          headerContentVisible={headerCollapsed !== true}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}

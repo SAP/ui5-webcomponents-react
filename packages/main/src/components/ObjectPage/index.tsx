@@ -143,7 +143,8 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
 
 /**
- * A component that allows apps to easily display information related to a business object.<br />
+ * A component that allows apps to easily display information related to a business object.
+ *
  * The `ObjectPage` is composed of a header (title and content) and block content wrapped in sections and subsections that structure the information.
  */
 const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
@@ -215,20 +216,26 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
 
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState(undefined);
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight } = useObserveHeights(
-    objectPageRef,
-    topHeaderRef,
-    headerContentRef,
-    anchorBarRef,
-    { noHeader: !headerTitle && !headerContent, fixedHeader: headerPinned }
-  );
+  const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed } =
+    useObserveHeights(
+      objectPageRef,
+      topHeaderRef,
+      headerContentRef,
+      anchorBarRef,
+      {
+        noHeader: !headerTitle && !headerContent,
+        fixedHeader: headerPinned
+      },
+      headerCollapsedInternal
+    );
 
   useEffect(() => {
     if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
-      onToggleHeaderContent(!!headerContentHeight);
+      onToggleHeaderContent(headerCollapsed !== true);
     }
-  }, [!!headerContentHeight]);
+  }, [headerCollapsed]);
 
   const avatar = useMemo(() => {
     if (!image) {
@@ -268,7 +275,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
             prevTopHeaderHeight.current = topHeaderHeight;
           }
           objectPageRef.current?.scrollTo({
-            top: childOffset - safeTopHeaderHeight - anchorBarHeight - (headerPinned ? headerContentHeight : 0),
+            top:
+              childOffset -
+              safeTopHeaderHeight -
+              anchorBarHeight -
+              (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });
         }
@@ -282,6 +293,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       anchorBarHeight,
       headerPinned,
       headerContentHeight,
+      headerCollapsed,
       prevTopHeaderHeight.current
     ]
   );
@@ -472,8 +484,10 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
     isToggledRef.current = true;
     scrollTimout.current = performance.now() + 500;
     if (!e.detail.visible) {
+      setHeaderCollapsedInternal(true);
       objectPageRef.current?.classList.add(classes.headerCollapsed);
     } else {
+      setHeaderCollapsedInternal(false);
       setScrolledHeaderExpanded(true);
       objectPageRef.current?.classList.remove(classes.headerCollapsed);
     }
@@ -567,10 +581,10 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const onTitleClick = useCallback(
     (e) => {
       if (!titleHeaderNotClickable) {
-        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentHeight }));
+        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed !== true }));
       }
     },
-    [onToggleHeaderContentVisibility, headerContentHeight, titleHeaderNotClickable]
+    [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]
   );
 
   const renderTitleSection = useCallback(
@@ -599,7 +613,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       return React.cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
-        style: !headerContentHeight ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
+        style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
@@ -674,6 +688,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           return;
         }
         prevScrollTop.current = e.target.scrollTop;
+        setHeaderCollapsedInternal(true);
         setScrolledHeaderExpanded(false);
       }
     },
@@ -692,7 +707,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   );
 
   const objectPageStyles = { ...style };
-  if (headerContentHeight === 0 && headerContent) {
+  if (headerCollapsed === true && headerContent) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
@@ -718,12 +733,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
-            headerTitle && image && headerContentHeight === 0 ? `calc(100% - 3rem - 1rem)` : '100%'
+            headerTitle && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
           }`,
-          display: !showTitleInHeaderContent || headerContentHeight === 0 ? 'grid' : 'none'
+          display: !showTitleInHeaderContent || headerCollapsed === true ? 'grid' : 'none'
         }}
       >
-        {headerTitle && image && headerContentHeight === 0 && (
+        {headerTitle && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
         )}
         {headerTitle && renderTitleSection()}
@@ -737,12 +752,12 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           style={{
             top:
               scrolledHeaderExpanded || headerPinned
-                ? `${topHeaderHeight + headerContentHeight}px`
+                ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
                 : `${topHeaderHeight + 5}px`
           }}
         >
           <DynamicPageAnchorBar
-            headerContentVisible={!!headerContentHeight}
+            headerContentVisible={headerCollapsed !== true}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
@@ -760,7 +775,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           style={{
             top:
               headerPinned || scrolledHeaderExpanded
-                ? `${topHeaderHeight + headerContentHeight}px`
+                ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
                 : `${topHeaderHeight}px`
           }}
         >

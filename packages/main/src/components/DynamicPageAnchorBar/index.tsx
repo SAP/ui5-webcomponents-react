@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import React, { forwardRef, RefObject, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '../../interfaces';
 import { Button, ToggleButton } from '../../webComponents';
 
 const anchorBarStyles = {

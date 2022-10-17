@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '../../interfaces';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
@@ -30,7 +30,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  */
 const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
   const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;
-  console.log('headerPinned:', headerPinned);
+
   const headerStyles = useMemo(() => {
     if (headerPinned) {
       return {
