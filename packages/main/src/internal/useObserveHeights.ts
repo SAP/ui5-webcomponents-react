@@ -27,7 +27,6 @@ export const useObserveHeights = (
       setIsIntersecting(false);
       setHeaderCollapsed(true);
     } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && prevHeaderContentHeight.current) {
-      console.log('not hidden', topHeaderHeight);
       setIsIntersecting(true);
       setHeaderCollapsed(false);
       prevHeaderContentHeight.current = 0;
