@@ -180,10 +180,10 @@ describe('ObjectPage', () => {
 
   test('with anchor-bar', () => {
     const { asFragment, container, rerender } = render(renderComponent({ headerTitle, headerContent, footer }));
-    expect(container.querySelector('[tooltip="Expand Header"]')).toBeNull();
+    expect(container.querySelector('[tooltip="Collapse Header"]')).toBeNull();
     expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
     rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true }));
-    expect(container.querySelector('[tooltip="Expand Header"]')).toBeVisible();
+    expect(container.querySelector('[tooltip="Collapse Header"]')).toBeVisible();
     expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
 
     //needs mocking, otherwise won't work
