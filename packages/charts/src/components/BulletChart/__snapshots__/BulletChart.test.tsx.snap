@@ -3,7 +3,7 @@
 exports[`BulletChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -20,6 +20,8 @@ exports[`BulletChart Check onClick events 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts6-clip"
@@ -926,6 +928,8 @@ exports[`BulletChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -951,6 +955,8 @@ exports[`BulletChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -977,6 +983,8 @@ exports[`BulletChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -994,7 +1002,9 @@ exports[`BulletChart Check onClick events 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -1015,7 +1025,7 @@ exports[`BulletChart Check onClick events 1`] = `
 exports[`BulletChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <svg
       aria-labelledby="TITLE_ARIA_ID"
@@ -1102,7 +1112,7 @@ exports[`BulletChart Loading placeholder 1`] = `
 exports[`BulletChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -1119,6 +1129,8 @@ exports[`BulletChart Render chart with data 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts1-clip"
@@ -2025,6 +2037,8 @@ exports[`BulletChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2050,6 +2064,8 @@ exports[`BulletChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2076,6 +2092,8 @@ exports[`BulletChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -2093,7 +2111,9 @@ exports[`BulletChart Render chart with data 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -2114,7 +2134,7 @@ exports[`BulletChart Render chart with data 1`] = `
 exports[`BulletChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -2131,6 +2151,8 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts11-clip"
@@ -3037,6 +3059,8 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3062,6 +3086,8 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3088,6 +3114,8 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,4h32v24h-32z"
@@ -3105,7 +3133,9 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"

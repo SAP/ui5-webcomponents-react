@@ -3,7 +3,6 @@ import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   Brush,
   CartesianGrid,
-  Label,
   Legend,
   Line,
   LineChart as LineChartLib,
@@ -199,6 +198,7 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
   const xAxisHeights = useObserveXAxisHeights(chartRef, props.dimensions.length);
   const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
   const isRTL = useIsRTL(chartRef);
+  const referenceLine = chartConfig.referenceLine;
 
   return (
     <ChartContainer
@@ -309,18 +309,25 @@ const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Re
             wrapperStyle={legendPosition}
           />
         )}
-        {chartConfig.referenceLine && (
-          <ReferenceLine stroke={chartConfig.referenceLine.color} y={chartConfig.referenceLine.value} yAxisId={'left'}>
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+        {referenceLine && (
+          <ReferenceLine
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            y={referenceLine?.value ?? referenceLine?.y}
+            yAxisId={referenceLine?.yAxisId ?? 'left'}
+            label={referenceLine?.label}
+          />
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          contentStyle={tooltipContentStyle}
-          labelFormatter={labelFormatter}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig?.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            labelFormatter={labelFormatter}
+            {...tooltipConfig}
+          />
+        )}
         {chartConfig.zoomingTool && (
           <Brush
             y={10}

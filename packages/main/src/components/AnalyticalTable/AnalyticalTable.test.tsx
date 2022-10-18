@@ -253,22 +253,39 @@ const dataTree = [
 
 describe('AnalyticalTable', () => {
   beforeEach(() => {
+    window.HTMLElement.prototype.getBoundingClientRect = function () {
+      return {
+        height: 400,
+        width: 170
+      };
+    };
+    Object.defineProperties(window.HTMLElement.prototype, {
+      clientHeight: {
+        value: 400,
+        configurable: true
+      },
+      offsetHeight: {
+        value: 400,
+        configurable: true
+      },
+      offsetWidth: {
+        value: 170,
+        configurable: true
+      },
+      clientWidth: {
+        value: 170,
+        configurable: true
+      },
+      scrollWidth: {
+        value: 170,
+        configurable: true
+      },
+      scrollHeight: {
+        value: 170,
+        configurable: true
+      }
+    });
     window = Object.assign(window, { innerWidth: 1440 });
-  });
-  //todo when it's possible to open popovers on click, activate this test again
-  test.skip('test Asc desc', async () => {
-    const { asFragment } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
-
-    expect(asFragment()).toMatchSnapshot();
-
-    fireEvent.click(screen.getAllByText('Sort Ascending')[0], { bubbles: false });
-
-    expect(asFragment()).toMatchSnapshot();
-
-    // test desc function inside the popover element
-    fireEvent.click(screen.getAllByText('Sort Descending')[0], { bubbles: false });
-
-    expect(asFragment()).toMatchSnapshot();
   });
 
   test('render custom Cell & Header', () => {
@@ -466,60 +483,6 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('Check for scrollTo and scrollToItem functions', () => {
-    let tableRef;
-    const UsingTable = (props) => {
-      tableRef = useRef(null);
-      return (
-        <AnalyticalTable
-          style={{ width: '170px' }}
-          ref={tableRef}
-          header="Table Title"
-          data={data}
-          columns={columns}
-          visibleRows={1}
-          minRows={1}
-        />
-      );
-    };
-
-    const { getByRole } = render(<UsingTable />);
-
-    // Check existence + type
-    expect(typeof tableRef.current.scrollTo).toBe('function');
-    expect(typeof tableRef.current.scrollToItem).toBe('function');
-    expect(typeof tableRef.current.horizontalScrollTo).toBe('function');
-    expect(typeof tableRef.current.horizontalScrollToItem).toBe('function');
-
-    // call functions
-    const tableBodyRef = tableRef.current.querySelector("div[class^='AnalyticalTable-tbody']");
-    const tableContainerRef = getByRole('grid', { hidden: true });
-
-    act(() => {
-      tableRef.current.scrollToItem(1, 'start');
-    });
-
-    expect(tableBodyRef.scrollTop).toBe(44);
-
-    act(() => {
-      tableRef.current.scrollTo(2);
-    });
-
-    expect(tableBodyRef.scrollTop).toBe(2);
-
-    act(() => {
-      tableRef.current.horizontalScrollToItem(1, 'start');
-    });
-
-    expect(tableContainerRef.scrollLeft).toBe(150);
-
-    act(() => {
-      tableRef.current.horizontalScrollTo(2);
-    });
-
-    expect(tableContainerRef.scrollLeft).toBe(2);
-  });
-
   test('with highlight row', () => {
     const { asFragment, getAllByRole, rerender } = render(
       <AnalyticalTable
@@ -649,120 +612,6 @@ describe('AnalyticalTable', () => {
     rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
 
     expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
-  });
-
-  test('render rows', () => {
-    window.HTMLElement.prototype.getBoundingClientRect = function () {
-      return {
-        height: 132
-      };
-    };
-    const { rerender } = render(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
-      />
-    );
-
-    const tableContainer = screen.getByRole('grid', { hidden: true });
-
-    // header height cannot be mocked w/o mocking all other elements using `offsetHeight`
-    // this causes `data-per-page` to have one more row than expected (the header)
-    expect(tableContainer.getAttribute('data-per-page')).toBe('3');
-
-    window.HTMLElement.prototype.getBoundingClientRect = function () {
-      return {
-        height: 1320
-      };
-    };
-
-    rerender(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
-      />
-    );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('30');
-
-    //test if visibleRows prop is ignored when row-count-mode is "Auto"
-    rerender(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
-        visibleRows={1337}
-      />
-    );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('30');
-
-    //test default visibleRow count
-    rerender(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
-      />
-    );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
-    // expect(asFragment()).toMatchSnapshot();
-
-    rerender(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
-        visibleRows={1337}
-      />
-    );
-    expect(tableContainer.getAttribute('data-per-page')).toBe('1337');
-  });
-
-  test('resize vertically', () => {
-    Object.defineProperties(window.HTMLElement.prototype, {
-      clientHeight: {
-        value: 0,
-        configurable: true
-      },
-      offsetHeight: {
-        value: 0,
-        configurable: true
-      }
-    });
-
-    render(
-      <AnalyticalTable
-        data={[...data, ...moreData]}
-        columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Interactive}
-      />
-    );
-    const tableContainer = screen.getByRole('grid', { hidden: true });
-    expect(tableContainer.getAttribute('data-per-page')).toBe('15');
-
-    const mouseDown = getMouseEvent('mousedown');
-    const mouseMove = getMouseEvent('mousemove');
-    const mouseUp = getMouseEvent('mouseup', {
-      pageY: 44
-    });
-    const mouseUp2 = getMouseEvent('mouseup', {
-      pageY: 500
-    });
-    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
-
-    fireEvent(document.body, mouseMove);
-    expect(document.body.lastChild).toHaveClass('VerticalResizer-resizer');
-    expect(document.body).toMatchSnapshot();
-
-    fireEvent(document.body, mouseUp);
-    expect(document.body.lastChild).not.toHaveClass('VerticalResizer-resizer');
-    expect(tableContainer.getAttribute('data-per-page')).toBe('0');
-
-    fireEvent(screen.getByTitle('Drag to resize'), mouseDown);
-    fireEvent(document.body, mouseMove);
-    fireEvent(document.body, mouseUp2);
-    expect(tableContainer.getAttribute('data-per-page')).toBe('11');
   });
 
   test('pop-in columns: w/o pop-ins', () => {
@@ -1019,7 +868,7 @@ describe('AnalyticalTable', () => {
         <AnalyticalTable
           data={dataWithDisableSelectProp}
           columns={columns}
-          onRowSelected={cb}
+          onRowSelect={cb}
           onRowClick={click}
           selectionMode={TableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
@@ -1118,7 +967,7 @@ describe('AnalyticalTable', () => {
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
         tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelected={cb}
+        onRowSelect={cb}
         selectedRowIds={{ '1': true }}
       />
     );
@@ -1172,7 +1021,7 @@ describe('AnalyticalTable', () => {
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
         tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelected={cb}
+        onRowSelect={cb}
         selectedRowIds={{
           '0.0.0.0.0': true,
           '1': true

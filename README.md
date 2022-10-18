@@ -75,7 +75,7 @@ You can find our documentation under the following links:
 To consume `ui5-webcomponents-react`, you need to install the npm module and required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori --save
+npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
 ```
 
 <!-- *********************************************************************** -->
@@ -120,7 +120,7 @@ yarn start
 First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
 
 ```sh
-npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori --save
+npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
@@ -173,9 +173,9 @@ Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-reac
 
 <a name="support"></a>
 
-## Support
+## How to obtain support
 
-We welcome all comments, suggestions, questions, and bug reports. Feel free to open issues or chat with us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the
+We welcome all comments, suggestions, questions, and bug reports. Feel free to [open issues](https://github.com/SAP/ui5-webcomponents-react/issues/new/choose) or chat with us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the
 [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
 Please note that you have to join this Slack workspace via [this link](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/) if you are not part of it already.
 

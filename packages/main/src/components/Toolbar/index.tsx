@@ -24,7 +24,7 @@ import { createUseStyles } from 'react-jss';
 import { ToolbarDesign, ToolbarStyle } from '../../enums';
 import { SHOW_MORE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { PopoverDomRef } from '../../webComponents';
+import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 
@@ -36,8 +36,17 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the visual style of the `Toolbar`.<br />
-   * <b>Note:</b> The visual styles are theme-dependent.
+   * Defines the button shown when the `Toolbar` goes into overflow.
+   *
+   * __Note:__ It is strongly recommended that you only use `ToggleButton` in icon only mode in order to preserve the intended design.
+   *
+   * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
+   */
+  overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  /**
+   * Defines the visual style of the `Toolbar`.
+   *
+   * __Note:__ The visual styles are theme-dependent.
    */
   toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
   /**
@@ -57,6 +66,8 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   as?: keyof HTMLElementTagNameMap;
   /**
    * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
    *
    * Defaults to: `document.body`
    */
@@ -87,7 +98,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
   }) => void;
 }
 
-const OVERFLOW_BUTTON_WIDTH = 32 + 8;
+const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 
 /**
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
@@ -110,6 +121,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     numberOfAlwaysVisibleItems,
     onOverflowChange,
     overflowPopoverRef,
+    overflowButton,
     ...rest
   } = props;
 
@@ -255,21 +267,34 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
+  const prevChildren = useRef(React.Children.toArray(children));
+  const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
+
   useEffect(() => {
-    if (lastVisibleIndex !== null && typeof onOverflowChange === 'function') {
+    debouncedOverflowChange.current = debounce(onOverflowChange, 60);
+  }, [onOverflowChange]);
+
+  useEffect(() => {
+    const haveChildrenChanged = prevChildren.current.length !== React.Children.toArray(children).length;
+    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
+      prevChildren.current = React.Children.toArray(children);
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
       const overflowElements = overflowContentRef.current?.children;
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
-      onOverflowChange({
+      debouncedOverflowChange.current({
         toolbarElements,
         overflowElements,
         target: outerContainer.current
       });
     }
-  }, [lastVisibleIndex]);
+    return () => {
+      debouncedOverflowChange.current.cancel();
+    };
+  }, [lastVisibleIndex, children, debouncedOverflowChange]);
+
   const CustomTag = as as React.ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
@@ -307,6 +332,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             overflowContentRef={overflowContentRef}
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
             showMoreText={showMoreText}
+            overflowButton={overflowButton}
           >
             {React.Children.toArray(children).map((child) => {
               if ((child as ReactElement).type === React.Fragment) {

@@ -31,6 +31,8 @@ import {
   ObjectPageSubSection,
   ObjectStatus,
   Text,
+  Title,
+  ToggleButton,
   ValueState
 } from '../..';
 import SampleImage from '../../../../../.storybook/demoImages/Person.png';
@@ -293,6 +295,85 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
           imageShapeCircle
           placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
         />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## ObjectPage with custom actions and navigationActions overflow button
+
+The `DynamicPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
+With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `overflowButton` prop.
+`navigationActionsToolbarProps` only has an effect, if the `navigationActions` toolbar is used. (width < 1280px)
+
+<Canvas>
+  <Story name="with custom overflow button">
+    {() => {
+      const titleProps = {
+        actionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />
+        },
+        navigationActionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />
+        },
+        actions: (
+          <>
+            <Button key={'edit'} design={ButtonDesign.Emphasized}>
+              Edit
+            </Button>
+            <Button key={'delete'} design={ButtonDesign.Transparent}>
+              Delete
+            </Button>
+            <Button key={'copy'} design={ButtonDesign.Transparent}>
+              Copy
+            </Button>
+            <Button key={'action'} icon="action" design={ButtonDesign.Transparent}>
+              Action
+            </Button>
+            <Button design={ButtonDesign.Transparent}>Create</Button>
+            <Button design={ButtonDesign.Transparent}>Loooooooooooooooooooooooooooooooooooong actions Button</Button>
+          </>
+        ),
+        navigationActions: (
+          <>
+            <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+            <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
+            <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
+            <Button design={ButtonDesign.Transparent}>
+              Loooooooooooooooooooooooooooooooooooong navigation actions Button
+            </Button>
+          </>
+        )
+      };
+      return (
+        <>
+          <ObjectPage
+            style={{ width: '1000px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={
+                  <Title wrappingType="Normal">
+                    Custom overflow buttons for navigationActions and actions (width: 1000px)
+                  </Title>
+                }
+              />
+            }
+          />
+          <ObjectPage
+            style={{ width: '1400px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={<Title>Custom overflow buttons for actions (width: 1400px)</Title>}
+              />
+            }
+          />
+        </>
       );
     }}
   </Story>

@@ -15,10 +15,12 @@ import {
 } from '../../../scripts/web-component-wrappers/config.js';
 import {
   renderComponentWrapper,
+  renderMethods,
   renderStory,
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
+import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -31,6 +33,17 @@ const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
 
 const EXTENDED_PROP_DESCRIPTION = {
   primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
+};
+
+// use JSDoc syntax here
+const CUSTOM_MAIN_DESCRIPTION = {
+  IllustratedMessage: (desc) => {
+    return dedent`
+${desc}
+* 
+*__Note:__ The \`title\` slot collides with the native HTML \`title\` attribute, so to customize the title (heading) of the component you need to pass it as slot. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-illustratedmessage--default-story#fully-customizable-title).
+`;
+  }
 };
 
 const CUSTOM_DESCRIPTION_REPLACE = {
@@ -282,6 +295,9 @@ const createWebComponentWrapper = async (
   let componentDescription;
   try {
     componentDescription = Utils.formatDescription(description, componentSpec);
+    if (CUSTOM_MAIN_DESCRIPTION[componentSpec.module]) {
+      componentDescription = CUSTOM_MAIN_DESCRIPTION[componentSpec.module](componentDescription);
+    }
   } catch (e) {
     console.warn(
       `----------------------\nHeader description of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
@@ -330,9 +346,9 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
   console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
 
   const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
-  const additionalComponentImports = additionalComponentDocs.map(
-    (component) => `import { ${component} } from '@ui5/webcomponents-react/dist/${component}';`
-  );
+  const additionalComponentImports = componentSpec.hasOwnProperty('appenddocs')
+    ? [`import { ${componentSpec.appenddocs.replaceAll(' ', ', ')} } from '../..';`]
+    : [];
 
   componentProps.forEach((prop) => {
     if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
@@ -384,7 +400,6 @@ const createWebComponentDemo = (componentSpec, componentProps, hasDescription) =
     }
   });
   enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-
   return `${renderStory({
     name: componentName,
     since: versionInfo[componentSpec.since],
@@ -422,7 +437,12 @@ const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, eve
 };
 
 const recursivePropertyResolver = (componentSpec, { properties, slots, events, methods }) => {
-  assignComponentPropertiesToMaps(componentSpec, { properties, slots, events, methods });
+  assignComponentPropertiesToMaps(componentSpec, {
+    properties,
+    slots,
+    events,
+    methods
+  });
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
@@ -461,7 +481,12 @@ const resolveInheritedAttributes = (componentSpec) => {
   const slots = new Map();
   const events = new Map();
   const methods = new Map();
-  recursivePropertyResolver(componentSpec, { properties, slots, events, methods });
+  recursivePropertyResolver(componentSpec, {
+    properties,
+    slots,
+    events,
+    methods
+  });
 
   componentSpec.properties = Array.from(properties.values());
   componentSpec.slots = Array.from(slots.values());
@@ -685,6 +710,7 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, '');
     }
 
+    // fill index
     if (
       (CREATE_SINGLE_COMPONENT === componentSpec.module || !CREATE_SINGLE_COMPONENT) &&
       !EXCLUDE_LIST.includes(componentSpec.module)
@@ -717,29 +743,46 @@ allWebComponents
       }
 
       // create demo
-      if (!COMPONENTS_WITHOUT_DEMOS[componentSpec.module]) {
-        let formattedDescription = description
-          .replace(/<br>/g, `<br/>`)
-          .replace(/\s\s+/g, ' ')
-          .replace(/h3/g, 'h2')
-          .replace(/h4/g, 'h3');
-
-        try {
-          if (formattedDescription) {
-            formattedDescription = Utils.formatDescription(formattedDescription, componentSpec, false);
-          }
-        } catch (e) {
-          formattedDescription = '';
-          console.warn(
-            `----------------------\nDescription of ${componentSpec.module} couldn't be generated. \nThere is probably a syntax error in the associated description that can't be fixed automatically.\n----------------------`
-          );
-        }
+      const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
+      // create subcomponent description
+      if (typeof componentWithoutDemo === 'string') {
+        const subComponentDescription = `${formatDemoDescription(
+          mainDescription,
+          componentSpec,
+          false
+        )}\n${formatDemoDescription(description, componentSpec, false)}`;
+        fs.writeFileSync(
+          path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
+          subComponentDescription
+        );
+      }
+      if (!componentWithoutDemo) {
+        const formattedDescription = formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
           fs.writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
             formattedDescription
           );
+        }
+        // create methods table
+        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
+        if (publicMethods.length) {
+          const formattedMethods = JSON.parse(JSON.stringify(publicMethods).replaceAll(/\\n|<br>/g, ''));
+          const methods = `${renderMethods({
+            name: componentSpec.module,
+            methods: formattedMethods
+          })}`;
+          const hasMethodsTable = fs
+            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+            .toString()
+            .search(`<${componentSpec.module}Methods />`);
+          if (hasMethodsTable === -1) {
+            console.warn(
+              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+            );
+          }
+          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
         if (

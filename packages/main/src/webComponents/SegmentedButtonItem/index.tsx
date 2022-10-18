@@ -10,7 +10,7 @@ interface SegmentedButtonItemAttributes {
    */
   pressed?: boolean;
   /**
-   * Defines the accessible aria name of the component.
+   * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
   /**
@@ -24,12 +24,12 @@ interface SegmentedButtonItemAttributes {
   /**
    * Defines the icon, displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * Example: See all the available icons within the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Example: See all the available icons within the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
    * Defines the tooltip of the component.
-   * **Note:** We recommend setting tooltip to icon-only components.
+   * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
 }

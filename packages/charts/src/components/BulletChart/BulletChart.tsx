@@ -6,7 +6,6 @@ import {
   CartesianGrid,
   Cell,
   ComposedChart as ComposedChartLib,
-  Label,
   Legend,
   ReferenceLine,
   Tooltip,
@@ -157,6 +156,7 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
     secondXAxisConfig: {},
     ...props.chartConfig
   };
+  const { referenceLine } = chartConfig;
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -396,24 +396,27 @@ const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, r
         )}
         {layout === 'horizontal' && <XAxis xAxisId={'comparisonXAxis'} hide />}
         {layout === 'vertical' && <YAxis yAxisId={'comparisonYAxis'} type={'category'} hide />}
-        {chartConfig.referenceLine && (
+        {referenceLine && (
           <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={layout === 'horizontal' ? chartConfig.referenceLine.value : undefined}
-            x={layout === 'vertical' ? chartConfig.referenceLine.value : undefined}
-            yAxisId={layout === 'horizontal' ? 'primary' : undefined}
-            xAxisId={layout === 'vertical' ? 'primary' : undefined}
-          >
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            y={referenceLine?.value ? (layout === 'horizontal' ? referenceLine?.value : undefined) : referenceLine?.y}
+            x={referenceLine?.value ? (layout === 'vertical' ? referenceLine?.value : undefined) : referenceLine?.x}
+            yAxisId={referenceLine?.yAxisId ?? layout === 'horizontal' ? 'primary' : undefined}
+            xAxisId={referenceLine?.xAxisId ?? layout === 'vertical' ? 'primary' : undefined}
+            label={referenceLine?.label}
+          />
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          labelFormatter={labelFormatter}
-          contentStyle={tooltipContentStyle}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig?.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            labelFormatter={labelFormatter}
+            {...tooltipConfig}
+          />
+        )}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

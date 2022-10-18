@@ -60,26 +60,38 @@
     margin: 0 !important;
   }
 
-  .popupNoContentPadding::part(content) {
+  .contentPartNoPadding::part(content) {
+    padding: 0;
+  }
+
+  .headerPartNoPadding::part(header) {
     padding: 0;
   }
 
   .infoTable {
-      margin: 1rem 0;
-      border-spacing: 0;
-      width: unset;
+    margin: 1rem 0;
+    border-spacing: 0;
+    width: unset;
   }
 
   .infoTable th,
   .infoTable td {
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-      text-align: start;
-      height: 1.5rem
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    text-align: start;
+    height: 1.5rem;
   }
 
   .infoTable th {
-      padding-inline-end: 1.25rem;
+    padding-inline-end: 1.25rem;
+  }
+
+  /* todo remove when anchors are working again */
+  .md-anchor {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+    color: inherit;
   }
 </style>
 <script data-ui5-config type="application/json">

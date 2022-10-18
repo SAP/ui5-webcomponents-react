@@ -1,13 +1,26 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
+
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
-  const firstVisibleCell = noData
-    ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
-    : target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
-  if (firstVisibleCell) {
-    firstVisibleCell.tabIndex = 0;
-    firstVisibleCell.focus();
-    currentlyFocusedCell.current = firstVisibleCell;
+  if (
+    target.dataset.componentName === 'AnalyticalTableContainer' &&
+    target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]')
+  ) {
+    const rowElements = target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]').children;
+    const middleRowCell = target.querySelector(
+      `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
+    );
+    middleRowCell?.focus({ preventScroll: true });
+  } else {
+    const firstVisibleCell = noData
+      ? target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="0"]`)
+      : target.querySelector(`div[data-visible-column-index="0"][data-visible-row-index="1"]`);
+    if (firstVisibleCell) {
+      firstVisibleCell.tabIndex = 0;
+      firstVisibleCell.focus();
+      currentlyFocusedCell.current = firstVisibleCell;
+    }
   }
 };
 
@@ -44,14 +57,11 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
     }
   }, [showOverlay]);
 
-  const onTableBlur = useCallback(
-    (e) => {
-      if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
-        currentlyFocusedCell.current = null;
-      }
-    },
-    [currentlyFocusedCell.current]
-  );
+  const onTableBlur = (e) => {
+    if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
+      currentlyFocusedCell.current = null;
+    }
+  };
 
   const onTableFocus = useCallback(
     (e) => {
@@ -67,14 +77,14 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             e.target.querySelector(`div[data-column-index-sub="${columnIndex}"][data-row-index-sub="${rowIndex}"]`)
           ) {
             currentlyFocusedCell.current.tabIndex = 0;
-            currentlyFocusedCell.current.focus();
+            currentlyFocusedCell.current.focus({ preventScroll: true });
           } else {
             getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
           }
         } else if (isFirstCellAvailable) {
           const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
           firstCell.tabIndex = 0;
-          firstCell.focus();
+          firstCell.focus({ preventScroll: true });
           currentlyFocusedCell.current = firstCell;
         } else {
           getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
@@ -93,6 +103,13 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 
   const onKeyboardNavigation = useCallback(
     (e) => {
+      // check if target is cell and if so proceed from there
+      if (
+        !currentlyFocusedCell.current &&
+        CELL_DATA_ATTRIBUTES.every((item) => Object.keys(e.target.dataset).includes(item))
+      ) {
+        currentlyFocusedCell.current = e.target;
+      }
       if (currentlyFocusedCell.current) {
         const columnIndex = parseInt(currentlyFocusedCell.current.dataset.columnIndex, 10);
         const rowIndex = parseInt(currentlyFocusedCell.current.dataset.rowIndex, 10);
@@ -166,6 +183,8 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
+              // scroll to show full cell if it's only partial visible
+              newElement.scrollIntoView({ block: 'nearest' });
             }
             break;
           }
@@ -176,6 +195,8 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
+              // scroll to show full cell if it's only partial visible
+              newElement.scrollIntoView({ block: 'nearest' });
             }
             break;
           }
@@ -244,7 +265,14 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
   if (showOverlay) {
     return tableProps;
   }
-  return [tableProps, { onFocus: onTableFocus, onKeyDown: onKeyboardNavigation, onBlur: onTableBlur }];
+  return [
+    tableProps,
+    {
+      onFocus: onTableFocus,
+      onKeyDown: onKeyboardNavigation,
+      onBlur: onTableBlur
+    }
+  ];
 };
 
 export const useKeyboardNavigation = (hooks) => {

@@ -6,6 +6,8 @@ import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
+import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import '@ui5/webcomponents-icons/dist/menu2';
 import { isChromatic } from '../../../../../.storybook/utils';
 import { useReducer, useState } from 'react';
 import {
@@ -28,11 +30,13 @@ import {
   PageBackgroundDesign,
   Panel,
   Title,
+  ToggleButton,
   ValueState,
   VariantItem,
   VariantManagement
 } from '../..';
 import { ProductsTable } from '../../../../../.storybook/components/ProductsTable';
+import { SpacingSpan } from './CodeGen';
 
 <Meta
   title="Layouts & Floorplans / DynamicPage"
@@ -106,7 +110,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
             <Label>Halway: 23L</Label>
             <Label>Rack: 34</Label>
           </FlexBox>
-          <span style={{ width: '1rem' }} />
+          {SpacingSpan}
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Availability:</Label>
             <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
@@ -141,7 +145,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## Always show Header Content
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="Always show header content"
     args={{ alwaysShowContentHeader: true, showHideHeaderButton: true, headerContentPinnable: true }}
@@ -167,7 +171,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## Variant Management as Title
 
-<Canvas>
+**Note:** To prevent the `click` event of the `VariantManagement` component from bubbling up and collapsing/expanding the `DynamicPageHeader`, please call `event.stopPropagation()` inside the `onClick` callback of the `VariantManagement`.
+
+<Canvas withSource="none">
   <Story name="with Variants">
     {(args) => {
       const [headerVariant, setHeaderVariant] = useState('Header Variant 1');
@@ -213,6 +219,9 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
         );
       };
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const handleClick = (e) => {
+        e.stopPropagation();
+      };
       return (
         <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Display DynamicPage with Variants">
           {collapsed ? (
@@ -237,7 +246,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
                     </Breadcrumbs>
                   }
                   header={
-                    <VariantManagement onSelect={selectVariant}>
+                    <VariantManagement onSelect={selectVariant} onClick={handleClick}>
                       <VariantItem selected={headerVariant === 'Header Variant 1'}>Header Variant 1</VariantItem>
                       <VariantItem selected={headerVariant === 'Header Variant 2'}>Header Variant 2</VariantItem>
                     </VariantManagement>
@@ -259,7 +268,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## With floating footer
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="with floating footer">
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
@@ -288,6 +297,84 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
             </DynamicPage>
           )}
         </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## DynamicPage with custom actions and navigationActions overflow button
+
+The `DynamicPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
+With these objects it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `overflowButton` prop.
+`navigationActionsToolbarProps` only has an effect, if the `navigationActions` toolbar is used. (width < 1280px)
+
+<Canvas>
+  <Story name="with custom overflow button">
+    {() => {
+      const titleProps = {
+        actionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />
+        },
+        navigationActionsToolbarProps: {
+          overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />
+        },
+        actions: (
+          <>
+            <Button key={'edit'} design={ButtonDesign.Emphasized}>
+              Edit
+            </Button>
+            <Button key={'delete'} design={ButtonDesign.Transparent}>
+              Delete
+            </Button>
+            <Button key={'copy'} design={ButtonDesign.Transparent}>
+              Copy
+            </Button>
+            <Button key={'action'} icon="action" design={ButtonDesign.Transparent}>
+              Action
+            </Button>
+            <Button design={ButtonDesign.Transparent}>Create</Button>
+          </>
+        ),
+        navigationActions: (
+          <>
+            <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
+            <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+            <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
+            <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
+            <Button design={ButtonDesign.Transparent}>
+              Loooooooooooooooooooooooooooooooooooong navigation actions Button
+            </Button>
+          </>
+        )
+      };
+      return (
+        <>
+          <DynamicPage
+            style={{ width: '1000px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={
+                  <Title wrappingType="Normal">
+                    Custom overflow buttons for navigationActions and actions (width: 1000px)
+                  </Title>
+                }
+              />
+            }
+          />
+          <DynamicPage
+            style={{ width: '1300px' }}
+            showHideHeaderButton={false}
+            headerTitle={
+              <DynamicPageTitle
+                {...titleProps}
+                header={<Title>Custom overflow buttons for actions (width: 1300px)</Title>}
+              />
+            }
+          />
+        </>
       );
     }}
   </Story>

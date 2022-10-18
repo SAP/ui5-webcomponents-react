@@ -1,9 +1,10 @@
-import { render } from '@shared/tests';
+import { render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import '@ui5/webcomponents-icons/dist/action.js';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import '@ui5/webcomponents-icons/dist/full-screen.js';
+import '@ui5/webcomponents-icons/dist/question-mark.js';
 import React from 'react';
 import {
   Badge,
@@ -23,6 +24,7 @@ import {
   ObjectStatus,
   Text,
   Title,
+  ToggleButton,
   ValueState
 } from '../..';
 
@@ -429,8 +431,50 @@ describe('DynamicPage', () => {
       'aria-labelledby',
       'labelledby'
     );
-
     expect(document.querySelector('[data-component-name="DynamicPageAnchorBar"]')).toHaveAttribute('role', 'anchorbar');
+  });
+
+  test('with custom overflow toolbar buttons', () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 50),
+        height: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      };
+    });
+
+    render(
+      <DynamicPage
+        style={{ width: '50px' }}
+        headerTitle={
+          <DynamicPageTitle
+            actionsToolbarProps={{ overflowButton: <ToggleButton data-testid="actionBtn" icon="question-mark" /> }}
+            navigationActionsToolbarProps={{
+              overflowButton: <ToggleButton data-testid="navActionBtn" icon="question-mark" />
+            }}
+            actions={
+              <>
+                <Button>Actions Button 1</Button>
+                <Button>Actions Button 2</Button>
+              </>
+            }
+            navigationActions={
+              <>
+                <Button>Navigation Actions Button 1</Button>
+                <Button>Navigation Actions Button 2</Button>
+              </>
+            }
+          />
+        }
+      />
+    );
+    // never goes into resize observer -> only one the actions toolbar is rendered
+    expect(screen.getByTestId('actionBtn')).toBeInTheDocument();
   });
 
   createCustomPropsTest(DynamicPage);

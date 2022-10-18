@@ -8,6 +8,14 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TreeAttributes {
   /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines the component footer text.
    */
   footerText?: string;
@@ -86,7 +94,10 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<TreeDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
+    event: Ui5CustomEvent<
+      TreeDomRef,
+      { selectedItems: unknown[]; previouslySelectedItems: unknown[]; targetItem: HTMLElement }
+    >
   ) => void;
 }
 
@@ -97,7 +108,7 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',
-  ['footerText', 'headerText', 'mode', 'noDataText'],
+  ['accessibleName', 'accessibleNameRef', 'footerText', 'headerText', 'mode', 'noDataText'],
   [],
   ['header'],
   ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change']

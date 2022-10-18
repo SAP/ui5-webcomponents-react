@@ -7,7 +7,7 @@ Chart library for ui5-webcomponents-react.
 ### Installation
 
 ```bash
-npm install @ui5/webcomponents-react-charts --save
+npm install @ui5/webcomponents-react-charts
 ```
 
 ### Documentation

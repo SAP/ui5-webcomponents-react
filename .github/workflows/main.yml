@@ -1,6 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 name: CI
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -28,47 +32,54 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/dist/**/*.js'
-          exclude: 'packages/**/src/dist/**'
           compression: 'gzip'
 
-  test-and-build:
-    name: 'Install, Test & Build'
+  install:
+    name: 'Install Dependencies'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        react: [16, 17, 18]
-    env:
-      CI: true
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3.4.1
+      - uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: install dependencies
+      - name: Install and Build
         run: yarn install --frozen-lockfile
 
-      - name: run tests
-        run: yarn test --runInBand
-        env:
-          REACTJS_VERSION: ${{ matrix.react }}
+  test:
+    needs: [ 'install' ]
+    uses: './.github/workflows/test.yml'
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@1.1.3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: build project
-        run: yarn build
-
-  lint:
+  build:
+    needs: ['install']
+    name: 'Build'
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3.4.1
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install and Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+  lint:
+    needs: ['install']
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -79,16 +90,17 @@ jobs:
       - name: run eslint
         run: yarn lint
 
-
   deploy-next-docs:
-    needs: ['test-and-build']
+    needs: ['build']
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -99,7 +111,7 @@ jobs:
           yarn build:storybook
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.

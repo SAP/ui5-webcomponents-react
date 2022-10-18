@@ -14,6 +14,9 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './NotificationListItemDescription.md';
 import '@ui5/webcomponents-icons/dist/employee.js';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md';
+import { Img, FootNotes, NotificationDescription } from './CodeGen';
 
 <Meta
   title="Data Display / NotificationListItem"
@@ -47,11 +50,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
       return (
         <NotificationListItem
           {...args}
-          avatar={
-            <Avatar size={AvatarSize.XS}>
-              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
-            </Avatar>
-          }
+          avatar={<Avatar size={AvatarSize.XS}>{Img}</Avatar>}
           footnotes={
             <>
               <Label>Monique Legrand</Label>
@@ -108,33 +107,21 @@ import '@ui5/webcomponents-icons/dist/employee.js';
             wrap={WrappingType.Normal}
             titleText="New high priority order (#2528) without close button"
             priority={Priority.High}
-            avatar={
-              <Avatar size={AvatarSize.XS}>
-                <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/man_avatar_1.png" />
-              </Avatar>
-            }
-            footnotes={
-              <>
-                <Label>John Smith</Label>
-                <Label>1 hour</Label>
-              </>
-            }
+            avatar={<Avatar size={AvatarSize.XS}>{Img}</Avatar>}
+            footnotes={FootNotes}
           >
-            And with a very long description that will not be ellipsed:
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra,
-            tellus odio vehicula dolor, nec elementum lectus turpis at nunc. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec
-            elementum lectus turpis at nunc. <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus
-            odio vehicula dolor, nec elementum lectus turpis at nunc. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis
-            at nunc.
+            {NotificationDescription}
           </NotificationListItem>
         </List>
       );
     }}
   </Story>
 </Canvas>
+
+<SubcomponentsSection />
+
+## NotificationAction
+
+<NotificationActionDescription />
 
 <Footer />

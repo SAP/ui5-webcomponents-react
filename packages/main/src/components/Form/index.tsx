@@ -6,6 +6,7 @@ import React, {
   CSSProperties,
   forwardRef,
   ReactElement,
+  ReactNode,
   Ref,
   useEffect,
   useMemo,
@@ -13,7 +14,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { TitleLevel } from '../../enums/TitleLevel';
+import { FormBackgroundDesign, TitleLevel } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Title } from '../../webComponents/Title';
 import { styles } from './Form.jss';
@@ -23,7 +24,11 @@ export interface FormPropTypes extends CommonProps {
    * Components that are placed into Form. Please use only `FormGroup` and `FormItem` in order to preserve the
    * intended design.
    */
-  children: ReactElement | ReactElement[];
+  children: ReactNode | ReactNode[];
+  /**
+   * Specifies the background color of the Form content.
+   */
+  backgroundDesign?: FormBackgroundDesign;
   /**
    * Form title
    */
@@ -101,10 +106,10 @@ export interface FormPropTypes extends CommonProps {
 
 const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
   React.Children.map(reactChildren, (child) => {
-    if (child.type?.displayName === 'FormItem') {
+    if (child?.type?.displayName === 'FormItem') {
       return cloneElement(child, { labelSpan: currentLabelSpan });
     }
-    if (child.type?.displayName === 'FormGroup') {
+    if (child?.type?.displayName === 'FormGroup') {
       return cloneElement(child, { children: clonedChildrenForSingleColumn(child.props.children, currentLabelSpan) });
     }
     return child;
@@ -117,20 +122,21 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
  */
 const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const {
-    titleText,
+    as,
+    backgroundDesign,
     children,
-    className,
-    slot,
-    style,
     columnsS,
     columnsM,
     columnsL,
     columnsXL,
+    className,
     labelSpanS,
     labelSpanM,
     labelSpanL,
     labelSpanXL,
-    as,
+    slot,
+    titleText,
+    style,
     ...rest
   } = props;
 
@@ -177,7 +183,7 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
   const [formGroups, updatedTitle] = useMemo(() => {
     const computedFormGroups = [];
     if (Children.count(children) === 1 && !titleText) {
-      const singleChild = Array.isArray(children) ? children[0] : children;
+      const singleChild = (Array.isArray(children) ? children[0] : children) as ReactElement;
       if (singleChild?.props?.title?.length > 0) {
         return [cloneElement(singleChild, { title: null }), singleChild.props.title];
       }
@@ -272,7 +278,12 @@ const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
     return [computedFormGroups, titleText];
   }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
 
-  const formClassNames = clsx(classes.form, classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`], className);
+  const formClassNames = clsx(
+    classes.form,
+    classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`],
+    classes[backgroundDesign.toLowerCase()],
+    className
+  );
 
   const CustomTag = as as React.ElementType;
   return (
@@ -298,6 +309,7 @@ Form.displayName = 'Form';
 
 Form.defaultProps = {
   as: 'form',
+  backgroundDesign: FormBackgroundDesign.Transparent,
   columnsS: 1,
   columnsM: 1,
   columnsL: 1,

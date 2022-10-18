@@ -6,6 +6,14 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface MenuItemAttributes {
   /**
+   * Defines the accessible ARIA name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines the `additionalText`, displayed in the end of the menu item. **Note:** The additional text would not be displayed if the item has a submenu.
+   */
+  additionalText?: string;
+  /**
    * Defines whether `MenuItem` is in disabled state.
    *
    * **Note:** A disabled `MenuItem` is noninteractive.
@@ -14,7 +22,7 @@ interface MenuItemAttributes {
   /**
    * Defines the icon to be displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * **\* Example:** See all the available icons in the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **\* Example:** See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -43,7 +51,7 @@ export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['icon', 'text'],
+  ['accessibleName', 'additionalText', 'icon', 'text'],
   ['disabled', 'startsSection'],
   [],
   []

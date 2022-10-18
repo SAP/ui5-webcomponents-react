@@ -8,15 +8,10 @@ import { RepeatedValue } from './RepeatedValue';
 
 export const DEFAULT_COLUMN_WIDTH = 60;
 
-const defaultFilterMethod = (filter, row) => {
-  return new RegExp(filter.value, 'gi').test(String(row[filter.id]));
-};
-
 export const DefaultColumn = {
   Filter: DefaultFilterComponent,
   minWidth: DEFAULT_COLUMN_WIDTH,
   vAlign: VerticalAlign.Middle,
-  defaultFilter: defaultFilterMethod,
   Grouped: Grouped,
   Cell: Cell,
   Expandable: Expandable,

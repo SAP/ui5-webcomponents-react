@@ -208,234 +208,8 @@ exports[`Toolbar ToolbarSpacer 1`] = `
 
 exports[`Toolbar overflow menu 1`] = `
 <body>
-  Object {
-    Symbol(SameObject caches): Object {
-      "childNodes": NodeList [
-        <span
-          aria-live="polite"
-          class="ui5-invisiblemessage-polite"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-        <span
-          aria-live="assertive"
-          class="ui5-invisiblemessage-assertive"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-      ],
-    },
-  }
-  <div>
-    <div
-      class="Toolbar-outerContainer Toolbar-hasOverflow"
-      data-testid="toolbar"
-      style="width: 300px;"
-    >
-      <div
-        class="Toolbar-toolbar"
-        data-component-name="ToolbarContent"
-      >
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item1
-          </span>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-          style="visibility: hidden; position: absolute; pointer-events: none;"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item2
-          </span>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-          style="visibility: hidden; position: absolute; pointer-events: none;"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item3
-          </span>
-        </div>
-      </div>
-      <div
-        class="Toolbar-overflowButtonContainer"
-        data-component-name="ToolbarOverflowButtonContainer"
-      >
-        <ui5-toggle-button
-          accessible-name="Show More"
-          design="Transparent"
-          icon="overflow"
-          tooltip="Show More"
-          ui5-toggle-button=""
-        />
-      </div>
-    </div>
-  </div>
-  <ui5-popover
-    class="Toolbar-popover"
-    hide-arrow="true"
-    horizontal-align="Center"
-    placement-type="Bottom"
-    ui5-popover=""
-    vertical-align="Center"
-  >
-    <div
-      class="Toolbar-popoverContent"
-    >
-      <span
-        class="Text-text"
-        data-testid="toolbar-item"
-        style="width: 200px;"
-      >
-        Item2
-      </span>
-      <span
-        class="Text-text"
-        data-testid="toolbar-item"
-        style="width: 200px;"
-      >
-        Item3
-      </span>
-    </div>
-  </ui5-popover>
-</body>
-`;
-
-exports[`Toolbar overflow menu 2`] = `
-<body>
-  Object {
-    Symbol(SameObject caches): Object {
-      "childNodes": NodeList [
-        <span
-          aria-live="polite"
-          class="ui5-invisiblemessage-polite"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-        <span
-          aria-live="assertive"
-          class="ui5-invisiblemessage-assertive"
-          role="alert"
-          style="position: absolute; clip: rect(1px, 1px, 1px, 1px); user-select: none; left: -1000px; top: -1000px; pointer-events: none;"
-        />,
-      ],
-    },
-  }
-  <div>
-    <div
-      class="Toolbar-outerContainer Toolbar-hasOverflow"
-      data-testid="toolbar"
-      style="width: 300px;"
-    >
-      <div
-        class="Toolbar-toolbar"
-        data-component-name="ToolbarContent"
-      >
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item1
-          </span>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-          style="visibility: hidden; position: absolute; pointer-events: none;"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item2
-          </span>
-        </div>
-        <div
-          class="Toolbar-childContainer"
-          data-component-name="ToolbarChildContainer"
-          style="visibility: hidden; position: absolute; pointer-events: none;"
-        >
-          <span
-            class="Text-text"
-            data-testid="toolbar-item"
-            style="width: 200px;"
-          >
-            Item3
-          </span>
-        </div>
-      </div>
-      <div
-        class="Toolbar-overflowButtonContainer"
-        data-component-name="ToolbarOverflowButtonContainer"
-      >
-        <ui5-toggle-button
-          accessible-name="Show More"
-          design="Transparent"
-          icon="overflow"
-          tooltip="Show More"
-          ui5-toggle-button=""
-        />
-      </div>
-    </div>
-  </div>
-  <ui5-popover
-    class="Toolbar-popover"
-    hide-arrow="true"
-    horizontal-align="Center"
-    placement-type="Bottom"
-    ui5-popover=""
-    vertical-align="Center"
-  >
-    <div
-      class="Toolbar-popoverContent"
-    >
-      <span
-        class="Text-text"
-        data-testid="toolbar-item"
-        style="width: 200px;"
-      >
-        Item2
-      </span>
-      <span
-        class="Text-text"
-        data-testid="toolbar-item"
-        style="width: 200px;"
-      >
-        Item3
-      </span>
-    </div>
-  </ui5-popover>
-</body>
-`;
-
-exports[`Toolbar overflow menu 3`] = `
-<body>
-  Object {
-    Symbol(SameObject caches): Object {
+  {
+    Symbol(SameObject caches): {
       "childNodes": NodeList [
         <span
           aria-live="polite"
@@ -516,10 +290,11 @@ exports[`Toolbar overflow menu 3`] = `
         data-component-name="ToolbarOverflowButtonContainer"
       >
         <ui5-toggle-button
-          accessible-name="Show More"
+          accessible-name="Show more"
           design="Transparent"
           icon="overflow"
-          tooltip="Show More"
+          id="1337"
+          tooltip="Show more"
           ui5-toggle-button=""
         />
       </div>
@@ -529,6 +304,7 @@ exports[`Toolbar overflow menu 3`] = `
     class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
+    opener="1337"
     placement-type="Bottom"
     ui5-popover=""
     vertical-align="Center"

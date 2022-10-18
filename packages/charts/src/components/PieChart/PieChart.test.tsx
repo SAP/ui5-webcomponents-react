@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { simpleDataSet } from '../../resources/DemoProps';
-import { PieChart } from './PieChart';
 import {
   createCircleChartRenderTest,
   createLoadingPlaceholderTest,
@@ -8,6 +5,9 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
+import * as React from 'react';
+import { simpleDataSet } from '../../resources/DemoProps';
+import { PieChart } from './PieChart';
 
 const dimension = {
   accessor: 'name'

@@ -15,14 +15,16 @@ const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
+
   return [
     ...deps,
     hasRows,
-    state.tableClientWidth,
+    !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
     visibleColumns?.length,
     webComponentsReactProperties.scaleWidthMode,
-    isLoadingPlaceholder
+    isLoadingPlaceholder,
+    webComponentsReactProperties.scaleXFactor
   ];
 };
 interface IColumnMeta {
@@ -38,10 +40,14 @@ const stringToPx = (dataPoint, id) => {
   }
   return 0;
 };
-const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, visibleColumns) => {
+const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hiddenColumns) => {
   const { rows, state, webComponentsReactProperties } = instance;
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
   const { tableClientWidth: totalWidth } = state;
+
+  const visibleColumns = columns.filter(
+    (column) => (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor)
+  );
 
   const columnMeta: Record<string, IColumnMeta> = visibleColumns.reduce(
     (metadata: Record<string, IColumnMeta>, column) => {
@@ -177,9 +183,8 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
       return column ?? false;
     })
     .filter(Boolean);
-
   if (scaleWidthMode === TableScaleWidthMode.Smart) {
-    return smartColumns(columns, instance, visibleColumns);
+    return smartColumns(columns, instance, hiddenColumns);
   }
 
   const calculateDefaultTableWidth = () => {

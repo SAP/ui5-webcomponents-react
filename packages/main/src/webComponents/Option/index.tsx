@@ -12,13 +12,13 @@ interface OptionAttributes {
   /**
    * Defines whether the component is in disabled state.
    *
-   * **Note:** A disabled component is noninteractive.
+   * **Note:** A disabled component is hidden.
    */
   disabled?: boolean;
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**

@@ -10,6 +10,9 @@ import { Fragment } from 'react';
 import { NotificationListItem } from '../NotificationListItem';
 import { Avatar } from '../Avatar';
 import { AvatarSize } from '../../enums/AvatarSize';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md';
+import { FootNotes1, FootNotes2, Img } from './CodeGen';
 
 <Meta
   title="Data Display / NotificationListGroupItem"
@@ -54,17 +57,8 @@ import { AvatarSize } from '../../enums/AvatarSize';
             children={
               'And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.'
             }
-            avatar={
-              <Avatar size={AvatarSize.XS}>
-                <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
-              </Avatar>
-            }
-            footnotes={
-              <Fragment>
-                <span>Monique Legrand</span>
-                <span>2 Days</span>
-              </Fragment>
-            }
+            avatar={<Avatar size={AvatarSize.XS}>{Img}</Avatar>}
+            footnotes={FootNotes1}
             actions={
               <>
                 <NotificationAction icon="accept" text="Accept" />
@@ -76,17 +70,8 @@ import { AvatarSize } from '../../enums/AvatarSize';
             showClose
             titleText="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
             priority={Priority.High}
-            avatar={
-              <Avatar size={AvatarSize.XS}>
-                <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
-              </Avatar>
-            }
-            footnotes={
-              <Fragment>
-                <span>Alain Devalier</span>
-                <span>2 Days</span>
-              </Fragment>
-            }
+            avatar={<Avatar size={AvatarSize.XS}>{Img}</Avatar>}
+            footnotes={FootNotes2}
             actions={
               <>
                 <NotificationAction icon="accept" text="Accept" />
@@ -109,5 +94,11 @@ import { AvatarSize } from '../../enums/AvatarSize';
 <ArgsTableWithNote story="." />
 
 <Description />
+
+<SubcomponentsSection />
+
+## NotificationAction
+
+<NotificationActionDescription />
 
 <Footer />

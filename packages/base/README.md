@@ -3,7 +3,7 @@ Base Utilities for ui5-webcomponents-react
 
 ## Installation
 ```
-npm install @ui5/webcomponents-react-base --save
+npm install @ui5/webcomponents-react-base
 ```
 
 ## Usage

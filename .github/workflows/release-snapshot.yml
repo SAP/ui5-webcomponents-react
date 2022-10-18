@@ -4,7 +4,13 @@ on:
   workflow_dispatch
 
 jobs:
+  test:
+    uses: './.github/workflows/test.yml'
+    with:
+      reportCoverage: false
+
   build-and-release:
+    needs: ['test']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
@@ -16,18 +22,15 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install, test and build
+      - name: Install and build
         run: |
           yarn install
-          yarn test
           yarn build
-        env:
-          REACTJS_VERSION: 18
 
       - name: publish
         run: |

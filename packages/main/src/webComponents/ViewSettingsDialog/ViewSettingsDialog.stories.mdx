@@ -6,6 +6,11 @@ import Description from './ViewSettingsDialogDescription.md';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import SortItemDescription from '../SortItem/SortItemDescription.md';
+import FilterItemDescription from '../FilterItem/FilterItemDescription.md';
+import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md';
+import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -91,12 +96,20 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 <Description />
 
-## Methods
+<ViewSettingsDialogMethods />
 
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+<SubcomponentsSection />
 
-| Name     | Parameters | Description       |
-| -------- | ---------- | ----------------- |
-| **show** | &mdash;    | Shows the dialog. |
+## SortItem
+
+<SortItemDescription />
+
+## FilterItem
+
+<FilterItemDescription />
+
+## FilterItemOption
+
+<FilterItemOptionDescription />
 
 <Footer />

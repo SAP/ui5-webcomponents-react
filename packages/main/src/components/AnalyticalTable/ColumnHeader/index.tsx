@@ -1,3 +1,4 @@
+import { VirtualItem } from '@tanstack/react-virtual';
 import '@ui5/webcomponents-icons/dist/filter.js';
 import '@ui5/webcomponents-icons/dist/group-2.js';
 import '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -10,11 +11,10 @@ import React, {
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
-  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { VirtualItem } from 'react-virtual';
+import { CustomThemingParameters } from '../../../themes/CustomVariables';
 import { Icon } from '../../../webComponents/Icon';
 import { Text } from '../../Text';
 import { ColumnType } from '../types/ColumnType';
@@ -33,10 +33,12 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  virtualColumn: VirtualItem;
+  virtualColumn: VirtualItem<Record<string, any>>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
+  uniqueId: string;
+  scaleXFactor?: number;
 
   //getHeaderProps()
   id: string;
@@ -54,12 +56,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'begin',
     alignItems: 'center',
-    textAlign: 'left',
-    fontFamily: ThemingParameters.sapFontFamily,
+    textAlign: 'start',
+    fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    color: ThemingParameters.sapList_TextColor,
-    background: ThemingParameters.sapList_HeaderBackground,
+    color: 'inherit',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     maxWidth: '100%',
@@ -70,6 +71,8 @@ const styles = {
     boxSizing: 'border-box'
   },
   text: {
+    color: 'inherit',
+    fontFamily: 'inherit',
     width: '100%',
     textAlign: 'start'
   },
@@ -107,7 +110,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     visibleColumnIndex,
     onClick,
     onKeyDown,
-    portalContainer
+    portalContainer,
+    uniqueId,
+    scaleXFactor
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
@@ -158,6 +163,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
+
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
@@ -179,13 +185,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
+  const uniqueColumnId = `${column.id}-${uniqueId}`;
 
-  const targetRef = useRef();
   if (!column) return null;
-
   return (
     <div
-      ref={targetRef}
+      id={uniqueColumnId}
       style={{
         position: 'absolute',
         top: 0,
@@ -194,6 +199,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
+        ref={(node) => {
+          const clientRect = node?.getBoundingClientRect();
+          if (clientRect && scaleXFactor > 0) {
+            const scaledGetBoundingClientRect = () => ({ ...clientRect, width: clientRect.width / scaleXFactor });
+            const updatedNode = { ...node, getBoundingClientRect: scaledGetBoundingClientRect };
+            virtualColumn.measureElement(updatedNode);
+          } else {
+            virtualColumn.measureElement(node);
+          }
+        }}
         data-visible-column-index={visibleColumnIndex}
         data-visible-row-index={0}
         data-row-index={0}
@@ -203,7 +218,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         className={className}
         style={{
           ...style,
-          borderLeft: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
+          borderInlineStart: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
         }}
         aria-haspopup={hasPopover ? 'menu' : undefined}
         role={role}
@@ -238,13 +253,13 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             {column.isGrouped && <Icon name="group-2" />}
           </div>
         </div>
-        {hasPopover && targetRef.current && (
+        {hasPopover && popoverOpen && (
           <ColumnHeaderModal
             isRtl={isRtl}
             column={column}
             onSort={onSort}
             onGroupBy={onGroupBy}
-            targetRef={targetRef}
+            uniqueColumnId={uniqueColumnId}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
             portalContainer={portalContainer}

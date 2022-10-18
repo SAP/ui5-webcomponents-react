@@ -6,7 +6,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Text } from '../Text';
 import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss';
 
-interface NumericSideIndicatorPropTypes extends CommonProps {
+export interface NumericSideIndicatorPropTypes extends CommonProps {
   /**
    * The numeric value
    */

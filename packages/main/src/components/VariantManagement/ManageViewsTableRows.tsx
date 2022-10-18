@@ -1,3 +1,6 @@
+import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
+import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
+import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
 import { ButtonDesign } from '../../enums/ButtonDesign';
@@ -35,6 +38,7 @@ interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   showCreatedBy: boolean;
+  showOnlyFavorites?: boolean;
   changedVariantNames: Map<string, any>;
   setChangedVariantNames: (varNames: any) => void;
   setInvalidVariants: (invalidVars: any) => void;
@@ -61,7 +65,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     applyAutomatically,
     author,
     setInvalidVariants,
-    hideDelete
+    hideDelete,
+    showOnlyFavorites
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -80,7 +85,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   const [internalFavorite, setFavorite] = useReducer((prev) => {
     return !prev;
   }, !!favorite);
-  const iconName = internalFavorite ? 'favorite' : 'unfavorite';
+  const iconName = internalFavorite ? favoriteIcon : unfavoriteIcon;
   const inputRef = useRef(undefined);
 
   const [variantNameInvalid, setVariantNameInvalid] = useState<boolean | string>(false);
@@ -149,20 +154,22 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   };
   return (
     <TableRow data-id={children} key={`${children}`}>
-      <TableCell>
-        {isDefault ? (
-          <Icon name="favorite" style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
-        ) : (
-          <Icon
-            aria-label={a11yFavoriteText}
-            title={iconName === 'favorite' ? favoriteIconTitleText : unfavoriteIconTitleText}
-            name={iconName}
-            interactive
-            style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
-            onClick={onFavoriteClick}
-          />
-        )}
-      </TableCell>
+      {showOnlyFavorites && (
+        <TableCell>
+          {isDefault ? (
+            <Icon name={favoriteIcon} style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
+          ) : (
+            <Icon
+              aria-label={a11yFavoriteText}
+              title={iconName === favoriteIcon ? favoriteIconTitleText : unfavoriteIconTitleText}
+              name={iconName}
+              interactive
+              style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
+              onClick={onFavoriteClick}
+            />
+          )}
+        </TableCell>
+      )}
       <TableCell>{renderView()}</TableCell>
       {showShare && <TableCell>{global ? publicText : privateText}</TableCell>}
       {showSetAsDefault && (
@@ -193,7 +200,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
           <Button
             title={a11yDeleteText}
             accessibleName={a11yDeleteText}
-            icon="decline"
+            icon={declineIcon}
             design={ButtonDesign.Transparent}
             onClick={handleDelete}
             data-children={children}

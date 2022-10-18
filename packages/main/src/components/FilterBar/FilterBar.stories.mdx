@@ -2,14 +2,20 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import '@ui5/webcomponents-icons/dist/nav-back.js';
 import {
   ComboBox,
   ComboBoxItem,
+  DatePicker,
   DateRangePicker,
+  DynamicPage,
+  DynamicPageHeader,
+  DynamicPageTitle,
   FilterBar,
   FilterGroupItem,
+  FlexBox,
+  FlexBoxDirection,
   Input,
+  Label,
   MultiComboBox,
   MultiComboBoxItem,
   MultiInput,
@@ -18,10 +24,13 @@ import {
   Select,
   StepInput,
   Switch,
+  Text,
+  Title,
   Token,
   VariantItem,
   VariantManagement
 } from '../..';
+import { useState } from 'react';
 
 <Meta
   title="Layouts & Floorplans / FilterBar"
@@ -30,21 +39,16 @@ import {
   argTypes={{
     activeFiltersCount: { control: 'number' },
     search: { control: { disable: true } },
-    variants: { control: { disable: true } },
+    header: { control: { disable: true } },
     children: { control: { disable: true } },
+    portalContainer: { control: { disable: true } },
     filterContainerWidth: { control: 'text' },
     as: { control: { disable: true } }
   }}
   args={{
     search: <Input placeholder={'Search'} />,
-    variants: (
-      <VariantManagement>
-        <VariantItem>Variant 1</VariantItem>
-        <VariantItem selected>Variant 2</VariantItem>
-      </VariantManagement>
-    ),
-    filterContainerWidth: '13.125rem',
-    showFilterConfiguration: true
+    header: <Title>Test</Title>,
+    filterContainerWidth: '13.125rem'
   }}
 />
 
@@ -59,17 +63,17 @@ import {
     {(args) => {
       return (
         <FilterBar {...args}>
-          <FilterGroupItem label="StepInput">
-            <StepInput />
+          <FilterGroupItem label="StepInput" required>
+            <StepInput required />
           </FilterGroupItem>
           <FilterGroupItem label="RatingIndicator">
             <RatingIndicator />
           </FilterGroupItem>
-          <FilterGroupItem label="MultiInput">
+          <FilterGroupItem label="MultiInput" active>
             <MultiInput
               tokens={
                 <>
-                  <Token text="Argentina" />
+                  <Token text="Argentina" selected />
                   <Token text="Bulgaria" />
                   <Token text="England" />
                   <Token text="Finland" />
@@ -170,61 +174,65 @@ import {
       visibleInFilterBar: {
         description: `Defines whether the filter is visible in the \`FilterBar\` or only in the filter configuration dialog.`
       },
-      useToolbar: { table: { disable: true } },
-      loading: {
-        description: `Defines whether a loading indicator should be shown in the \`FilterGroupItem\`.`
-      },
-      filterBarExpanded: { table: { disable: true } },
       considerGroupName: {
         description: `Defines whether the \`groupName\` of the \`FilterGroupItems\` is displayed in the filter configuration dialog.`
       },
+      loading: {
+        description: `Defines whether a loading indicator should be shown in the \`FilterGroupItem\`.`
+      },
+      active: {
+        description: `Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.`
+      },
+      hideToolbar: { table: { disable: true } },
+      filterBarCollapsed: { table: { disable: true } },
       activeFiltersCount: { table: { disable: true } },
       filterContainerWidth: { table: { disable: true } },
       showClearOnFB: { table: { disable: true } },
       showGoOnFB: { table: { disable: true } },
-      showGo: { table: { disable: true } },
-      showFilterConfiguration: { table: { disable: true } },
+      hideFilterConfiguration: { table: { disable: true } },
       showRestoreOnFB: { table: { disable: true } },
-      showClearButton: { table: { disable: true } },
-      showRestoreButton: { table: { disable: true } },
-      showSearchOnFiltersDialog: { table: { disable: true } },
+      showResetButton: { table: { disable: true } },
       search: { table: { disable: true } },
-      variants: { table: { disable: true } },
+      header: { table: { disable: true } },
       onToggleFilters: { table: { disable: true } },
+      portalContainer: { table: { disable: true } },
       onFiltersDialogOpen: { table: { disable: true } },
       onFiltersDialogCancel: { table: { disable: true } },
       onFiltersDialogClose: { table: { disable: true } },
       onFiltersDialogSave: { table: { disable: true } },
-      onFiltersDialogClear: { table: { disable: true } },
       onClear: { table: { disable: true } },
       onFiltersDialogSelectionChange: { table: { disable: true } },
       onFiltersDialogSearch: { table: { disable: true } },
       onGo: { table: { disable: true } },
-      onRestore: { table: { disable: true } }
+      as: { table: { disable: true } },
+      hideToggleFiltersButton: { table: { disable: true } },
+      onAfterFiltersDialogOpen: { table: { disable: true } }
     }}
     args={{
       label: 'FilterGroupItem',
       groupName: 'Customizable',
       labelTooltip: 'custom label tooltip',
-      loading: false,
       required: false,
       visible: true,
       visibleInFilterBar: true,
-      considerGroupName: true
+      considerGroupName: true,
+      loading: false,
+      active: false
     }}
   >
     {(args) => {
       return (
-        <FilterBar showFilterConfiguration considerGroupName showSearchOnFiltersDialog>
+        <FilterBar considerGroupName>
           <FilterGroupItem
             label={args.label}
             groupName={args.groupName}
             labelTooltip={args.labelTooltip}
-            loading={args.loading}
             required={args.required}
             visible={args.visible}
             visibleInFilterBar={args.visibleInFilterBar}
             considerGroupName={args.considerGroupName}
+            loading={args.loading}
+            active={args.active}
           >
             <Input placeholder="Placeholder" />
           </FilterGroupItem>
@@ -240,6 +248,341 @@ import {
   </Story>
 </Canvas>
 
-<ArgsTableWithNote story="with customizable FilterGroupItem" />
+<ArgsTableWithNote
+  hideTabContainer
+  story="with customizable FilterGroupItem"
+  noteText="The table below shows the props of the first FilterGroupItem."
+/>
+
+## FilterBar with logic
+
+This is a basic example of how the FilterBar could be used inside an app.
+
+<Canvas>
+  <Story name="with logic">
+    {(args) => {
+      const [age, setAge] = useState(37);
+      const [countries, setCountries] = useState({});
+      const [currency, setCurrency] = useState('USD');
+      const [date, setDate] = useState('');
+      const [dateRange, setDateRange] = useState('');
+      const handleAgeChange = (e) => {
+        setAge(e.target.value);
+      };
+      const handleCountriesChange = (e) => {
+        setCountries(
+          e.detail.items.reduce((acc, cur) => {
+            return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
+          }, {})
+        );
+      };
+      const handleCurrencyChange = (e) => {
+        setCurrency(e.detail.selectedOption.textContent);
+      };
+      const handleDateChange = (e) => {
+        if (e.detail.valid) {
+          setDate(e.detail.value);
+        }
+      };
+      const handleDateRangeChange = (e) => {
+        if (e.detail.valid) {
+          setDateRange(e.detail.value);
+        }
+      };
+      return (
+        <>
+          <FilterBar>
+            <FilterGroupItem label="Age" active={!!age} required>
+              <StepInput value={age} onChange={handleAgeChange} required />
+            </FilterGroupItem>
+            <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
+              <MultiComboBox onSelectionChange={handleCountriesChange}>
+                <MultiComboBoxItem text="Argentina" selected={countries.argentina} />
+                <MultiComboBoxItem text="Bulgaria" selected={countries.bulgaria} />
+                <MultiComboBoxItem text="Finland" selected={countries.finland} />
+                <MultiComboBoxItem text="Germany" selected={countries.germany} />
+                <MultiComboBoxItem text="Ireland" selected={countries.ireland} />
+                <MultiComboBoxItem text="Ukraine" selected={countries.ukraine} />
+                <MultiComboBoxItem text="USA" selected={countries.usa} />
+              </MultiComboBox>
+            </FilterGroupItem>
+            <FilterGroupItem label="Currency" active={!!currency}>
+              <Select onChange={handleCurrencyChange}>
+                <Option additionalText="€" selected={currency === 'EUR'}>
+                  EUR
+                </Option>
+                <Option additionalText="$" selected={currency === 'USD'}>
+                  USD
+                </Option>
+                <Option additionalText="£" selected={currency === 'GBP'}>
+                  GBP
+                </Option>
+                <Option additionalText="₺" selected={currency === 'TRY'}>
+                  TRY
+                </Option>
+                <Option additionalText="¥" selected={currency === 'JPY'}>
+                  JPY
+                </Option>
+              </Select>
+            </FilterGroupItem>
+            <FilterGroupItem label="Date" active={!!date}>
+              <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
+            </FilterGroupItem>
+            <FilterGroupItem label="Date Range" active={!!dateRange} visibleInFilterBar={false}>
+              <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
+            </FilterGroupItem>
+          </FilterBar>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <FlexBox>
+              <Label showColon>Age</Label>
+              <Text>{age}</Text>
+            </FlexBox>
+            <FlexBox>
+              <Label showColon>Countries</Label>
+              <Text>{JSON.stringify(countries)}</Text>
+            </FlexBox>
+            <FlexBox>
+              <Label showColon>Currency</Label>
+              <Text>{currency}</Text>
+            </FlexBox>
+            <FlexBox>
+              <Label showColon>Date</Label>
+              <Text>{date}</Text>
+            </FlexBox>
+            <FlexBox>
+              <Label showColon>Date Range</Label>
+              <Text>{dateRange}</Text>
+            </FlexBox>
+          </FlexBox>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```jsx
+const FilterBarComponent = (args) => {
+  const [age, setAge] = useState(37);
+  const [countries, setCountries] = useState({});
+  const [currency, setCurrency] = useState('USD');
+  const [date, setDate] = useState('');
+  const [dateRange, setDateRange] = useState('');
+  const handleAgeChange = (e) => {
+    setAge(e.target.value);
+  };
+  const handleCountriesChange = (e) => {
+    setCountries(
+      e.detail.items.reduce((acc, cur) => {
+        return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
+      }, {})
+    );
+  };
+  const handleCurrencyChange = (e) => {
+    setCurrency(e.detail.selectedOption.textContent);
+  };
+  const handleDateChange = (e) => {
+    if (e.detail.valid) {
+      setDate(e.detail.value);
+    }
+  };
+  const handleDateRangeChange = (e) => {
+    if (e.detail.valid) {
+      setDateRange(e.detail.value);
+    }
+  };
+  return (
+    <>
+      <FilterBar>
+        <FilterGroupItem label="Age" active={!!age} required>
+          <StepInput value={age} onChange={handleAgeChange} required />
+        </FilterGroupItem>
+        <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
+          <MultiComboBox onSelectionChange={handleCountriesChange}>
+            <MultiComboBoxItem text="Argentina" selected={countries.argentina} />
+            <MultiComboBoxItem text="Bulgaria" selected={countries.bulgaria} />
+            <MultiComboBoxItem text="Finland" selected={countries.finland} />
+            <MultiComboBoxItem text="Germany" selected={countries.germany} />
+            <MultiComboBoxItem text="Ireland" selected={countries.ireland} />
+            <MultiComboBoxItem text="Ukraine" selected={countries.ukraine} />
+            <MultiComboBoxItem text="USA" selected={countries.usa} />
+          </MultiComboBox>
+        </FilterGroupItem>
+        <FilterGroupItem label="Currency" active={!!currency}>
+          <Select onChange={handleCurrencyChange}>
+            <Option additionalText="€" selected={currency === 'EUR'}>
+              EUR
+            </Option>
+            <Option additionalText="$" selected={currency === 'USD'}>
+              USD
+            </Option>
+            <Option additionalText="£" selected={currency === 'GBP'}>
+              GBP
+            </Option>
+            <Option additionalText="₺" selected={currency === 'TRY'}>
+              TRY
+            </Option>
+            <Option additionalText="¥" selected={currency === 'JPY'}>
+              JPY
+            </Option>
+          </Select>
+        </FilterGroupItem>
+        <FilterGroupItem label="Date" active={!!date}>
+          <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
+        </FilterGroupItem>
+        <FilterGroupItem label="Date Range" active={!!dateRange} visibleInFilterBar={false}>
+          <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
+        </FilterGroupItem>
+      </FilterBar>
+      <FlexBox direction={FlexBoxDirection.Column}>
+        <FlexBox>
+          <Label showColon>Age</Label>
+          <Text>{age}</Text>
+        </FlexBox>
+        <FlexBox>
+          <Label showColon>Countries</Label>
+          <Text>{JSON.stringify(countries)}</Text>
+        </FlexBox>
+        <FlexBox>
+          <Label showColon>Currency</Label>
+          <Text>{currency}</Text>
+        </FlexBox>
+        <FlexBox>
+          <Label showColon>Date</Label>
+          <Text>{date}</Text>
+        </FlexBox>
+        <FlexBox>
+          <Label showColon>Date Range</Label>
+          <Text>{dateRange}</Text>
+        </FlexBox>
+      </FlexBox>
+    </>
+  );
+};
+```
+
+</details>
+
+## FilterBar in a DynamicPage
+
+When a FilterBar is used inside e.g. a DynamicPage, `hideToolbar` should be set to `true`, since the `VariantManagement` of
+the page is then responsible for the different views.
+
+<Canvas>
+  <Story name="in DynamicPage">
+    {(args) => {
+      return (
+        <DynamicPage
+          headerTitle={
+            <DynamicPageTitle
+              interact
+              header={
+                <VariantManagement
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  <VariantItem>Variant 1</VariantItem>
+                  <VariantItem selected>Variant 2</VariantItem>
+                </VariantManagement>
+              }
+            />
+          }
+          headerContent={
+            <DynamicPageHeader>
+              <FilterBar {...args} hideToolbar>
+                <FilterGroupItem label="StepInput">
+                  <StepInput />
+                </FilterGroupItem>
+                <FilterGroupItem label="MultiInput" active required>
+                  <MultiInput
+                    required
+                    tokens={
+                      <>
+                        <Token text="Argentina" selected />
+                        <Token text="Bulgaria" />
+                        <Token text="England" />
+                        <Token text="Finland" />
+                      </>
+                    }
+                  />
+                </FilterGroupItem>
+                <FilterGroupItem label="Input">
+                  <Input placeholder="Placeholder" />
+                </FilterGroupItem>
+                <FilterGroupItem label="Switch" visibleInFilterBar={false}>
+                  <Switch />
+                </FilterGroupItem>
+                <FilterGroupItem label="SELECT w/ initial selected" visibleInFilterBar={false}>
+                  <Select>
+                    <Option>Option 1</Option>
+                    <Option selected>Option 2</Option>
+                    <Option>Option 3</Option>
+                    <Option>Option 4</Option>
+                  </Select>
+                </FilterGroupItem>
+                <FilterGroupItem label="SELECT w/o initial selected" visibleInFilterBar={false}>
+                  <Select>
+                    <Option data-key="Test 1" selected icon="add">
+                      Test 1
+                    </Option>
+                    <Option data-key="Test 2" icon="add">
+                      Test 2
+                    </Option>
+                    <Option data-key="Test 3" icon="add">
+                      Test 3
+                    </Option>
+                    <Option data-key="Test 4" icon="add">
+                      Test 4
+                    </Option>
+                    <Option data-key="Test 5" icon="add">
+                      Test 5
+                    </Option>
+                  </Select>
+                </FilterGroupItem>
+                <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
+                  <MultiComboBox>
+                    <MultiComboBoxItem text="MultiComboBoxItem 1" />
+                    <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+                    <MultiComboBoxItem text="MultiComboBoxItem 3" />
+                    <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
+                  </MultiComboBox>
+                </FilterGroupItem>
+                <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" visibleInFilterBar={false}>
+                  <ComboBox>
+                    <ComboBoxItem text="ComboBoxItem 1" />
+                    <ComboBoxItem text="ComboBoxItem 2" />
+                    <ComboBoxItem text="ComboBoxItem 3" />
+                    <ComboBoxItem text="ComboBoxItem 4" />
+                  </ComboBox>
+                </FilterGroupItem>
+                <FilterGroupItem label="Date Picker" groupName="Group 2">
+                  <DateRangePicker style={{ minWidth: 'auto' }} />
+                </FilterGroupItem>
+              </FilterBar>
+            </DynamicPageHeader>
+          }
+        >
+          <div
+            style={{
+              background: 'cadetblue',
+              height: '200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Text style={{ color: 'white' }}>Content</Text>
+          </div>
+        </DynamicPage>
+      );
+    }}
+  </Story>
+</Canvas>
 
 <Footer />

@@ -1,11 +1,11 @@
+import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
   enrichEventWithDetails,
-  ThemingParameters,
   useI18nBundle,
+  useIsomorphicId,
   useIsomorphicLayoutEffect,
-  useIsRTL,
-  useIsomorphicId
+  useIsRTL
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
@@ -50,9 +50,9 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  INVALID_TABLE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
-  INVALID_TABLE
+  UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { FlexBox } from '../FlexBox';
@@ -274,7 +274,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   minRows?: number;
   /**
-   * Defines how the table table will render visible rows.
+   * Defines how the table will render visible rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
    * - __"Auto":__ The table automatically fills the height of the surrounding container.
@@ -314,6 +314,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the height of the rows and header.
    */
   rowHeight?: number;
+  /**
+   * Defines whether the table should retain its column width, when a column has been manually resized and the container width has changed.
+   */
+  retainColumnWidth?: boolean;
   /**
    * Defines whether the table should display rows with alternating row colors.
    */
@@ -381,6 +385,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
   /**
+   * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
+   *
+   * __Note:__ If `transform: scale()` is used, this prop is mandatory, otherwise it will lead to unwanted behavior and design.
+   */
+  scaleXFactor?: number;
+  /**
    * Defines the columns order by their `accessor` or `id`.
    */
   columnOrder?: string[];
@@ -439,6 +449,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
    *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
+   *
    * Defaults to: `document.body`
    */
   portalContainer?: Element;
@@ -461,7 +473,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Fired when a row is selected or unselected.
    */
-  onRowSelected?: (
+  onRowSelect?: (
     e?: CustomEvent<{
       allRowsSelected: boolean;
       row?: Record<string, unknown>;
@@ -480,7 +492,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Fired when the columns order is changed.
    */
-  onColumnsReordered?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
+  onColumnsReorder?: (e?: CustomEvent<{ columnsNewOrder: string[]; column: unknown }>) => void;
   /**
    * Fired when the `infiniteScrollThreshold` is reached.
    *
@@ -498,7 +510,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   NoDataComponent?: ComponentType<any>;
   /**
-   * Component that will be rendered when the table is loading and has no data.
+   * Component that will be rendered when the table is loading and has data.
    */
   LoadingComponent?: ComponentType<any>;
 
@@ -513,6 +525,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableInstance?: Ref<Record<string, any>>;
 }
 
+// When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
+const sortTypesFallback = {
+  undefined: () => undefined
+};
+
 const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
@@ -526,6 +543,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     className,
     columnOrder,
     columns,
+    data: rawData,
     extension,
     filterable,
     globalFilterValue,
@@ -543,6 +561,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     overscanCount,
     overscanCountHorizontal,
     portalContainer,
+    retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
     rowHeight,
@@ -560,15 +579,17 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     visibleRows,
     withNavigationHighlight,
     withRowHighlight,
+    onColumnsReorder,
     onGroup,
     onLoadMore,
     onRowClick,
     onRowExpandChange,
-    onRowSelected,
+    onRowSelect,
     onSort,
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
+    scaleXFactor,
     ...rest
   } = props;
   const uniqueId = useIsomorphicId();
@@ -578,7 +599,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
   const classes = useStyles();
 
-  const [analyticalTableRef, reactWindowRef] = useTableScrollHandles(ref);
+  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
   const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
 
   const isRtl = useIsRTL(analyticalTableRef);
@@ -586,17 +607,17 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
   const data = useMemo(() => {
-    if (props.data.length === 0) {
-      return props.data;
+    if (rawData.length === 0) {
+      return rawData;
     }
-    if (minRows > props.data.length) {
-      const missingRows: number = minRows - props.data.length;
+    if (minRows > rawData.length) {
+      const missingRows: number = minRows - rawData.length;
       const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
 
-      return [...props.data, ...emptyRows];
+      return [...rawData, ...emptyRows];
     }
-    return props.data;
-  }, [props.data, minRows]);
+    return rawData;
+  }, [rawData, minRows]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
@@ -612,6 +633,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       disableSortBy: !sortable,
       disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
       selectSubRows: false,
+      sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
         translatableTexts: {
           expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
@@ -626,7 +648,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         selectionMode,
         selectionBehavior,
         classes,
-        onRowSelected,
+        onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
         isTreeTable,
@@ -639,9 +661,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
         markNavigatedRow,
         renderRowSubComponent,
         alwaysShowSubComponent,
-        reactWindowRef,
+        scrollToRef,
         showOverlay,
-        uniqueId
+        uniqueId,
+        scaleXFactor
       },
       ...reactTableOptions
     },
@@ -753,7 +776,9 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
 
     const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
-    parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    if (analyticalTableRef.current?.parentElement) {
+      parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
+    }
     return () => {
       debouncedHeightObserverFn.cancel();
       debouncedWidthObserverFn.cancel();
@@ -863,15 +888,13 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    props,
+    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
     tableInternalColumns
   );
-
-  const { onColumnsReordered: _0, data: _1, ...propsWithoutOmitted } = rest;
 
   const inlineStyle = useMemo(() => {
     const tableStyles = {
@@ -885,22 +908,26 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     }
 
     if (tableState.tableClientWidth > 0) {
-      const styles = {
+      return {
         ...tableStyles,
         ...style
       } as CSSProperties;
-
-      if (totalColumnsWidth < tableState.tableClientWidth) {
-        return { ...styles, borderBottom: `1px solid ${ThemingParameters.sapList_BorderColor}` };
-      }
-      return styles;
     }
     return {
       ...tableStyles,
       ...style,
       visibility: 'hidden'
     } as CSSProperties;
-  }, [tableState.tableClientWidth, style, rowHeight, totalColumnsWidth]);
+  }, [tableState.tableClientWidth, style, rowHeight]);
+
+  useEffect(() => {
+    if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: true });
+    }
+    if (tableState.tableColResized && !retainColumnWidth) {
+      dispatch({ type: 'TABLE_COL_RESIZED', payload: undefined });
+    }
+  }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
 
   const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
 
@@ -933,9 +960,28 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     withNavigationHighlight && classes.hasNavigationIndicator
   );
 
+  const columnVirtualizer = useVirtualizer({
+    count: visibleColumnsWidth.length,
+    getScrollElement: () => tableRef.current,
+    estimateSize: useCallback(
+      (index) => {
+        return visibleColumnsWidth[index];
+      },
+      [visibleColumnsWidth]
+    ),
+    horizontal: true,
+    overscan: overscanCountHorizontal
+  });
+
+  scrollToRef.current = {
+    ...scrollToRef.current,
+    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
+    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+  };
+
   return (
     <>
-      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...propsWithoutOmitted}>
+      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...rest}>
         {header && (
           <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
             {header}
@@ -974,24 +1020,20 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             className={tableClasses}
           >
             <div className={classes.tableHeaderBackgroundElement} />
+            <div className={classes.tableBodyBackgroundElement} />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {
                 headerProps = headerGroup.getHeaderGroupProps();
               }
-
               return (
                 tableRef.current && (
                   <ColumnHeaderContainer
                     ref={headerRef}
                     key={headerProps.key as string}
-                    reactWindowRef={reactWindowRef}
-                    tableRef={tableRef}
                     resizeInfo={tableState.columnResizing}
-                    visibleColumnsWidth={visibleColumnsWidth}
                     headerProps={headerProps}
                     headerGroup={headerGroup}
-                    overscanCountHorizontal={overscanCountHorizontal}
                     onSort={onSort}
                     onGroupByChanged={onGroupByChanged}
                     onDragStart={handleDragStart}
@@ -1002,25 +1044,21 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                     dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
+                    uniqueId={uniqueId}
+                    columnVirtualizer={columnVirtualizer}
+                    scaleXFactor={scaleXFactor}
                   />
                 )
               );
             })}
-            {loading && props.data?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-            {loading && props.data?.length === 0 && (
-              <TablePlaceholder
-                isRtl={isRtl}
-                columns={visibleColumns}
-                rows={props.minRows}
-                style={noDataStyles}
-                rowHeight={internalRowHeight}
-                tableWidth={totalColumnsWidth}
-              />
+            {loading && rawData?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+            {loading && rawData?.length === 0 && (
+              <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
-            {!loading && props.data?.length === 0 && (
+            {!loading && rawData?.length === 0 && (
               <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
             )}
-            {props.data?.length > 0 && tableRef.current && (
+            {rawData?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={totalColumnsWidth}
@@ -1041,24 +1079,22 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
                   prepareRow={prepareRow}
                   rows={rows}
                   minRows={minRows}
-                  reactWindowRef={reactWindowRef}
+                  scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
                   popInRowHeight={popInRowHeight}
                   visibleRows={internalVisibleRowCount}
                   alternateRowColor={alternateRowColor}
                   overscanCount={overscanCount}
-                  tableRef={tableRef}
                   parentRef={parentRef}
                   visibleColumns={visibleColumns}
-                  visibleColumnsWidth={visibleColumnsWidth}
-                  overscanCountHorizontal={overscanCountHorizontal}
                   renderRowSubComponent={renderRowSubComponent}
                   alwaysShowSubComponent={alwaysShowSubComponent}
                   markNavigatedRow={markNavigatedRow}
                   isRtl={isRtl}
                   subComponentsHeight={tableState.subComponentsHeight}
                   dispatch={dispatch}
+                  columnVirtualizer={columnVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}
@@ -1122,7 +1158,6 @@ AnalyticalTable.defaultProps = {
   selectedRowIds: {},
   onGroup: () => {},
   onRowExpandChange: () => {},
-  onColumnsReordered: () => {},
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,

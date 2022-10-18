@@ -7,7 +7,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface CheckBoxAttributes {
   /**
-   * Defines the accessible aria name of the component.
+   * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
   /**
@@ -29,7 +29,7 @@ interface CheckBoxAttributes {
   /**
    * Defines whether the component is displayed as partially checked.
    *
-   * **Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction and the resulting visual state depends on the values of the `indeterminate` and `checked` properties:
+   * **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user interaction and the resulting visual state depends on the values of the `indeterminate` and `checked` properties:
    *
    * *   If the component is checked and indeterminate, it will be displayed as partially checked
    * *   If the component is checked and it is not indeterminate, it will be displayed as checked

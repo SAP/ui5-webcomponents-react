@@ -17,10 +17,10 @@ const TwoVariantItems = [
 describe('VariantManagement', () => {
   test('Render without crashing', () => {
     const { rerender, getByTitle, getAllByText, getByText } = render(<VariantManagement />);
-    getByTitle('Select View');
+    getByTitle('Select view');
 
     rerender(<VariantManagement>{TwoVariantItems}</VariantManagement>);
-    getByTitle('Select View');
+    getByTitle('Select view');
     expect(getAllByText('VariantItem 2')).toHaveLength(2);
     getByText('VariantItem 1');
   });
@@ -28,9 +28,7 @@ describe('VariantManagement', () => {
   test('Selection', async () => {
     const cb = jest.fn((e) => e.detail);
     const { getByTitle, getAllByText, getByText } = await renderWithDefine(
-      <VariantManagement onSelect={cb} showCancelButton>
-        {TwoVariantItems}
-      </VariantManagement>,
+      <VariantManagement onSelect={cb}>{TwoVariantItems}</VariantManagement>,
       ['ui5-li']
     );
     const wcListItem = screen.getByText('VariantItem 1');
@@ -38,9 +36,8 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select View');
+    const btn = getByTitle('Select view');
     const heading = getAllByText('VariantItem 2')[0];
-    const closeBtn = getByText('Cancel');
 
     // initial selected Item
     expect(heading).toHaveTextContent('VariantItem 2');
@@ -57,20 +54,16 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.selectedVariant.children).toBe('VariantItem 1');
     expect(cb.mock.results[0].value.selectedVariant.variantItem).toBeInTheDocument();
 
-    // close popover
-    fireEvent.click(closeBtn);
-    expect(popover.isOpen()).toBeFalsy();
+    await popover.close();
     // open by clicking on heading
     fireEvent.click(getAllByText('VariantItem 1')[0]);
     expect(popover.isOpen()).toBeTruthy();
-    fireEvent.click(closeBtn);
-    expect(popover.isOpen()).toBeFalsy();
   });
 
   test('Disabled', () => {
     const { container, getByTitle } = render(<VariantManagement disabled>{TwoVariantItems}</VariantManagement>);
 
-    const btn = getByTitle('Select View');
+    const btn = getByTitle('Select view');
     const headingContainer = container.children[0];
 
     expect(headingContainer).toHaveClass('VariantManagement-disabled');
@@ -87,7 +80,7 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select View');
+    const btn = getByTitle('Select view');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -126,7 +119,7 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select View');
+    const btn = getByTitle('Select view');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -155,8 +148,6 @@ describe('VariantManagement', () => {
     rerender(<VariantManagement hideManageVariants>{TwoVariantItems}</VariantManagement>);
     getByText('Save As');
     expect(queryByText('Manage')).toBeNull();
-    rerender(<VariantManagement showCancelButton>{TwoVariantItems}</VariantManagement>);
-    getByText('Cancel');
   });
 
   test('In error state', () => {
@@ -171,7 +162,7 @@ describe('VariantManagement', () => {
       </VariantManagement>,
       ['ui5-responsive-popover']
     );
-    const btn = getByTitle('Select View');
+    const btn = getByTitle('Select view');
     fireEvent.click(btn);
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     await waitFor(() => popover.shadowRoot.querySelector('h2'));
@@ -193,11 +184,6 @@ describe('VariantManagement', () => {
     const input = getByPlaceholderText('Search');
     fireEvent.input(input, { target: { value: 'VariantItem 10' } });
     expect(document.querySelectorAll('ui5-li')).toHaveLength(1);
-
-    const resetIcon = getByTitle('Reset');
-    fireEvent.click(resetIcon);
-    expect(input).toHaveValue('');
-    expect(document.querySelectorAll('ui5-li')).toHaveLength(10);
 
     const [a, ...rest] = variantItems;
     rerender(<VariantManagement>{rest}</VariantManagement>);
@@ -277,13 +263,13 @@ describe('VariantManagement', () => {
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
-    getByText('Please specify a view name.');
+    getByText('Please specify a view name');
 
     fireEvent.input(inputField, { target: { value: 'VariantItem 1' } });
     fireEvent.click(saveBtn);
     expect(dialog).toBeInTheDocument();
     expect(inputField).toHaveAttribute('value-state', 'Error');
-    getByText('A file with this name already exists.');
+    getByText('A file with this name already exists');
 
     // valid entry & save
     fireEvent.input(inputField, { target: { value: 'Updated!' } });
@@ -336,7 +322,7 @@ describe('VariantManagement', () => {
         }
       }
     ];
-    const { getByText } = render(
+    const { getByText, rerender } = render(
       <VariantManagement>
         {variantItems.map((item, index) => (
           <VariantItem key={index} {...item.props}>
@@ -352,27 +338,52 @@ describe('VariantManagement', () => {
     expect(dialog).toHaveAttribute('header-text', 'Manage Views');
     expect(dialog.isOpen()).toBeTruthy();
 
-    const manageViewsRowTest = (variantItems) => {
+    const manageViewsRowTest = (variantItems, showOnlyFavorites) => {
       variantItems.forEach((item) => {
         const { rowId, props } = item;
-        const { favorite, children, labelReadOnly, isDefault, hideDelete, global, applyAutomatically, author } = props;
+        const { favorite, labelReadOnly, isDefault, hideDelete, global, applyAutomatically, author } = props;
         const row = table.querySelector(`ui5-table-row[data-id="${rowId}"]`);
-
-        if (labelReadOnly) {
-          expect(screen.getAllByText(rowId)).toHaveLength(2);
+        if (showOnlyFavorites) {
+          if (labelReadOnly) {
+            if (favorite || isDefault) {
+              expect(screen.getAllByText(rowId)).toHaveLength(2);
+            } else {
+              expect(screen.getAllByText(rowId)).toHaveLength(1);
+            }
+          } else {
+            if (favorite || isDefault) {
+              expect(screen.getAllByText(rowId)).toHaveLength(1);
+              expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+            } else {
+              expect(screen.queryByText(rowId)).toBeNull();
+              expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+            }
+          }
         } else {
-          expect(screen.getAllByText(rowId)).toHaveLength(1);
-          expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+          if (labelReadOnly) {
+            expect(screen.getAllByText(rowId)).toHaveLength(2);
+          } else {
+            expect(screen.getAllByText(rowId)).toHaveLength(1);
+            expect(row.querySelector('ui5-input')).toHaveValue(rowId);
+          }
         }
 
-        if (isDefault) {
-          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Selected as Favorite');
-          expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Unselected as Favorite');
-        } else {
-          if (favorite) {
-            expect(row.querySelector(`ui5-icon[name="favorite"]`)).toHaveAttribute('title', 'Selected as Favorite');
+        if (showOnlyFavorites) {
+          if (isDefault) {
+            expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute('title', 'Selected as Favorite');
+            expect(row.querySelector(`ui5-icon[name="favorite"]`)).not.toHaveAttribute(
+              'title',
+              'Unselected as Favorite'
+            );
           } else {
-            expect(row.querySelector(`ui5-icon[name="unfavorite"]`)).toHaveAttribute('title', 'Unselected as Favorite');
+            if (favorite) {
+              expect(row.querySelector(`ui5-icon[name="favorite"]`)).toHaveAttribute('title', 'Selected as Favorite');
+            } else {
+              expect(row.querySelector(`ui5-icon[name="unfavorite"]`)).toHaveAttribute(
+                'title',
+                'Unselected as Favorite'
+              );
+            }
           }
         }
 
@@ -382,7 +393,7 @@ describe('VariantManagement', () => {
           if (global && hideDelete !== false) {
             expect(row.querySelector(`ui5-button`)).not.toBeInTheDocument();
           } else {
-            expect(row.querySelector(`ui5-button`)).toHaveAttribute('title', 'Delete View');
+            expect(row.querySelector(`ui5-button`)).toHaveAttribute('title', 'Delete view');
           }
         }
 
@@ -397,13 +408,23 @@ describe('VariantManagement', () => {
         }
       });
     };
-    manageViewsRowTest(variantItems);
+    manageViewsRowTest(variantItems, false);
+    rerender(
+      <VariantManagement showOnlyFavorites>
+        {variantItems.map((item, index) => (
+          <VariantItem key={index} {...item.props}>
+            {item.rowId}
+          </VariantItem>
+        ))}
+      </VariantManagement>
+    );
+    manageViewsRowTest(variantItems, true);
   });
 
   test('Manage Views interactions', async () => {
     const cb = jest.fn((e) => e.detail);
     const { getByText } = await renderWithDefine(
-      <VariantManagement onSaveManageViews={cb}>
+      <VariantManagement onSaveManageViews={cb} showOnlyFavorites>
         {[
           ...TwoVariantItems,
           <VariantItem isDefault key="2">
@@ -417,7 +438,7 @@ describe('VariantManagement', () => {
     const manageBtn = getByText('Manage');
     fireEvent.click(manageBtn);
 
-    const wcRadioBtn = screen.getAllByLabelText('Use as Standard View')[0];
+    const wcRadioBtn = screen.getAllByLabelText('Use as standard view')[0];
     const radioBtn = await waitFor(() => wcRadioBtn.shadowRoot.querySelector('div[role="radio"]'));
 
     const wcCheckbox = screen.getAllByLabelText('Apply Automatically')[0];
@@ -465,8 +486,8 @@ describe('VariantManagement', () => {
     fireEvent.click(manageBtn);
     const saveBtn = screen.getByText('Save');
 
-    const row1DeleteBtn = screen.getAllByTitle('Delete View')[0];
-    const row2DeleteBtn = screen.getAllByTitle('Delete View')[1];
+    const row1DeleteBtn = screen.getAllByTitle('Delete view')[0];
+    const row2DeleteBtn = screen.getAllByTitle('Delete view')[1];
     fireEvent.click(row1DeleteBtn);
     fireEvent.click(row2DeleteBtn);
 

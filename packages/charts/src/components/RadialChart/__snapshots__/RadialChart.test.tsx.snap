@@ -3,7 +3,7 @@
 exports[`RadialChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -22,6 +22,8 @@ exports[`RadialChart Check onClick events 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts3-clip"
@@ -288,7 +290,7 @@ exports[`RadialChart Check onClick events 1`] = `
 exports[`RadialChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -307,6 +309,8 @@ exports[`RadialChart Render chart with data 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts1-clip"

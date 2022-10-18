@@ -166,6 +166,21 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
 
 ### With Reference Line
 
+You can set a reference line to any value by using the `referenceLine` `chartConfig` property. `referenceLine` accepts all properties described [here](https://recharts.org/en-US/api/ReferenceLine), but it's recommended to only use `label`,`value` and `color` to preserve the intended design.
+
+```jsx
+<BarChart
+  {...props}
+  chartConfig={{
+    referenceLine: {
+      color: 'red',
+      label: 'MAX',
+      value: 650
+    }
+  }}
+/>
+```
+
 <Canvas>
   <Story
     name="With Reference Line"

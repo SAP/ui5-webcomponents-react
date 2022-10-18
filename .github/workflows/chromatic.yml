@@ -6,19 +6,21 @@ jobs:
   chromatic:
     if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' || contains(github.event.head_commit.message, '[ci chromatic]') }}
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1

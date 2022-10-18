@@ -17,7 +17,8 @@ const styles = {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily
+    fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily,
+    textDecoration: CustomThemingParameters.ObjectPageSectionTitleTextDecoration
   },
   uppercase: {
     textTransform: 'uppercase'

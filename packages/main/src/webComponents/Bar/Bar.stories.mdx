@@ -12,6 +12,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './BarDescription.md';
 import { GitHubLogo } from '../../../../../.storybook/components/GitHub-Mark';
+import { CenterContent, EndContent, Img, StartContent } from './CodeGen';
 
 <Meta
   title="Layouts & Floorplans / Bar"
@@ -23,9 +24,9 @@ import { GitHubLogo } from '../../../../../.storybook/components/GitHub-Mark';
   }}
   args={{
     design: BarDesign.Header,
-    startContent: <span>Start Content</span>,
-    children: <span>Center Content</span>,
-    endContent: <span>End Content</span>
+    startContent: StartContent,
+    children: CenterContent,
+    endContent: EndContent
   }}
 />
 
@@ -64,11 +65,7 @@ import { GitHubLogo } from '../../../../../.storybook/components/GitHub-Mark';
           startContent={
             <>
               <Button icon="nav-back" design={ButtonDesign.Transparent} />
-              <img
-                src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo.png"
-                alt="logo"
-                style={{ marginLeft: '6px', width: '120px' }}
-              />
+              {Img}
             </>
           }
           endContent={

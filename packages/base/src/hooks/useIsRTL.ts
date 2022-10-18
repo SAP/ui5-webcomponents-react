@@ -55,7 +55,7 @@ const useIsRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>): 
       isMounted.current = false;
       observer.disconnect();
     };
-  }, [isMounted]);
+  }, [isMounted, elementRef.current]);
 
   return isRTL;
 };

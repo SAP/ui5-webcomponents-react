@@ -111,7 +111,7 @@ const useStyles = createUseStyles(
       overflowX: 'hidden',
       overflowY: 'auto',
       display: 'flex',
-      height: 500,
+      height: '100%',
       '& > *': {
         width: '100%',
         flexShrink: 0,

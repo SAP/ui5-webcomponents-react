@@ -20,6 +20,16 @@ Here you need to tell `jest` to transpile the UI5 Web Components as well as the 
 }
 ```
 
+In case you are using our chart library `@ui5/webcomponents-react-charts` as well, you'll have to add `d3` and `internmap` to the configuration:
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html|d3|internmap)).*\\.js$"]
+  }
+}
+```
+
 Since some components of UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver` API, you'll need to add a polyfill for it.
 Our recommendation is the `resize-observer-polyfill` package, you can install it by running `npm install resize-observer-polyfill --save-dev`.
 

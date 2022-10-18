@@ -1,11 +1,11 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "~1.5.0",
-      "@ui5/webcomponents-fiori": "~1.5.0",
-      "@ui5/webcomponents-icons": "~1.5.0",
+      "@ui5/webcomponents": "~1.8.0",
+      "@ui5/webcomponents-fiori": "~1.8.0",
+      "@ui5/webcomponents-icons": "~1.8.0",
       "@ui5/webcomponents-react": "latest",
-      "axios": "^0.26.1",
+      "axios": "^0.27.2",
       "formik": "^2.2.9",
       "i18next": "^21.6.14",
       "i18next-browser-languagedetector": "^6.1.3",
@@ -22,7 +22,7 @@
       "@testing-library/react": "^13.1.1",
       "@testing-library/user-event": "^14.1.0",
       "@types/jest": "^27.4.1",
-      "husky": "^7.0.4",
+      "husky": "^8.0.1",
       "json-server": "^0.17.0",
       "lint-staged": "^12.3.5",
       "msw": "^0.39.1",
@@ -43,29 +43,14 @@
       "prepare": "husky install || exit 0"
     },
     "browserslist": {
-      "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all",
-        "not IE 11",
-        "not Edge <= 18"
-      ],
-      "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-      ]
+      "production": [">0.2%", "not dead", "not op_mini all", "not IE 11", "not Edge <= 18"],
+      "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
     },
     "jest": {
-      "transformIgnorePatterns": [
-        "node_modules/(?!(@ui5|lit-html)).*\\.js$"
-      ]
+      "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
     },
     "lint-staged": {
-      "*.{js,jsx}": [
-        "prettier --write",
-        "eslint --quiet"
-      ]
+      "*.{js,jsx}": ["prettier --write", "eslint --quiet"]
     }
   }
 }

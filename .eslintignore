@@ -22,7 +22,10 @@ shared
 .eslintrc.cjs
 *.stories.tsx
 *.test.tsx
+*.cy.tsx
 *.test.ts
+*.cy.ts
 index.esm.js
 packages/cra-template
+CodeGen.tsx
 

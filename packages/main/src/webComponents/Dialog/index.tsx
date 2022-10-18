@@ -1,5 +1,6 @@
 import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
+import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -10,6 +11,8 @@ interface DialogAttributes {
    * Determines whether the component is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The component can be draggable only in desktop mode.
+   *
+   * **Note:** This property overrides the default HTML "draggable" attribute native behavior. When "draggable" is set to true, the native browser "draggable" behavior is prevented and only the Dialog custom logic ("draggable by its header") works.
    */
   draggable?: boolean;
   /**
@@ -25,6 +28,11 @@ interface DialogAttributes {
    * **Note:** Upon resizing, externally defined height and width styling will be ignored.
    */
   resizable?: boolean;
+  /**
+   * Defines the state of the `Dialog`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   */
+  state?: ValueState | keyof typeof ValueState;
   /**
    * Determines whether the component should be stretched to fullscreen.
    *
@@ -124,12 +132,16 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
+  ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open']
 );
 
 Dialog.displayName = 'Dialog';
+
+Dialog.defaultProps = {
+  state: ValueState.None
+};
 
 export { Dialog };

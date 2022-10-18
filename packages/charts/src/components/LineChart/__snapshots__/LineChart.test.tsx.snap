@@ -3,7 +3,7 @@
 exports[`LineChart Check onClick events 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -20,6 +20,8 @@ exports[`LineChart Check onClick events 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts8-clip"
@@ -728,6 +730,8 @@ exports[`LineChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -757,6 +761,8 @@ exports[`LineChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -786,6 +792,8 @@ exports[`LineChart Check onClick events 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -807,7 +815,9 @@ exports[`LineChart Check onClick events 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -828,7 +838,7 @@ exports[`LineChart Check onClick events 1`] = `
 exports[`LineChart Loading placeholder 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <svg
       aria-labelledby="TITLE_ARIA_ID"
@@ -920,7 +930,7 @@ exports[`LineChart Loading placeholder 1`] = `
 exports[`LineChart Render chart with data 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -937,6 +947,8 @@ exports[`LineChart Render chart with data 1`] = `
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts1-clip"
@@ -1645,6 +1657,8 @@ exports[`LineChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -1674,6 +1688,8 @@ exports[`LineChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -1703,6 +1719,8 @@ exports[`LineChart Render chart with data 1`] = `
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -1724,7 +1742,9 @@ exports[`LineChart Render chart with data 1`] = `
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"
@@ -1745,7 +1765,7 @@ exports[`LineChart Render chart with data 1`] = `
 exports[`LineChart onLegendClick should not crash when invalid handler is provided 1`] = `
 <DocumentFragment>
   <div
-    style="font-family: var(--sapFontFamily); width: 100%; height: 400px; position: relative;"
+    class="ChartContainer-container"
   >
     <div
       class="recharts-responsive-container"
@@ -1762,6 +1782,8 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
           viewBox="0 0 400 400"
           width="400"
         >
+          <title />
+          <desc />
           <defs>
             <clippath
               id="recharts15-clip"
@@ -2470,6 +2492,8 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -2499,6 +2523,8 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -2528,6 +2554,8 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 viewBox="0 0 32 32"
                 width="14"
               >
+                <title />
+                <desc />
                 <path
                   class="recharts-legend-icon"
                   d="M0,16h10.666666666666666
@@ -2549,7 +2577,9 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
         </div>
         <div
           class="recharts-tooltip-wrapper"
+          role="dialog"
           style="transform: translate(undefinedpx, undefinedpx); pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px;"
+          tabindex="-1"
         >
           <div
             class="recharts-default-tooltip"

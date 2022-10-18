@@ -21,4 +21,5 @@ updates:
       - dependency-name: '@storybook/theming'
       - dependency-name: '@storybook/builder-webpack5'
       - dependency-name: '@storybook/manager-webpack5'
+      - dependency-name: '@types/node'
 

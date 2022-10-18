@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   Cell,
   ComposedChart as ComposedChartLib,
-  Label,
   LabelList,
   Legend,
   Line,
@@ -173,6 +172,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
     secondXAxisConfig: {},
     ...props.chartConfig
   };
+  const { referenceLine } = chartConfig;
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
@@ -312,7 +312,6 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           } else {
             axisProps.dataKey = dimension.accessor;
             axisProps.tick = <XAxisTicks config={dimension} />;
-            axisProps.scale = 'band';
             axisProps.hide = !chartConfig.xAxisVisible;
             axisProps.xAxisId = index;
             axisProps.height = xAxisHeights[index];
@@ -401,24 +400,27 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
             {...chartConfig.secondXAxisConfig}
           />
         )}
-        {chartConfig.referenceLine && (
+        {referenceLine && (
           <ReferenceLine
-            stroke={chartConfig.referenceLine.color}
-            y={layout === 'horizontal' ? chartConfig.referenceLine.value : undefined}
-            x={layout === 'vertical' ? chartConfig.referenceLine.value : undefined}
-            yAxisId={layout === 'horizontal' ? 'primary' : undefined}
-            xAxisId={layout === 'vertical' ? 'primary' : undefined}
-          >
-            <Label>{chartConfig.referenceLine.label}</Label>
-          </ReferenceLine>
+            {...referenceLine}
+            stroke={referenceLine?.color ?? referenceLine?.stroke}
+            y={referenceLine?.value ? (layout === 'horizontal' ? referenceLine?.value : undefined) : referenceLine?.y}
+            x={referenceLine?.value ? (layout === 'vertical' ? referenceLine?.value : undefined) : referenceLine?.x}
+            yAxisId={referenceLine?.yAxisId ?? layout === 'horizontal' ? 'primary' : undefined}
+            xAxisId={referenceLine?.xAxisId ?? layout === 'vertical' ? 'primary' : undefined}
+            label={referenceLine?.label}
+          />
         )}
-        <Tooltip
-          cursor={tooltipFillOpacity}
-          formatter={tooltipValueFormatter}
-          labelFormatter={labelFormatter}
-          contentStyle={tooltipContentStyle}
-          {...tooltipConfig}
-        />
+        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
+        {tooltipConfig?.active !== false && (
+          <Tooltip
+            cursor={tooltipFillOpacity}
+            formatter={tooltipValueFormatter}
+            contentStyle={tooltipContentStyle}
+            labelFormatter={labelFormatter}
+            {...tooltipConfig}
+          />
+        )}
         {!noLegend && (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

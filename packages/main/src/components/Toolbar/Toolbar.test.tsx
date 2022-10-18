@@ -3,15 +3,18 @@ import { createChangeTagNameTest } from '@shared/tests/utils';
 import React, { createRef } from 'react';
 import {
   Button,
+  ButtonDesign,
   Input,
   PopoverDomRef,
   Text,
+  ToggleButton,
   ToolbarDesign,
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle
 } from '../..';
 import { Toolbar } from './index';
+import '@ui5/webcomponents-icons/dist/menu2.js';
 
 describe('Toolbar', () => {
   test('Renders with default Props', () => {
@@ -92,91 +95,7 @@ describe('Toolbar', () => {
         right: 0
       };
     });
-    const onOverflowChange = jest.fn();
-    const { getAllByTestId, getAllByText, rerender, queryByTitle, getByText, getAllByLabelText, container } = render(
-      <Toolbar data-testid="toolbar" style={{ width: '300px' }} onOverflowChange={onOverflowChange}>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item1
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item2
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item3
-        </Text>
-      </Toolbar>
-    );
-    expect(container.querySelector(`[tooltip="Show More"]`)).toBeInTheDocument();
-    expect(getAllByTestId('toolbar-item')).toHaveLength(5);
-    expect(onOverflowChange).toHaveBeenCalledTimes(1);
-
-    const item1 = getAllByText('Item1');
-    const item2 = getAllByText('Item2');
-    const item3 = getAllByText('Item3');
-    expect(item1).toHaveLength(1);
-    expect(item2).toHaveLength(2);
-    expect(item3).toHaveLength(2);
-    expect(item1[0]).not.toHaveStyle(`visibility: hidden`);
-    expect(item2[0]).toHaveStyle(`visibility: hidden`);
-    expect(item3[0]).toHaveStyle(`visibility: hidden`);
-
-    expect(document.body).toMatchSnapshot();
-
-    rerender(
-      <Toolbar data-testid="toolbar" style={{ width: '1000px' }} onOverflowChange={onOverflowChange}>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item1
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item2
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item3
-        </Text>
-      </Toolbar>
-    );
-    const updatedItem1 = getByText('Item1');
-    const updatedItem2 = getByText('Item2');
-    const updatedItem3 = getByText('Item3');
-    expect(queryByTitle('Show More')).toBeNull();
-    expect(updatedItem1).toBeInTheDocument();
-    expect(updatedItem2).toBeInTheDocument();
-    expect(updatedItem3).toBeInTheDocument();
-    expect(updatedItem1).not.toHaveStyle(`visibility: hidden`);
-    expect(updatedItem2).not.toHaveStyle(`visibility: hidden`);
-    expect(updatedItem3).not.toHaveStyle(`visibility: hidden`);
-    expect(onOverflowChange).toHaveBeenCalledTimes(2);
-
-    //with fragments
-    rerender(
-      <Toolbar data-testid="toolbar" style={{ width: '300px' }}>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item1
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item2
-        </Text>
-        <Text data-testid="toolbar-item" style={{ width: '200px' }}>
-          Item3
-        </Text>
-      </Toolbar>
-    );
-    expect(container.querySelector(`[tooltip="Show More"]`)).toBeInTheDocument();
-    expect(getAllByTestId('toolbar-item')).toHaveLength(5);
-
-    const item1frag = getAllByText('Item1');
-    const item2frag = getAllByText('Item2');
-    const item3frag = getAllByText('Item3');
-    expect(item1frag).toHaveLength(1);
-    expect(item2frag).toHaveLength(2);
-    expect(item3frag).toHaveLength(2);
-    expect(item1frag[0]).not.toHaveStyle(`visibility: hidden`);
-    expect(item2frag[0]).toHaveStyle(`visibility: hidden`);
-    expect(item3frag[0]).toHaveStyle(`visibility: hidden`);
-
-    expect(document.body).toMatchSnapshot();
-
-    rerender(
+    const { rerender, queryByTitle, getByText, getAllByLabelText, container } = render(
       <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
         <>
           <Text data-testid="toolbar-item" style={{ width: '200px' }}>
@@ -195,7 +114,7 @@ describe('Toolbar', () => {
     const updatedItem1frag = getByText('Item1');
     const updatedItem2frag = getByText('Item2');
     const updatedItem3frag = getByText('Item3');
-    expect(queryByTitle('Show More')).toBeNull();
+    expect(queryByTitle('Show more')).toBeNull();
     expect(updatedItem1frag).toBeInTheDocument();
     expect(updatedItem2frag).toBeInTheDocument();
     expect(updatedItem3frag).toBeInTheDocument();
@@ -359,12 +278,12 @@ describe('Toolbar', () => {
       ['ui5-popover']
     );
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     fireEvent.click(getAllByText('Button One')[1]);
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
-    fireEvent.click(container.querySelector(`[tooltip="Show More"]`));
-    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    fireEvent.click(container.querySelector(`[tooltip="Show more"]`));
+    overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     fireEvent.change(getAllByPlaceholderText('Input')[1], { target: { value: ':)' } });
     expect(overflowPopoverRef.current.isOpen()).toBeFalsy();
   });
@@ -390,7 +309,7 @@ describe('Toolbar', () => {
       </Toolbar>,
       ['ui5-popover', 'ui5-button']
     );
-    const overflowBtn = container.querySelector(`[tooltip="Show More"]`);
+    const overflowBtn = container.querySelector(`[tooltip="Show more"]`);
     await waitFor(() => overflowBtn.shadowRoot.querySelector('button'));
     const srOverflowBtn = overflowBtn.shadowRoot.querySelector('button');
 
@@ -398,9 +317,35 @@ describe('Toolbar', () => {
     expect(srOverflowBtn).toHaveAttribute('aria-haspopup', 'menu');
 
     // todo: overflowPopoverRef.current.showAt never resolves
-    // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show More"]`));
+    // await overflowPopoverRef.current.showAt(container.querySelector(`[tooltip="Show more"]`));
     // expect(overflowPopoverRef.current.isOpen()).toBeTruthy();
     // expect(overflowBtn.shadowRoot.querySelector('button')).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('custom overflow button', () => {
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
+    HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
+      return {
+        width: parseFloat(getComputedStyle(this).width || 200),
+        height: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      };
+    });
+    render(
+      <Toolbar
+        style={{ width: '50px' }}
+        overflowButton={<ToggleButton data-testid="btn" icon="menu2" design={ButtonDesign.Transparent} />}
+      >
+        <Button>Button One</Button>
+        <Input />
+      </Toolbar>
+    );
+    expect(screen.getByTestId('btn')).toBeInTheDocument();
+    // testing e.preventDefault is not possible as the shadow root is always empty and the click event is never called
   });
 
   createChangeTagNameTest(Toolbar);

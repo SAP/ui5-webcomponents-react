@@ -14,6 +14,9 @@ import '@ui5/webcomponents-icons/dist/add.js';
 import '@ui5/webcomponents-icons/dist/calendar.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import '@ui5/webcomponents-icons/dist/sys-monitor.js';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import TabDescription from '../Tab/TabDescription.md';
+import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md';
 
 <Meta
   title="Layouts & Floorplans / TabContainer"
@@ -157,5 +160,53 @@ The <code>TabSeparator</code> represents a vertical line to separate tabs inside
     }}
   </Story>
 </Canvas>
+
+## TabContainer with nested Tabs
+
+<Canvas>
+  <Story name="with nested tabs">
+    {(args) => {
+      return (
+        <TabContainer>
+          <Tab
+            text="Tab One"
+            selected
+            subTabs={
+              <>
+                <Tab text="Tab 1.1" />
+                <Tab text="Tab 1.2" />
+                <Tab text="Tab 1.3" />
+              </>
+            }
+          >
+            <div style={{ display: 'none' }} />
+          </Tab>
+          <TabSeparator />
+          <Tab text="Tab Two" />
+          <Tab
+            text="Tab Three"
+            subTabs={
+              <>
+                <Tab text="Tab 3.1" />
+                <Tab text="Tab 3.2" />
+                <Tab text="Tab 3.3" />
+              </>
+            }
+          />
+        </TabContainer>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<SubcomponentsSection />
+
+## Tab
+
+<TabDescription />
+
+## TabSeparator
+
+<TabSeparatorDescription />
 
 <Footer />

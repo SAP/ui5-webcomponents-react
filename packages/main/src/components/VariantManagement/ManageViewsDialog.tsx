@@ -1,30 +1,61 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
-import '@ui5/webcomponents-icons/dist/decline.js';
-import '@ui5/webcomponents-icons/dist/favorite.js';
-import '@ui5/webcomponents-icons/dist/unfavorite.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
+import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
+import { BarDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
 import { ButtonDesign } from '../../enums/ButtonDesign';
-import { APPLY_AUTOMATICALLY, CANCEL, CREATED_BY, DEFAULT, SAVE, SHARING, VIEW } from '../../i18n/i18n-defaults';
+import {
+  APPLY_AUTOMATICALLY,
+  CANCEL,
+  CREATED_BY,
+  DEFAULT,
+  MANAGE_VIEWS,
+  SAVE,
+  SHARING,
+  VIEW,
+  SEARCH
+} from '../../i18n/i18n-defaults';
+import { Icon, Input } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
 import { Table } from '../../webComponents/Table';
 import { TableColumn } from '../../webComponents/TableColumn';
+import { FlexBox } from '../FlexBox';
 import { ManageViewsTableRows } from './ManageViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';
 
 const styles = {
   manageViewsDialog: {
-    '&::part(content)': {
+    width: isPhone() || isTablet() ? '100%' : '70vw',
+    '&::part(content), &::part(header)': {
       padding: 0
     },
     '&::part(footer)': {
-      padding: 0
+      padding: 0,
+      borderBlockStart: 'none'
     }
-  }
+  },
+  headerText: {
+    margin: 0,
+    textAlign: 'center',
+    alignSelf: 'start',
+    minHeight: 'var(--_ui5_popup_default_header_height)',
+    maxHeight: 'var(--_ui5_popup_default_header_height)',
+    lineHeight: 'var(--_ui5_popup_default_header_height)',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    maxWidth: '100%',
+    display: 'inline-block',
+    paddingInlineStart: '1rem',
+    fontFamily: '"72override",var(--_ui5_popup_header_font_family)',
+    fontSize: '1rem'
+  },
+  search: { width: 'calc(100% - 2rem)', marginBlockEnd: '0.5rem' },
+  inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor }
 };
 
 const useStyles = createUseStyles(styles, { name: 'ManageViewsDialog' });
@@ -46,6 +77,7 @@ interface ManageViewsDialogPropTypes {
   showCreatedBy: boolean;
   variantNames: string[];
   portalContainer: Element;
+  showOnlyFavorites?: boolean;
 }
 
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
@@ -58,7 +90,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showSetAsDefault,
     showCreatedBy,
     variantNames,
-    portalContainer
+    portalContainer,
+    showOnlyFavorites
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
@@ -68,6 +101,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const defaultHeaderText = i18nBundle.getText(DEFAULT);
   const applyAutomaticallyHeaderText = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const createdByHeaderText = i18nBundle.getText(CREATED_BY);
+  const manageViewsText = i18nBundle.getText(MANAGE_VIEWS);
+  const searchText = i18nBundle.getText(SEARCH);
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
   const [invalidVariants, setInvalidVariants] = useState<Record<string, HTMLInputElement>>({});
@@ -76,7 +111,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const columns = (
     <>
-      <TableColumn key="favorite-variant-item" />
+      {showOnlyFavorites && <TableColumn key="favorite-variant-item" />}
       <TableColumn>{viewHeaderText}</TableColumn>
       {showShare && (
         <TableColumn demandPopin minWidth={600}>
@@ -123,6 +158,11 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     );
   }, [children]);
 
+  const [filteredProps, setFilteredProps] = useState(childrenProps);
+  useEffect(() => {
+    setFilteredProps(childrenProps);
+  }, [childrenProps]);
+
   const [defaultView, setDefaultView] = useState<string>();
 
   const changedTableRows = useRef({});
@@ -161,16 +201,39 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     }
   };
 
+  const handleSearchInput = (e) => {
+    const lowerCaseVal = e.target.value.toLowerCase();
+    setFilteredProps(
+      childrenProps.filter(
+        (item) =>
+          item.children?.toLowerCase()?.includes(lowerCaseVal) || item.author?.toLowerCase()?.includes(lowerCaseVal)
+      )
+    );
+  };
+
   return createPortal(
     <Dialog
       className={classes.manageViewsDialog}
-      style={{ width: isPhone() || isTablet() ? '100%' : '70vw' }}
       data-component-name="VariantManagementManageViewsDialog"
       ref={manageViewsRef}
       onAfterClose={onAfterClose}
-      headerText="Manage Views"
+      headerText={manageViewsText}
+      header={
+        <FlexBox direction={FlexBoxDirection.Column} style={{ width: '100%' }} alignItems={FlexBoxAlignItems.Center}>
+          <h2 className={classes.headerText}>{manageViewsText}</h2>
+          <Input
+            className={classes.search}
+            placeholder={searchText}
+            showClearIcon
+            icon={<Icon name={searchIcon} className={classes.inputIcon} />}
+            onInput={handleSearchInput}
+          />
+        </FlexBox>
+      }
+      resizable
       footer={
         <Bar
+          design={BarDesign.Footer}
           endContent={
             <>
               <Button design={ButtonDesign.Emphasized} onClick={handleSave}>
@@ -185,7 +248,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       }
     >
       <Table columns={columns} stickyColumnHeader role="table">
-        {childrenProps.map((itemProps: VariantItemPropTypes) => {
+        {filteredProps.map((itemProps: VariantItemPropTypes) => {
           return (
             <ManageViewsTableRows
               {...itemProps}
@@ -202,6 +265,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               showSetAsDefault={showSetAsDefault}
               showCreatedBy={showCreatedBy}
               key={itemProps?.children}
+              showOnlyFavorites={showOnlyFavorites}
             />
           );
         })}

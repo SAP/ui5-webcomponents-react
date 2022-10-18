@@ -15,7 +15,13 @@ on:
         default: false
 
 jobs:
+  test:
+    uses: './.github/workflows/test.yml'
+    with:
+      reportCoverage: false
+
   build-and-release:
+    needs: ['test']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
@@ -27,18 +33,15 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.1
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Install, test and build
+      - name: Install and build
         run: |
           yarn install --frozen-lockfile
-          yarn test
           yarn build
-        env:
-          REACTJS_VERSION: 18
 
       - name: publish
         run: |
@@ -61,7 +64,7 @@ jobs:
 
       - name: Deploy Docs
         if: ${{ github.event.inputs.prerelease == 'false' }}
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.

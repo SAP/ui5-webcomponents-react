@@ -9,20 +9,23 @@ import {
   Dialog,
   FlexBox,
   FlexBoxAlignItems,
+  FlexBoxJustifyContent,
   Link,
   MessageItem,
   ResponsivePopover,
-  Text,
   Title,
   TitleLevel,
   ValueState
 } from '@ui5/webcomponents-react';
 import { useRef, useState } from 'react';
 import { MessageView } from './index';
+import { generateMessageItems } from '../../../../../.storybook/mockData/generateMessageItems.js';
+import { MessageViewButton } from '../MessageViewButton';
+import { ButtonDesign } from '../../enums';
 
 <Meta
   title="User Feedback / MessageView"
-  subcomponents={{ MessageItem }}
+  subcomponents={{ MessageItem, MessageViewButton }}
   args={{
     showDetailsPageHeader: true,
     groupItems: false,
@@ -118,6 +121,9 @@ This component exposes public methods. You can invoke them directly on the insta
 
 The `MessageView` can be used in several scenarios, but most likely in Dialogs or Popovers.
 
+If used in a Popover it is recommended that the `MessageViewButton` is used as an opener.
+The `type` of the button should always reflect the highest severity (Error -> Warning -> Success -> Information).
+
 If the `MessageView` is used in a standalone way, you can set the prop `showDetailsPageHeader` to `true`.
 This will add a bar to the details page where a back button is contained.
 
@@ -147,7 +153,7 @@ to get back to the list view.
           <Dialog
             ref={dialogRef}
             style={{ width: '400px' }}
-            className="popupNoContentPadding"
+            className="contentPartNoPadding headerPartNoPadding"
             header={
               <Bar
                 startContent={
@@ -155,10 +161,12 @@ to get back to the list view.
                     {isOnDetailsPage && (
                       <Button
                         icon="slim-arrow-left"
+                        design={ButtonDesign.Transparent}
                         onClick={() => {
                           setIsOnDetailsPage(false);
                           messageViewRef.current.navigateBack();
                         }}
+                        style={{ marginInline: '0 0.5rem' }}
                       />
                     )}
                     <Title level={TitleLevel.H4}>Messages</Title>
@@ -167,17 +175,23 @@ to get back to the list view.
               />
             }
             footer={
-              <Bar
-                endContent={
-                  <Button
-                    onClick={() => {
-                      dialogRef.current?.close();
-                    }}
-                  >
-                    Close
-                  </Button>
-                }
-              />
+              <FlexBox
+                alignItems={FlexBoxAlignItems.Center}
+                justifyContent={FlexBoxJustifyContent.End}
+                style={{
+                  width: '100%',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <Button
+                  design={ButtonDesign.Transparent}
+                  onClick={() => {
+                    dialogRef.current?.close();
+                  }}
+                >
+                  Close
+                </Button>
+              </FlexBox>
             }
           >
             <MessageView
@@ -203,6 +217,7 @@ function MyComponent() {
   const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
   return (
     <Dialog
+      className="modal-without-padding"
       header={
         <Bar
           startContent={
@@ -210,10 +225,12 @@ function MyComponent() {
               {isOnDetailsPage && (
                 <Button
                   icon="slim-arrow-left"
+                  design={ButtonDesign.Transparent}
                   onClick={() => {
                     setIsOnDetailsPage(false);
                     messageViewRef.current.navigateBack();
                   }}
+                  style={{ marginInline: '0 0.5rem' }}
                 />
               )}
               <Title level={TitleLevel.H4}>Messages</Title>
@@ -236,38 +253,84 @@ function MyComponent() {
 }
 ```
 
-### MessageView in Popover
+### MessageView in Popover with MessageViewButton
 
 <Canvas>
-  <Story name="Message View in Popover">
-    {(args) => {
-      const notifications = [];
-      for (let i = 0; i < 15; i++) {
-        notifications.push(
-          <MessageItem
-            key={i}
-            titleText={<Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum</Text>}
-          >
-            <Text>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </Text>
-          </MessageItem>
-        );
-      }
+  <Story name="with MessageViewButton">
+    {() => {
       const ref = useRef();
+      const messageViewRef = useRef();
+      const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
+      const numberOfItems = {
+        information: 2,
+        warning: 5,
+        success: 3,
+        error: 3
+      };
       return (
         <>
-          <Button
+          <MessageViewButton
+            counter={3}
+            type={ValueState.Error}
             onClick={(e) => {
               ref.current.showAt(e.target);
             }}
+          />
+          <ResponsivePopover
+            ref={ref}
+            headerText="Messages"
+            className="contentPartNoPadding headerPartNoPadding"
+            header={
+              <Bar
+                startContent={
+                  <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                    {isOnDetailsPage && (
+                      <Button
+                        design={ButtonDesign.Transparent}
+                        icon="slim-arrow-left"
+                        onClick={() => {
+                          setIsOnDetailsPage(false);
+                          messageViewRef.current.navigateBack();
+                        }}
+                        style={{ marginInline: '0 0.5rem' }}
+                      />
+                    )}
+                    <Title level={TitleLevel.H4}>Messages</Title>
+                  </FlexBox>
+                }
+              />
+            }
+            footer={
+              <FlexBox
+                alignItems={FlexBoxAlignItems.Center}
+                justifyContent={FlexBoxJustifyContent.End}
+                style={{
+                  paddingBlock: '0.25rem',
+                  width: '100%',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <Button
+                  design={ButtonDesign.Transparent}
+                  onClick={() => {
+                    ref.current?.close();
+                  }}
+                >
+                  Close
+                </Button>
+              </FlexBox>
+            }
           >
-            Messages
-          </Button>
-          <ResponsivePopover placementType="Bottom" ref={ref}>
-            <MessageView showDetailsPageHeader>{notifications}</MessageView>
+            <MessageView
+              ref={messageViewRef}
+              showDetailsPageHeader={false}
+              groupItems
+              onItemSelect={() => {
+                setIsOnDetailsPage(true);
+              }}
+            >
+              {generateMessageItems(numberOfItems)}
+            </MessageView>
           </ResponsivePopover>
         </>
       );

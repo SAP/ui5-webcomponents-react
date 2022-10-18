@@ -111,6 +111,11 @@ export const styles = {
     position: 'sticky',
     zIndex: 1
   },
+  tabContainerComponent: {
+    '&::part(content)': {
+      display: 'none'
+    }
+  },
   footer: {
     position: 'sticky',
     bottom: '0.5rem',

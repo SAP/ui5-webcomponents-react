@@ -1,7 +1,6 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
-import '@ui5/webcomponents-icons/dist/decline.js';
-import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
-import '@ui5/webcomponents-icons/dist/search.js';
+import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
@@ -19,34 +18,29 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
-import { ListMode } from '../../enums/ListMode';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { TitleLevel } from '../../enums/TitleLevel';
 import {
-  CANCEL,
-  MANAGE,
-  MY_VIEWS,
-  RESET,
-  SAVE,
-  SAVE_AS,
-  SEARCH,
-  SEARCH_VARIANT,
-  SELECT_VIEW
-} from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+  BarDesign,
+  ButtonDesign,
+  IllustrationMessageType,
+  ListMode,
+  PopoverPlacementType,
+  TitleLevel
+} from '../../enums';
+import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
+import { CommonProps, Ui5CustomEvent } from '../../interfaces';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { Icon } from '../../webComponents/Icon';
-import { IllustratedMessage } from '../../webComponents/IllustratedMessage';
-import { Input } from '../../webComponents/Input';
-import { List } from '../../webComponents/List';
-import { ResponsivePopover, ResponsivePopoverDomRef } from '../../webComponents/ResponsivePopover';
-import { Title } from '../../webComponents/Title';
+import {
+  Bar,
+  Button,
+  Icon,
+  IllustratedMessage,
+  Input,
+  List,
+  ResponsivePopover,
+  ResponsivePopoverDomRef,
+  Title
+} from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';
@@ -110,6 +104,8 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   dirtyStateText?: string;
   /**
    * Indicates that the 'Favorites' feature is used. Only variants marked as favorites will be displayed in the variant list.
+   *
+   * __Note:__ Only if `showOnlyFavorites` is set to `true` favorites can be changed.
    */
   showOnlyFavorites?: boolean;
   /**
@@ -137,15 +133,13 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   hideManageVariants?: boolean;
   /**
-   * Displays the cancel button in the popover.
-   */
-  showCancelButton?: boolean;
-  /**
    * Indicates that the control is in error state. If set to true error message will be displayed whenever the variant is opened.
    */
   inErrorState?: boolean;
   /**
    * Defines where modals are rendered into via `React.createPortal`.
+   *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
    *
    * Defaults to: `document.body`
    */
@@ -181,9 +175,13 @@ const styles = {
   },
   title: {
     cursor: 'pointer',
-    color: ThemingParameters.sapButton_TextColor,
+    color: ThemingParameters.sapLinkColor,
+    textShadow: 'none',
     '&:hover': {
-      color: ThemingParameters.sapButton_Hover_TextColor
+      color: ThemingParameters.sapLink_Hover_Color
+    },
+    '&:active': {
+      color: ThemingParameters.sapLink_Active_Color
     }
   },
   disabled: {
@@ -197,7 +195,7 @@ const styles = {
   },
   dirtyState: {
     color: ThemingParameters.sapGroup_TitleTextColor,
-    padding: '0 0.125rem',
+    paddingInline: '0.125rem',
     fontWeight: 'bold',
     font: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
@@ -207,20 +205,23 @@ const styles = {
     fontSize: ThemingParameters.sapFontSmallSize,
     fontWeight: 'normal'
   },
+  navDownBtn: {
+    marginInlineStart: '0.125rem'
+  },
   footer: {
     '& > :last-child': {
-      marginRight: 0
+      marginInlineEnd: 0
     }
   },
   inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
   searchInput: { padding: '0.25rem 1rem' },
   popover: {
     minWidth: '25rem',
-    '&::part(content)': {
+    '&::part(content), &::part(footer)': {
       padding: 0
     },
-    '&::part(header), &::part(footer)': {
-      padding: '0 1rem'
+    '&::part(footer)': {
+      borderBlockStart: 'none'
     }
   }
 };
@@ -253,7 +254,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     hideSaveAs,
     dirtyStateText,
     dirtyState,
-    showCancelButton,
     onSave,
     portalContainer,
     ...rest
@@ -368,14 +368,12 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     [popoverRef]
   );
 
-  const cancelText = i18nBundle.getText(CANCEL);
   const searchText = i18nBundle.getText(SEARCH);
   const saveAsText = i18nBundle.getText(SAVE_AS);
   const manageText = i18nBundle.getText(MANAGE);
   const saveText = i18nBundle.getText(SAVE);
   const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
   const selectViewText = i18nBundle.getText(SELECT_VIEW);
-  const resetIconTitleText = i18nBundle.getText(RESET);
 
   const variantManagementClasses = clsx(classes.container, disabled && classes.disabled, className);
 
@@ -440,15 +438,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
       );
     }
   }, [safeChildrenWithFavorites]);
-  const handleSpaceInput = (e) => {
-    if (e.code === 'Space') {
-      setSearchValue((prev) => prev + ' ');
-    }
-  };
-  const handleResetFilter = () => {
-    setSearchValue('');
-    setFilteredChildren(undefined);
-  };
 
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
 
@@ -466,11 +455,12 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
+          className={clsx(classes.navDownBtn, 'ui5-content-density-compact')}
           title={selectViewText}
           aria-label={selectViewText}
           onClick={handleOpenVariantManagement}
           design={ButtonDesign.Transparent}
-          icon="navigation-down-arrow"
+          icon={navDownIcon}
           disabled={disabled}
         />
         {createPortal(
@@ -480,8 +470,9 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             headerText={titleText}
             placementType={placement}
             footer={
-              (showSaveBtn || !hideSaveAs || !hideManageVariants || showCancelButton) && (
+              (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
                 <Bar
+                  design={BarDesign.Footer}
                   className={classes.footer}
                   endContent={
                     <>
@@ -507,18 +498,6 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                           {manageText}
                         </Button>
                       )}
-                      {showCancelButton && (
-                        <Button
-                          onClick={handleClose}
-                          design={
-                            !inErrorState && (showSaveBtn || !hideSaveAs || !hideManageVariants)
-                              ? ButtonDesign.Transparent
-                              : ButtonDesign.Emphasized
-                          }
-                        >
-                          {cancelText}
-                        </Button>
-                      )}
                     </>
                   }
                 />
@@ -540,23 +519,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
                         value={searchValue}
                         placeholder={searchText}
                         onInput={handleSearchInput}
-                        // todo remove when fixed
-                        onKeyDown={handleSpaceInput}
-                        icon={
-                          <>
-                            {filteredChildren && (
-                              <Icon
-                                accessibleName={resetIconTitleText}
-                                title={resetIconTitleText}
-                                name="decline"
-                                interactive
-                                onClick={handleResetFilter}
-                                className={classes.inputIcon}
-                              />
-                            )}
-                            <Icon name="search" className={classes.inputIcon} />
-                          </>
-                        }
+                        showClearIcon
+                        icon={<Icon name={searchIcon} className={classes.inputIcon} />}
                       />
                     </div>
                   ) : undefined
@@ -578,6 +542,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
             portalContainer={portalContainer}
+            showOnlyFavorites={showOnlyFavorites}
           >
             {safeChildren}
           </ManageViewsDialog>

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Text } from '../../../Text';
 
-export const Cell = ({ cell: { value = '', isGrouped }, row }) => {
+export const Cell = ({ cell: { value = '', isGrouped }, row, webComponentsReactProperties }) => {
   let cellContent = `${value ?? ''}`;
   if (isGrouped) {
     cellContent += ` (${row.subRows.length})`;
   }
   return (
-    <Text wrapping={false} title={cellContent}>
+    <span title={cellContent} className={webComponentsReactProperties.classes.tableText}>
       {cellContent}
-    </Text>
+    </span>
   );
 };

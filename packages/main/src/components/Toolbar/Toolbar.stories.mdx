@@ -7,6 +7,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import {
   Button,
+  ButtonDesign,
   DatePicker,
   Icon,
   Input,
@@ -29,7 +30,8 @@ import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
   subcomponents={{ OverflowToolbarButton, OverflowToolbarToggleButton }}
   argTypes={{
     children: { control: { disable: true } },
-    as: { control: { disable: true } }
+    as: { control: { disable: true } },
+    overflowButton: { control: { disable: true } }
   }}
   args={{
     design: ToolbarDesign.Auto,
@@ -169,7 +171,7 @@ line.
 If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.<br/>
 **Note:** You can change the width of the toolbar by dragging the `width` slider in the table below.
 
-<ArgsTableWithNote story="With overflow button" />
+<ArgsTableWithNote story="With overflow button" hideHTMLPropsNote />
 
 <Canvas>
   <Story
@@ -191,7 +193,9 @@ If the horizontally available space isn't enough to fit all items in it, an over
       onOverflowChange: { table: { disable: true } },
       className: { table: { disable: true } },
       style: { table: { disable: true } },
-      tooltip: { table: { disable: true } }
+      tooltip: { table: { disable: true } },
+      overflowPopoverRef: { table: { disable: true } },
+      overflowButton: { table: { disable: true } }
     }}
   >
     {(args) => {
@@ -248,6 +252,58 @@ Both components accept the same `props` as the standard `Button` or `ToggleButto
             OverflowToolbarToggleButton (only visible in popover)
           </OverflowToolbarToggleButton>
         </Toolbar>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Toolbar with custom overflow button
+
+By setting the `overflowButton` prop, it's possible to change the overflow button, which is displayed if the `Toolbar` goes into overflow.
+Only buttons in icon only mode are supported and it's recommended to use the `ToggleButton` in `"Transparent"` design to comply with UX guidelines.
+Please also note that when using a custom button, it is your responsibility to set the appropriate a11y attributes.
+
+It is furthermore possible to prevent the popover from opening by using `event.preventDefault()` in the `onClick` of the button. This is useful e.g. when implementing a custom overflow popover.
+
+<Canvas>
+  <Story name="with custom overflow button">
+    {(args) => {
+      return (
+        <>
+          <Toolbar
+            {...args}
+            style={{ width: '300px', ...args.style }}
+            overflowButton={
+              <ToggleButton
+                icon="menu2"
+                design={ButtonDesign.Transparent}
+                onClick={() => {
+                  alert('Custom action');
+                }}
+              />
+            }
+          >
+            <Input />
+            <Text wrapping={false}>Overflow Content</Text>
+          </Toolbar>
+          <Toolbar
+            {...args}
+            style={{ width: '300px', ...args.style }}
+            overflowButton={
+              <ToggleButton
+                icon="menu2"
+                design={ButtonDesign.Transparent}
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('Custom action');
+                }}
+              />
+            }
+          >
+            <Text wrapping={false}>Opening the popover is prevented</Text>
+            <Text wrapping={false}>Overflow Content</Text>
+          </Toolbar>
+        </>
       );
     }}
   </Story>

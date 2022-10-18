@@ -7,12 +7,16 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TreeItemAttributes {
   /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines the `additionalText`, displayed in the end of the tree item.
    */
   additionalText?: string;
   /**
    * Defines the state of the `additionalText`.
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Erorr"`.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
   /**
@@ -31,7 +35,7 @@ interface TreeItemAttributes {
   /**
    * Defines whether the selection of a tree node is displayed as partially selected.
    *
-   * **Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
+   * **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
    *
    * *   If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.
    * *   If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.
@@ -72,7 +76,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'icon', 'text'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text'],
   ['expanded', 'hasChildren', 'indeterminate', 'selected'],
   [],
   []
