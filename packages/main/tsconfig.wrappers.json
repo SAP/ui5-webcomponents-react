@@ -9,5 +9,5 @@
     }
   },
   "include": ["tmp/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.cy.tsx"]
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/CodeGen.tsx"]
 }

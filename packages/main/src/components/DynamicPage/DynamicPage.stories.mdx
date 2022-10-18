@@ -36,6 +36,7 @@ import {
   VariantManagement
 } from '../..';
 import { ProductsTable } from '../../../../../.storybook/components/ProductsTable';
+import { SpacingSpan } from './CodeGen';
 
 <Meta
   title="Layouts & Floorplans / DynamicPage"
@@ -109,7 +110,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
             <Label>Halway: 23L</Label>
             <Label>Rack: 34</Label>
           </FlexBox>
-          <span style={{ width: '1rem' }} />
+          {SpacingSpan}
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Availability:</Label>
             <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
@@ -144,7 +145,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## Always show Header Content
 
-<Canvas>
+<Canvas withSource="none">
   <Story
     name="Always show header content"
     args={{ alwaysShowContentHeader: true, showHideHeaderButton: true, headerContentPinnable: true }}
@@ -172,7 +173,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 **Note:** To prevent the `click` event of the `VariantManagement` component from bubbling up and collapsing/expanding the `DynamicPageHeader`, please call `event.stopPropagation()` inside the `onClick` callback of the `VariantManagement`.
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="with Variants">
     {(args) => {
       const [headerVariant, setHeaderVariant] = useState('Header Variant 1');
@@ -267,7 +268,7 @@ import { ProductsTable } from '../../../../../.storybook/components/ProductsTabl
 
 ## With floating footer
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="with floating footer">
     {(args) => {
       const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
