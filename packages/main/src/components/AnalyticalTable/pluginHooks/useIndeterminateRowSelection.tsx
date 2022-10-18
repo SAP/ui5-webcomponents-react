@@ -40,6 +40,12 @@ export const useIndeterminateRowSelection = () => {
 
   const stateReducer = (newState, action, prevState, instance) => {
     if (action.type === 'INDETERMINATE_ROW_IDS') {
+      if (action.payload === 'reset') {
+        return {
+          ...newState,
+          indeterminateRows: {}
+        };
+      }
       let indeterminateRows = {};
       const allSelectedRows = {};
       let allSelected = true;
@@ -81,7 +87,7 @@ export const useIndeterminateRowSelection = () => {
     const {
       data,
       dispatch,
-      state: { selectedRowIds },
+      state: { selectedRowIds, indeterminateRows },
       webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable }
     } = instance;
 
@@ -92,6 +98,8 @@ export const useIndeterminateRowSelection = () => {
         selectionBehavior !== TableSelectionBehavior.RowOnly
       ) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS' });
+      } else if (typeof indeterminateRows === 'object' && Object.keys(indeterminateRows).length) {
+        dispatch({ type: 'INDETERMINATE_ROW_IDS', payload: 'reset' });
       }
     }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior]);
   };

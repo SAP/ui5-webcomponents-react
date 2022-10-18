@@ -27,4 +27,5 @@ shared
 *.cy.ts
 index.esm.js
 packages/cra-template
+CodeGen.tsx
 
