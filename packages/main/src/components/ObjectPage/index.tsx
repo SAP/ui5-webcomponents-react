@@ -580,8 +580,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
 
   const onTitleClick = useCallback(
     (e) => {
+      e.stopPropagation();
       if (!titleHeaderNotClickable) {
-        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed !== true }));
+        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
       }
     },
     [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]

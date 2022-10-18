@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 declare const ResizeObserver;
 
@@ -18,29 +18,32 @@ export const useObserveHeights = (
   const prevHeaderContentHeight = useRef(0);
   const prevScrollTop = useRef(0);
 
-  const scroll = (e) => {
-    const scrollDown = prevScrollTop.current <= e.target.scrollTop;
-    prevScrollTop.current = e.target.scrollTop;
+  const onScroll = useCallback(
+    (e) => {
+      const scrollDown = prevScrollTop.current <= e.target.scrollTop;
+      prevScrollTop.current = e.target.scrollTop;
 
-    if (scrollDown && e.target.scrollTop >= headerContentHeight && !prevHeaderContentHeight.current) {
-      prevHeaderContentHeight.current = headerContentHeight;
-      setIsIntersecting(false);
-      setHeaderCollapsed(true);
-    } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && prevHeaderContentHeight.current) {
-      setIsIntersecting(true);
-      setHeaderCollapsed(false);
-      prevHeaderContentHeight.current = 0;
-    }
-  };
+      if (scrollDown && e.target.scrollTop >= headerContentHeight && !prevHeaderContentHeight.current) {
+        prevHeaderContentHeight.current = headerContentHeight;
+        setIsIntersecting(false);
+        setHeaderCollapsed(true);
+      } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && prevHeaderContentHeight.current) {
+        setIsIntersecting(true);
+        setHeaderCollapsed(false);
+        prevHeaderContentHeight.current = 0;
+      }
+    },
+    [headerContentHeight, topHeaderHeight]
+  );
 
   useEffect(() => {
     if (!fixedHeader) {
-      objectPage.current.addEventListener('scroll', scroll);
+      objectPage.current.addEventListener('scroll', onScroll);
     }
     return () => {
-      objectPage.current?.removeEventListener('scroll', scroll);
+      objectPage.current?.removeEventListener('scroll', onScroll);
     };
-  }, [scroll, fixedHeader]);
+  }, [onScroll, fixedHeader]);
 
   // top header
   useEffect(() => {

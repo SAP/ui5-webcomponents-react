@@ -209,10 +209,11 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   };
 
   const onToggleHeaderContentInternal = (e) => {
+    e.stopPropagation();
     if (!isToggledRef.current) {
       isToggledRef.current = true;
     }
-    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed !== true }));
+    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
   };
 
   const handleHeaderPinnedChange = (headerWillPin) => {
