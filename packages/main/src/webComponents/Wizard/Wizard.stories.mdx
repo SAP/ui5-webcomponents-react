@@ -15,6 +15,7 @@ import { Title } from '../Title';
 import { useRef } from 'react';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import WizardStepDescription from '../WizardStep/WizardStepDescription.md';
+import { Br } from './CodeGen';
 
 <Meta
   title="Layouts & Floorplans / Wizard"
@@ -90,7 +91,7 @@ import WizardStepDescription from '../WizardStep/WizardStepDescription.md';
               a turpis a, molestie aliquet dui. Donec pulvinar, sapien
             </Label>
             <CheckBox onChange={handleStep2Completed} text="Step Completed" />
-            <br />
+            {Br}
             <Button id="goToStep3" design={ButtonDesign.Emphasized} onClick={goToStep3} hidden>
               Step 3
             </Button>
@@ -106,7 +107,7 @@ import WizardStepDescription from '../WizardStep/WizardStepDescription.md';
               a turpis a, molestie aliquet dui. Donec pulvinar, sapien
             </Label>
             <Input placeholder="Item Price" onInput={handlePriceInput} />
-            <br />
+            {Br}
             <Button design={ButtonDesign.Emphasized} onClick={finalizeWizard} hidden id="finalizeBtn">
               Finalize
             </Button>

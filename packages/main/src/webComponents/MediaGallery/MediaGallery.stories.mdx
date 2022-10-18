@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import { Toast } from '../Toast';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import MediaGalleryItemDescription from '../MediaGalleryItem/MediaGalleryItemDescription.md';
+import { HT1000, HT1000small, HT1010, HT1022, HT1030, HT2002, HT2026 } from './CodeGen';
 
 <Meta
   title="Layouts & Floorplans / MediaGallery"
@@ -38,24 +39,12 @@ import MediaGalleryItemDescription from '../MediaGalleryItem/MediaGalleryItemDes
     {(args) => {
       return (
         <MediaGallery {...args}>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
-          </MediaGalleryItem>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
-          </MediaGalleryItem>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1022.jpg" />
-          </MediaGalleryItem>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1030.jpg" />
-          </MediaGalleryItem>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-2002.jpg" />
-          </MediaGalleryItem>
-          <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-2026.jpg" />
-          </MediaGalleryItem>
+          <MediaGalleryItem>{HT1000}</MediaGalleryItem>
+          <MediaGalleryItem>{HT1010}</MediaGalleryItem>
+          <MediaGalleryItem>{HT1022}</MediaGalleryItem>
+          <MediaGalleryItem>{HT1030}</MediaGalleryItem>
+          <MediaGalleryItem>{HT2002}</MediaGalleryItem>
+          <MediaGalleryItem>{HT2026}</MediaGalleryItem>
         </MediaGallery>
       );
     }}
@@ -78,12 +67,10 @@ import MediaGalleryItemDescription from '../MediaGalleryItem/MediaGalleryItemDes
       return (
         <MediaGallery {...args}>
           <MediaGalleryItem>
-            <img slot="thumbnail" src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000-small.jpg" />
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
+            {HT1000small}
+            {HT1000}
           </MediaGalleryItem>
-          <MediaGalleryItem disabled>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
-          </MediaGalleryItem>
+          <MediaGalleryItem disabled>{HT1010}</MediaGalleryItem>
         </MediaGallery>
       );
     }}
@@ -103,12 +90,8 @@ import MediaGalleryItemDescription from '../MediaGalleryItem/MediaGalleryItemDes
         <>
           <Toast ref={ref}>Display Area Clicked!</Toast>
           <MediaGallery {...args} interactiveDisplayArea onDisplayAreaClick={handleDisplayAreaClick}>
-            <MediaGalleryItem>
-              <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
-            </MediaGalleryItem>
-            <MediaGalleryItem selected>
-              <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
-            </MediaGalleryItem>
+            <MediaGalleryItem>{HT1000}</MediaGalleryItem>
+            <MediaGalleryItem selected>{HT1010}</MediaGalleryItem>
           </MediaGallery>
         </>
       );

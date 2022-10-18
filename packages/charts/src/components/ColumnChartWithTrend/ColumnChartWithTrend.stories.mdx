@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend';
@@ -47,6 +47,8 @@ import { complexDataSet } from '../../resources/DemoProps';
 <Canvas>
   <Story name="Default">{(props) => <ColumnChartWithTrend {...props} />}</Story>
 </Canvas>
+
+<ArgsTable story="Default" />
 
 ### Loading Placeholder
 
