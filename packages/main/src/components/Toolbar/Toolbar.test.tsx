@@ -44,6 +44,9 @@ describe('Toolbar', () => {
             <Text>Item2</Text>
             <Text>Item3</Text>
           </>
+          <>
+            <Text>Item4</Text>
+          </>
         </Toolbar>
       ).asFragment()
     ).toMatchSnapshot();
