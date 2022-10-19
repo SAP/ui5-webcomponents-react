@@ -85,6 +85,16 @@ exports[`Toolbar Renders with children as react fragments 1`] = `
           Item3
         </span>
       </div>
+      <div
+        class="Toolbar-childContainer"
+        data-component-name="ToolbarChildContainer"
+      >
+        <span
+          class="Text-text"
+        >
+          Item4
+        </span>
+      </div>
     </div>
   </div>
 </DocumentFragment>
