@@ -5,6 +5,7 @@ import '@ui5/webcomponents-react/dist/Assets.js';
 
 const setupMatchMedia = () => {
   Object.defineProperty(globalThis, 'matchMedia', {
+    configurable: true,
     writable: true,
     value: jest.fn().mockImplementation((query) => {
       const maxWidth = parseInt(/max-width:(?<maxWidth>\d+)px/.exec(query)?.groups?.maxWidth);
@@ -58,5 +59,6 @@ Object.defineProperty(globalThis, 'crypto', {
   value: {
     randomUUID: jest.fn().mockReturnValue('1337')
   },
-  writable: true
+  writable: true,
+  configurable: true
 });
