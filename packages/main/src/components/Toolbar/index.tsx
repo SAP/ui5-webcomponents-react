@@ -150,11 +150,13 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    const refactoredChildren = React.Children.toArray(children).map((child, index) => {
-      if ((child as ReactElement).type === React.Fragment) {
-        return (child as ReactElement).props.children.filter(Boolean).map((item, itemIndex: number) => {
-          return cloneElement(item, { key: `.${index}:${itemIndex}` });
-        });
+    const refactoredChildren = React.Children.toArray(children).map((child: ReactElement, index) => {
+      if (child.type === React.Fragment) {
+        return React.Children.toArray(child.props.children)
+          .filter(Boolean)
+          .map((item: ReactElement, itemIndex: number) => {
+            return cloneElement(item, { key: `.${index}:${itemIndex}` });
+          });
       }
       return child;
     });
