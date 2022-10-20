@@ -67,7 +67,7 @@ const headerProps = (
   const style = { ...props.style, cursor: 'pointer' };
   if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
     const onClick = (e) => {
-      toggleAllRowsSelected();
+      toggleAllRowsSelected(!isAllRowsSelected);
       if (typeof onRowSelect === 'function') {
         onRowSelect(
           // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
