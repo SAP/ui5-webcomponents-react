@@ -1,47 +1,41 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 declare const ResizeObserver;
 
 export const useObserveHeights = (
-  objectPage,
-  topHeader,
+  pageRef,
+  topHeaderRef,
   headerContentRef,
   anchorBarRef,
-  { noHeader, fixedHeader = false },
-  collapsed = undefined
+  [headerCollapsed, setHeaderCollapsed]: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
+  { noHeader, fixedHeader = false }: { noHeader: boolean; fixedHeader?: boolean }
 ) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(true);
-  const [headerCollapsed, setHeaderCollapsed] = useState(undefined);
 
-  const prevHeaderContentHeight = useRef(0);
   const prevScrollTop = useRef(0);
-
   const onScroll = useCallback(
     (e) => {
       const scrollDown = prevScrollTop.current <= e.target.scrollTop;
       prevScrollTop.current = e.target.scrollTop;
-
-      if (scrollDown && e.target.scrollTop >= headerContentHeight && !prevHeaderContentHeight.current) {
-        prevHeaderContentHeight.current = headerContentHeight;
+      if (scrollDown && e.target.scrollTop >= headerContentHeight && !headerCollapsed) {
         setIsIntersecting(false);
         setHeaderCollapsed(true);
-      } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && prevHeaderContentHeight.current) {
+      } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && headerCollapsed) {
         setIsIntersecting(true);
         setHeaderCollapsed(false);
-        prevHeaderContentHeight.current = 0;
       }
     },
-    [headerContentHeight, topHeaderHeight]
+    [headerContentHeight, topHeaderHeight, headerCollapsed]
   );
 
   useEffect(() => {
     if (!fixedHeader) {
-      objectPage.current.addEventListener('scroll', onScroll);
+      pageRef.current.addEventListener('scroll', onScroll);
     }
     return () => {
-      objectPage.current?.removeEventListener('scroll', onScroll);
+      pageRef.current?.removeEventListener('scroll', onScroll);
     };
   }, [onScroll, fixedHeader]);
 
@@ -53,13 +47,13 @@ export const useObserveHeights = (
       // Safari doesn't implement `borderBoxSize`
       setTopHeaderHeight(borderBoxSize?.blockSize ?? header.target.getBoundingClientRect().height);
     });
-    if (topHeader?.current) {
-      headerContentResizeObserver.observe(topHeader.current);
+    if (topHeaderRef?.current) {
+      headerContentResizeObserver.observe(topHeaderRef.current);
     }
     return () => {
       headerContentResizeObserver.disconnect();
     };
-  }, [topHeader?.current, setTopHeaderHeight]);
+  }, []);
 
   // header content
   useEffect(() => {
@@ -80,15 +74,9 @@ export const useObserveHeights = (
     return () => {
       headerContentResizeObserver.disconnect();
     };
-  }, [headerContentRef?.current, setHeaderContentHeight, isIntersecting]);
+  }, [isIntersecting]);
   const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
-
-  useEffect(() => {
-    if (collapsed !== undefined) {
-      setHeaderCollapsed(collapsed);
-    }
-  }, [collapsed]);
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed };
 };

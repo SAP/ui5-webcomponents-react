@@ -127,18 +127,18 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
   const isToggledRef = useRef(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState(undefined);
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   // observe heights of header parts
   const { topHeaderHeight, headerCollapsed } = useObserveHeights(
     dynamicPageRef,
     topHeaderRef,
     headerContentRef,
     anchorBarRef,
+    [headerCollapsedInternal, setHeaderCollapsedInternal],
     {
       noHeader: false,
       fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED
-    },
-    headerCollapsedInternal
+    }
   );
 
   const classes = useStyles();

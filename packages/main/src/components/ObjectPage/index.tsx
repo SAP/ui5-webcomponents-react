@@ -216,7 +216,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
   const isRTL = useIsRTL(objectPageRef);
   const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
 
-  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState(undefined);
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed } =
     useObserveHeights(
@@ -224,11 +224,11 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
       topHeaderRef,
       headerContentRef,
       anchorBarRef,
+      [headerCollapsedInternal, setHeaderCollapsedInternal],
       {
         noHeader: !headerTitle && !headerContent,
         fixedHeader: headerPinned
-      },
-      headerCollapsedInternal
+      }
     );
 
   useEffect(() => {
@@ -689,7 +689,9 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           return;
         }
         prevScrollTop.current = e.target.scrollTop;
-        setHeaderCollapsedInternal(true);
+        if (!headerPinned) {
+          setHeaderCollapsedInternal(true);
+        }
         setScrolledHeaderExpanded(false);
       }
     },
