@@ -108,6 +108,7 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
+    children,
     toolbarStyle,
     design,
     active,
@@ -145,14 +146,14 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     design === ToolbarDesign.Info && classes.info,
     className
   );
-  const children = useMemo(() => {
-    return flattenFragments(props.children, 10);
-  }, [props.children]);
+  const flatChildren = useMemo(() => {
+    return flattenFragments(children, 10);
+  }, [children]);
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return children.map((item: ReactElement, index) => {
+    return flatChildren.map((item: ReactElement, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
       const isSpacer = (item?.type as any)?.displayName === 'ToolbarSpacer';
       controlMetaData.current.push({
@@ -168,12 +169,12 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
         </div>
       );
     });
-  }, [children, controlMetaData, classes.childContainer]);
+  }, [flatChildren, controlMetaData, classes.childContainer]);
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
     React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
-    numberOfAlwaysVisibleItems < React.Children.count(children);
+    numberOfAlwaysVisibleItems < React.Children.count(flatChildren);
 
   useEffect(() => {
     let lastElementResizeObserver;
@@ -260,7 +261,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
-  const prevChildren = useRef(children);
+  const prevChildren = useRef(flatChildren);
   const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
 
   useEffect(() => {
@@ -268,9 +269,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   }, [onOverflowChange]);
 
   useEffect(() => {
-    const haveChildrenChanged = prevChildren.current.length !== children.length;
+    const haveChildrenChanged = prevChildren.current.length !== flatChildren.length;
     if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
-      prevChildren.current = children;
+      prevChildren.current = flatChildren;
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
       const overflowElements = overflowContentRef.current?.children;
@@ -286,7 +287,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     return () => {
       debouncedOverflowChange.current.cancel();
     };
-  }, [lastVisibleIndex, children, debouncedOverflowChange]);
+  }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
 
   const CustomTag = as as React.ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
@@ -327,7 +328,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             showMoreText={showMoreText}
             overflowButton={overflowButton}
           >
-            {children}
+            {flatChildren}
           </OverflowPopover>
         </div>
       )}
