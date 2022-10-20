@@ -7,7 +7,6 @@ import {
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {
-  cloneElement,
   createRef,
   forwardRef,
   ReactElement,
@@ -23,7 +22,8 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { ToolbarDesign, ToolbarStyle } from '../../enums';
 import { SHOW_MORE } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '../../interfaces';
+import { flattenFragments } from '../../internal/utils';
 import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
@@ -108,7 +108,6 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  */
 const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) => {
   const {
-    children,
     toolbarStyle,
     design,
     active,
@@ -146,22 +145,14 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     design === ToolbarDesign.Info && classes.info,
     className
   );
+  const children = useMemo(() => {
+    return flattenFragments(props.children, 10);
+  }, [props.children]);
 
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    const refactoredChildren = React.Children.toArray(children).map((child: ReactElement, index) => {
-      if (child.type === React.Fragment) {
-        return React.Children.toArray(child.props.children)
-          .filter(Boolean)
-          .map((item: ReactElement, itemIndex: number) => {
-            return cloneElement(item, { key: `.${index}:${itemIndex}` });
-          });
-      }
-      return child;
-    });
-
-    return refactoredChildren.flat().map((item: ReactElement, index) => {
+    return children.map((item: ReactElement, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
       const isSpacer = (item?.type as any)?.displayName === 'ToolbarSpacer';
       controlMetaData.current.push({
@@ -269,7 +260,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
     [onClick, active]
   );
 
-  const prevChildren = useRef(React.Children.toArray(children));
+  const prevChildren = useRef(children);
   const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
 
   useEffect(() => {
@@ -277,9 +268,9 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
   }, [onOverflowChange]);
 
   useEffect(() => {
-    const haveChildrenChanged = prevChildren.current.length !== React.Children.toArray(children).length;
+    const haveChildrenChanged = prevChildren.current.length !== children.length;
     if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
-      prevChildren.current = React.Children.toArray(children);
+      prevChildren.current = children;
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
       const overflowElements = overflowContentRef.current?.children;
@@ -336,12 +327,7 @@ const Toolbar = forwardRef((props: ToolbarPropTypes, ref: Ref<HTMLDivElement>) =
             showMoreText={showMoreText}
             overflowButton={overflowButton}
           >
-            {React.Children.toArray(children).map((child) => {
-              if ((child as ReactElement).type === React.Fragment) {
-                return (child as ReactElement).props.children;
-              }
-              return child;
-            })}
+            {children}
           </OverflowPopover>
         </div>
       )}
