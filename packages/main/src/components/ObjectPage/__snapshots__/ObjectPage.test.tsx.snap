@@ -1023,7 +1023,6 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -1100,7 +1099,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -1158,12 +1156,12 @@ exports[`ObjectPage with anchor-bar 1`] = `
         role="navigation"
       >
         <ui5-button
-          accessible-name="Expand Header"
+          accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
-          icon="slim-arrow-down"
-          tooltip="Expand Header"
+          icon="slim-arrow-up"
+          tooltip="Collapse Header"
           ui5-button=""
         />
       </section>
@@ -2009,7 +2007,6 @@ exports[`ObjectPage with header 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2430,7 +2427,6 @@ exports[`ObjectPage with img 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2438,24 +2434,8 @@ exports[`ObjectPage with img 1`] = `
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
-      style="grid-auto-columns: min-content calc(100% - 3rem - 1rem); display: grid;"
+      style="grid-auto-columns: min-content 100%; display: grid;"
     >
-      <div
-        class="CollapsedAvatar-base CollapsedAvatar-visible"
-        data-component-name="ObjectPageCollapsedAvatar"
-        style="padding-right: 1rem;"
-      >
-        <span
-          class="CollapsedAvatar-imageContainer"
-          style="border-radius: 50%; overflow: hidden;"
-        >
-          <img
-            alt="Object Page Image"
-            class="CollapsedAvatar-image"
-            src="not_a_real_path.orly"
-          />
-        </span>
-      </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
@@ -2929,7 +2909,6 @@ exports[`ObjectPage with img 2`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
@@ -2937,19 +2916,8 @@ exports[`ObjectPage with img 2`] = `
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
-      style="grid-auto-columns: min-content calc(100% - 3rem - 1rem); display: grid;"
+      style="grid-auto-columns: min-content 100%; display: grid;"
     >
-      <div
-        class="CollapsedAvatar-base CollapsedAvatar-visible"
-        data-component-name="ObjectPageCollapsedAvatar"
-        style="padding-right: 1rem;"
-      >
-        <ui5-avatar
-          class="CollapsedAvatar-imageContainer"
-          size="S"
-          ui5-avatar=""
-        />
-      </div>
       <div
         class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container"
         data-component-name="DynamicPageTitle"
@@ -3845,7 +3813,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
   <div
     class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <header
       aria-roledescription="Object Page header"
