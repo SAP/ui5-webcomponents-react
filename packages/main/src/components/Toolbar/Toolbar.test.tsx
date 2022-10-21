@@ -17,40 +17,6 @@ import { Toolbar } from './index';
 import '@ui5/webcomponents-icons/dist/menu2.js';
 
 describe('Toolbar', () => {
-  test('Renders with default Props', () => {
-    expect(render(<Toolbar />).asFragment()).toMatchSnapshot();
-  });
-
-  test('Renders with children', () => {
-    expect(
-      render(
-        <Toolbar active data-testid="toolbar">
-          <Text>Item1</Text>
-          <Text>Item2</Text>
-          <Text>Item3</Text>
-        </Toolbar>
-      ).asFragment()
-    ).toMatchSnapshot();
-    expect(screen.getByText('Item1').textContent).toEqual('Item1');
-    expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-active');
-  });
-
-  test('Renders with children as react fragments', () => {
-    expect(
-      render(
-        <Toolbar active data-testid="toolbar">
-          <>
-            <Text>Item1</Text>
-            <Text>Item2</Text>
-            <Text>Item3</Text>
-          </>
-        </Toolbar>
-      ).asFragment()
-    ).toMatchSnapshot();
-    expect(screen.getByText('Item1').textContent).toEqual('Item1');
-    expect(screen.getByTestId('toolbar')).toHaveClass('Toolbar-active');
-  });
-
   test('ToolbarSpacer', () => {
     const { getByTestId, asFragment } = render(
       <Toolbar data-testid="toolbar">
