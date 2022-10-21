@@ -54,6 +54,45 @@ const OverflowTestComponent = (props) => {
 };
 
 describe('Toolbar', () => {
+  it('default', () => {
+    cy.mount(<Toolbar />);
+  });
+
+  it('boolean/undefined children', () => {
+    cy.mount(
+      <Toolbar data-testid="toolbar">
+        <Text>Item1</Text>
+        {false}
+        {undefined}
+        <>{false}</>
+        <>
+          {false}
+          {undefined}
+        </>
+      </Toolbar>
+    );
+    cy.findByText('Item1').should('be.visible');
+  });
+
+  it('support Fragments', () => {
+    cy.mount(
+      <Toolbar active data-testid="toolbar">
+        <>
+          <Text>Item1</Text>
+          <Text>Item2</Text>
+          <Text>Item3</Text>
+        </>
+        <>
+          <Text>Item4</Text>
+        </>
+      </Toolbar>
+    );
+    cy.findByText('Item1').should('be.visible');
+    cy.findByText('Item2').should('be.visible');
+    cy.findByText('Item3').should('be.visible');
+    cy.findByText('Item4').should('be.visible');
+  });
+
   it('overflow menu', () => {
     const onOverflowChange = cy.spy().as('overflowChangeSpy');
     cy.viewport(300, 500);
