@@ -1,4 +1,4 @@
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base/src';
+import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
 import { TableSelectionMode } from '../../../enums';
 
