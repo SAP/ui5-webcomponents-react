@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.1.0...v1.2.0) (2022-10-21)
+
+### Bug Fixes
+
+- **ColumnChartWithTrend:** improve TypeScript types and docs ([#3630](https://github.com/SAP/ui5-webcomponents-react/issues/3630)) ([885d56e](https://github.com/SAP/ui5-webcomponents-react/commit/885d56ea338f816fb1d0f3125ba33264fa556b37))
+
+### Features
+
+- **charts:** allow full customization of reference lines ([#3619](https://github.com/SAP/ui5-webcomponents-react/issues/3619)) ([9d582fc](https://github.com/SAP/ui5-webcomponents-react/commit/9d582fcbaac26fe2d5cbc403f2e3e1991cfaa4a8))
+
 # [1.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1...v1.1.0) (2022-10-06)
 
 ### Features

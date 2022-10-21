@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.1.0...v1.2.0) (2022-10-21)
+
+### Bug Fixes
+
+- **AnalyticalTable - useIndeterminateRowSelection:** reset indeterminate state if not applicable ([#3644](https://github.com/SAP/ui5-webcomponents-react/issues/3644)) ([51deeb5](https://github.com/SAP/ui5-webcomponents-react/commit/51deeb55aa7293c7d18589466ea564219f5da5b8)), closes [#3604](https://github.com/SAP/ui5-webcomponents-react/issues/3604)
+- **AnalyticalTable:** enable keyboard navigation for empty cells & align them correctly ([#3639](https://github.com/SAP/ui5-webcomponents-react/issues/3639)) ([d78dbb0](https://github.com/SAP/ui5-webcomponents-react/commit/d78dbb09b34570bd5c4af3fe94c70df0fd1ee604)), closes [#3605](https://github.com/SAP/ui5-webcomponents-react/issues/3605)
+- **AnalyticalTable:** fix select-all behavior in React18 Strict Mode ([#3658](https://github.com/SAP/ui5-webcomponents-react/issues/3658)) ([5cf234f](https://github.com/SAP/ui5-webcomponents-react/commit/5cf234fae1b259d803e80f1d8e0bfadb876aea0a)), closes [#3657](https://github.com/SAP/ui5-webcomponents-react/issues/3657)
+- **ObjectPage & DynamicPage:** don't show pin-button if header content is not defined ([#3666](https://github.com/SAP/ui5-webcomponents-react/issues/3666)) ([5d85ebe](https://github.com/SAP/ui5-webcomponents-react/commit/5d85ebee2ed3471e57acc1de89b26437fd5cfa2e))
+- **ObjectPage & DynamicPage:** fix expand/collapse behavior of header content ([#3650](https://github.com/SAP/ui5-webcomponents-react/issues/3650)) ([9be8531](https://github.com/SAP/ui5-webcomponents-react/commit/9be853167a97c25dccd6ec9bc4148076d24da4c0)), closes [#3623](https://github.com/SAP/ui5-webcomponents-react/issues/3623)
+- **Toolbar:** allow Fragments with single child inside `children` ([#3661](https://github.com/SAP/ui5-webcomponents-react/issues/3661)) ([8594993](https://github.com/SAP/ui5-webcomponents-react/commit/8594993b62a7aab2cf8304d0250a2d4c1736d6f0)), closes [#3660](https://github.com/SAP/ui5-webcomponents-react/issues/3660)
+
 # [1.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1...v1.1.0) (2022-10-06)
 
 ### Bug Fixes
