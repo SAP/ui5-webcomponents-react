@@ -673,22 +673,13 @@ exports[`DynamicPage render footer 1`] = `
         role="navigation"
       >
         <ui5-button
-          accessible-name="Collapse Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          accessible-name="Expand Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
-          icon="slim-arrow-up"
-          tooltip="Collapse Header"
+          icon="slim-arrow-down"
+          tooltip="Expand Header"
           ui5-button=""
-        />
-        <ui5-toggle-button
-          accessible-name="Pin Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
-          data-ui5wcr-dynamic-page-header-action=""
-          design="Default"
-          icon="pushpin-off"
-          tooltip="Pin Header"
-          ui5-toggle-button=""
         />
       </section>
     </div>
