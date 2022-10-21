@@ -299,7 +299,7 @@ const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivEle
         <DynamicPageAnchorBar
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
-          headerContentVisible={headerCollapsed !== true}
+          headerContentVisible={headerContent && headerCollapsed !== true}
           onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
           setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}

@@ -760,7 +760,7 @@ const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDi
           }}
         >
           <DynamicPageAnchorBar
-            headerContentVisible={headerCollapsed !== true}
+            headerContentVisible={headerContent && headerCollapsed !== true}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
