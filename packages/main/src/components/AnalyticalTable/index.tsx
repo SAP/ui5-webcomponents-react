@@ -72,6 +72,7 @@ import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
@@ -679,6 +680,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useResizeColumnsConfig,
     useRowSelectionColumn,
     useSingleRowStateSelection,
+    useSelectionChangeCallback,
     useRowHighlight,
     useRowNavigationIndicators,
     useDynamicColumnWidths,

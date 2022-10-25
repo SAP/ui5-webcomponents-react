@@ -47,6 +47,8 @@ export const stateReducer = (prevState, action) => {
       return { ...prevState, subComponentsHeight: payload };
     case 'TABLE_COL_RESIZED':
       return { ...prevState, tableColResized: payload };
+    case 'SELECT_ROW_CB':
+      return { ...prevState, selectedRowPayload: payload };
     default:
       return prevState;
   }

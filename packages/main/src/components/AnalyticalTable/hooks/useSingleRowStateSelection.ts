@@ -1,9 +1,8 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
 
 const getRowProps = (rowProps, { row, instance }) => {
-  const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, flatRows } = instance;
+  const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;
   const handleRowSelect = (e) => {
     const isSelectionCell = e.target.dataset.selectionCell === 'true';
     if (
@@ -31,7 +30,7 @@ const getRowProps = (rowProps, { row, instance }) => {
       onRowClick(enrichEventWithDetails(e, { row }));
     }
 
-    if (webComponentsReactProperties.selectionMode === TableSelectionMode.None) {
+    if (selectionMode === TableSelectionMode.None) {
       return;
     }
 
@@ -40,6 +39,7 @@ const getRowProps = (rowProps, { row, instance }) => {
       return;
     }
 
+    // deselect other rows
     if (selectionMode === TableSelectionMode.SingleSelect) {
       for (const selectedRow of selectedFlatRows) {
         if (selectedRow.id !== row.id) {
@@ -47,25 +47,12 @@ const getRowProps = (rowProps, { row, instance }) => {
         }
       }
     }
-    instance.toggleRowSelected(row.id);
 
-    // fire event
+    toggleRowSelected(row.id);
+
     if (typeof onRowSelect === 'function') {
-      const payload = {
-        row,
-        isSelected: !row.isSelected,
-        selectedFlatRows: !row.isSelected ? [row.id] : [],
-        allRowsSelected: false
-      };
-      if (selectionMode === TableSelectionMode.MultiSelect) {
-        payload.selectedFlatRows = !row.isSelected
-          ? [...selectedFlatRows, row]
-          : selectedFlatRows.filter((prevRow) => prevRow.id !== row.id);
-        if (payload.selectedFlatRows.length === flatRows.length) {
-          payload.allRowsSelected = true;
-        }
-      }
-      onRowSelect(enrichEventWithDetails(e, payload));
+      // update state to return instance values after update (see useSelectionChangeCallback hook)
+      dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row } });
     }
   };
 
