@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.0...v1.2.1) (2022-10-25)
+
+### Bug Fixes
+
+- **AnalyticalTable:** return correct values in `onRowSelect` callback ([#3668](https://github.com/SAP/ui5-webcomponents-react/issues/3668)) ([f0f736d](https://github.com/SAP/ui5-webcomponents-react/commit/f0f736d6e4fc0134c043a821db36de70582f003d)), closes [#3659](https://github.com/SAP/ui5-webcomponents-react/issues/3659) [#3612](https://github.com/SAP/ui5-webcomponents-react/issues/3612)
+
 # [1.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.1.0...v1.2.0) (2022-10-21)
 
 ### Bug Fixes
