@@ -110,18 +110,15 @@ Then, you can use the Button in your app:
 UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` and `sap_horizon` Theme families built in.
 
 <MessageStrip hideCloseButton>
-  All UI5 Web Components fully support the Horizon theme family, but for custom UI5 Web Components for React components
-  (e.g. ObjectPage, AnalyticalTable, etc.) it's still in development, so it could be possible to encounter discrepancies
-  in the design. If you notice one please feel free to open an{' '}
-  <Link href="https://github.com/SAP/ui5-webcomponents-react/issues/new/choose">issue</Link>.
+  UI5 Web Components for React uses the theme configuration of UI5 Web Components. Please also have a look at their{' '}
+  <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>.
 </MessageStrip>
 
 In case you want to change your applications' theme, you have to import a couple of modules:
 
 ```js
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
-import '@ui5/webcomponents/dist/Assets';
-import '@ui5/webcomponents-fiori/dist/Assets'; // only if you are using the ShellBar, Product Switch or the Upload Collection
+import '@ui5/webcomponents-react/dist/Assets';
 ```
 
 You can now change the Theme by calling `setTheme` with a string parameter of the new theme.<br />
