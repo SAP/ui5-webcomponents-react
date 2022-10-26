@@ -263,6 +263,7 @@ describe('AnalyticalTable', () => {
           <AnalyticalTable
             {...props}
             isTreeTable
+            filterable
             columns={columns}
             onRowSelect={(e) => {
               const { allRowsSelected, isSelected, row, selectedFlatRows } = e.detail;
@@ -309,14 +310,31 @@ describe('AnalyticalTable', () => {
     });
     cy.findByTestId('payloadHelper').should('have.text', '2');
 
-    // filter + select
+    // global filter + select
     cy.findByTestId('input').shadow().find('input').type('Katy Bradshaw');
+    cy.findByText('Robin Moreno').should('not.exist');
+    cy.findByText('Judith Mathews').should('not.exist');
     cy.findByText('Katy Bradshaw').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
     });
     cy.get('@onRowSelectSpy').should('have.been.calledThrice');
     cy.findByTestId('payloadHelper').should('have.text', '3');
+
+    cy.findByTestId('input').shadow().find('input').clear();
+
+    // column filter + select
+    cy.findByText('Name').click();
+    cy.get(`ui5-input[show-clear-icon]`).shadow().find('input').type('Flowers Mcfarland', { force: true });
+    cy.findByText('Robin Moreno').should('not.exist');
+    cy.findByText('Judith Mathews').should('not.exist');
+    cy.findByText('Katy Bradshaw').should('not.exist');
+    cy.findByText('Flowers Mcfarland').click({ force: true });
+    cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
+      detail: { isSelected: true }
+    });
+    cy.get('@onRowSelectSpy').should('have.callCount', 4);
+    cy.findByTestId('payloadHelper').should('have.text', '4');
   });
 });
 
