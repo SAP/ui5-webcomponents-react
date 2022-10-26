@@ -252,7 +252,8 @@ describe('AnalyticalTable', () => {
     cy.findByText('Click').click();
     cy.findByRole('grid').invoke('scrollLeft').should('equal', 20);
   });
-  it.only('tree selection & filtering', () => {
+
+  it('tree selection & filtering', () => {
     const TreeSelectFilterTable = (props) => {
       const [filter, setFilter] = useState('');
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
