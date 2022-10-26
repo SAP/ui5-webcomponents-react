@@ -52,7 +52,7 @@ const getRowProps = (rowProps, { row, instance }) => {
 
     if (typeof onRowSelect === 'function') {
       // update state to return instance values after update (see useSelectionChangeCallback hook)
-      dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row } });
+      dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row, fired: true } });
     }
   };
 
