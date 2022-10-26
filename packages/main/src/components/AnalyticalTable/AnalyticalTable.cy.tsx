@@ -266,7 +266,6 @@ describe('AnalyticalTable', () => {
             columns={columns}
             onRowSelect={(e) => {
               const { allRowsSelected, isSelected, row, selectedFlatRows } = e.detail;
-              console.log(selectedFlatRows);
               setRelevantPayload({
                 allRowsSelected,
                 isSelected,
