@@ -315,6 +315,7 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
     });
+    cy.get('@onRowSelectSpy').should('have.been.calledThrice');
     cy.findByTestId('payloadHelper').should('have.text', '3');
   });
 });
