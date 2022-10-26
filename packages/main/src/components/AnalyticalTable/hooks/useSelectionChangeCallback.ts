@@ -5,7 +5,7 @@ import { TableSelectionMode } from '../../../enums';
 export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {
     const { selectedRowPayload, selectedRowIds } = state;
-    const { rowsById, webComponentsReactProperties, dispatch } = instance;
+    const { preFilteredRowsById: rowsById, webComponentsReactProperties, dispatch } = instance;
     useEffect(() => {
       if (selectedRowPayload?.fired) {
         const { event: e, row: selRow } = selectedRowPayload;
