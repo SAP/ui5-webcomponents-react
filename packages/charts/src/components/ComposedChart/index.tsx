@@ -210,7 +210,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
           onDataPointClick(
             enrichEventWithDetails(event ?? eventOrIndex, {
               value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
-              dataIndex: payload.index ?? eventOrIndex,
+              dataIndex: payload.index ?? typeof eventOrIndex === 'number' ? eventOrIndex : undefined,
               dataKey: payloadValueLength
                 ? Object.keys(payload).filter((key) =>
                     payload.value.length
@@ -218,7 +218,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
                       : payload[key] === payload.value && key !== 'value'
                   )[0]
                 : payload.dataKey ??
-                  Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+                  Object.keys(payload).find((key) => payload[key] && payload[key] === payload.value && key !== 'value'),
               payload: payload.payload
             })
           );
@@ -465,8 +465,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.dot = !isBigDataSet;
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.activeDot = {
+                onClick: onDataPointClickInternal
+              };
               break;
           }
 
