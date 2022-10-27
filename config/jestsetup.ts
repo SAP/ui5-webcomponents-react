@@ -1,5 +1,6 @@
 import contentLoaderSerializer from '@shared/tests/serializer/content-loader-serializer.cjs';
 import '@testing-library/jest-dom';
+import '@ui5/webcomponents-react/jestSetup.js';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const DEFAULT_REACT_VERSION = '18';
@@ -12,11 +13,12 @@ jest.mock('react', () => {
   };
   const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
 
-  //@ts-ignore
-  return { ...jest.requireActual(packages[version]), useId: () => '1337' };
+  if (version === '18') {
+    //@ts-ignore
+    return { ...jest.requireActual(packages[version]), useId: () => '1337' };
+  }
+  return { ...jest.requireActual(packages[version]) };
 });
-
-import('@ui5/webcomponents-react/jestSetup.js');
 
 jest.mock('react-dom', () => {
   const packages = {

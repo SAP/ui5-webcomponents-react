@@ -26,6 +26,6 @@
     "declarationDir": "dist"
   },
   "include": ["packages/**/*", "shared/**/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "config/jestsetup.ts"],
   "files": ["types.d.ts"]
 }

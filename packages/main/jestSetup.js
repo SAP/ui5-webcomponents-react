@@ -58,7 +58,3 @@ Object.defineProperty(globalThis, 'crypto', {
   },
   writable: true
 });
-
-jest.mock('react', () => {
-  return { ...jest.requireActual('react'), useId: () => '1337' };
-});
