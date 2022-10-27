@@ -182,6 +182,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
             measures={lineMeasures}
             dimensions={dimensions}
             noLegend
+            onDataPointClick={onDataPointClick}
             chartConfig={{
               xAxisVisible: false,
               yAxisVisible: false,
@@ -199,6 +200,7 @@ const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
           noLegend={noLegend}
           loading={loading}
           onClick={onClick}
+          onDataPointClick={onDataPointClick}
           syncId={syncId}
           ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
           dataset={columnDataset}
