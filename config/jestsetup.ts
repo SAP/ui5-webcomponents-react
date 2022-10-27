@@ -13,8 +13,11 @@ jest.mock('react', () => {
   };
   const version = process.env.REACTJS_VERSION || DEFAULT_REACT_VERSION;
 
-  //@ts-ignore
-  return { ...jest.requireActual(packages[version]), useId: () => '1337' };
+  if (version === '18') {
+    //@ts-ignore
+    return { ...jest.requireActual(packages[version]), useId: () => '1337' };
+  }
+  return { ...jest.requireActual(packages[version]) };
 });
 
 jest.mock('react-dom', () => {
