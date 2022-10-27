@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.1...v1.2.2) (2022-10-27)
+
+### Bug Fixes
+
+- **AnalyticalTable:** only call onRowSelect when row is selected by user ([#3682](https://github.com/SAP/ui5-webcomponents-react/issues/3682)) ([e014c37](https://github.com/SAP/ui5-webcomponents-react/commit/e014c3720371984dcbf94668bf61e27dc5f5b4f8))
+- **ColumnChartWithTrend:** enable `onDataPointClick` callback & fix tooltip ([#3688](https://github.com/SAP/ui5-webcomponents-react/issues/3688)) ([89107b8](https://github.com/SAP/ui5-webcomponents-react/commit/89107b820a219bbf0039b0dcb9ed4ab96a2e5258))
+- **ComposedChart:** invoke `onDataPointClick` only on the points of the area chart ([#3687](https://github.com/SAP/ui5-webcomponents-react/issues/3687)) ([2239a49](https://github.com/SAP/ui5-webcomponents-react/commit/2239a491c95d3153b621accef9ce57352c5294ec))
+
 ## [1.2.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.0...v1.2.1) (2022-10-25)
 
 ### Bug Fixes
