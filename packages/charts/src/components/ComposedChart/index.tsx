@@ -202,40 +202,37 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       return getValueByDataKey(payload, attribute);
     };
 
-  const onDataPointClickInternal = useCallback(
-    (payload, eventOrIndex, event) => {
-      if (typeof onDataPointClick === 'function') {
-        if (payload.name) {
-          const payloadValueLength = payload?.value?.length;
-          onDataPointClick(
-            enrichEventWithDetails(event ?? eventOrIndex, {
-              value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
-              dataIndex: payload.index ?? eventOrIndex,
-              dataKey: payloadValueLength
-                ? Object.keys(payload).filter((key) =>
-                    payload.value.length
-                      ? payload[key] === payload.value[1] - payload.value[0]
-                      : payload[key] === payload.value && key !== 'value'
-                  )[0]
-                : payload.dataKey ??
-                  Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
-              payload: payload.payload
-            })
-          );
-        } else {
-          onDataPointClick(
-            enrichEventWithDetails({} as any, {
-              value: eventOrIndex.value,
-              dataKey: eventOrIndex.dataKey,
-              dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            })
-          );
-        }
+  const onDataPointClickInternal = (payload, eventOrIndex, event) => {
+    if (typeof onDataPointClick === 'function') {
+      if (payload.name) {
+        const payloadValueLength = payload?.value?.length;
+        onDataPointClick(
+          enrichEventWithDetails(event ?? eventOrIndex, {
+            value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
+            dataIndex: payload.index ?? typeof eventOrIndex === 'number' ? eventOrIndex : undefined,
+            dataKey: payloadValueLength
+              ? Object.keys(payload).filter((key) =>
+                  payload.value.length
+                    ? payload[key] === payload.value[1] - payload.value[0]
+                    : payload[key] === payload.value && key !== 'value'
+                )[0]
+              : payload.dataKey ??
+                Object.keys(payload).find((key) => payload[key] && payload[key] === payload.value && key !== 'value'),
+            payload: payload.payload
+          })
+        );
+      } else {
+        onDataPointClick(
+          enrichEventWithDetails({} as any, {
+            value: eventOrIndex.value,
+            dataKey: eventOrIndex.dataKey,
+            dataIndex: eventOrIndex.index,
+            payload: eventOrIndex.payload
+          })
+        );
       }
-    },
-    [onDataPointClick]
-  );
+    }
+  };
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const onClickInternal = useOnClickInternal(onClick);
@@ -449,6 +446,7 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.dot = element.showDot ?? !isBigDataSet;
               break;
             case 'bar':
+              chartElementProps.hide = element.hide;
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.barSize = element.width;
@@ -465,8 +463,10 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
               chartElementProps.dot = !isBigDataSet;
               chartElementProps.fillOpacity = 0.3;
               chartElementProps.strokeOpacity = element.opacity;
-              chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.strokeWidth = element.width;
+              chartElementProps.activeDot = {
+                onClick: onDataPointClickInternal
+              };
               break;
           }
 
