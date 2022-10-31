@@ -1,7 +1,4 @@
-/// <reference types="cypress" />
-/// <reference types="@testing-library/cypress" />
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
 
 const OverflowTestComponent = (props) => {
