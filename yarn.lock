@@ -4629,10 +4629,10 @@
     "@sap-theming/theming-base-content" "11.1.41"
     "@ui5/webcomponents-base" "1.8.0"
 
-"@ui5/webcomponents-tools@1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.8.0.tgz#b72065c71b32fa44ad986cc9f7a6eb7da8cae220"
-  integrity sha512-OTU72WZzGN5XX+YJyXmjwbVm1QcS3E+Ci1DZ4zKcE+UskLAjErQ3qnVX35P/gd9u1mjUG0wso9ptjOm+umEwcg==
+"@ui5/webcomponents-tools@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@ui5/webcomponents-tools/-/webcomponents-tools-1.9.0.tgz#8b39d1b04e0a2d57890f84c0511851eb8eb74487"
+  integrity sha512-s94D/Im/U4ZE+nthEDNy2jWwOFCP2twdIJkG02EfnkIdiBj7nLzPQXAXhbbDv52AwSI8+ilQpwXaRG5XJ56OAg==
   dependencies:
     "@wdio/cli" "^7.19.7"
     "@wdio/devtools-service" "^7.19.7"
