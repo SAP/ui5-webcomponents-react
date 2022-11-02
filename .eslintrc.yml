@@ -5,6 +5,7 @@ parserOptions:
     jsx: true
   project:
     - './tsconfig.json'
+    - './tsconfig.spec.json'
     - './packages/*/tsconfig.json'
 env:
   browser: true
@@ -89,3 +90,10 @@ overrides:
       - 'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx'
     rules:
       'react/prop-types': 'off'
+
+  - files:
+      - 'cypress/**/*'
+    extends:
+      - 'plugin:react/jsx-runtime'
+    rules:
+      '@typescript-eslint/no-namespace': 'off'
