@@ -44,6 +44,11 @@ interface SwitchAttributes {
    * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
    */
   textOn?: string;
+  /**
+   * Defines the tooltip of the component.
+   * **Note:** If applicable an external label reference should always be the preferred option to provide context to the `Switch` component over a tooltip.
+   */
+  tooltip?: string;
 }
 
 export interface SwitchDomRef extends SwitchAttributes, Ui5DomRef {}
@@ -65,7 +70,7 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['accessibleName', 'accessibleNameRef', 'design', 'textOff', 'textOn'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'textOff', 'textOn', 'tooltip'],
   ['checked', 'disabled'],
   [],
   ['change']

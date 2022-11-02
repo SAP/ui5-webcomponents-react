@@ -67,7 +67,6 @@ exports[`MessageView renders list view 1`] = `
         ui5-list=""
       >
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeError"
           data-title="Error"
           data-type="Error"
@@ -104,7 +103,6 @@ exports[`MessageView renders list view 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeWarning"
           data-title="Warning"
           data-type="Warning"
@@ -141,7 +139,6 @@ exports[`MessageView renders list view 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeSuccess"
           data-title="Success"
           data-type="Success"
@@ -178,7 +175,6 @@ exports[`MessageView renders list view 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeInformation"
           data-title="Information"
           data-type="Information"
@@ -215,7 +211,6 @@ exports[`MessageView renders list view 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeNone"
           data-title="None"
           data-type="None"
@@ -325,7 +320,6 @@ exports[`MessageView renders list view with groups 1`] = `
         ui5-list=""
       >
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeError"
           data-title="Error"
           data-type="Error"
@@ -362,7 +356,6 @@ exports[`MessageView renders list view with groups 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeWarning"
           data-title="Warning"
           data-type="Warning"
@@ -399,7 +392,6 @@ exports[`MessageView renders list view with groups 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeSuccess"
           data-title="Success"
           data-type="Success"
@@ -436,7 +428,6 @@ exports[`MessageView renders list view with groups 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeInformation"
           data-title="Information"
           data-type="Information"
@@ -473,7 +464,6 @@ exports[`MessageView renders list view with groups 1`] = `
           </div>
         </ui5-li-custom>
         <ui5-li-custom
-          actionable=""
           class="MessageItem-listItem MessageItem-typeNone"
           data-title="None"
           data-type="None"

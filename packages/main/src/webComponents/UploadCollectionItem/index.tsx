@@ -70,6 +70,13 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
    */
   thumbnail?: ReactNode;
   /**
+   * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  deleteButton?: ReactNode;
+  /**
    * Fired when the file name is clicked.
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
@@ -108,7 +115,7 @@ const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, Upl
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState', 'type'],
   ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'selected'],
-  ['thumbnail'],
+  ['thumbnail', 'deleteButton'],
   ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click']
 );
 

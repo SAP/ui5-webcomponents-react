@@ -45,6 +45,10 @@ interface RadioButtonAttributes {
    */
   readonly?: boolean;
   /**
+   * Defines whether the component is required.
+   */
+  required?: boolean;
+  /**
    * Defines the text of the component.
    */
   text?: string;
@@ -94,7 +98,7 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
 const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(
   'ui5-radio-button',
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
-  ['checked', 'disabled', 'readonly'],
+  ['checked', 'disabled', 'readonly', 'required'],
   [],
   ['change']
 );

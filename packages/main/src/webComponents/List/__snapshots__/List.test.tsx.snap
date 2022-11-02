@@ -12,16 +12,13 @@ exports[`List Basic Test (generated) 1`] = `
     ui5-list=""
   >
     <ui5-li
-      actionable=""
       additional-text-state="None"
-      has-title=""
       type="Active"
       ui5-li=""
     >
       Test 1
     </ui5-li>
     <ui5-li-custom
-      actionable=""
       type="Active"
       ui5-li-custom=""
     >
