@@ -172,55 +172,45 @@ exports[`SelectDialog with children 1`] = `
       ui5-list=""
     >
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="0"
         description="description0"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product0
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="1"
         description="description1"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product1
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="2"
         description="description2"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product2
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="3"
         description="description3"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product3
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="4"
         description="description4"
-        has-title=""
         type="Active"
         ui5-li=""
       >
@@ -290,55 +280,45 @@ exports[`SelectDialog with headerText 1`] = `
       ui5-list=""
     >
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="0"
         description="description0"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product0
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="1"
         description="description1"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product1
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="2"
         description="description2"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product2
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="3"
         description="description3"
-        has-title=""
         type="Active"
         ui5-li=""
       >
         Product3
       </ui5-li>
       <ui5-li
-        actionable=""
         additional-text-state="None"
         data-li="4"
         description="description4"
-        has-title=""
         type="Active"
         ui5-li=""
       >
