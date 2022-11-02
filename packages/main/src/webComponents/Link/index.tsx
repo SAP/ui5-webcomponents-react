@@ -16,6 +16,10 @@ interface LinkAttributes {
    */
   accessibleNameRef?: string;
   /**
+   * Defines the ARIA role of the component. **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   */
+  accessibleRole?: string;
+  /**
    * Defines the component design.
    *
    * **Note:** Avaialble options are `Default`, `Subtle`, and `Emphasized`.
@@ -94,7 +98,7 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleName', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']
@@ -103,6 +107,7 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
 Link.displayName = 'Link';
 
 Link.defaultProps = {
+  accessibleRole: 'link',
   design: LinkDesign.Default
 };
 

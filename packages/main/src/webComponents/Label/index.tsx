@@ -15,7 +15,7 @@ interface LabelAttributes {
   /**
    * Defines whether an asterisk character is added to the component text.
    *
-   * **Note:** Usually indicates that user input is required.
+   * **Note:** Usually indicates that user input (bound with the `for` property) is required. In that case the `required property of the corresponding input should also be set.`
    */
   required?: boolean;
   /**
