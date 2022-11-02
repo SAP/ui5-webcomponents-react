@@ -1,7 +1,3 @@
-/// <reference types="cypress" />
-/// <reference types="@testing-library/cypress" />
-
-import React from 'react';
 import { Input, Option, Select, Switch } from '../../webComponents';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';

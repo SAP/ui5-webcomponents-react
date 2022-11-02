@@ -1,7 +1,4 @@
-/// <reference types="cypress" />
-/// <reference types="@testing-library/cypress" />
-
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { TableVisibleRowCountMode, ValueState } from '../../enums';
 import { AnalyticalTable, Button, Input } from '../..';
 

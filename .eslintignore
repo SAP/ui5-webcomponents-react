@@ -1,14 +1,5 @@
-packages/*/src/dist/
-
 # build results for base package
 packages/base/dist
-packages/base/Device
-packages/base/hooks
-packages/base/lib
-packages/base/scripts
-packages/base/styling
-packages/base/types
-packages/base/utils
 
 # build results for charts package
 packages/charts/dist
@@ -22,10 +13,9 @@ shared
 .eslintrc.cjs
 *.stories.tsx
 *.test.tsx
+*.cy.ts
 *.cy.tsx
 *.test.ts
-*.cy.ts
-index.esm.js
 packages/cra-template
 CodeGen.tsx
 
