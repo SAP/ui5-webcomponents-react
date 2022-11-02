@@ -204,12 +204,12 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
 
   const onDataPointClickInternal = (payload, eventOrIndex, event) => {
     if (typeof onDataPointClick === 'function') {
-      if (payload.name) {
-        const payloadValueLength = payload?.value?.length;
+      if (typeof eventOrIndex === 'number') {
+        const payloadValueLength = Array.isArray(payload?.value);
         onDataPointClick(
-          enrichEventWithDetails(event ?? eventOrIndex, {
+          enrichEventWithDetails(event, {
             value: payloadValueLength ? payload.value[1] - payload.value[0] : payload.value,
-            dataIndex: payload.index ?? typeof eventOrIndex === 'number' ? eventOrIndex : undefined,
+            dataIndex: payload.index ?? eventOrIndex,
             dataKey: payloadValueLength
               ? Object.keys(payload).filter((key) =>
                   payload.value.length
@@ -224,7 +224,9 @@ const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartPr
       } else {
         onDataPointClick(
           enrichEventWithDetails({} as any, {
-            value: eventOrIndex.value,
+            value: Array.isArray(eventOrIndex.value)
+              ? eventOrIndex.value[1] - eventOrIndex.value[0]
+              : eventOrIndex.value,
             dataKey: eventOrIndex.dataKey,
             dataIndex: eventOrIndex.index,
             payload: eventOrIndex.payload
