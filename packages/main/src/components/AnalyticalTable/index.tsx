@@ -277,7 +277,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines how the table will render visible rows.
    *
-   * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
+   * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
    * - __"Auto":__ The table automatically fills the height of the surrounding container.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
