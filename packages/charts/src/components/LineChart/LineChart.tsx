@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
+import React, { forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   Brush,
   CartesianGrid,
@@ -101,7 +101,7 @@ const measureDefaults = {
 /**
  * A `LineChart` is a type of chart used to show information that changes over time - it connects multiple dots.
  */
-const LineChart: FC<LineChartProps> = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
+const LineChart = forwardRef((props: LineChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,

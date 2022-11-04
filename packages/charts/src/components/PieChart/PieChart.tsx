@@ -1,5 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import React, { cloneElement, CSSProperties, FC, forwardRef, isValidElement, Ref, useCallback, useMemo } from 'react';
+import React, { cloneElement, CSSProperties, forwardRef, isValidElement, Ref, useCallback, useMemo } from 'react';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick';
@@ -74,7 +74,7 @@ const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
  * In other words, each slice of the pie is relative to the size of that category in the group as a whole.
  * The entire “pie” represents 100 percent of a whole, while the pie “slices” represent portions of the whole.
  */
-const PieChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
+const PieChart = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,

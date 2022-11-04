@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useRef } from 'react';
+import React, { CSSProperties, forwardRef, Ref, useCallback, useRef } from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -126,7 +126,7 @@ const measureDefaults = {
  * Most commonly, a scatter chart displays the values of three numeric variables,where each observation's data is
  * shown by a circle, while the horizontal and vertical positions of the bubble show the values of two other variables.
  */
-const ScatterChart: FC<ScatterChartProps> = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
+const ScatterChart = forwardRef((props: ScatterChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     dataset,
     loading,
