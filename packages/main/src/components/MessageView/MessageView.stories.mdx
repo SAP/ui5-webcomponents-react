@@ -138,8 +138,8 @@ to get back to the list view.
 <Canvas>
   <Story name="Message View in Dialog">
     {(args) => {
-      const dialogRef = useRef();
-      const messageViewRef = useRef();
+      const dialogRef = useRef(null);
+      const messageViewRef = useRef(null);
       const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
       return (
         <>
@@ -213,7 +213,7 @@ Sample Code: _(Button and Dialog opening are omitted here)_
 
 ```jsx
 function MyComponent() {
-  const messageViewRef = useRef();
+  const messageViewRef = useRef(null);
   const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
   return (
     <Dialog
@@ -258,8 +258,8 @@ function MyComponent() {
 <Canvas>
   <Story name="with MessageViewButton">
     {() => {
-      const ref = useRef();
-      const messageViewRef = useRef();
+      const ref = useRef(null);
+      const messageViewRef = useRef(null);
       const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
       const numberOfItems = {
         information: 2,

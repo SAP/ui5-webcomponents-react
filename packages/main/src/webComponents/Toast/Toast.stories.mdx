@@ -38,7 +38,7 @@ You can either access the DOM element by using a React `ref` or work with IDs.
 
 ```jsx
 export const MyComponentWithAToast() {
-  const toast = useRef();
+  const toast = useRef(null);
 
   const showToast = () => {
     toast.current.show();
@@ -59,7 +59,7 @@ export const MyComponentWithAToast() {
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const toast = useRef();
+      const toast = useRef(null);
       const showToast = () => {
         toast.current.show();
       };

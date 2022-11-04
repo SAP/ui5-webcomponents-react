@@ -2,10 +2,10 @@ import { act, fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React, { createRef, forwardRef } from 'react';
 import { ValueState } from '../../enums/ValueState';
-import { MessageView, MessageViewDomRef } from './index';
+import { MessageView, MessageViewDomRef, MessageViewPropTypes } from './index';
 import { MessageItem } from './MessageItem';
 
-const TestComponent = forwardRef((props, ref) => {
+const TestComponent = forwardRef<MessageViewDomRef, Omit<MessageViewPropTypes, 'children'>>((props, ref) => {
   return (
     <MessageView {...props} ref={ref}>
       <MessageItem titleText="Error" type={ValueState.Error}>

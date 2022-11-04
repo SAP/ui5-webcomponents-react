@@ -1,6 +1,6 @@
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, RefObject, useEffect, useMemo, useState } from 'react';
+import React, { CSSProperties, forwardRef, useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { LoaderType } from '../../enums/LoaderType';
 import { PLEASE_WAIT } from '../../i18n/i18n-defaults';
@@ -29,7 +29,7 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
  * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
  */
-const Loader = forwardRef((props: LoaderPropTypes, ref: RefObject<HTMLDivElement>) => {
+const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
   const { className, type, progress, slot, style, delay, ...rest } = props;
 
   const classes = useStyles();

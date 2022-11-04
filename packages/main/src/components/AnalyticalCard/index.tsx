@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, Ref } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Card, CardDomRef } from '../../webComponents';
@@ -19,7 +19,7 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalCard' });
 /**
  * The `AnalyticalCard` is mainly used for data visualization. It consists of two areas – a header area and a chart area with a visual representation of the data.<br />
  */
-const AnalyticalCard = forwardRef((props: AnalyticalCardPropTypes, ref: Ref<CardDomRef>) => {
+const AnalyticalCard = forwardRef<CardDomRef, AnalyticalCardPropTypes>((props, ref) => {
   const { children, header, ...rest } = props;
   const classes = useStyles();
 

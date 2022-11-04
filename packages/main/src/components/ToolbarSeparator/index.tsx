@@ -1,6 +1,6 @@
 import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { SEPARATOR } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -17,7 +17,7 @@ const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
 
 export type ToolbarSeparatorPropTypes = CommonProps;
 
-const ToolbarSeparator = forwardRef((props: ToolbarSeparatorPropTypes, ref: Ref<HTMLDivElement>) => {
+const ToolbarSeparator = forwardRef<HTMLDivElement, ToolbarSeparatorPropTypes>((props, ref) => {
   const { style, className, ...rest } = props;
 
   const classes = useStyles();

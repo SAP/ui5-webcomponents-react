@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { CSSProperties, FC, forwardRef, useCallback } from 'react';
 import {
   Area,
   Bar,
@@ -132,7 +132,7 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 /**
  * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
  */
-const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
+const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref) => {
   const {
     loading,
     dataset,

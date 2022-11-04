@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, Ref, useCallback } from 'react';
+import React, { CSSProperties, forwardRef, useCallback } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -122,7 +122,7 @@ const valueAccessor =
 /**
  * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
  */
-const ColumnChart = forwardRef((props: ColumnChartProps, ref: Ref<HTMLDivElement>) => {
+const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) => {
   const {
     loading,
     dataset,

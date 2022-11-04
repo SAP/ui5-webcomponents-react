@@ -1,16 +1,6 @@
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, {
-  Children,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  Ref,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { Children, forwardRef, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -108,7 +98,7 @@ const enhanceActionsWithClick = (actions, ref) =>
  * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
  */
-const DynamicPageTitle = forwardRef((props: DynamicPageTitlePropTypes, ref: Ref<HTMLDivElement>) => {
+const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((props, ref) => {
   const {
     actions,
     breadcrumbs,

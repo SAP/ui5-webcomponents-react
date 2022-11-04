@@ -3,7 +3,7 @@ import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import clsx from 'clsx';
-import React, { forwardRef, MouseEventHandler, ReactNode, Ref } from 'react';
+import React, { forwardRef, MouseEventHandler, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { IndicationColor } from '../../enums/IndicationColor';
 import { ValueState } from '../../enums/ValueState';
@@ -81,7 +81,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
 /**
  * Status information that can be either text with a value state, or an icon.
  */
-const ObjectStatus = forwardRef((props: ObjectStatusPropTypes, ref: Ref<HTMLDivElement>) => {
+const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, ref) => {
   const { state, showDefaultIcon, children, icon, className, style, active, inverted, onClick, ...rest } = props;
 
   const iconToRender = (() => {

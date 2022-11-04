@@ -4,7 +4,7 @@ import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Button, ButtonDomRef, ButtonPropTypes } from '../..';
 import { ValueState } from '../../enums';
@@ -85,7 +85,7 @@ const getIcon = (type) => {
 /**
  * The `MessageViewButton` can be used for opening a `Popover` containing the `MessageView` component. It should always reflect the message `type` with the highest severity.
  */
-const MessageViewButton = forwardRef((props: MessageViewButtonProptypes, ref: Ref<ButtonDomRef>) => {
+const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((props, ref) => {
   const { type, counter, className, ...rest } = props;
   const classes = useStyles();
   const classNames = clsx(classes.btn, className);

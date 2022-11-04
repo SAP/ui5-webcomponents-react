@@ -15,7 +15,6 @@ import React, {
   MutableRefObject,
   ReactNode,
   Ref,
-  RefObject,
   useCallback,
   useEffect,
   useMemo,
@@ -536,7 +535,7 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
-const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HTMLDivElement>) => {
+const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((props, ref) => {
   const {
     alternateRowColor,
     alwaysShowSubComponent,
@@ -601,7 +600,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const classes = useStyles();
 
   const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
-  const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
+  const tableRef = useRef<DivWithCustomScrollProp>(null);
 
   const isRtl = useIsRTL(analyticalTableRef);
 
@@ -931,9 +930,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     }
   }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
 
-  const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
-
-  const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
+  const parentRef = useRef<DivWithCustomScrollProp>(null);
+  const verticalScrollBarRef = useRef<DivWithCustomScrollProp>(null);
 
   const handleBodyScroll = (e) => {
     if (typeof onTableScroll === 'function') {

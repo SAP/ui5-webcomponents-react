@@ -1,15 +1,14 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, Ref, useContext } from 'react';
+import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { ListItemType } from '../../enums/ListItemType';
 import { ValueState } from '../../enums/ValueState';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { MessageViewContext } from '../../internal/MessageViewContext';
-import { CustomListItem } from '../../webComponents/CustomListItem';
+import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem';
 import { Icon } from '../../webComponents/Icon';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
@@ -140,7 +139,7 @@ const useStyles = createUseStyles(
   { name: 'MessageItem' }
 );
 
-const MessageItem = forwardRef((props: MessageItemPropTypes, ref: Ref<Ui5DomRef>) => {
+const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
   const { titleText, subtitleText, counter, type, children, className, ...rest } = props;
 
   const { selectMessage } = useContext(MessageViewContext);

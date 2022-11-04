@@ -1,6 +1,6 @@
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, CSSProperties, forwardRef, ReactElement, ReactNode, Ref } from 'react';
+import React, { Children, CSSProperties, forwardRef, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -72,7 +72,7 @@ const useStyles = createUseStyles(styles, { name: 'Grid' });
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
-const Grid = forwardRef((props: GridPropTypes, ref: Ref<HTMLDivElement>) => {
+const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
   const { position, children, hSpacing, vSpacing, style, className, slot, defaultIndent, defaultSpan, ...rest } = props;
 
   const classes = useStyles();

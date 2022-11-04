@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, RefObject } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
@@ -46,7 +46,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  * Second-level information container of an `ObjectPage`.<br />
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
-const ObjectPageSubSection = forwardRef((props: ObjectPageSubSectionPropTypes, ref: RefObject<HTMLDivElement>) => {
+const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionPropTypes>((props, ref) => {
   const { children, id, titleText, className, style, ...rest } = props;
 
   const htmlId = `ObjectPageSubSection-${id}`;

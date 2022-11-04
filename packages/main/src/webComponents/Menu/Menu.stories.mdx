@@ -31,7 +31,7 @@ import MenuMethods from './MenuMethods.md';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const ref = useRef();
+      const ref = useRef(null);
       const btnRef = useRef(null);
       useEffect(() => {
         if (isChromatic) {

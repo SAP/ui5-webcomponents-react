@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactElement, RefObject } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
@@ -64,7 +64,7 @@ export interface FilterGroupItemPropTypes extends CommonProps {
 /**
  * Represents a filter belonging to the `FilterBar`.
  */
-export const FilterGroupItem = forwardRef((props: FilterGroupItemPropTypes, ref: RefObject<HTMLDivElement>) => {
+export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes>((props, ref) => {
   const classes = useStyles();
   const {
     groupName,

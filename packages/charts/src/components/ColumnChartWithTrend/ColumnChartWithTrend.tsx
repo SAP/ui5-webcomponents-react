@@ -1,5 +1,5 @@
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
@@ -100,7 +100,7 @@ type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
-const ColumnChartWithTrend = forwardRef((props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
+const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProps>((props, ref) => {
   const {
     loading,
     dataset,

@@ -6,7 +6,7 @@ import {
   useIsomorphicLayoutEffect
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactNode, Ref, useState } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';
 import {
@@ -156,7 +156,7 @@ const getActions = (actions, type): (string | ReactNode)[] => {
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
  * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
-const MessageBox = forwardRef((props: MessageBoxPropTypes, ref: Ref<DialogDomRef>) => {
+const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) => {
   const {
     open,
     type,
