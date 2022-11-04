@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { PieChart, PieChartProps } from '../PieChart/PieChart';
 
 /**
@@ -6,7 +6,7 @@ import { PieChart, PieChartProps } from '../PieChart/PieChart';
  * The pieces of the graph are proportional to the fraction of the whole in each category.
  * A `DonutChart` is basically a `PieChart` with a hole.
  */
-const DonutChart: FC<PieChartProps> = forwardRef((props: PieChartProps, ref) => {
+const DonutChart = forwardRef((props: PieChartProps, ref: Ref<HTMLDivElement>) => {
   const chartConfig = {
     legendPosition: 'bottom',
     paddingAngle: 0,

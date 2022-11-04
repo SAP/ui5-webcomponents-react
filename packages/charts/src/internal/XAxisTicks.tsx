@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { FC } from 'react';
+import React from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 import { getTextWidth, truncateLongLabel } from './Utils';
 
@@ -15,7 +15,7 @@ interface XAxisTicksProps {
   };
 }
 
-export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
+export const XAxisTicks = (props: XAxisTicksProps) => {
   const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig } = props;
 
   const bandWidth = width / visibleTicksCount;
