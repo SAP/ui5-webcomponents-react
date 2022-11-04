@@ -2,16 +2,7 @@ import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, {
-  CSSProperties,
-  DependencyList,
-  forwardRef,
-  ReactElement,
-  Ref,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
@@ -65,7 +56,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
  * The splitter bars are focusable to enable resizing of the content areas via keyboard. The size of the content areas
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
  */
-const SplitterLayout = forwardRef((props: SplitterLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
+const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((props, ref) => {
   const { vertical, children, title, style, className, options, ...rest } = props;
   const [componentRef, sLRef] = useSyncRef(ref);
   const [reset, setReset] = useState(undefined);

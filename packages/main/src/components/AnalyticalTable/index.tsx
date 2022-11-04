@@ -536,7 +536,7 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
-const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HTMLDivElement>) => {
+const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((props, ref) => {
   const {
     alternateRowColor,
     alwaysShowSubComponent,

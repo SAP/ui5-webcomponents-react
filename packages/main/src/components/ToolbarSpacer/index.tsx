@@ -1,9 +1,9 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 
 export type ToolbarSpacerPropTypes = CommonProps;
 
-const ToolbarSpacer = forwardRef((props: ToolbarSpacerPropTypes, ref: Ref<HTMLSpanElement>) => {
+const ToolbarSpacer = forwardRef<HTMLSpanElement, ToolbarSpacerPropTypes>((props, ref) => {
   return <span ref={ref} style={{ flexGrow: 1 }} className="spacer" {...props} />;
 });
 

@@ -6,7 +6,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -93,7 +93,7 @@ const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
  * The header of the dynamic page is collapsible, which helps users to focus on the actual page content, but still ensures that important header information
  * and actions are readily available.
  */
-const DynamicPage = forwardRef((props: DynamicPagePropTypes, ref: Ref<HTMLDivElement>) => {
+const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref) => {
   const {
     headerTitle,
     headerContent,

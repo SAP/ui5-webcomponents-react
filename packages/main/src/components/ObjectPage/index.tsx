@@ -147,7 +147,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
  *
  * The `ObjectPage` is composed of a header (title and content) and block content wrapped in sections and subsections that structure the information.
  */
-const ObjectPage = forwardRef((props: ObjectPagePropTypes, ref: RefObject<HTMLDivElement>) => {
+const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) => {
   const {
     headerTitle,
     image,

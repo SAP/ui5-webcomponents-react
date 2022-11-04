@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ValueColor } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -30,7 +30,7 @@ const useStyles = createUseStyles(NumericSideIndicatorStyles, { name: 'NumericSi
 /**
  * Holds a set of side indicator attributes used in the NumericHeader component.
  */
-export const NumericSideIndicator = forwardRef((props: NumericSideIndicatorPropTypes, ref: Ref<HTMLDivElement>) => {
+export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndicatorPropTypes>((props, ref) => {
   const { number, state, titleText, unit, className, ...rest } = props;
   const classes = useStyles();
 

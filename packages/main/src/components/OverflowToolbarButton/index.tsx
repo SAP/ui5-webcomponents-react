@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, Ref, useContext } from 'react';
+import React, { forwardRef, ReactNode, useContext } from 'react';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents';
 
@@ -20,7 +20,7 @@ export interface OverflowToolbarButtonPropTypes extends Omit<ButtonPropTypes, 'c
 /**
  * The `OverflowToolbarButton` represents a push button that shows its text only when in the overflow area of a `Toolbar`.
  */
-const OverflowToolbarButton = forwardRef((props: OverflowToolbarButtonPropTypes, ref: Ref<ButtonDomRef>) => {
+const OverflowToolbarButton = forwardRef<ButtonDomRef, OverflowToolbarButtonPropTypes>((props, ref) => {
   const { children, ...rest } = props;
   const { inPopover } = useContext(OverflowPopoverContext);
 

@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, Ref, RefObject } from 'react';
+import React, { forwardRef, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../../enums/FlexBoxDirection';
 import { GlobalStyleClasses } from '../../../enums/GlobalStyleClasses';
@@ -45,7 +45,7 @@ const styles = {
 
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
-export const VerticalScrollbar = forwardRef((props: VerticalScrollbarProps, ref: Ref<HTMLDivElement>) => {
+export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
   const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight, tableBodyHeight } =
     props;
   const classes = useStyles();

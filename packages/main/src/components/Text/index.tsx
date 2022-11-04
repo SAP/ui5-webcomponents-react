@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, Ref } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { TextStyles } from './Text.jss';
@@ -24,7 +24,7 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  * The `Text` component can be used for embedding text into your app. You can hyphenate the text with the use of the `wrapping` prop.
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
  */
-const Text = forwardRef((props: TextPropTypes, ref: Ref<HTMLSpanElement>) => {
+const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
   const { children, renderWhitespace, wrapping, className, style, slot, ...rest } = props;
 
   const classes = useStyles();

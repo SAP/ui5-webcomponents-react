@@ -1,6 +1,6 @@
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment, Ref } from 'react';
+import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ColumnHeader } from './index';
 
@@ -41,7 +41,7 @@ interface ColumnHeaderContainerProps {
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
 
-export const ColumnHeaderContainer = forwardRef((props: ColumnHeaderContainerProps, ref: Ref<HTMLDivElement>) => {
+export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
   const {
     headerProps,
     headerGroup,

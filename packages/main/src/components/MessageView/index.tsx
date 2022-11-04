@@ -11,7 +11,6 @@ import React, {
   Fragment,
   ReactElement,
   ReactNode,
-  Ref,
   useCallback,
   useEffect,
   useState
@@ -154,7 +153,7 @@ const useStyles = createUseStyles(
   { name: 'MessageView' }
 );
 
-const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
+const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, ref) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
 
   const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);

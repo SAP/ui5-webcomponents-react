@@ -10,7 +10,6 @@ import React, {
   forwardRef,
   isValidElement,
   ReactNode,
-  Ref,
   useCallback,
   useEffect,
   useRef,
@@ -230,7 +229,7 @@ const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
-const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
+const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>((props, ref) => {
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const {
     titleText = i18nBundle.getText(MY_VIEWS),

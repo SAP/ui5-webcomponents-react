@@ -43,7 +43,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 ) => {
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
-  const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
+  const WithWebComponent = forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
     const { className, children, waitForDefine, ...rest } = props;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
