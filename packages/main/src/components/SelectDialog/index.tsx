@@ -220,7 +220,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [componentRef, selectDialogRef] = useSyncRef(ref);
-  const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>(listProps.ref);
+  const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>((listProps as any).ref);
 
   const handleBeforeOpen = (e) => {
     if (typeof onBeforeOpen === 'function') {

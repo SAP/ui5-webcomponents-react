@@ -1,7 +1,7 @@
 import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { ComponentType, CSSProperties, FC, forwardRef, ReactElement, ReactNode, Ref } from 'react';
+import React, { ComponentType, CSSProperties, forwardRef, ReactElement, ReactNode, Ref } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
 
@@ -67,7 +67,7 @@ class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCoun
   }
 }
 
-const ChartContainer: FC<ContainerProps> = forwardRef((props: ContainerProps, ref: Ref<any>) => {
+const ChartContainer = forwardRef((props: ContainerProps, ref: Ref<any>) => {
   const { Placeholder, loading = false, dataset, className, slot, children, resizeDebounce, ...rest } = props;
   const classes = useStyles();
 

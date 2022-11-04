@@ -1,6 +1,6 @@
 import { CommonProps } from '@ui5/webcomponents-react';
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef, Ref } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
 import { ChartContainer } from '../../internal/ChartContainer';
@@ -87,7 +87,7 @@ const defaultDisplayValueStyles = {
  * Displays a ring chart highlighting a current status.
  * The status can be emphasized by using the `color` prop.
  */
-const RadialChart: FC<RadialChartProps> = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
+const RadialChart = forwardRef((props: RadialChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     maxValue,
     value,

@@ -51,7 +51,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const eventRegistry = useRef<Record<string, EventHandler>>({});
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
-      CommonProps & { class: string }
+      CommonProps & { class?: string; ref?: Ref<any> }
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));

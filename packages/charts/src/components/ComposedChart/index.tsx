@@ -132,7 +132,7 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 /**
  * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
  */
-const ComposedChart: FC<ComposedChartProps> = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
+const ComposedChart = forwardRef((props: ComposedChartProps, ref: Ref<HTMLDivElement>) => {
   const {
     loading,
     dataset,
