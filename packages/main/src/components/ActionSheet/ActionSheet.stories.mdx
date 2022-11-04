@@ -132,7 +132,7 @@ const MyComponentWithActionSheet = () => {
 
 ```jsx
 const ActionSheetComponent = () => {
-  const actionSheetRef = useRef();
+  const actionSheetRef = useRef(null);
   const onButtonClick = (e) => {
     actionSheetRef.current.showAt(e.target);
   };
@@ -156,7 +156,7 @@ In this case, we recommend using [createPortal](https://reactjs.org/docs/portals
 
 ```JSX
 const ActionSheetComponent = () => {
-  const actionSheetRef = useRef();
+  const actionSheetRef = useRef(null);
   const onButtonClick = (e) => {
     actionSheetRef.current.showAt(e.target);
   };

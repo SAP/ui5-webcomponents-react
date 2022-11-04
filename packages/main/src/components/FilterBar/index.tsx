@@ -246,7 +246,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const [searchValue, setSearchValue] = useState<string>(undefined);
   const searchRef = useRef(null);
   const filterRefs = useRef({});
-  const dialogRef = useRef<DialogDomRef>();
+  const dialogRef = useRef<DialogDomRef>(null);
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});

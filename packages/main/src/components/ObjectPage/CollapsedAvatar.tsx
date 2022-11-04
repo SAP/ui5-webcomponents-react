@@ -42,7 +42,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
   const { image, imageShapeCircle, style } = props;
   const classes = useStyles();
   const [isMounted, setIsMounted] = useState(false);
-  const domRef = useRef();
+  const domRef = useRef(null);
 
   const avatarContent = useMemo(() => {
     if (!image) return null;

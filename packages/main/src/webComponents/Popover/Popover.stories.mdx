@@ -117,7 +117,7 @@ const MyComponentWithPopover = () => {
 `Popovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
 
 ```jsx
-const PopoverComponent = () => {
+const PopoverComponent = (null) => {
   const popoverRef = useRef();
   const onButtonClick = (e) => {
     popoverRef.current.showAt(e.target);
@@ -158,7 +158,7 @@ You can either set the `open` prop to `false` or attaching a `ref` on which the 
 
 ```jsx
 const PopoverComponent = () => {
-  const popoverRef = useRef();
+  const popoverRef = useRef(null);
   const handleOpen = (e) => {
     popoverRef.current.showAt(e.target);
   };

@@ -111,9 +111,9 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
 
-  const anchorBarRef = useRef<HTMLDivElement>();
+  const anchorBarRef = useRef<HTMLDivElement>(null);
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
-  const contentRef = useRef<HTMLDivElement>();
+  const contentRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [componentRefTopHeader, topHeaderRef] = useSyncRef(headerTitle?.ref);

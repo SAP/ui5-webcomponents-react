@@ -7,17 +7,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, {
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { forwardRef, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -181,12 +171,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const isProgrammaticallyScrolled = useRef(false);
 
   const [componentRef, objectPageRef] = useSyncRef(ref);
-  const topHeaderRef: RefObject<HTMLDivElement> = useRef();
+  const topHeaderRef = useRef<HTMLDivElement>(null);
   const scrollEvent = useRef();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
-  const anchorBarRef: RefObject<HTMLDivElement> = useRef();
+  const anchorBarRef = useRef<HTMLDivElement>(null);
   const scrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
