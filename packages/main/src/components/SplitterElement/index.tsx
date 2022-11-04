@@ -1,6 +1,6 @@
 import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactNode, RefObject, useContext, useEffect, useState } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
@@ -49,7 +49,7 @@ export interface SplitterElementPropTypes extends CommonProps {
  * The `minSize` defines the minimum width or height of the area and is set to 0 when no minimum size is given, so the
  * content can be completely collapsed.
  */
-const SplitterElement = forwardRef((props: SplitterElementPropTypes, ref: RefObject<HTMLDivElement>) => {
+const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((props, ref) => {
   const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);

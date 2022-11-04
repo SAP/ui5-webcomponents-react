@@ -122,7 +122,7 @@ const MyComponentWithPopover = () => {
 
 ```jsx
   const PopoverComponent = () => {
-    const popoverRef = useRef();
+    const popoverRef = useRef(null);
     const onButtonClick = (e) => {
         popoverRef.current.showAt(e.target);
     };
@@ -162,7 +162,7 @@ You can either set the `open` prop to `false` or attaching a `ref` on which the 
 
 ```jsx
 const PopoverComponent = () => {
-  const popoverRef = useRef();
+  const popoverRef = useRef(null);
   const handleOpen = (e) => {
     popoverRef.current.showAt(e.target);
   };

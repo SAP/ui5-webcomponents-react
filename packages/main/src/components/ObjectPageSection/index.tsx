@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, RefObject } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import styles from './ObjectPageSection.jss';
@@ -28,7 +28,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
 /**
  * Top-level information container of an `ObjectPage`.
  */
-const ObjectPageSection = forwardRef((props: ObjectPageSectionPropTypes, ref: RefObject<HTMLElement>) => {
+const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((props, ref) => {
   const { titleText, id, children, titleTextUppercase, className, style, ...rest } = props;
 
   const classes = useStyles();

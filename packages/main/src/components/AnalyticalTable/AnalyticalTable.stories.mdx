@@ -734,7 +734,7 @@ In case you want to keep the current state of the Table, you can disable this be
 
 ```jsx
 const [data, setData] = React.useState([])
-const skipPageResetRef = React.useRef()
+const skipPageResetRef = React.useRef(false)
 
 const updateData = newData => {
   // When data gets updated with this function, set a flag

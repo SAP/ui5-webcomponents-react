@@ -9,7 +9,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, RefObject, useCallback } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces';
@@ -69,7 +69,7 @@ const anchorBarStyles = {
 
 const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
-interface Props extends CommonProps {
+interface DynamicPageAnchorBarPropTypes extends CommonProps {
   /**
    * Determines if the header content is visible.
    */
@@ -112,7 +112,7 @@ interface Props extends CommonProps {
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
  * and pin button (pins the content header).
  */
-const DynamicPageAnchorBar = forwardRef((props: Props, ref: RefObject<HTMLElement>) => {
+const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTypes>((props, ref) => {
   const {
     showHideHeaderButton,
     headerContentVisible,

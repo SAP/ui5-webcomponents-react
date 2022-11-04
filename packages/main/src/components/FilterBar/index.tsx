@@ -7,7 +7,6 @@ import React, {
   forwardRef,
   ReactElement,
   ReactNode,
-  RefObject,
   useEffect,
   useRef,
   useState
@@ -197,7 +196,7 @@ const useStyles = createUseStyles(styles, { name: 'FilterBar' });
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement` or a title, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting "Add to FilterBar".
  */
-const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivElement>) => {
+const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) => {
   const {
     children,
     hideToolbar,
@@ -247,7 +246,7 @@ const FilterBar = forwardRef((props: FilterBarPropTypes, ref: RefObject<HTMLDivE
   const [searchValue, setSearchValue] = useState<string>(undefined);
   const searchRef = useRef(null);
   const filterRefs = useRef({});
-  const dialogRef = useRef<DialogDomRef>();
+  const dialogRef = useRef<DialogDomRef>(null);
   const [dialogRefs, setDialogRefs] = useState({});
   const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});

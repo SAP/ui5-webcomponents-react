@@ -82,7 +82,7 @@ import { HT1000, HT1000small, HT1010, HT1022, HT1030, HT2002, HT2026 } from './C
 <Canvas>
   <Story name="Interactive Display Area">
     {(args) => {
-      const ref = useRef();
+      const ref = useRef(null);
       const handleDisplayAreaClick = () => {
         ref.current.show();
       };

@@ -134,7 +134,7 @@ It adds `padding-left` and `padding-right` corresponding to the range (retrieved
 
 ```jsx
 const YourComponent = (props) => {
-  const elementRef = useRef();
+  const elementRef = useRef(null);
   const responsivePaddingClass = useResponsiveContentPadding(elementRef.current);
   return (
     <div ref={elementRef} className={responsivePaddingClass}>

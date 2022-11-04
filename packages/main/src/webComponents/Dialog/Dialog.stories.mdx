@@ -120,7 +120,7 @@ const MyComponentWithDialog = () => {
 
 ```jsx
 const DialogComponent = () => {
-  const dialogRef = useRef();
+  const dialogRef = useRef(null);
   const onButtonClick = () => {
     dialogRef.current.show();
   };
@@ -160,7 +160,7 @@ You can either set the `open` prop to `false` or attaching a `ref` on which the 
 
 ```jsx
 const DialogComponent = () => {
-  const dialogRef = useRef();
+  const dialogRef = useRef(null);
   const handleOpen = (e) => {
     dialogRef.current.show();
   };
