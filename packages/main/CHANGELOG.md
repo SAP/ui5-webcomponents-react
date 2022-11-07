@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.0...v1.3.1) (2022-11-07)
+
+### Bug Fixes
+
+- **typescript:** don't include `ref` in all component props ([#3713](https://github.com/SAP/ui5-webcomponents-react/issues/3713)) ([2f49dc3](https://github.com/SAP/ui5-webcomponents-react/commit/2f49dc34221a95e6ca99e7c3c9ad82cd6199cdf3))
+- **TypeScript:** improve ref types ([#3714](https://github.com/SAP/ui5-webcomponents-react/issues/3714)) ([5048bfd](https://github.com/SAP/ui5-webcomponents-react/commit/5048bfd89c81dde0ad516fc3880cb1de539103ef))
+
 # [1.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.3...v1.3.0) (2022-11-02)
 
 ### Features
