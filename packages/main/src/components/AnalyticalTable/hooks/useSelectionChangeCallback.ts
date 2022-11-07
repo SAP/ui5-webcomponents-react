@@ -19,7 +19,12 @@ export const useSelectionChangeCallback = (hooks) => {
           };
 
           if (webComponentsReactProperties.selectionMode === TableSelectionMode.MultiSelect) {
-            const selectedRowIdsArray = Object.keys(selectedRowIds);
+            const selectedRowIdsArray = Object.entries(selectedRowIds).reduce((acc, [key, val]) => {
+              if (val) {
+                return [...acc, key];
+              }
+              return acc;
+            }, []);
             const selectedRowIdsArrayMapped = selectedRowIdsArray.map((item) => rowsById[item]);
             payload.selectedFlatRows = selectedRowIdsArrayMapped;
             if (selectedRowIdsArrayMapped.length === Object.keys(rowsById).length) {

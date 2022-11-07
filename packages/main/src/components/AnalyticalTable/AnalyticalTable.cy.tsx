@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import { TableVisibleRowCountMode, ValueState } from '../../enums';
 import { AnalyticalTable, Button, Input } from '../..';
+import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
 
 const columns = [
   {
@@ -332,6 +332,44 @@ describe('AnalyticalTable', () => {
     });
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
     cy.findByTestId('payloadHelper').should('have.text', '4');
+  });
+
+  it('programmatic and user selection', () => {
+    const data = generateMoreData(20);
+    const TestComp = ({ onRowSelect }) => {
+      const [selectedRowIds, setSelectedRowIds] = useState({});
+      const [selectedFlatRows, setSelectedFlatRows] = useState([]);
+      return (
+        <>
+          <Button onClick={() => setSelectedRowIds({ 2: true, 3: false })}>Set selected rows</Button>
+          <AnalyticalTable
+            data={data}
+            columns={columns}
+            onRowSelect={(e) => {
+              setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
+              onRowSelect(e);
+            }}
+            selectionMode={TableSelectionMode.MultiSelect}
+            selectedRowIds={selectedRowIds}
+          />
+          "event.detail.selectedFlatRows:"<div data-testid="payload">{JSON.stringify(selectedFlatRows)}</div>
+        </>
+      );
+    };
+    const select = cy.spy().as('onRowSelectSpy');
+    cy.mount(<TestComp onRowSelect={select} />);
+
+    cy.findByText('Name-0').click();
+    cy.findByText('Name-1').click();
+    cy.findByText('Name-5').click();
+    cy.findByText('Name-5').click();
+    cy.findByTestId('payload').should('have.text', '["0","1"]');
+    cy.get('@onRowSelectSpy').should('have.callCount', 4);
+
+    cy.findByText('Set selected rows').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 4);
+    cy.findByText('Name-1').click();
+    cy.findByTestId('payload').should('have.text', '["1","2"]');
   });
 });
 
