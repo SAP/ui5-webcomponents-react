@@ -3775,7 +3775,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="1"
                   role="cell"
-                  style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
+                  style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
@@ -3898,7 +3898,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   data-visible-column-index="1"
                   data-visible-row-index="2"
                   role="cell"
-                  style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
+                  style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                   tabindex="-1"
                 />
                 <div
@@ -4828,7 +4828,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -4963,7 +4963,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -5084,7 +5084,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="3"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
@@ -5146,7 +5146,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="4"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
@@ -5208,7 +5208,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="5"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(0px); left: 0px;"
                 tabindex="-1"
               />
               <div
@@ -5965,7 +5965,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -6070,7 +6070,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -6172,7 +6172,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="3"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -6234,7 +6234,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="4"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -6296,7 +6296,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="5"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -7091,7 +7091,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7229,7 +7229,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7367,7 +7367,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="3"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7506,7 +7506,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="4"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7643,7 +7643,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="5"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7778,7 +7778,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="6"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -7902,7 +7902,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="7"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -8037,7 +8037,7 @@ exports[`AnalyticalTable plugin hook: useIndeterminateRowSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="8"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -8420,7 +8420,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="1"
                 role="cell"
-                style="cursor: auto; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: auto; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -8526,7 +8526,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 data-visible-column-index="0"
                 data-visible-row-index="2"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-0px); right: 0px;"
                 tabindex="-1"
               >
                 <ui5-checkbox
@@ -12169,7 +12169,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="1"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
@@ -12292,7 +12292,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 data-visible-column-index="1"
                 data-visible-row-index="2"
                 role="cell"
-                style="cursor: pointer; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
+                style="cursor: pointer; justify-content: center; width: 170px; align-items: center; padding: 0px; position: absolute; top: 0px; height: 44px; transform: translateX(-170px); right: 0px;"
                 tabindex="-1"
               />
               <div
