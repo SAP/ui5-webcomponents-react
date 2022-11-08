@@ -371,6 +371,59 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-1').click();
     cy.findByTestId('payload').should('have.text', '["1","2"]');
   });
+
+  it.only('row & header height', () => {
+    const TestComponent = () => {
+      const [rowHeight, setRowHeight] = useState<number>();
+      const [headerRowHeight, setHeaderRowHeight] = useState<number>();
+      return (
+        <>
+          <Input
+            data-testid="rowHeight"
+            onInput={(e) => {
+              if (e.target.value === '') {
+                setRowHeight(undefined);
+              } else {
+                setRowHeight(parseInt(e.target.value));
+              }
+            }}
+          />
+          <Input
+            data-testid="headerRowHeight"
+            onInput={(e) => {
+              if (e.target.value === '') {
+                setHeaderRowHeight(undefined);
+              } else {
+                setHeaderRowHeight(parseInt(e.target.value));
+              }
+            }}
+          />
+          <AnalyticalTable data={data} columns={columns} rowHeight={rowHeight} headerRowHeight={headerRowHeight} />
+        </>
+      );
+    };
+
+    cy.mount(<TestComponent />);
+
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
+
+    cy.findByTestId('rowHeight').shadow().find('input').type('100');
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
+
+    cy.findByTestId('headerRowHeight').shadow().find('input').type('200');
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
+
+    cy.findByTestId('rowHeight').shadow().find('input').clear();
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
+
+    cy.findByTestId('headerRowHeight').shadow().find('input').clear();
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
+  });
 });
 
 const dataTree = [
