@@ -19399,9 +19399,9 @@ vfile@^4.0.0:
     vfile-message "^2.0.0"
 
 vite-plugin-istanbul@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-istanbul/-/vite-plugin-istanbul-3.0.1.tgz#a9e6ceda72c21ff6a1b170e667870cef10030b70"
-  integrity sha512-b6yBg7WHXHTaULcyb/d17/YXFcYrV6nHTiqYxOIhhbIFjgp8CgVkuP3iGQU1vRxeutrIwTa4pFNmS4uZSAKhGA==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-istanbul/-/vite-plugin-istanbul-3.0.2.tgz#abb01b337bbd3a20666d9d82d472688a99ba2796"
+  integrity sha512-eOKedaeciqJTLEAUo7mkMqXjjeAXGhHUYuiLLBUaBwj8AdO31uVOsZvKeVViRqHKyhi5YlarmGh8r7jJVlX0VQ==
   dependencies:
     "@istanbuljs/load-nyc-config" "^1.1.0"
     istanbul-lib-instrument "^5.1.0"
