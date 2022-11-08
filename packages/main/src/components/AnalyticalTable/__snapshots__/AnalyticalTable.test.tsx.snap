@@ -5272,7 +5272,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
 exports[`AnalyticalTable custom row height 1`] = `
 <DocumentFragment>
   <div
-    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; --sapWcrAnalyticalTableRowHeight: 60px;"
+    style="max-width: 100%; overflow-x: auto; display: flex; flex-direction: column; --sapWcrAnalyticalTableRowHeight: 60px; --sapWcrAnalyticalTableHeaderRowHeight: 60px;"
   >
     <div
       id="titlebar-1337"
