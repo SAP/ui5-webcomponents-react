@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { CSSProperties, FC } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -29,7 +29,7 @@ const useStyles = createUseStyles(
     row: {
       display: 'flex',
       alignItems: 'center',
-      height: 'var(--sapWcrAnalyticalTableRowHeight)'
+      height: CssSizeVariables.sapWcrAnalyticalTableRowHeight
     },
     cellContainer: {
       display: 'flex',
