@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
+
+### Bug Fixes
+
+- **AnalyticalTable:** adjust selection cell width to UX design ([#3733](https://github.com/SAP/ui5-webcomponents-react/issues/3733)) ([c07a866](https://github.com/SAP/ui5-webcomponents-react/commit/c07a8662c0f03881a7e6fdd872472f03322089bb)), closes [#3732](https://github.com/SAP/ui5-webcomponents-react/issues/3732)
+
+### Features
+
+- **AnalyticalTable:** introduce `headerRowHeight` prop ([#3730](https://github.com/SAP/ui5-webcomponents-react/issues/3730)) ([d6ba5bb](https://github.com/SAP/ui5-webcomponents-react/commit/d6ba5bb71c9b7897d4115c4273c55b7bbea31a1a)), closes [#3716](https://github.com/SAP/ui5-webcomponents-react/issues/3716)
+
 # [1.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.3...v1.3.0) (2022-11-02)
 
 ### Features

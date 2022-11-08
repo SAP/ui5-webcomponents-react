@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
+
+### Bug Fixes
+
+- **AnalyticalTable:** adjust selection cell width to UX design ([#3733](https://github.com/SAP/ui5-webcomponents-react/issues/3733)) ([c07a866](https://github.com/SAP/ui5-webcomponents-react/commit/c07a8662c0f03881a7e6fdd872472f03322089bb)), closes [#3732](https://github.com/SAP/ui5-webcomponents-react/issues/3732)
+- **AnalyticalTable:** consider `false` selected row id value for `onRowSelect` callback ([#3717](https://github.com/SAP/ui5-webcomponents-react/issues/3717)) ([5fcc8ce](https://github.com/SAP/ui5-webcomponents-react/commit/5fcc8ce4d82c0b9729ed2e4dd1e9adf5b1fb2168))
+- bind web component events with useLayoutEffect if available ([#3718](https://github.com/SAP/ui5-webcomponents-react/issues/3718)) ([cba730f](https://github.com/SAP/ui5-webcomponents-react/commit/cba730ff19ddcbea26eb0a16eb3081a33514c4b1))
+- **VariantManagement:** show tooltip on "Select View" button ([#3731](https://github.com/SAP/ui5-webcomponents-react/issues/3731)) ([3bdaada](https://github.com/SAP/ui5-webcomponents-react/commit/3bdaada7707e8e68613f3fee2009dba0ff5bfff4)), closes [#3123](https://github.com/SAP/ui5-webcomponents-react/issues/3123)
+
+### Features
+
+- **AnalyticalTable:** introduce `headerRowHeight` prop ([#3730](https://github.com/SAP/ui5-webcomponents-react/issues/3730)) ([d6ba5bb](https://github.com/SAP/ui5-webcomponents-react/commit/d6ba5bb71c9b7897d4115c4273c55b7bbea31a1a)), closes [#3716](https://github.com/SAP/ui5-webcomponents-react/issues/3716)
+
 ## [1.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.0...v1.3.1) (2022-11-07)
 
 ### Bug Fixes
