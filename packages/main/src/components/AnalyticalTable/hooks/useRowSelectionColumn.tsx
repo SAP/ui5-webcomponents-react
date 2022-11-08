@@ -150,7 +150,7 @@ const columns = (currentColumns, { instance }) => {
 
 const getCellProps = (props, { cell }) => {
   if (cell.column.id === '__ui5wcr__internal_selection_column') {
-    const style = { ...props.style, cursor: 'pointer' };
+    const style = { ...props.style, cursor: 'pointer', justifyContent: 'center' };
     return [props, { style }];
   }
   return props;
