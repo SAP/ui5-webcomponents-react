@@ -372,7 +372,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('payload').should('have.text', '["1","2"]');
   });
 
-  it.only('row & header height', () => {
+  it('row & header height', () => {
     const TestComponent = () => {
       const [rowHeight, setRowHeight] = useState<number>();
       const [headerRowHeight, setHeaderRowHeight] = useState<number>();
