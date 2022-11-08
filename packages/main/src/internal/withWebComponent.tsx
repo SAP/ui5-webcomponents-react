@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { useSyncRef } from '@ui5/webcomponents-react-base';
+import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, {
   Children,
   cloneElement,
@@ -43,7 +43,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 ) => {
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
-  const WithWebComponent = forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
+  return forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
     const { className, children, waitForDefine, ...rest } = props;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
@@ -107,8 +107,9 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       }
       return [...acc, ...slottedChildren];
     }, []);
+
     // event binding
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       if (!waitForDefine || isDefined) {
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
@@ -160,6 +161,4 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       </Component>
     );
   });
-
-  return WithWebComponent;
 };
