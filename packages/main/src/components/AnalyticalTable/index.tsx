@@ -311,11 +311,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   noDataText?: string;
   /**
-   * Defines the height of the rows and header.
+   * Defines the height of the rows and header row.
    */
   rowHeight?: number;
   /**
-   * Defines the height of the header.
+   * Defines the height of the header row.
    *
    * __Note:__ If this property is set, it overwrites the height set in `rowHeight` for the header row.
    */
