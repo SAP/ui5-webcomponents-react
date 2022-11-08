@@ -311,9 +311,15 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   noDataText?: string;
   /**
-   * Defines the height of the rows and header.
+   * Defines the height of the rows and header row.
    */
   rowHeight?: number;
+  /**
+   * Defines the height of the header row.
+   *
+   * __Note:__ If this property is set, it overwrites the height set in `rowHeight` for the header row.
+   */
+  headerRowHeight?: number;
   /**
    * Defines whether the table should retain its column width, when a column has been manually resized and the container width has changed.
    */
@@ -550,6 +556,7 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
     groupBy,
     groupable,
     header,
+    headerRowHeight,
     highlightField,
     infiniteScroll,
     infiniteScrollThreshold,
@@ -728,6 +735,7 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
   const internalRowHeight = rowHeight ?? calcRowHeight;
+  const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
       ? internalRowHeight + tableState.popInColumns.length * (internalRowHeight + 16)
@@ -906,6 +914,10 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
     };
     if (!!rowHeight) {
       tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
+      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
+    }
+    if (!!headerRowHeight) {
+      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
     }
 
     if (tableState.tableClientWidth > 0) {
@@ -919,7 +931,7 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
       ...style,
       visibility: 'hidden'
     } as CSSProperties;
-  }, [tableState.tableClientWidth, style, rowHeight]);
+  }, [tableState.tableClientWidth, style, rowHeight, headerRowHeight]);
 
   useEffect(() => {
     if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
@@ -1102,7 +1114,7 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
           {(tableState.isScrollable === undefined || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
-              internalRowHeight={internalRowHeight}
+              internalRowHeight={internalHeaderRowHeight}
               popInRowHeight={popInRowHeight}
               tableRef={tableRef}
               minRows={minRows}

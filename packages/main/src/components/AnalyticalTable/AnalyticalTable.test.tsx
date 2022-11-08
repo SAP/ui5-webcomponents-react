@@ -368,14 +368,6 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('custom row height', () => {
-    const { asFragment } = render(
-      <AnalyticalTable header="Table Title" data={data} columns={columns} rowHeight={60} />
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('with initial column order', () => {
     const { getAllByRole, asFragment } = render(
       <AnalyticalTable
