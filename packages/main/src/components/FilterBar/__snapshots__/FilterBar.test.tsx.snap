@@ -137,7 +137,7 @@ exports[`FilterBar Render without crashing - w/ filter dialog 1`] = `
               class="VariantManagement-navDownBtn ui5-content-density-compact"
               design="Transparent"
               icon="navigation-down-arrow"
-              title="Select view"
+              tooltip="Select view"
               ui5-button=""
             />
           </div>

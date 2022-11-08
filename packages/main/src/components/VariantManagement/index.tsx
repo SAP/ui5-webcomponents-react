@@ -455,7 +455,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         </FlexBox>
         <Button
           className={clsx(classes.navDownBtn, 'ui5-content-density-compact')}
-          title={selectViewText}
+          tooltip={selectViewText}
           aria-label={selectViewText}
           onClick={handleOpenVariantManagement}
           design={ButtonDesign.Transparent}
