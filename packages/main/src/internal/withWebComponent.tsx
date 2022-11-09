@@ -8,7 +8,6 @@ import React, {
   ReactElement,
   Ref,
   useEffect,
-  useRef,
   useState
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
@@ -48,7 +47,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
-    const eventRegistry = useRef<Record<string, EventHandler>>({});
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
       CommonProps & { class?: string; ref?: Ref<any> }
@@ -110,19 +108,21 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     // event binding
     useIsomorphicLayoutEffect(() => {
+      const localRef = ref.current;
+      const eventRegistry: Record<string, EventHandler> = {};
       if (!waitForDefine || isDefined) {
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
-            eventRegistry.current[eventName] = eventHandler;
-            ref.current?.addEventListener(eventName, eventRegistry.current[eventName]);
+            eventRegistry[eventName] = eventHandler;
+            localRef?.addEventListener(eventName, eventRegistry[eventName]);
           }
         });
 
         return () => {
           // eslint-disable-next-line guard-for-in
-          for (const eventName in eventRegistry.current) {
-            ref.current?.removeEventListener(eventName, eventRegistry.current[eventName]);
+          for (const eventName in eventRegistry) {
+            localRef?.removeEventListener(eventName, eventRegistry[eventName]);
           }
         };
       }
