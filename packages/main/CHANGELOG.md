@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.0...v1.4.1) (2022-11-09)
+
+### Bug Fixes
+
+- **withWebComponent:** improve event registration and cleanup ([#3740](https://github.com/SAP/ui5-webcomponents-react/issues/3740)) ([b4febf7](https://github.com/SAP/ui5-webcomponents-react/commit/b4febf7907a76cdb35fb7b99e8d2cb8f717fb53b))
+
 # [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
 
 ### Bug Fixes
