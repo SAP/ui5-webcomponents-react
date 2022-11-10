@@ -12,12 +12,17 @@ const useStyles = createUseStyles(
   { name: 'StdExtPadding' }
 );
 
+export function useResponsiveContentPadding(element: HTMLElement, returnRangeString?: boolean): string;
+export function useResponsiveContentPadding(element: HTMLElement, returnRangeString: true): [string, string];
+
 /**
  * Hook for creating a style class, which sets `padding-left` and `padding-right` depending on the width of the element.
  *
- * @param {HTMLElement} element
+ * @param {HTMLElement} element The element the calculation is based on.
+ * @param {boolean} [returnRangeString=false] If set to `true`, returns a tuple with the class name and range.
+ * @returns {(string|Array)} If `returnRangeString` is `true`, the hook returns a tuple with the class name on first and the range string on second position. Otherwise, only the class name string is returned.
  */
-export const useResponsiveContentPadding = (element: HTMLElement) => {
+export function useResponsiveContentPadding(element: HTMLElement, returnRangeString = false) {
   const [currentRange, setCurrentRange] = useState(() => getCurrentRange()?.name ?? 'Desktop');
   const classes = useStyles();
   const requestAnimationFrameRef = useRef<number | undefined>();
@@ -38,5 +43,9 @@ export const useResponsiveContentPadding = (element: HTMLElement) => {
     };
   }, [element]);
 
+  if (returnRangeString) {
+    return [classes[currentRange], currentRange];
+  }
+
   return classes[currentRange];
-};
+}
