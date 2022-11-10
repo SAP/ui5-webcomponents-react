@@ -25,8 +25,11 @@ import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } 
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',
+  // padding-inline is used here to ensure the same responsive padding behavior as for the rest of the component
   `
   :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
+    padding: 0;
+    padding-inline: var(--_ui5wcr_ObjectPage_tab_bar_inline_padding);
     box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
   }
   `
@@ -204,7 +207,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   }, []);
 
   const isRTL = useIsRTL(objectPageRef);
-  const responsivePaddingClass = useResponsiveContentPadding(objectPageRef.current);
+  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
 
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   // observe heights of header parts
@@ -486,6 +489,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const objectPageClasses = clsx(
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
+    classes[responsiveRange],
     className,
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
