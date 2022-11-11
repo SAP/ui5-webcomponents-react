@@ -37,7 +37,18 @@ const styles = {
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
     }
   },
-  headerContainer: { marginBlockEnd: '0.5rem' },
+  headerContainer: {
+    marginBlockEnd: '0.5rem',
+    '& >:first-child': {
+      marginInline: '0.5rem 0.25rem'
+    },
+    '& >:last-child': {
+      marginInline: '0.25rem 0'
+    },
+    '& > *:not(first-child):not(last-child)': {
+      marginInline: '0.25rem'
+    }
+  },
   subSectionTitle: {
     fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily,
     fontSize: ThemingParameters.sapFontHeader5Size,
