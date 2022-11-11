@@ -63,7 +63,12 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
     }
   };
 
-  if (currentlyFocusedCell.current && tableRef.current && !tableRef.current.contains(currentlyFocusedCell.current)) {
+  if (
+    currentlyFocusedCell.current &&
+    tableRef.current &&
+    tableRef.current.tabIndex !== 0 &&
+    !tableRef.current.contains(currentlyFocusedCell.current)
+  ) {
     currentlyFocusedCell.current = null;
     tableRef.current.tabIndex = 0;
   }
