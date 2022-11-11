@@ -779,11 +779,11 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
   }, [globalFilterValue, setGlobalFilter]);
 
   useEffect(() => {
-    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 500);
+    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 60);
     const tableWidthObserver = new ResizeObserver(debouncedWidthObserverFn);
     tableWidthObserver.observe(tableRef.current);
 
-    const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
+    const debouncedHeightObserverFn = debounce(updateRowsCount, 60);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
     if (analyticalTableRef.current?.parentElement) {
       parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
