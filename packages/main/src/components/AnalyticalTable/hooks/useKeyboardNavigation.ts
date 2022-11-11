@@ -63,6 +63,11 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
     }
   };
 
+  if (currentlyFocusedCell.current && tableRef.current && !tableRef.current.contains(currentlyFocusedCell.current)) {
+    currentlyFocusedCell.current = null;
+    tableRef.current.tabIndex = 0;
+  }
+
   const onTableFocus = useCallback(
     (e) => {
       const isFirstCellAvailable = e.target.querySelector('div[data-column-index="0"][data-row-index="1"]');
