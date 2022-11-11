@@ -2,7 +2,9 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { Toolbar, ToolbarSpacer } from '../..';
+import { ToolbarDesign, ToolbarStyle } from '../../enums';
+import { CommonProps } from '../../interfaces';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
@@ -18,6 +20,12 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
    * Defines the title of the `ObjectPageSubSection`.
    */
   titleText?: string;
+  /**
+   * Actions available for this subsection.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use simple input components like `Button` or `Switch` to preserve the intended design.
+   */
+  actions?: ReactNode | ReactNode[];
 }
 
 const styles = {
@@ -47,23 +55,38 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
 const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionPropTypes>((props, ref) => {
-  const { children, id, titleText, className, style, ...rest } = props;
+  const { children, id, titleText, className, style, actions, ...rest } = props;
 
   const htmlId = `ObjectPageSubSection-${id}`;
 
   const classes = useStyles();
   const subSectionClassName = clsx(classes.objectPageSubSection, className);
+  console.log(actions);
 
   return (
     <div ref={ref} role="region" style={style} tabIndex={-1} {...rest} className={subSectionClassName} id={htmlId}>
-      <div
-        role="heading"
-        aria-level={4}
-        className={classes.subSectionTitle}
-        data-component-name="ObjectPageSubSectionTitleText"
+      {/*todo fix transparent style*/}
+      <Toolbar
+        numberOfAlwaysVisibleItems={1}
+        design={ToolbarDesign.Transparent}
+        toolbarStyle={ToolbarStyle.Clear}
+        style={{ background: 'transparent' }}
       >
-        {titleText}
-      </div>
+        <div
+          role="heading"
+          aria-level={4}
+          className={classes.subSectionTitle}
+          data-component-name="ObjectPageSubSectionTitleText"
+        >
+          {titleText}
+        </div>
+        {actions && (
+          <>
+            <ToolbarSpacer />
+            {actions}
+          </>
+        )}
+      </Toolbar>
       <div className={classes.subSectionContent} data-component-name="ObjectPageSubSectionContent">
         {children}
       </div>
