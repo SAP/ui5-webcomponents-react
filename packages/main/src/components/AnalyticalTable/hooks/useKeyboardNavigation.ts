@@ -45,7 +45,7 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data } }) => {
+const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -62,6 +62,21 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
       currentlyFocusedCell.current = null;
     }
   };
+
+  useEffect(() => {
+    if (
+      !showOverlay &&
+      data &&
+      columns &&
+      currentlyFocusedCell.current &&
+      tableRef.current &&
+      tableRef.current.tabIndex !== 0 &&
+      !tableRef.current.contains(currentlyFocusedCell.current)
+    ) {
+      currentlyFocusedCell.current = null;
+      tableRef.current.tabIndex = 0;
+    }
+  }, [data, columns, showOverlay]);
 
   const onTableFocus = useCallback(
     (e) => {
