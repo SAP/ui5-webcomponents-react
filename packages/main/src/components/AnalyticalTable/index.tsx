@@ -88,12 +88,14 @@ import { VerticalResizer } from './VerticalResizer';
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
-   * This `string`/`function` is used to build the data model for your column. <br />
+   * This `string`/`function` is used to build the data model for your column.
+   *
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    */
   accessor: string | ((row: any, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
+   *
    * __Note__: Required if `accessor` is a function, otherwise `accessor` will overwrite the id.
    */
   id?: string;
@@ -156,7 +158,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   aggregate?: string | ((leafValues, aggregatedValues) => any);
   /**
-   * When attempting to group/aggregate non primitive cell values (eg. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table.
+   * When attempting to group/aggregate non-primitive cell values (e.g. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table.
    */
   aggregateValue?: string | ((values, row, column) => any);
   /**
@@ -204,7 +206,7 @@ export interface AnalyticalTableColumnDefinition {
 
   // usePopIn
   /**
-   * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
+   * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller than the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
    */
   responsivePopIn?: boolean;
   /**
@@ -270,7 +272,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   extension?: ReactNode;
   /**
-   * The minimum number of rows that are displayed. If the data contains less entries than `minRows`, it will be filled with empty rows.
+   * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    */
   minRows?: number;
   /**
@@ -292,7 +294,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines whether the row height of popped-in columns should be considered when calculating the body height of the table.
    *
-   * __Note:__ If set so `true` the table will change its height depending whether columns are popped in or not.
+   * __Note:__ If set so `true` the table will change its height depending on whether columns are popped in or not.
    */
   adjustTableHeightOnPopIn?: boolean;
   /**
@@ -430,6 +432,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   subRowsKey?: string;
   /**
    * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
+   *
+   * __Note:__ This prop updates the internal table state and must therefore be memoized!
    */
   selectedRowIds?: { [key: string]: boolean };
   /**
@@ -453,7 +457,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   alwaysShowSubComponent?: boolean;
   /**
-   * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
+   * Defines where modals and other elements which should be mounted outside the DOM hierarchy are rendered into via `React.createPortal`.
    *
    * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
    *
@@ -779,11 +783,11 @@ const AnalyticalTable = forwardRef<HTMLDivElement, AnalyticalTablePropTypes>((pr
   }, [globalFilterValue, setGlobalFilter]);
 
   useEffect(() => {
-    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 500);
+    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 60);
     const tableWidthObserver = new ResizeObserver(debouncedWidthObserverFn);
     tableWidthObserver.observe(tableRef.current);
 
-    const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
+    const debouncedHeightObserverFn = debounce(updateRowsCount, 60);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
     if (analyticalTableRef.current?.parentElement) {
       parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
