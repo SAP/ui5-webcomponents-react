@@ -3888,17 +3888,17 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tanstack/react-virtual@3.0.0-beta.18":
-  version "3.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.18.tgz#b97b2019f7d6a5770fb88ee1f7591da55b9059b4"
-  integrity sha512-mnyCZT6htcRNw1jVb+WyfMUMbd1UmXX/JWPuMf6Bmj92DB/V7Ogk5n5rby5Y5aste7c7mlsBeMF8HtpwERRvEQ==
+"@tanstack/react-virtual@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.22.tgz#bd772d08162e9aa77ed46329dace348fcfaac225"
+  integrity sha512-OPgnjp6+F/8twCToWq1bglbxaNoOIKac/K6zhljhGIVq5lp1VXpkw47lWvLTU7RFfcFl03E61zZkqGbSFTk9uA==
   dependencies:
-    "@tanstack/virtual-core" "3.0.0-beta.18"
+    "@tanstack/virtual-core" "3.0.0-beta.22"
 
-"@tanstack/virtual-core@3.0.0-beta.18":
-  version "3.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.18.tgz#d4b0738c1d0aada922063c899675ff4df9f696b2"
-  integrity sha512-tcXutY05NpN9lp3+AXI9Sn85RxSPV0EJC0XMim9oeQj/E7bjXoL0qZ4Er4wwnvIbv/hZjC91EmbIQGjgdr6nZg==
+"@tanstack/virtual-core@3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.22.tgz#1c3c4723fa67492af6a35100b4c8818d6c4d7c58"
+  integrity sha512-kMpEeXXxHXP3mmXmMwKJvCzsiGGRDK745EsOYCiBP9hER04kyPk89rOQIvXhIFBkSj+TjSNCovIIhEzqkpIDNw==
 
 "@testing-library/cypress@^8.0.3":
   version "8.0.3"
