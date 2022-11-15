@@ -3,8 +3,6 @@ import { Footer } from '@docs/Footer';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
-import '@ui5/webcomponents-icons/dist/activate.js';
-import '@ui5/webcomponents-icons/dist/wrench.js';
 import {
   Bar,
   BarDesign,
@@ -144,7 +142,20 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
             </Form>
           </ObjectPageSection>
           <ObjectPageSection titleText="Personal" id="personal" aria-label="Personal">
-            <ObjectPageSubSection titleText="Connect" id="personal-connect" aria-label="Connect">
+            <ObjectPageSubSection
+              titleText="Connect"
+              id="personal-connect"
+              aria-label="Connect"
+              actions={
+                <>
+                  <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
+                    Custom Action
+                  </Button>
+                  <Button design={ButtonDesign.Transparent} icon="action-settings" tooltip="settings" />
+                  <Button design={ButtonDesign.Transparent} icon="download" tooltip="download" />
+                </>
+              }
+            >
               <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
                 <FormGroup titleText="Phone Numbers">
                   <FormItem label="Home">

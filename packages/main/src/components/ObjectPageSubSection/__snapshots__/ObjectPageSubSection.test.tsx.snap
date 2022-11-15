@@ -9,11 +9,16 @@ exports[`ObjectPageSubSection Render without Crashing 1`] = `
     tabindex="-1"
   >
     <div
-      aria-level="4"
-      class="ObjectPageSubSection-subSectionTitle"
-      data-component-name="ObjectPageSubSectionTitleText"
-      role="heading"
-    />
+      class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+      data-component-name="ObjectPageSubSectionHeaderContainer"
+    >
+      <div
+        aria-level="4"
+        class="ObjectPageSubSection-subSectionTitle"
+        data-component-name="ObjectPageSubSectionTitleText"
+        role="heading"
+      />
+    </div>
     <div
       class="ObjectPageSubSection-subSectionContent"
       data-component-name="ObjectPageSubSectionContent"

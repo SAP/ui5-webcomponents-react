@@ -417,12 +417,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -438,12 +443,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -459,12 +469,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -507,12 +522,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -528,12 +548,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -549,12 +574,17 @@ exports[`ObjectPage Default with SubSections 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -760,12 +790,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -781,12 +816,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -802,12 +842,17 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1403,12 +1448,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1424,12 +1474,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1445,12 +1500,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1493,12 +1553,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1514,12 +1579,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1535,12 +1605,17 @@ exports[`ObjectPage with anchor-bar 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1828,12 +1903,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1849,12 +1929,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1870,12 +1955,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1918,12 +2008,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1939,12 +2034,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -1960,12 +2060,17 @@ exports[`ObjectPage with footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2268,12 +2373,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2289,12 +2399,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2310,12 +2425,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2358,12 +2478,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2379,12 +2504,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2400,12 +2530,17 @@ exports[`ObjectPage with header 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2730,12 +2865,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2751,12 +2891,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2772,12 +2917,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2820,12 +2970,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2841,12 +2996,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -2862,12 +3022,17 @@ exports[`ObjectPage with img 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3207,12 +3372,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3228,12 +3398,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3249,12 +3424,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3297,12 +3477,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3318,12 +3503,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3339,12 +3529,17 @@ exports[`ObjectPage with img 2`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3654,12 +3849,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3675,12 +3875,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3696,12 +3901,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3744,12 +3954,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3765,12 +3980,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -3786,12 +4006,17 @@ exports[`ObjectPage with title 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4106,12 +4331,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4127,12 +4357,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4148,12 +4383,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 3.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 3.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4196,12 +4436,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.1
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.1
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4217,12 +4462,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.2
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.2
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"
@@ -4238,12 +4488,17 @@ exports[`ObjectPage with title, header & footer 1`] = `
               tabindex="-1"
             >
               <div
-                aria-level="4"
-                class="ObjectPageSubSection-subSectionTitle"
-                data-component-name="ObjectPageSubSectionTitleText"
-                role="heading"
+                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
+                data-component-name="ObjectPageSubSectionHeaderContainer"
               >
-                Title SubSection 4.3
+                <div
+                  aria-level="4"
+                  class="ObjectPageSubSection-subSectionTitle"
+                  data-component-name="ObjectPageSubSectionTitleText"
+                  role="heading"
+                >
+                  Title SubSection 4.3
+                </div>
               </div>
               <div
                 class="ObjectPageSubSection-subSectionContent"

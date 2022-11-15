@@ -416,13 +416,9 @@ describe('AnalyticalTable', () => {
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
 
-    cy.findByTestId('rowHeight').shadow().find('input').clear();
-    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
-
-    cy.findByTestId('headerRowHeight').shadow().find('input').clear();
-    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
+    cy.findByTestId('headerRowHeight').shadow().find('input').clear({ force: true });
+    cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
+    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
   });
 });
 
