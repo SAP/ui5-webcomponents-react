@@ -2,7 +2,7 @@ import React from 'react';
 import { SplitterElement, SplitterLayout, Label } from '../..';
 
 describe('SplitterLayout', () => {
-  it('Reset on size change', async () => {
+  it('Reset on size change', () => {
     cy.mount(
       <SplitterLayout
         style={{
