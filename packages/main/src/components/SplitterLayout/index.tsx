@@ -98,7 +98,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
             prevSize.current.height = containerRect.height;
             setReset(true);
           }
-        }, 500)
+        }, 60)
       );
 
       layoutObserver.observe(sLRef.current);
