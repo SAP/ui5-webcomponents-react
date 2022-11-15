@@ -1,7 +1,7 @@
 import React from 'react';
 import { SplitterElement, SplitterLayout, Label } from '../..';
 
-describe('AnalyticalTable', () => {
+describe('SplitterLayout', () => {
   it('Reset on size change', async () => {
     cy.mount(
       <SplitterLayout
