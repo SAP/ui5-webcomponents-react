@@ -48,13 +48,7 @@ const useIsRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>): 
     });
 
     targets.forEach((target) => {
-      // @ts-expect-error: target can never be a faulty value
-      observer.observe(target, {
-        attributes: true,
-        childList: false,
-        characterData: false,
-        attributeFilter: ['dir']
-      });
+      observer.observe(target, { attributes: true, childList: false, characterData: false, attributeFilter: ['dir'] });
     });
 
     return () => {

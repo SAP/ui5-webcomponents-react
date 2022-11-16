@@ -2,6 +2,8 @@ import * as React from 'react';
 
 function getRandomId() {
   if ('randomUUID' in crypto) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return crypto.randomUUID();
   }
   const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
@@ -16,6 +18,7 @@ export function useIsomorphicId(): string {
     return Reflect.get(React, 'useId')();
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const localId = React.useRef(getRandomId());
   return localId.current;
 }

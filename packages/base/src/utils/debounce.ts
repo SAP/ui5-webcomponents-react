@@ -2,17 +2,13 @@
 
 const now = Date.now || (() => new Date().getTime());
 
-interface Cancelable {
-  cancel(): void;
-}
-
+type DebouncedFunction = (...args: any[]) => void | any;
 /**
  * When a sequence of calls of the returned function ends, the argument
  * function is triggered. The end of a sequence is defined by the `wait`
  * parameter.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-const debounce = <T extends Function>(func: T, wait: number): T & Cancelable => {
+const debounce = (func: DebouncedFunction, wait: number) => {
   let timeout;
   let previous;
   let args;
@@ -32,7 +28,6 @@ const debounce = <T extends Function>(func: T, wait: number): T & Cancelable => 
   };
 
   const debounced = function (..._args: unknown[]) {
-    // @ts-expect-error: copied - no need to infer types here
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     context = this;
     args = _args;
@@ -48,7 +43,6 @@ const debounce = <T extends Function>(func: T, wait: number): T & Cancelable => 
     timeout = args = context = null;
   };
 
-  // @ts-expect-error: copied - no need to infer types here
   return debounced;
 };
 

@@ -50,7 +50,7 @@ function resolveRangeInfo(name: RANGE_4_STEPS): RangeInfo {
   return params;
 }
 
-let mediaQueries: Record<RANGE_4_STEPS, MediaQueryList> | null = null;
+let mediaQueries: Record<RANGE_4_STEPS, MediaQueryList> = null;
 
 function initMediaQueries() {
   if (typeof document !== 'undefined') {
@@ -76,7 +76,6 @@ function initMediaQueries() {
 // public API
 
 export const getCurrentRange = (width?: number): RangeInfo => {
-  // @ts-expect-error: width can only be undefined or a number, therefore `isNaN` works here
   return resolveRangeInfo(UI5MediaRange.getCurrentRange(DEFAULT_RANGE_SET, isNaN(width) ? undefined : width));
 };
 

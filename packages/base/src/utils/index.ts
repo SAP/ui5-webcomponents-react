@@ -13,7 +13,7 @@ export const deprecationNotice = (component: string, message: string) => {
 
 export const enrichEventWithDetails = <T extends Record<string, unknown>, ReturnType = CustomEvent<T>>(
   event: UIEvent,
-  payload: T | null = null
+  payload: T = null
 ) => {
   if (event.hasOwnProperty('persist')) {
     // if there is a persist method, it's an SyntheticEvent so we need to persist it

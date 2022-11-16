@@ -29,9 +29,7 @@ export function useResponsiveContentPadding(element: HTMLElement, returnRangeStr
 
   useEffect(() => {
     const observer = new ResizeObserver(([el]) => {
-      if (requestAnimationFrameRef.current) {
-        cancelAnimationFrame(requestAnimationFrameRef.current);
-      }
+      cancelAnimationFrame(requestAnimationFrameRef.current);
       requestAnimationFrameRef.current = requestAnimationFrame(() => {
         setCurrentRange(getCurrentRange(el.target.getBoundingClientRect().width)?.name);
       });
@@ -41,9 +39,7 @@ export function useResponsiveContentPadding(element: HTMLElement, returnRangeStr
     }
     return () => {
       observer.disconnect();
-      if (requestAnimationFrameRef.current) {
-        cancelAnimationFrame(requestAnimationFrameRef.current);
-      }
+      cancelAnimationFrame(requestAnimationFrameRef.current);
     };
   }, [element]);
 

@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
-    "declarationDir": "./dist",
-    "strict": true,
-    "noImplicitAny": false
+    "declarationDir": "./dist"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/*.cy.ts", "**/*.cy.tsx"]
