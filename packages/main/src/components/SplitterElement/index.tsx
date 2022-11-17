@@ -54,9 +54,8 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
   const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 0 auto' } : {};
-  const [flexStyles, setFlexStyles] = useState(
-    size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles }
-  );
+  const defaultFlexStyles = size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles };
+  const [flexStyles, setFlexStyles] = useState(defaultFlexStyles);
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
   const classes = useStyles();
 
@@ -81,10 +80,16 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
 
   useIsomorphicLayoutEffect(() => {
     if (reset) {
-      setFlexStyles(size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles });
+      setFlexStyles(undefined);
       setFlexBasisApplied(false);
     }
   }, [reset, size]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (flexStyles === undefined) {
+      setFlexStyles(defaultFlexStyles);
+    }
+  }, [flexStyles]);
 
   return (
     <div
