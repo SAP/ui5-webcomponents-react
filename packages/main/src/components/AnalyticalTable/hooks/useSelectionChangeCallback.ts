@@ -5,11 +5,12 @@ import { TableSelectionMode } from '../../../enums';
 export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {
     const { selectedRowPayload, selectedRowIds } = state;
-    const { preFilteredRowsById: rowsById, webComponentsReactProperties, dispatch } = instance;
+    const { rowsById, preFilteredRowsById, webComponentsReactProperties, dispatch, filters } = instance;
     useEffect(() => {
       if (selectedRowPayload?.fired) {
         const { event: e, row: selRow } = selectedRowPayload;
         const row = rowsById[selRow?.id];
+
         if (row) {
           const payload = {
             row: row,
@@ -25,14 +26,16 @@ export const useSelectionChangeCallback = (hooks) => {
               }
               return acc;
             }, []);
-            const selectedRowIdsArrayMapped = selectedRowIdsArray.map((item) => rowsById[item]);
+            // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
+            const tempRowsById = filters?.length > 0 ? preFilteredRowsById : rowsById;
+            const selectedRowIdsArrayMapped = selectedRowIdsArray.map((item) => tempRowsById[item]);
             payload.selectedFlatRows = selectedRowIdsArrayMapped;
-            if (selectedRowIdsArrayMapped.length === Object.keys(rowsById).length) {
+            if (selectedRowIdsArrayMapped.length === Object.keys(tempRowsById).length) {
               payload.allRowsSelected = true;
             }
           }
           dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row, fired: false } });
-          webComponentsReactProperties.onRowSelect(enrichEventWithDetails(e, payload));
+          webComponentsReactProperties?.onRowSelect(enrichEventWithDetails(e, payload));
         }
       }
     }, [selectedRowPayload, rowsById, webComponentsReactProperties.selectionMode, selectedRowIds]);

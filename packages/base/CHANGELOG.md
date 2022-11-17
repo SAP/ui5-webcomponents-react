@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
+
+### Bug Fixes
+
+- **ObjectPage:** adjust responsive padding of tab-bar to header padding ([#3744](https://github.com/SAP/ui5-webcomponents-react/issues/3744)) ([676e020](https://github.com/SAP/ui5-webcomponents-react/commit/676e020d944b7ee130cb1d9bc65451ec9cd0ddff)), closes [#3551](https://github.com/SAP/ui5-webcomponents-react/issues/3551)
+
 # [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
 
 ### Bug Fixes
