@@ -314,12 +314,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   noDataText?: string;
   /**
    * Defines the height of the rows and header row.
+   *
+   * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
    */
   rowHeight?: number;
   /**
    * Defines the height of the header row.
    *
    * __Note:__ If this property is set, it overwrites the height set in `rowHeight` for the header row.
+   *
+   * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
    */
   headerRowHeight?: number;
   /**
