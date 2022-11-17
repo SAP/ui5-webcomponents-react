@@ -397,7 +397,6 @@ describe('AnalyticalTable', () => {
                   id: item?.id
                 }))
               });
-              console.log(isSelected);
               props.onRowSelect(e);
             }}
             data={groupableData}
