@@ -61,7 +61,7 @@
     "@ui5/webcomponents-tools": "1.9.1",
     "@vitejs/plugin-react": "^2.0.1",
     "chromatic": "^6.5.3",
-    "cypress": "^10.7.0",
+    "cypress": "^11.1.0",
     "dedent": "^0.7.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.0.0",
