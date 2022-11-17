@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '../Device';
 
-const useStyles = createUseStyles(
+type Range = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
+
+const useStyles = createUseStyles<Range>(
   {
     Phone: { paddingLeft: '1rem', paddingRight: '1rem' },
     Tablet: { paddingLeft: '2rem', paddingRight: '2rem' },
@@ -13,7 +15,7 @@ const useStyles = createUseStyles(
 );
 
 export function useResponsiveContentPadding(element: HTMLElement, returnRangeString?: boolean): string;
-export function useResponsiveContentPadding(element: HTMLElement, returnRangeString: true): [string, string];
+export function useResponsiveContentPadding(element: HTMLElement, returnRangeString: true): [string, Range];
 
 /**
  * Hook for creating a style class, which sets `padding-left` and `padding-right` depending on the width of the element.

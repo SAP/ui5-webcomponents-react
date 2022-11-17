@@ -45,15 +45,19 @@ describe('Device - Media', () => {
     cy.findByText('LargeDesktop').should('be.visible');
 
     cy.viewport(1280, 720);
+    cy.wait(50);
     cy.findByText('Desktop').should('be.visible');
 
     cy.viewport(768, 1024);
+    cy.wait(50);
     cy.findByText('Tablet').should('be.visible');
 
     cy.viewport(375, 812);
-    cy.findByText('Tablet').should('be.visible');
+    cy.wait(50);
+    cy.findByText('Phone').should('be.visible');
 
     cy.viewport(1920, 1080);
+    cy.wait(50);
     cy.findByText('LargeDesktop').should('be.visible');
   });
 });
