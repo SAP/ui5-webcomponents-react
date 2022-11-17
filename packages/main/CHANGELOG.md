@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** always return correct `isSelected` value in `onRowSelect` cb ([#3774](https://github.com/SAP/ui5-webcomponents-react/issues/3774)) ([bf149e3](https://github.com/SAP/ui5-webcomponents-react/commit/bf149e3bb051a968e67c425173c57115e0e6e428))
+- **AnalyticalTable:** fix keyboard navigation on columns/data change ([#3751](https://github.com/SAP/ui5-webcomponents-react/issues/3751)) ([5ec55a2](https://github.com/SAP/ui5-webcomponents-react/commit/5ec55a2a88cda2068fd28525a376c7765e40d35d)), closes [#3739](https://github.com/SAP/ui5-webcomponents-react/issues/3739)
+- **AnalyticalTable:** reduce debounce wait time of height and width observers ([#3753](https://github.com/SAP/ui5-webcomponents-react/issues/3753)) ([85b79cb](https://github.com/SAP/ui5-webcomponents-react/commit/85b79cbda0d5048037e0a598c3e52d5c2b6cab93))
+- **DynamicPage:** always call `onToggleHeaderContent` on toggle button click ([#3756](https://github.com/SAP/ui5-webcomponents-react/issues/3756)) ([b5e0415](https://github.com/SAP/ui5-webcomponents-react/commit/b5e04151a39ed5ff705fabcd7a7e41a633bf8315)), closes [#3754](https://github.com/SAP/ui5-webcomponents-react/issues/3754)
+- **ObjectPage:** adjust responsive padding of tab-bar to header padding ([#3744](https://github.com/SAP/ui5-webcomponents-react/issues/3744)) ([676e020](https://github.com/SAP/ui5-webcomponents-react/commit/676e020d944b7ee130cb1d9bc65451ec9cd0ddff)), closes [#3551](https://github.com/SAP/ui5-webcomponents-react/issues/3551)
+- **SplitterLayout:** always reset the layout if reset conditions match ([#3761](https://github.com/SAP/ui5-webcomponents-react/issues/3761)) ([04c732d](https://github.com/SAP/ui5-webcomponents-react/commit/04c732d9874b27f095d71000df908bf7914491d7))
+
+### Features
+
+- **ObjectPageSubSection:** introduce `actions` prop ([#3752](https://github.com/SAP/ui5-webcomponents-react/issues/3752)) ([e32f551](https://github.com/SAP/ui5-webcomponents-react/commit/e32f551e8cae63ca7be72bf9449bd07511920022)), closes [#3692](https://github.com/SAP/ui5-webcomponents-react/issues/3692)
+
 ## [1.4.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.0...v1.4.1) (2022-11-09)
 
 ### Bug Fixes
