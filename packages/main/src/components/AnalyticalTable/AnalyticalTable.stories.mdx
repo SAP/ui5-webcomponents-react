@@ -384,23 +384,22 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
             </BusyIndicator>
           ) : (
             <>
-              <SegmentedButton>
-                <SegmentedButtonItem
-                  onClick={() => {
-                    setIsFunc(true);
-                  }}
-                  pressed
-                >
-                  with function parameter
-                </SegmentedButtonItem>
-                <SegmentedButtonItem
-                  onClick={() => {
-                    setIsFunc(false);
-                  }}
-                >
-                  with string parameter
-                </SegmentedButtonItem>
-              </SegmentedButton>
+              <ToggleButton
+                onClick={() => {
+                  setIsFunc(true);
+                }}
+                pressed={isFunc}
+              >
+                with function parameter
+              </ToggleButton>
+              <ToggleButton
+                onClick={() => {
+                  setIsFunc(false);
+                }}
+                pressed={!isFunc}
+              >
+                with string parameter
+              </ToggleButton>
               {isFunc ? (
                 <AnalyticalTable
                   data={args.data}
