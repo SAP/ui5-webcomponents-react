@@ -1,63 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnalyticalTable, Button, Input } from '../..';
 import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
-
-const columns = [
-  {
-    Header: 'Name',
-    headerTooltip: 'Full Name', // A more extensive description!
-    accessor: 'name' // String-based value accessors!
-  },
-  {
-    Header: 'Age',
-    accessor: 'age'
-  },
-  {
-    Header: 'Friend Name',
-    accessor: 'friend.name' // Custom value accessors!
-  },
-  {
-    Header: () => <span>Friend Age</span>, // Custom header components!
-    accessor: 'friend.age'
-  }
-];
-
-const data = [
-  {
-    name: 'A',
-    age: 40,
-    friend: {
-      name: 'Lorem',
-      age: 28
-    },
-    status: ValueState.Success,
-    navigation: ValueState.Error
-  },
-  {
-    name: 'B',
-    age: 20,
-    friend: {
-      name: 'Ipsum',
-      age: 50
-    }
-  },
-  {
-    name: 'X',
-    age: 17,
-    friend: {
-      name: 'Dolor',
-      age: 42
-    }
-  },
-  {
-    name: 'C',
-    age: 79,
-    friend: {
-      name: 'Sit',
-      age: 50
-    }
-  }
-];
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -278,7 +221,9 @@ describe('AnalyticalTable', () => {
             globalFilterValue={filter}
             selectionMode="MultiSelect"
           />
-          <div data-testid="payloadHelper">{JSON.stringify(relevantPayload?.selectedFlatRows?.length)}</div>
+          <div data-testid="payloadHelper">
+            {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
+          </div>
         </>
       );
     };
@@ -420,7 +365,198 @@ describe('AnalyticalTable', () => {
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
   });
+
+  it('GroupBy selection', () => {
+    const GroupBySelectTable = (props) => {
+      const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
+      const tableInstance = useRef();
+
+      useEffect(() => {
+        if (tableInstance.current) {
+          tableInstance.current.setGroupBy(['name']);
+          setTimeout(() => {
+            tableInstance.current.toggleAllRowsExpanded();
+          }, 100);
+        }
+      }, []);
+
+      return (
+        <>
+          <AnalyticalTable
+            {...props}
+            groupable
+            columns={columns}
+            tableInstance={tableInstance}
+            onRowSelect={(e) => {
+              const { allRowsSelected, isSelected, row, selectedFlatRows } = e.detail;
+              setRelevantPayload({
+                allRowsSelected,
+                isSelected,
+                row: row.id,
+                selectedFlatRows: selectedFlatRows.map((item) => ({
+                  id: item?.id
+                }))
+              });
+              console.log(isSelected);
+              props.onRowSelect(e);
+            }}
+            data={groupableData}
+            selectionMode="MultiSelect"
+          />
+          <div data-testid="selectedFlatRowsLength">
+            {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
+          </div>
+          <div data-testid="isSelected">{`${relevantPayload.isSelected}`}</div>
+        </>
+      );
+    };
+    const select = cy.spy().as('onRowSelectSpy');
+    cy.mount(<GroupBySelectTable onRowSelect={select} />);
+
+    cy.findByText('QWE').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 1);
+    cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
+    cy.findByTestId('isSelected').should('have.text', 'true');
+
+    cy.findByText('Friend Name').click();
+    cy.findByText('Group').click();
+    cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Toggle Row Expanded"] > ui5-icon').click();
+
+    cy.findByText('25').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 2);
+    cy.findByTestId('selectedFlatRowsLength').should('have.text', '2');
+    cy.findByTestId('isSelected').should('have.text', 'true');
+
+    cy.findByText('25').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 3);
+    cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
+    cy.findByTestId('isSelected').should('have.text', 'false');
+  });
 });
+
+const columns = [
+  {
+    Header: 'Name',
+    headerTooltip: 'Full Name', // A more extensive description!
+    accessor: 'name' // String-based value accessors!
+  },
+  {
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    Header: 'Friend Name',
+    accessor: 'friend.name' // Custom value accessors!
+  },
+  {
+    Header: () => <span>Friend Age</span>, // Custom header components!
+    accessor: 'friend.age'
+  }
+];
+
+const data = [
+  {
+    name: 'A',
+    age: 40,
+    friend: {
+      name: 'Lorem',
+      age: 28
+    },
+    status: ValueState.Success,
+    navigation: ValueState.Error
+  },
+  {
+    name: 'B',
+    age: 20,
+    friend: {
+      name: 'Ipsum',
+      age: 50
+    }
+  },
+  {
+    name: 'X',
+    age: 17,
+    friend: {
+      name: 'Dolor',
+      age: 42
+    }
+  },
+  {
+    name: 'C',
+    age: 79,
+    friend: {
+      name: 'Sit',
+      age: 50
+    }
+  }
+];
+
+const groupableData = [
+  {
+    name: 'GroupMe',
+    age: 25,
+    friend: {
+      name: 'Peter',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe',
+    age: 56,
+    friend: {
+      name: 'ASD',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe',
+    age: 13,
+    friend: {
+      name: 'QWE',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe',
+    age: 25,
+    friend: {
+      name: 'ZXC',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe2',
+    age: 25,
+    friend: {
+      name: 'Peter',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe2',
+    age: 25,
+    friend: {
+      name: 'ASD',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe2',
+    age: 55,
+    friend: {
+      name: 'Peter',
+      age: 42
+    }
+  },
+  {
+    name: 'GroupMe2',
+    age: 55,
+    friend: {
+      name: 'ZXC',
+      age: 42
+    }
+  }
+];
 
 const dataTree = [
   {
