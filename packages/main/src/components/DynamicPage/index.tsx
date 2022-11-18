@@ -114,12 +114,9 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   const anchorBarRef = useRef<HTMLDivElement>(null);
   const [componentRef, dynamicPageRef] = useSyncRef<HTMLDivElement>(ref);
   const contentRef = useRef<HTMLDivElement>(null);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const [componentRefTopHeader, topHeaderRef] = useSyncRef(headerTitle?.ref);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
+
+  const [componentRefTopHeader, topHeaderRef] = useSyncRef<HTMLDivElement>((headerTitle as any)?.ref);
+  const [componentRefHeaderContent, headerContentRef] = useSyncRef<HTMLDivElement>((headerContent as any)?.ref);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
