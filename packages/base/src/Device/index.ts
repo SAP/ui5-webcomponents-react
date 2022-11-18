@@ -1,6 +1,8 @@
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
 import { EventProvider } from './EventProvider';
 
+// dummy comment
+
 const getActualWindowSize = (): [width: number, height: number] => {
   return [window.innerWidth, window.innerHeight];
 };
