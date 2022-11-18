@@ -1,31 +1,18 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist",
-    "module": "esnext",
-    "target": "ES2015",
-    "lib": ["es2019", "dom"],
-    "jsx": "react",
-    "baseUrl": ".",
-    "paths": {
-      "@docs/*": [".storybook/components/*"],
-      "@shared/*": ["shared/*"],
-      "@ui5/webcomponents-react": ["node_modules/@ui5/webcomponents-react/src/index.ts"],
-      "@ui5/webcomponents-react-base": ["node_modules/@ui5/webcomponents-react-base/src/index.ts"],
-      "@ui5/webcomponents-react-charts": ["node_modules/@ui5/webcomponents-react-charts/src/index.ts"],
-      "@ui5/webcomponents-react/*": ["node_modules/@ui5/webcomponents-react/*"]
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "./packages/base"
     },
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "declarationDir": "dist"
-  },
-  "include": ["packages/**/*", "shared/**/*"],
-  "exclude": ["node_modules"],
-  "files": ["types.d.ts"]
+    {
+      "path": "./packages/main"
+    },
+    {
+      "path": "./packages/main/tsconfig.wrappers.json"
+    },
+    {
+      "path": "./packages/charts"
+    }
+  ],
+  "files": []
 }

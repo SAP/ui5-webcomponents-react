@@ -1,13 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
     "declarationDir": "./dist",
-    "paths": {
-      "@ui5/webcomponents-react-base": ["../../node_modules/@ui5/webcomponents-react-base/src/index.ts"]
-    }
+    "rootDir": "./src"
   },
+  "references": [
+    {
+      "path": "../base"
+    }
+  ],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/CodeGen.tsx"]
 }

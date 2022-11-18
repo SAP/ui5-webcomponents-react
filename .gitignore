@@ -13,3 +13,4 @@ packages/main/scripts/wrapperGeneration/json
 examples/seed-test
 scripts/web-component-wrappers/interfaces.json
 /temp
+*.tsbuildinfo
