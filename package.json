@@ -16,7 +16,7 @@
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:cypress && yarn test:jest",
     "test:combine-reports": "node scripts/combineTestReports.mjs",
-    "clean": "lerna run clean --stream && rimraf temp",
+    "clean": "lerna run clean --stream && rimraf temp '**/*.tsbuildinfo'",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",

@@ -16,7 +16,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc"
+    "build": "tsc --build"
   },
   "dependencies": {
     "clsx": "1.2.1",
