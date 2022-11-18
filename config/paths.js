@@ -1,6 +1,5 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,7 +7,6 @@ const __dirname = dirname(__filename);
 const root = path.resolve(__dirname, '..');
 const PATHS = {
   root,
-  src: path.join(root, 'src'),
   build: path.join(root, 'build'),
   shared: path.join(root, 'shared'),
   temp: path.join(root, 'temp'),
