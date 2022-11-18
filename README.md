@@ -150,8 +150,6 @@ Then, you can use the Button in your app:
 <Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
-You can also import all components from `@ui5/webcomponents-react` directly.
-
 For Browser Support and the configuration of the UI5 Web Components, please take a look at the
 [Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the
 [Configure](https://github.com/SAP/ui5-webcomponents#browser-support) sections of the
