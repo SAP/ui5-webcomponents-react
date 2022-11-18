@@ -1,5 +1,6 @@
 # build results for base package
 packages/base/dist
+packages/base/types
 
 # build results for charts package
 packages/charts/dist
