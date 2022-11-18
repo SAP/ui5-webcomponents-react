@@ -19,9 +19,6 @@
   ],
   "scripts": {
     "clean": "rimraf dist tmp wrappers",
-    "build": "npm-run-all -s build:i18n build:tsc build:wrappers",
-    "build:tsc": "tsc --build",
-    "build:wrappers": "node scripts/build-wrappers.mjs && tsc --build tsconfig.wrappers.json && rimraf tmp",
     "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {

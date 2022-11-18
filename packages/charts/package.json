@@ -15,8 +15,7 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "tsc --build"
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "clsx": "1.2.1",

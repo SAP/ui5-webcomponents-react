@@ -33,6 +33,7 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/dist/**/*.js'
           compression: 'gzip'
+          clean-script: 'clean'
 
   install:
     name: 'Install Dependencies'
