@@ -5,7 +5,7 @@
     "outDir": "./dist",
     "declarationDir": "./dist",
     "paths": {
-      "@ui5/webcomponents-react-base": ["../../node_modules/@ui5/ui5-webcomponents-react-base/src/index.ts"]
+      "@ui5/webcomponents-react-base": ["../../node_modules/@ui5/webcomponents-react-base/src/index.ts"]
     }
   },
   "include": ["src/**/*"],
