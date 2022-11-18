@@ -3,10 +3,6 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     jsx: true
-  project:
-    - './tsconfig.json'
-    - './tsconfig.spec.json'
-    - './packages/*/tsconfig.json'
 env:
   browser: true
 extends:
@@ -53,6 +49,10 @@ overrides:
   - files:
       - '*.ts'
       - '*.tsx'
+    parserOptions:
+      project:
+        - './tsconfig.spec.json'
+        - './packages/*/tsconfig.json'
     plugins:
       - '@typescript-eslint'
     extends:
