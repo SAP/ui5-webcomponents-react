@@ -31,7 +31,7 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
   const isFirstUserCol = userCols[0].id === column.id || userCols[0].accessor === column.accessor;
   updatedCellProps['data-is-first-column'] = isFirstUserCol;
 
-  if (isFirstUserCol && rowIsExpandable) {
+  if ((isFirstUserCol && rowIsExpandable) || (row.isGrouped && row.canExpand)) {
     updatedCellProps.onKeyDown = row.getToggleRowExpandedProps?.()?.onKeyDown;
     if (row.isExpanded) {
       updatedCellProps['aria-expanded'] = 'true';
@@ -41,7 +41,9 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
       updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
   } else if (
-    (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
+    (selectionMode !== TableSelectionMode.None &&
+      selectionBehavior !== TableSelectionBehavior.RowSelector &&
+      !row.isGrouped) ||
     column.id === '__ui5wcr__internal_selection_column'
   ) {
     if (row.isSelected) {
