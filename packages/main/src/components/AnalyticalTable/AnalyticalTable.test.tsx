@@ -1,11 +1,8 @@
-import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
+import { act, fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import React, { createRef, useRef } from 'react';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { ValueState } from '../../enums/ValueState';
-import { Button } from '../../webComponents/Button';
+import React, { createRef } from 'react';
+import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
+import { Button } from '../../webComponents';
 import { AnalyticalTable } from './index';
 import {
   useIndeterminateRowSelection,
@@ -61,7 +58,7 @@ const columnsWithPopIn = [
     responsivePopIn: true,
     responsiveMinWidth: 801,
     Header: () => <span>Custom original Header2</span>,
-    PopInHeader: (instance) => {
+    PopInHeader: () => {
       return 'Custom Header 2';
     },
     id: 'custom1',
@@ -152,6 +149,101 @@ const moreData = [
     friend: {
       name: 'elitr',
       age: 66
+    }
+  }
+];
+
+const dataTreeUnique = [
+  {
+    name: 'Fra',
+    age: 40,
+    friend: {
+      name: 'MAR',
+      age: 28
+    },
+    subRows: [
+      {
+        name: 'asd',
+        age: 40,
+        friend: {
+          name: 'longlonglong',
+          age: 28
+        },
+        subRows: [
+          {
+            name: 'ABC',
+            age: 40,
+            friend: {
+              name: 'DEF',
+              age: 28
+            },
+            subRows: [
+              {
+                name: 'GHijkl',
+                age: 40,
+                friend: {
+                  name: 'mnop',
+                  age: 28
+                },
+                subRows: [
+                  {
+                    name: 'Marc',
+                    age: 40,
+                    friend: {
+                      name: 'Peter',
+                      age: 28
+                    },
+                    subRows: [
+                      {
+                        name: 'Paula',
+                        age: 40,
+                        friend: {
+                          name: 'May',
+                          age: 28
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Charles',
+        age: 40,
+        friend: {
+          name: 'Leela',
+          age: 28
+        }
+      },
+      {
+        name: 'Farnsworth',
+        age: 40,
+        friend: {
+          name: 'Fry',
+          age: 28
+        },
+        subRows: [
+          {
+            name: 'Zoidberg',
+            age: 40,
+            friend: {
+              name: 'Bender',
+              age: 28
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Amy',
+    age: 20,
+    friend: {
+      name: 'Philip',
+      age: 50
     }
   }
 ];
@@ -586,24 +678,30 @@ describe('AnalyticalTable', () => {
         return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
       }
     };
-    const { asFragment, rerender } = render(
+    const { asFragment, rerender, container } = render(
       <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
     );
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(2);
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(2);
+    expect(screen.queryAllByTitle('Collapse Node')).toHaveLength(0);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[0]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(1);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[1]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(2);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(2);
 
     expect(asFragment()).toMatchSnapshot();
 
     rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
 
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
   });
 
   test('pop-in columns: w/o pop-ins', () => {
@@ -954,7 +1052,7 @@ describe('AnalyticalTable', () => {
     const cb = jest.fn();
     const { rerender, getAllByTitle, getByTitle, getByText, container, unmount, asFragment } = render(
       <AnalyticalTable
-        data={dataTree}
+        data={dataTreeUnique}
         columns={columns}
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
@@ -971,7 +1069,7 @@ describe('AnalyticalTable', () => {
     expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
     expect(checkboxes[2]).toHaveAttribute('checked', 'true');
 
-    fireEvent.click(getByText('bla'));
+    fireEvent.click(getByText('Amy'));
     expect(cb).toHaveBeenCalled();
 
     expect(checkboxes[0]).not.toHaveAttribute('indeterminate', 'true');
@@ -981,10 +1079,13 @@ describe('AnalyticalTable', () => {
     expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
     expect(checkboxes[2]).not.toHaveAttribute('checked', 'true');
 
-    fireEvent.click(getByTitle('Toggle Row Expanded'));
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[1]);
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[2]);
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[3]);
+    // expand all rows
+    fireEvent.click(getByTitle('Expand Node').querySelector('[ui5-icon]'));
+    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
+    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
+    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
+    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
+    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
     fireEvent.click(getByText('GHijkl'));
 
@@ -1008,7 +1109,7 @@ describe('AnalyticalTable', () => {
     unmount();
     const { container: newContainer } = render(
       <AnalyticalTable
-        data={dataTree}
+        data={dataTreeUnique}
         columns={columns}
         selectionMode={TableSelectionMode.MultiSelect}
         isTreeTable={true}
