@@ -3,7 +3,6 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
   const { onRowExpandChange, isTreeTable, renderRowSubComponent } = instance.webComponentsReactProperties;
   const onClick = (e) => {
-    console.log('hook', e);
     e.stopPropagation();
     e.persist();
     row.toggleRowExpanded();
