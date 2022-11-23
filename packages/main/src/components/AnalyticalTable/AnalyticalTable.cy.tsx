@@ -448,9 +448,9 @@ describe('AnalyticalTable', () => {
     cy.get('#__ui5wcr__internal_selection_column').click();
 
     // expand
-    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
-    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
@@ -503,9 +503,9 @@ describe('AnalyticalTable', () => {
     cy.get('#__ui5wcr__internal_selection_column').click();
 
     // expand
-    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
-    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Toggle Row Expanded"]').click();
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
