@@ -6,6 +6,26 @@ type onIndeterminateChange = (e: {
   tableInstance: Record<string, any>;
 }) => void;
 
+const getParentRow = (id, rowsById) => {
+  let lastDotIndex = id.lastIndexOf('.');
+  if (lastDotIndex === -1) {
+    lastDotIndex = Infinity;
+  }
+  const parentRowId = id.slice(0, lastDotIndex);
+  return [rowsById[parentRowId], lastDotIndex];
+};
+
+const getIndeterminateRowIds = (id) => {
+  const indeterminateRowsById = {};
+  const lastDotIndex = id.lastIndexOf('.');
+  indeterminateRowsById[id] = true;
+  if (lastDotIndex !== -1) {
+    // set all parent rows to indeterminate
+    Object.assign(indeterminateRowsById, getIndeterminateRowIds(id.slice(0, lastDotIndex)));
+  }
+  return indeterminateRowsById;
+};
+
 const getIndeterminate = (rows, rowsById, state) => {
   const indeterminateRowsById = {};
   let usedParentIndex = '';
@@ -17,15 +37,7 @@ const getIndeterminate = (rows, rowsById, state) => {
       } else if (rowIdScope !== null && usedParentIndex !== rowIdScope) {
         usedParentIndex = rowIdScope;
         const checkIndeterminate = (rowId) => {
-          const getParentRow = (id) => {
-            let lastDotIndex = id.lastIndexOf('.');
-            if (lastDotIndex === -1) {
-              lastDotIndex = Infinity;
-            }
-            const parentRowId = id.slice(0, lastDotIndex);
-            return [rowsById[parentRowId], lastDotIndex];
-          };
-          const [parentRow, dotIndex] = getParentRow(rowId);
+          const [parentRow, dotIndex] = getParentRow(rowId, rowsById);
           const selectedRows = parentRow.subRows.filter((item) => state.selectedRowIds[item.id]);
           const areAllSelected = parentRow.subRows.length === selectedRows.length;
           const isOneSelected = selectedRows.length > 0;
@@ -33,16 +45,7 @@ const getIndeterminate = (rows, rowsById, state) => {
           // if not all, but at least one subRow is selected, set the parent row's state to indeterminate
           if (isOneSelected && !areAllSelected) {
             const parentRowId = parentRow.id;
-
-            const indeterminateRowIds = (id) => {
-              const lastDotIndex = id.lastIndexOf('.');
-              indeterminateRowsById[id] = true;
-              if (lastDotIndex !== -1) {
-                // set all parent rows to indeterminate
-                indeterminateRowIds(id.slice(0, lastDotIndex));
-              }
-            };
-            indeterminateRowIds(parentRowId);
+            Object.assign(indeterminateRowsById, getIndeterminateRowIds(parentRowId));
             return;
           }
           if (dotIndex !== Infinity) {
