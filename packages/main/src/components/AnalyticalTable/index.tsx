@@ -431,7 +431,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the key for nested rows.
    *
-   * Default: "children"
+   * Default: "subRows"
    */
   subRowsKey?: string;
   /**
