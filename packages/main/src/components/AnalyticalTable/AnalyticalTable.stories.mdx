@@ -476,6 +476,12 @@ const data = [
 The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
 When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
 
+<MessageStrip hideCloseButton>
+  The indeterminate state has a higher priority than the selected state. Therefore, a row can be selected and
+  indeterminate at the same time. This can for example happen, if `selectSubRows: true` is set and a row with sub-rows
+  is selected and then a sub-row is unselected.
+</MessageStrip>
+
 _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 <Canvas withSource="none">
@@ -520,6 +526,17 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
   reactTableOptions={{ selectSubRows: true }}
 />
 ```
+
+#### Optional function parameter
+
+The plugin hook allows passing a callback as parameter with the following structure:
+
+```js
+({indeterminateRowsById, tableInstance}) => void;
+```
+
+The callback is fired, every time the internal `indeterminateRows` state is changed.
+The event parameter is an object, with all indeterminate rows by id (e.g. `[{"0.1":true}]`) and the table instance.
 
 ### Manual control of selected lines
 
