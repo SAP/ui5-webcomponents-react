@@ -6,6 +6,60 @@ type onIndeterminateChange = (e: {
   tableInstance: Record<string, any>;
 }) => void;
 
+const getIndeterminate = (rows, rowsById, state) => {
+  const indeterminateRowsById = {};
+  let usedParentIndex = '';
+  const getIndeterminateRecursive = (subRows, rowIdScope = null) => {
+    subRows.forEach((row) => {
+      if (row.subRows.length > 0) {
+        // find leaf nodes
+        getIndeterminateRecursive(row.subRows, row.id);
+      } else if (rowIdScope !== null && usedParentIndex !== rowIdScope) {
+        usedParentIndex = rowIdScope;
+        const checkIndeterminate = (rowId) => {
+          const getParentRow = (id) => {
+            let lastDotIndex = id.lastIndexOf('.');
+            if (lastDotIndex === -1) {
+              lastDotIndex = Infinity;
+            }
+            const parentRowId = id.slice(0, lastDotIndex);
+            return [rowsById[parentRowId], lastDotIndex];
+          };
+          const [parentRow, dotIndex] = getParentRow(rowId);
+          const selectedRows = parentRow.subRows.filter((item) => state.selectedRowIds[item.id]);
+          const areAllSelected = parentRow.subRows.length === selectedRows.length;
+          const isOneSelected = selectedRows.length > 0;
+
+          // if not all, but at least one subRow is selected, set the parent row's state to indeterminate
+          if (isOneSelected && !areAllSelected) {
+            const parentRowId = parentRow.id;
+
+            const indeterminateRowIds = (id) => {
+              const lastDotIndex = id.lastIndexOf('.');
+              indeterminateRowsById[id] = true;
+              if (lastDotIndex !== -1) {
+                // set all parent rows to indeterminate
+                indeterminateRowIds(id.slice(0, lastDotIndex));
+              }
+            };
+            indeterminateRowIds(parentRowId);
+            return;
+          }
+          if (dotIndex !== Infinity) {
+            // recursively check indeterminate state until root nodes are reached
+            checkIndeterminate(parentRow.id);
+          }
+          return;
+        };
+
+        checkIndeterminate(row.id);
+      }
+    });
+  };
+  getIndeterminateRecursive(rows);
+  return indeterminateRowsById;
+};
+
 /**
  * A plugin hook that marks parent rows as indeterminate if a child row is selected in `MultiSelect` mode.
  * When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
@@ -41,57 +95,11 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
         };
       }
 
-      const indeterminateRowsById = {};
-      let usedParentIndex = '';
-      const getIndeterminate = (rows, rowIdScope = null) => {
-        rows.forEach((row) => {
-          if (row.subRows.length > 0) {
-            // find leaf nodes
-            getIndeterminate(row.subRows, row.id);
-          } else if (rowIdScope !== null && usedParentIndex !== rowIdScope) {
-            usedParentIndex = rowIdScope;
-            const checkIndeterminate = (rowId) => {
-              const getParentRow = (id) => {
-                let lastDotIndex = id.lastIndexOf('.');
-                if (lastDotIndex === -1) {
-                  lastDotIndex = Infinity;
-                }
-                const parentRowId = id.slice(0, lastDotIndex);
-                return [rowsById[parentRowId], lastDotIndex];
-              };
-              const [parentRow, dotIndex] = getParentRow(rowId);
-              const selectedRows = parentRow.subRows.filter((item) => state.selectedRowIds[item.id]);
-              const areAllSelected = parentRow.subRows.length === selectedRows.length;
-              const isOneSelected = selectedRows.length > 0;
-
-              // if not all, but at least one subRow is selected, set the parent row's state to indeterminate
-              if (isOneSelected && !areAllSelected) {
-                const parentRowId = parentRow.id;
-
-                const indeterminateRowIds = (id) => {
-                  const lastDotIndex = id.lastIndexOf('.');
-                  indeterminateRowsById[id] = true;
-                  if (lastDotIndex !== -1) {
-                    // set all parent rows to indeterminate
-                    indeterminateRowIds(id.slice(0, lastDotIndex));
-                  }
-                };
-                indeterminateRowIds(parentRowId);
-                return;
-              }
-              if (dotIndex !== Infinity) {
-                // recursively check indeterminate state until root nodes are reached
-                checkIndeterminate(parentRow.id);
-              }
-              return;
-            };
-
-            checkIndeterminate(row.id);
-          }
-        });
-      };
-
-      getIndeterminate(rows.filter((item) => !item.original.emptyRow));
+      const indeterminateRowsById = getIndeterminate(
+        rows.filter((item) => !item.original.emptyRow),
+        rowsById,
+        state
+      );
 
       return {
         ...newState,
