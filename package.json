@@ -143,5 +143,6 @@
       "packages/*/src/index.ts",
       "packages/main/src/components/AnalyticalTable/types/*"
     ]
-  }
+  },
+  "packageManager": "yarn@3.3.0"
 }
