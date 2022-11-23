@@ -115,7 +115,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     const {
       data,
       dispatch,
-      isAllRowsSelected,
+      rowsById,
       state: { selectedRowIds, indeterminateRows },
       webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable }
     } = instance;
@@ -126,13 +126,13 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
         selectionMode === TableSelectionMode.MultiSelect &&
         selectionBehavior !== TableSelectionBehavior.RowOnly &&
         Object.keys(selectedRowIds).length &&
-        !isAllRowsSelected
+        Object.keys(rowsById).length !== Object.keys(selectedRowIds).length
       ) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS' });
       } else if (typeof indeterminateRows === 'object' && Object.keys(indeterminateRows).length) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS', payload: 'reset' });
       }
-    }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior, isAllRowsSelected]);
+    }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior]);
 
     useEffect(() => {
       if (typeof onIndeterminateChange === 'function' && indeterminateRows) {

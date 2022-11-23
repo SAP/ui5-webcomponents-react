@@ -432,14 +432,15 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('isSelected').should('have.text', 'false');
   });
 
-  it('useIndeterminateRowSelection - select subRows', () => {
+  it.only('useIndeterminateRowSelection - select subRows', () => {
+    const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
         selectionMode={TableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
-        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
+        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
         reactTableOptions={{ selectSubRows: true }}
       />
     );
@@ -454,6 +455,7 @@ describe('AnalyticalTable', () => {
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -463,9 +465,11 @@ describe('AnalyticalTable', () => {
     // deselect all
     cy.get('#__ui5wcr__internal_selection_column').click();
     cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
 
     // select leaf row
     cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 3);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -475,9 +479,11 @@ describe('AnalyticalTable', () => {
     // deselect all
     cy.get('#__ui5wcr__internal_selection_column').click();
     cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
 
     // select row with subRows
     cy.findByText('Diann Alvarado').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 5);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
     cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
@@ -490,13 +496,14 @@ describe('AnalyticalTable', () => {
   });
 
   it('useIndeterminateRowSelection', () => {
+    const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
         selectionMode={TableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
-        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
+        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
       />
     );
     // select all
@@ -509,6 +516,7 @@ describe('AnalyticalTable', () => {
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -518,9 +526,11 @@ describe('AnalyticalTable', () => {
     // deselect all
     cy.get('#__ui5wcr__internal_selection_column').click();
     cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
 
     // select leaf row
     cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 3);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -530,9 +540,11 @@ describe('AnalyticalTable', () => {
     // deselect all
     cy.get('#__ui5wcr__internal_selection_column').click();
     cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
 
     // select row with subRows
     cy.findByText('Diann Alvarado').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 5);
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
     cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
