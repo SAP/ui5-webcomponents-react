@@ -1,17 +1,10 @@
-import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
+import { act, fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import React, { createRef, useRef } from 'react';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { ValueState } from '../../enums/ValueState';
-import { Button } from '../../webComponents/Button';
+import React, { createRef } from 'react';
+import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
+import { Button } from '../../webComponents';
 import { AnalyticalTable } from './index';
-import {
-  useIndeterminateRowSelection,
-  useManualRowSelect,
-  useRowDisableSelection
-} from './pluginHooks/AnalyticalTableHooks';
+import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [
   {
@@ -61,7 +54,7 @@ const columnsWithPopIn = [
     responsivePopIn: true,
     responsiveMinWidth: 801,
     Header: () => <span>Custom original Header2</span>,
-    PopInHeader: (instance) => {
+    PopInHeader: () => {
       return 'Custom Header 2';
     },
     id: 'custom1',
@@ -586,24 +579,30 @@ describe('AnalyticalTable', () => {
         return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
       }
     };
-    const { asFragment, rerender } = render(
+    const { asFragment, rerender, container } = render(
       <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
     );
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(2);
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(2);
+    expect(screen.queryAllByTitle('Collapse Node')).toHaveLength(0);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[0]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(1);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[1]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(2);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(2);
 
     expect(asFragment()).toMatchSnapshot();
 
     rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
 
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
   });
 
   test('pop-in columns: w/o pop-ins', () => {

@@ -1,6 +1,5 @@
 import { KeyboardEventHandler } from 'react';
 import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
-import { stopPropagation } from '../../../internal/stopPropagation';
 
 interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
@@ -30,23 +29,21 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
   );
 
   const isFirstUserCol = userCols[0].id === column.id || userCols[0].accessor === column.accessor;
+  updatedCellProps['data-is-first-column'] = isFirstUserCol;
 
-  if (isFirstUserCol && rowIsExpandable) {
-    updatedCellProps.onKeyDown = (e) => {
-      if (e.key === 'Enter' || e.code === 'Space') {
-        // don't bubble event to prevent click of selection row
-        stopPropagation(e);
-        e.preventDefault();
-        row.toggleRowExpanded();
-      }
-    };
+  if ((isFirstUserCol && rowIsExpandable) || (row.isGrouped && row.canExpand)) {
+    updatedCellProps.onKeyDown = row.getToggleRowExpandedProps?.()?.onKeyDown;
     if (row.isExpanded) {
       updatedCellProps['aria-expanded'] = 'true';
+      updatedCellProps['aria-label'] = translatableTexts.collapseA11yText;
     } else {
       updatedCellProps['aria-expanded'] = 'false';
+      updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
   } else if (
-    (selectionMode !== TableSelectionMode.None && selectionBehavior !== TableSelectionBehavior.RowSelector) ||
+    (selectionMode !== TableSelectionMode.None &&
+      selectionBehavior !== TableSelectionBehavior.RowSelector &&
+      !row.isGrouped) ||
     column.id === '__ui5wcr__internal_selection_column'
   ) {
     if (row.isSelected) {

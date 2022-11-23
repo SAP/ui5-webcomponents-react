@@ -233,9 +233,9 @@ describe('AnalyticalTable', () => {
     // expand
     cy.findByText('Robin Moreno').should('not.exist');
     cy.findByText('Judith Mathews').should('not.exist');
-    cy.get('[aria-rowindex="1"] > [aria-colindex="2"] > [title="Toggle Row Expanded"] > ui5-icon').click();
+    cy.get('[aria-rowindex="1"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').click();
     cy.findByText('Robin Moreno').should('be.visible');
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Toggle Row Expanded"] > ui5-icon').trigger('keydown', {
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').trigger('keydown', {
       key: 'Enter'
     });
     cy.findByText('Judith Mathews').should('be.visible');
@@ -419,7 +419,7 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Friend Name').click();
     cy.findByText('Group').click();
-    cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Toggle Row Expanded"] > ui5-icon').click();
+    cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Expand Node"] > ui5-icon').click();
 
     cy.findByText('25').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 2);
