@@ -10,7 +10,7 @@ const getIndeterminate = (rows, rowsById, state) => {
   const indeterminateRowsById = {};
   let usedParentIndex = '';
   const getIndeterminateRecursive = (subRows, rowIdScope = null) => {
-    subRows.forEach((row) => {
+    for (const row of subRows) {
       if (row.subRows.length > 0) {
         // find leaf nodes
         getIndeterminateRecursive(row.subRows, row.id);
@@ -54,7 +54,7 @@ const getIndeterminate = (rows, rowsById, state) => {
 
         checkIndeterminate(row.id);
       }
-    });
+    }
   };
   getIndeterminateRecursive(rows);
   return indeterminateRowsById;
