@@ -55,5 +55,5 @@ rules:
       - person-hours
       - human-hours
 ignore:
- - ".github/in-solidarity.yml"
- - "**/.yarn/**"
+  - '.github/in-solidarity.yml'
+  - '.yarn/**'
