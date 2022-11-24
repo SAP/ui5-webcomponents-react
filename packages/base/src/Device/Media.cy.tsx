@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { EventProvider } from './EventProvider';
+import { MediaEventProvider } from './EventProvider';
 import { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
 
 describe('Device - Media', () => {
@@ -23,9 +23,9 @@ describe('Device - Media', () => {
   it('Attach and Detach Event', () => {
     const callback = cy.spy();
     attachMediaHandler(callback);
-    expect(EventProvider.isHandlerAttached('media', callback)).to.be.true;
+    expect(MediaEventProvider.isHandlerAttached('media', callback)).to.be.true;
     detachMediaHandler(callback);
-    expect(EventProvider.isHandlerAttached('media', callback)).to.be.false;
+    expect(MediaEventProvider.isHandlerAttached('media', callback)).to.be.false;
   });
 
   it('fire resizes', () => {
