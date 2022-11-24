@@ -193,8 +193,11 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'SideContentPosition':
     case 'SideContentVisibility':
     case 'SwitchDesign':
+    case 'TabContainerBackgroundDesign':
+    case 'TabContainerTabsPlacement':
     case 'TabLayout':
     case 'TabsOverflowMode':
+    case 'TableCellPopinDisplay':
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
@@ -203,6 +206,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'ToastPlacement':
     case 'UploadState':
     case 'ValueState':
+    case 'ViewSettingsDialogMode':
     case 'WrappingType':
       return {
         importStatement: `import { ${typeWithoutNamespace} } from '../../enums';`,
