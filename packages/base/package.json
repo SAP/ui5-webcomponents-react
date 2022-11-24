@@ -40,8 +40,6 @@
     "bin",
     "codemods",
     "dist",
-    "polyfill",
-    "types",
     "CHANGELOG.md",
     "LICENSE",
     "NOTICE.txt",
