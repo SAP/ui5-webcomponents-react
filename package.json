@@ -7,16 +7,15 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "lerna run build:i18n && start-storybook -p 6006",
-    "prebuild": "lerna run build:i18n && node scripts/build-wrappers.js",
-    "build": "tsc --build",
-    "postbuild": "rimraf packages/main/tmp",
+    "build:prepare": "lerna run build:i18n && node scripts/build-wrappers.js",
+    "build:cleanup": "rimraf packages/main/tmp",
+    "build": "yarn build:prepare && tsc --build && yarn build:cleanup",
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
-    "postinstall": "rimraf node_modules/@types/mocha",
-    "pretest": "rimraf temp && lerna run build",
+    "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "cypress run --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
-    "test": "yarn test:cypress && yarn test:jest",
+    "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
     "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "tsc --build --clean && lerna run clean",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
@@ -25,8 +24,8 @@
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
-    "prepare": "husky install && lerna run build:i18n",
-    "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook"
+    "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
+    "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n"
   },
   "dependencies": {
     "@storybook/addon-a11y": "6.5.13",
@@ -143,5 +142,6 @@
       "packages/*/src/index.ts",
       "packages/main/src/components/AnalyticalTable/types/*"
     ]
-  }
+  },
+  "packageManager": "yarn@3.3.0"
 }
