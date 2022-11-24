@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnalyticalTable, Button, Input } from '../..';
+import { AnalyticalTable, AnalyticalTableHooks, Button, Input } from '../..';
 import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
 
 const generateMoreData = (count) => {
@@ -430,6 +430,130 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.callCount', 3);
     cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
     cy.findByTestId('isSelected').should('have.text', 'false');
+  });
+
+  it('useIndeterminateRowSelection - select subRows', () => {
+    const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
+    cy.mount(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.MultiSelect}
+        data={dataTree}
+        columns={columns}
+        isTreeTable
+        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
+        reactTableOptions={{ selectSubRows: true }}
+      />
+    );
+
+    // select all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+
+    // expand
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+
+    // deselect row
+    cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+
+    // deselect all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
+
+    // select leaf row
+    cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 3);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+
+    // deselect all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
+
+    // select row with subRows
+    cy.findByText('Diann Alvarado').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 5);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="6"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="7"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+  });
+
+  it('useIndeterminateRowSelection', () => {
+    const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
+    cy.mount(
+      <AnalyticalTable
+        selectionMode={TableSelectionMode.MultiSelect}
+        data={dataTree}
+        columns={columns}
+        isTreeTable
+        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
+      />
+    );
+    // select all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+
+    // expand
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+
+    // deselect row
+    cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+
+    // deselect all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
+
+    // select leaf row
+    cy.findByText('Wiggins Cotton').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 3);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+
+    // deselect all
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
+
+    // select row with subRows
+    cy.findByText('Diann Alvarado').click();
+    cy.get('@onIndeterminateChangeSpy').should('have.callCount', 5);
+
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
+    cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
+    cy.get('[aria-rowindex="6"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
+    cy.get('[aria-rowindex="7"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
+    cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
   });
 });
 
