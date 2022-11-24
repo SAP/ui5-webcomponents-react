@@ -11,7 +11,6 @@
     "build:cleanup": "rimraf packages/main/tmp",
     "build": "yarn build:prepare && tsc --build && yarn build:cleanup",
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
-    "postinstall": "rimraf node_modules/@types/mocha",
     "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "cypress run --component",
@@ -25,8 +24,8 @@
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
     "examples:recreate-seed": "rimraf examples/seed-test && yarn create react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
-    "prepare": "husky install && lerna run build:i18n",
-    "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook"
+    "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
+    "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n"
   },
   "dependencies": {
     "@storybook/addon-a11y": "6.5.13",
