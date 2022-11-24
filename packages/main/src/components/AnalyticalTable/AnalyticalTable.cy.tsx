@@ -432,7 +432,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('isSelected').should('have.text', 'false');
   });
 
-  it.only('useIndeterminateRowSelection - select subRows', () => {
+  it('useIndeterminateRowSelection - select subRows', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
