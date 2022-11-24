@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.6.0) (2022-11-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix expand/collapse & select keyboard navigation and execution of cb's ([#3789](https://github.com/SAP/ui5-webcomponents-react/issues/3789)) ([ab8bb61](https://github.com/SAP/ui5-webcomponents-react/commit/ab8bb61a07771df8360a4f3acf99bd4bda5e2178)), closes [#3788](https://github.com/SAP/ui5-webcomponents-react/issues/3788)
+
+### Features
+
+- **AnalyticalTable - useIndeterminateRowSelection:** add `onIndeterminateChange` param ([#3797](https://github.com/SAP/ui5-webcomponents-react/issues/3797)) ([9527db1](https://github.com/SAP/ui5-webcomponents-react/commit/9527db13da7db23142f1a92c57a7dcc843993260)), closes [#3775](https://github.com/SAP/ui5-webcomponents-react/issues/3775) [#3612](https://github.com/SAP/ui5-webcomponents-react/issues/3612)
+
 # [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
 
 ### Bug Fixes

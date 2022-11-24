@@ -27,7 +27,7 @@ jobs:
           cache: 'yarn'
 
       - name: install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: run tests
         run: yarn test:jest --runInBand

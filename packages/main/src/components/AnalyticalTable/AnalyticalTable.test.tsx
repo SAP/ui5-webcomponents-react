@@ -4,11 +4,7 @@ import React, { createRef } from 'react';
 import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
 import { AnalyticalTable } from './index';
-import {
-  useIndeterminateRowSelection,
-  useManualRowSelect,
-  useRowDisableSelection
-} from './pluginHooks/AnalyticalTableHooks';
+import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [
   {
@@ -149,101 +145,6 @@ const moreData = [
     friend: {
       name: 'elitr',
       age: 66
-    }
-  }
-];
-
-const dataTreeUnique = [
-  {
-    name: 'Fra',
-    age: 40,
-    friend: {
-      name: 'MAR',
-      age: 28
-    },
-    subRows: [
-      {
-        name: 'asd',
-        age: 40,
-        friend: {
-          name: 'longlonglong',
-          age: 28
-        },
-        subRows: [
-          {
-            name: 'ABC',
-            age: 40,
-            friend: {
-              name: 'DEF',
-              age: 28
-            },
-            subRows: [
-              {
-                name: 'GHijkl',
-                age: 40,
-                friend: {
-                  name: 'mnop',
-                  age: 28
-                },
-                subRows: [
-                  {
-                    name: 'Marc',
-                    age: 40,
-                    friend: {
-                      name: 'Peter',
-                      age: 28
-                    },
-                    subRows: [
-                      {
-                        name: 'Paula',
-                        age: 40,
-                        friend: {
-                          name: 'May',
-                          age: 28
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: 'Charles',
-        age: 40,
-        friend: {
-          name: 'Leela',
-          age: 28
-        }
-      },
-      {
-        name: 'Farnsworth',
-        age: 40,
-        friend: {
-          name: 'Fry',
-          age: 28
-        },
-        subRows: [
-          {
-            name: 'Zoidberg',
-            age: 40,
-            friend: {
-              name: 'Bender',
-              age: 28
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'Amy',
-    age: 20,
-    friend: {
-      name: 'Philip',
-      age: 50
     }
   }
 ];
@@ -1046,86 +947,6 @@ describe('AnalyticalTable', () => {
     expect(queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('plugin hook: useIndeterminateRowSelection', async () => {
-    const cb = jest.fn();
-    const { rerender, getAllByTitle, getByTitle, getByText, container, unmount, asFragment } = render(
-      <AnalyticalTable
-        data={dataTreeUnique}
-        columns={columns}
-        selectionMode={TableSelectionMode.MultiSelect}
-        isTreeTable={true}
-        tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelect={cb}
-        selectedRowIds={{ '1': true }}
-      />
-    );
-    const checkboxes = container.querySelectorAll('ui5-checkbox');
-
-    expect(checkboxes[0]).toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[2]).toHaveAttribute('checked', 'true');
-
-    fireEvent.click(getByText('Amy'));
-    expect(cb).toHaveBeenCalled();
-
-    expect(checkboxes[0]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[0]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('checked', 'true');
-
-    // expand all rows
-    fireEvent.click(getByTitle('Expand Node').querySelector('[ui5-icon]'));
-    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
-    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
-    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
-    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
-    fireEvent.click(getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
-
-    fireEvent.click(getByText('GHijkl'));
-
-    Array.from(container.querySelectorAll('ui5-checkbox'))
-      .slice(0, 4)
-      .forEach((item, index) => {
-        expect(item).toHaveAttribute('indeterminate', 'true');
-      });
-    expect(container.querySelectorAll('ui5-checkbox')[4]).not.toHaveAttribute('indeterminate', 'true');
-    expect(container.querySelectorAll('ui5-checkbox')[4]).toHaveAttribute('checked', 'true');
-
-    Array.from(container.querySelectorAll('ui5-checkbox'))
-      .slice(5)
-      .forEach((item, index) => {
-        expect(item).not.toHaveAttribute('indeterminate', 'true');
-        expect(item).not.toHaveAttribute('checked', 'true');
-      });
-
-    expect(asFragment()).toMatchSnapshot();
-
-    unmount();
-    const { container: newContainer } = render(
-      <AnalyticalTable
-        data={dataTreeUnique}
-        columns={columns}
-        selectionMode={TableSelectionMode.MultiSelect}
-        isTreeTable={true}
-        tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelect={cb}
-        selectedRowIds={{
-          '0.0.0.0.0': true,
-          '1': true
-        }}
-      />
-    );
-
-    expect(newContainer.querySelectorAll('ui5-checkbox')[0]).toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
   });
 
   test('body scroll', () => {
