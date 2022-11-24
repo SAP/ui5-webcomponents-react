@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/TreeItem.js';
 import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
+import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -46,6 +46,10 @@ interface TreeItemAttributes {
    */
   indeterminate?: boolean;
   /**
+   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   */
+  navigated?: boolean;
+  /**
    * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
    */
   selected?: boolean;
@@ -53,6 +57,12 @@ interface TreeItemAttributes {
    * Defines the text of the tree item.
    */
   text?: string;
+  /**
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
+   *
+   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   */
+  type?: ListItemType | keyof typeof ListItemType;
 }
 
 export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
@@ -76,8 +86,8 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text'],
-  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'type'],
+  ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   [],
   []
 );
@@ -85,7 +95,8 @@ const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
 TreeItem.displayName = 'TreeItem';
 
 TreeItem.defaultProps = {
-  additionalTextState: ValueState.None
+  additionalTextState: ValueState.None,
+  type: ListItemType.Active
 };
 
 export { TreeItem };

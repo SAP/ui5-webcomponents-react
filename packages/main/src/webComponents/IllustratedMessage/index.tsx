@@ -17,6 +17,7 @@ interface IllustratedMessageAttributes {
    *
    * *   `AddColumn`
    * *   `AddPeople`
+   * *   `AddDimensions`
    * *   `BalloonSky`
    * *   `BeforeSearch`
    * *   `Connection`
@@ -38,6 +39,7 @@ interface IllustratedMessageAttributes {
    * *   `NoSearchResults`
    * *   `NoTasks_v1`
    * *   `NoTasks`
+   * *   `NoDimensionsSet`
    * *   `PageNotFound`
    * *   `ReloadScreen`
    * *   `ResizeColumn`
@@ -67,6 +69,7 @@ interface IllustratedMessageAttributes {
    * *   `UnableToLoad`
    * *   `UnableToLoadImage`
    * *   `UnableToUpload`
+   * *   `UploadToCloud`
    * *   `UploadCollection`
    * *   `TntChartArea`
    * *   `TntChartArea2`
