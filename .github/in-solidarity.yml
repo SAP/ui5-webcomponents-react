@@ -56,3 +56,4 @@ rules:
       - human-hours
 ignore:
  - ".github/in-solidarity.yml"
+ - "**/.yarn/**"
