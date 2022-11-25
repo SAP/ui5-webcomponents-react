@@ -13,15 +13,17 @@ interface XAxisTicksProps {
   secondYAxisConfig?: {
     color: string;
   };
+  tickFormatter?: (value: any, index: number) => string;
+  index?: number;
 }
 
 export const XAxisTicks = (props: XAxisTicksProps) => {
-  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig } = props;
+  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig, tickFormatter, index } = props;
 
   const bandWidth = width / visibleTicksCount;
   const shouldRotate = bandWidth <= 100;
 
-  const formattedValue = config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
   let textToDisplay = formattedValue;
   if (shouldRotate) {
     textToDisplay = truncateLongLabel(formattedValue, 11);

@@ -12,12 +12,14 @@ interface YAxisTicksProps {
   secondYAxisConfig?: {
     color: string;
   };
+  tickFormatter?: (value: any, index: number) => string;
+  index?: number;
 }
 
 export const YAxisTicks = (props: YAxisTicksProps) => {
-  const { x, y, payload, config, secondYAxisConfig } = props;
+  const { x, y, payload, config, secondYAxisConfig, tickFormatter, index } = props;
 
-  const formattedValue = config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
   let textToDisplay = formattedValue;
   if (getTextWidth(formattedValue) > defaultMaxYAxisWidth) {
     for (let i = `${formattedValue}`.length; i > 0; i--) {
