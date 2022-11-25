@@ -6367,8 +6367,8 @@ __metadata:
     react-content-loader: 6.2.0
     recharts: 2.1.16
   peerDependencies:
-    "@ui5/webcomponents-react": "workspace:^1.1.0"
-    "@ui5/webcomponents-react-base": "workspace:^1.1.0"
+    "@ui5/webcomponents-react": ^1.1.0
+    "@ui5/webcomponents-react-base": ^1.1.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-jss: ^10.9.0
   languageName: unknown
