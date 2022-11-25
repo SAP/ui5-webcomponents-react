@@ -6342,7 +6342,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-react-base@^1.6.0, @ui5/webcomponents-react-base@workspace:packages/base":
+"@ui5/webcomponents-react-base@^1.5.0, @ui5/webcomponents-react-base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
@@ -6379,7 +6379,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
     "@tanstack/react-virtual": 3.0.0-beta.18
-    "@ui5/webcomponents-react-base": ^1.6.0
+    "@ui5/webcomponents-react-base": ^1.5.0
     clsx: 1.2.1
     react-jss: ^10.9.0
     react-table: 7.8.0
