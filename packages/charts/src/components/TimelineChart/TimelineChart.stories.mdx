@@ -1,0 +1,86 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { DocsHeader } from '@docs/DocsHeader';
+import { Footer } from '@docs/Footer';
+import { TimelineChart } from './TimelineChart';
+import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+
+<Meta
+  title="Charts /  TimelineChart"
+  component={TimelineChart}
+  argTypes={{
+    dataset: {
+      control: { disable: true }
+    },
+    children: {
+      control: { disable: true }
+    }
+  }}
+/>
+
+<DocsHeader />
+
+## Example
+
+<Canvas withToolbar>
+  <Story
+    name="Default"
+    args={{
+      style: { height: '60vh' },
+      dataset: complexDataSet,
+      dimensions: [
+        {
+          accessor: 'name'
+        }
+      ],
+      measures: [
+        {
+          accessor: 'users',
+          label: 'Users',
+          formatter: (val) => val.toLocaleString(),
+          opacity: 0.6
+        },
+        {
+          accessor: 'sessions',
+          label: 'Active Sessions',
+          formatter: (val) => `${val} sessions`,
+          hideDataLabel: true
+        },
+        {
+          accessor: 'volume',
+          label: 'Vol.'
+        }
+      ]
+    }}
+  >
+    {(props) => {
+      return <TimelineChart {...props} />;
+    }}
+  </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas>
+  <Story
+    name="With Custom Color"
+    args={{
+      dimensions: [{ accessor: 'name' }],
+      measures: [{ accessor: 'users', color: 'red' }],
+      dataset: simpleDataSet,
+      style: { width: '95%', height: '40vh' }
+    }}
+  >
+    {(props) => <TimelineChart {...props} />}
+  </Story>
+</Canvas>
+
+<Footer />
