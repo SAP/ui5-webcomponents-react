@@ -13,7 +13,7 @@ interface TimelineChartProps {
  * Gantt charts or any other timeline-based visualizations.
  */
 const TimelineChart: React.FC<TimelineChartProps> = (props) => {
-  const DEFAULT_HEIGHT = 200;
+  const DEFAULT_HEIGHT = 150;
   const height = props.height;
 
   const style: CSSProperties = {
