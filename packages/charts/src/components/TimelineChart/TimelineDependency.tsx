@@ -11,7 +11,7 @@ const TimelineDepsContainer = () => {
         finishY={20}
         depType={DependencyTypes.Start_To_Finish}
       /> */}
-      <TimelineDepsArrow startX={10} startY={20} finishX={20} finishY={80} depType={DependencyTypes.Finish_To_Finish} />
+      <TimelineDepsArrow startX={50} startY={60} finishX={80} finishY={100} depType={DependencyTypes.Start_To_Finish} />
     </svg>
   );
 };
@@ -33,16 +33,20 @@ interface TimelineDepsArrowProps {
   parentHeight?: number;
 }
 
-const CURVE_HANDLE_ALLOWANCE = 50;
-const ARROWHEAD_WIDTH = 8;
-const ARROWHEAD_HEIGHT = 10;
+const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line joins the head
+const ARROWHEAD_HEIGHT = 5; // Distance from the pointy tip to where the arrow line joins the head
+const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 
 const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({ startX, startY, finishX, finishY, depType }) => {
   const dimensions = useContext(TimelineChartDimensionCtx);
+  const halfRowHeight = 0.1 * dimensions.height; // assume row height = 20% for now
+
   startX *= dimensions.width / 100;
   finishX *= dimensions.width / 100;
-  startY *= dimensions.height / 100;
-  finishY *= dimensions.height / 100;
+
+  // Scale Y points and put them in the middle of the row
+  startY = (startY * dimensions.height) / 100 - halfRowHeight;
+  finishY = (finishY * dimensions.height) / 100 - halfRowHeight;
 
   const arrowColor = 'black';
   if (startX === finishX && startY === finishY) {
@@ -51,11 +55,11 @@ const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({ startX, startY, f
   }
 
   if (depType === DependencyTypes.Finish_To_Start) {
-    return generateF2SArrow(startX, startY, finishX, finishY, arrowColor);
+    return generateF2SArrow(startX, startY, finishX, finishY, arrowColor, halfRowHeight);
   }
 
   if (depType === DependencyTypes.Start_To_Finish) {
-    return generateS2FArrow(startX, startY, finishX, finishY, arrowColor);
+    return generateS2FArrow(startX, startY, finishX, finishY, arrowColor, halfRowHeight);
   }
 
   if (depType === DependencyTypes.Start_To_Start) {
@@ -73,20 +77,33 @@ const generateF2SArrow = (
   startY: number,
   finishX: number,
   finishY: number,
-  color: string
+  color: string,
+  halfRowHeight: number
 ): JSX.Element => {
   return (
     <>
-      <path
-        d={`M ${startX} ${startY}
-          C ${startX + CURVE_HANDLE_ALLOWANCE} ${startY},
-          ${startX + CURVE_HANDLE_ALLOWANCE} ${startY + (finishY - startY) / 6},
-          ${startX + (finishX - startX) / 2} ${startY + (finishY - startY) / 2}
-          S ${finishX - CURVE_HANDLE_ALLOWANCE} ${finishY},
-          ${finishX} ${finishY}`}
-        stroke={color}
-        fill="transparent"
-      />
+      {generateStartingPoint(startX, startY, color)}
+      {startX >= finishX || finishX - startX < 2 * ARROW_CLEARANCE ? (
+        <path
+          d={`M ${startX} ${startY}
+            h ${ARROW_CLEARANCE}
+            v ${halfRowHeight}
+            H ${finishX - ARROW_CLEARANCE}
+            V ${finishY}
+            H ${finishX}`}
+          stroke={color}
+          fill="transparent"
+        />
+      ) : (
+        <path
+          d={`M ${startX} ${startY}
+            h ${ARROW_CLEARANCE}
+            V ${finishY}
+            H ${finishX}`}
+          stroke={color}
+          fill="transparent"
+        />
+      )}
       {generateStartFacingHead(finishX, finishY, color)}
     </>
   );
@@ -98,20 +115,33 @@ const generateS2FArrow = (
   startY: number,
   finishX: number,
   finishY: number,
-  color: string
+  color: string,
+  halfRowHeight: number
 ): JSX.Element => {
   return (
     <>
-      <path
-        d={`M ${startX} ${startY}
-            C ${startX - CURVE_HANDLE_ALLOWANCE} ${startY},
-            ${startX - CURVE_HANDLE_ALLOWANCE} ${startY + (finishY - startY) / 6},
-            ${startX + (finishX - startX) / 2} ${startY + (finishY - startY) / 2}
-            S ${finishX + CURVE_HANDLE_ALLOWANCE} ${finishY},
-            ${finishX} ${finishY}`}
-        stroke={color}
-        fill="transparent"
-      />
+      {generateStartingPoint(startX, startY, color)}
+      {startX <= finishX || startX - finishX < 2 * ARROW_CLEARANCE ? (
+        <path
+          d={`M ${startX} ${startY}
+            h ${-ARROW_CLEARANCE}
+            v ${halfRowHeight}
+            H ${finishX + ARROW_CLEARANCE}
+            V ${finishY}
+            H ${finishX}`}
+          stroke={color}
+          fill="transparent"
+        />
+      ) : (
+        <path
+          d={`M ${startX} ${startY}
+            h ${-ARROW_CLEARANCE}
+            V ${finishY}
+            H ${finishX}`}
+          stroke={color}
+          fill="transparent"
+        />
+      )}
       {generateEndFacingHead(finishX, finishY, color)}
     </>
   );
@@ -127,11 +157,12 @@ const generateS2SArrow = (
 ): JSX.Element => {
   return (
     <>
+      {generateStartingPoint(startX, startY, color)}
       <path
         d={`M ${startX} ${startY}
-              C ${startX - CURVE_HANDLE_ALLOWANCE} ${startY},
-              ${finishX - CURVE_HANDLE_ALLOWANCE} ${finishY},
-              ${finishX} ${finishY}`}
+          h ${startX <= finishX ? -ARROW_CLEARANCE : finishX - startX - ARROW_CLEARANCE}
+          V ${finishY}
+          H ${finishX}`}
         stroke={color}
         fill="transparent"
       />
@@ -150,17 +181,23 @@ const generateF2FArrow = (
 ): JSX.Element => {
   return (
     <>
+      {generateStartingPoint(startX, startY, color)}
       <path
         d={`M ${startX} ${startY}
-              C ${startX + CURVE_HANDLE_ALLOWANCE} ${startY},
-              ${finishX + CURVE_HANDLE_ALLOWANCE} ${finishY},
-              ${finishX} ${finishY}`}
+          h ${startX >= finishX ? ARROW_CLEARANCE : finishX - startX + ARROW_CLEARANCE}
+          V ${finishY}
+          H ${finishX}`}
         stroke={color}
         fill="transparent"
       />
       {generateEndFacingHead(finishX, finishY, color)}
     </>
   );
+};
+
+// Create the starting point indicator
+const generateStartingPoint = (x: number, y: number, color: string): JSX.Element => {
+  return <circle cx={`${x}`} cy={`${y}`} r="1" fill={color} />;
 };
 
 // Create an arrowhead pointing to a task start.
@@ -180,8 +217,8 @@ const generateEndFacingHead = (finishX: number, finishY: number, color: string):
   return (
     <polygon
       points={`${finishX}, ${finishY} 
-      ${finishX + ARROWHEAD_HEIGHT}, ${finishY - ARROWHEAD_WIDTH / 2} 
-      ${finishX + ARROWHEAD_HEIGHT}, ${finishY + ARROWHEAD_WIDTH / 2}`}
+        ${finishX + ARROWHEAD_HEIGHT}, ${finishY - ARROWHEAD_WIDTH / 2} 
+        ${finishX + ARROWHEAD_HEIGHT}, ${finishY + ARROWHEAD_WIDTH / 2}`}
       fill={color}
     />
   );
