@@ -1,50 +1,52 @@
 import React, { useEffect, useRef } from 'react';
 
 interface TimelineChartRowProps {
-  height: number;
-  yOffset: number;
+  rowHeight: number;
+  rowNumber: number;
+  totalDuration: number;
 }
 
 /**
  * This represents each row of the TimelineChart. It is used to display
  * the task items and milestones.
  */
-const TimelineChartRow: React.FC<TimelineChartRowProps> = ({ height, yOffset }) => {
+const TimelineChartRow: React.FC<TimelineChartRowProps> = ({ rowHeight, rowNumber, totalDuration }) => {
   return (
-    <svg x="0%" y={`${yOffset}%`} width="100%" height={`${height}%`}>
-      <TimelineTask startPosition={5} duration={20} />
-      <TimelineTask startPosition={50} duration={40} />
-      <TimelineTask startPosition={30} duration={5} />
-      <TimelineMilestone position={30} />
+    <svg x="0" y={`${rowNumber * rowHeight}`} width="100%" height={`${rowHeight}`}>
+      <TimelineTask startTime={5} duration={20} totalDuration={totalDuration} />
+      <TimelineTask startTime={50} duration={40} totalDuration={totalDuration} />
+      <TimelineTask startTime={30} duration={5} totalDuration={totalDuration} />
+      <TimelineMilestone time={30} totalDuration={totalDuration} />
     </svg>
   );
 };
 
 interface TimelineTaskProps {
   /**
-   * The starting point of the task on the timeline. Can
+   * The starting time of the task on the timeline. Can
    * also be seen as the x-offset of the task. It is a
    * percentage of the total rendered duration of the
    * timeline.
    */
-  startPosition: number;
+  startTime: number;
 
   /**
-   * Duration of the task. Should be less than or equal to
-   * 100% of the total rendered timeline duration.
+   * Duration of the task.
    */
   duration: number;
+
+  totalDuration: number;
 }
 
-const TimelineTask: React.FC<TimelineTaskProps> = ({ startPosition, duration }) => {
+const TimelineTask: React.FC<TimelineTaskProps> = ({ startTime, duration, totalDuration }) => {
   // The 10% y value is to create a little gap between the top grid line and the
   // rendered TimelineTask itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
   return (
     <rect
-      x={`${startPosition}%`}
+      x={`${(startTime / totalDuration) * 100}%`}
       y="10%"
-      width={`${duration}%`}
+      width={`${(duration / totalDuration) * 100}%`}
       height="80%"
       rx="4"
       ry="4"
@@ -60,10 +62,12 @@ interface TimelineMilestoneProps {
    * percentage of the total rendered duration of the
    * timeline.
    */
-  position: number;
+  time: number;
+
+  totalDuration: number;
 }
 
-const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ position }) => {
+const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDuration }) => {
   const milestoneRef = useRef<SVGRectElement>();
 
   useEffect(() => {
@@ -94,7 +98,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ position }) => {
   // rendered TimelineTask itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
   return (
-    <svg x={`${position}%`} y="10%" height="80%" overflow="visible">
+    <svg x={`${(time / totalDuration) * 100}%`} y="10%" height="80%" overflow="visible">
       <rect // Zero width. Height is used to draw a rhombus after component is mounted.
         ref={milestoneRef}
         height="100%"

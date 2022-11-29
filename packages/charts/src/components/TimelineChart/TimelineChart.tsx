@@ -40,7 +40,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight 
 
   height = height != null ? height : DEFAULT_HEIGHT;
   rowHeight = rowHeight != null ? rowHeight : DEFAULT_ROW_HEIGHT;
-  const numOfItems = 7;
+  const numOfItems = 5;
+  const totalDuration = 170;
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -89,6 +90,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight 
             height={height - DURATION_LABEL_HEIGHT}
             rowHeight={rowHeight}
             numOfItems={numOfItems}
+            totalDuration={totalDuration}
           />
         </div>
       </TimelineChartDimensionCtx.Provider>

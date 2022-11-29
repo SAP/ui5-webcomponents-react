@@ -10,9 +10,16 @@ interface TimelineChartBodyProps {
   height?: number;
   rowHeight: number;
   numOfItems: number;
+  totalDuration: number;
 }
 
-const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({ width, height, rowHeight, numOfItems }) => {
+const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
+  width,
+  height,
+  rowHeight,
+  numOfItems,
+  totalDuration
+}) => {
   const style: CSSProperties = {
     width: width,
     height: `${numOfItems * rowHeight}px`,
@@ -27,10 +34,10 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({ width, height, ro
           <TimeLineChartGrid isDiscrete={true} numOfRows={numOfItems} numOfCols={8} rowHeight={rowHeight} />
         </TimelineChartLayer>
         <TimelineChartLayer>
-          <TimelineDepsContainer />
+          <TimelineDepsContainer rowHeight={rowHeight} totalDuration={totalDuration} />
         </TimelineChartLayer>
         <TimelineChartLayer>
-          <TimelineChartRow height={rowHeight} yOffset={40}></TimelineChartRow>
+          <TimelineChartRow rowHeight={rowHeight} rowNumber={2} totalDuration={totalDuration} />
         </TimelineChartLayer>
         <TimelineChartLayer></TimelineChartLayer>
       </div>
@@ -51,6 +58,7 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
     height: `${numOfItems * rowHeight}px`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
+    // overflowY: 'scroll'
   };
 
   const itemStyle: CSSProperties = {

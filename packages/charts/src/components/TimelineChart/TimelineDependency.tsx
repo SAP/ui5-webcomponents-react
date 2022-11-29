@@ -2,7 +2,12 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useContext } from 'react';
 import { IDimensionCtx, TimelineChartDimensionCtx } from './TimelineChart';
 
-const TimelineDepsContainer = () => {
+interface TimelineDepsContainerProps {
+  rowHeight: number;
+  totalDuration: number;
+}
+
+const TimelineDepsContainer: React.FC<TimelineDepsContainerProps> = ({ rowHeight, totalDuration }) => {
   return (
     <svg width="100%" height="100%">
       {/* <TimelineDepsArrow
@@ -12,7 +17,15 @@ const TimelineDepsContainer = () => {
         finishY={20}
         depType={DependencyTypes.Start_To_Finish}
       /> */}
-      <TimelineDepsArrow startX={50} startY={60} finishX={80} finishY={100} depType={DependencyTypes.Start_To_Finish} />
+      <TimelineDepsArrow
+        startTime={50}
+        startRowNumber={3}
+        finishTime={80}
+        finishRowNumber={5}
+        rowHeight={rowHeight}
+        totalDuration={totalDuration}
+        depType={DependencyTypes.Start_To_Finish}
+      />
     </svg>
   );
 };
@@ -26,28 +39,36 @@ enum DependencyTypes {
 
 interface TimelineDepsArrowProps {
   depType: DependencyTypes;
-  startX: number;
-  startY: number;
-  finishX: number;
-  finishY: number;
-  parentWidth?: number;
-  parentHeight?: number;
+  startTime: number;
+  startRowNumber: number;
+  finishTime: number;
+  finishRowNumber: number;
+  rowHeight: number;
+  totalDuration: number;
 }
 
 const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line joins the head
 const ARROWHEAD_HEIGHT = 5; // Distance from the pointy tip to where the arrow line joins the head
 const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 
-const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({ startX, startY, finishX, finishY, depType }) => {
+const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({
+  startTime,
+  startRowNumber,
+  finishTime,
+  finishRowNumber,
+  depType,
+  rowHeight,
+  totalDuration
+}) => {
   const dimensions: IDimensionCtx = useContext(TimelineChartDimensionCtx);
-  const halfRowHeight = 0.1 * dimensions.chartHeight; // assume row height = 20% for now
+  const halfRowHeight = 0.5 * rowHeight;
 
-  startX *= dimensions.chartWidth / 100;
-  finishX *= dimensions.chartWidth / 100;
+  const startX = (startTime / totalDuration) * dimensions.chartWidth;
+  const finishX = (finishTime / totalDuration) * dimensions.chartWidth;
 
   // Scale Y points and put them in the middle of the row
-  startY = (startY * dimensions.chartHeight) / 100 - halfRowHeight;
-  finishY = (finishY * dimensions.chartHeight) / 100 - halfRowHeight;
+  const startY = startRowNumber * rowHeight - halfRowHeight;
+  const finishY = finishRowNumber * rowHeight - halfRowHeight;
 
   const arrowColor = ThemingParameters.sapTextColor;
   if (startX === finishX && startY === finishY) {
