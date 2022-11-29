@@ -7,28 +7,33 @@ import TimelineDepsContainer from './TimelineDependency';
 
 interface TimelineChartBodyProps {
   width: number;
-  height: number;
+  height?: number;
+  rowHeight: number;
+  numOfItems: number;
 }
 
-const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({ width, height }) => {
+const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({ width, height, rowHeight, numOfItems }) => {
   const style: CSSProperties = {
     width: width,
-    height: height,
-    position: 'relative'
+    height: `${numOfItems * rowHeight}px`,
+    position: 'relative',
+    outline: `1px solid ${ThemingParameters.sapList_BorderColor}`
   };
 
   return (
-    <div style={style}>
-      <TimelineChartLayer>
-        <TimeLineChartGrid isDiscrete={true} numOfRows={5} numOfCols={8} />
-      </TimelineChartLayer>
-      <TimelineChartLayer>
-        <TimelineDepsContainer />
-      </TimelineChartLayer>
-      <TimelineChartLayer>
-        <TimelineChartRow height={20} yOffset={40}></TimelineChartRow>
-      </TimelineChartLayer>
-      <TimelineChartLayer></TimelineChartLayer>
+    <div style={{ height: height }}>
+      <div style={style}>
+        <TimelineChartLayer>
+          <TimeLineChartGrid isDiscrete={true} numOfRows={numOfItems} numOfCols={8} rowHeight={rowHeight} />
+        </TimelineChartLayer>
+        <TimelineChartLayer>
+          <TimelineDepsContainer />
+        </TimelineChartLayer>
+        <TimelineChartLayer>
+          <TimelineChartRow height={rowHeight} yOffset={40}></TimelineChartRow>
+        </TimelineChartLayer>
+        <TimelineChartLayer></TimelineChartLayer>
+      </div>
     </div>
   );
 };
@@ -36,16 +41,43 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({ width, height }) 
 interface TimelineChartTaskHeaderProps {
   width: number;
   height: number;
+  rowHeight: number;
+  numOfItems: number;
 }
 
-const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width, height }) => {
+const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width, height, rowHeight, numOfItems }) => {
   const style: CSSProperties = {
     width: width,
-    height: height,
-    borderRight: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+    height: `${numOfItems * rowHeight}px`,
+    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
-  return <div style={style}>TaskLabel</div>;
+
+  const itemStyle: CSSProperties = {
+    width: '100%',
+    height: `${rowHeight}px`,
+    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+    textAlign: 'center'
+  };
+
+  const itemPHolderArray = [];
+
+  for (let i = 1; i <= numOfItems; i++) {
+    itemPHolderArray.push(i);
+  }
+  return (
+    <div style={{ height: height }}>
+      <div style={style}>
+        {itemPHolderArray.map((item) => {
+          return (
+            <div key={item} style={itemStyle}>
+              Item {item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 interface TimelineChartDurationHeaderProps {
@@ -57,7 +89,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   const style: CSSProperties = {
     width: width,
     height: height,
-    borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
   return <div style={style}>DurationLabel</div>;
@@ -72,8 +104,7 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
   const style: CSSProperties = {
     width: width,
     height: height,
-    borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    borderRight: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
   return <div style={style}>LabelTitle</div>;

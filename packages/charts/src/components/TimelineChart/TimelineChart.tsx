@@ -24,24 +24,28 @@ export const TimelineChartDimensionCtx = createContext<IDimensionCtx>({
 interface TimelineChartProps {
   height?: number;
   width?: number;
+  rowHeight?: number;
 }
 
 /**
  * A `TimelineChart` is a data visualization chart that can be used to represent
  * Gantt charts or any other timeline-based visualizations.
  */
-const TimelineChart: React.FC<TimelineChartProps> = ({ height, width }) => {
+const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight }) => {
   const DEFAULT_HEIGHT = 200;
   const DEFAULT_WIDTH = '100%';
   const TASK_LABEL_WIDTH = 150;
   const DURATION_LABEL_HEIGHT = 50;
+  const DEFAULT_ROW_HEIGHT = 20;
 
   height = height != null ? height : DEFAULT_HEIGHT;
+  rowHeight = rowHeight != null ? rowHeight : DEFAULT_ROW_HEIGHT;
+  const numOfItems = 7;
 
   const style: CSSProperties = {
     height: `${height}px`,
     width: `${width != null ? width + 'px' : DEFAULT_WIDTH}`,
-    border: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     backgroundColor: ThemingParameters.sapBackgroundColor,
     display: 'grid',
     gridTemplateColumns: `${TASK_LABEL_WIDTH}px auto`,
@@ -69,13 +73,23 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ height, width }) => {
   return (
     <div ref={ref} style={style}>
       <TimelineChartDimensionCtx.Provider value={dimensions}>
-        <div style={{ width: TASK_LABEL_WIDTH }}>
+        <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
           <TimelineChartHeaderLabels width={TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
-          <TimelineChartTaskHeader width={TASK_LABEL_WIDTH} height={height - DURATION_LABEL_HEIGHT} />
+          <TimelineChartTaskHeader
+            width={TASK_LABEL_WIDTH}
+            height={height - DURATION_LABEL_HEIGHT}
+            rowHeight={rowHeight}
+            numOfItems={numOfItems}
+          />
         </div>
-        <div>
+        <div style={{ height: height }}>
           <TimelineChartDurationHeader width={width - TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
-          <TimelineChartBody width={width - TASK_LABEL_WIDTH} height={height - DURATION_LABEL_HEIGHT} />
+          <TimelineChartBody
+            width={width - TASK_LABEL_WIDTH}
+            height={height - DURATION_LABEL_HEIGHT}
+            rowHeight={rowHeight}
+            numOfItems={numOfItems}
+          />
         </div>
       </TimelineChartDimensionCtx.Provider>
     </div>
