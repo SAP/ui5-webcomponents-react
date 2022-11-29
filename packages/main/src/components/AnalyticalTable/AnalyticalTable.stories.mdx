@@ -786,7 +786,7 @@ For more details on this behavior you can double check the [react-table docs](ht
 
 ### How to scroll to a specific row/offset?
 
-The instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the instance e.g. by creating a `Ref`)
+The DOM instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the DOM element e.g. by creating a Ref `ref={analyticalTableRef}`)
 
 - `scrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
 - `scrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
