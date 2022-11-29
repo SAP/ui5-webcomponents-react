@@ -1,5 +1,6 @@
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useContext } from 'react';
-import { TimelineChartDimensionCtx } from './TimelineChart';
+import { IDimensionCtx, TimelineChartDimensionCtx } from './TimelineChart';
 
 const TimelineDepsContainer = () => {
   return (
@@ -38,17 +39,17 @@ const ARROWHEAD_HEIGHT = 5; // Distance from the pointy tip to where the arrow l
 const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 
 const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({ startX, startY, finishX, finishY, depType }) => {
-  const dimensions = useContext(TimelineChartDimensionCtx);
-  const halfRowHeight = 0.1 * dimensions.height; // assume row height = 20% for now
+  const dimensions: IDimensionCtx = useContext(TimelineChartDimensionCtx);
+  const halfRowHeight = 0.1 * dimensions.chartHeight; // assume row height = 20% for now
 
-  startX *= dimensions.width / 100;
-  finishX *= dimensions.width / 100;
+  startX *= dimensions.chartWidth / 100;
+  finishX *= dimensions.chartWidth / 100;
 
   // Scale Y points and put them in the middle of the row
-  startY = (startY * dimensions.height) / 100 - halfRowHeight;
-  finishY = (finishY * dimensions.height) / 100 - halfRowHeight;
+  startY = (startY * dimensions.chartHeight) / 100 - halfRowHeight;
+  finishY = (finishY * dimensions.chartHeight) / 100 - halfRowHeight;
 
-  const arrowColor = 'black';
+  const arrowColor = ThemingParameters.sapTextColor;
   if (startX === finishX && startY === finishY) {
     // render nothing if the points overlap
     return null;
