@@ -14,12 +14,14 @@ export interface IDimensionCtx {
   chartHeight: number;
 }
 
-export const TimelineChartDimensionCtx = createContext<IDimensionCtx>({
+const defaultDimensions: IDimensionCtx = {
   width: 0,
   height: 0,
   chartWidth: 0,
   chartHeight: 0
-});
+};
+
+export const TimelineChartDimensionCtx = createContext<IDimensionCtx>(defaultDimensions);
 
 interface TimelineChartProps {
   height?: number;
@@ -32,16 +34,18 @@ interface TimelineChartProps {
  * Gantt charts or any other timeline-based visualizations.
  */
 const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight }) => {
-  const DEFAULT_HEIGHT = 200;
+  // const DEFAULT_HEIGHT = 200;
   const DEFAULT_WIDTH = '100%';
   const TASK_LABEL_WIDTH = 150;
   const DURATION_LABEL_HEIGHT = 50;
-  const DEFAULT_ROW_HEIGHT = 20;
+  const DEFAULT_ROW_HEIGHT = 25;
 
-  height = height != null ? height : DEFAULT_HEIGHT;
+  // height = height != null ? height : DEFAULT_HEIGHT;
   rowHeight = rowHeight != null ? rowHeight : DEFAULT_ROW_HEIGHT;
-  const numOfItems = 5;
+  const numOfItems = 9;
   const totalDuration = 170;
+
+  height = rowHeight * numOfItems + DURATION_LABEL_HEIGHT;
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -54,7 +58,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight 
   };
 
   const ref = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0, chartWidth: 0, chartHeight: 0 });
+  const [dimensions, setDimensions] = useState(defaultDimensions);
 
   useEffect(() => {
     const ro = new ResizeObserver((entries) => {

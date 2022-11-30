@@ -58,14 +58,19 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
     height: `${numOfItems * rowHeight}px`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
-    // overflowY: 'scroll'
+    // overflowY: 'auto'
   };
 
   const itemStyle: CSSProperties = {
     width: '100%',
     height: `${rowHeight}px`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    textAlign: 'center'
+    fontSize: '10px',
+    lineHeight: `${rowHeight}px`,
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   };
 
   const itemPHolderArray = [];
@@ -79,7 +84,9 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
         {itemPHolderArray.map((item) => {
           return (
             <div key={item} style={itemStyle}>
-              Item {item}
+              <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${item}`}>
+                Item {item}
+              </span>
             </div>
           );
         })}
@@ -100,7 +107,22 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
-  return <div style={style}>DurationLabel</div>;
+  return (
+    <div style={style}>
+      <div
+        style={{
+          height: '50%',
+          textAlign: 'center',
+          borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+          fontSize: '13px'
+          //   lineHeight: `${height * 0.5}`
+        }}
+      >
+        Duration (ms)
+      </div>
+      <div style={{ height: '50%' }}></div>
+    </div>
+  );
 };
 
 interface TimelineChartHeaderLabelsProps {
@@ -115,7 +137,12 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
-  return <div style={style}>LabelTitle</div>;
+  return (
+    <div style={style}>
+      <div style={{ height: '50%' }}></div>
+      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>Tasks</div>
+    </div>
+  );
 };
 
 export { TimelineChartBody, TimelineChartDurationHeader, TimelineChartHeaderLabels, TimelineChartTaskHeader };
