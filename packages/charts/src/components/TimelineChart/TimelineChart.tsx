@@ -27,25 +27,26 @@ interface TimelineChartProps {
   height?: number;
   width?: number;
   rowHeight?: number;
+  isDiscrete?: boolean;
 }
 
 /**
  * A `TimelineChart` is a data visualization chart that can be used to represent
  * Gantt charts or any other timeline-based visualizations.
  */
-const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight }) => {
-  // const DEFAULT_HEIGHT = 200;
+const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
   const DEFAULT_WIDTH = '100%';
   const TASK_LABEL_WIDTH = 150;
   const DURATION_LABEL_HEIGHT = 50;
   const DEFAULT_ROW_HEIGHT = 25;
 
-  // height = height != null ? height : DEFAULT_HEIGHT;
   rowHeight = rowHeight != null ? rowHeight : DEFAULT_ROW_HEIGHT;
   const numOfItems = 9;
   const totalDuration = 170;
+  const height = rowHeight * numOfItems + DURATION_LABEL_HEIGHT;
 
-  height = rowHeight * numOfItems + DURATION_LABEL_HEIGHT;
+  const isDiscrete = true;
+  const totalDiscreteDuration = 8;
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -88,13 +89,20 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ height, width, rowHeight 
           />
         </div>
         <div style={{ height: height }}>
-          <TimelineChartDurationHeader width={width - TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
+          <TimelineChartDurationHeader
+            width={width - TASK_LABEL_WIDTH}
+            height={DURATION_LABEL_HEIGHT}
+            isDiscrete={isDiscrete}
+            totalDiscreteDuration={totalDiscreteDuration}
+          />
           <TimelineChartBody
             width={width - TASK_LABEL_WIDTH}
             height={height - DURATION_LABEL_HEIGHT}
             rowHeight={rowHeight}
             numOfItems={numOfItems}
             totalDuration={totalDuration}
+            isDiscrete={isDiscrete}
+            totalDiscreteDuration={totalDiscreteDuration}
           />
         </div>
       </TimelineChartDimensionCtx.Provider>

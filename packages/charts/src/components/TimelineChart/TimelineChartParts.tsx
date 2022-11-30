@@ -11,6 +11,8 @@ interface TimelineChartBodyProps {
   rowHeight: number;
   numOfItems: number;
   totalDuration: number;
+  isDiscrete;
+  totalDiscreteDuration;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
@@ -18,7 +20,9 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   height,
   rowHeight,
   numOfItems,
-  totalDuration
+  totalDuration,
+  isDiscrete,
+  totalDiscreteDuration
 }) => {
   const style: CSSProperties = {
     width: width,
@@ -31,7 +35,12 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
     <div style={{ height: height }}>
       <div style={style}>
         <TimelineChartLayer>
-          <TimeLineChartGrid isDiscrete={true} numOfRows={numOfItems} numOfCols={8} rowHeight={rowHeight} />
+          <TimeLineChartGrid
+            isDiscrete={isDiscrete}
+            numOfRows={numOfItems}
+            numOfCols={totalDiscreteDuration}
+            rowHeight={rowHeight}
+          />
         </TimelineChartLayer>
         <TimelineChartLayer>
           <TimelineDepsContainer rowHeight={rowHeight} totalDuration={totalDuration} />
@@ -58,7 +67,6 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
     height: `${numOfItems * rowHeight}px`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
-    // overflowY: 'auto'
   };
 
   const itemStyle: CSSProperties = {
@@ -73,15 +81,10 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
     textOverflow: 'ellipsis'
   };
 
-  const itemPHolderArray = [];
-
-  for (let i = 1; i <= numOfItems; i++) {
-    itemPHolderArray.push(i);
-  }
   return (
     <div style={{ height: height }}>
       <div style={style}>
-        {itemPHolderArray.map((item) => {
+        {Array.from(Array(numOfItems).keys()).map((item) => {
           return (
             <div key={item} style={itemStyle}>
               <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${item}`}>
@@ -98,29 +101,62 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
 interface TimelineChartDurationHeaderProps {
   width: number;
   height: number;
+  isDiscrete: boolean;
+  totalDiscreteDuration: number;
 }
 
-const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({ width, height }) => {
+const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
+  width,
+  height,
+  isDiscrete,
+  totalDiscreteDuration
+}) => {
   const style: CSSProperties = {
     width: width,
     height: height,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
+
+  const halfHeaderHeight = 0.5 * height;
+
   return (
     <div style={style}>
       <div
         style={{
-          height: '50%',
+          height: `${isDiscrete ? halfHeaderHeight : height}px`,
           textAlign: 'center',
           borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-          fontSize: '13px'
-          //   lineHeight: `${height * 0.5}`
+          fontSize: '13px',
+          lineHeight: `${isDiscrete ? halfHeaderHeight : height}px`
         }}
       >
         Duration (ms)
       </div>
-      <div style={{ height: '50%' }}></div>
+      {isDiscrete ? (
+        <div
+          style={{
+            height: `${halfHeaderHeight}px`,
+            fontSize: '10px',
+            display: 'grid',
+            gridTemplateColumns: `repeat(${totalDiscreteDuration}, 1fr)`,
+            textAlign: 'center',
+            lineHeight: `${halfHeaderHeight}px`
+          }}
+        >
+          {Array.from(Array(totalDiscreteDuration).keys()).map((num, index) => {
+            return (
+              <span
+                key={index}
+                style={{ outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}` }}
+                title={`${num}`}
+              >
+                {num}
+              </span>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };
