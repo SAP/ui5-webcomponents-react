@@ -492,7 +492,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
       allRowsSelected: boolean;
       row?: Record<string, unknown>;
       isSelected?: boolean;
-      selectedFlatRows: Record<string, unknown>[] | string[];
+      selectedFlatRows: Record<string, unknown>[];
     }>
   ) => void;
   /**
