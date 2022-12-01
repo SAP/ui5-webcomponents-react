@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useRef, useState } from 'react';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
@@ -49,6 +49,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           <TimelineChartRow rowHeight={rowHeight} rowNumber={2} totalDuration={totalDuration} />
         </TimelineChartLayer>
         <TimelineChartLayer></TimelineChartLayer>
+        <TimelineChartTooltip />
       </div>
     </div>
   );
@@ -177,6 +178,50 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
     <div style={style}>
       <div style={{ height: '50%' }}></div>
       <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>Tasks</div>
+    </div>
+  );
+};
+
+const TimelineChartTooltip: React.FC = () => {
+  const [state, setState] = useState({ x: 0, y: 0, visible: false });
+  const ref = useRef<HTMLDivElement>();
+
+  const onClickHander = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const { x, y } = ref.current?.getBoundingClientRect();
+    setState({ x: evt.clientX - x, y: evt.clientY - y, visible: !state.visible });
+  };
+
+  return (
+    <div
+      ref={ref}
+      style={{ width: '100%', height: '100%', fontSize: '10px', position: 'relative', zIndex: 5 }}
+      onClick={(e) => onClickHander(e)}
+    >
+      {state.visible ? (
+        <span
+          style={{
+            minWidth: 80,
+            display: 'inline-grid',
+            gap: 2,
+            padding: 10,
+            outline: `2px solid ${ThemingParameters.sapList_BorderColor}`,
+            borderRadius: 8,
+            color: ThemingParameters.sapTextColor,
+            backgroundColor: ThemingParameters.sapBackgroundColor,
+            position: 'absolute',
+            left: state.x,
+            top: state.y
+          }}
+        >
+          <span style={{ textAlign: 'center' }}>
+            <strong>Task</strong>
+          </span>
+          <span style={{ width: '100%', height: '4px', backgroundColor: 'blue' }}></span>
+          <span>Start: 10ms</span>
+          <span>Duration: 20ms</span>
+          <span>End: 30ms</span>
+        </span>
+      ) : null}
     </div>
   );
 };
