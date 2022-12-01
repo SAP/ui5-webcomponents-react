@@ -4,19 +4,52 @@ interface TimelineChartRowProps {
   rowHeight: number;
   rowNumber: number;
   totalDuration: number;
+  showTooltip: (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => void;
+  hideTooltip: () => void;
 }
 
 /**
  * This represents each row of the TimelineChart. It is used to display
  * the task items and milestones.
  */
-const TimelineChartRow: React.FC<TimelineChartRowProps> = ({ rowHeight, rowNumber, totalDuration }) => {
+const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
+  rowHeight,
+  rowNumber,
+  totalDuration,
+  showTooltip,
+  hideTooltip
+}) => {
   return (
-    <svg x="0" y={`${rowNumber * rowHeight}`} width="100%" height={`${rowHeight}`}>
-      <TimelineTask startTime={5} duration={20} totalDuration={totalDuration} />
-      <TimelineTask startTime={50} duration={40} totalDuration={totalDuration} />
-      <TimelineTask startTime={30} duration={5} totalDuration={totalDuration} />
-      <TimelineMilestone time={30} totalDuration={totalDuration} />
+    <svg x="0" y={`${rowNumber * rowHeight}`} width="100%" height={`${rowHeight}`} style={{ pointerEvents: 'none' }}>
+      <TimelineTask
+        startTime={5}
+        duration={20}
+        totalDuration={totalDuration}
+        showTooltip={showTooltip}
+        hideTooltip={hideTooltip}
+      />
+      <TimelineTask
+        startTime={50}
+        duration={40}
+        totalDuration={totalDuration}
+        showTooltip={showTooltip}
+        hideTooltip={hideTooltip}
+      />
+      <TimelineTask
+        startTime={30}
+        duration={5}
+        totalDuration={totalDuration}
+        showTooltip={showTooltip}
+        hideTooltip={hideTooltip}
+      />
+      <TimelineMilestone time={30} totalDuration={totalDuration} showTooltip={showTooltip} hideTooltip={hideTooltip} />
     </svg>
   );
 };
@@ -36,9 +69,39 @@ interface TimelineTaskProps {
   duration: number;
 
   totalDuration: number;
+  showTooltip: (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => void;
+  hideTooltip: () => void;
 }
 
-const TimelineTask: React.FC<TimelineTaskProps> = ({ startTime, duration, totalDuration }) => {
+const TimelineTask: React.FC<TimelineTaskProps> = ({
+  startTime,
+  duration,
+  totalDuration,
+  showTooltip,
+  hideTooltip
+}) => {
+  const onMouseOver = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    showTooltip(evt.clientX, evt.clientY, startTime, duration, 'blue', false);
+  };
+
+  const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    hideTooltip();
+  };
+
+  const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    showTooltip(evt.clientX, evt.clientY, startTime, duration, 'blue', false);
+  };
+
   // The 10% y value is to create a little gap between the top grid line and the
   // rendered TimelineTask itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
@@ -50,7 +113,10 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({ startTime, duration, totalD
       height="80%"
       rx="4"
       ry="4"
-      style={{ fill: 'rgb(0,0,255)' }}
+      style={{ fill: 'rgb(0,0,255)', pointerEvents: 'auto', cursor: 'pointer' }}
+      onMouseOver={(e) => onMouseOver(e)}
+      onMouseLeave={(e) => onMouseLeave(e)}
+      onMouseMove={(e) => onMouseMove(e)}
     />
   );
 };
@@ -65,9 +131,19 @@ interface TimelineMilestoneProps {
   time: number;
 
   totalDuration: number;
+
+  showTooltip: (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => void;
+  hideTooltip: () => void;
 }
 
-const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDuration }) => {
+const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDuration, showTooltip, hideTooltip }) => {
   const milestoneRef = useRef<SVGRectElement>();
 
   useEffect(() => {
@@ -94,6 +170,21 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
     );
   }, []);
 
+  const onMouseOver = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    showTooltip(evt.clientX, evt.clientY, time, 0, 'rgb(0,125,0)', true);
+  };
+
+  const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    hideTooltip();
+  };
+
+  const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    evt.stopPropagation();
+    showTooltip(evt.clientX, evt.clientY, time, 0, 'rgb(0,125,0)', true);
+  };
+
   // The 10% y value is to create a little gap between the top grid line and the
   // rendered TimelineTask itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
@@ -104,7 +195,10 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
         height="100%"
         rx="4"
         ry="4"
-        style={{ fill: 'rgb(0,125,0)' }}
+        style={{ fill: 'rgb(0,125,0)', pointerEvents: 'auto', cursor: 'pointer' }}
+        onMouseOver={(e) => onMouseOver(e)}
+        onMouseLeave={(e) => onMouseLeave(e)}
+        onMouseMove={(e) => onMouseMove(e)}
       />
     </svg>
   );

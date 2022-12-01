@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, useRef, useState } from 'react';
+import React, { CSSProperties, forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
@@ -11,8 +11,9 @@ interface TimelineChartBodyProps {
   rowHeight: number;
   numOfItems: number;
   totalDuration: number;
-  isDiscrete;
-  totalDiscreteDuration;
+  isDiscrete: boolean;
+  totalDiscreteDuration: number;
+  unit: string;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
@@ -22,8 +23,11 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   numOfItems,
   totalDuration,
   isDiscrete,
-  totalDiscreteDuration
+  totalDiscreteDuration,
+  unit
 }) => {
+  const tooltipRef = useRef<TimelineTooltipHandle>();
+
   const style: CSSProperties = {
     width: width,
     height: `${numOfItems * rowHeight}px`,
@@ -31,10 +35,22 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
     outline: `1px solid ${ThemingParameters.sapList_BorderColor}`
   };
 
+  const showTooltip = (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => {
+    tooltipRef.current?.onHoverItem(mouseX, mouseY, startTime, duration, color, isMilestone);
+  };
+  const hideTooltip = () => tooltipRef.current?.onLeaveItem();
+
   return (
     <div style={{ height: height }}>
       <div style={style}>
-        <TimelineChartLayer>
+        <TimelineChartLayer ignoreClick>
           <TimeLineChartGrid
             isDiscrete={isDiscrete}
             numOfRows={numOfItems}
@@ -42,14 +58,20 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
             rowHeight={rowHeight}
           />
         </TimelineChartLayer>
-        <TimelineChartLayer>
+        <TimelineChartLayer ignoreClick>
           <TimelineDepsContainer rowHeight={rowHeight} totalDuration={totalDuration} />
         </TimelineChartLayer>
         <TimelineChartLayer>
-          <TimelineChartRow rowHeight={rowHeight} rowNumber={2} totalDuration={totalDuration} />
+          <TimelineChartRow
+            rowHeight={rowHeight}
+            rowNumber={2}
+            totalDuration={totalDuration}
+            showTooltip={showTooltip}
+            hideTooltip={hideTooltip}
+          />
         </TimelineChartLayer>
-        <TimelineChartLayer></TimelineChartLayer>
-        <TimelineChartTooltip />
+        <TimelineChartLayer ignoreClick></TimelineChartLayer>
+        <TimelineChartTooltip ref={tooltipRef} unit={unit} />
       </div>
     </div>
   );
@@ -182,20 +204,69 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
   );
 };
 
-const TimelineChartTooltip: React.FC = () => {
-  const [state, setState] = useState({ x: 0, y: 0, visible: false });
-  const ref = useRef<HTMLDivElement>();
+interface TimelineTooltipHandle {
+  onHoverItem: (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => void;
+  onLeaveItem: () => void;
+}
 
-  const onClickHander = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const { x, y } = ref.current?.getBoundingClientRect();
-    setState({ x: evt.clientX - x, y: evt.clientY - y, visible: !state.visible });
+interface TimelineTooltipChartProps {
+  unit: string;
+}
+
+const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipChartProps>(function TimelineChartTooltip(
+  { unit },
+  ref
+) {
+  const [state, setState] = useState({
+    x: 0,
+    y: 0,
+    visible: false,
+    startTime: 0,
+    duration: 0,
+    color: 'black',
+    isMilestone: false
+  });
+  const divRef = useRef<HTMLDivElement>();
+
+  const onHoverItem = (
+    mouseX: number,
+    mouseY: number,
+    startTime: number,
+    duration: number,
+    color: string,
+    isMilestone: boolean
+  ) => {
+    const { x, y } = divRef.current?.getBoundingClientRect();
+    setState({ x: mouseX - x, y: mouseY - y, visible: true, startTime, duration, color, isMilestone });
   };
+
+  const onLeaveItem = () => {
+    setState({ ...state, visible: false });
+  };
+
+  useImperativeHandle(ref, () => ({
+    onHoverItem: onHoverItem,
+    onLeaveItem: onLeaveItem
+  }));
 
   return (
     <div
-      ref={ref}
-      style={{ width: '100%', height: '100%', fontSize: '10px', position: 'relative', zIndex: 5 }}
-      onClick={(e) => onClickHander(e)}
+      ref={divRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        fontSize: '10px',
+        position: 'relative',
+        zIndex: 5,
+        pointerEvents: 'none'
+      }}
     >
       {state.visible ? (
         <span
@@ -214,16 +285,27 @@ const TimelineChartTooltip: React.FC = () => {
           }}
         >
           <span style={{ textAlign: 'center' }}>
-            <strong>Task</strong>
+            <strong>{state.isMilestone ? 'Milestone' : 'Task'}</strong>
           </span>
-          <span style={{ width: '100%', height: '4px', backgroundColor: 'blue' }}></span>
-          <span>Start: 10ms</span>
-          <span>Duration: 20ms</span>
-          <span>End: 30ms</span>
+          <span style={{ width: '100%', height: '4px', backgroundColor: state.color }}></span>
+          <span>
+            Start: {state.startTime}
+            {unit}
+          </span>
+          {state.isMilestone ? null : (
+            <span>
+              Duration: {state.duration}
+              {unit}
+            </span>
+          )}
+          <span>
+            End: {state.startTime + state.duration}
+            {unit}
+          </span>
         </span>
       ) : null}
     </div>
   );
-};
+});
 
 export { TimelineChartBody, TimelineChartDurationHeader, TimelineChartHeaderLabels, TimelineChartTaskHeader };

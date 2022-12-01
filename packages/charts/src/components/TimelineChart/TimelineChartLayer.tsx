@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface TimelineChartLayerProps {
+  ignoreClick?: boolean;
   children?: JSX.Element | JSX.Element[];
 }
 
@@ -10,9 +11,15 @@ interface TimelineChartLayerProps {
  * can be used to render the grid lines and another can be used to render
  * annotations or tasks.
  */
-const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({ children }) => {
+const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({ ignoreClick = false, children }) => {
   return (
-    <svg color="red" width="100%" height="100%" style={{ position: 'absolute' }}>
+    <svg
+      color="red"
+      width="100%"
+      height="100%"
+      style={{ position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}
+      // onClick={() => console.log('this')}
+    >
       {children}
     </svg>
   );

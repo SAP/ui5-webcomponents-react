@@ -47,6 +47,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
 
   const isDiscrete = true;
   const totalDiscreteDuration = 8;
+  const unit = 'ms';
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -103,6 +104,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
             totalDuration={totalDuration}
             isDiscrete={isDiscrete}
             totalDiscreteDuration={totalDiscreteDuration}
+            unit={unit}
           />
         </div>
       </TimelineChartDimensionCtx.Provider>
