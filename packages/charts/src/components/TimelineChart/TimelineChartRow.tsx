@@ -1,4 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+const THROTTLE_INTERVAL = 300;
+const NORMAL_OPACITY = 1.0;
+const HOVER_OPACITY = 0.7;
+
+function throttle(callback: (x: unknown[] | unknown) => void, interval: number) {
+  let callFunction = true;
+
+  return function (...args: unknown[]) {
+    if (!callFunction) return;
+
+    callFunction = false;
+    callback.apply(this, args);
+    setTimeout(() => (callFunction = true), interval);
+  };
+}
 
 interface TimelineChartRowProps {
   rowHeight: number;
@@ -87,18 +103,16 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
   showTooltip,
   hideTooltip
 }) => {
-  const onMouseOver = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
-    evt.stopPropagation();
-    showTooltip(evt.clientX, evt.clientY, startTime, duration, 'blue', false);
-  };
-
+  const [opacity, setOpacity] = useState(NORMAL_OPACITY);
   const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     hideTooltip();
+    setOpacity(NORMAL_OPACITY);
   };
 
   const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
+    setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, startTime, duration, 'blue', false);
   };
 
@@ -113,10 +127,9 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
       height="80%"
       rx="4"
       ry="4"
-      style={{ fill: 'rgb(0,0,255)', pointerEvents: 'auto', cursor: 'pointer' }}
-      onMouseOver={(e) => onMouseOver(e)}
+      style={{ fill: 'rgb(0,0,255)', pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
       onMouseLeave={(e) => onMouseLeave(e)}
-      onMouseMove={(e) => onMouseMove(e)}
+      onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL)}
     />
   );
 };
@@ -170,18 +183,17 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
     );
   }, []);
 
-  const onMouseOver = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
-    evt.stopPropagation();
-    showTooltip(evt.clientX, evt.clientY, time, 0, 'rgb(0,125,0)', true);
-  };
+  const [opacity, setOpacity] = useState(NORMAL_OPACITY);
 
   const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     hideTooltip();
+    setOpacity(NORMAL_OPACITY);
   };
 
   const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
+    setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, time, 0, 'rgb(0,125,0)', true);
   };
 
@@ -195,10 +207,9 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
         height="100%"
         rx="4"
         ry="4"
-        style={{ fill: 'rgb(0,125,0)', pointerEvents: 'auto', cursor: 'pointer' }}
-        onMouseOver={(e) => onMouseOver(e)}
+        style={{ fill: 'rgb(0,125,0)', pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
         onMouseLeave={(e) => onMouseLeave(e)}
-        onMouseMove={(e) => onMouseMove(e)}
+        onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL)}
       />
     </svg>
   );
