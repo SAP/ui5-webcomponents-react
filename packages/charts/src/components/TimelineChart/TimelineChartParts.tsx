@@ -3,7 +3,7 @@ import React, { CSSProperties, forwardRef, useImperativeHandle, useRef, useState
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
-import TimelineDepsContainer from './TimelineDependency';
+import TimelineChartConnections from './TimelineConnections';
 
 interface TimelineChartBodyProps {
   width: number;
@@ -59,7 +59,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           />
         </TimelineChartLayer>
         <TimelineChartLayer ignoreClick>
-          <TimelineDepsContainer rowHeight={rowHeight} totalDuration={totalDuration} />
+          <TimelineChartConnections rowHeight={rowHeight} totalDuration={totalDuration} />
         </TimelineChartLayer>
         <TimelineChartLayer>
           <TimelineChartRow

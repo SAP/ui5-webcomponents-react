@@ -1,13 +1,16 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { useContext } from 'react';
-import { IDimensionCtx, TimelineChartDimensionCtx } from './TimelineChart';
+import { TimelineChartDimensionCtx } from './TimelineChart';
 
-interface TimelineDepsContainerProps {
+interface TimelineChartConnectionsProps {
   rowHeight: number;
   totalDuration: number;
 }
 
-const TimelineDepsContainer: React.FC<TimelineDepsContainerProps> = ({ rowHeight, totalDuration }) => {
+/**
+ * This holds all the arrows that show the connections between different tasks.
+ */
+const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ rowHeight, totalDuration }) => {
   return (
     <svg width="100%" height="100%">
       {/* <TimelineDepsArrow
@@ -17,28 +20,28 @@ const TimelineDepsContainer: React.FC<TimelineDepsContainerProps> = ({ rowHeight
         finishY={20}
         depType={DependencyTypes.Start_To_Finish}
       /> */}
-      <TimelineDepsArrow
+      <ConnectionArrow
         startTime={50}
         startRowNumber={3}
         finishTime={80}
         finishRowNumber={5}
         rowHeight={rowHeight}
         totalDuration={totalDuration}
-        depType={DependencyTypes.Start_To_Finish}
+        depType={TimelineChartConnection.Start_To_Finish}
       />
     </svg>
   );
 };
 
-enum DependencyTypes {
-  Finish_To_Start = 'Finish_To_Start',
-  Start_To_Finish = 'Start_To_Finish',
-  Start_To_Start = 'Start_To_Start',
-  Finish_To_Finish = 'Finish_To_Finish'
+enum TimelineChartConnection {
+  Finish_To_Start = 'F2S',
+  Start_To_Finish = 'S2F',
+  Start_To_Start = 'S2S',
+  Finish_To_Finish = 'F2F'
 }
 
-interface TimelineDepsArrowProps {
-  depType: DependencyTypes;
+interface ConnectionArrowProps {
+  depType: TimelineChartConnection;
   startTime: number;
   startRowNumber: number;
   finishTime: number;
@@ -51,7 +54,12 @@ const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line jo
 const ARROWHEAD_HEIGHT = 5; // Distance from the pointy tip to where the arrow line joins the head
 const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 
-const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({
+/**
+ * This component represents the physical arrow that indicates
+ * the type of connection between two tasks or items on the
+ * chart.
+ */
+const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
   startTime,
   startRowNumber,
   finishTime,
@@ -60,7 +68,7 @@ const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({
   rowHeight,
   totalDuration
 }) => {
-  const dimensions: IDimensionCtx = useContext(TimelineChartDimensionCtx);
+  const dimensions = useContext(TimelineChartDimensionCtx);
   const halfRowHeight = 0.5 * rowHeight;
 
   const startX = (startTime / totalDuration) * dimensions.chartWidth;
@@ -76,19 +84,19 @@ const TimelineDepsArrow: React.FC<TimelineDepsArrowProps> = ({
     return null;
   }
 
-  if (depType === DependencyTypes.Finish_To_Start) {
+  if (depType === TimelineChartConnection.Finish_To_Start) {
     return generateF2SArrow(startX, startY, finishX, finishY, arrowColor, halfRowHeight);
   }
 
-  if (depType === DependencyTypes.Start_To_Finish) {
+  if (depType === TimelineChartConnection.Start_To_Finish) {
     return generateS2FArrow(startX, startY, finishX, finishY, arrowColor, halfRowHeight);
   }
 
-  if (depType === DependencyTypes.Start_To_Start) {
+  if (depType === TimelineChartConnection.Start_To_Start) {
     return generateS2SArrow(startX, startY, finishX, finishY, arrowColor);
   }
 
-  if (depType === DependencyTypes.Finish_To_Finish) {
+  if (depType === TimelineChartConnection.Finish_To_Finish) {
     return generateF2FArrow(startX, startY, finishX, finishY, arrowColor);
   }
 };
@@ -246,4 +254,4 @@ const generateEndFacingHead = (finishX: number, finishY: number, color: string):
   );
 };
 
-export default TimelineDepsContainer;
+export default TimelineChartConnections;
