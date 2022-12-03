@@ -1,33 +1,15 @@
+import _ from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 
 const THROTTLE_INTERVAL = 300;
 const NORMAL_OPACITY = 1.0;
 const HOVER_OPACITY = 0.7;
 
-function throttle(callback: (x: unknown[] | unknown) => void, interval: number) {
-  let callFunction = true;
-
-  return function (...args: unknown[]) {
-    if (!callFunction) return;
-
-    callFunction = false;
-    callback.apply(this, args);
-    setTimeout(() => (callFunction = true), interval);
-  };
-}
-
 interface TimelineChartRowProps {
   rowHeight: number;
   rowNumber: number;
   totalDuration: number;
-  showTooltip: (
-    mouseX: number,
-    mouseY: number,
-    startTime: number,
-    duration: number,
-    color: string,
-    isMilestone: boolean
-  ) => void;
+  showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
 }
 
@@ -85,14 +67,7 @@ interface TimelineTaskProps {
   duration: number;
 
   totalDuration: number;
-  showTooltip: (
-    mouseX: number,
-    mouseY: number,
-    startTime: number,
-    duration: number,
-    color: string,
-    isMilestone: boolean
-  ) => void;
+  showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
 }
 
@@ -129,7 +104,7 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
       ry="4"
       style={{ fill: 'rgb(0,0,255)', pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
       onMouseLeave={(e) => onMouseLeave(e)}
-      onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL)}
+      onMouseMove={_.throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
     />
   );
 };
@@ -209,7 +184,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
         ry="4"
         style={{ fill: 'rgb(0,125,0)', pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
         onMouseLeave={(e) => onMouseLeave(e)}
-        onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL)}
+        onMouseMove={_.throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
       />
     </svg>
   );
