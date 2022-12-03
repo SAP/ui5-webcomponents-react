@@ -61,6 +61,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
 
   const ref = useRef(null);
   const [dimensions, setDimensions] = useState(defaultDimensions);
+  const [chartScale, setChartScale] = useState(1);
 
   useEffect(() => {
     const ro = new ResizeObserver((entries) => {
@@ -71,11 +72,14 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
           chartWidth: entry.contentRect.width - TASK_LABEL_WIDTH,
           chartHeight: entry.contentRect.height - DURATION_LABEL_HEIGHT
         });
+        setChartScale(1);
       });
     });
     ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
+
+  const scaleChartBody = (value: number) => setChartScale(value);
 
   return (
     <div ref={ref} style={style}>
@@ -89,15 +93,15 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
             numOfItems={numOfItems}
           />
         </div>
-        <div style={{ height: height }}>
+        <div style={{ width: dimensions.width - TASK_LABEL_WIDTH, height: height, overflow: 'hidden' }}>
           <TimelineChartDurationHeader
-            width={width - TASK_LABEL_WIDTH}
+            width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
             height={DURATION_LABEL_HEIGHT}
             isDiscrete={isDiscrete}
             totalDiscreteDuration={totalDiscreteDuration}
           />
           <TimelineChartBody
-            width={width - TASK_LABEL_WIDTH}
+            width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
             height={height - DURATION_LABEL_HEIGHT}
             rowHeight={rowHeight}
             numOfItems={numOfItems}
@@ -105,6 +109,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
             isDiscrete={isDiscrete}
             totalDiscreteDuration={totalDiscreteDuration}
             unit={unit}
+            scaleChart={scaleChartBody}
           />
         </div>
       </TimelineChartDimensionCtx.Provider>

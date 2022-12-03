@@ -1,16 +1,16 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { useContext } from 'react';
-import { TimelineChartDimensionCtx } from './TimelineChart';
+import React from 'react';
 
 interface TimelineChartConnectionsProps {
   rowHeight: number;
   totalDuration: number;
+  width: number;
 }
 
 /**
  * This holds all the arrows that show the connections between different tasks.
  */
-const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ rowHeight, totalDuration }) => {
+const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ width, rowHeight, totalDuration }) => {
   return (
     <svg width="100%" height="100%">
       {/* <TimelineDepsArrow
@@ -21,6 +21,7 @@ const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ row
         depType={DependencyTypes.Start_To_Finish}
       /> */}
       <ConnectionArrow
+        width={width}
         startTime={50}
         startRowNumber={3}
         finishTime={80}
@@ -48,6 +49,7 @@ interface ConnectionArrowProps {
   finishRowNumber: number;
   rowHeight: number;
   totalDuration: number;
+  width: number;
 }
 
 const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line joins the head
@@ -60,6 +62,7 @@ const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
  * chart.
  */
 const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
+  width,
   startTime,
   startRowNumber,
   finishTime,
@@ -68,11 +71,10 @@ const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
   rowHeight,
   totalDuration
 }) => {
-  const dimensions = useContext(TimelineChartDimensionCtx);
   const halfRowHeight = 0.5 * rowHeight;
 
-  const startX = (startTime / totalDuration) * dimensions.chartWidth;
-  const finishX = (finishTime / totalDuration) * dimensions.chartWidth;
+  const startX = (startTime / totalDuration) * width;
+  const finishX = (finishTime / totalDuration) * width;
 
   // Scale Y points and put them in the middle of the row
   const startY = startRowNumber * rowHeight - halfRowHeight;

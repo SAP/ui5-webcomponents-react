@@ -1,12 +1,14 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { CSSProperties, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
 import TimelineChartConnections from './TimelineConnections';
 
+const SCALE_FACTOR = 1.1;
+
 interface TimelineChartBodyProps {
-  width: number;
+  width?: number;
   height?: number;
   rowHeight: number;
   numOfItems: number;
@@ -14,22 +16,30 @@ interface TimelineChartBodyProps {
   isDiscrete: boolean;
   totalDiscreteDuration: number;
   unit: string;
+  scaleChart: (x: number) => void;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   width,
-  height,
+  //   height,
   rowHeight,
   numOfItems,
   totalDuration,
   isDiscrete,
   totalDiscreteDuration,
-  unit
+  unit,
+  scaleChart
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
+  const bodyRef = useRef<HTMLDivElement>();
+  const scaleRef = useRef(0);
+
+  useEffect(() => {
+    bodyRef.current?.addEventListener('wheel', onMouseWheelEvent);
+  }, []);
 
   const style: CSSProperties = {
-    width: width,
+    width: `${width}px`,
     height: `${numOfItems * rowHeight}px`,
     position: 'relative',
     outline: `1px solid ${ThemingParameters.sapList_BorderColor}`
@@ -47,33 +57,43 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   };
   const hideTooltip = () => tooltipRef.current?.onLeaveItem();
 
+  const onMouseWheelEvent = (evt: WheelEvent) => {
+    evt.preventDefault();
+    if (evt.deltaY < 0) {
+      scaleRef.current++;
+    } else {
+      if (scaleRef.current > 0) scaleRef.current--;
+    }
+    scaleChart(Math.pow(SCALE_FACTOR, scaleRef.current));
+  };
+
   return (
-    <div style={{ height: height }}>
-      <div style={style}>
-        <TimelineChartLayer ignoreClick>
-          <TimeLineChartGrid
-            isDiscrete={isDiscrete}
-            numOfRows={numOfItems}
-            numOfCols={totalDiscreteDuration}
-            rowHeight={rowHeight}
-          />
-        </TimelineChartLayer>
-        <TimelineChartLayer ignoreClick>
-          <TimelineChartConnections rowHeight={rowHeight} totalDuration={totalDuration} />
-        </TimelineChartLayer>
-        <TimelineChartLayer>
-          <TimelineChartRow
-            rowHeight={rowHeight}
-            rowNumber={2}
-            totalDuration={totalDuration}
-            showTooltip={showTooltip}
-            hideTooltip={hideTooltip}
-          />
-        </TimelineChartLayer>
-        <TimelineChartLayer ignoreClick></TimelineChartLayer>
-        <TimelineChartTooltip ref={tooltipRef} unit={unit} />
-      </div>
+    // <div style={{ height: height }}>
+    <div id="yyy" ref={bodyRef} style={style}>
+      <TimelineChartLayer ignoreClick>
+        <TimeLineChartGrid
+          isDiscrete={isDiscrete}
+          numOfRows={numOfItems}
+          numOfCols={totalDiscreteDuration}
+          rowHeight={rowHeight}
+        />
+      </TimelineChartLayer>
+      <TimelineChartLayer ignoreClick>
+        <TimelineChartConnections width={width} rowHeight={rowHeight} totalDuration={totalDuration} />
+      </TimelineChartLayer>
+      <TimelineChartLayer ignoreClick>
+        <TimelineChartRow
+          rowHeight={rowHeight}
+          rowNumber={2}
+          totalDuration={totalDuration}
+          showTooltip={showTooltip}
+          hideTooltip={hideTooltip}
+        />
+      </TimelineChartLayer>
+      <TimelineChartLayer ignoreClick></TimelineChartLayer>
+      <TimelineChartTooltip ref={tooltipRef} unit={unit} />
     </div>
+    // </div>
   );
 };
 

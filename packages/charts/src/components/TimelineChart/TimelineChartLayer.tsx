@@ -13,13 +13,7 @@ interface TimelineChartLayerProps {
  */
 const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({ ignoreClick = false, children }) => {
   return (
-    <svg
-      color="red"
-      width="100%"
-      height="100%"
-      style={{ position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}
-      // onClick={() => console.log('this')}
-    >
+    <svg width="100%" height="100%" style={{ position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}>
       {children}
     </svg>
   );
