@@ -1,0 +1,16 @@
+#timeline-chart ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+  
+#timeline-chart ::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+}
+
+#timeline-chart ::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+#timeline-chart ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

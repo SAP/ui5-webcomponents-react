@@ -1,11 +1,13 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { createContext, CSSProperties, useEffect, useRef, useState } from 'react';
+import _ from 'lodash';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import {
   TimelineChartBody,
   TimelineChartDurationHeader,
   TimelineChartHeaderLabels,
   TimelineChartTaskHeader
 } from './TimelineChartParts';
+import './timelinestyle.css';
 
 export interface IDimensionCtx {
   width: number;
@@ -21,7 +23,7 @@ const defaultDimensions: IDimensionCtx = {
   chartHeight: 0
 };
 
-export const TimelineChartDimensionCtx = createContext<IDimensionCtx>(defaultDimensions);
+// export const TimelineChartDimensionCtx = createContext<IDimensionCtx>(defaultDimensions);
 
 interface TimelineChartProps {
   height?: number;
@@ -62,6 +64,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
   const ref = useRef(null);
   const [dimensions, setDimensions] = useState(defaultDimensions);
   const [chartScale, setChartScale] = useState(1);
+  const [isScrollVisible, setScrollVisible] = useState(false);
 
   useEffect(() => {
     const ro = new ResizeObserver((entries) => {
@@ -81,38 +84,53 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
 
   const scaleChartBody = (value: number) => setChartScale(value);
 
+  const onMouseMove = () => {
+    setScrollVisible(true);
+  };
+
+  const onMouseLeave = () => setScrollVisible(false);
+
   return (
-    <div ref={ref} style={style}>
-      <TimelineChartDimensionCtx.Provider value={dimensions}>
-        <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
-          <TimelineChartHeaderLabels width={TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
-          <TimelineChartTaskHeader
-            width={TASK_LABEL_WIDTH}
-            height={height - DURATION_LABEL_HEIGHT}
-            rowHeight={rowHeight}
-            numOfItems={numOfItems}
-          />
-        </div>
-        <div style={{ width: dimensions.width - TASK_LABEL_WIDTH, height: height, overflow: 'hidden' }}>
-          <TimelineChartDurationHeader
-            width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
-            height={DURATION_LABEL_HEIGHT}
-            isDiscrete={isDiscrete}
-            totalDiscreteDuration={totalDiscreteDuration}
-          />
-          <TimelineChartBody
-            width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
-            height={height - DURATION_LABEL_HEIGHT}
-            rowHeight={rowHeight}
-            numOfItems={numOfItems}
-            totalDuration={totalDuration}
-            isDiscrete={isDiscrete}
-            totalDiscreteDuration={totalDiscreteDuration}
-            unit={unit}
-            scaleChart={scaleChartBody}
-          />
-        </div>
-      </TimelineChartDimensionCtx.Provider>
+    <div id="timeline-chart" ref={ref} style={style}>
+      {/* <TimelineChartDimensionCtx.Provider value={dimensions}> */}
+      <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
+        <TimelineChartHeaderLabels width={TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
+        <TimelineChartTaskHeader
+          width={TASK_LABEL_WIDTH}
+          height={height - DURATION_LABEL_HEIGHT}
+          rowHeight={rowHeight}
+          numOfItems={numOfItems}
+        />
+      </div>
+      <div
+        style={{
+          width: dimensions.width - TASK_LABEL_WIDTH,
+          height: height,
+          overflowX: `${isScrollVisible ? 'auto' : 'hidden'}`,
+          overflowY: 'hidden'
+        }}
+        onMouseMove={_.throttle(onMouseMove, 200, { trailing: false })}
+        onMouseLeave={onMouseLeave}
+      >
+        <TimelineChartDurationHeader
+          width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
+          height={DURATION_LABEL_HEIGHT}
+          isDiscrete={isDiscrete}
+          totalDiscreteDuration={totalDiscreteDuration}
+        />
+        <TimelineChartBody
+          width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
+          height={height - DURATION_LABEL_HEIGHT}
+          rowHeight={rowHeight}
+          numOfItems={numOfItems}
+          totalDuration={totalDuration}
+          isDiscrete={isDiscrete}
+          totalDiscreteDuration={totalDiscreteDuration}
+          unit={unit}
+          scaleChart={scaleChartBody}
+        />
+      </div>
+      {/* </TimelineChartDimensionCtx.Provider> */}
     </div>
   );
 };
