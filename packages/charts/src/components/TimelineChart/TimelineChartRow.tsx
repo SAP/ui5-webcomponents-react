@@ -7,7 +7,7 @@ const HOVER_OPACITY = 0.7;
 
 interface TimelineChartRowProps {
   rowHeight: number;
-  rowNumber: number;
+  rowIndex: number;
   totalDuration: number;
   showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
@@ -19,13 +19,13 @@ interface TimelineChartRowProps {
  */
 const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
   rowHeight,
-  rowNumber,
+  rowIndex,
   totalDuration,
   showTooltip,
   hideTooltip
 }) => {
   return (
-    <svg x="0" y={`${rowNumber * rowHeight}`} width="100%" height={`${rowHeight}`} style={{ pointerEvents: 'none' }}>
+    <svg x="0" y={`${rowIndex * rowHeight}`} width="100%" height={`${rowHeight}`} style={{ pointerEvents: 'none' }}>
       <TimelineTask
         startTime={5}
         duration={20}

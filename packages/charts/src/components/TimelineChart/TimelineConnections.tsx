@@ -23,9 +23,9 @@ const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ wid
       <ConnectionArrow
         width={width}
         startTime={50}
-        startRowNumber={3}
+        startRowIndex={0}
         finishTime={80}
-        finishRowNumber={5}
+        finishRowIndex={5}
         rowHeight={rowHeight}
         totalDuration={totalDuration}
         depType={TimelineChartConnection.Start_To_Finish}
@@ -44,9 +44,9 @@ enum TimelineChartConnection {
 interface ConnectionArrowProps {
   depType: TimelineChartConnection;
   startTime: number;
-  startRowNumber: number;
+  startRowIndex: number;
   finishTime: number;
-  finishRowNumber: number;
+  finishRowIndex: number;
   rowHeight: number;
   totalDuration: number;
   width: number;
@@ -64,9 +64,9 @@ const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
   width,
   startTime,
-  startRowNumber,
+  startRowIndex,
   finishTime,
-  finishRowNumber,
+  finishRowIndex,
   depType,
   rowHeight,
   totalDuration
@@ -77,8 +77,8 @@ const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
   const finishX = (finishTime / totalDuration) * width;
 
   // Scale Y points and put them in the middle of the row
-  const startY = startRowNumber * rowHeight - halfRowHeight;
-  const finishY = finishRowNumber * rowHeight - halfRowHeight;
+  const startY = startRowIndex * rowHeight + halfRowHeight;
+  const finishY = finishRowIndex * rowHeight + halfRowHeight;
 
   const arrowColor = ThemingParameters.sapTextColor;
   if (startX === finishX && startY === finishY) {

@@ -84,7 +84,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
       <TimelineChartLayer ignoreClick>
         <TimelineChartRow
           rowHeight={rowHeight}
-          rowNumber={2}
+          rowIndex={0}
           totalDuration={totalDuration}
           showTooltip={showTooltip}
           hideTooltip={hideTooltip}
