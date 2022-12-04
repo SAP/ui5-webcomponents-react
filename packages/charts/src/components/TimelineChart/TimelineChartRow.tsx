@@ -139,7 +139,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
 
     // Replace the zero-width Rect with a Rhombus.
     // Draw a rhombus shape with the length of the diagonals equal
-    // to the height of the initial react. A square is drawn first
+    // to the height of the initial rect. A square is drawn first
     // then that square is translated to the left and downwards so
     // that the center aligns with the initial x position and the
     // center of the row. Then it is rotated 45° about that its center.
@@ -173,15 +173,16 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({ time, totalDurati
   };
 
   // The 10% y value is to create a little gap between the top grid line and the
-  // rendered TimelineTask itself. The height is set to 80% to allow for an
+  // rendered Milestone itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
   return (
     <svg x={`${(time / totalDuration) * 100}%`} y="10%" height="80%" overflow="visible">
-      <rect // Zero width. Height is used to draw a rhombus after component is mounted.
+      <rect // Zero-width rect. 1px width is used as a place-holder. Height is used to draw a rhombus after component is mounted.
         ref={milestoneRef}
+        width="1"
         height="100%"
-        rx="4"
-        ry="4"
+        rx="3"
+        ry="3"
         style={{ fill: 'rgb(0,125,0)', pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
         onMouseLeave={(e) => onMouseLeave(e)}
         onMouseMove={_.throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
