@@ -1,14 +1,26 @@
+import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { Icon, TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 import styles from './FilterGroupItem.jss';
+
+addCustomCSSWithScoping(
+  'ui5-table-row',
+  `
+/* hide navigated cell */
+:host([data-component-name="FilterBarDialogTableRow"]) .ui5-table-row-navigated {
+ width: 0;
+}
+`
+);
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
@@ -92,7 +104,12 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
   if (!inFB) {
     return (
       //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
-      <TableRow data-react-key={props['data-react-key']} selected={selected} data-required={required}>
+      <TableRow
+        data-react-key={props['data-react-key']}
+        selected={selected}
+        data-required={required}
+        data-component-name="FilterBarDialogTableRow"
+      >
         <TableCell>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label className={classes.dialogCellLabel} title={labelTooltip ?? label} required={required}>
@@ -103,7 +120,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
         </TableCell>
         {!withValues && (
           <TableCell className={classes.dialogActiveCell}>
-            {active && <Icon name="circle-task-2" className={classes.dialogActiveIcon} />}
+            {active && <Icon name={circleTask2Icon} className={classes.dialogActiveIcon} />}
           </TableCell>
         )}
       </TableRow>
