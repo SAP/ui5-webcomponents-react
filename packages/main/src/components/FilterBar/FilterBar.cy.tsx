@@ -241,4 +241,57 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByTestId('variantManagement').should('not.exist');
     cy.findByTestId('SELECT');
   });
+
+  it.only('addCustomCSS', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="INPUT">
+          <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
+        </FilterGroupItem>
+        <FilterGroupItem label="SWITCH" active>
+          <Switch checked={true} data-testid="SWITCH" />
+        </FilterGroupItem>
+        <FilterGroupItem label="SELECT" required>
+          <Select data-testid="SELECT">
+            <Option selected={true}>Option 1</Option>
+            <Option>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.findByText('Filters').click();
+    cy.get('[accessible-name="Group View"]').click();
+
+    cy.get('[data-component-name="FilterBarDialogPanelTable"]')
+      .shadow()
+      .within(() => {
+        // no header for tables within panel
+        cy.get('thead').should('have.css', 'visibility', 'collapse');
+        cy.get('thead').should('not.be.visible');
+        // no border for table rows within panel - `getComputedStyle` returns the default value (`separate`) for `unset`
+        cy.get('table').should('have.css', 'border-collapse', 'separate');
+        // no bottom border for table within panel - `getComputedStyle` sets the border-width to 0 for `none`
+        cy.get('.ui5-table-root').should('have.css', 'border-bottom', '0px none rgb(50, 54, 58)');
+        // no select-all checkbox (header row is hidden)
+        cy.get('thead th.ui5-table-select-all-column').should('not.be.visible');
+      });
+
+    cy.get('[data-component-name="FilterBarDialogTable"]')
+      .shadow()
+      .within(() => {
+        cy.get('thead').within(() => {
+          // select-all checkbox is not displayed if no rows are defined
+          cy.get('[ui5-checkbox]').should('not.exist');
+        });
+      });
+
+    cy.get('[data-component-name="FilterBarDialogTableRow"]')
+      .shadow()
+      .within(() => {
+        // no navigated cell
+        cy.get('.ui5-table-row-navigated').should('not.be.visible');
+      });
+  });
 });

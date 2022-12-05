@@ -1,3 +1,4 @@
+import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import clsx from 'clsx';
 import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -119,7 +120,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
         </TableCell>
         {!withValues && (
           <TableCell className={classes.dialogActiveCell}>
-            {active && <Icon name="circle-task-2" className={classes.dialogActiveIcon} />}
+            {active && <Icon name={circleTask2Icon} className={classes.dialogActiveIcon} />}
           </TableCell>
         )}
       </TableRow>
