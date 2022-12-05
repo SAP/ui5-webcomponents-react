@@ -5894,24 +5894,24 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.0.6":
-  version: 18.0.25
-  resolution: "@types/react@npm:18.0.25"
+  version: 18.0.26
+  resolution: "@types/react@npm:18.0.26"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 231d658c45abdef044a716b4502774f1585d8336d73b2f5bd68f181acbfc874b7a457686ecd29b415b43ed0922c309bab7e2cf96832d188a3f4f1b02f2af760a
+  checksum: b62f0ea3cdfa68e106391728325057ad36f1bde7ba2dfae029472c47e01e482bc77c6ba4f1dad59f3f04ee81cb597618ff7c30a33c157c0a20462b6dd6aa2d4d
   languageName: node
   linkType: hard
 
 "@types/react@npm:^17":
-  version: 17.0.50
-  resolution: "@types/react@npm:17.0.50"
+  version: 17.0.52
+  resolution: "@types/react@npm:17.0.52"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: b5629dff7c2f3e9fcba95a19b2b3bfd78d7cacc33ba5fc26413dba653d34afcac3b93ddabe563e8062382688a1eac7db68e93739bb8e712d27637a03aaafbbb8
+  checksum: a51b98dd87838d161278fdf9dd78e6a4ff8c018f406d6647f77963e144fb52a8beee40c89fd0e7e840eaeaa8bd9fe2f34519410540b1a52d43a6f8b4d2fbce33
   languageName: node
   linkType: hard
 
@@ -17712,8 +17712,8 @@ __metadata:
   linkType: hard
 
 "lint-staged@npm:^13.0.0":
-  version: 13.0.4
-  resolution: "lint-staged@npm:13.0.4"
+  version: 13.1.0
+  resolution: "lint-staged@npm:13.1.0"
   dependencies:
     cli-truncate: ^3.1.0
     colorette: ^2.0.19
@@ -17730,7 +17730,7 @@ __metadata:
     yaml: ^2.1.3
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 4676172df5dc734a7f409ad786a72d39bd2239de8b2e5eb1d99eaa751479f60f7b4ef85c8508698855b51b125a512f395ac6a3c7d2d57de8e8221e0aaaab6f4f
+  checksum: adf20c4ca9285c4a93b06598b970d71b04cfe58a1a4c9006f753b83e02c1c622d1866c32a4f1e7e29a98091c501eac3345f7678af247b4f97d5be88b3d8727c1
   languageName: node
   linkType: hard
 
@@ -26024,14 +26024,14 @@ __metadata:
   linkType: hard
 
 "vite-plugin-istanbul@npm:^3.0.1":
-  version: 3.0.2
-  resolution: "vite-plugin-istanbul@npm:3.0.2"
+  version: 3.0.3
+  resolution: "vite-plugin-istanbul@npm:3.0.3"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
     istanbul-lib-instrument: ^5.1.0
     picocolors: ^1.0.0
     test-exclude: ^6.0.0
-  checksum: aea513ca21b700e69bf5aeff48dcbbf5792c9eb00ac7adb98fbcaf9a1909e79238e4941eb6f0ac8f632d247f31489388f3aa26ef417eae8f628e645076393510
+  checksum: cf299f21702baf70bf25e4226dfca1ab6a6d90ee391104fef1602c8674dfe86680f66b474330d2f1d2eb87714d8a8deb46d1a1875a696652ddc2343dcf1ceaca
   languageName: node
   linkType: hard
 
