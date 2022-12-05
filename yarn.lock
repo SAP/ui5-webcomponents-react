@@ -26024,14 +26024,14 @@ __metadata:
   linkType: hard
 
 "vite-plugin-istanbul@npm:^3.0.1":
-  version: 3.0.2
-  resolution: "vite-plugin-istanbul@npm:3.0.2"
+  version: 3.0.3
+  resolution: "vite-plugin-istanbul@npm:3.0.3"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
     istanbul-lib-instrument: ^5.1.0
     picocolors: ^1.0.0
     test-exclude: ^6.0.0
-  checksum: aea513ca21b700e69bf5aeff48dcbbf5792c9eb00ac7adb98fbcaf9a1909e79238e4941eb6f0ac8f632d247f31489388f3aa26ef417eae8f628e645076393510
+  checksum: cf299f21702baf70bf25e4226dfca1ab6a6d90ee391104fef1602c8674dfe86680f66b474330d2f1d2eb87714d8a8deb46d1a1875a696652ddc2343dcf1ceaca
   languageName: node
   linkType: hard
 
