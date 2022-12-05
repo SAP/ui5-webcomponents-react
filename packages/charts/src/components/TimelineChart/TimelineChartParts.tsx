@@ -1,5 +1,14 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, {
+  CSSProperties,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
+import TimelineChartAnnotation from './TimelineChartAnnotation';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
@@ -90,7 +99,9 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           hideTooltip={hideTooltip}
         />
       </TimelineChartLayer>
-      <TimelineChartLayer ignoreClick></TimelineChartLayer>
+      <TimelineChartLayer isAnnotation ignoreClick>
+        <TimelineChartAnnotation rowHeight={rowHeight} rowIndex={0} figure={<Figure />} />
+      </TimelineChartLayer>
       <TimelineChartTooltip ref={tooltipRef} unit={unit} />
     </div>
     // </div>
@@ -283,8 +294,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
         width: '100%',
         height: '100%',
         fontSize: '10px',
-        position: 'relative',
-        zIndex: 5,
+        position: 'absolute',
         pointerEvents: 'none'
       }}
     >
@@ -327,5 +337,36 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     </div>
   );
 });
+
+// A custom figure for testing out the TimelineChartAnnotation.
+const Figure = () => {
+  const ref = useRef<HTMLCanvasElement>();
+  useLayoutEffect(() => {
+    const canvas = ref.current;
+    const ctx = canvas.getContext('2d');
+    canvas.width = ref.current.getBoundingClientRect().width;
+    canvas.height = ref.current.getBoundingClientRect().height;
+    const width = canvas.width;
+    const height = canvas.height;
+
+    const interval = (5 / 100) * width;
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'red';
+    ctx.clearRect(0, 0, width, height);
+    for (let index = 1; index < 5; index++) {
+      const offset = index * interval;
+      ctx.moveTo(offset, 0);
+      ctx.lineTo(offset, height);
+      ctx.moveTo(offset, 0);
+      ctx.lineTo(offset - 4, height / 5);
+      ctx.moveTo(offset, 0);
+      ctx.lineTo(offset + 4, height / 5);
+    }
+    ctx.stroke();
+  });
+
+  return <canvas ref={ref} style={{ width: '100%', height: '100%' }}></canvas>;
+};
 
 export { TimelineChartBody, TimelineChartDurationHeader, TimelineChartHeaderLabels, TimelineChartTaskHeader };

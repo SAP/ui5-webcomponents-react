@@ -3,6 +3,7 @@ import React from 'react';
 interface TimelineChartLayerProps {
   ignoreClick?: boolean;
   children?: JSX.Element | JSX.Element[];
+  isAnnotation?: boolean;
 }
 
 /**
@@ -11,7 +12,16 @@ interface TimelineChartLayerProps {
  * can be used to render the grid lines and another can be used to render
  * annotations or tasks.
  */
-const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({ ignoreClick = false, children }) => {
+const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({ ignoreClick = false, isAnnotation, children }) => {
+  if (isAnnotation) {
+    return (
+      <div
+        style={{ width: '100%', height: '100%', position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}
+      >
+        {children}
+      </div>
+    );
+  }
   return (
     <svg width="100%" height="100%" style={{ position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}>
       {children}
