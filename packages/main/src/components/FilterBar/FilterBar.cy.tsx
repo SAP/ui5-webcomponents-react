@@ -242,7 +242,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByTestId('SELECT');
   });
 
-  it.only('addCustomCSS', () => {
+  it('addCustomCSS', () => {
     cy.mount(
       <FilterBar>
         <FilterGroupItem label="INPUT">
