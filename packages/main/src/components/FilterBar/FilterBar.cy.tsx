@@ -120,13 +120,15 @@ describe('FilterBar.cy.tsx', () => {
     checkboxes.should('have.length', 4);
 
     checkboxes.each((item, index, arr) => {
+      const wrappedItem = cy.wrap(item);
       if (index === 0) {
-        cy.get(item).should('not.be.visible');
+        wrappedItem.should('have.css', 'visibility', 'hidden');
+        wrappedItem.should('not.be.visible');
       } else {
-        cy.get(item).should('be.visible');
+        wrappedItem.should('be.visible');
         // todo: simulated clicks don't work with internal "required selection" logic
         if (index !== arr.length - 1) {
-          cy.get(item).click();
+          wrappedItem.click();
         }
       }
     });
