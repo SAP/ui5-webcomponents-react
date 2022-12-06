@@ -513,11 +513,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @param {number} e.detail.rowCount - The number of rows
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
-  onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
+  onLoadMore?: (e?: CustomEvent<{ rowCount: number; totalRowCount: number }>) => void;
   /**
    * Fired when the body of the table is scrolled.
    */
-  onTableScroll?: (e) => (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
+  onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.

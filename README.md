@@ -96,8 +96,6 @@ This template is installing all required dependencies for you and is setting up 
 
 ```sh
 npx create-react-app my-app --template @ui5/webcomponents-react
-# or if you want to use yarn
-yarn create react-app my-app --template @ui5/webcomponents-react
 ```
 
 ### Creating a new React app based on our Seed
@@ -109,10 +107,6 @@ For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomp
 ```sh
 npx create-react-app my-app --template @ui5/webcomponents-react-seed
 npm run start
-
-# or if you want to use yarn
-yarn create react-app my-app --template @ui5/webcomponents-react-seed
-yarn start
 ```
 
 ### Add `@ui5/webcomponents-react` to an existing app
