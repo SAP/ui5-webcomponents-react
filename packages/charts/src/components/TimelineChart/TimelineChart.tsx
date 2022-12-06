@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import _ from 'lodash';
-import React, { CSSProperties, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
 import {
   TimelineChartBody,
   TimelineChartDurationHeader,
@@ -9,27 +9,51 @@ import {
 } from './TimelineChartParts';
 import './timelinestyle.css';
 
-export interface IDimensionCtx {
-  width: number;
-  height: number;
-  chartWidth: number;
-  chartHeight: number;
-}
-
-const defaultDimensions: IDimensionCtx = {
-  width: 0,
-  height: 0,
-  chartWidth: 0,
-  chartHeight: 0
-};
-
-// export const TimelineChartDimensionCtx = createContext<IDimensionCtx>(defaultDimensions);
-
 interface TimelineChartProps {
-  height?: number;
+  /**
+   * The total width of the chart. If not supplied, the chart's
+   * width expands to fill its conatainer.
+   * @default auto
+   */
   width?: number;
+
+  /**
+   * The height the row of the timeline.
+   * @default 25
+   */
   rowHeight?: number;
+
+  /**
+   * Whether the timeline is a continuous timeline or broken
+   * into discrete sections.
+   * @default false
+   */
   isDiscrete?: boolean;
+
+  /**
+   * Defines the annonations to be applied on top on the chart.
+   *
+   * **Note:** Use the `TimelineChartAnnotation` component here.
+   */
+  annotations?: ReactNode | ReactNode[];
+
+  /**
+   * Toggles the visibility of the annotations applied to the chart.
+   * @default false
+   */
+  showAnnotation?: boolean;
+
+  /**
+   * Toggles the visibility of the relations of the task items in the chart.
+   * @default false
+   */
+  showRelationship?: boolean;
+
+  /**
+   * Toggles the visibility of the tooltip.
+   * @default true
+   */
+  showTooltip?: boolean;
 }
 
 /**
@@ -37,7 +61,7 @@ interface TimelineChartProps {
  * Gantt charts or any other timeline-based visualizations.
  */
 const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
-  const DEFAULT_WIDTH = '100%';
+  const DEFAULT_WIDTH = 'auto';
   const TASK_LABEL_WIDTH = 150;
   const DURATION_LABEL_HEIGHT = 50;
   const DEFAULT_ROW_HEIGHT = 25;
@@ -62,7 +86,12 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
   };
 
   const ref = useRef(null);
-  const [dimensions, setDimensions] = useState(defaultDimensions);
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+    chartWidth: 0,
+    chartHeight: 0
+  });
   const [chartScale, setChartScale] = useState(1);
   const [isScrollVisible, setScrollVisible] = useState(false);
 
@@ -92,7 +121,6 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
 
   return (
     <div id="timeline-chart" ref={ref} style={style}>
-      {/* <TimelineChartDimensionCtx.Provider value={dimensions}> */}
       <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
         <TimelineChartHeaderLabels width={TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
         <TimelineChartTaskHeader
@@ -130,7 +158,6 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
           scaleChart={scaleChartBody}
         />
       </div>
-      {/* </TimelineChartDimensionCtx.Provider> */}
     </div>
   );
 };

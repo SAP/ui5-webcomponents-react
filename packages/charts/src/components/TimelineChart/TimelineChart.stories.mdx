@@ -2,11 +2,14 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
+import TimelineChartAnnotation from './TimelineChartAnnotation';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 
 <Meta
   title="Charts /  TimelineChart"
   component={TimelineChart}
+  subcomponents={{ TimelineChartAnnotation }}
   argTypes={{
     dataset: {
       control: { disable: true }
@@ -53,7 +56,7 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
     }}
   >
     {(props) => {
-      return <TimelineChart {...props} />;
+      return <TimelineChart {...props} annotation={<TimelineChartAnnotation rowNumber={2} figure={<div></div>} />} />;
     }}
   </Story>
 </Canvas>
@@ -82,5 +85,12 @@ import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../
     {(props) => <TimelineChart {...props} />}
   </Story>
 </Canvas>
+
+<SubcomponentsSection />
+
+## TimelineChartAnnotation
+
+The `TimelineChartAnnotation` is designed to be used for creating custom annotations, markers
+or illustrations on the timeline of the chart.
 
 <Footer />
