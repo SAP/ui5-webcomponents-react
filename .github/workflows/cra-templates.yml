@@ -32,7 +32,7 @@ jobs:
       - name: run tests
         run: |
           cd cra-template
-          yarn test
+          npm run test
         env:
           SKIP_PREFLIGHT_CHECK: true
       - name: build project
@@ -61,12 +61,12 @@ jobs:
       - name: run tests
         run: |
           cd cra-template-seed
-          yarn test:coverage
+          npm run test:coverage
         env:
           SKIP_PREFLIGHT_CHECK: true
       - name: build project
         run: |
           cd cra-template-seed
-          yarn build
+          npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
