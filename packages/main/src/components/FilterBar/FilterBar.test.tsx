@@ -226,6 +226,8 @@ describe('FilterBar', () => {
     const onClear = jest.fn();
     const onGo = jest.fn();
     const onRestore = jest.fn();
+    const onFiltersDialogSearch = jest.fn();
+    const onFiltersDialogSelectionChange = jest.fn();
     const { rerender } = render(
       <FilterBar
         title="FilterBar-Test"
@@ -240,6 +242,8 @@ describe('FilterBar', () => {
         onFiltersDialogSave={onFiltersDialogSave}
         onFiltersDialogCancel={onFiltersDialogCancel}
         onFiltersDialogClose={onFiltersDialogClose}
+        onFiltersDialogSearch={onFiltersDialogSearch}
+        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
       >
         <FilterGroupItem label="Filter1" groupName="Group1">
           <Input placeholder="Placeholder" />
