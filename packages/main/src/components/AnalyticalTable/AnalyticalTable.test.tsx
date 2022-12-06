@@ -3,8 +3,8 @@ import { createCustomPropsTest } from '@shared/tests/utils';
 import React, { createRef } from 'react';
 import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
-import { AnalyticalTable } from './index';
 import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
+import { AnalyticalTable } from './index';
 
 const columns = [
   {
