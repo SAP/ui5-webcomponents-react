@@ -1,7 +1,6 @@
 import { screen, fireEvent, render, renderWithDefine, waitFor } from '@shared/tests';
 import React from 'react';
 import { ListMode } from '../../enums/ListMode';
-import { DialogDomRef } from '../../webComponents/Dialog';
 import { StandardListItem } from '../../webComponents/StandardListItem';
 import { SelectDialog } from './index';
 
@@ -60,7 +59,7 @@ describe('SelectDialog', () => {
       </SelectDialog>,
       ['ui5-list', 'ui5-li']
     );
-    const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
+    const dialog = document.querySelector('ui5-dialog');
     dialog.show();
     const li = getByText('Product1');
     await waitFor(() => li.shadowRoot.querySelector('li'));
@@ -79,7 +78,7 @@ describe('SelectDialog', () => {
     const afterClose = jest.fn();
     const selectionChange = jest.fn();
     const clear = jest.fn();
-    const { asFragment, getByText } = await renderWithDefine(
+    const { getByText } = await renderWithDefine(
       <SelectDialog
         rememberSelections
         showClearButton
@@ -93,7 +92,7 @@ describe('SelectDialog', () => {
       </SelectDialog>,
       ['ui5-li']
     );
-    const dialog = document.querySelector('ui5-dialog') as DialogDomRef;
+    const dialog = document.querySelector('ui5-dialog');
     dialog.show();
 
     const li = getByText('Product1');
@@ -138,7 +137,7 @@ describe('SelectDialog', () => {
     const search = jest.fn();
     const input = jest.fn();
     const reset = jest.fn();
-    const { getByPlaceholderText, getByTitle } = render(
+    const { getByPlaceholderText } = render(
       <SelectDialog onSearch={search} onSearchInput={input} onSearchReset={reset}>
         {listItems}
       </SelectDialog>

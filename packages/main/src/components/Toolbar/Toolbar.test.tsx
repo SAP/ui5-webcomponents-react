@@ -49,10 +49,13 @@ describe('Toolbar', () => {
   });
 
   test('overflow menu', () => {
+    // @ts-expect-error: too much effort to type this
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
 
+    // @ts-expect-error: too much effort to type this
     HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
       return {
+        // @ts-expect-error: too much effort to type this
         width: parseFloat(getComputedStyle(this).width || 200),
         height: 10,
         top: 0,
@@ -61,7 +64,7 @@ describe('Toolbar', () => {
         right: 0
       };
     });
-    const { rerender, queryByTitle, getByText, getAllByLabelText, container } = render(
+    const { rerender, queryByTitle, getByText, getAllByLabelText } = render(
       <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
         <>
           <Text data-testid="toolbar-item" style={{ width: '200px' }}>
@@ -176,10 +179,12 @@ describe('Toolbar', () => {
   });
 
   test('always visible items', () => {
+    // @ts-expect-error: too much effort to type this
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-
+    // @ts-expect-error: too much effort to type this
     HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
       return {
+        // @ts-expect-error: too much effort to type this
         width: parseFloat(getComputedStyle(this).width || 100),
         height: 10,
         top: 0,
@@ -217,10 +222,12 @@ describe('Toolbar', () => {
   });
 
   test('close on interaction', async () => {
+    // @ts-expect-error: too much effort to type this
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-
+    // @ts-expect-error: too much effort to type this
     HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
       return {
+        // @ts-expect-error: too much effort to type this
         width: parseFloat(getComputedStyle(this).width || 200),
         height: 10,
         top: 0,
@@ -255,10 +262,12 @@ describe('Toolbar', () => {
   });
 
   test('a11y', async () => {
+    // @ts-expect-error: too much effort to type this
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-
+    // @ts-expect-error: too much effort to type this
     HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
       return {
+        // @ts-expect-error: too much effort to type this
         width: parseFloat(getComputedStyle(this).width || 200),
         height: 10,
         top: 0,
@@ -268,7 +277,7 @@ describe('Toolbar', () => {
       };
     });
     const overflowPopoverRef = createRef<PopoverDomRef>();
-    const { container, rerender } = await renderWithDefine(
+    const { container } = await renderWithDefine(
       <Toolbar overflowPopoverRef={overflowPopoverRef} style={{ width: '50px' }}>
         <Button>Button One</Button>
         <Input />
@@ -289,10 +298,13 @@ describe('Toolbar', () => {
   });
 
   test('custom overflow button', () => {
+    // @ts-expect-error: too much effort to type this
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
 
+    // @ts-expect-error: too much effort to type this
     HTMLElement.prototype.getBoundingClientRect = jest.fn(function () {
       return {
+        // @ts-expect-error: too much effort to type this
         width: parseFloat(getComputedStyle(this).width || 200),
         height: 10,
         top: 0,

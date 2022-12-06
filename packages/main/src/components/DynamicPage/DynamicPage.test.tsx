@@ -33,16 +33,24 @@ const renderComponent = () => (
     headerTitle={
       <DynamicPageTitle
         actions={[
-          <Button design={ButtonDesign.Emphasized}>Edit</Button>,
-          <Button design={ButtonDesign.Transparent}>Delete</Button>,
-          <Button design={ButtonDesign.Transparent}>Copy</Button>,
-          <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
-          <Button icon="action" design={ButtonDesign.Transparent}></Button>
+          <Button key={0} design={ButtonDesign.Emphasized}>
+            Edit
+          </Button>,
+          <Button key={1} design={ButtonDesign.Transparent}>
+            Delete
+          </Button>,
+          <Button key={2} design={ButtonDesign.Transparent}>
+            Copy
+          </Button>,
+          <Button key={3} design={ButtonDesign.Transparent}>
+            Toggle Footer
+          </Button>,
+          <Button key={4} icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
         navigationActions={[
-          <Button icon="full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="decline" design={ButtonDesign.Transparent} />
+          <Button key={0} icon="full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={1} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={2} icon="decline" design={ButtonDesign.Transparent} />
         ]}
         breadcrumbs={
           <Breadcrumbs>
@@ -214,16 +222,24 @@ const renderComponentWithoutContent = () => (
     headerTitle={
       <DynamicPageTitle
         actions={[
-          <Button design={ButtonDesign.Emphasized}>Edit</Button>,
-          <Button design={ButtonDesign.Transparent}>Delete</Button>,
-          <Button design={ButtonDesign.Transparent}>Copy</Button>,
-          <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
-          <Button icon="action" design={ButtonDesign.Transparent}></Button>
+          <Button key={0} design={ButtonDesign.Emphasized}>
+            Edit
+          </Button>,
+          <Button key={1} design={ButtonDesign.Transparent}>
+            Delete
+          </Button>,
+          <Button key={2} design={ButtonDesign.Transparent}>
+            Copy
+          </Button>,
+          <Button key={3} design={ButtonDesign.Transparent}>
+            Toggle Footer
+          </Button>,
+          <Button key={4} icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
         navigationActions={[
-          <Button icon="full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="decline" design={ButtonDesign.Transparent} />
+          <Button key={0} icon="full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={1} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={2} icon="decline" design={ButtonDesign.Transparent} />
         ]}
         breadcrumbs={
           <Breadcrumbs>
@@ -263,16 +279,24 @@ const renderComponentWithAlwaysShowContentHeader = () => (
     headerTitle={
       <DynamicPageTitle
         actions={[
-          <Button design={ButtonDesign.Emphasized}>Edit</Button>,
-          <Button design={ButtonDesign.Transparent}>Delete</Button>,
-          <Button design={ButtonDesign.Transparent}>Copy</Button>,
-          <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
-          <Button icon="action" design={ButtonDesign.Transparent}></Button>
+          <Button key={0} design={ButtonDesign.Emphasized}>
+            Edit
+          </Button>,
+          <Button key={1} design={ButtonDesign.Transparent}>
+            Delete
+          </Button>,
+          <Button key={2} design={ButtonDesign.Transparent}>
+            Copy
+          </Button>,
+          <Button key={3} design={ButtonDesign.Transparent}>
+            Toggle Footer
+          </Button>,
+          <Button key={4} icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
         navigationActions={[
-          <Button icon="full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="exit-full-screen" design={ButtonDesign.Transparent} />,
-          <Button icon="decline" design={ButtonDesign.Transparent} />
+          <Button key={0} icon="full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={1} icon="exit-full-screen" design={ButtonDesign.Transparent} />,
+          <Button key={2} icon="decline" design={ButtonDesign.Transparent} />
         ]}
         breadcrumbs={
           <Breadcrumbs>
@@ -313,11 +337,19 @@ const renderComponentHideHeaderButton = () => (
     headerTitle={
       <DynamicPageTitle
         actions={[
-          <Button design={ButtonDesign.Emphasized}>Edit</Button>,
-          <Button design={ButtonDesign.Transparent}>Delete</Button>,
-          <Button design={ButtonDesign.Transparent}>Copy</Button>,
-          <Button design={ButtonDesign.Transparent}>Toggle Footer</Button>,
-          <Button icon="action" design={ButtonDesign.Transparent}></Button>
+          <Button key={0} design={ButtonDesign.Emphasized}>
+            Edit
+          </Button>,
+          <Button key={1} design={ButtonDesign.Transparent}>
+            Delete
+          </Button>,
+          <Button key={2} design={ButtonDesign.Transparent}>
+            Copy
+          </Button>,
+          <Button key={3} design={ButtonDesign.Transparent}>
+            Toggle Footer
+          </Button>,
+          <Button key={4} icon="action" design={ButtonDesign.Transparent}></Button>
         ]}
         header={<Title>Header Title</Title>}
         subHeader={<Label>This is a sub header</Label>}

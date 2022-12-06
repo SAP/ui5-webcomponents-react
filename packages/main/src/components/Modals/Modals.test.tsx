@@ -72,7 +72,12 @@ describe('Modals - static helpers', function () {
 });
 
 describe('Modals - hooks', function () {
-  const TestComponent = ({ hookFn, modalProps }) => {
+  interface PropTypes {
+    hookFn: any;
+    modalProps: any;
+  }
+
+  const TestComponent = ({ hookFn, modalProps }: PropTypes) => {
     const hook = hookFn();
 
     return (
@@ -140,7 +145,7 @@ describe('Modals - hooks', function () {
     expect(screen.getByTestId('messagebox')).toHaveAttribute('open');
   });
 
-  test(Modals.useShowToast.name, async () => {
+  test(Modals.useShowToast.name, () => {
     render(
       <TestComponent hookFn={Modals.useShowToast} modalProps={{ children: 'Toast Content', 'data-testid': 'toast' }} />
     );

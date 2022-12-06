@@ -12,6 +12,7 @@ const measures = [
   }
 ];
 
+// eslint-disable-next-line react/prop-types
 function TestComponent({ onHookResult, dimensionOptions = undefined, measureOptions = undefined }) {
   const result = usePrepareDimensionsAndMeasures(dimensions, measures, dimensionOptions, measureOptions);
   onHookResult(result);
