@@ -38,7 +38,7 @@ jobs:
       - name: build project
         run: |
           cd cra-template
-          yarn build
+          npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
 
