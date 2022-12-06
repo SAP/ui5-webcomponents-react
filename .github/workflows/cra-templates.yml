@@ -28,7 +28,7 @@ jobs:
           cache: 'yarn'
       - name: create new project
         run: |
-          npx create-react-app ../cra-template --template file:./packages/cra-template
+          npx create-react-app cra-template --template file:./packages/cra-template
       - name: run tests
         run: |
           cd cra-template
