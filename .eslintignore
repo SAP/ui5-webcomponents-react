@@ -13,10 +13,6 @@ scripts
 shared
 .eslintrc.cjs
 *.stories.tsx
-*.test.tsx
-*.cy.ts
-*.cy.tsx
-*.test.ts
 packages/cra-template
 CodeGen.tsx
 

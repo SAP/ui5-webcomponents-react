@@ -61,7 +61,7 @@ describe('Toolbar', () => {
         right: 0
       };
     });
-    const { rerender, queryByTitle, getByText, getAllByLabelText, container } = render(
+    const { rerender, queryByTitle, getByText, getAllByLabelText } = render(
       <Toolbar data-testid="toolbar" style={{ width: '1000px' }}>
         <>
           <Text data-testid="toolbar-item" style={{ width: '200px' }}>
@@ -268,7 +268,7 @@ describe('Toolbar', () => {
       };
     });
     const overflowPopoverRef = createRef<PopoverDomRef>();
-    const { container, rerender } = await renderWithDefine(
+    const { container } = await renderWithDefine(
       <Toolbar overflowPopoverRef={overflowPopoverRef} style={{ width: '50px' }}>
         <Button>Button One</Button>
         <Input />

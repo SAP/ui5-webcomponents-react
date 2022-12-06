@@ -1,5 +1,6 @@
 import { useTooltipFormatter } from './useTooltipFormatter';
 
+// eslint-disable-next-line react/prop-types
 function TooltipFormatterComponent({ measure, value, name, options }) {
   const val = useTooltipFormatter([measure]);
   return <span>{val(value, name, options)}</span>;

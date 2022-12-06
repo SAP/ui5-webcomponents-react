@@ -189,7 +189,6 @@ describe('FilterBar', () => {
     expect(asFragment()).toMatchSnapshot();
     const filtersDialogBtns = (index) => asFragment.find(Bar).find(Button).at(index);
     act(() => {
-      //@ts-ignore
       filtersDialogBtns(0).prop('onClick')();
     });
     asFragment.update();
@@ -201,7 +200,6 @@ describe('FilterBar', () => {
     asFragment.update();
     expect(asFragment.find('ui5-dialog').exists()).toBeTruthy();
     act(() => {
-      //@ts-ignore
       filtersDialogBtns(3).prop('onClick')();
     });
     asFragment.update();
@@ -212,7 +210,6 @@ describe('FilterBar', () => {
     asFragment.update();
     expect(asFragment.find('ui5-dialog').exists()).toBeTruthy();
     act(() => {
-      //@ts-ignore
       filtersDialogBtns(4).prop('onClick')();
     });
     asFragment.update();
@@ -240,8 +237,6 @@ describe('FilterBar', () => {
         onGo={onGo}
         onRestore={onRestore}
         onFiltersDialogOpen={onFiltersDialogOpen}
-        onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
-        onFiltersDialogSearch={onFiltersDialogSearch}
         onFiltersDialogSave={onFiltersDialogSave}
         onFiltersDialogCancel={onFiltersDialogCancel}
         onFiltersDialogClose={onFiltersDialogClose}

@@ -99,3 +99,17 @@ overrides:
       - 'plugin:react/jsx-runtime'
     rules:
       '@typescript-eslint/no-namespace': 'off'
+
+  - files:
+      - '*.test.tsx'
+      - '*.cy.ts'
+      - '*.cy.tsx'
+      - '*.test.ts'
+    rules:
+      '@typescript-eslint/no-empty-function': 'off'
+      'react/react-in-jsx-scope': 'off'
+      'import/order': 'warn'
+      'import/no-unresolved': 'off'
+      'react/no-unescaped-entities': 'off'
+      '@typescript-eslint/unbound-method': 'warn'
+      'react/display-name': 'off'

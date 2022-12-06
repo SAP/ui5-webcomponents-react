@@ -1,6 +1,6 @@
 import React from 'react';
-import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
+import { VariantManagement } from './index';
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
