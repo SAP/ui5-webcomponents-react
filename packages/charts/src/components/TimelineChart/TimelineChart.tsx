@@ -7,9 +7,15 @@ import {
   TimelineChartHeaderLabels,
   TimelineChartTaskHeader
 } from './TimelineChartParts';
+import { ITimelineChartRow } from './TimelineChartTypes';
 import './timelinestyle.css';
 
 interface TimelineChartProps {
+  /**
+   * The data is an array of objects that is displayed on the chart.
+   */
+  dataset: ITimelineChartRow[];
+
   /**
    * The total width of the chart. If not supplied, the chart's
    * width expands to fill its conatainer.

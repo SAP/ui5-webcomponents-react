@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
+import { TimelineChartConnection } from './TimelineChartTypes';
 
 interface TimelineChartConnectionsProps {
   rowHeight: number;
@@ -34,13 +35,6 @@ const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ wid
   );
 };
 
-enum TimelineChartConnection {
-  Finish_To_Start = 'F2S',
-  Start_To_Finish = 'S2F',
-  Start_To_Start = 'S2S',
-  Finish_To_Finish = 'F2F'
-}
-
 interface ConnectionArrowProps {
   depType: TimelineChartConnection;
   startTime: number;
@@ -71,6 +65,10 @@ const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
   rowHeight,
   totalDuration
 }) => {
+  if (startRowIndex < 0 || finishRowIndex < 0) {
+    throw new Error('Invalid row index');
+  }
+
   const halfRowHeight = 0.5 * rowHeight;
 
   const startX = (startTime / totalDuration) * width;
