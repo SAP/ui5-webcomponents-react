@@ -119,7 +119,6 @@ describe('FilterBar.cy.tsx', () => {
     // hidden select-all checkbox is also counted
     checkboxes.should('have.length', 4);
 
-    cy.screenshot();
     checkboxes.each((item, index, arr) => {
       const wrappedItem = cy.wrap(item);
       if (index === 0) {
