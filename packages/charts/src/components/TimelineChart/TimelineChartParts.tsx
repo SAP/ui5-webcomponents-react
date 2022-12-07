@@ -2,6 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, {
   CSSProperties,
   forwardRef,
+  ReactNode,
   useEffect,
   useImperativeHandle,
   useLayoutEffect,
@@ -12,23 +13,30 @@ import TimelineChartAnnotation from './TimelineChartAnnotation';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRow from './TimelineChartRow';
+import { ITimelineChartRow } from './TimelineChartTypes';
 import TimelineChartConnections from './TimelineConnections';
 
 const SCALE_FACTOR = 1.1;
 
 interface TimelineChartBodyProps {
+  dataset: ITimelineChartRow[];
   width?: number;
   height?: number;
   rowHeight: number;
   numOfItems: number;
   totalDuration: number;
   isDiscrete: boolean;
-  totalDiscreteDuration: number;
+  totalDiscreteDuration?: number;
+  annotations?: ReactNode | ReactNode[];
+  showAnnotation?: boolean;
+  showRelationship?: boolean;
+  showTooltip?: boolean;
   unit: string;
   scaleChart: (x: number) => void;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
+  dataset,
   width,
   //   height,
   rowHeight,
@@ -36,6 +44,10 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   totalDuration,
   isDiscrete,
   totalDiscreteDuration,
+  annotations,
+  showAnnotation,
+  showRelationship,
+  showTooltip,
   unit,
   scaleChart
 }) => {
@@ -54,15 +66,16 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
     outline: `1px solid ${ThemingParameters.sapList_BorderColor}`
   };
 
-  const showTooltip = (
+  const showTooltipOnHover = (
     mouseX: number,
     mouseY: number,
+    label: string,
     startTime: number,
     duration: number,
     color: string,
     isMilestone: boolean
   ) => {
-    tooltipRef.current?.onHoverItem(mouseX, mouseY, startTime, duration, color, isMilestone);
+    tooltipRef.current?.onHoverItem(mouseX, mouseY, label, startTime, duration, color, isMilestone);
   };
   const hideTooltip = () => tooltipRef.current?.onLeaveItem();
 
@@ -77,7 +90,6 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   };
 
   return (
-    // <div style={{ height: height }}>
     <div id="yyy" ref={bodyRef} style={style}>
       <TimelineChartLayer ignoreClick>
         <TimeLineChartGrid
@@ -87,24 +99,37 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           rowHeight={rowHeight}
         />
       </TimelineChartLayer>
+
+      {showRelationship ? (
+        <TimelineChartLayer ignoreClick>
+          <TimelineChartConnections width={width} rowHeight={rowHeight} totalDuration={totalDuration} />
+        </TimelineChartLayer>
+      ) : null}
+
       <TimelineChartLayer ignoreClick>
-        <TimelineChartConnections width={width} rowHeight={rowHeight} totalDuration={totalDuration} />
+        {dataset.map((data, index) => {
+          return (
+            <TimelineChartRow
+              key={index}
+              rowData={data}
+              rowHeight={rowHeight}
+              rowIndex={index}
+              totalDuration={totalDuration}
+              showTooltip={showTooltipOnHover}
+              hideTooltip={hideTooltip}
+            />
+          );
+        })}
       </TimelineChartLayer>
-      <TimelineChartLayer ignoreClick>
-        <TimelineChartRow
-          rowHeight={rowHeight}
-          rowIndex={0}
-          totalDuration={totalDuration}
-          showTooltip={showTooltip}
-          hideTooltip={hideTooltip}
-        />
-      </TimelineChartLayer>
-      <TimelineChartLayer isAnnotation ignoreClick>
-        <TimelineChartAnnotation rowHeight={rowHeight} rowIndex={0} figure={<Figure />} />
-      </TimelineChartLayer>
-      <TimelineChartTooltip ref={tooltipRef} unit={unit} />
+
+      {showAnnotation && annotations != null ? (
+        <TimelineChartLayer isAnnotation ignoreClick>
+          <TimelineChartAnnotation rowHeight={rowHeight} rowIndex={0} figure={<Figure />} />
+        </TimelineChartLayer>
+      ) : null}
+
+      {showTooltip ? <TimelineChartTooltip ref={tooltipRef} unit={unit} /> : null}
     </div>
-    // </div>
   );
 };
 
@@ -112,13 +137,14 @@ interface TimelineChartTaskHeaderProps {
   width: number;
   height: number;
   rowHeight: number;
-  numOfItems: number;
+  dataset: ITimelineChartRow[];
 }
 
-const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width, height, rowHeight, numOfItems }) => {
+const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width, height, rowHeight, dataset }) => {
+  const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
-    height: `${numOfItems * rowHeight}px`,
+    height: `${rowLabels.length * rowHeight}px`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
@@ -138,11 +164,11 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
   return (
     <div style={{ height: height }}>
       <div style={style}>
-        {Array.from(Array(numOfItems).keys()).map((item) => {
+        {rowLabels.map((label, index) => {
           return (
-            <div key={item} style={itemStyle}>
-              <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${item}`}>
-                Item {item}
+            <div key={index} style={itemStyle}>
+              <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${label}`}>
+                {label}
               </span>
             </div>
           );
@@ -156,14 +182,18 @@ interface TimelineChartDurationHeaderProps {
   width: number;
   height: number;
   isDiscrete: boolean;
-  totalDiscreteDuration: number;
+  totalDiscreteDuration?: number;
+  unit: string;
+  durationHeaderLabel: string;
 }
 
 const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
   width,
   height,
   isDiscrete,
-  totalDiscreteDuration
+  totalDiscreteDuration,
+  unit,
+  durationHeaderLabel
 }) => {
   const style: CSSProperties = {
     width: width,
@@ -185,7 +215,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
           lineHeight: `${isDiscrete ? halfHeaderHeight : height}px`
         }}
       >
-        Duration (ms)
+        {durationHeaderLabel} {unit != '' ? `(${unit})` : ''}
       </div>
       {isDiscrete ? (
         <div
@@ -218,9 +248,10 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
 interface TimelineChartHeaderLabelsProps {
   width: number;
   height: number;
+  activitiesTitle: string;
 }
 
-const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ width, height }) => {
+const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ width, height, activitiesTitle }) => {
   const style: CSSProperties = {
     width: width,
     height: height,
@@ -230,7 +261,7 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
   return (
     <div style={style}>
       <div style={{ height: '50%' }}></div>
-      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>Tasks</div>
+      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>{activitiesTitle}</div>
     </div>
   );
 };
@@ -239,6 +270,7 @@ interface TimelineTooltipHandle {
   onHoverItem: (
     mouseX: number,
     mouseY: number,
+    label: string,
     startTime: number,
     duration: number,
     color: string,
@@ -258,6 +290,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   const [state, setState] = useState({
     x: 0,
     y: 0,
+    label: '',
     visible: false,
     startTime: 0,
     duration: 0,
@@ -265,17 +298,25 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     isMilestone: false
   });
   const divRef = useRef<HTMLDivElement>();
+  const popupRef = useRef<HTMLSpanElement>();
 
   const onHoverItem = (
     mouseX: number,
     mouseY: number,
+    label: string,
     startTime: number,
     duration: number,
     color: string,
     isMilestone: boolean
   ) => {
-    const { x, y } = divRef.current?.getBoundingClientRect();
-    setState({ x: mouseX - x, y: mouseY - y, visible: true, startTime, duration, color, isMilestone });
+    const { x, y, width, height } = divRef.current?.getBoundingClientRect();
+    // Adjust the x and y position of the tooltip popover in order to try
+    // to prevent it from being cut off by the bounds of the parent div.
+    const offSetX = mouseX - x;
+    const offSetY = mouseY - y;
+    const xPos = offSetX < width - 80 ? offSetX : offSetX - 120;
+    const yPos = offSetY < height - 70 ? offSetY : offSetY - 70;
+    setState({ x: xPos, y: yPos, label, visible: true, startTime, duration, color, isMilestone });
   };
 
   const onLeaveItem = () => {
@@ -300,6 +341,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     >
       {state.visible ? (
         <span
+          ref={popupRef}
           style={{
             minWidth: 80,
             display: 'inline-grid',
@@ -315,7 +357,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
           }}
         >
           <span style={{ textAlign: 'center' }}>
-            <strong>{state.isMilestone ? 'Milestone' : 'Task'}</strong>
+            <strong>{state.label}</strong>
           </span>
           <span style={{ width: '100%', height: '4px', backgroundColor: state.color }}></span>
           <span>

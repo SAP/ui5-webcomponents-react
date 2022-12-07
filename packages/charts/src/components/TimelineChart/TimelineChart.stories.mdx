@@ -3,7 +3,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import TimelineChartAnnotation from './TimelineChartAnnotation';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps';
+import { dummyDataSet } from './TimelineChartDummyData.ts';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 
 <Meta
@@ -12,9 +12,6 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
   subcomponents={{ TimelineChartAnnotation }}
   argTypes={{
     dataset: {
-      control: { disable: true }
-    },
-    children: {
       control: { disable: true }
     }
   }}
@@ -29,30 +26,12 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
     name="Default"
     args={{
       style: { height: '60vh' },
-      dataset: complexDataSet,
-      dimensions: [
-        {
-          accessor: 'name'
-        }
-      ],
-      measures: [
-        {
-          accessor: 'users',
-          label: 'Users',
-          formatter: (val) => val.toLocaleString(),
-          opacity: 0.6
-        },
-        {
-          accessor: 'sessions',
-          label: 'Active Sessions',
-          formatter: (val) => `${val} sessions`,
-          hideDataLabel: true
-        },
-        {
-          accessor: 'volume',
-          label: 'Vol.'
-        }
-      ]
+      dataset: dummyDataSet,
+      totalDuration: 150,
+      showTooltip: true,
+      showAnnotation: true,
+      showRelationship: true,
+      unit: 'ms'
     }}
   >
     {(props) => {
@@ -78,7 +57,7 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
     args={{
       dimensions: [{ accessor: 'name' }],
       measures: [{ accessor: 'users', color: 'red' }],
-      dataset: simpleDataSet,
+      dataset: dummyDataSet,
       style: { width: '95%', height: '40vh' }
     }}
   >

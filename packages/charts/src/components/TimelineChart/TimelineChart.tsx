@@ -17,6 +17,11 @@ interface TimelineChartProps {
   dataset: ITimelineChartRow[];
 
   /**
+   * The total duration of the timeline.
+   */
+  totalDuration: number;
+
+  /**
    * The total width of the chart. If not supplied, the chart's
    * width expands to fill its conatainer.
    * @default auto
@@ -60,26 +65,59 @@ interface TimelineChartProps {
    * @default true
    */
   showTooltip?: boolean;
+
+  /**
+   * The unit of the duration of the timeline.
+   */
+  unit?: string;
+
+  /**
+   * The label for the activity axis.
+   * @default Activity
+   */
+  activitiesTitle?: string;
+
+  /**
+   * The label for the title of the duration axis.
+   * @default Duration
+   */
+  durationTitle?: string;
 }
 
 /**
  * A `TimelineChart` is a data visualization chart that can be used to represent
  * Gantt charts or any other timeline-based visualizations.
  */
-const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
+const TimelineChart: React.FC<TimelineChartProps> = ({
+  dataset,
+  totalDuration,
+  width,
+  rowHeight,
+  isDiscrete,
+  annotations,
+  showAnnotation,
+  showRelationship,
+  showTooltip,
+  unit,
+  activitiesTitle,
+  durationTitle
+}) => {
   const DEFAULT_WIDTH = 'auto';
   const TASK_LABEL_WIDTH = 150;
   const DURATION_LABEL_HEIGHT = 50;
   const DEFAULT_ROW_HEIGHT = 25;
 
-  rowHeight = rowHeight != null ? rowHeight : DEFAULT_ROW_HEIGHT;
-  const numOfItems = 9;
-  const totalDuration = 170;
-  const height = rowHeight * numOfItems + DURATION_LABEL_HEIGHT;
+  rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
+  isDiscrete = isDiscrete ?? false;
+  showAnnotation = showAnnotation ?? false;
+  showRelationship = showRelationship ?? false;
+  showTooltip = showTooltip ?? true;
+  unit = unit ?? '';
+  activitiesTitle = activitiesTitle ?? 'Activities';
+  durationTitle = durationTitle ?? 'Duration';
 
-  const isDiscrete = true;
-  const totalDiscreteDuration = 8;
-  const unit = 'ms';
+  const numOfRows = dataset.length;
+  const height = rowHeight * numOfRows + DURATION_LABEL_HEIGHT;
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -128,12 +166,16 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
   return (
     <div id="timeline-chart" ref={ref} style={style}>
       <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
-        <TimelineChartHeaderLabels width={TASK_LABEL_WIDTH} height={DURATION_LABEL_HEIGHT} />
+        <TimelineChartHeaderLabels
+          width={TASK_LABEL_WIDTH}
+          height={DURATION_LABEL_HEIGHT}
+          activitiesTitle={activitiesTitle}
+        />
         <TimelineChartTaskHeader
           width={TASK_LABEL_WIDTH}
           height={height - DURATION_LABEL_HEIGHT}
           rowHeight={rowHeight}
-          numOfItems={numOfItems}
+          dataset={dataset}
         />
       </div>
       <div
@@ -150,16 +192,21 @@ const TimelineChart: React.FC<TimelineChartProps> = ({ width, rowHeight }) => {
           width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
           height={DURATION_LABEL_HEIGHT}
           isDiscrete={isDiscrete}
-          totalDiscreteDuration={totalDiscreteDuration}
+          unit={unit}
+          durationHeaderLabel={durationTitle}
         />
         <TimelineChartBody
+          dataset={dataset}
           width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
           height={height - DURATION_LABEL_HEIGHT}
           rowHeight={rowHeight}
-          numOfItems={numOfItems}
+          numOfItems={numOfRows}
           totalDuration={totalDuration}
           isDiscrete={isDiscrete}
-          totalDiscreteDuration={totalDiscreteDuration}
+          annotations={annotations}
+          showAnnotation={showAnnotation}
+          showRelationship={showRelationship}
+          showTooltip={showTooltip}
           unit={unit}
           scaleChart={scaleChartBody}
         />
