@@ -394,7 +394,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
    *
-   * __Note:__ Custom cells with components instead of text as children will are ignored by the `Smart` and `Grow` modes.
+   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
    *
    */
   scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
