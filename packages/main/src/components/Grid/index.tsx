@@ -38,7 +38,7 @@ export interface GridPropTypes extends CommonProps {
   /**
    * Components that are placed into Grid layout.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const INDENT_PATTERN =

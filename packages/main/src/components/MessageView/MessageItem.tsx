@@ -47,7 +47,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies detailed description of the message
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(

@@ -8,7 +8,7 @@ export interface TextPropTypes extends CommonProps {
   /**
    * Pass the text as direct child of Text
    */
-  children: string | JSX.Element | ReactNode;
+  children?: ReactNode;
   /**
    * Defines how white-space inside <code>Text</code> is handled. If set to true, sequences of white space are preserved.
    */

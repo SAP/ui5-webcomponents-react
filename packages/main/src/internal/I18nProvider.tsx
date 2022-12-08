@@ -5,7 +5,7 @@ import { getI18nContext } from '@ui5/webcomponents-react-base';
 import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react';
 
 export interface I18nProviderPropTypes {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 type I18nBundleMap = Record<string, I18nBundle>;

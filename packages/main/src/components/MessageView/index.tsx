@@ -59,7 +59,7 @@ export interface MessageViewPropTypes extends CommonProps {
    *
    * * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Message` in order to preserve the intended design.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 
   /**
    * Event is fired when the details of a message are shown.

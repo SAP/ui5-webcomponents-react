@@ -63,7 +63,7 @@ export interface MessageBoxPropTypes
    *
    * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and a11y capabilities.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Array of actions of the MessageBox. Those actions will be transformed into buttons in the `MessageBox` footer.
    *

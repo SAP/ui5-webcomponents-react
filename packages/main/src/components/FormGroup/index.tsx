@@ -9,8 +9,10 @@ export interface FormGroupPropTypes {
   titleText: string;
   /**
    * Contents of the FormGroup. Please use only `FormItem` to keep the intended design.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FormItem` in order to preserve the intended design.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(

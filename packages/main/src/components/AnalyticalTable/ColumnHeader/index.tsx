@@ -35,7 +35,7 @@ export interface ColumnHeaderProps {
   headerTooltip: string;
   virtualColumn: VirtualItem<Record<string, any>>;
   isRtl: boolean;
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   portalContainer: Element;
   uniqueId: string;
   scaleXFactor?: number;
