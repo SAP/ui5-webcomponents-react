@@ -2,7 +2,7 @@ import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
+import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DeviationIndicator, ValueColor } from '../../enums';
 import {
@@ -14,7 +14,7 @@ import {
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
 } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils';
 import { Icon } from '../../webComponents';
 import styles from './AnalyticalCardHeader.jss';
@@ -122,8 +122,8 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
   const uniqueHeaderId = useIsomorphicId();
   const headerId = id ?? uniqueHeaderId;
 
-  const sideIndicators = flattenFragments(children);
-  const sideIndicatorIds: string[] = Children.toArray(sideIndicators).map((child: ReactElement, idx) => {
+  const sideIndicators = flattenFragments(children) as ReactElement[];
+  const sideIndicatorIds: string[] = sideIndicators.map((child, idx) => {
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
 

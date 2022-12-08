@@ -1,6 +1,16 @@
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  Children,
+  forwardRef,
+  MutableRefObject,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -80,19 +90,22 @@ interface InternalProps extends DynamicPageTitlePropTypes {
 
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
-const enhanceActionsWithClick = (actions, ref) =>
-  flattenFragments(actions, Infinity).map((action: ReactElement) =>
-    React.cloneElement(action, {
-      onClick: (e) => {
-        if (typeof action.props?.onClick === 'function') {
-          action.props.onClick(e);
+const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) =>
+  flattenFragments(actions, Infinity).map((action) => {
+    if (React.isValidElement(action)) {
+      return React.cloneElement(action, {
+        // @ts-expect-error: only actionable elements should be passed to either of the `action` props
+        onClick: (e) => {
+          if (typeof action.props?.onClick === 'function') {
+            action.props.onClick(e);
+          }
+          if (ref.current?.isOpen() && !e.defaultPrevented) {
+            ref.current.close();
+          }
         }
-        if (ref.current?.isOpen() && !e.defaultPrevented) {
-          ref.current.close();
-        }
-      }
-    })
-  );
+      });
+    }
+  });
 
 /**
  * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
@@ -153,7 +166,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
   );
 
   useEffect(() => {
-    const debouncedObserverFn = debounce(([titleContainer]) => {
+    const debouncedObserverFn = debounce(([titleContainer]: ResizeObserverEntry[]) => {
       // Firefox implements `borderBoxSize` as a single content rect, rather than an array
       const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
         ? titleContainer.borderBoxSize[0]

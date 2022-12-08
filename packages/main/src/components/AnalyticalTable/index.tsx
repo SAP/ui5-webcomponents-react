@@ -239,7 +239,7 @@ export interface AnalyticalTableColumnDefinition {
   [key: string]: any;
 }
 
-interface DivWithCustomScrollProp extends HTMLDivElement {
+export interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
 }
 

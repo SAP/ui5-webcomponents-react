@@ -148,7 +148,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   );
 
   useEffect(() => {
-    const debouncedObserverFn = debounce(([element]) => {
+    const debouncedObserverFn = debounce(([element]: IntersectionObserverEntry[]) => {
       setIsOverflowing(!element.isIntersecting);
     }, 250);
     const observer = new IntersectionObserver(debouncedObserverFn, {
