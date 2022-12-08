@@ -25960,14 +25960,14 @@ __metadata:
   linkType: hard
 
 "vite-plugin-istanbul@npm:^3.0.1":
-  version: 3.0.3
-  resolution: "vite-plugin-istanbul@npm:3.0.3"
+  version: 3.0.4
+  resolution: "vite-plugin-istanbul@npm:3.0.4"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
     istanbul-lib-instrument: ^5.1.0
     picocolors: ^1.0.0
     test-exclude: ^6.0.0
-  checksum: cf299f21702baf70bf25e4226dfca1ab6a6d90ee391104fef1602c8674dfe86680f66b474330d2f1d2eb87714d8a8deb46d1a1875a696652ddc2343dcf1ceaca
+  checksum: 74fa99e2e2bded28ff6ba47bddf3cdd2eae04d37f2b6d257dcf5571c75f3433c6495fe94bba1f12acd0fc6046a6e83ea618b0547726ba68190bf292c7cb34695
   languageName: node
   linkType: hard
 
