@@ -1,9 +1,10 @@
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, CSSProperties, forwardRef, ReactElement, ReactNode } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { flattenFragments } from '../../internal/utils';
 import { styles } from './Grid.jss';
 
 export interface GridPropTypes extends CommonProps {
@@ -92,8 +93,10 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
       slot={slot}
       {...rest}
     >
-      {Children.map(children, (child: ReactElement<any>) => {
-        if (!child) return null;
+      {flattenFragments(children, Infinity).map((child) => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
 
         const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
         const childClass = classes[`gridSpan${childSpan}`];
