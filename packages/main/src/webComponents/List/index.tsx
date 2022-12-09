@@ -76,7 +76,7 @@ interface ListAttributes {
 }
 
 export interface ListDomRef extends ListAttributes, Ui5DomRef {}
-// FlexBox, Grid, ResGridLayout, Text
+
 export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Defines the items of the component.
