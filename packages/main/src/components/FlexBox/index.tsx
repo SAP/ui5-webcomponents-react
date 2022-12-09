@@ -82,7 +82,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
 
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} data-component-name="FlexBox" {...rest}>
+    <CustomTag ref={ref} className={flexBoxClasses} {...rest}>
       {children}
     </CustomTag>
   );
