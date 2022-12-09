@@ -154,7 +154,6 @@ function showMessageBox<ContainerElement>(
   setModal?.({
     type: 'set',
     payload: {
-      // @ts-expect-error: `children` is required, but type-safety is provided through `props`
       Component: MessageBox,
       props: {
         ...props,
