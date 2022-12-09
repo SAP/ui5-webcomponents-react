@@ -271,4 +271,43 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
   );
 };
 
-export default TimelineChartRow;
+interface TimelineChartRowGroupProps {
+  dataset: ITimelineChartRow[];
+  rowHeight: number;
+  totalDuration: number;
+  showTooltip: (...x: unknown[]) => void;
+  hideTooltip: () => void;
+  postRender: () => void;
+}
+const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
+  dataset,
+  rowHeight,
+  totalDuration,
+  showTooltip,
+  hideTooltip,
+  postRender
+}) => {
+  useEffect(() => {
+    postRender();
+  }, []);
+
+  return (
+    <svg width="100%" height="100%">
+      {dataset.map((data, index) => {
+        return (
+          <TimelineChartRow
+            key={index}
+            rowData={data}
+            rowHeight={rowHeight}
+            rowIndex={index}
+            totalDuration={totalDuration}
+            showTooltip={showTooltip}
+            hideTooltip={hideTooltip}
+          />
+        );
+      })}
+    </svg>
+  );
+};
+
+export default TimelineChartRowGroup;

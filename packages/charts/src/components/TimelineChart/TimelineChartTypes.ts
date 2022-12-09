@@ -28,7 +28,7 @@ export interface ITimelineChartRow {
   /**
    * The color for the tasks on the row. This can be overridden by the
    * task or milestone component if a value is specified for them. Any
-   * valid CSS color will do.
+   * valid CSS color will do. If not specified, a random color is used.
    */
   color?: CSSProperties['color'];
 }
@@ -39,8 +39,12 @@ export interface ITimelineChartRow {
 export interface ITimelineChartTask {
   /**
    * A unique id for identifying the task or milestone in the timeline.
+   * This id must be provided if this task or milestone is connected to
+   * another task or milestone because it will be used to render the
+   * connection arrow between the two tasks. Without it, no arrow will
+   * be drawn.
    */
-  id: string;
+  id?: string;
 
   /**
    * The start time of the task or milestone. This is used to determine the
@@ -70,7 +74,7 @@ export interface ITimelineChartTask {
    * A list of relationships between the task and other tasks on
    * the timeline.
    */
-  relationship?: ITimelineChartConn[];
+  connections?: ITimelineChartConn[];
 }
 
 /**

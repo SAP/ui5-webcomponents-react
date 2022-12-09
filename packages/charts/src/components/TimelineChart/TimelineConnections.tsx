@@ -1,49 +1,143 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
-import { TimelineChartConnection } from './TimelineChartTypes';
+import React, { useLayoutEffect, useState } from 'react';
+import {
+  ITimelineChartMileStone,
+  ITimelineChartRow,
+  ITimelineChartTask,
+  TimelineChartConnection
+} from './TimelineChartTypes';
 
 interface TimelineChartConnectionsProps {
+  dataSet: ITimelineChartRow[];
+
+  /**
+   * The row height. This is used to calculate drawing the
+   * connection arrows.
+   */
   rowHeight: number;
-  totalDuration: number;
+
+  /**
+   * The width of the chart body.
+   * This is required to help rerender the arrows when the size
+   * of the chart body changes.
+   */
   width: number;
+
+  /**
+   * This is required to get the bounding box of the chart body
+   * and to be able to calculate the relative positions of the
+   * start and end points of the connection arrows based on the
+   * bounding box parameters of the chart body.
+   */
+  bodyRect: DOMRect;
+}
+
+interface ConnectionData {
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  connection: TimelineChartConnection;
 }
 
 /**
  * This holds all the arrows that show the connections between different tasks.
  */
-const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ width, rowHeight, totalDuration }) => {
+const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ dataSet, width, rowHeight, bodyRect }) => {
+  const [connectionDataState, setConnectionDataState] = useState<ConnectionData[]>([]);
+  useLayoutEffect(() => {
+    const connectionData: ConnectionData[] = [];
+
+    const generateConnectionData = (activities: ITimelineChartTask[] | ITimelineChartMileStone[]) => {
+      for (let i = 0; i < activities.length; i++) {
+        const activity = activities[i];
+        if (activity.connections == null) continue;
+        const startItem = document.getElementById(activity.id);
+        if (startItem == null) continue;
+
+        // Get the start points based on the type of connection
+        const { x, y, right, height } = startItem.getBoundingClientRect();
+        const startY = y + height / 2 - bodyRect.y; // Always same no matter the connection type.
+
+        let startX: number;
+        activity.connections.forEach((item) => {
+          if (item.type == null) {
+            item.type = TimelineChartConnection.Finish_To_Start;
+          }
+          const endItem = document.getElementById(item.itemId);
+          if (endItem == null) return;
+
+          if (
+            item.type === TimelineChartConnection.Finish_To_Finish ||
+            item.type === TimelineChartConnection.Finish_To_Start
+          ) {
+            startX = right - bodyRect.x;
+          } else {
+            startX = x - bodyRect.x;
+          }
+
+          // Get the end points based on the type of connection
+          const { x: otherX, y: otherY, right: otherR } = endItem.getBoundingClientRect();
+          const endY = otherY + height / 2 - bodyRect.y; // Always same no matter the connection type.
+          let endX: number;
+
+          if (
+            item.type === TimelineChartConnection.Start_To_Start ||
+            item.type === TimelineChartConnection.Finish_To_Start
+          ) {
+            endX = otherX - bodyRect.x;
+          } else {
+            endX = otherR - bodyRect.x;
+          }
+
+          connectionData.push({
+            startX,
+            startY,
+            endX,
+            endY,
+            connection: item.type
+          });
+        });
+      }
+    };
+
+    for (let index = 0; index < dataSet.length; index++) {
+      const row = dataSet[index];
+      if (row.tasks == null || row.milestones == null) continue;
+
+      generateConnectionData(row.tasks);
+      generateConnectionData(row.milestones);
+    }
+
+    setConnectionDataState(connectionData);
+  }, [width]);
+
   return (
-    <svg width="100%" height="100%">
-      {/* <TimelineDepsArrow
-        startX={50}
-        startY={120}
-        finishX={250}
-        finishY={20}
-        depType={DependencyTypes.Start_To_Finish}
-      /> */}
-      <ConnectionArrow
-        width={width}
-        startTime={50}
-        startRowIndex={0}
-        finishTime={80}
-        finishRowIndex={5}
-        rowHeight={rowHeight}
-        totalDuration={totalDuration}
-        depType={TimelineChartConnection.Start_To_Finish}
-      />
+    <svg id="connsvg" width="100%" height="100%">
+      {connectionDataState.map((data, index) => {
+        return (
+          <ConnectionArrow
+            startX={data.startX}
+            endX={data.endX}
+            startY={data.startY}
+            endY={data.endY}
+            key={index}
+            rowHeight={rowHeight}
+            depType={data.connection}
+          />
+        );
+      })}
     </svg>
   );
 };
 
 interface ConnectionArrowProps {
   depType: TimelineChartConnection;
-  startTime: number;
-  startRowIndex: number;
-  finishTime: number;
-  finishRowIndex: number;
   rowHeight: number;
-  totalDuration: number;
-  width: number;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
 }
 
 const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line joins the head
@@ -55,28 +149,11 @@ const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
  * the type of connection between two tasks or items on the
  * chart.
  */
-const ConnectionArrow: React.FC<ConnectionArrowProps> = ({
-  width,
-  startTime,
-  startRowIndex,
-  finishTime,
-  finishRowIndex,
-  depType,
-  rowHeight,
-  totalDuration
-}) => {
-  if (startRowIndex < 0 || finishRowIndex < 0) {
-    throw new Error('Invalid row index');
-  }
-
+const ConnectionArrow: React.FC<ConnectionArrowProps> = ({ depType, rowHeight, startX, startY, endX, endY }) => {
   const halfRowHeight = 0.5 * rowHeight;
+  const finishX = endX;
 
-  const startX = (startTime / totalDuration) * width;
-  const finishX = (finishTime / totalDuration) * width;
-
-  // Scale Y points and put them in the middle of the row
-  const startY = startRowIndex * rowHeight + halfRowHeight;
-  const finishY = finishRowIndex * rowHeight + halfRowHeight;
+  const finishY = endY;
 
   const arrowColor = ThemingParameters.sapTextColor;
   if (startX === finishX && startY === finishY) {

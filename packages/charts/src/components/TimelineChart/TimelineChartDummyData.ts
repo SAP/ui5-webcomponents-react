@@ -1,4 +1,4 @@
-import { ITimelineChartRow } from './TimelineChartTypes';
+import { ITimelineChartRow, TimelineChartConnection } from './TimelineChartTypes';
 
 export const dummyDataSet: ITimelineChartRow[] = [
   {
@@ -8,7 +8,13 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-00',
         start: 5,
-        end: 15
+        end: 15,
+        connections: [
+          {
+            itemId: 'TR-21',
+            type: TimelineChartConnection.Finish_To_Start
+          }
+        ]
       },
       {
         id: 'TR-01',
@@ -30,7 +36,13 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-11',
         start: 95,
-        end: 100
+        end: 100,
+        connections: [
+          {
+            itemId: 'MS-20'
+            // type: TimelineChartConnection.Finish_To_Start
+          }
+        ]
       }
     ],
     milestones: []
@@ -54,7 +66,13 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'MS-20',
         start: 115,
-        label: 'Milestone 11'
+        label: 'Milestone 11',
+        connections: [
+          {
+            itemId: 'TR-01',
+            type: TimelineChartConnection.Finish_To_Finish
+          }
+        ]
       }
     ]
   }

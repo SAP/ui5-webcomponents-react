@@ -12,7 +12,7 @@ import React, {
 import TimelineChartAnnotation from './TimelineChartAnnotation';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
-import TimelineChartRow from './TimelineChartRow';
+import TimelineChartRowGroup from './TimelineChartRow';
 import { ITimelineChartRow } from './TimelineChartTypes';
 import TimelineChartConnections from './TimelineConnections';
 
@@ -54,6 +54,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
   const scaleRef = useRef(0);
+  const [displayArrows, setDisplayArrows] = useState(false);
 
   useEffect(() => {
     bodyRef.current?.addEventListener('wheel', onMouseWheelEvent);
@@ -89,6 +90,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
     scaleChart(Math.pow(SCALE_FACTOR, scaleRef.current));
   };
 
+  const showArrows = () => setDisplayArrows(true);
+
   return (
     <div id="yyy" ref={bodyRef} style={style}>
       <TimelineChartLayer ignoreClick>
@@ -100,26 +103,26 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         />
       </TimelineChartLayer>
 
-      {showRelationship ? (
+      {showRelationship && displayArrows ? (
         <TimelineChartLayer ignoreClick>
-          <TimelineChartConnections width={width} rowHeight={rowHeight} totalDuration={totalDuration} />
+          <TimelineChartConnections
+            dataSet={dataset}
+            width={width}
+            rowHeight={rowHeight}
+            bodyRect={bodyRef.current?.getBoundingClientRect()}
+          />
         </TimelineChartLayer>
       ) : null}
 
       <TimelineChartLayer ignoreClick>
-        {dataset.map((data, index) => {
-          return (
-            <TimelineChartRow
-              key={index}
-              rowData={data}
-              rowHeight={rowHeight}
-              rowIndex={index}
-              totalDuration={totalDuration}
-              showTooltip={showTooltipOnHover}
-              hideTooltip={hideTooltip}
-            />
-          );
-        })}
+        <TimelineChartRowGroup
+          dataset={dataset}
+          rowHeight={rowHeight}
+          totalDuration={totalDuration}
+          showTooltip={showTooltipOnHover}
+          hideTooltip={hideTooltip}
+          postRender={showArrows}
+        />
       </TimelineChartLayer>
 
       {showAnnotation && annotations != null ? (
