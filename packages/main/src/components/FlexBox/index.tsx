@@ -42,7 +42,7 @@ export interface FlexBoxPropTypes extends CommonProps {
   /**
    * Content of the `FlexBox`.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Sets the components outer HTML tag.
    *

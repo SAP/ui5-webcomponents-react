@@ -20,8 +20,9 @@ import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {
   /**
-   * Components that are placed into Form. Please use only `FormGroup` and `FormItem` in order to preserve the
-   * intended design.
+   * Components that are placed into Form.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FormGroup` or `FormItem` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
   /**
