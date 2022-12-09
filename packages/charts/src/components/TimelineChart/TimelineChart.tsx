@@ -82,6 +82,13 @@ interface TimelineChartProps {
    * @default Duration
    */
   durationTitle?: string;
+
+  /**
+   * The label for the columns if the chart is separated into
+   * discrete columns based on if `isDiscrete` is true. If set,
+   * the lenght of this array must be equal to the `totalDuration`.
+   */
+  columnLabels?: string[];
 }
 
 /**
@@ -100,7 +107,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   showTooltip,
   unit,
   activitiesTitle,
-  durationTitle
+  durationTitle,
+  columnLabels
 }) => {
   const DEFAULT_WIDTH = 'auto';
   const TASK_LABEL_WIDTH = 150;
@@ -192,8 +200,10 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
           height={DURATION_LABEL_HEIGHT}
           isDiscrete={isDiscrete}
+          totalDuration={totalDuration}
           unit={unit}
           durationHeaderLabel={durationTitle}
+          columnLabels={columnLabels}
         />
         <TimelineChartBody
           dataset={dataset}

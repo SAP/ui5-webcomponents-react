@@ -26,7 +26,6 @@ interface TimelineChartBodyProps {
   numOfItems: number;
   totalDuration: number;
   isDiscrete: boolean;
-  totalDiscreteDuration?: number;
   annotations?: ReactNode | ReactNode[];
   showAnnotation?: boolean;
   showRelationship?: boolean;
@@ -43,7 +42,6 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   numOfItems,
   totalDuration,
   isDiscrete,
-  totalDiscreteDuration,
   annotations,
   showAnnotation,
   showRelationship,
@@ -98,7 +96,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         <TimeLineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
-          numOfCols={totalDiscreteDuration}
+          numOfCols={totalDuration}
           rowHeight={rowHeight}
         />
       </TimelineChartLayer>
@@ -185,18 +183,20 @@ interface TimelineChartDurationHeaderProps {
   width: number;
   height: number;
   isDiscrete: boolean;
-  totalDiscreteDuration?: number;
+  totalDuration: number;
   unit: string;
   durationHeaderLabel: string;
+  columnLabels: string[];
 }
 
 const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
   width,
   height,
   isDiscrete,
-  totalDiscreteDuration,
+  totalDuration,
   unit,
-  durationHeaderLabel
+  durationHeaderLabel,
+  columnLabels
 }) => {
   const style: CSSProperties = {
     width: width,
@@ -206,6 +206,9 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   };
 
   const halfHeaderHeight = 0.5 * height;
+  const labelArray: string[] = columnLabels
+    ? columnLabels
+    : Array.from(Array(totalDuration).keys()).map((num) => `${num}`);
 
   return (
     <div style={style}>
@@ -226,19 +229,19 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
             height: `${halfHeaderHeight}px`,
             fontSize: '10px',
             display: 'grid',
-            gridTemplateColumns: `repeat(${totalDiscreteDuration}, 1fr)`,
+            gridTemplateColumns: `repeat(${totalDuration}, 1fr)`,
             textAlign: 'center',
             lineHeight: `${halfHeaderHeight}px`
           }}
         >
-          {Array.from(Array(totalDiscreteDuration).keys()).map((num, index) => {
+          {labelArray.map((label, index) => {
             return (
               <span
                 key={index}
                 style={{ outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}` }}
-                title={`${num}`}
+                title={`${label}`}
               >
-                {num}
+                {label}
               </span>
             );
           })}

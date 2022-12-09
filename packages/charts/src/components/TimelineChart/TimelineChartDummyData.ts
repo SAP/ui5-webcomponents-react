@@ -77,3 +77,121 @@ export const dummyDataSet: ITimelineChartRow[] = [
     ]
   }
 ];
+
+export const dummyDiscreteDataSet: ITimelineChartRow[] = [
+  {
+    label: 'Discovery',
+    color: 'blue',
+    tasks: [
+      {
+        id: 'TR-00X',
+        start: 2,
+        end: 7,
+        connections: [
+          {
+            itemId: 'TR-20X'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'Branding Exploration',
+    // color: 'red',
+    tasks: [
+      {
+        id: 'TR-10X',
+        start: 11,
+        end: 16,
+        connections: [
+          {
+            itemId: 'MS-30X'
+            // type: TimelineChartConnection.Finish_To_Start
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'Content Review',
+    // color: 'purple',
+    tasks: [
+      {
+        id: 'TR-20X',
+        start: 6,
+        end: 11,
+        connections: [
+          {
+            itemId: 'TR-10X'
+            // type: TimelineChartConnection.Start_To_Start
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: '',
+    // color: 'purple',
+    milestones: [
+      {
+        id: 'MS-30X',
+        label: 'Phase 1',
+        start: 16,
+        connections: [
+          {
+            itemId: 'TR-40X'
+          },
+          {
+            itemId: 'TR-50X'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'Website Design',
+    // color: 'purple',
+    tasks: [
+      {
+        id: 'TR-40X',
+        start: 21,
+        end: 30,
+        connections: [
+          {
+            itemId: 'MS-60X'
+            // type: TimelineChartConnection.Start_To_Start
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'Database Setup',
+    // color: 'purple',
+    tasks: [
+      {
+        id: 'TR-50X',
+        start: 24,
+        end: 28,
+        connections: [
+          {
+            itemId: 'MS-60X'
+            // type: TimelineChartConnection.Start_To_Start
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: '',
+    // color: 'purple',
+    milestones: [
+      {
+        id: 'MS-60X',
+        label: 'Completed',
+        start: 35,
+        color: 'red'
+      }
+    ]
+  }
+];

@@ -103,10 +103,8 @@ const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ dat
 
     for (let index = 0; index < dataSet.length; index++) {
       const row = dataSet[index];
-      if (row.tasks == null || row.milestones == null) continue;
-
-      generateConnectionData(row.tasks);
-      generateConnectionData(row.milestones);
+      if (row.tasks) generateConnectionData(row.tasks);
+      if (row.milestones) generateConnectionData(row.milestones);
     }
 
     setConnectionDataState(connectionData);
@@ -194,7 +192,7 @@ const generateF2SArrow = (
         <path
           d={`M ${startX} ${startY}
             h ${ARROW_CLEARANCE}
-            v ${halfRowHeight}
+            v ${finishY > startY ? halfRowHeight : -halfRowHeight}
             H ${finishX - ARROW_CLEARANCE}
             V ${finishY}
             H ${finishX}`}
@@ -232,7 +230,7 @@ const generateS2FArrow = (
         <path
           d={`M ${startX} ${startY}
             h ${-ARROW_CLEARANCE}
-            v ${halfRowHeight}
+            v ${finishY > startY ? halfRowHeight : -halfRowHeight}
             H ${finishX + ARROW_CLEARANCE}
             V ${finishY}
             H ${finishX}`}

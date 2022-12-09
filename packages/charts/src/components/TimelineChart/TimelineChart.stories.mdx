@@ -3,7 +3,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import TimelineChartAnnotation from './TimelineChartAnnotation';
-import { dummyDataSet } from './TimelineChartDummyData.ts';
+import { dummyDataSet, dummyDiscreteDataSet } from './TimelineChartDummyData.ts';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 
 <Meta
@@ -25,17 +25,16 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
   <Story
     name="Default"
     args={{
-      style: { height: '60vh' },
-      dataset: dummyDataSet,
-      totalDuration: 150,
+      dataset: dummyDiscreteDataSet,
+      totalDuration: 36,
+      isDiscrete: true,
       showTooltip: true,
       showAnnotation: true,
-      showRelationship: true,
-      unit: 'ms'
+      showRelationship: true
     }}
   >
     {(props) => {
-      return <TimelineChart {...props} annotation={<TimelineChartAnnotation rowNumber={2} figure={<div></div>} />} />;
+      return <TimelineChart {...props} />;
     }}
   </Story>
 </Canvas>
@@ -55,13 +54,15 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
   <Story
     name="With Custom Color"
     args={{
-      dimensions: [{ accessor: 'name' }],
-      measures: [{ accessor: 'users', color: 'red' }],
       dataset: dummyDataSet,
-      style: { width: '95%', height: '40vh' }
+      totalDuration: 150,
+      showRelationship: true,
+      unit: 'ms'
     }}
   >
-    {(props) => <TimelineChart {...props} />}
+    {(props) => (
+      <TimelineChart {...props} annotation={<TimelineChartAnnotation rowNumber={2} figure={<div></div>} />} />
+    )}
   </Story>
 </Canvas>
 

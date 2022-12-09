@@ -30,14 +30,12 @@ const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({ isDiscrete, numOf
  * This function generates the grid lines using the number of segments provided.
  * Each segment is calculated as a fractional percentage of the overall width
  * or height.
- * @param numOfsegment The number of rows or columns the grid should have.
- * @param isHorizontal Whether the line created is horizontal or vertical.
+ * @param numOfSegments The number of rows or columns the grid should have.
  * @returns An array of grid lines in SVG.
  */
-const generateHGridLines = (numOfsegment: number, rowHeight: number): JSX.Element[] => {
-  // const segmentSizePercent = 100 / numOfsegment;
+const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Element[] => {
   const gridLineArray: JSX.Element[] = [];
-  for (let i = 1; i < numOfsegment; i++) {
+  for (let i = 1; i < numOfSegments; i++) {
     const segmentOffset = rowHeight * i;
     gridLineArray.push(
       <line
@@ -53,10 +51,10 @@ const generateHGridLines = (numOfsegment: number, rowHeight: number): JSX.Elemen
   return gridLineArray;
 };
 
-const generateVGridLines = (numOfsegment: number): JSX.Element[] => {
-  const segmentSizePercent = 100 / numOfsegment;
+const generateVGridLines = (numOfSegments: number): JSX.Element[] => {
+  const segmentSizePercent = 100 / numOfSegments;
   const gridLineArray: JSX.Element[] = [];
-  for (let i = 1; i < numOfsegment; i++) {
+  for (let i = 1; i < numOfSegments; i++) {
     const segmentOffset = segmentSizePercent * i;
     gridLineArray.push(
       <line x1={`${segmentOffset}%`} y1="0" x2={`${segmentOffset}%`} y2="100%" key={`${segmentOffset}gridv`} />
