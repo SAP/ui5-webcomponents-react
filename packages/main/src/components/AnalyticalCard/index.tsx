@@ -12,7 +12,7 @@ export interface AnalyticalCardPropTypes extends CommonProps {
   /**
    * The content of the `AnalyticalCard`.
    */
-  children?: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(styles, { name: 'AnalyticalCard' });

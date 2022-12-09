@@ -13,7 +13,7 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines the content of the `ObjectPageSection`.
    */
-  children?: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
   /**
    * Defines the title of the `ObjectPageSection`.
    */

@@ -12,7 +12,7 @@ const useStyles = createUseStyles(GlobalStyleClassesStyles, {
 });
 
 export interface ThemeProviderPropTypes {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {

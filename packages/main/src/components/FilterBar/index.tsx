@@ -32,7 +32,7 @@ export interface FilterBarPropTypes extends CommonProps {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FilterGroupItems` in order to preserve the intended design.
    */
-  children?: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
   /**
    * Defines the search field next to the header of the `FilterBar`.
    *

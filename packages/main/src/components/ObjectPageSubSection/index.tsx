@@ -14,7 +14,7 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
    * Defines the content of the `ObjectPageSubSection`.
    */
-  children?: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
   /**
    * Defines the title of the `ObjectPageSubSection`.
    */

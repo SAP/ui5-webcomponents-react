@@ -14,7 +14,7 @@ export interface FormItemPropTypes {
   /**
    * Content of the FormItem. Can be an arbitrary React Node.
    */
-  children?: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[];
 }
 
 interface InternalProps extends FormItemPropTypes {
