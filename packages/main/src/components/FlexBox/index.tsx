@@ -57,16 +57,14 @@ export interface FlexBoxPropTypes extends CommonProps {
 const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
   const {
     children,
-    justifyContent,
-    direction,
-    alignItems,
+    justifyContent = FlexBoxJustifyContent.Start,
+    direction = FlexBoxDirection.Row,
+    alignItems = FlexBoxAlignItems.Stretch,
     displayInline,
-    wrap,
-    style,
+    wrap = FlexBoxWrap.NoWrap,
     className,
     fitContainer,
-    slot,
-    as,
+    as = 'div',
     ...rest
   } = props;
 
@@ -84,21 +82,12 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
 
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} style={style} slot={slot} {...rest}>
+    <CustomTag ref={ref} className={flexBoxClasses} data-component-name="FlexBox" {...rest}>
       {children}
     </CustomTag>
   );
 });
 
-FlexBox.defaultProps = {
-  as: 'div',
-  alignItems: FlexBoxAlignItems.Stretch,
-  direction: FlexBoxDirection.Row,
-  displayInline: false,
-  fitContainer: false,
-  justifyContent: FlexBoxJustifyContent.Start,
-  wrap: FlexBoxWrap.NoWrap
-};
 FlexBox.displayName = 'FlexBox';
 
 export { FlexBox };

@@ -1,26 +1,61 @@
 export const styles = {
   flexBox: {
-    display: 'flex'
+    display: 'flex',
+
+    [`&:where($fitContainer)`]: { width: '100%', height: '100%' },
+
+    // justify
+    [`&:where($justifyContentStart)`]: {
+      justifyContent: 'flex-start'
+    },
+    [`&:where($justifyContentEnd)`]: {
+      justifyContent: 'flex-end'
+    },
+    [`&:where($justifyContentCenter)`]: {
+      justifyContent: 'center'
+    },
+    [`&:where($justifyContentSpaceAround)`]: {
+      justifyContent: 'space-around'
+    },
+    [`&:where($justifyContentSpaceBetween)`]: {
+      justifyContent: 'space-between'
+    },
+
+    // align
+    [`&:where($alignItemsStart)`]: {
+      alignItems: 'flex-start'
+    },
+    [`&:where($alignItemsEnd)`]: {
+      alignItems: 'flex-end'
+    },
+    [`&:where($alignItemsCenter)`]: {
+      alignItems: 'center'
+    },
+    [`&:where($alignItemsStretch)`]: {
+      alignItems: 'stretch'
+    },
+    [`&:where($alignItemsBaseline)`]: {
+      alignItems: 'baseline'
+    }
   },
-  fitContainer: { width: '100%', height: '100%' },
   flexBoxDisplayInline: {
     display: 'inline-flex'
   },
-  justifyContentStart: {
-    justifyContent: 'flex-start'
-  },
-  justifyContentEnd: {
-    justifyContent: 'flex-end'
-  },
-  justifyContentCenter: {
-    justifyContent: 'center'
-  },
-  justifyContentSpaceAround: {
-    justifyContent: 'space-around'
-  },
-  justifyContentSpaceBetween: {
-    justifyContent: 'space-between'
-  },
+
+  fitContainer: {},
+
+  justifyContentStart: {},
+  justifyContentEnd: {},
+  justifyContentCenter: {},
+  justifyContentSpaceAround: {},
+  justifyContentSpaceBetween: {},
+
+  alignItemsStart: {},
+  alignItemsEnd: {},
+  alignItemsCenter: {},
+  alignItemsStretch: {},
+  alignItemsBaseline: {},
+
   flexBoxDirectionColumn: {
     flexDirection: 'column'
   },
@@ -33,21 +68,7 @@ export const styles = {
   flexBoxDirectionRowReverse: {
     flexDirection: 'row-reverse'
   },
-  alignItemsStart: {
-    alignItems: 'flex-start'
-  },
-  alignItemsEnd: {
-    alignItems: 'flex-end'
-  },
-  alignItemsCenter: {
-    alignItems: 'center'
-  },
-  alignItemsStretch: {
-    alignItems: 'stretch'
-  },
-  alignItemsBaseline: {
-    alignItems: 'baseline'
-  },
+
   flexWrapNoWrap: {
     flexWrap: 'nowrap'
   },
