@@ -1,4 +1,4 @@
-import { ITimelineChartRow, TimelineChartConnection } from './TimelineChartTypes';
+import { ITimelineChartRow, TimelineChartConnection } from '../TimelineChartTypes';
 
 export const dummyDataSet: ITimelineChartRow[] = [
   {
@@ -191,6 +191,63 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         label: 'Completed',
         start: 35,
         color: 'red'
+      }
+    ]
+  }
+];
+
+export const schedulingEDFData: ITimelineChartRow[] = [
+  {
+    label: 'T1 (4, 1)',
+    // color: 'blue',
+    tasks: [
+      {
+        start: 0,
+        end: 1
+      },
+      {
+        start: 4,
+        end: 5
+      },
+      {
+        start: 8,
+        end: 9
+      },
+      {
+        start: 12,
+        end: 13
+      }
+    ]
+  },
+  {
+    label: 'T2 (4, 2)',
+    // color: 'blue',
+    tasks: [
+      {
+        start: 5,
+        end: 7
+      },
+      {
+        start: 10,
+        end: 12
+      }
+    ]
+  },
+  {
+    label: 'T3 (7, 2)',
+    // color: 'blue',
+    tasks: [
+      {
+        start: 1,
+        end: 3
+      },
+      {
+        start: 7,
+        end: 8
+      },
+      {
+        start: 9,
+        end: 10
       }
     ]
   }

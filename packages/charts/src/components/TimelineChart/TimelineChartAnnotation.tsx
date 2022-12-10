@@ -10,7 +10,7 @@ interface TimelineChartAnnotationProps {
 
   /**
    * The height of the annotation. Preferably this should be the same height as the
-   * rowHeight of the chart. If not set, the rowHeight is used.
+   * rowHeight of the chart. If not set, the default rowHeight is used.
    */
   height?: string;
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface TimelineChartLayerProps {
   ignoreClick?: boolean;
-  children?: JSX.Element | JSX.Element[];
+  children?: ReactNode | ReactNode[];
   isAnnotation?: boolean;
 }
 

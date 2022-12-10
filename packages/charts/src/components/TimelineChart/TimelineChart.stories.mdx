@@ -3,7 +3,8 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import TimelineChartAnnotation from './TimelineChartAnnotation';
-import { dummyDataSet, dummyDiscreteDataSet } from './TimelineChartDummyData.ts';
+import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData } from './examples/Dataset.ts';
+import { TimingFigure } from './examples/Annotations.tsx';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 
 <Meta
@@ -29,7 +30,6 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
       totalDuration: 36,
       isDiscrete: true,
       showTooltip: true,
-      showAnnotation: true,
       showRelationship: true
     }}
   >
@@ -48,6 +48,128 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
 
 ## More Examples
 
+### With Annotations
+
+This example shows how the `TimelineChart` is used to visualize a simple simulation of the
+[<b>Earliest Deadline First</b>](https://en.wikipedia.org/wiki/Earliest_deadline_first_scheduling) scheduling
+algorithm. The tasks are shown in the chart and the annotations are added on top and used to indicate the
+arrival time, period and deadline of the tasks. The `TimelineChartAnnotation` component provides a way to specify the row
+the annotations are applied to.
+
+The annotations are drawn using the HTML canvas and all the annotations for the same row are drawn at the same time using
+the `TimingFigure` custom component created for this specific example. As can be seen, the annotations scale neatly without
+blurring when the timeline is zoomed.
+
+<Canvas>
+  <Story
+    name="With Annotations"
+    args={{
+      dataset: schedulingEDFData,
+      totalDuration: 15,
+      showRelationship: true,
+      showAnnotation: true,
+      rowHeight: 35,
+      unit: 'ms'
+    }}
+  >
+    {(props) => (
+      <TimelineChart
+        {...props}
+        annotations={
+          <>
+            <TimelineChartAnnotation
+              rowNumber={0}
+              rowHeight={35}
+              figure={<TimingFigure arrival={0} period={4} deadline={4} totalDuration={15} />}
+            />
+            <TimelineChartAnnotation
+              rowNumber={1}
+              rowHeight={35}
+              figure={<TimingFigure arrival={4} period={5} deadline={5} totalDuration={15} />}
+            />
+            <TimelineChartAnnotation
+              rowNumber={2}
+              rowHeight={35}
+              figure={<TimingFigure arrival={0} period={7} deadline={6} totalDuration={15} />}
+            />
+          </>
+        }
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### TimingFigure Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```jsx
+export const TimingFigure = ({ arrival, period, deadline, totalDuration, color }) => {
+  const ref = useRef();
+  const verticalSpacing = 2;
+  const halfArrowWidth = 4;
+
+  useEffect(() => {
+    const ro = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const canvas = ref.current;
+        const ctx = canvas.getContext('2d');
+
+        // Set the canvas dimensions to avoid blurring
+        canvas.width = entry.contentRect.width;
+        canvas.height = entry.contentRect.height;
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const one5thHeight = height / 5;
+        const four5thHeight = 4 * one5thHeight;
+
+        const interval = (period / totalDuration) * width;
+        const arrivalOffset = (arrival / totalDuration) * width;
+        const deadlineOffset = (deadline / totalDuration) * width;
+
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = color ?? 'red';
+
+        // Draw the up-pointing arrows for the arrival
+        for (let i = 0; i * interval + arrivalOffset < width; i++) {
+          const offset = i * interval + arrivalOffset;
+          ctx.moveTo(offset, verticalSpacing);
+          ctx.lineTo(offset, height - verticalSpacing);
+          ctx.moveTo(offset, verticalSpacing);
+          ctx.lineTo(offset - halfArrowWidth, one5thHeight);
+          ctx.moveTo(offset, verticalSpacing);
+          ctx.lineTo(offset + halfArrowWidth, one5thHeight);
+        }
+
+        // Draw the down-pointing arrows for the deadline
+        for (let i = 0; i * interval + arrivalOffset + deadlineOffset < width; i++) {
+          const offset = i * interval + arrivalOffset + deadlineOffset;
+          ctx.moveTo(offset, verticalSpacing);
+          ctx.lineTo(offset, height - verticalSpacing);
+          ctx.lineTo(offset - halfArrowWidth, four5thHeight);
+          ctx.moveTo(offset, height - verticalSpacing);
+          ctx.lineTo(offset + halfArrowWidth, four5thHeight);
+        }
+
+        ctx.stroke();
+      });
+    });
+    ro.observe(ref.current);
+    return () => ro.disconnect();
+  }, []);
+
+  return <canvas ref={ref} style={{ width: '100%', height: '100%' }}></canvas>;
+};
+```
+
+</details>
+
+### With Annotations Only
+
 ### With Custom Color
 
 <Canvas>
@@ -57,11 +179,12 @@ import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSe
       dataset: dummyDataSet,
       totalDuration: 150,
       showRelationship: true,
+      showAnnotation: true,
       unit: 'ms'
     }}
   >
     {(props) => (
-      <TimelineChart {...props} annotation={<TimelineChartAnnotation rowNumber={2} figure={<div></div>} />} />
+      <TimelineChart {...props} annotations={<TimelineChartAnnotation rowNumber={0} figure={<div></div>} />} />
     )}
   </Story>
 </Canvas>
