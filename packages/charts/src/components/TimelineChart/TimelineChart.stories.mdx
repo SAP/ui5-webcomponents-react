@@ -106,7 +106,7 @@ blurring when the timeline is zoomed.
 <summary>Show Code</summary>
 
 ```jsx
-export const TimingFigure = ({ arrival, period, deadline, totalDuration, color }) => {
+export const TimingFigure = ({ arrival, period, deadline, totalDuration }) => {
   const ref = useRef();
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
@@ -132,7 +132,7 @@ export const TimingFigure = ({ arrival, period, deadline, totalDuration, color }
 
         ctx.beginPath();
         ctx.lineWidth = 1;
-        ctx.strokeStyle = color ?? 'red';
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
 
         // Draw the up-pointing arrows for the arrival
         for (let i = 0; i * interval + arrivalOffset < width; i++) {

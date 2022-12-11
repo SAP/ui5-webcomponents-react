@@ -5,11 +5,10 @@ interface TimingFigureProps {
   period: number;
   deadline?: number;
   totalDuration: number;
-  color?: string;
 }
 
 // A custom figure for testing out the TimelineChartAnnotation.
-export const TimingFigure: React.FC<TimingFigureProps> = ({ arrival, period, deadline, totalDuration, color }) => {
+export const TimingFigure: React.FC<TimingFigureProps> = ({ arrival, period, deadline, totalDuration }) => {
   const ref = useRef<HTMLCanvasElement>();
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
@@ -35,7 +34,7 @@ export const TimingFigure: React.FC<TimingFigureProps> = ({ arrival, period, dea
 
         ctx.beginPath();
         ctx.lineWidth = 1;
-        ctx.strokeStyle = color ?? 'red';
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
 
         // Draw the up-pointing arrows for the arrival
         for (let i = 0; i * interval + arrivalOffset < width; i++) {
