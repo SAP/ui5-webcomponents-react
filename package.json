@@ -60,7 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
     "@ui5/webcomponents-tools": "1.9.1",
-    "@vitejs/plugin-react": "^2.0.1",
+    "@vitejs/plugin-react": "^3.0.0",
     "chromatic": "^6.5.3",
     "cypress": "^11.1.0",
     "dedent": "^0.7.0",
