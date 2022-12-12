@@ -1,5 +1,6 @@
 import { useLabelFormatter } from './useLabelFormatter';
 
+// eslint-disable-next-line react/prop-types
 function LabelFormatterComponent({ options }) {
   const val = useLabelFormatter(options);
   return <span>{val(100)}</span>;

@@ -391,8 +391,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the column growing behaviour. Possible Values:
    *
    * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
-   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   *
+   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
    *
    */
   scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
@@ -513,11 +515,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @param {number} e.detail.rowCount - The number of rows
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
-  onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
+  onLoadMore?: (e?: CustomEvent<{ rowCount: number; totalRowCount: number }>) => void;
   /**
    * Fired when the body of the table is scrolled.
    */
-  onTableScroll?: (e) => (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
+  onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.

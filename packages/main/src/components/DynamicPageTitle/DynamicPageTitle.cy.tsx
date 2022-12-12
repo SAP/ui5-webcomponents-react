@@ -1,9 +1,14 @@
 import { useRef, useState } from 'react';
+import { DynamicPage, DynamicPageTitlePropTypes, ObjectPage } from '../..';
 import { Button } from '../../webComponents';
-import { DynamicPage, ObjectPage } from '../..';
 import { DynamicPageTitle } from './';
 
-const PageComponent = ({ toolbarProps = {}, isObjectPage }) => {
+interface PropTypes {
+  dynamicPageTitleProps?: DynamicPageTitlePropTypes;
+  isObjectPage: boolean;
+}
+
+const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) => {
   const actionsRef = useRef(null);
   const navActionsRef = useRef(null);
   const [actionsToolbarInstance, setActionsToolbarInstance] = useState();
@@ -15,7 +20,7 @@ const PageComponent = ({ toolbarProps = {}, isObjectPage }) => {
         navigationActions={new Array(20).fill(<Button>Test</Button>)}
         actionsToolbarProps={{ overflowPopoverRef: actionsRef }}
         navigationActionsToolbarProps={{ overflowPopoverRef: navActionsRef }}
-        {...toolbarProps}
+        {...dynamicPageTitleProps}
       />
     )
   };

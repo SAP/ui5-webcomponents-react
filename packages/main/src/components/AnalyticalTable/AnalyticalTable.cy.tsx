@@ -13,6 +13,17 @@ const generateMoreData = (count) => {
   }));
 };
 
+interface PropTypes {
+  onRowSelect: (
+    e?: CustomEvent<{
+      allRowsSelected: boolean;
+      row?: Record<string, unknown>;
+      isSelected?: boolean;
+      selectedFlatRows: Record<string, unknown>[];
+    }>
+  ) => void;
+}
+
 describe('AnalyticalTable', () => {
   it('sorting', () => {
     const sort = cy.spy().as('onSortSpy');
@@ -194,7 +205,7 @@ describe('AnalyticalTable', () => {
   });
 
   it('tree selection & filtering', () => {
-    const TreeSelectFilterTable = (props) => {
+    const TreeSelectFilterTable = (props: PropTypes) => {
       const [filter, setFilter] = useState('');
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
       return (
@@ -281,7 +292,7 @@ describe('AnalyticalTable', () => {
 
   it('programmatic and user selection', () => {
     const data = generateMoreData(20);
-    const TestComp = ({ onRowSelect }) => {
+    const TestComp = ({ onRowSelect }: PropTypes) => {
       const [selectedRowIds, setSelectedRowIds] = useState({});
       const [selectedFlatRows, setSelectedFlatRows] = useState([]);
       return (
@@ -367,7 +378,18 @@ describe('AnalyticalTable', () => {
   });
 
   it('GroupBy selection', () => {
-    const GroupBySelectTable = (props) => {
+    interface PropTypes {
+      onRowSelect: (
+        e?: CustomEvent<{
+          allRowsSelected: boolean;
+          row?: Record<string, unknown>;
+          isSelected?: boolean;
+          selectedFlatRows: Record<string, unknown>[];
+        }>
+      ) => void;
+    }
+    const GroupBySelectTable = (props: PropTypes) => {
+      const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
       const tableInstance = useRef();
 
@@ -397,7 +419,7 @@ describe('AnalyticalTable', () => {
                   id: item?.id
                 }))
               });
-              props.onRowSelect(e);
+              onRowSelect(e);
             }}
             data={groupableData}
             selectionMode="MultiSelect"

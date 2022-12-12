@@ -1,22 +1,23 @@
-import { ComponentType, ContextType, createContext, Dispatch, useContext } from 'react';
+import { ComponentType, ContextType, createContext, Dispatch, RefCallback, RefObject, useContext } from 'react';
 
-export interface UpdateModalStateAction {
+export interface UpdateModalStateAction<Props, DomRef, ContainerElement = HTMLElement> {
   type: 'set' | 'reset';
-  payload?: ModalState | { id: string };
+  payload?: ModalState<Props, DomRef, ContainerElement> | { id: string };
 }
 
-export interface ModalState {
+export interface ModalState<Props, DomRef, ContainerElement> {
   Component: ComponentType;
-  props: Record<string, any>;
-  container: HTMLElement;
+  props: Props;
+  ref: RefObject<DomRef> | RefCallback<DomRef>;
+  container: ContainerElement;
   id: string;
 }
 
-interface IModalsContext {
-  setModal?: Dispatch<UpdateModalStateAction>;
+interface IModalsContext<Props, DomRef> {
+  setModal?: Dispatch<UpdateModalStateAction<Props, DomRef>>;
 }
 
-export const ModalsContext = createContext<IModalsContext>({
+export const ModalsContext = createContext<IModalsContext<Record<string, any>, HTMLElement>>({
   setModal: null
 });
 

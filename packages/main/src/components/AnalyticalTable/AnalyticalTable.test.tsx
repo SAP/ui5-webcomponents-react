@@ -3,8 +3,8 @@ import { createCustomPropsTest } from '@shared/tests/utils';
 import React, { createRef } from 'react';
 import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
-import { AnalyticalTable } from './index';
 import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
+import { AnalyticalTable } from './index';
 
 const columns = [
   {
@@ -91,60 +91,6 @@ const data = [
     friend: {
       name: 'Nei',
       age: 50
-    }
-  }
-];
-
-const moreData = [
-  {
-    name: 'foo',
-    age: 18,
-    friend: {
-      name: 'meh',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'bar',
-    age: 77,
-    friend: {
-      name: 'la',
-      age: 66
-    }
-  },
-  {
-    name: 'lorem',
-    age: 18,
-    friend: {
-      name: 'ipsum',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'dolor',
-    age: 77,
-    friend: {
-      name: 'sit',
-      age: 66
-    }
-  },
-  {
-    name: 'amet',
-    age: 18,
-    friend: {
-      name: 'consetetur',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'sadipscing',
-    age: 77,
-    friend: {
-      name: 'elitr',
-      age: 66
     }
   }
 ];
@@ -403,20 +349,20 @@ describe('AnalyticalTable', () => {
     const { asFragment, container } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
-    let dragColumnId = componentDrag.dataset.columnId;
+    const componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    const dragColumnId = componentDrag.dataset.columnId;
 
     expect(componentDrag.draggable).toBeDefined();
     expect(componentDrag.draggable).toBeTruthy();
     fireEvent.drag(componentDrag);
 
     // get second column of the table and simulate dropping on it
-    let dataTransfer = {
+    const dataTransfer = {
       getData: () => {
         return dragColumnId;
       }
     };
-    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    const componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
     fireEvent.drag(componentDrop, { dataTransfer });
 
     expect(asFragment()).toMatchSnapshot();
@@ -426,20 +372,20 @@ describe('AnalyticalTable', () => {
     const { asFragment, container } = renderRtl(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
-    let dragColumnId = componentDrag.dataset.columnId;
+    const componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    const dragColumnId = componentDrag.dataset.columnId;
 
     expect(componentDrag.draggable).toBeDefined();
     expect(componentDrag.draggable).toBeTruthy();
     fireEvent.drag(componentDrag);
 
     // get second column of the table and simulate dropping on it
-    let dataTransfer = {
+    const dataTransfer = {
       getData: () => {
         return dragColumnId;
       }
     };
-    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    const componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
     fireEvent.drag(componentDrop, { dataTransfer });
 
     expect(asFragment()).toMatchSnapshot();
@@ -553,7 +499,7 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         reactTableOptions={{
-          getRowId: (row, relativeIndex, parent) => {
+          getRowId: (row, relativeIndex) => {
             return `${row.name ?? relativeIndex}`;
           }
         }}
@@ -579,7 +525,7 @@ describe('AnalyticalTable', () => {
         return <div title="subcomponent">Hi! I'm a subcomponent.</div>;
       }
     };
-    const { asFragment, rerender, container } = render(
+    const { asFragment, rerender } = render(
       <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
     );
     expect(screen.getAllByTitle('Expand Node')).toHaveLength(2);
@@ -850,9 +796,20 @@ describe('AnalyticalTable', () => {
   });
 
   test('plugin hook: useRowDisableSelection', () => {
+    interface PropTypes {
+      cb: (
+        e?: CustomEvent<{
+          allRowsSelected: boolean;
+          row?: Record<string, unknown>;
+          isSelected?: boolean;
+          selectedFlatRows: Record<string, unknown>[];
+        }>
+      ) => void;
+      click: (e?: CustomEvent<{ row?: unknown }>) => void;
+    }
     const cb = jest.fn();
     const click = jest.fn();
-    const TestComponent = (props) => {
+    const TestComponent = (props: PropTypes) => {
       const { cb, click } = props;
       const dataWithDisableSelectProp = data.map((item, index) => ({ ...item, disableSelection: index === 0 }));
       return (

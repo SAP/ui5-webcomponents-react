@@ -6,10 +6,11 @@ export interface ModalsProviderPropTypes {
   children: ReactNode;
 }
 
+//@ts-expect-error: can't assume state generics at this point
 const modalStateReducer = (state: ModalState[], action: UpdateModalStateAction) => {
   switch (action.type) {
     case 'set':
-      return [...state, action.payload as ModalState];
+      return [...state, action.payload];
     case 'reset':
       return state.filter((modal) => modal.id !== action.payload.id);
     default:
@@ -34,7 +35,7 @@ export function ModalsProvider({ children }: ModalsProviderPropTypes) {
       {modals.map((modal) => {
         if (modal?.Component) {
           return createPortal(
-            <modal.Component {...modal.props} key={modal.id} data-id={modal.id} />,
+            <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />,
             modal.container ?? document.body
           );
         }

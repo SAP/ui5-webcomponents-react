@@ -216,9 +216,7 @@ describe('ObjectPage', () => {
 
   //todo: needs mocking
   test.skip('title in header', () => {
-    const { container } = render(
-      renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true })
-    );
+    render(renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true }));
   });
 
   test('with IllustratedMessage', () => {

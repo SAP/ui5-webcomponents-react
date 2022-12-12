@@ -16,8 +16,7 @@ describe('MessageBox', () => {
     [MessageBoxTypes.Success, MessageBoxActions.OK],
     [MessageBoxTypes.Warning, MessageBoxActions.OK],
     [MessageBoxTypes.Error, MessageBoxActions.Close],
-    [MessageBoxTypes.Information, MessageBoxActions.OK],
-    [MessageBoxTypes.Highlight, MessageBoxActions.OK]
+    [MessageBoxTypes.Information, MessageBoxActions.OK]
   ])('%s', (type, buttonText) => {
     const callback = jest.fn();
     const { asFragment, unmount, container } = render(
@@ -37,7 +36,7 @@ describe('MessageBox', () => {
   test('Custom Button', () => {
     const click = jest.fn();
     const close = jest.fn();
-    const { asFragment, getByText, container, rerender, getByTestId } = render(
+    const { asFragment, getByText, container, rerender } = render(
       <MessageBox
         open
         onClose={close}
@@ -167,7 +166,7 @@ describe('MessageBox', () => {
     unmount();
   });
 
-  test('Custom Action Text', async () => {
+  test('Custom Action Text', () => {
     const onClose = jest.fn();
     const { asFragment, unmount, container } = render(
       <MessageBox type={MessageBoxTypes.Confirm} actions={[MessageBoxActions.OK, 'My Custom Action']} onClose={onClose}>
@@ -179,7 +178,7 @@ describe('MessageBox', () => {
 
     const textOK = screen.getByText(MessageBoxActions.OK);
     expect(textOK).toBeInTheDocument();
-    let customAction = screen.getByText('My Custom Action');
+    const customAction = screen.getByText('My Custom Action');
     expect(customAction).toBeInTheDocument();
 
     fireEvent.click(textOK);
@@ -207,8 +206,8 @@ describe('MessageBox', () => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
     const { getAllByText } = render(
       <>
-        {new Array(200).fill('howdy').map((_) => (
-          <MessageBox open type={MessageBoxTypes.Confirm}>
+        {new Array(200).fill('howdy').map((_, index) => (
+          <MessageBox key={index} open type={MessageBoxTypes.Confirm}>
             Content
           </MessageBox>
         ))}

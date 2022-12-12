@@ -1,6 +1,5 @@
-import { fireEvent, render, screen } from '@shared/tests';
 import React from 'react';
-import { SplitterLayout } from '../SplitterLayout';
+import { fireEvent, render, screen } from '@shared/tests';
 import { Splitter } from './index';
 
 describe('SplitterLayout', () => {
