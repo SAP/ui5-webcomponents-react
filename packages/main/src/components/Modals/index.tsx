@@ -154,6 +154,7 @@ function showMessageBox<ContainerElement>(
   setModal?.({
     type: 'set',
     payload: {
+      // @ts-expect-error: props type safety is covered by the `props` property
       Component: MessageBox,
       props: {
         ...props,

@@ -18,7 +18,6 @@ import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
-import { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
 import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
 import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
@@ -299,8 +298,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
       const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
-        return objectPageSection.props?.id === currentId;
+      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
+        return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
     }
@@ -398,17 +397,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         let sectionId;
         safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section) => {
           if (React.isValidElement(section) && section.props && section.props.children) {
-            safeGetChildrenArray(section.props.children).forEach(
-              (subSection: ReactElement<ObjectPageSubSectionPropTypes>) => {
-                if (
-                  React.isValidElement(subSection) &&
-                  subSection.props &&
-                  subSection.props.id === props.selectedSubSectionId
-                ) {
-                  sectionId = section.props?.id;
-                }
+            safeGetChildrenArray(section.props.children).forEach((subSection) => {
+              if (
+                React.isValidElement(subSection) &&
+                subSection.props &&
+                subSection.props.id === props.selectedSubSectionId
+              ) {
+                sectionId = section.props?.id;
               }
-            );
+            });
           }
         });
         if (sectionId) {
@@ -461,8 +458,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         setInternalSelectedSectionId(sectionId);
 
         const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-        const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
-          return objectPageSection.props?.id === sectionId;
+        const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
+          return React.isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
         });
         debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
@@ -510,8 +507,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           ) {
             const currentId = extractSectionIdFromHtmlId(section.target.id);
             setInternalSelectedSectionId(currentId);
-            const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection: ReactElement) => {
-              return objectPageSection.props?.id === currentId;
+            const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
+              return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
             });
             debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
@@ -783,10 +780,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             data-component-name="ObjectPageTabContainer"
             className={classes.tabContainerComponent}
           >
-            {safeGetChildrenArray(children).map((section: ReactElement, index) => {
-              if (!section.props) return null;
-              const subTabs = safeGetChildrenArray<any>(section.props.children).filter(
-                (subSection) => subSection?.type?.displayName === 'ObjectPageSubSection'
+            {safeGetChildrenArray(children).map((section, index) => {
+              if (!React.isValidElement(section) || !section.props) return null;
+              const subTabs = safeGetChildrenArray(section.props.children).filter(
+                (subSection) =>
+                  // @ts-expect-error: if the `ObjectPageSubSection` component is passed as children, the `displayName` is available. Otherwise, the default children should be rendered w/o additional logic.
+                  React.isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
               );
               return (
                 <Tab
@@ -796,6 +795,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                   text={section.props.titleText}
                   selected={internalSelectedSectionId === section.props?.id || undefined}
                   subTabs={subTabs.map((item) => {
+                    if (!React.isValidElement(item)) {
+                      return null;
+                    }
                     return (
                       <Tab
                         data-parent-id={section.props.id}
