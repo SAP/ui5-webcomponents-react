@@ -9,7 +9,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { forwardRef, useCallback } from 'react';
+import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces';
@@ -106,6 +106,10 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
       role?: string;
     };
   };
+  /**
+   * Fired when the `headerContent` changes its pinned state.
+   */
+  onPinnedStateChange?: (pinned: boolean) => void;
 }
 
 /**
@@ -118,11 +122,12 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     headerContentVisible,
     headerContentPinnable,
     headerPinned,
-    setHeaderPinned,
-    onToggleHeaderContentVisibility,
-    onHoverToggleButton,
     style,
-    a11yConfig
+    a11yConfig,
+    setHeaderPinned,
+    onPinnedStateChange,
+    onToggleHeaderContentVisibility,
+    onHoverToggleButton
   } = props;
 
   const classes = useStyles();
@@ -138,6 +143,16 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     },
     [setHeaderPinned]
   );
+
+  const isInitial = useRef(true);
+  useEffect(() => {
+    if (!isInitial.current && typeof onPinnedStateChange === 'function') {
+      onPinnedStateChange(headerPinned);
+    }
+    if (isInitial.current) {
+      isInitial.current = false;
+    }
+  }, [headerPinned]);
 
   const anchorBarActionButtonClasses = clsx(classes.anchorBarActionButton, isRTL && classes.anchorBarActionButtonRtl);
 

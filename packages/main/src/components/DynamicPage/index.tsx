@@ -72,6 +72,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when the `headerContent` is expanded or collapsed.
    */
   onToggleHeaderContent?: (visible: boolean) => void;
+  /**
+   * Fired when the `headerContent` changes its `pinned` state.
+   */
+  onPinnedStateChange?: (pinned: boolean) => void;
 }
 
 /**
@@ -107,6 +111,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     footer,
     a11yConfig,
     onToggleHeaderContent,
+    onPinnedStateChange,
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
@@ -222,10 +227,14 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   };
 
   useEffect(() => {
-    if (alwaysShowContentHeader) {
-      setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+    if (alwaysShowContentHeader !== undefined) {
+      if (alwaysShowContentHeader) {
+        setHeaderState(HEADER_STATES.VISIBLE_PINNED);
+      } else {
+        setHeaderState(HEADER_STATES.VISIBLE);
+      }
     }
-  }, [alwaysShowContentHeader, setHeaderState]);
+  }, [alwaysShowContentHeader]);
 
   const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
 
@@ -297,11 +306,12 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
           headerContentPinnable={headerContentPinnable}
           showHideHeaderButton={showHideHeaderButton}
           headerContentVisible={headerContent && headerCollapsed !== true}
-          onToggleHeaderContentVisibility={onToggleHeaderContentInternal}
-          setHeaderPinned={handleHeaderPinnedChange}
           headerPinned={headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED}
-          onHoverToggleButton={onHoverToggleButton}
           a11yConfig={a11yConfig}
+          onHoverToggleButton={onHoverToggleButton}
+          onToggleHeaderContentVisibility={onToggleHeaderContentInternal}
+          onPinnedStateChange={onPinnedStateChange}
+          setHeaderPinned={handleHeaderPinnedChange}
         />
       </FlexBox>
       <div
