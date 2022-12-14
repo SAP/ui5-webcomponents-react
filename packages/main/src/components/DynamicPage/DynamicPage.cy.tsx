@@ -52,25 +52,18 @@ describe('DynamicPage', () => {
         <div style={{ height: '2000px' }} />
       </DynamicPage>
     );
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
+    cy.get('@onPinSpy').should('have.been.calledOnce');
+    cy.get('@onPinSpy').should('have.been.calledWith', true);
 
     cy.findByTestId('op').scrollTo(0, 500);
+    cy.findByText('DynamicPageHeader').should('be.visible');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
+    cy.get('@onPinSpy').should('have.been.calledTwice');
+    cy.get('@onPinSpy').should('have.been.calledWith', false);
+    cy.findByTestId('op').scrollTo(0, 501);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
-
-    cy.findByTestId('op').scrollTo(0, 0, { duration: 100 });
-
-    cy.wait(200);
-    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
-    // cy.get('@onPinSpy').should('have.been.calledOnce');
-    // cy.get('@onPinSpy').should('have.been.calledWith', true);
-    //
-    // cy.findByTestId('op').scrollTo(0, 500);
-    // cy.findByText('DynamicPageHeader').should('be.visible');
-    //
-    // cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
-    // cy.get('@onPinSpy').should('have.been.calledTwice');
-    // cy.get('@onPinSpy').should('have.been.calledWith', false);
-    // cy.findByTestId('op').scrollTo(0, 501);
-    // cy.findByText('DynamicPageHeader').should('not.be.visible');
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
