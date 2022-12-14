@@ -264,6 +264,7 @@ exports[`DynamicPage always show content header 1`] = `
         <ui5-button
           accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-up"
@@ -273,6 +274,7 @@ exports[`DynamicPage always show content header 1`] = `
         <ui5-toggle-button
           accessible-name="Unpin Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="pushpin-off"
@@ -460,6 +462,7 @@ exports[`DynamicPage hider header button 1`] = `
         <ui5-toggle-button
           accessible-name="Unpin Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="pushpin-off"
@@ -675,6 +678,7 @@ exports[`DynamicPage render footer 1`] = `
         <ui5-button
           accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
@@ -974,6 +978,7 @@ exports[`DynamicPage with content 1`] = `
         <ui5-button
           accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-up"
@@ -983,6 +988,7 @@ exports[`DynamicPage with content 1`] = `
         <ui5-toggle-button
           accessible-name="Pin Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="pushpin-off"
@@ -1976,6 +1982,7 @@ exports[`DynamicPage without content 1`] = `
         <ui5-button
           accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-up"
@@ -1985,6 +1992,7 @@ exports[`DynamicPage without content 1`] = `
         <ui5-toggle-button
           accessible-name="Pin Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="pushpin-off"

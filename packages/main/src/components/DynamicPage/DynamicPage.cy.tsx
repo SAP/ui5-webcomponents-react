@@ -68,6 +68,7 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
     cy.get('@onPinSpy').should('have.been.calledTwice');
     cy.get('@onPinSpy').should('have.been.calledWith', false);
+    cy.findByTestId('op').scrollTo(0, 501);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
   });
 
