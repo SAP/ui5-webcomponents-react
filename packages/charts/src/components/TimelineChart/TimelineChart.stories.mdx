@@ -4,7 +4,7 @@ import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import TimelineChartAnnotation from './TimelineChartAnnotation';
 import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, tagDataset } from './examples/Dataset.ts';
-import { TimingFigure, Tag } from './examples/Annotations.tsx';
+import { TimingFigure, Invention } from './examples/Annotations.tsx';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
@@ -171,9 +171,13 @@ export const TimingFigure = ({ arrival, period, deadline, totalDuration }) => {
 
 ### With Annotations Only
 
-Using annotations can be so powerful. This allows very good customization of the the timeline you want. The
+Using annotations can be so powerful. This allows a very good customization of the timeline as desired. The
 chart can be made to contain only custom annotations that utilize the other features available in the
-`TimelineChart`. The example below shows the timeline for the some of the most momentuous inventions in the
+`TimelineChart`. By default, the annotations are set so that they dont interact with the mouse. If an
+interaction with the mouse is needed for the custom annotation, the annotation should have the
+`pointerEvents` set to _auto_ in its own style.
+
+The example below shows the timeline for the some of the most momentuous inventions in the
 last 5000 years.
 
 <Canvas>
@@ -183,8 +187,10 @@ last 5000 years.
       dataset: tagDataset,
       totalDuration: 150,
       showAnnotation: true,
-      rowHeight: 50,
-      unit: 'years'
+      rowHeight: 40,
+      unit: 'Years ago',
+      activitiesTitle: '',
+      durationTitle: '#'
     }}
   >
     {(props) => (
@@ -196,58 +202,65 @@ last 5000 years.
               rowNumber={0}
               figure={
                 <>
-                  <Tag
-                    invention={'airplane'}
-                    rowHeight={50}
-                    time={118}
+                  <Invention
+                    name={'internet'}
+                    rowHeight={40}
+                    time={40}
                     totalDuration={5000}
-                    color={ThemingParameters.sapChart_OrderedColor_1}
+                    color={ThemingParameters.sapChart_OrderedColor_9}
                   />
-                  <Tag
-                    invention={'penicillin'}
-                    rowHeight={50}
+                  <Invention
+                    name={'penicillin'}
+                    rowHeight={40}
                     time={100}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_2}
                   />
-                  <Tag
-                    invention={'lightbulb'}
-                    rowHeight={50}
+                  <Invention
+                    name={'airplane'}
+                    rowHeight={40}
+                    time={118}
+                    totalDuration={5000}
+                    color={ThemingParameters.sapChart_OrderedColor_1}
+                  />
+                  <Invention
+                    name={'lightbulb'}
+                    rowHeight={40}
                     time={142}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_3}
                   />
-                  <Tag
-                    invention={'telephone'}
-                    rowHeight={50}
+                  <Invention
+                    name={'telephone'}
+                    rowHeight={40}
                     time={146}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_4}
                   />
-                  <Tag
-                    invention={'steamengine'}
-                    rowHeight={50}
+                  <Invention
+                    name={'steamengine'}
+                    rowHeight={40}
                     time={308}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_5}
                   />
-                  <Tag
-                    invention={'printingpress'}
-                    rowHeight={50}
+                  <Invention
+                    name={'printingpress'}
+                    rowHeight={40}
                     time={600}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_6}
                   />
-                  <Tag
-                    invention={'compass'}
-                    rowHeight={50}
+                  <Invention
+                    name={'compass'}
+                    rowHeight={40}
                     time={1100}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_7}
                   />
-                  <Tag
-                    invention={'wheel'}
-                    rowHeight={50}
+                  <Invention
+                    name={'wheel'}
+                    rowHeight={40}
                     time={4500}
                     totalDuration={5000}
                     color={ThemingParameters.sapChart_OrderedColor_8}
