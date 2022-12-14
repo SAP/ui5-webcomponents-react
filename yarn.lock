@@ -5342,15 +5342,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/cypress@npm:^8.0.3":
-  version: 8.0.7
-  resolution: "@testing-library/cypress@npm:8.0.7"
+"@testing-library/cypress@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@testing-library/cypress@npm:9.0.0"
   dependencies:
     "@babel/runtime": ^7.14.6
     "@testing-library/dom": ^8.1.0
   peerDependencies:
-    cypress: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
-  checksum: e005bc1a7ec808706c57e95ed312069fb5be39ea7362900dc2a32c09f124d478ade69ebcd7df88c076e3867ab328ae6e6ce13791bdf042621ff66b56552bf74b
+    cypress: ^12.0.0
+  checksum: fbd24e8f0b8a60279b336de5f6bc0e7ad6fb31316eacab5128dacc7fccde1eb40935b90f2c3bddc7d814115fe3965c6dbf011785448cd15b5a5b0bc40ef5bb4c
   languageName: node
   linkType: hard
 
@@ -10882,9 +10882,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^11.1.0":
-  version: 11.2.0
-  resolution: "cypress@npm:11.2.0"
+"cypress@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "cypress@npm:12.1.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -10930,7 +10930,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: e13649fb4b62a3c9dff7cc571f4e01dba009d8179b05c4f885c5ceb4ed76b78a7323fec491d992da35527708b54e596bfc9edb1d702f788317889f794d8c1e76
+  checksum: 238ea125f396594a84ba096e0eaebe6f0d6b60b3b232a3f6e36420f9fa7a9218211df8dc6ad2a4f6cc0cc2fd77d4e0eb0932b409a73ff8434e78e880a36f59a7
   languageName: node
   linkType: hard
 
@@ -25359,7 +25359,7 @@ __metadata:
     "@storybook/manager-webpack5": 6.5.14
     "@storybook/react": 6.5.14
     "@storybook/theming": 6.5.14
-    "@testing-library/cypress": ^8.0.3
+    "@testing-library/cypress": ^9.0.0
     "@testing-library/jest-dom": ^5.11.4
     "@testing-library/react": ^13.0.0
     "@testing-library/react-17": "npm:@testing-library/react@^12.1.4"
@@ -25374,7 +25374,7 @@ __metadata:
     "@ui5/webcomponents-tools": 1.9.1
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
-    cypress: ^11.1.0
+    cypress: ^12.1.0
     dedent: ^0.7.0
     eslint: ^8.29.0
     eslint-config-prettier: ^8.5.0
