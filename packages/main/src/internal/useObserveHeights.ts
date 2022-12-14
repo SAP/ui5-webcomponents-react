@@ -31,6 +31,12 @@ export const useObserveHeights = (
   );
 
   useEffect(() => {
+    if (headerContentRef.current && headerCollapsed !== undefined) {
+      setHeaderContentHeight(headerContentRef.current.getBoundingClientRect().height);
+    }
+  }, [headerCollapsed]);
+
+  useEffect(() => {
     if (!fixedHeader) {
       pageRef.current.addEventListener('scroll', onScroll);
     }

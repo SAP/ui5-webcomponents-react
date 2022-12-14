@@ -396,6 +396,16 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   }, [alwaysShowContentHeader]);
 
+  const prevHeaderPinned = useRef(headerPinned);
+  useEffect(() => {
+    if (prevHeaderPinned.current && !headerPinned && objectPageRef.current.scrollTop > topHeaderHeight) {
+      onToggleHeaderContentVisibility({ detail: { visible: false } });
+    }
+    if (!prevHeaderPinned.current) {
+      prevHeaderPinned.current = true;
+    }
+  }, [headerPinned, topHeaderHeight]);
+
   useEffect(() => {
     setSelectedSubSectionId(props.selectedSubSectionId);
     if (props.selectedSubSectionId) {
