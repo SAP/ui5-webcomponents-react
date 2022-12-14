@@ -58,6 +58,7 @@ describe('DynamicPage', () => {
 
     cy.findByTestId('op').scrollTo('top');
 
+    cy.wait(50);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
     cy.get('@onPinSpy').should('have.been.calledOnce');
     cy.get('@onPinSpy').should('have.been.calledWith', true);
