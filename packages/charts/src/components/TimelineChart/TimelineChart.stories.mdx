@@ -3,7 +3,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import TimelineChartAnnotation from './TimelineChartAnnotation';
-import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, tagDataset } from './examples/Dataset.ts';
+import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, inventionDataset } from './examples/Dataset.ts';
 import { TimingFigure, Invention } from './examples/Annotations.tsx';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
@@ -178,14 +178,14 @@ interaction with the mouse is needed for the custom annotation, the annotation s
 `pointerEvents` set to _auto_ in its own style.
 
 The example below shows the timeline for the some of the most momentuous inventions in the
-last 5000 years.
+last 6000 years from the year 2022.
 
 <Canvas>
   <Story
     name="With Annotations Only"
     args={{
-      dataset: tagDataset,
-      totalDuration: 150,
+      dataset: inventionDataset,
+      totalDuration: 6000,
       showAnnotation: true,
       rowHeight: 40,
       unit: 'Years ago',
@@ -205,64 +205,64 @@ last 5000 years.
                   <Invention
                     name={'internet'}
                     rowHeight={40}
-                    time={40}
-                    totalDuration={5000}
+                    time={50}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_9}
                   />
                   <Invention
                     name={'penicillin'}
                     rowHeight={40}
-                    time={100}
-                    totalDuration={5000}
+                    time={82}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_2}
                   />
                   <Invention
                     name={'airplane'}
                     rowHeight={40}
                     time={118}
-                    totalDuration={5000}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_1}
                   />
                   <Invention
                     name={'lightbulb'}
                     rowHeight={40}
-                    time={142}
-                    totalDuration={5000}
+                    time={143}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_3}
                   />
                   <Invention
                     name={'telephone'}
                     rowHeight={40}
                     time={146}
-                    totalDuration={5000}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_4}
                   />
                   <Invention
                     name={'steamengine'}
                     rowHeight={40}
-                    time={308}
-                    totalDuration={5000}
+                    time={258}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_5}
                   />
                   <Invention
                     name={'printingpress'}
                     rowHeight={40}
-                    time={600}
-                    totalDuration={5000}
+                    time={582}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_6}
                   />
                   <Invention
                     name={'compass'}
                     rowHeight={40}
                     time={1100}
-                    totalDuration={5000}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_7}
                   />
                   <Invention
                     name={'wheel'}
                     rowHeight={40}
-                    time={4500}
-                    totalDuration={5000}
+                    time={5500}
+                    totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_8}
                   />
                 </>

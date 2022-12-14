@@ -253,7 +253,7 @@ export const schedulingEDFData: ITimelineChartRow[] = [
   }
 ];
 
-export const tagDataset: ITimelineChartRow[] = [
+export const inventionDataset: ITimelineChartRow[] = [
   {
     label: 'Inventions'
   }
