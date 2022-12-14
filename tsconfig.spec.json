@@ -6,5 +6,5 @@
     "moduleResolution": "Node",
     "jsx": "react-jsx"
   },
-  "include": ["cypress/**/*.ts", "cypress/**/*.tsx", "**/*.cy.ts", "**/*.cy.tsx"]
+  "include": ["cypress/**/*.ts", "cypress/**/*.tsx", "**/*.cy.ts", "**/*.cy.tsx", "cypress.config.ts"]
 }

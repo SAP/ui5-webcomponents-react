@@ -187,6 +187,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
           onMouseLeave={onHoverToggleButton}
           tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
           accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+          data-component-name="DynamicPageAnchorBarExpandBtn"
         />
       )}
       {shouldRenderHeaderPinnableButton && (
@@ -202,6 +203,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
           onClick={onPinHeader}
           tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
           accessibleName={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
+          data-component-name="DynamicPageAnchorBarPinBtn"
         />
       )}
     </section>
