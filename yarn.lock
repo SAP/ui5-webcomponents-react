@@ -9452,8 +9452,8 @@ __metadata:
   linkType: hard
 
 "chromatic@npm:^6.5.3":
-  version: 6.13.0
-  resolution: "chromatic@npm:6.13.0"
+  version: 6.13.1
+  resolution: "chromatic@npm:6.13.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@types/webpack-env": ^1.17.0
@@ -9461,7 +9461,7 @@ __metadata:
     chroma: bin/main.cjs
     chromatic: bin/main.cjs
     chromatic-cli: bin/main.cjs
-  checksum: c2b54d1a8e3e3bed3571f41e3befbf0fbfb71d8c08007c9e56095b1ad837bf5e1441c8fc5bfff4a4f5d6a4dd7088dd2893132d170384c462b358f98479e27963
+  checksum: 78d7eacf317641a2c98beb334b8506772e21815daf971b8f8a86655379ba4ced17caa160e1b02e1ff35a429abc858295168f8b1a24887c2fe19f3f8264402974
   languageName: node
   linkType: hard
 
