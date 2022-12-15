@@ -122,6 +122,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
 
   const [componentRefTopHeader, topHeaderRef] = useSyncRef<HTMLDivElement>((headerTitle as any)?.ref);
   const [componentRefHeaderContent, headerContentRef] = useSyncRef<HTMLDivElement>((headerContent as any)?.ref);
+  const scrollTimeout = useRef(0);
 
   const [headerState, setHeaderState] = useState<HEADER_STATES>(
     alwaysShowContentHeader ? HEADER_STATES.VISIBLE_PINNED : HEADER_STATES.AUTO
@@ -139,7 +140,8 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     [headerCollapsedInternal, setHeaderCollapsedInternal],
     {
       noHeader: false,
-      fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED
+      fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED,
+      scrollTimeout
     }
   );
 
@@ -173,19 +175,21 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   }, []);
 
   useEffect(() => {
+    const dynamicPage = dynamicPageRef.current;
     const oneTimeScrollHandler = () => {
       setHeaderState(HEADER_STATES.AUTO);
       setHeaderCollapsedInternal(true);
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
-      dynamicPageRef.current?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
+      dynamicPage?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
     }
     return () => {
-      dynamicPageRef.current?.removeEventListener('scroll', oneTimeScrollHandler);
+      dynamicPage?.removeEventListener('scroll', oneTimeScrollHandler);
     };
   }, [dynamicPageRef, headerState]);
 
   const onToggleHeaderContentVisibility = (e) => {
+    scrollTimeout.current = performance.now() + 500;
     const shouldHideHeader = !e.detail.visible;
     setHeaderState((oldState) => {
       if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {

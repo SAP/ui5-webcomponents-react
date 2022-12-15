@@ -46,11 +46,12 @@ export const useObserveHeights = (
   }, [headerCollapsed]);
 
   useEffect(() => {
+    const page = pageRef.current;
     if (!fixedHeader) {
-      pageRef.current.addEventListener('scroll', onScroll);
+      page.addEventListener('scroll', onScroll);
     }
     return () => {
-      pageRef.current?.removeEventListener('scroll', onScroll);
+      page.removeEventListener('scroll', onScroll);
     };
   }, [onScroll, fixedHeader]);
 
