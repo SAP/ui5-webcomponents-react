@@ -8,7 +8,11 @@ export const useObserveHeights = (
   headerContentRef,
   anchorBarRef,
   [headerCollapsed, setHeaderCollapsed]: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
-  { noHeader, fixedHeader = false }: { noHeader: boolean; fixedHeader?: boolean }
+  {
+    noHeader,
+    fixedHeader = false,
+    scrollTimeout = { current: 0 }
+  }: { noHeader: boolean; fixedHeader?: boolean; scrollTimeout?: React.MutableRefObject<number> }
 ) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
@@ -19,6 +23,11 @@ export const useObserveHeights = (
     (e) => {
       const scrollDown = prevScrollTop.current <= e.target.scrollTop;
       prevScrollTop.current = e.target.scrollTop;
+
+      if (scrollTimeout.current >= performance.now()) {
+        return;
+      }
+
       if (scrollDown && e.target.scrollTop >= headerContentHeight && !headerCollapsed) {
         setIsIntersecting(false);
         setHeaderCollapsed(true);

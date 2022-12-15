@@ -183,12 +183,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   //@ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef = useRef<HTMLDivElement>(null);
-  const scrollTimeout = useRef(null);
+  const selectionScrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
   const isRTL = useIsRTL(objectPageRef);
   const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
+  const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
+  const scrollTimeout = useRef(0);
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -207,7 +209,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   useEffect(() => {
     return () => {
       debouncedOnSectionChange.cancel();
-      clearTimeout(scrollTimeout.current);
+      clearTimeout(selectionScrollTimeout.current);
     };
   }, []);
 
@@ -221,7 +223,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       [headerCollapsedInternal, setHeaderCollapsedInternal],
       {
         noHeader: !headerTitle && !headerContent,
-        fixedHeader: headerPinned
+        fixedHeader: headerPinned,
+        scrollTimeout
       }
     );
 
@@ -400,8 +403,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   useEffect(() => {
     if (prevHeaderPinned.current && !headerPinned && objectPageRef.current.scrollTop > topHeaderHeight) {
       onToggleHeaderContentVisibility({ detail: { visible: false } });
+      prevHeaderPinned.current = false;
     }
-    if (!prevHeaderPinned.current) {
+    if (!prevHeaderPinned.current && headerPinned) {
       prevHeaderPinned.current = true;
     }
   }, [headerPinned, topHeaderHeight]);
@@ -469,6 +473,19 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     };
   }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
 
+  const onToggleHeaderContentVisibility = useCallback((e) => {
+    isToggledRef.current = true;
+    scrollTimeout.current = performance.now() + 500;
+    if (!e.detail.visible) {
+      setHeaderCollapsedInternal(true);
+      objectPageRef.current?.classList.add(classes.headerCollapsed);
+    } else {
+      setHeaderCollapsedInternal(false);
+      setScrolledHeaderExpanded(true);
+      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+    }
+  }, []);
+
   const handleOnSubSectionSelected = useCallback(
     (e) => {
       isProgrammaticallyScrolled.current = true;
@@ -487,20 +504,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
   );
-  const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
-  const scrollTimout = useRef(0);
-  const onToggleHeaderContentVisibility = useCallback((e) => {
-    isToggledRef.current = true;
-    scrollTimout.current = performance.now() + 500;
-    if (!e.detail.visible) {
-      setHeaderCollapsedInternal(true);
-      objectPageRef.current?.classList.add(classes.headerCollapsed);
-    } else {
-      setHeaderCollapsedInternal(false);
-      setScrolledHeaderExpanded(true);
-      objectPageRef.current?.classList.remove(classes.headerCollapsed);
-    }
-  }, []);
 
   const objectPageClasses = clsx(
     classes.objectPage,
@@ -675,7 +678,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (!isToggledRef.current) {
         isToggledRef.current = true;
       }
-      if (scrollTimout.current >= performance.now()) {
+      if (scrollTimeout.current >= performance.now()) {
         return;
       }
       scrollEvent.current = e;
@@ -685,10 +688,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (selectedSubSectionId) {
         setSelectedSubSectionId(undefined);
       }
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
+      if (selectionScrollTimeout.current) {
+        clearTimeout(selectionScrollTimeout.current);
       }
-      scrollTimeout.current = setTimeout(() => {
+      selectionScrollTimeout.current = setTimeout(() => {
         setIsAfterScroll(true);
       }, 100);
       if (!headerPinned || e.target.scrollTop === 0) {
