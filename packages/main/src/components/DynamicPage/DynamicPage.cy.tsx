@@ -185,11 +185,9 @@ describe('DynamicPage', () => {
 
     cy.findByTestId('op').scrollTo(0, 400);
     cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
-    cy.findByText('DynamicPageHeader').should('not.be.visible');
-
     // wait for timeout of expand click
     cy.wait(500);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
 
     cy.findByTestId('op').scrollTo(0, 1);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
