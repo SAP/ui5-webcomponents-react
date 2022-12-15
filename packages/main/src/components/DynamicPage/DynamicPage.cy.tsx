@@ -52,6 +52,12 @@ describe('DynamicPage', () => {
         <div style={{ height: '2000px' }} />
       </DynamicPage>
     );
+    cy.wait(50);
+    cy.findByTestId('op').scrollTo(0, 500);
+    cy.findByText('DynamicPageHeader').should('not.be.visible');
+
+    cy.findByTestId('op').scrollTo('top');
+
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').click();
     cy.get('@onPinSpy').should('have.been.calledOnce');
     cy.get('@onPinSpy').should('have.been.calledWith', true);
@@ -100,6 +106,7 @@ describe('DynamicPage', () => {
     };
     const pin = cy.spy().as('onPinSpy');
     cy.mount(<TestComp onPinnedStateChange={pin} />);
+    cy.wait(50);
 
     cy.findByTestId('op').scrollTo(0, 500);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
@@ -134,6 +141,9 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
     cy.findByText('DynamicPageHeader').should('be.visible');
 
+    // wait for timeout of expand click
+    cy.wait(500);
+
     cy.findByTestId('op').scrollTo(0, 502);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
 
@@ -151,5 +161,41 @@ describe('DynamicPage', () => {
     cy.findByTestId('btn').click();
     cy.findByText('DynamicPageHeader').should('be.visible');
     cy.get('@onPinSpy').should('have.callCount', 7);
+  });
+
+  it('collapse header when partially visible', () => {
+    cy.viewport(1440, 1080);
+    cy.mount(
+      <DynamicPage
+        style={{ height: '100vh' }}
+        headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+        headerContent={
+          <DynamicPageHeader>
+            <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>DynamicPageHeader</div>
+          </DynamicPageHeader>
+        }
+        headerContentPinnable
+        showHideHeaderButton
+        data-testid="op"
+      >
+        <div style={{ height: '2000px' }} />
+      </DynamicPage>
+    );
+    cy.wait(50);
+
+    cy.findByTestId('op').scrollTo(0, 400);
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+    cy.findByText('DynamicPageHeader').should('not.be.visible');
+
+    // wait for timeout of expand click
+    cy.wait(500);
+
+    cy.findByTestId('op').scrollTo(0, 1);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+    cy.wait(50);
+    cy.findByTestId('op').scrollTo(0, 0);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+    cy.findByText('DynamicPageHeader').should('be.visible');
   });
 });

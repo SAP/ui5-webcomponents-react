@@ -57,6 +57,7 @@ describe('ObjectPage', () => {
         </ObjectPageSection>
       </ObjectPage>
     );
+    cy.wait(50);
 
     cy.findByTestId('op').scrollTo(0, 500);
     cy.findByText('ObjectPageHeader').should('not.be.visible');
@@ -112,6 +113,7 @@ describe('ObjectPage', () => {
     };
     const pin = cy.spy().as('onPinSpy');
     cy.mount(<TestComp onPinnedStateChange={pin} />);
+    cy.wait(50);
 
     cy.findByTestId('op').scrollTo(0, 500);
     cy.findByText('ObjectPageHeader').should('not.be.visible');
@@ -142,6 +144,9 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
     cy.findByText('ObjectPageHeader').should('be.visible');
 
+    // wait for timeout of expand click
+    cy.wait(500);
+
     cy.findByTestId('op').scrollTo(0, 501);
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
@@ -158,5 +163,43 @@ describe('ObjectPage', () => {
     cy.findByTestId('btn').click();
     cy.findByText('ObjectPageHeader').should('be.visible');
     cy.get('@onPinSpy').should('have.callCount', 7);
+  });
+
+  it('collapse header when partially visible', () => {
+    cy.viewport(1440, 1080);
+    cy.mount(
+      <ObjectPage
+        style={{ height: '100vh' }}
+        headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+        headerContent={
+          <DynamicPageHeader>
+            <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
+          </DynamicPageHeader>
+        }
+        headerContentPinnable
+        showHideHeaderButton
+        data-testid="op"
+      >
+        <ObjectPageSection id="section" titleText="Section">
+          <div style={{ height: '2000px' }} />
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(50);
+
+    cy.findByTestId('op').scrollTo(0, 400);
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+    cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+    // wait for timeout of expand click
+    cy.wait(500);
+
+    cy.findByTestId('op').scrollTo(0, 1);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+    cy.wait(50);
+    cy.findByTestId('op').scrollTo(0, 0);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+    cy.findByText('ObjectPageHeader').should('be.visible');
   });
 });
