@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TreeItem Basic Test (generated) 1`] = `
+exports[`TreeItemCustom Basic Test (generated) 1`] = `
 <DocumentFragment>
-  <ui5-tree-item
+  <ui5-tree-item-custom
     additional-text-state="None"
     type="Active"
-    ui5-tree-item=""
+    ui5-tree-item-custom=""
   />
 </DocumentFragment>
 `;
