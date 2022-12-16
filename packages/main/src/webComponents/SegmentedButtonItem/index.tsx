@@ -1,6 +1,5 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import { ReactNode, MouseEventHandler } from 'react';
-import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -84,9 +83,5 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, Segme
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
-
-SegmentedButtonItem.defaultProps = {
-  design: ButtonDesign.Default
-};
 
 export { SegmentedButtonItem };
