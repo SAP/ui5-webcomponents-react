@@ -6494,6 +6494,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-base@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-base@npm:1.9.2"
+  dependencies:
+    lit-html: ^2.0.1
+  checksum: f58a2d205fdeae6152bf4662baa7dd8cf6d7bf803da40790791d61cfbbfa4755cb257be5aa01044e2c50f920b6f4630e531ee57a979cb5e5c8c738cf7e626b7d
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-fiori@npm:1.9.1":
   version: 1.9.1
   resolution: "@ui5/webcomponents-fiori@npm:1.9.1"
@@ -6513,6 +6522,15 @@ __metadata:
   dependencies:
     "@ui5/webcomponents-base": 1.9.1
   checksum: 00daad5f65a467d8e0549481e65f182945f4c5a55f1b223beefdbb24b176634c6281c48884af03f457b75f9d5bf5b98f9d4c7771a00ae7bcca84a78c9d472743
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents-icons@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-icons@npm:1.9.2"
+  dependencies:
+    "@ui5/webcomponents-base": 1.9.2
+  checksum: 720368b0b06aadcf1d03581e5e56f409abf60c4e75a0d41570de0506c7a98feea97c18b213031e53b056d19024d14eaf987b40c143eb620eec2d075764528592
   languageName: node
   linkType: hard
 
@@ -25370,7 +25388,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.45.1
     "@ui5/webcomponents": 1.9.1
     "@ui5/webcomponents-fiori": 1.9.1
-    "@ui5/webcomponents-icons": 1.9.1
+    "@ui5/webcomponents-icons": 1.9.2
     "@ui5/webcomponents-tools": 1.9.1
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
