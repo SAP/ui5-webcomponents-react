@@ -9,11 +9,7 @@ export const modifyObjectProperty = (object: any, attr: string, value: any) => {
   });
 };
 
-interface Options {
-  omitTitle?: boolean;
-}
-
-export const createCustomPropsTest = (Component: ComponentType<any>, props = {}, options: Options = {}) => {
+export const createCustomPropsTest = (Component: ComponentType<any>, props = {}) => {
   test('Pass Through HTML Standard Props', () => {
     const { getByTitle } = render(
       <Component
@@ -23,7 +19,7 @@ export const createCustomPropsTest = (Component: ComponentType<any>, props = {},
         id="element-id"
         className="thisClassIsUsedForTestingPurposesOnly"
         style={{ pointerEvents: 'none' }}
-        title={options?.omitTitle ? undefined : 'Tooltip'}
+        title="Tooltip"
         customattribute="true"
         {...props}
       />
@@ -31,9 +27,7 @@ export const createCustomPropsTest = (Component: ComponentType<any>, props = {},
 
     const element = screen.getByTestId('component-to-be-tested');
 
-    if (!options?.omitTitle) {
-      expect(getByTitle('Tooltip')).toBeInTheDocument();
-    }
+    expect(getByTitle('Tooltip')).toBeInTheDocument();
     expect(element.classList.contains('thisClassIsUsedForTestingPurposesOnly')).toBeTruthy();
     expect(element.style.pointerEvents).toEqual('none');
 
