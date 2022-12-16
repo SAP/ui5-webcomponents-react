@@ -4008,6 +4008,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sap-theming/theming-base-content@npm:11.1.48":
+  version: 11.1.48
+  resolution: "@sap-theming/theming-base-content@npm:11.1.48"
+  checksum: 5471499b449e3aee4c9838c393d1f1beed309396a6eeb4a280c83697f5fb599c65bbaca789c04e7265c608efcc7f621e41c9af8d2c62fb58b1b94eb3d98298db
+  languageName: node
+  linkType: hard
+
 "@semantic-release/error@npm:^3.0.0":
   version: 3.0.0
   resolution: "@semantic-release/error@npm:3.0.0"
@@ -6494,6 +6501,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-base@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-base@npm:1.9.2"
+  dependencies:
+    lit-html: ^2.0.1
+  checksum: f58a2d205fdeae6152bf4662baa7dd8cf6d7bf803da40790791d61cfbbfa4755cb257be5aa01044e2c50f920b6f4630e531ee57a979cb5e5c8c738cf7e626b7d
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-fiori@npm:1.9.1":
   version: 1.9.1
   resolution: "@ui5/webcomponents-fiori@npm:1.9.1"
@@ -6516,12 +6532,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-icons@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-icons@npm:1.9.2"
+  dependencies:
+    "@ui5/webcomponents-base": 1.9.2
+  checksum: 720368b0b06aadcf1d03581e5e56f409abf60c4e75a0d41570de0506c7a98feea97c18b213031e53b056d19024d14eaf987b40c143eb620eec2d075764528592
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-localization@npm:1.9.1":
   version: 1.9.1
   resolution: "@ui5/webcomponents-localization@npm:1.9.1"
   dependencies:
     "@ui5/webcomponents-base": 1.9.1
   checksum: 8d9066c39b31fb2e103501b8c182976b184df7ad36f9b1804b9c94d652fc2560ec2d06d882dedda2ab993cbd1955bf1e3b1a4faa8e564f54a4f77e7251f5e3d0
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents-localization@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-localization@npm:1.9.2"
+  dependencies:
+    "@ui5/webcomponents-base": 1.9.2
+  checksum: 5e9b3020ab93d42a9678b41e88633e778962b244ef38cbb1105c48677036ebc5f31034d1c7188aecf9e11e4b5256ba5d234d3fe7205e444daf1b32ee6b994097
   languageName: node
   linkType: hard
 
@@ -6597,6 +6631,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-theming@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-theming@npm:1.9.2"
+  dependencies:
+    "@sap-theming/theming-base-content": 11.1.48
+    "@ui5/webcomponents-base": 1.9.2
+  checksum: b081c8603eec46f870cee4f0cd9b7d8bb1097118235fbcec96a619e099abb963d505b1ae298cc5a4452e34ec3822081ff11143259f963a8a271738ac700465d1
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-tools@npm:1.9.1":
   version: 1.9.1
   resolution: "@ui5/webcomponents-tools@npm:1.9.1"
@@ -6661,6 +6705,18 @@ __metadata:
     "@ui5/webcomponents-localization": 1.9.1
     "@ui5/webcomponents-theming": 1.9.1
   checksum: 6abed96daf68f31ddc1e10e85e731de871e8921a95d6552d045ca703185c7a36345814e80992eddb7f46e0b513efdd3aebc7b884c34ba4eb719fec160e5a4621
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents@npm:1.9.2"
+  dependencies:
+    "@ui5/webcomponents-base": 1.9.2
+    "@ui5/webcomponents-icons": 1.9.2
+    "@ui5/webcomponents-localization": 1.9.2
+    "@ui5/webcomponents-theming": 1.9.2
+  checksum: 9c7d01a7a94bdb830b0f801470dd85507a63149d55c160f30e8999f14dfb138dd08743b9af328491c0b0024f845817d6f1a480921e4131c666ea56068d442e54
   languageName: node
   linkType: hard
 
@@ -25368,7 +25424,7 @@ __metadata:
     "@types/react-dom": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.45.1
     "@typescript-eslint/parser": ^5.45.1
-    "@ui5/webcomponents": 1.9.1
+    "@ui5/webcomponents": 1.9.2
     "@ui5/webcomponents-fiori": 1.9.1
     "@ui5/webcomponents-icons": 1.9.1
     "@ui5/webcomponents-tools": 1.9.1
