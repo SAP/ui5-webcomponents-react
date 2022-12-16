@@ -6597,9 +6597,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.9.1":
-  version: 1.9.1
-  resolution: "@ui5/webcomponents-tools@npm:1.9.1"
+"@ui5/webcomponents-tools@npm:1.9.2":
+  version: 1.9.2
+  resolution: "@ui5/webcomponents-tools@npm:1.9.2"
   dependencies:
     "@wdio/cli": ^7.19.7
     "@wdio/devtools-service": ^7.19.7
@@ -6648,7 +6648,7 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: 8901582728b536e8251d16bf899448bcd1db99502207a6526ba2cec372ce46724bdb680f809e4ce2de0e60562d4840364ec5f9e693c77909b172a9e323e446fc
+  checksum: 41170149cb9838d9ad6ce5a26beb8dbd0beedc87cdc116b17552d3b573ef759e6a7212f80e8e20254ab30b5f73278f0322b8cd489526426fa4df1207ce22c027
   languageName: node
   linkType: hard
 
@@ -25371,7 +25371,7 @@ __metadata:
     "@ui5/webcomponents": 1.9.1
     "@ui5/webcomponents-fiori": 1.9.1
     "@ui5/webcomponents-icons": 1.9.1
-    "@ui5/webcomponents-tools": 1.9.1
+    "@ui5/webcomponents-tools": 1.9.2
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
     cypress: ^12.1.0
