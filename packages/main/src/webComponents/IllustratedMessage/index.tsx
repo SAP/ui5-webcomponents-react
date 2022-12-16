@@ -146,7 +146,7 @@ interface IllustratedMessageAttributes {
 
 export interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
 
-export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, Omit<CommonProps, 'title'> {
+export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, CommonProps {
   /**
    * Defines the component actions.
    */
@@ -160,15 +160,6 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
   subtitle?: ReactNode;
-  /**
-   * Defines the title of the component.
-   *
-   * **Note:** Using this slot, the default title text of illustration and the value of `title` property will be overwritten.
-   *
-   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
-   */
-  title?: ReactNode;
 }
 
 /**
@@ -187,7 +178,7 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
   'ui5-illustrated-message',
   ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleText'],
   [],
-  ['subtitle', 'title'],
+  ['subtitle'],
   []
 );
 
