@@ -76,8 +76,8 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['design', 'accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
-  ['iconEnd', 'submits', 'pressed', 'disabled'],
+  ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
+  ['pressed', 'disabled'],
   [],
   ['click']
 );
