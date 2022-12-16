@@ -23,8 +23,6 @@ interface TextAreaAttributes {
   disabled?: boolean;
   /**
    * Enables the component to automatically grow and shrink dynamically with its content.
-   *
-   * **Note:** If set to `true`, the CSS `height` property is ignored.
    */
   growing?: boolean;
   /**
