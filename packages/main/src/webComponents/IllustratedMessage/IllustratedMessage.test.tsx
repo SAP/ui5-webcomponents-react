@@ -8,6 +8,6 @@ describe('IllustratedMessage', () => {
     const { asFragment } = render(<IllustratedMessage />);
     expect(asFragment()).toMatchSnapshot();
   });
-  createCustomPropsTest(IllustratedMessage);
+  createCustomPropsTest(IllustratedMessage, {}, { omitTitle: true });
   createWaitForDefineTest(IllustratedMessage);
 });
