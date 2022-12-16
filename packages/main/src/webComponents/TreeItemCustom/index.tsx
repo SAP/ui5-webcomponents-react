@@ -49,7 +49,7 @@ interface TreeItemCustomAttributes {
   /**
    * Used to duck-type TreeItem elements without using instanceof
    */
-  isTreeItem?: unknown;
+  isTreeItem?: boolean;
   /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
    *
