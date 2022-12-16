@@ -79,7 +79,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
    *
    * **Note:** Use `TreeItem` or `TreeItemCustom`
    */
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode;
   /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
@@ -101,8 +101,8 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'isTreeItem', 'type'],
-  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
+  ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
+  ['expanded', 'hasChildren', 'indeterminate', 'isTreeItem', 'selected'],
   ['deleteButton'],
   ['detail-click']
 );
