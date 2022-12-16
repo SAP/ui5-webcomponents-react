@@ -443,9 +443,11 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
     events,
     methods
   });
+
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
+    componentSpec.extends === 'sap.ui.webc.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
     return { properties, slots, events, methods };
@@ -456,10 +458,11 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
       debugger;
     }
     if (componentSpec.extends.includes('.')) {
-      return c.name === componentSpec.extends;
+      return c.name === componentSpec.extends || c.name === componentSpec.extends.replace('webc', 'webcomponents');
     }
     return c.module === componentSpec.extends;
   });
+
   if (parentComponent) {
     return recursivePropertyResolver(parentComponent, {
       properties,

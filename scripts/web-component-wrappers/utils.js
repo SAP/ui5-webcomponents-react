@@ -31,8 +31,11 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     ),
     'ui5-suggestion-item',
     'ui5-segmented-button-item',
-    'ui5-option'
+    'ui5-option',
+    'sap.ui.webc.main.ITreeItem',
+    'sap.ui.webc.fiori.ISideNavigationItem'
   ]);
+
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
@@ -46,7 +49,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     };
   }
 
-  const typeWithoutNamespace = property.type.replace(/sap\.ui\.webcomponents\.(main|fiori|base)\.types\./, '');
+  const typeWithoutNamespace = property.type.replace(/sap\.ui\.(webcomponents|webc)\.(main|fiori|base)\.types\./, '');
 
   switch (typeWithoutNamespace) {
     // native ts types
@@ -154,6 +157,13 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
         tsType: `string | HTMLElement`
       };
     }
+    case 'TabContainerBackgroundDesign.prototype':
+      return {
+        importStatement: `import { TabContainerBackgroundDesign } from '../../enums';`,
+        tsType: `(TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign)`,
+        enum: `TabContainerBackgroundDesign`,
+        isEnum: true
+      };
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
