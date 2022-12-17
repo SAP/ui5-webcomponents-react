@@ -21,6 +21,7 @@ interface TimelineChartBodyProps {
   showRelationship?: boolean;
   showTooltip?: boolean;
   unit: string;
+  start: number;
   scaleChart: (x: number) => void;
 }
 
@@ -36,6 +37,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   showRelationship,
   showTooltip,
   unit,
+  start,
   scaleChart
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
@@ -106,6 +108,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           dataset={dataset}
           rowHeight={rowHeight}
           totalDuration={totalDuration}
+          start={start}
           showTooltip={showTooltipOnHover}
           hideTooltip={hideTooltip}
           postRender={showArrows}
@@ -175,7 +178,8 @@ interface TimelineChartDurationHeaderProps {
   totalDuration: number;
   unit: string;
   durationHeaderLabel: string;
-  columnLabels: string[];
+  columnLabels?: string[];
+  start: number;
 }
 
 const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
@@ -183,7 +187,8 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   height,
   isDiscrete,
   totalDuration,
-  columnLabels
+  columnLabels,
+  start
 }) => {
   const tickRef = useRef<HTMLCanvasElement>();
 
@@ -195,9 +200,10 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   };
 
   const halfHeaderHeight = 0.5 * height;
-  const labelArray: string[] = columnLabels
-    ? columnLabels
-    : Array.from(Array(totalDuration).keys()).map((num) => `${num}`);
+  let labelArray: string[];
+  if (isDiscrete) {
+    labelArray = columnLabels ? columnLabels : Array.from(Array(totalDuration).keys()).map((num) => `${num + start}`);
+  }
 
   useEffect(() => {
     if (tickRef.current != null) {
@@ -212,29 +218,32 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
       const tickLength = 5;
       const spacing = 2;
 
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 4;
       const textColor = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
-      ctx.strokeStyle = textColor;
+      const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--sapList_BorderColor');
+      ctx.strokeStyle = lineColor;
       ctx.fillStyle = textColor;
       ctx.moveTo(0, height);
       ctx.lineTo(0, height - tickLength);
       ctx.font = '8px Helvetica';
       ctx.textBaseline = 'bottom';
-      ctx.fillText('0', spacing, height - tickLength - spacing);
+      ctx.fillText(start.toString(), spacing, height - tickLength - spacing);
 
       ctx.moveTo(width, height);
       ctx.lineTo(width, height - tickLength);
-      const endNum = ctx.measureText(totalDuration.toString());
-      ctx.fillText(totalDuration.toString(), width - endNum.width - spacing, height - tickLength - spacing);
+      const endVal = totalDuration + start;
+      const endNum = ctx.measureText(endVal.toString());
+      ctx.fillText(endVal.toString(), width - endNum.width - spacing, height - tickLength - spacing);
       ctx.stroke();
 
-      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.lineWidth = 2;
       const segments = 5;
       for (let i = 1; i < segments; i++) {
         const xPos = (width / segments) * i;
         ctx.moveTo(xPos, height);
         ctx.lineTo(xPos, height - tickLength);
-        const text = ((totalDuration / segments) * i).toString();
+        const text = ((totalDuration / segments) * i + start).toString();
         const mSure = ctx.measureText(text);
         ctx.fillText(text, xPos - mSure.width / spacing, height - tickLength - spacing);
       }

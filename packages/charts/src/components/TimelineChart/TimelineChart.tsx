@@ -89,6 +89,12 @@ interface TimelineChartProps {
    * the lenght of this array must be equal to the `totalDuration`.
    */
   columnLabels?: string[];
+
+  /**
+   * The starting value of the timeline.
+   * @default 0
+   */
+  start?: number;
 }
 
 /**
@@ -108,7 +114,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   unit,
   activitiesTitle,
   durationTitle,
-  columnLabels
+  columnLabels,
+  start
 }) => {
   const DEFAULT_WIDTH = 'auto';
   const TASK_LABEL_WIDTH = 150;
@@ -123,6 +130,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   unit = unit ?? '';
   activitiesTitle = activitiesTitle ?? 'Activities';
   durationTitle = durationTitle ?? 'Duration';
+  start = start ?? 0;
 
   const numOfRows = dataset.length;
   const height = rowHeight * numOfRows + DURATION_LABEL_HEIGHT;
@@ -219,6 +227,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           unit={unit}
           durationHeaderLabel={durationTitle}
           columnLabels={columnLabels}
+          start={start}
         />
         <TimelineChartBody
           dataset={dataset}
@@ -234,6 +243,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           showTooltip={showTooltip}
           unit={unit}
           scaleChart={scaleChartBody}
+          start={start}
         />
       </div>
     </div>

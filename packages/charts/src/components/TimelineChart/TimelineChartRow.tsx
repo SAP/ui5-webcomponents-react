@@ -11,6 +11,7 @@ interface TimelineChartRowProps {
   rowHeight: number;
   rowIndex: number;
   totalDuration: number;
+  start: number;
   showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
 }
@@ -24,6 +25,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
   rowHeight,
   rowIndex,
   totalDuration,
+  start,
   showTooltip,
   hideTooltip
 }) => {
@@ -45,6 +47,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
             duration={task.end - task.start}
             totalDuration={totalDuration}
             color={task.color ?? rowData.color}
+            timelineStart={start}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
@@ -59,6 +62,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
             time={mStone.start}
             color={mStone.color}
             totalDuration={totalDuration}
+            timelineStart={start}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
@@ -102,6 +106,8 @@ interface TimelineTaskProps {
 
   color: CSSProperties['color'];
 
+  timelineStart: number;
+
   showTooltip: (
     mouseX: number,
     mouseY: number,
@@ -122,6 +128,7 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
   duration,
   totalDuration,
   color,
+  timelineStart,
   showTooltip,
   hideTooltip
 }) => {
@@ -144,7 +151,7 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
   return (
     <rect
       id={id}
-      x={`${(startTime / totalDuration) * 100}%`}
+      x={`${((startTime - timelineStart) / totalDuration) * 100}%`}
       y="10%"
       width={`${(duration / totalDuration) * 100}%`}
       height="80%"
@@ -187,6 +194,8 @@ interface TimelineMilestoneProps {
 
   color?: CSSProperties['color'];
 
+  timelineStart: number;
+
   showTooltip: (
     mouseX: number,
     mouseY: number,
@@ -206,6 +215,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
   time,
   totalDuration,
   color,
+  timelineStart,
   showTooltip,
   hideTooltip
 }) => {
@@ -255,7 +265,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
   // rendered Milestone itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
   return (
-    <svg x={`${(time / totalDuration) * 100}%`} y="10%" height="80%" overflow="visible">
+    <svg x={`${((time - timelineStart) / totalDuration) * 100}%`} y="10%" height="80%" overflow="visible">
       <rect // Zero-width rect. 1px width is used as a place-holder. Height is used to draw a rhombus after component is mounted.
         id={id}
         ref={milestoneRef}
@@ -275,6 +285,7 @@ interface TimelineChartRowGroupProps {
   dataset: ITimelineChartRow[];
   rowHeight: number;
   totalDuration: number;
+  start: number;
   showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
   postRender: () => void;
@@ -283,6 +294,7 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
   dataset,
   rowHeight,
   totalDuration,
+  start,
   showTooltip,
   hideTooltip,
   postRender
@@ -301,6 +313,7 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
             rowHeight={rowHeight}
             rowIndex={index}
             totalDuration={totalDuration}
+            start={start}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
