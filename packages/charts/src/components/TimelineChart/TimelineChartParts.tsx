@@ -40,7 +40,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
-  const scaleRef = useRef(0);
+  const scaleExpRef = useRef(0);
   const [displayArrows, setDisplayArrows] = useState(false);
 
   useEffect(() => {
@@ -70,11 +70,11 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   const onMouseWheelEvent = (evt: WheelEvent) => {
     evt.preventDefault();
     if (evt.deltaY < 0) {
-      scaleRef.current++;
+      scaleExpRef.current++;
     } else {
-      if (scaleRef.current > 0) scaleRef.current--;
+      if (scaleExpRef.current > 0) scaleExpRef.current--;
     }
-    scaleChart(Math.pow(SCALE_FACTOR, scaleRef.current));
+    scaleChart(Math.pow(SCALE_FACTOR, scaleExpRef.current));
   };
 
   const showArrows = () => setDisplayArrows(true);
@@ -183,10 +183,10 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   height,
   isDiscrete,
   totalDuration,
-  unit,
-  durationHeaderLabel,
   columnLabels
 }) => {
+  const tickRef = useRef<HTMLCanvasElement>();
+
   const style: CSSProperties = {
     width: width,
     height: height,
@@ -199,19 +199,61 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
     ? columnLabels
     : Array.from(Array(totalDuration).keys()).map((num) => `${num}`);
 
+  useEffect(() => {
+    if (tickRef.current != null) {
+      const canvas = tickRef.current;
+      canvas.width = canvas.getBoundingClientRect().width;
+      canvas.height = canvas.getBoundingClientRect().height;
+
+      const ctx = canvas.getContext('2d');
+
+      const width = canvas.width;
+      const height = canvas.height;
+      const tickLength = 5;
+      const spacing = 2;
+
+      ctx.lineWidth = 3;
+      const textColor = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
+      ctx.strokeStyle = textColor;
+      ctx.fillStyle = textColor;
+      ctx.moveTo(0, height);
+      ctx.lineTo(0, height - tickLength);
+      ctx.font = '8px Helvetica';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText('0', spacing, height - tickLength - spacing);
+
+      ctx.moveTo(width, height);
+      ctx.lineTo(width, height - tickLength);
+      const endNum = ctx.measureText(totalDuration.toString());
+      ctx.fillText(totalDuration.toString(), width - endNum.width - spacing, height - tickLength - spacing);
+      ctx.stroke();
+
+      ctx.lineWidth = 1;
+      const segments = 5;
+      for (let i = 1; i < segments; i++) {
+        const xPos = (width / segments) * i;
+        ctx.moveTo(xPos, height);
+        ctx.lineTo(xPos, height - tickLength);
+        const text = ((totalDuration / segments) * i).toString();
+        const mSure = ctx.measureText(text);
+        ctx.fillText(text, xPos - mSure.width / spacing, height - tickLength - spacing);
+      }
+
+      ctx.stroke();
+    }
+  }, [width]);
+
   return (
     <div style={style}>
       <div
         style={{
-          height: `${isDiscrete ? halfHeaderHeight : height}px`,
+          height: `${halfHeaderHeight}px`,
           textAlign: 'center',
           borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
           fontSize: '13px',
-          lineHeight: `${isDiscrete ? halfHeaderHeight : height}px`
+          lineHeight: `${halfHeaderHeight}px`
         }}
-      >
-        {durationHeaderLabel} {unit != '' ? `(${unit})` : ''}
-      </div>
+      ></div>
       {isDiscrete ? (
         <div
           style={{
@@ -235,7 +277,14 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
             );
           })}
         </div>
-      ) : null}
+      ) : (
+        <canvas
+          ref={tickRef}
+          style={{ height: `${halfHeaderHeight}px`, width: '100%' }}
+          width={width}
+          height={halfHeaderHeight}
+        ></canvas>
+      )}
     </div>
   );
 };

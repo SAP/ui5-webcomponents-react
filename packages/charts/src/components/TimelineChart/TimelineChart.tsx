@@ -196,6 +196,21 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         onMouseMove={_.throttle(onMouseMove, 200, { trailing: false })}
         onMouseLeave={onMouseLeave}
       >
+        <div
+          style={{
+            position: 'absolute',
+            width: dimensions.width - TASK_LABEL_WIDTH,
+            height: DURATION_LABEL_HEIGHT / 2,
+            borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+            marginBottom: '-0.5px',
+            textAlign: 'center',
+            fontSize: '13px',
+            lineHeight: `${DURATION_LABEL_HEIGHT / 2}px`,
+            color: ThemingParameters.sapTitleColor
+          }}
+        >
+          {durationTitle} {unit != '' ? `(${unit})` : ''}
+        </div>
         <TimelineChartDurationHeader
           width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
           height={DURATION_LABEL_HEIGHT}

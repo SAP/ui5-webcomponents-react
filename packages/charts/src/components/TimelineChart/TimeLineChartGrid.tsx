@@ -21,7 +21,7 @@ const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({ isDiscrete, numOf
   return (
     <g style={{ stroke: ThemingParameters.sapList_BorderColor }}>
       {generateHGridLines(numOfRows, rowHeight)}
-      {isDiscrete && generateVGridLines(numOfCols)}
+      {isDiscrete ? generateVGridLines(numOfCols, true) : generateVGridLines(5)}
     </g>
   );
 };
@@ -51,13 +51,20 @@ const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Eleme
   return gridLineArray;
 };
 
-const generateVGridLines = (numOfSegments: number): JSX.Element[] => {
+const generateVGridLines = (numOfSegments: number, isDiscrete = false): JSX.Element[] => {
   const segmentSizePercent = 100 / numOfSegments;
   const gridLineArray: JSX.Element[] = [];
   for (let i = 1; i < numOfSegments; i++) {
     const segmentOffset = segmentSizePercent * i;
     gridLineArray.push(
-      <line x1={`${segmentOffset}%`} y1="0" x2={`${segmentOffset}%`} y2="100%" key={`${segmentOffset}gridv`} />
+      <line
+        x1={`${segmentOffset}%`}
+        y1="0"
+        x2={`${segmentOffset}%`}
+        y2="100%"
+        key={`${segmentOffset}gridv`}
+        strokeDasharray={isDiscrete ? '' : '6'}
+      />
     );
   }
   return gridLineArray;
