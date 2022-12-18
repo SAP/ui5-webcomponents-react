@@ -56,7 +56,10 @@ This example shows how the `TimelineChart` is used to visualize a simple simulat
 [<b>Earliest Deadline First</b>](https://en.wikipedia.org/wiki/Earliest_deadline_first_scheduling) scheduling
 algorithm. The tasks are shown in the chart and the annotations are added on top and used to indicate the
 arrival time, period and deadline of the tasks. The `TimelineChartAnnotation` component provides a way to specify the row
-the annotations are applied to.
+the annotations are applied to. For the annotations to scale well with the scaling of the width of the timeline, when
+zooming is done, a **ResizeObserver** could be used if desired. But for most purposes, the `TimelineChartBodyCtx` provided
+should suffice. Using the React `useContext` hook to get the context and the _chartBodyWidth_ property should help with
+the scaling. This will prevent having to create too many ResizeObservers and affecting performance.
 
 The annotations are drawn using the HTML canvas and all the annotations for the same row are drawn at the same time using
 the `TimingFigure` custom component created for this specific example. As can be seen, the annotations scale neatly without
@@ -114,59 +117,54 @@ export const TimingFigure = ({ arrival, period, deadline, totalDuration }) => {
   const ref = useRef();
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
+  const chartBodyCtx = useContext(TimelineChartBodyCtx);
 
   useEffect(() => {
-    const ro = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const canvas = ref.current;
-        const ctx = canvas.getContext('2d');
+    const canvas = ref.current;
+    const ctx = canvas.getContext('2d');
 
-        // Set the canvas dimensions to avoid blurring
-        canvas.width = entry.contentRect.width;
-        canvas.height = entry.contentRect.height;
+    // Set the canvas dimensions to avoid blurring
+    canvas.width = canvas.getBoundingClientRect().width;
+    canvas.height = canvas.getBoundingClientRect().height;
 
-        const width = canvas.width;
-        const height = canvas.height;
-        const one5thHeight = height / 5;
-        const four5thHeight = 4 * one5thHeight;
+    const width = canvas.width;
+    const height = canvas.height;
+    const one5thHeight = height / 5;
+    const four5thHeight = 4 * one5thHeight;
 
-        const interval = (period / totalDuration) * width;
-        const arrivalOffset = (arrival / totalDuration) * width;
-        const deadlineOffset = (deadline / totalDuration) * width;
+    const interval = (period / totalDuration) * width;
+    const arrivalOffset = (arrival / totalDuration) * width;
+    const deadlineOffset = (deadline / totalDuration) * width;
 
-        ctx.beginPath();
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
 
-        // Draw the up-pointing arrows for the arrival
-        for (let i = 0; i * interval + arrivalOffset < width; i++) {
-          const offset = i * interval + arrivalOffset;
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset, height - verticalSpacing);
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset - halfArrowWidth, one5thHeight);
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset + halfArrowWidth, one5thHeight);
-        }
+    // Draw the up-pointing arrows for the arrival
+    for (let i = 0; i * interval + arrivalOffset < width; i++) {
+      const offset = i * interval + arrivalOffset;
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset, height - verticalSpacing);
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset - halfArrowWidth, one5thHeight);
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset + halfArrowWidth, one5thHeight);
+    }
 
-        // Draw the down-pointing arrows for the deadline
-        for (let i = 0; i * interval + arrivalOffset + deadlineOffset < width; i++) {
-          const offset = i * interval + arrivalOffset + deadlineOffset;
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset, height - verticalSpacing);
-          ctx.lineTo(offset - halfArrowWidth, four5thHeight);
-          ctx.moveTo(offset, height - verticalSpacing);
-          ctx.lineTo(offset + halfArrowWidth, four5thHeight);
-        }
+    // Draw the down-pointing arrows for the deadline
+    for (let i = 0; i * interval + arrivalOffset + deadlineOffset < width; i++) {
+      const offset = i * interval + arrivalOffset + deadlineOffset;
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset, height - verticalSpacing);
+      ctx.lineTo(offset - halfArrowWidth, four5thHeight);
+      ctx.moveTo(offset, height - verticalSpacing);
+      ctx.lineTo(offset + halfArrowWidth, four5thHeight);
+    }
 
-        ctx.stroke();
-      });
-    });
-    ro.observe(ref.current);
-    return () => ro.disconnect();
-  }, []);
+    ctx.stroke();
+  });
 
-  return <canvas ref={ref} style={{ width: '100%', height: '100%' }}></canvas>;
+  return <canvas ref={ref} style={{ width: chartBodyCtx.chartBodyWidth, height: '100%' }}></canvas>;
 };
 ```
 

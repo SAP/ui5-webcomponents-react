@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { TimelineChartBodyCtx } from '../TimelineChartParts';
 
 interface TimingFigureProps {
   arrival: number;
@@ -13,59 +14,54 @@ export const TimingFigure: React.FC<TimingFigureProps> = ({ arrival, period, dea
   const ref = useRef<HTMLCanvasElement>();
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
+  const chartBodyCtx = useContext(TimelineChartBodyCtx);
 
   useEffect(() => {
-    const ro = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const canvas = ref.current;
-        const ctx = canvas.getContext('2d');
+    const canvas = ref.current;
+    const ctx = canvas.getContext('2d');
 
-        // Set the canvas dimensions to avoid blurring
-        canvas.width = entry.contentRect.width;
-        canvas.height = entry.contentRect.height;
+    // Set the canvas dimensions to avoid blurring
+    canvas.width = canvas.getBoundingClientRect().width;
+    canvas.height = canvas.getBoundingClientRect().height;
 
-        const width = canvas.width;
-        const height = canvas.height;
-        const one5thHeight = height / 5;
-        const four5thHeight = 4 * one5thHeight;
+    const width = canvas.width;
+    const height = canvas.height;
+    const one5thHeight = height / 5;
+    const four5thHeight = 4 * one5thHeight;
 
-        const interval = (period / totalDuration) * width;
-        const arrivalOffset = (arrival / totalDuration) * width;
-        const deadlineOffset = (deadline / totalDuration) * width;
+    const interval = (period / totalDuration) * width;
+    const arrivalOffset = (arrival / totalDuration) * width;
+    const deadlineOffset = (deadline / totalDuration) * width;
 
-        ctx.beginPath();
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
 
-        // Draw the up-pointing arrows for the arrival
-        for (let i = 0; i * interval + arrivalOffset < width; i++) {
-          const offset = i * interval + arrivalOffset;
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset, height - verticalSpacing);
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset - halfArrowWidth, one5thHeight);
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset + halfArrowWidth, one5thHeight);
-        }
+    // Draw the up-pointing arrows for the arrival
+    for (let i = 0; i * interval + arrivalOffset < width; i++) {
+      const offset = i * interval + arrivalOffset;
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset, height - verticalSpacing);
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset - halfArrowWidth, one5thHeight);
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset + halfArrowWidth, one5thHeight);
+    }
 
-        // Draw the down-pointing arrows for the deadline
-        for (let i = 0; i * interval + arrivalOffset + deadlineOffset < width; i++) {
-          const offset = i * interval + arrivalOffset + deadlineOffset;
-          ctx.moveTo(offset, verticalSpacing);
-          ctx.lineTo(offset, height - verticalSpacing);
-          ctx.lineTo(offset - halfArrowWidth, four5thHeight);
-          ctx.moveTo(offset, height - verticalSpacing);
-          ctx.lineTo(offset + halfArrowWidth, four5thHeight);
-        }
+    // Draw the down-pointing arrows for the deadline
+    for (let i = 0; i * interval + arrivalOffset + deadlineOffset < width; i++) {
+      const offset = i * interval + arrivalOffset + deadlineOffset;
+      ctx.moveTo(offset, verticalSpacing);
+      ctx.lineTo(offset, height - verticalSpacing);
+      ctx.lineTo(offset - halfArrowWidth, four5thHeight);
+      ctx.moveTo(offset, height - verticalSpacing);
+      ctx.lineTo(offset + halfArrowWidth, four5thHeight);
+    }
 
-        ctx.stroke();
-      });
-    });
-    ro.observe(ref.current);
-    return () => ro.disconnect();
-  }, []);
+    ctx.stroke();
+  });
 
-  return <canvas ref={ref} style={{ width: '100%', height: '100%' }}></canvas>;
+  return <canvas ref={ref} style={{ width: chartBodyCtx.chartBodyWidth, height: '100%' }}></canvas>;
 };
 
 interface InventionProps {
@@ -90,21 +86,16 @@ export const Invention: React.FC<InventionProps> = ({ name, rowHeight, time, tot
 
   const ref = useRef<HTMLDivElement>();
   const [offset, setoffset] = useState(0);
+  const chartBodyDim = useContext(TimelineChartBodyCtx);
 
-  useEffect(() => {
-    const ro = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const width = entry.contentRect.width;
-        const xOffset = (time / totalDuration) * width - rowHeight / 2;
-        setoffset(xOffset);
-      });
-    });
-    ro.observe(ref.current);
-    return () => ro.disconnect();
-  }, []);
+  useLayoutEffect(() => {
+    const width = ref.current?.getBoundingClientRect().width;
+    const xOffset = (time / totalDuration) * width - rowHeight / 2;
+    setoffset(xOffset);
+  });
 
   return (
-    <div ref={ref} style={{ width: '100%', position: 'absolute', overflow: 'hidden' }}>
+    <div ref={ref} style={{ width: chartBodyDim.chartBodyWidth, position: 'absolute', overflow: 'hidden' }}>
       <svg width="100%" transform={`translate(${offset}, 0)`} fill={color}>
         <g style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
           <title>{INVENTION_DESCRIPTION_MAP[name]}</title>

@@ -1,5 +1,14 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, {
+  createContext,
+  CSSProperties,
+  forwardRef,
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRowGroup from './TimelineChartRow';
@@ -7,6 +16,7 @@ import { ITimelineChartRow } from './TimelineChartTypes';
 import TimelineChartConnections from './TimelineConnections';
 
 const SCALE_FACTOR = 1.1;
+export const TimelineChartBodyCtx = createContext({ chartBodyWidth: 0 });
 
 interface TimelineChartBodyProps {
   dataset: ITimelineChartRow[];
@@ -120,7 +130,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
 
       {showAnnotation && annotations != null ? (
         <TimelineChartLayer isAnnotation ignoreClick>
-          {annotations}
+          <TimelineChartBodyCtx.Provider value={{ chartBodyWidth: width }}>{annotations}</TimelineChartBodyCtx.Provider>
         </TimelineChartLayer>
       ) : null}
 
