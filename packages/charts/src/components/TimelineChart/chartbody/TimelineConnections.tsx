@@ -5,7 +5,7 @@ import {
   ITimelineChartRow,
   ITimelineChartTask,
   TimelineChartConnection
-} from './TimelineChartTypes';
+} from '../util/TimelineChartTypes';
 
 interface TimelineChartConnectionsProps {
   dataSet: ITimelineChartRow[];

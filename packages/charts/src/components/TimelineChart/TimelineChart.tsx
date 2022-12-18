@@ -1,13 +1,13 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import _ from 'lodash';
 import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
+import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import {
-  TimelineChartBody,
   TimelineChartDurationHeader,
   TimelineChartHeaderLabels,
   TimelineChartTaskHeader
-} from './TimelineChartParts';
-import { ITimelineChartRow } from './TimelineChartTypes';
+} from './TimelineChartHeaders';
+import { ITimelineChartRow } from './util/TimelineChartTypes';
 import './timelinestyle.css';
 
 interface TimelineChartProps {

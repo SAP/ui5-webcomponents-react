@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
-import { ITimelineChartRow } from './TimelineChartTypes';
+import { ITimelineChartRow } from '../util/TimelineChartTypes';
 
 const THROTTLE_INTERVAL = 300;
 const NORMAL_OPACITY = 1.0;

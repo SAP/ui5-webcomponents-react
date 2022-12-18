@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { TimelineChartBodyCtx } from '../TimelineChartParts';
+import { TimelineChartBodyCtx } from '../util/context';
 
 interface TimingFigureProps {
   arrival: number;
