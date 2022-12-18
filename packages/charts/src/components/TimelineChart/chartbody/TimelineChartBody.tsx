@@ -85,7 +85,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   const showArrows = () => setDisplayArrows(true);
 
   return (
-    <div id="yyy" ref={bodyRef} style={style}>
+    <div ref={bodyRef} style={style}>
       <TimelineChartLayer ignoreClick>
         <TimeLineChartGrid
           isDiscrete={isDiscrete}

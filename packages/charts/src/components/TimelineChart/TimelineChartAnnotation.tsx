@@ -4,7 +4,6 @@ interface TimelineChartAnnotationProps {
   /**
    * The width of the annotation. If not provided it expands to fill
    * the timeline.
-   * @default auto
    */
   width?: number;
 
@@ -23,7 +22,6 @@ interface TimelineChartAnnotationProps {
    * The row height of the chart. This should **always** be set to the same value as
    * the rowHeight of the chart in order for the top of the annotation to be aligned
    * with the top of the row. If not set, the default row height of the chart is used.
-   * @default 25
    */
   rowHeight?: number;
 
@@ -57,11 +55,7 @@ const TimelineChartAnnotation: React.FC<TimelineChartAnnotationProps> = ({
     top: `${rowIndex * rowHeight}px`
   };
 
-  return (
-    <div id="zzz" style={style}>
-      {figure}
-    </div>
-  );
+  return <div style={style}>{figure}</div>;
 };
 
 export default TimelineChartAnnotation;

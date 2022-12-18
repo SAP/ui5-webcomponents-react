@@ -174,7 +174,6 @@ interface TimelineMilestoneProps {
 
   /**
    * The milestone label. If not set, the label is just 'Milestone'.
-   * @default Milestone.
    */
   label?: string;
 

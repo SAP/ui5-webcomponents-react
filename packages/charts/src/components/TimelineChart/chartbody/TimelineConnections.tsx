@@ -111,7 +111,7 @@ const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ dat
   }, [width]);
 
   return (
-    <svg id="connsvg" width="100%" height="100%">
+    <svg width="100%" height="100%">
       {connectionDataState.map((data, index) => {
         return (
           <ConnectionArrow

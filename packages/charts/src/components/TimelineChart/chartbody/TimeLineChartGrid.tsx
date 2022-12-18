@@ -5,7 +5,6 @@ interface TimeLineChartGridProps {
   /**
    * Whether to render the vertical grid lines for a TimelineChart
    * with discrete segments.
-   * @default false
    */
   isDiscrete: boolean;
   numOfRows: number;
@@ -35,10 +34,10 @@ const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({
 
 /**
  * This function generates the grid lines using the number of segments provided.
- * Each segment is calculated as a fractional percentage of the overall width
- * or height.
- * @param numOfSegments The number of rows or columns the grid should have.
- * @returns An array of grid lines in SVG.
+ * Each segment is calculated as a fraction of the overall height.
+ * @param numOfSegments The number of rows the grid should have.
+ * @param rowHeight The height of each row.
+ * @returns An array of horizontal grid lines in SVG.
  */
 const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Element[] => {
   const gridLineArray: JSX.Element[] = [];
@@ -58,6 +57,12 @@ const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Eleme
   return gridLineArray;
 };
 
+/**
+ * This function generates the grid lines using the number of segments provided.
+ * Each segment is calculated as a fraction of the overall width.
+ * @param numOfSegments The number of columns the grid should have.
+ * @returns An array of vertical grid lines in SVG.
+ */
 const generateVGridLines = (numOfSegments: number): JSX.Element[] => {
   const segmentSizePercent = 100 / numOfSegments;
   const gridLineArray: JSX.Element[] = [];
