@@ -60,7 +60,8 @@ the annotations are applied to.
 
 The annotations are drawn using the HTML canvas and all the annotations for the same row are drawn at the same time using
 the `TimingFigure` custom component created for this specific example. As can be seen, the annotations scale neatly without
-blurring when the timeline is zoomed.
+blurring when the timeline is zoomed. A valueFormat `(x) => Number.parseFloat(x).toFixed(2)` has also been applied to the
+ticks and tooltip numbers.
 
 <Canvas>
   <Story
@@ -71,7 +72,8 @@ blurring when the timeline is zoomed.
       showRelationship: true,
       showAnnotation: true,
       rowHeight: 35,
-      unit: 'ms'
+      unit: 'ms',
+      valueFormat: (x) => Number.parseFloat(x).toFixed(2)
     }}
   >
     {(props) => (
@@ -189,9 +191,9 @@ last 6000 years from the year 2022.
       totalDuration: 6000,
       showAnnotation: true,
       rowHeight: 40,
-      unit: 'Years ago',
       activitiesTitle: '',
-      durationTitle: '#'
+      durationTitle: '# of Years Ago',
+      valueFormat: (x) => Number.parseFloat(x).toFixed(1)
     }}
   >
     {(props) => (

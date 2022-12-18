@@ -95,6 +95,12 @@ interface TimelineChartProps {
    * @default 0
    */
   start?: number;
+
+  /**
+   * A callback function that is applied to each value in the tick and tootltip
+   * to format how it is displayed.
+   */
+  valueFormat?: (value: number) => string;
 }
 
 /**
@@ -115,7 +121,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   activitiesTitle,
   durationTitle,
   columnLabels,
-  start
+  start,
+  valueFormat
 }) => {
   const DEFAULT_WIDTH = 'auto';
   const TASK_LABEL_WIDTH = 150;
@@ -229,6 +236,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           columnLabels={columnLabels}
           start={start}
           scale={chartScale}
+          valueFormat={valueFormat}
         />
         <TimelineChartBody
           dataset={dataset}
@@ -245,6 +253,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           unit={unit}
           scaleChart={scaleChartBody}
           start={start}
+          valueFormat={valueFormat}
         />
       </div>
     </div>

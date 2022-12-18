@@ -23,6 +23,7 @@ interface TimelineChartBodyProps {
   unit: string;
   start: number;
   scaleChart: (x: number) => void;
+  valueFormat?: (value: number) => string;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
@@ -38,7 +39,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   showTooltip,
   unit,
   start,
-  scaleChart
+  scaleChart,
+  valueFormat
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
@@ -122,7 +124,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         </TimelineChartLayer>
       ) : null}
 
-      {showTooltip ? <TimelineChartTooltip ref={tooltipRef} unit={unit} /> : null}
+      {showTooltip ? <TimelineChartTooltip ref={tooltipRef} unit={unit} valueFormat={valueFormat} /> : null}
     </div>
   );
 };
@@ -182,6 +184,7 @@ interface TimelineChartDurationHeaderProps {
   columnLabels?: string[];
   start: number;
   scale: number;
+  valueFormat?: (value: number) => string;
 }
 
 const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
@@ -191,7 +194,8 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   totalDuration,
   columnLabels,
   start,
-  scale
+  scale,
+  valueFormat
 }) => {
   const tickRef = useRef<HTMLCanvasElement>();
 
@@ -230,13 +234,14 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
       ctx.lineTo(0, height - tickLength);
       ctx.font = '8px Helvetica';
       ctx.textBaseline = 'bottom';
-      ctx.fillText(start.toString(), spacing, height - tickLength - spacing);
+      const startText = valueFormat != null ? valueFormat(start) : start.toString();
+      ctx.fillText(startText, spacing, height - tickLength - spacing);
 
       ctx.moveTo(width, height);
       ctx.lineTo(width, height - tickLength);
-      const endVal = totalDuration + start;
-      const endNum = ctx.measureText(endVal.toString());
-      ctx.fillText(endVal.toString(), width - endNum.width - spacing, height - tickLength - spacing);
+      const endText = valueFormat != null ? valueFormat(totalDuration + start) : (totalDuration + start).toString();
+      const endMsr = ctx.measureText(endText);
+      ctx.fillText(endText, width - endMsr.width - spacing, height - tickLength - spacing);
       ctx.stroke();
 
       ctx.beginPath();
@@ -246,9 +251,10 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
         const xPos = (width / segments) * i;
         ctx.moveTo(xPos, height);
         ctx.lineTo(xPos, height - tickLength);
-        const text = ((totalDuration / segments) * i + start).toString();
-        const mSure = ctx.measureText(text);
-        ctx.fillText(text, xPos - mSure.width / spacing, height - tickLength - spacing);
+        const val = (totalDuration / segments) * i + start;
+        const text = valueFormat != null ? valueFormat(val) : val.toString();
+        const msr = ctx.measureText(text);
+        ctx.fillText(text, xPos - msr.width / spacing, height - tickLength - spacing);
       }
 
       ctx.stroke();
@@ -337,10 +343,11 @@ interface TimelineTooltipHandle {
 
 interface TimelineTooltipChartProps {
   unit: string;
+  valueFormat?: (value: number) => string;
 }
 
 const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipChartProps>(function TimelineChartTooltip(
-  { unit },
+  { unit, valueFormat },
   ref
 ) {
   const [state, setState] = useState({
@@ -417,17 +424,18 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
           </span>
           <span style={{ width: '100%', height: '4px', backgroundColor: state.color }}></span>
           <span>
-            Start: {state.startTime}
+            Start: {valueFormat != null ? valueFormat(state.startTime) : state.startTime}
             {unit}
           </span>
           {state.isMilestone ? null : (
             <span>
-              Duration: {state.duration}
+              Duration: {valueFormat != null ? valueFormat(state.duration) : state.duration}
               {unit}
             </span>
           )}
           <span>
-            End: {state.startTime + state.duration}
+            End:{' '}
+            {valueFormat != null ? valueFormat(state.startTime + state.duration) : state.startTime + state.duration}
             {unit}
           </span>
         </span>
