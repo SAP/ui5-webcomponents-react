@@ -228,6 +228,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           durationHeaderLabel={durationTitle}
           columnLabels={columnLabels}
           start={start}
+          scale={chartScale}
         />
         <TimelineChartBody
           dataset={dataset}

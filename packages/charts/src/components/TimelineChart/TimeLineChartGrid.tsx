@@ -11,17 +11,24 @@ interface TimeLineChartGridProps {
   numOfRows: number;
   rowHeight: number;
   numOfCols?: number;
+  scale: number;
 }
 
 /**
  * This component represents the grid lines on the chart. The `isDiscrete` prop is
  * used to decided whether to render the vertical grid lines.
  */
-const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({ isDiscrete, numOfRows, rowHeight, numOfCols }) => {
+const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({
+  isDiscrete,
+  numOfRows,
+  rowHeight,
+  numOfCols,
+  scale
+}) => {
   return (
     <g style={{ stroke: ThemingParameters.sapList_BorderColor }}>
       {generateHGridLines(numOfRows, rowHeight)}
-      {isDiscrete ? generateVGridLines(numOfCols) : generateVGridLines(5)}
+      {isDiscrete ? generateVGridLines(numOfCols) : generateVGridLines(Math.floor(5 * scale))}
     </g>
   );
 };

@@ -89,6 +89,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           numOfRows={numOfItems}
           numOfCols={totalDuration}
           rowHeight={rowHeight}
+          scale={Math.pow(SCALE_FACTOR, scaleExpRef.current)}
         />
       </TimelineChartLayer>
 
@@ -180,6 +181,7 @@ interface TimelineChartDurationHeaderProps {
   durationHeaderLabel: string;
   columnLabels?: string[];
   start: number;
+  scale: number;
 }
 
 const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
@@ -188,7 +190,8 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   isDiscrete,
   totalDuration,
   columnLabels,
-  start
+  start,
+  scale
 }) => {
   const tickRef = useRef<HTMLCanvasElement>();
 
@@ -238,7 +241,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
 
       ctx.beginPath();
       ctx.lineWidth = 2;
-      const segments = 5;
+      const segments = Math.floor(5 * scale);
       for (let i = 1; i < segments; i++) {
         const xPos = (width / segments) * i;
         ctx.moveTo(xPos, height);
