@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct type for `onTableScroll` ([#3839](https://github.com/SAP/ui5-webcomponents-react/issues/3839)) ([02ea1ed](https://github.com/SAP/ui5-webcomponents-react/commit/02ea1edf35c97845ccf57c7e9b2a56db6759f7d5))
+- **AnalyticalTable - TypeScript:** fix `ref` type ([#3815](https://github.com/SAP/ui5-webcomponents-react/issues/3815)) ([2337db1](https://github.com/SAP/ui5-webcomponents-react/commit/2337db1ea8ac566799f0b78bf50fae64e792db5e))
+- **AnalyticalTable - TypeScript:** fix `selectedFlatRows` type of `onRowSelect` event ([#3817](https://github.com/SAP/ui5-webcomponents-react/issues/3817)) ([bb224ba](https://github.com/SAP/ui5-webcomponents-react/commit/bb224ba9c236612dad79779c3fa38d447f8b29b4))
+- **charts:** allow formatting y/x-axis ticks w/o changing measure formatter ([#3803](https://github.com/SAP/ui5-webcomponents-react/issues/3803)) ([ad15be8](https://github.com/SAP/ui5-webcomponents-react/commit/ad15be8bc6d419d786599cdf1f6669075cf7bfaa)), closes [#3802](https://github.com/SAP/ui5-webcomponents-react/issues/3802)
+- **FilterBar:** fix alignment of table cells in dialog ([#3829](https://github.com/SAP/ui5-webcomponents-react/issues/3829)) ([c8c834e](https://github.com/SAP/ui5-webcomponents-react/commit/c8c834ee89516660a973665f376431f7d3415337))
+- **Grid:** support `React.Fragment` as children ([#3850](https://github.com/SAP/ui5-webcomponents-react/issues/3850)) ([beb032e](https://github.com/SAP/ui5-webcomponents-react/commit/beb032e09b6e8d614b4de542c2d3205a454e7c3a))
+- make `children` of `FlexBox`, `Grid`, `ResponsiveGridLayout` and `Text` optional ([#3851](https://github.com/SAP/ui5-webcomponents-react/issues/3851)) ([d20f986](https://github.com/SAP/ui5-webcomponents-react/commit/d20f98614731e6d302ccc8b211ff223fb4be401c))
+- **Modals - TypeScript:** allow typing the container element ([#3856](https://github.com/SAP/ui5-webcomponents-react/issues/3856)) ([780206a](https://github.com/SAP/ui5-webcomponents-react/commit/780206a24ab532766fa869ac90164a83bc97bca1))
+
+### Features
+
+- **DynamicPageTitle:** expose toolbar `overflowPopoverRef` ref via toolbar props ([#3805](https://github.com/SAP/ui5-webcomponents-react/issues/3805)) ([72e8cd7](https://github.com/SAP/ui5-webcomponents-react/commit/72e8cd71f1861647a4da4ba3399962d8e714e529))
+- **ObjectPage & DynamicPage:** add `onPinnedStateChange`, fix setting `alwaysShowContentHeader` in runtime ([#3876](https://github.com/SAP/ui5-webcomponents-react/issues/3876)) ([6bce2da](https://github.com/SAP/ui5-webcomponents-react/commit/6bce2da0d119721311adcf61dec2eb5383cb7a48))
+- update `@ui5/webcomponents` to 1.9.3 ([#3886](https://github.com/SAP/ui5-webcomponents-react/issues/3886)) ([c7ca7bb](https://github.com/SAP/ui5-webcomponents-react/commit/c7ca7bbfd80273c9c7dd56204c883bd5becce7e5))
+
 # [1.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.6.0) (2022-11-24)
 
 ### Bug Fixes
