@@ -14,7 +14,8 @@ export default {
     '!**/*.cy.{ts,tsx}',
     '!**/node_modules/**',
     '!packages/*/src/index.ts',
-    '!packages/main/src/components/AnalyticalTable/types/*' // no table enums
+    '!packages/main/src/components/AnalyticalTable/types/*', // no table enums,
+    '!**/CodeGen.tsx'
   ],
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['./config/jestsetup.ts'],

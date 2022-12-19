@@ -15,6 +15,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
       >
         <div
           class="recharts-wrapper has-click-handler"
+          role="region"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -96,6 +97,7 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
       >
         <div
           class="recharts-wrapper has-click-handler"
+          role="region"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -769,39 +771,51 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                 >
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                 </g>
               </g>
@@ -1129,6 +1143,7 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
       >
         <div
           class="recharts-wrapper"
+          role="region"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -1210,6 +1225,7 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
       >
         <div
           class="recharts-wrapper"
+          role="region"
           style="position: relative; cursor: default; width: 400px; height: 400px;"
         >
           <svg
@@ -1883,39 +1899,51 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                 >
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                   <g
                     class="recharts-layer recharts-bar-rectangle"
+                    role="img"
                   />
                 </g>
               </g>
