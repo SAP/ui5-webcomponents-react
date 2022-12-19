@@ -11,6 +11,7 @@ exports[`RadarChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -976,6 +977,7 @@ exports[`RadarChart Check onClick events 2`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -2027,6 +2029,7 @@ exports[`RadarChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -2992,6 +2995,7 @@ exports[`RadarChart onLegendClick should not crash when invalid handler is provi
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg

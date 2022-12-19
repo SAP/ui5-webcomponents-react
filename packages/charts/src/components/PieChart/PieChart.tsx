@@ -1,5 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
 import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';
+import { createUseStyles } from 'react-jss';
 import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick';
@@ -12,6 +14,13 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { PieChartPlaceholder } from './Placeholder';
+
+const useStyles = createUseStyles(
+  {
+    piechart: { '& g:focus,& path:focus': { outline: 'none' } }
+  },
+  { name: 'PieChartStyles' }
+);
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
   /**
@@ -92,6 +101,8 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     children,
     ...rest
   } = props;
+
+  const classes = useStyles();
 
   const chartConfig = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
@@ -264,13 +275,11 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       <PieChartLib
         onClick={onClickInternal}
         margin={chartConfig.margin}
-        className={
-          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
-        }
+        className={clsx(
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
+          classes.piechart
+        )}
       >
-        {/*
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore*/}
         <Pie
           onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
