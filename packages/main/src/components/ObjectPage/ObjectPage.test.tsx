@@ -143,8 +143,7 @@ describe('ObjectPage', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // TODO enable this test as soon as https://github.com/SAP/ui5-webcomponents/issues/5778 is fixed
-  test.skip('Not crashing with 0 sections', () => {
+  test('Not crashing with 0 sections', () => {
     const { asFragment } = render(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
     expect(asFragment()).toMatchSnapshot();
   });

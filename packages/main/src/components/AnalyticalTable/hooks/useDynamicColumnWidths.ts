@@ -324,10 +324,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return acc;
   }, {});
 
-  const totalCharNum = Object.values(columnMeta).reduce(
-    (acc: number, item: any) => acc + item.contentCharAvg,
-    0
-  ) as number;
+  const totalCharNum = Object.values(columnMeta).reduce((acc: number, item: any) => acc + item.contentCharAvg, 0);
 
   let reservedWidth = visibleColumns.reduce((acc, column) => {
     const { minHeaderWidth, fullWidth } = columnMeta[column.id ?? column.accessor];

@@ -1,4 +1,4 @@
-import '@ui5/webcomponents/dist/TreeItem.js';
+import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import { ReactNode } from 'react';
 import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -6,24 +6,20 @@ import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
-interface TreeItemAttributes {
+interface TreeItemCustomAttributes {
   /**
-   * Defines the `additionalText`, displayed in the end of the tree item.
+   * Defines whether the tree list item should display the selection element.
    */
-  additionalText?: string;
+  hideSelectionElement?: boolean;
+  /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
   /**
    * Defines the state of the `additionalText`.
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
-  /**
-   * Defines the text of the tree item.
-   */
-  text?: string;
-  /**
-   * Defines the accessible name of the component.
-   */
-  accessibleName?: string;
   /**
    * Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
    */
@@ -62,14 +58,21 @@ interface TreeItemAttributes {
   selected?: boolean;
 }
 
-export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
+export interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRef {
   /**
    * Call this method to manually switch the `expanded` state of a tree item.
    */
   toggle: () => void;
 }
 
-export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
+export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, CommonProps {
+  /**
+   * Defines the content of the `TreeItem`.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  content?: ReactNode | ReactNode[];
   /**
    * Defines the items of the component.
    *
@@ -86,28 +89,28 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<TreeItemDomRef>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<TreeItemCustomDomRef>) => void;
 }
 
 /**
- * The `TreeItem` represents a node in a tree structure, shown as a `List`.
- * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
+ * The `TreeItemCustom` represents a node in a tree structure, shown as a `List`.
+ * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items. You can use this item to put any custom content inside the tree item.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
-  'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
-  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
-  ['deleteButton'],
+const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
+  'ui5-tree-item-custom',
+  ['accessibleName', 'additionalTextState', 'icon', 'type'],
+  ['hideSelectionElement', 'expanded', 'hasChildren', 'indeterminate', 'selected'],
+  ['content', 'deleteButton'],
   ['detail-click']
 );
 
-TreeItem.displayName = 'TreeItem';
+TreeItemCustom.displayName = 'TreeItemCustom';
 
-TreeItem.defaultProps = {
+TreeItemCustom.defaultProps = {
   additionalTextState: ValueState.None,
   type: ListItemType.Active
 };
 
-export { TreeItem };
+export { TreeItemCustom };

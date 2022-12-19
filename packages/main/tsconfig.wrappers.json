@@ -4,7 +4,10 @@
     "baseUrl": ".",
     "outDir": "./wrappers",
     "declarationDir": "./wrappers",
-    "rootDir": "./tmp"
+    "rootDir": "./tmp",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
   },
   "references": [
     {
