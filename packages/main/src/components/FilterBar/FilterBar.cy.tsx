@@ -283,17 +283,21 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[data-component-name="FilterBarDialogTable"]')
       .shadow()
       .within(() => {
-        cy.get('thead').within(() => {
-          // select-all checkbox is not displayed if no rows are defined
-          cy.get('[ui5-checkbox]').should('not.exist');
-        });
+        cy.get('thead')
+          .first()
+          .within(() => {
+            // select-all checkbox is not displayed if no rows are defined
+            cy.get('[ui5-checkbox]').should('not.exist');
+          });
       });
 
-    cy.get('[data-component-name="FilterBarDialogTableRow"]')
-      .shadow()
-      .within(() => {
-        // no navigated cell
-        cy.get('.ui5-table-row-navigated').should('not.be.visible');
-      });
+    cy.get('[data-component-name="FilterBarDialogTableRow"]').each((item) => {
+      cy.wrap(item)
+        .shadow()
+        .within(() => {
+          // no navigated cell
+          cy.get('.ui5-table-row-navigated').should('not.be.visible');
+        });
+    });
   });
 });
