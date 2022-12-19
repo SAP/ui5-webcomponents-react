@@ -10,7 +10,7 @@ exports[`PieChart Check onClick events 1`] = `
       style="width: 400px; height: 400px;"
     >
       <div
-        class="recharts-wrapper has-click-handler"
+        class="recharts-wrapper has-click-handler PieChartStyles-piechart"
         role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
@@ -547,7 +547,7 @@ exports[`PieChart Render circle chart with data 1`] = `
       style="width: 400px; height: 400px;"
     >
       <div
-        class="recharts-wrapper"
+        class="recharts-wrapper PieChartStyles-piechart"
         role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
@@ -998,7 +998,7 @@ exports[`PieChart onLegendClick should not crash when invalid handler is provide
       style="width: 400px; height: 400px;"
     >
       <div
-        class="recharts-wrapper"
+        class="recharts-wrapper PieChartStyles-piechart"
         role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
