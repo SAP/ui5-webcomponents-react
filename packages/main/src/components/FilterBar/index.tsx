@@ -16,6 +16,7 @@ import { ButtonDesign, ToolbarStyle } from '../../enums';
 import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
 import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
+import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
@@ -252,7 +253,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>();
   const filterBarButtonsRef = useRef(null);
-  const filterAreaRef = useRef(null);
+  const filterAreaRef = useRef<HTMLDivElement>(null);
   const filterBtnRef = useRef<ButtonDomRef>(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -269,16 +270,18 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const [filteredAttribute, setFilteredAttribute] = useState('all');
 
   useEffect(() => {
-    Children.toArray(children).forEach((item: ReactElement<any>) => {
-      setToggledFilters((prev) => {
-        if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[item.key] === undefined) {
-          return { ...prev, [item.key]: true };
-        }
-        if (item.props.hasOwnProperty('visibleInFilterBar')) {
-          return { ...prev, [item.key]: item.props.visibleInFilterBar };
-        }
-        return prev;
-      });
+    Children.toArray(children).forEach((item) => {
+      if (React.isValidElement(item)) {
+        setToggledFilters((prev) => {
+          if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[item.key] === undefined) {
+            return { ...prev, [item.key]: true };
+          }
+          if (item.props.hasOwnProperty('visibleInFilterBar')) {
+            return { ...prev, [item.key]: item.props.visibleInFilterBar };
+          }
+          return prev;
+        });
+      }
     });
   }, [children, setToggledFilters]);
 
@@ -354,32 +357,37 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
-      return Children.toArray(children).map((child: ReactElement) => {
-        if (toggledFilters?.[child.key] !== undefined) {
-          return cloneElement(child, {
+      return Children.toArray(children).map((child) => {
+        if (React.isValidElement(child) && toggledFilters?.[child.key] !== undefined) {
+          // @ts-expect-error: child should always be a FilterGroupItem w/o portal
+          return cloneElement<FilterGroupItemPropTypes, HTMLDivElement>(child, {
             visibleInFilterBar: toggledFilters[child.key]
           });
         }
         return child;
       });
     }
-    return Children.toArray(children) as unknown[];
+    return Children.toArray(children);
   };
   const prevChildren = useRef({});
 
   const renderChildren = () => {
     const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: !hideToolbar } as any;
+
     return safeChildren()
-      .filter((item: ReactElement<any, any>) => {
+      .filter((item): item is ReactElement => {
+        if (!React.isValidElement(item)) {
+          return false;
+        }
         return item?.props?.visible && item.props?.visibleInFilterBar;
       })
-      .map((child: ReactElement<any, any>) => {
+      .map((child) => {
         // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
         if (hideFilterConfiguration) {
-          return cloneElement(child as ReactElement<any>, { ...childProps });
+          return cloneElement(child, { ...childProps });
         }
         prevVisibleInFilterBarProps.current[child.key] = child.props.visibleInFilterBar;
         let filterItemProps = {};
@@ -390,7 +398,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           }
         }
         if (!child.props.children) {
-          return cloneElement(child as ReactElement<any>, {
+          return cloneElement(child, {
             ...childProps
           });
         }
@@ -412,7 +420,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         }
         prevChildren.current[child.key] = child.props.children.props;
 
-        return cloneElement(child as ReactElement<any>, {
+        return cloneElement(child, {
           ...childProps,
           children: {
             ...child.props.children,
@@ -510,8 +518,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
   const [firstChildWidth, setFirstChildWidth] = useState(undefined);
   useEffect(() => {
-    const debouncedObserverFn = debounce(([area]) => {
-      const firstChild = area.target?.children?.[0];
+    const debouncedObserverFn = debounce(([area]: ResizeObserverEntry[]) => {
+      const firstChild = area.target?.children?.[0] as HTMLDivElement;
       if (firstChild && firstChild.offsetWidth !== firstChildWidth) {
         setFirstChildWidth(firstChild.offsetWidth + 16 /*margin*/);
       }
@@ -527,7 +535,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   }, [filterAreaRef.current, hideToolbar]);
 
   useEffect(() => {
-    const debouncedObserverFn = debounce(([area]) => {
+    const debouncedObserverFn = debounce(([area]: ResizeObserverEntry[]) => {
       const filterWidth = resizeObserverEntryWidth(area);
       if (filterWidth !== filterBarButtonsWidth) {
         setFilterAreaWidth(filterWidth);
@@ -544,7 +552,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   }, [filterAreaWidth, filterAreaRef.current, hideToolbar]);
 
   useEffect(() => {
-    const debouncedObserverFn = debounce(([buttons]) => {
+    const debouncedObserverFn = debounce(([buttons]: ResizeObserverEntry[]) => {
       const buttonsWidth = resizeObserverEntryWidth(buttons);
       if (buttonsWidth !== filterBarButtonsWidth) {
         setFilterBarButtonsWidth(buttonsWidth);
