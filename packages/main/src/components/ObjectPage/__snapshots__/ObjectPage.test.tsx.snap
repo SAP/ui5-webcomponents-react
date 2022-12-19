@@ -1215,6 +1215,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
         <ui5-button
           accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-up"

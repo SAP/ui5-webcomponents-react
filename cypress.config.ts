@@ -1,5 +1,5 @@
-import { defineConfig } from 'cypress';
 import codeCoverageTask from '@cypress/code-coverage/task';
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
   component: {
@@ -16,5 +16,6 @@ export default defineConfig({
   viewportWidth: 1920,
   viewportHeight: 1080,
   video: false,
-  screenshotOnRunFailure: false
+  screenshotOnRunFailure: false,
+  scrollBehavior: false
 });
