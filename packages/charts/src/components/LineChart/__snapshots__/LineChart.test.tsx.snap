@@ -11,6 +11,7 @@ exports[`LineChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -938,6 +939,7 @@ exports[`LineChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -1773,6 +1775,7 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
