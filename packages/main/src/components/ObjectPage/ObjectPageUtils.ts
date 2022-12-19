@@ -1,8 +1,10 @@
-import { ReactElement, RefObject } from 'react';
+import { RefObject, isValidElement } from 'react';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
 
-export const getSectionById = (sections: ReactElement<any> | ReactElement<any>[], id) => {
-  return safeGetChildrenArray(sections).find((objectPageSection: ReactElement) => objectPageSection.props?.id === id);
+export const getSectionById = (sections, id) => {
+  return safeGetChildrenArray(sections).find((objectPageSection) => {
+    return isValidElement(objectPageSection) && objectPageSection.props?.id === id;
+  });
 };
 
 export const extractSectionIdFromHtmlId = (id: string) => {

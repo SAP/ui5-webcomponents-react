@@ -6,6 +6,9 @@ import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
+//todo add to script?
+type Nullable<T> = T | null;
+
 interface TextAreaAttributes {
   /**
    * Defines the accessible ARIA name of the component.
@@ -32,7 +35,7 @@ interface TextAreaAttributes {
   /**
    * Defines the maximum number of characters that the `value` can have.
    */
-  maxlength?: number;
+  maxlength?: Nullable<number>;
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *

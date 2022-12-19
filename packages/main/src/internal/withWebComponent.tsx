@@ -31,7 +31,7 @@ export interface WithWebComponentPropTypes {
   waitForDefine?: boolean;
 }
 
-const definedWebComponents = new Set([]);
+const definedWebComponents = new Set<ComponentType>([]);
 
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
@@ -46,10 +46,10 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const { className, children, waitForDefine, ...rest } = props;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
+    const [componentRef, ref] = useSyncRef<RefType>(wcRef);
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
-      CommonProps & { class?: string; ref?: Ref<any> }
+      CommonProps & { class?: string; ref?: Ref<RefType> }
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
@@ -115,13 +115,14 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
             eventRegistry[eventName] = eventHandler;
+            // @ts-expect-error: all custom events can be passed here, so `keyof HTMLElementEventMap` isn't sufficient
             localRef?.addEventListener(eventName, eventRegistry[eventName]);
           }
         });
 
         return () => {
-          // eslint-disable-next-line guard-for-in
           for (const eventName in eventRegistry) {
+            // @ts-expect-error: all custom events can be passed here, so `keyof HTMLElementEventMap` isn't sufficient
             localRef?.removeEventListener(eventName, eventRegistry[eventName]);
           }
         };

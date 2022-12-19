@@ -4,7 +4,10 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "declarationDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
   },
   "references": [
     {

@@ -878,7 +878,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
+    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
   >
     <header
@@ -897,9 +897,11 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       <ui5-tabcontainer
         class="ObjectPage-tabContainerComponent"
         collapsed="true"
+        content-background-design="Solid"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
         fixed="true"
+        header-background-design="Solid"
         tab-layout="Standard"
         tabs-overflow-mode="End"
         ui5-tabcontainer=""

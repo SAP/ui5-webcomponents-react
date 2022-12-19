@@ -27,7 +27,7 @@ export const orderByFn = (rows, functions, directions) => {
 
 // copied from https://github.com/tannerlinsley/react-table/blob/f97fb98509d0b27cc0bebcf3137872afe4f2809e/src/utils.js#L320-L347 (13. Jan 2021)
 const reOpenBracket = /\[/g;
-const reCloseBracket = /\]/g;
+const reCloseBracket = /]/g;
 
 function makePathArray(obj) {
   return (

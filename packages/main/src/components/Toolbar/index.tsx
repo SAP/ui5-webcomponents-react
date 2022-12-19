@@ -30,9 +30,11 @@ import { styles } from './Toolbar.jss';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
-export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
+export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'children'> {
   /**
    * Defines the content of the `Toolbar`.
+   *
+   * __Note:__ Although this prop accepts all `ReactNode` types, it is strongly recommended to not pass `string` or `number` to it.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -153,9 +155,10 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return flatChildren.map((item: ReactElement, index) => {
+    return flatChildren.map((item, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
-      const isSpacer = (item?.type as any)?.displayName === 'ToolbarSpacer';
+      // @ts-expect-error: if type is not defined, it's not a spacer
+      const isSpacer = item?.type?.displayName === 'ToolbarSpacer';
       controlMetaData.current.push({
         ref: itemRef,
         isSpacer
