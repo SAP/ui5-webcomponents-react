@@ -74,18 +74,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   selectedSubSectionId?: string;
   /**
-   * Fired when the selected section changes.
-   */
-  onSelectedSectionChange?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
-  ) => void;
-  /**
-   * Fired when the `headerContent` is expanded or collapsed.
-   */
-  onToggleHeaderContent?: (visible: boolean) => void;
-
-  // appearance
-  /**
    * Defines whether the `headerContent` is hidden by scrolling down.
    */
   alwaysShowContentHeader?: boolean;
@@ -131,6 +119,20 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use placeholder components like the `IllustratedMessage` or custom skeletons pages in order to preserve the intended design.
    */
   placeholder?: ReactNode;
+  /**
+   * Fired when the selected section changes.
+   */
+  onSelectedSectionChange?: (
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
+  ) => void;
+  /**
+   * Fired when the `headerContent` is expanded or collapsed.
+   */
+  onToggleHeaderContent?: (visible: boolean) => void;
+  /**
+   * Fired when the `headerContent` changes its pinned state.
+   */
+  onPinnedStateChange?: (pinned: boolean) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
@@ -161,6 +163,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     placeholder,
     onSelectedSectionChange,
     onToggleHeaderContent,
+    onPinnedStateChange,
     ...rest
   } = props;
 
@@ -180,9 +183,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   //@ts-ignore
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef = useRef<HTMLDivElement>(null);
-  const scrollTimeout = useRef(null);
+  const selectionScrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
+  const isRTL = useIsRTL(objectPageRef);
+  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
+  const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
+  const scrollTimeout = useRef(0);
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -198,18 +206,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   };
   const debouncedOnSectionChange = useRef(debounce(fireOnSelectedChangedEvent, 500)).current;
-
   useEffect(() => {
     return () => {
       debouncedOnSectionChange.cancel();
-      clearTimeout(scrollTimeout.current);
+      clearTimeout(selectionScrollTimeout.current);
     };
   }, []);
 
-  const isRTL = useIsRTL(objectPageRef);
-  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
-
-  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   // observe heights of header parts
   const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed } =
     useObserveHeights(
@@ -220,7 +223,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       [headerCollapsedInternal, setHeaderCollapsedInternal],
       {
         noHeader: !headerTitle && !headerContent,
-        fixedHeader: headerPinned
+        fixedHeader: headerPinned,
+        scrollTimeout
       }
     );
 
@@ -387,8 +391,24 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   ]);
 
   useEffect(() => {
-    setHeaderPinned(alwaysShowContentHeader);
-  }, [setHeaderPinned, alwaysShowContentHeader]);
+    if (alwaysShowContentHeader !== undefined) {
+      setHeaderPinned(alwaysShowContentHeader);
+    }
+    if (alwaysShowContentHeader) {
+      onToggleHeaderContentVisibility({ detail: { visible: true } });
+    }
+  }, [alwaysShowContentHeader]);
+
+  const prevHeaderPinned = useRef(headerPinned);
+  useEffect(() => {
+    if (prevHeaderPinned.current && !headerPinned && objectPageRef.current.scrollTop > topHeaderHeight) {
+      onToggleHeaderContentVisibility({ detail: { visible: false } });
+      prevHeaderPinned.current = false;
+    }
+    if (!prevHeaderPinned.current && headerPinned) {
+      prevHeaderPinned.current = true;
+    }
+  }, [headerPinned, topHeaderHeight]);
 
   useEffect(() => {
     setSelectedSubSectionId(props.selectedSubSectionId);
@@ -453,6 +473,19 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     };
   }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
 
+  const onToggleHeaderContentVisibility = useCallback((e) => {
+    isToggledRef.current = true;
+    scrollTimeout.current = performance.now() + 500;
+    if (!e.detail.visible) {
+      setHeaderCollapsedInternal(true);
+      objectPageRef.current?.classList.add(classes.headerCollapsed);
+    } else {
+      setHeaderCollapsedInternal(false);
+      setScrolledHeaderExpanded(true);
+      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+    }
+  }, []);
+
   const handleOnSubSectionSelected = useCallback(
     (e) => {
       isProgrammaticallyScrolled.current = true;
@@ -471,20 +504,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
   );
-  const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
-  const scrollTimout = useRef(0);
-  const onToggleHeaderContentVisibility = useCallback((e) => {
-    isToggledRef.current = true;
-    scrollTimout.current = performance.now() + 500;
-    if (!e.detail.visible) {
-      setHeaderCollapsedInternal(true);
-      objectPageRef.current?.classList.add(classes.headerCollapsed);
-    } else {
-      setHeaderCollapsedInternal(false);
-      setScrolledHeaderExpanded(true);
-      objectPageRef.current?.classList.remove(classes.headerCollapsed);
-    }
-  }, []);
 
   const objectPageClasses = clsx(
     classes.objectPage,
@@ -659,7 +678,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (!isToggledRef.current) {
         isToggledRef.current = true;
       }
-      if (scrollTimout.current >= performance.now()) {
+      if (scrollTimeout.current >= performance.now()) {
         return;
       }
       scrollEvent.current = e;
@@ -669,10 +688,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (selectedSubSectionId) {
         setSelectedSubSectionId(undefined);
       }
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
+      if (selectionScrollTimeout.current) {
+        clearTimeout(selectionScrollTimeout.current);
       }
-      scrollTimeout.current = setTimeout(() => {
+      selectionScrollTimeout.current = setTimeout(() => {
         setIsAfterScroll(true);
       }, 100);
       if (!headerPinned || e.target.scrollTop === 0) {
@@ -757,11 +776,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             headerContentVisible={headerContent && headerCollapsed !== true}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
+            headerPinned={headerPinned}
+            a11yConfig={a11yConfig}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
-            headerPinned={headerPinned}
             onHoverToggleButton={onHoverToggleButton}
-            a11yConfig={a11yConfig}
+            onPinnedStateChange={onPinnedStateChange}
           />
         </div>
       )}
