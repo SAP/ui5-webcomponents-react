@@ -33,6 +33,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     'ui5-segmented-button-item',
     'ui5-option'
   ]);
+
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
@@ -46,7 +47,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     };
   }
 
-  const typeWithoutNamespace = property.type.replace(/sap\.ui\.webcomponents\.(main|fiori|base)\.types\./, '');
+  const typeWithoutNamespace = property.type.replace(/sap\.ui\.(webcomponents|webc)\.(main|fiori|base)\.types\./, '');
 
   switch (typeWithoutNamespace) {
     // native ts types
@@ -154,6 +155,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
         tsType: `string | HTMLElement`
       };
     }
+
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
@@ -193,6 +195,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'SideContentPosition':
     case 'SideContentVisibility':
     case 'SwitchDesign':
+    case 'TabContainerBackgroundDesign':
     case 'TabLayout':
     case 'TabsOverflowMode':
     case 'TableGrowingMode':
