@@ -2,6 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import _ from 'lodash';
 import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
+import { TimelineChartPlaceholder } from './Placeholder';
 import {
   TimelineChartDurationHeader,
   TimelineChartHeaderLabels,
@@ -146,7 +147,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     height: `${height}px`,
     width: `${width != null ? width + 'px' : DEFAULT_WIDTH}`,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    backgroundColor: ThemingParameters.sapBackgroundColor,
+    backgroundColor: ThemingParameters.sapBaseColor,
     display: 'grid',
     gridTemplateColumns: `${TASK_LABEL_WIDTH}px auto`,
     gap: 0
@@ -174,7 +175,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         setChartScale(1);
       });
     });
-    ro.observe(ref.current);
+    if (ref.current != null) ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
 
@@ -185,6 +186,10 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   };
 
   const onMouseLeave = () => setScrollVisible(false);
+
+  if (dataset.length === 0) {
+    return <TimelineChartPlaceholder />;
+  }
 
   return (
     <div id="timeline-chart" ref={ref} style={style}>

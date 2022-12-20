@@ -105,7 +105,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
       ctx.fillStyle = textColor;
       ctx.moveTo(0, height);
       ctx.lineTo(0, height - tickLength);
-      ctx.font = '8px Helvetica';
+      ctx.font = '9px Helvetica';
       ctx.textBaseline = 'bottom';
       const startText = valueFormat != null ? valueFormat(start) : start.toString();
       ctx.fillText(startText, spacing, height - tickLength - spacing);
@@ -127,7 +127,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
         const val = (totalDuration / segments) * i + start;
         const text = valueFormat != null ? valueFormat(val) : val.toString();
         const msr = ctx.measureText(text);
-        ctx.fillText(text, xPos - msr.width / spacing, height - tickLength - spacing);
+        ctx.fillText(text, xPos - msr.width / 2, height - tickLength - spacing);
       }
 
       ctx.stroke();
