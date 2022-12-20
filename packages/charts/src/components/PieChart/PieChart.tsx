@@ -2,7 +2,16 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
+import {
+  Cell,
+  Label as RechartsLabel,
+  Legend,
+  Pie,
+  PieChart as PieChartLib,
+  Sector,
+  Text as RechartsText,
+  Tooltip
+} from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
@@ -133,24 +142,21 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     [props.measure]
   );
 
-  const dataLabel = useCallback(
-    (props) => {
-      const hideDataLabel =
-        typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
-      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
+  const dataLabel = (props) => {
+    const hideDataLabel =
+      typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
+    if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
 
-      if (isValidElement(measure.DataLabel)) {
-        return cloneElement(measure.DataLabel, { ...props, config: measure });
-      }
+    if (isValidElement(measure.DataLabel)) {
+      return cloneElement(measure.DataLabel, { ...props, config: measure });
+    }
 
-      return (
-        <Text {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
-          {measure.formatter(props.value)}
-        </Text>
-      );
-    },
-    [measure, chartConfig.activeSegment]
-  );
+    return (
+      <RechartsText {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
+        {measure.formatter(props.value)}
+      </RechartsText>
+    );
+  };
 
   const tooltipValueFormatter = useCallback(
     (value, name) => [measure.formatter(value), dimension.formatter(name)],
@@ -295,7 +301,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
         >
-          {centerLabel && <Label position="center">{centerLabel}</Label>}
+          {centerLabel && <RechartsLabel position="center">{centerLabel}</RechartsLabel>}
           {dataset &&
             dataset.map((data, index) => (
               <Cell
