@@ -9,7 +9,7 @@ import {
   Pie,
   PieChart as PieChartLib,
   Sector,
-  Text as ReChartsText,
+  Text as RechartsText,
   Tooltip
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
@@ -152,9 +152,9 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     }
 
     return (
-      <ReChartsText {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
+      <RechartsText {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
         {measure.formatter(props.value)}
-      </ReChartsText>
+      </RechartsText>
     );
   };
 
