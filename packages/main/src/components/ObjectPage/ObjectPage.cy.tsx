@@ -370,60 +370,59 @@ describe('ObjectPage', () => {
         </ObjectPage>
       );
     };
-    [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((item) => {
-      cy.mount(<TestComp height="2000px" mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
+    const item = undefined;
+    cy.mount(<TestComp height="2000px" mode={item} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
 
-      cy.mount(<TestComp height="2000px" withFooter mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2341}').should('exist');
+    cy.mount(<TestComp height="2000px" withFooter mode={item} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2341}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2341}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2341}').should('exist');
 
-      cy.mount(<TestComp height="400px" mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.mount(<TestComp height="400px" mode={item} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="400px" withFooter mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.mount(<TestComp height="400px" withFooter mode={item} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="890px" mode={item} />);
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+    cy.mount(<TestComp height="890px" mode={item} />);
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
-    });
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
 });
 
