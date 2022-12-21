@@ -359,7 +359,11 @@ describe('ObjectPage', () => {
             <div data-testid="section 1" style={{ height, width: '100%', background: 'lightblue' }}>
               <Button
                 onClick={() => {
-                  setShowCurrentHeights({ offset: ref.current?.offsetHeight, scroll: ref.current?.scrollHeight });
+                  setShowCurrentHeights({
+                    // rounding offset/scroll-height differs from browser to browser and maybe even from headless tests
+                    offset: Math.floor(ref.current?.offsetHeight / 10) * 10,
+                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10
+                  });
                 }}
               >
                 Update Heights
@@ -374,12 +378,11 @@ describe('ObjectPage', () => {
     const item = undefined;
     cy.mount(<TestComp height="2000px" mode={item} />);
     cy.findByText('Update Heights').click();
-    cy.get('[data-testid="test"]').should('have.text', '{"offset":1080,"scroll":2281}');
-    // cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
-    //
-    // cy.findByTestId('op').scrollTo('bottom');
-    // cy.findByText('Update Heights').click({ force: true });
-    // cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2280}').should('exist');
+
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2280}').should('exist');
     //
     // cy.mount(<TestComp height="2000px" withFooter mode={item} />);
     // cy.findByText('Update Heights').click();
