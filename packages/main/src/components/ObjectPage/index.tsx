@@ -19,8 +19,8 @@ import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import { ObjectPageCssVariables, styles } from './ObjectPage.jss';
-import { extractSectionIdFromHtmlId, getLastObjectPageSection, getSectionById } from './ObjectPageUtils';
+import { styles } from './ObjectPage.jss';
+import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils';
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',
@@ -190,6 +190,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
+  const [spacerBottomHeight, setSpacerBottomHeight] = useState('0px');
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -305,7 +306,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
         return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
-      fireOnSelectedChangedEvent({} as any, currentIndex, currentId, sections[0]);
+      fireOnSelectedChangedEvent({}, currentIndex, currentId, sections[0]);
     }
   };
 
@@ -334,7 +335,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     };
   }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
 
-  // section was selected by clicking on the anchor bar buttons
+  // section was selected by clicking on the tab bar buttons
   const handleOnSectionSelected = useCallback(
     (targetEvent, newSelectionSectionId, index, section) => {
       isProgrammaticallyScrolled.current = true;
@@ -361,12 +362,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   // Scrolling for Sub Section Selection
   useEffect(() => {
     if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
-      const currentSubSection = objectPageRef.current?.querySelector<HTMLElement>(
+      const currentSubSection = objectPageRef.current?.querySelector<HTMLDivElement>(
         `div[id="ObjectPageSubSection-${selectedSubSectionId}"]`
       );
       const childOffset = currentSubSection?.offsetTop;
       if (!isNaN(childOffset)) {
-        currentSubSection.focus();
+        currentSubSection.focus({ preventScroll: true });
         objectPageRef.current?.scrollTo({
           top:
             childOffset -
@@ -436,39 +437,42 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   }, [props.selectedSubSectionId, setInternalSelectedSectionId, setSelectedSubSectionId, children, mode]);
 
   useEffect(() => {
-    const fillerDivObserver = new ResizeObserver(() => {
+    const objectPage = objectPageRef.current;
+
+    const sections = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
+    const section = sections[sections.length - 1];
+
+    const observer = new ResizeObserver(([sectionElement]) => {
       let heightDiff = 0;
-      const maxHeight = Math.min(objectPageRef.current?.clientHeight, window.innerHeight);
-      const availableScrollHeight = maxHeight - totalHeaderHeight;
-      const lastSectionDomRef = getLastObjectPageSection(objectPageRef, !!footer && mode === ObjectPageMode.IconTabBar);
-
-      if (lastSectionDomRef) {
-        const subSections = lastSectionDomRef.querySelectorAll('[id^="ObjectPageSubSection"]');
-        let lastSubSectionHeight;
-        if (subSections.length > 0) {
-          lastSubSectionHeight = (subSections[subSections.length - 1] as HTMLElement).offsetHeight;
-        } else {
-          lastSubSectionHeight =
-            lastSectionDomRef.offsetHeight -
-            lastSectionDomRef.querySelector<HTMLElement>("[role='heading']").offsetHeight;
-        }
-
-        heightDiff = Math.max(0, availableScrollHeight - lastSubSectionHeight);
-
-        if (isNaN(heightDiff)) {
-          heightDiff = 0;
-        }
+      if (objectPage.scrollHeight === objectPage.offsetHeight) {
+        heightDiff = Math.max(
+          objectPage.getBoundingClientRect().bottom - sectionElement.target.getBoundingClientRect().bottom,
+          0
+        );
       }
-      const lastSectionMargin = footer ? `calc(${heightDiff}px + 1rem)` : `${heightDiff}px`;
-      objectPageRef.current?.style.setProperty(ObjectPageCssVariables.lastSectionMargin, lastSectionMargin);
+      const subSections = section.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
+      const lastSubSection = subSections[subSections.length - 1];
+      if (lastSubSection) {
+        heightDiff +=
+          objectPage.getBoundingClientRect().height -
+          topHeaderHeight -
+          48 /*tabBar*/ -
+          (!headerCollapsed ? headerContentHeight : 0) -
+          lastSubSection.getBoundingClientRect().height -
+          32;
+      }
+      // heightDiff - footer - tabbar
+      setSpacerBottomHeight(footer ? `calc(${heightDiff}px - 1rem - 48px)` : `${heightDiff}px`);
     });
 
-    fillerDivObserver.observe(objectPageRef.current);
+    if (objectPage && section) {
+      observer.observe(section, { box: 'border-box' });
+    }
 
     return () => {
-      fillerDivObserver.disconnect();
+      observer.disconnect();
     };
-  }, [totalHeaderHeight, objectPageRef, children, mode, footer]);
+  }, [footer, headerCollapsed, topHeaderHeight, headerContentHeight]);
 
   const onToggleHeaderContentVisibility = useCallback((e) => {
     isToggledRef.current = true;
@@ -669,6 +673,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       handleOnSectionSelected(event, section?.props?.id, index, section);
     }
   };
+
   const prevScrollTop = useRef();
   const onObjectPageScroll = useCallback(
     (e) => {
@@ -842,11 +847,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
+        <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden="true" />
         {placeholder
           ? placeholder
           : mode === ObjectPageMode.IconTabBar
           ? getSectionById(children, internalSelectedSectionId)
           : children}
+        <div style={{ height: spacerBottomHeight }} aria-hidden="true" />
       </div>
       {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
       {footer && (
