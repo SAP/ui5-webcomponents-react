@@ -10,6 +10,7 @@ import Description from './TreeDescription.md';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
 import pasteIcon from '@ui5/webcomponents-icons/dist/paste.js';
 import wrenchIcon from '@ui5/webcomponents-icons/dist/wrench.js';
+import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import dlCloutIcon from '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import { useState } from 'react';
 import { ValueState } from '../../enums';
@@ -18,6 +19,9 @@ import TreeItemDescription from '../TreeItem/TreeItemDescription.md';
 import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md';
 import TreeMethods from './TreeMethods.md';
 import { TreeItemCustom } from '../TreeItemCustom';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
+import { Text } from '../../components/Text';
 
 <Meta
   title="Data Display / Tree"
@@ -62,6 +66,16 @@ import { TreeItemCustom } from '../TreeItemCustom';
             <TreeItem text="Tree 2.2" />
           </TreeItem>
           <TreeItem text="Tree 3 (no icon)" />
+          <TreeItemCustom
+            content={
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Icon name={sunIcon} style={{ marginInlineEnd: '2rem' }} />
+                <Text>I'm a fully customizable TreeItemCustom!</Text>
+                <Button>Btn</Button>
+                <Icon name={sunIcon} style={{ marginInlineStart: '2rem' }} />
+              </div>
+            }
+          />
         </Tree>
       );
     }}
@@ -80,7 +94,7 @@ import { TreeItemCustom } from '../TreeItemCustom';
 
 <br />
 
-## Tree with customizable TreeItem
+## Tree with customizable (standard) TreeItem
 
 This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting
 tree items.
@@ -115,7 +129,7 @@ tree items.
         control: { type: 'select', options: ValueState }
       },
       text: { description: `Defines the text of the tree item.` },
-      children: { description: `Defines the items of this <code>TreeItem</code>.` },
+      children: { description: `Defines the items of this <code>TreeItem</code> <Icon name=/>.` },
       indeterminate: {
         description: `Defines whether the selection of a tree node is displayed as partially selected.\n\n**Note:** The indeterminate state can be set only programatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the \`indeterminate\` and \`selected\` properties: \n* If a tree node has both \`selected\` and \`indeterminate\` set to \`true\`, it is displayed as partially selected.\n*   If a tree node has \`selected\` set to \`true\` and \`indeterminate\` set to \`false\`, it is displayed as selected.\n*   If a tree node has \`selected\` set to \`false\`, it is displayed as not selected regardless of the value of the \`indeterminate\` property.\n\n**Note:** This property takes effect only when the \`Tree\` is in \`MultiSelect\` mode.`
       },
