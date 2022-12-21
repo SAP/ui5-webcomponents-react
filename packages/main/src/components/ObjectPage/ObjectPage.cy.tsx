@@ -364,7 +364,7 @@ describe('ObjectPage', () => {
               >
                 Update Heights
               </Button>
-              <div>{JSON.stringify(showCurrentHeights)}</div>
+              <div data-testid="test">{JSON.stringify(showCurrentHeights)}</div>
             </div>
           </ObjectPageSection>
         </ObjectPage>
@@ -374,7 +374,7 @@ describe('ObjectPage', () => {
     const item = undefined;
     cy.mount(<TestComp height="2000px" mode={item} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2281}');
+    cy.get('[data-testid="test"]').should('have.text', '{"offset":1080,"scroll":2281}');
     // cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
     //
     // cy.findByTestId('op').scrollTo('bottom');
