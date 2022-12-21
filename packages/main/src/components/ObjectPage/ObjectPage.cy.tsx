@@ -374,6 +374,7 @@ describe('ObjectPage', () => {
     const item = undefined;
     cy.mount(<TestComp height="2000px" mode={item} />);
     cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2281}');
     // cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
     //
     // cy.findByTestId('op').scrollTo('bottom');
