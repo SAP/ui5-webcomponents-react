@@ -334,13 +334,13 @@ describe('ObjectPage', () => {
   it('single section', () => {
     document.body.style.margin = '0px';
     const TestComp = ({
-      // mode,
+      mode,
       height,
       withFooter
     }: {
       height: CSSProperties['height'];
       withFooter?: boolean;
-      // mode: ObjectPageMode;
+      mode: ObjectPageMode;
     }) => {
       const ref = useRef(null);
       const [showCurrentHeights, setShowCurrentHeights] = useState({ offset: null, scroll: null });
@@ -353,6 +353,7 @@ describe('ObjectPage', () => {
           showHideHeaderButton
           ref={ref}
           footer={withFooter && Footer}
+          mode={mode}
         >
           <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
             <div data-testid="section 1" style={{ height, width: '100%', background: 'lightblue' }}>
@@ -369,9 +370,9 @@ describe('ObjectPage', () => {
         </ObjectPage>
       );
     };
-    cy.mount(<TestComp height="2000px" />);
-    // const item = undefined;
-    // cy.mount(<TestComp height="2000px" mode={item} />);
+
+    const item = undefined;
+    cy.mount(<TestComp height="2000px" mode={item} />);
     // cy.findByText('Update Heights').click();
     // cy.findByText('{"offset":1080,"scroll":2281}').should('exist');
     //
