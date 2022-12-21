@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
+
+### Bug Fixes
+
+- **ObjectPage:** fix scrolling for ObjectPages with single section ([#3901](https://github.com/SAP/ui5-webcomponents-react/issues/3901)) ([1280a65](https://github.com/SAP/ui5-webcomponents-react/commit/1280a659500bac7650eb6def61e4c4e6a1e6a6c3)), closes [#3870](https://github.com/SAP/ui5-webcomponents-react/issues/3870)
+
 # [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
 
 ### Bug Fixes
