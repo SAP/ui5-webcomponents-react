@@ -364,7 +364,7 @@ describe('ObjectPage', () => {
               >
                 Update Heights
               </Button>
-              {JSON.stringify(showCurrentHeights)}
+              <div>{JSON.stringify(showCurrentHeights)}</div>
             </div>
           </ObjectPageSection>
         </ObjectPage>
