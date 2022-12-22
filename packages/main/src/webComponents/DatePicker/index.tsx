@@ -150,6 +150,8 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
 /**
  * The `DatePicker` component provides an input field with assigned calendar which opens on user action. The `DatePicker` allows users to select a localized date using touch, mouse, or keyboard input. It consists of two parts: the date input field and the date picker.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DatePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(

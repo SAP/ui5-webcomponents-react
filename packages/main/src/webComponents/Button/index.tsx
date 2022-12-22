@@ -90,6 +90,8 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
 /**
  * The `Button` component represents a simple push button. It enables users to trigger actions by clicking or tapping the `Button`, or by pressing certain keyboard keys, such as Enter.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Button" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(

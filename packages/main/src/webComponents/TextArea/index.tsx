@@ -126,6 +126,8 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
  *
  * When empty, it can hold a placeholder similar to a `Input`. You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(

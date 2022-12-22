@@ -93,6 +93,8 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  * The `TreeItem` represents a node in a tree structure, shown as a `List`.
  * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(

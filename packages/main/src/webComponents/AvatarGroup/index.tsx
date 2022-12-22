@@ -63,6 +63,8 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
  * *   `Group` type: The avatars are displayed as partially overlapped on top of each other and the entire group has one click/tap area.
  * *   `Individual` type: The avatars are displayed side-by-side and each avatar has its own click/tap area.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(

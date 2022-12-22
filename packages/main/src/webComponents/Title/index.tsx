@@ -33,6 +33,8 @@ export interface TitlePropTypes extends TitleAttributes, CommonProps {
 /**
  * The `Title` component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Title = withWebComponent<TitlePropTypes, TitleDomRef>('ui5-title', ['level', 'wrappingType'], [], [], []);

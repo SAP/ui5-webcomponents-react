@@ -104,6 +104,8 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
 /**
  * The `TabContainer` represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
