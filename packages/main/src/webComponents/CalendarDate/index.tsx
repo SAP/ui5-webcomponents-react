@@ -17,6 +17,8 @@ export interface CalendarDatePropTypes extends CalendarDateAttributes, CommonPro
 /**
  * The `CalendarDate` component defines a calendar date to be used inside `Calendar`
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>('ui5-date', ['value'], [], [], []);

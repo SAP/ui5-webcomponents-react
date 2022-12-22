@@ -52,6 +52,8 @@ export interface MessageStripPropTypes extends MessageStripAttributes, CommonPro
 /**
  * The `MessageStrip` component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MessageStrip" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(

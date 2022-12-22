@@ -106,6 +106,8 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
 /**
  * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select an option from a predefined list.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(

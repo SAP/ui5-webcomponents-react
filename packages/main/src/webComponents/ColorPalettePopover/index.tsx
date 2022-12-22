@@ -52,6 +52,8 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
 /**
  * Represents a predefined range of colors for easier selection. Overview The ColorPalettePopover provides the users with a slot to predefine colors. You can customize them with the use of the colors property. You can specify a defaultColor and display a "Default color" button for the user to choose directly. You can display a "More colors..." button that opens an additional color picker for the user to choose specific colors that are not present in the predefined range.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPalettePopover" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, ColorPalettePopoverDomRef>(
