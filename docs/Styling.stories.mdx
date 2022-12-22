@@ -25,7 +25,7 @@ You can change CSS Variables on any level - in the head, or on every single elem
 A full list of all supported CSS Variables can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/main/packages/base/src/styling/ThemingParameters.ts)
 or in the [SAPUI5 Theming Parameters Toolbox](https://sapui5.hana.ondemand.com/test-resources/sap/m/demokit/theming/webapp/index.html).
 
-### Reuse global style classes
+## Reuse global style classes
 
 The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
 All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react";`.
@@ -34,11 +34,11 @@ All globally available style classes are tracked in the `GlobalStyleClasses` enu
 | -------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `sapScrollBar` | If added to an container that supports scrolling, the scrollbar will be styled according to the Fiori guidelines. |
 
-#### Use default browser scrollbar
+### Use default browser scrollbar
 
 Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent these components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
 
-### Style your own components
+## Style your own components
 
 It's quite likely you have to create some custom components when you are building an app.
 In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming.
@@ -95,5 +95,11 @@ This would then be the result:
 <ThemeProvider>
   <MyCustomElement />
 </ThemeProvider>
+
+## Applying Styling via `className` or `style`
+
+Almost all components allow setting `className` or `style` to style the component. For web components, this does **not** mean that styles are inherited by shadow root elements per default.
+Only [inherited CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties) that are not set inside the shadow root or internally passed properties will change the styles of the internal elements.
+Another special case are abstract components like the `SuggestionItem`. The `ui5-suggestion-item` element is mainly there to pass props to the actual component inside the shadow root and is therefore not stylable.
 
 <Footer />
