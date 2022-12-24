@@ -84,8 +84,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   const showArrows = () => setDisplayArrows(true);
 
   return (
-    <div ref={bodyRef} style={style}>
-      <TimelineChartLayer name="timeline-chart-grid" ignoreClick>
+    <div className="timeline-chart-body" ref={bodyRef} style={style}>
+      <TimelineChartLayer name="timeline-chart-grid-layer" ignoreClick>
         <TimeLineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
@@ -96,7 +96,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
       </TimelineChartLayer>
 
       {showConnection && displayArrows ? (
-        <TimelineChartLayer name="timeline-chart-connection" ignoreClick>
+        <TimelineChartLayer name="timeline-chart-connection-layer" ignoreClick>
           <TimelineChartConnections
             dataSet={dataset}
             width={width}
@@ -106,12 +106,12 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         </TimelineChartLayer>
       ) : null}
 
-      <TimelineChartLayer name="timeline-chart-rows" ignoreClick>
+      <TimelineChartLayer name="timeline-chart-rows-layer" ignoreClick>
         <TimelineChartRowGroup
           dataset={dataset}
           rowHeight={rowHeight}
           totalDuration={totalDuration}
-          start={start}
+          timelineStart={start}
           showTooltip={showTooltipOnHover}
           hideTooltip={hideTooltip}
           postRender={showArrows}
@@ -119,7 +119,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
       </TimelineChartLayer>
 
       {showAnnotation && annotations != null ? (
-        <TimelineChartLayer name="timeline-chart-annotation" isAnnotation ignoreClick>
+        <TimelineChartLayer name="timeline-chart-annotation-layer" isAnnotation ignoreClick>
           <TimelineChartBodyCtx.Provider value={{ chartBodyWidth: width }}>{annotations}</TimelineChartBodyCtx.Provider>
         </TimelineChartLayer>
       ) : null}
@@ -194,6 +194,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
 
   return (
     <div
+      className="timeline-chart-tooltip-container"
       ref={divRef}
       style={{
         width: '100%',
@@ -205,6 +206,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     >
       {state.visible ? (
         <span
+          className="timeline-chart-tooltip"
           ref={popupRef}
           style={{
             minWidth: 80,

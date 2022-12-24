@@ -1,0 +1,2066 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimelineChart calls the valueFormat callback 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart does not render annotation layer when showAnnotation is false 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart does not render annotation layer when there are no annotations 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart does not render connection layer when showConnection is false 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart renders PlaceHolder without dataset 1`] = `
+<DocumentFragment>
+  <svg
+    aria-labelledby="TITLE_ARIA_ID"
+    height="150"
+    preserveAspectRatio="xMidYMid meet"
+    role="img"
+    viewBox="0 0 600 150"
+    width="100%"
+  >
+    <title
+      id="TITLE_ARIA_ID"
+    >
+      Loading...
+    </title>
+    <rect
+      clip-path="STYLE-URL"
+      height="100%"
+      role="presentation"
+      style="fill: STYLE-URL;"
+      width="100%"
+      x="0"
+      y="0"
+    />
+    <defs>
+      <clippath
+        id="DIFF_ID"
+      >
+        <rect
+          height="49.5"
+          width="149.5"
+          x="0"
+          y="0"
+        />
+        <rect
+          height="49.5"
+          width="450"
+          x="150"
+          y="0"
+        />
+        <rect
+          height="24.5"
+          width="149.5"
+          x="0"
+          y="50"
+        />
+        <rect
+          height="24.5"
+          width="450"
+          x="150"
+          y="50"
+        />
+        <rect
+          height="24.5"
+          width="149.5"
+          x="0"
+          y="75"
+        />
+        <rect
+          height="24.5"
+          width="450"
+          x="150"
+          y="75"
+        />
+        <rect
+          height="24.5"
+          width="149.5"
+          x="0"
+          y="100"
+        />
+        <rect
+          height="24.5"
+          width="450"
+          x="150"
+          y="100"
+        />
+        <rect
+          height="25"
+          width="149.5"
+          x="0"
+          y="125"
+        />
+        <rect
+          height="25"
+          width="450"
+          x="150"
+          y="125"
+        />
+      </clippath>
+      <lineargradient
+        id="DIFF_ID"
+      >
+        <stop
+          offset="0%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-2; -2; 1"
+          />
+        </stop>
+        <stop
+          offset="50%"
+          stop-color="var(--sapContent_ImagePlaceholderForegroundColor)"
+          stop-opacity="1"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="-1; -1; 2"
+          />
+        </stop>
+        <stop
+          offset="100%"
+          stop-color="var(--sapContent_ImagePlaceholderBackground)"
+          stop-opacity="var(--sapContent_DisabledOpacity)"
+        >
+          <animate
+            attributeName="offset"
+            dur="2s"
+            keyTimes="0; 0.25; 1"
+            repeatCount="indefinite"
+            values="0; 0; 3"
+          />
+        </stop>
+      </lineargradient>
+    </defs>
+  </svg>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart renders TimelineChart with dataset 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart renders annotation layer when showRelationship is set true and annotations added 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 155px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 155px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 105px;"
+      >
+        <div
+          style="width: 150px; height: 105px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 35px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 35px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item T1 (4, 1)"
+            >
+              T1 (4, 1)
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 35px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 35px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item T2 (4, 2)"
+            >
+              T2 (4, 2)
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 35px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 35px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item T3 (7, 2)"
+            >
+              T3 (7, 2)
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 155px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 105px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="35"
+              y2="35"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="70"
+              y2="70"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="35"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_1); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="0%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_1); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="26.666666666666668%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_1); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="53.333333333333336%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_1); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="80%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="35"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="35"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_2); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="13.333333333333334%"
+                x="33.33333333333333%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_2); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="13.333333333333334%"
+                x="66.66666666666666%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="35"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="70"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_3); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="13.333333333333334%"
+                x="6.666666666666667%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_3); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="46.666666666666664%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                rx="4"
+                ry="4"
+                style="fill: var(--sapChart_OrderedColor_3); pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="60%"
+                y="10%"
+              />
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-annotation-layer"
+          style="width: 100%; height: 100%; position: absolute; pointer-events: none;"
+        >
+          <div
+            class="timeline-chart-annotation"
+            style="width: auto; height: 35px; position: absolute; top: 0px;"
+          >
+            <canvas
+              height="0"
+              style="width: -150px; height: 100%;"
+              width="0"
+            />
+          </div>
+          <div
+            class="timeline-chart-annotation"
+            style="width: auto; height: 35px; position: absolute; top: 35px;"
+          >
+            <canvas
+              height="0"
+              style="width: -150px; height: 100%;"
+              width="0"
+            />
+          </div>
+          <div
+            class="timeline-chart-annotation"
+            style="width: auto; height: 35px; position: absolute; top: 70px;"
+          >
+            <canvas
+              height="0"
+              style="width: -150px; height: 100%;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChart renders connection layer when showConnection is set true 1`] = `
+<DocumentFragment>
+  <div
+    id="timeline-chart"
+    style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
+  >
+    <div
+      style="width: 150px; height: 125px;"
+    >
+      <div
+        style="width: 150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 50%;"
+        />
+        <div
+          style="height: 50%; text-align: center; font-size: 13px;"
+        >
+          Activities
+        </div>
+      </div>
+      <div
+        style="height: 75px;"
+      >
+        <div
+          style="width: 150px; height: 75px; outline: 0.5px solid var(--sapList_BorderColor);"
+        >
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 0"
+            >
+              Row 0
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 1"
+            >
+              Row 1
+            </span>
+          </div>
+          <div
+            style="width: 100%; height: 25px; outline: 0.5px solid var(--sapList_BorderColor); font-size: 10px; line-height: 25px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          >
+            <span
+              style="padding-left: 10px; padding-right: 10px;"
+              title="Item Row 2"
+            >
+              Row 2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+    >
+      <div
+        style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
+      >
+        Duration 
+      </div>
+      <div
+        style="width: -150px; height: 50px; outline: 0.5px solid var(--sapList_BorderColor);"
+      >
+        <div
+          style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
+        />
+        <canvas
+          height="0"
+          style="height: 25px; width: 100%;"
+          width="0"
+        />
+      </div>
+      <div
+        class="timeline-chart-body"
+        style="width: -150px; height: 75px; position: relative; outline: 1px solid var(--sapList_BorderColor);"
+      >
+        <svg
+          class="timeline-chart-grid-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <g
+            style="stroke: var(--sapList_BorderColor);"
+          >
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="25"
+              y2="25"
+            />
+            <line
+              stroke-width="1px"
+              x1="0"
+              x2="100%"
+              y1="50"
+              y2="50"
+            />
+            <line
+              x1="20%"
+              x2="20%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="40%"
+              x2="40%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="60%"
+              x2="60%"
+              y1="0"
+              y2="100%"
+            />
+            <line
+              x1="80%"
+              x2="80%"
+              y1="0"
+              y2="100%"
+            />
+          </g>
+        </svg>
+        <svg
+          class="timeline-chart-connection-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          />
+        </svg>
+        <svg
+          class="timeline-chart-rows-layer"
+          height="100%"
+          style="position: absolute; pointer-events: none;"
+          width="100%"
+        >
+          <svg
+            height="100%"
+            width="100%"
+          >
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="0"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-00"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="6.666666666666667%"
+                x="3.3333333333333335%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-01"
+                rx="4"
+                ry="4"
+                style="fill: blue; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="76.66666666666667%"
+                x="16.666666666666664%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="25"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-10"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-11"
+                rx="4"
+                ry="4"
+                style="fill: red; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="3.3333333333333335%"
+                x="63.33333333333333%"
+                y="10%"
+              />
+            </svg>
+            <svg
+              height="25"
+              style="pointer-events: none;"
+              width="100%"
+              x="0"
+              y="50"
+            >
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-20"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="10%"
+                x="23.333333333333332%"
+                y="10%"
+              />
+              <rect
+                class="timeline-chart-task"
+                height="80%"
+                id="TR-21"
+                rx="4"
+                ry="4"
+                style="fill: purple; pointer-events: auto; cursor: pointer; opacity: 1;"
+                width="16.666666666666664%"
+                x="50%"
+                y="10%"
+              />
+              <svg
+                class="timeline-chart-milestone"
+                height="80%"
+                overflow="visible"
+                x="76.66666666666667%"
+                y="10%"
+              >
+                <rect
+                  height="0"
+                  id="MS-20"
+                  rx="3"
+                  ry="3"
+                  style="fill: #007D00; pointer-events: auto; cursor: pointer; opacity: 1;"
+                  transform="translate(
+        0, 
+        0) 
+      rotate(45, 0, 
+        0
+      )"
+                  width="0"
+                />
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+        <div
+          class="timeline-chart-tooltip-container"
+          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChartAnotation postions itself correctly in the parent 1`] = `
+<DocumentFragment>
+  <div
+    class="timeline-chart-annotation"
+    style="width: auto; height: 20px; position: absolute; top: 40px;"
+  >
+    <div />
+  </div>
+</DocumentFragment>
+`;

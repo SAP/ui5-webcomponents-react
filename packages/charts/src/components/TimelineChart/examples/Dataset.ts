@@ -258,3 +258,56 @@ export const inventionDataset: ITimelineChartRow[] = [
     label: 'Inventions'
   }
 ];
+
+export const illegalConnDataset: ITimelineChartRow[] = [
+  {
+    label: 'row1',
+    tasks: [
+      {
+        start: 0,
+        duration: 5,
+        connections: [
+          {
+            itemId: 'id2'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'row2',
+    tasks: [
+      {
+        id: 'id2',
+        start: 5,
+        duration: 5
+      }
+    ]
+  }
+];
+
+export const illegalConnDataset2: ITimelineChartRow[] = [
+  {
+    label: 'row1',
+    milestones: [
+      {
+        start: 2,
+        connections: [
+          {
+            itemId: 'id2'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'row2',
+    tasks: [
+      {
+        id: 'id2',
+        start: 5,
+        duration: 5
+      }
+    ]
+  }
+];

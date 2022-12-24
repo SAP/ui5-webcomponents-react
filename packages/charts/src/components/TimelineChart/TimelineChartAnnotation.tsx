@@ -51,11 +51,15 @@ const TimelineChartAnnotation: React.FC<TimelineChartAnnotationProps> = ({
   const style: CSSProperties = {
     width: width != null ? `${width}px` : 'auto',
     height: height != null ? height : rowHeight,
-    position: 'relative',
+    position: 'absolute',
     top: `${rowIndex * rowHeight}px`
   };
 
-  return <div style={style}>{figure}</div>;
+  return (
+    <div className="timeline-chart-annotation" style={style}>
+      {figure}
+    </div>
+  );
 };
 
 export default TimelineChartAnnotation;

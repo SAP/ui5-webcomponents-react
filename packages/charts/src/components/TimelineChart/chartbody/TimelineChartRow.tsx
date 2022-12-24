@@ -8,7 +8,7 @@ interface TimelineChartRowProps {
   rowHeight: number;
   rowIndex: number;
   totalDuration: number;
-  start: number;
+  timelineStart: number;
   showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
 }
@@ -22,7 +22,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
   rowHeight,
   rowIndex,
   totalDuration,
-  start,
+  timelineStart,
   showTooltip,
   hideTooltip
 }) => {
@@ -44,7 +44,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
             duration={task.duration}
             totalDuration={totalDuration}
             color={task.color ?? rowData.color}
-            timelineStart={start}
+            timelineStart={timelineStart}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
@@ -59,7 +59,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
             time={mStone.start}
             color={mStone.color}
             totalDuration={totalDuration}
-            timelineStart={start}
+            timelineStart={timelineStart}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
@@ -147,6 +147,7 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
   // equal gap at the bottom with the bottom grid line.
   return (
     <rect
+      className="timeline-chart-task"
       id={id}
       x={`${((startTime - timelineStart) / totalDuration) * 100}%`}
       y="10%"
@@ -261,7 +262,13 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
   // rendered Milestone itself. The height is set to 80% to allow for an
   // equal gap at the bottom with the bottom grid line.
   return (
-    <svg x={`${((time - timelineStart) / totalDuration) * 100}%`} y="10%" height="80%" overflow="visible">
+    <svg
+      className="timeline-chart-milestone"
+      x={`${((time - timelineStart) / totalDuration) * 100}%`}
+      y="10%"
+      height="80%"
+      overflow="visible"
+    >
       <rect // Zero-width rect. 1px width is used as a place-holder. Height is used to draw a rhombus after component is mounted.
         id={id}
         ref={milestoneRef}
@@ -281,7 +288,7 @@ interface TimelineChartRowGroupProps {
   dataset: ITimelineChartRow[];
   rowHeight: number;
   totalDuration: number;
-  start: number;
+  timelineStart: number;
   showTooltip: (...x: unknown[]) => void;
   hideTooltip: () => void;
   postRender: () => void;
@@ -290,7 +297,7 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
   dataset,
   rowHeight,
   totalDuration,
-  start,
+  timelineStart,
   showTooltip,
   hideTooltip,
   postRender
@@ -309,7 +316,7 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
             rowHeight={rowHeight}
             rowIndex={index}
             totalDuration={totalDuration}
-            start={start}
+            timelineStart={timelineStart}
             showTooltip={showTooltip}
             hideTooltip={hideTooltip}
           />
