@@ -193,16 +193,16 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
 
   const onMouseLeave = () => setScrollVisible(false);
 
+  if (dataset.length === 0) {
+    return <TimelineChartPlaceholder />;
+  }
+
   if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
     throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
   }
 
-  if (showConnection) {
+  if (showConnection && dataset != null && dataset.length !== 0) {
     validateConnections(dataset);
-  }
-
-  if (dataset.length === 0) {
-    return <TimelineChartPlaceholder />;
   }
 
   return (
@@ -281,15 +281,19 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
 
 const validateConnections = (dataset: ITimelineChartRow[]) => {
   for (const row of dataset) {
-    for (const item of row.tasks) {
-      if (item.connections != null && item.connections.length !== 0 && item.id == null) {
-        throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+    if (row.tasks != null) {
+      for (const item of row.tasks) {
+        if (item.connections != null && item.connections.length !== 0 && item.id == null) {
+          throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+        }
       }
     }
 
-    for (const item of row.milestones) {
-      if (item.connections != null && item.connections.length !== 0 && item.id == null) {
-        throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+    if (row.milestones != null) {
+      for (const item of row.milestones) {
+        if (item.connections != null && item.connections.length !== 0 && item.id == null) {
+          throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+        }
       }
     }
   }

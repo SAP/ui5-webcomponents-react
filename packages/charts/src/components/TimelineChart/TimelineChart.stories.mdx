@@ -284,14 +284,12 @@ last 6000 years from the year 2022.
     args={{
       dataset: dummyDataSet,
       totalDuration: 150,
-      showRelationship: true,
+      showConnection: true,
       showAnnotation: true,
       unit: 'ms'
     }}
   >
-    {(props) => (
-      <TimelineChart {...props} annotations={<TimelineChartAnnotation rowIndex={0} figure={<div></div>} />} />
-    )}
+    {(props) => <TimelineChart {...props} />}
   </Story>
 </Canvas>
 

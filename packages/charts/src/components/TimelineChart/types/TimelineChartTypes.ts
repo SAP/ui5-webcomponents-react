@@ -53,10 +53,10 @@ export interface ITimelineChartTask {
   start: number;
 
   /**
-   * The end time of the task. This is used to determine the proportional
+   * The duration of the task. This is used to determine the proportional
    * ending point of the task on the timeline.
    */
-  end: number;
+  duration: number;
 
   /**
    * The label of the task in the row. If not provided, the label of the
@@ -103,4 +103,4 @@ export enum TimelineChartConnection {
   Finish_To_Finish = 'F2F'
 }
 
-export type ITimelineChartMileStone = Omit<ITimelineChartTask, 'end'>;
+export type ITimelineChartMileStone = Omit<ITimelineChartTask, 'duration'>;

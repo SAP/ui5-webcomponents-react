@@ -8,7 +8,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-00',
         start: 5,
-        end: 15,
+        duration: 10,
         connections: [
           {
             itemId: 'TR-21',
@@ -19,7 +19,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-01',
         start: 25,
-        end: 140
+        duration: 115
       }
     ],
     milestones: []
@@ -31,12 +31,12 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-10',
         start: 35,
-        end: 60
+        duration: 25
       },
       {
         id: 'TR-11',
         start: 95,
-        end: 100,
+        duration: 5,
         connections: [
           {
             itemId: 'MS-20'
@@ -54,12 +54,12 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-20',
         start: 35,
-        end: 50
+        duration: 15
       },
       {
         id: 'TR-21',
         start: 75,
-        end: 100
+        duration: 25
       }
     ],
     milestones: [
@@ -86,7 +86,7 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-00X',
         start: 2,
-        end: 7,
+        duration: 5,
         connections: [
           {
             itemId: 'TR-20X'
@@ -102,7 +102,7 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-10X',
         start: 11,
-        end: 16,
+        duration: 5,
         connections: [
           {
             itemId: 'MS-30X'
@@ -119,7 +119,7 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-20X',
         start: 6,
-        end: 11,
+        duration: 5,
         connections: [
           {
             itemId: 'TR-10X'
@@ -155,7 +155,7 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-40X',
         start: 21,
-        end: 30,
+        duration: 9,
         connections: [
           {
             itemId: 'MS-60X'
@@ -172,7 +172,7 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-50X',
         start: 24,
-        end: 28,
+        duration: 4,
         connections: [
           {
             itemId: 'MS-60X'
@@ -203,19 +203,19 @@ export const schedulingEDFData: ITimelineChartRow[] = [
     tasks: [
       {
         start: 0,
-        end: 1
+        duration: 1
       },
       {
         start: 4,
-        end: 5
+        duration: 1
       },
       {
         start: 8,
-        end: 9
+        duration: 1
       },
       {
         start: 12,
-        end: 13
+        duration: 1
       }
     ]
   },
@@ -225,11 +225,11 @@ export const schedulingEDFData: ITimelineChartRow[] = [
     tasks: [
       {
         start: 5,
-        end: 7
+        duration: 2
       },
       {
         start: 10,
-        end: 12
+        duration: 2
       }
     ]
   },
@@ -239,15 +239,15 @@ export const schedulingEDFData: ITimelineChartRow[] = [
     tasks: [
       {
         start: 1,
-        end: 3
+        duration: 2
       },
       {
         start: 7,
-        end: 8
+        duration: 1
       },
       {
         start: 9,
-        end: 10
+        duration: 1
       }
     ]
   }
