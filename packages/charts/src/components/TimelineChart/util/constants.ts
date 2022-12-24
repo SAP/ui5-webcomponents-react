@@ -4,6 +4,12 @@ export const TASK_LABEL_WIDTH = 150;
 export const DURATION_LABEL_HEIGHT = 50;
 export const DEFAULT_ROW_HEIGHT = 25;
 export const DEFAULT_CHART_VERTICAL_COLS = 5;
+export const INVALID_DISCRETE_LABELS_MESSAGE =
+  'The "discreteLabels" prop length must be equal to the "totalDuration" prop value if supplied. \
+  Please adjust the discreteLabel array or change the totalDuration.';
+export const ILLEGAL_CONNECTION_MESSAGE =
+  'Tasks or Milestones with connections must have a unique ID. \
+  Please a unique "id" property to any Task or Milestone item with a connection';
 
 // TimelineChartBody
 export const SCALE_FACTOR = 1.1;

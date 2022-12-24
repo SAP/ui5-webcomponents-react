@@ -9,8 +9,16 @@ import {
   TimelineChartTaskHeader
 } from './TimelineChartHeaders';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
-import { DEFAULT_ROW_HEIGHT, DEFAULT_WIDTH, DURATION_LABEL_HEIGHT, TASK_LABEL_WIDTH } from './util/constants';
+import {
+  DEFAULT_ROW_HEIGHT,
+  DEFAULT_WIDTH,
+  DURATION_LABEL_HEIGHT,
+  ILLEGAL_CONNECTION_MESSAGE,
+  INVALID_DISCRETE_LABELS_MESSAGE,
+  TASK_LABEL_WIDTH
+} from './util/constants';
 import './timelinestyle.css';
+import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
 
 interface TimelineChartProps {
   /**
@@ -57,7 +65,8 @@ interface TimelineChartProps {
   showAnnotation?: boolean;
 
   /**
-   * Toggles the visibility of the relations of the task items in the chart.
+   * Toggles the visibility of the connections of the task and milestone
+   * items in the chart.
    * @default false
    */
   showConnection?: boolean;
@@ -184,6 +193,14 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
 
   const onMouseLeave = () => setScrollVisible(false);
 
+  if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
+    throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
+  }
+
+  if (showConnection) {
+    validateConnections(dataset);
+  }
+
   if (dataset.length === 0) {
     return <TimelineChartPlaceholder />;
   }
@@ -260,6 +277,22 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
       </div>
     </div>
   );
+};
+
+const validateConnections = (dataset: ITimelineChartRow[]) => {
+  for (const row of dataset) {
+    for (const item of row.tasks) {
+      if (item.connections != null && item.connections.length !== 0 && item.id == null) {
+        throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+      }
+    }
+
+    for (const item of row.milestones) {
+      if (item.connections != null && item.connections.length !== 0 && item.id == null) {
+        throw new IllegalConnectionError(ILLEGAL_CONNECTION_MESSAGE);
+      }
+    }
+  }
 };
 
 export { TimelineChart };
