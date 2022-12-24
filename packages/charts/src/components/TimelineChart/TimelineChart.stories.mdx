@@ -32,7 +32,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
       isDiscrete: true,
       start: 1,
       showTooltip: true,
-      showRelationship: true
+      showConnection: true
     }}
   >
     {(props) => {
@@ -72,7 +72,7 @@ ticks and tooltip numbers.
     args={{
       dataset: schedulingEDFData,
       totalDuration: 15,
-      showRelationship: true,
+      showConnection: true,
       showAnnotation: true,
       rowHeight: 35,
       unit: 'ms',
@@ -85,17 +85,17 @@ ticks and tooltip numbers.
         annotations={
           <>
             <TimelineChartAnnotation
-              rowNumber={0}
+              rowIndex={0}
               rowHeight={35}
               figure={<TimingFigure arrival={0} period={4} deadline={4} totalDuration={15} />}
             />
             <TimelineChartAnnotation
-              rowNumber={1}
+              rowIndex={1}
               rowHeight={35}
               figure={<TimingFigure arrival={4} period={5} deadline={5} totalDuration={15} />}
             />
             <TimelineChartAnnotation
-              rowNumber={2}
+              rowIndex={2}
               rowHeight={35}
               figure={<TimingFigure arrival={0} period={7} deadline={6} totalDuration={15} />}
             />
@@ -188,7 +188,7 @@ last 6000 years from the year 2022.
       dataset: inventionDataset,
       totalDuration: 6000,
       showAnnotation: true,
-      rowHeight: 40,
+      rowHeight: 80,
       activitiesTitle: '',
       durationTitle: '# of Years Ago',
       valueFormat: (x) => Number.parseFloat(x).toFixed(1)
@@ -200,68 +200,68 @@ last 6000 years from the year 2022.
         annotations={
           <>
             <TimelineChartAnnotation
-              rowNumber={0}
+              rowIndex={0}
               figure={
                 <>
                   <Invention
                     name={'internet'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={50}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_9}
                   />
                   <Invention
                     name={'penicillin'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={82}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_2}
                   />
                   <Invention
                     name={'airplane'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={118}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_1}
                   />
                   <Invention
                     name={'lightbulb'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={143}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_3}
                   />
                   <Invention
                     name={'telephone'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={146}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_4}
                   />
                   <Invention
                     name={'steamengine'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={258}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_5}
                   />
                   <Invention
                     name={'printingpress'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={582}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_6}
                   />
                   <Invention
                     name={'compass'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={1100}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_7}
                   />
                   <Invention
                     name={'wheel'}
-                    rowHeight={40}
+                    rowHeight={80}
                     time={5500}
                     totalDuration={6000}
                     color={ThemingParameters.sapChart_OrderedColor_8}
@@ -290,7 +290,7 @@ last 6000 years from the year 2022.
     }}
   >
     {(props) => (
-      <TimelineChart {...props} annotations={<TimelineChartAnnotation rowNumber={0} figure={<div></div>} />} />
+      <TimelineChart {...props} annotations={<TimelineChartAnnotation rowIndex={0} figure={<div></div>} />} />
     )}
   </Story>
 </Canvas>

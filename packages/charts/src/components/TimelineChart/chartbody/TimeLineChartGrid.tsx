@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
+import { DEFAULT_CHART_VERTICAL_COLS } from '../util/constants';
 
 interface TimeLineChartGridProps {
   /**
@@ -27,7 +28,7 @@ const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({
   return (
     <g style={{ stroke: ThemingParameters.sapList_BorderColor }}>
       {generateHGridLines(numOfRows, rowHeight)}
-      {isDiscrete ? generateVGridLines(numOfCols) : generateVGridLines(Math.floor(5 * scale))}
+      {isDiscrete ? generateVGridLines(numOfCols) : generateVGridLines(Math.floor(DEFAULT_CHART_VERTICAL_COLS * scale))}
     </g>
   );
 };

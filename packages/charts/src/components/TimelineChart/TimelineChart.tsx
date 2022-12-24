@@ -8,7 +8,8 @@ import {
   TimelineChartHeaderLabels,
   TimelineChartTaskHeader
 } from './TimelineChartHeaders';
-import { ITimelineChartRow } from './util/TimelineChartTypes';
+import { ITimelineChartRow } from './types/TimelineChartTypes';
+import { DEFAULT_ROW_HEIGHT, DEFAULT_WIDTH, DURATION_LABEL_HEIGHT, TASK_LABEL_WIDTH } from './util/constants';
 import './timelinestyle.css';
 
 interface TimelineChartProps {
@@ -59,7 +60,7 @@ interface TimelineChartProps {
    * Toggles the visibility of the relations of the task items in the chart.
    * @default false
    */
-  showRelationship?: boolean;
+  showConnection?: boolean;
 
   /**
    * Toggles the visibility of the tooltip.
@@ -87,9 +88,10 @@ interface TimelineChartProps {
   /**
    * The label for the columns if the chart is separated into
    * discrete columns based on if `isDiscrete` is true. If set,
-   * the lenght of this array must be equal to the `totalDuration`.
+   * the lenght of this array <strong>must</strong> be equal
+   * to the `totalDuration`.
    */
-  columnLabels?: string[];
+  discreteLabels?: string[];
 
   /**
    * The starting value of the timeline.
@@ -116,24 +118,19 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   isDiscrete,
   annotations,
   showAnnotation,
-  showRelationship,
+  showConnection,
   showTooltip,
   unit,
   activitiesTitle,
   durationTitle,
-  columnLabels,
+  discreteLabels,
   start,
   valueFormat
 }) => {
-  const DEFAULT_WIDTH = 'auto';
-  const TASK_LABEL_WIDTH = 150;
-  const DURATION_LABEL_HEIGHT = 50;
-  const DEFAULT_ROW_HEIGHT = 25;
-
   rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
   isDiscrete = isDiscrete ?? false;
   showAnnotation = showAnnotation ?? false;
-  showRelationship = showRelationship ?? false;
+  showConnection = showConnection ?? false;
   showTooltip = showTooltip ?? true;
   unit = unit ?? '';
   activitiesTitle = activitiesTitle ?? 'Activities';
@@ -238,7 +235,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           totalDuration={totalDuration}
           unit={unit}
           durationHeaderLabel={durationTitle}
-          columnLabels={columnLabels}
+          columnLabels={discreteLabels}
           start={start}
           scale={chartScale}
           valueFormat={valueFormat}
@@ -253,7 +250,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           isDiscrete={isDiscrete}
           annotations={annotations}
           showAnnotation={showAnnotation}
-          showRelationship={showRelationship}
+          showConnection={showConnection}
           showTooltip={showTooltip}
           unit={unit}
           scaleChart={scaleChartBody}

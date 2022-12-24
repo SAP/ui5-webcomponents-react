@@ -1,6 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, useEffect, useRef } from 'react';
-import { ITimelineChartRow } from './util/TimelineChartTypes';
+import { ITimelineChartRow } from './types/TimelineChartTypes';
+import { DEFAULT_CHART_VERTICAL_COLS } from './util/constants';
 
 interface TimelineChartTaskHeaderProps {
   width: number;
@@ -119,7 +120,7 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
 
       ctx.beginPath();
       ctx.lineWidth = 2;
-      const segments = Math.floor(5 * scale);
+      const segments = Math.floor(DEFAULT_CHART_VERTICAL_COLS * scale);
       for (let i = 1; i < segments; i++) {
         const xPos = (width / segments) * i;
         ctx.moveTo(xPos, height);

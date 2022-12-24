@@ -1,10 +1,7 @@
 import _ from 'lodash';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
-import { ITimelineChartRow } from '../util/TimelineChartTypes';
-
-const THROTTLE_INTERVAL = 300;
-const NORMAL_OPACITY = 1.0;
-const HOVER_OPACITY = 0.7;
+import { ITimelineChartRow } from '../types/TimelineChartTypes';
+import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants';
 
 interface TimelineChartRowProps {
   rowData: ITimelineChartRow;
@@ -75,10 +72,10 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
 interface TimelineTaskProps {
   /**
    * The unique id of the task. This is used to get the position
-   * in the DOM and draw any relationship arrows pointing to or away
+   * in the DOM and draw any connection arrows pointing to or away
    * from it.
    */
-  id: string;
+  id?: string;
 
   /**
    * The task item label. If not set, the label of the row is used.
@@ -167,10 +164,10 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
 interface TimelineMilestoneProps {
   /**
    * The unique id of the milestone. This is used to get the position
-   * in the DOM and draw any relationship arrows pointing to or away
+   * in the DOM and draw any connection arrows pointing to or away
    * from it.
    */
-  id: string;
+  id?: string;
 
   /**
    * The milestone label. If not set, the label is just 'Milestone'.

@@ -101,10 +101,10 @@ export const Invention: React.FC<InventionProps> = ({ name, rowHeight, time, tot
           <title>{INVENTION_DESCRIPTION_MAP[name]}</title>
           <circle cx={rowHeight / 2} cy={rLarge} r={rLarge} />
           <path
-            d={`M ${rowHeight / 2} 
-              ${rLarge * 2} l ${x1} ${y1 - rLarge} 
-              L ${rowHeight / 2} ${rowHeight} 
-              L ${rowHeight / 2 + x2} ${rLarge + y2} Z`}
+            d={`M ${rowHeight / 2} ${rLarge}
+                l ${x1} ${y1} 
+                L ${rowHeight / 2} ${rowHeight} 
+                L ${rowHeight / 2 + x2} ${rLarge + y2} Z`}
           />
           <svg
             x={rowHeight / 8 + 0.2 * rLarge}

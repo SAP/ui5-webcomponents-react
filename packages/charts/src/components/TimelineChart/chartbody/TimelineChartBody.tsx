@@ -1,13 +1,12 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { ITimelineChartRow } from '../types/TimelineChartTypes';
+import { SCALE_FACTOR } from '../util/constants';
 import { TimelineChartBodyCtx } from '../util/context';
-import { ITimelineChartRow } from '../util/TimelineChartTypes';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
 import TimelineChartRowGroup from './TimelineChartRow';
 import TimelineChartConnections from './TimelineConnections';
-
-const SCALE_FACTOR = 1.1;
 
 interface TimelineChartBodyProps {
   dataset: ITimelineChartRow[];
@@ -19,7 +18,7 @@ interface TimelineChartBodyProps {
   isDiscrete: boolean;
   annotations?: ReactNode | ReactNode[];
   showAnnotation?: boolean;
-  showRelationship?: boolean;
+  showConnection?: boolean;
   showTooltip?: boolean;
   unit: string;
   start: number;
@@ -36,7 +35,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   isDiscrete,
   annotations,
   showAnnotation,
-  showRelationship,
+  showConnection,
   showTooltip,
   unit,
   start,
@@ -86,7 +85,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
 
   return (
     <div ref={bodyRef} style={style}>
-      <TimelineChartLayer ignoreClick>
+      <TimelineChartLayer name="timeline-chart-grid" ignoreClick>
         <TimeLineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
@@ -96,8 +95,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         />
       </TimelineChartLayer>
 
-      {showRelationship && displayArrows ? (
-        <TimelineChartLayer ignoreClick>
+      {showConnection && displayArrows ? (
+        <TimelineChartLayer name="timeline-chart-connection" ignoreClick>
           <TimelineChartConnections
             dataSet={dataset}
             width={width}
@@ -107,7 +106,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         </TimelineChartLayer>
       ) : null}
 
-      <TimelineChartLayer ignoreClick>
+      <TimelineChartLayer name="timeline-chart-rows" ignoreClick>
         <TimelineChartRowGroup
           dataset={dataset}
           rowHeight={rowHeight}
@@ -120,7 +119,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
       </TimelineChartLayer>
 
       {showAnnotation && annotations != null ? (
-        <TimelineChartLayer isAnnotation ignoreClick>
+        <TimelineChartLayer name="timeline-chart-annotation" isAnnotation ignoreClick>
           <TimelineChartBodyCtx.Provider value={{ chartBodyWidth: width }}>{annotations}</TimelineChartBodyCtx.Provider>
         </TimelineChartLayer>
       ) : null}

@@ -5,7 +5,8 @@ import {
   ITimelineChartRow,
   ITimelineChartTask,
   TimelineChartConnection
-} from '../util/TimelineChartTypes';
+} from '../types/TimelineChartTypes';
+import { ARROWHEAD_HEIGHT, ARROWHEAD_WIDTH, ARROW_CLEARANCE } from '../util/constants';
 
 interface TimelineChartConnectionsProps {
   dataSet: ITimelineChartRow[];
@@ -137,10 +138,6 @@ interface ConnectionArrowProps {
   endX: number;
   endY: number;
 }
-
-const ARROWHEAD_WIDTH = 8; // base of the arrow head triangle. Where the line joins the head
-const ARROWHEAD_HEIGHT = 5; // Distance from the pointy tip to where the arrow line joins the head
-const ARROW_CLEARANCE = ARROWHEAD_HEIGHT + 3;
 
 /**
  * This component represents the physical arrow that indicates
