@@ -11,7 +11,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
         duration: 10,
         connections: [
           {
-            itemId: 'TR-21',
+            itemId: 'TR-20',
             type: TimelineChartConnection.Finish_To_Start
           }
         ]
@@ -19,7 +19,14 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-01',
         start: 25,
-        duration: 115
+        duration: 115,
+        color: 'brown',
+        connections: [
+          {
+            itemId: 'TR-10',
+            type: TimelineChartConnection.Start_To_Start
+          }
+        ]
       }
     ],
     milestones: []
@@ -31,7 +38,14 @@ export const dummyDataSet: ITimelineChartRow[] = [
       {
         id: 'TR-10',
         start: 35,
-        duration: 25
+        duration: 25,
+        color: 'orange',
+        connections: [
+          {
+            itemId: 'TR-20',
+            type: TimelineChartConnection.Finish_To_Finish
+          }
+        ]
       },
       {
         id: 'TR-11',
@@ -40,7 +54,10 @@ export const dummyDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'MS-20'
-            // type: TimelineChartConnection.Finish_To_Start
+          },
+          {
+            itemId: 'TR-21',
+            type: TimelineChartConnection.Start_To_Start
           }
         ]
       }
@@ -106,7 +123,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'MS-30X'
-            // type: TimelineChartConnection.Finish_To_Start
           }
         ]
       }
@@ -114,7 +130,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
   },
   {
     label: 'Content Review',
-    // color: 'purple',
     tasks: [
       {
         id: 'TR-20X',
@@ -123,7 +138,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'TR-10X'
-            // type: TimelineChartConnection.Start_To_Start
           }
         ]
       }
@@ -131,7 +145,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
   },
   {
     label: '',
-    // color: 'purple',
     milestones: [
       {
         id: 'MS-30X',
@@ -150,7 +163,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
   },
   {
     label: 'Website Design',
-    // color: 'purple',
     tasks: [
       {
         id: 'TR-40X',
@@ -159,7 +171,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'MS-60X'
-            // type: TimelineChartConnection.Start_To_Start
           }
         ]
       }
@@ -167,7 +178,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
   },
   {
     label: 'Database Setup',
-    // color: 'purple',
     tasks: [
       {
         id: 'TR-50X',
@@ -176,7 +186,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'MS-60X'
-            // type: TimelineChartConnection.Start_To_Start
           }
         ]
       }
@@ -184,7 +193,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
   },
   {
     label: '',
-    // color: 'purple',
     milestones: [
       {
         id: 'MS-60X',
@@ -199,7 +207,6 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
 export const schedulingEDFData: ITimelineChartRow[] = [
   {
     label: 'T1 (4, 1)',
-    // color: 'blue',
     tasks: [
       {
         start: 0,
@@ -221,7 +228,6 @@ export const schedulingEDFData: ITimelineChartRow[] = [
   },
   {
     label: 'T2 (4, 2)',
-    // color: 'blue',
     tasks: [
       {
         start: 5,
@@ -235,7 +241,6 @@ export const schedulingEDFData: ITimelineChartRow[] = [
   },
   {
     label: 'T3 (7, 2)',
-    // color: 'blue',
     tasks: [
       {
         start: 1,
