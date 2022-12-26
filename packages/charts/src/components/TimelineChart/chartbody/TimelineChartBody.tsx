@@ -24,6 +24,7 @@ interface TimelineChartBodyProps {
   start: number;
   onScale: (x: number) => void;
   valueFormat?: (value: number) => string;
+  resetScroll: () => void;
 }
 
 const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
@@ -40,7 +41,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   unit,
   start,
   onScale,
-  valueFormat
+  valueFormat,
+  resetScroll
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
@@ -85,7 +87,10 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
     } else {
       // Only scale down if scaled width will not be less than original
       // width
-      if (scaleExpRef.current > 0) scaleExpRef.current--;
+      if (scaleExpRef.current > 0) {
+        resetScroll();
+        scaleExpRef.current--;
+      }
     }
     onScale(Math.pow(SCALE_FACTOR, scaleExpRef.current));
   };

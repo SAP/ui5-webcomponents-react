@@ -160,6 +160,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   };
 
   const ref = useRef(null);
+  const bodyConRef = useRef<HTMLDivElement>();
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
@@ -186,6 +187,10 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   }, []);
 
   const scaleChartBody = (value: number) => setChartBodyScale(value);
+
+  const resetScroll = () => {
+    bodyConRef.current.scrollTo({ left: 0 });
+  };
 
   const onMouseMove = () => {
     setScrollVisible(true);
@@ -223,6 +228,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         />
       </div>
       <div
+        ref={bodyConRef}
         style={{
           width: dimensions.width - TASK_LABEL_WIDTH,
           height: height,
@@ -275,6 +281,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           onScale={scaleChartBody}
           start={start}
           valueFormat={valueFormat}
+          resetScroll={resetScroll}
         />
       </div>
     </div>
