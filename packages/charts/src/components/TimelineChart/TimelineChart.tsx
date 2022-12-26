@@ -166,7 +166,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     chartWidth: 0,
     chartHeight: 0
   });
-  const [chartScale, setChartScale] = useState(1);
+  const [chartBodyScale, setChartBodyScale] = useState(1);
   const [isScrollVisible, setScrollVisible] = useState(false);
 
   useEffect(() => {
@@ -178,14 +178,14 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           chartWidth: entry.contentRect.width - TASK_LABEL_WIDTH,
           chartHeight: entry.contentRect.height - DURATION_LABEL_HEIGHT
         });
-        setChartScale(1);
+        setChartBodyScale(1);
       });
     });
     if (ref.current != null) ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
 
-  const scaleChartBody = (value: number) => setChartScale(value);
+  const scaleChartBody = (value: number) => setChartBodyScale(value);
 
   const onMouseMove = () => {
     setScrollVisible(true);
@@ -204,6 +204,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   if (showConnection && dataset != null && dataset.length !== 0) {
     validateConnections(dataset);
   }
+
+  const bodyWidth = (dimensions.width - TASK_LABEL_WIDTH) * chartBodyScale;
 
   return (
     <div id="timeline-chart" ref={ref} style={style}>
@@ -246,7 +248,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           {durationTitle} {unit != '' ? `(${unit})` : ''}
         </div>
         <TimelineChartDurationHeader
-          width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
+          width={bodyWidth}
           height={DURATION_LABEL_HEIGHT}
           isDiscrete={isDiscrete}
           totalDuration={totalDuration}
@@ -254,12 +256,12 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           durationHeaderLabel={durationTitle}
           columnLabels={discreteLabels}
           start={start}
-          scale={chartScale}
+          scale={chartBodyScale}
           valueFormat={valueFormat}
         />
         <TimelineChartBody
           dataset={dataset}
-          width={(dimensions.width - TASK_LABEL_WIDTH) * chartScale}
+          width={bodyWidth}
           height={height - DURATION_LABEL_HEIGHT}
           rowHeight={rowHeight}
           numOfItems={numOfRows}
@@ -270,7 +272,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           showConnection={showConnection}
           showTooltip={showTooltip}
           unit={unit}
-          scaleChart={scaleChartBody}
+          onScale={scaleChartBody}
           start={start}
           valueFormat={valueFormat}
         />

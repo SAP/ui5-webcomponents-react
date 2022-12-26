@@ -187,7 +187,7 @@ describe('TimelineChartBody', () => {
         numOfItems={3}
         isDiscrete={false}
         unit={''}
-        scaleChart={scaleChart}
+        onScale={scaleChart}
       />
     );
     const body = container.querySelector('.timeline-chart-body');

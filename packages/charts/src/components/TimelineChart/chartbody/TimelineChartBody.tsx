@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { ITimelineChartRow } from '../types/TimelineChartTypes';
-import { SCALE_FACTOR } from '../util/constants';
+import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants';
 import { TimelineChartBodyCtx } from '../util/context';
 import TimeLineChartGrid from './TimeLineChartGrid';
 import TimelineChartLayer from './TimelineChartLayer';
@@ -22,7 +22,7 @@ interface TimelineChartBodyProps {
   showTooltip?: boolean;
   unit: string;
   start: number;
-  scaleChart: (x: number) => void;
+  onScale: (x: number) => void;
   valueFormat?: (value: number) => string;
 }
 
@@ -39,7 +39,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   showTooltip,
   unit,
   start,
-  scaleChart,
+  onScale,
   valueFormat
 }) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
@@ -49,6 +49,9 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
 
   useEffect(() => {
     bodyRef.current?.addEventListener('wheel', onMouseWheelEvent);
+    return () => {
+      bodyRef.current?.removeEventListener('wheel', onMouseWheelEvent);
+    };
   }, []);
 
   const style: CSSProperties = {
@@ -74,11 +77,17 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   const onMouseWheelEvent = (evt: WheelEvent) => {
     evt.preventDefault();
     if (evt.deltaY < 0) {
-      scaleExpRef.current++;
+      // Only scale up if scaled width will not exceed MAX_BODY_WIDTH
+      const msrWidth = bodyRef.current.getBoundingClientRect().width;
+      if (msrWidth * SCALE_FACTOR < MAX_BODY_WIDTH) {
+        scaleExpRef.current++;
+      }
     } else {
+      // Only scale down if scaled width will not be less than original
+      // width
       if (scaleExpRef.current > 0) scaleExpRef.current--;
     }
-    scaleChart(Math.pow(SCALE_FACTOR, scaleExpRef.current));
+    onScale(Math.pow(SCALE_FACTOR, scaleExpRef.current));
   };
 
   const showArrows = () => setDisplayArrows(true);
@@ -89,7 +98,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
         <TimeLineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
-          numOfCols={totalDuration}
+          totalDuration={totalDuration}
           rowHeight={rowHeight}
           scale={Math.pow(SCALE_FACTOR, scaleExpRef.current)}
         />

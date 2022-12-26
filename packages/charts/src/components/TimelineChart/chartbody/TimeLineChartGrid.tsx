@@ -10,7 +10,7 @@ interface TimeLineChartGridProps {
   isDiscrete: boolean;
   numOfRows: number;
   rowHeight: number;
-  numOfCols?: number;
+  totalDuration: number;
   scale: number;
 }
 
@@ -22,13 +22,15 @@ const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({
   isDiscrete,
   numOfRows,
   rowHeight,
-  numOfCols,
+  totalDuration,
   scale
 }) => {
   return (
     <g style={{ stroke: ThemingParameters.sapList_BorderColor }}>
       {generateHGridLines(numOfRows, rowHeight)}
-      {isDiscrete ? generateVGridLines(numOfCols) : generateVGridLines(Math.floor(DEFAULT_CHART_VERTICAL_COLS * scale))}
+      {isDiscrete
+        ? generateVGridLines(totalDuration)
+        : generateVGridLines(Math.floor(DEFAULT_CHART_VERTICAL_COLS * scale))}
     </g>
   );
 };
