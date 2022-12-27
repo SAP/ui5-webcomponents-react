@@ -82,6 +82,8 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
 /**
  * The `Select` component is used to create a drop-down list. The items inside the `Select` define the available options by using the `Option` component.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(

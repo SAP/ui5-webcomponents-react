@@ -33,7 +33,7 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/dist/**/*.js'
           compression: 'gzip'
-          clean-script: 'clean'
+          clean-script: 'clean:check-bundle-size'
 
   install:
     name: 'Install Dependencies'
@@ -50,7 +50,7 @@ jobs:
         run: yarn install --immutable
 
   test:
-    needs: [ 'install' ]
+    needs: ['install']
     uses: './.github/workflows/test.yml'
 
   build:

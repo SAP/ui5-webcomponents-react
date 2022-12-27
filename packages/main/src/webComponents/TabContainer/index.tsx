@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/TabContainer.js';
 import { ReactNode } from 'react';
-import { TabLayout, TabsOverflowMode } from '../../enums';
+import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -14,9 +14,17 @@ interface TabContainerAttributes {
    */
   collapsed?: boolean;
   /**
+   * Sets the background color of the Tab Container's content as `Solid`, `Transparent`, or `Translucent`.
+   */
+  contentBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
+  /**
    * Defines whether the tabs are in a fixed state that is not expandable/collapsible by user interaction.
    */
   fixed?: boolean;
+  /**
+   * Sets the background color of the Tab Container's header as `Solid`, `Transparent`, or `Translucent`.
+   */
+  headerBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
   /**
    * Defines whether the overflow select list is displayed.
    *
@@ -35,7 +43,7 @@ interface TabContainerAttributes {
    */
   tabLayout?: TabLayout | keyof typeof TabLayout;
   /**
-   * Defines the overflow mode of the tab strip. If you have a large number of tabs, only the tabs that can fit on screen will be visible. All other tabs that can 't fit on the screen are available in an overflow tab "More".
+   * Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible. All other tabs that can 't fit on the screen are available in an overflow tab "More".
    *
    * **Note:** Only one overflow at the end would be displayed by default, but when set to `StartAndEnd`, there will be two overflows on both ends, and tab order will not change on tab selection.
    *
@@ -96,11 +104,13 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
 /**
  * The `TabContainer` represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
   'ui5-tabcontainer',
-  ['tabLayout', 'tabsOverflowMode'],
+  ['contentBackgroundDesign', 'headerBackgroundDesign', 'tabLayout', 'tabsOverflowMode'],
   ['collapsed', 'fixed', 'showOverflow'],
   ['overflowButton', 'startOverflowButton'],
   ['tab-select']
@@ -109,6 +119,8 @@ const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>
 TabContainer.displayName = 'TabContainer';
 
 TabContainer.defaultProps = {
+  contentBackgroundDesign: TabContainerBackgroundDesign.Solid,
+  headerBackgroundDesign: TabContainerBackgroundDesign.Solid,
   tabLayout: TabLayout.Standard,
   tabsOverflowMode: TabsOverflowMode.End
 };

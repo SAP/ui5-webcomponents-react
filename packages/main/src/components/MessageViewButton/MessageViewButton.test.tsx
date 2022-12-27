@@ -1,4 +1,4 @@
-import { render, screen } from '@shared/tests';
+import { render } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
 import { MessageViewButton, ValueState } from '../..';

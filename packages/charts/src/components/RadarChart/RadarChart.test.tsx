@@ -5,7 +5,6 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import * as React from 'react';
 import { complexDataSet } from '../../resources/DemoProps';
 import { RadarChart } from './RadarChart';
 

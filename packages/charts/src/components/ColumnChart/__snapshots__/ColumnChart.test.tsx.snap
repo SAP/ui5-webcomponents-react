@@ -11,6 +11,7 @@ exports[`ColumnChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper has-click-handler"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -666,87 +667,51 @@ exports[`ColumnChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
-                />
-              </g>
-            </g>
-          </g>
-          <g
-            class="recharts-layer recharts-bar"
-          >
-            <g
-              class="recharts-layer recharts-bar-rectangles"
-            >
-              <g
-                class="recharts-layer"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -762,39 +727,111 @@ exports[`ColumnChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            class="recharts-layer recharts-bar"
+          >
+            <g
+              class="recharts-layer recharts-bar-rectangles"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -1047,6 +1084,7 @@ exports[`ColumnChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -1702,87 +1740,51 @@ exports[`ColumnChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
-                />
-              </g>
-            </g>
-          </g>
-          <g
-            class="recharts-layer recharts-bar"
-          >
-            <g
-              class="recharts-layer recharts-bar-rectangles"
-            >
-              <g
-                class="recharts-layer"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -1798,39 +1800,111 @@ exports[`ColumnChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            class="recharts-layer recharts-bar"
+          >
+            <g
+              class="recharts-layer recharts-bar-rectangles"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -1960,6 +2034,7 @@ exports[`ColumnChart onLegendClick should not crash when invalid handler is prov
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -2615,87 +2690,51 @@ exports[`ColumnChart onLegendClick should not crash when invalid handler is prov
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
-                />
-              </g>
-            </g>
-          </g>
-          <g
-            class="recharts-layer recharts-bar"
-          >
-            <g
-              class="recharts-layer recharts-bar-rectangles"
-            >
-              <g
-                class="recharts-layer"
-              >
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
-                />
-                <g
-                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -2711,39 +2750,111 @@ exports[`ColumnChart onLegendClick should not crash when invalid handler is prov
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            class="recharts-layer recharts-bar"
+          >
+            <g
+              class="recharts-layer recharts-bar-rectangles"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
+                />
+                <g
+                  class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>

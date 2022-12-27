@@ -80,9 +80,10 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
           </>
         }
         breadcrumbs={
-          <Breadcrumbs currentLocationText="Employee Details">
+          <Breadcrumbs>
             <BreadcrumbsItem>Manager Cockpit</BreadcrumbsItem>
             <BreadcrumbsItem>My Team</BreadcrumbsItem>
+            <BreadcrumbsItem>Employee Details</BreadcrumbsItem>
           </Breadcrumbs>
         }
       >
@@ -303,6 +304,7 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
         <ObjectPage
           image={args.image}
           headerTitle={args.headerTitle}
+          headerContent={args.headerContent}
           imageShapeCircle
           placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
         />

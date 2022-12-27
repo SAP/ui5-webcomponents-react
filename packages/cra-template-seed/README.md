@@ -7,13 +7,10 @@
 This seed decreases the bootstrap time spent on new projects, POCs or MVPs using [**UI5 Web Components for React**](https://github.com/SAP/ui5-webcomponents-react) by leveraging several out-of-the-box components, scripts & configurations.
 
 # Usage
+
 ```shell script
 npx create-react-app my-app --template @ui5/webcomponents-react-seed
 npm run start
-
-# or if you prefer to use yarn
-yarn create react-app my-app --template @ui5/webcomponents-react-seed
-yarn start
 ```
 
 # Configuration Included
@@ -66,7 +63,7 @@ In case you have a local approuter or backend running, you can create a `.env.de
 contents of `.env.production` into that file. This will then skip the start of the mockserver and connect to your
 "real" backend.
 
-More Information about creating local environment overrides can be found in the 
+More Information about creating local environment overrides can be found in the
 [create-react-app documentation](https://create-react-app.dev/docs/adding-custom-environment-variables).
 
 ## Testing

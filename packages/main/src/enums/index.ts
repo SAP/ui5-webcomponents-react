@@ -55,6 +55,7 @@ export * from './SideContentPosition';
 export * from './SideContentVisibility';
 export * from './Size';
 export * from './SwitchDesign';
+export * from './TabContainerBackgroundDesign';
 export * from './TabLayout';
 export * from './TableGrowingMode';
 export * from './TableMode';

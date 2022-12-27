@@ -93,6 +93,8 @@ export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<Common
  * The `RadioButton` component enables users to select a single option from a set of options. When a `RadioButton` is selected by the user, the `onChange` event is fired. When a `RadioButton` that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
  * **Note:** If `RadioButton` is not part of a group, it can be selected once, but can not be deselected back.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RadioButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(

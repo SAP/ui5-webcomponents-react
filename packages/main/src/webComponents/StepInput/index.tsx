@@ -99,6 +99,8 @@ export interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProp
  *
  * The user can change the value of the component by pressing the increase/decrease buttons, by typing a number directly, by using the keyboard up/down and page up/down, or by using the mouse scroll wheel. Decimal values are supported.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/StepInput" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(

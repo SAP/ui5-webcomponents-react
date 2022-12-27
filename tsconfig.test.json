@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["es2019", "dom"],
+    "moduleResolution": "Node",
+    "jsx": "react-jsx"
+  },
+  "include": ["**/*.test.ts", "**/*.test.tsx"]
+}

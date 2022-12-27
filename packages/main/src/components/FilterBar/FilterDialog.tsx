@@ -77,7 +77,6 @@ addCustomCSSWithScoping(
   border-bottom: none;
 }
 /* don't display select all checkbox */
-:host([data-component-name="FilterBarDialogPanelTable"]) thead th.ui5-table-select-all-column [ui5-checkbox],
 :host([data-component-name="FilterBarDialogTable"]) thead th.ui5-table-select-all-column [ui5-checkbox] {
  visibility: hidden;
 }

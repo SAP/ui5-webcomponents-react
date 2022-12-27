@@ -171,7 +171,10 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
   const filteredChildren =
     listFilter === 'All'
       ? childrenArray
-      : childrenArray.filter((message: ReactElement<MessageItemPropTypes>) => {
+      : childrenArray.filter((message) => {
+          if (!React.isValidElement(message)) {
+            return false;
+          }
           if (listFilter === ValueState.Information) {
             return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
           }
@@ -211,6 +214,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                   <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
                     {i18nBundle.getText(ALL)}
                   </SegmentedButtonItem>
+                  {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
                   {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
                     if (count === 0) {
                       return null;

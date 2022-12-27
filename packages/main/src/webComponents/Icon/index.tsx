@@ -47,6 +47,8 @@ export interface IconPropTypes extends IconAttributes, CommonProps {}
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element,
  * or as an interactive element that can be focused and clicked.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Icon" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(

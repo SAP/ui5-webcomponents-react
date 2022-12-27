@@ -1,7 +1,15 @@
-import { useState } from 'react';
 import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
+import { useState } from 'react';
 
-const OverflowTestComponent = (props) => {
+interface PropTypes {
+  onOverflowChange: (event: {
+    toolbarElements: HTMLElement[];
+    overflowElements: HTMLCollection;
+    target: HTMLElement;
+  }) => void;
+}
+
+const OverflowTestComponent = (props: PropTypes) => {
   const { onOverflowChange } = props;
   const [width, setWidth] = useState(undefined);
   const [additionalChildren, setAdditionalChildren] = useState([]);
@@ -15,7 +23,12 @@ const OverflowTestComponent = (props) => {
       />
       <Button
         onClick={() => {
-          setAdditionalChildren((prev) => [...prev, <Button style={{ width: '200px' }}>Button</Button>]);
+          setAdditionalChildren((prev) => [
+            ...prev,
+            <Button key={prev.length + 1} style={{ width: '200px' }}>
+              Button
+            </Button>
+          ]);
         }}
       >
         Add
@@ -23,7 +36,7 @@ const OverflowTestComponent = (props) => {
       <Button
         onClick={() => {
           setAdditionalChildren((prev) => {
-            const [omit, ...rest] = prev;
+            const [_omit, ...rest] = prev;
             return rest;
           });
         }}

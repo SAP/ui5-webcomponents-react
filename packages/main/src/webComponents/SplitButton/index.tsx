@@ -62,6 +62,8 @@ export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<Common
 /**
  * `SplitButton` enables users to trigger actions. It is constructed of two separate actions - default action and arrow action that can be activated by clicking or tapping, or by pressing certain keyboard keys - `Space` or `Enter` for default action, and `Arrow Down` or `Arrow Up` for arrow action.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SplitButton" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(

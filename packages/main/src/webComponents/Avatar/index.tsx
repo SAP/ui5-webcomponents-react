@@ -101,6 +101,8 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
 /**
  * An image-like component that has different display options for representing images and icons in different shapes and sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(

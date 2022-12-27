@@ -7,20 +7,26 @@ import { ListMode } from '../../enums/ListMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './TreeDescription.md';
-import '@ui5/webcomponents-icons/dist/copy.js';
-import '@ui5/webcomponents-icons/dist/paste.js';
-import '@ui5/webcomponents-icons/dist/wrench.js';
-import '@ui5/webcomponents-icons/dist/download-from-cloud.js';
+import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
+import pasteIcon from '@ui5/webcomponents-icons/dist/paste.js';
+import wrenchIcon from '@ui5/webcomponents-icons/dist/wrench.js';
+import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
+import dlCloutIcon from '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import { useState } from 'react';
 import { ValueState } from '../../enums';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import TreeItemDescription from '../TreeItem/TreeItemDescription.md';
+import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md';
 import TreeMethods from './TreeMethods.md';
+import { TreeItemCustom } from '../TreeItemCustom';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
+import { Text } from '../../components/Text';
 
 <Meta
   title="Data Display / Tree"
   component={Tree}
-  subcomponents={{ TreeItem }}
+  subcomponents={{ TreeItem, TreeItemCustom }}
   argTypes={{
     children: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -41,13 +47,13 @@ import TreeMethods from './TreeMethods.md';
     {(args) => {
       return (
         <Tree {...args}>
-          <TreeItem expanded text="Tree 1" icon="paste" selected>
+          <TreeItem expanded text="Tree 1" icon={pasteIcon} selected>
             <TreeItem expanded text="Tree 1.1" selected>
               <TreeItem text="Tree 1.1.1" />
               <TreeItem text="Tree 1.1.2" />
             </TreeItem>
           </TreeItem>
-          <TreeItem text="Tree 2" icon="copy">
+          <TreeItem text="Tree 2" icon={copyIcon}>
             <TreeItem text="Tree 2.1">
               <TreeItem text="Tree 2.1.1" />
               <TreeItem text="Tree 2.1.2">
@@ -60,6 +66,16 @@ import TreeMethods from './TreeMethods.md';
             <TreeItem text="Tree 2.2" />
           </TreeItem>
           <TreeItem text="Tree 3 (no icon)" />
+          <TreeItemCustom
+            content={
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Icon name={sunIcon} style={{ marginInlineEnd: '2rem' }} />
+                <Text>I'm a fully customizable TreeItemCustom!</Text>
+                <Button>Btn</Button>
+                <Icon name={sunIcon} style={{ marginInlineStart: '2rem' }} />
+              </div>
+            }
+          />
         </Tree>
       );
     }}
@@ -78,7 +94,7 @@ import TreeMethods from './TreeMethods.md';
 
 <br />
 
-## Tree with customizable TreeItem
+## Tree with customizable (standard) TreeItem
 
 This is the item to use inside a <code>Tree</code>. You can represent an arbitrary tree structure by recursively nesting
 tree items.
@@ -89,7 +105,7 @@ tree items.
     args={{
       expanded: true,
       hasChildren: true,
-      icon: 'wrench',
+      icon: { wrenchIcon },
       selected: false,
       text: 'Customizable TreeItem',
       additionalText: 'Additional Text',
@@ -149,7 +165,7 @@ tree items.
 
 <ArgsTableWithNote
   story="with customizable TreeItem"
-  noteText={`The props in the table below are part of the "TreeItem" component.`}
+  noteText={`The props in the table below are part of the "TreeItem" component and not of the "Tree".`}
 />
 
 <br />
@@ -185,12 +201,7 @@ tree items.
               <TreeItem text="Tree 1.2" />
             </TreeItem>
             <TreeItem text="Has no children" />
-            <TreeItem
-              text="Has children but not yet loaded"
-              hasChildren
-              icon="download-from-cloud"
-              data-id="lazychildren"
-            >
+            <TreeItem text="Has children but not yet loaded" hasChildren icon={dlCloutIcon} data-id="lazychildren">
               {lazyChildren}
             </TreeItem>
           </Tree>
@@ -230,7 +241,7 @@ const LazyLoadingTree = () => {
           <TreeItem text="Tree 1.2" />
         </TreeItem>
         <TreeItem text="Has no children" />
-        <TreeItem text="Has children but not yet loaded" hasChildren icon="download-from-cloud" data-id="lazychildren">
+        <TreeItem text="Has children but not yet loaded" hasChildren icon={dlCloutIcon} data-id="lazychildren">
           {lazyChildren}
         </TreeItem>
       </Tree>
@@ -244,5 +255,9 @@ const LazyLoadingTree = () => {
 ## TreeItem
 
 <TreeItemDescription />
+
+## TreeItemCustom
+
+<TreeItemCustomDescription />
 
 <Footer />

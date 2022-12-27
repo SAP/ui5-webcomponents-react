@@ -58,7 +58,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
    * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
    * `style={{ gridColumn: 'span 4' }}`
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });

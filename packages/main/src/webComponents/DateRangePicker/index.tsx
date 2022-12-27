@@ -158,6 +158,8 @@ export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omi
 /**
  * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DateRangePicker" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(

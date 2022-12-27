@@ -65,6 +65,8 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
 /**
  * The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Slider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
