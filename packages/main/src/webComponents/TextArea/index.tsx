@@ -6,6 +6,9 @@ import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
+//todo add to script?
+type Nullable<T> = T | null;
+
 interface TextAreaAttributes {
   /**
    * Defines the accessible ARIA name of the component.
@@ -23,8 +26,6 @@ interface TextAreaAttributes {
   disabled?: boolean;
   /**
    * Enables the component to automatically grow and shrink dynamically with its content.
-   *
-   * **Note:** If set to `true`, the CSS `height` property is ignored.
    */
   growing?: boolean;
   /**
@@ -34,7 +35,7 @@ interface TextAreaAttributes {
   /**
    * Defines the maximum number of characters that the `value` can have.
    */
-  maxlength?: number;
+  maxlength?: Nullable<number>;
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
@@ -124,6 +125,8 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
  * The `TextArea` component is used to enter multiple lines of text.
  *
  * When empty, it can hold a placeholder similar to a `Input`. You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
+ *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</ui5-link>
  */

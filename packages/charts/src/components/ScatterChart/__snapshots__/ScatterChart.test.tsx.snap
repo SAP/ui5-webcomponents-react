@@ -11,6 +11,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -292,6 +293,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -464,6 +466,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -489,6 +492,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -508,6 +512,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -527,6 +532,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -546,6 +552,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -565,6 +572,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -584,6 +592,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -603,6 +612,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -622,6 +632,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -641,6 +652,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -660,6 +672,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -679,6 +692,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -698,6 +712,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -729,6 +744,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -749,6 +765,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -769,6 +786,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -789,6 +807,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -809,6 +828,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -829,6 +849,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -849,6 +870,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -869,6 +891,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -889,6 +912,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -909,6 +933,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -929,6 +954,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -949,6 +975,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1131,6 +1158,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -1412,6 +1440,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -1584,6 +1613,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -1609,6 +1639,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1628,6 +1659,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1647,6 +1679,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1666,6 +1699,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1685,6 +1719,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1704,6 +1739,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1723,6 +1759,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1742,6 +1779,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1761,6 +1799,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1780,6 +1819,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1799,6 +1839,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1818,6 +1859,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1849,6 +1891,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1869,6 +1912,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1889,6 +1933,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1909,6 +1954,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1929,6 +1975,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1949,6 +1996,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1969,6 +2017,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1989,6 +2038,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2009,6 +2059,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2029,6 +2080,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2049,6 +2101,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2069,6 +2122,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2194,6 +2248,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -2475,6 +2530,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -2647,6 +2703,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -2672,6 +2729,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2691,6 +2749,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2710,6 +2769,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2729,6 +2789,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2748,6 +2809,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2767,6 +2829,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2786,6 +2849,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2805,6 +2869,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2824,6 +2889,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2843,6 +2909,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2862,6 +2929,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2881,6 +2949,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2912,6 +2981,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2932,6 +3002,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2952,6 +3023,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2972,6 +3044,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2992,6 +3065,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3012,6 +3086,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3032,6 +3107,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3052,6 +3128,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3072,6 +3149,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3092,6 +3170,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3112,6 +3191,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3132,6 +3212,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"

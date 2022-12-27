@@ -6,7 +6,9 @@ import { Bar } from './index';
 describe('Bar', () => {
   test('Basic Test (generated)', () => {
     const { asFragment } = render(
-      <Bar startContent={<span>Start</span>} children={<span>Middle</span>} endContent={<span>End</span>} />
+      <Bar startContent={<span>Start</span>} endContent={<span>End</span>}>
+        <span>Middle</span>
+      </Bar>
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -91,6 +91,8 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
 /**
  * The DynamicSideContent (`DynamicSideContent`) is a layout component that allows additional content to be displayed in a way that flexibly adapts to different screen sizes. The side content appears in a container next to or directly below the main content (it doesn't overlay). When the side content is triggered, the main content becomes narrower (if appearing side-by-side). The side content contains a separate scrollbar when appearing next to the main content.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DynamicSideContent" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, DynamicSideContentDomRef>(

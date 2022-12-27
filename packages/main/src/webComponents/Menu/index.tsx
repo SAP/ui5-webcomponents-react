@@ -40,6 +40,8 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
 /**
  * `Menu` component represents a hierarchical menu structure.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Menu" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Menu = withWebComponent<MenuPropTypes, MenuDomRef>('ui5-menu', ['headerText'], [], [], ['item-click']);

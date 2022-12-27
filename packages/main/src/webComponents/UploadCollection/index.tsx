@@ -76,6 +76,8 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
 /**
  * This component allows you to represent files before uploading them to a server, with the help of `UploadCollection-item`. It also allows you to show already uploaded files.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(

@@ -23,7 +23,9 @@ export interface IChartMeasure {
    */
   hideDataLabel?: boolean;
   /**
-   * Use a custom component for the Data Label
+   * Use a custom component for the Data Label.
+   *
+   * __Note:__ We recommend leveraging the `Text` component of `recharts` as label here, but you can also use your own SVG.
    */
   DataLabel?: ComponentType<any>;
 }
