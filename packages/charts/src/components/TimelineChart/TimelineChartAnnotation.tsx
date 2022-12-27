@@ -1,27 +1,34 @@
 import React, { CSSProperties } from 'react';
+import { DEFAULT_ROW_HEIGHT } from './util/constants';
 
 interface TimelineChartAnnotationProps {
   /**
-   * The width of the annotation. If not provided it expands to fill
+   * The width of the annotation. If not provided, it expands to fill
    * the timeline.
    */
   width?: number;
 
   /**
-   * The height of the annotation. Preferably this should be the same height as the
-   * rowHeight of the chart. If not set, the default rowHeight is used.
+   * The height of the annotation. Preferably, this would be the same height as the
+   * rowHeight of the chart. A different height could be set if the annotation
+   * spans multiple rows. If not set, the __rowHeight__  specified for the
+   * `TimelineChartAnnotation` is used.
    */
   height?: string;
 
   /**
-   * The rowIndex the annotation should be applied to.
+   * The index of the row the annotation should be applied to. The top of the anotation is
+   * aligned with the top of the row.
+   * @default 0
    */
-  rowIndex: number;
+  rowIndex?: number;
 
   /**
    * The row height of the chart. This should **always** be set to the same value as
    * the rowHeight of the chart in order for the top of the annotation to be aligned
-   * with the top of the row. If not set, the default row height of the chart is used.
+   * with the top of the row the annotation is applied to. If not set, the default
+   * __rowHeight__ of the `TimelineChart` is used.
+   * @default 25
    */
   rowHeight?: number;
 
@@ -45,8 +52,8 @@ const TimelineChartAnnotation: React.FC<TimelineChartAnnotationProps> = ({
   rowHeight,
   figure
 }) => {
-  const DEFAULT_ROW_HEIGHT = 25;
   rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
+  rowIndex = rowIndex ?? 0;
 
   const style: CSSProperties = {
     width: width != null ? `${width}px` : 'auto',
@@ -62,4 +69,4 @@ const TimelineChartAnnotation: React.FC<TimelineChartAnnotationProps> = ({
   );
 };
 
-export default TimelineChartAnnotation;
+export { TimelineChartAnnotation };

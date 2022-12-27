@@ -24,12 +24,12 @@ interface TimelineChartProps {
   /**
    * The data is an array of objects that is displayed on the chart.
    */
-  dataset: ITimelineChartRow[];
+  dataset?: ITimelineChartRow[];
 
   /**
    * The total duration of the timeline.
    */
-  totalDuration: number;
+  totalDuration?: number;
 
   /**
    * The total width of the chart. If not supplied, the chart's
@@ -95,10 +95,11 @@ interface TimelineChartProps {
   durationTitle?: string;
 
   /**
-   * The label for the columns if the chart is separated into
-   * discrete columns based on if `isDiscrete` is true. If set,
-   * the lenght of this array <strong>must</strong> be equal
-   * to the `totalDuration`.
+   * The label for the columns if the chart is separated into discrete columns
+   * based on if `isDiscrete` is true. If set, the lenght of this array
+   * <strong>must</strong> be equal to the `totalDuration`. If not set, an
+   * array of numbers with size equal to the `totalDuration` and with values
+   * starting from the value __start__ prop of the `TimelineChart` will be used.
    */
   discreteLabels?: string[];
 
@@ -117,7 +118,14 @@ interface TimelineChartProps {
 
 /**
  * A `TimelineChart` is a data visualization chart that can be used to represent
- * Gantt charts or any other timeline-based visualizations.
+ * Gantt charts or any other timeline-based visualizations. The component has a
+ * rich set of various properties that allows the user to:
+ * * Zoom and pan the chart body to see the visulizations clearer using the mouse wheel.
+ * * Add annotations to highlight or illustrate different points on the timeline.
+ * * Use annotations to create custom Timeline visualizations.
+ * * Choose whether the timeline is discrete or continous.
+ * * Show relationships between different items on the timeline using different
+ * connections.
  */
 const TimelineChart: React.FC<TimelineChartProps> = ({
   dataset,
@@ -136,6 +144,10 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   start,
   valueFormat
 }) => {
+  if (dataset == null) {
+    return <TimelineChartPlaceholder />;
+  }
+
   rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
   isDiscrete = isDiscrete ?? false;
   showAnnotation = showAnnotation ?? false;
@@ -145,6 +157,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   activitiesTitle = activitiesTitle ?? 'Activities';
   durationTitle = durationTitle ?? 'Duration';
   start = start ?? 0;
+  totalDuration = totalDuration ?? 10;
 
   const numOfRows = dataset.length;
   const height = rowHeight * numOfRows + DURATION_LABEL_HEIGHT;
@@ -197,10 +210,6 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   };
 
   const onMouseLeave = () => setScrollVisible(false);
-
-  if (dataset.length === 0) {
-    return <TimelineChartPlaceholder />;
-  }
 
   if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
     throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);

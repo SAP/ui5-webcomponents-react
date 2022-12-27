@@ -1,6 +1,6 @@
 import React from 'react';
 import { TimelineChart } from './TimelineChart';
-import TimelineChartAnnotation from './TimelineChartAnnotation';
+import { TimelineChartAnnotation } from './TimelineChartAnnotation';
 import { TimingFigure } from './examples/Annotations';
 import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset';
 import { fireEvent, render } from '@testing-library/react';
@@ -12,8 +12,9 @@ import { TimelineChartBody } from './chartbody/TimelineChartBody';
 
 describe('TimelineChart', () => {
   it('renders PlaceHolder without dataset', () => {
-    const { asFragment, container } = render(<TimelineChart dataset={[]} totalDuration={0} />);
+    const { asFragment, container } = render(<TimelineChart totalDuration={10} />);
     expect(container.childElementCount).toBe(1);
+    expect(container.firstElementChild?.tagName).toBe('svg');
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -188,6 +189,7 @@ describe('TimelineChartBody', () => {
         isDiscrete={false}
         unit={''}
         onScale={scaleChart}
+        resetScroll={() => {}}
       />
     );
     const body = container.querySelector('.timeline-chart-body');

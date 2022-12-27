@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
-import TimelineChartAnnotation from './TimelineChartAnnotation';
+import { TimelineChartAnnotation } from './TimelineChartAnnotation';
 import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, inventionDataset } from './examples/Dataset.ts';
 import { TimingFigure, Invention } from './examples/Annotations.tsx';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
@@ -179,7 +179,8 @@ interaction with the mouse is needed for the custom annotation, the annotation s
 `pointerEvents` set to _auto_ in its own style.
 
 The example below shows the timeline for the some of the most momentuous inventions in the
-last 6000 years from the year 2022.
+last 6000 years from the year 2022. These annotations have been made using SVG just to
+demonstrate that any valid element can be used for making the annotations.
 
 <Canvas>
   <Story
@@ -307,7 +308,7 @@ A lot more things can be customized in the `TimelineChart`. These include:
 
 <Canvas>
   <Story name="Loading Placeholder">
-    <TimelineChart dataset={[]} totalDuration={0} />
+    <TimelineChart />
   </Story>
 </Canvas>
 
