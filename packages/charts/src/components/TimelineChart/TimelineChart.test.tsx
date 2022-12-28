@@ -1,14 +1,15 @@
+import assert from 'assert';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { TimelineChart } from './TimelineChart';
-import { TimelineChartAnnotation } from './TimelineChartAnnotation';
+import { TimelineChartBody } from './chartbody/TimelineChartBody';
+import TimelineChartRowGroup from './chartbody/TimelineChartRow';
 import { TimingFigure } from './examples/Annotations';
 import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset';
-import { fireEvent, render } from '@testing-library/react';
+import { TimelineChart } from './TimelineChart';
+import { TimelineChartAnnotation } from './TimelineChartAnnotation';
+import { ITimelineChartRow } from './types/TimelineChartTypes';
 import { DEFAULT_CHART_VERTICAL_COLS } from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
-import { ITimelineChartRow } from './types/TimelineChartTypes';
-import TimelineChartRowGroup from './chartbody/TimelineChartRow';
-import { TimelineChartBody } from './chartbody/TimelineChartBody';
 
 describe('TimelineChart', () => {
   it('renders PlaceHolder without dataset', () => {
@@ -153,15 +154,17 @@ describe('TimelineChartRow', () => {
 
     const { container } = render(component);
     const task = container.querySelector('.timeline-chart-task');
-    fireEvent.mouseMove(task!);
+    assert(task);
+    fireEvent.mouseMove(task);
     expect(showTooltip).toBeCalled();
-    fireEvent.mouseLeave(task!);
+    fireEvent.mouseLeave(task);
     expect(hideTooltip).toBeCalled();
 
     const milestone = container.querySelector('.timeline-chart-milestone');
-    fireEvent.mouseMove(milestone!);
+    assert(milestone);
+    fireEvent.mouseMove(milestone);
     expect(showTooltip).toBeCalled();
-    fireEvent.mouseLeave(milestone!);
+    fireEvent.mouseLeave(milestone);
     expect(hideTooltip).toBeCalled();
   });
 });
@@ -171,9 +174,10 @@ describe('TimelineChartBody', () => {
     const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
     expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(0);
     const task = container.querySelector('.timeline-chart-task');
-    fireEvent.mouseMove(task!);
+    assert(task);
+    fireEvent.mouseMove(task);
     expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(1);
-    fireEvent.mouseLeave(task!);
+    fireEvent.mouseLeave(task);
     expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(0);
   });
 
@@ -193,7 +197,8 @@ describe('TimelineChartBody', () => {
       />
     );
     const body = container.querySelector('.timeline-chart-body');
-    fireEvent.wheel(body!);
+    assert(body);
+    fireEvent.wheel(body);
     expect(scaleChart).toBeCalledTimes(1);
   });
 });
