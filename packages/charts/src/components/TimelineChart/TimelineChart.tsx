@@ -17,7 +17,6 @@ import {
   INVALID_DISCRETE_LABELS_MESSAGE,
   TASK_LABEL_WIDTH
 } from './util/constants';
-import './timelinestyle.css';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
 
 interface TimelineChartProps {
@@ -120,7 +119,8 @@ interface TimelineChartProps {
  * A `TimelineChart` is a data visualization chart that can be used to represent
  * Gantt charts or any other timeline-based visualizations. The component has a
  * rich set of various properties that allows the user to:
- * * Zoom and pan the chart body to see the visulizations clearer using the mouse wheel.
+ * * Zoom the chart body to see the visualizations clearer using the mouse wheel.
+ * * Pan the zoomed chart horizonatally by holding down the left click button.
  * * Add annotations to highlight or illustrate different points on the timeline.
  * * Use annotations to create custom Timeline visualizations.
  * * Choose whether the timeline is discrete or continous.
@@ -181,7 +181,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     chartHeight: 0
   });
   const [chartBodyScale, setChartBodyScale] = useState(1);
-  const [isScrollVisible, setScrollVisible] = useState(false);
+  const [isGrabbed, setIsGrabbed] = useState(false);
+  const [mPos, setMPos] = useState(0);
 
   useEffect(() => {
     const ro = new ResizeObserver((entries) => {
@@ -205,11 +206,25 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     bodyConRef.current.scrollTo({ left: 0 });
   };
 
-  const onMouseMove = () => {
-    setScrollVisible(true);
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (chartBodyScale > 1) {
+      setIsGrabbed(true);
+      setMPos(e.clientX);
+    }
   };
 
-  const onMouseLeave = () => setScrollVisible(false);
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (isGrabbed) {
+      const dx = e.clientX - mPos;
+      bodyConRef.current.scrollBy({ left: dx / 10 });
+    }
+  };
+
+  const getCursor = (): string => {
+    if (isGrabbed) return 'grabbing';
+    if (chartBodyScale > 1) return 'grab';
+    return 'auto';
+  };
 
   if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
     throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
@@ -241,11 +256,15 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         style={{
           width: dimensions.width - TASK_LABEL_WIDTH,
           height: height,
-          overflowX: `${isScrollVisible ? 'auto' : 'hidden'}`,
-          overflowY: 'hidden'
+          overflowX: 'hidden',
+          overflowY: 'hidden',
+          cursor: getCursor()
         }}
-        onMouseMove={_.throttle(onMouseMove, 200, { trailing: false })}
-        onMouseLeave={onMouseLeave}
+        onMouseDown={(e) => onMouseDown(e)}
+        onMouseUp={() => {
+          if (chartBodyScale > 1) setIsGrabbed(false);
+        }}
+        onMouseMove={_.throttle(onMouseMove, 100, { trailing: false })}
       >
         <div
           style={{

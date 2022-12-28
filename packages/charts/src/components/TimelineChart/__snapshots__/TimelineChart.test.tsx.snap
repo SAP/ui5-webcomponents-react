@@ -61,7 +61,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -328,7 +328,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -595,7 +595,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -862,7 +862,7 @@ exports[`TimelineChart does not render connection layer when showConnection is f
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -1266,7 +1266,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -1533,7 +1533,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
       </div>
     </div>
     <div
-      style="width: -150px; height: 155px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 155px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
@@ -1837,7 +1837,7 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
       </div>
     </div>
     <div
-      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden;"
+      style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
         style="position: absolute; width: -150px; height: 25px; margin-bottom: -0.5px; text-align: center; font-size: 13px; line-height: 25px;"
