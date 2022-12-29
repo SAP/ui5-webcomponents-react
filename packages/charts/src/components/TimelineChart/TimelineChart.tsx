@@ -216,7 +216,10 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isGrabbed) {
       const dx = e.clientX - mPos;
-      bodyConRef.current.scrollBy({ left: dx / 10 });
+      // Make negative so that the scrolling can move in
+      // same direction as the mouse
+      bodyConRef.current.scrollBy({ left: -dx });
+      setMPos(e.clientX);
     }
   };
 
@@ -264,7 +267,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         onMouseUp={() => {
           if (chartBodyScale > 1) setIsGrabbed(false);
         }}
-        onMouseMove={_.throttle(onMouseMove, 100, { trailing: false })}
+        onMouseMove={(e) => onMouseMove(e)}
       >
         <div
           style={{
