@@ -326,4 +326,4 @@ const generateEndFacingHead = (finishX: number, finishY: number, color: string):
   );
 };
 
-export default TimelineChartConnections;
+export { TimelineChartConnections };

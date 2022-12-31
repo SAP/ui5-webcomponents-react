@@ -3,7 +3,7 @@
 exports[`TimelineChart calls the valueFormat callback 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -61,6 +61,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -270,7 +271,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
 exports[`TimelineChart does not render annotation layer when showAnnotation is false 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -328,6 +329,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -537,7 +539,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
 exports[`TimelineChart does not render annotation layer when there are no annotations 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -595,6 +597,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -804,7 +807,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
 exports[`TimelineChart does not render connection layer when showConnection is false 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -862,6 +865,7 @@ exports[`TimelineChart does not render connection layer when showConnection is f
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -1208,7 +1212,7 @@ exports[`TimelineChart renders PlaceHolder without dataset 1`] = `
 exports[`TimelineChart renders TimelineChart with dataset 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -1266,6 +1270,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -1475,7 +1480,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
 exports[`TimelineChart renders annotation layer when showRelationship is set true and annotations added 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 155px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -1533,6 +1538,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 155px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div
@@ -1779,7 +1785,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
 exports[`TimelineChart renders connection layer when showConnection is set true 1`] = `
 <DocumentFragment>
   <div
-    id="timeline-chart"
+    class="timeline-chart"
     style="height: 125px; width: auto; outline: 0.5px solid var(--sapList_BorderColor); display: grid; grid-template-columns: 150px auto; gap: 0;"
   >
     <div
@@ -1837,6 +1843,7 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
       </div>
     </div>
     <div
+      class="timeline-chartbody-container"
       style="width: -150px; height: 125px; overflow-x: hidden; overflow-y: hidden; cursor: auto;"
     >
       <div

@@ -2,27 +2,36 @@ import assert from 'assert';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
-import TimelineChartRowGroup from './chartbody/TimelineChartRow';
+import { TimelineChartLayer } from './chartbody/TimelineChartLayer';
+import { TimelineChartRowGroup } from './chartbody/TimelineChartRow';
 import { TimingFigure } from './examples/Annotations';
 import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset';
 import { TimelineChart } from './TimelineChart';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
-import { DEFAULT_CHART_VERTICAL_COLS } from './util/constants';
+import {
+  DEFAULT_CHART_VERTICAL_COLS,
+  HOVER_OPACITY,
+  MOUSE_CURSOR_AUTO,
+  MOUSE_CURSOR_GRAB,
+  MOUSE_CURSOR_GRABBING,
+  NORMAL_OPACITY
+} from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
 
 describe('TimelineChart', () => {
   it('renders PlaceHolder without dataset', () => {
     const { asFragment, container } = render(<TimelineChart totalDuration={10} />);
     expect(container.childElementCount).toBe(1);
-    expect(container.firstElementChild?.tagName).toBe('svg');
+    expect(container.firstElementChild?.tagName.toLowerCase()).toBe('svg');
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders TimelineChart with dataset', () => {
     const { asFragment, container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
     expect(container.childElementCount).toBe(1);
-    expect(container.firstElementChild?.id).toBe('timeline-chart');
+    expect(container.firstElementChild?.className).toBe('timeline-chart');
+    expect(container.firstElementChild?.tagName.toLowerCase()).toBe('div');
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -109,6 +118,26 @@ describe('TimelineChart', () => {
     const component2 = <TimelineChart dataset={illegalConnDataset2} totalDuration={10} showConnection />;
     expect(() => render(component2)).toThrow(IllegalConnectionError);
   });
+
+  it('shows the right mouse cursor', () => {
+    const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
+    const bodyCon: HTMLDivElement | null = container.querySelector('.timeline-chartbody-container');
+    assert(bodyCon);
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_AUTO);
+    fireEvent.mouseDown(bodyCon);
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_AUTO);
+    fireEvent.mouseUp(bodyCon);
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_AUTO);
+
+    const body = container.querySelector('.timeline-chart-body');
+    assert(body);
+    fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_GRAB);
+    fireEvent.mouseDown(bodyCon);
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_GRABBING);
+    fireEvent.mouseUp(bodyCon);
+    expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_GRAB);
+  });
 });
 
 describe('TimelineChartAnotation', () => {
@@ -122,36 +151,36 @@ describe('TimelineChartAnotation', () => {
 });
 
 describe('TimelineChartRow', () => {
+  const showTooltip = jest.fn(() => {});
+  const hideTooltip = jest.fn(() => {});
+  const rowData: ITimelineChartRow = {
+    label: 'row',
+    tasks: [
+      {
+        start: 0,
+        duration: 5
+      }
+    ],
+    milestones: [
+      {
+        start: 7
+      }
+    ]
+  };
+
+  const component = (
+    <TimelineChartRowGroup
+      timelineStart={0}
+      totalDuration={10}
+      rowHeight={40}
+      dataset={[rowData]}
+      showTooltip={showTooltip}
+      hideTooltip={hideTooltip}
+      postRender={() => {}}
+    />
+  );
+
   it('calls showTooltip and hideTooltip when mouse moves on task or milestone', () => {
-    const showTooltip = jest.fn(() => {});
-    const hideTooltip = jest.fn(() => {});
-    const rowData: ITimelineChartRow = {
-      label: 'row',
-      tasks: [
-        {
-          start: 0,
-          duration: 5
-        }
-      ],
-      milestones: [
-        {
-          start: 7
-        }
-      ]
-    };
-
-    const component = (
-      <TimelineChartRowGroup
-        timelineStart={0}
-        totalDuration={10}
-        rowHeight={40}
-        dataset={[rowData]}
-        showTooltip={showTooltip}
-        hideTooltip={hideTooltip}
-        postRender={() => {}}
-      />
-    );
-
     const { container } = render(component);
     const task = container.querySelector('.timeline-chart-task');
     assert(task);
@@ -166,6 +195,25 @@ describe('TimelineChartRow', () => {
     expect(showTooltip).toBeCalled();
     fireEvent.mouseLeave(milestone);
     expect(hideTooltip).toBeCalled();
+  });
+
+  it('shows the right opacity on mouseenter and mouseleave', () => {
+    const { container } = render(component);
+    const task: SVGRectElement | null = container.querySelector('.timeline-chart-task');
+    assert(task);
+    expect(task.style.opacity).toBe(NORMAL_OPACITY.toString());
+    fireEvent.mouseMove(task);
+    expect(task.style.opacity).toBe(HOVER_OPACITY.toString());
+    fireEvent.mouseLeave(task);
+    expect(task.style.opacity).toBe(NORMAL_OPACITY.toString());
+
+    const milestone: SVGRectElement | null = container.querySelector('.timeline-chart-milestone > rect');
+    assert(milestone);
+    expect(milestone.style.opacity).toBe(NORMAL_OPACITY.toString());
+    fireEvent.mouseMove(milestone);
+    expect(milestone.style.opacity).toBe(HOVER_OPACITY.toString());
+    fireEvent.mouseLeave(milestone);
+    expect(milestone.style.opacity).toBe(NORMAL_OPACITY.toString());
   });
 });
 
@@ -200,5 +248,50 @@ describe('TimelineChartBody', () => {
     assert(body);
     fireEvent.wheel(body);
     expect(scaleChart).toBeCalledTimes(1);
+  });
+
+  it('calls resetScroll when scroll down event is down after scale up', () => {
+    const scaleChart = jest.fn(() => {});
+    const resetScroll = jest.fn(() => {});
+    const { container } = render(
+      <TimelineChartBody
+        start={0}
+        rowHeight={30}
+        dataset={dummyDataSet}
+        totalDuration={150}
+        numOfItems={3}
+        isDiscrete={false}
+        unit={''}
+        onScale={scaleChart}
+        resetScroll={resetScroll}
+      />
+    );
+    const body = container.querySelector('.timeline-chart-body');
+    assert(body);
+    fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
+    fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
+    expect(resetScroll).not.toBeCalled();
+    fireEvent(body, new WheelEvent('wheel', { deltaY: 1, bubbles: true }));
+    expect(resetScroll).toBeCalledTimes(1);
+  });
+});
+
+describe('TimelineChartLayer', () => {
+  it('renders normally', () => {
+    const { container } = render(<TimelineChartLayer name="test" />);
+    // expect(container.firstElementChild?.className).toBe('test');
+    expect(container.firstElementChild?.tagName.toLowerCase()).toBe('svg');
+  });
+
+  it('renders div if isAnnotation is true', () => {
+    const { container } = render(<TimelineChartLayer isAnnotation></TimelineChartLayer>);
+    expect(container.firstElementChild?.tagName.toLowerCase()).toBe('div');
+  });
+
+  it('ignores click if ignoreClick is true', () => {
+    const { container } = render(<TimelineChartLayer name="test" ignoreClick></TimelineChartLayer>);
+    const content: HTMLDivElement | null = container.querySelector('.test');
+    assert(content);
+    expect(content.style.pointerEvents).toBe('none');
   });
 });

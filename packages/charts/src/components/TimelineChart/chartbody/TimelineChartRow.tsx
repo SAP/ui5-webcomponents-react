@@ -26,10 +26,6 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
   showTooltip,
   hideTooltip
 }) => {
-  if (rowIndex < 0) {
-    throw new Error('Invalid row index');
-  }
-
   rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 11) + 1})`;
 
   return (
@@ -326,4 +322,4 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
   );
 };
 
-export default TimelineChartRowGroup;
+export { TimelineChartRowGroup };

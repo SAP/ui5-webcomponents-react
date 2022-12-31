@@ -2,7 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { DEFAULT_CHART_VERTICAL_COLS } from '../util/constants';
 
-interface TimeLineChartGridProps {
+interface TimelineChartGridProps {
   /**
    * Whether to render the vertical grid lines for a TimelineChart
    * with discrete segments.
@@ -18,7 +18,7 @@ interface TimeLineChartGridProps {
  * This component represents the grid lines on the chart. The `isDiscrete` prop is
  * used to decided whether to render the vertical grid lines.
  */
-const TimeLineChartGrid: React.FC<TimeLineChartGridProps> = ({
+const TimelineChartGrid: React.FC<TimelineChartGridProps> = ({
   isDiscrete,
   numOfRows,
   rowHeight,
@@ -78,4 +78,4 @@ const generateVGridLines = (numOfSegments: number): JSX.Element[] => {
   return gridLineArray;
 };
 
-export default TimeLineChartGrid;
+export { TimelineChartGrid };

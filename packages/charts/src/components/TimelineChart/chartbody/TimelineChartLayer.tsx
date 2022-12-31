@@ -19,26 +19,21 @@ const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({
   children,
   name
 }) => {
+  const position = 'absolute';
+  const pointerEvents = ignoreClick ? 'none' : 'auto';
+
   if (isAnnotation) {
     return (
-      <div
-        className={name}
-        style={{ width: '100%', height: '100%', position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}
-      >
+      <div className={name} style={{ width: '100%', height: '100%', position: position, pointerEvents: pointerEvents }}>
         {children}
       </div>
     );
   }
   return (
-    <svg
-      className={name}
-      width="100%"
-      height="100%"
-      style={{ position: 'absolute', pointerEvents: ignoreClick ? 'none' : 'auto' }}
-    >
+    <svg className={name} width="100%" height="100%" style={{ position: position, pointerEvents: pointerEvents }}>
       {children}
     </svg>
   );
 };
 
-export default TimelineChartLayer;
+export { TimelineChartLayer };

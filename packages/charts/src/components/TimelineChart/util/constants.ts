@@ -10,6 +10,9 @@ export const INVALID_DISCRETE_LABELS_MESSAGE =
 export const ILLEGAL_CONNECTION_MESSAGE =
   'Tasks or Milestones with connections must have a unique ID. \
   Please a unique "id" property to any Task or Milestone item with a connection';
+export const MOUSE_CURSOR_AUTO = 'auto';
+export const MOUSE_CURSOR_GRAB = 'grab';
+export const MOUSE_CURSOR_GRABBING = 'grabbing';
 
 // TimelineChartBody
 export const SCALE_FACTOR = 1.1;

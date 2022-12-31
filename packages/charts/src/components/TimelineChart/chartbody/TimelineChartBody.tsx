@@ -3,10 +3,10 @@ import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHa
 import { ITimelineChartRow } from '../types/TimelineChartTypes';
 import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants';
 import { TimelineChartBodyCtx } from '../util/context';
-import TimeLineChartGrid from './TimeLineChartGrid';
-import TimelineChartLayer from './TimelineChartLayer';
-import TimelineChartRowGroup from './TimelineChartRow';
-import TimelineChartConnections from './TimelineConnections';
+import { TimelineChartGrid } from './TimelineChartGrid';
+import { TimelineChartLayer } from './TimelineChartLayer';
+import { TimelineChartRowGroup } from './TimelineChartRow';
+import { TimelineChartConnections } from './TimelineConnections';
 
 interface TimelineChartBodyProps {
   dataset: ITimelineChartRow[];
@@ -100,7 +100,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   return (
     <div className="timeline-chart-body" ref={bodyRef} style={style}>
       <TimelineChartLayer name="timeline-chart-grid-layer" ignoreClick>
-        <TimeLineChartGrid
+        <TimelineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
           totalDuration={totalDuration}

@@ -15,6 +15,9 @@ import {
   DURATION_LABEL_HEIGHT,
   ILLEGAL_CONNECTION_MESSAGE,
   INVALID_DISCRETE_LABELS_MESSAGE,
+  MOUSE_CURSOR_AUTO,
+  MOUSE_CURSOR_GRAB,
+  MOUSE_CURSOR_GRABBING,
   TASK_LABEL_WIDTH
 } from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
@@ -224,9 +227,9 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   };
 
   const getCursor = (): string => {
-    if (isGrabbed) return 'grabbing';
-    if (chartBodyScale > 1) return 'grab';
-    return 'auto';
+    if (isGrabbed) return MOUSE_CURSOR_GRABBING;
+    if (chartBodyScale > 1) return MOUSE_CURSOR_GRAB;
+    return MOUSE_CURSOR_AUTO;
   };
 
   if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
@@ -240,7 +243,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   const bodyWidth = (dimensions.width - TASK_LABEL_WIDTH) * chartBodyScale;
 
   return (
-    <div id="timeline-chart" ref={ref} style={style}>
+    <div className="timeline-chart" ref={ref} style={style}>
       <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
         <TimelineChartHeaderLabels
           width={TASK_LABEL_WIDTH}
@@ -255,6 +258,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         />
       </div>
       <div
+        className="timeline-chartbody-container"
         ref={bodyConRef}
         style={{
           width: dimensions.width - TASK_LABEL_WIDTH,
@@ -267,7 +271,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         onMouseUp={() => {
           if (chartBodyScale > 1) setIsGrabbed(false);
         }}
-        onMouseMove={(e) => onMouseMove(e)}
+        onMouseMove={_.throttle(onMouseMove, 200, { trailing: false })}
       >
         <div
           style={{
