@@ -1,7 +1,7 @@
 // TimelineChart
 export const DEFAULT_WIDTH = 'auto';
-export const TASK_LABEL_WIDTH = 150;
-export const DURATION_LABEL_HEIGHT = 50;
+export const ROW_TITLE_WIDTH = 150;
+export const COLUMN_HEADER_HEIGHT = 50;
 export const DEFAULT_ROW_HEIGHT = 25;
 export const DEFAULT_CHART_VERTICAL_COLS = 5;
 export const INVALID_DISCRETE_LABELS_MESSAGE =

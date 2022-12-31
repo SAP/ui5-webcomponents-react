@@ -3,22 +3,18 @@ import _ from 'lodash';
 import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import { TimelineChartPlaceholder } from './Placeholder';
-import {
-  TimelineChartDurationHeader,
-  TimelineChartHeaderLabels,
-  TimelineChartTaskHeader
-} from './TimelineChartHeaders';
+import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
 import {
   DEFAULT_ROW_HEIGHT,
   DEFAULT_WIDTH,
-  DURATION_LABEL_HEIGHT,
+  COLUMN_HEADER_HEIGHT,
   ILLEGAL_CONNECTION_MESSAGE,
   INVALID_DISCRETE_LABELS_MESSAGE,
   MOUSE_CURSOR_AUTO,
   MOUSE_CURSOR_GRAB,
   MOUSE_CURSOR_GRABBING,
-  TASK_LABEL_WIDTH
+  ROW_TITLE_WIDTH
 } from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
 
@@ -88,13 +84,13 @@ interface TimelineChartProps {
    * The label for the activity axis.
    * @default Activity
    */
-  activitiesTitle?: string;
+  rowTitle?: string;
 
   /**
    * The label for the title of the duration axis.
    * @default Duration
    */
-  durationTitle?: string;
+  columnTitle?: string;
 
   /**
    * The label for the columns if the chart is separated into discrete columns
@@ -106,7 +102,7 @@ interface TimelineChartProps {
   discreteLabels?: string[];
 
   /**
-   * The starting value of the timeline.
+   * The starting value of the timeline duration.
    * @default 0
    */
   start?: number;
@@ -141,8 +137,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   showConnection,
   showTooltip,
   unit,
-  activitiesTitle,
-  durationTitle,
+  rowTitle,
+  columnTitle,
   discreteLabels,
   start,
   valueFormat
@@ -157,13 +153,13 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   showConnection = showConnection ?? false;
   showTooltip = showTooltip ?? true;
   unit = unit ?? '';
-  activitiesTitle = activitiesTitle ?? 'Activities';
-  durationTitle = durationTitle ?? 'Duration';
+  rowTitle = rowTitle ?? 'Activities';
+  columnTitle = columnTitle ?? 'Duration';
   start = start ?? 0;
   totalDuration = totalDuration ?? 10;
 
   const numOfRows = dataset.length;
-  const height = rowHeight * numOfRows + DURATION_LABEL_HEIGHT;
+  const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
   const style: CSSProperties = {
     height: `${height}px`,
@@ -171,7 +167,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     backgroundColor: ThemingParameters.sapBaseColor,
     display: 'grid',
-    gridTemplateColumns: `${TASK_LABEL_WIDTH}px auto`,
+    gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`,
     gap: 0
   };
 
@@ -193,8 +189,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
-          chartWidth: entry.contentRect.width - TASK_LABEL_WIDTH,
-          chartHeight: entry.contentRect.height - DURATION_LABEL_HEIGHT
+          chartWidth: entry.contentRect.width - ROW_TITLE_WIDTH,
+          chartHeight: entry.contentRect.height - COLUMN_HEADER_HEIGHT
         });
         setChartBodyScale(1);
       });
@@ -240,19 +236,15 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     validateConnections(dataset);
   }
 
-  const bodyWidth = (dimensions.width - TASK_LABEL_WIDTH) * chartBodyScale;
+  const bodyWidth = (dimensions.width - ROW_TITLE_WIDTH) * chartBodyScale;
 
   return (
     <div className="timeline-chart" ref={ref} style={style}>
-      <div style={{ width: TASK_LABEL_WIDTH, height: height }}>
-        <TimelineChartHeaderLabels
-          width={TASK_LABEL_WIDTH}
-          height={DURATION_LABEL_HEIGHT}
-          activitiesTitle={activitiesTitle}
-        />
-        <TimelineChartTaskHeader
-          width={TASK_LABEL_WIDTH}
-          height={height - DURATION_LABEL_HEIGHT}
+      <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
+        <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
+        <TimelineChartRowLabels
+          width={ROW_TITLE_WIDTH}
+          height={height - COLUMN_HEADER_HEIGHT}
           rowHeight={rowHeight}
           dataset={dataset}
         />
@@ -261,7 +253,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         className="timeline-chartbody-container"
         ref={bodyConRef}
         style={{
-          width: dimensions.width - TASK_LABEL_WIDTH,
+          width: dimensions.width - ROW_TITLE_WIDTH,
           height: height,
           overflowX: 'hidden',
           overflowY: 'hidden',
@@ -276,25 +268,24 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         <div
           style={{
             position: 'absolute',
-            width: dimensions.width - TASK_LABEL_WIDTH,
-            height: DURATION_LABEL_HEIGHT / 2,
+            width: dimensions.width - ROW_TITLE_WIDTH,
+            height: COLUMN_HEADER_HEIGHT / 2,
             borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
             marginBottom: '-0.5px',
             textAlign: 'center',
             fontSize: '13px',
-            lineHeight: `${DURATION_LABEL_HEIGHT / 2}px`,
+            lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`,
             color: ThemingParameters.sapTitleColor
           }}
         >
-          {durationTitle} {unit != '' ? `(${unit})` : ''}
+          {columnTitle} {unit != '' ? `(${unit})` : ''}
         </div>
-        <TimelineChartDurationHeader
+        <TimelineChartColumnLabel
           width={bodyWidth}
-          height={DURATION_LABEL_HEIGHT}
+          height={COLUMN_HEADER_HEIGHT}
           isDiscrete={isDiscrete}
           totalDuration={totalDuration}
           unit={unit}
-          durationHeaderLabel={durationTitle}
           columnLabels={discreteLabels}
           start={start}
           scale={chartBodyScale}
@@ -303,7 +294,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         <TimelineChartBody
           dataset={dataset}
           width={bodyWidth}
-          height={height - DURATION_LABEL_HEIGHT}
+          height={height - COLUMN_HEADER_HEIGHT}
           rowHeight={rowHeight}
           numOfItems={numOfRows}
           totalDuration={totalDuration}

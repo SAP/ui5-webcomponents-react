@@ -3,14 +3,14 @@ import React, { CSSProperties, useEffect, useRef } from 'react';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
 import { DEFAULT_CHART_VERTICAL_COLS } from './util/constants';
 
-interface TimelineChartTaskHeaderProps {
+interface TimelineChartRowLabelsProps {
   width: number;
   height: number;
   rowHeight: number;
   dataset: ITimelineChartRow[];
 }
 
-const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width, height, rowHeight, dataset }) => {
+const TimelineChartRowLabels: React.FC<TimelineChartRowLabelsProps> = ({ width, height, rowHeight, dataset }) => {
   const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
@@ -48,20 +48,19 @@ const TimelineChartTaskHeader: React.FC<TimelineChartTaskHeaderProps> = ({ width
   );
 };
 
-interface TimelineChartDurationHeaderProps {
+interface TimelineChartColumnLabelProps {
   width: number;
   height: number;
   isDiscrete: boolean;
   totalDuration: number;
   unit: string;
-  durationHeaderLabel: string;
   columnLabels?: string[];
   start: number;
   scale: number;
   valueFormat?: (value: number) => string;
 }
 
-const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = ({
+const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
   width,
   height,
   isDiscrete,
@@ -181,13 +180,13 @@ const TimelineChartDurationHeader: React.FC<TimelineChartDurationHeaderProps> = 
   );
 };
 
-interface TimelineChartHeaderLabelsProps {
+interface TimelineChartRowTitleProps {
   width: number;
   height: number;
-  activitiesTitle: string;
+  rowTitle: string;
 }
 
-const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ width, height, activitiesTitle }) => {
+const TimelineChartRowTitle: React.FC<TimelineChartRowTitleProps> = ({ width, height, rowTitle }) => {
   const style: CSSProperties = {
     width: width,
     height: height,
@@ -197,9 +196,9 @@ const TimelineChartHeaderLabels: React.FC<TimelineChartHeaderLabelsProps> = ({ w
   return (
     <div style={style}>
       <div style={{ height: '50%' }}></div>
-      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>{activitiesTitle}</div>
+      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>{rowTitle}</div>
     </div>
   );
 };
 
-export { TimelineChartDurationHeader, TimelineChartHeaderLabels, TimelineChartTaskHeader };
+export { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels };
