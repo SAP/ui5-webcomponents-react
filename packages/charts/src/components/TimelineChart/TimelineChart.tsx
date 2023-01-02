@@ -157,6 +157,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
   columnTitle = columnTitle ?? 'Duration';
   start = start ?? 0;
   totalDuration = totalDuration ?? 10;
+  const defaultValueFormat = (x: number) => x.toFixed(1);
+  valueFormat = valueFormat ?? defaultValueFormat;
 
   const numOfRows = dataset.length;
   const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
@@ -236,7 +238,8 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
     validateConnections(dataset);
   }
 
-  const bodyWidth = (dimensions.width - ROW_TITLE_WIDTH) * chartBodyScale;
+  const unscaledBodyWidth = dimensions.width - ROW_TITLE_WIDTH;
+  const bodyWidth = unscaledBodyWidth * chartBodyScale;
 
   return (
     <div className="timeline-chart" ref={ref} style={style}>
@@ -253,7 +256,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         className="timeline-chartbody-container"
         ref={bodyConRef}
         style={{
-          width: dimensions.width - ROW_TITLE_WIDTH,
+          width: unscaledBodyWidth,
           height: height,
           overflowX: 'hidden',
           overflowY: 'hidden',
@@ -268,7 +271,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
         <div
           style={{
             position: 'absolute',
-            width: dimensions.width - ROW_TITLE_WIDTH,
+            width: unscaledBodyWidth,
             height: COLUMN_HEADER_HEIGHT / 2,
             borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
             marginBottom: '-0.5px',
@@ -288,7 +291,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           unit={unit}
           columnLabels={discreteLabels}
           start={start}
-          scale={chartBodyScale}
+          unscaledWidth={unscaledBodyWidth}
           valueFormat={valueFormat}
         />
         <TimelineChartBody
@@ -308,6 +311,7 @@ const TimelineChart: React.FC<TimelineChartProps> = ({
           start={start}
           valueFormat={valueFormat}
           resetScroll={resetScroll}
+          unscaledWidth={unscaledBodyWidth}
         />
       </div>
     </div>

@@ -22,6 +22,7 @@ interface TimelineChartBodyProps {
   showTooltip?: boolean;
   unit: string;
   start: number;
+  unscaledWidth?: number;
   onScale: (x: number) => void;
   valueFormat?: (value: number) => string;
   resetScroll: () => void;
@@ -40,6 +41,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   showTooltip,
   unit,
   start,
+  unscaledWidth,
   onScale,
   valueFormat,
   resetScroll
@@ -105,7 +107,8 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
           numOfRows={numOfItems}
           totalDuration={totalDuration}
           rowHeight={rowHeight}
-          scale={Math.pow(SCALE_FACTOR, scaleExpRef.current)}
+          width={width}
+          unscaledWidth={unscaledWidth}
         />
       </TimelineChartLayer>
 

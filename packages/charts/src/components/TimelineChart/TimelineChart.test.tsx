@@ -2,12 +2,14 @@ import assert from 'assert';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
+import { TimelineChartGrid } from './chartbody/TimelineChartGrid';
 import { TimelineChartLayer } from './chartbody/TimelineChartLayer';
 import { TimelineChartRowGroup } from './chartbody/TimelineChartRow';
 import { TimingFigure } from './examples/Annotations';
 import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset';
 import { TimelineChart } from './TimelineChart';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation';
+import { TimelineChartColumnLabel } from './TimelineChartHeaders';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
 import {
   DEFAULT_CHART_VERTICAL_COLS,
@@ -40,7 +42,7 @@ describe('TimelineChart', () => {
     const { asFragment } = render(
       <TimelineChart dataset={dummyDataSet} totalDuration={150} valueFormat={valueFormat} />
     );
-    expect(valueFormat).toBeCalledTimes(DEFAULT_CHART_VERTICAL_COLS + 1);
+    expect(valueFormat).toHaveBeenCalled();
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -279,7 +281,6 @@ describe('TimelineChartBody', () => {
 describe('TimelineChartLayer', () => {
   it('renders normally', () => {
     const { container } = render(<TimelineChartLayer name="test" />);
-    // expect(container.firstElementChild?.className).toBe('test');
     expect(container.firstElementChild?.tagName.toLowerCase()).toBe('svg');
   });
 
@@ -293,5 +294,81 @@ describe('TimelineChartLayer', () => {
     const content: HTMLDivElement | null = container.querySelector('.test');
     assert(content);
     expect(content.style.pointerEvents).toBe('none');
+  });
+});
+
+describe('TimelineChartHeaders', () => {
+  it('renders NonDiscrete ColumnLabel ticks well', () => {
+    const valueFormat = jest.fn((x: number) => x.toString());
+    const { container } = render(
+      <TimelineChartColumnLabel
+        width={500}
+        height={50}
+        totalDuration={500}
+        unscaledWidth={500}
+        isDiscrete={false}
+        start={0}
+        unit={'s'}
+        valueFormat={valueFormat}
+      />
+    );
+    const numOfTicks = DEFAULT_CHART_VERTICAL_COLS + 1;
+    expect(valueFormat).toBeCalledTimes(numOfTicks);
+    expect(container.firstElementChild?.lastElementChild?.tagName.toLocaleLowerCase()).toBe('svg');
+    expect(container.querySelectorAll('line').length).toBe(numOfTicks);
+    expect(container.querySelectorAll('text').length).toBe(numOfTicks);
+  });
+
+  it('renders Discrete ColumnLabel ticks well', () => {
+    const totalDuration = 5;
+    const start = 2;
+    const { container } = render(
+      <TimelineChartColumnLabel
+        width={500}
+        height={50}
+        totalDuration={totalDuration}
+        unscaledWidth={500}
+        isDiscrete
+        start={start}
+        unit={'s'}
+      />
+    );
+    expect(container.firstElementChild?.lastElementChild?.tagName.toLocaleLowerCase()).toBe('div');
+    const labels = container.querySelectorAll('.timeline-chart-column-label');
+    expect(labels.length).toBe(totalDuration);
+    expect(labels[0].textContent).toBe(start.toString());
+  });
+});
+
+describe('TimelineChartGrid', () => {
+  it('renders NonDiscrete Vertical Grid lines well', () => {
+    const { asFragment, container } = render(
+      <TimelineChartGrid
+        isDiscrete={false}
+        totalDuration={500}
+        width={500}
+        unscaledWidth={500}
+        numOfRows={2}
+        rowHeight={20}
+      />
+    );
+    expect(container.querySelectorAll('.timeline-chart-gridv').length).toBe(DEFAULT_CHART_VERTICAL_COLS - 1);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders Discrete Vertical Grid lines well', () => {
+    const totalDuration = 10;
+    const { asFragment, container } = render(
+      <TimelineChartGrid
+        isDiscrete
+        totalDuration={totalDuration}
+        width={500}
+        unscaledWidth={500}
+        numOfRows={2}
+        rowHeight={20}
+      />
+    );
+    expect(container.querySelectorAll('.timeline-chart-gridv').length).toBe(totalDuration - 1);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

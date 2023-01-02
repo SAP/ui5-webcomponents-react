@@ -13,6 +13,7 @@ export const ILLEGAL_CONNECTION_MESSAGE =
 export const MOUSE_CURSOR_AUTO = 'auto';
 export const MOUSE_CURSOR_GRAB = 'grab';
 export const MOUSE_CURSOR_GRABBING = 'grabbing';
+export const TOLERANCE = 0.01;
 
 // TimelineChartBody
 export const SCALE_FACTOR = 1.1;

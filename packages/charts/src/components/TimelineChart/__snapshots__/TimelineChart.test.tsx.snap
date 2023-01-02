@@ -75,11 +75,51 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -107,30 +147,6 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -343,11 +359,51 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -375,30 +431,6 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -611,11 +643,51 @@ exports[`TimelineChart does not render annotation layer when there are no annota
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -643,30 +715,6 @@ exports[`TimelineChart does not render annotation layer when there are no annota
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -879,11 +927,51 @@ exports[`TimelineChart does not render connection layer when showConnection is f
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -911,30 +999,6 @@ exports[`TimelineChart does not render connection layer when showConnection is f
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -1284,11 +1348,51 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -1316,30 +1420,6 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -1552,11 +1632,51 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              15.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -1584,30 +1704,6 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
               x2="100%"
               y1="70"
               y2="70"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -1857,11 +1953,51 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
         <div
           style="height: 25px; text-align: center; font-size: 13px; line-height: 25px;"
         />
-        <canvas
-          height="0"
-          style="height: 25px; width: 100%;"
-          width="0"
-        />
+        <svg
+          font-family="Helvetica"
+          font-size="9"
+          height="25"
+          width="100%"
+        >
+          <g
+            stroke="var(--sapList_BorderColor)"
+            stroke-width="4"
+          >
+            <line
+              x1="0"
+              x2="0"
+              y1="100%"
+              y2="20"
+            />
+            <line
+              x1="100%"
+              x2="100%"
+              y1="100%"
+              y2="20"
+            />
+          </g>
+          <g
+            fill="var(--sapTextColor)"
+          >
+            <text
+              dx="2"
+              dy="-2"
+              x="0"
+              y="20"
+            >
+              0.0
+            </text>
+            <text
+              dx="-2"
+              dy="-2"
+              text-anchor="end"
+              x="100%"
+              y="20"
+            >
+              150.0
+            </text>
+          </g>
+        </svg>
       </div>
       <div
         class="timeline-chart-body"
@@ -1889,30 +2025,6 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
               x2="100%"
               y1="50"
               y2="50"
-            />
-            <line
-              x1="20%"
-              x2="20%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="40%"
-              x2="40%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="60%"
-              x2="60%"
-              y1="0"
-              y2="100%"
-            />
-            <line
-              x1="80%"
-              x2="80%"
-              y1="0"
-              y2="100%"
             />
           </g>
         </svg>
@@ -2069,5 +2181,128 @@ exports[`TimelineChartAnotation postions itself correctly in the parent 1`] = `
   >
     <div />
   </div>
+</DocumentFragment>
+`;
+
+exports[`TimelineChartGrid renders Discrete Vertical Grid lines well 1`] = `
+<DocumentFragment>
+  <g
+    style="stroke: var(--sapList_BorderColor);"
+  >
+    <line
+      stroke-width="1px"
+      x1="0"
+      x2="100%"
+      y1="20"
+      y2="20"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="10%"
+      x2="10%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="20%"
+      x2="20%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="30%"
+      x2="30%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="40%"
+      x2="40%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="50%"
+      x2="50%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="60%"
+      x2="60%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="70%"
+      x2="70%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="80%"
+      x2="80%"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="90%"
+      x2="90%"
+      y1="0"
+      y2="100%"
+    />
+  </g>
+</DocumentFragment>
+`;
+
+exports[`TimelineChartGrid renders NonDiscrete Vertical Grid lines well 1`] = `
+<DocumentFragment>
+  <g
+    style="stroke: var(--sapList_BorderColor);"
+  >
+    <line
+      stroke-width="1px"
+      x1="0"
+      x2="100%"
+      y1="20"
+      y2="20"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="100"
+      x2="100"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="200"
+      x2="200"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="300"
+      x2="300"
+      y1="0"
+      y2="100%"
+    />
+    <line
+      class="timeline-chart-gridv"
+      x1="400"
+      x2="400"
+      y1="0"
+      y2="100%"
+    />
+  </g>
 </DocumentFragment>
 `;

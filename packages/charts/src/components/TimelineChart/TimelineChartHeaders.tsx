@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, useEffect, useRef } from 'react';
+import React, { CSSProperties } from 'react';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
-import { DEFAULT_CHART_VERTICAL_COLS } from './util/constants';
+import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from './util/constants';
 
 interface TimelineChartRowLabelsProps {
   width: number;
@@ -56,7 +56,7 @@ interface TimelineChartColumnLabelProps {
   unit: string;
   columnLabels?: string[];
   start: number;
-  scale: number;
+  unscaledWidth: number;
   valueFormat?: (value: number) => string;
 }
 
@@ -67,11 +67,9 @@ const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
   totalDuration,
   columnLabels,
   start,
-  scale,
+  unscaledWidth,
   valueFormat
 }) => {
-  const tickRef = useRef<HTMLCanvasElement>();
-
   const style: CSSProperties = {
     width: width,
     height: height,
@@ -85,54 +83,9 @@ const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
     labelArray = columnLabels ? columnLabels : Array.from(Array(totalDuration).keys()).map((num) => `${num + start}`);
   }
 
-  useEffect(() => {
-    if (tickRef.current != null) {
-      const canvas = tickRef.current;
-      canvas.width = canvas.getBoundingClientRect().width;
-      canvas.height = canvas.getBoundingClientRect().height;
-
-      const ctx = canvas.getContext('2d');
-
-      const width = canvas.width;
-      const height = canvas.height;
-      const tickLength = 5;
-      const spacing = 2;
-
-      ctx.lineWidth = 4;
-      const textColor = getComputedStyle(document.documentElement).getPropertyValue('--sapTextColor');
-      const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--sapList_BorderColor');
-      ctx.strokeStyle = lineColor;
-      ctx.fillStyle = textColor;
-      ctx.moveTo(0, height);
-      ctx.lineTo(0, height - tickLength);
-      ctx.font = '9px Helvetica';
-      ctx.textBaseline = 'bottom';
-      const startText = valueFormat != null ? valueFormat(start) : start.toString();
-      ctx.fillText(startText, spacing, height - tickLength - spacing);
-
-      ctx.moveTo(width, height);
-      ctx.lineTo(width, height - tickLength);
-      const endText = valueFormat != null ? valueFormat(totalDuration + start) : (totalDuration + start).toString();
-      const endMsr = ctx.measureText(endText);
-      ctx.fillText(endText, width - endMsr.width - spacing, height - tickLength - spacing);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = 2;
-      const segments = Math.floor(DEFAULT_CHART_VERTICAL_COLS * scale);
-      for (let i = 1; i < segments; i++) {
-        const xPos = (width / segments) * i;
-        ctx.moveTo(xPos, height);
-        ctx.lineTo(xPos, height - tickLength);
-        const val = (totalDuration / segments) * i + start;
-        const text = valueFormat != null ? valueFormat(val) : val.toString();
-        const msr = ctx.measureText(text);
-        ctx.fillText(text, xPos - msr.width / 2, height - tickLength - spacing);
-      }
-
-      ctx.stroke();
-    }
-  }, [width]);
+  const tickLength = 5;
+  const spacing = 2;
+  const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
 
   return (
     <div style={style}>
@@ -159,6 +112,7 @@ const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
           {labelArray.map((label, index) => {
             return (
               <span
+                className="timeline-chart-column-label"
                 key={index}
                 style={{ outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}` }}
                 title={`${label}`}
@@ -169,14 +123,85 @@ const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
           })}
         </div>
       ) : (
-        <canvas
-          ref={tickRef}
-          style={{ height: `${halfHeaderHeight}px`, width: '100%' }}
-          width={width}
-          height={halfHeaderHeight}
-        ></canvas>
+        <svg height={halfHeaderHeight} width="100%" fontFamily="Helvetica" fontSize="9">
+          <>
+            <g stroke={ThemingParameters.sapList_BorderColor} strokeWidth="4">
+              <line x1={0} x2={0} y1="100%" y2={halfHeaderHeight - tickLength} />
+              <line x1="100%" x2="100%" y1="100%" y2={halfHeaderHeight - tickLength} />
+            </g>
+            <g fill={ThemingParameters.sapTextColor}>
+              <text x={0} dx={spacing} y={halfHeaderHeight - tickLength} dy={-spacing}>
+                {valueFormat != null ? valueFormat(start) : start}
+              </text>
+              <text x="100%" dx={-spacing} y={halfHeaderHeight - tickLength} dy={-spacing} textAnchor="end">
+                {valueFormat != null ? valueFormat(start + totalDuration) : start + totalDuration}
+              </text>
+            </g>
+            {generateIntermediateTicks(
+              start,
+              totalDuration,
+              width,
+              halfHeaderHeight,
+              tickLength,
+              verticalSegmentWidth,
+              spacing,
+              valueFormat
+            )}
+          </>
+        </svg>
       )}
     </div>
+  );
+};
+
+const generateIntermediateTicks = (
+  start: number,
+  totalDuration: number,
+  width: number,
+  halfHeaderHeight: number,
+  tickLength: number,
+  verticalSegmentWidth: number,
+  spacing: number,
+  valueFormat?: (value: number) => string
+): JSX.Element => {
+  let covered = verticalSegmentWidth;
+  let remaining = width;
+  const lineArray: JSX.Element[] = [];
+  const textArray: JSX.Element[] = [];
+  if (verticalSegmentWidth <= 0) return null;
+  while (remaining >= 2 * verticalSegmentWidth - TOLERANCE) {
+    lineArray.push(
+      <line
+        x1={covered}
+        x2={covered}
+        y1="100%"
+        y2={halfHeaderHeight - tickLength}
+        stroke={ThemingParameters.sapList_BorderColor}
+        strokeWidth="2"
+        key={`${covered}tickline`}
+      />
+    );
+    const val = (covered / width) * totalDuration;
+    textArray.push(
+      <text
+        x={covered}
+        y={halfHeaderHeight - tickLength}
+        dy={-spacing}
+        fill={ThemingParameters.sapTextColor}
+        textAnchor="middle"
+        key={`${covered}tickval`}
+      >
+        {valueFormat != null ? valueFormat(start + val) : start + val}
+      </text>
+    );
+    covered += verticalSegmentWidth;
+    remaining -= verticalSegmentWidth;
+  }
+  return (
+    <>
+      {lineArray}
+      {textArray}
+    </>
   );
 };
 
