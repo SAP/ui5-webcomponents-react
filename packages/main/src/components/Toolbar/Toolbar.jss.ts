@@ -32,11 +32,13 @@ export const styles = {
   },
   info: {
     height: '2rem', // always 2 rem both in Compact and Cozy
-    backgroundColor: ThemingParameters.sapList_HeaderBorderColor,
+    backgroundColor: ThemingParameters.sapInfobar_NonInteractive_Background,
+    color: ThemingParameters.sapList_TextColor,
     '&$active': {
-      backgroundColor: ThemingParameters.sapInfobar_Active_Background,
+      backgroundColor: ThemingParameters.sapInfobar_Background,
+      color: ThemingParameters.sapInfobar_TextColor,
       '&:active': {
-        backgroundColor: `${ThemingParameters.sapInfobar_Active_Background}`
+        backgroundColor: ThemingParameters.sapInfobar_Active_Background
       },
       '&:hover': {
         backgroundColor: ThemingParameters.sapInfobar_Hover_Background
