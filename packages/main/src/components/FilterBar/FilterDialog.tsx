@@ -286,7 +286,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     e.preventDefault();
 
     // todo: could be unwanted behavior: https://github.com/SAP/ui5-webcomponents-react/issues/3928
-    if (!e.target.getAttribute('ui5-table')) {
+    if (!e.target.hasAttribute('ui5-table')) {
       return;
     }
     const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
