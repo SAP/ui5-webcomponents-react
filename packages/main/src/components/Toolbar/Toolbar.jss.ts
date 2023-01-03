@@ -23,11 +23,19 @@ export const styles = {
   },
   active: {
     cursor: 'pointer',
-    '&:active': {
-      backgroundColor: ThemingParameters.sapActiveColor
-    },
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
+    },
+    '&:focus': {
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
+      outlineOffset: '-0.1875rem',
+      '&.shadowOutline': {
+        boxShadow: `inset 0 0 0 0.125rem ${ThemingParameters.sapContent_FocusColor}`,
+        outline: 'none'
+      }
+    },
+    '&:active': {
+      backgroundColor: ThemingParameters.sapActiveColor
     }
   },
   info: {
@@ -35,13 +43,14 @@ export const styles = {
     backgroundColor: ThemingParameters.sapInfobar_NonInteractive_Background,
     color: ThemingParameters.sapList_TextColor,
     '&$active': {
+      outlineColor: ThemingParameters.sapContent_ContrastFocusColor,
       backgroundColor: ThemingParameters.sapInfobar_Background,
       color: ThemingParameters.sapInfobar_TextColor,
-      '&:active': {
-        backgroundColor: ThemingParameters.sapInfobar_Active_Background
-      },
       '&:hover': {
         backgroundColor: ThemingParameters.sapInfobar_Hover_Background
+      },
+      '&:active': {
+        backgroundColor: ThemingParameters.sapInfobar_Active_Background
       }
     }
   },
