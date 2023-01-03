@@ -115,7 +115,11 @@ import { useState } from 'react';
             </Select>
           </FilterGroupItem>
           <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1">
-            <MultiComboBox>
+            <MultiComboBox
+              onSelectionChange={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <MultiComboBoxItem text="MultiComboBoxItem 1" />
               <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
               <MultiComboBoxItem text="MultiComboBoxItem 3" />
