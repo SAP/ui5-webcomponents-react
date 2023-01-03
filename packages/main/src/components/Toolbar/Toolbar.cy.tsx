@@ -189,10 +189,10 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').click();
     cy.get('@onClickSpy').should('have.been.calledOnce');
 
-    cy.findByTestId('tb').type('{enter}');
+    cy.findByTestId('tb').type('{enter}', { force: true });
     cy.get('@onClickSpy').should('have.been.calledTwice');
 
-    cy.findByTestId('tb').type(' ');
+    cy.findByTestId('tb').type(' ', { force: true });
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
     cy.mount(
@@ -204,10 +204,10 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').click();
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
-    cy.findByTestId('tb').type('{enter}');
+    cy.findByTestId('tb').type('{enter}', { force: true });
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
-    cy.findByTestId('tb').type(' ');
+    cy.findByTestId('tb').type(' ', { force: true });
     cy.get('@onClickSpy').should('have.been.calledThrice');
   });
 
