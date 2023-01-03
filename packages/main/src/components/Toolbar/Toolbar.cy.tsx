@@ -204,10 +204,10 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').click();
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
-    cy.findByTestId('tb').type('{enter}', { force: true });
+    cy.findByTestId('tb').trigger('keydown', { code: 'Enter' });
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
-    cy.findByTestId('tb').type(' ', { force: true });
+    cy.findByTestId('tb').trigger('keydown', { code: 'Space' });
     cy.get('@onClickSpy').should('have.been.calledThrice');
   });
 
