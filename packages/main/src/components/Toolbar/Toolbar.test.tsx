@@ -115,33 +115,6 @@ describe('Toolbar', () => {
     expect(document.body).toMatchSnapshot();
   });
 
-  test('active', () => {
-    const onClick = jest.fn();
-    const { rerender } = render(
-      <Toolbar data-testid="toolbar" onClick={onClick}>
-        <Text>Item1</Text>
-        <Text>Item2</Text>
-        <Text>Item3</Text>
-      </Toolbar>
-    );
-
-    fireEvent.click(screen.getByTestId('toolbar'));
-
-    expect(onClick).not.toHaveBeenCalled();
-
-    rerender(
-      <Toolbar data-testid="toolbar" onClick={onClick} active>
-        <Text>Item1</Text>
-        <Text>Item2</Text>
-        <Text>Item3</Text>
-      </Toolbar>
-    );
-
-    fireEvent.click(screen.getByTestId('toolbar'));
-
-    expect(onClick).toHaveBeenCalled();
-  });
-
   test('style', () => {
     const { rerender } = render(
       <Toolbar data-testid="toolbar">

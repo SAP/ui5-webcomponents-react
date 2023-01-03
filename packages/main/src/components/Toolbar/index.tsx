@@ -309,7 +309,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       slot={slot}
       onClick={handleToolbarClick}
       onKeyDown={handleToolbarClick}
-      tabIndex={active ? 0 : -1}
+      tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
       {...rest}
     >
