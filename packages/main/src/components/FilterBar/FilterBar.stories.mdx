@@ -127,7 +127,11 @@ import { useState } from 'react';
             </MultiComboBox>
           </FilterGroupItem>
           <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2">
-            <ComboBox>
+            <ComboBox
+              onSelectionChange={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <ComboBoxItem text="ComboBoxItem 1" />
               <ComboBoxItem text="ComboBoxItem 2" />
               <ComboBoxItem text="ComboBoxItem 3" />
@@ -550,7 +554,11 @@ the page is then responsible for the different views.
                   </Select>
                 </FilterGroupItem>
                 <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
-                  <MultiComboBox>
+                  <MultiComboBox
+                    onSelectionChange={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
                     <MultiComboBoxItem text="MultiComboBoxItem 1" />
                     <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
                     <MultiComboBoxItem text="MultiComboBoxItem 3" />
@@ -558,7 +566,11 @@ the page is then responsible for the different views.
                   </MultiComboBox>
                 </FilterGroupItem>
                 <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" visibleInFilterBar={false}>
-                  <ComboBox>
+                  <ComboBox
+                    onSelectionChange={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
                     <ComboBoxItem text="ComboBoxItem 1" />
                     <ComboBoxItem text="ComboBoxItem 2" />
                     <ComboBoxItem text="ComboBoxItem 3" />
