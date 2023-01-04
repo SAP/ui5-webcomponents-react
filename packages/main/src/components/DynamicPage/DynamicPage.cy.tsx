@@ -196,4 +196,27 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
     cy.findByText('DynamicPageHeader').should('be.visible');
   });
+
+  it('Collapse header w/o flickering', () => {
+    document.body.style.margin = '0px';
+    cy.mount(
+      <DynamicPage
+        data-testid="dp"
+        style={{ height: '100vh' }}
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+      >
+        <div style={{ height: 'calc(100vh - 2rem)' }}></div>
+      </DynamicPage>
+    );
+    // ResizeObserver
+    cy.wait(50);
+    cy.get('[icon="pushpin-off"]').should('be.visible');
+    cy.findByTestId('dp').scrollTo('bottom');
+    cy.get('[icon="pushpin-off"]').should('not.exist');
+    // timeout
+    cy.wait(500);
+    cy.findByTestId('dp').scrollTo('top');
+    cy.get('[icon="pushpin-off"]').should('be.visible');
+  });
 });
