@@ -577,6 +577,54 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
   });
+
+  it('Column Scaling: programatically change cols', () => {
+    const TestComp = (props) => {
+      const [columns, setColumns] = useState([]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                { accessor: 'name', Header: 'Name' },
+                { accessor: 'age', Header: 'Age' }
+              ]);
+            }}
+          >
+            Both
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'name', Header: 'Name' }]);
+            }}
+          >
+            NameCol
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'age', Header: 'Age' }]);
+            }}
+          >
+            AgeCol
+          </Button>
+          <AnalyticalTable {...props} columns={columns} />
+        </>
+      );
+    };
+    cy.mount(<TestComp data={data} />);
+
+    cy.findByText('Both').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 952);
+    cy.get('#age').invoke('outerWidth').should('equal', 952);
+
+    cy.findByText('NameCol').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 1904);
+    cy.get('#age').should('not.exist');
+
+    cy.findByText('AgeCol').click();
+    cy.get('#age').invoke('outerWidth').should('equal', 1904);
+    cy.get('#name').should('not.exist');
+  });
 });
 
 const columns = [
