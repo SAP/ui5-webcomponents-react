@@ -1,9 +1,12 @@
 export enum CustomVariables {
   ObjectPageSectionTitleFontFamily = '--ui5wcr_ObjectPage_SectionTitleFontFamily',
   ObjectPageSectionTitleTextDecoration = '--ui5wcr_ObjectPage_SectionTitleTextDecoration',
+  ObjectPageSectionTitleLineHeight = '--ui5wcr_ObjectPage_SectionTitleLineHeight',
+  ObjectPageSectionTitleHeight = '--ui5wcr_ObjectPage_SectionTitleHeight',
   ObjectPageSectionBorderTop = '--ui5wcr_ObjectPage_SectionBorderTop',
   ObjectPageSubSectionBackgroundColor = '--ui5wcr_ObjectPage_SubSectionBackgroundColor',
   ObjectPageSubSectionBorderRadius = '--ui5wcr_ObjectPage_SubSectionBorderRadius',
+  ObjectPageSubSectionPaddingBlockStart = '--ui5wcr_ObjectPage_PaddingBlockStart',
   ActionSheetTopBorderRadius = '--ui5wcr_ActionSheet_TopBorderRadius',
   ActionSheetBoxShadow = '--ui5wcr_ActionSheet_BoxShadow',
   ActionSheetHeaderBoxShadow = '--ui5wcr_ActionSheet_HeaderBoxShadow',

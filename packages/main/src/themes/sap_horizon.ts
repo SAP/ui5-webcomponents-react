@@ -3,9 +3,12 @@ import { CustomVariables } from './CustomVariables';
 
 export const sapHorizonParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.ObjectPageSectionTitleFontFamily]: ThemingParameters.sapFontBoldFamily,
+  [CustomVariables.ObjectPageSectionTitleLineHeight]: '4rem',
+  [CustomVariables.ObjectPageSectionTitleHeight]: '2.75rem',
   [CustomVariables.ObjectPageSectionBorderTop]: 'none',
   [CustomVariables.ObjectPageSubSectionBackgroundColor]: ThemingParameters.sapGroup_ContentBackground,
   [CustomVariables.ObjectPageSubSectionBorderRadius]: ThemingParameters.sapElement_BorderCornerRadius,
+  [CustomVariables.ObjectPageSubSectionPaddingBlockStart]: `0.5rem`,
   [CustomVariables.ActionSheetHeaderBoxShadow]: ThemingParameters.sapContent_HeaderShadow,
   [CustomVariables.ActionSheetMobileHeaderBackground]: ThemingParameters.sapPageHeader_Background,
   [CustomVariables.ActionSheetMobileHeaderBorderRadius]: ThemingParameters.sapPopover_BorderCornerRadius,

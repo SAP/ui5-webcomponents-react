@@ -142,11 +142,18 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
               </FormItem>
             </Form>
           </ObjectPageSection>
-          <ObjectPageSection titleText="Personal" id="personal" aria-label="Personal">
+          <ObjectPageSection
+            titleText="Personal"
+            id="personal"
+            aria-label="Personal"
+            hideTitleText
+            header={<div>Hello There</div>}
+          >
             <ObjectPageSubSection
               titleText="Connect"
               id="personal-connect"
               aria-label="Connect"
+              hideTitleText
               actions={
                 <>
                   <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
@@ -193,6 +200,7 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
               titleText="Payment Information"
               id="personal-payment-information"
               aria-label="Payment Information"
+              titleTextUppercase
             >
               <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
                 <FormGroup titleText="Salary">
@@ -208,7 +216,13 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
               </Form>
             </ObjectPageSubSection>
           </ObjectPageSection>
-          <ObjectPageSection titleText="Employment" id="employment" aria-label="Employment">
+          <ObjectPageSection
+            titleText="Employment asd gaskdgah jsgdhjasg jhdgasjhgd hjasgdhj gashdg hjasgdhj agshjdg ashjgd jhasgdjh agshjdgas hjdghja sgdjha sgdhjgashdgasjh gd hjasghjagsjhasg hjgash gahsj gashjghsajg dhjasgd hjasghd gashjdg ashjgdh ajsgdhj asgdhj gashjdg ashjg ashg hasg ajsgjhas gdjhgashj gasjhg sahjg hajsghj asghj asghjas ghjsa"
+            id="employment"
+            aria-label="Employment"
+            titleTextLevel="H6"
+            wrapTitleText
+          >
             <ObjectPageSubSection
               titleText="Job Information"
               id="employment-job-information"
@@ -245,6 +259,7 @@ import SampleImage from '../../../../../.storybook/demoImages/Person.png';
               titleText="Employee Details"
               id="employment-employee-details"
               aria-label="Employee Details"
+              hideTitleText
             >
               <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
                 <FormItem label="Start Date">
