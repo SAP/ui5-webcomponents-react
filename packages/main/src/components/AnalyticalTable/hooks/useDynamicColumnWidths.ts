@@ -32,6 +32,7 @@ const columnsDeps = (
     ...deps,
     hasRows,
     colsEqual,
+    visibleColumns?.length,
     !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
     webComponentsReactProperties.scaleWidthMode,

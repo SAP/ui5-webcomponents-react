@@ -625,13 +625,60 @@ describe('AnalyticalTable', () => {
     cy.get('#age').invoke('outerWidth').should('equal', 1904);
     cy.get('#name').should('not.exist');
   });
+
+  it('tableInstance: change state & hide cols', () => {
+    const TestComp = (props) => {
+      const tableInstanceRef = useRef(null);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              // debugger;
+              tableInstanceRef.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+            }}
+          >
+            set clientWidth
+          </Button>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.toggleHideColumn('age', true);
+            }}
+          >
+            hide age col
+          </Button>
+          <AnalyticalTable
+            {...props}
+            data-testid="at"
+            tableInstance={tableInstanceRef}
+            reactTableOptions={{
+              autoResetHiddenColumns: false
+            }}
+          />
+        </>
+      );
+    };
+
+    cy.mount(<TestComp columns={columns} data={data} />);
+    cy.wait(200);
+
+    cy.findByText('set clientWidth').click();
+    ['#name', '#age', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 300);
+    });
+
+    cy.findByText('hide age col').click();
+    ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 400);
+    });
+    cy.get('#age').should('not.exist');
+  });
 });
 
 const columns = [
   {
     Header: 'Name',
-    headerTooltip: 'Full Name', // A more extensive description!
-    accessor: 'name' // String-based value accessors!
+    headerTooltip: 'Full Name',
+    accessor: 'name'
   },
   {
     Header: 'Age',
