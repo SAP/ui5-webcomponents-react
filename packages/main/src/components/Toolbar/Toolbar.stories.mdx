@@ -49,8 +49,13 @@ import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
   <Story name="Default">
     {(args) => {
       return (
-        <Toolbar active data-testid="tb">
-          Text
+        <Toolbar {...args}>
+          <Text>Toolbar</Text>
+          <Button>Button One</Button>
+          <Button>Button Two</Button>
+          <Input />
+          <DatePicker />
+          <Switch />
         </Toolbar>
       );
     }}

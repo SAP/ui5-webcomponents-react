@@ -1,7 +1,6 @@
 import {
   debounce,
   enrichEventWithDetails,
-  useCurrentTheme,
   useI18nBundle,
   useIsomorphicLayoutEffect,
   useSyncRef
@@ -136,7 +135,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
-  const currentTheme = useCurrentTheme();
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const showMoreText = i18nBundle.getText(SHOW_MORE);
@@ -300,11 +298,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   return (
     <CustomTag
       style={styleWithMinWidth}
-      className={clsx(
-        toolbarClasses,
-        overflowNeeded && classes.hasOverflow,
-        (currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark') && 'shadowOutline'
-      )}
+      className={clsx(toolbarClasses, overflowNeeded && classes.hasOverflow)}
       ref={componentRef}
       slot={slot}
       onClick={handleToolbarClick}

@@ -1,4 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 export const styles = {
   outerContainer: {
@@ -27,12 +28,9 @@ export const styles = {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&:focus': {
-      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
+      outline: CustomThemingParameters.ToolbarFocusOutline,
       outlineOffset: '-0.1875rem',
-      '&.shadowOutline': {
-        boxShadow: `inset 0 0 0 0.125rem ${ThemingParameters.sapContent_FocusColor}`,
-        outline: 'none'
-      }
+      boxShadow: CustomThemingParameters.ToolbarFocusShadow
     },
     '&:active': {
       backgroundColor: ThemingParameters.sapActiveColor
