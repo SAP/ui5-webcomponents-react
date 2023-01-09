@@ -73,6 +73,13 @@ addCustomCSSWithScoping(
   border-collapse: unset;
 }
 
+/* don't allow table cells to grow
+todo: FilterBarDialogPanelTable
+*/
+:host([data-component-name="FilterBarDialogTable"]) table{
+  table-layout: fixed;
+}
+
 :host([data-component-name="FilterBarDialogPanelTable"]) .ui5-table-root {
   border-bottom: none;
 }
@@ -277,6 +284,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   const handleCheckBoxChange = (e) => {
     e.preventDefault();
+
+    // todo: could be unwanted behavior: https://github.com/SAP/ui5-webcomponents-react/issues/3928
+    if (!e.target.hasAttribute('ui5-table')) {
+      return;
+    }
     const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
       (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
       {}
