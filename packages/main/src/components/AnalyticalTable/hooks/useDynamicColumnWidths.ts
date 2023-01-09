@@ -392,7 +392,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
       return {
         ...column,
         width: column.width ?? fullWidth,
-        maxWidth: MAX_WIDTH
+        maxWidth: column.maxWidth ?? MAX_WIDTH
       };
     }
     return column;

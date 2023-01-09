@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnalyticalTable, AnalyticalTableHooks, Button, Input } from '../..';
+import { AnalyticalTable, AnalyticalTableHooks, Button, Input, TableScaleWidthMode } from '../..';
 import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
 
 const generateMoreData = (count) => {
@@ -576,6 +576,42 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+  });
+
+  it('Grow Mode: maxWidth', () => {
+    const TableComp = (props) => {
+      const headerText =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum aliquet arcu, ac facilisis tellus blandit nec. Etiam justo erat, dictum a ex ac, fermentum fringilla metus. Donec nibh magna, pellentesque ut odio id, feugiat vulputate nibh. In feugiat tincidunt quam, vitae sodales metus lobortis pellentesque. Donec eget rhoncus ante, in posuere nulla. Proin viverra, turpis id fermentum scelerisque, felis ipsum pharetra tortor, sed aliquet mi ex eu nisl. Praesent neque nunc, suscipit non interdum vitae, consequat sit amet velit. Morbi commodo dapibus lobortis. Vestibulum auctor velit sit amet semper egestas.';
+      const [columns, setColumns] = useState<{ Header: string; accessor: string; maxWidth?: number }[]>([
+        {
+          Header: headerText,
+          accessor: 'name'
+        }
+      ]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                {
+                  Header: headerText,
+                  accessor: 'name',
+                  maxWidth: Infinity
+                }
+              ]);
+            }}
+          >
+            Custom maxWidth
+          </Button>
+          <AnalyticalTable {...props} columns={columns} scaleWidthMode={TableScaleWidthMode.Grow} />
+        </>
+      );
+    };
+    cy.mount(<TableComp data={data} />);
+    cy.get('#name').invoke('outerWidth').should('equal', 700);
+
+    cy.findByText('Custom maxWidth').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 5008);
   });
 
   it('Column Scaling: programatically change cols', () => {
