@@ -633,7 +633,6 @@ describe('AnalyticalTable', () => {
         <>
           <Button
             onClick={() => {
-              // debugger;
               tableInstanceRef.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
             }}
           >
