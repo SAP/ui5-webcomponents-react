@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
 
 type onIndeterminateChange = (e: {
   indeterminateRowsById: Record<string | number, boolean>;
@@ -123,8 +123,8 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     useEffect(() => {
       if (
         isTreeTable &&
-        selectionMode === TableSelectionMode.MultiSelect &&
-        selectionBehavior !== TableSelectionBehavior.RowOnly &&
+        selectionMode === AnalyticalTableSelectionMode.MultiSelect &&
+        selectionBehavior !== AnalyticalTableSelectionBehavior.RowOnly &&
         Object.keys(selectedRowIds).length &&
         Object.keys(rowsById).length !== Object.keys(selectedRowIds).length
       ) {

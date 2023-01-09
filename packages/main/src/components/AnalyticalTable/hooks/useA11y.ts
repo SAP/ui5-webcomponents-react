@@ -1,5 +1,5 @@
 import { KeyboardEventHandler } from 'react';
-import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
 
 interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
@@ -41,8 +41,8 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
       updatedCellProps['aria-label'] = translatableTexts.expandA11yText;
     }
   } else if (
-    (selectionMode !== TableSelectionMode.None &&
-      selectionBehavior !== TableSelectionBehavior.RowSelector &&
+    (selectionMode !== AnalyticalTableSelectionMode.None &&
+      selectionBehavior !== AnalyticalTableSelectionBehavior.RowSelector &&
       !row.isGrouped) ||
     column.id === '__ui5wcr__internal_selection_column'
   ) {
