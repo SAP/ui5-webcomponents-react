@@ -15,12 +15,15 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    */
   children: ReactNode | ReactNode[];
   /**
-   * // todo ? allow using ReactNode here and omit `titleTextLevel`
    * Defines the title of the `ObjectPageSection`.
+   *
+   * @default ''
    */
   titleText?: string;
   /**
    * Defines whether the title is always displayed in uppercase.
+   *
+   * @default true
    */
   titleTextUppercase?: boolean;
   /**
@@ -32,9 +35,10 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    *
    * __Note:__ Defining a `titleTextLevel` will add aria-level attribute from 1 to 6, instead of changing the ObjectPageSectionBase title HTML tag from H1 to H6.
    * For example: if titleTextLevel is TitleLevel.H1, it will result as aria-level of 1 added to the ObjectPageSection title.
-   * todo how to handle "Auto" level
+   *
+   * @default TitleLevel.H3
    */
-  titleTextLevel?: TitleLevel | keyof typeof TitleLevel | 'Auto';
+  titleTextLevel?: TitleLevel | keyof typeof TitleLevel;
   /**
    * Determines whether the Section title wraps on multiple lines, when the available space is not enough.
    */
@@ -43,7 +47,6 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    * Section header content.
    *
    * __Note__: Although this prop accepts all HTML Elements, it is strongly recommended that you only use non-focusable elements to preserve the intended design.
-   * todo heading - ? mount above titleText like SAPUI5 does
    */
   header?: ReactNode;
 }
@@ -61,7 +64,6 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     className,
     style,
     hideTitleText,
-    // todo
     titleTextLevel = 'H3',
     wrapTitleText,
     header,

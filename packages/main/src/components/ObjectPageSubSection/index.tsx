@@ -36,9 +36,10 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
    *
    * __Note:__ Defining a `titleTextLevel` will add aria-level attribute from 1 to 6, instead of changing the ObjectPageSectionBase title HTML tag from H1 to H6.
    * For example: if titleTextLevel is TitleLevel.H1, it will result as aria-level of 1 added to the ObjectPageSection title.
-   * todo how to handle "Auto" level
+   *
+   * @default TittleLevel.H4
    */
-  titleTextLevel?: TitleLevel | keyof typeof TitleLevel | 'Auto';
+  titleTextLevel?: TitleLevel | keyof typeof TitleLevel;
   /**
    * Defines whether the title is always displayed in uppercase.
    */
@@ -97,7 +98,6 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
     style,
     actions,
     hideTitleText,
-    // todo
     titleTextLevel = 'H4',
     titleTextUppercase,
     ...rest
