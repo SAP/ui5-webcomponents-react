@@ -26167,7 +26167,7 @@ __metadata:
     turndown: ^7.0.0
     typescript: 4.9.4
     vite: ^4.0.1
-    vite-plugin-istanbul: ^3.0.1
+    vite-plugin-istanbul: ^4.0.0
   languageName: unknown
   linkType: soft
 
@@ -26799,15 +26799,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-istanbul@npm:^3.0.1":
-  version: 3.0.4
-  resolution: "vite-plugin-istanbul@npm:3.0.4"
+"vite-plugin-istanbul@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "vite-plugin-istanbul@npm:4.0.0"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
     istanbul-lib-instrument: ^5.1.0
     picocolors: ^1.0.0
     test-exclude: ^6.0.0
-  checksum: 74fa99e2e2bded28ff6ba47bddf3cdd2eae04d37f2b6d257dcf5571c75f3433c6495fe94bba1f12acd0fc6046a6e83ea618b0547726ba68190bf292c7cb34695
+  peerDependencies:
+    vite: ">=2.9.1 <= 5"
+  checksum: d523523784ec77efcc39f6850b9fbdf1744f7441ffa5a33feff1e3a783ffa7a6a4df26863282937a85d3d7f6d4bfea578b08d80644e4c601d7d599671b9cd302
   languageName: node
   linkType: hard
 
