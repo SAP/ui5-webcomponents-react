@@ -42,7 +42,11 @@ import {
   AnalyticalTableSelectionMode,
   TextAlign,
   ValueState,
-  VerticalAlign
+  VerticalAlign,
+  TableScaleWidthMode,
+  TableSelectionMode,
+  TableSelectionBehavior,
+  TableVisibleRowCountMode
 } from '../../enums';
 import {
   COLLAPSE_NODE,
@@ -284,7 +288,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
    */
-  visibleRowCountMode?: AnalyticalTableVisibleRowCountMode | keyof typeof AnalyticalTableVisibleRowCountMode;
+  visibleRowCountMode?:
+    | AnalyticalTableVisibleRowCountMode
+    | keyof typeof AnalyticalTableVisibleRowCountMode
+    | TableVisibleRowCountMode;
+
   /**
    * The number of rows visible without going into overflow.
    *
@@ -378,7 +386,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
    */
-  selectionBehavior?: AnalyticalTableSelectionBehavior | keyof typeof AnalyticalTableSelectionBehavior;
+  selectionBehavior?:
+    | AnalyticalTableSelectionBehavior
+    | keyof typeof AnalyticalTableSelectionBehavior
+    | TableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
@@ -386,7 +397,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
    */
-  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode;
+  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
+
   /**
    * Defines the column growing behaviour. Possible Values:
    *
@@ -398,7 +410,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
    *
    */
-  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode;
+  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    *
