@@ -256,6 +256,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
 
   const dynamicPageStyles = { ...style };
   if (headerCollapsed === true && headerContent) {
+    scrollTimeout.current = performance.now() + 200;
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
