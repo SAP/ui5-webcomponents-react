@@ -607,8 +607,8 @@ describe('ObjectPage', () => {
 
   it('ObjectPageSection: titleTextLevel', () => {
     const TestComp = () => {
-      const [level, setLevel] = useState(undefined);
-      const [levelSub, setLevelSub] = useState(undefined);
+      const [level, setLevel] = useState<undefined | TitleLevel>(undefined);
+      const [levelSub, setLevelSub] = useState<undefined | TitleLevel>(undefined);
       return (
         <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
           <ObjectPageSection id="placeholder" titleText="Placeholder">
