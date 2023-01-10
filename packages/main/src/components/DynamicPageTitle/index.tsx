@@ -222,6 +222,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
           )}
           {showNavigationInTopArea && (
             <Toolbar
+              tabIndex={undefined}
+              role={undefined}
               {...navigationActionsToolbarProps}
               overflowButton={navigationActionsToolbarProps?.overflowButton}
               className={clsx(classes.toolbar, navigationActionsToolbarProps?.className)}
@@ -259,6 +261,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
           <Toolbar
+            tabIndex={undefined}
+            role={undefined}
             {...actionsToolbarProps}
             overflowButton={actionsToolbarProps?.overflowButton}
             design={ToolbarDesign.Auto}

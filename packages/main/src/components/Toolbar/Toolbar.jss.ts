@@ -1,4 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 export const styles = {
   outerContainer: {
@@ -23,23 +24,31 @@ export const styles = {
   },
   active: {
     cursor: 'pointer',
-    '&:active': {
-      backgroundColor: ThemingParameters.sapActiveColor
-    },
     '&:hover': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
+    },
+    '&:focus': {
+      outline: CustomThemingParameters.ToolbarFocusOutline,
+      outlineOffset: '-0.1875rem',
+      boxShadow: CustomThemingParameters.ToolbarFocusShadow
+    },
+    '&:active': {
+      backgroundColor: ThemingParameters.sapActiveColor
     }
   },
   info: {
     height: '2rem', // always 2 rem both in Compact and Cozy
-    backgroundColor: ThemingParameters.sapList_HeaderBorderColor,
+    backgroundColor: ThemingParameters.sapInfobar_NonInteractive_Background,
+    color: ThemingParameters.sapList_TextColor,
     '&$active': {
-      backgroundColor: ThemingParameters.sapInfobar_Active_Background,
-      '&:active': {
-        backgroundColor: `${ThemingParameters.sapInfobar_Active_Background}`
-      },
+      outlineColor: ThemingParameters.sapContent_ContrastFocusColor,
+      backgroundColor: ThemingParameters.sapInfobar_Background,
+      color: ThemingParameters.sapInfobar_TextColor,
       '&:hover': {
         backgroundColor: ThemingParameters.sapInfobar_Hover_Background
+      },
+      '&:active': {
+        backgroundColor: ThemingParameters.sapInfobar_Active_Background
       }
     }
   },
