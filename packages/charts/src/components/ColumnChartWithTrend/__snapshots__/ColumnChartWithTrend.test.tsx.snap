@@ -21,7 +21,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           <svg
             class="recharts-surface"
             height="400"
-            version="1.1"
             viewBox="0 0 400 400"
             width="400"
           >
@@ -58,7 +57,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                 fill="none"
                 height="360"
                 name="Users"
-                points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                 stroke="var(--sapChart_OrderedColor_1)"
                 stroke-dasharray="0px 0px"
                 stroke-opacity="1"
@@ -103,7 +101,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
           <svg
             class="recharts-surface"
             height="400"
-            version="1.1"
             viewBox="0 0 400 400"
             width="400"
           >
@@ -751,7 +748,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                 fill="none"
                 height="330"
                 name="Users"
-                points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                 stroke="var(--sapChart_OrderedColor_1)"
                 stroke-dasharray="0px 0px"
                 stroke-opacity="0"
@@ -837,7 +833,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                   class="recharts-surface"
                   height="14"
                   style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                  version="1.1"
                   viewBox="0 0 32 32"
                   width="14"
                 >
@@ -868,7 +863,6 @@ exports[`ColumnChartWithTrend Check onClick events 1`] = `
                   class="recharts-surface"
                   height="14"
                   style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                  version="1.1"
                   viewBox="0 0 32 32"
                   width="14"
                 >
@@ -1149,7 +1143,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           <svg
             class="recharts-surface"
             height="400"
-            version="1.1"
             viewBox="0 0 400 400"
             width="400"
           >
@@ -1186,7 +1179,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                 fill="none"
                 height="360"
                 name="Users"
-                points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                 stroke="var(--sapChart_OrderedColor_1)"
                 stroke-dasharray="0px 0px"
                 stroke-opacity="1"
@@ -1231,7 +1223,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
           <svg
             class="recharts-surface"
             height="400"
-            version="1.1"
             viewBox="0 0 400 400"
             width="400"
           >
@@ -1879,7 +1870,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                 fill="none"
                 height="330"
                 name="Users"
-                points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                 stroke="var(--sapChart_OrderedColor_1)"
                 stroke-dasharray="0px 0px"
                 stroke-opacity="0"
@@ -1965,7 +1955,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                   class="recharts-surface"
                   height="14"
                   style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                  version="1.1"
                   viewBox="0 0 32 32"
                   width="14"
                 >
@@ -1996,7 +1985,6 @@ exports[`ColumnChartWithTrend Renders with data 1`] = `
                   class="recharts-surface"
                   height="14"
                   style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                  version="1.1"
                   viewBox="0 0 32 32"
                   width="14"
                 >

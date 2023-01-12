@@ -17,7 +17,6 @@ exports[`BarChart Check onClick events 1`] = `
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -971,7 +970,6 @@ exports[`BarChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -998,7 +996,6 @@ exports[`BarChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1025,7 +1022,6 @@ exports[`BarChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1208,7 +1204,6 @@ exports[`BarChart Render chart with data 1`] = `
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -2162,7 +2157,6 @@ exports[`BarChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2189,7 +2183,6 @@ exports[`BarChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2216,7 +2209,6 @@ exports[`BarChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2276,7 +2268,6 @@ exports[`BarChart onLegendClick should not crash when invalid handler is provide
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -3230,7 +3221,6 @@ exports[`BarChart onLegendClick should not crash when invalid handler is provide
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -3257,7 +3247,6 @@ exports[`BarChart onLegendClick should not crash when invalid handler is provide
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -3284,7 +3273,6 @@ exports[`BarChart onLegendClick should not crash when invalid handler is provide
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
