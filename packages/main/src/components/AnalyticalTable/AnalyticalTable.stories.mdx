@@ -2,6 +2,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
 import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
+import dataNameAge from '../../../../../.storybook/mockData/NameAge50.json';
 import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
 import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
@@ -10,7 +11,7 @@ import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '../../../../../.storybook/utils';
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
@@ -26,6 +27,8 @@ import {
   InputType,
   Label,
   MessageStrip,
+  MultiComboBox,
+  MultiComboBoxItem,
   Panel,
   TableScaleWidthMode,
   TableSelectionBehavior,
@@ -1567,4 +1570,136 @@ export const TableWithNavigationIndicators = () => {
 };
 ```
 
-<Footer />
+## Custom column filtering
+
+It is possible to define your own filter function and filter component on each column. For this you need to customize the column option `filter` or add a custom filter type to the `reactTableOptions.filterTypes` object (for a custom filter function) and the column option `Filter` (for a custom filter component).
+
+Here you can find an example using a `MultiComboBox` with multiple values as filter.
+
+<Canvas withSource="none">
+  <Story name="with custom filter">
+    {() => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const filterFn = useCallback((rows, accessor, filterValue) => {
+        if (filterValue.length > 0) {
+          return rows.filter((row) => {
+            const rowVal = row.values[accessor];
+            return !!filterValue.some((item) => rowVal.includes(item));
+          });
+        }
+        return rows;
+      }, []);
+      const columns = useMemo(
+        () => [
+          {
+            Header: 'Custom Column Filter',
+            accessor: 'name',
+            // either define your filterValue & function here or set is as `reactTableOption` and pass the key here (see below)
+            filter: filterFn,
+            Filter: ({ column }) => {
+              const firstNames = ['Carl', 'Dan', 'Rose', 'Susanne'];
+              return (
+                <MultiComboBox
+                  placeholder="Filter Names"
+                  onSelectionChange={(e) => {
+                    column.setFilter(e.detail.items.map((item) => item.getAttribute('text')));
+                  }}
+                >
+                  {firstNames.map((item) => {
+                    const isSelected = column?.filterValue?.some((filterVal) => filterVal.includes(item));
+                    return <MultiComboBoxItem text={item} key={item} selected={isSelected} />;
+                  })}
+                </MultiComboBox>
+              );
+            }
+          },
+          {
+            Header: 'Age',
+            accessor: 'age'
+          }
+        ],
+        []
+      );
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with custom column filter">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <AnalyticalTable columns={columns} data={dataNameAge} filterable />
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```jsx
+const filterFn = (rows, accessor, filterValue) => {
+  if (filterValue.length > 0) {
+    return rows.filter((row) => {
+      const rowVal = row.values[accessor];
+      if (filterValue.some((item) => rowVal.includes(item))) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return rows;
+};
+const COLUMNS = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    // either define your filterValue & function here or set is as `reactTableOption` and pass the key as string here (see below)
+    filter: filterFn,
+    Filter: ({ column }) => {
+      const firstNames = ['Carl', 'Dan', 'Rose', 'Susanne'];
+      return (
+        <MultiComboBox
+          onSelectionChange={(e) => {
+            column.setFilter(e.detail.items.map((item) => item.getAttribute('text')));
+          }}
+        >
+          {firstNames.map((item) => {
+            const isSelected = column?.filterValue?.some((filterVal) => filterVal.includes(item));
+            return <MultiComboBoxItem text={item} key={item} selected={isSelected} />;
+          })}
+        </MultiComboBox>
+      );
+    }
+  },
+  {
+    Header: 'Age',
+    accessor: 'age'
+  }
+];
+const TableComponent = () => {
+  return (
+    <ThemeProvider>
+      <AnalyticalTable
+        columns={COLUMNS}
+        data={DATA}
+        filterable
+        // you can also define your function here, then you can just pass the key as string to the `filter` column option
+        // reactTableOptions={{
+        //   filterTypes: {
+        //     multiValueFilter: filterFn
+        //   }
+        // }}
+      />
+    </ThemeProvider>
+  );
+};
+```
+
+</details>
+
+<Footer style={{ marginTop: '2rem' }} />
