@@ -1658,7 +1658,7 @@ const COLUMNS = [
   {
     Header: 'Name',
     accessor: 'name',
-    // either define your filterValue & function here or set is as `reactTableOption` and pass the key as string here (see below)
+    // either define your filter function here or set is as `reactTableOption` and pass the key as string here (see below)
     filter: filterFn,
     Filter: ({ column }) => {
       const firstNames = ['Carl', 'Dan', 'Rose', 'Susanne'];
