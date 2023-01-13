@@ -1,6 +1,6 @@
-import { act, fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
+import { fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import React, { createRef } from 'react';
+import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
 import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
@@ -875,33 +875,6 @@ describe('AnalyticalTable', () => {
     // test if "select-all" checkbox is not rendered
     const headers = getAllByRole('columnheader', { hidden: true });
     expect(headers[0].getElementsByTagName('ui5-checkbox')[0]).toBeFalsy();
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('expose table instance', () => {
-    const ref = createRef();
-    const { asFragment, queryAllByText, getByText } = render(
-      <AnalyticalTable
-        data={data}
-        columns={columns}
-        tableInstance={ref}
-        reactTableOptions={{
-          autoResetHiddenColumns: false
-        }}
-      />
-    );
-    //set internal clientWidth
-    act(() => {
-      ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
-    });
-    const nameHeaderCell = getByText('Name').parentElement.parentElement;
-    expect(nameHeaderCell).toHaveStyle({ width: '300px' });
-    act(() => {
-      ref.current.toggleHideColumn('age', true);
-    });
-    expect(nameHeaderCell).toHaveStyle({ width: '400px' });
-    expect(queryAllByText('Age')).toHaveLength(0);
 
     expect(asFragment()).toMatchSnapshot();
   });

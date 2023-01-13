@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { AnalyticalTableColumnDefinition } from '../index';
@@ -12,16 +13,28 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
+const columnsDeps = (
+  deps,
+  { instance: { state, webComponentsReactProperties, visibleColumns, data, rows, columns } }
+) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
+  const colsEqual = useMemo(() => {
+    return visibleColumns?.every((visCol) => {
+      const id = visCol.id ?? visCol.accessor;
+      return columns.some((item) => {
+        return item.accessor === id || item.id === id;
+      });
+    });
+  }, [visibleColumns, columns]);
 
   return [
     ...deps,
     hasRows,
+    colsEqual,
+    visibleColumns?.length,
     !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
-    visibleColumns?.length,
     webComponentsReactProperties.scaleWidthMode,
     isLoadingPlaceholder,
     webComponentsReactProperties.scaleXFactor

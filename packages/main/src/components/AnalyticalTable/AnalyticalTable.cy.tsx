@@ -613,13 +613,107 @@ describe('AnalyticalTable', () => {
     cy.findByText('Custom maxWidth').click();
     cy.get('#name').invoke('outerWidth').should('equal', 5008);
   });
+
+  it('Column Scaling: programatically change cols', () => {
+    const TestComp = (props) => {
+      const [columns, setColumns] = useState([]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                { accessor: 'name', Header: 'Name' },
+                { accessor: 'age', Header: 'Age' }
+              ]);
+            }}
+          >
+            Both
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'name', Header: 'Name' }]);
+            }}
+          >
+            NameCol
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'age', Header: 'Age' }]);
+            }}
+          >
+            AgeCol
+          </Button>
+          <AnalyticalTable {...props} columns={columns} />
+        </>
+      );
+    };
+    cy.mount(<TestComp data={data} />);
+
+    cy.findByText('Both').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 952);
+    cy.get('#age').invoke('outerWidth').should('equal', 952);
+
+    cy.findByText('NameCol').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 1904);
+    cy.get('#age').should('not.exist');
+
+    cy.findByText('AgeCol').click();
+    cy.get('#age').invoke('outerWidth').should('equal', 1904);
+    cy.get('#name').should('not.exist');
+  });
+
+  it('tableInstance: change state & hide cols', () => {
+    const TestComp = (props) => {
+      const tableInstanceRef = useRef(null);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+            }}
+          >
+            set clientWidth
+          </Button>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.toggleHideColumn('age', true);
+            }}
+          >
+            hide age col
+          </Button>
+          <AnalyticalTable
+            {...props}
+            data-testid="at"
+            tableInstance={tableInstanceRef}
+            reactTableOptions={{
+              autoResetHiddenColumns: false
+            }}
+          />
+        </>
+      );
+    };
+
+    cy.mount(<TestComp columns={columns} data={data} />);
+    cy.wait(200);
+
+    cy.findByText('set clientWidth').click();
+    ['#name', '#age', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 300);
+    });
+
+    cy.findByText('hide age col').click();
+    ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 400);
+    });
+    cy.get('#age').should('not.exist');
+  });
 });
 
 const columns = [
   {
     Header: 'Name',
-    headerTooltip: 'Full Name', // A more extensive description!
-    accessor: 'name' // String-based value accessors!
+    headerTooltip: 'Full Name',
+    accessor: 'name'
   },
   {
     Header: 'Age',
