@@ -1,7 +1,7 @@
-import { act, fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
+import { fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import React, { createRef } from 'react';
-import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
+import React from 'react';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
 import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 import { AnalyticalTable } from './index';
@@ -270,7 +270,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         subRowsKey="subRows"
         isTreeTable={true}
       />
@@ -406,8 +406,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
-        selectionBehavior={TableSelectionBehavior.RowOnly}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
       />
     );
 
@@ -420,7 +420,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -442,7 +442,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -459,7 +459,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -481,7 +481,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -495,7 +495,7 @@ describe('AnalyticalTable', () => {
   test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         data={data}
         columns={columns}
         reactTableOptions={{
@@ -701,8 +701,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionBehavior={TableSelectionBehavior.Row}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.Row}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         onRowClick={callback}
       />
     );
@@ -818,7 +818,7 @@ describe('AnalyticalTable', () => {
           columns={columns}
           onRowSelect={cb}
           onRowClick={click}
-          selectionMode={TableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />
@@ -879,33 +879,6 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('expose table instance', () => {
-    const ref = createRef();
-    const { asFragment, queryAllByText, getByText } = render(
-      <AnalyticalTable
-        data={data}
-        columns={columns}
-        tableInstance={ref}
-        reactTableOptions={{
-          autoResetHiddenColumns: false
-        }}
-      />
-    );
-    //set internal clientWidth
-    act(() => {
-      ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
-    });
-    const nameHeaderCell = getByText('Name').parentElement.parentElement;
-    expect(nameHeaderCell).toHaveStyle({ width: '300px' });
-    act(() => {
-      ref.current.toggleHideColumn('age', true);
-    });
-    expect(nameHeaderCell).toHaveStyle({ width: '400px' });
-    expect(queryAllByText('Age')).toHaveLength(0);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   test('body scroll', () => {
     const data100 = new Array(100).fill({
       name: 'Chris P.',
@@ -955,7 +928,7 @@ describe('AnalyticalTable', () => {
   test('plugin hook: useManualRowSelect', () => {
     const { getByText, rerender } = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={manualSelectData}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
@@ -971,7 +944,7 @@ describe('AnalyticalTable', () => {
     const [, ...updatedManualSelectData] = manualSelectData;
     rerender(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={[
           {
             name: 'Selected',

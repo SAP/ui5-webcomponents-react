@@ -1,7 +1,7 @@
 /**
- * @deprecated please use AnalyticalTableSelectionBehavior instead.
+ * Defines the selection behavior of the AnalyticalTable.
  */
-export enum TableSelectionBehavior {
+export enum AnalyticalTableSelectionBehavior {
   /**
    * A selection column is rendered along with the normal columns. The whole row is selectable.
    */

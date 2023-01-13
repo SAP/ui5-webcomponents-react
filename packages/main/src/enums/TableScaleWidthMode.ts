@@ -1,3 +1,6 @@
+/**
+ * @deprecated please use AnalyticalTableScaleWidthMode instead.
+ */
 export enum TableScaleWidthMode {
   /*
    * Every column without fixed width gets the maximum available space of the table

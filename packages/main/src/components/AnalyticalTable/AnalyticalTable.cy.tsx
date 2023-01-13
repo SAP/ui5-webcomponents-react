@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnalyticalTable, AnalyticalTableHooks, Button, Input } from '../..';
-import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
+import { AnalyticalTable, AnalyticalTableHooks, Button, Input, AnalyticalTableScaleWidthMode } from '../..';
+import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -55,7 +55,7 @@ describe('AnalyticalTable', () => {
   it('row count modes', () => {
     cy.mount(
       <div style={{ height: '200px' }}>
-        <AnalyticalTable data={data} columns={columns} visibleRowCountMode={TableVisibleRowCountMode.Auto} />
+        <AnalyticalTable data={data} columns={columns} visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto} />
       </div>
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
@@ -67,7 +67,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '200px' }}
         data={data}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
@@ -81,7 +81,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '4400px' }}
         data={generateMoreData(200)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '99'); //rows(99*44) + header(44) = 4400
@@ -94,7 +94,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '200px' }}
         data={data}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
         visibleRows={1337}
       />
     );
@@ -107,7 +107,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '15');
@@ -118,7 +118,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
         visibleRows={20}
       />
     );
@@ -130,7 +130,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Interactive}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Interactive}
         visibleRows={10}
       />
     );
@@ -305,7 +305,7 @@ describe('AnalyticalTable', () => {
               setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
               onRowSelect(e);
             }}
-            selectionMode={TableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
             selectedRowIds={selectedRowIds}
           />
           "event.detail.selectedFlatRows:"<div data-testid="payload">{JSON.stringify(selectedFlatRows)}</div>
@@ -458,7 +458,7 @@ describe('AnalyticalTable', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
@@ -521,7 +521,7 @@ describe('AnalyticalTable', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
@@ -577,13 +577,143 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
   });
+
+  it('Grow Mode: maxWidth', () => {
+    const TableComp = (props) => {
+      const headerText =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum aliquet arcu, ac facilisis tellus blandit nec. Etiam justo erat, dictum a ex ac, fermentum fringilla metus. Donec nibh magna, pellentesque ut odio id, feugiat vulputate nibh. In feugiat tincidunt quam, vitae sodales metus lobortis pellentesque. Donec eget rhoncus ante, in posuere nulla. Proin viverra, turpis id fermentum scelerisque, felis ipsum pharetra tortor, sed aliquet mi ex eu nisl. Praesent neque nunc, suscipit non interdum vitae, consequat sit amet velit. Morbi commodo dapibus lobortis. Vestibulum auctor velit sit amet semper egestas.';
+      const [columns, setColumns] = useState<{ Header: string; accessor: string; maxWidth?: number }[]>([
+        {
+          Header: headerText,
+          accessor: 'name'
+        }
+      ]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                {
+                  Header: headerText,
+                  accessor: 'name',
+                  maxWidth: Infinity
+                }
+              ]);
+            }}
+          >
+            Custom maxWidth
+          </Button>
+          <AnalyticalTable {...props} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Grow} />
+        </>
+      );
+    };
+    cy.mount(<TableComp data={data} />);
+    cy.get('#name').invoke('outerWidth').should('equal', 700);
+
+    cy.findByText('Custom maxWidth').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 5008);
+  });
+
+  it('Column Scaling: programatically change cols', () => {
+    const TestComp = (props) => {
+      const [columns, setColumns] = useState([]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                { accessor: 'name', Header: 'Name' },
+                { accessor: 'age', Header: 'Age' }
+              ]);
+            }}
+          >
+            Both
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'name', Header: 'Name' }]);
+            }}
+          >
+            NameCol
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'age', Header: 'Age' }]);
+            }}
+          >
+            AgeCol
+          </Button>
+          <AnalyticalTable {...props} columns={columns} />
+        </>
+      );
+    };
+    cy.mount(<TestComp data={data} />);
+
+    cy.findByText('Both').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 952);
+    cy.get('#age').invoke('outerWidth').should('equal', 952);
+
+    cy.findByText('NameCol').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 1904);
+    cy.get('#age').should('not.exist');
+
+    cy.findByText('AgeCol').click();
+    cy.get('#age').invoke('outerWidth').should('equal', 1904);
+    cy.get('#name').should('not.exist');
+  });
+
+  it('tableInstance: change state & hide cols', () => {
+    const TestComp = (props) => {
+      const tableInstanceRef = useRef(null);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+            }}
+          >
+            set clientWidth
+          </Button>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.toggleHideColumn('age', true);
+            }}
+          >
+            hide age col
+          </Button>
+          <AnalyticalTable
+            {...props}
+            data-testid="at"
+            tableInstance={tableInstanceRef}
+            reactTableOptions={{
+              autoResetHiddenColumns: false
+            }}
+          />
+        </>
+      );
+    };
+
+    cy.mount(<TestComp columns={columns} data={data} />);
+    cy.wait(200);
+
+    cy.findByText('set clientWidth').click();
+    ['#name', '#age', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 300);
+    });
+
+    cy.findByText('hide age col').click();
+    ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 400);
+    });
+    cy.get('#age').should('not.exist');
+  });
 });
 
 const columns = [
   {
     Header: 'Name',
-    headerTooltip: 'Full Name', // A more extensive description!
-    accessor: 'name' // String-based value accessors!
+    headerTooltip: 'Full Name',
+    accessor: 'name'
   },
   {
     Header: 'Age',

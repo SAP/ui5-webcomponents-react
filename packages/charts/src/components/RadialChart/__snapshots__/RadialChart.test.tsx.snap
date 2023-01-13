@@ -19,7 +19,6 @@ exports[`RadialChart Check onClick events 1`] = `
           cx="50%"
           cy="50%"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -308,7 +307,6 @@ exports[`RadialChart Render chart with data 1`] = `
           cx="50%"
           cy="50%"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
