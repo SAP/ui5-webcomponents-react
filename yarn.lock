@@ -23750,7 +23750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rimraf@npm:3.0.2, rimraf@npm:^3.0.0, rimraf@npm:^3.0.1, rimraf@npm:^3.0.2":
+"rimraf@npm:3.0.2, rimraf@npm:^3.0.0, rimraf@npm:^3.0.2":
   version: 3.0.2
   resolution: "rimraf@npm:3.0.2"
   dependencies:
@@ -23769,6 +23769,15 @@ __metadata:
   bin:
     rimraf: ./bin.js
   checksum: cdc7f6eacb17927f2a075117a823e1c5951792c6498ebcce81ca8203454a811d4cf8900314154d3259bb8f0b42ab17f67396a8694a54cae3283326e57ad250cd
+  languageName: node
+  linkType: hard
+
+"rimraf@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "rimraf@npm:4.0.0"
+  bin:
+    rimraf: dist/cjs/src/bin.js
+  checksum: 0512f25f3959eaeb5fd5b616765d73b187ba5b3b9a2e697bc4b66cd1f5cb51c299ae2e48a32c176115148599356492f004de0c468817f09fa3b841bf31f0421a
   languageName: node
   linkType: hard
 
@@ -26170,7 +26179,7 @@ __metadata:
     react-dom-17: "npm:react-dom@^17.0.2"
     react-syntax-highlighter: ^15.2.1
     resize-observer-polyfill: 1.5.1
-    rimraf: ^3.0.1
+    rimraf: ^4.0.0
     tocbot: ^4.12.0
     tsconfig-paths-webpack-plugin: ^4.0.0
     turndown: ^7.0.0
