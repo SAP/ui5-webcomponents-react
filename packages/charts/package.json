@@ -20,7 +20,7 @@
   "dependencies": {
     "clsx": "1.2.1",
     "react-content-loader": "6.2.0",
-    "recharts": "2.3.1"
+    "recharts": "2.3.2"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "^1.1.0",
