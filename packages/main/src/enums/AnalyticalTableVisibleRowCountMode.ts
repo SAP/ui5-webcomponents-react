@@ -1,7 +1,9 @@
 /**
- * @deprecated please use AnalyticalTableVisibleRowCountMode instead.
+ * Defines how the AnalyticalTable will render visible rows.
+ *
+ * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
  */
-export enum TableVisibleRowCountMode {
+export enum AnalyticalTableVisibleRowCountMode {
   /**
    * The number of visible rows displayed is defined by the `visibleRows` prop. If the prop is not set, 15 rows will be shown.
    */

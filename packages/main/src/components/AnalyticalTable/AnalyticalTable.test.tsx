@@ -1,7 +1,7 @@
 import { fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
-import { TableSelectionBehavior, TableSelectionMode, ValueState } from '../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode, ValueState } from '../../enums';
 import { Button } from '../../webComponents';
 import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 import { AnalyticalTable } from './index';
@@ -270,7 +270,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         subRowsKey="subRows"
         isTreeTable={true}
       />
@@ -406,8 +406,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
-        selectionBehavior={TableSelectionBehavior.RowOnly}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
       />
     );
 
@@ -420,7 +420,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -442,7 +442,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -459,7 +459,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -481,7 +481,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -495,7 +495,7 @@ describe('AnalyticalTable', () => {
   test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         data={data}
         columns={columns}
         reactTableOptions={{
@@ -701,8 +701,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionBehavior={TableSelectionBehavior.Row}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.Row}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         onRowClick={callback}
       />
     );
@@ -818,7 +818,7 @@ describe('AnalyticalTable', () => {
           columns={columns}
           onRowSelect={cb}
           onRowClick={click}
-          selectionMode={TableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />
@@ -928,7 +928,7 @@ describe('AnalyticalTable', () => {
   test('plugin hook: useManualRowSelect', () => {
     const { getByText, rerender } = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={manualSelectData}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
@@ -944,7 +944,7 @@ describe('AnalyticalTable', () => {
     const [, ...updatedManualSelectData] = manualSelectData;
     rerender(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={[
           {
             name: 'Selected',
