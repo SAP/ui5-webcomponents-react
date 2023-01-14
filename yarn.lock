@@ -19720,15 +19720,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ncp@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ncp@npm:2.0.0"
-  bin:
-    ncp: ./bin/ncp
-  checksum: ea9b19221da1d1c5529bdb9f8e85c9d191d156bcaae408cce5e415b7fbfd8744c288e792bd7faf1fe3b70fd44c74e22f0d43c39b209bc7ac1fb8016f70793a16
-  languageName: node
-  linkType: hard
-
 "negotiator@npm:0.6.3, negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
@@ -23677,7 +23668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rimraf@npm:3.0.2, rimraf@npm:^3.0.0, rimraf@npm:^3.0.1, rimraf@npm:^3.0.2":
+"rimraf@npm:3.0.2, rimraf@npm:^3.0.0, rimraf@npm:^3.0.2":
   version: 3.0.2
   resolution: "rimraf@npm:3.0.2"
   dependencies:
@@ -23696,6 +23687,15 @@ __metadata:
   bin:
     rimraf: ./bin.js
   checksum: cdc7f6eacb17927f2a075117a823e1c5951792c6498ebcce81ca8203454a811d4cf8900314154d3259bb8f0b42ab17f67396a8694a54cae3283326e57ad250cd
+  languageName: node
+  linkType: hard
+
+"rimraf@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "rimraf@npm:4.0.4"
+  bin:
+    rimraf: dist/cjs/src/bin.js
+  checksum: a3296ea15c79fe3da0bae06a484dd8b8ec1e6d3044b02f05ce27575ef23c856e37eef6e71a668ce0e263da594a05ace1e88be6f42200f1fbbf433b57121bae32
   languageName: node
   linkType: hard
 
@@ -26085,8 +26085,6 @@ __metadata:
     jest-environment-jsdom: ^29.2.1
     lerna: ^6.0.1
     lint-staged: ^13.0.0
-    mkdirp: ^1.0.4
-    ncp: ^2.0.0
     npm-run-all: ^4.1.5
     prettier: ^2.0.4
     react: 18.2.0
@@ -26097,7 +26095,7 @@ __metadata:
     react-dom-17: "npm:react-dom@^17.0.2"
     react-syntax-highlighter: ^15.2.1
     resize-observer-polyfill: 1.5.1
-    rimraf: ^3.0.1
+    rimraf: ^4.0.4
     tocbot: ^4.12.0
     tsconfig-paths-webpack-plugin: ^4.0.0
     turndown: ^7.0.0
