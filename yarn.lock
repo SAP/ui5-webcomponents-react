@@ -19720,15 +19720,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ncp@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ncp@npm:2.0.0"
-  bin:
-    ncp: ./bin/ncp
-  checksum: ea9b19221da1d1c5529bdb9f8e85c9d191d156bcaae408cce5e415b7fbfd8744c288e792bd7faf1fe3b70fd44c74e22f0d43c39b209bc7ac1fb8016f70793a16
-  languageName: node
-  linkType: hard
-
 "negotiator@npm:0.6.3, negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
@@ -26094,8 +26085,6 @@ __metadata:
     jest-environment-jsdom: ^29.2.1
     lerna: ^6.0.1
     lint-staged: ^13.0.0
-    mkdirp: ^1.0.4
-    ncp: ^2.0.0
     npm-run-all: ^4.1.5
     prettier: ^2.0.4
     react: 18.2.0
