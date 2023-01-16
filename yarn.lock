@@ -23691,11 +23691,11 @@ __metadata:
   linkType: hard
 
 "rimraf@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "rimraf@npm:4.0.4"
+  version: 4.0.7
+  resolution: "rimraf@npm:4.0.7"
   bin:
     rimraf: dist/cjs/src/bin.js
-  checksum: a3296ea15c79fe3da0bae06a484dd8b8ec1e6d3044b02f05ce27575ef23c856e37eef6e71a668ce0e263da594a05ace1e88be6f42200f1fbbf433b57121bae32
+  checksum: 294ae526198eadac7b57e7b43782aaa0be5d5c2a606ee65c26d9cd2fdddc320d80cc43c3c1c0b9562e88aa265f67c4c00f70af2b4d065e76ce03d9d7a2a5c901
   languageName: node
   linkType: hard
 
