@@ -1,3 +1,5 @@
 export enum GlobalStyleClasses {
-  sapScrollBar = 'sapScrollBar'
+  sapScrollBar = 'sapScrollBar',
+  //todo name
+  sapScrollBarAll = 'sapScrollBarAll'
 }
