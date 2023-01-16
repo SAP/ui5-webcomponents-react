@@ -15,7 +15,6 @@ import React, {
   MutableRefObject,
   ReactNode,
   Ref,
-  RefObject,
   useCallback,
   useEffect,
   useMemo,
@@ -35,15 +34,19 @@ import {
   useTable
 } from 'react-table';
 import {
+  AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableVisibleRowCountMode,
   GlobalStyleClasses,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
+  AnalyticalTableSelectionMode,
   TextAlign,
   ValueState,
-  VerticalAlign
+  VerticalAlign,
+  TableScaleWidthMode,
+  TableSelectionMode,
+  TableSelectionBehavior,
+  TableVisibleRowCountMode
 } from '../../enums';
 import {
   COLLAPSE_NODE,
@@ -72,6 +75,7 @@ import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
 import { useRowHighlight } from './hooks/useRowHighlight';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
+import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
 import { useStyling } from './hooks/useStyling';
 import { useTableScrollHandles } from './hooks/useTableScrollHandles';
@@ -88,12 +92,14 @@ import { VerticalResizer } from './VerticalResizer';
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
-   * This `string`/`function` is used to build the data model for your column. <br />
+   * This `string`/`function` is used to build the data model for your column.
+   *
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    */
   accessor: string | ((row: any, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
+   *
    * __Note__: Required if `accessor` is a function, otherwise `accessor` will overwrite the id.
    */
   id?: string;
@@ -156,7 +162,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   aggregate?: string | ((leafValues, aggregatedValues) => any);
   /**
-   * When attempting to group/aggregate non primitive cell values (eg. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table.
+   * When attempting to group/aggregate non-primitive cell values (e.g. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table.
    */
   aggregateValue?: string | ((values, row, column) => any);
   /**
@@ -204,7 +210,7 @@ export interface AnalyticalTableColumnDefinition {
 
   // usePopIn
   /**
-   * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller then the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
+   * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller than the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
    */
   responsivePopIn?: boolean;
   /**
@@ -237,7 +243,7 @@ export interface AnalyticalTableColumnDefinition {
   [key: string]: any;
 }
 
-interface DivWithCustomScrollProp extends HTMLDivElement {
+export interface DivWithCustomScrollProp extends HTMLDivElement {
   isExternalVerticalScroll?: boolean;
 }
 
@@ -270,19 +276,23 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   extension?: ReactNode;
   /**
-   * The minimum number of rows that are displayed. If the data contains less entries than `minRows`, it will be filled with empty rows.
+   * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    */
   minRows?: number;
   /**
    * Defines how the table will render visible rows.
    *
-   * - __"Fixed":__ The table always has as many rows as defined in the `visibleRowCount` prop.
-   * - __"Auto":__ The table automatically fills the height of the surrounding container.
+   * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
+   * - __"Auto":__ The number of visible rows displayed depends on the height of the surrounding container.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
    * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
    */
-  visibleRowCountMode?: TableVisibleRowCountMode | keyof typeof TableVisibleRowCountMode;
+  visibleRowCountMode?:
+    | AnalyticalTableVisibleRowCountMode
+    | keyof typeof AnalyticalTableVisibleRowCountMode
+    | TableVisibleRowCountMode;
+
   /**
    * The number of rows visible without going into overflow.
    *
@@ -292,7 +302,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines whether the row height of popped-in columns should be considered when calculating the body height of the table.
    *
-   * __Note:__ If set so `true` the table will change its height depending whether columns are popped in or not.
+   * __Note:__ If set so `true` the table will change its height depending on whether columns are popped in or not.
    */
   adjustTableHeightOnPopIn?: boolean;
   /**
@@ -311,9 +321,19 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   noDataText?: string;
   /**
-   * Defines the height of the rows and header.
+   * Defines the height of the rows and header row.
+   *
+   * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
    */
   rowHeight?: number;
+  /**
+   * Defines the height of the header row.
+   *
+   * __Note:__ If this property is set, it overwrites the height set in `rowHeight` for the header row.
+   *
+   * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
+   */
+  headerRowHeight?: number;
   /**
    * Defines whether the table should retain its column width, when a column has been manually resized and the container width has changed.
    */
@@ -366,7 +386,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
    */
-  selectionBehavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
+  selectionBehavior?:
+    | AnalyticalTableSelectionBehavior
+    | keyof typeof AnalyticalTableSelectionBehavior
+    | TableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
@@ -374,16 +397,20 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
    */
-  selectionMode?: TableSelectionMode | keyof typeof TableSelectionMode;
+  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
+
   /**
    * Defines the column growing behaviour. Possible Values:
    *
    * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
-   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all headers need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long content will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying its full header text and full content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property.
+   *
+   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
    *
    */
-  scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
+  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    *
@@ -419,11 +446,13 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the key for nested rows.
    *
-   * Default: "children"
+   * Default: "subRows"
    */
   subRowsKey?: string;
   /**
    * The key must consist of a valid `rowId` like `{ 2: true }` or `{ '0.2.0': true }` for nested rows.
+   *
+   * __Note:__ This prop updates the internal table state and must therefore be memoized!
    */
   selectedRowIds?: { [key: string]: boolean };
   /**
@@ -447,7 +476,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   alwaysShowSubComponent?: boolean;
   /**
-   * Defines where modals and other elements which should be mounted outside of the DOM hierarchy are rendered into via `React.createPortal`.
+   * Defines where modals and other elements which should be mounted outside the DOM hierarchy are rendered into via `React.createPortal`.
    *
    * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
    *
@@ -478,7 +507,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
       allRowsSelected: boolean;
       row?: Record<string, unknown>;
       isSelected?: boolean;
-      selectedFlatRows: Record<string, unknown>[] | string[];
+      selectedFlatRows: Record<string, unknown>[];
     }>
   ) => void;
   /**
@@ -499,11 +528,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @param {number} e.detail.rowCount - The number of rows
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
-  onLoadMore?: (e?: { detail: { rowCount: number; totalRowCount: number } }) => void;
+  onLoadMore?: (e?: CustomEvent<{ rowCount: number; totalRowCount: number }>) => void;
   /**
    * Fired when the body of the table is scrolled.
    */
-  onTableScroll?: (e) => (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
+  onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
@@ -535,7 +564,7 @@ const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
  */
-const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HTMLDivElement>) => {
+const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTypes>((props, ref) => {
   const {
     alternateRowColor,
     alwaysShowSubComponent,
@@ -550,6 +579,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     groupBy,
     groupable,
     header,
+    headerRowHeight,
     highlightField,
     infiniteScroll,
     infiniteScrollThreshold,
@@ -600,7 +630,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const classes = useStyles();
 
   const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
-  const tableRef: RefObject<DivWithCustomScrollProp> = useRef();
+  const tableRef = useRef<DivWithCustomScrollProp>(null);
 
   const isRtl = useIsRTL(analyticalTableRef);
 
@@ -679,6 +709,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     useResizeColumnsConfig,
     useRowSelectionColumn,
     useSingleRowStateSelection,
+    useSelectionChangeCallback,
     useRowHighlight,
     useRowNavigationIndicators,
     useDynamicColumnWidths,
@@ -727,6 +758,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
   );
   const internalRowHeight = rowHeight ?? calcRowHeight;
+  const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
       ? internalRowHeight + tableState.popInColumns.length * (internalRowHeight + 16)
@@ -741,7 +773,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [tableRef.current]);
 
   const updateRowsCount = useCallback(() => {
-    if (visibleRowCountMode === TableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {
+    if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {
       const parentElement = analyticalTableRef.current?.parentElement;
       const tableYPosition =
         parentElement &&
@@ -770,11 +802,11 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [globalFilterValue, setGlobalFilter]);
 
   useEffect(() => {
-    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 500);
+    const debouncedWidthObserverFn = debounce(updateTableClientWidth, 60);
     const tableWidthObserver = new ResizeObserver(debouncedWidthObserverFn);
     tableWidthObserver.observe(tableRef.current);
 
-    const debouncedHeightObserverFn = debounce(updateRowsCount, 500);
+    const debouncedHeightObserverFn = debounce(updateRowsCount, 60);
     const parentHeightObserver = new ResizeObserver(debouncedHeightObserverFn);
     if (analyticalTableRef.current?.parentElement) {
       parentHeightObserver.observe(analyticalTableRef.current?.parentElement);
@@ -800,7 +832,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   }, [updateRowsCount]);
 
   useEffect(() => {
-    if (tableState.visibleRows !== undefined && visibleRowCountMode === TableVisibleRowCountMode.Fixed) {
+    if (tableState.visibleRows !== undefined && visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Fixed) {
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: undefined }
@@ -825,7 +857,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.Auto ||
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
       tableState?.interactiveRowsHavePopIn ||
       adjustTableHeightOnPopIn
         ? popInRowHeight
@@ -905,6 +937,10 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     };
     if (!!rowHeight) {
       tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
+      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
+    }
+    if (!!headerRowHeight) {
+      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
     }
 
     if (tableState.tableClientWidth > 0) {
@@ -918,7 +954,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
       ...style,
       visibility: 'hidden'
     } as CSSProperties;
-  }, [tableState.tableClientWidth, style, rowHeight]);
+  }, [tableState.tableClientWidth, style, rowHeight, headerRowHeight]);
 
   useEffect(() => {
     if (retainColumnWidth && tableState.columnResizing?.isResizingColumn && tableState.tableColResized == null) {
@@ -929,9 +965,8 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
     }
   }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
 
-  const parentRef: RefObject<DivWithCustomScrollProp> = useRef(null);
-
-  const verticalScrollBarRef: RefObject<DivWithCustomScrollProp> = useRef(null);
+  const parentRef = useRef<DivWithCustomScrollProp>(null);
+  const verticalScrollBarRef = useRef<DivWithCustomScrollProp>(null);
 
   const handleBodyScroll = (e) => {
     if (typeof onTableScroll === 'function') {
@@ -1102,7 +1137,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
           {(tableState.isScrollable === undefined || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
-              internalRowHeight={internalRowHeight}
+              internalRowHeight={internalHeaderRowHeight}
               popInRowHeight={popInRowHeight}
               tableRef={tableRef}
               minRows={minRows}
@@ -1113,7 +1148,7 @@ const AnalyticalTable = forwardRef((props: AnalyticalTablePropTypes, ref: Ref<HT
             />
           )}
         </FlexBox>
-        {visibleRowCountMode === TableVisibleRowCountMode.Interactive && (
+        {visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Interactive && (
           <VerticalResizer
             popInRowHeight={popInRowHeight}
             hasPopInColumns={tableState?.popInColumns?.length > 0}
@@ -1139,9 +1174,9 @@ AnalyticalTable.defaultProps = {
   sortable: true,
   filterable: false,
   groupable: false,
-  selectionMode: TableSelectionMode.None,
-  selectionBehavior: TableSelectionBehavior.Row,
-  scaleWidthMode: TableScaleWidthMode.Default,
+  selectionMode: AnalyticalTableSelectionMode.None,
+  selectionBehavior: AnalyticalTableSelectionBehavior.Row,
+  scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
   data: [],
   columns: [],
   minRows: 5,
@@ -1161,7 +1196,7 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: TableVisibleRowCountMode.Fixed,
+  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
   alwaysShowSubComponent: false,
   portalContainer: document.body
 };

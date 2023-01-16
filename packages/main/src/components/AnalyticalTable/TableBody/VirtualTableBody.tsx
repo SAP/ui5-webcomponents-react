@@ -111,7 +111,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               className={classes.tr}
               style={{
                 height: `${virtualRow.size}px`,
-                transform: `translateY(${virtualRow.start}px)`
+                transform: `translateY(${virtualRow.start}px)`,
+                boxSizing: 'border-box'
               }}
             />
           );
@@ -179,9 +180,24 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 return null;
               }
               const cellProps = cell.getCellProps();
+              const allCellProps = {
+                ...cellProps,
+                ['data-visible-column-index']: visibleColumnIndex,
+                ['data-column-index']: virtualColumn.index,
+                ['data-visible-row-index']: visibleRowIndex + 1,
+                ['data-row-index']: rowIndexWithHeader,
+                style: {
+                  ...cellProps.style,
+                  position: 'absolute',
+                  width: `${virtualColumn.size}px`,
+                  top: 0,
+                  height: `${rowHeight}px`,
+                  ...directionStyles
+                }
+              };
               if (row.original?.emptyRow) {
                 // eslint-disable-next-line react/jsx-key
-                return <div {...cellProps} />;
+                return <div {...allCellProps} />;
               }
               let contentToRender;
               if (
@@ -204,22 +220,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
 
               return (
                 // eslint-disable-next-line react/jsx-key
-                <div
-                  {...cellProps}
-                  data-visible-column-index={visibleColumnIndex}
-                  data-column-index={virtualColumn.index}
-                  data-visible-row-index={visibleRowIndex + 1}
-                  data-row-index={rowIndexWithHeader}
-                  data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}
-                  style={{
-                    ...cellProps.style,
-                    position: 'absolute',
-                    width: `${virtualColumn.size}px`,
-                    top: 0,
-                    height: `${rowHeight}px`,
-                    ...directionStyles
-                  }}
-                >
+                <div {...allCellProps} data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}>
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
                     ? cell.render('PopIn', { contentToRender, internalRowHeight })
                     : cell.render(contentToRender, isNavigatedCell === true ? { isNavigatedCell } : {})}

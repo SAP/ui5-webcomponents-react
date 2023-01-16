@@ -13,3 +13,13 @@ packages/main/scripts/wrapperGeneration/json
 examples/seed-test
 scripts/web-component-wrappers/interfaces.json
 /temp
+*.tsbuildinfo
+packages/main/tmp
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

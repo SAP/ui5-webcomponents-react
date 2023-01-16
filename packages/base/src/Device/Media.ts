@@ -1,148 +1,88 @@
+import UI5MediaRange from '@ui5/webcomponents-base/dist/MediaRange.js';
 import { EventProvider } from './EventProvider';
 
-interface Query {
-  media?: MediaQueryList;
-  query: string;
-  from: number;
-  to: number;
-}
+type RANGE_LEGACY_4_STEPS = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
+type RANGE_4_STEPS = 'S' | 'M' | 'L' | 'XL';
 
 interface RangeInfo {
   from: number;
   to?: number;
-  name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
+  name: RANGE_LEGACY_4_STEPS;
   unit: string;
 }
 
-interface RangeSet {
-  points: number[];
-  unit: string;
-  name: string;
-  names: RangeInfo['name'][];
+const DEFAULT_RANGE_SET = UI5MediaRange.RANGESETS.RANGE_4STEPS;
 
-  queries?: Query[];
-  timer?: number;
-  currentquery?: Query;
-  listener?: () => void;
-}
-
-// private helpers
-let activeRangeSet: RangeSet;
-
-const matchLegacyBySize = (from, to, unit, width) => {
-  const a = from < 0 || from <= width;
-  const b = to < 0 || width <= to;
-  return a && b;
+const RANGE_DEFINITIONS: Record<RANGE_4_STEPS, [number, number]> = {
+  S: [0, 599],
+  M: [600, 1023],
+  L: [1024, 1439],
+  XL: [1440, -1]
 };
 
-const getQuery = (from: number, to: number, unit = 'px') => {
+const newRangeToLegacyRangeMap: Record<RANGE_4_STEPS, RANGE_LEGACY_4_STEPS> = {
+  S: 'Phone',
+  M: 'Tablet',
+  L: 'Desktop',
+  XL: 'LargeDesktop'
+};
+
+function getQuery(from: number, to: number) {
   let q = 'all';
   if (from > 0) {
-    q = `${q} and (min-width:${from}${unit})`;
+    q = `${q} and (min-width:${from}px)`;
   }
   if (to > 0) {
-    q = `${q} and (max-width:${to}${unit})`;
+    q = `${q} and (max-width:${to}px)`;
   }
   return q;
-};
+}
 
-const getRangeInfo = (iRangeIdx: number): RangeInfo => {
-  const q = activeRangeSet.queries[iRangeIdx];
-  const info: RangeInfo = { from: q.from, unit: activeRangeSet.unit, name: activeRangeSet.names[iRangeIdx] };
-  if (q.to >= 0) {
-    info.to = q.to;
-  }
-  return info;
-};
-
-const matches = (from: number, to: number, unit: string) => {
-  const q = getQuery(from, to, unit);
-  const mm = window.matchMedia(q); // FF returns null when running within an iframe with display:none
-  return mm && mm.matches;
-};
-
-const checkQueries = (infoOnly, matcher = matches): RangeInfo => {
-  const aQueries = activeRangeSet.queries;
-  let info = null;
-  for (let i = 0, len = aQueries.length; i < len; i++) {
-    const q = aQueries[i];
-    if ((q !== activeRangeSet.currentquery || infoOnly) && matcher(q.from, q.to, activeRangeSet.unit)) {
-      if (!infoOnly) {
-        activeRangeSet.currentquery = q;
-      }
-      info = getRangeInfo(i);
-    }
-  }
-
-  return info;
-};
-
-const handleChange = (): void => {
-  if (activeRangeSet.timer) {
-    clearTimeout(activeRangeSet.timer);
-    activeRangeSet.timer = null;
-  }
-
-  activeRangeSet.timer = window.setTimeout(() => {
-    const mParams = checkQueries(false);
-    if (mParams) {
-      EventProvider.fireEvent(`media`, mParams);
-    }
-  }, 0);
-};
-
-const DEFAULT_RANGE_SET = 'StdExt';
-
-const initRangeSet = (): void => {
-  if (activeRangeSet) {
-    return;
-  }
-
-  const oConfig: RangeSet = {
-    points: [600, 1024, 1440],
-    unit: 'px',
-    name: DEFAULT_RANGE_SET,
-    names: ['Phone', 'Tablet', 'Desktop', 'LargeDesktop']
+function resolveRangeInfo(name: RANGE_4_STEPS): RangeInfo {
+  const params: RangeInfo = {
+    from: RANGE_DEFINITIONS[name][0],
+    name: newRangeToLegacyRangeMap[name],
+    unit: 'px'
   };
-
-  oConfig.queries = [];
-  oConfig.timer = null;
-  oConfig.currentquery = null;
-  oConfig.listener = () => handleChange();
-
-  const rangeBorders = oConfig.points;
-  for (let i = 0, len = rangeBorders.length; i <= len; i++) {
-    const from = i === 0 ? 0 : rangeBorders[i - 1];
-    const to = i === rangeBorders.length ? -1 : rangeBorders[i] - 1;
-    const query = getQuery(from, to, oConfig.unit);
-    const media = window.matchMedia(query);
-    media.addEventListener('change', oConfig.listener);
-    oConfig.queries.push({
-      query,
-      from,
-      to,
-      media
-    });
+  if (RANGE_DEFINITIONS[name][1] > 0) {
+    params.to = RANGE_DEFINITIONS[name][1];
   }
+  return params;
+}
 
-  activeRangeSet = oConfig;
+let mediaQueries: Record<RANGE_4_STEPS, MediaQueryList> | null = null;
 
-  oConfig.listener();
-};
+function initMediaQueries() {
+  if (typeof document !== 'undefined') {
+    mediaQueries = {
+      S: window.matchMedia(getQuery(...RANGE_DEFINITIONS.S)),
+      M: window.matchMedia(getQuery(...RANGE_DEFINITIONS.M)),
+      L: window.matchMedia(getQuery(...RANGE_DEFINITIONS.L)),
+      XL: window.matchMedia(getQuery(...RANGE_DEFINITIONS.XL))
+    };
+
+    for (const mediaQueriesKey in mediaQueries) {
+      const handler = (event) => {
+        if (event.matches) {
+          const params = resolveRangeInfo(mediaQueriesKey as RANGE_4_STEPS);
+          EventProvider.fireEvent(`media`, params);
+        }
+      };
+      mediaQueries[mediaQueriesKey].addEventListener('change', handler);
+    }
+  }
+}
 
 // public API
 
 export const getCurrentRange = (width?: number): RangeInfo => {
-  if (!activeRangeSet) {
-    initRangeSet();
-  }
-
-  return checkQueries(true, isNaN(width) ? undefined : (from, to, unit) => matchLegacyBySize(from, to, unit, width));
+  // @ts-expect-error: width can only be undefined or a number, therefore `isNaN` works here
+  return resolveRangeInfo(UI5MediaRange.getCurrentRange(DEFAULT_RANGE_SET, isNaN(width) ? undefined : width));
 };
 
 export const attachMediaHandler = (func: (rangeInfo: RangeInfo) => void): void => {
-  if (!activeRangeSet) {
-    initRangeSet();
+  if (mediaQueries === null) {
+    initMediaQueries();
   }
   EventProvider.attachEvent(`media`, func);
 };

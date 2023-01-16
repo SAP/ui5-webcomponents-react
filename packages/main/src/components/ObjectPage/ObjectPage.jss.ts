@@ -5,12 +5,13 @@ export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
   anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
   anchorRight: '--_ui5wcr_ObjectPage_actions_right',
-  lastSectionMargin: '--_ui5wcr_ObjectPage_last_section_margin_bottom'
+  tabBarPaddingInline: '--_ui5wcr_ObjectPage_tab_bar_inline_padding'
 };
 
 export const styles = {
   objectPage: {
     [DynamicPageCssVariables.headerDisplay]: 'block',
+    [ObjectPageCssVariables.tabBarPaddingInline]: '1rem',
     boxSizing: 'border-box',
     width: '100%',
     height: '100%',
@@ -21,7 +22,6 @@ export const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    [ObjectPageCssVariables.lastSectionMargin]: 0,
     [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
@@ -30,11 +30,13 @@ export const styles = {
     // https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
     '& section[id*="ObjectPageSection-"] ~ section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'block'
-    },
-    '& section[data-component-name="ObjectPageSection"]:last-of-type': {
-      marginBottom: `var(${ObjectPageCssVariables.lastSectionMargin})`
     }
   },
+  // each tab has inline padding of 1rem, so it needs to be subtracted from the default responsive padding
+  Phone: { [ObjectPageCssVariables.tabBarPaddingInline]: 0 },
+  Tablet: { [ObjectPageCssVariables.tabBarPaddingInline]: '1rem' },
+  Desktop: { [ObjectPageCssVariables.tabBarPaddingInline]: '1rem' },
+  LargeDesktop: { [ObjectPageCssVariables.tabBarPaddingInline]: '2rem' },
   '@global html': {
     [ObjectPageCssVariables.anchorFloat]: 'right',
     [ObjectPageCssVariables.anchorRight]: '1.25rem',

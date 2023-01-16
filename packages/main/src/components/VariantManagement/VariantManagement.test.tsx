@@ -4,8 +4,8 @@ import React from 'react';
 import { TitleLevel } from '../..';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { PopoverDomRef } from '../../webComponents/Popover';
-import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
+import { VariantManagement } from './index';
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
@@ -15,19 +15,9 @@ const TwoVariantItems = [
 ];
 
 describe('VariantManagement', () => {
-  test('Render without crashing', () => {
-    const { rerender, getByTitle, getAllByText, getByText } = render(<VariantManagement />);
-    getByTitle('Select view');
-
-    rerender(<VariantManagement>{TwoVariantItems}</VariantManagement>);
-    getByTitle('Select view');
-    expect(getAllByText('VariantItem 2')).toHaveLength(2);
-    getByText('VariantItem 1');
-  });
-
   test('Selection', async () => {
     const cb = jest.fn((e) => e.detail);
-    const { getByTitle, getAllByText, getByText } = await renderWithDefine(
+    const { getAllByText, container } = await renderWithDefine(
       <VariantManagement onSelect={cb}>{TwoVariantItems}</VariantManagement>,
       ['ui5-li']
     );
@@ -36,7 +26,7 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = container.querySelector('.ui5-content-density-compact');
     const heading = getAllByText('VariantItem 2')[0];
 
     // initial selected Item
@@ -54,16 +44,16 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.selectedVariant.children).toBe('VariantItem 1');
     expect(cb.mock.results[0].value.selectedVariant.variantItem).toBeInTheDocument();
 
-    await popover.close();
+    popover.close();
     // open by clicking on heading
     fireEvent.click(getAllByText('VariantItem 1')[0]);
     expect(popover.isOpen()).toBeTruthy();
   });
 
   test('Disabled', () => {
-    const { container, getByTitle } = render(<VariantManagement disabled>{TwoVariantItems}</VariantManagement>);
+    const { container } = render(<VariantManagement disabled>{TwoVariantItems}</VariantManagement>);
 
-    const btn = getByTitle('Select view');
+    const btn = container.querySelector('.ui5-content-density-compact');
     const headingContainer = container.children[0];
 
     expect(headingContainer).toHaveClass('VariantManagement-disabled');
@@ -71,7 +61,7 @@ describe('VariantManagement', () => {
   });
 
   test('Close on item selection', async () => {
-    const { getByTitle, rerender } = await renderWithDefine(
+    const { rerender, container } = await renderWithDefine(
       <VariantManagement closeOnItemSelect>{TwoVariantItems}</VariantManagement>,
       ['ui5-li']
     );
@@ -80,7 +70,7 @@ describe('VariantManagement', () => {
     const li = wcListItem.shadowRoot.querySelector('li');
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = container.querySelector('.ui5-content-density-compact');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -101,7 +91,7 @@ describe('VariantManagement', () => {
       </VariantItem>
     ];
     const cb = jest.fn((e) => e.detail);
-    const { getByTitle, rerender, getByText, queryByText } = await renderWithDefine(
+    const { container, rerender, getByText, queryByText } = await renderWithDefine(
       <VariantManagement dirtyState onSave={cb}>
         {variantItems}
       </VariantManagement>,
@@ -119,7 +109,7 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.variantItem).toBeInTheDocument();
 
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    const btn = getByTitle('Select view');
+    const btn = container.querySelector('.ui5-content-density-compact');
     fireEvent.click(btn);
     expect(popover.isOpen()).toBeTruthy();
     fireEvent.click(li);
@@ -156,13 +146,13 @@ describe('VariantManagement', () => {
   });
 
   test('Headings customization', async () => {
-    const { getAllByText, getByTitle } = await renderWithDefine(
+    const { getAllByText, container } = await renderWithDefine(
       <VariantManagement titleText="Popover Heading" level={TitleLevel.H1}>
         {TwoVariantItems}
       </VariantManagement>,
       ['ui5-responsive-popover']
     );
-    const btn = getByTitle('Select view');
+    const btn = container.querySelector('.ui5-content-density-compact');
     fireEvent.click(btn);
     const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
     await waitFor(() => popover.shadowRoot.querySelector('h2'));
@@ -178,14 +168,14 @@ describe('VariantManagement', () => {
         .fill(':)')
         .map((_, index) => <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>)
     ];
-    const { rerender, getByPlaceholderText, queryByPlaceholderText, getByTitle } = render(
+    const { rerender, getByPlaceholderText, queryByPlaceholderText } = render(
       <VariantManagement>{variantItems}</VariantManagement>
     );
     const input = getByPlaceholderText('Search');
     fireEvent.input(input, { target: { value: 'VariantItem 10' } });
     expect(document.querySelectorAll('ui5-li')).toHaveLength(1);
 
-    const [a, ...rest] = variantItems;
+    const [_a, ...rest] = variantItems;
     rerender(<VariantManagement>{rest}</VariantManagement>);
     expect(queryByPlaceholderText('Search')).toBeNull();
   });

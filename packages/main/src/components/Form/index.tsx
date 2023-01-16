@@ -7,7 +7,6 @@ import React, {
   forwardRef,
   ReactElement,
   ReactNode,
-  Ref,
   useEffect,
   useMemo,
   useRef,
@@ -21,8 +20,9 @@ import { styles } from './Form.jss';
 
 export interface FormPropTypes extends CommonProps {
   /**
-   * Components that are placed into Form. Please use only `FormGroup` and `FormItem` in order to preserve the
-   * intended design.
+   * Components that are placed into Form.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FormGroup` or `FormItem` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
   /**
@@ -120,7 +120,7 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
  * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
  */
-const Form = forwardRef((props: FormPropTypes, ref: Ref<HTMLFormElement>) => {
+const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const {
     as,
     backgroundDesign,

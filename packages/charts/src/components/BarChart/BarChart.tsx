@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback } from 'react';
+import React, { CSSProperties, forwardRef, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -124,7 +124,7 @@ export interface BarChartProps extends IChartBaseProps {
 /**
  * A `BarChart` is a data visualization where each category is represented by a rectangle, with the width of the rectangle being proportional to the values being plotted.
  */
-const BarChart: FC<BarChartProps> = forwardRef((props: BarChartProps, ref: Ref<HTMLDivElement>) => {
+const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const {
     loading,
     dataset,

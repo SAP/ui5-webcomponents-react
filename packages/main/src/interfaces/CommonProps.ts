@@ -1,4 +1,4 @@
-import { CSSProperties, Ref, HTMLAttributes } from 'react';
+import { CSSProperties, HTMLAttributes } from 'react';
 
 export interface CommonProps extends HTMLAttributes<HTMLElement> {
   /**
@@ -11,5 +11,4 @@ export interface CommonProps extends HTMLAttributes<HTMLElement> {
    * Use this prop carefully, overwriting CSS rules might break the component.
    */
   className?: string;
-  ref?: Ref<any>;
 }

@@ -1,20 +1,45 @@
 import { ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
 
 export interface ICartesianChartConfig {
+  /**
+   * Defines whether the `YAxis` should be visible.
+   */
   yAxisVisible?: boolean;
+  /**
+   * Defines whether the `XAxis` should be visible.
+   */
   xAxisVisible?: boolean;
+  /**
+   * Defines whether the ticks of the `YAxis` should be visible.
+   */
   yAxisTicksVisible?: boolean;
+  /**
+   * Defines whether the labels of the `YAxis` should be visible.
+   */
   yAxisLabelsVisible?: boolean;
+  /**
+   * Defines the width of the `YAxis`.
+   */
   yAxisWidth?: number;
 
   gridStroke?: string;
   gridVertical?: boolean;
   gridHorizontal?: boolean;
 
+  /**
+   * Defines whether it should be possible to zoom in on the chart.
+   * If this prop is `true`, a range slider is displayed on top of the chart, making it possible to zoom-in/zoom-out.
+   */
   zoomingTool?: boolean;
 
+  /**
+   * Defines the gab between bars.
+   */
   barGap?: number;
 
+  /**
+   * Display a second `YAxis`.
+   */
   secondYAxis?: {
     dataKey: string;
     name?: string;
@@ -33,23 +58,23 @@ export interface ICartesianChartConfig {
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  yAxisConfig?: YAxisProps;
+  yAxisConfig?: Omit<YAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the `XAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  xAxisConfig?: XAxisProps;
+  xAxisConfig?: Omit<XAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondYAxisConfig?: YAxisProps;
+  secondYAxisConfig?: Omit<YAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondXAxisConfig?: XAxisProps;
+  secondXAxisConfig?: Omit<XAxisProps, 'mirror'>;
 }

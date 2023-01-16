@@ -9,18 +9,13 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build"]
+        "cacheableOperations": []
       }
     }
   },
   "targetDefaults": {
     "clean": {
       "dependsOn": ["^clean"]
-    },
-    "build": {
-      "inputs": ["default"],
-      "dependsOn": ["clean", "^build"],
-      "outputs": ["{projectRoot}/dist", "{projectRoot}/wrappers"]
     }
   }
 }

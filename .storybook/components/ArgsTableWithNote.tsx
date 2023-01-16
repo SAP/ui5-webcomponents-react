@@ -30,7 +30,7 @@ interface ArgsTableWithNotePropTypes {
 export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & React.ComponentProps<typeof ArgsTable>) => {
   const { hideHTMLPropsNote, noteText, hideTabContainer, ...rest } = args;
   const classes = useStyles();
-  const tableContainerRef = useRef<HTMLDivElement>();
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tabContainer = tableContainerRef.current?.querySelector('#panel-tab-content')

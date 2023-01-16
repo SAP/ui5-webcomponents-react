@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
-import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
 import { resolveCellAlignment } from '../util';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
@@ -49,7 +49,8 @@ const getRowProps = (rowProps, { instance, row }) => {
   const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
   const rowCanBeSelected =
-    [TableSelectionMode.SingleSelect, TableSelectionMode.MultiSelect].includes(selectionMode) && !isEmptyRow;
+    [AnalyticalTableSelectionMode.SingleSelect, AnalyticalTableSelectionMode.MultiSelect].includes(selectionMode) &&
+    !isEmptyRow;
 
   if (row.isGrouped) {
     className += ` ${classes.tableGroupHeader}`;
@@ -65,7 +66,7 @@ const getRowProps = (rowProps, { instance, row }) => {
   };
 
   if (rowCanBeSelected) {
-    if (TableSelectionBehavior.RowSelector !== selectionBehavior) {
+    if (AnalyticalTableSelectionBehavior.RowSelector !== selectionBehavior) {
       newRowProps.className += ` ${classes.trActive}`;
     }
     if (row.isSelected) {

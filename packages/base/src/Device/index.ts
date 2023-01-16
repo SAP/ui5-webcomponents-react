@@ -100,7 +100,8 @@ const handleMobileTimeout = () => {
 
 const handleMobileOrientationResizeChange = (evt) => {
   if (evt.type === 'resize') {
-    if (rInputTagRegex.test(document.activeElement.tagName) && !bOrientationChange) {
+    // @ts-expect-error: undefined is fine here
+    if (rInputTagRegex.test(document.activeElement?.tagName) && !bOrientationChange) {
       return;
     }
 

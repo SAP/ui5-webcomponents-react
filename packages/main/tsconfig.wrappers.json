@@ -1,13 +1,19 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./wrappers",
     "declarationDir": "./wrappers",
-    "paths": {
-      "@ui5/webcomponents-react-base": ["../../node_modules/@ui5/ui5-webcomponents-react-base/src/index.ts"]
-    }
+    "rootDir": "./tmp",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
   },
+  "references": [
+    {
+      "path": "../base"
+    }
+  ],
   "include": ["tmp/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/CodeGen.tsx"]
 }

@@ -33,6 +33,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     'ui5-segmented-button-item',
     'ui5-option'
   ]);
+
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
@@ -46,7 +47,9 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     };
   }
 
-  switch (property.type) {
+  const typeWithoutNamespace = property.type.replace(/sap\.ui\.(webcomponents|webc)\.(main|fiori|base)\.types\./, '');
+
+  switch (typeWithoutNamespace) {
     // native ts types
     case 'string':
     case 'String':
@@ -74,6 +77,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
         tsType: 'boolean'
       };
     case 'Array':
+    case 'array':
       return {
         importStatement: null,
         tsType: 'unknown[]'
@@ -151,6 +155,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
         tsType: `string | HTMLElement`
       };
     }
+
     // UI5 Web Component Enums
     case 'AvatarColorScheme':
     case 'AvatarGroupType':
@@ -190,6 +195,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'SideContentPosition':
     case 'SideContentVisibility':
     case 'SwitchDesign':
+    case 'TabContainerBackgroundDesign':
     case 'TabLayout':
     case 'TabsOverflowMode':
     case 'TableGrowingMode':
@@ -202,13 +208,13 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'ValueState':
     case 'WrappingType':
       return {
-        importStatement: `import { ${property.type} } from '../../enums';`,
-        tsType: `${property.type} | keyof typeof ${property.type}`,
-        enum: `${property.type}`,
+        importStatement: `import { ${typeWithoutNamespace} } from '../../enums';`,
+        tsType: `${typeWithoutNamespace} | keyof typeof ${typeWithoutNamespace}`,
+        enum: `${typeWithoutNamespace}`,
         isEnum: true
       };
     default:
-      throw new Error(`Unknown type ${JSON.stringify(property)}`);
+      throw new Error(`Unknown type: ${typeWithoutNamespace}. ${JSON.stringify(property)}`);
   }
 };
 

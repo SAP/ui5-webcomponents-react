@@ -69,6 +69,8 @@ export interface RangeSliderPropTypes extends RangeSliderAttributes, Omit<Common
 /**
  * Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RangeSlider" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(

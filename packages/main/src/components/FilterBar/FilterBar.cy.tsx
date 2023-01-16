@@ -1,7 +1,3 @@
-/// <reference types="cypress" />
-/// <reference types="@testing-library/cypress" />
-
-import React from 'react';
 import { Input, Option, Select, Switch } from '../../webComponents';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
@@ -124,13 +120,15 @@ describe('FilterBar.cy.tsx', () => {
     checkboxes.should('have.length', 4);
 
     checkboxes.each((item, index, arr) => {
+      const wrappedItem = cy.wrap(item);
       if (index === 0) {
-        cy.get(item).should('not.be.visible');
+        wrappedItem.should('have.css', 'visibility', 'hidden');
+        wrappedItem.should('not.be.visible');
       } else {
-        cy.get(item).should('be.visible');
+        wrappedItem.should('be.visible');
         // todo: simulated clicks don't work with internal "required selection" logic
         if (index !== arr.length - 1) {
-          cy.get(item).click();
+          wrappedItem.click();
         }
       }
     });
@@ -244,5 +242,62 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByPlaceholderText('Search').should('not.exist');
     cy.findByTestId('variantManagement').should('not.exist');
     cy.findByTestId('SELECT');
+  });
+
+  it('addCustomCSS', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="INPUT">
+          <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
+        </FilterGroupItem>
+        <FilterGroupItem label="SWITCH" active>
+          <Switch checked={true} data-testid="SWITCH" />
+        </FilterGroupItem>
+        <FilterGroupItem label="SELECT" required>
+          <Select data-testid="SELECT">
+            <Option selected={true}>Option 1</Option>
+            <Option>Option 2</Option>
+            <Option>Option 3</Option>
+            <Option>Option 4</Option>
+          </Select>
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.findByText('Filters').click();
+    cy.get('[accessible-name="Group View"]').click();
+
+    cy.get('[data-component-name="FilterBarDialogPanelTable"]')
+      .shadow()
+      .within(() => {
+        // no header for tables within panel
+        cy.get('thead').should('have.css', 'visibility', 'collapse');
+        cy.get('thead').should('not.be.visible');
+        // no border for table rows within panel - `getComputedStyle` returns the default value (`separate`) for `unset`
+        cy.get('table').should('have.css', 'border-collapse', 'separate');
+        // no bottom border for table within panel - `getComputedStyle` sets the border-width to 0 for `none`
+        cy.get('.ui5-table-root').should('have.css', 'border-bottom', '0px none rgb(50, 54, 58)');
+        // no select-all checkbox (header row is hidden)
+        cy.get('thead th.ui5-table-select-all-column').should('not.be.visible');
+      });
+
+    cy.get('[data-component-name="FilterBarDialogTable"]')
+      .shadow()
+      .within(() => {
+        cy.get('thead')
+          .first()
+          .within(() => {
+            // select-all checkbox is not displayed if no rows are defined
+            cy.get('[ui5-checkbox]').should('not.exist');
+          });
+      });
+
+    cy.get('[data-component-name="FilterBarDialogTableRow"]').each((item) => {
+      cy.wrap(item)
+        .shadow()
+        .within(() => {
+          // no navigated cell
+          cy.get('.ui5-table-row-navigated').should('not.be.visible');
+        });
+    });
   });
 });

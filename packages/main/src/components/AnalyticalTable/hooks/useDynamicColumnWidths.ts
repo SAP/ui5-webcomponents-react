@@ -1,4 +1,5 @@
-import { TableScaleWidthMode } from '../../../enums/TableScaleWidthMode';
+import { useMemo } from 'react';
+import { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
 import { AnalyticalTableColumnDefinition } from '../index';
 
@@ -12,16 +13,28 @@ const approximateHeaderPxFromCharLength = (charLength) =>
   charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
 const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
 
-const columnsDeps = (deps, { instance: { state, webComponentsReactProperties, visibleColumns, data, rows } }) => {
+const columnsDeps = (
+  deps,
+  { instance: { state, webComponentsReactProperties, visibleColumns, data, rows, columns } }
+) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
+  const colsEqual = useMemo(() => {
+    return visibleColumns?.every((visCol) => {
+      const id = visCol.id ?? visCol.accessor;
+      return columns.some((item) => {
+        return item.accessor === id || item.id === id;
+      });
+    });
+  }, [visibleColumns, columns]);
 
   return [
     ...deps,
     hasRows,
+    colsEqual,
+    visibleColumns?.length,
     !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
-    visibleColumns?.length,
     webComponentsReactProperties.scaleWidthMode,
     isLoadingPlaceholder,
     webComponentsReactProperties.scaleXFactor
@@ -165,7 +178,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
   const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
-  if (columns.length === 0 || !totalWidth || !TableScaleWidthMode[scaleWidthMode]) {
+  if (columns.length === 0 || !totalWidth || !AnalyticalTableScaleWidthMode[scaleWidthMode]) {
     return columns;
   }
 
@@ -183,7 +196,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
       return column ?? false;
     })
     .filter(Boolean);
-  if (scaleWidthMode === TableScaleWidthMode.Smart) {
+  if (scaleWidthMode === AnalyticalTableScaleWidthMode.Smart) {
     return smartColumns(columns, instance, hiddenColumns);
   }
 
@@ -266,7 +279,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
 
   const hasData = instance.data.length > 0;
 
-  if (scaleWidthMode === TableScaleWidthMode.Default || (!hasData && loading)) {
+  if (scaleWidthMode === AnalyticalTableScaleWidthMode.Default || (!hasData && loading)) {
     const defaultWidth = calculateDefaultTableWidth();
     return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
   }
@@ -324,10 +337,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return acc;
   }, {});
 
-  const totalCharNum = Object.values(columnMeta).reduce(
-    (acc: number, item: any) => acc + item.contentCharAvg,
-    0
-  ) as number;
+  const totalCharNum = Object.values(columnMeta).reduce((acc: number, item: any) => acc + item.contentCharAvg, 0);
 
   let reservedWidth = visibleColumns.reduce((acc, column) => {
     const { minHeaderWidth, fullWidth } = columnMeta[column.id ?? column.accessor];
@@ -337,7 +347,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
           column.minWidth || 0,
           column.width || 0,
           minHeaderWidth || 0,
-          scaleWidthMode === TableScaleWidthMode.Grow ? fullWidth : 0
+          scaleWidthMode === AnalyticalTableScaleWidthMode.Grow ? fullWidth : 0
         ) || 0
     );
   }, 0);
@@ -345,7 +355,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   let availableWidth = totalWidth - reservedWidth;
 
   if (availableWidth > 0) {
-    if (scaleWidthMode === TableScaleWidthMode.Grow) {
+    if (scaleWidthMode === AnalyticalTableScaleWidthMode.Grow) {
       reservedWidth = visibleColumns.reduce((acc, column) => {
         const { minHeaderWidth } = columnMeta[column.id ?? column.accessor];
         return acc + Math.max(column.minWidth || 0, column.width || 0, minHeaderWidth || 0) || 0;
@@ -373,7 +383,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     });
   }
 
-  // TableScaleWidthMode Grow
+  // AnalyticalTableScaleWidthMode Grow
   return columns.map((column) => {
     const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
     const meta = columnMeta[column.id ?? (column.accessor as string)];
@@ -382,7 +392,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
       return {
         ...column,
         width: column.width ?? fullWidth,
-        maxWidth: MAX_WIDTH
+        maxWidth: column.maxWidth ?? MAX_WIDTH
       };
     }
     return column;

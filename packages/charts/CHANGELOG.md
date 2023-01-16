@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+# [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
+
+### Bug Fixes
+
+- **charts:** allow formatting y/x-axis ticks w/o changing measure formatter ([#3803](https://github.com/SAP/ui5-webcomponents-react/issues/3803)) ([ad15be8](https://github.com/SAP/ui5-webcomponents-react/commit/ad15be8bc6d419d786599cdf1f6669075cf7bfaa)), closes [#3802](https://github.com/SAP/ui5-webcomponents-react/issues/3802)
+
+# [1.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.6.0) (2022-11-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+# [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+## [1.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.0...v1.3.1) (2022-11-07)
+
+### Bug Fixes
+
+- **typescript:** don't include `ref` in all component props ([#3713](https://github.com/SAP/ui5-webcomponents-react/issues/3713)) ([2f49dc3](https://github.com/SAP/ui5-webcomponents-react/commit/2f49dc34221a95e6ca99e7c3c9ad82cd6199cdf3))
+- **TypeScript:** improve ref types ([#3714](https://github.com/SAP/ui5-webcomponents-react/issues/3714)) ([5048bfd](https://github.com/SAP/ui5-webcomponents-react/commit/5048bfd89c81dde0ad516fc3880cb1de539103ef))
+
+## [1.2.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.2...v1.2.3) (2022-10-31)
+
+### Bug Fixes
+
+- **ComposedChart:** fix `onDataPointClick` event payload for bars ([#3697](https://github.com/SAP/ui5-webcomponents-react/issues/3697)) ([e0699d8](https://github.com/SAP/ui5-webcomponents-react/commit/e0699d88273948dd1f248437129b2b6e9447c483))
+
+## [1.2.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.1...v1.2.2) (2022-10-27)
+
+### Bug Fixes
+
+- **ColumnChartWithTrend:** enable `onDataPointClick` callback & fix tooltip ([#3688](https://github.com/SAP/ui5-webcomponents-react/issues/3688)) ([89107b8](https://github.com/SAP/ui5-webcomponents-react/commit/89107b820a219bbf0039b0dcb9ed4ab96a2e5258))
+- **ComposedChart:** invoke `onDataPointClick` only on the points of the area chart ([#3687](https://github.com/SAP/ui5-webcomponents-react/issues/3687)) ([2239a49](https://github.com/SAP/ui5-webcomponents-react/commit/2239a491c95d3153b621accef9ce57352c5294ec))
+
+# [1.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.1.0...v1.2.0) (2022-10-21)
+
+### Bug Fixes
+
+- **ColumnChartWithTrend:** improve TypeScript types and docs ([#3630](https://github.com/SAP/ui5-webcomponents-react/issues/3630)) ([885d56e](https://github.com/SAP/ui5-webcomponents-react/commit/885d56ea338f816fb1d0f3125ba33264fa556b37))
+
+### Features
+
+- **charts:** allow full customization of reference lines ([#3619](https://github.com/SAP/ui5-webcomponents-react/issues/3619)) ([9d582fc](https://github.com/SAP/ui5-webcomponents-react/commit/9d582fcbaac26fe2d5cbc403f2e3e1991cfaa4a8))
+
 # [1.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1...v1.1.0) (2022-10-06)
 
 ### Features

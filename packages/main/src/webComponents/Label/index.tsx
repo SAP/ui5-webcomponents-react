@@ -15,7 +15,7 @@ interface LabelAttributes {
   /**
    * Defines whether an asterisk character is added to the component text.
    *
-   * **Note:** Usually indicates that user input is required.
+   * **Note:** Usually indicates that user input (bound with the `for` property) is required. In that case the `required property of the corresponding input should also be set.`
    */
   required?: boolean;
   /**
@@ -47,6 +47,8 @@ export interface LabelPropTypes extends LabelAttributes, CommonProps {
  * The `Label` is a component used to represent a label, providing valuable information to the user. Usually it is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in the value holder.
  *
  * The `Label` appearance can be influenced by properties, such as `required` and `wrappingType`. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
+ *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</ui5-link>
  */

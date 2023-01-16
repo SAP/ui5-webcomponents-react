@@ -11,12 +11,12 @@ exports[`Scatter Chart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -292,6 +292,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -464,6 +465,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -489,6 +491,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -498,7 +501,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="29.68961991960317"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(158, 168.49999999999997)"
                     type="circle"
                     width="29.68961991960317"
@@ -508,6 +510,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -517,7 +520,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.52731126243186"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(237.04999999999998, 177.85000000000002)"
                     type="circle"
                     width="32.52731126243186"
@@ -527,6 +529,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -536,7 +539,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="28.037643187590227"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260.85, 116.80000000000001)"
                     type="circle"
                     width="28.037643187590227"
@@ -546,6 +548,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -555,7 +558,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="27.10279092286895"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(334.8, 304.34999999999997)"
                     type="circle"
                     width="27.10279092286895"
@@ -565,6 +567,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -574,7 +577,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="9.222497683095241"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(142.7, 183.9)"
                     type="circle"
                     width="9.222497683095241"
@@ -584,6 +586,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -593,7 +596,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.5074956582398"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(254.05, 182.79999999999998)"
                     type="circle"
                     width="32.5074956582398"
@@ -603,6 +605,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -612,7 +615,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="22.476030902221037"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(227.7, 324.15)"
                     type="circle"
                     width="22.476030902221037"
@@ -622,6 +624,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -631,7 +634,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="23.81238662470957"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(244.70000000000002, 340.1)"
                     type="circle"
                     width="23.81238662470957"
@@ -641,6 +643,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -650,7 +653,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.74449147386843"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(234.5, 150.89999999999998)"
                     type="circle"
                     width="32.74449147386843"
@@ -660,6 +662,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -669,7 +672,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="50.28356822634277"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(238.75, 69.5)"
                     type="circle"
                     width="50.28356822634277"
@@ -679,6 +681,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -688,7 +691,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="3.5898523544108687"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(261.7, 128.89999999999998)"
                     type="circle"
                     width="3.5898523544108687"
@@ -698,6 +700,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -707,7 +710,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="0"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 344.49999999999994)"
                     type="circle"
                     width="0"
@@ -729,6 +731,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -739,7 +742,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -749,6 +751,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -759,7 +762,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -769,6 +771,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -779,7 +782,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -789,6 +791,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -799,7 +802,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -809,6 +811,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -819,7 +822,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -829,6 +831,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -839,7 +842,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -849,6 +851,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -859,7 +862,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="22.418620767841652"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 91.50000000000001)"
                     type="circle"
                     width="22.418620767841652"
@@ -869,6 +871,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -879,7 +882,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="79.78845608028654"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(243, 250.99999999999997)"
                     type="circle"
                     width="79.78845608028654"
@@ -889,6 +891,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -899,7 +902,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="32.487667967674014"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(226, 152)"
                     type="circle"
                     width="32.487667967674014"
@@ -909,6 +911,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -919,7 +922,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="13.431997579309252"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(268.5, 74.99999999999999)"
                     type="circle"
                     width="13.431997579309252"
@@ -929,6 +931,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -939,7 +942,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -949,6 +951,7 @@ exports[`Scatter Chart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -959,7 +962,6 @@ exports[`Scatter Chart Check onClick events 1`] = `
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -1131,12 +1133,12 @@ exports[`Scatter Chart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -1412,6 +1414,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -1584,6 +1587,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -1609,6 +1613,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1618,7 +1623,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="29.68961991960317"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(158, 168.49999999999997)"
                     type="circle"
                     width="29.68961991960317"
@@ -1628,6 +1632,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1637,7 +1642,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.52731126243186"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(237.04999999999998, 177.85000000000002)"
                     type="circle"
                     width="32.52731126243186"
@@ -1647,6 +1651,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1656,7 +1661,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="28.037643187590227"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260.85, 116.80000000000001)"
                     type="circle"
                     width="28.037643187590227"
@@ -1666,6 +1670,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1675,7 +1680,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="27.10279092286895"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(334.8, 304.34999999999997)"
                     type="circle"
                     width="27.10279092286895"
@@ -1685,6 +1689,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1694,7 +1699,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="9.222497683095241"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(142.7, 183.9)"
                     type="circle"
                     width="9.222497683095241"
@@ -1704,6 +1708,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1713,7 +1718,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.5074956582398"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(254.05, 182.79999999999998)"
                     type="circle"
                     width="32.5074956582398"
@@ -1723,6 +1727,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1732,7 +1737,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="22.476030902221037"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(227.7, 324.15)"
                     type="circle"
                     width="22.476030902221037"
@@ -1742,6 +1746,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1751,7 +1756,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="23.81238662470957"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(244.70000000000002, 340.1)"
                     type="circle"
                     width="23.81238662470957"
@@ -1761,6 +1765,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1770,7 +1775,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.74449147386843"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(234.5, 150.89999999999998)"
                     type="circle"
                     width="32.74449147386843"
@@ -1780,6 +1784,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1789,7 +1794,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="50.28356822634277"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(238.75, 69.5)"
                     type="circle"
                     width="50.28356822634277"
@@ -1799,6 +1803,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1808,7 +1813,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="3.5898523544108687"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(261.7, 128.89999999999998)"
                     type="circle"
                     width="3.5898523544108687"
@@ -1818,6 +1822,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1827,7 +1832,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     fill="var(--sapChart_OrderedColor_1)"
                     height="0"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 344.49999999999994)"
                     type="circle"
                     width="0"
@@ -1849,6 +1853,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1859,7 +1864,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -1869,6 +1873,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1879,7 +1884,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -1889,6 +1893,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1899,7 +1904,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -1909,6 +1913,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1919,7 +1924,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -1929,6 +1933,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1939,7 +1944,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -1949,6 +1953,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1959,7 +1964,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -1969,6 +1973,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1979,7 +1984,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="22.418620767841652"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 91.50000000000001)"
                     type="circle"
                     width="22.418620767841652"
@@ -1989,6 +1993,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -1999,7 +2004,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="79.78845608028654"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(243, 250.99999999999997)"
                     type="circle"
                     width="79.78845608028654"
@@ -2009,6 +2013,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2019,7 +2024,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="32.487667967674014"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(226, 152)"
                     type="circle"
                     width="32.487667967674014"
@@ -2029,6 +2033,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2039,7 +2044,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="13.431997579309252"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(268.5, 74.99999999999999)"
                     type="circle"
                     width="13.431997579309252"
@@ -2049,6 +2053,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2059,7 +2064,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -2069,6 +2073,7 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2079,7 +2084,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -2107,7 +2111,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2137,7 +2140,6 @@ exports[`Scatter Chart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2194,12 +2196,12 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -2475,6 +2477,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="end"
               x="365"
@@ -2647,6 +2650,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
             </g>
             <text
               class="recharts-text recharts-label"
+              fill="#808080"
               offset="5"
               text-anchor="start"
               transform="rotate(-90, 15, 185)"
@@ -2672,6 +2676,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2681,7 +2686,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="29.68961991960317"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(158, 168.49999999999997)"
                     type="circle"
                     width="29.68961991960317"
@@ -2691,6 +2695,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2700,7 +2705,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.52731126243186"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(237.04999999999998, 177.85000000000002)"
                     type="circle"
                     width="32.52731126243186"
@@ -2710,6 +2714,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2719,7 +2724,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="28.037643187590227"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260.85, 116.80000000000001)"
                     type="circle"
                     width="28.037643187590227"
@@ -2729,6 +2733,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2738,7 +2743,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="27.10279092286895"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(334.8, 304.34999999999997)"
                     type="circle"
                     width="27.10279092286895"
@@ -2748,6 +2752,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2757,7 +2762,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="9.222497683095241"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(142.7, 183.9)"
                     type="circle"
                     width="9.222497683095241"
@@ -2767,6 +2771,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2776,7 +2781,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.5074956582398"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(254.05, 182.79999999999998)"
                     type="circle"
                     width="32.5074956582398"
@@ -2786,6 +2790,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2795,7 +2800,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="22.476030902221037"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(227.7, 324.15)"
                     type="circle"
                     width="22.476030902221037"
@@ -2805,6 +2809,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2814,7 +2819,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="23.81238662470957"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(244.70000000000002, 340.1)"
                     type="circle"
                     width="23.81238662470957"
@@ -2824,6 +2828,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2833,7 +2838,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="32.74449147386843"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(234.5, 150.89999999999998)"
                     type="circle"
                     width="32.74449147386843"
@@ -2843,6 +2847,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2852,7 +2857,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="50.28356822634277"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(238.75, 69.5)"
                     type="circle"
                     width="50.28356822634277"
@@ -2862,6 +2866,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2871,7 +2876,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="3.5898523544108687"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(261.7, 128.89999999999998)"
                     type="circle"
                     width="3.5898523544108687"
@@ -2881,6 +2885,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2890,7 +2895,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     fill="var(--sapChart_OrderedColor_1)"
                     height="0"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 344.49999999999994)"
                     type="circle"
                     width="0"
@@ -2912,6 +2916,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
               >
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2922,7 +2927,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -2932,6 +2936,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2942,7 +2947,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -2952,6 +2956,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2962,7 +2967,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -2972,6 +2976,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -2982,7 +2987,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -2992,6 +2996,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3002,7 +3007,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="29.94892283342191"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(141, 185)"
                     type="circle"
                     width="29.94892283342191"
@@ -3012,6 +3016,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3022,7 +3027,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="32.5074956582398"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(251.50000000000003, 168.49999999999997)"
                     type="circle"
                     width="32.5074956582398"
@@ -3032,6 +3036,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3042,7 +3047,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="22.418620767841652"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(73, 91.50000000000001)"
                     type="circle"
                     width="22.418620767841652"
@@ -3052,6 +3056,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3062,7 +3067,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="79.78845608028654"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(243, 250.99999999999997)"
                     type="circle"
                     width="79.78845608028654"
@@ -3072,6 +3076,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3082,7 +3087,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="32.487667967674014"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(226, 152)"
                     type="circle"
                     width="32.487667967674014"
@@ -3092,6 +3096,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3102,7 +3107,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="13.431997579309252"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(268.5, 74.99999999999999)"
                     type="circle"
                     width="13.431997579309252"
@@ -3112,6 +3116,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3122,7 +3127,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="28.71881883528695"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(260, 127.8)"
                     type="circle"
                     width="28.71881883528695"
@@ -3132,6 +3136,7 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 </g>
                 <g
                   class="recharts-layer recharts-scatter-symbol"
+                  role="img"
                 >
                   <path
                     class="recharts-symbols"
@@ -3142,7 +3147,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                     height="26.47744270128684"
                     name="APJ"
                     opacity="0.6"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     transform="translate(294, 306.00000000000006)"
                     type="circle"
                     width="26.47744270128684"
@@ -3170,7 +3174,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -3200,7 +3203,6 @@ exports[`Scatter Chart onLegendClick should not crash when invalid handler is pr
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >

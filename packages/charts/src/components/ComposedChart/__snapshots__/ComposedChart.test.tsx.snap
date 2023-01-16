@@ -11,12 +11,12 @@ exports[`ComposedChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper has-click-handler"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -666,39 +666,51 @@ exports[`ComposedChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -735,7 +747,6 @@ exports[`ComposedChart Check onClick events 1`] = `
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="none"
                     stroke-opacity="1"
                     type="monotone"
@@ -748,7 +759,6 @@ exports[`ComposedChart Check onClick events 1`] = `
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="var(--sapChart_OrderedColor_2)"
                     stroke-opacity="1"
                     type="monotone"
@@ -767,7 +777,6 @@ exports[`ComposedChart Check onClick events 1`] = `
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -793,7 +802,6 @@ exports[`ComposedChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -820,7 +828,6 @@ exports[`ComposedChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -851,7 +858,6 @@ exports[`ComposedChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -996,12 +1002,12 @@ exports[`ComposedChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -1651,39 +1657,51 @@ exports[`ComposedChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -1720,7 +1738,6 @@ exports[`ComposedChart Render chart with data 1`] = `
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="none"
                     stroke-opacity="1"
                     type="monotone"
@@ -1733,7 +1750,6 @@ exports[`ComposedChart Render chart with data 1`] = `
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="var(--sapChart_OrderedColor_2)"
                     stroke-opacity="1"
                     type="monotone"
@@ -1752,7 +1768,6 @@ exports[`ComposedChart Render chart with data 1`] = `
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -1778,7 +1793,6 @@ exports[`ComposedChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1805,7 +1819,6 @@ exports[`ComposedChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1836,7 +1849,6 @@ exports[`ComposedChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1894,12 +1906,12 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -2549,39 +2561,51 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -2618,7 +2642,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="none"
                     stroke-opacity="1"
                     type="monotone"
@@ -2631,7 +2654,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                     fill-opacity="0.3"
                     height="330"
                     name="Users"
-                    points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
                     stroke="var(--sapChart_OrderedColor_2)"
                     stroke-opacity="1"
                     type="monotone"
@@ -2650,7 +2672,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -2676,7 +2697,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2703,7 +2723,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2734,7 +2753,6 @@ exports[`ComposedChart onLegendClick should not crash when invalid handler is pr
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >

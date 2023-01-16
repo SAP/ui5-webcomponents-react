@@ -47,7 +47,7 @@ interface TreeAttributes {
 export interface TreeDomRef extends TreeAttributes, Ui5DomRef {
   /**
    * Perform Depth-First-Search walk on the tree and run a callback on each node
-   * @param {(treeNode: HTMLElement, level: number) => void} callback - function to execute on each node of the tree with 2 arguments: the node and the level
+   * @param {(treeNode: HTMLElement, level: number) => void} callback - function to execute on each node of the tree with 3 arguments: the node, the level and the index
    */
   walk: (callback: (treeNode: HTMLElement, level: number) => void) => void;
 }
@@ -103,6 +103,8 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
 
 /**
  * The `Tree` component provides a tree structure for displaying data in a hierarchy.
+ *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
  */

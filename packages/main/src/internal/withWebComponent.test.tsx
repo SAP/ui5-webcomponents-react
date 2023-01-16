@@ -1,12 +1,12 @@
 import { render, fireEvent, screen } from '@shared/tests';
-import { Button } from '../webComponents/Button';
-import { Dialog } from '../webComponents/Dialog';
-import { Bar } from '../webComponents/Bar';
 import {
   setCustomElementsScopingSuffix,
   setCustomElementsScopingRules
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import React from 'react';
+import { Bar } from '../webComponents/Bar';
+import { Button } from '../webComponents/Button';
+import { Dialog } from '../webComponents/Dialog';
 
 describe('withWebComponent', () => {
   test('Unmount Event Handlers correctly after prop update', () => {
@@ -111,7 +111,7 @@ describe('withWebComponent', () => {
             <>{false && <span>I'm an empty fragment</span>}</>
             <>
               <span>I'm the only child of a fragment in level 1!</span>
-              {[<span>I'm in an array inside of a fragment!</span>, <span>Me too!</span>]}
+              {[<span key="0">I'm in an array inside of a fragment!</span>, <span key="1">Me too!</span>]}
             </>
           </>
         }

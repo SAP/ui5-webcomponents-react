@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { FC } from 'react';
+import React from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 import { getTextWidth, truncateLongLabel } from './Utils';
 
@@ -13,15 +13,17 @@ interface XAxisTicksProps {
   secondYAxisConfig?: {
     color: string;
   };
+  tickFormatter?: (value: any, index: number) => string;
+  index?: number;
 }
 
-export const XAxisTicks: FC<XAxisTicksProps> = (props: XAxisTicksProps) => {
-  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig } = props;
+export const XAxisTicks = (props: XAxisTicksProps) => {
+  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig, tickFormatter, index } = props;
 
   const bandWidth = width / visibleTicksCount;
   const shouldRotate = bandWidth <= 100;
 
-  const formattedValue = config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
   let textToDisplay = formattedValue;
   if (shouldRotate) {
     textToDisplay = truncateLongLabel(formattedValue, 11);

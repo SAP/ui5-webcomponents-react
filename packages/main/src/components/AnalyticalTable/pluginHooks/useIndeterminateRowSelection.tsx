@@ -1,27 +1,77 @@
 import { useEffect } from 'react';
-import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
 
-const getParentIndicesRecursive = (rowId) => {
-  const parentIndices = {};
-  const getParentIndices = (internalRowId) => {
-    const lastDotIndex = internalRowId.lastIndexOf('.');
-    if (~lastDotIndex) {
-      const parentRowId = internalRowId.slice(0, lastDotIndex);
-      if (!parentIndices[parentRowId]) {
-        parentIndices[parentRowId] = true;
-        getParentIndices(parentRowId);
+type onIndeterminateChange = (e: {
+  indeterminateRowsById: Record<string | number, boolean>;
+  tableInstance: Record<string, any>;
+}) => void;
+
+const getParentRow = (id, rowsById) => {
+  let lastDotIndex = id.lastIndexOf('.');
+  if (lastDotIndex === -1) {
+    lastDotIndex = Infinity;
+  }
+  const parentRowId = id.slice(0, lastDotIndex);
+  return [rowsById[parentRowId], lastDotIndex];
+};
+
+const getIndeterminateRowIds = (id) => {
+  const indeterminateRowsById = {};
+  const lastDotIndex = id.lastIndexOf('.');
+  indeterminateRowsById[id] = true;
+  if (lastDotIndex !== -1) {
+    // set all parent rows to indeterminate
+    Object.assign(indeterminateRowsById, getIndeterminateRowIds(id.slice(0, lastDotIndex)));
+  }
+  return indeterminateRowsById;
+};
+
+const getIndeterminate = (rows, rowsById, state) => {
+  const indeterminateRowsById = {};
+  let usedParentIndex = '';
+  const getIndeterminateRecursive = (subRows, rowIdScope = null) => {
+    for (const row of subRows) {
+      if (row.subRows.length > 0) {
+        // find leaf nodes
+        getIndeterminateRecursive(row.subRows, row.id);
+      } else if (rowIdScope !== null && usedParentIndex !== rowIdScope) {
+        usedParentIndex = rowIdScope;
+        const checkIndeterminate = (rowId) => {
+          const [parentRow, dotIndex] = getParentRow(rowId, rowsById);
+          const selectedRows = parentRow.subRows.filter((item) => state.selectedRowIds[item.id]);
+          const areAllSelected = parentRow.subRows.length === selectedRows.length;
+          const isOneSelected = selectedRows.length > 0;
+
+          // if not all, but at least one subRow is selected, set the parent row's state to indeterminate
+          if (isOneSelected && !areAllSelected) {
+            const parentRowId = parentRow.id;
+            Object.assign(indeterminateRowsById, getIndeterminateRowIds(parentRowId));
+            return;
+          }
+          if (dotIndex !== Infinity) {
+            // recursively check indeterminate state until root nodes are reached
+            checkIndeterminate(parentRow.id);
+          }
+          return;
+        };
+
+        checkIndeterminate(row.id);
       }
     }
   };
-  getParentIndices(rowId);
-  return parentIndices;
+  getIndeterminateRecursive(rows);
+  return indeterminateRowsById;
 };
 
 /**
  * A plugin hook that marks parent rows as indeterminate if a child row is selected in `MultiSelect` mode.
  * When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
+ *
+ * __Note:__ The `indeterminate` state has a higher priority than the `selected` state. Therefore, a row can be selected and indeterminate at the same time. This can for example happen, if `selectSubRows: true` is set and a row with sub-rows is selected and then a sub-row is unselected.
+ *
+ * @param {event} onIndeterminateChange Fired when the indeterminate state of rows is changed.
  */
-export const useIndeterminateRowSelection = () => {
+export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndeterminateChange) => {
   const toggleRowProps = (rowProps, { row, instance }) => {
     let indeterminate;
     if (instance.isAllRowsSelected) {
@@ -39,6 +89,7 @@ export const useIndeterminateRowSelection = () => {
   };
 
   const stateReducer = (newState, action, prevState, instance) => {
+    const { rowsById, state, rows } = instance;
     if (action.type === 'INDETERMINATE_ROW_IDS') {
       if (action.payload === 'reset') {
         return {
@@ -46,39 +97,16 @@ export const useIndeterminateRowSelection = () => {
           indeterminateRows: {}
         };
       }
-      let indeterminateRows = {};
-      const allSelectedRows = {};
-      let allSelected = true;
-      let currentDepth = -1;
 
-      instance.flatRows
-        ?.filter((item) => !item.original.emptyRow)
-        .sort((a, b) => b.id.localeCompare(a.id))
-        .map((item) => {
-          if (currentDepth === -1) {
-            currentDepth = item.depth;
-          } else if (currentDepth !== item.depth) {
-            currentDepth = item.depth;
-            if (allSelected && newState.selectedRowIds[item.id]) {
-              allSelectedRows[item.id] = true;
-              delete indeterminateRows[item.id];
-            }
-            allSelected = true;
-          }
+      const indeterminateRowsById = getIndeterminate(
+        rows.filter((item) => !item.original.emptyRow),
+        rowsById,
+        state
+      );
 
-          if (newState.selectedRowIds[item.id]) {
-            const parentRowId = item.id.slice(0, item.id.lastIndexOf('.'));
-            if (parentRowId) {
-              indeterminateRows = { ...indeterminateRows, ...getParentIndicesRecursive(item.id) };
-            }
-          } else {
-            allSelected = false;
-          }
-          return item;
-        });
       return {
         ...newState,
-        indeterminateRows: indeterminateRows
+        indeterminateRows: indeterminateRowsById
       };
     }
   };
@@ -87,6 +115,7 @@ export const useIndeterminateRowSelection = () => {
     const {
       data,
       dispatch,
+      rowsById,
       state: { selectedRowIds, indeterminateRows },
       webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable }
     } = instance;
@@ -94,14 +123,22 @@ export const useIndeterminateRowSelection = () => {
     useEffect(() => {
       if (
         isTreeTable &&
-        selectionMode === TableSelectionMode.MultiSelect &&
-        selectionBehavior !== TableSelectionBehavior.RowOnly
+        selectionMode === AnalyticalTableSelectionMode.MultiSelect &&
+        selectionBehavior !== AnalyticalTableSelectionBehavior.RowOnly &&
+        Object.keys(selectedRowIds).length &&
+        Object.keys(rowsById).length !== Object.keys(selectedRowIds).length
       ) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS' });
       } else if (typeof indeterminateRows === 'object' && Object.keys(indeterminateRows).length) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS', payload: 'reset' });
       }
     }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior]);
+
+    useEffect(() => {
+      if (typeof onIndeterminateChange === 'function' && indeterminateRows) {
+        onIndeterminateChange({ indeterminateRowsById: indeterminateRows, tableInstance: instance });
+      }
+    }, [indeterminateRows]);
   };
 
   const useIndeterminate = (hooks) => {

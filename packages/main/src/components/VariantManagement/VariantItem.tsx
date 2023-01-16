@@ -1,8 +1,11 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, useContext, useEffect } from 'react';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
+import React, { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext';
-import { StandardListItem, StandardListItemPropTypes } from '../../webComponents/StandardListItem';
+import {
+  StandardListItem,
+  StandardListItemDomRef,
+  StandardListItemPropTypes
+} from '../../webComponents/StandardListItem';
 
 export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children' | 'onDetailClick'> {
   /**
@@ -52,7 +55,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
 /**
  * The `VariantItem` describes a variant/view of the `VariantManagement` component.
  */
-const VariantItem = forwardRef((props: VariantItemPropTypes, ref: Ref<Ui5DomRef>) => {
+const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((props, ref) => {
   const {
     isDefault,
     author,

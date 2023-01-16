@@ -3,7 +3,6 @@
 exports[`StandardListItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-li
-    actionable=""
     additional-text-state="None"
     type="Active"
     ui5-li=""

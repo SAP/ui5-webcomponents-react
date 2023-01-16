@@ -64,6 +64,13 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  deleteButton?: ReactNode;
+  /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
   onDetailClick?: (event: Ui5CustomEvent<StandardListItemDomRef>) => void;
@@ -72,13 +79,15 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
 /**
  * The `StandardListItem` represents the simplest type of item for a `StandardListItemst`. This is a list item, providing the most common use cases such as `text`, `image` and `icon`.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardListItemDomRef>(
   'ui5-li',
   ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type'],
   ['iconEnd', 'selected'],
-  [],
+  ['deleteButton'],
   ['detail-click']
 );
 

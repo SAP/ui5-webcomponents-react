@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { FC } from 'react';
+import React from 'react';
 import { IChartMeasure } from '../interfaces/IChartMeasure';
 import { defaultMaxYAxisWidth } from './defaults';
 import { getTextWidth, truncateLongLabel } from './Utils';
@@ -12,12 +12,14 @@ interface YAxisTicksProps {
   secondYAxisConfig?: {
     color: string;
   };
+  tickFormatter?: (value: any, index: number) => string;
+  index?: number;
 }
 
-export const YAxisTicks: FC<YAxisTicksProps> = (props: YAxisTicksProps) => {
-  const { x, y, payload, config, secondYAxisConfig } = props;
+export const YAxisTicks = (props: YAxisTicksProps) => {
+  const { x, y, payload, config, secondYAxisConfig, tickFormatter, index } = props;
 
-  const formattedValue = config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
   let textToDisplay = formattedValue;
   if (getTextWidth(formattedValue) > defaultMaxYAxisWidth) {
     for (let i = `${formattedValue}`.length; i > 0; i--) {

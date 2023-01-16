@@ -3,18 +3,22 @@ import { Device, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
+import { ButtonDesign, PopoverPlacementType } from '../../enums';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { stopPropagation } from '../../internal/stopPropagation';
-import { ButtonPropTypes } from '../../webComponents';
-import { Popover, PopoverDomRef } from '../../webComponents/Popover';
-import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/ToggleButton';
+import {
+  ButtonPropTypes,
+  Popover,
+  PopoverDomRef,
+  ToggleButton,
+  ToggleButtonDomRef,
+  ToggleButtonPropTypes
+} from '../../webComponents';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
   classes: any;
-  children: ReactNode;
+  children: ReactNode[];
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
   numberOfAlwaysVisibleItems?: number;
@@ -67,13 +71,12 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     setPressed(false);
   };
 
-  const renderChildren = useCallback(() => {
-    return React.Children.toArray(
-      (children as ReactElement)?.type === React.Fragment ? (children as ReactElement).props.children : children
-    ).map((item: ReactElement<any>, index) => {
+  const renderChildren = useCallback((): ReactNode[] => {
+    return children.map((item, index) => {
       if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
-        if ((item.type as any).displayName === 'ToolbarSeparator') {
-          return React.cloneElement(item, {
+        // @ts-expect-error: if type is not defined, it's not a spacer
+        if (item.type?.displayName === 'ToolbarSeparator') {
+          return React.cloneElement(item as ReactElement, {
             style: {
               height: '0.0625rem',
               margin: '0.375rem 0.1875rem',

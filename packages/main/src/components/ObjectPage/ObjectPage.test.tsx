@@ -143,8 +143,7 @@ describe('ObjectPage', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // TODO enable this test as soon as https://github.com/SAP/ui5-webcomponents/issues/5778 is fixed
-  test.skip('Not crashing with 0 sections', () => {
+  test('Not crashing with 0 sections', () => {
     const { asFragment } = render(<ObjectPage mode={ObjectPageMode.IconTabBar} />);
     expect(asFragment()).toMatchSnapshot();
   });
@@ -180,10 +179,10 @@ describe('ObjectPage', () => {
 
   test('with anchor-bar', () => {
     const { asFragment, container, rerender } = render(renderComponent({ headerTitle, headerContent, footer }));
-    expect(container.querySelector('[tooltip="Expand Header"]')).toBeNull();
+    expect(container.querySelector('[tooltip="Collapse Header"]')).toBeNull();
     expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
     rerender(renderComponent({ headerTitle, headerContent, footer, showHideHeaderButton: true }));
-    expect(container.querySelector('[tooltip="Expand Header"]')).toBeVisible();
+    expect(container.querySelector('[tooltip="Collapse Header"]')).toBeVisible();
     expect(container.querySelector('[tooltip="Pin Header"]')).toBeNull();
 
     //needs mocking, otherwise won't work
@@ -217,9 +216,7 @@ describe('ObjectPage', () => {
 
   //todo: needs mocking
   test.skip('title in header', () => {
-    const { container } = render(
-      renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true })
-    );
+    render(renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true }));
   });
 
   test('with IllustratedMessage', () => {

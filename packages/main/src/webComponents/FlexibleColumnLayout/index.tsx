@@ -126,6 +126,8 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
 /**
  * The `FlexibleColumnLayout` implements the list-detail-detail paradigm by displaying up to three pages in separate columns. There are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(

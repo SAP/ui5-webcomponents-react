@@ -82,24 +82,58 @@ describe('utils', function () {
   test('flattenFragments - nested fragments with depth Infinity', () => {
     expect(
       flattenFragments(
-        <>
-          <span>Hello World!</span>
+        [
           <>
-            <span>Hello World 2</span>
-            <span>Hello World 2.1</span>
+            <span>Hello World!</span>
             <>
-              <span>Hello World 3</span>
+              <span>Hello World 2</span>
+              <span>Hello World 2.1</span>
               <>
-                <span>Hello World 4</span>
-                <span>Hello World 4.1</span>
+                <span>Hello World 3</span>
+                <>
+                  <span>Hello World 4</span>
+                  <span>Hello World 4.1</span>
+                </>
+              </>
+            </>
+          </>,
+          <>
+            <span>Hello World!</span>
+            <>
+              <span>Hello World 2</span>
+              <span>Hello World 2.1</span>
+              <>
+                <span>Hello World 3</span>
+                <>
+                  <span>Hello World 4</span>
+                  <span>Hello World 4.1</span>
+                </>
               </>
             </>
           </>
-        </>,
+        ],
         Infinity
       )
     ).toMatchInlineSnapshot(`
       [
+        <span>
+          Hello World!
+        </span>,
+        <span>
+          Hello World 2
+        </span>,
+        <span>
+          Hello World 2.1
+        </span>,
+        <span>
+          Hello World 3
+        </span>,
+        <span>
+          Hello World 4
+        </span>,
+        <span>
+          Hello World 4.1
+        </span>,
         <span>
           Hello World!
         </span>,

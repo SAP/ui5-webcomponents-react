@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, forwardRef, useCallback, useMemo } from 'react';
 import {
   Bar,
   Brush,
@@ -118,7 +118,7 @@ type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
  * The `BulletChart` is used to compare primary and secondary (comparison) values. The primary and additional values
  * are rendered as a stacked Bar Chart while the comparison value is displayed as a line above.
  */
-const BulletChart: FC<BulletChartProps> = forwardRef((props: BulletChartProps, ref: Ref<HTMLDivElement>) => {
+const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) => {
   const {
     loading,
     dataset,

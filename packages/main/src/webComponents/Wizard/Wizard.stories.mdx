@@ -40,8 +40,8 @@ import { Br } from './CodeGen';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const step2 = useRef();
-      const step3 = useRef();
+      const step2 = useRef(null);
+      const step3 = useRef(null);
       const goToStep2 = () => {
         step2.current.selected = true;
         step2.current.disabled = false;

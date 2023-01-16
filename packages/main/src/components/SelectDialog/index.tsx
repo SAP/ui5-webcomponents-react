@@ -8,7 +8,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode, Ref, useState } from 'react';
+import React, { forwardRef, ReactNode, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
@@ -190,7 +190,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
 /**
  * The SelectDialog enables users to filter a comprehensive list via a search field and to select one or more items.
  */
-const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDomRef>) => {
+const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref) => {
   const {
     children,
     className,
@@ -220,7 +220,7 @@ const SelectDialog = forwardRef((props: SelectDialogPropTypes, ref: Ref<DialogDo
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [componentRef, selectDialogRef] = useSyncRef(ref);
-  const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>(listProps.ref);
+  const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>((listProps as any).ref);
 
   const handleBeforeOpen = (e) => {
     if (typeof onBeforeOpen === 'function') {

@@ -1,6 +1,6 @@
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, FC, forwardRef, Ref, useCallback, useMemo } from 'react';
+import React, { CSSProperties, forwardRef, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -138,7 +138,7 @@ const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' }
 /**
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
-const MicroBarChart: FC<MicroBarChartProps> = forwardRef((props: MicroBarChartProps, ref: Ref<HTMLDivElement>) => {
+const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref) => {
   const { loading, dataset, onDataPointClick, style, className, slot, ChartPlaceholder, ...rest } = props;
 
   const classes = useStyles();

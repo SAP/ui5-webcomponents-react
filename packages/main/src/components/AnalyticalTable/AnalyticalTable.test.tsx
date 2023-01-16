@@ -1,17 +1,10 @@
-import { act, fireEvent, getByText, getMouseEvent, render, renderRtl, screen } from '@shared/tests';
+import { fireEvent, getByText, render, renderRtl, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import React, { createRef, useRef } from 'react';
-import { TableSelectionBehavior } from '../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../enums/TableSelectionMode';
-import { TableVisibleRowCountMode } from '../../enums/TableVisibleRowCountMode';
-import { ValueState } from '../../enums/ValueState';
-import { Button } from '../../webComponents/Button';
+import React from 'react';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode, ValueState } from '../../enums';
+import { Button } from '../../webComponents';
+import { useManualRowSelect, useRowDisableSelection } from './pluginHooks/AnalyticalTableHooks';
 import { AnalyticalTable } from './index';
-import {
-  useIndeterminateRowSelection,
-  useManualRowSelect,
-  useRowDisableSelection
-} from './pluginHooks/AnalyticalTableHooks';
 
 const columns = [
   {
@@ -61,7 +54,7 @@ const columnsWithPopIn = [
     responsivePopIn: true,
     responsiveMinWidth: 801,
     Header: () => <span>Custom original Header2</span>,
-    PopInHeader: (instance) => {
+    PopInHeader: () => {
       return 'Custom Header 2';
     },
     id: 'custom1',
@@ -98,60 +91,6 @@ const data = [
     friend: {
       name: 'Nei',
       age: 50
-    }
-  }
-];
-
-const moreData = [
-  {
-    name: 'foo',
-    age: 18,
-    friend: {
-      name: 'meh',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'bar',
-    age: 77,
-    friend: {
-      name: 'la',
-      age: 66
-    }
-  },
-  {
-    name: 'lorem',
-    age: 18,
-    friend: {
-      name: 'ipsum',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'dolor',
-    age: 77,
-    friend: {
-      name: 'sit',
-      age: 66
-    }
-  },
-  {
-    name: 'amet',
-    age: 18,
-    friend: {
-      name: 'consetetur',
-      age: 28
-    },
-    status: ValueState.Success
-  },
-  {
-    name: 'sadipscing',
-    age: 77,
-    friend: {
-      name: 'elitr',
-      age: 66
     }
   }
 ];
@@ -331,7 +270,7 @@ describe('AnalyticalTable', () => {
         filterable={true}
         visibleRows={15}
         minRows={5}
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         subRowsKey="subRows"
         isTreeTable={true}
       />
@@ -363,14 +302,6 @@ describe('AnalyticalTable', () => {
   test('Alternate Row Color', () => {
     const { asFragment } = render(
       <AnalyticalTable header="Table Title" data={data} columns={columns} alternateRowColor />
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('custom row height', () => {
-    const { asFragment } = render(
-      <AnalyticalTable header="Table Title" data={data} columns={columns} rowHeight={60} />
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -418,20 +349,20 @@ describe('AnalyticalTable', () => {
     const { asFragment, container } = render(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
-    let dragColumnId = componentDrag.dataset.columnId;
+    const componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    const dragColumnId = componentDrag.dataset.columnId;
 
     expect(componentDrag.draggable).toBeDefined();
     expect(componentDrag.draggable).toBeTruthy();
     fireEvent.drag(componentDrag);
 
     // get second column of the table and simulate dropping on it
-    let dataTransfer = {
+    const dataTransfer = {
       getData: () => {
         return dragColumnId;
       }
     };
-    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    const componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
     fireEvent.drag(componentDrop, { dataTransfer });
 
     expect(asFragment()).toMatchSnapshot();
@@ -441,20 +372,20 @@ describe('AnalyticalTable', () => {
     const { asFragment, container } = renderRtl(<AnalyticalTable data={data} header={'Test'} columns={columns} />);
 
     // get first column of the table and simulate dragging of it
-    let componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
-    let dragColumnId = componentDrag.dataset.columnId;
+    const componentDrag = container.querySelector<HTMLElement>('div[role="columnheader"][draggable]');
+    const dragColumnId = componentDrag.dataset.columnId;
 
     expect(componentDrag.draggable).toBeDefined();
     expect(componentDrag.draggable).toBeTruthy();
     fireEvent.drag(componentDrag);
 
     // get second column of the table and simulate dropping on it
-    let dataTransfer = {
+    const dataTransfer = {
       getData: () => {
         return dragColumnId;
       }
     };
-    let componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
+    const componentDrop = container.querySelectorAll('div[role="columnheader"][draggable]')[1];
     fireEvent.drag(componentDrop, { dataTransfer });
 
     expect(asFragment()).toMatchSnapshot();
@@ -475,8 +406,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
-        selectionBehavior={TableSelectionBehavior.RowOnly}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
       />
     );
 
@@ -489,7 +420,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -511,7 +442,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -528,7 +459,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         withRowHighlight
         minRows={1}
       />
@@ -550,7 +481,7 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         minRows={1}
       />
     );
@@ -564,11 +495,11 @@ describe('AnalyticalTable', () => {
   test('highlight row with custom row key', () => {
     const utils = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         data={data}
         columns={columns}
         reactTableOptions={{
-          getRowId: (row, relativeIndex, parent) => {
+          getRowId: (row, relativeIndex) => {
             return `${row.name ?? relativeIndex}`;
           }
         }}
@@ -597,21 +528,27 @@ describe('AnalyticalTable', () => {
     const { asFragment, rerender } = render(
       <AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />
     );
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(2);
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(2);
+    expect(screen.queryAllByTitle('Collapse Node')).toHaveLength(0);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[0]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.getAllByTitle('Expand Node')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(1);
 
-    fireEvent.click(screen.getAllByTitle('Toggle Row Expanded')[1]);
+    fireEvent.click(screen.getAllByTitle('Expand Node')[0].querySelector('[ui5-icon]'));
 
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(2);
     expect(screen.getAllByTitle('subcomponent')).toHaveLength(2);
 
     expect(asFragment()).toMatchSnapshot();
 
     rerender(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
 
-    expect(screen.getAllByTitle('Toggle Row Expanded')).toHaveLength(1);
+    expect(screen.getAllByTitle('Collapse Node')).toHaveLength(1);
+    expect(screen.queryAllByTitle('Expand Node')).toHaveLength(0);
   });
 
   test('pop-in columns: w/o pop-ins', () => {
@@ -764,8 +701,8 @@ describe('AnalyticalTable', () => {
         header="Table Title"
         data={data}
         columns={columns}
-        selectionBehavior={TableSelectionBehavior.Row}
-        selectionMode={TableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.Row}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
         onRowClick={callback}
       />
     );
@@ -859,9 +796,20 @@ describe('AnalyticalTable', () => {
   });
 
   test('plugin hook: useRowDisableSelection', () => {
+    interface PropTypes {
+      cb: (
+        e?: CustomEvent<{
+          allRowsSelected: boolean;
+          row?: Record<string, unknown>;
+          isSelected?: boolean;
+          selectedFlatRows: Record<string, unknown>[];
+        }>
+      ) => void;
+      click: (e?: CustomEvent<{ row?: unknown }>) => void;
+    }
     const cb = jest.fn();
     const click = jest.fn();
-    const TestComponent = (props) => {
+    const TestComponent = (props: PropTypes) => {
       const { cb, click } = props;
       const dataWithDisableSelectProp = data.map((item, index) => ({ ...item, disableSelection: index === 0 }));
       return (
@@ -870,7 +818,7 @@ describe('AnalyticalTable', () => {
           columns={columns}
           onRowSelect={cb}
           onRowClick={click}
-          selectionMode={TableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />
@@ -931,110 +879,6 @@ describe('AnalyticalTable', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('expose table instance', () => {
-    const ref = createRef();
-    const { asFragment, queryAllByText, getByText } = render(
-      <AnalyticalTable
-        data={data}
-        columns={columns}
-        tableInstance={ref}
-        reactTableOptions={{
-          autoResetHiddenColumns: false
-        }}
-      />
-    );
-    //set internal clientWidth
-    act(() => {
-      ref.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
-    });
-    const nameHeaderCell = getByText('Name').parentElement.parentElement;
-    expect(nameHeaderCell).toHaveStyle({ width: '300px' });
-    act(() => {
-      ref.current.toggleHideColumn('age', true);
-    });
-    expect(nameHeaderCell).toHaveStyle({ width: '400px' });
-    expect(queryAllByText('Age')).toHaveLength(0);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('plugin hook: useIndeterminateRowSelection', async () => {
-    const cb = jest.fn();
-    const { rerender, getAllByTitle, getByTitle, getByText, container, unmount, asFragment } = render(
-      <AnalyticalTable
-        data={dataTree}
-        columns={columns}
-        selectionMode={TableSelectionMode.MultiSelect}
-        isTreeTable={true}
-        tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelect={cb}
-        selectedRowIds={{ '1': true }}
-      />
-    );
-    const checkboxes = container.querySelectorAll('ui5-checkbox');
-
-    expect(checkboxes[0]).toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[2]).toHaveAttribute('checked', 'true');
-
-    fireEvent.click(getByText('bla'));
-    expect(cb).toHaveBeenCalled();
-
-    expect(checkboxes[0]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(checkboxes[0]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[1]).not.toHaveAttribute('checked', 'true');
-    expect(checkboxes[2]).not.toHaveAttribute('checked', 'true');
-
-    fireEvent.click(getByTitle('Toggle Row Expanded'));
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[1]);
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[2]);
-    fireEvent.click(getAllByTitle('Toggle Row Expanded')[3]);
-
-    fireEvent.click(getByText('GHijkl'));
-
-    Array.from(container.querySelectorAll('ui5-checkbox'))
-      .slice(0, 4)
-      .forEach((item, index) => {
-        expect(item).toHaveAttribute('indeterminate', 'true');
-      });
-    expect(container.querySelectorAll('ui5-checkbox')[4]).not.toHaveAttribute('indeterminate', 'true');
-    expect(container.querySelectorAll('ui5-checkbox')[4]).toHaveAttribute('checked', 'true');
-
-    Array.from(container.querySelectorAll('ui5-checkbox'))
-      .slice(5)
-      .forEach((item, index) => {
-        expect(item).not.toHaveAttribute('indeterminate', 'true');
-        expect(item).not.toHaveAttribute('checked', 'true');
-      });
-
-    expect(asFragment()).toMatchSnapshot();
-
-    unmount();
-    const { container: newContainer } = render(
-      <AnalyticalTable
-        data={dataTree}
-        columns={columns}
-        selectionMode={TableSelectionMode.MultiSelect}
-        isTreeTable={true}
-        tableHooks={[useIndeterminateRowSelection()]}
-        onRowSelect={cb}
-        selectedRowIds={{
-          '0.0.0.0.0': true,
-          '1': true
-        }}
-      />
-    );
-
-    expect(newContainer.querySelectorAll('ui5-checkbox')[0]).toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[1]).toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).not.toHaveAttribute('indeterminate', 'true');
-    expect(newContainer.querySelectorAll('ui5-checkbox')[2]).toHaveAttribute('checked', 'true');
-  });
-
   test('body scroll', () => {
     const data100 = new Array(100).fill({
       name: 'Chris P.',
@@ -1084,7 +928,7 @@ describe('AnalyticalTable', () => {
   test('plugin hook: useManualRowSelect', () => {
     const { getByText, rerender } = render(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={manualSelectData}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
@@ -1100,7 +944,7 @@ describe('AnalyticalTable', () => {
     const [, ...updatedManualSelectData] = manualSelectData;
     rerender(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={[
           {
             name: 'Selected',

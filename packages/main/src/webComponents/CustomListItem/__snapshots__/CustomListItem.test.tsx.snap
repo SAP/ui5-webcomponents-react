@@ -3,7 +3,6 @@
 exports[`CustomListItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-li-custom
-    actionable=""
     type="Active"
     ui5-li-custom=""
   />

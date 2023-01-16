@@ -3,6 +3,124 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
+
+### Bug Fixes
+
+- **ObjectPage:** fix scrolling for ObjectPages with single section ([#3901](https://github.com/SAP/ui5-webcomponents-react/issues/3901)) ([1280a65](https://github.com/SAP/ui5-webcomponents-react/commit/1280a659500bac7650eb6def61e4c4e6a1e6a6c3)), closes [#3870](https://github.com/SAP/ui5-webcomponents-react/issues/3870)
+
+# [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct type for `onTableScroll` ([#3839](https://github.com/SAP/ui5-webcomponents-react/issues/3839)) ([02ea1ed](https://github.com/SAP/ui5-webcomponents-react/commit/02ea1edf35c97845ccf57c7e9b2a56db6759f7d5))
+- **AnalyticalTable - TypeScript:** fix `ref` type ([#3815](https://github.com/SAP/ui5-webcomponents-react/issues/3815)) ([2337db1](https://github.com/SAP/ui5-webcomponents-react/commit/2337db1ea8ac566799f0b78bf50fae64e792db5e))
+- **AnalyticalTable - TypeScript:** fix `selectedFlatRows` type of `onRowSelect` event ([#3817](https://github.com/SAP/ui5-webcomponents-react/issues/3817)) ([bb224ba](https://github.com/SAP/ui5-webcomponents-react/commit/bb224ba9c236612dad79779c3fa38d447f8b29b4))
+- **charts:** allow formatting y/x-axis ticks w/o changing measure formatter ([#3803](https://github.com/SAP/ui5-webcomponents-react/issues/3803)) ([ad15be8](https://github.com/SAP/ui5-webcomponents-react/commit/ad15be8bc6d419d786599cdf1f6669075cf7bfaa)), closes [#3802](https://github.com/SAP/ui5-webcomponents-react/issues/3802)
+- **FilterBar:** fix alignment of table cells in dialog ([#3829](https://github.com/SAP/ui5-webcomponents-react/issues/3829)) ([c8c834e](https://github.com/SAP/ui5-webcomponents-react/commit/c8c834ee89516660a973665f376431f7d3415337))
+- **Grid:** support `React.Fragment` as children ([#3850](https://github.com/SAP/ui5-webcomponents-react/issues/3850)) ([beb032e](https://github.com/SAP/ui5-webcomponents-react/commit/beb032e09b6e8d614b4de542c2d3205a454e7c3a))
+- make `children` of `FlexBox`, `Grid`, `ResponsiveGridLayout` and `Text` optional ([#3851](https://github.com/SAP/ui5-webcomponents-react/issues/3851)) ([d20f986](https://github.com/SAP/ui5-webcomponents-react/commit/d20f98614731e6d302ccc8b211ff223fb4be401c))
+- **Modals - TypeScript:** allow typing the container element ([#3856](https://github.com/SAP/ui5-webcomponents-react/issues/3856)) ([780206a](https://github.com/SAP/ui5-webcomponents-react/commit/780206a24ab532766fa869ac90164a83bc97bca1))
+
+### Features
+
+- **DynamicPageTitle:** expose toolbar `overflowPopoverRef` ref via toolbar props ([#3805](https://github.com/SAP/ui5-webcomponents-react/issues/3805)) ([72e8cd7](https://github.com/SAP/ui5-webcomponents-react/commit/72e8cd71f1861647a4da4ba3399962d8e714e529))
+- **ObjectPage & DynamicPage:** add `onPinnedStateChange`, fix setting `alwaysShowContentHeader` in runtime ([#3876](https://github.com/SAP/ui5-webcomponents-react/issues/3876)) ([6bce2da](https://github.com/SAP/ui5-webcomponents-react/commit/6bce2da0d119721311adcf61dec2eb5383cb7a48))
+- update `@ui5/webcomponents` to 1.9.3 ([#3886](https://github.com/SAP/ui5-webcomponents-react/issues/3886)) ([c7ca7bb](https://github.com/SAP/ui5-webcomponents-react/commit/c7ca7bbfd80273c9c7dd56204c883bd5becce7e5))
+
+# [1.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.6.0) (2022-11-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix expand/collapse & select keyboard navigation and execution of cb's ([#3789](https://github.com/SAP/ui5-webcomponents-react/issues/3789)) ([ab8bb61](https://github.com/SAP/ui5-webcomponents-react/commit/ab8bb61a07771df8360a4f3acf99bd4bda5e2178)), closes [#3788](https://github.com/SAP/ui5-webcomponents-react/issues/3788)
+
+### Features
+
+- **AnalyticalTable - useIndeterminateRowSelection:** add `onIndeterminateChange` param ([#3797](https://github.com/SAP/ui5-webcomponents-react/issues/3797)) ([9527db1](https://github.com/SAP/ui5-webcomponents-react/commit/9527db13da7db23142f1a92c57a7dcc843993260)), closes [#3775](https://github.com/SAP/ui5-webcomponents-react/issues/3775) [#3612](https://github.com/SAP/ui5-webcomponents-react/issues/3612)
+
+# [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** always return correct `isSelected` value in `onRowSelect` cb ([#3774](https://github.com/SAP/ui5-webcomponents-react/issues/3774)) ([bf149e3](https://github.com/SAP/ui5-webcomponents-react/commit/bf149e3bb051a968e67c425173c57115e0e6e428))
+- **AnalyticalTable:** fix keyboard navigation on columns/data change ([#3751](https://github.com/SAP/ui5-webcomponents-react/issues/3751)) ([5ec55a2](https://github.com/SAP/ui5-webcomponents-react/commit/5ec55a2a88cda2068fd28525a376c7765e40d35d)), closes [#3739](https://github.com/SAP/ui5-webcomponents-react/issues/3739)
+- **AnalyticalTable:** reduce debounce wait time of height and width observers ([#3753](https://github.com/SAP/ui5-webcomponents-react/issues/3753)) ([85b79cb](https://github.com/SAP/ui5-webcomponents-react/commit/85b79cbda0d5048037e0a598c3e52d5c2b6cab93))
+- **DynamicPage:** always call `onToggleHeaderContent` on toggle button click ([#3756](https://github.com/SAP/ui5-webcomponents-react/issues/3756)) ([b5e0415](https://github.com/SAP/ui5-webcomponents-react/commit/b5e04151a39ed5ff705fabcd7a7e41a633bf8315)), closes [#3754](https://github.com/SAP/ui5-webcomponents-react/issues/3754)
+- **ObjectPage:** adjust responsive padding of tab-bar to header padding ([#3744](https://github.com/SAP/ui5-webcomponents-react/issues/3744)) ([676e020](https://github.com/SAP/ui5-webcomponents-react/commit/676e020d944b7ee130cb1d9bc65451ec9cd0ddff)), closes [#3551](https://github.com/SAP/ui5-webcomponents-react/issues/3551)
+- **SplitterLayout:** always reset the layout if reset conditions match ([#3761](https://github.com/SAP/ui5-webcomponents-react/issues/3761)) ([04c732d](https://github.com/SAP/ui5-webcomponents-react/commit/04c732d9874b27f095d71000df908bf7914491d7))
+
+### Features
+
+- **ObjectPageSubSection:** introduce `actions` prop ([#3752](https://github.com/SAP/ui5-webcomponents-react/issues/3752)) ([e32f551](https://github.com/SAP/ui5-webcomponents-react/commit/e32f551e8cae63ca7be72bf9449bd07511920022)), closes [#3692](https://github.com/SAP/ui5-webcomponents-react/issues/3692)
+
+## [1.4.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.0...v1.4.1) (2022-11-09)
+
+### Bug Fixes
+
+- **withWebComponent:** improve event registration and cleanup ([#3740](https://github.com/SAP/ui5-webcomponents-react/issues/3740)) ([b4febf7](https://github.com/SAP/ui5-webcomponents-react/commit/b4febf7907a76cdb35fb7b99e8d2cb8f717fb53b))
+
+# [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
+
+### Bug Fixes
+
+- **AnalyticalTable:** adjust selection cell width to UX design ([#3733](https://github.com/SAP/ui5-webcomponents-react/issues/3733)) ([c07a866](https://github.com/SAP/ui5-webcomponents-react/commit/c07a8662c0f03881a7e6fdd872472f03322089bb)), closes [#3732](https://github.com/SAP/ui5-webcomponents-react/issues/3732)
+- **AnalyticalTable:** consider `false` selected row id value for `onRowSelect` callback ([#3717](https://github.com/SAP/ui5-webcomponents-react/issues/3717)) ([5fcc8ce](https://github.com/SAP/ui5-webcomponents-react/commit/5fcc8ce4d82c0b9729ed2e4dd1e9adf5b1fb2168))
+- bind web component events with useLayoutEffect if available ([#3718](https://github.com/SAP/ui5-webcomponents-react/issues/3718)) ([cba730f](https://github.com/SAP/ui5-webcomponents-react/commit/cba730ff19ddcbea26eb0a16eb3081a33514c4b1))
+- **VariantManagement:** show tooltip on "Select View" button ([#3731](https://github.com/SAP/ui5-webcomponents-react/issues/3731)) ([3bdaada](https://github.com/SAP/ui5-webcomponents-react/commit/3bdaada7707e8e68613f3fee2009dba0ff5bfff4)), closes [#3123](https://github.com/SAP/ui5-webcomponents-react/issues/3123)
+
+### Features
+
+- **AnalyticalTable:** introduce `headerRowHeight` prop ([#3730](https://github.com/SAP/ui5-webcomponents-react/issues/3730)) ([d6ba5bb](https://github.com/SAP/ui5-webcomponents-react/commit/d6ba5bb71c9b7897d4115c4273c55b7bbea31a1a)), closes [#3716](https://github.com/SAP/ui5-webcomponents-react/issues/3716)
+
+## [1.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.0...v1.3.1) (2022-11-07)
+
+### Bug Fixes
+
+- **typescript:** don't include `ref` in all component props ([#3713](https://github.com/SAP/ui5-webcomponents-react/issues/3713)) ([2f49dc3](https://github.com/SAP/ui5-webcomponents-react/commit/2f49dc34221a95e6ca99e7c3c9ad82cd6199cdf3))
+- **TypeScript:** improve ref types ([#3714](https://github.com/SAP/ui5-webcomponents-react/issues/3714)) ([5048bfd](https://github.com/SAP/ui5-webcomponents-react/commit/5048bfd89c81dde0ad516fc3880cb1de539103ef))
+
+# [1.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.3...v1.3.0) (2022-11-02)
+
+### Features
+
+- update to @ui5/webcomponents 1.9.0 ([#3708](https://github.com/SAP/ui5-webcomponents-react/issues/3708)) ([c2c046e](https://github.com/SAP/ui5-webcomponents-react/commit/c2c046e18a4fda4d8ac9f133b0a857919327349a))
+
+## [1.2.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.2...v1.2.3) (2022-10-31)
+
+### Bug Fixes
+
+- **ComposedChart:** fix `onDataPointClick` event payload for bars ([#3697](https://github.com/SAP/ui5-webcomponents-react/issues/3697)) ([e0699d8](https://github.com/SAP/ui5-webcomponents-react/commit/e0699d88273948dd1f248437129b2b6e9447c483))
+
+## [1.2.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.1...v1.2.2) (2022-10-27)
+
+### Bug Fixes
+
+- **AnalyticalTable:** only call onRowSelect when row is selected by user ([#3682](https://github.com/SAP/ui5-webcomponents-react/issues/3682)) ([e014c37](https://github.com/SAP/ui5-webcomponents-react/commit/e014c3720371984dcbf94668bf61e27dc5f5b4f8))
+- **ColumnChartWithTrend:** enable `onDataPointClick` callback & fix tooltip ([#3688](https://github.com/SAP/ui5-webcomponents-react/issues/3688)) ([89107b8](https://github.com/SAP/ui5-webcomponents-react/commit/89107b820a219bbf0039b0dcb9ed4ab96a2e5258))
+- **ComposedChart:** invoke `onDataPointClick` only on the points of the area chart ([#3687](https://github.com/SAP/ui5-webcomponents-react/issues/3687)) ([2239a49](https://github.com/SAP/ui5-webcomponents-react/commit/2239a491c95d3153b621accef9ce57352c5294ec))
+
+## [1.2.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.0...v1.2.1) (2022-10-25)
+
+### Bug Fixes
+
+- **AnalyticalTable:** return correct values in `onRowSelect` callback ([#3668](https://github.com/SAP/ui5-webcomponents-react/issues/3668)) ([f0f736d](https://github.com/SAP/ui5-webcomponents-react/commit/f0f736d6e4fc0134c043a821db36de70582f003d)), closes [#3659](https://github.com/SAP/ui5-webcomponents-react/issues/3659) [#3612](https://github.com/SAP/ui5-webcomponents-react/issues/3612)
+
+# [1.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.1.0...v1.2.0) (2022-10-21)
+
+### Bug Fixes
+
+- **AnalyticalTable - useIndeterminateRowSelection:** reset indeterminate state if not applicable ([#3644](https://github.com/SAP/ui5-webcomponents-react/issues/3644)) ([51deeb5](https://github.com/SAP/ui5-webcomponents-react/commit/51deeb55aa7293c7d18589466ea564219f5da5b8)), closes [#3604](https://github.com/SAP/ui5-webcomponents-react/issues/3604)
+- **AnalyticalTable:** enable keyboard navigation for empty cells & align them correctly ([#3639](https://github.com/SAP/ui5-webcomponents-react/issues/3639)) ([d78dbb0](https://github.com/SAP/ui5-webcomponents-react/commit/d78dbb09b34570bd5c4af3fe94c70df0fd1ee604)), closes [#3605](https://github.com/SAP/ui5-webcomponents-react/issues/3605)
+- **AnalyticalTable:** fix select-all behavior in React18 Strict Mode ([#3658](https://github.com/SAP/ui5-webcomponents-react/issues/3658)) ([5cf234f](https://github.com/SAP/ui5-webcomponents-react/commit/5cf234fae1b259d803e80f1d8e0bfadb876aea0a)), closes [#3657](https://github.com/SAP/ui5-webcomponents-react/issues/3657)
+- **ColumnChartWithTrend:** improve TypeScript types and docs ([#3630](https://github.com/SAP/ui5-webcomponents-react/issues/3630)) ([885d56e](https://github.com/SAP/ui5-webcomponents-react/commit/885d56ea338f816fb1d0f3125ba33264fa556b37))
+- **ObjectPage & DynamicPage:** don't show pin-button if header content is not defined ([#3666](https://github.com/SAP/ui5-webcomponents-react/issues/3666)) ([5d85ebe](https://github.com/SAP/ui5-webcomponents-react/commit/5d85ebee2ed3471e57acc1de89b26437fd5cfa2e))
+- **ObjectPage & DynamicPage:** fix expand/collapse behavior of header content ([#3650](https://github.com/SAP/ui5-webcomponents-react/issues/3650)) ([9be8531](https://github.com/SAP/ui5-webcomponents-react/commit/9be853167a97c25dccd6ec9bc4148076d24da4c0)), closes [#3623](https://github.com/SAP/ui5-webcomponents-react/issues/3623)
+- **Toolbar:** allow Fragments with single child inside `children` ([#3661](https://github.com/SAP/ui5-webcomponents-react/issues/3661)) ([8594993](https://github.com/SAP/ui5-webcomponents-react/commit/8594993b62a7aab2cf8304d0250a2d4c1736d6f0)), closes [#3660](https://github.com/SAP/ui5-webcomponents-react/issues/3660)
+
+### Features
+
+- **charts:** allow full customization of reference lines ([#3619](https://github.com/SAP/ui5-webcomponents-react/issues/3619)) ([9d582fc](https://github.com/SAP/ui5-webcomponents-react/commit/9d582fcbaac26fe2d5cbc403f2e3e1991cfaa4a8))
+
 # [1.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1...v1.1.0) (2022-10-06)
 
 ### Bug Fixes

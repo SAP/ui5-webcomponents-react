@@ -1,5 +1,5 @@
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { FC, forwardRef, Ref, useCallback, useRef } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
 import {
   Legend,
   PolarAngleAxis,
@@ -74,7 +74,7 @@ const measureDefaults = {
 /**
  * A radar or spider or web chart is a two-dimensional chart type designed to plot one or more series of values over multiple quantitative variables.
  */
-const RadarChart: FC<RadarChartProps> = forwardRef((props: RadarChartProps, ref: Ref<HTMLDivElement>) => {
+const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
   const {
     loading,
     dataset,

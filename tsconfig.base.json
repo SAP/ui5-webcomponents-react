@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2015",
+    "lib": ["es2019", "dom"],
+    "jsx": "react",
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@docs/*": [".storybook/components/*"],
+      "@shared/*": ["shared/*"],
+      "@ui5/webcomponents-react": ["./packages/main/src/index.ts"],
+      "@ui5/webcomponents-react-base": ["./packages/base/src/index.ts"],
+      "@ui5/webcomponents-react-charts": ["./packages/charts/src/index.ts"],
+      "@ui5/webcomponents-react/*": ["./packages/main/src/*"]
+    },
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declaration": true
+  }
+}

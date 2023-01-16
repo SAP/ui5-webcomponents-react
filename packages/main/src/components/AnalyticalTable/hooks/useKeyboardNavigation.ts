@@ -45,7 +45,7 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data } }) => {
+const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -62,6 +62,21 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
       currentlyFocusedCell.current = null;
     }
   };
+
+  useEffect(() => {
+    if (
+      !showOverlay &&
+      data &&
+      columns &&
+      currentlyFocusedCell.current &&
+      tableRef.current &&
+      tableRef.current.tabIndex !== 0 &&
+      !tableRef.current.contains(currentlyFocusedCell.current)
+    ) {
+      currentlyFocusedCell.current = null;
+      tableRef.current.tabIndex = 0;
+    }
+  }, [data, columns, showOverlay]);
 
   const onTableFocus = useCallback(
     (e) => {
@@ -116,19 +131,19 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
         switch (e.key) {
           case 'End': {
             e.preventDefault();
-            const visibleColumns = tableRef.current.querySelector(
+            const visibleColumns: HTMLDivElement[] = tableRef.current.querySelector(
               `div[data-component-name="AnalyticalTableHeaderRow"]`
             ).children;
             const lastVisibleColumn = Array.from(visibleColumns)
               .slice(0)
-              .reduceRight((prev, cur: HTMLDivElement, index, arr) => {
+              .reduceRight((_, cur, index, arr) => {
                 const columnIndex = parseInt((cur.children?.[0] as HTMLDivElement)?.dataset.columnIndex, 10);
                 if (!isNaN(columnIndex)) {
                   arr.length = 0;
                   return columnIndex;
                 }
-                return cur;
-              }) as number;
+                return 0;
+              }, 0);
 
             const newElement = tableRef.current.querySelector(
               `div[data-visible-column-index="${lastVisibleColumn + 1}"][data-row-index="${rowIndex}"]`

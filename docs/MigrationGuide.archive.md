@@ -36,36 +36,36 @@ function MyNewComponent() {
 Affected Interfaces:
 
 - `Ui5BarcodeScannerDialogDomRef` <br />
-new import: `import { BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';`
+  new import: `import { BarcodeScannerDialogDomRef } from '@ui5/webcomponents-react/dist/BarcodeScannerDialog';`
 - `Ui5CarouselDomRef`<br />
-new import: `import { CarouselDomRef } from '@ui5/webcomponents-react/dist/Carousel';`
+  new import: `import { CarouselDomRef } from '@ui5/webcomponents-react/dist/Carousel';`
 - `Ui5DatePickerDomRef`<br />
-new import: `import { DatePickerDomRef } from '@ui5/webcomponents-react/dist/DatePicker';`
+  new import: `import { DatePickerDomRef } from '@ui5/webcomponents-react/dist/DatePicker';`
 - `Ui5DateRangePickerDomRef`<br />
-new import: `import { DateRangePickerDomRef } from '@ui5/webcomponents-react/dist/DateRangePicker';`
+  new import: `import { DateRangePickerDomRef } from '@ui5/webcomponents-react/dist/DateRangePicker';`
 - `Ui5DateTimePickerDomRef`<br />
-new import: `import { DateTimePickerDomRef } from '@ui5/webcomponents-react/dist/DateTimePicker';`
+  new import: `import { DateTimePickerDomRef } from '@ui5/webcomponents-react/dist/DateTimePicker';`
 - `Ui5DialogDomRef`<br />
-new import: `import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';`
+  new import: `import { DialogDomRef } from '@ui5/webcomponents-react/dist/Dialog';`
 - `Ui5PopoverDomRef`<br />
-new import: `import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';`
+  new import: `import { PopoverDomRef } from '@ui5/webcomponents-react/dist/Popover';`
 - `Ui5ResponsivePopoverDomRef`<br />
-new import: `import { ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';`
+  new import: `import { ResponsivePopoverDomRef } from '@ui5/webcomponents-react/dist/ResponsivePopover';`
 - `Ui5ShellBarDomRef`<br />
-new import: `import { ShellBarDomRef } from '@ui5/webcomponents-react/dist/ShellBar';`
+  new import: `import { ShellBarDomRef } from '@ui5/webcomponents-react/dist/ShellBar';`
 - `Ui5TimePickerDomRef`<br />
-new import: `import { TimePickerDomRef } from '@ui5/webcomponents-react/dist/TimePicker';`
+  new import: `import { TimePickerDomRef } from '@ui5/webcomponents-react/dist/TimePicker';`
 - `Ui5ToastDomRef`<br />
-new import: `import { ToastDomRef } from '@ui5/webcomponents-react/dist/Toast';`
+  new import: `import { ToastDomRef } from '@ui5/webcomponents-react/dist/Toast';`
 - `Ui5TreeDomRef`<br />
-new import: `import { TreeDomRef } from '@ui5/webcomponents-react/dist/Tree';`
+  new import: `import { TreeDomRef } from '@ui5/webcomponents-react/dist/Tree';`
 - `Ui5TreeItemDomRef`<br />
-new import: `import { TreeItemDomRef } from '@ui5/webcomponents-react/dist/TreeItem';`
+  new import: `import { TreeItemDomRef } from '@ui5/webcomponents-react/dist/TreeItem';`
 
 - `AnalyticalTableDomRef`<br />
-new import: `import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/dist/AnalyticalTable';`
+  new import: `import { AnalyticalTableDomRef } from '@ui5/webcomponents-react/dist/AnalyticalTable';`
 - `MessageViewDomRef`<br />
-new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
+  new import: `import { MessageViewDomRef } from '@ui5/webcomponents-react/dist/MessageView';`
 
 ## From 0.18.x to 0.19.0
 
@@ -133,9 +133,8 @@ npx ui5wcr-codemod renamePropsV18 src --typescript
 ```
 
 > **Note**
-> Please make sure that you have committed all changes before running this codemod. 
+> Please make sure that you have committed all changes before running this codemod.
 > Keep in mind that the codemod output will not always match your project’s coding style, so you might want to run [Prettier](https://prettier.io) after the codemod finishes for consistent formatting.
-
 
 ### Avatar
 
@@ -236,7 +235,7 @@ You can open `Dialogs` using the `show` method:
 ```js
 // with 0.17.x
 function MyOldComponent() {
-  const ref = useRef();
+  const ref = useRef(null);
   const openDialog = () => {
     ref.current.open();
   };
@@ -245,7 +244,7 @@ function MyOldComponent() {
 
 // with 0.18.x
 function MyNewComponent() {
-  const ref = useRef();
+  const ref = useRef(null);
   const openDialog = () => {
     ref.current.show();
   };
@@ -258,7 +257,7 @@ You can open all Popovers (`ActionSheet`, `Popover`, `ResponsivePopover`) using 
 ```js
 // with 0.17.x
 function MyOldComponent() {
-  const ref = useRef();
+  const ref = useRef(null);
   const openPopover = (event) => {
     ref.current.open(event.target); // ActionSheet and ResponsivePopover
     ref.current.openBy(event.target); // Popover
@@ -268,7 +267,7 @@ function MyOldComponent() {
 
 // with 0.18.x
 function MyNewComponent() {
-  const ref = useRef();
+  const ref = useRef(null);
   const openPopover = (event) => {
     ref.current.showAt(event.target);
   };
@@ -334,7 +333,7 @@ We streamlined those APIs by adding components used by the `DynamicPage` to the 
 - `header` has been renamed to `headerContent`.
 - **`DynamicPageTitle`:** `subHeading` has been renamed to `subheading`.
 - **`DynamicPageHeader`:** `children` are no longer displayed as `flex` items to support other display types like `grid`. To align children you now need to add the container (like `FlexBox`) and CSS yourself.
-<br />
+  <br />
   <br />
   Example for aligning items next to each other:
 
@@ -451,23 +450,23 @@ Following those changes, we removed the `rangeSetName` parameter from the `useVi
 All the following checks are always returning `true` in our supported browser, so we have removed:
 
 - `supportPointerEvents`<br />
-[CanIUse](https://caniuse.com/?search=pointer%20events)<br />
-Replacement: `'onpointerdown' in window`
+  [CanIUse](https://caniuse.com/?search=pointer%20events)<br />
+  Replacement: `'onpointerdown' in window`
 - `supportInputPlaceholder`<br />
-[CanIUse Input](https://caniuse.com/?search=input%20placeholder), [CanIUse TextArea](https://caniuse.com/?search=text%20area%20placeholder)<br />
-Replacement: `'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea')`
+  [CanIUse Input](https://caniuse.com/?search=input%20placeholder), [CanIUse TextArea](https://caniuse.com/?search=text%20area%20placeholder)<br />
+  Replacement: `'placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea')`
 - `supportWebSocket`<br />
-[CanIUse](https://caniuse.com/?search=web%20socket)<br />
-Replacement: `'WebSocket' in window && window.WebSocket.CLOSING === 2`
+  [CanIUse](https://caniuse.com/?search=web%20socket)<br />
+  Replacement: `'WebSocket' in window && window.WebSocket.CLOSING === 2`
 - `supportMatchMedia`<br />
-[CanIUse](https://caniuse.com/?search=matchMedia)<br />
-Replacement: `'matchMedia' in window`
+  [CanIUse](https://caniuse.com/?search=matchMedia)<br />
+  Replacement: `'matchMedia' in window`
 - `supportMatchMediaListener`<br />
-[CanIUse](https://caniuse.com/mdn-api_mediaquerylistevent_matches)<br />
-Replacement: `'matchMedia' in window && window.matchMedia('all and (max-width:0px)'))`
+  [CanIUse](https://caniuse.com/mdn-api_mediaquerylistevent_matches)<br />
+  Replacement: `'matchMedia' in window && window.matchMedia('all and (max-width:0px)'))`
 - `supportOrientation`<br />
-[CanIUse](https://caniuse.com/mdn-api_window_deviceorientation_event)<br />
-Replacement: `'DeviceOrientationEvent' in window`
+  [CanIUse](https://caniuse.com/mdn-api_window_deviceorientation_event)<br />
+  Replacement: `'DeviceOrientationEvent' in window`
 
 In addition to that, we removed the `supportRetina` check as it was never used in our codebase.
 If you need this check, you'll need to replace it with `window.retina || window.devicePixelRatio >= 2`.
@@ -654,7 +653,7 @@ import { useRef } from 'react';
 import { useIsRTL } from '@ui5/webcomponents-react-base/dist/hooks';
 
 const MyComponent = () => {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useIsRTL(ref); // return true when current element is rendered right to left - otherwise false
 
@@ -663,7 +662,7 @@ const MyComponent = () => {
 
 // contentDensity
 const MyComponent = () => {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     getComputedStyle(ref.current).getPropertyValue('--_ui5_content_density'); // this will return either cozy or compact
@@ -747,15 +746,15 @@ were only used internally and are mentioned here for the sake of completeness.
 - `Device.orientation.landscape` is replaced by `getOrientation().landscape` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.orientation.portrait` is replaced by `getOrientation().portrait` (`'import { getOrientation } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.orientation.attachHandler` is replaced by `attachOrientationChangeHandler` (`'import { attachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `attachOrientationChangeHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `attachOrientationChangeHandler`.
 - `Device.orientation.detachHandler` is replaced by `detachOrientationChangeHandler` (`'import { detachOrientationChangeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `detachOrientationChangeHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `detachOrientationChangeHandler`.
 - `Device.resize.width` is replaced by `getWindowSize().width` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.resize.height` is replaced by `getWindowSize().height` (`'import { getWindowSize } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.resize.attachHandler` is replaced by `attachResizeHandler` (`'import { attachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `attachResizeHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `attachResizeHandler`.
 - `Device.resize.detachHandler` is replaced by `detachResizeHandler` (`'import { detachResizeHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `detachResizeHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `detachResizeHandler`.
 
 <br />
 
@@ -764,9 +763,9 @@ In addition, the second, optional parameter `oListener` got removed from `detach
 - `Device.media.initRangeSet` is replaced by `initRangeSet` (`'import { initRangeSet } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.media.removeRangeSet` is replaced by `removeRangeSet` (`'import { removeRangeSet } from '@ui5/webcomponents-react-base/lib/Device';`)
 - `Device.media.attachHandler` is replaced by `attachHandler` (`'import { attachHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `attachHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `attachHandler`.
 - `Device.media.detachHandler` is replaced by `detachHandler` (`'import { detachHandler } from '@ui5/webcomponents-react-base/lib/Device';`)<br />
-In addition, the second, optional parameter `oListener` got removed from `detachHandler`.
+  In addition, the second, optional parameter `oListener` got removed from `detachHandler`.
 
 <br />
 
@@ -932,7 +931,7 @@ The [event-system](#event-system) that was deprecated in `0.9.0` is now removed.
 - **AnalyticalTable**: Remove prop `busyIndicatorEnabled` as this was duplicate to `loading`. The visibility of the busy indicator is now solely controlled by the prop loading.
 - **FormItem** / **FormGroup**: Those two components are now abstract components, so you can't add any styles, refs, classNames, etc them.
 - **ShellBar**: the prop `logo` is now accepting a `ReactNode` instead of a `string` which is pointing to an image.
-Example:
+  Example:
 
 ```js
 <ShellBar logo={<img slot="logo" src="../../../assets/images/sap-logo-svg.svg" />} />
@@ -947,7 +946,7 @@ This requires a couple of changes on your side:
 1. Change the import from `@ui5/webcomponents-react-charts/lib/[ChartType]` to `@ui5/webcomponents-react-charts/lib/[ChartType]`
 2. Don't split the dataset into labels and single dataset entries as before, you can pass your dataset "as-is" to the chart.
 3. Your labels are now part of the dataset, but you need to tell the chart which element of the data is your dimension
-Use the `dimensions` prop for that.
+   Use the `dimensions` prop for that.
 4. Instead of passing multiple datasets with their own data into the datasets prop, define your `measures` by specifying at least the `accessor`.
 
 To illustrate the required changes, you can find the migration of a bar chart with two bars per dimension below:
@@ -1189,7 +1188,7 @@ and then call the corresponding `open` method:
 
 ```JSX
 const DialogComponent = () => {
-  const dialogRef = useRef();
+  const dialogRef = useRef(null);
   const onButtonClick = useCallback(() => {
     dialogRef.current.open();
   }, [dialogRef]);
@@ -1207,7 +1206,7 @@ const DialogComponent = () => {
 
 ```JSX
 const PopoverComponent = () => {
-  const popoverRef = useRef();
+  const popoverRef = useRef(null);
   const onButtonClick = useCallback(
     (e) => {
       popoverRef.current.openBy(e.target);
@@ -1227,7 +1226,7 @@ const PopoverComponent = () => {
 
 ```JSX
 const ResponsivePopoverComponent = () => {
-  const popoverRef = useRef();
+  const popoverRef = useRef(null);
   const onButtonClick = useCallback(
     (e) => {
       popoverRef.current.open(e.target);

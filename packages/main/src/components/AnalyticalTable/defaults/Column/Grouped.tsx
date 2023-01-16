@@ -13,15 +13,20 @@ const tableGroupExpandCollapseIcon = {
 };
 
 export const Grouped = (props) => {
-  const { cell, row } = props;
+  const { cell, row, webComponentsReactProperties } = props;
+  const { translatableTexts } = webComponentsReactProperties;
 
   const style: CSSProperties = {};
   if (cell.column.hAlign && (cell.column.hAlign !== TextAlign.Left || cell.column.hAlign !== TextAlign.Begin)) {
     style.marginRight = 'auto';
   }
+
   return (
     <>
-      <span {...row.getToggleRowExpandedProps({ style })}>
+      <span
+        {...row.getToggleRowExpandedProps({ style })}
+        title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
+      >
         <Icon name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow} style={tableGroupExpandCollapseIcon} />
       </span>
       {cell.render('Cell')}

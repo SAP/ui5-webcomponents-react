@@ -1,6 +1,8 @@
+import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties } from 'react';
-import { Icon } from '../../../../webComponents/Icon';
+import { Icon } from '../../../../webComponents';
 
 const tableGroupExpandCollapseIcon = {
   color: 'var(--sapContent_IconColor)',
@@ -63,19 +65,16 @@ export const Expandable = (props) => {
       {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
         // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
         <span
-          onClick={rowProps.onClick}
-          title={rowProps.title}
+          title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
           style={{ ...rowProps.style, ...style }}
           aria-expanded={row.isExpanded}
           aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
         >
           <Icon
+            onClick={rowProps.onClick}
             interactive
-            name={`${row.isExpanded ? 'navigation-down-arrow' : 'navigation-right-arrow'}`}
+            name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
             style={tableGroupExpandCollapseIcon}
-            accessibleName={
-              row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText
-            }
           />
         </span>
       ) : (

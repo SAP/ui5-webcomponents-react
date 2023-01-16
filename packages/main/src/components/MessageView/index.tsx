@@ -11,7 +11,6 @@ import React, {
   Fragment,
   ReactElement,
   ReactNode,
-  Ref,
   useCallback,
   useEffect,
   useState
@@ -154,7 +153,7 @@ const useStyles = createUseStyles(
   { name: 'MessageView' }
 );
 
-const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageViewDomRef>) => {
+const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, ref) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
 
   const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);
@@ -172,7 +171,10 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
   const filteredChildren =
     listFilter === 'All'
       ? childrenArray
-      : childrenArray.filter((message: ReactElement<MessageItemPropTypes>) => {
+      : childrenArray.filter((message) => {
+          if (!React.isValidElement(message)) {
+            return false;
+          }
           if (listFilter === ValueState.Information) {
             return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
           }
@@ -212,6 +214,7 @@ const MessageView = forwardRef((props: MessageViewPropTypes, ref: Ref<MessageVie
                   <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
                     {i18nBundle.getText(ALL)}
                   </SegmentedButtonItem>
+                  {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
                   {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
                     if (count === 0) {
                       return null;

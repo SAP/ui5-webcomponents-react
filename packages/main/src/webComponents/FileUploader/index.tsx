@@ -90,6 +90,8 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
  * To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property.
  * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the `FileUploader`
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(

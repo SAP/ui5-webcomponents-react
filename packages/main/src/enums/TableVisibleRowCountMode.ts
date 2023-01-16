@@ -1,3 +1,6 @@
+/**
+ * @deprecated please use AnalyticalTableVisibleRowCountMode instead.
+ */
 export enum TableVisibleRowCountMode {
   /**
    * The number of visible rows displayed is defined by the `visibleRows` prop. If the prop is not set, 15 rows will be shown.

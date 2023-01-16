@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "1.1.0",
+  "version": "1.7.1",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -19,14 +19,11 @@
   ],
   "scripts": {
     "clean": "rimraf dist tmp wrappers",
-    "build": "npm-run-all -s build:i18n build:tsc build:wrappers",
-    "build:tsc": "tsc",
-    "build:wrappers": "node scripts/build-wrappers.mjs && tsc --project tsconfig.wrappers.json && rimraf tmp",
     "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {
     "@tanstack/react-virtual": "3.0.0-beta.18",
-    "@ui5/webcomponents-react-base": "^1.1.0",
+    "@ui5/webcomponents-react-base": "workspace:^",
     "clsx": "1.2.1",
     "react-jss": "^10.9.0",
     "react-table": "7.8.0"
@@ -34,10 +31,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.8.0",
-    "@ui5/webcomponents-base": "~1.8.0",
-    "@ui5/webcomponents-fiori": "~1.8.0",
-    "@ui5/webcomponents-icons": "~1.8.0",
+    "@ui5/webcomponents": "~1.9.3",
+    "@ui5/webcomponents-base": "~1.9.3",
+    "@ui5/webcomponents-fiori": "~1.9.3",
+    "@ui5/webcomponents-icons": "~1.9.3",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },

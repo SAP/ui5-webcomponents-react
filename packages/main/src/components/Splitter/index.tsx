@@ -1,12 +1,12 @@
 import {
   CssSizeVariables,
   ThemingParameters,
+  useCurrentTheme,
   useI18nBundle,
   useIsRTL,
-  useSyncRef,
-  useCurrentTheme
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Ref, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
@@ -170,7 +170,7 @@ const horizontalPositionInfo = {
   offset: 'offsetX'
 };
 
-const Splitter = forwardRef((props: SplitterPropTypes, ref: Ref<HTMLDivElement>) => {
+const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
   const { vertical } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);

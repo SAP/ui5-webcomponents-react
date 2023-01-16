@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "1.1.0",
+  "version": "1.7.1",
   "description": "Charts for ui5-webcomponents-react",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -15,13 +15,12 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "tsc"
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "clsx": "1.2.1",
     "react-content-loader": "6.2.0",
-    "recharts": "2.1.15"
+    "recharts": "2.3.2"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "^1.1.0",

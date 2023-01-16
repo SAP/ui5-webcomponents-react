@@ -1,16 +1,18 @@
 import glob from 'glob';
 import fs from 'node:fs';
 import { extname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
+import PATHS from '../config/paths.js';
 
-const tmpDir = fileURLToPath(new URL('../tmp', import.meta.url));
+const mainPackage = resolve(PATHS.packages, 'main');
+
+const tmpDir = resolve(mainPackage, 'tmp');
 const ignoredFiles = new Set(['.md', '.mdx', '.snap']);
 
-rimraf.sync(tmpDir);
+rimrafSync(tmpDir);
 
 // copy full src dir
-fs.cpSync(new URL('../src', import.meta.url), tmpDir, { recursive: true });
+fs.cpSync(resolve(mainPackage, 'src'), tmpDir, { recursive: true });
 
 const allFiles = glob
   .sync('**/*', { cwd: tmpDir })

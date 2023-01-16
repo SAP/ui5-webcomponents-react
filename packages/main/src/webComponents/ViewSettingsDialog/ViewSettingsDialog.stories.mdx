@@ -68,7 +68,7 @@ import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      const ref = useRef();
+      const ref = useRef(null);
       useEffect(() => {
         if (isChromatic) {
           ref.current.show();

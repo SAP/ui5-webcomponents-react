@@ -18,6 +18,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
         lineMeasures.push({
           ...measure,
           opacity: 0,
+          hide: true,
           hideDataLabel: true,
           showDot: false,
           formatter: defaultFormatter
@@ -51,7 +52,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       lineMeasures.forEach((line) => {
         if (line.type === 'line') {
           reducedLineValues[`__${line.accessor}`] = getValueByDataKey(data, line.accessor);
-          reducedLineValues[line.accessor] = 0;
+          reducedLineValues[line.accessor] = 1;
         }
       });
 
@@ -60,5 +61,6 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
         ...reducedLineValues
       });
     });
+
     return { lineMeasures, columnMeasures, columnDataset };
   }, [measures, dataset]);

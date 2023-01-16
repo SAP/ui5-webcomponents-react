@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, Ref, useMemo } from 'react';
+import React, { forwardRef, ReactNode, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps } from '../../interfaces';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
@@ -28,7 +28,7 @@ const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageH
  * The dynamic page header contains the header content of the dynamic page.
  * This component can be collapsed and pinned by the anchorbar.
  */
-const DynamicPageHeader = forwardRef((props: InternalProps, ref: Ref<HTMLDivElement>) => {
+const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref) => {
   const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;
 
   const headerStyles = useMemo(() => {

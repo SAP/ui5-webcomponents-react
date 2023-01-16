@@ -22,23 +22,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
       - name: create new project
         run: |
-          yarn create react-app cra-template --template file:./packages/cra-template
+          npx create-react-app cra-template --template file:./packages/cra-template
       - name: run tests
         run: |
           cd cra-template
-          yarn test
+          npm run test
         env:
           SKIP_PREFLIGHT_CHECK: true
       - name: build project
         run: |
           cd cra-template
-          yarn build
+          npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
 
@@ -51,22 +50,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
       - name: create new project
         run: |
-          yarn create react-app cra-template-seed --template file:./packages/cra-template-seed
+          npx create-react-app cra-template-seed --template file:./packages/cra-template-seed
       - name: run tests
         run: |
           cd cra-template-seed
-          yarn test:coverage
+          npm run test:coverage
         env:
           SKIP_PREFLIGHT_CHECK: true
       - name: build project
         run: |
           cd cra-template-seed
-          yarn build
+          npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true

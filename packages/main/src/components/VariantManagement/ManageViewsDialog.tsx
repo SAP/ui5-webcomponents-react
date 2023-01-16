@@ -1,7 +1,7 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { Children, ComponentElement, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { Children, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { BarDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
@@ -146,13 +146,19 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   }, []);
 
   const [childrenProps, setChildrenProps] = useState(
-    Children.map(children, (child: ComponentElement<any, any>) => {
+    Children.map(children, (child) => {
+      if (!React.isValidElement(child)) {
+        return {};
+      }
       return child.props;
     })
   );
   useEffect(() => {
     setChildrenProps(
-      Children.map(children, (child: ComponentElement<any, any>) => {
+      Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return {};
+        }
         return child.props;
       })
     );

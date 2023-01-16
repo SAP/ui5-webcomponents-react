@@ -1,9 +1,10 @@
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, FC, forwardRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef } from 'react';
 import { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
+import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
 import { IChartDimension } from '../../interfaces/IChartDimension';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
@@ -45,7 +46,8 @@ interface DimensionConfig extends IChartDimension {
   interval?: number;
 }
 
-export interface ColumnChartWithTrendProps extends Omit<IChartBaseProps, 'syncId'> {
+export interface ColumnChartWithTrendProps
+  extends Omit<IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>, 'syncId'> {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
@@ -98,120 +100,120 @@ type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
  */
-const ColumnChartWithTrend: FC<ColumnChartWithTrendProps> = forwardRef(
-  (props: ColumnChartWithTrendProps, ref: Ref<HTMLDivElement>) => {
-    const {
-      loading,
-      dataset,
-      style,
-      className,
-      slot,
-      onClick,
-      noLegend,
-      noAnimation,
-      onDataPointClick,
-      onLegendClick,
-      ChartPlaceholder,
-      ...rest
-    } = props;
+const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProps>((props, ref) => {
+  const {
+    loading,
+    dataset,
+    style,
+    className,
+    slot,
+    onClick,
+    noLegend,
+    noAnimation,
+    onDataPointClick,
+    onLegendClick,
+    ChartPlaceholder,
+    ...rest
+  } = props;
 
-    const syncId = useIsomorphicId();
+  const syncId = useIsomorphicId();
 
-    const chartConfig = {
-      yAxisVisible: false,
-      xAxisVisible: true,
-      gridStroke: ThemingParameters.sapList_BorderColor,
-      gridHorizontal: true,
-      gridVertical: false,
-      legendPosition: 'bottom',
-      legendHorizontalAlign: 'left',
-      barGap: 3,
-      zoomingTool: false,
-      resizeDebounce: 250,
-      ...props.chartConfig
-    };
+  const chartConfig = {
+    yAxisVisible: false,
+    xAxisVisible: true,
+    gridStroke: ThemingParameters.sapList_BorderColor,
+    gridHorizontal: true,
+    gridVertical: false,
+    legendPosition: 'bottom',
+    legendHorizontalAlign: 'left',
+    barGap: 3,
+    zoomingTool: false,
+    resizeDebounce: 250,
+    ...props.chartConfig
+  };
 
-    const { dimensions, measures } = usePrepareDimensionsAndMeasures(
-      props.dimensions,
-      props.measures,
-      dimensionDefaults,
-      measureDefaults
-    );
+  const { dimensions, measures } = usePrepareDimensionsAndMeasures(
+    props.dimensions,
+    props.measures,
+    dimensionDefaults,
+    measureDefaults
+  );
 
-    const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
-    const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
+  const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
+  const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
 
-    const columnTooltipConfig = {
-      formatter: (value, name, tooltipProps) => {
-        const line = lineMeasures.find(
-          (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey
-        );
-        if (line) {
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
-        }
-        const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
-        return column.formatter(value, name, tooltipProps);
+  const columnTooltipConfig = {
+    formatter: (value, name, tooltipProps) => {
+      const line = lineMeasures.find(
+        (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey
+      );
+      if (line) {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
       }
-    } as TooltipProps<any, any>;
+      const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
+      return column.formatter(value, name, tooltipProps);
+    }
+  } as TooltipProps<any, any>;
 
-    const { chartConfig: _0, dimensions: _1, measures: _2, tooltipConfig: _3, ...propsWithoutOmitted } = rest;
+  const { chartConfig: _0, dimensions: _1, measures: _2, tooltipConfig: _3, ...propsWithoutOmitted } = rest;
 
-    return (
-      <div
-        ref={ref}
-        style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
-        className={className}
-        slot={slot}
-        {...propsWithoutOmitted}
-      >
-        {dataset?.length !== 0 && (
-          <ComposedChart
-            className={
-              typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
-            }
-            tooltipConfig={lineTooltipConfig}
-            noAnimation={noAnimation}
-            loading={loading}
-            onClick={onClick}
-            syncId={syncId}
-            style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
-            dataset={dataset}
-            measures={lineMeasures}
-            dimensions={dimensions}
-            noLegend
-            chartConfig={{
-              xAxisVisible: false,
-              yAxisVisible: false,
-              yAxisTicksVisible: false,
-              gridHorizontal: false,
-              yAxisLabelsVisible: false,
-              yAxisWidth
-            }}
-          />
-        )}
+  return (
+    <div
+      ref={ref}
+      style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
+      className={className}
+      slot={slot}
+      {...propsWithoutOmitted}
+    >
+      {dataset?.length !== 0 && (
         <ComposedChart
-          onLegendClick={onLegendClick}
-          tooltipConfig={columnTooltipConfig}
-          noAnimation={noAnimation}
-          noLegend={noLegend}
-          loading={loading}
-          onClick={onClick}
-          syncId={syncId}
-          ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
-          dataset={columnDataset}
-          measures={columnMeasures}
-          dimensions={dimensions}
-          chartConfig={chartConfig}
-          style={{ ...style, height: `calc(${style?.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
           className={
             typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
           }
+          tooltipConfig={lineTooltipConfig}
+          noAnimation={noAnimation}
+          loading={loading}
+          onClick={onClick}
+          syncId={syncId}
+          style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
+          dataset={dataset}
+          measures={lineMeasures}
+          dimensions={dimensions}
+          noLegend
+          onDataPointClick={onDataPointClick}
+          chartConfig={{
+            xAxisVisible: false,
+            yAxisVisible: false,
+            yAxisTicksVisible: false,
+            gridHorizontal: false,
+            yAxisLabelsVisible: false,
+            yAxisWidth
+          }}
         />
-      </div>
-    );
-  }
-);
+      )}
+      <ComposedChart
+        onLegendClick={onLegendClick}
+        tooltipConfig={columnTooltipConfig}
+        noAnimation={noAnimation}
+        noLegend={noLegend}
+        loading={loading}
+        onClick={onClick}
+        onDataPointClick={onDataPointClick}
+        syncId={syncId}
+        ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
+        dataset={columnDataset}
+        measures={columnMeasures}
+        dimensions={dimensions}
+        chartConfig={chartConfig}
+        style={{ ...style, height: `calc(${style?.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
+        className={
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
+        }
+      />
+    </div>
+  );
+});
 
 ColumnChartWithTrend.defaultProps = {
   noLegend: false,

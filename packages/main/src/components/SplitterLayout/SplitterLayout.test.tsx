@@ -10,7 +10,7 @@ const keyDownOptions = (direction) => ({ code: `Arrow${direction}`, key: `Arrow$
 
 describe('SplitterLayout', () => {
   beforeEach(() => {
-    // @ts-ignore
+    // @ts-expect-error: too much effort to type this
     window.HTMLElement.prototype.getBoundingClientRect = () => {
       return {
         width: 200,
@@ -25,7 +25,7 @@ describe('SplitterLayout', () => {
     };
   });
 
-  test('Render Vertical SplitterLayout with multiple SplitterElements', async () => {
+  test('Render Vertical SplitterLayout with multiple SplitterElements', () => {
     const onClick = jest.fn();
     const { asFragment } = render(
       <SplitterLayout vertical={true} style={{ width: '800px', height: '400px' }} data-testid={'SplitterLayout'}>

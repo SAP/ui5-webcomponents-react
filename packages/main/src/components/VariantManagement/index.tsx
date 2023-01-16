@@ -10,7 +10,6 @@ import React, {
   forwardRef,
   isValidElement,
   ReactNode,
-  Ref,
   useCallback,
   useEffect,
   useRef,
@@ -230,7 +229,7 @@ const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
-const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Ref<HTMLDivElement>) => {
+const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>((props, ref) => {
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const {
     titleText = i18nBundle.getText(MY_VIEWS),
@@ -323,7 +322,10 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     const callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     setSafeChildren((prev) =>
       Children.toArray(
-        prev.map((child: ComponentElement<any, any>) => {
+        prev.map((child) => {
+          if (!React.isValidElement(child)) {
+            return false;
+          }
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
@@ -397,8 +399,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
     }
   };
 
-  const variantNames = safeChildren.map((item: ComponentElement<any, any>) =>
-    typeof item.props?.children === 'string' ? item.props.children : ''
+  const variantNames = safeChildren.map((item) =>
+    React.isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -406,7 +408,7 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
   useEffect(() => {
     if (showOnlyFavorites) {
       setFavoriteChildren(
-        safeChildren.filter((child: ComponentElement<any, any>) => child.props.favorite || child.props.isDefault)
+        safeChildren.filter((child) => React.isValidElement(child) && (child.props.favorite || child.props.isDefault))
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {
@@ -456,8 +458,8 @@ const VariantManagement = forwardRef((props: VariantManagementPropTypes, ref: Re
         </FlexBox>
         <Button
           className={clsx(classes.navDownBtn, 'ui5-content-density-compact')}
-          title={selectViewText}
-          aria-label={selectViewText}
+          tooltip={selectViewText}
+          accessibleName={selectViewText}
           onClick={handleOpenVariantManagement}
           design={ButtonDesign.Transparent}
           icon={navDownIcon}

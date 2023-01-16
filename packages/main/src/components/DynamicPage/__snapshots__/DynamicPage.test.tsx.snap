@@ -4,7 +4,6 @@ exports[`DynamicPage always show content header 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -263,13 +262,25 @@ exports[`DynamicPage always show content header 1`] = `
         role="navigation"
       >
         <ui5-button
-          accessible-name="Expand Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          accessible-name="Collapse Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
-          icon="slim-arrow-down"
-          tooltip="Expand Header"
+          icon="slim-arrow-up"
+          tooltip="Collapse Header"
           ui5-button=""
+        />
+        <ui5-toggle-button
+          accessible-name="Unpin Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="pushpin-off"
+          pressed="true"
+          tooltip="Unpin Header"
+          ui5-toggle-button=""
         />
       </section>
     </div>
@@ -286,7 +297,6 @@ exports[`DynamicPage hider header button 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -448,7 +458,19 @@ exports[`DynamicPage hider header button 1`] = `
         class="DynamicPageAnchorBar-anchorBarActionButton"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
-      />
+      >
+        <ui5-toggle-button
+          accessible-name="Unpin Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="pushpin-off"
+          pressed="true"
+          tooltip="Unpin Header"
+          ui5-toggle-button=""
+        />
+      </section>
     </div>
     <div
       class="DynamicPage-contentContainer StdExtPadding-Desktop"
@@ -656,6 +678,7 @@ exports[`DynamicPage render footer 1`] = `
         <ui5-button
           accessible-name="Expand Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-down"
@@ -696,7 +719,6 @@ exports[`DynamicPage with content 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -954,13 +976,24 @@ exports[`DynamicPage with content 1`] = `
         role="navigation"
       >
         <ui5-button
-          accessible-name="Expand Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          accessible-name="Collapse Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
-          icon="slim-arrow-down"
-          tooltip="Expand Header"
+          icon="slim-arrow-up"
+          tooltip="Collapse Header"
           ui5-button=""
+        />
+        <ui5-toggle-button
+          accessible-name="Pin Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="pushpin-off"
+          tooltip="Pin Header"
+          ui5-toggle-button=""
         />
       </section>
     </div>
@@ -1690,7 +1723,6 @@ exports[`DynamicPage without content 1`] = `
 <DocumentFragment>
   <div
     class="DynamicPage-dynamicPage sapScrollBar DynamicPage-backgroundSolid"
-    style="--ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);"
   >
     <div
       class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentStart FlexBox-alignItemsStretch FlexBox-flexWrapNoWrap DynamicPageTitle-container StdExtPadding-Desktop"
@@ -1948,13 +1980,24 @@ exports[`DynamicPage without content 1`] = `
         role="navigation"
       >
         <ui5-button
-          accessible-name="Expand Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          accessible-name="Collapse Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
-          icon="slim-arrow-down"
-          tooltip="Expand Header"
+          icon="slim-arrow-up"
+          tooltip="Collapse Header"
           ui5-button=""
+        />
+        <ui5-toggle-button
+          accessible-name="Pin Header"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          data-component-name="DynamicPageAnchorBarPinBtn"
+          data-ui5wcr-dynamic-page-header-action=""
+          design="Default"
+          icon="pushpin-off"
+          tooltip="Pin Header"
+          ui5-toggle-button=""
         />
       </section>
     </div>

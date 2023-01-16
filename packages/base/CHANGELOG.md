@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
+
+### Features
+
+- update `@ui5/webcomponents` to 1.9.3 ([#3886](https://github.com/SAP/ui5-webcomponents-react/issues/3886)) ([c7ca7bb](https://github.com/SAP/ui5-webcomponents-react/commit/c7ca7bbfd80273c9c7dd56204c883bd5becce7e5))
+
+# [1.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.6.0) (2022-11-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+# [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
+
+### Bug Fixes
+
+- **ObjectPage:** adjust responsive padding of tab-bar to header padding ([#3744](https://github.com/SAP/ui5-webcomponents-react/issues/3744)) ([676e020](https://github.com/SAP/ui5-webcomponents-react/commit/676e020d944b7ee130cb1d9bc65451ec9cd0ddff)), closes [#3551](https://github.com/SAP/ui5-webcomponents-react/issues/3551)
+
+# [1.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.3.1...v1.4.0) (2022-11-08)
+
+### Bug Fixes
+
+- **AnalyticalTable:** adjust selection cell width to UX design ([#3733](https://github.com/SAP/ui5-webcomponents-react/issues/3733)) ([c07a866](https://github.com/SAP/ui5-webcomponents-react/commit/c07a8662c0f03881a7e6fdd872472f03322089bb)), closes [#3732](https://github.com/SAP/ui5-webcomponents-react/issues/3732)
+
+### Features
+
+- **AnalyticalTable:** introduce `headerRowHeight` prop ([#3730](https://github.com/SAP/ui5-webcomponents-react/issues/3730)) ([d6ba5bb](https://github.com/SAP/ui5-webcomponents-react/commit/d6ba5bb71c9b7897d4115c4273c55b7bbea31a1a)), closes [#3716](https://github.com/SAP/ui5-webcomponents-react/issues/3716)
+
+# [1.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.2.3...v1.3.0) (2022-11-02)
+
+### Features
+
+- update to @ui5/webcomponents 1.9.0 ([#3708](https://github.com/SAP/ui5-webcomponents-react/issues/3708)) ([c2c046e](https://github.com/SAP/ui5-webcomponents-react/commit/c2c046e18a4fda4d8ac9f133b0a857919327349a))
+
 # [1.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.0.1...v1.1.0) (2022-10-06)
 
 ### Features

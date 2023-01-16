@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactNode, Ref } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss';
@@ -58,7 +58,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
    * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
    * `style={{ gridColumn: 'span 4' }}`
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
@@ -71,7 +71,7 @@ const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'Responsiv
  *
  * @since 0.16.4
  */
-const ResponsiveGridLayout = forwardRef((props: ResponsiveGridLayoutPropTypes, ref: Ref<HTMLDivElement>) => {
+const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutPropTypes>((props, ref) => {
   const {
     children,
     columnGap,

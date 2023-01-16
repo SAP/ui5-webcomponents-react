@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { useSyncRef } from '@ui5/webcomponents-react-base';
+import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, {
   Children,
   cloneElement,
@@ -8,7 +8,6 @@ import React, {
   ReactElement,
   Ref,
   useEffect,
-  useRef,
   useState
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
@@ -32,7 +31,7 @@ export interface WithWebComponentPropTypes {
   waitForDefine?: boolean;
 }
 
-const definedWebComponents = new Set([]);
+const definedWebComponents = new Set<ComponentType>([]);
 
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
@@ -43,15 +42,14 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 ) => {
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
-  const WithWebComponent = forwardRef((props: Props & WithWebComponentPropTypes, wcRef: Ref<RefType>) => {
+  return forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
     const { className, children, waitForDefine, ...rest } = props;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    const [componentRef, ref] = useSyncRef<HTMLElement>(wcRef);
-    const eventRegistry = useRef<Record<string, EventHandler>>({});
+    const [componentRef, ref] = useSyncRef<RefType>(wcRef);
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
-      CommonProps & { class: string }
+      CommonProps & { class?: string; ref?: Ref<RefType> }
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
@@ -107,21 +105,25 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       }
       return [...acc, ...slottedChildren];
     }, []);
+
     // event binding
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
+      const localRef = ref.current;
+      const eventRegistry: Record<string, EventHandler> = {};
       if (!waitForDefine || isDefined) {
         eventProperties.forEach((eventName) => {
           const eventHandler = rest[createEventPropName(eventName)] as EventHandler;
           if (typeof eventHandler === 'function') {
-            eventRegistry.current[eventName] = eventHandler;
-            ref.current?.addEventListener(eventName, eventRegistry.current[eventName]);
+            eventRegistry[eventName] = eventHandler;
+            // @ts-expect-error: all custom events can be passed here, so `keyof HTMLElementEventMap` isn't sufficient
+            localRef?.addEventListener(eventName, eventRegistry[eventName]);
           }
         });
 
         return () => {
-          // eslint-disable-next-line guard-for-in
-          for (const eventName in eventRegistry.current) {
-            ref.current?.removeEventListener(eventName, eventRegistry.current[eventName]);
+          for (const eventName in eventRegistry) {
+            // @ts-expect-error: all custom events can be passed here, so `keyof HTMLElementEventMap` isn't sufficient
+            localRef?.removeEventListener(eventName, eventRegistry[eventName]);
           }
         };
       }
@@ -160,6 +162,4 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       </Component>
     );
   });
-
-  return WithWebComponent;
 };

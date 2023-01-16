@@ -1,12 +1,17 @@
 import { Meta } from '@storybook/addon-docs';
 import { MessageStrip } from '@ui5/webcomponents-react';
 import { Footer } from '@docs/Footer';
+import { TableOfContent } from '../.storybook/components/TableOfContent';
 
 <Meta title="Knowledge Base/Test Setup" />
 
 # Test Setup
 
 This guide is applicable if you are using a standard `create-react-app` setup.
+
+<TableOfContent />
+
+## Transpile Modules
 
 `create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
 Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
@@ -30,8 +35,32 @@ In case you are using our chart library `@ui5/webcomponents-react-charts` as wel
 }
 ```
 
+## Mocking
+
+### Resize Observer
+
 Since some components of UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver` API, you'll need to add a polyfill for it.
 Our recommendation is the `resize-observer-polyfill` package, you can install it by running `npm install resize-observer-polyfill --save-dev`.
+
+### React.useId
+
+If you want to test your app by creating snapshots, you may need to mock the `useId` hook offered by React since version 18.
+This hook returns a unique id across all components, but as your snapshot should be stable you can't have it there.
+
+```js
+jest.mock('react', () => {
+  return { ...jest.requireActual('react'), useId: () => ':mocked' };
+});
+```
+
+<MessageStrip hideCloseButton>
+  Snapshot testing is a{' '}
+  <ui5-link href={'https://kentcdodds.com/blog/effective-snapshot-testing'}>controversial and complex topic</ui5-link>,
+  but especially with web components it gets really tricky as the JSDOM doesn't support rendering the shadow-root out of
+  the box. That's why we recommend to go without extensively using snapshots.
+</MessageStrip>
+
+## Jest Setup File
 
 All other prerequisites of the UI5 Web Components for React Library can be fulfilled by importing our jest setup file:
 `import '@ui5/webcomponents-react/jestSetup.js';`
@@ -43,6 +72,10 @@ import ResizeObserverPolyfill from 'resize-observer-polyfill';
 import '@ui5/webcomponents-react/jestSetup.js';
 
 window.ResizeObserver = ResizeObserverPolyfill;
+
+jest.mock('react', () => {
+  return { ...jest.requireActual('react'), useId: () => ':mocked' };
+});
 ```
 
 <MessageStrip hideCloseButton>

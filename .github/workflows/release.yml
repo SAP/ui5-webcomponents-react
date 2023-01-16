@@ -33,14 +33,14 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
       - name: Install and build
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
           yarn build
 
       - name: publish

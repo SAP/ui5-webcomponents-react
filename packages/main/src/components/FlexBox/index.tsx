@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef, ReactNode, Ref } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
@@ -42,7 +42,7 @@ export interface FlexBoxPropTypes extends CommonProps {
   /**
    * Content of the `FlexBox`.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Sets the components outer HTML tag.
    *
@@ -54,19 +54,17 @@ export interface FlexBoxPropTypes extends CommonProps {
 /**
  * The `FlexBox` builds the container for a flexible box layout by leveraging the CSS flexbox layout.
  */
-const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) => {
+const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
   const {
     children,
-    justifyContent,
-    direction,
-    alignItems,
+    justifyContent = FlexBoxJustifyContent.Start,
+    direction = FlexBoxDirection.Row,
+    alignItems = FlexBoxAlignItems.Stretch,
     displayInline,
-    wrap,
-    style,
+    wrap = FlexBoxWrap.NoWrap,
     className,
     fitContainer,
-    slot,
-    as,
+    as = 'div',
     ...rest
   } = props;
 
@@ -84,21 +82,12 @@ const FlexBox = forwardRef((props: FlexBoxPropTypes, ref: Ref<HTMLDivElement>) =
 
   const CustomTag = as as React.ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} style={style} slot={slot} {...rest}>
+    <CustomTag ref={ref} className={flexBoxClasses} {...rest}>
       {children}
     </CustomTag>
   );
 });
 
-FlexBox.defaultProps = {
-  as: 'div',
-  alignItems: FlexBoxAlignItems.Stretch,
-  direction: FlexBoxDirection.Row,
-  displayInline: false,
-  fitContainer: false,
-  justifyContent: FlexBoxJustifyContent.Start,
-  wrap: FlexBoxWrap.NoWrap
-};
 FlexBox.displayName = 'FlexBox';
 
 export { FlexBox };

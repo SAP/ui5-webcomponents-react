@@ -1,7 +1,9 @@
 import { MutableRefObject, Ref, RefCallback, useCallback, useRef } from 'react';
 
-export function useSyncRef<RefType = any>(ref: Ref<RefType>): [RefCallback<RefType>, MutableRefObject<RefType>] {
-  const localRef = useRef<RefType>(null);
+export function useSyncRef<RefType = never>(
+  ref: Ref<RefType>
+): [RefCallback<RefType>, MutableRefObject<RefType | null>] {
+  const localRef = useRef<RefType | null>(null);
 
   const componentRef = useCallback(
     (node) => {

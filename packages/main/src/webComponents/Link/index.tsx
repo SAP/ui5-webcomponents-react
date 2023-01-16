@@ -16,6 +16,10 @@ interface LinkAttributes {
    */
   accessibleNameRef?: string;
   /**
+   * Defines the ARIA role of the component. **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   */
+  accessibleRole?: string;
+  /**
    * Defines the component design.
    *
    * **Note:** Avaialble options are `Default`, `Subtle`, and `Emphasized`.
@@ -90,11 +94,13 @@ export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClic
 /**
  * The `Link` is a hyperlink component that is used to navigate to other apps and web pages, or to trigger actions. It is a clickable text element, visualized in such a way that it stands out from the standard text. On hover, it changes its style to an underlined text to provide additional feedback to the user.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Link" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleName', 'accessibleNameRef', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
   ['click']
@@ -103,6 +109,7 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
 Link.displayName = 'Link';
 
 Link.defaultProps = {
+  accessibleRole: 'link',
   design: LinkDesign.Default
 };
 
