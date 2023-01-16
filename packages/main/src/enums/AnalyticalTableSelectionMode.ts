@@ -1,7 +1,7 @@
 /**
- * @deprecated please use AnalyticalTableSelectionMode instead.
+ * Defines the `SelectionMode` of the AnalyticalTable.
  */
-export enum TableSelectionMode {
+export enum AnalyticalTableSelectionMode {
   /**
    * The rows are not selectable.
    */

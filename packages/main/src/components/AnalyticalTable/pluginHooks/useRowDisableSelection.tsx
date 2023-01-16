@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import { TableSelectionBehavior } from '../../../enums';
-import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { AnalyticalTableSelectionBehavior } from '../../../enums';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
 import { CheckBox } from '../../../webComponents/CheckBox';
 import { getBy } from '../util';
 
@@ -19,7 +19,10 @@ const headerProps = (
     }
   }
 ) => {
-  if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
+  if (
+    props.key === 'header___ui5wcr__internal_selection_column' &&
+    selectionMode === AnalyticalTableSelectionMode.MultiSelect
+  ) {
     const style = { ...props.style, cursor: 'auto' };
     return [props, { onClick: undefined, onKeyDown: undefined, style }];
   }
@@ -34,10 +37,13 @@ const columns = (columns) => {
         Cell: (instance) => {
           const { webComponentsReactProperties, row } = instance;
           if (row.disableSelect === true) {
-            if (row.isGrouped && webComponentsReactProperties.selectionMode === TableSelectionMode.SingleSelect) {
+            if (
+              row.isGrouped &&
+              webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.SingleSelect
+            ) {
               return null;
             }
-            if (webComponentsReactProperties.selectionMode === TableSelectionMode.SingleSelect) {
+            if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
               return <div onClick={undefined} data-name="internal_selection_column" />;
             }
             return (
@@ -101,8 +107,9 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     if (
       disableRowAccessor(row) === true &&
-      selectionMode !== TableSelectionMode.None &&
-      (selectionBehavior !== TableSelectionBehavior.RowSelector || column.id === '__ui5wcr__internal_selection_column')
+      selectionMode !== AnalyticalTableSelectionMode.None &&
+      (selectionBehavior !== AnalyticalTableSelectionBehavior.RowSelector ||
+        column.id === '__ui5wcr__internal_selection_column')
     ) {
       const { 'aria-label': _0, ...updatedCellProps } = cellProps;
       if (column.id === '__ui5wcr__internal_selection_column') {

@@ -30,10 +30,10 @@ import {
   MultiComboBox,
   MultiComboBoxItem,
   Panel,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableSelectionMode,
+  AnalyticalTableVisibleRowCountMode,
   Text,
   TextAlign,
   ToggleButton
@@ -134,11 +134,11 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     isTreeTable: false,
     NoDataComponent: DefaultNoDataComponent,
     LoadingComponent: DefaultLoadingComponent,
-    scaleWidthMode: TableScaleWidthMode.Default,
-    selectionMode: TableSelectionMode.SingleSelect,
-    selectionBehavior: TableSelectionBehavior.Row,
+    scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
+    selectionMode: AnalyticalTableSelectionMode.SingleSelect,
+    selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.Fixed
+    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
   }}
   argTypes={{
     data: { control: { disable: true } },
@@ -370,7 +370,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
     name="Plugin: useRowDisableSelection"
     args={{
       data: dataSmall.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
-      selectionMode: TableSelectionMode.MultiSelect
+      selectionMode: AnalyticalTableSelectionMode.MultiSelect
     }}
   >
     {(args) => {
@@ -443,7 +443,7 @@ const WithFunctionParameter = () => {
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
     />
   );
@@ -463,7 +463,7 @@ const data = [
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
     />
   );
@@ -502,7 +502,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
                 selectSubRows ? "Don't " : ''
               }Select Sub-Rows`}</ToggleButton>
               <AnalyticalTable
-                selectionMode={TableSelectionMode.MultiSelect}
+                selectionMode={AnalyticalTableSelectionMode.MultiSelect}
                 data={args.data}
                 columns={args.columns}
                 isTreeTable
@@ -519,7 +519,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 ```jsx
 <AnalyticalTable
-  selectionMode={TableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
   data={data}
   columns={columns}
   isTreeTable
@@ -571,7 +571,7 @@ If this key is found on the original data row, and it is `true`, this row will b
               <br />
               <br />
               <AnalyticalTable
-                selectionMode={TableSelectionMode.MultiSelect}
+                selectionMode={AnalyticalTableSelectionMode.MultiSelect}
                 data={data}
                 columns={args.columns}
                 tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
@@ -597,7 +597,7 @@ If this key is found on the original data row, and it is `true`, this row will b
 
 ```jsx
 <AnalyticalTable
-  selectionMode={TableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
   data={data}
   columns={columns}
   // you could also omit the `'isSelected'`, as this is the default value
@@ -1186,14 +1186,14 @@ const TableWithSubcomponents = (props) => {
 
 ## Adjust the number of visible rows to the container height
 
-By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
+By adding the `visibleRowCountMode` prop and setting it to `AnalyticalTableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
 
 <ArgsTableWithNote story="Adjust number of rows to container height" hideHTMLPropsNote />
 
 <Canvas withSource="none">
   <Story
     name="Adjust number of rows to container height"
-    args={{ visibleRowCountMode: TableVisibleRowCountMode.Auto, containerHeight: 250 }}
+    args={{ visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 }}
     argTypes={{
       columns: { table: { disable: true } },
       data: { table: { disable: true } },
@@ -1296,7 +1296,7 @@ In the example below you can have a look at this behavior:
   <Story
     name="Responsive columns"
     args={{
-      visibleRowCountMode: TableVisibleRowCountMode.Fixed,
+      visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
       containerWidth: 'auto',
       data: dataSmall,
       columns: [
@@ -1507,7 +1507,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
 <Canvas withSource="none">
   <Story
     name="with navigation indicator"
-    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: dataSmall }}
+    args={{ withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.MultiSelect, data: dataSmall }}
   >
     {(args) => {
       const [selectedRow, setSelectedRow] = useState();
