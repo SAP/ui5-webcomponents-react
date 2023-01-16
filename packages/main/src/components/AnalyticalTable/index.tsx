@@ -1107,7 +1107,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rows={rows}
                 handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
-                dataLength={data?.length}
               >
                 <VirtualTableBody
                   classes={classes}
