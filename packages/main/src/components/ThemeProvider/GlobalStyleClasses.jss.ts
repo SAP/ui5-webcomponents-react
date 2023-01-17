@@ -15,7 +15,7 @@ import { sapHorizonHcwParameters } from '../../themes/sap_horizon_hcw';
 
 export const GlobalStyleClassesStyles = {
   '@global': {
-    [`.${GlobalStyleClasses.sapScrollBarAll} *:not([data-native-scrollbar])`]: {
+    [`.${GlobalStyleClasses.inheritingSapScrollBar} *:not([data-native-scrollbar])`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
         '&:horizontal': {
