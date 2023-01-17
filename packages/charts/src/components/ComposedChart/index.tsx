@@ -517,7 +517,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension.formatter}
+            tickFormatter={primaryDimension?.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}
