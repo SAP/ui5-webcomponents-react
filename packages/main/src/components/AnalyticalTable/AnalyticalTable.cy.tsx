@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnalyticalTable, AnalyticalTableHooks, Button, Input, AnalyticalTableScaleWidthMode } from '../..';
+import {
+  AnalyticalTable,
+  AnalyticalTableHooks,
+  Button,
+  Input,
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTablePropTypes
+} from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
 
 const generateMoreData = (count) => {
@@ -706,6 +713,185 @@ describe('AnalyticalTable', () => {
       cy.get(col).invoke('outerWidth').should('equal', 400);
     });
     cy.get('#age').should('not.exist');
+  });
+
+  it('InfiniteScroll', () => {
+    const data = new Array(500).fill('').map((_, index) => ({ name: `Name${index}` }));
+    const TestComp = (props: Omit<AnalyticalTablePropTypes, 'data' | 'columns'>) => {
+      const tableRef = useRef(null);
+      const [internalData, setData] = useState(data.slice(0, 50));
+      const offset = useRef(50);
+      const onLoadMore = (e) => {
+        props.onLoadMore(e);
+        setData((prev) => [...prev, ...data.slice(offset.current, offset.current + 50)]);
+        offset.current += 50;
+      };
+      return (
+        <>
+          <Input
+            data-testid="scrollInput"
+            onChange={(e) => {
+              tableRef.current.scrollToItem(e.target.value);
+            }}
+          >
+            Scroll Down
+          </Input>
+          <Button
+            onClick={() => {
+              setData(data.slice(0, 110));
+            }}
+          >
+            Data 110
+          </Button>
+          <Button
+            onClick={() => {
+              setData(data.slice(0, 100));
+            }}
+          >
+            Data 100
+          </Button>
+          <AnalyticalTable
+            ref={tableRef}
+            data-testid="at"
+            data={internalData}
+            columns={columns}
+            infiniteScroll={true}
+            infiniteScrollThreshold={10}
+            onLoadMore={onLoadMore}
+          />
+          {`Rows: ${internalData.length}`}
+        </>
+      );
+    };
+    const onLoadMore = cy.spy().as('more');
+    cy.mount(<TestComp onLoadMore={onLoadMore} />);
+
+    // todo add as command
+    cy.findByTestId('scrollInput').shadow().get('input').type('45');
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name44').should('be.visible');
+    cy.findByText('Rows: 100').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByText('Data 110').click();
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('99', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name99').should('be.visible');
+    cy.findByText('Rows: 110').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('100', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name100').should('be.visible');
+    cy.findByText('Rows: 160').should('be.visible');
+    cy.get('@more').should('have.been.calledTwice');
+
+    cy.findByText('Data 100').click();
+    cy.findByText('Rows: 100').should('be.visible');
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('91', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name91').should('be.visible');
+    cy.findByText('Rows: 150').should('be.visible');
+    cy.get('@more').should('have.been.calledThrice');
+  });
+
+  it('InfiniteScroll: Tree', () => {
+    const subRows = new Array(500).fill('').map((_, index) => ({ name: `Name${index}` }));
+    const rootData = { name: 'Root' };
+    const TestComp = (props: Omit<AnalyticalTablePropTypes, 'data' | 'columns'>) => {
+      const tableRef = useRef(null);
+      const [internalSubRows, setInternalSubRows] = useState(subRows.slice(0, 50));
+      const offset = useRef(50);
+      const onLoadMore = (e) => {
+        props.onLoadMore(e);
+        setInternalSubRows((prev) => [...prev, ...subRows.slice(offset.current, offset.current + 50)]);
+        offset.current += 50;
+      };
+      return (
+        <>
+          <Input
+            data-testid="scrollInput"
+            onChange={(e) => {
+              tableRef.current.scrollToItem(e.target.value);
+            }}
+          >
+            Scroll Down
+          </Input>
+          <Button
+            onClick={() => {
+              setInternalSubRows(subRows.slice(0, 110));
+            }}
+          >
+            Data 111
+          </Button>
+          <Button
+            onClick={() => {
+              setInternalSubRows(subRows.slice(0, 100));
+            }}
+          >
+            Data 101
+          </Button>
+          <AnalyticalTable
+            ref={tableRef}
+            data-testid="at"
+            data={[{ ...rootData, subRows: internalSubRows }]}
+            columns={columns}
+            infiniteScroll={true}
+            infiniteScrollThreshold={10}
+            onLoadMore={onLoadMore}
+            isTreeTable
+            reactTableOptions={{ autoResetExpanded: false }}
+            minRows={1}
+          />
+          {/*root node => +1*/}
+          {`Rows: ${internalSubRows.length + 1}`}
+        </>
+      );
+    };
+    const onLoadMore = cy.spy().as('more');
+    cy.mount(<TestComp onLoadMore={onLoadMore} />);
+
+    cy.get('[ui5-icon]').click();
+    cy.findByTestId('scrollInput').shadow().get('input').type('45');
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name44').should('be.visible');
+    cy.findByText('Rows: 101').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByText('Data 111').click();
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('100', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name99').should('be.visible');
+    cy.findByText('Rows: 111').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('101', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name100').should('be.visible');
+    cy.findByText('Rows: 161').should('be.visible');
+    cy.get('@more').should('have.been.calledTwice');
+
+    cy.findByText('Data 101').click();
+    cy.findByText('Rows: 101').should('be.visible');
+    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('91', { force: true });
+    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name90').should('be.visible');
+    cy.findByText('Rows: 151').should('be.visible');
+    cy.get('@more').should('have.been.calledThrice');
   });
 });
 

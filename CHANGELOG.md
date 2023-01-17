@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.1...v1.7.2) (2023-01-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** allow customization of `maxWidth` in `Grow` mode ([#3941](https://github.com/SAP/ui5-webcomponents-react/issues/3941)) ([82a0dfb](https://github.com/SAP/ui5-webcomponents-react/commit/82a0dfb34ef494bab9a990093c963bbdbf359fc9))
+- **AnalyticalTable:** calculate column width correctly when `columns` change ([#3947](https://github.com/SAP/ui5-webcomponents-react/issues/3947)) ([dfa455a](https://github.com/SAP/ui5-webcomponents-react/commit/dfa455a83f5de01aa4bd304d5df814b7963fc1d0)), closes [#3878](https://github.com/SAP/ui5-webcomponents-react/issues/3878)
+- **AnalyticalTable:** reset `infiniteScrollThreshold` when tree data changes ([#3981](https://github.com/SAP/ui5-webcomponents-react/issues/3981)) ([915bdd1](https://github.com/SAP/ui5-webcomponents-react/commit/915bdd1124479befcc785fd186ec4779448c6b04)), closes [#3980](https://github.com/SAP/ui5-webcomponents-react/issues/3980)
+- **DynamicPage:** fix scroll issue for some content heights ([#3942](https://github.com/SAP/ui5-webcomponents-react/issues/3942)) ([5f148f4](https://github.com/SAP/ui5-webcomponents-react/commit/5f148f45de76f06bd5c1a60e242d5a5fe0315530)), closes [#3925](https://github.com/SAP/ui5-webcomponents-react/issues/3925)
+- **FilterBar:** don't fire bubbled up selection-change event of `Table` ([#3935](https://github.com/SAP/ui5-webcomponents-react/issues/3935)) ([b42026f](https://github.com/SAP/ui5-webcomponents-react/commit/b42026ff1042e3da3820e71555828eba5427154a))
+- **Grid:** fix React key error ([#3933](https://github.com/SAP/ui5-webcomponents-react/issues/3933)) ([8b437e8](https://github.com/SAP/ui5-webcomponents-react/commit/8b437e824382691b596154ae79175c33932c26e8)), closes [#3915](https://github.com/SAP/ui5-webcomponents-react/issues/3915)
+- **Toolbar:** fire onClick on Space/Enter press, fix info bar colors ([#3934](https://github.com/SAP/ui5-webcomponents-react/issues/3934)) ([96a6644](https://github.com/SAP/ui5-webcomponents-react/commit/96a6644c8214e389544e2b65df06946abe22f9b4)), closes [#3914](https://github.com/SAP/ui5-webcomponents-react/issues/3914)
+
 ## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
 
 ### Bug Fixes
