@@ -5,7 +5,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface FilterItemOptionAttributes {
   /**
-   * Defines whether the option is selected
+   * Defines if the component is selected.
    */
   selected?: boolean;
   /**

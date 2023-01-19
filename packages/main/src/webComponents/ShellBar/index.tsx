@@ -35,6 +35,11 @@ interface ShellBarAttributes {
    * Defines, if the product switch icon would be displayed.
    */
   showProductSwitch?: boolean;
+  /**
+   * Defines, if the Search Field would be displayed when there is a valid `searchField` slot.
+   * **Note:** By default the Search Field is not displayed.
+   */
+  showSearchField?: boolean;
 }
 
 export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
@@ -62,6 +67,20 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
    * Returns the `profile` icon DOM ref.
    */
   readonly profileDomRef: ReactNode;
+  /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   *     *   `true`
+   *     *   `false`
+   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
+   *     *   `Dialog`
+   *     *   `Grid`
+   *     *   `ListBox`
+   *     *   `Menu`
+   *     *   `Tree`
+   */
+  accessibilityAttributes: Record<string, unknown>;
   /**
    * An object of strings that defines additional accessibility roles for further customization. It supports the following fields: - `logoRole`: the accessibility role for the `logo`
    */
@@ -156,7 +175,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
   ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
-  ['showCoPilot', 'showNotifications', 'showProductSwitch'],
+  ['showCoPilot', 'showNotifications', 'showProductSwitch', 'showSearchField'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
 );
