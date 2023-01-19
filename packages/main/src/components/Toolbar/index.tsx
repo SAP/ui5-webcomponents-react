@@ -24,7 +24,7 @@ import { ToolbarDesign, ToolbarStyle } from '../../enums';
 import { SHOW_MORE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils';
-import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
+import { PopoverDomRef } from '../../webComponents';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 
@@ -44,7 +44,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    *
    * __Note:__ Per default a `ToggleButton` with the `"overflow"` icon and all necessary a11y attributes will be rendered.
    */
-  overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  overflowButton?: ReactNode;
   /**
    * Defines the visual style of the `Toolbar`.
    *

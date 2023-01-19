@@ -15,7 +15,7 @@ import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ToolbarStyle } from '../../enums';
 import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
+import { Button, ButtonDomRef, DialogDomRef, TableDomRef, TableRowDomRef } from '../../webComponents';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
@@ -37,9 +37,10 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the search field next to the header of the `FilterBar`.
    *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use the `Input` component in order to preserve the intended design.
    * __Note:__ If `hideToolbar` is `true` this prop has no effect.
    */
-  search?: ReactElement<InputPropTypes>;
+  search?: ReactNode;
   /**
    * Specifies header text or variant management that is shown in the toolbar on the first position
    *

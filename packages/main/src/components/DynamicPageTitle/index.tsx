@@ -4,7 +4,6 @@ import React, {
   Children,
   forwardRef,
   MutableRefObject,
-  ReactElement,
   ReactNode,
   useCallback,
   useEffect,
@@ -29,7 +28,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    *
    * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    */
-  actions?: ReactElement | ReactElement[];
+  actions?: ReactNode | ReactNode[];
 
   /**
    * The `breadcrumbs` displayed in the `DynamicPageTitle` top-left area.
@@ -62,7 +61,7 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    *
    * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    */
-  navigationActions?: ReactElement | ReactElement[];
+  navigationActions?: ReactNode | ReactNode[];
   /**
    * Display the `subHeader` on the right instead of below the `header`.
    */

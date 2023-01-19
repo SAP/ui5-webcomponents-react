@@ -1,7 +1,7 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, ReactNode, useReducer, useRef } from 'react';
+import React, { Children, forwardRef, ReactNode, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
@@ -36,7 +36,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    *
    * __Note:__ Although this slot accepts all HTML Elements, it is strongly recommended that you only use `Buttons` in order to preserve the intended design.
    */
-  children?: ReactElement<ButtonPropTypes> | ReactElement<ButtonPropTypes>[];
+  children?: ReactNode | ReactNode[];
   /**
    * Displays a cancel button below the action buttons on mobile devices. No cancel button will be shown on desktop and tablet devices.
    */

@@ -6,7 +6,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -37,20 +37,20 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
-  headerTitle?: ReactElement;
+  headerTitle?: ReactNode;
   /**
    * Defines the dynamic header section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
-  headerContent?: ReactElement;
+  headerContent?: ReactNode;
   /**
    * React element which defines the footer content.
    *
    * __Note:__ To preserve the intended design, please use only non-content based `height` values (`px`, `rem`, `vh`, etc.) as height of the `DynamicPage`.
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
    */
-  footer?: ReactElement;
+  footer?: ReactNode;
   /**
    * React element or node array which defines the content.
    */

@@ -2,11 +2,10 @@ import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, DependencyList, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
-import { SplitterElementPropTypes } from '../SplitterElement';
 import { styles } from './SplitterLayout.jss';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
 
@@ -36,8 +35,10 @@ export interface SplitterLayoutPropTypes extends CommonProps {
   vertical?: boolean;
   /**
    * The content areas (optional) to be split. The control will show n-1 splitter bars between n controls in this aggregation.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `SplitterElement` in order to preserve the intended design.
    */
-  children?: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
+  children?: ReactNode | ReactNode[];
   /**
    * Defines options to customize the behavior of the SplitterLayout.
    */

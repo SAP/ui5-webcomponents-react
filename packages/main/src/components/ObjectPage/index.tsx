@@ -41,29 +41,31 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `DynamicPageTitle` is set to `true` by default.
    */
-  headerTitle?: ReactElement;
+  headerTitle?: ReactNode;
   /**
    * Defines the dynamic header section of the `ObjectPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
    */
-  headerContent?: ReactElement;
+  headerContent?: ReactNode;
   /**
    * React element which defines the footer content.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
    */
-  footer?: ReactElement;
+  footer?: ReactNode;
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use a path to an image as `string` or the `Avatar` component.
    */
-  image?: string | ReactElement;
+  image?: ReactNode;
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` in order to preserve the intended design.
    */
-  children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the ID of the currently `ObjectPageSection` section.
    */
