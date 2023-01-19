@@ -446,7 +446,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 
   if (
     componentSpec.extends === 'UI5Element' ||
-    componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
+    componentSpec.extends === 'sap.ui.webc.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
     return { properties, slots, events, methods };
@@ -474,7 +474,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 };
 
 const resolveInheritedAttributes = (componentSpec) => {
-  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webc.base.UI5Element') {
     // no inheritance, just return the component
     return componentSpec;
   }

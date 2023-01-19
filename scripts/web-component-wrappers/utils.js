@@ -34,15 +34,17 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     'ui5-option'
   ]);
 
-  if (interfaces.has(property.type.replace(/\[]$/, ''))) {
+  const canBeNull = property.type.includes('|null');
+
+  if (interfaces.has(property.type.replace(/\[]$/, '').replace(/\|null/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
-        tsType: 'ReactNode | ReactNode[]',
+        tsType: `ReactNode | ReactNode[]${canBeNull ? ' | null' : ''}`,
         importStatement: "import { ReactNode } from 'react';"
       };
     }
     return {
-      tsType: 'ReactNode',
+      tsType: `ReactNode${canBeNull ? ' | null' : ''}`,
       importStatement: "import { ReactNode } from 'react';"
     };
   }
@@ -170,7 +172,9 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'CalendarSelection':
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
+    case 'CarouselPageIndicatorStyle':
     case 'FCLLayout':
+    case 'IconDesign':
     case 'IllustrationMessageSize':
     case 'IllustrationMessageType':
     case 'InputType':
@@ -200,6 +204,7 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'TabLayout':
     case 'TabsOverflowMode':
     case 'TableCellPopinDisplay':
+    case 'TableColumnPopinDisplay':
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
