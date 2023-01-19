@@ -91,10 +91,6 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
    */
   readonly dateValue: Date;
   /**
-   * Opens the picker.
-   */
-  openPicker: () => void;
-  /**
    * Closes the picker.
    */
   closePicker: () => void;
@@ -121,6 +117,11 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
    * @returns {boolean}
    */
   isValid: (value: string) => boolean;
+  /**
+   * Opens the picker.
+   * @returns {Promise<void>} Resolves when the picker is open
+   */
+  openPicker: () => Promise<void>;
 }
 
 export interface DateTimePickerPropTypes extends DateTimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {

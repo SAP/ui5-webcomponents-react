@@ -1,6 +1,6 @@
 import '@ui5/webcomponents/dist/TableColumn.js';
 import { ReactNode } from 'react';
-import { TableCellPopinDisplay } from '../../enums';
+import { TableColumnPopinDisplay } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -27,7 +27,7 @@ interface TableColumnAttributes {
    * *   `Block`
    * *   `Inline`
    */
-  popinDisplay?: TableCellPopinDisplay | keyof typeof TableCellPopinDisplay;
+  popinDisplay?: TableColumnPopinDisplay | keyof typeof TableColumnPopinDisplay;
   /**
    * The text for the column when it pops in.
    */
@@ -62,7 +62,7 @@ TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
   minWidth: Infinity,
-  popinDisplay: TableCellPopinDisplay.Block
+  popinDisplay: TableColumnPopinDisplay.Block
 };
 
 export { TableColumn };

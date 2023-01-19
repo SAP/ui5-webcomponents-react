@@ -68,6 +68,13 @@ export interface StandardListItemPropTypes extends StandardListItemAttributes, C
    */
   children?: ReactNode | ReactNode[];
   /**
+   * **Note:** While the slot allows option for setting custom avatar, to match the design guidelines, please use the `Avatar` with it\`s default size - S. **Note:** If bigger `Avatar` needs to be used, then the size of the `StandardListItem` should be customized in order to fit.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  imageContent?: ReactNode | ReactNode[];
+  /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
@@ -91,7 +98,7 @@ const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardLis
   'ui5-li',
   ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'type'],
   ['iconEnd', 'navigated', 'selected'],
-  ['deleteButton'],
+  ['imageContent', 'deleteButton'],
   ['detail-click']
 );
 

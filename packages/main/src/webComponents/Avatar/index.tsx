@@ -42,7 +42,7 @@ interface AvatarAttributes {
   icon?: string;
   /**
    * Defines the displayed initials.
-   * Up to two Latin letters can be displayed as initials.
+   * Up to three Latin letters can be displayed as initials.
    */
   initials?: string;
   /**
