@@ -8,6 +8,7 @@ import Laptop2 from '../../../../../.storybook/demoImages/Laptop2.jpg';
 import Pc1 from '../../../../../.storybook/demoImages/PC1.jpg';
 import Pc2 from '../../../../../.storybook/demoImages/PC2.jpg';
 import { isChromatic } from '../../../../../.storybook/utils';
+import DialogMethods from '../../webComponents/Dialog/DialogMethods.md';
 
 <Meta
   title="Modals & Popovers / SelectDialog"
@@ -69,16 +70,61 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 <ArgsTable story="." />
 
-## Methods
+<DialogMethods />
 
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+## Opening SelectDialogs
 
-| Name           | Parameters                                                                                                                                                                           | Description                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| **applyFocus** | &mdash;                                                                                                                                                                              | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.          |
-| **close**      | &mdash;                                                                                                                                                                              | Hides the block layer (for modal popups only)                                                                             |
-| **isOpen**     | &mdash;                                                                                                                                                                              | Override this method to provide custom logic for the popup's open/closed state. Maps to the "opened" property by default. |
-| **show**       | <dl><dt className="methodText">**preventInitialFocus** _optional_</dt><dd className="methodText">prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking              |
+<br />
+
+#### since 0.22.0
+
+We recommend opening and closing the `SelectDialog` component in a declarative way using the `open` prop.
+You can still use the imperative way which is outlined below.
+
+```jsx
+const MyComponentWithSelectDialog = () => {
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setDialogIsOpen(true);
+        }}
+      >
+        Open SelectDialog
+      </Button>
+      <SelectDialog open={dialogIsOpen} headerText="Select Product">
+        <StandardListItem image="pathToImg" description="description">
+          Product
+        </StandardListItem>
+      </SelectDialog>
+    </>
+  );
+};
+```
+
+#### before 0.22.0
+
+`SelectDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
+
+```jsx
+const SelectDialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open SelectDialog</Button>
+      <SelectDialog ref={dialogRef} headerText="Select Product">
+        <StandardListItem image="pathToImg" description="description">
+          Product
+        </StandardListItem>
+      </SelectDialog>
+    </>
+  );
+};
+```
 
 ## More Examples
 
