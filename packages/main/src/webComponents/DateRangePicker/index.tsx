@@ -92,7 +92,6 @@ interface DateRangePickerAttributes {
 export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5DomRef {
   /**
    * Returns the end date of the currently selected range as JavaScript Date instance.
-   * Currently selected date represented as a Local JavaScript Date instance.
    */
   readonly endDateValue: Date;
   /**
@@ -187,6 +186,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
 DateRangePicker.displayName = 'DateRangePicker';
 
 DateRangePicker.defaultProps = {
+  delimiter: '-',
   valueState: ValueState.None
 };
 
