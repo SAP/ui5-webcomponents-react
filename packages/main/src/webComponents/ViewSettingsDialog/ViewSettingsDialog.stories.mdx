@@ -98,6 +98,35 @@ import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md';
 
 <ViewSettingsDialogMethods />
 
+## Opening ViewSettingsDialog
+
+`ViewSettingsDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
+
+```jsx
+const ViewSettingsDialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ViewSettingsDialog</Button>
+      <ViewSettingsDialog
+        ref={dialogRef}
+        sortItems={
+          <>
+            <SortItem text="Name" />
+            <SortItem text="Position" />
+            <SortItem text="Company" />
+            <SortItem text="Department" />
+          </>
+        }
+      />
+    </>
+  );
+};
+```
+
 <SubcomponentsSection />
 
 ## SortItem
