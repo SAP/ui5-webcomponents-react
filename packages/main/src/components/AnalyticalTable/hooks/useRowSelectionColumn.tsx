@@ -1,7 +1,7 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import { TableSelectionBehavior } from '../../../enums/TableSelectionBehavior';
-import { TableSelectionMode } from '../../../enums/TableSelectionMode';
+import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
 import { CheckBox } from '../../../webComponents/CheckBox';
 
 const customCheckBoxStyling = {
@@ -19,7 +19,7 @@ const Header = (instance) => {
     webComponentsReactProperties: { selectionMode }
   } = instance;
 
-  if (selectionMode === TableSelectionMode.SingleSelect) {
+  if (selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
     return null;
   }
   const checkBoxProps = getToggleAllRowsSelectedProps();
@@ -35,7 +35,7 @@ const Header = (instance) => {
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
-  if (selectionMode === TableSelectionMode.SingleSelect || row.isGrouped) {
+  if (selectionMode === AnalyticalTableSelectionMode.SingleSelect || row.isGrouped) {
     return null;
   }
 
@@ -65,7 +65,10 @@ const headerProps = (
   }
 ) => {
   const style = { ...props.style, cursor: 'pointer' };
-  if (props.key === 'header___ui5wcr__internal_selection_column' && selectionMode === TableSelectionMode.MultiSelect) {
+  if (
+    props.key === 'header___ui5wcr__internal_selection_column' &&
+    selectionMode === AnalyticalTableSelectionMode.MultiSelect
+  ) {
     const onClick = (e) => {
       toggleAllRowsSelected(!isAllRowsSelected);
       if (typeof onRowSelect === 'function') {
@@ -103,8 +106,8 @@ const visibleColumnsDeps = (deps, { instance }) => [
 
 const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
   if (
-    webComponentsReactProperties.selectionMode === TableSelectionMode.None ||
-    webComponentsReactProperties.selectionBehavior === TableSelectionBehavior.RowOnly
+    webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.None ||
+    webComponentsReactProperties.selectionBehavior === AnalyticalTableSelectionBehavior.RowOnly
   ) {
     return currentVisibleColumns;
   }
@@ -116,7 +119,10 @@ const columns = (currentColumns, { instance }) => {
   const { webComponentsReactProperties } = instance;
   const { selectionMode, selectionBehavior, tableRef } = webComponentsReactProperties;
 
-  if (selectionMode === TableSelectionMode.None || selectionBehavior === TableSelectionBehavior.RowOnly) {
+  if (
+    selectionMode === AnalyticalTableSelectionMode.None ||
+    selectionBehavior === AnalyticalTableSelectionBehavior.RowOnly
+  ) {
     return currentColumns;
   }
   const tableSelectionColumnWidth =

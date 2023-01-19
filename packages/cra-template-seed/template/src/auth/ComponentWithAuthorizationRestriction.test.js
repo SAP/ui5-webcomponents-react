@@ -33,7 +33,7 @@ describe('ComponentWithAuthorizationRestriction.js Test Suite', () => {
     expect(child).toBeInTheDocument();
   });
 
-  test.only('should not appear in the document', async () => {
+  test('should not appear in the document', async () => {
     const childText = 'inner text';
 
     render(

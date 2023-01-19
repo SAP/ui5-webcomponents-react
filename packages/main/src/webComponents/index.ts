@@ -94,6 +94,7 @@ export * from './ToggleButton';
 export * from './Token';
 export * from './Tree';
 export * from './TreeItem';
+export * from './TreeItemCustom';
 export * from './UploadCollection';
 export * from './UploadCollectionItem';
 export * from './ViewSettingsDialog';

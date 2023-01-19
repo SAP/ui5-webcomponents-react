@@ -11,6 +11,7 @@ exports[`RadialChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -18,7 +19,6 @@ exports[`RadialChart Check onClick events 1`] = `
           cx="50%"
           cy="50%"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -260,6 +260,7 @@ exports[`RadialChart Check onClick events 1`] = `
             1,0,
             200,30.25 Z"
                 fill="var(--sapContent_ImagePlaceholderBackground)"
+                role="img"
               />
             </g>
             <g
@@ -298,6 +299,7 @@ exports[`RadialChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
@@ -305,7 +307,6 @@ exports[`RadialChart Render chart with data 1`] = `
           cx="50%"
           cy="50%"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -547,6 +548,7 @@ exports[`RadialChart Render chart with data 1`] = `
             1,0,
             200,30.25 Z"
                 fill="var(--sapContent_ImagePlaceholderBackground)"
+                role="img"
               />
             </g>
             <g

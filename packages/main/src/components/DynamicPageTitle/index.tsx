@@ -1,6 +1,16 @@
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  Children,
+  forwardRef,
+  MutableRefObject,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -62,13 +72,13 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    *
    * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
    */
-  actionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active' | 'overflowPopoverRef'>;
+  actionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
   /**
    * Use this prop to customize the "navigationActions" `Toolbar`.
    *
    * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
    */
-  navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active' | 'overflowPopoverRef'>;
+  navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
 }
 
 interface InternalProps extends DynamicPageTitlePropTypes {
@@ -80,19 +90,22 @@ interface InternalProps extends DynamicPageTitlePropTypes {
 
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
 
-const enhanceActionsWithClick = (actions, ref) =>
-  flattenFragments(actions, Infinity).map((action: ReactElement) =>
-    React.cloneElement(action, {
-      onClick: (e) => {
-        if (typeof action.props?.onClick === 'function') {
-          action.props.onClick(e);
+const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) =>
+  flattenFragments(actions, Infinity).map((action) => {
+    if (React.isValidElement(action)) {
+      return React.cloneElement(action, {
+        // @ts-expect-error: only actionable elements should be passed to either of the `action` props
+        onClick: (e) => {
+          if (typeof action.props?.onClick === 'function') {
+            action.props.onClick(e);
+          }
+          if (ref.current?.isOpen() && !e.defaultPrevented) {
+            ref.current.close();
+          }
         }
-        if (ref.current?.isOpen() && !e.defaultPrevented) {
-          ref.current.close();
-        }
-      }
-    })
-  );
+      });
+    }
+  });
 
 /**
  * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
@@ -124,8 +137,12 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
   );
   const containerClasses = clsx(classes.container, isPhone && classes.phone, className);
 
-  const actionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
-  const navActionsOverflowPopoverRef = useRef<PopoverDomRef>(null);
+  const [actionsOverflowRef, syncedActionsOverflowRef] = useSyncRef<PopoverDomRef>(
+    actionsToolbarProps?.overflowPopoverRef ?? null
+  );
+  const [navActionsOverflowRef, syncedNavActionsOverflowRef] = useSyncRef<PopoverDomRef>(
+    navigationActionsToolbarProps?.overflowPopoverRef ?? null
+  );
 
   useEffect(() => {
     isMounted.current = true;
@@ -149,7 +166,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
   );
 
   useEffect(() => {
-    const debouncedObserverFn = debounce(([titleContainer]) => {
+    const debouncedObserverFn = debounce(([titleContainer]: ResizeObserverEntry[]) => {
       // Firefox implements `borderBoxSize` as a single content rect, rather than an array
       const borderBoxSize = Array.isArray(titleContainer.borderBoxSize)
         ? titleContainer.borderBoxSize[0]
@@ -205,19 +222,21 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
           )}
           {showNavigationInTopArea && (
             <Toolbar
+              tabIndex={undefined}
+              role={undefined}
               {...navigationActionsToolbarProps}
               overflowButton={navigationActionsToolbarProps?.overflowButton}
               className={clsx(classes.toolbar, navigationActionsToolbarProps?.className)}
               onClick={handleNavigationActionsToolbarClick}
               data-component-name="DynamicPageTitleNavActions"
               onOverflowChange={navigationActionsToolbarProps?.onOverflowChange}
-              overflowPopoverRef={navActionsOverflowPopoverRef}
+              overflowPopoverRef={navActionsOverflowRef}
               design={ToolbarDesign.Auto}
               toolbarStyle={ToolbarStyle.Clear}
               active
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-              {enhanceActionsWithClick(navigationActions, navActionsOverflowPopoverRef)}
+              {enhanceActionsWithClick(navigationActions, syncedNavActionsOverflowRef)}
             </Toolbar>
           )}
         </FlexBox>
@@ -242,6 +261,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
           <Toolbar
+            tabIndex={undefined}
+            role={undefined}
             {...actionsToolbarProps}
             overflowButton={actionsToolbarProps?.overflowButton}
             design={ToolbarDesign.Auto}
@@ -251,14 +272,14 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
             onClick={handleActionsToolbarClick}
             data-component-name="DynamicPageTitleActions"
             onOverflowChange={actionsToolbarProps?.onOverflowChange}
-            overflowPopoverRef={actionsOverflowPopoverRef}
+            overflowPopoverRef={actionsOverflowRef}
           >
             <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-            {enhanceActionsWithClick(actions, actionsOverflowPopoverRef)}
+            {enhanceActionsWithClick(actions, syncedActionsOverflowRef)}
             {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
               <ToolbarSeparator />
             )}
-            {!showNavigationInTopArea && enhanceActionsWithClick(navigationActions, actionsOverflowPopoverRef)}
+            {!showNavigationInTopArea && enhanceActionsWithClick(navigationActions, syncedActionsOverflowRef)}
           </Toolbar>
         )}
       </FlexBox>

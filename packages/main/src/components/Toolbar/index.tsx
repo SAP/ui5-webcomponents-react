@@ -30,9 +30,11 @@ import { styles } from './Toolbar.jss';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 
-export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
+export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'children'> {
   /**
    * Defines the content of the `Toolbar`.
+   *
+   * __Note:__ Although this prop accepts all `ReactNode` types, it is strongly recommended to not pass `string` or `number` to it.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -85,7 +87,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick'> {
    */
   overflowPopoverRef?: Ref<PopoverDomRef>;
   /**
-   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
+   * Fired if the `active` prop is set to true and the user clicks or presses Enter/Space on the `Toolbar`.
    */
   onClick?: (event: CustomEvent) => void;
   /**
@@ -153,9 +155,10 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return flatChildren.map((item: ReactElement, index) => {
+    return flatChildren.map((item, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
-      const isSpacer = (item?.type as any)?.displayName === 'ToolbarSpacer';
+      // @ts-expect-error: if type is not defined, it's not a spacer
+      const isSpacer = item?.type?.displayName === 'ToolbarSpacer';
       controlMetaData.current.push({
         ref: itemRef,
         isSpacer
@@ -252,14 +255,15 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);
 
-  const handleToolbarClick = useCallback(
-    (e) => {
-      if (active && typeof onClick === 'function') {
+  const handleToolbarClick = (e) => {
+    if (active && typeof onClick === 'function') {
+      const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
+      if (e.type === 'click' || isSpaceEnterDown) {
+        e.preventDefault();
         onClick(enrichEventWithDetails(e));
       }
-    },
-    [onClick, active]
-  );
+    }
+  };
 
   const prevChildren = useRef(flatChildren);
   const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
@@ -298,6 +302,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       ref={componentRef}
       slot={slot}
       onClick={handleToolbarClick}
+      onKeyDown={handleToolbarClick}
+      tabIndex={active ? 0 : undefined}
+      role={active ? 'button' : undefined}
       {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>

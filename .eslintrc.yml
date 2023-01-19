@@ -14,6 +14,7 @@ extends:
 plugins:
   - prefer-arrow
   - react-hooks
+  - no-only-tests
 settings:
   react:
     version: detect
@@ -44,6 +45,7 @@ rules:
     - ignore:
         - '@ui5/webcomponents-react'
         - '@ui5/webcomponents-react-base'
+  no-only-tests/no-only-tests: 'error'
 overrides:
   # add config for all TypeScript files
   - files:
@@ -97,3 +99,31 @@ overrides:
       - 'plugin:react/jsx-runtime'
     rules:
       '@typescript-eslint/no-namespace': 'off'
+
+  - files:
+      - '*.test.tsx'
+      - '*.test.ts'
+    parserOptions:
+      project:
+        - './tsconfig.test.json'
+        - './packages/*/tsconfig.json'
+    rules:
+      '@typescript-eslint/no-empty-function': 'off'
+      'react/react-in-jsx-scope': 'off'
+      'import/order': 'warn'
+      'import/no-unresolved': 'off'
+      'react/no-unescaped-entities': 'off'
+      '@typescript-eslint/unbound-method': 'warn'
+      'react/display-name': 'off'
+
+  - files:
+      - '*.cy.ts'
+      - '*.cy.tsx'
+    rules:
+      '@typescript-eslint/no-empty-function': 'off'
+      'react/react-in-jsx-scope': 'off'
+      'import/order': 'warn'
+      'import/no-unresolved': 'off'
+      'react/no-unescaped-entities': 'off'
+      '@typescript-eslint/unbound-method': 'warn'
+      'react/display-name': 'off'

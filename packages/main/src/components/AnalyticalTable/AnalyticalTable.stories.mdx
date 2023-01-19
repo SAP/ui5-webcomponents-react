@@ -2,6 +2,7 @@ import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
 import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
+import dataNameAge from '../../../../../.storybook/mockData/NameAge50.json';
 import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
 import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
@@ -10,7 +11,7 @@ import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '../../../../../.storybook/utils';
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
@@ -26,11 +27,13 @@ import {
   InputType,
   Label,
   MessageStrip,
+  MultiComboBox,
+  MultiComboBoxItem,
   Panel,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableSelectionMode,
+  AnalyticalTableVisibleRowCountMode,
   Text,
   TextAlign,
   ToggleButton
@@ -131,11 +134,11 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
     isTreeTable: false,
     NoDataComponent: DefaultNoDataComponent,
     LoadingComponent: DefaultLoadingComponent,
-    scaleWidthMode: TableScaleWidthMode.Default,
-    selectionMode: TableSelectionMode.SingleSelect,
-    selectionBehavior: TableSelectionBehavior.Row,
+    scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
+    selectionMode: AnalyticalTableSelectionMode.SingleSelect,
+    selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: TableVisibleRowCountMode.Fixed
+    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
   }}
   argTypes={{
     data: { control: { disable: true } },
@@ -367,7 +370,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
     name="Plugin: useRowDisableSelection"
     args={{
       data: dataSmall.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
-      selectionMode: TableSelectionMode.MultiSelect
+      selectionMode: AnalyticalTableSelectionMode.MultiSelect
     }}
   >
     {(args) => {
@@ -440,7 +443,7 @@ const WithFunctionParameter = () => {
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
     />
   );
@@ -460,7 +463,7 @@ const data = [
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={TableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
     />
   );
@@ -499,7 +502,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
                 selectSubRows ? "Don't " : ''
               }Select Sub-Rows`}</ToggleButton>
               <AnalyticalTable
-                selectionMode={TableSelectionMode.MultiSelect}
+                selectionMode={AnalyticalTableSelectionMode.MultiSelect}
                 data={args.data}
                 columns={args.columns}
                 isTreeTable
@@ -516,7 +519,7 @@ _ES6 Import: `import { AnalyticalTableHooks } from '@ui5/webcomponents-react';`_
 
 ```jsx
 <AnalyticalTable
-  selectionMode={TableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
   data={data}
   columns={columns}
   isTreeTable
@@ -568,7 +571,7 @@ If this key is found on the original data row, and it is `true`, this row will b
               <br />
               <br />
               <AnalyticalTable
-                selectionMode={TableSelectionMode.MultiSelect}
+                selectionMode={AnalyticalTableSelectionMode.MultiSelect}
                 data={data}
                 columns={args.columns}
                 tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
@@ -594,7 +597,7 @@ If this key is found on the original data row, and it is `true`, this row will b
 
 ```jsx
 <AnalyticalTable
-  selectionMode={TableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
   data={data}
   columns={columns}
   // you could also omit the `'isSelected'`, as this is the default value
@@ -786,7 +789,7 @@ For more details on this behavior you can double check the [react-table docs](ht
 
 ### How to scroll to a specific row/offset?
 
-The instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the instance e.g. by creating a `Ref`)
+The DOM instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the DOM element e.g. by creating a Ref `ref={analyticalTableRef}`)
 
 - `scrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
 - `scrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
@@ -812,6 +815,46 @@ If you wish to implement your own data manipulation outside the table you can us
 ```
 
 For more information please take a look at the [React Table v7 docs](https://react-table-v7.tanstack.com/docs/api/overview).
+
+### How to distinguish between `onRowClick` and `onRowSelect` on selection-cell click?
+
+When a selectable cell of the table is clicked, both `onRowClick` and `onRowSelect` are fired. Sometimes, but especially when the selection behavior is set to `RowSelector`, you don't want `onRowClick` to execute the logic you defined in your handler when clicking the selection-cell.
+To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property is falsy.
+
+```js
+// both events are fired if the clicked cell is selectable
+const onRowClick = (e) => {
+  if (!e.target.dataset.selectionCell) {
+    // only do something if other cells than the selection cell are clicked
+  }
+};
+const onRowSelect = (e) => {
+  // do something on row select
+};
+```
+
+### How to hide columns?
+
+[React Table v7](https://react-table-v7.tanstack.com/docs/api/useTable) exposes an API on the table instance to hide columns. You can leverage it for example by attaching a React Ref to the `tableInstance` prop.
+Please note that the internal react-table is resetting its hidden state after hiding the column, which is most probably a bug. To prevent this you can set the `autoResetHiddenColumns` table option to `false`. (See [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--default-story#how-to-stop-the-table-state-from-automatically-resetting-when-the-data-changes))
+
+```jsx
+  <Button
+    onClick={() => {
+      tableInstanceRef.current.toggleHideColumn("age");
+    }}
+  >
+    Toggle Age Col
+  </Button>
+  <AnalyticalTable
+    columns={COLUMNS}
+    data={DATA}
+    tableInstance={tableInstanceRef}
+    reactTableOptions={{
+      autoResetHiddenColumns: false
+    }}
+  />
+```
 
 # More Examples
 
@@ -1143,14 +1186,14 @@ const TableWithSubcomponents = (props) => {
 
 ## Adjust the number of visible rows to the container height
 
-By adding the `visibleRowCountMode` prop and setting it to `TableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
+By adding the `visibleRowCountMode` prop and setting it to `AnalyticalTableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
 
 <ArgsTableWithNote story="Adjust number of rows to container height" hideHTMLPropsNote />
 
 <Canvas withSource="none">
   <Story
     name="Adjust number of rows to container height"
-    args={{ visibleRowCountMode: TableVisibleRowCountMode.Auto, containerHeight: 250 }}
+    args={{ visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 }}
     argTypes={{
       columns: { table: { disable: true } },
       data: { table: { disable: true } },
@@ -1253,7 +1296,7 @@ In the example below you can have a look at this behavior:
   <Story
     name="Responsive columns"
     args={{
-      visibleRowCountMode: TableVisibleRowCountMode.Fixed,
+      visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
       containerWidth: 'auto',
       data: dataSmall,
       columns: [
@@ -1464,7 +1507,7 @@ Click on any of the rows in the example below to display the "navigated" indicat
 <Canvas withSource="none">
   <Story
     name="with navigation indicator"
-    args={{ withNavigationHighlight: true, selectionMode: TableSelectionMode.MultiSelect, data: dataSmall }}
+    args={{ withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.MultiSelect, data: dataSmall }}
   >
     {(args) => {
       const [selectedRow, setSelectedRow] = useState();
@@ -1527,4 +1570,135 @@ export const TableWithNavigationIndicators = () => {
 };
 ```
 
-<Footer />
+## Custom column filtering
+
+It is possible to define your own filter function and filter component on each column. For this you need to customize the column option `filter` or add a custom filter type to the `reactTableOptions.filterTypes` object (for a custom filter function) and the column option `Filter` (for a custom filter component).
+
+Here you can find an example using a `MultiComboBox` with multiple values as filter.
+
+<Canvas withSource="none">
+  <Story name="with custom filter">
+    {() => {
+      const [collapsed, setCollapsed] = useReducer((coll) => !coll, !isChromatic);
+      const filterFn = useCallback((rows, accessor, filterValue) => {
+        if (filterValue.length > 0) {
+          return rows.filter((row) => {
+            const rowVal = row.values[accessor];
+            return !!filterValue.some((item) => rowVal.includes(item));
+          });
+        }
+        return rows;
+      }, []);
+      const columns = useMemo(
+        () => [
+          {
+            Header: 'Custom Column Filter',
+            accessor: 'name',
+            filter: filterFn,
+            Filter: ({ column }) => {
+              const firstNames = ['Carl', 'Dan', 'Rose', 'Susanne'];
+              return (
+                <MultiComboBox
+                  placeholder="Filter Names"
+                  onSelectionChange={(e) => {
+                    column.setFilter(e.detail.items.map((item) => item.getAttribute('text')));
+                  }}
+                >
+                  {firstNames.map((item) => {
+                    const isSelected = column?.filterValue?.some((filterVal) => filterVal.includes(item));
+                    return <MultiComboBoxItem text={item} key={item} selected={isSelected} />;
+                  })}
+                </MultiComboBox>
+              );
+            }
+          },
+          {
+            Header: 'Age',
+            accessor: 'age'
+          }
+        ],
+        []
+      );
+      return (
+        <Panel collapsed={collapsed} onToggle={setCollapsed} headerText="Show table with custom column filter">
+          {collapsed ? (
+            <BusyIndicator active style={{ width: '100%' }}>
+              <span style={{ height: '800px' }} />
+            </BusyIndicator>
+          ) : (
+            <AnalyticalTable columns={columns} data={dataNameAge} filterable />
+          )}
+        </Panel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```jsx
+const filterFn = (rows, accessor, filterValue) => {
+  if (filterValue.length > 0) {
+    return rows.filter((row) => {
+      const rowVal = row.values[accessor];
+      if (filterValue.some((item) => rowVal.includes(item))) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return rows;
+};
+const COLUMNS = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    // either define your filter function here or set is as `reactTableOption` and pass the key as string here (see below)
+    filter: filterFn,
+    Filter: ({ column }) => {
+      const firstNames = ['Carl', 'Dan', 'Rose', 'Susanne'];
+      return (
+        <MultiComboBox
+          onSelectionChange={(e) => {
+            column.setFilter(e.detail.items.map((item) => item.getAttribute('text')));
+          }}
+        >
+          {firstNames.map((item) => {
+            const isSelected = column?.filterValue?.some((filterVal) => filterVal.includes(item));
+            return <MultiComboBoxItem text={item} key={item} selected={isSelected} />;
+          })}
+        </MultiComboBox>
+      );
+    }
+  },
+  {
+    Header: 'Age',
+    accessor: 'age'
+  }
+];
+const TableComponent = () => {
+  return (
+    <ThemeProvider>
+      <AnalyticalTable
+        columns={COLUMNS}
+        data={DATA}
+        filterable
+        // you can also define your function here, then you can just pass the key as string to the `filter` column option
+        // reactTableOptions={{
+        //   filterTypes: {
+        //     multiValueFilter: filterFn
+        //   }
+        // }}
+      />
+    </ThemeProvider>
+  );
+};
+```
+
+</details>
+
+<Footer style={{ marginTop: '2rem' }} />

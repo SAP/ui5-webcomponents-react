@@ -1,6 +1,17 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import clsx from 'clsx';
 import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';
-import { Cell, Label, Legend, Pie, PieChart as PieChartLib, Sector, Text, Tooltip } from 'recharts';
+import { createUseStyles } from 'react-jss';
+import {
+  Cell,
+  Label as RechartsLabel,
+  Legend,
+  Pie,
+  PieChart as PieChartLib,
+  Sector,
+  Text as RechartsText,
+  Tooltip
+} from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal';
@@ -12,6 +23,13 @@ import { ChartContainer } from '../../internal/ChartContainer';
 import { defaultFormatter } from '../../internal/defaults';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
 import { PieChartPlaceholder } from './Placeholder';
+
+const useStyles = createUseStyles(
+  {
+    piechart: { '& g:focus,& path:focus': { outline: 'none' } }
+  },
+  { name: 'PieChartStyles' }
+);
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
   /**
@@ -93,6 +111,8 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     ...rest
   } = props;
 
+  const classes = useStyles();
+
   const chartConfig = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
     legendPosition: 'bottom',
@@ -122,24 +142,21 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     [props.measure]
   );
 
-  const dataLabel = useCallback(
-    (props) => {
-      const hideDataLabel =
-        typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
-      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
+  const dataLabel = (props) => {
+    const hideDataLabel =
+      typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
+    if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
 
-      if (isValidElement(measure.DataLabel)) {
-        return cloneElement(measure.DataLabel, { ...props, config: measure });
-      }
+    if (isValidElement(measure.DataLabel)) {
+      return cloneElement(measure.DataLabel, { ...props, config: measure });
+    }
 
-      return (
-        <Text {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
-          {measure.formatter(props.value)}
-        </Text>
-      );
-    },
-    [measure, chartConfig.activeSegment]
-  );
+    return (
+      <RechartsText {...props} alignmentBaseline="middle" className="recharts-pie-label-text">
+        {measure.formatter(props.value)}
+      </RechartsText>
+    );
+  };
 
   const tooltipValueFormatter = useCallback(
     (value, name) => [measure.formatter(value), dimension.formatter(name)],
@@ -264,13 +281,11 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       <PieChartLib
         onClick={onClickInternal}
         margin={chartConfig.margin}
-        className={
-          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
-        }
+        className={clsx(
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
+          classes.piechart
+        )}
       >
-        {/*
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore*/}
         <Pie
           onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
@@ -286,7 +301,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
         >
-          {centerLabel && <Label position="center">{centerLabel}</Label>}
+          {centerLabel && <RechartsLabel position="center">{centerLabel}</RechartsLabel>}
           {dataset &&
             dataset.map((data, index) => (
               <Cell

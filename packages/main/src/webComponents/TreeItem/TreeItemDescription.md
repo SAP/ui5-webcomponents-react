@@ -1,4 +1,11 @@
+The `TreeItem` represents a node in a tree structure, shown as a `List`.  
 This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
-### Usage
 
-`TreeItem` is an abstract element, representing a node in a `Tree`. The tree itself is rendered as a list, and each `TreeItem` is represented by a list item(`TreeListItem`) in that list. Therefore, you should only use `TreeItem` directly in your apps. The `TreeListItem` list item is internal for the list, and not intended for public use.
+### CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The `TreeItem` exposes the following CSS Shadow Parts:
+
+- title - Used to style the title of the tree list item
+- additionalText - Used to style the additionalText of the tree list item
+- icon - Used to style the icon of the tree list item

@@ -17,6 +17,7 @@ import '@ui5/webcomponents-icons/dist/sys-monitor.js';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import TabDescription from '../Tab/TabDescription.md';
 import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md';
+import { TabContainerBackgroundDesign } from '../../enums';
 
 <Meta
   title="Layouts & Floorplans / TabContainer"
@@ -27,7 +28,9 @@ import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md'
     overflowButton: { control: { disable: true } }
   }}
   args={{
-    tabLayout: TabLayout.Standard
+    tabLayout: TabLayout.Standard,
+    contentBackgroundDesign: TabContainerBackgroundDesign.Solid,
+    headerBackgroundDesign: TabContainerBackgroundDesign.Solid
   }}
 />
 

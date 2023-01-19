@@ -16,8 +16,7 @@ export const VirtualTableBodyContainer = (props) => {
     internalRowHeight,
     handleExternalScroll,
     visibleRows,
-    popInRowHeight,
-    dataLength
+    popInRowHeight
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -28,6 +27,7 @@ export const VirtualTableBodyContainer = (props) => {
   }, [parentRef.current]);
 
   const classNames = clsx(classes.tbody);
+  const dataLength = rows.length;
 
   const lastScrollTop = useRef(0);
   const firedInfiniteLoadEvents = useRef(new Set());

@@ -443,6 +443,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
     events,
     methods
   });
+
   if (
     componentSpec.extends === 'UI5Element' ||
     componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
@@ -460,6 +461,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
     }
     return c.module === componentSpec.extends;
   });
+
   if (parentComponent) {
     return recursivePropertyResolver(parentComponent, {
       properties,

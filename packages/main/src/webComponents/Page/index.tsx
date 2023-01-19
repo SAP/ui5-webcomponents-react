@@ -60,6 +60,8 @@ export interface PagePropTypes extends PageAttributes, CommonProps {
 /**
  * The `Page` is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Page" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Page = withWebComponent<PagePropTypes, PageDomRef>(

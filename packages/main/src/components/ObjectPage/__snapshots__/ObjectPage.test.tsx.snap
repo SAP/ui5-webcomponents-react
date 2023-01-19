@@ -71,6 +71,10 @@ exports[`ObjectPage Default with Sections 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -163,6 +167,10 @@ exports[`ObjectPage Default with Sections 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -328,6 +336,10 @@ exports[`ObjectPage Default with SubSections 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -600,6 +612,10 @@ exports[`ObjectPage Default with SubSections 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -765,6 +781,10 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
@@ -870,6 +890,10 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -878,7 +902,7 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
+    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
   >
     <header
@@ -897,9 +921,11 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       <ui5-tabcontainer
         class="ObjectPage-tabContainerComponent"
         collapsed="true"
+        content-background-design="Solid"
         data-component-name="ObjectPageTabContainer"
         data-sap-ui-fastnavgroup="true"
         fixed="true"
+        header-background-design="Solid"
         tab-layout="Standard"
         tabs-overflow-mode="End"
         ui5-tabcontainer=""
@@ -908,7 +934,16 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
     <div
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
-    />
+    >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -962,6 +997,10 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -988,6 +1027,10 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -1042,6 +1085,10 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -1068,6 +1115,10 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -1138,11 +1189,19 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <ui5-illustrated-message
         data-testid="no-data"
         name="NoData"
         size="Auto"
         ui5-illustrated-message=""
+      />
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
       />
     </div>
   </div>
@@ -1213,6 +1272,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
         <ui5-button
           accessible-name="Collapse Header"
           class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonExpandable"
+          data-component-name="DynamicPageAnchorBarExpandBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
           icon="slim-arrow-up"
@@ -1367,6 +1427,10 @@ exports[`ObjectPage with anchor-bar 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -1639,6 +1703,10 @@ exports[`ObjectPage with anchor-bar 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
@@ -1824,6 +1892,10 @@ exports[`ObjectPage with footer 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -2096,6 +2168,10 @@ exports[`ObjectPage with footer 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
@@ -2296,6 +2372,10 @@ exports[`ObjectPage with header 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -2568,6 +2648,10 @@ exports[`ObjectPage with header 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -2790,6 +2874,10 @@ exports[`ObjectPage with img 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -3062,6 +3150,10 @@ exports[`ObjectPage with img 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
@@ -3299,6 +3391,10 @@ exports[`ObjectPage with img 2`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -3571,6 +3667,10 @@ exports[`ObjectPage with img 2`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
     <div
       data-component-name="ObjectPageFooterSpacer"
@@ -3778,6 +3878,10 @@ exports[`ObjectPage with title 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -4050,6 +4154,10 @@ exports[`ObjectPage with title 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -4262,6 +4370,10 @@ exports[`ObjectPage with title, header & footer 1`] = `
       class="StdExtPadding-Desktop"
       data-component-name="ObjectPageContent"
     >
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
       <section
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
@@ -4534,6 +4646,10 @@ exports[`ObjectPage with title, header & footer 1`] = `
           </div>
         </div>
       </section>
+      <div
+        aria-hidden="true"
+        style="height: 0px;"
+      />
     </div>
     <div
       data-component-name="ObjectPageFooterSpacer"

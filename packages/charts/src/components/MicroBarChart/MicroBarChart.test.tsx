@@ -69,7 +69,7 @@ describe('Micro Bar Chart', () => {
     ).toMatchSnapshot();
   });
 
-  it('Bar click', async () => {
+  it('Bar click', () => {
     let internalDataset = dataset;
 
     const { getByText, rerender } = render(

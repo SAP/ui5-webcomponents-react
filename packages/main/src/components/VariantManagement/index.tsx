@@ -322,7 +322,10 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     const callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
     setSafeChildren((prev) =>
       Children.toArray(
-        prev.map((child: ComponentElement<any, any>) => {
+        prev.map((child) => {
+          if (!React.isValidElement(child)) {
+            return false;
+          }
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
@@ -396,8 +399,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   };
 
-  const variantNames = safeChildren.map((item: ComponentElement<any, any>) =>
-    typeof item.props?.children === 'string' ? item.props.children : ''
+  const variantNames = safeChildren.map((item) =>
+    React.isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -405,7 +408,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   useEffect(() => {
     if (showOnlyFavorites) {
       setFavoriteChildren(
-        safeChildren.filter((child: ComponentElement<any, any>) => child.props.favorite || child.props.isDefault)
+        safeChildren.filter((child) => React.isValidElement(child) && (child.props.favorite || child.props.isDefault))
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {

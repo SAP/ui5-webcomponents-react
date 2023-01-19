@@ -33,6 +33,8 @@ export interface BadgePropTypes extends BadgeAttributes, CommonProps {
 /**
  * The `Badge` is a small non-interactive component which contains text information and color chosen from a list of predefined color schemes. It serves the purpose to attract the user attention to some piece of information (state, quantity, condition, etc.).
  *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Badge" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>('ui5-badge', ['colorScheme'], [], ['icon'], []);

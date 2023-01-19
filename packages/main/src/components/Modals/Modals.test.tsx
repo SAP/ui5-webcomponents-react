@@ -1,15 +1,17 @@
 import { act, fireEvent, render, screen } from '@shared/tests';
 import React from 'react';
+import { DialogPropTypes, MessageBoxPropTypes, PopoverPropTypes, ResponsivePopoverPropTypes } from '../..';
 import { Modals } from './index';
 
 describe('Modals - static helpers', function () {
   test('showDialog', () => {
     render(null);
+    const props: DialogPropTypes & { 'data-testid': string } = {
+      children: 'Dialog Content',
+      'data-testid': 'dialog'
+    };
     act(() => {
-      Modals.showDialog({
-        children: 'Dialog Content',
-        'data-testid': 'dialog'
-      });
+      Modals.showDialog(props);
     });
 
     expect(screen.getByTestId('dialog')).toHaveAttribute('open', 'true');
@@ -18,12 +20,13 @@ describe('Modals - static helpers', function () {
 
   test('showPopover', () => {
     render(<span id="opener" />);
+    const props: PopoverPropTypes & { 'data-testid': string } = {
+      opener: 'opener',
+      children: 'Popover Content',
+      'data-testid': 'popover'
+    };
     act(() => {
-      Modals.showPopover({
-        opener: 'opener',
-        children: 'Popover Content',
-        'data-testid': 'popover'
-      });
+      Modals.showPopover(props);
     });
 
     expect(screen.getByTestId('popover')).toHaveAttribute('open', 'true');
@@ -32,12 +35,13 @@ describe('Modals - static helpers', function () {
 
   test('showResponsivePopover', () => {
     render(<span id="opener" />);
+    const props: ResponsivePopoverPropTypes & { 'data-testid': string } = {
+      opener: 'opener',
+      children: 'ResponsivePopover Content',
+      'data-testid': 'responsivepopover'
+    };
     act(() => {
-      Modals.showResponsivePopover({
-        opener: 'opener',
-        children: 'ResponsivePopover Content',
-        'data-testid': 'responsivepopover'
-      });
+      Modals.showResponsivePopover(props);
     });
 
     expect(screen.getByTestId('responsivepopover')).toHaveAttribute('open', 'true');
@@ -46,11 +50,12 @@ describe('Modals - static helpers', function () {
 
   test('showMessageBox', async () => {
     render(null);
+    const props: MessageBoxPropTypes & { 'data-testid': string } = {
+      children: 'MessageBox Content',
+      'data-testid': 'messagebox'
+    };
     act(() => {
-      Modals.showMessageBox({
-        children: 'MessageBox Content',
-        'data-testid': 'messagebox'
-      });
+      Modals.showMessageBox(props);
     });
 
     await screen.findByText('Confirmation');
@@ -72,7 +77,12 @@ describe('Modals - static helpers', function () {
 });
 
 describe('Modals - hooks', function () {
-  const TestComponent = ({ hookFn, modalProps }) => {
+  interface PropTypes {
+    hookFn: any;
+    modalProps: any;
+  }
+
+  const TestComponent = ({ hookFn, modalProps }: PropTypes) => {
     const hook = hookFn();
 
     return (
@@ -140,7 +150,7 @@ describe('Modals - hooks', function () {
     expect(screen.getByTestId('messagebox')).toHaveAttribute('open');
   });
 
-  test(Modals.useShowToast.name, async () => {
+  test(Modals.useShowToast.name, () => {
     render(
       <TestComponent hookFn={Modals.useShowToast} modalProps={{ children: 'Toast Content', 'data-testid': 'toast' }} />
     );

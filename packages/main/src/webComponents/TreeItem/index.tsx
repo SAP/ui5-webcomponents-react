@@ -2,14 +2,11 @@ import '@ui5/webcomponents/dist/TreeItem.js';
 import { ReactNode } from 'react';
 import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
 interface TreeItemAttributes {
-  /**
-   * Defines the accessible name of the component.
-   */
-  accessibleName?: string;
   /**
    * Defines the `additionalText`, displayed in the end of the tree item.
    */
@@ -20,7 +17,15 @@ interface TreeItemAttributes {
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
   /**
-   * Defines whether the tree node is expanded or collapsed. Only has visual effect for tree nodes with children.
+   * Defines the text of the tree item.
+   */
+  text?: string;
+  /**
+   * Defines the accessible name of the component.
+   */
+  accessibleName?: string;
+  /**
+   * Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
    */
   expanded?: boolean;
   /**
@@ -29,7 +34,7 @@ interface TreeItemAttributes {
    */
   hasChildren?: boolean;
   /**
-   * If set, an icon will be displayed before the text, representing the tree item.
+   * If set, an icon will be displayed before the text of the tree list item.
    */
   icon?: string;
   /**
@@ -46,23 +51,15 @@ interface TreeItemAttributes {
    */
   indeterminate?: boolean;
   /**
-   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
-   */
-  navigated?: boolean;
-  /**
-   * Defines whether the tree node is selected by the user. Only has effect if the `Tree` is in one of the following modes: in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect`.
-   */
-  selected?: boolean;
-  /**
-   * Defines the text of the tree item.
-   */
-  text?: string;
-  /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
    *
-   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
   type?: ListItemType | keyof typeof ListItemType;
+  /**
+   * Defines the selected state of the `ListItem`.
+   */
+  selected?: boolean;
 }
 
 export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
@@ -74,22 +71,38 @@ export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
 
 export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
   /**
-   * Defines the items of this component.
+   * Defines the items of the component.
+   *
+   * **Note:** Use `TreeItem` or `TreeItemCustom`
    */
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode;
+  /**
+   * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  deleteButton?: ReactNode;
+  /**
+   * Fired when the user clicks on the detail button when type is `Detail`.
+   */
+  onDetailClick?: (event: Ui5CustomEvent<TreeItemDomRef>) => void;
 }
 
 /**
+ * The `TreeItem` represents a node in a tree structure, shown as a `List`.
  * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
+ *
+ * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'type'],
-  ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
-  [],
-  []
+  ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
+  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
+  ['deleteButton'],
+  ['detail-click']
 );
 
 TreeItem.displayName = 'TreeItem';

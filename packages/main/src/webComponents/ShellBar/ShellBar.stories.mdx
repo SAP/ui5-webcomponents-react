@@ -1,10 +1,11 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import { Avatar, Popover, ShellBar, ShellBarItem, StandardListItem } from '../..';
+import { Icon, Input, Popover, ShellBar, ShellBarItem, StandardListItem } from '../..';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import Description from './ShellBarDescription.md';
-import '@ui5/webcomponents-icons/dist/add.js';
+import addIcon from '@ui5/webcomponents-icons/dist/add.js';
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { useRef } from 'react';
 import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
 import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md';
@@ -26,6 +27,7 @@ import { Logo, Profile } from './CodeGen';
   args={{
     logo: Logo,
     profile: Profile,
+    searchField: <Input showClearIcon icon={<Icon name={searchIcon} interactive />} />,
     notificationsCount: '10',
     primaryTitle: 'Shell Bar',
     secondaryTitle: 'Fiori 3 Shell Bar',
@@ -81,7 +83,7 @@ import { Logo, Profile } from './CodeGen';
     name="with customizable ShellBarItem"
     args={{
       count: '2',
-      icon: 'add',
+      icon: addIcon,
       text: 'add'
     }}
     argTypes={{

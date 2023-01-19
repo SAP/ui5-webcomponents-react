@@ -4,8 +4,8 @@ import React from 'react';
 import { TitleLevel } from '../..';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { PopoverDomRef } from '../../webComponents/Popover';
-import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
+import { VariantManagement } from './index';
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
@@ -44,7 +44,7 @@ describe('VariantManagement', () => {
     expect(cb.mock.results[0].value.selectedVariant.children).toBe('VariantItem 1');
     expect(cb.mock.results[0].value.selectedVariant.variantItem).toBeInTheDocument();
 
-    await popover.close();
+    popover.close();
     // open by clicking on heading
     fireEvent.click(getAllByText('VariantItem 1')[0]);
     expect(popover.isOpen()).toBeTruthy();
@@ -168,14 +168,14 @@ describe('VariantManagement', () => {
         .fill(':)')
         .map((_, index) => <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>)
     ];
-    const { rerender, getByPlaceholderText, queryByPlaceholderText, getByTitle } = render(
+    const { rerender, getByPlaceholderText, queryByPlaceholderText } = render(
       <VariantManagement>{variantItems}</VariantManagement>
     );
     const input = getByPlaceholderText('Search');
     fireEvent.input(input, { target: { value: 'VariantItem 10' } });
     expect(document.querySelectorAll('ui5-li')).toHaveLength(1);
 
-    const [a, ...rest] = variantItems;
+    const [_a, ...rest] = variantItems;
     rerender(<VariantManagement>{rest}</VariantManagement>);
     expect(queryByPlaceholderText('Search')).toBeNull();
   });

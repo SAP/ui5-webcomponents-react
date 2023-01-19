@@ -1,9 +1,9 @@
 import { Meta } from '@storybook/addon-docs';
-import { Label, MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import { ImportStatement } from '../.storybook/components/Import';
 import { TableOfContent } from '../.storybook/components/TableOfContent';
 import { Footer } from '@docs/Footer';
+import { ThemeableCSSVars } from './knowledgeBaseExamples/ThemeableThemingParameters.tsx';
 
 <Meta title="Knowledge Base/Public Utils" />
 
@@ -78,28 +78,7 @@ By using our `ThemingParameters`, you can define the look and feel of your appli
 colors. You can e.g. set `ThemingParameters.sapBackgroundColor` as a `background-color` and you'll always get the correct
 background color for your current theme.
 
-Available Colors:
-
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', rowGap: '1rem', columnGap: '1rem' }}>
-  {Object.entries(ThemingParameters).map(([key, value]) => {
-    if (key.startsWith('sapFont')) return null;
-    return (
-      <div key={key} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Label>{key}</Label>
-        <div
-          style={{
-            backgroundColor: value,
-            borderRadius: '50%',
-            width: '2rem',
-            height: '2rem',
-            minWidth: '2rem',
-            border: `1px solid ${ThemingParameters.sapField_BorderColor}`
-          }}
-        />
-      </div>
-    );
-  })}
-</div>
+<ThemeableCSSVars />
 
 ## Spacing
 

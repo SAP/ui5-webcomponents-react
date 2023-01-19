@@ -1,9 +1,10 @@
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, CSSProperties, forwardRef, ReactElement, ReactNode } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { flattenFragments } from '../../internal/utils';
 import { styles } from './Grid.jss';
 
 export interface GridPropTypes extends CommonProps {
@@ -38,7 +39,7 @@ export interface GridPropTypes extends CommonProps {
   /**
    * Components that are placed into Grid layout.
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const INDENT_PATTERN =
@@ -92,18 +93,25 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
       slot={slot}
       {...rest}
     >
-      {Children.map(children, (child: ReactElement<any>) => {
-        if (!child) return null;
+      {flattenFragments(children, Infinity).map((child) => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
 
         const childSpan = getSpanFromString(child.props['data-layout-span'] ?? defaultSpan, currentRange);
         const childClass = classes[`gridSpan${childSpan}`];
 
-        // eslint-disable-next-line react/jsx-key
-        const childrenWithGridLayout = [<div className={childClass}>{child}</div>];
+        const childrenWithGridLayout = [
+          <div className={childClass} key={child.key}>
+            {child}
+          </div>
+        ];
 
         const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);
         if (indentSpan && indentSpan > 0) {
-          childrenWithGridLayout.unshift(<span className={classes[`gridSpan${indentSpan}`]} />);
+          childrenWithGridLayout.unshift(
+            <span className={classes[`gridSpan${indentSpan}`]} key={`${child.key}-indent`} />
+          );
         }
         return childrenWithGridLayout;
       })}

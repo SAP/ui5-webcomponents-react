@@ -33,7 +33,7 @@ const measures = [
 ];
 
 describe('ColumnChartWithTrend', () => {
-  it('Renders with data', async () => {
+  it('Renders with data', () => {
     const { container, asFragment } = render(
       <ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />
     );
@@ -55,7 +55,7 @@ describe('ColumnChartWithTrend', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Check onClick events', async () => {
+  it('Check onClick events', () => {
     const onClick = jest.fn();
     const onLegendClick = jest.fn();
     const { container, asFragment } = render(

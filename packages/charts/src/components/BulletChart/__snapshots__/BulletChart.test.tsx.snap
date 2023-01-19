@@ -11,12 +11,12 @@ exports[`BulletChart Check onClick events 1`] = `
     >
       <div
         class="recharts-wrapper has-click-handler"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -666,39 +666,51 @@ exports[`BulletChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -714,6 +726,7 @@ exports[`BulletChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -726,6 +739,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -738,6 +752,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -750,6 +765,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -762,6 +778,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -774,6 +791,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -786,6 +804,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -798,6 +817,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -810,6 +830,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -822,6 +843,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -834,6 +856,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -846,6 +869,7 @@ exports[`BulletChart Check onClick events 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -870,39 +894,51 @@ exports[`BulletChart Check onClick events 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -924,7 +960,6 @@ exports[`BulletChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -951,7 +986,6 @@ exports[`BulletChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -979,7 +1013,6 @@ exports[`BulletChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1120,12 +1153,12 @@ exports[`BulletChart Render chart with data 1`] = `
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -1775,39 +1808,51 @@ exports[`BulletChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -1823,6 +1868,7 @@ exports[`BulletChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1835,6 +1881,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1847,6 +1894,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1859,6 +1907,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1871,6 +1920,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1883,6 +1933,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1895,6 +1946,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1907,6 +1959,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1919,6 +1972,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1931,6 +1985,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1943,6 +1998,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1955,6 +2011,7 @@ exports[`BulletChart Render chart with data 1`] = `
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -1979,39 +2036,51 @@ exports[`BulletChart Render chart with data 1`] = `
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -2033,7 +2102,6 @@ exports[`BulletChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2060,7 +2128,6 @@ exports[`BulletChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2088,7 +2155,6 @@ exports[`BulletChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2142,12 +2208,12 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
     >
       <div
         class="recharts-wrapper"
+        role="region"
         style="position: relative; cursor: default; width: 400px; height: 400px;"
       >
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -2797,39 +2863,51 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -2845,6 +2923,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2857,6 +2936,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2869,6 +2949,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2881,6 +2962,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2893,6 +2975,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2905,6 +2988,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2917,6 +3001,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2929,6 +3014,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2941,6 +3027,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2953,6 +3040,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2965,6 +3053,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -2977,6 +3066,7 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 </g>
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 >
                   <line
                     stroke="black"
@@ -3001,39 +3091,51 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
               >
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
                 <g
                   class="recharts-layer recharts-bar-rectangle"
+                  role="img"
                 />
               </g>
             </g>
@@ -3055,7 +3157,6 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -3082,7 +3183,6 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -3110,7 +3210,6 @@ exports[`BulletChart onLegendClick should not crash when invalid handler is prov
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
