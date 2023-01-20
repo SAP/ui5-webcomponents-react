@@ -271,7 +271,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('payloadHelper').should('have.text', '2');
 
     // global filter + select
-    cy.findByTestId('input').shadow().find('input').type('Katy Bradshaw');
+    cy.findByTestId('input').typeIntoUi5Input('Katy Bradshaw');
     cy.findByText('Robin Moreno').should('not.exist');
     cy.findByText('Judith Mathews').should('not.exist');
     cy.findByText('Katy Bradshaw').click();
@@ -281,11 +281,11 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.been.calledThrice');
     cy.findByTestId('payloadHelper').should('have.text', '3');
 
-    cy.findByTestId('input').shadow().find('input').clear();
+    cy.findByTestId('input').typeIntoUi5Input('{selectall}{backspace}');
 
     // column filter + select
     cy.findByText('Name').click();
-    cy.get(`ui5-input[show-clear-icon]`).shadow().find('input').type('Flowers Mcfarland', { force: true });
+    cy.get(`ui5-input[show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
     cy.findByText('Robin Moreno').should('not.exist');
     cy.findByText('Judith Mathews').should('not.exist');
     cy.findByText('Katy Bradshaw').should('not.exist');
@@ -371,15 +371,15 @@ describe('AnalyticalTable', () => {
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
 
-    cy.findByTestId('rowHeight').shadow().find('input').type('100');
+    cy.findByTestId('rowHeight').typeIntoUi5Input('100');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
 
-    cy.findByTestId('headerRowHeight').shadow().find('input').type('200');
+    cy.findByTestId('headerRowHeight').typeIntoUi5Input('200');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
 
-    cy.findByTestId('headerRowHeight').shadow().find('input').clear({ force: true });
+    cy.findByTestId('headerRowHeight').typeIntoUi5Input('{selectall}{backspace}');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
   });
@@ -766,26 +766,25 @@ describe('AnalyticalTable', () => {
     const onLoadMore = cy.spy().as('more');
     cy.mount(<TestComp onLoadMore={onLoadMore} />);
 
-    // todo add as command
-    cy.findByTestId('scrollInput').shadow().get('input').type('45');
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('45');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name44').should('be.visible');
     cy.findByText('Rows: 100').should('be.visible');
     cy.get('@more').should('have.been.calledOnce');
 
     cy.findByText('Data 110').click();
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('99', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('99', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name99').should('be.visible');
     cy.findByText('Rows: 110').should('be.visible');
     cy.get('@more').should('have.been.calledOnce');
 
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('100', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('100', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name100').should('be.visible');
     cy.findByText('Rows: 160').should('be.visible');
@@ -793,9 +792,9 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Data 100').click();
     cy.findByText('Rows: 100').should('be.visible');
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('91', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('91', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name91').should('be.visible');
     cy.findByText('Rows: 150').should('be.visible');
@@ -859,25 +858,25 @@ describe('AnalyticalTable', () => {
     cy.mount(<TestComp onLoadMore={onLoadMore} />);
 
     cy.get('[ui5-icon]').click();
-    cy.findByTestId('scrollInput').shadow().get('input').type('45');
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('45');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name44').should('be.visible');
     cy.findByText('Rows: 101').should('be.visible');
     cy.get('@more').should('have.been.calledOnce');
 
     cy.findByText('Data 111').click();
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('100', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('100', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name99').should('be.visible');
     cy.findByText('Rows: 111').should('be.visible');
     cy.get('@more').should('have.been.calledOnce');
 
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('101', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('101', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name100').should('be.visible');
     cy.findByText('Rows: 161').should('be.visible');
@@ -885,9 +884,9 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Data 101').click();
     cy.findByText('Rows: 101').should('be.visible');
-    cy.findByTestId('scrollInput').shadow().get('input').clear({ force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('91', { force: true });
-    cy.findByTestId('scrollInput').shadow().get('input').type('{enter}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('91', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
     cy.wait(100);
     cy.findByText('Name90').should('be.visible');
     cy.findByText('Rows: 151').should('be.visible');

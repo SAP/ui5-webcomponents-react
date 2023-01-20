@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2015",
+    "lib": ["es2019", "dom"],
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
+    "types": ["cypress"],
+    "skipLibCheck": true
+  },
+  "include": ["src", "vite.config.ts"]
+}
