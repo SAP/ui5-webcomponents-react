@@ -74,7 +74,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
    */
   applyFocus: () => Promise<void>;
   /**
-   * Hides the block layer (for modal popups only)
+   * Closes the popup.
    */
   close: () => void;
   /**
