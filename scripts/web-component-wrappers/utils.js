@@ -203,7 +203,6 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'TabContainerTabsPlacement':
     case 'TabLayout':
     case 'TabsOverflowMode':
-    case 'TableCellPopinDisplay':
     case 'TableColumnPopinDisplay':
     case 'TableGrowingMode':
     case 'TableMode':

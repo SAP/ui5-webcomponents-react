@@ -64,7 +64,6 @@ export * from './SwitchDesign';
 export * from './TabContainerBackgroundDesign';
 export * from './TabContainerTabsPlacement';
 export * from './TabLayout';
-export * from './TableCellPopinDisplay';
 export * from './TableColumnPopinDisplay';
 export * from './TableGrowingMode';
 export * from './TableMode';
