@@ -3,6 +3,7 @@
 exports[`ColorPaletteItem Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-color-palette-item
+    _disabled=""
     ui5-color-palette-item=""
   />
 </DocumentFragment>

@@ -29,6 +29,7 @@ exports[`SelectDialog Basic 1`] = `
         <ui5-icon
           accessible-name="Search"
           class="SelectDialog-inputIcon"
+          design="Default"
           name="search"
           slot="icon"
           title="Search"
@@ -89,6 +90,7 @@ exports[`SelectDialog confirmButtonText 1`] = `
         <ui5-icon
           accessible-name="Search"
           class="SelectDialog-inputIcon"
+          design="Default"
           name="search"
           slot="icon"
           title="Search"
@@ -155,6 +157,7 @@ exports[`SelectDialog with children 1`] = `
         <ui5-icon
           accessible-name="Search"
           class="SelectDialog-inputIcon"
+          design="Default"
           name="search"
           slot="icon"
           title="Search"
@@ -263,6 +266,7 @@ exports[`SelectDialog with headerText 1`] = `
         <ui5-icon
           accessible-name="Search"
           class="SelectDialog-inputIcon"
+          design="Default"
           name="search"
           slot="icon"
           title="Search"

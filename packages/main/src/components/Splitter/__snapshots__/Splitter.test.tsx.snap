@@ -19,6 +19,7 @@ exports[`SplitterLayout Render multiple Splitter in div 1`] = `
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="vertical-grip"
         ui5-icon=""
       />
@@ -40,6 +41,7 @@ exports[`SplitterLayout Render multiple Splitter in div 1`] = `
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="vertical-grip"
         ui5-icon=""
       />
@@ -61,6 +63,7 @@ exports[`SplitterLayout Render multiple Splitter in div 1`] = `
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="horizontal-grip"
         ui5-icon=""
       />
@@ -82,6 +85,7 @@ exports[`SplitterLayout Render multiple Splitter in div 1`] = `
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="horizontal-grip"
         ui5-icon=""
       />
@@ -103,6 +107,7 @@ exports[`SplitterLayout Render multiple Splitter in div 1`] = `
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="vertical-grip"
         ui5-icon=""
       />
@@ -130,6 +135,7 @@ exports[`SplitterLayout Render single Splitter 1`] = `
     />
     <ui5-icon
       class="Splitter-icon"
+      design="Default"
       name="vertical-grip"
       ui5-icon=""
     />
@@ -156,6 +162,7 @@ exports[`SplitterLayout Render single Splitter without required props 1`] = `
     />
     <ui5-icon
       class="Splitter-icon"
+      design="Default"
       name="vertical-grip"
       ui5-icon=""
     />

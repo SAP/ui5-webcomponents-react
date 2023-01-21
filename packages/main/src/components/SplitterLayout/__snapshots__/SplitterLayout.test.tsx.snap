@@ -32,6 +32,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="vertical-grip"
         ui5-icon=""
       />
@@ -66,6 +67,7 @@ exports[`SplitterLayout Render Horizontal SplitterLayout with multiple SplitterE
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="vertical-grip"
         ui5-icon=""
       />
@@ -132,6 +134,7 @@ exports[`SplitterLayout Render Vertical SplitterLayout with multiple SplitterEle
       />
       <ui5-icon
         class="Splitter-icon"
+        design="Default"
         name="horizontal-grip"
         ui5-icon=""
       />
