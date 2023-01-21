@@ -5917,6 +5917,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jquery@npm:*":
+  version: 3.5.16
+  resolution: "@types/jquery@npm:3.5.16"
+  dependencies:
+    "@types/sizzle": "*"
+  checksum: 13c995f15d1c2f1d322103dc1cb0a22b95eecc3e7546f00279b8731aea21d7ec04550af40e609ee48e755d4e11bf61c25b4aa9f53df3bcbec4b8fe8e81471732
+  languageName: node
+  linkType: hard
+
 "@types/jsdom@npm:^20.0.0":
   version: 20.0.0
   resolution: "@types/jsdom@npm:20.0.0"
@@ -6121,6 +6130,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/openui5@npm:^1.109.0":
+  version: 1.109.0
+  resolution: "@types/openui5@npm:1.109.0"
+  dependencies:
+    "@types/jquery": "*"
+    "@types/qunit": "*"
+  checksum: 15def64db8c8432124c190e1075f2feddbc27b36dc871a5bc6b227a1620dd62a7a9b7b154b5165fde452d34743dd9ee849937c61573783b657de9c1f2741c102
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -6167,6 +6186,13 @@ __metadata:
   version: 6.9.7
   resolution: "@types/qs@npm:6.9.7"
   checksum: 7fd6f9c25053e9b5bb6bc9f9f76c1d89e6c04f7707a7ba0e44cc01f17ef5284adb82f230f542c2d5557d69407c9a40f0f3515e8319afd14e1e16b5543ac6cdba
+  languageName: node
+  linkType: hard
+
+"@types/qunit@npm:*":
+  version: 2.19.4
+  resolution: "@types/qunit@npm:2.19.4"
+  checksum: 6fe5e35a5f2f33819324d0b0765d9d1c7517e09c5cb8576ce1e83791e35cf8a3d2be77ea6c6d2dcf7a27c1abe9bf38e34dcc8922c9e94856af61e1e842da9d0e
   languageName: node
   linkType: hard
 
@@ -6280,7 +6306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sizzle@npm:^2.3.2":
+"@types/sizzle@npm:*, @types/sizzle@npm:^2.3.2":
   version: 2.3.3
   resolution: "@types/sizzle@npm:2.3.3"
   checksum: 586a9fb1f6ff3e325e0f2cc1596a460615f0bc8a28f6e276ac9b509401039dd242fa8b34496d3a30c52f5b495873922d09a9e76c50c2ab2bcc70ba3fb9c4e160
@@ -26057,6 +26083,7 @@ __metadata:
     "@testing-library/react": ^13.0.0
     "@testing-library/react-17": "npm:@testing-library/react@^12.1.4"
     "@types/node": ^16.0.0
+    "@types/openui5": ^1.109.0
     "@types/react": ^18.0.6
     "@types/react-dom": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.45.1
