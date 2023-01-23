@@ -1,4 +1,5 @@
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
+import { ReactNode } from 'react';
 import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
@@ -85,7 +86,7 @@ export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Commo
    *
    * **Note:** Use `TreeItem` or `TreeItemCustom`
    */
-  children?: UI5WCSlotsNode;
+  children?: ReactNode;
   /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *

@@ -1,4 +1,5 @@
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
+import { ReactNode } from 'react';
 import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
@@ -140,7 +141,7 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
   /**
    * Defines the content of the Popup.
    */
-  children?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Fired after the component is closed. **This event does not bubble.**
    */

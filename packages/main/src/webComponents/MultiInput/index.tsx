@@ -142,7 +142,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
-  children?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the icon to be displayed in the component.
    *
