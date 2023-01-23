@@ -5,8 +5,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-import { TabDomRef } from '../Tab';
-import { TabSeparatorDomRef } from '../TabSeparator';
+import { UI5WCSlotsNode } from '../../types';
 
 interface TabContainerAttributes {
   /**
@@ -57,21 +56,9 @@ interface TabContainerAttributes {
 
 export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   /**
-   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first.
-   * For example, given the following slotted elements:
-   *
-   * ```
-   * <Tab id="tab1">
-   *   <Tab id="sub1" />
-   * </Tab>
-   * <Tab id="tab2" />
-   * <TabSeparator id="separator" />
-   * <Tab id="tab3" />
-   * ```
-   *
-   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#tab1, Tab#sub1, Tab#tab2, TabSeparator#separator, Tab#tab3 ]`
+   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements: `... ... ... ...` Calling `allItems` on this TabContainer will return the instances in the following order: `[ ui5-tab#First, ui5-tab#Nested, ui5-tab#Second, ui5-tab-separator#sep, ui5-tab#Third ]`
    */
-  readonly allItems?: (TabDomRef | TabSeparatorDomRef)[];
+  readonly allItems: ReactNode | ReactNode[];
 }
 
 export interface TabContainerPropTypes extends TabContainerAttributes, CommonProps {
@@ -84,17 +71,23 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
   /**
    * Defines the button which will open the overflow menu. If nothing is provided to this slot, the default button will be used.
    *
-   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
-   */
-  overflowButton?: ReactNode;
-  /**
-   * Defines the button which will open the start overflow menu if available. If nothing is provided to this slot, the default button will be used.
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="overflowButton"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  startOverflowButton?: ReactNode;
+  overflowButton?: UI5WCSlotsNode;
+  /**
+   * Defines the button which will open the start overflow menu if available. If nothing is provided to this slot, the default button will be used.
+   *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="startOverflowButton"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  startOverflowButton?: UI5WCSlotsNode;
   /**
    * Fired when a tab is selected.
    */

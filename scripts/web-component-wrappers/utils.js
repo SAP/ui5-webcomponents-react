@@ -24,7 +24,15 @@ const eslint = new ESLint({
   fix: true
 });
 
-export const getTypeDefinitionForProperty = (property, isEventProperty = false) => {
+export const getTypeDefinitionForProperty = (property, options = {}) => {
+  const canBeNull = property.defaultValue === 'null';
+  const importStatementCanBeNull = canBeNull ? "import { Nullable } from '../../types'" : null;
+
+  const reactNodeType = options.slot && property.name !== 'default' ? 'UI5WCSlotsNode' : 'ReactNode';
+  const importStatementReactNodeType =
+    options.slot && property.name !== 'default'
+      ? "import { UI5WCSlotsNode } from '../../types'"
+      : "import { ReactNode } from 'react';";
   const interfaces = new Set([
     ...JSON.parse(
       fs.readFileSync(path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json')).toString()
@@ -37,13 +45,13 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
   if (interfaces.has(property.type.replace(/\[]$/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
-        tsType: 'ReactNode | ReactNode[]',
-        importStatement: "import { ReactNode } from 'react';"
+        tsType: `${reactNodeType} | ${reactNodeType}[]`,
+        importStatement: importStatementReactNodeType
       };
     }
     return {
-      tsType: 'ReactNode',
-      importStatement: "import { ReactNode } from 'react';"
+      tsType: reactNodeType,
+      importStatement: importStatementReactNodeType
     };
   }
 
@@ -54,8 +62,8 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'string':
     case 'String':
       return {
-        importStatement: null,
-        tsType: 'string'
+        importStatement: importStatementCanBeNull,
+        tsType: canBeNull ? 'Nullable<string>' : 'string'
       };
     case 'undefined':
       return {
@@ -67,14 +75,14 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     case 'Integer':
     case 'Float':
       return {
-        importStatement: null,
-        tsType: 'number'
+        importStatement: importStatementCanBeNull,
+        tsType: canBeNull ? 'Nullable<number>' : 'number'
       };
     case 'boolean':
     case 'Boolean':
       return {
-        importStatement: null,
-        tsType: 'boolean'
+        importStatement: importStatementCanBeNull,
+        tsType: canBeNull ? 'Nullable<boolean>' : 'boolean'
       };
     case 'Array':
     case 'array':
@@ -90,8 +98,8 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     }
     case 'File': {
       return {
-        importStatement: null,
-        tsType: 'File'
+        importStatement: importStatementCanBeNull,
+        tsType: canBeNull ? 'Nullable<File>' : 'File'
       };
     }
     case 'FileList': {
@@ -117,24 +125,24 @@ export const getTypeDefinitionForProperty = (property, isEventProperty = false) 
     // react ts types
     case 'Node[]':
     case 'HTMLElement[]':
-      if (isEventProperty) {
+      if (options.event) {
         return {
           tsType: 'HTMLElement[]'
         };
       }
       return {
-        tsType: 'ReactNode | ReactNode[]',
-        importStatement: "import { ReactNode } from 'react';"
+        tsType: `${reactNodeType} | ${reactNodeType}[]`,
+        importStatement: importStatementReactNodeType
       };
     case 'HTMLElement':
-      if (isEventProperty) {
+      if (options.event) {
         return {
           tsType: 'HTMLElement'
         };
       }
       return {
-        tsType: 'ReactNode',
-        importStatement: "import { ReactNode } from 'react';"
+        tsType: reactNodeType,
+        importStatement: importStatementReactNodeType
       };
     case 'CSSColor':
       return {

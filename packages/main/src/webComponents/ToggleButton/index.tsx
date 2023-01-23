@@ -1,9 +1,10 @@
 import '@ui5/webcomponents/dist/ToggleButton.js';
-import { ReactNode, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface ToggleButtonAttributes {
   /**
@@ -82,7 +83,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
-  children?: ReactNode | ReactNode[];
+  children?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
    *
