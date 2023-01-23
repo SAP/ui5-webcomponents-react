@@ -48,10 +48,6 @@ interface TreeItemCustomAttributes {
    */
   indeterminate?: boolean;
   /**
-   * Used to duck-type TreeItem elements without using instanceof
-   */
-  isTreeItem?: boolean;
-  /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
    *
    * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
@@ -114,7 +110,7 @@ export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Commo
 const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
   'ui5-tree-item-custom',
   ['accessibleName', 'additionalTextState', 'icon', 'type'],
-  ['hideSelectionElement', 'expanded', 'hasChildren', 'indeterminate', 'isTreeItem', 'selected'],
+  ['hideSelectionElement', 'expanded', 'hasChildren', 'indeterminate', 'selected'],
   ['content', 'deleteButton'],
   ['detail-click']
 );

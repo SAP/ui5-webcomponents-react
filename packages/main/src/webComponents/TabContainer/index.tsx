@@ -6,6 +6,8 @@ import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 import { UI5WCSlotsNode } from '../../types';
+import { TabDomRef } from '../Tab';
+import { TabSeparatorDomRef } from '../TabSeparator';
 
 interface TabContainerAttributes {
   /**
@@ -56,9 +58,21 @@ interface TabContainerAttributes {
 
 export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   /**
-   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements: `... ... ... ...` Calling `allItems` on this TabContainer will return the instances in the following order: `[ ui5-tab#First, ui5-tab#Nested, ui5-tab#Second, ui5-tab-separator#sep, ui5-tab#Third ]`
+   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first.
+   * For example, given the following slotted elements:
+   *
+   * ```
+   * <Tab id="tab1">
+   *   <Tab id="sub1" />
+   * </Tab>
+   * <Tab id="tab2" />
+   * <TabSeparator id="separator" />
+   * <Tab id="tab3" />
+   * ```
+   *
+   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#tab1, Tab#sub1, Tab#tab2, TabSeparator#separator, Tab#tab3 ]`
    */
-  readonly allItems: ReactNode | ReactNode[];
+  readonly allItems?: (TabDomRef | TabSeparatorDomRef)[];
 }
 
 export interface TabContainerPropTypes extends TabContainerAttributes, CommonProps {
