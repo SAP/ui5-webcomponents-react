@@ -6661,6 +6661,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ui5/webcomponents-base@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@ui5/webcomponents-base@npm:1.10.0"
+  dependencies:
+    lit-html: ^2.0.1
+  checksum: c3e166f0406fcb7c78837b9278f145179e53deb1f316ebeffb156045846b3146d9f8fa776c2fd65064697d91570ecb779ab5dcd7a992fcbbec0e325316ac275a
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-base@npm:1.9.3":
   version: 1.9.3
   resolution: "@ui5/webcomponents-base@npm:1.9.3"
@@ -6680,6 +6689,15 @@ __metadata:
     "@ui5/webcomponents-theming": 1.9.3
     "@zxing/library": ^0.17.1
   checksum: 0f74da71fd4263712fe3bf583bac76f3692bc9843af4b0ea77ff39c7de2fd153e70d42558484f9969e3ad5f57f389f74db0ad92984e1b342abf966c1d8bbec70
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents-icons@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@ui5/webcomponents-icons@npm:1.10.0"
+  dependencies:
+    "@ui5/webcomponents-base": 1.10.0
+  checksum: 94524072517d169657734bdd08c887ad8d87368706a46797a26bfd7374b7c94d1885502ff064d03d2d70f2ad5562e751a9da1c938993262cfbafc6aa3714a994
   languageName: node
   linkType: hard
 
@@ -26061,7 +26079,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.45.1
     "@ui5/webcomponents": 1.9.3
     "@ui5/webcomponents-fiori": 1.9.3
-    "@ui5/webcomponents-icons": 1.9.3
+    "@ui5/webcomponents-icons": 1.10.0
     "@ui5/webcomponents-tools": 1.9.3
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
