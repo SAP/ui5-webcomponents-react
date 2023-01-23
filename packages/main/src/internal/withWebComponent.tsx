@@ -73,7 +73,9 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const slots = slotProperties.reduce((acc, name) => {
       const slotValue = rest[name] as ReactElement;
 
-      if (!slotValue) return acc;
+      if (!slotValue) {
+        return acc;
+      }
 
       if (rest[name]?.$$typeof === Symbol.for('react.portal')) {
         console.warn('ReactPortal is not supported for slot props.');
