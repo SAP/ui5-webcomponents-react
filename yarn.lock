@@ -6466,7 +6466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.45.1":
+"@typescript-eslint/eslint-plugin@npm:^5.42.1, @typescript-eslint/eslint-plugin@npm:^5.45.1":
   version: 5.48.2
   resolution: "@typescript-eslint/eslint-plugin@npm:5.48.2"
   dependencies:
@@ -6489,7 +6489,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.45.1":
+"@typescript-eslint/parser@npm:^5.42.1, @typescript-eslint/parser@npm:^5.45.1":
   version: 5.48.2
   resolution: "@typescript-eslint/parser@npm:5.48.2"
   dependencies:
@@ -6773,10 +6773,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@ui5/webcomponents-tools@npm:1.9.3"
+"@ui5/webcomponents-tools@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@ui5/webcomponents-tools@npm:1.10.0"
   dependencies:
+    "@typescript-eslint/eslint-plugin": ^5.42.1
+    "@typescript-eslint/parser": ^5.42.1
     "@wdio/cli": ^7.19.7
     "@wdio/devtools-service": ^7.19.7
     "@wdio/dot-reporter": ^7.19.7
@@ -6824,7 +6826,7 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: 0f226746780fd53f3008b680964ee4ac70050a2bf9e32946fa798945e62db0a2942aae95c7e3a368295bcfdc2dbd63e74957d0208c4449b6fc4d90cccf4931c7
+  checksum: fe1a69961c7330906971f54ef2b7a2725a14059407fb3257768105e594858c23bdeedffe7572d76573347473764a52e45852ae1466e93aac1a98a90fcdda9105
   languageName: node
   linkType: hard
 
@@ -26062,7 +26064,7 @@ __metadata:
     "@ui5/webcomponents": 1.9.3
     "@ui5/webcomponents-fiori": 1.9.3
     "@ui5/webcomponents-icons": 1.9.3
-    "@ui5/webcomponents-tools": 1.9.3
+    "@ui5/webcomponents-tools": 1.10.0
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
     cypress: ^12.1.0
