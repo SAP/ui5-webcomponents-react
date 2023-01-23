@@ -75,6 +75,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
       if (!slotValue) return acc;
 
+      if (rest[name]?.$$typeof === Symbol.for('react.portal')) {
+        console.warn('ReactPortal is not supported for slot props.');
+        return acc;
+      }
+
       const slottedChildren = [];
       let index = 0;
       const removeFragments = (element) => {

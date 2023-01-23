@@ -1,5 +1,6 @@
-import { ReactNode, ReactPortal } from 'react';
+import { ReactFragment, ReactNode, ReactPortal } from 'react';
 
-export type UI5WCSlotsNode = Exclude<ReactNode, string | number | ReactPortal>;
+type ReducedReactNode = Exclude<ReactNode, string | number | ReactPortal | ReactFragment>;
+export type UI5WCSlotsNode = ReducedReactNode | Iterable<ReducedReactNode>;
 
 export type Nullable<T> = T | null;
