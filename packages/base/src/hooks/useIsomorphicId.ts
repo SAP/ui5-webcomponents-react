@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useRef } from 'react';
 
 function getRandomId() {
   if ('randomUUID' in crypto) {
@@ -16,6 +16,6 @@ export function useIsomorphicId(): string {
     return Reflect.get(React, 'useId')();
   }
 
-  const localId = React.useRef(getRandomId());
+  const localId = useRef(getRandomId());
   return localId.current;
 }

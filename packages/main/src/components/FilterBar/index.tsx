@@ -1,12 +1,14 @@
 'use client';
 
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   Children,
   cloneElement,
   CSSProperties,
+  ElementType,
   forwardRef,
+  isValidElement,
   ReactElement,
   ReactNode,
   useEffect,
@@ -273,7 +275,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   useEffect(() => {
     Children.toArray(children).forEach((item) => {
-      if (React.isValidElement(item)) {
+      if (isValidElement(item)) {
         setToggledFilters((prev) => {
           if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[item.key] === undefined) {
             return { ...prev, [item.key]: true };
@@ -360,7 +362,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child) => {
-        if (React.isValidElement(child) && toggledFilters?.[child.key] !== undefined) {
+        if (isValidElement(child) && toggledFilters?.[child.key] !== undefined) {
           // @ts-expect-error: child should always be a FilterGroupItem w/o portal
           return cloneElement<FilterGroupItemPropTypes, HTMLDivElement>(child, {
             visibleInFilterBar: toggledFilters[child.key]
@@ -378,7 +380,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
     return safeChildren()
       .filter((item): item is ReactElement => {
-        if (!React.isValidElement(item)) {
+        if (!isValidElement(item)) {
           return false;
         }
         return item?.props?.visible && item.props?.visibleInFilterBar;
@@ -601,7 +603,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
     return null;
   };
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   return (
     <>
       {dialogOpen && !hideFilterConfiguration && (

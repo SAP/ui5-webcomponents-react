@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import React, { CSSProperties, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import { clsx } from 'clsx';
+import React, { cloneElement, CSSProperties, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize } from '../../enums/AvatarSize';
 
@@ -57,7 +57,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
         </span>
       );
     } else {
-      return React.cloneElement(image, {
+      return cloneElement(image, {
         size: AvatarSize.S,
         className: image.props?.className
           ? `${classes.imageContainer} ${image.props?.className}`

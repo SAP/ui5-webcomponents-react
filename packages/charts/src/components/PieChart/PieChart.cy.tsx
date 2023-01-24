@@ -1,5 +1,5 @@
-import { PieChart } from '@ui5/webcomponents-react-charts';
 import { Text as RechartsText, TextProps } from 'recharts';
+import { PieChart } from '@ui5/webcomponents-react-charts';
 
 const smallDataset = [
   {

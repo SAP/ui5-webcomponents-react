@@ -5,6 +5,7 @@ import React, {
   cloneElement,
   ComponentType,
   forwardRef,
+  Fragment,
   ReactElement,
   Ref,
   useEffect,
@@ -86,7 +87,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       let index = 0;
       const removeFragments = (element) => {
         if (!element) return;
-        if (element.type === React.Fragment) {
+        if (element.type === Fragment) {
           Children.toArray(element.props?.children)
             .filter(Boolean)
             .forEach((item) => {

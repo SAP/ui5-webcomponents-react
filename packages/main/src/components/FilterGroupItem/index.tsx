@@ -1,7 +1,7 @@
 'use client';
 
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection } from '../../enums';
