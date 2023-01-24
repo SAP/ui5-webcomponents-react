@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-icons/dist/alert.js';
 import '@ui5/webcomponents-icons/dist/error.js';
 import '@ui5/webcomponents-icons/dist/information.js';

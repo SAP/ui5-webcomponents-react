@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';

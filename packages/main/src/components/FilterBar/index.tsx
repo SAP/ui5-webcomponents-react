@@ -1,3 +1,5 @@
+'use client';
+
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, {

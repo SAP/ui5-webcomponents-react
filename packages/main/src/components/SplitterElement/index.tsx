@@ -1,3 +1,5 @@
+'use client';
+
 import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, useContext, useEffect, useState } from 'react';

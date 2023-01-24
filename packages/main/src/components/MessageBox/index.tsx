@@ -1,3 +1,5 @@
+'use client';
+
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import {
   enrichEventWithDetails,

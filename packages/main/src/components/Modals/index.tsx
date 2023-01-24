@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createRef, MutableRefObject, RefObject, useCallback } from 'react';
 import { getRandomId } from '../../internal/getRandomId';
 import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';

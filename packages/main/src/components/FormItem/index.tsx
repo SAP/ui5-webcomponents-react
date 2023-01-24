@@ -1,8 +1,8 @@
+'use client';
+
 import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { WrappingType } from '../../enums/WrappingType';
+import { FlexBoxAlignItems, FlexBoxDirection, WrappingType } from '../../enums';
 import { Label, LabelPropTypes } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 
