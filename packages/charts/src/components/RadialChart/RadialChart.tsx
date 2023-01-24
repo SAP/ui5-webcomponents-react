@@ -1,3 +1,5 @@
+'use client';
+
 import { CommonProps } from '@ui5/webcomponents-react';
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef } from 'react';
