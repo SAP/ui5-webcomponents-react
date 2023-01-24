@@ -49,12 +49,12 @@ import MenuMethods from './MenuMethods.md';
             Show Menu
           </Button>
           <Menu {...args} ref={ref}>
-            <MenuItem text="New File" icon="add-document"></MenuItem>
-            <MenuItem text="New Folder" icon="add-folder" disabled></MenuItem>
-            <MenuItem text="Open" icon="open-folder" startsSection></MenuItem>
-            <MenuItem text="Close"></MenuItem>
-            <MenuItem text="Preferences" icon="action-settings" startsSection></MenuItem>
-            <MenuItem text="Exit" icon="journey-arrive"></MenuItem>
+            <MenuItem text="New File" icon="add-document" />
+            <MenuItem text="New Folder" icon="add-folder" disabled />
+            <MenuItem text="Open" icon="open-folder" startsSection />
+            <MenuItem text="Close" />
+            <MenuItem text="Preferences" icon="action-settings" startsSection />
+            <MenuItem text="Exit" icon="journey-arrive" />
           </Menu>
         </>
       );
@@ -69,6 +69,28 @@ import MenuMethods from './MenuMethods.md';
 <Description />
 
 <MenuMethods />
+
+## Opening Menus
+
+`Menu`s can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `Menu` is to be opened_ - as parameter.
+
+```jsx
+const MenuComponent = () => {
+  const popoverRef = useRef();
+  const onButtonClick = (e) => {
+    popoverRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Menu</Button>
+      <Menu ref={popoverRef}>
+        <MenuItem text="New File" icon="add-document" />
+        <MenuItem text="New Folder" icon="add-folder" disabled />
+      </Menu>
+    </>
+  );
+};
+```
 
 <SubcomponentsSection />
 

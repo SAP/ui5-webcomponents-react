@@ -1,3 +1,6 @@
+/**
+ * @deprecated please use AnalyticalTableSelectionBehavior instead.
+ */
 export enum TableSelectionBehavior {
   /**
    * A selection column is rendered along with the normal columns. The whole row is selectable.

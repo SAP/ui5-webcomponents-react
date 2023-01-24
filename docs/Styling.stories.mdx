@@ -30,13 +30,19 @@ or in the [SAPUI5 Theming Parameters Toolbox](https://sapui5.hana.ondemand.com/t
 The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
 All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react";`.
 
-| CSS Class      | Description                                                                                                       |
-| -------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `sapScrollBar` | If added to an container that supports scrolling, the scrollbar will be styled according to the Fiori guidelines. |
+| CSS Class                | Description                                                                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `sapScrollBar`           | If added to an container that supports scrolling, the scrollbar will be styled according to Fiori guidelines.                    |
+| `inheritingSapScrollBar` | If added to a container, the scollbars of the container and of all of its children will be styled according to Fiori guidelines. |
+
+<MessageStrip hideCloseButton style={{ marginBlockEnd: '1rem' }}>
+  With our next major release (v2.0.0), both style classes will be removed as then the SAP scrollbar will be used per
+  default for the whole application.
+</MessageStrip>
 
 ### Use default browser scrollbar
 
-Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent these components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
+Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
 
 ## Style your own components
 
