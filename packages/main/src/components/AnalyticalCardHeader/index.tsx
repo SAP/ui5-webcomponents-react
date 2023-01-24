@@ -1,7 +1,7 @@
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DeviationIndicator, ValueColor } from '../../enums';

@@ -1,5 +1,5 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, CSSProperties, ReactElement, useMemo } from 'react';
+import React, { Children, cloneElement, CSSProperties, isValidElement, ReactElement, useMemo } from 'react';
 import { Splitter } from '../Splitter';
 import { SplitterElementPropTypes } from '../SplitterElement';
 
@@ -12,12 +12,12 @@ interface ConcatSplitterElements {
 
 export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitterElements) => {
   return useMemo(() => {
-    if (React.isValidElement(concatSplitterElements?.children)) {
+    if (isValidElement(concatSplitterElements?.children)) {
       return concatSplitterElements?.children;
     }
 
     const childrenArray = Children.toArray(concatSplitterElements?.children).filter(
-      React.isValidElement
+      isValidElement
     ) as ReactElement<SplitterElementPropTypes>[];
 
     let splitterCount = 0;

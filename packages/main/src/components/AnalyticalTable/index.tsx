@@ -7,7 +7,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   ComponentType,
   CSSProperties,
