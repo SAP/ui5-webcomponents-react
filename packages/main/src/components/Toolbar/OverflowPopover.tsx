@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType } from '../../enums';
@@ -76,7 +76,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
       if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
         // @ts-expect-error: if type is not defined, it's not a spacer
         if (item.type?.displayName === 'ToolbarSeparator') {
-          return React.cloneElement(item as ReactElement, {
+          return cloneElement(item as ReactElement, {
             style: {
               height: '0.0625rem',
               margin: '0.375rem 0.1875rem',

@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBox, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TitleLevel } from '../..';
