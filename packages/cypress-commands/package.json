@@ -17,6 +17,9 @@
     "url": "https://github.com/SAP/ui5-webcomponents-react",
     "directory": "packages/cypress-commands"
   },
+  "scripts": {
+    "clean": "rimraf dist"
+  },
   "peerDependencies": {
     "cypress": "^12.0.0"
   },
