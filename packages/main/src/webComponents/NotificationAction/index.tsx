@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

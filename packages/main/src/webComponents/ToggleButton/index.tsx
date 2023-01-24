@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import { ReactNode, MouseEventHandler } from 'react';
 import { ButtonDesign } from '../../enums';

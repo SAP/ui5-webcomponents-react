@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Title.js';
 import { ReactNode } from 'react';
 import { TitleLevel, WrappingType } from '../../enums';

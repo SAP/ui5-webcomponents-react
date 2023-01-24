@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import { CSSProperties, ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';

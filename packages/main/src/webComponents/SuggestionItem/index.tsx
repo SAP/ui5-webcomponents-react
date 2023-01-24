@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SuggestionItem.js';
 import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

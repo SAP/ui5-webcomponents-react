@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/RadioButton.js';
 import { ValueState, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

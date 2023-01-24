@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Switch.js';
 import { SwitchDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

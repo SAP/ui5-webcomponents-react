@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
