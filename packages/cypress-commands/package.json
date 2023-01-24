@@ -1,10 +1,17 @@
 {
   "name": "@ui5/webcomponents-cypress-commands",
   "description": "Cypress Custom Commands for UI5 Web Components",
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
-  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/ui5-webcomponents-react",

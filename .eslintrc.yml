@@ -60,6 +60,12 @@ overrides:
     extends:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+      - 'plugin:import/typescript'
+    settings:
+      import/resolver:
+        # You will also need to install and configure the TypeScript resolver
+        # See also https://github.com/import-js/eslint-import-resolver-typescript#configuration
+        typescript: true
     rules:
       # disabled some rules from the recommended preset
       '@typescript-eslint/no-empty-function': 'off'

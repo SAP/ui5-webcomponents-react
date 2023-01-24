@@ -1,18 +1,14 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "esnext",
-    "target": "ES2015",
-    "lib": ["es2019", "dom"],
-    "noImplicitAny": false,
+    "moduleResolution": "NodeNext",
     "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "dist",
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "rootDir": "./src",
     "types": ["cypress"],
-    "skipLibCheck": true
+    "strict": true
   },
   "include": ["src"]
 }
