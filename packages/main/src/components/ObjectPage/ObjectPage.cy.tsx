@@ -338,7 +338,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
   });
 
-  it.only('single section', () => {
+  it('single section', () => {
     document.body.style.margin = '0px';
     const TestComp = ({
       mode,
