@@ -3,7 +3,7 @@ import '@testing-library/cypress/add-commands';
 import { mount } from 'cypress/react18';
 import { ThemeProvider } from '@ui5/webcomponents-react';
 import './commands';
-import '../../packages/cypress-commands';
+import '../../packages/cypress-commands/src';
 
 declare global {
   namespace Cypress {
