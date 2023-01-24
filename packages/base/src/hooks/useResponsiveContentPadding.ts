@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getCurrentRange } from '../Device';

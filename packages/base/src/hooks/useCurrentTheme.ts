@@ -1,3 +1,5 @@
+'use client';
+
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/Theming.js';
 import { useEffect, useState } from 'react';
