@@ -28,7 +28,7 @@ interface TimelineChartBodyProps {
   resetScroll: () => void;
 }
 
-const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
+const TimelineChartBody = ({
   dataset,
   width,
   rowHeight,
@@ -45,7 +45,7 @@ const TimelineChartBody: React.FC<TimelineChartBodyProps> = ({
   onScale,
   valueFormat,
   resetScroll
-}) => {
+}: TimelineChartBodyProps) => {
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
   const scaleExpRef = useRef(0);

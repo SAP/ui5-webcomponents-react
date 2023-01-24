@@ -274,10 +274,6 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -558,10 +554,6 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -842,10 +834,6 @@ exports[`TimelineChart does not render annotation layer when there are no annota
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -1126,10 +1114,6 @@ exports[`TimelineChart does not render connection layer when showConnection is f
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -1547,10 +1531,6 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -1868,10 +1848,6 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
             />
           </div>
         </div>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>
@@ -2163,10 +2139,6 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
             </svg>
           </svg>
         </svg>
-        <div
-          class="timeline-chart-tooltip-container"
-          style="width: 100%; height: 100%; font-size: 10px; position: absolute; pointer-events: none;"
-        />
       </div>
     </div>
   </div>

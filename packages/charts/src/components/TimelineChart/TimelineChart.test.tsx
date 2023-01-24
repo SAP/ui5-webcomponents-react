@@ -221,7 +221,7 @@ describe('TimelineChartRow', () => {
 
 describe('TimelineChartBody', () => {
   it('shows tooltip when task is hovered', () => {
-    const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
+    const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} showTooltip />);
     expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(0);
     const task = container.querySelector('.timeline-chart-task');
     assert(task);

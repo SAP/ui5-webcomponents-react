@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
 import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from './util/constants';
 
@@ -10,7 +10,7 @@ interface TimelineChartRowLabelsProps {
   dataset: ITimelineChartRow[];
 }
 
-const TimelineChartRowLabels: React.FC<TimelineChartRowLabelsProps> = ({ width, height, rowHeight, dataset }) => {
+const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineChartRowLabelsProps) => {
   const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
@@ -60,7 +60,7 @@ interface TimelineChartColumnLabelProps {
   valueFormat?: (value: number) => string;
 }
 
-const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
+const TimelineChartColumnLabel = ({
   width,
   height,
   isDiscrete,
@@ -69,7 +69,7 @@ const TimelineChartColumnLabel: React.FC<TimelineChartColumnLabelProps> = ({
   start,
   unscaledWidth,
   valueFormat
-}) => {
+}: TimelineChartColumnLabelProps) => {
   const style: CSSProperties = {
     width: width,
     height: height,
@@ -163,11 +163,11 @@ const generateIntermediateTicks = (
   verticalSegmentWidth: number,
   spacing: number,
   valueFormat?: (value: number) => string
-): JSX.Element => {
+): ReactElement => {
   let covered = verticalSegmentWidth;
   let remaining = width;
-  const lineArray: JSX.Element[] = [];
-  const textArray: JSX.Element[] = [];
+  const lineArray: ReactElement[] = [];
+  const textArray: ReactElement[] = [];
   if (verticalSegmentWidth <= 0) return null;
   while (remaining >= 2 * verticalSegmentWidth - TOLERANCE) {
     lineArray.push(
@@ -211,7 +211,7 @@ interface TimelineChartRowTitleProps {
   rowTitle: string;
 }
 
-const TimelineChartRowTitle: React.FC<TimelineChartRowTitleProps> = ({ width, height, rowTitle }) => {
+const TimelineChartRowTitle = ({ width, height, rowTitle }: TimelineChartRowTitleProps) => {
   const style: CSSProperties = {
     width: width,
     height: height,

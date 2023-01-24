@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { ReactElement, useLayoutEffect, useState } from 'react';
 import {
   ITimelineChartMileStone,
   ITimelineChartRow,
@@ -44,7 +44,7 @@ interface ConnectionData {
 /**
  * This holds all the arrows that show the connections between different tasks.
  */
-const TimelineChartConnections: React.FC<TimelineChartConnectionsProps> = ({ dataSet, width, rowHeight, bodyRect }) => {
+const TimelineChartConnections = ({ dataSet, width, rowHeight, bodyRect }: TimelineChartConnectionsProps) => {
   const [connectionDataState, setConnectionDataState] = useState<ConnectionData[]>([]);
   useLayoutEffect(() => {
     const connectionData: ConnectionData[] = [];
@@ -144,7 +144,7 @@ interface ConnectionArrowProps {
  * the type of connection between two tasks or items on the
  * chart.
  */
-const ConnectionArrow: React.FC<ConnectionArrowProps> = ({ depType, rowHeight, startX, startY, endX, endY }) => {
+const ConnectionArrow = ({ depType, rowHeight, startX, startY, endX, endY }: ConnectionArrowProps) => {
   const halfRowHeight = 0.5 * rowHeight;
   const finishX = endX;
 
@@ -181,7 +181,7 @@ const generateF2SArrow = (
   finishY: number,
   color: string,
   halfRowHeight: number
-): JSX.Element => {
+): ReactElement => {
   return (
     <>
       {generateStartingPoint(startX, startY, color)}
@@ -219,7 +219,7 @@ const generateS2FArrow = (
   finishY: number,
   color: string,
   halfRowHeight: number
-): JSX.Element => {
+): ReactElement => {
   return (
     <>
       {generateStartingPoint(startX, startY, color)}
@@ -256,7 +256,7 @@ const generateS2SArrow = (
   finishX: number,
   finishY: number,
   color: string
-): JSX.Element => {
+): ReactElement => {
   return (
     <>
       {generateStartingPoint(startX, startY, color)}
@@ -280,7 +280,7 @@ const generateF2FArrow = (
   finishX: number,
   finishY: number,
   color: string
-): JSX.Element => {
+): ReactElement => {
   return (
     <>
       {generateStartingPoint(startX, startY, color)}
@@ -298,12 +298,12 @@ const generateF2FArrow = (
 };
 
 // Create the starting point indicator
-const generateStartingPoint = (x: number, y: number, color: string): JSX.Element => {
+const generateStartingPoint = (x: number, y: number, color: string): ReactElement => {
   return <circle cx={`${x}`} cy={`${y}`} r="1" fill={color} />;
 };
 
 // Create an arrowhead pointing to a task start.
-const generateStartFacingHead = (finishX: number, finishY: number, color: string): JSX.Element => {
+const generateStartFacingHead = (finishX: number, finishY: number, color: string): ReactElement => {
   return (
     <polygon
       points={`${finishX}, ${finishY} 
@@ -315,7 +315,7 @@ const generateStartFacingHead = (finishX: number, finishY: number, color: string
 };
 
 // Create an arrowhead pointing to a task end.
-const generateEndFacingHead = (finishX: number, finishY: number, color: string): JSX.Element => {
+const generateEndFacingHead = (finishX: number, finishY: number, color: string): ReactElement => {
   return (
     <polygon
       points={`${finishX}, ${finishY} 

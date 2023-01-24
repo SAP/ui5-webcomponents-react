@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import { DEFAULT_ROW_HEIGHT } from './util/constants';
 
 interface TimelineChartAnnotationProps {
@@ -6,7 +6,7 @@ interface TimelineChartAnnotationProps {
    * The width of the annotation. If not provided, it expands to fill
    * the timeline.
    */
-  width?: number;
+  width?: CSSProperties['width'];
 
   /**
    * The height of the annotation. Preferably, this would be the same height as the
@@ -19,7 +19,6 @@ interface TimelineChartAnnotationProps {
   /**
    * The index of the row the annotation should be applied to. The top of the anotation is
    * aligned with the top of the row.
-   * @default 0
    */
   rowIndex?: number;
 
@@ -28,7 +27,6 @@ interface TimelineChartAnnotationProps {
    * the rowHeight of the chart in order for the top of the annotation to be aligned
    * with the top of the row the annotation is applied to. If not set, the default
    * __rowHeight__ of the `TimelineChart` is used.
-   * @default 25
    */
   rowHeight?: number;
 
@@ -45,18 +43,18 @@ interface TimelineChartAnnotationProps {
  * This is designed to be used for creating custom annotations, markers
  * or illustrations on the timeline of the chart.
  */
-const TimelineChartAnnotation: React.FC<TimelineChartAnnotationProps> = ({
-  width,
+const TimelineChartAnnotation = ({
+  width = 'auto',
   height,
-  rowIndex,
-  rowHeight,
+  rowIndex = 0,
+  rowHeight = 25,
   figure
-}) => {
+}: TimelineChartAnnotationProps): ReactElement => {
   rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
   rowIndex = rowIndex ?? 0;
 
   const style: CSSProperties = {
-    width: width != null ? `${width}px` : 'auto',
+    width: width,
     height: height != null ? height : rowHeight,
     position: 'absolute',
     top: `${rowIndex * rowHeight}px`

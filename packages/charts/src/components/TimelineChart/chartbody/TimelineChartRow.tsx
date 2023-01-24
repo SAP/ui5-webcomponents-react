@@ -17,7 +17,7 @@ interface TimelineChartRowProps {
  * This represents each row of the TimelineChart. It is used to display
  * the task items and milestones.
  */
-const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
+const TimelineChartRow = ({
   rowData,
   rowHeight,
   rowIndex,
@@ -25,7 +25,7 @@ const TimelineChartRow: React.FC<TimelineChartRowProps> = ({
   timelineStart,
   showTooltip,
   hideTooltip
-}) => {
+}: TimelineChartRowProps) => {
   rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 11) + 1})`;
 
   return (
@@ -114,7 +114,7 @@ interface TimelineTaskProps {
   hideTooltip: () => void;
 }
 
-const TimelineTask: React.FC<TimelineTaskProps> = ({
+const TimelineTask = ({
   id,
   label,
   startTime,
@@ -124,7 +124,7 @@ const TimelineTask: React.FC<TimelineTaskProps> = ({
   timelineStart,
   showTooltip,
   hideTooltip
-}) => {
+}: TimelineTaskProps) => {
   const [opacity, setOpacity] = useState(NORMAL_OPACITY);
   const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
@@ -202,7 +202,7 @@ interface TimelineMilestoneProps {
   hideTooltip: () => void;
 }
 
-const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
+const TimelineMilestone = ({
   id,
   label,
   time,
@@ -211,7 +211,7 @@ const TimelineMilestone: React.FC<TimelineMilestoneProps> = ({
   timelineStart,
   showTooltip,
   hideTooltip
-}) => {
+}: TimelineMilestoneProps) => {
   color = color ?? '#007D00';
   label = label ?? 'Milestone';
   const milestoneRef = useRef<SVGRectElement>();
@@ -289,7 +289,7 @@ interface TimelineChartRowGroupProps {
   hideTooltip: () => void;
   postRender: () => void;
 }
-const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
+const TimelineChartRowGroup = ({
   dataset,
   rowHeight,
   totalDuration,
@@ -297,7 +297,7 @@ const TimelineChartRowGroup: React.FC<TimelineChartRowGroupProps> = ({
   showTooltip,
   hideTooltip,
   postRender
-}) => {
+}: TimelineChartRowGroupProps) => {
   useEffect(() => {
     postRender();
   }, []);

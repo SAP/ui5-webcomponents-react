@@ -7,6 +7,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
     tasks: [
       {
         id: 'TR-00',
+        label: 'Item 1',
         start: 5,
         duration: 10,
         connections: [
@@ -18,6 +19,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
       },
       {
         id: 'TR-01',
+        label: 'Item 2',
         start: 25,
         duration: 115,
         color: 'brown',
@@ -37,6 +39,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
     tasks: [
       {
         id: 'TR-10',
+        label: 'Item 3',
         start: 35,
         duration: 25,
         color: 'orange',
@@ -49,6 +52,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
       },
       {
         id: 'TR-11',
+        label: 'Item 4',
         start: 95,
         duration: 5,
         connections: [
@@ -70,6 +74,7 @@ export const dummyDataSet: ITimelineChartRow[] = [
     tasks: [
       {
         id: 'TR-20',
+        label: 'Item 5',
         start: 35,
         duration: 15
       },

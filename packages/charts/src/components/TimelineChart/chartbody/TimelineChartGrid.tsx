@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from '../util/constants';
 
 interface TimelineChartGridProps {
@@ -19,14 +19,14 @@ interface TimelineChartGridProps {
  * This component represents the grid lines on the chart. The `isDiscrete` prop is
  * used to decided whether to render the vertical grid lines.
  */
-const TimelineChartGrid: React.FC<TimelineChartGridProps> = ({
+const TimelineChartGrid = ({
   isDiscrete,
   numOfRows,
   rowHeight,
   totalDuration,
   width,
   unscaledWidth
-}) => {
+}: TimelineChartGridProps) => {
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
   return (
     <g style={{ stroke: ThemingParameters.sapList_BorderColor }}>
@@ -45,8 +45,8 @@ const TimelineChartGrid: React.FC<TimelineChartGridProps> = ({
  * @param rowHeight The height of each row.
  * @returns An array of horizontal grid lines in SVG.
  */
-const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Element[] => {
-  const gridLineArray: JSX.Element[] = [];
+const generateHGridLines = (numOfSegments: number, rowHeight: number): ReactElement[] => {
+  const gridLineArray: ReactElement[] = [];
   for (let i = 1; i < numOfSegments; i++) {
     const segmentOffset = rowHeight * i;
     gridLineArray.push(
@@ -69,9 +69,9 @@ const generateHGridLines = (numOfSegments: number, rowHeight: number): JSX.Eleme
  * @param numOfSegments The number of columns the grid should have.
  * @returns An array of vertical grid lines in SVG.
  */
-const generateDiscreteVGridLines = (numOfSegments: number): JSX.Element[] => {
+const generateDiscreteVGridLines = (numOfSegments: number): ReactElement[] => {
   const segmentSizePercent = 100 / numOfSegments;
-  const gridLineArray: JSX.Element[] = [];
+  const gridLineArray: ReactElement[] = [];
   for (let i = 1; i < numOfSegments; i++) {
     const segmentOffset = segmentSizePercent * i;
     gridLineArray.push(
@@ -95,8 +95,8 @@ const generateDiscreteVGridLines = (numOfSegments: number): JSX.Element[] => {
  * @param verticalSegmentWidth The calculated width each vertical segment should be originally.
  * @returns An array of vertical grid lines in SVG.
  */
-const generateNonDiscreteVGridLines = (width: number, verticalSegmentWidth: number): JSX.Element[] => {
-  const gridLineArray: JSX.Element[] = [];
+const generateNonDiscreteVGridLines = (width: number, verticalSegmentWidth: number): ReactElement[] => {
+  const gridLineArray: ReactElement[] = [];
   let covered = verticalSegmentWidth;
   let remaining = width;
   if (verticalSegmentWidth <= 0) return null;

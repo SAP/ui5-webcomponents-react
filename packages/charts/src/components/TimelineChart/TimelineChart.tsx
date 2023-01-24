@@ -32,13 +32,11 @@ interface TimelineChartProps {
   /**
    * The total width of the chart. If not supplied, the chart's
    * width expands to fill its conatainer.
-   * @default auto
    */
-  width?: number;
+  width?: CSSProperties['width'];
 
   /**
    * The height the row of the timeline.
-   * @default 25
    */
   rowHeight?: number;
 
@@ -58,20 +56,17 @@ interface TimelineChartProps {
 
   /**
    * Toggles the visibility of the annotations applied to the chart.
-   * @default false
    */
   showAnnotation?: boolean;
 
   /**
    * Toggles the visibility of the connections of the task and milestone
    * items in the chart.
-   * @default false
    */
   showConnection?: boolean;
 
   /**
    * Toggles the visibility of the tooltip.
-   * @default true
    */
   showTooltip?: boolean;
 
@@ -82,13 +77,11 @@ interface TimelineChartProps {
 
   /**
    * The label for the activity axis.
-   * @default Activity
    */
   rowTitle?: string;
 
   /**
    * The label for the title of the duration axis.
-   * @default Duration
    */
   columnTitle?: string;
 
@@ -103,7 +96,6 @@ interface TimelineChartProps {
 
   /**
    * The starting value of the timeline duration.
-   * @default 0
    */
   start?: number;
 
@@ -126,46 +118,33 @@ interface TimelineChartProps {
  * * Show relationships between different items on the timeline using different
  * connections.
  */
-const TimelineChart: React.FC<TimelineChartProps> = ({
+const TimelineChart = ({
   dataset,
-  totalDuration,
-  width,
-  rowHeight,
+  totalDuration = 10,
+  width = DEFAULT_WIDTH,
+  rowHeight = DEFAULT_ROW_HEIGHT,
   isDiscrete,
   annotations,
   showAnnotation,
   showConnection,
   showTooltip,
-  unit,
-  rowTitle,
-  columnTitle,
+  unit = '',
+  rowTitle = 'Activities',
+  columnTitle = 'Duration',
   discreteLabels,
-  start,
-  valueFormat
-}) => {
-  if (dataset == null) {
+  start = 0,
+  valueFormat = (x: number) => x.toFixed(1)
+}: TimelineChartProps) => {
+  if (!dataset || dataset?.length === 0) {
     return <TimelineChartPlaceholder />;
   }
-
-  rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
-  isDiscrete = isDiscrete ?? false;
-  showAnnotation = showAnnotation ?? false;
-  showConnection = showConnection ?? false;
-  showTooltip = showTooltip ?? true;
-  unit = unit ?? '';
-  rowTitle = rowTitle ?? 'Activities';
-  columnTitle = columnTitle ?? 'Duration';
-  start = start ?? 0;
-  totalDuration = totalDuration ?? 10;
-  const defaultValueFormat = (x: number) => x.toFixed(1);
-  valueFormat = valueFormat ?? defaultValueFormat;
 
   const numOfRows = dataset.length;
   const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
   const style: CSSProperties = {
     height: `${height}px`,
-    width: `${width != null ? width + 'px' : DEFAULT_WIDTH}`,
+    width: width,
     outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     backgroundColor: ThemingParameters.sapBaseColor,
     display: 'grid',

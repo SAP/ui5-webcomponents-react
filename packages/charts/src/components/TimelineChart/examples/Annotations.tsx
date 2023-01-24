@@ -10,7 +10,7 @@ interface TimingFigureProps {
 }
 
 // A custom figure for testing out the TimelineChartAnnotation.
-export const TimingFigure: React.FC<TimingFigureProps> = ({ arrival, period, deadline, totalDuration }) => {
+export const TimingFigure = ({ arrival, period, deadline, totalDuration }: TimingFigureProps) => {
   const ref = useRef<HTMLCanvasElement>();
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
@@ -71,7 +71,7 @@ interface InventionProps {
   rowHeight: number;
   color: CSSProperties['color'];
 }
-export const Invention: React.FC<InventionProps> = ({ name, rowHeight, time, totalDuration, color }) => {
+export const Invention = ({ name, rowHeight, time, totalDuration, color }: InventionProps) => {
   const three4thRowHeight = (3 * rowHeight) / 4;
   const d = (5 / 8) * rowHeight;
   const rLarge = three4thRowHeight / 2;

@@ -13,12 +13,7 @@ interface TimelineChartLayerProps {
  * can be used to render the grid lines and another can be used to render
  * annotations or tasks.
  */
-const TimelineChartLayer: React.FC<TimelineChartLayerProps> = ({
-  ignoreClick = false,
-  isAnnotation,
-  children,
-  name
-}) => {
+const TimelineChartLayer = ({ ignoreClick = false, isAnnotation, children, name }: TimelineChartLayerProps) => {
   const position = 'absolute';
   const pointerEvents = ignoreClick ? 'none' : 'auto';
 
