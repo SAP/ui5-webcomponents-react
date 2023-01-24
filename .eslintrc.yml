@@ -40,12 +40,7 @@ rules:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
-  import/no-unresolved:
-    - 'error'
-    - ignore:
-        - '@ui5/webcomponents-react'
-        - '@ui5/webcomponents-react-base'
-  no-only-tests/no-only-tests: 'error'
+  import/no-unresolved: 'error'
 overrides:
   # add config for all TypeScript files
   - files:
@@ -63,8 +58,6 @@ overrides:
       - 'plugin:import/typescript'
     settings:
       import/resolver:
-        # You will also need to install and configure the TypeScript resolver
-        # See also https://github.com/import-js/eslint-import-resolver-typescript#configuration
         typescript: true
     rules:
       # disabled some rules from the recommended preset
