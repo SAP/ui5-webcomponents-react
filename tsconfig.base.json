@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "target": "ES2015",
-    "lib": ["es2019", "dom"],
+    "target": "ES2021",
+    "lib": ["ES2021", "dom"],
     "jsx": "react",
     "baseUrl": ".",
     "composite": true,
