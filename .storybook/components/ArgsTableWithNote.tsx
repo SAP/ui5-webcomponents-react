@@ -1,6 +1,6 @@
 import { ArgsTable } from '@storybook/addon-docs';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ComponentProps, ReactNode, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -27,7 +27,7 @@ interface ArgsTableWithNotePropTypes {
   hideTabContainer?: boolean;
 }
 
-export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & React.ComponentProps<typeof ArgsTable>) => {
+export const ArgsTableWithNote = (args: ArgsTableWithNotePropTypes & ComponentProps<typeof ArgsTable>) => {
   const { hideHTMLPropsNote, noteText, hideTabContainer, ...rest } = args;
   const classes = useStyles();
   const tableContainerRef = useRef<HTMLDivElement>(null);
