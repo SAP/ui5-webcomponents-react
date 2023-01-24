@@ -30,16 +30,6 @@ declare global {
        * @example cy.get([ui5-tab-container]).findUi5TabOpenPopoverButtonByText('Tab 1');
        */
       findUi5TabOpenPopoverButtonByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
-
-      // List
-      /**
-       * Returns the open-popover button for sub-tabs.
-       *
-       * __Note:__ Has to be chained to a `ui5-list`.
-       *
-       * @example cy.get([ui5-list]).findListItemByText('Tab 1');
-       */
-      findListItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
     }
   }
 }
