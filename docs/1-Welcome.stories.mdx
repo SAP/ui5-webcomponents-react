@@ -150,12 +150,12 @@ You can find all available interfaces of the main package [here](https://github.
 Example - `Popover` with `Ref` type declaration:
 
 ```tsx
-import React, { useRef } from 'react';
+import React, { MouseEvent, useRef } from 'react';
 import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
 
 export default function App() {
   const popoverRef = useRef<PopoverDomRef>(null);
-  const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const onClick = (e: MouseEvent<HTMLElement, MouseEvent>) => {
     popoverRef.current?.showAt(e.target);
   };
 
