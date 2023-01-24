@@ -1,9 +1,8 @@
 import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
 import { mount } from 'cypress/react18';
-import { ThemeProvider } from '@ui5/webcomponents-react';
 import './commands';
-import '../../packages/cypress-commands/src';
+import '@ui5/webcomponents-cypress-commands';
 
 declare global {
   namespace Cypress {
@@ -31,7 +30,3 @@ Cypress.on(
     }
   }
 );
-
-Cypress.Commands.add('mount', (component, options) => {
-  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
-});

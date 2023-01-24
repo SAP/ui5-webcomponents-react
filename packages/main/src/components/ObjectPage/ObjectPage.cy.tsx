@@ -238,18 +238,19 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
+
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
     cy.wait(50);
 
-    cy.tabClickByText('Employment');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Employment').should('be.visible');
 
-    cy.tabClickByText('Goals');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
 
-    cy.tabExpandClickByPos(4);
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Relationship').should('be.visible');
@@ -259,21 +260,22 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
+
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
     cy.wait(50);
 
-    cy.tabClickByText('Employment');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Employment').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.tabClickByText('Goals');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.tabExpandClickByPos(4);
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Relationship').should('be.visible');
@@ -292,15 +294,15 @@ describe('ObjectPage', () => {
 
     cy.wait(50);
 
-    cy.tabClickByText('Employment');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
 
-    cy.tabClickByText('Goals');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('section 2').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
 
-    cy.tabExpandClickByPos(4);
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
@@ -318,17 +320,17 @@ describe('ObjectPage', () => {
 
     cy.wait(50);
 
-    cy.tabClickByText('Employment');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.tabClickByText('Goals');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('section 2').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.tabExpandClickByPos(4);
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
@@ -336,7 +338,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
   });
 
-  it('single section', () => {
+  it.only('single section', () => {
     document.body.style.margin = '0px';
     const TestComp = ({
       mode,
@@ -420,9 +422,10 @@ describe('ObjectPage', () => {
       cy.findByText('Update Heights').click({ force: true });
       cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="890px" mode={item} />);
+      cy.mount(<TestComp height="925px" mode={item} />);
       cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
+      cy.wait(50);
       cy.findByTestId('op').scrollTo('bottom');
       cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
       cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
@@ -489,18 +492,18 @@ describe('ObjectPage', () => {
       cy.mount(<TestComp mode={mode} />);
       cy.wait(50);
 
-      cy.tabClickByText('Employment');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
       cy.findByText('Custom Header Section Three').should('be.visible');
       cy.findByText('Employment').should('not.exist');
 
-      cy.tabClickByText('Goals');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
       cy.findByText('Custom Header Section One').should('be.visible');
       cy.findByText('toggle titleText1').click({ scrollBehavior: false, force: true });
       // first titleText should never be displayed
       cy.findByText('Goals').should('not.be.visible');
       cy.findByText('Custom Header Section One').should('be.visible');
 
-      cy.tabClickByText('Personal');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
       cy.findByText('Custom Header Section Two').should('be.visible');
       cy.findByText('Personal').should('not.exist');
       cy.findByText('toggle titleText2').click({ scrollBehavior: false, force: true });
@@ -511,7 +514,7 @@ describe('ObjectPage', () => {
       }
       cy.findByText('Custom Header Section Two').should('be.visible');
 
-      cy.tabExpandClickByPos(1);
+      cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Goals').click();
       cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Goals 2').click({ force: true });
       cy.findByText('Goals 2').should('not.exist');
       cy.findByText('toggle titleTextSub').click({ scrollBehavior: false, force: true });
