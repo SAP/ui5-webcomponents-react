@@ -287,6 +287,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               childOffset -
               safeTopHeaderHeight -
               anchorBarHeight -
+              48 /*tabBar*/ -
               (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });

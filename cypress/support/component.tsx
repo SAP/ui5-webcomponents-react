@@ -1,13 +1,15 @@
 import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
-import { ThemeProvider } from '@ui5/webcomponents-react';
 import { mount } from 'cypress/react18';
 import './commands';
-import '../../packages/cypress-commands';
+import '@ui5/webcomponents-cypress-commands';
 
 declare global {
   namespace Cypress {
     interface Chainable {
+      /**
+       * Cypress mount with ThemeProvider
+       */
       mount: typeof mount;
     }
   }
@@ -28,7 +30,3 @@ Cypress.on(
     }
   }
 );
-
-Cypress.Commands.add('mount', (component, options) => {
-  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
-});

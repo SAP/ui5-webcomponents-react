@@ -41,6 +41,7 @@ rules:
         caseInsensitive: true
   import/no-duplicates: 'error'
   import/no-unresolved: 'error'
+  no-only-tests/no-only-tests: "error"
 overrides:
   # add config for all TypeScript files
   - files:
