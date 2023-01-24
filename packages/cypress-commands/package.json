@@ -10,9 +10,6 @@
     "url": "https://github.com/SAP/ui5-webcomponents-react",
     "directory": "packages/cypress-commands"
   },
-  "scripts": {
-    "build": "tsc"
-  },
   "peerDependencies": {
     "cypress": "^12.0.0"
   },

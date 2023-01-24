@@ -14,5 +14,5 @@
     "types": ["cypress"],
     "skipLibCheck": true
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src"]
 }

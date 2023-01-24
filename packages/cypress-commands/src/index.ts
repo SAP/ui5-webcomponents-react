@@ -1,2 +1,2 @@
-import './commands';
-import './queries';
+import './commands.ts';
+import './queries.ts';
