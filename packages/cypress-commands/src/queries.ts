@@ -7,7 +7,7 @@ declare global {
        * Returns the internal input element inside the shadow-root.
        *
        * @private
-       * @example cy.get([ui5-checkbox]).findShadowInput();
+       * @example cy.get('[ui5-checkbox]').findShadowInput();
        */
       findShadowInput(): Chainable<Element>;
       // TabContainer
@@ -17,7 +17,7 @@ declare global {
        * __Note:__ Has to be chained to a `ui5-tabcontainer`.
        * __Note:__ This will not work for sub-tabs.
        *
-       * @example cy.get([ui5-tab-container]).findUi5TabByText('Tab 1');
+       * @example cy.get('[ui5-tab-container]').findUi5TabByText('Tab 1');
        */
       findUi5TabByText(text: string): Chainable<Element>;
 
@@ -27,7 +27,7 @@ declare global {
        * __Note:__ Has to be chained to a `ui5-tabcontainer`.
        * __Note:__ The tab only renders a button fur sub-tabs if the tab itself has content, otherwise the whole tab is responsible for opening the popover.
        *
-       * @example cy.get([ui5-tab-container]).findUi5TabOpenPopoverButtonByText('Tab 1');
+       * @example cy.get('[ui5-tab-container]').findUi5TabOpenPopoverButtonByText('Tab 1');
        */
       findUi5TabOpenPopoverButtonByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
     }
