@@ -1,13 +1,14 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import clsx from 'clsx';
-import React, { Children, forwardRef, ReactElement, ReactNode, useReducer, useRef } from 'react';
+import React, { Children, forwardRef, ReactElement, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
+import { UI5WCSlotsNode } from '../../types';
 import {
   Button,
   ButtonPropTypes,
@@ -30,7 +31,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  header?: ReactNode | ReactNode[];
+  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the actions of the `ActionSheet`.
    *

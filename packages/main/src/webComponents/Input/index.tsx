@@ -5,6 +5,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface InputAttributes {
   /**
@@ -131,10 +132,13 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
   /**
    * Defines the icon to be displayed in the component.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="icon"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -144,10 +148,13 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    *
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="valueStateMessage"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  valueStateMessage?: ReactNode | ReactNode[];
+  valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
