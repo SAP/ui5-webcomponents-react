@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { throttle } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { ITimelineChartRow } from '../types/TimelineChartTypes';
 import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants';
@@ -153,7 +153,7 @@ const TimelineTask = ({
       ry="4"
       style={{ fill: color, pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
       onMouseLeave={(e) => onMouseLeave(e)}
-      onMouseMove={_.throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
+      onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
     />
   );
 };
@@ -274,7 +274,7 @@ const TimelineMilestone = ({
         ry="3"
         style={{ fill: color, pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
         onMouseLeave={(e) => onMouseLeave(e)}
-        onMouseMove={_.throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
+        onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
       />
     </svg>
   );

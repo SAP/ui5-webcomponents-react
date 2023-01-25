@@ -1,5 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import _ from 'lodash';
+import { ThemingParameters, throttle } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import { TimelineChartPlaceholder } from './Placeholder';
@@ -245,7 +244,7 @@ const TimelineChart = ({
         onMouseUp={() => {
           if (chartBodyScale > 1) setIsGrabbed(false);
         }}
-        onMouseMove={_.throttle(onMouseMove, 200, { trailing: false })}
+        onMouseMove={throttle(onMouseMove, 200, { trailing: false })}
       >
         <div
           style={{
