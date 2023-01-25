@@ -1,4 +1,7 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Icon.js';
+import { IconDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -14,6 +17,21 @@ interface IconAttributes {
    * Defines the accessibility role of the component.
    */
   accessibleRole?: string;
+  /**
+   * Defines the component semantic design.
+   *
+   * **The available values are:**
+   *
+   * *   `Contrast`
+   * *   `Critical`
+   * *   `Default`
+   * *   `Information`
+   * *   `Negative`
+   * *   `Neutral`
+   * *   `NonInteractive`
+   * *   `Positive`
+   */
+  design?: IconDesign | keyof typeof IconDesign;
   /**
    * Defines if the icon is interactive (focusable and pressable)
    */
@@ -35,6 +53,8 @@ interface IconAttributes {
   name?: string;
   /**
    * Defines whether the component should have a tooltip.
+   *
+   * **Note:** The tooltip text should be provided via the `accessible-name` property.
    */
   showTooltip?: boolean;
 }
@@ -53,12 +73,16 @@ export interface IconPropTypes extends IconAttributes, CommonProps {}
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
-  ['accessibleName', 'accessibleRole', 'name'],
+  ['accessibleName', 'accessibleRole', 'design', 'name'],
   ['interactive', 'showTooltip'],
   [],
   []
 );
 
 Icon.displayName = 'Icon';
+
+Icon.defaultProps = {
+  design: IconDesign.Default
+};
 
 export { Icon };

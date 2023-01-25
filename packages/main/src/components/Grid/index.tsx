@@ -1,6 +1,8 @@
+'use client';
+
 import { useViewportRange } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactNode } from 'react';
+import { clsx } from 'clsx';
+import React, { CSSProperties, forwardRef, isValidElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/GridPosition';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -94,7 +96,7 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
       {...rest}
     >
       {flattenFragments(children, Infinity).map((child) => {
-        if (!React.isValidElement(child)) {
+        if (!isValidElement(child)) {
           return null;
         }
 

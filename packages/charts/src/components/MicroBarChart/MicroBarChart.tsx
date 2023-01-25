@@ -1,6 +1,8 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, useCallback, useMemo } from 'react';
+import { clsx } from 'clsx';
+import React, { createElement, CSSProperties, forwardRef, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -205,7 +207,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
           let formattedMeasure: any = '';
           if (!measure.hideDataLabel) {
             if (measure.DataLabel) {
-              formattedMeasure = React.createElement(measure.DataLabel, {
+              formattedMeasure = createElement(measure.DataLabel, {
                 value: measureValue,
                 config: measure,
                 formattedValue: measure.formatter(measureValue)

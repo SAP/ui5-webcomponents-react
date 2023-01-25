@@ -1,16 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of Timeline.
- */
-export enum TimelineLayout {
-  /**
-   * Horizontal layout
-   */
-  Horizontal = 'Horizontal',
+import TimelineLayout from '@ui5/webcomponents-fiori/dist/types/TimelineLayout.js';
 
-  /**
-   * Vertical layout Default type
-   */
-  Vertical = 'Vertical'
-}
+export { TimelineLayout };

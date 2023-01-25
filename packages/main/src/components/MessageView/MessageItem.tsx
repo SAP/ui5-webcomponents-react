@@ -1,5 +1,7 @@
+'use client';
+
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';

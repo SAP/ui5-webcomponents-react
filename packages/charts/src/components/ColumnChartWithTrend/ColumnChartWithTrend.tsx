@@ -1,3 +1,5 @@
+'use client';
+
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef } from 'react';
 import { TooltipProps } from 'recharts';

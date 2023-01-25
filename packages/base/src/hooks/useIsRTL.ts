@@ -1,3 +1,5 @@
+'use client';
+
 import { getRTL } from '@ui5/webcomponents-base/dist/config/RTL.js';
 import { RefObject, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '../hooks';

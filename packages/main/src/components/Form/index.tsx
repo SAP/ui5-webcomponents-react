@@ -1,9 +1,12 @@
+'use client';
+
 import { CssSizeVariables, Device, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   Children,
   cloneElement,
   CSSProperties,
+  ElementType,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -105,7 +108,7 @@ export interface FormPropTypes extends CommonProps {
 }
 
 const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
-  React.Children.map(reactChildren, (child) => {
+  Children.map(reactChildren, (child) => {
     if (child?.type?.displayName === 'FormItem') {
       return cloneElement(child, { labelSpan: currentLabelSpan });
     }
@@ -285,7 +288,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     className
   );
 
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   return (
     <CustomTag
       ref={componentRef}

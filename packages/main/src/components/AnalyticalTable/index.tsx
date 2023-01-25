@@ -1,3 +1,5 @@
+'use client';
+
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
@@ -7,7 +9,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   ComponentType,
   CSSProperties,
@@ -1107,7 +1109,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rows={rows}
                 handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
-                dataLength={data?.length}
               >
                 <VirtualTableBody
                   classes={classes}

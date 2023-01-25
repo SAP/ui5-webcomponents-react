@@ -3,7 +3,7 @@ import { Footer } from '@docs/Footer';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MessageBoxTypes } from '../../enums';
-import { Bar, Button, Dialog, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
+import { Bar, Button, Dialog, Menu, MenuItem, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
 import { MessageBox } from '../MessageBox';
 import { Modals } from './index';
 
@@ -200,6 +200,70 @@ The `showResponsivePopover` method returns an object with the following properti
 
 <Panel header={<h4 className="noMargin">ResponsivePopover Props</h4>} collapsed>
   <ArgsTableWithNote components={{ ResponsivePopover }} exclude={['open', 'ref']} />
+</Panel>
+
+## Menu
+
+#### since 1.8.0
+
+<Canvas>
+  <Story name="Menu">
+    {() => {
+      const showMenu = Modals.useShowMenu();
+      return (
+        <Button
+          id="modals-show-menu"
+          onClick={() => {
+            showMenu({
+              opener: 'modals-show-menu',
+              headerText: 'Menu Title',
+              children: (
+                <>
+                  <MenuItem text="New File" icon="add-document" />
+                  <MenuItem text="New Folder" icon="add-folder" disabled />
+                </>
+              )
+            });
+          }}
+        >
+          Show Menu
+        </Button>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Usage
+
+```typescript
+import { Modals } from '@ui5/webcomponents-react';
+
+// when you can use hooks
+const showMenu = Modals.useShowMenu();
+const { ref, close } = showMenu(props, container);
+
+// when you can't use hooks (e.g. inside a redux reducer)
+const { ref, close } = Modals.showMenu(props, container);
+```
+
+**Parameters**
+
+| Parameter     | Description                                                                         |
+| ------------- | ----------------------------------------------------------------------------------- |
+| `props`       | All supported `Menu` props (see table below). `open` will always be set to `true`.  |
+| _`container`_ | Optional container where the `Menu` should be mounted. Defaults to `document.body`. |
+
+**Return Value**
+
+The `Menu` method returns an object with the following properties:
+
+| Property  | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| `ref`     | React `RefObject` which can be used to interact with the `Menu`. |
+| `close()` | Convenience Method for closing the `Menu`.                       |
+
+<Panel header={<h4 className="noMargin">Menu Props</h4>} collapsed>
+  <ArgsTableWithNote components={{ Menu }} exclude={['open', 'ref']} />
 </Panel>
 
 ## MessageBox

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
+
+### Bug Fixes
+
+- **charts:** prevent crash when using zooming tool ([#3997](https://github.com/SAP/ui5-webcomponents-react/issues/3997)) ([e508b59](https://github.com/SAP/ui5-webcomponents-react/commit/e508b593ade20ff9bfa4bb18dba0a3ac913a4f71))
+
+### Features
+
+- **client components:** add `use client` directive for client-only components ([#4021](https://github.com/SAP/ui5-webcomponents-react/issues/4021)) ([074f902](https://github.com/SAP/ui5-webcomponents-react/commit/074f90202bfeb00600d0ac5d1320e4261451cbcd))
+- **GlobalStyleClasses:** add `inheritingSapScrollBar` class ([#3990](https://github.com/SAP/ui5-webcomponents-react/issues/3990)) ([35cd7d5](https://github.com/SAP/ui5-webcomponents-react/commit/35cd7d59681b8a1718f81dfdff5c3bdbb197621f))
+- **Modals:** add Menu component ([#4032](https://github.com/SAP/ui5-webcomponents-react/issues/4032)) ([3ffca22](https://github.com/SAP/ui5-webcomponents-react/commit/3ffca22b668993dc6534aa915541bc8bb9d81a7d))
+- **ObjectPageSection & ObjectPageSubSection:** add multiple props ([#3946](https://github.com/SAP/ui5-webcomponents-react/issues/3946)) ([c81d2ba](https://github.com/SAP/ui5-webcomponents-react/commit/c81d2baa4029c379ffa2be03cdde1398bb9650f7)), closes [#3924](https://github.com/SAP/ui5-webcomponents-react/issues/3924)
+- update to UI5 Web Components 1.10.3 ([#3801](https://github.com/SAP/ui5-webcomponents-react/issues/3801)) ([2febd53](https://github.com/SAP/ui5-webcomponents-react/commit/2febd534f234c3d38109659369716b6b5946dfda))
+
+## [1.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.1...v1.7.2) (2023-01-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** allow customization of `maxWidth` in `Grow` mode ([#3941](https://github.com/SAP/ui5-webcomponents-react/issues/3941)) ([82a0dfb](https://github.com/SAP/ui5-webcomponents-react/commit/82a0dfb34ef494bab9a990093c963bbdbf359fc9))
+- **AnalyticalTable:** calculate column width correctly when `columns` change ([#3947](https://github.com/SAP/ui5-webcomponents-react/issues/3947)) ([dfa455a](https://github.com/SAP/ui5-webcomponents-react/commit/dfa455a83f5de01aa4bd304d5df814b7963fc1d0)), closes [#3878](https://github.com/SAP/ui5-webcomponents-react/issues/3878)
+- **AnalyticalTable:** reset `infiniteScrollThreshold` when tree data changes ([#3981](https://github.com/SAP/ui5-webcomponents-react/issues/3981)) ([915bdd1](https://github.com/SAP/ui5-webcomponents-react/commit/915bdd1124479befcc785fd186ec4779448c6b04)), closes [#3980](https://github.com/SAP/ui5-webcomponents-react/issues/3980)
+- **DynamicPage:** fix scroll issue for some content heights ([#3942](https://github.com/SAP/ui5-webcomponents-react/issues/3942)) ([5f148f4](https://github.com/SAP/ui5-webcomponents-react/commit/5f148f45de76f06bd5c1a60e242d5a5fe0315530)), closes [#3925](https://github.com/SAP/ui5-webcomponents-react/issues/3925)
+- **FilterBar:** don't fire bubbled up selection-change event of `Table` ([#3935](https://github.com/SAP/ui5-webcomponents-react/issues/3935)) ([b42026f](https://github.com/SAP/ui5-webcomponents-react/commit/b42026ff1042e3da3820e71555828eba5427154a))
+- **Grid:** fix React key error ([#3933](https://github.com/SAP/ui5-webcomponents-react/issues/3933)) ([8b437e8](https://github.com/SAP/ui5-webcomponents-react/commit/8b437e824382691b596154ae79175c33932c26e8)), closes [#3915](https://github.com/SAP/ui5-webcomponents-react/issues/3915)
+- **Toolbar:** fire onClick on Space/Enter press, fix info bar colors ([#3934](https://github.com/SAP/ui5-webcomponents-react/issues/3934)) ([96a6644](https://github.com/SAP/ui5-webcomponents-react/commit/96a6644c8214e389544e2b65df06946abe22f9b4)), closes [#3914](https://github.com/SAP/ui5-webcomponents-react/issues/3914)
+
 ## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
 
 ### Bug Fixes

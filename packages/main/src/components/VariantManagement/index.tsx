@@ -1,8 +1,10 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   Children,
   cloneElement,
@@ -323,7 +325,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSafeChildren((prev) =>
       Children.toArray(
         prev.map((child) => {
-          if (!React.isValidElement(child)) {
+          if (!isValidElement(child)) {
             return false;
           }
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
@@ -400,7 +402,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   };
 
   const variantNames = safeChildren.map((item) =>
-    React.isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
+    isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -408,7 +410,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   useEffect(() => {
     if (showOnlyFavorites) {
       setFavoriteChildren(
-        safeChildren.filter((child) => React.isValidElement(child) && (child.props.favorite || child.props.isDefault))
+        safeChildren.filter((child) => isValidElement(child) && (child.props.favorite || child.props.isDefault))
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {

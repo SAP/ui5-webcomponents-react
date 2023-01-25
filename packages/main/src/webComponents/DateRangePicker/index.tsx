@@ -1,10 +1,12 @@
+'use client';
+
 import '@ui5/webcomponents/dist/DateRangePicker.js';
-import { ReactNode } from 'react';
 import { ValueState, CalendarType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface DateRangePickerAttributes {
   /**
@@ -110,10 +112,10 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
   formatValue: (date: Date) => string;
   /**
    * Checks if a date is between the minimum and maximum date.
-   * @param {string} value - A value to be checked
+   * @param {string} [value] - A value to be checked
    * @returns {boolean}
    */
-  isInValidRange: (value: string) => boolean;
+  isInValidRange: (value?: string) => boolean;
   /**
    * Checks if the picker is open.
    * @returns {boolean} true if the picker is open, false otherwise
@@ -121,10 +123,10 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
   isOpen: () => boolean;
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
-   * @param {string} value - A value to be tested against the current date format
+   * @param {string} [value] - A value to be tested against the current date format
    * @returns {boolean}
    */
-  isValid: (value: string) => boolean;
+  isValid: (value?: string) => boolean;
   /**
    * Opens the picker.
    * @returns {Promise<void>} Resolves when the picker is open
@@ -139,10 +141,13 @@ export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omi
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="valueStateMessage"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  valueStateMessage?: ReactNode;
+  valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
@@ -186,6 +191,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
 DateRangePicker.displayName = 'DateRangePicker';
 
 DateRangePicker.defaultProps = {
+  delimiter: '-',
   valueState: ValueState.None
 };
 

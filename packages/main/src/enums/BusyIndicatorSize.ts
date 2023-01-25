@@ -1,21 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of BusyIndicator.
- */
-export enum BusyIndicatorSize {
-  /**
-   * large size
-   */
-  Large = 'Large',
+import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
 
-  /**
-   * medium size
-   */
-  Medium = 'Medium',
-
-  /**
-   * small size
-   */
-  Small = 'Small'
-}
+export { BusyIndicatorSize };

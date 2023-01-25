@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 import { ReactNode } from 'react';
 import { MediaGalleryLayout, MediaGalleryMenuHorizontalAlign, MediaGalleryMenuVerticalAlign } from '../../enums';

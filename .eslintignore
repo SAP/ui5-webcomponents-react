@@ -9,6 +9,9 @@ packages/charts/dist
 packages/main/dist
 packages/main/wrappers
 
+# build result for cypress-commands package
+packages/cypress-commands/dist
+
 scripts
 shared
 .eslintrc.cjs
