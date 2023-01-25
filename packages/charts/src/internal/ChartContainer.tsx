@@ -1,7 +1,7 @@
 import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
-import React, { ComponentType, CSSProperties, forwardRef, ReactElement, ReactNode } from 'react';
+import { clsx } from 'clsx';
+import React, { Component, ComponentType, CSSProperties, forwardRef, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
 
@@ -48,7 +48,7 @@ const chartContainerStyles = {
 
 const useStyles = createUseStyles(chartContainerStyles, { name: 'ChartContainer' });
 
-class ErrorBoundary extends React.Component<{ children: ReactNode }, { errorCount: number }> {
+class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: number }> {
   state = {
     errorCount: 0
   };

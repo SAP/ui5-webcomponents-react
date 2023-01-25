@@ -42,6 +42,7 @@ export * from './components/VariantManagement/VariantItem';
 export * from './internal/withWebComponent';
 export * from './enums';
 export * from './interfaces';
+export * from './types';
 export * from './webComponents';
 
 export { AnalyticalTableHooks };

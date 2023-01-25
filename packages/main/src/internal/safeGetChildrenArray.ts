@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { Children, isValidElement, ReactNode } from 'react';
 
 export const safeGetChildrenArray = <T = Exclude<ReactNode, boolean | null | undefined>>(children: unknown): T[] => {
   const childArray = [];
 
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child)) {
+  Children.forEach(children, (child) => {
+    if (isValidElement(child)) {
       childArray.push(child);
     }
   });

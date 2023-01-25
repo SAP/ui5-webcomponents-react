@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-react/dist/Assets.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
-import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
 import { useState } from 'react';
+import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
 
 interface PropTypes {
   onOverflowChange: (event: {
