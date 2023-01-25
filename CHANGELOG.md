@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
+
+### Bug Fixes
+
+- **charts:** prevent crash when using zooming tool ([#3997](https://github.com/SAP/ui5-webcomponents-react/issues/3997)) ([e508b59](https://github.com/SAP/ui5-webcomponents-react/commit/e508b593ade20ff9bfa4bb18dba0a3ac913a4f71))
+
+### Features
+
+- **client components:** add `use client` directive for client-only components ([#4021](https://github.com/SAP/ui5-webcomponents-react/issues/4021)) ([074f902](https://github.com/SAP/ui5-webcomponents-react/commit/074f90202bfeb00600d0ac5d1320e4261451cbcd))
+- **GlobalStyleClasses:** add `inheritingSapScrollBar` class ([#3990](https://github.com/SAP/ui5-webcomponents-react/issues/3990)) ([35cd7d5](https://github.com/SAP/ui5-webcomponents-react/commit/35cd7d59681b8a1718f81dfdff5c3bdbb197621f))
+- **Modals:** add Menu component ([#4032](https://github.com/SAP/ui5-webcomponents-react/issues/4032)) ([3ffca22](https://github.com/SAP/ui5-webcomponents-react/commit/3ffca22b668993dc6534aa915541bc8bb9d81a7d))
+- **ObjectPageSection & ObjectPageSubSection:** add multiple props ([#3946](https://github.com/SAP/ui5-webcomponents-react/issues/3946)) ([c81d2ba](https://github.com/SAP/ui5-webcomponents-react/commit/c81d2baa4029c379ffa2be03cdde1398bb9650f7)), closes [#3924](https://github.com/SAP/ui5-webcomponents-react/issues/3924)
+- update to UI5 Web Components 1.10.3 ([#3801](https://github.com/SAP/ui5-webcomponents-react/issues/3801)) ([2febd53](https://github.com/SAP/ui5-webcomponents-react/commit/2febd534f234c3d38109659369716b6b5946dfda))
+
 ## [1.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.1...v1.7.2) (2023-01-17)
 
 ### Bug Fixes
