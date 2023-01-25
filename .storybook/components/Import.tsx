@@ -9,10 +9,10 @@ interface ImportStatementPropTypes {
   /**
    * Package name (e.g. "@ui5/webcomponents-react")
    */
-  packagePath: string;
+  packageName: string;
 }
 
-export const ImportStatement = ({ moduleName, packagePath }: ImportStatementPropTypes) => {
+export const ImportStatement = ({ moduleName, packageName }: ImportStatementPropTypes) => {
   return (
     <pre
       style={{
@@ -34,7 +34,7 @@ export const ImportStatement = ({ moduleName, packagePath }: ImportStatementProp
         </span>
         <span style={{ color: 'rgb(0, 0, 136)' }}>from</span>
         <span> </span>
-        <span style={{ color: 'rgb(0, 136, 0)' }}>{packagePath}</span>
+        <span style={{ color: 'rgb(0, 136, 0)' }}>{packageName}</span>
         <span>;</span>
       </code>
     </pre>
@@ -48,7 +48,7 @@ export const Import = () => {
   const moduleName = groups[groups.length - 1].trim();
 
   return (
-    <ImportStatement moduleName={moduleName} packagePath={`'@ui5/webcomponents-react${isChart ? '-charts' : ''}'`} />
+    <ImportStatement moduleName={moduleName} packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : ''}'`} />
   );
 };
 
