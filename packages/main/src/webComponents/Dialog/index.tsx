@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';

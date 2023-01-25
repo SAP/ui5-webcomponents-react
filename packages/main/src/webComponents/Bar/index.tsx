@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/Bar.js';
 import { ReactNode } from 'react';
 import { BarDesign } from '../../enums';

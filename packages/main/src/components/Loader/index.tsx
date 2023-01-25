@@ -1,3 +1,5 @@
+'use client';
+
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, useEffect, useMemo, useState } from 'react';

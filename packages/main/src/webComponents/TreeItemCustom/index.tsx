@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import { ReactNode } from 'react';
 import { ValueState, ListItemType } from '../../enums';

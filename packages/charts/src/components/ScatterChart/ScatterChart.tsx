@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, useCallback, useRef } from 'react';
 import {

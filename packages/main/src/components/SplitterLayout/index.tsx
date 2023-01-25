@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';

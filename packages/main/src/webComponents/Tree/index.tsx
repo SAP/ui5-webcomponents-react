@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Tree.js';
 import { ReactNode } from 'react';
 import { ListMode } from '../../enums';

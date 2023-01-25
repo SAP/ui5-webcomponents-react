@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TableColumn.js';
 import { ReactNode } from 'react';
 import { TableColumnPopinDisplay } from '../../enums';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Panel.js';
 import { ReactNode } from 'react';
 import { PanelAccessibleRole, TitleLevel } from '../../enums';

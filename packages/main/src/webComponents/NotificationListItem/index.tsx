@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { ReactNode } from 'react';
 import { WrappingType, Priority } from '../../enums';

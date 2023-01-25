@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import { ReactNode } from 'react';
 import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums';

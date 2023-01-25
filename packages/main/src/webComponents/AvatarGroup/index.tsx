@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 import { ReactNode } from 'react';
 import { AvatarGroupType, AvatarColorScheme } from '../../enums';

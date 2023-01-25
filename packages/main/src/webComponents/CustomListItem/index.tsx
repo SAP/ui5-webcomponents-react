@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/CustomListItem.js';
 import { ReactNode } from 'react';
 import { ListItemType } from '../../enums';

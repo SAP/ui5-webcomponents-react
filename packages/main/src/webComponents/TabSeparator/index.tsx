@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TabSeparator.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
 import { ReactNode } from 'react';
 import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums';

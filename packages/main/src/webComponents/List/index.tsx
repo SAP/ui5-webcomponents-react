@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/List.js';
 import { ReactNode } from 'react';
 import { ListGrowingMode, ListMode, ListSeparators } from '../../enums';

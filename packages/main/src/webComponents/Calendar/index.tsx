@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Calendar.js';
 import { ReactNode } from 'react';
 import { CalendarSelectionMode, CalendarType } from '../../enums';

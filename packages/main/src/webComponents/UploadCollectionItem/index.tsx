@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import { ReactNode } from 'react';
 import { UploadState, ListItemType } from '../../enums';

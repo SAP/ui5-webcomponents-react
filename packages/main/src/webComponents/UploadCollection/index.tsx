@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import { ReactNode, DragEventHandler } from 'react';
 import { ListMode } from '../../enums';

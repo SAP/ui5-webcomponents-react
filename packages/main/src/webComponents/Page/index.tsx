@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/Page.js';
 import { ReactNode } from 'react';
 import { PageBackgroundDesign } from '../../enums';

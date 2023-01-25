@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Tab.js';
 import { ReactNode } from 'react';
 import { SemanticColor } from '../../enums';

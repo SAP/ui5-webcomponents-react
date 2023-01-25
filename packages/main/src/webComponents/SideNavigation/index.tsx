@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/CheckBox.js';
 import { ValueState, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

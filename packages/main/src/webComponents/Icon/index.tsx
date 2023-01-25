@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Icon.js';
 import { IconDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

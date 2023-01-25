@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TabContainer.js';
 import { ReactNode } from 'react';
 import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums';

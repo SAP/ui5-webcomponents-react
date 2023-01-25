@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import { FCLLayout } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

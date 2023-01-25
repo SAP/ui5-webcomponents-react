@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Input.js';
 import { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums';

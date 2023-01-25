@@ -1,3 +1,5 @@
+'use client';
+
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';

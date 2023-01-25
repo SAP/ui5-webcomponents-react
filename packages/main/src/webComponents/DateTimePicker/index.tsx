@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 import { ValueState, CalendarType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

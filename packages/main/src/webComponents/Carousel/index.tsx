@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Carousel.js';
 import { ReactNode } from 'react';
 import { CarouselArrowsPlacement, CarouselPageIndicatorStyle } from '../../enums';

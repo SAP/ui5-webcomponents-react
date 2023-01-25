@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Select.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';

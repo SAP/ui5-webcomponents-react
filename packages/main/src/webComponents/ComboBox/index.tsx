@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ComboBox.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';

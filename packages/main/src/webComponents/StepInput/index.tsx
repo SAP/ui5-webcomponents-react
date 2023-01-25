@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/StepInput.js';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

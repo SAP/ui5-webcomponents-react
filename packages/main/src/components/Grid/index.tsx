@@ -1,3 +1,5 @@
+'use client';
+
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, isValidElement, ReactNode } from 'react';

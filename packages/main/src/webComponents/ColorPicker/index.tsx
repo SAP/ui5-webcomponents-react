@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ColorPicker.js';
 import { CSSProperties } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';

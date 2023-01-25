@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/MessageStrip.js';
 import { ReactNode } from 'react';
 import { MessageStripDesign } from '../../enums';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TextArea.js';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import { MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';

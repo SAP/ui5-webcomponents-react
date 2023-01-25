@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';

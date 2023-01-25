@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import { ReactNode } from 'react';
 import { IllustrationMessageType, IllustrationMessageSize } from '../../enums';

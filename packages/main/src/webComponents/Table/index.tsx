@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Table.js';
 import { ReactNode } from 'react';
 import { TableGrowingMode, TableMode } from '../../enums';
