@@ -21,7 +21,7 @@ export interface SideNavigationPropTypes extends SideNavigationAttributes, Commo
   /**
    * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested inside the items.
    */
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the fixed items at the bottom of the `SideNavigation`. Use the `SideNavigationItem` component for the fixed items, and optionally the `SideNavigationSubItem` component to provide second-level items inside them. **Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items "flat" (do not pass sub-items)
    *
