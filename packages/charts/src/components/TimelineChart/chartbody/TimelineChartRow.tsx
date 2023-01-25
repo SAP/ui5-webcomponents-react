@@ -132,11 +132,13 @@ const TimelineTask = ({
     setOpacity(NORMAL_OPACITY);
   };
 
-  const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const mouseMoveHandler = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, label, startTime, duration, color, false);
   };
+
+  const onMouseMove = throttle(mouseMoveHandler, THROTTLE_INTERVAL, { trailing: false });
 
   // The 10% y value is to create a little gap between the top grid line and the
   // rendered TimelineTask itself. The height is set to 80% to allow for an
@@ -152,8 +154,8 @@ const TimelineTask = ({
       rx="4"
       ry="4"
       style={{ fill: color, pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
-      onMouseLeave={(e) => onMouseLeave(e)}
-      onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
     />
   );
 };
@@ -248,11 +250,13 @@ const TimelineMilestone = ({
     setOpacity(NORMAL_OPACITY);
   };
 
-  const onMouseMove = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const mouseMoveHandler = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, label, time, 0, color, true);
   };
+
+  const onMouseMove = throttle(mouseMoveHandler, THROTTLE_INTERVAL, { trailing: false });
 
   // The 10% y value is to create a little gap between the top grid line and the
   // rendered Milestone itself. The height is set to 80% to allow for an
@@ -273,8 +277,8 @@ const TimelineMilestone = ({
         rx="3"
         ry="3"
         style={{ fill: color, pointerEvents: 'auto', cursor: 'pointer', opacity: opacity }}
-        onMouseLeave={(e) => onMouseLeave(e)}
-        onMouseMove={throttle(onMouseMove, THROTTLE_INTERVAL, { trailing: false })}
+        onMouseLeave={onMouseLeave}
+        onMouseMove={onMouseMove}
       />
     </svg>
   );

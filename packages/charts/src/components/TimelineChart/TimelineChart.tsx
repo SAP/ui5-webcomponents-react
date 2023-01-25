@@ -192,7 +192,11 @@ const TimelineChart = ({
     }
   };
 
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onMouseUp = () => {
+    if (chartBodyScale > 1) setIsGrabbed(false);
+  };
+
+  const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isGrabbed) {
       const dx = e.clientX - mPos;
       // Make negative so that the scrolling can move in
@@ -201,6 +205,8 @@ const TimelineChart = ({
       setMPos(e.clientX);
     }
   };
+
+  const onMouseMove = throttle(mouseMoveHandler, 200, { trailing: false });
 
   const getCursor = (): string => {
     if (isGrabbed) return MOUSE_CURSOR_GRABBING;
@@ -240,11 +246,9 @@ const TimelineChart = ({
           overflowY: 'hidden',
           cursor: getCursor()
         }}
-        onMouseDown={(e) => onMouseDown(e)}
-        onMouseUp={() => {
-          if (chartBodyScale > 1) setIsGrabbed(false);
-        }}
-        onMouseMove={throttle(onMouseMove, 200, { trailing: false })}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
       >
         <div
           style={{
