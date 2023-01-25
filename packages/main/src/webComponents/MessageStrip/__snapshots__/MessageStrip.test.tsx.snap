@@ -3,7 +3,6 @@
 exports[`MessageStrip Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-message-strip
-    data-sap-ui-fastnavgroup="true"
     design="Information"
     ui5-message-strip=""
   />

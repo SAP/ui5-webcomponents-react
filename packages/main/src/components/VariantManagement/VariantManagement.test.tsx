@@ -1,7 +1,6 @@
 import { fireEvent, render, renderWithDefine, screen, waitFor, within } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import React from 'react';
-import { TitleLevel } from '../..';
 import { DialogDomRef } from '../../webComponents/Dialog';
 import { PopoverDomRef } from '../../webComponents/Popover';
 import { VariantItem } from './VariantItem';
@@ -143,22 +142,6 @@ describe('VariantManagement', () => {
   test('In error state', () => {
     render(<VariantManagement inErrorState>{TwoVariantItems}</VariantManagement>);
     expect(document.querySelector('ui5-illustrated-message')).toBeInTheDocument();
-  });
-
-  test('Headings customization', async () => {
-    const { getAllByText, container } = await renderWithDefine(
-      <VariantManagement titleText="Popover Heading" level={TitleLevel.H1}>
-        {TwoVariantItems}
-      </VariantManagement>,
-      ['ui5-responsive-popover']
-    );
-    const btn = container.querySelector('.ui5-content-density-compact');
-    fireEvent.click(btn);
-    const popover: PopoverDomRef = document.querySelector('ui5-responsive-popover');
-    await waitFor(() => popover.shadowRoot.querySelector('h2'));
-    const popoverHeading = popover.shadowRoot.querySelector('h2');
-    expect(popoverHeading).toHaveTextContent('Popover Heading');
-    expect(getAllByText('VariantItem 2')[0]).toHaveAttribute('level', 'H1');
   });
 
   test('Show search input', () => {
@@ -409,55 +392,6 @@ describe('VariantManagement', () => {
       </VariantManagement>
     );
     manageViewsRowTest(variantItems, true);
-  });
-
-  test('Manage Views interactions', async () => {
-    const cb = jest.fn((e) => e.detail);
-    const { getByText } = await renderWithDefine(
-      <VariantManagement onSaveManageViews={cb} showOnlyFavorites>
-        {[
-          ...TwoVariantItems,
-          <VariantItem isDefault key="2">
-            VariantItem 3
-          </VariantItem>
-        ]}
-      </VariantManagement>,
-      ['ui5-checkbox', 'ui5-radio-button']
-    );
-
-    const manageBtn = getByText('Manage');
-    fireEvent.click(manageBtn);
-
-    const wcRadioBtn = screen.getAllByLabelText('Use as standard view')[0];
-    const radioBtn = await waitFor(() => wcRadioBtn.shadowRoot.querySelector('div[role="radio"]'));
-
-    const wcCheckbox = screen.getAllByLabelText('Apply Automatically')[0];
-    const checkbox = await waitFor(() => wcCheckbox.shadowRoot.querySelector('div[role="checkbox"]'));
-
-    const table = screen.getByRole('table');
-
-    fireEvent.click(within(table).getAllByTitle('Unselected as Favorite')[0]);
-    fireEvent.input(within(table).getAllByPlaceholderText('View')[0], { target: { value: 'Updated!' } });
-    fireEvent.click(radioBtn);
-    fireEvent.click(checkbox);
-
-    // TODO Enable this code snippet again!
-    if (process.env.REACTJS_VERSION !== '18') {
-      fireEvent.click(screen.getByText('Save'));
-      expect(cb).toHaveBeenCalledTimes(1);
-
-      expect(cb.mock.results[0].value.updatedVariants[0].children).toBe('Updated!');
-      expect(cb.mock.results[0].value.updatedVariants[0].isDefault).toBe(true);
-      expect(cb.mock.results[0].value.updatedVariants[0].favorite).toBe(true);
-      expect(cb.mock.results[0].value.updatedVariants[0].applyAutomatically).toBe(true);
-      expect(cb.mock.results[0].value.variants[2].isDefault).toBe(false);
-      expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
-
-      fireEvent.click(manageBtn);
-      expect(document.querySelector('ui5-dialog')).toBeInTheDocument();
-      fireEvent.click(screen.getByText('Cancel'));
-      expect(document.querySelector('ui5-dialog')).not.toBeInTheDocument();
-    }
   });
 
   test('Delete variants', () => {

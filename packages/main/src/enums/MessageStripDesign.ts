@@ -1,26 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Defines different types of MessageStrip.
- */
-export enum MessageStripDesign {
-  /**
-   * Message should be just an information
-   */
-  Information = 'Information',
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 
-  /**
-   * Message is an error
-   */
-  Negative = 'Negative',
-
-  /**
-   * Message is a success message
-   */
-  Positive = 'Positive',
-
-  /**
-   * Message is a warning
-   */
-  Warning = 'Warning'
-}
+export { MessageStripDesign };

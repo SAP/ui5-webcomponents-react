@@ -47,7 +47,7 @@ export interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
 
 export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
   /**
-   * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
+   * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`.
    */
   children?: ReactNode | ReactNode[];
   /**

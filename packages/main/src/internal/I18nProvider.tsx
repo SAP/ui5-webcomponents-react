@@ -1,6 +1,5 @@
-import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import I18nBundle, { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
-import type { I18nBundle } from '@ui5/webcomponents-react-base';
 import { getI18nContext } from '@ui5/webcomponents-react-base';
 import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react';
 
@@ -23,25 +22,27 @@ export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
   const isMounted = useRef(false);
 
   const updateBundles = useCallback(() => {
-    Promise.all(Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))).then((bundles) => {
-      const bundleMap = bundles.reduce(
-        (acc, bundle) => ({
-          ...acc,
-          [bundle.packageName]: bundle
-        }),
-        {}
-      );
-      if (isMounted.current) {
-        setI18nBundles({
-          payload: bundleMap
-        });
+    return Promise.all(Object.keys(localBundles.current).map((bundleName) => getI18nBundle(bundleName))).then(
+      (bundles) => {
+        const bundleMap = bundles.reduce(
+          (acc, bundle) => ({
+            ...acc,
+            [bundle.packageName]: bundle
+          }),
+          {}
+        );
+        if (isMounted.current) {
+          setI18nBundles({
+            payload: bundleMap
+          });
+        }
       }
-    });
+    );
   }, []);
 
   const setI18nBundle = useCallback((name: string, bundle: I18nBundle) => {
     localBundles.current[name] = bundle;
-    updateBundles();
+    void updateBundles();
   }, []);
 
   useEffect(() => {

@@ -1,15 +1,7 @@
 import UI5MediaRange from '@ui5/webcomponents-base/dist/MediaRange.js';
-import { EventProvider } from './EventProvider';
+import { MediaEventProvider, RANGE_LEGACY_4_STEPS, RangeInfo } from './EventProvider';
 
-type RANGE_LEGACY_4_STEPS = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
 type RANGE_4_STEPS = 'S' | 'M' | 'L' | 'XL';
-
-interface RangeInfo {
-  from: number;
-  to?: number;
-  name: RANGE_LEGACY_4_STEPS;
-  unit: string;
-}
 
 const DEFAULT_RANGE_SET = UI5MediaRange.RANGESETS.RANGE_4STEPS;
 
@@ -65,7 +57,7 @@ function initMediaQueries() {
       const handler = (event) => {
         if (event.matches) {
           const params = resolveRangeInfo(mediaQueriesKey as RANGE_4_STEPS);
-          EventProvider.fireEvent(`media`, params);
+          MediaEventProvider.fireEvent(`media`, params);
         }
       };
       mediaQueries[mediaQueriesKey].addEventListener('change', handler);
@@ -84,9 +76,9 @@ export const attachMediaHandler = (func: (rangeInfo: RangeInfo) => void): void =
   if (mediaQueries === null) {
     initMediaQueries();
   }
-  EventProvider.attachEvent(`media`, func);
+  MediaEventProvider.attachEvent(`media`, func);
 };
 
 export const detachMediaHandler = (func: (rangeInfo: RangeInfo) => void): void => {
-  EventProvider.detachEvent(`media`, func);
+  MediaEventProvider.detachEvent(`media`, func);
 };

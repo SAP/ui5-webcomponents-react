@@ -43,7 +43,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     'ui5-option'
   ]);
 
-  if (interfaces.has(property.type.replace(/\[]$/, ''))) {
+  if (interfaces.has(property.type.replace(/\[]$/, '').replace(/\|null/, ''))) {
     if (/\[]$/.test(property.type)) {
       return {
         tsType: `${reactNodeType} | ${reactNodeType}[]`,
@@ -179,7 +179,9 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'CalendarSelection':
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
+    case 'CarouselPageIndicatorStyle':
     case 'FCLLayout':
+    case 'IconDesign':
     case 'IllustrationMessageSize':
     case 'IllustrationMessageType':
     case 'InputType':
@@ -205,8 +207,10 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'SideContentVisibility':
     case 'SwitchDesign':
     case 'TabContainerBackgroundDesign':
+    case 'TabContainerTabsPlacement':
     case 'TabLayout':
     case 'TabsOverflowMode':
+    case 'TableColumnPopinDisplay':
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
@@ -215,6 +219,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'ToastPlacement':
     case 'UploadState':
     case 'ValueState':
+    case 'ViewSettingsDialogMode':
     case 'WrappingType':
       return {
         importStatement: `import { ${typeWithoutNamespace} } from '../../enums';`,

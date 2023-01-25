@@ -18,6 +18,7 @@ exports[`MessageBox Confirm - Cancel 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -81,6 +82,7 @@ exports[`MessageBox Confirm 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -143,6 +145,7 @@ exports[`MessageBox Custom Action Text 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -206,6 +209,7 @@ exports[`MessageBox Custom Button 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -359,6 +363,7 @@ exports[`MessageBox No Title 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -454,6 +459,7 @@ exports[`MessageBox Show 1`] = `
       <ui5-icon
         accessible-role="presentation"
         aria-hidden="true"
+        design="Default"
         name="sys-help-2"
         ui5-icon=""
       />
@@ -548,6 +554,7 @@ exports[`MessageBox Success w/ custom title 1`] = `
       slot="header"
     >
       <ui5-icon
+        design="Default"
         name="add"
         ui5-icon=""
       />

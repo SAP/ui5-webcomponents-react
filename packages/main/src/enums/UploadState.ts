@@ -1,26 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * UploadState
- */
-export enum UploadState {
-  /**
-   * The file has been uploaded successfully.
-   */
-  Complete = 'Complete',
+import UploadState from '@ui5/webcomponents-fiori/dist/types/UploadState.js';
 
-  /**
-   * The file cannot be uploaded due to an error.
-   */
-  Error = 'Error',
-
-  /**
-   * The file is awaiting an explicit command to start being uploaded.
-   */
-  Ready = 'Ready',
-
-  /**
-   * The file is currently being uploaded.
-   */
-  Uploading = 'Uploading'
-}
+export { UploadState };

@@ -52,9 +52,13 @@ interface TreeItemAttributes {
    */
   indeterminate?: boolean;
   /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
+   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   */
+  navigated?: boolean;
+  /**
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
-   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
   type?: ListItemType | keyof typeof ListItemType;
   /**
@@ -76,12 +80,12 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
    *
    * **Note:** Use `TreeItem` or `TreeItemCustom`
    */
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
   /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="deleteButton"`).
-   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
@@ -104,7 +108,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
   ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
-  ['expanded', 'hasChildren', 'indeterminate', 'selected'],
+  ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click']
 );

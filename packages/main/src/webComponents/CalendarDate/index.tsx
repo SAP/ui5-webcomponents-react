@@ -5,7 +5,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface CalendarDateAttributes {
   /**
-   * The date formatted according to the `formatPattern` property of the `Calendar` that hosts the component
+   * The date formatted according to the `formatPattern` property of the `Calendar` that hosts the component.
    */
   value?: string;
 }
