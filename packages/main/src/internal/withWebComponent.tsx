@@ -5,7 +5,6 @@ import React, {
   cloneElement,
   ComponentType,
   forwardRef,
-  Fragment,
   ReactElement,
   Ref,
   useEffect,
@@ -74,20 +73,13 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const slots = slotProperties.reduce((acc, name) => {
       const slotValue = rest[name] as ReactElement;
 
-      if (!slotValue) {
-        return acc;
-      }
-
-      if (rest[name]?.$$typeof === Symbol.for('react.portal')) {
-        console.warn('ReactPortal is not supported for slot props.');
-        return acc;
-      }
+      if (!slotValue) return acc;
 
       const slottedChildren = [];
       let index = 0;
       const removeFragments = (element) => {
         if (!element) return;
-        if (element.type === Fragment) {
+        if (element.type === React.Fragment) {
           Children.toArray(element.props?.children)
             .filter(Boolean)
             .forEach((item) => {

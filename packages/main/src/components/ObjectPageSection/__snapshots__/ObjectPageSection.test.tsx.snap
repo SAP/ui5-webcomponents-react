@@ -3,14 +3,13 @@
 exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
 <DocumentFragment>
   <section
-    class="ObjectPageSection-section"
     data-component-name="ObjectPageSection"
     id="ObjectPageSection-1"
     role="region"
   >
     <div
       aria-level="3"
-      class="ObjectPageSection-titleContainer"
+      class="ObjectPageSection-header"
       data-component-name="ObjectPageSectionTitleText"
       role="heading"
     >
@@ -37,14 +36,13 @@ exports[`ObjectPageSection ObjectPage w/ lowercase title 1`] = `
 exports[`ObjectPageSection Renders with children 1`] = `
 <DocumentFragment>
   <section
-    class="ObjectPageSection-section"
     data-component-name="ObjectPageSection"
     id="ObjectPageSection-1"
     role="region"
   >
     <div
       aria-level="3"
-      class="ObjectPageSection-titleContainer"
+      class="ObjectPageSection-header"
       data-component-name="ObjectPageSectionTitleText"
       role="heading"
     >

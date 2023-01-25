@@ -5,7 +5,6 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode, Nullable } from '../../types';
 
 interface UploadCollectionItemAttributes {
   /**
@@ -15,7 +14,7 @@ interface UploadCollectionItemAttributes {
   /**
    * Holds an instance of `File` associated with this item.
    */
-  file?: Nullable<File>;
+  file?: File;
   /**
    * The name of the file.
    */
@@ -70,23 +69,17 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
    *
    * **Note:** Use `Icon` or `img` for the intended design.
    *
-   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="thumbnail"`).
-   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
-   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  thumbnail?: UI5WCSlotsNode;
+  thumbnail?: ReactNode;
   /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
-   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="deleteButton"`).
-   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them in the body of the component, especially when facing problems with the reading order of screen readers.
-   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  deleteButton?: UI5WCSlotsNode;
+  deleteButton?: ReactNode;
   /**
    * Fired when the file name is clicked.
    *

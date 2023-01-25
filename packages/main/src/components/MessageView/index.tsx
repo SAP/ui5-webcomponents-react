@@ -4,12 +4,11 @@ import '@ui5/webcomponents-icons/dist/information.js';
 import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import React, {
   Children,
   forwardRef,
   Fragment,
-  isValidElement,
   ReactElement,
   ReactNode,
   useCallback,
@@ -173,7 +172,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     listFilter === 'All'
       ? childrenArray
       : childrenArray.filter((message) => {
-          if (!isValidElement(message)) {
+          if (!React.isValidElement(message)) {
             return false;
           }
           if (listFilter === ValueState.Information) {

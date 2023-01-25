@@ -236,7 +236,7 @@ const getEventParameters = (name, parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...Utils.getTypeDefinitionForProperty(property, { event: true })
+      ...Utils.getTypeDefinitionForProperty(property, true)
     };
   });
 
@@ -532,9 +532,6 @@ const propDescription = (componentSpec, property) => {
   if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
     formattedDescription += `
           *
-          * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (\`slot="${property.name}"\`). 
-          * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
-          *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
   }
@@ -590,11 +587,12 @@ allWebComponents
           ...tsType
         };
       });
+
     allComponentProperties.push(
       ...(componentSpec.slots || [])
         .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
         .map((property) => {
-          const tsType = Utils.getTypeDefinitionForProperty(property, { slot: true });
+          const tsType = Utils.getTypeDefinitionForProperty(property);
           if (tsType.importStatement) {
             importStatements.push(tsType.importStatement);
           }

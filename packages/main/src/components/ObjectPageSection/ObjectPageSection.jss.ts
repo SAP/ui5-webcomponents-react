@@ -2,24 +2,14 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 
 const styles = {
-  section: {
-    '& [data-component-name="ObjectPageSubSection"]:not(:first-child)': {
-      paddingBlockStart: '0.5rem'
-    }
-  },
-  headerContainer: {
-    paddingBlock: '0.5rem',
-    color: ThemingParameters.sapGroup_TitleTextColor,
-    fontFamily: ThemingParameters.sapFontFamily
-  },
-  titleContainer: {
+  header: {
     borderTop: CustomThemingParameters.ObjectPageSectionBorderTop,
     boxSizing: 'border-box',
     height: '2.25rem'
   },
   title: {
-    height: CustomThemingParameters.ObjectPageSectionTitleHeight,
-    lineHeight: CustomThemingParameters.ObjectPageSectionTitleLineHeight,
+    height: '2.25rem',
+    lineHeight: '2.25rem',
     color: ThemingParameters.sapGroup_TitleTextColor,
     fontSize: ThemingParameters.sapFontHeader4Size,
     display: 'inline-block',
@@ -33,21 +23,12 @@ const styles = {
   uppercase: {
     textTransform: 'uppercase'
   },
-  wrap: {
-    '& $titleContainer': {
-      height: 'unset'
-    },
-    '& $title': {
-      whiteSpace: 'normal',
-      height: 'unset',
-      lineHeight: 'normal'
-    }
-  },
   sectionContent: {
     whiteSpace: 'normal'
   },
   sectionContentInner: {
-    paddingBlock: '0.5rem',
+    paddingTop: '1rem',
+    paddingBottom: '2rem',
     fontFamily: ThemingParameters.sapFontFamily
   }
 };

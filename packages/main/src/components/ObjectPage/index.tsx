@@ -6,19 +6,8 @@ import {
   useResponsiveContentPadding,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
-import React, {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import clsx from 'clsx';
+import React, { forwardRef, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -258,7 +247,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         </span>
       );
     } else {
-      return cloneElement(image, {
+      return React.cloneElement(image, {
         size: AvatarSize.L,
         className: clsx(headerImageClasses, image.props?.className)
       } as AvatarPropTypes);
@@ -287,7 +276,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               childOffset -
               safeTopHeaderHeight -
               anchorBarHeight -
-              48 /*tabBar*/ -
               (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });
@@ -316,7 +304,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       prevSelectedSectionId.current = currentId;
       const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-        return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+        return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({}, currentIndex, currentId, sections[0]);
     }
@@ -429,10 +417,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId;
         safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section) => {
-          if (isValidElement(section) && section.props && section.props.children) {
+          if (React.isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach((subSection) => {
               if (
-                isValidElement(subSection) &&
+                React.isValidElement(subSection) &&
                 subSection.props &&
                 subSection.props.id === props.selectedSubSectionId
               ) {
@@ -508,7 +496,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
         const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-          return isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
+          return React.isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
         });
         debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
@@ -543,7 +531,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             const currentId = extractSectionIdFromHtmlId(section.target.id);
             setInternalSelectedSectionId(currentId);
             const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-              return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+              return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
             });
             debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
@@ -619,14 +607,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-        return cloneElement(headerTitle, {
+        return React.cloneElement(headerTitle, {
           showSubHeaderRight: true,
           style: titleStyles,
           'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick
         });
       }
-      return cloneElement(headerTitle, {
+      return React.cloneElement(headerTitle, {
         style: titleStyles,
         'data-not-clickable': titleHeaderNotClickable,
         onToggleHeaderContentVisibility: onTitleClick
@@ -637,7 +625,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
-      return cloneElement(headerContent, {
+      return React.cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
         style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
@@ -818,11 +806,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             className={classes.tabContainerComponent}
           >
             {safeGetChildrenArray(children).map((section, index) => {
-              if (!isValidElement(section) || !section.props) return null;
+              if (!React.isValidElement(section) || !section.props) return null;
               const subTabs = safeGetChildrenArray(section.props.children).filter(
                 (subSection) =>
                   // @ts-expect-error: if the `ObjectPageSubSection` component is passed as children, the `displayName` is available. Otherwise, the default children should be rendered w/o additional logic.
-                  isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
+                  React.isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
               );
               return (
                 <Tab
@@ -832,7 +820,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                   text={section.props.titleText}
                   selected={internalSelectedSectionId === section.props?.id || undefined}
                   subTabs={subTabs.map((item) => {
-                    if (!isValidElement(item)) {
+                    if (!React.isValidElement(item)) {
                       return null;
                     }
                     return (

@@ -13,20 +13,17 @@ export enum CustomVariables {
   AnalyticalTableOuterBorderInline = '--ui5wcr-AnalyticalTable-OuterBorderInline',
   ObjectPageSectionBorderTop = '--ui5wcr_ObjectPage_SectionBorderTop',
   ObjectPageSectionTitleFontFamily = '--ui5wcr_ObjectPage_SectionTitleFontFamily',
-  ObjectPageSectionTitleHeight = '--ui5wcr_ObjectPage_SectionTitleHeight',
-  ObjectPageSectionTitleLineHeight = '--ui5wcr_ObjectPage_SectionTitleLineHeight',
   ObjectPageSectionTitleTextDecoration = '--ui5wcr_ObjectPage_SectionTitleTextDecoration',
   ObjectPageSubSectionBackgroundColor = '--ui5wcr_ObjectPage_SubSectionBackgroundColor',
   ObjectPageSubSectionBorderRadius = '--ui5wcr_ObjectPage_SubSectionBorderRadius',
-  ObjectPageSubSectionPaddingBlockStart = '--ui5wcr_ObjectPage_PaddingBlockStart',
   SplitterBarBorderFix = '--ui5wcr_Splitter_BarBorderHighContrastFix',
   SplitterBarBorderFocus = '--ui5wcr_Splitter_BarBorderFocus',
   SplitterBarBorderStyle = '--ui5wcr_Splitter_BarBorderStyle',
   SplitterBarOutline = '--ui5wcr_Splitter_BarOutline',
   SplitterContentBorderColor = '--ui5wcr_Splitter_ContentBorderColor',
   SplitterIconColor = '--ui5wcr_Splitter_IconColor',
-  ToolbarFocusOutline = '--ui5wcr_Toolbar_FocusOutline',
-  ToolbarFocusShadow = '--ui5wcr_Toolbar_FocusShadow'
+  ToolbarFocusShadow = '--ui5wcr_Toolbar_FocusShadow',
+  ToolbarFocusOutline = '--ui5wcr_Toolbar_FocusOutline'
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {

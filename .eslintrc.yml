@@ -40,8 +40,12 @@ rules:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
-  import/no-unresolved: 'error'
-  no-only-tests/no-only-tests: "error"
+  import/no-unresolved:
+    - 'error'
+    - ignore:
+        - '@ui5/webcomponents-react'
+        - '@ui5/webcomponents-react-base'
+  no-only-tests/no-only-tests: 'error'
 overrides:
   # add config for all TypeScript files
   - files:
@@ -56,10 +60,6 @@ overrides:
     extends:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
-      - 'plugin:import/typescript'
-    settings:
-      import/resolver:
-        typescript: true
     rules:
       # disabled some rules from the recommended preset
       '@typescript-eslint/no-empty-function': 'off'

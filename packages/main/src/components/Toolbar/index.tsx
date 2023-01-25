@@ -5,12 +5,9 @@ import {
   useIsomorphicLayoutEffect,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import React, {
-  Children,
-  cloneElement,
   createRef,
-  ElementType,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -179,8 +176,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
-    Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
-    numberOfAlwaysVisibleItems < Children.count(flatChildren);
+    React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
+    numberOfAlwaysVisibleItems < React.Children.count(flatChildren);
 
   useEffect(() => {
     let lastElementResizeObserver;
@@ -296,7 +293,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
 
-  const CustomTag = as as ElementType;
+  const CustomTag = as as React.ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
     <CustomTag
@@ -312,9 +309,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
-          Children.map(childrenWithRef, (item, index) => {
+          React.Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
-              return cloneElement(item as ReactElement, {
+              return React.cloneElement(item as ReactElement, {
                 style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
               });
             }

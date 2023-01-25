@@ -19,12 +19,10 @@ import {
   Form,
   FormGroup,
   FormItem,
-  Icon,
   IllustratedMessage,
   IllustrationMessageType,
   Label,
   Link,
-  MessageStrip,
   ObjectPage,
   ObjectPageMode,
   ObjectPageSection,
@@ -36,7 +34,6 @@ import {
   ValueState
 } from '../..';
 import SampleImage from '../../../../../.storybook/demoImages/Person.png';
-import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 
 <Meta
   title="Layouts & Floorplans / ObjectPage"
@@ -390,52 +387,6 @@ With these objectes it's possible to e.g. configure the overflow button displaye
             }
           />
         </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## ObjectPageSection with hidden `titleText` and custom `header`
-
-<Canvas>
-  <Story name="section with custom header">
-    {(args) => {
-      return (
-        <ObjectPage {...args}>
-          <ObjectPageSection
-            titleText="Goals"
-            hideTitleText
-            id="goals"
-            aria-label="Goals"
-            header={<Title>Custom Header Section One</Title>}
-          >
-            <div style={{ width: '100%', height: '200px', background: 'cadetblue' }} />
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Personal"
-            hideTitleText
-            id="personal"
-            aria-label="Personal"
-            header={<MessageStrip hideCloseButton>Custom Header Section Two</MessageStrip>}
-          >
-            <div style={{ width: '100%', height: '500px', background: 'cadetblue' }} />
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Employment"
-            hideTitleText
-            id="employment"
-            aria-label="Employment"
-            header={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Icon name={sunIcon} style={{ marginInlineEnd: '2rem' }} />
-                <Text>Custom Header Section Three</Text>
-                <Icon name={sunIcon} style={{ marginInlineStart: '2rem' }} />
-              </div>
-            }
-          >
-            <div style={{ width: '100%', height: '300px', background: 'cadetblue' }} />
-          </ObjectPageSection>
-        </ObjectPage>
       );
     }}
   </Story>

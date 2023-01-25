@@ -1,4 +1,4 @@
-import { createRef, Dispatch, MutableRefObject, RefObject, useCallback } from 'react';
+import React, { createRef, MutableRefObject, RefObject, useCallback } from 'react';
 import { getRandomId } from '../../internal/getRandomId';
 import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';
 import {
@@ -43,7 +43,7 @@ const checkContext = (context: any): void => {
 
 function showDialog<ContainerElement>(
   props: DialogPropTypes,
-  setModal: Dispatch<UpdateModalStateAction<DialogPropTypes, DialogDomRef, ContainerElement>>,
+  setModal: React.Dispatch<UpdateModalStateAction<DialogPropTypes, DialogDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -76,7 +76,7 @@ function showDialog<ContainerElement>(
 
 function showPopover<ContainerElement>(
   props: PopoverPropTypes,
-  setModal: Dispatch<UpdateModalStateAction<PopoverPropTypes, PopoverDomRef, ContainerElement>>,
+  setModal: React.Dispatch<UpdateModalStateAction<PopoverPropTypes, PopoverDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -110,7 +110,9 @@ function showPopover<ContainerElement>(
 
 function showResponsivePopover<ContainerElement>(
   props: ResponsivePopoverPropTypes,
-  setModal: Dispatch<UpdateModalStateAction<ResponsivePopoverPropTypes, ResponsivePopoverDomRef, ContainerElement>>,
+  setModal: React.Dispatch<
+    UpdateModalStateAction<ResponsivePopoverPropTypes, ResponsivePopoverDomRef, ContainerElement>
+  >,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -143,7 +145,7 @@ function showResponsivePopover<ContainerElement>(
 
 function showMessageBox<ContainerElement>(
   props: MessageBoxPropTypes,
-  setModal: Dispatch<UpdateModalStateAction<MessageBoxPropTypes, DialogDomRef, ContainerElement>>,
+  setModal: React.Dispatch<UpdateModalStateAction<MessageBoxPropTypes, DialogDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -177,7 +179,7 @@ function showMessageBox<ContainerElement>(
 
 function showToast<ContainerElement>(
   props: ToastPropTypes,
-  setModal: Dispatch<UpdateModalStateAction<ToastPropTypes, ToastDomRef, ContainerElement>>,
+  setModal: React.Dispatch<UpdateModalStateAction<ToastPropTypes, ToastDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   const ref = createRef<ToastDomRef>() as MutableRefObject<ToastDomRef>;

@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
-import { CSSProperties, useReducer, useRef, useState } from 'react';
+import { CSSProperties, useRef, useState } from 'react';
 import {
   Bar,
   BarDesign,
@@ -13,19 +13,14 @@ import {
   FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxWrap,
-  Icon,
   Label,
   Link,
-  MessageStrip,
   ObjectPage,
   ObjectPageMode,
   ObjectPagePropTypes,
   ObjectPageSection,
   ObjectPageSubSection,
   ObjectStatus,
-  Text,
-  Title,
-  TitleLevel,
   ValueState
 } from '../..';
 
@@ -238,19 +233,18 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
-
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
     cy.wait(50);
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Employment').click({ force: true });
     cy.findByText('Employment').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Goals').click({ force: true });
     cy.findByText('Test').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().get('[aria-posinset="4"] [ui5-button]').click({ force: true });
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Relationship').should('be.visible');
@@ -260,22 +254,21 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
-
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
     cy.wait(50);
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Employment').click({ force: true });
     cy.findByText('Employment').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Goals').click({ force: true });
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().get('[aria-posinset="4"] [ui5-button]').click({ force: true });
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Relationship').should('be.visible');
@@ -294,15 +287,15 @@ describe('ObjectPage', () => {
 
     cy.wait(50);
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Employment').click({ force: true });
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Goals').click({ force: true });
     cy.findByText('section 2').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().get('[aria-posinset="4"] [ui5-button]').click({ force: true });
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
@@ -320,17 +313,17 @@ describe('ObjectPage', () => {
 
     cy.wait(50);
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Employment').click({ force: true });
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').shadow().findByText('Goals').click({ force: true });
     cy.findByText('section 2').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').shadow().get('[aria-posinset="4"] [ui5-button]').click({ force: true });
 
     cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
@@ -384,19 +377,19 @@ describe('ObjectPage', () => {
     [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((item) => {
       cy.mount(<TestComp height="2000px" mode={item} />);
       cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+      cy.findByText('{"offset":1080,"scroll":2280}').should('exist');
 
       cy.findByTestId('op').scrollTo('bottom');
       cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+      cy.findByText('{"offset":1080,"scroll":2280}').should('exist');
 
       cy.mount(<TestComp height="2000px" withFooter mode={item} />);
       cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+      cy.findByText('{"offset":1080,"scroll":2340}').should('exist');
 
       cy.findByTestId('op').scrollTo('bottom');
       cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+      cy.findByText('{"offset":1080,"scroll":2340}').should('exist');
 
       cy.mount(<TestComp height="400px" mode={item} />);
       cy.findByText('Update Heights').click();
@@ -422,10 +415,9 @@ describe('ObjectPage', () => {
       cy.findByText('Update Heights').click({ force: true });
       cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="925px" mode={item} />);
+      cy.mount(<TestComp height="890px" mode={item} />);
       cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
-      cy.wait(50);
       cy.findByTestId('op').scrollTo('bottom');
       cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
       cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
@@ -436,225 +428,6 @@ describe('ObjectPage', () => {
       cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
       cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
     });
-  });
-
-  it('ObjectPageSection/SubSection: Custom header & hideTitleText', () => {
-    document.body.style.margin = '0px';
-    const TestComp = ({ mode }: ObjectPagePropTypes) => {
-      const [hideTitleText1, toggleTitleText1] = useReducer((prev) => !prev, true);
-      const [hideTitleText2, toggleTitleText2] = useReducer((prev) => !prev, true);
-      const [hideTitleTextSub, toggleTitleTextSub] = useReducer((prev) => !prev, true);
-      return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent} mode={mode}>
-          <ObjectPageSection
-            titleText="Goals"
-            hideTitleText={hideTitleText1}
-            id="goals"
-            aria-label="Goals"
-            header={<Title>Custom Header Section One</Title>}
-          >
-            <div style={{ width: '100%', height: '200px', background: 'cadetblue' }} />
-            <Button onClick={toggleTitleText1}>toggle titleText1</Button>
-            <ObjectPageSubSection id={'goals2'} titleText="Goals 2" hideTitleText={hideTitleTextSub}>
-              <div style={{ width: '100%', height: '200px', background: 'lightblue' }} />
-              <Button onClick={toggleTitleTextSub}>toggle titleTextSub</Button>
-            </ObjectPageSubSection>
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Personal"
-            hideTitleText={hideTitleText2}
-            id="personal"
-            aria-label="Personal"
-            header={<MessageStrip hideCloseButton>Custom Header Section Two</MessageStrip>}
-          >
-            <div style={{ width: '100%', height: '1200px', background: 'cadetblue' }} />
-            <Button onClick={toggleTitleText2}>toggle titleText2</Button>
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Employment"
-            hideTitleText
-            id="employment"
-            aria-label="Employment"
-            header={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Icon name={'general-leave-request'} style={{ marginInlineEnd: '2rem' }} />
-                <Text>Custom Header Section Three</Text>
-                <Icon name={'general-leave-request'} style={{ marginInlineStart: '2rem' }} />
-              </div>
-            }
-          >
-            <div style={{ width: '100%', height: '300px', background: 'cadetblue' }} />
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
-    [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
-      cy.mount(<TestComp mode={mode} />);
-      cy.wait(50);
-
-      cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
-      cy.findByText('Custom Header Section Three').should('be.visible');
-      cy.findByText('Employment').should('not.exist');
-
-      cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
-      cy.findByText('Custom Header Section One').should('be.visible');
-      cy.findByText('toggle titleText1').click({ scrollBehavior: false, force: true });
-      // first titleText should never be displayed
-      cy.findByText('Goals').should('not.be.visible');
-      cy.findByText('Custom Header Section One').should('be.visible');
-
-      cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
-      cy.findByText('Custom Header Section Two').should('be.visible');
-      cy.findByText('Personal').should('not.exist');
-      cy.findByText('toggle titleText2').click({ scrollBehavior: false, force: true });
-      if (mode === ObjectPageMode.IconTabBar) {
-        cy.findByText('Personal').should('not.be.visible');
-      } else {
-        cy.findByText('Personal').should('be.visible');
-      }
-      cy.findByText('Custom Header Section Two').should('be.visible');
-
-      cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Goals').click();
-      cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Goals 2').click({ force: true });
-      cy.findByText('Goals 2').should('not.exist');
-      cy.findByText('toggle titleTextSub').click({ scrollBehavior: false, force: true });
-      cy.findByText('Goals 2').should('be.visible');
-    });
-  });
-
-  it('ObjectPageSection: wrap title', () => {
-    const TestComp = () => {
-      const [wrapTitle, toggleWrap] = useReducer((prev) => !prev, false);
-      return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
-          <ObjectPageSection id="placeholder" titleText="Placeholder">
-            <span />
-          </ObjectPageSection>
-          <ObjectPageSection
-            wrapTitleText={wrapTitle}
-            titleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper
-            sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse
-            lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at
-            id ex."
-            id="goals"
-            aria-label="Goals"
-          >
-            <div style={{ width: '100%', height: '100px', background: 'cadetblue' }} />
-            <Button onClick={toggleWrap}>toggle wrap</Button>
-            <ObjectPageSubSection
-              id={'goals2'}
-              titleText="Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod
-            aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend
-            neque. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque."
-            >
-              <div style={{ width: '100%', height: '100px', background: 'lightblue' }} />
-            </ObjectPageSubSection>
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
-    cy.mount(<TestComp />);
-
-    cy.findByText(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.'
-    ).should('have.css', 'white-space', 'nowrap');
-
-    cy.findByText(
-      'Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.'
-    ).should('have.css', 'white-space', 'normal');
-
-    cy.findByText('toggle wrap').click();
-    cy.findByText(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.'
-    ).should('have.css', 'white-space', 'normal');
-  });
-
-  it('ObjectPageSection: uppercase', () => {
-    const TestComp = () => {
-      const [uppercase, toggleUppercase] = useReducer((prev) => !prev, undefined);
-      const [uppercaseSub, toggleUppercaseSub] = useReducer((prev) => !prev, undefined);
-      return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
-          <ObjectPageSection id="placeholder" titleText="Placeholder">
-            <span />
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleTextUppercase={uppercase}
-            titleText="Lorem ipsum dolor sit amet"
-            id="goals"
-            aria-label="Goals"
-          >
-            <div style={{ width: '100%', height: '100px', background: 'cadetblue' }} />
-            <Button onClick={toggleUppercase}>toggle uppercase</Button>
-            <ObjectPageSubSection id={'goals2'} titleText="Etiam pellentesque" titleTextUppercase={uppercaseSub}>
-              <div style={{ width: '100%', height: '100px', background: 'lightblue' }} />
-              <Button onClick={toggleUppercaseSub}>toggle uppercaseSub</Button>
-            </ObjectPageSubSection>
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
-    cy.mount(<TestComp />);
-
-    cy.findByText('Lorem ipsum dolor sit amet').should('have.css', 'text-transform', 'uppercase');
-    cy.findByText('Etiam pellentesque').should('have.css', 'text-transform', 'none');
-
-    cy.findByText('toggle uppercase').click();
-    cy.findByText('Lorem ipsum dolor sit amet').should('have.css', 'text-transform', 'uppercase');
-    cy.findByText('toggle uppercase').click();
-    cy.findByText('Lorem ipsum dolor sit amet').should('have.css', 'text-transform', 'none');
-
-    cy.findByText('toggle uppercaseSub').click();
-    cy.findByText('Etiam pellentesque').should('have.css', 'text-transform', 'uppercase');
-  });
-
-  it('ObjectPageSection: titleTextLevel', () => {
-    const TestComp = () => {
-      const [level, setLevel] = useState<undefined | TitleLevel>(undefined);
-      const [levelSub, setLevelSub] = useState<undefined | TitleLevel>(undefined);
-      return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
-          <ObjectPageSection id="placeholder" titleText="Placeholder">
-            <span />
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Lorem ipsum dolor sit amet"
-            id="goals"
-            aria-label="Goals"
-            titleTextLevel={level}
-          >
-            <div style={{ width: '100%', height: '100px', background: 'cadetblue' }} />
-            <Button
-              onClick={() => {
-                setLevel(TitleLevel.H1);
-              }}
-            >
-              set level 1
-            </Button>
-            <ObjectPageSubSection id={'goals2'} titleText="Etiam pellentesque" titleTextLevel={levelSub}>
-              <div style={{ width: '100%', height: '100px', background: 'lightblue' }} />
-              <Button
-                onClick={() => {
-                  setLevelSub(TitleLevel.H6);
-                }}
-              >
-                set level 6
-              </Button>
-            </ObjectPageSubSection>
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
-    cy.mount(<TestComp />);
-
-    cy.findByText('Lorem ipsum dolor sit amet').parent().should('have.attr', 'aria-level', '3');
-    cy.findByText('Etiam pellentesque').should('have.attr', 'aria-level', '4');
-
-    cy.findByText('set level 1').click();
-    cy.findByText('Lorem ipsum dolor sit amet').parent().should('have.attr', 'aria-level', '1');
-
-    cy.findByText('set level 6').click();
-    cy.findByText('Etiam pellentesque').should('have.attr', 'aria-level', '6');
   });
 });
 

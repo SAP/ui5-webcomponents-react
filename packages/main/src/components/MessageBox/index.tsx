@@ -5,7 +5,7 @@ import {
   useIsomorphicId,
   useIsomorphicLayoutEffect
 } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';

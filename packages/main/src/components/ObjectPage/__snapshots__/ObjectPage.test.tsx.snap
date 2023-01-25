@@ -76,14 +76,13 @@ exports[`ObjectPage Default with Sections 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -105,14 +104,13 @@ exports[`ObjectPage Default with Sections 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -138,14 +136,13 @@ exports[`ObjectPage Default with Sections 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -344,14 +341,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -377,14 +373,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -408,14 +403,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -434,7 +428,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -461,7 +454,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -488,7 +480,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -517,14 +508,13 @@ exports[`ObjectPage Default with SubSections 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -543,7 +533,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -570,7 +559,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -597,7 +585,6 @@ exports[`ObjectPage Default with SubSections 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -799,14 +786,13 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -825,7 +811,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -852,7 +837,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -879,7 +863,6 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -1001,6 +984,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
           data-section-id="1"
           design="Default"
           selected="true"
+          text=""
           ui5-tab=""
         >
           <span
@@ -1018,14 +1002,13 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1089,6 +1072,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
           data-section-id="1"
           design="Default"
           selected="true"
+          text=""
           ui5-tab=""
         >
           <span
@@ -1106,14 +1090,13 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1449,14 +1432,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1482,14 +1464,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1513,14 +1494,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1539,7 +1519,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -1566,7 +1545,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -1593,7 +1571,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -1622,14 +1599,13 @@ exports[`ObjectPage with anchor-bar 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1648,7 +1624,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -1675,7 +1650,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -1702,7 +1676,6 @@ exports[`ObjectPage with anchor-bar 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -1924,14 +1897,13 @@ exports[`ObjectPage with footer 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1957,14 +1929,13 @@ exports[`ObjectPage with footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -1988,14 +1959,13 @@ exports[`ObjectPage with footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2014,7 +1984,6 @@ exports[`ObjectPage with footer 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -2041,7 +2010,6 @@ exports[`ObjectPage with footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -2068,7 +2036,6 @@ exports[`ObjectPage with footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -2097,14 +2064,13 @@ exports[`ObjectPage with footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2123,7 +2089,6 @@ exports[`ObjectPage with footer 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -2150,7 +2115,6 @@ exports[`ObjectPage with footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -2177,7 +2141,6 @@ exports[`ObjectPage with footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -2414,14 +2377,13 @@ exports[`ObjectPage with header 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2447,14 +2409,13 @@ exports[`ObjectPage with header 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2478,14 +2439,13 @@ exports[`ObjectPage with header 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2504,7 +2464,6 @@ exports[`ObjectPage with header 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -2531,7 +2490,6 @@ exports[`ObjectPage with header 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -2558,7 +2516,6 @@ exports[`ObjectPage with header 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -2587,14 +2544,13 @@ exports[`ObjectPage with header 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2613,7 +2569,6 @@ exports[`ObjectPage with header 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -2640,7 +2595,6 @@ exports[`ObjectPage with header 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -2667,7 +2621,6 @@ exports[`ObjectPage with header 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -2926,14 +2879,13 @@ exports[`ObjectPage with img 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2959,14 +2911,13 @@ exports[`ObjectPage with img 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -2990,14 +2941,13 @@ exports[`ObjectPage with img 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3016,7 +2966,6 @@ exports[`ObjectPage with img 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -3043,7 +2992,6 @@ exports[`ObjectPage with img 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -3070,7 +3018,6 @@ exports[`ObjectPage with img 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -3099,14 +3046,13 @@ exports[`ObjectPage with img 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3125,7 +3071,6 @@ exports[`ObjectPage with img 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -3152,7 +3097,6 @@ exports[`ObjectPage with img 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -3179,7 +3123,6 @@ exports[`ObjectPage with img 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -3453,14 +3396,13 @@ exports[`ObjectPage with img 2`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3486,14 +3428,13 @@ exports[`ObjectPage with img 2`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3517,14 +3458,13 @@ exports[`ObjectPage with img 2`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3543,7 +3483,6 @@ exports[`ObjectPage with img 2`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -3570,7 +3509,6 @@ exports[`ObjectPage with img 2`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -3597,7 +3535,6 @@ exports[`ObjectPage with img 2`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -3626,14 +3563,13 @@ exports[`ObjectPage with img 2`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3652,7 +3588,6 @@ exports[`ObjectPage with img 2`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -3679,7 +3614,6 @@ exports[`ObjectPage with img 2`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -3706,7 +3640,6 @@ exports[`ObjectPage with img 2`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -3950,14 +3883,13 @@ exports[`ObjectPage with title 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -3983,14 +3915,13 @@ exports[`ObjectPage with title 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4014,14 +3945,13 @@ exports[`ObjectPage with title 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4040,7 +3970,6 @@ exports[`ObjectPage with title 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -4067,7 +3996,6 @@ exports[`ObjectPage with title 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -4094,7 +4022,6 @@ exports[`ObjectPage with title 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -4123,14 +4050,13 @@ exports[`ObjectPage with title 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4149,7 +4075,6 @@ exports[`ObjectPage with title 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -4176,7 +4101,6 @@ exports[`ObjectPage with title 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -4203,7 +4127,6 @@ exports[`ObjectPage with title 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"
@@ -4452,14 +4375,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
         style="height: 0px;"
       />
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-1"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4485,14 +4407,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-2"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4516,14 +4437,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-3"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4542,7 +4462,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.1"
               role="region"
               tabindex="-1"
@@ -4569,7 +4488,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.2"
               role="region"
               tabindex="-1"
@@ -4596,7 +4514,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-3.3"
               role="region"
               tabindex="-1"
@@ -4625,14 +4542,13 @@ exports[`ObjectPage with title, header & footer 1`] = `
         </div>
       </section>
       <section
-        class="ObjectPageSection-section"
         data-component-name="ObjectPageSection"
         id="ObjectPageSection-4"
         role="region"
       >
         <div
           aria-level="3"
-          class="ObjectPageSection-titleContainer"
+          class="ObjectPageSection-header"
           data-component-name="ObjectPageSectionTitleText"
           role="heading"
         >
@@ -4651,7 +4567,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
           >
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.1"
               role="region"
               tabindex="-1"
@@ -4678,7 +4593,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.2"
               role="region"
               tabindex="-1"
@@ -4705,7 +4619,6 @@ exports[`ObjectPage with title, header & footer 1`] = `
             </div>
             <div
               class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
               id="ObjectPageSubSection-4.3"
               role="region"
               tabindex="-1"

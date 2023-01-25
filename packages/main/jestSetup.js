@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-
-// eslint-disable-next-line import/no-unresolved
 import '@ui5/webcomponents-react/dist/Assets.js';
 
 const setupMatchMedia = () => {

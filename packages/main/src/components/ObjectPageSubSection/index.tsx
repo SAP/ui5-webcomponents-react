@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBox, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TitleLevel } from '../..';
+import { FlexBox, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../..';
 import { CommonProps } from '../../interfaces';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 
@@ -27,27 +27,11 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use simple input components like `Button` or `Switch` to preserve the intended design.
    */
   actions?: ReactNode | ReactNode[];
-  /**
-   * Determines whether to display the SubSection `titleText` or not.
-   */
-  hideTitleText?: boolean;
-  /**
-   * Determines the ARIA level of the ObjectPageSubSection `titleText`. The ARIA level is used by assisting technologies, such as screen readers, to create a hierarchical site map for faster navigation.
-   *
-   * __Note:__ Defining a `titleTextLevel` will add aria-level attribute from 1 to 6, instead of changing the ObjectPageSectionBase title HTML tag from H1 to H6.
-   * For example: if titleTextLevel is TitleLevel.H1, it will result as aria-level of 1 added to the ObjectPageSection title.
-   *
-   * @default TittleLevel.H4
-   */
-  titleTextLevel?: TitleLevel | keyof typeof TitleLevel;
-  /**
-   * Defines whether the title is always displayed in uppercase.
-   */
-  titleTextUppercase?: boolean;
 }
 
 const styles = {
   objectPageSubSection: {
+    paddingBlock: '1rem',
     '&:focus': {
       outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
@@ -56,16 +40,17 @@ const styles = {
   headerContainer: {
     marginBlockEnd: '0.5rem',
     '& >:first-child': {
-      marginInline: '0 0.25rem'
+      marginInline: '0.5rem 0.25rem'
     },
-    '& >:last-child:not(:first-child)': {
+    '& >:last-child': {
       marginInline: '0.25rem 0'
     },
-    '& > *:not(:first-child):not(:last-child)': {
+    '& > *:not(first-child):not(last-child)': {
       marginInline: '0.25rem'
     }
   },
   subSectionTitle: {
+    fontFamily: CustomThemingParameters.ObjectPageSectionTitleFontFamily,
     fontSize: ThemingParameters.sapFontHeader5Size,
     color: ThemingParameters.sapGroup_TitleTextColor,
     flexGrow: 1
@@ -73,14 +58,7 @@ const styles = {
   subSectionContent: {
     backgroundColor: CustomThemingParameters.ObjectPageSubSectionBackgroundColor,
     borderRadius: CustomThemingParameters.ObjectPageSubSectionBorderRadius,
-    paddingInline: '0.5rem',
-    paddingBlock: '1rem'
-  },
-  spacer: {
-    flexGrow: 1
-  },
-  uppercase: {
-    textTransform: 'uppercase'
+    paddingInline: '0.5rem'
   }
 };
 
@@ -90,33 +68,13 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
  */
 const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionPropTypes>((props, ref) => {
-  const {
-    children,
-    id,
-    titleText,
-    className,
-    style,
-    actions,
-    hideTitleText,
-    titleTextLevel = 'H4',
-    titleTextUppercase,
-    ...rest
-  } = props;
+  const { children, id, titleText, className, style, actions, ...rest } = props;
   const htmlId = `ObjectPageSubSection-${id}`;
   const classes = useStyles();
   const subSectionClassName = clsx(classes.objectPageSubSection, className);
 
   return (
-    <div
-      ref={ref}
-      role="region"
-      style={style}
-      tabIndex={-1}
-      {...rest}
-      className={subSectionClassName}
-      id={htmlId}
-      data-component-name="ObjectPageSubSection"
-    >
+    <div ref={ref} role="region" style={style} tabIndex={-1} {...rest} className={subSectionClassName} id={htmlId}>
       <FlexBox
         direction={FlexBoxDirection.Row}
         justifyContent={FlexBoxJustifyContent.SpaceBetween}
@@ -124,18 +82,14 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
         className={classes.headerContainer}
         data-component-name="ObjectPageSubSectionHeaderContainer"
       >
-        {!hideTitleText ? (
-          <div
-            role="heading"
-            aria-level={parseInt(titleTextLevel.slice(1))}
-            className={clsx(classes.subSectionTitle, titleTextUppercase && classes.uppercase)}
-            data-component-name="ObjectPageSubSectionTitleText"
-          >
-            {titleText}
-          </div>
-        ) : (
-          <span aria-hidden="true" className={classes.spacer} />
-        )}
+        <div
+          role="heading"
+          aria-level={4}
+          className={classes.subSectionTitle}
+          data-component-name="ObjectPageSubSectionTitleText"
+        >
+          {titleText}
+        </div>
         {actions && actions}
       </FlexBox>
       <div className={classes.subSectionContent} data-component-name="ObjectPageSubSectionContent">
