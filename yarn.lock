@@ -5511,7 +5511,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^5.11.4":
+"@testing-library/jest-dom@npm:^5.14.1":
   version: 5.16.5
   resolution: "@testing-library/jest-dom@npm:5.16.5"
   dependencies:
@@ -26174,7 +26174,7 @@ __metadata:
     "@storybook/react": 6.5.15
     "@storybook/theming": 6.5.15
     "@testing-library/cypress": ^9.0.0
-    "@testing-library/jest-dom": ^5.11.4
+    "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/react-17": "npm:@testing-library/react@^12.1.4"
     "@types/node": ^16.0.0
