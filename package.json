@@ -37,7 +37,7 @@
     "@storybook/theming": "6.5.15",
     "@ui5/webcomponents": "1.9.3",
     "@ui5/webcomponents-fiori": "1.9.3",
-    "@ui5/webcomponents-icons": "1.9.3",
+    "@ui5/webcomponents-icons": "1.10.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.2.1",

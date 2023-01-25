@@ -6684,6 +6684,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-base@npm:^1.10.1":
+  version: 1.10.1
+  resolution: "@ui5/webcomponents-base@npm:1.10.1"
+  dependencies:
+    lit-html: ^2.0.1
+  checksum: 4d051a3ca612498341fcb20fbcee91303da0fbe76f802618b55a7355da61457cdf56b944182de68855bd7cee306b5e93b569e09e89f6a9da0a417111f88b5967
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-cypress-commands@workspace:packages/cypress-commands":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-cypress-commands@workspace:packages/cypress-commands"
@@ -6702,6 +6711,15 @@ __metadata:
     "@ui5/webcomponents-theming": 1.9.3
     "@zxing/library": ^0.17.1
   checksum: 0f74da71fd4263712fe3bf583bac76f3692bc9843af4b0ea77ff39c7de2fd153e70d42558484f9969e3ad5f57f389f74db0ad92984e1b342abf966c1d8bbec70
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents-icons@npm:1.10.1":
+  version: 1.10.1
+  resolution: "@ui5/webcomponents-icons@npm:1.10.1"
+  dependencies:
+    "@ui5/webcomponents-base": ^1.10.1
+  checksum: 6c5b6514b1b6ebd9bfc2c7b790e2dec151b4350ef01a62cc4fe74ede335b7a079b88ca9f9be38ec4399ddcd70fe38f5c0a6a50bf38d45918ad8bc549bedb503b
   languageName: node
   linkType: hard
 
@@ -26155,7 +26173,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.49.0
     "@ui5/webcomponents": 1.9.3
     "@ui5/webcomponents-fiori": 1.9.3
-    "@ui5/webcomponents-icons": 1.9.3
+    "@ui5/webcomponents-icons": 1.10.1
     "@ui5/webcomponents-tools": 1.9.3
     "@vitejs/plugin-react": ^3.0.0
     chromatic: ^6.5.3
