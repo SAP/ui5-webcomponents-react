@@ -1,5 +1,5 @@
 import { ThemingParameters, throttle } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import { TimelineChartPlaceholder } from './Placeholder';
 import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders';
@@ -117,188 +117,196 @@ interface TimelineChartProps {
  * * Show relationships between different items on the timeline using different
  * connections.
  */
-const TimelineChart = ({
-  dataset,
-  totalDuration = 10,
-  width = DEFAULT_WIDTH,
-  rowHeight = DEFAULT_ROW_HEIGHT,
-  isDiscrete,
-  annotations,
-  showAnnotation,
-  showConnection,
-  showTooltip,
-  unit = '',
-  rowTitle = 'Activities',
-  columnTitle = 'Duration',
-  discreteLabels,
-  start = 0,
-  valueFormat = (x: number) => x.toFixed(1)
-}: TimelineChartProps) => {
-  if (!dataset || dataset?.length === 0) {
-    return <TimelineChartPlaceholder />;
-  }
+const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
+  (
+    {
+      dataset,
+      totalDuration = 10,
+      width = DEFAULT_WIDTH,
+      rowHeight = DEFAULT_ROW_HEIGHT,
+      isDiscrete,
+      annotations,
+      showAnnotation,
+      showConnection,
+      showTooltip,
+      unit = '',
+      rowTitle = 'Activities',
+      columnTitle = 'Duration',
+      discreteLabels,
+      start = 0,
+      valueFormat = (x: number) => x.toFixed(1)
+    }: TimelineChartProps,
+    fRef
+  ) => {
+    if (!dataset || dataset?.length === 0) {
+      return <TimelineChartPlaceholder />;
+    }
 
-  const numOfRows = dataset.length;
-  const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
+    const numOfRows = dataset.length;
+    const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
-  const style: CSSProperties = {
-    height: `${height}px`,
-    width: width,
-    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    backgroundColor: ThemingParameters.sapBaseColor,
-    display: 'grid',
-    gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`,
-    gap: 0
-  };
+    const style: CSSProperties = {
+      height: `${height}px`,
+      width: width,
+      outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+      backgroundColor: ThemingParameters.sapBaseColor,
+      display: 'grid',
+      gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`,
+      gap: 0
+    };
 
-  const ref = useRef(null);
-  const bodyConRef = useRef<HTMLDivElement>();
-  const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
-    chartWidth: 0,
-    chartHeight: 0
-  });
-  const [chartBodyScale, setChartBodyScale] = useState(1);
-  const [isGrabbed, setIsGrabbed] = useState(false);
-  const [mPos, setMPos] = useState(0);
-
-  useEffect(() => {
-    const ro = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-          chartWidth: entry.contentRect.width - ROW_TITLE_WIDTH,
-          chartHeight: entry.contentRect.height - COLUMN_HEADER_HEIGHT
-        });
-        setChartBodyScale(1);
-      });
+    const ref = useRef(null);
+    const bodyConRef = useRef<HTMLDivElement>();
+    const [dimensions, setDimensions] = useState({
+      width: 0,
+      height: 0,
+      chartWidth: 0,
+      chartHeight: 0
     });
-    if (ref.current != null) ro.observe(ref.current);
-    return () => ro.disconnect();
-  }, []);
+    const [chartBodyScale, setChartBodyScale] = useState(1);
+    const [isGrabbed, setIsGrabbed] = useState(false);
+    const [mPos, setMPos] = useState(0);
 
-  const scaleChartBody = (value: number) => setChartBodyScale(value);
+    useEffect(() => {
+      const ro = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          setDimensions({
+            width: entry.contentRect.width,
+            height: entry.contentRect.height,
+            chartWidth: entry.contentRect.width - ROW_TITLE_WIDTH,
+            chartHeight: entry.contentRect.height - COLUMN_HEADER_HEIGHT
+          });
+          setChartBodyScale(1);
+        });
+      });
+      if (ref.current != null) ro.observe(ref.current);
+      return () => ro.disconnect();
+    }, []);
 
-  const resetScroll = () => {
-    bodyConRef.current.scrollTo({ left: 0 });
-  };
+    const scaleChartBody = (value: number) => setChartBodyScale(value);
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (chartBodyScale > 1) {
-      setIsGrabbed(true);
-      setMPos(e.clientX);
+    const resetScroll = () => {
+      bodyConRef.current.scrollTo({ left: 0 });
+    };
+
+    const onMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (chartBodyScale > 1) {
+        setIsGrabbed(true);
+        setMPos(e.clientX);
+      }
+    };
+
+    const onMouseUp = () => {
+      if (chartBodyScale > 1) setIsGrabbed(false);
+    };
+
+    const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (isGrabbed) {
+        const dx = e.clientX - mPos;
+        // Make negative so that the scrolling can move in
+        // same direction as the mouse
+        bodyConRef.current.scrollBy({ left: -dx });
+        setMPos(e.clientX);
+      }
+    };
+
+    const onMouseMove = throttle(mouseMoveHandler, 200, { trailing: false });
+
+    const getCursor = (): string => {
+      if (isGrabbed) return MOUSE_CURSOR_GRABBING;
+      if (chartBodyScale > 1) return MOUSE_CURSOR_GRAB;
+      return MOUSE_CURSOR_AUTO;
+    };
+
+    if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
+      throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
     }
-  };
 
-  const onMouseUp = () => {
-    if (chartBodyScale > 1) setIsGrabbed(false);
-  };
-
-  const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (isGrabbed) {
-      const dx = e.clientX - mPos;
-      // Make negative so that the scrolling can move in
-      // same direction as the mouse
-      bodyConRef.current.scrollBy({ left: -dx });
-      setMPos(e.clientX);
+    if (showConnection && dataset != null && dataset.length !== 0) {
+      validateConnections(dataset);
     }
-  };
 
-  const onMouseMove = throttle(mouseMoveHandler, 200, { trailing: false });
+    const unscaledBodyWidth = dimensions.width - ROW_TITLE_WIDTH;
+    const bodyWidth = unscaledBodyWidth * chartBodyScale;
 
-  const getCursor = (): string => {
-    if (isGrabbed) return MOUSE_CURSOR_GRABBING;
-    if (chartBodyScale > 1) return MOUSE_CURSOR_GRAB;
-    return MOUSE_CURSOR_AUTO;
-  };
-
-  if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
-    throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
-  }
-
-  if (showConnection && dataset != null && dataset.length !== 0) {
-    validateConnections(dataset);
-  }
-
-  const unscaledBodyWidth = dimensions.width - ROW_TITLE_WIDTH;
-  const bodyWidth = unscaledBodyWidth * chartBodyScale;
-
-  return (
-    <div className="timeline-chart" ref={ref} style={style}>
-      <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
-        <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
-        <TimelineChartRowLabels
-          width={ROW_TITLE_WIDTH}
-          height={height - COLUMN_HEADER_HEIGHT}
-          rowHeight={rowHeight}
-          dataset={dataset}
-        />
-      </div>
-      <div
-        className="timeline-chartbody-container"
-        ref={bodyConRef}
-        style={{
-          width: unscaledBodyWidth,
-          height: height,
-          overflowX: 'hidden',
-          overflowY: 'hidden',
-          cursor: getCursor()
-        }}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onMouseMove={onMouseMove}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            width: unscaledBodyWidth,
-            height: COLUMN_HEADER_HEIGHT / 2,
-            borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-            marginBottom: '-0.5px',
-            textAlign: 'center',
-            fontSize: '13px',
-            lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`,
-            color: ThemingParameters.sapTitleColor
-          }}
-        >
-          {columnTitle} {unit != '' ? `(${unit})` : ''}
+    return (
+      <div ref={fRef}>
+        <div className="timeline-chart" ref={ref} style={style}>
+          <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
+            <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
+            <TimelineChartRowLabels
+              width={ROW_TITLE_WIDTH}
+              height={height - COLUMN_HEADER_HEIGHT}
+              rowHeight={rowHeight}
+              dataset={dataset}
+            />
+          </div>
+          <div
+            className="timeline-chartbody-container"
+            ref={bodyConRef}
+            style={{
+              width: unscaledBodyWidth,
+              height: height,
+              overflow: 'hidden',
+              cursor: getCursor()
+            }}
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
+            onMouseMove={onMouseMove}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                width: unscaledBodyWidth,
+                height: COLUMN_HEADER_HEIGHT / 2,
+                borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
+                marginBottom: '-0.5px',
+                textAlign: 'center',
+                fontSize: '13px',
+                lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`,
+                color: ThemingParameters.sapTitleColor
+              }}
+            >
+              {columnTitle} {unit != '' ? `(${unit})` : ''}
+            </div>
+            <TimelineChartColumnLabel
+              width={bodyWidth}
+              height={COLUMN_HEADER_HEIGHT}
+              isDiscrete={isDiscrete}
+              totalDuration={totalDuration}
+              unit={unit}
+              columnLabels={discreteLabels}
+              start={start}
+              unscaledWidth={unscaledBodyWidth}
+              valueFormat={valueFormat}
+            />
+            <TimelineChartBody
+              dataset={dataset}
+              width={bodyWidth}
+              height={height - COLUMN_HEADER_HEIGHT}
+              rowHeight={rowHeight}
+              numOfItems={numOfRows}
+              totalDuration={totalDuration}
+              isDiscrete={isDiscrete}
+              annotations={annotations}
+              showAnnotation={showAnnotation}
+              showConnection={showConnection}
+              showTooltip={showTooltip}
+              unit={unit}
+              onScale={scaleChartBody}
+              start={start}
+              valueFormat={valueFormat}
+              resetScroll={resetScroll}
+              unscaledWidth={unscaledBodyWidth}
+            />
+          </div>
         </div>
-        <TimelineChartColumnLabel
-          width={bodyWidth}
-          height={COLUMN_HEADER_HEIGHT}
-          isDiscrete={isDiscrete}
-          totalDuration={totalDuration}
-          unit={unit}
-          columnLabels={discreteLabels}
-          start={start}
-          unscaledWidth={unscaledBodyWidth}
-          valueFormat={valueFormat}
-        />
-        <TimelineChartBody
-          dataset={dataset}
-          width={bodyWidth}
-          height={height - COLUMN_HEADER_HEIGHT}
-          rowHeight={rowHeight}
-          numOfItems={numOfRows}
-          totalDuration={totalDuration}
-          isDiscrete={isDiscrete}
-          annotations={annotations}
-          showAnnotation={showAnnotation}
-          showConnection={showConnection}
-          showTooltip={showTooltip}
-          unit={unit}
-          onScale={scaleChartBody}
-          start={start}
-          valueFormat={valueFormat}
-          resetScroll={resetScroll}
-          unscaledWidth={unscaledBodyWidth}
-        />
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
+
+TimelineChart.displayName = 'TimelineChart';
 
 const validateConnections = (dataset: ITimelineChartRow[]) => {
   for (const row of dataset) {
