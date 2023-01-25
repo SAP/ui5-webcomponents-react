@@ -12,7 +12,7 @@ interface ImportStatementPropTypes {
   packagePath: string;
 }
 
-export const ImportStatement = ({ moduleName, packagePath }: any) => {
+export const ImportStatement = ({ moduleName, packagePath }: ImportStatementPropTypes) => {
   return (
     <pre
       style={{
