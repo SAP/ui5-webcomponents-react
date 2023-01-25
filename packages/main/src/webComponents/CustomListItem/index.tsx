@@ -15,9 +15,13 @@ interface CustomListItemAttributes {
    */
   accessibleName?: string;
   /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
+   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   */
+  navigated?: boolean;
+  /**
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
-   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
   type?: ListItemType | keyof typeof ListItemType;
   /**
@@ -59,7 +63,7 @@ export interface CustomListItemPropTypes extends CustomListItemAttributes, Commo
 const CustomListItem = withWebComponent<CustomListItemPropTypes, CustomListItemDomRef>(
   'ui5-li-custom',
   ['accessibleName', 'type'],
-  ['selected'],
+  ['navigated', 'selected'],
   ['deleteButton'],
   ['detail-click']
 );

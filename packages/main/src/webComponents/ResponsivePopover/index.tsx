@@ -101,7 +101,7 @@ export interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttribute
    */
   close: () => void;
   /**
-   * Tells if the responsive popover is open
+   * Tells if the responsive popover is open.
    * @returns {boolean}
    */
   isOpen: () => boolean;

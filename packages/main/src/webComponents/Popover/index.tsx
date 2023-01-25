@@ -109,7 +109,7 @@ export interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5Dom
    */
   applyFocus: () => Promise<void>;
   /**
-   * Hides the block layer (for modal popups only)
+   * Closes the popup.
    */
   close: () => void;
   /**

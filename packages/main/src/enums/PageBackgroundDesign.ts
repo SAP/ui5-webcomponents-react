@@ -1,21 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * PageBackgroundDesign
- */
-export enum PageBackgroundDesign {
-  /**
-   * Page background color when a List is set as the Page content.
-   */
-  List = 'List',
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 
-  /**
-   * A solid background color dependent on the theme.
-   */
-  Solid = 'Solid',
-
-  /**
-   * Transparent background for the page.
-   */
-  Transparent = 'Transparent'
-}
+export { PageBackgroundDesign };

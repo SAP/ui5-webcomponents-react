@@ -1,21 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of Button.
- */
-export enum LinkDesign {
-  /**
-   * default type (no special styling)
-   */
-  Default = 'Default',
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 
-  /**
-   * emphasized type
-   */
-  Emphasized = 'Emphasized',
-
-  /**
-   * subtle type (appears as regular text, rather than a link)
-   */
-  Subtle = 'Subtle'
-}
+export { LinkDesign };

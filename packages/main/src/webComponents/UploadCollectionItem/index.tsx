@@ -45,9 +45,13 @@ interface UploadCollectionItemAttributes {
    */
   uploadState?: UploadState | keyof typeof UploadState;
   /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive` and `Detail`.
+   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   */
+  navigated?: boolean;
+  /**
+   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
-   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
    */
   type?: ListItemType | keyof typeof ListItemType;
   /**
@@ -125,7 +129,7 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState', 'type'],
-  ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'selected'],
+  ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'navigated', 'selected'],
   ['thumbnail', 'deleteButton'],
   ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click']
 );

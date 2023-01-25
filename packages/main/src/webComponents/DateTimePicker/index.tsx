@@ -93,10 +93,6 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
    */
   readonly dateValue: Date;
   /**
-   * Opens the picker.
-   */
-  openPicker: () => void;
-  /**
    * Closes the picker.
    */
   closePicker: () => void;
@@ -108,10 +104,10 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
   formatValue: (date: Date) => string;
   /**
    * Checks if a date is between the minimum and maximum date.
-   * @param {string} value - A value to be checked
+   * @param {string} [value] - A value to be checked
    * @returns {boolean}
    */
-  isInValidRange: (value: string) => boolean;
+  isInValidRange: (value?: string) => boolean;
   /**
    * Checks if the picker is open.
    * @returns {boolean} true if the picker is open, false otherwise
@@ -119,10 +115,15 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
   isOpen: () => boolean;
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
-   * @param {string} value - A value to be tested against the current date format
+   * @param {string} [value] - A value to be tested against the current date format
    * @returns {boolean}
    */
-  isValid: (value: string) => boolean;
+  isValid: (value?: string) => boolean;
+  /**
+   * Opens the picker.
+   * @returns {Promise<void>} Resolves when the picker is open
+   */
+  openPicker: () => Promise<void>;
 }
 
 export interface DateTimePickerPropTypes extends DateTimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {

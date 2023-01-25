@@ -1,16 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of AvatarShape.
- */
-export enum AvatarShape {
-  /**
-   * Circular shape.
-   */
-  Circle = 'Circle',
+import AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
 
-  /**
-   * Square shape.
-   */
-  Square = 'Square'
-}
+export { AvatarShape };

@@ -81,7 +81,7 @@ export interface NotificationListGroupItemPropTypes extends NotificationListGrou
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, { item: HTMLElement }>) => void;
 }
 
 /**

@@ -10,10 +10,6 @@ import { UI5WCSlotsNode } from '../../types';
 
 interface TimePickerAttributes {
   /**
-   * Determines whether the `TimePicker` is displayed as disabled.
-   */
-  disabled?: boolean;
-  /**
    * Determines the format, displayed in the input field. Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
    */
   formatPattern?: string;
@@ -23,6 +19,10 @@ interface TimePickerAttributes {
    * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
+  /**
+   * Determines whether the `TimePicker` is displayed as disabled.
+   */
+  disabled?: boolean;
   /**
    * Determines whether the `TimePicker` is displayed as readonly.
    */

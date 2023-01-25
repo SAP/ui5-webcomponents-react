@@ -7,6 +7,9 @@ import {
   Dialog,
   DialogDomRef,
   DialogPropTypes,
+  Menu,
+  MenuDomRef,
+  MenuPropTypes,
   Popover,
   PopoverDomRef,
   PopoverPropTypes,
@@ -73,6 +76,7 @@ function showDialog<ContainerElement>(
       id
     }
   });
+
   return { ref };
 }
 
@@ -122,6 +126,39 @@ function showResponsivePopover<ContainerElement>(
     type: 'set',
     payload: {
       Component: ResponsivePopover,
+      props: {
+        ...props,
+        open: true,
+        onAfterClose: (event) => {
+          if (typeof props.onAfterClose === 'function') {
+            props.onAfterClose(event);
+          }
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
+        }
+      },
+      ref,
+      container,
+      id
+    }
+  });
+  return { ref };
+}
+
+function showMenu<ContainerElement>(
+  props: MenuPropTypes,
+  setModal: Dispatch<UpdateModalStateAction<MenuPropTypes, MenuDomRef, ContainerElement>>,
+  container?: ContainerElement
+) {
+  checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<MenuDomRef>();
+  setModal?.({
+    type: 'set',
+    payload: {
+      Component: Menu,
       props: {
         ...props,
         open: true,
@@ -300,7 +337,7 @@ function showResponsivePopoverFn<ContainerElement>(
   };
 }
 
-function useResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnType<
+function useShowResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnType<
   ResponsivePopoverPropTypes,
   ResponsivePopoverDomRef,
   ContainerElement
@@ -309,6 +346,42 @@ function useResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnT
   return useCallback(
     (props, container) => {
       const { ref } = showResponsivePopover<ContainerElement>(props, setModal, container);
+
+      return {
+        ref,
+        close: () => {
+          ref.current?.close();
+        }
+      };
+    },
+    [setModal]
+  );
+}
+
+function showMenuFn<ContainerElement>(
+  props: MenuPropTypes,
+  container?: ContainerElement
+): ClosableModalReturnType<MenuDomRef> {
+  const setModal = window['@ui5/webcomponents-react']?.setModal;
+  const { ref } = showMenu<ContainerElement>(props, setModal, container);
+
+  return {
+    ref,
+    close: () => {
+      ref.current?.close();
+    }
+  };
+}
+
+function useShowMenuHook<ContainerElement>(): CloseableModalHookReturnType<
+  MenuPropTypes,
+  MenuDomRef,
+  ContainerElement
+> {
+  const { setModal } = useModalsContext();
+  return useCallback(
+    (props, container) => {
+      const { ref } = showMenu<ContainerElement>(props, setModal, container);
 
       return {
         ref,
@@ -396,7 +469,15 @@ export const Modals = {
   showPopover: showPopoverFn,
   useShowPopover: useShowPopoverHook,
   showResponsivePopover: showResponsivePopoverFn,
-  useShowResponsivePopover: useResponsivePopoverHook,
+  useShowResponsivePopover: useShowResponsivePopoverHook,
+  /**
+   * @since 1.8.0
+   */
+  showMenu: showMenuFn,
+  /**
+   * @since 1.8.0
+   */
+  useShowMenu: useShowMenuHook,
   showMessageBox: showMessageBoxFn,
   useShowMessageBox: useShowMessageBox,
   showToast: showToastFn,

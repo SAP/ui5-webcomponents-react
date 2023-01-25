@@ -1,16 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of Tab layouts.
- */
-export enum TabLayout {
-  /**
-   * Inline type, the tab <code>main text</code> and <code>additionalText</code> are displayed horizotally.
-   */
-  Inline = 'Inline',
+import TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
 
-  /**
-   * Standard type, the tab <code>main text</code> and <code>additionalText</code> are displayed vertically.
-   */
-  Standard = 'Standard'
-}
+export { TabLayout };

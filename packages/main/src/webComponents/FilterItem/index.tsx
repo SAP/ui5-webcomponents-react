@@ -8,6 +8,10 @@ import { UI5WCSlotsNode } from '../../types';
 
 interface FilterItemAttributes {
   /**
+   * Defines the additional text of the component.
+   */
+  additionalText?: string;
+  /**
    * Defines the text of the component.
    */
   text?: string;
@@ -37,7 +41,7 @@ export interface FilterItemPropTypes extends FilterItemAttributes, CommonProps {
  */
 const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   'ui5-filter-item',
-  ['text'],
+  ['additionalText', 'text'],
   [],
   ['values'],
   []
