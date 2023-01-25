@@ -74,6 +74,7 @@ function showDialog<ContainerElement>(
       id
     }
   });
+
   return { ref };
 }
 
