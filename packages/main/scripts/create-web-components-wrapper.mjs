@@ -19,7 +19,12 @@ import {
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
-import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
+import {
+  formatDemoDescription,
+  getDomRefGetters,
+  getDomRefMethods,
+  getDomRefObjects
+} from '../../../scripts/web-component-wrappers/utils.js';
 import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 // To only create a single component, replace "false" with the component (module) name
@@ -753,13 +758,17 @@ allWebComponents
             formattedDescription
           );
         }
-        // create methods table
-        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
-        if (publicMethods.length) {
-          const formattedMethods = JSON.parse(JSON.stringify(publicMethods).replaceAll(/\\n|<br>/g, ''));
+        // create attributes & methods table
+        const publicMethods = getDomRefMethods(componentSpec);
+        const publicGetters = getDomRefGetters(componentSpec);
+        const publicObjects = getDomRefObjects(componentSpec);
+        const publicProperties = [...publicGetters, ...publicObjects, ...publicMethods];
+
+        if (publicProperties.length) {
+          const formattedProperties = JSON.parse(JSON.stringify(publicProperties).replaceAll(/\\n|<br>/g, ''));
           const methods = `${renderMethods({
             name: componentSpec.module,
-            methods: formattedMethods
+            methods: formattedProperties
           })}`;
           const hasMethodsTable = fs
             .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
