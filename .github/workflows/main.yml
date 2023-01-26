@@ -35,10 +35,26 @@ jobs:
           compression: 'gzip'
           clean-script: 'clean:check-bundle-size'
 
+  install:
+    name: 'Install Dependencies'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install and Build
+        run: yarn install --immutable
+
   test:
+    needs: ['install']
     uses: './.github/workflows/test.yml'
 
   build:
+    needs: ['install']
     name: 'Build'
     runs-on: ubuntu-latest
     env:
@@ -57,6 +73,7 @@ jobs:
           yarn build
 
   lint:
+    needs: ['install']
     runs-on: ubuntu-latest
     env:
       CYPRESS_INSTALL_BINARY: 0
