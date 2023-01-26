@@ -244,6 +244,15 @@ export const runEsLint = async (text, name) => {
   return result.output;
 };
 
+export const getDomRefGetters = (componentSpec) =>
+  componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.readonly === 'true') ?? [];
+
+export const getDomRefObjects = (componentSpec) =>
+  componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.type === 'object') ?? [];
+
+export const getDomRefMethods = (componentSpec) =>
+  componentSpec.methods?.filter((method) => method.visibility === 'public') ?? [];
+
 export const createDomRef = (componentSpec, importStatements) => {
   const isOptionalParameter = (p) => {
     return p.optional || p.hasOwnProperty('defaultValue');
@@ -267,9 +276,7 @@ export const createDomRef = (componentSpec, importStatements) => {
     return tsType;
   };
 
-  const getters = (
-    componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.readonly === 'true') ?? []
-  ).map((prop) => {
+  const getters = getDomRefGetters(componentSpec).map((prop) => {
     const tsDefinition = getTypeDefinitionForProperty(prop);
     importStatements.push(tsDefinition.importStatement);
     return dedent`
@@ -280,9 +287,7 @@ export const createDomRef = (componentSpec, importStatements) => {
     `;
   });
 
-  const objects = (
-    componentSpec.properties?.filter((prop) => prop.visibility === 'public' && prop.type === 'object') ?? []
-  ).map((prop) => {
+  const objects = getDomRefObjects(componentSpec).map((prop) => {
     return dedent`
     /**
      * ${formatDescription(prop.description, componentSpec)}
@@ -291,7 +296,7 @@ export const createDomRef = (componentSpec, importStatements) => {
     `;
   });
 
-  const methods = (componentSpec.methods?.filter((method) => method.visibility === 'public') ?? []).map((method) => {
+  const methods = getDomRefMethods(componentSpec).map((method) => {
     let returnValue = 'void';
     const params = method.parameters?.map((param) => {
       return ` * @param {${resolveTsTypeForMethods(param)}} ${isOptionalParameter(param) ? '[' : ''}${param.name}${
@@ -323,7 +328,6 @@ export const createDomRef = (componentSpec, importStatements) => {
     }) => ${returnValue}
           `;
   });
-
   return [...getters, ...objects, ...methods];
 };
 
