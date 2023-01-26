@@ -11,6 +11,7 @@ env:
 extends:
   - plugin:react/recommended
   - plugin:import/recommended
+  - plugin:import/typescript
   - plugin:prettier/recommended
 plugins:
   - prefer-arrow
@@ -55,11 +56,10 @@ overrides:
     extends:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
-      - 'plugin:import/typescript'
     settings:
       import/resolver:
         typescript:
-          alwaysTryTypes: false
+          alwaysTryTypes: true
           project:
             - './tsconfig.spec.json'
             - './packages/*/tsconfig.json'
