@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ShellBarItem Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-shellbar-item
-    ui5-shellbar-item=""
-  />
-</DocumentFragment>
-`;
