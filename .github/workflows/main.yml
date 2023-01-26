@@ -89,9 +89,7 @@ jobs:
         run: yarn install --immutable
 
       - name: run eslint
-        run: yarn lint
-        env:
-          DEBUG: '*'
+        run: yarn lint --debug
 
   deploy-next-docs:
     needs: ['build']
