@@ -58,6 +58,10 @@ jobs:
           component: true
           parallel: true
           record: true
+          spec: |
+            packages/main/src/components/*/**'
+            packages/base,packages/charts
+            packages/cypress-commands
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
