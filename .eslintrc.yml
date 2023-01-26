@@ -78,6 +78,12 @@ overrides:
         - 'error'
         - varsIgnorePattern: '^_'
 
+      # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
+      'import/named': 'off'
+      'import/namespace': 'off'
+      'import/default': 'off'
+      'import/no-named-as-default-member': 'off'
+
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
       - 'packages/main/src/webComponents/*/index.tsx'
