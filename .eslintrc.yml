@@ -8,7 +8,6 @@ env:
 extends:
   - plugin:react/recommended
   - plugin:import/recommended
-  - plugin:import/typescript
   - plugin:prettier/recommended
 plugins:
   - prefer-arrow
@@ -58,7 +57,11 @@ overrides:
       - 'plugin:import/typescript'
     settings:
       import/resolver:
-        typescript: true
+        typescript:
+          alwaysTryTypes: true
+          project:
+            - './tsconfig.spec.json'
+            - './packages/*/tsconfig.json'
     rules:
       # disabled some rules from the recommended preset
       '@typescript-eslint/no-empty-function': 'off'
