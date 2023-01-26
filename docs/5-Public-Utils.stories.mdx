@@ -23,7 +23,7 @@ The `@ui5/webcomponents-react-base` package is providing a couple of utils, whic
 
 ## Device
 
-<ImportStatement>{`import { Device } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="Device" packageName="'@ui5/webcomponents-react-base'" />
 
 The `Device` allows you to detect information about the environment where your app is running:
 
@@ -72,7 +72,7 @@ The `Device` allows you to detect information about the environment where your a
 
 ## Theming Parameters
 
-<ImportStatement>{`import { ThemingParameters } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="ThemingParameters" packageName="'@ui5/webcomponents-react-base'" />
 
 By using our `ThemingParameters`, you can define the look and feel of your application without the need to hard-code any
 colors. You can e.g. set `ThemingParameters.sapBackgroundColor` as a `background-color` and you'll always get the correct
@@ -82,7 +82,7 @@ background color for your current theme.
 
 ## Spacing
 
-<ImportStatement>{`import { spacing } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="spacing" packageName="'@ui5/webcomponents-react-base'" />
 
 The `spacing` file is containing all standard margins and paddings that are used in SAP Applications.
 You can explore them via the [UI5 Standard Margins Demo Kit](https://ui5.sap.com/#/entity/sap.ui.core.StandardMargins)
@@ -92,21 +92,21 @@ and the [UI5 Standard Paddings Demo Kit](https://ui5.sap.com/#/entity/sap.ui.cor
 
 ### `useI18nBundle`
 
-<ImportStatement>{`import { useI18nBundle } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="useI18nBundle" packageName="'@ui5/webcomponents-react-base'" />
 
 The `useI18nBundle` hook can be used for adding internationalization to your application. Learn more about it in our
 [Internationalization Guide](?path=/docs/internationalization--page).
 
 ### `useViewportRange`
 
-<ImportStatement>{`import { useViewportRange } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="useViewportRange" packageName="'@ui5/webcomponents-react-base'" />
 
 The `useViewportRange` hook is a utility hook based on the `Device.getCurrentRange()` and `Device.attachMediaHandler` API.
 It will always return a string with the name of the currently active range.
 
 ### `useResponsiveContentPadding`
 
-<ImportStatement>{`import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base';`}</ImportStatement>
+<ImportStatement moduleName="useResponsiveContentPadding" packageName="'@ui5/webcomponents-react-base'" />
 
 The `useResponsiveContentPadding` hook is a hook generating a style class or a tuple containing the style class and the current range if `returnRangeString` is set to `true`.
 It adds `padding-left` and `padding-right` corresponding to the range (retrieved with `Device.getCurrentRange()`) of the element.

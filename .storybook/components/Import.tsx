@@ -1,17 +1,43 @@
 import { DocsContext } from '@storybook/addon-docs';
 import React, { useContext } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { googlecode } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-export const ImportStatement = ({ children }: { children: string }) => {
+interface ImportStatementPropTypes {
+  /**
+   * Name of module/component (e.g. "Button")
+   */
+  moduleName: string;
+  /**
+   * Package name (e.g. "@ui5/webcomponents-react")
+   */
+  packageName: string;
+}
+
+export const ImportStatement = ({ moduleName, packageName }: ImportStatementPropTypes) => {
   return (
-    <SyntaxHighlighter
-      customStyle={{ whiteSpace: 'pre-wrap', fontSize: 14, padding: 0, margin: 0 }}
-      language="javascript"
-      style={googlecode}
+    <pre
+      style={{
+        display: 'block',
+        overflowX: 'auto',
+        padding: '0px',
+        background: 'white',
+        color: 'black',
+        whiteSpace: 'pre-wrap',
+        fontSize: '14px',
+        margin: '0px'
+      }}
     >
-      {children}
-    </SyntaxHighlighter>
+      <code style={{ whiteSpace: 'pre' }}>
+        <span style={{ color: 'rgb(0, 0, 136)' }}>import</span>
+        <span>
+          {' '}
+          {'{'} {moduleName} {'}'}{' '}
+        </span>
+        <span style={{ color: 'rgb(0, 0, 136)' }}>from</span>
+        <span> </span>
+        <span style={{ color: 'rgb(0, 136, 0)' }}>{packageName}</span>
+        <span>;</span>
+      </code>
+    </pre>
   );
 };
 
@@ -22,9 +48,7 @@ export const Import = () => {
   const moduleName = groups[groups.length - 1].trim();
 
   return (
-    <ImportStatement>
-      {`import { ${moduleName} } from '@ui5/webcomponents-react${isChart ? '-charts' : ''}';`}
-    </ImportStatement>
+    <ImportStatement moduleName={moduleName} packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : ''}'`} />
   );
 };
 
