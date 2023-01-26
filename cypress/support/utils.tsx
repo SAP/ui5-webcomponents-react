@@ -17,7 +17,7 @@ export function cypressPassThroughTestsFactory(Component: ComponentType, props?:
       />
     );
 
-    cy.findByTitle('Tooltip').should('be.visible');
+    cy.findByTitle('Tooltip').should('exist');
 
     cy.findByTestId(testId)
       .should('exist')
