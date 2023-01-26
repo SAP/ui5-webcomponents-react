@@ -1,11 +1,9 @@
-import { render } from '@shared/tests';
-import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import React from 'react';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { DynamicSideContent } from './index';
 
 describe('DynamicSideContent', () => {
-  test('Basic Test (generated)', () => {
-    const { asFragment } = render(
+  it('Basic Test (generated)', () => {
+    cy.mount(
       <DynamicSideContent
         sideContent={
           <div>
@@ -35,8 +33,8 @@ describe('DynamicSideContent', () => {
         </div>
       </DynamicSideContent>
     );
-    expect(asFragment()).toMatchSnapshot();
+    cy.get('[ui5-dynamic-side-content]').should('exist');
   });
-  createCustomPropsTest(DynamicSideContent);
-  createWaitForDefineTest(DynamicSideContent);
+
+  cypressPassThroughTestsFactory(DynamicSideContent);
 });

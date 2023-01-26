@@ -1,23 +1,22 @@
-import { render } from '@shared/tests';
-import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import React from 'react';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Button } from '../Button';
 import { CustomListItem } from '../CustomListItem';
 import { StandardListItem } from '../StandardListItem';
 import { List } from './index';
 
 describe('List', () => {
-  test('Basic Test (generated)', () => {
-    const { asFragment } = render(
+  it('Basic Test (generated)', () => {
+    cy.mount(
       <List>
+        {' '}
         <StandardListItem>Test 1</StandardListItem>
         <CustomListItem>
           Test 2<Button>a Button</Button>
         </CustomListItem>
       </List>
     );
-    expect(asFragment()).toMatchSnapshot();
+    cy.get('[ui5-list]').should('exist');
   });
-  createCustomPropsTest(List);
-  createWaitForDefineTest(List);
+
+  cypressPassThroughTestsFactory(List);
 });
