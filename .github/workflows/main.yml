@@ -90,6 +90,8 @@ jobs:
 
       - name: run eslint
         run: yarn lint
+        env:
+          DEBUG: *
 
   deploy-next-docs:
     needs: ['build']
