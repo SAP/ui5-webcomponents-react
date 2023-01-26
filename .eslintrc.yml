@@ -1,10 +1,13 @@
 ---
+root: true
 parser: '@typescript-eslint/parser'
 parserOptions:
+  sourceType: module
   ecmaFeatures:
     jsx: true
 env:
   browser: true
+  es2021: true
 extends:
   - plugin:react/recommended
   - plugin:import/recommended
@@ -12,7 +15,6 @@ extends:
 plugins:
   - prefer-arrow
   - react-hooks
-  - no-only-tests
 settings:
   react:
     version: detect
@@ -39,7 +41,6 @@ rules:
         caseInsensitive: true
   import/no-duplicates: 'error'
   import/no-unresolved: 'error'
-  no-only-tests/no-only-tests: "error"
 overrides:
   # add config for all TypeScript files
   - files:
@@ -115,6 +116,8 @@ overrides:
       project:
         - './tsconfig.test.json'
         - './packages/*/tsconfig.json'
+    plugins:
+      - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
       'react/react-in-jsx-scope': 'off'
@@ -123,10 +126,13 @@ overrides:
       'react/no-unescaped-entities': 'off'
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
+      no-only-tests/no-only-tests: 'error'
 
   - files:
       - '*.cy.ts'
       - '*.cy.tsx'
+    plugins:
+      - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
       'react/react-in-jsx-scope': 'off'
@@ -135,3 +141,4 @@ overrides:
       'react/no-unescaped-entities': 'off'
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
+      no-only-tests/no-only-tests: 'error'
