@@ -59,7 +59,7 @@ jobs:
           parallel: true
           record: true
           spec: |
-            packages/main/src/components/*/**'
+            packages/main/src/components/*/**
             packages/base
             packages/charts
             packages/cypress-commands
