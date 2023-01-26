@@ -58,7 +58,7 @@ overrides:
     settings:
       import/resolver:
         typescript:
-          alwaysTryTypes: true
+          alwaysTryTypes: false
           project:
             - './tsconfig.spec.json'
             - './packages/*/tsconfig.json'
