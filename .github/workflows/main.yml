@@ -89,7 +89,7 @@ jobs:
         run: yarn install --immutable
 
       - name: run eslint
-        run: yarn lint --debug
+        run: yarn lint
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
