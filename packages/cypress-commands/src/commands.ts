@@ -10,7 +10,7 @@ declare global {
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
       /**
-       * Types a value into an ui5-webcomponent that offers a typeable input field with a delay.
+       * Types a value with a delay into an ui5-webcomponent that offers a typeable input field.
        *
        * __Note:__ Use this command if you render a component that should show suggestions while typing (e.g. `ComboBox`) but the corresponding popover does not open.
        * This command waits for the appropriate delay (in ms), giving the web component time to define all necessary customElements and boot web components.
