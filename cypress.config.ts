@@ -2,7 +2,6 @@ import codeCoverageTask from '@cypress/code-coverage/task';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  projectId: '3xdc6r',
   component: {
     setupNodeEvents(on, config) {
       codeCoverageTask(on, config);
