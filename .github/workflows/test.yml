@@ -77,22 +77,24 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+
+      - name: download jest coverage
+        uses: actions/download-artifact@v3
         with:
           name: jest-coverage
           path: temp/jest-coverage
 
-      - uses: actions/download-artifact@v3
+      - name: download cypress coverage
+        uses: actions/download-artifact@v3
         with:
           name: cypress-coverage
           path: temp/cypress-coverage
 
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            cd temp
-            RUNID=`gh run list --workflow "Test (Web Components)" --json databaseId --jq '.[0].databaseId'`
-            gh run download $RUNID -n web-components-coverage
+      - name: download web-components coverage
+        run: |
+          cd temp
+          RUNID=`gh run list --workflow "Test (Web Components)" --json databaseId --jq '.[0].databaseId'`
+          gh run download $RUNID -n web-components-coverage
 
       - name: create test report
         run: npm run test:combine-reports
