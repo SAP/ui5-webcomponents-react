@@ -19,7 +19,7 @@ declare global {
        * @param {string} text
        * @param {number} [delay=500]
        * @param {Partial<TypeOptions>} [options]
-       * @example cy.get(['ui5-input']).typeIntoUi5Input('Hello World');
+       * @example cy.get(['ui5-combobox']).typeIntoUi5InputWithDelay('Hello World', 1000);
        */
       typeIntoUi5InputWithDelay(text: string, delay?: number, options?: Partial<TypeOptions>): Chainable<Element>;
 
