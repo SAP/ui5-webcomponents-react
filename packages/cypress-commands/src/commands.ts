@@ -17,7 +17,7 @@ declare global {
        * The delay time can vary from environment to environment.
        *
        * @param {string} text
-       * @param {number} [delay=500]
+       * @param {number} [delay=1000]
        * @param {Partial<TypeOptions>} [options]
        * @example cy.get(['ui5-input']).typeIntoUi5Input('Hello World');
        */
@@ -61,7 +61,7 @@ Cypress.Commands.add('typeIntoUi5Input', { prevSubject: 'element' }, (subject, t
 Cypress.Commands.add(
   'typeIntoUi5InputWithDelay',
   { prevSubject: 'element' },
-  (subject, text, delay = 500, options = {}) => {
+  (subject, text, delay = 1000, options = {}) => {
     cy.wrap(subject)
       .findShadowInput()
       .wait(delay)
