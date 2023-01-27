@@ -87,6 +87,13 @@ jobs:
           name: cypress-coverage
           path: temp/cypress-coverage
 
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            cd temp
+            RUNID=`gh run list --workflow "Test (Web Components)" --json databaseId --jq '.[0].databaseId'`
+            gh run download $RUNID -n web-components-coverage
+
       - name: create test report
         run: npm run test:combine-reports
 
