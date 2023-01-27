@@ -96,7 +96,7 @@ jobs:
           RUNID=`gh run list --workflow "Test (Web Components)" --json databaseId --jq '.[0].databaseId'`
           gh run download $RUNID -n web-components-coverage
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: create test report
         run: npm run test:combine-reports
