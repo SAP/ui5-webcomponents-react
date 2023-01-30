@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.5.0...v1.5.1) (2023-01-30)
+
+### Bug Fixes
+
+- restrict base package dependency to be on same minor version as main package ([#4046](https://github.com/SAP/ui5-webcomponents-react/issues/4046)) ([7644b79](https://github.com/SAP/ui5-webcomponents-react/commit/7644b79f0fe394c34ddf91e745a10606fd7bd1db)), closes [#4043](https://github.com/SAP/ui5-webcomponents-react/issues/4043)
+
 # [1.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.4.1...v1.5.0) (2022-11-17)
 
 ### Bug Fixes
