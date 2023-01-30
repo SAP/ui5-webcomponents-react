@@ -1,11 +1,21 @@
 import { Meta } from '@storybook/addon-docs';
-import { MessageStrip } from '@ui5/webcomponents-react';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import { Footer } from '@docs/Footer';
 import { TableOfContent } from '../.storybook/components/TableOfContent';
 
 <Meta title="Knowledge Base/Test Setup" />
 
 # Test Setup
+
+<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
+  Testing with Jest is not supported anymore!
+  <br />
+  We're currently working on updating this section and offering a better testing experience using{' '}
+  <ui5-link href="https://www.cypress.io/" target="_blank">
+    Cypress
+  </ui5-link>
+  .
+</MessageStrip>
 
 This guide is applicable if you are using a standard `create-react-app` setup.
 
