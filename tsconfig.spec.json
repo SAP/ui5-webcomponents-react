@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ES2021",
     "lib": ["es2022", "dom"],
     "types": ["cypress", "node", "@testing-library/cypress"],
     "moduleResolution": "Node",
