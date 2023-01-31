@@ -261,7 +261,7 @@ describe('FilterBar', () => {
     const filterArea = screen.getByTitle('FilterBar-Test').children[1];
     expect(filterArea).toHaveClass('FilterBar-filterAreaOpen');
     fireEvent.click(toggleButton);
-    Object.hasOwn({}, 'a');
+
     expect(onToggleFilters).toHaveBeenCalledTimes(1);
     expect(filterArea).toHaveClass('FilterBar-filterAreaClosed');
     fireEvent.click(toggleButton);
