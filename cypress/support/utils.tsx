@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 
-export function mountAsHeaderTag<P extends { as?: keyof HTMLElementTagNameMap }>(
+export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagNameMap }>(
   Component: ComponentType<P>,
   props?: P
 ) {

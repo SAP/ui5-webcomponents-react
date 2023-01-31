@@ -1,4 +1,4 @@
-import { mountAsHeaderTag } from '../../../../../cypress/support/utils';
+import { mountWithCustomTagName } from '../../../../../cypress/support/utils';
 import { Input, Option, Select, Switch } from '../../webComponents';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
@@ -405,10 +405,12 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
     cy.get('[ui5-table-row]').should('have.length', 0);
+    cy.get('@search').should('have.callCount', 3);
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('b');
     cy.get('[ui5-table-row]').should('have.length', 1);
+    cy.get('@search').should('have.callCount', 5);
 
     cy.get('[accessible-name="Group View"]').click();
     cy.get('[ui5-table-row]').should('have.length', 1);
@@ -426,7 +428,10 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('b');
+    cy.get('@search').should('have.callCount', 11);
   });
 
-  mountAsHeaderTag(FilterBar);
+  mountWithCustomTagName(FilterBar);
+
+  // todo pass through props test
 });
