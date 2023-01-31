@@ -7,7 +7,7 @@ parserOptions:
     jsx: true
 env:
   browser: true
-  es2021: true
+  es2022: true
 extends:
   - plugin:react/recommended
   - plugin:import/recommended
