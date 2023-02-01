@@ -7,9 +7,9 @@ import { Footer } from '@docs/Footer';
 
 # Styling
 
-You can easily change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
+You can change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
 Per default, we are injecting the Fiori 3 theme parameters as CSS Variables into the `<head>`.
-If you want to change the color of all texts, you can do that by creating another `style` tag with the following content:
+For example, if you want to change the color of all texts that use the `--sapTextColor` variable, you can create an additional `style` tag with the following content
 
 ```html
 <style>
@@ -18,6 +18,10 @@ If you want to change the color of all texts, you can do that by creating anothe
   }
 </style>
 ```
+
+<MessageStrip hideCloseButton design={MessageStripDesign.Warning}>
+  Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!
+</MessageStrip>
 
 As a consequence, all HTML Elements in the subtree where this style was applied are now displaying their texts in `limegreen` instead of `#32363a` which would be the default value for Fiori 3.
 You can change CSS Variables on any level - in the head, or on every single element by using either CSS classes or element style.
