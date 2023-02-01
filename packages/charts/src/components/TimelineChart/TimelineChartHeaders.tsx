@@ -2,6 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, ReactElement } from 'react';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
 import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from './util/constants';
+import { useStyles } from './util/styles';
 
 interface TimelineChartRowLabelsProps {
   width: number;
@@ -11,32 +12,24 @@ interface TimelineChartRowLabelsProps {
 }
 
 const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineChartRowLabelsProps) => {
+  const classes = useStyles();
   const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
-    height: `${rowLabels.length * rowHeight}px`,
-    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    color: ThemingParameters.sapTitleColor
+    height: `${rowLabels.length * rowHeight}px`
   };
 
   const itemStyle: CSSProperties = {
-    width: '100%',
     height: `${rowHeight}px`,
-    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    fontSize: '10px',
-    lineHeight: `${rowHeight}px`,
-    textAlign: 'center',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    lineHeight: `${rowHeight}px`
   };
 
   return (
     <div style={{ height: height }}>
-      <div style={style}>
+      <div className={classes.rowLabels} style={style}>
         {rowLabels.map((label, index) => {
           return (
-            <div key={index} style={itemStyle}>
+            <div key={index} className={classes.rowLabelsItem} style={itemStyle}>
               <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${label}`}>
                 {label}
               </span>
@@ -70,11 +63,10 @@ const TimelineChartColumnLabel = ({
   unscaledWidth,
   valueFormat
 }: TimelineChartColumnLabelProps) => {
+  const classes = useStyles();
   const style: CSSProperties = {
     width: width,
-    height: height,
-    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-    color: ThemingParameters.sapTitleColor
+    height: height
   };
 
   const halfHeaderHeight = 0.5 * height;
@@ -88,35 +80,26 @@ const TimelineChartColumnLabel = ({
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
 
   return (
-    <div style={style}>
+    <div className={classes.columnLabel} style={style}>
       <div
+        className={classes.columnTitlePlaceHolder}
         style={{
           height: `${halfHeaderHeight}px`,
-          textAlign: 'center',
-          borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-          fontSize: '13px',
           lineHeight: `${halfHeaderHeight}px`
         }}
       ></div>
       {isDiscrete ? (
         <div
+          className={classes.columnLabelItems}
           style={{
             height: `${halfHeaderHeight}px`,
-            fontSize: '10px',
-            display: 'grid',
             gridTemplateColumns: `repeat(${totalDuration}, 1fr)`,
-            textAlign: 'center',
             lineHeight: `${halfHeaderHeight}px`
           }}
         >
           {labelArray.map((label, index) => {
             return (
-              <span
-                className="timeline-chart-column-label"
-                key={index}
-                style={{ outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}` }}
-                title={`${label}`}
-              >
+              <span className={`timeline-chart-column-label ${classes.onlyOutline}`} key={index} title={`${label}`}>
                 {label}
               </span>
             );
@@ -212,16 +195,16 @@ interface TimelineChartRowTitleProps {
 }
 
 const TimelineChartRowTitle = ({ width, height, rowTitle }: TimelineChartRowTitleProps) => {
+  const classes = useStyles();
   const style: CSSProperties = {
     width: width,
     height: height,
-    outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
     color: ThemingParameters.sapTitleColor
   };
   return (
-    <div style={style}>
-      <div style={{ height: '50%' }}></div>
-      <div style={{ height: '50%', textAlign: 'center', fontSize: '13px' }}>{rowTitle}</div>
+    <div className={classes.onlyOutline} style={style}>
+      <div className={classes.rowTitleTop}></div>
+      <div className={classes.rowTitleBottom}>{rowTitle}</div>
     </div>
   );
 };

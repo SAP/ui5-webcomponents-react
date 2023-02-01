@@ -206,16 +206,14 @@ interface TimelineMilestoneProps {
 
 const TimelineMilestone = ({
   id,
-  label,
+  label = 'Milestone',
   time,
   totalDuration,
-  color,
+  color = '#007D00',
   timelineStart,
   showTooltip,
   hideTooltip
 }: TimelineMilestoneProps) => {
-  color = color ?? '#007D00';
-  label = label ?? 'Milestone';
   const milestoneRef = useRef<SVGRectElement>();
 
   useEffect(() => {

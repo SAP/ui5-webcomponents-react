@@ -1,7 +1,9 @@
+import { CommonProps } from '@ui5/webcomponents-react';
 import React, { CSSProperties, forwardRef, ReactElement } from 'react';
 import { DEFAULT_ROW_HEIGHT } from './util/constants';
+import { useStyles } from './util/styles';
 
-interface TimelineChartAnnotationProps {
+interface TimelineChartAnnotationProps extends CommonProps {
   /**
    * The width of the annotation. If not provided, it expands to fill
    * the timeline.
@@ -44,19 +46,17 @@ interface TimelineChartAnnotationProps {
  * or illustrations on the timeline of the chart.
  */
 const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotationProps>(
-  ({ width = 'auto', height, rowIndex = 0, rowHeight = 25, figure }, ref): ReactElement => {
-    rowHeight = rowHeight ?? DEFAULT_ROW_HEIGHT;
-    rowIndex = rowIndex ?? 0;
+  ({ width = 'auto', height, rowIndex = 0, rowHeight = DEFAULT_ROW_HEIGHT, figure, ...rest }, ref): ReactElement => {
+    const classes = useStyles();
 
     const style: CSSProperties = {
       width: width,
       height: height != null ? height : rowHeight,
-      position: 'absolute',
       top: `${rowIndex * rowHeight}px`
     };
 
     return (
-      <div ref={ref} className="timeline-chart-annotation" style={style}>
+      <div ref={ref} className={`timeline-chart-annotation ${classes.annotation}`} {...rest} style={style}>
         {figure}
       </div>
     );

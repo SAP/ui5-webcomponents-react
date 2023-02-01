@@ -1,5 +1,5 @@
 import { CommonProps } from '@ui5/webcomponents-react';
-import { ThemingParameters, throttle } from '@ui5/webcomponents-react-base';
+import { throttle } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import { TimelineChartPlaceholder } from './Placeholder';
@@ -17,6 +17,7 @@ import {
   ROW_TITLE_WIDTH
 } from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
+import { useStyles } from './util/styles';
 
 interface TimelineChartProps extends CommonProps {
   /**
@@ -139,8 +140,9 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       columnTitle = 'Duration',
       discreteLabels,
       start = 0,
-      valueFormat = (x: number) => x.toFixed(1)
-    }: TimelineChartProps,
+      valueFormat = (x: number) => x.toFixed(1),
+      ...rest
+    },
     fRef
   ) => {
     if (!dataset || dataset?.length === 0) {
@@ -153,11 +155,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const style: CSSProperties = {
       height: `${height}px`,
       width: width,
-      outline: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-      backgroundColor: ThemingParameters.sapBaseColor,
-      display: 'grid',
-      gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`,
-      gap: 0
+      gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`
     };
 
     const ref = useRef(null);
@@ -171,6 +169,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const [chartBodyScale, setChartBodyScale] = useState(1);
     const [isGrabbed, setIsGrabbed] = useState(false);
     const [mPos, setMPos] = useState(0);
+    const classes = useStyles();
 
     useEffect(() => {
       const ro = new ResizeObserver((entries) => {
@@ -237,8 +236,8 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const bodyWidth = unscaledBodyWidth * chartBodyScale;
 
     return (
-      <div ref={fRef}>
-        <div className="timeline-chart" ref={ref} style={style}>
+      <div ref={fRef} {...rest}>
+        <div className={`timeline-chart ${classes.main}`} ref={ref} style={style}>
           <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
             <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
             <TimelineChartRowLabels
@@ -249,12 +248,11 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             />
           </div>
           <div
-            className="timeline-chartbody-container"
+            className={`timeline-chartbody-container ${classes.bodyContainer}`}
             ref={bodyConRef}
             style={{
               width: unscaledBodyWidth,
               height: height,
-              overflow: 'hidden',
               cursor: getCursor()
             }}
             onMouseDown={onMouseDown}
@@ -262,16 +260,11 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             onMouseMove={onMouseMove}
           >
             <div
+              className={classes.columnTitle}
               style={{
-                position: 'absolute',
                 width: unscaledBodyWidth,
                 height: COLUMN_HEADER_HEIGHT / 2,
-                borderBottom: `0.5px solid ${ThemingParameters.sapList_BorderColor}`,
-                marginBottom: '-0.5px',
-                textAlign: 'center',
-                fontSize: '13px',
-                lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`,
-                color: ThemingParameters.sapTitleColor
+                lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`
               }}
             >
               {columnTitle} {unit != null ? `(${unit})` : ''}

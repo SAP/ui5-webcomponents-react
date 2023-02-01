@@ -1,8 +1,8 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { ITimelineChartRow } from '../types/TimelineChartTypes';
 import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants';
 import { TimelineChartBodyCtx } from '../util/context';
+import { useStyles } from '../util/styles';
 import { TimelineChartGrid } from './TimelineChartGrid';
 import { TimelineChartLayer } from './TimelineChartLayer';
 import { TimelineChartRowGroup } from './TimelineChartRow';
@@ -46,6 +46,7 @@ const TimelineChartBody = ({
   valueFormat,
   resetScroll
 }: TimelineChartBodyProps) => {
+  const classes = useStyles();
   const tooltipRef = useRef<TimelineTooltipHandle>();
   const bodyRef = useRef<HTMLDivElement>();
   const scaleExpRef = useRef(0);
@@ -60,9 +61,7 @@ const TimelineChartBody = ({
 
   const style: CSSProperties = {
     width: `${width}px`,
-    height: `${numOfItems * rowHeight}px`,
-    position: 'relative',
-    outline: `1px solid ${ThemingParameters.sapList_BorderColor}`
+    height: `${numOfItems * rowHeight}px`
   };
 
   const showTooltipOnHover = (
@@ -100,7 +99,7 @@ const TimelineChartBody = ({
   const showArrows = () => setDisplayArrows(true);
 
   return (
-    <div className="timeline-chart-body" ref={bodyRef} style={style}>
+    <div ref={bodyRef} className={`timeline-chart-body ${classes.chartBody}`} style={style}>
       <TimelineChartLayer name="timeline-chart-grid-layer" ignoreClick>
         <TimelineChartGrid
           isDiscrete={isDiscrete}
@@ -180,6 +179,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   });
   const divRef = useRef<HTMLDivElement>();
   const popupRef = useRef<HTMLSpanElement>();
+  const classes = useStyles();
 
   const onHoverItem = (
     mouseX: number,
@@ -210,39 +210,20 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   }));
 
   return (
-    <div
-      className="timeline-chart-tooltip-container"
-      ref={divRef}
-      style={{
-        width: '100%',
-        height: '100%',
-        fontSize: '10px',
-        position: 'absolute',
-        pointerEvents: 'none'
-      }}
-    >
+    <div className={`timeline-chart-tooltip-container ${classes.tooltipContainer}`} ref={divRef}>
       {state.visible ? (
         <span
-          className="timeline-chart-tooltip"
+          className={`timeline-chart-tooltip ${classes.tooltip}`}
           ref={popupRef}
           style={{
-            minWidth: 80,
-            display: 'inline-grid',
-            gap: 2,
-            padding: 10,
-            outline: `2px solid ${ThemingParameters.sapList_BorderColor}`,
-            borderRadius: 8,
-            color: ThemingParameters.sapTextColor,
-            backgroundColor: ThemingParameters.sapBackgroundColor,
-            position: 'absolute',
             left: state.x,
             top: state.y
           }}
         >
-          <span style={{ textAlign: 'center' }}>
+          <span className={classes.tooltipLabel}>
             <strong>{state.label}</strong>
           </span>
-          <span style={{ width: '100%', height: '4px', backgroundColor: state.color }}></span>
+          <span className={classes.tooltipColorBar} style={{ backgroundColor: state.color }}></span>
           <span>
             Start: {valueFormat != null ? valueFormat(state.startTime) : state.startTime}
             {unit}

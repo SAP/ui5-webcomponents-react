@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { useStyles } from '../util/styles';
 
 interface TimelineChartLayerProps {
   ignoreClick?: boolean;
@@ -14,12 +15,13 @@ interface TimelineChartLayerProps {
  * annotations or tasks.
  */
 const TimelineChartLayer = ({ ignoreClick = false, isAnnotation, children, name }: TimelineChartLayerProps) => {
+  const classes = useStyles();
   const position = 'absolute';
   const pointerEvents = ignoreClick ? 'none' : 'auto';
 
   if (isAnnotation) {
     return (
-      <div className={name} style={{ width: '100%', height: '100%', position: position, pointerEvents: pointerEvents }}>
+      <div className={`${name} ${classes.layer}`} style={{ position: position, pointerEvents: pointerEvents }}>
         {children}
       </div>
     );
