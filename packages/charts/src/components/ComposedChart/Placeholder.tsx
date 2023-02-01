@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import ContentLoader from 'react-content-loader';
+import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import { IChartMeasure } from '../../interfaces/IChartMeasure';
 
 const barContentVertical = (
@@ -45,12 +45,13 @@ const lineContentHorizontal = (
   </>
 );
 
-interface ComposedChartPlaceholderPropTypes {
+interface ComposedChartPlaceholderPropTypes extends IContentLoaderProps {
   layout: 'vertical' | 'horizontal';
   measures: (IChartMeasure & { type: string })[];
 }
 
-export const ComposedChartPlaceholder = ({ layout, measures }: ComposedChartPlaceholderPropTypes) => {
+export const ComposedChartPlaceholder = (props: ComposedChartPlaceholderPropTypes) => {
+  const { layout, measures } = props;
   const distinctElements = new Set(measures.map((item) => item.type));
 
   return (
@@ -62,7 +63,8 @@ export const ComposedChartPlaceholder = ({ layout, measures }: ComposedChartPlac
       speed={2}
       backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
       foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
-      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as unknown as number}
+      {...props}
     >
       {layout === 'vertical' && <rect x="20" y="10" width="1" height="135" />}
       {layout === 'horizontal' && <rect x="10" y="135" width="135" height="1" />}

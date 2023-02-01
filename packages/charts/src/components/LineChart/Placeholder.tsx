@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import ContentLoader from 'react-content-loader';
+import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 
-export const LineChartPlaceholder = (props) => {
+export const LineChartPlaceholder = (props: IContentLoaderProps) => {
   return (
     <ContentLoader
       viewBox="0 0 165 145"
@@ -12,7 +12,7 @@ export const LineChartPlaceholder = (props) => {
       speed={2}
       backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
       foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
-      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as any}
+      backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as unknown as number}
       {...props}
     >
       <rect x="10" y="135" width="135" height="1" />
