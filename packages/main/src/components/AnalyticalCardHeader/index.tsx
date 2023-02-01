@@ -129,7 +129,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
 
-  let kpiAriaLabel = `${value}${scale}\n`;
+  let kpiAriaLabel = `${value ?? ''}${scale ?? ''}\n`;
 
   if (trend && trend !== DeviationIndicator.None) {
     kpiAriaLabel += i18nBundle.getText(deviationMap.get(trend) ?? '');

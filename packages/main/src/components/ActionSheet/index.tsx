@@ -3,12 +3,13 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { Children, forwardRef, ReactElement, useReducer, useRef } from 'react';
+import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { flattenFragments } from '../../internal/utils';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { UI5WCSlotsNode } from '../../types';
 import {
@@ -159,7 +160,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
     return parseInt(action.target.dataset.actionBtnIndex);
   }, 0);
-  const childrenToRender = Children.toArray(children).filter(Boolean);
+  const childrenToRender = flattenFragments(children);
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
