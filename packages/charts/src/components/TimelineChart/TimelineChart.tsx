@@ -1,3 +1,4 @@
+import { CommonProps } from '@ui5/webcomponents-react';
 import { ThemingParameters, throttle } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
@@ -17,7 +18,7 @@ import {
 } from './util/constants';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
 
-interface TimelineChartProps {
+interface TimelineChartProps extends CommonProps {
   /**
    * The data is an array of objects that is displayed on the chart.
    */
@@ -42,7 +43,6 @@ interface TimelineChartProps {
   /**
    * Whether the timeline is a continuous timeline or broken
    * into discrete sections.
-   * @default false
    */
   isDiscrete?: boolean;
 
@@ -67,7 +67,7 @@ interface TimelineChartProps {
   /**
    * Toggles the visibility of the tooltip.
    */
-  showTooltip?: boolean;
+  hideTooltip?: boolean;
 
   /**
    * The unit of the duration of the timeline.
@@ -106,6 +106,11 @@ interface TimelineChartProps {
 }
 
 /**
+ * > __Experimental Component!__ <br />
+ * > This component is experimental and not subject to semantic versioning.
+ * > Therefore, you could face breaking changes when updating versions.
+ * > Please use with caution!
+ *
  * A `TimelineChart` is a data visualization chart that can be used to represent
  * Gantt charts or any other timeline-based visualizations. The component has a
  * rich set of various properties that allows the user to:
@@ -128,8 +133,8 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       annotations,
       showAnnotation,
       showConnection,
-      showTooltip,
-      unit = '',
+      hideTooltip,
+      unit,
       rowTitle = 'Activities',
       columnTitle = 'Duration',
       discreteLabels,
@@ -170,11 +175,13 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     useEffect(() => {
       const ro = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
+          const width = entry.contentBoxSize[0].inlineSize;
+          const height = entry.contentBoxSize[0].blockSize;
           setDimensions({
-            width: entry.contentRect.width,
-            height: entry.contentRect.height,
-            chartWidth: entry.contentRect.width - ROW_TITLE_WIDTH,
-            chartHeight: entry.contentRect.height - COLUMN_HEADER_HEIGHT
+            width: width,
+            height: height,
+            chartWidth: width - ROW_TITLE_WIDTH,
+            chartHeight: height - COLUMN_HEADER_HEIGHT
           });
           setChartBodyScale(1);
         });
@@ -222,7 +229,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
     }
 
-    if (showConnection && dataset != null && dataset.length !== 0) {
+    if (showConnection && dataset.length !== 0) {
       validateConnections(dataset);
     }
 
@@ -267,7 +274,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
                 color: ThemingParameters.sapTitleColor
               }}
             >
-              {columnTitle} {unit != '' ? `(${unit})` : ''}
+              {columnTitle} {unit != null ? `(${unit})` : ''}
             </div>
             <TimelineChartColumnLabel
               width={bodyWidth}
@@ -291,7 +298,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
               annotations={annotations}
               showAnnotation={showAnnotation}
               showConnection={showConnection}
-              showTooltip={showTooltip}
+              showTooltip={!hideTooltip}
               unit={unit}
               onScale={scaleChartBody}
               start={start}

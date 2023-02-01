@@ -85,7 +85,6 @@ export interface ITimelineChartConn {
   /**
    * The type of connection between a task and another task whose Id is
    * specified by `itemId`.
-   * @default Finish_to_Start
    */
   type?: TimelineChartConnection;
 
