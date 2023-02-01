@@ -51,7 +51,7 @@ interface ComposedChartPlaceholderPropTypes extends IContentLoaderProps {
 }
 
 export const ComposedChartPlaceholder = (props: ComposedChartPlaceholderPropTypes) => {
-  const { layout, measures } = props;
+  const { layout, measures, ...rest } = props;
   const distinctElements = new Set(measures.map((item) => item.type));
 
   return (
@@ -64,7 +64,7 @@ export const ComposedChartPlaceholder = (props: ComposedChartPlaceholderPropType
       backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
       foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
       backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as unknown as number}
-      {...props}
+      {...rest}
     >
       {layout === 'vertical' && <rect x="20" y="10" width="1" height="135" />}
       {layout === 'horizontal' && <rect x="10" y="135" width="135" height="1" />}
