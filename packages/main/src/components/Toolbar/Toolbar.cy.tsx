@@ -1,5 +1,7 @@
-import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
+import '@ui5/webcomponents-react/dist/Assets.js';
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import { useState } from 'react';
+import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -175,5 +177,64 @@ describe('Toolbar', () => {
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 17);
+  });
+
+  it('Toolbar click', () => {
+    const click = cy.spy().as('onClickSpy');
+    cy.mount(
+      <Toolbar active data-testid="tb" onClick={click}>
+        Text
+      </Toolbar>
+    );
+    cy.findByTestId('tb').click();
+    cy.get('@onClickSpy').should('have.been.calledOnce');
+
+    cy.findByTestId('tb').type('{enter}', { force: true });
+    cy.get('@onClickSpy').should('have.been.calledTwice');
+
+    cy.findByTestId('tb').type(' ', { force: true });
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+
+    cy.mount(
+      <Toolbar data-testid="tb" onClick={click}>
+        Text
+      </Toolbar>
+    );
+
+    cy.findByTestId('tb').click();
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+
+    cy.findByTestId('tb').trigger('keydown', { code: 'Enter' });
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+
+    cy.findByTestId('tb').trigger('keydown', { code: 'Space' });
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+  });
+
+  it('Toolbar active use outline or shadow', () => {
+    cy.mount(
+      <Toolbar active data-testid="tb">
+        Text
+      </Toolbar>
+    );
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.wait(500).then(() => {
+      cy.findByTestId('tb').blur();
+      setTheme('sap_horizon');
+    });
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').focus();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 });

@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnalyticalTable, AnalyticalTableHooks, Button, Input } from '../..';
-import { TableSelectionMode, TableVisibleRowCountMode, ValueState } from '../../enums';
+import {
+  AnalyticalTable,
+  AnalyticalTableHooks,
+  Button,
+  Input,
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTablePropTypes
+} from '../..';
+import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -55,7 +62,7 @@ describe('AnalyticalTable', () => {
   it('row count modes', () => {
     cy.mount(
       <div style={{ height: '200px' }}>
-        <AnalyticalTable data={data} columns={columns} visibleRowCountMode={TableVisibleRowCountMode.Auto} />
+        <AnalyticalTable data={data} columns={columns} visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto} />
       </div>
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
@@ -67,7 +74,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '200px' }}
         data={data}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
@@ -81,7 +88,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '4400px' }}
         data={generateMoreData(200)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '99'); //rows(99*44) + header(44) = 4400
@@ -94,7 +101,7 @@ describe('AnalyticalTable', () => {
         style={{ height: '200px' }}
         data={data}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Auto}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
         visibleRows={1337}
       />
     );
@@ -107,7 +114,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
       />
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '15');
@@ -118,7 +125,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Fixed}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
         visibleRows={20}
       />
     );
@@ -130,7 +137,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        visibleRowCountMode={TableVisibleRowCountMode.Interactive}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Interactive}
         visibleRows={10}
       />
     );
@@ -264,7 +271,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('payloadHelper').should('have.text', '2');
 
     // global filter + select
-    cy.findByTestId('input').shadow().find('input').type('Katy Bradshaw');
+    cy.findByTestId('input').typeIntoUi5Input('Katy Bradshaw');
     cy.findByText('Robin Moreno').should('not.exist');
     cy.findByText('Judith Mathews').should('not.exist');
     cy.findByText('Katy Bradshaw').click();
@@ -274,11 +281,11 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.been.calledThrice');
     cy.findByTestId('payloadHelper').should('have.text', '3');
 
-    cy.findByTestId('input').shadow().find('input').clear();
+    cy.findByTestId('input').typeIntoUi5Input('{selectall}{backspace}');
 
     // column filter + select
     cy.findByText('Name').click();
-    cy.get(`ui5-input[show-clear-icon]`).shadow().find('input').type('Flowers Mcfarland', { force: true });
+    cy.get(`ui5-input[show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
     cy.findByText('Robin Moreno').should('not.exist');
     cy.findByText('Judith Mathews').should('not.exist');
     cy.findByText('Katy Bradshaw').should('not.exist');
@@ -305,7 +312,7 @@ describe('AnalyticalTable', () => {
               setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
               onRowSelect(e);
             }}
-            selectionMode={TableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
             selectedRowIds={selectedRowIds}
           />
           "event.detail.selectedFlatRows:"<div data-testid="payload">{JSON.stringify(selectedFlatRows)}</div>
@@ -364,15 +371,15 @@ describe('AnalyticalTable', () => {
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
 
-    cy.findByTestId('rowHeight').shadow().find('input').type('100');
+    cy.findByTestId('rowHeight').typeIntoUi5Input('100');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
 
-    cy.findByTestId('headerRowHeight').shadow().find('input').type('200');
+    cy.findByTestId('headerRowHeight').typeIntoUi5Input('200');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
 
-    cy.findByTestId('headerRowHeight').shadow().find('input').clear({ force: true });
+    cy.findByTestId('headerRowHeight').typeIntoUi5Input('{selectall}{backspace}');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
     cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
   });
@@ -458,7 +465,7 @@ describe('AnalyticalTable', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
@@ -521,7 +528,7 @@ describe('AnalyticalTable', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
-        selectionMode={TableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
         data={dataTree}
         columns={columns}
         isTreeTable
@@ -577,13 +584,321 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
   });
+
+  it('Grow Mode: maxWidth', () => {
+    const TableComp = (props) => {
+      const headerText =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum aliquet arcu, ac facilisis tellus blandit nec. Etiam justo erat, dictum a ex ac, fermentum fringilla metus. Donec nibh magna, pellentesque ut odio id, feugiat vulputate nibh. In feugiat tincidunt quam, vitae sodales metus lobortis pellentesque. Donec eget rhoncus ante, in posuere nulla. Proin viverra, turpis id fermentum scelerisque, felis ipsum pharetra tortor, sed aliquet mi ex eu nisl. Praesent neque nunc, suscipit non interdum vitae, consequat sit amet velit. Morbi commodo dapibus lobortis. Vestibulum auctor velit sit amet semper egestas.';
+      const [columns, setColumns] = useState<{ Header: string; accessor: string; maxWidth?: number }[]>([
+        {
+          Header: headerText,
+          accessor: 'name'
+        }
+      ]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                {
+                  Header: headerText,
+                  accessor: 'name',
+                  maxWidth: Infinity
+                }
+              ]);
+            }}
+          >
+            Custom maxWidth
+          </Button>
+          <AnalyticalTable {...props} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Grow} />
+        </>
+      );
+    };
+    cy.mount(<TableComp data={data} />);
+    cy.get('#name').invoke('outerWidth').should('equal', 700);
+
+    cy.findByText('Custom maxWidth').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 5008);
+  });
+
+  it('Column Scaling: programatically change cols', () => {
+    const TestComp = (props) => {
+      const [columns, setColumns] = useState([]);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setColumns([
+                { accessor: 'name', Header: 'Name' },
+                { accessor: 'age', Header: 'Age' }
+              ]);
+            }}
+          >
+            Both
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'name', Header: 'Name' }]);
+            }}
+          >
+            NameCol
+          </Button>
+          <Button
+            onClick={() => {
+              setColumns([{ accessor: 'age', Header: 'Age' }]);
+            }}
+          >
+            AgeCol
+          </Button>
+          <AnalyticalTable {...props} columns={columns} />
+        </>
+      );
+    };
+    cy.mount(<TestComp data={data} />);
+
+    cy.findByText('Both').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 952);
+    cy.get('#age').invoke('outerWidth').should('equal', 952);
+
+    cy.findByText('NameCol').click();
+    cy.get('#name').invoke('outerWidth').should('equal', 1904);
+    cy.get('#age').should('not.exist');
+
+    cy.findByText('AgeCol').click();
+    cy.get('#age').invoke('outerWidth').should('equal', 1904);
+    cy.get('#name').should('not.exist');
+  });
+
+  it('tableInstance: change state & hide cols', () => {
+    const TestComp = (props) => {
+      const tableInstanceRef = useRef(null);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: 1200 } });
+            }}
+          >
+            set clientWidth
+          </Button>
+          <Button
+            onClick={() => {
+              tableInstanceRef.current.toggleHideColumn('age', true);
+            }}
+          >
+            hide age col
+          </Button>
+          <AnalyticalTable
+            {...props}
+            data-testid="at"
+            tableInstance={tableInstanceRef}
+            reactTableOptions={{
+              autoResetHiddenColumns: false
+            }}
+          />
+        </>
+      );
+    };
+
+    cy.mount(<TestComp columns={columns} data={data} />);
+    cy.wait(200);
+
+    cy.findByText('set clientWidth').click();
+    ['#name', '#age', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 300);
+    });
+
+    cy.findByText('hide age col').click();
+    ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+      cy.get(col).invoke('outerWidth').should('equal', 400);
+    });
+    cy.get('#age').should('not.exist');
+  });
+
+  it('InfiniteScroll', () => {
+    const data = new Array(500).fill('').map((_, index) => ({ name: `Name${index}` }));
+    const TestComp = (props: Omit<AnalyticalTablePropTypes, 'data' | 'columns'>) => {
+      const tableRef = useRef(null);
+      const [internalData, setData] = useState(data.slice(0, 50));
+      const offset = useRef(50);
+      const onLoadMore = (e) => {
+        props.onLoadMore(e);
+        setData((prev) => [...prev, ...data.slice(offset.current, offset.current + 50)]);
+        offset.current += 50;
+      };
+      return (
+        <>
+          <Input
+            data-testid="scrollInput"
+            onChange={(e) => {
+              tableRef.current.scrollToItem(e.target.value);
+            }}
+          >
+            Scroll Down
+          </Input>
+          <Button
+            onClick={() => {
+              setData(data.slice(0, 110));
+            }}
+          >
+            Data 110
+          </Button>
+          <Button
+            onClick={() => {
+              setData(data.slice(0, 100));
+            }}
+          >
+            Data 100
+          </Button>
+          <AnalyticalTable
+            ref={tableRef}
+            data-testid="at"
+            data={internalData}
+            columns={columns}
+            infiniteScroll={true}
+            infiniteScrollThreshold={10}
+            onLoadMore={onLoadMore}
+          />
+          {`Rows: ${internalData.length}`}
+        </>
+      );
+    };
+    const onLoadMore = cy.spy().as('more');
+    cy.mount(<TestComp onLoadMore={onLoadMore} />);
+
+    cy.findByTestId('scrollInput').typeIntoUi5Input('45');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name44').should('be.visible');
+    cy.findByText('Rows: 100').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByText('Data 110').click();
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('99', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name99').should('be.visible');
+    cy.findByText('Rows: 110').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('100', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name100').should('be.visible');
+    cy.findByText('Rows: 160').should('be.visible');
+    cy.get('@more').should('have.been.calledTwice');
+
+    cy.findByText('Data 100').click();
+    cy.findByText('Rows: 100').should('be.visible');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('91', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name91').should('be.visible');
+    cy.findByText('Rows: 150').should('be.visible');
+    cy.get('@more').should('have.been.calledThrice');
+  });
+
+  it('InfiniteScroll: Tree', () => {
+    const subRows = new Array(500).fill('').map((_, index) => ({ name: `Name${index}` }));
+    const rootData = { name: 'Root' };
+    const TestComp = (props: Omit<AnalyticalTablePropTypes, 'data' | 'columns'>) => {
+      const tableRef = useRef(null);
+      const [internalSubRows, setInternalSubRows] = useState(subRows.slice(0, 50));
+      const offset = useRef(50);
+      const onLoadMore = (e) => {
+        props.onLoadMore(e);
+        setInternalSubRows((prev) => [...prev, ...subRows.slice(offset.current, offset.current + 50)]);
+        offset.current += 50;
+      };
+      return (
+        <>
+          <Input
+            data-testid="scrollInput"
+            onChange={(e) => {
+              tableRef.current.scrollToItem(e.target.value);
+            }}
+          >
+            Scroll Down
+          </Input>
+          <Button
+            onClick={() => {
+              setInternalSubRows(subRows.slice(0, 110));
+            }}
+          >
+            Data 111
+          </Button>
+          <Button
+            onClick={() => {
+              setInternalSubRows(subRows.slice(0, 100));
+            }}
+          >
+            Data 101
+          </Button>
+          <AnalyticalTable
+            ref={tableRef}
+            data-testid="at"
+            data={[{ ...rootData, subRows: internalSubRows }]}
+            columns={columns}
+            infiniteScroll={true}
+            infiniteScrollThreshold={10}
+            onLoadMore={onLoadMore}
+            isTreeTable
+            reactTableOptions={{ autoResetExpanded: false }}
+            minRows={1}
+          />
+          {/*root node => +1*/}
+          {`Rows: ${internalSubRows.length + 1}`}
+        </>
+      );
+    };
+    const onLoadMore = cy.spy().as('more');
+    cy.mount(<TestComp onLoadMore={onLoadMore} />);
+
+    cy.get('[ui5-icon]').click();
+    cy.findByTestId('scrollInput').typeIntoUi5Input('45');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name44').should('be.visible');
+    cy.findByText('Rows: 101').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByText('Data 111').click();
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('100', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name99').should('be.visible');
+    cy.findByText('Rows: 111').should('be.visible');
+    cy.get('@more').should('have.been.calledOnce');
+
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('101', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name100').should('be.visible');
+    cy.findByText('Rows: 161').should('be.visible');
+    cy.get('@more').should('have.been.calledTwice');
+
+    cy.findByText('Data 101').click();
+    cy.findByText('Rows: 101').should('be.visible');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{selectall}{backspace}', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('91', { force: true });
+    cy.findByTestId('scrollInput').typeIntoUi5Input('{enter}', { force: true });
+    cy.wait(100);
+    cy.findByText('Name90').should('be.visible');
+    cy.findByText('Rows: 151').should('be.visible');
+    cy.get('@more').should('have.been.calledThrice');
+  });
 });
 
 const columns = [
   {
     Header: 'Name',
-    headerTooltip: 'Full Name', // A more extensive description!
-    accessor: 'name' // String-based value accessors!
+    headerTooltip: 'Full Name',
+    accessor: 'name'
   },
   {
     Header: 'Age',

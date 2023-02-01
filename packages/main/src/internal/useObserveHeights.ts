@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
 declare const ResizeObserver;
 
@@ -7,12 +7,12 @@ export const useObserveHeights = (
   topHeaderRef,
   headerContentRef,
   anchorBarRef,
-  [headerCollapsed, setHeaderCollapsed]: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
+  [headerCollapsed, setHeaderCollapsed]: [boolean, Dispatch<SetStateAction<boolean>>],
   {
     noHeader,
     fixedHeader = false,
     scrollTimeout = { current: 0 }
-  }: { noHeader: boolean; fixedHeader?: boolean; scrollTimeout?: React.MutableRefObject<number> }
+  }: { noHeader: boolean; fixedHeader?: boolean; scrollTimeout?: MutableRefObject<number> }
 ) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);

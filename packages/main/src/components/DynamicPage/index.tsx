@@ -1,3 +1,5 @@
+'use client';
+
 import {
   debounce,
   enrichEventWithDetails,
@@ -5,7 +7,7 @@ import {
   useResponsiveContentPadding,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
@@ -256,6 +258,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
 
   const dynamicPageStyles = { ...style };
   if (headerCollapsed === true && headerContent) {
+    scrollTimeout.current = performance.now() + 200;
     dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 

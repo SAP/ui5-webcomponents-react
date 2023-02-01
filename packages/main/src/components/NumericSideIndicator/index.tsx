@@ -1,4 +1,6 @@
-import clsx from 'clsx';
+'use client';
+
+import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ValueColor } from '../../enums';

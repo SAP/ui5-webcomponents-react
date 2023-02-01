@@ -1,8 +1,12 @@
+'use client';
+
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   Children,
+  cloneElement,
   forwardRef,
+  isValidElement,
   MutableRefObject,
   ReactElement,
   ReactNode,
@@ -92,8 +96,8 @@ const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTi
 
 const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) =>
   flattenFragments(actions, Infinity).map((action) => {
-    if (React.isValidElement(action)) {
-      return React.cloneElement(action, {
+    if (isValidElement(action)) {
+      return cloneElement(action, {
         // @ts-expect-error: only actionable elements should be passed to either of the `action` props
         onClick: (e) => {
           if (typeof action.props?.onClick === 'function') {
@@ -222,6 +226,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
           )}
           {showNavigationInTopArea && (
             <Toolbar
+              tabIndex={undefined}
+              role={undefined}
               {...navigationActionsToolbarProps}
               overflowButton={navigationActionsToolbarProps?.overflowButton}
               className={clsx(classes.toolbar, navigationActionsToolbarProps?.className)}
@@ -259,6 +265,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
           <Toolbar
+            tabIndex={undefined}
+            role={undefined}
             {...actionsToolbarProps}
             overflowButton={actionsToolbarProps?.overflowButton}
             design={ToolbarDesign.Auto}

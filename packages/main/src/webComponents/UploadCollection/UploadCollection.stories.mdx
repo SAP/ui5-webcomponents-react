@@ -3,7 +3,7 @@ import { Footer } from '@docs/Footer';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/document.js';
-import { useState } from 'react';
+import { Children, cloneElement, useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
@@ -230,7 +230,7 @@ export const UploadCollectionComponent = () => {
       };
       const simulateUpload = () => {
         if (children.length > 0) {
-          React.Children.forEach(children, (child, index) => {
+          Children.forEach(children, (child, index) => {
             if (child.props.uploadState === UploadState.Ready) {
               let progress = 0;
               const recTimeout = () => {
@@ -238,7 +238,7 @@ export const UploadCollectionComponent = () => {
                   progress += Math.floor(Math.random() * 4) + 1;
                   setChildren((prev) => {
                     const updatedChildren = [...prev];
-                    updatedChildren[index] = React.cloneElement(prev[index], {
+                    updatedChildren[index] = cloneElement(prev[index], {
                       uploadState: UploadState.Uploading,
                       progress: Math.min(progress, 100)
                     });
@@ -249,7 +249,7 @@ export const UploadCollectionComponent = () => {
                   } else {
                     setChildren((prev) => {
                       const updatedChildren = [...prev];
-                      updatedChildren[index] = React.cloneElement(prev[index], {
+                      updatedChildren[index] = cloneElement(prev[index], {
                         uploadState: UploadState.Complete
                       });
                       return updatedChildren;
@@ -309,7 +309,7 @@ Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
   };
   const simulateUpload = () => {
     if (children.length > 0) {
-      React.Children.forEach(children, (child, index) => {
+      Children.forEach(children, (child, index) => {
         if (child.props.uploadState === UploadState.Ready) {
           let progress = 0;
           const recTimeout = () => {
@@ -317,7 +317,7 @@ Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
               progress += Math.floor(Math.random() * 4) + 1;
               setChildren((prev) => {
                 const updatedChildren = [...prev];
-                updatedChildren[index] = React.cloneElement(prev[index], {
+                updatedChildren[index] = cloneElement(prev[index], {
                   uploadState: UploadState.Uploading,
                   progress: Math.min(progress, 100)
                 });
@@ -328,7 +328,7 @@ Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
               } else {
                 setChildren((prev) => {
                   const updatedChildren = [...prev];
-                  updatedChildren[index] = React.cloneElement(prev[index], {
+                  updatedChildren[index] = cloneElement(prev[index], {
                     uploadState: UploadState.Complete
                   });
                   return updatedChildren;

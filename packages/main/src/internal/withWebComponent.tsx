@@ -5,6 +5,7 @@ import React, {
   cloneElement,
   ComponentType,
   forwardRef,
+  Fragment,
   ReactElement,
   Ref,
   useEffect,
@@ -12,11 +13,7 @@ import React, {
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
-
-const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
-const camelToKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b: string) => `-${b.toLowerCase()}`);
-const kebabToCamelCase = (str: string) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils';
 
 const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
@@ -73,13 +70,20 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const slots = slotProperties.reduce((acc, name) => {
       const slotValue = rest[name] as ReactElement;
 
-      if (!slotValue) return acc;
+      if (!slotValue) {
+        return acc;
+      }
+
+      if (rest[name]?.$$typeof === Symbol.for('react.portal')) {
+        console.warn('ReactPortal is not supported for slot props.');
+        return acc;
+      }
 
       const slottedChildren = [];
       let index = 0;
       const removeFragments = (element) => {
         if (!element) return;
-        if (element.type === React.Fragment) {
+        if (element.type === Fragment) {
           Children.toArray(element.props?.children)
             .filter(Boolean)
             .forEach((item) => {

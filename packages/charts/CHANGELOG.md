@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
+
+### Bug Fixes
+
+- **charts:** prevent crash when using zooming tool ([#3997](https://github.com/SAP/ui5-webcomponents-react/issues/3997)) ([e508b59](https://github.com/SAP/ui5-webcomponents-react/commit/e508b593ade20ff9bfa4bb18dba0a3ac913a4f71))
+
+### Features
+
+- **client components:** add `use client` directive for client-only components ([#4021](https://github.com/SAP/ui5-webcomponents-react/issues/4021)) ([074f902](https://github.com/SAP/ui5-webcomponents-react/commit/074f90202bfeb00600d0ac5d1320e4261451cbcd))
+
+## [1.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.1...v1.7.2) (2023-01-17)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
 ## [1.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.0...v1.7.1) (2022-12-21)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

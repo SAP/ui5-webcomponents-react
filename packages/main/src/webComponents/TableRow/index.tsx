@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TableRow.js';
 import { ReactNode } from 'react';
 import { TableRowType } from '../../enums';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Link.js';
 import { ReactNode } from 'react';
 import { LinkDesign, WrappingType } from '../../enums';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -5,7 +7,7 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface FilterItemOptionAttributes {
   /**
-   * Defines whether the option is selected
+   * Defines if the component is selected.
    */
   selected?: boolean;
   /**

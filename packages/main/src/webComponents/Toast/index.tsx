@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Toast.js';
 import { ReactNode } from 'react';
 import { ToastPlacement } from '../../enums';

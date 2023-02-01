@@ -1,26 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of Priority.
- */
-export enum Priority {
-  /**
-   * High priority.
-   */
-  High = 'High',
+import Priority from '@ui5/webcomponents/dist/types/Priority.js';
 
-  /**
-   * Low priority.
-   */
-  Low = 'Low',
-
-  /**
-   * Medium priority.
-   */
-  Medium = 'Medium',
-
-  /**
-   * Default, none priority.
-   */
-  None = 'None'
-}
+export { Priority };

@@ -1,3 +1,5 @@
+'use client';
+
 import {
   debounce,
   enrichEventWithDetails,
@@ -5,9 +7,12 @@ import {
   useIsomorphicLayoutEffect,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
+  Children,
+  cloneElement,
   createRef,
+  ElementType,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -87,7 +92,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    */
   overflowPopoverRef?: Ref<PopoverDomRef>;
   /**
-   * Fired when the user clicks on the `Toolbar`, if the `active` prop is set to "true".
+   * Fired if the `active` prop is set to true and the user clicks or presses Enter/Space on the `Toolbar`.
    */
   onClick?: (event: CustomEvent) => void;
   /**
@@ -176,8 +181,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
-    React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
-    numberOfAlwaysVisibleItems < React.Children.count(flatChildren);
+    Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
+    numberOfAlwaysVisibleItems < Children.count(flatChildren);
 
   useEffect(() => {
     let lastElementResizeObserver;
@@ -255,14 +260,15 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);
 
-  const handleToolbarClick = useCallback(
-    (e) => {
-      if (active && typeof onClick === 'function') {
+  const handleToolbarClick = (e) => {
+    if (active && typeof onClick === 'function') {
+      const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
+      if (e.type === 'click' || isSpaceEnterDown) {
+        e.preventDefault();
         onClick(enrichEventWithDetails(e));
       }
-    },
-    [onClick, active]
-  );
+    }
+  };
 
   const prevChildren = useRef(flatChildren);
   const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
@@ -292,7 +298,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
 
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
     <CustomTag
@@ -301,13 +307,16 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       ref={componentRef}
       slot={slot}
       onClick={handleToolbarClick}
+      onKeyDown={handleToolbarClick}
+      tabIndex={active ? 0 : undefined}
+      role={active ? 'button' : undefined}
       {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
-          React.Children.map(childrenWithRef, (item, index) => {
+          Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
-              return React.cloneElement(item as ReactElement, {
+              return cloneElement(item as ReactElement, {
                 style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
               });
             }

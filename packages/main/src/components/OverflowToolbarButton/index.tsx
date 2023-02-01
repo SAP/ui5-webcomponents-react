@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents';

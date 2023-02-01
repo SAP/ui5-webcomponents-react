@@ -5,9 +5,9 @@ on:
     inputs:
       release_type:
         type: string
-        description: 'Release Type: (pre)patch | (pre)minor | (pre)major'
-        required: true
-        default: 'patch'
+        description: 'Release Type: Lerna Auto Versioning if empty.'
+        required: false
+        default: ''
       prerelease:
         type: boolean
         description: 'pre-release'
@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'

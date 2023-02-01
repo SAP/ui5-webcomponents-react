@@ -23,6 +23,7 @@ import { ShellBar } from '../ShellBar';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
+import FlexibleColumnLayoutMethods from './FlexibleColumnLayoutMethods.md';
 
 <Meta
   title="Layouts & Floorplans / FlexibleColumnLayout"
@@ -83,17 +84,7 @@ import { FlexibleColumnLayout } from './index';
 
 <Description />
 
-## Readonly Properties
-
-This component exposes public `readonly` properties. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name                   | Description                                                                                                                                                                                                                                            |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **columnLayout**       | Returns the current column layout, based on both the `layout` property and the screen size. For example: `["67%", "33%", 0], ["100%", 0, 0], ["25%", "50%", "25%"]`, etc, where the numbers represents the width of the start, middle and end columns. |
-| **endColumnVisible**   | Returns if the `end` column is visible.                                                                                                                                                                                                                |
-| **midColumnVisible**   | Returns if the `middle` column is visible.                                                                                                                                                                                                             |
-| **startColumnVisible** | Returns if the `start` column is visible.                                                                                                                                                                                                              |
-| **visibleColumns**     | Returns the number of currently visible columns.                                                                                                                                                                                                       |
+<FlexibleColumnLayoutMethods />
 
 # More Examples
 

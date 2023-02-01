@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
@@ -5,6 +7,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface DialogAttributes {
   /**
@@ -74,7 +77,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
    */
   applyFocus: () => Promise<void>;
   /**
-   * Hides the block layer (for modal popups only)
+   * Closes the popup.
    */
   close: () => void;
   /**
@@ -88,19 +91,25 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   /**
    * Defines the footer HTML Element.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="footer"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  footer?: ReactNode | ReactNode[];
+  footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the header HTML Element.
    *
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="header"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  header?: ReactNode | ReactNode[];
+  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the content of the Popup.
    */

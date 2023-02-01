@@ -1,3 +1,5 @@
+'use client';
+
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import {

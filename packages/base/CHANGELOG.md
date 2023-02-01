@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
+
+### Features
+
+- **client components:** add `use client` directive for client-only components ([#4021](https://github.com/SAP/ui5-webcomponents-react/issues/4021)) ([074f902](https://github.com/SAP/ui5-webcomponents-react/commit/074f90202bfeb00600d0ac5d1320e4261451cbcd))
+- update to UI5 Web Components 1.10.3 ([#3801](https://github.com/SAP/ui5-webcomponents-react/issues/3801)) ([2febd53](https://github.com/SAP/ui5-webcomponents-react/commit/2febd534f234c3d38109659369716b6b5946dfda))
+
 # [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
 
 ### Features

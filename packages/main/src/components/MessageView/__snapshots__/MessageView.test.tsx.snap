@@ -81,6 +81,7 @@ exports[`MessageView renders list view 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="error"
                 ui5-icon=""
               />
@@ -97,6 +98,7 @@ exports[`MessageView renders list view 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -117,6 +119,7 @@ exports[`MessageView renders list view 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="alert"
                 ui5-icon=""
               />
@@ -133,6 +136,7 @@ exports[`MessageView renders list view 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -153,6 +157,7 @@ exports[`MessageView renders list view 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="sys-enter-2"
                 ui5-icon=""
               />
@@ -169,6 +174,7 @@ exports[`MessageView renders list view 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -189,6 +195,7 @@ exports[`MessageView renders list view 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="information"
                 ui5-icon=""
               />
@@ -205,6 +212,7 @@ exports[`MessageView renders list view 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -225,6 +233,7 @@ exports[`MessageView renders list view 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="information"
                 ui5-icon=""
               />
@@ -241,6 +250,7 @@ exports[`MessageView renders list view 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -334,6 +344,7 @@ exports[`MessageView renders list view with groups 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="error"
                 ui5-icon=""
               />
@@ -350,6 +361,7 @@ exports[`MessageView renders list view with groups 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -370,6 +382,7 @@ exports[`MessageView renders list view with groups 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="alert"
                 ui5-icon=""
               />
@@ -386,6 +399,7 @@ exports[`MessageView renders list view with groups 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -406,6 +420,7 @@ exports[`MessageView renders list view with groups 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="sys-enter-2"
                 ui5-icon=""
               />
@@ -422,6 +437,7 @@ exports[`MessageView renders list view with groups 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -442,6 +458,7 @@ exports[`MessageView renders list view with groups 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="information"
                 ui5-icon=""
               />
@@ -458,6 +475,7 @@ exports[`MessageView renders list view with groups 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />
@@ -478,6 +496,7 @@ exports[`MessageView renders list view with groups 1`] = `
             >
               <ui5-icon
                 class="MessageItem-icon"
+                design="Default"
                 name="information"
                 ui5-icon=""
               />
@@ -494,6 +513,7 @@ exports[`MessageView renders list view with groups 1`] = `
             </div>
             <ui5-icon
               class="MessageItem-navigation"
+              design="Default"
               name="slim-arrow-right"
               ui5-icon=""
             />

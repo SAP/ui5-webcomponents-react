@@ -12,6 +12,9 @@
     },
     {
       "path": "./packages/charts"
+    },
+    {
+      "path": "./packages/cypress-commands"
     }
   ],
   "files": []

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SplitButton.js';
 import { ReactNode } from 'react';
 import { ButtonDesign } from '../../enums';

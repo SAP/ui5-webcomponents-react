@@ -17,7 +17,6 @@ exports[`LineChart Check onClick events 1`] = `
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -665,7 +664,6 @@ exports[`LineChart Check onClick events 1`] = `
               fill="none"
               height="330"
               name="Users"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_1)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -683,7 +681,6 @@ exports[`LineChart Check onClick events 1`] = `
               fill="none"
               height="330"
               name="Active Sessions"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_2)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -701,7 +698,6 @@ exports[`LineChart Check onClick events 1`] = `
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -727,7 +723,6 @@ exports[`LineChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -758,7 +753,6 @@ exports[`LineChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -789,7 +783,6 @@ exports[`LineChart Check onClick events 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -945,7 +938,6 @@ exports[`LineChart Render chart with data 1`] = `
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -1593,7 +1585,6 @@ exports[`LineChart Render chart with data 1`] = `
               fill="none"
               height="330"
               name="Users"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_1)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -1611,7 +1602,6 @@ exports[`LineChart Render chart with data 1`] = `
               fill="none"
               height="330"
               name="Active Sessions"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_2)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -1629,7 +1619,6 @@ exports[`LineChart Render chart with data 1`] = `
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -1655,7 +1644,6 @@ exports[`LineChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1686,7 +1674,6 @@ exports[`LineChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1717,7 +1704,6 @@ exports[`LineChart Render chart with data 1`] = `
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -1781,7 +1767,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
         <svg
           class="recharts-surface"
           height="400"
-          version="1.1"
           viewBox="0 0 400 400"
           width="400"
         >
@@ -2429,7 +2414,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
               fill="none"
               height="330"
               name="Users"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_1)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -2447,7 +2431,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
               fill="none"
               height="330"
               name="Active Sessions"
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_2)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -2465,7 +2448,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
               fill="none"
               height="330"
               name="Vol."
-              points="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
               stroke="var(--sapChart_OrderedColor_3)"
               stroke-dasharray="0px 0px"
               stroke-opacity="1"
@@ -2491,7 +2473,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2522,7 +2503,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >
@@ -2553,7 +2533,6 @@ exports[`LineChart onLegendClick should not crash when invalid handler is provid
                 class="recharts-surface"
                 height="14"
                 style="display: inline-block; vertical-align: middle; margin-right: 4px;"
-                version="1.1"
                 viewBox="0 0 32 32"
                 width="14"
               >

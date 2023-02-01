@@ -1,7 +1,9 @@
+'use client';
+
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { DeviationIndicator, ValueColor } from '../../enums';
@@ -127,7 +129,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
 
-  let kpiAriaLabel = `${value}${scale}\n`;
+  let kpiAriaLabel = `${value ?? ''}${scale ?? ''}\n`;
 
   if (trend && trend !== DeviationIndicator.None) {
     kpiAriaLabel += i18nBundle.getText(deviationMap.get(trend) ?? '');

@@ -4,6 +4,7 @@ exports[`TableColumn Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-table-column
     min-width="Infinity"
+    popin-display="Block"
     ui5-table-column=""
   />
 </DocumentFragment>

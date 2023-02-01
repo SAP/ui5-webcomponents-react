@@ -1,7 +1,9 @@
-import clsx from 'clsx';
+'use client';
+
+import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import { CommonProps, TitleLevel } from '../..';
 import styles from './ObjectPageSection.jss';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
@@ -16,12 +18,39 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNode[];
   /**
    * Defines the title of the `ObjectPageSection`.
+   *
+   * @default ''
    */
   titleText?: string;
   /**
    * Defines whether the title is always displayed in uppercase.
+   *
+   * @default true
    */
   titleTextUppercase?: boolean;
+  /**
+   * Determines whether to display the Section title or not.
+   */
+  hideTitleText?: boolean;
+  /**
+   * Determines the ARIA level of the ObjectPageSection `titleText`. The ARIA level is used by assisting technologies, such as screen readers, to create a hierarchical site map for faster navigation.
+   *
+   * __Note:__ Defining a `titleTextLevel` will add aria-level attribute from 1 to 6, instead of changing the ObjectPageSectionBase title HTML tag from H1 to H6.
+   * For example: if titleTextLevel is TitleLevel.H1, it will result as aria-level of 1 added to the ObjectPageSection title.
+   *
+   * @default TitleLevel.H3
+   */
+  titleTextLevel?: TitleLevel | keyof typeof TitleLevel;
+  /**
+   * Determines whether the Section title wraps on multiple lines, when the available space is not enough.
+   */
+  wrapTitleText?: boolean;
+  /**
+   * Section header content.
+   *
+   * __Note__: Although this prop accepts all HTML Elements, it is strongly recommended that you only use non-focusable elements to preserve the intended design.
+   */
+  header?: ReactNode;
 }
 
 const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
@@ -29,7 +58,19 @@ const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
  * Top-level information container of an `ObjectPage`.
  */
 const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((props, ref) => {
-  const { titleText, id, children, titleTextUppercase, className, style, ...rest } = props;
+  const {
+    titleText = '',
+    id,
+    children,
+    titleTextUppercase = true,
+    className,
+    style,
+    hideTitleText,
+    titleTextLevel = 'H3',
+    wrapTitleText,
+    header,
+    ...rest
+  } = props;
 
   const classes = useStyles();
 
@@ -41,15 +82,23 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     <section
       ref={ref}
       role="region"
-      className={className}
+      className={clsx(classes.section, wrapTitleText && classes.wrap, className)}
       style={style}
       {...rest}
       id={htmlId}
       data-component-name="ObjectPageSection"
     >
-      <div role="heading" aria-level={3} className={classes.header} data-component-name="ObjectPageSectionTitleText">
-        <div className={titleClasses}>{titleText}</div>
-      </div>
+      {!!header && <div className={classes.headerContainer}>{header}</div>}
+      {!hideTitleText && (
+        <div
+          role="heading"
+          aria-level={parseInt(titleTextLevel.slice(1))}
+          className={classes.titleContainer}
+          data-component-name="ObjectPageSectionTitleText"
+        >
+          <div className={titleClasses}>{titleText}</div>
+        </div>
+      )}
       <div className={classes.sectionContent}>
         <div className={classes.sectionContentInner} data-component-name="ObjectPageSectionContent">
           {children}
@@ -58,11 +107,6 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     </section>
   );
 });
-
-ObjectPageSection.defaultProps = {
-  titleText: '',
-  titleTextUppercase: true
-};
 
 ObjectPageSection.displayName = 'ObjectPageSection';
 

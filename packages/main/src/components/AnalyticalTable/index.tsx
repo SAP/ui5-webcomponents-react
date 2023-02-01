@@ -1,3 +1,5 @@
+'use client';
+
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
@@ -7,7 +9,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   ComponentType,
   CSSProperties,
@@ -34,15 +36,19 @@ import {
   useTable
 } from 'react-table';
 import {
+  AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableVisibleRowCountMode,
   GlobalStyleClasses,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
+  AnalyticalTableSelectionMode,
   TextAlign,
   ValueState,
-  VerticalAlign
+  VerticalAlign,
+  TableScaleWidthMode,
+  TableSelectionMode,
+  TableSelectionBehavior,
+  TableVisibleRowCountMode
 } from '../../enums';
 import {
   COLLAPSE_NODE,
@@ -279,12 +285,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines how the table will render visible rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
-   * - __"Auto":__ The table automatically fills the height of the surrounding container.
+   * - __"Auto":__ The number of visible rows displayed depends on the height of the surrounding container.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
    * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the outer container.
    */
-  visibleRowCountMode?: TableVisibleRowCountMode | keyof typeof TableVisibleRowCountMode;
+  visibleRowCountMode?:
+    | AnalyticalTableVisibleRowCountMode
+    | keyof typeof AnalyticalTableVisibleRowCountMode
+    | TableVisibleRowCountMode;
+
   /**
    * The number of rows visible without going into overflow.
    *
@@ -378,7 +388,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"RowOnly":__ No selection column is rendered along with the normal columns. The whole row is selectable.
    * - __"RowSelector":__ The row is only selectable by clicking on the corresponding field in the selection column.
    */
-  selectionBehavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
+  selectionBehavior?:
+    | AnalyticalTableSelectionBehavior
+    | keyof typeof AnalyticalTableSelectionBehavior
+    | TableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
@@ -386,18 +399,20 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
    */
-  selectionMode?: TableSelectionMode | keyof typeof TableSelectionMode;
+  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
+
   /**
    * Defines the column growing behaviour. Possible Values:
    *
    * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property.
    *
    * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
    *
    */
-  scaleWidthMode?: TableScaleWidthMode | keyof typeof TableScaleWidthMode;
+  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    *
@@ -760,7 +775,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [tableRef.current]);
 
   const updateRowsCount = useCallback(() => {
-    if (visibleRowCountMode === TableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {
+    if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {
       const parentElement = analyticalTableRef.current?.parentElement;
       const tableYPosition =
         parentElement &&
@@ -819,7 +834,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [updateRowsCount]);
 
   useEffect(() => {
-    if (tableState.visibleRows !== undefined && visibleRowCountMode === TableVisibleRowCountMode.Fixed) {
+    if (tableState.visibleRows !== undefined && visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Fixed) {
       dispatch({
         type: 'VISIBLE_ROWS',
         payload: { visibleRows: undefined }
@@ -844,7 +859,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const tableBodyHeight = useMemo(() => {
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
-      visibleRowCountMode === TableVisibleRowCountMode.Auto ||
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
       tableState?.interactiveRowsHavePopIn ||
       adjustTableHeightOnPopIn
         ? popInRowHeight
@@ -1094,7 +1109,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rows={rows}
                 handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
-                dataLength={data?.length}
               >
                 <VirtualTableBody
                   classes={classes}
@@ -1135,7 +1149,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             />
           )}
         </FlexBox>
-        {visibleRowCountMode === TableVisibleRowCountMode.Interactive && (
+        {visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Interactive && (
           <VerticalResizer
             popInRowHeight={popInRowHeight}
             hasPopInColumns={tableState?.popInColumns?.length > 0}
@@ -1161,9 +1175,9 @@ AnalyticalTable.defaultProps = {
   sortable: true,
   filterable: false,
   groupable: false,
-  selectionMode: TableSelectionMode.None,
-  selectionBehavior: TableSelectionBehavior.Row,
-  scaleWidthMode: TableScaleWidthMode.Default,
+  selectionMode: AnalyticalTableSelectionMode.None,
+  selectionBehavior: AnalyticalTableSelectionBehavior.Row,
+  scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
   data: [],
   columns: [],
   minRows: 5,
@@ -1183,7 +1197,7 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: TableVisibleRowCountMode.Fixed,
+  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
   alwaysShowSubComponent: false,
   portalContainer: document.body
 };

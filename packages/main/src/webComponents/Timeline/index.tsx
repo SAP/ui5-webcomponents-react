@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
 import { ReactNode } from 'react';
 import { TimelineLayout } from '../../enums';

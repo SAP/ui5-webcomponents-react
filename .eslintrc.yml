@@ -1,20 +1,20 @@
 ---
+root: true
 parser: '@typescript-eslint/parser'
 parserOptions:
+  sourceType: module
   ecmaFeatures:
     jsx: true
 env:
   browser: true
+  es2022: true
 extends:
   - plugin:react/recommended
   - plugin:import/recommended
-  - plugin:import/typescript
   - plugin:prettier/recommended
-  - plugin:storybook/recommended
 plugins:
   - prefer-arrow
   - react-hooks
-  - no-only-tests
 settings:
   react:
     version: detect
@@ -40,12 +40,7 @@ rules:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
-  import/no-unresolved:
-    - 'error'
-    - ignore:
-        - '@ui5/webcomponents-react'
-        - '@ui5/webcomponents-react-base'
-  no-only-tests/no-only-tests: 'error'
+  import/no-unresolved: 'error'
 overrides:
   # add config for all TypeScript files
   - files:
@@ -60,6 +55,10 @@ overrides:
     extends:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+      - 'plugin:import/typescript'
+    settings:
+      import/resolver:
+        typescript: true
     rules:
       # disabled some rules from the recommended preset
       '@typescript-eslint/no-empty-function': 'off'
@@ -77,6 +76,12 @@ overrides:
       '@typescript-eslint/no-unused-vars':
         - 'error'
         - varsIgnorePattern: '^_'
+
+      # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
+      'import/named': 'off'
+      'import/namespace': 'off'
+      'import/default': 'off'
+      'import/no-named-as-default-member': 'off'
 
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
@@ -107,6 +112,8 @@ overrides:
       project:
         - './tsconfig.test.json'
         - './packages/*/tsconfig.json'
+    plugins:
+      - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
       'react/react-in-jsx-scope': 'off'
@@ -115,10 +122,13 @@ overrides:
       'react/no-unescaped-entities': 'off'
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
+      no-only-tests/no-only-tests: 'error'
 
   - files:
       - '*.cy.ts'
       - '*.cy.tsx'
+    plugins:
+      - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
       'react/react-in-jsx-scope': 'off'
@@ -127,3 +137,4 @@ overrides:
       'react/no-unescaped-entities': 'off'
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
+      no-only-tests/no-only-tests: 'error'

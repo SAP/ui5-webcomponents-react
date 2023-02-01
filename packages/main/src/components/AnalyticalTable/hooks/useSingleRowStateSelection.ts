@@ -1,5 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { TableSelectionBehavior, TableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;
@@ -30,17 +30,17 @@ const getRowProps = (rowProps, { row, instance }) => {
       onRowClick(enrichEventWithDetails(e, { row }));
     }
 
-    if (selectionMode === TableSelectionMode.None) {
+    if (selectionMode === AnalyticalTableSelectionMode.None) {
       return;
     }
 
     // don't continue if the row was clicked and selection mode is row selector only
-    if (selectionBehavior === TableSelectionBehavior.RowSelector && !isSelectionCell) {
+    if (selectionBehavior === AnalyticalTableSelectionBehavior.RowSelector && !isSelectionCell) {
       return;
     }
 
     // deselect other rows
-    if (selectionMode === TableSelectionMode.SingleSelect) {
+    if (selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
       for (const selectedRow of selectedFlatRows) {
         if (selectedRow.id !== row.id) {
           toggleRowSelected(selectedRow.id, false);

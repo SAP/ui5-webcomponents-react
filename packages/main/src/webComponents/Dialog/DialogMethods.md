@@ -1,10 +1,10 @@
-## Methods
+## Attributes & Methods
 
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+This component exposes public attributes and methods. You can use them directly on the instance of the component, e.g. by using React Refs.
 
 | Name           | Parameters                                                                                                                                                                | Description                                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | **show**       | <dl><dt className="methodText">**preventInitialFocus**</dt><dd className="methodText">Prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Shows the dialog.                                                                                                |
 | **applyFocus** | &mdash;                                                                                                                                                                   | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise. |
-| **close**      | &mdash;                                                                                                                                                                   | Hides the block layer (for modal popups only)                                                                    |
+| **close**      | &mdash;                                                                                                                                                                   | Closes the popup.                                                                                                |
 | **isOpen**     | &mdash;                                                                                                                                                                   | Tells if the component is opened                                                                                 |

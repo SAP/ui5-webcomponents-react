@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
-import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import dedent from 'dedent';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
 import {
@@ -20,7 +19,13 @@ import {
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
-import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
+import {
+  formatDemoDescription,
+  getDomRefGetters,
+  getDomRefMethods,
+  getDomRefObjects
+} from '../../../scripts/web-component-wrappers/utils.js';
+import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -236,7 +241,7 @@ const getEventParameters = (name, parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...Utils.getTypeDefinitionForProperty(property, true)
+      ...Utils.getTypeDefinitionForProperty(property, { event: true })
     };
   });
 
@@ -446,7 +451,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 
   if (
     componentSpec.extends === 'UI5Element' ||
-    componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
+    componentSpec.extends === 'sap.ui.webc.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
     return { properties, slots, events, methods };
@@ -474,7 +479,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 };
 
 const resolveInheritedAttributes = (componentSpec) => {
-  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webc.base.UI5Element') {
     // no inheritance, just return the component
     return componentSpec;
   }
@@ -502,31 +507,15 @@ const resolveInheritedAttributes = (componentSpec) => {
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
 ].forEach((spec) => {
-  if (!spec.properties) {
-    return;
-  }
-  const properties = spec.properties.map((prop) => {
-    const propDescription = prop.description
-      ? dedent`
-    /**
-     * ${prop.description.replaceAll('\n', '\n * ') ?? ''}
-     */
-    `
-      : '';
-    return dedent`
-    ${propDescription}
-     ${prop.name} = '${prop.type}'`;
-  });
-
   const template = dedent`
   // Generated file - do not change manually! 
   
-  /**
-   * ${replaceTagNameWithModuleName(spec.description ?? spec.basename)}
-   */
-   export enum ${spec.basename} {
-     ${properties.join(',\n\n')}
-   }
+  import ${spec.basename} from '@ui5/webcomponents${componentsFromFioriPackage.has(spec.module) ? '-fiori' : ''}/dist/${
+    spec.resource
+  }';
+  
+  export { ${spec.basename} }
+  
   `;
 
   fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
@@ -547,6 +536,9 @@ const propDescription = (componentSpec, property) => {
 
   if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
     formattedDescription += `
+          *
+          * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (\`slot="${property.name}"\`). 
+          * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
@@ -603,12 +595,11 @@ allWebComponents
           ...tsType
         };
       });
-
     allComponentProperties.push(
       ...(componentSpec.slots || [])
         .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
         .map((property) => {
-          const tsType = Utils.getTypeDefinitionForProperty(property);
+          const tsType = Utils.getTypeDefinitionForProperty(property, { slot: true });
           if (tsType.importStatement) {
             importStatements.push(tsType.importStatement);
           }
@@ -767,13 +758,17 @@ allWebComponents
             formattedDescription
           );
         }
-        // create methods table
-        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
-        if (publicMethods.length) {
-          const formattedMethods = JSON.parse(JSON.stringify(publicMethods).replaceAll(/\\n|<br>/g, ''));
+        // create attributes & methods table
+        const publicMethods = getDomRefMethods(componentSpec);
+        const publicGetters = getDomRefGetters(componentSpec);
+        const publicObjects = getDomRefObjects(componentSpec);
+        const publicProperties = [...publicGetters, ...publicObjects, ...publicMethods];
+
+        if (publicProperties.length) {
+          const formattedProperties = JSON.parse(JSON.stringify(publicProperties).replaceAll(/\\n|<br>/g, ''));
           const methods = `${renderMethods({
             name: componentSpec.module,
-            methods: formattedMethods
+            methods: formattedProperties
           })}`;
           const hasMethodsTable = fs
             .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))

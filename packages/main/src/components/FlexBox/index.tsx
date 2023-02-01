@@ -1,10 +1,7 @@
-import clsx from 'clsx';
-import React, { forwardRef, ReactNode } from 'react';
+import { clsx } from 'clsx';
+import React, { ElementType, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
-import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 
@@ -80,7 +77,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     className
   );
 
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   return (
     <CustomTag ref={ref} className={flexBoxClasses} {...rest}>
       {children}

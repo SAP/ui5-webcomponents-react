@@ -9,7 +9,8 @@ import { Avatar } from '../Avatar';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import '@ui5/webcomponents-icons/dist/upload.js';
+import uploadIcon from '@ui5/webcomponents-icons/dist/upload.js';
+import FileUploaderMethods from './FileUploaderMethods.md';
 
 <Meta
   title="Inputs / FileUploader"
@@ -40,6 +41,8 @@ import '@ui5/webcomponents-icons/dist/upload.js';
 ## Properties
 
 <ArgsTableWithNote story="." />
+
+<FileUploaderMethods />
 
 <br />
 
@@ -96,7 +99,7 @@ import '@ui5/webcomponents-icons/dist/upload.js';
 <Canvas>
   <FlexBox alignItems={FlexBoxAlignItems.Center}>
     <FileUploader hideInput>
-      <Avatar icon="upload" />
+      <Avatar icon={uploadIcon} />
     </FileUploader>
     <FileUploader hideInput>
       <Badge>Upload file</Badge>

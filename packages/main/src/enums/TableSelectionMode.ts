@@ -1,3 +1,6 @@
+/**
+ * @deprecated please use AnalyticalTableSelectionMode instead.
+ */
 export enum TableSelectionMode {
   /**
    * The rows are not selectable.

@@ -3,6 +3,7 @@
 exports[`DateRangePicker Basic Test (generated) 1`] = `
 <DocumentFragment>
   <ui5-daterange-picker
+    delimiter="-"
     ui5-daterange-picker=""
     value-state="None"
   />

@@ -1,6 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
-import { TableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionMode } from '../../../enums';
 
 export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {
@@ -19,7 +19,7 @@ export const useSelectionChangeCallback = (hooks) => {
             allRowsSelected: false
           };
 
-          if (webComponentsReactProperties.selectionMode === TableSelectionMode.MultiSelect) {
+          if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.MultiSelect) {
             const selectedRowIdsArray = Object.entries(selectedRowIds).reduce((acc, [key, val]) => {
               if (val) {
                 return [...acc, key];

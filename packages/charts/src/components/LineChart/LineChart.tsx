@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useCallback, useRef } from 'react';
 import {
@@ -332,7 +334,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension.formatter}
+            tickFormatter={primaryDimension?.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}

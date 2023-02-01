@@ -8,6 +8,7 @@ exports[`Carousel Basic Test (generated) 1`] = `
     items-per-page-l="1"
     items-per-page-m="1"
     items-per-page-s="1"
+    page-indicator-style="Default"
     ui5-carousel=""
   />
 </DocumentFragment>
