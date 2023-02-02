@@ -209,6 +209,14 @@ describe('ObjectStatus', () => {
     const click = cy.spy().as('clickSpy');
     cy.mount(<ObjectStatus onClick={click}>Content</ObjectStatus>);
     cy.findByText('Content').click();
+    cy.get('@clickSpy').should('not.be.called');
+
+    cy.mount(
+      <ObjectStatus onClick={click} active>
+        Content
+      </ObjectStatus>
+    );
+    cy.findByText('Content').click();
     cy.get('@clickSpy').should('have.been.calledOnce');
   });
 
