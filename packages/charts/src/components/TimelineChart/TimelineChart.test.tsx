@@ -32,7 +32,7 @@ describe('TimelineChart', () => {
   it('renders TimelineChart with dataset', () => {
     const { asFragment, container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
     expect(container.childElementCount).toBe(1);
-    expect(container.firstElementChild?.className).toBe('timeline-chart');
+    expect(container.firstElementChild?.firstElementChild?.getAttribute('data-component-name')).toBe('TimelineChart');
     expect(container.firstElementChild?.tagName.toLowerCase()).toBe('div');
     expect(asFragment()).toMatchSnapshot();
   });
@@ -48,7 +48,7 @@ describe('TimelineChart', () => {
 
   it('does not render connection layer when showConnection is false', () => {
     const { asFragment, container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
-    expect(container.querySelectorAll('.timeline-chart-connection-layer').length).toBe(0);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartConnectionLayer"]').length).toBe(0);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -56,13 +56,13 @@ describe('TimelineChart', () => {
     const { asFragment, container } = render(
       <TimelineChart dataset={dummyDataSet} totalDuration={150} showConnection />
     );
-    expect(container.querySelectorAll('.timeline-chart-connection-layer').length).toBe(1);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartConnectionLayer"]').length).toBe(1);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('does not render annotation layer when showAnnotation is false', () => {
     const { asFragment, container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
-    expect(container.querySelectorAll('.timeline-chart-annotation-layer').length).toBe(0);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartAnnotationLayer"]').length).toBe(0);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -70,7 +70,7 @@ describe('TimelineChart', () => {
     const { asFragment, container } = render(
       <TimelineChart dataset={dummyDataSet} totalDuration={150} showAnnotation />
     );
-    expect(container.querySelectorAll('.timeline-chart-annotation-layer').length).toBe(0);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartAnnotationLayer"]').length).toBe(0);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -103,7 +103,7 @@ describe('TimelineChart', () => {
       />
     );
     const { asFragment, container } = render(component);
-    expect(container.querySelectorAll('.timeline-chart-annotation-layer').length).toBe(1);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartAnnotationLayer"]').length).toBe(1);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -123,7 +123,9 @@ describe('TimelineChart', () => {
 
   it('shows the right mouse cursor', () => {
     const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
-    const bodyCon: HTMLDivElement | null = container.querySelector('.timeline-chartbody-container');
+    const bodyCon: HTMLDivElement | null = container.querySelector(
+      '[data-component-name="TimelineChartBodyContainer"]'
+    );
     assert(bodyCon);
     expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_AUTO);
     fireEvent.mouseDown(bodyCon);
@@ -131,7 +133,7 @@ describe('TimelineChart', () => {
     fireEvent.mouseUp(bodyCon);
     expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_AUTO);
 
-    const body = container.querySelector('.timeline-chart-body');
+    const body = container.querySelector('[data-component-name="TimelineChartBody"]');
     assert(body);
     fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
     expect(bodyCon.style.cursor).toBe(MOUSE_CURSOR_GRAB);
@@ -184,14 +186,14 @@ describe('TimelineChartRow', () => {
 
   it('calls showTooltip and hideTooltip when mouse moves on task or milestone', () => {
     const { container } = render(component);
-    const task = container.querySelector('.timeline-chart-task');
+    const task = container.querySelector('[data-component-name="TimelineChartTask"]');
     assert(task);
     fireEvent.mouseMove(task);
     expect(showTooltip).toBeCalled();
     fireEvent.mouseLeave(task);
     expect(hideTooltip).toBeCalled();
 
-    const milestone = container.querySelector('.timeline-chart-milestone');
+    const milestone = container.querySelector('[data-component-name="TimelineChartMilestone"]');
     assert(milestone);
     fireEvent.mouseMove(milestone);
     expect(showTooltip).toBeCalled();
@@ -201,7 +203,7 @@ describe('TimelineChartRow', () => {
 
   it('shows the right opacity on mouseenter and mouseleave', () => {
     const { container } = render(component);
-    const task: SVGRectElement | null = container.querySelector('.timeline-chart-task');
+    const task: SVGRectElement | null = container.querySelector('[data-component-name="TimelineChartTask"]');
     assert(task);
     expect(task.style.opacity).toBe(NORMAL_OPACITY.toString());
     fireEvent.mouseMove(task);
@@ -209,7 +211,9 @@ describe('TimelineChartRow', () => {
     fireEvent.mouseLeave(task);
     expect(task.style.opacity).toBe(NORMAL_OPACITY.toString());
 
-    const milestone: SVGRectElement | null = container.querySelector('.timeline-chart-milestone > rect');
+    const milestone: SVGRectElement | null = container.querySelector(
+      '[data-component-name="TimelineChartMilestone"] > rect'
+    );
     assert(milestone);
     expect(milestone.style.opacity).toBe(NORMAL_OPACITY.toString());
     fireEvent.mouseMove(milestone);
@@ -221,14 +225,14 @@ describe('TimelineChartRow', () => {
 
 describe('TimelineChartBody', () => {
   it('shows tooltip when task is hovered', () => {
-    const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} showTooltip />);
-    expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(0);
-    const task = container.querySelector('.timeline-chart-task');
+    const { container } = render(<TimelineChart dataset={dummyDataSet} totalDuration={150} />);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartTooltip"]').length).toBe(0);
+    const task = container.querySelector('[data-component-name="TimelineChartTask"]');
     assert(task);
     fireEvent.mouseMove(task);
-    expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(1);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartTooltip"]').length).toBe(1);
     fireEvent.mouseLeave(task);
-    expect(container.querySelectorAll('.timeline-chart-tooltip').length).toBe(0);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartTooltip"]').length).toBe(0);
   });
 
   it('scales when the mouse wheel event happens', () => {
@@ -246,7 +250,7 @@ describe('TimelineChartBody', () => {
         resetScroll={() => {}}
       />
     );
-    const body = container.querySelector('.timeline-chart-body');
+    const body = container.querySelector('[data-component-name="TimelineChartBody"]');
     assert(body);
     fireEvent.wheel(body);
     expect(scaleChart).toBeCalledTimes(1);
@@ -268,7 +272,7 @@ describe('TimelineChartBody', () => {
         resetScroll={resetScroll}
       />
     );
-    const body = container.querySelector('.timeline-chart-body');
+    const body = container.querySelector('[data-component-name="TimelineChartBody"]');
     assert(body);
     fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
     fireEvent(body, new WheelEvent('wheel', { deltaY: -1, bubbles: true }));
@@ -291,7 +295,7 @@ describe('TimelineChartLayer', () => {
 
   it('ignores click if ignoreClick is true', () => {
     const { container } = render(<TimelineChartLayer name="test" ignoreClick></TimelineChartLayer>);
-    const content: HTMLDivElement | null = container.querySelector('.test');
+    const content: HTMLDivElement | null = container.querySelector('[data-component-name="test"]');
     assert(content);
     expect(content.style.pointerEvents).toBe('none');
   });
@@ -334,7 +338,7 @@ describe('TimelineChartHeaders', () => {
       />
     );
     expect(container.firstElementChild?.lastElementChild?.tagName.toLocaleLowerCase()).toBe('div');
-    const labels = container.querySelectorAll('.timeline-chart-column-label');
+    const labels = container.querySelectorAll('[data-component-name="TimelineChartColumnLabel"]');
     expect(labels.length).toBe(totalDuration);
     expect(labels[0].textContent).toBe(start.toString());
   });
@@ -352,7 +356,9 @@ describe('TimelineChartGrid', () => {
         rowHeight={20}
       />
     );
-    expect(container.querySelectorAll('.timeline-chart-gridv').length).toBe(DEFAULT_CHART_VERTICAL_COLS - 1);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartGridv"]').length).toBe(
+      DEFAULT_CHART_VERTICAL_COLS - 1
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -368,7 +374,7 @@ describe('TimelineChartGrid', () => {
         rowHeight={20}
       />
     );
-    expect(container.querySelectorAll('.timeline-chart-gridv').length).toBe(totalDuration - 1);
+    expect(container.querySelectorAll('[data-component-name="TimelineChartGridv"]').length).toBe(totalDuration - 1);
     expect(asFragment()).toMatchSnapshot();
   });
 });
