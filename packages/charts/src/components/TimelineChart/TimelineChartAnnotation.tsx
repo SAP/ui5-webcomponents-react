@@ -56,7 +56,13 @@ const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotati
     };
 
     return (
-      <div ref={ref} className={`timeline-chart-annotation ${classes.annotation}`} {...rest} style={style}>
+      <div
+        ref={ref}
+        className={classes.annotation}
+        {...rest}
+        style={style}
+        data-component-name="TimelineChartAnnotation"
+      >
         {figure}
       </div>
     );

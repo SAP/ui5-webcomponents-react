@@ -76,7 +76,7 @@ const generateDiscreteVGridLines = (numOfSegments: number): ReactElement[] => {
     const segmentOffset = segmentSizePercent * i;
     gridLineArray.push(
       <line
-        className="timeline-chart-gridv"
+        data-component-name="TimelineChartGridv"
         x1={`${segmentOffset}%`}
         y1="0"
         x2={`${segmentOffset}%`}
@@ -103,7 +103,7 @@ const generateNonDiscreteVGridLines = (width: number, verticalSegmentWidth: numb
   while (remaining >= 2 * verticalSegmentWidth - TOLERANCE) {
     gridLineArray.push(
       <line
-        className="timeline-chart-gridv"
+        data-component-name="TimelineChartGridv"
         x1={`${covered}`}
         y1="0"
         x2={`${covered}`}

@@ -99,8 +99,8 @@ const TimelineChartBody = ({
   const showArrows = () => setDisplayArrows(true);
 
   return (
-    <div ref={bodyRef} className={`timeline-chart-body ${classes.chartBody}`} style={style}>
-      <TimelineChartLayer name="timeline-chart-grid-layer" ignoreClick>
+    <div data-component-name="TimelineChartBody" ref={bodyRef} className={classes.chartBody} style={style}>
+      <TimelineChartLayer name="TimelineChartGridLayer" ignoreClick>
         <TimelineChartGrid
           isDiscrete={isDiscrete}
           numOfRows={numOfItems}
@@ -112,7 +112,7 @@ const TimelineChartBody = ({
       </TimelineChartLayer>
 
       {showConnection && displayArrows ? (
-        <TimelineChartLayer name="timeline-chart-connection-layer" ignoreClick>
+        <TimelineChartLayer name="TimelineChartConnectionLayer" ignoreClick>
           <TimelineChartConnections
             dataSet={dataset}
             width={width}
@@ -122,7 +122,7 @@ const TimelineChartBody = ({
         </TimelineChartLayer>
       ) : null}
 
-      <TimelineChartLayer name="timeline-chart-rows-layer" ignoreClick>
+      <TimelineChartLayer name="TimelineChartRowsLayer" ignoreClick>
         <TimelineChartRowGroup
           dataset={dataset}
           rowHeight={rowHeight}
@@ -135,7 +135,7 @@ const TimelineChartBody = ({
       </TimelineChartLayer>
 
       {showAnnotation && annotations != null ? (
-        <TimelineChartLayer name="timeline-chart-annotation-layer" isAnnotation ignoreClick>
+        <TimelineChartLayer name="TimelineChartAnnotationLayer" isAnnotation ignoreClick>
           <TimelineChartBodyCtx.Provider value={{ chartBodyWidth: width }}>{annotations}</TimelineChartBodyCtx.Provider>
         </TimelineChartLayer>
       ) : null}
@@ -210,10 +210,11 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   }));
 
   return (
-    <div className={`timeline-chart-tooltip-container ${classes.tooltipContainer}`} ref={divRef}>
+    <div data-component-name="TimelineChartTooltipContainer" className={classes.tooltipContainer} ref={divRef}>
       {state.visible ? (
         <span
-          className={`timeline-chart-tooltip ${classes.tooltip}`}
+          data-component-name="TimelineChartTooltip"
+          className={classes.tooltip}
           ref={popupRef}
           style={{
             left: state.x,

@@ -145,7 +145,7 @@ const TimelineTask = ({
   // equal gap at the bottom with the bottom grid line.
   return (
     <rect
-      className="timeline-chart-task"
+      data-component-name="TimelineChartTask"
       id={id}
       x={`${((startTime - timelineStart) / totalDuration) * 100}%`}
       y="10%"
@@ -261,7 +261,7 @@ const TimelineMilestone = ({
   // equal gap at the bottom with the bottom grid line.
   return (
     <svg
-      className="timeline-chart-milestone"
+      data-component-name="TimelineChartMilestone"
       x={`${((time - timelineStart) / totalDuration) * 100}%`}
       y="10%"
       height="80%"

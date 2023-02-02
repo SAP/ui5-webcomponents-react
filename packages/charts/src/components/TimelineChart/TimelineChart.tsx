@@ -237,7 +237,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
 
     return (
       <div ref={fRef} {...rest}>
-        <div className={`timeline-chart ${classes.main}`} ref={ref} style={style}>
+        <div className={classes.main} ref={ref} style={style} data-component-name="TimelineChart">
           <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
             <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
             <TimelineChartRowLabels
@@ -248,7 +248,8 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             />
           </div>
           <div
-            className={`timeline-chartbody-container ${classes.bodyContainer}`}
+            data-component-name="TimelineChartBodyContainer"
+            className={classes.bodyContainer}
             ref={bodyConRef}
             style={{
               width: unscaledBodyWidth,

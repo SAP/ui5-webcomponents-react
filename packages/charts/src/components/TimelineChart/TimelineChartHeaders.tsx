@@ -99,7 +99,12 @@ const TimelineChartColumnLabel = ({
         >
           {labelArray.map((label, index) => {
             return (
-              <span className={`timeline-chart-column-label ${classes.onlyOutline}`} key={index} title={`${label}`}>
+              <span
+                data-component-name="TimelineChartColumnLabel"
+                className={classes.onlyOutline}
+                key={index}
+                title={`${label}`}
+              >
                 {label}
               </span>
             );
