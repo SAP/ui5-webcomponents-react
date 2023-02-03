@@ -81,7 +81,8 @@ const Panel = withWebComponent<PanelPropTypes, PanelDomRef>(
   ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
   ['collapsed', 'fixed', 'noAnimation'],
   ['header'],
-  ['toggle']
+  ['toggle'],
+  '@ui5/webcomponents/dist/Panel.js'
 );
 
 Panel.displayName = 'Panel';

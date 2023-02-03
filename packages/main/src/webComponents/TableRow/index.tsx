@@ -54,7 +54,8 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ['type'],
   ['navigated', 'selected'],
   [],
-  []
+  [],
+  '@ui5/webcomponents/dist/TableRow.js'
 );
 
 TableRow.displayName = 'TableRow';

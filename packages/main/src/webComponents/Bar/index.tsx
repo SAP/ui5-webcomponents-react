@@ -58,7 +58,14 @@ export interface BarPropTypes extends BarAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Bar" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Bar = withWebComponent<BarPropTypes, BarDomRef>('ui5-bar', ['design'], [], ['endContent', 'startContent'], []);
+const Bar = withWebComponent<BarPropTypes, BarDomRef>(
+  'ui5-bar',
+  ['design'],
+  [],
+  ['endContent', 'startContent'],
+  [],
+  '@ui5/webcomponents-fiori/dist/Bar.js'
+);
 
 Bar.displayName = 'Bar';
 

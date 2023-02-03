@@ -146,7 +146,8 @@ const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open']
+  ['after-close', 'after-open', 'before-close', 'before-open'],
+  '@ui5/webcomponents/dist/Dialog.js'
 );
 
 Dialog.displayName = 'Dialog';

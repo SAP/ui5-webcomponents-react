@@ -87,7 +87,8 @@ const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>
   ['layout', 'menuHorizontalAlign', 'menuVerticalAlign'],
   ['interactiveDisplayArea', 'showAllThumbnails'],
   [],
-  ['display-area-click', 'overflow-click', 'selection-change']
+  ['display-area-click', 'overflow-click', 'selection-change'],
+  '@ui5/webcomponents-fiori/dist/MediaGallery.js'
 );
 
 MediaGallery.displayName = 'MediaGallery';

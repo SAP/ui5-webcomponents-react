@@ -76,7 +76,8 @@ const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   ['value', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
-  ['change', 'input']
+  ['change', 'input'],
+  '@ui5/webcomponents/dist/Slider.js'
 );
 
 Slider.displayName = 'Slider';

@@ -78,7 +78,8 @@ const Page = withWebComponent<PagePropTypes, PageDomRef>(
   ['backgroundDesign'],
   ['disableScrolling', 'floatingFooter', 'hideFooter'],
   ['footer', 'header'],
-  []
+  [],
+  '@ui5/webcomponents-fiori/dist/Page.js'
 );
 
 Page.displayName = 'Page';

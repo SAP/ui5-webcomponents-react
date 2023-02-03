@@ -58,7 +58,8 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   ['accessibleName', 'additionalText', 'icon', 'text'],
   ['disabled', 'startsSection'],
   [],
-  []
+  [],
+  '@ui5/webcomponents/dist/MenuItem.js'
 );
 
 MenuItem.displayName = 'MenuItem';

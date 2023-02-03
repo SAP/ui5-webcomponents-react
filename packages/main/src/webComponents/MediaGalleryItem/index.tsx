@@ -61,7 +61,8 @@ const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGaller
   ['layout'],
   ['disabled', 'selected'],
   ['thumbnail'],
-  []
+  [],
+  '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js'
 );
 
 MediaGalleryItem.displayName = 'MediaGalleryItem';

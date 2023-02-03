@@ -59,7 +59,8 @@ const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   ['for', 'wrappingType'],
   ['required', 'showColon'],
   [],
-  []
+  [],
+  '@ui5/webcomponents/dist/Label.js'
 );
 
 Label.displayName = 'Label';

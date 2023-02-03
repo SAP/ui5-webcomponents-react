@@ -34,7 +34,8 @@ const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>
   [],
   [],
   [],
-  ['item-click']
+  ['item-click'],
+  '@ui5/webcomponents/dist/ColorPalette.js'
 );
 
 ColorPalette.displayName = 'ColorPalette';

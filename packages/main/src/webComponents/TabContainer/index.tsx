@@ -122,7 +122,8 @@ const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>
   ['contentBackgroundDesign', 'headerBackgroundDesign', 'tabLayout', 'tabsOverflowMode'],
   ['collapsed', 'fixed', 'showOverflow'],
   ['overflowButton', 'startOverflowButton'],
-  ['tab-select']
+  ['tab-select'],
+  '@ui5/webcomponents/dist/TabContainer.js'
 );
 
 TabContainer.displayName = 'TabContainer';

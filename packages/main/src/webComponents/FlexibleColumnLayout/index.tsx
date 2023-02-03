@@ -146,7 +146,8 @@ const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, Fle
   ['layout'],
   ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
-  ['layout-change']
+  ['layout-change'],
+  '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js'
 );
 
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';

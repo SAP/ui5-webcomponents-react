@@ -58,7 +58,8 @@ const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsIt
   ['accessibleName', 'href', 'target'],
   [],
   [],
-  []
+  [],
+  '@ui5/webcomponents/dist/BreadcrumbsItem.js'
 );
 
 BreadcrumbsItem.displayName = 'BreadcrumbsItem';

@@ -32,7 +32,8 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemO
   ['text'],
   ['selected'],
   [],
-  []
+  [],
+  '@ui5/webcomponents-fiori/dist/FilterItemOption.js'
 );
 
 FilterItemOption.displayName = 'FilterItemOption';

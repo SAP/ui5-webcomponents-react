@@ -27,7 +27,14 @@ export interface SortItemPropTypes extends SortItemAttributes, CommonProps {}
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ViewSettingsDialog" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>('ui5-sort-item', ['text'], ['selected'], [], []);
+const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>(
+  'ui5-sort-item',
+  ['text'],
+  ['selected'],
+  [],
+  [],
+  '@ui5/webcomponents-fiori/dist/SortItem.js'
+);
 
 SortItem.displayName = 'SortItem';
 

@@ -42,7 +42,8 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>
   ['count', 'icon', 'text'],
   [],
   [],
-  ['click']
+  ['click'],
+  '@ui5/webcomponents-fiori/dist/ShellBarItem.js'
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

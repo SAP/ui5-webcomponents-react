@@ -28,7 +28,8 @@ const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, Sugge
   ['text'],
   [],
   [],
-  []
+  [],
+  '@ui5/webcomponents/dist/SuggestionGroupItem.js'
 );
 
 SuggestionGroupItem.displayName = 'SuggestionGroupItem';

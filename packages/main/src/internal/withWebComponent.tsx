@@ -13,6 +13,7 @@ import React, {
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
+import { useServerSideEffect } from './useServerSideEffect';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils';
 
 const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
@@ -35,14 +36,13 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
-  eventProperties: string[]
+  eventProperties: string[],
+  importSpecifier: string
 ) => {
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
   return forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
     const { className, children, waitForDefine, ...rest } = props;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
     const [componentRef, ref] = useSyncRef<RefType>(wcRef);
     const tagNameSuffix: string = getEffectiveScopingSuffixForTag(tagName);
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
@@ -50,6 +50,10 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
+
+    useServerSideEffect(() => {
+      import(importSpecifier);
+    });
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {

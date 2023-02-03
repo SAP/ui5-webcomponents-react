@@ -195,7 +195,8 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch', 'showSearchField'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
-  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click']
+  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click'],
+  '@ui5/webcomponents-fiori/dist/ShellBar.js'
 );
 
 ShellBar.displayName = 'ShellBar';

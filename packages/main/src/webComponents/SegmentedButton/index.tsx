@@ -50,7 +50,8 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
   ['accessibleName'],
   [],
   [],
-  ['selection-change']
+  ['selection-change'],
+  '@ui5/webcomponents/dist/SegmentedButton.js'
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

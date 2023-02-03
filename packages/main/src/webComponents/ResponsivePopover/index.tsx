@@ -183,7 +183,8 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open']
+  ['after-close', 'after-open', 'before-close', 'before-open'],
+  '@ui5/webcomponents/dist/ResponsivePopover.js'
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';

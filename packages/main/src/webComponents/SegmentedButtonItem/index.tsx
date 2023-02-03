@@ -83,7 +83,8 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, Segme
   ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
   ['pressed', 'disabled'],
   [],
-  ['click']
+  ['click'],
+  '@ui5/webcomponents/dist/SegmentedButtonItem.js'
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';

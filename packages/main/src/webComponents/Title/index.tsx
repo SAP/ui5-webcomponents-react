@@ -39,7 +39,14 @@ export interface TitlePropTypes extends TitleAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Title = withWebComponent<TitlePropTypes, TitleDomRef>('ui5-title', ['level', 'wrappingType'], [], [], []);
+const Title = withWebComponent<TitlePropTypes, TitleDomRef>(
+  'ui5-title',
+  ['level', 'wrappingType'],
+  [],
+  [],
+  [],
+  '@ui5/webcomponents/dist/Title.js'
+);
 
 Title.displayName = 'Title';
 
