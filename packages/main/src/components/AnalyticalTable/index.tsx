@@ -1081,7 +1081,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
-                    uniqueId={uniqueId}
                     columnVirtualizer={columnVirtualizer}
                     scaleXFactor={scaleXFactor}
                   />

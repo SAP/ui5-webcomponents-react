@@ -1,11 +1,10 @@
 import { boot } from '@ui5/webcomponents-base/dist/Boot.js';
-import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { addCustomCSS } from '@ui5/webcomponents-base/dist/Theming.js';
+import { getUi5TagWithSuffix } from './utils';
 
 export const addCustomCSSWithScoping = (baseTagName: string, customCSS: string) => {
   boot().then(() => {
-    const tagNameSuffix: string = getEffectiveScopingSuffixForTag(baseTagName);
-    const finalTag: string = tagNameSuffix ? `${baseTagName}-${tagNameSuffix}` : baseTagName;
+    const finalTag = getUi5TagWithSuffix(baseTagName);
     addCustomCSS(finalTag, customCSS);
   });
 };
