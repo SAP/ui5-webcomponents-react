@@ -177,7 +177,7 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input'],
-  '@ui5/webcomponents/dist/DatePicker.js'
+  () => import('@ui5/webcomponents/dist/DatePicker.js')
 );
 
 DatePicker.displayName = 'DatePicker';

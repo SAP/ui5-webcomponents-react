@@ -49,7 +49,7 @@ const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Bar
   [],
   [],
   ['scan-error', 'scan-success'],
-  '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js'
+  () => import('@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js')
 );
 
 BarcodeScannerDialog.displayName = 'BarcodeScannerDialog';

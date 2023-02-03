@@ -40,7 +40,7 @@ const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes, Group
   ['selected'],
   [],
   [],
-  '@ui5/webcomponents/dist/GroupHeaderListItem.js'
+  () => import('@ui5/webcomponents/dist/GroupHeaderListItem.js')
 );
 
 GroupHeaderListItem.displayName = 'GroupHeaderListItem';

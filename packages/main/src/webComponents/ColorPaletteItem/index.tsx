@@ -32,7 +32,7 @@ const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPalett
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/ColorPaletteItem.js'
+  () => import('@ui5/webcomponents/dist/ColorPaletteItem.js')
 );
 
 ColorPaletteItem.displayName = 'ColorPaletteItem';

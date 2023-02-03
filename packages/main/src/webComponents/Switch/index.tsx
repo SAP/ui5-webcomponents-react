@@ -78,7 +78,7 @@ const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   ['checked', 'disabled'],
   [],
   ['change'],
-  '@ui5/webcomponents/dist/Switch.js'
+  () => import('@ui5/webcomponents/dist/Switch.js')
 );
 
 Switch.displayName = 'Switch';

@@ -119,7 +119,7 @@ const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomD
   ['hideSelectionElement', 'expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['content', 'deleteButton'],
   ['detail-click'],
-  '@ui5/webcomponents/dist/TreeItemCustom.js'
+  () => import('@ui5/webcomponents/dist/TreeItemCustom.js')
 );
 
 TreeItemCustom.displayName = 'TreeItemCustom';

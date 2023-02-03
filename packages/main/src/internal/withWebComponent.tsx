@@ -40,7 +40,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   booleanProperties: string[],
   slotProperties: string[],
   eventProperties: string[],
-  importSpecifier: string
+  loader: () => Promise<unknown>
 ) => {
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
@@ -55,7 +55,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
 
     useServerSideEffect(() => {
-      import(importSpecifier);
+      void loader();
     });
 
     // regular props (no booleans, no slots and no events)

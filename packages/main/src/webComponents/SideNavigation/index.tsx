@@ -67,7 +67,7 @@ const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationD
   ['collapsed'],
   ['fixedItems', 'header'],
   ['selection-change'],
-  '@ui5/webcomponents-fiori/dist/SideNavigation.js'
+  () => import('@ui5/webcomponents-fiori/dist/SideNavigation.js')
 );
 
 SideNavigation.displayName = 'SideNavigation';

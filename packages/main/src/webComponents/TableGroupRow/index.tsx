@@ -31,7 +31,7 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomR
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/TableGroupRow.js'
+  () => import('@ui5/webcomponents/dist/TableGroupRow.js')
 );
 
 TableGroupRow.displayName = 'TableGroupRow';

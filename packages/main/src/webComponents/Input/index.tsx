@@ -195,7 +195,7 @@ const Input = withWebComponent<InputPropTypes, InputDomRef>(
   ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
-  '@ui5/webcomponents/dist/Input.js'
+  () => import('@ui5/webcomponents/dist/Input.js')
 );
 
 Input.displayName = 'Input';

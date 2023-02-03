@@ -35,7 +35,7 @@ const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>
   [],
   [],
   ['item-click'],
-  '@ui5/webcomponents/dist/ColorPalette.js'
+  () => import('@ui5/webcomponents/dist/ColorPalette.js')
 );
 
 ColorPalette.displayName = 'ColorPalette';

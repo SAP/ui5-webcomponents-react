@@ -153,7 +153,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
   ['load-more', 'popin-change', 'row-click', 'selection-change'],
-  '@ui5/webcomponents/dist/Table.js'
+  () => import('@ui5/webcomponents/dist/Table.js')
 );
 
 Table.displayName = 'Table';

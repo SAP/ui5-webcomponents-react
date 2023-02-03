@@ -82,7 +82,7 @@ const Panel = withWebComponent<PanelPropTypes, PanelDomRef>(
   ['collapsed', 'fixed', 'noAnimation'],
   ['header'],
   ['toggle'],
-  '@ui5/webcomponents/dist/Panel.js'
+  () => import('@ui5/webcomponents/dist/Panel.js')
 );
 
 Panel.displayName = 'Panel';

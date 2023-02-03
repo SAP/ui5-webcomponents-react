@@ -33,7 +33,7 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/ComboBoxItem.js'
+  () => import('@ui5/webcomponents/dist/ComboBoxItem.js')
 );
 
 ComboBoxItem.displayName = 'ComboBoxItem';

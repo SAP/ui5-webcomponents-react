@@ -38,7 +38,7 @@ const {{name}} = withWebComponent<{{name}}PropTypes, {{name}}DomRef>(
   {{{convertToStringArray booleanProps }}},
   {{{convertToStringArray slotProps }}},
   {{{convertToStringArray eventProps }}},
-  '{{{importSpecifier}}}'
+  () => import('{{{importSpecifier}}}')
 );
 
 {{name}}.displayName = '{{name}}';

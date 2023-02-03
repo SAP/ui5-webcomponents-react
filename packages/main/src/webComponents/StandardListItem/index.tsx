@@ -109,7 +109,7 @@ const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardLis
   ['iconEnd', 'navigated', 'selected'],
   ['imageContent', 'deleteButton'],
   ['detail-click'],
-  '@ui5/webcomponents/dist/StandardListItem.js'
+  () => import('@ui5/webcomponents/dist/StandardListItem.js')
 );
 
 StandardListItem.displayName = 'StandardListItem';

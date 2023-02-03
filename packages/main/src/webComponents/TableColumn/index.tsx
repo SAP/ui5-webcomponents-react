@@ -58,7 +58,7 @@ const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   ['demandPopin'],
   [],
   [],
-  '@ui5/webcomponents/dist/TableColumn.js'
+  () => import('@ui5/webcomponents/dist/TableColumn.js')
 );
 
 TableColumn.displayName = 'TableColumn';

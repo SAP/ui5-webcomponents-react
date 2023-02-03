@@ -132,7 +132,7 @@ const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, Upl
   ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'navigated', 'selected'],
   ['thumbnail', 'deleteButton'],
   ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click'],
-  '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/UploadCollectionItem.js')
 );
 
 UploadCollectionItem.displayName = 'UploadCollectionItem';

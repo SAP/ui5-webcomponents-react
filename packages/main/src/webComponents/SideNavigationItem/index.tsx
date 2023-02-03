@@ -54,7 +54,7 @@ const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNav
   ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/SideNavigationItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')
 );
 
 SideNavigationItem.displayName = 'SideNavigationItem';

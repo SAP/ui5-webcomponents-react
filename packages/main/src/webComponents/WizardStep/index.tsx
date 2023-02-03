@@ -69,7 +69,7 @@ const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   ['branching', 'disabled', 'selected'],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/WizardStep.js'
+  () => import('@ui5/webcomponents-fiori/dist/WizardStep.js')
 );
 
 WizardStep.displayName = 'WizardStep';

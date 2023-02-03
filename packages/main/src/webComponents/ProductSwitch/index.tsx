@@ -30,7 +30,7 @@ const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomR
   [],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/ProductSwitch.js'
+  () => import('@ui5/webcomponents-fiori/dist/ProductSwitch.js')
 );
 
 ProductSwitch.displayName = 'ProductSwitch';

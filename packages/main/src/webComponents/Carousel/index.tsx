@@ -93,7 +93,7 @@ const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
   ['navigate'],
-  '@ui5/webcomponents/dist/Carousel.js'
+  () => import('@ui5/webcomponents/dist/Carousel.js')
 );
 
 Carousel.displayName = 'Carousel';

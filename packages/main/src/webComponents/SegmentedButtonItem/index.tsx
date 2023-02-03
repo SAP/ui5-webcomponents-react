@@ -84,7 +84,7 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, Segme
   ['pressed', 'disabled'],
   [],
   ['click'],
-  '@ui5/webcomponents/dist/SegmentedButtonItem.js'
+  () => import('@ui5/webcomponents/dist/SegmentedButtonItem.js')
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';

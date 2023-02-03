@@ -220,7 +220,7 @@ const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   ['showValueHelpIcon', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
   ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
-  '@ui5/webcomponents/dist/MultiInput.js'
+  () => import('@ui5/webcomponents/dist/MultiInput.js')
 );
 
 MultiInput.displayName = 'MultiInput';

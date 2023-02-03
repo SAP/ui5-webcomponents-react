@@ -86,7 +86,7 @@ const Tab = withWebComponent<TabPropTypes, TabDomRef>(
   ['disabled', 'selected'],
   ['subTabs'],
   [],
-  '@ui5/webcomponents/dist/Tab.js'
+  () => import('@ui5/webcomponents/dist/Tab.js')
 );
 
 Tab.displayName = 'Tab';

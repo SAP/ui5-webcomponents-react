@@ -76,7 +76,7 @@ const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   ['open'],
   [],
   ['after-close', 'after-open', 'before-close', 'before-open', 'item-click'],
-  '@ui5/webcomponents/dist/Menu.js'
+  () => import('@ui5/webcomponents/dist/Menu.js')
 );
 
 Menu.displayName = 'Menu';

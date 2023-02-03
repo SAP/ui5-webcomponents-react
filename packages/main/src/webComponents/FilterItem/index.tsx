@@ -45,7 +45,7 @@ const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   [],
   ['values'],
   [],
-  '@ui5/webcomponents-fiori/dist/FilterItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/FilterItem.js')
 );
 
 FilterItem.displayName = 'FilterItem';

@@ -38,7 +38,7 @@ const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   [],
   [],
   ['change'],
-  '@ui5/webcomponents/dist/ColorPicker.js'
+  () => import('@ui5/webcomponents/dist/ColorPicker.js')
 );
 
 ColorPicker.displayName = 'ColorPicker';

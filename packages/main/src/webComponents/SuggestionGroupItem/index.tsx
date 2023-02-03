@@ -29,7 +29,7 @@ const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, Sugge
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/SuggestionGroupItem.js'
+  () => import('@ui5/webcomponents/dist/SuggestionGroupItem.js')
 );
 
 SuggestionGroupItem.displayName = 'SuggestionGroupItem';

@@ -57,7 +57,7 @@ const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   ['disabled', 'selected'],
   [],
   [],
-  '@ui5/webcomponents/dist/Option.js'
+  () => import('@ui5/webcomponents/dist/Option.js')
 );
 
 Option.displayName = 'Option';

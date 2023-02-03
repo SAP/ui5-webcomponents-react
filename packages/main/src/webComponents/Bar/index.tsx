@@ -64,7 +64,7 @@ const Bar = withWebComponent<BarPropTypes, BarDomRef>(
   [],
   ['endContent', 'startContent'],
   [],
-  '@ui5/webcomponents-fiori/dist/Bar.js'
+  () => import('@ui5/webcomponents-fiori/dist/Bar.js')
 );
 
 Bar.displayName = 'Bar';

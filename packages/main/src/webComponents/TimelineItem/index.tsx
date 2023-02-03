@@ -60,7 +60,7 @@ const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>
   ['nameClickable'],
   [],
   ['name-click'],
-  '@ui5/webcomponents-fiori/dist/TimelineItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/TimelineItem.js')
 );
 
 TimelineItem.displayName = 'TimelineItem';

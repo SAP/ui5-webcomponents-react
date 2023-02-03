@@ -29,7 +29,7 @@ const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/CalendarDate.js'
+  () => import('@ui5/webcomponents/dist/CalendarDate.js')
 );
 
 CalendarDate.displayName = 'CalendarDate';

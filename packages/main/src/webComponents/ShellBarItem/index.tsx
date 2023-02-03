@@ -43,7 +43,7 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>
   [],
   [],
   ['click'],
-  '@ui5/webcomponents-fiori/dist/ShellBarItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/ShellBarItem.js')
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

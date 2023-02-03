@@ -70,7 +70,7 @@ const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
   ['interactive'],
   ['action', 'avatar'],
   ['click'],
-  '@ui5/webcomponents/dist/CardHeader.js'
+  () => import('@ui5/webcomponents/dist/CardHeader.js')
 );
 
 CardHeader.displayName = 'CardHeader';

@@ -51,7 +51,7 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
   [],
   [],
   ['selection-change'],
-  '@ui5/webcomponents/dist/SegmentedButton.js'
+  () => import('@ui5/webcomponents/dist/SegmentedButton.js')
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

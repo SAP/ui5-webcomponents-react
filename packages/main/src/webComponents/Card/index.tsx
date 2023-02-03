@@ -52,7 +52,7 @@ const Card = withWebComponent<CardPropTypes, CardDomRef>(
   [],
   ['header'],
   [],
-  '@ui5/webcomponents/dist/Card.js'
+  () => import('@ui5/webcomponents/dist/Card.js')
 );
 
 Card.displayName = 'Card';

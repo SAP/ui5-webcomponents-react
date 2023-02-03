@@ -45,7 +45,7 @@ const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>(
   [],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/Timeline.js'
+  () => import('@ui5/webcomponents-fiori/dist/Timeline.js')
 );
 
 Timeline.displayName = 'Timeline';

@@ -33,7 +33,7 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemO
   ['selected'],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/FilterItemOption.js'
+  () => import('@ui5/webcomponents-fiori/dist/FilterItemOption.js')
 );
 
 FilterItemOption.displayName = 'FilterItemOption';

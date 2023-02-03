@@ -68,7 +68,7 @@ const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemD
   ['iconEnd'],
   [],
   [],
-  '@ui5/webcomponents/dist/SuggestionItem.js'
+  () => import('@ui5/webcomponents/dist/SuggestionItem.js')
 );
 
 SuggestionItem.displayName = 'SuggestionItem';

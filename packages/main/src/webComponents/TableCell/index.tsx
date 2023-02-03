@@ -30,7 +30,7 @@ const TableCell = withWebComponent<TableCellPropTypes, TableCellDomRef>(
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/TableCell.js'
+  () => import('@ui5/webcomponents/dist/TableCell.js')
 );
 
 TableCell.displayName = 'TableCell';

@@ -79,7 +79,7 @@ const Page = withWebComponent<PagePropTypes, PageDomRef>(
   ['disableScrolling', 'floatingFooter', 'hideFooter'],
   ['footer', 'header'],
   [],
-  '@ui5/webcomponents-fiori/dist/Page.js'
+  () => import('@ui5/webcomponents-fiori/dist/Page.js')
 );
 
 Page.displayName = 'Page';

@@ -125,7 +125,7 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change'],
-  '@ui5/webcomponents/dist/StepInput.js'
+  () => import('@ui5/webcomponents/dist/StepInput.js')
 );
 
 StepInput.displayName = 'StepInput';

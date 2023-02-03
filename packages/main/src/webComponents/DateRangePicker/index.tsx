@@ -186,7 +186,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input'],
-  '@ui5/webcomponents/dist/DateRangePicker.js'
+  () => import('@ui5/webcomponents/dist/DateRangePicker.js')
 );
 
 DateRangePicker.displayName = 'DateRangePicker';

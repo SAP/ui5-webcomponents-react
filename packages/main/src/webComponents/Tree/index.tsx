@@ -120,7 +120,7 @@ const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   [],
   ['header'],
   ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change'],
-  '@ui5/webcomponents/dist/Tree.js'
+  () => import('@ui5/webcomponents/dist/Tree.js')
 );
 
 Tree.displayName = 'Tree';

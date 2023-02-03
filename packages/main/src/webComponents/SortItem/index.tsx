@@ -33,7 +33,7 @@ const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>(
   ['selected'],
   [],
   [],
-  '@ui5/webcomponents-fiori/dist/SortItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/SortItem.js')
 );
 
 SortItem.displayName = 'SortItem';

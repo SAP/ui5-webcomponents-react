@@ -61,7 +61,7 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicat
   ['disabled', 'readonly'],
   [],
   ['change'],
-  '@ui5/webcomponents/dist/RatingIndicator.js'
+  () => import('@ui5/webcomponents/dist/RatingIndicator.js')
 );
 
 RatingIndicator.displayName = 'RatingIndicator';

@@ -29,7 +29,7 @@ const ComboBoxGroupItem = withWebComponent<ComboBoxGroupItemPropTypes, ComboBoxG
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/ComboBoxGroupItem.js'
+  () => import('@ui5/webcomponents/dist/ComboBoxGroupItem.js')
 );
 
 ComboBoxGroupItem.displayName = 'ComboBoxGroupItem';

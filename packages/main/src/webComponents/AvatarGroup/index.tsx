@@ -79,7 +79,7 @@ const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   [],
   ['overflowButton'],
   ['click', 'overflow'],
-  '@ui5/webcomponents/dist/AvatarGroup.js'
+  () => import('@ui5/webcomponents/dist/AvatarGroup.js')
 );
 
 AvatarGroup.displayName = 'AvatarGroup';

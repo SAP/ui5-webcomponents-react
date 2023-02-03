@@ -49,7 +49,7 @@ const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>(
   [],
   ['icon'],
   [],
-  '@ui5/webcomponents/dist/Badge.js'
+  () => import('@ui5/webcomponents/dist/Badge.js')
 );
 
 Badge.displayName = 'Badge';

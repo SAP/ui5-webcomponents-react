@@ -67,7 +67,7 @@ const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSw
   [],
   [],
   ['click'],
-  '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/ProductSwitchItem.js')
 );
 
 ProductSwitchItem.displayName = 'ProductSwitchItem';

@@ -39,7 +39,7 @@ const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>(
   [],
   [],
   ['step-change'],
-  '@ui5/webcomponents-fiori/dist/Wizard.js'
+  () => import('@ui5/webcomponents-fiori/dist/Wizard.js')
 );
 
 Wizard.displayName = 'Wizard';

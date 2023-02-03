@@ -29,7 +29,7 @@ const TabSeparator = withWebComponent<TabSeparatorPropTypes, TabSeparatorDomRef>
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/TabSeparator.js'
+  () => import('@ui5/webcomponents/dist/TabSeparator.js')
 );
 
 TabSeparator.displayName = 'TabSeparator';

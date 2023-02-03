@@ -138,7 +138,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomR
   ['allowCustomValues', 'disabled', 'noTypeahead', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change'],
-  '@ui5/webcomponents/dist/MultiComboBox.js'
+  () => import('@ui5/webcomponents/dist/MultiComboBox.js')
 );
 
 MultiComboBox.displayName = 'MultiComboBox';

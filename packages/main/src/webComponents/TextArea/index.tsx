@@ -148,7 +148,7 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],
   ['change', 'input'],
-  '@ui5/webcomponents/dist/TextArea.js'
+  () => import('@ui5/webcomponents/dist/TextArea.js')
 );
 
 TextArea.displayName = 'TextArea';

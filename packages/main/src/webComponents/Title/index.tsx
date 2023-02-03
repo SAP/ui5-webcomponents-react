@@ -45,7 +45,7 @@ const Title = withWebComponent<TitlePropTypes, TitleDomRef>(
   [],
   [],
   [],
-  '@ui5/webcomponents/dist/Title.js'
+  () => import('@ui5/webcomponents/dist/Title.js')
 );
 
 Title.displayName = 'Title';

@@ -73,7 +73,7 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change'],
-  '@ui5/webcomponents/dist/Calendar.js'
+  () => import('@ui5/webcomponents/dist/Calendar.js')
 );
 
 Calendar.displayName = 'Calendar';

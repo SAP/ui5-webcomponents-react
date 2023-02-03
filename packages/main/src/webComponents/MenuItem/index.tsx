@@ -59,7 +59,7 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   ['disabled', 'startsSection'],
   [],
   [],
-  '@ui5/webcomponents/dist/MenuItem.js'
+  () => import('@ui5/webcomponents/dist/MenuItem.js')
 );
 
 MenuItem.displayName = 'MenuItem';

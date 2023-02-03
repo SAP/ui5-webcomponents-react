@@ -62,7 +62,7 @@ const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGaller
   ['disabled', 'selected'],
   ['thumbnail'],
   [],
-  '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js'
+  () => import('@ui5/webcomponents-fiori/dist/MediaGalleryItem.js')
 );
 
 MediaGalleryItem.displayName = 'MediaGalleryItem';

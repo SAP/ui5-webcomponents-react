@@ -87,7 +87,7 @@ const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSet
   ['sortDescending'],
   ['filterItems', 'sortItems'],
   ['before-open', 'cancel', 'confirm'],
-  '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js'
+  () => import('@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js')
 );
 
 ViewSettingsDialog.displayName = 'ViewSettingsDialog';
