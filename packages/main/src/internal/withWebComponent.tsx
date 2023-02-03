@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useSyncRef } from '@ui5/webcomponents-react-base/dist/hooks/useSyncRef';
 import React, {
   Children,
   cloneElement,
@@ -9,12 +9,15 @@ import React, {
   ReactElement,
   Ref,
   useEffect,
+  useLayoutEffect,
   useState
 } from 'react';
 import { CommonProps } from '../interfaces/CommonProps';
 import { Ui5DomRef } from '../interfaces/Ui5DomRef';
 import { useServerSideEffect } from './useServerSideEffect';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils';
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
