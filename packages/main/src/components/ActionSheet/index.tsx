@@ -3,13 +3,13 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
+import React, { forwardRef, ReactElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { flattenFragments } from '../../internal/utils';
+import { flattenFragments, isSSR } from '../../internal/utils';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { UI5WCSlotsNode } from '../../types';
 import {
@@ -65,7 +65,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-if (isPhone()) {
+if (!isSSR() && isPhone()) {
   addCustomCSSWithScoping(
     'ui5-responsive-popover',
     `
@@ -142,7 +142,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     modal,
     placementType,
     portalContainer,
-    showCancelButton,
+    showCancelButton = true,
     slot,
     style,
     verticalAlign,
@@ -163,6 +163,11 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenToRender = flattenFragments(children);
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
+
+  const [canRender, setCanRender] = useState(false);
+  useEffect(() => {
+    setCanRender(true);
+  }, []);
 
   const handleCancelBtnClick = () => {
     popoverRef.current.close();
@@ -213,6 +218,10 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     }
   };
 
+  if (!canRender) {
+    return null;
+  }
+
   const displayHeader = isPhone();
   return createPortal(
     <ResponsivePopover
@@ -260,14 +269,9 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
         )}
       </div>
     </ResponsivePopover>,
-    portalContainer
+    portalContainer ?? document.body
   );
 });
-
-ActionSheet.defaultProps = {
-  showCancelButton: true,
-  portalContainer: document.body
-};
 
 ActionSheet.displayName = 'ActionSheet';
 

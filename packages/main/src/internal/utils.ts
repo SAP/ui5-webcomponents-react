@@ -31,3 +31,5 @@ export const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + 
 export const lowercaseFirstLetter = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
 export const camelToKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b: string) => `-${b.toLowerCase()}`);
 export const kebabToCamelCase = (str: string) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+
+export const isSSR = () => typeof window === 'undefined';
