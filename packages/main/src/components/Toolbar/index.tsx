@@ -112,6 +112,8 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  *
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
+ *
+ * __Note:__ The overflow popover is mounted only when opened, i.e., any child component of the popover will be remounted, when moved into it.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
