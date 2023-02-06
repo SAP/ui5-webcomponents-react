@@ -18,6 +18,7 @@ import { Title } from '../Title';
 import { ResponsivePopover } from './index';
 import { isChromatic } from '../../../../../.storybook/utils';
 import ResponsivePopoverMethods from './ResponsivePopoverMethods.md';
+import { MessageStrip } from '../MessageStrip';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -111,6 +112,37 @@ const MyComponentWithPopover = () => {
           setResponsivePopoverIsOpen(false);
         }}
       />
+    </>
+  );
+};
+```
+
+**Opening a `ResponsivePopover` by reference and not by `id`**
+
+The web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
+You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
+
+<MessageStrip hideCloseButton>
+  Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!
+</MessageStrip>
+
+```jsx
+const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const handleOpenerClick = (e) => {
+    if (popoverRef.current) {
+      popoverRef.current.opener = e.target;
+      setOpen((prev) => !prev);
+    }
+  };
+  return (
+    <>
+      <Button onClick={handleOpenerClick}>Opener</Button>
+      <ResponsivePopover ref={popoverRef} open={open}>
+        {/* Content */}
+      </ResponsivePopover>
     </>
   );
 };
