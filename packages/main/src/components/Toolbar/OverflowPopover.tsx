@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-icons/dist/overflow.js';
+import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
@@ -115,7 +115,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         <ToggleButton
           ref={toggleBtnRef}
           design={ButtonDesign.Transparent}
-          icon="overflow"
+          icon={iconOverflow}
           onClick={handleToggleButtonClick}
           pressed={pressed}
           accessibleName={showMoreText}

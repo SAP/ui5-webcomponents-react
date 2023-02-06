@@ -1,10 +1,6 @@
 'use client';
 
-import '@ui5/webcomponents-icons/dist/alert.js';
-import '@ui5/webcomponents-icons/dist/error.js';
-import '@ui5/webcomponents-icons/dist/information.js';
-import '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import '@ui5/webcomponents-icons/dist/sys-enter-2.js';
+import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, {
@@ -257,7 +253,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
               {showDetailsPageHeader && (
                 <Bar
                   startContent={
-                    <Button design={ButtonDesign.Transparent} icon="slim-arrow-left" onClick={navigateBack} />
+                    <Button design={ButtonDesign.Transparent} icon={iconSlimArrowLeft} onClick={navigateBack} />
                   }
                 />
               )}
