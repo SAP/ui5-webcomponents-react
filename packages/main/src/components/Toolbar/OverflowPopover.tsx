@@ -1,11 +1,12 @@
-import '@ui5/webcomponents-icons/dist/overflow.js';
-import { Device, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import overflowIcon from '@ui5/webcomponents-icons/dist/overflow.js';
+import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType } from '../../enums';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { stopPropagation } from '../../internal/stopPropagation';
+import { getUi5TagWithSuffix } from '../../internal/utils';
 import {
   ButtonPropTypes,
   Popover,
@@ -17,7 +18,7 @@ import {
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
-  classes: any;
+  classes: Record<string, string>;
   children: ReactNode[];
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
@@ -41,17 +42,21 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowPopoverRef,
     overflowButton
   } = props;
-  const uniqueId = useIsomorphicId();
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
+  const [componentRef, popoverRef] = useSyncRef(overflowPopoverRef);
 
   const handleToggleButtonClick = (e) => {
     e.stopPropagation();
-    if (!pressed) {
-      setPressed(true);
-    } else {
-      setPressed(false);
-    }
+    setPressed((prev) => {
+      if (!prev) {
+        if (popoverRef.current) {
+          popoverRef.current.opener = e.target;
+        }
+        return true;
+      }
+      return false;
+    });
   };
 
   const handleBeforeOpen = () => {
@@ -91,7 +96,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   }, [children, lastVisibleIndex]);
 
   useEffect(() => {
-    customElements.whenDefined('ui5-toggle-button').then(() => {
+    const tagName = getUi5TagWithSuffix('ui5-toggle-button');
+    customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
         toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
@@ -110,26 +116,24 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       {overflowButton ? (
-        cloneElement(overflowButton, { onClick: clonedOverflowButtonClick, id: overflowButton?.props?.id ?? uniqueId })
+        cloneElement(overflowButton, { onClick: clonedOverflowButtonClick })
       ) : (
         <ToggleButton
           ref={toggleBtnRef}
           design={ButtonDesign.Transparent}
-          icon="overflow"
+          icon={overflowIcon}
           onClick={handleToggleButtonClick}
           pressed={pressed}
           accessibleName={showMoreText}
           tooltip={showMoreText}
-          id={uniqueId}
         />
       )}
       {createPortal(
         <Popover
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
-          ref={overflowPopoverRef}
+          ref={componentRef}
           open={pressed}
-          opener={overflowButton?.props?.id ?? uniqueId}
           onAfterClose={handleClose}
           onBeforeOpen={handleBeforeOpen}
           onAfterOpen={handleAfterOpen}
