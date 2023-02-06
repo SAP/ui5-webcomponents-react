@@ -190,7 +190,6 @@ exports[`Toolbar overflow menu 1`] = `
           accessible-name="Show more"
           design="Transparent"
           icon="overflow"
-          id="1337"
           tooltip="Show more"
           ui5-toggle-button=""
         />
@@ -201,7 +200,6 @@ exports[`Toolbar overflow menu 1`] = `
     class="Toolbar-popover"
     hide-arrow="true"
     horizontal-align="Center"
-    opener="1337"
     placement-type="Bottom"
     ui5-popover=""
     vertical-align="Center"

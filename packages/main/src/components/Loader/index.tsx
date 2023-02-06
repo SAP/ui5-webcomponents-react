@@ -2,7 +2,7 @@
 
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { CSSProperties, forwardRef, useEffect, useMemo, useState } from 'react';
+import React, { CSSProperties, forwardRef, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { LoaderType } from '../../enums/LoaderType';
 import { PLEASE_WAIT } from '../../i18n/i18n-defaults';
@@ -38,14 +38,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
   const [isVisible, setIsVisible] = useState(delay === 0);
 
   const loaderClasses = clsx(classes.loader, className, classes[`loader${type}`]);
-
-  const inlineStyles = useMemo(() => {
-    const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
-    return {
-      ...style,
-      backgroundSize
-    };
-  }, [progress, style, type]);
+  const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
 
   useEffect(() => {
     let timeout;
@@ -74,7 +67,10 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
       role="progressbar"
       title={i18nBundle.getText(PLEASE_WAIT)}
       slot={slot}
-      style={inlineStyles}
+      style={{
+        ...style,
+        backgroundSize
+      }}
       {...rest}
     />
   );
