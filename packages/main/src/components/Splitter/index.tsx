@@ -1,5 +1,7 @@
 'use client';
 
+import horizontalGripIcon from '@ui5/webcomponents-icons/dist/horizontal-grip.js';
+import verticalGripIcon from '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import {
   CssSizeVariables,
   ThemingParameters,
@@ -398,11 +400,11 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
         <Button
           className={classes.gripButton}
           tabIndex={-1}
-          icon={vertical ? 'horizontal-grip' : 'vertical-grip'}
+          icon={vertical ? horizontalGripIcon : verticalGripIcon}
           design={ButtonDesign.Transparent}
         />
       ) : (
-        <Icon className={classes.icon} name={vertical ? 'horizontal-grip' : 'vertical-grip'} />
+        <Icon className={classes.icon} name={vertical ? horizontalGripIcon : verticalGripIcon} />
       )}
       <div className={classes.lineAfter} />
     </div>
