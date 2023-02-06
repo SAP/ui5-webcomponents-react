@@ -126,10 +126,12 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           pressed={pressed}
           accessibleName={showMoreText}
           tooltip={showMoreText}
+          data-component-name="ToolbarOverflowButton"
         />
       )}
       {createPortal(
         <Popover
+          data-component-name="ToolbarOverflowPopover"
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
