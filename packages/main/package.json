@@ -22,7 +22,7 @@
     "build:i18n": "node scripts/generateI18n.mjs"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "3.0.0-beta.18",
+    "@tanstack/react-virtual": "3.0.0-beta.43",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "1.2.1",
     "react-jss": "^10.9.0",
