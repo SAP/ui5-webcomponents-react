@@ -66,13 +66,13 @@ export interface ObjectStatusPropTypes extends CommonProps {
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon name={errorIcon} />;
+      return <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Success:
-      return <Icon name={successIcon} />;
+      return <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Warning:
-      return <Icon name={alertIcon} />;
+      return <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Information:
-      return <Icon name={informationIcon} />;
+      return <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" />;
     default:
       return null;
   }
