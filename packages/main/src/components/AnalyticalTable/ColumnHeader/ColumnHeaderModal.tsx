@@ -1,4 +1,8 @@
-import '@ui5/webcomponents-icons/dist/decline.js';
+import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
+import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
+import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
+import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
+import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { MutableRefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -184,22 +188,22 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     >
       <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
         {isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
         {showSort && !isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon="sort-ascending" data-sort="asc">
+          <StandardListItem type={ListItemType.Active} icon={iconSortAscending} data-sort="asc">
             {sortAscendingText}
           </StandardListItem>
         )}
         {showSort && !isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon="sort-descending" data-sort="desc">
+          <StandardListItem type={ListItemType.Active} icon={iconSortDescending} data-sort="desc">
             {sortDescendingText}
           </StandardListItem>
         )}
         {isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
@@ -211,13 +215,13 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
             onKeyDown={handleCustomLiKeyDown}
           >
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
-              <Icon name="filter" className={classes.filterIcon} />
+              <Icon name={iconFilter} className={classes.filterIcon} />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
           </CustomListItem>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemType.Active} icon="group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemType.Active} icon={iconGroup} data-sort={'group'}>
             {column.isGrouped ? ungroupText : groupText}
           </StandardListItem>
         )}
