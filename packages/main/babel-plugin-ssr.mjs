@@ -20,7 +20,7 @@ export default function (babel) {
         }
       },
       ExpressionStatement(path, state) {
-        if (state.opts.mode !== 'ssr') {
+        if (state.opts.mode === 'client' || state.opts.mode === 'wrapper') {
           // remove dynamic web component import when not building for ssr
           if (
             path.node.expression.type === 'CallExpression' &&
