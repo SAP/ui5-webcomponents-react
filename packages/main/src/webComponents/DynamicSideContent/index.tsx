@@ -106,7 +106,8 @@ const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, Dynamic
   ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
   ['equalSplit', 'hideMainContent', 'hideSideContent'],
   ['sideContent'],
-  ['layout-change']
+  ['layout-change'],
+  () => import('@ui5/webcomponents-fiori/dist/DynamicSideContent.js')
 );
 
 DynamicSideContent.displayName = 'DynamicSideContent';

@@ -65,7 +65,8 @@ const CustomListItem = withWebComponent<CustomListItemPropTypes, CustomListItemD
   ['accessibleName', 'type'],
   ['navigated', 'selected'],
   ['deleteButton'],
-  ['detail-click']
+  ['detail-click'],
+  () => import('@ui5/webcomponents/dist/CustomListItem.js')
 );
 
 CustomListItem.displayName = 'CustomListItem';

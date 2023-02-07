@@ -44,7 +44,8 @@ const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   ['additionalText', 'text'],
   [],
   ['values'],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/FilterItem.js')
 );
 
 FilterItem.displayName = 'FilterItem';

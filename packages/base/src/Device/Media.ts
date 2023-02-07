@@ -68,6 +68,14 @@ function initMediaQueries() {
 // public API
 
 export const getCurrentRange = (width?: number): RangeInfo => {
+  if (typeof window === 'undefined') {
+    return {
+      from: 1024,
+      to: 1439,
+      name: 'Desktop',
+      unit: 'px'
+    };
+  }
   // @ts-expect-error: width can only be undefined or a number, therefore `isNaN` works here
   return resolveRangeInfo(UI5MediaRange.getCurrentRange(DEFAULT_RANGE_SET, isNaN(width) ? undefined : width));
 };

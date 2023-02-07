@@ -55,7 +55,8 @@ const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
   ['text'],
   ['readonly', 'selected'],
   ['closeIcon'],
-  ['select']
+  ['select'],
+  () => import('@ui5/webcomponents/dist/Token.js')
 );
 
 Token.displayName = 'Token';
