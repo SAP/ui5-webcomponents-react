@@ -1,7 +1,14 @@
-import '@ui5/webcomponents-react/dist/Assets.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
-import { useState } from 'react';
-import { Toolbar, Button, Text, Input } from '@ui5/webcomponents-react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import '@ui5/webcomponents-react/dist/Assets.js';
+import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
+import { useRef, useState } from 'react';
+import { ButtonDesign, ToolbarDesign } from '../../enums';
+import { cssVarToRgb } from '../../internal/utils';
+import { PopoverDomRef, ToggleButton } from '../../webComponents';
+import { ToolbarSeparator } from '../ToolbarSeparator';
+import { ToolbarSpacer } from '../ToolbarSpacer';
+import { Button, Input, Text, Toolbar, ToolbarStyle } from '@ui5/webcomponents-react';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -53,13 +60,16 @@ const OverflowTestComponent = (props: PropTypes) => {
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
         </Text>
+        <ToolbarSpacer data-testid="spacer1" />
         <Text data-testid="toolbar-item2" style={{ width: '200px' }}>
           Item2
         </Text>
         <Text data-testid="toolbar-item3" style={{ width: '200px' }}>
           Item3
         </Text>
+        <ToolbarSpacer data-testid="spacer2" />
         {additionalChildren}
+        <ToolbarSeparator data-testid="separator" />
       </Toolbar>
     </>
   );
@@ -114,8 +124,7 @@ describe('Toolbar', () => {
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item3"]').should('not.be.visible');
 
-    // open
-    cy.get(`[tooltip="Show more"]`).click().as('Open Overflow Popover');
+    cy.get(`[ui5-toggle-button]`).click().as('open');
 
     cy.findByText('Item1').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('be.visible');
@@ -123,9 +132,7 @@ describe('Toolbar', () => {
 
     cy.viewport(500, 500);
 
-    // fuzzy - remount component instead
-    // cy.get(`[tooltip="Show more"]`).click().as('Close Overflow Popover');
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    cy.get(`[ui5-toggle-button]`).click().as('Close Overflow Popover');
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
@@ -177,6 +184,17 @@ describe('Toolbar', () => {
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 17);
+
+    cy.get(`[ui5-toggle-button]`).click();
+
+    // ToolbarSpacers should not be visible in the popover
+    cy.get('[data-component-name="ToolbarOverflowPopover"]')
+      .findByTestId('spacer2')
+      .should('not.be.visible', { timeout: 100 });
+    cy.findByTestId('spacer1').should('exist');
+
+    // ToolbarSeparator should be displayed with horizontal line
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').findByTestId('separator').should('be.visible');
   });
 
   it('Toolbar click', () => {
@@ -211,6 +229,191 @@ describe('Toolbar', () => {
     cy.get('@onClickSpy').should('have.been.calledThrice');
   });
 
+  it('ToolbarSpacer', () => {
+    cy.mount(
+      <Toolbar>
+        <Text>Item1</Text>
+        <ToolbarSpacer data-testid="spacer" />
+        <Text>Item2</Text>
+        <Text>Item3</Text>
+      </Toolbar>
+    );
+    cy.findByTestId('spacer').should('have.class', 'spacer').should('have.css', 'flex-grow', '1');
+  });
+
+  it('ToolbarSeparator', () => {
+    cy.mount(
+      <Toolbar>
+        <Text>Item1</Text>
+        <ToolbarSeparator />
+        <Text>Item2</Text>
+        <Text>Item3</Text>
+      </Toolbar>
+    );
+    cy.findByLabelText('Separator').should('be.visible');
+  });
+
+  it('toolbarStyle', () => {
+    cy.mount(
+      <Toolbar data-testid="tb">
+        <Text>Item1</Text>
+        <Text>Item2</Text>
+      </Toolbar>
+    );
+    cy.findByTestId('tb').should('have.css', 'border-bottom-style', 'solid');
+    cy.mount(
+      <Toolbar data-testid="tb" toolbarStyle={ToolbarStyle.Clear}>
+        <Text>Item1</Text>
+        <Text>Item2</Text>
+      </Toolbar>
+    );
+    cy.findByTestId('tb').should('have.css', 'border-bottom-style', 'none');
+  });
+
+  Object.values(ToolbarDesign).forEach((design) => {
+    it(`Design: ${design}`, () => {
+      cy.mount(
+        <Toolbar data-testid="tb" design={design}>
+          <Text>Item1</Text>
+          <Text>Item2</Text>
+        </Toolbar>
+      );
+      let height = '44px'; //2.75rem
+      let background = 'rgba(0, 0, 0, 0)'; // transparent
+      let color = 'rgb(0, 0, 0)';
+
+      console.log(design);
+      switch (design) {
+        case 'Info':
+          height = '32px'; // 2rem
+          background = cssVarToRgb(ThemingParameters.sapInfobar_NonInteractive_Background);
+          color = cssVarToRgb(ThemingParameters.sapList_TextColor);
+          break;
+        case 'Solid':
+          background = cssVarToRgb(ThemingParameters.sapBackgroundColor);
+          break;
+      }
+      cy.findByTestId('tb')
+        .should('have.css', 'height', height)
+        .should('have.css', 'background-color', background)
+        .should('have.css', 'color', color);
+    });
+  });
+
+  it('Design: Info (active)', () => {
+    cy.mount(
+      <Toolbar data-testid="tb" design={ToolbarDesign.Info} active>
+        <Text>Item1</Text>
+        <Text>Item2</Text>
+      </Toolbar>
+    );
+    cy.findByTestId('tb')
+      .should('have.css', 'background-color', cssVarToRgb(ThemingParameters.sapInfobar_Background))
+      .should('have.css', 'color', cssVarToRgb(ThemingParameters.sapInfobar_TextColor));
+  });
+
+  it('always visible items', () => {
+    cy.mount(
+      <Toolbar data-testid="toolbar" style={{ width: '50px' }}>
+        <Text data-testid="tbi" style={{ width: '100px' }}>
+          Item1
+        </Text>
+        <Text data-testid="tbi" style={{ width: '100px' }}>
+          Item2
+        </Text>
+        <Text data-testid="tbi" style={{ width: '100px' }}>
+          Item3
+        </Text>
+      </Toolbar>
+    );
+    cy.wait(200);
+    cy.findAllByTestId('tbi').each(($el) => {
+      cy.wrap($el).should('not.be.visible');
+    });
+    cy.get(`[ui5-toggle-button]`).click();
+    cy.get('[data-component-name="ToolbarOverflowPopover"]')
+      .findAllByTestId('tbi')
+      .each(($el) => {
+        cy.wrap($el).should('be.visible');
+      });
+
+    cy.mount(
+      <Toolbar data-testid="toolbar" style={{ width: '50px' }} numberOfAlwaysVisibleItems={2}>
+        <Text data-testid="tbiV" style={{ width: '100px' }}>
+          Item1
+        </Text>
+        <Text data-testid="tbiV" style={{ width: '100px' }}>
+          Item2
+        </Text>
+        <Text data-testid="tbi" style={{ width: '100px' }}>
+          Item3
+        </Text>
+      </Toolbar>
+    );
+    cy.wait(200);
+    cy.findAllByTestId('tbiV').each(($el) => {
+      cy.wrap($el).should('be.visible');
+    });
+    cy.get('[data-testid="tbi"]').should('not.be.visible');
+    cy.get(`[ui5-toggle-button]`).click();
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').findByTestId('tbi').should('be.visible');
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').findAllByTestId('tbiV').should('not.exist');
+  });
+
+  it('close on interaction', () => {
+    const TestComp = () => {
+      const popoverRef = useRef<PopoverDomRef>(null);
+      return (
+        <Toolbar overflowPopoverRef={popoverRef} style={{ width: '50px' }}>
+          <Button
+            onClick={() => {
+              popoverRef.current.close();
+            }}
+          >
+            Close
+          </Button>
+        </Toolbar>
+      );
+    };
+
+    cy.mount(<TestComp />);
+    cy.get(`[ui5-toggle-button]`).click();
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').findByText('Close').click();
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').should('not.be.visible');
+  });
+
+  it('a11y', () => {
+    cy.mount(
+      <Toolbar style={{ width: '50px' }}>
+        <Button>Button One</Button>
+        <Input />
+      </Toolbar>
+    );
+
+    cy.get(`[ui5-toggle-button]`)
+      .find('button')
+      .should('have.attr', 'aria-expanded', 'false')
+      .should('have.attr', 'aria-haspopup', 'menu')
+      .click();
+
+    cy.get(`[ui5-toggle-button]`).find('button').should('have.attr', 'aria-expanded', 'true');
+  });
+
+  it('custom overflow button', () => {
+    cy.mount(
+      <Toolbar
+        style={{ width: '50px' }}
+        overflowButton={<ToggleButton data-testid="btn" icon={menu2Icon} design={ButtonDesign.Transparent} />}
+      >
+        <Button>Button One</Button>
+        <Input />
+      </Toolbar>
+    );
+    cy.get('[data-component-name="ToolbarOverflowButton"]').should('not.exist');
+    cy.findByTestId('btn').should('be.visible').click();
+    cy.get('[data-component-name="ToolbarOverflowPopover"]').should('be.visible');
+  });
+
   it('Toolbar active use outline or shadow', () => {
     cy.mount(
       <Toolbar active data-testid="tb">
@@ -237,4 +440,7 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
+
+  //todo mountWithCustomTagName
+  //todo pass through props test
 });

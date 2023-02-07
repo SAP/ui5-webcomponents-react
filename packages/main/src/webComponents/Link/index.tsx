@@ -105,7 +105,8 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'wrappingType'],
   ['disabled'],
   [],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents/dist/Link.js')
 );
 
 Link.displayName = 'Link';

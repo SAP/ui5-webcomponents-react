@@ -1,6 +1,6 @@
-import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ValueState, IndicationColor } from '../../enums';
+import { cssVarToRgb } from '../../internal/utils';
 import { Icon } from '../../webComponents';
 import { ObjectStatus } from './index';
 
@@ -146,12 +146,6 @@ const statesWithCSSVars: {
     }
   }
 ];
-
-const cssVarToRgb = (cssVar) => {
-  const cssVarValue = getComputedStyle(document.documentElement).getPropertyValue(cssVar.match(/(--)[^)]+/)[0]);
-  const rgbVal = getRGBColor(cssVarValue);
-  return `rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
-};
 
 describe('ObjectStatus', () => {
   statesWithCSSVars.forEach((stateObj) => {

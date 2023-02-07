@@ -66,7 +66,8 @@ const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   ['design', 'separatorStyle'],
   [],
   [],
-  ['item-click']
+  ['item-click'],
+  () => import('@ui5/webcomponents/dist/Breadcrumbs.js')
 );
 
 Breadcrumbs.displayName = 'Breadcrumbs';

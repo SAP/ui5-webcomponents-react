@@ -1,0 +1,14 @@
+[production]
+last 2 Safari versions
+last 2 Chrome versions
+last 2 Edge versions
+last 2 Firefox versions
+last 2 iOS versions
+last 2 ChromeAndroid versions
+last 2 FirefoxAndroid versions
+
+[development]
+last 1 chrome version
+last 1 edge version
+last 1 safari version
+last 1 firefox version

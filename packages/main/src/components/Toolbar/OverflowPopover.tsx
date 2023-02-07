@@ -1,4 +1,4 @@
-import overflowIcon from '@ui5/webcomponents-icons/dist/overflow.js';
+import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
@@ -121,15 +121,17 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         <ToggleButton
           ref={toggleBtnRef}
           design={ButtonDesign.Transparent}
-          icon={overflowIcon}
+          icon={iconOverflow}
           onClick={handleToggleButtonClick}
           pressed={pressed}
           accessibleName={showMoreText}
           tooltip={showMoreText}
+          data-component-name="ToolbarOverflowButton"
         />
       )}
       {createPortal(
         <Popover
+          data-component-name="ToolbarOverflowPopover"
           className={clsx(classes.popover, isPhone && classes.popoverPhone)}
           placementType={PopoverPlacementType.Bottom}
           ref={componentRef}
