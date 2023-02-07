@@ -50,7 +50,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             style="left: 60px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -93,7 +92,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             style="left: 120px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -136,7 +134,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             style="left: 180px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -179,7 +176,6 @@ exports[`AnalyticalTable Alternate Row Color 1`] = `
             style="left: 237px; transform: translateX(-50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
           >
             <div
@@ -615,7 +611,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             style="left: 60px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -658,7 +653,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             style="left: 120px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -701,7 +695,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             style="left: 180px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -744,7 +737,6 @@ exports[`AnalyticalTable Loading - Loader 1`] = `
             style="left: 237px; transform: translateX(-50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
           >
             <div
@@ -1180,7 +1172,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             style="left: 60px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -1223,7 +1214,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             style="left: 120px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -1266,7 +1256,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             style="left: 180px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -1309,7 +1298,6 @@ exports[`AnalyticalTable Loading - Placeholder 1`] = `
             style="left: 237px; transform: translateX(-50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
           >
             <div
@@ -1583,7 +1571,6 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               style="right: 60px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -1626,7 +1613,6 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               style="right: 120px; transform: translateX(50%);"
             />
             <div
-              id="age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
             >
               <div
@@ -1669,7 +1655,6 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               style="right: 180px; transform: translateX(50%);"
             />
             <div
-              id="friend.name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
             >
               <div
@@ -1712,7 +1697,6 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               style="right: 240px; transform: translateX(50%);"
             />
             <div
-              id="friend.age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
             >
               <div
@@ -1749,7 +1733,6 @@ exports[`AnalyticalTable RTL: navigation indicator column 1`] = `
               </div>
             </div>
             <div
-              id="__ui5wcr__internal_navigation_column-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
             >
               <div
@@ -2058,7 +2041,6 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins & hidden column 1`] = `
               style="right: 597px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -2449,7 +2431,6 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
               style="right: 400px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -2492,7 +2473,6 @@ exports[`AnalyticalTable RTL: pop-in columns: w/ pop-ins 1`] = `
               style="right: 797px; transform: translateX(50%);"
             />
             <div
-              id="age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
             >
               <div
@@ -2967,7 +2947,6 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               style="right: 60px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -3010,7 +2989,6 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               style="right: 120px; transform: translateX(50%);"
             />
             <div
-              id="age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
             >
               <div
@@ -3053,7 +3031,6 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               style="right: 180px; transform: translateX(50%);"
             />
             <div
-              id="friend.name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
             >
               <div
@@ -3096,7 +3073,6 @@ exports[`AnalyticalTable RTL: test drag and drop of a draggable column 1`] = `
               style="right: 237px; transform: translateX(50%);"
             />
             <div
-              id="friend.age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
             >
               <div
@@ -3529,7 +3505,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
             style="width: 1020px;"
           >
             <div
-              id="__ui5wcr__internal_highlight_column-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -3565,7 +3540,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               </div>
             </div>
             <div
-              id="__ui5wcr__internal_selection_column-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
             >
               <div
@@ -3604,7 +3578,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               style="right: 113px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
             >
               <div
@@ -3647,7 +3620,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               style="right: 173px; transform: translateX(50%);"
             />
             <div
-              id="age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
             >
               <div
@@ -3690,7 +3662,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               style="right: 233px; transform: translateX(50%);"
             />
             <div
-              id="friend.name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
             >
               <div
@@ -3733,7 +3704,6 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
               style="right: 290px; transform: translateX(50%);"
             />
             <div
-              id="friend.age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-850px);"
             >
               <div
@@ -4094,7 +4064,6 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               style="right: 60px; transform: translateX(50%);"
             />
             <div
-              id="age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
             >
               <div
@@ -4136,7 +4105,6 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               style="right: 120px; transform: translateX(50%);"
             />
             <div
-              id="friend.age-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
             >
               <div
@@ -4179,7 +4147,6 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               style="right: 180px; transform: translateX(50%);"
             />
             <div
-              id="friend.name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
             >
               <div
@@ -4221,7 +4188,6 @@ exports[`AnalyticalTable RTL: with initial column order 1`] = `
               style="right: 237px; transform: translateX(50%);"
             />
             <div
-              id="name-1337"
               style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
             >
               <div
@@ -4649,7 +4615,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
           style="width: 850px;"
         >
           <div
-            id="__ui5wcr__internal_selection_column-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -4696,7 +4661,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="left: 107px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -4739,7 +4703,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="left: 167px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -4782,7 +4745,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="left: 227px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
           >
             <div
@@ -4825,7 +4787,6 @@ exports[`AnalyticalTable Tree Table 1`] = `
             style="left: 284px; transform: translateX(-50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(680px);"
           >
             <div
@@ -5372,7 +5333,6 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
           style="width: 850px;"
         >
           <div
-            id="__ui5wcr__internal_selection_column-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -5411,7 +5371,6 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             style="right: 107px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -5454,7 +5413,6 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             style="right: 167px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -5497,7 +5455,6 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             style="right: 227px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -5540,7 +5497,6 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
             style="right: 284px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
           >
             <div
@@ -6045,7 +6001,6 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             style="right: 60px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -6088,7 +6043,6 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             style="right: 120px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -6131,7 +6085,6 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             style="right: 180px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -6174,7 +6127,6 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             style="right: 240px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -6211,7 +6163,6 @@ exports[`AnalyticalTable navigation indicator column 1`] = `
             </div>
           </div>
           <div
-            id="__ui5wcr__internal_navigation_column-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
           >
             <div
@@ -6509,7 +6460,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
           style="width: 850px;"
         >
           <div
-            id="__ui5wcr__internal_selection_column-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -6548,7 +6498,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             style="right: 107px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -6591,7 +6540,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             style="right: 167px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -6634,7 +6582,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             style="right: 227px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -6677,7 +6624,6 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
             style="right: 284px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
           >
             <div
@@ -7005,7 +6951,6 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins & hidden column 1`] = `
             style="right: 597px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -7392,7 +7337,6 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
             style="right: 400px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -7435,7 +7379,6 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 1`] = `
             style="right: 797px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -7895,7 +7838,6 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
             style="right: 400px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -7938,7 +7880,6 @@ exports[`AnalyticalTable pop-in columns: w/ pop-ins 2`] = `
             style="right: 797px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -8376,7 +8317,6 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
             style="left: 60px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -8419,7 +8359,6 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
             style="left: 120px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -8462,7 +8401,6 @@ exports[`AnalyticalTable render custom Cell & Header 1`] = `
             style="left: 177px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -8817,7 +8755,6 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             style="right: 60px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -8860,7 +8797,6 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             style="right: 120px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -8903,7 +8839,6 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             style="right: 180px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -8946,7 +8881,6 @@ exports[`AnalyticalTable render subcomponents 1`] = `
             style="right: 237px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -9456,7 +9390,6 @@ exports[`AnalyticalTable render without data 1`] = `
             style="right: 60px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -9499,7 +9432,6 @@ exports[`AnalyticalTable render without data 1`] = `
             style="right: 120px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -9542,7 +9474,6 @@ exports[`AnalyticalTable render without data 1`] = `
             style="right: 180px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -9585,7 +9516,6 @@ exports[`AnalyticalTable render without data 1`] = `
             style="right: 237px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -9689,7 +9619,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="right: 60px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -9732,7 +9661,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="right: 120px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -9775,7 +9703,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="right: 180px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -9818,7 +9745,6 @@ exports[`AnalyticalTable test drag and drop of a draggable column 1`] = `
             style="right: 237px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -10247,7 +10173,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
           style="width: 1020px;"
         >
           <div
-            id="__ui5wcr__internal_highlight_column-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -10283,7 +10208,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
             </div>
           </div>
           <div
-            id="__ui5wcr__internal_selection_column-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -10322,7 +10246,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="right: 113px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -10365,7 +10288,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="right: 173px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div
@@ -10408,7 +10330,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="right: 233px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-680px);"
           >
             <div
@@ -10451,7 +10372,6 @@ exports[`AnalyticalTable with highlight row 1`] = `
             style="right: 290px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-850px);"
           >
             <div
@@ -10808,7 +10728,6 @@ exports[`AnalyticalTable with initial column order 1`] = `
             style="left: 60px; transform: translateX(-50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(0px);"
           >
             <div
@@ -10850,7 +10769,6 @@ exports[`AnalyticalTable with initial column order 1`] = `
             style="left: 120px; transform: translateX(-50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(170px);"
           >
             <div
@@ -10893,7 +10811,6 @@ exports[`AnalyticalTable with initial column order 1`] = `
             style="left: 180px; transform: translateX(-50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(340px);"
           >
             <div
@@ -10935,7 +10852,6 @@ exports[`AnalyticalTable with initial column order 1`] = `
             style="left: 237px; transform: translateX(-50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; left: 0px; transform: translateX(510px);"
           >
             <div
@@ -11369,7 +11285,6 @@ exports[`AnalyticalTable without selection Column 1`] = `
             style="right: 60px; transform: translateX(50%);"
           />
           <div
-            id="name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-0px);"
           >
             <div
@@ -11412,7 +11327,6 @@ exports[`AnalyticalTable without selection Column 1`] = `
             style="right: 120px; transform: translateX(50%);"
           />
           <div
-            id="age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-170px);"
           >
             <div
@@ -11455,7 +11369,6 @@ exports[`AnalyticalTable without selection Column 1`] = `
             style="right: 180px; transform: translateX(50%);"
           />
           <div
-            id="friend.name-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-340px);"
           >
             <div
@@ -11498,7 +11411,6 @@ exports[`AnalyticalTable without selection Column 1`] = `
             style="right: 237px; transform: translateX(50%);"
           />
           <div
-            id="friend.age-1337"
             style="position: absolute; top: 0px; width: 170px; right: 0px; transform: translateX(-510px);"
           >
             <div

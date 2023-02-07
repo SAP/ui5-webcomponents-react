@@ -4,7 +4,7 @@ import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { useCallback, useRef } from 'react';
+import React, { MutableRefObject, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
@@ -30,7 +30,7 @@ export interface ColumnHeaderModalProperties {
   setPopoverOpen: (open: boolean) => void;
   portalContainer: Element;
   isRtl: boolean;
-  uniqueColumnId: string;
+  openerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const styles = {
@@ -52,7 +52,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, uniqueColumnId } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, openerRef } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -168,6 +168,12 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
+  useEffect(() => {
+    if (open && ref.current && openerRef.current) {
+      ref.current.opener = openerRef.current;
+    }
+  }, [open]);
+
   return createPortal(
     <Popover
       hideArrow
@@ -179,7 +185,6 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
       open={open}
-      opener={uniqueColumnId}
     >
       <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
         {isSortedAscending && (

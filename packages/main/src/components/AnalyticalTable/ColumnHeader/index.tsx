@@ -11,6 +11,7 @@ import React, {
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
+  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -37,7 +38,6 @@ export interface ColumnHeaderProps {
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
-  uniqueId: string;
   scaleXFactor?: number;
 
   //getHeaderProps()
@@ -111,12 +111,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onClick,
     onKeyDown,
     portalContainer,
-    uniqueId,
     scaleXFactor
   } = props;
 
   const isFiltered = column.filterValue && column.filterValue.length > 0;
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const columnHeaderRef = useRef<HTMLDivElement>(null);
 
   const tooltip = (() => {
     if (headerTooltip) {
@@ -185,12 +185,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
-  const uniqueColumnId = `${column.id}-${uniqueId}`;
 
   if (!column) return null;
   return (
     <div
-      id={uniqueColumnId}
+      ref={columnHeaderRef}
       style={{
         position: 'absolute',
         top: 0,
@@ -259,7 +258,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             column={column}
             onSort={onSort}
             onGroupBy={onGroupBy}
-            uniqueColumnId={uniqueColumnId}
+            openerRef={columnHeaderRef}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
             portalContainer={portalContainer}

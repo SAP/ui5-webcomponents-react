@@ -17,12 +17,16 @@ interface MenuAttributes {
    */
   open?: boolean;
   /**
+   * Defines the ID of the element that the menu is shown at
+   */
+  opener?: string;
+}
+
+export interface MenuDomRef extends Omit<MenuAttributes, 'opener'>, Ui5DomRef {
+  /**
    * Defines the ID or DOM Reference of the element that the menu is shown at
    */
   opener?: string | HTMLElement;
-}
-
-export interface MenuDomRef extends MenuAttributes, Ui5DomRef {
   /**
    * Closes the Menu.
    */
