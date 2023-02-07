@@ -1,5 +1,5 @@
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
-import { Device } from '@ui5/webcomponents-react-base';
+import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
