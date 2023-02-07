@@ -7,9 +7,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "lerna run build:i18n && start-storybook -p 6006",
-    "build:prepare": "lerna run build:i18n && node scripts/build-wrappers.js && rimraf node_modules/@types/mocha",
-    "build:cleanup": "rimraf packages/main/tmp",
-    "build": "yarn build:prepare && tsc --build && yarn build:cleanup",
+    "build:prepare": "lerna run build:i18n && rimraf node_modules/@types/mocha",
+    "build": "yarn build:prepare && tsc --build && lerna run build:client && lerna run build:wrappers && lerna run build:ssr",
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
     "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
