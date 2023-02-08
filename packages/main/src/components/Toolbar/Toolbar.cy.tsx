@@ -425,33 +425,6 @@ describe('Toolbar', () => {
     cy.get('[data-component-name="ToolbarOverflowPopover"]').should('be.visible');
   });
 
-  it('Toolbar active use outline or shadow', () => {
-    cy.mount(
-      <Toolbar active data-testid="tb">
-        Text
-      </Toolbar>
-    );
-
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.findByTestId('tb').click();
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.wait(500).then(() => {
-      cy.findByTestId('tb').blur();
-      setTheme('sap_horizon');
-    });
-
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.findByTestId('tb').focus();
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
-  });
-
   it('OverflowToolbarToggleButton & OverflowToolbarButton', () => {
     [OverflowToolbarToggleButton, OverflowToolbarButton].forEach((Comp) => {
       cy.mount(
@@ -479,11 +452,38 @@ describe('Toolbar', () => {
       );
 
       cy.get('[ui5-toggle-button][icon="overflow"]').click();
-      cy.get('ui5-popover').findByText('Edit1').should('be.visible').should('have.attr', 'has-icon');
-      cy.get('ui5-popover').findByText('Edit1').should('not.have.attr', 'icon-only');
-      cy.get('ui5-popover').findByText('Edit2').should('be.visible').should('have.attr', 'has-icon');
-      cy.get('ui5-popover').findByText('Edit2').should('not.have.attr', 'icon-only');
+      cy.get('[ui5-popover]').findByText('Edit1').should('be.visible').should('have.attr', 'has-icon');
+      cy.get('[ui5-popover]').findByText('Edit1').should('not.have.attr', 'icon-only');
+      cy.get('[ui5-popover]').findByText('Edit2').should('be.visible').should('have.attr', 'has-icon');
+      cy.get('[ui5-popover]').findByText('Edit2').should('not.have.attr', 'icon-only');
     });
+  });
+
+  it('Toolbar active use outline or shadow', () => {
+    cy.mount(
+      <Toolbar active data-testid="tb">
+        Text
+      </Toolbar>
+    );
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.wait(500).then(() => {
+      cy.findByTestId('tb').blur();
+      setTheme('sap_horizon');
+    });
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').focus();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
   //todo mountWithCustomTagName
