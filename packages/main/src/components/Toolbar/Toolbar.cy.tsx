@@ -1,14 +1,23 @@
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import '@ui5/webcomponents-react/dist/Assets.js';
-import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { useRef, useState } from 'react';
+import {
+  Button,
+  Input,
+  OverflowToolbarButton,
+  PopoverDomRef,
+  Text,
+  Toolbar,
+  ToggleButton,
+  ToolbarSeparator,
+  ToolbarSpacer,
+  ToolbarStyle,
+  OverflowToolbarToggleButton
+} from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
 import { cssVarToRgb } from '../../internal/utils';
-import { PopoverDomRef, ToggleButton } from '../../webComponents';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ToolbarSpacer } from '../ToolbarSpacer';
-import { Button, Input, Text, Toolbar, ToolbarStyle } from '@ui5/webcomponents-react';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -441,6 +450,40 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').focus();
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
+  });
+
+  it('OverflowToolbarToggleButton & OverflowToolbarButton', () => {
+    [OverflowToolbarToggleButton, OverflowToolbarButton].forEach((Comp) => {
+      cy.mount(
+        <Toolbar>
+          <Button icon="edit">Edit1</Button>
+          <Comp icon="edit" data-testid="ob">
+            Edit2
+          </Comp>
+        </Toolbar>
+      );
+
+      cy.findByText('Edit1').should('be.visible').should('have.attr', 'has-icon');
+      cy.findByText('Edit1').should('not.have.attr', 'icon-only');
+      cy.findByText('Edit2', { timeout: 100 }).should('not.exist');
+      cy.findByTestId('ob').should('be.visible').should('have.attr', 'icon-only');
+      cy.findByTestId('ob').should('have.attr', 'has-icon');
+
+      cy.mount(
+        <Toolbar style={{ width: '50px' }}>
+          <Button icon="edit">Edit1</Button>
+          <Comp icon="edit" data-testid="ob">
+            Edit2
+          </Comp>
+        </Toolbar>
+      );
+
+      cy.get('[ui5-toggle-button][icon="overflow"]').click();
+      cy.get('ui5-popover').findByText('Edit1').should('be.visible').should('have.attr', 'has-icon');
+      cy.get('ui5-popover').findByText('Edit1').should('not.have.attr', 'icon-only');
+      cy.get('ui5-popover').findByText('Edit2').should('be.visible').should('have.attr', 'has-icon');
+      cy.get('ui5-popover').findByText('Edit2').should('not.have.attr', 'icon-only');
+    });
   });
 
   //todo mountWithCustomTagName
