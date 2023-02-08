@@ -9,7 +9,7 @@ describe('MessageBox', () => {
     [MessageBoxTypes.Warning, MessageBoxActions.OK],
     [MessageBoxTypes.Error, MessageBoxActions.Close],
     [MessageBoxTypes.Information, MessageBoxActions.OK]
-  ].forEach(([type, buttonText]) => {
+  ].forEach(([type, buttonText]: [MessageBoxTypes, MessageBoxActions]) => {
     it(type, () => {
       const callback = cy.spy();
       cy.mount(
