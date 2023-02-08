@@ -3,12 +3,13 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactElement, useEffect, useReducer, useRef, useState } from 'react';
+import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { flattenFragments, isSSR } from '../../internal/utils';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { UI5WCSlotsNode } from '../../types';
@@ -164,10 +165,10 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
-  const [canRender, setCanRender] = useState(false);
-  useEffect(() => {
-    setCanRender(true);
-  }, []);
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
 
   const handleCancelBtnClick = () => {
     popoverRef.current.close();
@@ -217,10 +218,6 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
     }
   };
-
-  if (!canRender) {
-    return null;
-  }
 
   const displayHeader = isPhone();
   return createPortal(

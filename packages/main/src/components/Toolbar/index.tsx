@@ -118,16 +118,16 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
     children,
-    toolbarStyle,
-    design,
-    active,
+    toolbarStyle = ToolbarStyle.Standard,
+    design = ToolbarDesign.Auto,
+    active = false,
     style,
     className,
     onClick,
     slot,
-    as,
+    as = 'div',
     portalContainer,
-    numberOfAlwaysVisibleItems,
+    numberOfAlwaysVisibleItems = 0,
     onOverflowChange,
     overflowPopoverRef,
     overflowButton,
@@ -244,19 +244,19 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       }
       setLastVisibleIndex(lastIndex);
     });
-  }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
-
-  const observer = useRef(new ResizeObserver(calculateVisibleItems));
+  }, []);
 
   useEffect(() => {
+    const observer = new ResizeObserver(calculateVisibleItems);
+
     if (outerContainer.current) {
-      observer.current.observe(outerContainer.current);
+      observer.observe(outerContainer.current);
     }
     return () => {
       cancelAnimationFrame(requestAnimationFrameRef.current);
-      observer.current.disconnect();
+      observer.disconnect();
     };
-  }, [outerContainer.current]);
+  }, [calculateVisibleItems]);
 
   useIsomorphicLayoutEffect(() => {
     calculateVisibleItems();
@@ -349,15 +349,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     </CustomTag>
   );
 });
-
-Toolbar.defaultProps = {
-  as: 'div',
-  toolbarStyle: ToolbarStyle.Standard,
-  design: ToolbarDesign.Auto,
-  active: false,
-  portalContainer: document.body,
-  numberOfAlwaysVisibleItems: 0
-};
 
 Toolbar.displayName = 'Toolbar';
 export { Toolbar };
