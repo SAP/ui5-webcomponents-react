@@ -27,7 +27,7 @@ import { VariantItem } from './VariantItem';
   <Story name="Default">
     {(props) => {
       return (
-        <VariantManagement {...props}>
+        <VariantManagement {...props} onSave={console.log}>
           <VariantItem>Default VariantItem</VariantItem>
           <VariantItem selected>Selected</VariantItem>
           <VariantItem author="SAP">Author</VariantItem>
