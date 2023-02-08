@@ -420,7 +420,6 @@ describe('VariantManagement', () => {
             if (favorite) {
               cy.get('@row').find(`[ui5-icon][name="favorite"]`).should('have.attr', 'title', 'Selected as Favorite');
             } else {
-              console.log(item);
               cy.get('@row')
                 .find(`[ui5-icon][name="unfavorite"]`)
                 .should('have.attr', 'title', 'Unselected as Favorite');
