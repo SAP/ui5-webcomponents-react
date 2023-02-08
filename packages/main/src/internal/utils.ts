@@ -44,3 +44,5 @@ export function getUi5TagWithSuffix(baseTagName) {
   const tagNameSuffix: string = getEffectiveScopingSuffixForTag(baseTagName);
   return tagNameSuffix ? `${baseTagName}-${tagNameSuffix}` : baseTagName;
 }
+
+export const isSSR = () => typeof window === 'undefined';

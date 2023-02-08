@@ -101,7 +101,8 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip'],
   ['disabled', 'iconEnd', 'submits'],
   [],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents/dist/Button.js')
 );
 
 Button.displayName = 'Button';

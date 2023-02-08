@@ -1,10 +1,11 @@
-import overflowIcon from '@ui5/webcomponents-icons/dist/overflow.js';
+import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType } from '../../enums';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { getUi5TagWithSuffix } from '../../internal/utils';
 import {
@@ -76,25 +77,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     setPressed(false);
   };
 
-  const renderChildren = useCallback((): ReactNode[] => {
-    return children.map((item, index) => {
-      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
-        // @ts-expect-error: if type is not defined, it's not a spacer
-        if (item.type?.displayName === 'ToolbarSeparator') {
-          return cloneElement(item as ReactElement, {
-            style: {
-              height: '0.0625rem',
-              margin: '0.375rem 0.1875rem',
-              width: '100%'
-            }
-          });
-        }
-        return item;
-      }
-      return null;
-    });
-  }, [children, lastVisibleIndex]);
-
   useEffect(() => {
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
     customElements.whenDefined(tagName).then(() => {
@@ -113,6 +95,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     }
   };
 
+  const canRenderPortal = useCanRenderPortal();
+
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       {overflowButton ? (
@@ -121,7 +105,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         <ToggleButton
           ref={toggleBtnRef}
           design={ButtonDesign.Transparent}
-          icon={overflowIcon}
+          icon={iconOverflow}
           onClick={handleToggleButtonClick}
           pressed={pressed}
           accessibleName={showMoreText}
@@ -129,24 +113,40 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           data-component-name="ToolbarOverflowButton"
         />
       )}
-      {createPortal(
-        <Popover
-          data-component-name="ToolbarOverflowPopover"
-          className={clsx(classes.popover, isPhone && classes.popoverPhone)}
-          placementType={PopoverPlacementType.Bottom}
-          ref={componentRef}
-          open={pressed}
-          onAfterClose={handleClose}
-          onBeforeOpen={handleBeforeOpen}
-          onAfterOpen={handleAfterOpen}
-          hideArrow
-        >
-          <div className={classes.popoverContent} ref={overflowContentRef}>
-            {renderChildren()}
-          </div>
-        </Popover>,
-        portalContainer
-      )}
+      {canRenderPortal &&
+        createPortal(
+          <Popover
+            data-component-name="ToolbarOverflowPopover"
+            className={clsx(classes.popover, isPhone && classes.popoverPhone)}
+            placementType={PopoverPlacementType.Bottom}
+            ref={componentRef}
+            open={pressed}
+            onAfterClose={handleClose}
+            onBeforeOpen={handleBeforeOpen}
+            onAfterOpen={handleAfterOpen}
+            hideArrow
+          >
+            <div className={classes.popoverContent} ref={overflowContentRef}>
+              {children.map((item, index) => {
+                if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
+                  // @ts-expect-error: if type is not defined, it's not a spacer
+                  if (item.type?.displayName === 'ToolbarSeparator') {
+                    return cloneElement(item as ReactElement, {
+                      style: {
+                        height: '0.0625rem',
+                        margin: '0.375rem 0.1875rem',
+                        width: '100%'
+                      }
+                    });
+                  }
+                  return item;
+                }
+                return null;
+              })}
+            </div>
+          </Popover>,
+          portalContainer ?? document.body
+        )}
     </OverflowPopoverContext.Provider>
   );
 };

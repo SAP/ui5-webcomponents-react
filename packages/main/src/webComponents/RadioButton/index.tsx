@@ -104,7 +104,8 @@ const RadioButton = withWebComponent<RadioButtonPropTypes, RadioButtonDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'readonly', 'required'],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/RadioButton.js')
 );
 
 RadioButton.displayName = 'RadioButton';

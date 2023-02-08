@@ -9,7 +9,8 @@ import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { flattenFragments } from '../../internal/utils';
+import { useCanRenderPortal } from '../../internal/ssr';
+import { flattenFragments, isSSR } from '../../internal/utils';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { UI5WCSlotsNode } from '../../types';
 import {
@@ -65,7 +66,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-if (isPhone()) {
+if (!isSSR() && isPhone()) {
   addCustomCSSWithScoping(
     'ui5-responsive-popover',
     `
@@ -142,7 +143,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     modal,
     placementType,
     portalContainer,
-    showCancelButton,
+    showCancelButton = true,
     slot,
     style,
     verticalAlign,
@@ -163,6 +164,11 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenToRender = flattenFragments(children);
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
+
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
 
   const handleCancelBtnClick = () => {
     popoverRef.current.close();
@@ -260,14 +266,9 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
         )}
       </div>
     </ResponsivePopover>,
-    portalContainer
+    portalContainer ?? document.body
   );
 });
-
-ActionSheet.defaultProps = {
-  showCancelButton: true,
-  portalContainer: document.body
-};
 
 ActionSheet.displayName = 'ActionSheet';
 

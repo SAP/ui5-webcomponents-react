@@ -55,7 +55,14 @@ export interface ToastPropTypes extends ToastAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Toast" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Toast = withWebComponent<ToastPropTypes, ToastDomRef>('ui5-toast', ['duration', 'placement'], [], [], []);
+const Toast = withWebComponent<ToastPropTypes, ToastDomRef>(
+  'ui5-toast',
+  ['duration', 'placement'],
+  [],
+  [],
+  [],
+  () => import('@ui5/webcomponents/dist/Toast.js')
+);
 
 Toast.displayName = 'Toast';
 

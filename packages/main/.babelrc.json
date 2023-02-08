@@ -1,0 +1,59 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "browserslistEnv": "production"
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "useSpread": true
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "env": {
+    "ssr": {
+      "presets": [
+        [
+          "@babel/preset-react",
+          {
+            "runtime": "automatic"
+          }
+        ]
+      ],
+      "plugins": [
+        [
+          "./babel-plugin-ssr.mjs",
+          {
+            "mode": "ssr"
+          }
+        ]
+      ]
+    },
+    "client": {
+      "plugins": [
+        [
+          "./babel-plugin-ssr.mjs",
+          {
+            "mode": "client"
+          }
+        ]
+      ]
+    },
+    "wrapper": {
+      "plugins": [
+        [
+          "./babel-plugin-ssr.mjs",
+          {
+            "mode": "wrapper"
+          }
+        ]
+      ]
+    }
+  },
+  "ignore": ["**/*.test.ts", "**/*.test.tsx", "**/*.cy.ts", "**/*.cy.tsx", "**/CodeGen.tsx"]
+}

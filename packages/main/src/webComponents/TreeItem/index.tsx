@@ -112,7 +112,8 @@ const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
   ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['deleteButton'],
-  ['detail-click']
+  ['detail-click'],
+  () => import('@ui5/webcomponents/dist/TreeItem.js')
 );
 
 TreeItem.displayName = 'TreeItem';

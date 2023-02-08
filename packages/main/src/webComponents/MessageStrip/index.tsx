@@ -67,7 +67,8 @@ const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>
   ['design'],
   ['hideCloseButton', 'hideIcon'],
   ['icon'],
-  ['close']
+  ['close'],
+  () => import('@ui5/webcomponents/dist/MessageStrip.js')
 );
 
 MessageStrip.displayName = 'MessageStrip';

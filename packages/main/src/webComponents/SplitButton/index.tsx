@@ -73,7 +73,8 @@ const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   ['accessibleName', 'activeIcon', 'design', 'icon'],
   ['disabled'],
   [],
-  ['arrow-click', 'click']
+  ['arrow-click', 'click'],
+  () => import('@ui5/webcomponents/dist/SplitButton.js')
 );
 
 SplitButton.displayName = 'SplitButton';

@@ -1,8 +1,8 @@
 import { VirtualItem } from '@tanstack/react-virtual';
-import '@ui5/webcomponents-icons/dist/filter.js';
-import '@ui5/webcomponents-icons/dist/group-2.js';
-import '@ui5/webcomponents-icons/dist/sort-ascending.js';
-import '@ui5/webcomponents-icons/dist/sort-descending.js';
+import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
+import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
+import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
+import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, {
   CSSProperties,
@@ -247,9 +247,9 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             style={iconContainerDirectionStyles}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
           >
-            {isFiltered && <Icon name="filter" />}
-            {column.isSorted && <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />}
-            {column.isGrouped && <Icon name="group-2" />}
+            {isFiltered && <Icon name={iconFilter} />}
+            {column.isSorted && <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} />}
+            {column.isGrouped && <Icon name={iconGroup} />}
           </div>
         </div>
         {hasPopover && popoverOpen && (
