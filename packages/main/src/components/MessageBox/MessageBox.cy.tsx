@@ -1,5 +1,4 @@
-// import { fireEvent, render, screen } from '@shared/tests';
-import '@ui5/webcomponents-icons/dist/add.js';
+import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import { Button, Icon, MessageBoxActions, MessageBoxTypes } from '../..';
 import { MessageBox } from './index';
 
@@ -130,7 +129,7 @@ describe('MessageBox', () => {
         open
         onClose={callback}
         titleText="Custom Success"
-        icon={<Icon name="add" />}
+        icon={<Icon name={addIcon} />}
       >
         Custom Success
       </MessageBox>
