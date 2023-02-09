@@ -23,7 +23,7 @@ const Cell = (instance) => {
   const styleClass = StyleClassMap.get(cell.value)
     ? webComponentsReactProperties.classes[StyleClassMap.get(cell.value)]
     : undefined;
-  return <div style={baseStyles} className={styleClass} />;
+  return <div style={baseStyles} className={styleClass} data-component-name="AnalyticalTableHighlightCell" />;
 };
 
 /*

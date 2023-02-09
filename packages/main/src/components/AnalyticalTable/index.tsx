@@ -922,12 +922,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns
+    tableInternalColumns,
+    onColumnsReorder
   );
 
   const inlineStyle = useMemo(() => {

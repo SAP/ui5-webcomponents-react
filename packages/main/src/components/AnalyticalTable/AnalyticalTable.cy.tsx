@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
-  Button,
-  Input,
+  AnalyticalTablePropTypes,
   AnalyticalTableScaleWidthMode,
-  AnalyticalTablePropTypes
+  AnalyticalTableSelectionBehavior,
+  Button,
+  Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
+import { cssVarToRgb } from '../../internal/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -891,6 +894,325 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name90').should('be.visible');
     cy.findByText('Rows: 151').should('be.visible');
     cy.get('@more').should('have.been.calledThrice');
+  });
+
+  it('custom cell (with markerAllowTableRowSelection) & header', () => {
+    const cellClick = cy.spy().as('cellClick');
+    const headerClick = cy.spy().as('headerClick');
+    const select = cy.spy().as('select');
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        Cell: () => <Button onClick={cellClick}>Custom Cell Button</Button>
+      },
+      {
+        Header: () => <Button onClick={headerClick}>Custom Header Button</Button>,
+        accessor: 'friend.name'
+      }
+    ];
+    cy.mount(
+      <AnalyticalTable selectionMode="SingleSelect" data={data.slice(0, 2)} columns={columns} onRowSelect={select} />
+    );
+    cy.findAllByText('Custom Cell Button')
+      .should('have.length', 2)
+      .each(($cellBtn) => {
+        cy.wrap($cellBtn).click();
+      });
+    cy.get('@cellClick').should('have.been.calledTwice');
+    cy.get('@select').should('not.be.called');
+    cy.findByText('Custom Header Button').click();
+    cy.get('@headerClick').should('have.been.calledOnce');
+    const cellClick2 = (e) => {
+      e.markerAllowTableRowSelection = true;
+      cellClick(e);
+    };
+    const columns2 = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        Cell: () => <Button onClick={cellClick2}>Custom Cell Button</Button>
+      },
+      {
+        Header: () => <Button onClick={headerClick}>Custom Header Button</Button>,
+        accessor: 'friend.name'
+      }
+    ];
+    cy.mount(
+      <AnalyticalTable selectionMode="SingleSelect" data={data.slice(0, 2)} columns={columns2} onRowSelect={select} />
+    );
+    cy.findAllByText('Custom Cell Button')
+      .should('have.length', 2)
+      .each(($cellBtn) => {
+        cy.wrap($cellBtn).click();
+      });
+    cy.get('@cellClick').should('have.callCount', 4);
+    cy.get('@select').should('have.been.calledTwice');
+  });
+
+  it('Loading & No Data', () => {
+    cy.mount(<AnalyticalTable data={[]} columns={columns} loading />);
+    cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
+    cy.get('[data-component-name="Loader"]').should('be.visible');
+    cy.mount(<AnalyticalTable data={[]} columns={columns} />);
+    cy.findByText('No Data').should('be.visible');
+  });
+
+  it('Alternate Row Color', () => {
+    const standardRowColor = cssVarToRgb(ThemingParameters.sapList_Background);
+    const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
+    cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor />);
+    cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
+    for (let i = 1; i <= 5; i++) {
+      if (i % 2) {
+        // no color set
+        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+      } else {
+        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
+      }
+    }
+  });
+
+  it('initial column order', () => {
+    const colOrder = ['Age', 'Friend Age', 'Friend Name', 'Name'];
+    ['ltr', 'rtl'].forEach((dir) => {
+      cy.mount(
+        <AnalyticalTable
+          dir={dir}
+          data={data}
+          columns={columns}
+          columnOrder={['age', 'friend.age', 'friend.name', 'name']}
+        />
+      );
+      cy.wait(50);
+      cy.get('[data-column-id]').each(($col, index) => {
+        cy.wrap($col).should('have.text', colOrder[index]);
+      });
+    });
+  });
+  it('columns drag & drop', () => {
+    columns.pop();
+    const updatedCols = [...columns, { accessor: 'friend.age', Header: 'Friend Age', disableDragAndDrop: true }];
+    const reorder = cy.spy().as('reorder');
+    ['ltr', 'rtl'].forEach((dir) => {
+      cy.mount(<AnalyticalTable dir={dir} data={data} columns={updatedCols} onColumnsReorder={reorder} />);
+      const dataTransfereById = (colId) => ({
+        getData: () => {
+          return colId;
+        }
+      });
+
+      cy.get('[data-column-id="name"]')
+        .trigger('dragstart')
+        .trigger('drop', { dataTransfer: dataTransfereById('age') });
+      const newColOrder = ['Age', 'Name', 'Friend Name', 'Friend Age'];
+      cy.get('[data-column-id]').each(($col, index) => {
+        cy.wrap($col).should('have.text', newColOrder[index]);
+      });
+    });
+    cy.get('@reorder').should('have.been.calledTwice');
+  });
+
+  it('w/o selection column', () => {
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
+      />
+    );
+    cy.get('[data-selection-cell="true"]', { timeout: 100 }).should('not.exist');
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
+      />
+    );
+    cy.get('[data-selection-cell="true"]', { timeout: 100 }).should('not.exist');
+    cy.mount(<AnalyticalTable data={data} columns={columns} />);
+    cy.get('[data-selection-cell="true"]', { timeout: 100 }).should('not.exist');
+  });
+
+  it('navigated row', () => {
+    const TestComp = () => {
+      const [selectedRow, setSelectedRow] = useState<{ id?: boolean }>({});
+      const onRowSelect = (e) => {
+        setSelectedRow(e.detail.row);
+      };
+      const markNavigatedRow = useCallback(
+        (row) => {
+          return selectedRow?.id === row.id;
+        },
+        [selectedRow]
+      );
+      return (
+        <AnalyticalTable
+          data={data}
+          columns={columns}
+          withNavigationHighlight
+          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          markNavigatedRow={markNavigatedRow}
+          onRowSelect={onRowSelect}
+        />
+      );
+    };
+    cy.mount(<TestComp />);
+    cy.findByText('A').click();
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+    cy.findByText('B').click();
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+  });
+
+  it('select row with custom row key', () => {
+    const selectedRowColor = cssVarToRgb(ThemingParameters.sapList_SelectionBackgroundColor);
+    cy.mount(
+      <AnalyticalTable
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        data={data}
+        columns={columns}
+        reactTableOptions={{
+          getRowId: (row, relativeIndex) => {
+            return `${row.name ?? relativeIndex}`;
+          }
+        }}
+        selectedRowIds={{
+          ['A']: true
+        }}
+      />
+    );
+    cy.get('[aria-rowindex="1"]').should('be.visible').should('have.css', 'background-color', selectedRowColor);
+  });
+
+  it('onRowClick', () => {
+    const rowClick = cy.spy().as('rowClick');
+    const rowSelect = cy.spy().as('rowSelect');
+    cy.mount(
+      <AnalyticalTable
+        header="Table Title"
+        data={data}
+        columns={columns}
+        selectionBehavior={AnalyticalTableSelectionBehavior.Row}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        onRowClick={rowClick}
+        onRowSelect={rowSelect}
+      />
+    );
+    cy.get('[data-selection-cell="true"]')
+      .should('have.length', 4)
+      .each(($selCell) => {
+        cy.wrap($selCell).click();
+      });
+    cy.get('@rowClick').should('have.callCount', 4);
+    cy.get('@rowSelect').should('have.callCount', 4);
+    ['A', '20', 'Dolor'].forEach((text) => {
+      cy.findByText(text).click();
+    });
+    cy.get('@rowClick').should('have.callCount', 7);
+    cy.get('@rowSelect').should('have.callCount', 7);
+    const rowSelectWithoutSelCell = (e) => {
+      if (e.target.dataset.selectionCell !== 'true') {
+        rowClick(e);
+      }
+    };
+    cy.mount(
+      <AnalyticalTable
+        header="Table Title"
+        data={data}
+        columns={columns}
+        selectionBehavior={AnalyticalTableSelectionBehavior.Row}
+        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        onRowClick={rowSelectWithoutSelCell}
+        onRowSelect={rowSelect}
+      />
+    );
+    cy.get('[data-selection-cell="true"]')
+      .should('have.length', 4)
+      .each(($selCell) => {
+        cy.wrap($selCell).click();
+      });
+    cy.get('@rowClick').should('have.callCount', 7);
+    cy.get('@rowSelect').should('have.callCount', 11);
+  });
+
+  it('withRowHighlight', () => {
+    const errorColor = cssVarToRgb(ThemingParameters.sapErrorColor);
+    const successColor = cssVarToRgb(ThemingParameters.sapSuccessColor);
+    const localData = data.map((item, index) => {
+      if ((index + 1) % 2) {
+        return { ...item, status: ValueState.Error };
+      }
+      return { ...item, highlight: ValueState.Success };
+    });
+    cy.mount(<AnalyticalTable header="Table Title" data={localData} columns={columns} withRowHighlight />);
+    cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
+      .should('have.length', 4)
+      .each(($highlightCell, index) => {
+        if ((index + 1) % 2) {
+          cy.wrap($highlightCell).should('have.css', 'background-color', errorColor);
+        } else {
+          // no color
+          cy.wrap($highlightCell).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        }
+      });
+    cy.mount(
+      <AnalyticalTable
+        header="Table Title"
+        data={localData}
+        columns={columns}
+        withRowHighlight
+        highlightField="highlight"
+      />
+    );
+    cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
+      .should('have.length', 4)
+      .each(($highlightCell, index) => {
+        if ((index + 1) % 2) {
+          // no color
+          cy.wrap($highlightCell).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          cy.wrap($highlightCell).should('have.css', 'background-color', successColor);
+        }
+      });
+  });
+
+  it('header popover open', () => {
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name'
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        disableGroupBy: true,
+        disableFilters: true,
+        disableSortBy: true
+      }
+    ];
+    cy.mount(<AnalyticalTable data={data} columns={columns} />);
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-haspopup', 'menu').click();
+    cy.get('[ui5-popover]').should('be.visible');
+    cy.get('[data-column-id="age"]').should('not.have.attr', 'aria-haspopup');
+    cy.get('[data-column-id="age"]').click();
+    cy.get('[ui5-popover]', { timeout: 100 }).should('not.exist');
+  });
+
+  //todo
+  it('overlay', () => {
+    cy.mount(<AnalyticalTable data={data} columns={columns} showOverlay />);
+    // cy.findByText('A').should('covere');
   });
 });
 
