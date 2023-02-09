@@ -10,11 +10,11 @@ env:
   es2022: true
 extends:
   - plugin:react/recommended
+  - plugin:react-hooks/recommended
   - plugin:import/recommended
   - plugin:prettier/recommended
 plugins:
   - prefer-arrow
-  - react-hooks
 settings:
   react:
     version: detect

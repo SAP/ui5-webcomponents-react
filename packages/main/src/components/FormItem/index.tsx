@@ -5,6 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, WrappingType } from '../../enums';
 import { Label, LabelPropTypes } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
+import { useFormContext } from '../Form/FormContext';
 
 export interface FormItemPropTypes {
   /**
@@ -19,7 +20,6 @@ export interface FormItemPropTypes {
 
 interface InternalProps extends FormItemPropTypes {
   columnIndex?: number;
-  labelSpan?: number;
   rowIndex?: number;
   lastGroupItem?: boolean;
 }
@@ -41,10 +41,11 @@ const useStyles = createUseStyles(
   { name: 'FormItem' }
 );
 
-const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', string>, styles: CSSProperties) => {
+function FormItemLabel({ label, style }: { label: ReactNode; style?: CSSProperties }) {
+  const classes = useStyles();
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={styles} wrappingType={WrappingType.Normal}>
+      <Label className={classes.label} style={style} wrappingType={WrappingType.Normal}>
         {label ? `${label}:` : ''}
       </Label>
     );
@@ -59,8 +60,8 @@ const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', stri
         wrappingType: wrappingType ?? WrappingType.Normal,
         className: `${classes.label} ${className ?? ''}`,
         style: {
-          gridColumnStart: styles.gridColumnStart,
-          gridRowStart: styles.gridRowStart,
+          gridColumnStart: style.gridColumnStart,
+          gridRowStart: style.gridRowStart,
           ...(style || {})
         }
       },
@@ -69,15 +70,17 @@ const renderLabel = (label: ReactNode, classes: Record<'label' | 'content', stri
   }
 
   return null;
-};
+}
+
 /**
  * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
-  const { label, children, columnIndex, rowIndex, labelSpan, lastGroupItem } = props as InternalProps;
+  const { label, children, columnIndex, rowIndex, lastGroupItem } = props as InternalProps;
 
   const classes = useStyles();
+  const { labelSpan } = useFormContext();
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
   const gridRowStart = rowIndex ?? 0;
@@ -98,7 +101,7 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
           paddingBottom: '0.625rem'
         }}
       >
-        {renderLabel(label, classes, { paddingBottom: '0.25rem' })}
+        <FormItemLabel label={label} style={{ paddingBottom: '0.25rem' }} />
         {children}
       </FlexBox>
     );
@@ -117,7 +120,7 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
   const calculatedGridRowStart = labelSpan === 12 ? gridRowStart + 1 : gridRowStart;
   return (
     <>
-      {renderLabel(label, classes, inlineLabelStyles())}
+      <FormItemLabel label={label} style={inlineLabelStyles()} />
       <div
         data-grid-column-start={contentGridColumnStart}
         data-grid-row-start={calculatedGridRowStart}
