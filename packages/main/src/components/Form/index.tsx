@@ -17,8 +17,8 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Title } from '../../webComponents/Title';
+import { CommonProps } from '../../interfaces';
+import { Title } from '../../webComponents';
 import { FormGroupTitle } from '../FormGroup/FormGroupTitle';
 import { styles } from './Form.jss';
 import { FormContext } from './FormContext';
@@ -128,7 +128,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     labelSpanM = 2,
     labelSpanL = 4,
     labelSpanXL = 4,
-    slot,
     titleText,
     style,
     ...rest
@@ -183,33 +182,29 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     const childrenArray = Children.toArray(children);
     const rows = childrenArray.reduce((acc, val, idx) => {
       const columnIndex = Math.floor(idx / currentNumberOfColumns);
-      if (!acc[columnIndex]) {
-        acc[columnIndex] = [val];
-      } else {
-        acc[columnIndex].push(val);
-      }
+      acc[columnIndex] ??= [];
+      acc[columnIndex].push(val);
       return acc;
     }, []) as ReactElement[][];
 
     const maxRowsPerRow: number[] = [];
     rows.forEach((rowGroup: ReactElement[], rowIndex) => {
-      const numberOfRowsOfEachForm = rowGroup.map((row) => {
-        if ((row.type as any).displayName === 'FormItem') {
-          return 1;
-        }
-        return Children.count(row.props.children) + 1;
-      });
-
-      maxRowsPerRow[rowIndex] = Math.max(...numberOfRowsOfEachForm);
+      maxRowsPerRow[rowIndex] = Math.max(
+        ...rowGroup.map((row) => {
+          if ((row.type as any).displayName === 'FormItem') {
+            return 1;
+          }
+          return Children.count(row.props.children) + 1;
+        })
+      );
     });
 
     let totalRowCount = 2;
 
-    rows.forEach((column: ReactElement[], rowIndex) => {
-      const rowsForThisRow = maxRowsPerRow[rowIndex];
-      column.forEach((cell, columnIndex) => {
+    rows.forEach((formGroup: ReactElement[], rowIndex) => {
+      const rowsForThisRow = maxRowsPerRow.at(rowIndex);
+      formGroup.forEach((cell, columnIndex) => {
         const titleStyles: CSSProperties = {
-          gridColumnEnd: 'span 12',
           gridColumnStart: columnIndex * 12 + 1,
           gridRowStart: totalRowCount
         };
@@ -225,21 +220,20 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         }
 
         for (let i = 0; i < rowsForThisRow; i++) {
-          const itemToRender =
-            (cell.type as any).displayName === 'FormGroup'
-              ? Children.toArray(cell.props.children)[i]
-              : (cell.type as any).displayName === 'FormItem' && i === 0
-              ? cell
-              : null;
+          let itemToRender;
+          if ((cell.type as any).displayName === 'FormGroup') {
+            itemToRender = Children.toArray(cell.props.children).at(i);
+          } else if ((cell.type as any).displayName === 'FormItem' && i === 0) {
+            // render a single FormItem only when index is 0
+            itemToRender = cell;
+          }
 
           if (itemToRender) {
             computedFormGroups.push(
               cloneElement(itemToRender as ReactElement, {
                 key: `col-${columnIndex}-row-${totalRowCount + i}`,
                 columnIndex,
-                lastGroupItem: (cell.type as any).displayName === 'FormGroup' && rowsForThisRow - 2 === i,
-                rowIndex: totalRowCount + i + 1,
-                labelSpan: currentLabelSpan
+                rowIndex: totalRowCount + i + 1
               })
             );
           }
@@ -252,33 +246,38 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
 
     return computedFormGroups;
-  }, [children, currentNumberOfColumns, currentLabelSpan]);
+  }, [children, currentNumberOfColumns]);
 
-  const formClassNames = clsx(
-    classes.form,
-    classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`],
-    classes[backgroundDesign.toLowerCase()],
-    className
-  );
+  const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()], className);
 
   const CustomTag = as as ElementType;
   return (
     <FormContext.Provider value={{ labelSpan: currentLabelSpan }}>
-      <CustomTag
-        ref={componentRef}
-        slot={slot}
-        className={formClassNames}
-        style={style}
-        data-columns={currentNumberOfColumns}
-        {...rest}
-      >
-        {titleText && (
-          <Title level={TitleLevel.H3} className={classes.formTitle}>
-            {titleText}
-          </Title>
-        )}
-        {formGroups}
-      </CustomTag>
+      <div className={classes.formContainer} suppressHydrationWarning={true}>
+        <CustomTag
+          ref={componentRef}
+          className={formClassNames}
+          style={{
+            ...style,
+            '--ui5wcr_form_label_span_s': labelSpanS,
+            '--ui5wcr_form_label_span_m': labelSpanM,
+            '--ui5wcr_form_label_span_l': labelSpanL,
+            '--ui5wcr_form_label_span_xl': labelSpanXL,
+            '--ui5wcr_form_columns_s': columnsS,
+            '--ui5wcr_form_columns_m': columnsM,
+            '--ui5wcr_form_columns_l': columnsL,
+            '--ui5wcr_form_columns_xl': columnsXL
+          }}
+          {...rest}
+        >
+          {titleText && (
+            <Title level={TitleLevel.H3} className={classes.formTitle}>
+              {titleText}
+            </Title>
+          )}
+          {formGroups}
+        </CustomTag>
+      </div>
     </FormContext.Provider>
   );
 });

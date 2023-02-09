@@ -11,7 +11,7 @@ interface FormGroupTitlePropTypes {
 const useStyles = createUseStyles(
   {
     title: {
-      gridColumn: 'span 12',
+      gridColumn: '1 / span 12',
       display: 'flex',
       alignItems: 'center',
       height: CssSizeVariables.sapWcrFormGroupTitleHeight,
