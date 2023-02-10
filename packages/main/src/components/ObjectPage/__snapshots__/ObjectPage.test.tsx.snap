@@ -919,12 +919,12 @@ exports[`ObjectPage IconTabBar Mode 1`] = `
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
+    class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -949,7 +949,7 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       />
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -968,12 +968,12 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
 exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1010,7 +1010,7 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1056,12 +1056,12 @@ exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
 exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
+    class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1098,7 +1098,7 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1144,12 +1144,12 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 exports[`ObjectPage with IllustratedMessage 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1182,7 +1182,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -1203,7 +1203,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       />
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1228,12 +1228,12 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
 exports[`ObjectPage with anchor-bar 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="false"
       role="banner"
@@ -1266,7 +1266,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -1441,7 +1441,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1762,12 +1762,12 @@ exports[`ObjectPage with anchor-bar 1`] = `
 exports[`ObjectPage with footer 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1916,7 +1916,7 @@ exports[`ObjectPage with footer 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -2237,12 +2237,12 @@ exports[`ObjectPage with footer 1`] = `
 exports[`ObjectPage with header 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -2253,7 +2253,7 @@ exports[`ObjectPage with header 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -2406,7 +2406,7 @@ exports[`ObjectPage with header 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -2707,12 +2707,12 @@ exports[`ObjectPage with header 1`] = `
 exports[`ObjectPage with img 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -2745,7 +2745,7 @@ exports[`ObjectPage with img 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <span
@@ -2918,7 +2918,7 @@ exports[`ObjectPage with img 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -3239,12 +3239,12 @@ exports[`ObjectPage with img 1`] = `
 exports[`ObjectPage with img 2`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -3277,7 +3277,7 @@ exports[`ObjectPage with img 2`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <ui5-avatar
@@ -3445,7 +3445,7 @@ exports[`ObjectPage with img 2`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -3766,12 +3766,12 @@ exports[`ObjectPage with img 2`] = `
 exports[`ObjectPage with title 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -3942,7 +3942,7 @@ exports[`ObjectPage with title 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -4243,12 +4243,12 @@ exports[`ObjectPage with title 1`] = `
 exports[`ObjectPage with title, header & footer 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -4281,7 +4281,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -4444,7 +4444,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
