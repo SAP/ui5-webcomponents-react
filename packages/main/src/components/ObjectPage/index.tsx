@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  enrichEventWithDetails,
-  ThemingParameters,
-  useResponsiveContentPadding,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, {
   cloneElement,
@@ -196,7 +190,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const selectionScrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
-  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
@@ -522,7 +515,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const objectPageClasses = clsx(
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
-    classes[responsiveRange],
     className,
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
@@ -645,10 +637,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
-          <div
-            className={`${classes.headerContainer} ${responsivePaddingClass}`}
-            data-component-name="ObjectPageHeaderContainer"
-          >
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {headerContent.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
@@ -668,8 +657,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     showTitleInHeaderContent,
     avatar,
     headerContentRef,
-    renderTitleSection,
-    responsivePaddingClass
+    renderTitleSection
   ]);
 
   const onTabItemSelect = (event) => {
@@ -758,7 +746,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
         aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
-        className={`${classes.header} ${responsivePaddingClass}`}
+        className={classes.header}
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
@@ -857,7 +845,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           </TabContainer>
         </div>
       )}
-      <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
+      <div data-component-name="ObjectPageContent" className={classes.content}>
         <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden="true" />
         {placeholder
           ? placeholder
