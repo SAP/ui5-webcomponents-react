@@ -95,11 +95,7 @@ export const styles = {
     maxWidth: '5rem',
     maxHeight: '5rem',
     display: 'inline-block',
-    marginRight: '2rem'
-  },
-  headerImageRtl: {
-    marginRight: 0,
-    marginLeft: '2rem'
+    marginInlineEnd: '2rem'
   },
   image: {
     width: '100%',
