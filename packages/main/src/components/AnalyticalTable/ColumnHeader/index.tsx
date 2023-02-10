@@ -4,6 +4,7 @@ import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import React, {
   CSSProperties,
   DragEventHandler,
@@ -80,6 +81,10 @@ const styles = {
     display: 'inline-block',
     position: 'absolute',
     color: ThemingParameters.sapContent_IconColor
+  },
+  selectAllCheckBoxContainer: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 };
 
@@ -185,7 +190,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
-
   if (!column) return null;
   return (
     <div
@@ -237,7 +241,10 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             title={tooltip}
             wrapping={false}
             style={textStyle}
-            className={classes.text}
+            className={clsx(
+              classes.text,
+              id === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
+            )}
             data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${id}`}
           >
             {children}

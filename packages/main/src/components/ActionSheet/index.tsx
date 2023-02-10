@@ -10,7 +10,7 @@ import { ButtonDesign } from '../../enums';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useCanRenderPortal } from '../../internal/ssr';
-import { flattenFragments, isSSR } from '../../internal/utils';
+import { flattenFragments } from '../../internal/utils';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
 import { UI5WCSlotsNode } from '../../types';
 import {
@@ -66,7 +66,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
 
 const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
-if (!isSSR() && isPhone()) {
+if (isPhone()) {
   addCustomCSSWithScoping(
     'ui5-responsive-popover',
     `
