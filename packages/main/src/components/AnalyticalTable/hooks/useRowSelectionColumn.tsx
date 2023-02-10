@@ -5,6 +5,7 @@ import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSele
 import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping';
 import { CheckBox } from '../../../webComponents/CheckBox';
 
+// todo use ::part instead, when available (https://github.com/SAP/ui5-webcomponents/issues/6461)
 addCustomCSSWithScoping(
   'ui5-checkbox',
   `
