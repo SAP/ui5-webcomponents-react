@@ -244,7 +244,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       }
       setLastVisibleIndex(lastIndex);
     });
-  }, []);
+  }, [overflowNeeded]);
 
   useEffect(() => {
     const observer = new ResizeObserver(calculateVisibleItems);
