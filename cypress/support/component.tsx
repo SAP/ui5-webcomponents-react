@@ -11,6 +11,21 @@ declare global {
        * Cypress mount with ThemeProvider
        */
       mount: typeof mount;
+
+      /**
+       * Assert that the subject is not clickable.
+       *
+       * @param done
+       * @param clickOptions
+       */
+      shouldNotBeClickable(
+        /**  */
+        done: Mocha.Done,
+        /** Options passed to `.click()`. By default, the timeout is 100 ms. */
+        clickOptions?: Partial<Cypress.ClickOptions> & {
+          position?: Cypress.PositionType;
+        }
+      ): Chainable<Element>;
     }
   }
 }
