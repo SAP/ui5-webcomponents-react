@@ -2,7 +2,23 @@ import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponent
 import React from 'react';
 import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
 import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
+import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping';
 import { CheckBox } from '../../../webComponents/CheckBox';
+
+addCustomCSSWithScoping(
+  'ui5-checkbox',
+  `
+    :host([data-at-checkbox]) .ui5-checkbox-root {
+      display: flex;
+      width: unset;
+      height: unset;
+      justify-content: center;
+      min-height: unset;
+      min-width: unset;
+      padding: 0;
+    }
+  `
+);
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
@@ -64,7 +80,7 @@ const headerProps = (
     }
   }
 ) => {
-  const style = { ...props.style, cursor: 'pointer' };
+  const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
     selectionMode === AnalyticalTableSelectionMode.MultiSelect
@@ -162,9 +178,19 @@ const getCellProps = (props, { cell }) => {
   return props;
 };
 
+// remove padding, width, etc. with addCustomCSS from checkboxes by leveraging the data attribute
+const setToggleAllRowsSelectedProps = (props) => {
+  return [props, { 'data-at-checkbox': true }];
+};
+const setToggleRowSelectedProps = (props) => {
+  return [props, { 'data-at-checkbox': true }];
+};
+
 export const useRowSelectionColumn = (hooks) => {
   hooks.getCellProps.push(getCellProps);
   hooks.getHeaderProps.push(headerProps);
+  hooks.getToggleRowSelectedProps.push(setToggleRowSelectedProps);
+  hooks.getToggleAllRowsSelectedProps.push(setToggleAllRowsSelectedProps);
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnDeps);
   hooks.visibleColumnsDeps.push(visibleColumnsDeps);
