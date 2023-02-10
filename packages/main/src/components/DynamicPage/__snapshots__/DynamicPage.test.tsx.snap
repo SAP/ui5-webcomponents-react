@@ -257,7 +257,7 @@ exports[`DynamicPage always show content header 1`] = `
       style="top: 0px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -273,7 +273,7 @@ exports[`DynamicPage always show content header 1`] = `
         />
         <ui5-toggle-button
           accessible-name="Unpin Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable"
           data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
@@ -455,7 +455,7 @@ exports[`DynamicPage hider header button 1`] = `
       style="top: 0px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -671,7 +671,7 @@ exports[`DynamicPage render footer 1`] = `
       style="top: 0px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -971,7 +971,7 @@ exports[`DynamicPage with content 1`] = `
       style="top: 0px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -987,7 +987,7 @@ exports[`DynamicPage with content 1`] = `
         />
         <ui5-toggle-button
           accessible-name="Pin Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable"
           data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"
@@ -1975,7 +1975,7 @@ exports[`DynamicPage without content 1`] = `
       style="top: 0px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -1991,7 +1991,7 @@ exports[`DynamicPage without content 1`] = `
         />
         <ui5-toggle-button
           accessible-name="Pin Header"
-          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable DynamicPageAnchorBar-anchorBarActionPinnableAndExpandable"
+          class="DynamicPageAnchorBar-anchorBarActionButton DynamicPageAnchorBar-anchorBarActionButtonPinnable"
           data-component-name="DynamicPageAnchorBarPinBtn"
           data-ui5wcr-dynamic-page-header-action=""
           design="Default"

@@ -214,11 +214,6 @@ describe('ObjectPage', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  //todo: needs mocking
-  test.skip('title in header', () => {
-    render(renderComponent({ headerTitle, headerContent, footer, image: <Avatar />, showTitleInHeaderContent: true }));
-  });
-
   test('with IllustratedMessage', () => {
     const { getByTestId, queryByText, rerender, queryByTestId, asFragment, container } = render(
       renderComponent({

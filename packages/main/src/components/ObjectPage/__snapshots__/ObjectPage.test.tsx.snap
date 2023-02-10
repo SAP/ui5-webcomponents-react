@@ -1282,7 +1282,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       style="top: 5px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
