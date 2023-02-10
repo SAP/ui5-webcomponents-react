@@ -503,16 +503,5 @@ describe('AnalyticalTable', () => {
     expect(row2).not.toHaveAttribute('data-is-selected');
   });
 
-  test('overlay', () => {
-    const { rerender, container } = render(<AnalyticalTable data={data} columns={columns} showOverlay />);
-    const overlay = container.querySelector('[data-component-name="AnalyticalTableOverlay"]');
-
-    expect(overlay).toBeInTheDocument();
-
-    rerender(<AnalyticalTable data={data} columns={columns} />);
-
-    expect(overlay).not.toBeInTheDocument();
-  });
-
   createCustomPropsTest(AnalyticalTable);
 });

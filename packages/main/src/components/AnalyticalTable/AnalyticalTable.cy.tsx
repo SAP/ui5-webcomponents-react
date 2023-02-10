@@ -1209,10 +1209,10 @@ describe('AnalyticalTable', () => {
     cy.get('[ui5-popover]', { timeout: 100 }).should('not.exist');
   });
 
-  //todo
-  it('overlay', () => {
+  it('overlay', (done) => {
     cy.mount(<AnalyticalTable data={data} columns={columns} showOverlay />);
-    // cy.findByText('A').should('covere');
+    cy.findByRole('region').should('be.visible').should('have.css', 'opacity', '0.8');
+    cy.findByText('A').shouldNotBeClickable(done);
   });
 });
 

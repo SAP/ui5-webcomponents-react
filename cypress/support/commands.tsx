@@ -8,7 +8,7 @@ Cypress.Commands.add('mount', (component, options) => {
   return mount(<ThemeProvider>{component}</ThemeProvider>, options);
 });
 
-// copied from https://github.com/cypress-io/cypress/discussions/21150#discussioncomment-2620947
+// copied from https://github.com/cypress-io/cypress/discussions/21150#discussioncomment-2620947 and edited slightly
 Cypress.Commands.add(
   'shouldNotBeClickable',
   { prevSubject: 'element' },
