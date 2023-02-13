@@ -7,6 +7,7 @@ import { ButtonDesign } from '../../../../enums';
 import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping';
 import { Button, Icon } from '../../../../webComponents';
 
+//todo: use ::part when available: https://github.com/SAP/ui5-webcomponents/issues/6474
 addCustomCSSWithScoping(
   'ui5-icon',
   `
@@ -101,7 +102,6 @@ export const Expandable = (props) => {
             />
           ) : (
             <Icon
-              focused
               onClick={rowProps.onClick}
               interactive
               name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
