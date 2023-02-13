@@ -19,8 +19,6 @@ addCustomCSSWithScoping(
 `
 );
 
-const tableGroupExpandCollapseIcon = {};
-
 const getPadding = (level) => {
   switch (level) {
     case 0:
@@ -105,7 +103,6 @@ export const Expandable = (props) => {
               onClick={rowProps.onClick}
               interactive
               name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-              style={tableGroupExpandCollapseIcon}
               data-component-name="AnalyticalTableExpandIcon"
               className={classes.icon}
             />
