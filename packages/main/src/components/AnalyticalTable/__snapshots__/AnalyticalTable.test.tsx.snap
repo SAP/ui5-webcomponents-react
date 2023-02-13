@@ -4881,14 +4881,17 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   aria-label="To expand the row, press the spacebar"
-                  style="cursor: pointer; padding-left: 0px;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: 0px;"
                   title="Expand Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
+                    focused="true"
                     interactive="true"
                     name="navigation-right-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -4915,7 +4918,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -4940,7 +4943,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -4965,7 +4968,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5021,7 +5024,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               >
-                <span />
+                <span
+                  style="padding-inline-start: calc(0px + 2rem);"
+                />
                 <span
                   class="AnalyticalTable-tableText"
                   title="bla"
@@ -5045,7 +5050,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5070,7 +5075,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5095,7 +5100,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -8967,14 +8972,17 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 <span
                   aria-expanded="true"
                   aria-label="To collapse the row, press the spacebar"
-                  style="cursor: pointer;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: calc(0px + 2rem);"
                   title="Collapse Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
+                    focused="true"
                     interactive="true"
                     name="navigation-down-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -8999,7 +9007,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9022,7 +9030,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9045,7 +9053,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9091,14 +9099,17 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 <span
                   aria-expanded="true"
                   aria-label="To collapse the row, press the spacebar"
-                  style="cursor: pointer;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: calc(0px + 2rem);"
                   title="Collapse Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
+                    focused="true"
                     interactive="true"
                     name="navigation-down-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -9123,7 +9134,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9146,7 +9157,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9169,7 +9180,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
