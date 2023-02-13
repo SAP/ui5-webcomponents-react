@@ -49,7 +49,7 @@ const useStyles = createUseStyles(
       display: 'flex',
       alignItems: 'center'
     },
-    button: { color: ThemingParameters.sapTextColor, marginInlineEnd: '2px', height: '100%', fontSize: '0.75rem' }
+    button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' }
   },
   { name: 'ExpandableIndicatorStyles' }
 );
