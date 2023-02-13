@@ -4,7 +4,6 @@ import '@ui5/webcomponents-react/dist/Assets';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import 'tocbot/dist/tocbot.css';
 import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
-import { makeDecorator } from '@storybook/addons';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
@@ -43,11 +42,9 @@ export const argTypes = {
   }
 };
 
-const ThemeProviderDecorator = makeDecorator({
-  name: 'ThemeProvider',
-  parameterName: 'ThemeProvider',
-  wrapper: (Story, context) => {
-    const { theme, contentDensity, direction, language } = context.globals;
+export const decorators = [
+  (Story, { globals }) => {
+    const { theme, contentDensity, direction, language } = globals;
 
     useEffect(() => {
       if (language === 'local') {
@@ -80,9 +77,7 @@ const ThemeProviderDecorator = makeDecorator({
       </ThemeProvider>
     );
   }
-});
-
-export const decorators = [ThemeProviderDecorator];
+];
 
 export const globalTypes = {
   theme: {
