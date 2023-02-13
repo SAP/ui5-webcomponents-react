@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { getCurrentRange } from '../Device';
+import { getCurrentRange } from '../Device/index.js';
 
 type Range = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
 
