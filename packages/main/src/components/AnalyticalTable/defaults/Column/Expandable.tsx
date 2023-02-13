@@ -1,16 +1,24 @@
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import { CssSizeVariables } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties } from 'react';
-import { Icon } from '../../../../webComponents';
+import { createUseStyles } from 'react-jss';
+import { ButtonDesign } from '../../../../enums';
+import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping';
+import { Button, Icon } from '../../../../webComponents';
 
-const tableGroupExpandCollapseIcon = {
-  color: 'var(--sapContent_IconColor)',
-  height: '0.75rem',
-  width: '0.75rem',
-  padding: '0.625rem',
-  display: 'block'
-};
+addCustomCSSWithScoping(
+  'ui5-icon',
+  `
+:host([data-component-name="AnalyticalTableExpandIcon"]) .ui5-icon-root {
+  padding: 0.375rem;
+  width: ${CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight};
+  height: ${CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight};
+}
+`
+);
+
+const tableGroupExpandCollapseIcon = {};
 
 const getPadding = (level) => {
   switch (level) {
@@ -27,16 +35,30 @@ const getPadding = (level) => {
   }
 };
 
+const useStyles = createUseStyles(
+  {
+    container: {
+      height: CssSizeVariables.sapWcrAnalyticalTableExpandButtonHeight,
+      marginInlineEnd: '2px'
+    },
+    icon: {
+      color: ThemingParameters.sapContent_IconColor,
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center'
+    },
+    button: { color: ThemingParameters.sapTextColor, marginInlineEnd: '2px', height: '100%', fontSize: '0.75rem' }
+  },
+  { name: 'ExpandableIndicatorStyles' }
+);
+
 export const Expandable = (props) => {
-  const {
-    cell,
-    row,
-    column,
-    visibleColumns: columns,
-    webComponentsReactProperties,
-    state: { isRtl }
-  } = props;
+  const { cell, row, column, visibleColumns: columns, webComponentsReactProperties } = props;
   const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
+  const currentTheme = useCurrentTheme();
+  const classes = useStyles();
+  const shouldRenderButton = currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark';
   const tableColumns = columns.filter(
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&
@@ -45,7 +67,6 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-  const paddingRtl = isRtl ? 'paddingRight' : 'paddingLeft';
   let paddingLeft;
   if (row.canExpand) {
     paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
@@ -53,7 +74,7 @@ export const Expandable = (props) => {
     paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
   }
   const style: CSSProperties = {
-    [paddingRtl]: paddingLeft
+    paddingInlineStart: paddingLeft
   };
   const rowProps = row.getToggleRowExpandedProps();
 
@@ -67,15 +88,28 @@ export const Expandable = (props) => {
         <span
           title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
           style={{ ...rowProps.style, ...style }}
+          className={classes.container}
           aria-expanded={row.isExpanded}
           aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
         >
-          <Icon
-            onClick={rowProps.onClick}
-            interactive
-            name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-            style={tableGroupExpandCollapseIcon}
-          />
+          {shouldRenderButton ? (
+            <Button
+              icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+              design={ButtonDesign.Transparent}
+              onClick={rowProps.onClick}
+              className={classes.button}
+            />
+          ) : (
+            <Icon
+              focused
+              onClick={rowProps.onClick}
+              interactive
+              name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+              style={tableGroupExpandCollapseIcon}
+              data-component-name="AnalyticalTableExpandIcon"
+              className={classes.icon}
+            />
+          )}
         </span>
       ) : (
         <span style={style} />
