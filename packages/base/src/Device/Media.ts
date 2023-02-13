@@ -1,8 +1,9 @@
-import UI5MediaRange from '@ui5/webcomponents-base/dist/MediaRange.js';
+import UI5MediaRangeModule from '@ui5/webcomponents-base/dist/MediaRange.js';
 import { MediaEventProvider, RANGE_LEGACY_4_STEPS, RangeInfo } from './EventProvider.js';
 
 type RANGE_4_STEPS = 'S' | 'M' | 'L' | 'XL';
 
+const UI5MediaRange = UI5MediaRangeModule.default;
 const DEFAULT_RANGE_SET = UI5MediaRange.RANGESETS.RANGE_4STEPS;
 
 const RANGE_DEFINITIONS: Record<RANGE_4_STEPS, [number, number]> = {
@@ -77,7 +78,7 @@ export const getCurrentRange = (width?: number): RangeInfo => {
     };
   }
   // @ts-expect-error: width can only be undefined or a number, therefore `isNaN` works here
-  return resolveRangeInfo(UI5MediaRange.getCurrentRange(DEFAULT_RANGE_SET, isNaN(width) ? undefined : width));
+  return resolveRangeInfo(UI5MediaRange.default.getCurrentRange(DEFAULT_RANGE_SET, isNaN(width) ? undefined : width));
 };
 
 export const attachMediaHandler = (func: (rangeInfo: RangeInfo) => void): void => {

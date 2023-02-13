@@ -5,9 +5,9 @@ import { useRef } from 'react';
 import { useI18nContext } from '../context/I18nContext.js';
 import { useIsomorphicLayoutEffect } from '../hooks/index.js';
 
-const defaultBundle = new I18nBundle('defaultBundle');
+const defaultBundle = new I18nBundle.default('defaultBundle');
 
-export const useI18nBundle = (bundleName: string): I18nBundle => {
+export const useI18nBundle = (bundleName: string): I18nBundle.default => {
   const i18nContext = useI18nContext();
 
   if (!i18nContext) {

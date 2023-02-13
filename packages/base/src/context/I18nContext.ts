@@ -1,11 +1,11 @@
 'use client';
 
-import I18nBundle from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import type I18nBundle from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { createContext, useContext } from 'react';
 
 export const I18nContext = createContext<{
-  i18nBundles: Record<string, I18nBundle>;
-  setI18nBundle: (name: string, bundle: I18nBundle) => void;
+  i18nBundles: Record<string, I18nBundle.default>;
+  setI18nBundle: (name: string, bundle: I18nBundle.default) => void;
 } | null>(null);
 
 export const getI18nContext = (): typeof I18nContext => {
