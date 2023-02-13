@@ -15,6 +15,10 @@
       "types": "./wrappers/index.d.ts",
       "default": "./wrappers/index.js"
     },
+    "./ssr": {
+      "types": "./ssr/index.d.ts",
+      "default": "./ssr/index.js"
+    },
     "./package.json": "./package.json",
     "./jestSetup": "./jestSetup.js",
     "./jestSetup.js": "./jestSetup.js",
@@ -79,6 +83,7 @@
   },
   "files": [
     "dist",
+    "ssr",
     "wrappers",
     "CHANGELOG.md",
     "jestSetup.js",

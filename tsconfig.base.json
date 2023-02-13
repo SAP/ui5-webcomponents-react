@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "Node16",
     "target": "ES2021",
     "lib": ["ES2022", "dom"],
     "jsx": "react",
@@ -15,13 +15,12 @@
       "@ui5/webcomponents-react-charts": ["./packages/charts/src/index.ts"],
       "@ui5/webcomponents-react/*": ["./packages/main/src/*"]
     },
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "esModuleInterop": false,
     "resolveJsonModule": true,
     "declaration": true
   }
