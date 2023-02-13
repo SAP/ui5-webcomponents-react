@@ -6,8 +6,8 @@ import {
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { ComposedChart } from './index';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { ComposedChart } from './index.js';
 
 enum ComposedChartChildrenQuery {
   'area' = 'g.recharts-area-dots',

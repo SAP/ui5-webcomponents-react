@@ -14,17 +14,17 @@ import {
   Text as RechartsText,
   Tooltip
 } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { useLegendItemClick } from '../../hooks/useLegendItemClick';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { defaultFormatter } from '../../internal/defaults';
-import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { PieChartPlaceholder } from './Placeholder';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import { IChartDimension } from '../../interfaces/IChartDimension.js';
+import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
+import { PieChartPlaceholder } from './Placeholder.js';
 
 const useStyles = createUseStyles(
   {

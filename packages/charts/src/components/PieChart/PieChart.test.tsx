@@ -5,8 +5,8 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { simpleDataSet } from '../../resources/DemoProps';
-import { PieChart } from './PieChart';
+import { simpleDataSet } from '../../resources/DemoProps.js';
+import { PieChart } from './PieChart.js';
 
 const dimension = {
   accessor: 'name'

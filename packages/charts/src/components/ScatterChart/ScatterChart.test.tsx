@@ -5,8 +5,8 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { scatterComplexDataSet } from '../../resources/DemoProps';
-import { ScatterChart } from './ScatterChart';
+import { scatterComplexDataSet } from '../../resources/DemoProps.js';
+import { ScatterChart } from './ScatterChart.js';
 
 const measures = [
   {

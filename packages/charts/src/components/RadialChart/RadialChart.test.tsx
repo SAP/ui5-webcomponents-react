@@ -1,6 +1,6 @@
 import { createChartRenderTest, createOnClickChartTest } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { RadialChart } from './RadialChart';
+import { RadialChart } from './RadialChart.js';
 
 const value = 67;
 

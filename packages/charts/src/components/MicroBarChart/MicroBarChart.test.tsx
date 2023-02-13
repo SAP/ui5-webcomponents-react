@@ -2,7 +2,7 @@ import { createChartRenderTest, createLoadingPlaceholderTest, createOnClickChart
 import { fireEvent, render, screen } from '@shared/tests/index';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import * as React from 'react';
-import { MicroBarChart } from './MicroBarChart';
+import { MicroBarChart } from './MicroBarChart.js';
 
 const text1 = 'January';
 const text2 = 'February';

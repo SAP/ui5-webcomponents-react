@@ -5,8 +5,8 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { complexDataSet } from '../../resources/DemoProps';
-import { RadarChart } from './RadarChart';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { RadarChart } from './RadarChart.js';
 
 const dimensions = [
   {

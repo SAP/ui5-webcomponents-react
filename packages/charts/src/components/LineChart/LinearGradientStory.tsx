@@ -1,6 +1,6 @@
 import React from 'react';
-import { bigDataSet } from '../../resources/DemoProps';
-import { LineChart } from './LineChart';
+import { bigDataSet } from '../../resources/DemoProps.js';
+import { LineChart } from './LineChart.js';
 
 export const LinearGradientExample = (props: any) => {
   return (

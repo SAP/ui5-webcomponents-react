@@ -5,8 +5,8 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { simpleDataSet } from '../../resources/DemoProps';
-import { DonutChart } from './DonutChart';
+import { simpleDataSet } from '../../resources/DemoProps.js';
+import { DonutChart } from './DonutChart.js';
 
 const dimension = {
   accessor: 'name'

@@ -6,8 +6,8 @@ import {
 } from '@shared/tests/chartUtils';
 import { defaultMeasuresFormatter } from '@shared/tests/formatter';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { complexDataSet } from '../../resources/DemoProps';
-import { LineChart } from './LineChart';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { LineChart } from './LineChart.js';
 
 const dimensions = [
   {

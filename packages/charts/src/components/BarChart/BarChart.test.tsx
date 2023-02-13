@@ -6,8 +6,8 @@ import {
 } from '@shared/tests/chartUtils';
 import { defaultMeasuresFormatter } from '@shared/tests/formatter';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { complexDataSet } from '../../resources/DemoProps';
-import { BarChart } from './BarChart';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { BarChart } from './BarChart.js';
 
 const dimensions = [
   {

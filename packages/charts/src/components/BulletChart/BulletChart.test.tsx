@@ -5,8 +5,8 @@ import {
   createOnLegendClickNotCrashTest
 } from '@shared/tests/chartUtils';
 import { createCustomPropsTest } from '@shared/tests/utils';
-import { complexDataSet } from '../../resources/DemoProps';
-import { BulletChart } from './BulletChart';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { BulletChart } from './BulletChart.js';
 
 const dimensions = [
   {

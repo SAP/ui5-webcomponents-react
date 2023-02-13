@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@shared/tests';
 import { createCustomPropsTest } from '@shared/tests/utils';
 import * as React from 'react';
-import { complexDataSet } from '../../resources/DemoProps';
-import { ColumnChartWithTrend } from './ColumnChartWithTrend';
+import { complexDataSet } from '../../resources/DemoProps.js';
+import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
 
 enum ComposedChartChildrenQuery {
   'area' = 'g.recharts-area-dots',
