@@ -18,10 +18,10 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": false,
     "experimentalDecorators": true,
     "removeComments": false,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "resolveJsonModule": true,
     "declaration": true
   }
