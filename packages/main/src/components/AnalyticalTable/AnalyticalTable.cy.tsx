@@ -654,19 +654,52 @@ describe('AnalyticalTable', () => {
         </>
       );
     };
-    cy.mount(<TestComp data={data} />);
 
-    cy.findByText('Both').click();
-    cy.get('#name').invoke('outerWidth').should('equal', 952);
-    cy.get('#age').invoke('outerWidth').should('equal', 952);
+    [
+      { props: {}, bothWidth: 952, onlyNameWidth: 1904, onlyAgeWidth: 1904 },
+      {
+        props: { selectionMode: AnalyticalTableSelectionMode.MultiSelect },
+        bothWidth: 930,
+        onlyNameWidth: 1860,
+        onlyAgeWidth: 1860
+      },
+      {
+        props: { withRowHighlight: true },
+        bothWidth: 949,
+        onlyNameWidth: 1898,
+        onlyAgeWidth: 1898
+      },
+      {
+        props: { withNavigationHighlight: true },
+        bothWidth: 949,
+        onlyNameWidth: 1898,
+        onlyAgeWidth: 1898
+      },
+      {
+        props: {
+          withNavigationHighlight: true,
+          withRowHighlight: true,
+          selectionMode: AnalyticalTableSelectionMode.SingleSelect
+        },
+        bothWidth: 924,
+        onlyNameWidth: 1848,
+        onlyAgeWidth: 1848
+      }
+    ].forEach((item) => {
+      cy.mount(<TestComp data={data} {...item.props} />);
 
-    cy.findByText('NameCol').click();
-    cy.get('#name').invoke('outerWidth').should('equal', 1904);
-    cy.get('#age').should('not.exist');
+      cy.findByText('Both').click();
+      cy.get('#name').invoke('outerWidth').should('equal', item.bothWidth);
+      cy.get('#age').invoke('outerWidth').should('equal', item.bothWidth);
 
-    cy.findByText('AgeCol').click();
-    cy.get('#age').invoke('outerWidth').should('equal', 1904);
-    cy.get('#name').should('not.exist');
+      cy.findByText('NameCol').click();
+      cy.get('#name').invoke('outerWidth').should('equal', item.onlyNameWidth);
+      cy.get('#age').should('not.exist');
+
+      cy.findByText('AgeCol').click();
+      cy.get('#age').invoke('outerWidth').should('equal', item.onlyAgeWidth);
+      cy.get('#name').should('not.exist');
+    });
   });
 
   it('tableInstance: change state & hide cols', () => {
