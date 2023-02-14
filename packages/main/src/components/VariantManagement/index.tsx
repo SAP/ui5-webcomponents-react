@@ -11,6 +11,7 @@ import React, {
   ComponentElement,
   forwardRef,
   isValidElement,
+  ReactElement,
   ReactNode,
   useCallback,
   useEffect,
@@ -147,10 +148,14 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   portalContainer?: Element;
   /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
+   *
+   * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
+   *
+   * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
     e: CustomEvent<{
@@ -288,6 +293,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
     }
   });
+  const [selectedSaveViewInputProps, setSelectedSaveViewInputProps] = useState(
+    selectedVariant.saveViewInputProps ?? {}
+  );
 
   const handleClose = () => {
     popoverRef.current.close();
@@ -316,7 +324,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     if (typeof onSaveAs === 'function') {
       onSaveAs(enrichEventWithDetails(e, selectedVariant));
     }
-    handleSaveAsClose();
+    if (!e.defaultPrevented) {
+      handleSaveAsClose();
+    }
   };
 
   const handleSaveManageViews = (e, payload) => {
@@ -362,7 +372,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     if (typeof onSaveManageViews === 'function') {
       onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
     }
-    handleManageClose();
+    if (!e.defaultPrevented) {
+      handleManageClose();
+    }
   };
 
   const handleOpenVariantManagement = useCallback(
@@ -394,6 +406,11 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [selectedVariant, onSelect]);
 
   const handleVariantItemSelect = (e) => {
+    const selectedChild = safeChildren.find(
+      (item) => isValidElement(item) && item.props.children === e.detail.selectedItems[0].dataset.children
+    ) as ReactElement<VariantItemPropTypes>;
+
+    setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
     setSelectedVariant({ ...e.detail.selectedItems[0].dataset, variantItem: e.detail.selectedItems[0] });
     selectVariantEventRef.current = e;
     if (closeOnItemSelect) {
@@ -444,7 +461,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [safeChildrenWithFavorites]);
 
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
-
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
@@ -553,6 +569,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         )}
         {saveAsDialogOpen && (
           <SaveViewDialog
+            saveViewInputProps={selectedSaveViewInputProps}
             portalContainer={portalContainer}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}

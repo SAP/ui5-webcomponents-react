@@ -95,6 +95,9 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     handleRowChange(e, { currentVariant: children, favorite: !internalFavorite });
   };
   const handleVariantInput = (e) => {
+    if (typeof props.manageViewInputProps?.onInput === 'function') {
+      props.manageViewInputProps?.onInput(e);
+    }
     if (variantNames.includes(e.target.value) || Array.from(changedVariantNames.values()).includes(e.target.value)) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
@@ -144,11 +147,12 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     return (
       <Input
         placeholder={inputPlaceHolder}
-        value={children}
-        onInput={handleVariantInput}
         ref={inputRef}
         valueStateMessage={<div>{variantNameInvalid}</div>}
         valueState={!variantNameInvalid ? ValueState.None : ValueState.Error}
+        {...props.manageViewInputProps}
+        value={children}
+        onInput={handleVariantInput}
       />
     );
   };

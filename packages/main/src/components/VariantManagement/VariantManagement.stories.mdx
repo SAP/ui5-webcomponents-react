@@ -6,6 +6,7 @@ import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
+import { VariantManagementWithCustomValidation } from './CodeGen';
 
 <Meta
   title="Inputs / VariantManagement"
@@ -28,7 +29,7 @@ import { VariantItem } from './VariantItem';
     {(props) => {
       return (
         <VariantManagement {...props}>
-          <VariantItem>Default VariantItem</VariantItem>
+          <VariantItem inputProps={{ valueState: 'Error', onInput: console.log }}>Default VariantItem</VariantItem>
           <VariantItem selected>Selected</VariantItem>
           <VariantItem author="SAP">Author</VariantItem>
           <VariantItem favorite>Favorite</VariantItem>
@@ -56,5 +57,21 @@ import { VariantItem } from './VariantItem';
 ## Properties
 
 <ArgsTableWithNote story="." />
+
+# More Examples
+
+## VariantManagement with custom Input
+
+TODO
+
+By leveraging the `saveViewInputProps` prop, you can adjust the `Input` component inside the "Manage View" dialog
+
+<Canvas>
+  <Story name="with custom validation">
+    {(props) => {
+      return <VariantManagementWithCustomValidation {...props} />;
+    }}
+  </Story>
+</Canvas>
 
 <Footer />

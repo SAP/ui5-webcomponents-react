@@ -1,4 +1,5 @@
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -23,7 +24,7 @@ import { Bar } from '../../webComponents/Bar';
 import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
-import { Input } from '../../webComponents/Input';
+import { Input, InputPropTypes } from '../../webComponents/Input';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 
@@ -50,6 +51,7 @@ interface SaveViewDialogPropTypes {
   showSetAsDefault: boolean;
   variantNames: string[];
   portalContainer: Element;
+  saveViewInputProps?: Omit<InputPropTypes, 'value'>;
 }
 
 export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
@@ -61,7 +63,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showApplyAutomatically,
     showSetAsDefault,
     variantNames,
-    portalContainer
+    portalContainer,
+    saveViewInputProps
   } = props;
   const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
@@ -86,6 +89,9 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const [variantNameInvalid, setVariantNameInvalid] = useState<string | boolean>(false);
 
   const handleInputChange = (e) => {
+    if (typeof saveViewInputProps?.onInput === 'function') {
+      saveViewInputProps.onInput(e);
+    }
     setVariantName(e.target.value);
     if (variantNames.includes(e.target.value)) {
       setVariantNameInvalid(errorTextAlreadyExists);
@@ -159,11 +165,12 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         <Input
           accessibleName={inputLabelText}
           ref={inputRef}
-          className={classes.input}
-          id={`view-${uniqueId}`}
-          value={variantName}
           valueState={!variantNameInvalid ? 'None' : 'Error'}
           valueStateMessage={<div>{variantNameInvalid}</div>}
+          {...saveViewInputProps}
+          className={clsx(classes.input, saveViewInputProps?.className)}
+          id={`view-${uniqueId}`}
+          value={variantName}
           onInput={handleInputChange}
         />
         <FlexBox
