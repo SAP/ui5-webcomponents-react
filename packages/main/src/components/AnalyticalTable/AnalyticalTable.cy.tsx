@@ -190,10 +190,10 @@ describe('AnalyticalTable', () => {
     cy.mount(<ScrollTable scrollFn="scrollToItem" args={[1, 'start']} />);
     cy.findByText('A').should('be.visible');
     // should not be rendered due to virtualization
-    cy.findByText('B').should('not.exist');
+    cy.findByText('B').should('not.exist', { timeout: 100 });
     cy.findByText('Click').click();
     cy.findByText('B').should('be.visible');
-    cy.findByText('A').should('not.exist');
+    cy.findByText('A').should('not.exist', { timeout: 100 });
 
     cy.mount(<ScrollTable scrollFn="scrollTo" args={[50]} />);
     cy.findByText('Click').click();
@@ -249,8 +249,8 @@ describe('AnalyticalTable', () => {
     cy.mount(<TreeSelectFilterTable onRowSelect={select} />);
 
     // expand
-    cy.findByText('Robin Moreno').should('not.exist');
-    cy.findByText('Judith Mathews').should('not.exist');
+    cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
+    cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.get('[aria-rowindex="1"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').click();
     cy.findByText('Robin Moreno').should('be.visible');
     cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').trigger('keydown', {
@@ -272,8 +272,8 @@ describe('AnalyticalTable', () => {
 
     // global filter + select
     cy.findByTestId('input').typeIntoUi5Input('Katy Bradshaw');
-    cy.findByText('Robin Moreno').should('not.exist');
-    cy.findByText('Judith Mathews').should('not.exist');
+    cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
+    cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.findByText('Katy Bradshaw').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
@@ -286,9 +286,9 @@ describe('AnalyticalTable', () => {
     // column filter + select
     cy.findByText('Name').click();
     cy.get(`ui5-input[show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
-    cy.findByText('Robin Moreno').should('not.exist');
-    cy.findByText('Judith Mathews').should('not.exist');
-    cy.findByText('Katy Bradshaw').should('not.exist');
+    cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
+    cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
+    cy.findByText('Katy Bradshaw').should('not.exist', { timeout: 100 });
     cy.findByText('Flowers Mcfarland').click({ force: true });
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
@@ -694,11 +694,11 @@ describe('AnalyticalTable', () => {
 
       cy.findByText('NameCol').click();
       cy.get('#name').invoke('outerWidth').should('equal', item.onlyNameWidth);
-      cy.get('#age').should('not.exist');
+      cy.get('#age').should('not.exist', { timeout: 100 });
 
       cy.findByText('AgeCol').click();
       cy.get('#age').invoke('outerWidth').should('equal', item.onlyAgeWidth);
-      cy.get('#name').should('not.exist');
+      cy.get('#name').should('not.exist', { timeout: 100 });
     });
   });
 
@@ -745,7 +745,7 @@ describe('AnalyticalTable', () => {
     ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
       cy.get(col).invoke('outerWidth').should('equal', 400);
     });
-    cy.get('#age').should('not.exist');
+    cy.get('#age').should('not.exist', { timeout: 100 });
   });
 
   it('InfiniteScroll', () => {
