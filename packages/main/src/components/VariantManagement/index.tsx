@@ -329,7 +329,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
             return false;
           }
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
-          const currentVariant = popoverRef.current.querySelector(`ui5-li[data-text="${child.props.children}"]`);
+          const currentVariant = popoverRef.current.querySelector(`ui5-li[data-children="${child.props.children}"]`);
           callbackProperties.prevVariants.push(child.props);
           if (defaultView) {
             if (defaultView === child.props.children) {
