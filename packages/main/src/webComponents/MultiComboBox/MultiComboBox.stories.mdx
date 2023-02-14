@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MultiComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
@@ -7,11 +7,11 @@ import { MultiComboBoxItem } from '../MultiComboBoxItem';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './MultiComboBoxDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md';
-import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md';
-import MultiComboBoxMethods from './MultiComboBoxMethods.md';
+import Description from './MultiComboBoxDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md?raw';
+import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md?raw';
+import MultiComboBoxMethods from './MultiComboBoxMethods.md?raw';
 
 <Meta
   title="Inputs / MultiComboBox"
@@ -53,9 +53,9 @@ import MultiComboBoxMethods from './MultiComboBoxMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<MultiComboBoxMethods />
+<Markdown>{MultiComboBoxMethods}</Markdown>
 
 # More Examples
 
@@ -87,14 +87,14 @@ import MultiComboBoxMethods from './MultiComboBoxMethods.md';
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## MultiComboBoxItem
 
-<MultiComboBoxItemDescription />
+<Markdown>{MultiComboBoxItemDescription}</Markdown>
 
 ## MultiComboBoxGroupItem
 
-<MultiComboBoxGroupItemDescription />
+<Markdown>{MultiComboBoxGroupItemDescription}</Markdown>
 
 <Footer />

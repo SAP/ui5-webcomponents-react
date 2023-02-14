@@ -1,11 +1,11 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { SplitButton } from './index';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './SplitButtonDescription.md';
+import Description from './SplitButtonDescription.md?raw';
 
 <Meta
   title="Inputs / SplitButton"
@@ -36,6 +36,6 @@ import Description from './SplitButtonDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <Footer />

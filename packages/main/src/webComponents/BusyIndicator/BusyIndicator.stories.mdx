@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { BusyIndicator } from './index';
 import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
@@ -6,7 +6,7 @@ import { Select } from '../Select';
 import { Text } from '../../components/Text';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './BusyIndicatorDescription.md';
+import Description from './BusyIndicatorDescription.md?raw';
 
 <Meta
   title="User Feedback / BusyIndicator"
@@ -39,7 +39,7 @@ import Description from './BusyIndicatorDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

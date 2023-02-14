@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { List } from './index';
 import { ProgressIndicator } from '../ProgressIndicator';
@@ -16,12 +16,12 @@ import { CustomListItem } from '../CustomListItem';
 import { GroupHeaderListItem } from '../GroupHeaderListItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './ListDescription.md';
+import Description from './ListDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import StandardListItemDescription from '../StandardListItem/StandardListItemDescription.md';
-import CustomListItemDescription from '../CustomListItem/CustomListItemDescription.md';
-import GroupHeaderListItemDescription from '../GroupHeaderListItem/GroupHeaderListItemDescription.md';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import StandardListItemDescription from '../StandardListItem/StandardListItemDescription.md?raw';
+import CustomListItemDescription from '../CustomListItem/CustomListItemDescription.md?raw';
+import GroupHeaderListItemDescription from '../GroupHeaderListItem/GroupHeaderListItemDescription.md?raw';
 
 <Meta
   title="Data Display / List"
@@ -63,7 +63,7 @@ import GroupHeaderListItemDescription from '../GroupHeaderListItem/GroupHeaderLi
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <br />
 
@@ -209,18 +209,18 @@ The <code>GroupHeaderListItem</code> is a special list item, used only to separa
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## StandardListItem
 
-<StandardListItemDescription />
+<Markdown>{StandardListItemDescription}</Markdown>
 
 ## CustomListItem
 
-<CustomListItemDescription />
+<Markdown>{CustomListItemDescription}</Markdown>
 
 ## GroupHeaderListItem
 
-<GroupHeaderListItemDescription />
+<Markdown>{GroupHeaderListItemDescription}</Markdown>
 
 <Footer />

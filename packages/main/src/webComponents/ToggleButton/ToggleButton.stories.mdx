@@ -1,11 +1,11 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ToggleButton } from './index';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import ToggleButtonMethods from './ToggleButtonMethods.md';
+import ToggleButtonMethods from './ToggleButtonMethods.md?raw';
 
 <Meta
   title="Inputs / ToggleButton"
@@ -38,6 +38,6 @@ import ToggleButtonMethods from './ToggleButtonMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<ToggleButtonMethods />
+<Markdown>{ToggleButtonMethods}</Markdown>
 
 <Footer />

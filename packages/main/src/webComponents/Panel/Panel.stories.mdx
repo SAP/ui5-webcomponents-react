@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Panel } from './index';
 import { PanelAccessibleRole } from '../../enums/PanelAccessibleRole';
@@ -13,7 +13,7 @@ import { StandardListItem } from '../StandardListItem';
 import { List } from '../List';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './PanelDescription.md';
+import Description from './PanelDescription.md?raw';
 
 <Meta
   title="Layouts & Floorplans / Panel"
@@ -59,7 +59,7 @@ import Description from './PanelDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

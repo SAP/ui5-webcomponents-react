@@ -1,10 +1,10 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Markdown, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Icon } from './index';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './IconDescription.md';
+import Description from './IconDescription.md?raw';
 
 <Meta
   title="Data Display / Icon"
@@ -32,6 +32,6 @@ import Description from './IconDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <Footer />

@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MessageStrip } from './index';
 import { MessageStripDesign } from '../../enums/MessageStripDesign';
@@ -6,7 +6,7 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '../Icon';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './MessageStripDescription.md';
+import Description from './MessageStripDescription.md?raw';
 
 <Meta
   title="Data Display / MessageStrip"
@@ -39,7 +39,7 @@ import Description from './MessageStripDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

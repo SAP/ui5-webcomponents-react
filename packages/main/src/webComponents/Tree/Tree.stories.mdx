@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Tree } from './index';
 import { BusyIndicator } from '../BusyIndicator';
@@ -6,7 +6,7 @@ import { TreeItem } from '../TreeItem';
 import { ListMode } from '../../enums/ListMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './TreeDescription.md';
+import Description from './TreeDescription.md?raw';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
 import pasteIcon from '@ui5/webcomponents-icons/dist/paste.js';
 import wrenchIcon from '@ui5/webcomponents-icons/dist/wrench.js';
@@ -14,10 +14,10 @@ import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import dlCloutIcon from '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import { useState } from 'react';
 import { ValueState } from '../../enums';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TreeItemDescription from '../TreeItem/TreeItemDescription.md';
-import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md';
-import TreeMethods from './TreeMethods.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import TreeItemDescription from '../TreeItem/TreeItemDescription.md?raw';
+import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md?raw';
+import TreeMethods from './TreeMethods.md?raw';
 import { TreeItemCustom } from '../TreeItemCustom';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -86,9 +86,9 @@ import { Text } from '../../components/Text';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<TreeMethods />
+<Markdown>{TreeMethods}</Markdown>
 
 # More Examples
 
@@ -250,14 +250,14 @@ const LazyLoadingTree = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## TreeItem
 
-<TreeItemDescription />
+<Markdown>{TreeItemDescription}</Markdown>
 
 ## TreeItemCustom
 
-<TreeItemCustomDescription />
+<Markdown>{TreeItemCustomDescription}</Markdown>
 
 <Footer />

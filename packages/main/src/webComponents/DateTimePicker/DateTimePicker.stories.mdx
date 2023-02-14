@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { DateTimePicker } from './index';
 import { CalendarType } from '../../enums/CalendarType';
@@ -10,8 +10,8 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './DateTimePickerDescription.md';
-import DateTimePickerMethods from './DateTimePickerMethods.md';
+import Description from './DateTimePickerDescription.md?raw';
+import DateTimePickerMethods from './DateTimePickerMethods.md?raw';
 
 <Meta
   title="Inputs / DateTimePicker"
@@ -43,8 +43,8 @@ import DateTimePickerMethods from './DateTimePickerMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<DateTimePickerMethods />
+<Markdown>{DateTimePickerMethods}</Markdown>
 
 <Footer />

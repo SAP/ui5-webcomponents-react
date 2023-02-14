@@ -1,14 +1,14 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './MenuDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Description from './MenuDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Button, Menu, MenuItem, MessageStrip } from '../';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import MenuItemDescription from '../MenuItem/MenuItemDescription.md';
-import MenuMethods from './MenuMethods.md';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import MenuItemDescription from '../MenuItem/MenuItemDescription.md?raw';
+import MenuMethods from './MenuMethods.md?raw';
 
 <Meta
   title="Modals & Popovers / Menu"
@@ -66,9 +66,9 @@ import MenuMethods from './MenuMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<MenuMethods />
+<Markdown>{MenuMethods}</Markdown>
 
 ## Opening Menus
 
@@ -155,10 +155,10 @@ const MenuComponent = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## MenuItem
 
-<MenuItemDescription />
+<Markdown>{MenuItemDescription}</Markdown>
 
 <Footer />

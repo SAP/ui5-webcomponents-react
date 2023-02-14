@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Breadcrumbs } from './index';
 import { BreadcrumbsDesign } from '../../enums/BreadcrumbsDesign';
@@ -6,9 +6,9 @@ import { BreadcrumbsSeparatorStyle } from '../../enums/BreadcrumbsSeparatorStyle
 import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './BreadcrumbsDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import BreadcrumbsItemDescription from '../BreadcrumbsItem/BreadcrumbsItemDescription.md';
+import Description from './BreadcrumbsDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import BreadcrumbsItemDescription from '../BreadcrumbsItem/BreadcrumbsItemDescription.md?raw';
 
 <Meta
   title="Layouts & Floorplans / Breadcrumbs"
@@ -47,12 +47,12 @@ import BreadcrumbsItemDescription from '../BreadcrumbsItem/BreadcrumbsItemDescri
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## BreadcrumbsItem
 
-<BreadcrumbsItemDescription />
+<Markdown>{BreadcrumbsItemDescription}</Markdown>
 
 <Footer />

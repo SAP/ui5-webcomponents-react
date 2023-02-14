@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Table } from './index';
 import { TableColumn } from '../TableColumn';
@@ -9,13 +9,13 @@ import { TableGroupRow } from '../TableGroupRow';
 import { TableGrowingMode } from '../../enums/TableGrowingMode';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './TableDescription.md';
+import Description from './TableDescription.md?raw';
 import { useState } from 'react';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TableColumnDescription from '../TableColumn/TableColumnDescription.md';
-import TableRowDescription from '../TableRow/TableRowDescription.md';
-import TableGroupRowDescription from '../TableGroupRow/TableGroupRowDescription.md';
-import TableCellDescription from '../TableCell/TableCellDescription.md';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import TableColumnDescription from '../TableColumn/TableColumnDescription.md?raw';
+import TableRowDescription from '../TableRow/TableRowDescription.md?raw';
+import TableGroupRowDescription from '../TableGroupRow/TableGroupRowDescription.md?raw';
+import TableCellDescription from '../TableCell/TableCellDescription.md?raw';
 
 <Meta
   title="Data Display / Table"
@@ -103,7 +103,7 @@ import TableCellDescription from '../TableCell/TableCellDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <br />
 
@@ -322,22 +322,22 @@ const GrowingTable = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## TableColumn
 
-<TableColumnDescription />
+<Markdown>{TableColumnDescription}</Markdown>
 
 ## TableRow
 
-<TableRowDescription />
+<Markdown>{TableRowDescription}</Markdown>
 
 ## TableGroupRow
 
-<TableGroupRowDescription />
+<Markdown>{TableGroupRowDescription}</Markdown>
 
 ## TableCell
 
-<TableCellDescription />
+<Markdown>{TableCellDescription}</Markdown>
 
 <Footer />

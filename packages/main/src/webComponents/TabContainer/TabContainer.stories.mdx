@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { TabContainer } from './index';
 import { Tab } from '../Tab';
@@ -7,17 +7,17 @@ import { TabLayout } from '../../enums/TabLayout';
 import { SemanticColor } from '../../enums/SemanticColor';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './TabContainerDescription.md';
+import Description from './TabContainerDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/activities.js';
 import '@ui5/webcomponents-icons/dist/add.js';
 import '@ui5/webcomponents-icons/dist/calendar.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import '@ui5/webcomponents-icons/dist/sys-monitor.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TabDescription from '../Tab/TabDescription.md';
-import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md';
-import TabContainerMethods from './TabContainerMethods.md';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import TabDescription from '../Tab/TabDescription.md?raw';
+import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md?raw';
+import TabContainerMethods from './TabContainerMethods.md?raw';
 import { TabContainerBackgroundDesign } from '../../enums';
 
 <Meta
@@ -71,9 +71,9 @@ import { TabContainerBackgroundDesign } from '../../enums';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<TabContainerMethods />
+<Markdown>{TabContainerMethods}</Markdown>
 
 # More Examples
 
@@ -205,14 +205,14 @@ The <code>TabSeparator</code> represents a vertical line to separate tabs inside
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## Tab
 
-<TabDescription />
+<Markdown>{TabDescription}</Markdown>
 
 ## TabSeparator
 
-<TabSeparatorDescription />
+<Markdown>{TabSeparatorDescription}</Markdown>
 
 <Footer />

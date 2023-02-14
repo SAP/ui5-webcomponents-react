@@ -1,16 +1,16 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ViewSettingsDialog } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './ViewSettingsDialogDescription.md';
+import Description from './ViewSettingsDialogDescription.md?raw';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
 import { useEffect, useRef } from 'react';
-import { isChromatic } from '../../../../../.storybook/utils';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import SortItemDescription from '../SortItem/SortItemDescription.md';
-import FilterItemDescription from '../FilterItem/FilterItemDescription.md';
-import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md';
-import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md';
+import { isChromatic } from '@sb/utils';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import SortItemDescription from '../SortItem/SortItemDescription.md?raw';
+import FilterItemDescription from '../FilterItem/FilterItemDescription.md?raw';
+import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md?raw';
+import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md?raw';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -94,9 +94,9 @@ import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md';
 
 <ArgsTable story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ViewSettingsDialogMethods />
+<Markdown>{ViewSettingsDialogMethods}</Markdown>
 
 ## Opening ViewSettingsDialog
 
@@ -127,18 +127,18 @@ const ViewSettingsDialogComponent = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## SortItem
 
-<SortItemDescription />
+<Markdown>{SortItemDescription}</Markdown>
 
 ## FilterItem
 
-<FilterItemDescription />
+<Markdown>{FilterItemDescription}</Markdown>
 
 ## FilterItemOption
 
-<FilterItemOptionDescription />
+<Markdown>{FilterItemOptionDescription}</Markdown>
 
 <Footer />

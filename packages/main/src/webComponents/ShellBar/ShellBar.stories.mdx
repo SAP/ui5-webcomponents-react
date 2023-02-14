@@ -1,15 +1,15 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Icon, Input, Popover, ShellBar, ShellBarItem, StandardListItem } from '../..';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './ShellBarDescription.md';
+import Description from './ShellBarDescription.md?raw';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { useRef } from 'react';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md';
-import ShellBarMethods from './ShellBarMethods.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md?raw';
+import ShellBarMethods from './ShellBarMethods.md?raw';
 import { Logo, Profile } from './CodeGen';
 
 <Meta
@@ -66,9 +66,9 @@ import { Logo, Profile } from './CodeGen';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ShellBarMethods />
+<Markdown>{ShellBarMethods}</Markdown>
 
 <br />
 
@@ -161,10 +161,10 @@ const ShellBarComponent = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## ShellBarItem
 
-<ShellBarItemDescription />
+<Markdown>{ShellBarItemDescription}</Markdown>
 
 <Footer />

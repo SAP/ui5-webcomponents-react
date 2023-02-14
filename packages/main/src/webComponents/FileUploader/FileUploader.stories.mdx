@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { FileUploader } from './index';
 import { Button } from '../Button';
@@ -10,7 +10,7 @@ import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import uploadIcon from '@ui5/webcomponents-icons/dist/upload.js';
-import FileUploaderMethods from './FileUploaderMethods.md';
+import FileUploaderMethods from './FileUploaderMethods.md?raw';
 
 <Meta
   title="Inputs / FileUploader"
@@ -42,7 +42,7 @@ import FileUploaderMethods from './FileUploaderMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<FileUploaderMethods />
+<Markdown>{FileUploaderMethods}</Markdown>
 
 <br />
 

@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { NotificationListItem } from './index';
 import { Avatar } from '../Avatar';
@@ -12,10 +12,10 @@ import { ButtonDesign } from '../../enums/ButtonDesign';
 import { WrappingType } from '../../enums/WrappingType';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './NotificationListItemDescription.md';
+import Description from './NotificationListItemDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md?raw';
 import { Img, FootNotes, NotificationDescription } from './CodeGen';
 
 <Meta
@@ -67,7 +67,7 @@ import { Img, FootNotes, NotificationDescription } from './CodeGen';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 
@@ -118,10 +118,10 @@ import { Img, FootNotes, NotificationDescription } from './CodeGen';
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## NotificationAction
 
-<NotificationActionDescription />
+<Markdown>{NotificationActionDescription}</Markdown>
 
 <Footer />

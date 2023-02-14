@@ -1,9 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { RangeSlider } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './RangeSliderDescription.md';
+import Description from './RangeSliderDescription.md?raw';
 
 <Meta
   title="Inputs / RangeSlider"
@@ -31,6 +31,6 @@ import Description from './RangeSliderDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <Footer />

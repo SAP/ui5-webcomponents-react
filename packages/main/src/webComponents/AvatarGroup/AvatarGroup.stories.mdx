@@ -1,12 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { AvatarGroup } from './index';
 import { AvatarGroupType } from '../../enums/AvatarGroupType';
 import { Avatar } from '../Avatar';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './AvatarGroupDescription.md';
-import AvatarGroupMethods from './AvatarGroupMethods.md';
+import Description from './AvatarGroupDescription.md?raw';
+import AvatarGroupMethods from './AvatarGroupMethods.md?raw';
 import { Avatar1, Avatar2 } from './CodeGen';
 
 <Meta
@@ -46,8 +46,8 @@ import { Avatar1, Avatar2 } from './CodeGen';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<AvatarGroupMethods />
+<Markdown>{AvatarGroupMethods}</Markdown>
 
 <Footer />

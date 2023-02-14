@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { BarDesign } from '../../enums';
-import Description from './DialogDescription.md';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import Description from './DialogDescription.md?raw';
+import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
@@ -13,7 +13,7 @@ import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { Dialog } from './index';
 import { isChromatic } from '../../../../../.storybook/utils';
-import DialogMethods from './DialogMethods.md';
+import DialogMethods from './DialogMethods.md?raw';
 
 <Meta
   title="Modals & Popovers / Dialog"
@@ -83,9 +83,9 @@ import DialogMethods from './DialogMethods.md';
 
 <ArgsTable story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<DialogMethods />
+<Markdown>{DialogMethods}</Markdown>
 
 ## Opening Dialogs
 

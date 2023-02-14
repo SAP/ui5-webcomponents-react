@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Bar } from './index';
 import { BarDesign } from '../../enums/BarDesign';
@@ -10,8 +10,8 @@ import { Title } from '../Title';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './BarDescription.md';
-import { GitHubLogo } from '../../../../../.storybook/components/GitHub-Mark';
+import Description from './BarDescription.md?raw';
+import { GitHubLogo } from '@sb/components/GitHub-Mark';
 import { CenterContent, EndContent, Img, StartContent } from './CodeGen';
 
 <Meta
@@ -48,7 +48,7 @@ import { CenterContent, EndContent, Img, StartContent } from './CodeGen';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

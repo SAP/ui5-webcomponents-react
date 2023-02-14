@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { RadioButton } from './index';
 import { Label } from '../Label';
@@ -6,7 +6,7 @@ import { FlexBox } from '../../components/FlexBox';
 import { ValueState } from '../../enums/ValueState';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './RadioButtonDescription.md';
+import Description from './RadioButtonDescription.md?raw';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../..';
 
 <Meta
@@ -36,7 +36,7 @@ import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../.
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

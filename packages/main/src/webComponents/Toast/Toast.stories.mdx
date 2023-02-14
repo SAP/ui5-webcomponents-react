@@ -1,14 +1,14 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Toast } from './index';
 import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './ToastDescription.md';
+import Description from './ToastDescription.md?raw';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '../../../../../.storybook/utils';
-import ToastMethods from './ToastMethods.md';
+import ToastMethods from './ToastMethods.md?raw';
 
 <Meta
   title="Modals & Popovers / Toast"
@@ -84,8 +84,8 @@ export const MyComponentWithAToast() {
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ToastMethods />
+<Markdown>{ToastMethods}</Markdown>
 
 <Footer />

@@ -1,6 +1,6 @@
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { DocsHeader } from '@docs/DocsHeader';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddColumn.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddPeople.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/BalloonSky.js';
@@ -75,7 +75,7 @@ import '@ui5/webcomponents-fiori/dist/illustrations/UploadCollection.js';
 import { MessageStripDesign } from '../../enums';
 import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { MessageStrip } from '../MessageStrip';
-import Description from './IllustratedMessageDescription.md';
+import Description from './IllustratedMessageDescription.md?raw';
 import { IllustratedMessage } from './index';
 
 <Meta
@@ -107,7 +107,7 @@ import { IllustratedMessage } from './index';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 ## Fully customizable title
 

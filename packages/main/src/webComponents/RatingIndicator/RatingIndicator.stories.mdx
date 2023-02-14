@@ -1,9 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { RatingIndicator } from './index';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './RatingIndicatorDescription.md';
+import Description from './RatingIndicatorDescription.md?raw';
 
 <Meta title="Inputs / RatingIndicator" component={RatingIndicator} />
 
@@ -25,6 +25,6 @@ import Description from './RatingIndicatorDescription.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <Footer />

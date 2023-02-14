@@ -1,14 +1,14 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Select } from './index';
 import { ValueState } from '../../enums/ValueState';
 import { Option } from '../Option';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './SelectDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import OptionDescription from '../Option/OptionDescription.md';
-import SelectMethods from './SelectMethods.md';
+import Description from './SelectDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import OptionDescription from '../Option/OptionDescription.md?raw';
+import SelectMethods from './SelectMethods.md?raw';
 
 <Meta
   title="Inputs / Select"
@@ -49,9 +49,9 @@ import SelectMethods from './SelectMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SelectMethods />
+<Markdown>{SelectMethods}</Markdown>
 
 ## Recipes
 
@@ -82,10 +82,10 @@ const onChange = (event) => {
 </Select>;
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## Option
 
-<OptionDescription />
+<Markdown>{OptionDescription}</Markdown>
 
 <Footer />

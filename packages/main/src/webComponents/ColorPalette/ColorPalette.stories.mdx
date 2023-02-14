@@ -1,13 +1,13 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { ColorPalette } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './ColorPaletteDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md';
+import Description from './ColorPaletteDescription.md?raw';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
 
 <Meta
   title="Data Display / ColorPalette"
@@ -51,12 +51,12 @@ import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDes
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## ColorPaletteItem
 
-<ColorPaletteItemDescription />
+<Markdown>{ColorPaletteItemDescription}</Markdown>
 
 <Footer />

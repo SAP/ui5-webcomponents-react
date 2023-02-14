@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { MultiInput } from './index';
 import { InputType } from '../../enums/InputType';
@@ -7,9 +7,9 @@ import '@ui5/webcomponents-icons/dist/employee.js';
 import { Token } from '../Token';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TokenDescription from '../Token/TokenDescription.md';
-import MultiInputMethods from './MultiInputMethods.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import TokenDescription from '../Token/TokenDescription.md?raw';
+import MultiInputMethods from './MultiInputMethods.md?raw';
 
 <Meta
   title="Inputs / MultiInput"
@@ -66,12 +66,12 @@ import MultiInputMethods from './MultiInputMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<MultiInputMethods />
+<Markdown>{MultiInputMethods}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## Token
 
-<TokenDescription />
+<Markdown>{TokenDescription}</Markdown>
 
 <Footer />

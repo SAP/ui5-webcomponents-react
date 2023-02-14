@@ -1,11 +1,11 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { SideNavigation } from './index';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './SideNavigationDescription.md';
+import Description from './SideNavigationDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/group.js';
 import '@ui5/webcomponents-icons/dist/locate-me.js';
@@ -13,9 +13,9 @@ import '@ui5/webcomponents-icons/dist/calendar.js';
 import '@ui5/webcomponents-icons/dist/chain-link.js';
 import '@ui5/webcomponents-icons/dist/history.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import SideNavigationItemDescription from '../SideNavigationItem/SideNavigationItemDescription.md';
-import SideNavigationSubItemDescription from '../SideNavigationSubItem/SideNavigationSubItemDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import SideNavigationItemDescription from '../SideNavigationItem/SideNavigationItemDescription.md?raw';
+import SideNavigationSubItemDescription from '../SideNavigationSubItem/SideNavigationSubItemDescription.md?raw';
 
 <Meta
   title="Layouts & Floorplans / SideNavigation"
@@ -67,7 +67,7 @@ import SideNavigationSubItemDescription from '../SideNavigationSubItem/SideNavig
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 
@@ -122,14 +122,14 @@ import SideNavigationSubItemDescription from '../SideNavigationSubItem/SideNavig
   noteText={`The props in the table below are part of the "SideNavigationItem" component.`}
 />
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## SideNavigationItem
 
-<SideNavigationItemDescription />
+<Markdown>{SideNavigationItemDescription}</Markdown>
 
 ## SideNavigationSubItem
 
-<SideNavigationSubItemDescription />
+<Markdown>{SideNavigationSubItemDescription}</Markdown>
 
 <Footer />

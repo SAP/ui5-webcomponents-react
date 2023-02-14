@@ -1,7 +1,7 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './PopoverDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Description from './PopoverDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { BarChart, MicroBarChart } from '@ui5/webcomponents-react-charts';
@@ -18,7 +18,7 @@ import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { Popover } from './index';
 import { isChromatic } from '../../../../../.storybook/utils';
-import PopoverMethods from './PopoverMethods.md';
+import PopoverMethods from './PopoverMethods.md?raw';
 
 <Meta
   title="Modals & Popovers / Popover"
@@ -74,9 +74,9 @@ import PopoverMethods from './PopoverMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<PopoverMethods />
+<Markdown>{PopoverMethods}</Markdown>
 
 ## Opening Popovers
 

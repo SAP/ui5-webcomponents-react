@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { Input } from './index';
 import { InputType } from '../../enums/InputType';
@@ -10,12 +10,12 @@ import { SuggestionItem } from '../SuggestionItem';
 import { SuggestionGroupItem } from '../SuggestionGroupItem';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import Description from './InputDescription.md';
+import Description from './InputDescription.md?raw';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md';
-import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md';
-import InputMethods from './InputMethods.md';
+import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md?raw';
+import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md?raw';
+import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md?raw';
+import InputMethods from './InputMethods.md?raw';
 
 <Meta
   title="Inputs / Input"
@@ -51,7 +51,7 @@ import InputMethods from './InputMethods.md';
 
 <ArgsTableWithNote story="." />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <br />
 
@@ -86,16 +86,16 @@ and the `showSuggestions` prop is set to `true`.
 </Canvas>
 
 <ArgsTableWithNote of={SuggestionItem} story="with SuggestionItem" />
-<InputMethods />
+<Markdown>{InputMethods}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## SuggestionItem
 
-<SuggestionItemDescription />
+<Markdown>{SuggestionItemDescription}</Markdown>
 
 ## SuggestionGroupItem
 
-<SuggestionGroupItemDescription />
+<Markdown>{SuggestionGroupItemDescription}</Markdown>
 
 <Footer />
