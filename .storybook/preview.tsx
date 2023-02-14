@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-base/dist/features/F6Navigation.js';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
-import '@ui5/webcomponents-react/dist/Assets';
+import '../packages/main/dist/Assets';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import 'tocbot/dist/tocbot.css';
 import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';

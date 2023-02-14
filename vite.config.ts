@@ -12,11 +12,11 @@ export default defineConfig(() => {
       alias: [
         {
           find: '@sb',
-          replacement: fileURLToPath(new URL('.storybook', import.meta.url))
+          replacement: fileURLToPath(new URL('./.storybook', import.meta.url))
         },
         {
           find: '@docs',
-          replacement: fileURLToPath(new URL('.storybook/components', import.meta.url))
+          replacement: fileURLToPath(new URL('./.storybook/components', import.meta.url))
         },
         {
           find: /^@ui5\/webcomponents-react$/,
@@ -29,10 +29,6 @@ export default defineConfig(() => {
         {
           find: '@ui5/webcomponents-react-charts',
           replacement: fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url))
-        },
-        {
-          find: /^@ui5\/webcomponents-react\/(.*)/,
-          replacement: fileURLToPath(new URL('./packages/main/src', import.meta.url))
         }
       ]
     },

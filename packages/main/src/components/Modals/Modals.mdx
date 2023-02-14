@@ -1,6 +1,6 @@
 import { DocsHeader, Footer } from '@sb/components';
-import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
-import { Dialog, Menu, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import { Dialog, Menu, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents/index';
 import { MessageBox } from '../MessageBox';
 import * as ComponentStories from './Modals.stories';
 
@@ -31,9 +31,7 @@ You can pass the props and an optional container directly.
 
 ## Dialog
 
-<Canvas>
-  <Story of={ComponentStories.Dialog} />
-</Canvas>
+<Canvas of={ComponentStories.Dialog} />
 
 #### Usage
 
@@ -70,9 +68,7 @@ The `showDialog` method returns an object with the following properties:
 
 ## Popover
 
-<Canvas>
-  <Story of={ComponentStories.Popover} />
-</Canvas>
+<Canvas of={ComponentStories.Popover} />
 
 #### Usage
 
@@ -109,9 +105,7 @@ The `showPopover` method returns an object with the following properties:
 
 ## ResponsivePopover
 
-<Canvas>
-  <Story of={ComponentStories.ResponsivePopover} />
-</Canvas>
+<Canvas of={ComponentStories.ResponsivePopover} />
 
 #### Usage
 
@@ -150,9 +144,7 @@ The `showResponsivePopover` method returns an object with the following properti
 
 **since 1.8.0**
 
-<Canvas>
-  <Story of={ComponentStories.Menu} />
-</Canvas>
+<Canvas of={ComponentStories.Menu} />
 
 #### Usage
 
@@ -189,9 +181,7 @@ The `Menu` method returns an object with the following properties:
 
 ## MessageBox
 
-<Canvas>
-  <Story of={ComponentStories.MessageBox} />
-</Canvas>
+<Canvas of={ComponentStories.MessageBox} />
 
 #### Usage
 
@@ -228,9 +218,7 @@ The `showMessageBox` method returns an object with the following properties:
 
 ## Toast
 
-<Canvas>
-  <ArgTypes of={ComponentStories.Toast} />
-</Canvas>
+<Canvas of={ComponentStories.Toast} />
 
 #### Usage
 
