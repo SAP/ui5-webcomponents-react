@@ -1,3 +1,4 @@
 export * from './ArgsTableWithNote';
-export * from './Footer';
 export * from './DocsHeader';
+export * from './Footer';
+export * from './ProductsTable';

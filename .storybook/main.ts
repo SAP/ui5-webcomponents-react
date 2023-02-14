@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { setChromatic } from './utils';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 
@@ -7,6 +8,7 @@ if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }
 const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
+setChromatic(isChromatic);
 
 const config: StorybookConfig = {
   framework: {

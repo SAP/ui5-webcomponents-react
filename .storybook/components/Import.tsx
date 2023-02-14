@@ -43,8 +43,8 @@ export const ImportStatement = ({ moduleName, packageName }: ImportStatementProp
 
 export const Import = () => {
   const context = useContext(DocsContext);
-  const isChart = context.id.startsWith('charts-');
-  const groups = context.kind.split('/');
+  const isChart = context.componentStories().at(0).id.startsWith('charts-');
+  const groups = context.componentStories().at(0).kind.split('/');
   const moduleName = groups[groups.length - 1].trim();
 
   return (

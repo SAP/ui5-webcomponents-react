@@ -1,4 +1,9 @@
-export const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
+let chromatic = false;
+export function setChromatic(val) {
+  chromatic = val;
+}
+
+export const isChromatic = chromatic;
 
 export const MAPPED_THEMES = [
   { value: 'sap_horizon', title: 'Morning Horizon (Light)' },
