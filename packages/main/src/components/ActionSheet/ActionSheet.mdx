@@ -1,40 +1,9 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import { useState } from 'react';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
-import { Button, MessageStrip } from '../../webComponents';
-import { ActionSheet } from './index';
-import { isChromatic } from '../../../../../.storybook/utils';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import { MessageStrip } from '../../webComponents/index';
+import * as ComponentStories from './ActionSheet.stories';
 
-<Meta
-  title="Modals & Popovers / ActionSheet"
-  component={ActionSheet}
-  argTypes={{
-    children: {
-      control: { disable: true }
-    },
-    footer: {
-      control: { disable: true }
-    },
-    header: {
-      control: { disable: true }
-    },
-    a11yConfig: { table: { category: 'A11y props' } }
-  }}
-  args={{
-    horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PopoverPlacementType.Right,
-    verticalAlign: PopoverVerticalAlign.Center,
-    open: false
-  }}
-  parameters={{
-    chromatic: { delay: 1000 }
-  }}
-/>
+<Meta of={ComponentStories} />
 
 <DocsHeader />
 
@@ -42,44 +11,11 @@ import { isChromatic } from '../../../../../.storybook/utils';
 
 ## Example
 
-<Canvas>
-  <Story name="Default">
-    {(args) => {
-      const [actionSheetOpen, setActionSheetOpen] = useState(isChromatic || args.open);
-      return (
-        <div>
-          <Button
-            onClick={() => {
-              setActionSheetOpen(true);
-            }}
-            id={'actionSheetOpener'}
-          >
-            Open ActionSheet
-          </Button>
-          <ActionSheet
-            {...args}
-            opener="actionSheetOpener"
-            open={actionSheetOpen}
-            onAfterClose={() => {
-              setActionSheetOpen(false);
-            }}
-          >
-            <Button icon="accept">Accept</Button>
-            <Button icon="decline">Reject</Button>
-            <Button icon="email">Email</Button>
-            <Button icon="forward">Forward</Button>
-            <Button icon="delete">Delete</Button>
-            <Button>Other</Button>
-          </ActionSheet>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote of={ComponentStories.Default} />
 
 ## Methods
 
@@ -131,10 +67,11 @@ const MyComponentWithActionSheet = () => {
 This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
 You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
 
-<MessageStrip hideCloseButton>
-  Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  children={`Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!`}
+/>
 
 ```jsx
 const ActionSheetComponent = () => {
