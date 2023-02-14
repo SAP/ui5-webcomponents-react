@@ -1,0 +1,24 @@
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './PageDescription.md?raw';
+import { Canvas, Meta, Story, Markdown } from '@storybook/blocks';
+import * as ComponentStories from './Page.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.14.0" />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story of={ComponentStories.Default}></Story>
+</Canvas>
+
+## Properties
+
+<ArgsTableWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<Footer />

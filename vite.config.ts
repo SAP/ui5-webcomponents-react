@@ -8,6 +8,34 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   return {
+    resolve: {
+      alias: [
+        {
+          find: '@sb',
+          replacement: fileURLToPath(new URL('.storybook', import.meta.url))
+        },
+        {
+          find: '@docs',
+          replacement: fileURLToPath(new URL('.storybook/components', import.meta.url))
+        },
+        {
+          find: /^@ui5\/webcomponents-react$/,
+          replacement: fileURLToPath(new URL('./packages/main/src/index.ts', import.meta.url))
+        },
+        {
+          find: '@ui5/webcomponents-react-base',
+          replacement: fileURLToPath(new URL('./packages/base/src/index.ts', import.meta.url))
+        },
+        {
+          find: '@ui5/webcomponents-react-charts',
+          replacement: fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url))
+        },
+        {
+          find: /^@ui5\/webcomponents-react\/(.*)/,
+          replacement: fileURLToPath(new URL('./packages/main/src', import.meta.url))
+        }
+      ]
+    },
     plugins: [
       react(),
       process.env.CYPRESS === 'true' &&
