@@ -1,9 +1,27 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import { setChromatic } from './utils';
+import remarkGfm from 'remark-gfm';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 
-const addons = ['@storybook/addon-essentials'];
+const addons = [
+  {
+    name: '@storybook/addon-essentials',
+    options: {
+      docs: false
+    }
+  },
+  {
+    name: '@storybook/addon-docs',
+    options: {
+      mdxPluginOptions: {
+        mdxCompileOptions: {
+          remarkPlugins: [remarkGfm]
+        }
+      }
+    }
+  }
+];
 if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }

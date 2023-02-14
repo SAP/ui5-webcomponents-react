@@ -1,13 +1,10 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
-import { MessageBoxTypes } from '../../enums';
-import { Bar, Button, Dialog, Menu, MenuItem, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
+import { DocsHeader, Footer } from '@sb/components';
+import { ArgTypes, Canvas, Meta, Story } from '@storybook/blocks';
+import { Dialog, Menu, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents';
 import { MessageBox } from '../MessageBox';
-import { Modals } from './index';
+import * as ComponentStories from './Modals.stories';
 
-<Meta title="User Feedback / Modals" component={Modals} />
+<Meta of={ComponentStories} />
 
 <DocsHeader since="0.22.2" />
 
@@ -35,24 +32,7 @@ You can pass the props and an optional container directly.
 ## Dialog
 
 <Canvas>
-  <Story name="Dialog">
-    {() => {
-      const showDialog = Modals.useShowDialog();
-      return (
-        <Button
-          onClick={() => {
-            const { close } = showDialog({
-              headerText: 'Dialog Title',
-              children: "I'm a Dialog!",
-              footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
-            });
-          }}
-        >
-          Show Dialog
-        </Button>
-      );
-    }}
-  </Story>
+  <Story of={ComponentStories.Dialog} />
 </Canvas>
 
 #### Usage
@@ -85,31 +65,13 @@ The `showDialog` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `Dialog`.                           |
 
 <Panel header={<h4 className="noMargin">Dialog Props</h4>} collapsed>
-  <ArgsTableWithNote components={{ Dialog }} exclude={['open', 'ref']} />
+  <ArgTypes of={Dialog} exclude={['open']} />
 </Panel>
 
 ## Popover
 
 <Canvas>
-  <Story name="Popover">
-    {() => {
-      const showPopover = Modals.useShowPopover();
-      return (
-        <Button
-          id="modals-show-popover"
-          onClick={() => {
-            showPopover({
-              opener: 'modals-show-popover',
-              headerText: 'Popover Title',
-              children: "I'm a Popover!"
-            });
-          }}
-        >
-          Show Popover
-        </Button>
-      );
-    }}
-  </Story>
+  <Story of={ComponentStories.Popover} />
 </Canvas>
 
 #### Usage
@@ -142,31 +104,13 @@ The `showPopover` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `Popover`.                       |
 
 <Panel header={<h4 className="noMargin">Popover Props</h4>} collapsed>
-  <ArgsTableWithNote components={{ Popover }} exclude={['open', 'ref']} />
+  <ArgTypes of={Popover} exclude={['open']} />
 </Panel>
 
 ## ResponsivePopover
 
 <Canvas>
-  <Story name="ResponsivePopover">
-    {() => {
-      const showResponsivePopover = Modals.useShowResponsivePopover();
-      return (
-        <Button
-          id="modals-show-responsive-popover"
-          onClick={() => {
-            showResponsivePopover({
-              opener: 'modals-show-responsive-popover',
-              headerText: 'Responsive Popover Title',
-              children: "I'm a Responsive Popover!"
-            });
-          }}
-        >
-          Show ResponsivePopover
-        </Button>
-      );
-    }}
-  </Story>
+  <Story of={ComponentStories.ResponsivePopover} />
 </Canvas>
 
 #### Usage
@@ -199,38 +143,15 @@ The `showResponsivePopover` method returns an object with the following properti
 | `close()` | Convenience Method for closing the `ResponsivePopover`.                       |
 
 <Panel header={<h4 className="noMargin">ResponsivePopover Props</h4>} collapsed>
-  <ArgsTableWithNote components={{ ResponsivePopover }} exclude={['open', 'ref']} />
+  <ArgTypes of={ResponsivePopover} exclude={['open']} />
 </Panel>
 
 ## Menu
 
-#### since 1.8.0
+**since 1.8.0**
 
 <Canvas>
-  <Story name="Menu">
-    {() => {
-      const showMenu = Modals.useShowMenu();
-      return (
-        <Button
-          id="modals-show-menu"
-          onClick={() => {
-            showMenu({
-              opener: 'modals-show-menu',
-              headerText: 'Menu Title',
-              children: (
-                <>
-                  <MenuItem text="New File" icon="add-document" />
-                  <MenuItem text="New Folder" icon="add-folder" disabled />
-                </>
-              )
-            });
-          }}
-        >
-          Show Menu
-        </Button>
-      );
-    }}
-  </Story>
+  <Story of={ComponentStories.Menu} />
 </Canvas>
 
 #### Usage
@@ -263,29 +184,13 @@ The `Menu` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `Menu`.                       |
 
 <Panel header={<h4 className="noMargin">Menu Props</h4>} collapsed>
-  <ArgsTableWithNote components={{ Menu }} exclude={['open', 'ref']} />
+  <ArgTypes of={Menu} exclude={['open']} />
 </Panel>
 
 ## MessageBox
 
 <Canvas>
-  <Story name="MessageBox">
-    {() => {
-      const showMessageBox = Modals.useShowMessageBox();
-      return (
-        <Button
-          onClick={() => {
-            showMessageBox({
-              type: MessageBoxTypes.Confirm,
-              children: 'Can you see this MessageBox?'
-            });
-          }}
-        >
-          Show MessageBox
-        </Button>
-      );
-    }}
-  </Story>
+  <Story of={ComponentStories.MessageBox} />
 </Canvas>
 
 #### Usage
@@ -318,29 +223,13 @@ The `showMessageBox` method returns an object with the following properties:
 | `close()` | Convenience Method for closing the `MessageBox`.                       |
 
 <Panel header={<h4 className="noMargin">MessageBox Props</h4>} collapsed>
-  <ArgsTableWithNote components={{ MessageBox }} exclude={['open', 'ref']} />
+  <ArgTypes of={MessageBox} exclude={['open']} />
 </Panel>
 
 ## Toast
 
 <Canvas>
-  <Story name="Toast">
-    {() => {
-      const showToast = Modals.useShowToast();
-      return (
-        <Button
-          onClick={() => {
-            showToast({
-              children: "I'm a Message Toast!"
-            });
-          }}
-        >
-          Show Toast
-        </Button>
-      );
-    }}
-    >
-  </Story>
+  <ArgTypes of={ComponentStories.Toast} />
 </Canvas>
 
 #### Usage
@@ -372,7 +261,7 @@ The`showToast` method returns an object with the following properties:
 | `ref`    | React `RefObject` which can be used to interact with the `Toast`. |
 
 <Panel header={<h4 className="noMargin">Toast Props </h4>} collapsed>
-  <ArgsTableWithNote components={{ Toast }} exclude={['ref']} />
+  <ArgTypes of={Toast} />
 </Panel>
 
 <br />
