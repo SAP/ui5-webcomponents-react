@@ -11,7 +11,8 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  LineProps
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter';
@@ -48,6 +49,12 @@ interface MeasureConfig extends IChartMeasure {
    * Flag whether the line dot should be displayed or not.
    */
   showDot?: boolean;
+  /**
+   * This prop allows passing all [Line Properties](https://recharts.org/en-US/api/Line) of the Recharts library.
+   *
+   * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
+   */
+  lineConfig?: LineProps;
 }
 
 interface DimensionConfig extends IChartDimension {
@@ -85,6 +92,7 @@ export interface LineChartProps extends IChartBaseProps {
    * - `width`: line width, defaults to `1`
    * - `opacity`: line opacity, defaults to `1`
    * - `showDot`: Flag whether the line dot should be displayed or not.
+   * - `lineConfig`: This prop allows passing all [Line Properties](https://recharts.org/en-US/api/Line) of the Recharts library.
    *
    */
   measures: MeasureConfig[];
@@ -298,6 +306,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               strokeWidth={element.width}
               activeDot={{ onClick: onDataPointClickInternal } as any}
               isAnimationActive={noAnimation === false}
+              {...element.lineConfig}
             />
           );
         })}
