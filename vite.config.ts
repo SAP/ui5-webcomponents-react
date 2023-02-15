@@ -8,6 +8,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   return {
+    define: {
+      'process.env.STORYBOOK_ENV': `'${process.env.STORYBOOK_ENV}'`
+    },
     resolve: {
       alias: [
         {
