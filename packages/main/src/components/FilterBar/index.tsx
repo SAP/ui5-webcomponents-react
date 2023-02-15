@@ -135,7 +135,7 @@ export interface FilterBarPropTypes extends CommonProps {
     }>
   ) => void;
   /**
-   * The event is fired when the "Cancel" button of the filter configuration dialog is clicked.
+   * The event is fired when the "Cancel" button of the filter configuration dialog is clicked or when the dialog is closed by pressing the "Escape" key.
    */
   onFiltersDialogCancel?: (event: Ui5CustomEvent) => void;
   /**

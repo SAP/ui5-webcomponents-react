@@ -16,6 +16,7 @@ import {
   ToolbarStyle,
   OverflowToolbarToggleButton
 } from '../..';
+import { mountWithCustomTagName } from '../../../../../cypress/support/utils';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
 import { cssVarToRgb } from '../../internal/utils';
 
@@ -486,6 +487,7 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
-  //todo mountWithCustomTagName
+  mountWithCustomTagName(Toolbar);
+
   //todo pass through props test
 });
