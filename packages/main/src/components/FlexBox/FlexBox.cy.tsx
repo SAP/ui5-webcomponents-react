@@ -93,6 +93,6 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
-  mountWithCustomTagName(FlexBox);
+  mountWithCustomTagName(FlexBox, { children: <span>Test 1</span> });
   //todo pass through props test
 });
