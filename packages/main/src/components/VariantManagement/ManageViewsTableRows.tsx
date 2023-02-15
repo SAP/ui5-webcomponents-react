@@ -202,7 +202,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button
-            title={a11yDeleteText}
+            tooltip={a11yDeleteText}
             accessibleName={a11yDeleteText}
             icon={declineIcon}
             design={ButtonDesign.Transparent}

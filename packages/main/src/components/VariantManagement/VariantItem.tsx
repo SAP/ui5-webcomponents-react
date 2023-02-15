@@ -84,7 +84,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
     hideDelete
   } = props;
   const { selectVariantItem } = useContext(VariantManagementContext);
-  const [componentRef, consolidatedRef] = useSyncRef<any>(ref);
+  const [componentRef, consolidatedRef] = useSyncRef<StandardListItemDomRef>(ref);
   useEffect(() => {
     if (selected) {
       selectVariantItem({ ...props, variantItem: consolidatedRef.current });
