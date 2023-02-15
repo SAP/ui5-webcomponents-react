@@ -5211,7 +5211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^3.0.0, @vitejs/plugin-react@npm:^3.0.1":
+"@vitejs/plugin-react@npm:^3.0.1, @vitejs/plugin-react@npm:^3.1.0":
   version: 3.1.0
   resolution: "@vitejs/plugin-react@npm:3.1.0"
   dependencies:
@@ -21468,7 +21468,7 @@ __metadata:
     "@ui5/webcomponents-fiori": 1.10.3
     "@ui5/webcomponents-icons": 1.10.3
     "@ui5/webcomponents-tools": 1.10.3
-    "@vitejs/plugin-react": ^3.0.0
+    "@vitejs/plugin-react": ^3.1.0
     chromatic: ^6.5.3
     cypress: ^12.1.0
     dedent: ^0.7.0
@@ -21507,7 +21507,7 @@ __metadata:
     tsconfig-paths-webpack-plugin: ^4.0.0
     turndown: ^7.0.0
     typescript: 4.9.5
-    vite: ^4.0.1
+    vite: ^4.1.1
     vite-plugin-istanbul: ^4.0.0
     vite-tsconfig-paths: ^4.0.5
   languageName: unknown
@@ -22100,7 +22100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.0.1":
+"vite@npm:^4.1.1":
   version: 4.1.1
   resolution: "vite@npm:4.1.1"
   dependencies:

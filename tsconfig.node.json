@@ -6,5 +6,5 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts", ".storybook", "**/*.stories.tsx"]
+  "include": ["vite.config.ts", ".storybook", "packages/**/*.stories.tsx"]
 }
