@@ -66,6 +66,8 @@ import { MessageStrip } from '../../webComponents';
 You can customize the inputs inside the configuration dialogs ("Save View" and "Manage Views") by leveraging the corresponding `inputProps` prop (`saveViewInputProps` and `manageViewsInputProps`) of the `VariantItem` component.
 These props accept props of the `Input` component with which you are able to overwrite internal implementations. E.g. `valueState` and `valueState` message.
 
+**Note:** To prevent internal logic from being executed on save click, you can mark the `onInput` event of the corresponding `Input` component as invalid by setting `event.isInvalid = true` inside the respective handler.
+
 <MessageStrip hideCloseButton>It is possible to overwrite internally used props. Please use with caution!</MessageStrip>
 
 <Canvas>
@@ -85,46 +87,51 @@ These props accept props of the `Input` component with which you are able to ove
 ```jsx
 export const VariantManagementWithCustomValidation = () => {
   const [valueStateSaveView, setValueStateSaveView] = useState(undefined);
+  const [customSaveViewVariantText, setCustomSaveViewVariantText] = useState(
+    'Only alphanumeric chars in Save View input'
+  );
   const [valueStateManageViews, setValueStateManageViews] = useState(undefined);
-  const saveViewInputRef = useRef(null);
+  const [customManageViewsVariantText, setCustomManageViewsVariantText] = useState('Max 12 chars');
 
   const handleSaveViewInput = (e) => {
     // only allow alphanumeric and space characters
     if (!e.target.value.match(/^[a-z0-9\s]+$/i)) {
-      // get ui5-input element
-      saveViewInputRef.current = e.currentTarget;
+      // mark variant as invalid (prevent internal logic from being applied)
+      e.isInvalid = true;
       setValueStateSaveView(ValueState.Error);
     } else {
+      // mark variant as valid again
+      e.isInvalid = false;
       setValueStateSaveView(undefined);
     }
   };
   const handleSaveAs = (e) => {
-    // prevent the dialog from closing, if the valueState is in error state
-    if (valueStateSaveView) {
-      e.preventDefault();
-      // set focus to the input element
-      saveViewInputRef.current.focus();
-    }
+    setCustomSaveViewVariantText(e.detail.children);
   };
 
   const handleManageViewInput = (e) => {
     // only 12 or fewer characters
     if (e.target.value.length > 12) {
+      // mark variant as invalid (prevent internal logic from being applied)
+      e.isInvalid = true;
       setValueStateManageViews(ValueState.Error);
     } else {
+      // mark variant as valid again
+      e.isInvalid = false;
       setValueStateManageViews(undefined);
     }
   };
   const handleSaveManageViews = (e) => {
-    // prevent the dialog from closing, if the valueState is in error state
-    if (valueStateManageViews) {
-      e.preventDefault();
+    // if is custom manage view variant and is not in error state, set children to new value
+    const isCustomManageViewsItem = e.detail.updatedVariants.find((item) => item['data-custom-manage-views']);
+    if (!valueStateManageViews && isCustomManageViewsItem) {
+      setCustomManageViewsVariantText(isCustomManageViewsItem.children);
     }
   };
-
   return (
     <VariantManagement onSaveAs={handleSaveAs} onSaveManageViews={handleSaveManageViews}>
       <VariantItem
+        data-custom-save-view
         saveViewInputProps={{
           valueState: valueStateSaveView,
           valueStateMessage: valueStateSaveView ? (
@@ -133,18 +140,18 @@ export const VariantManagementWithCustomValidation = () => {
           onInput: handleSaveViewInput
         }}
       >
-        Only alphanumeric chars in Save View input
+        {customSaveViewVariantText}
       </VariantItem>
       <VariantItem
+        data-custom-manage-views
         selected
         manageViewsInputProps={{
           valueState: valueStateManageViews,
           valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
-          onInput: handleManageViewInput,
-          id: 'unique-id'
+          onInput: handleManageViewInput
         }}
       >
-        Max 12 chars
+        {customManageViewsVariantText}
       </VariantItem>
     </VariantManagement>
   );

@@ -324,6 +324,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     if (typeof onSaveAs === 'function') {
       onSaveAs(enrichEventWithDetails(e, selectedVariant));
     }
+    setSelectedVariant(selectedVariant);
     if (!e.defaultPrevented) {
       handleSaveAsClose();
     }

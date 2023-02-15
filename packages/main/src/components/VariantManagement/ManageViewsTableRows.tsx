@@ -108,6 +108,8 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       setVariantNameInvalid(errorTextEmpty);
       setInvalidVariants((prev) => ({ ...prev, [children]: inputRef.current }));
       handleRowChange(e, { currentVariant: children, children: trimmedValue });
+    } else if (e.isInvalid) {
+      setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
     } else {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
@@ -123,7 +125,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
 
   const handleVariantChange = (e) => {
     if (typeof props.manageViewsInputProps?.onChange === 'function') {
-      props.manageViewsInputProps?.onInput(e);
+      props.manageViewsInputProps?.onChange(e);
     }
     const trimmedValue = trimAndRemoveSpaces(e.target.value);
     setChangedVariantNames((prev) => {
@@ -159,7 +161,9 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         ref={inputRef}
         {...props.manageViewsInputProps}
         valueStateMessage={props.manageViewsInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
-        valueState={props.manageViewsInputProps?.valueState ?? !variantNameInvalid ? ValueState.None : ValueState.Error}
+        valueState={
+          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Error)
+        }
         value={children}
         onInput={handleVariantInput}
         onChange={handleVariantChange}

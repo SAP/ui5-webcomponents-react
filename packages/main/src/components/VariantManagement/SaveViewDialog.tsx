@@ -88,6 +88,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const [applyAutomatically, setApplyAutomatically] = useState(selectedVariant.applyAutomatically);
   const [variantName, setVariantName] = useState(selectedVariant.children);
   const [variantNameInvalid, setVariantNameInvalid] = useState<string | boolean>(false);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   const handleInputChange = (e) => {
     if (typeof saveViewInputProps?.onInput === 'function') {
@@ -99,8 +100,11 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       setVariantNameInvalid(errorTextAlreadyExists);
     } else if (trimmedValue.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
+    } else if (e.isInvalid) {
+      setIsInvalid(true);
     } else {
       setVariantNameInvalid(false);
+      setIsInvalid(false);
     }
   };
 
@@ -110,6 +114,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       inputRef.current?.focus();
     } else if (variantName.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
+      inputRef.current?.focus();
+    } else if (isInvalid) {
       inputRef.current?.focus();
     } else {
       setVariantNameInvalid(false);
