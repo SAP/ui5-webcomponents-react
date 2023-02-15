@@ -35,6 +35,12 @@ declare global {
       clickUi5RadioButton(): Chainable<Element>;
 
       /**
+       * Close ui5-webcomponents popups like `ui5-dialog` or `ui5-popover` by pressing the "Escape" key.
+       * @example cy.closeUi5PopupWithEsc()
+       */
+      closeUi5PopupWithEsc(): Chainable<Element>;
+
+      /**
        * Click on a list item of the `List` component by text.
        * @param {string} text the text of the list item
        * @example cy.clickUi5ListItemByText("List Item")
@@ -67,6 +73,10 @@ Cypress.Commands.add('toggleUi5Switch', { prevSubject: 'element' }, (subject) =>
 
 Cypress.Commands.add('clickUi5RadioButton', { prevSubject: 'element' }, (subject) => {
   cy.wrap(subject).findShadowInput().click({ force: true });
+});
+
+Cypress.Commands.add('closeUi5PopupWithEsc', () => {
+  cy.get('body').type('{esc}', { force: true });
 });
 
 Cypress.Commands.add('clickUi5ListItemByText', (text) => {
