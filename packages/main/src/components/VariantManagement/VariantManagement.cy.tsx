@@ -163,9 +163,8 @@ describe('VariantManagement', () => {
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('[ui5-title]').findByText('VariantItem 2').should('be.visible').click();
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
-    // todo uncomment this when https://github.com/SAP/ui5-webcomponents/issues/6372 is fixed
-    // cy.get('[icon="navigation-down-arrow"]').should('have.attr', 'disabled', 'true').click({ force: true });
-    // cy.get('[ui5-responsive-popover]').should('not.be.visible');
+    cy.get('[icon="navigation-down-arrow"]').should('have.attr', 'disabled', 'disabled').click({ force: true });
+    cy.get('[ui5-responsive-popover]').should('not.be.visible');
   });
 
   it('Dirty state', () => {
