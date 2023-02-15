@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { setChromatic } from './utils';
+import { isChromatic } from './utils';
 import remarkGfm from 'remark-gfm';
 
 const isDevMode = process.env.NODE_ENV === 'development';
@@ -25,8 +25,6 @@ const addons = [
 if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }
-const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
-setChromatic(isChromatic);
 
 const config: StorybookConfig = {
   framework: {
@@ -45,7 +43,7 @@ const config: StorybookConfig = {
         '../packages/**/*.mdx',
         '../packages/**/*.stories.@(tsx|jsx)'
       ],
-  addons: addons,
+  addons,
   docs: {
     autodocs: true
   },
