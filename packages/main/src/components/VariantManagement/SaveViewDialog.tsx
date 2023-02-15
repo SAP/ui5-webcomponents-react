@@ -165,9 +165,9 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         <Input
           accessibleName={inputLabelText}
           ref={inputRef}
-          valueState={!variantNameInvalid ? 'None' : 'Error'}
-          valueStateMessage={<div>{variantNameInvalid}</div>}
           {...saveViewInputProps}
+          valueState={saveViewInputProps?.valueState ?? (!variantNameInvalid ? 'None' : 'Error')}
+          valueStateMessage={saveViewInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
           className={clsx(classes.input, saveViewInputProps?.className)}
           id={`view-${uniqueId}`}
           value={variantName}

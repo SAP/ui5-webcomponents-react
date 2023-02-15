@@ -405,12 +405,14 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [selectedVariant, onSelect]);
 
-  const handleVariantItemSelect = (e) => {
+  useEffect(() => {
     const selectedChild = safeChildren.find(
-      (item) => isValidElement(item) && item.props.children === e.detail.selectedItems[0].dataset.children
+      (item) => isValidElement(item) && item.props.children === selectedVariant.children
     ) as ReactElement<VariantItemPropTypes>;
-
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
+  }, [selectedVariant, safeChildren]);
+
+  const handleVariantItemSelect = (e) => {
     setSelectedVariant({ ...e.detail.selectedItems[0].dataset, variantItem: e.detail.selectedItems[0] });
     selectVariantEventRef.current = e;
     if (closeOnItemSelect) {

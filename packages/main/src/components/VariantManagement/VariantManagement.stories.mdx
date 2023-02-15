@@ -7,6 +7,7 @@ import { TitleLevel } from '../../enums/TitleLevel';
 import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
 import { VariantManagementWithCustomValidation } from './CodeGen';
+import { MessageStrip } from '../../webComponents';
 
 <Meta
   title="Inputs / VariantManagement"
@@ -62,16 +63,94 @@ import { VariantManagementWithCustomValidation } from './CodeGen';
 
 ## VariantManagement with custom Input
 
-TODO
+You can customize the inputs inside the configuration dialogs ("Save View" and "Manage Views") by leveraging the corresponding `inputProps` prop (`saveViewInputProps` and `manageViewsInputProps`) of the `VariantItem` component.
+These props accept props of the `Input` component with which you are able to overwrite internal implementations. E.g. `valueState` and `valueState` message.
 
-By leveraging the `saveViewInputProps` prop, you can adjust the `Input` component inside the "Manage View" dialog
+<MessageStrip hideCloseButton>It is possible to overwrite internally used props. Please use with caution!</MessageStrip>
 
 <Canvas>
-  <Story name="with custom validation">
+  <Story name="with custom validation" withSource="none">
     {(props) => {
       return <VariantManagementWithCustomValidation {...props} />;
     }}
   </Story>
 </Canvas>
+
+### Code
+
+<details style={{marginBlockEnd: "2rem"}}>
+
+<summary>Show Code</summary>
+
+```jsx
+export const VariantManagementWithCustomValidation = () => {
+  const [valueStateSaveView, setValueStateSaveView] = useState(undefined);
+  const [valueStateManageViews, setValueStateManageViews] = useState(undefined);
+  const saveViewInputRef = useRef(null);
+
+  const handleSaveViewInput = (e) => {
+    // only allow alphanumeric and space characters
+    if (!e.target.value.match(/^[a-z0-9\s]+$/i)) {
+      // get ui5-input element
+      saveViewInputRef.current = e.currentTarget;
+      setValueStateSaveView(ValueState.Error);
+    } else {
+      setValueStateSaveView(undefined);
+    }
+  };
+  const handleSaveAs = (e) => {
+    // prevent the dialog from closing, if the valueState is in error state
+    if (valueStateSaveView) {
+      e.preventDefault();
+      // set focus to the input element
+      saveViewInputRef.current.focus();
+    }
+  };
+
+  const handleManageViewInput = (e) => {
+    // only 12 or fewer characters
+    if (e.target.value.length > 12) {
+      setValueStateManageViews(ValueState.Error);
+    } else {
+      setValueStateManageViews(undefined);
+    }
+  };
+  const handleSaveManageViews = (e) => {
+    // prevent the dialog from closing, if the valueState is in error state
+    if (valueStateManageViews) {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <VariantManagement onSaveAs={handleSaveAs} onSaveManageViews={handleSaveManageViews}>
+      <VariantItem
+        saveViewInputProps={{
+          valueState: valueStateSaveView,
+          valueStateMessage: valueStateSaveView ? (
+            <div>Only alphanumeric and space characters allowed!</div>
+          ) : undefined,
+          onInput: handleSaveViewInput
+        }}
+      >
+        Only alphanumeric chars in Save View input
+      </VariantItem>
+      <VariantItem
+        selected
+        manageViewsInputProps={{
+          valueState: valueStateManageViews,
+          valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
+          onInput: handleManageViewInput,
+          id: 'unique-id'
+        }}
+      >
+        Max 12 chars
+      </VariantItem>
+    </VariantManagement>
+  );
+};
+```
+
+</details>
 
 <Footer />

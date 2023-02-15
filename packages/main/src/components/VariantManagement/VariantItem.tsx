@@ -58,7 +58,7 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  manageViewInputProps?: Omit<InputPropTypes, 'value'>;
+  manageViewsInputProps?: Omit<InputPropTypes, 'value'>;
   /**
    * Defines the props of the input rendered with the `VariantItem` inside the "Save View" dialog.
    *
@@ -92,7 +92,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
   }, [selected]);
 
   // inputProps are passed through to input components used in the configuration dialogs
-  const { manageViewInputProps: _0, saveViewInputProps: _1, ...rest } = props;
+  const { manageViewsInputProps: _0, saveViewInputProps: _1, ...rest } = props;
 
   return (
     <StandardListItem
