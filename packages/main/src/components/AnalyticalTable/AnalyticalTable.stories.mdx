@@ -1,16 +1,16 @@
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
-import dataLarge from '../../../../../.storybook/mockData/Friends500.json';
-import dataSmall from '../../../../../.storybook/mockData/Friends500.json';
-import dataNameAge from '../../../../../.storybook/mockData/NameAge50.json';
-import dataTree from '../../../../../.storybook/mockData/FriendsTree.json';
-import dataManualSelect from '../../../../../.storybook/mockData/FriendsManualSelect25.json';
+import dataLarge from '@sb/mockData/Friends500.json';
+import dataSmall from '@sb/mockData/Friends500.json';
+import dataNameAge from '@sb/mockData/NameAge50.json';
+import dataTree from '@sb/mockData/FriendsTree.json';
+import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { isChromatic } from '../../../../../.storybook/utils';
+import { isChromatic } from '@sb/utils';
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTable,
