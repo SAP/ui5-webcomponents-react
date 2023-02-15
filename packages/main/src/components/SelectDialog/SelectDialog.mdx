@@ -1,0 +1,82 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import DialogMethods from '../../webComponents/Dialog/DialogMethods.md?raw';
+import * as ComponentStories from './SelectDialog.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{DialogMethods}</Markdown>
+
+## Opening SelectDialogs
+
+<br />
+
+#### since 0.22.0
+
+We recommend opening and closing the `SelectDialog` component in a declarative way using the `open` prop.
+You can still use the imperative way which is outlined below.
+
+```jsx
+const MyComponentWithSelectDialog = () => {
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setDialogIsOpen(true);
+        }}
+      >
+        Open SelectDialog
+      </Button>
+      <SelectDialog open={dialogIsOpen} headerText="Select Product">
+        <StandardListItem image="pathToImg" description="description">
+          Product
+        </StandardListItem>
+      </SelectDialog>
+    </>
+  );
+};
+```
+
+#### before 0.22.0
+
+`SelectDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
+
+```jsx
+const SelectDialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open SelectDialog</Button>
+      <SelectDialog ref={dialogRef} headerText="Select Product">
+        <StandardListItem image="pathToImg" description="description">
+          Product
+        </StandardListItem>
+      </SelectDialog>
+    </>
+  );
+};
+```
+
+## More Examples
+
+### SelectDialog in MultiSelect mode with search
+
+<Canvas of={ComponentStories.MultiSelect} />
+
+<Footer />
