@@ -18,6 +18,7 @@ import {
   UNSELECTED_AS_FAVORITE,
   VIEW
 } from '../../i18n/i18n-defaults';
+import { trimAndRemoveSpaces } from '../../internal/utils';
 import { Button } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
 import { Icon } from '../../webComponents/Icon';
@@ -98,14 +99,15 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     if (typeof props.manageViewsInputProps?.onInput === 'function') {
       props.manageViewsInputProps?.onInput(e);
     }
-    if (variantNames.includes(e.target.value) || Array.from(changedVariantNames.values()).includes(e.target.value)) {
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
+    if (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue)) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
-    } else if (e.target.value.length === 0) {
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
+    } else if (trimmedValue.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
       setInvalidVariants((prev) => ({ ...prev, [children]: inputRef.current }));
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
     } else {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
@@ -115,11 +117,18 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         }
         return invalidRows;
       });
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
     }
+  };
+
+  const handleVariantChange = (e) => {
+    if (typeof props.manageViewsInputProps?.onChange === 'function') {
+      props.manageViewsInputProps?.onInput(e);
+    }
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
     setChangedVariantNames((prev) => {
       const currentChangedVariants = new Map(prev);
-      currentChangedVariants.set(children, e.target.value);
+      currentChangedVariants.set(children, trimmedValue);
       return currentChangedVariants;
     });
   };
@@ -153,6 +162,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         valueState={props.manageViewsInputProps?.valueState ?? !variantNameInvalid ? ValueState.None : ValueState.Error}
         value={children}
         onInput={handleVariantInput}
+        onChange={handleVariantChange}
       />
     );
   };

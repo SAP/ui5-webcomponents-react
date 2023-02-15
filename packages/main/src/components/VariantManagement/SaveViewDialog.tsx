@@ -19,6 +19,7 @@ import {
   VIEW
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { trimAndRemoveSpaces } from '../../internal/utils';
 import { SelectedVariant } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button, ButtonDomRef } from '../../webComponents/Button';
@@ -92,10 +93,11 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     if (typeof saveViewInputProps?.onInput === 'function') {
       saveViewInputProps.onInput(e);
     }
-    setVariantName(e.target.value);
-    if (variantNames.includes(e.target.value)) {
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
+    setVariantName(trimmedValue);
+    if (variantNames.includes(trimmedValue)) {
       setVariantNameInvalid(errorTextAlreadyExists);
-    } else if (e.target.value.length === 0) {
+    } else if (trimmedValue.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
     } else {
       setVariantNameInvalid(false);
