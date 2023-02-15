@@ -1,9 +1,9 @@
-import { createContext, Ref } from 'react';
+import { createContext } from 'react';
 import { VariantItemPropTypes } from '../components/VariantManagement/VariantItem';
-import { Ui5DomRef } from '../interfaces/Ui5DomRef';
+import { StandardListItemDomRef } from '../webComponents';
 
 export interface SelectedVariant extends VariantItemPropTypes {
-  variantItem: Ref<Ui5DomRef>;
+  variantItem: StandardListItemDomRef;
 }
 
 export const VariantManagementContext = createContext({
