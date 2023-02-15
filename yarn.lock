@@ -2830,22 +2830,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lerna/child-process@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@lerna/child-process@npm:6.5.0"
+"@lerna/child-process@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@lerna/child-process@npm:6.5.1"
   dependencies:
     chalk: ^4.1.0
     execa: ^5.0.0
     strong-log-transformer: ^2.1.0
-  checksum: 6f9d926875acdf6c38ed8b5f8971abce50bc222f29f49a9865cc79a8e1296f0f88498f827aa356d6f053f810270dc7402cedb5fe9c140998b3806b12c4fd7c4c
+  checksum: 78629ce48ce4b9464c3a51f30ed304915591fd2755398a3adc41a66140e34f1408ce41ac9cf96203c0be68930e39e3347ce92d677e5047ec94103576f68a26ea
   languageName: node
   linkType: hard
 
-"@lerna/create@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@lerna/create@npm:6.5.0"
+"@lerna/create@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@lerna/create@npm:6.5.1"
   dependencies:
-    "@lerna/child-process": 6.5.0
+    "@lerna/child-process": 6.5.1
     dedent: ^0.7.0
     fs-extra: ^9.1.0
     init-package-json: ^3.0.2
@@ -2858,7 +2858,7 @@ __metadata:
     validate-npm-package-license: ^3.0.4
     validate-npm-package-name: ^4.0.0
     yargs-parser: 20.2.4
-  checksum: 6d2dc4ea1524f11440c62c8234255e8c37faa249c872c0f12240faf83a01a03e0c8e254bba74d95ce893734ff1371248e6dae30df0132098eff37017e7f95604
+  checksum: dd2c7ffd555468b7e11302de5f2a4da65fa944769c6962be1742db144ee8cf415adf240cfc3a7eca20b8749d7e0f77e716f92359a19431356fce0e2d103e32a5
   languageName: node
   linkType: hard
 
@@ -17392,11 +17392,11 @@ __metadata:
   linkType: hard
 
 "lerna@npm:^6.0.1":
-  version: 6.5.0
-  resolution: "lerna@npm:6.5.0"
+  version: 6.5.1
+  resolution: "lerna@npm:6.5.1"
   dependencies:
-    "@lerna/child-process": 6.5.0
-    "@lerna/create": 6.5.0
+    "@lerna/child-process": 6.5.1
+    "@lerna/create": 6.5.1
     "@npmcli/arborist": 5.3.0
     "@npmcli/run-script": 4.1.7
     "@nrwl/devkit": ">=15.5.2 < 16"
@@ -17429,6 +17429,7 @@ __metadata:
     inquirer: ^8.2.4
     is-ci: 2.0.0
     is-stream: 2.0.0
+    js-yaml: ^4.1.0
     libnpmaccess: 6.0.3
     libnpmpublish: 6.0.4
     load-json-file: 6.2.0
@@ -17472,7 +17473,7 @@ __metadata:
     yargs-parser: 20.2.4
   bin:
     lerna: dist/cli.js
-  checksum: 52f3c1ed188d531b93f02fe3716fb4d8ec5b2cfd0486fdf6e4616de24f748def3008129e70488014a41859c0251085f424c9973b7b8490cb869979cab17a48f8
+  checksum: f0f3ad0cd329ea34a0f9beb3b74adf3757af9b8b23b914efc987cf0aa5afa86da5284937da4879b62c0db76cbf3c6b575381dc32b71c760d2d6152c98d0b976b
   languageName: node
   linkType: hard
 
