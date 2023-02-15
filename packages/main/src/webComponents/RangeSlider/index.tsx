@@ -80,7 +80,8 @@ const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   ['endValue', 'startValue', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
-  ['change', 'input']
+  ['change', 'input'],
+  () => import('@ui5/webcomponents/dist/RangeSlider.js')
 );
 
 RangeSlider.displayName = 'RangeSlider';

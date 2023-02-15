@@ -5,14 +5,14 @@ declare global {
       /**
        * Types a value into `ui5-input`
        * @param text='Hello World'
-       * @example cy.get(['ui5-input']).typeIntoUi5Input('Hello World');
+       * @example cy.get('[ui5-input]').typeIntoUi5Input('Hello World');
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
 
       /**
        * Types a value into `ui5-textarea`
        * @param {string} text
-       * @example cy.get(['ui5-textarea]).typeIntoUi5TextArea('Hello World');
+       * @example cy.get('[ui5-textarea]').typeIntoUi5TextArea('Hello World');
        */
       typeIntoUi5TextArea(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
 
@@ -39,6 +39,13 @@ declare global {
        * @example cy.closeUi5PopupWithEsc()
        */
       closeUi5PopupWithEsc(): Chainable<Element>;
+
+      /**
+       * Click on a list item of the `List` component by text.
+       * @param {string} text the text of the list item
+       * @example cy.clickUi5ListItemByText("List Item")
+       */
+      clickUi5ListItemByText(text: string): Chainable<Element>;
     }
   }
 }
@@ -70,6 +77,10 @@ Cypress.Commands.add('clickUi5RadioButton', { prevSubject: 'element' }, (subject
 
 Cypress.Commands.add('closeUi5PopupWithEsc', () => {
   cy.get('body').type('{esc}', { force: true });
+});
+
+Cypress.Commands.add('clickUi5ListItemByText', (text) => {
+  cy.contains(text).find('li').click({ force: true });
 });
 
 export {};

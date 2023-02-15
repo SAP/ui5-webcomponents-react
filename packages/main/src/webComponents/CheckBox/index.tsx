@@ -108,7 +108,8 @@ const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'indeterminate', 'readonly', 'required'],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/CheckBox.js')
 );
 
 CheckBox.displayName = 'CheckBox';

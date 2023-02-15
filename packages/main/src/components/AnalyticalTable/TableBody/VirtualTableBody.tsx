@@ -1,6 +1,4 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
-import '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
-import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo } from 'react';
 import { ScrollToRefType } from '../interfaces';
 import { RowSubComponent as SubComponent } from './RowSubComponent';

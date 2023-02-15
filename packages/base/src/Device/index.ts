@@ -1,7 +1,12 @@
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
 import { IOrientation, IWindowSize, OrientationEventProvider, ResizeEventProvider } from './EventProvider';
 
+const isSSR = () => typeof window === 'undefined';
+
 const getActualWindowSize = (): [width: number, height: number] => {
+  if (isSSR()) {
+    return [0, 0];
+  }
   return [window.innerWidth, window.innerHeight];
 };
 
