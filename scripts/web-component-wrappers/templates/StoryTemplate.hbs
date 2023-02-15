@@ -1,22 +1,20 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
 import { {{name}} } from './index';
 {{#each imports}}
 {{{this}}}
 {{/each}}
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
 {{#if hasDescription}}
-import Description from './{{name}}Description.md';
+import Description from './{{name}}Description.md?raw';
 {{/if}}
 {{#if additionalComponentDocs}}
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 {{#each additionalComponentDocs}}
-import {{this}}Description from '../{{this}}/{{this}}Description.md';
+import {{this}}Description from '../{{this}}/{{this}}Description.md?raw';
 {{/each}}
 {{/if}}
 {{#if methods}}
-import {{name}}Methods from './{{name}}Methods.md';
+import {{name}}Methods from './{{name}}Methods.md?raw';
 {{/if}}
 
 <Meta
@@ -58,21 +56,21 @@ import {{name}}Methods from './{{name}}Methods.md';
 <ArgsTableWithNote story="."/>
 
 {{#if hasDescription}}
-<Description />
+<Markdown>{Description}</Markdown>
 {{/if}}
 
 {{#if methods}}
-<{{name}}Methods />
+<Markdown>\{{{name}}Methods}</Markdown>
 {{/if}}
 
 {{#if additionalComponentDocs}}
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 {{#each additionalComponentDocs}}
 ## {{this}}
 
-<{{this}}Description />
+<Markdown>\{{{this}}Description}</Markdown>
 
 {{/each}}
 {{/if}}
