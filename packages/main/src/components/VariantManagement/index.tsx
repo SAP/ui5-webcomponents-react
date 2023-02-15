@@ -294,7 +294,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   });
   const [selectedSaveViewInputProps, setSelectedSaveViewInputProps] = useState(
-    selectedVariant.saveViewInputProps ?? {}
+    selectedVariant?.saveViewInputProps ?? {}
   );
 
   const handleClose = () => {
@@ -407,7 +407,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   useEffect(() => {
     const selectedChild = safeChildren.find(
-      (item) => isValidElement(item) && item.props.children === selectedVariant.children
+      (item) => isValidElement(item) && item.props.children === selectedVariant?.children
     ) as ReactElement<VariantItemPropTypes>;
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
   }, [selectedVariant, safeChildren]);
