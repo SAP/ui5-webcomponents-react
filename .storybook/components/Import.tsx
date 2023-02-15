@@ -27,15 +27,15 @@ export const ImportStatement = ({ moduleName, packageName }: ImportStatementProp
       }}
     >
       <code style={{ whiteSpace: 'pre' }}>
-        <span style={{ color: 'rgb(0, 0, 136)' }}>import</span>
-        <span>
+        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
+        <span style={{ fontSize: '14px' }}>
           {' '}
           {'{'} {moduleName} {'}'}{' '}
         </span>
-        <span style={{ color: 'rgb(0, 0, 136)' }}>from</span>
+        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
         <span> </span>
-        <span style={{ color: 'rgb(0, 136, 0)' }}>{packageName}</span>
-        <span>;</span>
+        <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>{packageName}</span>
+        <span style={{ fontSize: '14px' }}>;</span>
       </code>
     </pre>
   );
