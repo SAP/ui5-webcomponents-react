@@ -120,10 +120,11 @@ const MyComponentWithPopover = () => {
 This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
 You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
 
-<MessageStrip hideCloseButton>
-  Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!"
+/>
 
 ```jsx
 const PopoverComponent = () => {

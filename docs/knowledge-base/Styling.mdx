@@ -19,9 +19,11 @@ For example, if you want to change the color of all texts that use the `--sapTex
 </style>
 ```
 
-<MessageStrip hideCloseButton design={MessageStripDesign.Warning}>
-  Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  design={MessageStripDesign.Warning}
+  children="Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!"
+/>
 
 As a consequence, all HTML Elements in the subtree where this style was applied are now displaying their texts in `limegreen` instead of `#32363a` which would be the default value for Fiori 3.
 You can change CSS Variables on any level - in the head, or on every single element by using either CSS classes or element style.
@@ -39,10 +41,12 @@ All globally available style classes are tracked in the `GlobalStyleClasses` enu
 | `sapScrollBar`           | If added to an container that supports scrolling, the scrollbar will be styled according to Fiori guidelines.                    |
 | `inheritingSapScrollBar` | If added to a container, the scollbars of the container and of all of its children will be styled according to Fiori guidelines. |
 
-<MessageStrip hideCloseButton style={{ marginBlockEnd: '1rem' }}>
-  With our next major release (v2.0.0), both style classes will be removed as then the SAP scrollbar will be used per
-  default for the whole application.
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  style={{ marginBlockEnd: '1rem' }}
+  children="With our next major release (v2.0.0), both style classes will be removed as then the SAP scrollbar will be used per
+  default for the whole application."
+/>
 
 ### Use default browser scrollbar
 
@@ -57,16 +61,22 @@ If you want to style your components with the `react-jss` syntax, you can use th
 `react-jss` comes already as a dependency of `@ui5/webcomponents-react` to your project - but we recommend adding it to your `package.json` as well.
 **Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
 
-<MessageStrip design={MessageStripDesign.Information} hideCloseButton>
-  You can find all <code>ThemingParameters</code>{' '}
-  <ui5-link
-    href="https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-public-utils--page#theming-parameters"
-    target="_blank"
-  >
-    here
-  </ui5-link>
-  . If you don't want to use CSS-in-JS library, you can also just use the corresponding CSS variable.
-</MessageStrip>
+<MessageStrip
+  design={MessageStripDesign.Information}
+  hideCloseButton
+  children={
+    <>
+      You can find all <code>ThemingParameters</code>{' '}
+      <ui5-link
+        href="https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-public-utils--page#theming-parameters"
+        target="_blank"
+      >
+        here
+      </ui5-link>
+      . If you don't want to use CSS-in-JS library, you can also just use the corresponding CSS variable.
+    </>
+  }
+/>
 
 You can then create a custom component by following this recipe:
 
