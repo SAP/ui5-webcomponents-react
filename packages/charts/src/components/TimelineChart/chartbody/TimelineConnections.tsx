@@ -1,5 +1,5 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { ReactElement, useLayoutEffect, useState } from 'react';
+import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
+import React, { ReactElement, useState } from 'react';
 import {
   ITimelineChartMileStone,
   ITimelineChartRow,
@@ -47,68 +47,15 @@ interface ConnectionData {
 const TimelineChartConnections = ({ dataSet, width, rowHeight, bodyRect }: TimelineChartConnectionsProps) => {
   const [connectionDataState, setConnectionDataState] = useState<ConnectionData[]>([]);
   useIsomorphicLayoutEffect(() => {
-    const connectionData: ConnectionData[] = [];
-
-    const generateConnectionData = (activities: ITimelineChartTask[] | ITimelineChartMileStone[]) => {
-      for (let i = 0; i < activities.length; i++) {
-        const activity = activities[i];
-        if (activity.connections == null) continue;
-        const startItem = document.getElementById(activity.id);
-        if (startItem == null) continue;
-
-        // Get the start points based on the type of connection
-        const { x, y, right, height } = startItem.getBoundingClientRect();
-        const startY = y + height / 2 - bodyRect.y; // Always same no matter the connection type.
-
-        let startX: number;
-        activity.connections.forEach((item) => {
-          if (item.type == null) {
-            item.type = TimelineChartConnection.Finish_To_Start;
-          }
-          const endItem = document.getElementById(item.itemId);
-          if (endItem == null) return;
-
-          if (
-            item.type === TimelineChartConnection.Finish_To_Finish ||
-            item.type === TimelineChartConnection.Finish_To_Start
-          ) {
-            startX = right - bodyRect.x;
-          } else {
-            startX = x - bodyRect.x;
-          }
-
-          // Get the end points based on the type of connection
-          const { x: otherX, y: otherY, right: otherR } = endItem.getBoundingClientRect();
-          const endY = otherY + height / 2 - bodyRect.y; // Always same no matter the connection type.
-          let endX: number;
-
-          if (
-            item.type === TimelineChartConnection.Start_To_Start ||
-            item.type === TimelineChartConnection.Finish_To_Start
-          ) {
-            endX = otherX - bodyRect.x;
-          } else {
-            endX = otherR - bodyRect.x;
-          }
-
-          connectionData.push({
-            startX,
-            startY,
-            endX,
-            endY,
-            connection: item.type
-          });
-        });
-      }
-    };
+    const connectionDataArray: ConnectionData[] = [];
 
     for (let index = 0; index < dataSet.length; index++) {
       const row = dataSet[index];
-      if (row.tasks) generateConnectionData(row.tasks);
-      if (row.milestones) generateConnectionData(row.milestones);
+      if (row.tasks) generateConnectionData(row.tasks, bodyRect, connectionDataArray);
+      if (row.milestones) generateConnectionData(row.milestones, bodyRect, connectionDataArray);
     }
 
-    setConnectionDataState(connectionData);
+    setConnectionDataState(connectionDataArray);
   }, [width]);
 
   return (
@@ -324,6 +271,63 @@ const generateEndFacingHead = (finishX: number, finishY: number, color: string):
       fill={color}
     />
   );
+};
+
+const generateConnectionData = (
+  activities: ITimelineChartTask[] | ITimelineChartMileStone[],
+  bodyRect: DOMRect,
+  connectionDataArray: ConnectionData[]
+) => {
+  for (let i = 0; i < activities.length; i++) {
+    const activity = activities[i];
+    if (activity.connections == null) continue;
+    const startItem = document.getElementById(activity.id);
+    if (startItem == null) continue;
+
+    // Get the start points based on the type of connection
+    const { x, y, right, height } = startItem.getBoundingClientRect();
+    const startY = y + height / 2 - bodyRect.y; // Always same no matter the connection type.
+
+    let startX: number;
+    activity.connections.forEach((item) => {
+      if (item.type == null) {
+        item.type = TimelineChartConnection.Finish_To_Start;
+      }
+      const endItem = document.getElementById(item.itemId);
+      if (endItem == null) return;
+
+      if (
+        item.type === TimelineChartConnection.Finish_To_Finish ||
+        item.type === TimelineChartConnection.Finish_To_Start
+      ) {
+        startX = right - bodyRect.x;
+      } else {
+        startX = x - bodyRect.x;
+      }
+
+      // Get the end points based on the type of connection
+      const { x: otherX, y: otherY, right: otherR } = endItem.getBoundingClientRect();
+      const endY = otherY + height / 2 - bodyRect.y; // Always same no matter the connection type.
+      let endX: number;
+
+      if (
+        item.type === TimelineChartConnection.Start_To_Start ||
+        item.type === TimelineChartConnection.Finish_To_Start
+      ) {
+        endX = otherX - bodyRect.x;
+      } else {
+        endX = otherR - bodyRect.x;
+      }
+
+      connectionDataArray.push({
+        startX,
+        startY,
+        endX,
+        endY,
+        connection: item.type
+      });
+    });
+  }
 };
 
 export { TimelineChartConnections };

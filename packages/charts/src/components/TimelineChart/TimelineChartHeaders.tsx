@@ -1,7 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties, ReactElement, useEffect, useState } from 'react';
 import { ITimelineChartRow } from './types/TimelineChartTypes';
-import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from './util/constants';
+import { DEFAULT_CHART_VERTICAL_COLS, SPACING, TICK_LENGTH, TOLERANCE } from './util/constants';
 import { useStyles } from './util/styles';
 
 interface TimelineChartRowLabelsProps {
@@ -64,19 +64,22 @@ const TimelineChartColumnLabel = ({
   valueFormat
 }: TimelineChartColumnLabelProps) => {
   const classes = useStyles();
+  const [labelArray, setLabelArray] = useState<string[]>([]);
+  useEffect(() => {
+    if (isDiscrete) {
+      const newLabelArray = columnLabels
+        ? columnLabels
+        : Array.from(Array(totalDuration).keys()).map((num) => `${num + start}`);
+      setLabelArray(newLabelArray);
+    }
+  }, [isDiscrete]);
+
   const style: CSSProperties = {
     width: width,
     height: height
   };
 
   const halfHeaderHeight = 0.5 * height;
-  let labelArray: string[];
-  if (isDiscrete) {
-    labelArray = columnLabels ? columnLabels : Array.from(Array(totalDuration).keys()).map((num) => `${num + start}`);
-  }
-
-  const tickLength = 5;
-  const spacing = 2;
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
 
   return (
@@ -114,14 +117,14 @@ const TimelineChartColumnLabel = ({
         <svg height={halfHeaderHeight} width="100%" fontFamily="Helvetica" fontSize="9">
           <>
             <g stroke={ThemingParameters.sapList_BorderColor} strokeWidth="4">
-              <line x1={0} x2={0} y1="100%" y2={halfHeaderHeight - tickLength} />
-              <line x1="100%" x2="100%" y1="100%" y2={halfHeaderHeight - tickLength} />
+              <line x1={0} x2={0} y1="100%" y2={halfHeaderHeight - TICK_LENGTH} />
+              <line x1="100%" x2="100%" y1="100%" y2={halfHeaderHeight - TICK_LENGTH} />
             </g>
             <g fill={ThemingParameters.sapTextColor}>
-              <text x={0} dx={spacing} y={halfHeaderHeight - tickLength} dy={-spacing}>
+              <text x={0} dx={SPACING} y={halfHeaderHeight - TICK_LENGTH} dy={-SPACING}>
                 {valueFormat != null ? valueFormat(start) : start}
               </text>
-              <text x="100%" dx={-spacing} y={halfHeaderHeight - tickLength} dy={-spacing} textAnchor="end">
+              <text x="100%" dx={-SPACING} y={halfHeaderHeight - TICK_LENGTH} dy={-SPACING} textAnchor="end">
                 {valueFormat != null ? valueFormat(start + totalDuration) : start + totalDuration}
               </text>
             </g>
@@ -130,9 +133,9 @@ const TimelineChartColumnLabel = ({
               totalDuration,
               width,
               halfHeaderHeight,
-              tickLength,
+              TICK_LENGTH,
               verticalSegmentWidth,
-              spacing,
+              SPACING,
               valueFormat
             )}
           </>

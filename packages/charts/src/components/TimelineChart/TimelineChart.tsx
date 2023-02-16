@@ -189,6 +189,18 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       return () => ro.disconnect();
     }, []);
 
+    useEffect(() => {
+      if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
+        throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
+      }
+    }, [isDiscrete, discreteLabels, totalDuration]);
+
+    useEffect(() => {
+      if (showConnection && dataset.length !== 0) {
+        validateConnections(dataset);
+      }
+    }, [showConnection, dataset]);
+
     const scaleChartBody = (value: number) => setChartBodyScale(value);
 
     const resetScroll = () => {
@@ -223,14 +235,6 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       if (chartBodyScale > 1) return MOUSE_CURSOR_GRAB;
       return MOUSE_CURSOR_AUTO;
     };
-
-    if (isDiscrete && discreteLabels != null && discreteLabels.length !== totalDuration) {
-      throw new InvalidDiscreteLabelError(INVALID_DISCRETE_LABELS_MESSAGE);
-    }
-
-    if (showConnection && dataset.length !== 0) {
-      validateConnections(dataset);
-    }
 
     const unscaledBodyWidth = dimensions.width - ROW_TITLE_WIDTH;
     const bodyWidth = unscaledBodyWidth * chartBodyScale;
