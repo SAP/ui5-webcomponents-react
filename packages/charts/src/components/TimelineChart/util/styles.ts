@@ -17,8 +17,8 @@ const styles = {
 
   columnTitle: {
     position: 'absolute',
-    borderBottom: solidOutline,
-    marginBottom: '-0.5px',
+    borderBlockEnd: solidOutline,
+    marginBlockEnd: '-0.5px',
     textAlign: 'center',
     fontSize: '13px',
     color: ThemingParameters.sapTitleColor
@@ -48,7 +48,7 @@ const styles = {
 
   columnTitlePlaceHolder: {
     textAlign: 'center',
-    borderBottom: solidOutline,
+    borderBlockEnd: solidOutline,
     fontSize: '13px'
   },
 

@@ -214,7 +214,7 @@ const TimelineMilestone = ({
   showTooltip,
   hideTooltip
 }: TimelineMilestoneProps) => {
-  const milestoneRef = useRef<SVGRectElement>();
+  const milestoneRef = useRef<SVGRectElement>(null);
 
   useEffect(() => {
     const milestone = milestoneRef.current;

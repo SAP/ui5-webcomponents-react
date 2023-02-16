@@ -46,7 +46,7 @@ interface ConnectionData {
  */
 const TimelineChartConnections = ({ dataSet, width, rowHeight, bodyRect }: TimelineChartConnectionsProps) => {
   const [connectionDataState, setConnectionDataState] = useState<ConnectionData[]>([]);
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const connectionData: ConnectionData[] = [];
 
     const generateConnectionData = (activities: ITimelineChartTask[] | ITimelineChartMileStone[]) => {

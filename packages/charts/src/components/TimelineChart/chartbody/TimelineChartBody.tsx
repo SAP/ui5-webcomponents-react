@@ -47,8 +47,8 @@ const TimelineChartBody = ({
   resetScroll
 }: TimelineChartBodyProps) => {
   const classes = useStyles();
-  const tooltipRef = useRef<TimelineTooltipHandle>();
-  const bodyRef = useRef<HTMLDivElement>();
+  const tooltipRef = useRef<TimelineTooltipHandle>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   const scaleExpRef = useRef(0);
   const [displayArrows, setDisplayArrows] = useState(false);
 
@@ -177,8 +177,8 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     color: 'black',
     isMilestone: false
   });
-  const divRef = useRef<HTMLDivElement>();
-  const popupRef = useRef<HTMLSpanElement>();
+  const divRef = useRef<HTMLDivElement>(null);
+  const popupRef = useRef<HTMLSpanElement>(null);
   const classes = useStyles();
 
   const onHoverItem = (
@@ -217,8 +217,8 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
           className={classes.tooltip}
           ref={popupRef}
           style={{
-            left: state.x,
-            top: state.y
+            insetInlineStart: state.x,
+            insetBlockStart: state.y
           }}
         >
           <span className={classes.tooltipLabel}>

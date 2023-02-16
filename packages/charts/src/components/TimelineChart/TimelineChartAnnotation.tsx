@@ -52,7 +52,7 @@ const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotati
     const style: CSSProperties = {
       width: width,
       height: height != null ? height : rowHeight,
-      top: `${rowIndex * rowHeight}px`
+      insetBlockStart: `${rowIndex * rowHeight}px`
     };
 
     return (

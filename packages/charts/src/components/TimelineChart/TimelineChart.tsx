@@ -159,7 +159,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     };
 
     const ref = useRef(null);
-    const bodyConRef = useRef<HTMLDivElement>();
+    const bodyConRef = useRef<HTMLDivElement>(null);
     const [dimensions, setDimensions] = useState({
       width: 0,
       height: 0,

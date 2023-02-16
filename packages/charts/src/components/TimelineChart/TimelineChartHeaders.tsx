@@ -30,7 +30,7 @@ const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineC
         {rowLabels.map((label, index) => {
           return (
             <div key={index} className={classes.rowLabelsItem} style={itemStyle}>
-              <span style={{ paddingLeft: '10px', paddingRight: '10px' }} title={`Item ${label}`}>
+              <span style={{ paddingInline: '10px' }} title={`Item ${label}`}>
                 {label}
               </span>
             </div>
