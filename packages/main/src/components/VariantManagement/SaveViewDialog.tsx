@@ -1,4 +1,5 @@
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -18,12 +19,13 @@ import {
   VIEW
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { trimAndRemoveSpaces } from '../../internal/utils';
 import { SelectedVariant } from '../../internal/VariantManagementContext';
 import { Bar } from '../../webComponents/Bar';
 import { Button, ButtonDomRef } from '../../webComponents/Button';
 import { CheckBox } from '../../webComponents/CheckBox';
 import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
-import { Input } from '../../webComponents/Input';
+import { Input, InputPropTypes } from '../../webComponents/Input';
 import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 
@@ -50,6 +52,7 @@ interface SaveViewDialogPropTypes {
   showSetAsDefault: boolean;
   variantNames: string[];
   portalContainer: Element;
+  saveViewInputProps?: Omit<InputPropTypes, 'value'>;
 }
 
 export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
@@ -61,7 +64,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showApplyAutomatically,
     showSetAsDefault,
     variantNames,
-    portalContainer
+    portalContainer,
+    saveViewInputProps
   } = props;
   const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
@@ -84,15 +88,23 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const [applyAutomatically, setApplyAutomatically] = useState(selectedVariant.applyAutomatically);
   const [variantName, setVariantName] = useState(selectedVariant.children);
   const [variantNameInvalid, setVariantNameInvalid] = useState<string | boolean>(false);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   const handleInputChange = (e) => {
-    setVariantName(e.target.value);
-    if (variantNames.includes(e.target.value)) {
+    if (typeof saveViewInputProps?.onInput === 'function') {
+      saveViewInputProps.onInput(e);
+    }
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
+    setVariantName(trimmedValue);
+    if (variantNames.includes(trimmedValue)) {
       setVariantNameInvalid(errorTextAlreadyExists);
-    } else if (e.target.value.length === 0) {
+    } else if (trimmedValue.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
+    } else if (e.isInvalid) {
+      setIsInvalid(true);
     } else {
       setVariantNameInvalid(false);
+      setIsInvalid(false);
     }
   };
 
@@ -102,6 +114,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       inputRef.current?.focus();
     } else if (variantName.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
+      inputRef.current?.focus();
+    } else if (isInvalid) {
       inputRef.current?.focus();
     } else {
       setVariantNameInvalid(false);
@@ -159,11 +173,12 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         <Input
           accessibleName={inputLabelText}
           ref={inputRef}
-          className={classes.input}
+          {...saveViewInputProps}
+          valueState={saveViewInputProps?.valueState ?? (!variantNameInvalid ? 'None' : 'Error')}
+          valueStateMessage={saveViewInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
+          className={clsx(classes.input, saveViewInputProps?.className)}
           id={`view-${uniqueId}`}
           value={variantName}
-          valueState={!variantNameInvalid ? 'None' : 'Error'}
-          valueStateMessage={<div>{variantNameInvalid}</div>}
           onInput={handleInputChange}
         />
         <FlexBox

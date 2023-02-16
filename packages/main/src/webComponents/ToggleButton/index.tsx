@@ -107,7 +107,8 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>
   ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents/dist/ToggleButton.js')
 );
 
 ToggleButton.displayName = 'ToggleButton';

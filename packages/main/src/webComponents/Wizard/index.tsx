@@ -33,7 +33,14 @@ export interface WizardPropTypes extends WizardAttributes, CommonProps {
  *
  * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Wizard" target="_blank">UI5 Web Components Playground</ui5-link>
  */
-const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>('ui5-wizard', [], [], [], ['step-change']);
+const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>(
+  'ui5-wizard',
+  [],
+  [],
+  [],
+  ['step-change'],
+  () => import('@ui5/webcomponents-fiori/dist/Wizard.js')
+);
 
 Wizard.displayName = 'Wizard';
 

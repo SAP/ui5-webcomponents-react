@@ -32,7 +32,8 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>
   ['additionalText', 'text'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/ComboBoxItem.js')
 );
 
 ComboBoxItem.displayName = 'ComboBoxItem';

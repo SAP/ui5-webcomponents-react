@@ -39,7 +39,8 @@ const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, S
   ['icon', 'text'],
   ['selected'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js')
 );
 
 SideNavigationSubItem.displayName = 'SideNavigationSubItem';

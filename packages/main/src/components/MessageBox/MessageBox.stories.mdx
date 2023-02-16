@@ -174,7 +174,14 @@ const MessageBoxComponent = () => {
   <Story
     name="With Custom Action"
     args={{
-      actions: [MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel, <Button key="0">Custom Button</Button>]
+      actions: [
+        MessageBoxActions.OK,
+        'Custom Action',
+        MessageBoxActions.Cancel,
+        <Button key="0" id="custom-action">
+          Custom Button
+        </Button>
+      ]
     }}
   >
     {(args) => {

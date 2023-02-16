@@ -116,7 +116,8 @@ const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
   ['interactive'],
   ['badge'],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/Avatar.js')
 );
 
 Avatar.displayName = 'Avatar';

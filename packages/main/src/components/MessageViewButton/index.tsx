@@ -8,8 +8,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { Button, ButtonDomRef, ButtonPropTypes } from '../..';
 import { ValueState } from '../../enums';
+import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents';
 
 const buttonStyles = Object.values(ValueState).reduce((acc, cur) => {
   let cssType;
