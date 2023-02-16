@@ -36,7 +36,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -47,7 +47,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -58,7 +58,7 @@ exports[`TimelineChart calls the valueFormat callback 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -333,7 +333,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -344,7 +344,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -355,7 +355,7 @@ exports[`TimelineChart does not render annotation layer when showAnnotation is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -630,7 +630,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -641,7 +641,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -652,7 +652,7 @@ exports[`TimelineChart does not render annotation layer when there are no annota
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -927,7 +927,7 @@ exports[`TimelineChart does not render connection layer when showConnection is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -938,7 +938,7 @@ exports[`TimelineChart does not render connection layer when showConnection is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -949,7 +949,7 @@ exports[`TimelineChart does not render connection layer when showConnection is f
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -1361,7 +1361,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -1372,7 +1372,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -1383,7 +1383,7 @@ exports[`TimelineChart renders TimelineChart with dataset 1`] = `
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -1658,7 +1658,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
               style="height: 35px; line-height: 35px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item T1 (4, 1)"
               >
                 T1 (4, 1)
@@ -1669,7 +1669,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
               style="height: 35px; line-height: 35px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item T2 (4, 2)"
               >
                 T2 (4, 2)
@@ -1680,7 +1680,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
               style="height: 35px; line-height: 35px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item T3 (7, 2)"
               >
                 T3 (7, 2)
@@ -1918,7 +1918,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
             <div
               class="TimelineChart-annotation-0-2-5"
               data-component-name="TimelineChartAnnotation"
-              style="width: auto; height: 35px; top: 0px;"
+              style="width: auto; height: 35px; inset-block-start: 0px;"
             >
               <canvas
                 height="0"
@@ -1929,7 +1929,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
             <div
               class="TimelineChart-annotation-0-2-5"
               data-component-name="TimelineChartAnnotation"
-              style="width: auto; height: 35px; top: 35px;"
+              style="width: auto; height: 35px; inset-block-start: 35px;"
             >
               <canvas
                 height="0"
@@ -1940,7 +1940,7 @@ exports[`TimelineChart renders annotation layer when showRelationship is set tru
             <div
               class="TimelineChart-annotation-0-2-5"
               data-component-name="TimelineChartAnnotation"
-              style="width: auto; height: 35px; top: 70px;"
+              style="width: auto; height: 35px; inset-block-start: 70px;"
             >
               <canvas
                 height="0"
@@ -1996,7 +1996,7 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 0"
               >
                 Row 0
@@ -2007,7 +2007,7 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 1"
               >
                 Row 1
@@ -2018,7 +2018,7 @@ exports[`TimelineChart renders connection layer when showConnection is set true 
               style="height: 25px; line-height: 25px;"
             >
               <span
-                style="padding-left: 10px; padding-right: 10px;"
+                style="padding-inline: 10px;"
                 title="Item Row 2"
               >
                 Row 2
@@ -2273,7 +2273,7 @@ exports[`TimelineChartAnotation postions itself correctly in the parent 1`] = `
   <div
     class="TimelineChart-annotation-0-2-5"
     data-component-name="TimelineChartAnnotation"
-    style="width: auto; height: 20px; top: 40px;"
+    style="width: auto; height: 20px; inset-block-start: 40px;"
   >
     <div />
   </div>

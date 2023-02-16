@@ -149,7 +149,7 @@ describe('TimelineChartAnotation', () => {
     const component = <TimelineChartAnnotation rowIndex={2} rowHeight={20} figure={<div></div>} />;
     const { asFragment, container } = render(component);
     expect(container.children.length).toBe(1);
-    expect((container.firstElementChild as HTMLDivElement).style.top).toBe('40px');
+    expect((container.firstElementChild as HTMLDivElement).style.insetBlockStart).toBe('40px');
     expect(asFragment()).toMatchSnapshot();
   });
 });
