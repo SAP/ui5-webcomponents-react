@@ -38,7 +38,7 @@ const useStyles = createUseStyles(
   {
     container: {
       height: CssSizeVariables.sapWcrAnalyticalTableExpandButtonHeight,
-      marginInlineEnd: '2px'
+      marginInlineEnd: '0.125rem'
     },
     icon: {
       color: ThemingParameters.sapContent_IconColor,

@@ -97,12 +97,13 @@ export interface AnalyticalTableColumnDefinition {
    * This `string`/`function` is used to build the data model for your column.
    *
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
   accessor?: string | ((row: any, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
-   * __Note__: Required if `accessor` is a function, otherwise `accessor` will overwrite the id.
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
   id?: string;
   /**
@@ -144,7 +145,13 @@ export interface AnalyticalTableColumnDefinition {
    */
   defaultCanFilter?: boolean;
   /**
-   * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
+   * Either a string or a filter function.
+   *
+   * Supported String Values:
+   * * `text`
+   * * `exactText`
+   * * `exactTextCase`
+   * * `equals`
    */
   filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
@@ -190,7 +197,12 @@ export interface AnalyticalTableColumnDefinition {
    */
   sortInverted?: boolean;
   /**
-   * String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>
+   * String or custom sort function.
+   *
+   * Supported String Values:
+   * * `basic`
+   * * `datetime`
+   * * `alphanumeric`
    */
   sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => any);
 
