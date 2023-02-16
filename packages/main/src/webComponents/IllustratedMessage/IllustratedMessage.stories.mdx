@@ -1,4 +1,4 @@
-import { ArgsTableWithNote, DocsHeader } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddColumn.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/AddPeople.js';
@@ -110,11 +110,17 @@ import { IllustratedMessage } from './index';
 
 ## Fully customizable title
 
-<MessageStrip design={MessageStripDesign.Warning} hideCloseButton>
-  As the <code>title</code> slot name collides with the standard HTML <code>title</code> attribute, using the{' '}
-  <code>title</code> prop will not work. <br />
-  You must pass the <code>title</code> slot as part of the components <code>children</code>.
-</MessageStrip>
+<MessageStrip
+  design={MessageStripDesign.Warning}
+  hideCloseButton
+  children={
+    <>
+      As the <code>title</code> slot name collides with the standard HTML <code>title</code> attribute, using the{' '}
+      <code>title</code> prop will not work. <br />
+      You must pass the <code>title</code> slot as part of the components <code>children</code>.
+    </>
+  }
+/>
 
 In some cases you might need to fully customize the title element of the `IllustratedMessage`.
 You can achieve this by using the `title` slot.
