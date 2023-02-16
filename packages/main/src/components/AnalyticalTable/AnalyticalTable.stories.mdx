@@ -29,6 +29,7 @@ import {
   MessageStrip,
   MultiComboBox,
   MultiComboBoxItem,
+  Option,
   Panel,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
@@ -36,7 +37,8 @@ import {
   AnalyticalTableVisibleRowCountMode,
   Text,
   TextAlign,
-  ToggleButton
+  ToggleButton,
+  Select
 } from '../..';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent';
@@ -81,17 +83,23 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
           }
           return rows.filter((row) => row.values[accessor] < 21);
         },
-        Filter: ({ column }) => {
+        Filter: ({ column, popoverRef }) => {
+          const handleChange = (event) => {
+            // set filter
+            column.setFilter(event.detail.selectedOption.getAttribute('value'));
+            // close popover
+            popoverRef.current.close();
+          };
           return (
-            <select
-              onChange={(event) => column.setFilter(event.target.value)}
+            <Select
+              onChange={handleChange}
               style={{ width: '100%' }}
               value={column.filterValue ? column.filterValue : 'all'}
             >
-              <option value="all">Show All</option>
-              <option value="true">Can Drink</option>
-              <option value="false">Can't Drink</option>
-            </select>
+              <Option value="all">Show All</Option>
+              <Option value="true">Can Drink</Option>
+              <Option value="false">Can't Drink</Option>
+            </Select>
           );
         }
       },
@@ -206,17 +214,23 @@ import { DefaultNoDataComponent } from './defaults/NoDataComponent';
         }
         return rows.filter((row) => row.values[accessor] < 21);
       },
-      Filter: ({ column }) => {
+      Filter: ({ column, popoverRef }) => {
+        const handleChange = (event) => {
+          // set filter
+          column.setFilter(event.detail.selectedOption.getAttribute('value'));
+          // close popover
+          popoverRef.current.close();
+        };
         return (
-          <select
-            onChange={(event) => column.setFilter(event.target.value)}
+          <Select
+            onChange={handleChange}
             style={{ width: '100%' }}
             value={column.filterValue ? column.filterValue : 'all'}
           >
-            <option value="all">Show All</option>
-            <option value="true">Can Drink</option>
-            <option value="false">Can't Drink</option>
-          </select>
+            <Option value="all">Show All</Option>
+            <Option value="true">Can Drink</Option>
+            <Option value="false">Can't Drink</Option>
+          </Select>
         );
       }
     },

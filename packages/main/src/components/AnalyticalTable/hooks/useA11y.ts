@@ -28,7 +28,7 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
       id !== '__ui5wcr__internal_navigation_column'
   );
 
-  const isFirstUserCol = userCols[0].id === column.id || userCols[0].accessor === column.accessor;
+  const isFirstUserCol = userCols[0]?.id === column.id || userCols[0]?.accessor === column.accessor;
   updatedCellProps['data-is-first-column'] = isFirstUserCol;
 
   if ((isFirstUserCol && rowIsExpandable) || (row.isGrouped && row.canExpand)) {

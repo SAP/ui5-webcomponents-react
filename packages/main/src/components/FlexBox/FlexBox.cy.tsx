@@ -1,3 +1,4 @@
+import { mountWithCustomTagName } from '../../../../../cypress/support/utils';
 import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums';
 import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils';
 import { FlexBox } from './index';
@@ -92,6 +93,6 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
-  //todo mountWithCustomTagName
+  mountWithCustomTagName(FlexBox, { children: <span>Test 1</span> });
   //todo pass through props test
 });

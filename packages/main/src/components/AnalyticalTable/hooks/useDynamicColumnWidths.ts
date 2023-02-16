@@ -20,12 +20,19 @@ const columnsDeps = (
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
   const colsEqual = useMemo(() => {
-    return visibleColumns?.every((visCol) => {
-      const id = visCol.id ?? visCol.accessor;
-      return columns.some((item) => {
-        return item.accessor === id || item.id === id;
+    return visibleColumns
+      ?.filter(
+        (col) =>
+          col.id !== '__ui5wcr__internal_selection_column' &&
+          col.id !== '__ui5wcr__internal_highlight_column' &&
+          col.id !== '__ui5wcr__internal_navigation_column'
+      )
+      .every((visCol) => {
+        const id = visCol.id ?? visCol.accessor;
+        return columns.some((item) => {
+          return item.accessor === id || item.id === id;
+        });
       });
-    });
   }, [visibleColumns, columns]);
 
   return [
