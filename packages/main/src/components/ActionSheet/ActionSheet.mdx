@@ -1,7 +1,8 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/blocks';
 import { MessageStrip } from '../../webComponents/index';
 import * as ComponentStories from './ActionSheet.stories';
+import ResponsivePopoverDomRef from '../../webComponents/ResponsivePopover/ResponsivePopoverDomRef.json';
 
 <Meta of={ComponentStories} />
 
@@ -17,16 +18,7 @@ import * as ComponentStories from './ActionSheet.stories';
 
 <ArgsTableWithNote of={ComponentStories.Default} />
 
-## Methods
-
-This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
-
-| Name           | Parameters                                                                                                                                                                                                                                                                                                                               | Description                                                                                                      |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **close**      | &mdash;                                                                                                                                                                                                                                                                                                                                  | Closes the popover/dialog.                                                                                       |
-| **showAt**     | <dl><dt className="methodText">**opener**</dt><dd className="methodText">the element that the popover is opened by</dd><dd><code>HTMLElement</code></dd><dt className="methodText">**preventInitialFocus** _optional_</dt><dd className="methodText">Prevents applying the focus inside the popup</dd><dd><code>boolean</code></dd></dl> | Opens popover on desktop and dialog on mobile.                                                                   |
-| **applyFocus** | &mdash;                                                                                                                                                                                                                                                                                                                                  | Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise. |
-| **isOpen**     | &mdash;                                                                                                                                                                                                                                                                                                                                  |
+<DomRefTable rows={ResponsivePopoverDomRef} /> |
 
 ## Opening ActionSheets
 

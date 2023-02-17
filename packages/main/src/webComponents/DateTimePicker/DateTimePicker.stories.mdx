@@ -7,9 +7,9 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '../../enums/ValueState';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './DateTimePickerDescription.md?raw';
-import DateTimePickerMethods from './DateTimePickerMethods.md?raw';
+import DateTimePickerDomRef from './DateTimePickerDomRef.json';
 
 <Meta
   title="Inputs / DateTimePicker"
@@ -43,6 +43,6 @@ import DateTimePickerMethods from './DateTimePickerMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{DateTimePickerMethods}</Markdown>
+<DomRefTable rows={DateTimePickerDomRef} />
 
 <Footer />
