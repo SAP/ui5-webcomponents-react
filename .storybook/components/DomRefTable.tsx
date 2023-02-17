@@ -1,5 +1,5 @@
-import React from 'react';
 import { Heading } from '@storybook/blocks';
+import React from 'react';
 
 export function DomRefTable({ rows }: { rows: any[] }) {
   return (
@@ -31,17 +31,20 @@ export function DomRefTable({ rows }: { rows: any[] }) {
                   {!!row.parameters ? (
                     row.parameters.map((parameter) => {
                       return (
-                        <dl key={parameter.name}>
-                          <dt>{parameter.name}</dt>
+                        <div key={parameter.name}>
+                          <p style={{ fontWeight: 'bold' }}>{parameter.name}</p>
                           {parameter.description ? (
-                            <dd dangerouslySetInnerHTML={{ __html: parameter.description }} />
+                            <p
+                              style={{ paddingInline: '1rem' }}
+                              dangerouslySetInnerHTML={{ __html: parameter.description }}
+                            />
                           ) : null}
                           {parameter.type ? (
-                            <dd>
+                            <p style={{ paddingInline: '1rem' }}>
                               <code>{parameter.type}</code>
-                            </dd>
+                            </p>
                           ) : null}
-                        </dl>
+                        </div>
                       );
                     })
                   ) : (
