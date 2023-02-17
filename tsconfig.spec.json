@@ -4,7 +4,10 @@
     "lib": ["es2022", "dom"],
     "types": ["cypress", "node", "@testing-library/cypress"],
     "moduleResolution": "Node",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "cypress/**/*.ts",
@@ -12,6 +15,7 @@
     "**/*.cy.ts",
     "**/*.cy.tsx",
     "cypress.config.ts",
-    "docs/knowledgeBaseExamples/*.tsx"
+    "docs/knowledgeBaseExamples/*.tsx",
+    "vite.config.ts"
   ]
 }

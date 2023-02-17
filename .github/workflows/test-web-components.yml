@@ -1,0 +1,34 @@
+name: Test (Web Components)
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'packages/main/src/webComponents/**/*'
+  pull_request:
+    paths:
+      - 'packages/main/src/webComponents/**/*'
+
+jobs:
+  cypress-test:
+    name: 'Cypress'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          build: yarn build
+          browser: chrome
+          component: true
+          spec: |
+            packages/main/src/webComponents
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: web-components-coverage
+          path: temp/cypress-coverage

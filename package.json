@@ -12,7 +12,9 @@
     "build:storybook": "lerna run build:i18n && build-storybook -o .out",
     "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
-    "test:cypress": "cypress run --component",
+    "test:cypress": "cypress run --component --browser chrome --spec 'packages/main/src/components/*/**',packages/base,packages/charts,packages/cypress-commands",
+    "test:cypress:web-components": "cypress run --component --browser chrome --spec 'packages/main/src/webComponents/*/**'",
+    "test:cypress:all": "cypress run --browser chrome --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
     "test:combine-reports": "node scripts/combineTestReports.mjs",
@@ -122,7 +124,8 @@
       "**/*.test.{ts,tsx}",
       "**/node_modules/**",
       "packages/*/src/index.ts",
-      "packages/main/src/components/AnalyticalTable/types/*"
+      "packages/main/src/components/AnalyticalTable/types/*",
+      "packages/main/src/webComponents/**"
     ]
   },
   "packageManager": "yarn@3.3.0"
