@@ -52,6 +52,12 @@ jobs:
           build: yarn build
           browser: chrome
           component: true
+          spec: |
+            packages/main/src/components/*/**
+            packages/base
+            packages/charts
+            packages/cypress-commands
+
 
       - uses: actions/upload-artifact@v3
         if: always()
@@ -71,15 +77,27 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+
+      - name: download jest coverage
+        uses: actions/download-artifact@v3
         with:
           name: jest-coverage
           path: temp/jest-coverage
 
-      - uses: actions/download-artifact@v3
+      - name: download cypress coverage
+        uses: actions/download-artifact@v3
         with:
           name: cypress-coverage
           path: temp/cypress-coverage
+
+#      - name: download web-components coverage
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#        run: |
+#          cd temp
+#          RUNID=`gh run list --workflow "Test (Web Components)" --json databaseId --jq '.[0].databaseId'`
+#          gh run download $RUNID -n web-components-coverage
 
       - name: create test report
         run: npm run test:combine-reports

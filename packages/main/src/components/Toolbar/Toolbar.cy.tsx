@@ -18,6 +18,7 @@ import {
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
 import { cssVarToRgb } from '../../internal/utils';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -486,6 +487,6 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
-  //todo mountWithCustomTagName
-  //todo pass through props test
+  mountWithCustomTagName(Toolbar);
+  cypressPassThroughTestsFactory(Toolbar);
 });

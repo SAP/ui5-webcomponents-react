@@ -27,7 +27,6 @@ const useStyles = createUseStyles(
       color: ThemingParameters.sapGroup_TitleTextColor,
       fontSize: ThemingParameters.sapFontHeader6Size,
       fontWeight: 'bold',
-      backgroundColor: ThemingParameters.sapGroup_TitleBackground,
       margin: 0,
       marginBlockStart: '1rem'
     },

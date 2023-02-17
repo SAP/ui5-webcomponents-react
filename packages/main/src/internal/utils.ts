@@ -46,3 +46,7 @@ export function getUi5TagWithSuffix(baseTagName) {
 }
 
 export const isSSR = () => typeof window === 'undefined';
+
+export function trimAndRemoveSpaces(value) {
+  return value.trim().replace(/\s\s+/g, ' ');
+}

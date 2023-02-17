@@ -3559,7 +3559,7 @@ exports[`AnalyticalTable RTL: with highlight row 1`] = `
                   class="TableColumnHeader-header"
                 >
                   <span
-                    class="Text-text Text-noWrap TableColumnHeader-text"
+                    class="Text-text Text-noWrap TableColumnHeader-text TableColumnHeader-selectAllCheckBoxContainer"
                     data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                   />
                   <div
@@ -4627,17 +4627,18 @@ exports[`AnalyticalTable Tree Table 1`] = `
               draggable="false"
               id="__ui5wcr__internal_selection_column"
               role="columnheader"
-              style="position: relative; cursor: pointer; width: 47px; padding: 0px;"
+              style="position: relative; cursor: pointer; display: flex; justify-content: center; width: 47px; padding: 0px;"
               tabindex="-1"
             >
               <div
                 class="TableColumnHeader-header"
               >
                 <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  class="Text-text Text-noWrap TableColumnHeader-text TableColumnHeader-selectAllCheckBoxContainer"
                   data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 >
                   <ui5-checkbox
+                    data-at-checkbox="true"
                     style="vertical-align: middle; pointer-events: none;"
                     tabindex="-1"
                     title="Toggle All Rows Selected"
@@ -4854,6 +4855,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <ui5-checkbox
+                  data-at-checkbox="true"
                   data-name="internal_selection_column"
                   style="vertical-align: middle; pointer-events: none;"
                   tabindex="-1"
@@ -4879,14 +4881,16 @@ exports[`AnalyticalTable Tree Table 1`] = `
               >
                 <span
                   aria-label="To expand the row, press the spacebar"
-                  style="cursor: pointer; padding-left: 0px;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: 0px;"
                   title="Expand Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
                     interactive="true"
                     name="navigation-right-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -4913,7 +4917,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -4938,7 +4942,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -4963,7 +4967,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -4995,6 +4999,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <ui5-checkbox
+                  data-at-checkbox="true"
                   data-name="internal_selection_column"
                   style="vertical-align: middle; pointer-events: none;"
                   tabindex="-1"
@@ -5018,7 +5023,9 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 style="width: 170px; align-items: center; position: absolute; top: 0px; height: 44px; transform: translateX(170px); left: 0px;"
                 tabindex="-1"
               >
-                <span />
+                <span
+                  style="padding-inline-start: calc(0px + 2rem);"
+                />
                 <span
                   class="AnalyticalTable-tableText"
                   title="bla"
@@ -5042,7 +5049,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5067,7 +5074,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5092,7 +5099,7 @@ exports[`AnalyticalTable Tree Table 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-left: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -5352,7 +5359,7 @@ exports[`AnalyticalTable highlight row with custom row key 1`] = `
                 class="TableColumnHeader-header"
               >
                 <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  class="Text-text Text-noWrap TableColumnHeader-text TableColumnHeader-selectAllCheckBoxContainer"
                   data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
@@ -6472,14 +6479,14 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
               draggable="false"
               id="__ui5wcr__internal_selection_column"
               role="columnheader"
-              style="position: relative; cursor: auto; width: 47px; padding: 0px;"
+              style="position: relative; cursor: auto; display: flex; justify-content: center; width: 47px; padding: 0px;"
               tabindex="-1"
             >
               <div
                 class="TableColumnHeader-header"
               >
                 <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  class="Text-text Text-noWrap TableColumnHeader-text TableColumnHeader-selectAllCheckBoxContainer"
                   data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
@@ -6691,6 +6698,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <ui5-checkbox
+                  data-at-checkbox="true"
                   data-name="internal_selection_column"
                   disabled="true"
                   style="vertical-align: middle;"
@@ -6802,6 +6810,7 @@ exports[`AnalyticalTable plugin hook: useRowDisableSelection 1`] = `
                 tabindex="-1"
               >
                 <ui5-checkbox
+                  data-at-checkbox="true"
                   data-name="internal_selection_column"
                   style="vertical-align: middle; pointer-events: none;"
                   tabindex="-1"
@@ -8962,14 +8971,16 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 <span
                   aria-expanded="true"
                   aria-label="To collapse the row, press the spacebar"
-                  style="cursor: pointer;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: calc(0px + 2rem);"
                   title="Collapse Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
                     interactive="true"
                     name="navigation-down-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -8994,7 +9005,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9017,7 +9028,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9040,7 +9051,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9086,14 +9097,16 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 <span
                   aria-expanded="true"
                   aria-label="To collapse the row, press the spacebar"
-                  style="cursor: pointer;"
+                  class="ExpandableIndicatorStyles-container"
+                  style="cursor: pointer; padding-inline-start: calc(0px + 2rem);"
                   title="Collapse Node"
                 >
                   <ui5-icon
+                    class="ExpandableIndicatorStyles-icon"
+                    data-component-name="AnalyticalTableExpandIcon"
                     design="Default"
                     interactive="true"
                     name="navigation-down-arrow"
-                    style="height: 0.75rem; width: 0.75rem; padding: 0.625rem; display: block;"
                     ui5-icon=""
                   />
                 </span>
@@ -9118,7 +9131,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9141,7 +9154,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -9164,7 +9177,7 @@ exports[`AnalyticalTable render subcomponents 1`] = `
                 tabindex="-1"
               >
                 <span
-                  style="padding-right: 0px;"
+                  style="padding-inline-start: 0;"
                 />
                 <span
                   class="AnalyticalTable-tableText"
@@ -10227,7 +10240,7 @@ exports[`AnalyticalTable with highlight row 1`] = `
                 class="TableColumnHeader-header"
               >
                 <span
-                  class="Text-text Text-noWrap TableColumnHeader-text"
+                  class="Text-text Text-noWrap TableColumnHeader-text TableColumnHeader-selectAllCheckBoxContainer"
                   data-component-name="AnalyticalTableHeaderHeaderContentContainer-__ui5wcr__internal_selection_column"
                 />
                 <div
