@@ -8,6 +8,23 @@ declare global {
        * Cypress mount with ThemeProvider
        */
       mount: typeof mount;
+      /**
+       * Assert that the subject is not clickable.
+       *
+       * @param done The Mocha `done` callback.
+       * @param [clickOptions] Options passed to `.click()`. By default, the timeout is 100 ms.
+       *
+       * @example
+       it("should not be clickable", (done) => {
+         cy.get('[ui5-button]').shouldNotBeClickable(done);
+       });
+       */
+      shouldNotBeClickable(
+        done: Mocha.Done,
+        clickOptions?: Partial<Cypress.ClickOptions> & {
+          position?: Cypress.PositionType;
+        }
+      ): Chainable<Element>;
     }
   }
 }
