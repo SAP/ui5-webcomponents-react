@@ -51,7 +51,7 @@
     "@semantic-release/github": "^8.0.0",
     "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/react-17": "npm:@testing-library/react@^12.1.4",
     "@types/node": "^16.0.0",
     "@types/react": "^18.0.6",
