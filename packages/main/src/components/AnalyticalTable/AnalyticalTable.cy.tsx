@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
@@ -11,6 +11,9 @@ import {
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
 import { cssVarToRgb } from '../../internal/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { useManualRowSelect } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useManualRowSelect';
+import { useRowDisableSelection } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useRowDisableSelection';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -167,9 +170,11 @@ describe('AnalyticalTable', () => {
     interface ScrollTableProps {
       scrollFn: string;
       args: Array<string | number>;
+      onTableScroll?: AnalyticalTablePropTypes['onTableScroll'];
     }
+    const scroll = cy.spy().as('scroll');
     const ScrollTable = (props: ScrollTableProps) => {
-      const { scrollFn, args } = props;
+      const { scrollFn, args, onTableScroll } = props;
       const tableRef = useRef(null);
       const handleScroll = () => {
         tableRef.current[scrollFn](...args);
@@ -181,6 +186,7 @@ describe('AnalyticalTable', () => {
             data-testid="table"
             style={{ width: '170px' }}
             ref={tableRef}
+            onTableScroll={onTableScroll}
             header="Table Title"
             data={data}
             columns={columns}
@@ -190,7 +196,7 @@ describe('AnalyticalTable', () => {
         </>
       );
     };
-    cy.mount(<ScrollTable scrollFn="scrollToItem" args={[1, 'start']} />);
+    cy.mount(<ScrollTable scrollFn="scrollToItem" args={[1, 'start']} onTableScroll={scroll} />);
     cy.findByText('A').should('be.visible');
     // should not be rendered due to virtualization
     cy.findByText('B').should('not.exist', { timeout: 100 });
@@ -198,20 +204,22 @@ describe('AnalyticalTable', () => {
     cy.findByText('B').should('be.visible');
     cy.findByText('A').should('not.exist', { timeout: 100 });
 
-    cy.mount(<ScrollTable scrollFn="scrollTo" args={[50]} />);
+    cy.mount(<ScrollTable scrollFn="scrollTo" args={[50]} onTableScroll={scroll} />);
     cy.findByText('Click').click();
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('equal', 50);
 
-    cy.mount(<ScrollTable scrollFn="horizontalScrollToItem" args={[1, 'start']} />);
+    cy.mount(<ScrollTable scrollFn="horizontalScrollToItem" args={[1, 'start']} onTableScroll={scroll} />);
     cy.findByText('A').should('be.visible');
     cy.findByText('28').should('not.be.visible');
     cy.findByText('Click').click();
     cy.findByText('28').should('be.visible');
     cy.findByText('A').should('not.be.visible');
 
-    cy.mount(<ScrollTable scrollFn="horizontalScrollTo" args={[20]} />);
+    cy.mount(<ScrollTable scrollFn="horizontalScrollTo" args={[20]} onTableScroll={scroll} />);
     cy.findByText('Click').click();
     cy.findByRole('grid').invoke('scrollLeft').should('equal', 20);
+
+    cy.get('@scroll').should('have.been.called');
   });
 
   it('tree selection & filtering', () => {
@@ -1247,6 +1255,226 @@ describe('AnalyticalTable', () => {
     cy.findByRole('region').should('be.visible').should('have.css', 'opacity', '0.8');
     cy.findByText('A').shouldNotBeClickable(done);
   });
+
+  it('render subcomponents', () => {
+    const renderRowSubComponent = () => {
+      return <div title="subcomponent">SubComponent</div>;
+    };
+
+    const onlyFirstRowWithSubcomponent = (row) => {
+      if (row.id === '0') {
+        return <div title="subcomponent">SingleSubComponent</div>;
+      }
+    };
+    cy.mount(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />);
+
+    cy.findAllByTitle('Expand Node').should('have.length', 4);
+    cy.findAllByTitle('Collapse Node').should('not.exist');
+
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+
+    cy.findAllByTitle('Expand Node').should('have.length', 3);
+    cy.findAllByTitle('Collapse Node').should('have.length', 1);
+    cy.findByText('SubComponent').should('be.visible');
+
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+
+    cy.findAllByTitle('Expand Node').should('have.length', 2);
+    cy.findAllByTitle('Collapse Node').should('have.length', 2);
+    cy.findAllByText('SubComponent').should('be.visible').should('have.length', 2);
+
+    cy.mount(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={onlyFirstRowWithSubcomponent} />);
+
+    cy.findAllByTitle('Expand Node').should('have.length', 1);
+    cy.findAllByTitle('Collapse Node').should('not.exist');
+
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+
+    cy.findAllByTitle('Expand Node').should('not.exist');
+    cy.findAllByTitle('Collapse Node').should('have.length', 1);
+    cy.findByText('SingleSubComponent').should('be.visible');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').should('not.exist');
+
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        renderRowSubComponent={renderRowSubComponent}
+        alwaysShowSubComponent
+      />
+    );
+    cy.findAllByText('SubComponent').should('be.visible').should('have.length', 4);
+    cy.findByTitle('Expand Node').should('not.exist');
+    cy.findByTitle('Collapse Node').should('not.exist');
+
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        renderRowSubComponent={onlyFirstRowWithSubcomponent}
+        alwaysShowSubComponent
+      />
+    );
+    cy.findByText('SingleSubComponent').should('be.visible').should('have.length', 1);
+    cy.findByTitle('Expand Node').should('not.exist');
+    cy.findByTitle('Collapse Node').should('not.exist');
+  });
+
+  it('pop-in columns', () => {
+    document.body.style.margin = '0px';
+    ['ltr', 'rtl'].forEach((dir) => {
+      cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
+      cy.viewport(801, 1024);
+
+      cy.findByText('Name').should('be.visible');
+      cy.findByText('Age').should('be.visible');
+      cy.findByText('Friend Name').should('be.visible');
+      cy.findByText('Custom original Header1').should('be.visible');
+      cy.findByText('Custom original Header2').should('be.visible');
+      cy.findByText('Custom Header').should('be.visible');
+      cy.contains('Custom Cell 2').should('be.visible');
+
+      cy.contains('Custom Header 1').should('not.exist');
+      cy.contains('Custom Header 2').should('not.exist');
+      cy.contains('pop-in content').should('not.exist');
+
+      cy.viewport(800, 1024);
+      cy.wait(200);
+
+      cy.findByText('Name').should('be.visible');
+      cy.findByText('Age').should('be.visible');
+      // header
+      cy.findByText('Friend Name').should('not.exist');
+      // cell
+      cy.contains('Friend Name').should('be.visible');
+      cy.findByText('Custom original Header1').should('not.exist');
+      cy.findByText('Custom original Header2').should('not.exist');
+      cy.contains('Custom Header').should('exist');
+      cy.contains('Custom Cell 2').should('be.visible');
+
+      cy.contains('Custom Header 1').should('be.visible');
+      cy.contains('Custom Header 2').should('be.visible');
+      cy.contains('pop-in content').should('exist');
+      cy.contains('C').should('exist');
+
+      cy.viewport(600, 1024);
+      cy.wait(200);
+      cy.contains('Age').should('not.exist');
+      cy.contains('40').should('not.exist');
+    });
+  });
+
+  it('pop-in columns: adjustTableHeightOnPopIn ', () => {
+    document.body.style.margin = '0px';
+    cy.viewport(800, 2000);
+    cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} adjustTableHeightOnPopIn />);
+
+    cy.findByText('Name').should('be.visible');
+    cy.findByText('Age').should('be.visible');
+    // header
+    cy.findByText('Friend Name').should('not.exist');
+    // cell
+    cy.contains('Friend Name').should('be.visible');
+    cy.findByText('Custom original Header1').should('not.exist');
+    cy.findByText('Custom original Header2').should('not.exist');
+    cy.contains('Custom Header').should('be.visible');
+    cy.contains('Custom Cell 2').should('be.visible');
+
+    cy.contains('Custom Header 1').should('be.visible');
+    cy.contains('Custom Header 2').should('be.visible');
+    cy.contains('pop-in content').should('be.visible');
+
+    cy.contains('C').should('be.visible');
+  });
+
+  it('plugin hook: useRowDisableSelection', () => {
+    const select = cy.spy().as('select');
+    const click = cy.spy().as('click');
+    const TestComponent = (props: Omit<AnalyticalTablePropTypes, 'data' | 'columns'>) => {
+      const { onRowSelect, onRowClick } = props;
+      const dataWithDisableSelectProp = data.map((item, index) => ({ ...item, disableSelection: index === 0 }));
+      return (
+        <AnalyticalTable
+          data={dataWithDisableSelectProp}
+          columns={columns}
+          onRowSelect={onRowSelect}
+          onRowClick={onRowClick}
+          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          tableHooks={[useRowDisableSelection('disableSelection')]}
+          minRows={1}
+        />
+      );
+    };
+    cy.mount(<TestComponent onRowSelect={select} onRowClick={click} />);
+    cy.get('#__ui5wcr__internal_selection_column[role="columnheader"]').find('[ui5-checkbox]').should('not.exist');
+    let selectCalled = 0;
+    let clickCalled = 1;
+    // colindex 1 === selection cell
+    [1, 2].forEach((colNum) => {
+      if (colNum === 1) {
+        cy.get(`[aria-rowindex="1"] > [aria-colindex="${colNum}"]`).should('have.attr', 'aria-disabled', 'true');
+      }
+      cy.get(`[aria-rowindex="1"] > [aria-colindex="${colNum}"]`).should('not.have.attr', 'aria-label');
+      cy.get(`[aria-rowindex="1"] > [aria-colindex="${colNum}"]`).click({ force: true });
+      cy.get('@select').should('have.callCount', selectCalled);
+      cy.get('@click').should('have.callCount', clickCalled);
+      clickCalled++;
+
+      cy.get(`[aria-rowindex="2"] > [aria-colindex="${colNum}"]`).should('have.attr', 'aria-label');
+      cy.get(`[aria-rowindex="2"] > [aria-colindex="${colNum}"]`).should('not.have.attr', 'aria-disabled', 'true');
+      cy.get(`[aria-rowindex="2"] > [aria-colindex="${colNum}"]`).click({ force: true });
+      selectCalled++;
+      cy.get('@select').should('have.callCount', selectCalled);
+      cy.get('@click').should('have.callCount', clickCalled);
+      clickCalled++;
+    });
+  });
+
+  it('plugin hook: useManualRowSelect', () => {
+    cy.mount(
+      <AnalyticalTable
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        data={manualSelectData}
+        columns={columns}
+        tableHooks={[useManualRowSelect('isSelected')]}
+      />
+    );
+    // header row included
+    cy.findAllByRole('row').each(($row, index) => {
+      if (index !== 1) {
+        cy.wrap($row).should('not.have.attr', 'data-is-selected');
+      } else {
+        cy.wrap($row).should('have.attr', 'data-is-selected');
+      }
+    });
+
+    const [, ...updatedManualSelectData] = manualSelectData;
+    cy.mount(
+      <AnalyticalTable
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        data={[
+          {
+            name: 'Selected',
+            age: 40,
+            friend: {
+              name: 'MAR',
+              age: 28
+            },
+            isSelected: false
+          },
+          ...updatedManualSelectData
+        ]}
+        columns={columns}
+        tableHooks={[useManualRowSelect('isSelected')]}
+      />
+    );
+    // header row included
+    cy.findAllByRole('row').each(($row) => {
+      cy.wrap($row).should('not.have.attr', 'data-is-selected');
+    });
+  });
+
+  cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
 const columns = [
@@ -1266,6 +1494,54 @@ const columns = [
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
     accessor: 'friend.age'
+  }
+];
+
+const columnsWithPopIn = [
+  {
+    Header: 'Name',
+    headerTooltip: 'Full Name',
+    accessor: 'name'
+  },
+  {
+    responsiveMinWidth: 601,
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: 'Friend Name',
+    accessor: 'friend.name'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header1</span>,
+    PopInHeader: 'Custom Header 1',
+    accessor: 'friend.age'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => <span>Custom original Header2</span>,
+    PopInHeader: () => {
+      return 'Custom Header 2';
+    },
+    id: 'custom1',
+    Cell: 'Custom Cell 2'
+  },
+  {
+    responsivePopIn: true,
+    responsiveMinWidth: 801,
+    Header: () => 'Custom Header',
+    id: 'custom2',
+    Cell: ({ isPopIn }) => {
+      if (isPopIn) {
+        return 'pop-in content';
+      }
+      return 'original content';
+    }
   }
 ];
 
@@ -1301,6 +1577,35 @@ const data = [
     age: 79,
     friend: {
       name: 'Sit',
+      age: 50
+    }
+  }
+];
+
+const manualSelectData = [
+  {
+    name: 'Selected',
+    age: 40,
+    friend: {
+      name: 'MAR',
+      age: 28
+    },
+    isSelected: true
+  },
+  {
+    name: 'Not selected',
+    age: 20,
+    friend: {
+      name: 'Nei',
+      age: 50
+    },
+    isSelected: false
+  },
+  {
+    name: 'Not selected2',
+    age: 20,
+    friend: {
+      name: 'Nei',
       age: 50
     }
   }
