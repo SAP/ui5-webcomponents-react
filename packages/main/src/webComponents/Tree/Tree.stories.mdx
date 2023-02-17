@@ -3,7 +3,7 @@ import { Tree } from './index';
 import { BusyIndicator } from '../BusyIndicator';
 import { TreeItem } from '../TreeItem';
 import { ListMode } from '../../enums/ListMode';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './TreeDescription.md?raw';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
 import pasteIcon from '@ui5/webcomponents-icons/dist/paste.js';
@@ -15,7 +15,7 @@ import { ValueState } from '../../enums';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import TreeItemDescription from '../TreeItem/TreeItemDescription.md?raw';
 import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md?raw';
-import TreeMethods from './TreeMethods.md?raw';
+import TreeDomRef from './TreeDomRef.json';
 import { TreeItemCustom } from '../TreeItemCustom';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -86,7 +86,7 @@ import { Text } from '../../components/Text';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{TreeMethods}</Markdown>
+<DomRefTable rows={TreeDomRef} />
 
 # More Examples
 

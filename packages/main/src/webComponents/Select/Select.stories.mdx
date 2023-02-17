@@ -2,11 +2,11 @@ import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Select } from './index';
 import { ValueState } from '../../enums/ValueState';
 import { Option } from '../Option';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './SelectDescription.md?raw';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import OptionDescription from '../Option/OptionDescription.md?raw';
-import SelectMethods from './SelectMethods.md?raw';
+import SelectDomRef from './SelectDomRef.json';
 
 <Meta
   title="Inputs / Select"
@@ -49,7 +49,7 @@ import SelectMethods from './SelectMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{SelectMethods}</Markdown>
+<DomRefTable rows={SelectDomRef} />
 
 ## Recipes
 

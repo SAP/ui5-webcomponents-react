@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ViewSettingsDialog } from './index';
-import { DocsHeader, Footer } from '@sb/components';
+import { DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './ViewSettingsDialogDescription.md?raw';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
 import { useEffect, useRef } from 'react';
@@ -9,7 +9,7 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import SortItemDescription from '../SortItem/SortItemDescription.md?raw';
 import FilterItemDescription from '../FilterItem/FilterItemDescription.md?raw';
 import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md?raw';
-import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md?raw';
+import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
@@ -95,7 +95,7 @@ import ViewSettingsDialogMethods from './ViewSettingsDialogMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{ViewSettingsDialogMethods}</Markdown>
+<DomRefTable rows={ViewSettingsDialogDomRef} />
 
 ## Opening ViewSettingsDialog
 

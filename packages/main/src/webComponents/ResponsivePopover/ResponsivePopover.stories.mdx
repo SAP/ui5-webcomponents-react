@@ -1,4 +1,4 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './ResponsivePopoverDescription.md?raw';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/settings.js';
@@ -15,7 +15,7 @@ import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { ResponsivePopover } from './index';
 import { isChromatic } from '@sb/utils';
-import ResponsivePopoverMethods from './ResponsivePopoverMethods.md?raw';
+import ResponsivePopoverDomRef from './ResponsivePopoverDomRef.json';
 import { MessageStrip } from '../MessageStrip';
 
 <Meta
@@ -79,7 +79,7 @@ import { MessageStrip } from '../MessageStrip';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{ResponsivePopoverMethods}</Markdown>
+<DomRefTable rows={ResponsivePopoverDomRef} />
 
 ## Opening ResponsivePopovers
 

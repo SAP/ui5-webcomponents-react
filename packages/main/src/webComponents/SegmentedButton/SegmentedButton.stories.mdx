@@ -1,10 +1,10 @@
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { SegmentedButton } from './index';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import SegmentedButtonItemDescription from '../SegmentedButtonItem/SegmentedButtonItemDescription.md?raw';
-import SegmentedButtonMethods from './SegmentedButtonMethods.md?raw';
+import SegmentedButtonDomRef from './SegmentedButtonDomRef.json';
 
 <Meta
   title="Inputs / SegmentedButton"
@@ -39,7 +39,7 @@ import SegmentedButtonMethods from './SegmentedButtonMethods.md?raw';
 
 <ArgsTableWithNote story="." />
 
-<Markdown>{SegmentedButtonMethods}</Markdown>
+<DomRefTable rows={SegmentedButtonDomRef} />
 
 <Markdown>{SubcomponentsSection}</Markdown>
 

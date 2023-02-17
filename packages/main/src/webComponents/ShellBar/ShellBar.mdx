@@ -1,11 +1,11 @@
-import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Markdown, Meta } from '@storybook/blocks';
 import { ShellBarItem } from '../ShellBarItem/index';
 import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md?raw';
 import * as ComponentStories from './ShellBar.stories';
 import Description from './ShellBarDescription.md?raw';
-import ShellBarMethods from './ShellBarMethods.md?raw';
+import ShellBarDomRef from './ShellBarDomRef.json';
 
 <Meta of={ComponentStories} />
 
@@ -23,7 +23,7 @@ import ShellBarMethods from './ShellBarMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{ShellBarMethods}</Markdown>
+<DomRefTable rows={ShellBarDomRef} />
 
 <br />
 

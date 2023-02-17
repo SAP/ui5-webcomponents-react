@@ -4,7 +4,7 @@ import { Tab } from '../Tab';
 import { TabSeparator } from '../TabSeparator';
 import { TabLayout } from '../../enums/TabLayout';
 import { SemanticColor } from '../../enums/SemanticColor';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './TabContainerDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/activities.js';
@@ -15,7 +15,7 @@ import '@ui5/webcomponents-icons/dist/sys-monitor.js';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import TabDescription from '../Tab/TabDescription.md?raw';
 import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md?raw';
-import TabContainerMethods from './TabContainerMethods.md?raw';
+import TabContainerDomRef from './TabContainerDomRef.json';
 import { TabContainerBackgroundDesign } from '../../enums';
 
 <Meta
@@ -71,7 +71,7 @@ import { TabContainerBackgroundDesign } from '../../enums';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{TabContainerMethods}</Markdown>
+<DomRefTable rows={TabContainerDomRef} />
 
 # More Examples
 
