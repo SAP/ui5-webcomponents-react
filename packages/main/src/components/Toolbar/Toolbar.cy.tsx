@@ -391,6 +391,7 @@ describe('Toolbar', () => {
     cy.mount(<TestComp />);
     cy.get(`[ui5-toggle-button]`).click();
     cy.get('[data-component-name="ToolbarOverflowPopover"]').findByText('Close').click();
+    cy.wait(200);
     cy.get('[data-component-name="ToolbarOverflowPopover"]').should('not.be.visible');
   });
 
