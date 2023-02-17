@@ -37,6 +37,62 @@ interface PropTypes {
   ) => void;
 }
 
+const columns = [
+  {
+    Header: 'Name',
+    headerTooltip: 'Full Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    Header: 'Friend Name',
+    accessor: 'friend.name' // Custom value accessors!
+  },
+  {
+    Header: () => <span>Friend Age</span>, // Custom header components!
+    accessor: 'friend.age'
+  }
+];
+const data = [
+  {
+    name: 'A',
+    age: 40,
+    friend: {
+      name: 'Lorem',
+      age: 28
+    },
+    status: ValueState.Success,
+    navigation: ValueState.Error
+  },
+  {
+    name: 'B',
+    age: 20,
+    friend: {
+      name: 'Ipsum',
+      age: 50
+    }
+  },
+  {
+    name: 'X',
+    age: 17,
+    friend: {
+      name: 'Dolor',
+      age: 42
+    }
+  },
+  {
+    name: 'C',
+    age: 79,
+    friend: {
+      name: 'Sit',
+      age: 50
+    }
+  }
+];
+
 describe('AnalyticalTable', () => {
   it('sorting', () => {
     const sort = cy.spy().as('onSortSpy');
@@ -1477,26 +1533,6 @@ describe('AnalyticalTable', () => {
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
-const columns = [
-  {
-    Header: 'Name',
-    headerTooltip: 'Full Name',
-    accessor: 'name'
-  },
-  {
-    Header: 'Age',
-    accessor: 'age'
-  },
-  {
-    Header: 'Friend Name',
-    accessor: 'friend.name' // Custom value accessors!
-  },
-  {
-    Header: () => <span>Friend Age</span>, // Custom header components!
-    accessor: 'friend.age'
-  }
-];
-
 const columnsWithPopIn = [
   {
     Header: 'Name',
@@ -1541,43 +1577,6 @@ const columnsWithPopIn = [
         return 'pop-in content';
       }
       return 'original content';
-    }
-  }
-];
-
-const data = [
-  {
-    name: 'A',
-    age: 40,
-    friend: {
-      name: 'Lorem',
-      age: 28
-    },
-    status: ValueState.Success,
-    navigation: ValueState.Error
-  },
-  {
-    name: 'B',
-    age: 20,
-    friend: {
-      name: 'Ipsum',
-      age: 50
-    }
-  },
-  {
-    name: 'X',
-    age: 17,
-    friend: {
-      name: 'Dolor',
-      age: 42
-    }
-  },
-  {
-    name: 'C',
-    age: 79,
-    friend: {
-      name: 'Sit',
-      age: 50
     }
   }
 ];
