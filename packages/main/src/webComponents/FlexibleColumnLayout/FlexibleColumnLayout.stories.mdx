@@ -1,4 +1,4 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './FlexibleColumnLayoutDescription.md?raw';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/decline.js';
@@ -21,7 +21,7 @@ import { ShellBar } from '../ShellBar';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
-import FlexibleColumnLayoutMethods from './FlexibleColumnLayoutMethods.md?raw';
+import FlexibleColumnLayoutDomRef from './FlexibleColumnLayoutDomRef.json';
 
 <Meta
   title="Layouts & Floorplans / FlexibleColumnLayout"
@@ -82,7 +82,7 @@ import FlexibleColumnLayoutMethods from './FlexibleColumnLayoutMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{FlexibleColumnLayoutMethods}</Markdown>
+<DomRefTable rows={FlexibleColumnLayoutDomRef} />
 
 # More Examples
 

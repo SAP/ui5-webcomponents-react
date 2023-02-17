@@ -7,13 +7,13 @@ import '@ui5/webcomponents-icons/dist/globe.js';
 import { Icon } from '../Icon';
 import { SuggestionItem } from '../SuggestionItem';
 import { SuggestionGroupItem } from '../SuggestionGroupItem';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './InputDescription.md?raw';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md?raw';
 import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md?raw';
-import InputMethods from './InputMethods.md?raw';
+import InputDomRef from './InputDomRef.json';
 
 <Meta
   title="Inputs / Input"
@@ -51,6 +51,8 @@ import InputMethods from './InputMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
+<DomRefTable rows={InputDomRef} />
+
 <br />
 
 # More Examples
@@ -84,7 +86,6 @@ and the `showSuggestions` prop is set to `true`.
 </Canvas>
 
 <ArgsTableWithNote of={SuggestionItem} story="with SuggestionItem" />
-<Markdown>{InputMethods}</Markdown>
 
 <Markdown>{SubcomponentsSection}</Markdown>
 

@@ -1,4 +1,4 @@
-import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
+import { Canvas, Meta, Story } from '@storybook/blocks';
 import { FileUploader } from './index';
 import { Button } from '../Button';
 import { FlexBox } from '../../components/FlexBox';
@@ -6,9 +6,9 @@ import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { Badge } from '../Badge';
 import { Avatar } from '../Avatar';
 import { ValueState } from '../../enums/ValueState';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import uploadIcon from '@ui5/webcomponents-icons/dist/upload.js';
-import FileUploaderMethods from './FileUploaderMethods.md?raw';
+import FileUploaderDomRef from './FileUploaderDomRef.json';
 
 <Meta
   title="Inputs / FileUploader"
@@ -40,7 +40,7 @@ import FileUploaderMethods from './FileUploaderMethods.md?raw';
 
 <ArgsTableWithNote story="." />
 
-<Markdown>{FileUploaderMethods}</Markdown>
+<DomRefTable rows={FileUploaderDomRef} />
 
 <br />
 

@@ -4,12 +4,12 @@ import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './MultiComboBoxDescription.md?raw';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md?raw';
 import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md?raw';
-import MultiComboBoxMethods from './MultiComboBoxMethods.md?raw';
+import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
 
 <Meta
   title="Inputs / MultiComboBox"
@@ -53,7 +53,7 @@ import MultiComboBoxMethods from './MultiComboBoxMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{MultiComboBoxMethods}</Markdown>
+<DomRefTable rows={MultiComboBoxDomRef} />
 
 # More Examples
 

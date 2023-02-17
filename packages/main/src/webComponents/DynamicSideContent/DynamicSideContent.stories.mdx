@@ -1,11 +1,11 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './DynamicSideContentDescription.md?raw';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { DynamicSideContent } from './index';
 import { SideContentFallDown } from '../../enums/SideContentFallDown';
 import { SideContentPosition } from '../../enums/SideContentPosition';
 import { SideContentVisibility } from '../../enums/SideContentVisibility';
-import DynamicSideContentMethods from './DynamicSideContentMethods.md?raw';
+import DynamicSideContentDomRef from './DynamicSideContentDomRef.json';
 import { MainContent, SideContent } from './CodeGen';
 
 <Meta
@@ -46,6 +46,6 @@ import { MainContent, SideContent } from './CodeGen';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{DynamicSideContentMethods}</Markdown>
+<DomRefTable rows={DynamicSideContentDomRef} />
 
 <Footer />

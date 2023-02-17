@@ -1,4 +1,4 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './MenuDescription.md?raw';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Button, Menu, MenuItem, MessageStrip } from '../';
@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { isChromatic } from '@sb/utils';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import MenuItemDescription from '../MenuItem/MenuItemDescription.md?raw';
-import MenuMethods from './MenuMethods.md?raw';
+import MenuDomRef from './MenuDomRef.json';
 
 <Meta
   title="Modals & Popovers / Menu"
@@ -66,7 +66,7 @@ import MenuMethods from './MenuMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{MenuMethods}</Markdown>
+<DomRefTable rows={MenuDomRef} />
 
 ## Opening Menus
 
