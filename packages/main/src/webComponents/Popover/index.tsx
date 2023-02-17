@@ -183,7 +183,8 @@ const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open']
+  ['after-close', 'after-open', 'before-close', 'before-open'],
+  () => import('@ui5/webcomponents/dist/Popover.js')
 );
 
 Popover.displayName = 'Popover';

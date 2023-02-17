@@ -1,5 +1,6 @@
 'use client';
 
+import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useContext } from 'react';
@@ -187,7 +188,7 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
           {subtitleText && <Label className={classes.subtitle}>{subtitleText}</Label>}
         </FlexBox>
         {counter != null && <span className={classes.counter}>{counter}</span>}
-        {children && <Icon className={classes.navigation} name="slim-arrow-right" />}
+        {children && <Icon className={classes.navigation} name={iconArrowRight} />}
       </FlexBox>
     </CustomListItem>
   );

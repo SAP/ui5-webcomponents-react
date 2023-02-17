@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.8.0...v1.8.1) (2023-01-30)
+
+### Bug Fixes
+
+- restrict base package dependency to be on same minor version as main package ([#4046](https://github.com/SAP/ui5-webcomponents-react/issues/4046)) ([cc8f2dc](https://github.com/SAP/ui5-webcomponents-react/commit/cc8f2dc6d1075b909b8d3ffce435421904b67079)), closes [#4043](https://github.com/SAP/ui5-webcomponents-react/issues/4043)
+- **TypeScript:** slot props support React v17 & v16 ([#4056](https://github.com/SAP/ui5-webcomponents-react/issues/4056)) ([a88ca74](https://github.com/SAP/ui5-webcomponents-react/commit/a88ca74d461b456879f00221d8e1b7a30691835b)), closes [#4047](https://github.com/SAP/ui5-webcomponents-react/issues/4047)
+
 # [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
 
 ### Features

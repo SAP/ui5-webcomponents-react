@@ -190,7 +190,8 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
   ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleText'],
   [],
   ['subtitle'],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/IllustratedMessage.js')
 );
 
 IllustratedMessage.displayName = 'IllustratedMessage';

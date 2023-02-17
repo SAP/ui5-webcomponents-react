@@ -34,7 +34,8 @@ import { LinearGradientExample } from './LinearGradientStory';
         {
           accessor: 'users',
           label: 'Users',
-          formatter: (val) => val.toLocaleString()
+          formatter: (val) => val.toLocaleString(),
+          lineConfig: { type: 'linear' }
         },
         {
           accessor: 'sessions',

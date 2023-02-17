@@ -311,17 +311,16 @@ const createWebComponentWrapper = async (
   }
 
   const domRef = Utils.createDomRef(componentSpec, importStatements);
+  const importSpecifier = `@ui5/webcomponents${
+    componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''
+  }/dist/${componentSpec.module}.js`;
 
-  const imports = [
-    `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
-      componentSpec.module
-    }.js';`,
-    ...new Set(importStatements)
-  ];
+  const imports = [`import '${importSpecifier}';`, ...new Set(importStatements)];
 
   return await renderComponentWrapper({
     name: componentSpec.module,
     imports,
+    importSpecifier,
     propTypesExtends: tsExtendsStatement,
     domRefExtends,
     attributes,

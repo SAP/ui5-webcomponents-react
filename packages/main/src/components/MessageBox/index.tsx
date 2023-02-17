@@ -1,14 +1,9 @@
 'use client';
 
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
-import {
-  enrichEventWithDetails,
-  useI18nBundle,
-  useIsomorphicId,
-  useIsomorphicLayoutEffect
-} from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactNode, useState } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';
 import {
@@ -29,16 +24,7 @@ import {
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { stopPropagation } from '../../internal/stopPropagation';
-import {
-  Button,
-  ButtonPropTypes,
-  Dialog,
-  DialogDomRef,
-  DialogPropTypes,
-  Icon,
-  IconPropTypes,
-  Title
-} from '../../webComponents';
+import { Button, ButtonPropTypes, Dialog, DialogDomRef, DialogPropTypes, Icon, Title } from '../../webComponents';
 import { Text } from '../Text';
 import styles from './MessageBox.jss';
 
@@ -106,21 +92,11 @@ export interface MessageBoxPropTypes
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
-const createUniqueIds = (internalActions): (string | null)[] => {
-  return internalActions.map((action) => {
-    if (typeof action === 'string') {
-      return `${performance.now() + Math.random()}`.split('.')[1];
-    }
-    return null;
-  });
-};
-
 const getIcon = (icon, type) => {
   if (isValidElement(icon)) return icon;
-  const iconProps = { 'aria-hidden': 'true', accessibleRole: 'presentation' } as IconPropTypes;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return <Icon name={iconSysHelp} {...iconProps} />;
+      return <Icon name={iconSysHelp} aria-hidden="true" accessibleRole="presentation" />;
     default:
       return null;
   }
@@ -215,37 +191,28 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     onClose(enrichEventWithDetails(e, { action }));
   };
 
-  const messageBoxClassNames = clsx(classes.messageBox, className);
+  const messageBoxId = useIsomorphicId();
   const internalActions = getActions(actions, type);
 
-  const [uniqueIds, setUniqueIds] = useState(() => createUniqueIds(internalActions));
-  useIsomorphicLayoutEffect(() => {
-    setUniqueIds(createUniqueIds(internalActions));
-  }, [internalActions.length]);
-
   const getInitialFocus = () => {
-    const indexOfInitialFocus = internalActions.indexOf(initialFocus);
-    const actionToFocus = internalActions[indexOfInitialFocus] as string;
+    const actionToFocus = internalActions.find((action) => action === initialFocus);
     if (typeof actionToFocus === 'string') {
-      return `${actionToFocus}-${uniqueIds[indexOfInitialFocus]}`;
+      return `${messageBoxId}-action-${actionToFocus}`;
     }
     return initialFocus;
   };
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-expect-error: footer, headerText and onAfterClose are already omitted via prop types
   const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
 
   const iconToRender = getIcon(icon, type);
   const needsCustomHeader = !props.header && !!iconToRender;
 
-  const messageBoxId = useIsomorphicId();
-
   return (
     <Dialog
       open={open}
       ref={ref}
-      className={messageBoxClassNames}
+      className={clsx(classes.messageBox, className)}
       onAfterClose={open ? handleOnClose : stopPropagation}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       {...restWithoutOmitted}
@@ -280,7 +247,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
           if (typeof action === 'string') {
             return (
               <Button
-                id={`${action}-${uniqueIds[index]}`}
+                id={`${messageBoxId}-action-${action}`}
                 key={`${action}-${index}`}
                 design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}

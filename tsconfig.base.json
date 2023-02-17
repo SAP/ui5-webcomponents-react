@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "ES2021",
-    "lib": ["ES2021", "dom"],
+    "lib": ["ES2022", "dom"],
     "jsx": "react",
     "baseUrl": ".",
     "composite": true,

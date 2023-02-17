@@ -1,7 +1,5 @@
 'use client';
 
-import '@ui5/webcomponents-icons/dist/horizontal-grip.js';
-import '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffect, useRef, useState } from 'react';

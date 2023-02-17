@@ -53,7 +53,8 @@ const NotificationAction = withWebComponent<NotificationActionPropTypes, Notific
   ['design', 'icon', 'text'],
   ['disabled'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/NotificationAction.js')
 );
 
 NotificationAction.displayName = 'NotificationAction';

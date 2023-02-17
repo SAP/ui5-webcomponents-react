@@ -1,7 +1,7 @@
 import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
 import './commands';
-import '@ui5/webcomponents-cypress-commands';
+import '../../packages/cypress-commands/src/index.js';
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
 

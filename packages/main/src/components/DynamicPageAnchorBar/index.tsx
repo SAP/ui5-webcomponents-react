@@ -1,8 +1,8 @@
 'use client';
 
-import '@ui5/webcomponents-icons/dist/pushpin-off.js';
-import '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
-import '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
+import iconPushPin from '@ui5/webcomponents-icons/dist/pushpin-off.js';
+import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
+import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import {
   enrichEventWithDetails,
   ThemingParameters,
@@ -177,7 +177,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     >
       {showHideHeaderButton && (
         <Button
-          icon={!headerContentVisible ? 'slim-arrow-down' : 'slim-arrow-up'}
+          icon={!headerContentVisible ? iconArrowDown : iconArrowUp}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(
             anchorBarActionButtonClasses,
@@ -194,7 +194,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
       )}
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
-          icon="pushpin-off"
+          icon={iconPushPin}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(
             anchorBarActionButtonClasses,

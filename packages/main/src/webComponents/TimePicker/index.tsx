@@ -118,7 +118,8 @@ const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],
   ['valueStateMessage'],
-  ['change', 'input']
+  ['change', 'input'],
+  () => import('@ui5/webcomponents/dist/TimePicker.js')
 );
 
 TimePicker.displayName = 'TimePicker';
