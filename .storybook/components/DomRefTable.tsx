@@ -1,5 +1,23 @@
 import { Heading } from '@storybook/blocks';
 import React from 'react';
+import classes from './DomRefTable.module.css';
+
+function Name(props) {
+  if (props.returnValue) {
+    return (
+      <>
+        {props.name}({props.parameters?.map((param) => `${param.name}${param.optional ? '?' : ''}`).join(', ')}):{' '}
+        <code>{props.returnValue.type}</code>
+      </>
+    );
+  }
+
+  if (props.readonly) {
+    return `${props.name} (readonly)`;
+  }
+
+  return props.name;
+}
 
 export function DomRefTable({ rows }: { rows: any[] }) {
   return (
@@ -23,24 +41,23 @@ export function DomRefTable({ rows }: { rows: any[] }) {
               <tr key={row.name}>
                 <td>
                   <b>
-                    {row.name}
-                    {row.readonly ? ` (readonly)` : ''}
+                    <Name {...row} />
                   </b>
                 </td>
                 <td>
                   {!!row.parameters ? (
                     row.parameters.map((parameter) => {
                       return (
-                        <div key={parameter.name}>
-                          <p style={{ fontWeight: 'bold' }}>{parameter.name}</p>
+                        <div key={parameter.name} className={classes.parameters}>
+                          <p className={classes.parameterName}>{parameter.name}</p>
                           {parameter.description ? (
                             <p
-                              style={{ paddingInline: '1rem' }}
+                              className={classes.parameterDetails}
                               dangerouslySetInnerHTML={{ __html: parameter.description }}
                             />
                           ) : null}
                           {parameter.type ? (
-                            <p style={{ paddingInline: '1rem' }}>
+                            <p className={classes.parameterDetails}>
                               <code>{parameter.type}</code>
                             </p>
                           ) : null}
