@@ -1,9 +1,9 @@
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Carousel } from './index';
 import { CarouselArrowsPlacement } from '../../enums/CarouselArrowsPlacement';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './CarouselDescription.md?raw';
-import CarouselMethods from './CarouselMethods.md?raw';
+import CarouselDomRef from './CarouselDomRef.json';
 import { Img1, Img2, Img3 } from './CodeGen';
 
 <Meta
@@ -43,6 +43,6 @@ import { Img1, Img2, Img3 } from './CodeGen';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{CarouselMethods}</Markdown>
+<DomRefTable rows={CarouselDomRef} />
 
 <Footer />

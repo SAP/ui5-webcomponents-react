@@ -2,9 +2,9 @@ import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Button } from './index';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import '@ui5/webcomponents-icons/dist/employee.js';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './ButtonDescription.md?raw';
-import ButtonMethods from './ButtonMethods.md?raw';
+import ButtonDomRef from './ButtonDomRef.json';
 
 <Meta
   title="Inputs / Button"
@@ -39,6 +39,6 @@ import ButtonMethods from './ButtonMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{ButtonMethods}</Markdown>
+<DomRefTable rows={ButtonDomRef} />
 
 <Footer />
