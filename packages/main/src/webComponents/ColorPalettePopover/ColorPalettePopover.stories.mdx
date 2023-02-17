@@ -2,12 +2,12 @@ import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Button } from '../Button';
 import { ColorPalettePopover } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './ColorPalettePopoverDescription.md?raw';
 import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { isChromatic } from '@sb/utils';
-import ColorPalettePopoverMethods from './ColorPalettePopoverMethods.md?raw';
+import ColorPalettePopoverDomRef from './ColorPalettePopoverDomRef.json';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
 
@@ -74,7 +74,7 @@ import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDes
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{ColorPalettePopoverMethods}</Markdown>
+<DomRefTable rows={ColorPalettePopoverDomRef} />
 
 ## Opening ColorPalettePopovers
 
