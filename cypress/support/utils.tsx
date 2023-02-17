@@ -31,6 +31,8 @@ export function cypressPassThroughTestsFactory(Component: ComponentType, props?:
     if (Component.displayName !== 'ObjectPageSection' && Component.displayName !== 'ObjectPageSubSection') {
       cy.findByTestId(testId).should('have.id', 'element-id');
     }
+  });
+}
 
 export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagNameMap }>(
   Component: ComponentType<P>,
