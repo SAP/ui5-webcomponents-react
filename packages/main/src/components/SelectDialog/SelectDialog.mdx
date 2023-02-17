@@ -1,6 +1,6 @@
-import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import DialogMethods from '../../webComponents/Dialog/DialogMethods.md?raw';
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
 import * as ComponentStories from './SelectDialog.stories';
 
 <Meta of={ComponentStories} />
@@ -17,7 +17,7 @@ import * as ComponentStories from './SelectDialog.stories';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{DialogMethods}</Markdown>
+<DomRefTable rows={DialogDomRef} />
 
 ## Opening SelectDialogs
 

@@ -1,8 +1,8 @@
-import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Dialog.stories';
 import Description from './DialogDescription.md?raw';
-import DialogMethods from './DialogMethods.md?raw';
+import DialogDomRef from './DialogDomRef.json';
 
 <Meta of={ComponentStories} />
 
@@ -20,7 +20,7 @@ import DialogMethods from './DialogMethods.md?raw';
 
 <Markdown>{Description}</Markdown>
 
-<Markdown>{DialogMethods}</Markdown>
+<DomRefTable rows={DialogDomRef} />
 
 ## Opening Dialogs
 
