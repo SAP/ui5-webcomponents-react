@@ -109,7 +109,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Can either be string or a React component that will be rendered as column header
    */
-  Header?: string | ComponentType<any>;
+  Header?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`.
    */
@@ -117,7 +117,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
-  Cell?: string | ComponentType<any>;
+  Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Cell width, if not set the table will distribute all columns without a width evenly.
    */
@@ -135,7 +135,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Filter Component to be rendered in the Header.
    */
-  Filter?: string | ComponentType<any>;
+  Filter?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Disable filters for this column.
    */
@@ -165,7 +165,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Component to render for aggregated cells.
    */
-  Aggregated?: string | ComponentType<any>;
+  Aggregated?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>
    */
@@ -237,7 +237,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
    */
-  PopInHeader?: string | ComponentType<any>;
+  PopInHeader?: string | ComponentType<any> | ((props?: any) => ReactNode);
 
   //use useDragAndDrop
   /**
@@ -934,12 +934,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns
+    tableInternalColumns,
+    onColumnsReorder
   );
 
   const inlineStyle = useMemo(() => {
