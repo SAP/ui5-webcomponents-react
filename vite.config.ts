@@ -28,6 +28,10 @@ export default defineConfig(() => {
         {
           find: '@ui5/webcomponents-react-charts',
           replacement: fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url))
+        },
+        {
+          find: '@/',
+          replacement: fileURLToPath(new URL('./', import.meta.url))
         }
       ]
     },

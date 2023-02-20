@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { TitleLevel } from '../../enums';
+import { VariantManagementWithCustomValidation } from './CodeGen';
 import { VariantItem } from './VariantItem';
 import { VariantManagement, VariantManagementPropTypes } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
@@ -92,6 +94,40 @@ describe('VariantManagement', () => {
     cy.get('@onSaveManageViews').should('have.been.calledOnce');
   });
 
+  it('saveViewInputProps & manageViewsInputProps', () => {
+    // manageViewsInputProps
+    cy.mount(<VariantManagementWithCustomValidation />);
+    cy.contains('Max 12 chars').click();
+    cy.findByText('Manage').click();
+    cy.get('[ui5-dialog]').should('be.visible');
+    cy.findByTestId('12chars').typeIntoUi5Input('A');
+    cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
+    cy.findByText('Save').click();
+    cy.get('[ui5-dialog]').should('be.visible');
+    cy.findByTestId('12chars').typeIntoUi5Input('{backspace}');
+    cy.findByTestId('12chars').typeIntoUi5Input('{backspace}B');
+    cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
+    cy.findByText('Save').click();
+    cy.findByTestId('12chars').should('not.exist');
+    cy.get('[ui5-dialog]').should('not.exist');
+    cy.contains('Max 12 charB').should('be.visible');
+
+    //saveViewInputProps
+    cy.mount(<VariantManagementWithCustomValidation selectedByIndex={0} />);
+    cy.contains('Only alphanumeric chars in Save View input').click();
+    cy.findByText('Save As').click();
+    cy.get('[ui5-dialog]').should('be.visible');
+    cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
+    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
+    cy.findByText('Save').click();
+    cy.get('[ui5-dialog]').should('be.visible');
+    cy.focused().should('have.attr', 'value-state', 'Error');
+    cy.findByTestId('alphanumeric').typeIntoUi5Input('{selectall}{backspace}A');
+    cy.findByText('Save').click();
+    cy.findByTestId('alphanumeric').should('not.exist');
+    cy.get('[ui5-dialog]').should('not.exist');
+  });
+
   it('Selection', () => {
     const select = cy.spy().as('select');
     cy.mount(<VariantManagement onSelect={select}>{TwoVariantItems}</VariantManagement>);
@@ -128,9 +164,8 @@ describe('VariantManagement', () => {
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('[ui5-title]').findByText('VariantItem 2').should('be.visible').click();
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
-    // todo uncomment this when https://github.com/SAP/ui5-webcomponents/issues/6372 is fixed
-    // cy.get('[icon="navigation-down-arrow"]').should('have.attr', 'disabled', 'true').click({ force: true });
-    // cy.get('[ui5-responsive-popover]').should('not.be.visible');
+    cy.get('[icon="navigation-down-arrow"]').should('have.attr', 'disabled', 'disabled').click({ force: true });
+    cy.get('[ui5-responsive-popover]').should('not.be.visible');
   });
 
   it('Dirty state', () => {
@@ -549,5 +584,5 @@ describe('VariantManagement', () => {
     cy.get('@saveView').should('have.been.calledOnce');
   });
 
-  // todo pass through props test
+  cypressPassThroughTestsFactory(VariantManagement);
 });

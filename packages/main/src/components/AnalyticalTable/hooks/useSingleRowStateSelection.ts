@@ -60,7 +60,10 @@ const getRowProps = (rowProps, { row, instance }) => {
     rowProps,
     {
       onKeyDown: (e) => {
-        if (e.key === 'Enter' || e.code === 'Space') {
+        if (
+          (!e.target.hasAttribute('aria-expanded') || (e.shiftKey && e.code === 'Space')) &&
+          (e.key === 'Enter' || e.code === 'Space')
+        ) {
           if (!webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
             e.preventDefault();
           }

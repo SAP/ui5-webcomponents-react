@@ -122,7 +122,6 @@ const meta = {
     groupBy: [],
     selectedRowIds: { 3: true },
     withRowHighlight: true,
-    highlightField: 'status',
     infiniteScroll: true,
     infiniteScrollThreshold: 20,
     subRowsKey: 'subRows',
