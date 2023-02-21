@@ -10,8 +10,7 @@ import {
   Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
-import { cssVarToRgb } from '../../internal/utils';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { useManualRowSelect } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useRowDisableSelection';
 
