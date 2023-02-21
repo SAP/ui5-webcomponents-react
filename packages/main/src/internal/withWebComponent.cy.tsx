@@ -2,7 +2,7 @@ import {
   setCustomElementsScopingSuffix,
   setCustomElementsScopingRules
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import React, { useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import { Bar, Button, ButtonPropTypes, Switch, SwitchPropTypes } from '@/packages/main';
 
 describe('withWebComponent', () => {
