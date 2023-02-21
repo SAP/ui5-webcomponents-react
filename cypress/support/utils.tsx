@@ -1,3 +1,4 @@
+import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion.js';
 import { ComponentType } from 'react';
 
 export function cypressPassThroughTestsFactory(Component: ComponentType, props?: Record<string, unknown>) {
@@ -45,3 +46,9 @@ export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagName
     cy.get(`${as}[data-testid="${testId}"]`).should('be.visible');
   });
 }
+
+export const cssVarToRgb = (cssVar) => {
+  const cssVarValue = getComputedStyle(document.documentElement).getPropertyValue(cssVar.match(/(--)[^)]+/)[0]);
+  const rgbVal = getRGBColor(cssVarValue);
+  return `rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
+};
