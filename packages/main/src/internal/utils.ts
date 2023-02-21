@@ -1,5 +1,5 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion';
+import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion.js';
 import { Children, cloneElement, Fragment, ReactNode } from 'react';
 
 export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode[] {
