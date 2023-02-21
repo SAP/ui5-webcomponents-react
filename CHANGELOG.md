@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.0...v1.9.1) (2023-02-21)
+
+### Bug Fixes
+
+- **AnalyticalTable:** don't allow subcomponents on empty rows ([#4173](https://github.com/SAP/ui5-webcomponents-react/issues/4173)) ([f6b9081](https://github.com/SAP/ui5-webcomponents-react/commit/f6b908170d4247f9819f130f364fbf37002757dc))
+- correct faulty import ([#4184](https://github.com/SAP/ui5-webcomponents-react/issues/4184)) ([1334c44](https://github.com/SAP/ui5-webcomponents-react/commit/1334c448551eefa416fd8fdf053b48d60a1c3cb5))
+
 # [1.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.8.1...v1.9.0) (2023-02-17)
 
 ### Bug Fixes
