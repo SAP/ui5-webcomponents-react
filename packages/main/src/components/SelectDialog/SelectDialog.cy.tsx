@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Button, ListPropTypes, SelectDialog, SelectDialogPropTypes } from '@/packages/main';
-import { ListMode, StandardListItem } from '@/packages/main/src';
+import { Button, ListMode, ListPropTypes, SelectDialog, SelectDialogPropTypes, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>
@@ -71,6 +70,8 @@ describe('SelectDialog', () => {
             rememberSelections={rememberSelections}
             open={open}
             onConfirm={(e) => {
+              // todo fix type in component
+              // @ts-expect-error: type has to be adjusted
               setItems(e.detail.selectedItems.map((item) => item.textContent));
               confirm(e);
             }}
@@ -167,8 +168,8 @@ describe('SelectDialog', () => {
       reset
     }: {
       search: SelectDialogPropTypes['onSearch'];
-      input: SelectDialogPropTypes['onInput'];
-      reset: SelectDialogPropTypes['onReset'];
+      input: SelectDialogPropTypes['onSearchInput'];
+      reset: SelectDialogPropTypes['onSearchReset'];
     }) => {
       const [inputVal, setInputVal] = useState('');
       const [searchVal, setSearchVal] = useState('');
@@ -176,6 +177,8 @@ describe('SelectDialog', () => {
         <>
           <SelectDialog
             onSearch={(e) => {
+              // todo fix type in component
+              // @ts-expect-error: type has to be adjusted
               setSearchVal(e.detail.value);
               search(e);
             }}

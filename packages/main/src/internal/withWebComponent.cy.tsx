@@ -3,7 +3,7 @@ import {
   setCustomElementsScopingRules
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useReducer, useState } from 'react';
-import { Bar, Button, ButtonPropTypes, Switch, SwitchPropTypes } from '@/packages/main';
+import { Bar, Button, Switch } from '../webComponents';
 
 describe('withWebComponent', () => {
   it('Unmount Event Handlers correctly after prop update', () => {
@@ -13,21 +13,8 @@ describe('withWebComponent', () => {
     const updatedCustom = cy.spy().as('updatedCustom');
     const updatedNative = cy.spy().as('updatedNative');
     const updatedNativePassedThrough = cy.spy().as('updatedNativePassedThrough');
-    const TestComp = ({
-      custom,
-      nativePassedThrough,
-      native,
-      updatedNativePassedThrough,
-      updatedCustom,
-      updatedNative
-    }: {
-      nativePassedThrough: ButtonPropTypes['onClick'];
-      custom: SwitchPropTypes['onChange'];
-      native: SwitchPropTypes['onClick'];
-      updatedNativePassedThrough: ButtonPropTypes['onClick'];
-      updatedCustom: SwitchPropTypes['onChange'];
-      updatedNative: SwitchPropTypes['onClick'];
-    }) => {
+
+    const TestComp = () => {
       const [currentHandler, updateHandler] = useReducer(
         () => ({
           native: updatedNative,
@@ -44,16 +31,7 @@ describe('withWebComponent', () => {
         </>
       );
     };
-    cy.mount(
-      <TestComp
-        nativePassedThrough={nativePassedThrough}
-        custom={custom}
-        native={native}
-        updatedCustom={updatedCustom}
-        updatedNativePassedThrough={updatedNativePassedThrough}
-        updatedNative={updatedNative}
-      />
-    );
+    cy.mount(<TestComp />);
 
     cy.findByTestId('switch').click();
     cy.findByText('Btn').click();
@@ -63,6 +41,9 @@ describe('withWebComponent', () => {
     cy.findByText('Update handler').click();
     cy.findByTestId('switch').click();
     cy.findByText('Btn').click();
+    cy.get('@custom').should('have.been.calledOnce');
+    cy.get('@native').should('have.been.calledOnce');
+    cy.get('@nativePassedThrough').should('have.been.calledOnce');
     cy.get('@updatedCustom').should('have.been.calledOnce');
     cy.get('@updatedNative').should('have.been.calledOnce');
     cy.get('@updatedNativePassedThrough').should('have.been.calledOnce');
