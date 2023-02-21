@@ -1,6 +1,7 @@
 import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums';
 import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils';
 import { FlexBox } from './index';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 describe('FlexBox', () => {
   Object.values(FlexBoxJustifyContent).forEach((val) => {
@@ -92,6 +93,6 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
-  //todo mountWithCustomTagName
-  //todo pass through props test
+  mountWithCustomTagName(FlexBox, { children: <span>Test 1</span> });
+  cypressPassThroughTestsFactory(FlexBox);
 });

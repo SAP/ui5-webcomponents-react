@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Label Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-label
-    ui5-label=""
-  />
-</DocumentFragment>
-`;

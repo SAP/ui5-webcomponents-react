@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Avatar Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-avatar
-    ui5-avatar=""
-  />
-</DocumentFragment>
-`;

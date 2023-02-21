@@ -63,6 +63,7 @@ export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
         width: '100%',
         ...style
       }}
+      data-component-name="AnalyticalTableLoadingPlaceholder"
     >
       {getArrayOfLength(rows).map((_, index) => {
         return (

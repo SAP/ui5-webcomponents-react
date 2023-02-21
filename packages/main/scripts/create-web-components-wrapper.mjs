@@ -729,9 +729,9 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create test
-      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = renderTest({ name: componentSpec.module });
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
+        const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
       // create demo

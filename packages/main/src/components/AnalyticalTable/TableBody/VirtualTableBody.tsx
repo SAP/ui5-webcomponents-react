@@ -153,7 +153,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }}
             aria-rowindex={virtualRow.index + 1}
           >
-            {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
+            {!row.original?.emptyRow && RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
                 subComponentsHeight={subComponentsHeight}
                 virtualRow={virtualRow}
