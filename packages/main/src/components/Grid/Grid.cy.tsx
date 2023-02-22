@@ -112,18 +112,20 @@ describe('Grid', () => {
   it('position', () => {
     [...Object.values(GridPosition), undefined].forEach((pos) => {
       cy.mount(
-        <Grid data-testid="grid" position={pos} style={{ width: '50%' }}>
-          {GridContent}
-        </Grid>
+        <div style={{ width: '400px' }}>
+          <Grid data-testid="grid" position={pos} style={{ width: '200px' }}>
+            {GridContent}
+          </Grid>
+        </div>
       );
       switch (pos) {
         case 'Center':
           cy.findByTestId('grid')
-            .should('have.css', 'margin-left', '476px')
-            .should('have.css', 'margin-right', '476px');
+            .should('have.css', 'margin-left', '100px')
+            .should('have.css', 'margin-right', '100px');
           break;
         case 'Right':
-          cy.findByTestId('grid').should('have.css', 'margin-left', '952px').should('have.css', 'margin-right', '0px');
+          cy.findByTestId('grid').should('have.css', 'margin-left', '200px').should('have.css', 'margin-right', '0px');
           break;
         default:
           cy.findByTestId('grid').should('have.css', 'margin-left', '0px').should('have.css', 'margin-right', '0px');
