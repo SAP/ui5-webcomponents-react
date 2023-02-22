@@ -118,10 +118,12 @@ describe('Grid', () => {
       );
       switch (pos) {
         case 'Center':
-          cy.findByTestId('grid').should('have.css', 'margin-left', 'auto').should('have.css', 'margin-right', 'auto');
+          cy.findByTestId('grid')
+            .should('have.css', 'margin-left', '476px')
+            .should('have.css', 'margin-right', '476px');
           break;
         case 'Right':
-          cy.findByTestId('grid').should('have.css', 'margin-left', 'auto').should('have.css', 'margin-right', '0px');
+          cy.findByTestId('grid').should('have.css', 'margin-left', '952px').should('have.css', 'margin-right', '0px');
           break;
         default:
           cy.findByTestId('grid').should('have.css', 'margin-left', '0px').should('have.css', 'margin-right', '0px');
