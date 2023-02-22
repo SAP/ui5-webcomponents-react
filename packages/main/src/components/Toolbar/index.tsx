@@ -265,6 +265,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const handleToolbarClick = (e) => {
     if (active && typeof onClick === 'function') {
       const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
+      if (isSpaceEnterDown && e.target !== e.currentTarget) {
+        return;
+      }
       if (e.type === 'click' || isSpaceEnterDown) {
         e.preventDefault();
         onClick(enrichEventWithDetails(e));
