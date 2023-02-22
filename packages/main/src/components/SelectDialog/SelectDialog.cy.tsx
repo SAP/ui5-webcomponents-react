@@ -70,8 +70,6 @@ describe('SelectDialog', () => {
             rememberSelections={rememberSelections}
             open={open}
             onConfirm={(e) => {
-              // todo fix type in component
-              // @ts-expect-error: type has to be adjusted
               setItems(e.detail.selectedItems.map((item) => item.textContent));
               confirm(e);
             }}
@@ -177,8 +175,6 @@ describe('SelectDialog', () => {
         <>
           <SelectDialog
             onSearch={(e) => {
-              // todo fix type in component
-              // @ts-expect-error: type has to be adjusted
               setSearchVal(e.detail.value);
               search(e);
             }}
