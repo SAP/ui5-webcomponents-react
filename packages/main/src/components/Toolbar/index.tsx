@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  enrichEventWithDetails,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, useI18nBundle, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, {
   Children,
@@ -270,7 +264,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       }
       if (e.type === 'click' || isSpaceEnterDown) {
         e.preventDefault();
-        onClick(enrichEventWithDetails(e));
+        onClick(e);
       }
     }
   };
