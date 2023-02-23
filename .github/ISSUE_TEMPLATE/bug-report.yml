@@ -37,7 +37,7 @@ body:
       label: 'Expected Behaviour'
       description: 'A clear and concise description of what you expected to happen.'
     validations:
-      required: true
+      required: false
   - type: textarea
     id: screenshots
     attributes:
@@ -45,6 +45,11 @@ body:
       description: 'If applicable, add screenshots to help explain your problem.'
     validations:
       required: false
+
+
+  - type: markdown
+    attributes:
+      value: '### Environment Info'
   - type: input
     id: wcr-version
     attributes:
@@ -75,6 +80,15 @@ body:
       label: 'Operating System'
     validations:
       required: false
+      
+  - type: markdown
+    attributes:
+      value: '### Additional Information'
+  - type: textarea
+    id: additonal-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
   - type: textarea
     id: logs
     attributes:
