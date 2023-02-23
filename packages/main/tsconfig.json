@@ -17,5 +17,13 @@
     }
   ],
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/CodeGen.tsx"]
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.cy.ts",
+    "**/*.test.tsx",
+    "**/*.cy.tsx",
+    "**/CodeGen.tsx",
+    "**/*.stories.tsx"
+  ]
 }

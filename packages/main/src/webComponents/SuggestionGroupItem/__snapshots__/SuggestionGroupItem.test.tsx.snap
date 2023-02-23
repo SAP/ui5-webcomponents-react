@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SuggestionGroupItem Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-suggestion-group-item
-    ui5-suggestion-group-item=""
-  />
-</DocumentFragment>
-`;

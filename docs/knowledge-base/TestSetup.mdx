@@ -1,0 +1,116 @@
+import { Meta } from '@storybook/addon-docs';
+import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
+import { Footer, TableOfContent } from '@sb/components';
+
+<Meta title="Test Setup" />
+
+# Test Setup
+
+<MessageStrip
+  design={MessageStripDesign.Warning}
+  hideCloseButton
+  children={
+    <>
+      Testing with Jest is not supported anymore!
+      <br />
+      We're currently working on updating this section by offering a better testing experience using{' '}
+      <ui5-link href="https://www.cypress.io/" target="_blank">
+        Cypress
+      </ui5-link>
+      .
+    </>
+  }
+/>
+
+This guide is applicable if you are using a standard `create-react-app` setup.
+
+<TableOfContent />
+
+## Transpile Modules
+
+`create-react-app` offers you to modify specific parts of the `jest` config by adding `jest` object to your `package.json`.
+Here you need to tell `jest` to transpile the UI5 Web Components as well as the `lit-html` library:<br />
+`package.json:`
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
+  }
+}
+```
+
+In case you are using our chart library `@ui5/webcomponents-react-charts` as well, you'll have to add `d3` and `internmap` to the configuration:
+
+```json
+{
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html|d3|internmap)).*\\.js$"]
+  }
+}
+```
+
+## Mocking
+
+### Resize Observer
+
+Since some components of UI5 Web Components and UI5 Web Components for React are based on the `ResizeObserver` API, you'll need to add a polyfill for it.
+Our recommendation is the `resize-observer-polyfill` package, you can install it by running `npm install resize-observer-polyfill --save-dev`.
+
+### React.useId
+
+If you want to test your app by creating snapshots, you may need to mock the `useId` hook offered by React since version 18.
+This hook returns a unique id across all components, but as your snapshot should be stable you can't have it there.
+
+```js
+jest.mock('react', () => {
+  return { ...jest.requireActual('react'), useId: () => ':mocked' };
+});
+```
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      Snapshot testing is a{' '}
+      <ui5-link href={'https://kentcdodds.com/blog/effective-snapshot-testing'}>
+        controversial and complex topic
+      </ui5-link>
+      , but especially with web components it gets really tricky as the JSDOM doesn't support rendering the shadow-root out
+      of the box. That's why we recommend to go without extensively using snapshots.
+    </>
+  }
+/>
+
+## Jest Setup File
+
+All other prerequisites of the UI5 Web Components for React Library can be fulfilled by importing our jest setup file:
+`import '@ui5/webcomponents-react/jestSetup.js';`
+
+Therefore, create (or edit) your `src/setupTests.js` file as follows:
+
+```js
+import ResizeObserverPolyfill from 'resize-observer-polyfill';
+import '@ui5/webcomponents-react/jestSetup.js';
+
+window.ResizeObserver = ResizeObserverPolyfill;
+
+jest.mock('react', () => {
+  return { ...jest.requireActual('react'), useId: () => ':mocked' };
+});
+```
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      Please note that you must also wrap your components in the `ThemeProvider` component for testing, otherwise
+      components with translations will probably not render.
+    </>
+  }
+/>
+
+Now you should be able to run your test by using `npm run test` or `yarn test`.
+
+<div style={{ height: 'var(--_ui5_bar_base_height)' }} />
+<Footer style={{ position: 'fixed', bottom: 0, zIndex: 2, maxHeight: 'var(--_ui5_bar_base_height)' }} />

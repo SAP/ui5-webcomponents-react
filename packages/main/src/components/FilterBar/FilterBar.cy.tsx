@@ -1,9 +1,9 @@
-import { mountWithCustomTagName } from '../../../../../cypress/support/utils';
 import { Input, Option, Select, Switch } from '../../webComponents';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
 import { FilterBar } from './index';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 const variants = (
   <VariantManagement data-testid="variantManagement">
@@ -433,5 +433,5 @@ describe('FilterBar.cy.tsx', () => {
 
   mountWithCustomTagName(FilterBar);
 
-  // todo pass through props test
+  cypressPassThroughTestsFactory(FilterBar);
 });

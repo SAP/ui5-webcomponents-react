@@ -1,11 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Carousel } from './index';
 import { CarouselArrowsPlacement } from '../../enums/CarouselArrowsPlacement';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './CarouselDescription.md';
-import CarouselMethods from './CarouselMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './CarouselDescription.md?raw';
+import CarouselDomRef from './CarouselDomRef.json';
 import { Img1, Img2, Img3 } from './CodeGen';
 
 <Meta
@@ -41,10 +39,10 @@ import { Img1, Img2, Img3 } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<CarouselMethods />
+<DomRefTable rows={CarouselDomRef} />
 
 <Footer />

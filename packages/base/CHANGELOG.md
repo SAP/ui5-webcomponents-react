@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.8.1...v1.9.0) (2023-02-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix expandable styles and key-event bubbling ([#4141](https://github.com/SAP/ui5-webcomponents-react/issues/4141)) ([88e85dd](https://github.com/SAP/ui5-webcomponents-react/commit/88e85dd94a7dd903b632702b1a42013db31651ff))
+
 # [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
 
 ### Features

@@ -1,0 +1,11 @@
+.parameters:not(:last-child) {
+    margin-block-end: 1rem;
+}
+
+.parameterName {
+    font-weight: bold;
+}
+
+.parameterDetails {
+    padding-inline: 1rem;
+}

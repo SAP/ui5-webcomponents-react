@@ -5,14 +5,7 @@ const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (
-  onColumnsReorder: (e: CustomEvent) => void,
-  isRtl,
-  setColumnOrder,
-  columnOrder,
-  resizeInfo,
-  columns: any[]
-) => {
+export const useDragAndDrop = (isRtl, setColumnOrder, columnOrder, resizeInfo, columns: any[], onColumnsReorder?) => {
   const [dragOver, setDragOver] = useState('');
 
   const handleDragStart = useCallback(
@@ -52,13 +45,15 @@ export const useDragAndDrop = (
       tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
       setColumnOrder(tempCols);
 
-      const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
-      onColumnsReorder(
-        enrichEventWithDetails(e, {
-          columnsNewOrder,
-          column: columns[draggedColIdx]
-        })
-      );
+      if (typeof onColumnsReorder === 'function') {
+        const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
+        onColumnsReorder(
+          enrichEventWithDetails(e, {
+            columnsNewOrder,
+            column: columns[draggedColIdx]
+          })
+        );
+      }
     },
     [columnOrder, onColumnsReorder, columns]
   );

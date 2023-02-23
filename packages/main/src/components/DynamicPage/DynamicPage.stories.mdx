@@ -1,14 +1,12 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2';
-import { isChromatic } from '../../../../../.storybook/utils';
+import { isChromatic } from '@sb/utils';
 import { useReducer, useState } from 'react';
 import {
   Badge,
@@ -35,7 +33,7 @@ import {
   VariantItem,
   VariantManagement
 } from '../..';
-import { ProductsTable } from '../../../../../.storybook/components/ProductsTable';
+import { ProductsTable } from '@sb/components/ProductsTable';
 import { SpacingSpan } from './CodeGen';
 
 <Meta
@@ -139,7 +137,7 @@ import { SpacingSpan } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
 # More Examples
 

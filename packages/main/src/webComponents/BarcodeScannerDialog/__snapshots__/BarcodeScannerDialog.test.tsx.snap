@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`BarcodeScannerDialog Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-barcode-scanner-dialog
-    ui5-barcode-scanner-dialog=""
-  />
-</DocumentFragment>
-`;
