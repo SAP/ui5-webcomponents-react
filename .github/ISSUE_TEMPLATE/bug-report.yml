@@ -5,7 +5,7 @@ labels:
   - bug
 assignees: []
 body:
-  - type: markdown
+  - type: textarea
     id: description
     attributes:
       label: 'Describe the bug'
@@ -31,14 +31,14 @@ body:
         ...
     validations:
       required: false
-  - type: markdown
+  - type: textarea
     id: expectation
     attributes:
       label: 'Expected Behaviour'
       description: 'A clear and concise description of what you expected to happen.'
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: screenshots
     attributes:
       label: 'Screenshots'
