@@ -41,15 +41,20 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: 'Screenshots'
-      description: 'If applicable, add screenshots to help explain your problem.'
+      label: Screenshots or Videos
+      description: |
+        If applicable, add screenshots or a video to help explain your problem.
+        For more information on the supported file image/file types and the file size limits, please refer
+        to the following link: https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/attaching-files
+      placeholder: |
+        You can drag your video or image files inside of this editor ↓
     validations:
       required: false
 
 
   - type: markdown
     attributes:
-      value: '### Environment Info'
+      value: '## Environment Info'
   - type: input
     id: wcr-version
     attributes:
@@ -83,7 +88,7 @@ body:
       
   - type: markdown
     attributes:
-      value: '### Additional Information'
+      value: '## Additional Information'
   - type: textarea
     id: additonal-context
     attributes:
