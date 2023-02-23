@@ -1,6 +1,5 @@
 name: Documentation
 description: Suggest improvements or report missing/unclear documentation.
-title: ''
 labels:
   - documentation
 assignees: []
