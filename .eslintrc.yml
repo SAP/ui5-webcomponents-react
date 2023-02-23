@@ -49,6 +49,7 @@ overrides:
     parserOptions:
       project:
         - './tsconfig.spec.json'
+        - './tsconfig.node.json'
         - './packages/*/tsconfig.json'
     plugins:
       - '@typescript-eslint'

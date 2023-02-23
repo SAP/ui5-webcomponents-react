@@ -1,0 +1,9 @@
+[
+  {
+    "name": "selectedItem",
+    "readonly": "true",
+    "visibility": "public",
+    "type": "sap.ui.webc.main.ISegmentedButtonItem",
+    "description": "Currently selected item."
+  }
+]

@@ -36,14 +36,6 @@
     margin-bottom: 0 !important;
   }
 
-  .methodTypeCode {
-    margin: 0 !important;
-  }
-
-  dd > code {
-    margin: 0 !important;
-  }
-
   .responsiveGridLayoutItem {
     height: 100px;
     display: flex;
@@ -84,6 +76,12 @@
 
   .infoTable th {
     padding-inline-end: 1.25rem;
+  }
+
+  /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
+  .docs-story > div > div[scale] {
+      min-height: 20px;
+      height: auto;
   }
 </style>
 <script data-ui5-config type="application/json">

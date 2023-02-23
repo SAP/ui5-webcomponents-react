@@ -1,11 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Wizard } from './index';
 import { WizardStep } from '../WizardStep';
 import { WrappingType } from '../../enums/WrappingType';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './WizardDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './WizardDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/product.js';
 import '@ui5/webcomponents-icons/dist/hint.js';
 import '@ui5/webcomponents-icons/dist/action-settings.js';
@@ -13,8 +11,8 @@ import '@ui5/webcomponents-icons/dist/lead.js';
 import { Button, ButtonDesign, CheckBox, Input, Label, MessageStrip, MessageStripDesign } from '../..';
 import { Title } from '../Title';
 import { useRef } from 'react';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import WizardStepDescription from '../WizardStep/WizardStepDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import WizardStepDescription from '../WizardStep/WizardStepDescription.md?raw';
 import { Br } from './CodeGen';
 
 <Meta
@@ -120,14 +118,14 @@ import { Br } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## WizardStep
 
-<WizardStepDescription />
+<Markdown>{WizardStepDescription}</Markdown>
 
 <Footer />

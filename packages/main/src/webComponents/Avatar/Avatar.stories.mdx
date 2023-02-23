@@ -1,13 +1,11 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Meta, Story, Markdown } from '@storybook/blocks';
 import { Avatar } from './index';
 import { AvatarColorScheme } from '../../enums/AvatarColorScheme';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { AvatarShape } from '../../enums/AvatarShape';
 import { AvatarSize } from '../../enums/AvatarSize';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './AvatarDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './AvatarDescription.md?raw';
 
 <Meta
   title="Data Display / Avatar"
@@ -39,8 +37,8 @@ import Description from './AvatarDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <Footer />

@@ -1,17 +1,15 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Button } from '../Button';
 import { ColorPalettePopover } from './index';
 import { ColorPaletteItem } from '../ColorPaletteItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './ColorPalettePopoverDescription.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './ColorPalettePopoverDescription.md?raw';
 import { useEffect, useRef } from 'react';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
-import { isChromatic } from '../../../../../.storybook/utils';
-import ColorPalettePopoverMethods from './ColorPalettePopoverMethods.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md';
+import { isChromatic } from '@sb/utils';
+import ColorPalettePopoverDomRef from './ColorPalettePopoverDomRef.json';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
 
 <Meta
   title="Modals & Popovers / ColorPalettePopover"
@@ -72,11 +70,11 @@ import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDes
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ColorPalettePopoverMethods />
+<DomRefTable rows={ColorPalettePopoverDomRef} />
 
 ## Opening ColorPalettePopovers
 
@@ -100,10 +98,10 @@ const ColorPalettePopoverComponent = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## ColorPaletteItem
 
-<ColorPaletteItemDescription />
+<Markdown>{ColorPaletteItemDescription}</Markdown>
 
 <Footer />

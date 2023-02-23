@@ -1,5 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Table } from './index';
 import { TableColumn } from '../TableColumn';
 import { TableRow } from '../TableRow';
@@ -7,15 +6,14 @@ import { Label } from '../Label';
 import { TableCell } from '../TableCell';
 import { TableGroupRow } from '../TableGroupRow';
 import { TableGrowingMode } from '../../enums/TableGrowingMode';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './TableDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './TableDescription.md?raw';
 import { useState } from 'react';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TableColumnDescription from '../TableColumn/TableColumnDescription.md';
-import TableRowDescription from '../TableRow/TableRowDescription.md';
-import TableGroupRowDescription from '../TableGroupRow/TableGroupRowDescription.md';
-import TableCellDescription from '../TableCell/TableCellDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import TableColumnDescription from '../TableColumn/TableColumnDescription.md?raw';
+import TableRowDescription from '../TableRow/TableRowDescription.md?raw';
+import TableGroupRowDescription from '../TableGroupRow/TableGroupRowDescription.md?raw';
+import TableCellDescription from '../TableCell/TableCellDescription.md?raw';
 
 <Meta
   title="Data Display / Table"
@@ -101,9 +99,9 @@ import TableCellDescription from '../TableCell/TableCellDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 <br />
 
@@ -322,22 +320,22 @@ const GrowingTable = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## TableColumn
 
-<TableColumnDescription />
+<Markdown>{TableColumnDescription}</Markdown>
 
 ## TableRow
 
-<TableRowDescription />
+<Markdown>{TableRowDescription}</Markdown>
 
 ## TableGroupRow
 
-<TableGroupRowDescription />
+<Markdown>{TableGroupRowDescription}</Markdown>
 
 ## TableCell
 
-<TableCellDescription />
+<Markdown>{TableCellDescription}</Markdown>
 
 <Footer />

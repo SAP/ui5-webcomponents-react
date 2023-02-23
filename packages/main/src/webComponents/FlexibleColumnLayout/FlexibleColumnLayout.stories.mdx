@@ -1,8 +1,6 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './FlexibleColumnLayoutDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './FlexibleColumnLayoutDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/decline.js';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import '@ui5/webcomponents-icons/dist/video.js';
@@ -23,7 +21,7 @@ import { ShellBar } from '../ShellBar';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
-import FlexibleColumnLayoutMethods from './FlexibleColumnLayoutMethods.md';
+import FlexibleColumnLayoutDomRef from './FlexibleColumnLayoutDomRef.json';
 
 <Meta
   title="Layouts & Floorplans / FlexibleColumnLayout"
@@ -80,11 +78,11 @@ import FlexibleColumnLayoutMethods from './FlexibleColumnLayoutMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<FlexibleColumnLayoutMethods />
+<DomRefTable rows={FlexibleColumnLayoutDomRef} />
 
 # More Examples
 
