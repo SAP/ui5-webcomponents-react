@@ -3,7 +3,10 @@
     "target": "ES2021",
     "lib": ["es2022", "dom"],
     "moduleResolution": "Node",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@shared/*": ["shared/*"]
+    }
   },
   "include": ["**/*.test.ts", "**/*.test.tsx"]
 }

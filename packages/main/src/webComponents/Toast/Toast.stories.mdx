@@ -1,14 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Toast } from './index';
 import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './ToastDescription.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './ToastDescription.md?raw';
 import { useEffect, useRef } from 'react';
-import { isChromatic } from '../../../../../.storybook/utils';
-import ToastMethods from './ToastMethods.md';
+import { isChromatic } from '@sb/utils';
+import ToastDomRef from './ToastDomRef.json';
 
 <Meta
   title="Modals & Popovers / Toast"
@@ -82,10 +80,10 @@ export const MyComponentWithAToast() {
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ToastMethods />
+<DomRefTable rows={ToastDomRef} />
 
 <Footer />

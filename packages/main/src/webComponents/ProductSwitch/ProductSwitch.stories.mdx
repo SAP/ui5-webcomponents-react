@@ -1,17 +1,15 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ProductSwitch } from './index';
 import { ProductSwitchItem } from '../ProductSwitchItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './ProductSwitchDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './ProductSwitchDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/business-objects-experience.js';
 import '@ui5/webcomponents-icons/dist/contacts.js';
 import '@ui5/webcomponents-icons/dist/flight.js';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import ProductSwitchItemDescription from '../ProductSwitchItem/ProductSwitchItemDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ProductSwitchItemDescription from '../ProductSwitchItem/ProductSwitchItemDescription.md?raw';
 
 <Meta
   title="Inputs / ProductSwitch"
@@ -71,14 +69,14 @@ import ProductSwitchItemDescription from '../ProductSwitchItem/ProductSwitchItem
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## ProductSwitchItem
 
-<ProductSwitchItemDescription />
+<Markdown>{ProductSwitchItemDescription}</Markdown>
 
 <Footer />

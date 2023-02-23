@@ -1,14 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Timeline } from './index';
 import { TimelineItem } from '../TimelineItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
 import '@ui5/webcomponents-icons/dist/calendar.js';
 import '@ui5/webcomponents-icons/dist/phone.js';
 import '@ui5/webcomponents-icons/dist/wrench.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import TimelineItemDescription from '../TimelineItem/TimelineItemDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import TimelineItemDescription from '../TimelineItem/TimelineItemDescription.md?raw';
 import { Div } from './CodeGen';
 
 <Meta
@@ -43,7 +41,7 @@ import { Div } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
 <br />
 
@@ -98,10 +96,10 @@ An entry posted on the timeline
 
 <ArgsTableWithNote story="with customizable TimelineItem" />
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## TimelineItem
 
-<TimelineItemDescription />
+<Markdown>{TimelineItemDescription}</Markdown>
 
 <Footer />
