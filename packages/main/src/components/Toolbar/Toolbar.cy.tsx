@@ -17,8 +17,7 @@ import {
   OverflowToolbarToggleButton
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
-import { cssVarToRgb } from '../../internal/utils';
-import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -214,6 +213,7 @@ describe('Toolbar', () => {
     cy.mount(
       <Toolbar active data-testid="tb" onClick={click}>
         Text
+        <input data-testid="input" />
       </Toolbar>
     );
     cy.findByTestId('tb').click();
@@ -223,6 +223,10 @@ describe('Toolbar', () => {
     cy.get('@onClickSpy').should('have.been.calledTwice');
 
     cy.findByTestId('tb').type(' ', { force: true });
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+
+    cy.findByTestId('input').trigger('keydown', { code: 'Enter' });
+    cy.findByTestId('input').trigger('keydown', { code: 'Space' });
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
     cy.mount(

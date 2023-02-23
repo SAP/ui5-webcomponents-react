@@ -10,10 +10,9 @@ import {
   Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
-import { cssVarToRgb } from '../../internal/utils';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
-import { useManualRowSelect } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useManualRowSelect';
-import { useRowDisableSelection } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useRowDisableSelection';
+import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
+import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -465,7 +464,7 @@ describe('AnalyticalTable', () => {
     const GroupBySelectTable = (props: PropTypes) => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
-      const tableInstance = useRef();
+      const tableInstance = useRef<Record<string, any>>();
 
       useEffect(() => {
         if (tableInstance.current) {
