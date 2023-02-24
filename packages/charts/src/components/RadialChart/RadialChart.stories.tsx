@@ -1,49 +1,29 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader, Footer } from '@sb/components';
-import { RadialChart } from './RadialChart';
+import type { Meta, StoryObj } from '@storybook/react';
 import { FlexBox, FlexBoxAlignItems, FlexBoxJustifyContent, Text } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import React from 'react';
+import { RadialChart } from './RadialChart.js';
 
-<Meta
-  title="Charts /  RadialChart"
-  component={RadialChart}
-  args={{
-    displayValue: '50%',
-    value: 50,
-    maxValue: 100
-  }}
-/>
+const meta = {
+  title: 'RadialChart',
+  component: RadialChart,
+  args: { displayValue: '50%', value: 50, maxValue: 100 }
+} satisfies Meta<typeof RadialChart>;
 
-<DocsHeader />
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-## Example
+export const Default: Story = {};
 
-<Canvas>
-  <Story name="Default">{(props) => <RadialChart {...props} />}</Story>
-</Canvas>
+export const WithCustomColor: Story = {
+  args: {
+    color: '#f0ab00'
+  }
+};
 
-## Properties
-
-<ArgsTable story="Default" />
-
-<br />
-<br />
-
-## More Examples
-
-### With Custom Color
-
-<Canvas>
-  <Story name="With Custom Color" args={{ color: '#f0ab00' }}>
-    {(props) => <RadialChart {...props} />}
-  </Story>
-</Canvas>
-
-### Micro RadialCharts
-
-<Canvas>
-  <Story name="Micro RadialCharts">
-    {() => (
+export const MicroRadialCharts: Story = {
+  render: (args) => {
+    return (
       <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
         <RadialChart
           value={50}
@@ -72,8 +52,6 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
           <Text style={{ fontSize: ThemingParameters.sapFontSmallSize }}>50%</Text>
         </FlexBox>
       </FlexBox>
-    )}
-  </Story>
-</Canvas>
-
-<Footer />
+    );
+  }
+};
