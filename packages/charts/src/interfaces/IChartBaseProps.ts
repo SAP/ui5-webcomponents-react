@@ -55,7 +55,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   /**
    * Defines possible configurations of the chart.
    *
-   * <h4>Properties available on all charts:</h4>
+   * **Properties available on all charts:**
    *
    * - `margin`: Sets the margin of the chart container. Receives a object with four possible properties (`right`, `left`, `top`, `bottom`) that expect a number as value.
    * - `legendPosition`: Position of the legend. Can be one of the following: `"top"`, `"left"`, `"right"`, `"bottom"`

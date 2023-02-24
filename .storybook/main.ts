@@ -40,8 +40,18 @@ const config: StorybookConfig = {
           files: '*.mdx',
           titlePrefix: 'Knowledge Base'
         },
-        '../packages/**/*.mdx',
-        '../packages/**/*.stories.@(tsx|jsx)'
+        {
+          directory: '../packages/charts',
+          files: '**/*@(.stories.tsx|mdx)',
+          titlePrefix: 'Charts'
+        },
+        {
+          directory: '../packages/base',
+          files: '*.@(tsx|jsx|mdx)',
+          titlePrefix: 'Base'
+        },
+        '../packages/main/**/*.mdx',
+        '../packages/main/**/*.stories.@(tsx|jsx)'
       ],
   addons,
   docs: {

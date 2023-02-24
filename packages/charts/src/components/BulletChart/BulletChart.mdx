@@ -1,0 +1,67 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/addon-docs';
+import * as ComponentStories from './BulletChart.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+
+## Usage Notes
+
+In order to display the "Bullet" lines in the chart, you have to configure which measure should be rendered as bullet line.
+You can do this via the `measures` array:
+
+```jsx
+<BulletChart
+  data={
+    [
+      /* data */
+    ]
+  }
+  dimensions={
+    [
+      /* dimensions */
+    ]
+  }
+  measures={[
+    {
+      accessor: 'actuals',
+      label: 'Actual Revenue',
+      type: 'primary' // this will be the primary bar
+    },
+    {
+      accessor: 'target',
+      label: 'Planned Target Revenue',
+      type: 'comparison' // this will be the bullet line
+    }
+  ]}
+/>
+```
+
+<br />
+
+## More Examples
+
+### With Custom Size
+
+<Canvas of={ComponentStories.WithCustomSize} />
+
+### With Highlighted Measures
+
+<Canvas of={ComponentStories.WithHighlightedMeasures} />
+
+### Loading Placeholder
+
+<Canvas of={ComponentStories.LoadingPlaceholder} />
+
+<Footer />
