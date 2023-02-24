@@ -1,0 +1,2 @@
+const a=new Map,t=new Map;t.set("S",[0,599]);t.set("M",[600,1023]);t.set("L",[1024,1439]);t.set("XL",[1440,1/0]);var i;(function(e){e.RANGE_4STEPS="4Step"})(i||(i={}));const c=(e,S)=>{a.set(e,S)},g=(e,S=window.innerWidth)=>{let n=a.get(e);n||(n=a.get(i.RANGE_4STEPS));let s;const E=Math.floor(S);return n.forEach((o,R)=>{E>=o[0]&&E<=o[1]&&(s=R)}),s||[...n.keys()][0]},r={RANGESETS:i,initRangeSet:c,getCurrentRange:g};r.initRangeSet(r.RANGESETS.RANGE_4STEPS,t);export{r as M};
+//# sourceMappingURL=MediaRange-25b98f31.js.map
