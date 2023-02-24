@@ -6,6 +6,7 @@ const meta = {
   title: 'ColumnChartWithTrend',
   component: ColumnChartWithTrend,
   args: {
+    style: { height: '400px' },
     dataset: complexDataSet,
     dimensions: [
       {
