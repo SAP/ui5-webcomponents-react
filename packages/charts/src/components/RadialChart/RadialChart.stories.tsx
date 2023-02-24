@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FlexBox, FlexBoxAlignItems, FlexBoxJustifyContent, Text } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { RadialChart } from './RadialChart.js';
 
 const meta = {
