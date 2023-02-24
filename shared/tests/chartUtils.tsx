@@ -52,28 +52,6 @@ export const createChartRenderTest = (Component: ComponentType<any>, props: {}) 
   });
 };
 
-export const createCircleChartRenderTest = (Component: ComponentType<any>, props: {}) => {
-  it('Render circle chart with data', () => {
-    const { asFragment, container } = render(<Component {...props} />);
-
-    const chartQueryType = ChartQuery[Component.displayName];
-    const chartChildrenType = ChartChildrenQuery[Component.displayName];
-
-    // Check if a single responsive container is rendered
-    const responsiveContainers = container.querySelectorAll('div.recharts-responsive-container');
-    expect(responsiveContainers.length).toBe(1);
-
-    // Check if a single chart is rendered
-    const chartContainer = container.querySelector(chartQueryType);
-    expect(chartContainer).toBeInTheDocument();
-    const chartChildrenContainer = chartContainer.querySelectorAll(chartChildrenType);
-    expect(chartChildrenContainer.length).toBeGreaterThanOrEqual(1);
-
-    // Check if snapshot matches render
-    expect(asFragment()).toMatchSnapshot();
-  });
-};
-
 export const createOnClickChartTest = (Component: ComponentType<any>, props: Record<string, any>) => {
   it('Check onClick events', () => {
     const onClick = jest.fn();

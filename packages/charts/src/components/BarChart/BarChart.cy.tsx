@@ -62,7 +62,7 @@ describe('BarChart', () => {
       );
 
     cy.contains('Users').click();
-    cy.get('@onClick').should(
+    cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
