@@ -13,12 +13,6 @@ const getRowProps = (rowProps, { row, instance }) => {
       return;
     }
 
-    // don't select empty rows
-    const isEmptyRow = row.original?.emptyRow;
-    if (isEmptyRow) {
-      return;
-    }
-
     // don't select grouped rows
     if (row.isGrouped) {
       return;

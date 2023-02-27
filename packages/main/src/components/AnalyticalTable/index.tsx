@@ -88,7 +88,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { orderByFn, tagNamesWhichShouldNotSelectARow } from './util';
+import { tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
 export interface AnalyticalTableColumnDefinition {
@@ -650,27 +650,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
-  const data = useMemo(() => {
-    if (rawData.length === 0) {
-      return rawData;
-    }
-    if (minRows > rawData.length) {
-      const missingRows: number = minRows - rawData.length;
-      const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
-
-      return [...rawData, ...emptyRows];
-    }
-    return rawData;
-  }, [rawData, minRows]);
-
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
       columns,
-      data,
+      data: rawData,
       defaultColumn: DefaultColumn,
-      orderByFn,
       getSubRows,
       stateReducer,
       disableFilters: !filterable,

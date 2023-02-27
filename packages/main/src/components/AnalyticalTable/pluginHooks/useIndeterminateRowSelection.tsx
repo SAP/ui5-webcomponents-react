@@ -98,11 +98,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
         };
       }
 
-      const indeterminateRowsById = getIndeterminate(
-        rows.filter((item) => !item.original.emptyRow),
-        rowsById,
-        state
-      );
+      const indeterminateRowsById = getIndeterminate(rows, rowsById, state);
 
       return {
         ...newState,
