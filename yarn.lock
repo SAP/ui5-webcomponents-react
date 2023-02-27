@@ -2005,9 +2005,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "@eslint/eslintrc@npm:1.4.1"
+"@eslint/eslintrc@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@eslint/eslintrc@npm:2.0.0"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
@@ -2018,7 +2018,14 @@ __metadata:
     js-yaml: ^4.1.0
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
-  checksum: cd3e5a8683db604739938b1c1c8b77927dc04fce3e28e0c88e7f2cd4900b89466baf83dfbad76b2b9e4d2746abdd00dd3f9da544d3e311633d8693f327d04cd7
+  checksum: 31119c8ca06723d80384f18f5c78e0530d8e6306ad36379868650131a8b10dd7cffd7aff79a5deb3a2e9933660823052623d268532bae9538ded53d5b19a69a6
+  languageName: node
+  linkType: hard
+
+"@eslint/js@npm:8.35.0":
+  version: 8.35.0
+  resolution: "@eslint/js@npm:8.35.0"
+  checksum: 6687ceff659a6d617e37823f809dc9c4b096535961a81acead27d26b1a51a4cf608a5e59d831ddd57f24f6f8bb99340a4a0e19f9c99b390fbb4b275f51ed5f5e
   languageName: node
   linkType: hard
 
@@ -7499,17 +7506,17 @@ __metadata:
   linkType: hard
 
 "chromatic@npm:^6.5.3":
-  version: 6.17.0
-  resolution: "chromatic@npm:6.17.0"
+  version: 6.17.1
+  resolution: "chromatic@npm:6.17.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@types/webpack-env": ^1.17.0
-    snyk-nodejs-lockfile-parser: ^1.43.1
+    snyk-nodejs-lockfile-parser: ^1.47.4
   bin:
     chroma: bin/main.cjs
     chromatic: bin/main.cjs
     chromatic-cli: bin/main.cjs
-  checksum: fafb2b3930a7e4436736180f20b42ff6b1a22520583e185d03d0fc002e9cc98b1c00e5a5fb9f2985d1f2b22c3b1cc68dee6dc1db38c007a3c54dd9b28860b67c
+  checksum: cac153f5e3ddc5faccffbabb1407271dcc8e63fc44bdf59fbe7acb00dbd779af82af7d37bff23091023bc9825ff5ceada51c18880fa5549e7262566b9fd9c296
   languageName: node
   linkType: hard
 
@@ -8636,8 +8643,8 @@ __metadata:
   linkType: hard
 
 "cypress@npm:^12.1.0":
-  version: 12.6.0
-  resolution: "cypress@npm:12.6.0"
+  version: 12.7.0
+  resolution: "cypress@npm:12.7.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -8683,7 +8690,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 716afdc7bd83d14d9ad31aba9f757a5dfccc1a693c57273a6b2281ddc1b201a432fae5c5ae8f049088384e3bcc3bda530910870ff8604a0233e1b96abc069850
+  checksum: a9489f7f254dcee1b8a374d14d175c8f8681a3388e4c02181e0486f064f4de59bfc79dec1f401605332d3a5869bf2ba06b3a1653a5c287e447810d756d470078
   languageName: node
   linkType: hard
 
@@ -10426,10 +10433,11 @@ __metadata:
   linkType: hard
 
 "eslint@npm:^8.33.0":
-  version: 8.34.0
-  resolution: "eslint@npm:8.34.0"
+  version: 8.35.0
+  resolution: "eslint@npm:8.35.0"
   dependencies:
-    "@eslint/eslintrc": ^1.4.1
+    "@eslint/eslintrc": ^2.0.0
+    "@eslint/js": 8.35.0
     "@humanwhocodes/config-array": ^0.11.8
     "@humanwhocodes/module-importer": ^1.0.1
     "@nodelib/fs.walk": ^1.2.8
@@ -10443,7 +10451,7 @@ __metadata:
     eslint-utils: ^3.0.0
     eslint-visitor-keys: ^3.3.0
     espree: ^9.4.0
-    esquery: ^1.4.0
+    esquery: ^1.4.2
     esutils: ^2.0.2
     fast-deep-equal: ^3.1.3
     file-entry-cache: ^6.0.1
@@ -10470,7 +10478,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 4e13e9eb05ac2248efbb6acae0b2325091235d5c47ba91a4775c7d6760778cbcd358a773ebd42f4629d2ad89e27c02f5d66eb1f737d75d9f5fc411454f83b2e5
+  checksum: 6212173691d90b1bc94dd3d640e1f210374b30c3905fc0a15e501cf71c6ca52aa3d80ea7a9a245adaaed26d6019169e01fb6881b3f2885b188d37069c749308c
   languageName: node
   linkType: hard
 
@@ -10506,7 +10514,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esquery@npm:^1.0.1, esquery@npm:^1.4.0":
+"esquery@npm:^1.0.1, esquery@npm:^1.4.0, esquery@npm:^1.4.2":
   version: 1.4.2
   resolution: "esquery@npm:1.4.2"
   dependencies:
@@ -20595,9 +20603,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"snyk-nodejs-lockfile-parser@npm:^1.43.1":
-  version: 1.47.3
-  resolution: "snyk-nodejs-lockfile-parser@npm:1.47.3"
+"snyk-nodejs-lockfile-parser@npm:^1.47.4":
+  version: 1.47.4
+  resolution: "snyk-nodejs-lockfile-parser@npm:1.47.4"
   dependencies:
     "@snyk/dep-graph": ^2.3.0
     "@snyk/graphlib": 2.1.9-patch.3
@@ -20615,7 +20623,7 @@ __metadata:
     uuid: ^8.3.0
   bin:
     parse-nodejs-lockfile: bin/index.js
-  checksum: b54db41f6294fdb7370c742ae3c7692809ac1c6e8e93579283298cbcafb7bf581f40999047534491623d438197e54d70a55ef96b2fa309c8c849d7355a1529fd
+  checksum: 781d2bcefd4d2cf841790a085dd1ab8c5ea1be8be6c54aa5f37b4efc2b6e7a848179307bca1dfb10822ab8e747a80467b5f4b9f5dfa2bd2ea172b7a7a51e7012
   languageName: node
   linkType: hard
 
