@@ -1,6 +1,6 @@
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { complexDataSet } from '../../resources/DemoProps.js';
-import { ColumnChart } from './ColumnChart.js';
+import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
 
 const dimensions = [
   {
@@ -12,38 +12,38 @@ const measures = [
   {
     accessor: 'users',
     label: 'Users',
-    formatter: (val) => val.toLocaleString()
+    formatter: (val: number) => val.toLocaleString('en'),
+    type: 'line'
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    hideDataLabel: true
-  },
-  {
-    accessor: 'volume',
-    label: 'Vol.'
+    type: 'bar'
   }
 ];
 
-describe('ColumnChart', () => {
+describe('ColumnChartWithTrend', () => {
   it('Basic', () => {
-    cy.mount(<ColumnChart dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
+    cy.mount(<ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
     cy.get('.recharts-responsive-container').should('be.visible');
-    cy.get('.recharts-bar').should('have.length', 3);
-    cy.get('.recharts-bar-rectangles').should('have.length', 3);
+    cy.get('.recharts-bar').should('have.length', 1);
+    cy.get('.recharts-line').should('have.length', 2); // the column chart includes an empty line
+    cy.get('.recharts-bar-rectangles').should('have.length', 1);
+    cy.get('.recharts-line-curve').should('have.length', 2); // the column chart includes an empty line
   });
 
   it('click handlers', () => {
     const onClick = cy.spy().as('onClick');
     const onLegendClick = cy.spy().as('onLegendClick');
     cy.mount(
-      <ColumnChart
+      <ColumnChartWithTrend
         dataset={complexDataSet}
         dimensions={dimensions}
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
+        noAnimation
       />
     );
 
@@ -56,12 +56,18 @@ describe('ColumnChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: complexDataSet[0]
+            payload: {
+              name: 'January',
+              users: 1,
+              sessions: 300,
+              volume: 756,
+              __users: 100
+            }
           })
         })
       );
 
-    cy.contains('Users').click();
+    cy.get('.recharts-legend-item-text').contains('Users').click();
     cy.get('@onClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({
@@ -73,10 +79,11 @@ describe('ColumnChart', () => {
   });
 
   it('Loading Placeholder', () => {
-    cy.mount(<ColumnChart dataset={[]} dimensions={[]} measures={[]} />);
+    cy.mount(<ColumnChartWithTrend dataset={[]} dimensions={[]} measures={[]} />);
     cy.get('.recharts-bar').should('not.exist');
+    cy.get('.recharts-line').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
 
-  cypressPassThroughTestsFactory(ColumnChart, { dimensions: [], measures: [] });
+  cypressPassThroughTestsFactory(ColumnChartWithTrend, { dimensions: [], measures: [] });
 });

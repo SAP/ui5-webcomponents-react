@@ -12,7 +12,7 @@ const measures = [
   {
     accessor: 'users',
     label: 'Users',
-    formatter: (val) => val.toLocaleString(),
+    formatter: (val: number) => val.toLocaleString('en'),
     type: 'line'
   },
   {
