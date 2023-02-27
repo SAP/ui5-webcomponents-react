@@ -1,10 +1,10 @@
 import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { ArgTypes, Canvas, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './ColorPalettePopover.stories';
-import * as SubComponentStories from '../ColorPaletteItem/ColorPaletteItem.stories';
 import ColorPalettePopoverDomRef from './ColorPalettePopoverDomRef.json';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
+import { ColorPaletteItem } from '../ColorPaletteItem';
 
 <Meta of={ComponentStories} />
 
@@ -52,6 +52,6 @@ const ColorPalettePopoverComponent = () => {
 
 ### Properties
 
-<ControlsWithNote of={SubComponentStories.Default} />
+<ArgTypes of={ColorPaletteItem} />
 
 <Footer />
