@@ -9,7 +9,7 @@
     "start": "lerna run build:i18n && storybook dev -p 6006",
     "build:prepare": "lerna run build:i18n && rimraf node_modules/@types/mocha",
     "build": "yarn build:prepare && tsc --build && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
-    "build:storybook": "lerna run build:i18n && storybook build -o .out && touch ./.out/.nojekyll",
+    "build:storybook": "lerna run build:i18n && storybook build -o .out",
     "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "cypress run --component --browser chrome --spec 'packages/main/src/components/*/**',packages/base,packages/charts,packages/cypress-commands",
