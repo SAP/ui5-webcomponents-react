@@ -35,7 +35,7 @@
     "@storybook/react": "7.0.0-beta.53",
     "@storybook/theming": "7.0.0-beta.53",
     "@ui5/webcomponents": "1.10.4",
-    "@ui5/webcomponents-fiori": "1.10.4",
+    "@ui5/webcomponents-fiori": "1.10.5",
     "@ui5/webcomponents-icons": "1.10.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
