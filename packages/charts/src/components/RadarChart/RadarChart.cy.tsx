@@ -51,14 +51,6 @@ describe('RadarChart', () => {
     cy.get('@onClick').should('have.been.calledOnce');
     cy.get('[name="January"]').eq(0).click({ force: true });
     cy.get('@onClick').should('have.been.calledTwice');
-    // .and(
-    //   'have.been.calledWith',
-    //   Cypress.sinon.match({
-    //     detail: Cypress.sinon.match({
-    //       payload: complexDataSet[0]
-    //     })
-    //   })
-    // );
 
     cy.contains('Users').click();
     cy.get('@onLegendClick').should(
