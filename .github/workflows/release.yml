@@ -57,20 +57,6 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      ### Deploy release storybook ###
-      - name: Build Storybook
-        if: ${{ github.event.inputs.prerelease == 'false' }}
-        run: yarn build:storybook
-
-      - name: Deploy Docs
-        if: ${{ github.event.inputs.prerelease == 'false' }}
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: .out # The folder the action should deploy.
-          clean: true
-          clean-exclude: 'main'
-
       ### Semantic Release Bot comments for issues and PRs ###
       - name: Add release comments to issues and PRs
         uses: actions/github-script@v6
