@@ -13,14 +13,15 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { ResponsivePopover } from './index';
+import { ResponsivePopover as OriginalResponsivePopover } from './index';
+import { ResponsivePopover } from './CodeGen';
 import { isChromatic } from '@sb/utils';
 import ResponsivePopoverDomRef from './ResponsivePopoverDomRef.json';
 import { MessageStrip } from '../MessageStrip';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
-  component={ResponsivePopover}
+  component={OriginalResponsivePopover}
   argTypes={{
     footer: { control: { disable: true } },
     header: { control: { disable: true } }

@@ -1,14 +1,15 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { BarDesign } from '../../enums';
-import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
-import { Dialog } from './index';
+import { Bar, Button, DialogDomRef, DialogPropTypes, Icon, List, StandardListItem, Title } from '../index.js';
+import { Dialog as OriginalDialog } from './index';
 
 const meta = {
   title: 'Modals & Popovers / Dialog',
-  component: Dialog,
+  component: OriginalDialog,
   argTypes: {
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -18,7 +19,14 @@ const meta = {
     headerText: 'Dialog Header',
     open: false
   }
-} satisfies Meta<typeof Dialog>;
+} satisfies Meta<typeof OriginalDialog>;
+
+// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
+const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
+  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
+);
+
+Dialog.displayName = 'Dialog';
 
 export default meta;
 type Story = StoryObj<typeof meta>;
