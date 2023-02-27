@@ -1,13 +1,15 @@
 import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useEffect, useState } from 'react';
-import { Button, MessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
+import { Button, MessageBox as OriginalMessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
+// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
+import { MessageBox } from './CodeGen';
 import { isChromatic } from '@sb/utils';
 import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
 
 <Meta
   title="Modals & Popovers / MessageBox"
-  component={MessageBox}
+  component={OriginalMessageBox}
   argTypes={{
     header: {
       control: { disable: true }

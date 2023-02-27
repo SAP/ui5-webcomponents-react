@@ -15,13 +15,15 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { Popover } from './index';
+import { Popover as OriginalPopover } from './index';
+// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
+import { Popover } from './CodeGen';
 import { isChromatic } from '@sb/utils';
 import PopoverDomRef from './PopoverDomRef.json';
 
 <Meta
   title="Modals & Popovers / Popover"
-  component={Popover}
+  component={OriginalPopover}
   argTypes={{
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
