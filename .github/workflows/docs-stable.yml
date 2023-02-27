@@ -24,9 +24,13 @@ jobs:
 
       - name: Install node_modules
         run: yarn install --immutable
+        env:
+          CYPRESS_INSTALL_BINARY: 0
 
       - name: Build Storybook
         run: yarn build:storybook
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4.4.1
