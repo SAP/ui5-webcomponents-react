@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/blocks';
-import { ViewSettingsDialog } from './index';
+import { ViewSettingsDialog as OriginalViewSettingsDialog } from './index';
+import { ViewSettingsDialog } from './CodeGen';
 import { DocsHeader, DomRefTable, Footer } from '@sb/components';
 import Description from './ViewSettingsDialogDescription.md?raw';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
@@ -13,7 +14,7 @@ import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
 
 <Meta
   title="Modals & Popovers / ViewSettingsDialog"
-  component={ViewSettingsDialog}
+  component={OriginalViewSettingsDialog}
   subcomponents={{ FilterItem, FilterItemOption, SortItem }}
   argTypes={{
     filterItems: { control: { disable: true } },

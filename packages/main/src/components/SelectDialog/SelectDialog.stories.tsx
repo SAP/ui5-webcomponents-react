@@ -4,19 +4,26 @@ import Laptop2 from '@sb/demoImages/Laptop2.jpg';
 import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SelectDialog } from '@ui5/webcomponents-react';
-import React, { useEffect, useRef, useState } from 'react';
-import { Button, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
+import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Button, DialogDomRef, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',
-  component: SelectDialog,
+  component: OriginalSelectDialog,
   argTypes: { children: { control: { disable: true } } },
   args: { headerText: 'Select Product' }
-} satisfies Meta<typeof SelectDialog>;
+} satisfies Meta<typeof OriginalSelectDialog>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
+const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((args, ref) =>
+  createPortal(<OriginalSelectDialog {...args} ref={ref} />, document.body)
+);
+SelectDialog.displayName = 'SelectDialog';
 
 const listItems = [
   { img: Laptop1, description: 'LT-10', text: 'Gaming Laptop' },
