@@ -1,0 +1,50 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/blocks';
+import { MessageStrip } from '../../webComponents/MessageStrip';
+import * as ComponentStories from './AnalyticalTable.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin: useIndeterminateRowSelection" />
+
+# AnalyticalTable Plugin: useIndeterminateRowSelection
+
+<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+
+The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
+When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      The indeterminate state has a higher priority than the selected state. Therefore, a row can be selected and
+      indeterminate at the same time. This can for example happen, if <code>selectSubRows: true</code> is set and a row
+      with sub-rows is selected and then a sub-row is unselected.
+    </>
+  }
+/>
+
+## Example
+
+<Canvas sourceState="none" of={ComponentStories.PluginIndeterminateRowSelection} />
+
+```jsx
+<AnalyticalTable
+  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+  data={data}
+  columns={columns}
+  isTreeTable
+  tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
+  reactTableOptions={{ selectSubRows: true }}
+/>
+```
+
+#### Optional function parameter
+
+The plugin hook allows passing a callback as parameter with the following structure:
+
+```js
+({indeterminateRowsById, tableInstance}) => void;
+```
+
+The callback is fired, every time the internal `indeterminateRows` state is changed.
+The event parameter is an object, with all indeterminate rows by id (e.g. `{"0.1":true}`) and the table instance.

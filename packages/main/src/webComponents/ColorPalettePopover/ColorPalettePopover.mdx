@@ -1,0 +1,57 @@
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { ArgTypes, Canvas, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './ColorPalettePopover.stories';
+import ColorPalettePopoverDomRef from './ColorPalettePopoverDomRef.json';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
+import { ColorPaletteItem } from '../ColorPaletteItem';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.20.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<DomRefTable rows={ColorPalettePopoverDomRef} />
+
+## Opening ColorPalettePopovers
+
+`ColorPalettePopover`s can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ColorPalettePopover` is to be opened_ - as parameter.
+
+```jsx
+const ColorPalettePopoverComponent = () => {
+  const popoverRef = useRef();
+  const onButtonClick = (e) => {
+    popoverRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ColorPalettePopover</Button>
+      <ColorPalettePopover ref={popoverRef}>
+        <ColorPaletteItem value="pink" />
+        <ColorPaletteItem value="darkblue" />
+      </ColorPalettePopover>
+    </>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ColorPaletteItem
+
+<Markdown>{ColorPaletteItemDescription}</Markdown>
+
+### Properties
+
+<ArgTypes of={ColorPaletteItem} />
+
+<Footer />

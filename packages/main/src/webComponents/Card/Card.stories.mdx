@@ -1,16 +1,14 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Card } from './index';
 import { CardHeader } from '../CardHeader';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Icon } from '../Icon';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './CardDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './CardDescription.md?raw';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md?raw';
 
 <Meta
   title="Data Display / Card"
@@ -57,14 +55,14 @@ import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## CardHeader
 
-<CardHeaderDescription />
+<Markdown>{CardHeaderDescription}</Markdown>
 
 <Footer />

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "toggleContents",
+    "visibility": "public",
+    "description": "Toggles visibility of main and side contents on S screen size (mobile device)."
+  }
+]

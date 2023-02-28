@@ -1,12 +1,10 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { SegmentedButton } from './index';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import SegmentedButtonItemDescription from '../SegmentedButtonItem/SegmentedButtonItemDescription.md';
-import SegmentedButtonMethods from './SegmentedButtonMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import SegmentedButtonItemDescription from '../SegmentedButtonItem/SegmentedButtonItemDescription.md?raw';
+import SegmentedButtonDomRef from './SegmentedButtonDomRef.json';
 
 <Meta
   title="Inputs / SegmentedButton"
@@ -39,14 +37,14 @@ import SegmentedButtonMethods from './SegmentedButtonMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<SegmentedButtonMethods />
+<DomRefTable rows={SegmentedButtonDomRef} />
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## SegmentedButtonItem
 
-<SegmentedButtonItemDescription />
+<Markdown>{SegmentedButtonItemDescription}</Markdown>
 
 <Footer />

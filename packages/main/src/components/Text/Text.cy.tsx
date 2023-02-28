@@ -1,4 +1,5 @@
 import { Text } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Text', () => {
   it('wrapping & renderWhiteSpace', () => {
@@ -30,5 +31,5 @@ describe('Text', () => {
       .should('have.css', 'overflow', 'hidden');
   });
 
-  // todo pass through props test
+  cypressPassThroughTestsFactory(Text);
 });

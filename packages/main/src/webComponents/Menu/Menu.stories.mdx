@@ -1,14 +1,12 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './MenuDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './MenuDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Button, Menu, MenuItem, MessageStrip } from '../';
 import { useEffect, useRef } from 'react';
-import { isChromatic } from '../../../../../.storybook/utils';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import MenuItemDescription from '../MenuItem/MenuItemDescription.md';
-import MenuMethods from './MenuMethods.md';
+import { isChromatic } from '@sb/utils';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import MenuItemDescription from '../MenuItem/MenuItemDescription.md?raw';
+import MenuDomRef from './MenuDomRef.json';
 
 <Meta
   title="Modals & Popovers / Menu"
@@ -64,11 +62,11 @@ import MenuMethods from './MenuMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<MenuMethods />
+<DomRefTable rows={MenuDomRef} />
 
 ## Opening Menus
 
@@ -107,10 +105,11 @@ const MyComponentWithMenu = () => {
 This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
 You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
 
-<MessageStrip hideCloseButton>
-  Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!"
+/>
 
 ```jsx
 const MenuComponent = () => {
@@ -155,10 +154,10 @@ const MenuComponent = () => {
 };
 ```
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## MenuItem
 
-<MenuItemDescription />
+<Markdown>{MenuItemDescription}</Markdown>
 
 <Footer />

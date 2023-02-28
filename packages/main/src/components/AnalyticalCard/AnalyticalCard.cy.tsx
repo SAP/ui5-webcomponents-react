@@ -5,6 +5,7 @@ import { AnalyticalCardHeader, AnalyticalCardHeaderPropTypes } from '../Analytic
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { Text } from '../Text';
 import { AnalyticalCard, AnalyticalCardPropTypes } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const TestComp = (props: Omit<AnalyticalCardPropTypes, 'children'>) => {
   return (
@@ -76,5 +77,6 @@ describe('AnalyticalCard', () => {
     cy.get('[ui5-icon]').should('have.attr', 'name', 'up');
   });
 
-  // todo custom props test for header and card
+  cypressPassThroughTestsFactory(AnalyticalCard);
+  cypressPassThroughTestsFactory(AnalyticalCardHeader);
 });

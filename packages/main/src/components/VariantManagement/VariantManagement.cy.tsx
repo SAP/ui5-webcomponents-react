@@ -3,6 +3,7 @@ import { TitleLevel } from '../../enums';
 import { VariantManagementWithCustomValidation } from './CodeGen';
 import { VariantItem } from './VariantItem';
 import { VariantManagement, VariantManagementPropTypes } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
@@ -583,5 +584,5 @@ describe('VariantManagement', () => {
     cy.get('@saveView').should('have.been.calledOnce');
   });
 
-  // todo pass through props test
+  cypressPassThroughTestsFactory(VariantManagement);
 });

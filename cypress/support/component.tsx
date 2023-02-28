@@ -1,19 +1,8 @@
 import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
-import { mount } from 'cypress/react18';
 import './commands';
 import '../../packages/cypress-commands/src/index.js';
-
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      /**
-       * Cypress mount with ThemeProvider
-       */
-      mount: typeof mount;
-    }
-  }
-}
+import '@ui5/webcomponents-react/dist/Assets.js';
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
 

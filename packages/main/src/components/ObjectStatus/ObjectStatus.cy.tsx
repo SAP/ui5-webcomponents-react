@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ValueState, IndicationColor } from '../../enums';
-import { cssVarToRgb } from '../../internal/utils';
 import { Icon } from '../../webComponents';
 import { ObjectStatus } from './index';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const statesWithCSSVars: {
   state: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
@@ -214,5 +214,5 @@ describe('ObjectStatus', () => {
     cy.get('@clickSpy').should('have.been.calledOnce');
   });
 
-  //todo pass through props test
+  cypressPassThroughTestsFactory(ObjectStatus);
 });

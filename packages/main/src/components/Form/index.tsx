@@ -233,7 +233,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           color: ThemingParameters.sapTextColor,
           fontSize: ThemingParameters.sapFontSize,
           fontWeight: 'bold',
-          backgroundColor: ThemingParameters.sapGroup_TitleBackground,
           margin: 0,
           paddingTop: '1rem'
         };

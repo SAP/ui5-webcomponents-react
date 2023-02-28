@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, mkdirSync, renameSync } from 'node:fs';
+import { copyFileSync, mkdirSync, renameSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -15,6 +15,13 @@ copyFileSync(
   join(REPORTS_DIR, 'cypress.json')
 );
 copyFileSync(new URL('../temp/jest-coverage/coverage-final.json', import.meta.url), join(REPORTS_DIR, 'jest.json'));
+
+if (existsSync(new URL('../temp/web-components-coverage/coverage-final.json', import.meta.url))) {
+  copyFileSync(
+    new URL('../temp/web-components-coverage/coverage-final.json', import.meta.url),
+    join(REPORTS_DIR, 'web-components.json')
+  );
+}
 
 // merge coverage reports
 spawnSync('npx', ['--yes', 'nyc', 'merge', 'reports'], { stdio: [0, 1, 2], cwd: ROOT_DIR });
