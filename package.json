@@ -113,7 +113,7 @@
     "report-dir": "temp/cypress-coverage",
     "temp-dir": "temp/.nyc_output",
     "reporter": [
-      "json"
+      "lcov"
     ],
     "include": [
       "packages/{base,charts,main}/src/**/*.{ts,tsx}"
