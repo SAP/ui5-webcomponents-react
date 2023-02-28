@@ -6,16 +6,12 @@ export default {
   coverageReporters: ['lcov', 'text', 'json'],
   collectCoverage: false,
   collectCoverageFrom: [
-    'packages/{base,main}/src/**/*.{ts,tsx}',
-    '!**/src/interfaces/*',
-    '!**/src/enums/*',
+    'packages/main/src/{components,internal}/**/*.{ts,tsx}',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.cy.{ts,tsx}',
     '!**/node_modules/**',
-    '!packages/*/src/index.ts',
     '!packages/main/src/components/AnalyticalTable/types/*', // no table enums,
-    '!packages/main/src/webComponents/**', // web components,
     '!**/CodeGen.tsx'
   ],
   setupFiles: ['jest-canvas-mock'],
