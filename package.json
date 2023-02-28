@@ -17,7 +17,6 @@
     "test:cypress:all": "cypress run --browser chrome --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
-    "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "tsc --build --clean && lerna run clean",
     "clean:check-bundle-size": "yarn clean && rimraf node_modules",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
@@ -116,7 +115,7 @@
       "lcov"
     ],
     "include": [
-      "packages/{base,charts,main}/src/**/*.{ts,tsx}"
+      "packages/{base,charts,main,cypress-commands}/src/**/*.{ts,tsx}"
     ],
     "exclude": [
       "**/src/interfaces/*",
