@@ -39,24 +39,74 @@ jobs:
           name: jest-coverage
           path: temp/jest-coverage
 
-  cypress:
-    name: 'Cypress'
+  build:
+    name: 'Build'
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Cache Build Result
+        id: cache-build
+        uses: actions/cache@v3
+        with:
+          key: build-${{ github.sha }}
+          path: |
+            packages/base/dist
+            packages/charts/dist
+            packages/cypress-commands/dist
+            packages/main/dist
+            packages/main/ssr
+            packages/main/wrappers
+            **/*.tsbuildinfo
+
+      - name: Install and Build
+        run: |
+          yarn install --immutable
+          yarn build
+
+  cypress:
+    needs: build
+    name: Cypress
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        spec:
+          - base
+          - charts
+          - cypress-commands
+          - main/src/components
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Restore Build Result
+        id: cache-build
+        uses: actions/cache@v3
+        with:
+          key: build-${{ github.sha }}
+          path: |
+            packages/base/dist
+            packages/charts/dist
+            packages/cypress-commands/dist
+            packages/main/dist
+            packages/main/ssr
+            packages/main/wrappers
+            **/*.tsbuildinfo
+
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          build: yarn build
           browser: chrome
           component: true
-          spec: |
-            packages/main/src/components/*/**
-            packages/base
-            packages/charts
-            packages/cypress-commands
+          spec: ${{ matrix.spec }}
 
 
       - uses: actions/upload-artifact@v3
