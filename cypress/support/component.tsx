@@ -2,6 +2,7 @@ import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
 import './commands';
 import '../../packages/cypress-commands/src/index.js';
+import '@ui5/webcomponents-react/dist/Assets.js';
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
 
