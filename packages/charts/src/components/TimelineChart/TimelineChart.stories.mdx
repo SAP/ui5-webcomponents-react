@@ -1,11 +1,11 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/addon-docs';
 import { DocsHeader } from '@docs/DocsHeader';
 import { Footer } from '@docs/Footer';
 import { TimelineChart } from './TimelineChart';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation';
 import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, inventionDataset } from './examples/Dataset.ts';
 import { TimingFigure, Invention } from './examples/Annotations.tsx';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 <Meta
@@ -311,7 +311,7 @@ A lot more things can be customized in the `TimelineChart`. These include:
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## TimelineChartAnnotation
 
