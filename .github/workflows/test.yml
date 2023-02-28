@@ -106,7 +106,7 @@ jobs:
         with:
           browser: chrome
           component: true
-          spec: ${{ matrix.spec }}
+          spec: packages/${{ matrix.spec }}
 
 
       - uses: actions/upload-artifact@v3
