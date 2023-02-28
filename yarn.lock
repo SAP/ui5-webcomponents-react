@@ -22665,8 +22665,8 @@ __metadata:
   linkType: hard
 
 "vite-plugin-istanbul@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "vite-plugin-istanbul@npm:4.0.0"
+  version: 4.0.1
+  resolution: "vite-plugin-istanbul@npm:4.0.1"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
     istanbul-lib-instrument: ^5.1.0
@@ -22674,7 +22674,7 @@ __metadata:
     test-exclude: ^6.0.0
   peerDependencies:
     vite: ">=2.9.1 <= 5"
-  checksum: d523523784ec77efcc39f6850b9fbdf1744f7441ffa5a33feff1e3a783ffa7a6a4df26863282937a85d3d7f6d4bfea578b08d80644e4c601d7d599671b9cd302
+  checksum: 96a457afc57828f3d9f4c9a9e6915b94d6fe3d337271c5b9f06dc8d616c6b4a6789155e5b8fa717f3d986a0f19c735fe01f909434cc34ffa797a34def5bcab9f
   languageName: node
   linkType: hard
 
