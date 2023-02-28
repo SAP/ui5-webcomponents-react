@@ -43,7 +43,6 @@ jobs:
           flag-name: jest
 
   cypress:
-    needs: build
     name: Cypress
     runs-on: ubuntu-latest
     strategy:
