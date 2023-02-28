@@ -6,7 +6,7 @@ export default {
   coverageReporters: ['lcov', 'text', 'json'],
   collectCoverage: false,
   collectCoverageFrom: [
-    'packages/main/src/{components,internal}/**/*.{ts,tsx}',
+    'packages/main/src/{components}/**/*.{ts,tsx}',
     '!**/*.stories.tsx',
     '!**/*.jss.ts',
     '!**/*.cy.{ts,tsx}',
