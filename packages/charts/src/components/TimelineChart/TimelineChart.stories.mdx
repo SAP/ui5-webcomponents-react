@@ -1,6 +1,5 @@
 import { ArgsTable, Canvas, Markdown, Meta, Story } from '@storybook/addon-docs';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { DocsHeader, Footer } from '@sb/components';
 import { TimelineChart } from './TimelineChart';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation';
 import { dummyDataSet, dummyDiscreteDataSet, schedulingEDFData, inventionDataset } from './examples/Dataset.ts';
@@ -9,7 +8,7 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 <Meta
-  title="Charts /  TimelineChart"
+  title="TimelineChart"
   component={TimelineChart}
   subcomponents={{ TimelineChartAnnotation }}
   argTypes={{
