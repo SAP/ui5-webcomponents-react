@@ -17,7 +17,6 @@
     "test:cypress:all": "cypress run --browser chrome --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
-    "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "tsc --build --clean && lerna run clean",
     "clean:check-bundle-size": "yarn clean && rimraf node_modules",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
@@ -30,13 +29,13 @@
     "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "7.0.0-beta.53",
-    "@storybook/addon-essentials": "7.0.0-beta.53",
-    "@storybook/react": "7.0.0-beta.53",
-    "@storybook/theming": "7.0.0-beta.53",
-    "@ui5/webcomponents": "1.10.4",
-    "@ui5/webcomponents-fiori": "1.10.4",
-    "@ui5/webcomponents-icons": "1.10.4",
+    "@storybook/addon-a11y": "7.0.0-beta.59",
+    "@storybook/addon-essentials": "7.0.0-beta.59",
+    "@storybook/react": "7.0.0-beta.59",
+    "@storybook/theming": "7.0.0-beta.59",
+    "@ui5/webcomponents": "1.10.5",
+    "@ui5/webcomponents-fiori": "1.10.5",
+    "@ui5/webcomponents-icons": "1.10.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-gfm": "^3.0.1",
@@ -50,7 +49,7 @@
     "@babel/preset-typescript": "7.21.0",
     "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^8.0.0",
-    "@storybook/react-vite": "7.0.0-beta.53",
+    "@storybook/react-vite": "7.0.0-beta.59",
     "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",
@@ -60,7 +59,7 @@
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
-    "@ui5/webcomponents-tools": "1.10.4",
+    "@ui5/webcomponents-tools": "1.10.5",
     "@vitejs/plugin-react": "^3.1.0",
     "chromatic": "^6.5.3",
     "cypress": "^12.1.0",
@@ -75,7 +74,6 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.10",
-    "glob": "^8.0.1",
     "handlebars": "^4.7.7",
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
@@ -92,7 +90,7 @@
     "react-dom-17": "npm:react-dom@^17.0.2",
     "resize-observer-polyfill": "1.5.1",
     "rimraf": "^4.0.4",
-    "storybook": "7.0.0-beta.53",
+    "storybook": "7.0.0-beta.59",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turndown": "^7.0.0",
     "typescript": "4.9.5",
@@ -114,21 +112,7 @@
     "report-dir": "temp/cypress-coverage",
     "temp-dir": "temp/.nyc_output",
     "reporter": [
-      "json"
-    ],
-    "include": [
-      "packages/{base,charts,main}/src/**/*.{ts,tsx}"
-    ],
-    "exclude": [
-      "**/src/interfaces/*",
-      "**/src/enums/*",
-      "**/*.stories.tsx",
-      "**/*.jss.ts",
-      "**/*.test.{ts,tsx}",
-      "**/node_modules/**",
-      "packages/*/src/index.ts",
-      "packages/main/src/components/AnalyticalTable/types/*",
-      "packages/main/src/webComponents/**"
+      "lcov"
     ]
   },
   "packageManager": "yarn@3.3.0"

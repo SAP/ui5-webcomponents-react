@@ -12,28 +12,13 @@ export default defineConfig(() => {
       'process.env.STORYBOOK_ENV': `'${process.env.STORYBOOK_ENV}'`
     },
     resolve: {
-      alias: [
-        {
-          find: '@sb',
-          replacement: fileURLToPath(new URL('./.storybook', import.meta.url))
-        },
-        {
-          find: /^@ui5\/webcomponents-react$/,
-          replacement: fileURLToPath(new URL('./packages/main/src/index.ts', import.meta.url))
-        },
-        {
-          find: '@ui5/webcomponents-react-base',
-          replacement: fileURLToPath(new URL('./packages/base/src/index.ts', import.meta.url))
-        },
-        {
-          find: '@ui5/webcomponents-react-charts',
-          replacement: fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url))
-        },
-        {
-          find: '@/',
-          replacement: fileURLToPath(new URL('./', import.meta.url))
-        }
-      ]
+      alias: {
+        '@sb': fileURLToPath(new URL('./.storybook', import.meta.url)),
+        '@ui5/webcomponents-react-base': fileURLToPath(new URL('./packages/base/src/index.ts', import.meta.url)),
+        '@ui5/webcomponents-react-charts': fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url)),
+        '@ui5/webcomponents-react': fileURLToPath(new URL('./packages/main/src/index.ts', import.meta.url)),
+        '@/': fileURLToPath(new URL('./', import.meta.url))
+      }
     },
     plugins: [
       react(),

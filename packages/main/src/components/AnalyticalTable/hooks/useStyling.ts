@@ -46,11 +46,11 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
   const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
-  const isEmptyRow = row.original?.emptyRow;
   let className = classes.tr;
-  const rowCanBeSelected =
-    [AnalyticalTableSelectionMode.SingleSelect, AnalyticalTableSelectionMode.MultiSelect].includes(selectionMode) &&
-    !isEmptyRow;
+  const rowCanBeSelected = [
+    AnalyticalTableSelectionMode.SingleSelect,
+    AnalyticalTableSelectionMode.MultiSelect
+  ].includes(selectionMode);
 
   if (row.isGrouped) {
     className += ` ${classes.tableGroupHeader}`;

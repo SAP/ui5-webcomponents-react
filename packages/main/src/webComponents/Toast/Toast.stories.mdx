@@ -1,5 +1,6 @@
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
-import { Toast } from './index';
+import { Toast as OriginalToast } from './index';
+import { Toast } from './CodeGen';
 import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
 import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
@@ -10,7 +11,7 @@ import ToastDomRef from './ToastDomRef.json';
 
 <Meta
   title="Modals & Popovers / Toast"
-  component={Toast}
+  component={OriginalToast}
   argTypes={{
     children: { control: 'text' }
   }}
