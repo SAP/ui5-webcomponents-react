@@ -25,7 +25,7 @@ interface ComboBoxAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith` and `Contains`.
+   * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
   filter?: string;
   /**

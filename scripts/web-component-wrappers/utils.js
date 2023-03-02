@@ -197,6 +197,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'MessageStripDesign':
     case 'PageBackgroundDesign':
     case 'PanelAccessibleRole':
+    case 'PopupAccessibleRole':
     case 'PopoverHorizontalAlign':
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':

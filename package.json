@@ -19,7 +19,7 @@
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
     "clean": "tsc --build --clean && lerna run clean",
     "clean:check-bundle-size": "yarn clean && rimraf node_modules",
-    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
+    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx,json}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",

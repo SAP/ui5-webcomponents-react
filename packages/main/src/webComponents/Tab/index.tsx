@@ -30,7 +30,7 @@ interface TabAttributes {
    */
   design?: SemanticColor | keyof typeof SemanticColor;
   /**
-   * Enabled items can be selected.
+   * Disabled tabs can't be selected.
    */
   disabled?: boolean;
   /**
