@@ -34,7 +34,7 @@ jobs:
         env:
           REACTJS_VERSION: ${{ matrix.react }}
 
-      - uses: coverallsapp/github-action@v1.2.2
+      - uses: coverallsapp/github-action@v1.2.4
         if: ${{ inputs.reportCoverage && matrix.react == 18 }}
         with:
           path-to-lcov: temp/jest-coverage/lcov.info
@@ -64,7 +64,7 @@ jobs:
           component: true
           spec: packages/${{ matrix.spec }}
 
-      - uses: coverallsapp/github-action@v1.2.2
+      - uses: coverallsapp/github-action@v1.2.4
         if: ${{ inputs.reportCoverage }}
         with:
           path-to-lcov: temp/cypress-coverage/lcov.info
@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls
-        uses: coverallsapp/github-action@v1.2.3
+        uses: coverallsapp/github-action@v1.2.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
