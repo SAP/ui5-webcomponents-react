@@ -17,7 +17,6 @@
     "test:cypress:all": "cypress run --browser chrome --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
-    "test:combine-reports": "node scripts/combineTestReports.mjs",
     "clean": "tsc --build --clean && lerna run clean",
     "clean:check-bundle-size": "yarn clean && rimraf node_modules",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx}\"",
@@ -75,7 +74,6 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.10",
-    "glob": "^8.0.1",
     "handlebars": "^4.7.7",
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
@@ -114,21 +112,7 @@
     "report-dir": "temp/cypress-coverage",
     "temp-dir": "temp/.nyc_output",
     "reporter": [
-      "json"
-    ],
-    "include": [
-      "packages/{base,charts,main}/src/**/*.{ts,tsx}"
-    ],
-    "exclude": [
-      "**/src/interfaces/*",
-      "**/src/enums/*",
-      "**/*.stories.tsx",
-      "**/*.jss.ts",
-      "**/*.test.{ts,tsx}",
-      "**/node_modules/**",
-      "packages/*/src/index.ts",
-      "packages/main/src/components/AnalyticalTable/types/*",
-      "packages/main/src/webComponents/**"
+      "lcov"
     ]
   },
   "packageManager": "yarn@3.3.0"
