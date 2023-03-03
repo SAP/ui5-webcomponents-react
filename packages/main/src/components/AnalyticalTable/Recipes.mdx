@@ -1,0 +1,159 @@
+import { TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+import { MessageStrip } from '../../webComponents/index';
+
+<Meta title="Data Display / AnalyticalTable / Recipes" />
+
+# AnalyticalTable Recipes
+
+<TableOfContent />
+
+## How to add your own plugin hooks?
+
+The `AnalyticalTable` internally uses all plugin hooks of the [react-table](https://github.com/tannerlinsley/react-table) except for `usePagination` and hooks that change the layout.
+If you pass a `react-table` hook to the `tableHooks` prop of the `AnalyticalTable` you will most likely experience some side effects or even break the table completely. We therefore strongly recommend to just not do it ;).
+If you encounter a functionality that should be available with `react-table` hooks, but isn't in the `AnalyticalTable` please open an issue in github or write us in Slack.
+
+<MessageStrip
+  type="Warning"
+  hideCloseButton
+  children={`Plugin hooks can manipulate the internal table instance. Please use with caution!`}
+/>
+
+For adding custom plugin hooks you can use the following code snippet.
+
+```jsx
+export const TableWithCustomHook = (props) => {
+  const { data, columns } = props;
+  const customHook = (hooks) => {
+    hooks.useInstance.push((instance) => {
+      console.log(instance);
+    });
+  };
+  return <AnalyticalTable data={data} columns={columns} tableHooks={[customHook]} />;
+};
+```
+
+With the `customHook` callback you can plugin in all available hooks. Please note that some hooks need a return value (e.g. `columns`) which is then always the first parameter of the function, and others are not allowed to return a value (e.g. `useTable`).
+For further details please refer to the [`react-table` documentation](https://react-table-v7.tanstack.com/docs/api/overview).
+
+## How to select rows containing active elements?
+
+We've restricted the propagation of `click` events of UI5 Web Components elements such as `Button`, `Link`, `Switch`, etc.
+In case you still want to select the row when clicking the respective element, you can "mark" the event to allow such behavior. <br />
+Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
+
+For other elements or components, we recommend disabling event propagation by setting `event.stopPropagation()` on the respective event. Per default, propagation is not prevented!
+
+## How to stop the table state from automatically resetting when the data changes?
+
+By default, the `AnalyticalTable` will reset the sorters, filters, grouping, selected rows, etc. when the table data changes. It will also reset all manually resized columns if the container width changes.
+In case you want to keep the current state of the Table, you can disable this behavior by using the `reactTableOptions` prop or for column resize the `retainColumnWidth` prop.
+
+```jsx
+const [data, setData] = React.useState([])
+const skipPageResetRef = React.useRef(false)
+
+const updateData = newData => {
+  // When data gets updated with this function, set a flag
+  // to disable all of the auto resetting
+  skipPageResetRef.current = true
+
+  setData(newData)
+}
+
+React.useEffect(() => {
+  // After the table has updated, always remove the flag
+  skipPageResetRef.current = false
+})
+<AnalyticalTable
+  columns={columns}
+  data={data}
+  // disable auto reset of columns width if a column has been manually resized
+  retainColumnWidth
+  // react-table options
+  reactTableOptions={{
+    // ... any other options you want to set
+    autoResetHiddenColumns: !skipPageResetRef.current,
+    autoResetPage: !skipPageResetRef.current,
+    autoResetExpanded: !skipPageResetRef.current,
+    autoResetGroupBy: !skipPageResetRef.current,
+    autoResetSelectedRows: !skipPageResetRef.current,
+    autoResetSortBy: !skipPageResetRef.current,
+    autoResetFilters: !skipPageResetRef.current,
+    autoResetRowState: !skipPageResetRef.current,
+    autoResetResize: !skipPageResetRef.current
+  }}
+/>
+```
+
+For more details on this behavior you can double check the [react-table docs](https://react-table-v7.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+
+## How to scroll to a specific row/offset?
+
+The DOM instance of the `AnalyticalTable` exposes methods for scrolling to a specific index or offset. (You can access the DOM element e.g. by creating a Ref `ref={analyticalTableRef}`)
+
+- `scrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `scrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `horizontalScrollTo: (offset: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+- `horizontalScrollToItem: (index: number, align?: 'start' | 'center' | 'end' | 'auto') => void`
+
+`offset` is measured in `px` and `index` in rows. `align` places the item/offset at the corresponding position of the visible scroll area (`'auto'` brings the item/offset into the visible scroll area either at the start or end, depending on which is closer). The default value for `align` is `'start'`.
+
+## How to manually sort, filter or group the table?
+
+For e.g. server side sorting, filtering or grouping, the default behavior of the table can be prevented. When setting the following `reactTableOption` the event is still fired and the indicator still set, but the internal data stays the same.
+If you wish to implement your own data manipulation outside the table you can use:
+
+```jsx
+<AnalyticalTable
+  ...
+  reactTableOptions={{
+    manualSortBy: true,
+    manualFilters: true,
+    manualGroupBy: true
+  }}
+/>
+```
+
+For more information please take a look at the [React Table v7 docs](https://react-table-v7.tanstack.com/docs/api/overview).
+
+## How to distinguish between `onRowClick` and `onRowSelect` on selection-cell click?
+
+When a selectable cell of the table is clicked, both `onRowClick` and `onRowSelect` are fired. Sometimes, but especially when the selection behavior is set to `RowSelector`, you don't want `onRowClick` to execute the logic you defined in your handler when clicking the selection-cell.
+To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property is falsy.
+
+```js
+// both events are fired if the clicked cell is selectable
+const onRowClick = (e) => {
+  if (!e.target.dataset.selectionCell) {
+    // only do something if other cells than the selection cell are clicked
+  }
+};
+const onRowSelect = (e) => {
+  // do something on row select
+};
+```
+
+## How to hide columns?
+
+[React Table v7](https://react-table-v7.tanstack.com/docs/api/useTable) exposes an API on the table instance to hide columns. You can leverage it for example by attaching a React Ref to the `tableInstance` prop.
+Please note that the internal react-table is resetting its hidden state after hiding the column, which is most probably a bug. To prevent this you can set the `autoResetHiddenColumns` table option to `false`. (See [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--default-story#how-to-stop-the-table-state-from-automatically-resetting-when-the-data-changes))
+
+```jsx
+  <Button
+    onClick={() => {
+      tableInstanceRef.current.toggleHideColumn("age");
+    }}
+  >
+    Toggle Age Col
+  </Button>
+  <AnalyticalTable
+    columns={COLUMNS}
+    data={DATA}
+    tableInstance={tableInstanceRef}
+    reactTableOptions={{
+      autoResetHiddenColumns: false
+    }}
+  />
+```

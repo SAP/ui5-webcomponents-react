@@ -55,5 +55,5 @@
       ]
     }
   },
-  "ignore": ["**/*.test.ts", "**/*.test.tsx", "**/*.cy.ts", "**/*.cy.tsx", "**/CodeGen.tsx"]
+  "ignore": ["**/*.test.ts", "**/*.test.tsx", "**/*.cy.ts", "**/*.cy.tsx", "**/CodeGen.tsx", "**/*.stories.tsx"]
 }

@@ -1,0 +1,21 @@
+import { Canvas, Meta, Story } from '@storybook/blocks';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import * as ComponentStories from './ResponsiveGridLayout.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.16.4" />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story of={ComponentStories.Default} />
+</Canvas>
+
+## Properties
+
+<ArgsTableWithNote of={ComponentStories.Default} />
+
+<Footer />

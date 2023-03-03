@@ -1,10 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
 import { BarcodeScannerDialog } from './index';
 import { Button } from '../Button';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { useRef } from 'react';
-import BarcodeScannerDialogMethods from './BarcodeScannerDialogMethods.md';
+import BarcodeScannerDomRef from './BarcodeScannerDialogDomRef.json';
 
 <Meta title="Inputs / BarcodeScannerDialog" component={BarcodeScannerDialog} />
 
@@ -36,8 +35,8 @@ import BarcodeScannerDialogMethods from './BarcodeScannerDialogMethods.md';
 
 ## Properties
 
-<ArgsTable story="." />
+<ArgsTable of="^" />
 
-<BarcodeScannerDialogMethods />
+<DomRefTable rows={BarcodeScannerDomRef} />
 
 <Footer />

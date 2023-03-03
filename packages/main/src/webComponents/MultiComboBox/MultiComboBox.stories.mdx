@@ -1,17 +1,15 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { MultiComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './MultiComboBoxDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md';
-import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md';
-import MultiComboBoxMethods from './MultiComboBoxMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './MultiComboBoxDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md?raw';
+import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md?raw';
+import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
 
 <Meta
   title="Inputs / MultiComboBox"
@@ -51,11 +49,11 @@ import MultiComboBoxMethods from './MultiComboBoxMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<MultiComboBoxMethods />
+<DomRefTable rows={MultiComboBoxDomRef} />
 
 # More Examples
 
@@ -87,14 +85,14 @@ import MultiComboBoxMethods from './MultiComboBoxMethods.md';
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## MultiComboBoxItem
 
-<MultiComboBoxItemDescription />
+<Markdown>{MultiComboBoxItemDescription}</Markdown>
 
 ## MultiComboBoxGroupItem
 
-<MultiComboBoxGroupItemDescription />
+<Markdown>{MultiComboBoxGroupItemDescription}</Markdown>
 
 <Footer />

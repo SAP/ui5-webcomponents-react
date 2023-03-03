@@ -1,5 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { ComboBox } from './index';
 import { ValueState } from '../../enums/ValueState';
 import '@ui5/webcomponents-icons/dist/employee.js';
@@ -10,12 +9,11 @@ import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
 import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent';
 import { ComboBoxItem } from '../ComboBoxItem';
 import { ComboBoxGroupItem } from '../ComboBoxGroupItem';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './ComboBoxDescription.md';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import ComboBoxItemDescription from '../ComboBoxItem/ComboBoxItemDescription.md';
-import ComboBoxGroupItemDescription from '../ComboBoxGroupItem/ComboBoxGroupItemDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './ComboBoxDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ComboBoxItemDescription from '../ComboBoxItem/ComboBoxItemDescription.md?raw';
+import ComboBoxGroupItemDescription from '../ComboBoxGroupItem/ComboBoxGroupItemDescription.md?raw';
 
 <Meta
   title="Inputs / ComboBox"
@@ -56,9 +54,9 @@ import ComboBoxGroupItemDescription from '../ComboBoxGroupItem/ComboBoxGroupItem
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 
@@ -118,14 +116,14 @@ All available filter types controlled by the `filter` prop.
   </Story>
 </Canvas>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## ComboBoxItem
 
-<ComboBoxItemDescription />
+<Markdown>{ComboBoxItemDescription}</Markdown>
 
 ## ComboBoxGroupItem
 
-<ComboBoxGroupItemDescription />
+<Markdown>{ComboBoxGroupItemDescription}</Markdown>
 
 <Footer />

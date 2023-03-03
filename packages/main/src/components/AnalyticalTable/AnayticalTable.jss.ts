@@ -125,7 +125,7 @@ const styles = {
     marginBottom: '-1px',
     boxSizing: 'border-box',
     display: 'flex',
-    '&:hover': {
+    '&:hover:not([data-empty-row])': {
       backgroundColor: ThemingParameters.sapList_Hover_Background
     },
     '&[data-is-selected]': {
@@ -187,7 +187,10 @@ const styles = {
     position: 'relative',
     '&:focus': {
       outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
-      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
+      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
+      '&[data-empty-row-cell]': {
+        outline: 'none'
+      }
     }
   },
   noDataContainer: {

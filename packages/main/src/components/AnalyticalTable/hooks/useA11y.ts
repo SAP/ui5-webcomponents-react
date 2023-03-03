@@ -14,10 +14,6 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
     instance.webComponentsReactProperties;
   const updatedCellProps: UpdatedCellProptypes = { 'aria-colindex': columnIndex + 1 }; // aria index is 1 based, not 0
 
-  if (row.original?.emptyRow) {
-    return [cellProps, updatedCellProps];
-  }
-
   const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
   const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);
 
@@ -28,7 +24,7 @@ const getCellProps = (cellProps, { cell: { column, row, value }, instance }) => 
       id !== '__ui5wcr__internal_navigation_column'
   );
 
-  const isFirstUserCol = userCols[0].id === column.id || userCols[0].accessor === column.accessor;
+  const isFirstUserCol = userCols[0]?.id === column.id || userCols[0]?.accessor === column.accessor;
   updatedCellProps['data-is-first-column'] = isFirstUserCol;
 
   if ((isFirstUserCol && rowIsExpandable) || (row.isGrouped && row.canExpand)) {

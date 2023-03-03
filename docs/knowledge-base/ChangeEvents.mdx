@@ -1,0 +1,96 @@
+import { Meta } from '@storybook/addon-docs';
+import { Footer } from '@sb/components';
+
+<Meta title="IDs via dataset" />
+
+# Using dataset as container for IDs and other values
+
+Many components like the `Select`, `List`, `Table`, etc. are registering an event that handles the selection of child elements/components.
+In the handler of the event you receive the corresponding element(s), where you can e.g. access the `textContent` to retrieve the selected text.
+
+In many cases the "text" is only there for users of the application, the actual value for e.g. the backend is often an id or a key.
+To also include these in the callback of the event, we recommend using [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).
+With the help of the `data-` API you can define any primitive value (like numbers, strings) as an attribute on an element. This data will be available on the change event as part of the dataset object of the selected element(s).
+
+Here you can find a few examples:
+
+**Select:**
+
+```jsx
+const data = [
+  { id: 1, text: 'Option 1' },
+  { id: 2, text: 'Option 2' }
+];
+
+const onChange = (event) => {
+  // event.detail.selectedOption is a reference to the selected HTML Element
+  // dataset contains all attributes that were passed with the data- prefix.
+  console.log(event.detail.selectedOption.dataset.id);
+};
+
+<Select onChange={onChange}>
+  {data.map((item) => (
+    <Option key={item.id} data-id={item.id}>
+      {item.text}
+    </Option>
+  ))}
+</Select>;
+```
+
+**List:**
+
+```jsx
+const onSelectionChange = (event) => {
+  const { targetItem } = event.detail;
+  console.log(targetItem.dataset.custom);
+};
+
+<List mode={ListMode.MultiSelect} onSelectionChange={onSelectionChange}>
+  <StandardListItem additionalText="3" data-custom="custom value of list item 1">
+    List Item 1
+  </StandardListItem>
+  <StandardListItem additionalText="2" data-custom="custom value of list item 2">
+    List Item 2
+  </StandardListItem>
+  <StandardListItem additionalText="1" data-custom="custom value of list item 3">
+    List Item 3
+  </StandardListItem>
+</List>;
+```
+
+**MultiInput with suggestion items:**
+
+```jsx
+const onTokenDelete = (event) => {
+  const { token } = event.detail;
+  console.log(token.dataset.code);
+};
+const onSuggestionItemSelect = (event) => {
+  const { item } = event.detail;
+  console.log(item.dataset.code);
+};
+
+<MultiInput
+  onTokenDelete={onTokenDelete}
+  onSuggestionItemSelect={onSuggestionItemSelect}
+  showSuggestions
+  tokens={
+    <>
+      <Token data-code="ARG" text="Argentina" />
+      <Token data-code="BGR" text="Bulgaria" />
+      <Token data-code="FIN" text="Finland" />
+      <Token data-code="MEX" text="Mexico" />
+      <Token data-code="PHL" text="Philippines" />
+    </>
+  }
+>
+  <SuggestionItem data-code="GBR" icon="globe" text="United Kingdom" />
+  <SuggestionItem data-code="USA" icon="globe" text="United States" />
+  <SuggestionItem data-code="DEU" icon="globe" text="Germany" />
+  <SuggestionItem data-code="ISL" icon="globe" text="Iceland" />
+  <SuggestionItem data-code="MDA" icon="globe" text="Moldova" />
+  <SuggestionItem data-code="MAR" icon="globe" text="Morocco" />
+</MultiInput>;
+```
+
+<Footer />

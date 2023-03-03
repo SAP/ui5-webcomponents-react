@@ -13,7 +13,13 @@ const Header = () => <div style={{ width: '6px' }} />;
 const Cell = (instance) => {
   const { isNavigatedCell, webComponentsReactProperties } = instance;
   if (isNavigatedCell) {
-    return <div style={baseStyles} className={webComponentsReactProperties.classes.valueStateInformation} />;
+    return (
+      <div
+        style={baseStyles}
+        className={webComponentsReactProperties.classes.valueStateInformation}
+        data-component-name="AnalyticalTableNavigatedCell"
+      />
+    );
   }
   return <div style={baseStyles} />;
 };

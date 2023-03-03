@@ -1,0 +1,139 @@
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import { MessageStrip } from '../../webComponents/index';
+import * as ComponentStories from './ActionSheet.stories';
+import ResponsivePopoverDomRef from '../../webComponents/ResponsivePopover/ResponsivePopoverDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<DomRefTable rows={ResponsivePopoverDomRef} /> |
+
+## Opening ActionSheets
+
+<br />
+
+#### since 0.22.0
+
+We recommend opening and closing the `ActionSheet` component in a declarative way using the `open` and `opener` prop.
+You can still use the imperative way which is outlined below.
+
+```jsx
+const MyComponentWithActionSheet = () => {
+  const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        id={'openActionSheetBtn'}
+        onClick={() => {
+          setActionSheetIsOpen(true);
+        }}
+      >
+        Open Action Sheet
+      </Button>
+      <ActionSheet
+        opener={'openActionSheetBtn'}
+        open={actionSheetIsOpen}
+        onAfterClose={() => {
+          setActionSheetIsOpen(false);
+        }}
+      />
+    </>
+  );
+};
+```
+
+**Opening an `ActionSheet` by reference and not by `id`**
+
+This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
+You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
+
+<MessageStrip
+  hideCloseButton
+  children={`Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!`}
+/>
+
+```jsx
+const ActionSheetComponent = () => {
+  const popoverRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const handleOpenerClick = (e) => {
+    if (popoverRef.current) {
+      popoverRef.current.opener = e.target;
+      setOpen((prev) => !prev);
+    }
+  };
+  return (
+    <>
+      <Button onClick={handleOpenerClick}>Opener</Button>
+      <ActionSheet ref={popoverRef} open={open}>
+        {/* Content */}
+      </ActionSheet>
+    </>
+  );
+};
+```
+
+#### before 0.22.0
+
+`ActionSheets` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ActionSheet` is to be opened_ - as parameter.
+
+```jsx
+const ActionSheetComponent = () => {
+  const actionSheetRef = useRef(null);
+  const onButtonClick = (e) => {
+    actionSheetRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ActionSheet</Button>
+      <ActionSheet ref={actionSheetRef}>
+        <Button icon="add">Accept</Button>
+        <Button>Reject</Button>
+        <Button>This is my super long text!</Button>
+      </ActionSheet>
+    </>
+  );
+};
+```
+
+## Using ActionSheets inside other components
+
+`ActionSheets` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ActionSheet` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const ActionSheetComponent = () => {
+  const actionSheetRef = useRef(null);
+  const onButtonClick = (e) => {
+    actionSheetRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ActionSheet</Button>
+      {createPortal(
+        <ActionSheet ref={actionSheetRef}>
+          <Button icon="add">Accept</Button>
+          <Button>Reject</Button>
+          <Button>This is my super long text!</Button>
+        </ActionSheet>,
+        document.body
+      )}
+    </>
+  );
+};
+```
+
+<Footer />

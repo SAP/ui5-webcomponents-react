@@ -1,7 +1,6 @@
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import '@ui5/webcomponents-react/dist/Assets.js';
 import { useRef, useState } from 'react';
 import {
   Button,
@@ -17,7 +16,7 @@ import {
   OverflowToolbarToggleButton
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
-import { cssVarToRgb } from '../../internal/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {
   onOverflowChange: (event: {
@@ -213,6 +212,7 @@ describe('Toolbar', () => {
     cy.mount(
       <Toolbar active data-testid="tb" onClick={click}>
         Text
+        <input data-testid="input" />
       </Toolbar>
     );
     cy.findByTestId('tb').click();
@@ -222,6 +222,10 @@ describe('Toolbar', () => {
     cy.get('@onClickSpy').should('have.been.calledTwice');
 
     cy.findByTestId('tb').type(' ', { force: true });
+    cy.get('@onClickSpy').should('have.been.calledThrice');
+
+    cy.findByTestId('input').trigger('keydown', { code: 'Enter' });
+    cy.findByTestId('input').trigger('keydown', { code: 'Space' });
     cy.get('@onClickSpy').should('have.been.calledThrice');
 
     cy.mount(
@@ -389,6 +393,7 @@ describe('Toolbar', () => {
 
     cy.mount(<TestComp />);
     cy.get(`[ui5-toggle-button]`).click();
+    cy.wait(200);
     cy.get('[data-component-name="ToolbarOverflowPopover"]').findByText('Close').click();
     cy.get('[data-component-name="ToolbarOverflowPopover"]').should('not.be.visible');
   });
@@ -486,6 +491,6 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
-  //todo mountWithCustomTagName
-  //todo pass through props test
+  mountWithCustomTagName(Toolbar);
+  cypressPassThroughTestsFactory(Toolbar);
 });

@@ -34,14 +34,25 @@ jobs:
         env:
           REACTJS_VERSION: ${{ matrix.react }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: coverallsapp/github-action@v1.2.4
+        if: ${{ inputs.reportCoverage && matrix.react == 18 }}
         with:
-          name: jest-coverage
-          path: temp/jest-coverage
+          path-to-lcov: temp/jest-coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: jest
 
   cypress:
-    name: 'Cypress'
+    name: Cypress
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        spec:
+          - base
+          - charts
+          - cypress-commands
+          - main/src/components
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,43 +60,28 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          build: yarn build
           browser: chrome
           component: true
+          spec: packages/${{ matrix.spec }}
 
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - uses: coverallsapp/github-action@v1.2.4
+        if: ${{ inputs.reportCoverage }}
         with:
-          name: cypress-coverage
-          path: temp/cypress-coverage
+          path-to-lcov: temp/cypress-coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: ${{ matrix.spec }}
 
   coveralls:
-    if: ${{ inputs.reportCoverage }}
+    if: ${{ always() && inputs.reportCoverage }}
     needs: ['jest', 'cypress']
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-      - uses: actions/download-artifact@v3
-        with:
-          name: jest-coverage
-          path: temp/jest-coverage
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: cypress-coverage
-          path: temp/cypress-coverage
-
-      - name: create test report
-        run: npm run test:combine-reports
-
       - name: Coveralls
-        uses: coverallsapp/github-action@1.1.3
+        uses: coverallsapp/github-action@v1.2.4
         with:
-          path-to-lcov: temp/coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
+          carryforward: "jest,base,charts,cypress-commands,main/src/components"
+

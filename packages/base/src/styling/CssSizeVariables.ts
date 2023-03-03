@@ -1,6 +1,8 @@
 export enum CssSizeVariablesNames {
   sapWcrBarHeight = '--sapWcrBarHeight',
   sapWcrButtonTopBottomPadding = '--sapWcrButtonTopBottomPadding',
+  sapWcrAnalyticalTableExpandButtonHeight = '--sapWcrAnalyticalTableExpandButtonHeight',
+  sapWcrAnalyticalTableExpandIconHeight = '--sapWcrAnalyticalTableExpandIconHeight',
   sapWcrAnalyticalTableRowHeight = '--sapWcrAnalyticalTableRowHeight',
   sapWcrAnalyticalTableHeaderRowHeight = '--sapWcrAnalyticalTableHeaderRowHeight',
   sapWcrAnalyticalTableTreePaddingLevel1 = '--sapWcrAnalyticalTableTreePaddingLevel1',
@@ -26,6 +28,8 @@ export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
 export const CozySizes = {
   [CssSizeVariablesNames.sapWcrBarHeight]: `2.75rem`,
   [CssSizeVariablesNames.sapWcrButtonTopBottomPadding]: `0.25rem 0`,
+  [CssSizeVariablesNames.sapWcrAnalyticalTableExpandButtonHeight]: `var(--_ui5_button_base_height)`,
+  [CssSizeVariablesNames.sapWcrAnalyticalTableExpandIconHeight]: '1rem',
   [CssSizeVariablesNames.sapWcrAnalyticalTableRowHeight]: `44px`,
   [CssSizeVariablesNames.sapWcrAnalyticalTableHeaderRowHeight]: `44px`,
   [CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1]: `1.5rem`,
@@ -47,6 +51,8 @@ export const CozySizes = {
 export const CompactSizes = {
   [CssSizeVariablesNames.sapWcrBarHeight]: `2.5rem`,
   [CssSizeVariablesNames.sapWcrButtonTopBottomPadding]: `0.1875rem 0`,
+  [CssSizeVariablesNames.sapWcrAnalyticalTableExpandButtonHeight]: `1.5rem`,
+  [CssSizeVariablesNames.sapWcrAnalyticalTableExpandIconHeight]: '0.75rem',
   [CssSizeVariablesNames.sapWcrAnalyticalTableRowHeight]: `32px`,
   [CssSizeVariablesNames.sapWcrAnalyticalTableHeaderRowHeight]: `32px`,
   [CssSizeVariablesNames.sapWcrAnalyticalTableTreePaddingLevel1]: `1rem`,

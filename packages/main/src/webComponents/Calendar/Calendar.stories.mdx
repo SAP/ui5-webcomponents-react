@@ -1,19 +1,17 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Calendar } from './index';
 import { CalendarSelection } from '../../enums/CalendarSelection';
 import { CalendarType } from '../../enums/CalendarType';
 import { CalendarDate } from '../CalendarDate';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './CalendarDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './CalendarDescription.md?raw';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import CalendarDateDescription from '../CalendarDate/CalendarDateDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import CalendarDateDescription from '../CalendarDate/CalendarDateDescription.md?raw';
 
 <Meta
   title="Inputs / Calendar"
@@ -44,9 +42,9 @@ import CalendarDateDescription from '../CalendarDate/CalendarDateDescription.md'
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 
@@ -89,10 +87,10 @@ import CalendarDateDescription from '../CalendarDate/CalendarDateDescription.md'
   noteText={`The props in the table below are part of the "CalendarDate" component.`}
 />
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## CalendarDate
 
-<CalendarDateDescription />
+<Markdown>{CalendarDateDescription}</Markdown>
 
 <Footer />

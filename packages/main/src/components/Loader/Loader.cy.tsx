@@ -1,6 +1,6 @@
-import React from 'react';
 import { LoaderType } from '../../enums';
 import { Loader } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Loader', () => {
   it('indeterminate', () => {
@@ -28,5 +28,5 @@ describe('Loader', () => {
     cy.findByTestId('loader').should('be.visible');
   });
 
-  //todo pass through props test
+  cypressPassThroughTestsFactory(Loader);
 });

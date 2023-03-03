@@ -1,11 +1,11 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { TitleLevel } from '../../enums/TitleLevel';
 import { VariantManagement } from './index';
 import { VariantItem } from './VariantItem';
+import { VariantManagementWithCustomValidation } from './CodeGen';
+import { MessageStrip } from '../../webComponents';
 
 <Meta
   title="Inputs / VariantManagement"
@@ -28,7 +28,7 @@ import { VariantItem } from './VariantItem';
     {(props) => {
       return (
         <VariantManagement {...props}>
-          <VariantItem>Default VariantItem</VariantItem>
+          <VariantItem inputProps={{ valueState: 'Error', onInput: console.log }}>Default VariantItem</VariantItem>
           <VariantItem selected>Selected</VariantItem>
           <VariantItem author="SAP">Author</VariantItem>
           <VariantItem favorite>Favorite</VariantItem>
@@ -55,6 +55,107 @@ import { VariantItem } from './VariantItem';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
+
+# More Examples
+
+## VariantManagement with custom Input
+
+You can customize the inputs inside the configuration dialogs ("Save View" and "Manage Views") by leveraging the corresponding `inputProps` prop (`saveViewInputProps` and `manageViewsInputProps`) of the `VariantItem` component.
+These props accept props of the `Input` component with which you are able to overwrite internal implementations. E.g. `valueState` and `valueState` message.
+
+**Note:** To prevent internal logic from being executed on save click, you can mark the `onInput` event of the corresponding `Input` component as invalid by setting `event.isInvalid = true` inside the respective handler.
+
+<MessageStrip hideCloseButton>It is possible to overwrite internally used props. Please use with caution!</MessageStrip>
+
+<Canvas>
+  <Story name="with custom validation" withSource="none">
+    {(props) => {
+      return <VariantManagementWithCustomValidation {...props} />;
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+<details style={{marginBlockEnd: "2rem"}}>
+
+<summary>Show Code</summary>
+
+```jsx
+export const VariantManagementWithCustomValidation = () => {
+  const [valueStateSaveView, setValueStateSaveView] = useState(undefined);
+  const [customSaveViewVariantText, setCustomSaveViewVariantText] = useState(
+    'Only alphanumeric chars in Save View input'
+  );
+  const [valueStateManageViews, setValueStateManageViews] = useState(undefined);
+  const [customManageViewsVariantText, setCustomManageViewsVariantText] = useState('Max 12 chars');
+
+  const handleSaveViewInput = (e) => {
+    // only allow alphanumeric and space characters
+    if (!e.target.value.match(/^[a-z0-9\s]+$/i)) {
+      // mark variant as invalid (prevent internal logic from being applied)
+      e.isInvalid = true;
+      setValueStateSaveView(ValueState.Error);
+    } else {
+      // mark variant as valid again
+      e.isInvalid = false;
+      setValueStateSaveView(undefined);
+    }
+  };
+  const handleSaveAs = (e) => {
+    setCustomSaveViewVariantText(e.detail.children);
+  };
+
+  const handleManageViewInput = (e) => {
+    // only 12 or fewer characters
+    if (e.target.value.length > 12) {
+      // mark variant as invalid (prevent internal logic from being applied)
+      e.isInvalid = true;
+      setValueStateManageViews(ValueState.Error);
+    } else {
+      // mark variant as valid again
+      e.isInvalid = false;
+      setValueStateManageViews(undefined);
+    }
+  };
+  const handleSaveManageViews = (e) => {
+    // if is custom manage view variant and is not in error state, set children to new value
+    const isCustomManageViewsItem = e.detail.updatedVariants.find((item) => item['data-custom-manage-views']);
+    if (!valueStateManageViews && isCustomManageViewsItem) {
+      setCustomManageViewsVariantText(isCustomManageViewsItem.children);
+    }
+  };
+  return (
+    <VariantManagement onSaveAs={handleSaveAs} onSaveManageViews={handleSaveManageViews}>
+      <VariantItem
+        data-custom-save-view
+        saveViewInputProps={{
+          valueState: valueStateSaveView,
+          valueStateMessage: valueStateSaveView ? (
+            <div>Only alphanumeric and space characters allowed!</div>
+          ) : undefined,
+          onInput: handleSaveViewInput
+        }}
+      >
+        {customSaveViewVariantText}
+      </VariantItem>
+      <VariantItem
+        data-custom-manage-views
+        selected
+        manageViewsInputProps={{
+          valueState: valueStateManageViews,
+          valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
+          onInput: handleManageViewInput
+        }}
+      >
+        {customManageViewsVariantText}
+      </VariantItem>
+    </VariantManagement>
+  );
+};
+```
+
+</details>
 
 <Footer />

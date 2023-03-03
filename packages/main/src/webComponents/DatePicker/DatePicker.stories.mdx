@@ -1,5 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { DatePicker } from './index';
 import { CalendarType } from '../../enums/CalendarType';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
@@ -8,10 +7,9 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '../../enums/ValueState';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './DatePickerDescription.md';
-import DatePickerMethods from './DatePickerMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './DatePickerDescription.md?raw';
+import DatePickerDomRef from './DatePickerDomRef.json';
 
 <Meta
   title="Inputs / DatePicker"
@@ -41,10 +39,10 @@ import DatePickerMethods from './DatePickerMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<DatePickerMethods />
+<DomRefTable rows={DatePickerDomRef} />
 
 <Footer />

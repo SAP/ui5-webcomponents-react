@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ResponsiveContainerPadding } from '../../internal/ContainerQueries';
 
 export const DynamicPageCssVariables = {
   headerDisplay: '--ui5wcr_DynamicPage_header_display',
@@ -7,6 +8,7 @@ export const DynamicPageCssVariables = {
 
 export const styles = {
   dynamicPage: {
+    container: 'DynamicPage / inline-size',
     width: '100%',
     height: '100%',
     maxHeight: '100%',
@@ -26,6 +28,12 @@ export const styles = {
       top: '-0.025rem'
     }
   },
+  header: {
+    extend: ResponsiveContainerPadding
+  },
+  title: {
+    extend: ResponsiveContainerPadding
+  },
   anchorBar: {
     position: 'sticky',
     boxShadow: ThemingParameters.sapContent_HeaderShadow,
@@ -36,6 +44,7 @@ export const styles = {
     }
   },
   contentContainer: {
+    extend: ResponsiveContainerPadding,
     paddingTop: '1rem',
     boxSizing: 'border-box',
     width: '100%',

@@ -88,7 +88,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { orderByFn, tagNamesWhichShouldNotSelectARow } from './util';
+import { tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
 export interface AnalyticalTableColumnDefinition {
@@ -97,18 +97,19 @@ export interface AnalyticalTableColumnDefinition {
    * This `string`/`function` is used to build the data model for your column.
    *
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor: string | ((row: any, rowIndex: number) => any);
+  accessor?: string | ((row: any, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
-   * __Note__: Required if `accessor` is a function, otherwise `accessor` will overwrite the id.
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
   id?: string;
   /**
    * Can either be string or a React component that will be rendered as column header
    */
-  Header?: string | ComponentType<any>;
+  Header?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`.
    */
@@ -116,7 +117,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
-  Cell?: string | ComponentType<any>;
+  Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Cell width, if not set the table will distribute all columns without a width evenly.
    */
@@ -134,7 +135,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Filter Component to be rendered in the Header.
    */
-  Filter?: string | ComponentType<any>;
+  Filter?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Disable filters for this column.
    */
@@ -144,7 +145,13 @@ export interface AnalyticalTableColumnDefinition {
    */
   defaultCanFilter?: boolean;
   /**
-   * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
+   * Either a string or a filter function.
+   *
+   * Supported String Values:
+   * * `text`
+   * * `exactText`
+   * * `exactTextCase`
+   * * `equals`
    */
   filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
@@ -158,7 +165,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Component to render for aggregated cells.
    */
-  Aggregated?: string | ComponentType<any>;
+  Aggregated?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>
    */
@@ -190,7 +197,12 @@ export interface AnalyticalTableColumnDefinition {
    */
   sortInverted?: boolean;
   /**
-   * String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>
+   * String or custom sort function.
+   *
+   * Supported String Values:
+   * * `basic`
+   * * `datetime`
+   * * `alphanumeric`
    */
   sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => any);
 
@@ -225,7 +237,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
    */
-  PopInHeader?: string | ComponentType<any>;
+  PopInHeader?: string | ComponentType<any> | ((props?: any) => ReactNode);
 
   //use useDragAndDrop
   /**
@@ -638,27 +650,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
-  const data = useMemo(() => {
-    if (rawData.length === 0) {
-      return rawData;
-    }
-    if (minRows > rawData.length) {
-      const missingRows: number = minRows - rawData.length;
-      const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
-
-      return [...rawData, ...emptyRows];
-    }
-    return rawData;
-  }, [rawData, minRows]);
-
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
       columns,
-      data,
+      data: rawData,
       defaultColumn: DefaultColumn,
-      orderByFn,
       getSubRows,
       stateReducer,
       disableFilters: !filterable,
@@ -922,12 +920,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns
+    tableInternalColumns,
+    onColumnsReorder
   );
 
   const inlineStyle = useMemo(() => {

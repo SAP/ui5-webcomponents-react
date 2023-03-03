@@ -1,0 +1,54 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './AnalyticalTable.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin: useRowDisableSelection" />
+
+# AnalyticalTable Plugin: useRowDisableSelection
+
+<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+
+With the `useRowDisableSelection` it's possible to disable the selection of specific rows. It can receive two types of parameters:
+
+- `string`: Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable.
+- `Function(row) => boolean`: Programmatically disable rows for selection. The function receives the current row as parameter.
+
+**Note:** The "Select All" checkbox is not available with this hook.
+
+<Canvas sourceState="none" of={ComponentStories.PluginDisableRowSelection} />
+
+## Example
+
+```jsx
+const WithFunctionParameter = () => {
+  const disableRowFunc = (row) => row.original.age < 40;
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
+    />
+  );
+};
+
+const WithStringParameter = () => {
+const data = [
+    {
+        "name": "Peter Franco",
+        "age": 22,
+         ...
+        "disableSelection": Math.random() < 0.5
+    },
+    ...
+];
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
+    />
+  );
+};
+```
