@@ -1,6 +1,5 @@
 import assert from 'assert';
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody';
 import { TimelineChartGrid } from './chartbody/TimelineChartGrid';
 import { TimelineChartLayer } from './chartbody/TimelineChartLayer';
