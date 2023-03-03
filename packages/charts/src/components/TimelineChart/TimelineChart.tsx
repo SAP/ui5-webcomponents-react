@@ -145,7 +145,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     },
     fRef
   ) => {
-    const numOfRows = dataset.length;
+    const numOfRows = dataset?.length ?? 0;
     const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
     const style: CSSProperties = {
@@ -192,7 +192,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     }, [isDiscrete, discreteLabels, totalDuration]);
 
     useEffect(() => {
-      if (showConnection && dataset.length !== 0) {
+      if (showConnection && dataset?.length > 0) {
         validateConnections(dataset);
       }
     }, [showConnection, dataset]);
