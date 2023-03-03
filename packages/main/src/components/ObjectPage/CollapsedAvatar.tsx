@@ -6,7 +6,8 @@ import { AvatarSize } from '../../enums/AvatarSize';
 const styles = {
   base: {
     alignSelf: 'center',
-    opacity: 0
+    opacity: 0,
+    paddingInlineEnd: '1rem'
   },
   hidden: {
     opacity: 0

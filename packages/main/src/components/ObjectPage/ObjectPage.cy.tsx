@@ -239,6 +239,7 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
 
+    cy.findByText('Goals').should('not.be.visible');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 

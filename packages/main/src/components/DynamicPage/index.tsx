@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  enrichEventWithDetails,
-  ThemingParameters,
-  useResponsiveContentPadding,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -242,8 +236,6 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     }
   }, [alwaysShowContentHeader]);
 
-  const responsivePaddingClass = useResponsiveContentPadding(dynamicPageRef.current);
-
   const onDynamicPageScroll = (e) => {
     if (!isToggledRef.current) {
       isToggledRef.current = true;
@@ -283,18 +275,14 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
             !headerContent ||
             (!showHideHeaderButton && !headerContentPinnable),
           ref: componentRefTopHeader,
-          className: headerTitle?.props?.className
-            ? `${responsivePaddingClass} ${headerTitle.props.className}`
-            : responsivePaddingClass,
+          className: clsx(classes.title, headerTitle?.props?.className),
           onToggleHeaderContentVisibility: onToggleHeaderContentInternal
         })}
       {headerContent &&
         cloneElement(headerContent, {
           ref: componentRefHeaderContent,
           style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
-          className: headerContent.props.className
-            ? `${responsivePaddingClass} ${headerContent.props.className}`
-            : responsivePaddingClass,
+          className: clsx(classes.header, headerContent?.props?.className),
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight
         })}
@@ -324,7 +312,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       <div
         ref={contentRef}
         data-component-name="DynamicPageContent"
-        className={`${classes.contentContainer} ${responsivePaddingClass}`}
+        className={classes.contentContainer}
         style={{
           paddingBottom: footer ? '1rem' : 0
         }}
