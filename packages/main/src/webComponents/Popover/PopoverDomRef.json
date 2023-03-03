@@ -2,10 +2,7 @@
   {
     "name": "showAt",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Resolved when the popover is open"
-    },
+    "returnValue": { "type": "Promise", "description": "Resolved when the popover is open" },
     "parameters": [
       {
         "name": "opener",
@@ -26,23 +23,14 @@
   {
     "name": "applyFocus",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Promise that resolves when the focus is applied"
-    },
+    "returnValue": { "type": "Promise", "description": "Promise that resolves when the focus is applied" },
     "description": "Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise."
   },
-  {
-    "name": "close",
-    "visibility": "public",
-    "description": "Closes the popup."
-  },
+  { "name": "close", "visibility": "public", "description": "Closes the popup." },
   {
     "name": "isOpen",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "description": "Tells if the component is opened"
   }
 ]

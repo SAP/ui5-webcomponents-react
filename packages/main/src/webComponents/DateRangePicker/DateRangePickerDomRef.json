@@ -27,18 +27,11 @@
     "type": "Date",
     "description": "Returns the start date of the currently selected range as JavaScript Date instance."
   },
-  {
-    "name": "closePicker",
-    "visibility": "public",
-    "description": "Closes the picker."
-  },
+  { "name": "closePicker", "visibility": "public", "description": "Closes the picker." },
   {
     "name": "formatValue",
     "visibility": "public",
-    "returnValue": {
-      "type": "string",
-      "description": "The date as string"
-    },
+    "returnValue": { "type": "string", "description": "The date as string" },
     "parameters": [
       {
         "name": "date",
@@ -52,9 +45,7 @@
   {
     "name": "isInValidRange",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "parameters": [
       {
         "name": "value",
@@ -69,18 +60,13 @@
   {
     "name": "isOpen",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean",
-      "description": "true if the picker is open, false otherwise"
-    },
+    "returnValue": { "type": "boolean", "description": "true if the picker is open, false otherwise" },
     "description": "Checks if the picker is open."
   },
   {
     "name": "isValid",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "parameters": [
       {
         "name": "value",
@@ -95,10 +81,7 @@
   {
     "name": "openPicker",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Resolves when the picker is open"
-    },
+    "returnValue": { "type": "Promise", "description": "Resolves when the picker is open" },
     "description": "Opens the picker."
   }
 ]
