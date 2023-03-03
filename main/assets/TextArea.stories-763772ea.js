@@ -1,0 +1,17 @@
+import{M as c,C as d,i as u,a as S}from"./index-e4fcead0.js";import{T as o}from"./index-5c89d7c8.js";import{V as n}from"./ValueState-ab6838cc.js";import{A as h}from"./DomRefTable.module-1b79c6b3.js";import{D as f}from"./DocsHeader-38daa20d.js";import{F as g}from"./Footer-b76d0352.js";import{j as t,a as x,F as y}from"./jsx-runtime-670450c2.js";import"./index-f1f749bf.js";import{u as p}from"./index-4fb8b842.js";import"./iframe-c524cba9.js";import"../sb-preview/runtime.mjs";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./index-96c5f47c.js";import"./_commonjsHelpers-042e6b4d.js";import"./inheritsLoose-93e09647.js";import"./_baseForOwn-c7d9bea5.js";import"./mapValues-2de54f78.js";import"./_getPrototype-bd05e126.js";import"./_baseUniq-51545746.js";import"./index-356e4a49.js";import"./index-61436d32.js";import"./UI5Element-727d48d7.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-63dd52a0.js";import"./utils-ed90fb1b.js";import"./ResizeHandler-c56abc92.js";import"./Integer-8010a7ae.js";import"./MarkedEvents-0e37da6f.js";import"./AriaLabelHelper-dee23f38.js";import"./class-map-abcca105.js";import"./FocusableElements-5a723910.js";import"./Keys-50a1cb5a.js";import"./getActiveElement-bcae01ed.js";import"./MediaRange-25b98f31.js";import"./style-map-7b3eb5df.js";import"./ValueState-2c5e5904.js";import"./Popover-97ca01c1.js";import"./Button-2e5054c2.js";import"./Icons-5bcf1e3f.js";import"./decline-ff534003.js";import"./ValueStateMessage.css-6e86a950.js";import"./chunk-G4YQS2SV-b9ac4f89.js";import"./react-18-2bb9dade.js";import"./chunk-R4NKYYJA-96bb58e6.js";import"./react-jss.esm-e54d2f1d.js";import"./index-cf6105bc.js";import"./index-6923d62a.js";import"./clsx.m-1229b3e0.js";import"./index-2eaff221.js";import"./ThemingParameters-f4b4144e.js";import"./Import-01116ee1.js";import"./TableOfContent-88fbd465.js";import"./index-fdf6cf85.js";import"./WrappingType-b81e595a.js";import"./index-dc1c3c21.js";import"./Label-6707bdfc.js";import"./Footer.module-c4f3b823.js";import"./index-e315734d.js";const M=`## CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The \`TextArea\` exposes the following CSS Shadow Parts:
+
+*   textarea - Used to style the native textarea`;function D(r={}){const{wrapper:a}=Object.assign({},p(),r.components);return a?t(a,{...r,children:t(i,{})}):i();function i(){const m=Object.assign({h2:"h2"},p(),r.components);return x(y,{children:[t(c,{title:"Inputs / TextArea",component:o,argTypes:{valueStateMessage:{control:{disable:!0}}},args:{valueState:n.None}}),`
+`,t(f,{}),`
+`,t("br",{}),`
+`,t(m.h2,{children:"Example"}),`
+`,t(d,{children:t(u,{name:"Default",children:l=>t(o,{...l})})}),`
+`,t(m.h2,{children:"Properties"}),`
+`,t(h,{story:"Default"}),`
+`,t(S,{children:M}),`
+`,t(g,{})]})}}const s=r=>t(o,{...r});s.storyName="Default";s.parameters={storySource:{source:`args => {
+  return <TextArea {...args} />;
+}`}};const e={title:"Inputs / TextArea",component:o,args:{valueState:n.None},argTypes:{valueStateMessage:{control:{disable:!0}}},tags:["stories-mdx"],includeStories:["defaultStory"]};e.parameters=e.parameters||{};e.parameters.docs={...e.parameters.docs||{},page:D};const At=["defaultStory"];export{At as __namedExportsOrder,e as default,s as defaultStory};
+//# sourceMappingURL=TextArea.stories-763772ea.js.map
