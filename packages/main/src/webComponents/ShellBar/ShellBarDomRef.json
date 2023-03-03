@@ -1,5 +1,53 @@
 [
   {
+    "name": "copilotDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>copilot</code> DOM ref."
+  },
+  {
+    "name": "logoDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>logo</code> DOM ref."
+  },
+  {
+    "name": "notificationsDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>notifications</code> icon DOM ref."
+  },
+  {
+    "name": "overflowDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>overflow</code> icon DOM ref."
+  },
+  {
+    "name": "productSwitchDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>product-switch</code> icon DOM ref."
+  },
+  {
+    "name": "profileDomRef",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.0.0-rc.16",
+    "type": "HTMLElement",
+    "description": "Returns the <code>profile</code> icon DOM ref."
+  },
+  {
     "name": "accessibilityAttributes",
     "visibility": "public",
     "since": "1.10.0",
@@ -22,5 +70,10 @@
     "type": "object",
     "noattribute": "true",
     "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields: - <code>profileButtonTitle</code>: defines the tooltip for the profile button - <code>logoTitle</code>: defines the tooltip for the logo"
+  },
+  {
+    "name": "closeOverflow",
+    "visibility": "public",
+    "description": "Closes the overflow area. Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event"
   }
 ]

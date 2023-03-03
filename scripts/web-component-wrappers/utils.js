@@ -56,6 +56,13 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     };
   }
 
+  if (property.type === 'sap.ui.webc.fiori.ISideNavigationItem|sap.ui.webc.fiori.ISideNavigationSubItem') {
+    return {
+      tsType: reactNodeType,
+      importStatement: importStatementReactNodeType
+    };
+  }
+
   const typeWithoutNamespace = property.type.replace(/sap\.ui\.(webcomponents|webc)\.(main|fiori|base)\.types\./, '');
 
   switch (typeWithoutNamespace) {
