@@ -10,9 +10,9 @@ import {
   Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
+import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
+import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
-import { useManualRowSelect } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useManualRowSelect';
-import { useRowDisableSelection } from '@/packages/main/src/components/AnalyticalTable/pluginHooks/useRowDisableSelection';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -464,7 +464,7 @@ describe('AnalyticalTable', () => {
     const GroupBySelectTable = (props: PropTypes) => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
-      const tableInstance = useRef();
+      const tableInstance = useRef<Record<string, any>>();
 
       useEffect(() => {
         if (tableInstance.current) {
@@ -1066,9 +1066,9 @@ describe('AnalyticalTable', () => {
   it('Alternate Row Color', () => {
     const standardRowColor = cssVarToRgb(ThemingParameters.sapList_Background);
     const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
-    cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor />);
+    cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} />);
     cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 4; i++) {
       if (i % 2) {
         // no color set
         cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
@@ -1076,6 +1076,14 @@ describe('AnalyticalTable', () => {
         cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
       }
     }
+    cy.get('[data-empty-row="true"]').each(($emptyRow, i) => {
+      if ((i + 1) % 2) {
+        // no color set
+        cy.wrap($emptyRow).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+      } else {
+        cy.wrap($emptyRow).should('have.css', 'background-color', alternatingRowColor);
+      }
+    });
   });
 
   it('initial column order', () => {
@@ -1527,6 +1535,55 @@ describe('AnalyticalTable', () => {
     cy.findAllByRole('row').each(($row) => {
       cy.wrap($row).should('not.have.attr', 'data-is-selected');
     });
+  });
+
+  it('empty rows', () => {
+    const ShowSelectedComp = () => {
+      const instance = useRef(null);
+      const [selected, setSelected] = useState({});
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setSelected(instance.current?.state.selectedRowIds);
+            }}
+          >
+            Show Selected
+          </Button>
+          <AnalyticalTable
+            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            data={data}
+            columns={columns}
+            tableInstance={instance}
+          />
+          Selected: {JSON.stringify(selected)}
+        </>
+      );
+    };
+    cy.mount(<AnalyticalTable data={[]} columns={columns} />);
+    cy.get('[data-empty-row="true"]').should('not.exist');
+    cy.mount(<AnalyticalTable data={[...data, ...data]} columns={columns} />);
+    cy.get('[data-empty-row="true"]').should('not.exist');
+    cy.mount(
+      <AnalyticalTable
+        data={dataTree}
+        columns={columns}
+        isTreeTable
+        reactTableOptions={{ initialState: { expanded: { 1: true } } }}
+      />
+    );
+    cy.get('[data-empty-row="true"]').should('not.exist');
+    cy.mount(<AnalyticalTable data={data} columns={columns} minRows={15} />);
+    cy.get('[data-empty-row="true"]').should('have.length', 11);
+    cy.mount(<AnalyticalTable data={dataTree} columns={columns} isTreeTable />);
+    cy.get('[data-empty-row="true"]').should('have.length', 3);
+    cy.mount(<ShowSelectedComp />);
+    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.findByText('Show Selected').click();
+    cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
+    cy.get('[data-empty-row="true"]').click();
+    cy.findByText('Show Selected').click();
+    cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

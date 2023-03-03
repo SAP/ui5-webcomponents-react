@@ -1,0 +1,34 @@
+name: Documentation
+description: Suggest improvements or report missing/unclear documentation.
+labels:
+  - documentation
+assignees: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: 'Describe the documentation issue'
+      multiple: true
+      options:
+        - Documentation is unclear
+        - Documentation is incorrect
+        - Documentation is missing
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Description'
+      description: 'What can we improve in our documentation?'
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 'Link to Documentation Page'
+      description: 'Where did you find the documentation issue?'
+    validations:
+      required: false

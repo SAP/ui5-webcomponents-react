@@ -1,11 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { TimePicker } from './index';
 import { ValueState } from '../../enums/ValueState';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './TimePickerDescription.md';
-import TimePickerMethods from './TimePickerMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './TimePickerDescription.md?raw';
+import TimePickerDomRef from './TimePickerDomRef.json';
 
 <Meta
   title="Inputs / TimePicker"
@@ -34,10 +32,10 @@ import TimePickerMethods from './TimePickerMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<TimePickerMethods />
+<DomRefTable rows={TimePickerDomRef} />
 
 <Footer />

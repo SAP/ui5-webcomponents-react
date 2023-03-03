@@ -14,7 +14,6 @@ import {
 } from '../../../scripts/web-component-wrappers/config.js';
 import {
   renderComponentWrapper,
-  renderMethods,
   renderStory,
   renderTest
 } from '../../../scripts/web-component-wrappers/templates/index.js';
@@ -758,27 +757,34 @@ allWebComponents
           );
         }
         // create attributes & methods table
-        const publicMethods = getDomRefMethods(componentSpec);
-        const publicGetters = getDomRefGetters(componentSpec);
-        const publicObjects = getDomRefObjects(componentSpec);
-        const publicProperties = [...publicGetters, ...publicObjects, ...publicMethods];
+        const publicProperties = [
+          ...getDomRefGetters(componentSpec),
+          ...getDomRefObjects(componentSpec),
+          ...getDomRefMethods(componentSpec)
+        ];
 
         if (publicProperties.length) {
-          const formattedProperties = JSON.parse(JSON.stringify(publicProperties).replaceAll(/\\n|<br>/g, ''));
-          const methods = `${renderMethods({
-            name: componentSpec.module,
-            methods: formattedProperties
-          })}`;
-          const hasMethodsTable = fs
-            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
-            .toString()
-            .search(`<${componentSpec.module}Methods />`);
-          if (hasMethodsTable === -1) {
+          fs.writeFileSync(
+            path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
+            JSON.stringify(publicProperties, null, 2)
+          );
+          let hasMethodsTable = false;
+          if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          } else if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          }
+          if (hasMethodsTable) {
             console.warn(
-              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+              `----------------------\n${componentSpec.module} doesn't has a DomRef table yet. Don't forget to add it to the story.\n----------------------`
             );
           }
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
         if (

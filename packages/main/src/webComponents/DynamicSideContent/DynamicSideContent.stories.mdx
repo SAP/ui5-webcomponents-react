@@ -1,13 +1,11 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './DynamicSideContentDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './DynamicSideContentDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { DynamicSideContent } from './index';
 import { SideContentFallDown } from '../../enums/SideContentFallDown';
 import { SideContentPosition } from '../../enums/SideContentPosition';
 import { SideContentVisibility } from '../../enums/SideContentVisibility';
-import DynamicSideContentMethods from './DynamicSideContentMethods.md';
+import DynamicSideContentDomRef from './DynamicSideContentDomRef.json';
 import { MainContent, SideContent } from './CodeGen';
 
 <Meta
@@ -44,10 +42,10 @@ import { MainContent, SideContent } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<DynamicSideContentMethods />
+<DomRefTable rows={DynamicSideContentDomRef} />
 
 <Footer />

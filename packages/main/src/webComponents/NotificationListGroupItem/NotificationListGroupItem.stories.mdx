@@ -1,17 +1,14 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { NotificationListGroupItem } from './index';
 import { Priority } from '../../enums/Priority';
 import { NotificationAction } from '../NotificationAction';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './NotificationListGroupItemDescription.md';
-import { Fragment } from 'react';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './NotificationListGroupItemDescription.md?raw';
 import { NotificationListItem } from '../NotificationListItem';
 import { Avatar } from '../Avatar';
 import { AvatarSize } from '../../enums/AvatarSize';
-import SubcomponentsSection from '../../../../../.storybook/docs/SubcomponentsSection.md';
-import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md?raw';
 import { FootNotes1, FootNotes2, Img } from './CodeGen';
 
 <Meta
@@ -91,14 +88,14 @@ import { FootNotes1, FootNotes2, Img } from './CodeGen';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<SubcomponentsSection />
+<Markdown>{SubcomponentsSection}</Markdown>
 
 ## NotificationAction
 
-<NotificationActionDescription />
+<Markdown>{NotificationActionDescription}</Markdown>
 
 <Footer />

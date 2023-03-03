@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.1...v1.9.2) (2023-02-27)
+
+### Bug Fixes
+
+- **AnalyticalTable:** don't include empty rows in internal functions ([#4196](https://github.com/SAP/ui5-webcomponents-react/issues/4196)) ([1cb2454](https://github.com/SAP/ui5-webcomponents-react/commit/1cb2454b3dfea957960ab173d9a67008516de570))
+- **SelectDialog - TypeScript:** improve event types ([#4187](https://github.com/SAP/ui5-webcomponents-react/issues/4187)) ([d5f6d0d](https://github.com/SAP/ui5-webcomponents-react/commit/d5f6d0dc801aa528d7cebd4f2a3ffacc8c64afe4))
+- **Toolbar:** only fire `onClick` on SPACE/ENTER if toolbar is focused ([#4192](https://github.com/SAP/ui5-webcomponents-react/issues/4192)) ([fef567b](https://github.com/SAP/ui5-webcomponents-react/commit/fef567bd35d2ae29faac59bbe7f9c29a933789d0)), closes [#4190](https://github.com/SAP/ui5-webcomponents-react/issues/4190)
+
 ## [1.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.0...v1.9.1) (2023-02-21)
 
 ### Bug Fixes

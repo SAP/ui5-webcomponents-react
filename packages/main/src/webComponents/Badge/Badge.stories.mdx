@@ -1,13 +1,11 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Badge } from './index';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '../Icon';
 import { FlexBox } from '../../components/FlexBox';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './BadgeDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './BadgeDescription.md?raw';
 
 <Meta
   title="Data Display / Badge"
@@ -38,9 +36,9 @@ import Description from './BadgeDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Button, ListPropTypes, SelectDialog, SelectDialogPropTypes } from '@/packages/main';
-import { ListMode, StandardListItem } from '@/packages/main/src';
+import { Button, ListMode, ListPropTypes, SelectDialog, SelectDialogPropTypes, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>
@@ -167,8 +166,8 @@ describe('SelectDialog', () => {
       reset
     }: {
       search: SelectDialogPropTypes['onSearch'];
-      input: SelectDialogPropTypes['onInput'];
-      reset: SelectDialogPropTypes['onReset'];
+      input: SelectDialogPropTypes['onSearchInput'];
+      reset: SelectDialogPropTypes['onSearchReset'];
     }) => {
       const [inputVal, setInputVal] = useState('');
       const [searchVal, setSearchVal] = useState('');

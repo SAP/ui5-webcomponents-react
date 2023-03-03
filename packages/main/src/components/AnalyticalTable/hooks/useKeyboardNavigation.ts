@@ -80,6 +80,9 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 
   const onTableFocus = useCallback(
     (e) => {
+      if (e.target.dataset?.emptyRowCell === 'true') {
+        return;
+      }
       const isFirstCellAvailable = e.target.querySelector('div[data-column-index="0"][data-row-index="1"]');
       if (e.target.dataset.componentName === 'AnalyticalTableContainer') {
         e.target.tabIndex = -1;
