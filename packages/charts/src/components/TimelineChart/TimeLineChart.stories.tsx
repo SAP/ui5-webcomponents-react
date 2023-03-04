@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Invention, TimingFigure } from './examples/Annotations';
-import { dummyDataSet, dummyDiscreteDataSet, inventionDataset, schedulingEDFData } from './examples/Dataset.ts';
+import React from 'react';
+import { Invention, TimingFigure } from './examples/Annotations.js';
+import { dummyDataSet, dummyDiscreteDataSet, inventionDataset, schedulingEDFData } from './examples/Dataset.js';
 import { TimelineChart } from './TimelineChart.js';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation.js';
-import React from 'react';
 
 const meta = {
   title: 'TimelineChart (experimental)',
