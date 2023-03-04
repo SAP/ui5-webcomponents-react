@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ScatterChart } from './ScatterChart.js';
 import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps.js';
+import { ScatterChart } from './ScatterChart.js';
 
 const meta = {
   title: 'ScatterChart',

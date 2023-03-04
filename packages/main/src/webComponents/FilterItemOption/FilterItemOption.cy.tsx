@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { FilterItemOption } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('FilterItemOption', () => {
   it('Basic Test (generated)', () => {

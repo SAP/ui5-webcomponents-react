@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { RadioButton } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('RadioButton', () => {
   it('Basic Test (generated)', () => {

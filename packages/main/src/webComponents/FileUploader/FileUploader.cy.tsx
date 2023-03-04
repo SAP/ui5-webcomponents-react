@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { FileUploader } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('FileUploader', () => {
   it('Basic Test (generated)', () => {

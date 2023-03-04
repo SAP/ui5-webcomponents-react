@@ -1,13 +1,13 @@
-import { isChromatic } from '@sb/utils';
 import Laptop1 from '@sb/demoImages/Laptop1.jpg';
 import Laptop2 from '@sb/demoImages/Laptop2.jpg';
 import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
+import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button, DialogDomRef, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
+import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',
@@ -88,7 +88,7 @@ export const MultiSelect: Story = {
       const itemDescription = e.detail.item.dataset.description;
       setSelectedItems((prev) => {
         if (prev[itemDescription]) {
-          const { [itemDescription]: omit, ...rest } = prev;
+          const { [itemDescription]: _omit, ...rest } = prev;
           return rest;
         } else {
           return { ...prev, [itemDescription]: true };

@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { RadarChart } from './RadarChart.js';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const dimensions = [
   {

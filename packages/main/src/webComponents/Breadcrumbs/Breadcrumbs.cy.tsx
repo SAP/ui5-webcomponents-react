@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import { Breadcrumbs } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Breadcrumbs', () => {
   it('Basic Test (generated)', () => {
