@@ -1,5 +1,5 @@
 import { CommonProps } from '@ui5/webcomponents-react';
-import React, { CSSProperties, forwardRef, ReactElement } from 'react';
+import React, { CSSProperties, forwardRef } from 'react';
 import { DEFAULT_ROW_HEIGHT } from './util/constants';
 import { useStyles } from './util/styles';
 
@@ -45,29 +45,22 @@ interface TimelineChartAnnotationProps extends CommonProps {
  * This is designed to be used for creating custom annotations, markers
  * or illustrations on the timeline of the chart.
  */
-const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotationProps>(
-  ({ width = 'auto', height, rowIndex = 0, rowHeight = DEFAULT_ROW_HEIGHT, figure, ...rest }, ref): ReactElement => {
-    const classes = useStyles();
+const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotationProps>((props, ref) => {
+  const { width = 'auto', height, rowIndex = 0, rowHeight = DEFAULT_ROW_HEIGHT, figure, ...rest } = props;
+  const classes = useStyles();
 
-    const style: CSSProperties = {
-      width: width,
-      height: height != null ? height : rowHeight,
-      insetBlockStart: `${rowIndex * rowHeight}px`
-    };
+  const style: CSSProperties = {
+    width: width,
+    height: height != null ? height : rowHeight,
+    insetBlockStart: `${rowIndex * rowHeight}px`
+  };
 
-    return (
-      <div
-        ref={ref}
-        className={classes.annotation}
-        {...rest}
-        style={style}
-        data-component-name="TimelineChartAnnotation"
-      >
-        {figure}
-      </div>
-    );
-  }
-);
+  return (
+    <div ref={ref} className={classes.annotation} {...rest} style={style} data-component-name="TimelineChartAnnotation">
+      {figure}
+    </div>
+  );
+});
 
 TimelineChartAnnotation.displayName = 'TimelineChartAnnotation';
 
