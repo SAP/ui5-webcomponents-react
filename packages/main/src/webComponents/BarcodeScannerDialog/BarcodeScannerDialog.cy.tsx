@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { BarcodeScannerDialog } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('BarcodeScannerDialog', () => {
   it('Basic Test (generated)', () => {

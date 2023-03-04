@@ -145,11 +145,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     },
     fRef
   ) => {
-    if (!dataset || dataset?.length === 0) {
-      return <TimelineChartPlaceholder />;
-    }
-
-    const numOfRows = dataset.length;
+    const numOfRows = dataset?.length ?? 0;
     const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
     const style: CSSProperties = {
@@ -196,7 +192,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     }, [isDiscrete, discreteLabels, totalDuration]);
 
     useEffect(() => {
-      if (showConnection && dataset.length !== 0) {
+      if (showConnection && dataset?.length > 0) {
         validateConnections(dataset);
       }
     }, [showConnection, dataset]);
@@ -228,7 +224,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       }
     };
 
-    const onMouseMove = throttle(mouseMoveHandler, 200, { trailing: false });
+    const onMouseMove = useRef(throttle(mouseMoveHandler, 200, { trailing: false }));
 
     const getCursor = (): string => {
       if (isGrabbed) return MOUSE_CURSOR_GRABBING;
@@ -238,6 +234,10 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
 
     const unscaledBodyWidth = dimensions.width - ROW_TITLE_WIDTH;
     const bodyWidth = unscaledBodyWidth * chartBodyScale;
+
+    if (!dataset || dataset?.length === 0) {
+      return <TimelineChartPlaceholder />;
+    }
 
     return (
       <div ref={fRef} {...rest}>
@@ -262,7 +262,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             }}
             onMouseDown={onMouseDown}
             onMouseUp={onMouseUp}
-            onMouseMove={onMouseMove}
+            onMouseMove={onMouseMove.current}
           >
             <div
               className={classes.columnTitle}

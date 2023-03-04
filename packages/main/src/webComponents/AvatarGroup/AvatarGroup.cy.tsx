@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Avatar } from '../Avatar';
 import { AvatarGroup } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('AvatarGroup', () => {
   it('Basic Test (generated)', () => {

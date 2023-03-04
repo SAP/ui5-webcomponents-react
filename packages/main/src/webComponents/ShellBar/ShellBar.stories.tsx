@@ -1,11 +1,11 @@
+import image from '@sb/demoImages/Person.png';
 import { Meta, StoryObj } from '@storybook/react';
-import { ShellBar } from './index';
-import { Input, Icon, StandardListItem, Avatar, ShellBarItem } from '../index';
-import React from 'react';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
+import React from 'react';
+import { Input, Icon, StandardListItem, Avatar, ShellBarItem } from '../index';
+import { ShellBar } from './index';
 // @ts-expect-error: png's are not typed
-import image from '@sb/demoImages/Person.png';
 
 const meta = {
   title: 'Layouts & Floorplans / ShellBar',

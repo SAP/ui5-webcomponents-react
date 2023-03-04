@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DonutChart } from './DonutChart.js';
 import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps.js';
+import { DonutChart } from './DonutChart.js';
 
 const meta = {
   title: 'DonutChart',
