@@ -29,6 +29,7 @@ const useStyles = createUseStyles(
     label: {
       gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
       justifySelf: 'var(--ui5wcr_form_label_text_align)',
+      textAlign: 'var(--ui5wcr_form_label_text_align)',
       '&[data-label-span="12"]': {
         justifySelf: 'start',
         paddingBlockEnd: '0.25rem'
