@@ -102,7 +102,9 @@ function FormItemLabel({ label, style }: { label: ReactNode; style?: CSSProperti
 }
 
 /**
- * The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
+ * A `FormItem` represents a row in a `Form`. A `FormItem` is a combination of one label and a component associated to this label.
+ *
+ * __Note__: The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types

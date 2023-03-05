@@ -143,6 +143,7 @@ overrides:
   - files:
       - '*.stories.tsx'
     extends:
+      - 'plugin:react/jsx-runtime'
       - 'plugin:storybook/recommended'
     rules:
       'react/prop-types': 'off' # inline custom components within stories don't need prop types

@@ -1,0 +1,36 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { FormGroup } from '../FormGroup';
+import { FormItem } from '../FormItem';
+import * as ComponentStories from './Form.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## Form Group
+
+<Description of={FormGroup} />
+
+<ArgTypes of={FormGroup} />
+
+## FormItem
+
+<Description of={FormItem} />
+
+<ArgTypes of={FormItem} />
+
+<Footer />

@@ -23,7 +23,8 @@ const useStyles = createUseStyles(
 );
 /**
  * The `FormGroup` encapsulates `FormItems` into groups.
- * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `heading` and `children`, especially no `className`, `style` or `ref`.
+ *
+ * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `titleText` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
