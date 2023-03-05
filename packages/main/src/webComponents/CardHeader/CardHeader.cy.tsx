@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { CardHeader } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('CardHeader', () => {
   it('Basic Test (generated)', () => {

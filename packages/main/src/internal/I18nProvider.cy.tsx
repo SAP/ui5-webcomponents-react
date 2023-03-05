@@ -1,6 +1,6 @@
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { registerI18nLoader } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
 import { setFetchDefaultLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { mount } from 'cypress/react18';
 import React, { useEffect, useRef } from 'react';
 

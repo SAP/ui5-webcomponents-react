@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { DateTimePicker } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('DateTimePicker', () => {
   it('Basic Test (generated)', () => {

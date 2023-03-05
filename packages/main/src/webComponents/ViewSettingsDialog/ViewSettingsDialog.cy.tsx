@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ViewSettingsDialog } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ViewSettingsDialog', () => {
   it('Basic Test (generated)', () => {

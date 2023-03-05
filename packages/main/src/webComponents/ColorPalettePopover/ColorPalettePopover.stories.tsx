@@ -1,3 +1,4 @@
+import { isChromatic } from '@sb/utils';
 import { StoryObj } from '@storybook/react';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -8,7 +9,6 @@ import {
   ColorPalettePopoverDomRef,
   ColorPalettePopoverPropTypes
 } from './index';
-import { isChromatic } from '@sb/utils';
 
 const meta = {
   title: 'Modals & Popovers / ColorPalettePopover',

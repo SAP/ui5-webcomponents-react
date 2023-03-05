@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { RatingIndicator } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('RatingIndicator', () => {
   it('Basic Test (generated)', () => {

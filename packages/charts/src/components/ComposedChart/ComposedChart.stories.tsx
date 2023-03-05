@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ComposedChart } from './index.js';
 import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoProps.js';
+import { ComposedChart } from './index.js';
 
 const meta = {
   title: 'ComposedChart',
@@ -153,7 +153,7 @@ export const WithHighlightedMeasures: Story = {
         accessor: 'sessions',
         label: 'Active Sessions',
         type: 'bar',
-        highlightColor: (value, measure, data) => {
+        highlightColor: (value) => {
           if (value > 400) {
             return 'red';
           }

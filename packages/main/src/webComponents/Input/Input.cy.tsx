@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Input } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Input', () => {
   it('Basic Test (generated)', () => {

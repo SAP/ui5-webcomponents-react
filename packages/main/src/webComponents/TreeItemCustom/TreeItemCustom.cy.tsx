@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { TreeItemCustom } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('TreeItemCustom', () => {
   it('Basic Test (generated)', () => {

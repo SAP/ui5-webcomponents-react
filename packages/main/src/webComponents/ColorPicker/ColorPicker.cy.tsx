@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ColorPicker } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ColorPicker', () => {
   it('Basic Test (generated)', () => {

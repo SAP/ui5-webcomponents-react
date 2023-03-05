@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { IllustratedMessage } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('IllustratedMessage', () => {
   it('Basic Test (generated)', () => {

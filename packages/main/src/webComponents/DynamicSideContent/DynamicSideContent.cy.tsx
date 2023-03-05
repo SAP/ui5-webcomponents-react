@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { DynamicSideContent } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('DynamicSideContent', () => {
   it('Basic Test (generated)', () => {

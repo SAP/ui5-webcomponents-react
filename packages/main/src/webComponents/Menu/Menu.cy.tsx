@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Menu } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Menu', () => {
   it('Basic Test (generated)', () => {
