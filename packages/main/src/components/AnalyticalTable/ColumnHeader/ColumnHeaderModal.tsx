@@ -13,6 +13,7 @@ import { PopoverHorizontalAlign } from '../../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../../enums/PopoverPlacementType';
 import { TextAlign } from '../../../enums/TextAlign';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
+import { useCanRenderPortal } from '../../../internal/ssr';
 import { stopPropagation } from '../../../internal/stopPropagation';
 import { CustomListItem } from '../../../webComponents/CustomListItem';
 import { Icon } from '../../../webComponents/Icon';
@@ -174,6 +175,11 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   }, [open]);
 
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
+
   return createPortal(
     <Popover
       hideArrow
@@ -227,7 +233,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
       </List>
     </Popover>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

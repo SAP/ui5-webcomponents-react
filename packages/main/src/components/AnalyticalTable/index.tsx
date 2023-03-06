@@ -1195,8 +1195,7 @@ AnalyticalTable.defaultProps = {
   alternateRowColor: false,
   overscanCountHorizontal: 5,
   visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
-  alwaysShowSubComponent: false,
-  portalContainer: document.body
+  alwaysShowSubComponent: false
 };
 
 export { AnalyticalTable };
