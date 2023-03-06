@@ -1,0 +1,2 @@
+import{l as s}from"./UI5Element-4f8793c9.js";import{a as o}from"./Icons-ad6f0d24.js";const c="less",t="M464 224q16 0 16 16v32q0 16-16 16H48q-6 0-11-4.5T32 272v-32q0-7 5-11.5t11-4.5h416z",n=!1,e="SAP-icons-v4",i="@ui5/webcomponents-icons";o(c,{pathData:t,ltr:n,collection:e,packageName:i});const l="less",a="M454 275H58q-11 0-18.5-7T32 250t7.5-18.5T58 224h396q11 0 18.5 7.5T480 250t-7.5 18-18.5 7z",m=!1,p="SAP-icons-v5",r="@ui5/webcomponents-icons";o(l,{pathData:a,ltr:m,collection:p,packageName:r});s("sap_horizon");
+//# sourceMappingURL=less-b080bddd.js.map
