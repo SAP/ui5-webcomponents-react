@@ -1,8 +1,6 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   CheckBox,
-  Form,
   FormBackgroundDesign,
   FormGroup,
   FormItem,
@@ -14,25 +12,16 @@ import {
   Select,
   Text,
   TextArea
-} from '../..';
+} from '../../index.js';
+import { Form } from './index.js';
 
-<Meta
-  title="Layouts & Floorplans / Form"
-  component={Form}
-  subcomponents={{ FormGroup, FormItem }}
-  argTypes={{
-    children: { control: { disable: true } },
-    labelSpanS: { control: { type: 'number', min: 1, max: 12 } },
-    labelSpanM: { control: { type: 'number', min: 1, max: 12 } },
-    labelSpanL: { control: { type: 'number', min: 1, max: 12 } },
-    labelSpanXL: { control: { type: 'number', min: 1, max: 12 } },
-    columnsS: { control: { type: 'number', min: 1, max: 12 } },
-    columnsM: { control: { type: 'number', min: 1, max: 12 } },
-    columnsL: { control: { type: 'number', min: 1, max: 12 } },
-    columnsXL: { control: { type: 'number', min: 1, max: 12 } },
-    as: { control: { disable: true } }
-  }}
-  args={{
+const meta = {
+  title: 'Layouts & Floorplans / Form',
+  component: Form,
+  argTypes: {
+    children: { control: { disable: true } }
+  },
+  args: {
     backgroundDesign: FormBackgroundDesign.Transparent,
     titleText: 'Test Form',
     labelSpanS: 12,
@@ -44,19 +33,16 @@ import {
     columnsL: 1,
     columnsXL: 2,
     style: { alignItems: 'center' }
-  }}
-/>
+  }
+} satisfies Meta<typeof Form>;
 
-<DocsHeader />
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-<br />
-
-## Example
-
-<Canvas>
-  <Story name="Default">
-    {(args) => (
-      <Form {...args}>
+export const Default: Story = {
+  render: (props) => {
+    return (
+      <Form {...props}>
         <FormItem label="Sole Form Item">
           <Input type={InputType.Text} />
         </FormItem>
@@ -139,17 +125,6 @@ import {
           </FormItem>
         </FormGroup>
       </Form>
-    )}
-  </Story>
-</Canvas>
-
-## Properties
-
-<ArgsTableWithNote story="Default" />
-
-### Usage Notes
-
-Please note that the `FormGroup` and `FormItem` components are only used for calculating the final layout of the `Form`,
-thus they don't accept any other props than the specified ones, especially no `className`, `style` or `ref`.
-
-<Footer />
+    );
+  }
+};

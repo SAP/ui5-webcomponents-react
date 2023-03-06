@@ -1,69 +1,42 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
-const labelSpanClasses = () => {
-  const styleClasses = {};
-  for (let i = 1; i <= 11; i++) {
-    styleClasses[`labelSpan${i}`] = {
-      '--ui5wcr_form_content_span': 12 - i,
-      '--ui5wcr_form_label_span': i
-    };
-  }
-  return styleClasses;
-};
-
 const styles = {
+  formContainer: {
+    containerType: 'inline-size'
+  },
   form: {
     display: 'grid',
     alignItems: 'center',
     rowGap: '0.25rem',
     columnGap: '0.5rem',
-    gridTemplateColumns: `repeat(12, 1fr)`,
-    '--ui5wcr_form_full_span': 'span 12',
+    gridTemplateColumns: `repeat(calc(12 * var(--ui5wcr_form_columns)), 1fr)`,
     '--ui5wcr_form_label_text_align': 'end',
-    '&[data-columns="1"]': {},
-    '&[data-columns="2"]': {
-      gridTemplateColumns: `repeat(24, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 24'
+    '--ui5wcr_form_content_span': 'calc(12 - var(--ui5wcr_form_label_span))',
+
+    '--ui5wcr_form_columns_s': 1,
+    '--ui5wcr_form_columns_m': 1,
+    '--ui5wcr_form_columns_l': 1,
+    '--ui5wcr_form_columns_xl': 2,
+    '--ui5wcr_form_label_span_s': 12,
+    '--ui5wcr_form_label_span_m': 2,
+    '--ui5wcr_form_label_span_l': 4,
+    '--ui5wcr_form_label_span_xl': 4,
+
+    '@container (max-width: 599px)': {
+      '--ui5wcr_form_label_span': 'var(--ui5wcr_form_label_span_s)',
+      '--ui5wcr_form_columns': 'var(--ui5wcr_form_columns_s)'
     },
-    '&[data-columns="3"]': {
-      gridTemplateColumns: `repeat(36, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 36'
+    '@container (min-width: 600px) and (max-width: 1023px)': {
+      '--ui5wcr_form_label_span': 'var(--ui5wcr_form_label_span_m)',
+      '--ui5wcr_form_columns': 'var(--ui5wcr_form_columns_m)'
     },
-    '&[data-columns="4"]': {
-      gridTemplateColumns: `repeat(48, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 48'
+    '@container (min-width: 1024px) and (max-width: 1439px)': {
+      '--ui5wcr_form_label_span': 'var(--ui5wcr_form_label_span_l)',
+      '--ui5wcr_form_columns': 'var(--ui5wcr_form_columns_l)'
     },
-    '&[data-columns="5"]': {
-      gridTemplateColumns: `repeat(60, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 60'
-    },
-    '&[data-columns="6"]': {
-      gridTemplateColumns: `repeat(72, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 72'
-    },
-    '&[data-columns="7"]': {
-      gridTemplateColumns: `repeat(84, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 84'
-    },
-    '&[data-columns="8"]': {
-      gridTemplateColumns: `repeat(96, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 96'
-    },
-    '&[data-columns="9"]': {
-      gridTemplateColumns: `repeat(108, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 108'
-    },
-    '&[data-columns="10"]': {
-      gridTemplateColumns: `repeat(120, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 120'
-    },
-    '&[data-columns="11"]': {
-      gridTemplateColumns: `repeat(132, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 132'
-    },
-    '&[data-columns="12"]': {
-      gridTemplateColumns: `repeat(144, 1fr)`,
-      '--ui5wcr_form_full_span': 'span 144'
+    '@container (min-width: 1440px)': {
+      '--ui5wcr_form_label_span': 'var(--ui5wcr_form_label_span_xl)',
+      '--ui5wcr_form_columns': 'var(--ui5wcr_form_columns_xl)'
     }
   },
   solid: {
@@ -75,9 +48,8 @@ const styles = {
   formTitle: {
     borderBlockEnd: `1px solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
     marginBlockEnd: '1.75rem',
-    gridColumn: 'var(--ui5wcr_form_full_span)'
+    gridColumn: '1 / -1'
   },
-  ...labelSpanClasses(),
   labelSpan12: {
     '--ui5wcr_form_content_span': 12,
     '--ui5wcr_form_label_text_align': 'start',

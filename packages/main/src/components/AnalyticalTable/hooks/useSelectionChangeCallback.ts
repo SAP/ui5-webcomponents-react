@@ -6,6 +6,7 @@ export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {
     const { selectedRowPayload, selectedRowIds } = state;
     const { rowsById, preFilteredRowsById, webComponentsReactProperties, dispatch, filters } = instance;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       if (selectedRowPayload?.fired) {
         const { event: e, row: selRow } = selectedRowPayload;
