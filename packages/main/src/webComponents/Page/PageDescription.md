@@ -10,4 +10,4 @@ The content occupies the main part of the page. Only the content area is scrolla
 
 ### Footer
 
-The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the `floatingFooter` property. **Note:** `Page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure that there is enough space for the `Page` to be rendered.
+The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the `floatingFooter` property. **Note:** `Page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure that there is enough space for the `Page` to be rendered. **Note:** In order for the `Page` to be displayed, the parent element should have fixed height.

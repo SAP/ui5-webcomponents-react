@@ -1,9 +1,5 @@
 [
-  {
-    "name": "close",
-    "visibility": "public",
-    "description": "Closes the dialog and the scan session."
-  },
+  { "name": "close", "visibility": "public", "description": "Closes the dialog and the scan session." },
   {
     "name": "show",
     "visibility": "public",

@@ -36,7 +36,7 @@ export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSe
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  closeIcon?: UI5WCSlotsNode;
+  closeIcon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the the component is selected by user interaction with mouse or by clicking space.
    */

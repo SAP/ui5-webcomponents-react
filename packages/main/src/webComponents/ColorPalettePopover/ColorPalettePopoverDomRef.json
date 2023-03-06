@@ -12,9 +12,7 @@
       }
     ],
     "description": "Shows the ColorPalettePopover. <b>Note:</b> The method is deprecated and will be removed in future, use <code>showAt</code> instead.",
-    "deprecated": {
-      "text": "The method is deprecated in favour of <code>showAt</code>."
-    }
+    "deprecated": { "text": "The method is deprecated in favour of <code>showAt</code>." }
   },
   {
     "name": "showAt",

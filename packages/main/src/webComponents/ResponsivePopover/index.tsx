@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
 import { ReactNode } from 'react';
-import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums';
+import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign, PopupAccessibleRole } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -77,6 +77,14 @@ interface ResponsivePopoverAttributes {
    * Defines the IDs of the elements that label the component.
    */
   accessibleNameRef?: string;
+  /**
+   * Allows setting a custom role. Available options are:
+   *
+   * *   `Dialog`
+   * *   `None`
+   * *   `AlertDialog`
+   */
+  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
@@ -179,6 +187,7 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
     'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleRole',
     'initialFocus'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
@@ -192,7 +201,8 @@ ResponsivePopover.displayName = 'ResponsivePopover';
 ResponsivePopover.defaultProps = {
   horizontalAlign: PopoverHorizontalAlign.Center,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center
+  verticalAlign: PopoverVerticalAlign.Center,
+  accessibleRole: PopupAccessibleRole.Dialog
 };
 
 export { ResponsivePopover };

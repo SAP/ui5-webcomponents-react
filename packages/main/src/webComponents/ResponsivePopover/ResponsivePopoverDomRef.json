@@ -1,24 +1,15 @@
 [
-  {
-    "name": "close",
-    "visibility": "public",
-    "description": "Closes the popover/dialog."
-  },
+  { "name": "close", "visibility": "public", "description": "Closes the popover/dialog." },
   {
     "name": "isOpen",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "description": "Tells if the responsive popover is open."
   },
   {
     "name": "showAt",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Resolves when the responsive popover is open"
-    },
+    "returnValue": { "type": "Promise", "description": "Resolves when the responsive popover is open" },
     "parameters": [
       {
         "name": "opener",
@@ -39,10 +30,7 @@
   {
     "name": "applyFocus",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Promise that resolves when the focus is applied"
-    },
+    "returnValue": { "type": "Promise", "description": "Promise that resolves when the focus is applied" },
     "description": "Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise."
   }
 ]

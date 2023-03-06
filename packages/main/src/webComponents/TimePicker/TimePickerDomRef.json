@@ -6,17 +6,11 @@
     "type": "Date",
     "description": "Currently selected time represented as JavaScript Date instance"
   },
-  {
-    "name": "closePicker",
-    "visibility": "public",
-    "description": "Closes the picker"
-  },
+  { "name": "closePicker", "visibility": "public", "description": "Closes the picker" },
   {
     "name": "formatValue",
     "visibility": "public",
-    "returnValue": {
-      "type": "string"
-    },
+    "returnValue": { "type": "string" },
     "parameters": [
       {
         "name": "date",
@@ -30,17 +24,13 @@
   {
     "name": "isOpen",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "description": "Checks if the picker is open"
   },
   {
     "name": "isValid",
     "visibility": "public",
-    "returnValue": {
-      "type": "boolean"
-    },
+    "returnValue": { "type": "boolean" },
     "parameters": [
       {
         "name": "value",
@@ -54,10 +44,7 @@
   {
     "name": "openPicker",
     "visibility": "public",
-    "returnValue": {
-      "type": "Promise",
-      "description": "Resolves when the picker is open"
-    },
+    "returnValue": { "type": "Promise", "description": "Resolves when the picker is open" },
     "description": "Opens the picker."
   }
 ]

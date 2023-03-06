@@ -54,6 +54,7 @@ export * from './PanelAccessibleRole';
 export * from './PopoverHorizontalAlign';
 export * from './PopoverPlacementType';
 export * from './PopoverVerticalAlign';
+export * from './PopupAccessibleRole';
 export * from './Priority';
 export * from './SemanticColor';
 export * from './SideContentFallDown';
