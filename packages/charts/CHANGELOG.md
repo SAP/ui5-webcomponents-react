@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
+
+### Features
+
+- **TimelineChart:** introduce new chart (experimental) ([#3921](https://github.com/SAP/ui5-webcomponents-react/issues/3921)) ([4b09939](https://github.com/SAP/ui5-webcomponents-react/commit/4b099391f9e7462a23767806ec2feabb44cda5fd))
+
 ## [1.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.1...v1.9.2) (2023-02-27)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
