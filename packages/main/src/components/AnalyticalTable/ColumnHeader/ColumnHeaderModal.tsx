@@ -4,7 +4,7 @@ import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
@@ -15,6 +15,7 @@ import { TextAlign } from '../../../enums/TextAlign';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
 import { useCanRenderPortal } from '../../../internal/ssr';
 import { stopPropagation } from '../../../internal/stopPropagation';
+import { getUi5TagWithSuffix } from '../../../internal/utils';
 import { CustomListItem } from '../../../webComponents/CustomListItem';
 import { Icon } from '../../../webComponents/Icon';
 import { List } from '../../../webComponents/List';
@@ -72,61 +73,58 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const groupText = i18nBundle.getText(GROUP);
   const ungroupText = i18nBundle.getText(UNGROUP);
 
-  const handleSort = useCallback(
-    (e) => {
-      const sortType = e.detail.item.getAttribute('data-sort');
+  const handleSort = (e) => {
+    const sortType = e.detail.item.getAttribute('data-sort');
 
-      switch (sortType) {
-        case 'asc':
-          column.toggleSortBy(false);
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'desc':
-          column.toggleSortBy(true);
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'clear':
-          column.clearSortBy();
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'group':
-          const willGroup = !column.isGrouped;
-          column.toggleGroupBy(willGroup);
-          if (typeof onGroupBy === 'function') {
-            onGroupBy(
-              enrichEventWithDetails(e, {
-                column,
-                isGrouped: willGroup
-              })
-            );
-          }
-          break;
-      }
-      setPopoverOpen(false);
-    },
-    [column, ref, onGroupBy, onSort, setPopoverOpen]
-  );
+    switch (sortType) {
+      case 'asc':
+        column.toggleSortBy(false);
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'desc':
+        column.toggleSortBy(true);
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'clear':
+        column.clearSortBy();
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'group':
+        const willGroup = !column.isGrouped;
+        column.toggleGroupBy(willGroup);
+        if (typeof onGroupBy === 'function') {
+          onGroupBy(
+            enrichEventWithDetails(e, {
+              column,
+              isGrouped: willGroup
+            })
+          );
+        }
+        break;
+    }
+    setPopoverOpen(false);
+  };
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
@@ -169,13 +167,24 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
+  const canRenderPortal = useCanRenderPortal();
+
   useEffect(() => {
     if (open && ref.current && openerRef.current) {
-      ref.current.opener = openerRef.current;
+      customElements
+        .whenDefined(getUi5TagWithSuffix('ui5-popover'))
+        .then(() => {
+          ref.current.opener = openerRef.current;
+          if (canRenderPortal && open) {
+            ref.current.showAt(openerRef.current);
+          }
+        })
+        .catch(() => {
+          // silently catch
+        });
     }
-  }, [open]);
+  }, [open, canRenderPortal]);
 
-  const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
     return null;
   }
@@ -190,7 +199,6 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
-      open={open}
     >
       <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
         {isSortedAscending && (
