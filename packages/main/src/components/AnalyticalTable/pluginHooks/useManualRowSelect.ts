@@ -7,6 +7,7 @@ import { useEffect } from 'react';
  */
 export const useManualRowSelect = (manualRowSelectedKey = 'isSelected') => {
   const instanceAfterData = ({ flatRows, toggleRowSelected }) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       flatRows.forEach(({ id, original }) => {
         if (manualRowSelectedKey in original) {
