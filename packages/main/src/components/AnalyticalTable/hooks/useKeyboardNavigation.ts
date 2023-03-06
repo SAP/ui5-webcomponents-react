@@ -45,7 +45,7 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
+const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -294,5 +294,5 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 };
 
 export const useKeyboardNavigation = (hooks) => {
-  hooks.getTableProps.push(getTableProps);
+  hooks.getTableProps.push(useGetTableProps);
 };
