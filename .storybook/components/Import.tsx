@@ -45,7 +45,7 @@ export const Import = () => {
   const context = useContext(DocsContext);
   const isChart = context.componentStories().at(0).id.startsWith('charts-');
   const groups = context.componentStories().at(0).kind.split('/');
-  const moduleName = groups[groups.length - 1].trim();
+  const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
 
   return (
     <ImportStatement moduleName={moduleName} packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : ''}'`} />

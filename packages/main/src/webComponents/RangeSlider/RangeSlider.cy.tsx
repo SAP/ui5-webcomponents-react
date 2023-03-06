@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { RangeSlider } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('RangeSlider', () => {
   it('Basic Test (generated)', () => {

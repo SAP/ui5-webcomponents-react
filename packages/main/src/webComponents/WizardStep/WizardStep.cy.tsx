@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { WizardStep } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('WizardStep', () => {
   it('Basic Test (generated)', () => {

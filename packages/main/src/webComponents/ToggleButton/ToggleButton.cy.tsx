@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ToggleButton } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ToggleButton', () => {
   it('Basic Test (generated)', () => {

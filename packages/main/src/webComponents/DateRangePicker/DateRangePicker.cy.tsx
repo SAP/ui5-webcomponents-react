@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { DateRangePicker } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('DateRangePicker', () => {
   it('Basic Test (generated)', () => {

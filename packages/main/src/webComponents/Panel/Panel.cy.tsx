@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Panel } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Panel', () => {
   it('Basic Test (generated)', () => {

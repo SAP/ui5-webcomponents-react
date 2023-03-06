@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PieChart } from './PieChart.js';
 import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps.js';
+import { PieChart } from './PieChart.js';
 
 const meta = {
   title: 'PieChart',

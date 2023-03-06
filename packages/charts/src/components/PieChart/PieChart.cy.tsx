@@ -1,7 +1,7 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Text as RechartsText } from 'recharts';
 import { simpleDataSet } from '../../resources/DemoProps.js';
 import { PieChart } from './PieChart.js';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const dimension = {
   accessor: 'name'

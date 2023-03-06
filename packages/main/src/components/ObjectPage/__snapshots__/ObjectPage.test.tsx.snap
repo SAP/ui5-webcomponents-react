@@ -1,930 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ObjectPage Default with Sections 1`] = `
-<DocumentFragment>
-  <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
-    data-component-name="ObjectPage"
-  >
-    <header
-      aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
-      data-component-name="ObjectPageTopHeader"
-      data-not-clickable="true"
-      role="banner"
-      style="grid-auto-columns: min-content 100%; display: grid;"
-    />
-    <div
-      class="ObjectPage-tabContainer"
-      data-component-name="ObjectPageTabContainer"
-      style="top: 0px;"
-    >
-      <ui5-tabcontainer
-        class="ObjectPage-tabContainerComponent"
-        collapsed="true"
-        content-background-design="Solid"
-        data-component-name="ObjectPageTabContainer"
-        data-sap-ui-fastnavgroup="true"
-        fixed="true"
-        header-background-design="Solid"
-        tab-layout="Standard"
-        tabs-overflow-mode="End"
-        ui5-tabcontainer=""
-      >
-        <ui5-tab
-          data-index="0"
-          data-section-id="1"
-          design="Default"
-          selected="true"
-          text="Title 1"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="1"
-          data-section-id="2"
-          design="Default"
-          text="Title 2"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="2"
-          data-section-id="3"
-          design="Default"
-          text="Title 3"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-      </ui5-tabcontainer>
-    </div>
-    <div
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageContent"
-    >
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-1"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title 1
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            Content 1
-          </div>
-        </div>
-      </section>
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-2"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title 2
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <ui5-label
-              ui5-label=""
-            >
-              Content 2
-            </ui5-label>
-          </div>
-        </div>
-      </section>
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-3"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title 3
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <span
-              class="Text-text"
-            >
-              Content 3
-            </span>
-          </div>
-        </div>
-      </section>
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ObjectPage Default with SubSections 1`] = `
-<DocumentFragment>
-  <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
-    data-component-name="ObjectPage"
-  >
-    <header
-      aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
-      data-component-name="ObjectPageTopHeader"
-      data-not-clickable="true"
-      role="banner"
-      style="grid-auto-columns: min-content 100%; display: grid;"
-    />
-    <div
-      class="ObjectPage-tabContainer"
-      data-component-name="ObjectPageTabContainer"
-      style="top: 0px;"
-    >
-      <ui5-tabcontainer
-        class="ObjectPage-tabContainerComponent"
-        collapsed="true"
-        content-background-design="Solid"
-        data-component-name="ObjectPageTabContainer"
-        data-sap-ui-fastnavgroup="true"
-        fixed="true"
-        header-background-design="Solid"
-        tab-layout="Standard"
-        tabs-overflow-mode="End"
-        ui5-tabcontainer=""
-      >
-        <ui5-tab
-          data-index="0"
-          data-section-id="1"
-          design="Default"
-          selected="true"
-          text="Title Section 1"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="1"
-          data-section-id="2"
-          design="Default"
-          text="Title Section 2"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="2"
-          data-section-id="3"
-          design="Default"
-          text="Title Section 3"
-          ui5-tab=""
-        >
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.1"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.1"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.2"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.2"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.3"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.3"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="3"
-          data-section-id="4"
-          design="Default"
-          text="Title Section 4"
-          ui5-tab=""
-        >
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.1"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.1"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.2"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.2"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.3"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.3"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-      </ui5-tabcontainer>
-    </div>
-    <div
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageContent"
-    >
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-1"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title Section 1
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <ui5-label
-              ui5-label=""
-            >
-              Content Section 1
-            </ui5-label>
-          </div>
-        </div>
-      </section>
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-2"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title Section 2
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <div>
-              Content Section 2
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-3"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title Section 3
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.1"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.1
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.2"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.2
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.2
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.3"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.3
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.3
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-4"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title Section 4
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-4.1"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 4.1
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 4.1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-4.2"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 4.2
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 4.2
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-4.3"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 4.3
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 4.3
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ObjectPage IconTabBar Mode 1`] = `
-<DocumentFragment>
-  <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
-    data-component-name="ObjectPage"
-  >
-    <header
-      aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
-      data-component-name="ObjectPageTopHeader"
-      data-not-clickable="true"
-      role="banner"
-      style="grid-auto-columns: min-content 100%; display: grid;"
-    />
-    <div
-      class="ObjectPage-tabContainer"
-      data-component-name="ObjectPageTabContainer"
-      style="top: 0px;"
-    >
-      <ui5-tabcontainer
-        class="ObjectPage-tabContainerComponent"
-        collapsed="true"
-        content-background-design="Solid"
-        data-component-name="ObjectPageTabContainer"
-        data-sap-ui-fastnavgroup="true"
-        fixed="true"
-        header-background-design="Solid"
-        tab-layout="Standard"
-        tabs-overflow-mode="End"
-        ui5-tabcontainer=""
-      >
-        <ui5-tab
-          data-index="0"
-          data-section-id="1"
-          design="Default"
-          text="Title Section 1"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="1"
-          data-section-id="2"
-          design="Default"
-          text="Title Section 2"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="2"
-          data-section-id="3"
-          design="Default"
-          selected="true"
-          text="Title Section 3"
-          ui5-tab=""
-        >
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.1"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.1"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.2"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.2"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="3"
-            data-section-id="3.3"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 3.3"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-        <ui5-tab
-          data-index="3"
-          data-section-id="4"
-          design="Default"
-          text="Title Section 4"
-          ui5-tab=""
-        >
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.1"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.1"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.2"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.2"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <ui5-tab
-            data-is-sub-tab="true"
-            data-parent-id="4"
-            data-section-id="4.3"
-            design="Default"
-            slot="subTabs"
-            text="Title SubSection 4.3"
-            ui5-tab=""
-          >
-            <span
-              style="display: none;"
-            />
-          </ui5-tab>
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-      </ui5-tabcontainer>
-    </div>
-    <div
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageContent"
-    >
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-3"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          >
-            Title Section 3
-          </div>
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.1"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.1
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.1
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.2"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.2
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.2
-              </div>
-            </div>
-            <div
-              class="ObjectPageSubSection-objectPageSubSection"
-              data-component-name="ObjectPageSubSection"
-              id="ObjectPageSubSection-3.3"
-              role="region"
-              tabindex="-1"
-            >
-              <div
-                class="FlexBox-flexBox FlexBox-flexBoxDirectionRow FlexBox-justifyContentSpaceBetween FlexBox-alignItemsCenter FlexBox-flexWrapNoWrap ObjectPageSubSection-headerContainer"
-                data-component-name="ObjectPageSubSectionHeaderContainer"
-              >
-                <div
-                  aria-level="4"
-                  class="ObjectPageSubSection-subSectionTitle"
-                  data-component-name="ObjectPageSubSectionTitleText"
-                  role="heading"
-                >
-                  Title SubSection 3.3
-                </div>
-              </div>
-              <div
-                class="ObjectPageSubSection-subSectionContent"
-                data-component-name="ObjectPageSubSectionContent"
-              >
-                Content Section 3.3
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`ObjectPage Not crashing with 0 sections 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
+    class="ObjectPage-objectPage sapScrollBar ObjectPage-iconTabBarMode"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -949,189 +33,13 @@ exports[`ObjectPage Not crashing with 0 sections 1`] = `
       />
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
         aria-hidden="true"
         style="height: 0px;"
       />
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ObjectPage Not crashing with 1 section - Default Mode 1`] = `
-<DocumentFragment>
-  <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
-    data-component-name="ObjectPage"
-  >
-    <header
-      aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
-      data-component-name="ObjectPageTopHeader"
-      data-not-clickable="true"
-      role="banner"
-      style="grid-auto-columns: min-content 100%; display: grid;"
-    />
-    <div
-      class="ObjectPage-tabContainer"
-      data-component-name="ObjectPageTabContainer"
-      style="top: 0px;"
-    >
-      <ui5-tabcontainer
-        class="ObjectPage-tabContainerComponent"
-        collapsed="true"
-        content-background-design="Solid"
-        data-component-name="ObjectPageTabContainer"
-        data-sap-ui-fastnavgroup="true"
-        fixed="true"
-        header-background-design="Solid"
-        tab-layout="Standard"
-        tabs-overflow-mode="End"
-        ui5-tabcontainer=""
-      >
-        <ui5-tab
-          data-index="0"
-          data-section-id="1"
-          design="Default"
-          selected="true"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-      </ui5-tabcontainer>
-    </div>
-    <div
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageContent"
-    >
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-1"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          />
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            Test
-          </div>
-        </div>
-      </section>
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
-<DocumentFragment>
-  <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop ObjectPage-iconTabBarMode"
-    data-component-name="ObjectPage"
-  >
-    <header
-      aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
-      data-component-name="ObjectPageTopHeader"
-      data-not-clickable="true"
-      role="banner"
-      style="grid-auto-columns: min-content 100%; display: grid;"
-    />
-    <div
-      class="ObjectPage-tabContainer"
-      data-component-name="ObjectPageTabContainer"
-      style="top: 0px;"
-    >
-      <ui5-tabcontainer
-        class="ObjectPage-tabContainerComponent"
-        collapsed="true"
-        content-background-design="Solid"
-        data-component-name="ObjectPageTabContainer"
-        data-sap-ui-fastnavgroup="true"
-        fixed="true"
-        header-background-design="Solid"
-        tab-layout="Standard"
-        tabs-overflow-mode="End"
-        ui5-tabcontainer=""
-      >
-        <ui5-tab
-          data-index="0"
-          data-section-id="1"
-          design="Default"
-          selected="true"
-          ui5-tab=""
-        >
-          <span
-            style="display: none;"
-          />
-        </ui5-tab>
-      </ui5-tabcontainer>
-    </div>
-    <div
-      class="StdExtPadding-Desktop"
-      data-component-name="ObjectPageContent"
-    >
-      <div
-        aria-hidden="true"
-        style="height: 0px;"
-      />
-      <section
-        class="ObjectPageSection-section"
-        data-component-name="ObjectPageSection"
-        id="ObjectPageSection-1"
-        role="region"
-      >
-        <div
-          aria-level="3"
-          class="ObjectPageSection-titleContainer"
-          data-component-name="ObjectPageSectionTitleText"
-          role="heading"
-        >
-          <div
-            class="ObjectPageSection-title ObjectPageSection-uppercase"
-          />
-        </div>
-        <div
-          class="ObjectPageSection-sectionContent"
-        >
-          <div
-            class="ObjectPageSection-sectionContentInner"
-            data-component-name="ObjectPageSectionContent"
-          >
-            Test
-          </div>
-        </div>
-      </section>
       <div
         aria-hidden="true"
         style="height: 0px;"
@@ -1144,12 +52,12 @@ exports[`ObjectPage Not crashing with 1 section - IconTabBar Mode 1`] = `
 exports[`ObjectPage with IllustratedMessage 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1182,7 +90,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -1203,7 +111,7 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
       />
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1228,12 +136,12 @@ exports[`ObjectPage with IllustratedMessage 1`] = `
 exports[`ObjectPage with anchor-bar 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="false"
       role="banner"
@@ -1266,7 +174,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -1282,7 +190,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       style="top: 5px;"
     >
       <section
-        class="DynamicPageAnchorBar-anchorBarActionButton"
+        class="DynamicPageAnchorBar-container"
         data-component-name="DynamicPageAnchorBar"
         role="navigation"
       >
@@ -1441,7 +349,7 @@ exports[`ObjectPage with anchor-bar 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -1762,12 +670,12 @@ exports[`ObjectPage with anchor-bar 1`] = `
 exports[`ObjectPage with footer 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -1916,7 +824,7 @@ exports[`ObjectPage with footer 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -2237,12 +1145,12 @@ exports[`ObjectPage with footer 1`] = `
 exports[`ObjectPage with header 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -2253,7 +1161,7 @@ exports[`ObjectPage with header 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -2406,7 +1314,7 @@ exports[`ObjectPage with header 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -2707,12 +1615,12 @@ exports[`ObjectPage with header 1`] = `
 exports[`ObjectPage with img 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -2745,7 +1653,7 @@ exports[`ObjectPage with img 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <span
@@ -2918,7 +1826,7 @@ exports[`ObjectPage with img 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -3239,12 +2147,12 @@ exports[`ObjectPage with img 1`] = `
 exports[`ObjectPage with img 2`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -3277,7 +2185,7 @@ exports[`ObjectPage with img 2`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <ui5-avatar
@@ -3445,7 +2353,7 @@ exports[`ObjectPage with img 2`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -3766,12 +2674,12 @@ exports[`ObjectPage with img 2`] = `
 exports[`ObjectPage with title 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -3942,7 +2850,7 @@ exports[`ObjectPage with title 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div
@@ -4243,12 +3151,12 @@ exports[`ObjectPage with title 1`] = `
 exports[`ObjectPage with title, header & footer 1`] = `
 <DocumentFragment>
   <div
-    class="ObjectPage-objectPage sapScrollBar ObjectPage-Desktop"
+    class="ObjectPage-objectPage sapScrollBar"
     data-component-name="ObjectPage"
   >
     <header
       aria-roledescription="Object Page header"
-      class="ObjectPage-header StdExtPadding-Desktop"
+      class="ObjectPage-header"
       data-component-name="ObjectPageTopHeader"
       data-not-clickable="true"
       role="banner"
@@ -4281,7 +3189,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       data-component-name="DynamicPageHeader"
     >
       <div
-        class="ObjectPage-headerContainer StdExtPadding-Desktop"
+        class="ObjectPage-headerContainer"
         data-component-name="ObjectPageHeaderContainer"
       >
         <div
@@ -4444,7 +3352,7 @@ exports[`ObjectPage with title, header & footer 1`] = `
       </ui5-tabcontainer>
     </div>
     <div
-      class="StdExtPadding-Desktop"
+      class="ObjectPage-content"
       data-component-name="ObjectPageContent"
     >
       <div

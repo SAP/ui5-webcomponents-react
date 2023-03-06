@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Carousel } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Carousel', () => {
   it('Basic Test (generated)', () => {

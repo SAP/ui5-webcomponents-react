@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { SplitButton } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('SplitButton', () => {
   it('Basic Test (generated)', () => {

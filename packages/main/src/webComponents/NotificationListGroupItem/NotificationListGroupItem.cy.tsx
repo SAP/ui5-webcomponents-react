@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { NotificationListGroupItem } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('NotificationListGroupItem', () => {
   it('Basic Test (generated)', () => {

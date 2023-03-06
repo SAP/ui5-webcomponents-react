@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { UploadCollectionItem } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('UploadCollectionItem', () => {
   it('Basic Test (generated)', () => {

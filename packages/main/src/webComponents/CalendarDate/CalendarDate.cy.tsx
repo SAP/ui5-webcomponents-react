@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { CalendarDate } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('CalendarDate', () => {
   it('Basic Test (generated)', () => {

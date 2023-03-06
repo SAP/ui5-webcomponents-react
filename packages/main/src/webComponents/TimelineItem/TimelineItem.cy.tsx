@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { TimelineItem } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('TimelineItem', () => {
   it('Basic Test (generated)', () => {

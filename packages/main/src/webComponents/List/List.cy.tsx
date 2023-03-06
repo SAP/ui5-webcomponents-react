@@ -1,8 +1,8 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Button } from '../Button';
 import { CustomListItem } from '../CustomListItem';
 import { StandardListItem } from '../StandardListItem';
 import { List } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('List', () => {
   it('Basic Test (generated)', () => {

@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ColorPalette } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ColorPalette', () => {
   it('Basic Test (generated)', () => {
