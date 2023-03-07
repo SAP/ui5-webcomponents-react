@@ -81,12 +81,12 @@ export interface FilterGroupItemPropTypes extends CommonProps {
 export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes>((props, ref) => {
   const classes = useStyles();
   const {
-    groupName,
+    groupName = 'default',
     considerGroupName,
-    label,
+    label = '',
     labelTooltip,
-    required,
-    visible,
+    required = false,
+    visible = true,
     visibleInFilterBar,
     children,
     loading,
