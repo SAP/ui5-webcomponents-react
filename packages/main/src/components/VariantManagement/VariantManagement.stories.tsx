@@ -101,6 +101,7 @@ export const WithCustomValidation: Story = {
               <div>Only alphanumeric and space characters allowed!</div>
             ) : undefined,
             onInput: handleSaveViewInput,
+            // @ts-expect-error: data- attributes are allowed on Input
             'data-testid': 'alphanumeric'
           }}
         >
@@ -113,6 +114,7 @@ export const WithCustomValidation: Story = {
             valueState: valueStateManageViews,
             valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
             onInput: handleManageViewInput,
+            // @ts-expect-error: data- attributes are allowed on Input
             'data-testid': '12chars'
           }}
         >
