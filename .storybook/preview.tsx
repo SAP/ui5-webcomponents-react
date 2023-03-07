@@ -120,6 +120,11 @@ const preview: Preview = {
     }
   },
   parameters: {
+    docs: {
+      source: {
+        excludeDecorators: true
+      }
+    },
     viewMode: 'docs',
     actions: { argTypesRegex: '^on.*' },
     controls: {
