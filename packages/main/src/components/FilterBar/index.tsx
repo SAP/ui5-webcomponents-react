@@ -207,7 +207,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     hideToolbar,
     filterBarCollapsed,
     considerGroupName,
-    filterContainerWidth,
+    filterContainerWidth = '13.125rem',
     activeFiltersCount,
     showClearOnFB,
     showGoOnFB,
@@ -220,9 +220,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     slot,
     search,
     header,
-    as,
+    as = 'div',
     portalContainer,
-
     onToggleFilters,
     onFiltersDialogOpen,
     onAfterFiltersDialogOpen,
@@ -670,12 +669,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     </>
   );
 });
-
-FilterBar.defaultProps = {
-  as: 'div',
-  filterContainerWidth: '13.125rem',
-  portalContainer: document.body
-};
 
 FilterBar.displayName = 'FilterBar';
 export { FilterBar };

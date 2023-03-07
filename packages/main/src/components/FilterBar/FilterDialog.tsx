@@ -35,6 +35,7 @@ import {
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { stopPropagation } from '../../internal/stopPropagation';
 import {
   Bar,
@@ -193,12 +194,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const fieldText = i18nBundle.getText(FIELD);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
-  useEffect(() => {
-    if (open) {
-      dialogRef.current.show();
-    }
-  }, [open]);
-
   const handleSearch = (e) => {
     if (handleDialogSearch) {
       handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
@@ -333,6 +328,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     }
   }, [forceRequired]);
 
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
+
   const renderGroups = () => {
     const groups = {};
     Children.forEach(renderChildren(), (child) => {
@@ -369,6 +369,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   return createPortal(
     <Dialog
+      open={open}
       ref={dialogRef}
       data-component-name="FilterBarDialog"
       onAfterClose={handleClose}
@@ -485,6 +486,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       </Table>
       {!isListView && renderGroups()}
     </Dialog>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };
