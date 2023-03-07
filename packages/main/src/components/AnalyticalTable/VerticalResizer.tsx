@@ -3,6 +3,7 @@ import React, { MutableRefObject, useCallback, useEffect, useRef, useState } fro
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults';
+import { useCanRenderPortal } from '../../internal/ssr';
 
 const verticalResizerStyles = {
   container: {
@@ -154,6 +155,11 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     };
   }, []);
 
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
+
   return (
     <div
       className={classes.container}
@@ -170,7 +176,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
             className={classes.resizer}
             style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
           />,
-          portalContainer
+          portalContainer ?? document.body
         )}
     </div>
   );

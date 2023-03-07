@@ -88,7 +88,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { tagNamesWhichShouldNotSelectARow } from './util';
+import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
 export interface AnalyticalTableColumnDefinition {
@@ -754,10 +754,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     (extensionRef.current?.offsetHeight ?? 0) +
     (headerRef.current?.offsetHeight ?? 0);
 
-  const calcRowHeight = parseInt(
-    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
-  );
-  const internalRowHeight = rowHeight ?? calcRowHeight;
+  const internalRowHeight = getRowHeight(rowHeight, tableRef);
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
@@ -1195,8 +1192,7 @@ AnalyticalTable.defaultProps = {
   alternateRowColor: false,
   overscanCountHorizontal: 5,
   visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
-  alwaysShowSubComponent: false,
-  portalContainer: document.body
+  alwaysShowSubComponent: false
 };
 
 export { AnalyticalTable };
