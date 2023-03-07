@@ -216,7 +216,7 @@ export const PluginIndeterminateRowSelection: Story = {
         }Select Sub-Rows`}</ToggleButton>
         <AnalyticalTable
           selectionMode={AnalyticalTableSelectionMode.MultiSelect}
-          data={args.data}
+          data={dataTree}
           columns={args.columns}
           isTreeTable
           tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
