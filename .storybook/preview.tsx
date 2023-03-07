@@ -135,3 +135,5 @@ const preview: Preview = {
     chromatic: { pauseAnimationAtEnd: true }
   }
 };
+
+export default preview;
