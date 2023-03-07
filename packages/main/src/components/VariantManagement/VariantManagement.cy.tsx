@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { TitleLevel } from '../../enums';
-import { VariantManagementWithCustomValidation } from './CodeGen';
 import { VariantItem } from './VariantItem';
+import { WithCustomValidation as WithCustomValidationStory } from './VariantManagement.stories';
 import { VariantManagement, VariantManagementPropTypes } from './index';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+
+const WithCustomValidation = WithCustomValidationStory.render;
 
 const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
@@ -96,7 +98,7 @@ describe('VariantManagement', () => {
 
   it('saveViewInputProps & manageViewsInputProps', () => {
     // manageViewsInputProps
-    cy.mount(<VariantManagementWithCustomValidation />);
+    cy.mount(<WithCustomValidation />);
     cy.contains('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.get('[ui5-dialog]').should('be.visible');
@@ -113,7 +115,8 @@ describe('VariantManagement', () => {
     cy.contains('Max 12 charB').should('be.visible');
 
     //saveViewInputProps
-    cy.mount(<VariantManagementWithCustomValidation selectedByIndex={0} />);
+    // @ts-expect-error: not a real prop, just for testing
+    cy.mount(<WithCustomValidation selectedByIndex={0} />);
     cy.contains('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.get('[ui5-dialog]').should('be.visible');

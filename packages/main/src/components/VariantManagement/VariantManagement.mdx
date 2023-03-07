@@ -1,9 +1,45 @@
-import React, { useRef, useState } from 'react';
-import { ValueState } from '../../enums';
-import { VariantManagement } from './index';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { MessageStrip } from '../../webComponents/index';
 import { VariantItem } from './VariantItem';
+import * as ComponentStories from './VariantManagement.stories';
 
-export const VariantManagementWithCustomValidation = ({ selectedByIndex = 1 }) => {
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+# More Examples
+
+## VariantManagement with custom Input
+
+You can customize the inputs inside the configuration dialogs ("Save View" and "Manage Views") by leveraging the corresponding `inputProps` prop (`saveViewInputProps` and `manageViewsInputProps`) of the `VariantItem` component.
+These props accept props of the `Input` component with which you are able to overwrite internal implementations. E.g. `valueState` and `valueState` message.
+
+**Note:** To prevent internal logic from being executed on save click, you can mark the `onInput` event of the corresponding `Input` component as invalid by setting `event.isInvalid = true` inside the respective handler.
+
+<MessageStrip hideCloseButton>It is possible to overwrite internally used props. Please use with caution!</MessageStrip>
+
+<Canvas of={ComponentStories.WithCustomValidation} sourceState="none" />
+
+**Code Example**
+
+<details style={{ marginBlockEnd: "2rem" }}>
+
+<summary>Show Code</summary>
+
+```jsx
+export const VariantManagementWithCustomValidation = () => {
   const [valueStateSaveView, setValueStateSaveView] = useState(undefined);
   const [customSaveViewVariantText, setCustomSaveViewVariantText] = useState(
     'Only alphanumeric chars in Save View input'
@@ -50,26 +86,23 @@ export const VariantManagementWithCustomValidation = ({ selectedByIndex = 1 }) =
     <VariantManagement onSaveAs={handleSaveAs} onSaveManageViews={handleSaveManageViews}>
       <VariantItem
         data-custom-save-view
-        selected={selectedByIndex === 0}
         saveViewInputProps={{
           valueState: valueStateSaveView,
           valueStateMessage: valueStateSaveView ? (
             <div>Only alphanumeric and space characters allowed!</div>
           ) : undefined,
-          onInput: handleSaveViewInput,
-          'data-testid': 'alphanumeric'
+          onInput: handleSaveViewInput
         }}
       >
         {customSaveViewVariantText}
       </VariantItem>
       <VariantItem
         data-custom-manage-views
-        selected={selectedByIndex === 1}
+        selected
         manageViewsInputProps={{
           valueState: valueStateManageViews,
           valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
-          onInput: handleManageViewInput,
-          'data-testid': '12chars'
+          onInput: handleManageViewInput
         }}
       >
         {customManageViewsVariantText}
@@ -77,3 +110,16 @@ export const VariantManagementWithCustomValidation = ({ selectedByIndex = 1 }) =
     </VariantManagement>
   );
 };
+```
+
+</details>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## VariantItem
+
+<Description of={VariantItem} />
+
+<ArgTypes of={VariantItem} />
+
+<Footer />

@@ -3,8 +3,7 @@ import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { ValueState } from '../../enums/ValueState';
+import { ButtonDesign, ValueState } from '../../enums';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
@@ -19,13 +18,7 @@ import {
   VIEW
 } from '../../i18n/i18n-defaults';
 import { trimAndRemoveSpaces } from '../../internal/utils';
-import { Button } from '../../webComponents/Button';
-import { CheckBox } from '../../webComponents/CheckBox';
-import { Icon } from '../../webComponents/Icon';
-import { Input } from '../../webComponents/Input';
-import { RadioButton } from '../../webComponents/RadioButton';
-import { TableCell } from '../../webComponents/TableCell';
-import { TableRow } from '../../webComponents/TableRow';
+import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents';
 import { Text } from '../Text';
 import { VariantItemPropTypes } from './VariantItem';
 
