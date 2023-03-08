@@ -314,7 +314,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
         data-component-name="DynamicPageContent"
         className={classes.contentContainer}
         style={{
-          paddingBottom: footer ? '1rem' : 0
+          paddingBlockEnd: footer ? '1rem' : 0
         }}
       >
         {children}
