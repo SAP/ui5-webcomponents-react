@@ -20,9 +20,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <VariantManagement {...args}>
-        <VariantItem manageViewsInputProps={{ valueState: 'Error', onInput: console.log }}>
-          Default VariantItem
-        </VariantItem>
+        <VariantItem>Default VariantItem</VariantItem>
         <VariantItem selected>Selected</VariantItem>
         <VariantItem author="SAP">Author</VariantItem>
         <VariantItem favorite>Favorite</VariantItem>

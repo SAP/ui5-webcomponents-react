@@ -50,7 +50,6 @@ describe('SplitterLayout', () => {
     }
     ['ltr', 'rtl'].forEach((dir) => {
       [false, true].forEach((vertical) => {
-        console.log(dir);
         cy.viewport(2000, 2000);
         cy.mount(<TestComp vertical={vertical} dir={dir} />);
 

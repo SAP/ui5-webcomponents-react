@@ -297,7 +297,6 @@ describe('Toolbar', () => {
       let background = 'rgba(0, 0, 0, 0)'; // transparent
       let color = 'rgb(0, 0, 0)';
 
-      console.log(design);
       switch (design) {
         case 'Info':
           height = '32px'; // 2rem
