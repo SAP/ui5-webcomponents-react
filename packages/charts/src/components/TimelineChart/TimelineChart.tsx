@@ -87,8 +87,8 @@ interface TimelineChartProps extends CommonProps {
 
   /**
    * The label for the columns if the chart is separated into discrete columns
-   * based on if `isDiscrete` is true. If set, the lenght of this array
-   * <strong>must</strong> be equal to the `totalDuration`. If not set, an
+   * based on if `isDiscrete` is true. If set, the length of this array
+   * __must__ be equal to the `totalDuration`. If not set, an
    * array of numbers with size equal to the `totalDuration` and with values
    * starting from the value __start__ prop of the `TimelineChart` will be used.
    */
