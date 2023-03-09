@@ -51,7 +51,7 @@ export interface SplitterLayoutPropTypes extends CommonProps {
  * layout will be arranged in that way. In order to split vertically and horizontally at the same time, splitters need
  * to be nested.
  * By adding or changing `SplitterElement`s to the `SplitterLayout` that make up the content areas, the size can be changed
- * programmatically. Additionally the content areas can be made non-resizable individually and a minimal size (in px)
+ * programmatically. Additionally, the content areas can be made non-resizable individually and a minimal size (in px)
  * can be set.
  * The splitter bars are focusable to enable resizing of the content areas via keyboard. The size of the content areas
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
