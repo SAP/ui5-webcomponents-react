@@ -1,46 +1,92 @@
-import React from 'react';
-import { SplitterElement, SplitterLayout, Label, Button } from '../..';
+import { useState } from 'react';
+import { SplitterElement, SplitterLayout, Label, Button, SplitterLayoutPropTypes } from '../..';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('SplitterLayout', () => {
-  it('Reset on size change', () => {
-    cy.mount(
-      <SplitterLayout
-        style={{
-          width: '100vw',
-          height: '100vh'
-        }}
-        options={{ resetOnSizeChange: true }}
-      >
-        <SplitterElement size="70%" data-testid="se1">
-          <Label>Left</Label>
-        </SplitterElement>
-        <SplitterElement size="30%" data-testid="se2">
-          <Label>Right</Label>
-        </SplitterElement>
-      </SplitterLayout>
-    );
+  it('Splitter Move & Reset', () => {
+    const TestComp = ({ vertical, dir }: { vertical: SplitterLayoutPropTypes['vertical']; dir: string }) => {
+      const [mount, setMount] = useState(false);
+      const [dep, setDep] = useState(false);
+      return (
+        <SplitterLayout
+          dir={dir}
+          vertical={vertical}
+          style={{
+            width: '100vw',
+            height: '100vh'
+          }}
+          options={{ resetOnSizeChange: true, resetOnChildrenChange: true, resetOnCustomDepsChange: [dep] }}
+        >
+          <SplitterElement size="70%" data-testid="se1">
+            <Label>Left</Label>
+            <Button onClick={() => setMount(true)}>Add child</Button>
+            <Button onClick={() => setDep(true)}>Trigger dep</Button>
+          </SplitterElement>
+          <SplitterElement size={mount ? '25%' : '30%'} data-testid="se2">
+            <Label>Right</Label>
+          </SplitterElement>
+          {mount && (
+            <SplitterElement size="5%" data-testid="se3">
+              Additional Child
+            </SplitterElement>
+          )}
+        </SplitterLayout>
+      );
+    };
 
-    cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-    cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
-
-    cy.findByRole('separator').click();
-    cy.wait(50);
-    for (let i = 0; i < 30; i++) {
-      cy.findByRole('separator').trigger('keydown', { code: 'ArrowLeft', force: true });
+    function moveSpacer(dir, vertical) {
+      cy.findAllByRole('separator').eq(0).click();
       cy.wait(50);
+      const rtlSafeLeft = `Arrow${dir === 'rtl' && !vertical ? 'Right' : 'Left'}`;
+      const rtlSafeUp = `Arrow${dir === 'rtl' && !vertical ? 'Down' : 'Up'}`;
+      for (let i = 0; i < 5; i++) {
+        cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeLeft, force: true });
+        cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeLeft, force: true });
+        cy.wait(50);
+        cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeUp, force: true });
+        cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeUp, force: true });
+        cy.wait(50);
+      }
     }
-    cy.findByRole('separator').trigger('keyup', { code: 'ArrowLeft', force: true });
+    ['ltr', 'rtl'].forEach((dir) => {
+      [false, true].forEach((vertical) => {
+        console.log(dir);
+        cy.viewport(2000, 2000);
+        cy.mount(<TestComp vertical={vertical} dir={dir} />);
 
-    cy.findByTestId('se1').should('have.css', 'flex', '0 0 728px');
-    cy.findByTestId('se2').should('have.css', 'flex', '0 0 1176px');
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
 
-    cy.viewport(1024, 768);
+        moveSpacer(dir, vertical);
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 1184px');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 800px');
 
-    cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-    cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
+        cy.findByText('Trigger dep').click({ force: true });
+
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
+
+        moveSpacer(dir, vertical);
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 1184px');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 800px');
+
+        cy.findByText('Add child').click({ force: true });
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 calc(25% - 16px)');
+        cy.findByTestId('se3').should('have.css', 'flex', '0 0 5%');
+
+        moveSpacer(dir, vertical);
+
+        cy.viewport(1000, 1000);
+
+        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 0 calc(25% - 16px)');
+        cy.findByTestId('se3').should('have.css', 'flex', '0 0 5%');
+      });
+    });
   });
 
-  it('Vertical SplitterLayout w/ multiple SplitterElements', () => {
+  it('SplitterLayout w/ multiple SplitterElements', () => {
     const click = cy.spy().as('click');
     [true, false].forEach((vertical) => {
       cy.mount(
@@ -71,7 +117,7 @@ describe('SplitterLayout', () => {
         .should('have.css', 'flex', '0 0 400px')
         .should('have.css', vertical ? 'min-height' : 'min-width', '300px');
       cy.findByTestId('se3')
-        .should('have.css', 'flex', vertical ? '0 0 800px' : '0 0 200px')
+        .should('have.css', 'flex', '0 0 200px')
         .should('have.css', vertical ? 'min-height' : 'min-width', '0px');
     });
     cy.get('@click').should('have.been.calledTwice');
@@ -82,25 +128,5 @@ describe('SplitterLayout', () => {
     cy.findByTestId('sl').should('not.be.visible').should('exist');
   });
 
-  //todo wip
-  it('Splitter click, move, focus - vertical', () => {
-    cy.mount(
-      <div style={{ width: '800px', height: '800px' }}>
-        <SplitterLayout vertical data-testid={'sl'}>
-          <SplitterElement data-testid={'se1'}>
-            <div>Content 1</div>
-          </SplitterElement>
-          <SplitterElement data-testid={'se2'}>
-            <div>Content 2</div>
-          </SplitterElement>
-          <SplitterElement data-testid={'se3'}>
-            <div> Content 3</div>
-          </SplitterElement>
-          <SplitterElement data-testid={'se4'}>
-            <div> Content 4</div>
-          </SplitterElement>
-        </SplitterLayout>
-      </div>
-    );
-  });
+  cypressPassThroughTestsFactory(SplitterLayout, { children: <SplitterElement>Content</SplitterElement> });
 });

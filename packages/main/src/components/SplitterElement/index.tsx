@@ -65,10 +65,14 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
     const elementObserver = new ResizeObserver(([element]) => {
       if (element.target.getBoundingClientRect().width !== 0 && !flexBasisApplied) {
         const resetSafariStyles = Device.isSafari() ? { width: 'unset' } : {};
-        setFlexStyles({ flex: `0 0 ${element.target.getBoundingClientRect().width}px`, ...resetSafariStyles });
+        setFlexStyles({
+          flex: `0 0 ${element.target.getBoundingClientRect()[vertical ? 'height' : 'width']}px`,
+          ...resetSafariStyles
+        });
         setFlexBasisApplied(true);
       }
     });
+
     if (size === 'auto' && splitterElementRef.current) {
       elementObserver.observe(splitterElementRef.current);
     } else {
@@ -78,7 +82,7 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
     return () => {
       elementObserver.disconnect();
     };
-  }, [size, flexBasisApplied]);
+  }, [size, flexBasisApplied, vertical]);
 
   useIsomorphicLayoutEffect(() => {
     if (reset) {
