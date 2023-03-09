@@ -51,7 +51,6 @@ body:
     validations:
       required: false
 
-
   - type: markdown
     attributes:
       value: '## Environment Info'
@@ -85,7 +84,7 @@ body:
       label: 'Operating System'
     validations:
       required: false
-      
+
   - type: markdown
     attributes:
       value: '## Additional Information'
@@ -100,3 +99,19 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Privacy Policy
+        Please don't disclose any internal or sensitive information like: internal urls, login credentials, screenshots of applications or features in development.
+        This is a public GitHub repository and all the information is publicly available.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Declaration
+      description: By submitting this issue, I confirm to follow the recommendation not to disclose any internal or sensitive information.
+      options:
+        - label: I’m not disclosing any internal or sensitive information.
+    validations:
+      required: true
