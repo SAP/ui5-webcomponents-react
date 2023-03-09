@@ -47,5 +47,5 @@ body:
       description: By submitting this issue, I confirm to follow the recommendation not to disclose any internal or sensitive information.
       options:
         - label: I’m not disclosing any internal or sensitive information.
-      validations:
-        required: true
+    validations:
+      required: true
