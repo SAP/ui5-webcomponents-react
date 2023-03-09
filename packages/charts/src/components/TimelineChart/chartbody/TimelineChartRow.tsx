@@ -29,7 +29,14 @@ const TimelineChartRow = ({
   rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 11) + 1})`;
 
   return (
-    <svg x="0" y={`${rowIndex * rowHeight}`} width="100%" height={`${rowHeight}`} style={{ pointerEvents: 'none' }}>
+    <svg
+      x="0"
+      y={`${rowIndex * rowHeight}`}
+      width="100%"
+      height={`${rowHeight}`}
+      style={{ pointerEvents: 'none' }}
+      data-component-name="TimelineChartRow"
+    >
       {rowData.tasks?.map((task, index) => {
         return (
           <TimelineTask
@@ -64,6 +71,8 @@ const TimelineChartRow = ({
     </svg>
   );
 };
+
+TimelineChartRow.displayName = 'TimelineChartRow';
 
 interface TimelineTaskProps {
   /**
@@ -159,6 +168,8 @@ const TimelineTask = ({
     />
   );
 };
+
+TimelineTask.displayName = 'TimelineTask';
 
 interface TimelineMilestoneProps {
   /**
@@ -282,6 +293,8 @@ const TimelineMilestone = ({
   );
 };
 
+TimelineMilestone.displayName = 'TimelineMilestone';
+
 interface TimelineChartRowGroupProps {
   dataset: ITimelineChartRow[];
   rowHeight: number;
@@ -323,5 +336,7 @@ const TimelineChartRowGroup = ({
     </svg>
   );
 };
+
+TimelineChartRowGroup.displayName = 'TimelineChartRowGroup';
 
 export { TimelineChartRowGroup };
