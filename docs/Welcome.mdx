@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/blocks';
-import { MessageStrip, Link } from '@ui5/webcomponents-react';
 import { Footer } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+import { Link, MessageStrip } from '@ui5/webcomponents-react';
+import { VersionTable } from '@sb/components/VersionTable';
 
 <Meta title="Getting Started" />
 
@@ -71,6 +72,8 @@ First of all, you need to add the `@ui5/webcomponents-react` dependency to your 
 ```sh
 npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
+
+<VersionTable />
 
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/index.js`:
