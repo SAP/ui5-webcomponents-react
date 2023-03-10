@@ -109,7 +109,7 @@ export const CommandsAndQueries = ({ api }: { api: CommandsAndQueries[] }) => {
         </code>
         <div>
           <Markdown>
-            {signatures[0]?.comment.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
+            {signatures[0]?.comment.summary.reduce((acc, cur) => `${acc}${cur.text.replaceAll('\n', '<br>')}`, '')}
           </Markdown>
           {signatures[0]?.comment?.blockTags
             ?.filter((blockTag) => {
@@ -149,7 +149,7 @@ export const CommandsAndQueries = ({ api }: { api: CommandsAndQueries[] }) => {
                         </code>
                       </td>
                       <td>
-                        {param.comment?.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
+                        {param.comment?.summary.reduce((acc, cur) => `${acc}${cur.text.replaceAll('\n', '<br>')}`, '')}
                       </td>
                     </tr>
                   ))}
