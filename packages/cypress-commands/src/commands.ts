@@ -17,7 +17,7 @@ declare global {
        * The delay time can vary from environment to environment.
        *
        * @param {string} text Text that will be typed into the input.
-       * @param {number} [delay=500] Delay in ms to wait for the web-component to be ready.
+       * @param {number} [delay=500] Delay in ms to wait for the web-component to be ready. Default: 500
        * @example cy.get('[ui5-combobox]').typeIntoUi5InputWithDelay('Hello World', 1000);
        */
       typeIntoUi5InputWithDelay(text: string, delay?: number, options?: Partial<TypeOptions>): Chainable<Element>;
