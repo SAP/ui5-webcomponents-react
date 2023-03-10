@@ -3,7 +3,7 @@
   "description": "Cypress Custom Commands and Queries for UI5 Web Components",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "version": "1.10.0",
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     ".": {
@@ -17,7 +17,7 @@
     "directory": "packages/cypress-commands"
   },
   "scripts": {
-    "clean": "rimraf dist && rimraf docs && rimraf api.json"
+    "clean": "rimraf dist docs api.json"
   },
   "peerDependencies": {
     "cypress": "^12.0.0"
