@@ -3,11 +3,24 @@ declare global {
   namespace Cypress {
     interface Chainable {
       /**
-       * Types a value into `ui5-input`.
+       * Types a value into a ui5-webcomponent that offers a typeable input field.
+       *
        * @param {string} text Text that will be typed into the input.
        * @example cy.get('[ui5-input]').typeIntoUi5Input('Hello World');
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
+      /**
+       * Types a value with a delay into an ui5-webcomponent that offers a typeable input field.
+       *
+       * __Note:__ Use this command if you render a component that should show suggestions while typing (e.g. `ComboBox`) but the corresponding popover does not open.
+       * This command waits for the appropriate delay (in ms), giving the web component time to define all necessary customElements and boot web components.
+       * The delay time can vary from environment to environment.
+       *
+       * @param {string} text Text that will be typed into the input.
+       * @param {number} [delay=500] Delay in ms to wait for the web-component to be ready.
+       * @example cy.get('[ui5-combobox]').typeIntoUi5InputWithDelay('Hello World', 1000);
+       */
+      typeIntoUi5InputWithDelay(text: string, delay?: number, options?: Partial<TypeOptions>): Chainable<Element>;
 
       /**
        * Types a value into `ui5-textarea`.
@@ -55,6 +68,17 @@ Cypress.Commands.add('typeIntoUi5Input', { prevSubject: 'element' }, (subject, t
     .findShadowInput()
     .type(text, { force: true, ...options });
 });
+
+Cypress.Commands.add(
+  'typeIntoUi5InputWithDelay',
+  { prevSubject: 'element' },
+  (subject, text, delay = 500, options = {}) => {
+    cy.wrap(subject)
+      .findShadowInput()
+      .wait(delay)
+      .type(text, { force: true, ...options });
+  }
+);
 
 Cypress.Commands.add('typeIntoUi5TextArea', { prevSubject: 'element' }, (subject, text, options = {}) => {
   cy.wrap(subject)

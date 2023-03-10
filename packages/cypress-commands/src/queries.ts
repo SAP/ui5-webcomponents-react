@@ -2,14 +2,6 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
-      // private
-      /**
-       * Returns the internal input element inside the shadow-root.
-       *
-       * @private
-       * @example cy.get('[ui5-checkbox]').findShadowInput();
-       */
-      findShadowInput(): Chainable<Element>;
       // TabContainer
       /**
        * Returns the tab of the `ui5-tabcontainer` by its text.
@@ -32,6 +24,14 @@ declare global {
        * @param {string} text The text of the sub-tab that should be queried.
        */
       findUi5TabOpenPopoverButtonByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
+      // private
+      /**
+       * Returns the internal input element inside the shadow-root.
+       *
+       * @private
+       * @example cy.get('[ui5-checkbox]').findShadowInput();
+       */
+      findShadowInput(): Chainable<Element>;
     }
   }
 }
