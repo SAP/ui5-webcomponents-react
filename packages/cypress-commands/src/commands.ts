@@ -3,21 +3,21 @@ declare global {
   namespace Cypress {
     interface Chainable {
       /**
-       * Types a value into `ui5-input`
-       * @param text='Hello World'
+       * Types a value into `ui5-input`.
+       * @param {string} text Text that will be typed into the input.
        * @example cy.get('[ui5-input]').typeIntoUi5Input('Hello World');
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
 
       /**
-       * Types a value into `ui5-textarea`
-       * @param {string} text
+       * Types a value into `ui5-textarea`.
+       * @param {string} text Text that will be typed into the text-area.
        * @example cy.get('[ui5-textarea]').typeIntoUi5TextArea('Hello World');
        */
       typeIntoUi5TextArea(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
 
       /**
-       * Toggles the state of a `ui5-checkbox`
+       * Toggles the state of a `ui5-checkbox`.
        * @example cy.get('[ui5-checkbox]').toggleUi5Checkbox();
        */
       toggleUi5Checkbox(): Chainable<Element>;
@@ -42,7 +42,7 @@ declare global {
 
       /**
        * Click on a list item of the `List` component by text.
-       * @param {string} text the text of the list item
+       * @param {string} text The text of the list item that should be clicked.
        * @example cy.clickUi5ListItemByText("List Item")
        */
       clickUi5ListItemByText(text: string): Chainable<Element>;

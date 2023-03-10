@@ -1,18 +1,19 @@
 .footer {
-    container: footer / inline-size;
+  container: footer / inline-size;
 }
 
 .content {
-    min-height: var(--_ui5_bar_base_height);
-    display: flex;
-    align-items: center;
-    background-olor: var(--sapPageFooter_Background);
-    border-top: 0.0625rem solid var(--sapPageFooter_BorderColor);
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: auto;
-    overflow: hidden;
+  min-height: var(--_ui5_bar_base_height);
+  width: calc(100% - 2rem);
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--sapPageFooter_Background);
+  border-top: 0.0625rem solid var(--sapPageFooter_BorderColor);
+  position: fixed;
+  bottom: 0;
+  height: var(--_ui5_bar_base_height);
+  overflow: hidden;
 }
 
 @container (max-width: 599px) {

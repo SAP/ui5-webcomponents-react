@@ -8,13 +8,9 @@ yarn-error.log
 .cache
 .out
 lerna-debug.log
-packages/main/scripts/wrapperGeneration/json
 .awcache
-examples/seed-test
-scripts/web-component-wrappers/interfaces.json
 /temp
 *.tsbuildinfo
-packages/main/tmp
 
 .pnp.*
 .yarn/*
@@ -23,3 +19,13 @@ packages/main/tmp
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+packages/cypress-commands/docs
+packages/cypress-commands/api.json
+
+packages/main/scripts/wrapperGeneration/json
+packages/main/tmp
+
+examples/seed-test
+
+scripts/web-component-wrappers/interfaces.json

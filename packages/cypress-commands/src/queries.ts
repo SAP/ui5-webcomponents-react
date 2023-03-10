@@ -12,22 +12,24 @@ declare global {
       findShadowInput(): Chainable<Element>;
       // TabContainer
       /**
-       * Returns the first tab by its position inside a `ui5-tabcontainer`.
+       * Returns the tab of the `ui5-tabcontainer` by its text.
        *
        * __Note:__ Has to be chained to a `ui5-tabcontainer`.
        * __Note:__ This will not work for sub-tabs.
        *
        * @example cy.get('[ui5-tab-container]').findUi5TabByText('Tab 1');
+       * @param {string} text The text of the tab that should be queried.
        */
       findUi5TabByText(text: string): Chainable<Element>;
 
       /**
-       * Returns the open-popover button for sub-tabs.
+       * Returns the open-popover button for sub-tabs by its text.
        *
        * __Note:__ Has to be chained to a `ui5-tabcontainer`.
        * __Note:__ The tab only renders a button fur sub-tabs if the tab itself has content, otherwise the whole tab is responsible for opening the popover.
        *
-       * @example cy.get('[ui5-tab-container]').findUi5TabOpenPopoverButtonByText('Tab 1');
+       * @example cy.get('[ui5-tab-container]').findUi5TabOpenPopoverButtonByText('Tab 1.1');
+       * @param {string} text The text of the sub-tab that should be queried.
        */
       findUi5TabOpenPopoverButtonByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
     }
