@@ -72,7 +72,7 @@ const TimelineChartColumnLabel = ({
         : Array.from(Array(totalDuration).keys()).map((num) => `${num + start}`);
       setLabelArray(newLabelArray);
     }
-  }, [isDiscrete]);
+  }, [isDiscrete, columnLabels, start, totalDuration]);
 
   const style: CSSProperties = {
     width: width,
@@ -83,7 +83,7 @@ const TimelineChartColumnLabel = ({
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
 
   return (
-    <div className={classes.columnLabel} style={style}>
+    <div className={classes.columnLabel} style={style} data-component-name="TimeLineChartColumnLabel">
       <div
         className={classes.columnTitlePlaceHolder}
         style={{
