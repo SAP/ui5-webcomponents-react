@@ -107,58 +107,60 @@ export const CommandsAndQueries = ({ api }: { api: CommandsAndQueries[] }) => {
           {signatures[0]?.type?.name}
           {`<${typeArgumentsString(signatures[0].type?.typeArguments)}>`}
         </code>
-        <Markdown>
-          {signatures[0]?.comment.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
-        </Markdown>
-        {signatures[0]?.comment?.blockTags
-          ?.filter((blockTag) => {
-            return blockTag.tag === '@example';
-          })
-          .map((example, index) => {
-            return (
-              <>
-                {index === 0 && <b>Example</b>}
-                <Markdown>{example.content.reduce((acc, cur) => `${acc}${cur.text}`, '')}</Markdown>
-              </>
-            );
-          })}
-        {parameters?.length && (
-          <>
-            <b>Parameters</b>
-            <table>
-              <thead>
-                <tr>
-                  <td>Name</td>
-                  <td>Type</td>
-                  <td>Description</td>
-                </tr>
-              </thead>
-              <tbody>
-                {parameters?.map((param) => (
-                  <tr key={param.name}>
-                    <td>
-                      {param.name}
-                      {param.flags?.isOptional && '?'}
-                    </td>
-                    <td>
-                      <code>
-                        {param.type?.name}
-                        {param.type?.typeArguments &&
-                          `<${param.type?.typeArguments && typeArgumentsString(param.type.typeArguments)}>`}
-                      </code>
-                    </td>
-                    <td>
-                      {param.comment?.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
-                    </td>
+        <div>
+          <Markdown>
+            {signatures[0]?.comment.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
+          </Markdown>
+          {signatures[0]?.comment?.blockTags
+            ?.filter((blockTag) => {
+              return blockTag.tag === '@example';
+            })
+            .map((example, index) => {
+              return (
+                <Fragment key={`${example.tag}${index}`}>
+                  {index === 0 && <b>Example</b>}
+                  <Markdown>{example.content.reduce((acc, cur) => `${acc}${cur.text}`, '')}</Markdown>
+                </Fragment>
+              );
+            })}
+          {parameters?.length && (
+            <>
+              <b>Parameters</b>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </>
-        )}
-        <p>
-          <b>Source:</b> <a href={item.sources[0].url}>{`${item.sources[0].fileName}:${item.sources[0].line}`}</a>
-        </p>
+                </thead>
+                <tbody>
+                  {parameters?.map((param) => (
+                    <tr key={param.name}>
+                      <td>
+                        {param.name}
+                        {param.flags?.isOptional && '?'}
+                      </td>
+                      <td>
+                        <code>
+                          {param.type?.name}
+                          {param.type?.typeArguments &&
+                            `<${param.type?.typeArguments && typeArgumentsString(param.type.typeArguments)}>`}
+                        </code>
+                      </td>
+                      <td>
+                        {param.comment?.summary.reduce((acc, cur) => `${acc}${cur.text.replace('\n', '<br>')}`, '')}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          )}
+          <p>
+            <b>Source:</b> <a href={item.sources[0].url}>{`${item.sources[0].fileName}:${item.sources[0].line}`}</a>
+          </p>
+        </div>
         <br />
         <br />
       </Fragment>
