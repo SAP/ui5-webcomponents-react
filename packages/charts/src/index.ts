@@ -18,6 +18,9 @@ import { RadarChart } from './components/RadarChart/RadarChart.js';
 import { RadialChart } from './components/RadialChart/RadialChart.js';
 import { ScatterChartPlaceholder } from './components/ScatterChart/Placeholder.js';
 import { ScatterChart } from './components/ScatterChart/ScatterChart.js';
+import { TimelineChartPlaceholder } from './components/TimelineChart/Placeholder.js';
+import { TimelineChart } from './components/TimelineChart/TimelineChart.js';
+import { TimelineChartAnnotation } from './components/TimelineChart/TimelineChartAnnotation.js';
 
 export {
   BarChart,
@@ -32,6 +35,8 @@ export {
   RadarChart,
   RadialChart,
   ScatterChart,
+  TimelineChart,
+  TimelineChartAnnotation,
   BarChartPlaceholder,
   BulletChartPlaceholder,
   ColumnChartPlaceholder,
@@ -39,5 +44,6 @@ export {
   LineChartPlaceholder,
   PieChartPlaceholder,
   ScatterChartPlaceholder,
-  ColumnChartWithTrendPlaceholder
+  ColumnChartWithTrendPlaceholder,
+  TimelineChartPlaceholder
 };

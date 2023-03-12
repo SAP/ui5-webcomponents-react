@@ -30,6 +30,7 @@ import {
 } from '../../enums';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
 import {
@@ -242,8 +243,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
-    placement,
-    level,
+    placement = PopoverPlacementType.Bottom,
+    level = TitleLevel.H4,
     onSelect,
     closeOnItemSelect,
     disabled,
@@ -258,7 +259,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     hideSetAsDefault,
     hideCreatedBy,
     hideSaveAs,
-    dirtyStateText,
+    dirtyStateText = '*',
     dirtyState,
     onSave,
     portalContainer,
@@ -463,6 +464,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [safeChildrenWithFavorites]);
 
+  const canRenderPortal = useCanRenderPortal();
+
   const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
@@ -486,75 +489,77 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           icon={navDownIcon}
           disabled={disabled}
         />
-        {createPortal(
-          <ResponsivePopover
-            className={classes.popover}
-            ref={popoverRef}
-            headerText={titleText}
-            placementType={placement}
-            footer={
-              (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
-                <Bar
-                  design={BarDesign.Footer}
-                  className={classes.footer}
-                  endContent={
-                    <>
-                      {!inErrorState && showSaveBtn && (
-                        <Button onClick={handleSave} design={ButtonDesign.Emphasized}>
-                          {saveText}
-                        </Button>
-                      )}
-                      {!inErrorState && !hideSaveAs && (
-                        <Button
-                          onClick={handleOpenSaveAsDialog}
-                          design={showSaveBtn ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
-                          disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
-                        >
-                          {saveAsText}
-                        </Button>
-                      )}
-                      {!inErrorState && !hideManageVariants && (
-                        <Button
-                          onClick={handleManageClick}
-                          design={showSaveBtn || !hideSaveAs ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
-                        >
-                          {manageText}
-                        </Button>
-                      )}
-                    </>
-                  }
-                />
-              )
-            }
-            onAfterClose={stopPropagation}
-          >
-            {inErrorState ? (
-              <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
-            ) : (
-              <List
-                onSelectionChange={handleVariantItemSelect}
-                mode={ListMode.SingleSelect}
-                header={
-                  showInput ? (
-                    <div className={classes.searchInput} tabIndex={-1}>
-                      <Input
-                        accessibleName={a11ySearchText}
-                        value={searchValue}
-                        placeholder={searchText}
-                        onInput={handleSearchInput}
-                        showClearIcon
-                        icon={<Icon name={searchIcon} className={classes.inputIcon} />}
-                      />
-                    </div>
-                  ) : undefined
+        {canRenderPortal
+          ? createPortal(
+              <ResponsivePopover
+                className={classes.popover}
+                ref={popoverRef}
+                headerText={titleText}
+                placementType={placement}
+                footer={
+                  (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
+                    <Bar
+                      design={BarDesign.Footer}
+                      className={classes.footer}
+                      endContent={
+                        <>
+                          {!inErrorState && showSaveBtn && (
+                            <Button onClick={handleSave} design={ButtonDesign.Emphasized}>
+                              {saveText}
+                            </Button>
+                          )}
+                          {!inErrorState && !hideSaveAs && (
+                            <Button
+                              onClick={handleOpenSaveAsDialog}
+                              design={showSaveBtn ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+                              disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
+                            >
+                              {saveAsText}
+                            </Button>
+                          )}
+                          {!inErrorState && !hideManageVariants && (
+                            <Button
+                              onClick={handleManageClick}
+                              design={showSaveBtn || !hideSaveAs ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+                            >
+                              {manageText}
+                            </Button>
+                          )}
+                        </>
+                      }
+                    />
+                  )
                 }
+                onAfterClose={stopPropagation}
               >
-                {filteredChildren ?? safeChildrenWithFavorites}
-              </List>
-            )}
-          </ResponsivePopover>,
-          portalContainer
-        )}
+                {inErrorState ? (
+                  <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
+                ) : (
+                  <List
+                    onSelectionChange={handleVariantItemSelect}
+                    mode={ListMode.SingleSelect}
+                    header={
+                      showInput ? (
+                        <div className={classes.searchInput} tabIndex={-1}>
+                          <Input
+                            accessibleName={a11ySearchText}
+                            value={searchValue}
+                            placeholder={searchText}
+                            onInput={handleSearchInput}
+                            showClearIcon
+                            icon={<Icon name={searchIcon} className={classes.inputIcon} />}
+                          />
+                        </div>
+                      ) : undefined
+                    }
+                  >
+                    {filteredChildren ?? safeChildrenWithFavorites}
+                  </List>
+                )}
+              </ResponsivePopover>,
+              portalContainer ?? document.body
+            )
+          : null}
         {manageViewsDialogOpen && (
           <ManageViewsDialog
             onAfterClose={handleManageClose}
@@ -588,12 +593,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   );
 });
 
-VariantManagement.defaultProps = {
-  placement: PopoverPlacementType.Bottom,
-  level: TitleLevel.H4,
-  dirtyStateText: '*',
-  portalContainer: document.body
-};
 VariantManagement.displayName = 'VariantManagement';
 
 export { VariantManagement };

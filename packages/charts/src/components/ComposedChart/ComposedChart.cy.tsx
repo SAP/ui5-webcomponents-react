@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { ComposedChart } from './index.js';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const dimensions = [
   {

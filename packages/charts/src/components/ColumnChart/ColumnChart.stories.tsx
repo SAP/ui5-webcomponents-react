@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ColumnChart } from './ColumnChart.js';
 import { complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps.js';
+import { ColumnChart } from './ColumnChart.js';
 
 const meta = {
   title: 'ColumnChart',

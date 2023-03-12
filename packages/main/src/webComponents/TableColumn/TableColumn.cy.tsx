@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { TableColumn } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('TableColumn', () => {
   it('Basic Test (generated)', () => {

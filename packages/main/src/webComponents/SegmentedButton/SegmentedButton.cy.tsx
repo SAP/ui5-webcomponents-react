@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
 import { SegmentedButton } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('SegmentedButton', () => {
   it('Basic Test (generated)', () => {

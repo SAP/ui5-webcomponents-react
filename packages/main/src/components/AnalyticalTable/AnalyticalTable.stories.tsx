@@ -31,8 +31,8 @@ import {
 } from '../../webComponents/index';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
-import { AnalyticalTable } from './index';
 import * as AnalyticalTableHooks from './pluginHooks/AnalyticalTableHooks';
+import { AnalyticalTable } from './index';
 
 const meta = {
   title: 'Data Display / AnalyticalTable',
@@ -216,7 +216,7 @@ export const PluginIndeterminateRowSelection: Story = {
         }Select Sub-Rows`}</ToggleButton>
         <AnalyticalTable
           selectionMode={AnalyticalTableSelectionMode.MultiSelect}
-          data={args.data}
+          data={dataTree}
           columns={args.columns}
           isTreeTable
           tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
@@ -422,10 +422,8 @@ export const Subcomponents: Story = {
 };
 
 export const DynamicRowCount: Story = {
-  // @ts-ignore
-  args: { visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 },
+  args: { visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 } as unknown,
   argTypes: {
-    // @ts-ignore
     containerHeight: {
       options: [250, 500, 750, 1000],
       control: {
@@ -434,7 +432,7 @@ export const DynamicRowCount: Story = {
       description:
         'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
     }
-  },
+  } as unknown,
   render: (args) => {
     return (
       <div style={{ height: `${args.containerHeight}px` }}>
@@ -452,6 +450,7 @@ export const DynamicRowCount: Story = {
 export const ResponsiveColumns: Story = {
   args: {
     visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
+    // @ts-expect-error: custom prop for the controls table
     containerWidth: 'auto',
     data: dataLarge,
     columns: [
@@ -498,7 +497,7 @@ export const ResponsiveColumns: Story = {
     ]
   },
   argTypes: {
-    // @ts-ignore
+    // @ts-expect-error: custom prop for the controls table
     containerWidth: {
       options: [400, 600, 800, 'auto'],
       control: {

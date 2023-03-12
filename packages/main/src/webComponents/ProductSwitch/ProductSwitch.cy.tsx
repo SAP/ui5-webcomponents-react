@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ProductSwitchItem } from '../ProductSwitchItem';
 import { ProductSwitch } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ProductSwitch', () => {
   it('Basic Test (generated)', () => {

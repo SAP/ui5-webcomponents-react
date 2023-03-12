@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, RefObject } from 'react';
 import { TextAlign, VerticalAlign } from '../../../enums';
 
 // copied from https://github.com/tannerlinsley/react-table/blob/f97fb98509d0b27cc0bebcf3137872afe4f2809e/src/utils.js#L320-L347 (13. Jan 2021)
@@ -132,3 +132,18 @@ export const resolveCellAlignment = (column) => {
   }
   return style;
 };
+
+export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
+  if (rowHeight) {
+    return rowHeight;
+  }
+
+  if (typeof document !== 'undefined') {
+    return parseInt(
+      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') ?? '44'
+    );
+  }
+
+  // fallback for SSR
+  return 44;
+}

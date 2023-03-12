@@ -1,6 +1,6 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { Tab } from '../Tab';
 import { TabContainer } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('TabContainer', () => {
   it('Basic Test (generated)', () => {

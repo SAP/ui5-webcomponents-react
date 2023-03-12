@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { FlexibleColumnLayout } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('FlexibleColumnLayout', () => {
   it('Basic Test (generated)', () => {

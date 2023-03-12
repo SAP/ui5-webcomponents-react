@@ -1,0 +1,40 @@
+.footer {
+    container: footer / inline-size;
+}
+
+.content {
+    min-height: var(--_ui5_bar_base_height);
+    display: flex;
+    align-items: center;
+    background-olor: var(--sapPageFooter_Background);
+    border-top: 0.0625rem solid var(--sapPageFooter_BorderColor);
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: auto;
+    overflow: hidden;
+}
+
+@container (max-width: 599px) {
+  .footer {
+    padding-inline: 1rem;
+  }
+}
+
+@container (min-width: 600px) and (max-width: 1023px) {
+  .footer {
+    padding-inline: 2rem;
+  }
+}
+
+@container (min-width: 1024px) and (max-width: 1439px) {
+  .footer {
+    padding-inline: 2rem;
+  }
+}
+
+@container (min-width: 1440px) {
+  .footer {
+    padding-inline: 3rem;
+  }
+}

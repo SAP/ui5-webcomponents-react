@@ -207,8 +207,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
  * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
- * *   Select a value from the suggestion list
- * (`onSuggestionItemSelect` event is fired)
+ * *   Select a value from the suggestion list (`onSuggestionItemSelect` event is fired)
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *

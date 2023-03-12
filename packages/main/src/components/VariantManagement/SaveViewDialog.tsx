@@ -1,12 +1,9 @@
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign } from '../../enums';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
+import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -19,14 +16,20 @@ import {
   VIEW
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { trimAndRemoveSpaces } from '../../internal/utils';
 import { SelectedVariant } from '../../internal/VariantManagementContext';
-import { Bar } from '../../webComponents/Bar';
-import { Button, ButtonDomRef } from '../../webComponents/Button';
-import { CheckBox } from '../../webComponents/CheckBox';
-import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
-import { Input, InputPropTypes } from '../../webComponents/Input';
-import { Label } from '../../webComponents/Label';
+import {
+  Bar,
+  Button,
+  ButtonDomRef,
+  CheckBox,
+  Dialog,
+  DialogDomRef,
+  Input,
+  InputPropTypes,
+  Label
+} from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 
 const useStyles = createUseStyles(
@@ -137,15 +140,14 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     setApplyAutomatically(e.target.checked);
   };
 
-  useEffect(() => {
-    saveViewDialogRef.current.show();
-    return () => {
-      saveViewDialogRef.current?.close();
-    };
-  }, []);
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
 
   return createPortal(
     <Dialog
+      open
       className={classes.dialog}
       ref={saveViewDialogRef}
       headerText={headingText}
@@ -198,6 +200,6 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         </FlexBox>
       </FlexBox>
     </Dialog>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };

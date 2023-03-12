@@ -32,3 +32,4 @@ export const enrichEventWithDetails = <T extends Record<string, unknown>, Return
 };
 
 export { debounce } from './debounce';
+export { throttle } from './throttle';

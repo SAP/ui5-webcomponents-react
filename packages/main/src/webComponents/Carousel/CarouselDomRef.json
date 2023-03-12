@@ -4,12 +4,7 @@
     "visibility": "public",
     "since": "1.0.0-rc.15",
     "parameters": [
-      {
-        "name": "itemIndex",
-        "type": "Integer",
-        "optional": false,
-        "description": "The index of the target page"
-      }
+      { "name": "itemIndex", "type": "Integer", "optional": false, "description": "The index of the target page" }
     ],
     "description": "Changes the currently displayed page."
   }

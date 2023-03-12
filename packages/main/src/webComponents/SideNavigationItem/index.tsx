@@ -3,6 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
@@ -27,18 +28,22 @@ interface SideNavigationItemAttributes {
    */
   text?: string;
   /**
-   * Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the `click` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.
+   * Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the `onClick` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.
    */
   wholeItemToggleable?: boolean;
 }
 
 export interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
 
-export interface SideNavigationItemPropTypes extends SideNavigationItemAttributes, CommonProps {
+export interface SideNavigationItemPropTypes extends SideNavigationItemAttributes, Omit<CommonProps, 'onClick'> {
   /**
    * If you wish to nest menus, you can pass inner menu items to the default slot.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
+   */
+  onClick?: (event: Ui5CustomEvent<SideNavigationItemDomRef>) => void;
 }
 
 /**
@@ -53,7 +58,7 @@ const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNav
   ['icon', 'text'],
   ['expanded', 'selected', 'wholeItemToggleable'],
   [],
-  [],
+  ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')
 );
 

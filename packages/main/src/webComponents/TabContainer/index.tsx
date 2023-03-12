@@ -37,7 +37,7 @@ interface TabContainerAttributes {
   /**
    * Defines the alignment of the content and the `additionalText` of a tab.
    *
-   * **Note:** The content and the `additionalText` would be displayed vertically by defualt, but when set to `Inline`, they would be displayed horizontally.
+   * **Note:** The content and the `additionalText` would be displayed vertically by default, but when set to `Inline`, they would be displayed horizontally.
    *
    * Available options are:
    *

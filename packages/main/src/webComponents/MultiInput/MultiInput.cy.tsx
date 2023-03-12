@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { MultiInput } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('MultiInput', () => {
   it('Basic Test (generated)', () => {

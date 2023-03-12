@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  enrichEventWithDetails,
-  ThemingParameters,
-  useIsRTL,
-  useResponsiveContentPadding,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, {
   cloneElement,
@@ -191,15 +184,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef = useRef<HTMLDivElement>(null);
   const scrollEvent = useRef();
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
+  // @ts-expect-error: useSyncRef will create a ref if not present
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
-  const isRTL = useIsRTL(objectPageRef);
-  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
@@ -251,21 +241,23 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     if (!image) {
       return null;
     }
-    const headerImageClasses = clsx(classes.headerImage, isRTL && classes.headerImageRtl);
 
     if (typeof image === 'string') {
       return (
-        <span className={headerImageClasses} style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}>
+        <span
+          className={classes.headerImage}
+          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+        >
           <img src={image} className={classes.image} alt="Company Logo" />
         </span>
       );
     } else {
       return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(headerImageClasses, image.props?.className)
+        className: clsx(classes.headerImage, image.props?.className)
       } as AvatarPropTypes);
     }
-  }, [image, classes.headerImage, classes.headerImageRtl, classes.image, imageShapeCircle, isRTL]);
+  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
   const prevTopHeaderHeight = useRef(0);
   const scrollToSection = useCallback(
@@ -523,7 +515,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const objectPageClasses = clsx(
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
-    classes[responsiveRange],
     className,
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
@@ -646,10 +637,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
-          <div
-            className={`${classes.headerContainer} ${responsivePaddingClass}`}
-            data-component-name="ObjectPageHeaderContainer"
-          >
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {headerContent.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
@@ -669,11 +657,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     showTitleInHeaderContent,
     avatar,
     headerContentRef,
-    renderTitleSection,
-    responsivePaddingClass
+    renderTitleSection
   ]);
-
-  const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
   const onTabItemSelect = (event) => {
     event.preventDefault();
@@ -761,7 +746,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
         aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
-        className={`${classes.header} ${responsivePaddingClass}`}
+        className={classes.header}
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
@@ -771,7 +756,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         }}
       >
         {headerTitle && image && headerCollapsed === true && (
-          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
+          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
         {headerTitle && renderTitleSection()}
       </header>
@@ -860,7 +845,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           </TabContainer>
         </div>
       )}
-      <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
+      <div data-component-name="ObjectPageContent" className={classes.content}>
         <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden="true" />
         {placeholder
           ? placeholder

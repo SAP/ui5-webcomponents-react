@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { MultiComboBox } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('MultiComboBox', () => {
   it('Basic Test (generated)', () => {

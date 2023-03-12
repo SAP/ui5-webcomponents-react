@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { MediaGallery } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('MediaGallery', () => {
   it('Basic Test (generated)', () => {

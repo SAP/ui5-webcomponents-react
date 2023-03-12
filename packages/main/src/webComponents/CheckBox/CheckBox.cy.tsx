@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { CheckBox } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('CheckBox', () => {
   it('Basic Test (generated)', () => {

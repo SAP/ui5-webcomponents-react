@@ -1,5 +1,7 @@
+import questionMarkIcon from '@ui5/webcomponents-icons/dist/question-mark.js';
 import { useState } from 'react';
-import { Button, DynamicPage, DynamicPageHeader, DynamicPagePropTypes, DynamicPageTitle } from '../..';
+import { Button, DynamicPage, DynamicPageHeader, DynamicPagePropTypes, DynamicPageTitle, ToggleButton } from '../..';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('DynamicPage', () => {
   it('toggle header', () => {
@@ -35,6 +37,21 @@ describe('DynamicPage', () => {
     cy.findByText('DynamicPageHeader').should('be.visible');
     cy.get('@toggleSpy').should('have.been.calledWith', true);
     cy.get('@toggleSpy').should('have.callCount', 4);
+
+    cy.mount(
+      <DynamicPage
+        headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+        headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
+        onToggleHeaderContent={toggle}
+        headerContentPinnable={false}
+        showHideHeaderButton={false}
+      >
+        <div>Content</div>
+      </DynamicPage>
+    );
+
+    cy.get('[accessible-name="Collapse Header"]').should('not.exist');
+    cy.get('[accessible-name="Expand Header"]').should('not.exist');
   });
 
   it('pin header', () => {
@@ -70,6 +87,24 @@ describe('DynamicPage', () => {
     cy.get('@onPinSpy').should('have.been.calledWith', false);
     cy.findByTestId('op').scrollTo(0, 501);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
+
+    cy.mount(
+      <DynamicPage
+        style={{ height: '100vh' }}
+        headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+        headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
+        headerContentPinnable
+        showHideHeaderButton
+        onPinnedStateChange={pin}
+        alwaysShowContentHeader
+        data-testid="op"
+      >
+        <div style={{ height: '2000px' }} />
+      </DynamicPage>
+    );
+
+    cy.findByTestId('op').scrollTo(0, 500);
+    cy.findByText('DynamicPageHeader').should('be.visible');
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
@@ -221,4 +256,108 @@ describe('DynamicPage', () => {
     cy.findByTestId('dp').scrollTo('top');
     cy.get('[icon="pushpin-off"]').should('be.visible');
   });
+
+  it('w/o content', () => {
+    cy.mount(<DynamicPage data-testid="dp" />);
+    cy.findByTestId('dp').should('be.visible');
+  });
+
+  it('w/ footer', () => {
+    cy.mount(<DynamicPage footer={<div>footer</div>} />);
+    cy.get('[data-component-name="DynamicPageContent"]').should('have.css', 'padding-block-end', '16px');
+    cy.findByText('footer').should('be.visible');
+    cy.mount(
+      <DynamicPage footer={<div>footer</div>} style={{ height: '400px' }}>
+        <div style={{ height: '2000px', background: 'cadetblue' }}>Content</div>
+      </DynamicPage>
+    );
+    cy.get('[data-component-name="DynamicPageContent"]').should('have.css', 'padding-block-end', '16px');
+    cy.findByText('footer').should('be.visible');
+  });
+  it('a11y config', () => {
+    cy.mount(
+      <DynamicPage
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+        footer={<div>footer</div>}
+      />
+    );
+    cy.get('[data-component-name="DynamicPageFooter"]').should('have.attr', 'role', 'contentinfo');
+    cy.get('[data-component-name="DynamicPageFooter"]').should('not.have.attr', 'aria-label');
+    cy.get('[data-component-name="DynamicPageFooter"]').should('not.have.attr', 'aria-labelledby');
+    cy.get('[data-component-name="DynamicPageAnchorBar"]').should('have.attr', 'role', 'navigation');
+
+    cy.mount(
+      <DynamicPage
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+        footer={<div>footer</div>}
+        a11yConfig={{
+          dynamicPageAnchorBar: { role: 'anchorbar' },
+          dynamicPageFooter: { role: 'footer', 'aria-label': 'label', 'aria-labelledby': 'labelledby' }
+        }}
+      />
+    );
+    cy.get('[data-component-name="DynamicPageFooter"]').should('have.attr', 'role', 'footer');
+    cy.get('[data-component-name="DynamicPageFooter"]').should('have.attr', 'aria-label', 'label');
+    cy.get('[data-component-name="DynamicPageFooter"]').should('have.attr', 'aria-labelledby', 'labelledby');
+    cy.get('[data-component-name="DynamicPageAnchorBar"]').should('have.attr', 'role', 'anchorbar');
+  });
+
+  it('with custom overflow toolbar buttons', () => {
+    cy.mount(
+      <DynamicPage
+        style={{ width: '200px' }}
+        headerTitle={
+          <DynamicPageTitle
+            actionsToolbarProps={{ overflowButton: <ToggleButton data-testid="actionBtn" icon={questionMarkIcon} /> }}
+            navigationActionsToolbarProps={{
+              overflowButton: <ToggleButton data-testid="navActionBtn" icon={questionMarkIcon} />
+            }}
+            actions={
+              <>
+                <Button>Actions Button 1</Button>
+                <Button>Actions Button 2</Button>
+              </>
+            }
+            navigationActions={
+              <>
+                <Button>Navigation Actions Button 1</Button>
+                <Button>Navigation Actions Button 2</Button>
+              </>
+            }
+          />
+        }
+      />
+    );
+    cy.get('[icon="question-mark"]').should('have.length', 2).should('be.visible');
+    cy.mount(
+      <DynamicPage
+        style={{ width: '1300px' }}
+        headerTitle={
+          <DynamicPageTitle
+            actionsToolbarProps={{ overflowButton: <ToggleButton data-testid="actionBtn" icon={questionMarkIcon} /> }}
+            navigationActionsToolbarProps={{
+              overflowButton: <ToggleButton data-testid="navActionBtn" icon={questionMarkIcon} />
+            }}
+            actions={
+              <>
+                <Button>Actions Button 1</Button>
+                <Button>Actions Button 2</Button>
+              </>
+            }
+            navigationActions={
+              <>
+                <Button>Navigation Actions Button 1</Button>
+                <Button>Navigation Actions Button 2</Button>
+              </>
+            }
+          />
+        }
+      />
+    );
+    cy.get('[icon="question-mark"]').should('have.length', 1).should('be.visible');
+  });
+
+  cypressPassThroughTestsFactory(DynamicPage);
 });

@@ -12,11 +12,8 @@ import {
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
-import {
-  renderComponentWrapper,
-  renderStory,
-  renderTest
-} from '../../../scripts/web-component-wrappers/templates/index.js';
+import { createDocumentation, createStory } from '../../../scripts/web-component-wrappers/StoryFactory.js';
+import { renderComponentWrapper, renderTest } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   formatDemoDescription,
@@ -24,7 +21,6 @@ import {
   getDomRefMethods,
   getDomRefObjects
 } from '../../../scripts/web-component-wrappers/utils.js';
-import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -337,83 +333,6 @@ const createWebComponentWrapper = async (
         ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
         : componentSpec.module
   });
-};
-
-const createWebComponentDemo = (componentSpec, componentProps, hasDescription) => {
-  const componentName = componentSpec.module;
-  const enumImports = [];
-  const selectArgTypes = [];
-  const args = [];
-  const customArgTypes = [];
-
-  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
-
-  const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
-  const additionalComponentImports = componentSpec.hasOwnProperty('appenddocs')
-    ? [`import { ${componentSpec.appenddocs.replaceAll(' ', ', ')} } from '../..';`]
-    : [];
-
-  componentProps.forEach((prop) => {
-    if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
-      enumImports.push(prop.importStatement);
-    }
-    if (componentSpec.module === 'Icon' && prop.name === 'name') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      args.push(`name: 'employee'`);
-    }
-    if (prop.name === 'primaryCalendarType') {
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
-    }
-    if (prop.name === 'moreColors') {
-      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
-    }
-    if (prop.name === 'children') {
-      if (
-        prop.description.includes(
-          'Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.'
-        )
-      ) {
-        args.push(`children: "${componentName} Text"`);
-        customArgTypes.push(`children: {control: 'text'}`);
-      } else {
-        customArgTypes.push(`children: {control: {disable:true}}`);
-      }
-    } else if (prop.name === 'icon') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      enumImports.push(`import { Icon } from '@ui5/webcomponents-react/dist/Icon';`);
-      if (prop.tsType === 'string') {
-        args.push(`icon: 'employee'`);
-      }
-      if (prop.tsType.includes('ReactNode')) {
-        customArgTypes.push(`icon: {control: {disable: true}}`);
-        args.push(`icon: <Icon name="employee" />`);
-      }
-    } else if (prop.tsType.includes('ReactNode') || prop.tsType === 'unknown') {
-      customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
-    }
-    if (prop.isEnum) {
-      const type = prop.tsType.split(' ')[0];
-      selectArgTypes.push(`${prop.name}: ${type}`);
-      const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-      args.push(`${prop.name}: ${type}${defaultValue}`);
-    }
-  });
-  enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-  return `${renderStory({
-    name: componentName,
-    since: versionInfo[componentSpec.since],
-    imports: [...enumImports, ...additionalComponentImports],
-    additionalComponentDocs,
-    selectArgTypes,
-    customArgTypes,
-    args,
-    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [],
-    hasDescription
-  })}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -766,7 +685,10 @@ allWebComponents
         if (publicProperties.length) {
           fs.writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
-            JSON.stringify(publicProperties, null, 2)
+            prettier.format(JSON.stringify(publicProperties), {
+              ...Utils.prettierConfig,
+              parser: 'json'
+            })
           );
           let hasMethodsTable = false;
           if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
@@ -787,17 +709,14 @@ allWebComponents
           }
         }
         // create story file (demo)
+
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+          (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+            !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
         ) {
-          const webComponentDemo = createWebComponentDemo(
-            componentSpec,
-            allComponentProperties,
-            description,
-            !!formattedDescription
-          );
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+          await createStory(componentSpec, allComponentProperties);
+          await createDocumentation(componentSpec, allComponentProperties, description);
         }
       }
     }

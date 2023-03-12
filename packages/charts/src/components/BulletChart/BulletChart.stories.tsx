@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BulletChart } from './BulletChart.js';
 import { complexBulletDataset } from '../../resources/DemoProps.js';
+import { BulletChart } from './BulletChart.js';
 
 const meta = {
   title: 'BulletChart',
@@ -95,7 +95,7 @@ export const WithHighlightedMeasures: Story = {
         accessor: 'users',
         label: 'Users',
         type: 'additional',
-        highlightColor: (value, measure, data) => {
+        highlightColor: (value) => {
           if (value > 100) {
             return 'red';
           }

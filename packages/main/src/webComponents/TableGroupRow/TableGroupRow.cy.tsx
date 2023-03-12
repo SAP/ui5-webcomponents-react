@@ -1,5 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { TableGroupRow } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('TableGroupRow', () => {
   it('Basic Test (generated)', () => {

@@ -10,11 +10,11 @@ env:
   es2022: true
 extends:
   - plugin:react/recommended
+  - plugin:react-hooks/recommended
   - plugin:import/recommended
   - plugin:prettier/recommended
 plugins:
   - prefer-arrow
-  - react-hooks
 settings:
   react:
     version: detect
@@ -139,3 +139,14 @@ overrides:
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
       no-only-tests/no-only-tests: 'error'
+
+  - files:
+      - '*.stories.tsx'
+    extends:
+      - 'plugin:react/jsx-runtime'
+      - 'plugin:storybook/recommended'
+    rules:
+      'react/prop-types': 'off' # inline custom components within stories don't need prop types
+      '@typescript-eslint/no-unused-vars': 'warn' # some samples can include unused vars to show the API / signature
+      'react/no-unescaped-entities': 'off'
+      'react-hooks/rules-of-hooks': 'off' # the CSF-3 render() functions are not detected as react components

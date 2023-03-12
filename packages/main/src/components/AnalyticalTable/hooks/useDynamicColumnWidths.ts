@@ -19,6 +19,7 @@ const columnsDeps = (
 ) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const colsEqual = useMemo(() => {
     return visibleColumns
       ?.filter(

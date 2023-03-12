@@ -1,7 +1,6 @@
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import '@ui5/webcomponents-react/dist/Assets.js';
 import { useRef, useState } from 'react';
 import {
   Button,
@@ -298,7 +297,6 @@ describe('Toolbar', () => {
       let background = 'rgba(0, 0, 0, 0)'; // transparent
       let color = 'rgb(0, 0, 0)';
 
-      console.log(design);
       switch (design) {
         case 'Info':
           height = '32px'; // 2rem

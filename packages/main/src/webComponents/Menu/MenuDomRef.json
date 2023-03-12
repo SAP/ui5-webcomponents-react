@@ -1,9 +1,5 @@
 [
-  {
-    "name": "close",
-    "visibility": "public",
-    "description": "Closes the Menu."
-  },
+  { "name": "close", "visibility": "public", "description": "Closes the Menu." },
   {
     "name": "showAt",
     "visibility": "public",

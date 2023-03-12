@@ -21,7 +21,7 @@ export const WithCustomColor: Story = {
 };
 
 export const MicroRadialCharts: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} alignItems={FlexBoxAlignItems.Center}>
         <RadialChart

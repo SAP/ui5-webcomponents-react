@@ -1,6 +1,5 @@
-import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
-import { {{name}} } from './index';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { {{#if additionalComponentDocs}}ArgsTableWithNote, {{/if}}ControlsWithNote, DocsHeader, {{#if hasDomRef}}DomRefTable, {{/if}}Footer } from '@sb/components';
 {{#each imports}}
 {{{this}}}
 {{/each}}
@@ -13,27 +12,12 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import {{this}}Description from '../{{this}}/{{this}}Description.md?raw';
 {{/each}}
 {{/if}}
-{{#if methods}}
-import {{name}}Methods from './{{name}}Methods.md?raw';
+{{#if hasDomRef}}
+import {{name}}DomRef from './{{name}}DomRef.json';
 {{/if}}
+import * as ComponentStories from './{{name}}.stories';
 
-<Meta
-  title="Components / {{name}}"
-  component={ {{{name}}} }
-  {{#if additionalComponentDocs}}
-  subcomponents={{storySubComponents additionalComponentDocs}}
-  {{/if}}
-  argTypes=\{{
-    {{#each customArgTypes}}
-    {{{this}}}{{#unless @last}},{{/unless}}
-    {{/each}}
-  }}
-  args=\{{
-    {{#each args}}
-    {{{this}}}{{#unless @last}},{{/unless}}
-    {{/each}}
-  }}
-/>
+<Meta of={ComponentStories} />
 
 <DocsHeader {{#if since}}since="{{since}}"{{/if}}/>
 
@@ -41,26 +25,18 @@ import {{name}}Methods from './{{name}}Methods.md?raw';
 
 ## Example
 
-<Canvas>
-    <Story name="Default">
-        {(args) => {
-          return (
-            <{{name}} {...args} />
-          );
-        }}
-    </Story>
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="Default"/>
+<ControlsWithNote of={ComponentStories.Default} />
 
 {{#if hasDescription}}
 <Markdown>{Description}</Markdown>
 {{/if}}
 
-{{#if methods}}
-<Markdown>\{{{name}}Methods}</Markdown>
+{{#if hasDomRef}}
+<DomRefTable rows={ {{name}}DomRef} />
 {{/if}}
 
 {{#if additionalComponentDocs}}
@@ -71,6 +47,8 @@ import {{name}}Methods from './{{name}}Methods.md?raw';
 ## {{this}}
 
 <Markdown>\{{{this}}Description}</Markdown>
+
+<ArgsTableWithNote of={ {{this}} } />
 
 {{/each}}
 {{/if}}
