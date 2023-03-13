@@ -1,25 +1,13 @@
-import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
-import { Select } from './index';
-import { ValueState } from '../../enums/ValueState';
-import { Option } from '../Option';
-import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import Description from './SelectDescription.md?raw';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Option } from '../Option';
 import OptionDescription from '../Option/OptionDescription.md?raw';
+import * as ComponentStories from './Select.stories';
+import Description from './SelectDescription.md?raw';
 import SelectDomRef from './SelectDomRef.json';
 
-<Meta
-  title="Inputs / Select"
-  component={Select}
-  subcomponents={{ Option }}
-  argTypes={{
-    children: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
-  }}
-  args={{
-    valueState: ValueState.None
-  }}
-/>
+<Meta of={ComponentStories} />
 
 <DocsHeader since="0.4.0" />
 
@@ -27,25 +15,11 @@ import SelectDomRef from './SelectDomRef.json';
 
 ## Example
 
-<Canvas>
-  <Story name="Default">
-    {(args) => {
-      return (
-        <Select {...args}>
-          <Option>Option 1</Option>
-          <Option>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option>Option 4</Option>
-          <Option>Option 5</Option>
-        </Select>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="Default" />
+<ControlsWithNote of={ComponentStories.Default} />
 
 <Markdown>{Description}</Markdown>
 
@@ -84,6 +58,7 @@ const onChange = (event) => {
 
 ## Option
 
+<ArgTypesWithNote of={Option} />
 <Markdown>{OptionDescription}</Markdown>
 
 <Footer />
