@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { CustomListItem } from '../CustomListItem';
 import CustomListItemDescription from '../CustomListItem/CustomListItemDescription.md?raw';
@@ -33,20 +33,17 @@ import ListDescription from './ListDescription.md?raw';
 
 ## StandardListItem
 
-<Description of={StandardListItem} />
 <ArgTypesWithNote of={StandardListItem} />
 <Markdown>{StandardListItemDescription}</Markdown>
 
 ## CustomListItem
 
-<Description of={CustomListItem} />
 <Canvas of={ComponentStories.CustomListItemStory} />
 <ArgTypesWithNote of={CustomListItem} />
 <Markdown>{CustomListItemDescription}</Markdown>
 
 ## GroupHeaderListItem
 
-<Description of={GroupHeaderListItem} />
 <Canvas of={ComponentStories.GroupHeaderListItemStory} />
 <ArgTypesWithNote of={GroupHeaderListItem} />
 <Markdown>{GroupHeaderListItemDescription}</Markdown>
