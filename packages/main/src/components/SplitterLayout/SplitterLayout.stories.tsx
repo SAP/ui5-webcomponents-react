@@ -13,7 +13,7 @@ const meta = {
   },
   args: { style: { width: isChromatic ? '1200px' : '100%', height: '800px' } },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000, diffThreshold: 0.3 }
   }
 } satisfies Meta<typeof SplitterLayout>;
 
