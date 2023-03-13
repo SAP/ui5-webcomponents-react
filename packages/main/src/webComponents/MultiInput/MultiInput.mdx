@@ -1,0 +1,32 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Token } from '../Token';
+import TokenDescription from '../Token/TokenDescription.md?raw';
+import * as ComponentStories from './MultiInput.stories';
+import MultiInputDomRef from './MultiInputDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.11.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<DomRefTable rows={MultiInputDomRef} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## Token
+
+<ArgTypesWithNote of={Token} />
+<Markdown>{TokenDescription}</Markdown>
+
+<Footer />
