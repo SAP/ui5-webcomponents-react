@@ -40,7 +40,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies the type of the message
    */
-  type: ValueState | keyof typeof ValueState;
+  type?: ValueState | keyof typeof ValueState;
 
   /**
    * Name of a message group the current item belongs to.
@@ -50,7 +50,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies detailed description of the message
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(
@@ -143,7 +143,7 @@ const useStyles = createUseStyles(
 );
 
 const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
-  const { titleText, subtitleText, counter, type, children, className, ...rest } = props;
+  const { titleText, subtitleText, counter, type = ValueState.Error, children, className, ...rest } = props;
 
   const { selectMessage } = useContext(MessageViewContext);
 
@@ -195,9 +195,5 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
 });
 
 MessageItem.displayName = 'MessageItem';
-
-MessageItem.defaultProps = {
-  type: ValueState.Error
-};
 
 export { MessageItem };

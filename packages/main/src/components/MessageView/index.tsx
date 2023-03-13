@@ -282,9 +282,4 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
 
 MessageView.displayName = 'MessageView';
 
-MessageView.defaultProps = {
-  showDetailsPageHeader: false,
-  groupItems: false
-};
-
 export { MessageView };
