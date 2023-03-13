@@ -1,0 +1,42 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
+import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
+import { NumericSideIndicator } from '../NumericSideIndicator';
+import * as ComponentStories from './AnalyticalCard.stories';
+
+<Meta of={ComponentStories} subcomponents={{ AnalyticalCardHeader, NumericSideIndicator }} />
+
+<DocsHeader />
+
+**Note:** The `AnalyticalCard` was mainly made to display KPIs and complex data. If you want to implement a simple card, the `Card` component probably is more suitable.
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+<br />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## AnalyticalCardHeader
+
+<Description of={AnalyticalCardHeader} />
+
+<ArgTypesWithNote of={AnalyticalCardHeader} />
+
+## NumericSideIndicator
+
+<Description of={NumericSideIndicator} />
+
+<ArgTypesWithNote of={NumericSideIndicator} />
+
+<Footer />
