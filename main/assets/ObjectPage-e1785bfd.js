@@ -1,0 +1,31 @@
+import{j as o,a as i,F as g}from"./jsx-runtime-670450c2.js";import{C as b,A as r}from"./DomRefTable.module-796e5b92.js";import{D as u}from"./DocsHeader-275d7057.js";import{F as P}from"./Footer-c24922c1.js";import{D as c,a as s}from"./index-f9e4a35f.js";import{C as j,D as h,W as D,a as S,S as w,O as d,b as l}from"./ObjectPage.stories-fbc29233.js";import"./index-f1f749bf.js";import{M as C,C as m,a as O,h as p}from"./index-4c6bc1d8.js";import{S as v}from"./SubcomponentsSection-6138f2fc.js";import{u as f}from"./index-4fb8b842.js";import"./chunk-PCJTTTQV-e4b5f208.js";import"./iframe-62981b78.js";import"../sb-preview/runtime.mjs";import"./react-18-2bb9dade.js";import"./index-96c5f47c.js";import"./_commonjsHelpers-042e6b4d.js";import"./chunk-R4NKYYJA-96bb58e6.js";import"./react-jss.esm-fe4dc3ff.js";import"./inheritsLoose-93e09647.js";import"./index-a1d9006c.js";import"./UI5Element-427ec721.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-e4481254.js";import"./utils-ed90fb1b.js";import"./useIsomorphicLayoutEffect-a838da4a.js";import"./AriaLabelHelper-c82262ef.js";import"./i18n-defaults-ffd92f69.js";import"./decline-5eb6d937.js";import"./Icons-7b82f601.js";import"./i18n-defaults-7dff8409.js";import"./information-0837f136.js";import"./class-map-5d8e4b2b.js";import"./Icon-ce854b74.js";import"./Keys-3acbae73.js";import"./Button-b2f5d653.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./index-cbb29537.js";import"./clsx.m-1229b3e0.js";import"./index-c7ba7a71.js";import"./ThemingParameters-f4b4144e.js";import"./Import-6eff54b4.js";import"./TableOfContent-6d559a7d.js";import"./index-6328c9d9.js";import"./Link-4cf74d63.js";import"./WrappingType-b81e595a.js";import"./index-87d6c211.js";import"./Label-040efebd.js";import"./Footer.module-f90cad7d.js";import"./index-6454d6ca.js";import"./Popover-9656b900.js";import"./Integer-d9976c13.js";import"./PopupsCommon.css-ff32b102.js";import"./FocusableElements-7e25663e.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-615afd63.js";import"./ResizeHandler-1fa8a094.js";import"./MediaRange-25b98f31.js";import"./style-map-77d201d2.js";import"./slim-arrow-down-068fe0af.js";import"./slim-arrow-up-dc178f0a.js";import"./index-99d317a4.js";import"./i18n-defaults-9da374be.js";import"./I18nContext-bef5b452.js";import"./index-d31395a7.js";import"./ToggleButton-8a27b40c.js";import"./index-12eee4c1.js";import"./stopPropagation-da74d54e.js";import"./index-b643bbcd.js";import"./overflow-3d929a36.js";import"./CssSizeVariables-bd372cde.js";import"./CustomVariables-fd831c35.js";import"./debounce-5c77766a.js";import"./index-1e227b08.js";import"./Media-6b270b80.js";import"./UnableToLoad-816906c7.js";import"./index-374478d2.js";import"./languageAware-b2dd96bd.js";import"./Title-b986a4bd.js";import"./i18n-defaults-2bde2064.js";import"./parameters-bundle.css-6b4a2ffb.js";import"./Person-4ad4078c.js";import"./general-leave-request-9453ba73.js";import"./index-c701feff.js";import"./index-ade1837c.js";import"./addCustomCSSWithScoping-4c0cdfa9.js";import"./Avatar-88715af2.js";import"./employee-98ce1b38.js";import"./index-4cfdc061.js";import"./ListItem-1aa125fd.js";import"./ListItemBase-bb5cef12.js";import"./ItemNavigation-9e1aa83a.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-aae87d2c.js";import"./RadioButton-9df6ded1.js";import"./ValueState-2c5e5904.js";import"./CheckBox-4b130a30.js";import"./accept-a98baca8.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-bbef5919.js";import"./CustomListItem-1938b32f.js";import"./slideUp-745debd3.js";import"./animate-1a16ba20.js";import"./AnimationMode-b8fd41f3.js";import"./ResponsivePopover-2c707551.js";import"./Dialog-d6ad04fd.js";import"./ResponsivePopoverCommon.css-187e38b6.js";import"./GlobalStyleClasses-7209358d.js";import"./index-b405c7df.js";import"./ValueState-ab6838cc.js";import"./index-f4287294.js";import"./index-656b71e2.js";import"./Bar-2267974f.js";import"./fastNavigation-8b41cdda.js";import"./index-c63643c4.js";import"./StandardListItem-d455eb22.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_baseForOwn-c7d9bea5.js";import"./mapValues-2de54f78.js";import"./_getPrototype-bd05e126.js";import"./_baseUniq-51545746.js";import"./index-356e4a49.js";import"./index-61436d32.js";function zt(e={}){const{wrapper:n}=Object.assign({},f(),e.components);return n?o(n,Object.assign({},e,{children:o(a,{})})):a();function a(){const t=Object.assign({h2:"h2",h1:"h1",code:"code",p:"p"},f(),e.components);return i(g,{children:[o(C,{of:j}),`
+`,o(u,{}),`
+`,o(t.h2,{children:"Example"}),`
+`,o(m,{of:h}),`
+`,o(t.h2,{children:"Properties"}),`
+`,o(b,{of:h}),`
+`,o(t.h1,{children:"More Examples"}),`
+`,i(t.h2,{children:["ObjectPage with IllustratedMessage (",o(t.code,{children:"UnableToLoad"}),") placeholder"]}),`
+`,o(m,{of:D}),`
+`,o(t.h2,{children:"ObjectPage with custom actions and navigationActions overflow button"}),`
+`,i(t.p,{children:["The ",o(t.code,{children:"DynamicPageTitle"})," offers two props (",o(t.code,{children:"actionsToolbarProps"})," and ",o(t.code,{children:"navigationActionsToolbarProps"}),") to configure the props of the ",o(t.code,{children:"actions"})," and ",o(t.code,{children:"navigationActions"}),` toolbars.
+With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `,o(t.code,{children:"overflowButton"}),` prop.
+`,o(t.code,{children:"navigationActionsToolbarProps"})," only has an effect, if the ",o(t.code,{children:"navigationActions"})," toolbar is used. (width < 1280px)"]}),`
+`,o(m,{of:S}),`
+`,i(t.h2,{children:["ObjectPageSection with hidden ",o(t.code,{children:"titleText"})," and custom ",o(t.code,{children:"header"})]}),`
+`,o(m,{of:w}),`
+`,o(O,{children:v}),`
+`,o(t.h2,{children:"DynamicPageTitle"}),`
+`,o(p,{of:c}),`
+`,o(r,{of:c}),`
+`,o(t.h2,{children:"DynamicPageHeader"}),`
+`,o(p,{of:s}),`
+`,o(r,{of:s}),`
+`,o(t.h2,{children:"ObjectPageSection"}),`
+`,o(p,{of:d}),`
+`,o(r,{of:d}),`
+`,o(t.h2,{children:"ObjectPageSubSection"}),`
+`,o(p,{of:l}),`
+`,o(r,{of:l}),`
+`,o(P,{})]})}}export{zt as default};
+//# sourceMappingURL=ObjectPage-e1785bfd.js.map
