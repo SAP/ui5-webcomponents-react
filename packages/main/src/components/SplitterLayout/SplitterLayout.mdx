@@ -1,0 +1,43 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './SplitterLayout.stories';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { SplitterElement } from '../SplitterElement';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+### SplitterLayoutOptions
+
+| Property                  | Type                   | Description                                                                                              |
+| ------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| `resetOnSizeChange`       | `boolean`              | Defines whether the `SplitterLayout` should be reset when its size changes depending on the orientation. |
+| `resetOnChildrenChange`   | `boolean`              | Defines whether the `SplitterLayout` should be reset when its `children` change.                         |
+| `resetOnCustomDepsChange` | `React.DependencyList` | Defines a list of dependencies that trigger a reset of the `SplitterLayout` when they are changed.       |
+
+## SplitterLayout with non-resizable areas & areas with min-width
+
+<Canvas of={ComponentStories.LimitedAreas} />
+
+## Nested SplitterLayouts
+
+<Canvas of={ComponentStories.Nested} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## SplitterElement
+
+<Description of={SplitterElement} />
+
+<ArgTypesWithNote of={SplitterElement} />
+
+<Footer />
