@@ -12,8 +12,7 @@ const meta = {
   component: ProductSwitch,
   argTypes: {
     children: { control: { disable: true } }
-  },
-  args: {}
+  }
 } satisfies Meta<typeof ProductSwitch>;
 
 export default meta;
