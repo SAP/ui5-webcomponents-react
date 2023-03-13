@@ -1,0 +1,34 @@
+import { ArgsTableWithNote, ArgTypesWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
+import { ProductSwitchItem } from '../ProductSwitchItem';
+import ProductSwitchItemDescription from '../ProductSwitchItem/ProductSwitchItemDescription.md?raw';
+import * as ComponentStories from './ProductSwitch.stories';
+import Description from './ProductSwitchDescription.md?raw';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.7.0" />
+
+<br />
+
+## Example
+
+<Canvas>
+  <Story name="Default">{}</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTableWithNote story="Default" />
+
+<Markdown>{Description}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ProductSwitchItem
+
+<ArgTypesWithNote of={ProductSwitchItem} />
+<Markdown>{ProductSwitchItemDescription}</Markdown>
+
+<Footer />
