@@ -6,10 +6,10 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "lerna run build:i18n && storybook dev -p 6006",
+    "start": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook dev -p 6006",
     "build:prepare": "lerna run build:i18n && rimraf node_modules/@types/mocha",
     "build": "yarn build:prepare && tsc --build && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
-    "build:storybook": "lerna run build:i18n && storybook build -o .out",
+    "build:storybook": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook build -o .out",
     "test:prepare": "rimraf temp && lerna run build",
     "test:jest": "jest --config=config/jest.config.js --coverage",
     "test:cypress": "cypress run --component --browser chrome --spec 'packages/main/src/components/*/**',packages/base,packages/charts,packages/cypress-commands",
@@ -17,8 +17,8 @@
     "test:cypress:all": "cypress run --browser chrome --component",
     "test:cypress:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && yarn test:cypress && yarn test:jest",
-    "clean": "tsc --build --clean && lerna run clean",
-    "clean:check-bundle-size": "yarn clean && rimraf node_modules",
+    "clean": "tsc --build --clean && rimraf temp .out && lerna run clean",
+    "clean:remove-modules": "yarn clean && rimraf node_modules",
     "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx,json}\"",
     "lint": "eslint packages --ext .ts,.tsx",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
@@ -26,7 +26,8 @@
     "examples:recreate-seed": "rimraf examples/seed-test && npx create-react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
-    "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n"
+    "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n",
+    "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"
   },
   "dependencies": {
     "@storybook/addon-a11y": "7.0.0-rc.1",
@@ -94,6 +95,8 @@
     "storybook": "7.0.0-rc.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turndown": "^7.0.0",
+    "typedoc": "^0.23.26",
+    "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "4.9.5",
     "vite": "^4.1.1",
     "vite-plugin-istanbul": "^4.0.0",

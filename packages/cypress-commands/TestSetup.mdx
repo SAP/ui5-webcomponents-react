@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs';
+import { MessageStrip } from '@ui5/webcomponents-react';
+import { Footer, TableOfContent } from '@sb/components';
+
+<Meta title="Setup" />
+
+<TableOfContent headingSelector="h2" />
+
+# Cypress Test Setup
+
+UI5 Web Components for React is using [Cypress](https://www.cypress.io/) as preferred testing framework. There you have the options of testing components only or create End-to-End tests for your application.
+
+## Configuration
+
+When launching Cypress the first time you're guided through the setup, which then will create a [configuration file](https://docs.cypress.io/guides/references/configuration) for you. You can use any configuration you like, but since we're heavily relying on web-components, we recommend traversing the shadow DOM per default:
+
+```js
+includeShadowDom: true;
+```
+
+[Here](https://docs.cypress.io/guides/component-testing/react/quickstart) you can find the Cypress Quickstart tutorial for React.
+
+## ThemeProvider
+
+UI5 Web Components for React components have to be wrapped inside a `ThemeProvider`, depending on your test setup (especially for component-testing) it might prove beneficial creating a custom `mount` command, that includes the `ThemeProvider`.
+
+JavaScript:
+
+```js
+/**
+ * Cypress mount with ThemeProvider
+ */
+Cypress.Commands.add('mount', (component, options) => {
+  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+});
+```
+
+TypeScript declaration:
+
+```ts
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Cypress mount with ThemeProvider
+       */
+      mount: typeof mount;
+    }
+  }
+}
+```
+
+You can define the command for example in the `commands.ts/js` file:
+
+<details>
+
+<summary>Example file</summary>
+
+```tsx
+import { mount } from 'cypress/react18';
+import { ThemeProvider } from '@ui5/webcomponents-react';
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Cypress mount with ThemeProvider
+       */
+      mount: typeof mount;
+    }
+  }
+}
+
+/**
+ * Cypress mount with ThemeProvider
+ */
+Cypress.Commands.add('mount', (component, options) => {
+  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+});
+```
+
+</details>
+
+## Cypress Commands package for ui5-webcomponents
+
+<MessageStrip
+  hideCloseButton
+  children="This package is a work-in-progress and can be extended by you! If you feel like a command or query is missing, please
+  feel free to open a PR adding it to our library. Contributions are always welcome!"
+/>
+
+Since testing web components is sometimes not as straightforward as one would like it to be, we offer a package with a set of commands and queries to make it easier to interact with them:
+
+Install:
+
+```sh
+npm install @ui5/webcomponents-cypress-commands
+```
+
+After the installation you can import it in your entry file (e.g. `component.ts`):
+
+```ts
+import '@ui5/webcomponents-cypress-commands';
+```
+
+Now you can use all commands and queries that are available in this package.
+
+<Footer />

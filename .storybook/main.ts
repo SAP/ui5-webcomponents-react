@@ -50,6 +50,11 @@ const config: StorybookConfig = {
           files: '*.@(tsx|jsx|mdx)',
           titlePrefix: 'Base'
         },
+        {
+          directory: '../packages/cypress-commands',
+          files: '**/*.mdx',
+          titlePrefix: 'Testing with Cypress'
+        },
         '../packages/main/**/*.mdx',
         '../packages/main/**/*.stories.@(tsx|jsx)'
       ],
