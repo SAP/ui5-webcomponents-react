@@ -1,0 +1,33 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { CardHeader } from '../CardHeader';
+import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md?raw';
+import * as ComponentStories from './Card.stories';
+import CardDescription from './CardDescription.md?raw';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{CardDescription}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## CardHeader
+
+<Description of={CardHeader} />
+<ArgTypesWithNote of={CardHeader} />
+<Markdown>{CardHeaderDescription}</Markdown>
+
+<Footer />
