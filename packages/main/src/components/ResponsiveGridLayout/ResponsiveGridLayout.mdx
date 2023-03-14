@@ -1,5 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/blocks';
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as ComponentStories from './ResponsiveGridLayout.stories';
 
 <Meta of={ComponentStories} />
@@ -10,12 +10,10 @@ import * as ComponentStories from './ResponsiveGridLayout.stories';
 
 ## Example
 
-<Canvas>
-  <Story of={ComponentStories.Default} />
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote of={ComponentStories.Default} />
+<ControlsWithNote of={ComponentStories.Default} />
 
 <Footer />
