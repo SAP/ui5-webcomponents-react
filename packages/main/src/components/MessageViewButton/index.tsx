@@ -88,7 +88,7 @@ const getIcon = (type) => {
  * The `MessageViewButton` can be used for opening a `Popover` containing the `MessageView` component. It should always reflect the message `type` with the highest severity.
  */
 const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((props, ref) => {
-  const { type, counter, className, ...rest } = props;
+  const { type = ValueState.Error, counter, className, ...rest } = props;
   const classes = useStyles();
   const classNames = clsx(classes.btn, className);
   const icon = getIcon(type);
@@ -99,10 +99,6 @@ const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((
     </Button>
   );
 });
-
-MessageViewButton.defaultProps = {
-  type: ValueState.Error
-};
 
 MessageViewButton.displayName = 'MessageViewButton';
 
