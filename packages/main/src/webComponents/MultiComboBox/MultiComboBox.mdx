@@ -1,0 +1,48 @@
+import { ArgsTableWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
+import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md?raw';
+import { MultiComboBoxItem } from '../MultiComboBoxItem';
+import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md?raw';
+import * as ComponentStories from './MultiComboBox.stories';
+import Description from './MultiComboBoxDescription.md?raw';
+import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.4.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<DomRefTable rows={MultiComboBoxDomRef} />
+
+# More Examples
+
+## MultiComboBox with Grouping of Items
+
+<Canvas of={ComponentStories.Grouping} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## MultiComboBoxItem
+
+<ArgsTableWithNote hideHTMLPropsNote of={MultiComboBoxItem} />
+<Markdown>{MultiComboBoxItemDescription}</Markdown>
+
+## MultiComboBoxGroupItem
+
+<ArgsTableWithNote hideHTMLPropsNote of={MultiComboBoxGroupItem} />
+<Markdown>{MultiComboBoxGroupItemDescription}</Markdown>
+
+<Footer />

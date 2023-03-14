@@ -1,0 +1,57 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { SuggestionGroupItem } from '../SuggestionGroupItem';
+import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md?raw';
+import { SuggestionItem } from '../SuggestionItem';
+import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md?raw';
+import * as ComponentStories from './Input.stories';
+import Description from './InputDescription.md?raw';
+import InputDomRef from './InputDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<DomRefTable rows={InputDomRef} />
+
+<br />
+
+# More Examples
+
+<br />
+
+## Input with customizable SuggestionItem
+
+The `SuggestionItem` represents the suggestion item of the `Input`
+
+**Note:** `SuggestionItems` will only be displayed if the required module has been imported (`import '@ui5/webcomponents/dist/features/InputSuggestions.js';`)
+and the `showSuggestions` prop is set to `true`.
+
+<Canvas of={ComponentStories.WithSuggestionItem} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## SuggestionItem
+
+<ArgTypesWithNote hideHTMLPropsNote of={SuggestionItem} />
+<Markdown>{SuggestionItemDescription}</Markdown>
+
+## SuggestionGroupItem
+
+<ArgTypesWithNote hideHTMLPropsNote of={SuggestionGroupItem} />
+<Markdown>{SuggestionGroupItemDescription}</Markdown>
+
+<Footer />

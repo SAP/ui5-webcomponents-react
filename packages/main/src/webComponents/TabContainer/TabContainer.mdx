@@ -1,0 +1,54 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Tab } from '../Tab';
+import TabDescription from '../Tab/TabDescription.md?raw';
+import { TabSeparator } from '../TabSeparator';
+import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md?raw';
+import * as ComponentStories from './TabContainer.stories';
+import Description from './TabContainerDescription.md?raw';
+import TabContainerDomRef from './TabContainerDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<DomRefTable rows={TabContainerDomRef} />
+
+# More Examples
+
+## TabContainer with TabSeparator
+
+The <code>TabSeparator</code> represents a vertical line to separate tabs inside a <code>TabContainer</code>
+
+<Canvas of={ComponentStories.WithTabSeparator} />
+
+## TabContainer with nested Tabs
+
+<Canvas of={ComponentStories.WithNestedTabs} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## Tab
+
+<Markdown>{TabDescription}</Markdown>
+<ArgTypesWithNote of={Tab} />
+
+## TabSeparator
+
+<Markdown>{TabSeparatorDescription}</Markdown>
+<ArgTypesWithNote of={TabSeparator} />
+
+<Footer />

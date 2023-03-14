@@ -1,0 +1,32 @@
+import { ArgsTableWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { ColorPaletteItem } from '../ColorPaletteItem';
+import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
+import * as ComponentStories from './ColorPalette.stories';
+import ColorPaletteDescription from './ColorPaletteDescription.md?raw';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.14.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{ColorPaletteDescription}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ColorPaletteItem
+
+<ArgsTableWithNote of={ColorPaletteItem} />
+<Markdown>{ColorPaletteItemDescription}</Markdown>
+
+<Footer />

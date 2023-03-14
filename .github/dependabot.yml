@@ -17,6 +17,7 @@ updates:
     ignore:
       - dependency-name: '@storybook/addon-a11y'
       - dependency-name: '@storybook/addon-essentials'
+      - dependency-name: '@storybook/blocks'
       - dependency-name: '@storybook/react'
       - dependency-name: '@storybook/theming'
       - dependency-name: '@storybook/react-vite'

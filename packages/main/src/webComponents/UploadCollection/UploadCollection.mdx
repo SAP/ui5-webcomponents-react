@@ -1,0 +1,149 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Children, cloneElement, useState } from 'react';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
+import { UploadCollectionItem } from '../UploadCollectionItem';
+import UploadCollectionItemDescription from '../UploadCollectionItem/UploadCollectionItemDescription.md?raw';
+import * as ComponentStories from './UploadCollection.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.9.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## Handling drag and drop of files
+
+Per default, files can be added by dragging them into the `UploadCollection` component.
+To use this functionality the `onDrop` handler has to be manually adjusted.<br/>
+**Note:** Use `event.preventDefault()` in the `onDrop` handler, otherwise some browsers will open some files in a different tab.
+
+This example shows, how to dynamically render a `UploadCollectionItem` by dropping files into the `UploadCollection`:
+
+```jsx
+import React, { useState } from 'react';
+import { Icon, Text, UploadCollection, UploadCollectionItem } from '@ui5/webcomponents-react';
+
+export const UploadCollectionComponent = () => {
+  const [children, setChildren] = useState([]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem file={file} fileName={file.name} thumbnail={<Icon name="document" />}>
+          <Text>Uploaded On: Right now</Text>
+        </UploadCollectionItem>
+      ]);
+    });
+  };
+  return <UploadCollection onDrop={handleDrop}>{children}</UploadCollection>;
+};
+```
+
+<br />
+
+# More Examples
+
+<br />
+
+## Simulate Upload
+
+<Canvas of={ComponentStories.SimulateUpload} />
+
+### Code
+
+```jsx
+const SimulateUploadComponent = () => {
+  const [children, setChildren] = useState([
+    <UploadCollectionItem
+      file={null}
+      fileName={'file-name.txt'}
+      thumbnail={<img src="https://sap.github.io/ui5-webcomponents/assets/images/logo.png" />}
+    >
+      <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
+    </UploadCollectionItem>
+  ]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem file={file} fileName={file.name} thumbnail={<Icon name="document" />}>
+          <Text>{`
+Last
+modified: ${file.lastModifiedDate} ·
+Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
+        </UploadCollectionItem>
+      ]);
+    });
+  };
+  const simulateUpload = () => {
+    if (children.length > 0) {
+      Children.forEach(children, (child, index) => {
+        if (child.props.uploadState === UploadState.Ready) {
+          let progress = 0;
+          const recTimeout = () => {
+            setTimeout(() => {
+              progress += Math.floor(Math.random() * 4) + 1;
+              setChildren((prev) => {
+                const updatedChildren = [...prev];
+                updatedChildren[index] = cloneElement(prev[index], {
+                  uploadState: UploadState.Uploading,
+                  progress: Math.min(progress, 100)
+                });
+                return updatedChildren;
+              });
+              if (progress < 100) {
+                recTimeout();
+              } else {
+                setChildren((prev) => {
+                  const updatedChildren = [...prev];
+                  updatedChildren[index] = cloneElement(prev[index], {
+                    uploadState: UploadState.Complete
+                  });
+                  return updatedChildren;
+                });
+              }
+            }, Math.floor(Math.random() * (1000 - 100 + 1)) + 100);
+          };
+          recTimeout();
+        }
+      });
+    }
+  };
+  return (
+    <UploadCollection
+      onDrop={handleDrop}
+      header={
+        <FlexBox alignItems={FlexBoxAlignItems.Center}>
+          <Title>Start upload:</Title>
+          <Button onClick={simulateUpload}>Upload!</Button>
+        </FlexBox>
+      }
+    >
+      {children}
+    </UploadCollection>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## UploadCollectionItem
+
+<Markdown>{UploadCollectionItemDescription}</Markdown>
+<ArgTypesWithNote of={UploadCollectionItem} />
+
+<Footer />

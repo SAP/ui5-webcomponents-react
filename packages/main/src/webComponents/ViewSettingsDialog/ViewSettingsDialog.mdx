@@ -1,0 +1,82 @@
+import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { useRef } from 'react';
+import FilterItemDescription from '../FilterItem/FilterItemDescription.md?raw';
+import { FilterItem } from '../FilterItem/index';
+import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md?raw';
+import { FilterItemOption } from '../FilterItemOption/index';
+import { SortItem } from '../SortItem/index';
+import SortItemDescription from '../SortItem/SortItemDescription.md?raw';
+import * as ComponentStories from './ViewSettingsDialog.stories';
+import ViewSettingsDialogDescription from './ViewSettingsDialogDescription.md?raw';
+import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.20.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{ViewSettingsDialogDescription}</Markdown>
+
+<DomRefTable rows={ViewSettingsDialogDomRef} />
+
+## Opening ViewSettingsDialog
+
+`ViewSettingsDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
+
+```jsx
+const ViewSettingsDialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open ViewSettingsDialog</Button>
+      <ViewSettingsDialog
+        ref={dialogRef}
+        sortItems={
+          <>
+            <SortItem text="Name" />
+            <SortItem text="Position" />
+            <SortItem text="Company" />
+            <SortItem text="Department" />
+          </>
+        }
+      />
+    </>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## SortItem
+
+<Description of={SortItem} />
+<ArgTypes of={SortItem} />
+<Markdown>{SortItemDescription}</Markdown>
+
+## FilterItem
+
+<Description of={FilterItem} />
+<ArgTypes of={FilterItem} />
+<Markdown>{FilterItemDescription}</Markdown>
+
+## FilterItemOption
+
+<Description of={FilterItemOption} />
+<ArgTypes of={FilterItemOption} />
+<Markdown>{FilterItemOptionDescription}</Markdown>
+
+<Footer />
