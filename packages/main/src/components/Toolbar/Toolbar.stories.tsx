@@ -110,20 +110,7 @@ export const WithOverflowButton: Story = {
       control: { type: 'range', min: 0, max: 1100, step: 10 },
       description:
         'Drag the slider to change the width of the toolbar.\n\n__Note:__ This is not an actual prop of the toolbar!'
-    },
-    children: { table: { disable: true } },
-    toolbarStyle: { table: { disable: true } },
-    design: { table: { disable: true } },
-    active: { table: { disable: true } },
-    onClick: { table: { disable: true } },
-    as: { table: { disable: true } },
-    portalContainer: { table: { disable: true } },
-    onOverflowChange: { table: { disable: true } },
-    className: { table: { disable: true } },
-    style: { table: { disable: true } },
-    tooltip: { table: { disable: true } },
-    overflowPopoverRef: { table: { disable: true } },
-    overflowButton: { table: { disable: true } }
+    }
   },
   render(args) {
     return (
