@@ -22,7 +22,7 @@ const meta = {
 } satisfies Meta<typeof OriginalDialog>;
 
 // todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
-const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
+export const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
   createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
 );
 
