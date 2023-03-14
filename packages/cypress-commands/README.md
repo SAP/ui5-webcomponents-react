@@ -20,3 +20,8 @@ import '@ui5/webcomponents-cypress-commands';
 Now you can use all commands and queries that are available in this package.
 
 > You can find a detailed description of all available commands and queries [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-setup--docs)
+
+## License
+
+Please see our [LICENSE](https://github.com/SAP/ui5-webcomponents-react/blob/main/LICENSE) for copyright and license information.
+Detailed information including third-party components and their licensing/copyright information is available via the [REUSE tool](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-react).
