@@ -32,7 +32,7 @@
   "dependencies": {
     "@storybook/addon-a11y": "7.0.0-rc.1",
     "@storybook/addon-essentials": "7.0.0-rc.1",
-    "@storybook/blocks": "7.0.0-rc.1",
+    "@storybook/blocks": "7.0.0-rc.3",
     "@storybook/react": "7.0.0-rc.1",
     "@storybook/theming": "7.0.0-rc.1",
     "@ui5/webcomponents": "1.11.0",
