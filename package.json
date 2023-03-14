@@ -81,7 +81,6 @@
     "prettier": "^2.8.4",
     "rimraf": "^4.0.4",
     "storybook": "7.0.0-rc.3",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turndown": "^7.0.0",
     "typedoc": "^0.23.26",
     "typedoc-plugin-markdown": "^3.14.0",
