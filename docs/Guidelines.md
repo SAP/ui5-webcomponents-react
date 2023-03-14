@@ -21,7 +21,9 @@ Then, go into that cloned directory and run `yarn install`. At this point, you a
 - `yarn start` <br />
   This starts the local storybook, so you can check if your components are rendered correctly. _If the storybook doesn't open automatically after executing the command, you can use this link: http://localhost:6006/_
 - `yarn test` <br />
-  This command is running all tests in the project. You can pass additional parameters according to the [jest documentation](https://jestjs.io/docs/en/cli). Most probably you will only need the `--update` cli parameter when you have changed tests and want to update the snapshots.
+  This command is running all tests in the project.
+- `yarn test:cypress:open` <br />
+  This command is opening all cypress tests in Chrome.
 - `yarn build` <br />
   This command executes the full build of the project.
 
@@ -68,7 +70,7 @@ The commit header is the first line of the commit message. It consists of three 
   - `style` - changes that do not affect the meaning of the code
   - `refactor` - a code change that neither fixes a bug nor adds a feature
   - `perf` - a code change that improves performance
-  - `test` - adding missing tests
+  - `test` - adding missing tests or fixing existing tests
   - `chore` - changes to the build process or auxiliary tools and libraries such as documentation generation
   - `revert` - revert to a commit
   - `WIP` - work in progress
