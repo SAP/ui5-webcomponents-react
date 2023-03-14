@@ -73,8 +73,11 @@ export const EvenlyAlignedItems: Story = {
   render(args) {
     return (
       <Toolbar {...args}>
+        <Text>Left</Text>
         <ToolbarSpacer />
-        <Button>Button</Button>
+        <Button>Center</Button>
+        <ToolbarSpacer />
+        <Text>Right</Text>
         <Icon name={settingsIcon} />
         <Icon name={downloadIcon} />
       </Toolbar>
