@@ -5,7 +5,7 @@
 
 Since testing web components is sometimes not as straightforward as one would like it to be, we offer a package with a set of commands and queries to make it easier to interact with them:
 
-Install:
+## Installation
 
 ```sh
 npm install @ui5/webcomponents-cypress-commands
