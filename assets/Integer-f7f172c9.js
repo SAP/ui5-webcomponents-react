@@ -1,0 +1,2 @@
+class s{static isValid(t){return!1}static attributeToProperty(t){return t}static propertyToAttribute(t){return t===null?null:String(t)}static valuesAreEqual(t,e){return t===e}static generateTypeAccessors(t){Object.keys(t).forEach(e=>{Object.defineProperty(this,e,{get(){return t[e]}})})}static get isDataTypeClass(){return!0}}class a extends s{static isValid(t){return Number.isInteger(t)}static attributeToProperty(t){return parseInt(t)}}export{s as D,a as I};
+//# sourceMappingURL=Integer-f7f172c9.js.map
