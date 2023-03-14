@@ -152,6 +152,9 @@ const useStyles = createUseStyles(
   { name: 'MessageView' }
 );
 
+/**
+ * The `MessageView` is used to display a summarized list of different types of messages (error, warning, success, and information messages).
+ */
 const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, ref) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
 

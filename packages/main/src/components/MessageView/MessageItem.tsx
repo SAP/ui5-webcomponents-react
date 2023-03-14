@@ -141,7 +141,9 @@ const useStyles = createUseStyles(
   },
   { name: 'MessageItem' }
 );
-
+/**
+ * A component used to hold different types of system messages inside the `MessageView` component.
+ */
 const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
   const { titleText, subtitleText, counter, type = ValueState.Error, children, className, ...rest } = props;
 
