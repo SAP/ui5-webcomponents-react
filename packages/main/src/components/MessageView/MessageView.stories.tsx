@@ -9,9 +9,11 @@ import { TitleLevel } from '../../enums/TitleLevel.js';
 import { ValueState } from '../../enums/ValueState.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-import { Dialog } from '../../webComponents/Dialog/index.js';
+// todo replace once `createPortal` is supported
+import { Dialog } from '../../webComponents/Dialog/Dialog.stories.js';
 import { Link } from '../../webComponents/Link/index.js';
-import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
+// todo replace once `createPortal` is supported
+import { ResponsivePopover } from '../../webComponents/ResponsivePopover/CodeGen.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageViewButton } from '../MessageViewButton/index.js';
@@ -76,7 +78,7 @@ const meta = {
         type={ValueState.None}
         groupName={'Employees'}
       >
-        bla bla bla
+        Informative message
       </MessageItem>
     ]
   }
@@ -161,7 +163,7 @@ export const MessageViewInDialog: Story = {
 };
 
 export const WithMessageViewButton: Story = {
-  name: 'MessageView in Dialog',
+  name: 'with MessageViewButton & Popover',
   render() {
     const ref = useRef(null);
     const messageViewRef = useRef(null);
