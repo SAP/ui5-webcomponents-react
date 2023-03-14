@@ -3,6 +3,7 @@ import downloadIcon from '@ui5/webcomponents-icons/dist/download.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
+import { useState } from 'react';
 import { ButtonDesign } from '../../enums/ButtonDesign.js';
 import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
 import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
@@ -11,6 +12,7 @@ import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Input } from '../../webComponents/Input/index.js';
 import { Select } from '../../webComponents/Select/index.js';
+import { Slider } from '../../webComponents/Slider/index.js';
 import { Switch } from '../../webComponents/Switch/index.js';
 import { ToggleButton } from '../../webComponents/ToggleButton/index.js';
 import { OverflowToolbarButton } from '../OverflowToolbarButton';
@@ -102,31 +104,27 @@ export const WithSeparator: Story = {
 
 export const WithOverflowButton: Story = {
   name: 'with overflow button',
-  // @ts-expect-error: custom prop, not related to proptypes of component
-  args: { width: 200 },
-  argTypes: {
-    // @ts-expect-error: custom prop, not related to proptypes of component
-    width: {
-      control: { type: 'range', min: 0, max: 1100, step: 10 },
-      description:
-        'Drag the slider to change the width of the toolbar.\n\n__Note:__ This is not an actual prop of the toolbar!'
-    }
-  },
   render(args) {
+    const [value, setValue] = useState(100);
+    const handleInput = (e) => {
+      setValue(e.target.value);
+    };
     return (
-      // @ts-expect-error: custom prop, not related to proptypes of component
-      <Toolbar {...args} style={{ width: `${args.width}px` }}>
-        <Text>Toolbar</Text>
-        <Button>Button One</Button>
-        <Button icon="accept" />
-        <Button>Button Two</Button>
-        <Select style={{ width: 'auto' }} />
-        <Switch />
-        <Button>Button Three</Button>
-        <Button>Button Four</Button>
-        <OverflowToolbarButton icon={editIcon}>Edit</OverflowToolbarButton>
-        <OverflowToolbarToggleButton icon={favoriteIcon}>Favorite</OverflowToolbarToggleButton>
-      </Toolbar>
+      <>
+        <Slider onInput={handleInput} value={value} />
+        <Toolbar {...args} style={{ width: `calc(100% * ${value / 100})` }}>
+          <Text>Toolbar</Text>
+          <Button>Button One</Button>
+          <Button icon="accept" />
+          <Button>Button Two</Button>
+          <Select style={{ width: 'auto' }} />
+          <Switch />
+          <Button>Button Three</Button>
+          <Button>Button Four</Button>
+          <OverflowToolbarButton icon={editIcon}>Edit</OverflowToolbarButton>
+          <OverflowToolbarToggleButton icon={favoriteIcon}>Favorite</OverflowToolbarToggleButton>
+        </Toolbar>
+      </>
     );
   }
 };
