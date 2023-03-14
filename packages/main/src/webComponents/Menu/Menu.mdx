@@ -1,70 +1,26 @@
-import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import Description from './MenuDescription.md?raw';
-import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
-import { Button, Menu, MenuItem, MessageStrip } from '../';
-import { useEffect, useRef } from 'react';
-import { isChromatic } from '@sb/utils';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Menu.stories';
+import MenuDescription from './MenuDescription.md?raw';
+import { MessageStrip } from '../MessageStrip';
+import { MenuItem } from '../MenuItem';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import MenuItemDescription from '../MenuItem/MenuItemDescription.md?raw';
 import MenuDomRef from './MenuDomRef.json';
 
-<Meta
-  title="Modals & Popovers / Menu"
-  component={Menu}
-  subcomponents={{ MenuItem }}
-  argTypes={{
-    children: { control: { disable: true } }
-  }}
-  parameters={{
-    chromatic: { delay: 1000 }
-  }}
-/>
+<Meta of={ComponentStories} />
 
-<DocsHeader since="0.23.0" />
-
-<br />
+<DocsHeader />
 
 ## Example
 
-<Canvas>
-  <Story name="Default">
-    {(args) => {
-      const ref = useRef(null);
-      const btnRef = useRef(null);
-      useEffect(() => {
-        if (isChromatic) {
-          ref.current.showAt(btnRef.current);
-        }
-      }, []);
-      return (
-        <>
-          <Button
-            ref={btnRef}
-            onClick={(e) => {
-              ref.current.showAt(e.target);
-            }}
-          >
-            Show Menu
-          </Button>
-          <Menu {...args} ref={ref}>
-            <MenuItem text="New File" icon="add-document" />
-            <MenuItem text="New Folder" icon="add-folder" disabled />
-            <MenuItem text="Open" icon="open-folder" startsSection />
-            <MenuItem text="Close" />
-            <MenuItem text="Preferences" icon="action-settings" startsSection />
-            <MenuItem text="Exit" icon="journey-arrive" />
-          </Menu>
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="Default" />
+<ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{Description}</Markdown>
+<Markdown>{MenuDescription}</Markdown>
 
 <DomRefTable rows={MenuDomRef} />
 
@@ -160,4 +116,4 @@ const MenuComponent = () => {
 
 <Markdown>{MenuItemDescription}</Markdown>
 
-<Footer />
+<ArgTypesWithNote of={MenuItem} />
