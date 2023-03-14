@@ -1,12 +1,14 @@
 import { type Meta, StoryObj } from '@storybook/react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
-import { ResponsiveGridLayout, Text } from '../..';
+import { Text } from '../Text/index.js';
+import { ResponsiveGridLayout } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / ResponsiveGridLayout',
   component: ResponsiveGridLayout,
-  argTypes: { children: { control: { disable: true } } }
+  argTypes: {
+    children: { control: { disable: true } }
+  }
 } satisfies Meta<typeof ResponsiveGridLayout>;
 export default meta;
 type Story = StoryObj<typeof meta>;
