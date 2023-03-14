@@ -136,7 +136,7 @@ const useStyles = createUseStyles(
       '&[data-type="Error"]': { color: ThemingParameters.sapNegativeElementColor },
       '&[data-type="Warning"]': { color: ThemingParameters.sapCriticalElementColor },
       '&[data-type="Success"]': { color: ThemingParameters.sapPositiveElementColor },
-      '&[data-type="Information"]': { color: ThemingParameters.sapNeutralElementColor }
+      '&[data-type="Information"],&[data-type="None"]': { color: ThemingParameters.sapNeutralElementColor }
     },
     detailsTitle: {
       marginBottom: '1rem'
