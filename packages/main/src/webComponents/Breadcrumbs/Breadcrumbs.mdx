@@ -1,0 +1,32 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { BreadcrumbsItem } from '../BreadcrumbsItem';
+import BreadcrumbsItemDescription from '../BreadcrumbsItem/BreadcrumbsItemDescription.md?raw';
+import * as ComponentStories from './Breadcrumbs.stories';
+import Description from './BreadcrumbsDescription.md?raw';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.18.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## BreadcrumbsItem
+
+<Markdown>{BreadcrumbsItemDescription}</Markdown>
+<ArgTypesWithNote hideHTMLPropsNote of={BreadcrumbsItem} />
+
+<Footer />
