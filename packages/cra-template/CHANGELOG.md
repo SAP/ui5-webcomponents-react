@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Features
+
+- adjust cra-template to use Cypress instead of Jest for testing ([#4306](https://github.com/SAP/ui5-webcomponents-react/issues/4306)) ([478f395](https://github.com/SAP/ui5-webcomponents-react/commit/478f395bf8b8df135120f1da56c94e3818bece06))
+
 # [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
 
 ### Features

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Bug Fixes
+
+- **charts:** update peer dependencies ([#4280](https://github.com/SAP/ui5-webcomponents-react/issues/4280)) ([ce5e0d5](https://github.com/SAP/ui5-webcomponents-react/commit/ce5e0d5be758dd28a592b7698db95ff781b7543a))
+- **MessageBox:** adjust title style and level to latest Design specs ([#4291](https://github.com/SAP/ui5-webcomponents-react/issues/4291)) ([5eb79b0](https://github.com/SAP/ui5-webcomponents-react/commit/5eb79b0249156f4eb887fe9f35f57896d6cad0ab)), closes [#4290](https://github.com/SAP/ui5-webcomponents-react/issues/4290)
+- **MessageItem:** correct style for `"None"` message icon, make `type` and `children` optional (TypeScript) ([#4314](https://github.com/SAP/ui5-webcomponents-react/issues/4314)) ([3119c4e](https://github.com/SAP/ui5-webcomponents-react/commit/3119c4e880a4a23ee2fa0378e8b3e4e6e8baa2df))
+- **SplitterLayout:** use correct dimensions for vertical layout ([#4284](https://github.com/SAP/ui5-webcomponents-react/issues/4284)) ([b22d649](https://github.com/SAP/ui5-webcomponents-react/commit/b22d649c92aaa82048c181c8e74757b23247a870))
+- **Toolbar:** always respect `numberOfAlwaysVisibleItems` ([#4330](https://github.com/SAP/ui5-webcomponents-react/issues/4330)) ([7fb45b1](https://github.com/SAP/ui5-webcomponents-react/commit/7fb45b1c301ee1524ea83d3c1e427acce86e3154))
+
+### Features
+
+- adjust cra-template to use Cypress instead of Jest for testing ([#4306](https://github.com/SAP/ui5-webcomponents-react/issues/4306)) ([478f395](https://github.com/SAP/ui5-webcomponents-react/commit/478f395bf8b8df135120f1da56c94e3818bece06))
+- introduce new `@ui5/webcomponents-cypress-commands` package ([#4289](https://github.com/SAP/ui5-webcomponents-react/issues/4289)) ([41c748a](https://github.com/SAP/ui5-webcomponents-react/commit/41c748ac3d6e2d3b6c368ad3d0ab4472a4f65981))
+
 # [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
 
 ### Features
