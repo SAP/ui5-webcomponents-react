@@ -20,8 +20,14 @@ import './commands';
 // require('./commands')
 
 import { mount } from 'cypress/react18';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 
-Cypress.Commands.add('mount', mount);
+/**
+ * Cypress mount with ThemeProvider
+ */
+Cypress.Commands.add('mount', (component, options) => {
+  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+});
 
 // Example use:
 // cy.mount(<MyComponent />)
