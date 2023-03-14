@@ -35,6 +35,6 @@ const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolb
   }
 );
 
-OverflowToolbarToggleButton.displayName = 'OverflowToolbarButton';
+OverflowToolbarToggleButton.displayName = 'OverflowToolbarToggleButton';
 
 export { OverflowToolbarToggleButton };
