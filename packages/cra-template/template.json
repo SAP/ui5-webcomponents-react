@@ -8,7 +8,8 @@
       "web-vitals": "^2.1.0"
     },
     "devDependencies": {
-      "cypress": "^12.1.0"
+      "cypress": "^12.1.0",
+      "@ui5/webcomponents-cypress-commands": "latest"
     },
     "scripts": {
       "test": "cypress run --component --browser chrome",
