@@ -52,7 +52,7 @@
     "@semantic-release/github": "^8.0.0",
     "@storybook/react-vite": "7.0.0-rc.3",
     "@testing-library/cypress": "^9.0.0",
-    "@types/node": "^16.0.0",
+    "@types/node": "^18.0.0",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
