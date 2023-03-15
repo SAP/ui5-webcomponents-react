@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard",
+    ":automergePatch",
+    ":enableVulnerabilityAlerts",
+    ":semanticCommits"
+  ],
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "groupName": "UI5 Web Components",
+      "matchSourceUrlPrefixes": [
+        "https://github.com/SAP/ui5-webcomponents"
+      ]
+    },
+    {
+      "groupName": "vite & plugins",
+      "matchPackagePatterns": [
+        "vite"
+      ]
+    },
+    {
+      "groupName": "eslint",
+      "matchPackagePatterns": [
+        "eslint"
+      ]
+    }
+  ]
+}
