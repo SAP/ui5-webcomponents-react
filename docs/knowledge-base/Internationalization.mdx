@@ -1,8 +1,10 @@
 import { Meta } from '@storybook/addon-docs';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import { Footer } from '@sb/components';
+import { Footer, TableOfContent } from '@sb/components';
 
 <Meta title="Internationalization" />
+
+<TableOfContent />
 
 # Setup Internationalization (i18n)
 
@@ -10,6 +12,8 @@ UI5 Web Components (for React) aim to be feature rich and with a minimal code fo
 In order to achieve this, most UI5 Web Components packages ship their assets as `.json` files while also providing a public module import for them.
 
 **Prerequisite: This guide requires `@ui5/webcomponents-react@^0.14.0` and `@ui5/webcomponents@^1.0.0-rc.12` or newer.**
+
+## Make your App translatable
 
 In order to make your app translatable into various languages, you need to import the following asset:
 

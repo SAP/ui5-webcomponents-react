@@ -31,6 +31,12 @@
 }
 
 @media (max-width: 1329px) {
+  .header[data-show-small='false'] {
+    display: none;
+  }
+  .fixedContainer[data-show-small='false'] {
+    display: none;
+  }
   .toc {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
