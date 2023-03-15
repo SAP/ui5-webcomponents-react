@@ -21,6 +21,8 @@ import './commands';
 
 import { mount } from 'cypress/react18';
 import { ThemeProvider } from '@ui5/webcomponents-react';
+// Cypress commands and queries that help interacting with ui5-webcomponents
+import '@ui5/webcomponents-cypress-commands';
 
 /**
  * Cypress mount with ThemeProvider
