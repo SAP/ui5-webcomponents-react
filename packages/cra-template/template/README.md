@@ -18,7 +18,7 @@ You may also see any lint errors in the console.
 
 Executes all Cypress tests in headless mode.
 
-### `npm test:open`
+### `npm run test:open`
 
 Opens the Cypress-App to run tests in interactive mode.
 
