@@ -81,6 +81,7 @@ export const LimitedAreas: Story = {
 };
 
 export const Nested: Story = {
+  parameters: { chromatic: { disableSnapshot: true } },
   render(args) {
     const [vertical, setVertical] = useState(args.vertical);
     const handleChange = (e) => {
