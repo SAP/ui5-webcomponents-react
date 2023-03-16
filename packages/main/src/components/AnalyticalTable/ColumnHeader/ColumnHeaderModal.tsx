@@ -3,7 +3,7 @@ import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
-import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -46,10 +46,14 @@ const styles = {
     height: 'var(--_ui5_list_item_base_height)'
   },
   filter: {
-    padding: '0px 1rem',
     height: 'var(--_ui5_list_item_base_height)'
   },
-  filterIcon: { paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }
+  filterIcon: {
+    paddingRight: '0.5rem',
+    minWidth: '1rem',
+    minHeight: '1rem',
+    color: ThemingParameters.sapContent_NonInteractiveIconColor
+  }
 };
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
