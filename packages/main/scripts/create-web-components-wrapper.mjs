@@ -600,8 +600,6 @@ allWebComponents
       return [mainDescription, rest.join('<h3>')];
     };
 
-    const [mainDescription, description = ''] = formatDescription();
-
     if (EXCLUDE_LIST.includes(componentSpec.module)) {
       console.warn(
         `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
@@ -656,6 +654,9 @@ allWebComponents
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
+        if (componentSpec.since) {
+          mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
+        }
         const subComponentDescription = `${formatDemoDescription(
           mainDescription,
           componentSpec,
