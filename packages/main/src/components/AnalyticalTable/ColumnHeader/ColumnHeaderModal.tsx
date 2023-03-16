@@ -49,7 +49,7 @@ const styles = {
     height: 'var(--_ui5_list_item_base_height)'
   },
   filterIcon: {
-    paddingRight: '0.5rem',
+    paddingInlineEnd: '0.5rem',
     minWidth: '1rem',
     minHeight: '1rem',
     color: ThemingParameters.sapContent_NonInteractiveIconColor
