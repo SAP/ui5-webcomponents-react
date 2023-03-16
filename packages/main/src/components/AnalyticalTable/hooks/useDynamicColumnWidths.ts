@@ -292,6 +292,8 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return columns.map((column) => ({ ...column, width: column.width ?? defaultWidth }));
   }
 
+  // AnalyticalTableScaleWidthMode.Grow
+
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
   const columnMeta = visibleColumns.reduce((acc, column) => {
@@ -345,40 +347,31 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return acc;
   }, {});
 
-  const totalCharNum = Object.values(columnMeta).reduce((acc: number, item: any) => acc + item.contentCharAvg, 0);
-
   let reservedWidth = visibleColumns.reduce((acc, column) => {
     const { minHeaderWidth, fullWidth } = columnMeta[column.id ?? column.accessor];
-    return (
-      acc +
-        Math.max(
-          column.minWidth || 0,
-          column.width || 0,
-          minHeaderWidth || 0,
-          scaleWidthMode === AnalyticalTableScaleWidthMode.Grow ? fullWidth : 0
-        ) || 0
-    );
+    return acc + Math.max(column.minWidth || 0, column.width || 0, minHeaderWidth || 0, fullWidth) || 0;
   }, 0);
 
   let availableWidth = totalWidth - reservedWidth;
 
   if (availableWidth > 0) {
-    if (scaleWidthMode === AnalyticalTableScaleWidthMode.Grow) {
-      reservedWidth = visibleColumns.reduce((acc, column) => {
-        const { minHeaderWidth } = columnMeta[column.id ?? column.accessor];
-        return acc + Math.max(column.minWidth || 0, column.width || 0, minHeaderWidth || 0) || 0;
-      }, 0);
-      availableWidth = totalWidth - reservedWidth;
-    }
+    let notReservedCount = 0;
+    reservedWidth = visibleColumns.reduce((acc, column) => {
+      const reserved = Math.max(column.minWidth || 0, column.width || 0) || 0;
+      if (!reserved) {
+        notReservedCount++;
+      }
+      return acc + reserved;
+    }, 0);
+    availableWidth = totalWidth - reservedWidth;
 
     return columns.map((column) => {
       const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
       const meta = columnMeta[column.id ?? (column.accessor as string)];
       if (isColumnVisible && meta) {
-        const { minHeaderWidth, contentCharAvg } = meta;
-        const additionalSpaceFactor = totalCharNum > 0 ? contentCharAvg / totalCharNum : 1 / visibleColumns.length;
+        const { minHeaderWidth } = meta;
 
-        const targetWidth = additionalSpaceFactor * availableWidth + minHeaderWidth;
+        const targetWidth = availableWidth / notReservedCount;
 
         return {
           ...column,
@@ -391,7 +384,6 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     });
   }
 
-  // AnalyticalTableScaleWidthMode Grow
   return columns.map((column) => {
     const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
     const meta = columnMeta[column.id ?? (column.accessor as string)];
