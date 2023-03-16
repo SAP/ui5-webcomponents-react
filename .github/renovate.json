@@ -8,24 +8,19 @@
     ":semanticCommits"
   ],
   "platformAutomerge": true,
+  "prHourlyLimit": 5,
   "packageRules": [
     {
       "groupName": "UI5 Web Components",
-      "matchSourceUrlPrefixes": [
-        "https://github.com/SAP/ui5-webcomponents"
-      ]
+      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
     },
     {
       "groupName": "vite & plugins",
-      "matchPackagePatterns": [
-        "vite"
-      ]
+      "matchPackagePatterns": ["vite"]
     },
     {
       "groupName": "eslint",
-      "matchPackagePatterns": [
-        "eslint"
-      ]
+      "matchPackagePatterns": ["eslint"]
     }
   ]
 }
