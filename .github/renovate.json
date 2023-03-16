@@ -21,6 +21,11 @@
     {
       "groupName": "eslint",
       "matchPackagePatterns": ["eslint"]
+    },
+    {
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["patch"],
+      "enabled": false
     }
   ]
 }
