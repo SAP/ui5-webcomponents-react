@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "version": "1.11.3",
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
