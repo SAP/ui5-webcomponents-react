@@ -18,7 +18,7 @@ export enum AnalyticalTableScaleWidthMode {
    *
    * __Note:__ To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property.
    *
-   * __Note:__ This mode adds a `minWidth` to each column. If the internally set `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can override the internal `minWidth` by setting it yourself.
+   * __Note:__ This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    */
   Grow = 'Grow'
 }
