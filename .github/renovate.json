@@ -7,6 +7,7 @@
     ":enableVulnerabilityAlerts",
     ":semanticCommits"
   ],
+  "automerge": true,
   "platformAutomerge": true,
   "prHourlyLimit": 5,
   "packageRules": [
