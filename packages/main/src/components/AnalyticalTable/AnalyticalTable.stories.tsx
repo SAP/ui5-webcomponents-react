@@ -95,6 +95,7 @@ const meta = {
         Header: 'Actions',
         accessor: '.',
         width: 100,
+        minWidth: 100,
         disableResizing: true,
         disableGroupBy: true,
         disableFilters: true,
