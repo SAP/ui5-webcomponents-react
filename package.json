@@ -50,7 +50,7 @@
     "@babel/preset-typescript": "7.21.0",
     "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^8.0.0",
-    "@storybook/react-vite": "7.0.0-rc.3",
+    "@storybook/react-vite": "7.0.0-rc.4",
     "@testing-library/cypress": "^9.0.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.6",
