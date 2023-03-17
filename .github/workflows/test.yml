@@ -31,10 +31,10 @@ jobs:
           component: true
           spec: packages/${{ matrix.spec }}
 
-      - uses: coverallsapp/github-action@v1.2.4
+      - uses: coverallsapp/github-action@v2.0.0
         if: ${{ inputs.reportCoverage }}
         with:
-          path-to-lcov: temp/cypress-coverage/lcov.info
+          file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
           flag-name: ${{ matrix.spec }}
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls
-        uses: coverallsapp/github-action@v1.2.4
+        uses: coverallsapp/github-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
