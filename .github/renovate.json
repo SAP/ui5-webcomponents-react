@@ -7,6 +7,7 @@
     ":enableVulnerabilityAlerts",
     ":semanticCommits"
   ],
+  "automerge": true,
   "platformAutomerge": true,
   "prHourlyLimit": 5,
   "packageRules": [
@@ -26,6 +27,10 @@
       "matchPackageNames": ["@types/node"],
       "matchUpdateTypes": ["patch"],
       "enabled": false
+    },
+    {
+      "extends": "monorepo:storybook",
+      "semanticCommitType": "chore"
     }
   ]
 }
