@@ -52,7 +52,7 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ Assigning `children` as function is recommended when implementing sticky sub-headers. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/story/layouts-floorplans-dynamicpage--sticky-sub-headers).
    */
-  children?: ReactNode | ReactNode[] | (({ stickyHeaderHeight: number }) => ReactElement);
+  children?: ReactNode | ReactNode[] | (({ stickyHeaderHeight }: { stickyHeaderHeight: number }) => ReactElement);
   /**
    * Defines internally used a11y properties.
    */
