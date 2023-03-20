@@ -7,7 +7,7 @@ import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2';
 import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import {
   Badge,
   Bar,
@@ -340,6 +340,57 @@ export const WithCustomOverflowButton: Story = {
           }
         />
       </>
+    );
+  }
+};
+
+export const StickySubHeaders: Story = {
+  name: 'with sticky sub-headers',
+  render(args) {
+    return (
+      <DynamicPage
+        {...args}
+        footer={
+          <Bar
+            design={BarDesign.FloatingFooter}
+            endContent={
+              <>
+                <Button design={ButtonDesign.Positive}>Accept</Button>
+                <Button design={ButtonDesign.Negative}>Reject</Button>
+              </>
+            }
+          />
+        }
+      >
+        {({ stickyHeaderHeight }) => (
+          <>
+            <div
+              style={{
+                position: 'sticky',
+                width: '100%',
+                height: '4rem',
+                background: 'lightgreen',
+                top: `${stickyHeaderHeight}px`
+              }}
+            >
+              Sticky Header
+            </div>
+            <div style={{ width: '100%', background: 'orange', height: '10rem' }}>Content</div>
+            <div
+              style={{
+                position: 'sticky',
+                width: '100%',
+                height: '8rem',
+                background: 'lightgreen',
+                top: `calc(${stickyHeaderHeight}px + 4rem)`
+              }}
+            >
+              Sticky Header 2
+            </div>
+            <div style={{ background: 'lightblue', height: '2000px', width: '100%' }}>Content</div>
+          </>
+        )}
+      </DynamicPage>
     );
   }
 };

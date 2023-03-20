@@ -359,5 +359,108 @@ describe('DynamicPage', () => {
     cy.get('[icon="question-mark"]').should('have.length', 1).should('be.visible');
   });
 
+  it('with sticky sub-headers', () => {
+    const renderContent = (stickyHeaderHeight) => (
+      <>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '4rem',
+            background: 'lightgreen',
+            top: `${stickyHeaderHeight}px`
+          }}
+        >
+          <span>Sticky Header</span>
+        </div>
+        <div style={{ width: '100%', background: 'orange', height: '10rem' }}>
+          <span>Content 1</span>
+        </div>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '8rem',
+            background: 'lightgreen',
+            top: `calc(${stickyHeaderHeight}px + 4rem)`
+          }}
+        >
+          <span>Sticky Header 2</span>
+        </div>
+        <div style={{ background: 'lightblue', height: '2000px', width: '100%' }}>
+          <span>Content 2</span>
+        </div>
+      </>
+    );
+
+    function checksWithScroll() {
+      cy.findByText('Sticky Header').should('be.visible');
+      cy.findByText('Content 1').should('be.visible');
+      cy.findByText('Sticky Header 2').should('be.visible');
+      cy.findByText('Content 2').should('be.visible');
+
+      cy.findByTestId('dp').scrollTo(0, 800);
+
+      cy.findByText('Sticky Header').should('be.visible');
+      cy.findByText('Content 1').should('not.be.visible');
+      cy.findByText('Sticky Header 2').should('be.visible');
+      cy.findByText('Content 2').should('not.be.visible');
+    }
+
+    cy.mount(
+      <DynamicPage
+        data-testid="dp"
+        style={{ height: '90vh' }}
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+      >
+        {({ stickyHeaderHeight }) => {
+          return renderContent(stickyHeaderHeight);
+        }}
+      </DynamicPage>
+    );
+
+    checksWithScroll();
+
+    cy.mount(
+      <DynamicPage
+        data-testid="dp"
+        style={{ height: '90vh' }}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+      >
+        {({ stickyHeaderHeight }) => {
+          return renderContent(stickyHeaderHeight);
+        }}
+      </DynamicPage>
+    );
+
+    checksWithScroll();
+
+    cy.mount(
+      <DynamicPage data-testid="dp" style={{ height: '90vh' }}>
+        {({ stickyHeaderHeight }) => {
+          return renderContent(stickyHeaderHeight);
+        }}
+      </DynamicPage>
+    );
+
+    checksWithScroll();
+
+    cy.mount(
+      <DynamicPage
+        data-testid="dp"
+        style={{ height: '90vh' }}
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+        footer={<div>footer</div>}
+      >
+        {({ stickyHeaderHeight }) => {
+          return renderContent(stickyHeaderHeight);
+        }}
+      </DynamicPage>
+    );
+
+    checksWithScroll();
+  });
   cypressPassThroughTestsFactory(DynamicPage);
 });
