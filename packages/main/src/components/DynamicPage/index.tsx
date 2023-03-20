@@ -11,7 +11,7 @@ import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
 import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
 
-export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
+export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'children'> {
   /**
    * Determines the background color of DynamicPage.
    */
@@ -49,8 +49,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
   footer?: ReactElement;
   /**
    * React element or node array which defines the content.
+   *
+   * __Note:__ Assigning `children` as function is recommended when implementing sticky sub-headers. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/story/layouts-floorplans-dynamicpage--sticky-sub-headers).
    */
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[] | ((payload: { stickyHeaderHeight: number }) => ReactElement);
   /**
    * Defines internally used a11y properties.
    */
@@ -260,6 +262,11 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     }
   }, [headerCollapsed]);
 
+  const top =
+    headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE
+      ? (headerContentRef?.current?.offsetHeight ?? 0) + topHeaderHeight
+      : topHeaderHeight;
+
   return (
     <div
       ref={componentRef}
@@ -290,12 +297,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
         data-component-name="DynamicPageAnchorBarContainer"
         className={classes.anchorBar}
         ref={anchorBarRef}
-        style={{
-          top:
-            headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE
-              ? (headerContentRef?.current?.offsetHeight ?? 0) + topHeaderHeight
-              : topHeaderHeight
-        }}
+        style={{ top }}
       >
         <DynamicPageAnchorBar
           headerContentPinnable={headerContentPinnable}
@@ -317,7 +319,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
           paddingBlockEnd: footer ? '1rem' : 0
         }}
       >
-        {children}
+        {typeof children === 'function' ? children({ stickyHeaderHeight: top + 1 /*anchorBar height */ }) : children}
       </div>
       {footer && (
         <div

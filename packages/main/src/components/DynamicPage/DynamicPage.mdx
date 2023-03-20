@@ -41,6 +41,50 @@ With these objects it's possible to e.g. configure the overflow button displayed
 
 <Canvas of={ComponentStories.WithCustomOverflowButton} />
 
+## With sticky sub-headers
+
+To display sticky sub-headers that line-up with the standard header of the `DynamicPage` you're able to render `children` as function.
+There you receive an object as parameter that offers the following properties:
+
+- `stickyHeaderHeight`: The height of the `DynamicPage` header sections which will stick to the top of the page.
+
+<Canvas of={ComponentStories.StickySubHeaders} sourceState="none" />
+
+### Code
+
+```jsx
+<DynamicPage {...props}>
+  {({ stickyHeaderHeight }) => (
+    <>
+      <div
+        style={{
+          position: 'sticky',
+          width: '100%',
+          height: '4rem',
+          background: 'lightgreen',
+          top: `${stickyHeaderHeight}px`
+        }}
+      >
+        Sticky Header
+      </div>
+      <div style={{ width: '100%', background: 'orange', height: '10rem' }}>Content</div>
+      <div
+        style={{
+          position: 'sticky',
+          width: '100%',
+          height: '8rem',
+          background: 'lightgreen',
+          top: `calc(${stickyHeaderHeight}px + 4rem)`
+        }}
+      >
+        Sticky Header 2
+      </div>
+      <div style={{ background: 'lightblue', height: '2000px', width: '100%' }}>Content</div>
+    </>
+  )}
+</DynamicPage>
+```
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## DynamicPageTitle
