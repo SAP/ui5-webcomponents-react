@@ -11,7 +11,7 @@ import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
 import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
 
-export interface DynamicPagePropTypes extends Omit<CommonProps, 'title'> {
+export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'children'> {
   /**
    * Determines the background color of DynamicPage.
    */
