@@ -502,6 +502,7 @@ describe('Toolbar', () => {
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.findByText('add').click();
     cy.get('[ui5-toggle-button]').should('be.visible');
+    cy.wait(50);
     cy.findByText('remove').click();
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.get('@overflowChange').should('have.been.calledOnce');
