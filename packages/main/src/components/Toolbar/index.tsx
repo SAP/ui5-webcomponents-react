@@ -263,6 +263,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [calculateVisibleItems]);
 
+  useEffect(() => {
+    if (Children.count(children) > 0) {
+      calculateVisibleItems();
+    }
+  }, [children]);
+
   useIsomorphicLayoutEffect(() => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
+import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { FlexBoxDirection, FlexBoxJustifyContent, ValueState } from '../../enums/index.js';
 import { ComboBoxItem } from '../ComboBoxItem/index.js';
@@ -26,13 +27,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => {
+    const [selected, setSelected] = useState(undefined);
     return (
-      <ComboBox {...args}>
-        <ComboBoxItem text="ComboBox Entry 1" />
-        <ComboBoxItem text="ComboBox Entry 2" />
-        <ComboBoxItem text="ComboBox Entry 3" />
-        <ComboBoxItem text="ComboBox Entry 4" />
-        <ComboBoxItem text="ComboBox Entry 5" />
+      <ComboBox
+        {...args}
+        onSelectionChange={(e) => {
+          e.preventDefault();
+          setSelected(e.detail.item.dataset.id);
+        }}
+      >
+        <ComboBoxItem text="ComboBox Entry 1" data-id="0" selected={selected === '0'} />
+        <ComboBoxItem text="ComboBox Entry 2" data-id="1" selected={selected === '1'} />
+        <ComboBoxItem text="ComboBox Entry 3" data-id="2" selected={selected === '2'} />
+        <ComboBoxItem text="ComboBox Entry 4" data-id="3" selected={selected === '3'} />
+        <ComboBoxItem text="ComboBox Entry 4" data-id="4" selected={selected === '4'} />
       </ComboBox>
     );
   }
