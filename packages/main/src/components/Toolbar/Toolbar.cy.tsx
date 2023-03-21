@@ -464,33 +464,6 @@ describe('Toolbar', () => {
     });
   });
 
-  it('Toolbar active use outline or shadow', () => {
-    cy.mount(
-      <Toolbar active data-testid="tb">
-        Text
-      </Toolbar>
-    );
-
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.findByTestId('tb').click();
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.wait(500).then(() => {
-      cy.findByTestId('tb').blur();
-      setTheme('sap_horizon');
-    });
-
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.findByTestId('tb').focus();
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
-  });
-
   it('recalc on children change', () => {
     const TestComp = (props: ToolbarPropTypes) => {
       const [actions, setActions] = useState([]);
@@ -529,9 +502,37 @@ describe('Toolbar', () => {
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.findByText('add').click();
     cy.get('[ui5-toggle-button]').should('be.visible');
+    cy.wait(50);
     cy.findByText('remove').click();
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.get('@overflowChange').should('have.been.calledOnce');
+  });
+
+  it('Toolbar active use outline or shadow', () => {
+    cy.mount(
+      <Toolbar active data-testid="tb">
+        Text
+      </Toolbar>
+    );
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.wait(500).then(() => {
+      cy.findByTestId('tb').blur();
+      setTheme('sap_horizon');
+    });
+
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').focus();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
   mountWithCustomTagName(Toolbar);

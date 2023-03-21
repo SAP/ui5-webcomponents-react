@@ -298,6 +298,7 @@ export const WithCustomOverflowButton: Story = {
             Action
           </Button>
           <Button design={ButtonDesign.Transparent}>Create</Button>
+          <Button design={ButtonDesign.Transparent}>Loooooong actions Button</Button>
         </>
       ),
       navigationActions: (
