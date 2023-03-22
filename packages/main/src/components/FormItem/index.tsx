@@ -153,9 +153,7 @@ const FormItem = (props: FormItemPropTypes) => {
         data-label-span={labelSpan}
       >
         {flattenFragments(children).map((child, index) => {
-          {
-            /* @ts-expect-error: type can't be string because of `isValidElement` */
-          }
+          // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
             return (
