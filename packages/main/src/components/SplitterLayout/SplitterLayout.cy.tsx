@@ -53,8 +53,8 @@ describe('SplitterLayout', () => {
         cy.viewport(2000, 2000);
         cy.mount(<TestComp vertical={vertical} dir={dir} />);
 
-        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-        cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
+        cy.findByTestId('se1').should('have.css', 'flex', '0 1 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 1 30%');
 
         moveSpacer(dir, vertical);
         cy.findByTestId('se1').should('have.css', 'flex', '0 0 1184px');
@@ -62,25 +62,25 @@ describe('SplitterLayout', () => {
 
         cy.findByText('Trigger dep').click({ force: true });
 
-        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-        cy.findByTestId('se2').should('have.css', 'flex', '0 0 30%');
+        cy.findByTestId('se1').should('have.css', 'flex', '0 1 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 1 30%');
 
         moveSpacer(dir, vertical);
         cy.findByTestId('se1').should('have.css', 'flex', '0 0 1184px');
         cy.findByTestId('se2').should('have.css', 'flex', '0 0 800px');
 
         cy.findByText('Add child').click({ force: true });
-        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-        cy.findByTestId('se2').should('have.css', 'flex', '0 0 calc(25% - 16px)');
-        cy.findByTestId('se3').should('have.css', 'flex', '0 0 5%');
+        cy.findByTestId('se1').should('have.css', 'flex', '0 1 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 1 calc(25% - 16px)');
+        cy.findByTestId('se3').should('have.css', 'flex', '0 1 5%');
 
         moveSpacer(dir, vertical);
 
         cy.viewport(1000, 1000);
 
-        cy.findByTestId('se1').should('have.css', 'flex', '0 0 calc(70% - 16px)');
-        cy.findByTestId('se2').should('have.css', 'flex', '0 0 calc(25% - 16px)');
-        cy.findByTestId('se3').should('have.css', 'flex', '0 0 5%');
+        cy.findByTestId('se1').should('have.css', 'flex', '0 1 calc(70% - 16px)');
+        cy.findByTestId('se2').should('have.css', 'flex', '0 1 calc(25% - 16px)');
+        cy.findByTestId('se3').should('have.css', 'flex', '0 1 5%');
       });
     });
   });
@@ -113,7 +113,7 @@ describe('SplitterLayout', () => {
         .should('have.css', 'border-style', 'dotted');
       cy.findByTestId('sl').should('have.css', 'width', '800px').should('have.css', 'height', '800px');
       cy.findByTestId('se2')
-        .should('have.css', 'flex', '0 0 400px')
+        .should('have.css', 'flex', '0 1 400px')
         .should('have.css', vertical ? 'min-height' : 'min-width', '300px');
       cy.findByTestId('se3')
         .should('have.css', 'flex', '0 0 200px')
