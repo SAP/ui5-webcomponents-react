@@ -5,7 +5,14 @@ import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/web
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';
+import {
+  ButtonDesign,
+  MessageBoxActions,
+  MessageBoxTypes,
+  PopupAccessibleRole,
+  TitleLevel,
+  ValueState
+} from '../../enums';
 import {
   ABORT,
   CANCEL,
@@ -217,6 +224,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       className={clsx(classes.messageBox, className)}
       onAfterClose={open ? handleOnClose : stopPropagation}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
+      accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}
       headerText={titleToRender()}
       state={convertMessageBoxTypeToState(type as MessageBoxTypes)}
