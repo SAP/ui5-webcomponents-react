@@ -233,7 +233,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
             onKeyDown={handleCustomLiKeyDown}
           >
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
-              <Icon name={iconFilter} className={classes.filterIcon} />
+              <Icon name={iconFilter} className={classes.filterIcon} aria-hidden />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
           </CustomListItem>

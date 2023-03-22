@@ -55,6 +55,8 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  FILTERED,
+  GROUPED,
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
@@ -671,7 +673,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
           unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
           expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
-          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE),
+          filteredA11yText: i18nBundle.getText(FILTERED),
+          groupedA11yText: i18nBundle.getText(GROUPED)
         },
         tagNamesWhichShouldNotSelectARow,
         tableRef,

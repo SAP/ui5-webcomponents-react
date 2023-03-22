@@ -6,6 +6,7 @@ import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, {
+  AriaAttributes,
   CSSProperties,
   DragEventHandler,
   FC,
@@ -49,6 +50,9 @@ export interface ColumnHeaderProps {
   style: CSSProperties;
   column: ColumnType;
   role: string;
+  isFiltered?: boolean;
+  ['aria-sort']?: AriaAttributes['aria-sort'];
+  ['aria-label']?: AriaAttributes['aria-label'];
 }
 
 const styles = {
@@ -116,10 +120,12 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onClick,
     onKeyDown,
     portalContainer,
-    scaleXFactor
+    scaleXFactor,
+    isFiltered,
+    'aria-label': ariaLabel,
+    'aria-sort': ariaSort
   } = props;
 
-  const isFiltered = column.filterValue && column.filterValue.length > 0;
   const [popoverOpen, setPopoverOpen] = useState(false);
   const columnHeaderRef = useRef<HTMLDivElement>(null);
 
@@ -190,6 +196,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
+
   if (!column) return null;
   return (
     <div
@@ -235,6 +242,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
         onKeyUp={handleHeaderCellKeyUp}
+        aria-label={ariaLabel}
+        aria-sort={ariaSort}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text
@@ -254,9 +263,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             style={iconContainerDirectionStyles}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
           >
-            {isFiltered && <Icon name={iconFilter} />}
-            {column.isSorted && <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} />}
-            {column.isGrouped && <Icon name={iconGroup} />}
+            {isFiltered && <Icon name={iconFilter} aria-hidden />}
+            {column.isSorted && (
+              <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} aria-hidden />
+            )}
+            {column.isGrouped && <Icon name={iconGroup} aria-hidden />}
           </div>
         </div>
         {hasPopover && popoverOpen && (
