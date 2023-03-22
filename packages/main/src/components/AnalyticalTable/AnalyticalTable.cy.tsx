@@ -1586,6 +1586,51 @@ describe('AnalyticalTable', () => {
     cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
   });
 
+  it('a11y: grouped, filtered, sorted', () => {
+    cy.mount(<AnalyticalTable columns={columns} data={data} groupable filterable sortable />);
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'ascending');
+    cy.findByText('Name').click();
+    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('not.have.attr', 'aria-sort');
+    cy.findByText('Name').click();
+    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending');
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('A{enter}');
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered');
+
+    cy.findByText('Name').click();
+    cy.findByText('Group').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered Grouped');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
+      'have.attr',
+      'aria-label',
+      'Grouped, To expand the row, press the spacebar'
+    );
+    cy.get('[name="navigation-right-arrow"]').click();
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
+      'have.attr',
+      'aria-label',
+      'Grouped, To collapse the row, press the spacebar'
+    );
+    cy.findByText('Name').click();
+    cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('not.have.attr', 'aria-label');
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered');
+
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('not.have.attr', 'aria-label');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
