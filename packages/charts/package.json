@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "1.11.3",
+  "version": "1.12.0",
   "description": "Charts for ui5-webcomponents-react",
   "main": "dist/index.js",
   "module": "dist/index.js",

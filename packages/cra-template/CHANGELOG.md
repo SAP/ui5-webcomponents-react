@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Features
+
+- integrate `@ui5/webcomponents-cypress-commands` into cra template ([#4341](https://github.com/SAP/ui5-webcomponents-react/issues/4341)) ([e4564f1](https://github.com/SAP/ui5-webcomponents-react/commit/e4564f12c5c64a0282f466e9d3fafe800c5039d0))
+
 ## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
 
 ### Bug Fixes

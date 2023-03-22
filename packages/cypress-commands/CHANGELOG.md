@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Bug Fixes
+
+- **cypress-commands:** point to declaration file of bundle ([#4358](https://github.com/SAP/ui5-webcomponents-react/issues/4358)) ([e73ac06](https://github.com/SAP/ui5-webcomponents-react/commit/e73ac06eb0e95b3264752592c5f5565dc4c287c1))
+
 ## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
 
 ### Bug Fixes
