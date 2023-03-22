@@ -153,7 +153,7 @@ const FormItem = (props: FormItemPropTypes) => {
         data-label-span={labelSpan}
       >
         {flattenFragments(children).map((child, index) => {
-          if (isValidElement(child) && child.$$typeof !== Symbol.for('react.portal') && child.type) {
+          if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
             return (
               <Fragment key={`${content}-${uniqueId}`}>
