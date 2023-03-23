@@ -448,7 +448,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   infiniteScrollThreshold?: number;
   /**
-   * The current global filter value.
+   * Defines the value that should be filtered on across all rows.
+   *
+   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://react-table-v7.tanstack.com/docs/api/useGlobalFilter).
    */
   globalFilterValue?: string;
   /**
