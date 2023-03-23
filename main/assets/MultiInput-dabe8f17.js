@@ -1,0 +1,23 @@
+import{j as o,a,F as c}from"./jsx-runtime-670450c2.js";import{C as u,A as m}from"./DomRefTable.module-4b8d245f.js";import{D as l}from"./DocsHeader-6fb30887.js";import{F as f}from"./Footer-8497d593.js";import"./index-f1f749bf.js";import{D as g}from"./DomRefTable-32d8c080.js";import{S as h}from"./SubcomponentsSection-6138f2fc.js";import{M as d,C as S,a as i}from"./chunk-PCJTTTQV-017b0037.js";import{S as b,a as D}from"./index-24bd16ab.js";import{S as I,a as M}from"./SuggestionItemDescription-41eb0632.js";import{T}from"./index-f164ed43.js";import{C as v,D as n}from"./MultiInput.stories-ef039835.js";import{u as s}from"./index-4fb8b842.js";import"./chunk-R4NKYYJA-96bb58e6.js";import"./react-jss.esm-e54d2f1d.js";import"./inheritsLoose-93e09647.js";import"./index-67ce9c0b.js";import"./iframe-0724c153.js";import"../sb-preview/runtime.mjs";import"./UI5Element-427ec721.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-65cd39a0.js";import"./utils-ed90fb1b.js";import"./useIsomorphicLayoutEffect-a838da4a.js";import"./slot-634e3e91.js";import"./Icon-7987c836.js";import"./Icons-fe6e657a.js";import"./decline-6bd98a2e.js";import"./i18n-defaults-80781f7e.js";import"./information-b6c8ed8e.js";import"./class-map-95320e87.js";import"./Button-bc3a11a1.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-254d6b69.js";import"./_commonjsHelpers-042e6b4d.js";import"./index-683481c5.js";import"./clsx.m-1229b3e0.js";import"./index-2eaff221.js";import"./ThemingParameters-f4b4144e.js";import"./Import-7c617c28.js";import"./TableOfContent-c0d2b99c.js";import"./index-dce4a22d.js";import"./Link-018547e8.js";import"./WrappingType-b81e595a.js";import"./index-d74edf95.js";import"./Label-ccc234fe.js";import"./index-96c5f47c.js";import"./index-a039a305.js";import"./Popover-224d761a.js";import"./Integer-f7f172c9.js";import"./PopupUtils-a2e37749.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-9873a291.js";import"./FocusableElements-7e25663e.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-1da6d0d2.js";import"./ResizeHandler-1fa8a094.js";import"./MediaRange-25b98f31.js";import"./style-map-cae0a379.js";import"./react-18-ecd79c7b.js";import"./mapValues-2de54f78.js";import"./_baseForOwn-c7d9bea5.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-bd05e126.js";import"./_baseUniq-51545746.js";import"./index-356e4a49.js";import"./GroupHeaderListItem-d4ea7e0d.js";import"./ListItemBase-a0bc6999.js";import"./ItemNavigation-8e291cfa.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-15ff681f.js";import"./ValueState-2c5e5904.js";import"./StandardListItem-ac3f40c5.js";import"./ListItem-83c0fb9e.js";import"./RadioButton-a8c23c83.js";import"./CheckBox-80dd6e5f.js";import"./accept-d8c33d70.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-52a56681.js";import"./Avatar-7e1d4e21.js";import"./employee-1bc983a2.js";import"./ValueState-ab6838cc.js";import"./Token-144828a9.js";import"./index-6b6e7ab9.js";import"./Input-4940ecdf.js";import"./Suggestions.css-154c701b.js";import"./ResponsivePopoverCommon.css-ca4e9b7c.js";import"./ValueStateMessage.css-f5f87de3.js";import"./Tokenizer-6b454ae9.js";import"./ScrollEnablement-4353003c.js";import"./animate-1a16ba20.js";import"./ResponsivePopover-fcaf2b05.js";import"./Dialog-43ec4fb1.js";import"./Title-129aeb28.js";const y=`**Since:** 0.11.0
+
+Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+`,C=[{name:"previewItem",readonly:"true",visibility:"public",type:"sap.ui.webc.main.IInputSuggestionItem|null",description:"The suggestion item on preview."},{name:"openPicker",visibility:"public",since:"1.3.0",description:"Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open."}];function St(r={}){const{wrapper:p}=Object.assign({},s(),r.components);return p?o(p,Object.assign({},r,{children:o(e,{})})):e();function e(){const t=Object.assign({h2:"h2"},s(),r.components);return a(c,{children:[o(d,{of:v}),`
+`,o(l,{since:"0.11.0"}),`
+`,o("br",{}),`
+`,o(t.h2,{children:"Example"}),`
+`,o(S,{of:n}),`
+`,o(t.h2,{children:"Properties"}),`
+`,o(u,{of:n}),`
+`,o(g,{rows:C}),`
+`,o(i,{children:h}),`
+`,o(t.h2,{children:"Token"}),`
+`,o(m,{of:T}),`
+`,o(i,{children:y}),`
+`,o(t.h2,{children:"SuggestionItem"}),`
+`,o(m,{hideHTMLPropsNote:!0,of:b}),`
+`,o(i,{children:I}),`
+`,o(t.h2,{children:"SuggestionGroupItem"}),`
+`,o(m,{hideHTMLPropsNote:!0,of:D}),`
+`,o(i,{children:M}),`
+`,o(f,{})]})}}export{St as default};
+//# sourceMappingURL=MultiInput-dabe8f17.js.map
