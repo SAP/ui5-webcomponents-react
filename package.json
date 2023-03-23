@@ -33,7 +33,7 @@
     "@storybook/addon-essentials": "7.0.0-rc.5",
     "@storybook/blocks": "7.0.0-rc.5",
     "@storybook/react": "7.0.0-rc.5",
-    "@storybook/react-vite": "7.0.0-rc.5",
+    "@storybook/react-vite": "7.0.0-rc.6",
     "@storybook/theming": "7.0.0-rc.5",
     "@ui5/webcomponents": "1.11.0",
     "@ui5/webcomponents-fiori": "1.11.0",
