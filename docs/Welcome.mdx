@@ -77,6 +77,17 @@ npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
 
 <VersionTable />
 
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      Please note that if a <code>@ui5/webcomponents</code> or <code>@ui5/webcomponents-fiori</code> version doesn't
+      start with a patch-version of 0 (e.g. <code>~1.10.3</code>), only the specified version is supported and the
+      previous patch-versions will most likely not work with <code>@ui5/webcomponents-react</code>.
+    </>
+  }
+/>
+
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
 You will find this component most likely in `src/index.js`:
 
@@ -113,7 +124,8 @@ UI5 Web Components and UI5 Web Components for React are both coming with the `sa
   children={
     <>
       UI5 Web Components for React uses the theme configuration of UI5 Web Components. Please also have a look at their{' '}
-      <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>.
+      <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>
+      .
     </>
   }
 />
