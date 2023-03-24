@@ -45,7 +45,7 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const getTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
+const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -80,6 +80,9 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 
   const onTableFocus = useCallback(
     (e) => {
+      if (e.target.dataset?.emptyRowCell === 'true') {
+        return;
+      }
       const isFirstCellAvailable = e.target.querySelector('div[data-column-index="0"][data-row-index="1"]');
       if (e.target.dataset.componentName === 'AnalyticalTableContainer') {
         e.target.tabIndex = -1;
@@ -291,5 +294,5 @@ const getTableProps = (tableProps, { instance: { webComponentsReactProperties, d
 };
 
 export const useKeyboardNavigation = (hooks) => {
-  hooks.getTableProps.push(getTableProps);
+  hooks.getTableProps.push(useGetTableProps);
 };

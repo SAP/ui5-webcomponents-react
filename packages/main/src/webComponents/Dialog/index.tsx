@@ -1,10 +1,13 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Dialog.js';
 import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
+import { ValueState, PopupAccessibleRole } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface DialogAttributes {
   /**
@@ -30,7 +33,10 @@ interface DialogAttributes {
   resizable?: boolean;
   /**
    * Defines the state of the `Dialog`.
+   *
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** If `"Error"` and `"Warning"` state is set, it will change the accessibility role to "alertdialog", if the accessibleRole property is set to `"Dialog"`.
    */
   state?: ValueState | keyof typeof ValueState;
   /**
@@ -47,6 +53,14 @@ interface DialogAttributes {
    * Defines the IDs of the elements that label the component.
    */
   accessibleNameRef?: string;
+  /**
+   * Allows setting a custom role. Available options are:
+   *
+   * *   `Dialog`
+   * *   `None`
+   * *   `AlertDialog`
+   */
+  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
@@ -74,7 +88,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
    */
   applyFocus: () => Promise<void>;
   /**
-   * Hides the block layer (for modal popups only)
+   * Closes the popup.
    */
   close: () => void;
   /**
@@ -88,19 +102,25 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   /**
    * Defines the footer HTML Element.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="footer"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  footer?: ReactNode | ReactNode[];
+  footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the header HTML Element.
    *
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="header"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  header?: ReactNode | ReactNode[];
+  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the content of the Popup.
    */
@@ -126,7 +146,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
 /**
  * The `Dialog` component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The `Dialog` interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.
  *
- * The `Dialog` is modal, which means that user action is required before returning to the parent window is possible. The content of the `Dialog` is fully customizable.
+ * The `Dialog` is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the `Dialog` is fully customizable.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
@@ -134,16 +154,18 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'initialFocus'],
+  ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'accessibleRole', 'initialFocus'],
   ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open']
+  ['after-close', 'after-open', 'before-close', 'before-open'],
+  () => import('@ui5/webcomponents/dist/Dialog.js')
 );
 
 Dialog.displayName = 'Dialog';
 
 Dialog.defaultProps = {
-  state: ValueState.None
+  state: ValueState.None,
+  accessibleRole: PopupAccessibleRole.Dialog
 };
 
 export { Dialog };

@@ -1,5 +1,8 @@
+'use client';
+
+import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
@@ -37,7 +40,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies the type of the message
    */
-  type: ValueState | keyof typeof ValueState;
+  type?: ValueState | keyof typeof ValueState;
 
   /**
    * Name of a message group the current item belongs to.
@@ -47,7 +50,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies detailed description of the message
    */
-  children: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 const useStyles = createUseStyles(
@@ -138,9 +141,11 @@ const useStyles = createUseStyles(
   },
   { name: 'MessageItem' }
 );
-
+/**
+ * A component used to hold different types of system messages inside the `MessageView` component.
+ */
 const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
-  const { titleText, subtitleText, counter, type, children, className, ...rest } = props;
+  const { titleText, subtitleText, counter, type = ValueState.Error, children, className, ...rest } = props;
 
   const { selectMessage } = useContext(MessageViewContext);
 
@@ -185,16 +190,12 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
           {subtitleText && <Label className={classes.subtitle}>{subtitleText}</Label>}
         </FlexBox>
         {counter != null && <span className={classes.counter}>{counter}</span>}
-        {children && <Icon className={classes.navigation} name="slim-arrow-right" />}
+        {children && <Icon className={classes.navigation} name={iconArrowRight} />}
       </FlexBox>
     </CustomListItem>
   );
 });
 
 MessageItem.displayName = 'MessageItem';
-
-MessageItem.defaultProps = {
-  type: ValueState.Error
-};
 
 export { MessageItem };

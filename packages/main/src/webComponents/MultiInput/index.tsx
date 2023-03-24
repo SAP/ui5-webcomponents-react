@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/MultiInput.js';
 import { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums';
@@ -5,6 +7,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface MultiInputAttributes {
   /**
@@ -100,7 +103,7 @@ export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
   /**
    * The suggestion item on preview.
    */
-  readonly previewItem: ReactNode;
+  readonly previewItem: ReactNode | null;
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
    */
@@ -111,10 +114,13 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   /**
    * Defines the component tokens.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="tokens"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  tokens?: ReactNode | ReactNode[];
+  tokens?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the suggestion items.
    *
@@ -142,10 +148,13 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   /**
    * Defines the icon to be displayed in the component.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="icon"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  icon?: ReactNode | ReactNode[];
+  icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -155,10 +164,13 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    *
    * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="valueStateMessage"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  valueStateMessage?: ReactNode | ReactNode[];
+  valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when a token is about to be deleted.
    */
@@ -195,8 +207,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
  * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
- * *   Select a value from the suggestion list
- * (`onSuggestionItemSelect` event is fired)
+ * *   Select a value from the suggestion list (`onSuggestionItemSelect` event is fired)
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
@@ -207,7 +218,8 @@ const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['showValueHelpIcon', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['tokens', 'icon', 'valueStateMessage'],
-  ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select']
+  ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
+  () => import('@ui5/webcomponents/dist/MultiInput.js')
 );
 
 MultiInput.displayName = 'MultiInput';

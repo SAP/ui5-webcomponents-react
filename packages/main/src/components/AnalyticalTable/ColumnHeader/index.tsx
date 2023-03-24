@@ -1,16 +1,19 @@
 import { VirtualItem } from '@tanstack/react-virtual';
-import '@ui5/webcomponents-icons/dist/filter.js';
-import '@ui5/webcomponents-icons/dist/group-2.js';
-import '@ui5/webcomponents-icons/dist/sort-ascending.js';
-import '@ui5/webcomponents-icons/dist/sort-descending.js';
+import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
+import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
+import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
+import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import React, {
+  AriaAttributes,
   CSSProperties,
   DragEventHandler,
   FC,
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
+  useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -37,7 +40,6 @@ export interface ColumnHeaderProps {
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
-  uniqueId: string;
   scaleXFactor?: number;
 
   //getHeaderProps()
@@ -48,6 +50,9 @@ export interface ColumnHeaderProps {
   style: CSSProperties;
   column: ColumnType;
   role: string;
+  isFiltered?: boolean;
+  ['aria-sort']?: AriaAttributes['aria-sort'];
+  ['aria-label']?: AriaAttributes['aria-label'];
 }
 
 const styles = {
@@ -80,6 +85,10 @@ const styles = {
     display: 'inline-block',
     position: 'absolute',
     color: ThemingParameters.sapContent_IconColor
+  },
+  selectAllCheckBoxContainer: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 };
 
@@ -111,12 +120,14 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     onClick,
     onKeyDown,
     portalContainer,
-    uniqueId,
-    scaleXFactor
+    scaleXFactor,
+    isFiltered,
+    'aria-label': ariaLabel,
+    'aria-sort': ariaSort
   } = props;
 
-  const isFiltered = column.filterValue && column.filterValue.length > 0;
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const columnHeaderRef = useRef<HTMLDivElement>(null);
 
   const tooltip = (() => {
     if (headerTooltip) {
@@ -185,12 +196,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       setPopoverOpen(true);
     }
   };
-  const uniqueColumnId = `${column.id}-${uniqueId}`;
 
   if (!column) return null;
   return (
     <div
-      id={uniqueColumnId}
+      ref={columnHeaderRef}
       style={{
         position: 'absolute',
         top: 0,
@@ -232,13 +242,18 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
         onKeyUp={handleHeaderCellKeyUp}
+        aria-label={ariaLabel}
+        aria-sort={ariaSort}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text
             title={tooltip}
             wrapping={false}
             style={textStyle}
-            className={classes.text}
+            className={clsx(
+              classes.text,
+              id === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
+            )}
             data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${id}`}
           >
             {children}
@@ -248,9 +263,11 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             style={iconContainerDirectionStyles}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
           >
-            {isFiltered && <Icon name="filter" />}
-            {column.isSorted && <Icon name={column.isSortedDesc ? 'sort-descending' : 'sort-ascending'} />}
-            {column.isGrouped && <Icon name="group-2" />}
+            {isFiltered && <Icon name={iconFilter} aria-hidden />}
+            {column.isSorted && (
+              <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} aria-hidden />
+            )}
+            {column.isGrouped && <Icon name={iconGroup} aria-hidden />}
           </div>
         </div>
         {hasPopover && popoverOpen && (
@@ -259,7 +276,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             column={column}
             onSort={onSort}
             onGroupBy={onGroupBy}
-            uniqueColumnId={uniqueColumnId}
+            openerRef={columnHeaderRef}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
             portalContainer={portalContainer}

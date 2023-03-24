@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -48,7 +50,8 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
   ['accessibleName'],
   [],
   [],
-  ['selection-change']
+  ['selection-change'],
+  () => import('@ui5/webcomponents/dist/SegmentedButton.js')
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

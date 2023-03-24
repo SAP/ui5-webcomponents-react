@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents';
@@ -33,6 +35,6 @@ const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolb
   }
 );
 
-OverflowToolbarToggleButton.displayName = 'OverflowToolbarButton';
+OverflowToolbarToggleButton.displayName = 'OverflowToolbarToggleButton';
 
 export { OverflowToolbarToggleButton };

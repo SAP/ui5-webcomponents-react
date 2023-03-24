@@ -1,3 +1,5 @@
+'use client';
+
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import {
@@ -15,14 +17,18 @@ import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import {
   Button,
+  ButtonDomRef,
   Dialog,
   DialogDomRef,
   DialogPropTypes,
   Icon,
+  IconDomRef,
   Input,
+  InputDomRef,
   List,
   ListDomRef,
   ListPropTypes,
+  StandardListItemDomRef,
   Title
 } from '../../webComponents';
 import { Text } from '../Text';
@@ -162,29 +168,33 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
   /**
    * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
    */
-  onSearchInput?: (event: Ui5CustomEvent<HTMLInputElement, { value: string }>) => void;
+  onSearchInput?: (event: Ui5CustomEvent<InputDomRef, { value: string }>) => void;
   /**
    * This event will be fired when the search button has been clicked or the ENTER key has been pressed in the search field.
    */
-  onSearch?: (event: Ui5CustomEvent<{ value: string }>) => void;
+  onSearch?:
+    | ((event: Ui5CustomEvent<InputDomRef, { value: string }>) => void)
+    | ((event: Ui5CustomEvent<IconDomRef, { value: string }>) => void);
   /**
    * This event will be fired when the reset button has been clicked in the search field or when the dialog is closed.
    */
-  onSearchReset?: (event: Ui5CustomEvent<{ prevValue: string }>) => void;
+  onSearchReset?: (event: Ui5CustomEvent<IconDomRef, { prevValue: string }>) => void;
   /**
    * This event will be fired when the clear button has been clicked.
    */
-  onClear?: (event: Ui5CustomEvent<{ prevSelectedItems: HTMLElement[] }>) => void;
+  onClear?: (event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: StandardListItemDomRef[] }>) => void;
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
    */
-  onConfirm?: (event: Ui5CustomEvent<{ selectedItems: HTMLElement[] }>) => void;
+  onConfirm?:
+    | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: StandardListItemDomRef[] }>) => void)
+    | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: StandardListItemDomRef[] }>) => void);
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
-  onLoadMore?: (event: Ui5CustomEvent) => void;
+  onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
 }
 
 /**
@@ -355,6 +365,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                 />
               )}
               <Icon
+                interactive
                 name={iconSearch}
                 className={classes.inputIcon}
                 onClick={handleSearchSubmit}

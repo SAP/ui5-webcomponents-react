@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import { ReactNode, MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -81,7 +83,8 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, Segme
   ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
   ['pressed', 'disabled'],
   [],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents/dist/SegmentedButtonItem.js')
 );
 
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';

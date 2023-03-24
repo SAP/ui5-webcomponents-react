@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, useCallback, useMemo } from 'react';
 import {
@@ -73,11 +75,11 @@ export interface BulletChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
-   * #### Required Properties
+   * **Required Properties**
    * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * #### Optional Properties
+   * **Optional Properties**
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `interval`: number that controls how many ticks are rendered on the x axis
    *
@@ -86,12 +88,12 @@ export interface BulletChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object is defining one element in the chart.
    *
-   * #### Required properties
+   * **Required properties**
    * - `accessor`: string containing the path to the dataset key this element should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    * - `type`: string which chart element (value type) to show. Possible values: `primary`, `comparison`, `additional`.
    *
-   * #### Optional properties
+   * **Optional properties**
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors
@@ -496,7 +498,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
           <Brush
             y={10}
             dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension.formatter}
+            tickFormatter={primaryDimension?.formatter}
             stroke={ThemingParameters.sapObjectHeader_BorderColor}
             travellerWidth={10}
             height={20}

@@ -1,9 +1,12 @@
-import { CssSizeVariables, Device, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+'use client';
+
+import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import React, {
   Children,
   cloneElement,
   CSSProperties,
+  ElementType,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -14,9 +17,11 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Title } from '../../webComponents/Title';
+import { CommonProps } from '../../interfaces';
+import { Title } from '../../webComponents';
+import { FormGroupTitle } from '../FormGroup/FormGroupTitle';
 import { styles } from './Form.jss';
+import { FormContext } from './FormContext';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -104,17 +109,6 @@ export interface FormPropTypes extends CommonProps {
   as?: keyof HTMLElementTagNameMap;
 }
 
-const clonedChildrenForSingleColumn = (reactChildren, currentLabelSpan) =>
-  React.Children.map(reactChildren, (child) => {
-    if (child?.type?.displayName === 'FormItem') {
-      return cloneElement(child, { labelSpan: currentLabelSpan });
-    }
-    if (child?.type?.displayName === 'FormGroup') {
-      return cloneElement(child, { children: clonedChildrenForSingleColumn(child.props.children, currentLabelSpan) });
-    }
-    return child;
-  });
-
 const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
@@ -122,19 +116,18 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
  */
 const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const {
-    as,
-    backgroundDesign,
+    as = 'form',
+    backgroundDesign = FormBackgroundDesign.Transparent,
     children,
-    columnsS,
-    columnsM,
-    columnsL,
-    columnsXL,
+    columnsS = 1,
+    columnsM = 1,
+    columnsL = 1,
+    columnsXL = 2,
     className,
-    labelSpanS,
-    labelSpanM,
-    labelSpanL,
-    labelSpanXL,
-    slot,
+    labelSpanS = 12,
+    labelSpanM = 2,
+    labelSpanL = 4,
+    labelSpanXL = 4,
     titleText,
     style,
     ...rest
@@ -173,97 +166,74 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     return () => {
       observer.disconnect();
     };
-  }, [formRef, setCurrentRange, lastRange]);
+  }, [formRef]);
 
   const classes = useStyles();
 
   const currentNumberOfColumns = columnsMap.get(currentRange);
   const currentLabelSpan = labelSpanMap.get(currentRange);
 
-  const [formGroups, updatedTitle] = useMemo(() => {
+  const formGroups = useMemo(() => {
+    if (currentNumberOfColumns === 1) {
+      return children;
+    }
+
     const computedFormGroups = [];
-    if (Children.count(children) === 1 && !titleText) {
-      const singleChild = (Array.isArray(children) ? children[0] : children) as ReactElement;
-      if (singleChild?.props?.title?.length > 0) {
-        return [cloneElement(singleChild, { title: null }), singleChild.props.title];
-      }
-    }
-
-    const currentColumnCount = currentNumberOfColumns;
-    if (currentColumnCount === 1) {
-      return [clonedChildrenForSingleColumn(children, currentLabelSpan), titleText];
-    }
-
-    const rows = [];
     const childrenArray = Children.toArray(children);
-    const estimatedNumberOfGroupRows = childrenArray.length / currentColumnCount;
-    for (let i = 0; i < estimatedNumberOfGroupRows; i++) {
-      rows[i] = childrenArray.slice(i * currentColumnCount, i * currentColumnCount + currentColumnCount);
-    }
+    const rows = childrenArray.reduce((acc, val, idx) => {
+      const columnIndex = Math.floor(idx / currentNumberOfColumns);
+      acc[columnIndex] ??= [];
+      acc[columnIndex].push(val);
+      return acc;
+    }, []) as ReactElement[][];
 
     const maxRowsPerRow: number[] = [];
     rows.forEach((rowGroup: ReactElement[], rowIndex) => {
-      const numberOfRowsOfEachForm = rowGroup.map((row) => {
-        if ((row.type as any).displayName === 'FormItem') {
-          return 1;
-        }
-        return Children.count(row.props.children) + 1;
-      });
-
-      maxRowsPerRow[rowIndex] = Math.max(...numberOfRowsOfEachForm);
+      maxRowsPerRow[rowIndex] = Math.max(
+        ...rowGroup.map((row) => {
+          if ((row.type as any).displayName === 'FormItem') {
+            return 1;
+          }
+          return Children.count(row.props.children) + 1;
+        })
+      );
     });
 
     let totalRowCount = 2;
 
-    rows.forEach((column: ReactElement[], rowIndex) => {
-      const rowsForThisRow = maxRowsPerRow[rowIndex];
-      column.forEach((cell, columnIndex) => {
+    rows.forEach((formGroup: ReactElement[], rowIndex) => {
+      const rowsForThisRow = maxRowsPerRow.at(rowIndex);
+      formGroup.forEach((cell, columnIndex) => {
         const titleStyles: CSSProperties = {
-          gridColumnEnd: 'span 12',
           gridColumnStart: columnIndex * 12 + 1,
-          gridRowStart: totalRowCount,
-          display: 'flex',
-          alignItems: 'center',
-          fontFamily: ThemingParameters.sapFontFamily,
-          height: CssSizeVariables.sapWcrFormGroupTitleHeight,
-          lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
-          color: ThemingParameters.sapTextColor,
-          fontSize: ThemingParameters.sapFontSize,
-          fontWeight: 'bold',
-          backgroundColor: ThemingParameters.sapGroup_TitleBackground,
-          margin: 0,
-          paddingTop: '1rem'
+          gridRowStart: totalRowCount
         };
 
         if (cell?.props?.titleText) {
           computedFormGroups.push(
-            <h6
+            <FormGroupTitle
+              titleText={cell.props.titleText}
               style={titleStyles}
-              title={cell.props.titleText}
-              aria-label={cell.props.titleText}
               key={`title-col-${columnIndex}-row-${totalRowCount}`}
-            >
-              {cell.props.titleText}
-            </h6>
+            />
           );
         }
 
         for (let i = 0; i < rowsForThisRow; i++) {
-          const itemToRender =
-            (cell.type as any).displayName === 'FormGroup'
-              ? Children.toArray(cell.props.children)[i]
-              : (cell.type as any).displayName === 'FormItem' && i === 0
-              ? cell
-              : null;
+          let itemToRender;
+          if ((cell.type as any).displayName === 'FormGroup') {
+            itemToRender = Children.toArray(cell.props.children).at(i);
+          } else if ((cell.type as any).displayName === 'FormItem' && i === 0) {
+            // render a single FormItem only when index is 0
+            itemToRender = cell;
+          }
 
           if (itemToRender) {
             computedFormGroups.push(
               cloneElement(itemToRender as ReactElement, {
                 key: `col-${columnIndex}-row-${totalRowCount + i}`,
                 columnIndex,
-                lastGroupItem: (cell.type as any).displayName === 'FormGroup' && rowsForThisRow - 2 === i,
-                rowIndex: totalRowCount + i + 1,
-                labelSpan: currentLabelSpan
+                rowIndex: totalRowCount + i + 1
               })
             );
           }
@@ -275,49 +245,43 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       }
     });
 
-    return [computedFormGroups, titleText];
-  }, [children, currentRange, titleText, currentNumberOfColumns, currentLabelSpan]);
+    return computedFormGroups;
+  }, [children, currentNumberOfColumns]);
 
-  const formClassNames = clsx(
-    classes.form,
-    classes[`labelSpan${((currentLabelSpan - 1) % 12) + 1}`],
-    classes[backgroundDesign.toLowerCase()],
-    className
-  );
+  const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()], className);
 
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   return (
-    <CustomTag
-      ref={componentRef}
-      slot={slot}
-      className={formClassNames}
-      style={style}
-      data-columns={currentNumberOfColumns}
-      {...rest}
-    >
-      {updatedTitle && (
-        <Title level={TitleLevel.H3} className={classes.formTitle}>
-          {updatedTitle}
-        </Title>
-      )}
-      {formGroups}
-    </CustomTag>
+    <FormContext.Provider value={{ labelSpan: currentLabelSpan }}>
+      <div className={classes.formContainer} suppressHydrationWarning={true}>
+        <CustomTag
+          ref={componentRef}
+          className={formClassNames}
+          style={{
+            ...style,
+            '--ui5wcr_form_label_span_s': labelSpanS,
+            '--ui5wcr_form_label_span_m': labelSpanM,
+            '--ui5wcr_form_label_span_l': labelSpanL,
+            '--ui5wcr_form_label_span_xl': labelSpanXL,
+            '--ui5wcr_form_columns_s': columnsS,
+            '--ui5wcr_form_columns_m': columnsM,
+            '--ui5wcr_form_columns_l': columnsL,
+            '--ui5wcr_form_columns_xl': columnsXL
+          }}
+          {...rest}
+        >
+          {titleText && (
+            <Title level={TitleLevel.H3} className={classes.formTitle}>
+              {titleText}
+            </Title>
+          )}
+          {formGroups}
+        </CustomTag>
+      </div>
+    </FormContext.Provider>
   );
 });
 
 Form.displayName = 'Form';
-
-Form.defaultProps = {
-  as: 'form',
-  backgroundDesign: FormBackgroundDesign.Transparent,
-  columnsS: 1,
-  columnsM: 1,
-  columnsL: 1,
-  columnsXL: 2,
-  labelSpanS: 12,
-  labelSpanM: 2,
-  labelSpanL: 4,
-  labelSpanXL: 4
-};
 
 export { Form };

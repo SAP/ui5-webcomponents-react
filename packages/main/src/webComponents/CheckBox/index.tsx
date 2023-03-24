@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/CheckBox.js';
 import { ValueState, WrappingType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -47,7 +49,7 @@ interface CheckBoxAttributes {
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A red-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
   /**
@@ -106,7 +108,8 @@ const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'indeterminate', 'readonly', 'required'],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/CheckBox.js')
 );
 
 CheckBox.displayName = 'CheckBox';

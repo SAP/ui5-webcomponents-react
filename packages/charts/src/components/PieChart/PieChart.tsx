@@ -1,5 +1,7 @@
+'use client';
+
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
@@ -58,11 +60,11 @@ export interface PieChartProps extends Omit<IChartBaseProps<IPolarChartConfig>, 
   /**
    * A object which contains the configuration of the dimension.
    *
-   * #### Required Properties
+   * **Required Properties**
    * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * #### Optional Properties
+   * **Optional Properties**
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    *
    */
@@ -70,10 +72,10 @@ export interface PieChartProps extends Omit<IChartBaseProps<IPolarChartConfig>, 
   /**
    * A object which contains the configuration of the measure. The object is defining one pie in the chart.
    *
-   * #### Required properties
+   * **Required properties**
    * - `accessor`: string containing the path to the dataset key this pie should display. Supports object structures by using <code>'parent.child'</code>.
    *
-   * #### Optional properties
+   * **Optional properties**
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `DataLabel`: a custom component to be used for the data label

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Slider.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
@@ -74,7 +76,8 @@ const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   ['value', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
-  ['change', 'input']
+  ['change', 'input'],
+  () => import('@ui5/webcomponents/dist/Slider.js')
 );
 
 Slider.displayName = 'Slider';

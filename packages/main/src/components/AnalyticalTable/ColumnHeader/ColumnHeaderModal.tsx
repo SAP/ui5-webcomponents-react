@@ -1,6 +1,10 @@
-import '@ui5/webcomponents-icons/dist/decline.js';
-import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { useCallback, useRef } from 'react';
+import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
+import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
+import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
+import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
+import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
+import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
@@ -9,7 +13,9 @@ import { PopoverHorizontalAlign } from '../../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../../enums/PopoverPlacementType';
 import { TextAlign } from '../../../enums/TextAlign';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
+import { useCanRenderPortal } from '../../../internal/ssr';
 import { stopPropagation } from '../../../internal/stopPropagation';
+import { getUi5TagWithSuffix } from '../../../internal/utils';
 import { CustomListItem } from '../../../webComponents/CustomListItem';
 import { Icon } from '../../../webComponents/Icon';
 import { List } from '../../../webComponents/List';
@@ -26,7 +32,7 @@ export interface ColumnHeaderModalProperties {
   setPopoverOpen: (open: boolean) => void;
   portalContainer: Element;
   isRtl: boolean;
-  uniqueColumnId: string;
+  openerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const styles = {
@@ -40,15 +46,19 @@ const styles = {
     height: 'var(--_ui5_list_item_base_height)'
   },
   filter: {
-    padding: '0px 1rem',
     height: 'var(--_ui5_list_item_base_height)'
   },
-  filterIcon: { paddingRight: '0.5rem', minWidth: '1rem', minHeight: '1rem' }
+  filterIcon: {
+    paddingInlineEnd: '0.5rem',
+    minWidth: '1rem',
+    minHeight: '1rem',
+    color: ThemingParameters.sapContent_NonInteractiveIconColor
+  }
 };
 const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, uniqueColumnId } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, openerRef } = props;
   const classes = useStyles();
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -67,61 +77,58 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const groupText = i18nBundle.getText(GROUP);
   const ungroupText = i18nBundle.getText(UNGROUP);
 
-  const handleSort = useCallback(
-    (e) => {
-      const sortType = e.detail.item.getAttribute('data-sort');
+  const handleSort = (e) => {
+    const sortType = e.detail.item.getAttribute('data-sort');
 
-      switch (sortType) {
-        case 'asc':
-          column.toggleSortBy(false);
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'desc':
-          column.toggleSortBy(true);
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'clear':
-          column.clearSortBy();
-          if (typeof onSort === 'function') {
-            onSort(
-              enrichEventWithDetails(e, {
-                column,
-                sortDirection: sortType
-              })
-            );
-          }
-          break;
-        case 'group':
-          const willGroup = !column.isGrouped;
-          column.toggleGroupBy(willGroup);
-          if (typeof onGroupBy === 'function') {
-            onGroupBy(
-              enrichEventWithDetails(e, {
-                column,
-                isGrouped: willGroup
-              })
-            );
-          }
-          break;
-      }
-      setPopoverOpen(false);
-    },
-    [column, ref, onGroupBy, onSort, setPopoverOpen]
-  );
+    switch (sortType) {
+      case 'asc':
+        column.toggleSortBy(false);
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'desc':
+        column.toggleSortBy(true);
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'clear':
+        column.clearSortBy();
+        if (typeof onSort === 'function') {
+          onSort(
+            enrichEventWithDetails(e, {
+              column,
+              sortDirection: sortType
+            })
+          );
+        }
+        break;
+      case 'group':
+        const willGroup = !column.isGrouped;
+        column.toggleGroupBy(willGroup);
+        if (typeof onGroupBy === 'function') {
+          onGroupBy(
+            enrichEventWithDetails(e, {
+              column,
+              isGrouped: willGroup
+            })
+          );
+        }
+        break;
+    }
+    setPopoverOpen(false);
+  };
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
@@ -164,6 +171,28 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
+  const canRenderPortal = useCanRenderPortal();
+
+  useEffect(() => {
+    if (open && ref.current && openerRef.current) {
+      customElements
+        .whenDefined(getUi5TagWithSuffix('ui5-popover'))
+        .then(() => {
+          ref.current.opener = openerRef.current;
+          if (canRenderPortal && open) {
+            ref.current.showAt(openerRef.current);
+          }
+        })
+        .catch(() => {
+          // silently catch
+        });
+    }
+  }, [open, canRenderPortal]);
+
+  if (!canRenderPortal) {
+    return null;
+  }
+
   return createPortal(
     <Popover
       hideArrow
@@ -174,27 +203,25 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
-      open={open}
-      opener={uniqueColumnId}
     >
       <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
         {isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
         {showSort && !isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon="sort-ascending" data-sort="asc">
+          <StandardListItem type={ListItemType.Active} icon={iconSortAscending} data-sort="asc">
             {sortAscendingText}
           </StandardListItem>
         )}
         {showSort && !isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon="sort-descending" data-sort="desc">
+          <StandardListItem type={ListItemType.Active} icon={iconSortDescending} data-sort="desc">
             {sortDescendingText}
           </StandardListItem>
         )}
         {isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon="decline" data-sort="clear">
+          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
           </StandardListItem>
         )}
@@ -206,19 +233,19 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
             onKeyDown={handleCustomLiKeyDown}
           >
             <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
-              <Icon name="filter" className={classes.filterIcon} />
+              <Icon name={iconFilter} className={classes.filterIcon} aria-hidden />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
           </CustomListItem>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemType.Active} icon="group-2" data-sort={'group'}>
+          <StandardListItem type={ListItemType.Active} icon={iconGroup} data-sort={'group'}>
             {column.isGrouped ? ungroupText : groupText}
           </StandardListItem>
         )}
       </List>
     </Popover>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

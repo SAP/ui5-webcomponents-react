@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import { MouseEventHandler } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -40,7 +42,8 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>
   ['count', 'icon', 'text'],
   [],
   [],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents-fiori/dist/ShellBarItem.js')
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

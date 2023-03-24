@@ -1,13 +1,19 @@
-import {
-  debounce,
-  enrichEventWithDetails,
-  ThemingParameters,
-  useIsRTL,
-  useResponsiveContentPadding,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
-import React, { forwardRef, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+'use client';
+
+import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
 import { CommonProps } from '../../interfaces';
@@ -178,15 +184,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef = useRef<HTMLDivElement>(null);
   const scrollEvent = useRef();
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
+  // @ts-expect-error: useSyncRef will create a ref if not present
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
   const anchorBarRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
   const [isAfterScroll, setIsAfterScroll] = useState(false);
   const isToggledRef = useRef(false);
-  const isRTL = useIsRTL(objectPageRef);
-  const [responsivePaddingClass, responsiveRange] = useResponsiveContentPadding(objectPageRef.current, true);
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
@@ -238,21 +241,23 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     if (!image) {
       return null;
     }
-    const headerImageClasses = clsx(classes.headerImage, isRTL && classes.headerImageRtl);
 
     if (typeof image === 'string') {
       return (
-        <span className={headerImageClasses} style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}>
+        <span
+          className={classes.headerImage}
+          style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+        >
           <img src={image} className={classes.image} alt="Company Logo" />
         </span>
       );
     } else {
-      return React.cloneElement(image, {
+      return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(headerImageClasses, image.props?.className)
+        className: clsx(classes.headerImage, image.props?.className)
       } as AvatarPropTypes);
     }
-  }, [image, classes.headerImage, classes.headerImageRtl, classes.image, imageShapeCircle, isRTL]);
+  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
 
   const prevTopHeaderHeight = useRef(0);
   const scrollToSection = useCallback(
@@ -276,6 +281,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               childOffset -
               safeTopHeaderHeight -
               anchorBarHeight -
+              48 /*tabBar*/ -
               (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });
@@ -304,7 +310,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       prevSelectedSectionId.current = currentId;
       const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-        return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+        return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({}, currentIndex, currentId, sections[0]);
     }
@@ -417,10 +423,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId;
         safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section) => {
-          if (React.isValidElement(section) && section.props && section.props.children) {
+          if (isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach((subSection) => {
               if (
-                React.isValidElement(subSection) &&
+                isValidElement(subSection) &&
                 subSection.props &&
                 subSection.props.id === props.selectedSubSectionId
               ) {
@@ -496,7 +502,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
         const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-          return React.isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
+          return isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
         });
         debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
       }
@@ -509,7 +515,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const objectPageClasses = clsx(
     classes.objectPage,
     GlobalStyleClasses.sapScrollBar,
-    classes[responsiveRange],
     className,
     mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
   );
@@ -531,7 +536,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             const currentId = extractSectionIdFromHtmlId(section.target.id);
             setInternalSelectedSectionId(currentId);
             const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-              return React.isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+              return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
             });
             debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
@@ -607,14 +612,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-        return React.cloneElement(headerTitle, {
+        return cloneElement(headerTitle, {
           showSubHeaderRight: true,
           style: titleStyles,
           'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick
         });
       }
-      return React.cloneElement(headerTitle, {
+      return cloneElement(headerTitle, {
         style: titleStyles,
         'data-not-clickable': titleHeaderNotClickable,
         onToggleHeaderContentVisibility: onTitleClick
@@ -625,17 +630,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
-      return React.cloneElement(headerContent, {
+      return cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
         style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
-          <div
-            className={`${classes.headerContainer} ${responsivePaddingClass}`}
-            data-component-name="ObjectPageHeaderContainer"
-          >
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {headerContent.props.children && (
               <div data-component-name="ObjectPageHeaderContent">
@@ -655,11 +657,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     showTitleInHeaderContent,
     avatar,
     headerContentRef,
-    renderTitleSection,
-    responsivePaddingClass
+    renderTitleSection
   ]);
-
-  const paddingLeftRtl = isRTL ? 'paddingLeft' : 'paddingRight';
 
   const onTabItemSelect = (event) => {
     event.preventDefault();
@@ -747,7 +746,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         role={a11yConfig?.objectPageTopHeader?.role ?? 'banner'}
         data-not-clickable={titleHeaderNotClickable}
         aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
-        className={`${classes.header} ${responsivePaddingClass}`}
+        className={classes.header}
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
@@ -757,7 +756,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         }}
       >
         {headerTitle && image && headerCollapsed === true && (
-          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} style={{ [paddingLeftRtl]: '1rem' }} />
+          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
         {headerTitle && renderTitleSection()}
       </header>
@@ -806,11 +805,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             className={classes.tabContainerComponent}
           >
             {safeGetChildrenArray(children).map((section, index) => {
-              if (!React.isValidElement(section) || !section.props) return null;
+              if (!isValidElement(section) || !section.props) return null;
               const subTabs = safeGetChildrenArray(section.props.children).filter(
                 (subSection) =>
                   // @ts-expect-error: if the `ObjectPageSubSection` component is passed as children, the `displayName` is available. Otherwise, the default children should be rendered w/o additional logic.
-                  React.isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
+                  isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
               );
               return (
                 <Tab
@@ -820,7 +819,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                   text={section.props.titleText}
                   selected={internalSelectedSectionId === section.props?.id || undefined}
                   subTabs={subTabs.map((item) => {
-                    if (!React.isValidElement(item)) {
+                    if (!isValidElement(item)) {
                       return null;
                     }
                     return (
@@ -846,7 +845,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           </TabContainer>
         </div>
       )}
-      <div data-component-name="ObjectPageContent" className={responsivePaddingClass}>
+      <div data-component-name="ObjectPageContent" className={classes.content}>
         <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden="true" />
         {placeholder
           ? placeholder

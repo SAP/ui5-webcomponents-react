@@ -1,8 +1,0 @@
-{{#if parameters ~}}
-{{#each parameters ~}}
-    <dl><dt className="methodText">**{{name}}**</dt>{{#if description}}<dd className="methodText">{{{description}}}</dd>{{/if}}{{#if type}}<dd><code>{{type}}</code></dd>{{/if}}</dl>
-{{~/each}}
-{{~/if}}
-{{#unless parameters ~}}
-&mdash;
-{{~/unless}}

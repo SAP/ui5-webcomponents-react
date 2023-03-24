@@ -1,5 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { CSSProperties, FC } from 'react';
 import { createUseStyles } from 'react-jss';
 import { resolveCellAlignment } from '../../util';
@@ -63,6 +63,7 @@ export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
         width: '100%',
         ...style
       }}
+      data-component-name="AnalyticalTableLoadingPlaceholder"
     >
       {getArrayOfLength(rows).map((_, index) => {
         return (

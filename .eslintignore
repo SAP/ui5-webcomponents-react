@@ -7,12 +7,14 @@ packages/charts/dist
 
 # build results for main package
 packages/main/dist
+packages/main/ssr
 packages/main/wrappers
+
+# build result for cypress-commands package
+packages/cypress-commands/dist
 
 scripts
 shared
-.eslintrc.cjs
-*.stories.tsx
 packages/cra-template
 CodeGen.tsx
 

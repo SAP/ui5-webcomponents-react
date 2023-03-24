@@ -21,12 +21,6 @@ Handlebars.registerHelper('storySubComponents', function (subcomponents) {
   return `{{ ${subcomponents.join(', ')} }}`;
 });
 
-// partials
-Handlebars.registerPartial(
-  'methodParameters',
-  fs.readFileSync(new URL('./MethodParameters.hbs', import.meta.url)).toString()
-);
-
 // templates
 const testTemplate = Handlebars.compile(fs.readFileSync(new URL('./TestTemplate.hbs', import.meta.url)).toString());
 
@@ -35,9 +29,7 @@ const componentTemplate = Handlebars.compile(
 );
 
 const storyTemplate = Handlebars.compile(fs.readFileSync(new URL('./StoryTemplate.hbs', import.meta.url)).toString());
-const methodsTemplate = Handlebars.compile(
-  fs.readFileSync(new URL('./MethodsTemplate.hbs', import.meta.url)).toString()
-);
+const csfTemplate = Handlebars.compile(fs.readFileSync(new URL('./CsfTemplate.hbs', import.meta.url)).toString());
 
 export const renderComponentWrapper = async (params) => {
   return prettier.format(await Utils.runEsLint(componentTemplate(params), params.name), Utils.prettierConfig);
@@ -47,9 +39,9 @@ export const renderStory = (params) => {
   return prettier.format(storyTemplate(params), { ...Utils.prettierConfig, parser: 'mdx' });
 };
 
-export const renderMethods = (params) => {
-  return prettier.format(methodsTemplate(params), { ...Utils.prettierConfig, parser: 'markdown' });
-};
+export async function renderCsf(params) {
+  return prettier.format(csfTemplate(params), { ...Utils.prettierConfig, parser: 'typescript' });
+}
 
 export const renderTest = (params) => {
   return prettier.format(testTemplate(params), Utils.prettierConfig);

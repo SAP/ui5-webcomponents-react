@@ -1,6 +1,6 @@
-import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
+import { FormGroupTitle } from './FormGroupTitle';
 
 export interface FormGroupPropTypes {
   /**
@@ -17,27 +17,14 @@ export interface FormGroupPropTypes {
 
 const useStyles = createUseStyles(
   {
-    title: {
-      gridColumn: 'span 12',
-      display: 'flex',
-      alignItems: 'center',
-      height: CssSizeVariables.sapWcrFormGroupTitleHeight,
-      lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
-      fontFamily: ThemingParameters.sapFontHeaderFamily,
-      color: ThemingParameters.sapGroup_TitleTextColor,
-      fontSize: ThemingParameters.sapFontHeader6Size,
-      fontWeight: 'bold',
-      backgroundColor: ThemingParameters.sapGroup_TitleBackground,
-      margin: 0,
-      marginBlockStart: '1rem'
-    },
     spacer: { height: '1rem', gridColumn: 'span 12' }
   },
   { name: 'FormGroup' }
 );
 /**
  * The `FormGroup` encapsulates `FormItems` into groups.
- * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `heading` and `children`, especially no `className`, `style` or `ref`.
+ *
+ * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `titleText` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
@@ -46,9 +33,7 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
 
   return (
     <>
-      <h6 className={classes.title} title={titleText} aria-label={titleText} data-component-name="FormGroupTitle">
-        {titleText}
-      </h6>
+      <FormGroupTitle titleText={titleText} />
       {children}
       <span className={classes.spacer} />
     </>

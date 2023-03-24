@@ -1,6 +1,8 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Carousel.js';
 import { ReactNode } from 'react';
-import { CarouselArrowsPlacement } from '../../enums';
+import { CarouselArrowsPlacement, CarouselPageIndicatorStyle } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -31,7 +33,7 @@ interface CarouselAttributes {
    */
   hideNavigationArrows?: boolean;
   /**
-   * Defines the visibility of the paging indicator. If set to true the page indicator will be hidden.
+   * Defines the visibility of the page indicator. If set to true the page indicator will be hidden.
    */
   hidePageIndicator?: boolean;
   /**
@@ -46,6 +48,13 @@ interface CarouselAttributes {
    * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
    */
   itemsPerPageS?: number;
+  /**
+   * Defines the style of the page indicator. Available options are:
+   *
+   * *   `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
+   * *   `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
+   */
+  pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
 }
 
 export interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
@@ -80,10 +89,11 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS'],
+  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'pageIndicatorStyle'],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
-  ['navigate']
+  ['navigate'],
+  () => import('@ui5/webcomponents/dist/Carousel.js')
 );
 
 Carousel.displayName = 'Carousel';
@@ -92,7 +102,8 @@ Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
-  itemsPerPageS: 1
+  itemsPerPageS: 1,
+  pageIndicatorStyle: CarouselPageIndicatorStyle.Default
 };
 
 export { Carousel };

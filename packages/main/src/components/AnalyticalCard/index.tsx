@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';

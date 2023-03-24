@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/BreadcrumbsItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -56,7 +58,8 @@ const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsIt
   ['accessibleName', 'href', 'target'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/BreadcrumbsItem.js')
 );
 
 BreadcrumbsItem.displayName = 'BreadcrumbsItem';

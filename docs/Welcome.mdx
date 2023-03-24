@@ -1,0 +1,204 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+import { Link, MessageStrip } from '@ui5/webcomponents-react';
+import { VersionTable } from '@sb/components/VersionTable';
+
+<Meta title="Getting Started" />
+
+# UI5 Web Components for React
+
+[![](https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg)](https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22)
+[![](https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg)](https://coveralls.io/github/SAP/ui5-web)
+[![](https://badgen.net/badge/slack/Join%20OpenUI5%20Slack%20workspace/blue?icon=slack)](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/)
+[![](https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack)](https://openui5.slack.com/archives/CSQEJ2J04)
+[![](https://badgen.net/badge/code%20style/prettier?color=pink)](https://github.com/prettier/prettier)
+[![](https://badgen.net/badge/maintained%20with/lerna?color=purple)](https://lernajs.io/)
+[![](https://badgen.net/github/stars/SAP/ui5-webcomponents-react?icon=github&color=black)](https://github.com/SAP/ui5-webcomponents-react/stargazers)
+
+[Open Github Project](https://github.com/SAP/ui5-webcomponents-react)
+
+UI5 Web Components for React is a Fiori compliant React library built on top of the UI5 Web Components.
+With the help of UI5 Web Components for React, you can use UI5 Web Components as if they were native React components.
+In addition to that, UI5 Web Components for React is providing complex components and layouts on top of the UI5 Web Components.
+
+<TableOfContent />
+
+## Requirements
+
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
+- [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
+
+## Getting Started
+
+### Tutorial
+
+You are new to UI5 Web Components for React and don't know where to start?<br />
+Then take a look at our [Tutorial Mission](https://developers.sap.com/mission.react-spa.html) at “SAP Developers”!
+There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
+In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
+
+### Templates
+
+<br />
+
+#### Basic Template
+
+You can create a new React app by using [create-react-app](https://facebook.github.io/create-react-app/) with our template.
+This template is installing all required dependencies for you and is setting up the `App.js` file for you:
+
+```sh
+npx create-react-app my-app --template @ui5/webcomponents-react
+```
+
+#### Advanced Template
+
+You can create a new React app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
+This template delivers several out-of-the-box components, scripts and configurations.
+For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template-seed).
+
+```sh
+npx create-react-app my-app --template @ui5/webcomponents-react-seed
+npm run start
+```
+
+#### Community Templates
+
+Our community is starting to create templates for UI5 Web Components for React as well! 🎉
+You can find the templates in a dedicated [ui5-web-components-templates](https://github.com/ui5-web-components-templates) organization.<br />
+A huge "Thank You" goes to [@afuscella](https://github.com/afuscella) for kicking this off!
+
+### Add `@ui5/webcomponents-react` to an existing app
+
+First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
+
+```sh
+npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
+```
+
+<VersionTable />
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      Please note that if a <code>@ui5/webcomponents</code> or <code>@ui5/webcomponents-fiori</code> version doesn't
+      start with a patch-version of 0 (e.g. <code>~1.10.3</code>), only the specified version is supported and the
+      previous patch-versions will most likely not work with <code>@ui5/webcomponents-react</code>.
+    </>
+  }
+/>
+
+In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
+You will find this component most likely in `src/index.js`:
+
+```jsx
+import { ThemeProvider } from '@ui5/webcomponents-react';
+...
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+```
+
+Then you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />
+For example, to use the `Button` component you need to import it:
+
+```jsx
+import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+```
+
+Then, you can use the Button in your app:
+
+```jsx
+<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
+```
+
+### Theming
+
+UI5 Web Components and UI5 Web Components for React are both coming with the `sap_fiori_3` a.k.a. `Quartz` and `sap_horizon` Theme families built in.
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      UI5 Web Components for React uses the theme configuration of UI5 Web Components. Please also have a look at their{' '}
+      <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>
+      .
+    </>
+  }
+/>
+
+In case you want to change your applications' theme, you have to import a couple of modules:
+
+```js
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import '@ui5/webcomponents-react/dist/Assets';
+```
+
+You can now change the Theme by calling `setTheme` with a string parameter of the new theme.<br />
+Available Themes:
+
+- `sap_fiori_3` (default)
+- `sap_fiori_dark`
+- `sap_belize`
+- `sap_belize_hcb`
+- `sap_belize_hcw`
+
+- `sap_horizon`
+- `sap_horizon_dark`
+- `sap_horizon_hcb`
+- `sap_horizon_hcw`
+
+### Configure Compact/Cozy setting
+
+UI5 Web Components supports `Compact` and `Cozy` mode. It is set to `Cozy` by default. To enable `Compact`, provide the css class `ui5-content-density-compact` to any of your HTML elements and it apply compact size to all of its children.
+
+```html
+<body class="ui5-content-density-compact">
+  ...
+</body>
+```
+
+### TypeScript
+
+UI5 Web Components for React supports [TypeScript](https://www.typescriptlang.org/), therefore we also provide type interfaces for event parameters, public methods of `ui5-webcomponents`, and more.
+
+You can find all available interfaces of the main package [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/src/interfaces) and for charts [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/src/interfaces).
+
+<br />
+
+Example - `Popover` with `Ref` type declaration:
+
+```tsx
+import React, { MouseEvent, useRef } from 'react';
+import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
+
+export default function App() {
+  const popoverRef = useRef<PopoverDomRef>(null);
+  const onClick = (e: MouseEvent<HTMLElement, MouseEvent>) => {
+    popoverRef.current?.showAt(e.target);
+  };
+
+  return (
+    <ThemeProvider>
+      <Button onClick={onClick}>Open Popover</Button>
+      <Popover ref={popoverRef}>Content</Popover>
+    </ThemeProvider>
+  );
+}
+```
+
+### Feature Registration
+
+`@ui5/webcomponents` offers a variety of [feature (side-effect) imports](https://sap.github.io/ui5-webcomponents/playground/getting-started/using-features/) that are available with `@ui5/webcomponents-react` as well.
+To use them you have to make sure they are imported before any other imports!
+
+### Support
+
+Feel free to open issues or ask us directly in the [`#webcomponents-react`](https://openui5.slack.com/archives/CSQEJ2J04) channel in the
+[OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).<br />
+Please note that you have to join this slack workspace via [this link](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/) if you are not part of it already.
+
+<Footer />

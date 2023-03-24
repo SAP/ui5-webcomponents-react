@@ -17,10 +17,11 @@ import {
   VIEW,
   SEARCH
 } from '../../i18n/i18n-defaults';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { Icon, Input } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
-import { Dialog, DialogDomRef } from '../../webComponents/Dialog';
+import { Dialog } from '../../webComponents/Dialog';
 import { Table } from '../../webComponents/Table';
 import { TableColumn } from '../../webComponents/TableColumn';
 import { FlexBox } from '../FlexBox';
@@ -136,14 +137,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       <TableColumn key="delete-variant-item" />
     </>
   );
-  const manageViewsRef = useRef<DialogDomRef>(null);
-
-  useEffect(() => {
-    manageViewsRef.current.show();
-    return () => {
-      manageViewsRef.current?.close();
-    };
-  }, []);
 
   const [childrenProps, setChildrenProps] = useState(
     Children.map(children, (child) => {
@@ -217,11 +210,16 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     );
   };
 
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
+
   return createPortal(
     <Dialog
+      open
       className={classes.manageViewsDialog}
       data-component-name="VariantManagementManageViewsDialog"
-      ref={manageViewsRef}
       onAfterClose={onAfterClose}
       headerText={manageViewsText}
       header={
@@ -277,6 +275,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         })}
       </Table>
     </Dialog>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };

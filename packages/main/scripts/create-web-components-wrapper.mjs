@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
-import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import dedent from 'dedent';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
 import {
@@ -13,14 +12,16 @@ import {
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
-import {
-  renderComponentWrapper,
-  renderMethods,
-  renderStory,
-  renderTest
-} from '../../../scripts/web-component-wrappers/templates/index.js';
+import { createDocumentation, createStory } from '../../../scripts/web-component-wrappers/StoryFactory.js';
+import { renderComponentWrapper, renderTest } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
-import { formatDemoDescription } from '../../../scripts/web-component-wrappers/utils.js';
+import {
+  formatDemoDescription,
+  getDomRefGetters,
+  getDomRefMethods,
+  getDomRefObjects
+} from '../../../scripts/web-component-wrappers/utils.js';
+import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -236,7 +237,7 @@ const getEventParameters = (name, parameters) => {
   const resolvedEventParameters = parameters.map((property) => {
     return {
       ...property,
-      ...Utils.getTypeDefinitionForProperty(property, true)
+      ...Utils.getTypeDefinitionForProperty(property, { event: true })
     };
   });
 
@@ -306,17 +307,16 @@ const createWebComponentWrapper = async (
   }
 
   const domRef = Utils.createDomRef(componentSpec, importStatements);
+  const importSpecifier = `@ui5/webcomponents${
+    componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''
+  }/dist/${componentSpec.module}.js`;
 
-  const imports = [
-    `import '@ui5/webcomponents${componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''}/dist/${
-      componentSpec.module
-    }.js';`,
-    ...new Set(importStatements)
-  ];
+  const imports = [`import '${importSpecifier}';`, ...new Set(importStatements)];
 
   return await renderComponentWrapper({
     name: componentSpec.module,
     imports,
+    importSpecifier,
     propTypesExtends: tsExtendsStatement,
     domRefExtends,
     attributes,
@@ -334,83 +334,6 @@ const createWebComponentWrapper = async (
         ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
         : componentSpec.module
   });
-};
-
-const createWebComponentDemo = (componentSpec, componentProps, hasDescription) => {
-  const componentName = componentSpec.module;
-  const enumImports = [];
-  const selectArgTypes = [];
-  const args = [];
-  const customArgTypes = [];
-
-  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
-
-  const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
-  const additionalComponentImports = componentSpec.hasOwnProperty('appenddocs')
-    ? [`import { ${componentSpec.appenddocs.replaceAll(' ', ', ')} } from '../..';`]
-    : [];
-
-  componentProps.forEach((prop) => {
-    if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
-      enumImports.push(prop.importStatement);
-    }
-    if (componentSpec.module === 'Icon' && prop.name === 'name') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      args.push(`name: 'employee'`);
-    }
-    if (prop.name === 'primaryCalendarType') {
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
-    }
-    if (prop.name === 'moreColors') {
-      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
-    }
-    if (prop.name === 'children') {
-      if (
-        prop.description.includes(
-          'Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.'
-        )
-      ) {
-        args.push(`children: "${componentName} Text"`);
-        customArgTypes.push(`children: {control: 'text'}`);
-      } else {
-        customArgTypes.push(`children: {control: {disable:true}}`);
-      }
-    } else if (prop.name === 'icon') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      enumImports.push(`import { Icon } from '@ui5/webcomponents-react/dist/Icon';`);
-      if (prop.tsType === 'string') {
-        args.push(`icon: 'employee'`);
-      }
-      if (prop.tsType.includes('ReactNode')) {
-        customArgTypes.push(`icon: {control: {disable: true}}`);
-        args.push(`icon: <Icon name="employee" />`);
-      }
-    } else if (prop.tsType.includes('ReactNode') || prop.tsType === 'unknown') {
-      customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
-    }
-    if (prop.isEnum) {
-      const type = prop.tsType.split(' ')[0];
-      selectArgTypes.push(`${prop.name}: ${type}`);
-      const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-      args.push(`${prop.name}: ${type}${defaultValue}`);
-    }
-  });
-  enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-  return `${renderStory({
-    name: componentName,
-    since: versionInfo[componentSpec.since],
-    imports: [...enumImports, ...additionalComponentImports],
-    additionalComponentDocs,
-    selectArgTypes,
-    customArgTypes,
-    args,
-    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [],
-    hasDescription
-  })}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -446,7 +369,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 
   if (
     componentSpec.extends === 'UI5Element' ||
-    componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element' ||
+    componentSpec.extends === 'sap.ui.webc.base.UI5Element' ||
     componentSpec.extends === 'TabBase' // not longer existing but wrong docs, treat as UI5 Element
   ) {
     return { properties, slots, events, methods };
@@ -474,7 +397,7 @@ const recursivePropertyResolver = (componentSpec, { properties, slots, events, m
 };
 
 const resolveInheritedAttributes = (componentSpec) => {
-  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webcomponents.base.UI5Element') {
+  if (componentSpec.extends === 'UI5Element' || componentSpec.extends === 'sap.ui.webc.base.UI5Element') {
     // no inheritance, just return the component
     return componentSpec;
   }
@@ -502,31 +425,15 @@ const resolveInheritedAttributes = (componentSpec) => {
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
 ].forEach((spec) => {
-  if (!spec.properties) {
-    return;
-  }
-  const properties = spec.properties.map((prop) => {
-    const propDescription = prop.description
-      ? dedent`
-    /**
-     * ${prop.description.replaceAll('\n', '\n * ') ?? ''}
-     */
-    `
-      : '';
-    return dedent`
-    ${propDescription}
-     ${prop.name} = '${prop.type}'`;
-  });
-
   const template = dedent`
   // Generated file - do not change manually! 
   
-  /**
-   * ${replaceTagNameWithModuleName(spec.description ?? spec.basename)}
-   */
-   export enum ${spec.basename} {
-     ${properties.join(',\n\n')}
-   }
+  import ${spec.basename} from '@ui5/webcomponents${componentsFromFioriPackage.has(spec.module) ? '-fiori' : ''}/dist/${
+    spec.resource
+  }';
+  
+  export { ${spec.basename} }
+  
   `;
 
   fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
@@ -547,6 +454,9 @@ const propDescription = (componentSpec, property) => {
 
   if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
     formattedDescription += `
+          *
+          * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (\`slot="${property.name}"\`). 
+          * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
           * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
@@ -603,12 +513,11 @@ allWebComponents
           ...tsType
         };
       });
-
     allComponentProperties.push(
       ...(componentSpec.slots || [])
         .filter((prop) => prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true)
         .map((property) => {
-          const tsType = Utils.getTypeDefinitionForProperty(property);
+          const tsType = Utils.getTypeDefinitionForProperty(property, { slot: true });
           if (tsType.importStatement) {
             importStatements.push(tsType.importStatement);
           }
@@ -692,8 +601,7 @@ allWebComponents
       return [mainDescription, rest.join('<h3>')];
     };
 
-    const [mainDescription, description = ''] = formatDescription();
-
+    let [mainDescription, description = ''] = formatDescription();
     if (EXCLUDE_LIST.includes(componentSpec.module)) {
       console.warn(
         `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
@@ -739,15 +647,18 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create test
-      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = renderTest({ name: componentSpec.module });
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
+        const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
       // create demo
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
+        if (componentSpec.since) {
+          mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
+        }
         const subComponentDescription = `${formatDemoDescription(
           mainDescription,
           componentSpec,
@@ -767,37 +678,48 @@ allWebComponents
             formattedDescription
           );
         }
-        // create methods table
-        const publicMethods = componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [];
-        if (publicMethods.length) {
-          const formattedMethods = JSON.parse(JSON.stringify(publicMethods).replaceAll(/\\n|<br>/g, ''));
-          const methods = `${renderMethods({
-            name: componentSpec.module,
-            methods: formattedMethods
-          })}`;
-          const hasMethodsTable = fs
-            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
-            .toString()
-            .search(`<${componentSpec.module}Methods />`);
-          if (hasMethodsTable === -1) {
+        // create attributes & methods table
+        const publicProperties = [
+          ...getDomRefGetters(componentSpec),
+          ...getDomRefObjects(componentSpec),
+          ...getDomRefMethods(componentSpec)
+        ];
+
+        if (publicProperties.length) {
+          fs.writeFileSync(
+            path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
+            prettier.format(JSON.stringify(publicProperties), {
+              ...Utils.prettierConfig,
+              parser: 'json'
+            })
+          );
+          let hasMethodsTable = false;
+          if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          } else if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          }
+          if (hasMethodsTable) {
             console.warn(
-              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+              `----------------------\n${componentSpec.module} doesn't has a DomRef table yet. Don't forget to add it to the story.\n----------------------`
             );
           }
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
+
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+          (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+            !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
         ) {
-          const webComponentDemo = createWebComponentDemo(
-            componentSpec,
-            allComponentProperties,
-            description,
-            !!formattedDescription
-          );
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+          await createStory(componentSpec, allComponentProperties);
+          await createDocumentation(componentSpec, allComponentProperties, description);
         }
       }
     }

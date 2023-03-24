@@ -1,10 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Link } from './index';
 import { LinkDesign } from '../../enums/LinkDesign';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './LinkDescription.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './LinkDescription.md?raw';
+import LinkDomRef from './LinkDomRef.json';
 
 <Meta
   title="Data Display / Link"
@@ -34,8 +33,10 @@ import Description from './LinkDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
+
+<DomRefTable rows={LinkDomRef} />
 
 <Footer />

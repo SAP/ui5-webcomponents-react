@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ComboBoxGroupItem Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-cb-group-item
-    ui5-cb-group-item=""
-  />
-</DocumentFragment>
-`;

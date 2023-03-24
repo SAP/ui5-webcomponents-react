@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -27,7 +29,8 @@ const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomR
   [],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/ProductSwitch.js')
 );
 
 ProductSwitch.displayName = 'ProductSwitch';

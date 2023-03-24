@@ -1,9 +1,12 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import { ReactNode } from 'react';
 import { IllustrationMessageType, IllustrationMessageSize } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface IllustratedMessageAttributes {
   /**
@@ -17,6 +20,7 @@ interface IllustratedMessageAttributes {
    *
    * *   `AddColumn`
    * *   `AddPeople`
+   * *   `AddDimensions`
    * *   `BalloonSky`
    * *   `BeforeSearch`
    * *   `Connection`
@@ -38,6 +42,7 @@ interface IllustratedMessageAttributes {
    * *   `NoSearchResults`
    * *   `NoTasks_v1`
    * *   `NoTasks`
+   * *   `NoDimensionsSet`
    * *   `PageNotFound`
    * *   `ReloadScreen`
    * *   `ResizeColumn`
@@ -67,6 +72,7 @@ interface IllustratedMessageAttributes {
    * *   `UnableToLoad`
    * *   `UnableToLoadImage`
    * *   `UnableToUpload`
+   * *   `UploadToCloud`
    * *   `UploadCollection`
    * *   `TntChartArea`
    * *   `TntChartArea2`
@@ -156,10 +162,13 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
    *
    * **Note:** Using this slot, the default subtitle text of illustration and the value of `subtitleText` property will be overwritten.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="subtitle"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  subtitle?: ReactNode;
+  subtitle?: UI5WCSlotsNode;
 }
 
 /**
@@ -181,7 +190,8 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
   ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleText'],
   [],
   ['subtitle'],
-  []
+  [],
+  () => import('@ui5/webcomponents-fiori/dist/IllustratedMessage.js')
 );
 
 IllustratedMessage.displayName = 'IllustratedMessage';

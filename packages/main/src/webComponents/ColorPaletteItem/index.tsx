@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
 import { CSSProperties } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -29,7 +31,8 @@ const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPalett
   ['value'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/ColorPaletteItem.js')
 );
 
 ColorPaletteItem.displayName = 'ColorPaletteItem';

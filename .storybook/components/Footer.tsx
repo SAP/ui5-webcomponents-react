@@ -9,38 +9,21 @@ import {
   PopoverPlacementType,
   WrappingType
 } from '@ui5/webcomponents-react';
-import { ThemingParameters, useResponsiveContentPadding } from '@ui5/webcomponents-react-base';
 import React, { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
+import classes from './Footer.module.css';
 
 export const Footer = ({ style }) => {
   const popoverRef = useRef(null);
   const footerRef = useRef(null);
-  const responsivePaddingClass = useResponsiveContentPadding(footerRef.current);
-
   const showPrivacyPopover = (e) => {
     popoverRef.current.showAt(e.target);
   };
 
-  return (
-    <footer>
-      <div
-        ref={footerRef}
-        className={responsivePaddingClass}
-        style={{
-          minHeight: 'var(--_ui5_bar_base_height)',
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: ThemingParameters.sapPageFooter_Background,
-          borderTop: `0.0625rem solid ${ThemingParameters.sapPageFooter_BorderColor}`,
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          height: 'auto',
-          overflow: 'hidden',
-          ...style
-        }}
-      >
+  return createPortal(
+    <footer className={classes.footer} style={style}>
+      <div ref={footerRef} className={classes.content}>
         <FlexBox
           justifyContent={FlexBoxJustifyContent.SpaceBetween}
           alignItems={FlexBoxAlignItems.Center}
@@ -82,6 +65,7 @@ export const Footer = ({ style }) => {
           information how GitHub processes your personal data.
         </Label>
       </Popover>
-    </footer>
+    </footer>,
+    document.getElementById('storybook-docs')
   );
 };

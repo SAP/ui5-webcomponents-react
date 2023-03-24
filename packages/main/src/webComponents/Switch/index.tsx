@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Switch.js';
 import { SwitchDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -75,7 +77,8 @@ const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   ['accessibleName', 'accessibleNameRef', 'design', 'textOff', 'textOn', 'tooltip'],
   ['checked', 'disabled'],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/Switch.js')
 );
 
 Switch.displayName = 'Switch';

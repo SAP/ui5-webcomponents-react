@@ -1,6 +1,8 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, useCallback, useMemo } from 'react';
+import { clsx } from 'clsx';
+import React, { createElement, CSSProperties, forwardRef, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
 import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
@@ -43,11 +45,11 @@ export interface MicroBarChartProps
   /**
    * A object which contains the configuration of the dimension.
    *
-   * #### Required Properties
+   * **Required Properties**
    * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * #### Optional Properties
+   * **Optional Properties**
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    *
    */
@@ -55,11 +57,11 @@ export interface MicroBarChartProps
   /**
    * An array of config objects. Each object is defining one bar in the chart.
    *
-   * #### Required properties
+   * **Required properties**
    * - `accessor`: string containing the path to the dataset key this bar should display. Supports object structures by using <code>'parent.child'</code>.
    * Can also be a getter.
    *
-   * #### Optional properties
+   * **Optional properties**
    *
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    * - `colors`: array of any valid CSS Color or CSS Variable. Defaults to the `sapChart_OrderedColor_` colors
@@ -205,7 +207,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
           let formattedMeasure: any = '';
           if (!measure.hideDataLabel) {
             if (measure.DataLabel) {
-              formattedMeasure = React.createElement(measure.DataLabel, {
+              formattedMeasure = createElement(measure.DataLabel, {
                 value: measureValue,
                 config: measure,
                 formattedValue: measure.formatter(measureValue)

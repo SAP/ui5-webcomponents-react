@@ -1,0 +1,65 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/addon-docs';
+import * as ComponentStories from './BarChart.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas of={ComponentStories.WithCustomColor} />
+
+### With Secondary Dimension
+
+<Canvas of={ComponentStories.WithSecondaryDimension} />
+
+### With Data Labels
+
+<Canvas of={ComponentStories.WithDataLabels} />
+
+### With Formatter
+
+<Canvas of={ComponentStories.WithFormatter} />
+
+### Loading Placeholder
+
+<Canvas of={ComponentStories.LoadingPlaceholder} />
+
+### With Reference Line
+
+You can set a reference line to any value by using the `referenceLine` `chartConfig` property. `referenceLine` accepts all properties described [here](https://recharts.org/en-US/api/ReferenceLine), but it's recommended to only use `label`,`value` and `color` to preserve the intended design.
+
+```jsx
+<BarChart
+  {...props}
+  chartConfig={{
+    referenceLine: {
+      color: 'red',
+      label: 'MAX',
+      value: 650
+    }
+  }}
+/>
+```
+
+<Canvas of={ComponentStories.WithReferenceLine} />
+
+### With Highlighted Measure
+
+<Canvas of={ComponentStories.WithHighlightedMeasure} />
+
+<Footer />

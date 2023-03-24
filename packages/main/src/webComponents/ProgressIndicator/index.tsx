@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ProgressIndicator.js';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -54,7 +56,8 @@ const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressI
   ['displayValue', 'value', 'valueState'],
   ['disabled', 'hideValue'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/ProgressIndicator.js')
 );
 
 ProgressIndicator.displayName = 'ProgressIndicator';

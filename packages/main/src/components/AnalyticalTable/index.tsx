@@ -1,3 +1,5 @@
+'use client';
+
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
@@ -7,7 +9,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
   ComponentType,
   CSSProperties,
@@ -53,6 +55,8 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  FILTERED,
+  GROUPED,
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
@@ -86,7 +90,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
 import { stateReducer } from './tableReducer/stateReducer';
 import { TitleBar } from './TitleBar';
-import { orderByFn, tagNamesWhichShouldNotSelectARow } from './util';
+import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util';
 import { VerticalResizer } from './VerticalResizer';
 
 export interface AnalyticalTableColumnDefinition {
@@ -95,18 +99,19 @@ export interface AnalyticalTableColumnDefinition {
    * This `string`/`function` is used to build the data model for your column.
    *
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor: string | ((row: any, rowIndex: number) => any);
+  accessor?: string | ((row: any, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
-   * __Note__: Required if `accessor` is a function, otherwise `accessor` will overwrite the id.
+   * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
   id?: string;
   /**
    * Can either be string or a React component that will be rendered as column header
    */
-  Header?: string | ComponentType<any>;
+  Header?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`.
    */
@@ -114,7 +119,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
-  Cell?: string | ComponentType<any>;
+  Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Cell width, if not set the table will distribute all columns without a width evenly.
    */
@@ -132,7 +137,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Filter Component to be rendered in the Header.
    */
-  Filter?: string | ComponentType<any>;
+  Filter?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Disable filters for this column.
    */
@@ -142,7 +147,13 @@ export interface AnalyticalTableColumnDefinition {
    */
   defaultCanFilter?: boolean;
   /**
-   * Either a string or a filter function.<br />Supported String Values: <ul><li>`text`</li><li>`exactText`</li><li>`exactTextCase`</li><li>`equals`</li></ul>
+   * Either a string or a filter function.
+   *
+   * Supported String Values:
+   * * `text`
+   * * `exactText`
+   * * `exactTextCase`
+   * * `equals`
    */
   filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
 
@@ -156,7 +167,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Component to render for aggregated cells.
    */
-  Aggregated?: string | ComponentType<any>;
+  Aggregated?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
    * Aggregation function or string.<br />Supported String Values: <ul><li>`min`</li><li>`max`</li><li>`median`</li><li>`count`</li></ul>
    */
@@ -188,7 +199,12 @@ export interface AnalyticalTableColumnDefinition {
    */
   sortInverted?: boolean;
   /**
-   * String or custom sort function.<br />Supported String Values: <ul><li>`basic`</li><li>`datetime`</li><li>`alphanumeric`</li></ul>
+   * String or custom sort function.
+   *
+   * Supported String Values:
+   * * `basic`
+   * * `datetime`
+   * * `alphanumeric`
    */
   sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => any);
 
@@ -223,7 +239,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
    */
-  PopInHeader?: string | ComponentType<any>;
+  PopInHeader?: string | ComponentType<any> | ((props?: any) => ReactNode);
 
   //use useDragAndDrop
   /**
@@ -404,7 +420,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property. This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    *
    * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
@@ -432,7 +448,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   infiniteScrollThreshold?: number;
   /**
-   * The current global filter value.
+   * Defines the value that should be filtered on across all rows.
+   *
+   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://react-table-v7.tanstack.com/docs/api/useGlobalFilter).
    */
   globalFilterValue?: string;
   /**
@@ -636,27 +654,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
 
-  const data = useMemo(() => {
-    if (rawData.length === 0) {
-      return rawData;
-    }
-    if (minRows > rawData.length) {
-      const missingRows: number = minRows - rawData.length;
-      const emptyRows = Array.from({ length: missingRows }, (v, i) => i).map(() => ({ emptyRow: true }));
-
-      return [...rawData, ...emptyRows];
-    }
-    return rawData;
-  }, [rawData, minRows]);
-
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   tableInstanceRef.current = useTable(
     {
       columns,
-      data,
+      data: rawData,
       defaultColumn: DefaultColumn,
-      orderByFn,
       getSubRows,
       stateReducer,
       disableFilters: !filterable,
@@ -671,7 +675,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
           unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
           expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
-          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE),
+          filteredA11yText: i18nBundle.getText(FILTERED),
+          groupedA11yText: i18nBundle.getText(GROUPED)
         },
         tagNamesWhichShouldNotSelectARow,
         tableRef,
@@ -754,10 +760,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     (extensionRef.current?.offsetHeight ?? 0) +
     (headerRef.current?.offsetHeight ?? 0);
 
-  const calcRowHeight = parseInt(
-    getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') || '44'
-  );
-  const internalRowHeight = rowHeight ?? calcRowHeight;
+  const internalRowHeight = getRowHeight(rowHeight, tableRef);
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
@@ -920,12 +923,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [columnOrder]);
 
   const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    onColumnsReorder,
     isRtl,
     setColumnOrder,
     tableState.columnOrder,
     tableState.columnResizing,
-    tableInternalColumns
+    tableInternalColumns,
+    onColumnsReorder
   );
 
   const inlineStyle = useMemo(() => {
@@ -1079,7 +1082,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
-                    uniqueId={uniqueId}
                     columnVirtualizer={columnVirtualizer}
                     scaleXFactor={scaleXFactor}
                   />
@@ -1107,7 +1109,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rows={rows}
                 handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
-                dataLength={data?.length}
               >
                 <VirtualTableBody
                   classes={classes}
@@ -1197,8 +1198,7 @@ AnalyticalTable.defaultProps = {
   alternateRowColor: false,
   overscanCountHorizontal: 5,
   visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
-  alwaysShowSubComponent: false,
-  portalContainer: document.body
+  alwaysShowSubComponent: false
 };
 
 export { AnalyticalTable };

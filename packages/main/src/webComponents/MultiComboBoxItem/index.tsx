@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -34,7 +36,8 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComb
   ['additionalText', 'text'],
   ['selected'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/MultiComboBoxItem.js')
 );
 
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';

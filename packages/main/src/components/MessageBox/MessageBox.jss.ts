@@ -30,6 +30,7 @@ const style = {
     }
   },
   spacer: { width: '0.5rem' },
+  confirmIcon: { color: ThemingParameters.sapNeutralColor },
   footer: {
     height: CssSizeVariables.sapWcrBarHeight,
     width: '100%',

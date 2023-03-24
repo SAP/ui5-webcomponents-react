@@ -1,13 +1,18 @@
+'use client';
+
 import {
   debounce,
-  enrichEventWithDetails,
   useI18nBundle,
   useIsomorphicLayoutEffect,
+  useIsRTL,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, {
+  Children,
+  cloneElement,
   createRef,
+  ElementType,
   forwardRef,
   ReactElement,
   ReactNode,
@@ -107,20 +112,22 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  *
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
+ *
+ * __Note:__ The overflow popover is mounted only when opened, i.e., any child component of the popover will be remounted, when moved into it.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
     children,
-    toolbarStyle,
-    design,
-    active,
+    toolbarStyle = ToolbarStyle.Standard,
+    design = ToolbarDesign.Auto,
+    active = false,
     style,
     className,
     onClick,
     slot,
-    as,
+    as = 'div',
     portalContainer,
-    numberOfAlwaysVisibleItems,
+    numberOfAlwaysVisibleItems = 0,
     onOverflowChange,
     overflowPopoverRef,
     overflowButton,
@@ -135,6 +142,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
+  const isRtl = useIsRTL(outerContainer);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const showMoreText = i18nBundle.getText(SHOW_MORE);
@@ -176,14 +184,18 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
-    React.Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
-    numberOfAlwaysVisibleItems < React.Children.count(flatChildren);
+    Children.count(childrenWithRef) !== lastVisibleIndex + 1 &&
+    numberOfAlwaysVisibleItems < Children.count(flatChildren);
 
   useEffect(() => {
     let lastElementResizeObserver;
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     const debouncedObserverFn = debounce(() => {
-      setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
+      if (isRtl) {
+        setMinWidth(`${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH}px`);
+      } else {
+        setMinWidth(`${lastElement.offsetLeft + lastElement.getBoundingClientRect().width + OVERFLOW_BUTTON_WIDTH}px`);
+      }
     }, 200);
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
       lastElementResizeObserver = new ResizeObserver(debouncedObserverFn);
@@ -193,7 +205,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       debouncedObserverFn.cancel();
       lastElementResizeObserver?.disconnect();
     };
-  }, [numberOfAlwaysVisibleItems, overflowNeeded]);
+  }, [numberOfAlwaysVisibleItems, overflowNeeded, isRtl]);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
@@ -237,19 +249,25 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       }
       setLastVisibleIndex(lastIndex);
     });
-  }, [outerContainer.current, controlMetaData.current, setLastVisibleIndex, childrenWithRef, overflowNeeded]);
-
-  const observer = useRef(new ResizeObserver(calculateVisibleItems));
+  }, [overflowNeeded]);
 
   useEffect(() => {
+    const observer = new ResizeObserver(calculateVisibleItems);
+
     if (outerContainer.current) {
-      observer.current.observe(outerContainer.current);
+      observer.observe(outerContainer.current);
     }
     return () => {
       cancelAnimationFrame(requestAnimationFrameRef.current);
-      observer.current.disconnect();
+      observer.disconnect();
     };
-  }, [outerContainer.current]);
+  }, [calculateVisibleItems]);
+
+  useEffect(() => {
+    if (Children.count(children) > 0) {
+      calculateVisibleItems();
+    }
+  }, [children]);
 
   useIsomorphicLayoutEffect(() => {
     calculateVisibleItems();
@@ -258,9 +276,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const handleToolbarClick = (e) => {
     if (active && typeof onClick === 'function') {
       const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
+      if (isSpaceEnterDown && e.target !== e.currentTarget) {
+        return;
+      }
       if (e.type === 'click' || isSpaceEnterDown) {
         e.preventDefault();
-        onClick(enrichEventWithDetails(e));
+        onClick(e);
       }
     }
   };
@@ -293,7 +314,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
 
-  const CustomTag = as as React.ElementType;
+  const CustomTag = as as ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
   return (
     <CustomTag
@@ -309,9 +330,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
         {overflowNeeded &&
-          React.Children.map(childrenWithRef, (item, index) => {
+          Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
-              return React.cloneElement(item as ReactElement, {
+              return cloneElement(item as ReactElement, {
                 style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
               });
             }
@@ -342,15 +363,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     </CustomTag>
   );
 });
-
-Toolbar.defaultProps = {
-  as: 'div',
-  toolbarStyle: ToolbarStyle.Standard,
-  design: ToolbarDesign.Auto,
-  active: false,
-  portalContainer: document.body,
-  numberOfAlwaysVisibleItems: 0
-};
 
 Toolbar.displayName = 'Toolbar';
 export { Toolbar };

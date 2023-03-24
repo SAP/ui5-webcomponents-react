@@ -1,3 +1,5 @@
+'use client';
+
 {{#each imports}}
 {{{this}}}
 {{/each}}
@@ -35,7 +37,8 @@ const {{name}} = withWebComponent<{{name}}PropTypes, {{name}}DomRef>(
   {{{convertToStringArray regularProps }}},
   {{{convertToStringArray booleanProps }}},
   {{{convertToStringArray slotProps }}},
-  {{{convertToStringArray eventProps }}}
+  {{{convertToStringArray eventProps }}},
+  () => import('{{{importSpecifier}}}')
 );
 
 {{name}}.displayName = '{{name}}';

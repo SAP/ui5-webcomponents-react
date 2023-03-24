@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -52,7 +52,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
   rowGap?: '0.5rem' | '1rem';
 
   /**
-   * Child elements to be placed inside of the grid. In case you want to control the column span of each child independently,
+   * Child elements to be placed inside the grid. In case you want to control the column span of each child independently,
    * you can add an element style using the [gridColumn shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
    *
    * Example: If you want one child to span across 4 columns, you can add this element style to the child element:
@@ -64,7 +64,7 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
 const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
 
 /**
- * The Responsive Grid Layout positions UI elements in a multi column flow layout.
+ * The Responsive Grid Layout positions UI elements in a multi-column flow layout.
  * They can be configured to display a variable number of columns depending on available screen size.
  * With these controls, it is possible to achieve flexible layouts and line breaks for large, medium,
  * and small-sized screens, such as desktop, tablet, and mobile.
@@ -74,16 +74,16 @@ const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'Responsiv
 const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutPropTypes>((props, ref) => {
   const {
     children,
-    columnGap,
-    rowGap,
-    columnsS,
-    columnsM,
-    columnsL,
-    columnsXL,
-    columnSpanS,
-    columnSpanM,
-    columnSpanL,
-    columnSpanXL,
+    columnGap = '0.5rem',
+    rowGap = '0.5rem',
+    columnsS = 4,
+    columnsM = 8,
+    columnsL = 12,
+    columnsXL = 16,
+    columnSpanS = 1,
+    columnSpanM = 1,
+    columnSpanL = 1,
+    columnSpanXL = 1,
     style,
     className,
     ...rest
@@ -118,18 +118,5 @@ const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutProp
 });
 
 ResponsiveGridLayout.displayName = 'ResponsiveGridLayout';
-
-ResponsiveGridLayout.defaultProps = {
-  columnGap: '0.5rem',
-  rowGap: '0.5rem',
-  columnsS: 4,
-  columnsM: 8,
-  columnsL: 12,
-  columnsXL: 16,
-  columnSpanS: 1,
-  columnSpanM: 1,
-  columnSpanL: 1,
-  columnSpanXL: 1
-};
 
 export { ResponsiveGridLayout };

@@ -1,16 +1,14 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TimePicker.js';
-import { ReactNode } from 'react';
 import { ValueState } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface TimePickerAttributes {
-  /**
-   * Determines whether the `TimePicker` is displayed as disabled.
-   */
-  disabled?: boolean;
   /**
    * Determines the format, displayed in the input field. Example: HH:mm:ss -> 11:42:35 hh:mm:ss a -> 2:23:15 PM mm:ss -> 12:04 (only minutes and seconds)
    */
@@ -21,6 +19,10 @@ interface TimePickerAttributes {
    * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    */
   placeholder?: string;
+  /**
+   * Determines whether the `TimePicker` is displayed as disabled.
+   */
+  disabled?: boolean;
   /**
    * Determines whether the `TimePicker` is displayed as readonly.
    */
@@ -85,10 +87,13 @@ export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonPr
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    * **Note:** The `valueStateMessage` would be displayed, when the `TimePicker` is in `Information`, `Warning` or `Error` value state.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="valueStateMessage"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  valueStateMessage?: ReactNode;
+  valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by clicking the "OK" button or when the text in the input field has changed and the focus leaves the input field.
    *
@@ -113,7 +118,8 @@ const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   ['formatPattern', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly'],
   ['valueStateMessage'],
-  ['change', 'input']
+  ['change', 'input'],
+  () => import('@ui5/webcomponents/dist/TimePicker.js')
 );
 
 TimePicker.displayName = 'TimePicker';

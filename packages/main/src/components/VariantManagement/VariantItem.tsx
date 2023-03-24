@@ -1,6 +1,9 @@
+'use client';
+
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext';
+import { InputPropTypes } from '../../webComponents';
 import {
   StandardListItem,
   StandardListItemDomRef,
@@ -50,6 +53,18 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    * __Note:__ If not set, a delete button is shown for all variants except for variants with `global={true}`.
    */
   hideDelete?: boolean;
+  /**
+   * Defines the props of the input rendered with the `VariantItem` inside the "Manage Views" dialog.
+   *
+   * __Note:__ It is possible to overwrite internally used props. Please use with caution!
+   */
+  manageViewsInputProps?: Omit<InputPropTypes, 'value'>;
+  /**
+   * Defines the props of the input rendered with the `VariantItem` inside the "Save View" dialog.
+   *
+   * __Note:__ It is possible to overwrite internally used props. Please use with caution!
+   */
+  saveViewInputProps?: Omit<InputPropTypes, 'value' | 'id'>;
 }
 
 /**
@@ -69,16 +84,19 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
     hideDelete
   } = props;
   const { selectVariantItem } = useContext(VariantManagementContext);
-  const [componentRef, consolidatedRef] = useSyncRef<any>(ref);
+  const [componentRef, consolidatedRef] = useSyncRef<StandardListItemDomRef>(ref);
   useEffect(() => {
     if (selected) {
       selectVariantItem({ ...props, variantItem: consolidatedRef.current });
     }
   }, [selected]);
 
+  // inputProps are passed through to input components used in the configuration dialogs
+  const { manageViewsInputProps: _0, saveViewInputProps: _1, ...rest } = props;
+
   return (
     <StandardListItem
-      {...props}
+      {...rest}
       ref={componentRef}
       data-is-default={isDefault}
       data-author={author}

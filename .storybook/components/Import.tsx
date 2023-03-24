@@ -1,30 +1,54 @@
 import { DocsContext } from '@storybook/addon-docs';
 import React, { useContext } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { googlecode } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-export const ImportStatement = ({ children }: { children: string }) => {
+interface ImportStatementPropTypes {
+  /**
+   * Name of module/component (e.g. "Button")
+   */
+  moduleName: string;
+  /**
+   * Package name (e.g. "@ui5/webcomponents-react")
+   */
+  packageName: string;
+}
+
+export const ImportStatement = ({ moduleName, packageName }: ImportStatementPropTypes) => {
   return (
-    <SyntaxHighlighter
-      customStyle={{ whiteSpace: 'pre-wrap', fontSize: 14, padding: 0, margin: 0 }}
-      language="javascript"
-      style={googlecode}
+    <pre
+      style={{
+        display: 'block',
+        overflowX: 'auto',
+        padding: '0px',
+        background: 'white',
+        color: 'black',
+        whiteSpace: 'pre-wrap',
+        fontSize: '14px',
+        margin: '0px'
+      }}
     >
-      {children}
-    </SyntaxHighlighter>
+      <code style={{ whiteSpace: 'pre' }}>
+        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
+        <span style={{ fontSize: '14px' }}>
+          {' '}
+          {'{'} {moduleName} {'}'}{' '}
+        </span>
+        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
+        <span> </span>
+        <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>{packageName}</span>
+        <span style={{ fontSize: '14px' }}>;</span>
+      </code>
+    </pre>
   );
 };
 
 export const Import = () => {
   const context = useContext(DocsContext);
-  const isChart = context.id.startsWith('charts-');
-  const groups = context.kind.split('/');
-  const moduleName = groups[groups.length - 1].trim();
+  const isChart = context.componentStories().at(0).id.startsWith('charts-');
+  const groups = context.componentStories().at(0).kind.split('/');
+  const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
 
   return (
-    <ImportStatement>
-      {`import { ${moduleName} } from '@ui5/webcomponents-react${isChart ? '-charts' : ''}';`}
-    </ImportStatement>
+    <ImportStatement moduleName={moduleName} packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : ''}'`} />
   );
 };
 

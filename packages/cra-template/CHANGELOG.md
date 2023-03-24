@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Features
+
+- integrate `@ui5/webcomponents-cypress-commands` into cra template ([#4341](https://github.com/SAP/ui5-webcomponents-react/issues/4341)) ([e4564f1](https://github.com/SAP/ui5-webcomponents-react/commit/e4564f12c5c64a0282f466e9d3fafe800c5039d0))
+
+## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
+
+### Bug Fixes
+
+- force release for all packages ([25fd39f](https://github.com/SAP/ui5-webcomponents-react/commit/25fd39fadfe5fa005302df5c2f1882a3ca514ed3))
+
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Features
+
+- adjust cra-template to use Cypress instead of Jest for testing ([#4306](https://github.com/SAP/ui5-webcomponents-react/issues/4306)) ([478f395](https://github.com/SAP/ui5-webcomponents-react/commit/478f395bf8b8df135120f1da56c94e3818bece06))
+
+# [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
+
+### Features
+
+- update @ui5/webcomponents to ~1.11.0 ([#4254](https://github.com/SAP/ui5-webcomponents-react/issues/4254)) ([25e6443](https://github.com/SAP/ui5-webcomponents-react/commit/25e6443ac1694c346ba41215467e1ce4ed916793))
+
+# [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
+
+### Features
+
+- update to UI5 Web Components 1.10.3 ([#3801](https://github.com/SAP/ui5-webcomponents-react/issues/3801)) ([2febd53](https://github.com/SAP/ui5-webcomponents-react/commit/2febd534f234c3d38109659369716b6b5946dfda))
+
 # [1.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.6.0...v1.7.0) (2022-12-19)
 
 ### Features

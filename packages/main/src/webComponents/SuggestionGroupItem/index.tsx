@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SuggestionGroupItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -26,7 +28,8 @@ const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, Sugge
   ['text'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/SuggestionGroupItem.js')
 );
 
 SuggestionGroupItem.displayName = 'SuggestionGroupItem';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import { CSSProperties, ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -61,7 +63,8 @@ const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, Color
   ['defaultColor'],
   ['showDefaultColor', 'showMoreColors', 'showRecentColors'],
   [],
-  ['item-click']
+  ['item-click'],
+  () => import('@ui5/webcomponents/dist/ColorPalettePopover.js')
 );
 
 ColorPalettePopover.displayName = 'ColorPalettePopover';

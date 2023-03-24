@@ -1,13 +1,11 @@
-import { render } from '@shared/tests';
-import { createCustomPropsTest, createWaitForDefineTest } from '@shared/tests/utils';
-import React from 'react';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { {{name}} } from './index';
 
 describe('{{name}}', () => {
-  test('Basic Test (generated)', () => {
-    const { asFragment } = render(<{{name}} />);
-    expect(asFragment()).toMatchSnapshot();
+  it('Basic Test (generated)', () => {
+    cy.mount(<{{name}} />);
+    cy.get('[{{{tagname}}}]').should('exist');
   });
-  createCustomPropsTest({{name}});
-  createWaitForDefineTest({{name}});
+
+  cypressPassThroughTestsFactory({{name}});
 });

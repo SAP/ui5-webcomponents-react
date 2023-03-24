@@ -1,0 +1,127 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Toolbar.stories';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { OverflowToolbarButton, OverflowToolbarToggleButton } from '../..';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## Prevent event bubbling of Toolbar items
+
+Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onClick` event of the `Toolbar` is also fired.
+To prevent this you can add `e.stopPropagation()` to your event handler.
+
+```jsx
+<Toolbar>
+  <Button
+    onClick={(e) => {
+      //use e.stopPropagation() to prevent event bubbling
+      e.stopPropagation();
+    }}
+  >
+    Toolbar Item
+  </Button>
+</Toolbar>
+```
+
+# More Examples
+
+## Align elements inside the Toolbar
+
+To align items inside the `Toolbar` you can use the `ToolbarSpacer` component.<br/>
+This will cover the remaining horizontal space between the `Toolbar` items and for example pushes one item to the edge of the `Toolbar`.
+
+### Right aligned items
+
+<Canvas of={ComponentStories.RightAlignedItems} />
+
+### Evenly aligned items
+
+<Canvas of={ComponentStories.EvenlyAlignedItems} />
+
+## Toolbar Separator
+
+You can add a visual separator between the preceding and succeeding `Toolbar` item with the use of the `ToolbarSeparator`.
+
+**Note:** In the overflow popover the `ToolbarSeparator` is represented by a horizontal line, in the `Toolbar` by a vertical
+line.
+
+<Canvas of={ComponentStories.WithSeparator} />
+
+## Toolbar with overflow button
+
+If the horizontally available space isn't enough to fit all items in it, an overflow button is displayed.
+
+**Note:** You can change the width of the toolbar by dragging the `Slider`.
+
+<ControlsWithNote of={ComponentStories.WithOverflowButton} hideHTMLPropsNote include={['numberOfAlwaysVisibleItems']} />
+
+<Canvas of={ComponentStories.WithOverflowButton} />
+
+### OverflowToolbarButton & OverflowToolbarToggleButton
+
+With the `OverflowToolbarButton` and `OverflowToolbarToggleButton` it is possible to display the text of a `Button` with an icon only in the overflow popover of the `Toolbar`.
+Both components accept the same `props` as the standard `Button` or `ToggleButton` component, with the difference that `icon` is now required and `children` are only rendered inside the popover.
+
+<Canvas of={ComponentStories.OverflowBtns} />
+
+### Toolbar with custom overflow button
+
+By setting the `overflowButton` prop, it's possible to change the overflow button, which is displayed if the `Toolbar` goes into overflow.
+Only buttons in icon only mode are supported and it's recommended to use the `ToggleButton` in `"Transparent"` design to comply with UX guidelines.
+Please also note that when using a custom button, it is your responsibility to set the appropriate a11y attributes.
+
+It is furthermore possible to prevent the popover from opening by using `event.preventDefault()` in the `onClick` of the button. This is useful e.g. when implementing a custom overflow popover.
+
+<Canvas of={ComponentStories.CustomOverflowButton} />
+
+### Close overflow popover on interaction
+
+The overflow popover can be closed programmatically by using the `overflowPopoverRef`.
+
+```jsx
+const ToolbarComponent = () => {
+  const overflowPopoverRef = useRef(null);
+  const handlePopoverClose = () => {
+    if (overflowPopoverRef.current.isOpen()) {
+      overflowPopoverRef.current.close();
+    }
+  };
+  return (
+    <Toolbar overflowPopoverRef={overflowPopoverRef}>
+      <Text>Toolbar</Text>
+      <Button onClick={handlePopoverClose}>Button One</Button>
+      <Select onChange={handlePopoverClose}>
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+      </Select>
+    </Toolbar>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## OverflowToolbarButton
+
+<Description of={OverflowToolbarButton} />
+
+<ArgTypesWithNote of={OverflowToolbarButton} />
+
+## OverflowToolbarToggleButton
+
+<Description of={OverflowToolbarToggleButton} />
+
+<ArgTypesWithNote of={OverflowToolbarToggleButton} />
+
+<Footer />

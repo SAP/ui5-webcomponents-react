@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/BusyIndicator.js';
 import { ReactNode } from 'react';
 import { BusyIndicatorSize } from '../../enums';
@@ -51,7 +53,8 @@ const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomR
   ['delay', 'size', 'text'],
   ['active'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/BusyIndicator.js')
 );
 
 BusyIndicator.displayName = 'BusyIndicator';

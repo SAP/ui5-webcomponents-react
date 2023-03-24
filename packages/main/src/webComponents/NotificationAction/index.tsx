@@ -1,6 +1,9 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
+import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
 
@@ -37,7 +40,12 @@ interface NotificationActionAttributes {
 
 export interface NotificationActionDomRef extends NotificationActionAttributes, Ui5DomRef {}
 
-export interface NotificationActionPropTypes extends NotificationActionAttributes, CommonProps {}
+export interface NotificationActionPropTypes extends NotificationActionAttributes, Omit<CommonProps, 'onClick'> {
+  /**
+   * Fired, when the action is pressed.
+   */
+  onClick?: (event: Ui5CustomEvent<NotificationActionDomRef, { targetRef: HTMLElement }>) => void;
+}
 
 /**
  * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
@@ -51,7 +59,8 @@ const NotificationAction = withWebComponent<NotificationActionPropTypes, Notific
   ['design', 'icon', 'text'],
   ['disabled'],
   [],
-  []
+  ['click'],
+  () => import('@ui5/webcomponents-fiori/dist/NotificationAction.js')
 );
 
 NotificationAction.displayName = 'NotificationAction';

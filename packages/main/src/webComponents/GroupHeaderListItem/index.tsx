@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/GroupHeaderListItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -37,7 +39,8 @@ const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes, Group
   ['accessibleName'],
   ['selected'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/GroupHeaderListItem.js')
 );
 
 GroupHeaderListItem.displayName = 'GroupHeaderListItem';

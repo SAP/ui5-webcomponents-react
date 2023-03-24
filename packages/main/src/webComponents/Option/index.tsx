@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Option.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -54,7 +56,8 @@ const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   ['additionalText', 'icon', 'value'],
   ['disabled', 'selected'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/Option.js')
 );
 
 Option.displayName = 'Option';

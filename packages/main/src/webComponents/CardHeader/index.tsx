@@ -1,9 +1,11 @@
+'use client';
+
 import '@ui5/webcomponents/dist/CardHeader.js';
-import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface CardHeaderAttributes {
   /**
@@ -30,17 +32,23 @@ export interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonPr
   /**
    * Defines an action, displayed in the right most part of the header.
    *
-   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
-   */
-  action?: ReactNode | ReactNode[];
-  /**
-   * Defines an avatar image, displayed in the left most part of the header.
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="action"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  avatar?: ReactNode | ReactNode[];
+  action?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  /**
+   * Defines an avatar image, displayed in the left most part of the header.
+   *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="avatar"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   */
+  avatar?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the component is activated by mouse/tap or by using the Enter or Space key.
    *
@@ -61,7 +69,8 @@ const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
   ['status', 'subtitleText', 'titleText'],
   ['interactive'],
   ['action', 'avatar'],
-  ['click']
+  ['click'],
+  () => import('@ui5/webcomponents/dist/CardHeader.js')
 );
 
 CardHeader.displayName = 'CardHeader';

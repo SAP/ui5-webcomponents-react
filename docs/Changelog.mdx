@@ -1,0 +1,11 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import Changelog from '../CHANGELOG.md?raw';
+import { Footer, TableOfContent } from '@sb/components';
+
+<Meta title="Change Log" />
+
+<TableOfContent headingSelector="h2:not(.noAnchor)" onlyDisplaySideNav />
+
+<Markdown>{Changelog}</Markdown>
+
+<Footer />

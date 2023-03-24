@@ -1,5 +1,8 @@
+'use client';
+
 import '@ui5/webcomponents/dist/TableColumn.js';
 import { ReactNode } from 'react';
+import { TableColumnPopinDisplay } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
@@ -18,6 +21,15 @@ interface TableColumnAttributes {
    * For further responsive design options, see `demandPopin` property.
    */
   minWidth?: number;
+  /**
+   * Defines how the popin row is displayed.
+   *
+   * **The available values are:**
+   *
+   * *   `Block`
+   * *   `Inline`
+   */
+  popinDisplay?: TableColumnPopinDisplay | keyof typeof TableColumnPopinDisplay;
   /**
    * The text for the column when it pops in.
    */
@@ -42,16 +54,18 @@ export interface TableColumnPropTypes extends TableColumnAttributes, CommonProps
  */
 const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   'ui5-table-column',
-  ['minWidth', 'popinText'],
+  ['minWidth', 'popinDisplay', 'popinText'],
   ['demandPopin'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/TableColumn.js')
 );
 
 TableColumn.displayName = 'TableColumn';
 
 TableColumn.defaultProps = {
-  minWidth: Infinity
+  minWidth: Infinity,
+  popinDisplay: TableColumnPopinDisplay.Block
 };
 
 export { TableColumn };

@@ -22,11 +22,6 @@ export const Fiori4ReactTheme = create({
   textColor: TEXT_COLOR,
   textInverseColor: '#00ff00',
 
-  // Toolbar default and active colors
-  barTextColor: '#ffffff',
-  barSelectedColor: '#ffffff',
-  barBg: '#354a5f',
-
   // Form colors
   inputBg: 'white',
   inputBorder: 'silver',

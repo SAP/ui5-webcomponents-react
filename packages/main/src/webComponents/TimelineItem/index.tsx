@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -57,7 +59,8 @@ const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>
   ['icon', 'name', 'subtitleText', 'titleText'],
   ['nameClickable'],
   [],
-  ['name-click']
+  ['name-click'],
+  () => import('@ui5/webcomponents-fiori/dist/TimelineItem.js')
 );
 
 TimelineItem.displayName = 'TimelineItem';

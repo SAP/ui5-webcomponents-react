@@ -1,10 +1,15 @@
-import React, { createRef, MutableRefObject, RefObject, useCallback } from 'react';
+'use client';
+
+import { createRef, Dispatch, MutableRefObject, RefObject, useCallback } from 'react';
 import { getRandomId } from '../../internal/getRandomId';
 import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';
 import {
   Dialog,
   DialogDomRef,
   DialogPropTypes,
+  Menu,
+  MenuDomRef,
+  MenuPropTypes,
   Popover,
   PopoverDomRef,
   PopoverPropTypes,
@@ -43,7 +48,7 @@ const checkContext = (context: any): void => {
 
 function showDialog<ContainerElement>(
   props: DialogPropTypes,
-  setModal: React.Dispatch<UpdateModalStateAction<DialogPropTypes, DialogDomRef, ContainerElement>>,
+  setModal: Dispatch<UpdateModalStateAction<DialogPropTypes, DialogDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -71,12 +76,13 @@ function showDialog<ContainerElement>(
       id
     }
   });
+
   return { ref };
 }
 
 function showPopover<ContainerElement>(
   props: PopoverPropTypes,
-  setModal: React.Dispatch<UpdateModalStateAction<PopoverPropTypes, PopoverDomRef, ContainerElement>>,
+  setModal: Dispatch<UpdateModalStateAction<PopoverPropTypes, PopoverDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -110,9 +116,7 @@ function showPopover<ContainerElement>(
 
 function showResponsivePopover<ContainerElement>(
   props: ResponsivePopoverPropTypes,
-  setModal: React.Dispatch<
-    UpdateModalStateAction<ResponsivePopoverPropTypes, ResponsivePopoverDomRef, ContainerElement>
-  >,
+  setModal: Dispatch<UpdateModalStateAction<ResponsivePopoverPropTypes, ResponsivePopoverDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -143,9 +147,42 @@ function showResponsivePopover<ContainerElement>(
   return { ref };
 }
 
+function showMenu<ContainerElement>(
+  props: MenuPropTypes,
+  setModal: Dispatch<UpdateModalStateAction<MenuPropTypes, MenuDomRef, ContainerElement>>,
+  container?: ContainerElement
+) {
+  checkContext(setModal);
+  const id = getRandomId();
+  const ref = createRef<MenuDomRef>();
+  setModal?.({
+    type: 'set',
+    payload: {
+      Component: Menu,
+      props: {
+        ...props,
+        open: true,
+        onAfterClose: (event) => {
+          if (typeof props.onAfterClose === 'function') {
+            props.onAfterClose(event);
+          }
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
+        }
+      },
+      ref,
+      container,
+      id
+    }
+  });
+  return { ref };
+}
+
 function showMessageBox<ContainerElement>(
   props: MessageBoxPropTypes,
-  setModal: React.Dispatch<UpdateModalStateAction<MessageBoxPropTypes, DialogDomRef, ContainerElement>>,
+  setModal: Dispatch<UpdateModalStateAction<MessageBoxPropTypes, DialogDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   checkContext(setModal);
@@ -179,7 +216,7 @@ function showMessageBox<ContainerElement>(
 
 function showToast<ContainerElement>(
   props: ToastPropTypes,
-  setModal: React.Dispatch<UpdateModalStateAction<ToastPropTypes, ToastDomRef, ContainerElement>>,
+  setModal: Dispatch<UpdateModalStateAction<ToastPropTypes, ToastDomRef, ContainerElement>>,
   container?: ContainerElement
 ) {
   const ref = createRef<ToastDomRef>() as MutableRefObject<ToastDomRef>;
@@ -300,7 +337,7 @@ function showResponsivePopoverFn<ContainerElement>(
   };
 }
 
-function useResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnType<
+function useShowResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnType<
   ResponsivePopoverPropTypes,
   ResponsivePopoverDomRef,
   ContainerElement
@@ -309,6 +346,42 @@ function useResponsivePopoverHook<ContainerElement>(): CloseableModalHookReturnT
   return useCallback(
     (props, container) => {
       const { ref } = showResponsivePopover<ContainerElement>(props, setModal, container);
+
+      return {
+        ref,
+        close: () => {
+          ref.current?.close();
+        }
+      };
+    },
+    [setModal]
+  );
+}
+
+function showMenuFn<ContainerElement>(
+  props: MenuPropTypes,
+  container?: ContainerElement
+): ClosableModalReturnType<MenuDomRef> {
+  const setModal = window['@ui5/webcomponents-react']?.setModal;
+  const { ref } = showMenu<ContainerElement>(props, setModal, container);
+
+  return {
+    ref,
+    close: () => {
+      ref.current?.close();
+    }
+  };
+}
+
+function useShowMenuHook<ContainerElement>(): CloseableModalHookReturnType<
+  MenuPropTypes,
+  MenuDomRef,
+  ContainerElement
+> {
+  const { setModal } = useModalsContext();
+  return useCallback(
+    (props, container) => {
+      const { ref } = showMenu<ContainerElement>(props, setModal, container);
 
       return {
         ref,
@@ -396,7 +469,15 @@ export const Modals = {
   showPopover: showPopoverFn,
   useShowPopover: useShowPopoverHook,
   showResponsivePopover: showResponsivePopoverFn,
-  useShowResponsivePopover: useResponsivePopoverHook,
+  useShowResponsivePopover: useShowResponsivePopoverHook,
+  /**
+   * @since 1.8.0
+   */
+  showMenu: showMenuFn,
+  /**
+   * @since 1.8.0
+   */
+  useShowMenu: useShowMenuHook,
   showMessageBox: showMessageBoxFn,
   useShowMessageBox: useShowMessageBox,
   showToast: showToastFn,

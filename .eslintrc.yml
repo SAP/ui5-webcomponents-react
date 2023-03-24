@@ -1,20 +1,20 @@
 ---
+root: true
 parser: '@typescript-eslint/parser'
 parserOptions:
+  sourceType: module
   ecmaFeatures:
     jsx: true
 env:
   browser: true
+  es2022: true
 extends:
   - plugin:react/recommended
+  - plugin:react-hooks/recommended
   - plugin:import/recommended
-  - plugin:import/typescript
   - plugin:prettier/recommended
-  - plugin:storybook/recommended
 plugins:
   - prefer-arrow
-  - react-hooks
-  - no-only-tests
 settings:
   react:
     version: detect
@@ -40,12 +40,7 @@ rules:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
-  import/no-unresolved:
-    - 'error'
-    - ignore:
-        - '@ui5/webcomponents-react'
-        - '@ui5/webcomponents-react-base'
-  no-only-tests/no-only-tests: 'error'
+  import/no-unresolved: 'error'
 overrides:
   # add config for all TypeScript files
   - files:
@@ -54,12 +49,17 @@ overrides:
     parserOptions:
       project:
         - './tsconfig.spec.json'
+        - './tsconfig.node.json'
         - './packages/*/tsconfig.json'
     plugins:
       - '@typescript-eslint'
     extends:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+      - 'plugin:import/typescript'
+    settings:
+      import/resolver:
+        typescript: true
     rules:
       # disabled some rules from the recommended preset
       '@typescript-eslint/no-empty-function': 'off'
@@ -77,6 +77,12 @@ overrides:
       '@typescript-eslint/no-unused-vars':
         - 'error'
         - varsIgnorePattern: '^_'
+
+      # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
+      'import/named': 'off'
+      'import/namespace': 'off'
+      'import/default': 'off'
+      'import/no-named-as-default-member': 'off'
 
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
@@ -101,24 +107,10 @@ overrides:
       '@typescript-eslint/no-namespace': 'off'
 
   - files:
-      - '*.test.tsx'
-      - '*.test.ts'
-    parserOptions:
-      project:
-        - './tsconfig.test.json'
-        - './packages/*/tsconfig.json'
-    rules:
-      '@typescript-eslint/no-empty-function': 'off'
-      'react/react-in-jsx-scope': 'off'
-      'import/order': 'warn'
-      'import/no-unresolved': 'off'
-      'react/no-unescaped-entities': 'off'
-      '@typescript-eslint/unbound-method': 'warn'
-      'react/display-name': 'off'
-
-  - files:
       - '*.cy.ts'
       - '*.cy.tsx'
+    plugins:
+      - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
       'react/react-in-jsx-scope': 'off'
@@ -127,3 +119,15 @@ overrides:
       'react/no-unescaped-entities': 'off'
       '@typescript-eslint/unbound-method': 'warn'
       'react/display-name': 'off'
+      no-only-tests/no-only-tests: 'error'
+
+  - files:
+      - '*.stories.tsx'
+    extends:
+      - 'plugin:react/jsx-runtime'
+      - 'plugin:storybook/recommended'
+    rules:
+      'react/prop-types': 'off' # inline custom components within stories don't need prop types
+      '@typescript-eslint/no-unused-vars': 'warn' # some samples can include unused vars to show the API / signature
+      'react/no-unescaped-entities': 'off'
+      'react-hooks/rules-of-hooks': 'off' # the CSF-3 render() functions are not detected as react components

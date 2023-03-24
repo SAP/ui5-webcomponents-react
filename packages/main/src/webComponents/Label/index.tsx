@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Label.js';
 import { ReactNode } from 'react';
 import { WrappingType } from '../../enums';
@@ -57,7 +59,8 @@ const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   ['for', 'wrappingType'],
   ['required', 'showColon'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/Label.js')
 );
 
 Label.displayName = 'Label';

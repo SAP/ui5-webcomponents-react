@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Calendar.js';
 import { ReactNode } from 'react';
 import { CalendarSelectionMode, CalendarType } from '../../enums';
@@ -47,7 +49,7 @@ export interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
 
 export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
   /**
-   * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`
+   * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -70,7 +72,8 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
   ['hideWeekNumbers'],
   [],
-  ['selected-dates-change']
+  ['selected-dates-change'],
+  () => import('@ui5/webcomponents/dist/Calendar.js')
 );
 
 Calendar.displayName = 'Calendar';

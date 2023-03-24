@@ -1,17 +1,17 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ResponsiveContainerPadding } from '../../internal/ContainerQueries';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 
 export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',
   anchorLeft: '--_ui5wcr_ObjectPage_actions_left',
-  anchorRight: '--_ui5wcr_ObjectPage_actions_right',
-  tabBarPaddingInline: '--_ui5wcr_ObjectPage_tab_bar_inline_padding'
+  anchorRight: '--_ui5wcr_ObjectPage_actions_right'
 };
 
 export const styles = {
   objectPage: {
     [DynamicPageCssVariables.headerDisplay]: 'block',
-    [ObjectPageCssVariables.tabBarPaddingInline]: '1rem',
+    container: 'objectPage / inline-size',
     boxSizing: 'border-box',
     width: '100%',
     height: '100%',
@@ -32,11 +32,6 @@ export const styles = {
       display: 'block'
     }
   },
-  // each tab has inline padding of 1rem, so it needs to be subtracted from the default responsive padding
-  Phone: { [ObjectPageCssVariables.tabBarPaddingInline]: 0 },
-  Tablet: { [ObjectPageCssVariables.tabBarPaddingInline]: '1rem' },
-  Desktop: { [ObjectPageCssVariables.tabBarPaddingInline]: '1rem' },
-  LargeDesktop: { [ObjectPageCssVariables.tabBarPaddingInline]: '2rem' },
   '@global html': {
     [ObjectPageCssVariables.anchorFloat]: 'right',
     [ObjectPageCssVariables.anchorRight]: '1.25rem',
@@ -57,6 +52,7 @@ export const styles = {
     [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_SnappedFontSize
   },
   headerContainer: {
+    extend: ResponsiveContainerPadding,
     marginBottom: '0.25rem',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
     display: 'grid',
@@ -77,6 +73,7 @@ export const styles = {
     }
   },
   header: {
+    extend: ResponsiveContainerPadding,
     [DynamicPageCssVariables.headerDisplay]: 'block',
     boxSizing: 'border-box',
     backgroundColor: ThemingParameters.sapObjectHeader_Background,
@@ -95,11 +92,7 @@ export const styles = {
     maxWidth: '5rem',
     maxHeight: '5rem',
     display: 'inline-block',
-    marginRight: '2rem'
-  },
-  headerImageRtl: {
-    marginRight: 0,
-    marginLeft: '2rem'
+    marginInlineEnd: '2rem'
   },
   image: {
     width: '100%',
@@ -111,12 +104,28 @@ export const styles = {
   },
   tabContainer: {
     position: 'sticky',
-    zIndex: 1
+    zIndex: 1,
+    // each tab has inline padding of 1rem, so it needs to be subtracted from the default responsive padding
+    '@container objectPage (max-width: 599px)': {
+      '--_ui5wcr_ObjectPage_tab_bar_inline_padding': 0
+    },
+    '@container objectPage (min-width: 600px) and (max-width: 1023px)': {
+      '--_ui5wcr_ObjectPage_tab_bar_inline_padding': '1rem'
+    },
+    '@container objectPage (min-width: 1024px) and (max-width: 1439px)': {
+      '--_ui5wcr_ObjectPage_tab_bar_inline_padding': '1rem'
+    },
+    '@container objectPage (min-width: 1440px)': {
+      '--_ui5wcr_ObjectPage_tab_bar_inline_padding': '2rem'
+    }
   },
   tabContainerComponent: {
     '&::part(content)': {
       display: 'none'
     }
+  },
+  content: {
+    extend: ResponsiveContainerPadding
   },
   footer: {
     position: 'sticky',

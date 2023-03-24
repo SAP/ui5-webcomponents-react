@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef, useCallback, useRef } from 'react';
 import {
@@ -66,15 +68,15 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
   /**
    * An array of dataset objects. Each object defines a dataset which is displayed.
    *
-   * #### Required properties
+   * **Required properties**
    *  - `data`: array of objects which contains the data.
    *
-   * #### Optional properties
+   * **Optional properties**
    *  - `label`: string containing the label of the dataset which is also displayed in the legend.
    *  - `color`: any valid CSS color or CSS variable. Defaults to the `sapChart_Ordinal` colors.
    *  - `opacity`: number contains value of opacity of dataset
    *
-   * #### Example of dataset:
+   * **Example of dataset:**
    *
    * <code>
    *   <pre>
@@ -103,12 +105,12 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
   /**
    * An array of config objects. Each object is defining one axis in the chart.
    *
-   * #### Required properties
+   * **Required properties**
    *  - `accessor`: string containing the path to the dataset key this line should display. Supports object structures by using <code>'parent.child'</code>.
    *     Can also be a getter.
    *  - `axis`: string containing definition of axis. Must be x, y or z data to the axis.
    *
-   * #### Optional properties
+   * **Optional properties**
    *  - `label`: Label to display in tooltips. Falls back to the <code>accessor</code> if not present.
    *  - `formatter`: function will be called for each data label and allows you to format it according to your needs. Also addresses labels of axis.
    */
@@ -203,7 +205,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
   const yMeasure = measures.find(({ axis }) => axis === 'y');
   const zMeasure = measures.find(({ axis }) => axis === 'z');
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0].data, [yMeasure]);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0]?.data, [yMeasure]);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const { chartConfig: _0, measures: _1, ...propsWithoutOmitted } = rest;

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ComboBoxItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -30,7 +32,8 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>
   ['additionalText', 'text'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/ComboBoxItem.js')
 );
 
 ComboBoxItem.displayName = 'ComboBoxItem';

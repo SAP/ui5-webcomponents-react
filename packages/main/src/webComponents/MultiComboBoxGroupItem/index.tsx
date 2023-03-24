@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -26,7 +28,8 @@ const MultiComboBoxGroupItem = withWebComponent<MultiComboBoxGroupItemPropTypes,
   ['text'],
   [],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/MultiComboBoxGroupItem.js')
 );
 
 MultiComboBoxGroupItem.displayName = 'MultiComboBoxGroupItem';

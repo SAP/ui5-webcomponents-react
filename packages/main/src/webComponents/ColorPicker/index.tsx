@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/ColorPicker.js';
 import { CSSProperties } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -35,7 +37,8 @@ const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   ['color'],
   [],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/ColorPicker.js')
 );
 
 ColorPicker.displayName = 'ColorPicker';

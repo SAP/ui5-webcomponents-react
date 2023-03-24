@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/MenuItem.js';
 import { ReactNode } from 'react';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -56,7 +58,8 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   ['accessibleName', 'additionalText', 'icon', 'text'],
   ['disabled', 'startsSection'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/MenuItem.js')
 );
 
 MenuItem.displayName = 'MenuItem';

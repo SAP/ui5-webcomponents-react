@@ -1,0 +1,50 @@
+name: Documentation
+description: Suggest improvements or report missing/unclear documentation.
+labels:
+  - documentation
+assignees: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: 'Describe the documentation issue'
+      multiple: true
+      options:
+        - Documentation is unclear
+        - Documentation is incorrect
+        - Documentation is missing
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Description'
+      description: 'What can we improve in our documentation?'
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 'Link to Documentation Page'
+      description: 'Where did you find the documentation issue?'
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Privacy Policy
+        Please don't disclose any internal or sensitive information like: internal urls, login credentials, screenshots of applications or features in development.
+        This is a public GitHub repository and all the information is publicly available.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Declaration
+      description: By submitting this issue, I confirm to follow the recommendation not to disclose any internal or sensitive information.
+      options:
+        - label: I’m not disclosing any internal or sensitive information.
+    validations:
+      required: true

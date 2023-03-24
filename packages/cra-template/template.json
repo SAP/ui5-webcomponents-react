@@ -1,23 +1,22 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "~1.9.3",
-      "@ui5/webcomponents-fiori": "~1.9.3",
-      "@ui5/webcomponents-icons": "~1.9.3",
+      "@ui5/webcomponents": "~1.11.0",
+      "@ui5/webcomponents-fiori": "~1.11.0",
+      "@ui5/webcomponents-icons": "~1.11.0",
       "@ui5/webcomponents-react": "latest",
-      "@testing-library/jest-dom": "^5.16.4",
-      "@testing-library/react": "^13.1.1",
-      "@testing-library/user-event": "^14.1.0",
       "web-vitals": "^2.1.0"
     },
     "devDependencies": {
-      "resize-observer-polyfill": "1.5.1"
+      "cypress": "^12.1.0",
+      "@ui5/webcomponents-cypress-commands": "latest"
+    },
+    "scripts": {
+      "test": "cypress run --component --browser chrome",
+      "test:open": "cypress open --component --browser chrome"
     },
     "eslintConfig": {
-      "extends": ["react-app", "react-app/jest"]
-    },
-    "jest": {
-      "transformIgnorePatterns": ["node_modules/(?!(@ui5|lit-html)).*\\.js$"]
+      "extends": ["react-app"]
     }
   }
 }

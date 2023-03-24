@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
 import { ReactNode } from 'react';
 import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums';
@@ -64,7 +66,8 @@ const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   ['design', 'separatorStyle'],
   [],
   [],
-  ['item-click']
+  ['item-click'],
+  () => import('@ui5/webcomponents/dist/Breadcrumbs.js')
 );
 
 Breadcrumbs.displayName = 'Breadcrumbs';

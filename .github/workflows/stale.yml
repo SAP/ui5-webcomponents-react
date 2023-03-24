@@ -2,26 +2,26 @@ name: Mark and close stale issues
 
 on:
   schedule:
-  - cron: "30 1 * * *"
+    - cron: '30 1 * * *'
 
 jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/stale@v7
-      with:
-        # The number of days old an issue can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
-        days-before-stale: 14
-        # The number of days to wait to close an issue or pull request after it being marked stale. Set to -1 to never close stale issues.
-        days-before-close: 7
-        # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
-        stale-issue-message: >
-          Hi everyone! 
-          Seems like there hasn't been much going on in this issue lately. If there are still questions, comments, or bugs, please feel free to continue the discussion. 
-          Inactive issues will be closed after 7 days. Thanks.
-        # The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
-        close-issue-message: >
-          Hey there, it's me again! 
-          I am going close this issue to help our maintainers focus on the current development roadmap instead. 
-          If the issue mentioned is still a concern, please open a new ticket and mention this old one. 
-        any-of-labels: 'author action,wontfix'
+      - uses: actions/stale@v8
+        with:
+          # The number of days old an issue can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
+          days-before-stale: 14
+          # The number of days to wait to close an issue or pull request after it being marked stale. Set to -1 to never close stale issues.
+          days-before-close: 7
+          # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
+          stale-issue-message: >
+            Hi everyone! 
+            Seems like there hasn't been much going on in this issue lately. If there are still questions, comments, or bugs, please feel free to continue the discussion. 
+            Inactive issues will be closed after 7 days. Thanks.
+          # The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
+          close-issue-message: >
+            Hey there, it's me again! 
+            I am going close this issue to help our maintainers focus on the current development roadmap instead. 
+            If the issue mentioned is still a concern, please first check to see if the maintainers have requested additional input and provide it if necessary, or post a detailed description of why this issue is still a problem.
+          any-of-labels: 'author action,wontfix'

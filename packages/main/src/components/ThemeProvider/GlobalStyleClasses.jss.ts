@@ -15,6 +15,33 @@ import { sapHorizonHcwParameters } from '../../themes/sap_horizon_hcw';
 
 export const GlobalStyleClassesStyles = {
   '@global': {
+    [`.${GlobalStyleClasses.inheritingSapScrollBar} *:not([data-native-scrollbar])`]: {
+      '&::-webkit-scrollbar': {
+        backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
+        '&:horizontal': {
+          height: ThemingParameters.sapScrollBar_Dimension
+        },
+        '&:vertical': {
+          width: ThemingParameters.sapScrollBar_Dimension
+        }
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
+        borderRadius: '0.25rem',
+        '&:hover': {
+          backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
+        },
+        '&:horizontal': {
+          height: ThemingParameters.sapScrollBar_Dimension
+        },
+        '&:vertical': {
+          width: ThemingParameters.sapScrollBar_Dimension
+        }
+      },
+      '&::-webkit-scrollbar-corner': {
+        backgroundColor: ThemingParameters.sapScrollBar_TrackColor
+      }
+    },
     [`.${GlobalStyleClasses.sapScrollBar}:not([data-native-scrollbar])`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,

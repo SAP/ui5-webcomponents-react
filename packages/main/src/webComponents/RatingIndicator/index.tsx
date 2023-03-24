@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/RatingIndicator.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
@@ -58,7 +60,8 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicat
   ['accessibleName', 'max', 'value'],
   ['disabled', 'readonly'],
   [],
-  ['change']
+  ['change'],
+  () => import('@ui5/webcomponents/dist/RatingIndicator.js')
 );
 
 RatingIndicator.displayName = 'RatingIndicator';

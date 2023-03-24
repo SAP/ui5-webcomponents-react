@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ViewSettingsDialog Basic Test (generated) 1`] = `
-<DocumentFragment>
-  <ui5-view-settings-dialog
-    ui5-view-settings-dialog=""
-  />
-</DocumentFragment>
-`;

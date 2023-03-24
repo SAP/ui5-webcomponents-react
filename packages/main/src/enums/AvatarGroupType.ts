@@ -1,16 +1,5 @@
 // Generated file - do not change manually!
 
-/**
- * Different types of AvatarGroupType.
- */
-export enum AvatarGroupType {
-  /**
-   * The avatars are displayed as partially overlapped on top of each other and the entire group has one click/tap area.
-   */
-  Group = 'Group',
+import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 
-  /**
-   * The avatars are displayed side-by-side and each avatar has its own click/tap area.
-   */
-  Individual = 'Individual'
-}
+export { AvatarGroupType };

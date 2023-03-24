@@ -1,7 +1,12 @@
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
-import { EventProvider } from './EventProvider';
+import { IOrientation, IWindowSize, OrientationEventProvider, ResizeEventProvider } from './EventProvider';
+
+const isSSR = () => typeof window === 'undefined';
 
 const getActualWindowSize = (): [width: number, height: number] => {
+  if (isSSR()) {
+    return [0, 0];
+  }
   return [window.innerWidth, window.innerHeight];
 };
 
@@ -12,16 +17,6 @@ let iOrientationTimeout;
 let iClearFlagTimeout;
 let [iWindowWidthOld, iWindowHeightOld] = getActualWindowSize();
 const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
-
-interface IOrientation {
-  landscape: boolean;
-  portrait: boolean;
-}
-
-interface IWindowSize {
-  height: number;
-  width: number;
-}
 
 const internalWindowSize: IWindowSize = {
   height: 0,
@@ -74,7 +69,7 @@ const initEventListeners = () => {
 // orientation change
 const handleOrientationChange = () => {
   setOrientationInfo();
-  EventProvider.fireEvent('orientation', {
+  OrientationEventProvider.fireEvent('orientation', {
     landscape: internalOrientation.landscape,
     portrait: internalOrientation.portrait
   });
@@ -142,7 +137,7 @@ const handleMobileOrientationResizeChange = (evt) => {
 // RESIZE ONLY WITHOUT ORIENTATION CHANGE
 const handleResizeChange = () => {
   setResizeInfo();
-  EventProvider.fireEvent('resize', {
+  ResizeEventProvider.fireEvent('resize', {
     height: internalWindowSize.height,
     width: internalWindowSize.width
   });
@@ -168,7 +163,7 @@ const handleResizeEvent = () => {
 };
 
 // re-export everything from the web components device
-export * from './UI5Device';
+export * from '@ui5/webcomponents-base/dist/Device.js';
 // export all media methods
 export { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
 
@@ -177,11 +172,11 @@ export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => voi
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  EventProvider.attachEvent('resize', fnFunction);
+  ResizeEventProvider.attachEvent('resize', fnFunction);
 };
 
 export const detachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void) => {
-  EventProvider.detachEvent('resize', fnFunction);
+  ResizeEventProvider.detachEvent('resize', fnFunction);
 };
 
 // orientation change events
@@ -193,9 +188,9 @@ export const attachOrientationChangeHandler = (fnFunction: (orientation: IOrient
   if (!eventListenersInitialized) {
     initEventListeners();
   }
-  EventProvider.attachEvent('orientation', fnFunction);
+  OrientationEventProvider.attachEvent('orientation', fnFunction);
 };
 
 export const detachOrientationChangeHandler = (fnFunction: (orientation: IOrientation) => void) => {
-  EventProvider.detachEvent('orientation', fnFunction);
+  OrientationEventProvider.detachEvent('orientation', fnFunction);
 };

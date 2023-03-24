@@ -1,8 +1,10 @@
+'use client';
+
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { IndicationColor } from '../../enums/IndicationColor';
@@ -64,13 +66,13 @@ export interface ObjectStatusPropTypes extends CommonProps {
 const getDefaultIcon = (state) => {
   switch (state) {
     case ValueState.Error:
-      return <Icon name={errorIcon} />;
+      return <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Success:
-      return <Icon name={successIcon} />;
+      return <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Warning:
-      return <Icon name={alertIcon} />;
+      return <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
     case ValueState.Information:
-      return <Icon name={informationIcon} />;
+      return <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" />;
     default:
       return null;
   }

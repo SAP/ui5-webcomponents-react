@@ -1,3 +1,5 @@
+'use client';
+
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useCallback, useRef } from 'react';
 import {
@@ -33,11 +35,11 @@ export interface RadarChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
-   * #### Required Properties
+   * **Required Properties*
    * - `accessor`: string containing the path to the dataset key the dimension should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * #### Optional Properties
+   * **Optional Properties**
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
    *
    */
@@ -45,11 +47,11 @@ export interface RadarChartProps extends IChartBaseProps {
   /**
    * An array of config objects. Each object is defining one radar in the chart.
    *
-   * #### Required properties
+   * **Required properties**
    * - `accessor`: string containing the path to the dataset key this radar should display. Supports object structures by using <code>'parent.child'</code>.
    *   Can also be a getter.
    *
-   * #### Optional properties
+   * **Optional properties**
    *
    * - `label`: Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    * - `color`: any valid CSS Color or CSS Variable. Defaults to the `sapChart_Ordinal` colors

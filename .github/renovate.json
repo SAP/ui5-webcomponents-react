@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard",
+    ":automergePatch",
+    ":enableVulnerabilityAlerts",
+    ":semanticCommits"
+  ],
+  "automerge": true,
+  "platformAutomerge": true,
+  "prHourlyLimit": 5,
+  "packageRules": [
+    {
+      "groupName": "UI5 Web Components",
+      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
+    },
+    {
+      "groupName": "vite & plugins",
+      "matchPackagePatterns": ["vite"]
+    },
+    {
+      "groupName": "eslint",
+      "matchPackagePatterns": ["eslint"]
+    },
+    {
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["patch"],
+      "enabled": false
+    },
+    {
+      "extends": "monorepo:storybook",
+      "semanticCommitType": "chore"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { ReactNode } from 'react';
 import { WrappingType, Priority } from '../../enums';
@@ -5,6 +7,7 @@ import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
 import { withWebComponent } from '../../internal/withWebComponent';
+import { UI5WCSlotsNode } from '../../types';
 
 interface NotificationListItemAttributes {
   /**
@@ -59,10 +62,13 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * **Note:** Consider using the `Avatar` to display icons, initials or images.
    * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `Avatar` you can set its `size` property to `XS` to get the required size - `<Avatar size="XS"></Avatar>`.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="avatar"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  avatar?: ReactNode;
+  avatar?: UI5WCSlotsNode;
   /**
    * Defines the content of the `NotificationListItem`, usually a description of the notification.
    *
@@ -72,23 +78,29 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
   /**
    * Defines the elements, displayed in the footer of the of the component.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="footnotes"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  footnotes?: ReactNode | ReactNode[];
+  footnotes?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the actions, displayed in the top-right area.
    *
    * **Note:** use the `NotificationAction` component.
    *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="actions"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
    */
-  actions?: ReactNode | ReactNode[];
+  actions?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, { item: HTMLElement }>) => void;
 }
 
 /**
@@ -109,7 +121,8 @@ const NotificationListItem = withWebComponent<NotificationListItemPropTypes, Not
   ['wrappingType', 'busyDelay', 'priority', 'titleText'],
   ['busy', 'read', 'showClose', 'selected'],
   ['avatar', 'footnotes', 'actions'],
-  ['close']
+  ['close'],
+  () => import('@ui5/webcomponents-fiori/dist/NotificationListItem.js')
 );
 
 NotificationListItem.displayName = 'NotificationListItem';

@@ -1,3 +1,5 @@
+'use client';
+
 import '@ui5/webcomponents/dist/SuggestionItem.js';
 import { ValueState, ListItemType } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
@@ -65,7 +67,8 @@ const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemD
   ['additionalText', 'additionalTextState', 'description', 'icon', 'image', 'text', 'type'],
   ['iconEnd'],
   [],
-  []
+  [],
+  () => import('@ui5/webcomponents/dist/SuggestionItem.js')
 );
 
 SuggestionItem.displayName = 'SuggestionItem';
