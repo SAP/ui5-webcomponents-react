@@ -156,11 +156,12 @@ const FormItem = (props: FormItemPropTypes) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
+            const childId = child?.props?.id;
             return (
               <Fragment key={`${content}-${uniqueId}`}>
                 {/*@ts-expect-error: child is ReactElement*/}
-                {cloneElement(child, { id: `${uniqueId}-${index}` })}
-                <label htmlFor={`${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
+                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
+                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
                   {content}
                 </label>
               </Fragment>
