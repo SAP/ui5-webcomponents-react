@@ -17,7 +17,8 @@
     },
     {
       "groupName": "vite & plugins",
-      "matchPackagePatterns": ["vite"]
+      "matchPackagePatterns": ["vite"],
+      "excludePackageNames": ["@storybook/react-vite"]
     },
     {
       "groupName": "eslint",
