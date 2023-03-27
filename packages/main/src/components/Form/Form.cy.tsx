@@ -24,7 +24,7 @@ const component = (
         <Input data-testid="formInput2" type={InputType.Text} />
       </FormItem>
       <FormItem label={<Label>item 4</Label>}>
-        <Input type={InputType.Number} />
+        <Input type={InputType.Number} id="test-id" />
       </FormItem>
     </FormGroup>
   </Form>
@@ -81,6 +81,10 @@ describe('Form', () => {
     // custom `Label`
     cy.findAllByText(`item 4`).eq(0).should('be.visible');
     cy.findAllByText(`item 4`).eq(1).should('exist').should('not.be.visible');
+
+    // custom id child of FormItem
+    cy.get('#test-id').should('have.length', 1).should('be.visible');
+    cy.get('[for="test-id"]').should('have.length', 1).should('not.be.visible');
   });
 
   it('FilterItem: doesnt crash with portal as child', () => {
