@@ -413,6 +413,7 @@ export const Subcomponents: Story = {
     };
     return (
       <AnalyticalTable
+        {...args}
         data={args.data}
         columns={args.columns}
         renderRowSubComponent={renderRowSubComponent}

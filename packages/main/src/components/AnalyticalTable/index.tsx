@@ -1097,6 +1097,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             )}
             {rawData?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
+                rowCollapsedFlag={tableState.rowCollapsed}
+                dispatch={dispatch}
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={totalColumnsWidth}
                 parentRef={parentRef}
