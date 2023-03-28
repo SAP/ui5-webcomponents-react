@@ -1631,6 +1631,67 @@ describe('AnalyticalTable', () => {
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('not.have.attr', 'aria-label');
   });
 
+  it("Expandable: don't scroll when expanded/collapsed", () => {
+    cy.mount(<AnalyticalTable data={[...dataTree, ...dataTree]} columns={columns} isTreeTable visibleRows={5} />);
+    cy.findAllByText('Katy Bradshaw').eq(1).trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('Carol Perez').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').should('not.equal', 0);
+    cy.findByText('Carol Perez').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+
+    cy.mount(<AnalyticalTable data={[...data, ...data]} columns={columns} visibleRows={5} groupable />);
+    cy.findByText('Name').click();
+    cy.findByText('Group').click();
+    cy.findByText('A (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.findByText('B (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('C (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('C (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+
+    const renderRowSubComponent = () => {
+      return (
+        <div style={{ height: '80px' }} title="subcomponent">
+          SubComponent
+        </div>
+      );
+    };
+    cy.mount(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />);
+    cy.findByText('A').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.findByText('B').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('X').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('X').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 

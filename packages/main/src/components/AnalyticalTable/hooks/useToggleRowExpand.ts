@@ -1,6 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 
 const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
+  const { dispatch } = instance;
   const { onRowExpandChange, isTreeTable, renderRowSubComponent } = instance.webComponentsReactProperties;
   const onClick = (e, noPropagation = true) => {
     if (noPropagation) {
@@ -13,6 +14,12 @@ const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
       column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
     }
 
+    if (row.isExpanded) {
+      dispatch({
+        type: 'ROW_COLLAPSED_FLAG',
+        payload: true
+      });
+    }
     onRowExpandChange(enrichEventWithDetails(e, { row, column }));
   };
   const onKeyDown = (e) => {
