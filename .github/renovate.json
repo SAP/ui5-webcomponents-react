@@ -10,7 +10,7 @@
   "automerge": true,
   "platformAutomerge": true,
   "prHourlyLimit": 5,
-  "labels": ["dependencies"],
+  "addLabels": ["dependencies"],
   "packageRules": [
     {
       "groupName": "UI5 Web Components",
