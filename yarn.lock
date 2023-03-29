@@ -1527,8 +1527,8 @@ __metadata:
   linkType: hard
 
 "@cypress/code-coverage@npm:^3.10.0":
-  version: 3.10.0
-  resolution: "@cypress/code-coverage@npm:3.10.0"
+  version: 3.10.1
+  resolution: "@cypress/code-coverage@npm:3.10.1"
   dependencies:
     "@cypress/webpack-preprocessor": ^5.11.0
     chalk: 4.1.2
@@ -1537,11 +1537,11 @@ __metadata:
     execa: 4.1.0
     globby: 11.0.4
     istanbul-lib-coverage: 3.0.0
-    js-yaml: 3.14.1
+    js-yaml: 4.1.0
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: e82d0ea1bb4d8eaf802fd0d916f5c72b5590ff0b96f31b2606881628d11d84c49e8299639cb54a2aa9b3ff12f3903d8558a428b250988a9b7e07a1fc42747675
+  checksum: ab67b0daa8b90385b096b94daef66a9e8c3eb6363d8fea2c0cefdfa2059bc988003806c2b659e606eb34d9bbad4ee7d83c3e150163cdeb819e4e9befadcbf879
   languageName: node
   linkType: hard
 
@@ -13169,18 +13169,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:3.14.1, js-yaml@npm:^3.10.0, js-yaml@npm:^3.13.1, js-yaml@npm:^3.9.0":
-  version: 3.14.1
-  resolution: "js-yaml@npm:3.14.1"
-  dependencies:
-    argparse: ^1.0.7
-    esprima: ^4.0.0
-  bin:
-    js-yaml: bin/js-yaml.js
-  checksum: bef146085f472d44dee30ec34e5cf36bf89164f5d585435a3d3da89e52622dff0b188a580e4ad091c3341889e14cb88cac6e4deb16dc5b1e9623bb0601fc255c
-  languageName: node
-  linkType: hard
-
 "js-yaml@npm:4.1.0, js-yaml@npm:^4.1.0":
   version: 4.1.0
   resolution: "js-yaml@npm:4.1.0"
@@ -13189,6 +13177,18 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: c7830dfd456c3ef2c6e355cc5a92e6700ceafa1d14bba54497b34a99f0376cecbb3e9ac14d3e5849b426d5a5140709a66237a8c991c675431271c4ce5504151a
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^3.10.0, js-yaml@npm:^3.13.1, js-yaml@npm:^3.9.0":
+  version: 3.14.1
+  resolution: "js-yaml@npm:3.14.1"
+  dependencies:
+    argparse: ^1.0.7
+    esprima: ^4.0.0
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: bef146085f472d44dee30ec34e5cf36bf89164f5d585435a3d3da89e52622dff0b188a580e4ad091c3341889e14cb88cac6e4deb16dc5b1e9623bb0601fc255c
   languageName: node
   linkType: hard
 
