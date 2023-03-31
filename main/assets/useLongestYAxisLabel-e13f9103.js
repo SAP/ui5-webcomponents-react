@@ -1,0 +1,2 @@
+import{r as i}from"./index-f1f749bf.js";import{g as l,a as n}from"./defaults-be1cbaaf.js";import{b as p}from"./useTooltipFormatter-606bb37c.js";const u=(r,t)=>i.useMemo(()=>{let a=0;const e=t[0];if(r instanceof Array&&e){const o=s=>t.map(m=>e.formatter(l(s,m.accessor,"")));a=Math.max(...r.map(o).flat().map(p)),a+=8}return a=Math.min(a,n),[a,{marginLeft:a,maxWidth:`calc(100% - ${a+10}px)`}]},[r,t]);export{u};
+//# sourceMappingURL=useLongestYAxisLabel-e13f9103.js.map
