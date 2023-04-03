@@ -1761,8 +1761,8 @@ __metadata:
   linkType: hard
 
 "@cypress/code-coverage@npm:^3.10.0":
-  version: 3.10.1
-  resolution: "@cypress/code-coverage@npm:3.10.1"
+  version: 3.10.3
+  resolution: "@cypress/code-coverage@npm:3.10.3"
   dependencies:
     "@cypress/webpack-preprocessor": ^5.11.0
     chalk: 4.1.2
@@ -1775,7 +1775,7 @@ __metadata:
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: ab67b0daa8b90385b096b94daef66a9e8c3eb6363d8fea2c0cefdfa2059bc988003806c2b659e606eb34d9bbad4ee7d83c3e150163cdeb819e4e9befadcbf879
+  checksum: 8c494984d55345f541be644947f457ee612bcae54f9c8943b5cb11662ea04356b7d24e18eb685feb4187822b7b017d15ed3bda3c679853804f054b8737098d4c
   languageName: node
   linkType: hard
 
