@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.12.0...v1.13.0) (2023-04-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** don't scroll to top if expandable row is collapsed ([#4420](https://github.com/SAP/ui5-webcomponents-react/issues/4420)) ([d6e79e5](https://github.com/SAP/ui5-webcomponents-react/commit/d6e79e5f3760d49902cbe837e02cda073aeded4a)), closes [#4409](https://github.com/SAP/ui5-webcomponents-react/issues/4409)
+- **DynamicPage & ObjectPage:** prevent empty area on top of content when scrolling ([#4429](https://github.com/SAP/ui5-webcomponents-react/issues/4429)) ([3b25452](https://github.com/SAP/ui5-webcomponents-react/commit/3b254523f5fa5735bfec65c369d48d5d77da1876)), closes [#4364](https://github.com/SAP/ui5-webcomponents-react/issues/4364)
+- **FormItem:** allow `id`s on `children` ([#4412](https://github.com/SAP/ui5-webcomponents-react/issues/4412)) ([17eed8f](https://github.com/SAP/ui5-webcomponents-react/commit/17eed8f003663101df6daa9e2454566fd3d39486))
+
+### Features
+
+- update `@ui5/webcomponents` to ~1.12.0 ([#4455](https://github.com/SAP/ui5-webcomponents-react/issues/4455)) ([ec02b8e](https://github.com/SAP/ui5-webcomponents-react/commit/ec02b8efde3fc61682dd4757433e68d66159e31e))
+
 # [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
 
 ### Bug Fixes
