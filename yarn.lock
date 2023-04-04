@@ -4737,12 +4737,12 @@ __metadata:
   linkType: hard
 
 "@types/openui5@npm:^1.109.0":
-  version: 1.110.0
-  resolution: "@types/openui5@npm:1.110.0"
+  version: 1.112.0
+  resolution: "@types/openui5@npm:1.112.0"
   dependencies:
     "@types/jquery": "*"
     "@types/qunit": "*"
-  checksum: caa667017e730657db4d9af7a8f379d71f9624ba39c9352c0f7db20a9184d53510eef9696a8f5b809671b3ef3d06d8dd608caeff48bb4ae6ec3afd388846f221
+  checksum: 4958cb9ede04fe62996397e1c43ff7efd5829097398b1a114474cb5aa4eb0f7a3804f206d17034c86e99fc9f66b3a3e05e73280b3d9f8715bdbc64dfad3b6249
   languageName: node
   linkType: hard
 
