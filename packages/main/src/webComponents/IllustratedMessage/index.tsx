@@ -31,6 +31,7 @@ interface IllustratedMessageAttributes {
    * *   `FilterTable`
    * *   `GroupTable`
    * *   `NoActivities`
+   * *   `NoColumnsSet`
    * *   `NoData`
    * *   `NoEntries`
    * *   `NoFilterResults`
@@ -68,6 +69,7 @@ interface IllustratedMessageAttributes {
    * *   `SuccessCheckMark`
    * *   `SuccessHighFive`
    * *   `SuccessScreen`
+   * *   `Survey`
    * *   `Tent`
    * *   `UnableToLoad`
    * *   `UnableToLoadImage`

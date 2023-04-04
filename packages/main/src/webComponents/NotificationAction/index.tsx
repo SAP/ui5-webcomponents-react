@@ -29,7 +29,7 @@ interface NotificationActionAttributes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -48,7 +48,7 @@ export interface NotificationActionPropTypes extends NotificationActionAttribute
 }
 
 /**
- * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
+ * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListGroupItem` items
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
