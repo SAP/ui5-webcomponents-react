@@ -1,2 +1,0 @@
-const c=e=>(u,f)=>{const d=u.constructor;Object.prototype.hasOwnProperty.call(d,"metadata")||(d.metadata={});const r=d.metadata;r.slots||(r.slots={});const t=r.slots;if(e!=null&&e.default&&t.default)throw new Error("Only one slot can be the default slot.");const n=e!=null&&e.default?"default":f;e=e||{type:HTMLElement},e.type||(e.type=HTMLElement),t[n]||(t[n]=e),e.default&&(delete t.default.default,t.default.propertyName=f),d.metadata.managedSlots=!0};export{c as s};
-//# sourceMappingURL=slot-634e3e91.js.map
