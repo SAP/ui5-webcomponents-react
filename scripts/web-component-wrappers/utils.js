@@ -2,6 +2,7 @@ import dedent from 'dedent';
 import { ESLint } from 'eslint';
 import fs from 'fs';
 import path from 'path';
+import prettier from 'prettier';
 import TurndownService from 'turndown';
 import PATHS from '../../config/paths.js';
 import prettierConfigRaw from '../../prettier.config.cjs';
@@ -415,5 +416,5 @@ export const formatDemoDescription = (description, componentSpec, replaceHeading
     );
   }
 
-  return formattedDescription;
+  return prettier.format(formattedDescription, { ...prettierConfigRaw, parser: 'markdown' });
 };
