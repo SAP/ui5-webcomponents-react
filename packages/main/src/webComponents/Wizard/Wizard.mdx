@@ -1,0 +1,31 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Wizard.stories';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import WizardDescription from './WizardDescription.md?raw';
+import WizardStepDescription from '../WizardStep/WizardStepDescription.md?raw';
+import { WizardStep } from '../WizardStep';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.12.0" />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{WizardDescription}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## WizardStep
+
+<Markdown>{WizardStepDescription}</Markdown>
+
+<ArgTypesWithNote of={WizardStep} />
+
+<Footer />

@@ -13,7 +13,8 @@ import {
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
-  OverflowToolbarToggleButton
+  OverflowToolbarToggleButton,
+  ToolbarPropTypes
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
@@ -461,6 +462,50 @@ describe('Toolbar', () => {
       cy.get('[ui5-popover]').findByText('Edit2').should('be.visible').should('have.attr', 'has-icon');
       cy.get('[ui5-popover]').findByText('Edit2').should('not.have.attr', 'icon-only');
     });
+  });
+
+  it('recalc on children change', () => {
+    const TestComp = (props: ToolbarPropTypes) => {
+      const [actions, setActions] = useState([]);
+      return (
+        <>
+          <button
+            onClick={() => {
+              setActions([
+                <Button key="0">Button</Button>,
+                <Button key="1">Button</Button>,
+                <Button key="2">Button</Button>,
+                <Button key="3">Button</Button>,
+                <Button key="4">Button</Button>,
+                <Button key="5">Button</Button>,
+                <Button key="6">Button</Button>,
+                <Button key="7">Button</Button>
+              ]);
+            }}
+          >
+            add
+          </button>
+          <button
+            onClick={() => {
+              setActions([]);
+            }}
+          >
+            remove
+          </button>
+          <Toolbar {...props}>{actions}</Toolbar>
+        </>
+      );
+    };
+    const overflowChange = cy.spy().as('overflowChange');
+    cy.mount(<TestComp onOverflowChange={overflowChange} style={{ width: '200px' }} />);
+
+    cy.get('[ui5-toggle-button]').should('not.exist');
+    cy.findByText('add').click();
+    cy.get('[ui5-toggle-button]').should('be.visible');
+    cy.wait(50);
+    cy.findByText('remove').click();
+    cy.get('[ui5-toggle-button]').should('not.exist');
+    cy.get('@overflowChange').should('have.been.calledOnce');
   });
 
   it('Toolbar active use outline or shadow', () => {

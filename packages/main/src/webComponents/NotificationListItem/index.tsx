@@ -13,7 +13,7 @@ interface NotificationListItemAttributes {
   /**
    * Defines if the `titleText` and `description` should wrap, they truncate by default.
    *
-   * **Note:** by default the `titleText` and `decription`, and a `ShowMore/Less` button would be displayed.
+   * **Note:** by default the `titleText` and `description`, and a `ShowMore/Less` button would be displayed.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
   /**

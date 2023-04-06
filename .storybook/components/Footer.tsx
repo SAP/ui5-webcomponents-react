@@ -10,6 +10,7 @@ import {
   WrappingType
 } from '@ui5/webcomponents-react';
 import React, { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 import classes from './Footer.module.css';
 
@@ -20,9 +21,9 @@ export const Footer = ({ style }) => {
     popoverRef.current.showAt(e.target);
   };
 
-  return (
-    <footer className={classes.footer}>
-      <div ref={footerRef} className={classes.content} style={style}>
+  return createPortal(
+    <footer className={classes.footer} style={style}>
+      <div ref={footerRef} className={classes.content}>
         <FlexBox
           justifyContent={FlexBoxJustifyContent.SpaceBetween}
           alignItems={FlexBoxAlignItems.Center}
@@ -64,6 +65,7 @@ export const Footer = ({ style }) => {
           information how GitHub processes your personal data.
         </Label>
       </Popover>
-    </footer>
+    </footer>,
+    document.getElementById('storybook-docs')
   );
 };

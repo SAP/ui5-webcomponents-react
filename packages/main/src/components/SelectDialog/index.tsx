@@ -365,6 +365,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                 />
               )}
               <Icon
+                interactive
                 name={iconSearch}
                 className={classes.inputIcon}
                 onClick={handleSearchSubmit}

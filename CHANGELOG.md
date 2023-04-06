@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.12.0...v1.13.0) (2023-04-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** don't scroll to top if expandable row is collapsed ([#4420](https://github.com/SAP/ui5-webcomponents-react/issues/4420)) ([d6e79e5](https://github.com/SAP/ui5-webcomponents-react/commit/d6e79e5f3760d49902cbe837e02cda073aeded4a)), closes [#4409](https://github.com/SAP/ui5-webcomponents-react/issues/4409)
+- **DynamicPage & ObjectPage:** prevent empty area on top of content when scrolling ([#4429](https://github.com/SAP/ui5-webcomponents-react/issues/4429)) ([3b25452](https://github.com/SAP/ui5-webcomponents-react/commit/3b254523f5fa5735bfec65c369d48d5d77da1876)), closes [#4364](https://github.com/SAP/ui5-webcomponents-react/issues/4364)
+- **FormItem:** allow `id`s on `children` ([#4412](https://github.com/SAP/ui5-webcomponents-react/issues/4412)) ([17eed8f](https://github.com/SAP/ui5-webcomponents-react/commit/17eed8f003663101df6daa9e2454566fd3d39486))
+
+### Features
+
+- update `@ui5/webcomponents` to ~1.12.0 ([#4455](https://github.com/SAP/ui5-webcomponents-react/issues/4455)) ([ec02b8e](https://github.com/SAP/ui5-webcomponents-react/commit/ec02b8efde3fc61682dd4757433e68d66159e31e))
+
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Bug Fixes
+
+- **AnalyticalTable:** always scale cols correctly with `scaleWidthMode` "Grow" ([#4362](https://github.com/SAP/ui5-webcomponents-react/issues/4362)) ([15dfb3a](https://github.com/SAP/ui5-webcomponents-react/commit/15dfb3aeb33aa6e3890938eab23db2f6f282fa45)), closes [#4348](https://github.com/SAP/ui5-webcomponents-react/issues/4348)
+- **AnalyticalTable:** announce grouped, filtered and sorted columns with screen readers ([#4392](https://github.com/SAP/ui5-webcomponents-react/issues/4392)) ([46b29cd](https://github.com/SAP/ui5-webcomponents-react/commit/46b29cdae6759561548837ae2a58d0a5c47ec88b)), closes [#4172](https://github.com/SAP/ui5-webcomponents-react/issues/4172)
+- **AnalyticalTable:** correct alignment of `Filter` ([#4360](https://github.com/SAP/ui5-webcomponents-react/issues/4360)) ([81e4bed](https://github.com/SAP/ui5-webcomponents-react/commit/81e4bed6b5d39f66390c3c97fe50d283b03a769a))
+- **cypress-commands:** point to declaration file of bundle ([#4358](https://github.com/SAP/ui5-webcomponents-react/issues/4358)) ([e73ac06](https://github.com/SAP/ui5-webcomponents-react/commit/e73ac06eb0e95b3264752592c5f5565dc4c287c1))
+- **deps:** update dependency recharts to v2.5.0 ([#4354](https://github.com/SAP/ui5-webcomponents-react/issues/4354)) ([29ec474](https://github.com/SAP/ui5-webcomponents-react/commit/29ec474648bdf0057a9c8b23e4eab0662abd86ee))
+- **FilterGroupItem:** add colon to labels ([#4378](https://github.com/SAP/ui5-webcomponents-react/issues/4378)) ([d3dc2ad](https://github.com/SAP/ui5-webcomponents-react/commit/d3dc2ad183634715c3918273f47426e2eb286677)), closes [#4234](https://github.com/SAP/ui5-webcomponents-react/issues/4234)
+- **FormItem:** add label-input relation for screen readers ([#4387](https://github.com/SAP/ui5-webcomponents-react/issues/4387)) ([3a65810](https://github.com/SAP/ui5-webcomponents-react/commit/3a658107c9121b3734447d2e314057302b494da3)), closes [#4144](https://github.com/SAP/ui5-webcomponents-react/issues/4144)
+- **MessageBox - a11y:** announce message boxes as alert dialog ([#4390](https://github.com/SAP/ui5-webcomponents-react/issues/4390)) ([340a2e2](https://github.com/SAP/ui5-webcomponents-react/commit/340a2e26791f3e567114f5205b9757c274cf07a7)), closes [#3431](https://github.com/SAP/ui5-webcomponents-react/issues/3431)
+- **SelectDialog:** make search icon clickable again ([#4371](https://github.com/SAP/ui5-webcomponents-react/issues/4371)) ([c6f9b88](https://github.com/SAP/ui5-webcomponents-react/commit/c6f9b883b3bed42e066fad1c88e38ea7bf180930))
+- **SplitterLayout:** allow `SplitterElement`s to shrink ([#4393](https://github.com/SAP/ui5-webcomponents-react/issues/4393)) ([9be1999](https://github.com/SAP/ui5-webcomponents-react/commit/9be1999af4ac1a4d6abc115e25afff77b485e6ea)), closes [#4156](https://github.com/SAP/ui5-webcomponents-react/issues/4156)
+- **Toolbar:** recalculate overflow elements on children change ([#4383](https://github.com/SAP/ui5-webcomponents-react/issues/4383)) ([67e35fb](https://github.com/SAP/ui5-webcomponents-react/commit/67e35fbc04dbf7709e8e9bf32cb7ee15e410a889)), closes [#4357](https://github.com/SAP/ui5-webcomponents-react/issues/4357)
+
+### Features
+
+- **DynamicPage:** enable sticky sub-headers support ([#4377](https://github.com/SAP/ui5-webcomponents-react/issues/4377)) ([8ccd2eb](https://github.com/SAP/ui5-webcomponents-react/commit/8ccd2eb27a18096ba0fecb63ed70ae4962791c28)), closes [#3989](https://github.com/SAP/ui5-webcomponents-react/issues/3989)
+- integrate `@ui5/webcomponents-cypress-commands` into cra template ([#4341](https://github.com/SAP/ui5-webcomponents-react/issues/4341)) ([e4564f1](https://github.com/SAP/ui5-webcomponents-react/commit/e4564f12c5c64a0282f466e9d3fafe800c5039d0))
+
+## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
+
+### Bug Fixes
+
+- force release for all packages ([25fd39f](https://github.com/SAP/ui5-webcomponents-react/commit/25fd39fadfe5fa005302df5c2f1882a3ca514ed3))
+
+## [1.11.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.1...v1.11.2) (2023-03-14)
+
+### Bug Fixes
+
+- force new release for `@ui5/webcomponents-react` ([6d3d2e9](https://github.com/SAP/ui5-webcomponents-react/commit/6d3d2e9ee19c1e16039d200d9b99b12163a6d9c9))
+
+## [1.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.0...v1.11.1) (2023-03-14)
+
+### Bug Fixes
+
+- **cypress-commands:** fix publish config ([#4334](https://github.com/SAP/ui5-webcomponents-react/issues/4334)) ([a23a8aa](https://github.com/SAP/ui5-webcomponents-react/commit/a23a8aaa000eaf3670e4e5a53843dae40c6cdd9c))
+
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Bug Fixes
+
+- **charts:** update peer dependencies ([#4280](https://github.com/SAP/ui5-webcomponents-react/issues/4280)) ([ce5e0d5](https://github.com/SAP/ui5-webcomponents-react/commit/ce5e0d5be758dd28a592b7698db95ff781b7543a))
+- **MessageBox:** adjust title style and level to latest Design specs ([#4291](https://github.com/SAP/ui5-webcomponents-react/issues/4291)) ([5eb79b0](https://github.com/SAP/ui5-webcomponents-react/commit/5eb79b0249156f4eb887fe9f35f57896d6cad0ab)), closes [#4290](https://github.com/SAP/ui5-webcomponents-react/issues/4290)
+- **MessageItem:** correct style for `"None"` message icon, make `type` and `children` optional (TypeScript) ([#4314](https://github.com/SAP/ui5-webcomponents-react/issues/4314)) ([3119c4e](https://github.com/SAP/ui5-webcomponents-react/commit/3119c4e880a4a23ee2fa0378e8b3e4e6e8baa2df))
+- **SplitterLayout:** use correct dimensions for vertical layout ([#4284](https://github.com/SAP/ui5-webcomponents-react/issues/4284)) ([b22d649](https://github.com/SAP/ui5-webcomponents-react/commit/b22d649c92aaa82048c181c8e74757b23247a870))
+- **Toolbar:** always respect `numberOfAlwaysVisibleItems` ([#4330](https://github.com/SAP/ui5-webcomponents-react/issues/4330)) ([7fb45b1](https://github.com/SAP/ui5-webcomponents-react/commit/7fb45b1c301ee1524ea83d3c1e427acce86e3154))
+
+### Features
+
+- adjust cra-template to use Cypress instead of Jest for testing ([#4306](https://github.com/SAP/ui5-webcomponents-react/issues/4306)) ([478f395](https://github.com/SAP/ui5-webcomponents-react/commit/478f395bf8b8df135120f1da56c94e3818bece06))
+- introduce new `@ui5/webcomponents-cypress-commands` package ([#4289](https://github.com/SAP/ui5-webcomponents-react/issues/4289)) ([41c748a](https://github.com/SAP/ui5-webcomponents-react/commit/41c748ac3d6e2d3b6c368ad3d0ab4472a4f65981))
+
 # [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
 
 ### Features

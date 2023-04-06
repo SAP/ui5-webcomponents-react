@@ -2,16 +2,16 @@
 
 ### Basic Navigation
 
-The `List` provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation:  
+The `List` provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation:
 
-*   \[UP/DOWN\] - Navigates up and down the items
-*   \[HOME\] - Navigates to first item
-*   \[END\] - Navigates to the last item
+- \[UP/DOWN\] - Navigates up and down the items
+- \[HOME\] - Navigates to first item
+- \[END\] - Navigates to the last item
 
 The user can use the following keyboard shortcuts to perform actions (such as select, delete), when the `mode` property is in use:
 
-*   \[SPACE\] - Select an item (if `type` is 'Active') when `mode` is selection
-*   \[DELETE\] - Delete an item if `mode` property is `Delete`
+- \[SPACE\] - Select an item (if `type` is 'Active') when `mode` is selection
+- \[DELETE\] - Delete an item if `mode` property is `Delete`
 
 ### Fast Navigation
 

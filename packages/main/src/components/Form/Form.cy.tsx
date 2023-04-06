@@ -1,8 +1,10 @@
+import { createPortal } from 'react-dom';
 import { InputType } from '../../enums/InputType';
-import { Input } from '../../webComponents';
+import { Input, Label } from '../../webComponents';
 import { FormGroup } from '../FormGroup';
 import { FormItem } from '../FormItem';
 import { Form } from './index';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const component = (
   <Form titleText={'Test form'}>
@@ -21,8 +23,8 @@ const component = (
       <FormItem label={'item 3'}>
         <Input data-testid="formInput2" type={InputType.Text} />
       </FormItem>
-      <FormItem label={'item 4'}>
-        <Input type={InputType.Number} />
+      <FormItem label={<Label>item 4</Label>}>
+        <Input type={InputType.Number} id="test-id" />
       </FormItem>
     </FormGroup>
   </Form>
@@ -70,5 +72,38 @@ describe('Form', () => {
     cy.findByTestId('form').should('have.prop', 'nodeName', 'DIV');
   });
 
-  // todo pass through props test
+  it('a11y labels', () => {
+    cy.mount(component);
+    for (let i = 1; i <= 3; i++) {
+      cy.findByText(`item ${i}`).should('exist').should('not.be.visible');
+      cy.findByText(`item ${i}:`).should('be.visible');
+    }
+    // custom `Label`
+    cy.findAllByText(`item 4`).eq(0).should('be.visible');
+    cy.findAllByText(`item 4`).eq(1).should('exist').should('not.be.visible');
+
+    // custom id child of FormItem
+    cy.get('#test-id').should('have.length', 1).should('be.visible');
+    cy.get('[for="test-id"]').should('have.length', 1).should('not.be.visible');
+  });
+
+  it('FilterItem: doesnt crash with portal as child', () => {
+    cy.mount(
+      <Form as={'div'} data-testid={'form'}>
+        <FormItem label="Portal">
+          {createPortal(<Input data-testid="notSupported" type={InputType.Text} />, document.body)}
+        </FormItem>
+      </Form>
+    );
+    cy.findByText('Portal:').should('be.visible');
+    cy.findByTestId('notSupported').should('not.exist');
+  });
+
+  cypressPassThroughTestsFactory(Form, {
+    children: (
+      <FormItem label="Item">
+        <Input type={InputType.Text} />
+      </FormItem>
+    )
+  });
 });

@@ -20,6 +20,7 @@ export * from './CalendarSelectionMode';
 export * from './CalendarType';
 export * from './CarouselArrowsPlacement';
 export * from './CarouselPageIndicatorStyle';
+export * from './ComboBoxFilter';
 export * from './ContentDensity';
 export * from './DeviationIndicator';
 export * from './FCLLayout';

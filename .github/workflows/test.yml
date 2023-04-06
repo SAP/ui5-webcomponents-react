@@ -9,39 +9,6 @@ on:
         required: false
 
 jobs:
-  jest:
-    name: 'Jest'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        react: [16, 17, 18]
-    env:
-      CI: true
-      CYPRESS_INSTALL_BINARY: 0
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
-      - name: install dependencies
-        run: yarn install --immutable
-
-      - name: run tests
-        run: yarn test:jest --runInBand
-        env:
-          REACTJS_VERSION: ${{ matrix.react }}
-
-      - uses: coverallsapp/github-action@v1.2.4
-        if: ${{ inputs.reportCoverage && matrix.react == 18 }}
-        with:
-          path-to-lcov: temp/jest-coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: jest
-
   cypress:
     name: Cypress
     runs-on: ubuntu-latest
@@ -64,24 +31,23 @@ jobs:
           component: true
           spec: packages/${{ matrix.spec }}
 
-      - uses: coverallsapp/github-action@v1.2.4
+      - uses: coverallsapp/github-action@v2.0.0
         if: ${{ inputs.reportCoverage }}
         with:
-          path-to-lcov: temp/cypress-coverage/lcov.info
+          file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
           flag-name: ${{ matrix.spec }}
 
   coveralls:
     if: ${{ always() && inputs.reportCoverage }}
-    needs: ['jest', 'cypress']
+    needs: ['cypress']
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls
-        uses: coverallsapp/github-action@v1.2.4
+        uses: coverallsapp/github-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
-          carryforward: "jest,base,charts,cypress-commands,main/src/components"
-
+          carryforward: 'base,charts,cypress-commands,main/src/components'

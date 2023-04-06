@@ -95,6 +95,7 @@ const meta = {
         Header: 'Actions',
         accessor: '.',
         width: 100,
+        minWidth: 100,
         disableResizing: true,
         disableGroupBy: true,
         disableFilters: true,
@@ -412,6 +413,7 @@ export const Subcomponents: Story = {
     };
     return (
       <AnalyticalTable
+        {...args}
         data={args.data}
         columns={args.columns}
         renderRowSubComponent={renderRowSubComponent}

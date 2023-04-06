@@ -1,8 +1,10 @@
 'use client';
 
-import React, { cloneElement, CSSProperties, FC, isValidElement, ReactElement, ReactNode } from 'react';
+import { useIsomorphicId } from '@ui5/webcomponents-react-base';
+import React, { cloneElement, CSSProperties, Fragment, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums';
+import { flattenFragments } from '../../internal/utils';
 import { Label, LabelPropTypes } from '../../webComponents/Label';
 import { useFormContext } from '../Form/FormContext';
 
@@ -101,14 +103,25 @@ function FormItemLabel({ label, style }: { label: ReactNode; style?: CSSProperti
   return null;
 }
 
+const getContentForHtmlLabel = (label: ReactNode) => {
+  if (typeof label === 'string') {
+    return label;
+  } else if (isValidElement(label) && typeof label.props?.children === 'string') {
+    return label.props.children;
+  } else {
+    return '';
+  }
+};
+
 /**
  * A `FormItem` represents a row in a `Form`. A `FormItem` is a combination of one label and a component associated to this label.
  *
  * __Note__: The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
-const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
+const FormItem = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
   const { label, children, columnIndex, rowIndex } = props as InternalProps;
+  const uniqueId = useIsomorphicId();
 
   const classes = useStyles();
   const { labelSpan } = useFormContext();
@@ -119,6 +132,7 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
 
   const calculatedGridRowStart = labelSpan === 12 ? (rowIndex ?? 0) + 1 : rowIndex ?? 0;
+
   return (
     <>
       <FormItemLabel
@@ -138,7 +152,23 @@ const FormItem: FC<FormItemPropTypes> = (props: FormItemPropTypes) => {
         }}
         data-label-span={labelSpan}
       >
-        {children}
+        {flattenFragments(children).map((child, index) => {
+          // @ts-expect-error: type can't be string because of `isValidElement`
+          if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
+            const content = getContentForHtmlLabel(label);
+            const childId = child?.props?.id;
+            return (
+              <Fragment key={`${content}-${uniqueId}`}>
+                {/*@ts-expect-error: child is ReactElement*/}
+                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
+                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
+                  {content}
+                </label>
+              </Fragment>
+            );
+          }
+          return undefined;
+        })}
       </div>
     </>
   );

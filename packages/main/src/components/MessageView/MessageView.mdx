@@ -1,0 +1,110 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './MessageView.stories';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { MessageItem } from './MessageItem';
+import { MessageViewButton } from '../MessageViewButton';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## Methods
+
+This component exposes public methods. You can invoke them directly on the instance of the component, e.g. by using React Refs.
+
+| Name               | Parameters | Description                                                                 |
+| ------------------ | ---------- | --------------------------------------------------------------------------- |
+| **`navigateBack`** | —          | Navigates back to the list view if you are in the details view of a message |
+
+## Usage Notes
+
+The `MessageView` can be used in several scenarios, but most likely in Dialogs or Popovers.
+
+If used in a Popover it is recommended that the `MessageViewButton` is used as an opener.
+The `type` of the button should always reflect the highest severity (Error -> Warning -> Success -> Information).
+
+If the `MessageView` is used in a standalone way, you can set the prop `showDetailsPageHeader` to `true`.
+This will add a bar to the details page where a back button is contained.
+
+When used in a `Dialog` or a `Popover`, we recommend not setting the `showDetailsPageHeader` prop but rather listen
+to the `onItemSelect` event and add a back button to your Dialog or Popover header and use the `navigateBack()` method
+to get back to the list view.
+
+## More Examples
+
+### MessageView in a Dialog
+
+<Canvas of={ComponentStories.MessageViewInDialog} />
+
+Sample Code: _(Button and Dialog opening are omitted here)_
+
+```jsx
+function MyComponent() {
+  const messageViewRef = useRef(null);
+  const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
+  return (
+    <Dialog
+      className="modal-without-padding"
+      header={
+        <Bar
+          startContent={
+            <FlexBox alignItems={FlexBoxAlignItems.Center}>
+              {isOnDetailsPage && (
+                <Button
+                  icon="slim-arrow-left"
+                  design={ButtonDesign.Transparent}
+                  onClick={() => {
+                    setIsOnDetailsPage(false);
+                    messageViewRef.current.navigateBack();
+                  }}
+                  style={{ marginInline: '0 0.5rem' }}
+                />
+              )}
+              <Title level={TitleLevel.H4}>Messages</Title>
+            </FlexBox>
+          }
+        />
+      }
+    >
+      <MessageView
+        ref={messageViewRef}
+        showDetailsPageHeader={false}
+        onItemSelect={() => {
+          setIsOnDetailsPage(true);
+        }}
+      >
+        {/* children */}
+      </MessageView>
+    </Dialog>
+  );
+}
+```
+
+### MessageView in Popover with MessageViewButton
+
+<Canvas of={ComponentStories.WithMessageViewButton} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## MessageItem
+
+<Description of={MessageItem} />
+
+<ArgTypesWithNote of={MessageItem} />
+
+## MessageViewButton
+
+<Description of={MessageViewButton} />
+
+<ArgTypesWithNote of={MessageViewButton} />
+
+<Footer />

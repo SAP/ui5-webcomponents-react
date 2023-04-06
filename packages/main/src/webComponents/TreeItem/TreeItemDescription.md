@@ -1,3 +1,5 @@
+**Since:** 0.10.0
+
 The `TreeItem` represents a node in a tree structure, shown as a `List`.  
 This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
 

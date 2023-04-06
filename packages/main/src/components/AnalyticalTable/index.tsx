@@ -55,6 +55,8 @@ import {
   COLLAPSE_PRESS_SPACE,
   EXPAND_NODE,
   EXPAND_PRESS_SPACE,
+  FILTERED,
+  GROUPED,
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
@@ -418,7 +420,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * - **Default**: The available space of the table is distributed evenly for columns without fixed width. If the minimum width of all columns is reached, horizontal scrolling will be enabled.
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
-   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property.
+   * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property. This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    *
    * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
@@ -446,7 +448,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   infiniteScrollThreshold?: number;
   /**
-   * The current global filter value.
+   * Defines the value that should be filtered on across all rows.
+   *
+   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://react-table-v7.tanstack.com/docs/api/useGlobalFilter).
    */
   globalFilterValue?: string;
   /**
@@ -671,7 +675,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
           unselectA11yText: i18nBundle.getText(UNSELECT_PRESS_SPACE),
           expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
-          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE)
+          collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE),
+          filteredA11yText: i18nBundle.getText(FILTERED),
+          groupedA11yText: i18nBundle.getText(GROUPED)
         },
         tagNamesWhichShouldNotSelectARow,
         tableRef,
@@ -1091,6 +1097,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             )}
             {rawData?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
+                rowCollapsedFlag={tableState.rowCollapsed}
+                dispatch={dispatch}
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={totalColumnsWidth}
                 parentRef={parentRef}

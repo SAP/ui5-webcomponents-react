@@ -24,7 +24,8 @@ export function VersionTable() {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(versionInfo).map(([wcVersion, wcrVersion]) => {
+          {Object.entries(versionInfo).map(([wcVersion, wcrVersion], index, arr) => {
+            const lastEntry = index + 1 === arr.length;
             if (wcrVersion.startsWith('0')) {
               return null;
             }
@@ -43,7 +44,10 @@ export function VersionTable() {
 
             return (
               <tr key={wcrVersion}>
-                <td>{wcrVersions.join(', ')}</td>
+                <td>
+                  {lastEntry ? '>= ' : ''}
+                  {wcrVersions.join(', ')}
+                </td>
                 <td>~{wcVersion}</td>
               </tr>
             );

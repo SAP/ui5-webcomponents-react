@@ -1,0 +1,50 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import '@ui5/webcomponents-icons/dist/employee.js';
+import { ComboBoxGroupItem } from '../ComboBoxGroupItem';
+import ComboBoxGroupItemDescription from '../ComboBoxGroupItem/ComboBoxGroupItemDescription.md?raw';
+import { ComboBoxItem } from '../ComboBoxItem';
+import ComboBoxItemDescription from '../ComboBoxItem/ComboBoxItemDescription.md?raw';
+import * as ComponentStories from './ComboBox.stories';
+import Description from './ComboBoxDescription.md?raw';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.9.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+# More Examples
+
+<br />
+
+## Filter types
+
+All available filter types controlled by the `filter` prop.
+
+<Canvas of={ComponentStories.FilterTypes} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ComboBoxItem
+
+<ArgTypesWithNote hideHTMLPropsNote of={ComboBoxItem} />
+<Markdown>{ComboBoxItemDescription}</Markdown>
+
+## ComboBoxGroupItem
+
+<ArgTypesWithNote hideHTMLPropsNote of={ComboBoxGroupItem} />
+<Markdown>{ComboBoxGroupItemDescription}</Markdown>
+
+<Footer />

@@ -99,11 +99,11 @@ export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonPr
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
+  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, { value: string; valid: boolean }>) => void;
   /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
+  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, { value: string; valid: boolean }>) => void;
 }
 
 /**

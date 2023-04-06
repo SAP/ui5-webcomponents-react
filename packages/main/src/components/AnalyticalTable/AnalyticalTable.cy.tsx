@@ -1586,6 +1586,112 @@ describe('AnalyticalTable', () => {
     cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
   });
 
+  it('a11y: grouped, filtered, sorted', () => {
+    cy.mount(<AnalyticalTable columns={columns} data={data} groupable filterable sortable />);
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'ascending');
+    cy.findByText('Name').click();
+    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('not.have.attr', 'aria-sort');
+    cy.findByText('Name').click();
+    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending');
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('A{enter}');
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered');
+
+    cy.findByText('Name').click();
+    cy.findByText('Group').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered Grouped');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
+      'have.attr',
+      'aria-label',
+      'Grouped, To expand the row, press the spacebar'
+    );
+    cy.get('[name="navigation-right-arrow"]').click();
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
+      'have.attr',
+      'aria-label',
+      'Grouped, To collapse the row, press the spacebar'
+    );
+    cy.findByText('Name').click();
+    cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('not.have.attr', 'aria-label');
+    cy.get('[data-column-id="name"]')
+      .should('have.attr', 'aria-sort', 'descending')
+      .and('have.attr', 'aria-label', 'Filtered');
+
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('not.have.attr', 'aria-label');
+  });
+
+  it("Expandable: don't scroll when expanded/collapsed", () => {
+    cy.mount(<AnalyticalTable data={[...dataTree, ...dataTree]} columns={columns} isTreeTable visibleRows={5} />);
+    cy.findAllByText('Katy Bradshaw').eq(1).trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('Carol Perez').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').should('not.equal', 0);
+    cy.findByText('Carol Perez').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+
+    cy.mount(<AnalyticalTable data={[...data, ...data]} columns={columns} visibleRows={5} groupable />);
+    cy.findByText('Name').click();
+    cy.findByText('Group').click();
+    cy.findByText('A (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.findByText('B (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('C (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('C (2)').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+
+    const renderRowSubComponent = () => {
+      return (
+        <div style={{ height: '80px' }} title="subcomponent">
+          SubComponent
+        </div>
+      );
+    };
+    cy.mount(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />);
+    cy.findByText('A').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.findByText('B').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('X').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.findByText('X').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 

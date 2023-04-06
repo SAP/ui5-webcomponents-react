@@ -134,7 +134,14 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Getting Started', 'Change Log', 'Migration Guide', 'Knowledge Base']
+        order: [
+          'Getting Started',
+          'Change Log',
+          'Migration Guide',
+          'Knowledge Base',
+          'Testing with Cypress',
+          ['Setup', 'Commands', 'Queries']
+        ]
       }
     },
     chromatic: { pauseAnimationAtEnd: true }

@@ -21,6 +21,7 @@ import {
   getDomRefMethods,
   getDomRefObjects
 } from '../../../scripts/web-component-wrappers/utils.js';
+import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -600,8 +601,7 @@ allWebComponents
       return [mainDescription, rest.join('<h3>')];
     };
 
-    const [mainDescription, description = ''] = formatDescription();
-
+    let [mainDescription, description = ''] = formatDescription();
     if (EXCLUDE_LIST.includes(componentSpec.module)) {
       console.warn(
         `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
@@ -656,6 +656,9 @@ allWebComponents
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
+        if (componentSpec.since) {
+          mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
+        }
         const subComponentDescription = `${formatDemoDescription(
           mainDescription,
           componentSpec,

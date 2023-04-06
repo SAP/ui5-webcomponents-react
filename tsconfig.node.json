@@ -7,5 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx"
   },
-  "include": ["vite.config.ts", ".storybook", "packages/**/*.stories.tsx"]
+  "include": [
+    "vite.config.ts",
+    ".storybook",
+    "packages/**/*.stories.tsx",
+    "packages/cypress-commands/CommandsAndQueries.tsx"
+  ]
 }

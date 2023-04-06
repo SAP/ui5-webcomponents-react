@@ -59,7 +59,7 @@ export interface NotificationListGroupItemDomRef extends NotificationListGroupIt
 
 export interface NotificationListGroupItemPropTypes extends NotificationListGroupItemAttributes, CommonProps {
   /**
-   * Defines the items of the `NotificationListItemBase`, usually `NotificationListItem` items.
+   * Defines the items of the `NotificationListGroupItem`, usually `NotificationListItem` items.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -75,7 +75,7 @@ export interface NotificationListGroupItemPropTypes extends NotificationListGrou
    */
   actions?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
-   * Fired when the `NotificationListItemBase` is expanded/collapsed by user interaction.
+   * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
    */
   onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
   /**

@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { BarDesign, ButtonDesign, PageBackgroundDesign } from '../../enums';
-import { Bar, Button, Label } from '../index';
-import { Page } from './index';
+import { BarDesign, ButtonDesign, PageBackgroundDesign } from '../../enums/index.js';
+import { Bar, Button, Label } from '../index.js';
+import { Page } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / Page',

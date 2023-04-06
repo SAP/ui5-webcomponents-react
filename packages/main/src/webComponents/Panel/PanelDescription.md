@@ -1,7 +1,7 @@
 ## Guidelines:
 
-*   Nesting two or more panels is not recommended.
-*   Do not stack too many panels on one page.
+- Nesting two or more panels is not recommended.
+- Do not stack too many panels on one page.
 
 ## Structure
 
@@ -13,19 +13,19 @@ The content area can contain an arbitrary set of controls.
 
 ## Responsive Behavior
 
-*   If the width of the panel is set to 100% (default), the panel and its children are resized responsively, depending on its parent container.
-*   If the panel has a fixed height, it will take up the space even if the panel is collapsed.
-*   When the panel is expandable (the `fixed` property is set to `false`), an arrow icon (pointing to the right) appears in front of the header.
-*   When the animation is activated, expand/collapse uses a smooth animation to open or close the content area.
-*   When the panel expands/collapses, the arrow icon rotates 90 degrees clockwise/counter-clockwise.
+- If the width of the panel is set to 100% (default), the panel and its children are resized responsively, depending on its parent container.
+- If the panel has a fixed height, it will take up the space even if the panel is collapsed.
+- When the panel is expandable (the `fixed` property is set to `false`), an arrow icon (pointing to the right) appears in front of the header.
+- When the animation is activated, expand/collapse uses a smooth animation to open or close the content area.
+- When the panel expands/collapses, the arrow icon rotates 90 degrees clockwise/counter-clockwise.
 
 ## CSS Shadow Parts
 
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
 The `Panel` exposes the following CSS Shadow Parts:
 
-*   header - Used to style the wrapper of the header
-*   content - Used to style the wrapper of the content
+- header - Used to style the wrapper of the header
+- content - Used to style the wrapper of the content
 
 ## Keyboard Handling
 

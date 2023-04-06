@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Bug Fixes
+
+- **AnalyticalTable:** always scale cols correctly with `scaleWidthMode` "Grow" ([#4362](https://github.com/SAP/ui5-webcomponents-react/issues/4362)) ([15dfb3a](https://github.com/SAP/ui5-webcomponents-react/commit/15dfb3aeb33aa6e3890938eab23db2f6f282fa45)), closes [#4348](https://github.com/SAP/ui5-webcomponents-react/issues/4348)
+- **deps:** update dependency recharts to v2.5.0 ([#4354](https://github.com/SAP/ui5-webcomponents-react/issues/4354)) ([29ec474](https://github.com/SAP/ui5-webcomponents-react/commit/29ec474648bdf0057a9c8b23e4eab0662abd86ee))
+
+## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
+
+### Bug Fixes
+
+- force release for all packages ([25fd39f](https://github.com/SAP/ui5-webcomponents-react/commit/25fd39fadfe5fa005302df5c2f1882a3ca514ed3))
+
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Bug Fixes
+
+- **charts:** update peer dependencies ([#4280](https://github.com/SAP/ui5-webcomponents-react/issues/4280)) ([ce5e0d5](https://github.com/SAP/ui5-webcomponents-react/commit/ce5e0d5be758dd28a592b7698db95ff781b7543a))
+
 # [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
 
 ### Features

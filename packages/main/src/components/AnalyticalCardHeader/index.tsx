@@ -89,6 +89,11 @@ const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
   [DeviationIndicator.Down, NUMERICCONTENT_DEVIATION_DOWN]
 ]);
 
+/**
+ * The `AnalyticalCardHeader` component serves as layout for the header prop of the `AnalyticalCard`.
+ *
+ * It should only be used as header for the `AnalyticalCard` component.
+ */
 export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHeaderPropTypes>((props, ref) => {
   const {
     titleText,

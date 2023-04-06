@@ -107,25 +107,6 @@ overrides:
       '@typescript-eslint/no-namespace': 'off'
 
   - files:
-      - '*.test.tsx'
-      - '*.test.ts'
-    parserOptions:
-      project:
-        - './tsconfig.test.json'
-        - './packages/*/tsconfig.json'
-    plugins:
-      - no-only-tests
-    rules:
-      '@typescript-eslint/no-empty-function': 'off'
-      'react/react-in-jsx-scope': 'off'
-      'import/order': 'warn'
-      'import/no-unresolved': 'off'
-      'react/no-unescaped-entities': 'off'
-      '@typescript-eslint/unbound-method': 'warn'
-      'react/display-name': 'off'
-      no-only-tests/no-only-tests: 'error'
-
-  - files:
       - '*.cy.ts'
       - '*.cy.tsx'
     plugins:

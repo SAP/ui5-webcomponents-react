@@ -14,7 +14,7 @@ interface ProductSwitchItemAttributes {
    *
    * ProductSwitchItem icon="palette"
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -71,9 +71,5 @@ const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSw
 );
 
 ProductSwitchItem.displayName = 'ProductSwitchItem';
-
-ProductSwitchItem.defaultProps = {
-  target: '_self'
-};
 
 export { ProductSwitchItem };
