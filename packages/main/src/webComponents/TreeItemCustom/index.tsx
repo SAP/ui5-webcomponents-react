@@ -72,7 +72,7 @@ export interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRe
   toggle: () => void;
 }
 
-export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, CommonProps {
+export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Omit<CommonProps, 'content'> {
   /**
    * Defines the content of the `TreeItem`.
    *

@@ -418,3 +418,12 @@ export const formatDemoDescription = (description, componentSpec, replaceHeading
 
   return prettier.format(formattedDescription, { ...prettierConfigRaw, parser: 'markdown' });
 };
+
+export function getCommonPropsToBeOmitted(moduleName) {
+  switch (moduleName) {
+    case 'TreeItemCustom':
+      return ["'content'"];
+    default:
+      return [];
+  }
+}
