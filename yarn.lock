@@ -21879,8 +21879,8 @@ __metadata:
   linkType: hard
 
 "vite-tsconfig-paths@npm:^4.0.5":
-  version: 4.0.9
-  resolution: "vite-tsconfig-paths@npm:4.0.9"
+  version: 4.1.0
+  resolution: "vite-tsconfig-paths@npm:4.1.0"
   dependencies:
     debug: ^4.1.1
     globrex: ^0.1.2
@@ -21890,7 +21890,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: a98815387aca78152cefaa6fbcab45a632ec50877ec697db3be018beb61ced196d3a8f4f6b22e7964882778d45ae497e0ec44e36e3dff12f12239805335453fc
+  checksum: ee41bf4223538b094e721ae4c6dcd153689d5c8206624f19ca42bc5f1f0af57b5ef329ac2e2b68e527c63c574ffb2fbf360e7e6f75210c4a16840e0b85d6eea3
   languageName: node
   linkType: hard
 
