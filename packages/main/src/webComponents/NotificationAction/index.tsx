@@ -48,7 +48,7 @@ export interface NotificationActionPropTypes extends NotificationActionAttribute
 }
 
 /**
- * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListItemBase` items
+ * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListGroupItem` items
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
