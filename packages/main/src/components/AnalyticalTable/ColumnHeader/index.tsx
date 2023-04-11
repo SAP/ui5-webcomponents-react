@@ -41,6 +41,7 @@ export interface ColumnHeaderProps {
   children: ReactNode | ReactNode[];
   portalContainer: Element;
   scaleXFactor?: number;
+  columnId?: string;
 
   //getHeaderProps()
   id: string;
@@ -100,6 +101,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     id,
     children,
     column,
+    columnId,
     className,
     style,
     onSort,
@@ -238,7 +240,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDragStart={onDragStart}
         onDrop={onDrop}
         onDragEnd={onDragEnd}
-        data-column-id={id}
+        data-column-id={columnId}
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
         onKeyUp={handleHeaderCellKeyUp}

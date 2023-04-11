@@ -1084,6 +1084,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     portalContainer={portalContainer}
                     columnVirtualizer={columnVirtualizer}
                     scaleXFactor={scaleXFactor}
+                    uniqueId={uniqueId}
                   />
                 )
               );
