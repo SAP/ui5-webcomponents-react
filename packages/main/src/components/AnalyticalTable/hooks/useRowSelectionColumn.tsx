@@ -155,7 +155,6 @@ const columns = (currentColumns, { instance }) => {
   return [
     {
       id: '__ui5wcr__internal_selection_column',
-      accessor: '__ui5wcr__internal_selection_column',
       disableFilters: true,
       disableSortBy: true,
       disableGroupBy: true,

@@ -541,7 +541,7 @@ describe('AnalyticalTable', () => {
     );
 
     // select all
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
 
     // expand
     cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
@@ -555,11 +555,15 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
 
     // deselect all
-    cy.get('#__ui5wcr__internal_selection_column').click();
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
 
     // select leaf row
@@ -569,11 +573,15 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
 
     // deselect all
-    cy.get('#__ui5wcr__internal_selection_column').click();
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
 
     // select row with subRows
@@ -587,7 +595,11 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
   });
 
   it('useIndeterminateRowSelection', () => {
@@ -602,7 +614,7 @@ describe('AnalyticalTable', () => {
       />
     );
     // select all
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
 
     // expand
     cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
@@ -616,11 +628,15 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
 
     // deselect all
-    cy.get('#__ui5wcr__internal_selection_column').click();
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 2);
 
     // select leaf row
@@ -630,11 +646,15 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
 
     // deselect all
-    cy.get('#__ui5wcr__internal_selection_column').click();
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 4);
 
     // select row with subRows
@@ -648,7 +668,11 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('have.attr', 'aria-selected', 'false');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
-    cy.get('#__ui5wcr__internal_selection_column [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
+      'have.attr',
+      'indeterminate',
+      'true'
+    );
   });
 
   it('Grow Mode: maxWidth', () => {
@@ -681,10 +705,10 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<TableComp data={data} />);
-    cy.get('#name').invoke('outerWidth').should('equal', 700);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 700);
 
     cy.findByText('Custom maxWidth').click();
-    cy.get('#name').invoke('outerWidth').should('equal', 5008);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 5008);
   });
 
   it('Column Scaling: programatically change cols', () => {
@@ -755,16 +779,16 @@ describe('AnalyticalTable', () => {
       cy.mount(<TestComp data={data} {...item.props} />);
 
       cy.findByText('Both').click();
-      cy.get('#name').invoke('outerWidth').should('equal', item.bothWidth);
-      cy.get('#age').invoke('outerWidth').should('equal', item.bothWidth);
+      cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', item.bothWidth);
+      cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', item.bothWidth);
 
       cy.findByText('NameCol').click();
-      cy.get('#name').invoke('outerWidth').should('equal', item.onlyNameWidth);
-      cy.get('#age').should('not.exist', { timeout: 100 });
+      cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', item.onlyNameWidth);
+      cy.get('[data-column-id="age"]').should('not.exist', { timeout: 100 });
 
       cy.findByText('AgeCol').click();
-      cy.get('#age').invoke('outerWidth').should('equal', item.onlyAgeWidth);
-      cy.get('#name').should('not.exist', { timeout: 100 });
+      cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', item.onlyAgeWidth);
+      cy.get('[data-column-id="name"]').should('not.exist', { timeout: 100 });
     });
   });
 
@@ -803,15 +827,22 @@ describe('AnalyticalTable', () => {
     cy.wait(200);
 
     cy.findByText('set clientWidth').click();
-    ['#name', '#age', '#friend\\.name', '#friend\\.age'].forEach((col) => {
+    [
+      '[data-column-id="name"]',
+      '[data-column-id="age"]',
+      '[data-column-id="friend\\.name"]',
+      '[data-column-id="friend\\.age"]'
+    ].forEach((col) => {
       cy.get(col).invoke('outerWidth').should('equal', 300);
     });
 
     cy.findByText('hide age col').click();
-    ['#name', '#friend\\.name', '#friend\\.age'].forEach((col) => {
-      cy.get(col).invoke('outerWidth').should('equal', 400);
-    });
-    cy.get('#age').should('not.exist', { timeout: 100 });
+    ['[data-column-id="name"]', '[data-column-id="friend\\.name"]', '[data-column-id="friend\\.age"]'].forEach(
+      (col) => {
+        cy.get(col).invoke('outerWidth').should('equal', 400);
+      }
+    );
+    cy.get('[data-column-id="age"]').should('not.exist', { timeout: 100 });
   });
 
   it('InfiniteScroll', () => {
@@ -1469,7 +1500,9 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<TestComponent onRowSelect={select} onRowClick={click} />);
-    cy.get('#__ui5wcr__internal_selection_column[role="columnheader"]').find('[ui5-checkbox]').should('not.exist');
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"][role="columnheader"]')
+      .find('[ui5-checkbox]')
+      .should('not.exist');
     let selectCalled = 0;
     let clickCalled = 1;
     // colindex 1 === selection cell
@@ -1578,7 +1611,7 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={dataTree} columns={columns} isTreeTable />);
     cy.get('[data-empty-row="true"]').should('have.length', 3);
     cy.mount(<ShowSelectedComp />);
-    cy.get('#__ui5wcr__internal_selection_column').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.findByText('Show Selected').click();
     cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
     cy.get('[data-empty-row="true"]').click();
