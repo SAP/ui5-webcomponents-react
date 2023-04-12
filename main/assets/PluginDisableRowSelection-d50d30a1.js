@@ -1,0 +1,44 @@
+import{j as o,a as i,F as p}from"./jsx-runtime-670450c2.js";import{a}from"./Import-53c1bfde.js";import{M as l,C as c}from"./chunk-PCJTTTQV-38b99b19.js";import{P as s}from"./AnalyticalTable.stories-2aff2544.js";import{u as m}from"./index-4fb8b842.js";import"./index-f1f749bf.js";import"./_commonjsHelpers-042e6b4d.js";import"./chunk-R4NKYYJA-96bb58e6.js";import"./iframe-7dea36f6.js";import"../sb-preview/runtime.mjs";import"./react-18-718b9f73.js";import"./mapValues-2de54f78.js";import"./_baseForOwn-c7d9bea5.js";import"./index-96c5f47c.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./inheritsLoose-93e09647.js";import"./_getPrototype-bd05e126.js";import"./_baseUniq-51545746.js";import"./index-356e4a49.js";import"./delete-601aa8b1.js";import"./UI5Element-5e77b351.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./Icons-85b0e9dd.js";import"./i18n-defaults-80781f7e.js";import"./ListItem-3c89af96.js";import"./withWebComponent-d280b5c2.js";import"./utils-ed90fb1b.js";import"./useIsomorphicLayoutEffect-a838da4a.js";import"./Integer-f7f172c9.js";import"./MarkedEvents-b83081e9.js";import"./Icon-a70637b5.js";import"./slot-76e48863.js";import"./decline-07b4d490.js";import"./ListItemBase-b73c7fed.js";import"./ResizeHandler-653daa1f.js";import"./ItemNavigation-316291cb.js";import"./getActiveElement-bcae01ed.js";import"./AriaLabelHelper-43a261ec.js";import"./TabbableElements-8e49b367.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-b2c643e0.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-1df19c4b.js";import"./Label-e24223e9.js";import"./Device-208919c6.js";import"./WrappingType-b81e595a.js";import"./class-map-6d48ebd3.js";import"./i18n-defaults-254d6b69.js";import"./style-map-51d6dd91.js";import"./RadioButton-17175673.js";import"./ValueState-2c5e5904.js";import"./CheckBox-c006676c.js";import"./accept-0670a13e.js";import"./Button-35e7f923.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-24b9c100.js";import"./settings-16ef212d.js";import"./index-2bd17005.js";import"./clsx.m-1229b3e0.js";import"./react-jss.esm-2e28eff7.js";import"./index-479d8097.js";import"./ThemingParameters-f4b4144e.js";import"./i18n-defaults-f914d614.js";import"./I18nContext-bef5b452.js";import"./useIsomorphicId-78860c77.js";import"./debounce-bee6fd25.js";import"./index-99d317a4.js";import"./CssSizeVariables-bd372cde.js";import"./CustomVariables-fd831c35.js";import"./filter-a1f06d56.js";import"./group-2-b3eacbce.js";import"./index-f9f0eb7c.js";import"./Popover-eac39f76.js";import"./PopupUtils-d0ec75b7.js";import"./PopupsCommon.css-ab897c30.js";import"./FocusableElements-2da74965.js";import"./MediaRange-25b98f31.js";import"./stopPropagation-da74d54e.js";import"./index-132fa7fe.js";import"./CustomListItem-10ca0c40.js";import"./index-2698444d.js";import"./index-40f07246.js";import"./index-d96a3078.js";import"./StandardListItem-2d39af82.js";import"./Avatar-f4abe909.js";import"./employee-f8bb953b.js";import"./ValueState-ab6838cc.js";import"./index-8bd8a13b.js";import"./Input-70ea0aaf.js";import"./Suggestions.css-b7d020a7.js";import"./information-bce3ba82.js";import"./ResponsivePopoverCommon.css-19238fee.js";import"./ValueStateMessage.css-2737d025.js";import"./navigation-down-arrow-225209a0.js";import"./navigation-right-arrow-01b88b4e.js";import"./useCurrentTheme-cb0f3be2.js";import"./addCustomCSSWithScoping-34c73984.js";import"./index-0581ddeb.js";import"./index-38c62efb.js";import"./index-cdcbe8a1.js";import"./GlobalStyleClasses-7209358d.js";import"./index-95f09c54.js";import"./Title-07ee6300.js";import"./index-d9398873.js";import"./slim-arrow-down-cb00f67b.js";import"./GroupHeaderListItem-8a27241b.js";import"./Tokenizer-c5f5ff15.js";import"./ScrollEnablement-4353003c.js";import"./animate-1a16ba20.js";import"./ResponsivePopover-fe818bf5.js";import"./Dialog-0e44ed8a.js";import"./Token-95069abd.js";import"./ToggleButton-f5871530.js";import"./ComboBoxItem-14374602.js";import"./index-40f11529.js";import"./index-c72d175e.js";import"./InvisibleMessage-cb4d6680.js";import"./index-3aefd78c.js";import"./index-a5f65d81.js";import"./index-ba4bb7c2.js";function xo(r={}){const{wrapper:e}=Object.assign({},m(),r.components);return e?o(e,Object.assign({},r,{children:o(n,{})})):n();function n(){const t=Object.assign({h1:"h1",p:"p",code:"code",ul:"ul",li:"li",strong:"strong",h2:"h2",pre:"pre"},m(),r.components);return i(p,{children:[o(l,{title:"Data Display / AnalyticalTable / Plugin: useRowDisableSelection"}),`
+`,o(t.h1,{id:"analyticaltable-plugin-userowdisableselection",children:"AnalyticalTable Plugin: useRowDisableSelection"}),`
+`,o(a,{moduleName:"AnalyticalTableHooks",packageName:"@ui5/webcomponents-react"}),`
+`,i(t.p,{children:["With the ",o(t.code,{children:"useRowDisableSelection"})," it's possible to disable the selection of specific rows. It can receive two types of parameters:"]}),`
+`,i(t.ul,{children:[`
+`,i(t.li,{children:[o(t.code,{children:"string"}),": Defines the key in the dataset for disabling rows. If the value of the key is ",o(t.code,{children:"true"}),", then the row will not be selectable."]}),`
+`,i(t.li,{children:[o(t.code,{children:"Function(row) => boolean"}),": Programmatically disable rows for selection. The function receives the current row as parameter."]}),`
+`]}),`
+`,i(t.p,{children:[o(t.strong,{children:"Note:"}),' The "Select All" checkbox is not available with this hook.']}),`
+`,o(c,{sourceState:"none",of:s}),`
+`,o(t.h2,{id:"example",children:"Example"}),`
+`,o(t.pre,{children:o(t.code,{className:"language-jsx",children:`const WithFunctionParameter = () => {
+  const disableRowFunc = (row) => row.original.age < 40;
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
+    />
+  );
+};
+
+const WithStringParameter = () => {
+const data = [
+    {
+        "name": "Peter Franco",
+        "age": 22,
+         ...
+        "disableSelection": Math.random() < 0.5
+    },
+    ...
+];
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
+    />
+  );
+};
+`})})]})}}export{xo as default};
+//# sourceMappingURL=PluginDisableRowSelection-d50d30a1.js.map
