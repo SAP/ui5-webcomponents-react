@@ -248,36 +248,37 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     return computedFormGroups;
   }, [children, currentNumberOfColumns]);
 
-  const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()], className);
+  const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
 
   const CustomTag = as as ElementType;
   return (
     <FormContext.Provider value={{ labelSpan: currentLabelSpan }}>
-      <div className={classes.formContainer} suppressHydrationWarning={true}>
-        <CustomTag
-          ref={componentRef}
-          className={formClassNames}
-          style={{
-            ...style,
-            '--ui5wcr_form_label_span_s': labelSpanS,
-            '--ui5wcr_form_label_span_m': labelSpanM,
-            '--ui5wcr_form_label_span_l': labelSpanL,
-            '--ui5wcr_form_label_span_xl': labelSpanXL,
-            '--ui5wcr_form_columns_s': columnsS,
-            '--ui5wcr_form_columns_m': columnsM,
-            '--ui5wcr_form_columns_l': columnsL,
-            '--ui5wcr_form_columns_xl': columnsXL
-          }}
-          {...rest}
-        >
+      <CustomTag
+        className={clsx(classes.formContainer, className)}
+        suppressHydrationWarning={true}
+        ref={componentRef}
+        style={{
+          ...style,
+          '--ui5wcr_form_label_span_s': labelSpanS,
+          '--ui5wcr_form_label_span_m': labelSpanM,
+          '--ui5wcr_form_label_span_l': labelSpanL,
+          '--ui5wcr_form_label_span_xl': labelSpanXL,
+          '--ui5wcr_form_columns_s': columnsS,
+          '--ui5wcr_form_columns_m': columnsM,
+          '--ui5wcr_form_columns_l': columnsL,
+          '--ui5wcr_form_columns_xl': columnsXL
+        }}
+        {...rest}
+      >
+        <div className={formClassNames}>
           {titleText && (
             <Title level={TitleLevel.H3} className={classes.formTitle}>
               {titleText}
             </Title>
           )}
           {formGroups}
-        </CustomTag>
-      </div>
+        </div>
+      </CustomTag>
     </FormContext.Provider>
   );
 });
