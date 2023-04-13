@@ -14,6 +14,7 @@ import { Label } from '../../webComponents/Label';
 import { FlexBox } from '../FlexBox';
 import styles from './FilterGroupItem.jss';
 
+// todo: remove if this feature is considered and implemented https://github.com/SAP/ui5-webcomponents/issues/6914
 addCustomCSSWithScoping(
   'ui5-table-row',
   `
