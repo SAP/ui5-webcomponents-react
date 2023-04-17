@@ -7,7 +7,7 @@ import { ButtonDesign, ValueState } from '../../enums';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
-  FILE_ALREADY_EXISTS,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   MARK_AS_FAVORITE,
   MARK_AS_STANDARD,
   PRIVATE,
@@ -64,7 +64,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextAlreadyExists = i18nBundle.getText(VARIANT_MANAGEMENT_ERROR_DUPLICATE);
   const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
   const publicText = i18nBundle.getText(PUBLIC);
   const privateText = i18nBundle.getText(PRIVATE);

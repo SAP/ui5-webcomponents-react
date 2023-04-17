@@ -7,7 +7,7 @@ import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '..
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
-  FILE_ALREADY_EXISTS,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   PUBLIC,
   SAVE,
   SAVE_VIEW,
@@ -83,7 +83,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const publicCbLabel = i18nBundle.getText(PUBLIC);
   const applyAutomaticallyCbLabel = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const inputLabelText = i18nBundle.getText(VIEW);
-  const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextAlreadyExists = i18nBundle.getText(VARIANT_MANAGEMENT_ERROR_DUPLICATE);
   const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
 
   const [isDefault, setDefault] = useState(selectedVariant.isDefault);
