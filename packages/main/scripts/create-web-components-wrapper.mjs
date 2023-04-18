@@ -17,6 +17,7 @@ import { renderComponentWrapper, renderTest } from '../../../scripts/web-compone
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   formatDemoDescription,
+  getCommonPropsToBeOmitted,
   getDomRefGetters,
   getDomRefMethods,
   getDomRefObjects
@@ -283,6 +284,7 @@ const createWebComponentWrapper = async (
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
+  const commonPropsToBeOmitted = getCommonPropsToBeOmitted(componentSpec.module);
 
   let domRefExtends = 'Ui5DomRef';
   if (attributesToBeOmitted.length > 0) {
@@ -290,8 +292,12 @@ const createWebComponentWrapper = async (
   }
 
   let tsExtendsStatement = 'CommonProps';
-  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${[...attributesToBeOmitted, ...eventsToBeOmitted].join(' | ')}>`;
+  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0 || commonPropsToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<CommonProps, ${[
+      ...attributesToBeOmitted,
+      ...eventsToBeOmitted,
+      ...commonPropsToBeOmitted
+    ].join(' | ')}>`;
   }
   let componentDescription;
   try {
@@ -459,7 +465,7 @@ const propDescription = (componentSpec, property) => {
           * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).`;
   }
 
   return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);

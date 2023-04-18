@@ -3,7 +3,6 @@
   "entryPoints": ["packages/cypress-commands"],
   "entryPointStrategy": "expand",
   "out": "temp/typedoc",
-  "plugin": ["typedoc-plugin-markdown"],
   "exclude": ["**/dist/**/*", "**/test/**/*"],
   "excludePrivate": true,
   "json": "./packages/cypress-commands/api.json"

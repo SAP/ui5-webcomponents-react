@@ -347,7 +347,7 @@ describe('VariantManagement', () => {
     cy.findByText('Please specify a view name');
     cy.get('[ui5-input]').typeIntoUi5Input('VariantItem 1');
     cy.get('[ui5-input]').should('have.attr', 'value-state', 'Error');
-    cy.findByText('A file with this name already exists');
+    cy.findByText('The view name already exists. Please enter a different name.');
 
     // valid entries & save
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated!');

@@ -41,6 +41,7 @@ export interface ColumnHeaderProps {
   children: ReactNode | ReactNode[];
   portalContainer: Element;
   scaleXFactor?: number;
+  columnId?: string;
 
   //getHeaderProps()
   id: string;
@@ -100,6 +101,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     id,
     children,
     column,
+    columnId,
     className,
     style,
     onSort,
@@ -238,7 +240,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDragStart={onDragStart}
         onDrop={onDrop}
         onDragEnd={onDragEnd}
-        data-column-id={id}
+        data-column-id={columnId}
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
         onKeyUp={handleHeaderCellKeyUp}
@@ -252,16 +254,16 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             style={textStyle}
             className={clsx(
               classes.text,
-              id === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
+              columnId === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
             )}
-            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${id}`}
+            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${columnId}`}
           >
             {children}
           </Text>
           <div
             className={classes.iconContainer}
             style={iconContainerDirectionStyles}
-            data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
+            data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
             {isFiltered && <Icon name={iconFilter} aria-hidden />}
             {column.isSorted && (

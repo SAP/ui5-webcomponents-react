@@ -37,6 +37,7 @@ interface ColumnHeaderContainerProps {
   portalContainer: Element;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp>;
   scaleXFactor?: number;
+  uniqueId: string;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -57,7 +58,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     isRtl,
     portalContainer,
     columnVirtualizer,
-    scaleXFactor
+    scaleXFactor,
+    uniqueId
   } = props;
 
   const classes = useStyles();
@@ -98,6 +100,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
             )}
             <ColumnHeader
               {...rest}
+              id={`${uniqueId}${rest?.id ?? ''}`}
+              columnId={rest.id}
               visibleColumnIndex={index}
               columnIndex={virtualColumn.index}
               onSort={onSort}
