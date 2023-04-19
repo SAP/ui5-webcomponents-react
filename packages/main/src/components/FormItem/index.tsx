@@ -158,7 +158,7 @@ const FormItem = (props: FormItemPropTypes) => {
             const content = getContentForHtmlLabel(label);
             const childId = child?.props?.id;
             return (
-              <Fragment key={`${content}-${uniqueId}`}>
+              <Fragment key={`${content}-${uniqueId}-${index}`}>
                 {/*@ts-expect-error: child is ReactElement*/}
                 {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
                 <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
