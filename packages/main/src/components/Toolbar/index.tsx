@@ -326,6 +326,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       onKeyDown={handleToolbarClick}
       tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
+      data-sap-ui-fastnavgroup="true"
       {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
