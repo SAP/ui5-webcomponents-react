@@ -1,4 +1,4 @@
-import UI5MediaRange from '@ui5/webcomponents-base/dist/MediaRange.js';
+import { MediaRange as UI5MediaRange } from '@ui5/webcomponents-base';
 import { MediaEventProvider, RANGE_LEGACY_4_STEPS, RangeInfo } from './EventProvider.js';
 
 type RANGE_4_STEPS = 'S' | 'M' | 'L' | 'XL';
