@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import * as React from 'react';
 
 function getRandomId() {
   if ('randomUUID' in crypto) {
@@ -17,6 +17,6 @@ export function useIsomorphicId(): string {
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const localId = useRef(getRandomId()); // React version never changes at runtime
+  const localId = React.useRef(getRandomId()); // React version never changes at runtime
   return localId.current;
 }
