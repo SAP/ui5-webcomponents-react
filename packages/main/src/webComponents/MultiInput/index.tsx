@@ -118,7 +118,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   tokens?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -152,7 +152,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -168,7 +168,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -207,8 +207,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
  *
  * *   Type a value in the input and press enter or focus out the input field (`onChange` event is fired)
- * *   Select a value from the suggestion list
- * (`onSuggestionItemSelect` event is fired)
+ * *   Select a value from the suggestion list (`onSuggestionItemSelect` event is fired)
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *

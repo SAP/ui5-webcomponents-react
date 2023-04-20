@@ -10,10 +10,6 @@ const PATHS = {
   build: path.join(root, 'build'),
   shared: path.join(root, 'shared'),
   temp: path.join(root, 'temp'),
-  coverage: path.join(root, 'temp/coverage'),
-  jestCoverage: path.join(root, 'temp/jest-coverage'),
-  cypressCoverage: path.join(root, 'temp/cypress-coverage'),
-  nycOutput: path.join(root, 'temp/.nyc_output'),
   nodeModules: path.join(root, 'node_modules'),
   packages: path.join(root, 'packages')
 };

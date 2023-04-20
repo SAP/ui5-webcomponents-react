@@ -35,6 +35,7 @@ import {
 } from '../../i18n/i18n-defaults';
 import { Ui5CustomEvent } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { useCanRenderPortal } from '../../internal/ssr';
 import { stopPropagation } from '../../internal/stopPropagation';
 import {
   Bar,
@@ -86,6 +87,10 @@ todo: FilterBarDialogPanelTable
 /* don't display select all checkbox */
 :host([data-component-name="FilterBarDialogTable"]) thead th.ui5-table-select-all-column [ui5-checkbox] {
  visibility: hidden;
+}
+
+:host([data-component-name="FilterBarDialogPanelTable"]) thead th.ui5-table-select-all-column {
+ display: none;
 }
  `
 );
@@ -166,7 +171,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
-  const [selectedFilters, setSelectedFilters] = useState(null);
+
   const [forceRequired, setForceRequired] = useState<undefined | TableRowDomRef>();
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -189,12 +194,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const fieldText = i18nBundle.getText(FIELD);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
-  useEffect(() => {
-    if (open) {
-      dialogRef.current.show();
-    }
-  }, [open]);
-
   const handleSearch = (e) => {
     if (handleDialogSearch) {
       handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
@@ -205,25 +204,24 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     handleDialogSave(e, dialogRefs.current, toggledFilters);
   };
 
-  const handleClose = (e, isCancel = false) => {
-    setSelectedFilters(null);
+  const handleClose = (e) => {
+    setToggledFilters({});
     stopPropagation(e);
-    if (!isCancel) {
-      handleSave(e);
-      return;
+    if (handleDialogCancel) {
+      handleDialogCancel(e);
     }
     handleDialogClose(e);
   };
 
   const handleCancel = (e) => {
     if (handleDialogCancel) {
-      handleDialogCancel(enrichEventWithDetails(e));
+      handleDialogCancel(e);
     }
     handleDialogClose(e);
   };
 
   const handleRestore = (e) => {
-    setSelectedFilters(null);
+    setToggledFilters({});
     handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
   };
   const handleViewChange = (e) => {
@@ -248,6 +246,12 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         }
         if (!child.props.children) return child;
 
+        let isSelected =
+          child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem';
+        if (Object.hasOwn(toggledFilters, child.key)) {
+          isSelected = toggledFilters[child.key];
+        }
+
         return cloneElement<
           FilterGroupItemPropTypes & {
             'data-with-values': boolean;
@@ -256,10 +260,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           }
         >(child, {
           'data-with-values': showValues,
-          'data-selected':
-            selectedFilters !== null
-              ? !!selectedFilters?.[child.key]?.selected
-              : child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem',
+          'data-selected': isSelected,
           'data-react-key': child.key,
           children: {
             ...child.props.children,
@@ -311,8 +312,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       return;
     }
 
-    setSelectedFilters({ ...prevRowsByKey, ...rowsByKey });
-
     if (typeof handleSelectionChange === 'function') {
       handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
     }
@@ -328,6 +327,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       setForceRequired(undefined);
     }
   }, [forceRequired]);
+
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
 
   const renderGroups = () => {
     const groups = {};
@@ -365,6 +369,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   return createPortal(
     <Dialog
+      open={open}
       ref={dialogRef}
       data-component-name="FilterBarDialog"
       onAfterClose={handleClose}
@@ -460,6 +465,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             icon={<Icon name={searchIcon} />}
             ref={dialogSearchRef}
             className={classes.searchInput}
+            data-component-name="FilterBarDialogSearchInput"
           />
         </FlexBox>
       </FlexBox>
@@ -480,6 +486,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       </Table>
       {!isListView && renderGroups()}
     </Dialog>,
-    portalContainer
+    portalContainer ?? document.body
   );
 };

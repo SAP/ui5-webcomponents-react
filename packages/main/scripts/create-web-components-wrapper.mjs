@@ -12,15 +12,12 @@ import {
   KNOWN_EVENTS,
   PRIVATE_COMPONENTS
 } from '../../../scripts/web-component-wrappers/config.js';
-import {
-  renderComponentWrapper,
-  renderMethods,
-  renderStory,
-  renderTest
-} from '../../../scripts/web-component-wrappers/templates/index.js';
+import { createDocumentation, createStory } from '../../../scripts/web-component-wrappers/StoryFactory.js';
+import { renderComponentWrapper, renderTest } from '../../../scripts/web-component-wrappers/templates/index.js';
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   formatDemoDescription,
+  getCommonPropsToBeOmitted,
   getDomRefGetters,
   getDomRefMethods,
   getDomRefObjects
@@ -287,6 +284,7 @@ const createWebComponentWrapper = async (
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
+  const commonPropsToBeOmitted = getCommonPropsToBeOmitted(componentSpec.module);
 
   let domRefExtends = 'Ui5DomRef';
   if (attributesToBeOmitted.length > 0) {
@@ -294,8 +292,12 @@ const createWebComponentWrapper = async (
   }
 
   let tsExtendsStatement = 'CommonProps';
-  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${[...attributesToBeOmitted, ...eventsToBeOmitted].join(' | ')}>`;
+  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0 || commonPropsToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<CommonProps, ${[
+      ...attributesToBeOmitted,
+      ...eventsToBeOmitted,
+      ...commonPropsToBeOmitted
+    ].join(' | ')}>`;
   }
   let componentDescription;
   try {
@@ -338,83 +340,6 @@ const createWebComponentWrapper = async (
         ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
         : componentSpec.module
   });
-};
-
-const createWebComponentDemo = (componentSpec, componentProps, hasDescription) => {
-  const componentName = componentSpec.module;
-  const enumImports = [];
-  const selectArgTypes = [];
-  const args = [];
-  const customArgTypes = [];
-
-  console.warn(`Story created for ${componentName}!\nPlease remember to add the story to an existing group.`);
-
-  const additionalComponentDocs = componentSpec.hasOwnProperty('appenddocs') ? componentSpec.appenddocs.split(' ') : [];
-  const additionalComponentImports = componentSpec.hasOwnProperty('appenddocs')
-    ? [`import { ${componentSpec.appenddocs.replaceAll(' ', ', ')} } from '../..';`]
-    : [];
-
-  componentProps.forEach((prop) => {
-    if (prop.importStatement && prop.importStatement !== `import { ReactNode } from 'react';`) {
-      enumImports.push(prop.importStatement);
-    }
-    if (componentSpec.module === 'Icon' && prop.name === 'name') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      args.push(`name: 'employee'`);
-    }
-    if (prop.name === 'primaryCalendarType') {
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`);
-      enumImports.push(`import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`);
-    }
-    if (prop.name === 'moreColors') {
-      enumImports.push(`import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';`);
-    }
-    if (prop.name === 'children') {
-      if (
-        prop.description.includes(
-          'Аlthough this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.'
-        )
-      ) {
-        args.push(`children: "${componentName} Text"`);
-        customArgTypes.push(`children: {control: 'text'}`);
-      } else {
-        customArgTypes.push(`children: {control: {disable:true}}`);
-      }
-    } else if (prop.name === 'icon') {
-      enumImports.push(`import "@ui5/webcomponents-icons/dist/employee.js";`);
-      enumImports.push(`import { Icon } from '@ui5/webcomponents-react/dist/Icon';`);
-      if (prop.tsType === 'string') {
-        args.push(`icon: 'employee'`);
-      }
-      if (prop.tsType.includes('ReactNode')) {
-        customArgTypes.push(`icon: {control: {disable: true}}`);
-        args.push(`icon: <Icon name="employee" />`);
-      }
-    } else if (prop.tsType.includes('ReactNode') || prop.tsType === 'unknown') {
-      customArgTypes.push(`${prop.name}: {control: {disable:true}}`);
-    }
-    if (prop.isEnum) {
-      const type = prop.tsType.split(' ')[0];
-      selectArgTypes.push(`${prop.name}: ${type}`);
-      const defaultValue = prop.defaultValue ? `.${prop.defaultValue.replace(/['"]/g, '')}` : '';
-      args.push(`${prop.name}: ${type}${defaultValue}`);
-    }
-  });
-  enumImports.push(`import { CSSProperties, Ref } from 'react';`);
-  return `${renderStory({
-    name: componentName,
-    since: versionInfo[componentSpec.since],
-    imports: [...enumImports, ...additionalComponentImports],
-    additionalComponentDocs,
-    selectArgTypes,
-    customArgTypes,
-    args,
-    methods: componentSpec.methods?.filter((item) => item.visibility === 'public') ?? [],
-    hasDescription
-  })}`;
 };
 
 const assignComponentPropertiesToMaps = (componentSpec, { properties, slots, events, methods }) => {
@@ -540,7 +465,7 @@ const propDescription = (componentSpec, property) => {
           * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
           *
           * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
+          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).`;
   }
 
   return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
@@ -682,8 +607,7 @@ allWebComponents
       return [mainDescription, rest.join('<h3>')];
     };
 
-    const [mainDescription, description = ''] = formatDescription();
-
+    let [mainDescription, description = ''] = formatDescription();
     if (EXCLUDE_LIST.includes(componentSpec.module)) {
       console.warn(
         `----------------------\n${componentSpec.module} has been excluded from component generation. To include it again remove the component name from the "EXCLUDE_LIST".\n----------------------`
@@ -729,15 +653,18 @@ allWebComponents
       fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create test
-      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`))) {
-        const webComponentTest = renderTest({ name: componentSpec.module });
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.test.tsx`), webComponentTest);
+      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
+        const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
+        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
       // create demo
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
+        if (componentSpec.since) {
+          mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
+        }
         const subComponentDescription = `${formatDemoDescription(
           mainDescription,
           componentSpec,
@@ -758,40 +685,47 @@ allWebComponents
           );
         }
         // create attributes & methods table
-        const publicMethods = getDomRefMethods(componentSpec);
-        const publicGetters = getDomRefGetters(componentSpec);
-        const publicObjects = getDomRefObjects(componentSpec);
-        const publicProperties = [...publicGetters, ...publicObjects, ...publicMethods];
+        const publicProperties = [
+          ...getDomRefGetters(componentSpec),
+          ...getDomRefObjects(componentSpec),
+          ...getDomRefMethods(componentSpec)
+        ];
 
         if (publicProperties.length) {
-          const formattedProperties = JSON.parse(JSON.stringify(publicProperties).replaceAll(/\\n|<br>/g, ''));
-          const methods = `${renderMethods({
-            name: componentSpec.module,
-            methods: formattedProperties
-          })}`;
-          const hasMethodsTable = fs
-            .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
-            .toString()
-            .search(`<${componentSpec.module}Methods />`);
-          if (hasMethodsTable === -1) {
+          fs.writeFileSync(
+            path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
+            prettier.format(JSON.stringify(publicProperties), {
+              ...Utils.prettierConfig,
+              parser: 'json'
+            })
+          );
+          let hasMethodsTable = false;
+          if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          } else if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
+            hasMethodsTable = fs
+              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+              .toString()
+              .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
+          }
+          if (hasMethodsTable) {
             console.warn(
-              `----------------------\n${componentSpec.module} doesn't has a methods table yet. Don't forget to add it to the story.\n----------------------`
+              `----------------------\n${componentSpec.module} doesn't has a DomRef table yet. Don't forget to add it to the story.\n----------------------`
             );
           }
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}Methods.md`), methods);
         }
         // create story file (demo)
+
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+          (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+            !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
         ) {
-          const webComponentDemo = createWebComponentDemo(
-            componentSpec,
-            allComponentProperties,
-            description,
-            !!formattedDescription
-          );
-          fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`), webComponentDemo);
+          await createStory(componentSpec, allComponentProperties);
+          await createDocumentation(componentSpec, allComponentProperties, description);
         }
       }
     }

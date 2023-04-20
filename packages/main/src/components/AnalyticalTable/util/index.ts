@@ -1,29 +1,5 @@
-import { CSSProperties } from 'react';
-import { defaultOrderByFn } from 'react-table';
+import { CSSProperties, RefObject } from 'react';
 import { TextAlign, VerticalAlign } from '../../../enums';
-
-export const orderByFn = (rows, functions, directions) => {
-  const wrapSortFn = (sortFn, index) => {
-    const desc = directions[index] === false || directions[index] === 'desc';
-
-    return (rowA, rowB) => {
-      if (rowA.original?.emptyRow && !rowB.original?.emptyRow) {
-        return desc ? -1 : 1;
-      }
-      if (!rowA.original?.emptyRow && rowB.original?.emptyRow) {
-        return desc ? 1 : -1;
-      }
-      if (rowA.original?.emptyRow && rowB.original?.emptyRow) {
-        return 0;
-      }
-      return sortFn(rowA, rowB);
-    };
-  };
-
-  const wrappedSortfunctions = functions.map(wrapSortFn);
-
-  return defaultOrderByFn(rows, wrappedSortfunctions, directions);
-};
 
 // copied from https://github.com/tannerlinsley/react-table/blob/f97fb98509d0b27cc0bebcf3137872afe4f2809e/src/utils.js#L320-L347 (13. Jan 2021)
 const reOpenBracket = /\[/g;
@@ -156,3 +132,18 @@ export const resolveCellAlignment = (column) => {
   }
   return style;
 };
+
+export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
+  if (rowHeight) {
+    return rowHeight;
+  }
+
+  if (typeof document !== 'undefined') {
+    return parseInt(
+      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') ?? '44'
+    );
+  }
+
+  // fallback for SSR
+  return 44;
+}

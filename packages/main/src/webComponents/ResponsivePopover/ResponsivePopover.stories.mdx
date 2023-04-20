@@ -1,8 +1,6 @@
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './ResponsivePopoverDescription.md';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './ResponsivePopoverDescription.md?raw';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { useState } from 'react';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
@@ -15,14 +13,15 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { ResponsivePopover } from './index';
-import { isChromatic } from '../../../../../.storybook/utils';
-import ResponsivePopoverMethods from './ResponsivePopoverMethods.md';
+import { ResponsivePopover as OriginalResponsivePopover } from './index';
+import { ResponsivePopover } from './CodeGen';
+import { isChromatic } from '@sb/utils';
+import ResponsivePopoverDomRef from './ResponsivePopoverDomRef.json';
 import { MessageStrip } from '../MessageStrip';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
-  component={ResponsivePopover}
+  component={OriginalResponsivePopover}
   argTypes={{
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -77,11 +76,11 @@ import { MessageStrip } from '../MessageStrip';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<ResponsivePopoverMethods />
+<DomRefTable rows={ResponsivePopoverDomRef} />
 
 ## Opening ResponsivePopovers
 
@@ -122,10 +121,11 @@ const MyComponentWithPopover = () => {
 This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
 You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
 
-<MessageStrip hideCloseButton>
-  Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!
-</MessageStrip>
+<MessageStrip
+  hideCloseButton
+  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+  using this approach!"
+/>
 
 ```jsx
 const PopoverComponent = () => {

@@ -1,6 +1,8 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import { CSSProperties, useReducer, useRef, useState } from 'react';
 import {
+  Avatar,
   Bar,
   BarDesign,
   Breadcrumbs,
@@ -14,6 +16,8 @@ import {
   FlexBoxDirection,
   FlexBoxWrap,
   Icon,
+  IllustratedMessage,
+  IllustrationMessageType,
   Label,
   Link,
   MessageStrip,
@@ -239,6 +243,7 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
 
+    cy.findByText('Goals').should('not.be.visible');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
@@ -655,6 +660,63 @@ describe('ObjectPage', () => {
 
     cy.findByText('set level 6').click();
     cy.findByText('Etiam pellentesque').should('have.attr', 'aria-level', '6');
+  });
+
+  it('empty content', () => {
+    cy.mount(<ObjectPage data-testid="op" />);
+    cy.findByTestId('op').should('be.visible');
+    cy.mount(<ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} />);
+    cy.findByTestId('op').should('be.visible');
+  });
+
+  it('w/ image', () => {
+    cy.mount(
+      <ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} image="not_a_real_path.orly" />
+    );
+    cy.findByAltText('Company Logo').should('be.visible');
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        image="not_a_real_path.orly"
+        imageShapeCircle
+      />
+    );
+    cy.findByAltText('Company Logo')
+      .should('be.visible')
+      .parent()
+      .should('have.css', 'border-radius', '50%')
+      .should('have.css', 'overflow', 'hidden');
+    cy.mount(<ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} image={<Avatar />} />);
+    cy.get('[ui5-avatar]').should('have.attr', 'size', 'L').should('be.visible');
+  });
+
+  it('with IllustratedMessage', () => {
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
+      />
+    );
+    cy.get('[ui5-illustrated-message]').should('be.visible');
+    cy.get('[ui5-tabcontainer]').should('not.exist');
+    cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
+      >
+        {OPContent}
+      </ObjectPage>
+    );
+    cy.get('[ui5-illustrated-message]').should('be.visible');
+    cy.get('[ui5-tabcontainer]').should('not.exist');
+    cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
   });
 });
 

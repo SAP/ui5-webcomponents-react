@@ -2,6 +2,7 @@ import dedent from 'dedent';
 import { ESLint } from 'eslint';
 import fs from 'fs';
 import path from 'path';
+import prettier from 'prettier';
 import TurndownService from 'turndown';
 import PATHS from '../../config/paths.js';
 import prettierConfigRaw from '../../prettier.config.cjs';
@@ -50,6 +51,13 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
         importStatement: importStatementReactNodeType
       };
     }
+    return {
+      tsType: reactNodeType,
+      importStatement: importStatementReactNodeType
+    };
+  }
+
+  if (property.type === 'sap.ui.webc.fiori.ISideNavigationItem|sap.ui.webc.fiori.ISideNavigationSubItem') {
     return {
       tsType: reactNodeType,
       importStatement: importStatementReactNodeType
@@ -197,6 +205,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'MessageStripDesign':
     case 'PageBackgroundDesign':
     case 'PanelAccessibleRole':
+    case 'PopupAccessibleRole':
     case 'PopoverHorizontalAlign':
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
@@ -407,5 +416,14 @@ export const formatDemoDescription = (description, componentSpec, replaceHeading
     );
   }
 
-  return formattedDescription;
+  return prettier.format(formattedDescription, { ...prettierConfigRaw, parser: 'markdown' });
 };
+
+export function getCommonPropsToBeOmitted(moduleName) {
+  switch (moduleName) {
+    case 'TreeItemCustom':
+      return ["'content'"];
+    default:
+      return [];
+  }
+}

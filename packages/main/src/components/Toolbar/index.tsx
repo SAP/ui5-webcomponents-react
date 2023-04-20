@@ -2,9 +2,9 @@
 
 import {
   debounce,
-  enrichEventWithDetails,
   useI18nBundle,
   useIsomorphicLayoutEffect,
+  useIsRTL,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
@@ -142,6 +142,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
+  const isRtl = useIsRTL(outerContainer);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const showMoreText = i18nBundle.getText(SHOW_MORE);
@@ -190,7 +191,11 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     let lastElementResizeObserver;
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     const debouncedObserverFn = debounce(() => {
-      setMinWidth(`${lastElement.getBoundingClientRect().right + OVERFLOW_BUTTON_WIDTH}px`);
+      if (isRtl) {
+        setMinWidth(`${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH}px`);
+      } else {
+        setMinWidth(`${lastElement.offsetLeft + lastElement.getBoundingClientRect().width + OVERFLOW_BUTTON_WIDTH}px`);
+      }
     }, 200);
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {
       lastElementResizeObserver = new ResizeObserver(debouncedObserverFn);
@@ -200,7 +205,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       debouncedObserverFn.cancel();
       lastElementResizeObserver?.disconnect();
     };
-  }, [numberOfAlwaysVisibleItems, overflowNeeded]);
+  }, [numberOfAlwaysVisibleItems, overflowNeeded, isRtl]);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
@@ -258,6 +263,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [calculateVisibleItems]);
 
+  useEffect(() => {
+    if (Children.count(children) > 0) {
+      calculateVisibleItems();
+    }
+  }, [children]);
+
   useIsomorphicLayoutEffect(() => {
     calculateVisibleItems();
   }, [calculateVisibleItems]);
@@ -265,9 +276,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const handleToolbarClick = (e) => {
     if (active && typeof onClick === 'function') {
       const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
+      if (isSpaceEnterDown && e.target !== e.currentTarget) {
+        return;
+      }
       if (e.type === 'click' || isSpaceEnterDown) {
         e.preventDefault();
-        onClick(enrichEventWithDetails(e));
+        onClick(e);
       }
     }
   };
@@ -312,6 +326,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       onKeyDown={handleToolbarClick}
       tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
+      data-sap-ui-fastnavgroup="true"
       {...rest}
     >
       <div className={classes.toolbar} data-component-name="ToolbarContent" ref={contentRef}>

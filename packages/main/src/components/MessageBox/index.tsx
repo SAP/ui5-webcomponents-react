@@ -5,7 +5,14 @@ import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/web
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, isValidElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, MessageBoxActions, MessageBoxTypes, TitleLevel, ValueState } from '../../enums';
+import {
+  ButtonDesign,
+  MessageBoxActions,
+  MessageBoxTypes,
+  PopupAccessibleRole,
+  TitleLevel,
+  ValueState
+} from '../../enums';
 import {
   ABORT,
   CANCEL,
@@ -92,11 +99,13 @@ export interface MessageBoxPropTypes
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
 
-const getIcon = (icon, type) => {
+const getIcon = (icon, type, classes) => {
   if (isValidElement(icon)) return icon;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return <Icon name={iconSysHelp} aria-hidden="true" accessibleRole="presentation" />;
+      return (
+        <Icon name={iconSysHelp} aria-hidden="true" accessibleRole="presentation" className={classes.confirmIcon} />
+      );
     default:
       return null;
   }
@@ -205,7 +214,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   // @ts-expect-error: footer, headerText and onAfterClose are already omitted via prop types
   const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
 
-  const iconToRender = getIcon(icon, type);
+  const iconToRender = getIcon(icon, type, classes);
   const needsCustomHeader = !props.header && !!iconToRender;
 
   return (
@@ -215,6 +224,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       className={clsx(classes.messageBox, className)}
       onAfterClose={open ? handleOnClose : stopPropagation}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
+      accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}
       headerText={titleToRender()}
       state={convertMessageBoxTypeToState(type as MessageBoxTypes)}
@@ -225,7 +235,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
         <header slot="header" className={classes.header}>
           {iconToRender}
           {iconToRender && <span className={classes.spacer} />}
-          <Title id={`${messageBoxId}-title`} level={TitleLevel.H2}>
+          <Title id={`${messageBoxId}-title`} level={TitleLevel.H1}>
             {titleToRender()}
           </Title>
         </header>

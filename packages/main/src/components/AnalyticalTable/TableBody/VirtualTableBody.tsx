@@ -1,6 +1,8 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
-import React, { MutableRefObject, ReactNode, useCallback, useMemo } from 'react';
+import { clsx } from 'clsx';
+import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { ScrollToRefType } from '../interfaces';
+import { EmptyRow } from './EmptyRow';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 
 interface VirtualTableBodyProps {
@@ -30,6 +32,7 @@ const measureElement = (el) => el.offsetHeight;
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const {
+    alternateRowColor,
     classes,
     prepareRow,
     rows,
@@ -54,6 +57,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
+  const lastNonEmptyRow = useRef(null);
 
   const rowVirtualizer = useVirtualizer({
     count: itemCount,
@@ -103,17 +107,48 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         const row = rows[virtualRow.index];
         const rowIndexWithHeader = virtualRow.index + 1;
         if (!row || row.groupByVal === 'undefined') {
+          const alternate = alternateRowColor && virtualRow.index % 2 !== 0;
+          if (!lastNonEmptyRow.current?.cells) {
+            return (
+              <EmptyRow
+                key={`empty_row_${virtualRow.index}`}
+                virtualRow={virtualRow}
+                className={clsx(classes.tr, alternate && classes.alternateRowColor)}
+              />
+            );
+          }
+          const cells = lastNonEmptyRow.current.cells;
+
           return (
-            <div
+            <EmptyRow
               key={`empty_row_${virtualRow.index}`}
-              className={classes.tr}
-              style={{
-                height: `${virtualRow.size}px`,
-                transform: `translateY(${virtualRow.start}px)`,
-                boxSizing: 'border-box'
-              }}
-            />
+              virtualRow={virtualRow}
+              className={clsx(classes.tr, alternate && classes.alternateRowColor)}
+            >
+              {cells.map((item) => {
+                const cellProps = item.getCellProps();
+                const {
+                  'aria-colindex': _0,
+                  'aria-selected': _1,
+                  'aria-label': _2,
+                  tabIndex: _3,
+                  ...emptyRowCellProps
+                } = cellProps;
+                return (
+                  <div
+                    {...emptyRowCellProps}
+                    key={`${visibleRowIndex}-${emptyRowCellProps.key}`}
+                    data-empty-row-cell="true"
+                    tabIndex={-1}
+                    aria-hidden
+                    style={{ ...emptyRowCellProps.style, cursor: 'unset' }}
+                  />
+                );
+              })}
+            </EmptyRow>
           );
+        } else {
+          lastNonEmptyRow.current = row;
         }
         prepareRow(row);
         const rowProps = row.getRowProps();
@@ -193,10 +228,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   ...directionStyles
                 }
               };
-              if (row.original?.emptyRow) {
-                // eslint-disable-next-line react/jsx-key
-                return <div {...allCellProps} />;
-              }
               let contentToRender;
               if (
                 cell.column.id === '__ui5wcr__internal_highlight_column' ||

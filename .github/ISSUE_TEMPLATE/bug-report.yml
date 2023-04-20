@@ -1,0 +1,116 @@
+name: Bug Report
+description: File a bug report
+title: '[Component Name]:'
+labels:
+  - bug
+assignees: []
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Describe the bug'
+      description: 'A clear and concise description of what the bug is.'
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: 'Isolated Example'
+      description: 'Please provide an isolated example if possible by forking [this codesandbox](https://codesandbox.io/p/sandbox/ui5-webcomponents-react-vite-j65vvg?file=%2Fsrc%2FApp.tsx).'
+    validations:
+      required: false
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: 'How do you trigger this bug? Please walk us through it step by step.'
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: false
+  - type: textarea
+    id: expectation
+    attributes:
+      label: 'Expected Behaviour'
+      description: 'A clear and concise description of what you expected to happen.'
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Videos
+      description: |
+        If applicable, add screenshots or a video to help explain your problem.
+        For more information on the supported file image/file types and the file size limits, please refer
+        to the following link: https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/attaching-files
+      placeholder: |
+        You can drag your video or image files inside of this editor ↓
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: '## Environment Info'
+  - type: input
+    id: wcr-version
+    attributes:
+      label: 'UI5 Web Components for React Version'
+    validations:
+      required: true
+  - type: input
+    id: wc-version
+    attributes:
+      label: 'UI5 Web Components Version'
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 'Browser'
+      multiple: true
+      options:
+        - Chrome
+        - Edge
+        - Firefox
+        - Safari
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: 'Operating System'
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: '## Additional Information'
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Privacy Policy
+        Please don't disclose any internal or sensitive information like: internal urls, login credentials, screenshots of applications or features in development.
+        This is a public GitHub repository and all the information is publicly available.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Declaration
+      description: By submitting this issue, I confirm to follow the recommendation not to disclose any internal or sensitive information.
+      options:
+        - label: I’m not disclosing any internal or sensitive information.
+          required: true

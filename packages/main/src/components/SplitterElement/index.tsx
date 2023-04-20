@@ -55,8 +55,8 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
   const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
-  const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 0 auto' } : {};
-  const defaultFlexStyles = size !== 'auto' ? { flex: `0 0 ${size}` } : { flex: '1 0 min-content', ...safariStyles };
+  const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 1 auto' } : {};
+  const defaultFlexStyles = size !== 'auto' ? { flex: `0 1 ${size}` } : { flex: '1 0 min-content', ...safariStyles };
   const [flexStyles, setFlexStyles] = useState(defaultFlexStyles);
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
   const classes = useStyles();
@@ -65,20 +65,24 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
     const elementObserver = new ResizeObserver(([element]) => {
       if (element.target.getBoundingClientRect().width !== 0 && !flexBasisApplied) {
         const resetSafariStyles = Device.isSafari() ? { width: 'unset' } : {};
-        setFlexStyles({ flex: `0 0 ${element.target.getBoundingClientRect().width}px`, ...resetSafariStyles });
+        setFlexStyles({
+          flex: `0 0 ${element.target.getBoundingClientRect()[vertical ? 'height' : 'width']}px`,
+          ...resetSafariStyles
+        });
         setFlexBasisApplied(true);
       }
     });
+
     if (size === 'auto' && splitterElementRef.current) {
       elementObserver.observe(splitterElementRef.current);
     } else {
-      setFlexStyles({ flex: `0 0 ${size}` });
+      setFlexStyles({ flex: `0 1 ${size}` });
     }
 
     return () => {
       elementObserver.disconnect();
     };
-  }, [size, flexBasisApplied]);
+  }, [size, flexBasisApplied, vertical]);
 
   useIsomorphicLayoutEffect(() => {
     if (reset) {

@@ -13,7 +13,7 @@ interface NotificationListItemAttributes {
   /**
    * Defines if the `titleText` and `description` should wrap, they truncate by default.
    *
-   * **Note:** by default the `titleText` and `decription`, and a `ShowMore/Less` button would be displayed.
+   * **Note:** by default the `titleText` and `description`, and a `ShowMore/Less` button would be displayed.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
@@ -66,7 +66,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   avatar?: UI5WCSlotsNode;
   /**
@@ -82,7 +82,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   footnotes?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -94,7 +94,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   actions?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**

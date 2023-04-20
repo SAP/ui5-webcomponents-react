@@ -70,19 +70,30 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
+   *
    * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the selected option changes.
    */
   onChange?: (event: Ui5CustomEvent<SelectDomRef, { selectedOption: HTMLElement }>) => void;
+  /**
+   * Fired after the component's dropdown menu closes.
+   */
+  onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
+  /**
+   * Fired after the component's dropdown menu opens.
+   */
+  onOpen?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 }
 
 /**
@@ -97,7 +108,7 @@ const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
   ['disabled', 'required'],
   ['valueStateMessage'],
-  ['change'],
+  ['change', 'close', 'open'],
   () => import('@ui5/webcomponents/dist/Select.js')
 );
 

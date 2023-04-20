@@ -1,0 +1,54 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { MessageStripDesign } from '../../enums';
+import { MessageStrip } from '../MessageStrip';
+import * as ComponentStories from './IllustratedMessage.stories';
+import Description from './IllustratedMessageDescription.md?raw';
+import { IllustratedMessage } from './index';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.18.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} story={{ height: '300px' }} layout={'fullscreen'} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+## Fully customizable title
+
+<MessageStrip
+  design={MessageStripDesign.Warning}
+  hideCloseButton
+  children={
+    <>
+      As the <code>title</code> slot name collides with the standard HTML <code>title</code> attribute, using the{' '}
+      <code>title</code> prop will not work. <br />
+      You must pass the <code>title</code> slot as part of the components <code>children</code>.
+    </>
+  }
+/>
+
+In some cases you might need to fully customize the title element of the `IllustratedMessage`.
+You can achieve this by using the `title` slot.
+
+**Note:** Using this slot, the default title text of illustration and the value of `titleText` property will be overwritten.
+
+```jsx
+<IllustratedMessage>
+  <h5 slot="title">This is my fully customized title</h5>
+</IllustratedMessage>
+```
+
+<IllustratedMessage>
+  <h5 slot="title">This is my fully customized title</h5>
+</IllustratedMessage>
+
+<Footer />

@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/Popover.js';
 import { ReactNode } from 'react';
-import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums';
+import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign, PopupAccessibleRole } from '../../enums';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
@@ -78,6 +78,14 @@ interface PopoverAttributes {
    */
   accessibleNameRef?: string;
   /**
+   * Allows setting a custom role. Available options are:
+   *
+   * *   `Dialog`
+   * *   `None`
+   * *   `AlertDialog`
+   */
+  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+  /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
   initialFocus?: string;
@@ -127,7 +135,7 @@ export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -137,7 +145,7 @@ export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   header?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -179,6 +187,7 @@ const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
     'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleRole',
     'initialFocus'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
@@ -192,7 +201,8 @@ Popover.displayName = 'Popover';
 Popover.defaultProps = {
   horizontalAlign: PopoverHorizontalAlign.Center,
   placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center
+  verticalAlign: PopoverVerticalAlign.Center,
+  accessibleRole: PopupAccessibleRole.Dialog
 };
 
 export { Popover };

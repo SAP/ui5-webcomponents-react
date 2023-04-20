@@ -1,0 +1,90 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { useState } from 'react';
+import { TreeItem } from '../TreeItem';
+import TreeItemDescription from '../TreeItem/TreeItemDescription.md?raw';
+import { TreeItemCustom } from '../TreeItemCustom';
+import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md?raw';
+import * as ComponentStories from './Tree.stories';
+import Description from './TreeDescription.md?raw';
+import TreeDomRef from './TreeDomRef.json';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.10.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<DomRefTable rows={TreeDomRef} />
+
+# More Examples
+
+<br />
+
+## Lazy Load TreeItems
+
+<Canvas of={ComponentStories.LazyLoading} />
+
+### Code
+
+```jsx
+const LazyLoadingTree = () => {
+  const [lazyChildren, setLazyChildren] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const handleItemToggle = (e) => {
+    if (e.detail.item.dataset.id === 'lazychildren' && !lazyChildren) {
+      e.preventDefault();
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        setLazyChildren(
+          <>
+            <TreeItem text="Tree 3.1" />
+            <TreeItem text="Tree 3.2" />
+          </>
+        );
+        e.detail.item.toggle();
+      }, 3000);
+    }
+  };
+  return (
+    <BusyIndicator active={loading} style={{ width: '100%' }}>
+      <Tree onItemToggle={handleItemToggle}>
+        <TreeItem text="Has pre-loaded children">
+          <TreeItem text="Tree 1.1" />
+          <TreeItem text="Tree 1.2" />
+        </TreeItem>
+        <TreeItem text="Has no children" />
+        <TreeItem text="Has children but not yet loaded" hasChildren icon={dlCloutIcon} data-id="lazychildren">
+          {lazyChildren}
+        </TreeItem>
+      </Tree>
+    </BusyIndicator>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## TreeItem
+
+<ArgTypesWithNote of={TreeItem} />
+<Markdown>{TreeItemDescription}</Markdown>
+
+## TreeItemCustom
+
+<ArgTypesWithNote of={TreeItemCustom} />
+<Markdown>{TreeItemCustomDescription}</Markdown>
+
+<Footer />

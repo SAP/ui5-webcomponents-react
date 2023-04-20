@@ -31,7 +31,11 @@ export const useObserveHeights = (
       if (scrollDown && e.target.scrollTop >= headerContentHeight && !headerCollapsed) {
         setIsIntersecting(false);
         setHeaderCollapsed(true);
-      } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && headerCollapsed) {
+      } else if (
+        !scrollDown &&
+        e.target.scrollTop <= topHeaderHeight + Math.max(0, headerContentHeight - topHeaderHeight) &&
+        headerCollapsed
+      ) {
         setIsIntersecting(true);
         setHeaderCollapsed(false);
       }

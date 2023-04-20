@@ -16,6 +16,7 @@ export function useIsomorphicId(): string {
     return Reflect.get(React, 'useId')();
   }
 
-  const localId = React.useRef(getRandomId());
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const localId = React.useRef(getRandomId()); // React version never changes at runtime
   return localId.current;
 }

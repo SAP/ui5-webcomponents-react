@@ -8,8 +8,14 @@ import {
   Switch,
   Tab,
   TabContainer,
-  TextArea
+  TextArea,
+  MultiComboBox,
+  MultiComboBoxItem,
+  ComboBox,
+  ComboBoxItem,
+  SuggestionItem
 } from '@ui5/webcomponents-react';
+import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 describe('UI5 Web Components - Child Commands', () => {
   it('clickUi5Tab', () => {
@@ -115,5 +121,31 @@ describe('UI5 Web Components - Child Commands', () => {
     );
     cy.findByText('StandardListItem').click();
     cy.findByTestId('c').click();
+  });
+
+  [
+    <ComboBox data-testid="CB" key={0}>
+      <ComboBoxItem text="Item 1"></ComboBoxItem>
+      <ComboBoxItem text="Item 2"></ComboBoxItem>
+    </ComboBox>,
+    <MultiComboBox data-testid="MCB" key={1}>
+      <MultiComboBoxItem text="Item 1"></MultiComboBoxItem>
+      <MultiComboBoxItem text="Item 2"></MultiComboBoxItem>
+    </MultiComboBox>,
+    <Input showSuggestions data-testid="Input w/ suggestions" key={2}>
+      <SuggestionItem text="Item 1" />
+      <SuggestionItem text="Item 2" />
+    </Input>
+  ].forEach((component) => {
+    const testId = component.props['data-testid'];
+    it(`show suggestions of ${testId}`, () => {
+      cy.mount(component);
+
+      cy.get(`[data-testid="${testId}"]`).typeIntoUi5InputWithDelay('i');
+      cy.get('ui5-responsive-popover').should('have.attr', 'open');
+
+      // in some cases the static-area-item is not cleaned up
+      document.querySelector('ui5-static-area').remove();
+    });
   });
 });

@@ -1,0 +1,50 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import * as ComponentStories from './DonutChart.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+<br />
+
+## More Examples
+
+### With Custom Color
+
+<Canvas of={ComponentStories.WithCustomColor} />
+
+### With Padding Angle
+
+<Canvas of={ComponentStories.WithPaddedAngle} />
+
+### With Custom Radius
+
+<Canvas of={ComponentStories.WithCustomRadius} />
+
+### Loading Placeholder
+
+<Canvas of={ComponentStories.LoadingPlaceholder} />
+
+### With Formatter
+
+<Canvas of={ComponentStories.WithFormatter} />
+
+### With highlighted active segment
+
+<Canvas of={ComponentStories.WithHighlightedActiveSegment} />
+
+### Hide labels
+
+<Canvas of={ComponentStories.HideLabels} />
+
+<Footer />

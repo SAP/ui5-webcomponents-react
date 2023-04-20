@@ -1,5 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { DateTimePicker } from './index';
 import { CalendarType } from '../../enums/CalendarType';
 import '@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js';
@@ -8,10 +7,9 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import { ValueState } from '../../enums/ValueState';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './DateTimePickerDescription.md';
-import DateTimePickerMethods from './DateTimePickerMethods.md';
+import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import Description from './DateTimePickerDescription.md?raw';
+import DateTimePickerDomRef from './DateTimePickerDomRef.json';
 
 <Meta
   title="Inputs / DateTimePicker"
@@ -41,10 +39,10 @@ import DateTimePickerMethods from './DateTimePickerMethods.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
-<DateTimePickerMethods />
+<DomRefTable rows={DateTimePickerDomRef} />
 
 <Footer />

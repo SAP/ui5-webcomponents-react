@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
+
+### Bug Fixes
+
+- **AnalyticalTable:** always scale cols correctly with `scaleWidthMode` "Grow" ([#4362](https://github.com/SAP/ui5-webcomponents-react/issues/4362)) ([15dfb3a](https://github.com/SAP/ui5-webcomponents-react/commit/15dfb3aeb33aa6e3890938eab23db2f6f282fa45)), closes [#4348](https://github.com/SAP/ui5-webcomponents-react/issues/4348)
+- **deps:** update dependency recharts to v2.5.0 ([#4354](https://github.com/SAP/ui5-webcomponents-react/issues/4354)) ([29ec474](https://github.com/SAP/ui5-webcomponents-react/commit/29ec474648bdf0057a9c8b23e4eab0662abd86ee))
+
+## [1.11.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.2...v1.11.3) (2023-03-14)
+
+### Bug Fixes
+
+- force release for all packages ([25fd39f](https://github.com/SAP/ui5-webcomponents-react/commit/25fd39fadfe5fa005302df5c2f1882a3ca514ed3))
+
+# [1.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.10.0...v1.11.0) (2023-03-14)
+
+### Bug Fixes
+
+- **charts:** update peer dependencies ([#4280](https://github.com/SAP/ui5-webcomponents-react/issues/4280)) ([ce5e0d5](https://github.com/SAP/ui5-webcomponents-react/commit/ce5e0d5be758dd28a592b7698db95ff781b7543a))
+
+# [1.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.2...v1.10.0) (2023-03-06)
+
+### Features
+
+- **TimelineChart:** introduce new chart (experimental) ([#3921](https://github.com/SAP/ui5-webcomponents-react/issues/3921)) ([4b09939](https://github.com/SAP/ui5-webcomponents-react/commit/4b099391f9e7462a23767806ec2feabb44cda5fd))
+
+## [1.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.9.1...v1.9.2) (2023-02-27)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+# [1.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.8.1...v1.9.0) (2023-02-17)
+
+### Features
+
+- **LineChart:** fully allow customizing the internal `Line` component ([#4125](https://github.com/SAP/ui5-webcomponents-react/issues/4125)) ([42a0bc1](https://github.com/SAP/ui5-webcomponents-react/commit/42a0bc10b5d4ef293a970633bcd3d9de0e4421e7)), closes [#4124](https://github.com/SAP/ui5-webcomponents-react/issues/4124)
+
 # [1.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.7.2...v1.8.0) (2023-01-25)
 
 ### Bug Fixes

@@ -72,8 +72,4 @@ const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSw
 
 ProductSwitchItem.displayName = 'ProductSwitchItem';
 
-ProductSwitchItem.defaultProps = {
-  target: '_self'
-};
-
 export { ProductSwitchItem };

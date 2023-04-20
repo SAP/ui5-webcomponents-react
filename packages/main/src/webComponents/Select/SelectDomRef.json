@@ -1,0 +1,9 @@
+[
+  {
+    "name": "selectedOption",
+    "readonly": "true",
+    "visibility": "public",
+    "type": "sap.ui.webc.main.ISelectOption",
+    "description": "Currently selected <code>ui5-option</code> element."
+  }
+]

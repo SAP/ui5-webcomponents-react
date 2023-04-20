@@ -1,13 +1,13 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
 import { FlexBox, FlexBoxAlignItems, Label, Link, Text } from '@ui5/webcomponents-react';
 import React, { useContext } from 'react';
-import { GitHubLogo } from '../../.storybook/components/GitHub-Mark';
-import { Import } from '../../.storybook/components/Import';
-import { TableOfContent } from '../../.storybook/components/TableOfContent';
+import { GitHubLogo } from './GitHub-Mark';
+import { Import } from './Import';
+import { TableOfContent } from './TableOfContent';
 
 const Links = () => {
   const docsContext = useContext(DocsContext);
-  const isChart = docsContext.id.startsWith('charts-');
+  const isChart = docsContext.componentStories().at(0).id.startsWith('charts-');
 
   // const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
   // const folderPath = filePath.substr(0, filePath.lastIndexOf('/'));

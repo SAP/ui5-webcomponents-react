@@ -33,7 +33,7 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/dist/**/*.js'
           compression: 'gzip'
-          clean-script: 'clean:check-bundle-size'
+          clean-script: 'clean:remove-modules'
 
   install:
     name: 'Install Dependencies'
@@ -112,6 +112,8 @@ jobs:
         run: |
           yarn install --immutable
           yarn build:storybook
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1

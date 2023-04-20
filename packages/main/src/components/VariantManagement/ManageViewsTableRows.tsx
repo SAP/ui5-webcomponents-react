@@ -3,12 +3,11 @@ import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { ValueState } from '../../enums/ValueState';
+import { ButtonDesign, ValueState } from '../../enums';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
-  FILE_ALREADY_EXISTS,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   MARK_AS_FAVORITE,
   MARK_AS_STANDARD,
   PRIVATE,
@@ -18,13 +17,8 @@ import {
   UNSELECTED_AS_FAVORITE,
   VIEW
 } from '../../i18n/i18n-defaults';
-import { Button } from '../../webComponents/Button';
-import { CheckBox } from '../../webComponents/CheckBox';
-import { Icon } from '../../webComponents/Icon';
-import { Input } from '../../webComponents/Input';
-import { RadioButton } from '../../webComponents/RadioButton';
-import { TableCell } from '../../webComponents/TableCell';
-import { TableRow } from '../../webComponents/TableRow';
+import { trimAndRemoveSpaces } from '../../internal/utils';
+import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents';
 import { Text } from '../Text';
 import { VariantItemPropTypes } from './VariantItem';
 
@@ -70,7 +64,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextAlreadyExists = i18nBundle.getText(VARIANT_MANAGEMENT_ERROR_DUPLICATE);
   const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
   const publicText = i18nBundle.getText(PUBLIC);
   const privateText = i18nBundle.getText(PRIVATE);
@@ -95,14 +89,20 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     handleRowChange(e, { currentVariant: children, favorite: !internalFavorite });
   };
   const handleVariantInput = (e) => {
-    if (variantNames.includes(e.target.value) || Array.from(changedVariantNames.values()).includes(e.target.value)) {
+    if (typeof props.manageViewsInputProps?.onInput === 'function') {
+      props.manageViewsInputProps?.onInput(e);
+    }
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
+    if (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue)) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
-    } else if (e.target.value.length === 0) {
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
+    } else if (trimmedValue.length === 0) {
       setVariantNameInvalid(errorTextEmpty);
       setInvalidVariants((prev) => ({ ...prev, [children]: inputRef.current }));
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
+    } else if (e.isInvalid) {
+      setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
     } else {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
@@ -112,11 +112,18 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         }
         return invalidRows;
       });
-      handleRowChange(e, { currentVariant: children, children: e.target.value });
+      handleRowChange(e, { currentVariant: children, children: trimmedValue });
     }
+  };
+
+  const handleVariantChange = (e) => {
+    if (typeof props.manageViewsInputProps?.onChange === 'function') {
+      props.manageViewsInputProps?.onChange(e);
+    }
+    const trimmedValue = trimAndRemoveSpaces(e.target.value);
     setChangedVariantNames((prev) => {
       const currentChangedVariants = new Map(prev);
-      currentChangedVariants.set(children, e.target.value);
+      currentChangedVariants.set(children, trimmedValue);
       return currentChangedVariants;
     });
   };
@@ -144,11 +151,15 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     return (
       <Input
         placeholder={inputPlaceHolder}
+        ref={inputRef}
+        {...props.manageViewsInputProps}
+        valueStateMessage={props.manageViewsInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
+        valueState={
+          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Error)
+        }
         value={children}
         onInput={handleVariantInput}
-        ref={inputRef}
-        valueStateMessage={<div>{variantNameInvalid}</div>}
-        valueState={!variantNameInvalid ? ValueState.None : ValueState.Error}
+        onChange={handleVariantChange}
       />
     );
   };
@@ -198,7 +209,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       <TableCell>
         {!(hideDelete ?? global) && (
           <Button
-            title={a11yDeleteText}
+            tooltip={a11yDeleteText}
             accessibleName={a11yDeleteText}
             icon={declineIcon}
             design={ButtonDesign.Transparent}

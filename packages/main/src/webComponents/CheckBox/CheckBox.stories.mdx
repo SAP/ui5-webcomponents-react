@@ -1,10 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ArgsTableWithNote } from '@docs/ArgsTableWithNote';
+import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { CheckBox } from './index';
 import { ValueState } from '../../enums/ValueState';
-import { DocsHeader } from '@docs/DocsHeader';
-import { Footer } from '@docs/Footer';
-import Description from './CheckBoxDescription.md';
+import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import Description from './CheckBoxDescription.md?raw';
 
 <Meta
   title="Inputs / CheckBox"
@@ -31,9 +29,9 @@ import Description from './CheckBoxDescription.md';
 
 ## Properties
 
-<ArgsTableWithNote story="." />
+<ArgsTableWithNote story="Default" />
 
-<Description />
+<Markdown>{Description}</Markdown>
 
 # More Examples
 

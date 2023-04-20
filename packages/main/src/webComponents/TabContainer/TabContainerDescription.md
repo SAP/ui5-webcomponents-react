@@ -2,8 +2,8 @@
 
 The `TabContainer` can hold two types of entities:
 
-*   `Tab` - contains all the information on an item (text and icon)
-*   `TabSeparator` - used to separate tabs with a line
+- `Tab` - contains all the information on an item (text and icon)
+- `TabSeparator` - used to separate tabs with a line
 
 ## Hierarchies
 
@@ -14,7 +14,7 @@ Multiple sub tabs could be placed underneath one main tab. Nesting allows deeper
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
 The `TabContainer` exposes the following CSS Shadow Parts:
 
-*   content - Used to style the content of the component
+- content - Used to style the content of the component
 
 ## Keyboard Handling
 

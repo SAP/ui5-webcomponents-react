@@ -1,0 +1,41 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './AnalyticalTable.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin: useOnColumnResize" />
+
+# AnalyticalTable Plugin: useOnColumnResize
+
+<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+
+The `useOnColumnResize` plugin hook allows firing a callback when a columns size has changed by dragging the "Resizer".
+The first parameter is the callback itself (`e: { columnWidth: number; header: Record<string, any> }) => void;`), the second one are the optional `options` for controlling how often the callback should fire.
+
+`options`:
+
+- `liveUpdate`: If `liveUpdate` is `true`, the resize function will fire every time the width has changed depending on the `options.wait` delay.
+- `wait`: The number of milliseconds for which the calls are to be delayed. **Defaults to `100`**. (Only has an effect if `liveUpdate` is `true`)
+
+## Example
+
+<Canvas sourceState="none" of={ComponentStories.PluginOnColumnResize} />
+
+```jsx
+const TableComponent = (props) => {
+  const handleColumResize = (e) => {
+    console.log(e.columnWidth, e.header);
+  };
+  return (
+    <AnalyticalTable
+      data={props.data}
+      columns={props.columns}
+      tableHooks={[
+        AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
+          liveUpdate: false,
+          wait: 100
+        })
+      ]}
+    />
+  );
+};
+```

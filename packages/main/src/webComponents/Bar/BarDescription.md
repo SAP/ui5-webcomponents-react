@@ -12,7 +12,7 @@ The default slot will be centered in the available space between the startConten
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
 The `Bar` exposes the following CSS Shadow Parts:
 
-*   bar - Used to style the wrapper of the content of the component
+- bar - Used to style the wrapper of the content of the component
 
 ## Keyboard Handling
 
