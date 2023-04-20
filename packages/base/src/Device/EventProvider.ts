@@ -1,4 +1,4 @@
-import { EventProvider as EventProviderWC } from '@ui5/webcomponents-base';
+import EventProviderWC from '@ui5/webcomponents-base/dist/EventProvider.js';
 
 export type RANGE_LEGACY_4_STEPS = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
 
