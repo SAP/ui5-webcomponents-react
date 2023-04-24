@@ -245,7 +245,11 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
           )}
         </FlexBox>
       )}
-      <FlexBox alignItems={FlexBoxAlignItems.Center} style={{ flexGrow: 1, width: '100%' }}>
+      <FlexBox
+        alignItems={FlexBoxAlignItems.Center}
+        className={classes.middleSection}
+        data-component-name="DynamicPageTitleMiddleSection"
+      >
         <FlexBox className={classes.titleMainSection}>
           {header && (
             <div className={classes.title} data-component-name="DynamicPageTitleHeader">
