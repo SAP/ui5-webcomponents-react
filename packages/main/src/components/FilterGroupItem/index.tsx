@@ -19,7 +19,7 @@ addCustomCSSWithScoping(
   `
 /* hide navigated cell */
 :host([data-component-name="FilterBarDialogTableRow"]) .ui5-table-row-navigated {
- width: 0;
+ display:none;
 }
 `
 );

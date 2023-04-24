@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.0...v1.13.1) (2023-04-14)
+
+### Bug Fixes
+
+- **AnalyticalTable:** use unique id for header cells ([#4479](https://github.com/SAP/ui5-webcomponents-react/issues/4479)) ([f618647](https://github.com/SAP/ui5-webcomponents-react/commit/f618647c15ddba965a55a8bd1bb15bc792a7162e)), closes [#4462](https://github.com/SAP/ui5-webcomponents-react/issues/4462)
+- **deps:** update dependency tocbot to v4.21.0 ([#4463](https://github.com/SAP/ui5-webcomponents-react/issues/4463)) ([6669759](https://github.com/SAP/ui5-webcomponents-react/commit/66697598f86b4c97cb29284b8f0b6ff42dccb039))
+- **deps:** update ui5 web components to v1.12.1 (patch) ([#4481](https://github.com/SAP/ui5-webcomponents-react/issues/4481)) ([419c7b0](https://github.com/SAP/ui5-webcomponents-react/commit/419c7b01d1043ee5a265b6439af2519b70557ab7))
+- **deps:** update ui5 web components to v1.12.2 (patch) ([#4493](https://github.com/SAP/ui5-webcomponents-react/issues/4493)) ([311d4bc](https://github.com/SAP/ui5-webcomponents-react/commit/311d4bc360673d43daf3b29d8375aae408835b5f))
+- **FilterBar:** don't show navigated-cell in filters-dialog table ([#4490](https://github.com/SAP/ui5-webcomponents-react/issues/4490)) ([81aa29e](https://github.com/SAP/ui5-webcomponents-react/commit/81aa29e964f8c34e78125d1d18e7acde94175f0d))
+- **Form:** apply props to correct element ([#4484](https://github.com/SAP/ui5-webcomponents-react/issues/4484)) ([b726f12](https://github.com/SAP/ui5-webcomponents-react/commit/b726f12623bfb41a3eed1981410ba3c8ec6c6337)), closes [#4430](https://github.com/SAP/ui5-webcomponents-react/issues/4430)
+- **TreeItemCustom - TypeScript:** omit `content` HTMLAttribute from PropTypes ([#4476](https://github.com/SAP/ui5-webcomponents-react/issues/4476)) ([0b37829](https://github.com/SAP/ui5-webcomponents-react/commit/0b37829efe8b21d2b4950cc75e14e4fa976082af))
+
 # [1.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.12.0...v1.13.0) (2023-04-04)
 
 ### Bug Fixes
