@@ -431,6 +431,24 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('@search').should('have.callCount', 11);
   });
 
+  it('show no colon for empty label', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem>
+          <Input />
+        </FilterGroupItem>
+        <FilterGroupItem label="Input">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    cy.get('[show-colon="true"]').should('have.length', 1);
+    cy.findByText('Filters').click();
+    cy.findByText('Show Values').click();
+    cy.get('[show-colon="true"]').should('have.length', 2);
+  });
+
   mountWithCustomTagName(FilterBar);
 
   cypressPassThroughTestsFactory(FilterBar);
