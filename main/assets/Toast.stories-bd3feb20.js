@@ -1,0 +1,67 @@
+import{M as x,C as T,f as w,a as y}from"./chunk-PCJTTTQV-b0180856.js";import{T as l,a as d}from"./index-529c6090.js";import{j as e}from"./jsx-runtime-b5ed1ca8.js";import{r}from"./index-64f120e9.js";import{r as g}from"./index-7bf58b0a.js";import{B as u}from"./index-b1a7e68f.js";import{d as j}from"./DomRefTable.module-2539c24a.js";import{D as v}from"./DocsHeader-9714759e.js";import{F as S}from"./Footer-56d98619.js";import{D as C}from"./DomRefTable-65651b98.js";import{u as c}from"./index-de4e61b4.js";import"./iframe-6a31bc73.js";import"../sb-preview/runtime.mjs";import"./react-18-1e96cd1b.js";import"./mapValues-30a52a16.js";import"./_baseForOwn-931ad773.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./inheritsLoose-93e09647.js";import"./_getPrototype-e1b46df2.js";import"./_baseUniq-5a3eb61c.js";import"./index-356e4a49.js";import"./Integer-f7f172c9.js";import"./UI5Element-e8adceda.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-d0e572fe.js";import"./utils-d29e59c7.js";import"./useIsomorphicLayoutEffect-4a8db993.js";import"./PopupUtils-6ec841a6.js";import"./getActiveElement-bcae01ed.js";import"./style-map-02d033ae.js";import"./Button-3c41aad1.js";import"./Icon-46afc304.js";import"./Icons-5b18f7d2.js";import"./slot-76e48863.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-254d6b69.js";import"./chunk-R4NKYYJA-96bb58e6.js";import"./react-jss.esm-a429ae4e.js";import"./index-eed85d68.js";import"./decline-7cb41e3a.js";import"./i18n-defaults-80781f7e.js";import"./information-2c502181.js";import"./class-map-fc32fe45.js";import"./index-336951e7.js";import"./clsx.m-1229b3e0.js";import"./index-d460da36.js";import"./ThemingParameters-f4b4144e.js";import"./Import-f19a2ffd.js";import"./TableOfContent-18b07dd7.js";import"./index-25317c5d.js";import"./Link-20aa90b6.js";import"./WrappingType-b81e595a.js";import"./index-639f8eb3.js";import"./Label-51e2d33c.js";import"./index-e85c7628.js";import"./Popover-f0a3f494.js";import"./PopupsCommon.css-2a26d007.js";import"./FocusableElements-5012f8d0.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-e40faf20.js";import"./ResizeHandler-9d370fcd.js";import"./MediaRange-25b98f31.js";const s=r.forwardRef((o,n)=>g.createPortal(e.jsx(l,{...o,ref:n}),document.body));s.displayName="Toast";try{s.displayName="Toast",s.__docgenInfo={description:"",displayName:"Toast",props:{children:{defaultValue:null,description:`Defines the text of the component.
+
+**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.`,name:"children",required:!1,type:{name:"ReactNode | ReactNode[]"}},duration:{defaultValue:null,description:"Defines the duration in milliseconds for which component remains on the screen before it's automatically closed.\n\n**Note:** The minimum supported value is `500` ms and even if a lower value is set, the duration would remain `500` ms.",name:"duration",required:!1,type:{name:"number"}},placement:{defaultValue:null,description:"Defines the placement of the component.\n\nAvailable options are:\n\n*   `TopStart`\n*   `TopCenter`\n*   `TopEnd`\n*   `MiddleStart`\n*   `MiddleCenter`\n*   `MiddleEnd`\n*   `BottomStart`\n*   `BottomCenter`\n*   `BottomEnd`",name:"placement",required:!1,type:{name:"enum",value:[{value:'"TopStart"'},{value:'"TopCenter"'},{value:'"TopEnd"'},{value:'"MiddleStart"'},{value:'"MiddleCenter"'},{value:'"MiddleEnd"'},{value:'"BottomStart"'},{value:'"BottomCenter"'},{value:'"BottomEnd"'},{value:'"TopStart"'},{value:'"TopCenter"'},{value:'"TopEnd"'},{value:'"MiddleStart"'},{value:'"MiddleCenter"'},{value:'"MiddleEnd"'},{value:'"BottomStart"'},{value:'"BottomCenter"'},{value:'"BottomEnd"'}]}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}}}}}catch{}const M=`## Usage
+
+### When to use:
+
+- You want to display a short success or information message.
+- You do not want to interrupt users while they are performing an action.
+- You want to confirm a successful action.
+
+### When not to use:
+
+- You want to display error or warning message.
+- You want to interrupt users while they are performing an action.
+- You want to make sure that users read the message before they leave the page.
+- You want users to be able to copy some part of the message text.
+`,b=[{name:"show",visibility:"public",description:"Shows the component."}];function D(o={}){const{wrapper:n}=Object.assign({},c(),o.components);return n?e.jsx(n,{...o,children:e.jsx(a,{})}):a();function a(){const t=Object.assign({h2:"h2",p:"p",code:"code",strong:"strong",pre:"pre"},c(),o.components);return e.jsxs(e.Fragment,{children:[e.jsx(x,{title:"Modals & Popovers / Toast",component:l,argTypes:{children:{control:"text"}},args:{placement:d.BottomCenter,children:"Toast Text"},parameters:{chromatic:{delay:1e3}}}),`
+`,e.jsx(v,{since:"0.9.0"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(t.h2,{id:"show-a-toast",children:"Show a toast"}),`
+`,e.jsxs(t.p,{children:["The ",e.jsx(t.code,{children:"Toast"}),` component has an imperative API for getting displayed. It will not be displayed just because it is part of the DOM.
+In order to show the Toast, you have to get a reference to the `,e.jsx(t.code,{children:"Toast"})," DOM element and call the ",e.jsx(t.code,{children:"show"}),`-method.
+You can either access the DOM element by using a React `,e.jsx(t.code,{children:"ref"})," or work with IDs."]}),`
+`,e.jsx(t.p,{children:e.jsx(t.strong,{children:"Example"})}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-jsx",children:`export const MyComponentWithAToast() {
+  const toast = useRef(null);
+
+  const showToast = () => {
+    toast.current.show();
+  };
+  return (
+    <ThemeProvider>
+      <Button onClick={showToast}>Show Toast</Button>
+      <Toast ref={toast}>This is my Toast!</Toast>
+    </ThemeProvider>
+  );
+}
+`})}),`
+`,e.jsx("br",{}),`
+`,e.jsx(t.h2,{id:"example",children:"Example"}),`
+`,e.jsx(T,{children:e.jsx(w,{name:"Default",children:m=>{const p=r.useRef(null),f=()=>{p.current.show()};return r.useEffect(()=>{},[]),e.jsxs(e.Fragment,{children:[e.jsx(s,{ref:p,duration:m.duration,placement:m.placement,children:m.children}),e.jsx(u,{onClick:f,children:"Show Toast"})]})}})}),`
+`,e.jsx(t.h2,{id:"properties",children:"Properties"}),`
+`,e.jsx(j,{story:"Default"}),`
+`,e.jsx(y,{children:M}),`
+`,e.jsx(C,{rows:b}),`
+`,e.jsx(S,{})]})}}const h=o=>{const n=r.useRef(null),a=()=>{n.current.show()};return r.useEffect(()=>{},[]),e.jsxs(e.Fragment,{children:[e.jsx(s,{ref:n,duration:o.duration,placement:o.placement,children:o.children}),e.jsx(u,{onClick:a,children:"Show Toast"})]})};h.storyName="Default";h.parameters={storySource:{source:`args => {
+  const toast = useRef(null);
+
+  const showToast = () => {
+    toast.current.show();
+  };
+
+  useEffect(() => {
+    if (isChromatic) {
+      toast.current.show();
+    }
+  }, []);
+  return <>
+          <Toast ref={toast} duration={args.duration} placement={args.placement}>
+            {args.children}
+          </Toast>
+          <Button onClick={showToast}>Show Toast</Button>
+        </>;
+}`}};const i={title:"Modals & Popovers / Toast",parameters:{chromatic:{delay:1e3}},component:l,args:{placement:d.BottomCenter,children:"Toast Text"},argTypes:{children:{control:"text"}},tags:["stories-mdx"],includeStories:["defaultStory"]};i.parameters=i.parameters||{};i.parameters.docs={...i.parameters.docs||{},page:D};const Fe=["defaultStory"];export{Fe as __namedExportsOrder,i as default,h as defaultStory};
+//# sourceMappingURL=Toast.stories-bd3feb20.js.map
