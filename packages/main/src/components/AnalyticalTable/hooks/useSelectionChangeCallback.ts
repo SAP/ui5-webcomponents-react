@@ -21,15 +21,13 @@ export const useSelectionChangeCallback = (hooks) => {
           };
 
           if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.MultiSelect) {
-            const selectedRowIdsArray = Object.entries(selectedRowIds).reduce((acc, [key, val]) => {
-              if (val) {
-                return [...acc, key];
-              }
-              return acc;
-            }, []);
             // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
             const tempRowsById = filters?.length > 0 ? preFilteredRowsById : rowsById;
-            const selectedRowIdsArrayMapped = selectedRowIdsArray.map((item) => tempRowsById[item]);
+
+            const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).flatMap((key) =>
+              selectedRowIds[key] ? tempRowsById[key] : []
+            );
+
             payload.selectedFlatRows = selectedRowIdsArrayMapped;
             if (selectedRowIdsArrayMapped.length === Object.keys(tempRowsById).length) {
               payload.allRowsSelected = true;
