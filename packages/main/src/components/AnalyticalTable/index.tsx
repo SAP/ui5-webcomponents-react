@@ -257,7 +257,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Defines whether this column should allow multi-sort.
    *
-   * __Note:__ If sorted on a column that doesn't allow multi-sort, only the current column will be sorted and all other sorted columns will be reset.
+   * __Note:__ When sorting by a column that does not allow multiple sorting, only the current column is sorted and all other sorted columns are reset.
    */
   enableMultiSort?: boolean;
 
