@@ -3,7 +3,7 @@ import {
   setCustomElementsScopingRules
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useReducer, useState } from 'react';
-import { Bar, Button, Switch } from '../webComponents';
+import { Bar, Button, Switch } from '../webComponents/index.js';
 
 describe('withWebComponent', () => {
   it('Unmount Event Handlers correctly after prop update', () => {
