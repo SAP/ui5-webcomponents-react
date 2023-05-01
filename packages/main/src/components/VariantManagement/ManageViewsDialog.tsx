@@ -16,7 +16,7 @@ import {
   VIEW,
   SEARCH
 } from '../../i18n/i18n-defaults';
-import { useCanRenderPortal } from '../../internal/ssr';
+import { useCanRenderPortal } from '../../internal/ssr.js';
 import { Icon, Input } from '../../webComponents';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';

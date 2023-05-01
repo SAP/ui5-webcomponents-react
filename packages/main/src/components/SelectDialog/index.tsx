@@ -13,7 +13,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums/index.js';
-import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
+import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
 import {
   Button,

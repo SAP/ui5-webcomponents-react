@@ -15,9 +15,9 @@ import {
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
-} from '../../i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults.js';
 import { CommonProps } from '../../interfaces';
-import { flattenFragments } from '../../internal/utils';
+import { flattenFragments } from '../../internal/utils.js';
 import { Icon } from '../../webComponents';
 import styles from './AnalyticalCardHeader.jss';
 

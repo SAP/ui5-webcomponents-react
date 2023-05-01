@@ -17,7 +17,15 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ToolbarStyle } from '../../enums/index.js';
-import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
+import {
+  ADAPT_FILTERS,
+  CLEAR,
+  FILTERS,
+  GO,
+  HIDE_FILTER_BAR,
+  RESTORE,
+  SHOW_FILTER_BAR
+} from '../../i18n/i18n-defaults.js';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
 import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';

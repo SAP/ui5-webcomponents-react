@@ -28,9 +28,9 @@ import {
   SUCCESS,
   WARNING,
   YES
-} from '../../i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults.js';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { stopPropagation } from '../../internal/stopPropagation';
+import { stopPropagation } from '../../internal/stopPropagation.js';
 import { Button, ButtonPropTypes, Dialog, DialogDomRef, DialogPropTypes, Icon, Title } from '../../webComponents';
 import { Text } from '../Text';
 import styles from './MessageBox.jss';

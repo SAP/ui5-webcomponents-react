@@ -14,11 +14,11 @@ import {
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
   VIEW
-} from '../../i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults.js';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { trimAndRemoveSpaces } from '../../internal/utils';
-import { SelectedVariant } from '../../internal/VariantManagementContext';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { trimAndRemoveSpaces } from '../../internal/utils.js';
+import { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import {
   Bar,
   Button,

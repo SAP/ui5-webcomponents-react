@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext';
+import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 import { SplitterElementPropTypes } from '../SplitterElement';
 import { styles } from './SplitterLayout.jss';
 import { useConcatSplitterElements } from './useConcatSplitterElements';

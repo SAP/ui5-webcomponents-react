@@ -2,7 +2,7 @@
 
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useContext, useEffect } from 'react';
-import { VariantManagementContext } from '../../internal/VariantManagementContext';
+import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import { InputPropTypes } from '../../webComponents';
 import {
   StandardListItem,

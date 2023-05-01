@@ -5,7 +5,7 @@ import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/di
 import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
 import React, { FC, ReactNode } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
-import { I18nProvider } from '../../internal/I18nProvider';
+import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss';
 

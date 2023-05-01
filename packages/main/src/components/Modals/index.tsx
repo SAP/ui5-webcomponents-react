@@ -1,8 +1,8 @@
 'use client';
 
 import { createRef, Dispatch, MutableRefObject, RefObject, useCallback } from 'react';
-import { getRandomId } from '../../internal/getRandomId';
-import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';
+import { getRandomId } from '../../internal/getRandomId.js';
+import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext.js';
 import {
   Dialog,
   DialogDomRef,

@@ -7,7 +7,7 @@ import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { MessageViewContext } from '../../internal/MessageViewContext';
+import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem';
 import { Icon } from '../../webComponents/Icon';
 import { Label } from '../../webComponents/Label';

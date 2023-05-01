@@ -17,9 +17,9 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
-import { useObserveHeights } from '../../internal/useObserveHeights';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
+import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';

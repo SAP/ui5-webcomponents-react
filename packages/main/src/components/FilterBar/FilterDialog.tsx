@@ -32,11 +32,11 @@ import {
   SHOW_VALUES,
   VISIBLE,
   VISIBLE_AND_ACTIVE
-} from '../../i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults.js';
 import { Ui5CustomEvent } from '../../interfaces';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
 import {
   Bar,
   Button,

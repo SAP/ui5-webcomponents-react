@@ -6,7 +6,7 @@ import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, us
 import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
-import { useObserveHeights } from '../../internal/useObserveHeights';
+import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
 import { DynamicPageCssVariables, styles } from './DynamicPage.jss';

@@ -18,8 +18,8 @@ import React, {
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { flattenFragments } from '../../internal/utils';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { flattenFragments } from '../../internal/utils.js';
 import { PopoverDomRef } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
 import { Toolbar, ToolbarPropTypes } from '../Toolbar';

@@ -19,7 +19,7 @@ import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../en
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { MessageViewContext } from '../../internal/MessageViewContext';
+import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { Bar } from '../../webComponents/Bar';
 import { Button } from '../../webComponents/Button';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';

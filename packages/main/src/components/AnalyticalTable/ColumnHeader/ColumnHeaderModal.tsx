@@ -14,10 +14,10 @@ import {
   PopoverPlacementType,
   TextAlign
 } from '../../../enums/index.js';
-import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
-import { useCanRenderPortal } from '../../../internal/ssr';
-import { stopPropagation } from '../../../internal/stopPropagation';
-import { getUi5TagWithSuffix } from '../../../internal/utils';
+import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
+import { useCanRenderPortal } from '../../../internal/ssr.js';
+import { stopPropagation } from '../../../internal/stopPropagation.js';
+import { getUi5TagWithSuffix } from '../../../internal/utils.js';
 import { CustomListItem } from '../../../webComponents/CustomListItem';
 import { Icon } from '../../../webComponents/Icon';
 import { List } from '../../../webComponents/List';

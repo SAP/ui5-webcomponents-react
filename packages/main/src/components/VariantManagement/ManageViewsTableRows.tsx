@@ -16,8 +16,8 @@ import {
   SPECIFY_VIEW_NAME,
   UNSELECTED_AS_FAVORITE,
   VIEW
-} from '../../i18n/i18n-defaults';
-import { trimAndRemoveSpaces } from '../../internal/utils';
+} from '../../i18n/i18n-defaults.js';
+import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents';
 import { Text } from '../Text';
 import { VariantItemPropTypes } from './VariantItem';

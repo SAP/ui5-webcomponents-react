@@ -4,7 +4,7 @@ import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webco
 import React, { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../../../enums/index.js';
-import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping';
+import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping.js';
 import { Button, Icon } from '../../../../webComponents';
 
 //todo: use ::part when available: https://github.com/SAP/ui5-webcomponents/issues/6474

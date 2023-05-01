@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { stopPropagation } from '../../../../internal/stopPropagation';
+import { stopPropagation } from '../../../../internal/stopPropagation.js';
 import { Input } from '../../../../webComponents/Input';
 
 export const DefaultFilterComponent: FC<any> = ({ column }) => {

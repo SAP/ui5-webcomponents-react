@@ -1,5 +1,5 @@
 import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums/index.js';
-import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils';
+import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils.js';
 import { FlexBox } from './index';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 

@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { LoaderType } from '../../enums/index.js';
-import { PLEASE_WAIT } from '../../i18n/i18n-defaults';
+import { PLEASE_WAIT } from '../../i18n/i18n-defaults.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './Loader.jss';
 

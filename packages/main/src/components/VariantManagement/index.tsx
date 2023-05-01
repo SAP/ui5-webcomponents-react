@@ -28,11 +28,11 @@ import {
   PopoverPlacementType,
   TitleLevel
 } from '../../enums/index.js';
-import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
+import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import {
   Bar,
   Button,

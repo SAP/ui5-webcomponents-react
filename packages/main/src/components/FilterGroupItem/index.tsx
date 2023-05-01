@@ -6,7 +6,7 @@ import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { Icon, TableCell, TableRow } from '../../webComponents';
 import { BusyIndicator } from '../../webComponents/BusyIndicator';
 import { Label } from '../../webComponents/Label';
