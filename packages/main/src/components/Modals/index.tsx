@@ -20,7 +20,7 @@ import {
   ToastDomRef,
   ToastPropTypes
 } from '../../webComponents/index.js';
-import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
+import { MessageBox, MessageBoxPropTypes } from '../MessageBox/index.js';
 
 type ModalReturnType<DomRef> = {
   ref: RefObject<DomRef>;

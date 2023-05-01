@@ -11,8 +11,8 @@ import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Label } from '../../webComponents/Label/index.js';
-import { FlexBox } from '../FlexBox';
-import { getIconNameForType } from './utils';
+import { FlexBox } from '../FlexBox/index.js';
+import { getIconNameForType } from './utils.js';
 
 export interface MessageItemPropTypes extends CommonProps {
   /**

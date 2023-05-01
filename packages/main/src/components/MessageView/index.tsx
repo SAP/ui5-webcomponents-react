@@ -27,9 +27,9 @@ import { List } from '../../webComponents/List/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
-import { FlexBox } from '../FlexBox';
-import type { MessageItemPropTypes } from './MessageItem';
-import { getIconNameForType } from './utils';
+import { FlexBox } from '../FlexBox/index.js';
+import type { MessageItemPropTypes } from './MessageItem.js';
+import { getIconNameForType } from './utils.js';
 
 export interface MessageViewDomRef extends HTMLDivElement {
   /**

@@ -1,9 +1,9 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
-import type { ScrollToRefType } from '../interfaces.js';
-import { EmptyRow } from './EmptyRow';
-import { RowSubComponent as SubComponent } from './RowSubComponent';
+import type { ScrollToRefType } from '../interfaces/index.js';
+import { EmptyRow } from './EmptyRow.js';
+import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;

@@ -10,7 +10,7 @@ import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Icon, TableCell, TableRow } from '../../webComponents/index.js';
 import { Label } from '../../webComponents/Label/index.js';
-import { FlexBox } from '../FlexBox';
+import { FlexBox } from '../FlexBox/index.js';
 import styles from './FilterGroupItem.jss.js';
 
 addCustomCSSWithScoping(

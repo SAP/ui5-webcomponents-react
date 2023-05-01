@@ -40,7 +40,7 @@ import {
   Icon,
   Title
 } from '../../webComponents/index.js';
-import { Text } from '../Text';
+import { Text } from '../Text/index.js';
 import styles from './MessageBox.jss.js';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;

@@ -35,13 +35,13 @@ import {
   TableDomRef,
   TableRowDomRef
 } from '../../webComponents/index.js';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem';
-import { Toolbar } from '../Toolbar';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ToolbarSpacer } from '../ToolbarSpacer';
+import { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import { Toolbar } from '../Toolbar/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBar.jss.js';
-import { FilterDialog } from './FilterDialog';
-import { filterValue, renderSearchWithValue, syncRef } from './utils';
+import { FilterDialog } from './FilterDialog.js';
+import { filterValue, renderSearchWithValue, syncRef } from './utils.js';
 
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();

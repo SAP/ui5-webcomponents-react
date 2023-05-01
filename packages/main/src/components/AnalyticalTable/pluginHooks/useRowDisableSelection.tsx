@@ -2,7 +2,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
-import { getBy } from '../util';
+import { getBy } from '../util/index.js';
 
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
 

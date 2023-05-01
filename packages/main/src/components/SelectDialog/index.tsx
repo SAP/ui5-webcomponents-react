@@ -31,8 +31,8 @@ import {
   StandardListItemDomRef,
   Title
 } from '../../webComponents/index.js';
-import { Text } from '../Text';
-import { Toolbar } from '../Toolbar';
+import { Text } from '../Text/index.js';
+import { Toolbar } from '../Toolbar/index.js';
 
 const useStyles = createUseStyles(
   {

@@ -6,9 +6,9 @@ import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffe
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
-import { SplitterElementPropTypes } from '../SplitterElement';
+import { SplitterElementPropTypes } from '../SplitterElement/index.js';
 import { styles } from './SplitterLayout.jss.js';
-import { useConcatSplitterElements } from './useConcatSplitterElements';
+import { useConcatSplitterElements } from './useConcatSplitterElements.js';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 

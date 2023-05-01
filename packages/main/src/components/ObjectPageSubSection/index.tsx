@@ -7,7 +7,7 @@ import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
-import { FlexBox } from '../FlexBox';
+import { FlexBox } from '../FlexBox/index.js';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**

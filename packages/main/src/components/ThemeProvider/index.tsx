@@ -6,7 +6,7 @@ import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents
 import React, { FC, ReactNode } from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { I18nProvider } from '../../internal/I18nProvider.js';
-import { ModalsProvider } from '../Modals/ModalsProvider';
+import { ModalsProvider } from '../Modals/ModalsProvider.js';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss.js';
 
 const useStyles = createUseStyles(GlobalStyleClassesStyles, {

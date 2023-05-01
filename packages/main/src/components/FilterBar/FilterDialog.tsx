@@ -55,12 +55,12 @@ import {
   TableRowDomRef,
   Title
 } from '../../webComponents/index.js';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem';
-import { FlexBox } from '../FlexBox';
-import { Toolbar } from '../Toolbar';
-import { ToolbarSpacer } from '../ToolbarSpacer';
+import { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { Toolbar } from '../Toolbar/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBarDialog.jss.js';
-import { filterValue, syncRef } from './utils';
+import { filterValue, syncRef } from './utils.js';
 
 addCustomCSSWithScoping(
   'ui5-table',

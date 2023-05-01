@@ -22,11 +22,11 @@ import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
-import { CollapsedAvatar } from './CollapsedAvatar';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
+import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { styles } from './ObjectPage.jss.js';
-import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils';
+import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',

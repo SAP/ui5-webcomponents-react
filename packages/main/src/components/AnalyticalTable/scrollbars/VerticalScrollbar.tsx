@@ -4,7 +4,7 @@ import React, { forwardRef, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
-import { FlexBox } from '../../FlexBox';
+import { FlexBox } from '../../FlexBox/index.js';
 
 interface VerticalScrollbarProps {
   internalRowHeight: number;

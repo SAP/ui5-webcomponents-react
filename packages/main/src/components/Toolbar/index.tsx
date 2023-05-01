@@ -30,7 +30,7 @@ import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
-import { OverflowPopover } from './OverflowPopover';
+import { OverflowPopover } from './OverflowPopover.js';
 import { styles } from './Toolbar.jss.js';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });

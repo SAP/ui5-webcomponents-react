@@ -15,7 +15,7 @@ import {
   SHARING,
   VIEW,
   SEARCH
-} from '../../i18n/i18n-defaults';
+} from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
@@ -23,9 +23,9 @@ import { Dialog } from '../../webComponents/Dialog/index.js';
 import { Icon, Input } from '../../webComponents/index.js';
 import { Table } from '../../webComponents/Table/index.js';
 import { TableColumn } from '../../webComponents/TableColumn/index.js';
-import { FlexBox } from '../FlexBox';
-import { ManageViewsTableRows } from './ManageViewsTableRows';
-import { VariantItemPropTypes } from './VariantItem';
+import { FlexBox } from '../FlexBox/index.js';
+import { ManageViewsTableRows } from './ManageViewsTableRows.js';
+import { VariantItemPropTypes } from './VariantItem.js';
 
 const styles = {
   manageViewsDialog: {

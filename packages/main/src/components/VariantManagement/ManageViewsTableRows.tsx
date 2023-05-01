@@ -19,8 +19,8 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
-import { Text } from '../Text';
-import { VariantItemPropTypes } from './VariantItem';
+import { Text } from '../Text/index.js';
+import { VariantItemPropTypes } from './VariantItem.js';
 
 interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   variantNames: string[];
