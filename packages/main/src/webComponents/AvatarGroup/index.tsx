@@ -4,9 +4,9 @@ import '@ui5/webcomponents/dist/AvatarGroup.js';
 import { ReactNode } from 'react';
 import { AvatarGroupType, AvatarColorScheme } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import { UI5WCSlotsNode } from '../../types/index.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarGroupAttributes {
   /**

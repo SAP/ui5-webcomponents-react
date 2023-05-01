@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Calendar.js';
 import { ReactNode } from 'react';
 import { CalendarSelectionMode, CalendarType } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface CalendarAttributes {
