@@ -16,7 +16,7 @@ import {
   OverflowToolbarToggleButton,
   ToolbarPropTypes
 } from '../..';
-import { ButtonDesign, ToolbarDesign } from '../../enums';
+import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {

@@ -25,7 +25,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ToolbarDesign, ToolbarStyle } from '../../enums';
+import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils';

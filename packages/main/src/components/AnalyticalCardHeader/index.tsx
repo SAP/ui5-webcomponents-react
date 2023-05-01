@@ -6,7 +6,7 @@ import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviationIndicator, ValueColor } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
   ARIA_DESC_CARD_HEADER,
   NUMERICCONTENT_DEVIATION_DOWN,

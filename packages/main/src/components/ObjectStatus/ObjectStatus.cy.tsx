@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ValueState, IndicationColor } from '../../enums';
+import { ValueState, IndicationColor } from '../../enums/index.js';
 import { Icon } from '../../webComponents';
 import { ObjectStatus } from './index';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';

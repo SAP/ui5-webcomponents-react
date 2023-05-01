@@ -1,4 +1,4 @@
-import { GridPosition } from '../../enums';
+import { GridPosition } from '../../enums/index.js';
 import { Grid } from './index';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 

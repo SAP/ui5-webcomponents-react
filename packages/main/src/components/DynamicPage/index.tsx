@@ -4,7 +4,7 @@ import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from 
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
+import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
 import { useObserveHeights } from '../../internal/useObserveHeights';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';

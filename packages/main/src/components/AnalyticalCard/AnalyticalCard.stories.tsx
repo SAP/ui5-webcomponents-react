@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LineChart } from '@ui5/webcomponents-react-charts';
-import { DeviationIndicator, ValueColor } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { AnalyticalCard } from './index.js';

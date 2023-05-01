@@ -16,7 +16,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FormBackgroundDesign, TitleLevel } from '../../enums';
+import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
 import { Title } from '../../webComponents';
 import { FormGroupTitle } from '../FormGroup/FormGroupTitle';

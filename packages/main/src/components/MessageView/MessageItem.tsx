@@ -5,10 +5,7 @@ import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-ba
 import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { ListItemType } from '../../enums/ListItemType';
-import { ValueState } from '../../enums/ValueState';
+import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { MessageViewContext } from '../../internal/MessageViewContext';
 import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem';

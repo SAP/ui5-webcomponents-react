@@ -4,8 +4,7 @@ import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base'
 import React, { Children, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
-import { ButtonDesign } from '../../enums/ButtonDesign';
+import { BarDesign, FlexBoxAlignItems, FlexBoxDirection, ButtonDesign } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,

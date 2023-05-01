@@ -27,7 +27,7 @@ import {
   ListMode,
   PopoverPlacementType,
   TitleLevel
-} from '../../enums';
+} from '../../enums/index.js';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
 import { useCanRenderPortal } from '../../internal/ssr';

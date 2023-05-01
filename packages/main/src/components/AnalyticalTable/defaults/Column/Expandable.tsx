@@ -3,7 +3,7 @@ import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-ar
 import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../../../enums';
+import { ButtonDesign } from '../../../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping';
 import { Button, Icon } from '../../../../webComponents';
 

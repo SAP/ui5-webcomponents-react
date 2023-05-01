@@ -3,7 +3,7 @@ import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, PopoverPlacementType } from '../../enums';
+import { ButtonDesign, PopoverPlacementType } from '../../enums/index.js';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
 import { useCanRenderPortal } from '../../internal/ssr';
 import { stopPropagation } from '../../internal/stopPropagation';

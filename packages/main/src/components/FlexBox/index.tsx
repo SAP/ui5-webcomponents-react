@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import React, { ElementType, forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { styles } from './FlexBox.jss';
 

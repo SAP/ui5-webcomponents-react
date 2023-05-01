@@ -1,5 +1,5 @@
 import { CompactSizes, CozySizes, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
+import { GlobalStyleClasses } from '../../enums/index.js';
 import { baseParameters } from '../../themes/base';
 import { sapBelizeParameters } from '../../themes/sap_belize';
 import { sapBelizeHcbParameters } from '../../themes/sap_belize_hcb';

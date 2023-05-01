@@ -12,7 +12,7 @@ import {
   PopupAccessibleRole,
   TitleLevel,
   ValueState
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,

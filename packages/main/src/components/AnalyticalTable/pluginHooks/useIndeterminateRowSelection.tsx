@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 
 type onIndeterminateChange = (e: {
   indeterminateRowsById: Record<string | number, boolean>;

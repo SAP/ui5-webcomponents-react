@@ -7,11 +7,13 @@ import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/w
 import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
-import { ListItemType } from '../../../enums/ListItemType';
-import { PopoverHorizontalAlign } from '../../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../../enums/PopoverPlacementType';
-import { TextAlign } from '../../../enums/TextAlign';
+import {
+  FlexBoxAlignItems,
+  ListItemType,
+  PopoverHorizontalAlign,
+  PopoverPlacementType,
+  TextAlign
+} from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
 import { useCanRenderPortal } from '../../../internal/ssr';
 import { stopPropagation } from '../../../internal/stopPropagation';

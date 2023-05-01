@@ -15,7 +15,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
+import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';

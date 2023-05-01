@@ -15,10 +15,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { TitleLevel } from '../../enums/TitleLevel';
-import { ValueState } from '../../enums/ValueState';
+import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';

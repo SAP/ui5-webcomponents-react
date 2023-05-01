@@ -12,7 +12,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums';
+import { ButtonDesign } from '../../enums/index.js';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { CustomThemingParameters } from '../../themes/CustomVariables';

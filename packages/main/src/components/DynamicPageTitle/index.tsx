@@ -16,7 +16,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
+import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
 import { stopPropagation } from '../../internal/stopPropagation';
 import { flattenFragments } from '../../internal/utils';

@@ -1,4 +1,4 @@
-import { VerticalAlign } from '../../../../enums/VerticalAlign';
+import { VerticalAlign } from '../../../../enums/index.js';
 import { DefaultFilterComponent } from '../FilterComponent';
 import { Cell } from './Cell';
 import { Expandable } from './Expandable';

@@ -1,7 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import { AnalyticalTableSelectionBehavior } from '../../../enums';
-import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox';
 import { getBy } from '../util';
 

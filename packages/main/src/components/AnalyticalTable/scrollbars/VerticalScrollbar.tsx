@@ -2,8 +2,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxDirection } from '../../../enums/FlexBoxDirection';
-import { GlobalStyleClasses } from '../../../enums/GlobalStyleClasses';
+import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
 import { CustomThemingParameters } from '../../../themes/CustomVariables';
 import { FlexBox } from '../../FlexBox';
 

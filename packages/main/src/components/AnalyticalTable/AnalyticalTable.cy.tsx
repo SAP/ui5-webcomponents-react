@@ -9,7 +9,7 @@ import {
   Button,
   Input
 } from '../..';
-import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
+import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';

@@ -2,11 +2,7 @@ import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { useRef, useState } from 'react';
-import { ButtonDesign } from '../../enums/ButtonDesign.js';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
-import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
-import { TitleLevel } from '../../enums/TitleLevel.js';
-import { ValueState } from '../../enums/ValueState.js';
+import { ButtonDesign, FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 // todo replace once `createPortal` is supported

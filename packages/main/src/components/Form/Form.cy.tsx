@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { InputType } from '../../enums/InputType';
+import { InputType } from '../../enums/index.js';
 import { Input, Label } from '../../webComponents';
 import { FormGroup } from '../FormGroup';
 import { FormItem } from '../FormItem';

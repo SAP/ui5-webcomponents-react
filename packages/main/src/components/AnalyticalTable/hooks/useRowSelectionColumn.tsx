@@ -1,9 +1,8 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
-import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
-import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping';
-import { CheckBox } from '../../../webComponents/CheckBox';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping.js';
+import { CheckBox } from '../../../webComponents/CheckBox/index.js';
 
 // todo use ::part instead, when available (https://github.com/SAP/ui5-webcomponents/issues/6461)
 addCustomCSSWithScoping(

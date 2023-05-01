@@ -3,7 +3,7 @@
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import React, { cloneElement, CSSProperties, Fragment, isValidElement, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { WrappingType } from '../../enums';
+import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils';
 import { Label, LabelPropTypes } from '../../webComponents/Label';
 import { useFormContext } from '../Form/FormContext';

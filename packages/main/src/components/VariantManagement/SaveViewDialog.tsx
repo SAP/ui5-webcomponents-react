@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
+import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,

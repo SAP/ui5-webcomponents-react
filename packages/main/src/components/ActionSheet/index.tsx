@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums';
+import { ButtonDesign } from '../../enums/index.js';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
 import { useCanRenderPortal } from '../../internal/ssr';

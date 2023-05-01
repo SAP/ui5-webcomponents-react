@@ -13,7 +13,7 @@ import {
   TableMode,
   TitleLevel,
   ToolbarStyle
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   ACTIVE,
   ALL,

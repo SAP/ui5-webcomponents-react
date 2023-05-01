@@ -4,7 +4,7 @@ import { useViewportRange } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, isValidElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { GridPosition } from '../../enums/GridPosition';
+import { GridPosition } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { flattenFragments } from '../../internal/utils';
 import { styles } from './Grid.jss';

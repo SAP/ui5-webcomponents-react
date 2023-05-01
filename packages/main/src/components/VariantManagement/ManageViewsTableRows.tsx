@@ -3,7 +3,7 @@ import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
-import { ButtonDesign, ValueState } from '../../enums';
+import { ButtonDesign, ValueState } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,

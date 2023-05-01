@@ -16,7 +16,7 @@ import {
   FlexBoxJustifyContent,
   InputType,
   TextAlign
-} from '../../enums/index';
+} from '../../enums/index.js';
 import {
   Badge,
   Button,

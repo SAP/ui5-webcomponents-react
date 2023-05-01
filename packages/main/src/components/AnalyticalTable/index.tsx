@@ -49,7 +49,7 @@ import {
   TableSelectionMode,
   TableSelectionBehavior,
   TableVisibleRowCountMode
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,
