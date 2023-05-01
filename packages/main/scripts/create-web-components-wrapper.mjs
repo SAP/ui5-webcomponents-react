@@ -737,6 +737,6 @@ fs.writeFileSync(
   fs
     .readdirSync(WEB_COMPONENTS_ROOT_DIR)
     .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
-    .map((folder) => `export * from './${folder}';`)
+    .map((folder) => `export * from './${folder}/index.js';`)
     .join('\n')
 );

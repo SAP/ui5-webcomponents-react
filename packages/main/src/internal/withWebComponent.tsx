@@ -11,10 +11,9 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import { CommonProps } from '../interfaces/CommonProps';
-import { Ui5DomRef } from '../interfaces/Ui5DomRef';
-import { useServerSideEffect } from './ssr';
-import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils';
+import type { CommonProps, Ui5DomRef } from '../interfaces/index.js';
+import { useServerSideEffect } from './ssr.js';
+import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
 
 const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
