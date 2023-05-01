@@ -2,10 +2,9 @@
 
 import '@ui5/webcomponents/dist/Card.js';
 import { ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import { UI5WCSlotsNode } from '../../types/index.js';
 
 interface CardAttributes {
   /**
