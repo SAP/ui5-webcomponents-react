@@ -4,7 +4,7 @@ import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import { AnalyticalCardHeader, AnalyticalCardHeaderPropTypes } from '../AnalyticalCardHeader';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { Text } from '../Text';
-import { AnalyticalCard, AnalyticalCardPropTypes } from './index';
+import { AnalyticalCard, AnalyticalCardPropTypes } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const TestComp = (props: Omit<AnalyticalCardPropTypes, 'children'>) => {

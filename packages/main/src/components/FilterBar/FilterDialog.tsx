@@ -59,7 +59,7 @@ import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSpacer } from '../ToolbarSpacer';
-import styles from './FilterBarDialog.jss';
+import styles from './FilterBarDialog.jss.js';
 import { filterValue, syncRef } from './utils';
 
 addCustomCSSWithScoping(

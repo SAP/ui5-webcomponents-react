@@ -21,11 +21,11 @@ import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents/index.js';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
 import { CollapsedAvatar } from './CollapsedAvatar';
-import { styles } from './ObjectPage.jss';
+import { styles } from './ObjectPage.jss.js';
 import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils';
 
 addCustomCSSWithScoping(

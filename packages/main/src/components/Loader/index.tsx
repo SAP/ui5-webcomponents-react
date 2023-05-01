@@ -7,7 +7,7 @@ import { createUseStyles } from 'react-jss';
 import { LoaderType } from '../../enums/index.js';
 import { PLEASE_WAIT } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
-import { styles } from './Loader.jss';
+import { styles } from './Loader.jss.js';
 
 export interface LoaderPropTypes extends CommonProps {
   /**

@@ -2,7 +2,7 @@ import { Input, Option, Select, Switch } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
-import { FilterBar } from './index';
+import { FilterBar } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 const variants = (

@@ -11,7 +11,7 @@ import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Icon, TableCell, TableRow } from '../../webComponents/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox';
-import styles from './FilterGroupItem.jss';
+import styles from './FilterGroupItem.jss.js';
 
 addCustomCSSWithScoping(
   'ui5-table-row',

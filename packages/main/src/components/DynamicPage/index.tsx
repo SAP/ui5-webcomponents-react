@@ -9,7 +9,7 @@ import { CommonProps } from '../../interfaces';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { FlexBox } from '../FlexBox';
-import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
+import { DynamicPageCssVariables, styles } from './DynamicPage.jss.js';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'children'> {
   /**

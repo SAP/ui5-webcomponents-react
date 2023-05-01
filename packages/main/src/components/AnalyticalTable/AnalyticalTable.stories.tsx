@@ -32,7 +32,7 @@ import {
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import * as AnalyticalTableHooks from './pluginHooks/AnalyticalTableHooks';
-import { AnalyticalTable } from './index';
+import { AnalyticalTable } from './index.js';
 
 const meta = {
   title: 'Data Display / AnalyticalTable',

@@ -41,7 +41,7 @@ import {
   Title
 } from '../../webComponents/index.js';
 import { Text } from '../Text';
-import styles from './MessageBox.jss';
+import styles from './MessageBox.jss.js';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 

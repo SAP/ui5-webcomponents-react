@@ -19,7 +19,7 @@ import {
 import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils.js';
 import { Icon } from '../../webComponents/index.js';
-import styles from './AnalyticalCardHeader.jss';
+import styles from './AnalyticalCardHeader.jss.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**

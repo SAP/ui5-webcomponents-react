@@ -39,7 +39,7 @@ import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ToolbarSpacer } from '../ToolbarSpacer';
-import styles from './FilterBar.jss';
+import styles from './FilterBar.jss.js';
 import { FilterDialog } from './FilterDialog';
 import { filterValue, renderSearchWithValue, syncRef } from './utils';
 

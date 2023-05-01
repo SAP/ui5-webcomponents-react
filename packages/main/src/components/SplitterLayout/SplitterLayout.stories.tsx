@@ -3,7 +3,7 @@ import { isChromatic } from '@sb/utils';
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement } from '../..';
-import { SplitterLayout } from './index';
+import { SplitterLayout } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / SplitterLayout',

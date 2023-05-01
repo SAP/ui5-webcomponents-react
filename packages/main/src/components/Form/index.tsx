@@ -20,7 +20,7 @@ import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces';
 import { Title } from '../../webComponents/index.js';
 import { FormGroupTitle } from '../FormGroup/FormGroupTitle';
-import { styles } from './Form.jss';
+import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext';
 
 export interface FormPropTypes extends CommonProps {

@@ -7,7 +7,7 @@ import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 import { SplitterElementPropTypes } from '../SplitterElement';
-import { styles } from './SplitterLayout.jss';
+import { styles } from './SplitterLayout.jss.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements';
 
 const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });

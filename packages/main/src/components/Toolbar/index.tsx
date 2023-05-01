@@ -31,7 +31,7 @@ import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils.js';
 import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 import { OverflowPopover } from './OverflowPopover';
-import { styles } from './Toolbar.jss';
+import { styles } from './Toolbar.jss.js';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 

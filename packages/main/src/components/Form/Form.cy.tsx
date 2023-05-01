@@ -3,7 +3,7 @@ import { InputType } from '../../enums/index.js';
 import { Input, Label } from '../../webComponents/index.js';
 import { FormGroup } from '../FormGroup';
 import { FormItem } from '../FormItem';
-import { Form } from './index';
+import { Form } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const component = (

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { MessageBoxTypes } from '../../enums/index.js';
 import { Bar, Button, MenuItem } from '../../webComponents/index.js';
-import { Modals } from './index';
+import { Modals } from './index.js';
 
 const meta = {
   title: 'User Feedback / Modals'

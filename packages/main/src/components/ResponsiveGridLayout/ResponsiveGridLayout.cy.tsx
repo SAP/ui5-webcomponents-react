@@ -1,4 +1,4 @@
-import { ResponsiveGridLayout, ResponsiveGridLayoutPropTypes } from './index';
+import { ResponsiveGridLayout, ResponsiveGridLayoutPropTypes } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const TestComp = (props: ResponsiveGridLayoutPropTypes) => (

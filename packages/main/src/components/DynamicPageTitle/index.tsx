@@ -25,7 +25,7 @@ import { FlexBox } from '../FlexBox';
 import { Toolbar, ToolbarPropTypes } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';
 import { ActionsSpacer } from './ActionsSpacer';
-import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { DynamicPageTitleStyles } from './DynamicPageTitle.jss.js';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**

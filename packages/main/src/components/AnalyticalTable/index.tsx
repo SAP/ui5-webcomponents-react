@@ -64,7 +64,7 @@ import {
 import type { CommonProps } from '../../interfaces/index.js';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
-import styles from './AnayticalTable.jss';
+import styles from './AnayticalTable.jss.js';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
 import { DefaultColumn } from './defaults/Column';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent';

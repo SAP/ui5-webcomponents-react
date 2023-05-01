@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar, Button, MenuItem } from '../../webComponents/index.js';
-import { Modals } from './index';
+import { Modals } from './index.js';
 
 describe('Modals - static helpers', () => {
   it('showDialog', () => {

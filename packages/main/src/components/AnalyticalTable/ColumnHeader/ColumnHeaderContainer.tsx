@@ -3,7 +3,7 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { DivWithCustomScrollProp } from '../index';
-import { ColumnHeader } from './index';
+import { ColumnHeader } from './index.js';
 
 const styles = {
   resizer: {

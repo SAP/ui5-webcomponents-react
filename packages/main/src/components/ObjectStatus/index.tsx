@@ -10,7 +10,7 @@ import { createUseStyles } from 'react-jss';
 import { IndicationColor, ValueState } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
-import styles from './ObjectStatus.jss';
+import styles from './ObjectStatus.jss.js';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**
