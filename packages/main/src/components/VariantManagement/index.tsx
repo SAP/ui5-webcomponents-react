@@ -43,7 +43,7 @@ import {
   ResponsivePopover,
   ResponsivePopoverDomRef,
   Title
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 import { ManageViewsDialog } from './ManageViewsDialog';
 import { SaveViewDialog } from './SaveViewDialog';

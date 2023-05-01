@@ -16,7 +16,7 @@ import { ButtonDesign } from '../../enums/index.js';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { Button, Icon } from '../../webComponents';
+import { Button, Icon } from '../../webComponents/index.js';
 
 const useStyles = createUseStyles(
   {

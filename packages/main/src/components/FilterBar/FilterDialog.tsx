@@ -54,7 +54,7 @@ import {
   TableDomRef,
   TableRowDomRef,
   Title
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { FlexBox } from '../FlexBox';
 import { Toolbar } from '../Toolbar';

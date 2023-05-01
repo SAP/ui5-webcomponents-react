@@ -1,4 +1,4 @@
-import { Input, Option, Select, Switch } from '../../webComponents';
+import { Input, Option, Select, Switch } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';

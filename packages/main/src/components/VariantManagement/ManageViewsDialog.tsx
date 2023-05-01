@@ -17,12 +17,12 @@ import {
   SEARCH
 } from '../../i18n/i18n-defaults';
 import { useCanRenderPortal } from '../../internal/ssr.js';
-import { Icon, Input } from '../../webComponents';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { Dialog } from '../../webComponents/Dialog';
-import { Table } from '../../webComponents/Table';
-import { TableColumn } from '../../webComponents/TableColumn';
+import { Bar } from '../../webComponents/Bar/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import { Icon, Input } from '../../webComponents/index.js';
+import { Table } from '../../webComponents/Table/index.js';
+import { TableColumn } from '../../webComponents/TableColumn/index.js';
 import { FlexBox } from '../FlexBox';
 import { ManageViewsTableRows } from './ManageViewsTableRows';
 import { VariantItemPropTypes } from './VariantItem';

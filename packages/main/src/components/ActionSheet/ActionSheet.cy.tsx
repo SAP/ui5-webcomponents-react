@@ -1,4 +1,4 @@
-import { Button, ButtonPropTypes, Label } from '../../webComponents';
+import { Button, ButtonPropTypes, Label } from '../../webComponents/index.js';
 import { ActionSheet, ActionSheetPropTypes } from './index';
 
 interface TestCompProptypes extends ActionSheetPropTypes {

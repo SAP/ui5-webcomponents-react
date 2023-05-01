@@ -18,7 +18,7 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils.js';
-import { Icon } from '../../webComponents';
+import { Icon } from '../../webComponents/index.js';
 import styles from './AnalyticalCardHeader.jss';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {

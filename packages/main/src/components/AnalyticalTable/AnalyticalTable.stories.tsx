@@ -28,7 +28,7 @@ import {
   Option,
   Select,
   ToggleButton
-} from '../../webComponents/index';
+} from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import * as AnalyticalTableHooks from './pluginHooks/AnalyticalTableHooks';

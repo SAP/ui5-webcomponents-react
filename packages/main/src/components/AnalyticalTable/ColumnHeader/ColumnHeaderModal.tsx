@@ -18,13 +18,13 @@ import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '
 import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../internal/utils.js';
-import { CustomListItem } from '../../../webComponents/CustomListItem';
-import { Icon } from '../../../webComponents/Icon';
-import { List } from '../../../webComponents/List';
-import { Popover, PopoverDomRef } from '../../../webComponents/Popover';
-import { StandardListItem } from '../../../webComponents/StandardListItem';
-import { FlexBox } from '../../FlexBox';
-import { ColumnType } from '../types/ColumnType';
+import { CustomListItem } from '../../../webComponents/CustomListItem/index.js';
+import { Icon } from '../../../webComponents/Icon/index.js';
+import { List } from '../../../webComponents/List/index.js';
+import { Popover, PopoverDomRef } from '../../../webComponents/Popover/index.js';
+import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
+import { FlexBox } from '../../FlexBox/index.js';
+import type { ColumnType } from '../types/ColumnType.js';
 
 export interface ColumnHeaderModalProperties {
   column: ColumnType;

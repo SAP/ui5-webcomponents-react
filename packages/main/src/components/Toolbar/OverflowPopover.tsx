@@ -15,7 +15,7 @@ import {
   ToggleButton,
   ToggleButtonDomRef,
   ToggleButtonPropTypes
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;

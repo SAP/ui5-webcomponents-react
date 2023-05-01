@@ -29,7 +29,7 @@ import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { CommonProps } from '../../interfaces';
 import { flattenFragments } from '../../internal/utils.js';
-import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
+import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 import { OverflowPopover } from './OverflowPopover';
 import { styles } from './Toolbar.jss';
 

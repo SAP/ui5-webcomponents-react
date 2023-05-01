@@ -7,9 +7,9 @@ import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
-import { Icon, TableCell, TableRow } from '../../webComponents';
-import { BusyIndicator } from '../../webComponents/BusyIndicator';
-import { Label } from '../../webComponents/Label';
+import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
+import { Icon, TableCell, TableRow } from '../../webComponents/index.js';
+import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox';
 import styles from './FilterGroupItem.jss';
 

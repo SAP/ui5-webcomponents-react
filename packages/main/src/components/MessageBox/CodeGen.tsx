@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
-import { DialogDomRef } from '../../webComponents';
+import { DialogDomRef } from '../../webComponents/index.js';
 import { MessageBox as OriginalMessageBox, MessageBoxPropTypes } from './index';
 import React from 'react';
 

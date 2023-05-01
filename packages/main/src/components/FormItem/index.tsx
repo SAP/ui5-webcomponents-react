@@ -5,8 +5,8 @@ import React, { cloneElement, CSSProperties, Fragment, isValidElement, ReactElem
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { Label, LabelPropTypes } from '../../webComponents/Label';
-import { useFormContext } from '../Form/FormContext';
+import { Label, LabelPropTypes } from '../../webComponents/Label/index.js';
+import { useFormContext } from '../Form/FormContext.js';
 
 export interface FormItemPropTypes {
   /**

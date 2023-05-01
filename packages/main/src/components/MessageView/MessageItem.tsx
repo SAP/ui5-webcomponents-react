@@ -8,9 +8,9 @@ import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
-import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem';
-import { Icon } from '../../webComponents/Icon';
-import { Label } from '../../webComponents/Label';
+import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox';
 import { getIconNameForType } from './utils';
 

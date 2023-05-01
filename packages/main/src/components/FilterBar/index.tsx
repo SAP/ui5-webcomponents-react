@@ -27,7 +27,14 @@ import {
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
 import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
+import {
+  Button,
+  ButtonDomRef,
+  DialogDomRef,
+  InputPropTypes,
+  TableDomRef,
+  TableRowDomRef
+} from '../../webComponents/index.js';
 import { FilterGroupItemPropTypes } from '../FilterGroupItem';
 import { Toolbar } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';

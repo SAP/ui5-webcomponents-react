@@ -30,7 +30,7 @@ import {
   ListPropTypes,
   StandardListItemDomRef,
   Title
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import { Text } from '../Text';
 import { Toolbar } from '../Toolbar';
 

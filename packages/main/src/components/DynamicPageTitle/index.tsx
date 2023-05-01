@@ -20,7 +20,7 @@ import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle }
 import { CommonProps } from '../../interfaces';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { PopoverDomRef } from '../../webComponents';
+import { PopoverDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 import { Toolbar, ToolbarPropTypes } from '../Toolbar';
 import { ToolbarSeparator } from '../ToolbarSeparator';

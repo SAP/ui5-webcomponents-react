@@ -2,7 +2,7 @@
 
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
-import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents';
+import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 
 export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonPropTypes, 'children' | 'icon'> {
   /**

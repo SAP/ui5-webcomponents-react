@@ -29,7 +29,7 @@ import {
   Input,
   InputPropTypes,
   Label
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 
 const useStyles = createUseStyles(

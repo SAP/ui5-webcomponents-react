@@ -19,7 +19,7 @@ import {
   ResponsivePopover,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import styles from './ActionSheet.jss';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {

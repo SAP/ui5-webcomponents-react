@@ -20,7 +20,7 @@ import { CommonProps } from '../../interfaces';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
-import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
+import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
 import { ObjectPageSectionPropTypes } from '../ObjectPageSection';

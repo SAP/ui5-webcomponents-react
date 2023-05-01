@@ -19,7 +19,7 @@ import {
   Toast,
   ToastDomRef,
   ToastPropTypes
-} from '../../webComponents';
+} from '../../webComponents/index.js';
 import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
 
 type ModalReturnType<DomRef> = {

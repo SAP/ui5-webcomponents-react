@@ -18,7 +18,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CustomThemingParameters } from '../../../themes/CustomVariables';
-import { Icon } from '../../../webComponents/Icon';
+import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../Text';
 import { ColumnType } from '../types/ColumnType';
 import { ColumnHeaderModal } from './ColumnHeaderModal';

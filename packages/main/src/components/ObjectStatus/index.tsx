@@ -9,7 +9,7 @@ import React, { forwardRef, MouseEventHandler, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { IndicationColor, ValueState } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../webComponents/Icon';
+import { Icon } from '../../webComponents/Icon/index.js';
 import styles from './ObjectStatus.jss';
 
 export interface ObjectStatusPropTypes extends CommonProps {
