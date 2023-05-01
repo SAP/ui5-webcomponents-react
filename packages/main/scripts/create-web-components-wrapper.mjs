@@ -242,7 +242,7 @@ const getEventParameters = (name, parameters) => {
     };
   });
 
-  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
+  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';`];
 
   const eventTarget = `${name}DomRef`;
 
