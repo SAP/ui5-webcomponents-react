@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { TitleLevel } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import styles from './ObjectPageSection.jss.js';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {

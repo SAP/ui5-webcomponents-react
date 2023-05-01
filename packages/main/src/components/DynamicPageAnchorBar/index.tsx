@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
 
 const anchorBarStyles = {

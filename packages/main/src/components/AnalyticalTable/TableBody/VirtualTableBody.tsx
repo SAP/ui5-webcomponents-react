@@ -1,7 +1,7 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
-import { ScrollToRefType } from '../interfaces';
+import type { ScrollToRefType } from '../interfaces.js';
 import { EmptyRow } from './EmptyRow';
 import { RowSubComponent as SubComponent } from './RowSubComponent';
 

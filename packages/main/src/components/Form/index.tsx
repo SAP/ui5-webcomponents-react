@@ -17,7 +17,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import { Title } from '../../webComponents/index.js';
 import { FormGroupTitle } from '../FormGroup/FormGroupTitle';
 import { styles } from './Form.jss.js';

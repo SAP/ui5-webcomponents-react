@@ -17,7 +17,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
 import { PopoverDomRef } from '../../webComponents/index.js';

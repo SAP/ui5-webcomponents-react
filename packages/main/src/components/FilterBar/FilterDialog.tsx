@@ -33,7 +33,7 @@ import {
   VISIBLE,
   VISIBLE_AND_ACTIVE
 } from '../../i18n/i18n-defaults.js';
-import { Ui5CustomEvent } from '../../interfaces';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';

@@ -16,7 +16,7 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';

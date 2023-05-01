@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TitleLevel } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces';
+import type { CommonProps } from '../../interfaces/index.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import { FlexBox } from '../FlexBox';
 

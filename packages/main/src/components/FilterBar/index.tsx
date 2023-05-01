@@ -26,7 +26,7 @@ import {
   RESTORE,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import { CommonProps, Ui5CustomEvent } from '../../interfaces';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
 import {
   Button,
   ButtonDomRef,
