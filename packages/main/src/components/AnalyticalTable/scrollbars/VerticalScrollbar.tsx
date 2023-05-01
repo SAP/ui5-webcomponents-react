@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, RefObject } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
-import { CustomThemingParameters } from '../../../themes/CustomVariables';
+import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
 import { FlexBox } from '../../FlexBox';
 
 interface VerticalScrollbarProps {

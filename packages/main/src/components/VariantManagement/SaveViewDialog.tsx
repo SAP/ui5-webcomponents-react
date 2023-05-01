@@ -15,7 +15,7 @@ import {
   SPECIFY_VIEW_NAME,
   VIEW
 } from '../../i18n/i18n-defaults.js';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import { SelectedVariant } from '../../internal/VariantManagementContext.js';
@@ -30,7 +30,7 @@ import {
   InputPropTypes,
   Label
 } from '../../webComponents/index.js';
-import { FlexBox } from '../FlexBox';
+import { FlexBox } from '../FlexBox/index.js';
 
 const useStyles = createUseStyles(
   {

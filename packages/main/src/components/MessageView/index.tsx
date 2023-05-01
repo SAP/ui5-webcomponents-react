@@ -16,9 +16,8 @@ import React, {
 } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
-import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';

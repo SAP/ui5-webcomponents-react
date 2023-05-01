@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { TextStyles } from './Text.jss';
 
 export interface TextPropTypes extends CommonProps {

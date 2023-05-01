@@ -4,7 +4,7 @@ import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponent
 import { clsx } from 'clsx';
 import React, { CSSProperties, forwardRef, ReactNode, useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 
 const useStyles = createUseStyles(

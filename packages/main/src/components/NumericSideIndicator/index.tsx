@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ValueColor } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { Text } from '../Text';
 import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss';
 

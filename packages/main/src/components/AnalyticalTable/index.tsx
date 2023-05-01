@@ -61,7 +61,7 @@ import {
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults.js';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import styles from './AnayticalTable.jss';

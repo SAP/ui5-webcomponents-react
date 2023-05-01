@@ -11,8 +11,8 @@ import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { UI5WCSlotsNode } from '../../types';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 import {
   Button,
   ButtonPropTypes,
@@ -20,7 +20,7 @@ import {
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
 } from '../../webComponents/index.js';
-import styles from './ActionSheet.jss';
+import styles from './ActionSheet.jss.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
   /**

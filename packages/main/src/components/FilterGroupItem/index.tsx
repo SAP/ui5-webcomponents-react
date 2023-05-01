@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Icon, TableCell, TableRow } from '../../webComponents/index.js';

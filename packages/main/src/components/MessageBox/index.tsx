@@ -29,7 +29,7 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import {
   Button,

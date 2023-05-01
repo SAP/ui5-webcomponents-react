@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
 import { IndicationColor, ValueState } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import styles from './ObjectStatus.jss';
 

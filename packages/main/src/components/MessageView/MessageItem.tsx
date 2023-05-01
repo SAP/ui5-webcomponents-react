@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces/CommonProps';
+import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
