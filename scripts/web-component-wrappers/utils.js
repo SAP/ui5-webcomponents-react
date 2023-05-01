@@ -28,11 +28,11 @@ const eslint = new ESLint({
 export const getTypeDefinitionForProperty = (property, options = {}) => {
   const isSlot = options.slot && property.name !== 'default' && property.name !== 'children';
   const canBeNull = property.defaultValue === 'null';
-  const importStatementCanBeNull = canBeNull ? "import { Nullable } from '../../types/index.js'" : null;
+  const importStatementCanBeNull = canBeNull ? "import type { Nullable } from '../../types/index.js'" : null;
 
   const reactNodeType = isSlot ? 'UI5WCSlotsNode' : 'ReactNode';
   const importStatementReactNodeType = isSlot
-    ? "import { UI5WCSlotsNode } from '../../types/index.js'"
+    ? "import type { UI5WCSlotsNode } from '../../types/index.js'"
     : "import { ReactNode } from 'react';";
 
   const interfaces = new Set([
