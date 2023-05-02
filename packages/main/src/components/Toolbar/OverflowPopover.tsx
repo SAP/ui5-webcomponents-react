@@ -129,6 +129,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             <div className={classes.popoverContent} ref={overflowContentRef}>
               {children.map((item, index) => {
                 if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
+                  // @ts-expect-error: if props is not defined, it doesn't have an id (is not a ReactElement)
                   if (item?.props?.id) {
                     // @ts-expect-error: item is ReactElement
                     return cloneElement(item, { id: `${item.props.id}-overflow` });
