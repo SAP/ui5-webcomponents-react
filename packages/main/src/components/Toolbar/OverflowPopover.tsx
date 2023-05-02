@@ -129,6 +129,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             <div className={classes.popoverContent} ref={overflowContentRef}>
               {children.map((item, index) => {
                 if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
+                  if (item?.props?.id) {
+                    // @ts-expect-error: item is ReactElement
+                    return cloneElement(item, { id: `${item.props.id}-overflow` });
+                  }
                   // @ts-expect-error: if type is not defined, it's not a spacer
                   if (item.type?.displayName === 'ToolbarSeparator') {
                     return cloneElement(item as ReactElement, {
