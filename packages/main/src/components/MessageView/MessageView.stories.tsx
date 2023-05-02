@@ -10,7 +10,7 @@ import { ValueState } from '../../enums/ValueState.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 // todo replace once `createPortal` is supported
-import { Dialog } from '../../webComponents/Dialog/Dialog.stories.js';
+import { Dialog } from '../../webComponents/Dialog/CodeGen.js';
 import { Link } from '../../webComponents/Link/index.js';
 // todo replace once `createPortal` is supported
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/CodeGen.js';
