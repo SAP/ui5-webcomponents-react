@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.1...v1.14.0) (2023-05-03)
+
+### Bug Fixes
+
+- **DynamicPageTitle:** always show all contents of the 2nd line ([#4489](https://github.com/SAP/ui5-webcomponents-react/issues/4489)) ([d0b9a32](https://github.com/SAP/ui5-webcomponents-react/commit/d0b9a32fc2651d2fa180d16adf969ab623fb161d)), closes [#4488](https://github.com/SAP/ui5-webcomponents-react/issues/4488)
+- **FilterGroupItem:** don't show colon if label is empty ([#4529](https://github.com/SAP/ui5-webcomponents-react/issues/4529)) ([79a709a](https://github.com/SAP/ui5-webcomponents-react/commit/79a709a6781832918f4f0d9ddf66f21ca0e7fded)), closes [#4513](https://github.com/SAP/ui5-webcomponents-react/issues/4513)
+- **FormItem:** fix react unique key error when using multiple children in FormItem ([#4509](https://github.com/SAP/ui5-webcomponents-react/issues/4509)) ([75ad94e](https://github.com/SAP/ui5-webcomponents-react/commit/75ad94efab68382e4b3ab98b88ef3fa596e840ca)), closes [#4499](https://github.com/SAP/ui5-webcomponents-react/issues/4499)
+- **ObjectPage:** remove unnecessary `banner` role ([#4532](https://github.com/SAP/ui5-webcomponents-react/issues/4532)) ([37863d6](https://github.com/SAP/ui5-webcomponents-react/commit/37863d6200d9aac2af2181f97adc0fc16f34e0d7)), closes [#4491](https://github.com/SAP/ui5-webcomponents-react/issues/4491)
+- **Toolbar:** make ids unique for overflow items ([#4557](https://github.com/SAP/ui5-webcomponents-react/issues/4557)) ([7d8e3ab](https://github.com/SAP/ui5-webcomponents-react/commit/7d8e3abbebfca6814f6ecb6984b98a9c79c8622a)), closes [#4556](https://github.com/SAP/ui5-webcomponents-react/issues/4556)
+- **Toolbar:** support F6 Fast Navigation ([#4514](https://github.com/SAP/ui5-webcomponents-react/issues/4514)) ([d52147d](https://github.com/SAP/ui5-webcomponents-react/commit/d52147db2d98b52867a8317138d7e68dd42e631a))
+- **Variant Management:** fix error message for duplicate variant names ([#4498](https://github.com/SAP/ui5-webcomponents-react/issues/4498)) ([f2da506](https://github.com/SAP/ui5-webcomponents-react/commit/f2da5066860fbc0caaa5478f9890c5585d733775)), closes [#4496](https://github.com/SAP/ui5-webcomponents-react/issues/4496)
+
+### Features
+
+- **AnalyticalTable:** add `selectedRowIds` object to `onRowSelect` event & improve performance when selecting rows ([#4534](https://github.com/SAP/ui5-webcomponents-react/issues/4534)) ([ce8b109](https://github.com/SAP/ui5-webcomponents-react/commit/ce8b109dfc91350262e0524490807c727e22729f)), closes [#4517](https://github.com/SAP/ui5-webcomponents-react/issues/4517)
+- **AnalyticalTable:** allow multi-sorting ([#4550](https://github.com/SAP/ui5-webcomponents-react/issues/4550)) ([728e013](https://github.com/SAP/ui5-webcomponents-react/commit/728e0135b3686a05fd18ba6e690db92e58225e9d))
+
 ## [1.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.0...v1.13.1) (2023-04-14)
 
 ### Bug Fixes
