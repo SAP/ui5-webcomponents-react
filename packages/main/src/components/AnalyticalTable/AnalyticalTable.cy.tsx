@@ -1725,6 +1725,72 @@ describe('AnalyticalTable', () => {
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
   });
 
+  it('multi-sort', () => {
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name',
+        enableMultiSort: true
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        enableMultiSort: true
+      },
+      {
+        Header: 'Name 2',
+        accessor: 'name2'
+      }
+    ];
+    const data = [
+      { name: 'A', age: 40, name2: 'Y', age2: 18 },
+      { name: 'B', age: 40, name2: 'X', age2: 21 },
+      { name: 'A', age: 30, name2: 'Z', age2: 90 },
+      { name: 'A', age: 70, name2: 'Z', age2: 15 },
+      { name: 'B', age: 60, name2: 'Q', age2: 80 },
+      { name: 'B', age: 20, name2: 'Y', age2: 80 },
+      { name: 'C', age: 40, name2: 'Y', age2: 80 }
+    ];
+    cy.mount(<AnalyticalTable columns={columns} data={data} sortable />);
+
+    //sort both Name and Age (multi-sort enabled)
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '30');
+    cy.get('[data-column-index="0"][data-row-index="2"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="2"]').children().should('have.text', '40');
+    cy.get('[data-column-index="0"][data-row-index="3"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="3"]').children().should('have.text', '70');
+
+    cy.get('[data-column-index="0"][data-row-index="4"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="4"]').children().should('have.text', '20');
+    cy.get('[data-column-index="0"][data-row-index="5"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="5"]').children().should('have.text', '40');
+    cy.get('[data-column-index="0"][data-row-index="6"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="6"]').children().should('have.text', '60');
+
+    cy.get('[data-column-index="0"][data-row-index="7"]').children().should('have.text', 'C');
+    cy.get('[data-column-index="1"][data-row-index="7"]').children().should('have.text', '40');
+
+    //only sort Name2
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '60');
+    cy.get('[data-column-index="2"][data-row-index="1"]').children().should('have.text', 'Q');
+    cy.get('[data-column-index="0"][data-row-index="2"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="2"]').children().should('have.text', '40');
+    cy.get('[data-column-index="2"][data-row-index="2"]').children().should('have.text', 'X');
+    cy.get('[data-column-index="0"][data-row-index="3"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="3"]').children().should('have.text', '40');
+    cy.get('[data-column-index="2"][data-row-index="3"]').children().should('have.text', 'Y');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
