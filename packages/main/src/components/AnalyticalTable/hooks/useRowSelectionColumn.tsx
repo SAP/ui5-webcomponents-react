@@ -66,7 +66,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
   );
 };
 
-function getNextSelectedRowsById(rowsById) {
+function getNextSelectedRowIds(rowsById) {
   return Object.keys(rowsById).reduce((acc, cur) => {
     acc[cur] = true;
     return acc;
@@ -94,7 +94,7 @@ const headerProps = (props, { instance }) => {
           enrichEventWithDetails(e, {
             allRowsSelected: !isAllRowsSelected,
             selectedFlatRows: !isAllRowsSelected ? flatRows : [],
-            selectedRowsById: !isAllRowsSelected ? getNextSelectedRowsById(rowsById) : {}
+            selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {}
           })
         );
       }
