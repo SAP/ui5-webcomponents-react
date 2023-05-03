@@ -17,16 +17,19 @@ export const useSelectionChangeCallback = (hooks) => {
             row: row,
             isSelected: row.isSelected,
             selectedFlatRows: row.isSelected ? [row] : [],
-            allRowsSelected: false
+            allRowsSelected: false,
+            selectedRowIds
           };
 
           if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.MultiSelect) {
             // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
             const tempRowsById = filters?.length > 0 ? preFilteredRowsById : rowsById;
-
-            const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).flatMap((key) =>
-              selectedRowIds[key] ? tempRowsById[key] : []
-            );
+            const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+              if (selectedRowIds[key]) {
+                acc.push(tempRowsById[key]);
+              }
+              return acc;
+            }, []);
 
             payload.selectedFlatRows = selectedRowIdsArrayMapped;
             if (selectedRowIdsArrayMapped.length === Object.keys(tempRowsById).length) {

@@ -66,21 +66,21 @@ const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
   );
 };
 
-/*
- * TABLE HOOKS
- */
+function getNextSelectedRowsById(rowsById) {
+  return Object.keys(rowsById).reduce((acc, cur) => {
+    acc[cur] = true;
+    return acc;
+  }, {});
+}
 
-const headerProps = (
-  props,
-  {
-    instance: {
-      flatRows,
-      webComponentsReactProperties: { onRowSelect, selectionMode },
-      toggleAllRowsSelected,
-      isAllRowsSelected
-    }
-  }
-) => {
+const headerProps = (props, { instance }) => {
+  const {
+    flatRows,
+    webComponentsReactProperties: { onRowSelect, selectionMode },
+    toggleAllRowsSelected,
+    isAllRowsSelected,
+    rowsById
+  } = instance;
   const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
@@ -93,7 +93,8 @@ const headerProps = (
           // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
           enrichEventWithDetails(e, {
             allRowsSelected: !isAllRowsSelected,
-            selectedFlatRows: !isAllRowsSelected ? flatRows : []
+            selectedFlatRows: !isAllRowsSelected ? flatRows : [],
+            selectedRowsById: !isAllRowsSelected ? getNextSelectedRowsById(rowsById) : {}
           })
         );
       }
