@@ -242,7 +242,7 @@ const getEventParameters = (name, parameters) => {
     };
   });
 
-  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
+  const importStatements = [`import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';`];
 
   const eventTarget = `${name}DomRef`;
 
@@ -737,6 +737,6 @@ fs.writeFileSync(
   fs
     .readdirSync(WEB_COMPONENTS_ROOT_DIR)
     .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
-    .map((folder) => `export * from './${folder}';`)
+    .map((folder) => `export * from './${folder}/index.js';`)
     .join('\n')
 );
