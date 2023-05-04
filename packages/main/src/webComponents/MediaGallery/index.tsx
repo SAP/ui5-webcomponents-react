@@ -2,11 +2,14 @@
 
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 import { ReactNode } from 'react';
-import { MediaGalleryLayout, MediaGalleryMenuHorizontalAlign, MediaGalleryMenuVerticalAlign } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import {
+  MediaGalleryLayout,
+  MediaGalleryMenuHorizontalAlign,
+  MediaGalleryMenuVerticalAlign
+} from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface MediaGalleryAttributes {
   /**

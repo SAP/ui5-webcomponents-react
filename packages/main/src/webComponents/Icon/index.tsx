@@ -1,10 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Icon.js';
-import { IconDesign } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import { IconDesign } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface IconAttributes {
   /**

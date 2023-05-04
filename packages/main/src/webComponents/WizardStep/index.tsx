@@ -2,9 +2,8 @@
 
 import '@ui5/webcomponents-fiori/dist/WizardStep.js';
 import { ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface WizardStepAttributes {
   /**
