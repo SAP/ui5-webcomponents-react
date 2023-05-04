@@ -63,6 +63,12 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
       importStatement: importStatementReactNodeType
     };
   }
+  if (property.type === 'sap.ui.webc.main.CardHeader[]') {
+    return {
+      tsType: `${reactNodeType} | ${reactNodeType}[]`,
+      importStatement: importStatementReactNodeType
+    };
+  }
 
   const typeWithoutNamespace = property.type.replace(/sap\.ui\.(webcomponents|webc)\.(main|fiori|base)\.types\./, '');
 

@@ -16,6 +16,14 @@ interface MenuItemAttributes {
    */
   additionalText?: string;
   /**
+   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding Menu popover. Note: If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
+   */
+  busy?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding Menu popover.
+   */
+  busyDelay?: number;
+  /**
    * Defines whether `MenuItem` is in disabled state.
    *
    * **Note:** A disabled `MenuItem` is noninteractive.
@@ -24,7 +32,7 @@ interface MenuItemAttributes {
   /**
    * Defines the icon to be displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * **\* Example:** See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **\* Example:** See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -55,13 +63,17 @@ export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'additionalText', 'icon', 'text'],
-  ['disabled', 'startsSection'],
+  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text'],
+  ['busy', 'disabled', 'startsSection'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/MenuItem.js')
 );
 
 MenuItem.displayName = 'MenuItem';
+
+MenuItem.defaultProps = {
+  busyDelay: 1000
+};
 
 export { MenuItem };

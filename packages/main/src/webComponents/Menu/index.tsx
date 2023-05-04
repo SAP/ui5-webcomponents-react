@@ -9,6 +9,14 @@ import { withWebComponent } from '../../internal/withWebComponent';
 
 interface MenuAttributes {
   /**
+   * Defines if a loading indicator would be displayed inside the corresponding Menu popover.
+   */
+  busy?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding Menu popover..
+   */
+  busyDelay?: number;
+  /**
    * Defines the header text of the menu (displayed on mobile).
    */
   headerText?: string;
@@ -76,13 +84,18 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
  */
 const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   'ui5-menu',
-  ['headerText', 'opener'],
-  ['open'],
+  ['busyDelay', 'headerText', 'opener'],
+  ['busy', 'open'],
   [],
   ['after-close', 'after-open', 'before-close', 'before-open', 'item-click'],
   () => import('@ui5/webcomponents/dist/Menu.js')
 );
 
 Menu.displayName = 'Menu';
+
+Menu.defaultProps = {
+  busyDelay: 1000,
+  opener: ''
+};
 
 export { Menu };

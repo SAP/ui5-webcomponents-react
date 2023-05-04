@@ -10,7 +10,7 @@ import { UI5WCSlotsNode } from '../../types';
 
 interface TabAttributes {
   /**
-   * Represents the "additionalText" text, which is displayed in the tab.
+   * Represents the "additionalText" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the "additionalText" is displayed larger.
    */
   additionalText?: string;
   /**
@@ -34,7 +34,7 @@ interface TabAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
