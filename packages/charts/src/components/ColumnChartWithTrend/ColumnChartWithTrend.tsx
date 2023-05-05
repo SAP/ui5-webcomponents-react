@@ -3,16 +3,16 @@
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, forwardRef } from 'react';
 import { TooltipProps } from 'recharts';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
-import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
-import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures';
-import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { defaultFormatter } from '../../internal/defaults';
-import { ComposedChart } from '../ComposedChart';
-import { ColumnChartWithTrendPlaceholder } from './Placeholder';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
+import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures.js';
+import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
+import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import { IChartDimension } from '../../interfaces/IChartDimension.js';
+import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { ComposedChart } from '../ComposedChart/index.js';
+import { ColumnChartWithTrendPlaceholder } from './Placeholder.js';
 
 interface MeasureConfig extends IChartMeasure {
   /**

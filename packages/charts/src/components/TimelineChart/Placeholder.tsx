@@ -1,8 +1,8 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
+import ContentLoader from 'react-content-loader/dist/react-content-loader.es.js';
 
-export const TimelineChartPlaceholder = (props: IContentLoaderProps) => {
+export const TimelineChartPlaceholder = () => {
   return (
     <ContentLoader
       viewBox="0 0 600 150"
@@ -13,7 +13,6 @@ export const TimelineChartPlaceholder = (props: IContentLoaderProps) => {
       backgroundColor={ThemingParameters.sapContent_ImagePlaceholderBackground}
       foregroundColor={ThemingParameters.sapContent_ImagePlaceholderForegroundColor}
       backgroundOpacity={ThemingParameters.sapContent_DisabledOpacity as unknown as number}
-      {...props}
     >
       <rect x="0" y="0" width="149.5" height="49.5" />
       <rect x="150" y="0" width="450" height="49.5" />

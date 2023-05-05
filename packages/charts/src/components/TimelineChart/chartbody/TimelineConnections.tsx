@@ -5,8 +5,8 @@ import {
   ITimelineChartRow,
   ITimelineChartTask,
   TimelineChartConnection
-} from '../types/TimelineChartTypes';
-import { ARROWHEAD_HEIGHT, ARROWHEAD_WIDTH, ARROW_CLEARANCE } from '../util/constants';
+} from '../types/TimelineChartTypes.js';
+import { ARROWHEAD_HEIGHT, ARROWHEAD_WIDTH, ARROW_CLEARANCE } from '../util/constants.js';
 
 interface TimelineChartConnectionsProps {
   dataSet: ITimelineChartRow[];
