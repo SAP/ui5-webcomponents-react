@@ -254,6 +254,12 @@ export interface AnalyticalTableColumnDefinition {
    * Defines if the column is reorderable by dragging and dropping columns.
    */
   disableDragAndDrop?: boolean;
+  /**
+   * Defines whether this column should allow multi-sort.
+   *
+   * __Note:__ When sorting by a column that does not allow multiple sorting, only the current column is sorted and all other sorted columns are reset.
+   */
+  enableMultiSort?: boolean;
 
   // all other custom properties of [React Table](https://react-table-v7.tanstack.com/) column options
   [key: string]: any;
@@ -526,6 +532,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
       row?: Record<string, unknown>;
       isSelected?: boolean;
       selectedFlatRows: Record<string, unknown>[];
+      selectedRowIds: Record<string | number, boolean>;
     }>
   ) => void;
   /**

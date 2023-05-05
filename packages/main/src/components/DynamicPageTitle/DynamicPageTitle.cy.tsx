@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { DynamicPage, DynamicPageTitlePropTypes, ObjectPage } from '../..';
+import { DynamicPage, DynamicPageTitlePropTypes, ObjectPage, Title } from '../..';
 import { Button } from '../../webComponents';
 import { DynamicPageTitle } from './';
 
@@ -80,5 +80,23 @@ describe('DynamicPageTitle', () => {
     cy.mount(<PageComponent isObjectPage />);
     cy.wait(200);
     testOverflowRefs({ nav: 'false', actions: 'false' });
+  });
+  it('show 2nd line content', () => {
+    cy.viewport(320, 700);
+    [true, false].forEach((isObjectPage) => {
+      cy.mount(
+        <PageComponent
+          isObjectPage={isObjectPage}
+          dynamicPageTitleProps={{
+            header: <Title>This is a pretty long title of the DynamicPageTitle</Title>,
+            navigationActions: undefined,
+            children: <div>Content</div>
+          }}
+        />
+      );
+      cy.findByText('This is a pretty long title of the DynamicPageTitle').should('be.visible');
+      cy.findByText('Content').should('be.visible');
+      cy.get('[data-component-name="ToolbarOverflowButton"]').should('be.visible');
+    });
   });
 });

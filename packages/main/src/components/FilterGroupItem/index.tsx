@@ -118,7 +118,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
               className={classes.dialogCellLabel}
               title={labelTooltip ?? label}
               required={required}
-              showColon={withValues}
+              showColon={!!label && withValues}
             >
               {label}
             </Label>
@@ -138,7 +138,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
     <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
       <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
         <FlexBox>
-          <Label title={labelTooltip ?? label} required={required} showColon>
+          <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
           ${label}`}
           </Label>

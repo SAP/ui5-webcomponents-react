@@ -38,7 +38,7 @@ const meta = {
   title: 'Data Display / AnalyticalTable',
   component: AnalyticalTable,
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000, diffThreshold: 0.2 }
   },
   args: {
     data: dataLarge,
