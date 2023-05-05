@@ -2,7 +2,7 @@ import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-ba
 import { clsx } from 'clsx';
 import React, { CSSProperties, FC } from 'react';
 import { createUseStyles } from 'react-jss';
-import { resolveCellAlignment } from '../../util';
+import { resolveCellAlignment } from '../../util/index.js';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 

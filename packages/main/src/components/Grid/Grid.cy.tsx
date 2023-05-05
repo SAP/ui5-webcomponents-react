@@ -1,5 +1,5 @@
-import { GridPosition } from '../../enums';
-import { Grid } from './index';
+import { GridPosition } from '../../enums/index.js';
+import { Grid } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const style = { height: '6rem', width: '100%' };

@@ -1,5 +1,5 @@
 import React, { forwardRef, isValidElement, ReactNode } from 'react';
-import { Title } from '../../../webComponents/Title';
+import { Title } from '../../../webComponents/Title/index.js';
 
 const styles = {
   minHeight: '1.5rem',

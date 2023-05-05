@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Grid } from './index';
+import { Grid } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / Grid',

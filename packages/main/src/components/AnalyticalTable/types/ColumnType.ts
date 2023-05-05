@@ -1,6 +1,6 @@
 import { ComponentType, RefObject } from 'react';
 import { Column } from 'react-table';
-import { PopoverDomRef } from '../../../webComponents/Popover';
+import { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 
 export interface ColumnType extends Column {
   show: boolean;

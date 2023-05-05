@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ResponsiveContainerPadding } from '../../internal/ContainerQueries';
+import { ResponsiveContainerPadding } from '../../internal/ContainerQueries.js';
 
 export const DynamicPageCssVariables = {
   headerDisplay: '--ui5wcr_DynamicPage_header_display',

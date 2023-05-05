@@ -2,8 +2,8 @@ import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base'
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults';
-import { useCanRenderPortal } from '../../internal/ssr';
+import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
 
 const verticalResizerStyles = {
   container: {

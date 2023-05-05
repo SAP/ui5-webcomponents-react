@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FormGroupTitle } from './FormGroupTitle';
+import { FormGroupTitle } from './FormGroupTitle.js';
 
 export interface FormGroupPropTypes {
   /**

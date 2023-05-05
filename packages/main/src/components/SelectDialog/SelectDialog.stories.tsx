@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button, DialogDomRef, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
-import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index';
+import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',

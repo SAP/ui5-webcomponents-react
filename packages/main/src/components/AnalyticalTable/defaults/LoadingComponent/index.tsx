@@ -1,7 +1,7 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { Loader } from '../../../Loader';
+import { Loader } from '../../../Loader/index.js';
 
 const styles = {
   loader: {

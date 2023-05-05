@@ -1,6 +1,6 @@
 import React from 'react';
-import { ValueState } from '../../enums';
-import { MessageViewButton } from './index';
+import { ValueState } from '../../enums/index.js';
+import { MessageViewButton } from './index.js';
 
 describe('MessageViewButton', () => {
   [
