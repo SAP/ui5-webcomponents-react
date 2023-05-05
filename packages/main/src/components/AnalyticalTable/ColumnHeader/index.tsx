@@ -84,7 +84,8 @@ const styles = {
   iconContainer: {
     display: 'flex',
     position: 'absolute',
-    color: ThemingParameters.sapContent_IconColor
+    color: ThemingParameters.sapContent_IconColor,
+    insetInlineEnd: '0.5rem'
   },
   selectAllCheckBoxContainer: {
     display: 'flex',
@@ -158,11 +159,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
     if (margin > 0) margin += 0.5;
 
-    if (isRtl) {
-      style.marginLeft = `${margin}rem`;
-    } else {
-      style.marginRight = `${margin}rem`;
-    }
+    style.marginInlineEnd = `${margin}rem`;
 
     return style;
   })();
@@ -179,8 +176,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   const directionStyles = isRtl
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
-
-  const iconContainerDirectionStyles = isRtl ? { left: '0.5rem' } : { right: '0.5rem' };
 
   const handleHeaderCellKeyDown = (e) => {
     onKeyDown?.(e);
@@ -261,7 +256,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
           </Text>
           <div
             className={classes.iconContainer}
-            style={iconContainerDirectionStyles}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
             {isFiltered && <Icon name={iconFilter} aria-hidden />}
