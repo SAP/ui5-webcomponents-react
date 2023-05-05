@@ -1,4 +1,5 @@
-import { MutableRefObject, Ref, RefCallback, useCallback, useRef } from 'react';
+import type { MutableRefObject, Ref, RefCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
 export function useSyncRef<RefType = never>(
   ref: Ref<RefType>

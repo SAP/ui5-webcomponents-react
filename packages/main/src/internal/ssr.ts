@@ -1,4 +1,5 @@
-import { EffectCallback, useEffect, useState } from 'react';
+import type { EffectCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useServerSideEffect(effect: EffectCallback) {
   useEffect(effect, []);

@@ -10,21 +10,11 @@ import {
   useIsRTL
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  ComponentType,
-  CSSProperties,
-  forwardRef,
-  MutableRefObject,
-  ReactNode,
-  Ref,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef
-} from 'react';
+import type { ComponentType, CSSProperties, MutableRefObject, ReactNode, Ref } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
+import type { PluginHook } from 'react-table';
 import {
-  PluginHook,
   useColumnOrder,
   useExpanded,
   useFilters,
@@ -35,13 +25,8 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import {
-  AnalyticalTableScaleWidthMode,
+import type {
   AnalyticalTableScrollMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableVisibleRowCountMode,
-  GlobalStyleClasses,
-  AnalyticalTableSelectionMode,
   TextAlign,
   ValueState,
   VerticalAlign,
@@ -49,6 +34,13 @@ import {
   TableSelectionMode,
   TableSelectionBehavior,
   TableVisibleRowCountMode
+} from '../../enums/index.js';
+import {
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableVisibleRowCountMode,
+  GlobalStyleClasses,
+  AnalyticalTableSelectionMode
 } from '../../enums/index.js';
 import {
   COLLAPSE_NODE,

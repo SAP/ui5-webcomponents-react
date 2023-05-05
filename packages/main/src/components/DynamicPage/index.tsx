@@ -2,7 +2,8 @@
 
 import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import React, { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';

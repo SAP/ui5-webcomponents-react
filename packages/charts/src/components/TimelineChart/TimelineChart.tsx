@@ -1,10 +1,11 @@
-import { CommonProps } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react';
 import { throttle } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody.js';
 import { TimelineChartPlaceholder } from './Placeholder.js';
 import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders.js';
-import { ITimelineChartRow } from './types/TimelineChartTypes.js';
+import type { ITimelineChartRow } from './types/TimelineChartTypes.js';
 import {
   DEFAULT_ROW_HEIGHT,
   DEFAULT_WIDTH,

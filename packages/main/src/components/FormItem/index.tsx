@@ -1,11 +1,13 @@
 'use client';
 
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
-import React, { cloneElement, CSSProperties, Fragment, isValidElement, ReactElement, ReactNode } from 'react';
+import type { CSSProperties, ReactElement, ReactNode } from 'react';
+import React, { cloneElement, Fragment, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { Label, LabelPropTypes } from '../../webComponents/Label/index.js';
+import type { LabelPropTypes } from '../../webComponents/Label/index.js';
+import { Label } from '../../webComponents/Label/index.js';
 import { useFormContext } from '../Form/FormContext.js';
 
 export interface FormItemPropTypes {

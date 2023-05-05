@@ -1,9 +1,9 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
-  AnalyticalTablePropTypes,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   Button,

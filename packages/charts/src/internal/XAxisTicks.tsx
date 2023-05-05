@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import { IChartMeasure } from '../interfaces/IChartMeasure.js';
+import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { getTextWidth, truncateLongLabel } from './Utils.js';
 
 interface XAxisTicksProps {

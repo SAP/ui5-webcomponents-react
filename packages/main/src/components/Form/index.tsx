@@ -2,19 +2,8 @@
 
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  CSSProperties,
-  ElementType,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
+import React, { Children, cloneElement, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';

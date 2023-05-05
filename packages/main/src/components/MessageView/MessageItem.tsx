@@ -3,12 +3,14 @@
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode, useContext } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
-import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
+import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
+import { CustomListItem } from '../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox/index.js';

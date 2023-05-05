@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { IllustrationMessageType, IllustrationMessageSize } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';

@@ -2,12 +2,11 @@
 
 import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { ReactElement, ReactNode } from 'react';
 import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -20,10 +19,11 @@ import type { CommonProps } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
-import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents/index.js';
+import type { AvatarPropTypes } from '../../webComponents/index.js';
+import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
-import { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
+import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { styles } from './ObjectPage.jss.js';
 import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';

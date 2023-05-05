@@ -1,15 +1,16 @@
 'use client';
 
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef } from 'react';
-import { TooltipProps } from 'recharts';
+import type { CSSProperties } from 'react';
+import React, { forwardRef } from 'react';
+import type { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures.js';
-import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
-import { IChartDimension } from '../../interfaces/IChartDimension.js';
-import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import type { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { ComposedChart } from '../ComposedChart/index.js';
 import { ColumnChartWithTrendPlaceholder } from './Placeholder.js';

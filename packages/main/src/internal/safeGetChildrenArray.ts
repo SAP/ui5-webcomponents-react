@@ -1,4 +1,5 @@
-import { Children, isValidElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Children, isValidElement } from 'react';
 
 export const safeGetChildrenArray = <T = Exclude<ReactNode, boolean | null | undefined>>(children: unknown): T[] => {
   const childArray = [];

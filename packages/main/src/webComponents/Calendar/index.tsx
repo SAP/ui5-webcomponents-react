@@ -1,8 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Calendar.js';
-import { ReactNode } from 'react';
-import { CalendarSelectionMode, CalendarType } from '../../enums/index.js';
+import type { ReactNode } from 'react';
+import type { CalendarType } from '../../enums/index.js';
+import { CalendarSelectionMode } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';

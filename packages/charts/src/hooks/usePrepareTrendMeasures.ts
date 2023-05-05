@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
-import { IChartMeasure } from '../interfaces/IChartMeasure.js';
+import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { defaultFormatter } from '../internal/defaults.js';
 
 interface ITrendChartMeasure extends IChartMeasure {

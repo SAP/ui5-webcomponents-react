@@ -1,8 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Title.js';
-import { ReactNode } from 'react';
-import { TitleLevel, WrappingType } from '../../enums/index.js';
+import type { ReactNode } from 'react';
+import type { WrappingType } from '../../enums/index.js';
+import { TitleLevel } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 

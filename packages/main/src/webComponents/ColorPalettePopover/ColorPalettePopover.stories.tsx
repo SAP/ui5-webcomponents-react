@@ -1,14 +1,11 @@
 import { isChromatic } from '@sb/utils';
-import { StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../Button';
 import { ColorPaletteItem } from '../ColorPaletteItem';
-import {
-  ColorPalettePopover as OriginalColorPalettePopover,
-  ColorPalettePopoverDomRef,
-  ColorPalettePopoverPropTypes
-} from './index';
+import type { ColorPalettePopoverDomRef, ColorPalettePopoverPropTypes } from './index';
+import { ColorPalettePopover as OriginalColorPalettePopover } from './index';
 
 const meta = {
   title: 'Modals & Popovers / ColorPalettePopover',
