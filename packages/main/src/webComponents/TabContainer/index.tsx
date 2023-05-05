@@ -58,8 +58,7 @@ interface TabContainerAttributes {
 
 export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   /**
-   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first.
-   * For example, given the following slotted elements:
+   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements:
    *
    * ```
    * <Tab id="tab1">

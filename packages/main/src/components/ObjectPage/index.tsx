@@ -31,14 +31,20 @@ import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js
 addCustomCSSWithScoping(
   'ui5-tabcontainer',
   // padding-inline is used here to ensure the same responsive padding behavior as for the rest of the component
+  // todo: the additional text span adds 3px to the container - needs to be investigated why
   `
   :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
     padding: 0;
     padding-inline: var(--_ui5wcr_ObjectPage_tab_bar_inline_padding);
     box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
   }
+  :host([data-component-name="ObjectPageTabContainer"]) [id$="additionalText"] {
+    display: none;
+  }
   `
 );
+
+const TAB_CONTAINER_HEADER_HEIGHT = 48;
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
@@ -281,7 +287,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               childOffset -
               safeTopHeaderHeight -
               anchorBarHeight -
-              48 /*tabBar*/ -
+              TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
               (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });
@@ -379,7 +385,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             childOffset -
             topHeaderHeight -
             anchorBarHeight -
-            48 /*tabBar*/ -
+            TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
             (headerPinned ? headerContentHeight : 0) -
             16,
           behavior: 'smooth'
@@ -462,13 +468,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         heightDiff +=
           objectPage.getBoundingClientRect().height -
           topHeaderHeight -
-          48 /*tabBar*/ -
+          TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
           (!headerCollapsed ? headerContentHeight : 0) -
           lastSubSection.getBoundingClientRect().height -
           32;
       }
       // heightDiff - footer - tabbar
-      setSpacerBottomHeight(footer ? `calc(${heightDiff}px - 1rem - 48px)` : `${heightDiff}px`);
+      setSpacerBottomHeight(
+        footer ? `calc(${heightDiff}px - 1rem - ${TAB_CONTAINER_HEADER_HEIGHT}px)` : `${heightDiff}px`
+      );
     });
 
     if (objectPage && section) {
@@ -524,13 +532,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
-    const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ 48;
+    const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ TAB_CONTAINER_HEADER_HEIGHT;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
     const observer = new IntersectionObserver(
       ([section]) => {
         if (section.isIntersecting && isProgrammaticallyScrolled.current === false) {
           if (
-            objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + 48 <=
+            objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
             section.target.getBoundingClientRect().bottom
           ) {
             const currentId = extractSectionIdFromHtmlId(section.target.id);
@@ -555,7 +563,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       for (let i = 0; i <= sections.length - 1; i++) {
         const section = sections[i];
         if (
-          objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + 48 <=
+          objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
           section.getBoundingClientRect().bottom
         ) {
           currentSection = section;

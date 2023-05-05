@@ -34,6 +34,13 @@ and the icon name to the `name` property.
 `<Icon name="tnt/antenna"></Icon>`  
 `<Icon name="business-suite/ab-testing"></Icon>`
 
+## CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The `Icon` exposes the following CSS Shadow Parts:
+
+- root - Used to style the outermost wrapper of the `Icon`
+
 ## Keyboard Handling
 
 - \[SPACE, ENTER, RETURN\] - Fires the `click` event if the `interactive` property is set to true.

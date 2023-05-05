@@ -5,20 +5,7 @@ import type { CSSProperties } from 'react';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../../../enums/index.js';
-import { addCustomCSSWithScoping } from '../../../../internal/addCustomCSSWithScoping.js';
 import { Button, Icon } from '../../../../webComponents/index.js';
-
-//todo: use ::part when available: https://github.com/SAP/ui5-webcomponents/issues/6474
-addCustomCSSWithScoping(
-  'ui5-icon',
-  `
-:host([data-component-name="AnalyticalTableExpandIcon"]) .ui5-icon-root {
-  padding: 0.375rem;
-  width: ${CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight};
-  height: ${CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight};
-}
-`
-);
 
 const getPadding = (level) => {
   switch (level) {
@@ -46,7 +33,12 @@ const useStyles = createUseStyles(
       width: '100%',
       height: '100%',
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+      '&::part(root)': {
+        padding: '0.375rem',
+        width: CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight,
+        height: CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight
+      }
     },
     button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' }
   },
