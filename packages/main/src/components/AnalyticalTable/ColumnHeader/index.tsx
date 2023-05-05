@@ -194,7 +194,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   };
 
   const handleHeaderCellKeyUp = (e) => {
-    if (hasPopover && e.code === 'Space') {
+    if (hasPopover && e.code === 'Space' && !e.target.hasAttribute('ui5-li')) {
       setPopoverOpen(true);
     }
   };

@@ -84,7 +84,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
     switch (sortType) {
       case 'asc':
-        column.toggleSortBy(false);
+        column.toggleSortBy(false, !!column.enableMultiSort);
         if (typeof onSort === 'function') {
           onSort(
             enrichEventWithDetails(e, {
@@ -95,7 +95,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         }
         break;
       case 'desc':
-        column.toggleSortBy(true);
+        column.toggleSortBy(true, !!column.enableMultiSort);
         if (typeof onSort === 'function') {
           onSort(
             enrichEventWithDetails(e, {

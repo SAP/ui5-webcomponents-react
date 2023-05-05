@@ -1,4 +1,4 @@
-import { usePrepareDimensionsAndMeasures } from './usePrepareDimensionsAndMeasures';
+import { usePrepareDimensionsAndMeasures } from './usePrepareDimensionsAndMeasures.js';
 
 const dimensions = [
   {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { PieChart, PieChartProps } from '../PieChart/PieChart';
+import { PieChart, PieChartProps } from '../PieChart/PieChart.js';
 
 /**
  * A `DonutChart` is a type of graph that displays data in a circular graph with a cut-out hole in the middle.

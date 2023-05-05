@@ -23,4 +23,5 @@ export interface ColumnType extends Column {
   hAlign: string;
   totalLeft: number;
   totalFlexWidth: number;
+  enableMultiSort?: boolean;
 }

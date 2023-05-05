@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.1...v1.14.0) (2023-05-03)
+
+### Bug Fixes
+
+- **base:** mark base package as `type: module` ([#4140](https://github.com/SAP/ui5-webcomponents-react/issues/4140)) ([646b32b](https://github.com/SAP/ui5-webcomponents-react/commit/646b32bf405d868cdbb637ef676c26751ccd03ed))
+
 ## [1.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.0...v1.13.1) (2023-04-14)
 
 ### Bug Fixes

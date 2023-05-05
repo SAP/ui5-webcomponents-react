@@ -535,6 +535,23 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
   });
 
+  it('unique ids for overflow', () => {
+    cy.viewport(100, 500);
+    cy.mount(
+      <Toolbar>
+        <div id="1">Text1</div>
+        <div>Text2 no id</div>
+        <Button id="3">Text4</Button>
+      </Toolbar>
+    );
+
+    cy.get('#1').should('have.length', 1);
+    cy.get('#1-overflow').should('have.length', 1);
+    cy.findAllByText('Text2 no id').should('have.length', 2).and('not.have.attr', 'id');
+    cy.get('#3').should('have.length', 1);
+    cy.get('#3-overflow').should('have.length', 1);
+  });
+
   mountWithCustomTagName(Toolbar);
   cypressPassThroughTestsFactory(Toolbar);
 });

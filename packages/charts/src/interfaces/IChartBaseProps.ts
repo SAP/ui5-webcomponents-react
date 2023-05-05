@@ -1,7 +1,7 @@
 import { CommonProps } from '@ui5/webcomponents-react';
 import { ComponentType, ReactNode } from 'react';
 import { TooltipProps } from 'recharts';
-import { ICartesianChartConfig } from './ICartesianChartConfig';
+import { ICartesianChartConfig } from './ICartesianChartConfig.js';
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
   /**

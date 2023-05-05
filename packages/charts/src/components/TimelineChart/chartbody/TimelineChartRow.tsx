@@ -1,7 +1,7 @@
 import { throttle } from '@ui5/webcomponents-react-base';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
-import { ITimelineChartRow } from '../types/TimelineChartTypes';
-import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants';
+import { ITimelineChartRow } from '../types/TimelineChartTypes.js';
+import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants.js';
 
 interface TimelineChartRowProps {
   rowData: ITimelineChartRow;

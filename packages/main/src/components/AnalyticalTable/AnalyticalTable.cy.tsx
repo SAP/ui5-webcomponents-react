@@ -32,6 +32,7 @@ interface PropTypes {
       row?: Record<string, unknown>;
       isSelected?: boolean;
       selectedFlatRows: Record<string, unknown>[];
+      selectedRowIds: Record<string | number, boolean>;
     }>
   ) => void;
 }
@@ -290,14 +291,15 @@ describe('AnalyticalTable', () => {
             filterable
             columns={columns}
             onRowSelect={(e) => {
-              const { allRowsSelected, isSelected, row, selectedFlatRows } = e.detail;
+              const { allRowsSelected, isSelected, row, selectedFlatRows, selectedRowIds } = e.detail;
               setRelevantPayload({
                 allRowsSelected,
                 isSelected,
                 row: row.id,
                 selectedFlatRows: selectedFlatRows.map((item) => ({
                   id: item?.id
-                }))
+                })),
+                selectedRowIds
               });
               props.onRowSelect(e);
             }}
@@ -307,6 +309,7 @@ describe('AnalyticalTable', () => {
           />
           <div data-testid="payloadHelper">
             {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
+            {JSON.stringify(relevantPayload?.selectedRowIds)}
           </div>
         </>
       );
@@ -329,12 +332,12 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
     });
-    cy.findByTestId('payloadHelper').should('have.text', '1');
+    cy.findByTestId('payloadHelper').should('have.text', '1{"0.2":true}');
     cy.findByText('Judith Mathews').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
       detail: { isSelected: true }
     });
-    cy.findByTestId('payloadHelper').should('have.text', '2');
+    cy.findByTestId('payloadHelper').should('have.text', '2{"0.2":true,"0.2.0":true}');
 
     // global filter + select
     cy.findByTestId('input').typeIntoUi5Input('Katy Bradshaw');
@@ -345,7 +348,7 @@ describe('AnalyticalTable', () => {
       detail: { isSelected: true }
     });
     cy.get('@onRowSelectSpy').should('have.been.calledThrice');
-    cy.findByTestId('payloadHelper').should('have.text', '3');
+    cy.findByTestId('payloadHelper').should('have.text', '3{"1":true,"0.2":true,"0.2.0":true}');
 
     cy.findByTestId('input').typeIntoUi5Input('{selectall}{backspace}');
 
@@ -360,7 +363,7 @@ describe('AnalyticalTable', () => {
       detail: { isSelected: true }
     });
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
-    cy.findByTestId('payloadHelper').should('have.text', '4');
+    cy.findByTestId('payloadHelper').should('have.text', '4{"0":true,"1":true,"0.2":true,"0.2.0":true}');
   });
 
   it('programmatic and user selection', () => {
@@ -368,6 +371,7 @@ describe('AnalyticalTable', () => {
     const TestComp = ({ onRowSelect }: PropTypes) => {
       const [selectedRowIds, setSelectedRowIds] = useState({});
       const [selectedFlatRows, setSelectedFlatRows] = useState([]);
+      const [selectedRowIdsCb, setSelectedRowIdsCb] = useState({});
       return (
         <>
           <Button onClick={() => setSelectedRowIds({ 2: true, 3: false })}>Set selected rows</Button>
@@ -376,12 +380,18 @@ describe('AnalyticalTable', () => {
             columns={columns}
             onRowSelect={(e) => {
               setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
+              setSelectedRowIdsCb(e.detail.selectedRowIds);
               onRowSelect(e);
             }}
             selectionMode={AnalyticalTableSelectionMode.MultiSelect}
             selectedRowIds={selectedRowIds}
           />
-          "event.detail.selectedFlatRows:"<div data-testid="payload">{JSON.stringify(selectedFlatRows)}</div>
+          <p>
+            "event.detail.selectedFlatRows:"<span data-testid="payload">{JSON.stringify(selectedFlatRows)}</span>
+          </p>
+          <p>
+            "e.detail.selectedRowIds:"<span data-testid="payloadRowsById">{JSON.stringify(selectedRowIdsCb)}</span>
+          </p>
         </>
       );
     };
@@ -393,12 +403,14 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-5').click();
     cy.findByText('Name-5').click();
     cy.findByTestId('payload').should('have.text', '["0","1"]');
+    cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true}');
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
 
     cy.findByText('Set selected rows').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
     cy.findByText('Name-1').click();
     cy.findByTestId('payload').should('have.text', '["1","2"]');
+    cy.findByTestId('payloadRowsById').should('have.text', '{"1":true,"2":true,"3":false}');
   });
 
   it('row & header height', () => {
@@ -451,16 +463,6 @@ describe('AnalyticalTable', () => {
   });
 
   it('GroupBy selection', () => {
-    interface PropTypes {
-      onRowSelect: (
-        e?: CustomEvent<{
-          allRowsSelected: boolean;
-          row?: Record<string, unknown>;
-          isSelected?: boolean;
-          selectedFlatRows: Record<string, unknown>[];
-        }>
-      ) => void;
-    }
     const GroupBySelectTable = (props: PropTypes) => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
@@ -483,14 +485,15 @@ describe('AnalyticalTable', () => {
             columns={columns}
             tableInstance={tableInstance}
             onRowSelect={(e) => {
-              const { allRowsSelected, isSelected, row, selectedFlatRows } = e.detail;
+              const { allRowsSelected, isSelected, row, selectedFlatRows, selectedRowIds } = e.detail;
               setRelevantPayload({
                 allRowsSelected,
                 isSelected,
                 row: row.id,
                 selectedFlatRows: selectedFlatRows.map((item) => ({
                   id: item?.id
-                }))
+                })),
+                selectedRowIds
               });
               onRowSelect(e);
             }}
@@ -500,6 +503,7 @@ describe('AnalyticalTable', () => {
           <div data-testid="selectedFlatRowsLength">
             {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
           </div>
+          <div data-testid="selectedRowIds">{JSON.stringify(relevantPayload?.selectedRowIds)}</div>
           <div data-testid="isSelected">{`${relevantPayload.isSelected}`}</div>
         </>
       );
@@ -510,6 +514,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('QWE').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 1);
     cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
+    cy.findByTestId('selectedRowIds').should('have.text', '{"2":true}');
     cy.findByTestId('isSelected').should('have.text', 'true');
 
     cy.findByText('Friend Name').click();
@@ -519,11 +524,13 @@ describe('AnalyticalTable', () => {
     cy.findByText('25').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 2);
     cy.findByTestId('selectedFlatRowsLength').should('have.text', '2');
+    cy.findByTestId('selectedRowIds').should('have.text', '{"2":true,"4":true}');
     cy.findByTestId('isSelected').should('have.text', 'true');
 
     cy.findByText('25').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 3);
     cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
+    cy.findByTestId('selectedRowIds').should('have.text', '{"2":true}');
     cy.findByTestId('isSelected').should('have.text', 'false');
   });
 
@@ -1723,6 +1730,128 @@ describe('AnalyticalTable', () => {
       key: 'Enter'
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+  });
+
+  it('multi-sort', () => {
+    const columns = [
+      {
+        Header: 'Name',
+        accessor: 'name',
+        enableMultiSort: true
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+        enableMultiSort: true
+      },
+      {
+        Header: 'Name 2',
+        accessor: 'name2'
+      }
+    ];
+    const data = [
+      { name: 'A', age: 40, name2: 'Y', age2: 18 },
+      { name: 'B', age: 40, name2: 'X', age2: 21 },
+      { name: 'A', age: 30, name2: 'Z', age2: 90 },
+      { name: 'A', age: 70, name2: 'Z', age2: 15 },
+      { name: 'B', age: 60, name2: 'Q', age2: 80 },
+      { name: 'B', age: 20, name2: 'Y', age2: 80 },
+      { name: 'C', age: 40, name2: 'Y', age2: 80 }
+    ];
+    cy.mount(<AnalyticalTable columns={columns} data={data} sortable />);
+
+    //sort both Name and Age (multi-sort enabled)
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '30');
+    cy.get('[data-column-index="0"][data-row-index="2"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="2"]').children().should('have.text', '40');
+    cy.get('[data-column-index="0"][data-row-index="3"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="3"]').children().should('have.text', '70');
+
+    cy.get('[data-column-index="0"][data-row-index="4"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="4"]').children().should('have.text', '20');
+    cy.get('[data-column-index="0"][data-row-index="5"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="5"]').children().should('have.text', '40');
+    cy.get('[data-column-index="0"][data-row-index="6"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="6"]').children().should('have.text', '60');
+
+    cy.get('[data-column-index="0"][data-row-index="7"]').children().should('have.text', 'C');
+    cy.get('[data-column-index="1"][data-row-index="7"]').children().should('have.text', '40');
+
+    //only sort Name2
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '60');
+    cy.get('[data-column-index="2"][data-row-index="1"]').children().should('have.text', 'Q');
+    cy.get('[data-column-index="0"][data-row-index="2"]').children().should('have.text', 'B');
+    cy.get('[data-column-index="1"][data-row-index="2"]').children().should('have.text', '40');
+    cy.get('[data-column-index="2"][data-row-index="2"]').children().should('have.text', 'X');
+    cy.get('[data-column-index="0"][data-row-index="3"]').children().should('have.text', 'A');
+    cy.get('[data-column-index="1"][data-row-index="3"]').children().should('have.text', '40');
+    cy.get('[data-column-index="2"][data-row-index="3"]').children().should('have.text', 'Y');
+  });
+
+  it('select-all', () => {
+    const select = cy.spy().as('selectSpy');
+    const TestComp = () => {
+      const [stringifiedPl, setStringifiedPl] = useState('');
+      const handleSelect = (e) => {
+        const { allRowsSelected, selectedFlatRows, selectedRowIds } = e.detail;
+        setStringifiedPl(
+          JSON.stringify({
+            selectedRowIds,
+            selectedFlatRows: selectedFlatRows.map((item) => ({
+              id: item?.id
+            })),
+            allRowsSelected
+          })
+        );
+        select(e);
+      };
+      return (
+        <>
+          <AnalyticalTable
+            columns={columns}
+            data={data}
+            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            onRowSelect={handleSelect}
+          />
+          <span data-testid="payload">{stringifiedPl}</span>
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
+    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('@selectSpy').should('have.been.calledOnce');
+    cy.findByTestId('payload').should(
+      'have.text',
+      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
+    );
+    cy.findByText('X').click();
+    cy.get('@selectSpy').should('have.been.calledTwice');
+    cy.findByTestId('payload').should(
+      'have.text',
+      '{"selectedRowIds":{"0":true,"1":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"3"}],"allRowsSelected":false}'
+    );
+    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('@selectSpy').should('have.been.calledThrice');
+    cy.findByTestId('payload').should(
+      'have.text',
+      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
+    );
+    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('@selectSpy').should('have.callCount', 4);
+    cy.findByTestId('payload').should(
+      'have.text',
+      '{"selectedRowIds":{},"selectedFlatRows":[],"allRowsSelected":false}'
+    );
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
