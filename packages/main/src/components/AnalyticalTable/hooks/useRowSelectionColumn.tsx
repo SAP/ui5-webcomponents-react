@@ -1,29 +1,12 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
-import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
-
-// todo use ::part instead, when available (https://github.com/SAP/ui5-webcomponents/issues/6461)
-addCustomCSSWithScoping(
-  'ui5-checkbox',
-  `
-    :host([data-at-checkbox]) .ui5-checkbox-root {
-      display: flex;
-      width: unset;
-      height: unset;
-      justify-content: center;
-      min-height: unset;
-      min-width: unset;
-      padding: 0;
-    }
-  `
-);
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
   pointerEvents: 'none'
-};
+} as CSSProperties;
 
 /*
  * COMPONENTS
@@ -178,12 +161,13 @@ const getCellProps = (props, { cell }) => {
   return props;
 };
 
-// remove padding, width, etc. with addCustomCSS from checkboxes by leveraging the data attribute
-const setToggleAllRowsSelectedProps = (props) => {
-  return [props, { 'data-at-checkbox': true }];
+const setToggleAllRowsSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
+  const { classes } = webComponentsReactProperties;
+  return [props, { className: classes.checkBox }];
 };
-const setToggleRowSelectedProps = (props) => {
-  return [props, { 'data-at-checkbox': true }];
+const setToggleRowSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
+  const { classes } = webComponentsReactProperties;
+  return [props, { className: classes.checkBox }];
 };
 
 export const useRowSelectionColumn = (hooks) => {

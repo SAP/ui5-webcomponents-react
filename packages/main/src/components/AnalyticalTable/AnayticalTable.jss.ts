@@ -227,6 +227,17 @@ const styles = {
   },
   hiddenA11yText: {
     display: 'none'
+  },
+  checkBox: {
+    '&::part(root)': {
+      display: 'flex',
+      width: 'unset',
+      height: 'unset',
+      justifyContent: 'center',
+      minHeight: 'unset',
+      minWidth: 'unset',
+      padding: 0
+    }
   }
 };
 
