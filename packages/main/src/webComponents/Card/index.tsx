@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Card.js';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';

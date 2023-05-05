@@ -37,11 +37,11 @@ import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
+import type { DialogDomRef, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
   Dialog,
-  DialogDomRef,
   Icon,
   Input,
   Option,
@@ -51,11 +51,9 @@ import {
   Select,
   Table,
   TableColumn,
-  TableDomRef,
-  TableRowDomRef,
   Title
 } from '../../webComponents/index.js';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';

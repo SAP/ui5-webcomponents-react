@@ -1,5 +1,6 @@
-import { CommonProps } from '@ui5/webcomponents-react';
-import React, { CSSProperties, forwardRef } from 'react';
+import type { CommonProps } from '@ui5/webcomponents-react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef } from 'react';
 import { DEFAULT_ROW_HEIGHT } from './util/constants.js';
 import { useStyles } from './util/styles.js';
 

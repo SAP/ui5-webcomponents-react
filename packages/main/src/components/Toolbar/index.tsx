@@ -8,16 +8,12 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { ElementType, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import React, {
   Children,
   cloneElement,
   createRef,
-  ElementType,
   forwardRef,
-  ReactElement,
-  ReactNode,
-  Ref,
-  RefObject,
   useCallback,
   useEffect,
   useMemo,
@@ -29,7 +25,7 @@ import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
+import type { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 import { OverflowPopover } from './OverflowPopover.js';
 import { styles } from './Toolbar.jss.js';
 

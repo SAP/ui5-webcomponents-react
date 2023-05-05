@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
-import { DynamicPage, DynamicPageTitlePropTypes, ObjectPage, Title } from '../..';
+import type { DynamicPageTitlePropTypes } from '../..';
+import { DynamicPage, ObjectPage, Title } from '../..';
 import { Button } from '../../webComponents/index.js';
 import { DynamicPageTitle } from './';
 

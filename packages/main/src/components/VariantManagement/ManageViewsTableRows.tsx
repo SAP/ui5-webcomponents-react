@@ -20,7 +20,7 @@ import {
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
-import { VariantItemPropTypes } from './VariantItem.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 
 interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   variantNames: string[];

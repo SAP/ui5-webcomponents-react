@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, ListMode, ListPropTypes, SelectDialog, SelectDialogPropTypes, StandardListItem } from '../..';
+import type { ListPropTypes, SelectDialogPropTypes } from '../..';
+import { Button, ListMode, SelectDialog, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>

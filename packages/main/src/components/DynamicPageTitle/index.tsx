@@ -2,14 +2,12 @@
 
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { MutableRefObject, ReactElement, ReactNode } from 'react';
 import React, {
   Children,
   cloneElement,
   forwardRef,
   isValidElement,
-  MutableRefObject,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -20,9 +18,10 @@ import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle }
 import type { CommonProps } from '../../interfaces/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
-import { PopoverDomRef } from '../../webComponents/index.js';
+import type { PopoverDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { Toolbar, ToolbarPropTypes } from '../Toolbar/index.js';
+import type { ToolbarPropTypes } from '../Toolbar/index.js';
+import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ActionsSpacer } from './ActionsSpacer.js';
 import { DynamicPageTitleStyles } from './DynamicPageTitle.jss.js';

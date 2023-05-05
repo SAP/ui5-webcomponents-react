@@ -1,16 +1,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, {
-  Children,
-  cloneElement,
-  ComponentType,
-  forwardRef,
-  Fragment,
-  ReactElement,
-  Ref,
-  useEffect,
-  useState
-} from 'react';
+import type { ComponentType, ReactElement, Ref } from 'react';
+import React, { Children, cloneElement, forwardRef, Fragment, useEffect, useState } from 'react';
 import type { CommonProps, Ui5DomRef } from '../interfaces/index.js';
 import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';

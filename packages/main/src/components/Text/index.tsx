@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
 import { TextStyles } from './Text.jss.js';

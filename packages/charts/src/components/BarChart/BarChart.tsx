@@ -1,7 +1,8 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useCallback } from 'react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -25,9 +26,9 @@ import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
-import { IChartDimension } from '../../interfaces/IChartDimension.js';
-import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { ChartDataLabel } from '../../internal/ChartDataLabel.js';
 import { defaultFormatter } from '../../internal/defaults.js';

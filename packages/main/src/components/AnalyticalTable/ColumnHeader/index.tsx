@@ -1,21 +1,20 @@
-import { VirtualItem } from '@tanstack/react-virtual';
+import type { VirtualItem } from '@tanstack/react-virtual';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
+import type {
   AriaAttributes,
   CSSProperties,
   DragEventHandler,
   FC,
   KeyboardEventHandler,
   MouseEventHandler,
-  ReactNode,
-  useRef,
-  useState
+  ReactNode
 } from 'react';
+import React, { useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
 import { Icon } from '../../../webComponents/Icon/index.js';

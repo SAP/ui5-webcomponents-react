@@ -9,7 +9,8 @@ import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ValueState } from '../../enums/index.js';
-import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
+import { Button } from '../../webComponents/index.js';
 
 const buttonStyles = Object.values(ValueState).reduce((acc, cur) => {
   let cssType;

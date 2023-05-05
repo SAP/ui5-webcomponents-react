@@ -2,19 +2,8 @@
 
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  CSSProperties,
-  ElementType,
-  forwardRef,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
+import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ToolbarStyle } from '../../enums/index.js';
 import {
@@ -27,15 +16,15 @@ import {
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
-import {
-  Button,
+import type {
   ButtonDomRef,
   DialogDomRef,
   InputPropTypes,
   TableDomRef,
   TableRowDomRef
 } from '../../webComponents/index.js';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import { Button } from '../../webComponents/index.js';
+import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';

@@ -18,18 +18,9 @@ import {
 import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
-import { SelectedVariant } from '../../internal/VariantManagementContext.js';
-import {
-  Bar,
-  Button,
-  ButtonDomRef,
-  CheckBox,
-  Dialog,
-  DialogDomRef,
-  Input,
-  InputPropTypes,
-  Label
-} from '../../webComponents/index.js';
+import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
+import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 
 const useStyles = createUseStyles(
