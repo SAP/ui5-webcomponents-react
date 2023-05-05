@@ -2,14 +2,12 @@
 
 import '@ui5/webcomponents/dist/TabContainer.js';
 import { ReactNode } from 'react';
-import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
-import { TabDomRef } from '../Tab';
-import { TabSeparatorDomRef } from '../TabSeparator';
+import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
+import { TabDomRef } from '../Tab/index.js';
+import { TabSeparatorDomRef } from '../TabSeparator/index.js';
 
 interface TabContainerAttributes {
   /**

@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
+import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -14,11 +14,11 @@ import {
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
   VIEW
-} from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { trimAndRemoveSpaces } from '../../internal/utils';
-import { SelectedVariant } from '../../internal/VariantManagementContext';
+} from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { trimAndRemoveSpaces } from '../../internal/utils.js';
+import { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import {
   Bar,
   Button,
@@ -29,8 +29,8 @@ import {
   Input,
   InputPropTypes,
   Label
-} from '../../webComponents';
-import { FlexBox } from '../FlexBox';
+} from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 
 const useStyles = createUseStyles(
   {

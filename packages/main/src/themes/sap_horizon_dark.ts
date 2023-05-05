@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomVariables } from './CustomVariables';
+import { CustomVariables } from './CustomVariables.js';
 
 export const sapHorizonDarkParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.ActionSheetHeaderBoxShadow]: ThemingParameters.sapContent_HeaderShadow,

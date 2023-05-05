@@ -16,12 +16,12 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FormBackgroundDesign, TitleLevel } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { Title } from '../../webComponents';
-import { FormGroupTitle } from '../FormGroup/FormGroupTitle';
-import { styles } from './Form.jss';
-import { FormContext } from './FormContext';
+import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { Title } from '../../webComponents/index.js';
+import { FormGroupTitle } from '../FormGroup/FormGroupTitle.js';
+import { styles } from './Form.jss.js';
+import { FormContext } from './FormContext.js';
 
 export interface FormPropTypes extends CommonProps {
   /**

@@ -1,5 +1,5 @@
 import { KeyboardEventHandler } from 'react';
-import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 
 interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;

@@ -27,12 +27,12 @@ import {
   ListMode,
   PopoverPlacementType,
   TitleLevel
-} from '../../enums';
-import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
-import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
+} from '../../enums/index.js';
+import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import {
   Bar,
   Button,
@@ -43,11 +43,11 @@ import {
   ResponsivePopover,
   ResponsivePopoverDomRef,
   Title
-} from '../../webComponents';
-import { FlexBox } from '../FlexBox';
-import { ManageViewsDialog } from './ManageViewsDialog';
-import { SaveViewDialog } from './SaveViewDialog';
-import { VariantItemPropTypes } from './VariantItem';
+} from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { ManageViewsDialog } from './ManageViewsDialog.js';
+import { SaveViewDialog } from './SaveViewDialog.js';
+import { VariantItemPropTypes } from './VariantItem.js';
 
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;

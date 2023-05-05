@@ -49,7 +49,7 @@ import {
   TableSelectionMode,
   TableSelectionBehavior,
   TableVisibleRowCountMode
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,
@@ -60,38 +60,38 @@ import {
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
-} from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { FlexBox } from '../FlexBox';
-import { Text } from '../Text';
-import styles from './AnayticalTable.jss';
-import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
-import { DefaultColumn } from './defaults/Column';
-import { DefaultLoadingComponent } from './defaults/LoadingComponent';
-import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
-import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useA11y } from './hooks/useA11y';
-import { useDragAndDrop } from './hooks/useDragAndDrop';
-import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
-import { usePopIn } from './hooks/usePopIn';
-import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
-import { useRowHighlight } from './hooks/useRowHighlight';
-import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
-import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
-import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback';
-import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
-import { useStyling } from './hooks/useStyling';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles';
-import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
-import { VerticalScrollbar } from './scrollbars/VerticalScrollbar';
-import { VirtualTableBody } from './TableBody/VirtualTableBody';
-import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
-import { stateReducer } from './tableReducer/stateReducer';
-import { TitleBar } from './TitleBar';
-import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util';
-import { VerticalResizer } from './VerticalResizer';
+} from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { Text } from '../Text/index.js';
+import styles from './AnayticalTable.jss.js';
+import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
+import { DefaultColumn } from './defaults/Column/index.js';
+import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
+import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
+import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
+import { useA11y } from './hooks/useA11y.js';
+import { useDragAndDrop } from './hooks/useDragAndDrop.js';
+import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
+import { usePopIn } from './hooks/usePopIn.js';
+import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
+import { useRowHighlight } from './hooks/useRowHighlight.js';
+import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator.js';
+import { useRowSelectionColumn } from './hooks/useRowSelectionColumn.js';
+import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback.js';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection.js';
+import { useStyling } from './hooks/useStyling.js';
+import { useTableScrollHandles } from './hooks/useTableScrollHandles.js';
+import { useToggleRowExpand } from './hooks/useToggleRowExpand.js';
+import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth.js';
+import { VerticalScrollbar } from './scrollbars/VerticalScrollbar.js';
+import { VirtualTableBody } from './TableBody/VirtualTableBody.js';
+import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer.js';
+import { stateReducer } from './tableReducer/stateReducer.js';
+import { TitleBar } from './TitleBar/index.js';
+import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util/index.js';
+import { VerticalResizer } from './VerticalResizer.js';
 
 export interface AnalyticalTableColumnDefinition {
   // base properties

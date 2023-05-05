@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react';
-import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
-import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
-import { resolveCellAlignment } from '../util';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { resolveCellAlignment } from '../util/index.js';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;

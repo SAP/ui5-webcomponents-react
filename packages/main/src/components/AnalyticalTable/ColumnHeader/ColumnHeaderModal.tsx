@@ -7,22 +7,24 @@ import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/w
 import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../../enums/FlexBoxAlignItems';
-import { ListItemType } from '../../../enums/ListItemType';
-import { PopoverHorizontalAlign } from '../../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../../enums/PopoverPlacementType';
-import { TextAlign } from '../../../enums/TextAlign';
-import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults';
-import { useCanRenderPortal } from '../../../internal/ssr';
-import { stopPropagation } from '../../../internal/stopPropagation';
-import { getUi5TagWithSuffix } from '../../../internal/utils';
-import { CustomListItem } from '../../../webComponents/CustomListItem';
-import { Icon } from '../../../webComponents/Icon';
-import { List } from '../../../webComponents/List';
-import { Popover, PopoverDomRef } from '../../../webComponents/Popover';
-import { StandardListItem } from '../../../webComponents/StandardListItem';
-import { FlexBox } from '../../FlexBox';
-import { ColumnType } from '../types/ColumnType';
+import {
+  FlexBoxAlignItems,
+  ListItemType,
+  PopoverHorizontalAlign,
+  PopoverPlacementType,
+  TextAlign
+} from '../../../enums/index.js';
+import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
+import { useCanRenderPortal } from '../../../internal/ssr.js';
+import { stopPropagation } from '../../../internal/stopPropagation.js';
+import { getUi5TagWithSuffix } from '../../../internal/utils.js';
+import { CustomListItem } from '../../../webComponents/CustomListItem/index.js';
+import { Icon } from '../../../webComponents/Icon/index.js';
+import { List } from '../../../webComponents/List/index.js';
+import { Popover, PopoverDomRef } from '../../../webComponents/Popover/index.js';
+import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
+import { FlexBox } from '../../FlexBox/index.js';
+import type { ColumnType } from '../types/ColumnType.js';
 
 export interface ColumnHeaderModalProperties {
   column: ColumnType;

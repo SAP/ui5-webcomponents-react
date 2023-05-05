@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomVariables } from './CustomVariables';
+import { CustomVariables } from './CustomVariables.js';
 
 export const sapFioriHcbParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.ActionSheetTopBorderRadius]: ThemingParameters.sapElement_BorderCornerRadius,

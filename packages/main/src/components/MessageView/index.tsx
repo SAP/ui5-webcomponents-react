@@ -15,25 +15,21 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums/ButtonDesign';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { TitleLevel } from '../../enums/TitleLevel';
-import { ValueState } from '../../enums/ValueState';
-import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { MessageViewContext } from '../../internal/MessageViewContext';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem';
-import { Icon } from '../../webComponents/Icon';
-import { List } from '../../webComponents/List';
-import { SegmentedButton } from '../../webComponents/SegmentedButton';
-import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem';
-import { Title } from '../../webComponents/Title';
-import { FlexBox } from '../FlexBox';
-import type { MessageItemPropTypes } from './MessageItem';
-import { getIconNameForType } from './utils';
+import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
+import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import { MessageViewContext } from '../../internal/MessageViewContext.js';
+import { Bar } from '../../webComponents/Bar/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { List } from '../../webComponents/List/index.js';
+import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
+import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
+import { Title } from '../../webComponents/Title/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import type { MessageItemPropTypes } from './MessageItem.js';
+import { getIconNameForType } from './utils.js';
 
 export interface MessageViewDomRef extends HTMLDivElement {
   /**

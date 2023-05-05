@@ -16,16 +16,16 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { flattenFragments } from '../../internal/utils';
-import { PopoverDomRef } from '../../webComponents';
-import { FlexBox } from '../FlexBox';
-import { Toolbar, ToolbarPropTypes } from '../Toolbar';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ActionsSpacer } from './ActionsSpacer';
-import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { PopoverDomRef } from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { Toolbar, ToolbarPropTypes } from '../Toolbar/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ActionsSpacer } from './ActionsSpacer.js';
+import { DynamicPageTitleStyles } from './DynamicPageTitle.jss.js';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**

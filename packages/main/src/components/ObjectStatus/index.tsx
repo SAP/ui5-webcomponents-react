@@ -7,11 +7,10 @@ import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { clsx } from 'clsx';
 import React, { forwardRef, MouseEventHandler, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { IndicationColor } from '../../enums/IndicationColor';
-import { ValueState } from '../../enums/ValueState';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Icon } from '../../webComponents/Icon';
-import styles from './ObjectStatus.jss';
+import { IndicationColor, ValueState } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import styles from './ObjectStatus.jss.js';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**

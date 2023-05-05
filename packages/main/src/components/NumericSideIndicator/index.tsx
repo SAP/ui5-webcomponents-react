@@ -3,10 +3,10 @@
 import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ValueColor } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Text } from '../Text';
-import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss';
+import { ValueColor } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { Text } from '../Text/index.js';
+import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss.js';
 
 export interface NumericSideIndicatorPropTypes extends CommonProps {
   /**

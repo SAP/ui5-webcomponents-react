@@ -12,7 +12,7 @@ import {
   PopupAccessibleRole,
   TitleLevel,
   ValueState
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,
@@ -28,12 +28,20 @@ import {
   SUCCESS,
   WARNING,
   YES
-} from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { Button, ButtonPropTypes, Dialog, DialogDomRef, DialogPropTypes, Icon, Title } from '../../webComponents';
-import { Text } from '../Text';
-import styles from './MessageBox.jss';
+} from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import {
+  Button,
+  ButtonPropTypes,
+  Dialog,
+  DialogDomRef,
+  DialogPropTypes,
+  Icon,
+  Title
+} from '../../webComponents/index.js';
+import { Text } from '../Text/index.js';
+import styles from './MessageBox.jss.js';
 
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
