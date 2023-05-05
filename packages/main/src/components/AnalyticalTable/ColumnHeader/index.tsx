@@ -82,7 +82,7 @@ const styles = {
     textAlign: 'start'
   },
   iconContainer: {
-    display: 'inline-block',
+    display: 'flex',
     position: 'absolute',
     color: ThemingParameters.sapContent_IconColor
   },
