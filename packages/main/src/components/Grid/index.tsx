@@ -2,7 +2,8 @@
 
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { CSSProperties, forwardRef, isValidElement, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
+import React, { forwardRef, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';

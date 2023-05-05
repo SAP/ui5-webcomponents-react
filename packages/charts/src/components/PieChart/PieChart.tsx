@@ -2,7 +2,8 @@
 
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, CSSProperties, forwardRef, isValidElement, useCallback, useMemo } from 'react';
+import type { CSSProperties } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   Cell,
@@ -17,10 +18,10 @@ import {
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
-import { IChartDimension } from '../../interfaces/IChartDimension.js';
-import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
-import { IPolarChartConfig } from '../../interfaces/IPolarChartConfig.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import type { IPolarChartConfig } from '../../interfaces/IPolarChartConfig.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';

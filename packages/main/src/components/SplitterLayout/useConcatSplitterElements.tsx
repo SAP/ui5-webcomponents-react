@@ -1,7 +1,8 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
-import React, { Children, cloneElement, CSSProperties, isValidElement, ReactElement, useMemo } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
+import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import { Splitter } from '../Splitter/index.js';
-import { SplitterElementPropTypes } from '../SplitterElement/index.js';
+import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
 
 interface ConcatSplitterElements {
   children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];

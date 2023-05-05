@@ -1,9 +1,11 @@
 'use client';
 
-import React, { forwardRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
-import { Card, CardDomRef } from '../../webComponents/index.js';
+import type { CardDomRef } from '../../webComponents/index.js';
+import { Card } from '../../webComponents/index.js';
 import styles from './AnalyticalCard.jss.js';
 
 export interface AnalyticalCardPropTypes extends CommonProps {

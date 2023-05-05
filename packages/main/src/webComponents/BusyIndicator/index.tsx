@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/BusyIndicator.js';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { BusyIndicatorSize } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';

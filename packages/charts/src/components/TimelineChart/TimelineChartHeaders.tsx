@@ -1,6 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, ReactElement, useEffect, useState } from 'react';
-import { ITimelineChartRow } from './types/TimelineChartTypes.js';
+import type { CSSProperties, ReactElement } from 'react';
+import React, { useEffect, useState } from 'react';
+import type { ITimelineChartRow } from './types/TimelineChartTypes.js';
 import { DEFAULT_CHART_VERTICAL_COLS, SPACING, TICK_LENGTH, TOLERANCE } from './util/constants.js';
 import { useStyles } from './util/styles.js';
 

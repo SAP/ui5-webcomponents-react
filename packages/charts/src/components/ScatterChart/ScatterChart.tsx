@@ -1,12 +1,13 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useCallback, useRef } from 'react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
+import type { ReferenceLineProps } from 'recharts';
 import {
   CartesianGrid,
   Legend,
   ReferenceLine,
-  ReferenceLineProps,
   Scatter,
   ScatterChart as ScatterChartLib,
   Tooltip,
@@ -20,9 +21,9 @@ import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
-import { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import type { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps.js';

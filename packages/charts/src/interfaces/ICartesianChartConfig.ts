@@ -1,4 +1,4 @@
-import { ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
+import type { ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
 
 export interface ICartesianChartConfig {
   /**

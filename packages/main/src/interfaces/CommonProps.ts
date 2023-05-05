@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 
 export interface CommonProps extends HTMLAttributes<HTMLElement> {
   /**

@@ -1,4 +1,4 @@
-import { type Meta, StoryObj } from '@storybook/react';
+import type { StoryObj, Meta } from '@storybook/react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Text } from '../Text/index.js';
 import { ResponsiveGridLayout } from './index.js';

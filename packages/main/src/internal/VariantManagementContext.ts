@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { VariantItemPropTypes } from '../components/VariantManagement/VariantItem.js';
-import { StandardListItemDomRef } from '../webComponents/StandardListItem/index.js';
+import type { VariantItemPropTypes } from '../components/VariantManagement/VariantItem.js';
+import type { StandardListItemDomRef } from '../webComponents/StandardListItem/index.js';
 
 export interface SelectedVariant extends VariantItemPropTypes {
   variantItem: StandardListItemDomRef;

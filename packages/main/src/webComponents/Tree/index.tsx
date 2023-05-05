@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Tree.js';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ListMode } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';

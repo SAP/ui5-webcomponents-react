@@ -3,7 +3,8 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
+import type { ReactElement } from 'react';
+import React, { forwardRef, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/index.js';
@@ -13,13 +14,12 @@ import { useCanRenderPortal } from '../../internal/ssr.js';
 import { flattenFragments } from '../../internal/utils.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
-import {
-  Button,
+import type {
   ButtonPropTypes,
-  ResponsivePopover,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
 } from '../../webComponents/index.js';
+import { Button, ResponsivePopover } from '../../webComponents/index.js';
 import styles from './ActionSheet.jss.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
