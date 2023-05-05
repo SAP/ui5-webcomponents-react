@@ -2,11 +2,10 @@
 
 import '@ui5/webcomponents/dist/Avatar.js';
 import { ReactNode } from 'react';
-import { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarAttributes {
   /**

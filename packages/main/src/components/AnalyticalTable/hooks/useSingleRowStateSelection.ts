@@ -1,5 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;

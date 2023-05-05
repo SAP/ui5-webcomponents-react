@@ -15,18 +15,18 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
-import { useObserveHeights } from '../../internal/useObserveHeights';
-import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
-import { CollapsedAvatar } from './CollapsedAvatar';
-import { styles } from './ObjectPage.jss';
-import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils';
+import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
+import { useObserveHeights } from '../../internal/useObserveHeights.js';
+import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents/index.js';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
+import { CollapsedAvatar } from './CollapsedAvatar.js';
+import { styles } from './ObjectPage.jss.js';
+import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',

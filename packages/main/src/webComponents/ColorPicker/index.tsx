@@ -2,10 +2,9 @@
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
 import { CSSProperties } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ColorPickerAttributes {
   /**

@@ -12,9 +12,9 @@ import {
 import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums';
-import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
+import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums/index.js';
+import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import {
   Button,
   ButtonDomRef,
@@ -30,9 +30,9 @@ import {
   ListPropTypes,
   StandardListItemDomRef,
   Title
-} from '../../webComponents';
-import { Text } from '../Text';
-import { Toolbar } from '../Toolbar';
+} from '../../webComponents/index.js';
+import { Text } from '../Text/index.js';
+import { Toolbar } from '../Toolbar/index.js';
 
 const useStyles = createUseStyles(
   {

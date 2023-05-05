@@ -25,13 +25,13 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ToolbarDesign, ToolbarStyle } from '../../enums';
-import { SHOW_MORE } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces';
-import { flattenFragments } from '../../internal/utils';
-import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents';
-import { OverflowPopover } from './OverflowPopover';
-import { styles } from './Toolbar.jss';
+import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
+import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
+import { OverflowPopover } from './OverflowPopover.js';
+import { styles } from './Toolbar.jss.js';
 
 const useStyles = createUseStyles(styles, { name: 'Toolbar' });
 

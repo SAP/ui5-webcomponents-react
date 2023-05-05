@@ -3,8 +3,8 @@
 import { clsx } from 'clsx';
 import React, { forwardRef, ReactNode, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CommonProps } from '../../interfaces';
-import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss';
+import type { CommonProps } from '../../interfaces/index.js';
+import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss.js';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**

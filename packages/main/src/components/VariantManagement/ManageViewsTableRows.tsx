@@ -3,7 +3,7 @@ import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
-import { ButtonDesign, ValueState } from '../../enums';
+import { ButtonDesign, ValueState } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
@@ -16,11 +16,11 @@ import {
   SPECIFY_VIEW_NAME,
   UNSELECTED_AS_FAVORITE,
   VIEW
-} from '../../i18n/i18n-defaults';
-import { trimAndRemoveSpaces } from '../../internal/utils';
-import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents';
-import { Text } from '../Text';
-import { VariantItemPropTypes } from './VariantItem';
+} from '../../i18n/i18n-defaults.js';
+import { trimAndRemoveSpaces } from '../../internal/utils.js';
+import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
+import { Text } from '../Text/index.js';
+import { VariantItemPropTypes } from './VariantItem.js';
 
 interface ManageViewsTableRowsProps extends VariantItemPropTypes {
   variantNames: string[];

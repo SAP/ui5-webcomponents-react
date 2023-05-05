@@ -6,7 +6,7 @@ import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviationIndicator, ValueColor } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
   ARIA_DESC_CARD_HEADER,
   NUMERICCONTENT_DEVIATION_DOWN,
@@ -15,11 +15,11 @@ import {
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
-} from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces';
-import { flattenFragments } from '../../internal/utils';
-import { Icon } from '../../webComponents';
-import styles from './AnalyticalCardHeader.jss';
+} from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { Icon } from '../../webComponents/index.js';
+import styles from './AnalyticalCardHeader.jss.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**

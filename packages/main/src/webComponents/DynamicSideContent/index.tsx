@@ -2,12 +2,11 @@
 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import { ReactNode } from 'react';
-import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface DynamicSideContentAttributes {
   /**

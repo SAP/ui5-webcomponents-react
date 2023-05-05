@@ -17,11 +17,11 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CustomThemingParameters } from '../../../themes/CustomVariables';
-import { Icon } from '../../../webComponents/Icon';
-import { Text } from '../../Text';
-import { ColumnType } from '../types/ColumnType';
-import { ColumnHeaderModal } from './ColumnHeaderModal';
+import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
+import { Icon } from '../../../webComponents/Icon/index.js';
+import { Text } from '../../Text/index.js';
+import type { ColumnType } from '../types/ColumnType.js';
+import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;

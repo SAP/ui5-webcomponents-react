@@ -4,12 +4,12 @@ import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from 
 import { clsx } from 'clsx';
 import React, { cloneElement, forwardRef, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { useObserveHeights } from '../../internal/useObserveHeights';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { FlexBox } from '../FlexBox';
-import { DynamicPageCssVariables, styles } from './DynamicPage.jss';
+import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { useObserveHeights } from '../../internal/useObserveHeights.js';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { DynamicPageCssVariables, styles } from './DynamicPage.jss.js';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'children'> {
   /**

@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 
 export const DynamicPageTitleStyles = {
   container: {
