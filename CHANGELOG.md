@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.14.0...v1.15.0) (2023-05-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** allow closing column popover by selection with SPACE key ([#4565](https://github.com/SAP/ui5-webcomponents-react/issues/4565)) ([bc5c5ed](https://github.com/SAP/ui5-webcomponents-react/commit/bc5c5edc86fa1188f7d8f2fbb8c75599c960666d)), closes [#4545](https://github.com/SAP/ui5-webcomponents-react/issues/4545)
+- **AnalyticalTable:** center align indicator icons of columns ([#4572](https://github.com/SAP/ui5-webcomponents-react/issues/4572)) ([10eda2c](https://github.com/SAP/ui5-webcomponents-react/commit/10eda2c611370c124d4cb9e770d01545409805b0))
+- **charts:** mark charts package as `type: module` ([#4160](https://github.com/SAP/ui5-webcomponents-react/issues/4160)) ([add9c88](https://github.com/SAP/ui5-webcomponents-react/commit/add9c8889856878ca9b4c1dcda258520a6688c17))
+- **main:** mark main package as `type: module` ([#4552](https://github.com/SAP/ui5-webcomponents-react/issues/4552)) ([976064b](https://github.com/SAP/ui5-webcomponents-react/commit/976064b57caa8a8abf7f4b22725dfb522f81f58e))
+
+### Features
+
+- update to @ui5/webcomponents ~1.13.0 ([#4567](https://github.com/SAP/ui5-webcomponents-react/issues/4567)) ([3d0cbf6](https://github.com/SAP/ui5-webcomponents-react/commit/3d0cbf6deceb985225c048c160af9d1ce92849d1))
+
 # [1.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.13.1...v1.14.0) (2023-05-03)
 
 ### Bug Fixes
