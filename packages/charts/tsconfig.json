@@ -5,9 +5,7 @@
     "outDir": "./dist",
     "declarationDir": "./dist",
     "rootDir": "./src",
-    "moduleResolution": "Node16",
-    // TODO Remove this line after the main package is migrated to ESM
-    "skipLibCheck": true
+    "moduleResolution": "Node16"
   },
   "references": [
     {
