@@ -1,9 +1,10 @@
 'use client';
 
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { TitleLevel } from '../../enums/index.js';
+import type { TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import styles from './ObjectPageSection.jss.js';
 

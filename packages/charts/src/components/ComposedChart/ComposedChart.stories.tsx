@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoProps.js';
 import { ComposedChart } from './index.js';
 

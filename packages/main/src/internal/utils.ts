@@ -1,5 +1,6 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { Children, cloneElement, Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Children, cloneElement, Fragment } from 'react';
 
 export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode[] {
   const flatChildren = [];

@@ -3,12 +3,9 @@
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import { InputPropTypes } from '../../webComponents/index.js';
-import {
-  StandardListItem,
-  StandardListItemDomRef,
-  StandardListItemPropTypes
-} from '../../webComponents/StandardListItem/index.js';
+import type { InputPropTypes } from '../../webComponents/index.js';
+import type { StandardListItemDomRef, StandardListItemPropTypes } from '../../webComponents/StandardListItem/index.js';
+import { StandardListItem } from '../../webComponents/StandardListItem/index.js';
 
 export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children' | 'onDetailClick'> {
   /**

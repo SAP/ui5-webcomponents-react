@@ -3,7 +3,8 @@
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
 import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
-import React, { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import React from 'react';
 import { createUseStyles, ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider.js';

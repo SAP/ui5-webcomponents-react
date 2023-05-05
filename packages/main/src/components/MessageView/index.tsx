@@ -3,17 +3,8 @@
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  Children,
-  forwardRef,
-  Fragment,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';

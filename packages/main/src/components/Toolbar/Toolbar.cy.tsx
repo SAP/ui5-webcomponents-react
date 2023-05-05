@@ -2,19 +2,18 @@ import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
+import type { PopoverDomRef, ToolbarPropTypes } from '../..';
 import {
   Button,
   Input,
   OverflowToolbarButton,
-  PopoverDomRef,
   Text,
   Toolbar,
   ToggleButton,
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
-  OverflowToolbarToggleButton,
-  ToolbarPropTypes
+  OverflowToolbarToggleButton
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';

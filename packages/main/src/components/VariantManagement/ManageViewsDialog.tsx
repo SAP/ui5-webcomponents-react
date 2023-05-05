@@ -1,7 +1,8 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { Children, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { BarDesign, FlexBoxAlignItems, FlexBoxDirection, ButtonDesign } from '../../enums/index.js';
@@ -25,7 +26,7 @@ import { Table } from '../../webComponents/Table/index.js';
 import { TableColumn } from '../../webComponents/TableColumn/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { ManageViewsTableRows } from './ManageViewsTableRows.js';
-import { VariantItemPropTypes } from './VariantItem.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 
 const styles = {
   manageViewsDialog: {

@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
-import { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';

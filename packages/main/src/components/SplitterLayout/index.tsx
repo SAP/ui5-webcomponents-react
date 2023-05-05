@@ -2,11 +2,12 @@
 
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { CSSProperties, DependencyList, forwardRef, ReactElement, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, DependencyList, ReactElement } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
-import { SplitterElementPropTypes } from '../SplitterElement/index.js';
+import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
 import { styles } from './SplitterLayout.jss.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements.js';
 

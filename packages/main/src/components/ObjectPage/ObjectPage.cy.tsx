@@ -1,6 +1,8 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
-import { CSSProperties, useReducer, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { useReducer, useRef, useState } from 'react';
+import type { ObjectPagePropTypes } from '../..';
 import {
   Avatar,
   Bar,
@@ -23,7 +25,6 @@ import {
   MessageStrip,
   ObjectPage,
   ObjectPageMode,
-  ObjectPagePropTypes,
   ObjectPageSection,
   ObjectPageSubSection,
   ObjectStatus,

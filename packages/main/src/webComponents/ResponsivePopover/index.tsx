@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   PopoverHorizontalAlign,
   PopoverPlacementType,

@@ -10,27 +10,24 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums/index.js';
+import type { ListGrowingMode } from '../../enums/index.js';
+import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../interfaces/index.js';
-import {
-  Button,
+import type {
   ButtonDomRef,
-  Dialog,
   DialogDomRef,
   DialogPropTypes,
-  Icon,
   IconDomRef,
-  Input,
   InputDomRef,
-  List,
   ListDomRef,
   ListPropTypes,
-  StandardListItemDomRef,
-  Title
+  StandardListItemDomRef
 } from '../../webComponents/index.js';
+import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 

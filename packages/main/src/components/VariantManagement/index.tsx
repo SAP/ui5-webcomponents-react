@@ -5,14 +5,12 @@ import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js'
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { ComponentElement, ReactElement, ReactNode } from 'react';
 import React, {
   Children,
   cloneElement,
-  ComponentElement,
   forwardRef,
   isValidElement,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -32,7 +30,9 @@ import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } 
 import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext.js';
+import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
+import type { ResponsivePopoverDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -41,13 +41,12 @@ import {
   Input,
   List,
   ResponsivePopover,
-  ResponsivePopoverDomRef,
   Title
 } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';
 import { SaveViewDialog } from './SaveViewDialog.js';
-import { VariantItemPropTypes } from './VariantItem.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;

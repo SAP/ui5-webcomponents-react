@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 

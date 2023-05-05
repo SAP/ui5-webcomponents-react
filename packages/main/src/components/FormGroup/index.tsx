@@ -1,4 +1,5 @@
-import React, { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormGroupTitle } from './FormGroupTitle.js';
 
