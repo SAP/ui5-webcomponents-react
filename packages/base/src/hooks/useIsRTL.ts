@@ -19,6 +19,7 @@ const detectRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>) 
   if (dirValues.includes(locallyAppliedDir)) {
     return locallyAppliedDir === 'rtl';
   }
+  // @ts-expect-error: `.includes` returns false if searching for undefined - the ts-error is fixed in a later version of ts
   if (dirValues.includes(elementRef.current?.dir)) {
     return elementRef.current?.dir === 'rtl';
   }
