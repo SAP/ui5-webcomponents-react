@@ -97,6 +97,7 @@ const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) 
   flattenFragments(actions, Infinity).map((action) => {
     if (isValidElement(action)) {
       return cloneElement(action, {
+        // @ts-expect-error: only actionable elements should be passed to either of the `action` props
         onClick: (e) => {
           if (typeof action.props?.onClick === 'function') {
             action.props.onClick(e);
