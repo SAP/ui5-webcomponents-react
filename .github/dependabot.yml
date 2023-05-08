@@ -24,4 +24,5 @@ updates:
       - dependency-name: '@storybook/react-vite'
       - dependency-name: 'storybook'
       - dependency-name: '@types/node'
+      - dependency-name: 'typescript'
 
