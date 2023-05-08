@@ -99,7 +99,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
    * Receives the desired `<img>` tag **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *
-   * `Avatar:not(:defined) {    visibility: hidden;   }   `
+   * `[ui5-avatar]:not(:defined) {    visibility: hidden;   }   `
    */
   children?: ReactNode;
 }
