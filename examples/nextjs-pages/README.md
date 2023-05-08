@@ -13,7 +13,17 @@ cd my-project
 
 ## Getting Started
 
-First, run the development server:
+First, install the node_modules:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
