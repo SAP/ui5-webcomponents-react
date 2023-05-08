@@ -1,4 +1,4 @@
-import { fetchTodos, Todo } from '@/pages/api/todos';
+import { fetchTodos, Todo } from './api/todos';
 import {
   Bar,
   List,

@@ -1,5 +1,5 @@
-import { AppShell } from '@/components/AppShell';
-import '@/styles/globals.css';
+import { AppShell } from '../components/AppShell';
+import '../styles/globals.css';
 import '@ui5/webcomponents-react/dist/Assets.js';
 import { ThemeProvider } from '@ui5/webcomponents-react/ssr';
 import type { AppProps } from 'next/app';

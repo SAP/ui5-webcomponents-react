@@ -1,5 +1,5 @@
-import { Todo } from '@/pages/api/todos';
-import { fetchTodoById } from '@/pages/api/todos/[id]';
+import { Todo } from '../api/todos';
+import { fetchTodoById } from '../api/todos/[id]';
 import {
   DatePicker,
   DynamicPage,
