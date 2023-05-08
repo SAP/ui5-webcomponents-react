@@ -7,6 +7,8 @@ import {
   Form,
   FormItem,
   Input,
+  MessageStrip,
+  MessageStripDesign,
   Switch,
   TextArea
 } from '@ui5/webcomponents-react/ssr';
@@ -26,6 +28,9 @@ export default function TodoDetails({ todo }: Props) {
   return (
     <>
       <DynamicPage showHideHeaderButton={false} headerTitle={<DynamicPageTitle header={todo?.title} />}>
+        <MessageStrip design={MessageStripDesign.Information}>
+          Since this is only a demo app, adjustments made here on this page won't be reflected in the todo list.
+        </MessageStrip>
         <Form>
           <FormItem label={'Title'}>
             <Input value={todo?.title} />
