@@ -17,4 +17,5 @@ scripts
 shared
 packages/cra-template
 CodeGen.tsx
+examples
 
