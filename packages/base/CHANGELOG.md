@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.0...v1.15.1) (2023-05-09)
+
+### Bug Fixes
+
+- **useSyncRef:** add `use client` directive ([#4591](https://github.com/SAP/ui5-webcomponents-react/issues/4591)) ([08f900f](https://github.com/SAP/ui5-webcomponents-react/commit/08f900f7c5583754fad205c22e30c94d0c9ded64))
+
 # [1.15.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.14.0...v1.15.0) (2023-05-05)
 
 ### Features
