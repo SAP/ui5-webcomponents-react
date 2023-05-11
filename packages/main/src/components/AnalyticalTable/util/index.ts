@@ -150,5 +150,9 @@ export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
 }
 
 export function getSubRowsByString(subRowsKey, row) {
-  return subRowsKey.split('.').reduce((acc, cur) => acc?.[cur], row);
+  if (!subRowsKey.includes('.')) {
+    return row.subRows || row[subRowsKey];
+  } else {
+    return subRowsKey.split('.').reduce((acc, cur) => acc?.[cur], row);
+  }
 }

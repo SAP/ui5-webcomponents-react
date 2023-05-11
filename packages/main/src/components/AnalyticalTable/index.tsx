@@ -653,16 +653,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const isRtl = useIsRTL(analyticalTableRef);
 
-  const getSubRows = useCallback(
-    (row) => {
-      if (!subRowsKey.includes('.')) {
-        return row.subRows || row[subRowsKey] || [];
-      } else {
-        return getSubRowsByString(subRowsKey, row) || [];
-      }
-    },
-    [subRowsKey]
-  );
+  const getSubRows = useCallback((row) => getSubRowsByString(subRowsKey, row) || [], [subRowsKey]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
