@@ -1854,6 +1854,140 @@ describe('AnalyticalTable', () => {
     );
   });
 
+  it('manualGroupBy - backend grouping', () => {
+    const cols = [
+      {
+        accessor: 'values.name',
+        Header: 'Name',
+        // replace value for grouped rows, otherwise the aggregated value will be added in brackets
+        Cell: ({ value }) => value,
+        // bug with placeholder (repeated value), for some reason "Simon" is handled as placeholder when manualGroupBy is active
+        // --> show value, but hide it for nested row, either here or in the data
+        RepeatedValue: (instance) => {
+          if (instance.manualGroupBy) {
+            // this can be omitted when handled by data
+            if (instance.row.id.includes('.')) {
+              return null;
+            }
+            return instance.value;
+          }
+          return null;
+        }
+      },
+      { accessor: 'values.age', Header: 'Age' }
+    ];
+
+    const SERVER_DATA = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: '25', children: [] } },
+      { values: { name: 'Martha', age: '30', children: [] } }
+    ];
+    const SERVER_DATA_AGGREGATED = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: 'Aggregated', children: [] } },
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+    ];
+    const SERVER_DATA_PETER = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      {
+        values: {
+          name: 'Peter',
+          age: 'Aggregated',
+          children: [
+            { values: { age: '25' } },
+            { values: { age: '25' } },
+            { values: { age: '30' } },
+            { values: { age: '30' } },
+            { values: { age: '30' } }
+          ]
+        }
+      },
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+    ];
+
+    const SERVER_DATA_MARTHA = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: 'Aggregated', children: [] } },
+      {
+        values: {
+          name: 'Martha',
+          age: 'Aggregated',
+          children: [
+            { values: { name: 'Martha', age: '30' } },
+            { values: { name: 'Martha', age: '25' } },
+            { values: { name: 'Martha', age: '25' } }
+          ]
+        }
+      }
+    ];
+    const TestComp = () => {
+      const [groupedCols, setGroupedCols] = useState([]);
+      const [serverData, setServerData] = useState(SERVER_DATA);
+      const handleRowExpandChange = (e) => {
+        const { isExpanded, original } = e.detail.row;
+        const { column } = e.detail;
+        if (!isExpanded) {
+          if (groupedCols.includes(column.id)) {
+            switch (original.values.name) {
+              case 'Peter':
+                setServerData(SERVER_DATA_PETER);
+                break;
+              case 'Martha':
+                setServerData(SERVER_DATA_MARTHA);
+                break;
+              default:
+                break;
+            }
+          }
+        }
+      };
+
+      const handleGrouping = (e) => {
+        const { groupedColumns } = e.detail;
+        setGroupedCols(groupedColumns);
+        if (groupedColumns.includes('values.name')) {
+          setServerData(SERVER_DATA_AGGREGATED);
+        } else {
+          setServerData(SERVER_DATA);
+        }
+      };
+      return (
+        <AnalyticalTable
+          data={serverData}
+          groupable
+          columns={cols}
+          reactTableOptions={{
+            autoResetGroupBy: false,
+            autoResetExpanded: false,
+            manualGroupBy: true
+          }}
+          // only use subRowsKey --> can't use subRows as it's always an array (not undefined - internal logic will fail)
+          subRowsKey="values.children"
+          onRowExpandChange={handleRowExpandChange}
+          onGroup={handleGrouping}
+        />
+      );
+    };
+    cy.mount(<TestComp />);
+    cy.findByText('Simon').should('be.visible').should('have.length', 1);
+    cy.findByText('Peter').should('be.visible').should('have.length', 1);
+    cy.findByText('Martha').should('be.visible').should('have.length', 1);
+    cy.findByText('Aggregated').should('not.exist');
+
+    cy.findByText('Name').click();
+    cy.findByText('Group').click();
+    cy.findByText('Simon').should('be.visible').should('have.length', 1);
+    cy.findAllByText('Aggregated').should('be.visible').should('have.length', 2);
+    cy.get('[ui5-icon][name="navigation-right-arrow"]').should('be.visible').should('have.length', 2);
+
+    cy.get('[ui5-icon][name="navigation-right-arrow"]').eq(1).click();
+    cy.findByText('Martha').should('be.visible').should('have.length', 1);
+
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="4"]').should('have.text', 30);
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="5"]').should('have.text', 25);
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="6"]').should('have.text', 25);
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 

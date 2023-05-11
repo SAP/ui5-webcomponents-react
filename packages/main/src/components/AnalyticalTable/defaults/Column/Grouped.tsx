@@ -25,7 +25,7 @@ export const Grouped = (props) => {
   return (
     <>
       <span
-        {...row.getToggleRowExpandedProps({ style })}
+        {...row.getToggleRowExpandedProps({ style, column: cell.column })}
         title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
       >
         <Icon name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow} style={tableGroupExpandCollapseIcon} />
