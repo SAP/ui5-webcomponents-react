@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
-import { resolveCellAlignment } from '../util/index.js';
+import { getSubRowsByString, resolveCellAlignment } from '../util/index.js';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
   const { classes } = instance.webComponentsReactProperties;
@@ -44,14 +44,18 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (rowProps, { instance, row }) => {
   const { webComponentsReactProperties } = instance;
-  const { classes, selectionBehavior, selectionMode, alternateRowColor } = webComponentsReactProperties;
+  const { classes, selectionBehavior, selectionMode, alternateRowColor, subRowsKey } = webComponentsReactProperties;
   let className = classes.tr;
   const rowCanBeSelected = [
     AnalyticalTableSelectionMode.SingleSelect,
     AnalyticalTableSelectionMode.MultiSelect
   ].includes(selectionMode);
-
-  if (row.isGrouped) {
+  if (
+    row.isGrouped ||
+    (instance.manualGroupBy &&
+      row.cells.some((item) => item.column.isGrouped) &&
+      getSubRowsByString(subRowsKey, row.original) != null)
+  ) {
     className += ` ${classes.tableGroupHeader}`;
   }
 

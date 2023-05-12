@@ -3,6 +3,7 @@ import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
 import React, { useCallback, useMemo, useRef } from 'react';
 import type { ScrollToRefType } from '../interfaces.js';
+import { getSubRowsByString } from '../util/index.js';
 import { EmptyRow } from './EmptyRow.js';
 import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
@@ -27,6 +28,8 @@ interface VirtualTableBodyProps {
   dispatch?: (e: { type: string; payload?: Record<string, unknown> }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
   columnVirtualizer: Record<string, any>;
+  manualGroupBy?: boolean;
+  subRowsKey: string;
 }
 
 const measureElement = (el) => el.offsetHeight;
@@ -52,7 +55,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     alwaysShowSubComponent,
     dispatch,
     subComponentsHeight,
-    columnVirtualizer
+    columnVirtualizer,
+    manualGroupBy,
+    subRowsKey
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -238,7 +243,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 contentToRender = 'Cell';
               } else if (isTreeTable || (!alwaysShowSubComponent && RowSubComponent)) {
                 contentToRender = 'Expandable';
-              } else if (cell.isGrouped) {
+              } else if (
+                cell.isGrouped ||
+                (manualGroupBy && cell.column.isGrouped && getSubRowsByString(subRowsKey, row.original) != null)
+              ) {
                 contentToRender = 'Grouped';
               } else if (cell.isAggregated) {
                 contentToRender = 'Aggregated';
