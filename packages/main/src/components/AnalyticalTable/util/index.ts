@@ -133,6 +133,7 @@ export const resolveCellAlignment = (column) => {
   return style;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
   if (rowHeight) {
     return rowHeight;
@@ -146,4 +147,12 @@ export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
 
   // fallback for SSR
   return 44;
+}
+
+export function getSubRowsByString(subRowsKey, row) {
+  if (!subRowsKey.includes('.')) {
+    return row.subRows || row[subRowsKey];
+  } else {
+    return subRowsKey.split('.').reduce((acc, cur) => acc?.[cur], row);
+  }
 }

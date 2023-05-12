@@ -82,7 +82,7 @@ import { VirtualTableBody } from './TableBody/VirtualTableBody.js';
 import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer.js';
 import { stateReducer } from './tableReducer/stateReducer.js';
 import { TitleBar } from './TitleBar/index.js';
-import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util/index.js';
+import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
 
 export interface AnalyticalTableColumnDefinition {
@@ -462,6 +462,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the key for nested rows.
    *
+   * __Note__: You can also specify deeply nested sub-rows with accessors like `values.subRows`.
+   *
    * Default: "subRows"
    */
   subRowsKey?: string;
@@ -651,7 +653,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const isRtl = useIsRTL(analyticalTableRef);
 
-  const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
+  const getSubRows = useCallback((row) => getSubRowsByString(subRowsKey, row) || [], [subRowsKey]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
@@ -699,7 +701,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         scrollToRef,
         showOverlay,
         uniqueId,
-        scaleXFactor
+        scaleXFactor,
+        subRowsKey
       },
       ...reactTableOptions
     },
@@ -1133,6 +1136,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subComponentsHeight={tableState.subComponentsHeight}
                   dispatch={dispatch}
                   columnVirtualizer={columnVirtualizer}
+                  manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
+                  subRowsKey={subRowsKey}
                 />
               </VirtualTableBodyContainer>
             )}
