@@ -1,0 +1,67 @@
+import{j as t}from"./jsx-runtime-5926aa06.js";import{C as h,A as p}from"./DomRefTable.module-bed2e061.js";import{D as l}from"./DocsHeader-cce01c31.js";import{F as x}from"./Footer-0eeecef7.js";import{D as m,a as s}from"./index-961c7bde.js";import"./index-ebeaab24.js";import{M as g,C as i,a as j,e as a}from"./chunk-PCJTTTQV-48af5014.js";import{C as f,D as c,A as u,W as y,a as b,b as w,S as v}from"./DynamicPage.stories-cf351510.js";import{S as k}from"./SubcomponentsSection-6138f2fc.js";import{u as d}from"./index-bda0bad7.js";import"./react-jss.esm-022ab528.js";import"./inheritsLoose-93e09647.js";import"./index-50d15196.js";import"./iframe-7e2d8cf5.js";import"../sb-preview/runtime.js";import"./UI5Element-74c2a827.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-d61dcbbc.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./slot-76e48863.js";import"./Icon-a2964213.js";import"./Icons-94b91597.js";import"./decline-c0e7c267.js";import"./i18n-defaults-80781f7e.js";import"./information-972c65ef.js";import"./class-map-519e9c6d.js";import"./Button-1eb48b4c.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-254d6b69.js";import"./index-4c0ab015.js";import"./clsx.m-1229b3e0.js";import"./index-562e1433.js";import"./ThemingParameters-7e2e4e30.js";import"./Import-46db63bb.js";import"./TableOfContent-97bdb2e1.js";import"./index-4c28c096.js";import"./Link-e0af46e3.js";import"./WrappingType-b81e595a.js";import"./index-671f3848.js";import"./Label-fcb0092c.js";import"./index-9c09ad76.js";import"./index-ab5e8882.js";import"./Popover-2de3a0ad.js";import"./Integer-f7f172c9.js";import"./PopupUtils-db5b49db.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-c4ad8573.js";import"./FocusableElements-20734289.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-362c4d65.js";import"./ResizeHandler-0f082c48.js";import"./MediaRange-25b98f31.js";import"./style-map-33b353d0.js";import"./slim-arrow-down-4f848b87.js";import"./slim-arrow-up-71df2bff.js";import"./index-99d317a4.js";import"./i18n-defaults-fc88400a.js";import"./I18nContext-cdb50611.js";import"./index-b57bba0d.js";import"./ToggleButton-9307a40f.js";import"./index-b6effe23.js";import"./stopPropagation-da74d54e.js";import"./index-97702eb3.js";import"./overflow-0a1f4799.js";import"./CssSizeVariables-bd372cde.js";import"./CustomVariables-fd831c35.js";import"./debounce-208efd13.js";import"./index-031368d9.js";import"./Media-6b270b80.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./index-ccb586ae.js";import"./ItemNavigation-e9bbb1b9.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-990cb1ca.js";import"./CheckBox-5944a432.js";import"./ValueState-2c5e5904.js";import"./accept-4bb68de0.js";import"./utils-badfc99a.js";import"./navigation-down-arrow-a20e7b64.js";import"./index-34ba55b0.js";import"./GlobalStyleClasses-7209358d.js";import"./PageBackgroundDesign-7e89cd25.js";import"./index-eb4eb061.js";import"./index-4763ef87.js";import"./ValueState-ab6838cc.js";import"./VariantItem-9454bc0d.js";import"./UnableToLoad-2d0a1607.js";import"./IllustratedMessage-71dcd162.js";import"./Title-85313bbf.js";import"./i18n-defaults-217b10b4.js";import"./parameters-bundle.css-deb4e0b1.js";import"./search-139b49f2.js";import"./index-a904451d.js";import"./Bar-d7dcdbd1.js";import"./index-c0aebf0b.js";import"./Dialog-07218916.js";import"./favorite-2f94d00a.js";import"./unfavorite-3f425725.js";import"./index-5f384812.js";import"./RadioButton-9ea605bf.js";import"./index-6831277d.js";import"./index-dc877cea.js";import"./Input-90311e06.js";import"./Suggestions.css-2167eb11.js";import"./ResponsivePopoverCommon.css-5b3cf680.js";import"./ValueStateMessage.css-0142eeaf.js";import"./useIsomorphicId-4be7c5e3.js";import"./index-5a34662a.js";import"./index-10954b96.js";import"./index-10bfa5a7.js";import"./ResponsivePopover-d37f7fd3.js";import"./index-ab8406c2.js";import"./ListItemBase-c271f906.js";import"./index-67514589.js";import"./StandardListItem-48aef1ae.js";import"./ListItem-4183041f.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-b979090e.js";import"./Avatar-99b7e1ff.js";import"./employee-78b984a5.js";import"./index-760f7b35.js";import"./index-ad8e7747.js";import"./index-1678ebd0.js";import"./index-fa2dcf75.js";import"./slideUp-745debd3.js";import"./animate-1a16ba20.js";import"./AnimationMode-1db0db01.js";function oi(r={}){const{wrapper:e}=Object.assign({},d(),r.components);return e?t.jsx(e,Object.assign({},r,{children:t.jsx(n,{})})):n();function n(){const o=Object.assign({h2:"h2",h1:"h1",p:"p",strong:"strong",code:"code",ul:"ul",li:"li",h3:"h3",pre:"pre"},d(),r.components);return t.jsxs(t.Fragment,{children:[t.jsx(g,{of:f}),`
+`,t.jsx(l,{}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(i,{of:c}),`
+`,t.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(h,{of:c}),`
+`,t.jsx(o.h1,{id:"more-examples",children:"More Examples"}),`
+`,t.jsx(o.h2,{id:"always-show-header-content",children:"Always show Header Content"}),`
+`,t.jsx(i,{of:u}),`
+`,t.jsx(o.h2,{id:"variant-management-as-title",children:"Variant Management as Title"}),`
+`,t.jsxs(o.p,{children:[t.jsx(o.strong,{children:"Note:"})," To prevent the ",t.jsx(o.code,{children:"click"})," event of the ",t.jsx(o.code,{children:"VariantManagement"})," component from bubbling up and collapsing/expanding the ",t.jsx(o.code,{children:"DynamicPageHeader"}),", please call ",t.jsx(o.code,{children:"event.stopPropagation()"})," inside the ",t.jsx(o.code,{children:"onClick"})," callback of the ",t.jsx(o.code,{children:"VariantManagement"}),"."]}),`
+`,t.jsx(i,{of:y}),`
+`,t.jsx(o.h2,{id:"with-floating-footer",children:"With floating footer"}),`
+`,t.jsx(i,{of:b}),`
+`,t.jsx(o.h2,{id:"dynamicpage-with-custom-actions-and-navigationactions-overflow-button",children:"DynamicPage with custom actions and navigationActions overflow button"}),`
+`,t.jsxs(o.p,{children:["The ",t.jsx(o.code,{children:"DynamicPageTitle"})," offers two props (",t.jsx(o.code,{children:"actionsToolbarProps"})," and ",t.jsx(o.code,{children:"navigationActionsToolbarProps"}),") to configure the props of the ",t.jsx(o.code,{children:"actions"})," and ",t.jsx(o.code,{children:"navigationActions"}),` toolbars.
+With these objects it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `,t.jsx(o.code,{children:"overflowButton"}),` prop.
+`,t.jsx(o.code,{children:"navigationActionsToolbarProps"})," only has an effect, if the ",t.jsx(o.code,{children:"navigationActions"})," toolbar is used. (width < 1280px)"]}),`
+`,t.jsx(i,{of:w}),`
+`,t.jsx(o.h2,{id:"with-sticky-sub-headers",children:"With sticky sub-headers"}),`
+`,t.jsxs(o.p,{children:["To display sticky sub-headers that line-up with the standard header of the ",t.jsx(o.code,{children:"DynamicPage"})," you're able to render ",t.jsx(o.code,{children:"children"}),` as function.
+There you receive an object as parameter that offers the following properties:`]}),`
+`,t.jsxs(o.ul,{children:[`
+`,t.jsxs(o.li,{children:[t.jsx(o.code,{children:"stickyHeaderHeight"}),": The height of the ",t.jsx(o.code,{children:"DynamicPage"})," header sections which will stick to the top of the page."]}),`
+`]}),`
+`,t.jsx(i,{of:v,sourceState:"none"}),`
+`,t.jsx(o.h3,{id:"code",children:"Code"}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`<DynamicPage {...props}>
+  {({ stickyHeaderHeight }) => (
+    <>
+      <div
+        style={{
+          position: 'sticky',
+          width: '100%',
+          height: '4rem',
+          background: 'lightgreen',
+          top: \`\${stickyHeaderHeight}px\`
+        }}
+      >
+        Sticky Header
+      </div>
+      <div style={{ width: '100%', background: 'orange', height: '10rem' }}>Content</div>
+      <div
+        style={{
+          position: 'sticky',
+          width: '100%',
+          height: '8rem',
+          background: 'lightgreen',
+          top: \`calc(\${stickyHeaderHeight}px + 4rem)\`
+        }}
+      >
+        Sticky Header 2
+      </div>
+      <div style={{ background: 'lightblue', height: '2000px', width: '100%' }}>Content</div>
+    </>
+  )}
+</DynamicPage>
+`})}),`
+`,t.jsx(j,{children:k}),`
+`,t.jsx(o.h2,{id:"dynamicpagetitle",children:"DynamicPageTitle"}),`
+`,t.jsx(a,{of:m}),`
+`,t.jsx(p,{of:m}),`
+`,t.jsx(o.h2,{id:"dynamicpageheader",children:"DynamicPageHeader"}),`
+`,t.jsx(a,{of:s}),`
+`,t.jsx(p,{of:s}),`
+`,t.jsx(x,{})]})}}export{oi as default};
+//# sourceMappingURL=DynamicPage-a7c666f1.js.map

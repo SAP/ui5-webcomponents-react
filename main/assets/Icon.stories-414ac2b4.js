@@ -1,0 +1,59 @@
+import{M as a,C as l,f as u,a as d}from"./chunk-PCJTTTQV-48af5014.js";import{I as o}from"./index-4763ef87.js";import"./employee-78b984a5.js";import{d as h}from"./DomRefTable.module-bed2e061.js";import{D as b}from"./DocsHeader-cce01c31.js";import{F as w}from"./Footer-0eeecef7.js";import{j as e}from"./jsx-runtime-5926aa06.js";import"./index-ebeaab24.js";import{u as p}from"./index-bda0bad7.js";import"./iframe-7e2d8cf5.js";import"../sb-preview/runtime.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-9c09ad76.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./inheritsLoose-93e09647.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./Icon-a2964213.js";import"./UI5Element-74c2a827.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-d61dcbbc.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./Icons-94b91597.js";import"./react-jss.esm-022ab528.js";import"./index-50d15196.js";import"./slot-76e48863.js";import"./decline-c0e7c267.js";import"./i18n-defaults-80781f7e.js";import"./information-972c65ef.js";import"./class-map-519e9c6d.js";import"./Button-1eb48b4c.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-254d6b69.js";import"./index-4c0ab015.js";import"./clsx.m-1229b3e0.js";import"./index-562e1433.js";import"./ThemingParameters-7e2e4e30.js";import"./Import-46db63bb.js";import"./TableOfContent-97bdb2e1.js";import"./index-4c28c096.js";import"./Link-e0af46e3.js";import"./WrappingType-b81e595a.js";import"./index-671f3848.js";import"./Label-fcb0092c.js";import"./index-ab5e8882.js";import"./Popover-2de3a0ad.js";import"./Integer-f7f172c9.js";import"./PopupUtils-db5b49db.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-c4ad8573.js";import"./FocusableElements-20734289.js";import"./isElementHidden-01c07146.js";import"./BrowserScrollbar.css-362c4d65.js";import"./ResizeHandler-0f082c48.js";import"./MediaRange-25b98f31.js";import"./style-map-33b353d0.js";const g=`## Usage
+
+1\\. **Get familiar with the icons collections.**  
+Before displaying an icon, you need to explore the icons collections to find and import the desired icon.  
+Currently there are 3 icons collection, available as 3 npm packages:
+
+- <ui5-link target="_blank" href="https://www.npmjs.com/package/@ui5/webcomponents-icons">@ui5/webcomponents-icons</ui5-link> represents the "SAP-icons" collection and includes the following <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons">icons</ui5-link>.
+- <ui5-link target="_blank" href="https://www.npmjs.com/package/@ui5/webcomponents-icons-tnt">@ui5/webcomponents-icons-tnt</ui5-link> represents the "tnt" collection and includes the following <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT">icons</ui5-link>.
+- <ui5-link target="_blank" href="https://www.npmjs.com/package/@ui5/webcomponents-icons-business-suite">@ui5/webcomponents-icons-icons-business-suite</ui5-link> represents the "business-suite" collection and includes the following <ui5-link target="_blank" href="https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols">icons</ui5-link>.
+
+2\\. **After exploring the icons collections, add one or more of the packages as dependencies to your project.**  
+\`npm i @ui5/webcomponents-icons\`  
+\`npm i @ui5/webcomponents-icons-tnt\`  
+\`npm i @ui5/webcomponents-icons-business-suite\`
+
+3\\. **Then, import the desired icon**.  
+\`import "@ui5/{package_name}/dist/{icon_name}.js";\`
+
+**For Example**:  
+For the standard "SAP-icons" icon collection, import an icon from the \`@ui5/webcomponents-icons\` package:  
+\`import "@ui5/webcomponents-icons/dist/employee.js";\`
+
+For the "tnt" (SAP Fiori Tools) icon collection, import an icon from the \`@ui5/webcomponents-icons-tnt\` package:  
+\`import "@ui5/webcomponents-icons-tnt/dist/antenna.js";\`
+
+For the "business-suite" (SAP Business Suite) icon collection, import an icon from the \`@ui5/webcomponents-icons-business-suite\` package:  
+\`import "@ui5/webcomponents-icons-business-suite/dist/ab-testing.js";\`
+
+4\\. **Display the icon using the \`Icon\` web component.**  
+Set the icon collection ("SAP-icons", "tnt" or "business-suite" - "SAP-icons" is the default icon collection and can be skipped)  
+and the icon name to the \`name\` property.
+
+\`<Icon name="employee"></Icon>\`  
+\`<Icon name="tnt/antenna"></Icon>\`  
+\`<Icon name="business-suite/ab-testing"></Icon>\`
+
+## CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The \`Icon\` exposes the following CSS Shadow Parts:
+
+- root - Used to style the outermost wrapper of the \`Icon\`
+
+## Keyboard Handling
+
+- \\[SPACE, ENTER, RETURN\\] - Fires the \`click\` event if the \`interactive\` property is set to true.
+- \\[SHIFT\\] - If \\[SPACE\\] or \\[ENTER\\],\\[RETURN\\] is pressed, pressing \\[SHIFT\\] releases the Icon without triggering the click event.
+`;function f(n={}){const{wrapper:i}=Object.assign({},p(),n.components);return i?e.jsx(i,{...n,children:e.jsx(s,{})}):s();function s(){const r=Object.assign({h2:"h2"},p(),n.components);return e.jsxs(e.Fragment,{children:[e.jsx(a,{title:"Data Display / Icon",component:o,args:{name:"employee"}}),`
+`,e.jsx(b,{}),`
+`,e.jsx("br",{}),`
+`,e.jsx(r.h2,{id:"example",children:"Example"}),`
+`,e.jsx(l,{children:e.jsx(u,{name:"Default",children:m=>e.jsx(o,{...m})})}),`
+`,e.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,e.jsx(h,{story:"Default"}),`
+`,e.jsx(d,{children:g}),`
+`,e.jsx(w,{})]})}}const c=n=>e.jsx(o,{...n});c.storyName="Default";c.parameters={storySource:{source:`args => {
+  return <Icon {...args} />;
+}`}};const t={title:"Data Display / Icon",component:o,args:{name:"employee"},tags:["stories-mdx"],includeStories:["defaultStory"]};t.parameters=t.parameters||{};t.parameters.docs={...t.parameters.docs||{},page:f};const ve=["defaultStory"];export{ve as __namedExportsOrder,t as default,c as defaultStory};
+//# sourceMappingURL=Icon.stories-414ac2b4.js.map
