@@ -164,7 +164,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }
           });
         }
-        let updatedHeight = rowHeight;
+        // adapted to allow custom row heights
+        let updatedHeight = row.original?.rowHeight ?? rowHeight;
         if (
           renderRowSubComponent &&
           (rows[virtualRow.index]?.isExpanded || alwaysShowSubComponent) &&
@@ -224,7 +225,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   position: 'absolute',
                   width: `${virtualColumn.size}px`,
                   top: 0,
-                  height: `${rowHeight}px`,
+                  height: `${updatedHeight}px`,
                   ...directionStyles
                 }
               };
