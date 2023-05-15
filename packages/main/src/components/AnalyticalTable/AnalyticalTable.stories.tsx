@@ -601,3 +601,40 @@ export const CustomFilter: Story = {
     return <AnalyticalTable columns={columns} data={args.data} filterable />;
   }
 };
+
+export const VariableLineHeight: Story = {
+  args: {
+    data: dataTree,
+    isTreeTable: true
+  },
+  render: (args) => {
+    const columns = useMemo(
+      () => [
+        {
+          Header: 'Name',
+          accessor: 'name'
+        },
+        {
+          Header: 'Line height / Age',
+          accessor: 'age'
+        }
+      ],
+      []
+    );
+    const dataTreeWithRowHeight = args.data.map((row) => ({
+      ...row,
+      rowHeight: row.age,
+      subRows: row.subRows.map((subRow) => ({ ...subRow, rowHeight: subRow.age }))
+    }));
+    return (
+      <AnalyticalTable
+        {...args}
+        headerRowHeight={20}
+        rowHeight={'individual'}
+        columns={columns}
+        data={dataTreeWithRowHeight}
+        filterable
+      />
+    );
+  }
+};

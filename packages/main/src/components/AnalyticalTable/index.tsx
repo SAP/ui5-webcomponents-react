@@ -347,7 +347,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
    */
-  rowHeight?: number;
+  rowHeight?: number | 'individual';
   /**
    * Defines the height of the header row.
    *
@@ -767,7 +767,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     (extensionRef.current?.offsetHeight ?? 0) +
     (headerRef.current?.offsetHeight ?? 0);
 
-  const internalRowHeight = getRowHeight(rowHeight, tableRef);
+  // adapted to allow custom row heights
+  let internalRowHeight;
+  if (rowHeight === 'individual') {
+    internalRowHeight = 44;
+  } else {
+    internalRowHeight = getRowHeight(rowHeight, tableRef);
+  }
+
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
