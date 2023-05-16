@@ -1,4 +1,5 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
+// MODIFICATION: use header background in section headers
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
@@ -183,7 +184,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute',
               boxSizing: 'border-box',
-              // MODIFICATION: use custom row height
               height: `${updatedHeight}px`
             }}
             ref={(node) => {
@@ -227,9 +227,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   position: 'absolute',
                   width: `${virtualColumn.size}px`,
                   top: 0,
+                  // MODIFICATION: use header background in section headers
                   backgroundColor: row.original.isSectionHeader
                     ? ThemingParameters.sapList_HeaderBackground
                     : undefined,
+                  // MODIFICATION: use custom row height
                   height: `${updatedHeight}px`,
                   ...directionStyles
                 }
