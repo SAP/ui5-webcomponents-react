@@ -1,4 +1,5 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { ScrollToRefType } from '../interfaces';
@@ -164,7 +165,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }
           });
         }
-        // adapted to allow custom row heights
+        // MODIFICATION: use custom row height
         let updatedHeight = row.original?.rowHeight ?? rowHeight;
         if (
           renderRowSubComponent &&
@@ -182,6 +183,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute',
               boxSizing: 'border-box',
+              // MODIFICATION: use custom row height
               height: `${updatedHeight}px`
             }}
             ref={(node) => {
@@ -225,6 +227,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   position: 'absolute',
                   width: `${virtualColumn.size}px`,
                   top: 0,
+                  backgroundColor: row.original.isSectionHeader
+                    ? ThemingParameters.sapList_HeaderBackground
+                    : undefined,
                   height: `${updatedHeight}px`,
                   ...directionStyles
                 }
