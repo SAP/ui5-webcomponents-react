@@ -615,25 +615,34 @@ export const VariableLineHeight: Story = {
           accessor: 'name'
         },
         {
-          Header: 'Line height / Age',
-          accessor: 'age'
+          Header: 'Row height',
+          accessor: 'rowHeight'
         }
       ],
       []
     );
-    const dataTreeWithRowHeight = args.data.map((row) => ({
-      ...row,
-      rowHeight: row.age,
-      subRows: row.subRows.map((subRow) => ({ ...subRow, rowHeight: subRow.age }))
-    }));
+    const dataTreeWithRowHeight = [
+      { isSectionHeader: true, rowHeight: 50, name: 'A section header' },
+      {
+        rowHeight: 50,
+        name: 'An element',
+        subRows: [
+          { name: 'a subelement', rowHeight: 50 },
+          { name: 'a second subelement', rowHeight: 50 }
+        ]
+      },
+      { isSectionHeader: true, rowHeight: 80, name: 'Another section header' },
+      { rowHeight: 44, name: 'An element', subRows: [{ name: 'a subelement', rowHeight: 50 }] }
+    ];
     return (
       <AnalyticalTable
         {...args}
-        headerRowHeight={20}
+        headerRowHeight={30}
         rowHeight={'individual'}
         columns={columns}
         data={dataTreeWithRowHeight}
-        filterable
+        withRowHighlight={false}
+        selectionMode={'None'}
       />
     );
   }
