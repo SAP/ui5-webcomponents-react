@@ -1,3 +1,17 @@
+# Why this fork?
+This is a fork of @ui5/webcomponents-react meant for internal use at Fioneer.
+
+- **A TreeTable (AnalyticalTable) with variable line heights** is needed. A property called `rowHeight` has been added and can be provided to the data / rows and will be used as line height.
+  - To prevent an empty line to appear below a table, it might be needed to set the `rowHeight` prop of the `<AnalyticalTable>` to a non-empty string, e.g. `"individual"`.
+- **The AnalyticalTable should contain sections**. To highlight the section title rows (called *section headers* from here on) in the same colour as the header of the table, a property called `isSectionHeader` has been implemented and can be provided to the data / rows.
+  - The colour is set to `sapList_HeaderBackground`, which is not used in the story book. 
+  - Section headers should also not have a padding in the leftmost cell. It is therefore checked if the row has the property `isSectionHeader`.
+
+All modifications are commented with `MODIFICATION` in the code to facilitate updating this repository when it is synced with the original @ui5/webcomponents-react repository.
+
+
+## Default README:
+
 # @ui5/webcomponents-react
 
 React components with Fiori compliant style by leveraging [UI5 Web Components](https://sap.github.io/ui5-webcomponents/).
