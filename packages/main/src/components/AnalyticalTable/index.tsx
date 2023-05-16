@@ -768,7 +768,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     (headerRef.current?.offsetHeight ?? 0);
 
   const internalRowHeight = getRowHeight(rowHeight, tableRef);
-
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
   const popInRowHeight =
     tableState?.popInColumns?.length > 0
