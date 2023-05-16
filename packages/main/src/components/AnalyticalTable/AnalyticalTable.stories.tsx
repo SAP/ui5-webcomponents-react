@@ -601,3 +601,45 @@ export const CustomFilter: Story = {
     return <AnalyticalTable columns={columns} data={args.data} filterable />;
   }
 };
+
+// MODIFICATION: added a story to show a TreeTable with variable line heights
+export const VariableLineHeight: Story = {
+  render: () => {
+    const columns = useMemo(
+      () => [
+        {
+          Header: 'Name',
+          accessor: 'name'
+        },
+        {
+          Header: 'Row height',
+          accessor: 'rowHeight'
+        }
+      ],
+      []
+    );
+    const dataTreeWithRowHeight = [
+      { isSectionHeader: true, rowHeight: 50, name: 'A section header' },
+      {
+        rowHeight: 50,
+        name: 'An element',
+        subRows: [
+          { name: 'a subelement', rowHeight: 100 },
+          { name: 'a second subelement', rowHeight: 20 }
+        ]
+      },
+      { isSectionHeader: true, rowHeight: 80, name: 'Another section header' },
+      { rowHeight: 44, name: 'An element', subRows: [{ name: 'a subelement', rowHeight: 50 }] }
+    ];
+    return (
+      <AnalyticalTable
+        isTreeTable={true}
+        headerRowHeight={30}
+        columns={columns}
+        data={dataTreeWithRowHeight}
+        withRowHighlight={false}
+        selectionMode={'None'}
+      />
+    );
+  }
+};

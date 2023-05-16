@@ -1,4 +1,6 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
+// MODIFICATION: use header background in section headers
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
 import { ScrollToRefType } from '../interfaces';
@@ -164,7 +166,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             }
           });
         }
-        let updatedHeight = rowHeight;
+        // MODIFICATION: use custom row height
+        let updatedHeight = row.original?.rowHeight ?? rowHeight;
         if (
           renderRowSubComponent &&
           (rows[virtualRow.index]?.isExpanded || alwaysShowSubComponent) &&
@@ -224,7 +227,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   position: 'absolute',
                   width: `${virtualColumn.size}px`,
                   top: 0,
-                  height: `${rowHeight}px`,
+                  // MODIFICATION: use header background in section headers
+                  backgroundColor: row.original.isSectionHeader
+                    ? ThemingParameters.sapList_HeaderBackground
+                    : undefined,
+                  // MODIFICATION: use custom row height
+                  height: `${updatedHeight}px`,
                   ...directionStyles
                 }
               };

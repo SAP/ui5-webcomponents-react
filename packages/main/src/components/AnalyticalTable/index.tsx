@@ -577,6 +577,14 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
   tableInstance?: Ref<Record<string, any>>;
+
+  /**
+   * Defines a static table height.
+   *
+   * __Must be memoized!__
+   * MODIFICATION: set a static table height to show subcomponents.
+   */
+  tableHeight?: number;
 }
 
 // When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
@@ -645,6 +653,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     LoadingComponent,
     NoDataComponent,
     scaleXFactor,
+    // MODIFICATION: set a static table height to show subcomponents.
+    tableHeight,
     ...rest
   } = props;
   const uniqueId = useIsomorphicId();
@@ -865,6 +875,10 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [tableState?.interactiveRowsHavePopIn, tableState?.popInColumns?.length]);
 
   const tableBodyHeight = useMemo(() => {
+    // MODIFICATION: set a static table height to show subcomponents.
+    if (tableHeight) {
+      return tableHeight;
+    }
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
     const rowHeight =
       visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
@@ -881,7 +895,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     popInRowHeight,
     visibleRowCountMode,
     tableState?.interactiveRowsHavePopIn,
-    adjustTableHeightOnPopIn
+    adjustTableHeightOnPopIn,
+    // MODIFICATION: set a static table height to show subcomponents.
+    tableHeight
   ]);
 
   // scroll bar detection
