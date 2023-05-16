@@ -71,7 +71,7 @@ export const Expandable = (props) => {
     paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
   } else {
     // MODIFICATION: only add padding to leftmost cell if the row is not a section header
-    paddingLeft = columnIndex === 0 && !row.original.isSectionHeader ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
+    paddingLeft = columnIndex === 0 && !row?.original?.isSectionHeader ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
   }
   const style: CSSProperties = {
     paddingInlineStart: paddingLeft
