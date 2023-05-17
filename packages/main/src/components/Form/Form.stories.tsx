@@ -14,6 +14,7 @@ import {
   TextArea
 } from '../../index.js';
 import { Form } from './index.js';
+import TestComp from './TestComp';
 
 const meta = {
   title: 'Layouts & Floorplans / Form',
@@ -38,6 +39,8 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const Test: Story = { render: () => <TestComp /> };
 
 export const Default: Story = {
   render: (props) => {
@@ -74,6 +77,7 @@ export const Default: Story = {
             <CheckBox checked />
           </FormItem>
         </FormGroup>
+        <FormGroup titleText="Empty" />
         <FormGroup titleText="Company Data">
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />

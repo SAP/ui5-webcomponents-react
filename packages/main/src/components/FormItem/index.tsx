@@ -2,13 +2,13 @@
 
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, Fragment, isValidElement } from 'react';
+import React, { cloneElement, Fragment, isValidElement, useContext, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
-import { useFormContext } from '../Form/FormContext.js';
+import { FormContext, useFormContext, useFormGroupContext } from '../Form/FormContext.js';
 
 export interface FormItemPropTypes {
   /**
@@ -19,6 +19,10 @@ export interface FormItemPropTypes {
    * Content of the FormItem. Can be an arbitrary React Node.
    */
   children: ReactNode | ReactNode[];
+  /**
+   * todo: remove
+   */
+  id: string;
 }
 
 interface InternalProps extends FormItemPropTypes {
@@ -122,11 +126,31 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  */
 const FormItem = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
-  const { label, children, columnIndex, rowIndex } = props as InternalProps;
+  const { label, children, columnIndex, rowIndex, id } = props as InternalProps;
   const uniqueId = useIsomorphicId();
-
+  const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
+  const groupContext = useFormGroupContext();
   const classes = useStyles();
-  const { labelSpan } = useFormContext();
+
+  console.log('con', groupContext);
+
+  useEffect(() => {
+    registerItem?.(id, 'formItem', groupContext.id);
+    return () => unregisterItem?.(id, groupContext.id);
+  }, [id, registerItem, unregisterItem, groupContext]);
+
+  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => id === itemId), [layoutInfos]);
+
+  // #1
+  // Attention: FormItems do only make sense within Forms and only should work with them.
+  // If layoutInfos is defined, the FormContext is available and will set the id for the layoutInfo
+  // With this solution we prevent flickering for the wrong (not calculated) layout because the first render does not contain the layout
+  // I tested useLayoutEffect instead useEffect but this caused me some bugs, when the pages reloads with HMR
+  // So this is fine, the layoutInfo will be defined
+  if (layoutInfos && !layoutInfo) return null;
+
+  // console.log("Render FormItem " + id, layoutInfo, layoutInfos);
+  console.log('Render FormItem');
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
@@ -146,32 +170,32 @@ const FormItem = (props: FormItemPropTypes) => {
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}
       />
-      <div
-        className={classes.content}
-        style={{
-          gridColumnStart: contentGridColumnStart,
-          gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined
-        }}
-        data-label-span={labelSpan}
-      >
-        {flattenFragments(children).map((child, index) => {
-          // @ts-expect-error: type can't be string because of `isValidElement`
-          if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
-            const content = getContentForHtmlLabel(label);
-            const childId = child?.props?.id;
-            return (
-              <Fragment key={`${content}-${uniqueId}-${index}`}>
-                {/*@ts-expect-error: child is ReactElement*/}
-                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
-                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
-                  {content}
-                </label>
-              </Fragment>
-            );
-          }
-          return undefined;
-        })}
-      </div>
+      {/*<div*/}
+      {/*  className={classes.content}*/}
+      {/*  style={{*/}
+      {/*    gridColumnStart: contentGridColumnStart,*/}
+      {/*    gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined*/}
+      {/*  }}*/}
+      {/*  data-label-span={labelSpan}*/}
+      {/*>*/}
+      {/*  {flattenFragments(children).map((child, index) => {*/}
+      {/*    // @ts-expect-error: type can't be string because of `isValidElement`*/}
+      {/*    if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {*/}
+      {/*      const content = getContentForHtmlLabel(label);*/}
+      {/*      const childId = child?.props?.id;*/}
+      {/*      return (*/}
+      {/*        <Fragment key={`${content}-${uniqueId}-${index}`}>*/}
+      {/*          /!*@ts-expect-error: child is ReactElement*!/*/}
+      {/*          {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}*/}
+      {/*          <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>*/}
+      {/*            {content}*/}
+      {/*          </label>*/}
+      {/*        </Fragment>*/}
+      {/*      );*/}
+      {/*    }*/}
+      {/*    return undefined;*/}
+      {/*  })}*/}
+      {/*</div>*/}
     </>
   );
 };
