@@ -1,7 +1,7 @@
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { FC, ReactElement, ReactNode, Ref } from 'react';
+import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
 import React, { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType } from '../../enums/index.js';
@@ -27,6 +27,7 @@ interface OverflowPopoverProps {
   showMoreText: string;
   overflowPopoverRef?: Ref<PopoverDomRef>;
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  setIsMounted: Dispatch<SetStateAction<boolean>>;
 }
 
 const isPhone = Device.isPhone();
@@ -40,12 +41,20 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowContentRef,
     numberOfAlwaysVisibleItems,
     showMoreText,
+    overflowButton,
     overflowPopoverRef,
-    overflowButton
+    setIsMounted
   } = props;
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
   const [componentRef, popoverRef] = useSyncRef(overflowPopoverRef);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
 
   const handleToggleButtonClick = (e) => {
     e.stopPropagation();
