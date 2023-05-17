@@ -116,7 +116,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    */
   onOverflowChange?: (event: {
     toolbarElements: HTMLElement[];
-    overflowElements: HTMLCollection;
+    overflowElements: HTMLCollection | undefined;
     target: HTMLElement;
   }) => void;
 }
