@@ -109,7 +109,7 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
  *
- * __Note:__ The overflow popover is mounted only when opened, i.e., any child component of the popover will be remounted, when moved into it.
+ * __Note:__ The overflow popover is mounted only when the overflow button is displayed, i.e., any child component of the popover will be remounted, when moved into it.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
@@ -134,6 +134,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
+  const [isPopoverMounted, setIsPopoverMounted] = useState(false);
   const contentRef = useRef(null);
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
@@ -291,11 +292,14 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   useEffect(() => {
     const haveChildrenChanged = prevChildren.current.length !== flatChildren.length;
-    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
+    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof debouncedOverflowChange.current === 'function') {
       prevChildren.current = flatChildren;
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
-      const overflowElements = overflowContentRef.current?.children;
+      let overflowElements;
+      if (isPopoverMounted) {
+        overflowElements = overflowContentRef.current?.children;
+      }
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
@@ -308,7 +312,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     return () => {
       debouncedOverflowChange.current.cancel();
     };
-  }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
+  }, [lastVisibleIndex, flatChildren.length, isPopoverMounted]);
 
   const CustomTag = as as ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
@@ -352,6 +356,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
             showMoreText={showMoreText}
             overflowButton={overflowButton}
+            setIsMounted={setIsPopoverMounted}
           >
             {flatChildren}
           </OverflowPopover>
