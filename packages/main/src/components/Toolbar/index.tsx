@@ -8,7 +8,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ElementType, ReactElement, ReactNode, Ref, RefObject } from 'react';
+import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import React, {
   Children,
   cloneElement,
@@ -21,6 +21,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import type { PopupAccessibleRole } from '../../enums/index.js';
 import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -88,6 +89,25 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    */
   overflowPopoverRef?: Ref<PopoverDomRef>;
   /**
+   * Defines internally used a11y properties.
+   *
+   * __Note:__ When setting `contentRole` of the `overflowPopover`, the `role` is set to `"None"`.
+   */
+  a11yConfig?: {
+    overflowPopover?: {
+      /**
+       * Defines the `accessibleRole` of the overflow `Popover`.
+       */
+      role?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+      /**
+       * Defines the `role` of the content div inside the overflow `Popover`.
+       *
+       * __Note:__ When setting `contentRole`, the `role` is set to `"None"`.
+       */
+      contentRole?: HTMLAttributes<HTMLDivElement>['role'];
+    };
+  };
+  /**
    * Fired if the `active` prop is set to true and the user clicks or presses Enter/Space on the `Toolbar`.
    */
   onClick?: (event: CustomEvent) => void;
@@ -127,6 +147,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     onOverflowChange,
     overflowPopoverRef,
     overflowButton,
+    a11yConfig,
     ...rest
   } = props;
 
@@ -357,6 +378,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
             showMoreText={showMoreText}
             overflowButton={overflowButton}
             setIsMounted={setIsPopoverMounted}
+            a11yConfig={a11yConfig}
           >
             {flatChildren}
           </OverflowPopover>
