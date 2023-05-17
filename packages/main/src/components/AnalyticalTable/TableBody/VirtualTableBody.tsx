@@ -228,7 +228,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   width: `${virtualColumn.size}px`,
                   top: 0,
                   // MODIFICATION: use header background in section headers
-                  backgroundColor: row.original.isSectionHeader
+                  backgroundColor: row?.original?.isSectionHeader
                     ? ThemingParameters.sapList_HeaderBackground
                     : undefined,
                   // MODIFICATION: use custom row height
