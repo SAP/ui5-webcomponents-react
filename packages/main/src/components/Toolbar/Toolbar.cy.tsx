@@ -13,7 +13,8 @@ import {
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
-  OverflowToolbarToggleButton
+  OverflowToolbarToggleButton,
+  PopupAccessibleRole
 } from '../..';
 import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
@@ -580,6 +581,38 @@ describe('Toolbar', () => {
     cy.findAllByText('Text2 no id').should('have.length', 2).and('not.have.attr', 'id');
     cy.get('#3').should('have.length', 1);
     cy.get('#3-overflow').should('have.length', 1);
+  });
+
+  it('a11y - role & contentRole', () => {
+    cy.viewport(100, 500);
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { role: PopupAccessibleRole.AlertDialog } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section[role="alertdialog"]').should('exist');
+
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { contentRole: 'menu' } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section').should('not.have.attr', 'role');
+    cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
+
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { role: PopupAccessibleRole.AlertDialog, contentRole: 'menu' } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section').should('not.have.attr', 'role');
+    cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
   });
 
   mountWithCustomTagName(Toolbar);

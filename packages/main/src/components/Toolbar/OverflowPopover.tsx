@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
 import React, { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, PopoverPlacementType } from '../../enums/index.js';
+import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
 import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -16,6 +16,7 @@ import type {
   ToggleButtonPropTypes
 } from '../../webComponents/index.js';
 import { Popover, ToggleButton } from '../../webComponents/index.js';
+import type { ToolbarPropTypes } from './index.js';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
@@ -28,6 +29,7 @@ interface OverflowPopoverProps {
   overflowPopoverRef?: Ref<PopoverDomRef>;
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   setIsMounted: Dispatch<SetStateAction<boolean>>;
+  a11yConfig?: ToolbarPropTypes['a11yConfig'];
 }
 
 const isPhone = Device.isPhone();
@@ -43,7 +45,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     showMoreText,
     overflowButton,
     overflowPopoverRef,
-    setIsMounted
+    setIsMounted,
+    a11yConfig
   } = props;
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
@@ -106,6 +109,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const canRenderPortal = useCanRenderPortal();
 
+  const accessibleRole = (() => {
+    if (a11yConfig?.overflowPopover?.contentRole) {
+      return PopupAccessibleRole.None;
+    }
+    return a11yConfig?.overflowPopover?.role;
+  })();
+
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       {overflowButton ? (
@@ -134,8 +144,14 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onBeforeOpen={handleBeforeOpen}
             onAfterOpen={handleAfterOpen}
             hideArrow
+            accessibleRole={accessibleRole}
           >
-            <div className={classes.popoverContent} ref={overflowContentRef}>
+            <div
+              className={classes.popoverContent}
+              ref={overflowContentRef}
+              role={a11yConfig?.overflowPopover?.contentRole}
+              data-component-name="ToolbarOverflowPopoverContent"
+            >
               {children.map((item, index) => {
                 if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
                   // @ts-expect-error: if props is not defined, it doesn't have an id (is not a ReactElement)
