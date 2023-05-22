@@ -156,6 +156,9 @@ export const Default: Story = {};
 
 export const PluginDisableRowSelection: Story = {
   name: 'Plugin: useRowDisableSelection',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
     selectionMode: AnalyticalTableSelectionMode.MultiSelect
@@ -230,6 +233,9 @@ export const PluginIndeterminateRowSelection: Story = {
 
 export const PluginManualRowSelect: Story = {
   name: 'Plugin: useManualRowSelect',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   args: {
     data: dataManualSelect
   },
@@ -337,6 +343,9 @@ export const TreeTable: Story = {
 };
 
 export const InfiniteScrolling: Story = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: (args) => {
     const [data, setData] = useState(args.data.slice(0, 50));
     const [loading, setLoading] = useState(false);

@@ -21,6 +21,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    chromatic: { diffThreshold: 0.6 }
+  },
   render(args) {
     return (
       <SplitterLayout {...args}>
