@@ -142,6 +142,7 @@ describe('UI5 Web Components - Child Commands', () => {
       cy.mount(component);
 
       cy.get(`[data-testid="${testId}"]`).typeIntoUi5InputWithDelay('i');
+      cy.wait(50);
       cy.get('ui5-responsive-popover').should('have.attr', 'open');
 
       // in some cases the static-area-item is not cleaned up
