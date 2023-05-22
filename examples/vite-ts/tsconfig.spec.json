@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "types": ["cypress", "node"]
+  },
+  "include": ["cypress", "src/**/*.cy.tsx"]
+  //  "references": [
+  //    {
+  //      "path": "./tsconfig.json"
+  //    }
+  //  ]
+}
