@@ -1988,6 +1988,115 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-column-index="1"][data-visible-row-index="6"]').should('have.text', 25);
   });
 
+  it('plugin hook: useOrderedMultiSort', () => {
+    const TestComponent = ({ orderedIds }: { orderedIds: string[] }) => {
+      const columns = [
+        {
+          Header: 'Name',
+          accessor: 'name',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Age',
+          accessor: 'age',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Name 2',
+          accessor: 'name2',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Age 2',
+          accessor: 'age2',
+          enableMultiSort: true
+        }
+      ];
+      const data = [
+        { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
+        { name: 'Kristen', age: 40, name2: 'Randolph', age2: 21 },
+        { name: 'Peter', age: 30, name2: 'Rose', age2: 90 },
+        { name: 'Peter', age: 70, name2: 'Rose', age2: 22 },
+        { name: 'Kristen', age: 60, name2: 'Willis', age2: 80 },
+        { name: 'Kristen', age: 20, name2: 'Alissa', age2: 80 },
+        { name: 'Graham', age: 40, name2: 'Alissa', age2: 80 },
+        { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
+        { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
+        { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
+        { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+      ];
+      return (
+        <AnalyticalTable
+          columns={columns}
+          data={data}
+          sortable
+          tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]}
+        />
+      );
+    };
+
+    cy.mount(<TestComponent orderedIds={['name', 'name2', 'age', 'age2']} />);
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '20');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '62');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should('have.text', 'Willis');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '60');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="2"]').should('have.text', 'Willis');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '20');
+
+    cy.mount(<TestComponent orderedIds={['name2']} />);
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '40');
+
+    cy.findByText('Age 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should('have.text', '80');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '18');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should('have.text', 'Alissa');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should('have.text', '80');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '30');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="2"]').should('have.text', 'Rose');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '90');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
