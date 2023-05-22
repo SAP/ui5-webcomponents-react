@@ -21,6 +21,20 @@ Then, run the development server:
 npm run dev
 ```
 
+## Run Tests
+
+Run all component tests headlessly in Chrome:
+
+```bash
+npm run test
+```
+
+Open component tests in Chrome:
+
+```bash
+npm run test:open
+```
+
 ## Learn More
 
 To learn more about Vite and UI5 Web Components for React, please visit the following resources:
