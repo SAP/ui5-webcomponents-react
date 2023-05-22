@@ -12,7 +12,6 @@ import {
   ShellBar
 } from '@ui5/webcomponents-react';
 import { useState } from 'react';
-import './App.css';
 
 function App() {
   const [inputVal, setInputVal] = useState('');
