@@ -20,3 +20,11 @@ Then, run the development server:
 ```bash
 npm run dev
 ```
+
+## Learn More
+
+To learn more about Vite and UI5 Web Components for React, please visit the following resources:
+
+- [Vite Documentation](https://vitejs.dev/)
+- [UI5 Web Components Documentation](https://sap.github.io/ui5-webcomponents/)
+- [UI5 Web Components for React Documentation](https://sap.github.io/ui5-webcomponents-react/)
