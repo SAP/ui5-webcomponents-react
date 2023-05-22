@@ -1,4 +1,4 @@
-import '@ui5/webcomponents-react/dist/Assets';
+import '@ui5/webcomponents-react/dist/Assets.js';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
