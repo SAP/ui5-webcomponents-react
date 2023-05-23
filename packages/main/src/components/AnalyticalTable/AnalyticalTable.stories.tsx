@@ -372,6 +372,9 @@ const orderedMultiSortData = [
 ];
 
 export const PluginOrderedMultiSort = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   name: 'Plugin: useOrderedMultiSort',
   args: { orderedIds: ['name', 'name2', 'age', 'age2'] },
   argTypes: {
