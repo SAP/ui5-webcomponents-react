@@ -133,7 +133,6 @@ const FormItem = (props: FormItemPropTypes) => {
   const classes = useStyles();
 
   useEffect(() => {
-    console.log(groupContext);
     registerItem?.(id, 'formItem', groupContext.id);
     return () => {
       unregisterItem?.(id, groupContext.id);

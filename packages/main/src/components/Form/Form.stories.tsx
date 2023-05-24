@@ -13,7 +13,7 @@ import {
   Text,
   TextArea
 } from '../../index.js';
-import { Form } from './index.js';
+import { Form } from './NewForm.js';
 import TestComp from './TestComp';
 
 const meta = {
