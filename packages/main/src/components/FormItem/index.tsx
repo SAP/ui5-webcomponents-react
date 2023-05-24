@@ -132,12 +132,13 @@ const FormItem = (props: FormItemPropTypes) => {
   const groupContext = useFormGroupContext();
   const classes = useStyles();
 
-  console.log('con', groupContext);
-
   useEffect(() => {
+    console.log(groupContext);
     registerItem?.(id, 'formItem', groupContext.id);
-    return () => unregisterItem?.(id, groupContext.id);
-  }, [id, registerItem, unregisterItem, groupContext]);
+    return () => {
+      unregisterItem?.(id, groupContext.id);
+    };
+  }, [id, registerItem, unregisterItem, groupContext.id]);
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => id === itemId), [layoutInfos]);
 
@@ -150,7 +151,6 @@ const FormItem = (props: FormItemPropTypes) => {
   if (layoutInfos && !layoutInfo) return null;
 
   // console.log("Render FormItem " + id, layoutInfo, layoutInfos);
-  console.log('Render FormItem');
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
@@ -170,32 +170,32 @@ const FormItem = (props: FormItemPropTypes) => {
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}
       />
-      {/*<div*/}
-      {/*  className={classes.content}*/}
-      {/*  style={{*/}
-      {/*    gridColumnStart: contentGridColumnStart,*/}
-      {/*    gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined*/}
-      {/*  }}*/}
-      {/*  data-label-span={labelSpan}*/}
-      {/*>*/}
-      {/*  {flattenFragments(children).map((child, index) => {*/}
-      {/*    // @ts-expect-error: type can't be string because of `isValidElement`*/}
-      {/*    if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {*/}
-      {/*      const content = getContentForHtmlLabel(label);*/}
-      {/*      const childId = child?.props?.id;*/}
-      {/*      return (*/}
-      {/*        <Fragment key={`${content}-${uniqueId}-${index}`}>*/}
-      {/*          /!*@ts-expect-error: child is ReactElement*!/*/}
-      {/*          {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}*/}
-      {/*          <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>*/}
-      {/*            {content}*/}
-      {/*          </label>*/}
-      {/*        </Fragment>*/}
-      {/*      );*/}
-      {/*    }*/}
-      {/*    return undefined;*/}
-      {/*  })}*/}
-      {/*</div>*/}
+      <div
+        className={classes.content}
+        style={{
+          gridColumnStart: contentGridColumnStart,
+          gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined
+        }}
+        data-label-span={labelSpan}
+      >
+        {flattenFragments(children).map((child, index) => {
+          // @ts-expect-error: type can't be string because of `isValidElement`
+          if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
+            const content = getContentForHtmlLabel(label);
+            const childId = child?.props?.id;
+            return (
+              <Fragment key={`${content}-${uniqueId}-${index}`}>
+                {/*@ts-expect-error: child is ReactElement*/}
+                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
+                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
+                  {content}
+                </label>
+              </Fragment>
+            );
+          }
+          return undefined;
+        })}
+      </div>
     </>
   );
 };

@@ -14,7 +14,11 @@ function App() {
     <ThemeProvider>
       <Form titleText="Test">
         <FormGroup id={'Item02'} titleText="Empty" />
-        {/*<CustomComponent id="Custom1">*/}
+        <CustomComponent id="Custom1">
+          <FormItem id="CustomFormItem1" label="Hello there">
+            <Input />
+          </FormItem>
+        </CustomComponent>
         {/*  <FormGroup id={'Item03'} titleText="Empty2" />*/}
         {/*  /!*  /!*" Wrapped components "*!/*!/*/}
         {/*  /!*  <FormItem id={'Item2'} /> /!*" Correct map order test - Id shouldn't matter map.forEach => ordered map " *!/*!/*/}
@@ -34,7 +38,9 @@ function App() {
         {/*  /!*  /!*</FormGroup>*!/*!/*/}
         {/*</CustomComponent>*/}
         <FormGroup id={'Item04'} titleText="Empty">
-          <FormItem id="Item01" label="Hello there" />
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
         </FormGroup>
       </Form>
     </ThemeProvider>
