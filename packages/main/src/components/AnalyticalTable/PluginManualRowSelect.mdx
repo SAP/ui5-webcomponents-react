@@ -1,5 +1,6 @@
 import { ImportStatement } from '@sb/components/Import';
 import { Canvas, Meta } from '@storybook/blocks';
+import { Footer } from '@sb/components';
 import * as ComponentStories from './AnalyticalTable.stories';
 
 <Meta title="Data Display / AnalyticalTable / Plugin: useManualRowSelect" />
@@ -24,3 +25,5 @@ If this key is found on the original data row, and it is `true`, this row will b
   tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
 />
 ```
+
+<Footer />

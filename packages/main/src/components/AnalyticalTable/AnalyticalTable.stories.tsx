@@ -156,6 +156,9 @@ export const Default: Story = {};
 
 export const PluginDisableRowSelection: Story = {
   name: 'Plugin: useRowDisableSelection',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
     selectionMode: AnalyticalTableSelectionMode.MultiSelect
@@ -230,6 +233,9 @@ export const PluginIndeterminateRowSelection: Story = {
 
 export const PluginManualRowSelect: Story = {
   name: 'Plugin: useManualRowSelect',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   args: {
     data: dataManualSelect
   },
@@ -329,6 +335,69 @@ export const PluginOnColumnResize: Story = {
   }
 };
 
+const orderedMultiSortColumns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Name 2',
+    accessor: 'name2',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age 2',
+    accessor: 'age2',
+    enableMultiSort: true
+  }
+];
+const orderedMultiSortData = [
+  { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
+  { name: 'Kristen', age: 40, name2: 'Randolph', age2: 21 },
+  { name: 'Peter', age: 30, name2: 'Rose', age2: 90 },
+  { name: 'Peter', age: 70, name2: 'Rose', age2: 22 },
+  { name: 'Kristen', age: 60, name2: 'Willis', age2: 80 },
+  { name: 'Kristen', age: 20, name2: 'Alissa', age2: 80 },
+  { name: 'Graham', age: 40, name2: 'Alissa', age2: 80 },
+  { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
+  { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+];
+
+export const PluginOrderedMultiSort = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  name: 'Plugin: useOrderedMultiSort',
+  args: { orderedIds: ['name', 'name2', 'age', 'age2'] },
+  argTypes: {
+    orderedIds: {
+      control: 'array',
+      description:
+        'Defines the sort priority when sorting by multiple columns, starting with the first column ID.\n' +
+        '\n' +
+        '**Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.'
+    }
+  },
+  render(args) {
+    return (
+      <AnalyticalTable
+        columns={orderedMultiSortColumns}
+        data={orderedMultiSortData}
+        sortable
+        tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(args.orderedIds)]}
+      />
+    );
+  }
+};
+
 export const TreeTable: Story = {
   args: {
     data: dataTree,
@@ -337,6 +406,9 @@ export const TreeTable: Story = {
 };
 
 export const InfiniteScrolling: Story = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: (args) => {
     const [data, setData] = useState(args.data.slice(0, 50));
     const [loading, setLoading] = useState(false);
@@ -434,7 +506,7 @@ export const DynamicRowCount: Story = {
       description:
         'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
     }
-  } as unknown,
+  },
   render: (args) => {
     return (
       <div style={{ height: `${args.containerHeight}px` }}>

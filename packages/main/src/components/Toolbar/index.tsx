@@ -8,7 +8,7 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ElementType, ReactElement, ReactNode, Ref, RefObject } from 'react';
+import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import React, {
   Children,
   cloneElement,
@@ -21,6 +21,7 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
+import type { PopupAccessibleRole } from '../../enums/index.js';
 import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -88,6 +89,25 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    */
   overflowPopoverRef?: Ref<PopoverDomRef>;
   /**
+   * Defines internally used a11y properties.
+   *
+   * __Note:__ When setting `contentRole` of the `overflowPopover`, the `role` is set to `"None"`.
+   */
+  a11yConfig?: {
+    overflowPopover?: {
+      /**
+       * Defines the `accessibleRole` of the overflow `Popover`.
+       */
+      role?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+      /**
+       * Defines the `role` of the content div inside the overflow `Popover`.
+       *
+       * __Note:__ When setting `contentRole`, the `role` is set to `"None"`.
+       */
+      contentRole?: HTMLAttributes<HTMLDivElement>['role'];
+    };
+  };
+  /**
    * Fired if the `active` prop is set to true and the user clicks or presses Enter/Space on the `Toolbar`.
    */
   onClick?: (event: CustomEvent) => void;
@@ -96,7 +116,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    */
   onOverflowChange?: (event: {
     toolbarElements: HTMLElement[];
-    overflowElements: HTMLCollection;
+    overflowElements: HTMLCollection | undefined;
     target: HTMLElement;
   }) => void;
 }
@@ -109,7 +129,7 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
  * It can be accessed by the user through the overflow button that opens it in a popover.
  *
- * __Note:__ The overflow popover is mounted only when opened, i.e., any child component of the popover will be remounted, when moved into it.
+ * __Note:__ The overflow popover is mounted only when the overflow button is displayed, i.e., any child component of the popover will be remounted, when moved into it.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
@@ -127,6 +147,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     onOverflowChange,
     overflowPopoverRef,
     overflowButton,
+    a11yConfig,
     ...rest
   } = props;
 
@@ -134,6 +155,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(null);
+  const [isPopoverMounted, setIsPopoverMounted] = useState(false);
   const contentRef = useRef(null);
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
@@ -291,11 +313,14 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   useEffect(() => {
     const haveChildrenChanged = prevChildren.current.length !== flatChildren.length;
-    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof onOverflowChange === 'function') {
+    if ((lastVisibleIndex !== null || haveChildrenChanged) && typeof debouncedOverflowChange.current === 'function') {
       prevChildren.current = flatChildren;
       const toolbarChildren = contentRef.current?.children;
       let toolbarElements = [];
-      const overflowElements = overflowContentRef.current?.children;
+      let overflowElements;
+      if (isPopoverMounted) {
+        overflowElements = overflowContentRef.current?.children;
+      }
       if (toolbarChildren?.length > 0) {
         toolbarElements = Array.from(toolbarChildren).filter((item, index) => index <= lastVisibleIndex);
       }
@@ -308,7 +333,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     return () => {
       debouncedOverflowChange.current.cancel();
     };
-  }, [lastVisibleIndex, flatChildren, debouncedOverflowChange]);
+  }, [lastVisibleIndex, flatChildren.length, isPopoverMounted]);
 
   const CustomTag = as as ElementType;
   const styleWithMinWidth = minWidth !== '0' ? { minWidth, ...style } : style;
@@ -352,6 +377,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
             showMoreText={showMoreText}
             overflowButton={overflowButton}
+            setIsMounted={setIsPopoverMounted}
+            a11yConfig={a11yConfig}
           >
             {flatChildren}
           </OverflowPopover>
