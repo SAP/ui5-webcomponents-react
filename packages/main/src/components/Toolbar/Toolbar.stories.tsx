@@ -9,6 +9,8 @@ import { Button } from '../../webComponents/Button/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Input } from '../../webComponents/Input/index.js';
+import { Menu } from '../../webComponents/Menu/index.js';
+import { MenuItem } from '../../webComponents/MenuItem/index.js';
 import { Select } from '../../webComponents/Select/index.js';
 import { Slider } from '../../webComponents/Slider/index.js';
 import { Switch } from '../../webComponents/Switch/index.js';
@@ -99,6 +101,40 @@ export const WithSeparator: Story = {
         <ToolbarSeparator />
         <Button>Item7</Button>
       </Toolbar>
+    );
+  }
+};
+
+export const PopoverInOverflowPopover: Story = {
+  name: 'Popover in Overflow Popover',
+  render(args) {
+    const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+    const [opener, setOpener] = useState('openMenuBtn');
+    const handlePopoverOpenerClick = (e) => {
+      setOpener(e.target.id);
+      setPopoverIsOpen(true);
+    };
+    return (
+      <>
+        <Toolbar {...args} style={{ width: '400px' }}>
+          <Text>Toolbar</Text>
+          <Button>Button One</Button>
+          <Button>Button Two</Button>
+          <Button id="openMenuBtn" onClick={handlePopoverOpenerClick}>
+            Open Popover (Menu)
+          </Button>
+        </Toolbar>
+        <Menu
+          opener={opener}
+          open={popoverIsOpen}
+          onAfterClose={() => {
+            setPopoverIsOpen(false);
+          }}
+        >
+          <MenuItem text="New File" />
+          <MenuItem text="New Folder" />
+        </Menu>
+      </>
     );
   }
 };
