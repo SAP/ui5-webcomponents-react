@@ -172,7 +172,7 @@ const ToolbarComponent = () => {
     if (e.overflowElements?.length) {
       const overflowId = [...e.overflowElements].find((item) => item.dataset.opener)?.id;
       if (overflowId) {
-        setOpener([...e.overflowElements].find((item) => item.dataset.opener)?.id);
+        setOpener(overflowId);
       } else {
         setOpener(initialOpenerId);
       }
