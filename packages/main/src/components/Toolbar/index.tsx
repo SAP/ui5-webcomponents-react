@@ -110,6 +110,8 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  * It can be accessed by the user through the overflow button that opens it in a popover.
  *
  * __Note:__ The overflow popover is mounted only when the overflow button is displayed, i.e., any child component of the popover will be remounted, when moved into it.
+ *
+ * __Note:__ To prevent duplicate child `id`s in the DOM, all child `id`s get an `-overflow` suffix. This is especially important when popovers are opened by id.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
