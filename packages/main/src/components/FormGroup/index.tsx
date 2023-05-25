@@ -1,3 +1,4 @@
+import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -15,10 +16,6 @@ export interface FormGroupPropTypes {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FormItem` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
-  /**
-   * todo:remove
-   */
-  id: string;
 }
 
 const useStyles = createUseStyles(
@@ -36,21 +33,23 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   //todo make id internal
   const { titleText, children, id } = props;
   const { formGroups: layoutInfos, registerItem, unregisterItem } = useFormContext();
+  const uniqueId = useIsomorphicId();
   const classes = useStyles();
 
   useEffect(() => {
-    registerItem?.(id, 'formGroup');
-    return () => unregisterItem?.(id);
-  }, [id, registerItem, unregisterItem]);
+    registerItem?.(uniqueId, 'formGroup');
+    return () => unregisterItem?.(uniqueId);
+  }, [uniqueId, registerItem, unregisterItem]);
 
-  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => id === groupId), [layoutInfos]);
-
-  console.log('id', id);
+  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
+  console.log(layoutInfo);
+  if (!layoutInfo) return null;
+  const { columnIndex } = layoutInfo;
 
   return (
-    <GroupContext.Provider value={{ id }}>
+    <GroupContext.Provider value={{ id: uniqueId }}>
       <>
-        <FormGroupTitle titleText={titleText} />
+        <FormGroupTitle titleText={titleText} style={{ gridColumnStart: columnIndex * 12 + 1 }} />
         {children}
         <span className={classes.spacer} />
       </>

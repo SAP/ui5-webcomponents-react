@@ -169,14 +169,22 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     const computedFormGroups = [];
     const childrenArray = Children.toArray(children);
+
+    // returns array with array entries that represent the number of rows (e.g. 3 columns, 5groups, 3single items => 3 entries ([3],[3],[2])
+    // --> returns array like this: [[...],[...],[...]]
     const rows = childrenArray.reduce((acc, val, idx) => {
       const columnIndex = Math.floor(idx / currentNumberOfColumns);
+      console.log('asd', columnIndex);
       acc[columnIndex] ??= [];
       acc[columnIndex].push(val);
       return acc;
     }, []) as ReactElement[][];
-
+    console.log(rows);
+    //maximum of rows, per grouped rows in grid (e.g. group1 has 6 items (most in row) -> 7 "inner" rows because of group label)
+    // single items always have only 1 row
+    // -> returns array like this: [7,2,4]
     const maxRowsPerRow: number[] = [];
+    console.log(maxRowsPerRow);
     rows.forEach((rowGroup: ReactElement[], rowIndex) => {
       maxRowsPerRow[rowIndex] = Math.max(
         ...rowGroup.map((row) => {
@@ -190,6 +198,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     let totalRowCount = 2;
 
+    // formGroup == [...formItems]
     rows.forEach((formGroup: ReactElement[], rowIndex) => {
       const rowsForThisRow = maxRowsPerRow.at(rowIndex);
       formGroup.forEach((cell, columnIndex) => {
@@ -218,6 +227,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           }
 
           if (itemToRender) {
+            console.log('zxc', columnIndex);
             computedFormGroups.push(
               cloneElement(itemToRender as ReactElement, {
                 key: `col-${columnIndex}-row-${totalRowCount + i}`,

@@ -13,7 +13,7 @@ import {
   Text,
   TextArea
 } from '../../index.js';
-import { Form } from './NewForm.js';
+import { Form } from './index.js';
 import TestComp from './TestComp';
 
 const meta = {
@@ -77,6 +77,12 @@ export const Default: Story = {
             <CheckBox checked />
           </FormItem>
         </FormGroup>
+        <FormItem label="Sole Form Item">
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem label="Sole Form Item">
+          <Input type={InputType.Text} />
+        </FormItem>
         <FormGroup titleText="Empty" />
         <FormGroup titleText="Company Data">
           <FormItem label={'Company Name'}>

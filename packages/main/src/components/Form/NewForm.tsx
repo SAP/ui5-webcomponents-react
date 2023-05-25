@@ -134,6 +134,12 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const [items, setItems] = useState<Map<string, ItemInfo>>(() => new Map());
   const classes = useStyles();
 
+  const columnsMap = new Map();
+  columnsMap.set('Phone', columnsS);
+  columnsMap.set('Tablet', columnsM);
+  columnsMap.set('Desktop', columnsL);
+  columnsMap.set('LargeDesktop', columnsXL);
+
   const labelSpanMap = new Map();
   labelSpanMap.set('Phone', labelSpanS);
   labelSpanMap.set('Tablet', labelSpanM);
@@ -162,6 +168,8 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     };
   }, [formRef]);
   const currentLabelSpan = labelSpanMap.get(currentRange);
+  const currentNumberOfColumns = columnsMap.get(currentRange);
+  console.log('no columns', currentNumberOfColumns);
 
   const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
     // console.log("Call registerItem for id: " + id, type, groupId);
@@ -217,17 +225,20 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     const formGroups: FormGroupLayoutInfo[] = [];
 
     let index = -1;
+    let columnIndex = 0;
     items.forEach(({ type, formItemIds }, id) => {
-      // console.log('asd', type, formItemIds, id);
+      console.log('asd', type, formItemIds, id);
       index++;
       if (type === 'formGroup') {
-        formGroups.push({ id, index });
+        formGroups.push({ id, index, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
         formItemIds.forEach((itemId) => {
           index++;
-          formItems.push({ id: itemId, index, groupId: id });
+          formItems.push({ id: itemId, index, groupId: id, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
         });
+        columnIndex++;
       } else {
-        formItems.push({ id, index });
+        formItems.push({ id, index, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
+        columnIndex++;
       }
     });
     return { formItems, formGroups, registerItem, unregisterItem };

@@ -13,11 +13,21 @@ function App() {
   return (
     <ThemeProvider>
       <Form titleText="Test">
-        <FormGroup id={'Item02'} titleText="Empty" />
+        <FormItem id="Item01" label="Single 1">
+          <Input />
+        </FormItem>
+        <FormGroup id={'Item02'} titleText="Empty Group" />
         <CustomComponent id="Custom1">
-          <FormItem id="CustomFormItem1" label="Hello there">
+          <FormItem id="CustomFormItem1" label="Single in Custom">
             <Input />
           </FormItem>
+        </CustomComponent>
+        <CustomComponent id="Custom1">
+          <FormGroup titleText="Group in Custom">
+            <FormItem id="CustomFormItem1" label="Item">
+              <Input />
+            </FormItem>
+          </FormGroup>
         </CustomComponent>
         {/*  <FormGroup id={'Item03'} titleText="Empty2" />*/}
         {/*  /!*  /!*" Wrapped components "*!/*!/*/}
@@ -37,7 +47,27 @@ function App() {
         {/*  /!*  /!*  </CustomComponent>*!/*!/*/}
         {/*  /!*  /!*</FormGroup>*!/*!/*/}
         {/*</CustomComponent>*/}
-        <FormGroup id={'Item04'} titleText="Empty">
+        <FormItem id="Item01" label="Single 2">
+          <Input />
+        </FormItem>
+        <FormGroup id={'Item04'} titleText="Group 1">
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
+        </FormGroup>
+        <FormGroup id={'Item04'} titleText="Group 2">
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
+          <FormItem id="Item01" label="Hello there">
+            <Input />
+          </FormItem>
           <FormItem id="Item01" label="Hello there">
             <Input />
           </FormItem>

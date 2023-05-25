@@ -126,21 +126,22 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  */
 const FormItem = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
-  const { label, children, columnIndex, rowIndex, id } = props as InternalProps;
+  const { label, children, rowIndex, id } = props as InternalProps;
   const uniqueId = useIsomorphicId();
   const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
   const groupContext = useFormGroupContext();
   const classes = useStyles();
 
   useEffect(() => {
-    registerItem?.(id, 'formItem', groupContext.id);
+    registerItem?.(uniqueId, 'formItem', groupContext.id);
     return () => {
-      unregisterItem?.(id, groupContext.id);
+      unregisterItem?.(uniqueId, groupContext.id);
     };
-  }, [id, registerItem, unregisterItem, groupContext.id]);
+  }, [uniqueId, registerItem, unregisterItem, groupContext.id]);
 
-  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => id === itemId), [layoutInfos]);
+  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => uniqueId === itemId), [layoutInfos, uniqueId]);
 
+  //todo can probably be omitted
   // #1
   // Attention: FormItems do only make sense within Forms and only should work with them.
   // If layoutInfos is defined, the FormContext is available and will set the id for the layoutInfo
@@ -149,12 +150,16 @@ const FormItem = (props: FormItemPropTypes) => {
   // So this is fine, the layoutInfo will be defined
   if (layoutInfos && !layoutInfo) return null;
 
+  const { columnIndex } = layoutInfo;
+  // const { columnIndex } = props;
+
   // console.log("Render FormItem " + id, layoutInfo, layoutInfos);
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
   const contentGridColumnStart =
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
+  console.log('colindex', columnIndex, gridColumnStart, contentGridColumnStart, label);
 
   const calculatedGridRowStart = labelSpan === 12 ? (rowIndex ?? 0) + 1 : rowIndex ?? 0;
 
