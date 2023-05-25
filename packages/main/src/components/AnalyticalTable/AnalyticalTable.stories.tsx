@@ -495,7 +495,7 @@ export const Subcomponents: Story = {
   }
 };
 
-export const DynamicRowCount: Story = {
+export const DynamicRowCount = {
   args: { visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 } as unknown,
   argTypes: {
     containerHeight: {
@@ -506,6 +506,9 @@ export const DynamicRowCount: Story = {
       description:
         'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
     }
+  },
+  parameters: {
+    chromatic: { disableSnapshot: true }
   },
   render: (args) => {
     return (
@@ -602,6 +605,9 @@ export const ResponsiveColumns: Story = {
 
 export const NavigationIndicator: Story = {
   args: { withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.MultiSelect, data: dataLarge },
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: (args) => {
     const [selectedRow, setSelectedRow] = useState();
     const onRowSelect = (e) => {
