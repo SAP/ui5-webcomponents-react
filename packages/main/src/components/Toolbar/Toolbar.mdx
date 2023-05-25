@@ -110,7 +110,7 @@ const ToolbarComponent = () => {
 };
 ```
 
-## Open Popovers by ID inside the overflow-popover
+## Open Popovers by ID inside the overflow popover
 
 To prevent duplicate child `id`s in the DOM, all child `id`s get an `-overflow` suffix. If an ID is used to open the popover (e.g. via the `opener` prop), you have to make sure to use the correct id.
 You can achieve that either by leveraging the `onOverflowChange` event and retrieve the current ID there, or by updating it inside the `click` handler of the respective opener component.
