@@ -85,7 +85,7 @@ It is furthermore possible to prevent the popover from opening by using `event.p
 
 <Canvas of={ComponentStories.CustomOverflowButton} />
 
-### Close overflow popover on interaction
+## Close overflow popover on interaction
 
 The overflow popover can be closed programmatically by using the `overflowPopoverRef`.
 
@@ -109,6 +109,103 @@ const ToolbarComponent = () => {
   );
 };
 ```
+
+## Open Popovers by ID inside the overflow popover
+
+To prevent duplicate child `id`s in the DOM, all child `id`s get an `-overflow` suffix. If an ID is used to open the popover (e.g. via the `opener` prop), you have to make sure to use the correct id.
+You can achieve that either by leveraging the `onOverflowChange` event and retrieve the current ID there, or by updating it inside the `click` handler of the respective opener component.
+
+<Canvas of={ComponentStories.PopoverInOverflowPopover} sourceState="none" />
+
+<details>
+
+<summary>Set opener ID via click handler</summary>
+
+```jsx
+const ToolbarComponent = () => {
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  const [opener, setOpener] = useState('openMenuBtn');
+  const handlePopoverOpenerClick = (e) => {
+    setOpener(e.target.id);
+    setPopoverIsOpen(true);
+  };
+  return (
+    <>
+      <Toolbar style={{ width: '400px' }}>
+        <Text>Toolbar</Text>
+        <Button>Button One</Button>
+        <Button>Button Two</Button>
+        <Button id="openMenuBtn" onClick={handlePopoverOpenerClick}>
+          Open Popover (Menu)
+        </Button>
+      </Toolbar>
+      <Menu
+        opener={opener}
+        open={popoverIsOpen}
+        onAfterClose={() => {
+          setPopoverIsOpen(false);
+        }}
+      >
+        <MenuItem text="New File" />
+        <MenuItem text="New Folder" />
+      </Menu>
+    </>
+  );
+};
+```
+
+</details>
+    
+<details>
+
+<summary>Set opener ID via onOverflowChange handler</summary>
+
+```jsx
+const ToolbarComponent = () => {
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  const initialOpenerId = 'openMenuBtn';
+  const [opener, setOpener] = useState(initialOpenerId);
+  const handlePopoverOpenerClick = () => {
+    setPopoverIsOpen(true);
+  };
+  const handleOverflowChange = (e) => {
+    if (e.overflowElements?.length) {
+      const overflowId = [...e.overflowElements].find((item) => item.dataset.opener)?.id;
+      if (overflowId) {
+        setOpener(overflowId);
+      } else {
+        setOpener(initialOpenerId);
+      }
+    } else {
+      setOpener(initialOpenerId);
+    }
+  };
+  return (
+    <>
+      <Toolbar style={{ width: '400px' }} onOverflowChange={handleOverflowChange}>
+        <Text>Toolbar</Text>
+        <Button>Button One</Button>
+        <Button>Button Two</Button>
+        <Button id="openMenuBtn" onClick={handlePopoverOpenerClick} data-opener>
+          Open Popover (Menu)
+        </Button>
+      </Toolbar>
+      <Menu
+        opener={opener}
+        open={popoverIsOpen}
+        onAfterClose={() => {
+          setPopoverIsOpen(false);
+        }}
+      >
+        <MenuItem text="New File" />
+        <MenuItem text="New Folder" />
+      </Menu>
+    </>
+  );
+};
+```
+
+</details>
 
 <Markdown>{SubcomponentsSection}</Markdown>
 

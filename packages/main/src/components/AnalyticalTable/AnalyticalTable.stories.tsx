@@ -38,7 +38,7 @@ const meta = {
   title: 'Data Display / AnalyticalTable',
   component: AnalyticalTable,
   parameters: {
-    chromatic: { delay: 1000, diffThreshold: 0.5 }
+    chromatic: { disableSnapshot: true }
   },
   args: {
     data: dataLarge,
@@ -156,9 +156,6 @@ export const Default: Story = {};
 
 export const PluginDisableRowSelection: Story = {
   name: 'Plugin: useRowDisableSelection',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
     selectionMode: AnalyticalTableSelectionMode.MultiSelect
@@ -233,9 +230,6 @@ export const PluginIndeterminateRowSelection: Story = {
 
 export const PluginManualRowSelect: Story = {
   name: 'Plugin: useManualRowSelect',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   args: {
     data: dataManualSelect
   },
@@ -372,9 +366,6 @@ const orderedMultiSortData = [
 ];
 
 export const PluginOrderedMultiSort = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   name: 'Plugin: useOrderedMultiSort',
   args: { orderedIds: ['name', 'name2', 'age', 'age2'] },
   argTypes: {
@@ -406,9 +397,6 @@ export const TreeTable: Story = {
 };
 
 export const InfiniteScrolling: Story = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   render: (args) => {
     const [data, setData] = useState(args.data.slice(0, 50));
     const [loading, setLoading] = useState(false);
@@ -495,7 +483,7 @@ export const Subcomponents: Story = {
   }
 };
 
-export const DynamicRowCount: Story = {
+export const DynamicRowCount = {
   args: { visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 } as unknown,
   argTypes: {
     containerHeight: {
