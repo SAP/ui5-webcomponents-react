@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.15.2) (2023-05-26)
+
+### Bug Fixes
+
+- add export condition for node to main package ([#4640](https://github.com/SAP/ui5-webcomponents-react/issues/4640)) ([3b3f166](https://github.com/SAP/ui5-webcomponents-react/commit/3b3f166f1e779f8a26c7f195f4267bb97e1cd851))
+- **AnalyticalTable:** allow nested sub-rows as `subRowsKey`, add `manualGroupBy` support ([#4598](https://github.com/SAP/ui5-webcomponents-react/issues/4598)) ([2b2b0ff](https://github.com/SAP/ui5-webcomponents-react/commit/2b2b0ffa36c1d0111d4035068bac570a3fa0434e))
+- **Toolbar:** return correct value for `overflowElements` in `onOverflowChange` ([#4610](https://github.com/SAP/ui5-webcomponents-react/issues/4610)) ([1905eda](https://github.com/SAP/ui5-webcomponents-react/commit/1905edaa0548f9180707f1c38cd543756490363f))
+
 ## [1.15.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.0...v1.15.1) (2023-05-09)
 
 ### Bug Fixes
