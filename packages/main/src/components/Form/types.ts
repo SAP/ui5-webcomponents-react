@@ -1,5 +1,5 @@
-export type FormItemLayoutInfo = { id: string; index: number; groupId?: string };
-export type FormGroupLayoutInfo = { id: string; index: number };
+export type FormItemLayoutInfo = { id: string; index: number; groupId?: string; columnIndex: number };
+export type FormGroupLayoutInfo = { id: string; index: number; columnIndex: number };
 export type FormElementTypes = 'formItem' | 'formGroup';
 
 //todo remove optional?
