@@ -10,9 +10,9 @@ import { MessageStrip } from '../../webComponents/index';
 
 ## How to add your own plugin hooks?
 
-The `AnalyticalTable` internally uses all plugin hooks of the [react-table](https://github.com/tannerlinsley/react-table) except for `usePagination` and hooks that change the layout.
+The `AnalyticalTable` internally uses all plugin hooks of the [react-table v7](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md) except for `usePagination` and hooks that change the layout.
 If you pass a `react-table` hook to the `tableHooks` prop of the `AnalyticalTable` you will most likely experience some side effects or even break the table completely. We therefore strongly recommend to just not do it ;).
-If you encounter a functionality that should be available with `react-table` hooks, but isn't in the `AnalyticalTable` please open an issue in github or write us in Slack.
+If you encounter a functionality that should be available with `react-table` hooks, but isn't in the `AnalyticalTable` please open an issue in GitHub.
 
 <MessageStrip
   type="Warning"
@@ -35,7 +35,7 @@ export const TableWithCustomHook = (props) => {
 ```
 
 With the `customHook` callback you can plugin in all available hooks. Please note that some hooks need a return value (e.g. `columns`) which is then always the first parameter of the function, and others are not allowed to return a value (e.g. `useTable`).
-For further details please refer to the [`react-table` documentation](https://react-table-v7.tanstack.com/docs/api/overview).
+For further details please refer to the [`react-table` v7 documentation](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md).
 
 ## How to select rows containing active elements?
 
@@ -87,7 +87,7 @@ React.useEffect(() => {
 />
 ```
 
-For more details on this behavior you can double check the [react-table docs](https://react-table-v7.tanstack.com/docs/faq#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
+For more details on this behavior you can double check the [react-table v7 docs](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/faq.md#how-do-i-stop-my-table-state-from-automatically-resetting-when-my-data-changes).
 
 ## How to scroll to a specific row/offset?
 
@@ -116,7 +116,7 @@ If you wish to implement your own data manipulation outside the table you can us
 />
 ```
 
-For more information please take a look at the [React Table v7 docs](https://react-table-v7.tanstack.com/docs/api/overview).
+For more information please take a look at the [React Table v7 docs](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md).
 
 ## How to distinguish between `onRowClick` and `onRowSelect` on selection-cell click?
 
@@ -137,7 +137,7 @@ const onRowSelect = (e) => {
 
 ## How to hide columns?
 
-[React Table v7](https://react-table-v7.tanstack.com/docs/api/useTable) exposes an API on the table instance to hide columns. You can leverage it for example by attaching a React Ref to the `tableInstance` prop.
+[React Table v7](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md) exposes an API on the table instance to hide columns. You can leverage it for example by attaching a React Ref to the `tableInstance` prop.
 Please note that the internal react-table is resetting its hidden state after hiding the column, which is most probably a bug. To prevent this you can set the `autoResetHiddenColumns` table option to `false`. (See [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--default-story#how-to-stop-the-table-state-from-automatically-resetting-when-the-data-changes))
 
 ```jsx
