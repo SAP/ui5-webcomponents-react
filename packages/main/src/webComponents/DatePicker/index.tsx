@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DatePicker.js';
+import type { DatePickerChangeEventDetail } from '@ui5/webcomponents/dist/DatePicker.js';
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -70,11 +71,11 @@ interface DatePickerAttributes {
    */
   formatPattern?: string;
   /**
-   * Determines the maximum date available for selection.
+   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
   /**
-   * Determines the minimum date available for selection.
+   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
   /**
@@ -145,7 +146,7 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<DatePickerDomRef, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerChangeEventDetail>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */

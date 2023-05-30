@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
+import type { SideNavigationSelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import type { ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
@@ -46,7 +47,7 @@ export interface SideNavigationPropTypes extends SideNavigationAttributes, Commo
   /**
    * Fired when the selection has changed via user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<SideNavigationDomRef, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<SideNavigationDomRef, SideNavigationSelectionChangeEventDetail>) => void;
 }
 
 /**

@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
+import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
 import type { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -173,7 +174,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
   /**
    * Fired when a token is about to be deleted.
    */
-  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, { token: HTMLElement }>) => void;
+  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
   /**
    * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
    */

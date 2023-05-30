@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
+import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import type { CSSProperties, ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
@@ -47,7 +48,7 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
   /**
    * Fired when the user selects a color.
    */
-  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, { color: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, ColorPalettePopoverItemClickEventDetail>) => void;
 }
 
 /**

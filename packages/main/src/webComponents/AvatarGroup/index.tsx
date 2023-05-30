@@ -1,9 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
+import type { AvatarGroupClickEventDetail } from '@ui5/webcomponents/dist/AvatarGroup.js';
 import type { ReactNode } from 'react';
-import type { AvatarColorScheme } from '../../enums/index.js';
 import { AvatarGroupType } from '../../enums/index.js';
+import type { AvatarColorScheme } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -54,9 +55,7 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
   /**
    * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
    */
-  onClick?: (
-    event: Ui5CustomEvent<AvatarGroupDomRef, { targetRef: HTMLElement; overflowButtonClicked: boolean }>
-  ) => void;
+  onClick?: (event: Ui5CustomEvent<AvatarGroupDomRef, AvatarGroupClickEventDetail>) => void;
   /**
    * Fired when the count of visible `Avatar` elements in the component has changed
    */

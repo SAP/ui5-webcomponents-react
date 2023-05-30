@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
+import type { MultiComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/MultiComboBox.js';
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -121,7 +122,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, { items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**

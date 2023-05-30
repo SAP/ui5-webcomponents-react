@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
+import type { MediaGallerySelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 import type { ReactNode } from 'react';
 import {
   MediaGalleryLayout,
@@ -74,7 +75,7 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
   /**
    * Fired when selection is changed by user interaction.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, MediaGallerySelectionChangeEventDetail>) => void;
 }
 
 /**
