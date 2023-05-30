@@ -253,7 +253,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   enableMultiSort?: boolean;
 
-  // all other custom properties of [React Table](https://react-table-v7.tanstack.com/) column options
+  // all other custom properties of [React Table v7](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md) column options
   [key: string]: any;
 }
 
@@ -448,11 +448,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the value that should be filtered on across all rows.
    *
-   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://react-table-v7.tanstack.com/docs/api/useGlobalFilter).
+   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useGlobalFilter.md).
    */
   globalFilterValue?: string;
   /**
-   * Additional options which will be passed to [react-table´s useTable hook](https://react-table-v7.tanstack.com/docs/api/useTable#table-options)
+   * Additional options which will be passed to [v7 react-table´s useTable hook](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md#table-options)
    */
   reactTableOptions?: Record<string, unknown>;
   /**
@@ -564,7 +564,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
 
   /**
    * Exposes the internal table instance.
-   * This object will contain all [instance properties](https://react-table-v7.tanstack.com/docs/api/useTable#instance-properties)
+   * This object will contain all [instance properties (react-table v7)](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md#instance-properties)
    * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
    * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
    *
