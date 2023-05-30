@@ -153,7 +153,7 @@ const FormItem = (props: FormItemPropTypes) => {
   const { columnIndex } = layoutInfo;
   // const { columnIndex } = props;
 
-  // console.log("Render FormItem " + id, layoutInfo, layoutInfos);
+  console.log("Render FormItem " + id, layoutInfo, layoutInfos);
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 

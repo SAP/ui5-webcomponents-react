@@ -13,15 +13,6 @@ const styles = {
     '--ui5wcr_form_label_text_align': 'end',
     '--ui5wcr_form_content_span': 'calc(12 - var(--ui5wcr_form_label_span))',
 
-    '--ui5wcr_form_columns_s': 1,
-    '--ui5wcr_form_columns_m': 1,
-    '--ui5wcr_form_columns_l': 1,
-    '--ui5wcr_form_columns_xl': 2,
-    '--ui5wcr_form_label_span_s': 12,
-    '--ui5wcr_form_label_span_m': 2,
-    '--ui5wcr_form_label_span_l': 4,
-    '--ui5wcr_form_label_span_xl': 4,
-
     '@container (max-width: 599px)': {
       '--ui5wcr_form_label_span': 'var(--ui5wcr_form_label_span_s)',
       '--ui5wcr_form_columns': 'var(--ui5wcr_form_columns_s)'
