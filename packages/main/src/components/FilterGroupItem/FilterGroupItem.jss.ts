@@ -50,6 +50,11 @@ const styles = {
     flexGrow: 1,
     color: ThemingParameters.sapNeutralColor,
     transform: 'scale(-50%)'
+  },
+  labelContainer: {
+    '& :not(:first-child)': {
+      width: '100%'
+    }
   }
 };
 

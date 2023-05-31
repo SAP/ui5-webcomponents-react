@@ -470,7 +470,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       <Table
         data-component-name="FilterBarDialogTable"
         hideNoData={!isListView}
-        className={classes.table}
         mode={TableMode.MultiSelect}
         onSelectionChange={handleCheckBoxChange}
         columns={
