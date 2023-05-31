@@ -8,9 +8,6 @@
       "path": "./packages/main"
     },
     {
-      "path": "./packages/main/tsconfig.wrappers.json"
-    },
-    {
       "path": "./packages/charts"
     },
     {
