@@ -227,7 +227,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     let index = -1;
     let columnIndex = 0;
     items.forEach(({ type, formItemIds }, id) => {
-      console.log('asd', type, formItemIds, id);
       index++;
       if (type === 'formGroup') {
         formGroups.push({ id, index, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
@@ -246,7 +245,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
 
-  console.log('val', { ...formLayoutContextValue, labelSpan: currentLabelSpan });
   return (
     <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
       <CustomTag

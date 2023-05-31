@@ -153,13 +153,12 @@ const FormItem = (props: FormItemPropTypes) => {
   const { columnIndex } = layoutInfo;
   // const { columnIndex } = props;
 
-  console.log("Render FormItem " + id, layoutInfo, layoutInfos);
+  console.log('Render FormItem ' + id, layoutInfo, layoutInfos);
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
   const contentGridColumnStart =
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
-  console.log('colindex', columnIndex, gridColumnStart, contentGridColumnStart, label);
 
   const calculatedGridRowStart = labelSpan === 12 ? (rowIndex ?? 0) + 1 : rowIndex ?? 0;
 
