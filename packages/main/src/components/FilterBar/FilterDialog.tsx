@@ -352,7 +352,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             key={`${item === 'default' ? basicText : item}${index}`}
           >
             <Table
-              className={classes.table}
               mode={TableMode.MultiSelect}
               data-component-name="FilterBarDialogPanelTable"
               onSelectionChange={handleCheckBoxChange}
