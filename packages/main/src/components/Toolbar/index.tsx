@@ -310,7 +310,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const debouncedOverflowChange = useRef();
 
   useEffect(() => {
-    if(onOverflowChange){
+    if (typeof onOverflowChange === 'function' ) {
       debouncedOverflowChange.current = debounce(onOverflowChange, 60);
     }
   }, [onOverflowChange]);
