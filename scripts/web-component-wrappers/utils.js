@@ -179,8 +179,10 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'AvatarShape':
     case 'AvatarSize':
     case 'BarDesign':
+    case 'BackgroundDesign':
     case 'BusyIndicatorSize':
     case 'ButtonDesign':
+    case 'BorderDesign':
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
     case 'CalendarType':
@@ -188,6 +190,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'CalendarSelectionMode':
     case 'CarouselArrowsPlacement':
     case 'CarouselPageIndicatorStyle':
+    case 'ComboBoxFilter':
     case 'FCLLayout':
     case 'IconDesign':
     case 'IllustrationMessageSize':
@@ -210,6 +213,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
     case 'Priority':
+    case 'SegmentedButtonMode':
     case 'SemanticColor':
     case 'SideContentFallDown':
     case 'SideContentPosition':
@@ -229,6 +233,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'UploadState':
     case 'ValueState':
     case 'ViewSettingsDialogMode':
+    case 'WizardContentLayout':
     case 'WrappingType':
       return {
         importStatement: `import { ${typeWithoutNamespace} } from '../../enums/index.js';`,

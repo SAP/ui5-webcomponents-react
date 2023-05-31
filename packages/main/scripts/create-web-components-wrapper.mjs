@@ -3,7 +3,7 @@ import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' asse
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
@@ -693,13 +693,11 @@ allWebComponents
           );
           let hasMethodsTable = false;
           if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
           } else if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
           }
