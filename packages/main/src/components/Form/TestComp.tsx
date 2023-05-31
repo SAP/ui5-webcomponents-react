@@ -12,7 +12,7 @@ import { Form as OldForm } from './index.js';
 function App() {
   return (
     <ThemeProvider>
-      <Form titleText="Test">
+      <Form titleText="Test" columnsXL={5}>
         <FormItem id="Item01" label="Single 1">
           <Input />
         </FormItem>
@@ -24,7 +24,7 @@ function App() {
         </CustomComponent>
         <CustomComponent id="Custom1">
           <FormGroup titleText="Group in Custom">
-            <FormItem id="CustomFormItem1" label="Item">
+            <FormItem id="CustomFormItem1" label="Group in Custom - Item">
               <Input />
             </FormItem>
           </FormGroup>
@@ -51,27 +51,33 @@ function App() {
           <Input />
         </FormItem>
         <FormGroup id={'Item04'} titleText="Group 1">
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G1Hello there">
             <Input />
           </FormItem>
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G1Hello there">
             <Input />
           </FormItem>
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G1Hello there">
             <Input />
           </FormItem>
         </FormGroup>
+        <FormItem id="Item01" label="Single 3">
+          <Input />
+        </FormItem>
         <FormGroup id={'Item04'} titleText="Group 2">
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G2Hello there">
             <Input />
           </FormItem>
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G2Hello there">
             <Input />
           </FormItem>
-          <FormItem id="Item01" label="Hello there">
+          <FormItem id="Item01" label="G2Hello there">
             <Input />
           </FormItem>
         </FormGroup>
+        <FormItem id="Item01" label="Single 4">
+          <Input />
+        </FormItem>
       </Form>
     </ThemeProvider>
   );

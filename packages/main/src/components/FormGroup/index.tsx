@@ -20,7 +20,7 @@ export interface FormGroupPropTypes {
 
 const useStyles = createUseStyles(
   {
-    spacer: { height: '1rem', gridColumn: 'span 12' }
+    spacer: { height: '1rem', gridColumn: '1 / -1' }
   },
   { name: 'FormGroup' }
 );
@@ -30,8 +30,7 @@ const useStyles = createUseStyles(
  * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `titleText` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
-  //todo make id internal
-  const { titleText, children, id } = props;
+  const { titleText, children } = props;
   const { formGroups: layoutInfos, registerItem, unregisterItem } = useFormContext();
   const uniqueId = useIsomorphicId();
   const classes = useStyles();
@@ -44,12 +43,15 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
   console.log(layoutInfo);
   if (!layoutInfo) return null;
-  const { columnIndex } = layoutInfo;
+  const { columnIndex, rowIndex } = layoutInfo;
 
   return (
     <GroupContext.Provider value={{ id: uniqueId }}>
       <>
-        <FormGroupTitle titleText={titleText} style={{ gridColumnStart: columnIndex * 12 + 1 }} />
+        <FormGroupTitle
+          titleText={titleText}
+          style={{ gridColumnStart: columnIndex * 12 + 1, gridRowStart: rowIndex }}
+        />
         {children}
         <span className={classes.spacer} />
       </>

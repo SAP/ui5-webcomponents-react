@@ -169,7 +169,8 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   }, [formRef]);
   const currentLabelSpan = labelSpanMap.get(currentRange);
   const currentNumberOfColumns = columnsMap.get(currentRange);
-  console.log('no columns', currentNumberOfColumns);
+
+  console.log('items', items);
 
   const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
     // console.log("Call registerItem for id: " + id, type, groupId);
@@ -225,30 +226,45 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     const formGroups: FormGroupLayoutInfo[] = [];
 
     let index = -1;
-    let columnIndex = 0;
+    let localColumnIndex = 0;
+    let rowIndex = titleText ? 2 : 1;
+
     items.forEach(({ type, formItemIds }, id) => {
+      const columnIndex = localColumnIndex % currentNumberOfColumns;
       index++;
       if (type === 'formGroup') {
-        formGroups.push({ id, index, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
+        formGroups.push({ id, index, columnIndex });
+        let inGroupIndex = 0;
         formItemIds.forEach((itemId) => {
-          index++;
-          formItems.push({ id: itemId, index, groupId: id, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
+          formItems.push({ id: itemId, index, groupIndex: inGroupIndex, groupId: id, columnIndex });
+          inGroupIndex++;
         });
-        columnIndex++;
       } else {
-        formItems.push({ id, index, columnIndex: (columnIndex + 1) % currentNumberOfColumns });
-        columnIndex++;
+        formItems.push({ id, index, columnIndex });
       }
+      localColumnIndex++;
     });
+
+    // todo sort by index and then add all with groupIndex => number of rows inside a single "row"
+    // const test123 = formItems.reduce((acc, cur) => {
+    //   if (acc[`${cur.columnIndex}`] !== undefined) {
+    //     acc[`${cur.columnIndex}`] = [...acc[`${cur.columnIndex}`], cur];
+    //   } else {
+    //     acc[`${cur.columnIndex}`] = [cur];
+    //   }
+    //   return acc;
+    // }, []);
+    // console.log('test123', test123);
+
     return { formItems, formGroups, registerItem, unregisterItem };
-  }, [items, registerItem, unregisterItem]);
+  }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText]);
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
-
+  console.log('layoutcontextval', formLayoutContextValue);
   return (
     <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
       <CustomTag
-        // className={clsx(classes.formContainer, className)}
+        className={clsx(classes.formContainer, className)}
         suppressHydrationWarning={true}
         ref={componentRef}
         style={{

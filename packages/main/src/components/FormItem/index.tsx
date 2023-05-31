@@ -126,7 +126,7 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  */
 const FormItem = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
-  const { label, children, rowIndex, id } = props as InternalProps;
+  const { label, children, id } = props as InternalProps;
   const uniqueId = useIsomorphicId();
   const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
   const groupContext = useFormGroupContext();
@@ -150,8 +150,9 @@ const FormItem = (props: FormItemPropTypes) => {
   // So this is fine, the layoutInfo will be defined
   if (layoutInfos && !layoutInfo) return null;
 
-  const { columnIndex } = layoutInfo;
-  // const { columnIndex } = props;
+  const { columnIndex, rowIndex } = layoutInfo;
+  // const { columnIndex, rowIndex } = props;
+  console.log(rowIndex, 'rowIndex');
 
   console.log('Render FormItem ' + id, layoutInfo, layoutInfos);
 
