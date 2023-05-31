@@ -310,7 +310,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const debouncedOverflowChange = useRef<ToolbarPropTypes['onOverflowChange'] & { cancel(): void }>();
 
   useEffect(() => {
-    if (typeof onOverflowChange === 'function' ) {
+    if (typeof onOverflowChange === 'function') {
       debouncedOverflowChange.current = debounce(onOverflowChange, 60);
     }
   }, [onOverflowChange]);
@@ -335,7 +335,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       });
     }
     return () => {
-      if(debouncedOverflowChange.current){
+      if (debouncedOverflowChange.current) {
         debouncedOverflowChange.current.cancel();
       }
     };
