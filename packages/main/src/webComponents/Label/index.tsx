@@ -45,7 +45,11 @@ export interface LabelPropTypes extends LabelAttributes, CommonProps {
 }
 
 /**
- * The `Label` is a component used to represent a label, providing valuable information to the user. Usually it is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in the value holder.
+ * The `Label` is a component used to represent a label for elements like input, textarea, select.
+ *
+ * The `for` property of the `Label` must be the same as the id attribute of the related input element.
+ *
+ * Screen readers read out the label, when the user focuses the labelled control.
  *
  * The `Label` appearance can be influenced by properties, such as `required` and `wrappingType`. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
  *

@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 import type { ReactNode } from 'react';
+import { SegmentedButtonMode } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -10,6 +11,15 @@ interface SegmentedButtonAttributes {
    * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
+  /**
+   * Defines the component selection mode.
+   *
+   * **The available values are:**
+   *
+   * *   `SingleSelect`
+   * *   `MultiSelect`
+   */
+  mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
 }
 
 export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
@@ -17,6 +27,10 @@ export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5Dom
    * Currently selected item.
    */
   readonly selectedItem: ReactNode;
+  /**
+   * Returns an array of the currently selected items.
+   */
+  readonly selectedItems: ReactNode | ReactNode[];
 }
 
 export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, CommonProps {
@@ -45,7 +59,7 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
-  ['accessibleName'],
+  ['accessibleName', 'mode'],
   [],
   [],
   ['selection-change'],
@@ -53,5 +67,9 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
 );
 
 SegmentedButton.displayName = 'SegmentedButton';
+
+SegmentedButton.defaultProps = {
+  mode: SegmentedButtonMode.SingleSelect
+};
 
 export { SegmentedButton };

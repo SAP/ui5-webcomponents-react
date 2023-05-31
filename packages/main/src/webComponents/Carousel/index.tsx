@@ -2,7 +2,12 @@
 
 import '@ui5/webcomponents/dist/Carousel.js';
 import type { ReactNode } from 'react';
-import { CarouselArrowsPlacement, CarouselPageIndicatorStyle } from '../../enums/index.js';
+import {
+  CarouselArrowsPlacement,
+  BackgroundDesign,
+  BorderDesign,
+  CarouselPageIndicatorStyle
+} from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -20,6 +25,10 @@ interface CarouselAttributes {
    * When set to "Navigation", the arrows are placed on the sides of the page indicator.
    */
   arrowsPlacement?: CarouselArrowsPlacement | keyof typeof CarouselArrowsPlacement;
+  /**
+   * Defines the carousel's background design.
+   */
+  backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
   /**
    * Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
    */
@@ -46,6 +55,14 @@ interface CarouselAttributes {
    * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
    */
   itemsPerPageS?: number;
+  /**
+   * Defines the page indicator background design.
+   */
+  pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
+  /**
+   * Defines the page indicator border design.
+   */
+  pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
   /**
    * Defines the style of the page indicator. Available options are:
    *
@@ -87,7 +104,16 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'pageIndicatorStyle'],
+  [
+    'arrowsPlacement',
+    'backgroundDesign',
+    'itemsPerPageL',
+    'itemsPerPageM',
+    'itemsPerPageS',
+    'pageIndicatorBackgroundDesign',
+    'pageIndicatorBorderDesign',
+    'pageIndicatorStyle'
+  ],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
   ['navigate'],
@@ -98,9 +124,12 @@ Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
+  backgroundDesign: BackgroundDesign.Translucent,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
   itemsPerPageS: 1,
+  pageIndicatorBackgroundDesign: BackgroundDesign.Solid,
+  pageIndicatorBorderDesign: BorderDesign.Solid,
   pageIndicatorStyle: CarouselPageIndicatorStyle.Default
 };
 
