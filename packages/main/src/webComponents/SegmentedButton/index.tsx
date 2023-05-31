@@ -45,7 +45,9 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
   /**
    * Fired when the selected item changes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<SegmentedButtonDomRef, { selectedItem: HTMLElement }>) => void;
+  onSelectionChange?: (
+    event: Ui5CustomEvent<SegmentedButtonDomRef, { selectedItem: HTMLElement; selectedItems: string }>
+  ) => void;
 }
 
 /**
