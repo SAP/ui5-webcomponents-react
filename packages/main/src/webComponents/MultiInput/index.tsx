@@ -1,7 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
-import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
+import type {
+  MultiInputTokenDeleteEventDetail,
+  MultiInputSuggestionItemPreviewEventDetail,
+  MultiInputSuggestionItemSelectEventDetail
+} from '@ui5/webcomponents/dist/MultiInput.js';
 import type { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -192,12 +196,12 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement; targetRef: HTMLElement }>
+    event: Ui5CustomEvent<MultiInputDomRef, MultiInputSuggestionItemPreviewEventDetail>
   ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**

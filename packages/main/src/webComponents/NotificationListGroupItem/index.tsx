@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import type { NotificationListGroupItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import type { ReactNode } from 'react';
 import { Priority } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -79,7 +80,7 @@ export interface NotificationListGroupItemPropTypes extends NotificationListGrou
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, { item: HTMLElement }>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, NotificationListGroupItemCloseEventDetail>) => void;
 }
 
 /**

@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Popover.js';
+import type { PopoverBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popover.js';
 import type { ReactNode } from 'react';
 import {
   PopoverHorizontalAlign,
@@ -166,7 +167,7 @@ export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<PopoverDomRef, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<PopoverDomRef, PopoverBeforeCloseEventDetail>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */

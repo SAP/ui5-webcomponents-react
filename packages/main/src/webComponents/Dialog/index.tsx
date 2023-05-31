@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Dialog.js';
+import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ReactNode } from 'react';
 import { ValueState, PopupAccessibleRole } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -134,7 +135,7 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, DialogBeforeCloseEventDetail>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */

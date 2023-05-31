@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
+import type { NotificationListItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import type { ReactNode } from 'react';
 import { Priority } from '../../enums/index.js';
 import type { WrappingType } from '../../enums/index.js';
@@ -99,7 +100,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, { item: HTMLElement }>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, NotificationListItemCloseEventDetail>) => void;
 }
 
 /**

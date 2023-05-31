@@ -1,6 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Menu.js';
+import type {
+  MenuBeforeCloseEventDetail,
+  MenuBeforeOpenEventDetail,
+  MenuItemClickEventDetail
+} from '@ui5/webcomponents/dist/Menu.js';
 import type { ReactNode } from 'react';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -62,15 +67,15 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
   /**
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
   /**
    * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
   /**
    * Fired when an item is being clicked.
    */
-  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, { item: Record<string, unknown>; text: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 }
 
 /**

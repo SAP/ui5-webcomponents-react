@@ -6,7 +6,8 @@ import type {
   TreeItemDeleteEventDetail,
   TreeItemMouseoutEventDetail,
   TreeItemMouseoverEventDetail,
-  TreeItemToggleEventDetail
+  TreeItemToggleEventDetail,
+  TreeSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/Tree.js';
 import type { ReactNode } from 'react';
 import { ListMode } from '../../enums/index.js';
@@ -104,12 +105,7 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<
-      TreeDomRef,
-      { selectedItems: unknown[]; previouslySelectedItems: unknown[]; targetItem: HTMLElement }
-    >
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<TreeDomRef, TreeSelectionChangeEventDetail>) => void;
 }
 
 /**
