@@ -3,8 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface NotificationActionAttributes {

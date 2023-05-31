@@ -4,8 +4,7 @@ import '@ui5/webcomponents/dist/Calendar.js';
 import type { ReactNode } from 'react';
 import type { CalendarType } from '../../enums/index.js';
 import { CalendarSelectionMode } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface CalendarAttributes {
@@ -28,11 +27,11 @@ interface CalendarAttributes {
    */
   formatPattern?: string;
   /**
-   * Determines the maximum date available for selection.
+   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
   /**
-   * Determines the minimum date available for selection.
+   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
   /**
