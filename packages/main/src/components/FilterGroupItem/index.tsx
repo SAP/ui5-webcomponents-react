@@ -136,7 +136,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
 
   return (
     <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
-      <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
+      <div className={classes.innerFilterItemContainer}>
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
