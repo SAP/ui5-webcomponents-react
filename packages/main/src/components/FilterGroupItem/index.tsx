@@ -113,7 +113,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
         data-component-name="FilterBarDialogTableRow"
       >
         <TableCell>
-          <FlexBox direction={FlexBoxDirection.Column}>
+          <FlexBox direction={FlexBoxDirection.Column} className={classes.labelContainer}>
             <Label
               className={classes.dialogCellLabel}
               title={labelTooltip ?? label}

@@ -2,10 +2,16 @@
 
 import '@ui5/webcomponents-fiori/dist/Wizard.js';
 import type { ReactNode } from 'react';
+import { WizardContentLayout } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
-interface WizardAttributes {}
+interface WizardAttributes {
+  /**
+   * Defines how the content of the `Wizard` would be visualized.
+   */
+  contentLayout?: WizardContentLayout | keyof typeof WizardContentLayout;
+}
 
 export interface WizardDomRef extends WizardAttributes, Ui5DomRef {}
 
@@ -33,7 +39,7 @@ export interface WizardPropTypes extends WizardAttributes, CommonProps {
  */
 const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>(
   'ui5-wizard',
-  [],
+  ['contentLayout'],
   [],
   [],
   ['step-change'],
@@ -41,5 +47,9 @@ const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>(
 );
 
 Wizard.displayName = 'Wizard';
+
+Wizard.defaultProps = {
+  contentLayout: WizardContentLayout.MultipleSteps
+};
 
 export { Wizard };
