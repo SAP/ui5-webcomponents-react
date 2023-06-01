@@ -101,7 +101,7 @@ export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
   /**
    * The suggestion item on preview.
    */
-  readonly previewItem: ReactNode;
+  readonly previewItem: ReactNode | null;
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
    */
