@@ -15,26 +15,8 @@ const styles = {
   innerFilterItemContainer: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'start'
-  },
-  innerFilterItemContainerDialog: {
-    display: 'grid',
-    gridTemplateColumns: '20% calc(80% - 1rem)',
-    '@media(max-width:700px)': {
-      gridTemplateColumns: '100%'
-    },
-    gridTemplateRows: 'auto',
-    gridRowGap: '0px',
-    gridColumnGap: '1rem',
-    '& :first-child': {
-      maxWidth: '100%',
-      placeSelf: 'center end',
-      '@media(max-width:700px)': {
-        placeSelf: 'center start'
-      }
-    },
+    justifyContent: 'start',
     '& :last-child': {
-      placeSelf: 'center auto',
       width: '100%'
     }
   },
