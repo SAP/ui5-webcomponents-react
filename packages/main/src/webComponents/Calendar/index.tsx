@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Calendar.js';
+import type { CalendarSelectedDatesChangeEventDetail } from '@ui5/webcomponents/dist/Calendar.js';
 import type { ReactNode } from 'react';
 import type { CalendarType } from '../../enums/index.js';
 import { CalendarSelectionMode } from '../../enums/index.js';
@@ -54,7 +55,7 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
   /**
    * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, the component will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
-  onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, { values: unknown[]; dates: unknown[] }>) => void;
+  onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectedDatesChangeEventDetail>) => void;
 }
 
 /**

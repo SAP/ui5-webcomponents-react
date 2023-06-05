@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
+import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -42,7 +43,7 @@ export interface NotificationActionPropTypes extends NotificationActionAttribute
   /**
    * Fired, when the action is pressed.
    */
-  onClick?: (event: Ui5CustomEvent<NotificationActionDomRef, { targetRef: HTMLElement }>) => void;
+  onClick?: (event: Ui5CustomEvent<NotificationActionDomRef, NotificationActionClickEventDetail>) => void;
 }
 
 /**

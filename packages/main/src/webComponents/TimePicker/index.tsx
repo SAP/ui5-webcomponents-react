@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
+import type { TimePickerChangeEventDetail, TimePickerInputEventDetail } from '@ui5/webcomponents/dist/TimePicker.js';
 import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -97,11 +98,11 @@ export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonPr
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerChangeEventDetail>) => void;
   /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, { value: string; valid: boolean }>) => void;
+  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerInputEventDetail>) => void;
 }
 
 /**

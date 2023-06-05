@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabContainer.js';
+import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
 import type { ReactNode } from 'react';
 import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -104,7 +105,7 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
   /**
    * Fired when a tab is selected.
    */
-  onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, { tab: HTMLElement; tabIndex: number }>) => void;
+  onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerTabSelectEventDetail>) => void;
 }
 
 /**

@@ -1,6 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DateRangePicker.js';
+import type {
+  DateRangePickerChangeEventDetail,
+  DateRangePickerInputEventDetail
+} from '@ui5/webcomponents/dist/DateRangePicker.js';
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -152,11 +156,11 @@ export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omi
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DateRangePickerChangeEventDetail>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<DateRangePickerDomRef, { value: string; valid: boolean }>) => void;
+  onInput?: (event: Ui5CustomEvent<DateRangePickerDomRef, DateRangePickerInputEventDetail>) => void;
 }
 
 /**
