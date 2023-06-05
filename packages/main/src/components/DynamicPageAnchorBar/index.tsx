@@ -6,6 +6,7 @@ import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
+import type { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -32,8 +33,6 @@ const anchorBarStyles = {
     }
   },
   anchorBarActionButton: {
-    '--_ui5_button_base_min_width': '1.5rem',
-    '--_ui5_button_base_height': '1.5rem',
     '--ui5wcr_anchor-btn-center': `calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2)`,
     position: 'absolute',
     insetBlockStart: `calc(-1 * var(--ui5wcr_anchor-btn-center))`,
@@ -101,6 +100,11 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
   onPinnedStateChange?: (pinned: boolean) => void;
 }
 
+const anchorButtonVariables = {
+  '--_ui5_button_base_min_width': '1.5rem',
+  '--_ui5_button_base_height': '1.5rem'
+} as CSSProperties;
+
 /**
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
  * and pin button (pins the content header).
@@ -161,6 +165,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
             classes.anchorBarActionButtonExpandable,
             showBothActions && classes.anchorBarActionPinnableAndExpandable
           )}
+          style={anchorButtonVariables}
           onClick={onToggleHeaderButtonClick}
           onMouseOver={onHoverToggleButton}
           onMouseLeave={onHoverToggleButton}
@@ -174,6 +179,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
           icon={iconPushPin}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(classes.anchorBarActionButton, classes.anchorBarActionButtonPinnable)}
+          style={anchorButtonVariables}
           pressed={headerPinned}
           onClick={onPinHeader}
           tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}

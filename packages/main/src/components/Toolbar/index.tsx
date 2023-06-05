@@ -307,10 +307,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   };
 
   const prevChildren = useRef(flatChildren);
-  const debouncedOverflowChange = useRef(debounce(onOverflowChange, 60));
+  const debouncedOverflowChange = useRef<ToolbarPropTypes['onOverflowChange'] & { cancel(): void }>();
 
   useEffect(() => {
-    debouncedOverflowChange.current = debounce(onOverflowChange, 60);
+    if (typeof onOverflowChange === 'function') {
+      debouncedOverflowChange.current = debounce(onOverflowChange, 60);
+    }
   }, [onOverflowChange]);
 
   useEffect(() => {
@@ -333,7 +335,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       });
     }
     return () => {
-      debouncedOverflowChange.current.cancel();
+      if (debouncedOverflowChange.current) {
+        debouncedOverflowChange.current.cancel();
+      }
     };
   }, [lastVisibleIndex, flatChildren.length, isPopoverMounted]);
 

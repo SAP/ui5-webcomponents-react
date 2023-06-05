@@ -220,7 +220,8 @@ const styles = {
     }
   },
   inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInput: { padding: '0.25rem 1rem' },
+  searchInputContainer: { padding: '0.25rem 1rem' },
+  searchInput: { width: '100%' },
   popover: {
     minWidth: '25rem',
     '&::part(content), &::part(footer)': {
@@ -539,8 +540,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     mode={ListMode.SingleSelect}
                     header={
                       showInput ? (
-                        <div className={classes.searchInput} tabIndex={-1}>
+                        <div className={classes.searchInputContainer} tabIndex={-1}>
                           <Input
+                            className={classes.searchInput}
                             accessibleName={a11ySearchText}
                             value={searchValue}
                             placeholder={searchText}

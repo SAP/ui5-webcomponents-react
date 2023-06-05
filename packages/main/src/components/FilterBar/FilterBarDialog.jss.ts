@@ -11,9 +11,6 @@ const styles = {
       textAlign: 'center'
     }
   },
-  table: {
-    '--_ui5_input_width': '100%'
-  },
   groupPanel: {
     '&::part(content)': {
       padding: 0
