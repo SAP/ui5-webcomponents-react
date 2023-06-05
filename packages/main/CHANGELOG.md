@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
+
+### Bug Fixes
+
+- add export condition for node to main package ([#4640](https://github.com/SAP/ui5-webcomponents-react/issues/4640)) ([4881b58](https://github.com/SAP/ui5-webcomponents-react/commit/4881b58cae303b93498fe9ff65bc3377ceeb8afe))
+- **AnalyticalTable:** allow nested sub-rows as `subRowsKey`, add `manualGroupBy` support ([#4598](https://github.com/SAP/ui5-webcomponents-react/issues/4598)) ([00686bc](https://github.com/SAP/ui5-webcomponents-react/commit/00686bc57f41634240416a5add1dd230950fdb5c))
+- **ssr:** switch back to classic jsx runtime ([#4666](https://github.com/SAP/ui5-webcomponents-react/issues/4666)) ([95fb5c4](https://github.com/SAP/ui5-webcomponents-react/commit/95fb5c4a2f711ebb9b72676ba7bae734c83db40e))
+- **Toolbar:** fix `onOverflowChange` debounce init when the prop is not provided ([#4662](https://github.com/SAP/ui5-webcomponents-react/issues/4662)) ([378e0ed](https://github.com/SAP/ui5-webcomponents-react/commit/378e0ed714aafde1ed4aadc535db81d2796513d5)), closes [#4661](https://github.com/SAP/ui5-webcomponents-react/issues/4661)
+- **Toolbar:** return correct value for `overflowElements` in `onOverflowChange` ([#4610](https://github.com/SAP/ui5-webcomponents-react/issues/4610)) ([73d5065](https://github.com/SAP/ui5-webcomponents-react/commit/73d5065e9b01a3f21b4337bf1d299f4e8a099356))
+
+### Features
+
+- **AnalyticalTable - `useOrderedMultiSort`:** introduce new plugin hook ([#4623](https://github.com/SAP/ui5-webcomponents-react/issues/4623)) ([9db7041](https://github.com/SAP/ui5-webcomponents-react/commit/9db70411a50a4e27e6be844ba643ab68816b7ef6)), closes [#3897](https://github.com/SAP/ui5-webcomponents-react/issues/3897)
+- **Toolbar:** add `a11yConfig` prop ([#4611](https://github.com/SAP/ui5-webcomponents-react/issues/4611)) ([911cd20](https://github.com/SAP/ui5-webcomponents-react/commit/911cd2036ae77f5e4f3dd61c53b20ba2653812f9)), closes [#4609](https://github.com/SAP/ui5-webcomponents-react/issues/4609)
+- update to @ui5/webcomponents ~1.14.0 ([#4667](https://github.com/SAP/ui5-webcomponents-react/issues/4667)) ([ec2dca2](https://github.com/SAP/ui5-webcomponents-react/commit/ec2dca2253031478ae5f57a48e85e70061707e3f))
+
 ## [1.15.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.0...v1.15.1) (2023-05-09)
 
 ### Bug Fixes
