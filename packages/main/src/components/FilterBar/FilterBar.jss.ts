@@ -1,4 +1,4 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const styles = {
   outerContainer: {
@@ -72,7 +72,7 @@ const styles = {
     flexBasis: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
   },
   lastSpacer: {
-    height: 'var(--_ui5_input_height)',
+    height: CssSizeVariables.sawWcrElementHeight,
     flexGrow: 1,
     flexShrink: 0,
     maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
