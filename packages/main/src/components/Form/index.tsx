@@ -134,10 +134,27 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   labelSpanMap.set('Desktop', labelSpanL);
   labelSpanMap.set('LargeDesktop', labelSpanXL);
 
-  const [componentRef, formRef] = useSyncRef<HTMLFormElement>(ref);
+  const [componentRef, containerRef] = useSyncRef<HTMLFormElement>(ref);
   // use the window range set as first best guess, if not available use Desktop
   const [currentRange, setCurrentRange] = useState(Device.getCurrentRange()?.name ?? 'Desktop');
   const lastRange = useRef(currentRange);
+
+  const [width, setWidth] = useState<number | undefined>(undefined);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry.target?.scrollWidth) {
+        setWidth(entry.target.scrollWidth);
+      }
+    });
+    if (formRef.current) {
+      observer.observe(formRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
@@ -148,14 +165,14 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       }
     });
 
-    if (formRef.current) {
-      observer.observe(formRef.current);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
 
     return () => {
       observer.disconnect();
     };
-  }, [formRef]);
+  }, [containerRef]);
 
   const classes = useStyles();
 
@@ -247,19 +264,27 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         suppressHydrationWarning={true}
         ref={componentRef}
         style={{
-          ...style,
-          '--ui5wcr_form_label_span_s': labelSpanS,
-          '--ui5wcr_form_label_span_m': labelSpanM,
-          '--ui5wcr_form_label_span_l': labelSpanL,
-          '--ui5wcr_form_label_span_xl': labelSpanXL,
-          '--ui5wcr_form_columns_s': columnsS,
-          '--ui5wcr_form_columns_m': columnsM,
-          '--ui5wcr_form_columns_l': columnsL,
-          '--ui5wcr_form_columns_xl': columnsXL
+          width,
+          ...style
         }}
         {...rest}
       >
-        <div className={formClassNames}>
+        <div
+          ref={formRef}
+          className={formClassNames}
+          style={
+            {
+              '--ui5wcr_form_label_span_s': labelSpanS,
+              '--ui5wcr_form_label_span_m': labelSpanM,
+              '--ui5wcr_form_label_span_l': labelSpanL,
+              '--ui5wcr_form_label_span_xl': labelSpanXL,
+              '--ui5wcr_form_columns_s': columnsS,
+              '--ui5wcr_form_columns_m': columnsM,
+              '--ui5wcr_form_columns_l': columnsL,
+              '--ui5wcr_form_columns_xl': columnsXL
+            } as CSSProperties
+          }
+        >
           {titleText && (
             <Title level={TitleLevel.H3} className={classes.formTitle}>
               {titleText}
