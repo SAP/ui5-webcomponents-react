@@ -31,7 +31,8 @@
       "enabled": false
     },
     {
-      "extends": "monorepo:storybook",
+      "description": "all dependency upgrades in the root package.json should not affect release notes",
+      "matchFiles": ["package.json"]
       "semanticCommitType": "chore"
     }
   ]
