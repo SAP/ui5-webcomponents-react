@@ -1106,22 +1106,28 @@ describe('AnalyticalTable', () => {
     const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
     cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} />);
     cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
-    for (let i = 1; i <= 4; i++) {
-      if (i % 2) {
-        // no color set
-        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      } else {
-        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
+    function testAlternateRowColor() {
+      for (let i = 1; i <= 4; i++) {
+        if (i % 2) {
+          // no color set
+          cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
+        }
       }
+      cy.get('[data-empty-row="true"]').each(($emptyRow, i) => {
+        if ((i + 1) % 2) {
+          // no color set
+          cy.wrap($emptyRow).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          cy.wrap($emptyRow).should('have.css', 'background-color', alternatingRowColor);
+        }
+      });
     }
-    cy.get('[data-empty-row="true"]').each(($emptyRow, i) => {
-      if ((i + 1) % 2) {
-        // no color set
-        cy.wrap($emptyRow).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      } else {
-        cy.wrap($emptyRow).should('have.css', 'background-color', alternatingRowColor);
-      }
-    });
+    testAlternateRowColor();
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    testAlternateRowColor();
   });
 
   it('initial column order', () => {
