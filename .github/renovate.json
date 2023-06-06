@@ -32,12 +32,12 @@
     },
     {
       "description": "all dependency upgrades in the root package.json should not affect release notes",
-      "matchFiles": ["package.json"]
+      "matchFiles": ["package.json"],
       "semanticCommitType": "chore"
     },
     {
       "description": "UI5 Web Components (for React) from examples",
-      "groupName": "ui5-webcomponents (react)"
+      "groupName": "ui5-webcomponents (react)",
       "matchPaths": ["examples/**"],
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents", "https://github.com/SAP/ui5-webcomponents-react"],
       "semanticCommitType": "chore"
