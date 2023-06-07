@@ -32,7 +32,8 @@
     },
     {
       "groupName": "eslint",
-      "matchPackagePatterns": ["eslint"]
+      "matchPackagePatterns": ["eslint"],
+      "excludePackageNames": ["eslint-config-next"]
     },
     {
       "matchPackageNames": ["@types/node"],
