@@ -11,6 +11,15 @@
   "platformAutomerge": true,
   "prHourlyLimit": 5,
   "addLabels": ["dependencies"],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**"
+  ],
   "packageRules": [
     {
       "groupName": "UI5 Web Components",
