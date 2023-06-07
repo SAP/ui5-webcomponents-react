@@ -1,0 +1,18 @@
+import{M as c,C as d,f as u,a as x}from"./chunk-PCJTTTQV-a6f29dab.js";import{T as o}from"./index-b458aac5.js";import{V as s}from"./ValueState-ab6838cc.js";import{e as S}from"./DomRefTable.module-ce25c981.js";import{D as h}from"./DocsHeader-4d3765fb.js";import{F as f}from"./Footer-72721e1e.js";import{j as t}from"./jsx-runtime-5926aa06.js";import"./index-ebeaab24.js";import{u as p}from"./index-bda0bad7.js";import"./iframe-956a6d11.js";import"../sb-preview/runtime.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-9c09ad76.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./inheritsLoose-93e09647.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./UI5Element-a8445a25.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-884f99a7.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./ValueState-2c5e5904.js";import"./slot-76e48863.js";import"./Icon-3e9cb840.js";import"./Icons-c55d12a5.js";import"./ResizeHandler-cea672cf.js";import"./Integer-f7f172c9.js";import"./AriaLabelHelper-43a261ec.js";import"./decline-c4793abd.js";import"./i18n-defaults-80781f7e.js";import"./Popover-2f417d64.js";import"./Device-208919c6.js";import"./PopupUtils-b38c74c1.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-3239006e.js";import"./FocusableElements-69e44a9d.js";import"./isElementHidden-01c07146.js";import"./MediaRange-25b98f31.js";import"./style-map-34e6b8f4.js";import"./class-map-323a92fb.js";import"./information-e6fe8610.js";import"./i18n-defaults-fca59c5d.js";import"./ValueStateMessage.css-111bf458.js";import"./react-jss.esm-022ab528.js";import"./index-290e5302.js";import"./Button-f1768a08.js";import"./MarkedEvents-b83081e9.js";import"./index-8330eb1d.js";import"./clsx.m-1229b3e0.js";import"./index-562e1433.js";import"./ThemingParameters-7e2e4e30.js";import"./TableOfContent-5def6d03.js";import"./index-72233d51.js";import"./Link-8b80096c.js";import"./WrappingType-b81e595a.js";import"./index-d6538843.js";import"./Label-6cefa2d2.js";import"./index-cfa00a58.js";const j=`## CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The \`TextArea\` exposes the following CSS Shadow Parts:
+
+- textarea - Used to style the native textarea
+`;function g(r={}){const{wrapper:i}=Object.assign({},p(),r.components);return i?t.jsx(i,{...r,children:t.jsx(m,{})}):m();function m(){const a=Object.assign({h2:"h2"},p(),r.components);return t.jsxs(t.Fragment,{children:[t.jsx(c,{title:"Inputs / TextArea",component:o,argTypes:{valueStateMessage:{control:{disable:!0}}},args:{valueState:s.None}}),`
+`,t.jsx(h,{}),`
+`,t.jsx("br",{}),`
+`,t.jsx(a.h2,{id:"example",children:"Example"}),`
+`,t.jsx(d,{children:t.jsx(u,{name:"Default",children:l=>t.jsx(o,{...l})})}),`
+`,t.jsx(a.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(S,{story:"Default"}),`
+`,t.jsx(x,{children:j}),`
+`,t.jsx(f,{})]})}}const n=r=>t.jsx(o,{...r});n.storyName="Default";n.parameters={storySource:{source:`args => {
+  return <TextArea {...args} />;
+}`}};const e={title:"Inputs / TextArea",component:o,args:{valueState:s.None},argTypes:{valueStateMessage:{control:{disable:!0}}},tags:["stories-mdx"],includeStories:["defaultStory"]};e.parameters=e.parameters||{};e.parameters.docs={...e.parameters.docs||{},page:g};const _t=["defaultStory"];export{_t as __namedExportsOrder,e as default,n as defaultStory};
+//# sourceMappingURL=TextArea.stories-2c6b4937.js.map
