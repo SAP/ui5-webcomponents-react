@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
+import type { MultiComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/MultiComboBox.js';
 import type { ReactNode } from 'react';
-import { ValueState } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { ComboBoxFilter, ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -30,7 +30,7 @@ interface MultiComboBoxAttributes {
   /**
    * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
-  filter?: string;
+  filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
   /**
    * Defines whether the value will be autcompleted to match an item
    */
@@ -121,7 +121,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, { items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -143,7 +143,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomR
 MultiComboBox.displayName = 'MultiComboBox';
 
 MultiComboBox.defaultProps = {
-  filter: 'StartsWithPerTerm',
+  filter: ComboBoxFilter.StartsWithPerTerm,
   valueState: ValueState.None
 };
 

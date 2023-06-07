@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import type { FlexibleColumnLayoutLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import { FCLLayout } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -118,18 +118,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
    * Fired when the layout changes via user interaction by clicking the arrows or by changing the component size due to resizing.
    */
   onLayoutChange?: (
-    event: Ui5CustomEvent<
-      FlexibleColumnLayoutDomRef,
-      {
-        layout: FCLLayout | keyof typeof FCLLayout;
-        columnLayout: unknown[];
-        startColumnVisible: boolean;
-        midColumnVisible: boolean;
-        endColumnVisible: boolean;
-        arrowsUsed: boolean;
-        resize: boolean;
-      }
-    >
+    event: Ui5CustomEvent<FlexibleColumnLayoutDomRef, FlexibleColumnLayoutLayoutChangeEventDetail>
   ) => void;
 }
 

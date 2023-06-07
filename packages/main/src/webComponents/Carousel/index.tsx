@@ -1,10 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Carousel.js';
+import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carousel.js';
 import type { ReactNode } from 'react';
-import { CarouselArrowsPlacement, CarouselPageIndicatorStyle } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import {
+  CarouselArrowsPlacement,
+  BackgroundDesign,
+  BorderDesign,
+  CarouselPageIndicatorStyle
+} from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface CarouselAttributes {
@@ -21,6 +26,10 @@ interface CarouselAttributes {
    * When set to "Navigation", the arrows are placed on the sides of the page indicator.
    */
   arrowsPlacement?: CarouselArrowsPlacement | keyof typeof CarouselArrowsPlacement;
+  /**
+   * Defines the carousel's background design.
+   */
+  backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
   /**
    * Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
    */
@@ -48,6 +57,14 @@ interface CarouselAttributes {
    */
   itemsPerPageS?: number;
   /**
+   * Defines the page indicator background design.
+   */
+  pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
+  /**
+   * Defines the page indicator border design.
+   */
+  pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
+  /**
    * Defines the style of the page indicator. Available options are:
    *
    * *   `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
@@ -72,7 +89,7 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
   /**
    * Fired whenever the page changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
    */
-  onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, { selectedIndex: number }>) => void;
+  onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, CarouselNavigateEventDetail>) => void;
 }
 
 /**
@@ -88,7 +105,16 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
-  ['arrowsPlacement', 'itemsPerPageL', 'itemsPerPageM', 'itemsPerPageS', 'pageIndicatorStyle'],
+  [
+    'arrowsPlacement',
+    'backgroundDesign',
+    'itemsPerPageL',
+    'itemsPerPageM',
+    'itemsPerPageS',
+    'pageIndicatorBackgroundDesign',
+    'pageIndicatorBorderDesign',
+    'pageIndicatorStyle'
+  ],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
   ['navigate'],
@@ -99,9 +125,12 @@ Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
   arrowsPlacement: CarouselArrowsPlacement.Content,
+  backgroundDesign: BackgroundDesign.Translucent,
   itemsPerPageL: 1,
   itemsPerPageM: 1,
   itemsPerPageS: 1,
+  pageIndicatorBackgroundDesign: BackgroundDesign.Solid,
+  pageIndicatorBorderDesign: BorderDesign.Solid,
   pageIndicatorStyle: CarouselPageIndicatorStyle.Default
 };
 

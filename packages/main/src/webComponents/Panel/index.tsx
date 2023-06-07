@@ -3,8 +3,7 @@
 import '@ui5/webcomponents/dist/Panel.js';
 import type { ReactNode } from 'react';
 import { PanelAccessibleRole, TitleLevel } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 

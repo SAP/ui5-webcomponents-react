@@ -1,8 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type {
+  ViewSettingsDialogCancelEventDetail,
+  ViewSettingsDialogConfirmEventDetail
+} from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -56,21 +59,11 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
   /**
    * Fired when cancel button is activated.
    */
-  onCancel?: (
-    event: Ui5CustomEvent<
-      ViewSettingsDialogDomRef,
-      { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
-    >
-  ) => void;
+  onCancel?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogCancelEventDetail>) => void;
   /**
    * Fired when confirmation button is activated.
    */
-  onConfirm?: (
-    event: Ui5CustomEvent<
-      ViewSettingsDialogDomRef,
-      { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
-    >
-  ) => void;
+  onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
 }
 
 /**

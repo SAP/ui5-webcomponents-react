@@ -1,8 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type {
+  BarcodeScannerDialogScanErrorEventDetail,
+  BarcodeScannerDialogScanSuccessEventDetail
+} from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface BarcodeScannerDialogAttributes {}
@@ -22,12 +25,12 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
   /**
    * Fires when the scan fails with error.
    */
-  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { message: string }>) => void;
+  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
   /**
    * Fires when the scan is completed successfuuly.
    */
   onScanSuccess?: (
-    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { text: string; rawBytes: Record<string, unknown> }>
+    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>
   ) => void;
 }
 

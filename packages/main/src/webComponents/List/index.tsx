@@ -1,10 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/List.js';
+import type {
+  ListItemClickEventDetail,
+  ListItemCloseEventDetail,
+  ListItemDeleteEventDetail,
+  ListItemToggleEventDetail,
+  ListSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/List.js';
 import type { ReactNode } from 'react';
-import { ListGrowingMode, ListMode, ListSeparators } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { ListSeparators, ListMode, ListGrowingMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -101,25 +107,25 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
-  onItemClick?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ListDomRef, ListItemClickEventDetail>) => void;
   /**
    * Fired when the `Close` button of any item is clicked
    *
    * **Note:** This event is only applicable to list items that can be closed (such as notification list items), not to be confused with `onItemDelete`.
    */
-  onItemClose?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemClose?: (event: Ui5CustomEvent<ListDomRef, ListItemCloseEventDetail>) => void;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<ListDomRef, ListItemDeleteEventDetail>) => void;
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    */
-  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, ListItemToggleEventDetail>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
@@ -129,9 +135,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<ListDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
 }
 
 /**

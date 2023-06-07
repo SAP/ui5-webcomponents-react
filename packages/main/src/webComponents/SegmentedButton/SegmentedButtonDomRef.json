@@ -4,6 +4,18 @@
     "readonly": "true",
     "visibility": "public",
     "type": "sap.ui.webc.main.ISegmentedButtonItem",
-    "description": "Currently selected item."
+    "description": "Currently selected item.",
+    "deprecated": {
+      "since": "1.14.0",
+      "text": "This method will be removed in the next major release. Please use the <code>selectedItems</code> property instead."
+    }
+  },
+  {
+    "name": "selectedItems",
+    "readonly": "true",
+    "visibility": "public",
+    "since": "1.14.0",
+    "type": "sap.ui.webc.main.ISegmentedButtonItem[]",
+    "description": "Returns an array of the currently selected items."
   }
 ]

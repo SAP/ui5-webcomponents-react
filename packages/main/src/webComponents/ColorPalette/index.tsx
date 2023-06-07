@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPalette.js';
+import type { ColorPaletteItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalette.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ColorPaletteAttributes {}
@@ -18,7 +18,7 @@ export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonPro
   /**
    * Fired when the user selects a color.
    */
-  onItemClick?: (event: Ui5CustomEvent<ColorPaletteDomRef, { color: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ColorPaletteDomRef, ColorPaletteItemClickEventDetail>) => void;
 }
 
 /**

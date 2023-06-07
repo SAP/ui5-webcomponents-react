@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/FileUploader.js';
+import type { FileUploaderChangeEventDetail } from '@ui5/webcomponents/dist/FileUploader.js';
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -87,7 +87,7 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
   /**
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
-  onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, { files: FileList }>) => void;
+  onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderChangeEventDetail>) => void;
 }
 
 /**

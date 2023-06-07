@@ -35,9 +35,9 @@
     "@storybook/react": "7.0.18",
     "@storybook/react-vite": "7.0.18",
     "@storybook/theming": "7.0.18",
-    "@ui5/webcomponents": "1.13.3",
-    "@ui5/webcomponents-fiori": "1.13.3",
-    "@ui5/webcomponents-icons": "1.13.3",
+    "@ui5/webcomponents": "1.14.0",
+    "@ui5/webcomponents-fiori": "1.14.0",
+    "@ui5/webcomponents-icons": "1.14.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-gfm": "^3.0.1",
@@ -50,14 +50,14 @@
     "@babel/preset-react": "7.22.3",
     "@babel/preset-typescript": "7.21.5",
     "@cypress/code-coverage": "^3.10.0",
-    "@semantic-release/github": "^8.0.0",
+    "@semantic-release/github": "^9.0.0",
     "@testing-library/cypress": "^9.0.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
-    "@ui5/webcomponents-tools": "1.13.1",
+    "@ui5/webcomponents-tools": "1.14.0",
     "@vitejs/plugin-react": "^4.0.0",
     "chromatic": "^6.5.3",
     "cypress": "^12.1.0",
@@ -105,5 +105,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@3.5.1"
+  "packageManager": "yarn@3.6.0"
 }

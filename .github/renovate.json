@@ -11,6 +11,15 @@
   "platformAutomerge": true,
   "prHourlyLimit": 5,
   "addLabels": ["dependencies"],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**"
+  ],
   "packageRules": [
     {
       "groupName": "UI5 Web Components",
@@ -23,7 +32,8 @@
     },
     {
       "groupName": "eslint",
-      "matchPackagePatterns": ["eslint"]
+      "matchPackagePatterns": ["eslint"],
+      "excludePackageNames": ["eslint-config-next"]
     },
     {
       "matchPackageNames": ["@types/node"],
@@ -31,8 +41,22 @@
       "enabled": false
     },
     {
-      "extends": "monorepo:storybook",
+      "description": "all dependency upgrades in the root package.json should not affect release notes",
+      "matchFiles": ["package.json"],
       "semanticCommitType": "chore"
+    },
+    {
+      "matchPaths": ["examples/**"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "description": "UI5 Web Components (for React) in all examples",
+      "groupName": "ui5-webcomponents (react)",
+      "matchPaths": ["examples/**"],
+      "matchSourceUrlPrefixes": [
+        "https://github.com/SAP/ui5-webcomponents",
+        "https://github.com/SAP/ui5-webcomponents-react"
+      ]
     }
   ]
 }

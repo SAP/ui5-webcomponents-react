@@ -1,8 +1,18 @@
-const issueCommenter = require('@semantic-release/github/lib/success.js');
+import { success as issueCommenter } from '@semantic-release/github';
+import { readFileSync } from 'node:fs';
 
 const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
 
-module.exports = async function run({ github, context, version }) {
+/**
+ *
+ * @param options {object}
+ * @param options.github {import("@octokit/rest/dist-types/index.d.ts").Octokit}
+ * @param options.context
+ * @returns {Promise<void>}
+ */
+export default async function run({ github, context }) {
+  const { version } = JSON.parse(readFileSync(new URL('../lerna.json', import.meta.url)).toString());
+
   const { data: release } = await github.repos.getReleaseByTag({
     owner: context.repo.owner,
     repo: context.repo.repo,
@@ -28,7 +38,7 @@ module.exports = async function run({ github, context, version }) {
     nextRelease: {
       version: `v${version}` // new release version
     },
-    releases: [release], // current github release
+    releases: [release], // current GitHub release
     logger: console,
     env: process.env
   };

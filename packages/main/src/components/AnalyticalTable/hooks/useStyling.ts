@@ -42,7 +42,7 @@ const getHeaderProps = (columnProps, { instance, column }) => {
 
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
-const getRowProps = (rowProps, { instance, row }) => {
+const getRowProps = (rowProps, { instance, row, userProps }) => {
   const { webComponentsReactProperties } = instance;
   const { classes, selectionBehavior, selectionMode, alternateRowColor, subRowsKey } = webComponentsReactProperties;
   let className = classes.tr;
@@ -58,8 +58,7 @@ const getRowProps = (rowProps, { instance, row }) => {
   ) {
     className += ` ${classes.tableGroupHeader}`;
   }
-
-  if (alternateRowColor && row.index % 2 !== 0) {
+  if (alternateRowColor && userProps.rowIndex % 2 !== 0) {
     className += ` ${classes.alternateRowColor}`;
   }
 

@@ -1,10 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
+import type {
+  TablePopinChangeEventDetail,
+  TableRowClickEventDetail,
+  TableSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/Table.js';
 import type { ReactNode } from 'react';
-import { TableGrowingMode, TableMode } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import type { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent.js';
+import { TableMode, TableGrowingMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -113,17 +117,15 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
   /**
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    */
-  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, { poppedColumns: unknown[] }>) => void;
+  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, { row: HTMLElement }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<TableDomRef, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
 }
 
 /**

@@ -1,3 +1,5 @@
+import { ThemingParameters } from './ThemingParameters.js';
+
 export enum CssSizeVariablesNames {
   sapWcrBarHeight = '--sapWcrBarHeight',
   sapWcrButtonTopBottomPadding = '--sapWcrButtonTopBottomPadding',
@@ -18,7 +20,8 @@ export enum CssSizeVariablesNames {
   sapWcrMessageViewListItemHeightByLine = '--sapWcrMessageViewListItemHeightByLine',
   sapWcrSplitterSize = '--sapWcrSplitterSize',
   sapWcrDialogHeaderHeight = '--sapWcrDialogHeaderHeight',
-  sapWcrDialogSubHeaderHeight = '--sapWcrDialogSubHeaderHeight'
+  sapWcrDialogSubHeaderHeight = '--sapWcrDialogSubHeaderHeight',
+  sapWcrElementHeight = '--sapWcrElementHeight'
 }
 
 export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
@@ -45,7 +48,8 @@ export const CozySizes = {
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine]: `3.325rem`,
   [CssSizeVariablesNames.sapWcrSplitterSize]: `1rem`,
   [CssSizeVariablesNames.sapWcrDialogHeaderHeight]: '2.75rem',
-  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '3rem'
+  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '3rem',
+  [CssSizeVariablesNames.sapWcrElementHeight]: ThemingParameters.sapElement_Height
 };
 
 export const CompactSizes = {
@@ -67,5 +71,6 @@ export const CompactSizes = {
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightSingle]: `2rem`,
   [CssSizeVariablesNames.sapWcrMessageViewListItemHeightByLine]: `3.25rem`,
   [CssSizeVariablesNames.sapWcrDialogHeaderHeight]: '2.5rem',
-  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '2.25rem'
+  [CssSizeVariablesNames.sapWcrDialogSubHeaderHeight]: '2.25rem',
+  [CssSizeVariablesNames.sapWcrElementHeight]: ThemingParameters.sapElement_Compact_Height
 };
