@@ -10,7 +10,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          fetch-depth: 0
 
       ### Semantic Release Bot comments for issues and PRs ###
       - name: Add release comments to issues and PRs
@@ -19,7 +18,7 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           script: |
-            import script from '${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs';
+            const { default: addIssueComments } = await import('${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs');
 
-            await script({ github: github.rest, context })
+            await addIssueComments({ github: github.rest, context })
 
