@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Select.js';
+import type { SelectChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -83,7 +84,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
   /**
    * Fired when the selected option changes.
    */
-  onChange?: (event: Ui5CustomEvent<SelectDomRef, { selectedOption: HTMLElement }>) => void;
+  onChange?: (event: Ui5CustomEvent<SelectDomRef, SelectChangeEventDetail>) => void;
   /**
    * Fired after the component's dropdown menu closes.
    */

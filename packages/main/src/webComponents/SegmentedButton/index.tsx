@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
+import type { SegmentedButtonSelectionChangeEventDetail } from '@ui5/webcomponents/dist/SegmentedButton.js';
 import type { ReactNode } from 'react';
 import { SegmentedButtonMode } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -47,9 +48,7 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
   /**
    * Fired when the selected item changes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<SegmentedButtonDomRef, { selectedItem: HTMLElement; selectedItems: HTMLElement[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<SegmentedButtonDomRef, SegmentedButtonSelectionChangeEventDetail>) => void;
 }
 
 /**

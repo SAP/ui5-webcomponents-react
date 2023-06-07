@@ -64,11 +64,7 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           script: |
-            const { readFileSync } = require('fs');
-            const { URL } = require('url');
-            const { version } = require('./lerna.json');
-            const script = require('./.github/createIssueCommentsForRelease.cjs');
+            import script from '${{ github.workspace }}/.github/createIssueCommentsForRelease.js';
 
-            console.log('Create issue comments for lerna version: ', version);
-            await script({ github: github.rest, context, core, version })
+            await script({ github: github.rest, context })
 

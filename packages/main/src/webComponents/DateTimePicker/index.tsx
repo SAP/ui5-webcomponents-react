@@ -1,6 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DateTimePicker.js';
+import type {
+  DateTimePickerChangeEventDetail,
+  DateTimePickerInputEventDetail
+} from '@ui5/webcomponents/dist/DateTimePicker.js';
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -144,11 +148,11 @@ export interface DateTimePickerPropTypes extends DateTimePickerAttributes, Omit<
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, DateTimePickerChangeEventDetail>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<DateTimePickerDomRef, { value: string; valid: boolean }>) => void;
+  onInput?: (event: Ui5CustomEvent<DateTimePickerDomRef, DateTimePickerInputEventDetail>) => void;
 }
 
 /**

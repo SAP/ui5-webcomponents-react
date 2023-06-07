@@ -300,7 +300,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
         return;
       }
       if (e.type === 'click' || isSpaceEnterDown) {
-        e.preventDefault();
+        if (isSpaceEnterDown) {
+          e.preventDefault();
+        }
         onClick(e);
       }
     }

@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
+import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Breadcrumbs.js';
 import type { ReactNode } from 'react';
 import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -40,12 +41,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
   /**
    * Fires when a `BreadcrumbsItem` is clicked. **Note:** You can prevent browser location change by calling `event.preventDefault()`.
    */
-  onItemClick?: (
-    event: Ui5CustomEvent<
-      BreadcrumbsDomRef,
-      { item: HTMLElement; altKey: boolean; ctrlKey: boolean; metaKey: boolean; shiftKey: boolean }
-    >
-  ) => void;
+  onItemClick?: (event: Ui5CustomEvent<BreadcrumbsDomRef, BreadcrumbsItemClickEventDetail>) => void;
 }
 
 /**

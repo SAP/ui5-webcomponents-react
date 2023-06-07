@@ -1,6 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Input.js';
+import type {
+  InputSuggestionItemPreviewEventDetail,
+  InputSuggestionItemSelectEventDetail
+} from '@ui5/webcomponents/dist/Input.js';
 import type { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -168,11 +172,11 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement; targetRef: HTMLElement }>) => void;
+  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**

@@ -2,7 +2,8 @@
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
-import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
@@ -199,7 +200,7 @@ const allWebComponents = [
   return true;
 });
 
-fs.writeFileSync(
+writeFileSync(
   path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json'),
   JSON.stringify(Array.from(interfaces))
 );
@@ -234,34 +235,45 @@ const replaceTagNameWithModuleName = (description) => {
   return parsedDescription;
 };
 
-const getEventParameters = (name, parameters) => {
-  const resolvedEventParameters = parameters.map((property) => {
-    return {
-      ...property,
-      ...Utils.getTypeDefinitionForProperty(property, { event: true })
-    };
-  });
+const getEventParameters = (moduleName, eventSpec) => {
+  const eventTarget = `${moduleName}DomRef`;
+  if (eventSpec.native === 'true') {
+    if (eventSpec.name === 'click') {
+      return {
+        tsType: `MouseEventHandler<${eventTarget}>`,
+        importStatements: ["import { MouseEventHandler } from 'react';"]
+      };
+    } else if (eventSpec.name === 'drop') {
+      return {
+        tsType: `DragEventHandler<${eventTarget}>`,
+        importStatements: ["import { DragEventHandler } from 'react';"]
+      };
+    } else {
+      console.warn(
+        `----------------------\n${moduleName}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
+      );
+    }
+  }
+
+  const importSpecifier = `@ui5/webcomponents${
+    componentsFromFioriPackage.has(moduleName) ? '-fiori' : ''
+  }/dist/${moduleName}.js`;
+
+  const eventName = `${moduleName}${Utils.capitalizeFirstLetter(Utils.snakeToCamel(eventSpec.name))}EventDetail`;
 
   const importStatements = [`import type { Ui5CustomEvent } from '../../interfaces/index.js';`];
 
-  const eventTarget = `${name}DomRef`;
-
-  if (resolvedEventParameters.length === 0) {
+  if ((eventSpec.parameters ?? []).length === 0) {
     return {
       tsType: `(event: Ui5CustomEvent<${eventTarget}>) => void`,
       importStatements
     };
   }
 
-  const detailPayload = resolvedEventParameters.map((parameter) => {
-    if (parameter.importStatement) {
-      importStatements.push(parameter.importStatement);
-    }
-    return `${parameter.name}: ${parameter.tsType}`;
-  });
+  importStatements.unshift(`import type { ${eventName} } from '${importSpecifier}';`);
 
   return {
-    tsType: `(event: Ui5CustomEvent<${eventTarget}, {${detailPayload.join('; ')}}>) => void`,
+    tsType: `(event: Ui5CustomEvent<${eventTarget}, ${eventName}>) => void`,
     importStatements
   };
 };
@@ -442,7 +454,7 @@ const resolveInheritedAttributes = (componentSpec) => {
   
   `;
 
-  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
+  writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
 });
 
 const propDescription = (componentSpec, property) => {
@@ -549,27 +561,7 @@ allWebComponents
     (componentSpec.events || [])
       .filter((eventSpec) => eventSpec.visibility === 'public')
       .forEach((eventSpec) => {
-        let eventParameters;
-        if (eventSpec.native === 'true') {
-          const eventTarget = `${componentSpec.module}DomRef`;
-          if (eventSpec.name === 'click') {
-            eventParameters = {
-              tsType: `MouseEventHandler<${eventTarget}>`,
-              importStatements: ["import { MouseEventHandler } from 'react';"]
-            };
-          } else if (eventSpec.name === 'drop') {
-            eventParameters = {
-              tsType: `DragEventHandler<${eventTarget}>`,
-              importStatements: ["import { DragEventHandler } from 'react';"]
-            };
-          } else {
-            console.warn(
-              `----------------------\n${componentSpec.module}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
-            );
-          }
-        } else {
-          eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
-        }
+        const eventParameters = getEventParameters(componentSpec.module, eventSpec);
         importStatements.push(...eventParameters.importStatements);
         let onChangeDescription;
         if (INPUT_COMPONENTS.has(componentSpec.module) && eventSpec.name === 'change') {
@@ -616,14 +608,14 @@ allWebComponents
 
     // check if folder exists and create it if necessary
     const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
-    if (!fs.existsSync(webComponentFolderPath)) {
-      fs.mkdirSync(webComponentFolderPath);
+    if (!existsSync(webComponentFolderPath)) {
+      mkdirSync(webComponentFolderPath);
     }
 
     // create empty index file for eslint
     const webComponentWrapperPath = path.join(webComponentFolderPath, 'index.tsx');
-    if (!fs.existsSync(webComponentWrapperPath)) {
-      fs.writeFileSync(webComponentWrapperPath, '');
+    if (!existsSync(webComponentWrapperPath)) {
+      writeFileSync(webComponentWrapperPath, '');
     }
 
     // fill index
@@ -650,12 +642,12 @@ allWebComponents
         (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
         (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
       );
-      fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
+      writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create test
-      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
+      if (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
         const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
+        writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
       // create demo
@@ -670,7 +662,7 @@ allWebComponents
           componentSpec,
           false
         )}\n${formatDemoDescription(description, componentSpec, false)}`;
-        fs.writeFileSync(
+        writeFileSync(
           path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
           subComponentDescription
         );
@@ -679,7 +671,7 @@ allWebComponents
         const formattedDescription = formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
-          fs.writeFileSync(
+          writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
             formattedDescription
           );
@@ -692,7 +684,7 @@ allWebComponents
         ];
 
         if (publicProperties.length) {
-          fs.writeFileSync(
+          writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
             prettier.format(JSON.stringify(publicProperties), {
               ...Utils.prettierConfig,
@@ -700,14 +692,12 @@ allWebComponents
             })
           );
           let hasMethodsTable = false;
-          if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+          if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
-          } else if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+          } else if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
           }
@@ -721,8 +711,8 @@ allWebComponents
 
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-            !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
+          (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+            !existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
         ) {
           await createStory(componentSpec, allComponentProperties);
           await createDocumentation(componentSpec, allComponentProperties, description);
@@ -732,11 +722,12 @@ allWebComponents
   });
 
 // create index file for exporting all web components
-fs.writeFileSync(
+writeFileSync(
   path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
-  fs
-    .readdirSync(WEB_COMPONENTS_ROOT_DIR)
-    .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
+  readdirSync(WEB_COMPONENTS_ROOT_DIR)
+    .filter((f) => statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
     .map((folder) => `export * from './${folder}/index.js';`)
     .join('\n')
 );
+
+spawnSync('prettier', [WEB_COMPONENTS_ROOT_DIR, '--write'], { stdio: [0, 1, 2] });

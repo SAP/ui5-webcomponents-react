@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ComboBox.js';
+import type { ComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/ComboBox.js';
 import type { ReactNode } from 'react';
 import { ComboBoxFilter, ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
@@ -107,7 +108,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
   /**
    * Fired when selection is changed by user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, ComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
