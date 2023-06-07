@@ -118,7 +118,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     labelSpanL = 4,
     labelSpanXL = 4,
     titleText,
-    style,
     ...rest
   } = props;
 
@@ -138,23 +137,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   // use the window range set as first best guess, if not available use Desktop
   const [currentRange, setCurrentRange] = useState(Device.getCurrentRange()?.name ?? 'Desktop');
   const lastRange = useRef(currentRange);
-
-  const [width, setWidth] = useState<number | undefined>(undefined);
-  const formRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry.target?.scrollWidth) {
-        setWidth(entry.target.scrollWidth);
-      }
-    });
-    if (formRef.current) {
-      observer.observe(formRef.current);
-    }
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
@@ -263,10 +245,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         className={clsx(classes.formContainer, className)}
         suppressHydrationWarning={true}
         ref={componentRef}
-        style={{
-          width,
-          ...style
-        }}
         {...rest}
       >
         <div
