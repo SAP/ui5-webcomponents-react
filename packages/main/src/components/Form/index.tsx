@@ -248,7 +248,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         {...rest}
       >
         <div
-          ref={formRef}
           className={formClassNames}
           style={
             {
