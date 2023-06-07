@@ -64,7 +64,7 @@ jobs:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           script: |
-            import script from '${{ github.workspace }}/.github/createIssueCommentsForRelease.js';
+            import script from '${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs';
 
             await script({ github: github.rest, context })
 
