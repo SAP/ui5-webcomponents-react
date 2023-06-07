@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.0...v1.16.1) (2023-06-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** apply alternate row color correctly on sorted rows ([#4691](https://github.com/SAP/ui5-webcomponents-react/issues/4691)) ([c1e20eb](https://github.com/SAP/ui5-webcomponents-react/commit/c1e20ebed91a59a53bd35c7c961b48a9d0fe05be)), closes [#4690](https://github.com/SAP/ui5-webcomponents-react/issues/4690)
+- **Form:** fix `labelSpan`, `columns` and size calculation ([#4681](https://github.com/SAP/ui5-webcomponents-react/issues/4681)) ([895346d](https://github.com/SAP/ui5-webcomponents-react/commit/895346d7d604fe4f2ae8231325fee30915d74b11)), closes [#4497](https://github.com/SAP/ui5-webcomponents-react/issues/4497) [#4597](https://github.com/SAP/ui5-webcomponents-react/issues/4597) [#4668](https://github.com/SAP/ui5-webcomponents-react/issues/4668) [#4638](https://github.com/SAP/ui5-webcomponents-react/issues/4638)
+- **Toolbar:** only prevent keydown default actions in `onClick` ([#4688](https://github.com/SAP/ui5-webcomponents-react/issues/4688)) ([ddbfb4a](https://github.com/SAP/ui5-webcomponents-react/commit/ddbfb4a44171831c6704db958519feee75b15bbe)), closes [#4687](https://github.com/SAP/ui5-webcomponents-react/issues/4687)
+
 # [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
 
 ### Bug Fixes
