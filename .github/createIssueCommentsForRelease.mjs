@@ -11,7 +11,7 @@ const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
  * @returns {Promise<void>}
  */
 export default async function run({ github, context }) {
-  const { version } = JSON.parse(readFileSync(new URL('./lerna.json', import.meta.url)).toString());
+  const { version } = JSON.parse(readFileSync(new URL('../lerna.json', import.meta.url)).toString());
 
   const { data: release } = await github.repos.getReleaseByTag({
     owner: context.repo.owner,
