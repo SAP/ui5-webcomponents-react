@@ -1,0 +1,32 @@
+import{j as o}from"./jsx-runtime-5926aa06.js";import{d as p}from"./DomRefTable.module-286481af.js";import{M as n,C as s}from"./chunk-PCJTTTQV-454fa267.js";import"./index-ebeaab24.js";import{F as l}from"./Footer-fe3b3c79.js";import{e as a}from"./AnalyticalTable.stories-c93c61a2.js";import{u as m}from"./index-bda0bad7.js";import"./react-jss.esm-022ab528.js";import"./inheritsLoose-93e09647.js";import"./index-e621df0b.js";import"./iframe-821f409c.js";import"../sb-preview/runtime.js";import"./UI5Element-b1843653.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-7b9bd1ee.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./slot-76e48863.js";import"./Icon-aac9cdc2.js";import"./Icons-9f549e0f.js";import"./decline-d907918c.js";import"./i18n-defaults-80781f7e.js";import"./information-0f993e39.js";import"./class-map-6a9bd920.js";import"./Button-37a8c146.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-fca59c5d.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-9c09ad76.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./index-4c0ab015.js";import"./clsx.m-1229b3e0.js";import"./index-4cf9b2d5.js";import"./Label-350e96fc.js";import"./WrappingType-b81e595a.js";import"./index-d78271b6.js";import"./Link-64c69167.js";import"./index-e4db3b9b.js";import"./Popover-a3a62d04.js";import"./Integer-f7f172c9.js";import"./PopupUtils-2f7e8748.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-38257fbf.js";import"./FocusableElements-72585d9b.js";import"./isElementHidden-01c07146.js";import"./ResizeHandler-8726336f.js";import"./MediaRange-25b98f31.js";import"./style-map-0c64293c.js";import"./delete-e2dabad2.js";import"./ListItem-c43ad95c.js";import"./ListItemBase-5d83f75f.js";import"./ItemNavigation-5f1efe0b.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-50734768.js";import"./RadioButton-8c17b531.js";import"./ValueState-2c5e5904.js";import"./CheckBox-f1563b72.js";import"./accept-31e71d55.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-82b13059.js";import"./settings-eb949844.js";import"./index-562e1433.js";import"./ThemingParameters-7e2e4e30.js";import"./i18n-defaults-9842c5eb.js";import"./I18nContext-cdb50611.js";import"./useIsomorphicId-4be7c5e3.js";import"./debounce-63a1d38f.js";import"./index-99d317a4.js";import"./CssSizeVariables-02fb2fd8.js";import"./CustomVariables-fd831c35.js";import"./filter-ccc8f29a.js";import"./group-2-7ab3689a.js";import"./index-c0617756.js";import"./stopPropagation-da74d54e.js";import"./index-5838a11e.js";import"./CustomListItem-8cb4a16f.js";import"./index-4c817652.js";import"./index-8cf0d9e8.js";import"./StandardListItem-8408d1fd.js";import"./Avatar-a15daf14.js";import"./employee-2384bc11.js";import"./ValueState-ab6838cc.js";import"./index-929fa280.js";import"./Input-f79461a9.js";import"./Suggestions.css-c4e187f7.js";import"./ResponsivePopoverCommon.css-5e0f54ec.js";import"./ValueStateMessage.css-8827ddc0.js";import"./navigation-down-arrow-07944a7a.js";import"./navigation-right-arrow-00b87d48.js";import"./useCurrentTheme-855c6314.js";import"./index-8686a002.js";import"./index-e2d17b9e.js";import"./index-c6c87741.js";import"./GlobalStyleClasses-7209358d.js";import"./index-8c1d30b0.js";import"./Title-684c2d0e.js";import"./index-5c631547.js";import"./slim-arrow-down-72222bb1.js";import"./GroupHeaderListItem-c6ae3222.js";import"./Tokenizer-88354009.js";import"./ScrollEnablement-4353003c.js";import"./animate-1a16ba20.js";import"./ResponsivePopover-5c5386af.js";import"./Dialog-5f3c9cfb.js";import"./Token-c8ab5f83.js";import"./ToggleButton-b01053d2.js";import"./ComboBoxItem-76e4d35f.js";import"./index-17eaeae8.js";import"./index-45584cc3.js";import"./InvisibleMessage-96ebfb5c.js";import"./index-1d8810cc.js";import"./index-a669be2c.js";function Oi(t={}){const{wrapper:r}=Object.assign({},m(),t.components);return r?o.jsx(r,Object.assign({},t,{children:o.jsx(e,{})})):e();function e(){const i=Object.assign({h1:"h1",p:"p",code:"code",ul:"ul",li:"li",strong:"strong",h2:"h2",pre:"pre"},m(),t.components);return o.jsxs(o.Fragment,{children:[o.jsx(n,{title:"Data Display / AnalyticalTable / Plugin: useOnColumnResize"}),`
+`,o.jsx(i.h1,{id:"analyticaltable-plugin-useoncolumnresize",children:"AnalyticalTable Plugin: useOnColumnResize"}),`
+`,o.jsx(p,{moduleName:"AnalyticalTableHooks",packageName:"@ui5/webcomponents-react"}),`
+`,o.jsxs(i.p,{children:["The ",o.jsx(i.code,{children:"useOnColumnResize"}),` plugin hook allows firing a callback when a columns size has changed by dragging the "Resizer".
+The first parameter is the callback itself (`,o.jsx(i.code,{children:"e: { columnWidth: number; header: Record<string, any> }) => void;"}),"), the second one are the optional ",o.jsx(i.code,{children:"options"})," for controlling how often the callback should fire."]}),`
+`,o.jsxs(i.p,{children:[o.jsx(i.code,{children:"options"}),":"]}),`
+`,o.jsxs(i.ul,{children:[`
+`,o.jsxs(i.li,{children:[o.jsx(i.code,{children:"liveUpdate"}),": If ",o.jsx(i.code,{children:"liveUpdate"})," is ",o.jsx(i.code,{children:"true"}),", the resize function will fire every time the width has changed depending on the ",o.jsx(i.code,{children:"options.wait"})," delay."]}),`
+`,o.jsxs(i.li,{children:[o.jsx(i.code,{children:"wait"}),": The number of milliseconds for which the calls are to be delayed. ",o.jsxs(i.strong,{children:["Defaults to ",o.jsx(i.code,{children:"100"})]}),". (Only has an effect if ",o.jsx(i.code,{children:"liveUpdate"})," is ",o.jsx(i.code,{children:"true"}),")"]}),`
+`]}),`
+`,o.jsx(i.h2,{id:"example",children:"Example"}),`
+`,o.jsx(s,{sourceState:"none",of:a}),`
+`,o.jsx(i.pre,{children:o.jsx(i.code,{className:"language-jsx",children:`const TableComponent = (props) => {
+  const handleColumResize = (e) => {
+    console.log(e.columnWidth, e.header);
+  };
+  return (
+    <AnalyticalTable
+      data={props.data}
+      columns={props.columns}
+      tableHooks={[
+        AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
+          liveUpdate: false,
+          wait: 100
+        })
+      ]}
+    />
+  );
+};
+`})}),`
+`,o.jsx(l,{})]})}}export{Oi as default};
+//# sourceMappingURL=PluginOnColumnResize-64389e56.js.map
