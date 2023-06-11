@@ -1,3 +1,5 @@
+'use client';
+
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { ComponentType, ReactElement, Ref } from 'react';
