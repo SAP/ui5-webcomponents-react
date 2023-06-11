@@ -1,0 +1,40 @@
+name: Examples
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'examples/**/*'
+  pull_request:
+    paths:
+      - 'examples/**/*'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - nextjs-app
+          - nextjs-pages
+          - vite-ts
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install
+        run: npm ci
+        working-directory: examples/${{ matrix.path }}
+
+      - name: Build
+        run: npm run build
+        working-directory: examples/${{ matrix.path }}
+
+      - name: Test
+        run: npm run test --if-present
+        working-directory: examples/${{ matrix.path }}
