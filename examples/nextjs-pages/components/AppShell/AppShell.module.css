@@ -5,7 +5,7 @@
 }
 
 .scrollContainer {
-    height: calc(100vh - var(--_ui5_shellbar_root_height));
+    height: calc(100vh - 3.25rem);
     overflow-y: auto;
     position: relative;
 }
