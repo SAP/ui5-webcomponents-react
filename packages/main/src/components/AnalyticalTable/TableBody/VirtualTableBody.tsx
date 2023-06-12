@@ -157,7 +157,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps({ rowIndex: virtualRow.index });
+        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index });
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
@@ -192,7 +192,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             ref={(node) => {
               virtualRow.measureElement(node);
             }}
-            aria-rowindex={virtualRow.index + 1}
+            aria-rowindex={rowProps['aria-rowindex'] + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
