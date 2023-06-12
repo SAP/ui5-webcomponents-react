@@ -6478,12 +6478,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-base@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-base@npm:1.14.1"
+"@ui5/webcomponents-base@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-base@npm:1.14.2"
   dependencies:
     lit-html: ^2.0.1
-  checksum: 939ffa443f60257cb2da2eedc4fdbab61d057edad38d67b333ab290d6e8af775bc9012eb712bf508c0304e146f2057bf7857bbce0e875968943209136a2de50f
+  checksum: fbe9826f40a42c8039325dbb8f6d0c0a80cc6315f621d743380cfacf30294b562da01a4eb6f099f26305a2d013e9f0c579bad06bdd4b8dabeb250d461646c534
   languageName: node
   linkType: hard
 
@@ -6495,35 +6495,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-fiori@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-fiori@npm:1.14.1"
+"@ui5/webcomponents-fiori@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-fiori@npm:1.14.2"
   dependencies:
-    "@ui5/webcomponents": 1.14.1
-    "@ui5/webcomponents-base": 1.14.1
-    "@ui5/webcomponents-icons": 1.14.1
-    "@ui5/webcomponents-theming": 1.14.1
+    "@ui5/webcomponents": 1.14.2
+    "@ui5/webcomponents-base": 1.14.2
+    "@ui5/webcomponents-icons": 1.14.2
+    "@ui5/webcomponents-theming": 1.14.2
     "@zxing/library": ^0.17.1
-  checksum: 1d00e6d13d69b284e28e373920ddd7306cb95e7c39cb759d75aea2a41216da1cae724b4bc02c99263a90d00624e626a9b0d083290a1c3e6c5a637a18ac1a8974
+  checksum: ca257130fd20ce40dd297f86a46b3e90e3817612d1d13862726c1737e1ad9cc62b463967cd34600280187325d251d0470220dcf42d902f2e76456b20ac1a4dd2
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-icons@npm:1.14.1"
+"@ui5/webcomponents-icons@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-icons@npm:1.14.2"
   dependencies:
-    "@ui5/webcomponents-base": 1.14.1
-  checksum: e4a55a6d713311272f60fb87581c9ac6a1d9691f9f53eb9ab7f05fbd0de7e8fbf77257bef0d1a9cc26b9c6771263f30d0a4aed836c37dcffde612bbd4c1d5923
+    "@ui5/webcomponents-base": 1.14.2
+  checksum: 1de7ab0fd01e6ba05704f03b1a8e1db00b7acffbec73463f41fa100c83533af6a3b66636f4b88f2d5fec834e192e18acf1486b4b2c972276fda3a31878878c47
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-localization@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-localization@npm:1.14.1"
+"@ui5/webcomponents-localization@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-localization@npm:1.14.2"
   dependencies:
     "@types/openui5": ^1.113.0
-    "@ui5/webcomponents-base": 1.14.1
-  checksum: e2f1024428dc4307b3a4704fe17927630b1a963ad95f44eb1479309a7f8926914ec2cdab4bd00c3a167523732c3b94ed8791fa68d00b461681b1760ab9ca3fae
+    "@ui5/webcomponents-base": 1.14.2
+  checksum: 7ed1d72086810be533511c7a6c904e43b2473db81145fcc229c78a9ad7706b11d360e0e58e21760f1c4351a9caad5e8c2102b9e5be43b8b5cb86dae774691da6
   languageName: node
   linkType: hard
 
@@ -6589,13 +6589,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-theming@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-theming@npm:1.14.1"
+"@ui5/webcomponents-theming@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-theming@npm:1.14.2"
   dependencies:
     "@sap-theming/theming-base-content": 11.4.2
-    "@ui5/webcomponents-base": 1.14.1
-  checksum: fb917626e4c542a1b3edeca17f4b7c6433c7ea5ca3653b2ce6cd238bc9a1d18036846d768c5fc0dc713f816da213d4e89f0aea9ab53759115f68f6f24c6cc285
+    "@ui5/webcomponents-base": 1.14.2
+  checksum: 7dee4caa79f1b159603645d79e9d2d2be6122aacbcc1b2705135e81c11a0cb1a0b17c0ce352417b2fea5f780c10d582e2cdb8fe4878505cba18f723d2c5de403
   languageName: node
   linkType: hard
 
@@ -6661,15 +6661,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents@npm:1.14.1"
+"@ui5/webcomponents@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents@npm:1.14.2"
   dependencies:
-    "@ui5/webcomponents-base": 1.14.1
-    "@ui5/webcomponents-icons": 1.14.1
-    "@ui5/webcomponents-localization": 1.14.1
-    "@ui5/webcomponents-theming": 1.14.1
-  checksum: bfbde711d059caaf9e4e03f2248a3a47328f3573e95cf07048d26f232bb2bfe79877f5f3311d9d69f23b3b48b6b6562f6be9adc847c47e98deeaee7c14d3fe4c
+    "@ui5/webcomponents-base": 1.14.2
+    "@ui5/webcomponents-icons": 1.14.2
+    "@ui5/webcomponents-localization": 1.14.2
+    "@ui5/webcomponents-theming": 1.14.2
+  checksum: fbdc6564590113809f8c9a1ad2f3ea2340b206e52db0c5949728c97d39073d923e8a0064e5d5614106fdb4b8d9711477d3633ff163cdb5abbd8a402fe09af176
   languageName: node
   linkType: hard
 
@@ -21752,9 +21752,9 @@ __metadata:
     "@types/react-dom": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.54.1
     "@typescript-eslint/parser": ^5.54.1
-    "@ui5/webcomponents": 1.14.1
-    "@ui5/webcomponents-fiori": 1.14.1
-    "@ui5/webcomponents-icons": 1.14.1
+    "@ui5/webcomponents": 1.14.2
+    "@ui5/webcomponents-fiori": 1.14.2
+    "@ui5/webcomponents-icons": 1.14.2
     "@ui5/webcomponents-tools": 1.14.1
     "@vitejs/plugin-react": ^4.0.0
     chromatic: ^6.5.3
