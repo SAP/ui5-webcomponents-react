@@ -26,7 +26,7 @@ export default async function TodoDetails({ params }: { params: { id: string } }
     <>
       <DynamicPage showHideHeaderButton={false} headerTitle={<DynamicPageTitle header={todo?.title} />}>
         <MessageStrip design={MessageStripDesign.Information}>
-          Since this is only a demo app, adjustments made here on this page won't be reflected in the todo list.
+          {`Since this is only a demo app, adjustments made here on this page won't be reflected in the todo list.`}
         </MessageStrip>
         <Form>
           <FormItem label={'Title'}>
