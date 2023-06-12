@@ -19,6 +19,7 @@ jobs:
           - nextjs-app
           - nextjs-pages
           - vite-ts
+      fail-fast: false
     steps:
       - uses: actions/checkout@v3
 
