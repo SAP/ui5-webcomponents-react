@@ -1,8 +1,9 @@
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import React, { useEffect, useReducer, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { MAPPED_THEMES } from '../../.storybook/utils';
 import { FlexBox, FlexBoxDirection, Label, Option, Panel, Select, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, useReducer, useState } from 'react';
-import { MAPPED_THEMES } from '../../.storybook/utils';
 
 const containerStyles = {
   display: 'grid',
@@ -54,29 +55,40 @@ const getStyleColors = (val) => {
 interface Props {
   value: string;
   varKey: string;
+  theme: string;
 }
 
 interface PropsWithStyle extends Props {
   style?: CSSProperties;
 }
 
-const VariableValue = ({ value, varKey, style = {} }: PropsWithStyle) => {
+const VariableValue = ({ value, varKey, theme, style = {} }: PropsWithStyle) => {
   const [showCSSVars, toggleCSSVars] = useReducer((prev) => !prev, false);
+  const [updatedLabel, setUpdatedLabel] = useState(
+    getComputedStyle(document.documentElement).getPropertyValue(`--${varKey}`)
+  );
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUpdatedLabel(getComputedStyle(document.documentElement).getPropertyValue(`--${varKey}`));
+    }, 200);
+  }, [theme]);
+
   return (
     <FlexBox key={varKey} direction={FlexBoxDirection.Column} style={{ width: '85%' }}>
       <Text title="Click to show CSS Variable" style={{ cursor: 'pointer', ...style }} onClick={toggleCSSVars}>
         {showCSSVars ? value : varKey}
       </Text>
-      <Label>{getComputedStyle(document.documentElement).getPropertyValue(`--${varKey}`)}</Label>
+      <Label>{updatedLabel}</Label>
     </FlexBox>
   );
 };
 
 const ColorVariables = (props: Props) => {
-  const { varKey, value } = props;
+  const { varKey, value, theme } = props;
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <VariableValue value={value} varKey={varKey} />
+      <VariableValue value={value} varKey={varKey} theme={theme} />
       <div
         style={{
           ...getStyleColors(value),
@@ -92,16 +104,16 @@ const ColorVariables = (props: Props) => {
 };
 
 const Variables = (props: PropsWithStyle) => {
-  const { varKey, value, style = {} } = props;
+  const { varKey, value, theme, style = {} } = props;
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <VariableValue value={value} varKey={varKey} style={style} />
+      <VariableValue value={value} varKey={varKey} style={style} them={theme} />
     </div>
   );
 };
 
 export const ThemeableCSSVars = () => {
-  const [currentTheme, setCurrentTheme] = useState(getTheme());
+  const [currentTheme, setCurrentTheme] = useState<string>(getTheme());
   return (
     <ThemeProvider>
       <div
@@ -130,21 +142,29 @@ export const ThemeableCSSVars = () => {
         <Panel headerText="Colors & Shadows" collapsed>
           <div style={containerStyles}>
             {COLORS.map(([key, value]) => (
-              <ColorVariables key={key} varKey={key} value={value} />
+              <ColorVariables key={key} varKey={key} value={value} theme={currentTheme} />
             ))}
           </div>
         </Panel>
         <Panel headerText="Fonts" collapsed>
           <div style={{ ...containerStyles, gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' }}>
             {FONTS.map(([key, value]) => {
-              return <Variables key={key} varKey={key} value={value} style={{ ...getStyleFonts(value) }} />;
+              return (
+                <Variables
+                  key={key}
+                  varKey={key}
+                  value={value}
+                  style={{ ...getStyleFonts(value) }}
+                  theme={currentTheme}
+                />
+              );
             })}
           </div>
         </Panel>
         <Panel headerText="Others" collapsed>
           <div style={containerStyles}>
             {OTHERS.map(([key, value]) => {
-              return <Variables key={key} varKey={key} value={value} />;
+              return <Variables key={key} varKey={key} value={value} theme={currentTheme} />;
             })}
           </div>
         </Panel>
