@@ -6476,9 +6476,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@ui5/webcomponents-tools@npm:1.14.1"
+"@ui5/webcomponents-tools@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@ui5/webcomponents-tools@npm:1.14.2"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
@@ -6534,7 +6534,7 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: 927895331d1a59f3b7b357cbcb80d770a56a5076adc087f944048bc453e1e2c37f5efa55912b50fc8eac8cb477e869081e47807ccfd0b8133b9c0abddb6fd2b4
+  checksum: 01702c94ad0e99cbe0beeca860eb5c87335b08b252a75ec3591024afca304688a1380eea2185b918729a1b116b37f0f9c06d7cf23ad9ded6ae5c1d408eadf38c
   languageName: node
   linkType: hard
 
@@ -21177,7 +21177,7 @@ __metadata:
     "@ui5/webcomponents": 1.14.2
     "@ui5/webcomponents-fiori": 1.14.2
     "@ui5/webcomponents-icons": 1.14.2
-    "@ui5/webcomponents-tools": 1.14.1
+    "@ui5/webcomponents-tools": 1.14.2
     "@vitejs/plugin-react": ^4.0.0
     chromatic: ^6.5.3
     cypress: ^12.1.0
