@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.1...v1.16.2) (2023-06-13)
+
+### Bug Fixes
+
+- **AnalyticalTable:** allow filtering on grouped rows ([#4730](https://github.com/SAP/ui5-webcomponents-react/issues/4730)) ([4e51b3e](https://github.com/SAP/ui5-webcomponents-react/commit/4e51b3e352eb81b383a21b869dbc671502066412))
+- **AnalyticalTable:** don't add `rowindex` to element attributes ([#4723](https://github.com/SAP/ui5-webcomponents-react/issues/4723)) ([607458b](https://github.com/SAP/ui5-webcomponents-react/commit/607458b15de9a5e74d480edf168c905d0bd51f38))
+- **AnalyticalTable:** don't use `NaN` as row height if CSS var is not yet defined ([#4729](https://github.com/SAP/ui5-webcomponents-react/issues/4729)) ([9366944](https://github.com/SAP/ui5-webcomponents-react/commit/93669447ad1ffc8ef71c6b7d1f6678f6755062af))
+- **server-components:** add missing use client directives ([#4717](https://github.com/SAP/ui5-webcomponents-react/issues/4717)) ([3990376](https://github.com/SAP/ui5-webcomponents-react/commit/3990376fd7bc25904b61682c8dc698d164fc1f74))
+
 ## [1.16.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.0...v1.16.1) (2023-06-07)
 
 ### Bug Fixes
