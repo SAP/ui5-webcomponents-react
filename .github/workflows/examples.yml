@@ -25,7 +25,6 @@ jobs:
       - uses: actions/setup-node@v3.6.0
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
 
       - name: Install
         run: npm ci
