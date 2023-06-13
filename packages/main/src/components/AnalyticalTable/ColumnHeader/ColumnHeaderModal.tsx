@@ -229,7 +229,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
             {clearSortingText}
           </StandardListItem>
         )}
-        {showFilter && !column.isGrouped && (
+        {showFilter && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
           <CustomListItem
             type={ListItemType.Inactive}
