@@ -102,6 +102,8 @@ const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
  * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
+ *
+ * __Note:__ The `Form` calculates its width based on the available space of its container. If the container also dynamically adjusts its width to its contents, you must ensure that you specify a fixed width, either for the container or for the `Form` itself. (e.g. when used inside a 'popover').
  */
 const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const {
