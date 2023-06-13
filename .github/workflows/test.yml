@@ -19,6 +19,7 @@ jobs:
           - charts
           - cypress-commands
           - main/src/components
+      fail-fast: false
 
     steps:
       - name: Checkout
