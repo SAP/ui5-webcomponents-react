@@ -1,4 +1,5 @@
 'use client';
+
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import { Button, ShellBar } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-react/dist/Assets.js';
