@@ -57,7 +57,7 @@
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
-    "@ui5/webcomponents-tools": "1.14.1",
+    "@ui5/webcomponents-tools": "1.14.2",
     "@vitejs/plugin-react": "^4.0.0",
     "chromatic": "^6.5.3",
     "cypress": "^12.1.0",
