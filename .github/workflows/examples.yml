@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         path:
+          - nextjs-app
           - nextjs-pages
           - vite-ts
       fail-fast: false
