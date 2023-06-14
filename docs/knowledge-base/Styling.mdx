@@ -145,11 +145,11 @@ With the help of this attribute it's possible styling the respective element, by
 <summary>Show Code</summary>
 
 ```css
-.thRed::part(column) {
-  background-color: red;
+.thGreen::part(column) {
+  background-color: lightgreen;
 }
 .trBlue::part(row) {
-  background-color: blue;
+  background-color: lightblue;
 }
 ```
 
@@ -159,7 +159,7 @@ const TableComponent = () => {
     <Table
       columns={
         <>
-          <TableColumn className="thRed">
+          <TableColumn className="thGreen">
             <Label>Product</Label>
           </TableColumn>
           <TableColumn>

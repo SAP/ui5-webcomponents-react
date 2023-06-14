@@ -6,7 +6,7 @@ export const TableShadowRootExample = () => {
     <Table
       columns={
         <>
-          <TableColumn className="thRed">
+          <TableColumn className="thGreen">
             <Label>Product</Label>
           </TableColumn>
           <TableColumn>
@@ -16,7 +16,7 @@ export const TableShadowRootExample = () => {
       }
     >
       <TableRow className="trBlue">
-        <TableCell className="tdGreen">
+        <TableCell>
           <Label>Notebook Basic</Label>
         </TableCell>
         <TableCell>

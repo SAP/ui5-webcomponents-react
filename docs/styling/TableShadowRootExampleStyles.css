@@ -1,6 +1,6 @@
-.thRed::part(column) {
-  background-color: red;
+.thGreen::part(column) {
+  background-color: lightgreen;
 }
 .trBlue::part(row) {
-  background-color: blue;
+  background-color: lightblue;
 }
