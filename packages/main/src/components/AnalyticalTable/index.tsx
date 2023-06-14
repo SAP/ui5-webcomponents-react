@@ -941,11 +941,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       flexDirection: 'column'
     };
     if (!!rowHeight) {
-      tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
-      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableRowHeight'] = `${rowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
     }
     if (!!headerRowHeight) {
-      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
     }
 
     if (tableState.tableClientWidth > 0) {

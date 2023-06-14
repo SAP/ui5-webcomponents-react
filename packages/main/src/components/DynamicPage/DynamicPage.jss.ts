@@ -2,8 +2,8 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { ResponsiveContainerPadding } from '../../internal/ContainerQueries.js';
 
 export const DynamicPageCssVariables = {
-  headerDisplay: '--ui5wcr_DynamicPage_header_display',
-  titleFontSize: '--ui5wcr_DynamicPage_title_fontsize'
+  headerDisplay: '--_ui5wcr_DynamicPage_header_display',
+  titleFontSize: '--_ui5wcr_DynamicPage_title_fontsize'
 };
 
 export const styles = {

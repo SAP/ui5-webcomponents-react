@@ -6,7 +6,7 @@ export const styles = {
     boxSizing: 'border-box',
     width: '100%',
     maxWidth: '100%',
-    height: CssSizeVariables.sapWcrToolbarHeight,
+    height: CssSizeVariables.ui5WcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
@@ -88,7 +88,7 @@ export const styles = {
     left: '5px !important'
   },
   popoverContent: {
-    padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
+    padding: CssSizeVariables.ui5WcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column',
     '& [ui5-toggle-button], & [ui5-button]': {

@@ -10,7 +10,7 @@ import type { CommonProps } from '../../interfaces/index.js';
 const styles = {
   separator: {
     width: '0.0625rem',
-    height: CssSizeVariables.sapWcrToolbarSeparatorHeight,
+    height: CssSizeVariables.ui5WcrToolbarSeparatorHeight,
     background: ThemingParameters.sapToolbar_SeparatorColor
   }
 };
