@@ -30,7 +30,7 @@ const useStyles = createUseStyles(
     row: {
       display: 'flex',
       alignItems: 'center',
-      height: CssSizeVariables.sapWcrAnalyticalTableRowHeight
+      height: CssSizeVariables.ui5WcrAnalyticalTableRowHeight
     },
     cellContainer: {
       display: 'flex',

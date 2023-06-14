@@ -33,8 +33,8 @@ const useStyles = createUseStyles(
         cursor: 'col-resize',
         borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
         borderRight: CustomThemingParameters.SplitterBarBorderStyle,
-        minWidth: CssSizeVariables.sapWcrSplitterSize,
-        width: CssSizeVariables.sapWcrSplitterSize,
+        minWidth: CssSizeVariables.ui5WcrSplitterSize,
+        width: CssSizeVariables.ui5WcrSplitterSize,
         height: '100%',
         flexDirection: 'column',
         '&:focus': {
@@ -48,7 +48,7 @@ const useStyles = createUseStyles(
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '0.0625rem 100%',
-          width: CssSizeVariables.sapWcrSplitterSize,
+          width: CssSizeVariables.ui5WcrSplitterSize,
           height: '4rem'
         },
         '& $lineBefore': {
@@ -66,8 +66,8 @@ const useStyles = createUseStyles(
         borderTop: CustomThemingParameters.SplitterBarBorderStyle,
         borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.sapWcrSplitterSize,
-        height: CssSizeVariables.sapWcrSplitterSize,
+        minHeight: CssSizeVariables.ui5WcrSplitterSize,
+        height: CssSizeVariables.ui5WcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
         '&:focus': {
@@ -82,7 +82,7 @@ const useStyles = createUseStyles(
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.sapWcrSplitterSize
+          height: CssSizeVariables.ui5WcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
@@ -97,15 +97,15 @@ const useStyles = createUseStyles(
       },
       '&[data-splitter-vertical=verticalRtl]': {
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.sapWcrSplitterSize,
-        height: CssSizeVariables.sapWcrSplitterSize,
+        minHeight: CssSizeVariables.ui5WcrSplitterSize,
+        height: CssSizeVariables.ui5WcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.sapWcrSplitterSize
+          height: CssSizeVariables.ui5WcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`

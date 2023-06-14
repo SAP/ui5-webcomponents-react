@@ -55,7 +55,7 @@ export interface MessageItemPropTypes extends CommonProps {
 const useStyles = createUseStyles(
   {
     listItem: {
-      height: CssSizeVariables.sapWcrMessageViewListItemHeightSingle
+      height: CssSizeVariables.ui5WcrMessageViewListItemHeightSingle
     },
     message: {
       padding: '0.25rem 0',
@@ -66,7 +66,7 @@ const useStyles = createUseStyles(
       boxSizing: 'border-box'
     },
     withSubtitle: {
-      height: CssSizeVariables.sapWcrMessageViewListItemHeightByLine
+      height: CssSizeVariables.ui5WcrMessageViewListItemHeightByLine
     },
     withChildren: {
       paddingRight: '0rem'

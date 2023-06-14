@@ -13,7 +13,7 @@ const style = {
   },
   header: {
     display: 'flex',
-    height: CssSizeVariables.sapWcrBarHeight,
+    height: CssSizeVariables.ui5WcrBarHeight,
     textAlign: 'center',
     width: '100%',
     alignItems: 'center',
@@ -32,7 +32,7 @@ const style = {
   spacer: { width: '0.5rem' },
   confirmIcon: { color: ThemingParameters.sapNeutralColor },
   footer: {
-    height: CssSizeVariables.sapWcrBarHeight,
+    height: CssSizeVariables.ui5WcrBarHeight,
     width: '100%',
     display: 'flex',
     alignItems: 'center',

@@ -130,7 +130,7 @@ const columns = (currentColumns, { instance }) => {
     tableRef.current &&
     parseInt(
       getComputedStyle(tableRef.current).getPropertyValue(
-        CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth
+        CssSizeVariablesNames.ui5WcrAnalyticalTableSelectionColumnWidth
       ),
       10
     );

@@ -72,7 +72,7 @@ const styles = {
     flexBasis: 'calc(var(--_ui5wcr_filter_group_item_flex_basis))'
   },
   lastSpacer: {
-    height: CssSizeVariables.sapWcrElementHeight,
+    height: CssSizeVariables.ui5WcrElementHeight,
     flexGrow: 1,
     flexShrink: 0,
     maxWidth: 'calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2)',
