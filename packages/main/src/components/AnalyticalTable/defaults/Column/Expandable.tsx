@@ -12,20 +12,20 @@ const getPadding = (level) => {
     case 0:
       return '0px';
     case 1:
-      return CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel1;
+      return CssSizeVariables.ui5WcrAnalyticalTableTreePaddingLevel1;
     case 2:
-      return CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel2;
+      return CssSizeVariables.ui5WcrAnalyticalTableTreePaddingLevel2;
     case 3:
-      return CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel3;
+      return CssSizeVariables.ui5WcrAnalyticalTableTreePaddingLevel3;
     default:
-      return `calc(${CssSizeVariables.sapWcrAnalyticalTableTreePaddingLevel3} + ${level - 3}rem * 0.5)`;
+      return `calc(${CssSizeVariables.ui5WcrAnalyticalTableTreePaddingLevel3} + ${level - 3}rem * 0.5)`;
   }
 };
 
 const useStyles = createUseStyles(
   {
     container: {
-      height: CssSizeVariables.sapWcrAnalyticalTableExpandButtonHeight,
+      height: CssSizeVariables.ui5WcrAnalyticalTableExpandButtonHeight,
       marginInlineEnd: '0.125rem'
     },
     icon: {
@@ -36,8 +36,8 @@ const useStyles = createUseStyles(
       alignItems: 'center',
       '&::part(root)': {
         padding: '0.375rem',
-        width: CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight,
-        height: CssSizeVariables.sapWcrAnalyticalTableExpandIconHeight
+        width: CssSizeVariables.ui5WcrAnalyticalTableExpandIconHeight,
+        height: CssSizeVariables.ui5WcrAnalyticalTableExpandIconHeight
       }
     },
     button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' }

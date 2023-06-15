@@ -284,7 +284,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const handleCheckBoxChange = (e) => {
     e.preventDefault();
 
-    // todo: could be unwanted behavior: https://github.com/SAP/ui5-webcomponents-react/issues/3928
     if (!e.target.hasAttribute('ui5-table')) {
       return;
     }

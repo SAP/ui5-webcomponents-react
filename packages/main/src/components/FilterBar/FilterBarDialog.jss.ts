@@ -16,7 +16,7 @@ const styles = {
       padding: 0
     }
   },
-  searchInputContainer: { height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' },
+  searchInputContainer: { height: CssSizeVariables.ui5WcrToolbarHeight, paddingBottom: '0.25rem' },
   searchInput: {
     width: '100%'
   },

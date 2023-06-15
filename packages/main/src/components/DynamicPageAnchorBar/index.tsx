@@ -33,10 +33,10 @@ const anchorBarStyles = {
     }
   },
   anchorBarActionButton: {
-    '--ui5wcr_anchor-btn-center': `calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2)`,
+    '--_ui5wcr_anchor-btn-center': `calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2)`,
     position: 'absolute',
-    insetBlockStart: `calc(-1 * var(--ui5wcr_anchor-btn-center))`,
-    insetInlineStart: 'calc(50% - var(--ui5wcr_anchor-btn-center))',
+    insetBlockStart: `calc(-1 * var(--_ui5wcr_anchor-btn-center))`,
+    insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center))',
     zIndex: 3,
     '&:not([pressed])': {
       backgroundColor: ThemingParameters.sapObjectHeader_Background
@@ -44,13 +44,13 @@ const anchorBarStyles = {
   },
   anchorBarActionButtonExpandable: {
     '& + $anchorBarActionButtonPinnable': {
-      insetInlineStart: 'calc(50% - var(--ui5wcr_anchor-btn-center) + 1rem)'
+      insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center) + 1rem)'
     }
   },
   anchorBarActionButtonPinnable: {},
   anchorBarActionPinnableAndExpandable: {
     '&$anchorBarActionButtonExpandable': {
-      insetInlineStart: 'calc(50% - var(--ui5wcr_anchor-btn-center) - 1rem)'
+      insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center) - 1rem)'
     }
   }
 };

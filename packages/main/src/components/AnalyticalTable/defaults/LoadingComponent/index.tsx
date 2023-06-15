@@ -6,7 +6,7 @@ import { Loader } from '../../../Loader/index.js';
 const styles = {
   loader: {
     position: 'absolute',
-    top: CssSizeVariables.sapWcrAnalyticalTableHeaderRowHeight,
+    top: CssSizeVariables.ui5WcrAnalyticalTableHeaderRowHeight,
     left: 0,
     right: 0,
     zIndex: 1

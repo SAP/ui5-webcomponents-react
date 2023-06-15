@@ -270,6 +270,7 @@ describe('Modals - hooks', () => {
 
     cy.findByText('Show Menu').click();
     cy.get('[ui5-static-area-item]');
+    cy.wait(200);
     cy.get('[ui5-li]').find('li').click({ force: true });
     cy.get('[ui5-static-area-item]').should('not.exist');
   });

@@ -141,7 +141,7 @@ export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
 
   if (typeof document !== 'undefined') {
     return parseInt(
-      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--sapWcrAnalyticalTableRowHeight') ?? '44'
+      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--_ui5wcr-AnalyticalTableRowHeight') || '44'
     );
   }
 

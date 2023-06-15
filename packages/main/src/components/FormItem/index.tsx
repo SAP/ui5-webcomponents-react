@@ -35,9 +35,9 @@ const CENTER_ALIGNED_CHILDREN = new Set(['CheckBox', 'RadioButton', 'Switch', 'R
 const useStyles = createUseStyles(
   {
     label: {
-      gridColumnEnd: 'span var(--ui5wcr_form_label_span)',
-      justifySelf: 'var(--ui5wcr_form_label_text_align)',
-      textAlign: 'var(--ui5wcr_form_label_text_align)',
+      gridColumnEnd: 'span var(--_ui5wcr_form_label_span)',
+      justifySelf: 'var(--_ui5wcr_form_label_text_align)',
+      textAlign: 'var(--_ui5wcr_form_label_text_align)',
       '&[data-label-span="12"]': {
         justifySelf: 'start',
         paddingBlockEnd: '0.25rem'
@@ -63,7 +63,7 @@ const useStyles = createUseStyles(
     },
     content: {
       display: 'flex',
-      gridColumnEnd: 'span var(--ui5wcr_form_content_span)',
+      gridColumnEnd: 'span var(--_ui5wcr_form_content_span)',
       '&[data-label-span="12"]': {
         gridColumnEnd: 'span 12',
         paddingBlockEnd: '0.625rem'

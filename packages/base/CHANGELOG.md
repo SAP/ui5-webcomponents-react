@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.1...v1.16.2) (2023-06-13)
+
+### Bug Fixes
+
+- **server-components:** add missing use client directives ([#4717](https://github.com/SAP/ui5-webcomponents-react/issues/4717)) ([3990376](https://github.com/SAP/ui5-webcomponents-react/commit/3990376fd7bc25904b61682c8dc698d164fc1f74))
+
 # [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
 
 ### Features

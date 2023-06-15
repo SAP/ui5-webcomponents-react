@@ -50,7 +50,7 @@ const useStyles = createUseStyles(
       "titleStart titleCenter cancel"
       "input input input"
       `,
-      gridTemplateRows: `${CssSizeVariables.sapWcrDialogHeaderHeight} ${CssSizeVariables.sapWcrDialogSubHeaderHeight}`,
+      gridTemplateRows: `${CssSizeVariables.ui5WcrDialogHeaderHeight} ${CssSizeVariables.ui5WcrDialogSubHeaderHeight}`,
       width: '100%',
       alignItems: 'center'
     },
