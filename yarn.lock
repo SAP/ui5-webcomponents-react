@@ -8052,13 +8052,13 @@ __metadata:
   linkType: hard
 
 "chromatic@npm:^6.5.3":
-  version: 6.19.7
-  resolution: "chromatic@npm:6.19.7"
+  version: 6.19.8
+  resolution: "chromatic@npm:6.19.8"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 322e84475dbfac3f157d10992c4d770e7c068acf86c2dea11427f7793a2d034e3fb2ae8148a89c49d52dfe91db5c230f53508bb62f63a8c7a79e635f58c120a8
+  checksum: 3f80373d9e77d3363924c274c8b9465b5f0ff835b7fb4a753848e37068a4564fa67ab205a4cf89820cf136fdefd637b54730819a5c376406a87bf8737ddf03ac
   languageName: node
   linkType: hard
 
