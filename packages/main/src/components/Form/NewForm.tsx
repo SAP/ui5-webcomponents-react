@@ -170,7 +170,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const currentLabelSpan = labelSpanMap.get(currentRange);
   const currentNumberOfColumns = columnsMap.get(currentRange);
 
-  console.log('items', items);
+  // console.log('items', items);
 
   const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
     // console.log("Call registerItem for id: " + id, type, groupId);
@@ -228,19 +228,44 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     let index = -1;
     let localColumnIndex = 0;
     let rowIndex = titleText ? 2 : 1;
+    let nextRowIndex = rowIndex;
+    const rowsWithGroup = {};
 
     items.forEach(({ type, formItemIds }, id) => {
       const columnIndex = localColumnIndex % currentNumberOfColumns;
       index++;
       if (type === 'formGroup') {
-        formGroups.push({ id, index, columnIndex });
+        rowsWithGroup[rowIndex] = true;
+        formGroups.push({ id, index, columnIndex, rowIndex, isGroup: true });
         let inGroupIndex = 0;
-        formItemIds.forEach((itemId) => {
-          formItems.push({ id: itemId, index, groupIndex: inGroupIndex, groupId: id, columnIndex });
+        let localIndex = 0;
+
+        formItemIds.forEach((itemId, _, set) => {
+          formItems.push({
+            id: itemId,
+            index,
+            groupIndex: inGroupIndex,
+            groupId: id,
+            columnIndex,
+            rowIndex: rowIndex + localIndex + 1
+          });
+          if (set.size - 1 === localIndex) {
+            if (nextRowIndex < rowIndex + localIndex + 1) {
+              nextRowIndex = rowIndex + localIndex + 1;
+            }
+          }
+          localIndex++;
           inGroupIndex++;
         });
+        // console.log('hi', nextRowIndex);
       } else {
-        formItems.push({ id, index, columnIndex });
+        if (nextRowIndex < rowIndex + 1) {
+          nextRowIndex++;
+        }
+        formItems.push({ id, index, columnIndex, rowIndex });
+      }
+      if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
+        rowIndex += nextRowIndex;
       }
       localColumnIndex++;
     });
@@ -256,11 +281,11 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     // }, []);
     // console.log('test123', test123);
 
-    return { formItems, formGroups, registerItem, unregisterItem };
+    return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText]);
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
-  console.log('layoutcontextval', formLayoutContextValue);
+  // console.log('layoutcontextval', formLayoutContextValue);
   return (
     <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
       <CustomTag

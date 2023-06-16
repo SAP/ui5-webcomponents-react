@@ -41,7 +41,7 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   }, [uniqueId, registerItem, unregisterItem]);
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
-  console.log(layoutInfo);
+  // console.log("group",layoutInfo);
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
 

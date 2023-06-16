@@ -12,7 +12,7 @@ import { Form as OldForm } from './index.js';
 function App() {
   return (
     <ThemeProvider>
-      <Form titleText="Test" columnsXL={5}>
+      <Form titleText="Test" columnsXL={5} columnsL={4} columnsM={3} columnsS={1}>
         <FormItem id="Item01" label="Single 1">
           <Input />
         </FormItem>
@@ -84,7 +84,7 @@ function App() {
 }
 
 const CustomComponent = ({ children, id }) => {
-  console.log('Render CustomComponent ' + id);
+  // console.log('Render CustomComponent ' + id);
   return <>{children}</>;
 };
 
@@ -100,7 +100,7 @@ const FormGroupX = ({ id, children }: any) => {
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => id === groupId), [layoutInfos]);
   // console.log("Render FormGroup " + id, layoutInfo);
-  console.log('Render FormGroup');
+  // console.log('Render FormGroup');
   return (
     <GroupContext.Provider value={value}>
       <>
@@ -137,7 +137,7 @@ const FormItemX = ({ id }) => {
   if (layoutInfos && !layoutInfo) return null;
 
   // console.log("Render FormItem " + id, layoutInfo, layoutInfos);
-  console.log('Render FormItem');
+  // console.log('Render FormItem');
   return (
     <>
       FormItem with Id: {layoutInfo?.id}; Index: {layoutInfo?.index};{' '}

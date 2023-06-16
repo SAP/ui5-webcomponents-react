@@ -175,7 +175,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     // --> returns array like this: [[...],[...],[...]]
     const rows = childrenArray.reduce((acc, val, idx) => {
       const columnIndex = Math.floor(idx / currentNumberOfColumns);
-      console.log('asd', columnIndex);
+
       acc[columnIndex] ??= [];
       acc[columnIndex].push(val);
       return acc;

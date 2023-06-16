@@ -128,7 +128,7 @@ const FormItem = (props: FormItemPropTypes) => {
   // eslint-disable-next-line react/prop-types
   const { label, children, id } = props as InternalProps;
   const uniqueId = useIsomorphicId();
-  const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
+  const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan, rowsWithGroup } = useFormContext();
   const groupContext = useFormGroupContext();
   const classes = useStyles();
 
@@ -152,16 +152,27 @@ const FormItem = (props: FormItemPropTypes) => {
 
   const { columnIndex, rowIndex } = layoutInfo;
   // const { columnIndex, rowIndex } = props;
-  console.log(rowIndex, 'rowIndex');
+  // console.log(rowIndex, 'rowIndex');
 
-  console.log('Render FormItem ' + id, layoutInfo, layoutInfos);
+  // console.log('Render FormItem ' + id, layoutInfo, layoutInfos);
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
   const contentGridColumnStart =
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
 
-  const calculatedGridRowStart = labelSpan === 12 ? (rowIndex ?? 0) + 1 : rowIndex ?? 0;
+  if (rowsWithGroup[rowIndex]) {
+    console.log(rowsWithGroup[rowIndex], label, layoutInfo);
+  }
+
+  const calculatedGridRowIndex = (() => {
+    // console.log('asdd', rowsWithGroup[rowIndex], layoutInfo);
+    if (!layoutInfo.groupId && rowsWithGroup[rowIndex]) {
+      return rowIndex + 1;
+    } else return rowIndex;
+  })();
+
+  const calculatedGridRowStart = labelSpan === 12 ? (calculatedGridRowIndex ?? 0) + 1 : calculatedGridRowIndex ?? 0;
 
   return (
     <>
@@ -169,7 +180,7 @@ const FormItem = (props: FormItemPropTypes) => {
         label={label}
         style={{
           gridColumnStart,
-          gridRowStart: rowIndex ?? undefined,
+          gridRowStart: calculatedGridRowIndex ?? undefined,
           // TODO remove this line as soon as Firefox enables :has by default. https://caniuse.com/css-has
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}
