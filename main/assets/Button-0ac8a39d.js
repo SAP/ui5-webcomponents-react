@@ -1,0 +1,29 @@
+import{j as t}from"./jsx-runtime-5926aa06.js";import{M as p,C as a,a as l}from"./chunk-PCJTTTQV-8ff525e3.js";import{C as m}from"./DomRefTable.module-68e320b1.js";import{D as c}from"./DocsHeader-8c718f51.js";import{F as d}from"./Footer-b48c0726.js";import"./index-ebeaab24.js";import{D as u}from"./DomRefTable-bc0743c7.js";import{C as h,D as n}from"./Button.stories-f5e778d0.js";import{u as s}from"./index-bda0bad7.js";import"./iframe-88cc6741.js";import"../sb-preview/runtime.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-9c09ad76.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./inheritsLoose-93e09647.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./react-jss.esm-022ab528.js";import"./index-98e8b5cb.js";import"./UI5Element-533070c8.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-7b9bd1ee.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./slot-76e48863.js";import"./Icon-2e16c08b.js";import"./Icons-67fab4b0.js";import"./decline-1d33941a.js";import"./i18n-defaults-80781f7e.js";import"./information-e88b206d.js";import"./class-map-6a9bd920.js";import"./Button-21e98691.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-208919c6.js";import"./i18n-defaults-2f9956dc.js";import"./index-4c0ab015.js";import"./clsx.m-1229b3e0.js";import"./index-562e1433.js";import"./ThemingParameters-7e2e4e30.js";import"./TableOfContent-e95236ca.js";import"./index-dbf8e929.js";import"./Link-08f0fbaf.js";import"./WrappingType-b81e595a.js";import"./index-7539bdc0.js";import"./Label-94e3ba9d.js";import"./index-0101973f.js";import"./Popover-167ff704.js";import"./Integer-f7f172c9.js";import"./PopupUtils-ba2b770f.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-97917f6d.js";import"./FocusableElements-eec123c0.js";import"./isElementHidden-01c07146.js";import"./ResizeHandler-aaf74c24.js";import"./MediaRange-25b98f31.js";import"./style-map-0c64293c.js";import"./employee-d2874d42.js";import"./index-91c69ad6.js";const f=`## Usage
+
+For the \`Button\` UI, you can define text, icon, or both. You can also specify whether the text or the icon is displayed first.
+
+You can choose from a set of predefined types that offer different styling to correspond to the triggered action.
+
+You can set the \`Button\` as enabled or disabled. An enabled \`Button\` can be pressed by clicking or tapping it. The button changes its style to provide visual feedback to the user that it is pressed or hovered over with the mouse cursor. A disabled \`Button\` appears inactive and cannot be pressed.
+
+## CSS Shadow Parts
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
+The \`Button\` exposes the following CSS Shadow Parts:
+
+- button - Used to style the native button element
+`,b=[{name:"accessibilityAttributes",visibility:"public",since:"1.2.0",type:"object",noattribute:"true",description:`An object of strings that defines several additional accessibility attribute values for customization depending on the use case.
+
+It supports the following fields:
+
+<ul> <li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values: <ul> <li><code>true</code></li> <li><code>false</code></li> </ul> </li> <li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values: <ul> <li><code>Dialog</code></li> <li><code>Grid</code></li> <li><code>ListBox</code></li> <li><code>Menu</code></li> <li><code>Tree</code></li> </ul> </li> <li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li> </ul>`}];function Mt(e={}){const{wrapper:o}=Object.assign({},s(),e.components);return o?t.jsx(o,Object.assign({},e,{children:t.jsx(i,{})})):i();function i(){const r=Object.assign({h2:"h2"},s(),e.components);return t.jsxs(t.Fragment,{children:[t.jsx(p,{of:h}),`
+`,t.jsx(c,{}),`
+`,t.jsx("br",{}),`
+`,t.jsx(r.h2,{id:"example",children:"Example"}),`
+`,t.jsx(a,{of:n}),`
+`,t.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(m,{of:n}),`
+`,t.jsx(l,{children:f}),`
+`,t.jsx(u,{rows:b}),`
+`,t.jsx(d,{})]})}}export{Mt as default};
+//# sourceMappingURL=Button-0ac8a39d.js.map
