@@ -37,6 +37,7 @@ import type {
   ButtonPropTypes,
   ListDomRef,
   ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes,
   TitlePropTypes
 } from '../../webComponents/index.js';
 import {
@@ -68,13 +69,13 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: ResponsivePopoverDomRef['placementType'];
+  placement?: ResponsivePopoverPropTypes['placementType'];
   /**
    * Describes the title of the VariantManagement popover.
    *
    * __Note:__ If not set, the default title is used.
    */
-  titleText?: ResponsivePopoverDomRef['headerText'];
+  titleText?: ResponsivePopoverPropTypes['headerText'];
   /**
    * Defines whether the VariantManagement should be closed if an item was selected.
    */
