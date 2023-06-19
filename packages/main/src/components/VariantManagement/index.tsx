@@ -152,7 +152,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: MouseEvent<ButtonDomRef, SelectedVariant & { nativeDetail: number }>) => void;
+  onSaveAs?: (e: MouseEvent<ButtonDomRef, SelectedVariant>) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
@@ -166,7 +166,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
         prevVariants: VariantItemPropTypes[];
         updatedVariants: UpdatedVariant[];
         variants: SelectedVariant[];
-      } & { nativeDetail: number }
+      }
     >
   ) => void;
   /**
@@ -174,7 +174,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: MouseEvent<ButtonDomRef, SelectedVariant & { nativeDetail: number }>) => void;
+  onSave?: (e: MouseEvent<ButtonDomRef, SelectedVariant>) => void;
 }
 
 const styles = {
