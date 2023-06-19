@@ -1,3 +1,4 @@
+import TsLogo from '@sb/images/logo-ts.png';
 import {
   Avatar,
   Card,
@@ -42,7 +43,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
           action={
             isTypeScript && (
               <img
-                src={'/ts-logo-128.png'}
+                src={TsLogo}
                 height={24}
                 width={24}
                 alt={'TypeScript Logo'}
