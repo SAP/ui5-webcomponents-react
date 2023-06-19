@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.2...v1.16.3) (2023-06-19)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.7.0 ([#4748](https://github.com/SAP/ui5-webcomponents-react/issues/4748)) ([a0bd47e](https://github.com/SAP/ui5-webcomponents-react/commit/a0bd47e2089cb6fd9e7af83b6fd0cc4f87e908f5))
+- **deps:** update dependency recharts to v2.7.1 ([#4754](https://github.com/SAP/ui5-webcomponents-react/issues/4754)) ([c8cfdb6](https://github.com/SAP/ui5-webcomponents-react/commit/c8cfdb67f3f420fa7ccfd760a014bfbb117fe7a5))
+
 # [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
 
 ### Bug Fixes
