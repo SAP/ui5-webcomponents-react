@@ -152,29 +152,28 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: MouseEvent<ButtonDomRef, SelectedVariant>) => void;
+  onSaveAs?: (e: MouseEvent<ButtonDomRef> & { detail: SelectedVariant }) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: MouseEvent<
-      ButtonDomRef,
-      {
+    e: MouseEvent<ButtonDomRef> & {
+      detail: {
         deletedVariants: VariantItemPropTypes[];
         prevVariants: VariantItemPropTypes[];
         updatedVariants: UpdatedVariant[];
         variants: SelectedVariant[];
-      }
-    >
+      };
+    }
   ) => void;
   /**
    * The event is fired when the "Save" button is clicked in the `VariantManagement` popover.
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: MouseEvent<ButtonDomRef, SelectedVariant>) => void;
+  onSave?: (e: MouseEvent<ButtonDomRef> & { detail: SelectedVariant }) => void;
 }
 
 const styles = {
