@@ -51,12 +51,6 @@ You can find our documentation under the following links:
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react-base?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
   [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react-base)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-base)
 
-- [@ui5/cra-template-webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template) - Template for `create-react-app` <br/>
-  [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react)
-
-- [@ui5/cra-template-webcomponents-react-seed](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template-seed) - Seed for `create-react-app` <br/>
-  [![](https://badgen.net/npm/v/@ui5/cra-template-webcomponents-react-seed?icon=npm)](https://www.npmjs.com/package/@ui5/cra-template-webcomponents-react-seed)
-
 <!-- *********************************************************************** -->
 
 <a name="requirements"></a>
@@ -90,25 +84,9 @@ Then take a look at our [Tutorial Mission](https://developers.sap.com/mission.re
 There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
 In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
 
-### Creating a new React app
+### Create a new React app using our Templates
 
-You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) with our template.
-This template is installing all required dependencies for you and is setting up the `App.js` file for you:
-
-```sh
-npx create-react-app my-app --template @ui5/webcomponents-react
-```
-
-### Creating a new React app based on our Seed
-
-You can create a new react app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
-This template delivers several out of the box components, scripts and configurations.
-For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template-seed).
-
-```sh
-npx create-react-app my-app --template @ui5/webcomponents-react-seed
-npm run start
-```
+You can find a curated list of project templates on our [Project Templates page](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/project-templates--docs).
 
 ### Add `@ui5/webcomponents-react` to an existing app
 
