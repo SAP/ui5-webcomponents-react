@@ -1,11 +1,12 @@
 'use client';
 
+import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ComponentElement, ReactElement, ReactNode } from 'react';
+import type { ComponentElement, ReactElement, ReactNode, MouseEvent } from 'react';
 import React, {
   Children,
   cloneElement,
@@ -32,7 +33,7 @@ import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ResponsivePopoverDomRef } from '../../webComponents/index.js';
+import type { ButtonDomRef, ListDomRef, ResponsivePopoverDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -81,19 +82,6 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * Defines whether the VariantManagement is disabled.
    */
   disabled?: boolean;
-  /**
-   * Fired after a variant has been selected.
-   */
-  onSelect?: (
-    event: Ui5CustomEvent<
-      HTMLElement,
-      {
-        selectedVariant: SelectedVariant;
-        selectedItems: unknown[];
-        previouslySelectedItems: unknown[];
-      }
-    >
-  ) => void;
   /**
    * Indicator for modified but not saved variants.
    *
@@ -147,30 +135,46 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   portalContainer?: Element;
   /**
+   * Fired after a variant has been selected.
+   *
+   * __Note:__ This event inherits part of its details from the `onSelectionChange` event of the `List` component.
+   */
+  onSelect?: (
+    event: Ui5CustomEvent<
+      ListDomRef,
+      ListSelectionChangeEventDetail & {
+        selectedVariant: SelectedVariant;
+      }
+    >
+  ) => void;
+  /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
+  onSaveAs?: (e: MouseEvent<ButtonDomRef, SelectedVariant & { nativeDetail: number }>) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: CustomEvent<{
-      deletedVariants: VariantItemPropTypes[];
-      prevVariants: VariantItemPropTypes[];
-      updatedVariants: UpdatedVariant[];
-      variants: SelectedVariant[];
-    }>
+    e: MouseEvent<
+      ButtonDomRef,
+      {
+        deletedVariants: VariantItemPropTypes[];
+        prevVariants: VariantItemPropTypes[];
+        updatedVariants: UpdatedVariant[];
+        variants: SelectedVariant[];
+      } & { nativeDetail: number }
+    >
   ) => void;
   /**
    * The event is fired when the "Save" button is clicked in the `VariantManagement` popover.
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: CustomEvent<SelectedVariant>) => void;
+  onSave?: (e: MouseEvent<ButtonDomRef, SelectedVariant & { nativeDetail: number }>) => void;
 }
 
 const styles = {

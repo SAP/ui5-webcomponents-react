@@ -353,14 +353,18 @@ describe('VariantManagement', () => {
     // valid entries & save
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated!');
     cy.findByText('Save').click();
-    cy.findByText('{"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}');
+    cy.findByText(
+      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}'
+    );
     cy.get('@saveAs').should('have.been.calledOnce');
 
     // cancel
     cy.findByText('Save As').click();
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated again!');
     cy.findByText('Cancel').click();
-    cy.findByText('{"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}');
+    cy.findByText(
+      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}'
+    );
     cy.get('@saveAs').should('have.been.calledOnce');
   });
 
@@ -498,7 +502,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(
-      '{"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
     );
 
     cy.mount(<TestComp onSaveManageViews={onSaveView} showOnlyFavorites />);
@@ -509,7 +513,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledTwice');
     cy.findByText(
-      '{"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
     );
   });
 
@@ -556,7 +560,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(
-      '{"deletedVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"}],"prevVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"},{"isDefault":true,"children":"VariantItem 3"}],"updatedVariants":[],"variants":[{"isDefault":true,"children":"VariantItem 3"}]}'
+      '{"nativeDetail":1,"deletedVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"}],"prevVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"},{"isDefault":true,"children":"VariantItem 3"}],"updatedVariants":[],"variants":[{"isDefault":true,"children":"VariantItem 3"}]}'
     );
   });
 

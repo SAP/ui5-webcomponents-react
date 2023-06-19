@@ -20,10 +20,21 @@ export const enrichEventWithDetails = <T extends Record<string, unknown>, Return
     event.persist();
   }
 
-  const shouldCreateNewDetails =
-    event.detail === null || event.detail === undefined || typeof event.detail !== 'object';
+  const shouldCreateNewDetails = event.detail === null || event.detail === undefined;
+  const hasNativeDetails = !shouldCreateNewDetails && typeof event.detail !== 'object';
+
+  const value = (() => {
+    if (hasNativeDetails) {
+      return { nativeDetail: event.detail };
+    }
+    if (shouldCreateNewDetails) {
+      return event.detail;
+    }
+    return {};
+  })();
+
   Object.defineProperty(event, 'detail', {
-    value: shouldCreateNewDetails ? {} : event.detail,
+    value: value,
     writable: true,
     configurable: true
   });

@@ -8,13 +8,14 @@ import React, { Children, forwardRef, Fragment, isValidElement, useCallback, use
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
-import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { List } from '../../webComponents/List/index.js';
+import type { ListPropTypes } from '../../webComponents/List/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
@@ -50,7 +51,7 @@ export interface MessageViewPropTypes extends CommonProps {
   /**
    * Event is fired when the details of a message are shown.
    */
-  onItemSelect?: (event: Ui5CustomEvent<HTMLElement, { item: HTMLElement }>) => void;
+  onItemSelect?: ListPropTypes['onItemClick'];
 }
 
 export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>[]) => {
