@@ -33,7 +33,12 @@ import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ButtonPropTypes, ListDomRef, ResponsivePopoverDomRef } from '../../webComponents/index.js';
+import type {
+  ButtonPropTypes,
+  ListDomRef,
+  ResponsivePopoverDomRef,
+  TitlePropTypes
+} from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -63,13 +68,13 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+  placement?: ResponsivePopoverDomRef['placementType'];
   /**
    * Describes the title of the VariantManagement popover.
    *
    * __Note:__ If not set, the default title is used.
    */
-  titleText?: string;
+  titleText?: ResponsivePopoverDomRef['headerText'];
   /**
    * Defines whether the VariantManagement should be closed if an item was selected.
    */
@@ -77,7 +82,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Describes the `HTML Title` level of the variants.
    */
-  level?: TitleLevel | keyof typeof TitleLevel;
+  level?: TitlePropTypes['level'];
   /**
    * Defines whether the VariantManagement is disabled.
    */
