@@ -23,7 +23,10 @@ interface ProjectTemplatePropTypes {
   deprecationNotice?: string;
 }
 
-addCustomCSSWithScoping('ui5-card-header', '.ui5-card-header .ui5-card-header-avatar { pointer-events: auto; }');
+addCustomCSSWithScoping(
+  'ui5-card-header',
+  ':host([data-project-template]) .ui5-card-header .ui5-card-header-avatar { pointer-events: auto; }'
+);
 
 export function ProjectTemplate(props: ProjectTemplatePropTypes) {
   const { title, subtitle, logo, logoAttribution, isTypeScript, children, href, deprecationNotice } = props;
@@ -33,6 +36,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
       className={classes.card}
       header={
         <CardHeader
+          data-project-template=""
           titleText={title}
           subtitleText={subtitle}
           action={
