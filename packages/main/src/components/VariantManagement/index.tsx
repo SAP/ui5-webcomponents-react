@@ -6,7 +6,7 @@ import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js'
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ComponentElement, ReactElement, ReactNode, MouseEvent } from 'react';
+import type { ComponentElement, ReactElement, ReactNode } from 'react';
 import React, {
   Children,
   cloneElement,
@@ -33,7 +33,7 @@ import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ButtonDomRef, ListDomRef, ResponsivePopoverDomRef } from '../../webComponents/index.js';
+import type { ButtonPropTypes, ListDomRef, ResponsivePopoverDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -152,14 +152,14 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: MouseEvent<ButtonDomRef> & { detail: SelectedVariant }) => void;
+  onSaveAs?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: MouseEvent<ButtonDomRef> & {
+    e: Parameters<ButtonPropTypes['onClick']>[0] & {
       detail: {
         deletedVariants: VariantItemPropTypes[];
         prevVariants: VariantItemPropTypes[];
@@ -173,7 +173,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: MouseEvent<ButtonDomRef> & { detail: SelectedVariant }) => void;
+  onSave?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
 }
 
 const styles = {
