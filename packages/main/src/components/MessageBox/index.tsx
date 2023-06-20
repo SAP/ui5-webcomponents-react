@@ -30,7 +30,6 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
@@ -40,21 +39,24 @@ import styles from './MessageBox.jss.js';
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
-  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
+  extends Omit<
+    DialogPropTypes,
+    'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
+  > {
   /**
    * Defines the IDs of the elements that label the component.
    *
    * __Note:__ Per default the prop receives the IDs of the header and the content.
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: DialogPropTypes['accessibleNameRef'];
   /**
    * Flag whether the Message Box should be opened or closed
    */
-  open?: boolean;
+  open?: DialogPropTypes['open'];
   /**
    * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
    */
-  titleText?: string;
+  titleText?: DialogPropTypes['headerText'];
   /**
    * Defines the content of the `MessageBox`.
    *
@@ -89,14 +91,6 @@ export interface MessageBoxPropTypes
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
   onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
-  /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
-   */
-  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
-  /**
-   * Fired after the component is opened. This event does not bubble.
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });
