@@ -7,7 +7,7 @@
 }
 
 .content {
-  min-height: var(--_ui5_bar_base_height);
+  min-height: 2.75rem;
   padding-inline: 1rem;
   display: flex;
   align-items: center;

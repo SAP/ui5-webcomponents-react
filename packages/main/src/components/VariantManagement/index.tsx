@@ -1,5 +1,6 @@
 'use client';
 
+import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
@@ -32,7 +33,13 @@ import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ResponsivePopoverDomRef } from '../../webComponents/index.js';
+import type {
+  ButtonPropTypes,
+  ListDomRef,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes,
+  TitlePropTypes
+} from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -62,13 +69,13 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+  placement?: ResponsivePopoverPropTypes['placementType'];
   /**
    * Describes the title of the VariantManagement popover.
    *
    * __Note:__ If not set, the default title is used.
    */
-  titleText?: string;
+  titleText?: ResponsivePopoverPropTypes['headerText'];
   /**
    * Defines whether the VariantManagement should be closed if an item was selected.
    */
@@ -76,24 +83,11 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Describes the `HTML Title` level of the variants.
    */
-  level?: TitleLevel | keyof typeof TitleLevel;
+  level?: TitlePropTypes['level'];
   /**
    * Defines whether the VariantManagement is disabled.
    */
   disabled?: boolean;
-  /**
-   * Fired after a variant has been selected.
-   */
-  onSelect?: (
-    event: Ui5CustomEvent<
-      HTMLElement,
-      {
-        selectedVariant: SelectedVariant;
-        selectedItems: unknown[];
-        previouslySelectedItems: unknown[];
-      }
-    >
-  ) => void;
   /**
    * Indicator for modified but not saved variants.
    *
@@ -147,30 +141,45 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   portalContainer?: Element;
   /**
+   * Fired after a variant has been selected.
+   *
+   * __Note:__ This event inherits part of its details from the `onSelectionChange` event of the `List` component.
+   */
+  onSelect?: (
+    event: Ui5CustomEvent<
+      ListDomRef,
+      ListSelectionChangeEventDetail & {
+        selectedVariant: SelectedVariant;
+      }
+    >
+  ) => void;
+  /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
+  onSaveAs?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: CustomEvent<{
-      deletedVariants: VariantItemPropTypes[];
-      prevVariants: VariantItemPropTypes[];
-      updatedVariants: UpdatedVariant[];
-      variants: SelectedVariant[];
-    }>
+    e: Parameters<ButtonPropTypes['onClick']>[0] & {
+      detail: {
+        deletedVariants: VariantItemPropTypes[];
+        prevVariants: VariantItemPropTypes[];
+        updatedVariants: UpdatedVariant[];
+        variants: SelectedVariant[];
+      };
+    }
   ) => void;
   /**
    * The event is fired when the "Save" button is clicked in the `VariantManagement` popover.
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: CustomEvent<SelectedVariant>) => void;
+  onSave?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
 }
 
 const styles = {

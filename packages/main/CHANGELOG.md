@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.2...v1.16.3) (2023-06-19)
+
+### Bug Fixes
+
+- add browser condition to package exports ([#4756](https://github.com/SAP/ui5-webcomponents-react/issues/4756)) ([5088784](https://github.com/SAP/ui5-webcomponents-react/commit/5088784417af4669bd52a0c959446730f6b91c99)), closes [#4676](https://github.com/SAP/ui5-webcomponents-react/issues/4676)
+
 ## [1.16.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.1...v1.16.2) (2023-06-13)
 
 ### Bug Fixes
