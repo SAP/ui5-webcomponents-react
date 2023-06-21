@@ -53,7 +53,10 @@
       "description": "UI5 Web Components (for React) in all examples",
       "groupName": "ui5-webcomponents (react)",
       "matchPaths": ["examples/**"],
-      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents", "https://github.com/SAP/ui5-webcomponents-react"],
+      "matchSourceUrlPrefixes": [
+        "https://github.com/SAP/ui5-webcomponents",
+        "https://github.com/SAP/ui5-webcomponents-react"
+      ]
     }
   ]
 }
