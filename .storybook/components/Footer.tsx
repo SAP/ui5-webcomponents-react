@@ -35,7 +35,9 @@ export const Footer = ({ style }) => {
           <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
             <img src={BestRunLogo} alt="SAP Logo with Text 'The Best Run'" style={{ height: '1.5rem' }} />
             <Label wrappingType={WrappingType.Normal}>
-              &copy; Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for React Contributors
+              {/*REUSE-IgnoreStart*/}© Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for React
+              Contributors
+              {/*  REUSE-IgnoreEnd*/}
             </Label>
           </FlexBox>
           <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
