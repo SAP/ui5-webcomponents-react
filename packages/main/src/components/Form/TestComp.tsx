@@ -12,7 +12,16 @@ import { Form as OldForm } from './index.js';
 function App() {
   return (
     <ThemeProvider>
-      <Form titleText="Test" columnsXL={5} columnsL={4} columnsM={3} columnsS={1}>
+      <Form
+        titleText="Test"
+        columnsXL={5}
+        columnsL={4}
+        columnsM={1}
+        columnsS={1}
+        labelSpanS={12}
+        labelSpanM={12}
+        labelSpanL={12}
+      >
         <FormItem id="Item01" label="Single 1">
           <Input />
         </FormItem>

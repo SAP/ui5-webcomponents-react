@@ -169,10 +169,11 @@ const FormItem = (props: FormItemPropTypes) => {
     // console.log('asdd', rowsWithGroup[rowIndex], layoutInfo);
     if (!layoutInfo.groupId && rowsWithGroup[rowIndex]) {
       return rowIndex + 1;
-    } else return rowIndex;
+    } else return rowIndex ?? 0;
   })();
 
-  const calculatedGridRowStart = labelSpan === 12 ? (calculatedGridRowIndex ?? 0) + 1 : calculatedGridRowIndex ?? 0;
+  //todo check labelSpan 12 handling (+1 row)
+  const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
 
   return (
     <>

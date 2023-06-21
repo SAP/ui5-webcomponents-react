@@ -228,6 +228,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     let index = -1;
     let localColumnIndex = 0;
     let rowIndex = titleText ? 2 : 1;
+    // no. of rows in a "line" - e.g. when a group has 5 items, the next line needs to start below that group
     let nextRowIndex = rowIndex;
     const rowsWithGroup = {};
 
@@ -257,7 +258,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           localIndex++;
           inGroupIndex++;
         });
-        // console.log('hi', nextRowIndex);
       } else {
         if (nextRowIndex < rowIndex + 1) {
           nextRowIndex++;
@@ -269,17 +269,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       }
       localColumnIndex++;
     });
-
-    // todo sort by index and then add all with groupIndex => number of rows inside a single "row"
-    // const test123 = formItems.reduce((acc, cur) => {
-    //   if (acc[`${cur.columnIndex}`] !== undefined) {
-    //     acc[`${cur.columnIndex}`] = [...acc[`${cur.columnIndex}`], cur];
-    //   } else {
-    //     acc[`${cur.columnIndex}`] = [cur];
-    //   }
-    //   return acc;
-    // }, []);
-    // console.log('test123', test123);
 
     return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText]);
