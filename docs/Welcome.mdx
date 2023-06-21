@@ -159,7 +159,7 @@ export default function App() {
     setOpen(true);
   };
   // if you only want to type the event parameter, you can use the `Parameters` utility type.
-  const handleAfterClose = (e: Parameters<PopoverPropTypes['onAfterClose']>[0]) => {
+  const handleAfterClose: PopoverPropTypes['onAfterClose'] = (e) => {
     setOpen(false);
   };
 
