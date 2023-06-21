@@ -99,8 +99,7 @@ UI5 Web Components and UI5 Web Components for React are both coming with the `sa
   children={
     <>
       UI5 Web Components for React uses the theme configuration of UI5 Web Components. Please also have a look at their{' '}
-      <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>
-      .
+      <Link href="https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme">documentation</Link>.
     </>
   }
 />
@@ -142,24 +141,35 @@ UI5 Web Components for React supports [TypeScript](https://www.typescriptlang.or
 
 You can find all available interfaces of the main package [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/src/interfaces) and for charts [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/src/interfaces).
 
-<br />
+#### Example
 
-Example - `Popover` with `Ref` type declaration:
+Popover with custom data-attribute opened by clicking a button:
 
 ```tsx
-import React, { MouseEvent, useRef } from 'react';
-import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
+import React, { useState, useRef } from 'react';
+import type { ButtonPropTypes, PopoverDomRef, PopoverPropTypes } from '@ui5/webcomponents-react';
+import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
 
 export default function App() {
+  const [open, setOpen] = useState<PopoverPropTypes['open']>(false);
   const popoverRef = useRef<PopoverDomRef>(null);
-  const onClick = (e: MouseEvent<HTMLElement, MouseEvent>) => {
-    popoverRef.current?.showAt(e.target);
+
+  const handleClick: ButtonPropTypes['onClick'] = (e) => {
+    setOpen(true);
+  };
+  // if you only want to type the event parameter, you can use the `Parameters` utility type.
+  const handleAfterClose = (e: Parameters<PopoverPropTypes['onAfterClose']>[0]) => {
+    setOpen(false);
   };
 
   return (
     <ThemeProvider>
-      <Button onClick={onClick}>Open Popover</Button>
-      <Popover ref={popoverRef}>Content</Popover>
+      <Button id="opener" onClick={handleClick}>
+        Open Popover
+      </Button>
+      <Popover ref={popoverRef} opener="opener" open={open} onAfterClose={handleAfterClose}>
+        Content
+      </Popover>
     </ThemeProvider>
   );
 }
