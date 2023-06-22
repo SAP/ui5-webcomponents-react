@@ -161,12 +161,7 @@ const FormItem = (props: FormItemPropTypes) => {
   const contentGridColumnStart =
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
 
-  if (rowsWithGroup[rowIndex]) {
-    console.log(rowsWithGroup[rowIndex], label, layoutInfo);
-  }
-
   const calculatedGridRowIndex = (() => {
-    // console.log('asdd', rowsWithGroup[rowIndex], layoutInfo);
     if (!layoutInfo.groupId && rowsWithGroup[rowIndex]) {
       return rowIndex + 1;
     } else return rowIndex ?? 0;
@@ -187,6 +182,7 @@ const FormItem = (props: FormItemPropTypes) => {
         }}
       />
       <div
+        data-id={uniqueId}
         className={classes.content}
         style={{
           gridColumnStart: contentGridColumnStart,

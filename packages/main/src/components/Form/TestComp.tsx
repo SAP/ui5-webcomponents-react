@@ -1,9 +1,7 @@
-import React from 'react';
-import { ThemeProvider, Input, FormItem, FormGroup } from '../..';
-import { createContext, useContext, useState, useCallback, useMemo, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
+import { FormGroup, FormItem, Input, ThemeProvider } from '../..';
 import { FormContext, GroupContext, useFormGroupContext } from './FormContext.js';
-import { Form } from './NewForm.js';
-import { Form as OldForm } from './index.js';
+import { Form } from './index.js';
 
 // TLDR: Best and easiest solution within several iterations; Performant with only two renders. One for register all childrens. One for the final layout
 // Problem solved: FromGroup without Items knows it. See TestApp2 (too complicated);
