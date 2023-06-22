@@ -31,7 +31,7 @@ const useStyles = createUseStyles(
  */
 const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
-  const { formGroups: layoutInfos, registerItem, unregisterItem } = useFormContext();
+  const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
   const uniqueId = useIsomorphicId();
   const classes = useStyles();
 
@@ -50,7 +50,7 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
       <>
         <FormGroupTitle
           titleText={titleText}
-          style={{ gridColumnStart: columnIndex * 12 + 1, gridRowStart: rowIndex }}
+          style={{ gridColumnStart: columnIndex * 12 + 1, gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex }}
         />
         {children}
         <span className={classes.spacer} />

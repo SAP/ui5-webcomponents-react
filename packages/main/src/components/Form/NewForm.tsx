@@ -1,23 +1,13 @@
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  createContext,
-  ElementType,
-  forwardRef,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { ElementType, forwardRef, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import { CommonProps } from '../../interfaces/index.js';
 import { Title } from '../../webComponents/index.js';
-import { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
-import { FormContext } from './FormContext.js';
 import { styles } from './Form.jss.js';
+import { FormContext } from './FormContext.js';
+import { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
 
 const useStyles = createUseStyles(styles, { name: 'Form' });
 
@@ -168,6 +158,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     };
   }, [formRef]);
   const currentLabelSpan = labelSpanMap.get(currentRange);
+  console.log('-> currentLabelSpan', currentLabelSpan);
   const currentNumberOfColumns = columnsMap.get(currentRange);
 
   // console.log('items', items);
@@ -227,12 +218,14 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     let index = -1;
     let localColumnIndex = 0;
-    let rowIndex = titleText ? 2 : 1;
+    const rowsPerFilter = currentLabelSpan === 12 ? 2 : 1;
+    let rowIndex = (titleText ? 2 : 1) + rowsPerFilter - 1;
     // no. of rows in a "line" - e.g. when a group has 5 items, the next line needs to start below that group
     let nextRowIndex = rowIndex;
     const rowsWithGroup = {};
 
     items.forEach(({ type, formItemIds }, id) => {
+      console.log('-> rowIndex', rowIndex);
       const columnIndex = localColumnIndex % currentNumberOfColumns;
       index++;
       if (type === 'formGroup') {
@@ -251,16 +244,16 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
             rowIndex: rowIndex + localIndex + 1
           });
           if (set.size - 1 === localIndex) {
-            if (nextRowIndex < rowIndex + localIndex + 1) {
-              nextRowIndex = rowIndex + localIndex + 1;
+            if (nextRowIndex < rowIndex + localIndex + rowsPerFilter) {
+              nextRowIndex = rowIndex + localIndex + rowsPerFilter;
             }
           }
-          localIndex++;
+          localIndex += rowsPerFilter;
           inGroupIndex++;
         });
       } else {
         if (nextRowIndex < rowIndex + 1) {
-          nextRowIndex++;
+          nextRowIndex += rowsPerFilter;
         }
         formItems.push({ id, index, columnIndex, rowIndex });
       }
@@ -271,7 +264,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
 
     return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
-  }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText]);
+  }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
   // console.log('layoutcontextval', formLayoutContextValue);

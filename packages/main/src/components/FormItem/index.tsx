@@ -181,7 +181,7 @@ const FormItem = (props: FormItemPropTypes) => {
         label={label}
         style={{
           gridColumnStart,
-          gridRowStart: calculatedGridRowIndex ?? undefined,
+          gridRowStart: labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined,
           // TODO remove this line as soon as Firefox enables :has by default. https://caniuse.com/css-has
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}

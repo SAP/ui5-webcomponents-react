@@ -40,7 +40,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Test: Story = { render: () => <TestComp /> };
+export const Test: Story = { render: (args) => <TestComp {...args} /> };
 
 export const Default: Story = {
   render: (props) => {

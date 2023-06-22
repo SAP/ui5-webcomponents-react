@@ -9,7 +9,8 @@ import { Form as OldForm } from './index.js';
 // Problem solved: FromGroup without Items knows it. See TestApp2 (too complicated);
 //
 
-function App() {
+function App(args) {
+  // todo issue with group on labelSpan12 and only 1 row, general: labelSpan12 1 column
   return (
     <ThemeProvider>
       <Form
@@ -17,9 +18,9 @@ function App() {
         columnsXL={5}
         columnsL={4}
         columnsM={1}
-        columnsS={1}
-        labelSpanS={12}
-        labelSpanM={12}
+        columnsS={args.columnsS}
+        labelSpanS={args.labelSpanS}
+        labelSpanM={11}
         labelSpanL={12}
       >
         <FormItem id="Item01" label="Single 1">
