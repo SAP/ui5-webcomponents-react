@@ -1,13 +1,14 @@
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { ElementType, forwardRef, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { ElementType, ReactNode } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
-import { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
 import { Title } from '../../webComponents/index.js';
 import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext.js';
-import { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
+import type { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
 
 const useStyles = createUseStyles(styles, { name: 'Form' });
 
