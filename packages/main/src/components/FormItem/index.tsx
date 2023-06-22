@@ -1,6 +1,7 @@
 'use client';
 
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import React, { cloneElement, Fragment, isValidElement, useContext, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -19,10 +20,6 @@ export interface FormItemPropTypes {
    * Content of the FormItem. Can be an arbitrary React Node.
    */
   children: ReactNode | ReactNode[];
-  /**
-   * todo: remove
-   */
-  id: string;
 }
 
 interface InternalProps extends FormItemPropTypes {
@@ -68,9 +65,14 @@ const useStyles = createUseStyles(
         gridColumnEnd: 'span 12',
         paddingBlockEnd: '0.625rem'
       },
-      '&:has(+ [data-component-name="FormGroupTitle"])': {
-        paddingBlockEnd: '1rem'
+      '& > *': {
+        //todo should we maybe leave that up to the user now?
+        width: '100%'
+        // '--_ui5_input_width': '100% !important'
       }
+    },
+    lastGroupItem: {
+      marginBlockEnd: '1rem'
     }
   },
   { name: 'FormItem' }
@@ -150,11 +152,7 @@ const FormItem = (props: FormItemPropTypes) => {
   // So this is fine, the layoutInfo will be defined
   if (layoutInfos && !layoutInfo) return null;
 
-  const { columnIndex, rowIndex } = layoutInfo;
-  // const { columnIndex, rowIndex } = props;
-  // console.log(rowIndex, 'rowIndex');
-
-  // console.log('Render FormItem ' + id, layoutInfo, layoutInfos);
+  const { columnIndex, rowIndex, lastGroupItem } = layoutInfo;
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
@@ -167,8 +165,9 @@ const FormItem = (props: FormItemPropTypes) => {
     } else return rowIndex ?? 0;
   })();
 
-  //todo check labelSpan 12 handling (+1 row)
   const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
+
+  console.log(label, lastGroupItem);
 
   return (
     <>
@@ -183,7 +182,7 @@ const FormItem = (props: FormItemPropTypes) => {
       />
       <div
         data-id={uniqueId}
-        className={classes.content}
+        className={clsx(classes.content, lastGroupItem && classes.lastGroupItem)}
         style={{
           gridColumnStart: contentGridColumnStart,
           gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined

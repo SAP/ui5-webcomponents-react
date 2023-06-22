@@ -41,7 +41,7 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
   }, [uniqueId, registerItem, unregisterItem]);
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
-  // console.log("group",layoutInfo);
+
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
 
@@ -54,7 +54,6 @@ const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
           style={{ gridColumnStart: columnIndex * 12 + 1, gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex }}
         />
         {children}
-        <span className={classes.spacer} />
       </>
     </GroupContext.Provider>
   );

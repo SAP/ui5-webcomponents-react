@@ -159,7 +159,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     };
   }, [formRef]);
   const currentLabelSpan = labelSpanMap.get(currentRange);
-  console.log('-> currentLabelSpan', currentLabelSpan);
   const currentNumberOfColumns = columnsMap.get(currentRange);
 
   const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
@@ -204,7 +203,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
   // FormLayoutInfoContext
   const formLayoutContextValue = useMemo((): FormContextType => {
-    console.log("____________'-> rowIndex' -recalc");
     // TODO: All layout calculations which should be sent to the childrens
     // Note that you cant add ReactNodes here like FormGroupTitle, for this the FormGroup renders the FormGroupTitle (Makes sense :D)
     // For dynamic ReactNodes pls add them to FormItem or FormGroup with the calculation in this function
@@ -224,9 +222,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       const columnIndex = localColumnIndex % currentNumberOfColumns;
       index++;
       if (type === 'formGroup') {
-        console.log('rowIndex __________ in group');
         rowsWithGroup[rowIndex] = true;
-        console.log('-> rowIndex (group)', rowIndex);
         formGroups.push({ id, index, columnIndex, rowIndex });
         let localRowIndex = 1;
         let localIndex = 1;
@@ -235,16 +231,15 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           nextRowIndex++;
         }
         formItemIds.forEach((itemId, _, set) => {
-          console.log('-> rowIndex (grouped)', rowIndex + localRowIndex);
           formItems.push({
             id: itemId,
             index,
             groupId: id,
             columnIndex,
-            rowIndex: rowIndex + localRowIndex
+            rowIndex: rowIndex + localRowIndex,
+            lastGroupItem: set.size === localIndex
           });
           if (set.size === localIndex) {
-            console.log('rowIndex __________ out of group');
             if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
               nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
             }
@@ -254,17 +249,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         });
       } else {
         if (nextRowIndex < rowIndex + 1) {
-          console.log('asd', nextRowIndex, rowIndex, nextRowIndex + rowsPerFormItem);
           nextRowIndex += rowsPerFormItem;
         }
-        console.log('-> rowIndex (item)', rowIndex);
         formItems.push({ id, index, columnIndex, rowIndex });
       }
 
       if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
-        console.log('-> rowIndex', '________ increase', rowIndex, nextRowIndex);
         rowIndex = nextRowIndex;
-        // nextRowIndex = rowIndex;
       }
       localColumnIndex++;
     });
@@ -273,7 +264,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
-  // console.log('layoutcontextval', formLayoutContextValue);
+
   return (
     <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
       <CustomTag
@@ -282,20 +273,20 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         ref={componentRef}
         style={{
           ...style,
-          '--ui5wcr_form_label_span_s': labelSpanS,
-          '--ui5wcr_form_label_span_m': labelSpanM,
-          '--ui5wcr_form_label_span_l': labelSpanL,
-          '--ui5wcr_form_label_span_xl': labelSpanXL,
-          '--ui5wcr_form_columns_s': columnsS,
-          '--ui5wcr_form_columns_m': columnsM,
-          '--ui5wcr_form_columns_l': columnsL,
-          '--ui5wcr_form_columns_xl': columnsXL
+          '--_ui5wcr_form_label_span_s': labelSpanS,
+          '--_ui5wcr_form_label_span_m': labelSpanM,
+          '--_ui5wcr_form_label_span_l': labelSpanL,
+          '--_ui5wcr_form_label_span_xl': labelSpanXL,
+          '--_ui5wcr_form_columns_s': columnsS,
+          '--_ui5wcr_form_columns_m': columnsM,
+          '--_ui5wcr_form_columns_l': columnsL,
+          '--_ui5wcr_form_columns_xl': columnsXL
         }}
         {...rest}
       >
         <div className={formClassNames}>
           {titleText && (
-            <Title level={TitleLevel.H3} className={classes.formTitle}>
+            <Title level={TitleLevel.H3} className={classes.formTitle} style={{ gridColumn: '1 / -1' }}>
               {titleText}
             </Title>
           )}

@@ -45,7 +45,7 @@ export const Test: Story = { render: (args) => <TestComp {...args} /> };
 export const Default: Story = {
   render: (props) => {
     return (
-      <Form {...props} columnsS={11}>
+      <Form {...props}>
         <FormItem label="Sole Form Item">
           <Input type={InputType.Text} />
         </FormItem>
