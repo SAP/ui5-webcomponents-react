@@ -3,10 +3,10 @@ Upstream-Name: UI5 Web Components for React
 Upstream-Contact: ui5-webcomponents-react@sap.com
 Source: https://github.com/SAP/ui5-webcomponents-react
 
-Files:
-    *
-Copyright:  2019-2020 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors
+Files: *
+Copyright: 2019-2023 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors
 License: Apache-2.0
+
 
 Files: /packages/charts/src/components/PieChart/PieChart.tsx
 Copyright: 2016-2020 Recharts Group
