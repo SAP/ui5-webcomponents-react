@@ -3,13 +3,13 @@
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, Fragment, isValidElement, useContext, useEffect, useMemo } from 'react';
+import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
-import { FormContext, useFormContext, useFormGroupContext } from '../Form/FormContext.js';
+import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
 
 export interface FormItemPropTypes {
   /**
@@ -38,9 +38,6 @@ const useStyles = createUseStyles(
       '&[data-label-span="12"]': {
         justifySelf: 'start',
         paddingBlockEnd: '0.25rem'
-      },
-      '&:has(+ $content + [data-component-name="FormGroupTitle"])': {
-        paddingBlockEnd: '1rem'
       },
       '&:has(+ $content > [ui5-checkbox])': {
         alignSelf: 'center'
@@ -127,8 +124,7 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  * __Note__: The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem = (props: FormItemPropTypes) => {
-  // eslint-disable-next-line react/prop-types
-  const { label, children, id } = props as InternalProps;
+  const { label, children } = props as InternalProps;
   const uniqueId = useIsomorphicId();
   const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan, rowsWithGroup } = useFormContext();
   const groupContext = useFormGroupContext();
@@ -143,13 +139,6 @@ const FormItem = (props: FormItemPropTypes) => {
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => uniqueId === itemId), [layoutInfos, uniqueId]);
 
-  //todo can probably be omitted
-  // #1
-  // Attention: FormItems do only make sense within Forms and only should work with them.
-  // If layoutInfos is defined, the FormContext is available and will set the id for the layoutInfo
-  // With this solution we prevent flickering for the wrong (not calculated) layout because the first render does not contain the layout
-  // I tested useLayoutEffect instead useEffect but this caused me some bugs, when the pages reloads with HMR
-  // So this is fine, the layoutInfo will be defined
   if (layoutInfos && !layoutInfo) return null;
 
   const { columnIndex, rowIndex, lastGroupItem } = layoutInfo;

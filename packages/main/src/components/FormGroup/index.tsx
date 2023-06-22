@@ -1,7 +1,6 @@
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
-import type { FC, ReactNode } from 'react';
-import React, { useContext, useEffect, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
+import type { ReactNode } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { GroupContext, useFormContext } from '../Form/FormContext.js';
 import { FormGroupTitle } from './FormGroupTitle.js';
 
@@ -18,22 +17,15 @@ export interface FormGroupPropTypes {
   children: ReactNode | ReactNode[];
 }
 
-const useStyles = createUseStyles(
-  {
-    spacer: { height: '1rem', gridColumn: '1 / -1' }
-  },
-  { name: 'FormGroup' }
-);
 /**
  * The `FormGroup` encapsulates `FormItems` into groups.
  *
  * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `titleText` and `children`, especially no `className`, `style` or `ref`.
  */
-const FormGroup: FC<FormGroupPropTypes> = (props: FormGroupPropTypes) => {
+const FormGroup = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
   const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
   const uniqueId = useIsomorphicId();
-  const classes = useStyles();
 
   useEffect(() => {
     registerItem?.(uniqueId, 'formGroup');

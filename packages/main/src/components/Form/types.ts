@@ -1,5 +1,12 @@
-export type FormItemLayoutInfo = { id: string; index: number; groupId?: string; columnIndex: number };
-export type FormGroupLayoutInfo = { id: string; index: number; columnIndex: number };
+export type FormItemLayoutInfo = {
+  id: string;
+  index: number;
+  groupId?: string;
+  columnIndex: number;
+  rowIndex: number;
+  lastGroupItem?: boolean;
+};
+export type FormGroupLayoutInfo = { id: string; index: number; columnIndex: number; rowIndex: number };
 export type FormElementTypes = 'formItem' | 'formGroup';
 
 //todo remove optional?
@@ -8,8 +15,9 @@ export type FormContextType = {
   formGroups?: FormGroupLayoutInfo[];
   registerItem?: (id: string, type: FormElementTypes, groupId?: string) => void;
   unregisterItem?: (id: string, groupId?: string) => void;
-  //old
   labelSpan?: null | number;
+  //todo type
+  rowsWithGroup?: any;
 };
 
 export type ItemInfo = {

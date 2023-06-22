@@ -120,8 +120,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     style,
     ...rest
   } = props;
-  // Items - Flatterened; Batched => Only one render; Works for react < v18 the same
-  // FormItems and FormGroups should share one useState to prevent multiple renders; Had problems with this
+
   const [items, setItems] = useState<Map<string, ItemInfo>>(() => new Map());
   const classes = useStyles();
 
@@ -165,7 +164,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     setItems((state) => {
       const clonedMap = new Map(state);
       if (groupId) {
-        // Only FormItem can set formGroup - groupId
         const groupItem = clonedMap.get(groupId);
         if (groupItem) {
           groupItem.formItemIds = new Set(groupItem.formItemIds).add(id);
@@ -176,8 +174,6 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           });
         }
       } else {
-        // FormGroup without FormItems; Because childrens will register its parent first. (Bottom up)
-        // or FormItem without FormGroup
         if (!clonedMap.has(id)) {
           clonedMap.set(id, { type, formItemIds: new Set() });
         }
@@ -201,11 +197,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
   }, []);
 
-  // FormLayoutInfoContext
   const formLayoutContextValue = useMemo((): FormContextType => {
-    // TODO: All layout calculations which should be sent to the childrens
-    // Note that you cant add ReactNodes here like FormGroupTitle, for this the FormGroup renders the FormGroupTitle (Makes sense :D)
-    // For dynamic ReactNodes pls add them to FormItem or FormGroup with the calculation in this function
     const formItems: FormItemLayoutInfo[] = [];
     const formGroups: FormGroupLayoutInfo[] = [];
 
