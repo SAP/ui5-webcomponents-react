@@ -156,8 +156,6 @@ const FormItem = (props: FormItemPropTypes) => {
 
   const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
 
-  console.log(label, lastGroupItem);
-
   return (
     <>
       <FormItemLabel

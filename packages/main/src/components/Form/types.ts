@@ -20,6 +20,10 @@ export type FormContextType = {
   rowsWithGroup?: any;
 };
 
+export type GroupContextType = {
+  id?: string;
+};
+
 export type ItemInfo = {
   type: FormElementTypes; // The parent
   formItemIds: Set<string>; // If "formGroup" is parent - the children if exist

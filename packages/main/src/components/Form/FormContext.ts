@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { FormContextType } from './types.js';
+import type { FormContextType, GroupContextType } from './types.js';
 
 export const FormContext = createContext<FormContextType>({ labelSpan: null });
 
@@ -8,7 +8,7 @@ export function useFormContext() {
 }
 
 //todo types
-export const GroupContext = createContext({});
+export const GroupContext = createContext<GroupContextType>({});
 
 export function useFormGroupContext() {
   return useContext(GroupContext);
