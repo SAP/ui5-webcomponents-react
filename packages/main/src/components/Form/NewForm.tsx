@@ -218,8 +218,9 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     let index = -1;
     let localColumnIndex = 0;
-    const rowsPerFilter = currentLabelSpan === 12 ? 2 : 1;
-    let rowIndex = (titleText ? 2 : 1) + rowsPerFilter - 1;
+    // depending on the labelSpan, each form item takes up either 1 (labelSpan < 12) or 2 (labelSpan == 12) rows
+    const rowsPerFormItem = currentLabelSpan === 12 ? 2 : 1;
+    let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
     // no. of rows in a "line" - e.g. when a group has 5 items, the next line needs to start below that group
     let nextRowIndex = rowIndex;
     const rowsWithGroup = {};
@@ -244,16 +245,16 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
             rowIndex: rowIndex + localIndex + 1
           });
           if (set.size - 1 === localIndex) {
-            if (nextRowIndex < rowIndex + localIndex + rowsPerFilter) {
-              nextRowIndex = rowIndex + localIndex + rowsPerFilter;
+            if (nextRowIndex < rowIndex + localIndex + rowsPerFormItem) {
+              nextRowIndex = rowIndex + localIndex + rowsPerFormItem;
             }
           }
-          localIndex += rowsPerFilter;
+          localIndex += rowsPerFormItem;
           inGroupIndex++;
         });
       } else {
         if (nextRowIndex < rowIndex + 1) {
-          nextRowIndex += rowsPerFilter;
+          nextRowIndex += rowsPerFormItem;
         }
         formItems.push({ id, index, columnIndex, rowIndex });
       }
