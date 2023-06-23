@@ -63,10 +63,8 @@ const useStyles = createUseStyles(
         paddingBlockEnd: '0.625rem'
       },
       '& > *': {
-        //todo should we maybe leave that up to the user now?
         width: 'auto',
         flexGrow: 1
-        // '--_ui5_input_width': '100% !important'
       }
     },
     lastGroupItem: {
