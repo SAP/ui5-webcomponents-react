@@ -1,0 +1,121 @@
+import{j as e}from"./jsx-runtime-5926aa06.js";import{C as a,A as s}from"./DomRefTable.module-7b7d092b.js";import{D as d}from"./DocsHeader-c1f06e8c.js";import{F as c}from"./Footer-9dcd6fb2.js";import"./index-ebeaab24.js";import{M as h,C as r,a as l}from"./chunk-PCJTTTQV-f6245022.js";import{S as x}from"./SubcomponentsSection-6138f2fc.js";import{C as f,D as p,S as u,U as C}from"./UploadCollection.stories-a961a4e7.js";import{u as m}from"./index-bda0bad7.js";import"./react-jss.esm-022ab528.js";import"./inheritsLoose-93e09647.js";import"./index-498a437d.js";import"./iframe-9a58d1ec.js";import"../sb-preview/runtime.js";import"./UI5Element-978c7ec7.js";import"./CustomElementsScopeUtils-137da8c8.js";import"./withWebComponent-7b9bd1ee.js";import"./utils-69f7a0e0.js";import"./useIsomorphicLayoutEffect-38a48652.js";import"./slot-76e48863.js";import"./Icon-87626f33.js";import"./Icons-24533df9.js";import"./decline-2dc3f691.js";import"./i18n-defaults-80781f7e.js";import"./information-573ff8e0.js";import"./class-map-6a9bd920.js";import"./Button-c3cdbc47.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./Device-99b8bbf4.js";import"./i18n-defaults-ac1c9dde.js";import"./index-562e1433.js";import"./clsx.m-1229b3e0.js";import"./ThemingParameters-7e2e4e30.js";import"./addCustomCSSWithScoping-0421cb7d.js";import"./index-fc58bb5f.js";import"./Integer-f7f172c9.js";import"./index-832cea8d.js";import"./Avatar-02045306.js";import"./ResizeHandler-d96d99c4.js";import"./employee-397ee2c5.js";import"./index-83de8902.js";import"./index-06f0cfcb.js";import"./Link-a59da54b.js";import"./WrappingType-b81e595a.js";import"./index-4c0ab015.js";import"./TableOfContent-cf57f367.js";import"./index-90e35494.js";import"./Label-3a4ee32a.js";import"./index-9c09ad76.js";import"./index-ea8449e1.js";import"./index-e7d7a0c7.js";import"./Popover-24cfcc49.js";import"./PopupUtils-7b496d9b.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-aca8c783.js";import"./FocusableElements-ba36fca8.js";import"./isElementHidden-01c07146.js";import"./MediaRange-25b98f31.js";import"./style-map-0c64293c.js";import"./react-18-3d03c2cf.js";import"./mapValues-0a776dd9.js";import"./_baseForOwn-800a0312.js";import"./index-d475d2ea.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-593546d2.js";import"./_baseUniq-4c215180.js";import"./index-356e4a49.js";import"./index-41065afa.js";import"./index-5a563aed.js";import"./Title-b7551974.js";import"./ValueState-2c5e5904.js";import"./ListItem-3c6228ec.js";import"./ListItemBase-81a01599.js";import"./ItemNavigation-e6c8f7b0.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-34850997.js";import"./RadioButton-3919451e.js";import"./CheckBox-81e7fb8c.js";import"./accept-23bea3d0.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-ac42c02c.js";import"./Input-a03cbd8d.js";import"./Suggestions.css-70644f53.js";import"./ResponsivePopoverCommon.css-f329a859.js";import"./ValueStateMessage.css-fb4cc5f8.js";import"./ProgressIndicator-c37508b9.js";import"./AnimationMode-61c85a1c.js";import"./i18n-defaults-44d0f21e.js";import"./parameters-bundle.css-5626463c.js";import"./IllustratedMessage-ea498d16.js";import"./Tent-c4c2f070.js";const j=`**Since:** 0.9.0
+
+A component to be used within the \`UploadCollection\`.
+`;function io(n={}){const{wrapper:t}=Object.assign({},m(),n.components);return t?e.jsx(t,Object.assign({},n,{children:e.jsx(i,{})})):i();function i(){const o=Object.assign({h2:"h2",p:"p",code:"code",strong:"strong",pre:"pre",h1:"h1",h3:"h3"},m(),n.components);return e.jsxs(e.Fragment,{children:[e.jsx(h,{of:f}),`
+`,e.jsx(d,{since:"0.9.0"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h2,{id:"example",children:"Example"}),`
+`,e.jsx(r,{of:p}),`
+`,e.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,e.jsx(a,{of:p}),`
+`,e.jsx(o.h2,{id:"handling-drag-and-drop-of-files",children:"Handling drag and drop of files"}),`
+`,e.jsxs(o.p,{children:["Per default, files can be added by dragging them into the ",e.jsx(o.code,{children:"UploadCollection"}),` component.
+To use this functionality the `,e.jsx(o.code,{children:"onDrop"})," handler has to be manually adjusted.",e.jsx("br",{}),`
+`,e.jsx(o.strong,{children:"Note:"})," Use ",e.jsx(o.code,{children:"event.preventDefault()"})," in the ",e.jsx(o.code,{children:"onDrop"})," handler, otherwise some browsers will open some files in a different tab."]}),`
+`,e.jsxs(o.p,{children:["This example shows, how to dynamically render a ",e.jsx(o.code,{children:"UploadCollectionItem"})," by dropping files into the ",e.jsx(o.code,{children:"UploadCollection"}),":"]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`import React, { useState } from 'react';
+import { Icon, Text, UploadCollection, UploadCollectionItem } from '@ui5/webcomponents-react';
+
+export const UploadCollectionComponent = () => {
+  const [children, setChildren] = useState([]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem file={file} fileName={file.name} thumbnail={<Icon name="document" />}>
+          <Text>Uploaded On: Right now</Text>
+        </UploadCollectionItem>
+      ]);
+    });
+  };
+  return <UploadCollection onDrop={handleDrop}>{children}</UploadCollection>;
+};
+`})}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h1,{id:"more-examples",children:"More Examples"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h2,{id:"simulate-upload",children:"Simulate Upload"}),`
+`,e.jsx(r,{of:u}),`
+`,e.jsx(o.h3,{id:"code",children:"Code"}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const SimulateUploadComponent = () => {
+  const [children, setChildren] = useState([
+    <UploadCollectionItem
+      file={null}
+      fileName={'file-name.txt'}
+      thumbnail={<img src="https://sap.github.io/ui5-webcomponents/assets/images/logo.png" />}
+    >
+      <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
+    </UploadCollectionItem>
+  ]);
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    files.forEach((file) => {
+      setChildren((prev) => [
+        ...prev,
+        <UploadCollectionItem file={file} fileName={file.name} thumbnail={<Icon name="document" />}>
+          <Text>{\`
+Last
+modified: \${file.lastModifiedDate} ·
+Size: \${(file.size / 1000).toFixed(2)}KB\`}</Text>
+        </UploadCollectionItem>
+      ]);
+    });
+  };
+  const simulateUpload = () => {
+    if (children.length > 0) {
+      Children.forEach(children, (child, index) => {
+        if (child.props.uploadState === UploadState.Ready) {
+          let progress = 0;
+          const recTimeout = () => {
+            setTimeout(() => {
+              progress += Math.floor(Math.random() * 4) + 1;
+              setChildren((prev) => {
+                const updatedChildren = [...prev];
+                updatedChildren[index] = cloneElement(prev[index], {
+                  uploadState: UploadState.Uploading,
+                  progress: Math.min(progress, 100)
+                });
+                return updatedChildren;
+              });
+              if (progress < 100) {
+                recTimeout();
+              } else {
+                setChildren((prev) => {
+                  const updatedChildren = [...prev];
+                  updatedChildren[index] = cloneElement(prev[index], {
+                    uploadState: UploadState.Complete
+                  });
+                  return updatedChildren;
+                });
+              }
+            }, Math.floor(Math.random() * (1000 - 100 + 1)) + 100);
+          };
+          recTimeout();
+        }
+      });
+    }
+  };
+  return (
+    <UploadCollection
+      onDrop={handleDrop}
+      header={
+        <FlexBox alignItems={FlexBoxAlignItems.Center}>
+          <Title>Start upload:</Title>
+          <Button onClick={simulateUpload}>Upload!</Button>
+        </FlexBox>
+      }
+    >
+      {children}
+    </UploadCollection>
+  );
+};
+`})}),`
+`,e.jsx(l,{children:x}),`
+`,e.jsx(o.h2,{id:"uploadcollectionitem",children:"UploadCollectionItem"}),`
+`,e.jsx(l,{children:j}),`
+`,e.jsx(s,{of:C}),`
+`,e.jsx(c,{})]})}}export{io as default};
+//# sourceMappingURL=UploadCollection-8aac2e6e.js.map
