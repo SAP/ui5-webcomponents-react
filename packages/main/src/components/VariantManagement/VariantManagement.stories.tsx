@@ -29,6 +29,12 @@ export const Default: Story = {
           Favorite & labelReadOnly
         </VariantItem>
         <VariantItem applyAutomatically>ApplyAutomatically</VariantItem>
+        <VariantItem
+          applyAutomatically
+          applyAutomaticallyText="Describe your exceptions that deviate from the standard behavior here."
+        >
+          applyAutomatically & applyAutomaticallyText
+        </VariantItem>
         <VariantItem readOnly>ReadOnly</VariantItem>
         <VariantItem global>Global</VariantItem>
         <VariantItem global readOnly>
