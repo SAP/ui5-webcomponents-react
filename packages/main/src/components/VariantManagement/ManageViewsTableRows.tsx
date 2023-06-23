@@ -57,6 +57,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     global,
     isDefault,
     applyAutomatically,
+    applyAutomaticallyText,
     author,
     setInvalidVariants,
     hideDelete,
@@ -171,7 +172,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
             <Icon name={favoriteIcon} style={{ color: ThemingParameters.sapContent_NonInteractiveIconColor }} />
           ) : (
             <Icon
-              aria-label={a11yFavoriteText}
+              accessibleName={a11yFavoriteText}
               title={iconName === favoriteIcon ? favoriteIconTitleText : unfavoriteIconTitleText}
               name={iconName}
               interactive
@@ -186,7 +187,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       {showSetAsDefault && (
         <TableCell>
           <RadioButton
-            aria-label={a11yStandardText}
+            accessibleName={a11yStandardText}
             checked={defaultView !== undefined ? defaultView === children : isDefault}
             onChange={handleDefaultChange}
           />
@@ -195,9 +196,10 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       {showApplyAutomatically && (
         <TableCell>
           <CheckBox
-            aria-label={a11yApplyAutomaticallyText}
+            accessibleName={a11yApplyAutomaticallyText}
             checked={applyAutomatically}
             onChange={handleApplyAutomaticallyChange}
+            text={applyAutomaticallyText}
           />
         </TableCell>
       )}
