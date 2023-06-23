@@ -59,8 +59,8 @@ describe('VariantManagement', () => {
     cy.findAllByTitle('Unselected as Favorite').eq(0).click();
     cy.findAllByPlaceholderText('View').eq(0).shadow().find('input').type(' Updated!', { force: true });
 
-    cy.findAllByLabelText('Use as standard view').eq(0).click();
-    cy.findAllByLabelText('Apply Automatically').eq(0).click();
+    cy.get('[accessible-name="Use as standard view"]').eq(0).click();
+    cy.get('[accessible-name="Apply Automatically"]').eq(0).click();
 
     cy.findByText('Save').click();
     cy.get('@onSaveManageViews').should('have.been.calledOnce');
