@@ -50,7 +50,7 @@
     "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "3.0.0-beta.18",
+    "@tanstack/react-virtual": "3.0.0-beta.54",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "1.2.1",
     "react-jss": "^10.10.0",
