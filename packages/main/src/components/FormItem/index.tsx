@@ -74,13 +74,18 @@ const useStyles = createUseStyles(
   { name: 'FormItem' }
 );
 
-function FormItemLabel({ label, style }: { label: ReactNode; style?: CSSProperties }) {
+function FormItemLabel({ label, style, className }: { label: ReactNode; style?: CSSProperties; className?: string }) {
   const classes = useStyles();
   const { labelSpan } = useFormContext();
 
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={style} wrappingType={WrappingType.Normal} data-label-span={labelSpan}>
+      <Label
+        className={clsx(classes.label, className)}
+        style={style}
+        wrappingType={WrappingType.Normal}
+        data-label-span={labelSpan}
+      >
         {label ? `${label}:` : ''}
       </Label>
     );
@@ -165,6 +170,7 @@ const FormItem = (props: FormItemPropTypes) => {
           // TODO remove this line as soon as Firefox enables :has by default. https://caniuse.com/css-has
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}
+        className={clsx(labelSpan !== 12 && lastGroupItem && classes.lastGroupItem)}
       />
       <div
         data-id={uniqueId}
