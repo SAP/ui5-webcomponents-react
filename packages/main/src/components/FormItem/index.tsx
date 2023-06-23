@@ -64,7 +64,8 @@ const useStyles = createUseStyles(
       },
       '& > *': {
         //todo should we maybe leave that up to the user now?
-        width: '100%'
+        width: 'auto',
+        flexGrow: 1
         // '--_ui5_input_width': '100% !important'
       }
     },
