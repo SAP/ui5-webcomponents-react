@@ -36,7 +36,7 @@ export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
 export const CozySizes = {
   [CssSizeVariablesNames.ui5WcrBarHeight]: `2.75rem`,
   [CssSizeVariablesNames.ui5WcrButtonTopBottomPadding]: `0.25rem 0`,
-  [CssSizeVariablesNames.ui5WcrAnalyticalTableExpandButtonHeight]: `var(--_ui5_button_base_height)`,
+  [CssSizeVariablesNames.ui5WcrAnalyticalTableExpandButtonHeight]: `2.25rem`,
   [CssSizeVariablesNames.ui5WcrAnalyticalTableExpandIconHeight]: '1rem',
   [CssSizeVariablesNames.ui5WcrAnalyticalTableRowHeight]: `44px`,
   [CssSizeVariablesNames.ui5WcrAnalyticalTableHeaderRowHeight]: `44px`,
