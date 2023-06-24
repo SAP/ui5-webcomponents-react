@@ -355,6 +355,23 @@ By adding the `visibleRowCountMode` prop and setting it to `AnalyticalTableVisib
 
 <Canvas sourceState="none" of={ComponentStories.DynamicRowCount} />
 
+### Code
+
+```jsx
+const TableComponent = (props) => {
+  return (
+    <div style={{ height: `${props.containerHeight}px` }}>
+      <AnalyticalTable
+        data={props.data}
+        columns={props.columns}
+        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
+        header={`Current height: ${props.containerHeight}px - Change the height in the table above`}
+      />
+    </div>
+  );
+};
+```
+
 ## Responsively display columns on small devices (Pop-In)
 
 <ControlsWithNote
