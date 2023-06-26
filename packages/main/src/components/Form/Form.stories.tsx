@@ -60,13 +60,9 @@ export const Default: Story = {
               <Option>Italy</Option>
             </Select>
           </FormItem>
-          <FormItem
-            style={{ alignSelf: 'start' }}
-            label={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}
-          >
+          <FormItem label={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}>
             <TextArea
               rows={5}
-              style={{ width: '210px', '--_ui5_textarea_margin': 0 }}
               placeholder="The styles of the Label of the TextArea FormItem is set to: alignSelf: 'start', paddingTop: '0.25rem'"
             />
           </FormItem>
@@ -74,13 +70,6 @@ export const Default: Story = {
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormItem label="Sole Form Item">
-          <Input type={InputType.Text} />
-        </FormItem>
-        <FormItem label="Sole Form Item">
-          <Input type={InputType.Text} />
-        </FormItem>
-        <FormGroup titleText="Empty" />
         <FormGroup titleText="Company Data">
           <FormItem label={'Company Name'}>
             <Input type={InputType.Text} />
@@ -131,6 +120,171 @@ export const Default: Story = {
             <Text>Walldorf, Germany</Text>
           </FormItem>
         </FormGroup>
+      </Form>
+    );
+  }
+};
+
+const CustomComponent = ({ children }) => {
+  return <>{children}</>;
+};
+
+const CustomComponent2 = () => {
+  return (
+    <CustomComponent>
+      <FormGroup titleText="Group 1 inside custom component2">
+        <CustomComponent>
+          <FormItem label="FormItem 1 within group">
+            <Input />
+          </FormItem>
+          <FormItem label="FormItem 2 within group">
+            <Input />
+          </FormItem>
+        </CustomComponent>
+      </FormGroup>
+      <FormGroup titleText="Group 2 inside custom component2">
+        <FormItem label="FormItem 1 within group">
+          <Input />
+        </FormItem>
+        <FormItem label="FormItem 2 within group">
+          <Input />
+        </FormItem>
+      </FormGroup>
+    </CustomComponent>
+  );
+};
+
+const FormComponent = (props) => {
+  return (
+    <Form {...args}>
+      <FormItem label="Standalone FormItem">
+        <Input />
+      </FormItem>
+      <FormGroup titleText="Standalone FormGroup">
+        <FormItem label="Standalone FormItem within group">
+          <Input />
+        </FormItem>
+        <FormItem label="Standalone FormItem within group">
+          <Input />
+        </FormItem>
+      </FormGroup>
+      <FormItem label="Standalone FormItem">
+        <Input />
+      </FormItem>
+      <CustomComponent>
+        <FormItem label="FormItem within custom component">
+          <Input />
+        </FormItem>
+      </CustomComponent>
+      <FormGroup titleText="Standalone FormGroup with custom component">
+        <CustomComponent>
+          <FormItem label="FormItem 1 within custom component">
+            <Input />
+          </FormItem>
+          <FormItem label="FormItem 2 within custom component">
+            <Input />
+          </FormItem>
+        </CustomComponent>
+      </FormGroup>
+      <CustomComponent>
+        <FormGroup titleText="FormGroup within custom component">
+          <FormItem label="FormItem 1 within group">
+            <Input />
+          </FormItem>
+          <FormItem label="FormItem 2 within group">
+            <Input />
+          </FormItem>
+        </FormGroup>
+      </CustomComponent>
+      <CustomComponent>
+        <FormGroup titleText="Group 1 inside custom component">
+          <CustomComponent>
+            <FormItem label="FormItem 1 within group">
+              <Input />
+            </FormItem>
+            <FormItem label="FormItem 2 within group">
+              <Input />
+            </FormItem>
+          </CustomComponent>
+        </FormGroup>
+        <FormGroup titleText="Group 2 inside custom component">
+          <FormItem label="FormItem 1 within group">
+            <Input />
+          </FormItem>
+          <FormItem label="FormItem 2 within group">
+            <Input />
+          </FormItem>
+        </FormGroup>
+      </CustomComponent>
+      <CustomComponent2 />
+    </Form>
+  );
+};
+
+export const FormWithCustomComponents: Story = {
+  render: (args) => {
+    return (
+      <Form {...args}>
+        <FormItem label="Standalone FormItem">
+          <Input />
+        </FormItem>
+        <FormGroup titleText="Standalone FormGroup">
+          <FormItem label="Standalone FormItem within group">
+            <Input />
+          </FormItem>
+          <FormItem label="Standalone FormItem within group">
+            <Input />
+          </FormItem>
+        </FormGroup>
+        <FormItem label="Standalone FormItem">
+          <Input />
+        </FormItem>
+        <CustomComponent>
+          <FormItem label="FormItem within custom component">
+            <Input />
+          </FormItem>
+        </CustomComponent>
+        <FormGroup titleText="Standalone FormGroup with custom component">
+          <CustomComponent>
+            <FormItem label="FormItem 1 within custom component">
+              <Input />
+            </FormItem>
+            <FormItem label="FormItem 2 within custom component">
+              <Input />
+            </FormItem>
+          </CustomComponent>
+        </FormGroup>
+        <CustomComponent>
+          <FormGroup titleText="FormGroup within custom component">
+            <FormItem label="FormItem 1 within group">
+              <Input />
+            </FormItem>
+            <FormItem label="FormItem 2 within group">
+              <Input />
+            </FormItem>
+          </FormGroup>
+        </CustomComponent>
+        <CustomComponent>
+          <FormGroup titleText="Group 1 inside custom component">
+            <CustomComponent>
+              <FormItem label="FormItem 1 within group">
+                <Input />
+              </FormItem>
+              <FormItem label="FormItem 2 within group">
+                <Input />
+              </FormItem>
+            </CustomComponent>
+          </FormGroup>
+          <FormGroup titleText="Group 2 inside custom component">
+            <FormItem label="FormItem 1 within group">
+              <Input />
+            </FormItem>
+            <FormItem label="FormItem 2 within group">
+              <Input />
+            </FormItem>
+          </FormGroup>
+        </CustomComponent>
+        <CustomComponent2 />
       </Form>
     );
   }
@@ -217,8 +371,4 @@ export const Test = {
       </Form>
     );
   }
-};
-
-const CustomComponent = ({ children }) => {
-  return <>{children}</>;
 };
