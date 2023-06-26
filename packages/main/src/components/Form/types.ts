@@ -12,8 +12,8 @@ export type FormElementTypes = 'formItem' | 'formGroup';
 export type FormContextType = {
   formItems?: FormItemLayoutInfo[];
   formGroups?: FormGroupLayoutInfo[];
-  registerItem: (id: string, type: FormElementTypes, groupId?: string) => void;
-  unregisterItem: (id: string, groupId?: string) => void;
+  registerItem?: (id: string, type: FormElementTypes, groupId?: string) => void;
+  unregisterItem?: (id: string, groupId?: string) => void;
   labelSpan: null | number;
   rowsWithGroup?: Record<number, boolean>;
 };

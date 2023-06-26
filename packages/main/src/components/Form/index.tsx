@@ -199,7 +199,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
   }, []);
 
-  const formLayoutContextValue = useMemo((): FormContextType => {
+  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan'> => {
     const formItems: FormItemLayoutInfo[] = [];
     const formGroups: FormGroupLayoutInfo[] = [];
 
