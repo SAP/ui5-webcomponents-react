@@ -7,7 +7,6 @@ export function useFormContext() {
   return useContext(FormContext);
 }
 
-//todo types
 export const GroupContext = createContext<GroupContextType>({});
 
 export function useFormGroupContext() {

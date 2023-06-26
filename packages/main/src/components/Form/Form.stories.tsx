@@ -138,7 +138,6 @@ export const Default: Story = {
 
 export const Test = {
   render: (args) => {
-    // todo issue with group on labelSpan12 and only 1 row, general: labelSpan12 1 column
     return (
       <Form
         titleText="Test"
@@ -168,7 +167,6 @@ export const Test = {
         </CustomComponent>
         <CustomComponent>
           <FormGroup id={'Item03'} titleText="CEmpty2" />
-          {/*" Wrapped components "*/}
           <FormItem id={'Item2'} /> {/*" Correct map order test - Id shouldn't matter map.forEach => ordered map " */}
           <FormGroup id={'Group1'} titleText="CEmpty3" /> {/*""No FormItem test "*/}
           <FormItem id={'Item1'} /> {/*"" No FormGroup test "*/}

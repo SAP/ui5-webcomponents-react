@@ -37,7 +37,6 @@ const FormGroup = (props: FormGroupPropTypes) => {
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
 
-  //todo spacer
   return (
     <GroupContext.Provider value={{ id: uniqueId }}>
       <>
