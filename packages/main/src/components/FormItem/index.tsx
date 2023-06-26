@@ -61,10 +61,6 @@ const useStyles = createUseStyles(
       '&[data-label-span="12"]': {
         gridColumnEnd: 'span 12',
         paddingBlockEnd: '0.625rem'
-      },
-      '& > *': {
-        width: 'auto',
-        flexGrow: 1
       }
     },
     lastGroupItem: {
