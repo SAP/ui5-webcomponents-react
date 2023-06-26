@@ -39,6 +39,10 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    */
   applyAutomatically?: boolean;
   /**
+   * Text displayed next to the "Apply Automatically" checkbox inside the "Manage Views" dialog.
+   */
+  applyAutomaticallyText?: string;
+  /**
    * If set to false, the user is allowed to change the item's data.
    *
    * __Note:__ When set to true, no "Save" button will be displayed for the `VariantItem` when the `VariantManagement` is in `dirtyState`.
@@ -75,6 +79,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
     global,
     labelReadOnly,
     applyAutomatically,
+    applyAutomaticallyText,
     readOnly,
     selected,
     children,
@@ -101,6 +106,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
       data-global={global}
       data-label-read-only={labelReadOnly}
       data-apply-automatically={applyAutomatically}
+      data-apply-automatically-text={applyAutomaticallyText}
       data-read-only={readOnly}
       data-children={children}
       data-hide-delete={hideDelete}
