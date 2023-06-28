@@ -83,7 +83,7 @@
     "storybook": "7.0.23",
     "turndown": "^7.0.0",
     "typedoc": "^0.24.0",
-    "typescript": "5.0.4",
+    "typescript": "5.1.5",
     "vite": "^4.1.1",
     "vite-plugin-istanbul": "^4.0.0",
     "vite-tsconfig-paths": "^4.0.5"
