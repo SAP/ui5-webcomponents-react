@@ -182,6 +182,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BackgroundDesign':
     case 'BusyIndicatorSize':
     case 'ButtonDesign':
+    case 'ButtonType':
     case 'BorderDesign':
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
