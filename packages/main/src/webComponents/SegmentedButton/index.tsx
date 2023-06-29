@@ -27,7 +27,7 @@ export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5Dom
   /**
    * Currently selected item.
    *
-   * @deprecated This method will be removed in the next major release.
+   * @deprecated This method will be removed in the next major release. Please use the <code>selectedItems</code> property instead.
    */
   readonly selectedItem: ReactNode;
   /**

@@ -51,7 +51,7 @@ interface SelectAttributes {
 
 export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
   /**
-   * Currently selected `ui5-option` element.
+   * Currently selected `Option` element.
    */
   readonly selectedOption: ReactNode;
 }

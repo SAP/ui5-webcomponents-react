@@ -50,6 +50,8 @@ interface ToggleButtonAttributes {
    * When set to `true`, the component will automatically submit the nearest HTML form element on `press`.
    *
    * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   *
+   * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
   submits?: boolean;
   /**

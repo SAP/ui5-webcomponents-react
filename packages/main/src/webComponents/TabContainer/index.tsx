@@ -31,6 +31,8 @@ interface TabContainerAttributes {
    * Defines whether the overflow select list is displayed.
    *
    * The overflow select list represents a list, where all tabs are displayed so that it's easier for the user to select a specific tab.
+   *
+   * @deprecated Since the introduction of TabsOverflowMode, overflows will always be visible if there is not enough space for all tabs, all hidden tabs are moved to a select list in the respective overflows and are accessible via the <code>overflowButton</code> and / or <code>startOverflowButton</code> slots.
    */
   showOverflow?: boolean;
   /**
