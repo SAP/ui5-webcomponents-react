@@ -106,7 +106,7 @@ export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonPr
 }
 
 /**
- * The `TimePicker` component provides an input field with assigned sliders which are opened on user action. The `TimePicker` allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
+ * The `TimePicker` component provides an input field with assigned clocks which are opened on user action. The `TimePicker` allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the clocks.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *

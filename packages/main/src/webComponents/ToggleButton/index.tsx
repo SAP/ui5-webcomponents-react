@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import type { ReactNode, MouseEventHandler } from 'react';
-import { ButtonDesign } from '../../enums/index.js';
+import { ButtonDesign, ButtonType } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -57,6 +57,20 @@ interface ToggleButtonAttributes {
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
+  /**
+   * Defines whether the button has special form-related functionality.
+   *
+   * **The available values are:**
+   *
+   * *   `Button`
+   * *   `Submit`
+   * *   `Reset`
+   *
+   *
+   *
+   * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   */
+  type?: ButtonType | keyof typeof ButtonType;
 }
 
 export interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
@@ -103,7 +117,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click'],
@@ -113,7 +127,8 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  design: ButtonDesign.Default
+  design: ButtonDesign.Default,
+  type: ButtonType.Button
 };
 
 export { ToggleButton };

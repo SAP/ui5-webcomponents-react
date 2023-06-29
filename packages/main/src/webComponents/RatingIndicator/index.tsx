@@ -10,6 +10,10 @@ interface RatingIndicatorAttributes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is disabled.
    *
    * **Note:** A disabled component is completely noninteractive.
@@ -25,6 +29,10 @@ interface RatingIndicatorAttributes {
    * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
+  /**
+   * Defines whether the component is required.
+   */
+  required?: boolean;
   /**
    * The indicated value of the rating.
    *
@@ -55,8 +63,8 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
-  ['accessibleName', 'max', 'value'],
-  ['disabled', 'readonly'],
+  ['accessibleName', 'accessibleNameRef', 'max', 'value'],
+  ['disabled', 'readonly', 'required'],
   [],
   ['change'],
   () => import('@ui5/webcomponents/dist/RatingIndicator.js')

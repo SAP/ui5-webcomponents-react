@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import type { ReactNode, MouseEventHandler } from 'react';
+import type { ButtonType } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -33,6 +34,20 @@ interface SegmentedButtonItemAttributes {
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
+  /**
+   * Defines whether the button has special form-related functionality.
+   *
+   * **The available values are:**
+   *
+   * *   `Button`
+   * *   `Submit`
+   * *   `Reset`
+   *
+   *
+   *
+   * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   */
+  type?: ButtonType | keyof typeof ButtonType;
 }
 
 export interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {
@@ -79,7 +94,7 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
+  ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip', 'type'],
   ['pressed', 'disabled'],
   [],
   ['click'],

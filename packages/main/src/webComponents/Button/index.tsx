@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
-import type { ReactNode, MouseEventHandler } from 'react';
-import { ButtonDesign } from '../../enums/index.js';
+import type { MouseEventHandler, ReactNode } from 'react';
+import { ButtonDesign, ButtonType } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -46,6 +46,8 @@ interface ButtonAttributes {
    * When set to `true`, the component will automatically submit the nearest HTML form element on `press`.
    *
    * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   *
+   * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
   submits?: boolean;
   /**
@@ -53,6 +55,20 @@ interface ButtonAttributes {
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
+  /**
+   * Defines whether the button has special form-related functionality.
+   *
+   * **The available values are:**
+   *
+   * *   `Button`
+   * *   `Submit`
+   * *   `Reset`
+   *
+   *
+   *
+   * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   */
+  type?: ButtonType | keyof typeof ButtonType;
 }
 
 export interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
@@ -97,7 +113,7 @@ export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'on
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
   ['disabled', 'iconEnd', 'submits'],
   [],
   ['click'],
@@ -107,7 +123,8 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
 Button.displayName = 'Button';
 
 Button.defaultProps = {
-  design: ButtonDesign.Default
+  design: ButtonDesign.Default,
+  type: ButtonType.Button
 };
 
 export { Button };

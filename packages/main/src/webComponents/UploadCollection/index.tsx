@@ -29,8 +29,10 @@ interface UploadCollectionAttributes {
    *
    * *   `None`
    * *   `SingleSelect`
+   * *   `SingleSelectBegin`
+   * *   `SingleSelectEnd`
    * *   `MultiSelect`
-   * *   `Delete`
+   * *   `Delete` - this mode has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
    */
   mode?: ListMode | keyof typeof ListMode;
   /**
@@ -70,9 +72,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    */
   onDrop?: DragEventHandler<UploadCollectionDomRef>;
   /**
-   * Fired when the Delete button of any item is pressed.
-   *
-   * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
+   * Fired when the delete button of any item is pressed.
    */
   onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionItemDeleteEventDetail>) => void;
   /**
