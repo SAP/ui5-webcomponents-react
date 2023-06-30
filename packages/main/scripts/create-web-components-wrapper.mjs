@@ -315,6 +315,9 @@ const resolveInheritedAttributes = (componentSpec) => {
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
 ].forEach((spec) => {
+  if (spec.module === 'HasPopup') {
+    return;
+  }
   const template = dedent`
   // Generated file - do not change manually! 
   

@@ -69,6 +69,7 @@ export interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
 export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
+   * **Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.
    */
   children?: ReactNode | ReactNode[];
   /**
