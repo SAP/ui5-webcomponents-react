@@ -1,0 +1,38 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+import { SsrLimitations } from './SsrLimitations';
+
+<Meta title="Server Side Rendering" />
+
+<TableOfContent />
+
+# Server Side Rendering
+
+We're happy to announce that starting from **v1.17.0**, UI5 Web Components for React is supporting Server Side Rendering Frameworks like [Next.js](https://nextjs.org/) 🎉.
+
+<SsrLimitations />
+
+<br />
+<br />
+
+## Next.js
+
+### Create a new project
+
+The best way to start using UI5 Web Components in Next.js is using one of our [templates](https://sap.github.io/ui5-webcomponents-react/?path=/docs/project-templates--docs).
+We have templates available for both the pages and the app router.
+
+### Add to existing project
+
+In case you already have an existing Next.js project and want to add UI5 Web Components for React to it, you first need to follow our [general Getting Started Guide](https://sap.github.io/ui5-webcomponents-react/?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app).
+
+As UI5 Web Components for React is using `react-jss` internally, you need to apply some changes to your `_app` and `_document` file (in case you are using the pages router).
+You can copy these changes either from the official [next.js-react-jss example](https://github.com/vercel/next.js/tree/canary/examples/with-react-jss) or from our [pages router template](https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-pages).
+
+In case you are already using the app router, you can copy the `react-jss` setup from the `app/CssRegistry.tsx` in our [app router template](https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-app). Make sure to add this component to your root layout!
+
+## Other frameworks
+
+Your favorite framework is missing here? Feel free to [edit this page](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/knowledge-base/ServerSideRendering.mdx) and submit a pull request to get it added!
+
+<Footer />
