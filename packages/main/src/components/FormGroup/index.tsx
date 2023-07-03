@@ -1,3 +1,5 @@
+'use client';
+
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 import React, { useEffect, useMemo } from 'react';
