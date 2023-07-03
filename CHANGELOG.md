@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.3...v1.17.0) (2023-07-03)
+
+### Bug Fixes
+
+- **AnalyticalTable:** use correct height for expand button ([#4782](https://github.com/SAP/ui5-webcomponents-react/issues/4782)) ([168febf](https://github.com/SAP/ui5-webcomponents-react/commit/168febfc453c66758621b12c9c4c556eee76af7f))
+- **translations:** fix "default" translation in Portuguese ([#4812](https://github.com/SAP/ui5-webcomponents-react/issues/4812)) ([006eea2](https://github.com/SAP/ui5-webcomponents-react/commit/006eea2ed13a75dae78c3a55a6f83f3f48d718b3)), closes [#4789](https://github.com/SAP/ui5-webcomponents-react/issues/4789)
+- **TypeScript:** use UI5 Web Component types in custom components ([#4762](https://github.com/SAP/ui5-webcomponents-react/issues/4762)) ([522fe40](https://github.com/SAP/ui5-webcomponents-react/commit/522fe40391a3de3dbc1a6586cd4740403640e544))
+
+### Features
+
+- **Form:** allow custom components as children ([#4777](https://github.com/SAP/ui5-webcomponents-react/issues/4777)) ([4468314](https://github.com/SAP/ui5-webcomponents-react/commit/44683143ea7fccf28dd5656372143c47cc2b6fba)), closes [#4497](https://github.com/SAP/ui5-webcomponents-react/issues/4497) [#4597](https://github.com/SAP/ui5-webcomponents-react/issues/4597)
+- update `@ui5/webcomponents` to `~1.15.1` ([#4811](https://github.com/SAP/ui5-webcomponents-react/issues/4811)) ([bebb6bb](https://github.com/SAP/ui5-webcomponents-react/commit/bebb6bb87c4eb55b4598137329c0a2f12d03293e))
+- **VariantItem:** add `applyAutomaticallyText` prop ([#4779](https://github.com/SAP/ui5-webcomponents-react/issues/4779)) ([f12fc8d](https://github.com/SAP/ui5-webcomponents-react/commit/f12fc8de05da268f449ed5ed00183e114debf20a))
+
 ## [1.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.2...v1.16.3) (2023-06-19)
 
 ### Bug Fixes

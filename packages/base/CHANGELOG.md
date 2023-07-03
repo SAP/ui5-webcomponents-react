@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.3...v1.17.0) (2023-07-03)
+
+### Bug Fixes
+
+- **AnalyticalTable:** use correct height for expand button ([#4782](https://github.com/SAP/ui5-webcomponents-react/issues/4782)) ([168febf](https://github.com/SAP/ui5-webcomponents-react/commit/168febfc453c66758621b12c9c4c556eee76af7f))
+
+### Features
+
+- update `@ui5/webcomponents` to `~1.15.1` ([#4811](https://github.com/SAP/ui5-webcomponents-react/issues/4811)) ([bebb6bb](https://github.com/SAP/ui5-webcomponents-react/commit/bebb6bb87c4eb55b4598137329c0a2f12d03293e))
+
 ## [1.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.2...v1.16.3) (2023-06-19)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
