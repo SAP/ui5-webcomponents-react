@@ -46,7 +46,7 @@ export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSe
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiInput" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
   'ui5-token',

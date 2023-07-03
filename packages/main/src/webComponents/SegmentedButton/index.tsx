@@ -27,7 +27,7 @@ export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5Dom
   /**
    * Currently selected item.
    *
-   * @deprecated This method will be removed in the next major release.
+   * @deprecated This method will be removed in the next major release. Please use the <code>selectedItems</code> property instead.
    */
   readonly selectedItem: ReactNode;
   /**
@@ -58,7 +58,7 @@ export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, Com
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SegmentedButton" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-SegmentedButton" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',

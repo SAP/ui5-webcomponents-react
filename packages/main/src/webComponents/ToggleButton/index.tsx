@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import type { ReactNode, MouseEventHandler } from 'react';
-import { ButtonDesign } from '../../enums/index.js';
+import { ButtonDesign, ButtonType } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -50,6 +50,8 @@ interface ToggleButtonAttributes {
    * When set to `true`, the component will automatically submit the nearest HTML form element on `press`.
    *
    * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   *
+   * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
   submits?: boolean;
   /**
@@ -57,6 +59,20 @@ interface ToggleButtonAttributes {
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
+  /**
+   * Defines whether the button has special form-related functionality.
+   *
+   * **The available values are:**
+   *
+   * *   `Button`
+   * *   `Submit`
+   * *   `Reset`
+   *
+   *
+   *
+   * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   */
+  type?: ButtonType | keyof typeof ButtonType;
 }
 
 export interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
@@ -99,11 +115,11 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ToggleButton" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ToggleButton" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
   ['pressed', 'disabled', 'iconEnd', 'submits'],
   [],
   ['click'],
@@ -113,7 +129,8 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>
 ToggleButton.displayName = 'ToggleButton';
 
 ToggleButton.defaultProps = {
-  design: ButtonDesign.Default
+  design: ButtonDesign.Default,
+  type: ButtonType.Button
 };
 
 export { ToggleButton };

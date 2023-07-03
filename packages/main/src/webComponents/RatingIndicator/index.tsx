@@ -10,6 +10,10 @@ interface RatingIndicatorAttributes {
    */
   accessibleName?: string;
   /**
+   * Receives id(or many ids) of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+  /**
    * Defines whether the component is disabled.
    *
    * **Note:** A disabled component is completely noninteractive.
@@ -25,6 +29,10 @@ interface RatingIndicatorAttributes {
    * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
    */
   readonly?: boolean;
+  /**
+   * Defines whether the component is required.
+   */
+  required?: boolean;
   /**
    * The indicated value of the rating.
    *
@@ -51,12 +59,12 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/RatingIndicator" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-RatingIndicator" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
-  ['accessibleName', 'max', 'value'],
-  ['disabled', 'readonly'],
+  ['accessibleName', 'accessibleNameRef', 'max', 'value'],
+  ['disabled', 'readonly', 'required'],
   [],
   ['change'],
   () => import('@ui5/webcomponents/dist/RatingIndicator.js')

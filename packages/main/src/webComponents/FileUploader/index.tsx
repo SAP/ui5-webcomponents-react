@@ -69,6 +69,7 @@ export interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
 export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<CommonProps, 'onChange'> {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
+   * **Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -97,7 +98,7 @@ export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<Comm
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FileUploader" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-FileUploader" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',

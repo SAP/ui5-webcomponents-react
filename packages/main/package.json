@@ -43,7 +43,7 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf dist tmp wrappers",
+    "clean": "rimraf dist tmp wrappers ssr",
     "build:i18n": "node scripts/generateI18n.mjs",
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
@@ -59,10 +59,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.14.0",
-    "@ui5/webcomponents-base": "~1.14.0",
-    "@ui5/webcomponents-fiori": "~1.14.0",
-    "@ui5/webcomponents-icons": "~1.14.0",
+    "@ui5/webcomponents": "~1.15.1",
+    "@ui5/webcomponents-base": "~1.15.1",
+    "@ui5/webcomponents-fiori": "~1.15.1",
+    "@ui5/webcomponents-icons": "~1.15.1",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
