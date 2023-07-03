@@ -1,14 +1,15 @@
 'use client';
 
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, Fragment, isValidElement } from 'react';
+import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
-import { useFormContext } from '../Form/FormContext.js';
+import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
 
 export interface FormItemPropTypes {
   /**
@@ -38,9 +39,6 @@ const useStyles = createUseStyles(
         justifySelf: 'start',
         paddingBlockEnd: '0.25rem'
       },
-      '&:has(+ $content + [data-component-name="FormGroupTitle"])': {
-        paddingBlockEnd: '1rem'
-      },
       '&:has(+ $content > [ui5-checkbox])': {
         alignSelf: 'center'
       },
@@ -63,22 +61,27 @@ const useStyles = createUseStyles(
       '&[data-label-span="12"]': {
         gridColumnEnd: 'span 12',
         paddingBlockEnd: '0.625rem'
-      },
-      '&:has(+ [data-component-name="FormGroupTitle"])': {
-        paddingBlockEnd: '1rem'
       }
+    },
+    lastGroupItem: {
+      marginBlockEnd: '1rem'
     }
   },
   { name: 'FormItem' }
 );
 
-function FormItemLabel({ label, style }: { label: ReactNode; style?: CSSProperties }) {
+function FormItemLabel({ label, style, className }: { label: ReactNode; style?: CSSProperties; className?: string }) {
   const classes = useStyles();
   const { labelSpan } = useFormContext();
 
   if (typeof label === 'string') {
     return (
-      <Label className={classes.label} style={style} wrappingType={WrappingType.Normal} data-label-span={labelSpan}>
+      <Label
+        className={clsx(classes.label, className)}
+        style={style}
+        wrappingType={WrappingType.Normal}
+        data-label-span={labelSpan}
+      >
         {label ? `${label}:` : ''}
       </Label>
     );
@@ -121,19 +124,37 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  * __Note__: The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem = (props: FormItemPropTypes) => {
-  // eslint-disable-next-line react/prop-types
-  const { label, children, columnIndex, rowIndex } = props as InternalProps;
+  const { label, children } = props as InternalProps;
   const uniqueId = useIsomorphicId();
-
+  const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan, rowsWithGroup } = useFormContext();
+  const groupContext = useFormGroupContext();
   const classes = useStyles();
-  const { labelSpan } = useFormContext();
+
+  useEffect(() => {
+    registerItem?.(uniqueId, 'formItem', groupContext.id);
+    return () => {
+      unregisterItem?.(uniqueId, groupContext.id);
+    };
+  }, [uniqueId, registerItem, unregisterItem, groupContext.id]);
+
+  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => uniqueId === itemId), [layoutInfos, uniqueId]);
+
+  if (layoutInfos && !layoutInfo) return null;
+
+  const { columnIndex, rowIndex, lastGroupItem } = layoutInfo;
 
   const gridColumnStart = (columnIndex ?? 0) * 12 + 1;
 
   const contentGridColumnStart =
     columnIndex != null ? (labelSpan === 12 ? gridColumnStart : gridColumnStart + (labelSpan ?? 0)) : undefined;
 
-  const calculatedGridRowStart = labelSpan === 12 ? (rowIndex ?? 0) + 1 : rowIndex ?? 0;
+  const calculatedGridRowIndex = (() => {
+    if (!layoutInfo.groupId && rowsWithGroup[rowIndex]) {
+      return rowIndex + 1;
+    } else return rowIndex ?? 0;
+  })();
+
+  const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
 
   return (
     <>
@@ -141,13 +162,15 @@ const FormItem = (props: FormItemPropTypes) => {
         label={label}
         style={{
           gridColumnStart,
-          gridRowStart: rowIndex ?? undefined,
+          gridRowStart: labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined,
           // TODO remove this line as soon as Firefox enables :has by default. https://caniuse.com/css-has
           alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
         }}
+        className={clsx(labelSpan !== 12 && lastGroupItem && classes.lastGroupItem)}
       />
       <div
-        className={classes.content}
+        data-id={uniqueId}
+        className={clsx(classes.content, lastGroupItem && classes.lastGroupItem)}
         style={{
           gridColumnStart: contentGridColumnStart,
           gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined

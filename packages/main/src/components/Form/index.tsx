@@ -1,16 +1,16 @@
-'use client';
-
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
-import React, { Children, cloneElement, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import type { ElementType, ReactNode } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { Title } from '../../webComponents/index.js';
-import { FormGroupTitle } from '../FormGroup/FormGroupTitle.js';
 import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext.js';
+import type { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
+
+const useStyles = createUseStyles(styles, { name: 'Form' });
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -98,7 +98,6 @@ export interface FormPropTypes extends CommonProps {
   as?: keyof HTMLElementTagNameMap;
 }
 
-const useStyles = createUseStyles(styles, { name: 'Form' });
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
  * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
@@ -120,8 +119,12 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     labelSpanL = 4,
     labelSpanXL = 4,
     titleText,
+    style,
     ...rest
   } = props;
+
+  const [items, setItems] = useState<Map<string, ItemInfo>>(() => new Map());
+  const classes = useStyles();
 
   const columnsMap = new Map();
   columnsMap.set('Phone', columnsS);
@@ -135,11 +138,10 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   labelSpanMap.set('Desktop', labelSpanL);
   labelSpanMap.set('LargeDesktop', labelSpanXL);
 
-  const [componentRef, containerRef] = useSyncRef<HTMLFormElement>(ref);
+  const [componentRef, formRef] = useSyncRef<HTMLFormElement>(ref);
   // use the window range set as first best guess, if not available use Desktop
   const [currentRange, setCurrentRange] = useState(Device.getCurrentRange()?.name ?? 'Desktop');
   const lastRange = useRef(currentRange);
-
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
       const rangeInfo = Device.getCurrentRange(form.contentRect.width);
@@ -149,127 +151,140 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       }
     });
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (formRef.current) {
+      observer.observe(formRef.current);
     }
 
     return () => {
       observer.disconnect();
     };
-  }, [containerRef]);
-
-  const classes = useStyles();
-
-  const currentNumberOfColumns = columnsMap.get(currentRange);
+  }, [formRef]);
   const currentLabelSpan = labelSpanMap.get(currentRange);
+  const currentNumberOfColumns = columnsMap.get(currentRange);
 
-  const formGroups = useMemo(() => {
-    if (currentNumberOfColumns === 1) {
-      return children;
-    }
-
-    const computedFormGroups = [];
-    const childrenArray = Children.toArray(children);
-    const rows = childrenArray.reduce((acc, val, idx) => {
-      const columnIndex = Math.floor(idx / currentNumberOfColumns);
-      acc[columnIndex] ??= [];
-      acc[columnIndex].push(val);
-      return acc;
-    }, []) as ReactElement[][];
-
-    const maxRowsPerRow: number[] = [];
-    rows.forEach((rowGroup: ReactElement[], rowIndex) => {
-      maxRowsPerRow[rowIndex] = Math.max(
-        ...rowGroup.map((row) => {
-          if ((row.type as any).displayName === 'FormItem') {
-            return 1;
-          }
-          return Children.count(row.props.children) + 1;
-        })
-      );
-    });
-
-    let totalRowCount = 2;
-
-    rows.forEach((formGroup: ReactElement[], rowIndex) => {
-      const rowsForThisRow = maxRowsPerRow.at(rowIndex);
-      formGroup.forEach((cell, columnIndex) => {
-        const titleStyles: CSSProperties = {
-          gridColumnStart: columnIndex * 12 + 1,
-          gridRowStart: totalRowCount
-        };
-
-        if (cell?.props?.titleText) {
-          computedFormGroups.push(
-            <FormGroupTitle
-              titleText={cell.props.titleText}
-              style={titleStyles}
-              key={`title-col-${columnIndex}-row-${totalRowCount}`}
-            />
-          );
+  const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
+    setItems((state) => {
+      const clonedMap = new Map(state);
+      if (groupId) {
+        const groupItem = clonedMap.get(groupId);
+        if (groupItem) {
+          groupItem.formItemIds = new Set(groupItem.formItemIds).add(id);
+        } else {
+          clonedMap.set(groupId, {
+            type: 'formGroup',
+            formItemIds: new Set([id])
+          });
         }
-
-        for (let i = 0; i < rowsForThisRow; i++) {
-          let itemToRender;
-          if ((cell.type as any).displayName === 'FormGroup') {
-            itemToRender = Children.toArray(cell.props.children).at(i);
-          } else if ((cell.type as any).displayName === 'FormItem' && i === 0) {
-            // render a single FormItem only when index is 0
-            itemToRender = cell;
-          }
-
-          if (itemToRender) {
-            computedFormGroups.push(
-              cloneElement(itemToRender as ReactElement, {
-                key: `col-${columnIndex}-row-${totalRowCount + i}`,
-                columnIndex,
-                rowIndex: totalRowCount + i + 1
-              })
-            );
-          }
+      } else {
+        if (!clonedMap.has(id)) {
+          clonedMap.set(id, { type, formItemIds: new Set() });
         }
-      });
-      totalRowCount += rowsForThisRow;
-      if (rowsForThisRow === 1) {
-        totalRowCount += 1;
       }
+      return clonedMap;
+    });
+  }, []);
+
+  const unregisterItem = useCallback((id: string, groupId?: string) => {
+    setItems((state) => {
+      const clonedMap = new Map(state);
+      if (groupId) {
+        const groupItem = clonedMap.get(groupId);
+        if (groupItem) {
+          groupItem.formItemIds.delete(id);
+        }
+      } else {
+        clonedMap.delete(id);
+      }
+      return clonedMap;
+    });
+  }, []);
+
+  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan'> => {
+    const formItems: FormItemLayoutInfo[] = [];
+    const formGroups: FormGroupLayoutInfo[] = [];
+
+    let index = -1;
+    let localColumnIndex = 0;
+    // depending on the labelSpan, each form item takes up either 1 (labelSpan < 12) or 2 (labelSpan == 12) rows
+    const rowsPerFormItem = currentLabelSpan === 12 ? 2 : 1;
+    let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
+    // no. of rows in a "line" - e.g. when a group has 5 items, the next line needs to start below that group
+    let nextRowIndex = rowIndex;
+    const rowsWithGroup = {};
+
+    items.forEach(({ type, formItemIds }, id) => {
+      const columnIndex = localColumnIndex % currentNumberOfColumns;
+      index++;
+      if (type === 'formGroup') {
+        rowsWithGroup[rowIndex] = true;
+        formGroups.push({ id, index, columnIndex, rowIndex });
+        let localRowIndex = 1;
+        let localIndex = 1;
+
+        if (!formItemIds.size) {
+          nextRowIndex++;
+        }
+        formItemIds.forEach((itemId, _, set) => {
+          formItems.push({
+            id: itemId,
+            index,
+            groupId: id,
+            columnIndex,
+            rowIndex: rowIndex + localRowIndex,
+            lastGroupItem: set.size === localIndex
+          });
+          if (set.size === localIndex) {
+            if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
+              nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
+            }
+          }
+          localRowIndex += rowsPerFormItem;
+          localIndex++;
+        });
+      } else {
+        if (nextRowIndex < rowIndex + 1) {
+          nextRowIndex += rowsPerFormItem;
+        }
+        formItems.push({ id, index, columnIndex, rowIndex });
+      }
+
+      if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
+        rowIndex = nextRowIndex;
+      }
+      localColumnIndex++;
     });
 
-    return computedFormGroups;
-  }, [children, currentNumberOfColumns]);
-
+    return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
+  }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
-
   const CustomTag = as as ElementType;
+
   return (
-    <FormContext.Provider value={{ labelSpan: currentLabelSpan }}>
+    <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
       <CustomTag
         className={clsx(classes.formContainer, className)}
         suppressHydrationWarning={true}
         ref={componentRef}
+        style={{
+          ...style,
+          '--_ui5wcr_form_label_span_s': labelSpanS,
+          '--_ui5wcr_form_label_span_m': labelSpanM,
+          '--_ui5wcr_form_label_span_l': labelSpanL,
+          '--_ui5wcr_form_label_span_xl': labelSpanXL,
+          '--_ui5wcr_form_columns_s': columnsS,
+          '--_ui5wcr_form_columns_m': columnsM,
+          '--_ui5wcr_form_columns_l': columnsL,
+          '--_ui5wcr_form_columns_xl': columnsXL
+        }}
         {...rest}
       >
-        <div
-          className={formClassNames}
-          style={
-            {
-              '--_ui5wcr_form_label_span_s': labelSpanS,
-              '--_ui5wcr_form_label_span_m': labelSpanM,
-              '--_ui5wcr_form_label_span_l': labelSpanL,
-              '--_ui5wcr_form_label_span_xl': labelSpanXL,
-              '--_ui5wcr_form_columns_s': columnsS,
-              '--_ui5wcr_form_columns_m': columnsM,
-              '--_ui5wcr_form_columns_l': columnsL,
-              '--_ui5wcr_form_columns_xl': columnsXL
-            } as CSSProperties
-          }
-        >
+        <div className={formClassNames}>
           {titleText && (
-            <Title level={TitleLevel.H3} className={classes.formTitle}>
+            <Title level={TitleLevel.H3} className={classes.formTitle} style={{ gridColumn: '1 / -1' }}>
               {titleText}
             </Title>
           )}
-          {formGroups}
+          {children}
         </div>
       </CustomTag>
     </FormContext.Provider>
