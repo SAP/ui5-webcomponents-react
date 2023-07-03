@@ -194,7 +194,7 @@ export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ShellBar" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ShellBar" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',

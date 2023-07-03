@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 import type { AvatarGroupClickEventDetail } from '@ui5/webcomponents/dist/AvatarGroup.js';
 import type { ReactNode } from 'react';
-import { AvatarGroupType } from '../../enums/index.js';
 import type { AvatarColorScheme } from '../../enums/index.js';
+import { AvatarGroupType } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
@@ -27,7 +27,7 @@ export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
    */
   readonly colorScheme: (AvatarColorScheme | keyof typeof AvatarColorScheme)[];
   /**
-   * Returns an array containing the `ui5-avatar` instances that are currently not displayed due to lack of space.
+   * Returns an array containing the `Avatar` instances that are currently not displayed due to lack of space.
    */
   readonly hiddenItems: ReactNode | ReactNode[];
 }
@@ -69,7 +69,7 @@ export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<Common
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/AvatarGroup" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-AvatarGroup" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',

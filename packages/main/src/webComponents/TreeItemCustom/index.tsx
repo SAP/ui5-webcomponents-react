@@ -65,6 +65,13 @@ interface TreeItemCustomAttributes {
 
 export interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRef {
   /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM. The value of each `aria-setsize` is an integer reflecting number of items in the complete set. **Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
+   * *   `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM. The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   */
+  accessibilityAttributes: Record<string, unknown>;
+  /**
    * Call this method to manually switch the `expanded` state of a tree item.
    */
   toggle: () => void;
@@ -109,7 +116,7 @@ export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Omit<
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Tree" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
   'ui5-tree-item-custom',

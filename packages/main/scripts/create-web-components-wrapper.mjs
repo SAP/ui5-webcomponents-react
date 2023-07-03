@@ -34,10 +34,6 @@ const EXCLUDE_LIST = [];
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
 
-const EXTENDED_PROP_DESCRIPTION = {
-  primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
-};
-
 // use JSDoc syntax here
 const CUSTOM_MAIN_DESCRIPTION = {
   IllustratedMessage: (desc) => {
@@ -49,130 +45,6 @@ ${desc}
   }
 };
 
-const CUSTOM_DESCRIPTION_REPLACE = {
-  Avatar: {
-    icon: (desc) => desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``)
-  },
-  ComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;ComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/ComboBox>
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  Input: {
-    children: (description) => {
-      const formatExample = description.replace(
-        `   * Example:  
-   *   
-   * <ui5-input show-suggestions>  
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
-   * </ui5-input>  `,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;Input showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/Input>
-   *  </code>
-   * </pre>`
-      );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    }
-  },
-  MultiComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-multi-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-multi-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/MultiComboBox>
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  MultiInput: {
-    children: (description) => {
-      const formatExample = description.replace(
-        `   * Example:  
-   *   
-   * <ui5-input show-suggestions>  
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
-   * </ui5-input>  `,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiInput showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/MultiInput>
-   *  </code>
-   * </pre>`
-      );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    },
-    tokens: (description) => {
-      return description.replace(
-        `   * Example:  
-   * <ui5-multi-input>  
-   *     <ui5-token slot="tokens" text="Token 1"></ui5-token>  
-   *     <ui5-token slot="tokens" text="Token 2"></ui5-token>  
-   * </ui5-multi-input>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiInput<br />
-   *    &nbsp;tokens={<br />
-   *    &nbsp;&nbsp;&lt;><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&lt;/><br />
-   *    &nbsp;}<br />
-   *    />
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  ShellBar: {
-    children: (desc) => {
-      return desc.replace('<ui5-shellbar-item></ui5-shellbar-item>', '`ShellBarItem`');
-    },
-    menuItems: (desc) => {
-      return desc.replace('<ui5-li></ui5-li>', '`StandardListItem`');
-    }
-  }
-};
 // todo: add StepInput when `onInput` is available (https://github.com/SAP/ui5-webcomponents/issues/5177)
 const INPUT_COMPONENTS = new Set([
   'ComboBox',
@@ -213,7 +85,7 @@ for (const spec of allWebComponents) {
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
-const replaceTagNameWithModuleName = (description) => {
+export const replaceTagNameWithModuleName = (description) => {
   let parsedDescription = description.replace(/(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
     if (tag === 'ui5-link') return tag;
     if (tag === 'ui5-webcomponents-react') return tag;
@@ -340,6 +212,7 @@ const createWebComponentWrapper = async (
     attributes,
     slotsAndEvents,
     description: componentDescription,
+    ui5wcPackage: componentSpec.name.includes('fiori') ? 'fiori' : 'main',
     tagName: componentSpec.tagname,
     regularProps,
     booleanProps,
@@ -443,6 +316,9 @@ const resolveInheritedAttributes = (componentSpec) => {
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
 ].forEach((spec) => {
+  if (spec.module === 'HasPopup') {
+    return;
+  }
   const template = dedent`
   // Generated file - do not change manually! 
   
@@ -456,32 +332,6 @@ const resolveInheritedAttributes = (componentSpec) => {
 
   writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
 });
-
-const propDescription = (componentSpec, property) => {
-  if (!componentSpec.tagname) {
-    return property.description || '';
-  }
-  let formattedDescription = Utils.formatDescription(property.description, componentSpec);
-
-  const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-  if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-    formattedDescription = customDescriptionReplace[property.name](formattedDescription);
-  }
-
-  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name] ?? '';
-
-  if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-    formattedDescription += `
-          *
-          * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (\`slot="${property.name}"\`). 
-          * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
-          *
-          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).`;
-  }
-
-  return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-};
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
@@ -505,7 +355,7 @@ allWebComponents
 
         attributes.push(dedent`
         /**
-         * ${propDescription(componentSpec, property)}
+         * ${Utils.propDescription(componentSpec, property)}
          */
          ${property.name}?: ${tsType.tsType};
         `);
@@ -546,7 +396,7 @@ allWebComponents
 
           slotsAndEvents.push(dedent`
         /**
-         * ${propDescription(componentSpec, property)}
+         * ${Utils.propDescription(componentSpec, property)}
          */
          ${property.name}?: ${tsType.tsType};
         `);
