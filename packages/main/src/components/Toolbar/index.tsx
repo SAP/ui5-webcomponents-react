@@ -37,6 +37,8 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    * Defines the content of the `Toolbar`.
    *
    * __Note:__ Although this prop accepts all `ReactNode` types, it is strongly recommended to not pass `string` or `number` to it.
+   *
+   * __Note:__ Only components displayed inside the Toolbar are supported as children, i.e. elements positioned outside the normal flow of the document (like dialogs or popovers), can cause undesired behavior.
    */
   children?: ReactNode | ReactNode[];
   /**
