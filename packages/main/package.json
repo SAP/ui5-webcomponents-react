@@ -43,7 +43,7 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf dist tmp wrappers",
+    "clean": "rimraf dist tmp wrappers ssr",
     "build:i18n": "node scripts/generateI18n.mjs",
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
