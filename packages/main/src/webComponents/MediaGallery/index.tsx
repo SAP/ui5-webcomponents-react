@@ -78,12 +78,12 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
 }
 
 /**
- * The `MediaGallery` component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the `MediaGalleryItem` component. The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size.
+ * The `MediaGallery` component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the `MediaGallery-item` component. The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size.
  * The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MediaGallery" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-MediaGallery" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>(
   'ui5-media-gallery',

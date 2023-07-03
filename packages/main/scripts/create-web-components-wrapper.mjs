@@ -212,6 +212,7 @@ const createWebComponentWrapper = async (
     attributes,
     slotsAndEvents,
     description: componentDescription,
+    ui5wcPackage: componentSpec.name.includes('fiori') ? 'fiori' : 'main',
     tagName: componentSpec.tagname,
     regularProps,
     booleanProps,

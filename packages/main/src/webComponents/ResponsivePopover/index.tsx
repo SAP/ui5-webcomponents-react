@@ -179,7 +179,7 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ResponsivePopover" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
