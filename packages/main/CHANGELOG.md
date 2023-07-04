@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.0...v1.17.1) (2023-07-04)
+
+### Bug Fixes
+
+- **Form & FormGroup:** add `use client` directive ([#4822](https://github.com/SAP/ui5-webcomponents-react/issues/4822)) ([5bf98b3](https://github.com/SAP/ui5-webcomponents-react/commit/5bf98b3114ad7ec34334a59bd593595e3e315443))
+
 # [1.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.3...v1.17.0) (2023-07-03)
 
 ### Bug Fixes
