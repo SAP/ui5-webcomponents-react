@@ -666,7 +666,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
+      disableGroupBy: isTreeTable || (!alwaysShowSubComponent && renderRowSubComponent) ? true : !groupable,
       selectSubRows: false,
       sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
