@@ -203,6 +203,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 rowHeight={rowHeight}
                 rows={rows}
                 alwaysShowSubComponent={alwaysShowSubComponent}
+                rowIndex={visibleRowIndex + 1}
               >
                 {RowSubComponent}
               </SubComponent>
