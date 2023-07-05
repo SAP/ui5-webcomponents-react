@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.1...v1.17.2) (2023-07-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve keyboard navigation and subcomponents focus handling ([#4829](https://github.com/SAP/ui5-webcomponents-react/issues/4829)) ([58ef172](https://github.com/SAP/ui5-webcomponents-react/commit/58ef1720fe6903614326d15f89b49781e06fb031))
+- **VariantItem:** remove unsupported props of `StandardLisItem` from type definitions ([#4830](https://github.com/SAP/ui5-webcomponents-react/issues/4830)) ([d326f5f](https://github.com/SAP/ui5-webcomponents-react/commit/d326f5fb6208628ae1e93e959dff8acc61c35781))
+
 ## [1.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.0...v1.17.1) (2023-07-04)
 
 ### Bug Fixes
