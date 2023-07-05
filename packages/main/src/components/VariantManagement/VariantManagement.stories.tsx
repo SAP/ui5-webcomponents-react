@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useReducer, useState } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { PopoverPlacementType, TitleLevel, ValueState } from '../../enums/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { MessageStrip } from '../../webComponents/MessageStrip/index.js';
@@ -13,6 +13,7 @@ import { Form } from '../Form/index.js';
 import { FormGroup } from '../FormGroup/index.js';
 import { FormItem } from '../FormItem/index.js';
 import { Text } from '../Text/index.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 import { VariantItem } from './VariantItem.js';
 import { VariantManagement } from './index.js';
 
@@ -144,42 +145,121 @@ export const WithCustomValidation: Story = {
 export const WithFilterBarImplementation: Story = {
   render: () => {
     const [selectedVariant, setSelectedVariant] = useState('Standard');
+    const [customVariants, setCustomVariants] = useState<VariantItemPropTypes[]>([]);
     const [isDirty, setIsDirty] = useState(false);
+    const [checkIfDiry, setCheckIfDirty] = useState(false);
 
-    //todo
-    // const [filters, dispatchFiltersChange] = useReducer()
+    // this should be handled by the server
+    const defaultVariantValues = useRef({
+      Standard: {
+        selectedCountry: 'Indonesia',
+        date: '',
+        selectedCodes: {}
+      }
+    });
 
-    const [selectedCountry, setSelectedCountry] = useState('Indonesia');
-    const [date, setDate] = useState('');
-    const [selectedCodes, setSelectedCodes] = useState({});
+    const filterReducer = useCallback((state, action) => {
+      const { payload, type } = action;
+      setCheckIfDirty(true);
+      switch (type) {
+        case 'selectedCountry':
+          return { ...state, selectedCountry: payload };
+        case 'date':
+          return { ...state, date: payload };
+        case 'selectedCodes':
+          return { ...state, selectedCodes: payload };
+        default:
+          console.warn('Unknown action type!');
+          return state;
+      }
+    }, []);
+
+    const [filters, dispatchFiltersChange] = useReducer(filterReducer, {
+      selectedCountry: 'Indonesia',
+      date: '',
+      selectedCodes: {}
+    });
+    const { selectedCountry, date, selectedCodes } = filters;
 
     const handleSelectChange = (e) => {
       const { selectedOption } = e.detail;
-      setSelectedCountry(selectedOption.textContent);
+      dispatchFiltersChange({ type: 'selectedCountry', payload: selectedOption.textContent });
     };
     const handleDateChange = (e) => {
-      setDate(e.detail.value);
+      dispatchFiltersChange({ type: 'date', payload: e.detail.value });
     };
     const handleSelectedCodesChange = (e) => {
-      setSelectedCodes(
-        e.detail.items.reduce((acc, cur) => {
+      dispatchFiltersChange({
+        type: 'selectedCodes',
+        payload: e.detail.items.reduce((acc, cur) => {
           acc[cur.dataset.code] = true;
           return acc;
         }, {})
-      );
+      });
     };
+
+    const handleSaveAs = (e) => {
+      // todo add variant to ref
+      const {
+        variantItem: _omit,
+        selected: _omit2,
+        readOnly: _omit3,
+        labelReadOnly: _omit4,
+        ...variantItemProps
+      } = e.detail;
+      setCustomVariants((prev) => [...prev, variantItemProps]);
+      setSelectedVariant(variantItemProps.children);
+    };
+
+    useEffect(() => {
+      if (checkIfDiry) {
+        const hasChanged = Object.entries(defaultVariantValues.current[selectedVariant]).some(([key, val]) => {
+          if (key === 'selectedCodes') {
+            const selectedCodesLength = Object.keys(filters.selectedCodes).length;
+            if (selectedCodesLength > 0 && Object.keys(val).length !== selectedCodesLength) {
+              return true;
+            }
+            return Object.entries(filters.selectedCodes).some(([code, bool]) => {
+              return val[code] !== bool;
+            });
+          }
+          return filters[key] !== val;
+        });
+        setCheckIfDirty(false);
+        setIsDirty(hasChanged);
+      }
+    }, [checkIfDiry, selectedVariant]);
 
     return (
       <>
+        {/*todo move all descriptions to storybook*/}
         <MessageStrip style={{ marginBlockEnd: '2rem' }}>
           All views are applied automatically, so the "Apply Automatically" checkboxes in both dialogs won't be visible
         </MessageStrip>
         <FilterBar
           header={
-            <VariantManagement hideApplyAutomatically dirtyState={isDirty}>
-              <VariantItem selected={selectedVariant === 'Standard'} global isDefault author="SAP" readOnly>
+            <VariantManagement hideApplyAutomatically dirtyState={isDirty} onSaveAs={handleSaveAs}>
+              <VariantItem
+                selected={selectedVariant === 'Standard'}
+                global
+                isDefault
+                author="SAP"
+                readOnly
+                labelReadOnly
+              >
                 Standard
               </VariantItem>
+              {customVariants.map((variantItemProps) => {
+                return (
+                  <VariantItem
+                    key={variantItemProps.children}
+                    {...variantItemProps}
+                    selected={selectedVariant === variantItemProps.children}
+                  >
+                    {variantItemProps.children}
+                  </VariantItem>
+                );
+              })}
             </VariantManagement>
           }
         >
