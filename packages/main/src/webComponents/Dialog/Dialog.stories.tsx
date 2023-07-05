@@ -81,6 +81,7 @@ export const WithContent: Story = {
         <Dialog
           {...args}
           open={dialogIsOpen}
+          onAfterClose={handleClose}
           header={
             <Bar endContent={<Icon name={settingsIcon} />}>
               <Title>Dialog</Title>
