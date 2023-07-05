@@ -15,7 +15,7 @@ This entry explains why portals are used in UI5 Web Components for React compone
 
 ## Why Portals?
 
-In most cases when a React component like the `AnalyticalTable` implements a popover like a `Dialog` or `ResponsivePopover`, we use a [React Portal](https://reactjs.org/docs/portals.html) to mount it outside the parents DOM hierarchy, to prevent unwanted side effects (wrong positioning, alignment, etc.).
+In most cases when a React component like the `AnalyticalTable` implements a popover like a `Dialog` or `ResponsivePopover`, we use a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount it outside the parents DOM hierarchy, to prevent unwanted side effects (wrong positioning, alignment, etc.).
 
 For example:
 
