@@ -278,7 +278,10 @@ const InfiniteScrollTable = (props) => {
 Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
 The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents. If you want to display the subcomponent at the bottom of the row without an expandable container, you can set the `alwaysShowSubComponent` prop to `true`.
 
-**Note:** When `renderRowSubComponent` is set, `grouping` is disabled.
+### Notes
+
+- When `renderRowSubComponent` is set, `grouping` is disabled.
+- When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
 
 <ControlsWithNote of={ComponentStories.Subcomponents} include={['alwaysShowSubComponent', 'renderRowSubComponent']} />
 
@@ -303,6 +306,12 @@ const TableWithSubcomponents = (props) => {
         >
           <Badge>height: 300px</Badge>
           <Text>This subcomponent will only be displayed below the first row.</Text>
+          <hr />
+          <Text>
+            The button below is rendered with `data-subcomponent-active-element` attribute to ensure consistent focus
+            behavior
+          </Text>
+          <Button data-subcomponent-active-element>Click</Button>
         </FlexBox>
       );
     }

@@ -440,6 +440,12 @@ export const Subcomponents: Story = {
           >
             <Badge>height: 300px</Badge>
             <Text>This subcomponent will only be displayed below the first row.</Text>
+            <hr />
+            <Text>
+              The button below is rendered with `data-subcomponent-active-element` attribute to ensure consistent focus
+              behavior
+            </Text>
+            <Button data-subcomponent-active-element>Click</Button>
           </FlexBox>
         );
       }

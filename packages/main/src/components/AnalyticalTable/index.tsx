@@ -487,6 +487,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   overscanCount?: number;
   /**
    * Defines the subcomponent that should be displayed below each row.
+   *
+   * __Note:__ When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
   /**
