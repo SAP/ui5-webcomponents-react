@@ -7,7 +7,7 @@ import type { InputPropTypes } from '../../webComponents/index.js';
 import type { StandardListItemDomRef, StandardListItemPropTypes } from '../../webComponents/StandardListItem/index.js';
 import { StandardListItem } from '../../webComponents/StandardListItem/index.js';
 
-export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children' | 'onDetailClick'> {
+export interface VariantItemPropTypes extends Pick<StandardListItemPropTypes, 'accessibleName' | 'selected'> {
   /**
    * The name of the variant.
    */
