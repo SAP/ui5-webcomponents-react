@@ -34,7 +34,7 @@
       "description": "all dependency upgrades in the root package.json should not affect release notes",
       "matchFiles": ["package.json"],
       "semanticCommitType": "chore",
-      "extends": ["schedule:earlyMondays"]
+      "extends": ["schedule:weekly"]
     },
     {
       "matchPaths": ["examples/**"],
