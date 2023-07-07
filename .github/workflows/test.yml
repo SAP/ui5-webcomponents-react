@@ -30,7 +30,7 @@ jobs:
         with:
           browser: chrome
           component: true
-          spec: packages/${{ matrix.spec }}
+          spec: packages/main/src/components/DynamicPageTitle
 
       - uses: coverallsapp/github-action@v2.2.0
         if: ${{ inputs.reportCoverage }}
