@@ -23,3 +23,59 @@ jobs:
           browser: chrome
           component: true
           spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          component: true
+          spec: packages/main/src/components/DynamicPageTitle
