@@ -66,7 +66,7 @@ export const styles = {
     '& >:last-child:not(.spacer)': {
       marginInline: '0.25rem 0.5rem'
     },
-    '& > *:not(first-child):not(last-child):not(.spacer)': {
+    '& > *:not(:first-child):not(:last-child):not(.spacer)': {
       marginInline: '0.25rem'
     },
     display: 'flex',
