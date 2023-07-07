@@ -50,36 +50,38 @@ const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) 
 
 const testOverflowRefs = (should = { nav: 'false', actions: 'false' }) => {
   cy.findByText('Show actionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('actionsInstance').should('have.text', should.actions);
   cy.findByText('Show navActionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('navActionsInstance').should('have.text', should.nav);
 };
 
 describe('DynamicPageTitle', () => {
   it('toolbar instances - DynamicPage', () => {
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(100);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'true', actions: 'true' });
     cy.viewport(5000, 5000);
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'false' });
   });
   it('toolbar instances - ObjectPage', () => {
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(100);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'true', actions: 'true' });
     cy.viewport(5000, 5000);
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'false' });
   });
   it('show 2nd line content', () => {
