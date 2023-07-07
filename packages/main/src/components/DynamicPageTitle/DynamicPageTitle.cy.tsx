@@ -60,13 +60,15 @@ const testOverflowRefs = (should = { nav: 'false', actions: 'false' }) => {
 describe('DynamicPageTitle', () => {
   it('toolbar instances - DynamicPage', () => {
     cy.mount(<PageComponent isObjectPage={false} />);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
     cy.mount(<PageComponent isObjectPage={false} />);
+    cy.wait(300);
     testOverflowRefs({ nav: 'true', actions: 'true' });
     cy.viewport(5000, 5000);
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'false' });
   });
   it('toolbar instances - ObjectPage', () => {
