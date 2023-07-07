@@ -50,8 +50,10 @@ const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) 
 
 const testOverflowRefs = (should = { nav: 'false', actions: 'false' }) => {
   cy.findByText('Show actionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('actionsInstance').should('have.text', should.actions);
   cy.findByText('Show navActionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('navActionsInstance').should('have.text', should.nav);
 };
 
