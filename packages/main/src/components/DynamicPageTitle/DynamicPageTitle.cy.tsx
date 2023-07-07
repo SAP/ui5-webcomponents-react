@@ -74,13 +74,13 @@ describe.only('DynamicPageTitle', () => {
     cy.wait(100);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
-    // cy.mount(<PageComponent isObjectPage />);
-    // cy.wait(200);
-    // testOverflowRefs({ nav: 'true', actions: 'true' });
-    // cy.viewport(5000, 5000);
-    // cy.mount(<PageComponent isObjectPage />);
-    // cy.wait(200);
-    // testOverflowRefs({ nav: 'false', actions: 'false' });
+    cy.mount(<PageComponent isObjectPage />);
+    cy.wait(200);
+    testOverflowRefs({ nav: 'true', actions: 'true' });
+    cy.viewport(5000, 5000);
+    cy.mount(<PageComponent isObjectPage />);
+    cy.wait(200);
+    testOverflowRefs({ nav: 'false', actions: 'false' });
   });
   it('show 2nd line content', () => {
     cy.viewport(320, 700);

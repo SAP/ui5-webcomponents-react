@@ -12,14 +12,6 @@ jobs:
   cypress:
     name: Cypress
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        spec:
-          - base
-          - charts
-          - cypress-commands
-          - main/src/components
-      fail-fast: false
 
     steps:
       - name: Checkout
@@ -31,24 +23,3 @@ jobs:
           browser: chrome
           component: true
           spec: packages/main/src/components/DynamicPageTitle
-
-      - uses: coverallsapp/github-action@v2.2.0
-        if: ${{ inputs.reportCoverage }}
-        with:
-          file: temp/cypress-coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: ${{ matrix.spec }}
-
-  coveralls:
-    if: ${{ always() && inputs.reportCoverage }}
-    needs: ['cypress']
-    name: 'Combine Coverage'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2.2.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
-          carryforward: 'base,charts,cypress-commands,main/src/components'
