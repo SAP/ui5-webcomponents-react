@@ -4,6 +4,7 @@ import { useIsomorphicId } from './useIsomorphicId.js';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 import { useIsRTL } from './useIsRTL.js';
 import { useResponsiveContentPadding } from './useResponsiveContentPadding.js';
+import { useStylesheet } from './useStylesheet.js';
 import { useSyncRef } from './useSyncRef.js';
 import { useViewportRange } from './useViewportRange.js';
 
@@ -15,5 +16,6 @@ export {
   useSyncRef,
   useViewportRange,
   useIsomorphicId,
+  useStylesheet,
   useCurrentTheme
 };

@@ -47,7 +47,9 @@
     "build:i18n": "node scripts/generateI18n.mjs",
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
-    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers"
+    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
+    "build:css": "postcss --dir ../../temp src/**/*.css",
+    "watch:css": "postcss --watch --dir ../../temp src/**/*.css"
   },
   "dependencies": {
     "@tanstack/react-virtual": "3.0.0-beta.18",
