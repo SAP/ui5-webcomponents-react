@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { PopoverPlacementType, TitleLevel, ValueState } from '../../enums/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
-import { MessageStrip } from '../../webComponents/MessageStrip/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
 import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
 import { Option } from '../../webComponents/Option/index.js';
@@ -143,14 +142,16 @@ export const WithCustomValidation: Story = {
 };
 
 export const WithFilterBarImplementation: Story = {
+  name: 'in FilterBar',
   render: () => {
     const [selectedVariant, setSelectedVariant] = useState('Standard');
+    const [defaultVariant, setDefaultVariant] = useState('Standard');
     const [customVariants, setCustomVariants] = useState<VariantItemPropTypes[]>([]);
     const [isDirty, setIsDirty] = useState(false);
     const [checkIfDiry, setCheckIfDirty] = useState(false);
 
-    // this should be handled by the server
-    const defaultVariantValues = useRef({
+    // this should be persisted (e.g. by the local storage of the browser or on the server)
+    const initialVariantValues = useRef({
       Standard: {
         selectedCountry: 'Indonesia',
         date: '',
@@ -168,17 +169,15 @@ export const WithFilterBarImplementation: Story = {
           return { ...state, date: payload };
         case 'selectedCodes':
           return { ...state, selectedCodes: payload };
+        case 'changeVariant':
+          return payload;
         default:
           console.warn('Unknown action type!');
           return state;
       }
     }, []);
 
-    const [filters, dispatchFiltersChange] = useReducer(filterReducer, {
-      selectedCountry: 'Indonesia',
-      date: '',
-      selectedCodes: {}
-    });
+    const [filters, dispatchFiltersChange] = useReducer(filterReducer, initialVariantValues.current.Standard);
     const { selectedCountry, date, selectedCodes } = filters;
 
     const handleSelectChange = (e) => {
@@ -199,7 +198,6 @@ export const WithFilterBarImplementation: Story = {
     };
 
     const handleSaveAs = (e) => {
-      // todo add variant to ref
       const {
         variantItem: _omit,
         selected: _omit2,
@@ -207,13 +205,59 @@ export const WithFilterBarImplementation: Story = {
         labelReadOnly: _omit4,
         ...variantItemProps
       } = e.detail;
-      setCustomVariants((prev) => [...prev, variantItemProps]);
+      if (variantItemProps.isDefault) {
+        setDefaultVariant(variantItemProps.children);
+      }
+      setCustomVariants((prev) => [...prev, { ...variantItemProps, author: 'Current User' }]);
+      initialVariantValues.current[variantItemProps.children] = filters;
       setSelectedVariant(variantItemProps.children);
+      setIsDirty(false);
     };
 
+    const handleSave = (e) => {
+      const { variantItem: _omit, selected: _omit2, ...variantItemProps } = e.detail;
+      initialVariantValues.current[variantItemProps.children] = filters;
+      setIsDirty(false);
+    };
+
+    const handleSaveManageViews = (e) => {
+      const { deletedVariants, updatedVariants } = e.detail;
+      deletedVariants.forEach((variant) => {
+        delete initialVariantValues.current[variant.children];
+        setCustomVariants((prev) => prev.filter((item) => item.children !== variant.children));
+      });
+      updatedVariants.forEach((variant) => {
+        const { variantItem: _omit, selected: _omit2, ...variantItemProps } = variant;
+        initialVariantValues.current[variant.children] = variantItemProps;
+        if (variant.isDefault) {
+          setDefaultVariant(variant.children);
+        }
+        if (variant.selected) {
+          setSelectedVariant(variant.children);
+        }
+        setCustomVariants((prev) => {
+          return prev.map((item) => {
+            if (item.children === variant.prevVariant.children) {
+              return variantItemProps;
+            }
+            return item;
+          });
+        });
+      });
+    };
+
+    const handleSelect = (e) => {
+      const privateSelectedVariant = e.detail.selectedVariant.children;
+      dispatchFiltersChange({
+        type: 'changeVariant',
+        payload: initialVariantValues.current[privateSelectedVariant]
+      });
+      setSelectedVariant(privateSelectedVariant);
+    };
+    // console.log(filters, initialVariantValues.current, customVariants);
     useEffect(() => {
       if (checkIfDiry) {
-        const hasChanged = Object.entries(defaultVariantValues.current[selectedVariant]).some(([key, val]) => {
+        const hasChanged = Object.entries(initialVariantValues.current[selectedVariant]).some(([key, val]) => {
           if (key === 'selectedCodes') {
             const selectedCodesLength = Object.keys(filters.selectedCodes).length;
             if (selectedCodesLength > 0 && Object.keys(val).length !== selectedCodesLength) {
@@ -232,17 +276,20 @@ export const WithFilterBarImplementation: Story = {
 
     return (
       <>
-        {/*todo move all descriptions to storybook*/}
-        <MessageStrip style={{ marginBlockEnd: '2rem' }}>
-          All views are applied automatically, so the "Apply Automatically" checkboxes in both dialogs won't be visible
-        </MessageStrip>
         <FilterBar
           header={
-            <VariantManagement hideApplyAutomatically dirtyState={isDirty} onSaveAs={handleSaveAs}>
+            <VariantManagement
+              hideApplyAutomatically
+              dirtyState={isDirty}
+              onSaveAs={handleSaveAs}
+              onSave={handleSave}
+              onSelect={handleSelect}
+              onSaveManageViews={handleSaveManageViews}
+            >
               <VariantItem
                 selected={selectedVariant === 'Standard'}
                 global
-                isDefault
+                isDefault={defaultVariant === 'Standard'}
                 author="SAP"
                 readOnly
                 labelReadOnly
@@ -255,6 +302,7 @@ export const WithFilterBarImplementation: Story = {
                     key={variantItemProps.children}
                     {...variantItemProps}
                     selected={selectedVariant === variantItemProps.children}
+                    isDefault={defaultVariant === variantItemProps.children}
                   >
                     {variantItemProps.children}
                   </VariantItem>
