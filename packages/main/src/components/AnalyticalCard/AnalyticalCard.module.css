@@ -3,5 +3,4 @@
   flex: 1 1 auto;
   overflow: hidden;
   position: relative;
-  border-radius: 0 0 var(--sapTile_BorderCornerRadius) var(--sapTile_BorderCornerRadius);
 }
