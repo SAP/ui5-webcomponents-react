@@ -246,7 +246,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 contentToRender = 'Expandable';
               } else if (
                 cell.isGrouped ||
-                (manualGroupBy && cell.column.isGrouped && getSubRowsByString(subRowsKey, row.original) != null)
+                (manualGroupBy &&
+                  cell.column.isGrouped &&
+                  getSubRowsByString(subRowsKey, row.original) != null &&
+                  cell.value !== undefined)
               ) {
                 contentToRender = 'Grouped';
               } else if (cell.isAggregated) {
