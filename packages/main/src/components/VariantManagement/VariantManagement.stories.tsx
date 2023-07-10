@@ -254,17 +254,17 @@ export const WithFilterBarImplementation: Story = {
       });
       setSelectedVariant(privateSelectedVariant);
     };
-    // console.log(filters, initialVariantValues.current, customVariants);
+
     useEffect(() => {
       if (checkIfDiry) {
         const hasChanged = Object.entries(initialVariantValues.current[selectedVariant]).some(([key, val]) => {
           if (key === 'selectedCodes') {
             const selectedCodesLength = Object.keys(filters.selectedCodes).length;
-            if (selectedCodesLength > 0 && Object.keys(val).length !== selectedCodesLength) {
+            if (Object.keys(val).length !== selectedCodesLength) {
               return true;
             }
             return Object.entries(filters.selectedCodes).some(([code, bool]) => {
-              return val[code] !== bool;
+              return val?.[code] !== bool;
             });
           }
           return filters[key] !== val;
