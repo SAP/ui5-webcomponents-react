@@ -31,19 +31,19 @@
       "excludePackageNames": ["@storybook/react-vite"]
     },
     {
-      "groupName": "eslint",
-      "matchPackagePatterns": ["eslint"],
-      "excludePackageNames": ["eslint-config-next"]
-    },
-    {
-      "matchPackageNames": ["@types/node"],
-      "matchUpdateTypes": ["patch"],
-      "enabled": false
-    },
-    {
-      "description": "all dependency upgrades in the root package.json should not affect release notes",
+      "description": "root package dependencies",
+      "extends": ["schedule:weekly"],
       "matchFiles": ["package.json"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "groupName": "all non-major dependencies",
+      "groupSlug": "root-all-minor-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
     },
     {
       "matchPaths": ["examples/**"],
