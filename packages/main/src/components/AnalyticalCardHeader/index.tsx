@@ -91,9 +91,9 @@ const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
 ]);
 
 /**
- * The `AnalyticalCardHeader` component serves as layout for the header prop of the `AnalyticalCard`.
+ * The `AnalyticalCardHeader` is a KPI header, enabling the AnalyticalCard representation. If this header is used, the `Card` should only receive a chart as content and no footer area.
  *
- * It should only be used as header for the `AnalyticalCard` component.
+ * __Note:__ This component should only be used as header for the `Card` component.
  */
 export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHeaderPropTypes>((props, ref) => {
   const {
