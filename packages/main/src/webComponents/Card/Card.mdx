@@ -5,6 +5,7 @@ import { CardHeader } from '../CardHeader';
 import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md?raw';
 import * as ComponentStories from './Card.stories';
 import CardDescription from './CardDescription.md?raw';
+import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/index';
 
 <Meta of={ComponentStories} />
 
@@ -22,6 +23,14 @@ import CardDescription from './CardDescription.md?raw';
 
 <Markdown>{CardDescription}</Markdown>
 
+## More Examples
+
+### Card with AnalyticalCardHeader
+
+**Note:** The `AnalyticalCardHeader` is a pure React component developed exclusively in the ui5-webcomponents-react repo.
+
+<ControlsWithNote of={ComponentStories.WithAnalyticalCardHeader} />
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## CardHeader
@@ -29,5 +38,13 @@ import CardDescription from './CardDescription.md?raw';
 <Description of={CardHeader} />
 <ArgTypesWithNote of={CardHeader} />
 <Markdown>{CardHeaderDescription}</Markdown>
+
+## AnalyticalCardHeader
+
+<Description of={AnalyticalCardHeader} />
+
+**Note:** The `AnalyticalCardHeader` is a pure React component developed exclusively in the ui5-webcomponents-react repo.
+
+<ArgTypesWithNote of={AnalyticalCardHeader} />
 
 <Footer />
