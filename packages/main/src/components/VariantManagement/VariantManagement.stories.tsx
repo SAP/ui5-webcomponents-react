@@ -159,7 +159,7 @@ export const WithFilterBarImplementation: Story = {
       }
     });
 
-    const filterReducer = useCallback((state, action) => {
+    const filterReducer = (state, action) => {
       const { payload, type } = action;
       setCheckIfDirty(true);
       switch (type) {
@@ -175,7 +175,7 @@ export const WithFilterBarImplementation: Story = {
           console.warn('Unknown action type!');
           return state;
       }
-    }, []);
+    };
 
     const [filters, dispatchFiltersChange] = useReducer(filterReducer, initialVariantValues.current.Standard);
     const { selectedCountry, date, selectedCodes } = filters;

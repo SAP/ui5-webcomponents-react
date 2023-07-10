@@ -129,7 +129,7 @@ This example shows how a basic implementation of the `VariantManagement` inside 
 <summary>Show Code</summary>
 
 ```tsx
-const FBWithVM = () => {
+function FilterBarWithVariantManagement() {
   const [selectedVariant, setSelectedVariant] = useState('Standard');
   const [defaultVariant, setDefaultVariant] = useState('Standard');
   const [customVariants, setCustomVariants] = useState<VariantItemPropTypes[]>([]);
@@ -145,7 +145,7 @@ const FBWithVM = () => {
     }
   });
 
-  const filterReducer = useCallback((state, action) => {
+  const filterReducer = (state, action) => {
     const { payload, type } = action;
     setCheckIfDirty(true);
     switch (type) {
@@ -161,7 +161,7 @@ const FBWithVM = () => {
         console.warn('Unknown action type!');
         return state;
     }
-  }, []);
+  };
 
   const [filters, dispatchFiltersChange] = useReducer(filterReducer, initialVariantValues.current.Standard);
   const { selectedCountry, date, selectedCodes } = filters;
@@ -349,7 +349,7 @@ const FBWithVM = () => {
       </Form>
     </>
   );
-};
+}
 ```
 
 </details>
