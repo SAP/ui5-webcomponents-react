@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 const canUseInsertionEffect = 'useInsertionEffect' in React;
 const useInsertionEffect = canUseInsertionEffect ? Reflect.get(React, 'useInsertionEffect') : useIsomorphicLayoutEffect;
 
-export function useInsertStylesheet(styles: StyleDataCSP, componentName: string) {
+export function useStylesheet(styles: StyleDataCSP, componentName: string) {
   useInsertionEffect(() => {
     createOrUpdateStyle(styles, styles.packageName, componentName);
 
