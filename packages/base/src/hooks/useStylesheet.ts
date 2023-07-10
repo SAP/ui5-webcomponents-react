@@ -1,17 +1,17 @@
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 
-const canUseInsertionEffect = 'useInsertionEffect' in React;
-const useInsertionEffect = canUseInsertionEffect ? Reflect.get(React, 'useInsertionEffect') : useIsomorphicLayoutEffect;
+function getUseInsertionEffect(isSSR: boolean) {
+  return isSSR ? React.useEffect : Reflect.get(React, 'useInsertionEffect') || React.useLayoutEffect;
+}
 
 export function useStylesheet(styles: StyleDataCSP, componentName: string) {
-  useInsertionEffect(() => {
+  getUseInsertionEffect(typeof window === 'undefined')(() => {
     createOrUpdateStyle(styles, styles.packageName, componentName);
 
     return () => {
       removeStyle(styles.packageName, componentName);
     };
-  });
+  }, [styles]);
 }
