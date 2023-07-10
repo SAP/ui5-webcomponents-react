@@ -6,9 +6,11 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook dev -p 6006",
-    "build:prepare": "lerna run build:i18n && rimraf node_modules/@types/mocha",
-    "build": "yarn build:prepare && tsc --build && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
+    "start": "yarn prepare && yarn create-cypress-commands-docs && npm-run-all -p start:watcher start:storybook",
+    "start:watcher": "lerna run watch:css",
+    "start:storybook": "storybook dev -p 6006",
+    "prepare": "lerna run build:i18n && lerna run build:css && rimraf node_modules/@types/mocha",
+    "build": "yarn prepare && tsc --build && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
     "build:storybook": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook build -o .out",
     "test:prepare": "rimraf temp && lerna run build",
     "test:cypress": "cypress run --component --browser chrome --spec 'packages/main/src/components/*/**',packages/base,packages/charts,packages/cypress-commands",
@@ -25,7 +27,7 @@
     "examples:recreate-seed": "rimraf examples/seed-test && npx create-react-app examples/seed-test --template file:./packages/cra-template-seed",
     "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
-    "postinstall": "rimraf node_modules/@types/mocha && husky install && lerna run build:i18n",
+    "postinstall": "husky install && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"
   },
   "dependencies": {
