@@ -76,7 +76,7 @@ export interface Ui5DomRef extends HTMLElement {
    * Set the focus to the element, returned by "getFocusDomRef()" (marked by "data-sap-focus-ref")
    * @param {FocusOptions} focusOptions additional options for the focus
    */
-  focus: (focusOptions: FocusOptions) => Promise<void>;
+  focus: (focusOptions?: FocusOptions) => Promise<void>;
   /**
    *
    * @param name - name of the event
@@ -85,7 +85,7 @@ export interface Ui5DomRef extends HTMLElement {
    * @param bubbles - true, if the event bubbles
    * @returns {boolean} false, if the event was cancelled (preventDefault called), true otherwise
    */
-  fireEvent: <T>(name: string, data?: T, cancelable = false, bubbles = true) => boolean;
+  fireEvent: <T>(name: string, data?: T, cancelable?: boolean, bubbles?: boolean) => boolean;
   /**
    * Returns the actual children, associated with a slot.
    * Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
