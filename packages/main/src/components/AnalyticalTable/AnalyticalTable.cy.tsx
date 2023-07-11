@@ -2124,7 +2124,7 @@ describe('AnalyticalTable', () => {
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
     cy.realPress('End');
-    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '3');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
     cy.realPress('Home');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
