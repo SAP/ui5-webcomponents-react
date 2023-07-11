@@ -64,6 +64,7 @@
     "chromatic": "^6.5.3",
     "cssnano": "^6.0.1",
     "cypress": "^12.1.0",
+    "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",

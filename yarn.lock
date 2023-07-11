@@ -8089,6 +8089,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cypress-real-events@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "cypress-real-events@npm:1.8.1"
+  peerDependencies:
+    cypress: ^4.x || ^5.x || ^6.x || ^7.x || ^8.x || ^9.x || ^10.x || ^11.x || ^12.x
+  checksum: 48f229335f26f8c225428563e94ca091ab7a00e943a4c953e062135b1d37672edec9cb7667452d894b43528b52924cd1b6061df044ccb0665b9c0965a0fe214f
+  languageName: node
+  linkType: hard
+
 "cypress@npm:^12.1.0":
   version: 12.16.0
   resolution: "cypress@npm:12.16.0"
@@ -19876,6 +19885,7 @@ __metadata:
     chromatic: ^6.5.3
     cssnano: ^6.0.1
     cypress: ^12.1.0
+    cypress-real-events: ^1.8.1
     dedent: ^1.0.0
     eslint: ^8.35.0
     eslint-config-prettier: ^8.7.0

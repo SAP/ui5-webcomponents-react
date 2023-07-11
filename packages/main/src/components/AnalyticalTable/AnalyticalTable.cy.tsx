@@ -2103,6 +2103,159 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '90');
   });
 
+  it('keyboard navigation', () => {
+    cy.mount(<AnalyticalTable data={generateMoreData(50)} columns={columns} />);
+    cy.findByText('Name-0').should('be.visible');
+    cy.get('[tabindex="0"]')
+      .should('have.attr', 'data-component-name', 'AnalyticalTableContainer')
+      .should('have.length', 1);
+
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('End');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
+    cy.realPress('Home');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    // last currently rendered row
+    cy.focused().should('have.attr', 'data-row-index', '22').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '36').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '50').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    // first currently rendered row
+    cy.focused().should('have.attr', 'data-row-index', '29').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '15').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={[...columns.slice(0, 2), { id: 'button', Cell: () => <Button>Button</Button> }]}
+      />
+    );
+
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '2');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'ui5-button');
+
+    const renderSubComp = (row) => {
+      if (row.id === '2') {
+        return null;
+      }
+      return <div style={{ height: '50px', width: '100%', background: 'cadetblue' }}>SubComponent</div>;
+    };
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns.slice(0, 2)}
+        alwaysShowSubComponent
+        renderRowSubComponent={renderSubComp}
+      />
+    );
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '2');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '3').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '4').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-row-index', '4').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '3').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '2');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '0');
+
+    const renderSubComp2 = (row) => {
+      if (row.id === '2') {
+        return null;
+      }
+      return (
+        <div style={{ height: '50px', width: '100%', background: 'cadetblue' }}>
+          <Button data-subcomponent-active-element>Active</Button>
+        </div>
+      );
+    };
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns.slice(0, 2)}
+        alwaysShowSubComponent
+        renderRowSubComponent={renderSubComp2}
+      />
+    );
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
