@@ -67,4 +67,8 @@ Rendering a `ComboBoxItem` with some custom HTML attributes...
 
 As you can see, both `title` and `style` are correctly applied, but since the item doesn't have children, nor a shadow root the attributes don't have an effect on the component.
 
+## How can I style elements inside the shadow root of a web component?
+
+Styling elements inside the shadow root is only supported by leveraging the [`::part` pseudo-element](https://developer.mozilla.org/en-US/docs/Web/CSS/::part). You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-styling--docs#css-shadow-parts).
+
 <Footer />
