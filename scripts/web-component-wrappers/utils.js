@@ -332,16 +332,16 @@ export const createDomRef = (componentSpec, importStatements) => {
     return dedent`
           /**
            * ${propDescription(componentSpec, method)}${joinedParams ? `\n${joinedParams}` : ''}${
-      returnValue && returnValue !== 'void'
-        ? `\n* @returns {${returnValue}} ${method.returnValue.description ?? ''}`
-        : ''
-    }
+             returnValue && returnValue !== 'void'
+               ? `\n* @returns {${returnValue}} ${method.returnValue.description ?? ''}`
+               : ''
+           }
            */
           ${method.name}: (${
-      method.parameters
-        ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
-        .join(', ') ?? ''
-    }) => ${returnValue}
+            method.parameters
+              ?.map((p) => `${p.name}${isOptionalParameter(p) ? '?' : ''}: ${resolveTsTypeForMethods(p)}`)
+              .join(', ') ?? ''
+          }) => ${returnValue}
           `;
   });
   return [...getters, ...objects, ...methods];
@@ -406,7 +406,7 @@ export const formatDescription = (description, componentSpec, isJSDoc = true) =>
   return desc;
 };
 
-export const formatDemoDescription = (description, componentSpec, replaceHeadingTags = true) => {
+export const formatDemoDescription = async (description, componentSpec, replaceHeadingTags = true) => {
   let formattedDescription = description.replace(/<br>/g, `<br/>`).replace(/\s\s+/g, ' ');
   if (replaceHeadingTags) {
     formattedDescription = formattedDescription.replace(/h3/g, 'h2').replace(/h4/g, 'h3');
@@ -423,7 +423,7 @@ export const formatDemoDescription = (description, componentSpec, replaceHeading
     );
   }
 
-  return prettier.format(formattedDescription, { ...prettierConfigRaw, parser: 'markdown' });
+  return await prettier.format(formattedDescription, { ...prettierConfigRaw, parser: 'markdown' });
 };
 
 export function getCommonPropsToBeOmitted(moduleName) {
