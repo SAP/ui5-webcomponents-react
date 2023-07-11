@@ -312,12 +312,13 @@ const resolveInheritedAttributes = (componentSpec) => {
   return componentSpec;
 };
 
-[
+const specs = [
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
-].forEach((spec) => {
-  if (spec.module === 'HasPopup') {
-    return;
+];
+for (const spec of specs) {
+  if (spec.module === 'types/HasPopup') {
+    continue;
   }
   const template = dedent`
   // Generated file - do not change manually! 
@@ -330,8 +331,8 @@ const resolveInheritedAttributes = (componentSpec) => {
   
   `;
 
-  writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
-});
+  writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), await prettier.format(template, Utils.prettierConfig));
+}
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
@@ -422,8 +423,8 @@ allWebComponents
         slotsAndEvents.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}${
-          onChangeDescription ?? ''
-        }
+         onChangeDescription ?? ''
+       }
        */
        ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);
@@ -507,18 +508,18 @@ allWebComponents
         if (componentSpec.since) {
           mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
         }
-        const subComponentDescription = `${formatDemoDescription(
+        const subComponentDescription = `${await formatDemoDescription(
           mainDescription,
           componentSpec,
           false
-        )}\n${formatDemoDescription(description, componentSpec, false)}`;
+        )}\n${await formatDemoDescription(description, componentSpec, false)}`;
         writeFileSync(
           path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
           subComponentDescription
         );
       }
       if (!componentWithoutDemo) {
-        const formattedDescription = formatDemoDescription(description, componentSpec);
+        const formattedDescription = await formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
           writeFileSync(
@@ -536,7 +537,7 @@ allWebComponents
         if (publicProperties.length) {
           writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
-            prettier.format(JSON.stringify(publicProperties), {
+            await prettier.format(JSON.stringify(publicProperties), {
               ...Utils.prettierConfig,
               parser: 'json'
             })

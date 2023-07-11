@@ -32,17 +32,17 @@ const storyTemplate = Handlebars.compile(fs.readFileSync(new URL('./StoryTemplat
 const csfTemplate = Handlebars.compile(fs.readFileSync(new URL('./CsfTemplate.hbs', import.meta.url)).toString());
 
 export const renderComponentWrapper = async (params) => {
-  return prettier.format(await Utils.runEsLint(componentTemplate(params), params.name), Utils.prettierConfig);
+  return await prettier.format(await Utils.runEsLint(componentTemplate(params), params.name), Utils.prettierConfig);
 };
 
-export const renderStory = (params) => {
-  return prettier.format(storyTemplate(params), { ...Utils.prettierConfig, parser: 'mdx' });
+export const renderStory = async (params) => {
+  return await prettier.format(storyTemplate(params), { ...Utils.prettierConfig, parser: 'mdx' });
 };
 
 export async function renderCsf(params) {
-  return prettier.format(csfTemplate(params), { ...Utils.prettierConfig, parser: 'typescript' });
+  return await prettier.format(csfTemplate(params), { ...Utils.prettierConfig, parser: 'typescript' });
 }
 
-export const renderTest = (params) => {
-  return prettier.format(testTemplate(params), Utils.prettierConfig);
+export const renderTest = async (params) => {
+  return await prettier.format(testTemplate(params), Utils.prettierConfig);
 };
