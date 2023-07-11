@@ -47,7 +47,7 @@ The component handles user scrolling by selecting the closest step, based on the
 
 **For example:**
 
-` <Dialog style="height: 80%">   ``<Wizard></Wizard>   ``</Dialog> `
+`<Dialog style="height: 80%">   ``<Wizard></Wizard>   ``</Dialog>`
 
 ### Moving to next step
 

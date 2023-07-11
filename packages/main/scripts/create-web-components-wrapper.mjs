@@ -317,7 +317,7 @@ const specs = [
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
 ];
 for (const spec of specs) {
-  if (spec.module === 'HasPopup') {
+  if (spec.module === 'types/HasPopup') {
     continue;
   }
   const template = dedent`
