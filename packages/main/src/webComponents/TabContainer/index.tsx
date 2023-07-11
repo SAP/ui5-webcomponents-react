@@ -64,15 +64,19 @@ export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
    * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements:
    *
    * ```
-   * <Tab id="tab1">
-   *   <Tab id="sub1" />
-   * </Tab>
-   * <Tab id="tab2" />
-   * <TabSeparator id="separator" />
-   * <Tab id="tab3" />
+   *
+   * 	<TabContainer>
+   * 		<Tab id="First" text="First">
+   * 			...
+   * 			<Tab slot="subTabs" id="Nested" text="Nested">...</Tab>
+   * 		</Tab>
+   * 		<Tab id="Second" text="Second">...</Tab>
+   * 		<TabSeparator id="sep"></TabSeparator>
+   * 		<Tab id="Third" text="Third">...</Tab>
+   * 	</TabContainer>
    * ```
    *
-   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#tab1, Tab#sub1, Tab#tab2, TabSeparator#separator, Tab#tab3 ]`
+   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#First, Tab#Nested, Tab#Second, TabSeparator#sep, Tab#Third ]`
    */
   readonly allItems?: (TabDomRef | TabSeparatorDomRef)[];
 }

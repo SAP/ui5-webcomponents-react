@@ -274,9 +274,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
-          `#ObjectPageSection-${sectionId}`
-        )?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
+          ?.offsetTop;
         if (!isNaN(childOffset)) {
           const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
           if (topHeaderHeight) {
