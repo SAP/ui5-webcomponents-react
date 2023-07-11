@@ -36,8 +36,35 @@ If you want to check which versions are compatible you can find a compatibility 
 
 ## How can I reference elements inside the shadow DOM?
 
-All UI5 Web Components
+TODO: All UI5 Web Components
 
 ## What are "abstract" UI5 Web Components?
+
+Abstract UI5 Web Components are mainly there to pass props to the actual component inside the shadow root. Therefore, all attributes passed to the element, will have no effect on the actual component.
+
+### Example
+
+Rendering a `ComboBoxItem` with some custom HTML attributes...
+
+```jsx
+<ComboBox>
+  <ComboBoxItem text="ComboBoxItem1" title="Hello" style={{ backgroundColor: 'red' }} />
+</ComboBox>
+```
+
+...will result in an element that looks like this:
+
+```html
+<ui5-cb-item
+  text="ComboBoxItem1"
+  title="Hello"
+  style="background-color: red;"
+  _ui5rt0=""
+  _ui5host=""
+  ui5-cb-item=""
+></ui5-cb-item>
+```
+
+As you can see, both `title` and `style` are correctly applied, but since the item doesn't have children, nor a shadow root the attributes don't have an effect on the component.
 
 <Footer />
