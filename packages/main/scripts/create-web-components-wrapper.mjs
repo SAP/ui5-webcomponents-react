@@ -506,10 +506,13 @@ allWebComponents
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
+        let abstractDescription = componentSpec.abstract
+          ? `**Abstract UI5 Web Component** - Find out more about abstract components [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components).<br/>`
+          : '';
         if (componentSpec.since) {
           mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
         }
-        const subComponentDescription = `${await formatDemoDescription(
+        const subComponentDescription = `${abstractDescription}${await formatDemoDescription(
           mainDescription,
           componentSpec,
           false
