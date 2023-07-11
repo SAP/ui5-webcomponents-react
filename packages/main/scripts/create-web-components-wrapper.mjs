@@ -205,6 +205,7 @@ const createWebComponentWrapper = async (
 
   return await renderComponentWrapper({
     name: componentSpec.module,
+    abstract: componentSpec.abstract,
     imports,
     importSpecifier,
     propTypesExtends: tsExtendsStatement,
@@ -423,8 +424,8 @@ allWebComponents
         slotsAndEvents.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}${
-         onChangeDescription ?? ''
-       }
+          onChangeDescription ?? ''
+        }
        */
        ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);

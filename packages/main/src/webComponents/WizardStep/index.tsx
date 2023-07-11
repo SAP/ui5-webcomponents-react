@@ -58,9 +58,11 @@ export interface WizardStepPropTypes extends WizardStepAttributes, CommonProps {
 /**
  * A component that represents a logical step as part of the `Wizard`. It is meant to aggregate arbitrary HTML elements that form the content of a single step.
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Wizard" target="_blank">UI5 Web Components Storybook</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Wizard)
  */
 const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   'ui5-wizard-step',
