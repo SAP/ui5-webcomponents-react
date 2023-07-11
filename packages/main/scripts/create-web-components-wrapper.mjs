@@ -508,18 +508,18 @@ allWebComponents
         if (componentSpec.since) {
           mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
         }
-        const subComponentDescription = `${formatDemoDescription(
+        const subComponentDescription = `${await formatDemoDescription(
           mainDescription,
           componentSpec,
           false
-        )}\n${formatDemoDescription(description, componentSpec, false)}`;
+        )}\n${await formatDemoDescription(description, componentSpec, false)}`;
         writeFileSync(
           path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
           subComponentDescription
         );
       }
       if (!componentWithoutDemo) {
-        const formattedDescription = formatDemoDescription(description, componentSpec);
+        const formattedDescription = await formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
           writeFileSync(
