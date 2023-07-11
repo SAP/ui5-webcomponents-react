@@ -24,16 +24,16 @@ spawnSync(
 
 // generate JSON Imports for i18n bundles
 spawnSync(
-    'node',
-    [
-        require.resolve('@ui5/webcomponents-tools/lib/generate-json-imports/i18n.js'),
-        TARGET_I18N_BUNDLES,
-        TARGET_I18N_JSON_IMPORTS
-    ],
-    {
-        cwd: new URL('../', import.meta.url),
-        stdio: [0, 1, 2]
-    }
+  'node',
+  [
+    require.resolve('@ui5/webcomponents-tools/lib/generate-json-imports/i18n.js'),
+    TARGET_I18N_BUNDLES,
+    TARGET_I18N_JSON_IMPORTS
+  ],
+  {
+    cwd: new URL('../', import.meta.url),
+    stdio: [0, 1, 2]
+  }
 );
 
 // generate i18n defaults
@@ -54,7 +54,6 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
   stdio: [0, 1, 2]
 });
 
-
 // generate Assets.js and Assets-static.js
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
@@ -74,9 +73,9 @@ for (const file of jsonImports) {
 
 await writeFile(
   path.resolve(DIST_DIR, 'Assets.js'),
-  prettier.format(assets.join('\n'), { ...prettierConfig, parser: 'babel' })
+  await prettier.format(assets.join('\n'), { ...prettierConfig, parser: 'babel' })
 );
 await writeFile(
   path.resolve(DIST_DIR, 'Assets-static.js'),
-  prettier.format(assetsStatic.join('\n'), { ...prettierConfig, parser: 'babel' })
+  await prettier.format(assetsStatic.join('\n'), { ...prettierConfig, parser: 'babel' })
 );
