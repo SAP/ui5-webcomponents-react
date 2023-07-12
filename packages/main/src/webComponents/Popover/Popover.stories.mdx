@@ -232,6 +232,7 @@ const PopoverComponent = () => {
             {...args}
             opener="openPopoverBtn2"
             open={popoverIsOpen}
+            onAfterClose={handleClose}
             header={
               <Bar endContent={<Icon name="settings" />}>
                 <Title>Popover</Title>
