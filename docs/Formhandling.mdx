@@ -33,6 +33,7 @@ import {
   CheckBox,
   InputType,
   Button,
+  ButtonType,
   MultiComboBox,
   MultiComboBoxItem,
   DatePicker,
@@ -47,7 +48,6 @@ export default function RegisterForm() {
   const [country, setCountry] = useState('Germany');
   const [birthday, setBirthday] = useState('');
   const [payment, setPayment] = useState([]);
-  const [terms, setTerms] = useState(false);
 
   const handleSubmit = (e) => {
     const values = {
@@ -55,8 +55,7 @@ export default function RegisterForm() {
       password: password,
       country: country,
       birthday: birthday,
-      payment: payment,
-      terms: terms
+      payment: payment
     };
     alert(JSON.stringify(values, null, 2));
     console.log(values);
@@ -76,14 +75,8 @@ export default function RegisterForm() {
     setBirthday(e.detail.value);
   };
   const handlePaymentSelectionChange = (e) => {
-    const selected = [];
-    Object.entries(e.detail.items).forEach(([key, val]) => {
-      selected.push(val.text);
-    });
+    const selected = Object.values(e.detail.items).map((val) => val.text);
     setPayment(selected);
-  };
-  const handleTermsChange = (e) => {
-    setTerms(e.target.checked);
   };
 
   return (
@@ -114,16 +107,7 @@ export default function RegisterForm() {
             </MultiComboBox>
           </FormItem>
           <FormItem>
-            <CheckBox
-              required
-              name="terms"
-              text="I accept the terms of service"
-              checked={terms}
-              onChange={handleTermsChange}
-            />
-          </FormItem>
-          <FormItem>
-            <Button submits>Submit</Button>
+            <Button type={ButtonType.Submit}>Submit</Button>
           </FormItem>
         </FormGroup>
       </Form>

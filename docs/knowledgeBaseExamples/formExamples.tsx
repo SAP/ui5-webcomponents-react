@@ -7,9 +7,9 @@ import {
   Input,
   Option,
   Select,
-  CheckBox,
   InputType,
   Button,
+  ButtonType,
   MultiComboBox,
   MultiComboBoxItem,
   DatePicker,
@@ -23,7 +23,8 @@ export function RegisterForm() {
   const [country, setCountry] = useState('Germany');
   const [birthday, setBirthday] = useState('');
   const [payment, setPayment] = useState([]);
-  const [terms, setTerms] = useState(false);
+  // todo: enable checkbox again once `required` issue is fixed: https://github.com/SAP/ui5-webcomponents/issues/7319
+  // const [terms, setTerms] = useState(false);
 
   const handleSubmit = (e) => {
     const values = {
@@ -31,8 +32,8 @@ export function RegisterForm() {
       password: password,
       country: country,
       birthday: birthday,
-      payment: payment,
-      terms: terms
+      payment: payment
+      // terms: terms
     };
     alert(JSON.stringify(values, null, 2));
     console.log(values);
@@ -52,15 +53,12 @@ export function RegisterForm() {
     setBirthday(e.detail.value);
   };
   const handlePaymentSelectionChange = (e) => {
-    const selected = [];
-    Object.entries(e.detail.items).forEach(([key, val]) => {
-      selected.push(val.text);
-    });
+    const selected = Object.values(e.detail.items).map((val) => val.text);
     setPayment(selected);
   };
-  const handleTermsChange = (e) => {
-    setTerms(e.target.checked);
-  };
+  // const handleTermsChange = (e) => {
+  //   setTerms(e.target.checked);
+  // };
 
   return (
     <ThemeProvider>
@@ -89,11 +87,11 @@ export function RegisterForm() {
               <MultiComboBoxItem text="Bank transfer" />
             </MultiComboBox>
           </FormItem>
-          <FormItem label="I accept the terms of service">
-            <CheckBox required name="terms" checked={terms} onChange={handleTermsChange} />
-          </FormItem>
+          {/*<FormItem label="I accept the terms of service">*/}
+          {/*  <CheckBox required name="terms" checked={terms} onChange={handleTermsChange} />*/}
+          {/*</FormItem>*/}
           <FormItem label="">
-            <Button submits>Submit</Button>
+            <Button type={ButtonType.Submit}>Submit</Button>
           </FormItem>
         </FormGroup>
       </Form>
