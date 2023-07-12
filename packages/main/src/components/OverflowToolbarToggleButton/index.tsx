@@ -1,8 +1,10 @@
 'use client';
 
-import React, { forwardRef, ReactNode, useContext } from 'react';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
-import { ToggleButton, ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useContext } from 'react';
+import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
+import { ToggleButton } from '../../webComponents/index.js';
 
 export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonPropTypes, 'children' | 'icon'> {
   /**

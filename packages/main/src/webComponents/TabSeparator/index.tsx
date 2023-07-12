@@ -1,9 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabSeparator.js';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface TabSeparatorAttributes {}
 
@@ -21,7 +20,7 @@ export interface TabSeparatorPropTypes extends TabSeparatorAttributes, CommonPro
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-TabContainer" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const TabSeparator = withWebComponent<TabSeparatorPropTypes, TabSeparatorDomRef>(
   'ui5-tab-separator',

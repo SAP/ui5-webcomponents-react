@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import ContentLoader from 'react-content-loader';
+import ContentLoader from 'react-content-loader/dist/react-content-loader.es.js';
 
 export const ScatterChartPlaceholder = (props) => {
   return (

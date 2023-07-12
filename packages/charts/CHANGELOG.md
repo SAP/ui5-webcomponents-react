@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.0...v1.17.1) (2023-07-04)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.7.2 ([#4776](https://github.com/SAP/ui5-webcomponents-react/issues/4776)) ([050c3b4](https://github.com/SAP/ui5-webcomponents-react/commit/050c3b4adb6b321178eac8489b9d9e83ecd540a1))
+
+# [1.17.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.3...v1.17.0) (2023-07-03)
+
+### Features
+
+- update `@ui5/webcomponents` to `~1.15.1` ([#4811](https://github.com/SAP/ui5-webcomponents-react/issues/4811)) ([bebb6bb](https://github.com/SAP/ui5-webcomponents-react/commit/bebb6bb87c4eb55b4598137329c0a2f12d03293e))
+
+## [1.16.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.16.2...v1.16.3) (2023-06-19)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.7.0 ([#4748](https://github.com/SAP/ui5-webcomponents-react/issues/4748)) ([a0bd47e](https://github.com/SAP/ui5-webcomponents-react/commit/a0bd47e2089cb6fd9e7af83b6fd0cc4f87e908f5))
+- **deps:** update dependency recharts to v2.7.1 ([#4754](https://github.com/SAP/ui5-webcomponents-react/issues/4754)) ([c8cfdb6](https://github.com/SAP/ui5-webcomponents-react/commit/c8cfdb67f3f420fa7ccfd760a014bfbb117fe7a5))
+
+# [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.6.2 ([#4594](https://github.com/SAP/ui5-webcomponents-react/issues/4594)) ([1c0a7e3](https://github.com/SAP/ui5-webcomponents-react/commit/1c0a7e32959e62b204deba454052ac5aef139046))
+
+### Features
+
+- update to @ui5/webcomponents ~1.14.0 ([#4667](https://github.com/SAP/ui5-webcomponents-react/issues/4667)) ([ec2dca2](https://github.com/SAP/ui5-webcomponents-react/commit/ec2dca2253031478ae5f57a48e85e70061707e3f))
+
+# [1.15.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.14.0...v1.15.0) (2023-05-05)
+
+### Bug Fixes
+
+- **charts:** mark charts package as `type: module` ([#4160](https://github.com/SAP/ui5-webcomponents-react/issues/4160)) ([add9c88](https://github.com/SAP/ui5-webcomponents-react/commit/add9c8889856878ca9b4c1dcda258520a6688c17))
+
+### Features
+
+- update to @ui5/webcomponents ~1.13.0 ([#4567](https://github.com/SAP/ui5-webcomponents-react/issues/4567)) ([3d0cbf6](https://github.com/SAP/ui5-webcomponents-react/commit/3d0cbf6deceb985225c048c160af9d1ce92849d1))
+
 # [1.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.11.3...v1.12.0) (2023-03-22)
 
 ### Bug Fixes

@@ -2,15 +2,16 @@
 
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { createElement, CSSProperties, forwardRef, useCallback, useMemo } from 'react';
+import type { CSSProperties } from 'react';
+import React, { createElement, forwardRef, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { defaultFormatter } from '../../internal/defaults';
-import { BarChartPlaceholder } from '../BarChart/Placeholder';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { BarChartPlaceholder } from '../BarChart/Placeholder.js';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**

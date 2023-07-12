@@ -1,5 +1,6 @@
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
-import { IOrientation, IWindowSize, OrientationEventProvider, ResizeEventProvider } from './EventProvider';
+import type { IOrientation, IWindowSize } from './EventProvider.js';
+import { OrientationEventProvider, ResizeEventProvider } from './EventProvider.js';
 
 const isSSR = () => typeof window === 'undefined';
 
@@ -165,7 +166,7 @@ const handleResizeEvent = () => {
 // re-export everything from the web components device
 export * from '@ui5/webcomponents-base/dist/Device.js';
 // export all media methods
-export { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
+export { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media.js';
 
 // resize events
 export const attachResizeHandler = (fnFunction: (windowSize: IWindowSize) => void): void => {

@@ -1,10 +1,35 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "1.12.0",
+  "version": "1.17.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.js",
+      "node": "./ssr/index.js",
+      "default": "./dist/index.js"
+    },
+    "./wrappers": {
+      "types": "./wrappers/index.d.ts",
+      "default": "./wrappers/index.js"
+    },
+    "./ssr": {
+      "types": "./ssr/index.d.ts",
+      "default": "./ssr/index.js"
+    },
+    "./package.json": "./package.json",
+    "./jestSetup": "./jestSetup.js",
+    "./jestSetup.js": "./jestSetup.js",
+    "./dist": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./dist/*.js": "./dist/*.js",
+    "./wrappers/*": "./wrappers/*",
+    "./wrappers/*.js": "./wrappers/*.js"
+  },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
     "type": "git",
@@ -18,11 +43,13 @@
     "./dist/json-imports/*"
   ],
   "scripts": {
-    "clean": "rimraf dist tmp wrappers",
+    "clean": "rimraf dist tmp wrappers ssr",
     "build:i18n": "node scripts/generateI18n.mjs",
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
-    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers"
+    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
+    "build:css": "postcss --dir ../../temp src/**/*.css",
+    "watch:css": "postcss --watch --dir ../../temp src/**/*.css"
   },
   "dependencies": {
     "@tanstack/react-virtual": "3.0.0-beta.18",
@@ -34,10 +61,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.11.0",
-    "@ui5/webcomponents-base": "~1.11.0",
-    "@ui5/webcomponents-fiori": "~1.11.0",
-    "@ui5/webcomponents-icons": "~1.11.0",
+    "@ui5/webcomponents": "~1.15.1",
+    "@ui5/webcomponents-base": "~1.15.1",
+    "@ui5/webcomponents-fiori": "~1.15.1",
+    "@ui5/webcomponents-icons": "~1.15.1",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },

@@ -1,5 +1,5 @@
 import image from '@sb/demoImages/Person.png';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import React from 'react';

@@ -1,8 +1,9 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { resolveCellAlignment } from '../../util';
+import { resolveCellAlignment } from '../../util/index.js';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
 
@@ -29,7 +30,7 @@ const useStyles = createUseStyles(
     row: {
       display: 'flex',
       alignItems: 'center',
-      height: CssSizeVariables.sapWcrAnalyticalTableRowHeight
+      height: CssSizeVariables.ui5WcrAnalyticalTableRowHeight
     },
     cellContainer: {
       display: 'flex',

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
 import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
 import { IllustratedMessage } from './index';

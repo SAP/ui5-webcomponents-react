@@ -1,6 +1,6 @@
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import { Button, Icon, MessageBoxActions, MessageBoxTypes } from '../..';
-import { MessageBox } from './index';
+import { MessageBox } from './index.js';
 
 describe('MessageBox', () => {
   [

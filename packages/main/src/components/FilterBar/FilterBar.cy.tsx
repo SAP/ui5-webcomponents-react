@@ -1,8 +1,8 @@
-import { Input, Option, Select, Switch } from '../../webComponents';
+import { Input, Option, Select, Switch } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
-import { FilterBar } from './index';
+import { FilterBar } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 const variants = (
@@ -226,14 +226,14 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').shadow().find('input').type('S');
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('S');
     cy.findByPlaceholderText('Search for filters').trigger('input');
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').shadow().find('input').type('W', { force: true });
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('W', { force: true });
     cy.findByPlaceholderText('Search for filters').trigger('input');
 
     cy.findAllByText('INPUT').should('have.length', 1);
@@ -429,6 +429,24 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('b');
     cy.get('@search').should('have.callCount', 11);
+  });
+
+  it('show no colon for empty label', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem>
+          <Input />
+        </FilterGroupItem>
+        <FilterGroupItem label="Input">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    cy.get('[show-colon="true"]').should('have.length', 1);
+    cy.findByText('Filters').click();
+    cy.findByText('Show Values').click();
+    cy.get('[show-colon="true"]').should('have.length', 2);
   });
 
   mountWithCustomTagName(FilterBar);

@@ -1,11 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Label.js';
-import { ReactNode } from 'react';
-import { WrappingType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { ReactNode } from 'react';
+import type { WrappingType } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface LabelAttributes {
   /**
@@ -46,13 +45,17 @@ export interface LabelPropTypes extends LabelAttributes, CommonProps {
 }
 
 /**
- * The `Label` is a component used to represent a label, providing valuable information to the user. Usually it is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in the value holder.
+ * The `Label` is a component used to represent a label for elements like input, textarea, select.
+ *
+ * The `for` property of the `Label` must be the same as the id attribute of the related input element.
+ *
+ * Screen readers read out the label, when the user focuses the labelled control.
  *
  * The `Label` appearance can be influenced by properties, such as `required` and `wrappingType`. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Label" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Label" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   'ui5-label',

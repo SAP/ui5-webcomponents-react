@@ -3,34 +3,25 @@ import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
+import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
-  FILE_ALREADY_EXISTS,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   PUBLIC,
   SAVE,
   SAVE_VIEW,
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
   VIEW
-} from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { trimAndRemoveSpaces } from '../../internal/utils';
-import { SelectedVariant } from '../../internal/VariantManagementContext';
-import {
-  Bar,
-  Button,
-  ButtonDomRef,
-  CheckBox,
-  Dialog,
-  DialogDomRef,
-  Input,
-  InputPropTypes,
-  Label
-} from '../../webComponents';
-import { FlexBox } from '../FlexBox';
+} from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { trimAndRemoveSpaces } from '../../internal/utils.js';
+import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
+import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 
 const useStyles = createUseStyles(
   {
@@ -83,7 +74,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const publicCbLabel = i18nBundle.getText(PUBLIC);
   const applyAutomaticallyCbLabel = i18nBundle.getText(APPLY_AUTOMATICALLY);
   const inputLabelText = i18nBundle.getText(VIEW);
-  const errorTextAlreadyExists = i18nBundle.getText(FILE_ALREADY_EXISTS);
+  const errorTextAlreadyExists = i18nBundle.getText(VARIANT_MANAGEMENT_ERROR_DUPLICATE);
   const errorTextEmpty = i18nBundle.getText(SPECIFY_VIEW_NAME);
 
   const [isDefault, setDefault] = useState(selectedVariant.isDefault);

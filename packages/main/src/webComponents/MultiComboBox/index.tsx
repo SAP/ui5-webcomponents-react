@@ -1,13 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
-import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { MultiComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/MultiComboBox.js';
+import type { ReactNode } from 'react';
+import { ComboBoxFilter, ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiComboBoxAttributes {
   /**
@@ -31,7 +30,7 @@ interface MultiComboBoxAttributes {
   /**
    * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
-  filter?: string;
+  filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
   /**
    * Defines whether the value will be autcompleted to match an item
    */
@@ -89,7 +88,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -102,7 +101,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -122,7 +121,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, { items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -130,7 +129,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiComboBox" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
@@ -144,7 +143,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomR
 MultiComboBox.displayName = 'MultiComboBox';
 
 MultiComboBox.defaultProps = {
-  filter: 'StartsWithPerTerm',
+  filter: ComboBoxFilter.StartsWithPerTerm,
   valueState: ValueState.None
 };
 

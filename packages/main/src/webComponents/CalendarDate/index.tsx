@@ -1,9 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/CalendarDate.js';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface CalendarDateAttributes {
   /**
@@ -21,7 +20,7 @@ export interface CalendarDatePropTypes extends CalendarDateAttributes, CommonPro
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Calendar" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>(
   'ui5-date',

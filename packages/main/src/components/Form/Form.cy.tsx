@@ -1,9 +1,9 @@
 import { createPortal } from 'react-dom';
-import { InputType } from '../../enums/InputType';
-import { Input, Label } from '../../webComponents';
+import { InputType } from '../../enums/index.js';
+import { Input, Label } from '../../webComponents/index.js';
 import { FormGroup } from '../FormGroup';
 import { FormItem } from '../FormItem';
-import { Form } from './index';
+import { Form } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const component = (
@@ -24,7 +24,7 @@ const component = (
         <Input data-testid="formInput2" type={InputType.Text} />
       </FormItem>
       <FormItem label={<Label>item 4</Label>}>
-        <Input type={InputType.Number} />
+        <Input type={InputType.Number} id="test-id" />
       </FormItem>
     </FormGroup>
   </Form>
@@ -35,21 +35,21 @@ describe('Form', () => {
     cy.viewport(393, 852); // iPhone 14 Pro
     cy.mount(component);
     cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 12');
-    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', 'auto / span 12');
+    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '1 / span 12');
   });
 
   it('size M - label should cover 2/12, field 10/12', () => {
     cy.viewport(834, 1194); // iPad Pro
     cy.mount(component);
     cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 2');
-    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', 'auto / span 10');
+    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '3 / span 10');
   });
 
   it('size L - label should cover 1/3, field 2/3', () => {
     cy.viewport(1280, 1024);
     cy.mount(component);
     cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 4');
-    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', 'auto / span 8');
+    cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '5 / span 8');
   });
 
   it('size XL - render two columns with 1/3 and 2/3 each', () => {
@@ -81,6 +81,10 @@ describe('Form', () => {
     // custom `Label`
     cy.findAllByText(`item 4`).eq(0).should('be.visible');
     cy.findAllByText(`item 4`).eq(1).should('exist').should('not.be.visible');
+
+    // custom id child of FormItem
+    cy.get('#test-id').should('have.length', 1).should('be.visible');
+    cy.get('[for="test-id"]').should('have.length', 1).should('not.be.visible');
   });
 
   it('FilterItem: doesnt crash with portal as child', () => {

@@ -1,13 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
-import { ReactNode } from 'react';
-import { InputType, ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  MultiInputTokenDeleteEventDetail,
+  MultiInputSuggestionItemPreviewEventDetail,
+  MultiInputSuggestionItemSelectEventDetail
+} from '@ui5/webcomponents/dist/MultiInput.js';
+import type { ReactNode } from 'react';
+import { ValueState, InputType } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiInputAttributes {
   /**
@@ -118,7 +121,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   tokens?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -152,7 +155,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -168,13 +171,13 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when a token is about to be deleted.
    */
-  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, { token: HTMLElement }>) => void;
+  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
   /**
    * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
    */
@@ -193,12 +196,12 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (
-    event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement; targetRef: HTMLElement }>
+    event: Ui5CustomEvent<MultiInputDomRef, MultiInputSuggestionItemPreviewEventDetail>
   ) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**
@@ -211,7 +214,7 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiInput" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiInput" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',

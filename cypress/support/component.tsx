@@ -1,3 +1,4 @@
+import 'cypress-real-events';
 import '@cypress/code-coverage/support';
 import '@testing-library/cypress/add-commands';
 import './commands';

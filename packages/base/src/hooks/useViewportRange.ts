@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '../Device';
+import { getCurrentRange, attachMediaHandler, detachMediaHandler } from '../Device/index.js';
 
 export const useViewportRange = () => {
   const [currentRange, setCurrentRange] = useState(getCurrentRange()?.name);

@@ -2,31 +2,35 @@
 
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  Children,
-  cloneElement,
-  CSSProperties,
-  ElementType,
-  forwardRef,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
+import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, ToolbarStyle } from '../../enums';
-import { ADAPT_FILTERS, CLEAR, FILTERS, GO, HIDE_FILTER_BAR, RESTORE, SHOW_FILTER_BAR } from '../../i18n/i18n-defaults';
-import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { Button, ButtonDomRef, DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem';
-import { Toolbar } from '../Toolbar';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ToolbarSpacer } from '../ToolbarSpacer';
-import styles from './FilterBar.jss';
-import { FilterDialog } from './FilterDialog';
-import { filterValue, renderSearchWithValue, syncRef } from './utils';
+import { ButtonDesign, ToolbarStyle } from '../../enums/index.js';
+import {
+  ADAPT_FILTERS,
+  CLEAR,
+  FILTERS,
+  GO,
+  HIDE_FILTER_BAR,
+  RESTORE,
+  SHOW_FILTER_BAR
+} from '../../i18n/i18n-defaults.js';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import type {
+  ButtonDomRef,
+  DialogDomRef,
+  InputPropTypes,
+  TableDomRef,
+  TableRowDomRef
+} from '../../webComponents/index.js';
+import { Button } from '../../webComponents/index.js';
+import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import { Toolbar } from '../Toolbar/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
+import styles from './FilterBar.jss.js';
+import { FilterDialog } from './FilterDialog.js';
+import { filterValue, renderSearchWithValue, syncRef } from './utils.js';
 
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();

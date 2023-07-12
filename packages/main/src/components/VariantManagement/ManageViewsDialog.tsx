@@ -1,11 +1,11 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { Children, MouseEventHandler, ReactNode, useEffect, useRef, useState } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { BarDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
-import { ButtonDesign } from '../../enums/ButtonDesign';
+import { BarDesign, FlexBoxAlignItems, FlexBoxDirection, ButtonDesign } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -16,17 +16,17 @@ import {
   SHARING,
   VIEW,
   SEARCH
-} from '../../i18n/i18n-defaults';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { Icon, Input } from '../../webComponents';
-import { Bar } from '../../webComponents/Bar';
-import { Button } from '../../webComponents/Button';
-import { Dialog } from '../../webComponents/Dialog';
-import { Table } from '../../webComponents/Table';
-import { TableColumn } from '../../webComponents/TableColumn';
-import { FlexBox } from '../FlexBox';
-import { ManageViewsTableRows } from './ManageViewsTableRows';
-import { VariantItemPropTypes } from './VariantItem';
+} from '../../i18n/i18n-defaults.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { Bar } from '../../webComponents/Bar/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import { Icon, Input } from '../../webComponents/index.js';
+import { Table } from '../../webComponents/Table/index.js';
+import { TableColumn } from '../../webComponents/TableColumn/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { ManageViewsTableRows } from './ManageViewsTableRows.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 
 const styles = {
   manageViewsDialog: {

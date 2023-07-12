@@ -2,12 +2,14 @@
 
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, TitleLevel } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { FlexBox } from '../FlexBox';
+import type { TitleLevel } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
+import { FlexBox } from '../FlexBox/index.js';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**

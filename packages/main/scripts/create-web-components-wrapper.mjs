@@ -2,7 +2,8 @@
 import fioriWebComponentsSpec from '@ui5/webcomponents-fiori/dist/api.json' assert { type: 'json' };
 import mainWebComponentsSpec from '@ui5/webcomponents/dist/api.json' assert { type: 'json' };
 import dedent from 'dedent';
-import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
@@ -17,6 +18,7 @@ import { renderComponentWrapper, renderTest } from '../../../scripts/web-compone
 import * as Utils from '../../../scripts/web-component-wrappers/utils.js';
 import {
   formatDemoDescription,
+  getCommonPropsToBeOmitted,
   getDomRefGetters,
   getDomRefMethods,
   getDomRefObjects
@@ -32,10 +34,6 @@ const EXCLUDE_LIST = [];
 const WEB_COMPONENTS_ROOT_DIR = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 const ENUMS_DIR = path.join(PATHS.packages, 'main', 'src', 'enums');
 
-const EXTENDED_PROP_DESCRIPTION = {
-  primaryCalendarType: `<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />\`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";\``
-};
-
 // use JSDoc syntax here
 const CUSTOM_MAIN_DESCRIPTION = {
   IllustratedMessage: (desc) => {
@@ -47,130 +45,6 @@ ${desc}
   }
 };
 
-const CUSTOM_DESCRIPTION_REPLACE = {
-  Avatar: {
-    icon: (desc) => desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``)
-  },
-  ComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;ComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/ComboBox>
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  Input: {
-    children: (description) => {
-      const formatExample = description.replace(
-        `   * Example:  
-   *   
-   * <ui5-input show-suggestions>  
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
-   * </ui5-input>  `,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;Input showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/Input>
-   *  </code>
-   * </pre>`
-      );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    }
-  },
-  MultiComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-multi-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-multi-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/MultiComboBox>
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  MultiInput: {
-    children: (description) => {
-      const formatExample = description.replace(
-        `   * Example:  
-   *   
-   * <ui5-input show-suggestions>  
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
-   * </ui5-input>  `,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiInput showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/MultiInput>
-   *  </code>
-   * </pre>`
-      );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    },
-    tokens: (description) => {
-      return description.replace(
-        `   * Example:  
-   * <ui5-multi-input>  
-   *     <ui5-token slot="tokens" text="Token 1"></ui5-token>  
-   *     <ui5-token slot="tokens" text="Token 2"></ui5-token>  
-   * </ui5-multi-input>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiInput<br />
-   *    &nbsp;tokens={<br />
-   *    &nbsp;&nbsp;&lt;><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&lt;/><br />
-   *    &nbsp;}<br />
-   *    />
-   *  </code>
-   * </pre>`
-      );
-    }
-  },
-  ShellBar: {
-    children: (desc) => {
-      return desc.replace('<ui5-shellbar-item></ui5-shellbar-item>', '`ShellBarItem`');
-    },
-    menuItems: (desc) => {
-      return desc.replace('<ui5-li></ui5-li>', '`StandardListItem`');
-    }
-  }
-};
 // todo: add StepInput when `onInput` is available (https://github.com/SAP/ui5-webcomponents/issues/5177)
 const INPUT_COMPONENTS = new Set([
   'ComboBox',
@@ -198,7 +72,7 @@ const allWebComponents = [
   return true;
 });
 
-fs.writeFileSync(
+writeFileSync(
   path.join(PATHS.root, 'scripts', 'web-component-wrappers', 'interfaces.json'),
   JSON.stringify(Array.from(interfaces))
 );
@@ -211,7 +85,7 @@ for (const spec of allWebComponents) {
 const filterNonPublicAttributes = (prop) =>
   prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true;
 
-const replaceTagNameWithModuleName = (description) => {
+export const replaceTagNameWithModuleName = (description) => {
   let parsedDescription = description.replace(/(ui5-[\w-]+)/g, (fullMatch, tag, ...args) => {
     if (tag === 'ui5-link') return tag;
     if (tag === 'ui5-webcomponents-react') return tag;
@@ -233,34 +107,45 @@ const replaceTagNameWithModuleName = (description) => {
   return parsedDescription;
 };
 
-const getEventParameters = (name, parameters) => {
-  const resolvedEventParameters = parameters.map((property) => {
-    return {
-      ...property,
-      ...Utils.getTypeDefinitionForProperty(property, { event: true })
-    };
-  });
+const getEventParameters = (moduleName, eventSpec) => {
+  const eventTarget = `${moduleName}DomRef`;
+  if (eventSpec.native === 'true') {
+    if (eventSpec.name === 'click') {
+      return {
+        tsType: `MouseEventHandler<${eventTarget}>`,
+        importStatements: ["import { MouseEventHandler } from 'react';"]
+      };
+    } else if (eventSpec.name === 'drop') {
+      return {
+        tsType: `DragEventHandler<${eventTarget}>`,
+        importStatements: ["import { DragEventHandler } from 'react';"]
+      };
+    } else {
+      console.warn(
+        `----------------------\n${moduleName}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
+      );
+    }
+  }
 
-  const importStatements = [`import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';`];
+  const importSpecifier = `@ui5/webcomponents${
+    componentsFromFioriPackage.has(moduleName) ? '-fiori' : ''
+  }/dist/${moduleName}.js`;
 
-  const eventTarget = `${name}DomRef`;
+  const eventName = `${moduleName}${Utils.capitalizeFirstLetter(Utils.snakeToCamel(eventSpec.name))}EventDetail`;
 
-  if (resolvedEventParameters.length === 0) {
+  const importStatements = [`import type { Ui5CustomEvent } from '../../interfaces/index.js';`];
+
+  if ((eventSpec.parameters ?? []).length === 0) {
     return {
       tsType: `(event: Ui5CustomEvent<${eventTarget}>) => void`,
       importStatements
     };
   }
 
-  const detailPayload = resolvedEventParameters.map((parameter) => {
-    if (parameter.importStatement) {
-      importStatements.push(parameter.importStatement);
-    }
-    return `${parameter.name}: ${parameter.tsType}`;
-  });
+  importStatements.unshift(`import type { ${eventName} } from '${importSpecifier}';`);
 
   return {
-    tsType: `(event: Ui5CustomEvent<${eventTarget}, {${detailPayload.join('; ')}}>) => void`,
+    tsType: `(event: Ui5CustomEvent<${eventTarget}, ${eventName}>) => void`,
     importStatements
   };
 };
@@ -283,6 +168,7 @@ const createWebComponentWrapper = async (
   const attributesToBeOmitted = [...regularProps, ...booleanProps]
     .filter((attribute) => KNOWN_ATTRIBUTES.has(attribute))
     .map((a) => `'${a}'`);
+  const commonPropsToBeOmitted = getCommonPropsToBeOmitted(componentSpec.module);
 
   let domRefExtends = 'Ui5DomRef';
   if (attributesToBeOmitted.length > 0) {
@@ -290,8 +176,12 @@ const createWebComponentWrapper = async (
   }
 
   let tsExtendsStatement = 'CommonProps';
-  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${[...attributesToBeOmitted, ...eventsToBeOmitted].join(' | ')}>`;
+  if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0 || commonPropsToBeOmitted.length > 0) {
+    tsExtendsStatement = `Omit<CommonProps, ${[
+      ...attributesToBeOmitted,
+      ...eventsToBeOmitted,
+      ...commonPropsToBeOmitted
+    ].join(' | ')}>`;
   }
   let componentDescription;
   try {
@@ -322,6 +212,7 @@ const createWebComponentWrapper = async (
     attributes,
     slotsAndEvents,
     description: componentDescription,
+    ui5wcPackage: componentSpec.name.includes('fiori') ? 'fiori' : 'main',
     tagName: componentSpec.tagname,
     regularProps,
     booleanProps,
@@ -421,10 +312,14 @@ const resolveInheritedAttributes = (componentSpec) => {
   return componentSpec;
 };
 
-[
+const specs = [
   ...mainWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public'),
   ...fioriWebComponentsSpec.symbols.filter((spec) => spec.module.startsWith('types/') && spec.visibility === 'public')
-].forEach((spec) => {
+];
+for (const spec of specs) {
+  if (spec.module === 'types/HasPopup') {
+    continue;
+  }
   const template = dedent`
   // Generated file - do not change manually! 
   
@@ -436,34 +331,8 @@ const resolveInheritedAttributes = (componentSpec) => {
   
   `;
 
-  fs.writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), prettier.format(template, Utils.prettierConfig));
-});
-
-const propDescription = (componentSpec, property) => {
-  if (!componentSpec.tagname) {
-    return property.description || '';
-  }
-  let formattedDescription = Utils.formatDescription(property.description, componentSpec);
-
-  const customDescriptionReplace = CUSTOM_DESCRIPTION_REPLACE[componentSpec.module];
-  if (customDescriptionReplace && customDescriptionReplace[property.name]) {
-    formattedDescription = customDescriptionReplace[property.name](formattedDescription);
-  }
-
-  const extendedDescription = EXTENDED_PROP_DESCRIPTION[property.name] ?? '';
-
-  if (property.name !== 'children' && componentSpec?.slots?.some((item) => item.name === property.name)) {
-    formattedDescription += `
-          *
-          * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (\`slot="${property.name}"\`). 
-          * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
-          *
-          * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
-          * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).`;
-  }
-
-  return replaceTagNameWithModuleName(`${formattedDescription}${extendedDescription}`);
-};
+  writeFileSync(path.join(ENUMS_DIR, `${spec.basename}.ts`), await prettier.format(template, Utils.prettierConfig));
+}
 
 allWebComponents
   .filter((spec) => spec.visibility === 'public')
@@ -487,7 +356,7 @@ allWebComponents
 
         attributes.push(dedent`
         /**
-         * ${propDescription(componentSpec, property)}
+         * ${Utils.propDescription(componentSpec, property)}
          */
          ${property.name}?: ${tsType.tsType};
         `);
@@ -528,7 +397,7 @@ allWebComponents
 
           slotsAndEvents.push(dedent`
         /**
-         * ${propDescription(componentSpec, property)}
+         * ${Utils.propDescription(componentSpec, property)}
          */
          ${property.name}?: ${tsType.tsType};
         `);
@@ -543,27 +412,7 @@ allWebComponents
     (componentSpec.events || [])
       .filter((eventSpec) => eventSpec.visibility === 'public')
       .forEach((eventSpec) => {
-        let eventParameters;
-        if (eventSpec.native === 'true') {
-          const eventTarget = `${componentSpec.module}DomRef`;
-          if (eventSpec.name === 'click') {
-            eventParameters = {
-              tsType: `MouseEventHandler<${eventTarget}>`,
-              importStatements: ["import { MouseEventHandler } from 'react';"]
-            };
-          } else if (eventSpec.name === 'drop') {
-            eventParameters = {
-              tsType: `DragEventHandler<${eventTarget}>`,
-              importStatements: ["import { DragEventHandler } from 'react';"]
-            };
-          } else {
-            console.warn(
-              `----------------------\n${componentSpec.module}: ${eventSpec.name} event didn't receive its type, please add it to the script! \n----------------------`
-            );
-          }
-        } else {
-          eventParameters = getEventParameters(componentSpec.module, eventSpec.parameters || []);
-        }
+        const eventParameters = getEventParameters(componentSpec.module, eventSpec);
         importStatements.push(...eventParameters.importStatements);
         let onChangeDescription;
         if (INPUT_COMPONENTS.has(componentSpec.module) && eventSpec.name === 'change') {
@@ -574,8 +423,8 @@ allWebComponents
         slotsAndEvents.push(dedent`
       /**
        * ${replaceTagNameWithModuleName(Utils.formatDescription(eventSpec.description, componentSpec))}${
-          onChangeDescription ?? ''
-        }
+         onChangeDescription ?? ''
+       }
        */
        ${Utils.eventNameToReactEventName(eventSpec.name)}?: ${eventParameters.tsType};
       `);
@@ -610,14 +459,14 @@ allWebComponents
 
     // check if folder exists and create it if necessary
     const webComponentFolderPath = path.join(WEB_COMPONENTS_ROOT_DIR, componentSpec.module);
-    if (!fs.existsSync(webComponentFolderPath)) {
-      fs.mkdirSync(webComponentFolderPath);
+    if (!existsSync(webComponentFolderPath)) {
+      mkdirSync(webComponentFolderPath);
     }
 
     // create empty index file for eslint
     const webComponentWrapperPath = path.join(webComponentFolderPath, 'index.tsx');
-    if (!fs.existsSync(webComponentWrapperPath)) {
-      fs.writeFileSync(webComponentWrapperPath, '');
+    if (!existsSync(webComponentWrapperPath)) {
+      writeFileSync(webComponentWrapperPath, '');
     }
 
     // fill index
@@ -644,12 +493,12 @@ allWebComponents
         (componentSpec.slots || []).filter(filterNonPublicAttributes).map(({ name }) => name),
         (componentSpec.events || []).filter(filterNonPublicAttributes).map(({ name }) => name)
       );
-      fs.writeFileSync(webComponentWrapperPath, webComponentWrapper);
+      writeFileSync(webComponentWrapperPath, webComponentWrapper);
 
       // create test
-      if (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
+      if (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
         const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
-        fs.writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
+        writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
       // create demo
@@ -659,21 +508,21 @@ allWebComponents
         if (componentSpec.since) {
           mainDescription = `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/><br/>` + mainDescription;
         }
-        const subComponentDescription = `${formatDemoDescription(
+        const subComponentDescription = `${await formatDemoDescription(
           mainDescription,
           componentSpec,
           false
-        )}\n${formatDemoDescription(description, componentSpec, false)}`;
-        fs.writeFileSync(
+        )}\n${await formatDemoDescription(description, componentSpec, false)}`;
+        writeFileSync(
           path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
           subComponentDescription
         );
       }
       if (!componentWithoutDemo) {
-        const formattedDescription = formatDemoDescription(description, componentSpec);
+        const formattedDescription = await formatDemoDescription(description, componentSpec);
         // create component description
         if (formattedDescription) {
-          fs.writeFileSync(
+          writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
             formattedDescription
           );
@@ -686,22 +535,20 @@ allWebComponents
         ];
 
         if (publicProperties.length) {
-          fs.writeFileSync(
+          writeFileSync(
             path.join(webComponentFolderPath, `${componentSpec.module}DomRef.json`),
-            prettier.format(JSON.stringify(publicProperties), {
+            await prettier.format(JSON.stringify(publicProperties), {
               ...Utils.prettierConfig,
               parser: 'json'
             })
           );
           let hasMethodsTable = false;
-          if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
+          if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))) {
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
-          } else if (fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
-            hasMethodsTable = fs
-              .readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
+          } else if (existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))) {
+            hasMethodsTable = readFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.mdx`))
               .toString()
               .includes(`<DomRefTable rows={${componentSpec.module}DomRef.json} />`);
           }
@@ -715,8 +562,8 @@ allWebComponents
 
         if (
           CREATE_SINGLE_COMPONENT === componentSpec.module ||
-          (!fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
-            !fs.existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
+          (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.mdx`)) &&
+            !existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.stories.tsx`)))
         ) {
           await createStory(componentSpec, allComponentProperties);
           await createDocumentation(componentSpec, allComponentProperties, description);
@@ -726,11 +573,12 @@ allWebComponents
   });
 
 // create index file for exporting all web components
-fs.writeFileSync(
+writeFileSync(
   path.join(WEB_COMPONENTS_ROOT_DIR, 'index.ts'),
-  fs
-    .readdirSync(WEB_COMPONENTS_ROOT_DIR)
-    .filter((f) => fs.statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
-    .map((folder) => `export * from './${folder}';`)
+  readdirSync(WEB_COMPONENTS_ROOT_DIR)
+    .filter((f) => statSync(path.join(WEB_COMPONENTS_ROOT_DIR, f)).isDirectory())
+    .map((folder) => `export * from './${folder}/index.js';`)
     .join('\n')
 );
+
+spawnSync('prettier', [WEB_COMPONENTS_ROOT_DIR, '--write'], { stdio: [0, 1, 2] });

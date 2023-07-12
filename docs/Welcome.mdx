@@ -26,7 +26,8 @@ In addition to that, UI5 Web Components for React is providing complex component
 ## Requirements
 
 - [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
-- [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
+- [Node.js](https://nodejs.org/) (**LTS version**)
+- If you're using [TypeScript](https://www.typescriptlang.org/) we recommend version **4.7** or later.
 
 ## Getting Started
 
@@ -39,33 +40,7 @@ In about an hour you will create a business dashboard from scratch and get famil
 
 ### Templates
 
-<br />
-
-#### Basic Template
-
-You can create a new React app by using [create-react-app](https://facebook.github.io/create-react-app/) with our template.
-This template is installing all required dependencies for you and is setting up the `App.js` file for you:
-
-```sh
-npx create-react-app my-app --template @ui5/webcomponents-react
-```
-
-#### Advanced Template
-
-You can create a new React app by using [create-react-app](https://facebook.github.io/create-react-app/) based on our seed.
-This template delivers several out-of-the-box components, scripts and configurations.
-For more info, check the [seed documentation](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cra-template-seed).
-
-```sh
-npx create-react-app my-app --template @ui5/webcomponents-react-seed
-npm run start
-```
-
-#### Community Templates
-
-Our community is starting to create templates for UI5 Web Components for React as well! 🎉
-You can find the templates in a dedicated [ui5-web-components-templates](https://github.com/ui5-web-components-templates) organization.<br />
-A huge "Thank You" goes to [@afuscella](https://github.com/afuscella) for kicking this off!
+You can find a curated list of project templates on our [Project Templates page](?path=/docs/project-templates--docs).
 
 ### Add `@ui5/webcomponents-react` to an existing app
 
@@ -167,24 +142,34 @@ UI5 Web Components for React supports [TypeScript](https://www.typescriptlang.or
 
 You can find all available interfaces of the main package [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main/src/interfaces) and for charts [here](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts/src/interfaces).
 
-<br />
+#### Example
 
-Example - `Popover` with `Ref` type declaration:
+Small app with a popover opened by clicking a button including type declarations:
 
 ```tsx
-import React, { MouseEvent, useRef } from 'react';
-import { ThemeProvider, Button, Popover, PopoverDomRef } from '@ui5/webcomponents-react';
+import React, { useState, useRef } from 'react';
+import type { ButtonPropTypes, PopoverDomRef, PopoverPropTypes } from '@ui5/webcomponents-react';
+import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
 
 export default function App() {
+  const [open, setOpen] = useState<PopoverPropTypes['open']>(false);
   const popoverRef = useRef<PopoverDomRef>(null);
-  const onClick = (e: MouseEvent<HTMLElement, MouseEvent>) => {
-    popoverRef.current?.showAt(e.target);
+
+  const handleClick: ButtonPropTypes['onClick'] = (e) => {
+    setOpen(true);
+  };
+  const handleAfterClose: PopoverPropTypes['onAfterClose'] = (e) => {
+    setOpen(false);
   };
 
   return (
     <ThemeProvider>
-      <Button onClick={onClick}>Open Popover</Button>
-      <Popover ref={popoverRef}>Content</Popover>
+      <Button id="opener" onClick={handleClick}>
+        Open Popover
+      </Button>
+      <Popover ref={popoverRef} opener="opener" open={open} onAfterClose={handleAfterClose}>
+        Content
+      </Popover>
     </ThemeProvider>
   );
 }

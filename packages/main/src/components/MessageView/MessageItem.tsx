@@ -3,19 +3,18 @@
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode, useContext } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
-import { FlexBoxDirection } from '../../enums/FlexBoxDirection';
-import { ListItemType } from '../../enums/ListItemType';
-import { ValueState } from '../../enums/ValueState';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { MessageViewContext } from '../../internal/MessageViewContext';
-import { CustomListItem, CustomListItemDomRef } from '../../webComponents/CustomListItem';
-import { Icon } from '../../webComponents/Icon';
-import { Label } from '../../webComponents/Label';
-import { FlexBox } from '../FlexBox';
-import { getIconNameForType } from './utils';
+import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { MessageViewContext } from '../../internal/MessageViewContext.js';
+import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
+import { CustomListItem } from '../../webComponents/CustomListItem/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { getIconNameForType } from './utils.js';
 
 export interface MessageItemPropTypes extends CommonProps {
   /**
@@ -56,7 +55,7 @@ export interface MessageItemPropTypes extends CommonProps {
 const useStyles = createUseStyles(
   {
     listItem: {
-      height: CssSizeVariables.sapWcrMessageViewListItemHeightSingle
+      height: CssSizeVariables.ui5WcrMessageViewListItemHeightSingle
     },
     message: {
       padding: '0.25rem 0',
@@ -67,7 +66,7 @@ const useStyles = createUseStyles(
       boxSizing: 'border-box'
     },
     withSubtitle: {
-      height: CssSizeVariables.sapWcrMessageViewListItemHeightByLine
+      height: CssSizeVariables.ui5WcrMessageViewListItemHeightByLine
     },
     withChildren: {
       paddingRight: '0rem'

@@ -1,12 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
-import { ReactNode } from 'react';
-import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Breadcrumbs.js';
+import type { ReactNode } from 'react';
+import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface BreadcrumbsAttributes {
   /**
@@ -42,12 +41,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
   /**
    * Fires when a `BreadcrumbsItem` is clicked. **Note:** You can prevent browser location change by calling `event.preventDefault()`.
    */
-  onItemClick?: (
-    event: Ui5CustomEvent<
-      BreadcrumbsDomRef,
-      { item: HTMLElement; altKey: boolean; ctrlKey: boolean; metaKey: boolean; shiftKey: boolean }
-    >
-  ) => void;
+  onItemClick?: (event: Ui5CustomEvent<BreadcrumbsDomRef, BreadcrumbsItemClickEventDetail>) => void;
 }
 
 /**
@@ -59,7 +53,7 @@ export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Breadcrumbs" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   'ui5-breadcrumbs',

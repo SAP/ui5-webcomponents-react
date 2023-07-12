@@ -1,9 +1,9 @@
-import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
-import type { DivWithCustomScrollProp } from '../index';
-import { ColumnHeader } from './index';
+import type { DivWithCustomScrollProp } from '../index.js';
+import { ColumnHeader } from './index.js';
 
 const styles = {
   resizer: {
@@ -37,6 +37,7 @@ interface ColumnHeaderContainerProps {
   portalContainer: Element;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp>;
   scaleXFactor?: number;
+  uniqueId: string;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -57,7 +58,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     isRtl,
     portalContainer,
     columnVirtualizer,
-    scaleXFactor
+    scaleXFactor,
+    uniqueId
   } = props;
 
   const classes = useStyles();
@@ -98,6 +100,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
             )}
             <ColumnHeader
               {...rest}
+              id={`${uniqueId}${rest?.id ?? ''}`}
+              columnId={rest.id}
               visibleColumnIndex={index}
               columnIndex={virtualColumn.index}
               onSort={onSort}

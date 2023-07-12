@@ -1,10 +1,21 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "1.12.0",
+  "version": "1.17.1",
   "description": "Charts for ui5-webcomponents-react",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./dist": "./dist/index.js",
+    "./dist/*": "./dist/*",
+    "./dist/*.js": "./dist/*.js"
+  },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
     "type": "git",
@@ -20,11 +31,11 @@
   "dependencies": {
     "clsx": "1.2.1",
     "react-content-loader": "6.2.1",
-    "recharts": "2.5.0"
+    "recharts": "2.7.2"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-react": "^1.10.0",
-    "@ui5/webcomponents-react-base": "^1.10.0",
+    "@ui5/webcomponents-react": "~1.17.0",
+    "@ui5/webcomponents-react-base": "~1.17.0",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-jss": "^10.10.0"
   },

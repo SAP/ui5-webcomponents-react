@@ -1,4 +1,4 @@
-import { useTooltipFormatter } from './useTooltipFormatter';
+import { useTooltipFormatter } from './useTooltipFormatter.js';
 
 // eslint-disable-next-line react/prop-types
 function TooltipFormatterComponent({ measure, value, name, options }) {

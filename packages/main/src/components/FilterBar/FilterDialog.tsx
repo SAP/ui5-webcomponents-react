@@ -13,7 +13,7 @@ import {
   TableMode,
   TitleLevel,
   ToolbarStyle
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   ACTIVE,
   ALL,
@@ -32,16 +32,16 @@ import {
   SHOW_VALUES,
   VISIBLE,
   VISIBLE_AND_ACTIVE
-} from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
+} from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import type { DialogDomRef, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
   Dialog,
-  DialogDomRef,
   Icon,
   Input,
   Option,
@@ -51,16 +51,14 @@ import {
   Select,
   Table,
   TableColumn,
-  TableDomRef,
-  TableRowDomRef,
   Title
-} from '../../webComponents';
-import { FilterGroupItemPropTypes } from '../FilterGroupItem';
-import { FlexBox } from '../FlexBox';
-import { Toolbar } from '../Toolbar';
-import { ToolbarSpacer } from '../ToolbarSpacer';
-import styles from './FilterBarDialog.jss';
-import { filterValue, syncRef } from './utils';
+} from '../../webComponents/index.js';
+import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { Toolbar } from '../Toolbar/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
+import styles from './FilterBarDialog.jss.js';
+import { filterValue, syncRef } from './utils.js';
 
 addCustomCSSWithScoping(
   'ui5-table',
@@ -286,7 +284,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const handleCheckBoxChange = (e) => {
     e.preventDefault();
 
-    // todo: could be unwanted behavior: https://github.com/SAP/ui5-webcomponents-react/issues/3928
     if (!e.target.hasAttribute('ui5-table')) {
       return;
     }
@@ -354,7 +351,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             key={`${item === 'default' ? basicText : item}${index}`}
           >
             <Table
-              className={classes.table}
               mode={TableMode.MultiSelect}
               data-component-name="FilterBarDialogPanelTable"
               onSelectionChange={handleCheckBoxChange}
@@ -472,7 +468,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       <Table
         data-component-name="FilterBarDialogTable"
         hideNoData={!isListView}
-        className={classes.table}
         mode={TableMode.MultiSelect}
         onSelectionChange={handleCheckBoxChange}
         columns={

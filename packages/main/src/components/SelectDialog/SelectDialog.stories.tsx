@@ -6,8 +6,10 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Button, DialogDomRef, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
-import { SelectDialog as OriginalSelectDialog, SelectDialogPropTypes } from './index';
+import type { DialogDomRef } from '../..';
+import { Button, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
+import type { SelectDialogPropTypes } from './index.js';
+import { SelectDialog as OriginalSelectDialog } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',

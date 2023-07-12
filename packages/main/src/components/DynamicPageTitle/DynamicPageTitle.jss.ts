@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 
 export const DynamicPageTitleStyles = {
   container: {
@@ -33,10 +33,14 @@ export const DynamicPageTitleStyles = {
     padding: '0.5rem 0 0.25rem 0'
   },
   titleMainSection: {
+    overflowX: 'hidden',
     flex: '1 1 100%',
     alignItems: 'baseline'
   },
+  middleSection: { flexGrow: 1, width: '100%', overflowX: 'hidden' },
   title: {
+    minWidth: '3rem',
+    overflowX: 'hidden',
     fontFamily: ThemingParameters.sapObjectHeader_Title_FontFamily,
     color: ThemingParameters.sapObjectHeader_Title_TextColor,
     fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,

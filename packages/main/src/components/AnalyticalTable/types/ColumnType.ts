@@ -1,6 +1,6 @@
-import { ComponentType, RefObject } from 'react';
-import { Column } from 'react-table';
-import { PopoverDomRef } from '../../../webComponents/Popover';
+import type { ComponentType, RefObject } from 'react';
+import type { Column } from 'react-table';
+import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 
 export interface ColumnType extends Column {
   show: boolean;
@@ -23,4 +23,5 @@ export interface ColumnType extends Column {
   hAlign: string;
   totalLeft: number;
   totalFlexWidth: number;
+  enableMultiSort?: boolean;
 }

@@ -1,10 +1,11 @@
-import { CommonProps } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react';
 import { throttle } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, ReactNode, useEffect, useRef, useState } from 'react';
-import { TimelineChartBody } from './chartbody/TimelineChartBody';
-import { TimelineChartPlaceholder } from './Placeholder';
-import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders';
-import { ITimelineChartRow } from './types/TimelineChartTypes';
+import type { CSSProperties, ReactNode } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { TimelineChartBody } from './chartbody/TimelineChartBody.js';
+import { TimelineChartPlaceholder } from './Placeholder.js';
+import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders.js';
+import type { ITimelineChartRow } from './types/TimelineChartTypes.js';
 import {
   DEFAULT_ROW_HEIGHT,
   DEFAULT_WIDTH,
@@ -15,9 +16,9 @@ import {
   MOUSE_CURSOR_GRAB,
   MOUSE_CURSOR_GRABBING,
   ROW_TITLE_WIDTH
-} from './util/constants';
-import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error';
-import { useStyles } from './util/styles';
+} from './util/constants.js';
+import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error.js';
+import { useStyles } from './util/styles.js';
 
 interface TimelineChartProps extends CommonProps {
   /**

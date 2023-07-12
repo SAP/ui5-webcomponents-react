@@ -1,8 +1,28 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { MutableRefObject } from 'react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import type { AnalyticalTablePropTypes } from '../index.js';
 
-export const VirtualTableBodyContainer = (props) => {
+interface VirtualTableBodyContainerProps {
+  tableBodyHeight: number;
+  totalColumnsWidth: number;
+  children: any;
+  parentRef: MutableRefObject<HTMLDivElement>;
+  classes: Record<string, string>;
+  infiniteScroll?: AnalyticalTablePropTypes['infiniteScroll'];
+  infiniteScrollThreshold?: AnalyticalTablePropTypes['infiniteScrollThreshold'];
+  onLoadMore: AnalyticalTablePropTypes['onLoadMore'];
+  rows: Record<string, any>[];
+  internalRowHeight: number;
+  handleExternalScroll: AnalyticalTablePropTypes['onTableScroll'];
+  visibleRows: number;
+  popInRowHeight: number;
+  rowCollapsedFlag?: boolean;
+  dispatch: (e: { type: string; payload?: any }) => void;
+}
+
+export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps) => {
   const {
     tableBodyHeight,
     totalColumnsWidth,
@@ -16,7 +36,9 @@ export const VirtualTableBodyContainer = (props) => {
     internalRowHeight,
     handleExternalScroll,
     visibleRows,
-    popInRowHeight
+    popInRowHeight,
+    rowCollapsedFlag,
+    dispatch
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -35,12 +57,19 @@ export const VirtualTableBodyContainer = (props) => {
 
   useEffect(() => {
     if (prevDataLength.current > dataLength) {
-      firedInfiniteLoadEvents.current.clear();
-      parentRef.current.scrollTop = 0;
-      lastScrollTop.current = 0;
+      if (rowCollapsedFlag) {
+        dispatch({
+          type: 'ROW_COLLAPSED_FLAG',
+          payload: false
+        });
+      } else {
+        firedInfiniteLoadEvents.current.clear();
+        parentRef.current.scrollTop = 0;
+        lastScrollTop.current = 0;
+      }
     }
     prevDataLength.current = dataLength;
-  }, [dataLength]);
+  }, [dataLength, rowCollapsedFlag]);
 
   const onScroll = useCallback(
     (event) => {
@@ -55,12 +84,12 @@ export const VirtualTableBodyContainer = (props) => {
         if (rows.length - currentLastRow < infiniteScrollThreshold) {
           if (!firedInfiniteLoadEvents.current.has(rows.length)) {
             const rootNodes = rows.filter((row) => row.depth === 0);
-            onLoadMore({
-              detail: {
+            onLoadMore(
+              enrichEventWithDetails(event, {
                 rowCount: rootNodes.length,
                 totalRowCount: rows.length
-              }
-            });
+              })
+            );
           }
           firedInfiniteLoadEvents.current.add(rows.length);
         }

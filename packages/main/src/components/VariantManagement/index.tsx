@@ -1,18 +1,17 @@
 'use client';
 
+import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { ComponentElement, ReactElement, ReactNode } from 'react';
 import React, {
   Children,
   cloneElement,
-  ComponentElement,
   forwardRef,
   isValidElement,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -27,12 +26,20 @@ import {
   ListMode,
   PopoverPlacementType,
   TitleLevel
-} from '../../enums';
-import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults';
-import { CommonProps, Ui5CustomEvent } from '../../interfaces';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { SelectedVariant, VariantManagementContext } from '../../internal/VariantManagementContext';
+} from '../../enums/index.js';
+import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
+import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
+import type {
+  ButtonPropTypes,
+  ListDomRef,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes,
+  TitlePropTypes
+} from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -41,13 +48,12 @@ import {
   Input,
   List,
   ResponsivePopover,
-  ResponsivePopoverDomRef,
   Title
-} from '../../webComponents';
-import { FlexBox } from '../FlexBox';
-import { ManageViewsDialog } from './ManageViewsDialog';
-import { SaveViewDialog } from './SaveViewDialog';
-import { VariantItemPropTypes } from './VariantItem';
+} from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { ManageViewsDialog } from './ManageViewsDialog.js';
+import { SaveViewDialog } from './SaveViewDialog.js';
+import type { VariantItemPropTypes } from './VariantItem.js';
 
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;
@@ -63,13 +69,13 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+  placement?: ResponsivePopoverPropTypes['placementType'];
   /**
    * Describes the title of the VariantManagement popover.
    *
    * __Note:__ If not set, the default title is used.
    */
-  titleText?: string;
+  titleText?: ResponsivePopoverPropTypes['headerText'];
   /**
    * Defines whether the VariantManagement should be closed if an item was selected.
    */
@@ -77,24 +83,11 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Describes the `HTML Title` level of the variants.
    */
-  level?: TitleLevel | keyof typeof TitleLevel;
+  level?: TitlePropTypes['level'];
   /**
    * Defines whether the VariantManagement is disabled.
    */
   disabled?: boolean;
-  /**
-   * Fired after a variant has been selected.
-   */
-  onSelect?: (
-    event: Ui5CustomEvent<
-      HTMLElement,
-      {
-        selectedVariant: SelectedVariant;
-        selectedItems: unknown[];
-        previouslySelectedItems: unknown[];
-      }
-    >
-  ) => void;
   /**
    * Indicator for modified but not saved variants.
    *
@@ -148,30 +141,45 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   portalContainer?: Element;
   /**
+   * Fired after a variant has been selected.
+   *
+   * __Note:__ This event inherits part of its details from the `onSelectionChange` event of the `List` component.
+   */
+  onSelect?: (
+    event: Ui5CustomEvent<
+      ListDomRef,
+      ListSelectionChangeEventDetail & {
+        selectedVariant: SelectedVariant;
+      }
+    >
+  ) => void;
+  /**
    * The event is fired when the "Save" button is clicked inside the Save View dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: CustomEvent<SelectedVariant>) => void;
+  onSaveAs?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: CustomEvent<{
-      deletedVariants: VariantItemPropTypes[];
-      prevVariants: VariantItemPropTypes[];
-      updatedVariants: UpdatedVariant[];
-      variants: SelectedVariant[];
-    }>
+    e: Parameters<ButtonPropTypes['onClick']>[0] & {
+      detail: {
+        deletedVariants: VariantItemPropTypes[];
+        prevVariants: VariantItemPropTypes[];
+        updatedVariants: UpdatedVariant[];
+        variants: SelectedVariant[];
+      };
+    }
   ) => void;
   /**
    * The event is fired when the "Save" button is clicked in the `VariantManagement` popover.
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: CustomEvent<SelectedVariant>) => void;
+  onSave?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
 }
 
 const styles = {
@@ -221,7 +229,8 @@ const styles = {
     }
   },
   inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInput: { padding: '0.25rem 1rem' },
+  searchInputContainer: { padding: '0.25rem 1rem' },
+  searchInput: { width: '100%' },
   popover: {
     minWidth: '25rem',
     '&::part(content), &::part(footer)': {
@@ -540,8 +549,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     mode={ListMode.SingleSelect}
                     header={
                       showInput ? (
-                        <div className={classes.searchInput} tabIndex={-1}>
+                        <div className={classes.searchInputContainer} tabIndex={-1}>
                           <Input
+                            className={classes.searchInput}
                             accessibleName={a11ySearchText}
                             value={searchValue}
                             placeholder={searchText}

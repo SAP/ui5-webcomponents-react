@@ -1,5 +1,5 @@
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { IChartMeasure } from '../interfaces/IChartMeasure';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
+import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 
 export const getCellColors = (element: Record<string, any>, data: Record<string, any>, index: number): string => {
   return (

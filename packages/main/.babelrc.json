@@ -17,14 +17,6 @@
   ],
   "env": {
     "ssr": {
-      "presets": [
-        [
-          "@babel/preset-react",
-          {
-            "runtime": "automatic"
-          }
-        ]
-      ],
       "plugins": [
         [
           "./babel-plugin-ssr.mjs",

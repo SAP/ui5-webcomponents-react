@@ -1,10 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type {
+  BarcodeScannerDialogScanErrorEventDetail,
+  BarcodeScannerDialogScanSuccessEventDetail
+} from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface BarcodeScannerDialogAttributes {}
 
@@ -23,12 +25,12 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
   /**
    * Fires when the scan fails with error.
    */
-  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { message: string }>) => void;
+  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
   /**
    * Fires when the scan is completed successfuuly.
    */
   onScanSuccess?: (
-    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, { text: string; rawBytes: Record<string, unknown> }>
+    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>
   ) => void;
 }
 
@@ -41,7 +43,7 @@ export interface BarcodeScannerDialogPropTypes extends BarcodeScannerDialogAttri
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/BarcodeScannerDialog" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-BarcodeScannerDialog" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',

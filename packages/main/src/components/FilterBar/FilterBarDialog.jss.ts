@@ -11,15 +11,12 @@ const styles = {
       textAlign: 'center'
     }
   },
-  table: {
-    '--_ui5_input_width': '100%'
-  },
   groupPanel: {
     '&::part(content)': {
       padding: 0
     }
   },
-  searchInputContainer: { height: CssSizeVariables.sapWcrToolbarHeight, paddingBottom: '0.25rem' },
+  searchInputContainer: { height: CssSizeVariables.ui5WcrToolbarHeight, paddingBottom: '0.25rem' },
   searchInput: {
     width: '100%'
   },

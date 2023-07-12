@@ -1,11 +1,11 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, RefObject } from 'react';
+import type { RefObject } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxDirection } from '../../../enums/FlexBoxDirection';
-import { GlobalStyleClasses } from '../../../enums/GlobalStyleClasses';
-import { CustomThemingParameters } from '../../../themes/CustomVariables';
-import { FlexBox } from '../../FlexBox';
+import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
+import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
+import { FlexBox } from '../../FlexBox/index.js';
 
 interface VerticalScrollbarProps {
   internalRowHeight: number;

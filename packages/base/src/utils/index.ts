@@ -1,4 +1,4 @@
-import { UIEvent } from 'react';
+import type { UIEvent } from 'react';
 
 export const deprecationNotice = (component: string, message: string) => {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
@@ -31,5 +31,5 @@ export const enrichEventWithDetails = <T extends Record<string, unknown>, Return
   return event as unknown as ReturnType;
 };
 
-export { debounce } from './debounce';
-export { throttle } from './throttle';
+export { debounce } from './debounce.js';
+export { throttle } from './throttle.js';

@@ -1,13 +1,18 @@
 'use client';
 
 import '@ui5/webcomponents/dist/List.js';
-import { ReactNode } from 'react';
-import { ListGrowingMode, ListMode, ListSeparators } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  ListItemClickEventDetail,
+  ListItemCloseEventDetail,
+  ListItemDeleteEventDetail,
+  ListItemToggleEventDetail,
+  ListSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/List.js';
+import type { ReactNode } from 'react';
+import { ListSeparators, ListMode, ListGrowingMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface ListAttributes {
   /**
@@ -96,31 +101,31 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   header?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when an item is activated, unless the item's `type` property is set to `Inactive`.
    */
-  onItemClick?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ListDomRef, ListItemClickEventDetail>) => void;
   /**
    * Fired when the `Close` button of any item is clicked
    *
    * **Note:** This event is only applicable to list items that can be closed (such as notification list items), not to be confused with `onItemDelete`.
    */
-  onItemClose?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemClose?: (event: Ui5CustomEvent<ListDomRef, ListItemCloseEventDetail>) => void;
   /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<ListDomRef, ListItemDeleteEventDetail>) => void;
   /**
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    */
-  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, { item: HTMLElement }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, ListItemToggleEventDetail>) => void;
   /**
    * Fired when the user scrolls to the bottom of the list.
    *
@@ -130,9 +135,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<ListDomRef, { selectedItems: unknown[]; previouslySelectedItems: unknown[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -152,7 +155,7 @@ export interface ListPropTypes extends ListAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/List" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-List" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const List = withWebComponent<ListPropTypes, ListDomRef>(
   'ui5-list',

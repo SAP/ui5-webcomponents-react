@@ -1,26 +1,25 @@
 'use client';
 
-import { createRef, Dispatch, MutableRefObject, RefObject, useCallback } from 'react';
-import { getRandomId } from '../../internal/getRandomId';
-import { UpdateModalStateAction, useModalsContext } from '../../internal/ModalsContext';
-import {
-  Dialog,
+import type { Dispatch, MutableRefObject, RefObject } from 'react';
+import { createRef, useCallback } from 'react';
+import { getRandomId } from '../../internal/getRandomId.js';
+import type { UpdateModalStateAction } from '../../internal/ModalsContext.js';
+import { useModalsContext } from '../../internal/ModalsContext.js';
+import type {
   DialogDomRef,
   DialogPropTypes,
-  Menu,
   MenuDomRef,
   MenuPropTypes,
-  Popover,
   PopoverDomRef,
   PopoverPropTypes,
-  ResponsivePopover,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes,
-  Toast,
   ToastDomRef,
   ToastPropTypes
-} from '../../webComponents';
-import { MessageBox, MessageBoxPropTypes } from '../MessageBox';
+} from '../../webComponents/index.js';
+import { Dialog, Menu, Popover, ResponsivePopover, Toast } from '../../webComponents/index.js';
+import type { MessageBoxPropTypes } from '../MessageBox/index.js';
+import { MessageBox } from '../MessageBox/index.js';
 
 type ModalReturnType<DomRef> = {
   ref: RefObject<DomRef>;

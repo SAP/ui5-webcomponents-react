@@ -1,11 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
-import { ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { ReactNode } from 'react';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface SideNavigationItemAttributes {
   /**
@@ -16,7 +14,7 @@ interface SideNavigationItemAttributes {
    * Defines the icon of the item.
    *
    * The SAP-icons font provides numerous options.
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -37,7 +35,7 @@ export interface SideNavigationItemDomRef extends SideNavigationItemAttributes, 
 
 export interface SideNavigationItemPropTypes extends SideNavigationItemAttributes, Omit<CommonProps, 'onClick'> {
   /**
-   * If you wish to nest menus, you can pass inner menu items to the default slot.
+   * Defines nested items by passing `SideNavigationSubItem` to the default slot.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -51,7 +49,7 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/SideNavigation" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-SideNavigation" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',

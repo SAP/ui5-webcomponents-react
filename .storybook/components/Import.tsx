@@ -16,7 +16,7 @@ export const ImportStatement = ({ moduleName, packageName }: ImportStatementProp
   return (
     <pre
       style={{
-        display: 'block',
+        display: 'contents',
         overflowX: 'auto',
         padding: '0px',
         background: 'white',

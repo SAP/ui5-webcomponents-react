@@ -1,13 +1,24 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Menu.js';
-import { ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type {
+  MenuBeforeCloseEventDetail,
+  MenuBeforeOpenEventDetail,
+  MenuItemClickEventDetail
+} from '@ui5/webcomponents/dist/Menu.js';
+import type { ReactNode } from 'react';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface MenuAttributes {
+  /**
+   * Defines if a loading indicator would be displayed inside the corresponding Menu popover.
+   */
+  busy?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding Menu popover..
+   */
+  busyDelay?: number;
   /**
    * Defines the header text of the menu (displayed on mobile).
    */
@@ -56,15 +67,15 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
   /**
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
   /**
-   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
+   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.** **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
   /**
    * Fired when an item is being clicked.
    */
-  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, { item: Record<string, unknown>; text: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 }
 
 /**
@@ -72,17 +83,22 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Menu" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Menu" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   'ui5-menu',
-  ['headerText', 'opener'],
-  ['open'],
+  ['busyDelay', 'headerText', 'opener'],
+  ['busy', 'open'],
   [],
   ['after-close', 'after-open', 'before-close', 'before-open', 'item-click'],
   () => import('@ui5/webcomponents/dist/Menu.js')
 );
 
 Menu.displayName = 'Menu';
+
+Menu.defaultProps = {
+  busyDelay: 1000,
+  opener: ''
+};
 
 export { Menu };

@@ -1,13 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TreeItem.js';
-import { ReactNode } from 'react';
-import { ValueState, ListItemType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ReactNode } from 'react';
+import { ValueState, ListItemType } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeItemAttributes {
   /**
@@ -71,6 +69,13 @@ interface TreeItemAttributes {
 
 export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
   /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM. The value of each `aria-setsize` is an integer reflecting number of items in the complete set. **Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
+   * *   `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM. The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   */
+  accessibilityAttributes: Record<string, unknown>;
+  /**
    * Call this method to manually switch the `expanded` state of a tree item.
    */
   toggle: () => void;
@@ -90,7 +95,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   deleteButton?: UI5WCSlotsNode;
   /**
@@ -105,7 +110,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Tree" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',

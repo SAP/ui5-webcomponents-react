@@ -1,7 +1,8 @@
 import { clsx } from 'clsx';
-import React, { cloneElement, CSSProperties, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
+import React, { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize } from '../../enums/AvatarSize';
+import { AvatarSize } from '../../enums/index.js';
 
 const styles = {
   base: {

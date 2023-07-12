@@ -1,4 +1,5 @@
-import { ITimelineChartRow, TimelineChartConnection } from '../types/TimelineChartTypes';
+import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
+import { TimelineChartConnection } from '../types/TimelineChartTypes.js';
 
 export const dummyDataSet: ITimelineChartRow[] = [
   {

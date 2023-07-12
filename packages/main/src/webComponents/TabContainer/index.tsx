@@ -1,15 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabContainer.js';
-import { ReactNode } from 'react';
-import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
-import { TabDomRef } from '../Tab';
-import { TabSeparatorDomRef } from '../TabSeparator';
+import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
+import type { ReactNode } from 'react';
+import { TabContainerBackgroundDesign, TabLayout, TabsOverflowMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { TabDomRef } from '../Tab/index.js';
+import type { TabSeparatorDomRef } from '../TabSeparator/index.js';
 
 interface TabContainerAttributes {
   /**
@@ -32,6 +31,8 @@ interface TabContainerAttributes {
    * Defines whether the overflow select list is displayed.
    *
    * The overflow select list represents a list, where all tabs are displayed so that it's easier for the user to select a specific tab.
+   *
+   * @deprecated Since the introduction of TabsOverflowMode, overflows will always be visible if there is not enough space for all tabs, all hidden tabs are moved to a select list in the respective overflows and are accessible via the <code>overflowButton</code> and / or <code>startOverflowButton</code> slots.
    */
   showOverflow?: boolean;
   /**
@@ -60,19 +61,22 @@ interface TabContainerAttributes {
 
 export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   /**
-   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first.
-   * For example, given the following slotted elements:
+   * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements:
    *
    * ```
-   * <Tab id="tab1">
-   *   <Tab id="sub1" />
-   * </Tab>
-   * <Tab id="tab2" />
-   * <TabSeparator id="separator" />
-   * <Tab id="tab3" />
+   *
+   * 	<TabContainer>
+   * 		<Tab id="First" text="First">
+   * 			...
+   * 			<Tab slot="subTabs" id="Nested" text="Nested">...</Tab>
+   * 		</Tab>
+   * 		<Tab id="Second" text="Second">...</Tab>
+   * 		<TabSeparator id="sep"></TabSeparator>
+   * 		<Tab id="Third" text="Third">...</Tab>
+   * 	</TabContainer>
    * ```
    *
-   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#tab1, Tab#sub1, Tab#tab2, TabSeparator#separator, Tab#tab3 ]`
+   * Calling `allItems` on this TabContainer will return the instances in the following order: `[ Tab#First, Tab#Nested, Tab#Second, TabSeparator#sep, Tab#Third ]`
    */
   readonly allItems?: (TabDomRef | TabSeparatorDomRef)[];
 }
@@ -91,7 +95,7 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   overflowButton?: UI5WCSlotsNode;
   /**
@@ -101,13 +105,13 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   startOverflowButton?: UI5WCSlotsNode;
   /**
    * Fired when a tab is selected.
    */
-  onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, { tab: HTMLElement; tabIndex: number }>) => void;
+  onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerTabSelectEventDetail>) => void;
 }
 
 /**
@@ -115,7 +119,7 @@ export interface TabContainerPropTypes extends TabContainerAttributes, CommonPro
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-TabContainer" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
   'ui5-tabcontainer',

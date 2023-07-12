@@ -3,24 +3,24 @@
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactElement, useReducer, useRef } from 'react';
+import type { ReactElement } from 'react';
+import React, { forwardRef, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums';
-import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { flattenFragments } from '../../internal/utils';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { UI5WCSlotsNode } from '../../types';
-import {
-  Button,
+import { ButtonDesign } from '../../enums/index.js';
+import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
+import type {
   ButtonPropTypes,
-  ResponsivePopover,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
-} from '../../webComponents';
-import styles from './ActionSheet.jss';
+} from '../../webComponents/index.js';
+import { Button, ResponsivePopover } from '../../webComponents/index.js';
+import styles from './ActionSheet.jss.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
   /**

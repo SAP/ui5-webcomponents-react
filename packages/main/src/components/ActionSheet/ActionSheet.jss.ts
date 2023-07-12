@@ -1,5 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomThemingParameters } from './../../themes/CustomVariables';
+import { CustomThemingParameters } from './../../themes/CustomVariables.js';
 
 const styles = {
   /*
@@ -10,7 +10,7 @@ const styles = {
       padding: '0.1875rem 0.375rem'
     },
     '& [ui5-button]': {
-      margin: CssSizeVariables.sapWcrButtonTopBottomPadding,
+      margin: CssSizeVariables.ui5WcrButtonTopBottomPadding,
       display: 'block'
     },
     '& [ui5-button]:not([data-cancel-btn])::part(button)': {

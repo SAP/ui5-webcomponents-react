@@ -1,4 +1,5 @@
-import { cloneElement, Ref } from 'react';
+import type { Ref } from 'react';
+import { cloneElement } from 'react';
 
 const inputTagNames = new Set([
   'UI5-COMBOBOX',

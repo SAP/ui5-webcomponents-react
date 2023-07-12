@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
-import { DynamicPage, DynamicPageTitlePropTypes, ObjectPage } from '../..';
-import { Button } from '../../webComponents';
+import type { DynamicPageTitlePropTypes } from '../..';
+import { DynamicPage, ObjectPage, Title } from '../..';
+import { Button } from '../../webComponents/index.js';
 import { DynamicPageTitle } from './';
 
 interface PropTypes {
@@ -49,36 +50,56 @@ const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) 
 
 const testOverflowRefs = (should = { nav: 'false', actions: 'false' }) => {
   cy.findByText('Show actionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('actionsInstance').should('have.text', should.actions);
   cy.findByText('Show navActionsRef').click({ force: true });
+  cy.wait(200);
   cy.findByTestId('navActionsInstance').should('have.text', should.nav);
 };
 
 describe('DynamicPageTitle', () => {
   it('toolbar instances - DynamicPage', () => {
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(100);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'true', actions: 'true' });
     cy.viewport(5000, 5000);
     cy.mount(<PageComponent isObjectPage={false} />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'false' });
   });
   it('toolbar instances - ObjectPage', () => {
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(100);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'true' });
     cy.viewport(1000, 1000);
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'true', actions: 'true' });
     cy.viewport(5000, 5000);
     cy.mount(<PageComponent isObjectPage />);
-    cy.wait(200);
+    cy.wait(300);
     testOverflowRefs({ nav: 'false', actions: 'false' });
+  });
+  it('show 2nd line content', () => {
+    cy.viewport(320, 700);
+    [true, false].forEach((isObjectPage) => {
+      cy.mount(
+        <PageComponent
+          isObjectPage={isObjectPage}
+          dynamicPageTitleProps={{
+            header: <Title>This is a pretty long title of the DynamicPageTitle</Title>,
+            navigationActions: undefined,
+            children: <div>Content</div>
+          }}
+        />
+      );
+      cy.findByText('This is a pretty long title of the DynamicPageTitle').should('be.visible');
+      cy.findByText('Content').should('be.visible');
+      cy.get('[data-component-name="ToolbarOverflowButton"]').should('be.visible');
+    });
   });
 });

@@ -1,13 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import { ReactNode } from 'react';
-import { TableGrowingMode, TableMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  TablePopinChangeEventDetail,
+  TableRowClickEventDetail,
+  TableSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/Table.js';
+import type { ReactNode } from 'react';
+import { TableMode, TableGrowingMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface TableAttributes {
   /**
@@ -96,7 +99,7 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   columns?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -114,17 +117,15 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
   /**
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    */
-  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, { poppedColumns: unknown[] }>) => void;
+  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, { row: HTMLElement }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<TableDomRef, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -136,7 +137,7 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Table" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',

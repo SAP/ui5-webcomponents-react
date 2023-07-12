@@ -4,9 +4,10 @@ import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, forwardRef, MouseEventHandler, ReactElement, ReactNode } from 'react';
+import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
+import React, { cloneElement, forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { DeviationIndicator, ValueColor } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
   ARIA_DESC_CARD_HEADER,
   NUMERICCONTENT_DEVIATION_DOWN,
@@ -15,11 +16,11 @@ import {
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
-} from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces';
-import { flattenFragments } from '../../internal/utils';
-import { Icon } from '../../webComponents';
-import styles from './AnalyticalCardHeader.jss';
+} from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { Icon } from '../../webComponents/index.js';
+import styles from './AnalyticalCardHeader.jss.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
@@ -90,9 +91,9 @@ const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
 ]);
 
 /**
- * The `AnalyticalCardHeader` component serves as layout for the header prop of the `AnalyticalCard`.
+ * The `AnalyticalCardHeader` is a KPI header, enabling the AnalyticalCard representation. If this header is used, the `Card` should only receive a chart as content and no footer area.
  *
- * It should only be used as header for the `AnalyticalCard` component.
+ * __Note:__ This component should only be used as header for the `Card` component.
  */
 export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHeaderPropTypes>((props, ref) => {
   const {

@@ -1,6 +1,8 @@
-import React, { ReactNode, useReducer, useRef } from 'react';
+import type { ReactNode } from 'react';
+import React, { useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalsContext, ModalState, UpdateModalStateAction } from '../../internal/ModalsContext';
+import type { ModalState, UpdateModalStateAction } from '../../internal/ModalsContext.js';
+import { ModalsContext } from '../../internal/ModalsContext.js';
 
 export interface ModalsProviderPropTypes {
   children: ReactNode;

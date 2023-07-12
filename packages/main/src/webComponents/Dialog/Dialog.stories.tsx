@@ -1,10 +1,10 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import React, { forwardRef, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useState } from 'react';
 import { BarDesign } from '../../enums';
-import { Bar, Button, DialogDomRef, DialogPropTypes, Icon, List, StandardListItem, Title } from '../index.js';
+import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
+import { Dialog } from './CodeGen';
 import { Dialog as OriginalDialog } from './index';
 
 const meta = {
@@ -20,13 +20,6 @@ const meta = {
     open: false
   }
 } satisfies Meta<typeof OriginalDialog>;
-
-// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
-export const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
-  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
-);
-
-Dialog.displayName = 'Dialog';
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -88,6 +81,7 @@ export const WithContent: Story = {
         <Dialog
           {...args}
           open={dialogIsOpen}
+          onAfterClose={handleClose}
           header={
             <Bar endContent={<Icon name={settingsIcon} />}>
               <Title>Dialog</Title>

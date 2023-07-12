@@ -1,5 +1,5 @@
 import React from 'react';
-import { ValueState } from '../../../enums/ValueState';
+import { ValueState } from '../../../enums/index.js';
 
 const baseStyles = {
   width: '100%',

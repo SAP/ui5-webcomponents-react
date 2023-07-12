@@ -2,8 +2,10 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Button, FilterItem, FilterItemOption, SortItem, ViewSettingsDialogPropTypes } from '../../index';
-import { ViewSettingsDialog as OriginalViewSettingsDialog, ViewSettingsDialogDomRef } from './index.js';
+import type { ViewSettingsDialogPropTypes } from '../../index';
+import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
+import type { ViewSettingsDialogDomRef } from './index.js';
+import { ViewSettingsDialog as OriginalViewSettingsDialog } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / ViewSettingsDialog',

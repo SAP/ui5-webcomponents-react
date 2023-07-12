@@ -1,5 +1,5 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 
 const styles = {
   table: {
@@ -33,7 +33,7 @@ const styles = {
     }
   },
   tableHeaderRow: {
-    height: CssSizeVariables.sapWcrAnalyticalTableHeaderRowHeight,
+    height: CssSizeVariables.ui5WcrAnalyticalTableHeaderRowHeight,
     '& div:first-child $th': {
       borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`
     }
@@ -51,7 +51,7 @@ const styles = {
     position: 'absolute',
     left: 0,
     right: 0,
-    height: CssSizeVariables.sapWcrAnalyticalTableHeaderRowHeight,
+    height: CssSizeVariables.ui5WcrAnalyticalTableHeaderRowHeight,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
     borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`
@@ -65,7 +65,7 @@ const styles = {
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`
   },
   th: {
-    height: CssSizeVariables.sapWcrAnalyticalTableHeaderRowHeight,
+    height: CssSizeVariables.ui5WcrAnalyticalTableHeaderRowHeight,
     color: ThemingParameters.sapList_HeaderTextColor,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     borderBlockStart: CustomThemingParameters.AnalyticalTableOuterBorderBlock,
@@ -227,6 +227,17 @@ const styles = {
   },
   hiddenA11yText: {
     display: 'none'
+  },
+  checkBox: {
+    '&::part(root)': {
+      display: 'flex',
+      width: 'unset',
+      height: 'unset',
+      justifyContent: 'center',
+      minHeight: 'unset',
+      minWidth: 'unset',
+      padding: 0
+    }
   }
 };
 

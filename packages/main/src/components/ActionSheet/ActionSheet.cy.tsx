@@ -1,5 +1,7 @@
-import { Button, ButtonPropTypes, Label } from '../../webComponents';
-import { ActionSheet, ActionSheetPropTypes } from './index';
+import type { ButtonPropTypes } from '../../webComponents/index.js';
+import { Button, Label } from '../../webComponents/index.js';
+import type { ActionSheetPropTypes } from './index.js';
+import { ActionSheet } from './index.js';
 
 interface TestCompProptypes extends ActionSheetPropTypes {
   onBtnClick?: ButtonPropTypes['onClick'];

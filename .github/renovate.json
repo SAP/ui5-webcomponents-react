@@ -10,6 +10,16 @@
   "automerge": true,
   "platformAutomerge": true,
   "prHourlyLimit": 5,
+  "addLabels": ["dependencies"],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**"
+  ],
   "packageRules": [
     {
       "groupName": "UI5 Web Components",
@@ -17,20 +27,36 @@
     },
     {
       "groupName": "vite & plugins",
-      "matchPackagePatterns": ["vite"]
+      "matchPackagePatterns": ["vite"],
+      "excludePackageNames": ["@storybook/react-vite"]
     },
     {
-      "groupName": "eslint",
-      "matchPackagePatterns": ["eslint"]
+      "description": "root package dependencies",
+      "extends": ["schedule:weekly"],
+      "matchFiles": ["package.json"],
+      "semanticCommitType": "chore",
+      "groupName": "all non-major dependencies",
+      "groupSlug": "root-all-minor-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
     },
     {
-      "matchPackageNames": ["@types/node"],
-      "matchUpdateTypes": ["patch"],
-      "enabled": false
-    },
-    {
-      "extends": "monorepo:storybook",
+      "matchPaths": ["examples/**"],
       "semanticCommitType": "chore"
+    },
+    {
+      "description": "UI5 Web Components (for React) in all examples",
+      "groupName": "ui5-webcomponents (react)",
+      "matchPaths": ["examples/**"],
+      "matchSourceUrlPrefixes": [
+        "https://github.com/SAP/ui5-webcomponents",
+        "https://github.com/SAP/ui5-webcomponents-react"
+      ]
     }
   ]
 }

@@ -7,4 +7,4 @@ The component can be used in a standard `List`.
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
 The `NotificationListGroupItem` exposes the following CSS Shadow Parts:
 
-*   title-text - Used to style the titleText of the notification list group item
+- title-text - Used to style the titleText of the notification list group item

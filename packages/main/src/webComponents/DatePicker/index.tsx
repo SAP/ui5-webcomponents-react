@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DatePicker.js';
-import { ValueState, CalendarType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { DatePickerChangeEventDetail, DatePickerInputEventDetail } from '@ui5/webcomponents/dist/DatePicker.js';
+import type { CalendarType } from '../../enums/index.js';
+import { ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface DatePickerAttributes {
   /**
@@ -70,11 +70,11 @@ interface DatePickerAttributes {
    */
   formatPattern?: string;
   /**
-   * Determines the maximum date available for selection.
+   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
   /**
-   * Determines the minimum date available for selection.
+   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
   /**
@@ -137,7 +137,7 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode;
   /**
@@ -145,11 +145,11 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
    *
    *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
-  onChange?: (event: Ui5CustomEvent<DatePickerDomRef, { value: string; valid: boolean }>) => void;
+  onChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerChangeEventDetail>) => void;
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<DatePickerDomRef, { value: string; valid: boolean }>) => void;
+  onInput?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerInputEventDetail>) => void;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonPr
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DatePicker" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-DatePicker" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   'ui5-date-picker',

@@ -1,8 +1,10 @@
 'use client';
 
-import React, { forwardRef, ReactNode, useContext } from 'react';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
-import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useContext } from 'react';
+import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
+import { Button } from '../../webComponents/index.js';
 
 export interface OverflowToolbarButtonPropTypes extends Omit<ButtonPropTypes, 'children' | 'icon'> {
   /**

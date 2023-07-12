@@ -14,7 +14,7 @@
     "parameters": [
       {
         "name": "date",
-        "type": "object",
+        "type": "Date",
         "optional": false,
         "description": "A Java Script date object to be formatted as string"
       }

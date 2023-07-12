@@ -1,4 +1,5 @@
-import { Dispatch, MutableRefObject, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 declare const ResizeObserver;
 
@@ -31,7 +32,11 @@ export const useObserveHeights = (
       if (scrollDown && e.target.scrollTop >= headerContentHeight && !headerCollapsed) {
         setIsIntersecting(false);
         setHeaderCollapsed(true);
-      } else if (!scrollDown && e.target.scrollTop <= topHeaderHeight && headerCollapsed) {
+      } else if (
+        !scrollDown &&
+        e.target.scrollTop <= topHeaderHeight + Math.max(0, headerContentHeight - topHeaderHeight) &&
+        headerCollapsed
+      ) {
         setIsIntersecting(true);
         setHeaderCollapsed(false);
       }

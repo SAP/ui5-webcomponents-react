@@ -1,16 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Tab.js';
-import { ReactNode } from 'react';
-import { SemanticColor } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ReactNode } from 'react';
+import { SemanticColor } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface TabAttributes {
   /**
-   * Represents the "additionalText" text, which is displayed in the tab.
+   * Represents the "additionalText" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the "additionalText" is displayed larger.
    */
   additionalText?: string;
   /**
@@ -34,7 +33,7 @@ interface TabAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -68,7 +67,7 @@ export interface TabPropTypes extends TabAttributes, CommonProps {
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   subTabs?: UI5WCSlotsNode | UI5WCSlotsNode[];
 }
@@ -78,7 +77,7 @@ export interface TabPropTypes extends TabAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TabContainer" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-TabContainer" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Tab = withWebComponent<TabPropTypes, TabDomRef>(
   'ui5-tab',

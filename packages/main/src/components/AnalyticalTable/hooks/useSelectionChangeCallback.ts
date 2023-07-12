@@ -1,6 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
-import { AnalyticalTableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionMode } from '../../../enums/index.js';
 
 export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {
@@ -17,19 +17,20 @@ export const useSelectionChangeCallback = (hooks) => {
             row: row,
             isSelected: row.isSelected,
             selectedFlatRows: row.isSelected ? [row] : [],
-            allRowsSelected: false
+            allRowsSelected: false,
+            selectedRowIds
           };
 
           if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.MultiSelect) {
-            const selectedRowIdsArray = Object.entries(selectedRowIds).reduce((acc, [key, val]) => {
-              if (val) {
-                return [...acc, key];
+            // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
+            const tempRowsById = filters?.length > 0 ? preFilteredRowsById : rowsById;
+            const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+              if (selectedRowIds[key]) {
+                acc.push(tempRowsById[key]);
               }
               return acc;
             }, []);
-            // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
-            const tempRowsById = filters?.length > 0 ? preFilteredRowsById : rowsById;
-            const selectedRowIdsArrayMapped = selectedRowIdsArray.map((item) => tempRowsById[item]);
+
             payload.selectedFlatRows = selectedRowIdsArrayMapped;
             if (selectedRowIdsArrayMapped.length === Object.keys(tempRowsById).length) {
               payload.allRowsSelected = true;

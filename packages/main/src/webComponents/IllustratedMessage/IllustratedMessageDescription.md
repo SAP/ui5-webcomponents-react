@@ -1,11 +1,11 @@
 ## Structure
 
-The IllustratedMessage consists of the following elements, which are displayed below each other in the following order:  
+The IllustratedMessage consists of the following elements, which are displayed below each other in the following order:
 
-*   Illustration
-*   Title
-*   Subtitle
-*   Actions
+- Illustration
+- Title
+- Subtitle
+- Actions
 
 ## Usage
 

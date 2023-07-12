@@ -1,7 +1,7 @@
 import dataLarge from '@sb/mockData/Friends500.json';
 import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
@@ -16,7 +16,7 @@ import {
   FlexBoxJustifyContent,
   InputType,
   TextAlign
-} from '../../enums/index';
+} from '../../enums/index.js';
 import {
   Badge,
   Button,
@@ -28,17 +28,17 @@ import {
   Option,
   Select,
   ToggleButton
-} from '../../webComponents/index';
+} from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import * as AnalyticalTableHooks from './pluginHooks/AnalyticalTableHooks';
-import { AnalyticalTable } from './index';
+import { AnalyticalTable } from './index.js';
 
 const meta = {
   title: 'Data Display / AnalyticalTable',
   component: AnalyticalTable,
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { disableSnapshot: true }
   },
   args: {
     data: dataLarge,
@@ -329,6 +329,66 @@ export const PluginOnColumnResize: Story = {
   }
 };
 
+const orderedMultiSortColumns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Name 2',
+    accessor: 'name2',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age 2',
+    accessor: 'age2',
+    enableMultiSort: true
+  }
+];
+const orderedMultiSortData = [
+  { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
+  { name: 'Kristen', age: 40, name2: 'Randolph', age2: 21 },
+  { name: 'Peter', age: 30, name2: 'Rose', age2: 90 },
+  { name: 'Peter', age: 70, name2: 'Rose', age2: 22 },
+  { name: 'Kristen', age: 60, name2: 'Willis', age2: 80 },
+  { name: 'Kristen', age: 20, name2: 'Alissa', age2: 80 },
+  { name: 'Graham', age: 40, name2: 'Alissa', age2: 80 },
+  { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
+  { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+];
+
+export const PluginOrderedMultiSort = {
+  name: 'Plugin: useOrderedMultiSort',
+  args: { orderedIds: ['name', 'name2', 'age', 'age2'] },
+  argTypes: {
+    orderedIds: {
+      control: 'array',
+      description:
+        'Defines the sort priority when sorting by multiple columns, starting with the first column ID.\n' +
+        '\n' +
+        '**Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.'
+    }
+  },
+  render(args) {
+    return (
+      <AnalyticalTable
+        columns={orderedMultiSortColumns}
+        data={orderedMultiSortData}
+        sortable
+        tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(args.orderedIds)]}
+      />
+    );
+  }
+};
+
 export const TreeTable: Story = {
   args: {
     data: dataTree,
@@ -380,6 +440,12 @@ export const Subcomponents: Story = {
           >
             <Badge>height: 300px</Badge>
             <Text>This subcomponent will only be displayed below the first row.</Text>
+            <hr />
+            <Text>
+              The button below is rendered with `data-subcomponent-active-element` attribute to ensure consistent focus
+              behavior
+            </Text>
+            <Button data-subcomponent-active-element>Click</Button>
           </FlexBox>
         );
       }
@@ -413,6 +479,7 @@ export const Subcomponents: Story = {
     };
     return (
       <AnalyticalTable
+        {...args}
         data={args.data}
         columns={args.columns}
         renderRowSubComponent={renderRowSubComponent}
@@ -422,7 +489,7 @@ export const Subcomponents: Story = {
   }
 };
 
-export const DynamicRowCount: Story = {
+export const DynamicRowCount = {
   args: { visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Auto, containerHeight: 250 } as unknown,
   argTypes: {
     containerHeight: {
@@ -433,7 +500,7 @@ export const DynamicRowCount: Story = {
       description:
         'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
     }
-  } as unknown,
+  },
   render: (args) => {
     return (
       <div style={{ height: `${args.containerHeight}px` }}>

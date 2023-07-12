@@ -2,19 +2,19 @@
 
 You can use the following stable DOM refs for the `ShellBar`:
 
-*   logo
-*   copilot
-*   notifications
-*   overflow
-*   profile
-*   product-switch
+- logo
+- copilot
+- notifications
+- overflow
+- profile
+- product-switch
 
 ## CSS Shadow Parts
 
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.  
 The `ShellBar` exposes the following CSS Shadow Parts:
 
-*   root - Used to style the outermost wrapper of the `ShellBar`
+- root - Used to style the outermost wrapper of the `ShellBar`
 
 ## Keyboard Handling
 

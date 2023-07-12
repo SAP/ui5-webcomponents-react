@@ -1,27 +1,26 @@
-import { VirtualItem } from '@tanstack/react-virtual';
+import type { VirtualItem } from '@tanstack/react-virtual';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
+import type {
   AriaAttributes,
   CSSProperties,
   DragEventHandler,
   FC,
   KeyboardEventHandler,
   MouseEventHandler,
-  ReactNode,
-  useRef,
-  useState
+  ReactNode
 } from 'react';
+import React, { useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { CustomThemingParameters } from '../../../themes/CustomVariables';
-import { Icon } from '../../../webComponents/Icon';
-import { Text } from '../../Text';
-import { ColumnType } from '../types/ColumnType';
-import { ColumnHeaderModal } from './ColumnHeaderModal';
+import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
+import { Icon } from '../../../webComponents/Icon/index.js';
+import { Text } from '../../Text/index.js';
+import type { ColumnType } from '../types/ColumnType.js';
+import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;
@@ -41,6 +40,7 @@ export interface ColumnHeaderProps {
   children: ReactNode | ReactNode[];
   portalContainer: Element;
   scaleXFactor?: number;
+  columnId?: string;
 
   //getHeaderProps()
   id: string;
@@ -82,9 +82,10 @@ const styles = {
     textAlign: 'start'
   },
   iconContainer: {
-    display: 'inline-block',
+    display: 'flex',
     position: 'absolute',
-    color: ThemingParameters.sapContent_IconColor
+    color: ThemingParameters.sapContent_IconColor,
+    insetInlineEnd: '0.5rem'
   },
   selectAllCheckBoxContainer: {
     display: 'flex',
@@ -100,6 +101,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     id,
     children,
     column,
+    columnId,
     className,
     style,
     onSort,
@@ -157,11 +159,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
 
     if (margin > 0) margin += 0.5;
 
-    if (isRtl) {
-      style.marginLeft = `${margin}rem`;
-    } else {
-      style.marginRight = `${margin}rem`;
-    }
+    style.marginInlineEnd = `${margin}rem`;
 
     return style;
   })();
@@ -179,8 +177,6 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     ? { right: 0, transform: `translateX(-${virtualColumn.start}px)` }
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
-  const iconContainerDirectionStyles = isRtl ? { left: '0.5rem' } : { right: '0.5rem' };
-
   const handleHeaderCellKeyDown = (e) => {
     onKeyDown?.(e);
     if (hasPopover && e.code === 'Enter') {
@@ -192,7 +188,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   };
 
   const handleHeaderCellKeyUp = (e) => {
-    if (hasPopover && e.code === 'Space') {
+    if (hasPopover && e.code === 'Space' && !e.target.hasAttribute('ui5-li')) {
       setPopoverOpen(true);
     }
   };
@@ -238,7 +234,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onDragStart={onDragStart}
         onDrop={onDrop}
         onDragEnd={onDragEnd}
-        data-column-id={id}
+        data-column-id={columnId}
         onClick={handleHeaderCellClick}
         onKeyDown={handleHeaderCellKeyDown}
         onKeyUp={handleHeaderCellKeyUp}
@@ -252,16 +248,15 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
             style={textStyle}
             className={clsx(
               classes.text,
-              id === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
+              columnId === '__ui5wcr__internal_selection_column' && classes.selectAllCheckBoxContainer
             )}
-            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${id}`}
+            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${columnId}`}
           >
             {children}
           </Text>
           <div
             className={classes.iconContainer}
-            style={iconContainerDirectionStyles}
-            data-component-name={`AnalyticalTableHeaderIconsContainer-${id}`}
+            data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
             {isFiltered && <Icon name={iconFilter} aria-hidden />}
             {column.isSorted && (

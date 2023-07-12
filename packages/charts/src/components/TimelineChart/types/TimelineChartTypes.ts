@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 /**
  * This is the data representing a single row on the Timeline chart.

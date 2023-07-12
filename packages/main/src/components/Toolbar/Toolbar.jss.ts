@@ -1,12 +1,12 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 
 export const styles = {
   outerContainer: {
     boxSizing: 'border-box',
     width: '100%',
     maxWidth: '100%',
-    height: CssSizeVariables.sapWcrToolbarHeight,
+    height: CssSizeVariables.ui5WcrToolbarHeight,
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
@@ -66,7 +66,7 @@ export const styles = {
     '& >:last-child:not(.spacer)': {
       marginInline: '0.25rem 0.5rem'
     },
-    '& > *:not(first-child):not(last-child):not(.spacer)': {
+    '& > *:not(:first-child):not(:last-child):not(.spacer)': {
       marginInline: '0.25rem'
     },
     display: 'flex',
@@ -88,7 +88,7 @@ export const styles = {
     left: '5px !important'
   },
   popoverContent: {
-    padding: CssSizeVariables.sapWcrToolbarPopoverContentPadding,
+    padding: CssSizeVariables.ui5WcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column',
     '& [ui5-toggle-button], & [ui5-button]': {

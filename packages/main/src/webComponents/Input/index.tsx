@@ -1,13 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Input.js';
-import { ReactNode } from 'react';
-import { InputType, ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  InputSuggestionItemPreviewEventDetail,
+  InputSuggestionItemSelectEventDetail
+} from '@ui5/webcomponents/dist/Input.js';
+import type { ReactNode } from 'react';
+import { InputType, ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface InputAttributes {
   /**
@@ -138,7 +140,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   icon?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -154,7 +156,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -170,11 +172,11 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement; targetRef: HTMLElement }>) => void;
+  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, { item: HTMLElement }>) => void;
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**
@@ -187,7 +189,7 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Input" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Input" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Input = withWebComponent<InputPropTypes, InputDomRef>(
   'ui5-input',

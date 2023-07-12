@@ -1,12 +1,13 @@
-import React, { CSSProperties, forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { ITimelineChartRow } from '../types/TimelineChartTypes';
-import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants';
-import { TimelineChartBodyCtx } from '../util/context';
-import { useStyles } from '../util/styles';
-import { TimelineChartGrid } from './TimelineChartGrid';
-import { TimelineChartLayer } from './TimelineChartLayer';
-import { TimelineChartRowGroup } from './TimelineChartRow';
-import { TimelineChartConnections } from './TimelineConnections';
+import type { CSSProperties, ReactNode } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
+import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants.js';
+import { TimelineChartBodyCtx } from '../util/context.js';
+import { useStyles } from '../util/styles.js';
+import { TimelineChartGrid } from './TimelineChartGrid.js';
+import { TimelineChartLayer } from './TimelineChartLayer.js';
+import { TimelineChartRowGroup } from './TimelineChartRow.js';
+import { TimelineChartConnections } from './TimelineConnections.js';
 
 interface TimelineChartBodyProps {
   dataset: ITimelineChartRow[];

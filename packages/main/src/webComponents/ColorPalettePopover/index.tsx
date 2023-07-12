@@ -1,11 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
-import { CSSProperties, ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
+import type { CSSProperties, ReactNode } from 'react';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ColorPalettePopoverAttributes {
   /**
@@ -29,8 +28,9 @@ interface ColorPalettePopoverAttributes {
 export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {
   /**
    * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
+   *
+   * @deprecated The method is deprecated in favour of <code>showAt</code>.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @deprecated please use `showAt` instead
    */
   openPopover: (opener: HTMLElement | EventTarget) => void;
   /**
@@ -48,7 +48,7 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
   /**
    * Fired when the user selects a color.
    */
-  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, { color: string }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, ColorPalettePopoverItemClickEventDetail>) => void;
 }
 
 /**
@@ -56,7 +56,7 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPalettePopover" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ColorPalettePopover" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, ColorPalettePopoverDomRef>(
   'ui5-color-palette-popover',

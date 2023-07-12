@@ -1,12 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
-import { ReactNode } from 'react';
-import { MediaGalleryItemLayout } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ReactNode } from 'react';
+import { MediaGalleryItemLayout } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface MediaGalleryItemAttributes {
   /**
@@ -42,7 +41,7 @@ export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, C
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   thumbnail?: UI5WCSlotsNode;
 }
@@ -54,7 +53,7 @@ export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, C
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MediaGallery" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-MediaGallery" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGalleryItemDomRef>(
   'ui5-media-gallery-item',

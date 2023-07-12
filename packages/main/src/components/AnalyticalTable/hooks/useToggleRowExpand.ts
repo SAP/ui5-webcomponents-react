@@ -1,7 +1,9 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 
-const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
-  const { onRowExpandChange, isTreeTable, renderRowSubComponent } = instance.webComponentsReactProperties;
+const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
+  const { dispatch, manualGroupBy } = instance;
+  const { onRowExpandChange, isTreeTable, renderRowSubComponent, alwaysShowSubComponent } =
+    instance.webComponentsReactProperties;
   const onClick = (e, noPropagation = true) => {
     if (noPropagation) {
       e.stopPropagation();
@@ -9,10 +11,20 @@ const getToggleRowExpandedProps = (rowProps, { row, instance }) => {
 
     row.toggleRowExpanded();
     let column = null;
-    if (!isTreeTable && !renderRowSubComponent) {
-      column = row.cells.find((cell) => cell.column.id === row.groupByID).column;
+    if (!isTreeTable && (!renderRowSubComponent || (renderRowSubComponent && alwaysShowSubComponent))) {
+      if (!manualGroupBy) {
+        column = row.cells.find((cell) => cell.column.id === row.groupByID)?.column;
+      } else {
+        column = userProps.column;
+      }
     }
 
+    if (row.isExpanded) {
+      dispatch({
+        type: 'ROW_COLLAPSED_FLAG',
+        payload: true
+      });
+    }
     onRowExpandChange(enrichEventWithDetails(e, { row, column }));
   };
   const onKeyDown = (e) => {

@@ -1,4 +1,6 @@
 import {
+  Button,
+  ButtonDesign,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxJustifyContent,
@@ -33,11 +35,15 @@ export const Footer = ({ style }) => {
           <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
             <img src={BestRunLogo} alt="SAP Logo with Text 'The Best Run'" style={{ height: '1.5rem' }} />
             <Label wrappingType={WrappingType.Normal}>
-              © Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for React Contributors
+              {/*REUSE-IgnoreStart*/}&copy; Copyright {new Date().getFullYear()}, SAP SE and UI5 Web Components for
+              React Contributors
+              {/*  REUSE-IgnoreEnd*/}
             </Label>
           </FlexBox>
           <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
-            <Link onClick={showPrivacyPopover}>Privacy</Link>
+            <Button design={ButtonDesign.Transparent} onClick={showPrivacyPopover}>
+              Privacy
+            </Button>
             &nbsp;
             <Label>|</Label>
             &nbsp;
@@ -53,18 +59,21 @@ export const Footer = ({ style }) => {
           </FlexBox>
         </FlexBox>
       </div>
-      <Popover
-        headerText={'Privacy Statement'}
-        ref={popoverRef}
-        placementType={PopoverPlacementType.Top}
-        data-ui5-compact-size
-        style={{ width: '360px', maxWidth: '100%' }}
-      >
-        <Label wrappingType={WrappingType.Normal}>
-          This site is hosted by <Link>GitHub Pages</Link>. Please see the <Link>GitHub Privacy Statement</Link> for any
-          information how GitHub processes your personal data.
-        </Label>
-      </Popover>
+      {createPortal(
+        <Popover
+          headerText={'Privacy Statement'}
+          ref={popoverRef}
+          placementType={PopoverPlacementType.Top}
+          data-ui5-compact-size
+          style={{ width: '360px', maxWidth: '100%' }}
+        >
+          <Label wrappingType={WrappingType.Normal}>
+            This site is hosted by <Link>GitHub Pages</Link>. Please see the <Link>GitHub Privacy Statement</Link> for
+            any information how GitHub processes your personal data.
+          </Label>
+        </Popover>,
+        document.body
+      )}
     </footer>,
     document.getElementById('storybook-docs')
   );

@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Title.js';
-import { ReactNode } from 'react';
-import { TitleLevel, WrappingType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { ReactNode } from 'react';
+import type { WrappingType } from '../../enums/index.js';
+import { TitleLevel } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface TitleAttributes {
   /**
@@ -25,7 +25,7 @@ export interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
 
 export interface TitlePropTypes extends TitleAttributes, CommonProps {
   /**
-   * Defines the text of the component.
+   * Defines the text of the component. This component supports nesting a `Link` component inside.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
@@ -37,7 +37,7 @@ export interface TitlePropTypes extends TitleAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Title" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Title" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const Title = withWebComponent<TitlePropTypes, TitleDomRef>(
   'ui5-title',

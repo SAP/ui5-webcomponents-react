@@ -29,7 +29,7 @@ The `BarComponent` would compile to this:
 
 <FaultyBarComponent />
 
-As you can see, both custom components are not displayed.
+As you can see, both custom components are not displayed in the right place.
 Our wrapper does add the `slot` prop to the custom component, but the most outer HTML-Element/component (e.g. `<div>Start</div>`) does not accept it and therefore cannot use it.
 
 To fix this the `slot` prop must also be passed to the outer element of the component:

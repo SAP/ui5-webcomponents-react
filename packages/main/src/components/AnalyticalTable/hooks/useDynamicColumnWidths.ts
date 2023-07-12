@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode';
-import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column';
-import { AnalyticalTableColumnDefinition } from '../index';
+import { AnalyticalTableScaleWidthMode } from '../../../enums/index.js';
+import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
+import type { AnalyticalTableColumnDefinition } from '../index.js';
 
 const ROW_SAMPLE_SIZE = 20;
 const DEFAULT_HEADER_NUM_CHAR = 10;

@@ -1,19 +1,19 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
-import { ReactNode } from 'react';
-import { WrappingType, Priority } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { NotificationListItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
+import type { ReactNode } from 'react';
+import { Priority } from '../../enums/index.js';
+import type { WrappingType } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListItemAttributes {
   /**
    * Defines if the `titleText` and `description` should wrap, they truncate by default.
    *
-   * **Note:** by default the `titleText` and `decription`, and a `ShowMore/Less` button would be displayed.
+   * **Note:** by default the `titleText` and `description`, and a `ShowMore/Less` button would be displayed.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
   /**
@@ -66,7 +66,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   avatar?: UI5WCSlotsNode;
   /**
@@ -82,7 +82,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   footnotes?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
@@ -94,13 +94,13 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
-   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--page).
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   actions?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Fired when the `Close` button is pressed.
    */
-  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, { item: HTMLElement }>) => void;
+  onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, NotificationListItemCloseEventDetail>) => void;
 }
 
 /**
@@ -114,7 +114,7 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-NotificationListItem" target="_blank">UI5 Web Components Storybook</ui5-link>
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
