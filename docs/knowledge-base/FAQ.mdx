@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs';
+import { Footer, TableOfContent } from '@sb/components';
+import { MessageStrip } from '@ui5/webcomponents-react';
+
+<Meta title="FAQ" />
+
+<TableOfContent />
+
+# FAQ
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      Please also take a look at the FAQ of{' '}
+      <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/docs-faq">
+        UI5 Web Components
+      </ui5-link>
+      .
+    </>
+  }
+/>
+
+<br />
+<br />
+
+## Why is my Popover or Dialog not rendered correctly?
+
+Mounting popups, like the Popover, inside of components can lead to unwanted side-effects (wrong positioning, alignment, etc.), to prevent that we recommend either mounting it outside of the component, or mounting it with a React portal.
+You can find out more about how we use portals [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals).
+
+## Where can I find all compatible versions of `@ui5/webcomponents` and `@ui5/webcomponents-react`?
+
+All necessary `@ui5/webcomponents` packages are `peerDependencies` of `@ui5/webcomponents-react`, so if you're using npm v7 or later, then these dependencies should be auto installed when running `npm install`.
+If you want to check which versions are compatible you can find a compatibility table [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app).
+
+## What are "abstract" UI5 Web Components?
+
+Abstract UI5 Web Components are mainly there to pass props to the actual component inside the shadow root. Therefore, all attributes passed to the element, will have no effect on the actual component.
+
+### Example
+
+Rendering a `ComboBoxItem` with some custom HTML attributes...
+
+```jsx
+<ComboBox>
+  <ComboBoxItem text="ComboBoxItem1" title="Hello" style={{ backgroundColor: 'red' }} />
+</ComboBox>
+```
+
+...will result in an element that looks like this:
+
+```html
+<ui5-cb-item
+  text="ComboBoxItem1"
+  title="Hello"
+  style="background-color: red;"
+  _ui5rt0=""
+  _ui5host=""
+  ui5-cb-item=""
+></ui5-cb-item>
+```
+
+As you can see, both `title` and `style` are correctly applied, but since the item doesn't have children, nor a shadow root the attributes don't have an effect on the component.
+
+## How can I style elements inside the shadow root of a web component?
+
+Styling elements inside the shadow root is only supported by leveraging the [`::part` pseudo-element](https://developer.mozilla.org/en-US/docs/Web/CSS/::part). You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-styling--docs#css-shadow-parts).
+
+<Footer />
