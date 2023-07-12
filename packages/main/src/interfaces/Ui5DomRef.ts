@@ -1,21 +1,5 @@
 export interface Ui5DomRef extends HTMLElement {
   /**
-   * Called every time before the component renders.
-   */
-  onBeforeRendering: () => void;
-  /**
-   * Called every time after the component renders.
-   */
-  onAfterRendering: () => void;
-  /**
-   * Called on connectedCallback - added to the DOM.
-   */
-  onEnterDOM: () => void;
-  /**
-   * Called on disconnectedCallback - removed from the DOM.
-   */
-  onExitDOM: () => void;
-  /**
    * Attach a callback that will be executed whenever the component is invalidated
    *
    * @param callback
