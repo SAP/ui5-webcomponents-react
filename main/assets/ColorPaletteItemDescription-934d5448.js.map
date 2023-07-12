@@ -1,1 +1,0 @@
-{"version":3,"file":"ColorPaletteItemDescription-934d5448.js","sources":["../../packages/main/src/webComponents/ColorPaletteItem/ColorPaletteItemDescription.md?raw"],"sourcesContent":["export default \"**Since:** 0.14.0\\n\\nThe `ColorPaletteItem` component represents a color in the the `ColorPalette`\\n\""],"names":["ColorPaletteItemDescription"],"mappings":"AAAA,MAAeA,EAAA"}
