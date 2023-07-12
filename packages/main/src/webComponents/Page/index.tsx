@@ -15,8 +15,8 @@ interface PageAttributes {
    *
    * Available options are:
    *
-   * *   `Solid`
-   * (default)*   `Transparent`
+   * *   `Solid` (default)
+   * *   `Transparent`
    * *   `List`
    */
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
