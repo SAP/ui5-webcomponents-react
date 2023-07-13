@@ -101,7 +101,7 @@ export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Carousel" target="_blank">UI5 Web Components Storybook</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Carousel)
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',

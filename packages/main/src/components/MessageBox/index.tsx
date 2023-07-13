@@ -36,6 +36,7 @@ import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import styles from './MessageBox.jss.js';
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes

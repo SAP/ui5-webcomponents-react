@@ -328,12 +328,10 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
 
       if (document.activeElement === localRef.current) {
         const tickSize = remainingSize >= 20 ? 20 : remainingSize;
-        secondSibling.style.flex = `0 0 ${
-          (secondSibling.getBoundingClientRect()?.[positionKeys.size] as number) - tickSize
-        }px`;
-        firstSibling.style.flex = `0 0 ${
-          (firstSibling.getBoundingClientRect()?.[positionKeys.size] as number) + tickSize
-        }px`;
+        const firstSiblingSize = firstSibling.getBoundingClientRect()?.[positionKeys.size] as number;
+        const secondSiblingSize = secondSibling.getBoundingClientRect()?.[positionKeys.size] as number;
+        secondSibling.style.flex = `0 0 ${secondSiblingSize - tickSize}px`;
+        firstSibling.style.flex = `0 0 ${firstSiblingSize + tickSize}px`;
       }
     }
   };

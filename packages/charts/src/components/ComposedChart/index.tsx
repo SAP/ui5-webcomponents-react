@@ -130,6 +130,7 @@ const ChartTypes = {
   area: Area
 };
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 /**

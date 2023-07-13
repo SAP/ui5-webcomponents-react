@@ -151,7 +151,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
   const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  const [listFilter, setListFilter] = useState('All');
+  const [listFilter, setListFilter] = useState<ValueState | 'All'>('All');
   const [selectedMessage, setSelectedMessage] = useState<MessageItemPropTypes>(null);
 
   const childrenArray = Children.toArray(children);

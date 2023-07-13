@@ -48,9 +48,11 @@ export interface BreadcrumbsItemPropTypes extends BreadcrumbsItemAttributes, Com
 /**
  * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs" target="_blank">UI5 Web Components Storybook</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs)
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(
   'ui5-breadcrumbs-item',
