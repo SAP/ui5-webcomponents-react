@@ -115,6 +115,7 @@ export interface BulletChartProps extends IChartBaseProps {
   layout?: 'horizontal' | 'vertical';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 
 /**

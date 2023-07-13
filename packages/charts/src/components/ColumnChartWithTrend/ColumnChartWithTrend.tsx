@@ -99,6 +99,7 @@ const measureDefaults = {
 
 const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type AvailableChartTypes = 'line' | 'bar' | string;
 /**
  * A `ColumnChartWithTrend` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted amd a trend line which is displayed above the column chart.
