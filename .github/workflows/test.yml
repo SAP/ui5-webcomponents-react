@@ -32,7 +32,7 @@ jobs:
           component: true
           spec: packages/${{ matrix.spec }}
 
-      - uses: coverallsapp/github-action@v2.2.0
+      - uses: coverallsapp/github-action@v2.2.1
         if: ${{ inputs.reportCoverage }}
         with:
           file: temp/cypress-coverage/lcov.info
@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls
-        uses: coverallsapp/github-action@v2.2.0
+        uses: coverallsapp/github-action@v2.2.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
