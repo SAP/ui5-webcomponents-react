@@ -8,7 +8,7 @@ import { Footer, TableOfContent } from '@sb/components';
 
 This guide demonstrates the use of the `Form` component.
 
-## #1 Example with UI5 Web Components for React
+## Simple UI5 Web Components for React Form
 
 This Form is implemented with the `Form` component from UI5 Web Components for React.
 The children of the `Form` should only be `FormGroup` and `FormItem` in order to preserve the intended design. The children of `FormGroup` should only be `FormItem` and the children of `FormItem` can be an arbitrary React Node.
@@ -130,34 +130,247 @@ Whenever a component has a custom event (e.g. onChange event from `DatePicker`),
 By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React applications because it would cause you to lose the state.
 To prevent the default browser behavior, you have to use `e.preventDefault()` in the `onSubmit` event.
 
-## #2 Example with UI5 Web Components for React and Formik + Yup
+## UI5 Web Components for React Form with React Hook Form State Management and Zod Validation
 
-Input components from UI5 Web Components for React can be used with external libraries like Formik and Yup.
-Formik is an open source form library for React and React Native (https://formik.org/).
-Yup is a schema builder for runtime value parsing and validation (https://github.com/jquense/yup).
+- [React Hook Form](https://github.com/react-hook-form/react-hook-form): form state management and validation
+- [Zod](https://github.com/colinhacks/zod): schema validation with static type inference
 
-Formik keeps track of your form's state and then exposes it plus a few reusable methods and event handlers,handleChange, handleBlur, and handleSubmit], to your form via props
-It comes with a few extra components to make life easier and less verbose like `<Formik>`, `<Form>`, `<Field>`, and `<ErrorMessage>` ([see more](https://formik.org/docs/api/formik#props-1)).
-Another option is to utilize `useFormik()` ([see more](https://formik.org/docs/api/useFormik)). This is a custom React hook that will return all Formik state and helpers directly.
-Formik uses `useFormik()` to create the `<Formik>` component.
+Input components from UI5 Web Components for React can be used with external libraries like "React Hook Form" and "Zod".
 
-Also, Formik has a special config option for Yup called `validationSchema`.
+Some components like the `Input` **should** work out of the box (depending on how the library handles properties and events), but for others, such as those that implement `CustomEvent`s or custom properties for `value` handling, some customization are required to ensure the correct state is passed to the form library.
 
-To inject an input component from UI5 Web Components for React the `Field` component has a prop called `as`.
-This can either be a React component or the name of an HTML element to render. Formik will automagically inject onChange, onBlur, name, and value props of the field designated by the name prop to the (custom) component.
+Here you can find a codeSandbox example that shows the use of various input components from UI5 Web Components for React together with "React Hook Form" and "Zod".
 
-```jsx
-<Field as={Input} />
-```
+[![Edit formik + wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/kind-ben-7c5xcr?file=%2Fsrc%2FApp.tsx)
 
-You can find a Codesandbox that will showcase the use of the input components from UI5 Web Components for React together with Formik and Yup.
+<details>
 
-[![Edit formik + wcr form](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/formik-wcr-form-bt7jd2?autoresize=1&fontsize=14&hidenavigation=1&theme=dark)
-
-Note: The onChange event from the `Input` UI5 Web Component is not the same as the native onChange event of React. If you want to simulate that behavior, please use onInput instead.
+<summary>Show Code</summary>
 
 ```jsx
-<Field as={Input} name="email" type={InputType.Email} onInput={formik.handleChange} />
+// To enable form support of ui5-webcomponents, you have to import this feature
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import {
+  ThemeProvider,
+  Form,
+  FormGroup,
+  FormItem,
+  Label,
+  Input,
+  Select,
+  Button,
+  MultiComboBox,
+  DatePicker,
+  ButtonType,
+  CheckBox,
+  ValueState,
+  InputType,
+  Popover,
+  Option,
+  MultiComboBoxItem,
+  ObjectStatus
+} from '@ui5/webcomponents-react';
+import { useForm, useController } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { createPortal } from 'react-dom';
+import { useEffect, useId, useState } from 'react';
+
+// Zod schema
+const schema = z
+  .object({
+    email: z.string().email(),
+    password: z
+      .string()
+      .regex(/[A-Z]/, { message: 'Must contain at least one capital letter' })
+      .min(8, { message: 'Must be 8 or more characters long' }),
+    confirmPassword: z
+      .string()
+      .regex(/[A-Z]/, { message: 'Must contain at least one capital letter' })
+      .min(8, { message: 'Must be 8 or more characters long' }),
+    toc: z.literal(true, {
+      errorMap: () => ({ message: 'Please accept the terms of service' })
+    }),
+    country: z.string(),
+    dob: z.string(),
+    payment: z.any()
+  })
+  .superRefine(({ confirmPassword, password }, ctx) => {
+    if (confirmPassword !== password) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'The passwords did not match',
+        path: ['confirmPassword']
+      });
+    }
+  });
+
+/* ***********************
+
+To ensure the correct behavior of individual components in conjunction with the "React Hook Form", they must be "wrapped".
+Basically, this applies to all components that use custom events or properties.
+
+*********************** */
+
+const WrappedSelect = (props) => {
+  const { field } = useController(props);
+  const handleChange = (e) => {
+    field.onChange(e.detail.selectedOption.textContent);
+  };
+
+  return (
+    <Select {...field} onChange={handleChange}>
+      <Option>Germany</Option>
+      <Option>France</Option>
+      <Option>Italy</Option>
+    </Select>
+  );
+};
+
+const WrappedMultiComboBox = (props) => {
+  const { field } = useController(props);
+  const handleChange = (e) => {
+    field.onChange(Object.values(e.detail.items).map((val) => val.text));
+  };
+  return (
+    <MultiComboBox {...field} onSelectionChange={handleChange}>
+      <MultiComboBoxItem text="Credit card" />
+      <MultiComboBoxItem text="PayPal" />
+      <MultiComboBoxItem text="Bank transfer" />
+    </MultiComboBox>
+  );
+};
+
+const WrappedCheckBox = (props) => {
+  const { field, formState } = useController(props);
+  const [open, setOpen] = useState(false);
+  const errorMessage = formState.errors?.[field.name]?.message;
+  const uniqueId = useId();
+  const handleChange = (e) => {
+    field.onChange(e.target.checked);
+  };
+  const handleFocus = (e) => {
+    if (errorMessage) {
+      setOpen(true);
+    }
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (!errorMessage) {
+      setOpen(false);
+    }
+  }, [errorMessage]);
+
+  return (
+    <>
+      <CheckBox
+        {...field}
+        checked={field.value}
+        onChange={handleChange}
+        id={uniqueId}
+        onFocus={handleFocus}
+        valueState={errorMessage ? ValueState.Error : ValueState.None}
+      />
+      {createPortal(
+        <Popover open={open} opener={uniqueId} onAfterClose={handleClose} initialFocus={uniqueId}>
+          <ObjectStatus state={ValueState.Error}>{errorMessage}</ObjectStatus>
+        </Popover>,
+        document.body
+      )}
+    </>
+  );
+};
+
+function App() {
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors }
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      country: 'Germany',
+      dob: '',
+      payment: [],
+      toc: false
+    },
+    mode: 'onChange',
+    resolver: zodResolver(schema)
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    console.log(data);
+  };
+  return (
+    <ThemeProvider>
+      <Form onSubmit={handleSubmit(onSubmit)} labelSpanM={4}>
+        <FormGroup titleText="Create Account">
+          <FormItem label={<Label required>Email</Label>}>
+            <Input
+              {...register('email', { required: true })}
+              valueState={errors.email ? ValueState.Error : ValueState.None}
+              valueStateMessage={<span>{errors.email?.message}</span>}
+              type={InputType.Email}
+            />
+          </FormItem>
+          <FormItem label={<Label required>Password</Label>}>
+            <Input
+              {...register('password', { required: true })}
+              valueState={errors.password ? ValueState.Error : ValueState.None}
+              valueStateMessage={<span>{errors.password?.message}</span>}
+              type={InputType.Password}
+            />
+          </FormItem>
+          <FormItem label={<Label required>Confirm Password</Label>}>
+            <Input
+              {...register('confirmPassword', { required: true })}
+              valueState={errors.confirmPassword ? ValueState.Error : ValueState.None}
+              valueStateMessage={<span>{errors.confirmPassword?.message}</span>}
+              type={InputType.Password}
+            />
+          </FormItem>
+          <FormItem label="Country">
+            <WrappedSelect name="country" control={control} />
+          </FormItem>
+          <FormItem label="Date of Birth">
+            <DatePicker {...register('dob')} />
+          </FormItem>
+          <FormItem label="Payment methods">
+            <WrappedMultiComboBox name="payment" control={control} />
+          </FormItem>
+          <FormItem
+            label={
+              <Label style={{ alignSelf: 'start', paddingTop: '0.75rem' }} required>
+                I accept the terms of service
+              </Label>
+            }
+          >
+            <WrappedCheckBox
+              name="toc"
+              control={control}
+              rules={{ required: true }}
+              valueState={errors.toc ? ValueState.Error : ValueState.None}
+            />
+          </FormItem>
+        </FormGroup>
+        <FormItem>
+          <Button type={ButtonType.Submit}>Submit</Button>
+        </FormItem>
+      </Form>
+    </ThemeProvider>
+  );
+}
+
+export default App;
 ```
+
+</details>
 
 <Footer />
