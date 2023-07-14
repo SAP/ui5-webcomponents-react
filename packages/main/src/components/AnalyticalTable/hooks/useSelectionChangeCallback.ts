@@ -40,7 +40,7 @@ export const useSelectionChangeCallback = (hooks) => {
           webComponentsReactProperties?.onRowSelect(enrichEventWithDetails(e, payload));
         }
       }
-    }, [selectedRowPayload, rowsById, webComponentsReactProperties.selectionMode, selectedRowIds]);
+    }, [selectedRowPayload?.fired, rowsById, webComponentsReactProperties.selectionMode, selectedRowIds]);
 
     return state;
   });
