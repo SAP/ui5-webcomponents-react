@@ -1,6 +1,7 @@
-import React, { FC, useCallback } from 'react';
-import { stopPropagation } from '../../../../internal/stopPropagation';
-import { Input } from '../../../../webComponents/Input';
+import type { FC } from 'react';
+import React, { useCallback } from 'react';
+import { stopPropagation } from '../../../../internal/stopPropagation.js';
+import { Input } from '../../../../webComponents/Input/index.js';
 
 export const DefaultFilterComponent: FC<any> = ({ column }) => {
   const handleChange = useCallback(

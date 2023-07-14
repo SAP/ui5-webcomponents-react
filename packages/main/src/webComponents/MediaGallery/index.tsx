@@ -1,12 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
-import { ReactNode } from 'react';
-import { MediaGalleryLayout, MediaGalleryMenuHorizontalAlign, MediaGalleryMenuVerticalAlign } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { MediaGallerySelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
+import type { ReactNode } from 'react';
+import {
+  MediaGalleryLayout,
+  MediaGalleryMenuHorizontalAlign,
+  MediaGalleryMenuVerticalAlign
+} from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface MediaGalleryAttributes {
   /**
@@ -71,16 +74,16 @@ export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonPro
   /**
    * Fired when selection is changed by user interaction.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, MediaGallerySelectionChangeEventDetail>) => void;
 }
 
 /**
- * The `MediaGallery` component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the `MediaGalleryItem` component. The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size.
+ * The `MediaGallery` component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the `MediaGallery-item` component. The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size.
  * The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MediaGallery" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-MediaGallery)
  */
 const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>(
   'ui5-media-gallery',

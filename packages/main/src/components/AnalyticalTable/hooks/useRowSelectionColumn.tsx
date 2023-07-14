@@ -1,30 +1,13 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import type { CSSProperties } from 'react';
 import React from 'react';
-import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior';
-import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode';
-import { addCustomCSSWithScoping } from '../../../internal/addCustomCSSWithScoping';
-import { CheckBox } from '../../../webComponents/CheckBox';
-
-// todo use ::part instead, when available (https://github.com/SAP/ui5-webcomponents/issues/6461)
-addCustomCSSWithScoping(
-  'ui5-checkbox',
-  `
-    :host([data-at-checkbox]) .ui5-checkbox-root {
-      display: flex;
-      width: unset;
-      height: unset;
-      justify-content: center;
-      min-height: unset;
-      min-width: unset;
-      padding: 0;
-    }
-  `
-);
+import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { CheckBox } from '../../../webComponents/CheckBox/index.js';
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
   pointerEvents: 'none'
-};
+} as CSSProperties;
 
 /*
  * COMPONENTS
@@ -147,7 +130,7 @@ const columns = (currentColumns, { instance }) => {
     tableRef.current &&
     parseInt(
       getComputedStyle(tableRef.current).getPropertyValue(
-        CssSizeVariablesNames.sapWcrAnalyticalTableSelectionColumnWidth
+        CssSizeVariablesNames.ui5WcrAnalyticalTableSelectionColumnWidth
       ),
       10
     );
@@ -179,12 +162,13 @@ const getCellProps = (props, { cell }) => {
   return props;
 };
 
-// remove padding, width, etc. with addCustomCSS from checkboxes by leveraging the data attribute
-const setToggleAllRowsSelectedProps = (props) => {
-  return [props, { 'data-at-checkbox': true }];
+const setToggleAllRowsSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
+  const { classes } = webComponentsReactProperties;
+  return [props, { className: classes.checkBox }];
 };
-const setToggleRowSelectedProps = (props) => {
-  return [props, { 'data-at-checkbox': true }];
+const setToggleRowSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
+  const { classes } = webComponentsReactProperties;
+  return [props, { className: classes.checkBox }];
 };
 
 export const useRowSelectionColumn = (hooks) => {

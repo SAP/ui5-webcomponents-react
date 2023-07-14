@@ -1,7 +1,8 @@
-import { CommonProps } from '@ui5/webcomponents-react';
-import React, { CSSProperties, forwardRef } from 'react';
-import { DEFAULT_ROW_HEIGHT } from './util/constants';
-import { useStyles } from './util/styles';
+import type { CommonProps } from '@ui5/webcomponents-react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef } from 'react';
+import { DEFAULT_ROW_HEIGHT } from './util/constants.js';
+import { useStyles } from './util/styles.js';
 
 interface TimelineChartAnnotationProps extends CommonProps {
   /**
@@ -19,7 +20,7 @@ interface TimelineChartAnnotationProps extends CommonProps {
   height?: string;
 
   /**
-   * The index of the row the annotation should be applied to. The top of the anotation is
+   * The index of the row the annotation should be applied to. The top of the annotation is
    * aligned with the top of the row.
    */
   rowIndex?: number;

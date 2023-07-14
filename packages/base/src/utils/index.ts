@@ -1,4 +1,4 @@
-import { UIEvent } from 'react';
+import type { UIEvent } from 'react';
 
 export const deprecationNotice = (component: string, message: string) => {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {

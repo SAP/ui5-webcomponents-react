@@ -2,10 +2,12 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 // MODIFICATION: use header background in section headers
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { MutableRefObject, ReactNode, useCallback, useMemo, useRef } from 'react';
-import { ScrollToRefType } from '../interfaces';
-import { EmptyRow } from './EmptyRow';
-import { RowSubComponent as SubComponent } from './RowSubComponent';
+import type { MutableRefObject, ReactNode } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
+import type { ScrollToRefType } from '../interfaces.js';
+import { getSubRowsByString } from '../util/index.js';
+import { EmptyRow } from './EmptyRow.js';
+import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
@@ -28,6 +30,8 @@ interface VirtualTableBodyProps {
   dispatch?: (e: { type: string; payload?: Record<string, unknown> }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
   columnVirtualizer: Record<string, any>;
+  manualGroupBy?: boolean;
+  subRowsKey: string;
 }
 
 const measureElement = (el) => el.offsetHeight;
@@ -53,7 +57,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     alwaysShowSubComponent,
     dispatch,
     subComponentsHeight,
-    columnVirtualizer
+    columnVirtualizer,
+    manualGroupBy,
+    subRowsKey
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -153,7 +159,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps();
+        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index });
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
@@ -189,7 +195,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             ref={(node) => {
               virtualRow.measureElement(node);
             }}
-            aria-rowindex={virtualRow.index + 1}
+            aria-rowindex={rowProps['aria-rowindex'] + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
@@ -200,6 +206,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 rowHeight={rowHeight}
                 rows={rows}
                 alwaysShowSubComponent={alwaysShowSubComponent}
+                rowIndex={visibleRowIndex + 1}
               >
                 {RowSubComponent}
               </SubComponent>
@@ -245,7 +252,13 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 contentToRender = 'Cell';
               } else if (isTreeTable || (!alwaysShowSubComponent && RowSubComponent)) {
                 contentToRender = 'Expandable';
-              } else if (cell.isGrouped) {
+              } else if (
+                cell.isGrouped ||
+                (manualGroupBy &&
+                  cell.column.isGrouped &&
+                  getSubRowsByString(subRowsKey, row.original) != null &&
+                  cell.value !== undefined)
+              ) {
                 contentToRender = 'Grouped';
               } else if (cell.isAggregated) {
                 contentToRender = 'Aggregated';

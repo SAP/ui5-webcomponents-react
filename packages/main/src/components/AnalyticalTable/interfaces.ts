@@ -1,4 +1,4 @@
-import { ScrollToOptions } from '@tanstack/react-virtual';
+import type { ScrollToOptions } from '@tanstack/react-virtual';
 
 export interface ScrollToRefType {
   horizontalScrollToOffset: (offset: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;

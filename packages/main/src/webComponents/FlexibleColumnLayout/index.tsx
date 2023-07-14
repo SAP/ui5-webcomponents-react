@@ -1,12 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
-import { FCLLayout } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { FlexibleColumnLayoutLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import { FCLLayout } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface FlexibleColumnLayoutAttributes {
   /**
@@ -119,18 +118,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
    * Fired when the layout changes via user interaction by clicking the arrows or by changing the component size due to resizing.
    */
   onLayoutChange?: (
-    event: Ui5CustomEvent<
-      FlexibleColumnLayoutDomRef,
-      {
-        layout: FCLLayout | keyof typeof FCLLayout;
-        columnLayout: unknown[];
-        startColumnVisible: boolean;
-        midColumnVisible: boolean;
-        endColumnVisible: boolean;
-        arrowsUsed: boolean;
-        resize: boolean;
-      }
-    >
+    event: Ui5CustomEvent<FlexibleColumnLayoutDomRef, FlexibleColumnLayoutLayoutChangeEventDetail>
   ) => void;
 }
 
@@ -139,7 +127,7 @@ export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttri
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/FlexibleColumnLayout" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-FlexibleColumnLayout)
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',

@@ -1,13 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import { ReactNode, DragEventHandler } from 'react';
-import { ListMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  UploadCollectionItemDeleteEventDetail,
+  UploadCollectionSelectionChangeEventDetail
+} from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
+import type { DragEventHandler, ReactNode } from 'react';
+import { ListMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface UploadCollectionAttributes {
   /**
@@ -27,8 +29,10 @@ interface UploadCollectionAttributes {
    *
    * *   `None`
    * *   `SingleSelect`
+   * *   `SingleSelectBegin`
+   * *   `SingleSelectEnd`
    * *   `MultiSelect`
-   * *   `Delete`
+   * *   `Delete` - this mode has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
    */
   mode?: ListMode | keyof typeof ListMode;
   /**
@@ -68,15 +72,15 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
    */
   onDrop?: DragEventHandler<UploadCollectionDomRef>;
   /**
-   * Fired when the Delete button of any item is pressed.
-   *
-   * **Note:** A Delete button is displayed on each item, when the `UploadCollection` `mode` property is set to `Delete`.
+   * Fired when the delete button of any item is pressed.
    */
-  onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionItemDeleteEventDetail>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<UploadCollectionDomRef, { selectedItems: unknown[] }>) => void;
+  onSelectionChange?: (
+    event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>
+  ) => void;
 }
 
 /**
@@ -84,7 +88,7 @@ export interface UploadCollectionPropTypes extends UploadCollectionAttributes, O
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-UploadCollection)
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(
   'ui5-upload-collection',

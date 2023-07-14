@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { SplitterElement, SplitterLayout, Label, Button, SplitterLayoutPropTypes } from '../..';
+import type { SplitterLayoutPropTypes } from '../..';
+import { SplitterElement, SplitterLayout, Label, Button } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('SplitterLayout', () => {

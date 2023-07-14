@@ -2,11 +2,11 @@ import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
+import type { PopoverDomRef, ToolbarPropTypes } from '../..';
 import {
   Button,
   Input,
   OverflowToolbarButton,
-  PopoverDomRef,
   Text,
   Toolbar,
   ToggleButton,
@@ -14,9 +14,9 @@ import {
   ToolbarSpacer,
   ToolbarStyle,
   OverflowToolbarToggleButton,
-  ToolbarPropTypes
+  PopupAccessibleRole
 } from '../..';
-import { ButtonDesign, ToolbarDesign } from '../../enums';
+import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {
@@ -31,6 +31,16 @@ const OverflowTestComponent = (props: PropTypes) => {
   const { onOverflowChange } = props;
   const [width, setWidth] = useState(undefined);
   const [additionalChildren, setAdditionalChildren] = useState([]);
+  const [eventProperties, setEventProperties] = useState({
+    toolbarElements: [],
+    overflowElements: undefined,
+    target: undefined
+  });
+
+  const handleOverflowChange = (e) => {
+    onOverflowChange(e);
+    setEventProperties(e);
+  };
   return (
     <>
       <Input
@@ -63,7 +73,7 @@ const OverflowTestComponent = (props: PropTypes) => {
       </Button>
       <Toolbar
         data-testid="toolbar"
-        onOverflowChange={onOverflowChange}
+        onOverflowChange={handleOverflowChange}
         style={width ? { width: `${width}px`, maxWidth: 'none' } : undefined}
       >
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
@@ -80,6 +90,9 @@ const OverflowTestComponent = (props: PropTypes) => {
         {additionalChildren}
         <ToolbarSeparator data-testid="separator" />
       </Toolbar>
+      <br />
+      toolbarElements: <span data-testid="toolbarElements">{eventProperties.toolbarElements.length}</span>
+      overflowElements: <span data-testid="overflowElements">{eventProperties.overflowElements?.length}</span>
     </>
   );
 };
@@ -129,6 +142,8 @@ describe('Toolbar', () => {
     cy.viewport(300, 500);
     cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
     cy.get('@overflowChangeSpy').should('have.been.calledOnce');
+    cy.findByTestId('toolbarElements').should('have.text', 2);
+    cy.findByTestId('overflowElements').should('have.text', 4);
     cy.findByText('Item1').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item3"]').should('not.be.visible');
@@ -147,12 +162,16 @@ describe('Toolbar', () => {
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 3);
 
     cy.findByTestId('input').shadow().find('input').type('100');
     cy.findByTestId('input').trigger('change');
     cy.findByTestId('input').shadow().find('input').clear({ force: true });
 
     cy.get('@overflowChangeSpy').should('have.callCount', 3);
+    cy.findByTestId('toolbarElements').should('have.text', 0);
+    cy.findByTestId('overflowElements').should('have.text', 6);
 
     cy.get('[data-testid="toolbar-item"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
@@ -162,6 +181,8 @@ describe('Toolbar', () => {
     cy.findByTestId('input').trigger('change');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 4);
+    cy.findByTestId('toolbarElements').should('have.text', 6);
+    cy.findByTestId('overflowElements').should('not.have.text');
 
     cy.get('[data-testid="toolbar-item"]').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('be.visible');
@@ -171,10 +192,14 @@ describe('Toolbar', () => {
     cy.findByTestId('input').trigger('change');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 5);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 3);
 
     cy.findByText('Add').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 6);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 4);
 
     cy.findByText('Add').click();
     cy.findByText('Add').click();
@@ -183,10 +208,14 @@ describe('Toolbar', () => {
     cy.findByText('Add').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 11);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 9);
 
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 12);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 8);
 
     cy.findByText('Remove').click();
     cy.findByText('Remove').click();
@@ -195,6 +224,8 @@ describe('Toolbar', () => {
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 17);
+    cy.findByTestId('toolbarElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 3);
 
     cy.get(`[ui5-toggle-button]`).click();
 
@@ -550,6 +581,38 @@ describe('Toolbar', () => {
     cy.findAllByText('Text2 no id').should('have.length', 2).and('not.have.attr', 'id');
     cy.get('#3').should('have.length', 1);
     cy.get('#3-overflow').should('have.length', 1);
+  });
+
+  it('a11y - role & contentRole', () => {
+    cy.viewport(100, 500);
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { role: PopupAccessibleRole.AlertDialog } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section[role="alertdialog"]').should('exist');
+
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { contentRole: 'menu' } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section').should('not.have.attr', 'role');
+    cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
+
+    cy.mount(
+      <Toolbar a11yConfig={{ overflowPopover: { role: PopupAccessibleRole.AlertDialog, contentRole: 'menu' } }}>
+        <div>Text1</div>
+        <div>Text2</div>
+        <Button>Text4</Button>
+      </Toolbar>
+    );
+    cy.get('section').should('not.have.attr', 'role');
+    cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
   });
 
   mountWithCustomTagName(Toolbar);

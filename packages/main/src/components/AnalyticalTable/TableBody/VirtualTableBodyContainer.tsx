@@ -1,7 +1,8 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
-import { AnalyticalTablePropTypes } from '../index';
+import type { MutableRefObject } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import type { AnalyticalTablePropTypes } from '../index.js';
 
 interface VirtualTableBodyContainerProps {
   tableBodyHeight: number;

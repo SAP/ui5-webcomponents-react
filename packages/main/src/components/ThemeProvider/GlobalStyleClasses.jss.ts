@@ -1,17 +1,17 @@
 import { CompactSizes, CozySizes, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { GlobalStyleClasses } from '../../enums/GlobalStyleClasses';
-import { baseParameters } from '../../themes/base';
-import { sapBelizeParameters } from '../../themes/sap_belize';
-import { sapBelizeHcbParameters } from '../../themes/sap_belize_hcb';
-import { sapBelizeHcwParameters } from '../../themes/sap_belize_hcw';
-import { sapFiori3Parameters } from '../../themes/sap_fiori_3';
-import { sapFiori3DarkParameters } from '../../themes/sap_fiori_3_dark';
-import { sapFioriHcbParameters } from '../../themes/sap_fiori_3_hcb';
-import { sapFioriHcwParameters } from '../../themes/sap_fiori_3_hcw';
-import { sapHorizonParameters } from '../../themes/sap_horizon';
-import { sapHorizonDarkParameters } from '../../themes/sap_horizon_dark';
-import { sapHorizonHcbParameters } from '../../themes/sap_horizon_hcb';
-import { sapHorizonHcwParameters } from '../../themes/sap_horizon_hcw';
+import { GlobalStyleClasses } from '../../enums/index.js';
+import { baseParameters } from '../../themes/base.js';
+import { sapBelizeParameters } from '../../themes/sap_belize.js';
+import { sapBelizeHcbParameters } from '../../themes/sap_belize_hcb.js';
+import { sapBelizeHcwParameters } from '../../themes/sap_belize_hcw.js';
+import { sapFiori3Parameters } from '../../themes/sap_fiori_3.js';
+import { sapFiori3DarkParameters } from '../../themes/sap_fiori_3_dark.js';
+import { sapFioriHcbParameters } from '../../themes/sap_fiori_3_hcb.js';
+import { sapFioriHcwParameters } from '../../themes/sap_fiori_3_hcw.js';
+import { sapHorizonParameters } from '../../themes/sap_horizon.js';
+import { sapHorizonDarkParameters } from '../../themes/sap_horizon_dark.js';
+import { sapHorizonHcbParameters } from '../../themes/sap_horizon_hcb.js';
+import { sapHorizonHcwParameters } from '../../themes/sap_horizon_hcw.js';
 
 export const GlobalStyleClassesStyles = {
   '@global': {

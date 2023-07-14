@@ -1,13 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Select.js';
-import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { SelectChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import type { ReactNode } from 'react';
+import { ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface SelectAttributes {
   /**
@@ -52,7 +51,7 @@ interface SelectAttributes {
 
 export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
   /**
-   * Currently selected `ui5-option` element.
+   * Currently selected `Option` element.
    */
   readonly selectedOption: ReactNode;
 }
@@ -85,7 +84,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
   /**
    * Fired when the selected option changes.
    */
-  onChange?: (event: Ui5CustomEvent<SelectDomRef, { selectedOption: HTMLElement }>) => void;
+  onChange?: (event: Ui5CustomEvent<SelectDomRef, SelectChangeEventDetail>) => void;
   /**
    * Fired after the component's dropdown menu closes.
    */
@@ -101,7 +100,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Select" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Select)
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',

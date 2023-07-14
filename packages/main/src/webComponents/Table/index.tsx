@@ -1,13 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import { ReactNode } from 'react';
-import { TableGrowingMode, TableMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  TablePopinChangeEventDetail,
+  TableRowClickEventDetail,
+  TableSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/Table.js';
+import type { ReactNode } from 'react';
+import { TableMode, TableGrowingMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface TableAttributes {
   /**
@@ -114,17 +117,15 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
   /**
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    */
-  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, { poppedColumns: unknown[] }>) => void;
+  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, { row: HTMLElement }>) => void;
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<TableDomRef, { selectedRows: unknown[]; previouslySelectedRows: unknown[] }>
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -136,7 +137,7 @@ export interface TablePropTypes extends TableAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Table" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Table)
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',

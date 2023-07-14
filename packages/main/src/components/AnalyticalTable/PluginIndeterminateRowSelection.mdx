@@ -1,6 +1,7 @@
 import { ImportStatement } from '@sb/components/Import';
 import { Canvas, Meta } from '@storybook/blocks';
-import { MessageStrip } from '../../webComponents/MessageStrip';
+import { Footer } from '@sb/components';
+import { MessageStrip } from '../../webComponents/MessageStrip/index';
 import * as ComponentStories from './AnalyticalTable.stories';
 
 <Meta title="Data Display / AnalyticalTable / Plugin: useIndeterminateRowSelection" />
@@ -48,3 +49,5 @@ The plugin hook allows passing a callback as parameter with the following struct
 
 The callback is fired, every time the internal `indeterminateRows` state is changed.
 The event parameter is an object, with all indeterminate rows by id (e.g. `{"0.1":true}`) and the table instance.
+
+<Footer />

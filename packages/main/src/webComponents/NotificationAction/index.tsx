@@ -1,11 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-import { ButtonDesign } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
+import { ButtonDesign } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface NotificationActionAttributes {
   /**
@@ -29,7 +28,7 @@ interface NotificationActionAttributes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html" class="api-table-content-cell-link">Icon Explorer</ui5-link>.
+   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
    */
   icon?: string;
   /**
@@ -44,15 +43,17 @@ export interface NotificationActionPropTypes extends NotificationActionAttribute
   /**
    * Fired, when the action is pressed.
    */
-  onClick?: (event: Ui5CustomEvent<NotificationActionDomRef, { targetRef: HTMLElement }>) => void;
+  onClick?: (event: Ui5CustomEvent<NotificationActionDomRef, NotificationActionClickEventDetail>) => void;
 }
 
 /**
  * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListGroupItem` items
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/NotificationListItem" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-NotificationListItem)
  */
 const NotificationAction = withWebComponent<NotificationActionPropTypes, NotificationActionDomRef>(
   'ui5-notification-action',

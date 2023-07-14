@@ -71,6 +71,17 @@ overrides:
       '@typescript-eslint/restrict-plus-operands': 'off'
       '@typescript-eslint/restrict-template-expressions': 'off'
 
+      '@typescript-eslint/no-explicit-any': 'warn'
+
+      # consistent type exports/imports
+      '@typescript-eslint/consistent-type-exports':
+        - 'error'
+        - fixMixedExportsWithInlineTypeSpecifier: false
+      '@typescript-eslint/consistent-type-imports':
+        - 'error'
+        - prefer: 'type-imports'
+          fixStyle: 'separate-type-imports'
+
       # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
       '@typescript-eslint/no-floating-promises': 'warn'
 

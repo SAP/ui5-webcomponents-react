@@ -1,13 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
-import { ReactNode } from 'react';
-import { UploadState, ListItemType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode, Nullable } from '../../types';
+import type { ReactNode } from 'react';
+import { UploadState, ListItemType } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode, Nullable } from '../../types/index.js';
 
 interface UploadCollectionItemAttributes {
   /**
@@ -26,6 +24,10 @@ interface UploadCollectionItemAttributes {
    * If set to `true` the file name will be clickable and it will fire `onFileNameClick` event upon click.
    */
   fileNameClickable?: boolean;
+  /**
+   * By default, the delete button will always be shown, regardless of the `UploadCollection`'s property `mode`. Setting this property to `true` will hide the delete button.
+   */
+  hideDeleteButton?: boolean;
   /**
    * Hides the retry button when `uploadState` property is `Error`.
    */
@@ -60,7 +62,15 @@ interface UploadCollectionItemAttributes {
   selected?: boolean;
 }
 
-export interface UploadCollectionItemDomRef extends UploadCollectionItemAttributes, Ui5DomRef {}
+export interface UploadCollectionItemDomRef extends UploadCollectionItemAttributes, Ui5DomRef {
+  /**
+   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   *
+   * *   `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM. The value of each `aria-setsize` is an integer reflecting number of items in the complete set. **Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
+   * *   `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM. The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   */
+  accessibilityAttributes: Record<string, unknown>;
+}
 
 export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttributes, CommonProps {
   /**
@@ -124,12 +134,20 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/UploadCollection" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-UploadCollection)
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',
   ['file', 'fileName', 'progress', 'uploadState', 'type'],
-  ['disableDeleteButton', 'fileNameClickable', 'hideRetryButton', 'hideTerminateButton', 'navigated', 'selected'],
+  [
+    'disableDeleteButton',
+    'fileNameClickable',
+    'hideDeleteButton',
+    'hideRetryButton',
+    'hideTerminateButton',
+    'navigated',
+    'selected'
+  ],
   ['thumbnail', 'deleteButton'],
   ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click'],
   () => import('@ui5/webcomponents-fiori/dist/UploadCollectionItem.js')

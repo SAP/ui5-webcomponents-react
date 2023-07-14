@@ -6,7 +6,7 @@ import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.j
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import 'tocbot/dist/tocbot.css';
 import '../packages/main/dist/Assets.js';
 import languages from './components/languageCodes.json';
@@ -136,6 +136,7 @@ const preview: Preview = {
         method: 'alphabetical',
         order: [
           'Getting Started',
+          'Project Templates',
           'Change Log',
           'Migration Guide',
           'Knowledge Base',

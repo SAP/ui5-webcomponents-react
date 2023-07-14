@@ -2,12 +2,11 @@
 
 import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { ReactElement, ReactNode } from 'react';
 import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -15,30 +14,37 @@ import React, {
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
-import { useObserveHeights } from '../../internal/useObserveHeights';
-import { AvatarPropTypes, Tab, TabContainer } from '../../webComponents';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar';
-import { ObjectPageSectionPropTypes } from '../ObjectPageSection';
-import { CollapsedAvatar } from './CollapsedAvatar';
-import { styles } from './ObjectPage.jss';
-import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils';
+import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
+import { useObserveHeights } from '../../internal/useObserveHeights.js';
+import type { AvatarPropTypes } from '../../webComponents/index.js';
+import { Tab, TabContainer } from '../../webComponents/index.js';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
+import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
+import { CollapsedAvatar } from './CollapsedAvatar.js';
+import { styles } from './ObjectPage.jss.js';
+import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',
   // padding-inline is used here to ensure the same responsive padding behavior as for the rest of the component
+  // todo: the additional text span adds 3px to the container - needs to be investigated why
   `
   :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
     padding: 0;
     padding-inline: var(--_ui5wcr_ObjectPage_tab_bar_inline_padding);
     box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
   }
+  :host([data-component-name="ObjectPageTabContainer"]) [id$="additionalText"] {
+    display: none;
+  }
   `
 );
+
+const TAB_CONTAINER_HEADER_HEIGHT = 48;
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
@@ -268,9 +274,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
-          `#ObjectPageSection-${sectionId}`
-        )?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
+          ?.offsetTop;
         if (!isNaN(childOffset)) {
           const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
           if (topHeaderHeight) {
@@ -281,7 +286,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               childOffset -
               safeTopHeaderHeight -
               anchorBarHeight -
-              48 /*tabBar*/ -
+              TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
               (headerPinned ? (headerCollapsed === true ? 0 : headerContentHeight) : 0),
             behavior: 'smooth'
           });
@@ -379,7 +384,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             childOffset -
             topHeaderHeight -
             anchorBarHeight -
-            48 /*tabBar*/ -
+            TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
             (headerPinned ? headerContentHeight : 0) -
             16,
           behavior: 'smooth'
@@ -462,13 +467,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         heightDiff +=
           objectPage.getBoundingClientRect().height -
           topHeaderHeight -
-          48 /*tabBar*/ -
+          TAB_CONTAINER_HEADER_HEIGHT /*tabBar*/ -
           (!headerCollapsed ? headerContentHeight : 0) -
           lastSubSection.getBoundingClientRect().height -
           32;
       }
       // heightDiff - footer - tabbar
-      setSpacerBottomHeight(footer ? `calc(${heightDiff}px - 1rem - 48px)` : `${heightDiff}px`);
+      setSpacerBottomHeight(
+        footer ? `calc(${heightDiff}px - 1rem - ${TAB_CONTAINER_HEADER_HEIGHT}px)` : `${heightDiff}px`
+      );
     });
 
     if (objectPage && section) {
@@ -524,13 +531,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   useEffect(() => {
     const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
-    const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ 48;
+    const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ TAB_CONTAINER_HEADER_HEIGHT;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
     const observer = new IntersectionObserver(
       ([section]) => {
         if (section.isIntersecting && isProgrammaticallyScrolled.current === false) {
           if (
-            objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + 48 <=
+            objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
             section.target.getBoundingClientRect().bottom
           ) {
             const currentId = extractSectionIdFromHtmlId(section.target.id);
@@ -555,7 +562,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       for (let i = 0; i <= sections.length - 1; i++) {
         const section = sections[i];
         if (
-          objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + 48 <=
+          objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
           section.getBoundingClientRect().bottom
         ) {
           currentSection = section;

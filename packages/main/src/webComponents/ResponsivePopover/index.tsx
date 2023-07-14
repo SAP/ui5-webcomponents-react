@@ -1,13 +1,17 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
-import { ReactNode } from 'react';
-import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign, PopupAccessibleRole } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ResponsivePopoverBeforeCloseEventDetail } from '@ui5/webcomponents/dist/ResponsivePopover.js';
+import type { ReactNode } from 'react';
+import {
+  PopoverHorizontalAlign,
+  PopoverPlacementType,
+  PopoverVerticalAlign,
+  PopupAccessibleRole
+} from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface ResponsivePopoverAttributes {
   /**
@@ -163,7 +167,7 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, { escPressed: boolean }>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, ResponsivePopoverBeforeCloseEventDetail>) => void;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
@@ -175,7 +179,7 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ResponsivePopover" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ResponsivePopover)
  */
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',

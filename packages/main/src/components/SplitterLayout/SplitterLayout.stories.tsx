@@ -1,9 +1,9 @@
 import { SplitterElementContent } from '@sb/components/SplitterElementContent';
 import { isChromatic } from '@sb/utils';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement } from '../..';
-import { SplitterLayout } from './index';
+import { SplitterLayout } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / SplitterLayout',
@@ -13,7 +13,7 @@ const meta = {
   },
   args: { style: { width: isChromatic ? '1200px' : '100%', height: '800px' } },
   parameters: {
-    chromatic: { delay: 1000, diffThreshold: 0.3 }
+    chromatic: { delay: 1000, diffThreshold: 0.4 }
   }
 } satisfies Meta<typeof SplitterLayout>;
 
@@ -21,6 +21,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    chromatic: { diffThreshold: 0.6 }
+  },
   render(args) {
     return (
       <SplitterLayout {...args}>

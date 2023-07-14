@@ -1,15 +1,15 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
-  AnalyticalTablePropTypes,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   Button,
   Input
 } from '../..';
-import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums';
+import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -1106,22 +1106,28 @@ describe('AnalyticalTable', () => {
     const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
     cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} />);
     cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
-    for (let i = 1; i <= 4; i++) {
-      if (i % 2) {
-        // no color set
-        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      } else {
-        cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
+    function testAlternateRowColor() {
+      for (let i = 1; i <= 4; i++) {
+        if (i % 2) {
+          // no color set
+          cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          cy.get(`[aria-rowindex="${i}"]`).should('have.css', 'background-color', alternatingRowColor);
+        }
       }
+      cy.get('[data-empty-row="true"]').each(($emptyRow, i) => {
+        if ((i + 1) % 2) {
+          // no color set
+          cy.wrap($emptyRow).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          cy.wrap($emptyRow).should('have.css', 'background-color', alternatingRowColor);
+        }
+      });
     }
-    cy.get('[data-empty-row="true"]').each(($emptyRow, i) => {
-      if ((i + 1) % 2) {
-        // no color set
-        cy.wrap($emptyRow).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      } else {
-        cy.wrap($emptyRow).should('have.css', 'background-color', alternatingRowColor);
-      }
-    });
+    testAlternateRowColor();
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    testAlternateRowColor();
   });
 
   it('initial column order', () => {
@@ -1852,6 +1858,402 @@ describe('AnalyticalTable', () => {
       'have.text',
       '{"selectedRowIds":{},"selectedFlatRows":[],"allRowsSelected":false}'
     );
+  });
+
+  it('manualGroupBy - backend grouping', () => {
+    const cols = [
+      {
+        accessor: 'values.name',
+        Header: 'Name',
+        // replace value for grouped rows, otherwise the aggregated value will be added in brackets
+        Cell: ({ value }) => value,
+        // bug with placeholder (repeated value), for some reason "Simon" is handled as placeholder when manualGroupBy is active
+        // --> show value, but hide it for nested row, either here or in the data
+        RepeatedValue: (instance) => {
+          if (instance.manualGroupBy) {
+            // this can be omitted when handled by data
+            if (instance.row.id.includes('.')) {
+              return null;
+            }
+            return instance.value;
+          }
+          return null;
+        }
+      },
+      { accessor: 'values.age', Header: 'Age' }
+    ];
+
+    const SERVER_DATA = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: '25', children: [] } },
+      { values: { name: 'Martha', age: '30', children: [] } }
+    ];
+    const SERVER_DATA_AGGREGATED = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: 'Aggregated', children: [] } },
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+    ];
+    const SERVER_DATA_PETER = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      {
+        values: {
+          name: 'Peter',
+          age: 'Aggregated',
+          children: [
+            { values: { age: '25' } },
+            { values: { age: '25' } },
+            { values: { age: '30' } },
+            { values: { age: '30' } },
+            { values: { age: '30' } }
+          ]
+        }
+      },
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+    ];
+
+    const SERVER_DATA_MARTHA = [
+      { values: { name: 'Simon', age: '72', children: undefined } },
+      { values: { name: 'Peter', age: 'Aggregated', children: [] } },
+      {
+        values: {
+          name: 'Martha',
+          age: 'Aggregated',
+          children: [
+            { values: { name: 'Martha', age: '30' } },
+            { values: { name: 'Martha', age: '25' } },
+            { values: { name: 'Martha', age: '25' } }
+          ]
+        }
+      }
+    ];
+    const TestComp = () => {
+      const [groupedCols, setGroupedCols] = useState([]);
+      const [serverData, setServerData] = useState(SERVER_DATA);
+      const handleRowExpandChange = (e) => {
+        const { isExpanded, original } = e.detail.row;
+        const { column } = e.detail;
+        if (!isExpanded) {
+          if (groupedCols.includes(column.id)) {
+            switch (original.values.name) {
+              case 'Peter':
+                setServerData(SERVER_DATA_PETER);
+                break;
+              case 'Martha':
+                setServerData(SERVER_DATA_MARTHA);
+                break;
+              default:
+                break;
+            }
+          }
+        }
+      };
+
+      const handleGrouping = (e) => {
+        const { groupedColumns } = e.detail;
+        setGroupedCols(groupedColumns);
+        if (groupedColumns.includes('values.name')) {
+          setServerData(SERVER_DATA_AGGREGATED);
+        } else {
+          setServerData(SERVER_DATA);
+        }
+      };
+      return (
+        <AnalyticalTable
+          data={serverData}
+          groupable
+          columns={cols}
+          reactTableOptions={{
+            autoResetGroupBy: false,
+            autoResetExpanded: false,
+            manualGroupBy: true
+          }}
+          // only use subRowsKey --> can't use subRows as it's always an array (not undefined - internal logic will fail)
+          subRowsKey="values.children"
+          onRowExpandChange={handleRowExpandChange}
+          onGroup={handleGrouping}
+        />
+      );
+    };
+    cy.mount(<TestComp />);
+    cy.findByText('Simon').should('be.visible').should('have.length', 1);
+    cy.findByText('Peter').should('be.visible').should('have.length', 1);
+    cy.findByText('Martha').should('be.visible').should('have.length', 1);
+    cy.findByText('Aggregated').should('not.exist');
+
+    cy.findByText('Name').click();
+    cy.findByText('Group').click();
+    cy.findByText('Simon').should('be.visible').should('have.length', 1);
+    cy.findAllByText('Aggregated').should('be.visible').should('have.length', 2);
+    cy.get('[ui5-icon][name="navigation-right-arrow"]').should('be.visible').should('have.length', 2);
+
+    cy.get('[ui5-icon][name="navigation-right-arrow"]').eq(1).click();
+    cy.findByText('Martha').should('be.visible').should('have.length', 1);
+
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="4"]').should('have.text', 30);
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="5"]').should('have.text', 25);
+    cy.get('[data-visible-column-index="1"][data-visible-row-index="6"]').should('have.text', 25);
+  });
+
+  it('plugin hook: useOrderedMultiSort', () => {
+    const TestComponent = ({ orderedIds }: { orderedIds: string[] }) => {
+      const columns = [
+        {
+          Header: 'Name',
+          accessor: 'name',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Age',
+          accessor: 'age',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Name 2',
+          accessor: 'name2',
+          enableMultiSort: true
+        },
+        {
+          Header: 'Age 2',
+          accessor: 'age2',
+          enableMultiSort: true
+        }
+      ];
+      const data = [
+        { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
+        { name: 'Kristen', age: 40, name2: 'Randolph', age2: 21 },
+        { name: 'Peter', age: 30, name2: 'Rose', age2: 90 },
+        { name: 'Peter', age: 70, name2: 'Rose', age2: 22 },
+        { name: 'Kristen', age: 60, name2: 'Willis', age2: 80 },
+        { name: 'Kristen', age: 20, name2: 'Alissa', age2: 80 },
+        { name: 'Graham', age: 40, name2: 'Alissa', age2: 80 },
+        { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
+        { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
+        { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
+        { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+      ];
+      return (
+        <AnalyticalTable
+          columns={columns}
+          data={data}
+          sortable
+          tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]}
+        />
+      );
+    };
+
+    cy.mount(<TestComponent orderedIds={['name', 'name2', 'age', 'age2']} />);
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '20');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '62');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should('have.text', 'Willis');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '60');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="2"]').should('have.text', 'Willis');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '20');
+
+    cy.mount(<TestComponent orderedIds={['name2']} />);
+    cy.findByText('Age').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.findByText('Name').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '40');
+
+    cy.findByText('Age 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should('have.text', '80');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '40');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '18');
+
+    cy.findByText('Name 2').click();
+    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should('have.text', 'Alissa');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should('have.text', '80');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="0"]').should('have.text', 'Peter');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '30');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="2"]').should('have.text', 'Rose');
+    cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '90');
+  });
+
+  it('keyboard navigation', () => {
+    cy.mount(<AnalyticalTable data={generateMoreData(50)} columns={columns} />);
+    cy.findByText('Name-0').should('be.visible');
+    cy.get('[tabindex="0"]')
+      .should('have.attr', 'data-component-name', 'AnalyticalTableContainer')
+      .should('have.length', 1);
+
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('End');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
+    cy.realPress('Home');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    // last currently rendered row
+    cy.focused().should('have.attr', 'data-row-index', '22').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '36').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageDown');
+    cy.focused().should('have.attr', 'data-row-index', '50').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    // first currently rendered row
+    cy.focused().should('have.attr', 'data-row-index', '29').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '15').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('PageUp');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={[...columns.slice(0, 2), { id: 'button', Cell: () => <Button>Button</Button> }]}
+      />
+    );
+
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '2');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'ui5-button');
+
+    const renderSubComp = (row) => {
+      if (row.id === '2') {
+        return null;
+      }
+      return <div style={{ height: '50px', width: '100%', background: 'cadetblue' }}>SubComponent</div>;
+    };
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns.slice(0, 2)}
+        alwaysShowSubComponent
+        renderRowSubComponent={renderSubComp}
+      />
+    );
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '2');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '3').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '4').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-row-index', '4').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '3').should('have.attr', 'data-column-index', '1');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '2');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '0');
+
+    const renderSubComp2 = (row) => {
+      if (row.id === '2') {
+        return null;
+      }
+      return (
+        <div style={{ height: '50px', width: '100%', background: 'cadetblue' }}>
+          <Button data-subcomponent-active-element>Active</Button>
+        </div>
+      );
+    };
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns.slice(0, 2)}
+        alwaysShowSubComponent
+        renderRowSubComponent={renderSubComp2}
+      />
+    );
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-button');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Calendar.js';
-import { ReactNode } from 'react';
-import { CalendarSelectionMode, CalendarType } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CalendarSelectedDatesChangeEventDetail } from '@ui5/webcomponents/dist/Calendar.js';
+import type { ReactNode } from 'react';
+import type { CalendarType } from '../../enums/index.js';
+import { CalendarSelectionMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface CalendarAttributes {
   /**
@@ -28,11 +28,11 @@ interface CalendarAttributes {
    */
   formatPattern?: string;
   /**
-   * Determines the maximum date available for selection.
+   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
   /**
-   * Determines the minimum date available for selection.
+   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
   /**
@@ -55,7 +55,7 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
   /**
    * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, the component will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
-  onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, { values: unknown[]; dates: unknown[] }>) => void;
+  onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectedDatesChangeEventDetail>) => void;
 }
 
 /**
@@ -65,7 +65,7 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Calendar" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Calendar)
  */
 const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',

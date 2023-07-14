@@ -11,7 +11,7 @@ When the user makes an entry and presses the enter key, the calendar shows the c
 
 If a date is entered by typing it into the input field, it must fit to the used date format.
 
-Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target="_blank" href="http://unicode.org/reports/tr35/#Date_Field_Symbol_Table" class="api-table-content-cell-link">UTS #35: Unicode Locale Data Markup Language</ui5-link>.
+Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target="_blank" href="http://unicode.org/reports/tr35/#Date_Field_Symbol_Table">UTS #35: Unicode Locale Data Markup Language</ui5-link>.
 
 For example, if the `format-pattern` is "yyyy-MM-dd", a valid value string is "2015-07-30" and the same is displayed in the input.
 

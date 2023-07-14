@@ -1,6 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
-import { AnalyticalTableSelectionMode } from '../../../enums';
+import { AnalyticalTableSelectionMode } from '../../../enums/index.js';
 
 export const useSelectionChangeCallback = (hooks) => {
   hooks.useControlledState.push((state, { instance }) => {

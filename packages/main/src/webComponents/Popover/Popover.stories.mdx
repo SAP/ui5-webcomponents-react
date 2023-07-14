@@ -232,6 +232,7 @@ const PopoverComponent = () => {
             {...args}
             opener="openPopoverBtn2"
             open={popoverIsOpen}
+            onAfterClose={handleClose}
             header={
               <Bar endContent={<Icon name="settings" />}>
                 <Title>Popover</Title>
@@ -244,118 +245,6 @@ const PopoverComponent = () => {
               <StandardListItem additionalText="2">List Item 2</StandardListItem>
               <StandardListItem additionalText="1">List Item 3</StandardListItem>
             </List>
-          </Popover>
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Popover: open on hover
-
-Hover over the `MicroBarChart` to see a more detailed view.
-
-<Canvas>
-  <Story name="open on hover">
-    {(args) => {
-      const [popoverIsOpen, setPopoverIsOpen] = useState(false);
-      const handleOpen = () => {
-        setPopoverIsOpen(true);
-      };
-      const handleClose = () => {
-        setPopoverIsOpen(false);
-      };
-      return (
-        <>
-          <div id="microBarChart" onMouseEnter={handleOpen} onMouseLeave={handleClose} style={{ width: '120px' }}>
-            <MicroBarChart
-              style={{ height: '70px' }}
-              dimension={{
-                accessor: 'name'
-              }}
-              measure={{
-                accessor: 'data'
-              }}
-              dataset={[
-                {
-                  name: 'January',
-                  data: 100
-                },
-                {
-                  name: 'February',
-                  data: 300
-                },
-                {
-                  name: 'March',
-                  data: 530
-                }
-              ]}
-            />
-          </div>
-          <Popover {...args} open={popoverIsOpen} opener={'microBarChart'} headerText="Detailed Chart View">
-            <BarChart
-              style={{ height: '400px', width: '300px' }}
-              dimensions={[
-                {
-                  accessor: 'name'
-                }
-              ]}
-              measures={[
-                {
-                  accessor: 'data'
-                }
-              ]}
-              dataset={[
-                {
-                  name: 'January',
-                  data: 100
-                },
-                {
-                  name: 'February',
-                  data: 300
-                },
-                {
-                  name: 'March',
-                  data: 530
-                },
-                {
-                  name: 'April',
-                  data: 450
-                },
-                {
-                  name: 'May',
-                  data: 420
-                },
-                {
-                  name: 'June',
-                  data: 455
-                },
-                {
-                  name: 'July',
-                  data: 300
-                },
-                {
-                  name: 'August',
-                  data: 70
-                },
-                {
-                  name: 'September',
-                  data: 220
-                },
-                {
-                  name: 'October',
-                  data: 350
-                },
-                {
-                  name: 'November',
-                  data: 415
-                },
-                {
-                  name: 'December',
-                  data: 350
-                }
-              ]}
-            />
           </Popover>
         </>
       );

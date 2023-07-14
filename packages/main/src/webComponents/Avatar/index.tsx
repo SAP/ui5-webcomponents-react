@@ -1,12 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Avatar.js';
-import { ReactNode } from 'react';
-import { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ReactNode } from 'react';
+import type { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarAttributes {
   /**
@@ -100,7 +99,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
   /**
    * Receives the desired `<img>` tag **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
    *
-   * `Avatar:not(:defined) {    visibility: hidden;   }   `
+   * `[ui5-avatar]:not(:defined) {    visibility: hidden;   }   `
    */
   children?: ReactNode;
 }
@@ -110,7 +109,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Avatar" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Avatar)
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',

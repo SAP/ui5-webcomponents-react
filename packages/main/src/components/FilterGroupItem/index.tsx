@@ -2,17 +2,17 @@
 
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxDirection } from '../../enums';
-import { BusyIndicatorSize } from '../../enums/BusyIndicatorSize';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping';
-import { Icon, TableCell, TableRow } from '../../webComponents';
-import { BusyIndicator } from '../../webComponents/BusyIndicator';
-import { Label } from '../../webComponents/Label';
-import { FlexBox } from '../FlexBox';
-import styles from './FilterGroupItem.jss';
+import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
+import { Icon, TableCell, TableRow } from '../../webComponents/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import styles from './FilterGroupItem.jss.js';
 
 addCustomCSSWithScoping(
   'ui5-table-row',
@@ -113,7 +113,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
         data-component-name="FilterBarDialogTableRow"
       >
         <TableCell>
-          <FlexBox direction={FlexBoxDirection.Column}>
+          <FlexBox direction={FlexBoxDirection.Column} className={classes.labelContainer}>
             <Label
               className={classes.dialogCellLabel}
               title={labelTooltip ?? label}
@@ -136,7 +136,7 @@ export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTyp
 
   return (
     <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
-      <div className={inFB ? classes.innerFilterItemContainer : classes.innerFilterItemContainerDialog}>
+      <div className={classes.innerFilterItemContainer}>
         <FlexBox>
           <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
             {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}

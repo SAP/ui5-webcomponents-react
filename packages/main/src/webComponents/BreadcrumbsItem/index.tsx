@@ -1,10 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/BreadcrumbsItem.js';
-import { ReactNode } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { ReactNode } from 'react';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface BreadcrumbsItemAttributes {
   /**
@@ -49,9 +48,11 @@ export interface BreadcrumbsItemPropTypes extends BreadcrumbsItemAttributes, Com
 /**
  * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Breadcrumbs" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs)
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(
   'ui5-breadcrumbs-item',

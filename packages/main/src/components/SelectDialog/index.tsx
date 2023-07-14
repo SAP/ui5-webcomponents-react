@@ -10,29 +10,25 @@ import {
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, ListGrowingMode, ListMode, ToolbarDesign } from '../../enums';
-import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import {
-  Button,
+import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
+import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import type {
   ButtonDomRef,
-  Dialog,
   DialogDomRef,
   DialogPropTypes,
-  Icon,
   IconDomRef,
-  Input,
   InputDomRef,
-  List,
   ListDomRef,
   ListPropTypes,
-  StandardListItemDomRef,
-  Title
-} from '../../webComponents';
-import { Text } from '../Text';
-import { Toolbar } from '../Toolbar';
+  StandardListItemDomRef
+} from '../../webComponents/index.js';
+import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
+import { Text } from '../Text/index.js';
+import { Toolbar } from '../Toolbar/index.js';
 
 const useStyles = createUseStyles(
   {
@@ -53,7 +49,7 @@ const useStyles = createUseStyles(
       "titleStart titleCenter cancel"
       "input input input"
       `,
-      gridTemplateRows: `${CssSizeVariables.sapWcrDialogHeaderHeight} ${CssSizeVariables.sapWcrDialogSubHeaderHeight}`,
+      gridTemplateRows: `${CssSizeVariables.ui5WcrDialogHeaderHeight} ${CssSizeVariables.ui5WcrDialogSubHeaderHeight}`,
       width: '100%',
       alignItems: 'center'
     },
@@ -108,7 +104,9 @@ interface ListDomRefWithPrivateAPIs extends ListDomRef {
   focusFirstItem(): void;
 }
 
-export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'> {
+export interface SelectDialogPropTypes
+  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'>,
+    Pick<ListPropTypes, 'growing' | 'onLoadMore'> {
   /**
    * Defines the list items of the component.
    *
@@ -142,19 +140,7 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
    *
    * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
    */
-  mode?: ListMode | keyof typeof ListMode;
-  /**
-   * Defines whether the `List` will have growing capability either by pressing a `More` button, or via user scroll. In both cases the `onLoadMore` event is fired.
-   *
-   * Available options:
-   *
-   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `load-more` event.
-   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the list;
-   * `None` (default) - The growing is off.
-   *
-   * **Limitations:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
-   */
-  growing?: ListGrowingMode | keyof typeof ListGrowingMode;
+  mode?: ListPropTypes['mode'];
   /**
    * Defines props you can pass to the internal `List` component.
    *
@@ -189,12 +175,6 @@ export interface SelectDialogPropTypes extends Omit<DialogPropTypes, 'header' | 
   onConfirm?:
     | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: StandardListItemDomRef[] }>) => void)
     | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: StandardListItemDomRef[] }>) => void);
-  /**
-   * Fired when the user scrolls to the bottom of the list.
-   *
-   * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
-   */
-  onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
 }
 
 /**

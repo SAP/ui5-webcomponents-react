@@ -12,11 +12,11 @@ import {
 } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../enums';
-import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
-import { Button, Icon } from '../../webComponents';
+import { ButtonDesign } from '../../enums/index.js';
+import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
+import { Button, Icon } from '../../webComponents/index.js';
 
 const useStyles = createUseStyles(
   {
@@ -33,8 +33,8 @@ const useStyles = createUseStyles(
         cursor: 'col-resize',
         borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
         borderRight: CustomThemingParameters.SplitterBarBorderStyle,
-        minWidth: CssSizeVariables.sapWcrSplitterSize,
-        width: CssSizeVariables.sapWcrSplitterSize,
+        minWidth: CssSizeVariables.ui5WcrSplitterSize,
+        width: CssSizeVariables.ui5WcrSplitterSize,
         height: '100%',
         flexDirection: 'column',
         '&:focus': {
@@ -48,7 +48,7 @@ const useStyles = createUseStyles(
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '0.0625rem 100%',
-          width: CssSizeVariables.sapWcrSplitterSize,
+          width: CssSizeVariables.ui5WcrSplitterSize,
           height: '4rem'
         },
         '& $lineBefore': {
@@ -66,8 +66,8 @@ const useStyles = createUseStyles(
         borderTop: CustomThemingParameters.SplitterBarBorderStyle,
         borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.sapWcrSplitterSize,
-        height: CssSizeVariables.sapWcrSplitterSize,
+        minHeight: CssSizeVariables.ui5WcrSplitterSize,
+        height: CssSizeVariables.ui5WcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
         '&:focus': {
@@ -82,7 +82,7 @@ const useStyles = createUseStyles(
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.sapWcrSplitterSize
+          height: CssSizeVariables.ui5WcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
@@ -97,15 +97,15 @@ const useStyles = createUseStyles(
       },
       '&[data-splitter-vertical=verticalRtl]': {
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.sapWcrSplitterSize,
-        height: CssSizeVariables.sapWcrSplitterSize,
+        minHeight: CssSizeVariables.ui5WcrSplitterSize,
+        height: CssSizeVariables.ui5WcrSplitterSize,
         width: '100%',
         flexDirection: 'row',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.sapWcrSplitterSize
+          height: CssSizeVariables.ui5WcrSplitterSize
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
@@ -328,12 +328,10 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
 
       if (document.activeElement === localRef.current) {
         const tickSize = remainingSize >= 20 ? 20 : remainingSize;
-        secondSibling.style.flex = `0 0 ${
-          (secondSibling.getBoundingClientRect()?.[positionKeys.size] as number) - tickSize
-        }px`;
-        firstSibling.style.flex = `0 0 ${
-          (firstSibling.getBoundingClientRect()?.[positionKeys.size] as number) + tickSize
-        }px`;
+        const firstSiblingSize = firstSibling.getBoundingClientRect()?.[positionKeys.size] as number;
+        const secondSiblingSize = secondSibling.getBoundingClientRect()?.[positionKeys.size] as number;
+        secondSibling.style.flex = `0 0 ${secondSiblingSize - tickSize}px`;
+        firstSibling.style.flex = `0 0 ${firstSiblingSize + tickSize}px`;
       }
     }
   };

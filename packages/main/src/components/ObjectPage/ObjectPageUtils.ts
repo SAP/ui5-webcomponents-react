@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray';
+import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 
 export const getSectionById = (sections, id) => {
   return safeGetChildrenArray(sections).find((objectPageSection) => {

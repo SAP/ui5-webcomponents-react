@@ -2,16 +2,16 @@
 
 The user can enter a time by:
 
-- Using the sliders that are displayed in a popup
+- Using the clocks that are displayed in a popup
 - Typing it in directly in the input field
 
-When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly triggers the sliders display, the actual time is displayed. For the `TimePicker`
+When the user makes an entry and chooses the enter key, the clocks show the corresponding time (hours, minutes and seconds separately). When the user directly triggers the clocks display, the actual time is displayed. For the `TimePicker`
 
 ## Formatting
 
 If a time is entered by typing it into the input field, it must fit to the used time format.
 
-Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target="_blank" href="http://unicode.org/reports/tr35/#Date_Field_Symbol_Table" class="api-table-content-cell-link">UTS #35: Unicode Locale Data Markup Language</ui5-link>.
+Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target="_blank" href="http://unicode.org/reports/tr35/#Date_Field_Symbol_Table">UTS #35: Unicode Locale Data Markup Language</ui5-link>.
 
 For example, if the `format-pattern` is "HH:mm:ss", a valid value string is "11:42:35" and the same is displayed in the input.
 
@@ -22,16 +22,19 @@ When closed:
 
 - \[PAGEUP\] - Increments hours by 1. If 12 am is reached, increment hours to 1 pm and vice versa.
 - \[PAGEDOWN\] - Decrements the corresponding field by 1. If 1 pm is reached, decrement hours to 12 am and vice versa.
-- \[SHIFT\]+\[PAGEUP\] Increments minutes by 1.
-- \[SHIFT\]+ \[PAGEDOWN\] Decrements minutes by 1.
-- \[SHIFT\]+\[CTRL\]+\[PAGEUP\] Increments seconds by 1.
-- \[SHIFT\]+\[CTRL\]+ \[PAGEDOWN\] Decrements seconds by 1.
+- \[SHIFT\]+\[PAGEUP\] - Increments minutes by 1.
+- \[SHIFT\]+\[PAGEDOWN\] - Decrements minutes by 1.
+- \[SHIFT\]+\[CTRL\]+\[PAGEUP\] - Increments seconds by 1.
+- \[SHIFT\]+\[CTRL\]+\[PAGEDOWN\] - Decrements seconds by 1.
 
 When opened:
 
-- \[UP\] If focus is on one of the selection lists: Select the value which is above the current value. If the first value is selected, select the last value in the list. Exception: AM/ PM List: stay on the first item.
-- \[DOWN\] If focus is on one of the selection lists: Select the value which is below the current value. If the last value is selected, select the first value in the list. Exception: AM/ PM List: stay on the last item.
-- \[LEFT\] If focus is on one of the selection lists: Move focus to the selection list which is left of the current selection list. If focus is at the first selection list, move focus to the last selection list.
-- \[RIGHT\] If focus is on one of the selection lists: Move focus to the selection list which is right of the current selection list. When focus is at the last selection list, move focus to the first selection list.
-- \[PAGEUP\] If focus is on one of the selection lists: Move focus to the first entry of this list.
-- \[PAGEDOWN\] If focus is on one of the selection lists: Move focus to the last entry of this list.
+- \[PAGEUP\] - Increments hours by 1. If 12 am is reached, increment hours to 1 pm and vice versa.
+- \[PAGEDOWN\] - Decrements the corresponding field by 1. If 1 pm is reached, decrement hours to 12 am and vice versa.
+- \[SHIFT\]+\[PAGEUP\] - Increments minutes by 1.
+- \[SHIFT\]+\[PAGEDOWN\] - Decrements minutes by 1.
+- \[SHIFT\]+\[CTRL\]+\[PAGEUP\] - Increments seconds by 1.
+- \[SHIFT\]+\[CTRL\]+\[PAGEDOWN\] - Decrements seconds by 1.
+- \[A\] or \[P\] - Selects AM or PM respectively.
+- \[0\]-\[9\] - Allows direct time selecting (hours/minutes/seconds).
+- \[:\] - Allows switching between hours/minutes/seconds clocks. If the last clock is displayed and \[:\] is pressed, the first clock is beind displayed.

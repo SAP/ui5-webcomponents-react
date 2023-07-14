@@ -2,30 +2,29 @@
 
 import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
+import type { MutableRefObject, ReactElement, ReactNode } from 'react';
 import React, {
   Children,
   cloneElement,
   forwardRef,
   isValidElement,
-  MutableRefObject,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
   useState
 } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums';
-import { CommonProps } from '../../interfaces';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { flattenFragments } from '../../internal/utils';
-import { PopoverDomRef } from '../../webComponents';
-import { FlexBox } from '../FlexBox';
-import { Toolbar, ToolbarPropTypes } from '../Toolbar';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ActionsSpacer } from './ActionsSpacer';
-import { DynamicPageTitleStyles } from './DynamicPageTitle.jss';
+import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { flattenFragments } from '../../internal/utils.js';
+import type { PopoverDomRef } from '../../webComponents/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import type { ToolbarPropTypes } from '../Toolbar/index.js';
+import { Toolbar } from '../Toolbar/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ActionsSpacer } from './ActionsSpacer.js';
+import { DynamicPageTitleStyles } from './DynamicPageTitle.jss.js';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**

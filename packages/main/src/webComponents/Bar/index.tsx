@@ -1,12 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Bar.js';
-import { ReactNode } from 'react';
-import { BarDesign } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ReactNode } from 'react';
+import { BarDesign } from '../../enums/index.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface BarAttributes {
   /**
@@ -56,7 +55,7 @@ export interface BarPropTypes extends BarAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Bar" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Bar)
  */
 const Bar = withWebComponent<BarPropTypes, BarDomRef>(
   'ui5-bar',

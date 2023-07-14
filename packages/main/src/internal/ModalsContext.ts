@@ -1,4 +1,5 @@
-import { ComponentType, ContextType, createContext, Dispatch, RefCallback, RefObject, useContext } from 'react';
+import type { ComponentType, ContextType, Dispatch, RefCallback, RefObject } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface UpdateModalStateAction<Props, DomRef, ContainerElement = HTMLElement> {
   type: 'set' | 'reset';

@@ -1,11 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  ViewSettingsDialogCancelEventDetail,
+  ViewSettingsDialogConfirmEventDetail
+} from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface ViewSettingsDialogAttributes {
   /**
@@ -16,11 +18,19 @@ interface ViewSettingsDialogAttributes {
 
 export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
   /**
-   * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog need to set its initial settings. The `ViewSettingsDialog` throws an event called "before-open", this can be used as trigger point. The object should have the following format: `{sortOrder: "Ascending", sortBy: "Name", filters: [{Filter 1: ["Some filter 1", "Some filter 2"]}, {Filter 2: ["Some filter 4"]}]}`
-   * @param {Object} settings - predefined settings.
-   * @param {string} settings.sortOrder - sort order
-   * @param {string} settings.sortBy - sort by
-   * @param {Array.<Object>} settings.filters - filters
+   * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog needs to set its initial settings.
+   * The `ViewSettingsDialog` throws an event called "before-open", which can be used as a trigger point.
+   * The object should have the following format:
+   *
+   * {
+   * 	sortOrder: "Ascending",
+   * 	sortBy: "Name",
+   * 	filters: \[
+   * 		{"Filter 1": \["Some filter 1", "Some filter 2"\]},
+   * 		{"Filter 2": \["Some filter 4"\]},
+   * 	\]
+   * }
+   * @param {Record<string, unknown>} settings - predefined settings.
    */
   setConfirmedSettings: (settings: Record<string, unknown>) => void;
   /**
@@ -57,21 +67,11 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
   /**
    * Fired when cancel button is activated.
    */
-  onCancel?: (
-    event: Ui5CustomEvent<
-      ViewSettingsDialogDomRef,
-      { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
-    >
-  ) => void;
+  onCancel?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogCancelEventDetail>) => void;
   /**
    * Fired when confirmation button is activated.
    */
-  onConfirm?: (
-    event: Ui5CustomEvent<
-      ViewSettingsDialogDomRef,
-      { sortOrder: string; sortBy: string; sortByItem: HTMLElement; sortDescending: boolean; filterItems: unknown[] }
-    >
-  ) => void;
+  onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
 }
 
 /**
@@ -79,7 +79,7 @@ export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttribute
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ViewSettingsDialog" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ViewSettingsDialog)
  */
 const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef>(
   'ui5-view-settings-dialog',

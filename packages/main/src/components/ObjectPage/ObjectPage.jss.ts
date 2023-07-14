@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { ResponsiveContainerPadding } from '../../internal/ContainerQueries';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss';
+import { ResponsiveContainerPadding } from '../../internal/ContainerQueries.js';
+import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 
 export const ObjectPageCssVariables = {
   anchorFloat: '--_ui5wcr_ObjectPage_actions_float',

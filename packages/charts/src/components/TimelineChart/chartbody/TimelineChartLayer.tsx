@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
-import { useStyles } from '../util/styles';
+import type { ReactNode } from 'react';
+import React from 'react';
+import { useStyles } from '../util/styles.js';
 
 interface TimelineChartLayerProps {
   ignoreClick?: boolean;

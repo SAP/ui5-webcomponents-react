@@ -1,13 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBox.js';
-import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { MultiComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/MultiComboBox.js';
+import type { ReactNode } from 'react';
+import { ComboBoxFilter, ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiComboBoxAttributes {
   /**
@@ -31,7 +30,7 @@ interface MultiComboBoxAttributes {
   /**
    * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
-  filter?: string;
+  filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
   /**
    * Defines whether the value will be autcompleted to match an item
    */
@@ -122,7 +121,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, { items: unknown[] }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -130,7 +129,7 @@ export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<Co
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/MultiComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiComboBox)
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
@@ -144,7 +143,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomR
 MultiComboBox.displayName = 'MultiComboBox';
 
 MultiComboBox.defaultProps = {
-  filter: 'StartsWithPerTerm',
+  filter: ComboBoxFilter.StartsWithPerTerm,
   valueState: ValueState.None
 };
 

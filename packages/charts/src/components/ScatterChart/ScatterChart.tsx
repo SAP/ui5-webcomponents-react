@@ -1,12 +1,13 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useCallback, useRef } from 'react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
+import type { ReferenceLineProps } from 'recharts';
 import {
   CartesianGrid,
   Legend,
   ReferenceLine,
-  ReferenceLineProps,
   Scatter,
   ScatterChart as ScatterChartLib,
   Tooltip,
@@ -14,21 +15,21 @@ import {
   YAxis,
   ZAxis
 } from 'recharts';
-import { useChartMargin } from '../../hooks/useChartMargin';
-import { useLegendItemClick } from '../../hooks/useLegendItemClick';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
-import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
-import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
-import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
-import { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { defaultFormatter } from '../../internal/defaults';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps';
-import { XAxisTicks } from '../../internal/XAxisTicks';
-import { YAxisTicks } from '../../internal/YAxisTicks';
-import { ScatterChartPlaceholder } from './Placeholder';
+import { useChartMargin } from '../../hooks/useChartMargin.js';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
+import type { ICartesianChartConfig } from '../../interfaces/ICartesianChartConfig.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps.js';
+import { XAxisTicks } from '../../internal/XAxisTicks.js';
+import { YAxisTicks } from '../../internal/YAxisTicks.js';
+import { ScatterChartPlaceholder } from './Placeholder.js';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color' | 'hideDataLabel' | 'DataLabel'> {
   /**

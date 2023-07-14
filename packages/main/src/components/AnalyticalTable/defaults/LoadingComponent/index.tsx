@@ -1,12 +1,12 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { Loader } from '../../../Loader';
+import { Loader } from '../../../Loader/index.js';
 
 const styles = {
   loader: {
     position: 'absolute',
-    top: CssSizeVariables.sapWcrAnalyticalTableHeaderRowHeight,
+    top: CssSizeVariables.ui5WcrAnalyticalTableHeaderRowHeight,
     left: 0,
     right: 0,
     zIndex: 1

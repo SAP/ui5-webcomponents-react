@@ -1,6 +1,7 @@
-import { VirtualItem } from '@tanstack/react-virtual';
+import type { VirtualItem } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const styles = {
@@ -24,11 +25,22 @@ interface RowSubComponent {
   children: ReactNode | ReactNode[];
   rows: Record<string, unknown>[];
   alwaysShowSubComponent: boolean;
+  rowIndex: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RowSubComponent = (props: RowSubComponent) => {
-  const { subComponentsHeight, virtualRow, dispatch, row, rowHeight, children, rows, alwaysShowSubComponent } = props;
+  const {
+    subComponentsHeight,
+    virtualRow,
+    dispatch,
+    row,
+    rowHeight,
+    children,
+    rows,
+    alwaysShowSubComponent,
+    rowIndex
+  } = props;
   const subComponentRef = useRef(null);
   const classes = useStyles();
 
@@ -94,6 +106,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
     <div
       ref={subComponentRef}
       data-subcomponent
+      data-subcomponent-row-index={rowIndex}
       tabIndex={-1}
       style={{
         boxSizing: 'border-box',

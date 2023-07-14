@@ -1,10 +1,10 @@
-import { VerticalAlign } from '../../../../enums/VerticalAlign';
-import { DefaultFilterComponent } from '../FilterComponent';
-import { Cell } from './Cell';
-import { Expandable } from './Expandable';
-import { Grouped } from './Grouped';
-import { PopIn } from './PopIn';
-import { RepeatedValue } from './RepeatedValue';
+import { VerticalAlign } from '../../../../enums/index.js';
+import { DefaultFilterComponent } from '../FilterComponent/index.js';
+import { Cell } from './Cell.js';
+import { Expandable } from './Expandable.js';
+import { Grouped } from './Grouped.js';
+import { PopIn } from './PopIn.js';
+import { RepeatedValue } from './RepeatedValue.js';
 
 export const DEFAULT_COLUMN_WIDTH = 60;
 

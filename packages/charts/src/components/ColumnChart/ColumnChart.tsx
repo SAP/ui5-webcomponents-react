@@ -1,7 +1,8 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef, useCallback } from 'react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -15,27 +16,27 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback';
-import { useChartMargin } from '../../hooks/useChartMargin';
-import { useLabelFormatter } from '../../hooks/useLabelFormatter';
-import { useLegendItemClick } from '../../hooks/useLegendItemClick';
-import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel';
-import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
-import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
-import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { ChartDataLabel } from '../../internal/ChartDataLabel';
-import { defaultFormatter } from '../../internal/defaults';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils';
-import { XAxisTicks } from '../../internal/XAxisTicks';
-import { YAxisTicks } from '../../internal/YAxisTicks';
-import { ColumnChartPlaceholder } from './Placeholder';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
+import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
+import { useChartMargin } from '../../hooks/useChartMargin.js';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
+import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
+import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { ChartDataLabel } from '../../internal/ChartDataLabel.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
+import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils.js';
+import { XAxisTicks } from '../../internal/XAxisTicks.js';
+import { YAxisTicks } from '../../internal/YAxisTicks.js';
+import { ColumnChartPlaceholder } from './Placeholder.js';
 
 interface MeasureConfig extends IChartMeasure {
   /**

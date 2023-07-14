@@ -1,13 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ComboBox.js';
-import { ReactNode } from 'react';
-import { ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { ComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/ComboBox.js';
+import type { ReactNode } from 'react';
+import { ComboBoxFilter, ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface ComboBoxAttributes {
   /**
@@ -27,7 +26,7 @@ interface ComboBoxAttributes {
   /**
    * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
    */
-  filter?: string;
+  filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
   /**
    * Indicates whether a loading indicator should be shown in the picker.
    */
@@ -109,7 +108,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
   /**
    * Fired when selection is changed by user interaction
    */
-  onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, { item: HTMLElement }>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, ComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -117,7 +116,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ComboBox" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ComboBox)
  */
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
@@ -131,7 +130,7 @@ const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
 ComboBox.displayName = 'ComboBox';
 
 ComboBox.defaultProps = {
-  filter: 'StartsWithPerTerm',
+  filter: ComboBoxFilter.StartsWithPerTerm,
   valueState: ValueState.None
 };
 

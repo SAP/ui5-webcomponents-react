@@ -11,3 +11,4 @@
 /wrappers
 /ssr
 src/i18n/i18n-defaults.ts
+src/**/*.css.ts

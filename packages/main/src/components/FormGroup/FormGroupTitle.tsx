@@ -1,5 +1,6 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
 interface FormGroupTitlePropTypes {
@@ -14,8 +15,8 @@ const useStyles = createUseStyles(
       gridColumn: '1 / span 12',
       display: 'flex',
       alignItems: 'center',
-      height: CssSizeVariables.sapWcrFormGroupTitleHeight,
-      lineHeight: CssSizeVariables.sapWcrFormGroupTitleHeight,
+      height: CssSizeVariables.ui5WcrFormGroupTitleHeight,
+      lineHeight: CssSizeVariables.ui5WcrFormGroupTitleHeight,
       fontFamily: ThemingParameters.sapFontHeaderFamily,
       color: ThemingParameters.sapGroup_TitleTextColor,
       fontSize: ThemingParameters.sapFontHeader6Size,

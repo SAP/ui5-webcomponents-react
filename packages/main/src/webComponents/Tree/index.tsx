@@ -1,13 +1,19 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Tree.js';
-import { ReactNode } from 'react';
-import { ListMode } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type {
+  TreeItemClickEventDetail,
+  TreeItemDeleteEventDetail,
+  TreeItemMouseoutEventDetail,
+  TreeItemMouseoverEventDetail,
+  TreeItemToggleEventDetail,
+  TreeSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/Tree.js';
+import type { ReactNode } from 'react';
+import { ListMode } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeAttributes {
   /**
@@ -77,34 +83,29 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
   /**
    * Fired when a tree item is activated.
    */
-  onItemClick?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
+  onItemClick?: (event: Ui5CustomEvent<TreeDomRef, TreeItemClickEventDetail>) => void;
   /**
    * Fired when the Delete button of any tree item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
    */
-  onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
+  onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, TreeItemDeleteEventDetail>) => void;
   /**
    * Fired when the mouse cursor leaves the tree item borders.
    */
-  onItemMouseout?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
+  onItemMouseout?: (event: Ui5CustomEvent<TreeDomRef, TreeItemMouseoutEventDetail>) => void;
   /**
    * Fired when the mouse cursor enters the tree item borders.
    */
-  onItemMouseover?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
+  onItemMouseover?: (event: Ui5CustomEvent<TreeDomRef, TreeItemMouseoverEventDetail>) => void;
   /**
    * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
-  onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, { item: HTMLElement }>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
   /**
    * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
-  onSelectionChange?: (
-    event: Ui5CustomEvent<
-      TreeDomRef,
-      { selectedItems: unknown[]; previouslySelectedItems: unknown[]; targetItem: HTMLElement }
-    >
-  ) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<TreeDomRef, TreeSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -112,7 +113,7 @@ export interface TreePropTypes extends TreeAttributes, CommonProps {
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/Tree" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Tree)
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',

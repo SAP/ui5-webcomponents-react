@@ -1,14 +1,14 @@
 import { useReducer } from 'react';
 import { TimelineChart, TimelineChartAnnotation } from '../..';
-import { TimingFigure } from './examples/Annotations';
-import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset';
+import { TimingFigure } from './examples/Annotations.js';
+import { dummyDataSet, illegalConnDataset, illegalConnDataset2, schedulingEDFData } from './examples/Dataset.js';
 import {
   HOVER_OPACITY,
   MOUSE_CURSOR_AUTO,
   MOUSE_CURSOR_GRAB,
   MOUSE_CURSOR_GRABBING,
   NORMAL_OPACITY
-} from './util/constants';
+} from './util/constants.js';
 
 describe('TimeLineChart', () => {
   it('renders PlaceHolder without dataset', () => {

@@ -11,18 +11,18 @@ import {
   RadarChart as RadarChartLib,
   Tooltip
 } from 'recharts';
-import { useLabelFormatter } from '../../hooks/useLabelFormatter';
-import { useLegendItemClick } from '../../hooks/useLegendItemClick';
-import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures';
-import { useTooltipFormatter } from '../../hooks/useTooltipFormatter';
-import { IChartBaseProps } from '../../interfaces/IChartBaseProps';
-import { IChartDimension } from '../../interfaces/IChartDimension';
-import { IChartMeasure } from '../../interfaces/IChartMeasure';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { ChartDataLabel } from '../../internal/ChartDataLabel';
-import { defaultFormatter } from '../../internal/defaults';
-import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
+import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
+import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
+import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
+import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { IChartDimension } from '../../interfaces/IChartDimension.js';
+import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { ChartDataLabel } from '../../internal/ChartDataLabel.js';
+import { defaultFormatter } from '../../internal/defaults.js';
+import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
+import { PieChartPlaceholder } from '../PieChart/Placeholder.js';
 
 interface MeasureConfig extends IChartMeasure {
   /**

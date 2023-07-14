@@ -1,0 +1,79 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/blocks';
+import { ControlsWithNote, Footer } from '@sb/components';
+import * as ComponentStories from './AnalyticalTable.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin: useOrderedMultiSort" />
+
+# AnalyticalTable Plugin: useOrderedMultiSort
+
+<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+
+With the `useOrderedMultiSort` it's possible to define the sorting priority if multi-sort is enabled for the respective columns (`enableMultiSort: true`).
+
+It receives one parameter that defines the sorting priority by the column id.
+
+- `orderedIds: string[]`: Defines the sort priority when sorting by multiple columns, starting with the first column ID.
+
+**Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.
+
+## Example
+
+<Canvas sourceState="none" of={ComponentStories.PluginOrderedMultiSort} />
+
+### Current Parameter
+
+<ControlsWithNote of={ComponentStories.PluginOrderedMultiSort} hideHTMLPropsNote include={['orderedIds']} />
+
+### Code
+
+```jsx
+const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Name 2',
+    accessor: 'name2',
+    enableMultiSort: true
+  },
+  {
+    Header: 'Age 2',
+    accessor: 'age2',
+    enableMultiSort: true
+  }
+];
+const data = [
+  { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
+  { name: 'Kristen', age: 40, name2: 'Randolph', age2: 21 },
+  { name: 'Peter', age: 30, name2: 'Rose', age2: 90 },
+  { name: 'Peter', age: 70, name2: 'Rose', age2: 22 },
+  { name: 'Kristen', age: 60, name2: 'Willis', age2: 80 },
+  { name: 'Kristen', age: 20, name2: 'Alissa', age2: 80 },
+  { name: 'Graham', age: 40, name2: 'Alissa', age2: 80 },
+  { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
+  { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
+  { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+];
+const orderedIds = ['name', 'name2', 'age', 'age2'];
+const TableComponent = () => {
+  return (
+    <AnalyticalTable
+      columns={columns}
+      data={data}
+      sortable
+      tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]}
+    />
+  );
+};
+```
+
+<Footer />

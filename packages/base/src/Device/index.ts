@@ -1,5 +1,6 @@
 import { supportsTouch } from '@ui5/webcomponents-base/dist/Device.js';
-import { IOrientation, IWindowSize, OrientationEventProvider, ResizeEventProvider } from './EventProvider.js';
+import type { IOrientation, IWindowSize } from './EventProvider.js';
+import { OrientationEventProvider, ResizeEventProvider } from './EventProvider.js';
 
 const isSSR = () => typeof window === 'undefined';
 

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils';
-import { IChartMeasure } from '../interfaces/IChartMeasure';
-import { defaultFormatter } from '../internal/defaults';
+import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
+import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
+import { defaultFormatter } from '../internal/defaults.js';
 
 interface ITrendChartMeasure extends IChartMeasure {
   type: 'line' | 'bar';

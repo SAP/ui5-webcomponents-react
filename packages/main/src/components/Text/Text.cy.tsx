@@ -1,4 +1,4 @@
-import { Text } from './index';
+import { Text } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('Text', () => {

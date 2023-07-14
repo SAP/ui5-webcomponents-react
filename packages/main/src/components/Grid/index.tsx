@@ -2,12 +2,13 @@
 
 import { useViewportRange } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { CSSProperties, forwardRef, isValidElement, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
+import React, { forwardRef, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
-import { GridPosition } from '../../enums/GridPosition';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { flattenFragments } from '../../internal/utils';
-import { styles } from './Grid.jss';
+import { GridPosition } from '../../enums/index.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { flattenFragments } from '../../internal/utils.js';
+import { styles } from './Grid.jss.js';
 
 export interface GridPropTypes extends CommonProps {
   /**

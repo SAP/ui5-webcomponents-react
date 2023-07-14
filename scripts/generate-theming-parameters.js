@@ -23,5 +23,5 @@ fileContent += '}\n';
 
 writeFileSync(
   path.join(PATHS.packages, 'base', 'src', 'styling', 'ThemingParameters.ts'),
-  prettier.format(fileContent, { ...prettierConfig, parser: 'typescript' })
+  await prettier.format(fileContent, { ...prettierConfig, parser: 'typescript' })
 );

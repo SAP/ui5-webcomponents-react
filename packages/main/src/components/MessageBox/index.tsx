@@ -3,7 +3,8 @@
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, forwardRef, isValidElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { cloneElement, forwardRef, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   ButtonDesign,
@@ -12,7 +13,7 @@ import {
   PopupAccessibleRole,
   TitleLevel,
   ValueState
-} from '../../enums';
+} from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,
@@ -28,31 +29,35 @@ import {
   SUCCESS,
   WARNING,
   YES
-} from '../../i18n/i18n-defaults';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { Button, ButtonPropTypes, Dialog, DialogDomRef, DialogPropTypes, Icon, Title } from '../../webComponents';
-import { Text } from '../Text';
-import styles from './MessageBox.jss';
+} from '../../i18n/i18n-defaults.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
+import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
+import { Text } from '../Text/index.js';
+import styles from './MessageBox.jss.js';
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
 
 export interface MessageBoxPropTypes
-  extends Omit<DialogPropTypes, 'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state'> {
+  extends Omit<
+    DialogPropTypes,
+    'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
+  > {
   /**
    * Defines the IDs of the elements that label the component.
    *
    * __Note:__ Per default the prop receives the IDs of the header and the content.
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: DialogPropTypes['accessibleNameRef'];
   /**
    * Flag whether the Message Box should be opened or closed
    */
-  open?: boolean;
+  open?: DialogPropTypes['open'];
   /**
    * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
    */
-  titleText?: string;
+  titleText?: DialogPropTypes['headerText'];
   /**
    * Defines the content of the `MessageBox`.
    *
@@ -87,14 +92,6 @@ export interface MessageBoxPropTypes
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
    */
   onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
-  /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. This event does not bubble.
-   */
-  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
-  /**
-   * Fired after the component is opened. This event does not bubble.
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 const useStyles = createUseStyles(styles, { name: 'MessageBox' });

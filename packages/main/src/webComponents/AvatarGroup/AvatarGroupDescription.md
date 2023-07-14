@@ -18,7 +18,7 @@ Do not use the `AvatarGroup` if:
 ## Keyboard Handling
 
 The component provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation:  
-\- `type` Individual:
+`type` Individual:
 
 - \[TAB\] - Move focus to the overflow button
 - \[LEFT\] - Navigate one avatar to the left
@@ -27,7 +27,7 @@ The component provides advanced keyboard handling. When focused, the user can us
 - \[END\] - Navigate to the last avatar
 - \[SPACE\],\[ENTER\],\[RETURN\] - Trigger `undefined` event
 
-\- `type` Group:
+`type` Group:
 
 - \[TAB\] - Move focus to the next interactive element after the component
 - \[SPACE\],\[ENTER\],\[RETURN\] - Trigger `undefined` event

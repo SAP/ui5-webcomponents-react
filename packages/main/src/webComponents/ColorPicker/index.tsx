@@ -1,11 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
-import { CSSProperties } from 'react';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
+import type { CSSProperties } from 'react';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ColorPickerAttributes {
   /**
@@ -30,7 +28,7 @@ export interface ColorPickerPropTypes extends ColorPickerAttributes, Omit<Common
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/ColorPicker" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ColorPicker)
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',

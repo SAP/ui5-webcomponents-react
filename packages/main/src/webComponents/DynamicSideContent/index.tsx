@@ -1,13 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-import { ReactNode } from 'react';
-import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode } from '../../types';
+import type { DynamicSideContentLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
+import type { ReactNode } from 'react';
+import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface DynamicSideContentAttributes {
   /**
@@ -81,17 +80,7 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
   /**
    * Fires when the current breakpoint has been changed.
    */
-  onLayoutChange?: (
-    event: Ui5CustomEvent<
-      DynamicSideContentDomRef,
-      {
-        currentBreakpoint: string;
-        previousBreakpoint: string;
-        mainContentVisible: boolean;
-        sideContentVisible: boolean;
-      }
-    >
-  ) => void;
+  onLayoutChange?: (event: Ui5CustomEvent<DynamicSideContentDomRef, DynamicSideContentLayoutChangeEventDetail>) => void;
 }
 
 /**
@@ -99,7 +88,7 @@ export interface DynamicSideContentPropTypes extends DynamicSideContentAttribute
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/DynamicSideContent" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-DynamicSideContent)
  */
 const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, DynamicSideContentDomRef>(
   'ui5-dynamic-side-content',

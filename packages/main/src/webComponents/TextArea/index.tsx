@@ -1,12 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TextArea.js';
-import { ValueState } from '../../enums';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { Ui5CustomEvent } from '../../interfaces/Ui5CustomEvent';
-import { Ui5DomRef } from '../../interfaces/Ui5DomRef';
-import { withWebComponent } from '../../internal/withWebComponent';
-import { UI5WCSlotsNode, Nullable } from '../../types';
+import { ValueState } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { UI5WCSlotsNode, Nullable } from '../../types/index.js';
 
 interface TextAreaAttributes {
   /**
@@ -130,7 +128,7 @@ export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps,
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * <ui5-link href="https://sap.github.io/ui5-webcomponents/playground/components/TextArea" target="_blank">UI5 Web Components Playground</ui5-link>
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-TextArea)
  */
 const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
   'ui5-textarea',

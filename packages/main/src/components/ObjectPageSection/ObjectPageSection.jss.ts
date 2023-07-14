@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { CustomThemingParameters } from '../../themes/CustomVariables';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 
 const styles = {
   section: {

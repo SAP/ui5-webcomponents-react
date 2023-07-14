@@ -1,4 +1,4 @@
-import { useLabelFormatter } from './useLabelFormatter';
+import { useLabelFormatter } from './useLabelFormatter.js';
 
 // eslint-disable-next-line react/prop-types
 function LabelFormatterComponent({ options }) {

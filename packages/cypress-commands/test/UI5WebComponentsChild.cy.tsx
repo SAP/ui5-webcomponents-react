@@ -137,15 +137,15 @@ describe('UI5 Web Components - Child Commands', () => {
       <SuggestionItem text="Item 2" />
     </Input>
   ].forEach((component) => {
+    // in some cases the static-area-item is not cleaned up
+    document.querySelector('ui5-static-area')?.remove();
     const testId = component.props['data-testid'];
     it(`show suggestions of ${testId}`, () => {
       cy.mount(component);
 
       cy.get(`[data-testid="${testId}"]`).typeIntoUi5InputWithDelay('i');
       cy.get('ui5-responsive-popover').should('have.attr', 'open');
-
-      // in some cases the static-area-item is not cleaned up
-      document.querySelector('ui5-static-area').remove();
+      document.querySelector('ui5-static-area')?.remove();
     });
   });
 });

@@ -10,21 +10,11 @@ import {
   useIsRTL
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, {
-  ComponentType,
-  CSSProperties,
-  forwardRef,
-  MutableRefObject,
-  ReactNode,
-  Ref,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef
-} from 'react';
+import type { ComponentType, CSSProperties, MutableRefObject, ReactNode, Ref } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
+import type { PluginHook } from 'react-table';
 import {
-  PluginHook,
   useColumnOrder,
   useExpanded,
   useFilters,
@@ -35,13 +25,8 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import {
-  AnalyticalTableScaleWidthMode,
+import type {
   AnalyticalTableScrollMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableVisibleRowCountMode,
-  GlobalStyleClasses,
-  AnalyticalTableSelectionMode,
   TextAlign,
   ValueState,
   VerticalAlign,
@@ -49,7 +34,14 @@ import {
   TableSelectionMode,
   TableSelectionBehavior,
   TableVisibleRowCountMode
-} from '../../enums';
+} from '../../enums/index.js';
+import {
+  AnalyticalTableScaleWidthMode,
+  AnalyticalTableSelectionBehavior,
+  AnalyticalTableVisibleRowCountMode,
+  GlobalStyleClasses,
+  AnalyticalTableSelectionMode
+} from '../../enums/index.js';
 import {
   COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,
@@ -60,38 +52,38 @@ import {
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
-} from '../../i18n/i18n-defaults';
-import { CommonProps } from '../../interfaces/CommonProps';
-import { FlexBox } from '../FlexBox';
-import { Text } from '../Text';
-import styles from './AnayticalTable.jss';
-import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer';
-import { DefaultColumn } from './defaults/Column';
-import { DefaultLoadingComponent } from './defaults/LoadingComponent';
-import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder';
-import { DefaultNoDataComponent } from './defaults/NoDataComponent';
-import { useA11y } from './hooks/useA11y';
-import { useDragAndDrop } from './hooks/useDragAndDrop';
-import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths';
-import { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
-import { usePopIn } from './hooks/usePopIn';
-import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig';
-import { useRowHighlight } from './hooks/useRowHighlight';
-import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator';
-import { useRowSelectionColumn } from './hooks/useRowSelectionColumn';
-import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback';
-import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection';
-import { useStyling } from './hooks/useStyling';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles';
-import { useToggleRowExpand } from './hooks/useToggleRowExpand';
-import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth';
-import { VerticalScrollbar } from './scrollbars/VerticalScrollbar';
-import { VirtualTableBody } from './TableBody/VirtualTableBody';
-import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer';
-import { stateReducer } from './tableReducer/stateReducer';
-import { TitleBar } from './TitleBar';
-import { getRowHeight, tagNamesWhichShouldNotSelectARow } from './util';
-import { VerticalResizer } from './VerticalResizer';
+} from '../../i18n/i18n-defaults.js';
+import type { CommonProps } from '../../interfaces/index.js';
+import { FlexBox } from '../FlexBox/index.js';
+import { Text } from '../Text/index.js';
+import styles from './AnayticalTable.jss.js';
+import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
+import { DefaultColumn } from './defaults/Column/index.js';
+import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
+import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
+import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
+import { useA11y } from './hooks/useA11y.js';
+import { useDragAndDrop } from './hooks/useDragAndDrop.js';
+import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
+import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
+import { usePopIn } from './hooks/usePopIn.js';
+import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
+import { useRowHighlight } from './hooks/useRowHighlight.js';
+import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator.js';
+import { useRowSelectionColumn } from './hooks/useRowSelectionColumn.js';
+import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback.js';
+import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection.js';
+import { useStyling } from './hooks/useStyling.js';
+import { useTableScrollHandles } from './hooks/useTableScrollHandles.js';
+import { useToggleRowExpand } from './hooks/useToggleRowExpand.js';
+import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth.js';
+import { VerticalScrollbar } from './scrollbars/VerticalScrollbar.js';
+import { VirtualTableBody } from './TableBody/VirtualTableBody.js';
+import { VirtualTableBodyContainer } from './TableBody/VirtualTableBodyContainer.js';
+import { stateReducer } from './tableReducer/stateReducer.js';
+import { TitleBar } from './TitleBar/index.js';
+import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
+import { VerticalResizer } from './VerticalResizer.js';
 
 export interface AnalyticalTableColumnDefinition {
   // base properties
@@ -261,7 +253,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   enableMultiSort?: boolean;
 
-  // all other custom properties of [React Table](https://react-table-v7.tanstack.com/) column options
+  // all other custom properties of [React Table v7](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md) column options
   [key: string]: any;
 }
 
@@ -456,11 +448,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the value that should be filtered on across all rows.
    *
-   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://react-table-v7.tanstack.com/docs/api/useGlobalFilter).
+   * __Note:__ This prop is not supported for tree-tables. You can enable it by creating your own global-filter function. You can find out more about this in the [react-table v7 documentation](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useGlobalFilter.md).
    */
   globalFilterValue?: string;
   /**
-   * Additional options which will be passed to [react-table´s useTable hook](https://react-table-v7.tanstack.com/docs/api/useTable#table-options)
+   * Additional options which will be passed to [v7 react-table´s useTable hook](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md#table-options)
    */
   reactTableOptions?: Record<string, unknown>;
   /**
@@ -469,6 +461,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   tableHooks?: PluginHook<any>[];
   /**
    * Defines the key for nested rows.
+   *
+   * __Note__: You can also specify deeply nested sub-rows with accessors like `values.subRows`.
    *
    * Default: "subRows"
    */
@@ -493,6 +487,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   overscanCount?: number;
   /**
    * Defines the subcomponent that should be displayed below each row.
+   *
+   * __Note:__ When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
   /**
@@ -570,7 +566,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
 
   /**
    * Exposes the internal table instance.
-   * This object will contain all [instance properties](https://react-table-v7.tanstack.com/docs/api/useTable#instance-properties)
+   * This object will contain all [instance properties (react-table v7)](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/useTable.md#instance-properties)
    * of the `useTable` hook and all instance properties from `useColumnOrder`, `useExpanded`, `useFilters`,
    * `useGlobalFilter`, `useGroupBy`,`useResizeColumns`, `useRowSelect` and `useSortBy` plugin hooks.
    *
@@ -669,7 +665,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const isRtl = useIsRTL(analyticalTableRef);
 
-  const getSubRows = useCallback((row) => row.subRows || row[subRowsKey] || [], [subRowsKey]);
+  const getSubRows = useCallback((row) => getSubRowsByString(subRowsKey, row) || [], [subRowsKey]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
@@ -682,7 +678,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       stateReducer,
       disableFilters: !filterable,
       disableSortBy: !sortable,
-      disableGroupBy: isTreeTable || renderRowSubComponent ? true : !groupable,
+      disableGroupBy: isTreeTable || (!alwaysShowSubComponent && renderRowSubComponent) ? true : !groupable,
       selectSubRows: false,
       sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
@@ -717,7 +713,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         scrollToRef,
         showOverlay,
         uniqueId,
-        scaleXFactor
+        scaleXFactor,
+        subRowsKey
       },
       ...reactTableOptions
     },
@@ -962,11 +959,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       flexDirection: 'column'
     };
     if (!!rowHeight) {
-      tableStyles['--sapWcrAnalyticalTableRowHeight'] = `${rowHeight}px`;
-      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableRowHeight'] = `${rowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
     }
     if (!!headerRowHeight) {
-      tableStyles['--sapWcrAnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
+      tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
     }
 
     if (tableState.tableClientWidth > 0) {
@@ -1157,6 +1154,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subComponentsHeight={tableState.subComponentsHeight}
                   dispatch={dispatch}
                   columnVirtualizer={columnVirtualizer}
+                  manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
+                  subRowsKey={subRowsKey}
                 />
               </VirtualTableBodyContainer>
             )}

@@ -1,21 +1,22 @@
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { cloneElement, FC, ReactElement, ReactNode, Ref, useEffect, useRef, useState } from 'react';
+import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
+import React, { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, PopoverPlacementType } from '../../enums';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext';
-import { useCanRenderPortal } from '../../internal/ssr';
-import { stopPropagation } from '../../internal/stopPropagation';
-import { getUi5TagWithSuffix } from '../../internal/utils';
-import {
+import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
+import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
+import { getUi5TagWithSuffix } from '../../internal/utils.js';
+import type {
   ButtonPropTypes,
-  Popover,
   PopoverDomRef,
-  ToggleButton,
   ToggleButtonDomRef,
   ToggleButtonPropTypes
-} from '../../webComponents';
+} from '../../webComponents/index.js';
+import { Popover, ToggleButton } from '../../webComponents/index.js';
+import type { ToolbarPropTypes } from './index.js';
 
 interface OverflowPopoverProps {
   lastVisibleIndex: number;
@@ -27,6 +28,8 @@ interface OverflowPopoverProps {
   showMoreText: string;
   overflowPopoverRef?: Ref<PopoverDomRef>;
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
+  setIsMounted: Dispatch<SetStateAction<boolean>>;
+  a11yConfig?: ToolbarPropTypes['a11yConfig'];
 }
 
 const isPhone = Device.isPhone();
@@ -40,12 +43,21 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowContentRef,
     numberOfAlwaysVisibleItems,
     showMoreText,
+    overflowButton,
     overflowPopoverRef,
-    overflowButton
+    setIsMounted,
+    a11yConfig
   } = props;
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
   const [componentRef, popoverRef] = useSyncRef(overflowPopoverRef);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
 
   const handleToggleButtonClick = (e) => {
     e.stopPropagation();
@@ -97,6 +109,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const canRenderPortal = useCanRenderPortal();
 
+  const accessibleRole = (() => {
+    if (a11yConfig?.overflowPopover?.contentRole) {
+      return PopupAccessibleRole.None;
+    }
+    return a11yConfig?.overflowPopover?.role;
+  })();
+
   return (
     <OverflowPopoverContext.Provider value={{ inPopover: true }}>
       {overflowButton ? (
@@ -125,8 +144,14 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onBeforeOpen={handleBeforeOpen}
             onAfterOpen={handleAfterOpen}
             hideArrow
+            accessibleRole={accessibleRole}
           >
-            <div className={classes.popoverContent} ref={overflowContentRef}>
+            <div
+              className={classes.popoverContent}
+              ref={overflowContentRef}
+              role={a11yConfig?.overflowPopover?.contentRole}
+              data-component-name="ToolbarOverflowPopoverContent"
+            >
               {children.map((item, index) => {
                 if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
                   // @ts-expect-error: if props is not defined, it doesn't have an id (is not a ReactElement)

@@ -1,9 +1,9 @@
 {
   "package": {
     "dependencies": {
-      "@ui5/webcomponents": "~1.12.2",
-      "@ui5/webcomponents-fiori": "~1.12.2",
-      "@ui5/webcomponents-icons": "~1.12.2",
+      "@ui5/webcomponents": "~1.15.1",
+      "@ui5/webcomponents-fiori": "~1.15.1",
+      "@ui5/webcomponents-icons": "~1.15.1",
       "@ui5/webcomponents-react": "latest",
       "web-vitals": "^2.1.0"
     },

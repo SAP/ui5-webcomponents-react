@@ -8,8 +8,9 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ValueState } from '../../enums';
-import { Button, ButtonDomRef, ButtonPropTypes } from '../../webComponents';
+import { ValueState } from '../../enums/index.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
+import { Button } from '../../webComponents/index.js';
 
 const buttonStyles = Object.values(ValueState).reduce((acc, cur) => {
   let cssType;
@@ -58,7 +59,8 @@ const useStyles = createUseStyles(
   { name: 'MessageViewButtonStyles' }
 );
 
-export interface MessageViewButtonProptypes extends Omit<ButtonPropTypes, 'design' | 'icon' | 'iconEnd' | 'children'> {
+export interface MessageViewButtonProptypes
+  extends Omit<ButtonPropTypes, 'design' | 'icon' | 'iconEnd' | 'children' | 'type'> {
   /**
    * Specifies the type of the button.
    */

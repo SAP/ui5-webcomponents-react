@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { isChromatic } from './utils';
 import remarkGfm from 'remark-gfm';
+import { isChromatic } from './utils';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 
@@ -74,7 +74,7 @@ const config: StorybookConfig = {
     //   }
     // }
   },
-  staticDirs: [isDevMode ? 'images-dev' : 'images']
+  staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
 };
 
 export default config;

@@ -1,6 +1,7 @@
 import questionMarkIcon from '@ui5/webcomponents-icons/dist/question-mark.js';
 import { useState } from 'react';
-import { Button, DynamicPage, DynamicPageHeader, DynamicPagePropTypes, DynamicPageTitle, ToggleButton } from '../..';
+import type { DynamicPagePropTypes } from '../..';
+import { Button, DynamicPage, DynamicPageHeader, DynamicPageTitle, ToggleButton } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('DynamicPage', () => {

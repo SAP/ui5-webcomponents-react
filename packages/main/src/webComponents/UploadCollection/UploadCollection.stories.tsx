@@ -88,28 +88,31 @@ export const SimulateUpload: Story = {
           if (child.props.uploadState === UploadState.Ready) {
             let progress = 0;
             const recTimeout = () => {
-              setTimeout(() => {
-                progress += Math.floor(Math.random() * 4) + 1;
-                setChildren((prev) => {
-                  const updatedChildren = [...prev];
-                  updatedChildren[index] = cloneElement(prev[index], {
-                    uploadState: UploadState.Uploading,
-                    progress: Math.min(progress, 100)
-                  });
-                  return updatedChildren;
-                });
-                if (progress < 100) {
-                  recTimeout();
-                } else {
+              setTimeout(
+                () => {
+                  progress += Math.floor(Math.random() * 4) + 1;
                   setChildren((prev) => {
                     const updatedChildren = [...prev];
                     updatedChildren[index] = cloneElement(prev[index], {
-                      uploadState: UploadState.Complete
+                      uploadState: UploadState.Uploading,
+                      progress: Math.min(progress, 100)
                     });
                     return updatedChildren;
                   });
-                }
-              }, Math.floor(Math.random() * (1000 - 100 + 1)) + 100);
+                  if (progress < 100) {
+                    recTimeout();
+                  } else {
+                    setChildren((prev) => {
+                      const updatedChildren = [...prev];
+                      updatedChildren[index] = cloneElement(prev[index], {
+                        uploadState: UploadState.Complete
+                      });
+                      return updatedChildren;
+                    });
+                  }
+                },
+                Math.floor(Math.random() * (1000 - 100 + 1)) + 100
+              );
             };
             recTimeout();
           }

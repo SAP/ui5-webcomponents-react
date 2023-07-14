@@ -1,12 +1,13 @@
 'use client';
 
-import { CommonProps } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react';
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { CSSProperties, forwardRef } from 'react';
+import type { CSSProperties } from 'react';
+import React, { forwardRef } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal';
-import { ChartContainer } from '../../internal/ChartContainer';
-import { PieChartPlaceholder } from '../PieChart/Placeholder';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
+import { ChartContainer } from '../../internal/ChartContainer.js';
+import { PieChartPlaceholder } from '../PieChart/Placeholder.js';
 
 // todo remove this when recharts export the `CategoricalChartProps` interface themselves
 interface RadialChartConfig {

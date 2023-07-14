@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LineChart } from '@ui5/webcomponents-react-charts';
-import { DeviationIndicator, ValueColor } from '../../enums';
-import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
-import { NumericSideIndicator } from '../NumericSideIndicator';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
+import { AnalyticalCardHeader } from '../AnalyticalCardHeader/index.js';
+import { NumericSideIndicator } from '../NumericSideIndicator/index.js';
 import { AnalyticalCard } from './index.js';
 
 const simpleDataSet = [

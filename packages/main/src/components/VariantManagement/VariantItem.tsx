@@ -2,15 +2,12 @@
 
 import { useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useContext, useEffect } from 'react';
-import { VariantManagementContext } from '../../internal/VariantManagementContext';
-import { InputPropTypes } from '../../webComponents';
-import {
-  StandardListItem,
-  StandardListItemDomRef,
-  StandardListItemPropTypes
-} from '../../webComponents/StandardListItem';
+import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
+import type { InputPropTypes } from '../../webComponents/index.js';
+import type { StandardListItemDomRef, StandardListItemPropTypes } from '../../webComponents/StandardListItem/index.js';
+import { StandardListItem } from '../../webComponents/StandardListItem/index.js';
 
-export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'children' | 'onDetailClick'> {
+export interface VariantItemPropTypes extends Pick<StandardListItemPropTypes, 'accessibleName' | 'selected'> {
   /**
    * The name of the variant.
    */
@@ -41,6 +38,10 @@ export interface VariantItemPropTypes extends Omit<StandardListItemPropTypes, 'c
    * Indicates if the variant should be applied automatically on selection.
    */
   applyAutomatically?: boolean;
+  /**
+   * Text displayed next to the "Apply Automatically" checkbox inside the "Manage Views" dialog.
+   */
+  applyAutomaticallyText?: string;
   /**
    * If set to false, the user is allowed to change the item's data.
    *
@@ -78,6 +79,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
     global,
     labelReadOnly,
     applyAutomatically,
+    applyAutomaticallyText,
     readOnly,
     selected,
     children,
@@ -104,6 +106,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
       data-global={global}
       data-label-read-only={labelReadOnly}
       data-apply-automatically={applyAutomatically}
+      data-apply-automatically-text={applyAutomaticallyText}
       data-read-only={readOnly}
       data-children={children}
       data-hide-delete={hideDelete}
