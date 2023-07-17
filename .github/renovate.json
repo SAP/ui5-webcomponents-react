@@ -37,17 +37,18 @@
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ]
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
+      "description": "Example dependencies",
+      "extends": ["schedule:weekly"],
       "matchPaths": ["examples/**"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "groupName": "all non-major dependencies (examples)",
+      "groupSlug": "examples-all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "description": "UI5 Web Components (for React) in all examples",
