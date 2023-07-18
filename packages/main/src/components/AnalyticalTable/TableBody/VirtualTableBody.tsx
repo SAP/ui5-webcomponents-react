@@ -183,11 +183,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         ) {
           updatedHeight += subComponentsHeight?.[virtualRow.index]?.subComponentHeight ?? 0;
         }
+
         return (
           // eslint-disable-next-line react/jsx-key
           <div
-            ref={rowVirtualizer.measureElement}
             {...rowProps}
+            ref={rowVirtualizer.measureElement}
             style={{
               ...(rowProps.style ?? {}),
               transform: `translateY(${virtualRow.start}px)`,
