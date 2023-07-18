@@ -1,4 +1,4 @@
-import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+import type { Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -35,7 +35,7 @@ interface ColumnHeaderContainerProps {
   resizeInfo: Record<string, unknown>;
   isRtl: boolean;
   portalContainer: Element;
-  columnVirtualizer: Virtualizer<DivWithCustomScrollProp>;
+  columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   scaleXFactor?: number;
   uniqueId: string;
   showVerticalEndBorder: boolean;
@@ -73,7 +73,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
     >
-      {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem<Record<string, unknown>>, index) => {
+      {columnVirtualizer.getVirtualItems().map((virtualColumn, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;

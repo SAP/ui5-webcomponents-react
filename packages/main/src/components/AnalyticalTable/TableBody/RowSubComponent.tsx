@@ -18,7 +18,7 @@ const useStyles = createUseStyles(styles, { name: 'RowSubComponent' });
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
-  virtualRow: VirtualItem<Record<string, unknown>>;
+  virtualRow: VirtualItem;
   dispatch: (e: { type: string; payload?: Record<string, unknown> }) => void;
   row: Record<string, unknown>;
   rowHeight: number;
