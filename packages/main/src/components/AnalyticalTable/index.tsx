@@ -1110,10 +1110,27 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     getScrollElement: () => tableRef.current,
     estimateSize: useCallback(
       (index) => {
+        if (scaleXFactor) {
+          return visibleColumnsWidth[index] / scaleXFactor;
+        }
         return visibleColumnsWidth[index];
       },
-      [visibleColumnsWidth]
+      [visibleColumnsWidth, scaleXFactor]
     ),
+    measureElement: (node, entry) => {
+      if (entry?.borderBoxSize) {
+        const box = entry.borderBoxSize[0];
+        if (box) {
+          return Math.round(box.inlineSize);
+        }
+      }
+
+      const clientRect = node?.getBoundingClientRect();
+      if (clientRect && scaleXFactor > 0) {
+        return Math.round(clientRect.width / scaleXFactor);
+      }
+      return Math.round(clientRect.width);
+    },
     horizontal: true,
     overscan: overscanCountHorizontal
   });
@@ -1200,7 +1217,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     columnVirtualizer={columnVirtualizer}
-                    scaleXFactor={scaleXFactor}
                     uniqueId={uniqueId}
                     showVerticalEndBorder={showVerticalEndBorder}
                   />

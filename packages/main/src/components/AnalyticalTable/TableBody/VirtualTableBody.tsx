@@ -194,9 +194,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               boxSizing: 'border-box',
               height: `${updatedHeight}px`
             }}
-            ref={(node) => {
-              columnVirtualizer.measureElement(node);
-            }}
             aria-rowindex={rowProps['aria-rowindex'] + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
