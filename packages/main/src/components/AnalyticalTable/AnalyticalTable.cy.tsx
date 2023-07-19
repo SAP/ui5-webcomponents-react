@@ -366,21 +366,43 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('payloadHelper').should('have.text', '4{"0":true,"1":true,"0.2":true,"0.2.0":true}');
   });
 
-  it('programmatic and user selection', () => {
-    const data = generateMoreData(20);
+  it('programmatic and user selection + filtering', () => {
+    const data = [
+      ...generateMoreData(20),
+      {
+        name: `Name-7`,
+        age: 22,
+        friend: {
+          name: `FriendName-X`,
+          age: 22 + 10
+        }
+      }
+    ];
     const TestComp = ({ onRowSelect }: PropTypes) => {
       const [selectedRowIds, setSelectedRowIds] = useState({});
       const [selectedFlatRows, setSelectedFlatRows] = useState([]);
       const [selectedRowIdsCb, setSelectedRowIdsCb] = useState({});
+      const [allRowsSelected, setAllRowsSelected] = useState(false);
+      const [globalFilterVal, setGlobalFilterVal] = useState('');
       return (
         <>
           <Button onClick={() => setSelectedRowIds({ 2: true, 3: false })}>Set selected rows</Button>
+          <input
+            data-testid="input"
+            value={globalFilterVal}
+            onInput={(e) => {
+              setGlobalFilterVal(e.target.value);
+            }}
+          />
           <AnalyticalTable
+            filterable
             data={data}
             columns={columns}
+            globalFilterValue={globalFilterVal}
             onRowSelect={(e) => {
               setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
               setSelectedRowIdsCb(e.detail.selectedRowIds);
+              setAllRowsSelected(e.detail.allRowsSelected);
               onRowSelect(e);
             }}
             selectionMode={AnalyticalTableSelectionMode.MultiSelect}
@@ -391,6 +413,10 @@ describe('AnalyticalTable', () => {
           </p>
           <p>
             "e.detail.selectedRowIds:"<span data-testid="payloadRowsById">{JSON.stringify(selectedRowIdsCb)}</span>
+          </p>
+          <p>
+            "e.detail.allRowsSelected:"
+            <span data-testid="payloadAllRowsSelected">{`${allRowsSelected}`}</span>
           </p>
         </>
       );
@@ -404,13 +430,97 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-5').click();
     cy.findByTestId('payload').should('have.text', '["0","1"]');
     cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true}');
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
 
     cy.findByText('Set selected rows').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
     cy.findByText('Name-1').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 5);
     cy.findByTestId('payload').should('have.text', '["1","2"]');
     cy.findByTestId('payloadRowsById').should('have.text', '{"1":true,"2":true,"3":false}');
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
+
+    cy.get('[data-row-index="0"][data-column-index="0"]').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 6);
+    cy.findByTestId('payload').should(
+      'have.text',
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+    );
+    cy.findByTestId('payloadRowsById').should(
+      'have.text',
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+    );
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
+
+    cy.get('[data-row-index="0"][data-column-index="0"]').click();
+
+    cy.findByText('Name-0').click();
+    cy.findByText('Name-1').click();
+    cy.findByText('Name-5').click();
+    cy.findByText('Name').click();
+    cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('7{enter}');
+    cy.findByTestId('payload').should('have.text', '["0","1","5"]');
+    cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true,"5":true}');
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
+
+    cy.get('[data-row-index="0"][data-column-index="0"]').click();
+    cy.get('@onRowSelectSpy').should('have.callCount', 11);
+    cy.findByTestId('payload').should('have.text', '["0","1","5","7","17","20"]');
+    cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true,"5":true,"7":true,"17":true,"20":true}');
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
+
+    cy.findByText('Name').click();
+    cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('[data-row-index="0"][data-column-index="0"]').click();
+    cy.findByText('Name-17').click({ force: true });
+    cy.findByText('Name').click();
+    cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('7{enter}');
+    cy.findByTestId('payload').should(
+      'have.text',
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]'
+    );
+    cy.findByTestId('payloadRowsById').should(
+      'have.text',
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}'
+    );
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
+    cy.findByText('Name-17').click();
+    cy.findByTestId('payload').should(
+      'have.text',
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+    );
+    cy.findByTestId('payloadRowsById').should(
+      'have.text',
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+    );
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
+
+    cy.findByText('Name').click();
+    cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+
+    cy.findByText('Name-17').click({ force: true });
+    cy.findByTestId('input').type('7{enter}');
+    cy.findByTestId('payload').should(
+      'have.text',
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]'
+    );
+    cy.findByTestId('payloadRowsById').should(
+      'have.text',
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}'
+    );
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
+    cy.findByText('Name-17').click();
+    cy.findByTestId('payload').should(
+      'have.text',
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+    );
+    cy.findByTestId('payloadRowsById').should(
+      'have.text',
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+    );
+    cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
+    cy.get('@onRowSelectSpy').should('have.callCount', 16);
   });
 
   it('row & header height', () => {
