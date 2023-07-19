@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.2...v1.17.3) (2023-07-19)
+
+### Bug Fixes
+
+- **AnalyticalTable:** add missing dependency property ([#4889](https://github.com/SAP/ui5-webcomponents-react/issues/4889)) ([001d362](https://github.com/SAP/ui5-webcomponents-react/commit/001d362dbba38462f40b392d5f3fe25f1b903272))
+- **AnalyticalTable:** always return correct `column` property in `onRowExpandChange` ([#4839](https://github.com/SAP/ui5-webcomponents-react/issues/4839)) ([d129417](https://github.com/SAP/ui5-webcomponents-react/commit/d1294176e5ee1ab9e15a020e1bf40ba66539f2e7))
+- **AnalyticalTable:** fix nested `manualGroupBy` ([#4862](https://github.com/SAP/ui5-webcomponents-react/issues/4862)) ([37911bb](https://github.com/SAP/ui5-webcomponents-react/commit/37911bb0ee156ab1953c995257688e4653e185aa))
+- **AnalyticalTable:** return correct values in `onRowSelect` for filtered rows ([#4902](https://github.com/SAP/ui5-webcomponents-react/issues/4902)) ([d7ef54b](https://github.com/SAP/ui5-webcomponents-react/commit/d7ef54bc0e207a554156de82110fe856e08ac239))
+- **deps:** update dependency clsx to v2 ([#4894](https://github.com/SAP/ui5-webcomponents-react/issues/4894)) ([80f08e9](https://github.com/SAP/ui5-webcomponents-react/commit/80f08e97700e55b9375e6e3cba36ca45ae5277b9))
+- **SplitterLayout:** fix resizing SplitterElements via keyboard ([#4877](https://github.com/SAP/ui5-webcomponents-react/issues/4877)) ([d995c40](https://github.com/SAP/ui5-webcomponents-react/commit/d995c4047774aba0d1833eb3ce25ae615eb03014)), closes [#4876](https://github.com/SAP/ui5-webcomponents-react/issues/4876)
+- **Toolbar:** correct child paddings ([#4847](https://github.com/SAP/ui5-webcomponents-react/issues/4847)) ([594dde1](https://github.com/SAP/ui5-webcomponents-react/commit/594dde18a44216491f3fd04c1ca1cfde111018d4)), closes [#4810](https://github.com/SAP/ui5-webcomponents-react/issues/4810)
+- **UI5DomRef - TypeScript:** update interface to latest methods and properties ([#4872](https://github.com/SAP/ui5-webcomponents-react/issues/4872)) ([391abf1](https://github.com/SAP/ui5-webcomponents-react/commit/391abf1a276e8e7a51c3cf47f484c1bec29d6ea4))
+
 ## [1.17.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.1...v1.17.2) (2023-07-05)
 
 ### Bug Fixes

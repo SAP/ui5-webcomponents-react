@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.2...v1.17.3) (2023-07-19)
+
+### Bug Fixes
+
+- **deps:** update dependency clsx to v2 ([#4894](https://github.com/SAP/ui5-webcomponents-react/issues/4894)) ([80f08e9](https://github.com/SAP/ui5-webcomponents-react/commit/80f08e97700e55b9375e6e3cba36ca45ae5277b9))
+
 ## [1.17.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.0...v1.17.1) (2023-07-04)
 
 ### Bug Fixes
