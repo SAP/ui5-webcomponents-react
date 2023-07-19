@@ -1,0 +1,2 @@
+const t="**Abstract UI5 Web Component** - Find out more about abstract components [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components).\n\nThe `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListGroupItem` items\n";export{t as N};
+//# sourceMappingURL=NotificationActionDescription-7983d4e2.js.map
