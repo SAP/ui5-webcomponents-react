@@ -62,7 +62,9 @@ const headerProps = (props, { instance }) => {
     webComponentsReactProperties: { onRowSelect, selectionMode },
     toggleAllRowsSelected,
     isAllRowsSelected,
-    rowsById
+    rowsById,
+    dispatch,
+    state: { filters, globalFilter }
   } = instance;
   const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
   if (
@@ -71,15 +73,20 @@ const headerProps = (props, { instance }) => {
   ) {
     const onClick = (e) => {
       toggleAllRowsSelected(!isAllRowsSelected);
+      const isFiltered = filters?.length > 0 || !!globalFilter;
       if (typeof onRowSelect === 'function') {
-        onRowSelect(
-          // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
-          enrichEventWithDetails(e, {
-            allRowsSelected: !isAllRowsSelected,
-            selectedFlatRows: !isAllRowsSelected ? flatRows : [],
-            selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {}
-          })
-        );
+        if (isFiltered) {
+          dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row: undefined, selectAll: true, fired: true } });
+        } else {
+          onRowSelect(
+            // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
+            enrichEventWithDetails(e, {
+              allRowsSelected: !isAllRowsSelected,
+              selectedFlatRows: !isAllRowsSelected ? flatRows : [],
+              selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {}
+            })
+          );
+        }
       }
     };
 
