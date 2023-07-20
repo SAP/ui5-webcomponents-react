@@ -989,7 +989,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   };
 
   const handleVerticalScrollBarScroll = () => {
-    if (!verticalScrollBarRef.current.isExternalVerticalScroll) {
+    if (parentRef.current && !verticalScrollBarRef.current.isExternalVerticalScroll) {
       parentRef.current.scrollTop = verticalScrollBarRef.current.scrollTop;
       parentRef.current.isExternalVerticalScroll = true;
     }
