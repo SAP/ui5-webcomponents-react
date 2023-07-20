@@ -1,6 +1,7 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
+import { clsx } from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { BarDesign } from '../../enums';
 import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
@@ -17,7 +18,8 @@ const meta = {
   args: {
     children: 'Press "Escape" to close the Dialog.',
     headerText: 'Dialog Header',
-    open: false
+    open: false,
+    className: 'footerPartNoPadding'
   }
 } satisfies Meta<typeof OriginalDialog>;
 
@@ -82,12 +84,13 @@ export const WithContent: Story = {
           {...args}
           open={dialogIsOpen}
           onAfterClose={handleClose}
+          className={clsx('headerPartNoPadding', args.className)}
           header={
             <Bar endContent={<Icon name={settingsIcon} />}>
               <Title>Dialog</Title>
             </Bar>
           }
-          footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
+          footer={<Bar design={BarDesign.Footer} endContent={<Button onClick={handleClose}>Close</Button>} />}
         >
           <List>
             <StandardListItem additionalText="3">List Item 1</StandardListItem>
