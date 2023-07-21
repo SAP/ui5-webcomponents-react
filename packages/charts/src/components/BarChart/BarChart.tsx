@@ -349,6 +349,8 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             );
           })}
         {!noLegend && (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
