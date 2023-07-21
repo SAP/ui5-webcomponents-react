@@ -171,7 +171,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures, chartConfig.legendPosition);
 
   const primaryDimension = dimensions[0];
   const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(

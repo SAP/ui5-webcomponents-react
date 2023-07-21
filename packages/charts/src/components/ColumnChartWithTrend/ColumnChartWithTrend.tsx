@@ -144,7 +144,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
   );
 
   const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
-  const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures);
+  const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures, chartConfig.legendPosition);
 
   const columnTooltipConfig = {
     formatter: (value, name, tooltipProps) => {
