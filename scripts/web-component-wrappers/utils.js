@@ -437,71 +437,13 @@ export function getCommonPropsToBeOmitted(moduleName) {
 
 const CUSTOM_DESCRIPTION_REPLACE = {
   Avatar: {
-    icon: (desc) => desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``)
-  },
-  ComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;ComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/ComboBox>
-   *  </code>
-   * </pre>`
-      );
+    icon: (desc) => {
+      return desc.replace(`<ui5-avatar icon="employee">`, `\`<Avatar icon="employee">\``);
     }
   },
   Input: {
     children: (description) => {
-      const formatExample = description.replace(
-        `   * Example:  
-   *   
-   * <ui5-input show-suggestions>  
-   *     <ui5-suggestion-item text="Item #1"></ui5-suggestion-item>  
-   *     <ui5-suggestion-item text="Item #2"></ui5-suggestion-item>  
-   * </ui5-input>  `,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;Input showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/Input>
-   *  </code>
-   * </pre>`
-      );
-      return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    }
-  },
-  MultiComboBox: {
-    children: (desc) => {
-      return desc.replace(
-        `   * Example:  
-   * <ui5-multi-combobox>  
-   *     <ui5-li>Item #1</ui5-li>  
-   *     <ui5-li>Item #2</ui5-li>  
-   * </ui5-multi-combobox>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiComboBox><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #1&lt;/StandardListItem><br />
-   *    &nbsp;&nbsp;&lt;StandardListItem>Item #2&lt;/StandardListItem><br />
-   *    &lt;/MultiComboBox>
-   *  </code>
-   * </pre>`
-      );
+      return description.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
     }
   },
   MultiInput: {
@@ -525,29 +467,6 @@ const CUSTOM_DESCRIPTION_REPLACE = {
    * </pre>`
       );
       return formatExample.replace(/<ui5-suggestion-item>/g, '<SuggestionItem>');
-    },
-    tokens: (description) => {
-      return description.replace(
-        `   * Example:  
-   * <ui5-multi-input>  
-   *     <ui5-token slot="tokens" text="Token 1"></ui5-token>  
-   *     <ui5-token slot="tokens" text="Token 2"></ui5-token>  
-   * </ui5-multi-input>`,
-        `   * Example:
-   *
-   * <pre>
-   *   <code>
-   *    &lt;MultiInput<br />
-   *    &nbsp;tokens={<br />
-   *    &nbsp;&nbsp;&lt;><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&nbsp;&lt;Token text="Token 1" /><br />
-   *    &nbsp;&nbsp;&lt;/><br />
-   *    &nbsp;}<br />
-   *    />
-   *  </code>
-   * </pre>`
-      );
     }
   },
   ShellBar: {
