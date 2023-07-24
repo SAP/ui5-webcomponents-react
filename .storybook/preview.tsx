@@ -1,4 +1,4 @@
-import { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react';
 import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import '@ui5/webcomponents-base/dist/features/F6Navigation.js';
@@ -7,7 +7,6 @@ import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import { useEffect } from 'react';
-import 'tocbot/dist/tocbot.css';
 import '../packages/main/dist/Assets.js';
 import languages from './components/languageCodes.json';
 import { MAPPED_THEMES } from './utils';
@@ -121,6 +120,12 @@ const preview: Preview = {
   },
   parameters: {
     docs: {
+      toc: {
+        headingSelector: 'h2, h3, h4',
+        unsafeTocbotOptions: {
+          orderedList: false
+        }
+      },
       source: {
         excludeDecorators: true
       }

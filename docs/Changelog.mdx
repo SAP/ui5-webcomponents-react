@@ -1,10 +1,8 @@
-import { Meta, Markdown } from '@storybook/blocks';
+import { Footer } from '@sb/components';
+import { Markdown, Meta } from '@storybook/blocks';
 import Changelog from '../CHANGELOG.md?raw';
-import { Footer, TableOfContent } from '@sb/components';
 
-<Meta title="Change Log" />
-
-<TableOfContent headingSelector="h2:not(.noAnchor)" onlyDisplaySideNav />
+<Meta title="Change Log" parameters={{ docs: { toc: { disable: true, headingSelector: 'h2' } } }} />
 
 <Markdown>{Changelog}</Markdown>
 

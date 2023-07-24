@@ -19576,7 +19576,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tocbot@npm:^4.12.0, tocbot@npm:^4.20.1":
+"tocbot@npm:^4.20.1":
   version: 4.21.0
   resolution: "tocbot@npm:4.21.0"
   checksum: 473686301b14f3ad275f5e39a0cbd1e7a4cb5856a98653d916ec4fb09fb6e6cd913f000bc8299fdd42511001d0b53bfce2d041ed949de2a13e4f3daa88931f56
@@ -20020,7 +20020,6 @@ __metadata:
     remark-gfm: ^3.0.1
     rimraf: ^5.0.0
     storybook: 7.1.0
-    tocbot: ^4.12.0
     turndown: ^7.0.0
     typedoc: ^0.24.0
     typescript: 5.1.6

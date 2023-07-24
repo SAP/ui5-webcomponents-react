@@ -1,7 +1,7 @@
-import { Footer, TableOfContent } from '@sb/components';
+import { Footer } from '@sb/components';
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Migration Guide" />
+<Meta title="Migration Guide" parameters={{ docs: { toc: { headingSelector: 'h2' } } }} />
 
 # Migration Guide
 
@@ -12,8 +12,6 @@ For a full list of all changes, please refer to [the list of releases](https://g
 or the [changelog](?path=/docs/change-log--page)._
 
 <br />
-
-<TableOfContent headingSelector="h2" />
 
 ## From 0.28.x to 1.0.1
 

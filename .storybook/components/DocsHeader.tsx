@@ -3,7 +3,6 @@ import { FlexBox, FlexBoxAlignItems, Label, Link, Text } from '@ui5/webcomponent
 import React, { useContext } from 'react';
 import { GitHubLogo } from './GitHub-Mark';
 import { Import } from './Import';
-import { TableOfContent } from './TableOfContent';
 
 const Links = () => {
   const docsContext = useContext(DocsContext);
@@ -67,7 +66,6 @@ export const DocsHeader = ({ since }) => {
       <Subtitle />
       <InfoTable since={since} />
       <Description />
-      <TableOfContent />
     </>
   );
 };
