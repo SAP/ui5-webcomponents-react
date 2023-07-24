@@ -1,2 +1,0 @@
-import{g as a}from"./index-ccf6a75d.js";import{_ as c,i as n}from"./_baseForOwn-1047660d.js";import{_ as i}from"./_getPrototype-f4b610e7.js";var s=c,p=i,b=n,f="[object Object]",j=Function.prototype,l=Object.prototype,e=j.toString,u=l.hasOwnProperty,g=e.call(Object);function O(r){if(!b(r)||s(r)!=f)return!1;var o=p(r);if(o===null)return!0;var t=u.call(o,"constructor")&&o.constructor;return typeof t=="function"&&t instanceof t&&e.call(t)==g}var P=O;const _=a(P);export{_ as i};
-//# sourceMappingURL=isPlainObject-c89016af.js.map
