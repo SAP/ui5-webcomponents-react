@@ -10425,6 +10425,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"espree@npm:^9.6.1":
+  version: 9.6.1
+  resolution: "espree@npm:9.6.1"
+  dependencies:
+    acorn: ^8.9.0
+    acorn-jsx: ^5.3.2
+    eslint-visitor-keys: ^3.4.1
+  checksum: eb8c149c7a2a77b3f33a5af80c10875c3abd65450f60b8af6db1bfcfa8f101e21c1e56a561c6dc13b848e18148d43469e7cd208506238554fb5395a9ea5a1ab9
+  languageName: node
+  linkType: hard
+
 "esprima@npm:^4.0.0, esprima@npm:^4.0.1, esprima@npm:~4.0.0":
   version: 4.0.1
   resolution: "esprima@npm:4.0.1"
@@ -20555,7 +20566,7 @@ __metadata:
     typedoc: ^0.24.0
     typescript: 5.1.6
     vite: ^4.1.1
-    vite-plugin-istanbul: ^4.0.0
+    vite-plugin-istanbul: ^5.0.0
     vite-tsconfig-paths: ^4.0.5
   languageName: unknown
   linkType: soft
@@ -21008,17 +21019,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-istanbul@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "vite-plugin-istanbul@npm:4.1.0"
+"vite-plugin-istanbul@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "vite-plugin-istanbul@npm:5.0.0"
   dependencies:
     "@istanbuljs/load-nyc-config": ^1.1.0
+    espree: ^9.6.1
     istanbul-lib-instrument: ^5.1.0
     picocolors: ^1.0.0
     test-exclude: ^6.0.0
   peerDependencies:
     vite: ">=2.9.1 <= 5"
-  checksum: b7b766638ec8d8f261ea758c61bdfeb66e00b1dbdd456db93e9541dd13dce63a4707faeeb888b516f7150a5cdb10fa8775dfdc314a39e975f8ca15d26c11c50b
+  checksum: 1d5d7a91eecd3356a7ceba60f437ee1b5a3db53e8a928d7476fe2919ff1e101c2e0c0b87c8c9680cef72c0158ced1a75d56e9f5cc6f4f427dfe670c62ecdeec1
   languageName: node
   linkType: hard
 
