@@ -1,6 +1,6 @@
 {
   "name": "@fioneer/ui5-webcomponents-react",
-  "version": "1.17.2-fioneer.1",
+  "version": "1.17.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "type": "module",
   "main": "dist/index.js",
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@tanstack/react-virtual": "3.0.0-beta.18",
-    "@ui5/webcomponents-react-base": "1.17.0",
+    "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.0.0",
     "react-jss": "^10.10.0",
     "react-table": "7.8.0"
