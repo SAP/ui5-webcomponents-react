@@ -1,3 +1,5 @@
+'use client';
+
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import * as React from 'react';
