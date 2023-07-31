@@ -18,6 +18,7 @@ import { ResponsivePopover } from './CodeGen';
 import { isChromatic } from '@sb/utils';
 import ResponsivePopoverDomRef from './ResponsivePopoverDomRef.json';
 import { MessageStrip } from '../MessageStrip';
+import { clsx } from 'clsx';
 
 <Meta
   title="Modals & Popovers / ResponsivePopover"
@@ -36,7 +37,8 @@ import { MessageStrip } from '../MessageStrip';
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
     verticalAlign: PopoverVerticalAlign.Center,
-    opener: 'openPopoverBtn'
+    opener: 'openPopoverBtn',
+    className: 'footerPartNoPadding'
   }}
 />
 
@@ -233,6 +235,7 @@ const PopoverComponent = () => {
           </Button>
           <ResponsivePopover
             {...args}
+            className={clsx('headerPartNoPadding', args.className)}
             opener="respPopoverBtn2"
             open={responsivePopoverIsOpen}
             onAfterClose={handleClose}

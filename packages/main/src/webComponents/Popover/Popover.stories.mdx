@@ -20,6 +20,7 @@ import { Popover as OriginalPopover } from './index';
 import { Popover } from './CodeGen';
 import { isChromatic } from '@sb/utils';
 import PopoverDomRef from './PopoverDomRef.json';
+import { clsx } from 'clsx';
 
 <Meta
   title="Modals & Popovers / Popover"
@@ -33,7 +34,8 @@ import PopoverDomRef from './PopoverDomRef.json';
     headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
     placementType: PopoverPlacementType.Right,
-    verticalAlign: PopoverVerticalAlign.Center
+    verticalAlign: PopoverVerticalAlign.Center,
+    className: 'footerPartNoPadding'
   }}
 />
 
@@ -233,6 +235,7 @@ const PopoverComponent = () => {
             opener="openPopoverBtn2"
             open={popoverIsOpen}
             onAfterClose={handleClose}
+            className={clsx('headerPartNoPadding', args.className)}
             header={
               <Bar endContent={<Icon name="settings" />}>
                 <Title>Popover</Title>
