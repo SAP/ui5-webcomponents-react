@@ -121,6 +121,7 @@ const preview: Preview = {
   parameters: {
     docs: {
       toc: {
+        disable: false,
         headingSelector: 'h2, h3, h4',
         unsafeTocbotOptions: {
           orderedList: false
