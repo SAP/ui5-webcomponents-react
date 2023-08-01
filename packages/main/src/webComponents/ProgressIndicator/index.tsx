@@ -7,6 +7,10 @@ import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ProgressIndicatorAttributes {
   /**
+   * Defines the accessible ARIA name of the component.
+   */
+  accessibleName?: string;
+  /**
    * Defines whether component is in disabled state.
    */
   disabled?: boolean;
@@ -52,7 +56,7 @@ export interface ProgressIndicatorPropTypes extends ProgressIndicatorAttributes,
  */
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(
   'ui5-progress-indicator',
-  ['displayValue', 'value', 'valueState'],
+  ['accessibleName', 'displayValue', 'value', 'valueState'],
   ['disabled', 'hideValue'],
   [],
   [],

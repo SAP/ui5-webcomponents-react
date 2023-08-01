@@ -4908,7 +4908,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/fs-extra@npm:^9.0.1, @types/fs-extra@npm:^9.0.12, @types/fs-extra@npm:^9.0.4":
+"@types/fs-extra@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "@types/fs-extra@npm:11.0.1"
+  dependencies:
+    "@types/jsonfile": "*"
+    "@types/node": "*"
+  checksum: 3e930346e5d84f419deb8ced1c582beef8cb20d0bd8a0eb145a37d75bab0572a1895f0e48a0d681d386b3a58b9a992b2d2acecc464bcaec2548f53ea00718651
+  languageName: node
+  linkType: hard
+
+"@types/fs-extra@npm:^9.0.1, @types/fs-extra@npm:^9.0.4":
   version: 9.0.13
   resolution: "@types/fs-extra@npm:9.0.13"
   dependencies:
@@ -5015,6 +5025,15 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
+  languageName: node
+  linkType: hard
+
+"@types/jsonfile@npm:*":
+  version: 6.1.1
+  resolution: "@types/jsonfile@npm:6.1.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0f8fe0a9221a00e8413cffba723dfe16553868724b830237256fb0052ecd5cac96498189d1235a001cfa815f352008261c9ceb373f0aa58227f891e0c7a12c4d
   languageName: node
   linkType: hard
 
@@ -5159,7 +5178,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:^2.5.12, @types/node-fetch@npm:^2.5.7":
+"@types/node-fetch@npm:^2.5.7":
   version: 2.6.2
   resolution: "@types/node-fetch@npm:2.6.2"
   dependencies:
@@ -5193,14 +5212,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.0.0, @types/node@npm:^16.6":
+"@types/node@npm:^16.0.0":
   version: 16.18.39
   resolution: "@types/node@npm:16.18.39"
   checksum: eac9b202b76013256cb517ca8d3e3f61df206edb1615ca8d8df4c80616e92879fe4d3f8570a11d60f4216a82724a3265d5888b24c6994c80b057a0423c9ff1d2
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.0.0":
+"@types/node@npm:^18.0.0, @types/node@npm:^18.16.3":
   version: 18.17.1
   resolution: "@types/node@npm:18.17.1"
   checksum: 56201bda9a2d05d68602df63b4e67b0545ac8c6d0280bd5fb31701350a978a577a027501fbf49db99bf177f2242ebd1244896bfd35e89042d5bd7dfebff28d4e
@@ -5256,6 +5275,13 @@ __metadata:
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
   checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
+  languageName: node
+  linkType: hard
+
+"@types/ps-tree@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@types/ps-tree@npm:1.1.2"
+  checksum: 575c3b2b83ea8935ab296ac9e17f6a2c1a5bb155f9e30663bb7a7c741a8ca4641f0df9748866230f1d6c3f87ed4ffa3fa91f1df444ef9979a3df31114534bf25
   languageName: node
   linkType: hard
 
@@ -5420,6 +5446,13 @@ __metadata:
   version: 1.3.2
   resolution: "@types/which@npm:1.3.2"
   checksum: 1fc56d4b930ddd1588da380bc3a7d19b0193203eba6fffa14a5866d797f5a43cdd13c7141b9b857d9964db0ec7b3dc76ce943504968cd2ceef47d88ddb81edd2
+  languageName: node
+  linkType: hard
+
+"@types/which@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/which@npm:3.0.0"
+  checksum: 0dccb4b39b19dbf24e45461da581e1e6329ca06f28e467348d982d57ce4da342762c6594d3aa759682d26b9238e0a05938eb64221e7420ea890a1aaca22c2fca
   languageName: node
   linkType: hard
 
@@ -5769,12 +5802,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-base@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-base@npm:1.15.1"
+"@ui5/webcomponents-base@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-base@npm:0.0.0-33967dd12"
   dependencies:
     lit-html: ^2.0.1
-  checksum: e56718478bdd326fc7b01d559c22a5adfccdeb05468fd816871ae7396685cd046dcfe77ac3b96c6931c9dd1fedd60e254f894f290c0744d8fe7d47fc8e2d615f
+  checksum: 9ab543c04ed4323a38cfd5a28b9a2e9692dd935bdf2638a589c4d1fa004d1ce98d811ce4bc942c458f340a8fb185d638809c7c3d58c4557a716442223f82a319
   languageName: node
   linkType: hard
 
@@ -5786,35 +5819,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-fiori@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-fiori@npm:1.15.1"
+"@ui5/webcomponents-fiori@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-fiori@npm:0.0.0-33967dd12"
   dependencies:
-    "@ui5/webcomponents": 1.15.1
-    "@ui5/webcomponents-base": 1.15.1
-    "@ui5/webcomponents-icons": 1.15.1
-    "@ui5/webcomponents-theming": 1.15.1
+    "@ui5/webcomponents": 0.0.0-33967dd12
+    "@ui5/webcomponents-base": 0.0.0-33967dd12
+    "@ui5/webcomponents-icons": 0.0.0-33967dd12
+    "@ui5/webcomponents-theming": 0.0.0-33967dd12
     "@zxing/library": ^0.17.1
-  checksum: 04e73f364e029a796e52efa06734d0f06a7507a8ad4234d026004e3fe1a590168e67a4be0af360671d866679dbc777f5d7eed03563e83226abd7785106db0fe1
+  checksum: 9f7008812b46bc989aa883d4ba3536dab3735a4413354e6328ab0e9ca4d3a9212107e94e917a83e26916804b662fc49243a4ee918b902e0188237e337e632ea3
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-icons@npm:1.15.1"
+"@ui5/webcomponents-icons@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-icons@npm:0.0.0-33967dd12"
   dependencies:
-    "@ui5/webcomponents-base": 1.15.1
-  checksum: c6d9bc5c329b92b16c8e1ef6c8c9d1d14bf3393ddcb060e656c927b01b34aca1b368a3027bb31c1ad1167588701e3056dba8661b6d0fe2181b73b23d70f073ab
+    "@ui5/webcomponents-base": 0.0.0-33967dd12
+  checksum: 7048e779b48e2bd8f014a9cc63ceb723eb13a541f147c285d68e6bb2c7b2a7669d5df23708a9c62c1be1b5ec7a1698307b383b3cd39ab38c8845cd676cdd70e4
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-localization@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-localization@npm:1.15.1"
+"@ui5/webcomponents-localization@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-localization@npm:0.0.0-33967dd12"
   dependencies:
     "@types/openui5": ^1.113.0
-    "@ui5/webcomponents-base": 1.15.1
-  checksum: a671886a42ee42babb73d43708889f59d17af1e4a134630e55cf5b009e3ea44b5feeaab4209296b0545c9d742724e6d19b9512fc15e9f0a2c2ab93e4ba6b9561
+    "@ui5/webcomponents-base": 0.0.0-33967dd12
+  checksum: 39743601975199dd854e913b7caf91308317c2dc1dfeacb81c316dad03c44d9530b68d6f526435c08c57ae4f92e27703e843cee82ddf6ebe4e39c2f92a9be1bc
   languageName: node
   linkType: hard
 
@@ -5823,7 +5856,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~1.15.1
+    "@ui5/webcomponents-base": ~0.0.0-33967dd12
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
@@ -5862,10 +5895,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": ~1.15.1
-    "@ui5/webcomponents-base": ~1.15.1
-    "@ui5/webcomponents-fiori": ~1.15.1
-    "@ui5/webcomponents-icons": ~1.15.1
+    "@ui5/webcomponents": 0.0.0-33967dd12
+    "@ui5/webcomponents-base": ~0.0.0-33967dd12
+    "@ui5/webcomponents-fiori": ~0.0.0-33967dd12
+    "@ui5/webcomponents-icons": ~0.0.0-33967dd12
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
@@ -5880,19 +5913,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-theming@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-theming@npm:1.15.1"
+"@ui5/webcomponents-theming@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-theming@npm:0.0.0-33967dd12"
   dependencies:
     "@sap-theming/theming-base-content": 11.5.0
-    "@ui5/webcomponents-base": 1.15.1
-  checksum: 0d01a4986458111eeaf1f90a5d25fd7ccf9f72654b770aff7e460e911d1682f8f5bdc7d60ace2ae7e6809c1879099caed71104e3b84d84687fb7e812270b7761
+    "@ui5/webcomponents-base": 0.0.0-33967dd12
+  checksum: 1d223868ea154e548fabc4496caca514f082e60c1dd873b53affafe4163ae5922aaa574dc5777bf900ae37f2315997dfaf0416e5244338b3f49c9f17b90530cc
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents-tools@npm:1.15.1"
+"@ui5/webcomponents-tools@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents-tools@npm:0.0.0-33967dd12"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
@@ -5938,7 +5971,7 @@ __metadata:
     slash: 3.0.0
     vite: ^3.0.4
     wdio-chromedriver-service: ^7.3.2
-    zx: ^4.3.0
+    zx: ^7.2.3
   peerDependencies:
     chromedriver: "*"
     typescript: ^4.9.4
@@ -5948,19 +5981,19 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: fe247b1cafd3b48adb6a299500b4ff1ed1079592252cef8a0f6563f26b018e3e3f4f1fd9966cef78d3ae34857d019811edcdb2fc6a1aecd1729984af2795e31a
+  checksum: 4bf90ab5dfb67d8440e38eda012ad3b2e8ab55c699213d4cb0d4d8aa7549021bbaa38fc38a00f645e8f8340c6a57a4fead3a60180d9c78b38cf0d2d34b9f76e6
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@ui5/webcomponents@npm:1.15.1"
+"@ui5/webcomponents@npm:0.0.0-33967dd12":
+  version: 0.0.0-33967dd12
+  resolution: "@ui5/webcomponents@npm:0.0.0-33967dd12"
   dependencies:
-    "@ui5/webcomponents-base": 1.15.1
-    "@ui5/webcomponents-icons": 1.15.1
-    "@ui5/webcomponents-localization": 1.15.1
-    "@ui5/webcomponents-theming": 1.15.1
-  checksum: 0c08be38231a43d16a1bd61aff600384c2f44c2e5abd71b6fc0805c486ce37db6816ac8501798e18cc0879868981d42cdd4fba1e1dd46ea0e7879979b2dd32bc
+    "@ui5/webcomponents-base": 0.0.0-33967dd12
+    "@ui5/webcomponents-icons": 0.0.0-33967dd12
+    "@ui5/webcomponents-localization": 0.0.0-33967dd12
+    "@ui5/webcomponents-theming": 0.0.0-33967dd12
+  checksum: 27d120fb6999a6a32f0a2c2495ef6c8fc68ca96d1b2e24736f3c79ed258aa5de3128605e3f11b6767bcf9fc7b627cad7c47ef69df32bd4e8f02042ad9c551e65
   languageName: node
   linkType: hard
 
@@ -7638,6 +7671,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^5.2.0":
+  version: 5.3.0
+  resolution: "chalk@npm:5.3.0"
+  checksum: 623922e077b7d1e9dedaea6f8b9e9352921f8ae3afe739132e0e00c275971bdd331268183b2628cf4ab1727c45ea1f28d7e24ac23ce1db1eb653c414ca8a5a80
+  languageName: node
+  linkType: hard
+
 "character-entities@npm:^2.0.0":
   version: 2.0.2
   resolution: "character-entities@npm:2.0.2"
@@ -8785,6 +8825,13 @@ __metadata:
   dependencies:
     assert-plus: ^1.0.0
   checksum: 3634c249570f7f34e3d34f866c93f866c5b417f0dd616275decae08147dcdf8fccfaa5947380ccfb0473998ea3a8057c0b4cd90c875740ee685d0624b2983598
+  languageName: node
+  linkType: hard
+
+"data-uri-to-buffer@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "data-uri-to-buffer@npm:4.0.1"
+  checksum: 0d0790b67ffec5302f204c2ccca4494f70b4e2d940fea3d36b09f0bb2b8539c2e86690429eb1f1dc4bcc9e4df0644193073e63d9ee48ac9fce79ec1506e4aa4c
   languageName: node
   linkType: hard
 
@@ -10849,6 +10896,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.4":
+  version: 3.2.0
+  resolution: "fetch-blob@npm:3.2.0"
+  dependencies:
+    node-domexception: ^1.0.0
+    web-streams-polyfill: ^3.0.3
+  checksum: f19bc28a2a0b9626e69fd7cf3a05798706db7f6c7548da657cbf5026a570945f5eeaedff52007ea35c8bcd3d237c58a20bf1543bc568ab2422411d762dd3d5bf
+  languageName: node
+  linkType: hard
+
 "fetch-retry@npm:^5.0.2":
   version: 5.0.3
   resolution: "fetch-retry@npm:5.0.3"
@@ -11108,6 +11165,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"formdata-polyfill@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "formdata-polyfill@npm:4.0.10"
+  dependencies:
+    fetch-blob: ^3.1.2
+  checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
+  languageName: node
+  linkType: hard
+
 "forwarded@npm:0.2.0":
   version: 0.2.0
   resolution: "forwarded@npm:0.2.0"
@@ -11258,6 +11324,15 @@ __metadata:
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: c3f1f5ba20f4e962efb71344ce0a40722163e85bee2101ce25f88214e78182d2d2476aa85ef37950c579eb6cf6ee811c17b3101bb84004bb75655f3e33f3fdb5
+  languageName: node
+  linkType: hard
+
+"fx@npm:*":
+  version: 28.0.0
+  resolution: "fx@npm:28.0.0"
+  bin:
+    fx: index.js
+  checksum: 4175077de379c3bcbcef585e50ac83f510d3f8dcf83247771faf9fee5aeb0a912e9ef1b8ffdd2feb73a40a56fd08aa2517205c239b3ead31520d944fd938b125
   languageName: node
   linkType: hard
 
@@ -11750,7 +11825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^12.0.0, globby@npm:^12.0.1":
+"globby@npm:^12.0.0":
   version: 12.2.0
   resolution: "globby@npm:12.2.0"
   dependencies:
@@ -15686,6 +15761,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-domexception@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "node-domexception@npm:1.0.0"
+  checksum: ee1d37dd2a4eb26a8a92cd6b64dfc29caec72bff5e1ed9aba80c294f57a31ba4895a60fd48347cf17dd6e766da0ae87d75657dfd1f384ebfa60462c2283f5c7f
+  languageName: node
+  linkType: hard
+
 "node-fetch-native@npm:^1.0.2":
   version: 1.0.2
   resolution: "node-fetch-native@npm:1.0.2"
@@ -15704,6 +15786,17 @@ __metadata:
     encoding:
       optional: true
   checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:3.3.1":
+  version: 3.3.1
+  resolution: "node-fetch@npm:3.3.1"
+  dependencies:
+    data-uri-to-buffer: ^4.0.0
+    fetch-blob: ^3.1.4
+    formdata-polyfill: ^4.0.10
+  checksum: 62145fd3ba4770a76110bc31fdc0054ab2f5442b5ce96e9c4b39fc9e94a3d305560eec76e1165d9259eab866e02a8eecf9301062bb5dfc9f08a4d08b69d223dd
   languageName: node
   linkType: hard
 
@@ -20525,10 +20618,10 @@ __metadata:
     "@types/react-dom": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^6.0.0
     "@typescript-eslint/parser": ^6.0.0
-    "@ui5/webcomponents": 1.15.1
-    "@ui5/webcomponents-fiori": 1.15.1
-    "@ui5/webcomponents-icons": 1.15.1
-    "@ui5/webcomponents-tools": 1.15.1
+    "@ui5/webcomponents": 0.0.0-33967dd12
+    "@ui5/webcomponents-fiori": 0.0.0-33967dd12
+    "@ui5/webcomponents-icons": 0.0.0-33967dd12
+    "@ui5/webcomponents-tools": 0.0.0-33967dd12
     "@vitejs/plugin-react": ^4.0.0
     chromatic: ^6.5.3
     cssnano: ^6.0.1
@@ -21194,6 +21287,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"web-streams-polyfill@npm:^3.0.3":
+  version: 3.2.1
+  resolution: "web-streams-polyfill@npm:3.2.1"
+  checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
+  languageName: node
+  linkType: hard
+
 "webdriver@npm:7.30.0":
   version: 7.30.0
   resolution: "webdriver@npm:7.30.0"
@@ -21264,6 +21364,15 @@ __metadata:
   version: 0.4.6
   resolution: "webpack-virtual-modules@npm:0.4.6"
   checksum: cb056ba8c50b35436ae43149554b051b80065b0cf79f2d528ca692ddf344a422ac71c415adb9da83dc3acc6e7e58f518388cc1cd11cb4fa29dc04f2c4494afe3
+  languageName: node
+  linkType: hard
+
+"webpod@npm:^0":
+  version: 0.0.2
+  resolution: "webpod@npm:0.0.2"
+  bin:
+    webpod: dist/index.js
+  checksum: 3c6f7376cf06804a0b68adec3c33d1aceb9a1d13854beac542b95dcdb6f6cee34cd05fbd2228e01b67c2ce48673650296976dd694bd8d0ff10920a32dbe2e30a
   languageName: node
   linkType: hard
 
@@ -21812,23 +21921,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zx@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "zx@npm:4.3.0"
+"zx@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "zx@npm:7.2.3"
   dependencies:
-    "@types/fs-extra": ^9.0.12
+    "@types/fs-extra": ^11.0.1
     "@types/minimist": ^1.2.2
-    "@types/node": ^16.6
-    "@types/node-fetch": ^2.5.12
-    chalk: ^4.1.2
-    fs-extra: ^10.0.0
-    globby: ^12.0.1
-    minimist: ^1.2.5
-    node-fetch: ^2.6.1
+    "@types/node": ^18.16.3
+    "@types/ps-tree": ^1.1.2
+    "@types/which": ^3.0.0
+    chalk: ^5.2.0
+    fs-extra: ^11.1.1
+    fx: "*"
+    globby: ^13.1.4
+    minimist: ^1.2.8
+    node-fetch: 3.3.1
     ps-tree: ^1.2.0
-    which: ^2.0.2
+    webpod: ^0
+    which: ^3.0.0
+    yaml: ^2.2.2
   bin:
-    zx: zx.mjs
-  checksum: 5989695664721e165109d3b7a7e2379b97ca12a284d7df52eb0394164893bafdf512d66b3668792ce9f0aed20fb88602b603db5f91458f5bf68d35f3d9c5751c
+    zx: build/cli.js
+  checksum: 33b05e26ec3a429de6ff8db759d7b7857b947f4845025416db410bedaa8e613608a6d1916f257e129625d0192b6ba43e482356c6844ff90d15b0fd06dd9b98d2
   languageName: node
   linkType: hard
