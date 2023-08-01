@@ -242,7 +242,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
     dataset,
-    layout === 'vertical' ? dimensions : sortedMeasures
+    layout === 'vertical' ? dimensions : sortedMeasures,
+    chartConfig.legendPosition
   );
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);

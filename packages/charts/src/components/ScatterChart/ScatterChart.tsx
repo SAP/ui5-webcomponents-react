@@ -206,7 +206,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
   const yMeasure = measures.find(({ axis }) => axis === 'y');
   const zMeasure = measures.find(({ axis }) => axis === 'z');
 
-  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0]?.data, [yMeasure]);
+  const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset?.[0]?.data, [yMeasure], chartConfig.legendPosition);
   const xAxisHeights = useObserveXAxisHeights(chartRef, 1);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const { chartConfig: _0, measures: _1, ...propsWithoutOmitted } = rest;

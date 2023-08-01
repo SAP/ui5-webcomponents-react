@@ -214,7 +214,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
-  const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions);
+  const [width, legendPosition] = useLongestYAxisLabelBar(dataset, dimensions, chartConfig.legendPosition);
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
   const [xAxisHeight] = useObserveXAxisHeights(chartRef, 1);
   const isRTL = useIsRTL(chartRef);
