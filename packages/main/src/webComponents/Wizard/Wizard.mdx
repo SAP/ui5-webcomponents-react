@@ -5,6 +5,7 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import WizardDescription from './WizardDescription.md?raw';
 import WizardStepDescription from '../WizardStep/WizardStepDescription.md?raw';
 import { WizardStep } from '../WizardStep';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -26,6 +27,6 @@ import { WizardStep } from '../WizardStep';
 
 <Markdown>{WizardStepDescription}</Markdown>
 
-<ArgTypesWithNote of={WizardStep} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={WizardStep} />
 
 <Footer />

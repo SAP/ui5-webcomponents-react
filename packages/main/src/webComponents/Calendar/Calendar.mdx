@@ -1,4 +1,5 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { excludePropsForAbstract } from '@sb/utils';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { CalendarDate } from '../CalendarDate';
@@ -26,7 +27,7 @@ import Description from './CalendarDescription.md?raw';
 
 ## CalendarDate
 
-<ArgTypesWithNote of={CalendarDate} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarDate} />
 <Markdown>{CalendarDateDescription}</Markdown>
 
 <Footer />

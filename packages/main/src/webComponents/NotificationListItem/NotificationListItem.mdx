@@ -5,6 +5,7 @@ import { NotificationAction } from '../NotificationAction';
 import NotificationActionDescription from '../NotificationAction/NotificationActionDescription.md?raw';
 import * as ComponentStories from './NotificationListItem.stories';
 import NotificationListItemDescription from './NotificationListItemDescription.md?raw';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -33,7 +34,7 @@ import NotificationListItemDescription from './NotificationListItemDescription.m
 
 ## NotificationAction
 
-<ArgTypesWithNote hideHTMLPropsNote of={NotificationAction} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={NotificationAction} />
 <Markdown>{NotificationActionDescription}</Markdown>
 
 <Footer />

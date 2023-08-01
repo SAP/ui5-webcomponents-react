@@ -11,6 +11,7 @@ import SortItemDescription from '../SortItem/SortItemDescription.md?raw';
 import * as ComponentStories from './ViewSettingsDialog.stories';
 import ViewSettingsDialogDescription from './ViewSettingsDialogDescription.md?raw';
 import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -64,19 +65,19 @@ const ViewSettingsDialogComponent = () => {
 ## SortItem
 
 <Description of={SortItem} />
-<ArgTypes of={SortItem} />
+<ArgTypes exclude={excludePropsForAbstract} of={SortItem} />
 <Markdown>{SortItemDescription}</Markdown>
 
 ## FilterItem
 
 <Description of={FilterItem} />
-<ArgTypes of={FilterItem} />
+<ArgTypes exclude={excludePropsForAbstract} of={FilterItem} />
 <Markdown>{FilterItemDescription}</Markdown>
 
 ## FilterItemOption
 
 <Description of={FilterItemOption} />
-<ArgTypes of={FilterItemOption} />
+<ArgTypes exclude={excludePropsForAbstract} of={FilterItemOption} />
 <Markdown>{FilterItemOptionDescription}</Markdown>
 
 <Footer />

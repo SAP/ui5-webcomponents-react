@@ -28,6 +28,7 @@ export function ArgTypesWithNote(props: ComponentProps<typeof ArgTypes> & ArgTyp
   const classes = useStyles();
 
   if (hideHTMLPropsNote) {
+    console.log(rest);
     return <ArgTypes {...rest} />;
   }
   return (

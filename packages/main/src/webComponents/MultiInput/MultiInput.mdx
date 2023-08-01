@@ -9,6 +9,7 @@ import { Token } from '../Token';
 import TokenDescription from '../Token/TokenDescription.md?raw';
 import * as ComponentStories from './MultiInput.stories';
 import MultiInputDomRef from './MultiInputDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -35,12 +36,12 @@ import MultiInputDomRef from './MultiInputDomRef.json';
 
 ## SuggestionItem
 
-<ArgTypesWithNote hideHTMLPropsNote of={SuggestionItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
 <Markdown>{SuggestionItemDescription}</Markdown>
 
 ## SuggestionGroupItem
 
-<ArgTypesWithNote hideHTMLPropsNote of={SuggestionGroupItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionGroupItem} />
 <Markdown>{SuggestionGroupItemDescription}</Markdown>
 
 <Footer />

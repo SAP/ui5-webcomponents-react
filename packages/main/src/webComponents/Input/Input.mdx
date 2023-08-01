@@ -8,6 +8,7 @@ import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescripti
 import * as ComponentStories from './Input.stories';
 import Description from './InputDescription.md?raw';
 import InputDomRef from './InputDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -46,12 +47,12 @@ and the `showSuggestions` prop is set to `true`.
 
 ## SuggestionItem
 
-<ArgTypesWithNote hideHTMLPropsNote of={SuggestionItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
 <Markdown>{SuggestionItemDescription}</Markdown>
 
 ## SuggestionGroupItem
 
-<ArgTypesWithNote hideHTMLPropsNote of={SuggestionGroupItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionGroupItem} />
 <Markdown>{SuggestionGroupItemDescription}</Markdown>
 
 <Footer />
