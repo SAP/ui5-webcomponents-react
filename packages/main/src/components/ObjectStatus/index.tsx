@@ -107,7 +107,15 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
   );
 
   return (
-    <div ref={ref} className={objStatusClasses} style={style} onClick={active ? onClick : undefined} {...rest}>
+    <div
+      ref={ref}
+      className={objStatusClasses}
+      style={style}
+      onClick={active ? onClick : undefined}
+      tabIndex={active ? 0 : undefined}
+      data-icon-only={!children}
+      {...rest}
+    >
       {iconToRender && <span className={classes.icon}>{iconToRender}</span>}
       {children && <span className={classes.text}>{children}</span>}
     </div>
