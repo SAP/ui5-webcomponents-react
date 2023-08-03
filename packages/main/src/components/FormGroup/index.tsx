@@ -26,13 +26,14 @@ export interface FormGroupPropTypes {
  */
 const FormGroup = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
-  const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
+  const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan, recalcTrigger } = useFormContext();
   const uniqueId = useIsomorphicId();
 
   useEffect(() => {
+    console.log('group recalc');
     registerItem?.(uniqueId, 'formGroup');
     return () => unregisterItem?.(uniqueId);
-  }, [uniqueId, registerItem, unregisterItem]);
+  }, [uniqueId, registerItem, unregisterItem, recalcTrigger]);
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
 
