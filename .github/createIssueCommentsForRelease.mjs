@@ -43,5 +43,14 @@ export default async function run({ github, context }) {
     env: process.env
   };
 
-  await issueCommenter({}, semanticReleaseContext, { Octokit: github });
+  const Octokit = new Proxy(
+    {},
+    {
+      construct(target, argArray, newTarget) {
+        return github;
+      }
+    }
+  );
+
+  await issueCommenter({}, semanticReleaseContext, { Octokit });
 }
