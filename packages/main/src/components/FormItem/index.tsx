@@ -88,13 +88,13 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
   }
 
   if (isValidElement(label)) {
-    const { showColon, wrappingType, className, style: labelStyle, children } = label.props;
+    const { showColon, wrappingType, style: labelStyle, children } = label.props;
     return cloneElement<LabelPropTypes & { 'data-label-span'?: number }>(
       label,
       {
         showColon: showColon ?? true,
         wrappingType: wrappingType ?? WrappingType.Normal,
-        className: `${classes.label} ${className ?? ''}`,
+        className: clsx(classes.label, className, label.props.className),
         style: {
           ...style,
           ...(labelStyle || {})
