@@ -43,14 +43,11 @@ export default async function run({ github, context }) {
     env: process.env
   };
 
-  const Octokit = new Proxy(
-    {},
-    {
-      construct(target, argArray, newTarget) {
-        return github;
-      }
+  const Octokit = new Proxy(class {}, {
+    construct(target, argArray, newTarget) {
+      return github;
     }
-  );
+  });
 
   await issueCommenter({}, semanticReleaseContext, { Octokit });
 }
