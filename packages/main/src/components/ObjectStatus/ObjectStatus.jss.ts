@@ -1,25 +1,25 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const createInvertedValueStateStyles = (baseColor: string) => ({
-  // todo: the normal text shadow looks blurry, therefore only the ContrastTextShadow is used
   textShadow: ThemingParameters.sapContent_ContrastTextShadow,
   background: ThemingParameters[`${baseColor}_Background`],
   color: ThemingParameters[`${baseColor}_TextColor`],
-  border: `solid ${ThemingParameters[`${baseColor}_BorderColor`]}`,
   '& [ui5-icon]': {
     color: ThemingParameters[`${baseColor}_TextColor`]
   },
   '&$active:hover': {
     background: ThemingParameters[`${baseColor}_Hover_Background`],
     color: ThemingParameters[`${baseColor}_Hover_TextColor`],
-    border: `solid ${ThemingParameters[`${baseColor}_Hover_BorderColor`]}`,
     '& [ui5-icon]': {
       color: ThemingParameters[`${baseColor}_Hover_TextColor`]
     }
   },
   '&$active:active': {
     background: ThemingParameters[`${baseColor}_Active_Background`],
-    border: `solid ${ThemingParameters[`${baseColor}_Active_BorderColor`]}`
+    color: ThemingParameters[`${baseColor}_Active_TextColor`],
+    '& [ui5-icon]': {
+      color: ThemingParameters[`${baseColor}_Active_TextColor`]
+    }
   }
 });
 
@@ -27,7 +27,6 @@ const createInvertedIndicationStyles = (baseColor: string) => ({
   textShadow: ThemingParameters.sapContent_ContrastTextShadow,
   color: ThemingParameters[`${baseColor}_TextColor`],
   backgroundColor: ThemingParameters[`${baseColor}`],
-  border: `solid ${ThemingParameters[`${baseColor}_BorderColor`]}`,
   '& [ui5-icon]': {
     color: ThemingParameters[`${baseColor}_TextColor`]
   },
@@ -35,12 +34,7 @@ const createInvertedIndicationStyles = (baseColor: string) => ({
     background: ThemingParameters[`${baseColor}_Hover_Background`]
   },
   '&$active:active': {
-    background: ThemingParameters[`${baseColor}_Active_Background`],
-    border: `solid ${ThemingParameters[`${baseColor}_Active_BorderColor`]}`,
-    color: ThemingParameters[`${baseColor}_Active_TextColor`],
-    '& [ui5-icon]': {
-      color: ThemingParameters[`${baseColor}_Active_TextColor`]
-    }
+    background: ThemingParameters[`${baseColor}_Active_Background`]
   }
 });
 
@@ -88,6 +82,7 @@ const styles = {
     lineHeight: '1rem',
     verticalAlign: 'top',
     paddingInlineEnd: '0.25rem',
+
     '&:only-child': {
       paddingInlineEnd: 0
     }
@@ -201,51 +196,11 @@ const styles = {
     '$active&:focus': {
       outline: `${ThemingParameters.sapContent_FocusColor} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusWidth}`
     },
-    '&$error': {
-      ...createInvertedValueStateStyles('sapButton_Negative'),
-      '&$active:active': {
-        color: ThemingParameters.sapButton_Reject_Selected_TextColor,
-        '& [ui5-icon]': {
-          color: ThemingParameters.sapButton_Reject_Selected_TextColor
-        }
-      }
-    },
-    '&$warning': {
-      ...createInvertedValueStateStyles('sapButton_Critical'),
-      '&$active:active': {
-        color: ThemingParameters.sapButton_Attention_Selected_TextColor,
-        '& [ui5-icon]': {
-          color: ThemingParameters.sapButton_Attention_Selected_TextColor
-        }
-      }
-    },
-    '&$success': {
-      ...createInvertedValueStateStyles('sapButton_Success'),
-      '&$active:active': {
-        color: ThemingParameters.sapButton_Accept_Selected_TextColor,
-        '& [ui5-icon]': {
-          color: ThemingParameters.sapButton_Accept_Selected_TextColor
-        }
-      }
-    },
-    '&$information': {
-      ...createInvertedValueStateStyles('sapButton_Information'),
-      '&$active:active': {
-        color: ThemingParameters.sapButton_Selected_TextColor,
-        '& [ui5-icon]': {
-          color: ThemingParameters.sapButton_Selected_TextColor
-        }
-      }
-    },
-    '&$none': {
-      ...createInvertedValueStateStyles('sapButton_Neutral'),
-      '&$active:active': {
-        color: ThemingParameters.sapButton_Active_TextColor,
-        '& [ui5-icon]': {
-          color: ThemingParameters.sapButton_Active_TextColor
-        }
-      }
-    },
+    '&$error': createInvertedValueStateStyles('sapButton_Negative'),
+    '&$warning': createInvertedValueStateStyles('sapButton_Critical'),
+    '&$success': createInvertedValueStateStyles('sapButton_Success'),
+    '&$information': createInvertedValueStateStyles('sapButton_Information'),
+    '&$none': createInvertedValueStateStyles('sapButton_Neutral'),
     '&$indication01': createInvertedIndicationStyles('sapIndicationColor_1'),
     '&$indication02': createInvertedIndicationStyles('sapIndicationColor_2'),
     '&$indication03': createInvertedIndicationStyles('sapIndicationColor_3'),
