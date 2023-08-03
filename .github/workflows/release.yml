@@ -66,5 +66,5 @@ jobs:
           script: |
             const { default: addIssueComments } = await import('${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs');
 
-            await addIssueComments({ github: github.rest, context })
+            await addIssueComments({ github, context })
 
