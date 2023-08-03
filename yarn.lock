@@ -5802,12 +5802,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-base@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-base@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-base@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-base@npm:1.16.0"
   dependencies:
     lit-html: ^2.0.1
-  checksum: 9ab543c04ed4323a38cfd5a28b9a2e9692dd935bdf2638a589c4d1fa004d1ce98d811ce4bc942c458f340a8fb185d638809c7c3d58c4557a716442223f82a319
+  checksum: 269dc4ad4fc3c6dfd228be29b7744b045c7516cbcff1348482c2853f9d8476d493cb6c97b21a0fde19a00f7ece54ef1e0884e9b3bbb76d8133efadd55e2110f5
   languageName: node
   linkType: hard
 
@@ -5819,35 +5819,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-fiori@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-fiori@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-fiori@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-fiori@npm:1.16.0"
   dependencies:
-    "@ui5/webcomponents": 0.0.0-33967dd12
-    "@ui5/webcomponents-base": 0.0.0-33967dd12
-    "@ui5/webcomponents-icons": 0.0.0-33967dd12
-    "@ui5/webcomponents-theming": 0.0.0-33967dd12
+    "@ui5/webcomponents": 1.16.0
+    "@ui5/webcomponents-base": 1.16.0
+    "@ui5/webcomponents-icons": 1.16.0
+    "@ui5/webcomponents-theming": 1.16.0
     "@zxing/library": ^0.17.1
-  checksum: 9f7008812b46bc989aa883d4ba3536dab3735a4413354e6328ab0e9ca4d3a9212107e94e917a83e26916804b662fc49243a4ee918b902e0188237e337e632ea3
+  checksum: 90a4ec775b4b2d2b3cb3cb64885a7d5895e63f1876c0222be5868c199b0f1d3d0e00676ed6badd2aad0a2d1cf957e175849d3c6594c2d5cbcd8fc1a6a04faadd
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-icons@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-icons@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-icons@npm:1.16.0"
   dependencies:
-    "@ui5/webcomponents-base": 0.0.0-33967dd12
-  checksum: 7048e779b48e2bd8f014a9cc63ceb723eb13a541f147c285d68e6bb2c7b2a7669d5df23708a9c62c1be1b5ec7a1698307b383b3cd39ab38c8845cd676cdd70e4
+    "@ui5/webcomponents-base": 1.16.0
+  checksum: de6362fac6e126f4ddbe23a95093a6b1e23e289a738b4816f04304859f4788e7bad425ba76d8d77032fc81b9d8db4c29ea8cf623762c343082fd9dbfcc869762
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-localization@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-localization@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-localization@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-localization@npm:1.16.0"
   dependencies:
     "@types/openui5": ^1.113.0
-    "@ui5/webcomponents-base": 0.0.0-33967dd12
-  checksum: 39743601975199dd854e913b7caf91308317c2dc1dfeacb81c316dad03c44d9530b68d6f526435c08c57ae4f92e27703e843cee82ddf6ebe4e39c2f92a9be1bc
+    "@ui5/webcomponents-base": 1.16.0
+  checksum: 71da88a366b077b021c92ab93569321d4085da9e3bff7ace948bcd3eda740a02ccad374d98b6fa91e8246f4bd397457b94c146647c2cf3eb5aafea0ac7d595a7
   languageName: node
   linkType: hard
 
@@ -5856,7 +5856,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~0.0.0-33967dd12
+    "@ui5/webcomponents-base": ~1.16.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
@@ -5876,8 +5876,8 @@ __metadata:
     react-content-loader: 6.2.1
     recharts: 2.7.2
   peerDependencies:
-    "@ui5/webcomponents-react": ~1.17.0
-    "@ui5/webcomponents-react-base": ~1.17.0
+    "@ui5/webcomponents-react": ~1.18.0
+    "@ui5/webcomponents-react-base": ~1.18.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-jss: ^10.10.0
   languageName: unknown
@@ -5895,10 +5895,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": 0.0.0-33967dd12
-    "@ui5/webcomponents-base": ~0.0.0-33967dd12
-    "@ui5/webcomponents-fiori": ~0.0.0-33967dd12
-    "@ui5/webcomponents-icons": ~0.0.0-33967dd12
+    "@ui5/webcomponents": ~1.16.0
+    "@ui5/webcomponents-base": ~1.16.0
+    "@ui5/webcomponents-fiori": ~1.16.0
+    "@ui5/webcomponents-icons": ~1.16.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
@@ -5913,19 +5913,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-theming@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-theming@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-theming@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-theming@npm:1.16.0"
   dependencies:
     "@sap-theming/theming-base-content": 11.5.0
-    "@ui5/webcomponents-base": 0.0.0-33967dd12
-  checksum: 1d223868ea154e548fabc4496caca514f082e60c1dd873b53affafe4163ae5922aaa574dc5777bf900ae37f2315997dfaf0416e5244338b3f49c9f17b90530cc
+    "@ui5/webcomponents-base": 1.16.0
+  checksum: feff3256c472d7579377240adf05753c86f432511921eb7f3c63a3e48783042593fad59db0d2ced0fd33b078f6e3203b5f9c413a3dd7e766f1ebe9d026c95926
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents-tools@npm:0.0.0-33967dd12"
+"@ui5/webcomponents-tools@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents-tools@npm:1.16.0"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
@@ -5981,19 +5981,19 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: 4bf90ab5dfb67d8440e38eda012ad3b2e8ab55c699213d4cb0d4d8aa7549021bbaa38fc38a00f645e8f8340c6a57a4fead3a60180d9c78b38cf0d2d34b9f76e6
+  checksum: ccc8677f62f84aa1874739978bd09e54465f2e09705dfe349f94e79f4e82ca727444b1884a76028b4e520cad52cf9f65eb95e944de1effde9d7ef01763f19f20
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents@npm:0.0.0-33967dd12":
-  version: 0.0.0-33967dd12
-  resolution: "@ui5/webcomponents@npm:0.0.0-33967dd12"
+"@ui5/webcomponents@npm:1.16.0":
+  version: 1.16.0
+  resolution: "@ui5/webcomponents@npm:1.16.0"
   dependencies:
-    "@ui5/webcomponents-base": 0.0.0-33967dd12
-    "@ui5/webcomponents-icons": 0.0.0-33967dd12
-    "@ui5/webcomponents-localization": 0.0.0-33967dd12
-    "@ui5/webcomponents-theming": 0.0.0-33967dd12
-  checksum: 27d120fb6999a6a32f0a2c2495ef6c8fc68ca96d1b2e24736f3c79ed258aa5de3128605e3f11b6767bcf9fc7b627cad7c47ef69df32bd4e8f02042ad9c551e65
+    "@ui5/webcomponents-base": 1.16.0
+    "@ui5/webcomponents-icons": 1.16.0
+    "@ui5/webcomponents-localization": 1.16.0
+    "@ui5/webcomponents-theming": 1.16.0
+  checksum: 55a15d979301a9f4c847cc57a67cefbe3416014ed8670d35973a6931acbacd27ef4e95cfd3abba228c7b47610bc70a39cd92ebeaee20e61109de4693f198f899
   languageName: node
   linkType: hard
 
@@ -20618,10 +20618,10 @@ __metadata:
     "@types/react-dom": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^6.0.0
     "@typescript-eslint/parser": ^6.0.0
-    "@ui5/webcomponents": 0.0.0-33967dd12
-    "@ui5/webcomponents-fiori": 0.0.0-33967dd12
-    "@ui5/webcomponents-icons": 0.0.0-33967dd12
-    "@ui5/webcomponents-tools": 0.0.0-33967dd12
+    "@ui5/webcomponents": 1.16.0
+    "@ui5/webcomponents-fiori": 1.16.0
+    "@ui5/webcomponents-icons": 1.16.0
+    "@ui5/webcomponents-tools": 1.16.0
     "@vitejs/plugin-react": ^4.0.0
     chromatic: ^6.5.3
     cssnano: ^6.0.1
