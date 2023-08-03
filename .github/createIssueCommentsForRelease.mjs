@@ -43,5 +43,5 @@ export default async function run({ github, context }) {
     env: process.env
   };
 
-  await issueCommenter({}, semanticReleaseContext);
+  await issueCommenter({}, semanticReleaseContext, { Octokit: github });
 }
