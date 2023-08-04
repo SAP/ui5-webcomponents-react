@@ -1,6 +1,7 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const createInvertedValueStateStyles = (baseColor: string) => ({
+  textShadow: ThemingParameters.sapContent_ContrastTextShadow,
   background: ThemingParameters[`${baseColor}_Background`],
   color: ThemingParameters[`${baseColor}_TextColor`],
   '& [ui5-icon]': {
@@ -23,6 +24,7 @@ const createInvertedValueStateStyles = (baseColor: string) => ({
 });
 
 const createInvertedIndicationStyles = (baseColor: string) => ({
+  textShadow: ThemingParameters.sapContent_ContrastTextShadow,
   color: ThemingParameters[`${baseColor}_TextColor`],
   backgroundColor: ThemingParameters[`${baseColor}`],
   '& [ui5-icon]': {
@@ -44,7 +46,32 @@ const styles = {
     position: 'relative',
     display: 'inline-block',
     verticalAlign: 'top',
-    width: 'fit-content'
+    width: 'fit-content',
+    textShadow: ThemingParameters.sapContent_TextShadow
+  },
+
+  active: {
+    cursor: 'pointer',
+    '&:not($inverted)': {
+      '& $text': {
+        textDecoration: 'underline'
+      },
+      '&:hover, &:active': {
+        '& $text': {
+          textDecoration: 'none'
+        }
+      },
+      '&:focus': {
+        textShadow: 'none',
+        background: ThemingParameters.sapContent_FocusColor,
+        color: ThemingParameters.sapContent_ContrastTextColor,
+        borderRadius: '0.125rem',
+        outline: `0.125rem ${ThemingParameters.sapContent_FocusColor}`,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapContent_ContrastTextColor
+        }
+      }
+    }
   },
 
   icon: {
@@ -147,27 +174,27 @@ const styles = {
     }
   },
 
-  active: {
-    '&:hover, &:active': {
-      cursor: 'pointer',
-      '&:not($inverted) $text, $icon:only-child': {
-        textDecoration: 'underline'
-      }
-    }
-  },
-
   inverted: {
     height: 'auto',
     minHeight: '1rem',
-    minWidth: '1.25rem',
-    padding: '0.0625rem 0.25rem',
-    borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
+    minWidth: '1.375rem',
+    padding: '0.1875rem 0.25rem',
+    borderRadius: ThemingParameters.sapButton_BorderCornerRadius,
     fontFamily: ThemingParameters.sapFontBoldFamily,
     fontSize: ThemingParameters.sapFontSmallSize,
     '& [ui5-icon]': {
-      paddingTop: '0.125rem',
+      paddingBlockStart: '0.125rem',
       width: ThemingParameters.sapFontSmallSize,
       height: ThemingParameters.sapFontSmallSize
+    },
+    '&[data-icon-only="true"]': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0.1875rem 0.313rem'
+    },
+    '$active&:focus': {
+      outline: `${ThemingParameters.sapContent_FocusColor} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusWidth}`
     },
     '&$error': createInvertedValueStateStyles('sapButton_Negative'),
     '&$warning': createInvertedValueStateStyles('sapButton_Critical'),
