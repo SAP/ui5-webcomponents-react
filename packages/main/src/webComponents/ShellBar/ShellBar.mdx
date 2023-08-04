@@ -6,6 +6,7 @@ import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md?
 import * as ComponentStories from './ShellBar.stories';
 import Description from './ShellBarDescription.md?raw';
 import ShellBarDomRef from './ShellBarDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -56,7 +57,7 @@ const ShellBarComponent = () => {
 
 ## ShellBarItem
 
-<ArgTypes of={ShellBarItem} />
+<ArgTypes hideHTMLPropsNote exclude={excludePropsForAbstract} of={ShellBarItem} />
 
 <Markdown>{ShellBarItemDescription}</Markdown>
 

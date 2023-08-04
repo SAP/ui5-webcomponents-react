@@ -8,6 +8,7 @@ import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md?
 import * as ComponentStories from './TabContainer.stories';
 import Description from './TabContainerDescription.md?raw';
 import TabContainerDomRef from './TabContainerDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -44,11 +45,11 @@ The <code>TabSeparator</code> represents a vertical line to separate tabs inside
 ## Tab
 
 <Markdown>{TabDescription}</Markdown>
-<ArgTypesWithNote of={Tab} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Tab} />
 
 ## TabSeparator
 
 <Markdown>{TabSeparatorDescription}</Markdown>
-<ArgTypesWithNote of={TabSeparator} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={TabSeparator} />
 
 <Footer />

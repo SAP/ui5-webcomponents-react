@@ -14,3 +14,5 @@ export const MAPPED_THEMES = [
   // { value: 'sap_belize_hcb', title: 'Belize High Contrast Black' },
   // { value: 'sap_belize_hcw', title: 'Belize High Contrast White' }
 ];
+
+export const excludePropsForAbstract = ['className', 'style'];

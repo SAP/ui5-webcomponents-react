@@ -31,6 +31,10 @@ interface AvatarAttributes {
    */
   colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
   /**
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
+   */
+  disabled?: boolean;
+  /**
    * Defines the name of the UI5 Icon, that will be displayed.
    * **Note:** If `image` slot is provided, the property will be ignored.
    * **Note:** You should import the desired icon first, then use its name as "icon".
@@ -49,7 +53,7 @@ interface AvatarAttributes {
    */
   initials?: string;
   /**
-   * Defines if the avatar is interactive (focusable and pressable).
+   * Defines if the avatar is interactive (focusable and pressable). **Note:** This property won't have effect if the `disabled` property is set to `true`.
    */
   interactive?: boolean;
   /**
@@ -114,7 +118,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
   ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
-  ['interactive'],
+  ['disabled', 'interactive'],
   ['badge'],
   [],
   () => import('@ui5/webcomponents/dist/Avatar.js')

@@ -14,3 +14,6 @@ The `Dialog` exposes the following CSS Shadow Parts:
 - header - Used to style the header of the component
 - content - Used to style the content of the component
 - footer - Used to style the footer of the component
+
+**Note:** When a `Bar` is used in the header or in the footer, you should remove the default dialog's paddings.  
+For more information see the sample "Bar in Header/Footer".

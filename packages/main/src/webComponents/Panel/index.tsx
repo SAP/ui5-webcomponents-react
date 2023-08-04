@@ -40,6 +40,10 @@ interface PanelAttributes {
    * Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
    */
   noAnimation?: boolean;
+  /**
+   * Indicates whether the Panel header is sticky or not. If stickyHeader is set to true, then whenever you scroll the content or the application, the header of the panel will be always visible and a solid color will be used for its design.
+   */
+  stickyHeader?: boolean;
 }
 
 export interface PanelDomRef extends PanelAttributes, Ui5DomRef {}
@@ -77,7 +81,7 @@ export interface PanelPropTypes extends PanelAttributes, CommonProps {
 const Panel = withWebComponent<PanelPropTypes, PanelDomRef>(
   'ui5-panel',
   ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
-  ['collapsed', 'fixed', 'noAnimation'],
+  ['collapsed', 'fixed', 'noAnimation', 'stickyHeader'],
   ['header'],
   ['toggle'],
   () => import('@ui5/webcomponents/dist/Panel.js')
