@@ -48,6 +48,7 @@
       "groupName": "all non-major dependencies (examples)",
       "groupSlug": "examples-all-minor-patch",
       "matchPackagePatterns": ["*"],
+      "excludePackagePatterns": ["^@ui5/"],
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
