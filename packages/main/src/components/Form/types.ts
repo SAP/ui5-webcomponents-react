@@ -16,6 +16,7 @@ export type FormContextType = {
   unregisterItem?: (id: string, groupId?: string) => void;
   labelSpan: null | number;
   rowsWithGroup?: Record<number, boolean>;
+  recalcTrigger: number;
 };
 
 export type GroupContextType = {

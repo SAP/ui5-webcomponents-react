@@ -30,12 +30,14 @@ const FormGroup = (props: FormGroupPropTypes) => {
   const uniqueId = useIsomorphicId();
 
   useEffect(() => {
-    console.log('group recalc');
     registerItem?.(uniqueId, 'formGroup');
     return () => unregisterItem?.(uniqueId);
   }, [uniqueId, registerItem, unregisterItem, recalcTrigger]);
 
-  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
+  const layoutInfo = useMemo(
+    () => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId),
+    [layoutInfos, uniqueId]
+  );
 
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;

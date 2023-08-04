@@ -12,6 +12,10 @@ import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext.js';
 import type { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
 
+const recalcReducerFn = (prev: number) => {
+  return prev + 1;
+};
+
 const useStyles = createUseStyles(styles, { name: 'Form' });
 
 export interface FormPropTypes extends CommonProps {
@@ -164,7 +168,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const currentLabelSpan = labelSpanMap.get(currentRange);
   const currentNumberOfColumns = columnsMap.get(currentRange);
 
-  const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string, label?: string) => {
+  const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
     setItems((prev) => {
       const clonedMap = new Map(prev);
       if (groupId) {
@@ -201,7 +205,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
   }, []);
 
-  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan'> => {
+  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan' | 'recalcTrigger'> => {
     const formItems: FormItemLayoutInfo[] = [];
     const formGroups: FormGroupLayoutInfo[] = [];
 
@@ -261,27 +265,31 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
 
-  const prevFormItems = useRef(undefined);
-  const prevFormGroups = useRef(undefined);
-  const [recalcTrigger, fireRecalc] = useReducer((prev) => {
-    return prev + 1;
-  }, 0);
+  const prevFormItems = useRef<undefined | FormItemLayoutInfo[]>(undefined);
+  const prevFormGroups = useRef<undefined | FormGroupLayoutInfo[]>(undefined);
 
+  const [recalcTrigger, fireRecalc] = useReducer(recalcReducerFn, 0, undefined);
   useEffect(() => {
-    console.log('-> prevFormItems', prevFormItems.current, formLayoutContextValue.formGroups);
     if (prevFormItems.current || prevFormGroups.current) {
-      let hasChanged = formLayoutContextValue.formItems.length !== prevFormItems.current.length;
+      let hasChanged =
+        formLayoutContextValue.formItems.length !== prevFormItems.current.length ||
+        formLayoutContextValue.formGroups.length !== prevFormGroups.current.length;
       if (!hasChanged) {
         hasChanged = !formLayoutContextValue.formItems.every(
           (item, index) => prevFormItems.current.findIndex((element) => element.id === item.id) === index
         );
       }
+      if (!hasChanged) {
+        hasChanged = !formLayoutContextValue.formGroups.every(
+          (item, index) => prevFormGroups.current.findIndex((element) => element.id === item.id) === index
+        );
+      }
       if (hasChanged) {
-        console.log('recalc');
         fireRecalc();
       }
     }
     prevFormItems.current = formLayoutContextValue.formItems;
+    prevFormGroups.current = formLayoutContextValue.formGroups;
   }, [formLayoutContextValue.formItems, formLayoutContextValue.formGroups]);
 
   return (
