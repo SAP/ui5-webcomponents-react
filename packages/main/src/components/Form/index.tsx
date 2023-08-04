@@ -275,13 +275,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         formLayoutContextValue.formItems.length !== prevFormItems.current.length ||
         formLayoutContextValue.formGroups.length !== prevFormGroups.current.length;
       if (!hasChanged) {
-        hasChanged = !formLayoutContextValue.formItems.every(
-          (item, index) => prevFormItems.current.findIndex((element) => element.id === item.id) === index
+        hasChanged = !formLayoutContextValue.formGroups.every(
+          (item, index) => prevFormGroups.current.findIndex((element) => element.id === item.id) === index
         );
       }
       if (!hasChanged) {
-        hasChanged = !formLayoutContextValue.formGroups.every(
-          (item, index) => prevFormGroups.current.findIndex((element) => element.id === item.id) === index
+        hasChanged = !formLayoutContextValue.formItems.every(
+          (item, index) => prevFormItems.current.findIndex((element) => element.id === item.id) === index
         );
       }
       if (hasChanged) {
