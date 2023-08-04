@@ -164,7 +164,7 @@ const FormItem = (props: FormItemPropTypes) => {
   const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
 
   return (
-    <React.Fragment>
+    <>
       <FormItemLabel
         label={label}
         style={{
@@ -202,7 +202,7 @@ const FormItem = (props: FormItemPropTypes) => {
           return undefined;
         })}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
