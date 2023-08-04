@@ -5,6 +5,7 @@ import { ColorPaletteItem } from '../ColorPaletteItem';
 import ColorPaletteItemDescription from '../ColorPaletteItem/ColorPaletteItemDescription.md?raw';
 import * as ComponentStories from './ColorPalette.stories';
 import ColorPaletteDescription from './ColorPaletteDescription.md?raw';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -26,7 +27,7 @@ import ColorPaletteDescription from './ColorPaletteDescription.md?raw';
 
 ## ColorPaletteItem
 
-<ArgsTableWithNote of={ColorPaletteItem} />
+<ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={ColorPaletteItem} />
 <Markdown>{ColorPaletteItemDescription}</Markdown>
 
 <Footer />

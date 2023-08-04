@@ -33,15 +33,27 @@ interface SwitchAttributes {
    */
   disabled?: boolean;
   /**
+   * Determines the name with which the component will be submitted in an HTML form.
+   *
+   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   *
+   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   */
+  name?: string;
+  /**
+   * Defines whether the component is required.
+   */
+  required?: boolean;
+  /**
    * Defines the text, displayed when the component is not checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
    */
   textOff?: string;
   /**
    * Defines the text, displayed when the component is checked.
    *
-   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off). **Note:** This property will have no effect if the theme is set to `sap_horizon`.
+   * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
    */
   textOn?: string;
   /**
@@ -72,8 +84,8 @@ export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'on
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['accessibleName', 'accessibleNameRef', 'design', 'textOff', 'textOn', 'tooltip'],
-  ['checked', 'disabled'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'name', 'textOff', 'textOn', 'tooltip'],
+  ['checked', 'disabled', 'required'],
   [],
   ['change'],
   () => import('@ui5/webcomponents/dist/Switch.js')

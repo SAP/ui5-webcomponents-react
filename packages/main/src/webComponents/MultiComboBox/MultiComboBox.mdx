@@ -8,6 +8,7 @@ import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItem
 import * as ComponentStories from './MultiComboBox.stories';
 import Description from './MultiComboBoxDescription.md?raw';
 import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -37,12 +38,12 @@ import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
 
 ## MultiComboBoxItem
 
-<ArgsTableWithNote hideHTMLPropsNote of={MultiComboBoxItem} />
+<ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItem} />
 <Markdown>{MultiComboBoxItemDescription}</Markdown>
 
 ## MultiComboBoxGroupItem
 
-<ArgsTableWithNote hideHTMLPropsNote of={MultiComboBoxGroupItem} />
+<ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxGroupItem} />
 <Markdown>{MultiComboBoxGroupItemDescription}</Markdown>
 
 <Footer />

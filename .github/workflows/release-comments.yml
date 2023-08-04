@@ -14,13 +14,14 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.7.0
         with:
-          node-version: 16
+          node-version-file: '.nvmrc'
           cache: 'yarn'
 
       - name: Install Dependencies
         run: |
           yarn install --immutable
-          yarn add @octokit/rest@v19.0.13 @octokit/auth-app@v5.0.4
+        env:
+          CYPRESS_INSTALL_BINARY: 0
 
       ### Semantic Release Bot comments for issues and PRs ###
       - name: Add release comments to issues and PRs
@@ -28,8 +29,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          node-version: 16
           script: |
             const { default: addIssueComments } = await import('${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs');
 
-            await addIssueComments({ github: github.rest, context })
+            await addIssueComments({ github, context })

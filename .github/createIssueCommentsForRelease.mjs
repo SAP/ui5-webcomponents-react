@@ -13,7 +13,7 @@ const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
 export default async function run({ github, context }) {
   const { version } = JSON.parse(readFileSync(new URL('../lerna.json', import.meta.url)).toString());
 
-  const { data: release } = await github.repos.getReleaseByTag({
+  const { data: release } = await github.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
     owner: context.repo.owner,
     repo: context.repo.repo,
     tag: `v${version}`
@@ -43,5 +43,11 @@ export default async function run({ github, context }) {
     env: process.env
   };
 
-  await issueCommenter({}, semanticReleaseContext);
+  const Octokit = new Proxy(class {}, {
+    construct(target, argArray, newTarget) {
+      return github;
+    }
+  });
+
+  await issueCommenter({}, semanticReleaseContext, { Octokit });
 }

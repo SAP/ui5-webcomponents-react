@@ -5,6 +5,7 @@ import { SegmentedButtonItem } from '../SegmentedButtonItem';
 import SegmentedButtonItemDescription from '../SegmentedButtonItem/SegmentedButtonItemDescription.md?raw';
 import * as ComponentStories from './SegmentedButton.stories';
 import SegmentedButtonDomRef from './SegmentedButtonDomRef.json';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
@@ -27,6 +28,6 @@ import SegmentedButtonDomRef from './SegmentedButtonDomRef.json';
 ## SegmentedButtonItem
 
 <Markdown>{SegmentedButtonItemDescription}</Markdown>
-<ArgTypesWithNote hideHTMLPropsNote of={SegmentedButtonItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SegmentedButtonItem} />
 
 <Footer />

@@ -101,6 +101,8 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   /**
    * Defines the footer HTML Element.
    *
+   * **Note:** When a `Bar` is used in the footer, you should remove the default dialog's paddings.
+   *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="footer"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
@@ -110,6 +112,8 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
   footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
    * Defines the header HTML Element.
+   *
+   * **Note:** When a `Bar` is used in the header, you should remove the default dialog's paddings.
    *
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    *
