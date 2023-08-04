@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useReducer, useState } from 'react';
 import {
   CheckBox,
   FormBackgroundDesign,
@@ -40,98 +39,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Test = {
-  render: () => {
-    const [show, setShow] = useState(false);
-    const [show2, setShow2] = useReducer((prev) => !prev, false);
-    const [show3, setShow3] = useReducer((prev) => !prev, false);
-    const [toggle, setToggle] = useReducer((prev) => !prev, false);
-    const [toggle2, setToggle2] = useReducer((prev) => !prev, false);
-    const [toggle3, setToggle3] = useReducer((prev) => !prev, false);
-    const childrenA = (
-      <>
-        <FormItem label={toggle2 ? 'laksjdklasjd' : 'hello'}>
-          <Input placeholder={toggle3 ? 'Hello' : ''} />
-        </FormItem>
-        {show && (
-          <FormItem label="Test2">
-            <Input />
-          </FormItem>
-        )}
-        {show2 && (
-          <FormGroup titleText={'Group1'}>
-            <FormItem label="Test1 Grouped">
-              <Input />
-            </FormItem>
-            <FormItem label="Test1 Grouped">
-              <Input />
-            </FormItem>
-          </FormGroup>
-        )}
-        <FormItem label="Test3">
-          <Input />
-        </FormItem>
-        <FormItem label="Test4">
-          <Input />
-        </FormItem>
-      </>
-    );
-    const childrenB = (
-      <>
-        <FormItem label={toggle2 ? 'laksjdklasjd' : 'hello'}>
-          <Input placeholder={toggle3 ? 'Hello' : ''} />
-        </FormItem>
-        {show && (
-          <FormItem label="Test2">
-            <Input />
-          </FormItem>
-        )}
-        {show2 && (
-          <FormGroup titleText={'Group1'}>
-            <FormItem label="Test1 Grouped">
-              <Input />
-            </FormItem>
-            {show && (
-              <FormItem label="Test2 Grouped">
-                <Input />
-              </FormItem>
-            )}
-          </FormGroup>
-        )}
-        {show3 && (
-          <FormGroup titleText={'Empty Group'}>
-            <FormItem label="Test1 Grouped">
-              <Input />
-            </FormItem>
-          </FormGroup>
-        )}
-        <FormItem label="Test3">
-          <Input />
-        </FormItem>
-        <FormItem label="Test4">
-          <Input />
-        </FormItem>
-      </>
-    );
-    return (
-      <>
-        <button onClick={setToggle}>toggle</button>
-        <button onClick={setToggle2}>toggle2</button>
-        <button onClick={setToggle3}>toggle3</button>
-        <button onClick={() => setShow((state) => !state)}>Show/Add Input</button>
-        <button onClick={setShow2}>Show/Add Group</button>
-        <button onClick={setShow3}>Show/Add Group2</button>
-        <Form>{toggle ? childrenA : childrenB}</Form>
-      </>
-    );
-  }
-};
-
 export const Default: Story = {
   render: (props) => {
     return (
       <Form {...props}>
-        <FormItem>
+        <FormItem label="Sole Form Item">
           <Input type={InputType.Text} />
         </FormItem>
         <FormGroup titleText="Personal Data">
