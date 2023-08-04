@@ -141,7 +141,7 @@ describe('Form', () => {
     cy.findByTestId('notSupported').should('not.exist');
   });
 
-  it('conditionally render FilterItems & FilterGroups', () => {
+  it('conditionally render FormItems & FormGroups', () => {
     cy.mount(<ConditionRenderingExample />);
     cy.findByText('Item 2').should('not.exist');
 
