@@ -135,7 +135,13 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       .filter(([key]) => !slotProperties.includes(key))
       .filter(([key]) => !booleanProperties.includes(key))
       .filter(([key]) => !eventProperties.map((eventName) => createEventPropName(eventName)).includes(key))
-      .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
+      .reduce((acc, [key, val]) => {
+        if (!key.startsWith('aria-') && !key.startsWith('data-') && val === false) {
+          return acc;
+        }
+        acc[key] = val;
+        return acc;
+      }, {});
 
     useEffect(() => {
       if (waitForDefine && !isDefined) {
