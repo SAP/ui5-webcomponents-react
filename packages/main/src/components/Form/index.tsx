@@ -3,7 +3,7 @@
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, ReactNode } from 'react';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -11,6 +11,10 @@ import { Title } from '../../webComponents/index.js';
 import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext.js';
 import type { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
+
+const recalcReducerFn = (prev: number) => {
+  return prev + 1;
+};
 
 const useStyles = createUseStyles(styles, { name: 'Form' });
 
@@ -165,8 +169,8 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const currentNumberOfColumns = columnsMap.get(currentRange);
 
   const registerItem = useCallback((id: string, type: FormElementTypes, groupId?: string) => {
-    setItems((state) => {
-      const clonedMap = new Map(state);
+    setItems((prev) => {
+      const clonedMap = new Map(prev);
       if (groupId) {
         const groupItem = clonedMap.get(groupId);
         if (groupItem) {
@@ -201,7 +205,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     });
   }, []);
 
-  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan'> => {
+  const formLayoutContextValue = useMemo((): Omit<FormContextType, 'labelSpan' | 'recalcTrigger'> => {
     const formItems: FormItemLayoutInfo[] = [];
     const formGroups: FormGroupLayoutInfo[] = [];
 
@@ -261,8 +265,35 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
 
+  const prevFormItems = useRef<undefined | FormItemLayoutInfo[]>(undefined);
+  const prevFormGroups = useRef<undefined | FormGroupLayoutInfo[]>(undefined);
+
+  const [recalcTrigger, fireRecalc] = useReducer(recalcReducerFn, 0, undefined);
+  useEffect(() => {
+    if (prevFormItems.current || prevFormGroups.current) {
+      let hasChanged =
+        formLayoutContextValue.formItems.length !== prevFormItems.current.length ||
+        formLayoutContextValue.formGroups.length !== prevFormGroups.current.length;
+      if (!hasChanged) {
+        hasChanged = !formLayoutContextValue.formGroups.every(
+          (item, index) => prevFormGroups.current.findIndex((element) => element.id === item.id) === index
+        );
+      }
+      if (!hasChanged) {
+        hasChanged = !formLayoutContextValue.formItems.every(
+          (item, index) => prevFormItems.current.findIndex((element) => element.id === item.id) === index
+        );
+      }
+      if (hasChanged) {
+        fireRecalc();
+      }
+    }
+    prevFormItems.current = formLayoutContextValue.formItems;
+    prevFormGroups.current = formLayoutContextValue.formGroups;
+  }, [formLayoutContextValue.formItems, formLayoutContextValue.formGroups]);
+
   return (
-    <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan }}>
+    <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan, recalcTrigger }}>
       <CustomTag
         className={clsx(classes.formContainer, className)}
         suppressHydrationWarning={true}

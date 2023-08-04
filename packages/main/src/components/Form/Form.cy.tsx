@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
 import { InputType } from '../../enums/index.js';
 import { Input, Label } from '../../webComponents/index.js';
@@ -29,6 +30,47 @@ const component = (
     </FormGroup>
   </Form>
 );
+
+const ConditionRenderingExample = () => {
+  const [show, toggle] = useReducer((prev) => !prev, false);
+  const [show2, toggle2] = useReducer((prev) => !prev, false);
+  const [show3, toggle3] = useReducer((prev) => !prev, false);
+  return (
+    <>
+      <button onClick={toggle}>Toggle Input</button>
+      <button onClick={toggle2}>Toggle Group</button>
+      <button onClick={toggle3}>Toggle Group2</button>
+      <Form>
+        <FormItem label="Item 1">
+          <Input data-testid="1" />
+        </FormItem>
+        {show3 && <FormGroup titleText="Empty Group" />}
+        {show && (
+          <FormItem label="Item 2">
+            <Input data-testid="2" />
+          </FormItem>
+        )}
+        {show2 && (
+          <FormGroup titleText="Group 1">
+            <FormItem label="Item1 Grouped">
+              <Input data-testid="g1" />
+            </FormItem>
+            <FormItem label="Item2 Grouped">
+              <Input data-testid="g2" />
+            </FormItem>
+          </FormGroup>
+        )}
+
+        <FormItem label="Item 3">
+          <Input data-testid="3" />
+        </FormItem>
+        <FormItem label="Item 4">
+          <Input data-testid="4" />
+        </FormItem>
+      </Form>
+    </>
+  );
+};
 
 describe('Form', () => {
   it('size S - labels and fields should cover full width', () => {
@@ -97,6 +139,53 @@ describe('Form', () => {
     );
     cy.findByText('Portal:').should('be.visible');
     cy.findByTestId('notSupported').should('not.exist');
+  });
+
+  it('conditionally render FormItems & FormGroups', () => {
+    cy.mount(<ConditionRenderingExample />);
+    cy.findByText('Item 2').should('not.exist');
+
+    cy.findByText('Toggle Input').click();
+    cy.findByText('Item 2').should('exist');
+    cy.findByTestId('2').should('be.visible').as('item2');
+    cy.get('@item2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '1');
+
+    cy.findByText('Toggle Group').click();
+    cy.findByText('Group 1')
+      .should('be.visible')
+      .and('have.css', 'grid-column-start', '1')
+      .and('have.css', 'grid-row-start', '2');
+    cy.findByTestId('g2').should('be.visible').as('g2');
+    cy.get('@g2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '4');
+    cy.findByTestId('2').should('be.visible').as('item2');
+    cy.get('@item2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '1');
+
+    cy.findByText('Toggle Group2').click();
+    cy.findByText('Empty Group')
+      .should('be.visible')
+      .and('have.css', 'grid-column-start', '13')
+      .and('have.css', 'grid-row-start', '1');
+    cy.findByText('Group 1')
+      .should('be.visible')
+      .and('have.css', 'grid-column-start', '13')
+      .and('have.css', 'grid-row-start', '3');
+    cy.findByTestId('g2').should('be.visible').as('g2');
+    cy.get('@g2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '5');
+    cy.findByTestId('2').should('be.visible').as('item2');
+    cy.get('@item2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '4');
+
+    cy.findByText('Toggle Input').click();
+    cy.findByText('Empty Group')
+      .should('be.visible')
+      .and('have.css', 'grid-column-start', '13')
+      .and('have.css', 'grid-row-start', '1');
+    cy.findByText('Group 1')
+      .should('be.visible')
+      .and('have.css', 'grid-column-start', '1')
+      .and('have.css', 'grid-row-start', '3');
+    cy.findByTestId('g2').should('be.visible').as('g2');
+    cy.get('@g2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '5');
+    cy.findByTestId('2').should('not.exist');
   });
 
   cypressPassThroughTestsFactory(Form, {
