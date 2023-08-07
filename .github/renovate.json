@@ -48,16 +48,19 @@
       "groupName": "all non-major dependencies (examples)",
       "groupSlug": "examples-all-minor-patch",
       "matchPackagePatterns": ["*"],
+      "excludePackagePatterns": ["^@ui5/"],
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "description": "UI5 Web Components (for React) in all examples",
-      "groupName": "ui5-webcomponents (react)",
+      "groupName": "UI5 Web Components React (examples)",
+      "groupSlug": "examples-ui5-webcomponents-react",
       "matchPaths": ["examples/**"],
       "matchSourceUrlPrefixes": [
         "https://github.com/SAP/ui5-webcomponents",
         "https://github.com/SAP/ui5-webcomponents-react"
-      ]
+      ],
+      "semanticCommitType": "chore"
     }
   ]
 }

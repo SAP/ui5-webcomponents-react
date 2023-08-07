@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.3...v1.18.0) (2023-08-04)
+
+### Bug Fixes
+
+- **charts:** fix description and behavior of `chartConfig.legendPosition` ([#4911](https://github.com/SAP/ui5-webcomponents-react/issues/4911)) ([a86fce6](https://github.com/SAP/ui5-webcomponents-react/commit/a86fce6dfae7cce57f45394c60a38ece19ca3bb9))
+
+### Features
+
+- update `@ui5/webcomponents` to `~1.16.0` ([#4933](https://github.com/SAP/ui5-webcomponents-react/issues/4933)) ([4f42717](https://github.com/SAP/ui5-webcomponents-react/commit/4f427171453eefb0b43b0862f677a0c18ac3900a))
+
 ## [1.17.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.2...v1.17.3) (2023-07-19)
 
 ### Bug Fixes
