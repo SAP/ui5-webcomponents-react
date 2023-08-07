@@ -209,7 +209,9 @@ describe('ObjectStatus', () => {
             Content
           </ObjectStatus>
         );
-        cy.findByText(stateObj.hiddenText).should('exist').and('not.be.visible');
+        if (stateObj.hiddenText) {
+          cy.findByText(stateObj.hiddenText).should('exist').and('not.be.visible');
+        }
         if (!item.inverted) {
           cy.findByText('Content').should('have.css', 'color', rgbValColorString);
           cy.findByTestId('icon').should('have.css', 'color', rgbValColorIconString);
