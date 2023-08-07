@@ -191,7 +191,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
       tabIndex={active ? 0 : undefined}
       data-icon-only={!children}
       role={active ? 'button' : undefined}
-      aria-roledescription={i18nBundle.getText(ARIA_OBJ_STATUS_DESC)}
+      aria-roledescription={active ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : undefined}
       {...rest}
     >
       {iconToRender && (
