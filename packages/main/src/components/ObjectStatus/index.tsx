@@ -17,7 +17,7 @@ import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { IndicationColor } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
-import { ARIA_OBJ_STATUS_DESC, INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
+import { ARIA_OBJ_STATUS_DESC, EMPTY_VALUE, INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import styles from './ObjectStatus.jss.js';
@@ -92,7 +92,8 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
   let invisibleText = stateAnnouncementText;
   if (!invisibleText && state.startsWith('Indication')) {
     invisibleText = `${indicationColorText} ${state.substring(state.indexOf('0') + 1)}`;
-  } else if (!invisibleText || showDefaultIcon) {
+  }
+  if (!invisibleText || showDefaultIcon) {
     switch (state) {
       case ValueState.Error:
         if (showDefaultIcon) {
@@ -154,6 +155,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const i18nBundleWc = useI18nBundle('@ui5/webcomponents');
+  const classes = useStyles();
 
   const indicationColorText = i18nBundleWc.getText(INDICATION_COLOR);
   const errorStateText = i18nBundleWc.getText(VALUE_STATE_ERROR);
@@ -168,8 +170,6 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
     informationStateText,
     successStateText
   });
-
-  const classes = useStyles();
 
   const showEmptyIndicator = emptyIndicator && !children;
   const computedChildren = showEmptyIndicator ? '–' : children;
@@ -200,9 +200,15 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
         </span>
       )}
       {computedChildren && (
-        <span className={clsx(classes.text, showEmptyIndicator && classes.emptyIndicator)}>{computedChildren}</span>
+        <span
+          className={clsx(classes.text, showEmptyIndicator && classes.emptyIndicator)}
+          aria-hidden={showEmptyIndicator}
+        >
+          {computedChildren}
+          <span className={classes.pseudoInvisibleText}>{i18nBundle.getText(EMPTY_VALUE)}</span>
+        </span>
       )}
-      {!!invisibleText && <span className={classes.pseudoInvisibleText}>{invisibleText}</span>}
+      {!!invisibleText && computedChildren && <span className={classes.pseudoInvisibleText}>{invisibleText}</span>}
     </div>
   );
 });
