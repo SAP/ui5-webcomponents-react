@@ -89,14 +89,15 @@ export interface ObjectStatusPropTypes extends CommonProps {
 const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementText, i18nTexts) => {
   const { indicationColorText, errorStateText, warningStateText, informationStateText, successStateText } = i18nTexts;
   let icon = userIcon;
+  const renderDefaultIcon = showDefaultIcon && !icon;
   let invisibleText = stateAnnouncementText;
   if (!invisibleText && state.startsWith('Indication')) {
     invisibleText = `${indicationColorText} ${state.substring(state.indexOf('0') + 1)}`;
   }
-  if (!invisibleText || showDefaultIcon) {
+  if (!invisibleText || renderDefaultIcon) {
     switch (state) {
       case ValueState.Error:
-        if (showDefaultIcon) {
+        if (renderDefaultIcon) {
           icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
         if (!invisibleText) {
@@ -104,7 +105,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         }
         break;
       case ValueState.Success:
-        if (showDefaultIcon) {
+        if (renderDefaultIcon) {
           icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
         if (!invisibleText) {
@@ -112,7 +113,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         }
         break;
       case ValueState.Warning:
-        if (showDefaultIcon) {
+        if (renderDefaultIcon) {
           icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
         if (!invisibleText) {
@@ -120,7 +121,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         }
         break;
       case ValueState.Information:
-        if (showDefaultIcon) {
+        if (renderDefaultIcon) {
           icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
         if (!invisibleText) {
