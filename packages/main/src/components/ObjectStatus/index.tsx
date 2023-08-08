@@ -158,7 +158,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
   const i18nBundleWc = useI18nBundle('@ui5/webcomponents');
   const classes = useStyles();
 
-  const indicationColorText = i18nBundleWc.getText(INDICATION_COLOR);
+  const indicationColorText = i18nBundle.getText(INDICATION_COLOR);
   const errorStateText = i18nBundleWc.getText(VALUE_STATE_ERROR);
   const warningStateText = i18nBundleWc.getText(VALUE_STATE_WARNING);
   const informationStateText = i18nBundleWc.getText(VALUE_STATE_INFORMATION);
