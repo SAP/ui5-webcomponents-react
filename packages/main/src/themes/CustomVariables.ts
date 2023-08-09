@@ -26,7 +26,9 @@ export enum CustomVariables {
   SplitterContentBorderColor = '--_ui5wcr_Splitter_ContentBorderColor',
   SplitterIconColor = '--_ui5wcr_Splitter_IconColor',
   ToolbarFocusOutline = '--_ui5wcr_Toolbar_FocusOutline',
-  ToolbarFocusShadow = '--_ui5wcr_Toolbar_FocusShadow'
+  ToolbarFocusShadow = '--_ui5wcr_Toolbar_FocusShadow',
+  ScrollbarBorder = '--_ui5wcr_scrollbar_Border',
+  ScrollbarBorderRadius = '--_ui5wcr_Scrollbar_BorderRadius'
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {
