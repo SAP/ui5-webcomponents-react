@@ -27,7 +27,7 @@ export enum CustomVariables {
   SplitterIconColor = '--_ui5wcr_Splitter_IconColor',
   ToolbarFocusOutline = '--_ui5wcr_Toolbar_FocusOutline',
   ToolbarFocusShadow = '--_ui5wcr_Toolbar_FocusShadow',
-  ScrollbarBorder = '--_ui5wcr_scrollbar_Border',
+  ScrollbarBorder = '--_ui5wcr_Scrollbar_Border',
   ScrollbarBorderRadius = '--_ui5wcr_Scrollbar_BorderRadius'
 }
 
