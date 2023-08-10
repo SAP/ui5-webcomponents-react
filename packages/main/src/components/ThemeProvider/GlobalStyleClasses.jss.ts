@@ -1,6 +1,7 @@
 import { CompactSizes, CozySizes, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { GlobalStyleClasses } from '../../enums/index.js';
 import { baseParameters } from '../../themes/base.js';
+import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import { sapBelizeParameters } from '../../themes/sap_belize.js';
 import { sapBelizeHcbParameters } from '../../themes/sap_belize_hcb.js';
 import { sapBelizeHcwParameters } from '../../themes/sap_belize_hcw.js';
@@ -18,6 +19,7 @@ export const GlobalStyleClassesStyles = {
     [`.${GlobalStyleClasses.inheritingSapScrollBar} *:not([data-native-scrollbar])`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
+        borderInlineStart: CustomThemingParameters.ScrollbarBorder,
         '&:horizontal': {
           height: ThemingParameters.sapScrollBar_Dimension
         },
@@ -27,7 +29,7 @@ export const GlobalStyleClassesStyles = {
       },
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
-        borderRadius: '0.25rem',
+        borderRadius: CustomThemingParameters.ScrollbarBorderRadius,
         '&:hover': {
           backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
         },
@@ -45,6 +47,7 @@ export const GlobalStyleClassesStyles = {
     [`.${GlobalStyleClasses.sapScrollBar}:not([data-native-scrollbar])`]: {
       '&::-webkit-scrollbar': {
         backgroundColor: ThemingParameters.sapScrollBar_TrackColor,
+        borderInlineStart: CustomThemingParameters.ScrollbarBorder,
         '&:horizontal': {
           height: ThemingParameters.sapScrollBar_Dimension
         },
@@ -54,7 +57,7 @@ export const GlobalStyleClassesStyles = {
       },
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: ThemingParameters.sapScrollBar_FaceColor,
-        borderRadius: '0.25rem',
+        borderRadius: CustomThemingParameters.ScrollbarBorderRadius,
         '&:hover': {
           backgroundColor: ThemingParameters.sapScrollBar_Hover_FaceColor
         },

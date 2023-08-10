@@ -27,5 +27,7 @@ export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.SplitterContentBorderColor]: ThemingParameters.sapHighlightColor,
   [CustomVariables.SplitterIconColor]: ThemingParameters.sapButton_Lite_TextColor,
   [CustomVariables.ToolbarFocusOutline]: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
-  [CustomVariables.ToolbarFocusShadow]: 'none'
+  [CustomVariables.ToolbarFocusShadow]: 'none',
+  [CustomVariables.ScrollbarBorder]: 'none',
+  [CustomVariables.ScrollbarBorderRadius]: ThemingParameters.sapElement_BorderCornerRadius
 };
