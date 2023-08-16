@@ -555,7 +555,19 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         threshold: [0]
       }
     );
-    // Fallback when scrolling faster than the IntersectionObserver can observe (in most cases faster than 60fps)
+
+    sections.forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [children, totalHeaderHeight, setInternalSelectedSectionId, isProgrammaticallyScrolled]);
+
+  // Fallback when scrolling faster than the IntersectionObserver can observe (in most cases faster than 60fps)
+  useEffect(() => {
+    const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     if (isAfterScroll) {
       let currentSection = sections[sections.length - 1];
       let currentIndex;
@@ -582,22 +594,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
       setIsAfterScroll(false);
     }
-
-    sections.forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [
-    objectPageRef.current,
-    children,
-    totalHeaderHeight,
-    setInternalSelectedSectionId,
-    isProgrammaticallyScrolled,
-    isAfterScroll
-  ]);
+  }, [isAfterScroll]);
 
   const titleHeaderNotClickable =
     (alwaysShowContentHeader && !headerContentPinnable) ||
@@ -616,18 +613,18 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderTitleSection = useCallback(
     (inHeader = false) => {
-      const titleStyles = { ...(inHeader ? { padding: 0 } : {}), ...(headerTitle?.props?.style ?? {}) };
+      const titleInHeaderClass = inHeader ? classes.titleInHeader : undefined;
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
         return cloneElement(headerTitle, {
           showSubHeaderRight: true,
-          style: titleStyles,
+          className: titleInHeaderClass,
           'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick
         });
       }
       return cloneElement(headerTitle, {
-        style: titleStyles,
+        className: titleInHeaderClass,
         'data-not-clickable': titleHeaderNotClickable,
         onToggleHeaderContentVisibility: onTitleClick
       });
