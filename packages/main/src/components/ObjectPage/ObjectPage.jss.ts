@@ -82,8 +82,7 @@ export const styles = {
     zIndex: 2,
     '& [data-component-name="DynamicPageTitle"]': {
       gridColumn: 2,
-      paddingLeft: 0,
-      paddingRight: 0
+      paddingInline: 0
     },
     cursor: 'pointer'
   },
@@ -136,5 +135,6 @@ export const styles = {
     '&::part(content)': {
       padding: 0
     }
-  }
+  },
+  titleInHeader: { padding: 0 }
 };

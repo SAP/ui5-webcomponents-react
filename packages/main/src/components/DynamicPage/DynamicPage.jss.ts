@@ -45,7 +45,7 @@ export const styles = {
   },
   contentContainer: {
     extend: ResponsiveContainerPadding,
-    paddingTop: '1rem',
+    paddingBlockStart: '1rem',
     boxSizing: 'border-box',
     width: '100%',
     height: 'auto',
