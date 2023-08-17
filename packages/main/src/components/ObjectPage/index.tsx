@@ -618,13 +618,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
         return cloneElement(headerTitle, {
           showSubHeaderRight: true,
-          className: titleInHeaderClass,
+          className: clsx(titleInHeaderClass, headerTitle?.props?.className),
           'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick
         });
       }
       return cloneElement(headerTitle, {
-        className: titleInHeaderClass,
+        className: clsx(titleInHeaderClass, headerTitle?.props?.className),
         'data-not-clickable': titleHeaderNotClickable,
         onToggleHeaderContentVisibility: onTitleClick
       });
