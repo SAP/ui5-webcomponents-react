@@ -26,15 +26,15 @@ const styles = {
     borderBlockEnd: `${CustomThemingParameters.AnalyticalTableHeaderBorderWidth} solid ${ThemingParameters.sapList_HeaderBorderColor}`,
     backgroundColor: ThemingParameters.sapList_HeaderBackground,
     borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    marginInlineStart: '-1px'
+    marginInlineStart: '-1px',
+    width: `calc(${ThemingParameters.sapScrollBar_Dimension} + 2px)`
   },
   scrollbar: {
     overflowY: 'auto',
     borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    marginInlineStart: '-1px',
-    width: ThemingParameters.sapScrollBar_Dimension
+    marginInlineStart: '-1px'
   },
   bottomSection: {
     flexGrow: 1,
