@@ -196,7 +196,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
       {...rest}
     >
       {iconToRender && (
-        <span className={classes.icon} data-icon-only={!children}>
+        <span className={classes.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
           {iconToRender}
         </span>
       )}
@@ -204,12 +204,19 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
         <span
           className={clsx(classes.text, showEmptyIndicator && classes.emptyIndicator)}
           aria-hidden={showEmptyIndicator}
+          data-component-name="ObjectStatusTextContainer"
         >
           {computedChildren}
-          <span className={classes.pseudoInvisibleText}>{i18nBundle.getText(EMPTY_VALUE)}</span>
+          <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleEmptyTextContainer">
+            {i18nBundle.getText(EMPTY_VALUE)}
+          </span>
         </span>
       )}
-      {!!invisibleText && computedChildren && <span className={classes.pseudoInvisibleText}>{invisibleText}</span>}
+      {!!invisibleText && computedChildren && (
+        <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleTextContainer">
+          {invisibleText}
+        </span>
+      )}
     </div>
   );
 });
