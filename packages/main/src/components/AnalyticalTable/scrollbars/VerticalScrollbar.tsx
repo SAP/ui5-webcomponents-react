@@ -33,7 +33,8 @@ const styles = {
     borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    marginInlineStart: '-1px'
+    marginInlineStart: '-1px',
+    width: ThemingParameters.sapScrollBar_Dimension
   },
   bottomSection: {
     flexGrow: 1,
