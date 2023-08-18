@@ -102,7 +102,7 @@ const styles = {
     position: 'relative',
     overflowX: 'hidden',
     overflowY: 'auto',
-    scrollBarWidth: 'none !important',
+    scrollbarWidth: 'none',
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
