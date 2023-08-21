@@ -25,7 +25,7 @@ import { Icon, IndicationColor, Label, ObjectStatus, ValueState } from '../..';
 <Canvas>
   <Story name="Default">
     {(args) => {
-      return <ObjectStatus emptyIndicator={true} children="Hello there" state="Error" />;
+      return <ObjectStatus {...args} />;
     }}
   </Story>
 </Canvas>
