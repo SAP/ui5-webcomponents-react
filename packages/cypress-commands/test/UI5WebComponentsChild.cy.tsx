@@ -67,6 +67,12 @@ describe('UI5 Web Components - Child Commands', () => {
     cy.findByTestId('input').should('have.attr', 'value', 'Hello World!');
   });
 
+  it('clearUi5Input', () => {
+    cy.mount(<Input data-testId={'input'} value="Hello World" />);
+    cy.findByTestId('input').clearUi5Input();
+    cy.findByTestId('input').should('have.attr', 'value', '');
+  });
+
   it('typeIntoUi5TextArea', () => {
     cy.mount(<TextArea data-testId="textArea" />);
 

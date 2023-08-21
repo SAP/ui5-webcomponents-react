@@ -10,6 +10,12 @@ declare global {
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
       /**
+       * Clears a value from ui5-webcomponent that offers a typeable input field.
+       *
+       * @example cy.get('[ui5-input]').clearUi5Input();
+       */
+      clearUi5Input(options?: Partial<ClearOptions>): Chainable<Element>;
+      /**
        * Types a value with a delay into an ui5-webcomponent that offers a typeable input field.
        *
        * __Note:__ Use this command if you render a component that should show suggestions while typing (e.g. `ComboBox`) but the corresponding popover does not open.
@@ -67,6 +73,12 @@ Cypress.Commands.add('typeIntoUi5Input', { prevSubject: 'element' }, (subject, t
   cy.wrap(subject)
     .findShadowInput()
     .type(text, { force: true, ...options });
+});
+
+Cypress.Commands.add('clearUi5Input', { prevSubject: 'element' }, (subject, text, options = {}) => {
+  cy.wrap(subject)
+    .findShadowInput()
+    .clear({ force: true, ...options });
 });
 
 Cypress.Commands.add(
