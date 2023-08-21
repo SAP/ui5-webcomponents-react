@@ -102,6 +102,9 @@ export const styles = {
     },
     '& >:last-child': {
       marginBlockEnd: 0
+    },
+    '& >:first-child': {
+      marginBlockStart: 0
     }
   },
   childContainer: { display: 'flex' }
