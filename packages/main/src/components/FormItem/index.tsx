@@ -124,9 +124,16 @@ const getContentForHtmlLabel = (label: ReactNode) => {
  * __Note__: The `FormItem` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `label` and `children`, especially no `className`, `style` or `ref`.
  */
 const FormItem = (props: FormItemPropTypes) => {
-  const { label, children } = props as InternalProps;
   const uniqueId = useIsomorphicId();
-  const { formItems: layoutInfos, registerItem, unregisterItem, labelSpan, rowsWithGroup } = useFormContext();
+  const { label, children } = props as InternalProps;
+  const {
+    formItems: layoutInfos,
+    registerItem,
+    unregisterItem,
+    labelSpan,
+    rowsWithGroup,
+    recalcTrigger
+  } = useFormContext();
   const groupContext = useFormGroupContext();
   const classes = useStyles();
 
@@ -135,7 +142,7 @@ const FormItem = (props: FormItemPropTypes) => {
     return () => {
       unregisterItem?.(uniqueId, groupContext.id);
     };
-  }, [uniqueId, registerItem, unregisterItem, groupContext.id]);
+  }, [uniqueId, registerItem, unregisterItem, groupContext.id, recalcTrigger]);
 
   const layoutInfo = useMemo(() => layoutInfos?.find(({ id: itemId }) => uniqueId === itemId), [layoutInfos, uniqueId]);
 

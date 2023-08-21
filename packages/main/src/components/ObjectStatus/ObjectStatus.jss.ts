@@ -88,7 +88,7 @@ const styles = {
     lineHeight: '1rem',
     verticalAlign: 'top',
     paddingInlineEnd: '0.25rem',
-    '&:only-child': {
+    '&[data-icon-only="true"]': {
       paddingInlineEnd: 0
     }
   },
@@ -98,6 +98,19 @@ const styles = {
     display: 'inline-block',
     height: 'inherit',
     verticalAlign: 'top'
+  },
+
+  emptyIndicator: {
+    lineHeight: 'normal',
+    color: ThemingParameters.sapTextColor
+  },
+
+  pseudoInvisibleText: {
+    fontSize: 0,
+    position: 'absolute',
+    userSelect: 'none',
+    left: 0,
+    top: 0
   },
 
   success: {

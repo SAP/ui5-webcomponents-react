@@ -26,15 +26,18 @@ export interface FormGroupPropTypes {
  */
 const FormGroup = (props: FormGroupPropTypes) => {
   const { titleText, children } = props;
-  const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan } = useFormContext();
+  const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan, recalcTrigger } = useFormContext();
   const uniqueId = useIsomorphicId();
 
   useEffect(() => {
     registerItem?.(uniqueId, 'formGroup');
     return () => unregisterItem?.(uniqueId);
-  }, [uniqueId, registerItem, unregisterItem]);
+  }, [uniqueId, registerItem, unregisterItem, recalcTrigger]);
 
-  const layoutInfo = useMemo(() => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId), [layoutInfos]);
+  const layoutInfo = useMemo(
+    () => layoutInfos?.find(({ id: groupId }) => uniqueId === groupId),
+    [layoutInfos, uniqueId]
+  );
 
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
