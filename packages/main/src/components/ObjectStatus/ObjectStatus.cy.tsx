@@ -1,5 +1,13 @@
+import {
+  VALUE_STATE_ERROR,
+  VALUE_STATE_INFORMATION,
+  VALUE_STATE_SUCCESS,
+  VALUE_STATE_WARNING
+} from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import type { ValueState, IndicationColor } from '../../enums/index.js';
+import type { IndicationColor } from '../../enums/index.js';
+import { ValueState } from '../../enums/index.js';
+import { INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
 import { Icon } from '../../webComponents/index.js';
 import { ObjectStatus } from './index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -10,6 +18,7 @@ const statesWithCSSVars: {
   iconColor: string;
   hasDefaultIcon?: true;
   inverted: { color: string; iconColor: string; backgroundColor: string };
+  hiddenText: undefined | string;
 }[] = [
   {
     state: 'Error',
@@ -20,7 +29,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapButton_Negative_TextColor,
       backgroundColor: ThemingParameters.sapButton_Negative_Background,
       iconColor: ThemingParameters.sapButton_Negative_TextColor
-    }
+    },
+    hiddenText: VALUE_STATE_ERROR.defaultText
   },
   {
     state: 'None',
@@ -30,7 +40,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapButton_Neutral_TextColor,
       backgroundColor: ThemingParameters.sapButton_Neutral_Background,
       iconColor: ThemingParameters.sapButton_Neutral_TextColor
-    }
+    },
+    hiddenText: undefined
   },
   {
     state: 'Success',
@@ -41,7 +52,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapButton_Success_TextColor,
       backgroundColor: ThemingParameters.sapButton_Success_Background,
       iconColor: ThemingParameters.sapButton_Success_TextColor
-    }
+    },
+    hiddenText: VALUE_STATE_SUCCESS.defaultText
   },
   {
     state: 'Warning',
@@ -52,7 +64,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapButton_Critical_TextColor,
       backgroundColor: ThemingParameters.sapButton_Critical_Background,
       iconColor: ThemingParameters.sapButton_Critical_TextColor
-    }
+    },
+    hiddenText: VALUE_STATE_WARNING.defaultText
   },
   {
     state: 'Information',
@@ -63,7 +76,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapButton_Information_TextColor,
       backgroundColor: ThemingParameters.sapButton_Information_Background,
       iconColor: ThemingParameters.sapButton_Information_TextColor
-    }
+    },
+    hiddenText: VALUE_STATE_INFORMATION.defaultText
   },
   {
     state: 'Indication01',
@@ -73,7 +87,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_1_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_1,
       iconColor: ThemingParameters.sapIndicationColor_1_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 1`
   },
   {
     state: 'Indication02',
@@ -83,7 +98,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_2_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_2,
       iconColor: ThemingParameters.sapIndicationColor_2_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 2`
   },
   {
     state: 'Indication03',
@@ -93,7 +109,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_3_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_3,
       iconColor: ThemingParameters.sapIndicationColor_3_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 3`
   },
   {
     state: 'Indication04',
@@ -103,7 +120,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_4_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_4,
       iconColor: ThemingParameters.sapIndicationColor_4_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 4`
   },
   {
     state: 'Indication05',
@@ -113,7 +131,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_5_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_5,
       iconColor: ThemingParameters.sapIndicationColor_5_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 5`
   },
   {
     state: 'Indication06',
@@ -123,7 +142,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_6_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_6,
       iconColor: ThemingParameters.sapIndicationColor_6_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 6`
   },
   {
     state: 'Indication07',
@@ -133,7 +153,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_7_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_7,
       iconColor: ThemingParameters.sapIndicationColor_7_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 7`
   },
   {
     state: 'Indication08',
@@ -143,7 +164,8 @@ const statesWithCSSVars: {
       color: ThemingParameters.sapIndicationColor_8_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_8,
       iconColor: ThemingParameters.sapIndicationColor_8_TextColor
-    }
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 8`
   }
 ];
 
@@ -187,6 +209,9 @@ describe('ObjectStatus', () => {
             Content
           </ObjectStatus>
         );
+        if (stateObj.hiddenText) {
+          cy.findByText(stateObj.hiddenText).should('exist').and('not.be.visible');
+        }
         if (!item.inverted) {
           cy.findByText('Content').should('have.css', 'color', rgbValColorString);
           cy.findByTestId('icon').should('have.css', 'color', rgbValColorIconString);
@@ -201,9 +226,15 @@ describe('ObjectStatus', () => {
 
   it('active', () => {
     const click = cy.spy().as('clickSpy');
-    cy.mount(<ObjectStatus onClick={click}>Content</ObjectStatus>);
+    cy.mount(
+      <ObjectStatus onClick={click} data-testid="os">
+        Content
+      </ObjectStatus>
+    );
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('not.be.called');
+    cy.findByRole('button').should('not.exist');
+    cy.findByTestId('os').should('not.have.attr', 'aria-roledescription');
 
     cy.mount(
       <ObjectStatus onClick={click} active>
@@ -212,6 +243,25 @@ describe('ObjectStatus', () => {
     );
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('have.been.calledOnce');
+    cy.findByRole('button').should('have.attr', 'aria-roledescription', 'Object Status Button');
+  });
+
+  it('emptyIndicator', () => {
+    cy.mount(<ObjectStatus data-testid="os" />);
+    cy.findByTestId('os').children().should('have.length', 0);
+    cy.mount(<ObjectStatus data-testid="os" emptyIndicator />);
+    cy.findByTestId('os').children().should('have.length', 1);
+    cy.findByText('–').should('be.visible');
+  });
+
+  it('stateAnnouncementText', () => {
+    cy.mount(
+      <ObjectStatus data-testid="os" state={ValueState.Error} stateAnnouncementText="Custom Text">
+        Content
+      </ObjectStatus>
+    );
+    cy.findByText(VALUE_STATE_ERROR.defaultText).should('not.exist');
+    cy.findByText('Custom Text').should('exist').and('not.be.visible');
   });
 
   cypressPassThroughTestsFactory(ObjectStatus);
