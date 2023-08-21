@@ -97,7 +97,7 @@ export const styles = {
     '& >[ui5-button]::part(button) ,& >[ui5-toggle-button]::part(button)': {
       justifyContent: 'start'
     },
-    '& >[ui5-button][icon-only]::part(button), & > [ui5-toggle-button][icon-only]::part(button)': {
+    '& >[ui5-button][icon-only]::part(button), & >[ui5-toggle-button][icon-only]::part(button)': {
       padding: 'revert'
     },
     '& >:last-child': {
