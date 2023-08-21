@@ -173,7 +173,13 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
   });
 
   const showEmptyIndicator = emptyIndicator && !children;
-  const computedChildren = showEmptyIndicator ? '–' : children;
+  const computedChildren = showEmptyIndicator ? (
+    <span aria-hidden={showEmptyIndicator} data-component-name="ObjectStatusEmptyIndicator">
+      –
+    </span>
+  ) : (
+    children
+  );
 
   const objStatusClasses = clsx(
     classes.objectStatus,
@@ -203,13 +209,14 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
       {computedChildren && (
         <span
           className={clsx(classes.text, showEmptyIndicator && classes.emptyIndicator)}
-          aria-hidden={showEmptyIndicator}
           data-component-name="ObjectStatusTextContainer"
         >
           {computedChildren}
-          <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleEmptyTextContainer">
-            {i18nBundle.getText(EMPTY_VALUE)}
-          </span>
+          {showEmptyIndicator && (
+            <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleEmptyTextContainer">
+              {i18nBundle.getText(EMPTY_VALUE)}
+            </span>
+          )}
         </span>
       )}
       {!!invisibleText && computedChildren && (
