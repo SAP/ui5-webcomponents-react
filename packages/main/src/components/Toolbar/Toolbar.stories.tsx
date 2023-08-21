@@ -49,9 +49,6 @@ export const Default: Story = {
         <Input />
         <DatePicker />
         <Switch />
-        <Text>Hello there</Text>
-        <Text>Hello there</Text>
-        <Text>Hello there</Text>
       </Toolbar>
     );
   }
