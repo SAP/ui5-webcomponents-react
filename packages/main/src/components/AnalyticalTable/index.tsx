@@ -1251,10 +1251,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}
-              popInRowHeight={popInRowHeight}
               tableRef={tableRef}
-              minRows={minRows}
-              rows={rows}
               handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
               ref={verticalScrollBarRef}
               data-native-scrollbar={props['data-native-scrollbar']}

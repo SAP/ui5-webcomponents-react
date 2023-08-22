@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { RefObject } from 'react';
+import type { MutableRefObject, RefObject } from 'react';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
@@ -13,9 +13,7 @@ interface VerticalScrollbarProps {
   handleVerticalScrollBarScroll: any;
   tableBodyHeight: number;
   'data-native-scrollbar'?: any;
-
-  //todo
-  scrollContainerRef: any;
+  scrollContainerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const styles = {
