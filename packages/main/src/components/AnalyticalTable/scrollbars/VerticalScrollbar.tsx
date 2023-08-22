@@ -10,12 +10,12 @@ import { FlexBox } from '../../FlexBox/index.js';
 interface VerticalScrollbarProps {
   internalRowHeight: number;
   tableRef: RefObject<any>;
-  minRows: number;
-  rows: any[];
   handleVerticalScrollBarScroll: any;
-  popInRowHeight: number;
   tableBodyHeight: number;
   'data-native-scrollbar'?: any;
+
+  //todo
+  scrollContainerRef: any;
 }
 
 const styles = {
@@ -47,8 +47,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
 export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
-  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight, tableBodyHeight } =
-    props;
+  const { internalRowHeight, tableRef, handleVerticalScrollBarScroll, tableBodyHeight, scrollContainerRef } = props;
   const classes = useStyles();
   const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 
@@ -78,7 +77,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
       >
         <div
           style={{
-            height: `${Math.max(minRows, rows.length) * popInRowHeight}px`,
+            height: `${scrollContainerRef.current?.scrollHeight}px`,
             width: '1px',
             backgroundColor: ThemingParameters.sapList_Background
           }}

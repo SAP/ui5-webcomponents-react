@@ -2,6 +2,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
 import React, { useCallback, useMemo, useRef } from 'react';
+import type { AnalyticalTablePropTypes } from '../index.js';
 import type { ScrollToRefType } from '../interfaces.js';
 import { getSubRowsByString } from '../util/index.js';
 import { EmptyRow } from './EmptyRow.js';
@@ -23,13 +24,14 @@ interface VirtualTableBodyProps {
   renderRowSubComponent: (row?: Record<string, unknown>) => ReactNode;
   popInRowHeight: number;
   isRtl: boolean;
-  markNavigatedRow?: (row?: Record<string, unknown>) => boolean;
+  markNavigatedRow?: AnalyticalTablePropTypes['markNavigatedRow'];
   alwaysShowSubComponent: boolean;
   dispatch?: (e: { type: string; payload?: Record<string, unknown> }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
   columnVirtualizer: Record<string, any>;
   manualGroupBy?: boolean;
   subRowsKey: string;
+  scrollContainerRef?: MutableRefObject<HTMLDivElement>;
 }
 
 const measureElement = (el) => el.offsetHeight;
@@ -57,7 +59,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     subComponentsHeight,
     columnVirtualizer,
     manualGroupBy,
-    subRowsKey
+    subRowsKey,
+    scrollContainerRef
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -102,6 +105,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   );
   return (
     <div
+      ref={scrollContainerRef}
       data-component-name="AnalyticalTableBodyScrollableContainer"
       style={{
         position: 'relative',

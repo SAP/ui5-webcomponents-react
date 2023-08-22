@@ -80,7 +80,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
                 type: 'SUB_COMPONENTS_HEIGHT',
                 payload: {
                   ...subComponentsHeight,
-                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id }
+                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id, index: row.index }
                 }
               });
             }
