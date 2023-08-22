@@ -12,7 +12,7 @@ export const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottom: `solid 0.0625rem ${ThemingParameters.sapGroup_TitleBorderColor}`
+    borderBlockEnd: `solid 0.0625rem ${ThemingParameters.sapGroup_TitleBorderColor}`
   },
   hasOverflow: {
     '& $toolbar': {
@@ -20,7 +20,7 @@ export const styles = {
     }
   },
   clear: {
-    borderBottom: 'none'
+    borderBlockEnd: 'none'
   },
   active: {
     cursor: 'pointer',
@@ -85,23 +85,26 @@ export const styles = {
   popoverPhone: {
     width: 'calc(100% - 10px)',
     maxWidth: 'calc(100% - 10px)',
-    left: '5px !important'
+    insetInlineStart: '5px !important'
   },
   popoverContent: {
     padding: CssSizeVariables.ui5WcrToolbarPopoverContentPadding,
     display: 'flex',
     flexDirection: 'column',
-    '& [ui5-toggle-button], & [ui5-button]': {
-      marginBottom: '0.25rem'
+    '& >[ui5-toggle-button], & >[ui5-button]': {
+      marginBlock: '0.25rem'
     },
-    '& [ui5-button]::part(button) ,& [ui5-toggle-button]::part(button)': {
+    '& >[ui5-button]::part(button) ,& >[ui5-toggle-button]::part(button)': {
       justifyContent: 'start'
     },
-    '& [ui5-button][icon-only]::part(button), & [ui5-toggle-button][icon-only]::part(button)': {
+    '& >[ui5-button][icon-only]::part(button), & >[ui5-toggle-button][icon-only]::part(button)': {
       padding: 'revert'
     },
-    '& :last-child': {
-      marginBottom: 0
+    '& >:last-child': {
+      marginBlockEnd: 0
+    },
+    '& >:first-child': {
+      marginBlockStart: 0
     }
   },
   childContainer: { display: 'flex' }
