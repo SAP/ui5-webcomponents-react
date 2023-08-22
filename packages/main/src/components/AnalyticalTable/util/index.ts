@@ -156,3 +156,16 @@ export function getSubRowsByString(subRowsKey, row) {
     return subRowsKey.split('.').reduce((acc, cur) => acc?.[cur], row);
   }
 }
+
+// copied from https://github.com/TanStack/table/blob/06703a56890122cedf1b2fa4b82982999537774e/src/plugin-hooks/useResizeColumns.js#L286-L296 (22. Aug 2023)
+export function getLeafHeaders(header) {
+  const leafHeaders = [];
+  const recurseHeader = (header) => {
+    if (header.columns && header.columns.length) {
+      header.columns.map(recurseHeader);
+    }
+    leafHeaders.push(header);
+  };
+  recurseHeader(header);
+  return leafHeaders;
+}
