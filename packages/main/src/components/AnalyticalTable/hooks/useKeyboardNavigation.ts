@@ -59,7 +59,7 @@ const navigateFromActiveSubCompItem = (currentlyFocusedCell, e) => {
   setFocus(currentlyFocusedCell, recursiveSubComponentElementSearch(e.target));
 };
 
-const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
+const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns, state } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -141,6 +141,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
 
   const onKeyboardNavigation = useCallback(
     (e) => {
+      const { isRtl } = state;
       const isActiveItemInSubComponent = e.target.dataset.subcomponentActiveElement;
       // check if target is cell and if so proceed from there
       if (
@@ -226,7 +227,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex + 1}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex + (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -242,7 +243,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex - 1}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex - (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -307,7 +308,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
         }
       }
     },
-    [currentlyFocusedCell.current, tableRef.current]
+    [currentlyFocusedCell.current, tableRef.current, state?.isRtl]
   );
   if (showOverlay) {
     return tableProps;
