@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
+import { actions } from 'react-table';
+import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
 
@@ -322,6 +324,41 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
   ];
 };
 
+function getPayload(e, column) {
+  e.preventDefault();
+  e.stopPropagation();
+  const clientX = e.target.getBoundingClientRect().x + e.target.getBoundingClientRect().width;
+  const columnId = column.id;
+  const columnWidth = column.totalWidth;
+  const headersToResize = getLeafHeaders(column);
+  const headerIdWidths = headersToResize.map((d) => [d.id, d.totalWidth]);
+  return { clientX, columnId, columnWidth, headerIdWidths };
+}
+
+const setHeaderProps = (headerProps, { instance: { dispatch }, column }) => {
+  // resize col with keyboard
+  const handleKeyDown = (e) => {
+    if (e.nativeEvent.shiftKey) {
+      if (e.key === 'ArrowRight') {
+        const payload = getPayload(e, column);
+        dispatch({ type: actions.columnStartResizing, ...payload });
+        dispatch({ type: actions.columnResizing, clientX: payload.clientX + 16 });
+        dispatch({ type: actions.columnDoneResizing });
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        const payload = getPayload(e, column);
+        dispatch({ type: actions.columnStartResizing, ...payload });
+        dispatch({ type: actions.columnResizing, clientX: payload.clientX - 16 });
+        dispatch({ type: actions.columnDoneResizing });
+        return;
+      }
+    }
+  };
+  return [headerProps, { onKeyDown: handleKeyDown }];
+};
+
 export const useKeyboardNavigation = (hooks) => {
   hooks.getTableProps.push(useGetTableProps);
+  hooks.getHeaderProps.push(setHeaderProps);
 };
