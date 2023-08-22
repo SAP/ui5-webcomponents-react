@@ -1,3 +1,4 @@
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../..';
@@ -6,13 +7,13 @@ import {
   AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
+  AnalyticalTableSubComponentsBehavior,
   Button,
   Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -1474,6 +1475,13 @@ describe('AnalyticalTable', () => {
   });
 
   it('render subcomponents', () => {
+    const renderRowSubComponentLarge = (row) => {
+      return (
+        <div title="subcomponent" style={{ height: '200px', width: '100%', display: 'flex', alignItems: 'end' }}>
+          {`SubComponent ${row.index}`}
+        </div>
+      );
+    };
     const renderRowSubComponent = () => {
       return <div title="subcomponent">SubComponent</div>;
     };
@@ -1517,7 +1525,7 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         renderRowSubComponent={renderRowSubComponent}
-        alwaysShowSubComponent
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
       />
     );
     cy.findAllByText('SubComponent').should('be.visible').should('have.length', 4);
@@ -1529,10 +1537,38 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         renderRowSubComponent={onlyFirstRowWithSubcomponent}
-        alwaysShowSubComponent
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
       />
     );
     cy.findByText('SingleSubComponent').should('be.visible').should('have.length', 1);
+    cy.findByTitle('Expand Node').should('not.exist');
+    cy.findByTitle('Collapse Node').should('not.exist');
+
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        renderRowSubComponent={renderRowSubComponentLarge}
+        visibleRows={3}
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
+      />
+    );
+
+    cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
+    cy.findByTitle('Expand Node').should('not.exist');
+    cy.findByTitle('Collapse Node').should('not.exist');
+
+    cy.mount(
+      <AnalyticalTable
+        data={data}
+        columns={columns}
+        renderRowSubComponent={renderRowSubComponentLarge}
+        visibleRows={3}
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.IncludeHeight}
+      />
+    );
+    cy.findByText('SubComponent 1').should('be.visible');
+    cy.findByText('SubComponent 2').should('be.visible');
     cy.findByTitle('Expand Node').should('not.exist');
     cy.findByTitle('Collapse Node').should('not.exist');
   });
@@ -2290,7 +2326,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns.slice(0, 2)}
-        alwaysShowSubComponent
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
         renderRowSubComponent={renderSubComp}
       />
     );
@@ -2334,7 +2370,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns.slice(0, 2)}
-        alwaysShowSubComponent
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
         renderRowSubComponent={renderSubComp2}
       />
     );
