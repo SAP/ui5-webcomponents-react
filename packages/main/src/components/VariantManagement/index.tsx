@@ -279,7 +279,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
-  const [showInput, setShowInput] = useState(safeChildren.length > 9);
 
   useEffect(() => {
     setSafeChildren(Children.toArray(children));
@@ -441,14 +440,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [showOnlyFavorites, safeChildren]);
 
   const safeChildrenWithFavorites = favoriteChildren ?? safeChildren;
-
-  useEffect(() => {
-    if (safeChildrenWithFavorites.length > 10) {
-      setShowInput(true);
-    } else {
-      setShowInput(false);
-    }
-  }, [safeChildrenWithFavorites.length]);
+  const showInput = safeChildrenWithFavorites.length > 10;
 
   const [filteredChildren, setFilteredChildren] = useState(undefined);
   const [searchValue, setSearchValue] = useState('');
