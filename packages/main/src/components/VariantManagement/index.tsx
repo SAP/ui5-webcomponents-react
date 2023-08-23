@@ -279,19 +279,10 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
-  const [showInput, setShowInput] = useState(safeChildren.length > 9);
 
   useEffect(() => {
     setSafeChildren(Children.toArray(children));
   }, [children]);
-
-  useEffect(() => {
-    if (safeChildren.length > 9) {
-      setShowInput(true);
-    } else {
-      setShowInput(false);
-    }
-  }, [safeChildren.length]);
 
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
@@ -449,6 +440,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [showOnlyFavorites, safeChildren]);
 
   const safeChildrenWithFavorites = favoriteChildren ?? safeChildren;
+  const showInput = safeChildrenWithFavorites.length > 10;
 
   const [filteredChildren, setFilteredChildren] = useState(undefined);
   const [searchValue, setSearchValue] = useState('');
