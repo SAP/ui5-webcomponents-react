@@ -285,14 +285,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSafeChildren(Children.toArray(children));
   }, [children]);
 
-  useEffect(() => {
-    if (safeChildren.length > 9) {
-      setShowInput(true);
-    } else {
-      setShowInput(false);
-    }
-  }, [safeChildren.length]);
-
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
@@ -449,6 +441,14 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [showOnlyFavorites, safeChildren]);
 
   const safeChildrenWithFavorites = favoriteChildren ?? safeChildren;
+
+  useEffect(() => {
+    if (safeChildrenWithFavorites.length > 10) {
+      setShowInput(true);
+    } else {
+      setShowInput(false);
+    }
+  }, [safeChildrenWithFavorites.length]);
 
   const [filteredChildren, setFilteredChildren] = useState(undefined);
   const [searchValue, setSearchValue] = useState('');
