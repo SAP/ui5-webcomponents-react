@@ -223,7 +223,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
               {breadcrumbs}
             </div>
           )}
-          {showNavigationInTopArea && (
+          {navigationActions && showNavigationInTopArea && (
             <Toolbar
               tabIndex={undefined}
               role={undefined}

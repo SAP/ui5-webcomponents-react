@@ -30,7 +30,10 @@ export const DynamicPageTitleStyles = {
   },
   breadcrumbs: {
     minWidth: '50%',
-    padding: '0.5rem 0 0.25rem 0'
+    padding: '0.5rem 0 0.25rem 0',
+    '&:only-child': {
+      width: '100%'
+    }
   },
   titleMainSection: {
     overflowX: 'hidden',
