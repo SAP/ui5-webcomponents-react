@@ -611,6 +611,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]
   );
 
+  const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
+
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleInHeaderClass = inHeader ? classes.titleInHeader : undefined;
@@ -620,16 +622,20 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           showSubHeaderRight: true,
           className: clsx(titleInHeaderClass, headerTitle?.props?.className),
           'data-not-clickable': titleHeaderNotClickable,
-          onToggleHeaderContentVisibility: onTitleClick
+          onToggleHeaderContentVisibility: onTitleClick,
+          'data-header-content-visible': headerContent && headerCollapsed !== true,
+          'data-is-snapped-rendered-outside': snappedHeaderInObjPage
         });
       }
       return cloneElement(headerTitle, {
         className: clsx(titleInHeaderClass, headerTitle?.props?.className),
         'data-not-clickable': titleHeaderNotClickable,
-        onToggleHeaderContentVisibility: onTitleClick
+        onToggleHeaderContentVisibility: onTitleClick,
+        'data-header-content-visible': headerContent && headerCollapsed !== true,
+        'data-is-snapped-rendered-outside': snappedHeaderInObjPage
       });
     },
-    [headerTitle, titleHeaderNotClickable, onTitleClick]
+    [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, !!headerContent]
   );
 
   const renderHeaderContentSection = useCallback(() => {
@@ -763,6 +769,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
         {headerTitle && renderTitleSection()}
+        {snappedHeaderInObjPage && (
+          <div style={{ gridColumn: '1 / span 2' }} data-component-name="ATwithImageSnappedContentContainer">
+            {headerTitle.props.snappedContent}
+          </div>
+        )}
       </header>
       {renderHeaderContentSection()}
       {headerContent && headerTitle && (
