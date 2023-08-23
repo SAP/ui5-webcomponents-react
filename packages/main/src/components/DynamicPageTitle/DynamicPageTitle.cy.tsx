@@ -1,6 +1,15 @@
 import { useRef, useState } from 'react';
 import type { DynamicPagePropTypes, DynamicPageTitlePropTypes, ObjectPagePropTypes } from '../..';
-import { Avatar, DynamicPage, DynamicPageHeader, ObjectPage, ObjectPageSection, Title } from '../..';
+import {
+  Avatar,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  DynamicPage,
+  DynamicPageHeader,
+  ObjectPage,
+  ObjectPageSection,
+  Title
+} from '../..';
 import { Button } from '../../webComponents/index.js';
 import { DynamicPageTitle } from './';
 
@@ -119,6 +128,49 @@ describe('DynamicPageTitle', () => {
       cy.get('[data-component-name="ToolbarOverflowButton"]').should('be.visible');
     });
   });
+
+  it('breadcrumbs spread', () => {
+    [true, false].forEach((isObjectPage) => {
+      cy.viewport(1920, 1080);
+      cy.mount(
+        <PageComponent
+          isObjectPage={isObjectPage}
+          dynamicPageTitleProps={{
+            navigationActions: undefined,
+            breadcrumbs: (
+              <Breadcrumbs data-testid="breadcrumbs">
+                {new Array(14).fill(1337).map((item, index) => (
+                  <BreadcrumbsItem key={index}>{`BreadcrumbsItem ${index}`}</BreadcrumbsItem>
+                ))}
+              </Breadcrumbs>
+            )
+          }}
+        />
+      );
+      // no nav actions
+      cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '1808px' /*100%*/);
+      cy.mount(
+        <PageComponent
+          isObjectPage={isObjectPage}
+          dynamicPageTitleProps={{
+            breadcrumbs: (
+              <Breadcrumbs data-testid="breadcrumbs">
+                {new Array(14).fill(1337).map((item, index) => (
+                  <BreadcrumbsItem key={index}>{`BreadcrumbsItem ${index}`}</BreadcrumbsItem>
+                ))}
+              </Breadcrumbs>
+            )
+          }}
+        />
+      );
+      // nav actions in actions toolbar
+      cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '1808px' /*100%*/);
+      cy.viewport(1000, 1000);
+      // w/ nav actions
+      cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '460px' /*50% (min-width)*/);
+    });
+  });
+
   it('expandedContent & snappedContent', () => {
     [true, 'withImage', false].forEach((isObjectPage) => {
       const image = isObjectPage === 'withImage' && <Avatar />;
