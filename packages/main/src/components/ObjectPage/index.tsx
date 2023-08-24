@@ -638,6 +638,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, !!headerContent]
   );
 
+  const isInitial = useRef(true);
+  useEffect(() => {
+    if (isInitial.current) {
+      scrollTimeout.current = performance.now() + 100;
+    } else {
+      isInitial.current = false;
+    }
+  }, [snappedHeaderInObjPage]);
+
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
       return cloneElement(headerContent, {
