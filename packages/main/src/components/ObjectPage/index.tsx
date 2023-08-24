@@ -779,7 +779,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         )}
         {headerTitle && renderTitleSection()}
         {snappedHeaderInObjPage && (
-          <div style={{ gridColumn: '1 / span 2' }} data-component-name="ATwithImageSnappedContentContainer">
+          <div className={classes.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
             {headerTitle.props.snappedContent}
           </div>
         )}
