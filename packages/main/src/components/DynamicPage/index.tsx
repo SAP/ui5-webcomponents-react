@@ -284,7 +284,8 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
             (!showHideHeaderButton && !headerContentPinnable),
           ref: componentRefTopHeader,
           className: clsx(classes.title, headerTitle?.props?.className),
-          onToggleHeaderContentVisibility: onToggleHeaderContentInternal
+          onToggleHeaderContentVisibility: onToggleHeaderContentInternal,
+          'data-header-content-visible': headerContent && headerCollapsed !== true
         })}
       {headerContent &&
         cloneElement(headerContent, {
