@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import hintIcon from '@ui5/webcomponents-icons/dist/hint.js';
 import leadIcon from '@ui5/webcomponents-icons/dist/lead.js';
 import productIcon from '@ui5/webcomponents-icons/dist/product.js';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { ButtonDesign } from '../../enums/ButtonDesign.js';
 import { MessageStripDesign } from '../../enums/MessageStripDesign.js';
 import { WrappingType } from '../../enums/WrappingType.js';
@@ -34,28 +34,46 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const step2 = useRef(null);
-    const step3 = useRef(null);
+    const [selected, setSelected] = useState('1');
+    const [disabled, setDisabled] = useState<Record<string, boolean>>({ '2': true, '3': true, '4': true });
+    const [hidden, setHidden] = useState<Record<string, boolean>>({ step3Btn: true, finalizeBtn: true });
     const goToStep2 = () => {
-      step2.current.selected = true;
-      step2.current.disabled = false;
+      setDisabled((prev) => {
+        const { '2': _omit, ...rest } = prev;
+        return rest;
+      });
+      setSelected('2');
     };
     const goToStep3 = () => {
-      step3.current.selected = true;
-      step3.current.disabled = false;
+      setDisabled((prev) => {
+        const { '3': _omit, ...rest } = prev;
+        return rest;
+      });
+      setSelected('3');
     };
-    const handleStep2Completed = () => {
-      document.querySelector('#goToStep3').removeAttribute('hidden');
+    const handleStep2Completed = (e) => {
+      if (e.target.checked) {
+        setHidden((prev) => {
+          const { step3Btn: _omit, ...rest } = prev;
+          return rest;
+        });
+      }
     };
     const finalizeWizard = () => {
       alert('Wizard is now completed!');
     };
-    const handlePriceInput = () => {
-      document.querySelector('#finalizeBtn').removeAttribute('hidden');
+    const handlePriceInput = (e) => {
+      if (e.target.value) {
+        setHidden((prev) => {
+          const { finalizeBtn: _omit, ...rest } = prev;
+          return rest;
+        });
+      }
     };
+
     return (
       <Wizard {...args}>
-        <WizardStep icon={productIcon} titleText="Product Type" selected>
+        <WizardStep icon={productIcon} titleText="Product Type" selected={selected === '1'}>
           <Title>1. Product Type</Title>
           <MessageStrip design={MessageStripDesign.Information}>
             The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work
@@ -74,7 +92,12 @@ export const Default: Story = {
             Step 2
           </Button>
         </WizardStep>
-        <WizardStep icon={hintIcon} titleText="Product Information" disabled ref={step2}>
+        <WizardStep
+          icon={hintIcon}
+          titleText="Product Information"
+          disabled={disabled['2']}
+          selected={selected === '2'}
+        >
           <Title>2. Product Information</Title>
           <Label wrappingType={WrappingType.None}>
             Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
@@ -86,12 +109,14 @@ export const Default: Story = {
           </Label>
           <CheckBox onChange={handleStep2Completed} text="Step Completed" />
           {Br}
-          <Button id="goToStep3" design={ButtonDesign.Emphasized} onClick={goToStep3} hidden>
-            Step 3
-          </Button>
+          {!hidden['step3Btn'] && (
+            <Button design={ButtonDesign.Emphasized} onClick={goToStep3}>
+              Step 3
+            </Button>
+          )}
         </WizardStep>
-        <WizardStep icon={leadIcon} titleText="Pricing" disabled ref={step3}>
-          <Title>4. Pricing</Title>
+        <WizardStep icon={leadIcon} titleText="Pricing" disabled={disabled['3']} selected={selected === '3'}>
+          <Title>3. Pricing</Title>
           <Label wrappingType={WrappingType.None}>
             Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
             Suspendisse arcu metus, molestie a turpis a, molestie aliquet dui. Donec ppellentesque leo sit amet dui
@@ -102,9 +127,11 @@ export const Default: Story = {
           </Label>
           <Input placeholder="Item Price" onInput={handlePriceInput} />
           {Br}
-          <Button design={ButtonDesign.Emphasized} onClick={finalizeWizard} hidden id="finalizeBtn">
-            Finalize
-          </Button>
+          {!hidden['finalizeBtn'] && (
+            <Button design={ButtonDesign.Emphasized} onClick={finalizeWizard}>
+              Finalize
+            </Button>
+          )}
         </WizardStep>
       </Wizard>
     );
