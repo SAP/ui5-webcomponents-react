@@ -87,7 +87,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
           }
           // recalc if row id of row index has changed
           if (
-            subComponentsHeight?.[virtualRow.index]?.rowId &&
+            subComponentsHeight?.[virtualRow.index]?.rowId != null &&
             subComponentsHeight?.[virtualRow.index]?.rowId !== row.id
           ) {
             dispatch({
