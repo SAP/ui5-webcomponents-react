@@ -641,7 +641,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const isInitial = useRef(true);
   useEffect(() => {
     if (isInitial.current) {
-      scrollTimeout.current = performance.now() + 100;
+      scrollTimeout.current = performance.now() + 200;
     } else {
       isInitial.current = false;
     }
