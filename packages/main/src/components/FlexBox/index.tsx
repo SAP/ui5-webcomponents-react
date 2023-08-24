@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { ElementType, ReactNode } from 'react';
+import type { CSSProperties, ElementType, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
@@ -27,6 +27,16 @@ export interface FlexBoxPropTypes extends CommonProps {
    * Determines whether the `FlexBox` will be sized to completely fill its container.
    */
   fitContainer?: boolean;
+  /**
+   * Defines the CSS gap between all inner children on row and column level.
+   * By default, gap values shall be provided as a number. It scales automatically in `gap * 1rem` steps.
+   *
+   * For more advanced usages patters, there's the option to provide a full CSS gap property string.
+   *
+   * <b>Note:</b> Corresponds to `gap` property of the CSS specification.
+   * Refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">CSS gap documentation</a>.
+   */
+  gap?: CSSProperties['gap'];
   /**
    * Defines how the browser distributes space between and around items along the main-axis.<br />
    * <b>Note:</b> Corresponds to `justify-content`.
@@ -58,6 +68,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     justifyContent = FlexBoxJustifyContent.Start,
     direction = FlexBoxDirection.Row,
     alignItems = FlexBoxAlignItems.Stretch,
+    gap = 'normal',
     displayInline,
     wrap = FlexBoxWrap.NoWrap,
     className,
@@ -66,7 +77,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     ...rest
   } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({ gap });
   const flexBoxClasses = clsx(
     classes.flexBox,
     classes[`flexBoxDirection${direction}`],
