@@ -82,6 +82,14 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
    */
   navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
+  /**
+   * The content displayed in the `DynamicPageTitle` in expanded state.
+   */
+  expandedContent?: ReactNode | ReactNode[];
+  /**
+   * The content displayed in the `DynamicPageTitle` in collapsed (snapped) state.
+   */
+  snappedContent?: ReactNode | ReactNode[];
 }
 
 interface InternalProps extends DynamicPageTitlePropTypes {
@@ -89,6 +97,18 @@ interface InternalProps extends DynamicPageTitlePropTypes {
    * The onToggleHeaderContentVisibility show or hide the header section
    */
   onToggleHeaderContentVisibility?: (e: any) => boolean;
+  /**
+   * Defines whether the content area can be toggled
+   */
+  'data-not-clickable'?: boolean;
+  /**
+   * Defines whether the content area is visible
+   */
+  'data-header-content-visible'?: boolean;
+  /**
+   * Defines if the `snappedContent` should be rendered by the `DynamicPageTitle`
+   */
+  'data-is-snapped-rendered-outside'?: boolean;
 }
 
 const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
@@ -128,6 +148,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
     onToggleHeaderContentVisibility,
     actionsToolbarProps,
     navigationActionsToolbarProps,
+    expandedContent,
+    snappedContent,
     ...rest
   } = props as InternalProps;
 
@@ -300,6 +322,11 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
           </div>
         </FlexBox>
       )}
+      {props?.['data-header-content-visible']
+        ? expandedContent
+        : props['data-is-snapped-rendered-outside']
+        ? undefined
+        : snappedContent}
     </FlexBox>
   );
 });

@@ -136,5 +136,6 @@ export const styles = {
       padding: 0
     }
   },
-  titleInHeader: { padding: 0 }
+  titleInHeader: { padding: 0 },
+  snappedContent: { gridColumn: '1 / span 2' }
 };

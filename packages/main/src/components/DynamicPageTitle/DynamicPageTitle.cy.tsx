@@ -1,20 +1,37 @@
 import { useRef, useState } from 'react';
-import type { DynamicPageTitlePropTypes } from '../..';
-import { Breadcrumbs, BreadcrumbsItem, DynamicPage, ObjectPage, Title } from '../..';
+import type { DynamicPagePropTypes, DynamicPageTitlePropTypes, ObjectPagePropTypes } from '../..';
+import {
+  Avatar,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  DynamicPage,
+  DynamicPageHeader,
+  ObjectPage,
+  ObjectPageSection,
+  Title
+} from '../..';
 import { Button } from '../../webComponents/index.js';
 import { DynamicPageTitle } from './';
 
 interface PropTypes {
   dynamicPageTitleProps?: DynamicPageTitlePropTypes;
+  pageProps?: ObjectPagePropTypes | DynamicPagePropTypes;
   isObjectPage: boolean;
+  childrenScrollable?: boolean;
 }
 
-const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) => {
+const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage, pageProps = {}, childrenScrollable }: PropTypes) => {
   const actionsRef = useRef(null);
   const navActionsRef = useRef(null);
   const [actionsToolbarInstance, setActionsToolbarInstance] = useState();
   const [navActionsToolbarInstance, setNavActionsToolbarInstance] = useState();
-  const pageProps = {
+  const childrenObjectPage = (
+    <ObjectPageSection id={'0'}>
+      <div style={{ height: '1600px', background: 'cadetblue' }}></div>
+    </ObjectPageSection>
+  );
+  const childrenDynamicPage = <div style={{ height: '1600px', background: 'cadetblue' }}></div>;
+  const localPageProps = {
     headerTitle: (
       <DynamicPageTitle
         actions={new Array(10).fill(<Button>Test</Button>)}
@@ -23,7 +40,8 @@ const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) 
         navigationActionsToolbarProps={{ overflowPopoverRef: navActionsRef }}
         {...dynamicPageTitleProps}
       />
-    )
+    ),
+    ...pageProps
   };
   return (
     <>
@@ -41,7 +59,15 @@ const PageComponent = ({ dynamicPageTitleProps = {}, isObjectPage }: PropTypes) 
       >
         Show navActionsRef
       </Button>
-      {isObjectPage ? <ObjectPage {...pageProps} /> : <DynamicPage {...pageProps} />}
+      {isObjectPage ? (
+        <ObjectPage data-testid="page" {...localPageProps}>
+          {childrenScrollable && childrenObjectPage}
+        </ObjectPage>
+      ) : (
+        <DynamicPage data-testid="page" {...localPageProps}>
+          {childrenScrollable && childrenDynamicPage}
+        </DynamicPage>
+      )}
       <p data-testid="actionsInstance">{`${!!actionsToolbarInstance}`}</p>
       <p data-testid="navActionsInstance">{`${!!navActionsToolbarInstance}`}</p>
     </>
@@ -142,6 +168,46 @@ describe('DynamicPageTitle', () => {
       cy.viewport(1000, 1000);
       // w/ nav actions
       cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '460px' /*50% (min-width)*/);
+    });
+  });
+
+  it('expandedContent & snappedContent', () => {
+    [true, 'withImage', false].forEach((isObjectPage) => {
+      const image = isObjectPage === 'withImage' && <Avatar />;
+      [
+        undefined,
+        <DynamicPageHeader key="headerContent" style={{ height: '100px', background: 'lightblue' }}>
+          Header Section
+        </DynamicPageHeader>
+      ].forEach((headerContent) => {
+        cy.mount(
+          <PageComponent
+            childrenScrollable
+            isObjectPage={!!isObjectPage}
+            pageProps={{ image, headerContent, style: { height: '800px' } }}
+            dynamicPageTitleProps={{
+              expandedContent: <div data-testid="expandedContent">expandedContent</div>,
+              snappedContent: <div data-testid="snappedContent">snappedContent</div>
+            }}
+          />
+        );
+        if (headerContent) {
+          cy.findByText('expandedContent').should('be.visible');
+          cy.findByTestId('snappedContent').should('not.exist');
+        } else {
+          cy.findByText('snappedContent').should('be.visible');
+          cy.findByTestId('expandedContent').should('not.exist');
+        }
+        cy.wait(50);
+        cy.findByTestId('page').scrollTo(0, 500);
+        cy.findByText('snappedContent').should('be.visible');
+        cy.findByTestId('expandedContent').should('not.exist');
+        if (headerContent && image) {
+          cy.get('[data-component-name="ATwithImageSnappedContentContainer"]').should('be.visible');
+        } else {
+          cy.get('[data-component-name="ATwithImageSnappedContentContainer"]').should('not.exist');
+        }
+      });
     });
   });
 });
