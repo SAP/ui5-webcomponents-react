@@ -63,6 +63,7 @@ const meta = {
       },
       {
         Header: () => <span>Friend Age</span>,
+        headerLabel: 'Friend Age',
         accessor: 'friend.age',
         hAlign: TextAlign.End,
         filter: (rows, accessor, filterValue) => {
