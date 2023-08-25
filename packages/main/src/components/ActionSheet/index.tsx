@@ -1,7 +1,7 @@
 'use client';
 
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
 import React, { forwardRef, useReducer, useRef } from 'react';
@@ -164,6 +164,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenToRender = flattenFragments(children);
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
+  const isRtl = useIsRTL(popoverRef);
 
   const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
@@ -211,14 +212,14 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
     switch (e.key) {
       case 'ArrowDown':
-      case 'ArrowRight':
+      case isRtl ? 'ArrowLeft' : 'ArrowRight':
         if (currentIndex + 1 < childrenLength) {
           e.preventDefault();
           actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
         }
         break;
       case 'ArrowUp':
-      case 'ArrowLeft':
+      case isRtl ? 'ArrowRight' : 'ArrowLeft':
         if (currentIndex > 0) {
           e.preventDefault();
           actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();

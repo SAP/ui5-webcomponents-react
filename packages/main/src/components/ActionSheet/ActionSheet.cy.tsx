@@ -8,11 +8,11 @@ interface TestCompProptypes extends ActionSheetPropTypes {
 }
 
 const TestComp = (props: TestCompProptypes) => {
-  const { onBtnClick, open, children } = props;
+  const { onBtnClick, open = true, children, ...rest } = props;
   return (
     <>
       <button id="opener">Opener</button>
-      <ActionSheet className="myCustomClass" open={open} opener="opener">
+      <ActionSheet className="myCustomClass" open={open} opener="opener" {...rest}>
         {children || (
           <>
             <Button onClick={onBtnClick}>Accept</Button>
@@ -28,7 +28,7 @@ const TestComp = (props: TestCompProptypes) => {
 describe('ActionSheet', () => {
   it('Click Action', () => {
     const onBtnClick = cy.spy().as('onBtnClick');
-    cy.mount(<TestComp onBtnClick={onBtnClick} open />);
+    cy.mount(<TestComp onBtnClick={onBtnClick} />);
 
     cy.get('[ui5-responsive-popover]').should('be.visible');
 
@@ -39,10 +39,55 @@ describe('ActionSheet', () => {
 
   it('does not crash with other component', () => {
     cy.mount(
-      <TestComp open>
+      <TestComp>
         <Label>I should not crash</Label>
       </TestComp>
     );
     cy.findByText('I should not crash').should('be.visible');
+  });
+
+  it('keyboard navigation', () => {
+    cy.mount(
+      <TestComp>
+        {new Array(15).fill('O.o').map((_, index) => (
+          <Button key={index}>{`Button${index}`}</Button>
+        ))}
+      </TestComp>
+    );
+    cy.focused().should('have.text', 'Button0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.text', 'Button1');
+    cy.realPress('ArrowRight');
+    cy.realPress('ArrowRight');
+    cy.focused().should('have.text', 'Button3');
+    cy.realPress('PageUp');
+    cy.focused().should('have.text', 'Button0');
+    cy.realPress('PageDown');
+    cy.focused().should('have.text', 'Button5');
+    cy.realPress('End');
+    cy.focused().should('have.text', 'Button14');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.text', 'Button13');
+    cy.realPress('ArrowLeft');
+    cy.realPress('ArrowLeft');
+    cy.focused().should('have.text', 'Button11');
+    cy.realPress('PageDown');
+    cy.focused().should('have.text', 'Button14');
+    cy.realPress('Home');
+    cy.focused().should('have.text', 'Button0');
+
+    // todo: rtl detection of wcr and ui5wc doesn't work for some reason in cypress
+    // cy.mount(
+    //   <TestComp dir="rtl">
+    //     {new Array(15).fill('O.o').map((_, index) => (
+    //       <Button key={index}>{`Button${index}`}</Button>
+    //     ))}
+    //   </TestComp>
+    // );
+    // cy.focused().should('have.text', 'Button0');
+    // cy.realPress('ArrowLeft');
+    // cy.focused().should('have.text', 'Button1');
+    // cy.realPress('ArrowRight');
+    // cy.focused().should('have.text', 'Button0');
   });
 });
