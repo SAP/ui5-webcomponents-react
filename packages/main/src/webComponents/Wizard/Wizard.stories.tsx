@@ -70,10 +70,14 @@ export const Default: Story = {
         });
       }
     };
+    const handleStepChange = (e) => {
+      setSelected(e.detail.step.dataset.step);
+      args.onStepChange(e);
+    };
 
     return (
-      <Wizard {...args}>
-        <WizardStep icon={productIcon} titleText="Product Type" selected={selected === '1'}>
+      <Wizard {...args} onStepChange={handleStepChange}>
+        <WizardStep icon={productIcon} titleText="Product Type" selected={selected === '1'} data-step={'1'}>
           <Title>1. Product Type</Title>
           <MessageStrip design={MessageStripDesign.Information}>
             The Wizard control is supposed to break down large tasks, into smaller steps, easier for the user to work
@@ -97,6 +101,7 @@ export const Default: Story = {
           titleText="Product Information"
           disabled={disabled['2']}
           selected={selected === '2'}
+          data-step={'2'}
         >
           <Title>2. Product Information</Title>
           <Label wrappingType={WrappingType.None}>
@@ -115,7 +120,13 @@ export const Default: Story = {
             </Button>
           )}
         </WizardStep>
-        <WizardStep icon={leadIcon} titleText="Pricing" disabled={disabled['3']} selected={selected === '3'}>
+        <WizardStep
+          icon={leadIcon}
+          titleText="Pricing"
+          disabled={disabled['3']}
+          selected={selected === '3'}
+          data-step={'3'}
+        >
           <Title>3. Pricing</Title>
           <Label wrappingType={WrappingType.None}>
             Integer pellentesque leo sit amet dui vehicula, quis ullamcorper est pulvinar. Nam in libero sem.
