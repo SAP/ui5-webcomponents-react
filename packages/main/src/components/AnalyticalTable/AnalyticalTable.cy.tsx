@@ -1787,7 +1787,11 @@ describe('AnalyticalTable', () => {
     cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('have.attr', 'aria-label', '');
 
-    cy.get('[data-column-id="friend.age"]').should('have.attr', 'aria-label', 'Custom Label ');
+    cy.get('[data-visible-row-index="0"][data-visible-column-index="3"]').should(
+      'have.attr',
+      'aria-label',
+      'Custom Label '
+    );
     cy.realPress('ArrowDown');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
       'have.attr',
