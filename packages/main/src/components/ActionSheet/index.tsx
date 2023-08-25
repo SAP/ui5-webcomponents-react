@@ -209,13 +209,39 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
 
   const handleKeyDown = (e) => {
     const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
-    if (e.key === 'ArrowDown' && currentIndex + 1 < childrenLength) {
-      e.preventDefault();
-      actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
-    }
-    if (e.key === 'ArrowUp' && currentIndex > 0) {
-      e.preventDefault();
-      actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        if (currentIndex + 1 < childrenLength) {
+          e.preventDefault();
+          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex + 1}"]`).focus();
+        }
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        if (currentIndex > 0) {
+          e.preventDefault();
+          actionBtnsRef.current.querySelector(`[data-action-btn-index="${currentIndex - 1}"]`).focus();
+        }
+        break;
+      case 'PageUp':
+        e.preventDefault();
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="${Math.max(currentIndex - 5, 0)}"]`).focus();
+        break;
+      case 'PageDown':
+        e.preventDefault();
+        actionBtnsRef.current
+          .querySelector(`[data-action-btn-index="${Math.min(currentIndex + 5, childrenLength - 1)}"]`)
+          .focus();
+        break;
+      case 'Home':
+        e.preventDefault();
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="0"]`).focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        actionBtnsRef.current.querySelector(`[data-action-btn-index="${childrenLength - 1}"]`).focus();
+        break;
     }
   };
 
