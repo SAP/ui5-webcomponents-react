@@ -18,6 +18,10 @@ export interface TextPropTypes extends CommonProps {
    * Defines whether the text wraps when there is not enough space.
    */
   wrapping?: boolean;
+  /**
+   * Limits the number of lines for wrapping texts.
+   */
+  maxLines?: number;
 }
 
 const useStyles = createUseStyles(TextStyles, { name: 'Text' });
@@ -26,27 +30,28 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
  */
 const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
-  const { children, renderWhitespace, wrapping, className, style, slot, ...rest } = props;
-
+  const { children, renderWhitespace, wrapping = true, className, style, slot, maxLines, ...rest } = props;
   const classes = useStyles();
   const classNameString = clsx(
     classes.text,
     wrapping === false && classes.noWrap,
     renderWhitespace && classes.renderWhitespace,
+    typeof maxLines === 'number' && classes.maxLines,
     className
   );
 
   return (
-    <span ref={ref} style={style} className={classNameString} slot={slot} {...rest}>
+    <span
+      ref={ref}
+      style={{ '--_ui5wcr_maxLines': typeof maxLines === 'number' ? maxLines : undefined, ...style }}
+      className={classNameString}
+      slot={slot}
+      {...rest}
+    >
       {children}
     </span>
   );
 });
-
-Text.defaultProps = {
-  renderWhitespace: false,
-  wrapping: true
-};
 
 Text.displayName = 'Text';
 
