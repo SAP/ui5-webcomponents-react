@@ -30,7 +30,7 @@ const useStyles = createUseStyles(TextStyles, { name: 'Text' });
  * <br />__Note:__ Line breaks will always be visualized except when the wrapping property is set to false. In addition, tabs and whitespace can be preserved by setting the renderWhitespace property to true.
  */
 const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
-  const { children, renderWhitespace, wrapping = true, className, style, slot, maxLines, ...rest } = props;
+  const { children, renderWhitespace, wrapping = true, className, style, maxLines, ...rest } = props;
   const classes = useStyles();
   const classNameString = clsx(
     classes.text,
@@ -45,7 +45,6 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
       ref={ref}
       style={{ '--_ui5wcr_maxLines': typeof maxLines === 'number' ? maxLines : undefined, ...style } as CSSProperties}
       className={classNameString}
-      slot={slot}
       {...rest}
     >
       {children}
