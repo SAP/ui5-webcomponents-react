@@ -53,7 +53,8 @@ const columns = [
   },
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
-    accessor: 'friend.age'
+    accessor: 'friend.age',
+    headerLabel: 'Custom Label'
   }
 ];
 const data = [
@@ -1258,8 +1259,9 @@ describe('AnalyticalTable', () => {
     });
   });
   it('columns drag & drop', () => {
-    columns.pop();
-    const updatedCols = [...columns, { accessor: 'friend.age', Header: 'Friend Age', disableDragAndDrop: true }];
+    const localCols = [...columns];
+    localCols.pop();
+    const updatedCols = [...localCols, { accessor: 'friend.age', Header: 'Friend Age', disableDragAndDrop: true }];
     const reorder = cy.spy().as('reorder');
     ['ltr', 'rtl'].forEach((dir) => {
       cy.mount(<AnalyticalTable dir={dir} data={data} columns={updatedCols} onColumnsReorder={reorder} />);
@@ -1742,7 +1744,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
   });
 
-  it('a11y: grouped, filtered, sorted', () => {
+  it('a11y: grouped, filtered, sorted, headerLabel', () => {
     cy.mount(<AnalyticalTable columns={columns} data={data} groupable filterable sortable />);
     cy.findByText('Name').click();
     cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
@@ -1767,24 +1769,32 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Grouped, To expand the row, press the spacebar'
+      'Name Grouped, To expand the row, press the spacebar'
     );
     cy.get('[name="navigation-right-arrow"]').click();
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Grouped, To collapse the row, press the spacebar'
+      'Name Grouped, To collapse the row, press the spacebar'
     );
     cy.findByText('Name').click();
     cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });
-    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('not.have.attr', 'aria-label');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name ');
     cy.get('[data-column-id="name"]')
       .should('have.attr', 'aria-sort', 'descending')
       .and('have.attr', 'aria-label', 'Filtered');
 
     cy.findByText('Name').click();
     cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
-    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('not.have.attr', 'aria-label');
+    cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('have.attr', 'aria-label', '');
+
+    cy.get('[data-column-id="friend.age"]').should('have.attr', 'aria-label', 'Custom Label ');
+    cy.realPress('ArrowDown');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
+      'have.attr',
+      'aria-label',
+      'Custom Label '
+    );
   });
 
   it("Expandable: don't scroll when expanded/collapsed", () => {
@@ -2234,7 +2244,7 @@ describe('AnalyticalTable', () => {
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
     cy.realPress('End');
-    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '3');
     cy.realPress('Home');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
