@@ -1259,8 +1259,9 @@ describe('AnalyticalTable', () => {
     });
   });
   it('columns drag & drop', () => {
-    columns.pop();
-    const updatedCols = [...columns, { accessor: 'friend.age', Header: 'Friend Age', disableDragAndDrop: true }];
+    const localCols = [...columns];
+    localCols.pop();
+    const updatedCols = [...localCols, { accessor: 'friend.age', Header: 'Friend Age', disableDragAndDrop: true }];
     const reorder = cy.spy().as('reorder');
     ['ltr', 'rtl'].forEach((dir) => {
       cy.mount(<AnalyticalTable dir={dir} data={data} columns={updatedCols} onColumnsReorder={reorder} />);
@@ -1787,11 +1788,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('have.attr', 'aria-label', '');
 
-    cy.get('[data-visible-row-index="0"][data-visible-column-index="3"]').should(
-      'have.attr',
-      'aria-label',
-      'Custom Label '
-    );
+    cy.get('[data-column-id="friend.age"]').should('have.attr', 'aria-label', 'Custom Label ');
     cy.realPress('ArrowDown');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
       'have.attr',
@@ -2247,7 +2244,7 @@ describe('AnalyticalTable', () => {
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
     cy.realPress('End');
-    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '3');
     cy.realPress('Home');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
 
