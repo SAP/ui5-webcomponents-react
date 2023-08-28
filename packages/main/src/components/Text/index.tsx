@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -43,7 +43,7 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
   return (
     <span
       ref={ref}
-      style={{ '--_ui5wcr_maxLines': typeof maxLines === 'number' ? maxLines : undefined, ...style }}
+      style={{ '--_ui5wcr_maxLines': typeof maxLines === 'number' ? maxLines : undefined, ...style } as CSSProperties}
       className={classNameString}
       slot={slot}
       {...rest}
