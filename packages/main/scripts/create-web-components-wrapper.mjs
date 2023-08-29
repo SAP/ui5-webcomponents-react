@@ -61,15 +61,20 @@ const INPUT_COMPONENTS = new Set([
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const interfaces = new Set();
-const moduleNameReplacement = { Toolbar: true, ToolbarSeparator: true, ToolbarSpacer: true };
+const moduleNameReplacement = {
+  Toolbar: 'ToolbarV2',
+  ToolbarSeparator: 'ToolbarSeparatorV2',
+  ToolbarSpacer: 'ToolbarSpacerV2'
+};
 const allWebComponents = [
   ...mainWebComponentsSpec.symbols
     .filter((spec) => !spec.module.startsWith('types/'))
     .map((item) => {
       if (moduleNameReplacement[item.module]) {
-        item.basename += 'V2';
-        item.module += 'V2';
-        item.name += 'V2';
+        item.name = item.name.replace(item.module, moduleNameReplacement[item.module]);
+        item.basename = moduleNameReplacement[item.module];
+        item.module = moduleNameReplacement[item.module];
+        console.log(item);
       }
       return item;
     }),
