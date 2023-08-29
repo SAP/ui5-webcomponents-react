@@ -15,6 +15,8 @@ export const PRIVATE_COMPONENTS = {
   TabBase: true,
   ThemePropertiesProvider: true,
   TimePickerBase: true,
+  //todo check if should be really private, if so then delete component
+  ToolbarItem: true,
   TreeListItem: true,
   TreeItemBase: true,
   YearPicker: true,
