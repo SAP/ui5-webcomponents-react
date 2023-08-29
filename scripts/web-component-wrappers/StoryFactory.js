@@ -90,7 +90,7 @@ export async function createDocumentation(componentSpec, componentProps, hasDesc
 
   fs.writeFileSync(
     path.join(webComponentsFolderPath, componentName, `${componentName}.mdx`),
-    renderStory({
+    await renderStory({
       name: componentName,
       since: versionInfo[componentSpec.since],
       imports: importStatements,

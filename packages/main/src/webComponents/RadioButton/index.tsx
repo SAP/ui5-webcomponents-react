@@ -60,23 +60,11 @@ interface RadioButtonAttributes {
   value?: string;
   /**
    * Defines the value state of the component.
-   *
-   * Available options are:
-   *
-   * *   `None`
-   * *   `Error`
-   * *   `Warning`
-   * *   `Success`
-   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
   /**
    * Defines whether the component text wraps when there is not enough space.
-   *
-   * Available options are:
-   *
-   * *   `None` - The text will be truncated with an ellipsis.
-   * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
+   * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }

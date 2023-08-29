@@ -37,24 +37,12 @@ interface TabContainerAttributes {
   showOverflow?: boolean;
   /**
    * Defines the alignment of the content and the `additionalText` of a tab.
-   *
    * **Note:** The content and the `additionalText` would be displayed vertically by default, but when set to `Inline`, they would be displayed horizontally.
-   *
-   * Available options are:
-   *
-   * *   `Standard`
-   * *   `Inline`
    */
   tabLayout?: TabLayout | keyof typeof TabLayout;
   /**
    * Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible. All other tabs that can 't fit on the screen are available in an overflow tab "More".
-   *
    * **Note:** Only one overflow at the end would be displayed by default, but when set to `StartAndEnd`, there will be two overflows on both ends, and tab order will not change on tab selection.
-   *
-   * Available options are:
-   *
-   * *   `End`
-   * *   `StartAndEnd`
    */
   tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
 }

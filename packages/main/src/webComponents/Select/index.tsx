@@ -1,12 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Select.js';
-import type { SelectChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
-import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
+import { ReactNode } from 'react';
 import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { SelectChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import type { SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 
 interface SelectAttributes {
   /**
@@ -23,6 +25,12 @@ interface SelectAttributes {
    * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
+  /**
+   * Defines a reference (ID or DOM element) of component's menu of options. as alternative to define the select's dropdown.
+   *
+   * **Note:** Usage of `SelectMenu` is recommended.
+   */
+  menu?: string | HTMLElement;
   /**
    * Determines the name with which the component will be submitted in an HTML form. The value of the component will be the value of the currently selected `Option`.
    *
@@ -66,6 +74,20 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    */
   children?: ReactNode | ReactNode[];
   /**
+   * Defines the HTML element that will be displayed in the component input part, representing the selected option.
+   *
+   * **Note:** If not specified and `SelectMenuOption` is used, either the option's `display-text` or its textContent will be displayed.
+   *
+   * **Note:** If not specified and `undefined` is used, the option's textContent will be displayed.
+   *
+   * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="label"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   */
+  label?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
@@ -90,6 +112,10 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    */
   onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
   /**
+   * Fired when the user navigates through the options, but the selection is not finalized, or when pressing the ESC key to revert the current selection.
+   */
+  onLiveChange?: (event: Ui5CustomEvent<SelectDomRef, SelectLiveChangeEventDetail>) => void;
+  /**
    * Fired after the component's dropdown menu opens.
    */
   onOpen?: (event: Ui5CustomEvent<SelectDomRef>) => void;
@@ -104,16 +130,17 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'name', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'menu', 'name', 'valueState'],
   ['disabled', 'required'],
-  ['valueStateMessage'],
-  ['change', 'close', 'open'],
+  ['label', 'valueStateMessage'],
+  ['change', 'close', 'live-change', 'open'],
   () => import('@ui5/webcomponents/dist/Select.js')
 );
 
 Select.displayName = 'Select';
 
 Select.defaultProps = {
+  menu: false,
   valueState: ValueState.None
 };
 

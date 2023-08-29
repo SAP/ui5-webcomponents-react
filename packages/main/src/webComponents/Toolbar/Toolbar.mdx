@@ -1,0 +1,40 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { ArgsTableWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ToolbarButton, ToolbarSelect } from '../index.js';
+import Description from './ToolbarDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import ToolbarButtonDescription from '../ToolbarButton/ToolbarButtonDescription.md?raw';
+import ToolbarSelectDescription from '../ToolbarSelect/ToolbarSelectDescription.md?raw';
+import * as ComponentStories from './Toolbar.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="1.19.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{Description}</Markdown>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ToolbarButton
+
+<Markdown>{{{this}}Description}</Markdown>
+
+<ArgsTableWithNote of={ToolbarButton} />
+
+## ToolbarSelect
+
+<Markdown>{{{this}}Description}</Markdown>
+
+<ArgsTableWithNote of={ToolbarSelect} />
+
+<Footer />

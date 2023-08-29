@@ -232,6 +232,8 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'TimelineLayout':
     case 'TitleLevel':
     case 'ToastPlacement':
+    case 'ToolbarAlign':
+    case 'ToolbarItemOverflowBehavior':
     case 'UploadState':
     case 'ValueState':
     case 'ViewSettingsDialogMode':

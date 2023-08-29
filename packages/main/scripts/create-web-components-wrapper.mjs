@@ -498,7 +498,7 @@ allWebComponents
 
       // create test
       if (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
-        const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
+        const webComponentTest = await renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
         writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 

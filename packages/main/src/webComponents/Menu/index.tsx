@@ -73,7 +73,7 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
   /**
-   * Fired when an item is being clicked.
+   * Fired when an item is being clicked. **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 }

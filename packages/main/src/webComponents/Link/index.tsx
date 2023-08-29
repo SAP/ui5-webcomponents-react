@@ -54,10 +54,8 @@ interface LinkAttributes {
    */
   target?: string;
   /**
-   * Defines how the text of a component will be displayed when there is not enough space. Available options are:
-   *
-   * *   `None` - The text will be truncated with an ellipsis.
-   * *   `Normal` - The text will wrap. The words will not be broken based on hyphenation.
+   * Defines how the text of a component will be displayed when there is not enough space.
+   * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
