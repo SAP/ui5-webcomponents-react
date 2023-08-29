@@ -31,5 +31,35 @@ describe('Text', () => {
       .should('have.css', 'overflow', 'hidden');
   });
 
+  it('maxLines', () => {
+    cy.mount(
+      <Text data-testid="text" style={{ width: '300px' }}>
+        {longText}
+      </Text>
+    );
+    cy.findByTestId('text').invoke('outerHeight').should('equal', 240);
+
+    cy.mount(
+      <Text data-testid="text" style={{ width: '300px' }} maxLines={0}>
+        {longText}
+      </Text>
+    );
+    cy.findByTestId('text').invoke('outerHeight').should('equal', 240);
+    cy.mount(
+      <Text data-testid="text" style={{ width: '300px' }} maxLines={1}>
+        {longText}
+      </Text>
+    );
+    cy.findByTestId('text').invoke('outerHeight').should('equal', 16);
+    cy.mount(
+      <Text data-testid="text" style={{ width: '300px' }} maxLines={4}>
+        {longText}
+      </Text>
+    );
+    cy.findByTestId('text').invoke('outerHeight').should('equal', 64);
+  });
+
   cypressPassThroughTestsFactory(Text);
 });
+
+const longText = `If "renderWhitespace" is set to true, there will be thirteen white spaces after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat`;
