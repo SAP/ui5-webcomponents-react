@@ -34,6 +34,10 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'child
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
    */
+  hideDynamicPageContent?: boolean;
+  /**
+   * Determines whether the DynamicPageContent is shown.
+   */
   headerTitle?: ReactElement;
   /**
    * Defines the dynamic header section of the `DynamicPage`.
@@ -104,6 +108,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     backgroundDesign,
     showHideHeaderButton,
     headerContentPinnable,
+    hideDynamicPageContent,
     alwaysShowContentHeader,
     children,
     className,
@@ -313,7 +318,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
           setHeaderPinned={handleHeaderPinnedChange}
         />
       </FlexBox>
-      <div
+      {!hideDynamicPageContent && <div
         ref={contentRef}
         data-component-name="DynamicPageContent"
         className={classes.contentContainer}
@@ -322,7 +327,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
         }}
       >
         {typeof children === 'function' ? children({ stickyHeaderHeight: top + 1 /*anchorBar height */ }) : children}
-      </div>
+      </div>}
       {footer && (
         <div
           className={classes.footer}
