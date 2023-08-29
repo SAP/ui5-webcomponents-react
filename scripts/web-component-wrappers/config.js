@@ -41,6 +41,7 @@ export const COMPONENTS_WITHOUT_DEMOS = {
   Option: 'Select',
   ProductSwitchItem: 'ProductSwitch',
   SegmentedButtonItem: 'SegmentedButton',
+  SelectMenuOption: 'SelectMenuOption',
   ShellBarItem: 'ShellBar',
   SideNavigationItem: 'SideNavigation',
   SideNavigationSubItem: 'SideNavigation',

@@ -63,12 +63,16 @@ const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((c
 const interfaces = new Set();
 const moduleNameReplacement = { Toolbar: true, ToolbarSeparator: true, ToolbarSpacer: true };
 const allWebComponents = [
-  ...mainWebComponentsSpec.symbols.filter(
-    (spec) =>
-      !spec.module.startsWith('types/').map((item) => {
-        console.log(item);
-      })
-  ),
+  ...mainWebComponentsSpec.symbols
+    .filter((spec) => !spec.module.startsWith('types/'))
+    .map((item) => {
+      if (moduleNameReplacement[item.module]) {
+        item.basename += 'V2';
+        item.module += 'V2';
+        item.name += 'V2';
+      }
+      return item;
+    }),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
 ].filter((item) => {
   if (item.kind === 'interface') {
