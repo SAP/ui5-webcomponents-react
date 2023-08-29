@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarSelect.js';
+import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import { ReactNode } from 'react';
-import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
+// todo: import and apply once available
+// import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
+import type { CommonProps, Ui5DomRef, Ui5CustomEvent } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 
 interface ToolbarSelectAttributes {
   /**
@@ -43,7 +43,7 @@ export interface ToolbarSelectPropTypes extends ToolbarSelectAttributes, Omit<Co
   /**
    * Fired when the selected option changes.
    */
-  onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
+  onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, any /*ToolbarSelectChangeEventDetail*/>) => void;
   /**
    * Fired after the component's dropdown menu closes.
    */

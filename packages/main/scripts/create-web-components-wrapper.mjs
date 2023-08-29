@@ -61,8 +61,14 @@ const INPUT_COMPONENTS = new Set([
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const interfaces = new Set();
+const moduleNameReplacement = { Toolbar: true, ToolbarSeparator: true, ToolbarSpacer: true };
 const allWebComponents = [
-  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
+  ...mainWebComponentsSpec.symbols.filter(
+    (spec) =>
+      !spec.module.startsWith('types/').map((item) => {
+        console.log(item);
+      })
+  ),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
 ].filter((item) => {
   if (item.kind === 'interface') {

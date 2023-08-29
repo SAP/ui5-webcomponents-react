@@ -140,7 +140,6 @@ const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
 Select.displayName = 'Select';
 
 Select.defaultProps = {
-  menu: false,
   valueState: ValueState.None
 };
 
