@@ -108,7 +108,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     backgroundDesign,
     showHideHeaderButton,
     headerContentPinnable,
-    hideDynamicPageContent,
+    hideDynamicPageContent = false,
     alwaysShowContentHeader,
     children,
     className,
