@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ContainerQueries } from '../../internal/ContainerQueries.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 
 export const DynamicPageTitleStyles = {
@@ -48,6 +49,7 @@ export const DynamicPageTitleStyles = {
     color: ThemingParameters.sapObjectHeader_Title_TextColor,
     fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,
     paddingBlockStart: '0.3125rem',
+    [ContainerQueries.M]: { paddingBlockStart: '0.6875rem' },
     overflowWrap: 'break-word',
     hyphens: 'auto',
     '& > *': {
