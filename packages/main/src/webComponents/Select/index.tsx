@@ -1,14 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Select.js';
+import type { SelectChangeEventDetail, SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import { ReactNode } from 'react';
-import type { UI5WCSlotsNode } from '../../types/index.js';
-import type { SelectChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
-import type { SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface SelectAttributes {
   /**
@@ -25,6 +23,7 @@ interface SelectAttributes {
    * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
+  //todo adjust types and description + add story
   /**
    * Defines a reference (ID or DOM element) of component's menu of options. as alternative to define the select's dropdown.
    *
@@ -78,6 +77,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    *
    * **Note:** If not specified and `SelectMenuOption` is used, either the option's `display-text` or its textContent will be displayed.
    *
+   * todo check undefined here
    * **Note:** If not specified and `undefined` is used, the option's textContent will be displayed.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="label"`).

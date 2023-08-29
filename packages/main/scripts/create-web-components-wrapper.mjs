@@ -209,7 +209,7 @@ const createWebComponentWrapper = async (
   const domRef = Utils.createDomRef(componentSpec, importStatements);
   const importSpecifier = `@ui5/webcomponents${
     componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''
-  }/dist/${componentSpec.module}.js`;
+  }/dist/${componentSpec.resource}`;
 
   const imports = [`import '${importSpecifier}';`, ...new Set(importStatements)];
 

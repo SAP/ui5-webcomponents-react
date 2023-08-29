@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SelectMenu.js';
-import { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface SelectMenuAttributes {}
 
