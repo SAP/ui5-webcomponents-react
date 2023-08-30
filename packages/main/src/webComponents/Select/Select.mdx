@@ -1,11 +1,13 @@
-import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Option } from '../Option';
-import OptionDescription from '../Option/OptionDescription.md?raw';
-import * as ComponentStories from './Select.stories';
+import { ArgsTableWithNote, ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { Option, SelectMenu, SelectMenuOption } from '../index.ts';
 import Description from './SelectDescription.md?raw';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import OptionDescription from '../Option/OptionDescription.md?raw';
+import SelectMenuDescription from '../SelectMenu/SelectMenuDescription.md?raw';
+import SelectMenuOptionDescription from '../SelectMenuOption/SelectMenuOptionDescription.md?raw';
 import SelectDomRef from './SelectDomRef.json';
+import * as ComponentStories from './Select.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
@@ -60,6 +62,19 @@ const onChange = (event) => {
 ## Option
 
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Option} />
+
 <Markdown>{OptionDescription}</Markdown>
+
+## SelectMenu
+
+<Markdown>{SelectMenuDescription}</Markdown>
+
+<ArgsTableWithNote of={SelectMenu} />
+
+## SelectMenuOption
+
+<Markdown>{SelectMenuOptionDescription}</Markdown>
+
+<ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SelectMenuOption} />
 
 <Footer />
