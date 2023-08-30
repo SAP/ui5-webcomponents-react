@@ -63,7 +63,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "chromatic": "^6.5.3",
     "cssnano": "^6.0.1",
-    "cypress": "^12.1.0",
+    "cypress": "^13.0.0",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "eslint": "^8.35.0",
