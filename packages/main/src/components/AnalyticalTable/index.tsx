@@ -681,7 +681,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   } = props;
 
   useEffect(() => {
-    if (props.alwaysShowSubComponent) {
+    if (props.alwaysShowSubComponent != undefined) {
       deprecationNotice(
         'alwaysShowSubComponent',
         '`alwaysShowSubComponent` is deprecated. Please use `subComponentsBehavior` instead!'
