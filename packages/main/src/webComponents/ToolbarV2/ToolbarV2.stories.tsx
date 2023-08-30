@@ -8,7 +8,7 @@ import { ToolbarSpacerV2 } from '../ToolbarSpacerV2';
 import { ToolbarV2 } from './index.js';
 
 const meta = {
-  title: 'Components / ToolbarV2',
+  title: 'Layouts & Floorplans / ToolbarV2',
   component: ToolbarV2,
   argTypes: {
     children: { control: { disable: true } }

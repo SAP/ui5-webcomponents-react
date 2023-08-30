@@ -1,10 +1,13 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { ArgsTableWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { ToolbarButton, ToolbarSelect } from '../index.ts';
+import { ToolbarButton, ToolbarSelect, ToolbarSelectOption, ToolbarSeparatorV2, ToolbarSpacerV2 } from '../index.ts';
 import Description from './ToolbarV2Description.md?raw';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import ToolbarButtonDescription from '../ToolbarButton/ToolbarButtonDescription.md?raw';
 import ToolbarSelectDescription from '../ToolbarSelect/ToolbarSelectDescription.md?raw';
+import ToolbarSelectOptionDescription from '../ToolbarSelectOption/ToolbarSelectOptionDescription.md?raw';
+import ToolbarSeparatorDescription from '../ToolbarSeparatorV2/ToolbarSeparatorV2Description.md?raw';
+import ToolbarSpacerDescription from '../ToolbarSpacerV2/ToolbarSpacerV2Description.md?raw';
 import * as ComponentStories from './ToolbarV2.stories';
 
 <Meta of={ComponentStories} />
@@ -36,5 +39,23 @@ import * as ComponentStories from './ToolbarV2.stories';
 <Markdown>{ToolbarSelectDescription}</Markdown>
 
 <ArgsTableWithNote of={ToolbarSelect} />
+
+## ToolbarSelectOption
+
+<Markdown>{ToolbarSelectOptionDescription}</Markdown>
+
+<ArgsTableWithNote of={ToolbarSelectOption} />
+
+## ToolbarSeparator
+
+<Markdown>{ToolbarSeparatorDescription}</Markdown>
+
+<ArgsTableWithNote of={ToolbarSeparatorV2} />
+
+## ToolbarSpacer
+
+<Markdown>{ToolbarSpacerDescription}</Markdown>
+
+<ArgsTableWithNote of={ToolbarSpacerV2} />
 
 <Footer />
