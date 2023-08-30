@@ -107,6 +107,14 @@ export interface AnalyticalTableColumnDefinition {
    */
   Header?: string | ComponentType<any> | ((props?: any) => ReactNode);
   /**
+   * Defines the `aria-label` for the whole column read by screen readers.
+   *
+   * __Note:__ This prop is mandatory if you pass anything else than `string` to the `Header` property. In this case the `headerLabel` should at least contain the column name.
+   *
+   * __Note:__ If `headerLabel` is defined, screen readers will always read the passed string, even when `Header` is a `string`.
+   */
+  headerLabel?: string;
+  /**
    * Tooltip for the column header. If not set, the display text will be the same as the Header if it is a `string`.
    */
   headerTooltip?: string;

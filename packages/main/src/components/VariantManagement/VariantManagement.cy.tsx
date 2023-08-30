@@ -253,28 +253,28 @@ describe('VariantManagement', () => {
       <VariantManagement>
         <VariantItem>VariantItem 1</VariantItem>
         <VariantItem selected>VariantItem 2</VariantItem>
-        {...new Array(8)
+        {...new Array(9)
           .fill(':)')
           .map((_, index) => <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>)}
       </VariantManagement>
     );
     cy.get('[icon="navigation-down-arrow"]').click();
-    cy.get('[ui5-li]').should('have.length', 10);
+    cy.get('[ui5-li]').should('have.length', 11);
     cy.findByPlaceholderText('Search').typeIntoUi5Input('VariantItem 10');
     cy.get('[ui5-li]').should('have.length', 1).should('have.text', 'VariantItem 10');
     cy.get('[input-icon]').click();
-    cy.get('[ui5-li]').should('have.length', 10);
+    cy.get('[ui5-li]').should('have.length', 11);
 
     cy.mount(
       <VariantManagement>
         {TwoVariantItems}
-        {new Array(7).fill(':)').map((_, index) => (
+        {new Array(8).fill(':)').map((_, index) => (
           <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>
         ))}
       </VariantManagement>
     );
     cy.get('[icon="navigation-down-arrow"]').click();
-    cy.get('[ui5-li]').should('have.length', 9);
+    cy.get('[ui5-li]').should('have.length', 10);
     cy.findByPlaceholderText('Search', { timeout: 200 }).should('not.exist');
   });
 

@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-react/dist/Assets.js';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -6,6 +7,8 @@ import './index.css';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </StrictMode>
 );

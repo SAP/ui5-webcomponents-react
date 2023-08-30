@@ -28,5 +28,11 @@ export const TextStyles = {
     '&$renderWhitespace': {
       whiteSpace: 'pre'
     }
+  },
+  maxLines: {
+    display: '-webkit-box',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    WebkitLineClamp: 'var(--_ui5wcr_maxLines)'
   }
 };

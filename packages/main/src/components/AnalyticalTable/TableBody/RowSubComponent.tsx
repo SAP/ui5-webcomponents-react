@@ -85,6 +85,19 @@ export const RowSubComponent = (props: RowSubComponent) => {
               });
             }
           }
+          // recalc if row id of row index has changed
+          if (
+            subComponentsHeight?.[virtualRow.index]?.rowId != null &&
+            subComponentsHeight?.[virtualRow.index]?.rowId !== row.id
+          ) {
+            dispatch({
+              type: 'SUB_COMPONENTS_HEIGHT',
+              payload: {
+                ...subComponentsHeight,
+                [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id }
+              }
+            });
+          }
         }
       });
     });
