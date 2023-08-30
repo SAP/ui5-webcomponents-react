@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
-import { ButtonDesign, ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../interfaces/index.js';
+import { ButtonDesign } from '../../enums/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ToolbarButtonAttributes {
@@ -51,21 +51,11 @@ interface ToolbarButtonAttributes {
    */
   tooltip?: string;
   /**
-   * Button width
+   * Defines the width of the button.
+   *
+   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
   width?: string;
-  /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
-   *
-   * *   `NeverOverflow`
-   * *   `AlwaysOverflow`
-   * *   `Default`
-   */
-  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
-  /**
-   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
-   */
-  preventOverflowClosing?: boolean;
 }
 
 export interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
@@ -98,14 +88,16 @@ export interface ToolbarButtonPropTypes extends ToolbarButtonAttributes, Omit<Co
 /**
  * The `ToolbarButton` represents an abstract action, used in the `ToolbarV2`.
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ToolbarButton)
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'text', 'tooltip', 'width', 'overflowPriority'],
-  ['disabled', 'iconEnd', 'preventOverflowClosing'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'text', 'tooltip', 'width'],
+  ['disabled', 'iconEnd'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/ToolbarButton.js')
@@ -114,8 +106,7 @@ const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomR
 ToolbarButton.displayName = 'ToolbarButton';
 
 ToolbarButton.defaultProps = {
-  design: ButtonDesign.Default,
-  overflowPriority: ToolbarItemOverflowBehavior.Default
+  design: ButtonDesign.Default
 };
 
 export { ToolbarButton };

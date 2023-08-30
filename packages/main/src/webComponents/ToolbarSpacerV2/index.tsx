@@ -6,7 +6,9 @@ import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ToolbarSpacerV2Attributes {
   /**
-   * Spacer width
+   * Defines the width of the spacer.
+   *
+   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
   width?: string;
 }

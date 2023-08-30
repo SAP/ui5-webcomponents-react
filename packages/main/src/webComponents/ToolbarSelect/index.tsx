@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ToolbarSelectAttributes {
@@ -26,6 +26,12 @@ interface ToolbarSelectAttributes {
    * Defines the value state of the component.
    */
   valueState?: ValueState | keyof typeof ValueState;
+  /**
+   * Defines the width of the select.
+   *
+   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
+   */
+  width?: string;
 }
 
 export interface ToolbarSelectDomRef extends ToolbarSelectAttributes, Ui5DomRef {}
@@ -36,7 +42,7 @@ export interface ToolbarSelectPropTypes extends ToolbarSelectAttributes, Omit<Co
    *
    * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
    *
-   * **Note:** Use the `Option` component to define the desired options.
+   * **Note:** Use the `ToolbarSelectOption` component to define the desired options.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -56,13 +62,15 @@ export interface ToolbarSelectPropTypes extends ToolbarSelectAttributes, Omit<Co
 /**
  * The `ToolbarSelect` component is used to create a toolbar drop-down list. The items inside the `ToolbarSelect` define the available options by using the `ToolbarSelect-option` component.
  *
+ * @abstract
+ *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ToolbarSelect)
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',
-  ['accessibleName', 'accessibleNameRef', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'valueState', 'width'],
   ['disabled'],
   [],
   ['change', 'close', 'open'],

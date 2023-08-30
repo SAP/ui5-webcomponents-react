@@ -82,7 +82,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    *
    * **Note:** If not specified and `SelectMenuOption` is used, either the option's `display-text` or its textContent will be displayed.
    *
-   * **Note:** If not specified and `undefined` is used, the option's textContent will be displayed.
+   * **Note:** If not specified and `Option` is used, the option's textContent will be displayed.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="label"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
