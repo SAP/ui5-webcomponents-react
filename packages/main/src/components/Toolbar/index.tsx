@@ -134,6 +134,8 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  * __Note:__ The overflow popover is mounted only when the overflow button is displayed, i.e., any child component of the popover will be remounted, when moved into it.
  *
  * __Note:__ To prevent duplicate child `id`s in the DOM, all child `id`s get an `-overflow` suffix. This is especially important when popovers are opened by id.
+ *
+ * @deprecated This component will be replaced by the `ui5-toolbar` web-component (currently available as `ToolbarV2`) with our next major release. Please use `ToolbarV2` instead.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
