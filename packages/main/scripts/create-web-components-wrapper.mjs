@@ -240,10 +240,10 @@ const createWebComponentWrapper = async (
     eventProps,
     defaultProps,
     domRef,
-    baseComponentName:
-      typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
-        ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
-        : componentSpec.module
+    baseComponentName: (typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
+      ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
+      : componentSpec.module
+    ).replace('V2', '')
   });
 };
 
