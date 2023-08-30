@@ -30,7 +30,7 @@ const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
-const CREATE_SINGLE_COMPONENT = process.argv[2] || 'DynamicSideContent';
+const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
 
 const EXCLUDE_LIST = [];
 
