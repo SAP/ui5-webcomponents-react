@@ -365,6 +365,11 @@ allWebComponents
         return !item.description.includes('is inherited and not supported');
       });
     }
+    if (componentSpec.slots) {
+      componentSpec.slots = componentSpec.slots.filter((item) => {
+        return !item.description.includes('is inherited and not supported');
+      });
+    }
     const allComponentProperties = (componentSpec.properties || [])
       .filter((prop) => {
         return (
