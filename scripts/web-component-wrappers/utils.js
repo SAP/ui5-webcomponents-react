@@ -7,7 +7,10 @@ import TurndownService from 'turndown';
 import PATHS from '../../config/paths.js';
 import { replaceTagNameWithModuleName } from '../../packages/main/scripts/create-web-components-wrapper.mjs';
 import prettierConfigRaw from '../../prettier.config.cjs';
-import versionInfo from './version-info.json' assert { type: 'json' };
+import publicVersionInfo from './version-info.json' assert { type: 'json' };
+import internalVersionInfo from './version-info-internal.json' assert { type: 'json' };
+
+const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 const eslint = new ESLint({
   overrideConfig: {
@@ -392,10 +395,15 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
   return newDescription;
 };
 
-export function replaceUi5VersionInfo(description) {
+export function replaceUi5VersionInfo(description, componentSpec) {
   if (description) {
-    description = description.replace(/(?<major>\d+)\.(?<minor>\d+).(?<patch>\d+)/gm, (val) => {
-      return versionInfo[val] || val;
+    description = description.replace(/(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/gm, (val) => {
+      if (!versionInfo[val]) {
+        throw new Error(
+          `${componentSpec.module}: Ui5Wc version is not compatible with version-info.json! Please add it to version-info-internal.json`
+        );
+      }
+      return versionInfo[val];
     });
   }
   return description;
@@ -408,7 +416,7 @@ export function replaceUi5VersionInfo(description) {
  * @return {string}
  */
 export const formatDescription = (description, componentSpec, isJSDoc = true) => {
-  description = replaceUi5VersionInfo(description);
+  description = replaceUi5VersionInfo(description, componentSpec);
   if (isJSDoc) {
     description = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
   } else {

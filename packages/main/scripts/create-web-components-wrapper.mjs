@@ -23,11 +23,14 @@ import {
   getDomRefMethods,
   getDomRefObjects
 } from '../../../scripts/web-component-wrappers/utils.js';
-import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
+import publicVersionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
+import internalVersionInfo from '../../../scripts/web-component-wrappers/version-info-internal.json' assert { type: 'json' };
+
+const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
-const CREATE_SINGLE_COMPONENT = process.argv[2] || false;
+const CREATE_SINGLE_COMPONENT = process.argv[2] || 'DynamicSideContent';
 
 const EXCLUDE_LIST = [];
 
@@ -534,7 +537,15 @@ allWebComponents
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
-        const since = componentSpec.since ? `**Since:** ${versionInfo[componentSpec.since]}\n` : '';
+        let since = '';
+        if (componentSpec.since) {
+          if (!versionInfo[componentSpec.since]) {
+            throw new Error(
+              `${componentSpec.module}: Ui5Wc version is not compatible with version-info.json! Please add it to version-info-internal.json`
+            );
+          }
+          since = `**Since:** ${versionInfo[componentSpec.since]}\n`;
+        }
         const abstractDescription = componentSpec.abstract
           ? `<b>Abstract UI5 Web Component</b> - Find out more about abstract components <a href="https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components" target="_blank">here</a>.<br/><br/>`
           : '';
