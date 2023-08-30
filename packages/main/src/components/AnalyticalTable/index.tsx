@@ -871,7 +871,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           type: 'VISIBLE_ROWS',
           payload: { visibleRows: Math.max(1, subCompsRowCount) }
         });
-        console.log('updateRowsCount');
       } else {
         const rowCount = Math.max(1, Math.floor(bodyHeight / popInRowHeight));
         dispatch({
