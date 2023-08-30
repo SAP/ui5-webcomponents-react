@@ -61,7 +61,9 @@ const INPUT_COMPONENTS = new Set([
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const interfaces = new Set();
-const moduleNameReplacement = {
+
+// currently only applied to main wc package
+const MODULE_NAME_REPLACEMENT = {
   Toolbar: 'ToolbarV2',
   ToolbarSeparator: 'ToolbarSeparatorV2',
   ToolbarSpacer: 'ToolbarSpacerV2'
@@ -70,11 +72,10 @@ const allWebComponents = [
   ...mainWebComponentsSpec.symbols
     .filter((spec) => !spec.module.startsWith('types/'))
     .map((item) => {
-      if (moduleNameReplacement[item.module]) {
-        item.name = item.name.replace(item.module, moduleNameReplacement[item.module]);
-        item.basename = moduleNameReplacement[item.module];
-        item.module = moduleNameReplacement[item.module];
-        console.log(item);
+      if (MODULE_NAME_REPLACEMENT[item.module]) {
+        item.name = item.name.replace(item.module, MODULE_NAME_REPLACEMENT[item.module]);
+        item.basename = MODULE_NAME_REPLACEMENT[item.module];
+        item.module = MODULE_NAME_REPLACEMENT[item.module];
       }
       return item;
     }),
@@ -359,11 +360,17 @@ allWebComponents
     const slotsAndEvents = [];
     const importStatements = [];
     const defaultProps = [];
+    if (componentSpec.properties) {
+      componentSpec.properties = componentSpec.properties.filter((item) => {
+        return !item.description.includes('is inherited and not supported');
+      });
+    }
     const allComponentProperties = (componentSpec.properties || [])
-      .filter(
-        (prop) =>
+      .filter((prop) => {
+        return (
           prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true && prop.type !== 'object'
-      )
+        );
+      })
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
@@ -491,6 +498,7 @@ allWebComponents
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
       const regularPropsToOmit = new Set(['boolean', 'Boolean', 'object', 'Object']);
+
       const webComponentWrapper = await createWebComponentWrapper(
         componentSpec,
         mainDescription,

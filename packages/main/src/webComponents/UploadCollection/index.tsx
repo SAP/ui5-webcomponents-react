@@ -24,15 +24,7 @@ interface UploadCollectionAttributes {
   hideDragOverlay?: boolean;
   /**
    * Defines the mode of the `UploadCollection`.
-   *
-   * **Note:**
-   *
-   * *   `None`
-   * *   `SingleSelect`
-   * *   `SingleSelectBegin`
-   * *   `SingleSelectEnd`
-   * *   `MultiSelect`
-   * *   `Delete` - this mode has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
+   * **Note:** Mode "Delete" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
    */
   mode?: ListMode | keyof typeof ListMode;
   /**

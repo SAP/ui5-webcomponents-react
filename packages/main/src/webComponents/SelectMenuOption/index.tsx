@@ -1,10 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
-import { ListItemType } from '../../enums/index.js';
-import { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { ReactNode } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface SelectMenuOptionAttributes {
   /**
@@ -12,25 +11,12 @@ interface SelectMenuOptionAttributes {
    */
   displayText?: string;
   /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  navigated?: boolean;
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  type?: ListItemType | keyof typeof ListItemType;
-  /**
    * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
 }
 
-export interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  accessibilityAttributes: Record<string, unknown>;
-}
+export interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {}
 
 export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, CommonProps {
   /**
@@ -58,17 +44,13 @@ export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, C
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['displayText', 'type', 'value'],
-  ['navigated'],
+  ['displayText', 'value'],
+  [],
   ['deleteButton'],
   [],
   () => import('@ui5/webcomponents/dist/SelectMenuOption.js')
 );
 
 SelectMenuOption.displayName = 'SelectMenuOption';
-
-SelectMenuOption.defaultProps = {
-  type: ListItemType.Active
-};
 
 export { SelectMenuOption };
