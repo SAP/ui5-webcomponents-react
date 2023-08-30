@@ -69,11 +69,11 @@ export interface MenuPropTypes extends MenuAttributes, CommonProps {
    */
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
   /**
-   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.** **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
+   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.** **Note:** Since 1.16.0 the event is also fired before a sub-menu opens.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
   /**
-   * Fired when an item is being clicked. **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
+   * Fired when an item is being clicked. **Note:** Since 1.19.0 the event is preventable, allowing the menu to remain open after an item is pressed.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 }

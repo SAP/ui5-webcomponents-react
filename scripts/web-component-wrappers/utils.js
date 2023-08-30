@@ -7,6 +7,7 @@ import TurndownService from 'turndown';
 import PATHS from '../../config/paths.js';
 import { replaceTagNameWithModuleName } from '../../packages/main/scripts/create-web-components-wrapper.mjs';
 import prettierConfigRaw from '../../prettier.config.cjs';
+import versionInfo from './version-info.json' assert { type: 'json' };
 
 const eslint = new ESLint({
   overrideConfig: {
@@ -391,6 +392,15 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
   return newDescription;
 };
 
+export function replaceUi5VersionInfo(description) {
+  if (description) {
+    description = description.replace(/(?<major>\d+)\.(?<minor>\d+).(?<patch>\d+)/gm, (val) => {
+      return versionInfo[val] || val;
+    });
+  }
+  return description;
+}
+
 /**
  *
  * @param {string} description description to format
@@ -398,14 +408,14 @@ export const replaceEventNamesInDescription = (description, componentSpec) => {
  * @return {string}
  */
 export const formatDescription = (description, componentSpec, isJSDoc = true) => {
-  let desc;
+  description = replaceUi5VersionInfo(description);
   if (isJSDoc) {
-    desc = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
+    description = turndownService.turndown((description || '').trim()).replaceAll('\n', '\n   * ');
   } else {
-    desc = turndownService.turndown((description || '').trim());
+    description = turndownService.turndown((description || '').trim());
   }
-  desc = replaceEventNamesInDescription(desc, componentSpec);
-  return desc;
+  description = replaceEventNamesInDescription(description, componentSpec);
+  return description;
 };
 
 export const formatDemoDescription = async (description, componentSpec, replaceHeadingTags = true) => {
