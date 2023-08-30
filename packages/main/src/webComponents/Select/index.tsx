@@ -23,13 +23,12 @@ interface SelectAttributes {
    * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
-  //todo adjust types and description + add story
   /**
-   * Defines a reference (ID or DOM element) of component's menu of options. as alternative to define the select's dropdown.
+   * Defines the ID of the component's options menu, as an alternative to defining the selection's drop-down menu.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
    */
-  menu?: string | HTMLElement;
+  menu?: string;
   /**
    * Determines the name with which the component will be submitted in an HTML form. The value of the component will be the value of the currently selected `Option`.
    *
@@ -56,7 +55,13 @@ interface SelectAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
+export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
+  /**
+   * Defines a reference (ID or DOM element) of the component's options menu, as an alternative to defining the selection's drop-down menu.
+   *
+   * **Note:** Usage of `SelectMenu` is recommended.
+   */
+  menu?: string | HTMLElement;
   /**
    * Currently selected `Option` element.
    */
@@ -77,7 +82,6 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
    *
    * **Note:** If not specified and `SelectMenuOption` is used, either the option's `display-text` or its textContent will be displayed.
    *
-   * todo check undefined here
    * **Note:** If not specified and `undefined` is used, the option's textContent will be displayed.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="label"`).
