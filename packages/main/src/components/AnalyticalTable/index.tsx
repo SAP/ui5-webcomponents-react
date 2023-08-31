@@ -1124,8 +1124,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       return Math.round(clientRect.width);
     },
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: overscanCountHorizontal,
+    indexAttribute: 'data-column-index'
   });
+
+  useEffect(() => {
+    columnVirtualizer.measure();
+  }, [columnVirtualizer, tableState.columnOrder, tableState.columnResizing]);
 
   const totalSize = columnVirtualizer.getTotalSize();
   const showVerticalEndBorder = tableState.tableClientWidth > totalSize;

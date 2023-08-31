@@ -231,7 +231,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         data-visible-row-index={0}
         data-row-index={0}
         data-column-index={columnIndex}
-        data-index={columnIndex}
         tabIndex={-1}
         id={id}
         className={className}
