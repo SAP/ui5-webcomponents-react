@@ -65,7 +65,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
 import { useA11y } from './hooks/useA11y.js';
-import { useDragAndDrop } from './hooks/useDragAndDrop.js';
+import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
 import { usePopIn } from './hooks/usePopIn.js';
@@ -764,7 +764,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         showOverlay,
         uniqueId,
         scaleXFactor,
-        subRowsKey
+        subRowsKey,
+        onColumnsReorder
       },
       ...reactTableOptions
     },
@@ -789,6 +790,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     usePopIn,
     useVisibleColumnsWidth,
     useKeyboardNavigation,
+    useColumnDragAndDrop,
     ...tableHooks
   );
 
@@ -798,7 +800,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     rows,
     prepareRow,
     state: tableState,
-    columns: tableInternalColumns,
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
@@ -1035,15 +1036,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     }
   }, [columnOrder]);
 
-  const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    isRtl,
-    setColumnOrder,
-    tableState.columnOrder,
-    tableState.columnResizing,
-    tableInternalColumns,
-    onColumnsReorder
-  );
-
   const inlineStyle = useMemo(() => {
     const tableStyles = {
       maxWidth: '100%',
@@ -1208,12 +1200,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     headerGroup={headerGroup}
                     onSort={onSort}
                     onGroupByChanged={onGroupByChanged}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDrop={handleOnDrop}
-                    onDragEnter={handleDragEnter}
-                    onDragEnd={handleOnDragEnd}
-                    dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     columnVirtualizer={columnVirtualizer}

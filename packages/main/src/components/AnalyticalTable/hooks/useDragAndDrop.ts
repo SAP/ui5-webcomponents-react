@@ -1,35 +1,46 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (isRtl, setColumnOrder, columnOrder, resizeInfo, columns: any[], onColumnsReorder?) => {
-  const [dragOver, setDragOver] = useState('');
+function useGetHeaderProps(
+  props: Record<string, unknown>,
+  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }
+) {
+  const { columnOrder, columnResizing, isRtl, dndColumn } = state;
+  const { onColumnsReorder } = webComponentsReactProperties;
 
   const handleDragStart = useCallback(
     (e) => {
-      if (resizeInfo.isResizingColumn || !e.target.draggable) {
+      if (columnResizing.isResizingColumn || !e.target.draggable) {
         e.preventDefault();
         return;
       }
       e.dataTransfer.setData('text', e.currentTarget.dataset.columnId);
     },
-    [resizeInfo.isResizingColumn]
+    [columnResizing.isResizingColumn]
   );
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
   }, []);
 
-  const handleDragEnter = useCallback((e) => {
-    setDragOver(e.currentTarget.dataset.columnId);
-  }, []);
+  const handleDragEnter = useCallback(
+    (e) => {
+      dispatch({ type: 'COLUMN_DND_START', payload: e.currentTarget.dataset.columnId });
+    },
+    [dispatch]
+  );
+
+  const handleOnDragEnd = useCallback(() => {
+    dispatch({ type: 'COLUMN_DND_END' });
+  }, [dispatch]);
 
   const handleOnDrop = useCallback(
     (e) => {
-      setDragOver('');
+      dispatch({ type: 'COLUMN_DND_END' });
 
       const droppedColId = e.currentTarget.dataset.columnId;
       const draggedColId = e.dataTransfer.getData('text');
@@ -55,12 +66,22 @@ export const useDragAndDrop = (isRtl, setColumnOrder, columnOrder, resizeInfo, c
         );
       }
     },
-    [columnOrder, onColumnsReorder, columns]
+    [dispatch, columnOrder, columns, isRtl, setColumnOrder, onColumnsReorder]
   );
 
-  const handleOnDragEnd = useCallback(() => {
-    setDragOver('');
-  }, [dragOver]);
+  return [
+    props,
+    {
+      onDragStart: handleDragStart,
+      onDragEnter: handleDragEnter,
+      onDragOver: handleDragOver,
+      onDragEnd: handleOnDragEnd,
+      onDrop: handleOnDrop,
+      dragOver: dndColumn === props.id
+    }
+  ];
+}
 
-  return [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd];
-};
+export function useColumnDragAndDrop(hooks) {
+  hooks.getHeaderProps.push(useGetHeaderProps);
+}

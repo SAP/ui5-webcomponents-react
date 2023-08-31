@@ -51,6 +51,10 @@ export const stateReducer = (prevState, action) => {
       return { ...prevState, selectedRowPayload: payload };
     case 'ROW_COLLAPSED_FLAG':
       return { ...prevState, rowCollapsed: payload };
+    case 'COLUMN_DND_START':
+      return { ...prevState, dndColumn: payload };
+    case 'COLUMN_DND_END':
+      return { ...prevState, dndColumn: '' };
     default:
       return prevState;
   }

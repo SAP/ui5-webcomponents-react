@@ -23,15 +23,10 @@ const styles = {
 
 interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
-  onDragStart: any;
-  onDragOver: any;
-  onDrop: any;
-  onDragEnter: any;
-  onDragEnd: any;
-  dragOver: any;
   resizeInfo: Record<string, unknown>;
   isRtl: boolean;
   portalContainer: Element;
@@ -48,12 +43,6 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     headerGroup,
     onSort,
     onGroupByChanged,
-    onDragStart,
-    onDragOver,
-    onDrop,
-    onDragEnter,
-    onDragEnd,
-    dragOver,
     resizeInfo,
     isRtl,
     portalContainer,
@@ -106,12 +95,6 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               visibleColumnIndex={index}
               onSort={onSort}
               onGroupBy={onGroupByChanged}
-              onDragStart={onDragStart}
-              onDragOver={onDragOver}
-              onDrop={onDrop}
-              onDragEnter={onDragEnter}
-              onDragEnd={onDragEnd}
-              dragOver={column.id === dragOver}
               headerTooltip={column.headerTooltip}
               isDraggable={(column.canReorder || !column.disableDragAndDrop) && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
