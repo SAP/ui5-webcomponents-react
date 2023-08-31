@@ -1,4 +1,4 @@
-import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+import { getEffectiveScopingSuffixForTag, getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { ReactNode } from 'react';
 import { Children, cloneElement, Fragment } from 'react';
 
@@ -44,3 +44,5 @@ export const isSSR = () => typeof window === 'undefined';
 export function trimAndRemoveSpaces(value) {
   return value.trim().replace(/\s\s+/g, ' ');
 }
+
+export const cssVarVersionInfoPrefix = getScopedVarName('--_ui5_').replace('--_ui5_', '');

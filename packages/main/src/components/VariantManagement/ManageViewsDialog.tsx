@@ -18,6 +18,7 @@ import {
   SEARCH
 } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
+import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
@@ -27,6 +28,9 @@ import { TableColumn } from '../../webComponents/TableColumn/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { ManageViewsTableRows } from './ManageViewsTableRows.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
+
+const _popupDefaultHeaderHeight = `var(${cssVarVersionInfoPrefix}popup_default_header_height)`;
+const _popupHeaderFontFamily = `var(${cssVarVersionInfoPrefix}popup_header_font_family)`;
 
 const styles = {
   manageViewsDialog: {
@@ -43,16 +47,16 @@ const styles = {
     margin: 0,
     textAlign: 'center',
     alignSelf: 'start',
-    minHeight: 'var(--_ui5_popup_default_header_height)',
-    maxHeight: 'var(--_ui5_popup_default_header_height)',
-    lineHeight: 'var(--_ui5_popup_default_header_height)',
+    minHeight: _popupDefaultHeaderHeight,
+    maxHeight: _popupDefaultHeaderHeight,
+    lineHeight: _popupDefaultHeaderHeight,
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     maxWidth: '100%',
     display: 'inline-block',
     paddingInlineStart: '1rem',
-    fontFamily: '"72override",var(--_ui5_popup_header_font_family)',
+    fontFamily: `"72override",${_popupHeaderFontFamily}`,
     fontSize: '1rem'
   },
   search: { width: 'calc(100% - 2rem)', marginBlockEnd: '0.5rem' },

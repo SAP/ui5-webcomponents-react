@@ -1,4 +1,10 @@
 import { spacing, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
+
+const _cardHeaderFocusOffset = `var(${cssVarVersionInfoPrefix}card_header_focus_offset)`;
+const _cardHeaderFocusBorder = `var(${cssVarVersionInfoPrefix}card_header_focus_border)`;
+const _cardHeaderFocusRadius = `var(${cssVarVersionInfoPrefix}card_header_focus_radius)`;
+const _cardHeaderFocusBottomRadius = `var(${cssVarVersionInfoPrefix}card_header_focus_bottom_radius)`;
 
 const styles = {
   helpText: {
@@ -15,16 +21,16 @@ const styles = {
       outline: 'none',
       content: '""',
       position: 'absolute',
-      border: 'var(--_ui5_card_header_focus_border)',
+      border: _cardHeaderFocusBorder,
       pointerEvents: 'none',
-      top: 'var(--_ui5_card_header_focus_offset)',
-      left: 'var(--_ui5_card_header_focus_offset)',
-      right: 'var(--_ui5_card_header_focus_offset)',
-      bottom: 'var(--_ui5_card_header_focus_offset)',
-      borderTopLeftRadius: 'var(--_ui5_card_header_focus_radius)',
-      borderTopRightRadius: 'var(--_ui5_card_header_focus_radius)',
-      borderBottomLeftRadius: 'var(--_ui5_card_header_focus_bottom_radius)',
-      borderBottomRightRadius: 'var(--_ui5_card_header_focus_bottom_radius)'
+      top: _cardHeaderFocusOffset,
+      left: _cardHeaderFocusOffset,
+      right: _cardHeaderFocusOffset,
+      bottom: _cardHeaderFocusOffset,
+      borderTopLeftRadius: _cardHeaderFocusRadius,
+      borderTopRightRadius: _cardHeaderFocusRadius,
+      borderBottomLeftRadius: _cardHeaderFocusBottomRadius,
+      borderBottomRightRadius: _cardHeaderFocusBottomRadius
     },
     '&:focus-visible': {
       outline: 'none'

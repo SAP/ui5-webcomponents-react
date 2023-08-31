@@ -10,7 +10,16 @@ import type { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
+import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
+
+const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
+const _buttonBaseHeight = `${cssVarVersionInfoPrefix}button_base_height`;
+
+const anchorButtonVariables = {
+  [_buttonBaseMinWidth]: '1.5rem',
+  [_buttonBaseHeight]: '1.5rem'
+} as CSSProperties;
 
 const anchorBarStyles = {
   container: {
@@ -33,7 +42,7 @@ const anchorBarStyles = {
     }
   },
   anchorBarActionButton: {
-    '--_ui5wcr_anchor-btn-center': `calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2)`,
+    '--_ui5wcr_anchor-btn-center': `calc((var(${_buttonBaseMinWidth}) - ${ThemingParameters.sapButton_BorderWidth}) / 2)`,
     position: 'absolute',
     insetBlockStart: `calc(-1 * var(--_ui5wcr_anchor-btn-center))`,
     insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center))',
@@ -99,11 +108,6 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
    */
   onPinnedStateChange?: (pinned: boolean) => void;
 }
-
-const anchorButtonVariables = {
-  '--_ui5_button_base_min_width': '1.5rem',
-  '--_ui5_button_base_height': '1.5rem'
-} as CSSProperties;
 
 /**
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
