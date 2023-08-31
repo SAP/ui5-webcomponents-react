@@ -1109,20 +1109,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       },
       [visibleColumnsWidth, scaleXFactor]
     ),
-    measureElement: (node, entry) => {
-      if (entry?.borderBoxSize) {
-        const box = entry.borderBoxSize[0];
-        if (box) {
-          return Math.round(box.inlineSize);
-        }
-      }
-
-      const clientRect = node?.getBoundingClientRect();
-      if (clientRect && scaleXFactor > 0) {
-        return Math.round(clientRect.width / scaleXFactor);
-      }
-      return Math.round(clientRect.width);
-    },
     horizontal: true,
     overscan: overscanCountHorizontal,
     indexAttribute: 'data-column-index'
