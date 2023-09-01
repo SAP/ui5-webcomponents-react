@@ -12,6 +12,7 @@ export const baseParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.AnalyticalTableHeaderFontFamily]: ThemingParameters.sapFontFamily,
   [CustomVariables.AnalyticalTableOuterBorderBlock]: `1px solid ${ThemingParameters.sapList_BorderColor}`,
   [CustomVariables.AnalyticalTableOuterBorderInline]: `1px solid ${ThemingParameters.sapList_BorderColor}`,
+  [CustomVariables.AnalyticalTableOuterCellBorder]: `1px solid ${ThemingParameters.sapList_BorderColor}`,
   [CustomVariables.ObjectPageSectionBorderTop]: `0.0625rem solid ${ThemingParameters.sapGroup_TitleBorderColor}`,
   [CustomVariables.ObjectPageSectionTitleFontFamily]: ThemingParameters.sapFontFamily,
   [CustomVariables.ObjectPageSectionTitleHeight]: '2.25rem',
