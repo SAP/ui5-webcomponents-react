@@ -2,9 +2,8 @@
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import type { ShellBarItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 
 interface ShellBarItemAttributes {
   /**
