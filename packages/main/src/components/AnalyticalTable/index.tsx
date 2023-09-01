@@ -1105,12 +1105,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     verticalScrollBarRef.current.isExternalVerticalScroll = false;
   };
 
-  const tableClasses = clsx(
-    classes.table,
-    GlobalStyleClasses.sapScrollBar,
-    withNavigationHighlight && classes.hasNavigationIndicator
-  );
-
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
     getScrollElement: () => tableRef.current,
@@ -1123,6 +1117,16 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     horizontal: true,
     overscan: overscanCountHorizontal
   });
+
+  const totalSize = columnVirtualizer.getTotalSize();
+  const showVerticalEndBorder = tableState.tableClientWidth > totalSize;
+
+  const tableClasses = clsx(
+    classes.table,
+    GlobalStyleClasses.sapScrollBar,
+    withNavigationHighlight && classes.hasNavigationIndicator,
+    showVerticalEndBorder && classes.showVerticalEndBorder
+  );
 
   scrollToRef.current = {
     ...scrollToRef.current,
@@ -1198,6 +1202,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     columnVirtualizer={columnVirtualizer}
                     scaleXFactor={scaleXFactor}
                     uniqueId={uniqueId}
+                    showVerticalEndBorder={showVerticalEndBorder}
                   />
                 )
               );

@@ -38,6 +38,7 @@ interface ColumnHeaderContainerProps {
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp>;
   scaleXFactor?: number;
   uniqueId: string;
+  showVerticalEndBorder: boolean;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -59,7 +60,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     portalContainer,
     columnVirtualizer,
     scaleXFactor,
-    uniqueId
+    uniqueId,
+    showVerticalEndBorder
   } = props;
 
   const classes = useStyles();
@@ -100,6 +102,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
             )}
             <ColumnHeader
               {...rest}
+              showVerticalEndBorder={showVerticalEndBorder}
               id={`${uniqueId}${rest?.id ?? ''}`}
               columnId={rest.id}
               visibleColumnIndex={index}

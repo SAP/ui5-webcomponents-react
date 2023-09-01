@@ -9,7 +9,6 @@ import type {
   AriaAttributes,
   CSSProperties,
   DragEventHandler,
-  FC,
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode
@@ -41,6 +40,7 @@ export interface ColumnHeaderProps {
   portalContainer: Element;
   scaleXFactor?: number;
   columnId?: string;
+  showVerticalEndBorder: boolean;
 
   //getHeaderProps()
   id: string;
@@ -56,10 +56,28 @@ export interface ColumnHeaderProps {
 }
 
 const styles = {
+  thContainer: {
+    '&:first-child': {
+      '& > [role="columnheader"]': {
+        borderInlineStart: CustomThemingParameters.AnalyticalTableOuterCellBorder
+      }
+    },
+    '&:last-child': {
+      '& > [role="columnheader"]': {
+        borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterCellBorder
+      }
+    }
+  },
+  verticalEndBorder: {
+    '&:last-child': {
+      '& > [role="columnheader"]': {
+        borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
+      }
+    }
+  },
   header: {
     height: '100%',
     display: 'flex',
-    justifyContent: 'begin',
     alignItems: 'center',
     textAlign: 'start',
     fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
@@ -95,7 +113,7 @@ const styles = {
 
 const useStyles = createUseStyles(styles, { name: 'TableColumnHeader' });
 
-export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
+export const ColumnHeader = (props: ColumnHeaderProps) => {
   const classes = useStyles();
   const {
     id,
@@ -125,7 +143,8 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     scaleXFactor,
     isFiltered,
     'aria-label': ariaLabel,
-    'aria-sort': ariaSort
+    'aria-sort': ariaSort,
+    showVerticalEndBorder
   } = props;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -197,6 +216,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   return (
     <div
       ref={columnHeaderRef}
+      className={clsx(classes.thContainer, showVerticalEndBorder && classes.verticalEndBorder)}
       style={{
         position: 'absolute',
         top: 0,
