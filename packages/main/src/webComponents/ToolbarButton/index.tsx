@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
+import type { CSSProperties } from 'react';
 import { ButtonDesign } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -55,7 +56,7 @@ interface ToolbarButtonAttributes {
    *
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
-  width?: string;
+  width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
 export interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
