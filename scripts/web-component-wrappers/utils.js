@@ -13,6 +13,7 @@ import internalVersionInfo from './version-info-internal.json' assert { type: 'j
 const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 const eslint = new ESLint({
+  cwd: PATHS.root,
   overrideConfig: {
     parser: '@typescript-eslint/parser',
     parserOptions: {
