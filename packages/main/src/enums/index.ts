@@ -5,6 +5,7 @@ export * from './AnalyticalTableScaleWidthMode.js';
 export * from './AnalyticalTableScrollMode.js';
 export * from './AnalyticalTableSelectionBehavior.js';
 export * from './AnalyticalTableSelectionMode.js';
+export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
 export * from './AvatarColorScheme.js';
 export * from './AvatarGroupType.js';
