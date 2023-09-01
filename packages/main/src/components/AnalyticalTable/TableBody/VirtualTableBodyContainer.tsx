@@ -1,5 +1,4 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { clsx } from 'clsx';
 import type { MutableRefObject } from 'react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../index.js';
@@ -48,7 +47,6 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
     }
   }, [parentRef.current]);
 
-  const classNames = clsx(classes.tbody);
   const dataLength = rows.length;
 
   const lastScrollTop = useRef(0);
@@ -111,7 +109,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
 
   return (
     <div
-      className={classNames}
+      className={classes.tbody}
       ref={parentRef}
       onScroll={onScroll}
       style={{
