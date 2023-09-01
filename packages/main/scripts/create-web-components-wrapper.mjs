@@ -25,6 +25,7 @@ import {
 } from '../../../scripts/web-component-wrappers/utils.js';
 import publicVersionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import internalVersionInfo from '../../../scripts/web-component-wrappers/version-info-internal.json' assert { type: 'json' };
+import { setTimeout } from 'node:timers/promises';
 
 const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
@@ -625,4 +626,7 @@ writeFileSync(
     .join('\n')
 );
 
-spawnSync('prettier', [WEB_COMPONENTS_ROOT_DIR, '--write'], { stdio: [0, 1, 2] });
+console.log('~~~~~', 'TIMEOUT', '~~~~~');
+await setTimeout(2000);
+
+spawnSync('yarn', ['prettier:all'], { stdio: [0, 1, 2], cwd: PATHS.root });

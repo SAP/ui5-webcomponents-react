@@ -93,7 +93,7 @@ export interface ToolbarButtonPropTypes extends ToolbarButtonAttributes, Omit<Co
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ToolbarButton)
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',

@@ -66,7 +66,7 @@ export interface ToolbarSelectPropTypes extends ToolbarSelectAttributes, Omit<Co
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ToolbarSelect)
+ * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',
