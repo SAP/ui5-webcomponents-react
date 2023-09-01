@@ -95,7 +95,6 @@ export * from './Toast/index.js';
 export * from './ToggleButton/index.js';
 export * from './Token/index.js';
 export * from './ToolbarButton/index.js';
-export * from './ToolbarItem/index.js';
 export * from './ToolbarSelect/index.js';
 export * from './ToolbarSelectOption/index.js';
 export * from './ToolbarSeparatorV2/index.js';
