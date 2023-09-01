@@ -177,6 +177,12 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
         tsType: `string | HTMLElement`
       };
     }
+    case 'CSSSize': {
+      return {
+        tsType: "CSSProperties['width'] | CSSProperties['height']",
+        importStatement: "import { CSSProperties } from 'react';"
+      };
+    }
 
     // UI5 Web Component Enums
     case 'AvatarColorScheme':

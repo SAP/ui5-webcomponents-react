@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
+import type { CSSProperties } from 'react';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -10,7 +11,7 @@ interface ToolbarSpacerV2Attributes {
    *
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
-  width?: string;
+  width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
 export interface ToolbarSpacerV2DomRef extends ToolbarSpacerV2Attributes, Ui5DomRef {}

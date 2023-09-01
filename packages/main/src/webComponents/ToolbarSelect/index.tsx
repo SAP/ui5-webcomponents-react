@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -31,7 +31,7 @@ interface ToolbarSelectAttributes {
    *
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
-  width?: string;
+  width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
 export interface ToolbarSelectDomRef extends ToolbarSelectAttributes, Ui5DomRef {}
