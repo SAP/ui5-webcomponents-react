@@ -59,12 +59,6 @@ interface MultiComboBoxAttributes {
    * Defines the value state of the component.
    *
    * Available options are:
-   *
-   * *   `None`
-   * *   `Error`
-   * *   `Warning`
-   * *   `Success`
-   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
 }

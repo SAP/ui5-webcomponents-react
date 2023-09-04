@@ -85,6 +85,7 @@ export * from './Themes.js';
 export * from './TimelineLayout.js';
 export * from './TitleLevel.js';
 export * from './ToastPlacement.js';
+export * from './ToolbarAlign.js';
 export * from './ToolbarDesign.js';
 export * from './ToolbarStyle.js';
 export * from './UploadCollectionDnDOverlayMode.js';

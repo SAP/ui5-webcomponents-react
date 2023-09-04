@@ -13,7 +13,6 @@
   align-items: center;
   background-color: var(--sapPageFooter_Background);
   border-top: 0.0625rem solid var(--sapPageFooter_BorderColor);
-  height: var(--_ui5_bar_base_height);
   overflow: hidden;
 }
 

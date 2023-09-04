@@ -8,7 +8,7 @@ import type { UI5WCSlotsNode } from '../../types/index.js';
 
 interface BadgeAttributes {
   /**
-   * Defines the color scheme of the component. There are 10 predefined schemes. Each scheme applies different values for the `background-color` and `border-color`. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   * Defines the color scheme of the component. There are 10 predefined schemes. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
    *
    * **Note:** Color schemes have no visual representation in High Contrast Black (sap\_belize\_hcb) theme.
    */

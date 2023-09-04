@@ -1,13 +1,13 @@
+import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+import { Avatar, AvatarShape, ShellBar } from '@ui5/webcomponents-react';
 import React, { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-
-import { Avatar, AvatarShape, ShellBar } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/customer.js';
+import { ROUTES } from '../../routes/Routes';
+import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
 import PopoverListItems from '../Popover/List/PopoverListItems';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
-import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
-import { ROUTES } from '../../routes/Routes';
 
 const style = {
   shell: {
@@ -16,7 +16,7 @@ const style = {
     zIndex: 100
   },
   emptySpace: {
-    paddingTop: 'var(--_ui5_shellbar_root_height)'
+    paddingTop: getScopedVarName('--_ui5_shellbar_root_height')
   }
 };
 

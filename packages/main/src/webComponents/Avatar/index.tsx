@@ -35,6 +35,25 @@ interface AvatarAttributes {
    */
   disabled?: boolean;
   /**
+   * Defines the name of the fallback icon, which should be displayed in the following cases:
+   *
+   * *   If the initials are not valid (more than 3 letters, unsupported languages or empty initials).
+   * *   If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).
+   * *   If the image src is wrong.
+   *
+   *
+   * **Note:** If not set, a default fallback icon "employee" is displayed.
+   * **Note:** You should import the desired icon first, then use its name as "fallback-icon".
+   *
+   * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
+   *
+   * <Avatar fallbackIcon="alert">
+   *
+   *
+   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   */
+  fallbackIcon?: string;
+  /**
    * Defines the name of the UI5 Icon, that will be displayed.
    * **Note:** If `image` slot is provided, the property will be ignored.
    * **Note:** You should import the desired icon first, then use its name as "icon".
@@ -117,7 +136,7 @@ export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
-  ['accessibleName', 'colorScheme', 'icon', 'initials', 'shape', 'size'],
+  ['accessibleName', 'colorScheme', 'fallbackIcon', 'icon', 'initials', 'shape', 'size'],
   ['disabled', 'interactive'],
   ['badge'],
   [],

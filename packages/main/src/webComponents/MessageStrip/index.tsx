@@ -10,8 +10,6 @@ import type { UI5WCSlotsNode } from '../../types/index.js';
 interface MessageStripAttributes {
   /**
    * Defines the component type.
-   *
-   * **Note:** Available options are `"Information"`, `"Positive"`, `"Negative"`, and `"Warning"`.
    */
   design?: MessageStripDesign | keyof typeof MessageStripDesign;
   /**
