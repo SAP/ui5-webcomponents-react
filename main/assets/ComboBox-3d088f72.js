@@ -1,0 +1,47 @@
+import{j as e}from"./jsx-runtime-d079401a.js";import{C as h,b as m}from"./DomRefTable.module-e393ca02.js";import{D as d}from"./DocsHeader-db99fc3f.js";import{F as u}from"./Footer-9de7bb04.js";import"./index-f1f2c4b1.js";import{M as f,C as p,b as r}from"./chunk-S4VUQJ4A-08d9fe3a.js";import{S as b}from"./SubcomponentsSection-6138f2fc.js";import"./employee-78fe46d2.js";import{_ as x}from"./iframe-1161af65.js";import{a as g}from"./index-b9b0f5dd.js";import{w as y}from"./withWebComponent-b4c67a1a.js";import{C,D as a,F as j}from"./ComboBox.stories-e0e26c12.js";import{e as c}from"./utils-b1ef2149.js";import{u as l}from"./index-59d6410c.js";import"./react-jss.esm-2e5f50f2.js";import"./index-915cc8f9.js";import"./UI5Element-e590cd60.js";import"./CustomElementsScopeUtils-264b8a39.js";import"./slot-76e48863.js";import"./Icon-b897d66f.js";import"./Icons-65b34360.js";import"./utils-e9940b93.js";import"./decline-2f6198d2.js";import"./i18n-defaults-bdef1cce.js";import"./information-e97f915a.js";import"./alert-7494fabe.js";import"./class-map-e1b423a4.js";import"./Button-4505b9f6.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./i18n-defaults-d5195a49.js";import"./index-743fc8f1.js";import"./clsx-1229b3e0.js";import"./ThemingParameters-7e2e4e30.js";import"./addCustomCSSWithScoping-203b56de.js";import"./index-47c1ec51.js";import"./Integer-f7f172c9.js";import"./index-287312b0.js";import"./Avatar-60d18bb8.js";import"./ResizeHandler-34ecee99.js";import"./index-a669c36f.js";import"./index-a7b16038.js";import"./Link-a373b451.js";import"./WrappingType-b81e595a.js";import"./index-fb6e8b5e.js";import"./TableOfContent-e49b5707.js";import"./index-380c4570.js";import"./Label-69062358.js";import"./useIsomorphicLayoutEffect-c49de97d.js";import"./index-c74c9f7f.js";import"./index-c6e940b2.js";import"./index-25b911ef.js";import"./Popover-742c9988.js";import"./PopupUtils-f407c5e4.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-97942203.js";import"./FocusableElements-d024bb16.js";import"./isElementHidden-01c07146.js";import"./MediaRange-25b98f31.js";import"./style-map-ecc46a93.js";import"./BrowserScrollbar.css-4a87524a.js";import"./index-92d824d3.js";import"./mapValues-57c90777.js";import"./_baseForOwn-2252ef3e.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-73159a4c.js";import"./_baseUniq-61c59340.js";import"./index-356e4a49.js";import"../sb-preview/runtime.js";import"./ValueState-2c5e5904.js";import"./InvisibleMessage-71605293.js";import"./slim-arrow-down-16231f47.js";import"./Suggestions.css-91a648c4.js";import"./ResponsivePopoverCommon.css-5a4ca537.js";import"./ValueStateMessage.css-ca082762.js";import"./ComboBoxItem-15509914.js";import"./ResponsivePopover-ffa286b7.js";import"./Dialog-cf714d6a.js";import"./Title-0fb688d3.js";import"./ListItemBase-e8a1d82b.js";import"./ItemNavigation-52fe434f.js";import"./TabbableElements-8e49b367.js";import"./debounce-9c2fb7dd.js";import"./BusyIndicator-7cb729ee.js";import"./StandardListItem-32d37e59.js";import"./ListItem-65b5ee84.js";import"./RadioButton-bfff4944.js";import"./CheckBox-c32e2a79.js";import"./accept-92104380.js";import"./HasPopup-47461347.js";import"./slim-arrow-right-7a309837.js";import"./GroupHeaderListItem-667d01bb.js";import"./ValueState-ab6838cc.js";import"./index-2774ca55.js";const i=y("ui5-cb-group-item",["text"],[],[],[],()=>x(()=>import("./index-b9b0f5dd.js").then(t=>t.b),["./index-b9b0f5dd.js","./iframe-1161af65.js","./UI5Element-e590cd60.js","./CustomElementsScopeUtils-264b8a39.js","./withWebComponent-b4c67a1a.js","./utils-e9940b93.js","./index-f1f2c4b1.js","./jsx-runtime-d079401a.js","./useIsomorphicLayoutEffect-c49de97d.js","./Icon-b897d66f.js","./Icons-65b34360.js","./slot-76e48863.js","./ValueState-2c5e5904.js","./Integer-f7f172c9.js","./InvisibleMessage-71605293.js","./AriaLabelHelper-43a261ec.js","./slim-arrow-down-16231f47.js","./decline-2f6198d2.js","./i18n-defaults-bdef1cce.js","./Suggestions.css-91a648c4.js","./information-e97f915a.js","./alert-7494fabe.js","./i18n-defaults-d5195a49.js","./class-map-e1b423a4.js","./style-map-ecc46a93.js","./ResponsivePopoverCommon.css-5a4ca537.js","./ValueStateMessage.css-ca082762.js","./ComboBoxItem-15509914.js","./Popover-742c9988.js","./PopupUtils-f407c5e4.js","./getActiveElement-bcae01ed.js","./PopupsCommon.css-97942203.js","./FocusableElements-d024bb16.js","./isElementHidden-01c07146.js","./ResizeHandler-34ecee99.js","./MediaRange-25b98f31.js","./BrowserScrollbar.css-4a87524a.js","./ResponsivePopover-ffa286b7.js","./Dialog-cf714d6a.js","./Button-4505b9f6.js","./MarkedEvents-b83081e9.js","./Title-0fb688d3.js","./WrappingType-b81e595a.js","./ListItemBase-e8a1d82b.js","./ItemNavigation-52fe434f.js","./TabbableElements-8e49b367.js","./debounce-9c2fb7dd.js","./BusyIndicator-7cb729ee.js","./Label-69062358.js","./StandardListItem-32d37e59.js","./ListItem-65b5ee84.js","./RadioButton-bfff4944.js","./CheckBox-c32e2a79.js","./accept-92104380.js","./HasPopup-47461347.js","./slim-arrow-right-7a309837.js","./Avatar-60d18bb8.js","./employee-78fe46d2.js","./GroupHeaderListItem-667d01bb.js","./ValueState-ab6838cc.js"],import.meta.url));i.displayName="ComboBoxGroupItem";try{i.displayName="ComboBoxGroupItem",i.__docgenInfo={description:"The `ComboBoxGroupItem` is type of suggestion item, that can be used to split the `ComboBox` suggestions into groups",displayName:"ComboBoxGroupItem",props:{text:{defaultValue:null,description:"Defines the text of the component.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}const w="**Since:** 0.18.0\n**Abstract UI5 Web Component** - Find out more about abstract components [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components).\n\nThe `ComboBoxGroupItem` is type of suggestion item, that can be used to split the `ComboBox` suggestions into groups\n",I="**Abstract UI5 Web Component** - Find out more about abstract components [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components).\n\nThe `ComboBoxItem` represents the item for a `ComboBox`\n",_=`## Structure
+
+The \`ComboBox\` consists of the following elements:
+
+- Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.
+- Drop-down arrow - expands\\\\collapses the option list.
+- Option list - the list of available options.
+
+## Keyboard Handling
+
+The \`ComboBox\` provides advanced keyboard handling.
+
+- \\[F4\\], \\[ALT\\]+\\[UP\\], or \\[ALT\\]+\\[DOWN\\] - Toggles the picker.
+- \\[ESC\\] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.
+- \\[ENTER\\] or \\[RETURN\\] - If picker is open, takes over the currently selected item and closes it.
+- \\[DOWN\\] - Selects the next matching item in the picker.
+- \\[UP\\] - Selects the previous matching item in the picker.
+- \\[PAGEDOWN\\] - Moves selection down by page size (10 items by default).
+- \\[PAGEUP\\] - Moves selection up by page size (10 items by default).
+- \\[HOME\\] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.
+- \\[END\\] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.
+`;function lo(t={}){const{wrapper:n}=Object.assign({},l(),t.components);return n?e.jsx(n,Object.assign({},t,{children:e.jsx(s,{})})):s();function s(){const o=Object.assign({h2:"h2",h1:"h1",p:"p",code:"code"},l(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(f,{of:C}),`
+`,e.jsx(d,{since:"0.9.0"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h2,{id:"example",children:"Example"}),`
+`,e.jsx(p,{of:a}),`
+`,e.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,e.jsx(h,{of:a}),`
+`,e.jsx(r,{children:_}),`
+`,e.jsx(o.h1,{id:"more-examples",children:"More Examples"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h2,{id:"filter-types",children:"Filter types"}),`
+`,e.jsxs(o.p,{children:["All available filter types controlled by the ",e.jsx(o.code,{children:"filter"})," prop."]}),`
+`,e.jsx(p,{of:j}),`
+`,e.jsx(r,{children:b}),`
+`,e.jsx(o.h2,{id:"comboboxitem",children:"ComboBoxItem"}),`
+`,e.jsx(m,{hideHTMLPropsNote:!0,exclude:c,of:g}),`
+`,e.jsx(r,{children:I}),`
+`,e.jsx(o.h2,{id:"comboboxgroupitem",children:"ComboBoxGroupItem"}),`
+`,e.jsx(m,{hideHTMLPropsNote:!0,exclude:c,of:i}),`
+`,e.jsx(r,{children:w}),`
+`,e.jsx(u,{})]})}}export{lo as default};
+//# sourceMappingURL=ComboBox-3d088f72.js.map
