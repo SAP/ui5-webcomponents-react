@@ -1,0 +1,4 @@
+import{j as a}from"./jsx-runtime-d079401a.js";import{r as o}from"./index-f1f2c4b1.js";const e=o.forwardRef((r,t)=>a.jsx("span",{ref:t,style:{flexGrow:1},className:"spacer",...r}));e.displayName="ToolbarSpacer";try{e.displayName="ToolbarSpacer",e.__docgenInfo={description:"Adds horizontal space between the items used within a `Toolbar`.",displayName:"ToolbarSpacer",props:{style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}}}}}catch{}export{e as T};
+//# sourceMappingURL=index-12fe9278.js.map
