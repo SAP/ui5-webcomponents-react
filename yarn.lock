@@ -8542,14 +8542,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^6.5.3":
-  version: 6.24.1
-  resolution: "chromatic@npm:6.24.1"
+"chromatic@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "chromatic@npm:7.0.0"
   bin:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 1ca3c11ac53401e822e372c47ccbb69d06c0e6f3028a0f8d952bcfed4e1a9b9944e9d6c52d2f91b4a5cdc5296817e0430635ad44754fc5c23cfae0dcb26c9e01
+  checksum: 654be2eaf365a865fa718f9913fb1b7ef7bdb2788f57912c56fa28422c79e8e71a12342fd61db032994196334ddce4a900ea92f7daab5c14f023155cd4435ad6
   languageName: node
   linkType: hard
 
@@ -21755,7 +21755,7 @@ __metadata:
     "@ui5/webcomponents-icons": 1.17.0
     "@ui5/webcomponents-tools": 1.17.0
     "@vitejs/plugin-react": ^4.0.0
-    chromatic: ^6.5.3
+    chromatic: ^7.0.0
     cssnano: ^6.0.1
     cypress: ^13.0.0
     cypress-real-events: ^1.8.1
