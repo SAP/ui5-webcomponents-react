@@ -23,6 +23,7 @@ import type { AvatarPropTypes } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { styles } from './ObjectPage.jss.js';
@@ -200,6 +201,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
   const [spacerBottomHeight, setSpacerBottomHeight] = useState('0px');
+  const titleInHeader = headerTitle && showTitleInHeaderContent;
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -649,7 +651,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
-      const titleInHeader = headerTitle && showTitleInHeaderContent;
       return cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
@@ -668,13 +669,27 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           </div>
         )
       });
+    } else if (titleInHeader) {
+      return (
+        <DynamicPageHeader
+          topHeaderHeight={topHeaderHeight}
+          style={headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : undefined}
+          headerPinned={headerPinned || scrolledHeaderExpanded}
+          ref={componentRefHeaderContent}
+        >
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
+            {avatar}
+            <div data-component-name="ObjectPageHeaderContent">{titleInHeader && renderTitleSection(true)}</div>
+          </div>
+        </DynamicPageHeader>
+      );
     }
   }, [
     headerContent,
     topHeaderHeight,
     headerPinned,
     scrolledHeaderExpanded,
-    showTitleInHeaderContent,
+    titleInHeader,
     avatar,
     headerContentRef,
     renderTitleSection
@@ -744,7 +759,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   );
 
   const objectPageStyles = { ...style };
-  if (headerCollapsed === true && headerContent) {
+  if (headerCollapsed === true && (headerContent || titleInHeader)) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
