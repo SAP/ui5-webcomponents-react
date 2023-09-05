@@ -649,6 +649,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
+      const titleInHeader = headerTitle && showTitleInHeaderContent;
       return cloneElement(headerContent, {
         ...headerContent.props,
         topHeaderHeight,
@@ -658,9 +659,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         children: (
           <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
-            {headerContent.props.children && (
+            {(headerContent.props.children || titleInHeader) && (
               <div data-component-name="ObjectPageHeaderContent">
-                {headerTitle && showTitleInHeaderContent && renderTitleSection(true)}
+                {titleInHeader && renderTitleSection(true)}
                 {headerContent.props.children}
               </div>
             )}
