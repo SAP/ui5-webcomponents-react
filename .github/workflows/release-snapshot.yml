@@ -16,7 +16,7 @@ jobs:
       name: 'npm'
       url: 'https://www.npmjs.com/package/@ui5/webcomponents-react'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           fetch-depth: 0
