@@ -89,7 +89,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     ),
     overscan,
     measureElement,
-    indexAttribute: 'data-row-index'
+    indexAttribute: 'data-virtual-row-index'
   });
   scrollToRef.current = {
     ...scrollToRef.current,
@@ -165,7 +165,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index + 1, 'data-row-index': virtualRow.index });
+        const rowProps = row.getRowProps({
+          'aria-rowindex': virtualRow.index + 1,
+          'data-virtual-row-index': virtualRow.index
+        });
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 

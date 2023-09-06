@@ -104,6 +104,7 @@ const styles = {
     overflowY: 'auto',
     scrollbarWidth: 'none',
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
+    boxSizing: 'border-box',
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
       width: '0 !important',
