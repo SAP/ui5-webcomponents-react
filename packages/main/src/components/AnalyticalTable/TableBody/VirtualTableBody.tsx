@@ -35,7 +35,9 @@ interface VirtualTableBodyProps {
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
 }
 
-const measureElement = (el) => el.offsetHeight;
+const measureElement = (el: HTMLElement) => {
+  return el.offsetHeight;
+};
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const {
@@ -86,7 +88,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
     ),
     overscan,
-    measureElement
+    measureElement,
+    indexAttribute: 'data-row-index'
   });
   scrollToRef.current = {
     ...scrollToRef.current,
@@ -162,7 +165,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index, 'data-index': virtualRow.index });
+        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index + 1, 'data-row-index': virtualRow.index });
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
@@ -196,7 +199,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               boxSizing: 'border-box',
               height: `${updatedHeight}px`
             }}
-            aria-rowindex={rowProps['aria-rowindex'] + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
