@@ -15,7 +15,7 @@ jobs:
       id-token: write # to verify the deployment originates from an appropriate source
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.8.1
