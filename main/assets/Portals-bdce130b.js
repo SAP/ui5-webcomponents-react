@@ -1,0 +1,41 @@
+import{j as t}from"./jsx-runtime-d079401a.js";import{M as a}from"./chunk-S4VUQJ4A-c5407bd6.js";import"./DomRefTable.module-cd88e22f.js";import"./index-f1f2c4b1.js";import{T as s}from"./TableOfContent-38d217b4.js";import{F as p}from"./Footer-b9a32d3d.js";import{u as r}from"./index-59d6410c.js";import"./iframe-5cd535d3.js";import"../sb-preview/runtime.js";import"./index-92d824d3.js";import"./index-c74c9f7f.js";import"./mapValues-57c90777.js";import"./_baseForOwn-2252ef3e.js";import"./_commonjs-dynamic-modules-302442b1.js";import"./_getPrototype-73159a4c.js";import"./_baseUniq-61c59340.js";import"./index-356e4a49.js";import"./react-jss.esm-2e5f50f2.js";import"./index-9a516270.js";import"./UI5Element-e590cd60.js";import"./CustomElementsScopeUtils-264b8a39.js";import"./withWebComponent-b4c67a1a.js";import"./utils-e9940b93.js";import"./useIsomorphicLayoutEffect-c49de97d.js";import"./slot-76e48863.js";import"./Icon-b897d66f.js";import"./Icons-65b34360.js";import"./decline-2f6198d2.js";import"./i18n-defaults-bdef1cce.js";import"./information-e97f915a.js";import"./alert-7494fabe.js";import"./class-map-e1b423a4.js";import"./Button-4505b9f6.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./i18n-defaults-d5195a49.js";import"./index-743fc8f1.js";import"./clsx-1229b3e0.js";import"./ThemingParameters-7e2e4e30.js";import"./addCustomCSSWithScoping-203b56de.js";import"./index-72e8d69a.js";import"./Integer-f7f172c9.js";import"./index-ca430e6b.js";import"./Avatar-60d18bb8.js";import"./ResizeHandler-34ecee99.js";import"./employee-78fe46d2.js";import"./index-2ad120ef.js";import"./index-fd35c169.js";import"./Link-a373b451.js";import"./WrappingType-b81e595a.js";import"./index-81cf76a5.js";import"./index-a87ff44a.js";import"./Label-69062358.js";import"./index-714ccf61.js";import"./index-f36e7cfc.js";import"./Popover-742c9988.js";import"./PopupUtils-f407c5e4.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-97942203.js";import"./FocusableElements-d024bb16.js";import"./isElementHidden-01c07146.js";import"./MediaRange-25b98f31.js";import"./style-map-ecc46a93.js";import"./BrowserScrollbar.css-4a87524a.js";function yt(o={}){const{wrapper:n}=Object.assign({},r(),o.components);return n?t.jsx(n,Object.assign({},o,{children:t.jsx(i,{})})):i();function i(){const e=Object.assign({h1:"h1",p:"p",h2:"h2",code:"code",a:"a",pre:"pre"},r(),o.components);return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Working with Portals"}),`
+`,t.jsx(e.h1,{id:"working-with-portals",children:"Working with Portals"}),`
+`,t.jsx(e.p,{children:"This entry explains why portals are used in UI5 Web Components for React components and what you need to consider when using them."}),`
+`,t.jsx("br",{}),`
+`,t.jsx(s,{headingSelector:"h2"}),`
+`,t.jsx("br",{}),`
+`,t.jsx(e.h2,{id:"why-portals",children:"Why Portals?"}),`
+`,t.jsxs(e.p,{children:["In most cases when a React component like the ",t.jsx(e.code,{children:"AnalyticalTable"})," implements a popover like a ",t.jsx(e.code,{children:"Dialog"})," or ",t.jsx(e.code,{children:"ResponsivePopover"}),", we use a ",t.jsx(e.a,{href:"https://react.dev/reference/react-dom/createPortal",target:"_blank",rel:"nofollow noopener noreferrer",children:"React Portal"})," to mount it outside the parents DOM hierarchy, to prevent unwanted side effects (wrong positioning, alignment, etc.)."]}),`
+`,t.jsx(e.p,{children:"For example:"}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const DialogComponent = () => {
+  const dialogRef = useRef(null);
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Dialog</Button>
+      {createPortal(<Dialog ref={dialogRef} />, document.body)}
+    </>
+  );
+};
+`})}),`
+`,t.jsx("br",{}),`
+`,t.jsx(e.h2,{id:"pitfalls",children:"Pitfalls"}),`
+`,t.jsxs(e.p,{children:[`In some cases you may want to add a class or attribute that is affecting all the components HTML elements. Since the popover is outside the DOM hierarchy of the most outer element of the component, the class/attribute/etc. will not be applied to it.
+Or maybe you just don't want the popover to be mounted on the `,t.jsx(e.code,{children:"body"}),` element (which is the default).
+For this we offer the `,t.jsx(e.code,{children:"portalContainer"})," prop. This prop is available on all components that implement a popover, and with its help you can define the container into which the popover is mounted."]}),`
+`,t.jsxs(e.p,{children:["For example, if you want to display the ",t.jsx(e.code,{children:"AnalyticalTable"})," in compact mode, while the rest of the app stays in cozy mode, then you could achieve that like this:"]}),`
+`,t.jsx(e.p,{children:"Define a container somewhere in your DOM tree, where the portal should be rendered into and add the respective attribute/class/etc. to it."}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-html",children:`<div id="modalContainer" class="ui5-content-density-compact" />
+`})}),`
+`,t.jsxs(e.p,{children:["Then, set the ",t.jsx(e.code,{children:"portalContainer"})," to the respective element."]}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`<AnalyticalTable
+  className="ui5-content-density-compact"
+  portalContainer={document.getElementById('modalContainer')}
+  data={data}
+  columns={columns}
+/>
+`})}),`
+`,t.jsx(p,{style:{position:"fixed",bottom:0,zIndex:2}})]})}}export{yt as default};
+//# sourceMappingURL=Portals-bdce130b.js.map
