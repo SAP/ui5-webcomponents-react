@@ -1111,7 +1111,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     ),
     horizontal: true,
     overscan: overscanCountHorizontal,
-    indexAttribute: 'data-column-index'
+    indexAttribute: 'data-column-index-virtual'
   });
 
   useEffect(() => {
