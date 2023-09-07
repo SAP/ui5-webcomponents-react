@@ -216,7 +216,10 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
   if (!column) return null;
   return (
     <div
-      ref={columnHeaderRef}
+      ref={(node) => {
+        columnHeaderRef.current = node;
+        columnVirtualizer.measureElement(node);
+      }}
       className={clsx(classes.thContainer, showVerticalEndBorder && classes.verticalEndBorder)}
       style={{
         position: 'absolute',
@@ -226,7 +229,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
       }}
     >
       <div
-        ref={columnVirtualizer.measureElement}
         data-visible-column-index={visibleColumnIndex}
         data-visible-row-index={0}
         data-row-index={0}
