@@ -47,13 +47,16 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the search field rendered as first filter item.
    *
-   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead` and `showClearIcon` is applied to the search input.
+   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead` and `showClearIcon` are applied to the search input.
+   *
+   * __Note:__ The field is only available in the FilterBar not inside the filter configuration dialog.
    */
   search?: ReactElement<InputPropTypes>;
   /**
    * Specifies header text or variant management that is shown in the toolbar on the first position
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement`, `Text` or `Title` in order to preserve the intended design.
+   *
    * __Note:__ If `hideToolbar` is `true` this prop has no effect.
    */
   header?: ReactNode;
