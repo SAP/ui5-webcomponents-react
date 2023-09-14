@@ -227,7 +227,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         width: `${virtualColumn.size}px`,
         ...directionStyles
       }}
-      data-column-index-virtual={columnIndex}
     >
       <div
         data-visible-column-index={visibleColumnIndex}
