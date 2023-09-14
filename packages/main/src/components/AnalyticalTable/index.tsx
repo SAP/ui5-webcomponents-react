@@ -685,7 +685,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
-    scaleXFactor,
     alwaysShowSubComponent: _omit,
     ...rest
   } = props;
@@ -765,7 +764,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         scrollToRef,
         showOverlay,
         uniqueId,
-        scaleXFactor,
         subRowsKey,
         onColumnsReorder
       },
