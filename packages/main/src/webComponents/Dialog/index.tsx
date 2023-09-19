@@ -53,11 +53,7 @@ interface DialogAttributes {
    */
   accessibleNameRef?: string;
   /**
-   * Allows setting a custom role. Available options are:
-   *
-   * *   `Dialog`
-   * *   `None`
-   * *   `AlertDialog`
+   * Allows setting a custom role.
    */
   accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
   /**

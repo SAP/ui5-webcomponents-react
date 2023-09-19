@@ -9,14 +9,6 @@ import { withWebComponent } from '../../internal/withWebComponent.js';
 interface NotificationActionAttributes {
   /**
    * Defines the action design.
-   *
-   * **Note:**
-   *
-   * *   `Default`
-   * *   `Emphasized`
-   * *   `Positive`
-   * *   `Negative`
-   * *   `Transparent`
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
   /**

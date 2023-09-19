@@ -17,12 +17,6 @@ interface BusyIndicatorAttributes {
   delay?: number;
   /**
    * Defines the size of the component.
-   *
-   * **Note:**
-   *
-   * *   `Small`
-   * *   `Medium`
-   * *   `Large`
    */
   size?: BusyIndicatorSize | keyof typeof BusyIndicatorSize;
   /**

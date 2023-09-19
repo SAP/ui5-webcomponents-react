@@ -46,12 +46,6 @@ const styles = {
       padding: 0
     }
   },
-  filterListItem: {
-    height: 'var(--_ui5_list_item_base_height)'
-  },
-  filter: {
-    height: 'var(--_ui5_list_item_base_height)'
-  },
   filterIcon: {
     paddingInlineEnd: '0.5rem',
     minWidth: '1rem',
@@ -231,12 +225,8 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         )}
         {showFilter && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
-          <CustomListItem
-            type={ListItemType.Inactive}
-            className={classes.filterListItem}
-            onKeyDown={handleCustomLiKeyDown}
-          >
-            <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.filter}>
+          <CustomListItem type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown}>
+            <FlexBox alignItems={FlexBoxAlignItems.Center}>
               <Icon name={iconFilter} className={classes.filterIcon} aria-hidden />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>

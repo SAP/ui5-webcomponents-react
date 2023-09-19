@@ -50,3 +50,43 @@ export const Default: Story = {
     );
   }
 };
+
+export const WithSubMenu: Story = {
+  name: 'with Submenu',
+  render: (args) => {
+    const ref = useRef(null);
+    const btnRef = useRef(null);
+    useEffect(() => {
+      if (isChromatic) {
+        ref.current.showAt(btnRef.current);
+      }
+    }, []);
+    return (
+      <>
+        <Button
+          ref={btnRef}
+          onClick={(e) => {
+            ref.current.showAt(e.target);
+          }}
+        >
+          Show Menu
+        </Button>
+        <Menu {...args} ref={ref}>
+          <MenuItem text="New File" icon="add-document" />
+          <MenuItem text="New Folder" icon="add-folder" disabled />
+          <MenuItem text="Open" icon="open-folder" startsSection>
+            <MenuItem text="Open Locally" icon="open-folder" startsSection>
+              <MenuItem text="Open C" />
+              <MenuItem text="Open D" />
+              <MenuItem text="Open E" />
+            </MenuItem>
+            <MenuItem text="Open from Cloud" icon="cloud" />
+          </MenuItem>
+          <MenuItem text="Close" />
+          <MenuItem text="Preferences" icon="action-settings" startsSection />
+          <MenuItem text="Exit" icon="journey-arrive" />
+        </Menu>
+      </>
+    );
+  }
+};

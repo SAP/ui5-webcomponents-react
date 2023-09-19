@@ -12,12 +12,6 @@ interface PageAttributes {
    * Defines the background color of the `Page`.
    *
    * **Note:** When a List is placed inside the page, we recommend using “List” to ensure better color contrast.
-   *
-   * Available options are:
-   *
-   * *   `Solid` (default)
-   * *   `Transparent`
-   * *   `List`
    */
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
   /**

@@ -10,6 +10,8 @@ import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider.js';
 import { GlobalStyleClassesStyles } from './GlobalStyleClasses.jss.js';
 
+// todo remove after jss types have been enhanced (https://github.com/cssinjs/jss/issues/1480)
+// @ts-expect-error: types currently don't allow an array of objects for the `extend` value, but the implementation does
 const useStyles = createUseStyles(GlobalStyleClassesStyles, {
   name: 'ThemeProvider'
 });

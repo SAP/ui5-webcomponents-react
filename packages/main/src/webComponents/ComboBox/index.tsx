@@ -24,7 +24,7 @@ interface ComboBoxAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the filter type of the component. Available options are: `StartsWithPerTerm`, `StartsWith`, `Contains` and `None`.
+   * Defines the filter type of the component.
    */
   filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
   /**
@@ -51,14 +51,6 @@ interface ComboBoxAttributes {
   value?: string;
   /**
    * Defines the value state of the component.
-   *
-   * Available options are:
-   *
-   * *   `None`
-   * *   `Error`
-   * *   `Warning`
-   * *   `Success`
-   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
 }

@@ -2,11 +2,22 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Toolbar.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { OverflowToolbarButton, OverflowToolbarToggleButton } from '../..';
+import { OverflowToolbarButton, OverflowToolbarToggleButton, MessageStrip, MessageStripDesign } from '../..';
 
 <Meta of={ComponentStories} />
 
 <DocsHeader />
+
+<MessageStrip
+  design={MessageStripDesign.Warning}
+  hideCloseButton
+  children={
+    <>
+      This component will be replaced by the <code>ui5-toolbar</code> web-component (currently available as{' '}
+      <code>ToolbarV2</code>) with our next major release. Please use <code>ToolbarV2</code> instead.
+    </>
+  }
+/>
 
 ## Example
 

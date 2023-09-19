@@ -2,8 +2,7 @@ import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-ba
 
 const styles = {
   outerContainer: {
-    background: ThemingParameters.sapObjectHeader_Background,
-    '--_ui5_input_width': '100%'
+    background: ThemingParameters.sapObjectHeader_Background
   },
   outerContainerWithToolbar: {
     paddingBlock: '0.5rem 1px',

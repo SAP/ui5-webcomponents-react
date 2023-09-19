@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
-import type { MouseEventHandler } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { ShellBarItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface ShellBarItemAttributes {
@@ -16,6 +16,8 @@ interface ShellBarItemAttributes {
   icon?: string;
   /**
    * Defines the item text.
+   *
+   * **Note:** The text is only displayed inside the overflow popover list view.
    */
   text?: string;
 }
@@ -26,7 +28,7 @@ export interface ShellBarItemPropTypes extends ShellBarItemAttributes, Omit<Comm
   /**
    * Fired, when the item is pressed.
    */
-  onClick?: MouseEventHandler<ShellBarItemDomRef>;
+  onClick?: (event: Ui5CustomEvent<ShellBarItemDomRef, ShellBarItemClickEventDetail>) => void;
 }
 
 /**

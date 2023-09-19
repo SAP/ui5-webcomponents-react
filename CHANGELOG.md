@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix border styles ([#5028](https://github.com/SAP/ui5-webcomponents-react/issues/5028)) ([7e193df](https://github.com/SAP/ui5-webcomponents-react/commit/7e193dfda2feb8e42e7e97025cab43eea5e83b1c))
+- **AnalyticalTable:** fix keyboard navigation for RTL text direction ([#4990](https://github.com/SAP/ui5-webcomponents-react/issues/4990)) ([84d21d7](https://github.com/SAP/ui5-webcomponents-react/commit/84d21d791c302fe4b6cef4279ebad6537f07b5d2))
+- **AnalyticalTable:** fix scrollbars for Firefox and Safari ([#4979](https://github.com/SAP/ui5-webcomponents-react/issues/4979)) ([578e3cf](https://github.com/SAP/ui5-webcomponents-react/commit/578e3cfa51dae21ab20ca41b55bb41d205df6f9f)), closes [#4379](https://github.com/SAP/ui5-webcomponents-react/issues/4379)
+- **AnalyticalTable:** fix subcomponents calculation ([#5004](https://github.com/SAP/ui5-webcomponents-react/issues/5004)) ([59639a7](https://github.com/SAP/ui5-webcomponents-react/commit/59639a77c77ed7319bd87a64df68502c73a64f7b)), closes [#3691](https://github.com/SAP/ui5-webcomponents-react/issues/3691)
+- **AnalyticalTable:** use correct indentations for tree table ([#5008](https://github.com/SAP/ui5-webcomponents-react/issues/5008)) ([ca48bcb](https://github.com/SAP/ui5-webcomponents-react/commit/ca48bcb960bfd113cea32bd7d9addab2ebb84cd8)), closes [#5006](https://github.com/SAP/ui5-webcomponents-react/issues/5006)
+- **cypress-commands:** allow peer-dependency `cypress` to use v12 & v13 ([#5023](https://github.com/SAP/ui5-webcomponents-react/issues/5023)) ([cca7428](https://github.com/SAP/ui5-webcomponents-react/commit/cca742828e721175c6ff8246f5998eba730b4308))
+- **deps:** update dependency recharts to v2.7.3 ([#4955](https://github.com/SAP/ui5-webcomponents-react/issues/4955)) ([25212df](https://github.com/SAP/ui5-webcomponents-react/commit/25212df4dae8b63422bc7207205f712305f55f5c))
+- **deps:** update dependency recharts to v2.8.0 ([#5010](https://github.com/SAP/ui5-webcomponents-react/issues/5010)) ([814dcc4](https://github.com/SAP/ui5-webcomponents-react/commit/814dcc422924874788a379bda63278009094c84d))
+- **DynamicPageTitle:** apply correct padding for `header` ([#5020](https://github.com/SAP/ui5-webcomponents-react/issues/5020)) ([4fe6225](https://github.com/SAP/ui5-webcomponents-react/commit/4fe622550be83e39dbdc084843a262557c6cfcaa)), closes [#5019](https://github.com/SAP/ui5-webcomponents-react/issues/5019)
+- **DynamicPageTitle:** spread `breadcrumbs` if only child ([#5001](https://github.com/SAP/ui5-webcomponents-react/issues/5001)) ([dbe2b58](https://github.com/SAP/ui5-webcomponents-react/commit/dbe2b582ffc0e1c21f1ee2edd6192b90bcd6085e)), closes [#5000](https://github.com/SAP/ui5-webcomponents-react/issues/5000)
+- fix scrollbar styles for Belize theme ([#4958](https://github.com/SAP/ui5-webcomponents-react/issues/4958)) ([0be7e94](https://github.com/SAP/ui5-webcomponents-react/commit/0be7e94418ea63f93e99c2a985dee86bdbe2789c)), closes [#4924](https://github.com/SAP/ui5-webcomponents-react/issues/4924)
+- **ObjectPage:** slightly improve scroll performance ([#4970](https://github.com/SAP/ui5-webcomponents-react/issues/4970)) ([dba642b](https://github.com/SAP/ui5-webcomponents-react/commit/dba642bdc2c49bc250014d19e9fb6a34703f8d7f)), closes [#4960](https://github.com/SAP/ui5-webcomponents-react/issues/4960)
+- **Toolbar:** fix overflow popover margins ([#4985](https://github.com/SAP/ui5-webcomponents-react/issues/4985)) ([9472c8e](https://github.com/SAP/ui5-webcomponents-react/commit/9472c8ecdc580ad6abb88f8e65da51acd2cd8b31))
+- **VariantManagement:** show search in view list popover if count is over 10 ([#4999](https://github.com/SAP/ui5-webcomponents-react/issues/4999)) ([9f9979c](https://github.com/SAP/ui5-webcomponents-react/commit/9f9979c4c8609f85795cfa1f1df9e8b3eb6ace3b)), closes [#4992](https://github.com/SAP/ui5-webcomponents-react/issues/4992)
+- **Vite Template:** add `ThemeProvider` ([#4991](https://github.com/SAP/ui5-webcomponents-react/issues/4991)) ([a643f85](https://github.com/SAP/ui5-webcomponents-react/commit/a643f85feb614d7c50f32ee3e8e81bc614b75434))
+
+### Features
+
+- **ActionSheet:** add keyboard navigation for `PageUp/Down`, `Home`, `End` ([#5009](https://github.com/SAP/ui5-webcomponents-react/issues/5009)) ([18a24be](https://github.com/SAP/ui5-webcomponents-react/commit/18a24be54abb04fcd08cf19bb378709975e1f0d1)), closes [#3875](https://github.com/SAP/ui5-webcomponents-react/issues/3875)
+- **AnalyticalTable:** add `headerLabel` column property ([#5011](https://github.com/SAP/ui5-webcomponents-react/issues/5011)) ([dc23fff](https://github.com/SAP/ui5-webcomponents-react/commit/dc23fffc975d965c55235bb0b9fa9ef3777595a9)), closes [#3121](https://github.com/SAP/ui5-webcomponents-react/issues/3121) [#3189](https://github.com/SAP/ui5-webcomponents-react/issues/3189)
+- **AnalyticalTable:** add `subComponentsBehavior` prop ([#4986](https://github.com/SAP/ui5-webcomponents-react/issues/4986)) ([53c0db4](https://github.com/SAP/ui5-webcomponents-react/commit/53c0db415398461fe352d8ab4739f1c5a86e28e6)), closes [#3862](https://github.com/SAP/ui5-webcomponents-react/issues/3862)
+- **AnalyticalTable:** allow resizing columns via Shift+ArrowLeft/Right ([#4989](https://github.com/SAP/ui5-webcomponents-react/issues/4989)) ([63652bd](https://github.com/SAP/ui5-webcomponents-react/commit/63652bd90bcf054223b470fc4a50ecfa3a070484)), closes [#4397](https://github.com/SAP/ui5-webcomponents-react/issues/4397)
+- **cypress-commands:** add `clearUi5Input` to cypress commands ([#4980](https://github.com/SAP/ui5-webcomponents-react/issues/4980)) ([31772fd](https://github.com/SAP/ui5-webcomponents-react/commit/31772fdb40a36b04865ce70a5b0cc490c4558687))
+- **DynamicPageTitle:** add `expandedContent` & `snappedContent` props ([#4997](https://github.com/SAP/ui5-webcomponents-react/issues/4997)) ([7c04fe2](https://github.com/SAP/ui5-webcomponents-react/commit/7c04fe2cdaa66a20e12a946118c373bb3a277582)), closes [#4987](https://github.com/SAP/ui5-webcomponents-react/issues/4987)
+- **ObjectStatus:** add `emptyIndicator` & `stateAnnouncementText` props, improve a11y ([#4952](https://github.com/SAP/ui5-webcomponents-react/issues/4952)) ([680c33b](https://github.com/SAP/ui5-webcomponents-react/commit/680c33b04618365241abf90380d280bcc054003b))
+- **Text:** add `maxLines` prop ([#5018](https://github.com/SAP/ui5-webcomponents-react/issues/5018)) ([06c7f27](https://github.com/SAP/ui5-webcomponents-react/commit/06c7f2728fb17176bc4e950cb417bf08eb526deb)), closes [#5017](https://github.com/SAP/ui5-webcomponents-react/issues/5017)
+- update `@ui5/webcomponents` to `1.17.0` ([#5022](https://github.com/SAP/ui5-webcomponents-react/issues/5022)) ([dd6dd67](https://github.com/SAP/ui5-webcomponents-react/commit/dd6dd6700697ec2730224ca7cb0bd6ac5edf763c)), closes [#4920](https://github.com/SAP/ui5-webcomponents-react/issues/4920)
+
 # [1.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.3...v1.18.0) (2023-08-04)
 
 ### Bug Fixes
