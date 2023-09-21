@@ -53,7 +53,9 @@ import {
   GROUPED,
   INVALID_TABLE,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL,
+  DESELECT_ALL
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -733,6 +735,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       sortTypes: sortTypesFallback,
       webComponentsReactProperties: {
         translatableTexts: {
+          selectAllText: i18nBundle.getText(SELECT_ALL),
+          deselectAllText: i18nBundle.getText(DESELECT_ALL),
           expandA11yText: i18nBundle.getText(EXPAND_PRESS_SPACE),
           collapseA11yText: i18nBundle.getText(COLLAPSE_PRESS_SPACE),
           selectA11yText: i18nBundle.getText(SELECT_PRESS_SPACE),
