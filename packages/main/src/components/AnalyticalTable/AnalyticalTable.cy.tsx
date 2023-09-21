@@ -559,19 +559,19 @@ describe('AnalyticalTable', () => {
     cy.mount(<TestComponent />);
 
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 44);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 44);
+    cy.findAllByRole('gridcell').invoke('outerHeight').should('equal', 44);
 
     cy.findByTestId('rowHeight').typeIntoUi5Input('100');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
+    cy.findAllByRole('gridcell').invoke('outerHeight').should('equal', 100);
 
     cy.findByTestId('headerRowHeight').typeIntoUi5Input('200');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 200);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
+    cy.findAllByRole('gridcell').invoke('outerHeight').should('equal', 100);
 
     cy.findByTestId('headerRowHeight').typeIntoUi5Input('{selectall}{backspace}');
     cy.findAllByRole('columnheader').invoke('outerHeight').should('equal', 100);
-    cy.findAllByRole('cell').invoke('outerHeight').should('equal', 100);
+    cy.findAllByRole('gridcell').invoke('outerHeight').should('equal', 100);
   });
 
   it('GroupBy selection', () => {
