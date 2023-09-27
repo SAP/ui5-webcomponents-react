@@ -1,4 +1,3 @@
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../..';
@@ -14,6 +13,7 @@ import {
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -1990,8 +1990,12 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<TestComp />);
-    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]')
+      .as('selAll')
+      .should('have.attr', 'title', 'Select All')
+      .click();
     cy.get('@selectSpy').should('have.been.calledOnce');
+    cy.get('@selAll').should('have.attr', 'title', 'Deselect All');
     cy.findByTestId('payload').should(
       'have.text',
       '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
@@ -2002,13 +2006,13 @@ describe('AnalyticalTable', () => {
       'have.text',
       '{"selectedRowIds":{"0":true,"1":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"3"}],"allRowsSelected":false}'
     );
-    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('@selAll').should('have.attr', 'title', 'Select All').click();
     cy.get('@selectSpy').should('have.been.calledThrice');
     cy.findByTestId('payload').should(
       'have.text',
       '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
     );
-    cy.get('[data-visible-column-index="0"][data-visible-row-index="0"]').click();
+    cy.get('@selAll').click();
     cy.get('@selectSpy').should('have.callCount', 4);
     cy.findByTestId('payload').should(
       'have.text',

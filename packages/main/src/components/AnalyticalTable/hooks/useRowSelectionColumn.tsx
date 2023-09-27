@@ -59,7 +59,11 @@ function getNextSelectedRowIds(rowsById) {
 const headerProps = (props, { instance }) => {
   const {
     flatRows,
-    webComponentsReactProperties: { onRowSelect, selectionMode },
+    webComponentsReactProperties: {
+      onRowSelect,
+      selectionMode,
+      translatableTexts: { selectAllText, deselectAllText }
+    },
     toggleAllRowsSelected,
     isAllRowsSelected,
     rowsById,
@@ -96,8 +100,7 @@ const headerProps = (props, { instance }) => {
         onClick(e);
       }
     };
-
-    return [props, { onClick, onKeyDown, style }];
+    return [props, { onClick, onKeyDown, style, title: isAllRowsSelected ? deselectAllText : selectAllText }];
   }
   return props;
 };
@@ -171,11 +174,11 @@ const getCellProps = (props, { cell }) => {
 
 const setToggleAllRowsSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
   const { classes } = webComponentsReactProperties;
-  return [props, { className: classes.checkBox }];
+  return [props, { className: classes.checkBox, title: undefined }];
 };
 const setToggleRowSelectedProps = (props, { instance: { webComponentsReactProperties } }) => {
   const { classes } = webComponentsReactProperties;
-  return [props, { className: classes.checkBox }];
+  return [props, { className: classes.checkBox, title: undefined }];
 };
 
 export const useRowSelectionColumn = (hooks) => {
