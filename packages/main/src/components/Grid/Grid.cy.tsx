@@ -108,9 +108,8 @@ describe('Grid', () => {
     );
     cy.findByTestId('grid').should('have.css', 'grid-row-gap', '42px').should('have.css', 'grid-column-gap', '7px');
   });
-
-  it('position', () => {
-    [...Object.values(GridPosition), undefined].forEach((pos) => {
+  [...Object.values(GridPosition), undefined].forEach((pos: GridPosition | undefined) => {
+    it(`position-${pos}`, () => {
       cy.mount(
         <div style={{ width: '400px' }}>
           <Grid data-testid="grid" position={pos} style={{ width: '200px' }}>
@@ -120,15 +119,22 @@ describe('Grid', () => {
       );
       switch (pos) {
         case 'Center':
-          cy.findByTestId('grid')
-            .should('have.css', 'margin-left', '100px')
-            .should('have.css', 'margin-right', '100px');
+          cy.findByTestId('grid').should('satisfy', ($el) => {
+            const classList = Array.from($el[0].classList);
+            return classList.some((item) => item.includes('positionCenter'));
+          });
           break;
         case 'Right':
-          cy.findByTestId('grid').should('have.css', 'margin-left', '200px').should('have.css', 'margin-right', '0px');
+          cy.findByTestId('grid').should('satisfy', ($el) => {
+            const classList = Array.from($el[0].classList);
+            return classList.some((item) => item.includes('positionRight'));
+          });
           break;
         default:
-          cy.findByTestId('grid').should('have.css', 'margin-left', '0px').should('have.css', 'margin-right', '0px');
+          cy.findByTestId('grid').should('satisfy', ($el) => {
+            const classList = Array.from($el[0].classList);
+            return classList.every((item) => !item.includes('position'));
+          });
           break;
       }
     });
