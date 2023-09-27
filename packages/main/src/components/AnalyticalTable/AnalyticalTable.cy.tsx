@@ -1884,12 +1884,14 @@ describe('AnalyticalTable', () => {
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
+      force: true
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
+      force: true
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
   });
