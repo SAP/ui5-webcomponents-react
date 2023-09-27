@@ -1,5 +1,6 @@
 'use client';
 
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
@@ -13,6 +14,7 @@ import {
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
+  SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
@@ -23,10 +25,10 @@ import type {
   TableDomRef,
   TableRowDomRef
 } from '../../webComponents/index.js';
-import { Button } from '../../webComponents/index.js';
+import { Button, Icon } from '../../webComponents/index.js';
+import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
 import { Toolbar } from '../Toolbar/index.js';
-import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBar.jss.js';
 import { FilterDialog } from './FilterDialog.js';
@@ -43,15 +45,18 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   children: ReactNode | ReactNode[];
   /**
-   * Defines the search field next to the header of the `FilterBar`.
+   * Defines the search field rendered as first filter item.
    *
-   * __Note:__ If `hideToolbar` is `true` this prop has no effect.
+   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead` and `showClearIcon` are applied to the search input.
+   *
+   * __Note:__ The field is only available in the FilterBar not inside the filter configuration dialog.
    */
   search?: ReactElement<InputPropTypes>;
   /**
    * Specifies header text or variant management that is shown in the toolbar on the first position
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement`, `Text` or `Title` in order to preserve the intended design.
+   *
    * __Note:__ If `hideToolbar` is `true` this prop has no effect.
    */
   header?: ReactNode;
@@ -272,6 +277,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const showFilterBarText = i18nBundle.getText(SHOW_FILTER_BAR);
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
+  const searchText = i18nBundle.getText(SEARCH);
   const filtersText = !hideToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
 
   // dialog
@@ -649,14 +655,24 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         {!hideToolbar && (
           <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
             {header}
-            {header && search && <ToolbarSeparator />}
-            {search && !isPhone && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
             {hasButtons && <ToolbarSpacer />}
             {ToolbarButtons}
           </Toolbar>
         )}
         {mountFilters && (
           <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
+            {search && (
+              <FilterGroupItem data-in-fb visibleInFilterBar data-with-toolbar={!hideToolbar}>
+                <div ref={searchRef}>
+                  {renderSearchWithValue(search, searchValue, {
+                    placeholder: searchText,
+                    icon: <Icon name={searchIcon} />,
+                    noTypeahead: true,
+                    showClearIcon: true
+                  })}
+                </div>
+              </FilterGroupItem>
+            )}
             {calculatedChildren}
             {hideToolbar && (
               <>
