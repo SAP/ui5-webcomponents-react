@@ -32,7 +32,7 @@
 ## Devtoberfest
 
 > [!Note]  
-> We are hosting a [session](https://groups.community.sap.com/t5/devtoberfest/build-your-own-react-application-with-ui5-web-components-for-react/ev-p/283244) on UI5 Web Components for React in SAP's Devtoberfest. If you are interested, feel free to attend!
+> We are hosting a [session](https://groups.community.sap.com/t5/devtoberfest/build-your-own-react-application-with-ui5-web-components-for-react/ev-p/283244) on UI5 Web Components for React in SAP's Devtoberfest on Friday, September 29 - 11:00 UTC. If you are interested, feel free to attend!
 
 [![Thumbnail Devtoberfest session](https://i.ytimg.com/vi/zyOxgjoSnGw/hqdefault.jpg)](https://www.youtube.com/watch?v=zyOxgjoSnGw)
 
