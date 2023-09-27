@@ -29,6 +29,14 @@
 
 `ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
+## Devtoberfest
+
+> [!Note]  
+> We're hosting a  for the SAP Devtoberfest.
+> We are hosting a [session](https://groups.community.sap.com/t5/devtoberfest/build-your-own-react-application-with-ui5-web-components-for-react/ev-p/283244) on UI5 Web Components for React in SAP's Devtoberfest. If you are interested, feel free to attend, it's completely free!
+
+![](https://youtu.be/zyOxgjoSnGw)
+
 ## Resources
 
 You can find our documentation under the following links:
