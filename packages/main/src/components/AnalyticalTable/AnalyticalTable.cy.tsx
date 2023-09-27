@@ -648,19 +648,34 @@ describe('AnalyticalTable', () => {
 
   it('useIndeterminateRowSelection - select subRows', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
-    cy.mount(
-      <AnalyticalTable
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
-        data={dataTree}
-        columns={columns}
-        isTreeTable
-        tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
-        reactTableOptions={{ selectSubRows: true }}
-      />
-    );
+    const TestComp = (props) => {
+      const [selectedRowIds, setSelectedRowIds] = useState({});
+      return (
+        <>
+          <AnalyticalTable
+            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            data={dataTree}
+            columns={columns}
+            isTreeTable
+            tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
+            reactTableOptions={{ selectSubRows: true }}
+            onRowSelect={(e) => {
+              setSelectedRowIds(e.detail.selectedRowIds);
+            }}
+            {...props}
+          />
+          <p data-testid="selectedRows">{JSON.stringify(selectedRowIds)}</p>
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
 
     // select all
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.findByTestId('selectedRows').should(
+      'have.text',
+      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}'
+    );
 
     // expand
     cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
@@ -670,6 +685,10 @@ describe('AnalyticalTable', () => {
     // deselect row
     cy.findByText('Wiggins Cotton').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
+    cy.findByTestId('selectedRows').should(
+      'have.text',
+      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}'
+    );
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -688,6 +707,7 @@ describe('AnalyticalTable', () => {
     // select leaf row
     cy.findByText('Wiggins Cotton').click();
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 3);
+    cy.findByTestId('selectedRows').should('have.text', '{"1.0.0.0":true}');
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate', 'true');
@@ -718,6 +738,21 @@ describe('AnalyticalTable', () => {
       'have.attr',
       'indeterminate',
       'true'
+    );
+
+    // deselect all
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+    cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
+
+    // select parent row by selecting sub rows
+    cy.findByText('Wiggins Cotton').click();
+    cy.findByText('Herring Flores').click();
+    cy.findByText('Allen Kidd').click();
+    cy.findByTestId('selectedRows').should('have.text', '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true}');
+    cy.findByText('Selma Kaufman').click();
+    cy.findByTestId('selectedRows').should(
+      'have.text',
+      '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.0":true}'
     );
   });
 
