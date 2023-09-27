@@ -6,6 +6,7 @@ interface UpdatedCellProptypes {
   'aria-expanded'?: string | boolean;
   'aria-label'?: string;
   'aria-colindex'?: number;
+  role?: string;
 }
 
 const setCellProps = (cellProps, { cell, instance }) => {
@@ -13,7 +14,7 @@ const setCellProps = (cellProps, { cell, instance }) => {
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { alwaysShowSubComponent, renderRowSubComponent, translatableTexts, selectionMode, selectionBehavior } =
     instance.webComponentsReactProperties;
-  const updatedCellProps: UpdatedCellProptypes = { 'aria-colindex': columnIndex + 1 }; // aria index is 1 based, not 0
+  const updatedCellProps: UpdatedCellProptypes = { 'aria-colindex': columnIndex + 1, role: 'gridcell' }; // aria index is 1 based, not 0
 
   const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
   const rowIsExpandable = row.canExpand || (RowSubComponent && !alwaysShowSubComponent);

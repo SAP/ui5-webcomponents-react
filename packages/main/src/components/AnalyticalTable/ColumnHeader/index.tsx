@@ -51,6 +51,7 @@ export interface ColumnHeaderProps {
   column: ColumnType;
   role: string;
   isFiltered?: boolean;
+  title?: string;
   ['aria-sort']?: AriaAttributes['aria-sort'];
   ['aria-label']?: AriaAttributes['aria-label'];
 }
@@ -141,6 +142,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     onKeyDown,
     portalContainer,
     isFiltered,
+    title,
     'aria-label': ariaLabel,
     'aria-sort': ariaSort,
     showVerticalEndBorder
@@ -252,6 +254,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         onKeyUp={handleHeaderCellKeyUp}
         aria-label={ariaLabel}
         aria-sort={ariaSort}
+        title={title}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text

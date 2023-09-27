@@ -1,6 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["packages/cypress-commands"],
+  "tsconfig": "./packages/cypress-commands/tsconfig.typedoc.json",
   "entryPointStrategy": "expand",
   "out": "temp/typedoc",
   "exclude": ["**/dist/**/*", "**/test/**/*"],

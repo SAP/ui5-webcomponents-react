@@ -39,10 +39,12 @@ export const filterValue = (ref, child) => {
   return filterItemProps;
 };
 
-export const renderSearchWithValue = (renderSearchElement, searchValue) => {
+export const renderSearchWithValue = (renderSearchElement, searchValue, defaultProps = {}) => {
+  const props = { ...defaultProps, ...renderSearchElement?.props };
   return cloneElement(renderSearchElement, {
-    value: searchValue ?? renderSearchElement?.props?.value,
-    'data-component-name': 'FilterBarSearch'
+    ...props,
+    'data-component-name': 'FilterBarSearch',
+    value: searchValue ?? renderSearchElement?.props?.value
   });
 };
 
