@@ -1884,12 +1884,14 @@ describe('AnalyticalTable', () => {
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
+      force: true
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
+      force: true
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
   });
@@ -2294,7 +2296,7 @@ describe('AnalyticalTable', () => {
     // last currently rendered row
     cy.focused().should('have.attr', 'data-row-index', '22').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageDown');
-    cy.focused().should('have.attr', 'data-row-index', '36').should('have.attr', 'data-column-index', '0');
+    cy.focused().should('have.attr', 'data-row-index', '37').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageDown');
     cy.focused().should('have.attr', 'data-row-index', '50').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageUp');

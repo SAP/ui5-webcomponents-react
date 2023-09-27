@@ -44,8 +44,7 @@ const columnsDeps = (
     !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
     webComponentsReactProperties.scaleWidthMode,
-    isLoadingPlaceholder,
-    webComponentsReactProperties.scaleXFactor
+    isLoadingPlaceholder
   ];
 };
 interface IColumnMeta {
