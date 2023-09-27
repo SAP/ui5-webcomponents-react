@@ -1,66 +1,77 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import { useCallback, useState } from 'react';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
 };
 
-export const useDragAndDrop = (isRtl, setColumnOrder, columnOrder, resizeInfo, columns: any[], onColumnsReorder?) => {
-  const [dragOver, setDragOver] = useState('');
+function getHeaderProps(
+  props: Record<string, unknown>,
+  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }
+) {
+  const { columnOrder, columnResizing, isRtl, dndColumn } = state;
+  const { onColumnsReorder } = webComponentsReactProperties;
 
-  const handleDragStart = useCallback(
-    (e) => {
-      if (resizeInfo.isResizingColumn || !e.target.draggable) {
-        e.preventDefault();
-        return;
-      }
-      e.dataTransfer.setData('text', e.currentTarget.dataset.columnId);
-    },
-    [resizeInfo.isResizingColumn]
-  );
+  const handleDragStart = (e) => {
+    if (columnResizing.isResizingColumn || !e.target.draggable) {
+      e.preventDefault();
+      return;
+    }
+    e.dataTransfer.setData('text', e.currentTarget.dataset.columnId);
+  };
 
-  const handleDragOver = useCallback((e) => {
+  const handleDragOver = (e) => {
     e.preventDefault();
-  }, []);
+  };
 
-  const handleDragEnter = useCallback((e) => {
-    setDragOver(e.currentTarget.dataset.columnId);
-  }, []);
+  const handleDragEnter = (e) => {
+    dispatch({ type: 'COLUMN_DND_START', payload: e.currentTarget.dataset.columnId });
+  };
 
-  const handleOnDrop = useCallback(
-    (e) => {
-      setDragOver('');
+  const handleOnDragEnd = () => {
+    dispatch({ type: 'COLUMN_DND_END' });
+  };
 
-      const droppedColId = e.currentTarget.dataset.columnId;
-      const draggedColId = e.dataTransfer.getData('text');
-      if (droppedColId === draggedColId) return;
+  const handleOnDrop = (e) => {
+    dispatch({ type: 'COLUMN_DND_END' });
 
-      const internalColumnOrder = columnOrder.length > 0 ? columnOrder : columns.map((col) => getColumnId(col));
-      const droppedColIdx = internalColumnOrder.findIndex((col) => col === droppedColId);
-      const draggedColIdx = internalColumnOrder.findIndex((col) => col === draggedColId);
+    const droppedColId = e.currentTarget.dataset.columnId;
+    const draggedColId = e.dataTransfer.getData('text');
+    if (droppedColId === draggedColId) return;
 
-      const tempCols = [...internalColumnOrder];
-      const targetIndex = droppedColIdx > draggedColIdx ? (isRtl ? droppedColIdx : droppedColIdx - 1) : droppedColIdx;
+    const internalColumnOrder = columnOrder.length > 0 ? columnOrder : columns.map((col) => getColumnId(col));
+    const droppedColIdx = internalColumnOrder.findIndex((col) => col === droppedColId);
+    const draggedColIdx = internalColumnOrder.findIndex((col) => col === draggedColId);
 
-      tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
-      setColumnOrder(tempCols);
+    const tempCols = [...internalColumnOrder];
+    const targetIndex = droppedColIdx > draggedColIdx ? (isRtl ? droppedColIdx : droppedColIdx - 1) : droppedColIdx;
 
-      if (typeof onColumnsReorder === 'function') {
-        const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
-        onColumnsReorder(
-          enrichEventWithDetails(e, {
-            columnsNewOrder,
-            column: columns[draggedColIdx]
-          })
-        );
-      }
-    },
-    [columnOrder, onColumnsReorder, columns]
-  );
+    tempCols.splice(targetIndex, 0, tempCols.splice(draggedColIdx, 1)[0]);
+    setColumnOrder(tempCols);
 
-  const handleOnDragEnd = useCallback(() => {
-    setDragOver('');
-  }, [dragOver]);
+    if (typeof onColumnsReorder === 'function') {
+      const columnsNewOrder = tempCols.map((tempColId) => columns.find((col) => getColumnId(col) === tempColId));
+      onColumnsReorder(
+        enrichEventWithDetails(e, {
+          columnsNewOrder,
+          column: columns[draggedColIdx]
+        })
+      );
+    }
+  };
 
-  return [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd];
-};
+  return [
+    props,
+    {
+      onDragStart: handleDragStart,
+      onDragEnter: handleDragEnter,
+      onDragOver: handleDragOver,
+      onDragEnd: handleOnDragEnd,
+      onDrop: handleOnDrop,
+      dragOver: dndColumn === props.id
+    }
+  ];
+}
+
+export function useColumnDragAndDrop(hooks) {
+  hooks.getHeaderProps.push(getHeaderProps);
+}

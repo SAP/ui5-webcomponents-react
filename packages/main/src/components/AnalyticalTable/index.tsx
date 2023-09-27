@@ -26,7 +26,6 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { AnalyticalTableSubComponentsBehavior } from '../../enums/AnalyticalTableSubComponentsBehavior.js';
 import type {
   AnalyticalTableScrollMode,
   TableScaleWidthMode,
@@ -42,6 +41,7 @@ import {
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
   AnalyticalTableVisibleRowCountMode,
+  AnalyticalTableSubComponentsBehavior,
   GlobalStyleClasses
 } from '../../enums/index.js';
 import {
@@ -67,7 +67,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
 import { useA11y } from './hooks/useA11y.js';
-import { useDragAndDrop } from './hooks/useDragAndDrop.js';
+import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
 import { usePopIn } from './hooks/usePopIn.js';
@@ -452,7 +452,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    *
-   * __Note:__ If `transform: scale()` is used, this prop is mandatory, otherwise it will lead to unwanted behavior and design.
+   * __Note:__ As of `v1.20.0` this prop has no effect, since scaling is now supported out of the box.
+   *
+   * @deprecated: This prop has no effect, since scaling is now supported out of the box. It will be removed with our next major release.
    */
   scaleXFactor?: number;
   /**
@@ -685,7 +687,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
-    scaleXFactor,
     alwaysShowSubComponent: _omit,
     ...rest
   } = props;
@@ -767,8 +768,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         scrollToRef,
         showOverlay,
         uniqueId,
-        scaleXFactor,
-        subRowsKey
+        subRowsKey,
+        onColumnsReorder
       },
       ...reactTableOptions
     },
@@ -793,6 +794,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     usePopIn,
     useVisibleColumnsWidth,
     useKeyboardNavigation,
+    useColumnDragAndDrop,
     ...tableHooks
   );
 
@@ -802,7 +804,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     rows,
     prepareRow,
     state: tableState,
-    columns: tableInternalColumns,
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
@@ -1016,7 +1017,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const onGroupByChanged = useCallback(
     (e) => {
       const { column, isGrouped } = e.detail;
-      let groupedColumns = [];
+      let groupedColumns;
       if (isGrouped) {
         groupedColumns = [...tableState.groupBy, column.id];
       } else {
@@ -1038,15 +1039,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       setColumnOrder(columnOrder);
     }
   }, [columnOrder]);
-
-  const [dragOver, handleDragEnter, handleDragStart, handleDragOver, handleOnDrop, handleOnDragEnd] = useDragAndDrop(
-    isRtl,
-    setColumnOrder,
-    tableState.columnOrder,
-    tableState.columnResizing,
-    tableInternalColumns,
-    onColumnsReorder
-  );
 
   const inlineStyle = useMemo(() => {
     const tableStyles = {
@@ -1112,15 +1104,17 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
     getScrollElement: () => tableRef.current,
-    estimateSize: useCallback(
-      (index) => {
-        return visibleColumnsWidth[index];
-      },
-      [visibleColumnsWidth]
-    ),
+    estimateSize: useCallback((index) => visibleColumnsWidth[index], [visibleColumnsWidth]),
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: overscanCountHorizontal,
+    indexAttribute: 'data-column-index',
+    // necessary as otherwise values are rounded which leads to wrong total width calculation
+    measureElement: (el) => el.getBoundingClientRect().width
   });
+
+  useEffect(() => {
+    columnVirtualizer.measure();
+  }, [columnVirtualizer, tableState.columnOrder, tableState.columnResizing]);
 
   const totalSize = columnVirtualizer.getTotalSize();
   const showVerticalEndBorder = tableState.tableClientWidth > totalSize;
@@ -1195,16 +1189,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     headerGroup={headerGroup}
                     onSort={onSort}
                     onGroupByChanged={onGroupByChanged}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDrop={handleOnDrop}
-                    onDragEnter={handleDragEnter}
-                    onDragEnd={handleOnDragEnd}
-                    dragOver={dragOver}
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     columnVirtualizer={columnVirtualizer}
-                    scaleXFactor={scaleXFactor}
                     uniqueId={uniqueId}
                     showVerticalEndBorder={showVerticalEndBorder}
                   />
@@ -1223,7 +1210,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rowCollapsedFlag={tableState.rowCollapsed}
                 dispatch={dispatch}
                 tableBodyHeight={tableBodyHeight}
-                totalColumnsWidth={totalColumnsWidth}
+                totalColumnsWidth={columnVirtualizer.getTotalSize()}
                 parentRef={parentRef}
                 classes={classes}
                 infiniteScroll={infiniteScroll}

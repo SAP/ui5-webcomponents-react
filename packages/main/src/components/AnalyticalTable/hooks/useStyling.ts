@@ -58,7 +58,7 @@ const getRowProps = (rowProps, { instance, row, userProps }) => {
   ) {
     className += ` ${classes.tableGroupHeader}`;
   }
-  if (alternateRowColor && userProps['aria-rowindex'] % 2 !== 0) {
+  if (alternateRowColor && userProps['aria-rowindex'] % 2 !== 1) {
     className += ` ${classes.alternateRowColor}`;
   }
 
