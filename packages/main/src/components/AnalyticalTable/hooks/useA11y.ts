@@ -6,6 +6,7 @@ interface UpdatedCellProptypes {
   'aria-expanded'?: string | boolean;
   'aria-label'?: string;
   'aria-colindex'?: number;
+  role?: string;
 }
 
 const setCellProps = (cellProps, { cell, instance }) => {
