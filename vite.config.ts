@@ -29,6 +29,11 @@ export default defineConfig(() => {
       tsconfigPaths({
         projects: [fileURLToPath(new URL('tsconfig.base.json', import.meta.url))]
       })
-    ].filter(Boolean)
+    ].filter(Boolean),
+    server: {
+      watch: {
+        ignored: ['**/packages/cra-template/**', '**/packages/cra-template-seed/**']
+      }
+    }
   };
 });

@@ -13,11 +13,9 @@ export const styles = {
   },
   ...generateGridSpans(),
   positionCenter: {
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    marginInline: 'auto'
   },
   positionRight: {
-    marginLeft: 'auto',
-    marginRight: 0
+    marginInline: 'auto 0px'
   }
 };
