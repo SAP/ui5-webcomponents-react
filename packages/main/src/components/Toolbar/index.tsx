@@ -126,6 +126,11 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
 const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 
 /**
+ *
+ * __Note:__ The `Toolbar` component may be replaced by the `ui5-toolbar` web-component (currently available as `ToolbarV2`) with our next major release. If you only need to pass components supported by `ToolbarV2` then please consider using `ToolbarV2` instead of this component.
+ *
+ * ___
+ *
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
  *
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.
@@ -134,8 +139,6 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
  * __Note:__ The overflow popover is mounted only when the overflow button is displayed, i.e., any child component of the popover will be remounted, when moved into it.
  *
  * __Note:__ To prevent duplicate child `id`s in the DOM, all child `id`s get an `-overflow` suffix. This is especially important when popovers are opened by id.
- *
- * @deprecated This component will be replaced by the `ui5-toolbar` web-component (currently available as `ToolbarV2`) with our next major release. Please use `ToolbarV2` instead.
  */
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
