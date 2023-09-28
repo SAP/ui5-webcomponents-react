@@ -51,8 +51,9 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
   readonly dateValue: Date;
   /**
    * Closes the picker
+   * @returns {Promise<void>} Resolves when the picker is closed
    */
-  closePicker: () => void;
+  closePicker: () => Promise<void>;
   /**
    * Formats a Java Script date object into a string representing a locale date and time according to the `formatPattern` property of the TimePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string

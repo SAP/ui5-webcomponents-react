@@ -87,6 +87,7 @@ export * from './TitleLevel.js';
 export * from './ToastPlacement.js';
 export * from './ToolbarAlign.js';
 export * from './ToolbarDesign.js';
+export * from './ToolbarItemOverflowBehavior.js';
 export * from './ToolbarStyle.js';
 export * from './UploadCollectionDnDOverlayMode.js';
 export * from './UploadState.js';

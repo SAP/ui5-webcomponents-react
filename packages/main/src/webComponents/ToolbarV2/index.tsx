@@ -28,7 +28,7 @@ export interface ToolbarV2DomRef extends ToolbarV2Attributes, Ui5DomRef {}
 
 export interface ToolbarV2PropTypes extends ToolbarV2Attributes, CommonProps {
   /**
-   * Defines the items of the component.
+   * Defines the items of the component. **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparatorV2` and `ToolbarSpacerV2` are allowed here.
    */
   children?: ReactNode | ReactNode[];
 }

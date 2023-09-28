@@ -32,9 +32,6 @@ interface DialogAttributes {
   resizable?: boolean;
   /**
    * Defines the state of the `Dialog`.
-   *
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
-   *
    * **Note:** If `"Error"` and `"Warning"` state is set, it will change the accessibility role to "alertdialog", if the accessibleRole property is set to `"Dialog"`.
    */
   state?: ValueState | keyof typeof ValueState;
