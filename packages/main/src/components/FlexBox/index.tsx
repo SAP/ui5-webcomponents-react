@@ -25,6 +25,8 @@ export interface FlexBoxPropTypes extends CommonProps {
   displayInline?: boolean;
   /**
    * Determines whether the `FlexBox` will be sized to completely fill its container.
+   *
+   * __Note:__ `fitContainer` only works if the height of the containing block is specified (i.e. it doesn't depend on content height)
    */
   fitContainer?: boolean;
   /**
