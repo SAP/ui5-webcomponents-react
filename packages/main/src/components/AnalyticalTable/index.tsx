@@ -1311,8 +1311,7 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
-  alwaysShowSubComponent: false
+  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
 };
 
 export { AnalyticalTable };
