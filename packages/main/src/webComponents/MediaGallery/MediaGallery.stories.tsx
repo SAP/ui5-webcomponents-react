@@ -30,22 +30,22 @@ export const Default: Story = {
     return (
       <MediaGallery {...args}>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1000.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1010.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1022.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1022.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1030.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1030.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-2002.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-2002.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-2026.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-2026.jpg" />
         </MediaGalleryItem>
       </MediaGallery>
     );
@@ -57,12 +57,12 @@ export const CustomThumbnail: Story = {
     return (
       <MediaGallery {...args}>
         <MediaGalleryItem
-          thumbnail={<img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000-small.jpg" />}
+          thumbnail={<img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1000-small.jpg" />}
         >
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1000.jpg" />
         </MediaGalleryItem>
         <MediaGalleryItem disabled>
-          <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
+          <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1010.jpg" />
         </MediaGalleryItem>
       </MediaGallery>
     );
@@ -80,10 +80,10 @@ export const InteractiveDisplayArea: Story = {
         <Toast ref={ref}>Display Area Clicked!</Toast>
         <MediaGallery {...args} interactiveDisplayArea onDisplayAreaClick={handleDisplayAreaClick}>
           <MediaGalleryItem>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1000.jpg" />
+            <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1000.jpg" />
           </MediaGalleryItem>
           <MediaGalleryItem selected>
-            <img src="https://sap.github.io/ui5-webcomponents/main/assets/images/HT-1010.jpg" />
+            <img src="https://sap.github.io/ui5-webcomponents/assets/images/HT-1010.jpg" />
           </MediaGalleryItem>
         </MediaGallery>
       </>
