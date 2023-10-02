@@ -563,7 +563,7 @@ describe('Toolbar', () => {
 
     cy.findByTestId('tb').focus();
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 112, 242) 0px 0px 0px 2px inset');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 50, 165) 0px 0px 0px 2px inset');
   });
 
   it('unique ids for overflow', () => {
