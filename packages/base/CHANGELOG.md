@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Bug Fixes
+
+- **useResponsiveContentPadding - TypeScript:** adjust types ([#5039](https://github.com/SAP/ui5-webcomponents-react/issues/5039)) ([3fc9ea4](https://github.com/SAP/ui5-webcomponents-react/commit/3fc9ea4f0260f315c681ca70fad63f0f8556fb0e))
+
+### Features
+
+- update to `@ui5/webcomponents@~1.18.0` ([#5103](https://github.com/SAP/ui5-webcomponents-react/issues/5103)) ([1bb6b1e](https://github.com/SAP/ui5-webcomponents-react/commit/1bb6b1ef65bb05dd39d36f7aded2bbaf313bcf2f))
+
 # [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
 
 ### Bug Fixes

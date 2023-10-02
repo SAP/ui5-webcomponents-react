@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Bug Fixes
+
+- **AnalyticalTable - useIndeterminateRowSelection:** select parent row when children are selected ([#5098](https://github.com/SAP/ui5-webcomponents-react/issues/5098)) ([3119083](https://github.com/SAP/ui5-webcomponents-react/commit/3119083223ee1ce4c7f383fd1a7e468f6f00d8b0)), closes [#4998](https://github.com/SAP/ui5-webcomponents-react/issues/4998)
+- **AnalyticalTable:** add tooltip to header selection-cell ([#5081](https://github.com/SAP/ui5-webcomponents-react/issues/5081)) ([22ad96d](https://github.com/SAP/ui5-webcomponents-react/commit/22ad96d70ecb1b3d06e01a379f24f4bb5943509f))
+- **AnalyticalTable:** remove default prop for `alwaysShowSubComponent` ([#5106](https://github.com/SAP/ui5-webcomponents-react/issues/5106)) ([9aadf71](https://github.com/SAP/ui5-webcomponents-react/commit/9aadf7177cddc0a897b61a9d3dbc645bea33ea45))
+- **AnalyticalTable:** replace role `cell` with `gridcell` ([#5080](https://github.com/SAP/ui5-webcomponents-react/issues/5080)) ([944729b](https://github.com/SAP/ui5-webcomponents-react/commit/944729b955c0c70bd78341d6141bbe015d32f65f)), closes [#5074](https://github.com/SAP/ui5-webcomponents-react/issues/5074)
+- **AnalyticalTable:** update `@tanstack/react-virtual` to 3.0.0-beta.61 ([#4899](https://github.com/SAP/ui5-webcomponents-react/issues/4899)) ([b053c1d](https://github.com/SAP/ui5-webcomponents-react/commit/b053c1db3b26daed5f471e1f5c43044751cfcbfc))
+- **FilterBar:** update `search` position to latest design specs ([#5059](https://github.com/SAP/ui5-webcomponents-react/issues/5059)) ([84eef5c](https://github.com/SAP/ui5-webcomponents-react/commit/84eef5cb90b0b87333cdd50581b252a891bdc9d0))
+- **ObjectPage:** allow rendering `headerTitle` only in `headerContent` section ([#5043](https://github.com/SAP/ui5-webcomponents-react/issues/5043)) ([932cefc](https://github.com/SAP/ui5-webcomponents-react/commit/932cefcff3a2c2d00581e158099920de3b64bf38))
+- **VariantManagement:** fix type extraction for button click handler ([#5095](https://github.com/SAP/ui5-webcomponents-react/issues/5095)) ([b0da979](https://github.com/SAP/ui5-webcomponents-react/commit/b0da9797bc22e21d515eb8ae26362846fffcc35f)), closes [#5072](https://github.com/SAP/ui5-webcomponents-react/issues/5072)
+
+### Features
+
+- update to `@ui5/webcomponents@~1.18.0` ([#5103](https://github.com/SAP/ui5-webcomponents-react/issues/5103)) ([1bb6b1e](https://github.com/SAP/ui5-webcomponents-react/commit/1bb6b1ef65bb05dd39d36f7aded2bbaf313bcf2f))
+
 # [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
 
 ### Bug Fixes
