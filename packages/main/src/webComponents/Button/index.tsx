@@ -17,15 +17,6 @@ interface ButtonAttributes {
   accessibleNameRef?: string;
   /**
    * Defines the component design.
-   *
-   * **The available values are:**
-   *
-   * *   `Default`
-   * *   `Emphasized`
-   * *   `Positive`
-   * *   `Negative`
-   * *   `Transparent`
-   * *   `Attention`
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
   /**
@@ -57,14 +48,6 @@ interface ButtonAttributes {
   tooltip?: string;
   /**
    * Defines whether the button has special form-related functionality.
-   *
-   * **The available values are:**
-   *
-   * *   `Button`
-   * *   `Submit`
-   * *   `Reset`
-   *
-   *
    *
    * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */

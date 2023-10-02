@@ -126,7 +126,7 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
 }
 
 /**
- * The `Select` component is used to create a drop-down list. The items inside the `Select` define the available options by using the `Option` component.
+ * The `Select` component is used to create a drop-down list.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *

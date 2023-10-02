@@ -69,7 +69,7 @@ interface InputAttributes {
    */
   showSuggestions?: boolean;
   /**
-   * Defines the HTML type of the component. Available options are: `Text`, `Email`, `Number`, `Password`, `Tel`, and `URL`.
+   * Defines the HTML type of the component.
    *
    * **Notes:**
    *
@@ -85,14 +85,6 @@ interface InputAttributes {
   value?: string;
   /**
    * Defines the value state of the component.
-   *
-   * Available options are:
-   *
-   * *   `None`
-   * *   `Error`
-   * *   `Warning`
-   * *   `Success`
-   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
 }
