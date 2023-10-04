@@ -1,5 +1,6 @@
 'use client';
 
+import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
@@ -35,10 +36,12 @@ import type { SelectedVariant } from '../../internal/VariantManagementContext.js
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import type {
   ButtonPropTypes,
+  DialogPropTypes,
   ListDomRef,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes,
-  TitlePropTypes
+  TitlePropTypes,
+  InputDomRef
 } from '../../webComponents/index.js';
 import {
   Bar,
@@ -180,6 +183,24 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
   onSave?: (e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant }) => void;
+  /**
+   * The event is fired when the "Cancel" button inside the Manage Views dialog is clicked or ESCAPE is pressed.
+   */
+  onManageViewsCancel?: (
+    e: (
+      | Parameters<NonNullable<ButtonPropTypes['onClick']>>[0]
+      | Parameters<NonNullable<DialogPropTypes['onBeforeClose']>>[0]
+    ) & { detail: { invalidVariants: Record<string, InputDomRef> } & Partial<DialogBeforeCloseEventDetail> }
+  ) => void;
+  /**
+   * The event is fired when the "Cancel" button inside the Save View dialog is clicked or ESCAPE is pressed.
+   */
+  onSaveViewCancel?: (
+    e: (
+      | Parameters<NonNullable<ButtonPropTypes['onClick']>>[0]
+      | Parameters<NonNullable<DialogPropTypes['onBeforeClose']>>[0]
+    ) & { detail: SelectedVariant; isInvalid?: boolean & Partial<DialogBeforeCloseEventDetail> }
+  ) => void;
 }
 
 const styles = {
@@ -272,6 +293,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     dirtyState,
     onSave,
     portalContainer,
+    onManageViewsCancel,
+    onSaveViewCancel,
     ...rest
   } = props;
 
@@ -565,6 +588,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         {manageViewsDialogOpen && (
           <ManageViewsDialog
             onAfterClose={handleManageClose}
+            onManageViewsCancel={onManageViewsCancel}
             handleSaveManageViews={handleSaveManageViews}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}
@@ -579,6 +603,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         )}
         {saveAsDialogOpen && (
           <SaveViewDialog
+            onSaveViewCancel={onSaveViewCancel}
             saveViewInputProps={selectedSaveViewInputProps}
             portalContainer={portalContainer}
             showShare={!hideShare}
