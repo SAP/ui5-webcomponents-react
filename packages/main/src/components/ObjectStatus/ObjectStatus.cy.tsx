@@ -37,8 +37,8 @@ const statesWithCSSVars: {
     color: ThemingParameters.sapNeutralTextColor,
     iconColor: ThemingParameters.sapNeutralElementColor,
     inverted: {
-      color: ThemingParameters.sapButton_Neutral_TextColor,
-      backgroundColor: ThemingParameters.sapButton_Neutral_Background,
+      color: ThemingParameters.sapTextColor,
+      backgroundColor: ThemingParameters.sapNeutralBackground,
       iconColor: ThemingParameters.sapButton_Neutral_TextColor
     },
     hiddenText: undefined
@@ -262,6 +262,26 @@ describe('ObjectStatus', () => {
     );
     cy.findByText(VALUE_STATE_ERROR.defaultText).should('not.exist');
     cy.findByText('Custom Text').should('exist').and('not.be.visible');
+  });
+
+  it('large', () => {
+    cy.mount(
+      <ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon>
+        Content
+      </ObjectStatus>
+    );
+    cy.findByTestId('os').should('have.css', 'font-size', '24px');
+    cy.get('[ui5-icon]').should('have.css', 'height', '24px');
+    cy.mount(
+      <ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon inverted>
+        Content
+      </ObjectStatus>
+    );
+    cy.findByTestId('os').should('have.css', 'font-size', '20px');
+    cy.get('[ui5-icon]').should('have.css', 'height', '20px');
+    cy.mount(<ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon inverted />);
+    cy.findByTestId('os').should('have.css', 'font-size', '20px');
+    cy.get('[ui5-icon]').should('have.css', 'height', '24px');
   });
 
   cypressPassThroughTestsFactory(ObjectStatus);
