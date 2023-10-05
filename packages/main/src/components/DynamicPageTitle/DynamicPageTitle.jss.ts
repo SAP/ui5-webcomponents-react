@@ -1,4 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ContainerQueries } from '../../internal/ContainerQueries.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 
 export const DynamicPageTitleStyles = {
@@ -30,7 +31,10 @@ export const DynamicPageTitleStyles = {
   },
   breadcrumbs: {
     minWidth: '50%',
-    padding: '0.5rem 0 0.25rem 0'
+    padding: '0.5rem 0 0.25rem 0',
+    '&:only-child': {
+      width: '100%'
+    }
   },
   titleMainSection: {
     overflowX: 'hidden',
@@ -45,6 +49,7 @@ export const DynamicPageTitleStyles = {
     color: ThemingParameters.sapObjectHeader_Title_TextColor,
     fontSize: `var(${DynamicPageCssVariables.titleFontSize})`,
     paddingBlockStart: '0.3125rem',
+    [ContainerQueries.M]: { paddingBlockStart: '0.6875rem' },
     overflowWrap: 'break-word',
     hyphens: 'auto',
     '& > *': {

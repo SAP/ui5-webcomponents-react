@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
+import { actions } from 'react-table';
+import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
 
@@ -59,7 +61,7 @@ const navigateFromActiveSubCompItem = (currentlyFocusedCell, e) => {
   setFocus(currentlyFocusedCell, recursiveSubComponentElementSearch(e.target));
 };
 
-const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns } }) => {
+const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns, state } }) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -141,6 +143,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
 
   const onKeyboardNavigation = useCallback(
     (e) => {
+      const { isRtl } = state;
       const isActiveItemInSubComponent = e.target.dataset.subcomponentActiveElement;
       // check if target is cell and if so proceed from there
       if (
@@ -226,7 +229,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex + 1}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex + (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -242,7 +245,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex - 1}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex - (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -307,7 +310,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
         }
       }
     },
-    [currentlyFocusedCell.current, tableRef.current]
+    [currentlyFocusedCell.current, tableRef.current, state?.isRtl]
   );
   if (showOverlay) {
     return tableProps;
@@ -322,6 +325,41 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
   ];
 };
 
+function getPayload(e, column) {
+  e.preventDefault();
+  e.stopPropagation();
+  const clientX = e.target.getBoundingClientRect().x + e.target.getBoundingClientRect().width;
+  const columnId = column.id;
+  const columnWidth = column.totalWidth;
+  const headersToResize = getLeafHeaders(column);
+  const headerIdWidths = headersToResize.map((d) => [d.id, d.totalWidth]);
+  return { clientX, columnId, columnWidth, headerIdWidths };
+}
+
+const setHeaderProps = (headerProps, { instance: { dispatch }, column }) => {
+  // resize col with keyboard
+  const handleKeyDown = (e) => {
+    if (e.nativeEvent.shiftKey) {
+      if (e.key === 'ArrowRight') {
+        const payload = getPayload(e, column);
+        dispatch({ type: actions.columnStartResizing, ...payload });
+        dispatch({ type: actions.columnResizing, clientX: payload.clientX + 16 });
+        dispatch({ type: actions.columnDoneResizing });
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        const payload = getPayload(e, column);
+        dispatch({ type: actions.columnStartResizing, ...payload });
+        dispatch({ type: actions.columnResizing, clientX: payload.clientX - 16 });
+        dispatch({ type: actions.columnDoneResizing });
+        return;
+      }
+    }
+  };
+  return [headerProps, { onKeyDown: handleKeyDown }];
+};
+
 export const useKeyboardNavigation = (hooks) => {
   hooks.getTableProps.push(useGetTableProps);
+  hooks.getHeaderProps.push(setHeaderProps);
 };

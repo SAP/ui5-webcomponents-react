@@ -23,6 +23,7 @@ import type { AvatarPropTypes } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { styles } from './ObjectPage.jss.js';
@@ -200,6 +201,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
   const [spacerBottomHeight, setSpacerBottomHeight] = useState('0px');
+  const titleInHeader = headerTitle && showTitleInHeaderContent;
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
@@ -611,6 +613,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]
   );
 
+  const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
+
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleInHeaderClass = inHeader ? classes.titleInHeader : undefined;
@@ -620,17 +624,30 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           showSubHeaderRight: true,
           className: clsx(titleInHeaderClass, headerTitle?.props?.className),
           'data-not-clickable': titleHeaderNotClickable,
-          onToggleHeaderContentVisibility: onTitleClick
+          onToggleHeaderContentVisibility: onTitleClick,
+          'data-header-content-visible': headerContent && headerCollapsed !== true,
+          'data-is-snapped-rendered-outside': snappedHeaderInObjPage
         });
       }
       return cloneElement(headerTitle, {
         className: clsx(titleInHeaderClass, headerTitle?.props?.className),
         'data-not-clickable': titleHeaderNotClickable,
-        onToggleHeaderContentVisibility: onTitleClick
+        onToggleHeaderContentVisibility: onTitleClick,
+        'data-header-content-visible': headerContent && headerCollapsed !== true,
+        'data-is-snapped-rendered-outside': snappedHeaderInObjPage
       });
     },
-    [headerTitle, titleHeaderNotClickable, onTitleClick]
+    [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, !!headerContent]
   );
+
+  const isInitial = useRef(true);
+  useEffect(() => {
+    if (!isInitial.current) {
+      scrollTimeout.current = performance.now() + 200;
+    } else {
+      isInitial.current = false;
+    }
+  }, [snappedHeaderInObjPage]);
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
@@ -643,22 +660,36 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         children: (
           <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
-            {headerContent.props.children && (
+            {(headerContent.props.children || titleInHeader) && (
               <div data-component-name="ObjectPageHeaderContent">
-                {headerTitle && showTitleInHeaderContent && renderTitleSection(true)}
+                {titleInHeader && renderTitleSection(true)}
                 {headerContent.props.children}
               </div>
             )}
           </div>
         )
       });
+    } else if (titleInHeader) {
+      return (
+        <DynamicPageHeader
+          topHeaderHeight={topHeaderHeight}
+          style={headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : undefined}
+          headerPinned={headerPinned || scrolledHeaderExpanded}
+          ref={componentRefHeaderContent}
+        >
+          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
+            {avatar}
+            <div data-component-name="ObjectPageHeaderContent">{titleInHeader && renderTitleSection(true)}</div>
+          </div>
+        </DynamicPageHeader>
+      );
     }
   }, [
     headerContent,
     topHeaderHeight,
     headerPinned,
     scrolledHeaderExpanded,
-    showTitleInHeaderContent,
+    titleInHeader,
     avatar,
     headerContentRef,
     renderTitleSection
@@ -728,7 +759,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   );
 
   const objectPageStyles = { ...style };
-  if (headerCollapsed === true && headerContent) {
+  if (headerCollapsed === true && (headerContent || titleInHeader)) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
@@ -763,6 +794,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
         {headerTitle && renderTitleSection()}
+        {snappedHeaderInObjPage && (
+          <div className={classes.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
+            {headerTitle.props.snappedContent}
+          </div>
+        )}
       </header>
       {renderHeaderContentSection()}
       {headerContent && headerTitle && (

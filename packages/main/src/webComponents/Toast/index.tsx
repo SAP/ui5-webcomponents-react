@@ -15,18 +15,6 @@ interface ToastAttributes {
   duration?: number;
   /**
    * Defines the placement of the component.
-   *
-   * Available options are:
-   *
-   * *   `TopStart`
-   * *   `TopCenter`
-   * *   `TopEnd`
-   * *   `MiddleStart`
-   * *   `MiddleCenter`
-   * *   `MiddleEnd`
-   * *   `BottomStart`
-   * *   `BottomCenter`
-   * *   `BottomEnd`
    */
   placement?: ToastPlacement | keyof typeof ToastPlacement;
 }

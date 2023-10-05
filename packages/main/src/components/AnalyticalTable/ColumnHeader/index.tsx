@@ -1,4 +1,4 @@
-import type { VirtualItem } from '@tanstack/react-virtual';
+import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -9,7 +9,6 @@ import type {
   AriaAttributes,
   CSSProperties,
   DragEventHandler,
-  FC,
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode
@@ -19,12 +18,12 @@ import { createUseStyles } from 'react-jss';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../Text/index.js';
+import type { DivWithCustomScrollProp } from '../index.js';
 import type { ColumnType } from '../types/ColumnType.js';
 import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;
-  columnIndex: number;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
@@ -35,12 +34,13 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  virtualColumn: VirtualItem<Record<string, any>>;
+  virtualColumn: VirtualItem;
+  columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
   portalContainer: Element;
-  scaleXFactor?: number;
   columnId?: string;
+  showVerticalEndBorder: boolean;
 
   //getHeaderProps()
   id: string;
@@ -51,15 +51,34 @@ export interface ColumnHeaderProps {
   column: ColumnType;
   role: string;
   isFiltered?: boolean;
+  title?: string;
   ['aria-sort']?: AriaAttributes['aria-sort'];
   ['aria-label']?: AriaAttributes['aria-label'];
 }
 
 const styles = {
+  thContainer: {
+    '&:first-child': {
+      '& > [role="columnheader"]': {
+        borderInlineStart: CustomThemingParameters.AnalyticalTableOuterCellBorder
+      }
+    },
+    '&:last-child': {
+      '& > [role="columnheader"]': {
+        borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterCellBorder
+      }
+    }
+  },
+  verticalEndBorder: {
+    '&:last-child': {
+      '& > [role="columnheader"]': {
+        borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
+      }
+    }
+  },
   header: {
     height: '100%',
     display: 'flex',
-    justifyContent: 'begin',
     alignItems: 'center',
     textAlign: 'start',
     fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
@@ -95,7 +114,7 @@ const styles = {
 
 const useStyles = createUseStyles(styles, { name: 'TableColumnHeader' });
 
-export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
+export const ColumnHeader = (props: ColumnHeaderProps) => {
   const classes = useStyles();
   const {
     id,
@@ -116,17 +135,20 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
     dragOver,
     role,
     virtualColumn,
+    columnVirtualizer,
     isRtl,
-    columnIndex,
     visibleColumnIndex,
     onClick,
     onKeyDown,
     portalContainer,
-    scaleXFactor,
     isFiltered,
+    title,
     'aria-label': ariaLabel,
-    'aria-sort': ariaSort
+    'aria-sort': ariaSort,
+    showVerticalEndBorder
   } = props;
+
+  const columnIndex = virtualColumn.index;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const columnHeaderRef = useRef<HTMLDivElement>(null);
@@ -197,6 +219,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
   return (
     <div
       ref={columnHeaderRef}
+      className={clsx(classes.thContainer, showVerticalEndBorder && classes.verticalEndBorder)}
       style={{
         position: 'absolute',
         top: 0,
@@ -205,16 +228,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
       }}
     >
       <div
-        ref={(node) => {
-          const clientRect = node?.getBoundingClientRect();
-          if (clientRect && scaleXFactor > 0) {
-            const scaledGetBoundingClientRect = () => ({ ...clientRect, width: clientRect.width / scaleXFactor });
-            const updatedNode = { ...node, getBoundingClientRect: scaledGetBoundingClientRect };
-            virtualColumn.measureElement(updatedNode);
-          } else {
-            virtualColumn.measureElement(node);
-          }
-        }}
+        ref={columnVirtualizer.measureElement}
         data-visible-column-index={visibleColumnIndex}
         data-visible-row-index={0}
         data-row-index={0}
@@ -240,6 +254,7 @@ export const ColumnHeader: FC<ColumnHeaderProps> = (props: ColumnHeaderProps) =>
         onKeyUp={handleHeaderCellKeyUp}
         aria-label={ariaLabel}
         aria-sort={ariaSort}
+        title={title}
       >
         <div className={classes.header} data-h-align={column.hAlign}>
           <Text

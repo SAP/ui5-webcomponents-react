@@ -276,14 +276,14 @@ const InfiniteScrollTable = (props) => {
 ## AnalyticalTable with subcomponents
 
 Adding custom subcomponents below table rows can be achieved by setting the `renderRowSubComponent` prop.
-The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents. If you want to display the subcomponent at the bottom of the row without an expandable container, you can set the `alwaysShowSubComponent` prop to `true`.
+The prop expects a function with an optional parameter containing the `row` instance, there you can control which row should display subcomponents. If you want to display the subcomponent at the bottom of the row without an expandable container, you can set `subComponentsBehavior` prop to `"Visible"` or to `"IncludeHeight"`. "Visible" simply adds the subcomponent to the row without including its height in the initial calculation of the table body, whereas "IncludeHeight" does.
 
 ### Notes
 
 - When `renderRowSubComponent` is set, `grouping` is disabled.
 - When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
 
-<ControlsWithNote of={ComponentStories.Subcomponents} include={['alwaysShowSubComponent', 'renderRowSubComponent']} />
+<ControlsWithNote of={ComponentStories.Subcomponents} include={['renderRowSubComponent', 'subComponentsBehavior']} />
 
 <Canvas sourceState="none" of={ComponentStories.Subcomponents} />
 

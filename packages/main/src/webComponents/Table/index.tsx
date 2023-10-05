@@ -60,12 +60,6 @@ interface TableAttributes {
   hideNoData?: boolean;
   /**
    * Defines the mode of the component.
-   *
-   * Available options are:
-   *
-   * *   `MultiSelect`
-   * *   `SingleSelect`
-   * *   `None`
    */
   mode?: TableMode | keyof typeof TableMode;
   /**

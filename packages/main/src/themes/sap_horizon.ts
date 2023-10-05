@@ -10,6 +10,7 @@ export const sapHorizonParameters: Partial<Record<CustomVariables, string>> = {
   [CustomVariables.AnalyticalTableHeaderFontFamily]: ThemingParameters.sapFontBoldFamily,
   [CustomVariables.AnalyticalTableOuterBorderBlock]: 'none',
   [CustomVariables.AnalyticalTableOuterBorderInline]: 'none',
+  [CustomVariables.AnalyticalTableOuterCellBorder]: `1px solid transparent`,
   [CustomVariables.ObjectPageSectionBorderTop]: 'none',
   [CustomVariables.ObjectPageSectionTitleFontFamily]: ThemingParameters.sapFontBoldFamily,
   [CustomVariables.ObjectPageSectionTitleHeight]: '2.75rem',

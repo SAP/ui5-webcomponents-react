@@ -20,5 +20,6 @@ export const sapHorizonHcwParameters: Partial<Record<CustomVariables, string>> =
   [CustomVariables.AnalyticalTableHeaderFontFamily]: ThemingParameters.sapFontBoldFamily,
   [CustomVariables.AnalyticalTableHeaderActiveTextColor]: ThemingParameters.sapContent_ContrastTextColor,
   [CustomVariables.AnalyticalTableHeaderBorderWidth]: '0.188rem',
-  [CustomVariables.AnalyticalTableOuterBorderInline]: 'none'
+  [CustomVariables.AnalyticalTableOuterBorderInline]: 'none',
+  [CustomVariables.AnalyticalTableOuterCellBorder]: `1px solid transparent`
 };

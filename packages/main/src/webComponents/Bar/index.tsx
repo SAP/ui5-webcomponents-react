@@ -10,13 +10,6 @@ import type { UI5WCSlotsNode } from '../../types/index.js';
 interface BarAttributes {
   /**
    * Defines the component's design.
-   *
-   * **Note:** Available options are:
-   *
-   * *   `Header`
-   * *   `Subheader`
-   * *   `Footer`
-   * *   `FloatingFooter`
    */
   design?: BarDesign | keyof typeof BarDesign;
 }
@@ -25,11 +18,11 @@ export interface BarDomRef extends BarAttributes, Ui5DomRef {}
 
 export interface BarPropTypes extends BarAttributes, CommonProps {
   /**
-   * Defines the content in the middle of the bar
+   * Defines the content in the middle of the bar.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Defines the content at the end of the bar
+   * Defines the content at the end of the bar.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="endContent"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -39,7 +32,7 @@ export interface BarPropTypes extends BarAttributes, CommonProps {
    */
   endContent?: UI5WCSlotsNode | UI5WCSlotsNode[];
   /**
-   * Defines the content at the start of the bar
+   * Defines the content at the start of the bar.
    *
    * __Note:__ This prop will be rendered as [slot](https://www.w3schools.com/tags/tag_slot.asp) (`slot="startContent"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.

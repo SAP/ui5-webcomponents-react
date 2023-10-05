@@ -25,12 +25,7 @@ interface NotificationListItemAttributes {
    */
   busyDelay?: number;
   /**
-   * Defines the `priority` of the item. Available options are:
-   *
-   * *   `None`
-   * *   `Low`
-   * *   `Medium`
-   * *   `High`
+   * Defines the `priority` of the item.
    */
   priority?: Priority | keyof typeof Priority;
   /**

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Bug Fixes
+
+- **cypress-commands:** add main entrypoint ([#5051](https://github.com/SAP/ui5-webcomponents-react/issues/5051)) ([6bbfc85](https://github.com/SAP/ui5-webcomponents-react/commit/6bbfc85120a9635feace25d357ae633d480a5791)), closes [#5049](https://github.com/SAP/ui5-webcomponents-react/issues/5049)
+
+# [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
+
+### Bug Fixes
+
+- **cypress-commands:** allow peer-dependency `cypress` to use v12 & v13 ([#5023](https://github.com/SAP/ui5-webcomponents-react/issues/5023)) ([cca7428](https://github.com/SAP/ui5-webcomponents-react/commit/cca742828e721175c6ff8246f5998eba730b4308))
+
+### Features
+
+- **cypress-commands:** add `clearUi5Input` to cypress commands ([#4980](https://github.com/SAP/ui5-webcomponents-react/issues/4980)) ([31772fd](https://github.com/SAP/ui5-webcomponents-react/commit/31772fdb40a36b04865ce70a5b0cc490c4558687))
+
 # [1.16.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.15.1...v1.16.0) (2023-06-05)
 
 **Note:** Version bump only for package @ui5/webcomponents-cypress-commands

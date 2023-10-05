@@ -1,19 +1,5 @@
 [
   {
-    "name": "dateValue",
-    "readonly": "true",
-    "visibility": "public",
-    "type": "Date",
-    "description": "<b>Note:</b> The getter method is inherited and not supported. If called it will return an empty value."
-  },
-  {
-    "name": "dateValueUTC",
-    "readonly": "true",
-    "visibility": "public",
-    "type": "Date",
-    "description": "<b>Note:</b> The getter method is inherited and not supported. If called it will return an empty value."
-  },
-  {
     "name": "endDateValue",
     "readonly": "true",
     "visibility": "public",

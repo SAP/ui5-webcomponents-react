@@ -1,5 +1,6 @@
 'use client';
 
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react';
@@ -13,6 +14,7 @@ import {
   GO,
   HIDE_FILTER_BAR,
   RESTORE,
+  SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
@@ -23,10 +25,10 @@ import type {
   TableDomRef,
   TableRowDomRef
 } from '../../webComponents/index.js';
-import { Button } from '../../webComponents/index.js';
+import { Button, Icon } from '../../webComponents/index.js';
+import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
 import { Toolbar } from '../Toolbar/index.js';
-import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBar.jss.js';
 import { FilterDialog } from './FilterDialog.js';
@@ -43,15 +45,18 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   children: ReactNode | ReactNode[];
   /**
-   * Defines the search field next to the header of the `FilterBar`.
+   * Defines the search field rendered as first filter item.
    *
-   * __Note:__ If `hideToolbar` is `true` this prop has no effect.
+   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead` and `showClearIcon` are applied to the search input.
+   *
+   * __Note:__ The field is only available in the FilterBar not inside the filter configuration dialog.
    */
   search?: ReactElement<InputPropTypes>;
   /**
    * Specifies header text or variant management that is shown in the toolbar on the first position
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `VariantManagement`, `Text` or `Title` in order to preserve the intended design.
+   *
    * __Note:__ If `hideToolbar` is `true` this prop has no effect.
    */
   header?: ReactNode;
@@ -200,6 +205,8 @@ const resizeObserverEntryWidth = (entry) => {
   return entry.target.getBoundingClientRect().width;
 };
 
+type ReactKeyWithoutBigInt = string | number;
+
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement` or a title, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
@@ -270,6 +277,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const showFilterBarText = i18nBundle.getText(SHOW_FILTER_BAR);
   const hideFilterBarText = i18nBundle.getText(HIDE_FILTER_BAR);
   const goText = i18nBundle.getText(GO);
+  const searchText = i18nBundle.getText(SEARCH);
   const filtersText = !hideToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
 
   // dialog
@@ -279,12 +287,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   useEffect(() => {
     Children.toArray(children).forEach((item) => {
       if (isValidElement(item)) {
+        const key = item.key as ReactKeyWithoutBigInt;
         setToggledFilters((prev) => {
-          if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[item.key] === undefined) {
-            return { ...prev, [item.key]: true };
+          if (!item.props.hasOwnProperty('visibleInFilterBar') && prev?.[key] === undefined) {
+            return { ...prev, [key]: true };
           }
           if (item.props.hasOwnProperty('visibleInFilterBar')) {
-            return { ...prev, [item.key]: item.props.visibleInFilterBar };
+            return { ...prev, [key]: item.props.visibleInFilterBar };
           }
           return prev;
         });
@@ -365,11 +374,14 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const safeChildren = () => {
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child) => {
-        if (isValidElement(child) && toggledFilters?.[child.key] !== undefined) {
-          // @ts-expect-error: child should always be a FilterGroupItem w/o portal
-          return cloneElement<FilterGroupItemPropTypes, HTMLDivElement>(child, {
-            visibleInFilterBar: toggledFilters[child.key]
-          });
+        if (isValidElement(child)) {
+          const key = child.key as ReactKeyWithoutBigInt;
+          if (toggledFilters?.[key] !== undefined) {
+            // @ts-expect-error: child should always be a FilterGroupItem w/o portal
+            return cloneElement<FilterGroupItemPropTypes, HTMLDivElement>(child, {
+              visibleInFilterBar: toggledFilters[key]
+            });
+          }
         }
         return child;
       });
@@ -389,6 +401,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         return item?.props?.visible && item.props?.visibleInFilterBar;
       })
       .map((child) => {
+        const key = child.key as ReactKeyWithoutBigInt;
         // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
@@ -396,10 +409,10 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         if (hideFilterConfiguration) {
           return cloneElement(child, { ...childProps });
         }
-        prevVisibleInFilterBarProps.current[child.key] = child.props.visibleInFilterBar;
+        prevVisibleInFilterBarProps.current[key] = child.props.visibleInFilterBar;
         let filterItemProps = {};
         if (Object.keys(dialogRefs).length > 0) {
-          const dialogItemRef = dialogRefs[child.key];
+          const dialogItemRef = dialogRefs[key];
           if (dialogItemRef) {
             filterItemProps = filterValue(dialogItemRef, child);
           }
@@ -410,22 +423,22 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           });
         }
         if (
-          prevChildren.current?.[child.key] &&
+          prevChildren.current?.[key] &&
           //Input
-          (child.props.children?.props?.value !== prevChildren.current?.[child.key]?.value ||
+          (child.props.children?.props?.value !== prevChildren.current?.[key]?.value ||
             //Checkbox
-            child.props.children?.props?.checked !== prevChildren.current?.[child.key]?.checked ||
+            child.props.children?.props?.checked !== prevChildren.current?.[key]?.checked ||
             //Selectable
             (Array.isArray(child.props.children?.props?.children) &&
               child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
-                prevChildren?.current?.[child.key]?.children?.map((item) => item.props.selected).join(',')))
+                prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const { [child.key]: _omit, ...rest } = dialogRefs;
           setDialogRefs(rest);
         }
-        prevChildren.current[child.key] = child.props.children.props;
+        prevChildren.current[key] = child.props.children.props;
 
         return cloneElement(child, {
           ...childProps,
@@ -436,7 +449,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
               ...filterItemProps
             },
             ref: (node) => {
-              filterRefs.current[child.key] = node;
+              filterRefs.current[key] = node;
               if (!dialogOpen) syncRef(child.props.children.ref, node);
             }
           }
@@ -642,14 +655,24 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         {!hideToolbar && (
           <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
             {header}
-            {header && search && <ToolbarSeparator />}
-            {search && !isPhone && <div ref={searchRef}>{renderSearchWithValue(search, searchValue)}</div>}
             {hasButtons && <ToolbarSpacer />}
             {ToolbarButtons}
           </Toolbar>
         )}
         {mountFilters && (
           <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
+            {search && (
+              <FilterGroupItem data-in-fb visibleInFilterBar data-with-toolbar={!hideToolbar}>
+                <div ref={searchRef}>
+                  {renderSearchWithValue(search, searchValue, {
+                    placeholder: searchText,
+                    icon: <Icon name={searchIcon} />,
+                    noTypeahead: true,
+                    showClearIcon: true
+                  })}
+                </div>
+              </FilterGroupItem>
+            )}
             {calculatedChildren}
             {hideToolbar && (
               <>

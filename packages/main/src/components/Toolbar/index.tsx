@@ -126,6 +126,11 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
 const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 
 /**
+ *
+ * __Note:__ The `Toolbar` component may be replaced by the `ui5-toolbar` web-component (currently available as `ToolbarV2`) with our next major release. If you only need to pass components supported by `ToolbarV2` then please consider using `ToolbarV2` instead of this component.
+ *
+ * ___
+ *
  * Horizontal container most commonly used to display buttons, labels, selects and various other input controls.
  *
  * The content of the `Toolbar` moves into the overflow area from right to left when the available space is not enough in the visible area of the container.

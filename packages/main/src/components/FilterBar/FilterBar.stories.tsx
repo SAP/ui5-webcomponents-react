@@ -33,7 +33,7 @@ const meta = {
   title: 'Layouts & Floorplans / FilterBar',
   component: FilterBar,
   args: {
-    search: <Input placeholder={'Search'} />,
+    search: <Input />,
     header: <Title>Test</Title>,
     filterContainerWidth: '13.125rem'
   },
@@ -132,12 +132,18 @@ export const Default: Story = {
 };
 
 export const WithLogic: Story = {
-  render: () => {
+  render: (args) => {
     const [age, setAge] = useState(37);
     const [countries, setCountries] = useState<Record<string, boolean>>({});
     const [currency, setCurrency] = useState('USD');
     const [date, setDate] = useState('');
     const [dateRange, setDateRange] = useState('');
+    const [search, setSearch] = useState('');
+
+    const handleSearch = (e) => {
+      setSearch(e.target.value);
+    };
+
     const handleAgeChange = (e) => {
       setAge(e.target.value);
     };
@@ -163,7 +169,7 @@ export const WithLogic: Story = {
     };
     return (
       <>
-        <FilterBar>
+        <FilterBar {...args} search={<Input onInput={handleSearch} />}>
           <FilterGroupItem label="Age" active={!!age} required>
             <StepInput value={age} onChange={handleAgeChange} required />
           </FilterGroupItem>
@@ -205,6 +211,10 @@ export const WithLogic: Story = {
           </FilterGroupItem>
         </FilterBar>
         <FlexBox direction={FlexBoxDirection.Column}>
+          <FlexBox>
+            <Label showColon>Search</Label>
+            <Text>{search}</Text>
+          </FlexBox>
           <FlexBox>
             <Label showColon>Age</Label>
             <Text>{age}</Text>

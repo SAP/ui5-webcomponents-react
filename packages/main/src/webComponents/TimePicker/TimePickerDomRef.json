@@ -6,7 +6,12 @@
     "type": "Date",
     "description": "Currently selected time represented as JavaScript Date instance"
   },
-  { "name": "closePicker", "visibility": "public", "description": "Closes the picker" },
+  {
+    "name": "closePicker",
+    "visibility": "public",
+    "returnValue": { "type": "Promise", "description": "Resolves when the picker is closed" },
+    "description": "Closes the picker"
+  },
   {
     "name": "formatValue",
     "visibility": "public",

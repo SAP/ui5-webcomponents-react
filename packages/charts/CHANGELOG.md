@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Features
+
+- update to `@ui5/webcomponents@~1.18.0` ([#5103](https://github.com/SAP/ui5-webcomponents-react/issues/5103)) ([1bb6b1e](https://github.com/SAP/ui5-webcomponents-react/commit/1bb6b1ef65bb05dd39d36f7aded2bbaf313bcf2f))
+
+# [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.7.3 ([#4955](https://github.com/SAP/ui5-webcomponents-react/issues/4955)) ([25212df](https://github.com/SAP/ui5-webcomponents-react/commit/25212df4dae8b63422bc7207205f712305f55f5c))
+- **deps:** update dependency recharts to v2.8.0 ([#5010](https://github.com/SAP/ui5-webcomponents-react/issues/5010)) ([814dcc4](https://github.com/SAP/ui5-webcomponents-react/commit/814dcc422924874788a379bda63278009094c84d))
+
+### Features
+
+- update `@ui5/webcomponents` to `1.17.0` ([#5022](https://github.com/SAP/ui5-webcomponents-react/issues/5022)) ([dd6dd67](https://github.com/SAP/ui5-webcomponents-react/commit/dd6dd6700697ec2730224ca7cb0bd6ac5edf763c)), closes [#4920](https://github.com/SAP/ui5-webcomponents-react/issues/4920)
+
 # [1.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.3...v1.18.0) (2023-08-04)
 
 ### Bug Fixes

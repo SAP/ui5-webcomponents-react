@@ -7,7 +7,7 @@ import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
 import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2';
 import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useReducer, useState } from 'react';
 import {
   Badge,
   Bar,
@@ -23,6 +23,7 @@ import {
   FlexBoxDirection,
   FlexBoxWrap,
   Label,
+  MessageStrip,
   ObjectStatus,
   PageBackgroundDesign,
   Panel,
@@ -91,6 +92,8 @@ const meta = {
         }
         header={<Title>Header Title</Title>}
         subHeader={<Label>This is a sub header</Label>}
+        expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
+        snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
         <Badge>Status: OK</Badge>
       </DynamicPageTitle>

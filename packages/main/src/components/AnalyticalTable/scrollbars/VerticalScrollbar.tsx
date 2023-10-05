@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { RefObject } from 'react';
+import type { MutableRefObject, RefObject } from 'react';
 import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
@@ -10,12 +10,10 @@ import { FlexBox } from '../../FlexBox/index.js';
 interface VerticalScrollbarProps {
   internalRowHeight: number;
   tableRef: RefObject<any>;
-  minRows: number;
-  rows: any[];
   handleVerticalScrollBarScroll: any;
-  popInRowHeight: number;
   tableBodyHeight: number;
   'data-native-scrollbar'?: any;
+  scrollContainerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const styles = {
@@ -34,7 +32,8 @@ const styles = {
     borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterBorderInline,
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`,
-    marginInlineStart: '-1px'
+    marginInlineStart: '-1px',
+    boxSizing: 'border-box'
   },
   bottomSection: {
     flexGrow: 1,
@@ -47,8 +46,7 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
 export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
-  const { internalRowHeight, tableRef, minRows, rows, handleVerticalScrollBarScroll, popInRowHeight, tableBodyHeight } =
-    props;
+  const { internalRowHeight, tableRef, handleVerticalScrollBarScroll, tableBodyHeight, scrollContainerRef } = props;
   const classes = useStyles();
   const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 
@@ -78,7 +76,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
       >
         <div
           style={{
-            height: `${Math.max(minRows, rows.length) * popInRowHeight}px`,
+            height: `${scrollContainerRef.current?.scrollHeight}px`,
             width: '1px',
             backgroundColor: ThemingParameters.sapList_Background
           }}

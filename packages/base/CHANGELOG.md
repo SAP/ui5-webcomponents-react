@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Bug Fixes
+
+- **useResponsiveContentPadding - TypeScript:** adjust types ([#5039](https://github.com/SAP/ui5-webcomponents-react/issues/5039)) ([3fc9ea4](https://github.com/SAP/ui5-webcomponents-react/commit/3fc9ea4f0260f315c681ca70fad63f0f8556fb0e))
+
+### Features
+
+- update to `@ui5/webcomponents@~1.18.0` ([#5103](https://github.com/SAP/ui5-webcomponents-react/issues/5103)) ([1bb6b1e](https://github.com/SAP/ui5-webcomponents-react/commit/1bb6b1ef65bb05dd39d36f7aded2bbaf313bcf2f))
+
+# [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** use correct indentations for tree table ([#5008](https://github.com/SAP/ui5-webcomponents-react/issues/5008)) ([ca48bcb](https://github.com/SAP/ui5-webcomponents-react/commit/ca48bcb960bfd113cea32bd7d9addab2ebb84cd8)), closes [#5006](https://github.com/SAP/ui5-webcomponents-react/issues/5006)
+
+### Features
+
+- update `@ui5/webcomponents` to `1.17.0` ([#5022](https://github.com/SAP/ui5-webcomponents-react/issues/5022)) ([dd6dd67](https://github.com/SAP/ui5-webcomponents-react/commit/dd6dd6700697ec2730224ca7cb0bd6ac5edf763c)), closes [#4920](https://github.com/SAP/ui5-webcomponents-react/issues/4920)
+
 # [1.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.3...v1.18.0) (2023-08-04)
 
 ### Bug Fixes

@@ -158,14 +158,14 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
+  onSaveAs?: (e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant }) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
   onSaveManageViews?: (
-    e: Parameters<ButtonPropTypes['onClick']>[0] & {
+    e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & {
       detail: {
         deletedVariants: VariantItemPropTypes[];
         prevVariants: VariantItemPropTypes[];
@@ -179,7 +179,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: Parameters<ButtonPropTypes['onClick']>[0] & { detail: SelectedVariant }) => void;
+  onSave?: (e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant }) => void;
 }
 
 const styles = {
@@ -279,19 +279,10 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
-  const [showInput, setShowInput] = useState(safeChildren.length > 9);
 
   useEffect(() => {
     setSafeChildren(Children.toArray(children));
   }, [children]);
-
-  useEffect(() => {
-    if (safeChildren.length > 9) {
-      setShowInput(true);
-    } else {
-      setShowInput(false);
-    }
-  }, [safeChildren.length]);
 
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
@@ -449,6 +440,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   }, [showOnlyFavorites, safeChildren]);
 
   const safeChildrenWithFavorites = favoriteChildren ?? safeChildren;
+  const showInput = safeChildrenWithFavorites.length > 10;
 
   const [filteredChildren, setFilteredChildren] = useState(undefined);
   const [searchValue, setSearchValue] = useState('');

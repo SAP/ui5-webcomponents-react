@@ -1,7 +1,9 @@
+import type { Virtualizer } from '@tanstack/react-virtual';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
 import React, { useCallback, useMemo, useRef } from 'react';
+import type { AnalyticalTablePropTypes, DivWithCustomScrollProp } from '../index.js';
 import type { ScrollToRefType } from '../interfaces.js';
 import { getSubRowsByString } from '../util/index.js';
 import { EmptyRow } from './EmptyRow.js';
@@ -23,16 +25,19 @@ interface VirtualTableBodyProps {
   renderRowSubComponent: (row?: Record<string, unknown>) => ReactNode;
   popInRowHeight: number;
   isRtl: boolean;
-  markNavigatedRow?: (row?: Record<string, unknown>) => boolean;
+  markNavigatedRow?: AnalyticalTablePropTypes['markNavigatedRow'];
   alwaysShowSubComponent: boolean;
   dispatch?: (e: { type: string; payload?: Record<string, unknown> }) => void;
   subComponentsHeight?: Record<string, { rowId: string; subComponentHeight?: number }>;
-  columnVirtualizer: Record<string, any>;
+  columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   manualGroupBy?: boolean;
   subRowsKey: string;
+  scrollContainerRef?: MutableRefObject<HTMLDivElement>;
 }
 
-const measureElement = (el) => el.offsetHeight;
+const measureElement = (el: HTMLElement) => {
+  return el.offsetHeight;
+};
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const {
@@ -57,7 +62,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     subComponentsHeight,
     columnVirtualizer,
     manualGroupBy,
-    subRowsKey
+    subRowsKey,
+    scrollContainerRef
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -82,7 +88,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
     ),
     overscan,
-    measureElement
+    measureElement,
+    indexAttribute: 'data-virtual-row-index'
   });
   scrollToRef.current = {
     ...scrollToRef.current,
@@ -102,6 +109,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   );
   return (
     <div
+      ref={scrollContainerRef}
       data-component-name="AnalyticalTableBodyScrollableContainer"
       style={{
         position: 'relative',
@@ -157,7 +165,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps({ 'aria-rowindex': virtualRow.index });
+        const rowProps = row.getRowProps({
+          'aria-rowindex': virtualRow.index + 1,
+          'data-virtual-row-index': virtualRow.index
+        });
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
@@ -178,10 +189,12 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         ) {
           updatedHeight += subComponentsHeight?.[virtualRow.index]?.subComponentHeight ?? 0;
         }
+
         return (
           // eslint-disable-next-line react/jsx-key
           <div
             {...rowProps}
+            ref={rowVirtualizer.measureElement}
             style={{
               ...(rowProps.style ?? {}),
               transform: `translateY(${virtualRow.start}px)`,
@@ -189,10 +202,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               boxSizing: 'border-box',
               height: `${updatedHeight}px`
             }}
-            ref={(node) => {
-              virtualRow.measureElement(node);
-            }}
-            aria-rowindex={rowProps['aria-rowindex'] + 1}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
               <SubComponent
@@ -213,9 +222,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               const directionStyles = isRtl
                 ? {
                     transform: `translateX(-${virtualColumn.start}px)`,
-                    right: 0
+                    insertInlineStart: 0
                   }
-                : { transform: `translateX(${virtualColumn.start}px)`, left: 0 };
+                : { transform: `translateX(${virtualColumn.start}px)`, insertInlineStart: 0 };
               if (!cell) {
                 return null;
               }

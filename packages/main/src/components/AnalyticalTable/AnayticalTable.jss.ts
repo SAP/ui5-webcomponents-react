@@ -104,6 +104,7 @@ const styles = {
     overflowY: 'auto',
     scrollbarWidth: 'none',
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
+    boxSizing: 'border-box',
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
       width: '0 !important',
@@ -156,7 +157,7 @@ const styles = {
       border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
       color: ThemingParameters.sapList_TextColor,
       '& $tableCell': {
-        borderInlineEnd: 'none'
+        borderInlineEnd: `1px solid transparent`
       }
     }
   },
@@ -178,7 +179,10 @@ const styles = {
     display: 'inline-flex',
     padding: '0 0.5rem',
     '&:first-child': {
-      borderInlineStart: `1px solid ${ThemingParameters.sapList_BorderColor}`
+      borderInlineStart: CustomThemingParameters.AnalyticalTableOuterCellBorder
+    },
+    '&:last-child': {
+      borderInlineEnd: CustomThemingParameters.AnalyticalTableOuterCellBorder
     },
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -191,6 +195,11 @@ const styles = {
       '&[data-empty-row-cell]': {
         outline: 'none'
       }
+    }
+  },
+  showVerticalEndBorder: {
+    '& $tableCell': {
+      borderInlineEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
     }
   },
   noDataContainer: {

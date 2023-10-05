@@ -83,6 +83,11 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     } else {
       indeterminate = instance?.state?.indeterminateRows?.[row.id] ?? false;
     }
+
+    if (rowProps.checked && !instance.state.selectedRowIds[row.id]) {
+      row.toggleRowSelected(true);
+    }
+
     return [
       rowProps,
       {

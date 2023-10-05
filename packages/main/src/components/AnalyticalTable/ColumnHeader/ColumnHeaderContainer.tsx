@@ -1,4 +1,4 @@
-import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+import type { Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -23,21 +23,16 @@ const styles = {
 
 interface ColumnHeaderContainerProps {
   headerProps: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
-  onDragStart: any;
-  onDragOver: any;
-  onDrop: any;
-  onDragEnter: any;
-  onDragEnd: any;
-  dragOver: any;
   resizeInfo: Record<string, unknown>;
   isRtl: boolean;
   portalContainer: Element;
-  columnVirtualizer: Virtualizer<DivWithCustomScrollProp>;
-  scaleXFactor?: number;
+  columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   uniqueId: string;
+  showVerticalEndBorder: boolean;
 }
 
 const useStyles = createUseStyles(styles, { name: 'Resizer' });
@@ -48,18 +43,12 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     headerGroup,
     onSort,
     onGroupByChanged,
-    onDragStart,
-    onDragOver,
-    onDrop,
-    onDragEnter,
-    onDragEnd,
-    dragOver,
     resizeInfo,
     isRtl,
     portalContainer,
     columnVirtualizer,
-    scaleXFactor,
-    uniqueId
+    uniqueId,
+    showVerticalEndBorder
   } = props;
 
   const classes = useStyles();
@@ -71,7 +60,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
     >
-      {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem<Record<string, unknown>>, index) => {
+      {columnVirtualizer.getVirtualItems().map((virtualColumn, index) => {
         const column = headerGroup.headers[virtualColumn.index];
         if (!column) {
           return null;
@@ -100,24 +89,18 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
             )}
             <ColumnHeader
               {...rest}
+              showVerticalEndBorder={showVerticalEndBorder}
               id={`${uniqueId}${rest?.id ?? ''}`}
               columnId={rest.id}
               visibleColumnIndex={index}
-              columnIndex={virtualColumn.index}
               onSort={onSort}
               onGroupBy={onGroupByChanged}
-              onDragStart={onDragStart}
-              onDragOver={onDragOver}
-              onDrop={onDrop}
-              onDragEnter={onDragEnter}
-              onDragEnd={onDragEnd}
-              dragOver={column.id === dragOver}
               headerTooltip={column.headerTooltip}
               isDraggable={(column.canReorder || !column.disableDragAndDrop) && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}
+              columnVirtualizer={columnVirtualizer}
               isRtl={isRtl}
               portalContainer={portalContainer}
-              scaleXFactor={scaleXFactor}
             >
               {column.render('Header')}
             </ColumnHeader>

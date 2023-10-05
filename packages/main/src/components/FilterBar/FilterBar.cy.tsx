@@ -12,8 +12,6 @@ const variants = (
   </VariantManagement>
 );
 
-const search = <Input placeholder={'Search'} />;
-
 describe('FilterBar.cy.tsx', () => {
   it('Toggle FilterBar filters', () => {
     const toggle = cy.spy().as('toggleSpy');
@@ -249,7 +247,7 @@ describe('FilterBar.cy.tsx', () => {
 
   it('toolbar', () => {
     cy.mount(
-      <FilterBar search={search} header={variants} hideToolbar={false} showGoOnFB>
+      <FilterBar header={variants} hideToolbar={false} showGoOnFB>
         <FilterGroupItem label="Classification" key="classification" data-testid="SELECT">
           <Select>
             <Option>Option 1</Option>
@@ -265,12 +263,11 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByText('Filters');
     cy.findByText('Adapt Filters').should('not.exist');
     cy.findByText('Hide Filter Bar');
-    cy.findByPlaceholderText('Search');
     cy.findByTestId('variantManagement');
     cy.findByTestId('SELECT');
 
     cy.mount(
-      <FilterBar search={search} header={variants} hideToolbar={true} showGoOnFB>
+      <FilterBar header={variants} hideToolbar={true} showGoOnFB>
         <FilterGroupItem label="Classification" key="classification" data-testid="SELECT">
           <Select>
             <Option>Option 1</Option>
@@ -447,6 +444,26 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByText('Filters').click();
     cy.findByText('Show Values').click();
     cy.get('[show-colon="true"]').should('have.length', 2);
+  });
+
+  it('FB search field', () => {
+    cy.mount(
+      <FilterBar search={<Input />}>
+        <FilterGroupItem>
+          <Input />
+        </FilterGroupItem>
+        <FilterGroupItem label="Input">
+          <Input placeholder="Placeholder" />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.get('[ui5-input]').each(($el, index) => {
+      if (index === 0) {
+        cy.wrap($el).should('be.visible').and('have.attr', 'data-component-name', 'FilterBarSearch');
+      } else {
+        cy.wrap($el).should('be.visible').and('not.have.attr', 'data-component-name', 'FilterBarSearch');
+      }
+    });
   });
 
   mountWithCustomTagName(FilterBar);

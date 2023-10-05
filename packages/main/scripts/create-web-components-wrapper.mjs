@@ -23,7 +23,11 @@ import {
   getDomRefMethods,
   getDomRefObjects
 } from '../../../scripts/web-component-wrappers/utils.js';
-import versionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
+import publicVersionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
+import internalVersionInfo from '../../../scripts/web-component-wrappers/version-info-internal.json' assert { type: 'json' };
+import { setTimeout } from 'node:timers/promises';
+
+const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 // To only create a single component, replace "false" with the component (module) name
 // or execute the following command: "yarn create-webcomponents-wrapper [name]"
@@ -61,8 +65,24 @@ const INPUT_COMPONENTS = new Set([
 const componentsFromFioriPackage = new Set(fioriWebComponentsSpec.symbols.map((componentSpec) => componentSpec.module));
 
 const interfaces = new Set();
+
+// currently only applied to main wc package
+const MODULE_NAME_REPLACEMENT = {
+  Toolbar: 'ToolbarV2',
+  ToolbarSeparator: 'ToolbarSeparatorV2',
+  ToolbarSpacer: 'ToolbarSpacerV2'
+};
 const allWebComponents = [
-  ...mainWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/')),
+  ...mainWebComponentsSpec.symbols
+    .filter((spec) => !spec.module.startsWith('types/'))
+    .map((item) => {
+      if (MODULE_NAME_REPLACEMENT[item.module]) {
+        item.name = item.name.replace(item.module, MODULE_NAME_REPLACEMENT[item.module]);
+        item.basename = MODULE_NAME_REPLACEMENT[item.module];
+        item.module = MODULE_NAME_REPLACEMENT[item.module];
+      }
+      return item;
+    }),
   ...fioriWebComponentsSpec.symbols.filter((spec) => !spec.module.startsWith('types/'))
 ].filter((item) => {
   if (item.kind === 'interface') {
@@ -199,7 +219,7 @@ const createWebComponentWrapper = async (
   const domRef = Utils.createDomRef(componentSpec, importStatements);
   const importSpecifier = `@ui5/webcomponents${
     componentsFromFioriPackage.has(componentSpec.module) ? '-fiori' : ''
-  }/dist/${componentSpec.module}.js`;
+  }/dist/${componentSpec.resource}`;
 
   const imports = [`import '${importSpecifier}';`, ...new Set(importStatements)];
 
@@ -221,10 +241,10 @@ const createWebComponentWrapper = async (
     eventProps,
     defaultProps,
     domRef,
-    baseComponentName:
-      typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
-        ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
-        : componentSpec.module
+    baseComponentName: (typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'
+      ? COMPONENTS_WITHOUT_DEMOS[componentSpec.module]
+      : componentSpec.module
+    ).replace('V2', '')
   });
 };
 
@@ -344,11 +364,22 @@ allWebComponents
     const slotsAndEvents = [];
     const importStatements = [];
     const defaultProps = [];
+    if (componentSpec.properties) {
+      componentSpec.properties = componentSpec.properties.filter((item) => {
+        return !item.description.includes('is inherited and not supported');
+      });
+    }
+    if (componentSpec.slots) {
+      componentSpec.slots = componentSpec.slots.filter((item) => {
+        return !item.description.includes('is inherited and not supported');
+      });
+    }
     const allComponentProperties = (componentSpec.properties || [])
-      .filter(
-        (prop) =>
+      .filter((prop) => {
+        return (
           prop.visibility === 'public' && prop.readonly !== 'true' && prop.static !== true && prop.type !== 'object'
-      )
+        );
+      })
       .map((property) => {
         const tsType = Utils.getTypeDefinitionForProperty(property);
         if (tsType.importStatement) {
@@ -476,6 +507,7 @@ allWebComponents
       !EXCLUDE_LIST.includes(componentSpec.module)
     ) {
       const regularPropsToOmit = new Set(['boolean', 'Boolean', 'object', 'Object']);
+
       const webComponentWrapper = await createWebComponentWrapper(
         componentSpec,
         mainDescription,
@@ -498,7 +530,7 @@ allWebComponents
 
       // create test
       if (!existsSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`))) {
-        const webComponentTest = renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
+        const webComponentTest = await renderTest({ name: componentSpec.module, tagname: componentSpec.tagname });
         writeFileSync(path.join(webComponentFolderPath, `${componentSpec.module}.cy.tsx`), webComponentTest);
       }
 
@@ -506,16 +538,26 @@ allWebComponents
       const componentWithoutDemo = COMPONENTS_WITHOUT_DEMOS[componentSpec.module];
       // create subcomponent description
       if (typeof componentWithoutDemo === 'string') {
-        const since = componentSpec.since ? `<b>Since:</b> ${versionInfo[componentSpec.since]}<br/>` : '';
+        let since = '';
+        if (componentSpec.since) {
+          if (!versionInfo[componentSpec.since]) {
+            throw new Error(
+              `${componentSpec.module}: Ui5Wc version is not compatible with version-info.json! Please add it to version-info-internal.json`
+            );
+          }
+          since = `**Since:** ${versionInfo[componentSpec.since]}\n`;
+        }
         const abstractDescription = componentSpec.abstract
           ? `<b>Abstract UI5 Web Component</b> - Find out more about abstract components <a href="https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components" target="_blank">here</a>.<br/><br/>`
-          : '</br>';
-        mainDescription = `${since}${abstractDescription}${mainDescription}`;
-        const subComponentDescription = `${await formatDemoDescription(
-          mainDescription,
+          : '';
+        mainDescription = `${abstractDescription}${mainDescription}`;
+        const subComponentDescription = `${since}${
+          !abstractDescription && since ? '\n' : ''
+        }${await formatDemoDescription(mainDescription, componentSpec, false)}\n${await formatDemoDescription(
+          description,
           componentSpec,
           false
-        )}\n${await formatDemoDescription(description, componentSpec, false)}`;
+        )}`;
         writeFileSync(
           path.join(webComponentFolderPath, `${componentSpec.module}Description.md`),
           subComponentDescription
@@ -584,4 +626,7 @@ writeFileSync(
     .join('\n')
 );
 
-spawnSync('prettier', [WEB_COMPONENTS_ROOT_DIR, '--write'], { stdio: [0, 1, 2] });
+console.log('~~~~~', 'TIMEOUT', '~~~~~');
+await setTimeout(2000);
+
+spawnSync('yarn', ['prettier:all'], { stdio: [0, 1, 2], cwd: PATHS.root });

@@ -2,7 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import PATHS from '../../config/paths.js';
 import { renderCsf, renderStory } from './templates/index.js';
-import versionInfo from './version-info.json' assert { type: 'json' };
+import publicVersionInfo from './version-info.json' assert { type: 'json' };
+import internalVersionInfo from './version-info-internal.json' assert { type: 'json' };
+
+const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
 const webComponentsFolderPath = path.join(PATHS.packages, 'main', 'src', 'webComponents');
 
@@ -90,7 +93,7 @@ export async function createDocumentation(componentSpec, componentProps, hasDesc
 
   fs.writeFileSync(
     path.join(webComponentsFolderPath, componentName, `${componentName}.mdx`),
-    renderStory({
+    await renderStory({
       name: componentName,
       since: versionInfo[componentSpec.since],
       imports: importStatements,

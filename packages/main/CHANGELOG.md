@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
+
+### Bug Fixes
+
+- **AnalyticalTable - useIndeterminateRowSelection:** select parent row when children are selected ([#5098](https://github.com/SAP/ui5-webcomponents-react/issues/5098)) ([3119083](https://github.com/SAP/ui5-webcomponents-react/commit/3119083223ee1ce4c7f383fd1a7e468f6f00d8b0)), closes [#4998](https://github.com/SAP/ui5-webcomponents-react/issues/4998)
+- **AnalyticalTable:** add tooltip to header selection-cell ([#5081](https://github.com/SAP/ui5-webcomponents-react/issues/5081)) ([22ad96d](https://github.com/SAP/ui5-webcomponents-react/commit/22ad96d70ecb1b3d06e01a379f24f4bb5943509f))
+- **AnalyticalTable:** remove default prop for `alwaysShowSubComponent` ([#5106](https://github.com/SAP/ui5-webcomponents-react/issues/5106)) ([9aadf71](https://github.com/SAP/ui5-webcomponents-react/commit/9aadf7177cddc0a897b61a9d3dbc645bea33ea45))
+- **AnalyticalTable:** replace role `cell` with `gridcell` ([#5080](https://github.com/SAP/ui5-webcomponents-react/issues/5080)) ([944729b](https://github.com/SAP/ui5-webcomponents-react/commit/944729b955c0c70bd78341d6141bbe015d32f65f)), closes [#5074](https://github.com/SAP/ui5-webcomponents-react/issues/5074)
+- **AnalyticalTable:** update `@tanstack/react-virtual` to 3.0.0-beta.61 ([#4899](https://github.com/SAP/ui5-webcomponents-react/issues/4899)) ([b053c1d](https://github.com/SAP/ui5-webcomponents-react/commit/b053c1db3b26daed5f471e1f5c43044751cfcbfc))
+- **FilterBar:** update `search` position to latest design specs ([#5059](https://github.com/SAP/ui5-webcomponents-react/issues/5059)) ([84eef5c](https://github.com/SAP/ui5-webcomponents-react/commit/84eef5cb90b0b87333cdd50581b252a891bdc9d0))
+- **ObjectPage:** allow rendering `headerTitle` only in `headerContent` section ([#5043](https://github.com/SAP/ui5-webcomponents-react/issues/5043)) ([932cefc](https://github.com/SAP/ui5-webcomponents-react/commit/932cefcff3a2c2d00581e158099920de3b64bf38))
+- **VariantManagement:** fix type extraction for button click handler ([#5095](https://github.com/SAP/ui5-webcomponents-react/issues/5095)) ([b0da979](https://github.com/SAP/ui5-webcomponents-react/commit/b0da9797bc22e21d515eb8ae26362846fffcc35f)), closes [#5072](https://github.com/SAP/ui5-webcomponents-react/issues/5072)
+
+### Features
+
+- update to `@ui5/webcomponents@~1.18.0` ([#5103](https://github.com/SAP/ui5-webcomponents-react/issues/5103)) ([1bb6b1e](https://github.com/SAP/ui5-webcomponents-react/commit/1bb6b1ef65bb05dd39d36f7aded2bbaf313bcf2f))
+
+# [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix border styles ([#5028](https://github.com/SAP/ui5-webcomponents-react/issues/5028)) ([7e193df](https://github.com/SAP/ui5-webcomponents-react/commit/7e193dfda2feb8e42e7e97025cab43eea5e83b1c))
+- **AnalyticalTable:** fix keyboard navigation for RTL text direction ([#4990](https://github.com/SAP/ui5-webcomponents-react/issues/4990)) ([84d21d7](https://github.com/SAP/ui5-webcomponents-react/commit/84d21d791c302fe4b6cef4279ebad6537f07b5d2))
+- **AnalyticalTable:** fix scrollbars for Firefox and Safari ([#4979](https://github.com/SAP/ui5-webcomponents-react/issues/4979)) ([578e3cf](https://github.com/SAP/ui5-webcomponents-react/commit/578e3cfa51dae21ab20ca41b55bb41d205df6f9f)), closes [#4379](https://github.com/SAP/ui5-webcomponents-react/issues/4379)
+- **AnalyticalTable:** fix subcomponents calculation ([#5004](https://github.com/SAP/ui5-webcomponents-react/issues/5004)) ([59639a7](https://github.com/SAP/ui5-webcomponents-react/commit/59639a77c77ed7319bd87a64df68502c73a64f7b)), closes [#3691](https://github.com/SAP/ui5-webcomponents-react/issues/3691)
+- **DynamicPageTitle:** apply correct padding for `header` ([#5020](https://github.com/SAP/ui5-webcomponents-react/issues/5020)) ([4fe6225](https://github.com/SAP/ui5-webcomponents-react/commit/4fe622550be83e39dbdc084843a262557c6cfcaa)), closes [#5019](https://github.com/SAP/ui5-webcomponents-react/issues/5019)
+- **DynamicPageTitle:** spread `breadcrumbs` if only child ([#5001](https://github.com/SAP/ui5-webcomponents-react/issues/5001)) ([dbe2b58](https://github.com/SAP/ui5-webcomponents-react/commit/dbe2b582ffc0e1c21f1ee2edd6192b90bcd6085e)), closes [#5000](https://github.com/SAP/ui5-webcomponents-react/issues/5000)
+- fix scrollbar styles for Belize theme ([#4958](https://github.com/SAP/ui5-webcomponents-react/issues/4958)) ([0be7e94](https://github.com/SAP/ui5-webcomponents-react/commit/0be7e94418ea63f93e99c2a985dee86bdbe2789c)), closes [#4924](https://github.com/SAP/ui5-webcomponents-react/issues/4924)
+- **ObjectPage:** slightly improve scroll performance ([#4970](https://github.com/SAP/ui5-webcomponents-react/issues/4970)) ([dba642b](https://github.com/SAP/ui5-webcomponents-react/commit/dba642bdc2c49bc250014d19e9fb6a34703f8d7f)), closes [#4960](https://github.com/SAP/ui5-webcomponents-react/issues/4960)
+- **Toolbar:** fix overflow popover margins ([#4985](https://github.com/SAP/ui5-webcomponents-react/issues/4985)) ([9472c8e](https://github.com/SAP/ui5-webcomponents-react/commit/9472c8ecdc580ad6abb88f8e65da51acd2cd8b31))
+- **VariantManagement:** show search in view list popover if count is over 10 ([#4999](https://github.com/SAP/ui5-webcomponents-react/issues/4999)) ([9f9979c](https://github.com/SAP/ui5-webcomponents-react/commit/9f9979c4c8609f85795cfa1f1df9e8b3eb6ace3b)), closes [#4992](https://github.com/SAP/ui5-webcomponents-react/issues/4992)
+
+### Features
+
+- **ActionSheet:** add keyboard navigation for `PageUp/Down`, `Home`, `End` ([#5009](https://github.com/SAP/ui5-webcomponents-react/issues/5009)) ([18a24be](https://github.com/SAP/ui5-webcomponents-react/commit/18a24be54abb04fcd08cf19bb378709975e1f0d1)), closes [#3875](https://github.com/SAP/ui5-webcomponents-react/issues/3875)
+- **AnalyticalTable:** add `headerLabel` column property ([#5011](https://github.com/SAP/ui5-webcomponents-react/issues/5011)) ([dc23fff](https://github.com/SAP/ui5-webcomponents-react/commit/dc23fffc975d965c55235bb0b9fa9ef3777595a9)), closes [#3121](https://github.com/SAP/ui5-webcomponents-react/issues/3121) [#3189](https://github.com/SAP/ui5-webcomponents-react/issues/3189)
+- **AnalyticalTable:** add `subComponentsBehavior` prop ([#4986](https://github.com/SAP/ui5-webcomponents-react/issues/4986)) ([53c0db4](https://github.com/SAP/ui5-webcomponents-react/commit/53c0db415398461fe352d8ab4739f1c5a86e28e6)), closes [#3862](https://github.com/SAP/ui5-webcomponents-react/issues/3862)
+- **AnalyticalTable:** allow resizing columns via Shift+ArrowLeft/Right ([#4989](https://github.com/SAP/ui5-webcomponents-react/issues/4989)) ([63652bd](https://github.com/SAP/ui5-webcomponents-react/commit/63652bd90bcf054223b470fc4a50ecfa3a070484)), closes [#4397](https://github.com/SAP/ui5-webcomponents-react/issues/4397)
+- **DynamicPageTitle:** add `expandedContent` & `snappedContent` props ([#4997](https://github.com/SAP/ui5-webcomponents-react/issues/4997)) ([7c04fe2](https://github.com/SAP/ui5-webcomponents-react/commit/7c04fe2cdaa66a20e12a946118c373bb3a277582)), closes [#4987](https://github.com/SAP/ui5-webcomponents-react/issues/4987)
+- **ObjectStatus:** add `emptyIndicator` & `stateAnnouncementText` props, improve a11y ([#4952](https://github.com/SAP/ui5-webcomponents-react/issues/4952)) ([680c33b](https://github.com/SAP/ui5-webcomponents-react/commit/680c33b04618365241abf90380d280bcc054003b))
+- **Text:** add `maxLines` prop ([#5018](https://github.com/SAP/ui5-webcomponents-react/issues/5018)) ([06c7f27](https://github.com/SAP/ui5-webcomponents-react/commit/06c7f2728fb17176bc4e950cb417bf08eb526deb)), closes [#5017](https://github.com/SAP/ui5-webcomponents-react/issues/5017)
+- update `@ui5/webcomponents` to `1.17.0` ([#5022](https://github.com/SAP/ui5-webcomponents-react/issues/5022)) ([dd6dd67](https://github.com/SAP/ui5-webcomponents-react/commit/dd6dd6700697ec2730224ca7cb0bd6ac5edf763c)), closes [#4920](https://github.com/SAP/ui5-webcomponents-react/issues/4920)
+
 # [1.18.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.17.3...v1.18.0) (2023-08-04)
 
 ### Bug Fixes

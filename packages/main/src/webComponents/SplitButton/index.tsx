@@ -17,15 +17,6 @@ interface SplitButtonAttributes {
   activeIcon?: string;
   /**
    * Defines the component design.
-   *
-   * **The available values are:**
-   *
-   * *   `Default`
-   * *   `Emphasized`
-   * *   `Positive`
-   * *   `Negative`
-   * *   `Transparent`
-   * *   `Attention`
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
   /**

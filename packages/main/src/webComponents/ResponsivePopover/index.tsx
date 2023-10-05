@@ -34,13 +34,6 @@ interface ResponsivePopoverAttributes {
   hideBackdrop?: boolean;
   /**
    * Determines the horizontal alignment of the component.
-   *
-   * Available options are:
-   *
-   * *   `Center`
-   * *   `Left`
-   * *   `Right`
-   * *   `Stretch`
    */
   horizontalAlign?: PopoverHorizontalAlign | keyof typeof PopoverHorizontalAlign;
   /**
@@ -53,24 +46,10 @@ interface ResponsivePopoverAttributes {
   opener?: string;
   /**
    * Determines on which side the component is placed at.
-   *
-   * Available options are:
-   *
-   * *   `Left`
-   * *   `Right`
-   * *   `Top`
-   * *   `Bottom`
    */
   placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
   /**
    * Determines the vertical alignment of the component.
-   *
-   * Available options are:
-   *
-   * *   `Center`
-   * *   `Top`
-   * *   `Bottom`
-   * *   `Stretch`
    */
   verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
   /**
@@ -82,11 +61,7 @@ interface ResponsivePopoverAttributes {
    */
   accessibleNameRef?: string;
   /**
-   * Allows setting a custom role. Available options are:
-   *
-   * *   `Dialog`
-   * *   `None`
-   * *   `AlertDialog`
+   * Allows setting a custom role.
    */
   accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
   /**
