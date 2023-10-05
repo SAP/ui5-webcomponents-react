@@ -46,6 +46,13 @@ export interface ObjectStatusPropTypes extends CommonProps {
   inverted?: boolean;
 
   /**
+   * Defines if the component should be rendered in large design.
+   *
+   * @since 1.21.0
+   */
+  large?: boolean;
+
+  /**
    * Defines the text of the `ObjectStatus`.<br />
    * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
@@ -152,6 +159,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
     onClick,
     emptyIndicator,
     stateAnnouncementText,
+    large,
     ...rest
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -190,6 +198,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
     classes[`${state as string}`.toLowerCase()],
     active && classes.active,
     inverted && !showEmptyIndicator && classes.inverted,
+    large && classes.large,
     className
   );
 
