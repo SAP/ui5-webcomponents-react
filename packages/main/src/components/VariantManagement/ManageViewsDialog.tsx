@@ -1,6 +1,6 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
 import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -22,11 +22,13 @@ import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
+import type { InputDomRef } from '../../webComponents/index.js';
 import { Icon, Input } from '../../webComponents/index.js';
 import { Table } from '../../webComponents/Table/index.js';
 import { TableColumn } from '../../webComponents/TableColumn/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { ManageViewsTableRows } from './ManageViewsTableRows.js';
+import type { VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
 const _popupDefaultHeaderHeight = `var(${cssVarVersionInfoPrefix}popup_default_header_height)`;
@@ -83,6 +85,7 @@ interface ManageViewsDialogPropTypes {
   variantNames: string[];
   portalContainer: Element;
   showOnlyFavorites?: boolean;
+  onManageViewsCancel?: VariantManagementPropTypes['onManageViewsCancel'];
 }
 
 export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
@@ -96,7 +99,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showCreatedBy,
     variantNames,
     portalContainer,
-    showOnlyFavorites
+    showOnlyFavorites,
+    onManageViewsCancel
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
@@ -110,7 +114,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const searchText = i18nBundle.getText(SEARCH);
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
-  const [invalidVariants, setInvalidVariants] = useState<Record<string, HTMLInputElement>>({});
+  const [invalidVariants, setInvalidVariants] = useState<Record<string, InputDomRef & { isInvalid?: boolean }>>({});
 
   const classes = useStyles();
 
@@ -204,6 +208,31 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     }
   };
 
+  const handleClose = (e) => {
+    if (e.detail.escPressed) {
+      handleCancel(e);
+    } else {
+      onAfterClose(e);
+    }
+  };
+
+  const handleCancel = (e) => {
+    if (typeof onManageViewsCancel === 'function') {
+      onManageViewsCancel(
+        enrichEventWithDetails(e, {
+          invalidVariants
+        })
+      );
+    }
+    setInvalidVariants((prev) => {
+      Object.values(prev).forEach((item) => {
+        item.isInvalid = false;
+      });
+      return {};
+    });
+    onAfterClose(e);
+  };
+
   const handleSearchInput = (e) => {
     const lowerCaseVal = e.target.value.toLowerCase();
     setFilteredProps(
@@ -225,6 +254,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       className={classes.manageViewsDialog}
       data-component-name="VariantManagementManageViewsDialog"
       onAfterClose={onAfterClose}
+      onBeforeClose={handleClose}
       headerText={manageViewsText}
       header={
         <FlexBox direction={FlexBoxDirection.Column} style={{ width: '100%' }} alignItems={FlexBoxAlignItems.Center}>
@@ -247,7 +277,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               <Button design={ButtonDesign.Emphasized} onClick={handleSave}>
                 {saveText}
               </Button>
-              <Button design={ButtonDesign.Transparent} onClick={onAfterClose}>
+              <Button design={ButtonDesign.Transparent} onClick={handleCancel}>
                 {cancelText}
               </Button>
             </>

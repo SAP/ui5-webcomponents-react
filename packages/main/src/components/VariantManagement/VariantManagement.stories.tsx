@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { PopoverPlacementType, TitleLevel, ValueState } from '../../enums/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
@@ -65,11 +65,8 @@ export const Default: Story = {
 export const WithCustomValidation: Story = {
   render: ({ selectedByIndex = 1 }: any) => {
     const [valueStateSaveView, setValueStateSaveView] = useState(undefined);
-    const [customSaveViewVariantText, setCustomSaveViewVariantText] = useState(
-      'Only alphanumeric chars in Save View input'
-    );
     const [valueStateManageViews, setValueStateManageViews] = useState(undefined);
-    const [customManageViewsVariantText, setCustomManageViewsVariantText] = useState('Max 12 chars');
+    const [values, setValues] = useState({ 1: 'Only alphanumeric chars in Save View input', 2: 'Max 12 chars' });
 
     const handleSaveViewInput = (e) => {
       // only allow alphanumeric and space characters
@@ -84,7 +81,7 @@ export const WithCustomValidation: Story = {
       }
     };
     const handleSaveAs = (e) => {
-      setCustomSaveViewVariantText(e.detail.children);
+      setValues((prev) => ({ ...prev, [e.detail['data-id']]: e.detail.children }));
     };
 
     const handleManageViewInput = (e) => {
@@ -103,13 +100,25 @@ export const WithCustomValidation: Story = {
       // if is custom manage view variant and is not in error state, set children to new value
       const isCustomManageViewsItem = e.detail.updatedVariants.find((item) => item['data-custom-manage-views']);
       if (!valueStateManageViews && isCustomManageViewsItem) {
-        setCustomManageViewsVariantText(isCustomManageViewsItem.children);
+        setValues((prev) => ({ ...prev, [isCustomManageViewsItem['data-id']]: isCustomManageViewsItem.children }));
       }
     };
+    // reset value-state if user closes the dialogs without saving (cancel click or ESC press)
+    const handleManageViewsCancel = () => {
+      setValueStateManageViews(undefined);
+    };
+    const handleSaveViewCancel = () => {
+      setValueStateSaveView(undefined);
+    };
     return (
-      <VariantManagement onSaveAs={handleSaveAs} onSaveManageViews={handleSaveManageViews}>
+      <VariantManagement
+        onSaveAs={handleSaveAs}
+        onSaveManageViews={handleSaveManageViews}
+        onManageViewsCancel={handleManageViewsCancel}
+        onSaveViewCancel={handleSaveViewCancel}
+      >
         <VariantItem
-          data-custom-save-view
+          data-id={1}
           selected={selectedByIndex === 0}
           saveViewInputProps={{
             valueState: valueStateSaveView,
@@ -121,10 +130,11 @@ export const WithCustomValidation: Story = {
             'data-testid': 'alphanumeric'
           }}
         >
-          {customSaveViewVariantText}
+          {values[1]}
         </VariantItem>
         <VariantItem
           data-custom-manage-views
+          data-id={2}
           selected={selectedByIndex === 1}
           manageViewsInputProps={{
             valueState: valueStateManageViews,
@@ -134,7 +144,7 @@ export const WithCustomValidation: Story = {
             'data-testid': '12chars'
           }}
         >
-          {customManageViewsVariantText}
+          {values[2]}
         </VariantItem>
       </VariantManagement>
     );

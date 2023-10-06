@@ -1,4 +1,4 @@
-import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -22,6 +22,7 @@ import type { SelectedVariant } from '../../internal/VariantManagementContext.js
 import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
 import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import type { VariantManagementPropTypes } from './types.js';
 
 const useStyles = createUseStyles(
   {
@@ -47,6 +48,7 @@ interface SaveViewDialogPropTypes {
   variantNames: string[];
   portalContainer: Element;
   saveViewInputProps?: Omit<InputPropTypes, 'value'>;
+  onSaveViewCancel?: VariantManagementPropTypes['onSaveViewCancel'];
 }
 
 export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
@@ -59,7 +61,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showSetAsDefault,
     variantNames,
     portalContainer,
-    saveViewInputProps
+    saveViewInputProps,
+    onSaveViewCancel
   } = props;
   const saveViewDialogRef = useRef<DialogDomRef>(null);
   const inputRef = useRef(undefined);
@@ -117,7 +120,29 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     }
   };
 
-  const handleCancel = () => {
+  const handleClose = (e) => {
+    if (e.detail.escPressed) {
+      handleCancel(e);
+    } else {
+      onAfterClose(e);
+    }
+  };
+
+  const handleCancel = (e) => {
+    if (typeof onSaveViewCancel === 'function') {
+      onSaveViewCancel(
+        enrichEventWithDetails(e, {
+          ...selectedVariant,
+          children: variantName,
+          isDefault,
+          global: isPublic,
+          applyAutomatically,
+          isInvalid
+        })
+      );
+    }
+    setIsInvalid(false);
+    inputRef.current.isInvalid = false;
     saveViewDialogRef.current.close();
   };
 
@@ -143,6 +168,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       ref={saveViewDialogRef}
       headerText={headingText}
       onAfterClose={onAfterClose}
+      onBeforeClose={handleClose}
       footer={
         <Bar
           design={BarDesign.Footer}
