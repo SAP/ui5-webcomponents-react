@@ -468,3 +468,4 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 VariantManagement.displayName = 'VariantManagement';
 
 export { VariantManagement };
+export type { VariantManagementPropTypes };

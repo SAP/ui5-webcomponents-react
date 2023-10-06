@@ -22,7 +22,7 @@ import type { SelectedVariant } from '../../internal/VariantManagementContext.js
 import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
 import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import type { VariantManagementPropTypes } from './types.js';
+import type { VariantManagementPropTypes } from './index.js';
 
 const useStyles = createUseStyles(
   {
