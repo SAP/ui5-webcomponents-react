@@ -29,13 +29,6 @@
 
 `ui5-webcomponents-react` is providing a Fiori-compliant React implementation by leveraging the [UI5 Web Components](https://github.com/SAP/ui5-webcomponents).
 
-## Devtoberfest
-
-> [!Note]  
-> We are hosting a [session](https://groups.community.sap.com/t5/devtoberfest/build-your-own-react-application-with-ui5-web-components-for-react/ev-p/283244) on UI5 Web Components for React in SAP's Devtoberfest on Friday, September 29 - 11:00 UTC. If you are interested, feel free to attend!
-
-[![Thumbnail Devtoberfest session](https://i.ytimg.com/vi/zyOxgjoSnGw/hqdefault.jpg)](https://www.youtube.com/watch?v=zyOxgjoSnGw)
-
 ## Resources
 
 You can find our documentation under the following links:
@@ -90,6 +83,11 @@ You are new to UI5 Web Components for React and don't know where to start?<br />
 Then take a look at our [Tutorial Mission](https://developers.sap.com/mission.react-spa.html) at “SAP Developers”!
 There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
 In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
+
+### SAP Devtoberfest 2023 session
+
+[Here](https://www.youtube.com/watch?v=zyOxgjoSnGw) you can find the video of our session for the SAP Devtoberfest 2023 (aired Sep 29, 2023). There we briefly explain why UI5 Web Components for React exist at all, where the project fits into the SAP UI stack and what advantages our wrapper has over implementations that use pure ui5-webcomponents.
+For the main part, we show how you could create a simple Movie Database UI, first by using our `Vite` template and then with our `Next.js` template.
 
 ### Create a new React app using our Templates
 
