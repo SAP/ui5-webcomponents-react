@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TitleLevel } from '../../enums/index.js';
 import { VariantItem } from './VariantItem';
 import { WithCustomValidation as WithCustomValidationStory } from './VariantManagement.stories';
-import type { VariantManagementPropTypes } from './index.js';
+import type { VariantManagementPropTypes } from './types.js';
 import { VariantManagement } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 

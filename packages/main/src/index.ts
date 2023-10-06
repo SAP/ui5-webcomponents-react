@@ -38,6 +38,7 @@ export * from './components/Toolbar/index.js';
 export * from './components/ToolbarSeparator/index.js';
 export * from './components/ToolbarSpacer/index.js';
 export * from './components/VariantManagement/index.js';
+export * from './components/VariantManagement/types.js';
 export * from './components/VariantManagement/VariantItem.js';
 export { withWebComponent } from './internal/withWebComponent.js';
 export type { WithWebComponentPropTypes } from './internal/withWebComponent.js';
