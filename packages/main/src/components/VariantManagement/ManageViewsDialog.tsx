@@ -28,8 +28,8 @@ import { Table } from '../../webComponents/Table/index.js';
 import { TableColumn } from '../../webComponents/TableColumn/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { ManageViewsTableRows } from './ManageViewsTableRows.js';
+import type { VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
-import type { VariantManagementPropTypes } from './index.js';
 
 const _popupDefaultHeaderHeight = `var(${cssVarVersionInfoPrefix}popup_default_header_height)`;
 const _popupHeaderFontFamily = `var(${cssVarVersionInfoPrefix}popup_header_font_family)`;
