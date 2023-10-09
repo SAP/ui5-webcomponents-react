@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState } from '../../enums/index.js';
+import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState, WrappingType } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
@@ -126,6 +126,7 @@ const useStyles = createUseStyles(
       '&[data-type="Success"]': { color: ThemingParameters.sapPositiveElementColor },
       '&[data-type="Information"],&[data-type="None"]': { color: ThemingParameters.sapNeutralElementColor }
     },
+    detailsTextContainer: { overflow: 'hidden' },
     detailsTitle: {
       marginBottom: '1rem'
     },
@@ -196,7 +197,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
           selectMessage: setSelectedMessage
         }}
       >
-        <div>
+        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }}>
           {filledTypes > 1 && (
             <Bar
               startContent={
@@ -241,7 +242,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
         <div>
           {childrenArray.length > 0 ? (
             <>
-              {showDetailsPageHeader && (
+              {showDetailsPageHeader && selectedMessage && (
                 <Bar
                   startContent={
                     <Button design={ButtonDesign.Transparent} icon={iconSlimArrowLeft} onClick={navigateBack} />
@@ -255,8 +256,8 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                     name={getIconNameForType(selectedMessage.type)}
                     className={classes.detailsIcon}
                   />
-                  <FlexBox direction={FlexBoxDirection.Column}>
-                    <Title level={TitleLevel.H5} className={classes.detailsTitle}>
+                  <FlexBox direction={FlexBoxDirection.Column} className={classes.detailsTextContainer}>
+                    <Title level={TitleLevel.H5} className={classes.detailsTitle} wrappingType={WrappingType.Normal}>
                       {selectedMessage.titleText}
                     </Title>
                     <div className={classes.detailsText}>{selectedMessage.children}</div>
