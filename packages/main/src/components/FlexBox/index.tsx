@@ -33,7 +33,7 @@ export interface FlexBoxPropTypes extends CommonProps {
    *
    * For more advanced usages patters, there's the option to provide a full CSS gap property string.
    *
-   * <b>Note:</b> Corresponds to `gap` property of the CSS specification.
+   * **Note:** Corresponds to `gap` property of the CSS specification.
    * Refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">CSS gap documentation</a>.
    */
   gap?: CSSProperties['gap'];
