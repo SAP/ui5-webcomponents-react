@@ -167,9 +167,19 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
       }
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (typeof rest.onKeyDown === 'function') {
+      rest.onKeyDown(e);
+    }
+    if (e.code === 'Enter') {
+      handleListItemClick(e);
+    }
+  };
   return (
     <CustomListItem
       onClick={handleListItemClick}
+      onKeyDown={handleKeyDown}
       data-title={titleText}
       data-type={type}
       type={children ? ListItemType.Active : ListItemType.Inactive}
