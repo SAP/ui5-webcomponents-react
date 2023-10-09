@@ -1,32 +1,33 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
-const createInvertedValueStateStyles = (baseColor: string) => ({
-  textShadow: ThemingParameters.sapContent_ContrastTextShadow,
+const createInvertedValueStateStyles = (baseColor: string, lightColor = false) => ({
+  textShadow: lightColor ? ThemingParameters.sapContent_TextShadow : ThemingParameters.sapContent_ContrastTextShadow,
   background: ThemingParameters[`${baseColor}_Background`],
   color: ThemingParameters[`${baseColor}_TextColor`],
+  border: `0.0625rem solid ${ThemingParameters[`${baseColor}_BorderColor`]}`,
   '& [ui5-icon]': {
     color: ThemingParameters[`${baseColor}_TextColor`]
   },
   '&$active:hover': {
     background: ThemingParameters[`${baseColor}_Hover_Background`],
     color: ThemingParameters[`${baseColor}_Hover_TextColor`],
+    border: `0.0625rem solid ${ThemingParameters[`${baseColor}_Hover_BorderColor`]}`,
     '& [ui5-icon]': {
       color: ThemingParameters[`${baseColor}_Hover_TextColor`]
     }
   },
   '&$active:active': {
+    textShadow: ThemingParameters.sapContent_TextShadow,
     background: ThemingParameters[`${baseColor}_Active_Background`],
-    color: ThemingParameters[`${baseColor}_Active_TextColor`],
-    '& [ui5-icon]': {
-      color: ThemingParameters[`${baseColor}_Active_TextColor`]
-    }
+    border: `0.0625rem solid ${ThemingParameters[`${baseColor}_Active_BorderColor`]}`
   }
 });
 
 const createInvertedIndicationStyles = (baseColor: string) => ({
   textShadow: ThemingParameters.sapContent_ContrastTextShadow,
   color: ThemingParameters[`${baseColor}_TextColor`],
-  backgroundColor: ThemingParameters[`${baseColor}`],
+  backgroundColor: ThemingParameters[`${baseColor}_Background`],
+  border: `0.0625rem solid ${ThemingParameters[`${baseColor}_BorderColor`]}`,
   '& [ui5-icon]': {
     color: ThemingParameters[`${baseColor}_TextColor`]
   },
@@ -34,7 +35,13 @@ const createInvertedIndicationStyles = (baseColor: string) => ({
     background: ThemingParameters[`${baseColor}_Hover_Background`]
   },
   '&$active:active': {
-    background: ThemingParameters[`${baseColor}_Active_Background`]
+    textShadow: ThemingParameters.sapContent_TextShadow,
+    background: ThemingParameters[`${baseColor}_Active_Background`],
+    border: `0.0625rem solid ${ThemingParameters[`${baseColor}_Active_BorderColor`]}`,
+    color: ThemingParameters[`${baseColor}_Active_TextColor`],
+    '& [ui5-icon]': {
+      color: ThemingParameters[`${baseColor}_Active_TextColor`]
+    }
   }
 });
 
@@ -82,10 +89,10 @@ const styles = {
     lineHeight: '1rem',
     verticalAlign: 'top',
     paddingInlineEnd: '0.25rem',
-
     '&[data-icon-only="true"]': {
       paddingInlineEnd: 0
-    }
+    },
+    textShadow: ThemingParameters.sapContent_TextShadow
   },
 
   text: {
@@ -195,8 +202,10 @@ const styles = {
     borderRadius: ThemingParameters.sapButton_BorderCornerRadius,
     fontFamily: ThemingParameters.sapFontBoldFamily,
     fontSize: ThemingParameters.sapFontSmallSize,
-    '& [ui5-icon]': {
-      paddingBlockStart: '0.125rem',
+    '& $icon': {
+      verticalAlign: 'text-bottom'
+    },
+    '& [ui5-icon], $icon:not([data-icon-only="true"])': {
       width: ThemingParameters.sapFontSmallSize,
       height: ThemingParameters.sapFontSmallSize
     },
@@ -204,16 +213,70 @@ const styles = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '0.1875rem 0.313rem'
+      padding: '0.1875rem 0.313rem',
+      width: '1rem',
+      height: '1rem',
+      '& [ui5-icon]': {
+        width: '1rem',
+        height: '1rem'
+      }
     },
     '$active&:focus': {
       outline: `${ThemingParameters.sapContent_FocusColor} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusWidth}`
     },
-    '&$error': createInvertedValueStateStyles('sapButton_Negative'),
-    '&$warning': createInvertedValueStateStyles('sapButton_Critical'),
-    '&$success': createInvertedValueStateStyles('sapButton_Success'),
-    '&$information': createInvertedValueStateStyles('sapButton_Information'),
-    '&$none': createInvertedValueStateStyles('sapButton_Neutral'),
+    '&$error': {
+      ...createInvertedValueStateStyles('sapButton_Negative'),
+      '&$active:active': {
+        ...createInvertedValueStateStyles('sapButton_Negative', true)['&$active:active'],
+        color: ThemingParameters.sapButton_Reject_Selected_TextColor,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapButton_Reject_Selected_TextColor
+        }
+      }
+    },
+    '&$warning': {
+      ...createInvertedValueStateStyles('sapButton_Critical'),
+      '&$active:active': {
+        ...createInvertedValueStateStyles('sapButton_Critical', true)['&$active:active'],
+        color: ThemingParameters.sapButton_Attention_Selected_TextColor,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapButton_Attention_Selected_TextColor
+        }
+      }
+    },
+    '&$success': {
+      ...createInvertedValueStateStyles('sapButton_Success'),
+      '&$active:active': {
+        ...createInvertedValueStateStyles('sapButton_Success', true)['&$active:active'],
+        color: ThemingParameters.sapButton_Accept_Selected_TextColor,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapButton_Accept_Selected_TextColor
+        }
+      }
+    },
+    '&$information': {
+      ...createInvertedValueStateStyles('sapButton_Information', true),
+      '&$active:active': {
+        ...createInvertedValueStateStyles('sapButton_Information', true)['&$active:active'],
+        color: ThemingParameters.sapButton_Selected_TextColor,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapButton_Selected_TextColor
+        }
+      }
+    },
+    '&$none': {
+      ...createInvertedValueStateStyles('sapButton_Neutral', true),
+      background: ThemingParameters.sapNeutralBackground,
+      color: ThemingParameters.sapTextColor,
+      border: ThemingParameters.sapNeutralBorderColor,
+      '&$active:active': {
+        ...createInvertedValueStateStyles('sapButton_Neutral', true)['&$active:active'],
+        color: ThemingParameters.sapButton_Active_TextColor,
+        '& [ui5-icon]': {
+          color: ThemingParameters.sapButton_Active_TextColor
+        }
+      }
+    },
     '&$indication01': createInvertedIndicationStyles('sapIndicationColor_1'),
     '&$indication02': createInvertedIndicationStyles('sapIndicationColor_2'),
     '&$indication03': createInvertedIndicationStyles('sapIndicationColor_3'),
@@ -222,6 +285,43 @@ const styles = {
     '&$indication06': createInvertedIndicationStyles('sapIndicationColor_6'),
     '&$indication07': createInvertedIndicationStyles('sapIndicationColor_7'),
     '&$indication08': createInvertedIndicationStyles('sapIndicationColor_8')
+  },
+  large: {
+    fontSize: '1.5rem',
+    fontFamily: ThemingParameters.sapFontLightFamily,
+    '& [ui5-icon], $icon': {
+      height: '1.5rem',
+      width: '1.5rem'
+    },
+    '& $icon': {
+      verticalAlign: 'middle'
+    },
+    '& $text': {
+      lineHeight: 'normal',
+      verticalAlign: 'middle'
+    },
+    '&$inverted': {
+      fontSize: '1.25rem',
+      fontFamily: ThemingParameters.sapFontSemiboldDuplexFamily,
+      padding: '0.125rem 0.25rem',
+      '& [ui5-icon], $icon': {
+        height: '1.25rem',
+        width: '1.25rem'
+      },
+      '&[data-icon-only="true"]': {
+        padding: '0 0.25rem',
+        minWidth: '1.75rem',
+        height: 'auto'
+      },
+      '& [data-icon-only="true"]': {
+        height: '1.5rem',
+        width: '1.5rem',
+        '& [ui5-icon]': {
+          height: '1.5rem',
+          width: '1.5rem'
+        }
+      }
+    }
   }
 };
 
