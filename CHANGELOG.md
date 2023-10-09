@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.20.0...v1.21.0) (2023-10-09)
+
+### Bug Fixes
+
+- **deps:** update dependency @tanstack/react-virtual to v3.0.0-beta.63 ([#5115](https://github.com/SAP/ui5-webcomponents-react/issues/5115)) ([5bb9004](https://github.com/SAP/ui5-webcomponents-react/commit/5bb9004a8b2c7a38c4408b04811a6a61fcabdef0))
+- **deps:** update dependency @tanstack/react-virtual to v3.0.0-beta.65 ([#5132](https://github.com/SAP/ui5-webcomponents-react/issues/5132)) ([944b86d](https://github.com/SAP/ui5-webcomponents-react/commit/944b86d4070f58a2498ab15c90864f12509bb8c9))
+- **MessageView:** fix overflow behavior and item selection ([#5137](https://github.com/SAP/ui5-webcomponents-react/issues/5137)) ([0594b48](https://github.com/SAP/ui5-webcomponents-react/commit/0594b4843429323db9f612959cda5352fa37d1f2)), closes [#5076](https://github.com/SAP/ui5-webcomponents-react/issues/5076) [#5077](https://github.com/SAP/ui5-webcomponents-react/issues/5077) [#5078](https://github.com/SAP/ui5-webcomponents-react/issues/5078)
+
+### Features
+
+- **ObjectStatus:** add `large` prop & update design to latest specs ([#4935](https://github.com/SAP/ui5-webcomponents-react/issues/4935)) ([2de9679](https://github.com/SAP/ui5-webcomponents-react/commit/2de9679d060fecbf72534054f2b68314ff9fdbd1)), closes [#4934](https://github.com/SAP/ui5-webcomponents-react/issues/4934) [#5079](https://github.com/SAP/ui5-webcomponents-react/issues/5079) [#5035](https://github.com/SAP/ui5-webcomponents-react/issues/5035)
+- **VariantManagement:** add `onManageViewsCancel` and `onSaveViewCancel` events ([#5123](https://github.com/SAP/ui5-webcomponents-react/issues/5123)) ([122dec9](https://github.com/SAP/ui5-webcomponents-react/commit/122dec93be31c14a3ce3ebfa958834d36e8e345c)), closes [#5047](https://github.com/SAP/ui5-webcomponents-react/issues/5047)
+
 # [1.20.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.20.0) (2023-10-02)
 
 ### Bug Fixes
