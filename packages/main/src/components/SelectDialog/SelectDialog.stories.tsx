@@ -15,7 +15,10 @@ const meta = {
   title: 'Modals & Popovers / SelectDialog',
   component: OriginalSelectDialog,
   argTypes: { children: { control: { disable: true } } },
-  args: { headerText: 'Select Product' }
+  args: { headerText: 'Select Product' },
+  parameters: {
+    chromatic: { delay: 1000 }
+  }
 } satisfies Meta<typeof OriginalSelectDialog>;
 
 export default meta;
@@ -35,7 +38,7 @@ const listItems = [
 ];
 export const Default: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(isChromatic || args.open);
+    const [open, setOpen] = useState<boolean | undefined>(isChromatic || args.open);
     const onButtonClick = () => {
       setOpen(true);
     };

@@ -33,6 +33,9 @@ const meta = {
   args: {
     design: ToolbarDesign.Auto,
     toolbarStyle: ToolbarStyle.Standard
+  },
+  parameters: {
+    chromatic: { delay: 1000 }
   }
 } satisfies Meta<typeof Toolbar>;
 

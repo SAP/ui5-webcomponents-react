@@ -41,9 +41,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [actionSheetOpen, setActionSheetOpen] = useState(isChromatic || args.open);
+    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(isChromatic || args.open);
+    const containerClass = isChromatic ? 'chromaticPopoverContainer' : undefined;
     return (
-      <div>
+      <div className={containerClass}>
         <Button
           onClick={() => {
             setActionSheetOpen(true);
