@@ -60,7 +60,7 @@ const useStyles = createUseStyles(
 );
 
 export interface MessageViewButtonProptypes
-  extends Omit<ButtonPropTypes, 'design' | 'icon' | 'iconEnd' | 'children' | 'type'> {
+  extends Omit<ButtonPropTypes, 'design' | 'icon' | 'iconEnd' | 'children' | 'type' | 'submits'> {
   /**
    * Specifies the type of the button.
    */
