@@ -1106,7 +1106,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     getScrollElement: () => tableRef.current,
     estimateSize: useCallback((index) => visibleColumnsWidth[index], [visibleColumnsWidth]),
     horizontal: true,
-    overscan: overscanCountHorizontal,
+    overscan: isRtl ? Infinity : overscanCountHorizontal,
     indexAttribute: 'data-column-index',
     // necessary as otherwise values are rounded which leads to wrong total width calculation
     measureElement: (el) => el.getBoundingClientRect().width
