@@ -74,10 +74,17 @@ export const Default: Story = {
 export const MultiSelect: Story = {
   render: () => {
     const dialogRef = useRef(null);
+    // predefined selection
+    const selectedProducts = { 'HT-102': true, 'HT-203': true, 'HT-1038': true };
+    // number of selected items
+    const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>(selectedProducts);
+    const [searchVal, setSearchVal] = useState();
+    const [products, setProducts] = useState(Object.keys(selectedProducts));
+
     const onButtonClick = () => {
       dialogRef.current.show();
     };
-    const [searchVal, setSearchVal] = useState();
+
     // search
     const handleSearch = (e) => {
       setSearchVal(e.detail.value);
@@ -85,10 +92,6 @@ export const MultiSelect: Story = {
     const handleSearchReset = () => {
       setSearchVal(undefined);
     };
-    // predefined selection
-    const selectedProducts = { 'HT-102': true, 'HT-203': true, 'HT-1038': true };
-    // number of selected items
-    const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>(selectedProducts);
     const handleItemClick = (e) => {
       const itemDescription = e.detail.item.dataset.description;
       setSelectedItems((prev) => {
@@ -105,10 +108,10 @@ export const MultiSelect: Story = {
       setSelectedItems({});
     };
     // confirm selection
-    const [products, setProducts] = useState(Object.keys(selectedProducts));
     const handleConfirm = () => {
       setProducts(Object.keys(selectedItems));
     };
+
     return (
       <>
         <Button onClick={onButtonClick}>Open Dialog</Button>
@@ -121,6 +124,7 @@ export const MultiSelect: Story = {
           numberOfSelectedItems={Object.keys(selectedItems).length}
           listProps={{ onItemClick: handleItemClick }}
           showClearButton
+          rememberSelections
           onClear={handleClear}
           onConfirm={handleConfirm}
         >

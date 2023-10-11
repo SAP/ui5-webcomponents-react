@@ -2,6 +2,7 @@ import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/component
 import { Canvas, Meta } from '@storybook/blocks';
 import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
 import * as ComponentStories from './SelectDialog.stories';
+import { MessageStrip, Text } from '../..';
 
 <Meta of={ComponentStories} />
 
@@ -77,6 +78,114 @@ const SelectDialogComponent = () => {
 
 ### SelectDialog in MultiSelect mode with search
 
-<Canvas of={ComponentStories.MultiSelect} />
+<MessageStrip
+  hideCloseButton
+  children={
+    <Text>
+      This example remembers its selection by setting <code>rememberSelections</code> to <code>true</code>.
+    </Text>
+  }
+/>
+
+<Canvas of={ComponentStories.MultiSelect} sourceState="none" />
+
+<details>
+
+<summary>Show Code</summary>
+
+```tsx
+const MultiSelectDialog = () => {
+  const dialogRef = useRef(null);
+  // predefined selection
+  const selectedProducts = { 'HT-102': true, 'HT-203': true, 'HT-1038': true };
+  // number of selected items
+  const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>(selectedProducts);
+  const [searchVal, setSearchVal] = useState();
+  const [products, setProducts] = useState(Object.keys(selectedProducts));
+
+  const onButtonClick = () => {
+    dialogRef.current.show();
+  };
+
+  // search
+  const handleSearch = (e) => {
+    setSearchVal(e.detail.value);
+  };
+  const handleSearchReset = () => {
+    setSearchVal(undefined);
+  };
+  const handleItemClick = (e) => {
+    const itemDescription = e.detail.item.dataset.description;
+    setSelectedItems((prev) => {
+      if (prev[itemDescription]) {
+        const { [itemDescription]: _omit, ...rest } = prev;
+        return rest;
+      } else {
+        return { ...prev, [itemDescription]: true };
+      }
+    });
+  };
+  // clear selection
+  const handleClear = () => {
+    setSelectedItems({});
+  };
+  // confirm selection
+  const handleConfirm = () => {
+    setProducts(Object.keys(selectedItems));
+  };
+
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Dialog</Button>
+      <SelectDialog
+        mode={ListMode.MultiSelect}
+        ref={dialogRef}
+        onSearchInput={handleSearch}
+        onSearch={handleSearch}
+        onSearchReset={handleSearchReset}
+        numberOfSelectedItems={Object.keys(selectedItems).length}
+        listProps={{ onItemClick: handleItemClick }}
+        showClearButton
+        rememberSelections
+        onClear={handleClear}
+        onConfirm={handleConfirm}
+      >
+        {new Array(40)
+          .fill('')
+          .map((_, index) => {
+            const currentProduct = listItems[index % 4];
+            const description = `${currentProduct.description}${index}`;
+            const lowerCaseSearchVal = searchVal?.toLowerCase();
+            if (
+              searchVal &&
+              !description.toLowerCase().includes(lowerCaseSearchVal) &&
+              !currentProduct.text.toLowerCase().includes(lowerCaseSearchVal)
+            ) {
+              return null;
+            }
+            return (
+              <StandardListItem
+                image={currentProduct.img}
+                description={`${currentProduct.description}${index}`}
+                data-description={`${currentProduct.description}${index}`}
+                key={`${currentProduct.text}${index}`}
+                selected={selectedItems[description]}
+              >
+                {currentProduct.text}
+              </StandardListItem>
+            );
+          })
+          .filter(Boolean)}
+      </SelectDialog>
+      <FlexBox>
+        <Label>Selected: </Label>
+        <Text>{products.join(', ')}</Text>
+      </FlexBox>
+    </>
+  );
+};
+```
+
+</details>
 
 <Footer />
