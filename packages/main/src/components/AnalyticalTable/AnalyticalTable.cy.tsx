@@ -280,6 +280,31 @@ describe('AnalyticalTable', () => {
     cy.get('@scroll').should('have.been.called');
   });
 
+  it('horizontal scrolling - rtl', () => {
+    function generateMockData() {
+      const data = [];
+
+      for (let i = 1; i <= 200; i++) {
+        const row = {};
+        for (let j = 1; j <= 200; j++) {
+          row[`column${j}`] = `${i}-${j}`;
+        }
+        data.push(row);
+      }
+
+      return data;
+    }
+
+    const data = generateMockData();
+    const columns = new Array(100)
+      .fill('')
+      .map((_, i) => ({ accessor: `column${i + 1}`, Header: `${i + 1} Column`, width: 100 }));
+    cy.mount(<AnalyticalTable dir="rtl" columns={columns} data={data} />);
+    cy.get('[data-component-name="AnalyticalTableContainer"]').scrollTo(-10000, 0);
+    cy.findByText('100 Column').should('be.visible');
+    cy.findByText('1-100').should('be.visible');
+  });
+
   it('tree selection & filtering', () => {
     const TreeSelectFilterTable = (props: PropTypes) => {
       const [filter, setFilter] = useState('');
