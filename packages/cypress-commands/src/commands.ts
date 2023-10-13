@@ -65,6 +65,23 @@ declare global {
        * @example cy.clickUi5ListItemByText("List Item")
        */
       clickUi5ListItemByText(text: string): Chainable<Element>;
+
+      /**
+       * Click on an `ui5-option` of the `ui5-select` component by text.
+       * @param text text of the ui5-option that should be clicked
+       * @example cy.get('[ui5-select]').clickUi5SelectOptionByText('Option2');
+       *
+       * __Note:__ The select popover must be visible, otherwise the `change` event is not fired.
+       */
+      clickUi5SelectOptionByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
+
+      /**
+       * Click on chained `ui5-option`.
+       * @example cy.get('[ui5-option]').clickUi5SelectOption();
+       *
+       * __Note:__ The select popover must be visible, otherwise the `change` event is not fired.
+       */
+      clickUi5SelectOption(options?: Partial<ClickOptions>): Chainable<Element>;
     }
   }
 }
@@ -117,6 +134,22 @@ Cypress.Commands.add('closeUi5PopupWithEsc', () => {
 
 Cypress.Commands.add('clickUi5ListItemByText', (text) => {
   cy.contains(text).find('li').click({ force: true });
+});
+
+Cypress.Commands.add('clickUi5SelectOptionByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
+  cy.wrap(subject).then(async ($select) => {
+    // @ts-expect-error: cannot set $select to use SelectDomRef
+    const domRef = await $select.get(0).getStaticAreaItemDomRef();
+    cy.wrap(domRef).contains(text).click(options);
+  });
+});
+
+Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subject, options = {}) => {
+  cy.wrap(subject).then(($option) => {
+    // @ts-expect-error: cannot set $option to use OptionDomRef
+    const domRef = $option.get(0).getDomRef();
+    cy.wrap(domRef).click(options);
+  });
 });
 
 export {};

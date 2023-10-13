@@ -13,14 +13,16 @@ import {
   MultiComboBoxItem,
   ComboBox,
   ComboBoxItem,
-  SuggestionItem
+  SuggestionItem,
+  Select,
+  Option
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 
 describe('UI5 Web Components - Child Commands', () => {
   it('clickUi5Tab', () => {
     cy.mount(
-      <TabContainer data-testId={'tabContainer'}>
+      <TabContainer>
         <Tab data-testId="tab1" text={'Tab 1'} selected>
           Tab 2
         </Tab>
@@ -30,7 +32,7 @@ describe('UI5 Web Components - Child Commands', () => {
       </TabContainer>
     );
 
-    cy.findByTestId('tabContainer').findUi5TabByText('Tab 2').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Tab 2').click();
     cy.findByTestId('tab1').should('not.have.attr', 'selected');
     cy.findByTestId('tab2').should('have.attr', 'selected');
   });
@@ -153,5 +155,31 @@ describe('UI5 Web Components - Child Commands', () => {
       cy.get('ui5-responsive-popover').should('have.attr', 'open');
       document.querySelector('ui5-static-area')?.remove();
     });
+  });
+
+  it('click Option of Select', () => {
+    const select = cy.spy().as('select');
+    cy.mount(
+      <Select onChange={select}>
+        <Option>Test1</Option>
+        <Option>Test2</Option>
+        <Option>Test3</Option>
+        <Option data-testid="4">Test4</Option>
+        <Option data-testid="5">Test5</Option>
+      </Select>
+    );
+    cy.get('[ui5-select]').click();
+    cy.get('[ui5-select]').clickUi5SelectOptionByText('Test2');
+    cy.get('@select').should('have.been.calledOnce');
+    cy.get('[ui5-select]').clickUi5SelectOptionByText('Test3', { force: true });
+    // the web component doesn't fire the event if the popover is not opened
+    cy.get('@select').should('have.been.calledOnce');
+
+    cy.get('[ui5-select]').click();
+    cy.findByTestId('5').clickUi5SelectOption();
+    cy.get('@select').should('have.been.calledTwice');
+    cy.findByTestId('4').clickUi5SelectOption({ force: true });
+    // the web component doesn't fire the event if the popover is not opened
+    cy.get('@select').should('have.been.calledTwice');
   });
 });

@@ -9,7 +9,8 @@
     "declarationDir": "./dist",
     "rootDir": "./src",
     "types": ["cypress"],
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true
   },
   "include": ["src"]
 }
