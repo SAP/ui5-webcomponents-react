@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.0...v1.21.1) (2023-10-13)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix horizontal scrolling in rtl reading direction ([#5144](https://github.com/SAP/ui5-webcomponents-react/issues/5144)) ([6e9f89b](https://github.com/SAP/ui5-webcomponents-react/commit/6e9f89b9e92281a7b0358ba30bc799cf115745e2)), closes [#5094](https://github.com/SAP/ui5-webcomponents-react/issues/5094)
+- **charts:** update peer dependency for ui5-webcomponents-react ([#5148](https://github.com/SAP/ui5-webcomponents-react/issues/5148)) ([660cbf9](https://github.com/SAP/ui5-webcomponents-react/commit/660cbf9db3f716a8ab7b933a61e8a9f5fcc1f1ee))
+- **MessageViewButton - TypeScript:** omit inherited `submits` prop ([#5139](https://github.com/SAP/ui5-webcomponents-react/issues/5139)) ([316d84b](https://github.com/SAP/ui5-webcomponents-react/commit/316d84b37b958d6f57d2fdc9a6b99b4cb78a89d1))
+- **ObjectStatus:** fix border issue of None variant of inverted ObjectStatus ([#5147](https://github.com/SAP/ui5-webcomponents-react/issues/5147)) ([c52fc80](https://github.com/SAP/ui5-webcomponents-react/commit/c52fc800f59f4298c34c790ca50d561ebe37315c))
+- **Ui5DomRef - TypeScript:** correct type for `getStaticAreaItemDomRef` ([#5151](https://github.com/SAP/ui5-webcomponents-react/issues/5151)) ([37e90e9](https://github.com/SAP/ui5-webcomponents-react/commit/37e90e9e19c5831557ac4858b688627d1cfc63fc))
+
 # [1.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.20.0...v1.21.0) (2023-10-09)
 
 ### Bug Fixes
