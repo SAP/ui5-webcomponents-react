@@ -89,5 +89,5 @@ export interface Ui5DomRef extends HTMLElement {
   /**
    * Returns the `staticAreaItem` DOM Element.
    */
-  readonly getStaticAreaItemDomRef: HTMLElement;
+  getStaticAreaItemDomRef: () => Promise<ShadowRoot | null>;
 }
