@@ -268,7 +268,7 @@ const styles = {
       ...createInvertedValueStateStyles('sapButton_Neutral', true),
       background: ThemingParameters.sapNeutralBackground,
       color: ThemingParameters.sapTextColor,
-      border: ThemingParameters.sapNeutralBorderColor,
+      border: `0.0625rem solid ${ThemingParameters.sapNeutralBorderColor}`,
       '&$active:active': {
         ...createInvertedValueStateStyles('sapButton_Neutral', true)['&$active:active'],
         color: ThemingParameters.sapButton_Active_TextColor,
