@@ -15,6 +15,9 @@ jobs:
     environment:
       name: 'npm'
       url: 'https://www.npmjs.com/package/@ui5/webcomponents-react'
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,6 +32,7 @@ jobs:
 
       - name: Install and build
         run: |
+          npm install -g npm
           yarn install
           yarn build
 
@@ -49,3 +53,4 @@ jobs:
 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
