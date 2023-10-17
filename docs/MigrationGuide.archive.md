@@ -836,7 +836,7 @@ If you previously had `import "@ui5/webcomponents-icons/dist/icons/accept.js"`, 
 
 ### Deleted Components
 
-The `FilterItem` component (which was deprecated in 0.10.0) is now deleted. Please use the `FilterGroupItem` component instead. <br />
+The `FilterItem` component (which was deprecated in 0.10.0) and `FilterType` enum are now deleted. Please use the `FilterGroupItem` component instead. <br />
 In addition to that, the `FilterBar` is now only accepting `FilterGroupItems` as children.
 
 If you have the following `FilterItem` in your codebase
