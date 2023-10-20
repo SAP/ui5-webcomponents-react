@@ -1,0 +1,15 @@
+import{j as t}from"./jsx-runtime-d079401a.js";import{C as s,b as a}from"./DomRefTable.module-b88bfb92.js";import{D as c}from"./DocsHeader-58609b4a.js";import{F as x}from"./Footer-b07eecd3.js";import"./index-f1f2c4b1.js";import{M as j,C as l,b as p}from"./chunk-S4VUQJ4A-ed248695.js";import{S as f}from"./SubcomponentsSection-6138f2fc.js";import{C as d,D as e,T as h}from"./Timeline.stories-28c57981.js";import{u as n}from"./index-59d6410c.js";import"./react-jss.esm-2e5f50f2.js";import"./index-510a4d3a.js";import"./iframe-c0238e6d.js";import"../sb-preview/runtime.js";import"./UI5Element-9ae3ac4a.js";import"./CustomElementsScopeUtils-a6667bf6.js";import"./withWebComponent-70ea33bf.js";import"./utils-eb830979.js";import"./useIsomorphicLayoutEffect-c49de97d.js";import"./slot-76e48863.js";import"./Icon-085ae741.js";import"./Icons-aa504494.js";import"./decline-06bf09c2.js";import"./i18n-defaults-bdef1cce.js";import"./information-31cb56bb.js";import"./alert-f95f2d2e.js";import"./class-map-a35dc276.js";import"./Button-bda40b74.js";import"./AriaLabelHelper-43a261ec.js";import"./MarkedEvents-b83081e9.js";import"./i18n-defaults-edeeca68.js";import"./index-743fc8f1.js";import"./clsx-1229b3e0.js";import"./ThemingParameters-7e2e4e30.js";import"./addCustomCSSWithScoping-dff384db.js";import"./index-811f79df.js";import"./Integer-f7f172c9.js";import"./index-e348bffc.js";import"./Avatar-54e46144.js";import"./ResizeHandler-a1ba39c5.js";import"./employee-bd01b92f.js";import"./index-0517d018.js";import"./index-5312d459.js";import"./Link-27f41eeb.js";import"./WrappingType-b81e595a.js";import"./index-12e0da73.js";import"./TableOfContent-1f685e9a.js";import"./index-7a6922d2.js";import"./Label-2351773c.js";import"./index-c74c9f7f.js";import"./index-5368feba.js";import"./index-442f3318.js";import"./Popover-f88acbeb.js";import"./PopupUtils-ebc1cf8a.js";import"./getActiveElement-bcae01ed.js";import"./PopupsCommon.css-afd5e311.js";import"./FocusableElements-ea9d71fb.js";import"./isElementHidden-01c07146.js";import"./MediaRange-25b98f31.js";import"./style-map-0570471d.js";import"./BrowserScrollbar.css-35e4e851.js";import"./index-410c64f5.js";import"./mapValues-6da481dc.js";import"./_baseForOwn-62af832b.js";import"./_baseUniq-27dbdc21.js";import"./index-356e4a49.js";import"./calendar-7649511e.js";import"./parameters-bundle.css-1bee123e.js";import"./ItemNavigation-53cee471.js";import"./i18n-defaults-2dcf78e8.js";const u=`An entry posted on the timeline
+`;function Nt(o={}){const{wrapper:i}=Object.assign({},n(),o.components);return i?t.jsx(i,Object.assign({},o,{children:t.jsx(m,{})})):m();function m(){const r=Object.assign({h2:"h2"},n(),o.components);return t.jsxs(t.Fragment,{children:[t.jsx(j,{of:d}),`
+`,t.jsx(c,{since:"0.4.0"}),`
+`,t.jsx("br",{}),`
+`,t.jsx(r.h2,{id:"example",children:"Example"}),`
+`,t.jsx(l,{of:e}),`
+`,t.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(s,{of:e}),`
+`,t.jsx("br",{}),`
+`,t.jsx(p,{children:f}),`
+`,t.jsx(r.h2,{id:"timelineitem",children:"TimelineItem"}),`
+`,t.jsx(a,{of:h}),`
+`,t.jsx(p,{children:u}),`
+`,t.jsx(x,{})]})}}export{Nt as default};
+//# sourceMappingURL=Timeline-e94cbb03.js.map
