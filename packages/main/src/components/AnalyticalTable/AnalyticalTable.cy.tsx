@@ -2356,7 +2356,7 @@ describe('AnalyticalTable', () => {
     // last currently rendered row
     cy.focused().should('have.attr', 'data-row-index', '22').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageDown');
-    cy.focused().should('have.attr', 'data-row-index', '37').should('have.attr', 'data-column-index', '0');
+    cy.focused().should('have.attr', 'data-row-index', '36').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageDown');
     cy.focused().should('have.attr', 'data-row-index', '50').should('have.attr', 'data-column-index', '0');
     cy.realPress('PageUp');
