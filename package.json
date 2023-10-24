@@ -54,7 +54,7 @@
     "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^9.0.0",
     "@testing-library/cypress": "^10.0.0",
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

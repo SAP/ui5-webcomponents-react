@@ -6249,6 +6249,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.0.0":
+  version: 20.8.8
+  resolution: "@types/node@npm:20.8.8"
+  dependencies:
+    undici-types: "npm:~5.25.1"
+  checksum: 739b3d6f4aa760d72373d504d91adec86ac2eab502f68a80214711983e7d1886fd276ade78a276a2affe4942a55ad65cf655c3aa9464d1150f6405445c5ba635
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -21812,7 +21821,7 @@ __metadata:
     "@storybook/react-vite": "npm:7.5.1"
     "@storybook/theming": "npm:7.5.1"
     "@testing-library/cypress": "npm:^10.0.0"
-    "@types/node": "npm:^18.0.0"
+    "@types/node": "npm:^20.0.0"
     "@types/react": "npm:^18.2.23"
     "@types/react-dom": "npm:^18.2.7"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
