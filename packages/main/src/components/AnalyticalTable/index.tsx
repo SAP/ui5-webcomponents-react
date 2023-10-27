@@ -252,6 +252,8 @@ export interface AnalyticalTableColumnDefinition {
    * You can find out more about it here [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
    *
    * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
+   *
+   * @since 1.22.0
    */
   scaleWidthModeOptions: ScaleWidthModeOptions;
 
