@@ -31,7 +31,7 @@ function getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId) {
 }
 
 function stringToPx(dataPoint, id, isHeader = false) {
-  const elementId = isHeader ? 'smartScaleModeHelperHeader' : 'smartScaleModeHelper';
+  const elementId = isHeader ? 'scaleModeHelperHeader' : 'scaleModeHelper';
   const ruler = document.getElementById(`${elementId}-${id}`);
   if (ruler) {
     ruler.innerHTML = `${dataPoint}`;
