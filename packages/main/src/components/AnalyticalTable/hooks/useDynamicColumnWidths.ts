@@ -4,7 +4,6 @@ import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
 import type { AnalyticalTableColumnDefinition } from '../index.js';
 
 const ROW_SAMPLE_SIZE = 20;
-const DEFAULT_HEADER_NUM_CHAR = 10;
 const MAX_WIDTH = 700;
 const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
@@ -355,8 +354,8 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
 
     const minHeaderWidth =
       typeof column.Header === 'string'
-        ? Math.max(stringToPx(column.Header, uniqueId, true) + CELL_PADDING_PX, DEFAULT_HEADER_NUM_CHAR)
-        : DEFAULT_HEADER_NUM_CHAR;
+        ? stringToPx(column.Header, uniqueId, true) + CELL_PADDING_PX
+        : DEFAULT_COLUMN_WIDTH;
 
     acc[columnIdOrAccessor] = {
       minHeaderWidth,
