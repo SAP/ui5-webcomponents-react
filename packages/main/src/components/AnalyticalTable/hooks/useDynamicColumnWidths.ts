@@ -8,17 +8,36 @@ const DEFAULT_HEADER_NUM_CHAR = 10;
 const MAX_WIDTH = 700;
 const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
-// a function, which approximates header px sizes given a character length
-const approximateHeaderPxFromCharLength = (charLength) =>
-  charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
-const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
-
 function findLongestString(str1, str2) {
   if (typeof str1 !== 'string' || typeof str2 !== 'string') {
     return str1 || str2 || undefined;
   }
 
   return str1.length > str2.length ? str1 : str2;
+}
+
+function getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId) {
+  return (
+    rowSample.reduce((acc, item) => {
+      const dataPoint = item.values?.[columnIdOrAccessor];
+
+      let val = 0;
+      if (dataPoint) {
+        val = stringToPx(dataPoint, uniqueId) + CELL_PADDING_PX;
+      }
+      return acc + val;
+    }, 0) / (rowSample.length || 1)
+  );
+}
+
+function stringToPx(dataPoint, id, isHeader = false) {
+  const elementId = isHeader ? 'smartScaleModeHelperHeader' : 'smartScaleModeHelper';
+  const ruler = document.getElementById(`${elementId}-${id}`);
+  if (ruler) {
+    ruler.innerHTML = `${dataPoint}`;
+    return ruler.scrollWidth;
+  }
+  return 0;
 }
 
 const columnsDeps = (
@@ -60,14 +79,6 @@ interface IColumnMeta {
   headerPx: number;
   headerDefinesWidth?: boolean;
 }
-const stringToPx = (dataPoint, id) => {
-  const ruler = document.getElementById(`smartScaleModeHelper-${id}`);
-  if (ruler) {
-    ruler.innerHTML = `${dataPoint}`;
-    return ruler.offsetWidth;
-  }
-  return 0;
-};
 
 const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hiddenColumns) => {
   const { rows, state, webComponentsReactProperties } = instance;
@@ -99,28 +110,19 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hidd
         contentPxAvg =
           stringToPx(column.scaleWidthModeOptions.cellString, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
       } else {
-        contentPxAvg =
-          rowSample.reduce((acc, item) => {
-            const dataPoint = item.values?.[columnIdOrAccessor];
-
-            let val = 0;
-            if (dataPoint) {
-              val = stringToPx(dataPoint, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
-            }
-            return acc + val;
-          }, 0) / (rowSample.length || 1);
+        contentPxAvg = getContentPxAvg(rowSample, columnIdOrAccessor, webComponentsReactProperties.uniqueId);
       }
 
       if (column.scaleWidthModeOptions?.headerString) {
         headerPx = Math.max(
-          stringToPx(column.scaleWidthModeOptions.headerString, webComponentsReactProperties.uniqueId) +
+          stringToPx(column.scaleWidthModeOptions.headerString, webComponentsReactProperties.uniqueId, true) +
             CELL_PADDING_PX,
           60
         );
       } else {
         headerPx =
           typeof column.Header === 'string'
-            ? Math.max(stringToPx(column.Header, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX, 60)
+            ? Math.max(stringToPx(column.Header, webComponentsReactProperties.uniqueId, true) + CELL_PADDING_PX, 60)
             : 60;
       }
 
@@ -324,15 +326,15 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
   const columnMeta = visibleColumns.reduce((acc, column) => {
+    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     if (
       column.id === '__ui5wcr__internal_selection_column' ||
       column.id === '__ui5wcr__internal_highlight_column' ||
       column.id === '__ui5wcr__internal_navigation_column'
     ) {
-      acc[column.id ?? column.accessor] = {
+      acc[columnIdOrAccessor] = {
         minHeaderWidth: column.width,
-        fullWidth: column.width,
-        contentCharAvg: 0
+        fullWidth: column.width
       };
       return acc;
     }
@@ -344,47 +346,21 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
 
     if (smartWidth) {
       const width = Math.max(stringToPx(smartWidth, uniqueId) + CELL_PADDING_PX, 60);
-      acc[column.id ?? column.accessor] = {
+      acc[columnIdOrAccessor] = {
         minHeaderWidth: width,
-        fullWidth: width,
-        contentCharAvg: width
+        fullWidth: width
       };
       return acc;
     }
 
-    const headerLength = typeof column.Header === 'string' ? column.Header.length : DEFAULT_HEADER_NUM_CHAR;
+    const minHeaderWidth =
+      typeof column.Header === 'string'
+        ? Math.max(stringToPx(column.Header, uniqueId, true) + CELL_PADDING_PX, DEFAULT_HEADER_NUM_CHAR)
+        : DEFAULT_HEADER_NUM_CHAR;
 
-    // max character length
-    const contentMaxCharLength = Math.max(
-      headerLength,
-      ...rowSample.map((row) => {
-        const dataPoint = row.values?.[column.id ?? column.accessor];
-        if (dataPoint) {
-          if (typeof dataPoint === 'string') return dataPoint.length;
-          if (typeof dataPoint === 'number') return (dataPoint + '').length;
-        }
-        return 0;
-      })
-    );
-
-    // avg character length
-    const contentCharAvg =
-      rowSample.reduce((acc, item) => {
-        const dataPoint = item.values?.[column.id ?? column.accessor];
-        let val = 0;
-        if (dataPoint) {
-          if (typeof dataPoint === 'string') val = dataPoint.length;
-          if (typeof dataPoint === 'number') val = (dataPoint + '').length;
-        }
-        return acc + val;
-      }, 0) / rowSample.length;
-
-    const minHeaderWidth = approximateHeaderPxFromCharLength(headerLength);
-
-    acc[column.id ?? column.accessor] = {
+    acc[columnIdOrAccessor] = {
       minHeaderWidth,
-      fullWidth: Math.max(minHeaderWidth, approximateContentPxFromCharLength(contentMaxCharLength)),
-      contentCharAvg
+      fullWidth: Math.max(minHeaderWidth, getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId))
     };
     return acc;
   }, {});
