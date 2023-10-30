@@ -48,7 +48,7 @@ export const Default: Story = {
         <FormItem label="Sole Form Item">
           <Input type={InputType.Text} />
         </FormItem>
-        <FormGroup titleText="Personal Data">
+        <FormGroup>
           <FormItem label="Name">
             <Input type={InputType.Text} />
           </FormItem>
