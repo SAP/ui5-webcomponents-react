@@ -6911,7 +6911,7 @@ __metadata:
   dependencies:
     clsx: "npm:2.0.0"
     react-content-loader: "npm:6.2.1"
-    recharts: "npm:2.9.0"
+    recharts: "npm:2.9.1"
   peerDependencies:
     "@ui5/webcomponents-react": ~1.21.0
     "@ui5/webcomponents-react-base": ~1.20.0
@@ -19782,9 +19782,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recharts@npm:2.9.0":
-  version: 2.9.0
-  resolution: "recharts@npm:2.9.0"
+"recharts@npm:2.9.1":
+  version: 2.9.1
+  resolution: "recharts@npm:2.9.1"
   dependencies:
     classnames: "npm:^2.2.5"
     eventemitter3: "npm:^4.0.1"
@@ -19799,7 +19799,7 @@ __metadata:
     prop-types: ^15.6.0
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: f7e9f3a082f3a94ec5ac3abb8b6fade8e239eeb55da00f55a8347b9ec971c49b97af7130c6d3a5a96be255ea4e8b69176128e96b23953af7e3cf2ce32d829239
+  checksum: 44114f5601fb50be0b7491ee357b78e8138c485276668d85d38036fbb088137aa058f4077a1079ee7829658a3d2dee3eb7fcd3381250dba69f997ed18aa9f1a7
   languageName: node
   linkType: hard
 
