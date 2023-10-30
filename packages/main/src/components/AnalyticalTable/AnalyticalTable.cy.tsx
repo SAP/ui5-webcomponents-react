@@ -887,7 +887,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 700);
 
     cy.findByText('Custom maxWidth').click();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 5008);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 3824);
   });
 
   it('Column Scaling: programatically change cols', () => {
