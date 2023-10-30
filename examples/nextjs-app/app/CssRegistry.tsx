@@ -16,13 +16,6 @@ export function CssRegistry({ children }: { children: React.ReactNode }) {
     );
   });
 
-  useEffect(() => {
-    const style = document.getElementById('server-side-styles');
-    if (style) {
-      style.parentNode?.removeChild(style);
-    }
-  }, []);
-
   return (
     <JssProvider registry={registry} generateId={generateId}>
       {children}

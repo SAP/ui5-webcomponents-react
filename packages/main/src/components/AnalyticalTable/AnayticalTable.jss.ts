@@ -13,7 +13,17 @@ const styles = {
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,
     fontWeight: 'normal',
-    backgroundColor: ThemingParameters.sapList_Background
+    backgroundColor: ThemingParameters.sapList_Background,
+    // bottom border
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      insetBlockEnd: 0,
+      insetInlineStart: 0,
+      height: '1px',
+      width: '100%',
+      background: ThemingParameters.sapList_TableFooterBorder
+    }
   },
   tableContainerWithScrollBar: {
     position: 'relative'
@@ -103,7 +113,6 @@ const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     scrollbarWidth: 'none',
-    borderBlockEnd: `1px solid ${ThemingParameters.sapList_TableFooterBorder}`,
     boxSizing: 'border-box',
     '-ms-overflow-style': 'none',
     '&::-webkit-scrollbar': {
