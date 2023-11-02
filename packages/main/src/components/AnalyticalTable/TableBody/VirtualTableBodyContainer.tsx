@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import type { AnalyticalTablePropTypes } from '../index.js';
+import type { AnalyticalTablePropTypes } from '../types/index.js';
 
 interface VirtualTableBodyContainerProps {
   tableBodyHeight: number;
@@ -81,13 +81,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
           (popInRowHeight === internalRowHeight ? visibleRows : Math.floor(tableBodyHeight / popInRowHeight));
         if (rows.length - currentLastRow < infiniteScrollThreshold) {
           if (!firedInfiniteLoadEvents.current.has(rows.length)) {
-            const rootNodes = rows.filter((row) => row.depth === 0);
-            onLoadMore(
-              enrichEventWithDetails(event, {
-                rowCount: rootNodes.length,
-                totalRowCount: rows.length
-              })
-            );
+            onLoadMore(event);
           }
           firedInfiniteLoadEvents.current.add(rows.length);
         }

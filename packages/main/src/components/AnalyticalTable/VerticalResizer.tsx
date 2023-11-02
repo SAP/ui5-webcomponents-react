@@ -46,6 +46,9 @@ interface VerticalResizerProps {
   hasPopInColumns: boolean;
   popInRowHeight: number;
   portalContainer: Element;
+  rowsLength: number;
+  visibleRows: number;
+  handleOnLoadMore: (e: Event) => void;
 }
 
 const isTouchEvent = (e, touchEvent) => {
@@ -63,7 +66,10 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     internalRowHeight,
     hasPopInColumns,
     popInRowHeight,
-    portalContainer
+    portalContainer,
+    rowsLength,
+    visibleRows,
+    handleOnLoadMore
   } = props;
   const classes = useStyles();
   const startY = useRef(null);
@@ -155,6 +161,15 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       dispatch({ type: 'WITH_POPIN', payload: false });
     };
   }, []);
+
+  const isInitial = useRef(true);
+  useEffect(() => {
+    console.log(rowsLength, visibleRows);
+    if (!isInitial.current && rowsLength <= visibleRows) {
+      handleOnLoadMore({ type: 'custom' } as Event);
+    }
+    isInitial.current = false;
+  }, [rowsLength, visibleRows, handleOnLoadMore]);
 
   const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
