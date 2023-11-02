@@ -37,14 +37,6 @@ interface SegmentedButtonItemAttributes {
   /**
    * Defines whether the button has special form-related functionality.
    *
-   * **The available values are:**
-   *
-   * *   `Button`
-   * *   `Submit`
-   * *   `Reset`
-   *
-   *
-   *
    * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   type?: ButtonType | keyof typeof ButtonType;

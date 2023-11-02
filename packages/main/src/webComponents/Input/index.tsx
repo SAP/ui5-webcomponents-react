@@ -106,14 +106,10 @@ export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onCh
    *
    * Example:
    *
-   * <pre>
-   *   <code>
-   *    &lt;Input showSuggestions><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #1" /><br />
-   *    &nbsp;&nbsp;&lt;SuggestionItem text="Item #2" /><br />
-   *    &lt;/Input>
-   *  </code>
-   * </pre>
+   * <Input show-suggestions>
+   *     <SuggestionItem text="Item #1"></SuggestionItem>
+   *     <SuggestionItem text="Item #2"></SuggestionItem>
+   * </Input>
    *
    *
    * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.

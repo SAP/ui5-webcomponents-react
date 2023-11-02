@@ -16,10 +16,7 @@ interface ToolbarV2Attributes {
    */
   accessibleNameRef?: string;
   /**
-   * Indicated the direction in which the Toolbar items will be aligned. Available options are:
-   *
-   * *   `End`
-   * *   `Start`
+   * Indicated the direction in which the Toolbar items will be aligned.
    */
   alignContent?: ToolbarAlign | keyof typeof ToolbarAlign;
 }

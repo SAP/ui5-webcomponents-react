@@ -19,30 +19,14 @@ interface MediaGalleryAttributes {
   interactiveDisplayArea?: boolean;
   /**
    * Determines the layout of the component.
-   *
-   * Available options are:
-   *
-   * *   `Auto`
-   * *   `Vertical`
-   * *   `Horizontal`
    */
   layout?: MediaGalleryLayout | keyof typeof MediaGalleryLayout;
   /**
    * Determines the horizontal alignment of the thumbnails menu vs. the central display area.
-   *
-   * Available options are:
-   *
-   * *   `Left`
-   * *   `Right`
    */
   menuHorizontalAlign?: MediaGalleryMenuHorizontalAlign | keyof typeof MediaGalleryMenuHorizontalAlign;
   /**
    * Determines the vertical alignment of the thumbnails menu vs. the central display area.
-   *
-   * Available options are:
-   *
-   * *   `Top`
-   * *   `Bottom`
    */
   menuVerticalAlign?: MediaGalleryMenuVerticalAlign | keyof typeof MediaGalleryMenuVerticalAlign;
   /**

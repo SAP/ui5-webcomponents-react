@@ -12,11 +12,6 @@ import type { UI5WCSlotsNode } from '../../types/index.js';
 interface AvatarGroupAttributes {
   /**
    * Defines the mode of the `AvatarGroup`.
-   *
-   * Available options are:
-   *
-   * *   `Group`
-   * *   `Individual`
    */
   type?: AvatarGroupType | keyof typeof AvatarGroupType;
 }

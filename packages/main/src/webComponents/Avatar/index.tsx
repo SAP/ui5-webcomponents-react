@@ -14,20 +14,6 @@ interface AvatarAttributes {
   accessibleName?: string;
   /**
    * Defines the background color of the desired image.
-   *
-   * Available options are:
-   *
-   * *   `Accent1`
-   * *   `Accent2`
-   * *   `Accent3`
-   * *   `Accent4`
-   * *   `Accent5`
-   * *   `Accent6`
-   * *   `Accent7`
-   * *   `Accent8`
-   * *   `Accent9`
-   * *   `Accent10`
-   * *   `Placeholder`
    */
   colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
   /**
@@ -77,23 +63,10 @@ interface AvatarAttributes {
   interactive?: boolean;
   /**
    * Defines the shape of the component.
-   *
-   * Available options are:
-   *
-   * *   `Circle`
-   * *   `Square`
    */
   shape?: AvatarShape | keyof typeof AvatarShape;
   /**
    * Defines predefined size of the component.
-   *
-   * Available options are:
-   *
-   * *   `XS`
-   * *   `S`
-   * *   `M`
-   * *   `L`
-   * *   `XL`
    */
   size?: AvatarSize | keyof typeof AvatarSize;
 }
