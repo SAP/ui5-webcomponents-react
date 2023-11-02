@@ -248,9 +248,9 @@ describe('ObjectStatus', () => {
 
   it('emptyIndicator', () => {
     cy.mount(<ObjectStatus data-testid="os" />);
-    cy.findByTestId('os').children().should('have.length', 0);
-    cy.mount(<ObjectStatus data-testid="os" emptyIndicator />);
     cy.findByTestId('os').children().should('have.length', 1);
+    cy.mount(<ObjectStatus data-testid="os" emptyIndicator />);
+    cy.findByTestId('os').children().should('have.length', 2);
     cy.findByText('–').should('be.visible');
   });
 
