@@ -164,7 +164,6 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
 
   const isInitial = useRef(true);
   useEffect(() => {
-    console.log(rowsLength, visibleRows);
     if (!isInitial.current && rowsLength <= visibleRows) {
       handleOnLoadMore({ type: 'custom' } as Event);
     }
