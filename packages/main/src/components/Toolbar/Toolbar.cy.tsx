@@ -1,4 +1,4 @@
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { setTheme, getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
@@ -336,7 +336,7 @@ describe('Toolbar', () => {
           color = cssVarToRgb(ThemingParameters.sapList_TextColor);
           break;
         case 'Solid':
-          background = cssVarToRgb(ThemingParameters.sapBackgroundColor);
+          background = cssVarToRgb(ThemingParameters.sapToolbar_Background);
           break;
       }
       cy.findByTestId('tb')
@@ -545,6 +545,18 @@ describe('Toolbar', () => {
         Text
       </Toolbar>
     );
+    console.log(getTheme());
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
+
+    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
+    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 50, 165) 0px 0px 0px 2px inset');
+
+    cy.wait(500).then(() => {
+      cy.findByTestId('tb').blur();
+      setTheme('sap_fiori_3');
+    });
 
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
@@ -552,18 +564,6 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').click();
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'dotted');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.wait(500).then(() => {
-      cy.findByTestId('tb').blur();
-      setTheme('sap_horizon');
-    });
-
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
-
-    cy.findByTestId('tb').focus();
-    cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
-    cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 50, 165) 0px 0px 0px 2px inset');
   });
 
   it('unique ids for overflow', () => {

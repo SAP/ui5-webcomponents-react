@@ -347,11 +347,14 @@ describe('AnalyticalTable', () => {
     // expand
     cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
     cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
-    cy.get('[aria-rowindex="1"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').click();
+    cy.get('[aria-rowindex="1"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
     cy.findByText('Robin Moreno').should('be.visible');
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > ui5-icon').trigger('keydown', {
-      key: 'Enter'
-    });
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]')
+      .shadow()
+      .find('button')
+      .focus();
+    cy.realPress('Enter');
+
     cy.findByText('Judith Mathews').should('be.visible');
 
     // select
@@ -703,9 +706,9 @@ describe('AnalyticalTable', () => {
     );
 
     // expand
-    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
-    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
@@ -796,9 +799,9 @@ describe('AnalyticalTable', () => {
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
 
     // expand
-    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
-    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
-    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="2"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('[aria-rowindex="3"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('[aria-rowindex="4"] > [aria-colindex="2"] > [title="Expand Node"] > [ui5-button]').click();
 
     // deselect row
     cy.findByText('Wiggins Cotton').click();
@@ -1558,13 +1561,13 @@ describe('AnalyticalTable', () => {
     cy.findAllByTitle('Expand Node').should('have.length', 4);
     cy.findAllByTitle('Collapse Node').should('not.exist');
 
-    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
 
     cy.findAllByTitle('Expand Node').should('have.length', 3);
     cy.findAllByTitle('Collapse Node').should('have.length', 1);
     cy.findByText('SubComponent').should('be.visible');
 
-    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
 
     cy.findAllByTitle('Expand Node').should('have.length', 2);
     cy.findAllByTitle('Collapse Node').should('have.length', 2);
@@ -1575,12 +1578,12 @@ describe('AnalyticalTable', () => {
     cy.findAllByTitle('Expand Node').should('have.length', 1);
     cy.findAllByTitle('Collapse Node').should('not.exist');
 
-    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').click();
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
 
     cy.findAllByTitle('Expand Node').should('not.exist');
     cy.findAllByTitle('Collapse Node').should('have.length', 1);
     cy.findByText('SingleSubComponent').should('be.visible');
-    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-icon]').should('not.exist');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').should('not.exist');
 
     cy.mount(
       <AnalyticalTable

@@ -70,7 +70,7 @@ const statesWithCSSVars: {
   {
     state: 'Information',
     color: ThemingParameters.sapInformativeTextColor,
-    iconColor: ThemingParameters.sapInformativeTextColor,
+    iconColor: ThemingParameters.sapInformativeElementColor,
     hasDefaultIcon: true,
     inverted: {
       color: ThemingParameters.sapButton_Information_TextColor,
@@ -85,7 +85,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_1,
     inverted: {
       color: ThemingParameters.sapIndicationColor_1_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_1,
+      backgroundColor: ThemingParameters.sapIndicationColor_1_Background,
       iconColor: ThemingParameters.sapIndicationColor_1_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 1`
@@ -96,7 +96,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_2,
     inverted: {
       color: ThemingParameters.sapIndicationColor_2_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_2,
+      backgroundColor: ThemingParameters.sapIndicationColor_2_Background,
       iconColor: ThemingParameters.sapIndicationColor_2_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 2`
@@ -107,7 +107,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_3,
     inverted: {
       color: ThemingParameters.sapIndicationColor_3_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_3,
+      backgroundColor: ThemingParameters.sapIndicationColor_3_Background,
       iconColor: ThemingParameters.sapIndicationColor_3_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 3`
@@ -118,7 +118,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_4,
     inverted: {
       color: ThemingParameters.sapIndicationColor_4_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_4,
+      backgroundColor: ThemingParameters.sapIndicationColor_4_Background,
       iconColor: ThemingParameters.sapIndicationColor_4_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 4`
@@ -129,7 +129,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_5,
     inverted: {
       color: ThemingParameters.sapIndicationColor_5_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_5,
+      backgroundColor: ThemingParameters.sapIndicationColor_5_Background,
       iconColor: ThemingParameters.sapIndicationColor_5_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 5`
@@ -140,7 +140,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_6,
     inverted: {
       color: ThemingParameters.sapIndicationColor_6_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_6,
+      backgroundColor: ThemingParameters.sapIndicationColor_6_Background,
       iconColor: ThemingParameters.sapIndicationColor_6_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 6`
@@ -151,7 +151,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_7,
     inverted: {
       color: ThemingParameters.sapIndicationColor_7_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_7,
+      backgroundColor: ThemingParameters.sapIndicationColor_7_Background,
       iconColor: ThemingParameters.sapIndicationColor_7_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 7`
@@ -162,7 +162,7 @@ const statesWithCSSVars: {
     iconColor: ThemingParameters.sapIndicationColor_8,
     inverted: {
       color: ThemingParameters.sapIndicationColor_8_TextColor,
-      backgroundColor: ThemingParameters.sapIndicationColor_8,
+      backgroundColor: ThemingParameters.sapIndicationColor_8_Background,
       iconColor: ThemingParameters.sapIndicationColor_8_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 8`
