@@ -13,7 +13,7 @@ If you find a bug or some other issue with any part of the library, please [subm
 - The issue has not been fixed in a newer release of the library.
 - The issue is reproducible.
 - Your explanation is clear and complete.
-- You provide example code (preferably by forking this [codeSandbox template](https://codesandbox.io/s/ui5-webcomponents-react-template-29l34)) and/or screenshots (recommended).
+- You provide example code (preferably by forking this [codeSandbox template](https://codesandbox.io/s/ui5-web-components-for-react-vite-template-rcpmd4?file=/src/App.jsx)) and optionally screenshots.
 
 If you meet the above criteria, you can submit issues with our [GitHub issue tracker](https://github.com/SAP/ui5-webcomponents-react/issues/new/choose). Please use [labels](#usage-of-labels) to categorize your issue.
 
