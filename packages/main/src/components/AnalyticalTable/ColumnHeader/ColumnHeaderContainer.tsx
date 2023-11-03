@@ -2,7 +2,7 @@ import type { Virtualizer } from '@tanstack/react-virtual';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, Fragment } from 'react';
 import { createUseStyles } from 'react-jss';
-import type { DivWithCustomScrollProp } from '../index.js';
+import type { DivWithCustomScrollProp } from '../types/index.js';
 import { ColumnHeader } from './index.js';
 
 const styles = {
