@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.2...v1.22.0) (2023-11-03)
+
+### Features
+
+- **cypress-commands:** add `clickUi5SelectOptionByText` & `clickUi5SelectOption` commands ([#5150](https://github.com/SAP/ui5-webcomponents-react/issues/5150)) ([5f36e46](https://github.com/SAP/ui5-webcomponents-react/commit/5f36e46c0d737ce952b7165ba12157befaef45f1))
+
 # [1.21.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.20.0...v1.21.0) (2023-10-09)
 
 **Note:** Version bump only for package @ui5/webcomponents-cypress-commands

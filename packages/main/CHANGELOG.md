@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.2...v1.22.0) (2023-11-03)
+
+### Bug Fixes
+
+- **AnalyticalTable:** return consistent values across all envs in`onRowExpandChange` ([#5212](https://github.com/SAP/ui5-webcomponents-react/issues/5212)) ([32f6a15](https://github.com/SAP/ui5-webcomponents-react/commit/32f6a15843adbb2c56a4921f9d00ea2e624ba35c)), closes [#5207](https://github.com/SAP/ui5-webcomponents-react/issues/5207)
+- **ObjectStatus:** add screen reader announcement for inactive state ([#5204](https://github.com/SAP/ui5-webcomponents-react/issues/5204)) ([a2bb5f6](https://github.com/SAP/ui5-webcomponents-react/commit/a2bb5f6988f319ff3f50f833e0c8e6211c19a04e))
+
+### Features
+
+- **AnalyticalTable:** add `scaleWidthModeOptions` column option ([#5188](https://github.com/SAP/ui5-webcomponents-react/issues/5188)) ([4c393db](https://github.com/SAP/ui5-webcomponents-react/commit/4c393db48a290a57446fd3a512a2cd4197c08435)), closes [#5189](https://github.com/SAP/ui5-webcomponents-react/issues/5189)
+- **AnalyticalTable:** fire `onLoadMore` when resizing in `Interactive` `visibleRowCountMode` ([#5203](https://github.com/SAP/ui5-webcomponents-react/issues/5203)) ([8ba09dd](https://github.com/SAP/ui5-webcomponents-react/commit/8ba09dda53ccc9a2c058a7144a396cce0d256658)), closes [#5201](https://github.com/SAP/ui5-webcomponents-react/issues/5201)
+- **FormGroup:** make `titleText` optional ([#5196](https://github.com/SAP/ui5-webcomponents-react/issues/5196)) ([572464b](https://github.com/SAP/ui5-webcomponents-react/commit/572464b9fbfa2e796dfb978271f6a40d8aabc076)), closes [#5197](https://github.com/SAP/ui5-webcomponents-react/issues/5197)
+- update to `@ui5/webcomponents@1.19.0` ([#5205](https://github.com/SAP/ui5-webcomponents-react/issues/5205)) ([c1eafa5](https://github.com/SAP/ui5-webcomponents-react/commit/c1eafa5abab898e2c78950938491e99e34687328))
+
 ## [1.21.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.1...v1.21.2) (2023-10-31)
 
 ### Bug Fixes
