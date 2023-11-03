@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef } from 'react';

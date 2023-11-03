@@ -17,7 +17,12 @@ import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { IndicationColor } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
-import { ARIA_OBJ_STATUS_DESC, EMPTY_VALUE, INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
+import {
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  EMPTY_VALUE,
+  INDICATION_COLOR
+} from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import styles from './ObjectStatus.jss.js';
@@ -210,10 +215,12 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
       onClick={active ? onClick : undefined}
       tabIndex={active ? 0 : undefined}
       data-icon-only={!children}
-      role={active ? 'button' : undefined}
-      aria-roledescription={active ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : undefined}
+      role={active ? 'button' : 'group'}
       {...rest}
     >
+      <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
+        {active ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
+      </span>
       {iconToRender && (
         <span className={classes.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
           {iconToRender}

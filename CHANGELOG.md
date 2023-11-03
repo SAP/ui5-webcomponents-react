@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.1...v1.21.2) (2023-10-31)
+
+### Bug Fixes
+
+- **AnalyticalTable:** prevent unnecessary vertical scroll ([#5171](https://github.com/SAP/ui5-webcomponents-react/issues/5171)) ([95a0acd](https://github.com/SAP/ui5-webcomponents-react/commit/95a0acd0f262a4cec8966e38e7dd8a26561879f0))
+- **deps:** update dependency @tanstack/react-virtual to v3.0.0-beta.68 ([#5169](https://github.com/SAP/ui5-webcomponents-react/issues/5169)) ([8f6a46c](https://github.com/SAP/ui5-webcomponents-react/commit/8f6a46c3882a75b118579ba13b51eb11c3bc0315))
+- **deps:** update dependency recharts to v2.9.0 ([#5155](https://github.com/SAP/ui5-webcomponents-react/issues/5155)) ([af4e2b9](https://github.com/SAP/ui5-webcomponents-react/commit/af4e2b9945754e361d0aff2c25a5e1eff71c9747))
+- **deps:** update dependency recharts to v2.9.1 ([#5194](https://github.com/SAP/ui5-webcomponents-react/issues/5194)) ([cb59a73](https://github.com/SAP/ui5-webcomponents-react/commit/cb59a73c7e2d0fa4714550723a69e2bda5eab37a))
+- **deps:** update nextjs monorepo to v14 (major) ([#5186](https://github.com/SAP/ui5-webcomponents-react/issues/5186)) ([4011f81](https://github.com/SAP/ui5-webcomponents-react/commit/4011f815236ec9ef45519fcb1c4b0e004929cef6))
+- **Next.js - App Router Example:** don't remove styles after hydration ([#5170](https://github.com/SAP/ui5-webcomponents-react/issues/5170)) ([b5678ca](https://github.com/SAP/ui5-webcomponents-react/commit/b5678cac99b73fb12268b25b05709236b74f2028))
+- **server-components:** add missing `use-client` directives ([#5198](https://github.com/SAP/ui5-webcomponents-react/issues/5198)) ([509569f](https://github.com/SAP/ui5-webcomponents-react/commit/509569fccb361915e04027f9bcd888599be2738d))
+
 ## [1.21.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.0...v1.21.1) (2023-10-13)
 
 ### Bug Fixes
