@@ -9,7 +9,6 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
       e.stopPropagation();
     }
 
-    row.toggleRowExpanded();
     let column = null;
     if (!isTreeTable && (!renderRowSubComponent || (renderRowSubComponent && alwaysShowSubComponent))) {
       if (!manualGroupBy) {
@@ -25,7 +24,14 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
         payload: true
       });
     }
-    onRowExpandChange(enrichEventWithDetails(e, { row, column }));
+
+    onRowExpandChange(
+      enrichEventWithDetails(e, {
+        row,
+        column
+      })
+    );
+    row.toggleRowExpanded();
   };
   const onKeyDown = (e) => {
     if (e.code === 'F4') {
@@ -33,7 +39,7 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
       onClick(e, false);
     } else if ((!e.shiftKey && e.code === 'Space') || e.key === 'Enter') {
       // the `onClick` event of the `Icon` component already fires the event on ENTER/SPACE press
-      if (e.target.hasAttribute('ui5-icon')) {
+      if (e.target.hasAttribute('ui5-icon') || e.target.hasAttribute('ui5-button')) {
         return;
       }
       e.preventDefault();
