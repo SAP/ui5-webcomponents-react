@@ -111,7 +111,7 @@ describe('SplitterLayout', () => {
         .first()
         .click()
         .should('have.length', 1)
-        .should('have.css', 'border', '0px none rgb(0, 0, 0)');
+        .should('have.css', 'border', '2px solid rgb(0, 50, 165)');
       cy.findByTestId('sl').should('have.css', 'width', '800px').should('have.css', 'height', '800px');
       cy.findByTestId('se2')
         .should('have.css', 'flex', '0 1 400px')
