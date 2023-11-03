@@ -53,10 +53,10 @@ export const styles = {
     }
   },
   solid: {
-    backgroundColor: ThemingParameters.sapBackgroundColor
+    backgroundColor: ThemingParameters.sapToolbar_Background
   },
   transparent: {
-    backgroundColor: ThemingParameters.sapToolbar_Background
+    backgroundColor: 'transparent'
   },
   toolbar: {
     width: '100%',

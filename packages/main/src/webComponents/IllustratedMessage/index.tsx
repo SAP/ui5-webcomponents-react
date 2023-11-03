@@ -15,104 +15,6 @@ interface IllustratedMessageAttributes {
   /**
    * Defines the illustration name that will be displayed in the component.
    *
-   * Available illustrations are:
-   *
-   * *   `AddColumn`
-   * *   `AddPeople`
-   * *   `AddDimensions`
-   * *   `BalloonSky`
-   * *   `BeforeSearch`
-   * *   `Connection`
-   * *   `EmptyCalendar`
-   * *   `EmptyList`
-   * *   `EmptyPlanningCalendar`
-   * *   `ErrorScreen`
-   * *   `FilterTable`
-   * *   `GroupTable`
-   * *   `NoActivities`
-   * *   `NoColumnsSet`
-   * *   `NoData`
-   * *   `NoEntries`
-   * *   `NoFilterResults`
-   * *   `NoMail_v1`
-   * *   `NoMail`
-   * *   `NoNotifications`
-   * *   `NoSavedItems_v1`
-   * *   `NoSavedItems`
-   * *   `NoSearchResults`
-   * *   `NoTasks_v1`
-   * *   `NoTasks`
-   * *   `NoDimensionsSet`
-   * *   `PageNotFound`
-   * *   `ReloadScreen`
-   * *   `ResizeColumn`
-   * *   `SearchEarth`
-   * *   `SearchFolder`
-   * *   `SimpleBalloon`
-   * *   `SimpleBell`
-   * *   `SimpleCalendar`
-   * *   `SimpleCheckMark`
-   * *   `SimpleConnection`
-   * *   `SimpleEmptyDoc`
-   * *   `SimpleEmptyList`
-   * *   `SimpleError`
-   * *   `SimpleMagnifier`
-   * *   `SimpleMail`
-   * *   `SimpleNoSavedItems`
-   * *   `SimpleNotFoundMagnifier`
-   * *   `SimpleReload`
-   * *   `SimpleTask`
-   * *   `SleepingBell`
-   * *   `SortColumn`
-   * *   `SuccessBalloon`
-   * *   `SuccessCheckMark`
-   * *   `SuccessHighFive`
-   * *   `SuccessScreen`
-   * *   `Survey`
-   * *   `Tent`
-   * *   `UnableToLoad`
-   * *   `UnableToLoadImage`
-   * *   `UnableToUpload`
-   * *   `UploadToCloud`
-   * *   `UploadCollection`
-   * *   `TntChartArea`
-   * *   `TntChartArea2`
-   * *   `TntChartBar`
-   * *   `TntChartBPMNFlow`
-   * *   `TntChartBullet`
-   * *   `TntChartDoughnut`
-   * *   `TntChartFlow`
-   * *   `TntChartGantt`
-   * *   `TntChartOrg`
-   * *   `TntChartPie`
-   * *   `TntCodePlaceholder`
-   * *   `TntCompany`
-   * *   `TntComponents`
-   * *   `TntExternalLink`
-   * *   `TntFaceID`
-   * *   `TntFingerprint`
-   * *   `TntLock`
-   * *   `TntMission`
-   * *   `TntNoApplications`
-   * *   `TntNoFlows`
-   * *   `TntNoUsers`
-   * *   `TntRadar`
-   * *   `TntSecrets`
-   * *   `TntServices`
-   * *   `TntSessionExpired`
-   * *   `TntSessionExpiring`
-   * *   `TntSuccess`
-   * *   `TntSuccessfulAuth`
-   * *   `TntSystems`
-   * *   `TntTeams`
-   * *   `TntTools`
-   * *   `TntUnableToLoad`
-   * *   `TntUnlock`
-   * *   `TntUnsuccessfulAuth`
-   * *   `TntUser2`
-   *
-   *
-   *
    * **Note:** By default the `BeforeSearch` illustration is loaded.
    * When using an illustration type, other than the default, it should be loaded in addition:
    * `import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js";`
@@ -123,14 +25,6 @@ interface IllustratedMessageAttributes {
   name?: IllustrationMessageType | keyof typeof IllustrationMessageType;
   /**
    * Determines which illustration breakpoint variant is used.
-   *
-   * Available options are:
-   *
-   * *   `Auto`
-   * *   `Base`
-   * *   `Spot`
-   * *   `Dialog`
-   * *   `Scene`
    *
    * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component are displayed differently on the different breakpoints/illustration sizes.
    */

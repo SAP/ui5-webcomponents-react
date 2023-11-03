@@ -32,6 +32,10 @@ interface ComboBoxAttributes {
    */
   loading?: boolean;
   /**
+   * Defines whether the value will be autocompleted to match an item
+   */
+  noTypeahead?: boolean;
+  /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
   placeholder?: string;
@@ -113,7 +117,7 @@ export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps,
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'loading', 'readonly', 'required'],
+  ['disabled', 'loading', 'noTypeahead', 'readonly', 'required'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'selection-change'],
   () => import('@ui5/webcomponents/dist/ComboBox.js')

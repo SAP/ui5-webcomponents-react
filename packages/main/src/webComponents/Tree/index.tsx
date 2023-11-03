@@ -36,15 +36,6 @@ interface TreeAttributes {
   headerText?: string;
   /**
    * Defines the mode of the component. Since the tree uses a `List` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
-   *
-   * **Note:**
-   *
-   * *   `None`
-   * *   `SingleSelect`
-   * *   `SingleSelectBegin`
-   * *   `SingleSelectEnd`
-   * *   `MultiSelect`
-   * *   `Delete`
    */
   mode?: ListMode | keyof typeof ListMode;
   /**

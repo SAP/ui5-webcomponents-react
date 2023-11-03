@@ -4,7 +4,7 @@ const popInVisibleColumns = (cols, { instance }) => {
   const { state, dispatch } = instance;
 
   const tableClientWidth = state.isScrollable
-    ? state?.tableClientWidth + 14 /*scrollbar width*/
+    ? state?.tableClientWidth + 13 /*scrollbar width*/
     : state?.tableClientWidth;
 
   const popInColumns = cols

@@ -61,14 +61,6 @@ interface CheckBoxAttributes {
   text?: string;
   /**
    * Defines the value state of the component.
-   *
-   * **Note:**
-   *
-   * *   `Warning`
-   * *   `Error`
-   * *   `None`(default)
-   * *   `Success`
-   * *   `Information`
    */
   valueState?: ValueState | keyof typeof ValueState;
   /**

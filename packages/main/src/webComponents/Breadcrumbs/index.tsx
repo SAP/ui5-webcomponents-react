@@ -9,22 +9,13 @@ import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface BreadcrumbsAttributes {
   /**
-   * Defines the visual indication and behavior of the breadcrumbs. Available options are `Standard` (by default) and `NoCurrentPage`.
+   * Defines the visual indication and behavior of the breadcrumbs.
    *
    * **Note:** The `Standard` breadcrumbs show the current page as the last item in the trail. The last item contains only plain text and is not a link.
    */
   design?: BreadcrumbsDesign | keyof typeof BreadcrumbsDesign;
   /**
    * Determines the visual style of the separator between the breadcrumb items.
-   *
-   * Available options are:
-   *
-   * *   `Slash`
-   * *   `BackSlash`
-   * *   `DoubleBackSlash`
-   * *   `DoubleGreaterThan`
-   * *   `DoubleSlash`
-   * *   `GreaterThan`
    */
   separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
 }

@@ -42,12 +42,6 @@ interface ListAttributes {
   /**
    * Defines whether the component will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
    *
-   * Available options:
-   *
-   * `Button` - Shows a `More` button at the bottom of the list, pressing of which triggers the `onLoadMore` event.
-   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the list;
-   * `None` (default) - The growing is off.
-   *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, on IE the component will fallback to `growing="Button"`.
    */
   growing?: ListGrowingMode | keyof typeof ListGrowingMode;
@@ -63,8 +57,6 @@ interface ListAttributes {
   indent?: boolean;
   /**
    * Defines the mode of the component.
-   *
-   * **Note:** Available options are `None`, `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd`, `MultiSelect`, and `Delete`.
    */
   mode?: ListMode | keyof typeof ListMode;
   /**
@@ -73,12 +65,6 @@ interface ListAttributes {
   noDataText?: string;
   /**
    * Defines the item separator style that is used.
-   *
-   * **Notes:**
-   *
-   * *   Avalaible options are `All`, `Inner`, and `None`.
-   * *   When set to `None`, none of the items are separated by horizontal lines.
-   * *   When set to `Inner`, the first item doesn't have a top separator and the last item doesn't have a bottom separator.
    */
   separators?: ListSeparators | keyof typeof ListSeparators;
 }
