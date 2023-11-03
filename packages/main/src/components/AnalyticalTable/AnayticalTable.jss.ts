@@ -239,9 +239,12 @@ const styles = {
   },
   hiddenSmartColMeasure: {
     visibility: 'hidden',
-    position: 'absolute',
+    position: 'fixed',
     whiteSpace: 'nowrap',
     height: 0
+  },
+  hiddenSmartColMeasureHeader: {
+    fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily
   },
   hiddenA11yText: {
     display: 'none'
