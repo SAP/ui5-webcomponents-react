@@ -168,7 +168,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       handleOnLoadMore({ type: 'tableGrow' } as Event);
     }
     isInitial.current = false;
-  }, [rowsLength, visibleRows, handleOnLoadMore]);
+  }, [rowsLength, visibleRows]);
 
   const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
