@@ -165,7 +165,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
   const isInitial = useRef(true);
   useEffect(() => {
     if (!isInitial.current && rowsLength <= visibleRows) {
-      handleOnLoadMore({ type: 'custom' } as Event);
+      handleOnLoadMore({ type: 'tableGrow' } as Event);
     }
     isInitial.current = false;
   }, [rowsLength, visibleRows, handleOnLoadMore]);

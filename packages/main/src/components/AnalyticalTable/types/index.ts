@@ -517,6 +517,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Fired when the `infiniteScrollThreshold` is reached.
    *
+   * __Note:__ When used in a vertically resizable table (`visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Interactive`), the event is also fired if all available rows are displayed after resizing.
+   * You can distinguish between the scroll and custom event by checking the `event.type`.
+   *
    * @param {number} e.detail.rowCount - The number of rows
    * @param {number} e.detail.totalRowCount - The total number of rows, including sub-rows
    */
