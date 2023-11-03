@@ -17,20 +17,6 @@ interface FlexibleColumnLayoutAttributes {
    *
    * **Note:** The layout also depends on the screen size - one column for screens smaller than 599px, two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
    *
-   * Available options are:
-   *
-   * *   `OneColumn`
-   * *   `TwoColumnsStartExpanded`
-   * *   `TwoColumnsMidExpanded`
-   * *   `ThreeColumnsMidExpanded`
-   * *   `ThreeColumnsEndExpanded`
-   * *   `ThreeColumnsStartExpandedEndHidden`
-   * *   `ThreeColumnsMidExpandedEndHidden`
-   * *   `MidColumnFullScreen`
-   * *   `EndColumnFullScreen`
-   *
-   *
-   *
    * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns in 67%/33% proportion.
    */
   layout?: FCLLayout | keyof typeof FCLLayout;

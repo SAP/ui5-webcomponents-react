@@ -34,6 +34,10 @@ interface RatingIndicatorAttributes {
    */
   required?: boolean;
   /**
+   * Defines the tooltip of the component.
+   */
+  tooltip?: string;
+  /**
    * The indicated value of the rating.
    *
    * **Note:** If you set a number which is not round, it would be shown as follows:
@@ -63,7 +67,7 @@ export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omi
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
-  ['accessibleName', 'accessibleNameRef', 'max', 'value'],
+  ['accessibleName', 'accessibleNameRef', 'max', 'tooltip', 'value'],
   ['disabled', 'readonly', 'required'],
   [],
   ['change'],

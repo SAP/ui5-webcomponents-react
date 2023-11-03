@@ -11,7 +11,7 @@ describe('ThemeProvider', () => {
       return (
         <button
           onClick={() => {
-            setTheme('sap_horizon');
+            setTheme('sap_horizon_dark');
           }}
         >
           Change Theme
@@ -21,9 +21,9 @@ describe('ThemeProvider', () => {
     // cy.mount wraps component in ThemeProvider
     cy.mount(<InnerComponent />);
 
-    cy.get('html').should('have.attr', 'data-sap-theme', 'sap_fiori_3');
-    cy.findByText('Change Theme').click();
     cy.get('html').should('have.attr', 'data-sap-theme', 'sap_horizon');
+    cy.findByText('Change Theme').click();
+    cy.get('html').should('have.attr', 'data-sap-theme', 'sap_horizon_dark');
 
     cy.window().its('@ui5/webcomponents-react').should('not.be.empty');
   });

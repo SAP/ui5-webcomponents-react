@@ -18,17 +18,6 @@ interface IconAttributes {
   accessibleRole?: string;
   /**
    * Defines the component semantic design.
-   *
-   * **The available values are:**
-   *
-   * *   `Contrast`
-   * *   `Critical`
-   * *   `Default`
-   * *   `Information`
-   * *   `Negative`
-   * *   `Neutral`
-   * *   `NonInteractive`
-   * *   `Positive`
    */
   design?: IconDesign | keyof typeof IconDesign;
   /**
