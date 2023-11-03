@@ -10,7 +10,7 @@ export interface FormGroupPropTypes {
   /**
    * Title of the FormGroup.
    */
-  titleText: string;
+  titleText?: string;
   /**
    * Content of the FormGroup.
    *
@@ -47,7 +47,11 @@ const FormGroup = (props: FormGroupPropTypes) => {
       <>
         <FormGroupTitle
           titleText={titleText}
-          style={{ gridColumnStart: columnIndex * 12 + 1, gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex }}
+          style={{
+            display: titleText ? 'unset' : 'none',
+            gridColumnStart: columnIndex * 12 + 1,
+            gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex
+          }}
         />
         {children}
       </>

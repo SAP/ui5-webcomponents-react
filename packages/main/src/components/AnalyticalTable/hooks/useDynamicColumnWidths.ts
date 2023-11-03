@@ -4,14 +4,40 @@ import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
 import type { AnalyticalTableColumnDefinition } from '../types/index.js';
 
 const ROW_SAMPLE_SIZE = 20;
-const DEFAULT_HEADER_NUM_CHAR = 10;
 const MAX_WIDTH = 700;
 const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
-// a function, which approximates header px sizes given a character length
-const approximateHeaderPxFromCharLength = (charLength) =>
-  charLength < 15 ? Math.sqrt(charLength * 1500) : 8 * charLength;
-const approximateContentPxFromCharLength = (charLength) => 8 * charLength;
+function findLongestString(str1, str2) {
+  if (typeof str1 !== 'string' || typeof str2 !== 'string') {
+    return str1 || str2 || undefined;
+  }
+
+  return str1.length > str2.length ? str1 : str2;
+}
+
+function getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId) {
+  return (
+    rowSample.reduce((acc, item) => {
+      const dataPoint = item.values?.[columnIdOrAccessor];
+
+      let val = 0;
+      if (dataPoint) {
+        val = stringToPx(dataPoint, uniqueId) + CELL_PADDING_PX;
+      }
+      return acc + val;
+    }, 0) / (rowSample.length || 1)
+  );
+}
+
+function stringToPx(dataPoint, id, isHeader = false) {
+  const elementId = isHeader ? 'scaleModeHelperHeader' : 'scaleModeHelper';
+  const ruler = document.getElementById(`${elementId}-${id}`);
+  if (ruler) {
+    ruler.innerHTML = `${dataPoint}`;
+    return ruler.scrollWidth;
+  }
+  return 0;
+}
 
 const columnsDeps = (
   deps,
@@ -52,14 +78,7 @@ interface IColumnMeta {
   headerPx: number;
   headerDefinesWidth?: boolean;
 }
-const stringToPx = (dataPoint, id) => {
-  const ruler = document.getElementById(`smartScaleModeHelper-${id}`);
-  if (ruler) {
-    ruler.innerHTML = `${dataPoint}`;
-    return ruler.offsetWidth;
-  }
-  return 0;
-};
+
 const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hiddenColumns) => {
   const { rows, state, webComponentsReactProperties } = instance;
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
@@ -84,22 +103,31 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hidd
         return metadata;
       }
 
-      const contentPxAvg =
-        rowSample.reduce((acc, item) => {
-          const dataPoint = item.values?.[columnIdOrAccessor];
-          let val = 0;
-          if (dataPoint) {
-            val = stringToPx(dataPoint, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
-          }
-          return acc + val;
-        }, 0) / (rowSample.length || 1);
+      let headerPx, contentPxAvg;
+
+      if (column.scaleWidthModeOptions?.cellString) {
+        contentPxAvg =
+          stringToPx(column.scaleWidthModeOptions.cellString, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
+      } else {
+        contentPxAvg = getContentPxAvg(rowSample, columnIdOrAccessor, webComponentsReactProperties.uniqueId);
+      }
+
+      if (column.scaleWidthModeOptions?.headerString) {
+        headerPx = Math.max(
+          stringToPx(column.scaleWidthModeOptions.headerString, webComponentsReactProperties.uniqueId, true) +
+            CELL_PADDING_PX,
+          60
+        );
+      } else {
+        headerPx =
+          typeof column.Header === 'string'
+            ? Math.max(stringToPx(column.Header, webComponentsReactProperties.uniqueId, true) + CELL_PADDING_PX, 60)
+            : 60;
+      }
 
       metadata[columnIdOrAccessor] = {
-        headerPx:
-          typeof column.Header === 'string'
-            ? Math.max(stringToPx(column.Header, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX, 60)
-            : 60,
-        contentPxAvg: contentPxAvg
+        headerPx,
+        contentPxAvg
       };
       return metadata;
     },
@@ -142,9 +170,10 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hidd
     if (meta && !column.minWidth && !column.width && !meta.headerDefinesWidth) {
       let targetWidth;
       const { contentPxAvg, headerPx } = meta;
+
       if (availableWidthPrio1 > 0) {
         const factor = contentPxAvg / totalContentPxAvgPrio1;
-        targetWidth = Math.min(availableWidthPrio1 * factor, contentPxAvg);
+        targetWidth = Math.max(Math.min(availableWidthPrio1 * factor, contentPxAvg), headerPx);
         availableWidthPrio2 -= targetWidth;
       }
       return {
@@ -183,7 +212,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   }
   const { rows, state } = instance;
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
-  const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
+  const { scaleWidthMode, loading, uniqueId } = instance.webComponentsReactProperties;
 
   if (columns.length === 0 || !totalWidth || !AnalyticalTableScaleWidthMode[scaleWidthMode]) {
     return columns;
@@ -296,52 +325,41 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
 
   const columnMeta = visibleColumns.reduce((acc, column) => {
+    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     if (
       column.id === '__ui5wcr__internal_selection_column' ||
       column.id === '__ui5wcr__internal_highlight_column' ||
       column.id === '__ui5wcr__internal_navigation_column'
     ) {
-      acc[column.id ?? column.accessor] = {
+      acc[columnIdOrAccessor] = {
         minHeaderWidth: column.width,
-        fullWidth: column.width,
-        contentCharAvg: 0
+        fullWidth: column.width
       };
       return acc;
     }
 
-    const headerLength = typeof column.Header === 'string' ? column.Header.length : DEFAULT_HEADER_NUM_CHAR;
-
-    // max character length
-    const contentMaxCharLength = Math.max(
-      headerLength,
-      ...rowSample.map((row) => {
-        const dataPoint = row.values?.[column.id ?? column.accessor];
-        if (dataPoint) {
-          if (typeof dataPoint === 'string') return dataPoint.length;
-          if (typeof dataPoint === 'number') return (dataPoint + '').length;
-        }
-        return 0;
-      })
+    const smartWidth = findLongestString(
+      column.scaleWidthModeOptions?.headerString,
+      column.scaleWidthModeOptions?.cellString
     );
 
-    // avg character length
-    const contentCharAvg =
-      rowSample.reduce((acc, item) => {
-        const dataPoint = item.values?.[column.id ?? column.accessor];
-        let val = 0;
-        if (dataPoint) {
-          if (typeof dataPoint === 'string') val = dataPoint.length;
-          if (typeof dataPoint === 'number') val = (dataPoint + '').length;
-        }
-        return acc + val;
-      }, 0) / rowSample.length;
+    if (smartWidth) {
+      const width = Math.max(stringToPx(smartWidth, uniqueId) + CELL_PADDING_PX, 60);
+      acc[columnIdOrAccessor] = {
+        minHeaderWidth: width,
+        fullWidth: width
+      };
+      return acc;
+    }
 
-    const minHeaderWidth = approximateHeaderPxFromCharLength(headerLength);
+    const minHeaderWidth =
+      typeof column.Header === 'string'
+        ? stringToPx(column.Header, uniqueId, true) + CELL_PADDING_PX
+        : DEFAULT_COLUMN_WIDTH;
 
-    acc[column.id ?? column.accessor] = {
+    acc[columnIdOrAccessor] = {
       minHeaderWidth,
-      fullWidth: Math.max(minHeaderWidth, approximateContentPxFromCharLength(contentMaxCharLength)),
-      contentCharAvg
+      fullWidth: Math.max(minHeaderWidth, getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId))
     };
     return acc;
   }, {});
@@ -367,6 +385,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
     return columns.map((column) => {
       const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
       const meta = columnMeta[column.id ?? (column.accessor as string)];
+
       if (isColumnVisible && meta) {
         const { minHeaderWidth } = meta;
 
@@ -378,7 +397,6 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
           minWidth: column.minWidth ?? minHeaderWidth
         };
       }
-
       return column;
     });
   }

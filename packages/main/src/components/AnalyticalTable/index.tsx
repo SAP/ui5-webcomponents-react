@@ -748,7 +748,20 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           />
         )}
       </div>
-      <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
+      <Text
+        aria-hidden="true"
+        id={`scaleModeHelper-${uniqueId}`}
+        className={classes.hiddenSmartColMeasure}
+        data-component-name="AnalyticalTableScaleModeHelper"
+      >
+        {''}
+      </Text>
+      <Text
+        aria-hidden="true"
+        id={`scaleModeHelperHeader-${uniqueId}`}
+        className={clsx(classes.hiddenSmartColMeasure, classes.hiddenSmartColMeasureHeader)}
+        data-component-name="AnalyticalTableScaleModeHelperHeader"
+      >
         {''}
       </Text>
     </>

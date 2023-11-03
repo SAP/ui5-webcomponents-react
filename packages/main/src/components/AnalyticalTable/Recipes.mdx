@@ -159,4 +159,68 @@ Please note that the internal react-table is resetting its hidden state after hi
   />
 ```
 
+## How to scale custom cells?
+
+Scaling of custom cells is not supported when used with `scaleWidthMode: AnalyticalTableScaleWidthMode.Grow` or `scaleWidthMode: AnalyticalTableScaleWidthMode.Smart`, as we're using the text of the cell for our calculation.
+Since v1.22.0 you can use the column option `scaleWidthModeOptions` to pass a string for the internal width calculation of the header cell (`headerString`) and the body cells (`cellString`).
+
+```jsx
+const columns = [
+  // This column is automatically scaled because the header and body cells consists of text content only.
+  { Header: 'Text Content', accessor: 'name' },
+  {
+    accessor: 'age',
+    // The header isn't included in the calculation of the column width, because it contains a custom component.
+    Header: () => (
+      <FlexBox direction={FlexBoxDirection.Column}>
+        <Text wrapping={false}>Long header text in a vertical layout</Text>
+        <Link>Click me!</Link>
+      </FlexBox>
+    ),
+    scaleWidthModeOptions: {
+      headerString: 'Long header text in a vertical layout'
+    }
+  },
+  {
+    id: '1',
+    // The body cells aren't included in the calculation of the column width, because they contain a custom component.
+    Header: 'Custom cell',
+    Cell: () => (
+      <FlexBox direction={FlexBoxDirection.Column}>
+        <Text wrapping={false}>Long body cell text in a vertical layout</Text>
+        <Link>Click me!</Link>
+      </FlexBox>
+    ),
+    scaleWidthModeOptions: {
+      cellString: 'Long body cell text in a vertical layout'
+    }
+  },
+  {
+    id: '2',
+    // Neither the header nor the body cells are included in the calculation of the column width,
+    // because they contain a custom component.
+    Header: () => (
+      <FlexBox direction={FlexBoxDirection.Column}>
+        <Text wrapping={false}>Long header text in a vertical layout</Text>
+        <Link>Click me!</Link>
+      </FlexBox>
+    ),
+    Cell: () => (
+      <FlexBox direction={FlexBoxDirection.Column}>
+        <Text wrapping={false}>Long body cell text in a vertical layout</Text>
+        <Link>Click me!</Link>
+      </FlexBox>
+    ),
+    scaleWidthModeOptions: {
+      headerString: 'Long header text in a vertical layout',
+      cellString: 'Long body cell text in a vertical layout'
+    }
+  }
+];
+```
+
+```jsx
+<AnalyticalTable data={props.data} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Smart} />
+```
+
 <Footer />

@@ -234,7 +234,7 @@ describe('ObjectStatus', () => {
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('not.be.called');
     cy.findByRole('button').should('not.exist');
-    cy.findByTestId('os').should('not.have.attr', 'aria-roledescription');
+    cy.findByText('Object Status').should('exist').and('not.be.visible');
 
     cy.mount(
       <ObjectStatus onClick={click} active>
@@ -243,14 +243,14 @@ describe('ObjectStatus', () => {
     );
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('have.been.calledOnce');
-    cy.findByRole('button').should('have.attr', 'aria-roledescription', 'Object Status Button');
+    cy.findByText('Object Status Button').should('exist').and('not.be.visible');
   });
 
   it('emptyIndicator', () => {
     cy.mount(<ObjectStatus data-testid="os" />);
-    cy.findByTestId('os').children().should('have.length', 0);
-    cy.mount(<ObjectStatus data-testid="os" emptyIndicator />);
     cy.findByTestId('os').children().should('have.length', 1);
+    cy.mount(<ObjectStatus data-testid="os" emptyIndicator />);
+    cy.findByTestId('os').children().should('have.length', 2);
     cy.findByText('–').should('be.visible');
   });
 
