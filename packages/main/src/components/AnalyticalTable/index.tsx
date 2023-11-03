@@ -89,6 +89,25 @@ import { TitleBar } from './TitleBar/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
 
+interface ScaleWidthModeOptions {
+  /**
+   * Defines the string used for internal width calculation of custom header cells (e.g. `Header: () => <Link>Click me!</Link>`).
+   *
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   *
+   * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
+   */
+  headerString?: string;
+  /**
+   * Defines the string used for internal width calculation of the longest cell inside the body of the table (e.g. `Cell: () => <Link>Click me!</Link>`).
+   *
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   *
+   * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
+   */
+  cellString?: string;
+}
+
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
@@ -227,6 +246,16 @@ export interface AnalyticalTableColumnDefinition {
    * Vertical alignment of the cell.
    */
   vAlign?: VerticalAlign;
+  /**
+   * Allows passing a custom string for the internal width calculation of custom cells for `scaleWidthMode` `Grow` and `Smart`.
+   *
+   * You can find out more about it here [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   *
+   * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
+   *
+   * @since 1.22.0
+   */
+  scaleWidthModeOptions: ScaleWidthModeOptions;
 
   // usePopIn
   /**
@@ -444,7 +473,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Default:__ `"Default"`
    *
-   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes. To support them you can use the `scaleWidthModeOptions` column option.
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
    *
    */
@@ -1274,7 +1303,20 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           />
         )}
       </div>
-      <Text aria-hidden="true" id={`smartScaleModeHelper-${uniqueId}`} className={classes.hiddenSmartColMeasure}>
+      <Text
+        aria-hidden="true"
+        id={`scaleModeHelper-${uniqueId}`}
+        className={classes.hiddenSmartColMeasure}
+        data-component-name="AnalyticalTableScaleModeHelper"
+      >
+        {''}
+      </Text>
+      <Text
+        aria-hidden="true"
+        id={`scaleModeHelperHeader-${uniqueId}`}
+        className={clsx(classes.hiddenSmartColMeasure, classes.hiddenSmartColMeasureHeader)}
+        data-component-name="AnalyticalTableScaleModeHelperHeader"
+      >
         {''}
       </Text>
     </>
