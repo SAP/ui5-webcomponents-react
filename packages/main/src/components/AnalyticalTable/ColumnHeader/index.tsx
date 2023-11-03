@@ -18,8 +18,8 @@ import { createUseStyles } from 'react-jss';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../Text/index.js';
-import type { DivWithCustomScrollProp } from '../index.js';
 import type { ColumnType } from '../types/ColumnType.js';
+import type { DivWithCustomScrollProp } from '../types/index.js';
 import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
