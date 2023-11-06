@@ -6768,6 +6768,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ui5/webcomponents-react-cli@workspace:packages/cli":
+  version: 0.0.0-use.local
+  resolution: "@ui5/webcomponents-react-cli@workspace:packages/cli"
+  dependencies:
+    custom-elements-manifest: "npm:^2.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@ui5/webcomponents-react@workspace:packages/main":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
@@ -9652,6 +9660,13 @@ __metadata:
   version: 3.1.1
   resolution: "csstype@npm:3.1.1"
   checksum: 10c0/7c8b8c5923049d84132581c13bae6e1faf999746fe3998ba5f3819a8e1cdc7512ace87b7d0a4a69f0f4b8ba11daf835d4f1390af23e09fc4f0baad52c084753a
+  languageName: node
+  linkType: hard
+
+"custom-elements-manifest@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "custom-elements-manifest@npm:2.0.0"
+  checksum: 0499cc63e87813fbd895ad4d23657b371842ce2b632d83c1f5ab272784be4f9f78be693fe9a73370ae7fdb0bf5830cf6ee03ef8c3f27ae8922c8a156da71bebb
   languageName: node
   linkType: hard
 
