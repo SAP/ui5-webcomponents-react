@@ -30,6 +30,7 @@
     "dist"
   ],
   "dependencies": {
-    "custom-elements-manifest": "^2.0.0"
+    "custom-elements-manifest": "^2.0.0",
+    "dedent": "^1.5.1"
   }
 }

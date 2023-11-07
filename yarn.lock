@@ -6773,6 +6773,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-cli@workspace:packages/cli"
   dependencies:
     custom-elements-manifest: "npm:^2.0.0"
+    dedent: "npm:^1.5.1"
   languageName: unknown
   linkType: soft
 
@@ -9966,7 +9967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dedent@npm:^1.0.0":
+"dedent@npm:^1.0.0, dedent@npm:^1.5.1":
   version: 1.5.1
   resolution: "dedent@npm:1.5.1"
   peerDependencies:

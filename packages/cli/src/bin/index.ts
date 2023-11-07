@@ -39,7 +39,7 @@ switch (command) {
       process.exit(1);
     }
 
-    const createWrapperModule = await import('../scripts/createWrappers.js');
+    const createWrapperModule = await import('../scripts/create-wrappers/main.js');
 
     const outDir = resolve(process.cwd(), values.out!);
     // eslint-disable-next-line @typescript-eslint/await-thenable
