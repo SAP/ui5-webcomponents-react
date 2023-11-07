@@ -183,7 +183,7 @@ export interface AnalyticalTableColumnDefinition {
    *
    * @since 1.22.0
    */
-  scaleWidthModeOptions: ScaleWidthModeOptions;
+  scaleWidthModeOptions?: ScaleWidthModeOptions;
 
   // usePopIn
   /**
