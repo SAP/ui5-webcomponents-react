@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.0...v1.22.1) (2023-11-07)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** make `scaleWidthModeOptions` optional ([#5221](https://github.com/SAP/ui5-webcomponents-react/issues/5221)) ([566a2bc](https://github.com/SAP/ui5-webcomponents-react/commit/566a2bcceb11b79e0be5b76c34ea4f6b73eba38b))
+- **deps:** update dependency recharts to v2.9.3 ([#5220](https://github.com/SAP/ui5-webcomponents-react/issues/5220)) ([c4a91e4](https://github.com/SAP/ui5-webcomponents-react/commit/c4a91e46c74b49c13cc1b304af7f83fc4ce5385c))
+
 # [1.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.2...v1.22.0) (2023-11-03)
 
 ### Bug Fixes
