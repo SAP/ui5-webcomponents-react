@@ -1,5 +1,6 @@
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
@@ -13,7 +14,6 @@ import {
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -230,6 +230,7 @@ describe('AnalyticalTable', () => {
       args: Array<string | number>;
       onTableScroll?: AnalyticalTablePropTypes['onTableScroll'];
     }
+
     const scroll = cy.spy().as('scroll');
     const ScrollTable = (props: ScrollTableProps) => {
       const { scrollFn, args, onTableScroll } = props;
@@ -1281,6 +1282,7 @@ describe('AnalyticalTable', () => {
     const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
     cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} />);
     cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
+
     function testAlternateRowColor() {
       for (let i = 1; i <= 4; i++) {
         if (i % 2) {
@@ -1299,6 +1301,7 @@ describe('AnalyticalTable', () => {
         }
       });
     }
+
     testAlternateRowColor();
     cy.findByText('Name').click();
     cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
@@ -2479,6 +2482,34 @@ describe('AnalyticalTable', () => {
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'ui5-button');
+  });
+
+  it('controlled bodyHeight', () => {
+    const TestComp = (args) => {
+      const [bodyHeight, setBodyHeight] = useState(undefined);
+      const useControlledState = (state) => {
+        return useMemo(() => {
+          return { ...state, bodyHeight };
+        }, [state, bodyHeight]);
+      };
+      return (
+        <>
+          <Button
+            data-testid="btn"
+            onClick={() => {
+              setBodyHeight(800);
+            }}
+          >
+            Set Body Height 800
+          </Button>
+          <AnalyticalTable {...args} reactTableOptions={{ useControlledState }} />
+        </>
+      );
+    };
+    cy.mount(<TestComp data={data} columns={columns} />);
+    cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'height', '220px');
+    cy.findByTestId('btn').click();
+    cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'height', '800px');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

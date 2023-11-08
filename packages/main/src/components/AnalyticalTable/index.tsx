@@ -78,6 +78,7 @@ import type {
   AnalyticalTableColumnDefinition,
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
+  AnalyticalTableState,
   DivWithCustomScrollProp
 } from './types/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
@@ -264,7 +265,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     headerGroups,
     rows,
     prepareRow,
-    state: tableState,
     setColumnOrder,
     dispatch,
     totalColumnsWidth,
@@ -273,6 +273,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
+  const tableState: AnalyticalTableState = tableInstanceRef.current.state;
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
@@ -421,11 +422,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [tableState?.interactiveRowsHavePopIn, tableState?.popInColumns?.length]);
 
   const tableBodyHeight = useMemo(() => {
+    if (typeof tableState.bodyHeight === 'number') {
+      return tableState.bodyHeight;
+    }
     const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
 
     const rowHeight =
       visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
-      tableState?.interactiveRowsHavePopIn ||
+      tableState.interactiveRowsHavePopIn ||
       adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
@@ -441,7 +445,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       }
       return initialBodyHeightWithSubComps;
     }
-
     return rowHeight * rowNum;
   }, [
     internalRowHeight,
@@ -450,10 +453,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     minRows,
     popInRowHeight,
     visibleRowCountMode,
-    tableState?.interactiveRowsHavePopIn,
+    tableState.interactiveRowsHavePopIn,
     adjustTableHeightOnPopIn,
     includeSubCompRowHeight,
-    tableState.subComponentsHeight
+    tableState.subComponentsHeight,
+    tableState.bodyHeight
   ]);
 
   // scroll bar detection
