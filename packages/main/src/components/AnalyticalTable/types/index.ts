@@ -17,6 +17,28 @@ import type {
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../interfaces/index.js';
 
+export interface AnalyticalTableState {
+  columnOrder: string[];
+  columnResizing: Record<string, any>;
+  expanded: Record<string | number, any>;
+  filters: Record<string | number, any>[];
+  groupBy: string[];
+  hiddenColumns: string[];
+  selectedRowIds: Record<string | number, any>;
+  sortBy: Record<string | number, any>[];
+  tableClientWidth?: number;
+  dndColumn?: string;
+  popInColumns?: Record<string | number, any>[];
+  isRtl?: boolean;
+  isScrollable?: boolean;
+  subComponentsHeight?: Record<string | number, any>;
+  visibleRows?: number;
+  rowCollapsed?: boolean;
+  bodyHeight?: number;
+  interactiveRowsHavePopIn?: boolean;
+  tableColResized?: true;
+}
+
 interface ScaleWidthModeOptions {
   /**
    * Defines the string used for internal width calculation of custom header cells (e.g. `Header: () => <Link>Click me!</Link>`).
