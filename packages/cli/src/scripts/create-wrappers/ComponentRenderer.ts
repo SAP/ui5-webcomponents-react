@@ -1,5 +1,6 @@
 import type * as CEM from 'custom-elements-manifest';
 import dedent from 'dedent';
+import { summaryFormatter } from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -10,6 +11,7 @@ export class ComponentRenderer extends AbstractRenderer {
   private attributes: CEM.Attribute[] = [];
   private slots: CEM.Slot[] = [];
   private events: CEM.Event[] = [];
+  private description: string = '';
 
   setDynamicImportPath(value: string) {
     this.dynamicImportPath = value;
@@ -31,9 +33,19 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
-  render(context: WebComponentWrapper): string {
+  setDescription(value: string) {
+    this.description = value;
+    return this;
+  }
+
+  prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
-    return dedent`
+  }
+
+  render(context: WebComponentWrapper): string {
+    const comment = `/**\n * ${summaryFormatter(this.description)}\n */`;
+
+    const component = dedent`
       const ${context.componentName} = withWebComponent<${context.componentName}PropTypes, ${
         context.componentName
       }DomRef>('${context.tagName}', 
@@ -55,5 +67,7 @@ export class ComponentRenderer extends AbstractRenderer {
     
     ${context.componentName}.displayName = '${context.componentName}';
     `;
+
+    return [comment, component].join('\n');
   }
 }

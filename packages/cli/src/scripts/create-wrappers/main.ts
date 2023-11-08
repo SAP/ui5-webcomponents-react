@@ -2,6 +2,7 @@ import type * as CEM from 'custom-elements-manifest';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
+import { setGlobalTagNameMap } from '../../util/formatters.js';
 import { AttributesRenderer } from './AttributesRenderer.js';
 import { ComponentRenderer } from './ComponentRenderer.js';
 import { DomRefRenderer } from './DomRefRenderer.js';
@@ -21,6 +22,18 @@ export default async function createWrappers(packageName: string, outDir: string
     await readFile(customElementManifestPath, { encoding: 'utf-8' })
   );
 
+  const tagNameToComponentName = customElementManifest.modules.reduce(
+    (map, mod) => {
+      const declaration = mod.declarations?.at(0) as CEM.CustomElementDeclaration;
+      if (declaration) {
+        map[declaration.tagName!] = declaration.name;
+      }
+      return map;
+    },
+    {} as Record<string, string>
+  );
+  setGlobalTagNameMap(tagNameToComponentName);
+
   for (const module of customElementManifest.modules) {
     const declaration = module.declarations?.at(0) as CEM.CustomElementDeclaration;
     const webComponentImport = `${packageName}/dist/${module.path}`;
@@ -35,6 +48,7 @@ export default async function createWrappers(packageName: string, outDir: string
     wrapper.addRenderer(new PropTypesRenderer());
     wrapper.addRenderer(
       new ComponentRenderer()
+        .setDescription(declaration.description ?? '')
         .setAttributes(declaration.attributes ?? [])
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])

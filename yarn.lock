@@ -6423,6 +6423,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/turndown@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "@types/turndown@npm:5.0.4"
+  checksum: 8e61d87dc662b05fced9182d60b1f7a42417b6eb8b8c5bc236017d9b1980d2909aab18a945cba82d4c49827799031bf2e89d95f0e86b241c4fb011a844572478
+  languageName: node
+  linkType: hard
+
 "@types/ua-parser-js@npm:^0.7.33":
   version: 0.7.36
   resolution: "@types/ua-parser-js@npm:0.7.36"
@@ -6774,6 +6781,7 @@ __metadata:
   dependencies:
     custom-elements-manifest: "npm:^2.0.0"
     dedent: "npm:^1.5.1"
+    turndown: "npm:^7.1.2"
   languageName: unknown
   linkType: soft
 
@@ -22080,7 +22088,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turndown@npm:^7.0.0":
+"turndown@npm:^7.0.0, turndown@npm:^7.1.2":
   version: 7.1.2
   resolution: "turndown@npm:7.1.2"
   dependencies:
@@ -22364,6 +22372,7 @@ __metadata:
     "@types/node": "npm:^20.0.0"
     "@types/react": "npm:^18.2.23"
     "@types/react-dom": "npm:^18.2.7"
+    "@types/turndown": "npm:^5.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
     "@ui5/webcomponents": "npm:1.21.2"

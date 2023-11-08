@@ -40,7 +40,7 @@ export class WebComponentWrapper {
   }
 
   addUnassignedImport(pkgName: string) {
-    const importConfig = this.getOrCreateImportConfig(pkgName);
+    this.getOrCreateImportConfig(pkgName);
     return this;
   }
 

@@ -31,6 +31,7 @@
   ],
   "dependencies": {
     "custom-elements-manifest": "^2.0.0",
-    "dedent": "^1.5.1"
+    "dedent": "^1.5.1",
+    "turndown": "^7.1.2"
   }
 }
