@@ -36,6 +36,7 @@ export interface AnalyticalTableState {
   rowCollapsed?: boolean;
   bodyHeight?: number;
   interactiveRowsHavePopIn?: boolean;
+  tableColResized?: true;
 }
 
 interface ScaleWidthModeOptions {
