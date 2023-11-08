@@ -93,6 +93,48 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
+  it('gap values', () => {
+    cy.mount(
+      <FlexBox data-testid="flexbox">
+        <span>Test 1</span>
+        <span>Test 2</span>
+        <span>Test 3</span>
+      </FlexBox>
+    );
+
+    cy.findByTestId('flexbox').should('have.css', 'gap', 'normal');
+
+    cy.mount(
+      <FlexBox gap={1} data-testid="flexbox">
+        <span>Test 1</span>
+        <span>Test 2</span>
+        <span>Test 3</span>
+      </FlexBox>
+    );
+
+    cy.findByTestId('flexbox').should('have.css', 'gap', '16px');
+
+    cy.mount(
+      <FlexBox gap={'1rem'} data-testid="flexbox">
+        <span>Test 1</span>
+        <span>Test 2</span>
+        <span>Test 3</span>
+      </FlexBox>
+    );
+
+    cy.findByTestId('flexbox').should('have.css', 'gap', '16px');
+
+    cy.mount(
+      <FlexBox gap={'1rem 0'} direction={'Column'} data-testid="flexbox">
+        <span>Test 1</span>
+        <span>Test 2</span>
+        <span>Test 3</span>
+      </FlexBox>
+    );
+
+    cy.findByTestId('flexbox').should('have.css', 'gap', '16px 0px');
+  });
+
   mountWithCustomTagName(FlexBox, { children: <span>Test 1</span> });
   cypressPassThroughTestsFactory(FlexBox);
 });

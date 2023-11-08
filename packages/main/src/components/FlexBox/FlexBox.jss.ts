@@ -1,6 +1,10 @@
+import type { CSSProperties } from 'react';
+
 export const styles = {
   flexBox: {
     display: 'flex',
+
+    gap: ({ gap }: { gap: CSSProperties['gap'] }) => (typeof gap === 'number' ? `${gap}rem` : gap),
 
     [`&:where($fitContainer)`]: { width: '100%', height: '100%' },
 
