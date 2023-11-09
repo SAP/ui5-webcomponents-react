@@ -139,7 +139,7 @@ const meta = {
     columns: {
       control: { disable: true },
       description:
-        'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.'
+        'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.<br /><br /><b>Must be memoized!</b>'
     },
     reactTableOptions: { control: { disable: true } },
     tableHooks: { control: { disable: true } },
