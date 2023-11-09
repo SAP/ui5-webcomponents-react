@@ -454,19 +454,33 @@ const COLUMNS = [
 
 ### How to change the content of the pop-in cell?
 
-You can change the content of the pop-in cell without mutating the original cell by using the `isPopIn` prop of the table instance returned by the `Cell` column option:
+You can change the content of the pop-in cell without mutating the original cell by using the `isPopIn` prop of the table instance returned by the `Cell` column option.
+
+**Note:** The `cell` property of the custom `Cell` renderer, always returns the properties and values of the cell the "popin" cell is rendered into.
 
 ```js
 const COLUMNS = [
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
   {
     responsivePopIn: true,
     responsiveMinWidth: 600,
     id: 'col',
     Header: 'Column',
-    Cell: ({ isPopIn }) => {
+    Cell: ({ isPopIn, cell, value }) => {
       if (isPopIn) {
+        // this will log the properties of the `name` cell (e.g. `cell.value` is the value of the `name` cell)
+        console.log(cell);
+        // this will always log the value of this cell (`col` cell)
+        console.log(value);
         return 'pop-in content';
       }
+      // this will log the properties of this cell (e.g. `cell.value` is the value of the `col` cell)
+      console.log(cell);
+      // this will always log the value of this cell (`col` cell)
+      console.log(value);
       return 'original content';
     }
   }
