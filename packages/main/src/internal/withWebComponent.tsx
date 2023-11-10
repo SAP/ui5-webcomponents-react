@@ -3,7 +3,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { ComponentType, ReactElement, Ref } from 'react';
-import React, { Children, cloneElement, forwardRef, Fragment, useEffect, useState } from 'react';
+import React, { cloneElement, forwardRef, Fragment, useEffect, useRef, useState } from 'react';
 import type { CommonProps, Ui5DomRef } from '../interfaces/index.js';
 import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
@@ -63,6 +63,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       return acc;
     }, {});
 
+    const keyIndex = useRef(0);
     const slots = slotProperties.reduce((acc, name) => {
       const slotValue = rest[name] as ReactElement;
 
@@ -76,23 +77,20 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       }
 
       const slottedChildren = [];
-      let index = 0;
       const removeFragments = (element) => {
         if (!element) return;
         if (element.type === Fragment) {
-          Children.toArray(element.props?.children)
-            .filter(Boolean)
-            .forEach((item) => {
-              removeFragments(item);
-            });
+          element.props?.children.filter(Boolean).forEach((item) => {
+            removeFragments(item);
+          });
         } else {
           slottedChildren.push(
             cloneElement(element, {
-              key: `${name}-${index}`,
+              key: element.key ?? `${name}-${keyIndex.current}`,
               slot: name
             })
           );
-          index++;
+          keyIndex.current++;
         }
       };
 
