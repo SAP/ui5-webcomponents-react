@@ -80,9 +80,13 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       const removeFragments = (element) => {
         if (!element) return;
         if (element.type === Fragment) {
-          element.props?.children.filter(Boolean).forEach((item) => {
-            removeFragments(item);
-          });
+          if (Array.isArray(element.props?.children)) {
+            element.props.children.filter(Boolean).forEach((item) => {
+              removeFragments(item);
+            });
+          } else {
+            removeFragments(element.props?.children);
+          }
         } else {
           slottedChildren.push(
             cloneElement(element, {
