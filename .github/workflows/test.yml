@@ -18,7 +18,7 @@ jobs:
           - base
           - charts
           - cypress-commands
-          - main/src/components
+          - main
       fail-fast: false
 
     steps:
