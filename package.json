@@ -49,7 +49,7 @@
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.23.3",
     "@babel/preset-env": "7.23.3",
-    "@babel/preset-react": "7.22.15",
+    "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
     "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^9.0.0",
