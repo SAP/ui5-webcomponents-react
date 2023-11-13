@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.1...v1.22.2) (2023-11-13)
+
+### Bug Fixes
+
+- **AnalyticalTable:** revert deprecation of `scaleXFactor` ([#5239](https://github.com/SAP/ui5-webcomponents-react/issues/5239)) ([6710b18](https://github.com/SAP/ui5-webcomponents-react/commit/6710b1896693c57257b62ad0ee02b7bde92f1d80))
+- **withWebcomponent:** correctly propagate/set `key` for `slot` components ([#5230](https://github.com/SAP/ui5-webcomponents-react/issues/5230)) ([96b0de4](https://github.com/SAP/ui5-webcomponents-react/commit/96b0de41d85d1e4b6c78ddd3513b4ed930fb53d3))
+
 ## [1.22.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.0...v1.22.1) (2023-11-07)
 
 ### Bug Fixes
