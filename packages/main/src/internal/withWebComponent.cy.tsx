@@ -79,6 +79,8 @@ describe('withWebComponent', () => {
       <Bar
         startContent={
           <>
+            {true}
+            not mounted
             {false && <span>not mounted</span>}
             <span>mounted</span>
             <>
