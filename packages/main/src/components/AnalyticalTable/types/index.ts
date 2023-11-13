@@ -430,10 +430,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
-   *
-   * __Note:__ As of `v1.20.0` this prop has no effect, since scaling is now supported out of the box.
-   *
-   * @deprecated: This prop has no effect, since scaling is now supported out of the box. It will be removed with our next major release.
    */
   scaleXFactor?: number;
   /**
