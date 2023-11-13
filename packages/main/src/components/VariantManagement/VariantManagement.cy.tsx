@@ -102,11 +102,14 @@ describe('VariantManagement', () => {
     cy.mount(<WithCustomValidation />);
     cy.contains('Max 12 chars').click();
     cy.findByText('Manage').click();
-    cy.get('[ui5-dialog]').should('be.visible');
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
     cy.realPress('Tab');
+    // fallback
+    cy.get('body').click({ force: true });
     cy.realPress('Escape');
+    cy.get('[ui5-dialog]').should('not.exist');
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
@@ -117,7 +120,7 @@ describe('VariantManagement', () => {
     cy.findByTestId('12chars').typeIntoUi5Input('A');
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
     cy.findByText('Save').click();
-    cy.get('[ui5-dialog]').should('be.visible');
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('12chars').typeIntoUi5Input('{backspace}');
     cy.findByTestId('12chars').typeIntoUi5Input('{backspace}B');
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
@@ -131,7 +134,7 @@ describe('VariantManagement', () => {
     cy.mount(<WithCustomValidation selectedByIndex={0} />);
     cy.contains('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
-    cy.get('[ui5-dialog]').should('be.visible');
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
     cy.realPress('Tab');
@@ -148,7 +151,7 @@ describe('VariantManagement', () => {
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
     cy.findByText('Save').click();
-    cy.get('[ui5-dialog]').should('be.visible');
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.focused().should('have.attr', 'value-state', 'Error');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('{selectall}{backspace}A');
     cy.findByText('Save').click();
