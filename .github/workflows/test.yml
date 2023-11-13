@@ -52,4 +52,4 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
-          carryforward: 'base,charts,cypress-commands,main/src/components'
+          carryforward: 'base,charts,cypress-commands,main/src/components,main/src/internal'
