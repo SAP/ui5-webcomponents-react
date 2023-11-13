@@ -325,8 +325,8 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       {props?.['data-header-content-visible']
         ? expandedContent
         : props['data-is-snapped-rendered-outside']
-        ? undefined
-        : snappedContent}
+          ? undefined
+          : snappedContent}
     </FlexBox>
   );
 });
