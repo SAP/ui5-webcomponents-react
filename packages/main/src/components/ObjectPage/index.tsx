@@ -890,8 +890,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         {placeholder
           ? placeholder
           : mode === ObjectPageMode.IconTabBar
-          ? getSectionById(children, internalSelectedSectionId)
-          : children}
+            ? getSectionById(children, internalSelectedSectionId)
+            : children}
         <div style={{ height: spacerBottomHeight }} aria-hidden="true" />
       </div>
       {footer && <div style={{ height: '1rem' }} data-component-name="ObjectPageFooterSpacer" />}
