@@ -125,6 +125,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     renderRowSubComponent,
     rowHeight,
     scaleWidthMode,
+    scaleXFactor,
     selectedRowIds,
     selectionBehavior,
     selectionMode,
@@ -573,8 +574,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     horizontal: true,
     overscan: isRtl ? Infinity : overscanCountHorizontal,
     indexAttribute: 'data-column-index',
-    // necessary as otherwise values are rounded which leads to wrong total width calculation
-    measureElement: (el) => el.getBoundingClientRect().width
+    // necessary as otherwise values are rounded which leads to wrong total width calculation leading to unnecessary scrollbar
+    measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined
   });
 
   useEffect(() => {
