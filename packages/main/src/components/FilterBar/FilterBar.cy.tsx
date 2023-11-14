@@ -391,6 +391,7 @@ describe('FilterBar.cy.tsx', () => {
     );
 
     cy.findByText('Filters (42)').click();
+    cy.focused().should('have.attr', 'data-component-name', 'FilterBarDialogSearchInput');
 
     cy.get('[ui5-table-row]').should('have.length', 3);
 

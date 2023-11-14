@@ -1,7 +1,7 @@
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -164,6 +164,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setFilteredAttribute
   } = props;
   const classes = useStyles();
+  const uniqueId = useIsomorphicId();
   const [searchString, setSearchString] = useState('');
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});
@@ -374,6 +375,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       draggable
       className={classes.dialogComponent}
       preventFocusRestore
+      initialFocus={`${uniqueId}-fb-dialog-search`}
       header={
         <Bar
           design={BarDesign.Header}
@@ -454,6 +456,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         </Toolbar>
         <FlexBox className={classes.searchInputContainer}>
           <Input
+            id={`${uniqueId}-fb-dialog-search`}
             noTypeahead
             placeholder={searchForFiltersText}
             onInput={handleSearch}
