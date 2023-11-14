@@ -25,7 +25,7 @@ jobs:
 
       ### Semantic Release Bot comments for issues and PRs ###
       - name: Add release comments to issues and PRs
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
