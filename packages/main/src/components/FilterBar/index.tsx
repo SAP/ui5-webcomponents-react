@@ -610,8 +610,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       }
       const usedSpaceLastRow = filterItemsWidth % filterAreaWidth;
       const emptySpaceLastRow = filterAreaWidth - usedSpaceLastRow;
-      // deduct width of buttons container of the empty space in the last row to calculate number of spacers
-      const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth);
+      // deduct width of buttons container of the empty space in the last row to calculate number of spacers (-1 because of "lastSpacer")
+      const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth) - 1;
       for (let i = 0; i < numberOfSpacers; i++) {
         spacers.push(<div key={`filter-spacer-${i}`} className={classes.spacer} />);
       }
