@@ -1,0 +1,2 @@
+import{r as l}from"./index-f1f2c4b1.js";import{C as n,d as p}from"./defaults-eeec244e.js";import{g as f}from"./useTooltipFormatter-a2292f06.js";const h=(a,r,o)=>l.useMemo(()=>{let t=0;const e=r[0];if(a instanceof Array&&e){const s=i=>r.map(m=>e.formatter(n.getValueByDataKey(i,m.accessor,"")));t=Math.max(...a.map(s).flat().map(f)),t+=8}return t=Math.min(t,p),o==="middle"?[t,{width:"auto"}]:[t,{marginLeft:t,maxWidth:`calc(100% - ${t+10}px)`}]},[a,r]);export{h as u};
+//# sourceMappingURL=useLongestYAxisLabel-9f2aa1b7.js.map
