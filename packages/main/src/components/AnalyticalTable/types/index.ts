@@ -508,10 +508,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"Expandable":__ Render subcomponents as expandable container of each row.
    * - __"Visible":__ Render subcomponents below each row.
    * - __"IncludeHeight":__ Render subcomponents below each row. The height of each initially visible subcomponent (defined by `visibleRows`) is taken into account when defining the body height of the table.
-   * - __"IncludeHeightExpandable":__ Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, so that the height of the table changes when a subcomponent is expanded/collapsed.
+   * - __"IncludeHeightExpandable":__ Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, so that the height of the table changes when a subcomponent is expanded/collapsed. (since: v1.23.0)
    *
    * __Default:__ `"Expandable"`
    *
+   * @since 1.19.0
    */
   subComponentsBehavior?: AnalyticalTableSubComponentsBehavior | keyof typeof AnalyticalTableSubComponentsBehavior;
   /**

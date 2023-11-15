@@ -21,6 +21,8 @@ export enum AnalyticalTableSubComponentsBehavior {
    *
    * __Note:__ This mode can lead to performance degradation, please use with caution!
    * __Note:__ `AnalyticalTableVisibleRowCountMode.Interactive` is not supported with this mode.
+   *
+   * @since 1.23.0
    */
   IncludeHeightExpandable = 'IncludeHeightExpandable'
 }
