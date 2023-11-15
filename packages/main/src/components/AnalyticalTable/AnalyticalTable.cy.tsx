@@ -1639,6 +1639,33 @@ describe('AnalyticalTable', () => {
     cy.findByText('SubComponent 2').should('be.visible');
     cy.findByTitle('Expand Node').should('not.exist');
     cy.findByTitle('Collapse Node').should('not.exist');
+
+    const loadMore = cy.spy().as('more');
+    cy.mount(
+      <AnalyticalTable
+        onLoadMore={loadMore}
+        infiniteScroll={true}
+        infiniteScrollThreshold={0}
+        data={data}
+        columns={columns}
+        renderRowSubComponent={renderRowSubComponentLarge}
+        visibleRows={3}
+        subComponentsBehavior={AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable}
+      />
+    );
+    cy.findByText('A').should('be.visible');
+    cy.findByText('X').should('be.visible');
+    cy.findByText('C').should('not.be.visible');
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.findByText('A').should('be.visible');
+    cy.findByText('X').should('be.visible');
+    cy.findByText('C').should('not.be.visible');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.findByText('A').should('be.visible');
+    cy.findByText('X').should('be.visible');
+    cy.findByText('C').should('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.get('@more').should('have.been.calledOnce');
   });
 
   it('pop-in columns', () => {
