@@ -26,6 +26,9 @@ export class ImportsRenderer extends AbstractRenderer {
       .map((module) => {
         const config = context.importMap.get(module)!;
         let regularImports = '';
+        if (config.typeOnlyDefault) {
+          regularImports += 'type ';
+        }
         if (config.default) {
           regularImports += config.default;
         }
@@ -36,7 +39,11 @@ export class ImportsRenderer extends AbstractRenderer {
           regularImports += `{ ${sortAndMergeMembers(config.named)} }`;
         }
 
-        let imports = `import ${regularImports} from '${module}';`;
+        let imports = '';
+        if (regularImports.length > 0) {
+          imports = `import ${regularImports} from '${module}';`;
+        }
+
         if (config.types.length > 0) {
           imports += '\n';
           imports += `import type { ${sortAndMergeMembers(config.types)} } from '${module}';`;

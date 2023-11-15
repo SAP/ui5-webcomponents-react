@@ -11,6 +11,20 @@ const turndownService = new TurndownService({
   codeBlockStyle: 'fenced'
 });
 
+turndownService.addRule('ui5-link', {
+  filter: (node) => node.nodeName === 'UI5-LINK' && !!node.getAttribute('href'),
+  replacement: (content, node) => {
+    // @ts-expect-error: types are weird here?
+    const href = node.getAttribute('href');
+    // @ts-expect-error: types are weird here?
+    let title = node.getAttribute('title');
+    if (title) {
+      title = ' "' + title + '"';
+    }
+    return '[' + content + '](' + href + title + ')';
+  }
+});
+
 function replaceUi5TagNames(text: string) {
   return text.replaceAll(/(<code>)([\w\d-]+)(<\/code>)/g, (match, openingTag, tagName, closingTag) => {
     if (ui5TagNameToComponentNameMap[tagName]) {
@@ -20,8 +34,11 @@ function replaceUi5TagNames(text: string) {
   });
 }
 
-export function formatters(html: string) {
-  return turndownService.turndown(html);
+export function propDescriptionFormatter(html: string) {
+  let summary = replaceUi5TagNames(html);
+  summary = turndownService.turndown(summary);
+  summary = summary.replaceAll('\n', '\n * ');
+  return summary;
 }
 
 export function summaryFormatter(htmlDesc: string) {
@@ -35,4 +52,11 @@ export function summaryFormatter(htmlDesc: string) {
   summary = summary.replaceAll('\n', '\n * ');
 
   return summary;
+}
+
+export function snakeCaseToCamelCase(str: string) {
+  return str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+}
+export function capitalizeFirstLetter(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

@@ -38,14 +38,14 @@ export default async function createWrappers(packageName: string, outDir: string
     const declaration = module.declarations?.at(0) as CEM.CustomElementDeclaration;
     const webComponentImport = `${packageName}/dist/${module.path}`;
 
-    const wrapper = new WebComponentWrapper(declaration.tagName!, declaration.name);
+    const wrapper = new WebComponentWrapper(declaration.tagName!, declaration.name, webComponentImport);
     wrapper.addNamedImport('@ui5/webcomponents-react', 'withWebComponent');
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());
-    wrapper.addRenderer(new AttributesRenderer());
+    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.attributes ?? []));
     wrapper.addRenderer(new DomRefRenderer());
-    wrapper.addRenderer(new PropTypesRenderer());
+    wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
       new ComponentRenderer()
         .setDescription(declaration.description ?? '')

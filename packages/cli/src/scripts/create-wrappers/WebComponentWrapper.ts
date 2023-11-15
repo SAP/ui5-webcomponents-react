@@ -2,6 +2,7 @@ import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 
 interface ImportConfig {
   default: string | null;
+  typeOnlyDefault: boolean;
   named: string[];
   types: string[];
 }
@@ -9,6 +10,7 @@ interface ImportConfig {
 export class WebComponentWrapper {
   tagName: string;
   componentName: string;
+  modulePath: string;
 
   importMap = new Map<string, ImportConfig>();
   private renderers = new Array<AbstractRenderer>();
@@ -16,20 +18,29 @@ export class WebComponentWrapper {
   public exportSet = new Set<string>();
   public typeExportSet = new Set<string>();
 
-  constructor(tagName: string, componentName: string) {
+  constructor(tagName: string, componentName: string, modulePath: string) {
     this.tagName = tagName;
     this.componentName = componentName;
+    this.modulePath = modulePath;
   }
 
   addDefaultImport(pkgName: string, localName: string) {
     const importConfig = this.getOrCreateImportConfig(pkgName);
     importConfig.default = localName;
+    importConfig.typeOnlyDefault = false;
     return this;
   }
 
   addNamedImport(pkgName: string, localName: string) {
     const importConfig = this.getOrCreateImportConfig(pkgName);
     importConfig.named.push(localName);
+    return this;
+  }
+
+  addDefaultTypeImport(pkgName: string, localName: string) {
+    const importConfig = this.getOrCreateImportConfig(pkgName);
+    importConfig.default = localName;
+    importConfig.typeOnlyDefault = true;
     return this;
   }
 
@@ -74,6 +85,7 @@ export class WebComponentWrapper {
     if (!this.importMap.has(pkgName)) {
       this.importMap.set(pkgName, {
         default: null,
+        typeOnlyDefault: false,
         named: [],
         types: []
       });
