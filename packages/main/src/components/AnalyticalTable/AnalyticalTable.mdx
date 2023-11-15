@@ -282,6 +282,7 @@ The prop expects a function with an optional parameter containing the `row` inst
 
 - When `renderRowSubComponent` is set, `grouping` is disabled.
 - When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
+- When `AnalyticalTableSubComponentsBehavior.IncludeHeight` or `AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable` is used, `AnalyticalTableVisibleRowCountMode.Interactive` is not supported.
 
 <ControlsWithNote of={ComponentStories.Subcomponents} include={['renderRowSubComponent', 'subComponentsBehavior']} />
 

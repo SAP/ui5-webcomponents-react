@@ -478,18 +478,7 @@ export const Subcomponents: Story = {
         </FlexBox>
       );
     };
-    return (
-      <AnalyticalTable
-        {...args}
-        data={args.data}
-        // data={args.data.slice(0,2)}
-        columns={args.columns}
-        // visibleRows={5}
-        // minRows={2}
-        subComponentsBehavior="IncludeHeightExpandable"
-        renderRowSubComponent={renderRowSubComponent}
-      />
-    );
+    return <AnalyticalTable {...args} renderRowSubComponent={renderRowSubComponent} />;
   }
 };
 
