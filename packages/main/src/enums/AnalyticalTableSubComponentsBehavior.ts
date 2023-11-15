@@ -13,5 +13,11 @@ export enum AnalyticalTableSubComponentsBehavior {
   /**
    * Render subcomponents below each row. The height of each initially visible subcomponent (defined by `visibleRows`) is taken into account when defining the body height of the table.
    */
-  IncludeHeight = 'IncludeHeight'
+  IncludeHeight = 'IncludeHeight',
+  /**
+   * Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, as result the table height changes when expanding/collapsing a subcomponent.
+   *
+   * __Note:__ This mode can lead to performance degradation, please use with caution!
+   */
+  IncludeHeightExpandable = 'IncludeHeightExpandable'
 }

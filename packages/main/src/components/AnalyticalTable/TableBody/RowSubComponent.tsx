@@ -28,7 +28,6 @@ interface RowSubComponent {
   rowIndex: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RowSubComponent = (props: RowSubComponent) => {
   const {
     subComponentsHeight,
