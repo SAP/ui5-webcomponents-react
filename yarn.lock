@@ -6782,6 +6782,8 @@ __metadata:
     custom-elements-manifest: "npm:^2.0.0"
     dedent: "npm:^1.5.1"
     turndown: "npm:^7.1.2"
+  bin:
+    ui5-wcr: ./dist/bin/index.js
   languageName: unknown
   linkType: soft
 

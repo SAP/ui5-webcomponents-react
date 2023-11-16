@@ -38,7 +38,11 @@ export default async function createWrappers(packageName: string, outDir: string
     const declaration = module.declarations?.at(0) as CEM.CustomElementDeclaration;
     const webComponentImport = `${packageName}/dist/${module.path}`;
 
-    const wrapper = new WebComponentWrapper(declaration.tagName!, declaration.name, webComponentImport);
+    if (!declaration.tagName) {
+      continue;
+    }
+
+    const wrapper = new WebComponentWrapper(declaration.tagName, declaration.name, webComponentImport);
     wrapper.addNamedImport('@ui5/webcomponents-react', 'withWebComponent');
     wrapper.addUnassignedImport(webComponentImport);
 

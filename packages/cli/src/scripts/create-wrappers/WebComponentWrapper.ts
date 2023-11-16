@@ -70,7 +70,8 @@ export class WebComponentWrapper {
         renderer.prepare(this);
       }
     }
-    let result = '';
+    let result = `'use client';`;
+    result += '\n\n';
     result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.imports)?.render(this) ?? '';
     result += '\n\n';
     result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.attributes)?.render(this) ?? '';
