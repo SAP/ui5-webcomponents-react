@@ -15,6 +15,9 @@
     },
     "./package.json": "./package.json"
   },
+  "bin": {
+    "ui5-wcr": "./dist/bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SAP/ui5-webcomponents-react",

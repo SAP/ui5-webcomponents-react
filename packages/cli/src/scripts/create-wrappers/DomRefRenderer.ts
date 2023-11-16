@@ -68,7 +68,7 @@ export class DomRefRenderer extends AbstractRenderer {
   private generateMethodType(member: CEM.ClassMethod) {
     const parameters =
       member.parameters?.map((param) => {
-        return `${param.name}${param.optional ? '?' : ''}: ${mapWebComponentTypeToTsType(param.type?.text)}`;
+        return `${param.name}${param.optional ? '?' : ''}: ${resolveDomRefType(param.type?.text)}`;
       }) ?? [];
     return `(${parameters.join(', ')}) => ${member.return?.type?.text ?? 'void'}`;
   }
@@ -81,14 +81,14 @@ export class DomRefRenderer extends AbstractRenderer {
         name = `[${name}]`;
       }
       parts.push(
-        ` * @param {${mapWebComponentTypeToTsType(param.type?.text)}} ${name} - ${propDescriptionFormatter(
+        ` * @param {${resolveDomRefType(param.type?.text)}} ${name} - ${propDescriptionFormatter(
           param.description ?? ''
         )}`
       );
     });
     if (member.return) {
       parts.push(
-        ` * @returns {${mapWebComponentTypeToTsType(member.return.type?.text)} - ${propDescriptionFormatter(
+        ` * @returns {${resolveDomRefType(member.return.type?.text)} - ${propDescriptionFormatter(
           member.return.description ?? ''
         )}`
       );
