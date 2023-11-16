@@ -72,6 +72,8 @@ export function mapWebComponentTypeToPrimitive(type: string): string | null {
     case 'Boolean':
     case 'boolean':
       return 'boolean';
+    case 'unknown':
+      return 'unknown';
     default:
       return null;
   }

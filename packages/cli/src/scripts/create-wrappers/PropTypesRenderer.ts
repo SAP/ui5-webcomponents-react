@@ -107,6 +107,7 @@ export class PropTypesRenderer extends AbstractRenderer {
 
   prepare(context: WebComponentWrapper) {
     context.addTypeImport('@ui5/webcomponents-react', 'CommonProps');
+    context.typeExportSet.add(`${context.componentName}PropTypes`);
     if (this._slots.length > 0) {
       context.addTypeImport('react', 'ReactNode');
     }

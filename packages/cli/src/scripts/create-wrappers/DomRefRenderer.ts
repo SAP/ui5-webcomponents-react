@@ -6,7 +6,7 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 
 const loggedTypes = new Set<string>();
 
-function mapWebComponentTypeToTsType(type: string) {
+function mapWebComponentTypeToTsType(type: string = 'unknown') {
   const primitive = mapWebComponentTypeToPrimitive(type);
   if (primitive) {
     return primitive;
@@ -21,6 +21,8 @@ function mapWebComponentTypeToTsType(type: string) {
       return 'Date';
     case 'FileList':
       return 'FileList';
+    case 'function':
+      return 'Function';
     default:
       if (!loggedTypes.has(type)) {
         console.log('-> DomRef type', type);
@@ -63,8 +65,35 @@ export class DomRefRenderer extends AbstractRenderer {
     return resolveDomRefType(member.type?.text);
   }
 
-  private generateMethodType(member: CEM.ClassMember) {
-    return ``;
+  private generateMethodType(member: CEM.ClassMethod) {
+    const parameters =
+      member.parameters?.map((param) => {
+        return `${param.name}${param.optional ? '?' : ''}: ${mapWebComponentTypeToTsType(param.type?.text)}`;
+      }) ?? [];
+    return `(${parameters.join(', ')}) => ${member.return?.type?.text ?? 'void'}`;
+  }
+
+  private generateMethodJsDoc(member: CEM.ClassMethod) {
+    const parts = [];
+    member.parameters?.forEach((param) => {
+      let name = param.name;
+      if (param.optional) {
+        name = `[${name}]`;
+      }
+      parts.push(
+        ` * @param {${mapWebComponentTypeToTsType(param.type?.text)}} ${name} - ${propDescriptionFormatter(
+          param.description ?? ''
+        )}`
+      );
+    });
+    if (member.return) {
+      parts.push(
+        ` * @returns {${mapWebComponentTypeToTsType(member.return.type?.text)} - ${propDescriptionFormatter(
+          member.return.description ?? ''
+        )}`
+      );
+    }
+    return parts;
   }
 
   private memberTyping(member: CEM.ClassMember, context: WebComponentWrapper) {
@@ -82,6 +111,7 @@ export class DomRefRenderer extends AbstractRenderer {
 
     let type: string;
     if (member.kind === 'method') {
+      descriptionParts.push(...this.generateMethodJsDoc(member));
       type = this.generateMethodType(member);
     } else {
       type = this.generateFieldType(member);
@@ -108,6 +138,7 @@ export class DomRefRenderer extends AbstractRenderer {
 
   prepare(context: WebComponentWrapper) {
     context.addTypeImport('@ui5/webcomponents-react', 'Ui5DomRef');
+    context.typeExportSet.add(`${context.componentName}DomRef`);
 
     for (const member of this._members) {
       if (member.kind === 'field') {
@@ -129,9 +160,16 @@ export class DomRefRenderer extends AbstractRenderer {
 
   render(context: WebComponentWrapper): string {
     const membersToProcess = this.getMembersToProcess(context);
-    console.log('-> membersToProcess', membersToProcess);
+    const attributesToOmit = [...context.attributesMap.keys()]
+      .filter((key) => membersToProcess.some((member) => member.name === key))
+      .map((key) => `'${key}'`);
+
+    let extendsStatement = `${context.componentName}Attributes`;
+    if (attributesToOmit.length > 0) {
+      extendsStatement = `Omit<${extendsStatement}, ${attributesToOmit.join(' | ')}>`;
+    }
     return dedent`
-    interface ${context.componentName}DomRef extends ${context.componentName}Attributes, Ui5DomRef {
+    interface ${context.componentName}DomRef extends ${extendsStatement}, Ui5DomRef {
       ${membersToProcess.map((member) => this.memberTyping(member, context)).join('\n\n')}
     }
     `;
