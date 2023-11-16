@@ -57,6 +57,22 @@ export function summaryFormatter(htmlDesc: string) {
 export function snakeCaseToCamelCase(str: string) {
   return str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
 }
+
 export function capitalizeFirstLetter(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function mapWebComponentTypeToPrimitive(type: string): string | null {
+  switch (type) {
+    case 'sap.ui.webc.base.types.Integer':
+    case 'sap.ui.webc.base.types.Float':
+      return 'number';
+    case 'string':
+      return 'string';
+    case 'Boolean':
+    case 'boolean':
+      return 'boolean';
+    default:
+      return null;
+  }
 }

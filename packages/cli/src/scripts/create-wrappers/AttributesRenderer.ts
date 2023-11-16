@@ -1,25 +1,28 @@
 import type * as CEM from 'custom-elements-manifest';
 import dedent from 'dedent';
-import { propDescriptionFormatter, snakeCaseToCamelCase } from '../../util/formatters.js';
+import {
+  mapWebComponentTypeToPrimitive,
+  propDescriptionFormatter,
+  snakeCaseToCamelCase
+} from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
-const loggedTypes = new Set();
+const loggedTypes = new Set<string>();
 
 function mapWebComponentTypeToTsType(type: string) {
+  const primitive = mapWebComponentTypeToPrimitive(type);
+  if (primitive) {
+    return primitive;
+  }
   switch (type) {
-    case 'sap.ui.webc.base.types.Integer':
-    case 'sap.ui.webc.base.types.Float':
-      return 'number';
     case 'sap.ui.webc.base.types.DOMReference':
       // opener props only accept strings as prop types
       return 'string';
 
-    case 'Boolean':
-      return 'boolean';
     default:
       if (!loggedTypes.has(type)) {
-        console.log('-> type', type);
+        console.log('-> Attributes type', type);
         loggedTypes.add(type);
       }
       return type;
@@ -47,16 +50,20 @@ export class AttributesRenderer extends AbstractRenderer {
     return `/**\n${parts.join('\n')}\n */`;
   }
 
-  private propTyping(attribute: CEM.Attribute) {
+  private propTyping(attribute: CEM.Attribute, context: WebComponentWrapper) {
     let type = attribute.type?.text ?? 'unknown';
     type = mapWebComponentTypeToTsType(type);
-    const enumRegex = /sap\.ui\.webc\.(base|main)\.types\./;
+
+    const enumRegex = /sap\.ui\.webc\.(base|main|fiori)\.types\./;
     const isEnum = enumRegex.test(type);
 
     if (isEnum) {
       type = type.replace(enumRegex, '');
       type += ` | keyof typeof ${type}`;
     }
+
+    context.addAttribute(snakeCaseToCamelCase(attribute.name), type);
+
     return `${snakeCaseToCamelCase(attribute.name)}?: ${type};`;
   }
 
@@ -82,7 +89,7 @@ export class AttributesRenderer extends AbstractRenderer {
     interface ${context.componentName}Attributes {
       ${this._attributes
         .map((attribute) => {
-          return `${this.descriptionBuilder(attribute)}\n${this.propTyping(attribute)}`;
+          return `${this.descriptionBuilder(attribute)}\n${this.propTyping(attribute, context)}`;
         })
         .join('\n\n')}
     }

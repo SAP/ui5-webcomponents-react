@@ -8,15 +8,16 @@ interface ImportConfig {
 }
 
 export class WebComponentWrapper {
-  tagName: string;
-  componentName: string;
-  modulePath: string;
+  public tagName: string;
+  public componentName: string;
+  public modulePath: string;
 
   importMap = new Map<string, ImportConfig>();
   private renderers = new Array<AbstractRenderer>();
 
   public exportSet = new Set<string>();
   public typeExportSet = new Set<string>();
+  public attributesMap = new Map<string, string>();
 
   constructor(tagName: string, componentName: string, modulePath: string) {
     this.tagName = tagName;
@@ -57,6 +58,10 @@ export class WebComponentWrapper {
 
   addRenderer(ctx: AbstractRenderer) {
     this.renderers.push(ctx);
+  }
+
+  addAttribute(attr: string, type: string) {
+    this.attributesMap.set(attr, type);
   }
 
   render() {

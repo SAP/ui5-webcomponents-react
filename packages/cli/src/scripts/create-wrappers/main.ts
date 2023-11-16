@@ -44,7 +44,7 @@ export default async function createWrappers(packageName: string, outDir: string
 
     wrapper.addRenderer(new ImportsRenderer());
     wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.attributes ?? []));
-    wrapper.addRenderer(new DomRefRenderer());
+    wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
     wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
       new ComponentRenderer()
