@@ -60,7 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@ui5/webcomponents-tools": "1.19.0",
-    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^9.0.0",
     "cssnano": "^6.0.1",
     "cypress": "^13.0.0",
