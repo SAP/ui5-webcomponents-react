@@ -11,7 +11,9 @@ import { TextStyles } from './Text.jss.js';
 
 export interface TextPropTypes extends CommonProps {
   /**
-   * Pass the text as direct child of Text
+   * Pass the text as direct child of Text.
+   *
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode;
   /**
