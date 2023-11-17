@@ -17,11 +17,11 @@ turndownService.addRule('ui5-link', {
     // @ts-expect-error: types are weird here?
     const href = node.getAttribute('href');
     // @ts-expect-error: types are weird here?
-    let title = node.getAttribute('title');
+    let title = node.getAttribute('title') ?? '';
     if (title) {
       title = ' "' + title + '"';
     }
-    return '[' + content + '](' + href + title + ')';
+    return `[${content}](${href}${title})`;
   }
 });
 

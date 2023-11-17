@@ -27,11 +27,11 @@ export class PropTypesRenderer extends AbstractRenderer {
   private getSlots() {
     return this._slots
       .map((slot) => {
+        const isDefaultSlot = slot.name === 'default' || slot.name === '';
         const descriptionParts = [];
-
         descriptionParts.push(` * ${propDescriptionFormatter(slot.description ?? '')}`);
 
-        if (slot.name !== 'default') {
+        if (!isDefaultSlot) {
           descriptionParts.push(` *`);
           descriptionParts.push(
             ` * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (\`slot="${slot.name}"\`).`
@@ -57,10 +57,12 @@ export class PropTypesRenderer extends AbstractRenderer {
           }
         }
 
-        const slotName = slot.name === 'default' ? 'children' : slot.name;
+        const slotName = isDefaultSlot ? 'children' : slot.name;
 
         // todo: detect slots which allow multiple slots
-        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slotName)}?: UI5WCSlotsNode`;
+        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slotName)}?: ${
+          isDefaultSlot ? 'ReactNode' : 'UI5WCSlotsNode'
+        }`;
       })
       .join('\n\n');
   }
@@ -109,7 +111,10 @@ export class PropTypesRenderer extends AbstractRenderer {
   prepare(context: WebComponentWrapper) {
     context.addTypeImport('@ui5/webcomponents-react', 'CommonProps');
     context.typeExportSet.add(`${context.componentName}PropTypes`);
-    if (this._slots.length > 0) {
+    if (this._slots.some((s) => s.name === 'default' || s.name === '')) {
+      context.addTypeImport('@ui5/webcomponents-react', 'ReactNode');
+    }
+    if (this._slots.some((s) => s.name !== 'default' && s.name !== '')) {
       context.addTypeImport('@ui5/webcomponents-react', 'UI5WCSlotsNode');
     }
     // @ts-expect-error: the UI5 CEM is not spec compliant here
