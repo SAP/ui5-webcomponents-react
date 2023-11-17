@@ -26,9 +26,9 @@ turndownService.addRule('ui5-link', {
 });
 
 function replaceUi5TagNames(text: string) {
-  let newText = text.replaceAll(/(<code>)([\w\d-]+)(<\/code>)/g, (match, openingTag, tagName, closingTag) => {
+  let newText = text.replaceAll(/`([\w\d-]+)`/g, (match, tagName) => {
     if (ui5TagNameToComponentNameMap[tagName]) {
-      return `${openingTag}${ui5TagNameToComponentNameMap[tagName]}${closingTag}`;
+      return `\`${ui5TagNameToComponentNameMap[tagName]}\``;
     }
     return match;
   });
