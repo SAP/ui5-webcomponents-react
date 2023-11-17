@@ -43,8 +43,8 @@ function replaceUi5TagNames(text: string) {
 }
 
 export function propDescriptionFormatter(html: string) {
-  let summary = replaceUi5TagNames(html);
-  summary = turndownService.turndown(summary);
+  let summary = turndownService.turndown(html);
+  summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
   return summary;
 }
@@ -55,8 +55,8 @@ export function summaryFormatter(htmlDesc: string) {
 
   let summary = description.split(/(?=<h3>)/).at(0) ?? '';
 
-  summary = replaceUi5TagNames(summary);
   summary = turndownService.turndown(summary);
+  summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
 
   return summary;
