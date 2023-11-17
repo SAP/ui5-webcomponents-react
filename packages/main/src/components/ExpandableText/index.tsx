@@ -55,6 +55,8 @@ const useStyles = createUseStyles(
  * The `ExpandableText` component can be used to display long texts inside a table, list or form.
  *
  * Initially, only the first characters from the text are shown with a "Show More" link which allows the full text to be displayed. The `showOverflowInPopover` property determines if the full text will be displayed expanded in place (default) or in a popover (`showOverflowInPopover: true`). If the text is expanded a "Show Less" link is displayed, which allows collapsing the text field.
+ *
+ * @since 1.23.0
  */
 const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((props, ref) => {
   const {
