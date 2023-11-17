@@ -104,7 +104,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
         }
       }
     });
-  }, [collapsed]);
+  }, [collapsed, showOverflowInPopover]);
   return (
     <span className={clsx(classes.expandableText, className)} {...rest} ref={ref}>
       <Text
