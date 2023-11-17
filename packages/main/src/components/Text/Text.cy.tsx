@@ -59,6 +59,21 @@ describe('Text', () => {
     cy.findByTestId('text').invoke('outerHeight').should('equal', 64);
   });
 
+  it('emptyIndicator', () => {
+    cy.mount(<Text data-testid="text" />);
+    cy.findByTestId('text').children().should('have.length', 0);
+    cy.mount(<Text data-testid="text" emptyIndicator />);
+    cy.findByTestId('text').children().should('have.length', 2);
+    cy.findByText('–').should('be.visible');
+  });
+
+  it('hyphenated', () => {
+    cy.mount(<Text>Text</Text>);
+    cy.findByText('Text').should('not.have.css', 'hyphens', 'auto');
+    cy.mount(<Text hyphenated>Text</Text>);
+    cy.findByText('Text').should('have.css', 'hyphens', 'auto');
+  });
+
   cypressPassThroughTestsFactory(Text);
 });
 

@@ -34,5 +34,19 @@ export const TextStyles = {
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     WebkitLineClamp: 'var(--_ui5wcr_maxLines)'
+  },
+  hyphenated: {
+    hyphens: 'auto'
+  },
+  emptyIndicator: {
+    lineHeight: 'normal',
+    color: ThemingParameters.sapTextColor
+  },
+  pseudoInvisibleText: {
+    fontSize: 0,
+    position: 'absolute',
+    userSelect: 'none',
+    left: 0,
+    top: 0
   }
 };
