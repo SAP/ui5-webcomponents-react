@@ -11,8 +11,7 @@ import { ImportsRenderer } from './ImportsRenderer.js';
 import { PropTypesRenderer } from './PropTypesRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
-const WITH_WEB_COMPONENT_IMPORT_PATH =
-  process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? "import { withWebComponent } from '@ui5/webcomponents-react';";
+const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
 
 export default async function createWrappers(packageName: string, outDir: string) {
   const require = createRequire(import.meta.url);
@@ -43,7 +42,7 @@ export default async function createWrappers(packageName: string, outDir: string
     }
 
     const wrapper = new WebComponentWrapper(declaration.tagName, declaration.name, webComponentImport);
-    wrapper.addNamedImport('@ui5/webcomponents-react', 'withWebComponent');
+    wrapper.addNamedImport(WITH_WEB_COMPONENT_IMPORT_PATH, 'withWebComponent');
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());

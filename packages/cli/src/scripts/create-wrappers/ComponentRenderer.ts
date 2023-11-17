@@ -1,6 +1,6 @@
 import type * as CEM from 'custom-elements-manifest';
 import dedent from 'dedent';
-import { summaryFormatter } from '../../util/formatters.js';
+import { snakeCaseToCamelCase, summaryFormatter } from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -51,15 +51,15 @@ export class ComponentRenderer extends AbstractRenderer {
       }DomRef>('${context.tagName}', 
         [${this.attributes
           .filter((attr) => attr.type?.text !== 'boolean')
-          .map((attr) => `'${attr.name}'`)
+          .map((attr) => `'${snakeCaseToCamelCase(attr.name)}'`)
           .join(', ')}], 
         [${this.attributes
           .filter((attr) => attr.type?.text === 'boolean')
-          .map((attr) => `'${attr.name}'`)
+          .map((attr) => `'${snakeCaseToCamelCase(attr.name)}'`)
           .join(', ')}],
         [${this.slots
           ?.filter((slot) => slot.name !== 'default')
-          .map((slot) => `'${slot.name}'`)
+          .map((slot) => `'${snakeCaseToCamelCase(slot.name)}'`)
           .join(', ')}],
         [${this.events?.map((event) => `'${event.name}'`).join(', ')}],
         () => import('${this.dynamicImportPath}') 

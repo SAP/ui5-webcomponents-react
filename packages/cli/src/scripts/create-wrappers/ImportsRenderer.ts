@@ -12,7 +12,7 @@ export class ImportsRenderer extends AbstractRenderer {
   render(context: WebComponentWrapper): string {
     const unassignedImports = [...context.importMap.entries()]
       .filter(([_, importConfig]) => {
-        return importConfig.default === null && importConfig.named.length === 0 && importConfig.types.length === 0;
+        return importConfig.importUnassinged;
       })
       .map(([mod]) => mod)
       .sort((a, b) => a.localeCompare(b));
@@ -45,7 +45,6 @@ export class ImportsRenderer extends AbstractRenderer {
         }
 
         if (config.types.length > 0) {
-          imports += '\n';
           imports += `import type { ${sortAndMergeMembers(config.types)} } from '${module}';`;
         }
         return imports;

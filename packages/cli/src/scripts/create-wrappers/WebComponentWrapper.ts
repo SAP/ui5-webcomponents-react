@@ -3,6 +3,7 @@ import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 interface ImportConfig {
   default: string | null;
   typeOnlyDefault: boolean;
+  importUnassinged: boolean;
   named: string[];
   types: string[];
 }
@@ -29,12 +30,14 @@ export class WebComponentWrapper {
     const importConfig = this.getOrCreateImportConfig(pkgName);
     importConfig.default = localName;
     importConfig.typeOnlyDefault = false;
+    importConfig.importUnassinged = false;
     return this;
   }
 
   addNamedImport(pkgName: string, localName: string) {
     const importConfig = this.getOrCreateImportConfig(pkgName);
     importConfig.named.push(localName);
+    importConfig.importUnassinged = false;
     return this;
   }
 
@@ -52,7 +55,8 @@ export class WebComponentWrapper {
   }
 
   addUnassignedImport(pkgName: string) {
-    this.getOrCreateImportConfig(pkgName);
+    const importConfig = this.getOrCreateImportConfig(pkgName);
+    importConfig.importUnassinged = true;
     return this;
   }
 
@@ -93,7 +97,8 @@ export class WebComponentWrapper {
         default: null,
         typeOnlyDefault: false,
         named: [],
-        types: []
+        types: [],
+        importUnassinged: false
       });
     }
     return this.importMap.get(pkgName)!;

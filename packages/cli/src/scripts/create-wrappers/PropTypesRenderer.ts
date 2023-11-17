@@ -59,7 +59,8 @@ export class PropTypesRenderer extends AbstractRenderer {
 
         const slotName = slot.name === 'default' ? 'children' : slot.name;
 
-        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slotName)}?: ReactNode | ReactNode[];`;
+        // todo: detect slots which allow multiple slots
+        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slotName)}?: UI5WCSlotsNode`;
       })
       .join('\n\n');
   }
@@ -109,7 +110,7 @@ export class PropTypesRenderer extends AbstractRenderer {
     context.addTypeImport('@ui5/webcomponents-react', 'CommonProps');
     context.typeExportSet.add(`${context.componentName}PropTypes`);
     if (this._slots.length > 0) {
-      context.addTypeImport('react', 'ReactNode');
+      context.addTypeImport('@ui5/webcomponents-react', 'UI5WCSlotsNode');
     }
     // @ts-expect-error: the UI5 CEM is not spec compliant here
     const customEvents = this._events.filter((event) => event.type === 'CustomEvent');
