@@ -14,24 +14,32 @@ const turndownService = new TurndownService({
 turndownService.addRule('ui5-link', {
   filter: (node) => node.nodeName === 'UI5-LINK' && !!node.getAttribute('href'),
   replacement: (content, node) => {
-    // @ts-expect-error: types are weird here?
+    // @ts-expect-error: types seem to be incorrect
     const href = node.getAttribute('href');
-    // @ts-expect-error: types are weird here?
+    // @ts-expect-error: types seem to be incorrect
     let title = node.getAttribute('title') ?? '';
     if (title) {
-      title = ' "' + title + '"';
+      title = ` "${title}"`;
     }
     return `[${content}](${href}${title})`;
   }
 });
 
 function replaceUi5TagNames(text: string) {
-  return text.replaceAll(/(<code>)([\w\d-]+)(<\/code>)/g, (match, openingTag, tagName, closingTag) => {
+  let newText = text.replaceAll(/(<code>)([\w\d-]+)(<\/code>)/g, (match, openingTag, tagName, closingTag) => {
     if (ui5TagNameToComponentNameMap[tagName]) {
       return `${openingTag}${ui5TagNameToComponentNameMap[tagName]}${closingTag}`;
     }
     return match;
   });
+
+  newText = newText.replaceAll(/(<\/?)([\w\d]+-[\w\d-]+)([\s>])/g, (match, openingTag, tagName, closingTag) => {
+    if (ui5TagNameToComponentNameMap[tagName]) {
+      return `${openingTag}${ui5TagNameToComponentNameMap[tagName]}${closingTag}`;
+    }
+    return match;
+  });
+  return newText;
 }
 
 export function propDescriptionFormatter(html: string) {
