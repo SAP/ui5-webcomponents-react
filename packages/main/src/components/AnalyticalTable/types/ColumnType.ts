@@ -1,6 +1,7 @@
 import type { ComponentType, RefObject } from 'react';
 import type { Column } from 'react-table';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
+import type { AnalyticalTableColumnDefinition } from './index.js';
 
 export interface ColumnType extends Column {
   show: boolean;
@@ -20,7 +21,7 @@ export interface ColumnType extends Column {
   disableGrouping: boolean;
   getResizerProps: () => any;
   isResizing: boolean;
-  hAlign: string;
+  hAlign: AnalyticalTableColumnDefinition['hAlign'];
   totalLeft: number;
   totalFlexWidth: number;
   enableMultiSort?: boolean;

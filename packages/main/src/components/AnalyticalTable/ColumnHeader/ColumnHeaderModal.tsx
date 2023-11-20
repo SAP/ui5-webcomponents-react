@@ -26,10 +26,10 @@ import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 import { Popover } from '../../../webComponents/Popover/index.js';
 import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
-import type { ColumnType } from '../types/ColumnType.js';
+import type { AnalyticalTableColumnDefinition } from '../types/index.js';
 
 export interface ColumnHeaderModalProperties {
-  column: ColumnType;
+  column: AnalyticalTableColumnDefinition;
   onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   open: boolean;
@@ -141,7 +141,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   };
 
   const horizontalAlign = (() => {
-    switch (column.hAlign) {
+    switch (column.hAlign as AnalyticalTableColumnDefinition['hAlign']) {
       case TextAlign.Begin:
         return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
       case TextAlign.End:

@@ -1,5 +1,6 @@
 import { GridPosition } from '../../enums/index.js';
 import { Grid } from './index.js';
+import type { GridPropTypes } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const style = { height: '6rem', width: '100%' };
@@ -108,7 +109,7 @@ describe('Grid', () => {
     );
     cy.findByTestId('grid').should('have.css', 'grid-row-gap', '42px').should('have.css', 'grid-column-gap', '7px');
   });
-  [...Object.values(GridPosition), undefined].forEach((pos: GridPosition | undefined) => {
+  [...Object.values(GridPosition), undefined].forEach((pos: GridPropTypes['position'] | undefined) => {
     it(`position-${pos}`, () => {
       cy.mount(
         <div style={{ width: '400px' }}>

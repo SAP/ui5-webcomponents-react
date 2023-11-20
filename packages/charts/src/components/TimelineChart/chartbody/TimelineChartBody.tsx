@@ -54,9 +54,10 @@ const TimelineChartBody = ({
   const [displayArrows, setDisplayArrows] = useState(false);
 
   useEffect(() => {
-    bodyRef.current?.addEventListener('wheel', onMouseWheelEvent);
+    const bodyElement = bodyRef.current;
+    bodyElement?.addEventListener('wheel', onMouseWheelEvent);
     return () => {
-      bodyRef.current?.removeEventListener('wheel', onMouseWheelEvent);
+      bodyElement?.removeEventListener('wheel', onMouseWheelEvent);
     };
   }, []);
 
