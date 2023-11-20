@@ -37,9 +37,9 @@
     "@storybook/react": "7.5.3",
     "@storybook/react-vite": "7.5.3",
     "@storybook/theming": "7.5.3",
-    "@ui5/webcomponents": "1.19.0",
-    "@ui5/webcomponents-fiori": "1.19.0",
-    "@ui5/webcomponents-icons": "1.19.0",
+    "@ui5/webcomponents": "1.19.1",
+    "@ui5/webcomponents-fiori": "1.19.1",
+    "@ui5/webcomponents-icons": "1.19.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-gfm": "^3.0.1",
@@ -114,5 +114,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.0.2"
 }
