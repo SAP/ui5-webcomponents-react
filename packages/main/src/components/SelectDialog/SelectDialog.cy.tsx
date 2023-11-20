@@ -31,11 +31,7 @@ describe('SelectDialog', () => {
         {listItems}
       </SelectDialog>
     );
-    cy.findByText('Select Dialog').should(
-      'have.css',
-      'grid-area',
-      'titleCenter / titleCenter / titleCenter / titleCenter'
-    );
+    cy.findByText('Select Dialog').should('have.css', 'grid-area', 'titleCenter');
   });
 
   it('selection', () => {

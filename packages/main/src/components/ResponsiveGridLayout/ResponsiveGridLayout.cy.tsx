@@ -93,9 +93,9 @@ describe('ResponsiveGridLayout', () => {
         <div style={{ height: '100px', background: 'skyblue' }} data-testid={'2'} />
       </ResponsiveGridLayout>
     );
-    cy.findByTestId('0').should('have.css', 'grid-column', 'span 2 / auto');
-    cy.findByTestId('1').should('have.css', 'grid-column', 'span 5 / auto');
-    cy.findByTestId('2').should('have.css', 'grid-column', 'span 1 / auto');
+    cy.findByTestId('0').should('have.css', 'grid-column', 'span 2');
+    cy.findByTestId('1').should('have.css', 'grid-column', 'span 5');
+    cy.findByTestId('2').should('have.css', 'grid-column', 'span 1');
   });
 
   cypressPassThroughTestsFactory(ResponsiveGridLayout);
