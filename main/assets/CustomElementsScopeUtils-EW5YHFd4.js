@@ -1,2 +1,0 @@
-import{V as c}from"./VersionInfo-pP_ltRZs.js";let r,n={include:[/^ui5-/],exclude:[]};const o=new Map,u=()=>r,l=e=>{if(!o.has(e)){const t=n.include.some(s=>e.match(s))&&!n.exclude.some(s=>e.match(s));o.set(e,t)}return o.get(e)},a=e=>{if(l(e))return u()},f=e=>{const t=`v${c.version.replaceAll(".","-")}`,s=/(--_?ui5)([^,:)\s]+)/g;return e.replaceAll(s,`$1-${t}$2`)};export{a,u as b,f as g,l as s};
-//# sourceMappingURL=CustomElementsScopeUtils-EW5YHFd4.js.map
