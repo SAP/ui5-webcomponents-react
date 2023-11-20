@@ -1,5 +1,5 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
-import { FlexBox, FlexBoxAlignItems, Label, Link, Text } from '@ui5/webcomponents-react';
+import { FlexBox, FlexBoxAlignItems, Label, Link, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import React, { useContext } from 'react';
 import { GitHubLogo } from './GitHub-Mark';
 import { Import } from './Import';
@@ -58,7 +58,7 @@ export const InfoTable = ({ since }) => {
 
 export const DocsHeader = ({ since }) => {
   return (
-    <>
+    <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
         <Title />
         <span style={{ flexGrow: 1 }} />
@@ -68,6 +68,6 @@ export const DocsHeader = ({ since }) => {
       <InfoTable since={since} />
       <Description />
       <TableOfContent />
-    </>
+    </ThemeProvider>
   );
 };
