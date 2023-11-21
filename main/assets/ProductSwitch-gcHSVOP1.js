@@ -1,0 +1,21 @@
+import{j as t}from"./jsx-runtime-DtaoT6pD.js";import{C as s,b as c}from"./DomRefTable.module-ivq6mLBU.js";import{D as a}from"./DocsHeader-3XC90zB9.js";import{F as d}from"./Footer-184rTghT.js";import"./index-OjgoNOWw.js";import{M as h,C as u,b as i}from"./chunk-HLWAVYOI-BXzS5irt.js";import{S as f}from"./SubcomponentsSection-pzdPLcqE.js";import{C as l,D as m,P as x}from"./ProductSwitch.stories-BLIaBvKC.js";import{u as p}from"./index-RwE9nQVW.js";import"./react-jss.esm-AmlvxLhk.js";import"./index-NUnlKMvF.js";import"./iframe-yCTqdtBM.js";import"../sb-preview/runtime.js";import"./UI5Element-OBgzz0fv.js";import"./i18nBundle-Crssojm_.js";import"./VersionInfo-hBCHoyLi.js";import"./CustomElementsScopeUtils-kYmWas10.js";import"./withWebComponent-6ZcDnwha.js";import"./utils-5CTKRvkw.js";import"./useIsomorphicLayoutEffect-s31TYDr7.js";import"./slot-HSrR9XJ-.js";import"./Icon-2m0rU9av.js";import"./Icons-zRUxeAje.js";import"./decline-P9scilyE.js";import"./i18n-defaults-n2A5pq_J.js";import"./information-eS-oBj3B.js";import"./alert-SMfrQE5J.js";import"./class-map-dxoND1Lf.js";import"./Button-UDaVhcBU.js";import"./AriaLabelHelper-RbKlVwzD.js";import"./MarkedEvents-aYv14vsS.js";import"./i18n-defaults-RBzcmDt8.js";import"./index-yaLaEhii.js";import"./clsx-c3LcQGjR.js";import"./i18n-defaults-PmTGElot.js";import"./I18nContext-VUOpdMoH.js";import"./ThemingParameters-UghqSl-x.js";import"./addCustomCSSWithScoping-cCePQQVr.js";import"./index-39yOrDQx.js";import"./Integer-kog98579.js";import"./index-H1inggvx.js";import"./Avatar-LWFiEvrj.js";import"./ResizeHandler-jV9qqcaG.js";import"./employee-DNZboz-g.js";import"./index-7FbrlqW1.js";import"./index-Ej_RA5a9.js";import"./Link-Gs09ax_S.js";import"./WrappingType-avPrqc94.js";import"./index-FvozjNxD.js";import"./index-3PxZPhBC.js";import"./index-QYh6idnL.js";import"./ModalsContext-0q87fkkd.js";import"./CssSizeVariables-IMpNFjIe.js";import"./CustomVariables-jcpx1a4M.js";import"./GlobalStyleClasses-kWTEndz_.js";import"./TableOfContent-3SYvaDbR.js";import"./index-H_jJKIR3.js";import"./Label-bo0gz_aS.js";import"./index-s6hT1dnv.js";import"./index-tuo6-YWH.js";import"./Popover-SxOPU5wi.js";import"./PopupUtils-7oRQuqE1.js";import"./getActiveElement-IIKAy3xo.js";import"./PopupsCommon.css-dlrgNDf3.js";import"./FocusableElements-vmTxt0Po.js";import"./isElementHidden-d3-Fo4V6.js";import"./MediaRange-sEMt71Ve.js";import"./style-map-oXcF1--7.js";import"./BrowserScrollbar.css-gfEIeu7r.js";import"./index-GL4gBoyB.js";import"./mapValues-HzTlT2lF.js";import"./_baseForOwn-UZJwRxDU.js";import"./_baseUniq-JVyScZ-n.js";import"./index-PPLHz8o0.js";import"./home-dZUYrCrv.js";import"./parameters-bundle.css-96HoEB0F.js";import"./ItemNavigation-_xIDlcJ6.js";import"./i18n-defaults-meCbHC3L.js";const j="**Since:** 0.7.0\n\nThe `ProductSwitchItem` web component represents the items displayed in the `ProductSwitch` web component.\n\n**Note:** `ProductSwitchItem` is not supported when used outside of `ProductSwitch`.\n\n### Keyboard Handling\n\nThe `ProductSwitch` provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation:\n\n- \\[SPACE/ENTER/RETURN\\] - Trigger `click` event\n",w=`## Keyboard Handling
+
+The \`ProductSwitch\` provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation:
+
+- \\[TAB\\] - Move focus to the next interactive element after the \`ProductSwitch\`
+- \\[UP/DOWN\\] - Navigates up and down the items
+- \\[LEFT/RIGHT\\] - Navigates left and right the items
+`;function _t(o={}){const{wrapper:e}=Object.assign({},p(),o.components);return e?t.jsx(e,Object.assign({},o,{children:t.jsx(n,{})})):n();function n(){const r=Object.assign({h2:"h2"},p(),o.components);return t.jsxs(t.Fragment,{children:[t.jsx(h,{of:l}),`
+`,t.jsx(a,{since:"0.7.0"}),`
+`,t.jsx("br",{}),`
+`,t.jsx(r.h2,{id:"example",children:"Example"}),`
+`,t.jsx(u,{of:m}),`
+`,t.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(s,{of:m}),`
+`,t.jsx(i,{children:w}),`
+`,t.jsx(i,{children:f}),`
+`,t.jsx(r.h2,{id:"productswitchitem",children:"ProductSwitchItem"}),`
+`,t.jsx(c,{of:x}),`
+`,t.jsx(i,{children:j}),`
+`,t.jsx(d,{})]})}}export{_t as default};
+//# sourceMappingURL=ProductSwitch-gcHSVOP1.js.map
