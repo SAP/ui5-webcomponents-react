@@ -74,24 +74,24 @@ describe('Grid', () => {
           {CustomItems}
         </Grid>
       );
-      cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.defaultSpan} / auto`);
-      cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12 / auto`);
+      cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.defaultSpan}`);
+      cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12`);
       cy.get('[data-component-name="GridIndentSpacer"]')
         .should('have.length', '1')
-        .should('have.css', 'grid-column', `span 1 / auto`);
+        .should('have.css', 'grid-column', 'span 1');
       cy.mount(
         <Grid defaultSpan="XL4 L3 M2 S1" defaultIndent="XL4 L5 M6 S7">
           {GridContent}
           {CustomItems}
         </Grid>
       );
-      cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.customSpan} / auto`);
-      cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12 / auto`);
+      cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.customSpan}`);
+      cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12`);
       cy.get('[data-component-name="GridIndentSpacer"]').each(($el, index, arr) => {
         if (arr.length - 1 === index) {
-          cy.wrap($el).should('have.css', 'grid-column', `span 1 / auto`);
+          cy.wrap($el).should('have.css', 'grid-column', 'span 1');
         } else {
-          cy.wrap($el).should('have.css', 'grid-column', `span ${range.customIndent} / auto`);
+          cy.wrap($el).should('have.css', 'grid-column', `span ${range.customIndent}`);
         }
       });
     });
