@@ -163,7 +163,7 @@ const styles = {
     '&$tr': {
       fontFamily: CustomThemingParameters.AnalyticalTableHeaderFontFamily,
       backgroundColor: `${ThemingParameters.sapList_TableGroupHeaderBackground}`,
-      border: `1px solid ${ThemingParameters.sapList_TableGroupHeaderBorderColor}`,
+      borderColor: ThemingParameters.sapList_TableGroupHeaderBorderColor,
       color: ThemingParameters.sapList_TextColor,
       '& $tableCell': {
         borderInlineEnd: `1px solid transparent`
