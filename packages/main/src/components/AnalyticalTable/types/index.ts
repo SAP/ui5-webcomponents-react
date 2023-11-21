@@ -172,14 +172,16 @@ export interface AnalyticalTableColumnDefinition {
    */
   sortInverted?: boolean;
   /**
-   * String or custom sort function.
+   *  - Used to compare 2 rows of data and order them correctly.
+   *   - If a **function** is passed, it must be **memoized**. The sortType function should return 1 if rowA is larger, and -1 if rowB is larger. `react-table` will take care of the rest.
+   *   - String options: `basic`, `datetime`, `alphanumeric`.
+   *   - The resolved function from the string/function will be used to sort the column's data.
+   *     - If a `string` is passed, the function with that name located on either the custom `sortTypes` option or the built-in sorting types object will be used.
+   *     - If a `function` is passed, it will be used.
    *
-   * Supported String Values:
-   * * `basic`
-   * * `datetime`
-   * * `alphanumeric`
+   * @default 'alphanumeric'
    */
-  sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => any);
+  sortType?: string | ((rowA, rowB, columnId: string, descending: boolean) => number);
 
   // useResizeColumns
   /**
@@ -199,7 +201,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Allows passing a custom string for the internal width calculation of custom cells for `scaleWidthMode` `Grow` and `Smart`.
    *
-   * You can find out more about it here [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
    *
    * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
    *
