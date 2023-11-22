@@ -1115,7 +1115,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       [visibleColumnsWidth]
     ),
     horizontal: true,
-    overscan: overscanCountHorizontal
+    overscan: isRtl ? Infinity : overscanCountHorizontal
   });
 
   const totalSize = columnVirtualizer.getTotalSize();
