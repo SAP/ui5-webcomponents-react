@@ -290,7 +290,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       {headerContent &&
         cloneElement(headerContent, {
           ref: componentRefHeaderContent,
-          style: headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : headerContent.props.style,
+          style: headerCollapsed === true ? { position: 'relative', visibility: 'hidden' } : headerContent.props.style,
           className: clsx(classes.header, headerContent?.props?.className),
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight

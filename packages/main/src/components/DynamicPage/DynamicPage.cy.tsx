@@ -109,6 +109,7 @@ describe('DynamicPage', () => {
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+    document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: DynamicPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
       const handlePinChange = (pinned) => {
@@ -117,16 +118,17 @@ describe('DynamicPage', () => {
       };
       return (
         <>
-          <Button
+          <button
+            style={{ height: '40px' }}
             data-testid="btn"
             onClick={() => {
               setPinned((prev) => !prev);
             }}
           >
             toggle {`${!pinned}`}
-          </Button>
+          </button>
           <DynamicPage
-            style={{ height: '100vh' }}
+            style={{ height: 'calc(100vh - 40px)' }}
             headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
             headerContentPinnable
