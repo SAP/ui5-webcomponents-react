@@ -37,8 +37,8 @@ export function AppShellBar() {
   };
   const handleThemeSwitch: ListPropTypes['onSelectionChange'] = (e) => {
     const { targetItem } = e.detail;
-    setTheme(targetItem.dataset.key);
-    setCurrentTheme(targetItem.dataset.key);
+    setTheme(targetItem.dataset.key!);
+    setCurrentTheme(targetItem.dataset.key!);
   };
 
   return (
