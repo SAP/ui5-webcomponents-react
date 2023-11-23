@@ -1,7 +1,6 @@
+import './globals.css';
 import { AppShell } from '@/app/components/AppShell';
 import { CssRegistry } from '@/app/CssRegistry';
-import { ThemeProvider } from '@ui5/webcomponents-react';
-import './globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,10 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="appShell">
           <CssRegistry>
-            <ThemeProvider>
-              <AppShell />
-              <div className="appScrollContainer">{children}</div>
-            </ThemeProvider>
+            <AppShell>{children}</AppShell>
           </CssRegistry>
         </div>
       </body>
