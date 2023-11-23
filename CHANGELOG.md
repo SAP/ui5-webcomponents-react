@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.19.0...v1.19.1) (2023-11-23)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix horizontal scrolling in rtl reading direction ([#5144](https://github.com/SAP/ui5-webcomponents-react/issues/5144)) ([bf638be](https://github.com/SAP/ui5-webcomponents-react/commit/bf638be8ab036ae3d9661ca170abc1ae033744e7)), closes [#5094](https://github.com/SAP/ui5-webcomponents-react/issues/5094)
+
 # [1.19.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.18.0...v1.19.0) (2023-09-04)
 
 ### Bug Fixes
