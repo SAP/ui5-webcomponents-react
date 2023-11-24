@@ -175,12 +175,31 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
 
   useEffect(() => {
     const dynamicPage = dynamicPageRef.current;
-    const oneTimeScrollHandler = () => {
+    const oneTimeScrollHandler = (e) => {
       setHeaderState(HEADER_STATES.AUTO);
-      setHeaderCollapsedInternal(true);
+      // only collapse the header after it was programmatically expanded, if the header shouldn't be visible
+      if (
+        e.target.scrollTop >
+        (topHeaderRef?.current.offsetHeight ?? 0) +
+          Math.max(0, headerContentRef.current.offsetHeight ?? 0 - topHeaderRef?.current.offsetHeight ?? 0)
+      ) {
+        setHeaderCollapsedInternal(true);
+      }
     };
     if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
-      dynamicPage?.addEventListener('scroll', oneTimeScrollHandler, { once: true });
+      // only reset state after scroll if scroll isn't invoked by expanding the header
+      const timeout = scrollTimeout.current - performance.now();
+      if (timeout > 0) {
+        setTimeout(() => {
+          dynamicPage?.addEventListener('scroll', oneTimeScrollHandler, {
+            once: true
+          });
+        }, timeout + 50);
+      } else {
+        dynamicPage?.addEventListener('scroll', oneTimeScrollHandler, {
+          once: true
+        });
+      }
     }
     return () => {
       dynamicPage?.removeEventListener('scroll', oneTimeScrollHandler);
@@ -290,7 +309,10 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       {headerContent &&
         cloneElement(headerContent, {
           ref: componentRefHeaderContent,
-          style: headerCollapsed === true ? { position: 'relative', visibility: 'hidden' } : headerContent.props.style,
+          style:
+            headerCollapsed === true
+              ? { ...headerContent.props.style, position: 'relative', visibility: 'hidden' }
+              : headerContent.props.style,
           className: clsx(classes.header, headerContent?.props?.className),
           headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight
