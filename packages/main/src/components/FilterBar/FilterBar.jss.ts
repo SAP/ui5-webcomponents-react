@@ -61,6 +61,9 @@ const styles = {
       marginInlineEnd: '0.25rem'
     }
   },
+  searchContainer: {
+    '& > [ui5-input]': { width: '100%' }
+  },
   spacer: {
     height: 0,
     marginBlockStart: 0,

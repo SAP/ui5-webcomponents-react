@@ -1,30 +1,19 @@
 'use client';
 
-import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
-import { Button, ShellBar } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-react/dist/Assets.js';
-import { usePathname, useRouter } from 'next/navigation';
+import { AppShellBar } from '@/app/components/AppShellBar';
+import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ReactNode } from 'react';
 
-export function AppShell() {
-  const router = useRouter();
-  const pathname = usePathname();
+interface AppShellProps {
+  children?: ReactNode | ReactNode[];
+}
 
+export function AppShell({ children }: AppShellProps) {
   return (
-    <>
-      <ShellBar
-        primaryTitle={'UI5 Web Components for React Examples'}
-        secondaryTitle={'NextJS - App Router'}
-        startButton={
-          pathname !== '/' && (
-            <Button
-              icon={navBackIcon}
-              onClick={() => {
-                router.back();
-              }}
-            />
-          )
-        }
-      />
-    </>
+    <ThemeProvider>
+      <AppShellBar />
+      <div className="appScrollContainer">{children}</div>
+    </ThemeProvider>
   );
 }
