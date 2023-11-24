@@ -211,7 +211,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     };
   }, []);
 
-  const timeoutRef = useRef(0);
+  const timeoutRef = useRef<undefined | ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => {
     const dynamicPage = dynamicPageRef.current;
     const oneTimeScrollHandler = (e) => {
