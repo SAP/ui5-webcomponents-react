@@ -16,7 +16,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'start',
-    '& :last-child': {
+    '& > :last-child': {
       width: '100%'
     }
   },
