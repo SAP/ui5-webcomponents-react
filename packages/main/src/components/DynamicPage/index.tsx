@@ -1,6 +1,6 @@
 'use client';
 
-import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
@@ -54,6 +54,20 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'child
    * __Note:__ Assigning `children` as function is recommended when implementing sticky sub-headers. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/story/layouts-floorplans-dynamicpage--sticky-sub-headers).
    */
   children?: ReactNode | ReactNode[] | ((payload: { stickyHeaderHeight: number }) => ReactElement);
+  /**
+   * Determines whether the header is expanded. You can use this to initialize the component with a collapsed header.
+   *
+   * __Note:__ Changes through user interaction (scrolling, manually expanding/collapsing the header, etc.) are still applied.
+   *
+   * @since 1.23.0
+   */
+  headerCollapsed?: boolean;
+  /**
+   * Preserves the current header state when scrolling. For example, if the user expands the header by clicking on the title and then scrolls down the page, the header will remain expanded.
+   *
+   * @since 1.23.0
+   */
+  preserveHeaderStateOnScroll?: boolean;
   /**
    * Defines internally used a11y properties.
    */
@@ -111,6 +125,8 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     a11yConfig,
     onToggleHeaderContent,
     onPinnedStateChange,
+    headerCollapsed: headerCollapsedProp,
+    preserveHeaderStateOnScroll,
     ...rest
   } = props;
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
@@ -129,7 +145,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   const isToggledRef = useRef(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
+  const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(headerCollapsedProp);
   // observe heights of header parts
   const { topHeaderHeight, headerCollapsed } = useObserveHeights(
     dynamicPageRef,
@@ -140,9 +156,31 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     {
       noHeader: false,
       fixedHeader: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.HIDDEN_PINNED,
-      scrollTimeout
+      scrollTimeout,
+      preserveHeaderStateOnScroll
     }
   );
+
+  useEffect(() => {
+    if (preserveHeaderStateOnScroll && headerState === HEADER_STATES.AUTO) {
+      if (
+        dynamicPageRef.current.scrollTop <=
+        (topHeaderRef?.current.offsetHeight ?? 0) +
+          Math.max(0, headerContentRef.current.offsetHeight ?? 0 - topHeaderRef?.current.offsetHeight ?? 0)
+      ) {
+        setHeaderState(HEADER_STATES.VISIBLE);
+      } else {
+        setHeaderState(HEADER_STATES.HIDDEN);
+      }
+    }
+  }, [preserveHeaderStateOnScroll, headerState]);
+
+  useEffect(() => {
+    if (headerCollapsedProp != null) {
+      setHeaderCollapsedInternal(headerCollapsedProp);
+      onToggleHeaderContentInternal(undefined, headerCollapsedProp);
+    }
+  }, [headerCollapsedProp]);
 
   const classes = useStyles();
   const dynamicPageClasses = clsx(
@@ -173,6 +211,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     };
   }, []);
 
+  const timeoutRef = useRef(0);
   useEffect(() => {
     const dynamicPage = dynamicPageRef.current;
     const oneTimeScrollHandler = (e) => {
@@ -186,11 +225,15 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
         setHeaderCollapsedInternal(true);
       }
     };
-    if (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN) {
+    if (
+      !preserveHeaderStateOnScroll &&
+      (headerState === HEADER_STATES.VISIBLE || headerState === HEADER_STATES.HIDDEN)
+    ) {
       // only reset state after scroll if scroll isn't invoked by expanding the header
       const timeout = scrollTimeout.current - performance.now();
+      clearTimeout(timeoutRef.current);
       if (timeout > 0) {
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           dynamicPage?.addEventListener('scroll', oneTimeScrollHandler, {
             once: true
           });
@@ -204,16 +247,23 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     return () => {
       dynamicPage?.removeEventListener('scroll', oneTimeScrollHandler);
     };
-  }, [dynamicPageRef, headerState]);
+  }, [dynamicPageRef, headerState, preserveHeaderStateOnScroll]);
 
-  const onToggleHeaderContentVisibility = (e) => {
+  const onToggleHeaderContentInternal = (e?, headerCollapsedProp?) => {
+    e?.stopPropagation();
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
+    onToggleHeaderContentVisibility(headerCollapsedProp ?? !headerCollapsed);
+  };
+
+  const onToggleHeaderContentVisibility = (localHeaderCollapsed) => {
     scrollTimeout.current = performance.now() + 500;
-    const shouldHideHeader = !e.detail.visible;
     setHeaderState((oldState) => {
       if (oldState === HEADER_STATES.VISIBLE_PINNED || oldState === HEADER_STATES.HIDDEN_PINNED) {
-        return shouldHideHeader ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
+        return localHeaderCollapsed ? HEADER_STATES.HIDDEN_PINNED : HEADER_STATES.VISIBLE_PINNED;
       }
-      return shouldHideHeader ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
+      return localHeaderCollapsed ? HEADER_STATES.HIDDEN : HEADER_STATES.VISIBLE;
     });
   };
 
@@ -230,14 +280,6 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       topHeaderRef.current.style.backgroundColor =
         e?.type === 'mouseover' ? ThemingParameters.sapObjectHeader_Hover_Background : null;
     }
-  };
-
-  const onToggleHeaderContentInternal = (e) => {
-    e.stopPropagation();
-    if (!isToggledRef.current) {
-      isToggledRef.current = true;
-    }
-    onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
   };
 
   const handleHeaderPinnedChange = (headerWillPin) => {
@@ -259,6 +301,9 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
   }, [alwaysShowContentHeader]);
 
   const onDynamicPageScroll = (e) => {
+    if (preserveHeaderStateOnScroll) {
+      return;
+    }
     if (!isToggledRef.current) {
       isToggledRef.current = true;
     }
@@ -314,7 +359,10 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
               ? { ...headerContent.props.style, position: 'relative', visibility: 'hidden' }
               : headerContent.props.style,
           className: clsx(classes.header, headerContent?.props?.className),
-          headerPinned: headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE,
+          headerPinned:
+            preserveHeaderStateOnScroll ||
+            headerState === HEADER_STATES.VISIBLE_PINNED ||
+            headerState === HEADER_STATES.VISIBLE,
           topHeaderHeight
         })}
       <FlexBox
