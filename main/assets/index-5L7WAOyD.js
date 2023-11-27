@@ -1,0 +1,17 @@
+import{_ as t}from"./iframe-WmY82gW_.js";import"./GroupHeaderListItem-MzkrLOEp.js";import{w as o}from"./withWebComponent-6ZcDnwha.js";const e=o("ui5-li-groupheader",["accessibleName"],["selected"],[],[],()=>t(()=>import("./GroupHeaderListItem-MzkrLOEp.js"),__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]),import.meta.url));e.displayName="GroupHeaderListItem";try{e.displayName="GroupHeaderListItem",e.__docgenInfo={description:`The \`GroupHeaderListItem\` is a special list item, used only to separate other list items into logical groups
+
+__Note:__ This component is a web component developed by the UI5 Web Components’ team.
+
+[UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-List)`,displayName:"GroupHeaderListItem",props:{children:{defaultValue:null,description:`Defines the text of the component.
+**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.`,name:"children",required:!1,type:{name:"ReactNode | ReactNode[]"}},accessibleName:{defaultValue:null,description:"Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.",name:"accessibleName",required:!1,type:{name:"string"}},selected:{defaultValue:null,description:"Defines the selected state of the `ListItem`.",name:"selected",required:!1,type:{name:"boolean"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}export{e as G};
+//# sourceMappingURL=index-5L7WAOyD.js.map
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["./GroupHeaderListItem-MzkrLOEp.js","./withWebComponent-6ZcDnwha.js","./utils-5CTKRvkw.js","./VersionInfo-hBCHoyLi.js","./index-OjgoNOWw.js","./CustomElementsScopeUtils-kYmWas10.js","./jsx-runtime-DtaoT6pD.js","./useIsomorphicLayoutEffect-s31TYDr7.js","./i18nBundle-Crssojm_.js","./ListItemBase-OVhNd6zE.js","./UI5Element-OBgzz0fv.js","./ResizeHandler-jV9qqcaG.js","./ItemNavigation-_xIDlcJ6.js","./Icons-zRUxeAje.js","./getActiveElement-IIKAy3xo.js","./Icon-2m0rU9av.js","./slot-HSrR9XJ-.js","./Integer-kog98579.js","./AriaLabelHelper-RbKlVwzD.js","./TabbableElements-aYIPY3zp.js","./isElementHidden-d3-Fo4V6.js","./decline-P9scilyE.js","./i18n-defaults-n2A5pq_J.js","./debounce-8VpZswfd.js","./BusyIndicator-v8eJGF06.js","./Label-bo0gz_aS.js","./WrappingType-avPrqc94.js","./i18n-defaults-RBzcmDt8.js","./class-map-dxoND1Lf.js","./style-map-oXcF1--7.js","./BrowserScrollbar.css-gfEIeu7r.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
