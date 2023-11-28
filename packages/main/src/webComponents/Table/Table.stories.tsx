@@ -45,40 +45,44 @@ export const Default: Story = {
           </>
         }
       >
-        <TableRow>
-          <TableCell>
-            <Label>Notebook Basic</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Very Best Screens</Label>
-          </TableCell>
-          <TableCell>
-            <Label>30 x 18 x 3cm</Label>
-          </TableCell>
-          <TableCell>
-            <Label>4.2KG</Label>
-          </TableCell>
-          <TableCell>
-            <Label>956EUR</Label>
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>
-            <Label>Notebook Basic 17HT-1001</Label>
-          </TableCell>
-          <TableCell>
-            <Label>Very Best Screens</Label>
-          </TableCell>
-          <TableCell>
-            <Label>29 x 17 x 3.1cm</Label>
-          </TableCell>
-          <TableCell>
-            <Label>4.5KG</Label>
-          </TableCell>
-          <TableCell>
-            <Label>1249EUR</Label>
-          </TableCell>
-        </TableRow>
+        {
+          <>
+            <TableRow disabled>
+              <TableCell>
+                <Label>Notebook Basic</Label>
+              </TableCell>
+              <TableCell>
+                <Label>Very Best Screens</Label>
+              </TableCell>
+              <TableCell>
+                <Label>30 x 18 x 3cm</Label>
+              </TableCell>
+              <TableCell>
+                <Label>4.2KG</Label>
+              </TableCell>
+              <TableCell>
+                <Label>956EUR</Label>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Label>Notebook Basic 17HT-1001</Label>
+              </TableCell>
+              <TableCell>
+                <Label>Very Best Screens</Label>
+              </TableCell>
+              <TableCell>
+                <Label>29 x 17 x 3.1cm</Label>
+              </TableCell>
+              <TableCell>
+                <Label>4.5KG</Label>
+              </TableCell>
+              <TableCell>
+                <Label>1249EUR</Label>
+              </TableCell>
+            </TableRow>
+          </>
+        }
       </Table>
     );
   }

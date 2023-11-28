@@ -16,6 +16,10 @@ interface TableRowAttributes {
    */
   selected?: boolean;
   /**
+   * Defines whether the row is selectable.
+   */
+  disabled?: boolean;
+  /**
    * Defines the visual indication and behavior of the component.
    *
    * Available options are:
