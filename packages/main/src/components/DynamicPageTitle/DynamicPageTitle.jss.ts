@@ -90,6 +90,15 @@ export const DynamicPageTitleStyles = {
     },
     '&>:first-child': {
       height: '100%'
+    },
+    // toolbar w/o overflow button
+    '& > [data-component-name="ToolbarContent"]:first-child:last-child > [data-component-name="ToolbarChildContainer"]:last-child':
+      {
+        marginInlineEnd: 0
+      },
+    // toolbar w/ overflow button
+    '& [data-component-name="ToolbarOverflowButtonContainer"]': {
+      marginInlineEnd: 0
     }
   }
 };
