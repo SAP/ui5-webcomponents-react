@@ -109,6 +109,7 @@ describe('DynamicPage', () => {
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+    document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: DynamicPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
       const handlePinChange = (pinned) => {
@@ -117,16 +118,17 @@ describe('DynamicPage', () => {
       };
       return (
         <>
-          <Button
+          <button
+            style={{ height: '40px' }}
             data-testid="btn"
             onClick={() => {
               setPinned((prev) => !prev);
             }}
           >
             toggle {`${!pinned}`}
-          </Button>
+          </button>
           <DynamicPage
-            style={{ height: '100vh' }}
+            style={{ height: 'calc(100vh - 40px)' }}
             headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
             headerContentPinnable
@@ -152,6 +154,7 @@ describe('DynamicPage', () => {
     cy.get('@onPinSpy').should('have.been.calledWith', true);
     cy.findByText('DynamicPageHeader').should('be.visible');
 
+    cy.wait(100);
     cy.findByTestId('op').scrollTo(0, 0);
     cy.findByText('DynamicPageHeader').should('be.visible');
 
@@ -163,6 +166,7 @@ describe('DynamicPage', () => {
     cy.get('@onPinSpy').should('have.been.calledWith', false);
     cy.findByText('DynamicPageHeader').should('be.visible');
 
+    cy.wait(100);
     cy.findByTestId('op').scrollTo(0, 801);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
 
@@ -171,6 +175,7 @@ describe('DynamicPage', () => {
     cy.findByText('DynamicPageHeader').should('be.visible');
 
     cy.findByTestId('btn').click();
+    cy.wait(200);
     cy.findByTestId('op').scrollTo(0, 501);
     cy.findByText('DynamicPageHeader').should('not.be.visible');
 
@@ -201,36 +206,54 @@ describe('DynamicPage', () => {
     cy.get('@onPinSpy').should('have.callCount', 7);
   });
 
-  it('collapse header when partially visible', () => {
+  it('collapse header when not visible', () => {
+    document.body.style.margin = '0px';
     cy.viewport(1440, 1080);
     cy.mount(
       <DynamicPage
         style={{ height: '100vh' }}
         headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={
-          <DynamicPageHeader>
-            <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>DynamicPageHeader</div>
+          <DynamicPageHeader style={{ height: '400px' }}>
+            <div style={{ width: '100%', background: 'lightyellow' }}>DynamicPageHeader</div>
           </DynamicPageHeader>
         }
         headerContentPinnable
         showHideHeaderButton
         data-testid="op"
       >
-        <div style={{ height: '2000px' }} />
+        <div style={{ height: '2000px', background: 'lightblue' }}>
+          <span>Content</span>
+        </div>
       </DynamicPage>
     );
     cy.wait(50);
 
     cy.findByTestId('op').scrollTo(0, 400);
-    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-    // wait for timeout of expand click
-    cy.wait(500);
+    cy.findByText('Content').should('be.visible');
+    // header content height + padding
+    cy.findByTestId('op').scrollTo(0, 432);
+    cy.findByText('Content').should('be.visible');
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
 
-    cy.findByTestId('op').scrollTo(0, 1);
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    // wait for timeout of expand click
+    cy.wait(200);
+    cy.findByText('DynamicPageHeader').should('be.visible');
+    // expanded header is covering the Content, not detectable by Cypress
+    // cy.findByText('Content').should('not.be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('exist');
+
+    // collapse when scrolling
+    cy.findByTestId('op').scrollTo(0, 440);
+    cy.wait(200);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
-    cy.wait(50);
+    cy.findByText('DynamicPageHeader').should('not.be.visible');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.wait(200);
     cy.findByTestId('op').scrollTo(0, 0);
+    cy.wait(200);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
     cy.findByText('DynamicPageHeader').should('be.visible');
   });

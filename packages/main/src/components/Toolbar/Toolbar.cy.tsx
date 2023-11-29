@@ -317,7 +317,7 @@ describe('Toolbar', () => {
     cy.findByTestId('tb').should('have.css', 'border-bottom-style', 'none');
   });
 
-  Object.values(ToolbarDesign).forEach((design) => {
+  Object.values(ToolbarDesign).forEach((design: ToolbarPropTypes['design']) => {
     it(`Design: ${design}`, () => {
       cy.mount(
         <Toolbar data-testid="tb" design={design}>

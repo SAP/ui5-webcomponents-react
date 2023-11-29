@@ -1,10 +1,11 @@
 import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums/index.js';
 import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils.js';
 import { FlexBox } from './index.js';
+import type { FlexBoxPropTypes } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 describe('FlexBox', () => {
-  Object.values(FlexBoxJustifyContent).forEach((val) => {
+  Object.values(FlexBoxJustifyContent).forEach((val: FlexBoxPropTypes['justifyContent']) => {
     it(`JustifyContent: ${val}`, () => {
       cy.mount(
         <FlexBox justifyContent={val} data-testid="flexbox">
@@ -26,7 +27,7 @@ describe('FlexBox', () => {
     });
   });
 
-  Object.values(FlexBoxAlignItems).forEach((val) => {
+  Object.values(FlexBoxAlignItems).forEach((val: FlexBoxPropTypes['alignItems']) => {
     it(`AlignItems: ${val}`, () => {
       cy.mount(
         <FlexBox alignItems={val} data-testid="flexbox">
@@ -48,7 +49,7 @@ describe('FlexBox', () => {
     });
   });
 
-  Object.values(FlexBoxDirection).forEach((val) => {
+  Object.values(FlexBoxDirection).forEach((val: FlexBoxPropTypes['direction']) => {
     it(`AlignItems: ${val}`, () => {
       cy.mount(
         <FlexBox direction={val} data-testid="flexbox">
@@ -60,7 +61,7 @@ describe('FlexBox', () => {
     });
   });
 
-  Object.values(FlexBoxWrap).forEach((val) => {
+  Object.values(FlexBoxWrap).forEach((val: FlexBoxPropTypes['wrap']) => {
     it(`wrap: ${val}`, () => {
       cy.mount(
         <FlexBox wrap={val} data-testid="flexbox">
@@ -93,6 +94,6 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
-  mountWithCustomTagName(FlexBox, { children: <span>Test 1</span> });
+  mountWithCustomTagName<FlexBoxPropTypes>(FlexBox, { children: <span>Test 1</span> });
   cypressPassThroughTestsFactory(FlexBox);
 });

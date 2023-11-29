@@ -31,3 +31,5 @@ scripts/web-component-wrappers/interfaces.json
 
 examples/nextjs-pages/node_modules
 examples/nextjs-app/node_modules
+
+.nx/cache

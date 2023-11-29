@@ -1,4 +1,3 @@
-import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import acceptIcon from '@ui5/webcomponents-icons/dist/accept.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
@@ -32,7 +31,7 @@ const meta = {
     open: false
   },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { disableSnapshot: true }
   }
 } satisfies Meta<typeof ActionSheet>;
 
@@ -41,10 +40,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(isChromatic || args.open);
-    const containerClass = isChromatic ? 'chromaticPopoverContainer' : undefined;
+    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(args.open);
     return (
-      <div className={containerClass}>
+      <>
         <Button
           onClick={() => {
             setActionSheetOpen(true);
@@ -68,7 +66,7 @@ export const Default: Story = {
           <Button icon={deleteIcon}>Delete</Button>
           <Button>Other</Button>
         </ActionSheet>
-      </div>
+      </>
     );
   }
 };

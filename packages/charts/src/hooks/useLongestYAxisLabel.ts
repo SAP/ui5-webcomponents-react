@@ -25,4 +25,4 @@ export const useLongestYAxisLabel = (dataset: unknown[], elements, legendPositio
     }
 
     return [labelLength, { marginLeft: labelLength, maxWidth: `calc(100% - ${labelLength + 10}px)` }];
-  }, [dataset, elements]);
+  }, [dataset, elements, legendPosition]);

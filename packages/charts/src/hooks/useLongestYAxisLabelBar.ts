@@ -29,4 +29,4 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements, legendPosi
       return [axisWidths, { width: 'auto' }];
     }
     return [axisWidths, { marginLeft, maxWidth: `calc(100% - ${marginLeft + 8}px)` }];
-  }, [dataset, elements]);
+  }, [dataset, elements, legendPosition]);

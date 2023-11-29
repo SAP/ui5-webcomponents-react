@@ -1,5 +1,3 @@
-'use client';
-
 import { Todo, todos } from '@/app/mockData/todos';
 import {
   DatePicker,

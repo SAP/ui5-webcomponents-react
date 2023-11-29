@@ -663,7 +663,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
             {search && (
               <FilterGroupItem data-in-fb visibleInFilterBar data-with-toolbar={!hideToolbar}>
-                <div ref={searchRef}>
+                <div ref={searchRef} className={classes.searchContainer}>
                   {renderSearchWithValue(search, searchValue, {
                     placeholder: searchText,
                     icon: <Icon name={searchIcon} />,
