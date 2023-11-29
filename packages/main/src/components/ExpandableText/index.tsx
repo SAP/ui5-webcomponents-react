@@ -5,14 +5,15 @@ import { clsx } from 'clsx';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
-import { SHOW_MORE, SHOW_LESS, SHOW_FULL_TEXT, CLOSE_POPOVER } from '../../i18n/i18n-defaults.js';
+import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
 import { getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { LinkDomRef } from '../../webComponents/index.js';
 import { Link } from '../../webComponents/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
-import { Text } from '../Text/index.js';
 import type { TextPropTypes } from '../Text/index.js';
+import { Text } from '../Text/index.js';
 import { TextStyles } from '../Text/Text.jss.js';
 
 export interface ExpandableTextPropTypes
@@ -66,7 +67,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     hyphenated,
     showOverflowInPopover,
     maxCharacters = 100,
-    portalContainer = document.body,
+    portalContainer,
     className,
     ...rest
   } = props;
@@ -95,7 +96,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
 
   useEffect(() => {
     const tagName = getUi5TagWithSuffix('ui5-link');
-    customElements.whenDefined(tagName).then(() => {
+    void customElements.whenDefined(tagName).then(() => {
       if (linkRef.current) {
         if (showOverflowInPopover) {
           linkRef.current.accessibilityAttributes = { hasPopup: 'Dialog' };
@@ -105,6 +106,11 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
       }
     });
   }, [collapsed, showOverflowInPopover]);
+
+  const canRenderPortal = useCanRenderPortal();
+  if (showOverflowInPopover && !canRenderPortal) {
+    return null;
+  }
   return (
     <span className={clsx(classes.expandableText, className)} {...rest} ref={ref}>
       <Text
@@ -143,7 +149,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
               {children}
             </Text>
           </ResponsivePopover>,
-          portalContainer
+          portalContainer ?? document.body
         )}
     </span>
   );
