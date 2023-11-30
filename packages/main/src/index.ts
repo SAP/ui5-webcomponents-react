@@ -8,6 +8,7 @@ export * from './components/AnalyticalTable/defaults/LoadingComponent/TablePlace
 export * from './components/DynamicPage/index.js';
 export * from './components/DynamicPageHeader/index.js';
 export * from './components/DynamicPageTitle/index.js';
+export * from './components/ExpandableText/index.js';
 export * from './components/FilterBar/index.js';
 export * from './components/FilterGroupItem/index.js';
 export * from './components/FlexBox/index.js';
