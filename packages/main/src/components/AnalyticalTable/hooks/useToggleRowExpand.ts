@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 
 const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
-  const { dispatch, manualGroupBy } = instance;
+  const { manualGroupBy } = instance;
   const { onRowExpandChange, isTreeTable, renderRowSubComponent, alwaysShowSubComponent } =
     instance.webComponentsReactProperties;
   const onClick = (e, noPropagation = true) => {
@@ -16,13 +16,6 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
       } else {
         column = userProps.column;
       }
-    }
-
-    if (row.isExpanded) {
-      dispatch({
-        type: 'ROW_COLLAPSED_FLAG',
-        payload: true
-      });
     }
 
     onRowExpandChange(

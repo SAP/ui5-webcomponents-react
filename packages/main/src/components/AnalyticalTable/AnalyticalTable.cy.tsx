@@ -1900,6 +1900,34 @@ describe('AnalyticalTable', () => {
   });
 
   it("Expandable: don't scroll when expanded/collapsed", () => {
+    const TestComp = () => {
+      const tableInstanceRef = useRef();
+      return (
+        <>
+          <button
+            onClick={() => {
+              tableInstanceRef.current.toggleRowExpanded('11');
+            }}
+          >
+            toggle row 11
+          </button>
+          <AnalyticalTable
+            data={[
+              ...dataTree,
+              ...dataTree,
+              ...dataTree,
+              { name: 'toggle', subRows: [{ name: 'toggled' }] },
+              ...dataTree,
+              ...dataTree
+            ]}
+            columns={columns}
+            isTreeTable
+            visibleRows={5}
+            tableInstance={tableInstanceRef}
+          />
+        </>
+      );
+    };
     cy.mount(<AnalyticalTable data={[...dataTree, ...dataTree]} columns={columns} isTreeTable visibleRows={5} />);
     cy.findAllByText('Katy Bradshaw').eq(1).trigger('keydown', {
       key: 'Enter'
@@ -1959,6 +1987,15 @@ describe('AnalyticalTable', () => {
       key: 'Enter',
       force: true
     });
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+
+    cy.mount(<TestComp />);
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('center');
+    cy.findByText('toggled').should('not.exist');
+    cy.findByText('toggle').should('be.visible').trigger('keydown', {
+      key: 'Enter'
+    });
+    cy.findByText('toggled').should('be.visible');
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
   });
 

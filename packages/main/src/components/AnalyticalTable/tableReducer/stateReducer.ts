@@ -1,11 +1,11 @@
 import { actions } from 'react-table';
 
-export const stateReducer = (prevState, action) => {
+export const stateReducer = (state, action, _prevState, instance) => {
   const { payload } = action;
 
-  if (prevState.isRtl && action.type === actions.columnResizing) {
+  if (state.isRtl && action.type === actions.columnResizing) {
     const { clientX } = action;
-    const { startX, columnWidth, headerIdWidths } = prevState.columnResizing;
+    const { startX, columnWidth, headerIdWidths } = state.columnResizing;
 
     const deltaX = startX - clientX;
     const percentageDeltaX = deltaX / columnWidth;
@@ -17,45 +17,53 @@ export const stateReducer = (prevState, action) => {
     });
 
     return {
-      ...prevState,
+      ...state,
       columnResizing: {
-        ...prevState.columnResizing,
+        ...state.columnResizing,
         columnWidths: {
-          ...prevState.columnResizing.columnWidths,
+          ...state.columnResizing.columnWidths,
           ...newColumnWidths
         }
       }
     };
   }
-
   switch (action.type) {
+    case 'toggleRowExpanded':
+      // this flag disables scrolling to the top of the table if a table is collapsed
+      if (!state.expanded[action.id]) {
+        instance.dispatch({
+          type: 'ROW_COLLAPSED_FLAG',
+          payload: true
+        });
+      }
+      return state;
     case 'TABLE_RESIZE':
-      return { ...prevState, tableClientWidth: payload.tableClientWidth };
+      return { ...state, tableClientWidth: payload.tableClientWidth };
     case 'VISIBLE_ROWS':
-      return { ...prevState, visibleRows: payload.visibleRows };
+      return { ...state, visibleRows: payload.visibleRows };
     case 'TABLE_SCROLLING_ENABLED':
-      return { ...prevState, isScrollable: payload.isScrollable };
+      return { ...state, isScrollable: payload.isScrollable };
     case 'SET_SELECTED_ROW_IDS':
-      return { ...prevState, selectedRowIds: payload.selectedRowIds };
+      return { ...state, selectedRowIds: payload.selectedRowIds };
     case 'SET_POPIN_COLUMNS':
-      return { ...prevState, popInColumns: payload };
+      return { ...state, popInColumns: payload };
     case 'INTERACTIVE_ROWS_HAVE_POPIN':
-      return { ...prevState, interactiveRowsHavePopIn: payload };
+      return { ...state, interactiveRowsHavePopIn: payload };
     case 'IS_RTL':
-      return { ...prevState, isRtl: payload.isRtl };
+      return { ...state, isRtl: payload.isRtl };
     case 'SUB_COMPONENTS_HEIGHT':
-      return { ...prevState, subComponentsHeight: payload };
+      return { ...state, subComponentsHeight: payload };
     case 'TABLE_COL_RESIZED':
-      return { ...prevState, tableColResized: payload };
+      return { ...state, tableColResized: payload };
     case 'SELECT_ROW_CB':
-      return { ...prevState, selectedRowPayload: payload };
+      return { ...state, selectedRowPayload: payload };
     case 'ROW_COLLAPSED_FLAG':
-      return { ...prevState, rowCollapsed: payload };
+      return { ...state, rowCollapsed: payload };
     case 'COLUMN_DND_START':
-      return { ...prevState, dndColumn: payload };
+      return { ...state, dndColumn: payload };
     case 'COLUMN_DND_END':
-      return { ...prevState, dndColumn: '' };
+      return { ...state, dndColumn: '' };
     default:
-      return prevState;
+      return state;
   }
 };

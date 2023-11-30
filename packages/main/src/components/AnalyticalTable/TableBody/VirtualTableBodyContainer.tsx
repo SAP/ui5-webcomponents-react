@@ -55,6 +55,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
 
   useEffect(() => {
     if (prevDataLength.current > dataLength) {
+      // if prevData is larger because a row was collapsed, no scroll should be executed
       if (rowCollapsedFlag) {
         dispatch({
           type: 'ROW_COLLAPSED_FLAG',
