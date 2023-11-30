@@ -77,7 +77,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
   const classes = useStyles();
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const trimmedChildren = renderWhitespace ? children : children?.trim().replace(/ +(?= )/g, '');
+  const trimmedChildren = renderWhitespace ? children : children?.replace(/\s+/g, ' ').trim();
   const isOverflow = trimmedChildren?.length >= maxCharacters;
   const strippedChildren =
     isOverflow && (collapsed || showOverflowInPopover) ? trimmedChildren?.slice(0, maxCharacters) : children;
