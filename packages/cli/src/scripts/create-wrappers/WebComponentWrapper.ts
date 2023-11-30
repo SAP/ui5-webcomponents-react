@@ -80,9 +80,9 @@ export class WebComponentWrapper {
     result += '\n\n';
     result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.attributes)?.render(this) ?? '';
     result += '\n\n';
-    result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.props)?.render(this) ?? '';
-    result += '\n\n';
     result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.domRef)?.render(this) ?? '';
+    result += '\n\n';
+    result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.props)?.render(this) ?? '';
     result += '\n\n';
     result += this.renderers.find((renderer) => renderer.phase === RenderingPhase.component)?.render(this) ?? '';
     result += '\n\n';
