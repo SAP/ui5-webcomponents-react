@@ -1909,7 +1909,7 @@ describe('AnalyticalTable', () => {
               tableInstanceRef.current.toggleRowExpanded('11');
             }}
           >
-            toggle row 11
+            toggle row
           </button>
           <AnalyticalTable
             data={[
@@ -1992,10 +1992,11 @@ describe('AnalyticalTable', () => {
     cy.mount(<TestComp />);
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('center');
     cy.findByText('toggled').should('not.exist');
-    cy.findByText('toggle').should('be.visible').trigger('keydown', {
-      key: 'Enter'
-    });
+    cy.findByText('toggle row').click();
     cy.findByText('toggled').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
+    cy.findByText('toggle row').click();
+    cy.findByText('toggled').should('not.exist');
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
   });
 
