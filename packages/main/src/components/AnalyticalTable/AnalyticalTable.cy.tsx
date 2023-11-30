@@ -1906,7 +1906,7 @@ describe('AnalyticalTable', () => {
         <>
           <button
             onClick={() => {
-              tableInstanceRef.current.toggleRowExpanded('11');
+              tableInstanceRef.current.toggleRowExpanded('6');
             }}
           >
             toggle row
