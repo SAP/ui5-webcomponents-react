@@ -62,14 +62,14 @@ const useStyles = createUseStyles(
       width: '100%',
       maxWidth: '100%',
       overflow: 'hidden',
-      paddingRight: '1rem',
+      paddingInlineEnd: '1rem',
       boxSizing: 'border-box'
     },
     withSubtitle: {
       height: CssSizeVariables.ui5WcrMessageViewListItemHeightByLine
     },
     withChildren: {
-      paddingRight: '0rem'
+      paddingInlineEnd: '0rem'
     },
     iconContainer: {
       width: '3rem',
@@ -85,7 +85,7 @@ const useStyles = createUseStyles(
     },
     title: {
       fontFamily: ThemingParameters.sapFontHeaderFamily,
-      fontSize: ThemingParameters.sapFontHeader6Size,
+      fontSize: CssSizeVariables.ui5WcrMessageItemTitleFontSize,
       color: ThemingParameters.sapGroup_TitleTextColor,
       maxWidth: '100%',
       whiteSpace: 'nowrap',
@@ -93,7 +93,7 @@ const useStyles = createUseStyles(
       textOverflow: 'ellipsis',
       flex: '1 1 auto',
       '& + $subtitle': {
-        marginTop: '0.25rem',
+        marginBlockStart: '0.25rem',
         cursor: 'inherit'
       }
     },
@@ -102,7 +102,7 @@ const useStyles = createUseStyles(
       color: ThemingParameters.sapContent_MarkerTextColor,
       fontFamily: ThemingParameters.sapFontFamily,
       fontSize: ThemingParameters.sapFontSize,
-      paddingLeft: '1rem',
+      paddingInlineStart: '1rem',
       flex: 'none'
     },
     navigation: {
