@@ -61,7 +61,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@ui5/webcomponents-tools": "0.0.0-8c62d34c3",
     "@vitejs/plugin-react": "^4.2.0",
-    "chromatic": "^9.0.0",
+    "chromatic": "^10.0.0",
     "cssnano": "^6.0.1",
     "cypress": "^13.0.0",
     "cypress-real-events": "^1.8.1",
