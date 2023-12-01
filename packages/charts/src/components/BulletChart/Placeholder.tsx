@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import React from 'react';
-import ContentLoader from 'react-content-loader/dist/react-content-loader.es.js';
+import ContentLoader from 'react-content-loader';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 
 const barContentVertical = (
@@ -48,6 +48,7 @@ export const BulletChartPlaceholder = ({ layout, measures }: BulletChartPlacehol
   const distinctElements = new Set(measures.map((item) => item.type));
 
   return (
+    // @ts-expect-error: TypeScript is going crazy
     <ContentLoader
       viewBox="0 0 165 145"
       preserveAspectRatio="xMidYMid meet"
