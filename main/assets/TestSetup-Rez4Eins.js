@@ -1,0 +1,66 @@
+import{j as e}from"./jsx-runtime-DtaoT6pD.js";import{M as s}from"./chunk-HLWAVYOI-8mTPiWc4.js";import"./DomRefTable.module-6NCmCp7z.js";import"./index-OjgoNOWw.js";import{T as m}from"./TableOfContent-QnwiCZLX.js";import{F as p}from"./Footer-KCIiLDkC.js";import{u as i}from"./index-RwE9nQVW.js";import{M as a}from"./index-nJNlYcrn.js";import"./iframe-705wv2Ng.js";import"../sb-preview/runtime.js";import"./index-GL4gBoyB.js";import"./index-QYh6idnL.js";import"./mapValues-HzTlT2lF.js";import"./_baseForOwn-UZJwRxDU.js";import"./_baseUniq-JVyScZ-n.js";import"./index-PPLHz8o0.js";import"./react-jss.esm-tmBtHfec.js";import"./index-A5agBEX2.js";import"./clsx-c3LcQGjR.js";import"./i18n-defaults-cIbBWf4j.js";import"./i18nBundle-Crssojm_.js";import"./VersionInfo-hBCHoyLi.js";import"./I18nContext-VUOpdMoH.js";import"./useIsomorphicLayoutEffect-s31TYDr7.js";import"./ThemingParameters-UghqSl-x.js";import"./addCustomCSSWithScoping-_6wxL5DG.js";import"./UI5Element-Y0uzLFOr.js";import"./CustomElementsScopeUtils-5j4ES8UU.js";import"./utils-NoXYr8Q_.js";import"./index-ACLzhS1p.js";import"./withWebComponent-l-jCeTa1.js";import"./slot-HSrR9XJ-.js";import"./Icon-bdsWWJur.js";import"./Icons-WRZ8WMWs.js";import"./Integer-kog98579.js";import"./class-map-kmjzTHDs.js";import"./i18n-defaults-RBzcmDt8.js";import"./index-O0nXyy0M.js";import"./Avatar-iPKVYLtK.js";import"./ResizeHandler-YlQCt_sN.js";import"./employee-fYGGLuhG.js";import"./alert-hH0G14f_.js";import"./index-eD8sKGb4.js";import"./AriaLabelHelper-RbKlVwzD.js";import"./index-qQGIRhb4.js";import"./Link-tRmLKUhK.js";import"./MarkedEvents-aYv14vsS.js";import"./WrappingType-avPrqc94.js";import"./index-q8oiNN3v.js";import"./index-PbyIfeYN.js";import"./Label-ZVCbnRu4.js";import"./index-GQTCUqlP.js";import"./Button-2q6zbrjb.js";import"./index-w_0LFn-b.js";import"./Popover-F3UgQy3P.js";import"./PopupUtils-7oRQuqE1.js";import"./getActiveElement-IIKAy3xo.js";import"./PopupsCommon.css-QWf1zPQp.js";import"./FocusableElements-SaTJsZH1.js";import"./isElementHidden-d3-Fo4V6.js";import"./decline-tcMkvtbY.js";import"./i18n-defaults-n2A5pq_J.js";import"./MediaRange-sEMt71Ve.js";import"./style-map-IagzN5gT.js";import"./BrowserScrollbar.css-aoBbOOT0.js";import"./information-bLrgXyhK.js";function Ce(o={}){const{wrapper:r}=Object.assign({},i(),o.components);return r?e.jsx(r,Object.assign({},o,{children:e.jsx(t,{})})):t();function t(){const n=Object.assign({h1:"h1",p:"p",a:"a",h2:"h2",pre:"pre",code:"code"},i(),o.components);return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Setup"}),`
+`,e.jsx(m,{headingSelector:"h2"}),`
+`,e.jsx(n.h1,{id:"cypress-test-setup",children:"Cypress Test Setup"}),`
+`,e.jsxs(n.p,{children:["UI5 Web Components for React is using ",e.jsx(n.a,{href:"https://www.cypress.io/",target:"_blank",rel:"nofollow noopener noreferrer",children:"Cypress"})," as preferred testing framework. There you have the options of testing components only or create End-to-End tests for your application."]}),`
+`,e.jsx(n.h2,{id:"configuration",children:"Configuration"}),`
+`,e.jsxs(n.p,{children:["When launching Cypress the first time you're guided through the setup, which then will create a ",e.jsx(n.a,{href:"https://docs.cypress.io/guides/references/configuration",target:"_blank",rel:"nofollow noopener noreferrer",children:"configuration file"})," for you. You can use any configuration you like, but since we're heavily relying on web-components, we recommend traversing the shadow DOM per default:"]}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-js",children:`includeShadowDom: true
+`})}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.a,{href:"https://docs.cypress.io/guides/component-testing/react/overview",target:"_blank",rel:"nofollow noopener noreferrer",children:"Here"})," you can find the Cypress Quickstart tutorial for React."]}),`
+`,e.jsx(n.h2,{id:"themeprovider",children:"ThemeProvider"}),`
+`,e.jsxs(n.p,{children:["UI5 Web Components for React components have to be wrapped inside a ",e.jsx(n.code,{children:"ThemeProvider"}),", depending on your test setup (especially for component-testing) it might prove beneficial creating a custom ",e.jsx(n.code,{children:"mount"})," command, that includes the ",e.jsx(n.code,{children:"ThemeProvider"}),"."]}),`
+`,e.jsx(n.p,{children:"JavaScript:"}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-js",children:`/**
+ * Cypress mount with ThemeProvider
+ */
+Cypress.Commands.add('mount', (component, options) => {
+  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+});
+`})}),`
+`,e.jsx(n.p,{children:"TypeScript declaration:"}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-ts",children:`declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Cypress mount with ThemeProvider
+       */
+      mount: typeof mount;
+    }
+  }
+}
+`})}),`
+`,e.jsxs(n.p,{children:["You can define the command for example in the ",e.jsx(n.code,{children:"commands.ts/js"})," file:"]}),`
+`,e.jsxs("details",{children:[e.jsx("summary",{children:"Example file"}),e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-tsx",children:`import { mount } from 'cypress/react18';
+import { ThemeProvider } from '@ui5/webcomponents-react';
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Cypress mount with ThemeProvider
+       */
+      mount: typeof mount;
+    }
+  }
+}
+
+/**
+ * Cypress mount with ThemeProvider
+ */
+Cypress.Commands.add('mount', (component, options) => {
+  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+});
+`})})]}),`
+`,e.jsx(n.h2,{id:"cypress-commands-package-for-ui5-webcomponents",children:"Cypress Commands package for ui5-webcomponents"}),`
+`,e.jsx(a,{hideCloseButton:!0,children:`This package is a work-in-progress and can be extended by you! If you feel like a command or query is missing, please
+feel free to open a PR adding it to our library. Contributions are always welcome!`}),`
+`,e.jsx(n.p,{children:"Since testing web components is sometimes not as straightforward as one would like it to be, we offer a package with a set of commands and queries to make it easier to interact with them:"}),`
+`,e.jsx(n.p,{children:"Install:"}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-sh",children:`npm install @ui5/webcomponents-cypress-commands
+`})}),`
+`,e.jsxs(n.p,{children:["After the installation you can import it in your entry file (e.g. ",e.jsx(n.code,{children:"component.ts"}),"):"]}),`
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-ts",children:`import '@ui5/webcomponents-cypress-commands';
+`})}),`
+`,e.jsx(n.p,{children:"Now you can use all commands and queries that are available in this package."}),`
+`,e.jsx(p,{})]})}}export{Ce as default};
+//# sourceMappingURL=TestSetup-Rez4Eins.js.map
