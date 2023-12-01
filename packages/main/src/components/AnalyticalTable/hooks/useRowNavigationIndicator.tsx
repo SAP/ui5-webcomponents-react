@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ReactTableHooks } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
@@ -67,7 +68,7 @@ const columns = (currentColumns, { instance }) => {
   ];
 };
 
-export const useRowNavigationIndicators = (hooks) => {
+export const useRowNavigationIndicators = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnsDeps);
   hooks.visibleColumnsDeps.push(visibleColumnsDeps);

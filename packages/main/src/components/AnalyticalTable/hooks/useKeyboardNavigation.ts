@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { actions } from 'react-table';
+import type { ReactTableHooks } from '../types/index.js';
 import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
@@ -359,7 +360,7 @@ const setHeaderProps = (headerProps, { instance: { dispatch }, column }) => {
   return [headerProps, { onKeyDown: handleKeyDown }];
 };
 
-export const useKeyboardNavigation = (hooks) => {
+export const useKeyboardNavigation = (hooks: ReactTableHooks) => {
   hooks.getTableProps.push(useGetTableProps);
   hooks.getHeaderProps.push(setHeaderProps);
 };

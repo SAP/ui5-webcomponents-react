@@ -1,5 +1,6 @@
 import React from 'react';
 import { ValueState } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
@@ -67,7 +68,7 @@ const columns = (currentColumns, { instance }) => {
   ];
 };
 
-export const useRowHighlight = (hooks) => {
+export const useRowHighlight = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnsDeps);
   hooks.visibleColumnsDeps.push(visibleColumnsDeps);

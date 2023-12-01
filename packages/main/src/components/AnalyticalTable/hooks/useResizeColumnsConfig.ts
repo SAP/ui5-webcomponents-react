@@ -1,3 +1,5 @@
+import type { ReactTableHooks } from '../types/index.js';
+
 const useGetResizerProps = (props) => {
   return {
     ...props,
@@ -8,7 +10,7 @@ const useGetResizerProps = (props) => {
   };
 };
 
-export const useResizeColumnsConfig = (hooks) => {
+export const useResizeColumnsConfig = (hooks: ReactTableHooks) => {
   hooks.getResizerProps.push(useGetResizerProps);
 };
 

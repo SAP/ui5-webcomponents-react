@@ -1,4 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import type { ReactTableHooks } from '../types/index.js';
 
 const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
   const { dispatch, manualGroupBy } = instance;
@@ -56,7 +57,7 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
   ];
 };
 
-export const useToggleRowExpand = (hooks) => {
+export const useToggleRowExpand = (hooks: ReactTableHooks) => {
   hooks.getToggleRowExpandedProps.push(getToggleRowExpandedProps);
 };
 useToggleRowExpand.pluginName = 'useToggleRowExpand';

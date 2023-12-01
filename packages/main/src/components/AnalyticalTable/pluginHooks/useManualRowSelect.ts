@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import type { ReactTableHooks } from '../types/index.js';
 
 /**
  * A plugin hook for manual row selection.
@@ -19,7 +20,7 @@ export const useManualRowSelect = (manualRowSelectedKey = 'isSelected') => {
     }, [flatRows, manualRowSelectedKey]);
   };
 
-  const manualRowSelect = (hooks) => {
+  const manualRowSelect = (hooks: ReactTableHooks) => {
     hooks.useInstanceAfterData.push(instanceAfterData);
   };
 

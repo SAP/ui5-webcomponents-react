@@ -1,5 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;
@@ -69,7 +70,7 @@ const getRowProps = (rowProps, { row, instance }) => {
   ];
 };
 
-export const useSingleRowStateSelection = (hooks) => {
+export const useSingleRowStateSelection = (hooks: ReactTableHooks) => {
   hooks.getRowProps.push(getRowProps);
 };
 useSingleRowStateSelection.pluginName = 'useSingleRowStateSelection';

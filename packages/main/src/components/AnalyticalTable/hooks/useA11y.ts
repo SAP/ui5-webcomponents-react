@@ -1,5 +1,6 @@
 import type { KeyboardEventHandler } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
 interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
@@ -95,7 +96,7 @@ const setHeaderProps = (headerProps, { column, instance }) => {
   return [headerProps, { isFiltered, ...updatedProps }];
 };
 
-export const useA11y = (hooks) => {
+export const useA11y = (hooks: ReactTableHooks) => {
   hooks.getCellProps.push(setCellProps);
   hooks.getHeaderProps.push(setHeaderProps);
 };

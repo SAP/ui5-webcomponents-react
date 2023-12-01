@@ -1,4 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import type { ReactTableHooks } from '../types/index.js';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
@@ -72,6 +73,6 @@ function getHeaderProps(
   ];
 }
 
-export function useColumnDragAndDrop(hooks) {
+export function useColumnDragAndDrop(hooks: ReactTableHooks) {
   hooks.getHeaderProps.push(getHeaderProps);
 }
