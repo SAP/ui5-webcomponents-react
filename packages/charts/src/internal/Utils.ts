@@ -12,6 +12,10 @@ export const getCellColors = (element: Record<string, any>, data: Record<string,
 let canvas;
 
 export const getTextWidth = (text) => {
+  if (typeof document === 'undefined') {
+    return text.length * 7;
+  }
+
   const font = `normal 12pt "72","72full",Arial,Helvetica,sans-serif`;
   // re-use canvas object for better performance
   canvas = canvas || (canvas = document.createElement('canvas'));
