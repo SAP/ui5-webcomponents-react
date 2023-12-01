@@ -63,6 +63,8 @@ export interface MessageViewButtonProptypes
   extends Omit<ButtonPropTypes, 'design' | 'icon' | 'iconEnd' | 'children' | 'type' | 'submits'> {
   /**
    * Specifies the type of the button.
+   *
+   * __Note:__ `"None"` is displayed as `"Information"`.
    */
   type?: ValueState | keyof typeof ValueState;
   /**
