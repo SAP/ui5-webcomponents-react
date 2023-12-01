@@ -113,7 +113,7 @@ const useStyles = createUseStyles(
       '&[data-key="Error"]:not([pressed])': { color: ThemingParameters.sapNegativeElementColor },
       '&[data-key="Warning"]:not([pressed])': { color: ThemingParameters.sapCriticalElementColor },
       '&[data-key="Success"]:not([pressed])': { color: ThemingParameters.sapPositiveElementColor },
-      '&[data-key="Information"]:not([pressed])': { color: ThemingParameters.sapNeutralElementColor }
+      '&[data-key="Information"]:not([pressed])': { color: ThemingParameters.sapInformativeElementColor }
     },
     detailsContainer: {
       padding: '1rem'
@@ -124,18 +124,18 @@ const useStyles = createUseStyles(
       '&[data-type="Error"]': { color: ThemingParameters.sapNegativeElementColor },
       '&[data-type="Warning"]': { color: ThemingParameters.sapCriticalElementColor },
       '&[data-type="Success"]': { color: ThemingParameters.sapPositiveElementColor },
-      '&[data-type="Information"],&[data-type="None"]': { color: ThemingParameters.sapNeutralElementColor }
+      '&[data-type="Information"],&[data-type="None"]': { color: ThemingParameters.sapInformativeElementColor }
     },
     detailsTextContainer: { overflow: 'hidden' },
     detailsTitle: {
-      marginBottom: '1rem'
+      marginBlockEnd: '1rem'
     },
     detailsText: {
       fontFamily: ThemingParameters.sapFontFamily,
       fontSize: ThemingParameters.sapFontSize,
       lineHeight: 1.4,
       color: ThemingParameters.sapTextColor,
-      marginBottom: '1rem'
+      marginBlockEnd: '1rem'
     }
   },
   { name: 'MessageView' }
