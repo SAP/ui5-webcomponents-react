@@ -128,13 +128,12 @@ const useStyles = createUseStyles(
     },
     typeInformation: {
       '& $icon': {
-        // color: ThemingParameters.sapInformativeElementColor
-        color: ThemingParameters.sapNeutralElementColor
+        color: ThemingParameters.sapInformativeElementColor
       }
     },
     typeNone: {
       '& $icon': {
-        color: ThemingParameters.sapNeutralElementColor
+        color: ThemingParameters.sapInformativeElementColor
       }
     }
   },
