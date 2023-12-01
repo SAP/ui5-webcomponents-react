@@ -25,14 +25,25 @@ const buttonStyles = Object.values(ValueState).reduce((acc, cur) => {
       cssType = 'Critical';
       break;
     default:
-      cssType = 'Neutral';
+      cssType = 'Information';
   }
   const standard = `&[data-type="${cur}"]`;
   const hover = `&[data-type="${cur}"]:hover`;
   const active = `&[data-type="${cur}"]:active`;
+
   return {
     ...acc,
+    textShadow:
+      cssType === 'Information'
+        ? ThemingParameters.sapContent_TextShadow
+        : ThemingParameters.sapContent_ContrastTextShadow,
     [standard]: {
+      '&::part(button)::after': {
+        borderColor:
+          cssType === 'Information'
+            ? ThemingParameters.sapContent_FocusColor
+            : ThemingParameters.sapContent_ContrastFocusColor
+      },
       color: ThemingParameters[`sapButton_${cssType}_TextColor`],
       background: ThemingParameters[`sapButton_${cssType}_Background`],
       borderColor: ThemingParameters[`sapButton_${cssType}_BorderColor`]
@@ -45,16 +56,17 @@ const buttonStyles = Object.values(ValueState).reduce((acc, cur) => {
     [active]: {
       color: ThemingParameters[`sapButton_${cssType}_Active_TextColor`],
       background: ThemingParameters[`sapButton_${cssType}_Active_Background`],
-      borderColor: ThemingParameters[`sapButton_${cssType}_Active_BorderColor`]
+      borderColor: ThemingParameters[`sapButton_${cssType}_Active_BorderColor`],
+      '&::part(button)::after': {
+        borderColor: ThemingParameters.sapContent_FocusColor
+      }
     }
   };
 }, {});
 
 const useStyles = createUseStyles(
   {
-    btn: {
-      ...buttonStyles
-    }
+    btn: buttonStyles
   },
   { name: 'MessageViewButtonStyles' }
 );
