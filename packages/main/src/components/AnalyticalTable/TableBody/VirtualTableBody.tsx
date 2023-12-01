@@ -3,6 +3,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
 import React, { useCallback, useMemo, useRef } from 'react';
+import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type { ScrollToRefType } from '../interfaces.js';
 import type { AnalyticalTablePropTypes, DivWithCustomScrollProp } from '../types/index.js';
 import { getSubRowsByString } from '../util/index.js';
@@ -33,6 +34,7 @@ interface VirtualTableBodyProps {
   manualGroupBy?: boolean;
   subRowsKey: string;
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
+  subComponentsBehavior: AnalyticalTablePropTypes['subComponentsBehavior'];
 }
 
 const measureElement = (el: HTMLElement) => {
@@ -63,7 +65,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     columnVirtualizer,
     manualGroupBy,
     subRowsKey,
-    scrollContainerRef
+    scrollContainerRef,
+    subComponentsBehavior
   } = props;
 
   const itemCount = Math.max(minRows, rows.length);
@@ -172,7 +175,13 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         const isNavigatedCell = markNavigatedRow(row);
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
-        if (!RowSubComponent && subComponentsHeight && subComponentsHeight?.[virtualRow.index]?.subComponentHeight) {
+        if (
+          (!RowSubComponent ||
+            (subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable &&
+              !row.isExpanded)) &&
+          subComponentsHeight &&
+          subComponentsHeight?.[virtualRow.index]?.subComponentHeight
+        ) {
           dispatch({
             type: 'SUB_COMPONENTS_HEIGHT',
             payload: {

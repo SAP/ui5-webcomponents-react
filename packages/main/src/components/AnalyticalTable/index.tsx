@@ -278,7 +278,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
-    subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight &&
+    (subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight ||
+      subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable) &&
     !!tableState.subComponentsHeight &&
     !!Object.keys(tableState.subComponentsHeight);
 
@@ -434,7 +435,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
-
     if (includeSubCompRowHeight) {
       let initialBodyHeightWithSubComps = 0;
       for (let i = 0; i < rowNum; i++) {
@@ -722,6 +722,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   columnVirtualizer={columnVirtualizer}
                   manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
                   subRowsKey={subRowsKey}
+                  subComponentsBehavior={subComponentsBehavior}
                 />
               </VirtualTableBodyContainer>
             )}
