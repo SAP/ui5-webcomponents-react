@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import type { ReactNode } from 'react';
-import { IllustrationMessageType, IllustrationMessageSize } from '../../enums/index.js';
+import { IllustrationMessageType, IllustrationMessageSize, TitleLevel } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
@@ -37,6 +37,10 @@ interface IllustratedMessageAttributes {
    * **Note:** Using `subtitle` slot, the default of this property will be overwritten.
    */
   subtitleText?: string;
+  /**
+   * Defines the semantic level of the title. **Note:** Used for accessibility purposes only.
+   */
+  titleLevel?: TitleLevel | keyof typeof TitleLevel;
   /**
    * Defines the title of the component.
    *
@@ -82,7 +86,7 @@ export interface IllustratedMessagePropTypes extends IllustratedMessageAttribute
  */
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
-  ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleText'],
+  ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleLevel', 'titleText'],
   [],
   ['subtitle'],
   [],
@@ -93,7 +97,8 @@ IllustratedMessage.displayName = 'IllustratedMessage';
 
 IllustratedMessage.defaultProps = {
   name: IllustrationMessageType.BeforeSearch,
-  size: IllustrationMessageSize.Auto
+  size: IllustrationMessageSize.Auto,
+  titleLevel: TitleLevel.H2
 };
 
 export { IllustratedMessage };

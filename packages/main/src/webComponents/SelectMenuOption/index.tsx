@@ -2,10 +2,16 @@
 
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
 interface SelectMenuOptionAttributes {
+  /**
+   * Defines whether the component is in disabled state.
+   *
+   * **Note:** A disabled component is hidden.
+   */
+  disabled?: boolean;
   /**
    * Defines the text, displayed inside the `Select` input filed when the option gets selected.
    */
@@ -14,6 +20,14 @@ interface SelectMenuOptionAttributes {
    * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
+  /**
+   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   */
+  accessibleName?: string;
+  /**
+   * Defines the selected state of the `ListItem`.
+   */
+  selected?: boolean;
 }
 
 export interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {}
@@ -23,6 +37,10 @@ export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, C
    * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user clicks on the detail button when type is `Detail`.
+   */
+  onDetailClick?: (event: Ui5CustomEvent<SelectMenuOptionDomRef>) => void;
 }
 
 /**
@@ -34,10 +52,10 @@ export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, C
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['displayText', 'value'],
+  ['displayText', 'value', 'accessibleName'],
+  ['disabled', 'selected'],
   [],
-  [],
-  [],
+  ['detail-click'],
   () => import('@ui5/webcomponents/dist/SelectMenuOption.js')
 );
 

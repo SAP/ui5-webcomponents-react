@@ -63,7 +63,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     };
   }
 
-  if (property.type === 'sap.ui.webc.fiori.ISideNavigationItem|sap.ui.webc.fiori.ISideNavigationSubItem') {
+  if (property.type === 'sap.ui.webc.fiori.SideNavigationItem[]') {
     return {
       tsType: reactNodeType,
       importStatement: importStatementReactNodeType
