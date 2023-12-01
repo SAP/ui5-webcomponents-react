@@ -7529,7 +7529,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~1.19.0
+    "@ui5/webcomponents-base": ~0.0.0-8c62d34c3
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
@@ -7549,8 +7549,8 @@ __metadata:
     react-content-loader: "npm:6.2.1"
     recharts: "npm:2.10.3"
   peerDependencies:
-    "@ui5/webcomponents-react": ~1.22.0
-    "@ui5/webcomponents-react-base": ~1.22.0
+    "@ui5/webcomponents-react": ~1.23.0
+    "@ui5/webcomponents-react-base": ~1.23.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-jss: ^10.10.0
   languageName: unknown
@@ -7568,10 +7568,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": ~1.19.0
-    "@ui5/webcomponents-base": ~1.19.0
-    "@ui5/webcomponents-fiori": ~1.19.0
-    "@ui5/webcomponents-icons": ~1.19.0
+    "@ui5/webcomponents": ~0.0.0-8c62d34c3
+    "@ui5/webcomponents-base": ~0.0.0-8c62d34c3
+    "@ui5/webcomponents-fiori": ~0.0.0-8c62d34c3
+    "@ui5/webcomponents-icons": ~0.0.0-8c62d34c3
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
@@ -7596,9 +7596,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-tools@npm:1.19.0"
+"@ui5/webcomponents-tools@npm:0.0.0-8c62d34c3":
+  version: 0.0.0-8c62d34c3
+  resolution: "@ui5/webcomponents-tools@npm:0.0.0-8c62d34c3"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
     "@typescript-eslint/parser": "npm:^5.42.1"
@@ -7653,7 +7653,7 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: e54d7a4220b43a10c69b38740e310d006422ad4941a58aaf891f59e2cc747c7173d2c4e01e395e0335d59c304cd9736c3a3fde67baec7a5c60f5694a522822ad
+  checksum: 8160cb874354b11cfee134d8804e6c9941f602c1c0e6127d6473bfe9092b91f4be98754b0f96a7a16fa474f2c5f96d9a1e368fe118b3e0ebf2e0d4e32f7ab1a1
   languageName: node
   linkType: hard
 
@@ -22925,7 +22925,7 @@ __metadata:
     "@ui5/webcomponents": "npm:1.19.1"
     "@ui5/webcomponents-fiori": "npm:1.19.1"
     "@ui5/webcomponents-icons": "npm:1.19.1"
-    "@ui5/webcomponents-tools": "npm:1.19.0"
+    "@ui5/webcomponents-tools": "npm:0.0.0-8c62d34c3"
     "@vitejs/plugin-react": "npm:^4.2.0"
     chromatic: "npm:^9.0.0"
     cssnano: "npm:^6.0.1"
