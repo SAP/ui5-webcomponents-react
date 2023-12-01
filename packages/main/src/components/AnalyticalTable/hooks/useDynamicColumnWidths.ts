@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { AnalyticalTableScaleWidthMode } from '../../../enums/index.js';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
-import type { AnalyticalTableColumnDefinition } from '../types/index.js';
+import type { AnalyticalTableColumnDefinition, ReactTableHooks } from '../types/index.js';
 
 const ROW_SAMPLE_SIZE = 20;
 const MAX_WIDTH = 700;
@@ -416,7 +416,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
   });
 };
 
-export const useDynamicColumnWidths = (hooks) => {
+export const useDynamicColumnWidths = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
   hooks.columnsDeps.push(columnsDeps);
 };

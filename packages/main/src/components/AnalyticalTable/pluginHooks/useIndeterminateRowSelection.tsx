@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
 type onIndeterminateChange = (e: {
   indeterminateRowsById: Record<string | number, boolean>;
@@ -146,7 +147,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     }, [indeterminateRows]);
   };
 
-  const useIndeterminate = (hooks) => {
+  const useIndeterminate = (hooks: ReactTableHooks) => {
     hooks.getToggleRowSelectedProps.push(toggleRowProps);
     hooks.stateReducers.push(stateReducer);
     hooks.useInstanceAfterData.push(useInstanceAfterData);

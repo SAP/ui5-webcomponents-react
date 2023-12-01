@@ -5,8 +5,10 @@
  *
  * @param {string[]} orderedIds - Array of column IDs, defining the sorting priority.
  */
+import type { ReactTableHooks } from '../types/index.js';
+
 export const useOrderedMultiSort = (orderedIds: string[]) => {
-  const useOrderedMultiSortPlugin = (hooks) => {
+  const useOrderedMultiSortPlugin = (hooks: ReactTableHooks) => {
     hooks.stateReducers.push((newState, action) => {
       if (action.type === 'toggleSortBy') {
         if (newState.sortBy.length <= 1) {

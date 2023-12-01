@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
@@ -181,7 +182,7 @@ const setToggleRowSelectedProps = (props, { instance: { webComponentsReactProper
   return [props, { className: classes.checkBox, title: undefined }];
 };
 
-export const useRowSelectionColumn = (hooks) => {
+export const useRowSelectionColumn = (hooks: ReactTableHooks) => {
   hooks.getCellProps.push(getCellProps);
   hooks.getHeaderProps.push(headerProps);
   hooks.getToggleRowSelectedProps.push(setToggleRowSelectedProps);

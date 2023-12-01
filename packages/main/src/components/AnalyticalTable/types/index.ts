@@ -1,5 +1,4 @@
 import type { ComponentType, ReactNode, Ref } from 'react';
-import type { PluginHook } from 'react-table';
 import type {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
@@ -16,6 +15,46 @@ import type {
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../interfaces/index.js';
+
+export interface ReactTableHooks {
+  useOptions: any[];
+  stateReducers: any[];
+  useControlledState: any[];
+  columns: any[];
+  columnsDeps: any[];
+  allColumns: any[];
+  allColumnsDeps: any[];
+  accessValue: any[];
+  materializedColumns: any[];
+  materializedColumnsDeps: any[];
+  useInstanceAfterData: any[];
+  visibleColumns: any[];
+  visibleColumnsDeps: any[];
+  headerGroups: any[];
+  headerGroupsDeps: any[];
+  useInstanceBeforeDimensions: any[];
+  useInstance: any[];
+  prepareRow: any[];
+  getTableProps: any[];
+  getTableBodyProps: any[];
+  getHeaderGroupProps: any[];
+  getFooterGroupProps: any[];
+  getHeaderProps: any[];
+  getFooterProps: any[];
+  getRowProps: any[];
+  getCellProps: any[];
+  useFinalInstance: any[];
+  getToggleHiddenProps: any[];
+  getToggleHideAllColumnsProps: any[];
+  getGroupByToggleProps: any[];
+  getSortByToggleProps: any[];
+  getToggleAllRowsExpandedProps: any[];
+  getToggleRowExpandedProps: any[];
+  getToggleRowSelectedProps: any[];
+  getToggleAllRowsSelectedProps: any[];
+  getToggleAllPageRowsSelectedProps: any[];
+  getResizerProps: any[];
+}
 
 export interface AnalyticalTableState {
   columnOrder: string[];
@@ -463,7 +502,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * You can use this prob to add custom hooks to the table.
    */
-  tableHooks?: PluginHook<any>[];
+  tableHooks?: ((hooks?: ReactTableHooks) => void)[];
   /**
    * Defines the key for nested rows.
    *

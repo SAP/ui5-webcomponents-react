@@ -2,6 +2,7 @@ import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 import { getBy } from '../util/index.js';
 
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
@@ -130,7 +131,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return rowProps;
   };
 
-  const useDisableSelectionRow = (hooks) => {
+  const useDisableSelectionRow = (hooks: ReactTableHooks) => {
     hooks.getHeaderProps.push(headerProps);
     hooks.getRowProps.push(getRowProps);
     hooks.columns.push(columns);

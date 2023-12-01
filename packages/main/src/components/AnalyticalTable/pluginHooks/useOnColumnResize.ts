@@ -2,6 +2,7 @@
 
 import { debounce } from '@ui5/webcomponents-react-base';
 import { useEffect, useRef } from 'react';
+import type { ReactTableHooks } from '../types/index.js';
 
 interface useOnColumnResizeOptions {
   /**
@@ -67,7 +68,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
     }, [columnResizing, options?.liveUpdate, columns]);
   };
 
-  const useOnColumnResizeHooks = (hooks) => {
+  const useOnColumnResizeHooks = (hooks: ReactTableHooks) => {
     hooks.useFinalInstance.push(useInstance);
   };
 

@@ -1,8 +1,9 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { useEffect } from 'react';
 import { AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 
-export const useSelectionChangeCallback = (hooks) => {
+export const useSelectionChangeCallback = (hooks: ReactTableHooks) => {
   hooks.useControlledState.push((state, { instance }) => {
     const { selectedRowPayload, selectedRowIds, filters, globalFilter } = state;
     const { rowsById, preFilteredRowsById, webComponentsReactProperties, dispatch } = instance;

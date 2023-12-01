@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import type { ReactTableHooks } from '../types/index.js';
 import { getSubRowsByString, resolveCellAlignment } from '../util/index.js';
 
 const getHeaderGroupProps = (headerGroupProps, { instance }) => {
@@ -106,7 +107,7 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
   ];
 };
 
-export const useStyling = (hooks) => {
+export const useStyling = (hooks: ReactTableHooks) => {
   hooks.getHeaderGroupProps.push(getHeaderGroupProps);
   hooks.getHeaderProps.push(getHeaderProps);
   hooks.getRowProps.push(getRowProps);

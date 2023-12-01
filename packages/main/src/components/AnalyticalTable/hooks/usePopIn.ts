@@ -1,3 +1,5 @@
+import type { ReactTableHooks } from '../types/index.js';
+
 const popInVisibleColumnsDeps = (deps, { instance: { state } }) => [...deps, state.tableClientWidth];
 
 const popInVisibleColumns = (cols, { instance }) => {
@@ -22,7 +24,7 @@ const popInVisibleColumns = (cols, { instance }) => {
   );
 };
 
-export const usePopIn = (hooks) => {
+export const usePopIn = (hooks: ReactTableHooks) => {
   hooks.visibleColumns.push(popInVisibleColumns);
   hooks.visibleColumnsDeps.push(popInVisibleColumnsDeps);
 };
