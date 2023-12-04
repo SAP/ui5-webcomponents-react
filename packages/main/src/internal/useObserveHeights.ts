@@ -12,8 +12,14 @@ export const useObserveHeights = (
   {
     noHeader,
     fixedHeader = false,
-    scrollTimeout = { current: 0 }
-  }: { noHeader: boolean; fixedHeader?: boolean; scrollTimeout?: MutableRefObject<number> }
+    scrollTimeout = { current: 0 },
+    preserveHeaderStateOnScroll
+  }: {
+    noHeader: boolean;
+    fixedHeader?: boolean;
+    scrollTimeout?: MutableRefObject<number>;
+    preserveHeaderStateOnScroll?: boolean;
+  }
 ) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
@@ -24,7 +30,6 @@ export const useObserveHeights = (
     (e) => {
       const scrollDown = prevScrollTop.current <= e.target.scrollTop;
       prevScrollTop.current = e.target.scrollTop;
-
       if (scrollTimeout.current >= performance.now()) {
         return;
       }
@@ -52,13 +57,13 @@ export const useObserveHeights = (
 
   useEffect(() => {
     const page = pageRef.current;
-    if (!fixedHeader) {
+    if (!fixedHeader && !preserveHeaderStateOnScroll) {
       page.addEventListener('scroll', onScroll);
     }
     return () => {
       page.removeEventListener('scroll', onScroll);
     };
-  }, [onScroll, fixedHeader]);
+  }, [onScroll, fixedHeader, preserveHeaderStateOnScroll]);
 
   // top header
   useEffect(() => {
