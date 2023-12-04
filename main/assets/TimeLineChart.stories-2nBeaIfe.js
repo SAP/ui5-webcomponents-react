@@ -137,4 +137,3 @@ Use this prop carefully, overwriting CSS rules might break the component.`,name:
     return <TimelineChart />;
   }
 }`,...(Be=(ke=Y.parameters)==null?void 0:ke.docs)==null?void 0:Be.source}}};const V0=["Default","WithAnnotations","WithAnnotationsOnly","WithMoreCustomization","LoadingPlaceholder"],N0=Object.freeze(Object.defineProperty({__proto__:null,Default:Z,LoadingPlaceholder:Y,WithAnnotations:J,WithAnnotationsOnly:K,WithMoreCustomization:Q,__namedExportsOrder:V0,default:S0},Symbol.toStringTag,{value:"Module"}));export{N0 as C,Z as D,Y as L,N as T,J as W,K as a,Q as b};
-//# sourceMappingURL=TimeLineChart.stories-2nBeaIfe.js.map

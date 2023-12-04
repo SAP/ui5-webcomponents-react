@@ -3,4 +3,3 @@ const n=`<br />
 
 # Subcomponents
 `;export{n as S};
-//# sourceMappingURL=SubcomponentsSection-pzdPLcqE.js.map

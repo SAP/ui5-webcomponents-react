@@ -1,2 +1,1 @@
 const t=!1,a=[{value:"sap_horizon",title:"Morning Horizon (Light)"},{value:"sap_horizon_dark",title:"Evening Horizon (Dark)"},{value:"sap_horizon_hcb",title:"Horizon High Contrast Black"},{value:"sap_horizon_hcw",title:"Horizon High Contrast White"},{value:"sap_fiori_3",title:"Quartz Light"},{value:"sap_fiori_3_dark",title:"Quartz Dark"},{value:"sap_fiori_3_hcb",title:"Quartz High Contrast Black"},{value:"sap_fiori_3_hcw",title:"Quartz High Contrast White"}],i=["className","style"];export{a as M,i as e,t as i};
-//# sourceMappingURL=utils-77gZ8405.js.map

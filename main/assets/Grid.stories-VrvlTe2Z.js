@@ -34,4 +34,3 @@ Use this prop carefully, overwriting CSS rules might break the component.`,name:
       </>
   }
 }`,...(b=(S=s.parameters)==null?void 0:S.docs)==null?void 0:b.source}}};const O=["Default"],Q=Object.freeze(Object.defineProperty({__proto__:null,Default:s,__namedExportsOrder:O,default:z},Symbol.toStringTag,{value:"Module"}));export{Q as C,s as D};
-//# sourceMappingURL=Grid.stories-VrvlTe2Z.js.map
