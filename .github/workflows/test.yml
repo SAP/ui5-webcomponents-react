@@ -15,6 +15,7 @@ jobs:
     strategy:
       matrix:
         spec:
+          - main/src/components/DynamicPage
           - base
           - charts
           - cypress-commands
