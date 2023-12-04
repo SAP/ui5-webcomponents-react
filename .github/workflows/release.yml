@@ -29,6 +29,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -68,6 +69,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
           script: |
             const { default: addIssueComments } = await import('${{ github.workspace }}/.github/createIssueCommentsForRelease.mjs');
 
