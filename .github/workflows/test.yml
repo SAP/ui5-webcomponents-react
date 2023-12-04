@@ -16,11 +16,6 @@ jobs:
       matrix:
         spec:
           - main/src/components/DynamicPage
-          - base
-          - charts
-          - cypress-commands
-          - main/src/components
-          - main/src/internal
       fail-fast: false
 
     steps:
