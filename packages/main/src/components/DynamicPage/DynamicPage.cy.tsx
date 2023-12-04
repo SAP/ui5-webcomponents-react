@@ -486,5 +486,144 @@ describe('DynamicPage', () => {
 
     checksWithScroll();
   });
+
+  it('prop: headerCollapsed', () => {
+    document.body.style.margin = '0px';
+    const TestComp = () => {
+      const [headerCollapsed, setHeaderCollapsed] = useState(true);
+      const handleToggle = (visible) => {
+        setHeaderCollapsed(!visible);
+      };
+      return (
+        <>
+          <button
+            style={{ height: '40px' }}
+            data-testid="toggle"
+            onClick={() => {
+              setHeaderCollapsed((prev) => !prev);
+            }}
+          >
+            Toggle headerCollapsed
+          </button>
+          <DynamicPage
+            data-testid="dp"
+            style={{ height: 'calc(100vh - 40px)' }}
+            headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+            headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
+            headerCollapsed={headerCollapsed}
+            onToggleHeaderContent={handleToggle}
+          >
+            <div style={{ height: '2000px' }}>Content</div>
+          </DynamicPage>
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
+
+    //collapsed
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('toggle').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+    cy.wait(200);
+
+    cy.findByTestId('dp').scrollTo(0, 800, { duration: 300 });
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('toggle').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+    cy.wait(200);
+
+    cy.findByTestId('dp').scrollTo(0, 750, { duration: 300 });
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+    cy.wait(200);
+
+    cy.findByTestId('dp').scrollTo(0, 0, { duration: 300 });
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+  });
+
+  it('prop: preserveHeaderStateOnScroll', () => {
+    document.body.style.margin = '0px';
+    const TestComp = () => {
+      const [headerCollapsed, setHeaderCollapsed] = useState<boolean | undefined>(undefined);
+      const [preserveHeaderStateOnScroll, setPreserveHeaderStateOnScroll] = useState(true);
+      const handleToggle = (visible) => {
+        setHeaderCollapsed(!visible);
+      };
+      return (
+        <>
+          <button
+            style={{ height: '40px' }}
+            data-testid="col"
+            onClick={() => {
+              setHeaderCollapsed((prev) => !prev);
+            }}
+          >
+            Toggle headerCollapsed
+          </button>
+          <button
+            style={{ height: '40px' }}
+            data-testid="pres"
+            onClick={() => {
+              setPreserveHeaderStateOnScroll((prev) => !prev);
+            }}
+          >
+            Toggle preserveHeaderStateOnScroll
+          </button>
+          <DynamicPage
+            data-testid="dp"
+            style={{ height: 'calc(100vh - 40px)' }}
+            headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
+            headerContent={<DynamicPageHeader>DynamicPageHeader</DynamicPageHeader>}
+            headerCollapsed={headerCollapsed}
+            onToggleHeaderContent={handleToggle}
+            preserveHeaderStateOnScroll={preserveHeaderStateOnScroll}
+          >
+            <div style={{ height: '2000px' }}>Content</div>
+          </DynamicPage>
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
+
+    cy.findByTestId('dp').scrollTo(0, 800);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+
+    cy.findByTestId('dp').scrollTo(0, 0);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+
+    cy.wait(300);
+    cy.findByTestId('dp').scrollTo(0, 800);
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('dp').scrollTo(0, 0);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.wait(300);
+    cy.findByTestId('dp').scrollTo(0, 800);
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+
+    cy.findByTestId('col').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('dp').scrollTo(0, 0);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('col').click();
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+
+    cy.findByTestId('dp').scrollTo(0, 800);
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+
+    cy.findByTestId('pres').click();
+    cy.wait(300);
+    cy.findByTestId('dp').scrollTo(0, 750, { duration: 300 });
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
+
+    cy.findByTestId('dp').scrollTo(0, 0, { duration: 300 });
+    cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
+  });
   cypressPassThroughTestsFactory(DynamicPage);
 });
