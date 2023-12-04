@@ -622,8 +622,10 @@ describe('DynamicPage', () => {
     cy.findByTestId('dp').scrollTo(0, 750, { duration: 300 });
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('not.exist');
 
-    cy.findByTestId('dp').scrollTo(0, 0, { duration: 300 });
+    cy.wait(600);
+    cy.findByTestId('dp').scrollTo(0, 0);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
   });
+
   cypressPassThroughTestsFactory(DynamicPage);
 });
