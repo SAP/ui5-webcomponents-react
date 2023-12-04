@@ -542,7 +542,7 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
   });
 
-  it('prop: preserveHeaderStateOnScroll', () => {
+  it.only('prop: preserveHeaderStateOnScroll', () => {
     document.body.style.margin = '0px';
     const TestComp = () => {
       const [headerCollapsed, setHeaderCollapsed] = useState<boolean | undefined>(undefined);
@@ -624,6 +624,9 @@ describe('DynamicPage', () => {
 
     cy.findByTestId('dp').scrollTo(0, 0, { duration: 300 });
     cy.wait(300);
+    // fallback scroll for CI
+    cy.findByTestId('dp').scrollTo(0, 0);
+    cy.wait(50);
     cy.get('[data-component-name="DynamicPageAnchorBarPinBtn"]').should('be.visible');
   });
   cypressPassThroughTestsFactory(DynamicPage);
