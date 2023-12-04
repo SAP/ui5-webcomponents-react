@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.2...v1.23.0) (2023-12-04)
+
+### Bug Fixes
+
+- **MessageView & MessageItem:** update to latest design specs ([#5298](https://github.com/SAP/ui5-webcomponents-react/issues/5298)) ([ea6d4d7](https://github.com/SAP/ui5-webcomponents-react/commit/ea6d4d71be9a14312c969272fe9b450179e917fb))
+
+### Features
+
+- update to `@ui5/webcomponents@1.20.0` ([#5306](https://github.com/SAP/ui5-webcomponents-react/issues/5306)) ([c0a1517](https://github.com/SAP/ui5-webcomponents-react/commit/c0a151798e73ec92ddb7a2a901e8e84c94ca93be))
+
 # [1.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.2...v1.22.0) (2023-11-03)
 
 ### Features

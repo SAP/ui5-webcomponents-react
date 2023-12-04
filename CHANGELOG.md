@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.2...v1.23.0) (2023-12-04)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** adjust return type for `sortType` function ([#5266](https://github.com/SAP/ui5-webcomponents-react/issues/5266)) ([3b0784e](https://github.com/SAP/ui5-webcomponents-react/commit/3b0784ee87127a296d5c4025097d5b177e8669d0))
+- **AnalyticalTable - TypeScript:** use better type for `tableHooks` ([#5300](https://github.com/SAP/ui5-webcomponents-react/issues/5300)) ([6633c40](https://github.com/SAP/ui5-webcomponents-react/commit/6633c401adf3090ba19909daf99cc60df395b527))
+- **AnalyticalTable:** don't scroll when calling `toggleRowExpanded` ([#5296](https://github.com/SAP/ui5-webcomponents-react/issues/5296)) ([c4b3658](https://github.com/SAP/ui5-webcomponents-react/commit/c4b3658d8851a943167a6b54b469e4c184ab8f13)), closes [#5181](https://github.com/SAP/ui5-webcomponents-react/issues/5181)
+- **AnalyticalTable:** fix endless loop when using next-js app router ([#5290](https://github.com/SAP/ui5-webcomponents-react/issues/5290)) ([4555e5c](https://github.com/SAP/ui5-webcomponents-react/commit/4555e5c2eaa5930576cf4add53a814fbf4b11a29)), closes [#5282](https://github.com/SAP/ui5-webcomponents-react/issues/5282)
+- **AnalyticalTable:** remove double border of grouped row ([#5267](https://github.com/SAP/ui5-webcomponents-react/issues/5267)) ([c99405d](https://github.com/SAP/ui5-webcomponents-react/commit/c99405d573bc7f9170b9ee960e977be3814e5e84))
+- **charts:** fix error when module was resolved as CommonJS, improve SSR ([#5301](https://github.com/SAP/ui5-webcomponents-react/issues/5301)) ([306b412](https://github.com/SAP/ui5-webcomponents-react/commit/306b4129c986ed555d9164f7ecd012dd4902874f))
+- **deps:** update dependency @tanstack/react-virtual to v3.0.0 ([#5308](https://github.com/SAP/ui5-webcomponents-react/issues/5308)) ([4e45176](https://github.com/SAP/ui5-webcomponents-react/commit/4e45176805bbe7656a31ef4b4061c94ba36157f4))
+- **deps:** update dependency recharts to v2.10.1 ([#5259](https://github.com/SAP/ui5-webcomponents-react/issues/5259)) ([df75033](https://github.com/SAP/ui5-webcomponents-react/commit/df75033055860fe45ed64bf02d6dcf995e6fdc12))
+- **deps:** update dependency recharts to v2.10.2 ([#5293](https://github.com/SAP/ui5-webcomponents-react/issues/5293)) ([cb55a07](https://github.com/SAP/ui5-webcomponents-react/commit/cb55a0764f6095a07d21b3ac4211889ce66066c6))
+- **deps:** update dependency recharts to v2.10.3 ([#5302](https://github.com/SAP/ui5-webcomponents-react/issues/5302)) ([ec5f0eb](https://github.com/SAP/ui5-webcomponents-react/commit/ec5f0eb311ab585493ec27656368ebe2020e2773))
+- **DynamicPage:** smooth header collapse ([#5274](https://github.com/SAP/ui5-webcomponents-react/issues/5274)) ([cf24cd5](https://github.com/SAP/ui5-webcomponents-react/commit/cf24cd578788811c685fdd158444c13bb14b2453)), closes [#5269](https://github.com/SAP/ui5-webcomponents-react/issues/5269)
+- **DynamicPageTitle:** remove inline-end margin of action items ([#5291](https://github.com/SAP/ui5-webcomponents-react/issues/5291)) ([3382cb9](https://github.com/SAP/ui5-webcomponents-react/commit/3382cb957e9e48c1975adffd73b5b4a53e1b0af3)), closes [#5287](https://github.com/SAP/ui5-webcomponents-react/issues/5287)
+- **FilterBar:** correct width of search field ([#5277](https://github.com/SAP/ui5-webcomponents-react/issues/5277)) ([6f29796](https://github.com/SAP/ui5-webcomponents-react/commit/6f29796b031e59de765a7eacfdbb6ba2a20ead95)), closes [#5275](https://github.com/SAP/ui5-webcomponents-react/issues/5275)
+- **FilterBar:** display action buttons in same row as filters if toolbar is hidden ([#5246](https://github.com/SAP/ui5-webcomponents-react/issues/5246)) ([db639dd](https://github.com/SAP/ui5-webcomponents-react/commit/db639ddbb0c97a9ae7aae38cb1b2ed06e0560b32)), closes [#5244](https://github.com/SAP/ui5-webcomponents-react/issues/5244)
+- **FilterBar:** focus search input when dialog is opened ([#5245](https://github.com/SAP/ui5-webcomponents-react/issues/5245)) ([0b4ce3a](https://github.com/SAP/ui5-webcomponents-react/commit/0b4ce3a1828d168a3db48d2324911288171079a7)), closes [#5242](https://github.com/SAP/ui5-webcomponents-react/issues/5242)
+- **MessageItem:** use correct information icon color ([#5305](https://github.com/SAP/ui5-webcomponents-react/issues/5305)) ([117f7d2](https://github.com/SAP/ui5-webcomponents-react/commit/117f7d2cf4c7fa45ce033d8a8ff95d8f8a177d61))
+- **MessageView & MessageItem:** update to latest design specs ([#5298](https://github.com/SAP/ui5-webcomponents-react/issues/5298)) ([ea6d4d7](https://github.com/SAP/ui5-webcomponents-react/commit/ea6d4d71be9a14312c969272fe9b450179e917fb))
+- **MessageViewButton:** update styles to latest specs ([#5307](https://github.com/SAP/ui5-webcomponents-react/issues/5307)) ([c3939fb](https://github.com/SAP/ui5-webcomponents-react/commit/c3939fb9b3bcf72b27e340c81af7cc05700d2074)), closes [#5297](https://github.com/SAP/ui5-webcomponents-react/issues/5297)
+- **Template - nextjs-app:** fix assets import & ThemeProvider position ([#5273](https://github.com/SAP/ui5-webcomponents-react/issues/5273)) ([3cf1f91](https://github.com/SAP/ui5-webcomponents-react/commit/3cf1f91e44b74125110ad11e8eeda6eb8682c1f0))
+
+### Features
+
+- **AnalyticalTable:** add `IncludeHeightExpandable` option to `subComponentsBehavior` prop ([#5250](https://github.com/SAP/ui5-webcomponents-react/issues/5250)) ([c262ef6](https://github.com/SAP/ui5-webcomponents-react/commit/c262ef69bb0c4c07e4918f42def67b14d24fd4c9)), closes [#1700](https://github.com/SAP/ui5-webcomponents-react/issues/1700)
+- **DynamicPage:** add `headerCollapsed` & `preserveHeaderStateOnScroll` props ([#5279](https://github.com/SAP/ui5-webcomponents-react/issues/5279)) ([26029f0](https://github.com/SAP/ui5-webcomponents-react/commit/26029f0d1302f0be0a519a02f8512cd40533617a)), closes [#4206](https://github.com/SAP/ui5-webcomponents-react/issues/4206)
+- **ExpandableText:** introduce component ([#5258](https://github.com/SAP/ui5-webcomponents-react/issues/5258)) ([6e7002d](https://github.com/SAP/ui5-webcomponents-react/commit/6e7002d79826c8bb413406f244013a78f873b113)), closes [#5062](https://github.com/SAP/ui5-webcomponents-react/issues/5062)
+- **Text:** add `hyphenated` and `emptyIndicator` prop ([#5255](https://github.com/SAP/ui5-webcomponents-react/issues/5255)) ([73ca4af](https://github.com/SAP/ui5-webcomponents-react/commit/73ca4afc8aad0c039c940b37692d8025580c32cf))
+- update to `@ui5/webcomponents@1.20.0` ([#5306](https://github.com/SAP/ui5-webcomponents-react/issues/5306)) ([c0a1517](https://github.com/SAP/ui5-webcomponents-react/commit/c0a151798e73ec92ddb7a2a901e8e84c94ca93be))
+
 ## [1.22.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.1...v1.22.2) (2023-11-13)
 
 ### Bug Fixes
