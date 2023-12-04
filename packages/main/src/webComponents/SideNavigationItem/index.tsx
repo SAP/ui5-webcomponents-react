@@ -11,6 +11,14 @@ interface SideNavigationItemAttributes {
    */
   expanded?: boolean;
   /**
+   * Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present). If set to true, clicking the whole item will toggle the sub items, and it won't fire the `onClick` event. By default, only clicking the arrow icon will toggle the sub items.
+   */
+  wholeItemToggleable?: boolean;
+  /**
+   * Defines the link target URI. Supports standard hyperlink behavior. If a JavaScript action should be triggered, this should not be set, but instead an event handler for the `onClick` event should be registered.
+   */
+  href?: string;
+  /**
    * Defines the icon of the item.
    *
    * The SAP-icons font provides numerous options.
@@ -18,17 +26,27 @@ interface SideNavigationItemAttributes {
    */
   icon?: string;
   /**
-   * Defines whether the subitem is selected
+   * Defines whether the item is selected
    */
   selected?: boolean;
+  /**
+   * Defines the component target.
+   *
+   * **Notes:**
+   *
+   * *   `_self`
+   * *   `_top`
+   * *   `_blank`
+   * *   `_parent`
+   * *   `_search`
+   *
+   * **This property must only be used when the `href` property is set.**
+   */
+  target?: string;
   /**
    * Defines the text of the item.
    */
   text?: string;
-  /**
-   * Defines whether pressing the whole item or only pressing the icon will show/hide the items's sub items(if present). If set to true, pressing the whole item will toggle the sub items, and it won't fire the `onClick` event. By default, only pressing the arrow icon will toggle the sub items & the click event will be fired if the item is pressed outside of the icon.
-   */
-  wholeItemToggleable?: boolean;
 }
 
 export interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
@@ -55,8 +73,8 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
-  ['icon', 'text'],
-  ['expanded', 'selected', 'wholeItemToggleable'],
+  ['href', 'icon', 'target', 'text'],
+  ['expanded', 'wholeItemToggleable', 'selected'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')

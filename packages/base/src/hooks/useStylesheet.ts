@@ -10,10 +10,10 @@ function getUseInsertionEffect(isSSR: boolean) {
 
 export function useStylesheet(styles: StyleDataCSP, componentName: string) {
   getUseInsertionEffect(typeof window === 'undefined')(() => {
-    createOrUpdateStyle(styles, styles.packageName, componentName);
+    createOrUpdateStyle(styles, 'data-ui5wcr-component', componentName);
 
     return () => {
-      removeStyle(styles.packageName, componentName);
+      removeStyle('data-ui5wcr-component', componentName);
     };
   }, [styles]);
 }

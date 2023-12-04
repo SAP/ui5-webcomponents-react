@@ -49,6 +49,14 @@ interface SelectAttributes {
 
 export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
   /**
+   * Defines the value of the component:
+   * \- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
+   * \- when set - selects the option with matching `value` property or text content.
+   *
+   * **Note:** If the given value does not match any existing option, the first option will get selected.
+   */
+  value?: string;
+  /**
    * Defines a reference (ID or DOM element) of the component's options menu, as an alternative to defining the selection's drop-down menu.
    *
    * **Note:** Usage of `SelectMenu` is recommended.

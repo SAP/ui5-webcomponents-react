@@ -11,6 +11,7 @@ export const PRIVATE_COMPONENTS = {
   NotificationListItemBase: true,
   Popup: true,
   PickerBase: true,
+  SideNavigationItemBase: true,
   SliderBase: true,
   TabBase: true,
   ThemePropertiesProvider: true,

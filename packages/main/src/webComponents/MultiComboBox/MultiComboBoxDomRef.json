@@ -3,7 +3,6 @@
     "name": "open",
     "readonly": "true",
     "visibility": "public",
-    "since": "1.0.0-rc.5",
     "type": "boolean",
     "description": "Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.",
     "defaultValue": "false"
