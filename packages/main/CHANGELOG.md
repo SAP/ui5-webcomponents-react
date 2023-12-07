@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.0...v1.23.1) (2023-12-07)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct `tableHooks` type ([#5328](https://github.com/SAP/ui5-webcomponents-react/issues/5328)) ([e7a55d4](https://github.com/SAP/ui5-webcomponents-react/commit/e7a55d467a02c01143e44220c8f457e03673c5fe))
+- **deps:** update dependency @tanstack/react-virtual to v3.0.1 ([#5320](https://github.com/SAP/ui5-webcomponents-react/issues/5320)) ([a1e89e4](https://github.com/SAP/ui5-webcomponents-react/commit/a1e89e4713353a950c562c4cf3a20285ab8e596d))
+- **VariantManagement:** correct initial focus of manage views dialog ([#5329](https://github.com/SAP/ui5-webcomponents-react/issues/5329)) ([61a509c](https://github.com/SAP/ui5-webcomponents-react/commit/61a509c5bce2aafdb418f74c7d5bd8dac20d9418))
+
 # [1.23.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.22.2...v1.23.0) (2023-12-04)
 
 ### Bug Fixes
