@@ -1,6 +1,11 @@
 import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import {
+  enrichEventWithDetails,
+  ThemingParameters,
+  useI18nBundle,
+  useIsomorphicId
+} from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
 import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -83,8 +88,8 @@ interface ManageViewsDialogPropTypes {
   showSetAsDefault: boolean;
   showCreatedBy: boolean;
   variantNames: string[];
-  portalContainer: Element;
-  showOnlyFavorites?: boolean;
+  portalContainer: VariantManagementPropTypes['portalContainer'];
+  showOnlyFavorites?: VariantManagementPropTypes['showOnlyFavorites'];
   onManageViewsCancel?: VariantManagementPropTypes['onManageViewsCancel'];
 }
 
@@ -102,6 +107,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showOnlyFavorites,
     onManageViewsCancel
   } = props;
+  const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
   const saveText = i18nBundle.getText(SAVE);
@@ -256,10 +262,12 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       onAfterClose={onAfterClose}
       onBeforeClose={handleClose}
       headerText={manageViewsText}
+      initialFocus={`search-${uniqueId}`}
       header={
         <FlexBox direction={FlexBoxDirection.Column} style={{ width: '100%' }} alignItems={FlexBoxAlignItems.Center}>
           <h2 className={classes.headerText}>{manageViewsText}</h2>
           <Input
+            id={`search-${uniqueId}`}
             className={classes.search}
             placeholder={searchText}
             showClearIcon
