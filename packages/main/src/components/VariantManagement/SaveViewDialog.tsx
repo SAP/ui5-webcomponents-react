@@ -46,7 +46,7 @@ interface SaveViewDialogPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   variantNames: string[];
-  portalContainer: Element;
+  portalContainer: VariantManagementPropTypes['portalContainer'];
   saveViewInputProps?: Omit<InputPropTypes, 'value'>;
   onSaveViewCancel?: VariantManagementPropTypes['onSaveViewCancel'];
 }
@@ -64,7 +64,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     saveViewInputProps,
     onSaveViewCancel
   } = props;
-  const saveViewDialogRef = useRef<DialogDomRef>(null);
+  const saveViewDialogRef = useRef<DialogDomRef | null>(null);
   const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const classes = useStyles();
@@ -169,6 +169,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       headerText={headingText}
       onAfterClose={onAfterClose}
       onBeforeClose={handleClose}
+      initialFocus={`view-${uniqueId}`}
       footer={
         <Bar
           design={BarDesign.Footer}
