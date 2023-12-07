@@ -500,7 +500,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   reactTableOptions?: Record<string, unknown>;
   /**
-   * You can use this prob to add custom hooks to the table.
+   * You can use this prop to add custom hooks to the table.
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
   /**
