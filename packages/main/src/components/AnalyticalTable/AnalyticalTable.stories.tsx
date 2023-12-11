@@ -153,25 +153,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render(args) {
-    const ref = useRef(null);
-    useEffect(() => {
-      if (ref.current) {
-        ref.current?.horizontalScrollToItem(200);
-        // ref.current?.scrollToItem(200);
-      }
-    }, []);
-    return (
-      <AnalyticalTable
-        {...args}
-        data={args.data.map((item, index) => ({ ...item, name: index }))}
-        columns={[...args.columns, ...new Array(100).fill('').map((_, index) => ({ Header: 'Test', id: index }))]}
-        ref={ref}
-      />
-    );
-  }
-};
+export const Default: Story = {};
 
 export const PluginDisableRowSelection: Story = {
   name: 'Plugin: useRowDisableSelection',
