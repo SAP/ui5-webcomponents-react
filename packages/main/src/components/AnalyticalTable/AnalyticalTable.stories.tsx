@@ -159,6 +159,7 @@ export const Default: Story = {
     useEffect(() => {
       if (ref.current) {
         ref.current?.horizontalScrollToItem(200);
+        // ref.current?.scrollToItem(200);
       }
     }, []);
     return (

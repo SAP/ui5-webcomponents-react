@@ -14,6 +14,7 @@ interface VerticalScrollbarProps {
   tableBodyHeight: number;
   'data-native-scrollbar'?: any;
   scrollContainerRef: MutableRefObject<HTMLDivElement>;
+  parentRef: MutableRefObject<HTMLDivElement>;
 }
 
 const styles = {
@@ -46,7 +47,8 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
 export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
-  const { internalRowHeight, tableRef, handleVerticalScrollBarScroll, tableBodyHeight, scrollContainerRef } = props;
+  const { internalRowHeight, tableRef, handleVerticalScrollBarScroll, tableBodyHeight, scrollContainerRef, parentRef } =
+    props;
   const [componentRef, containerRef] = useSyncRef(ref);
   const scrollElementRef = useRef(null);
   const classes = useStyles();
@@ -55,9 +57,8 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
 
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => {
-      if (entry.target.getBoundingClientRect().height > 0) {
-        containerRef.current.scrollTop = tableRef.current?.querySelector('[data-component-name="AnalyticalTableBody"]')
-          ?.scrollTop;
+      if (containerRef.current && parentRef.current && entry.target.getBoundingClientRect().height > 0) {
+        containerRef.current.scrollTop = parentRef.current.scrollTop;
       }
     });
     if (scrollElementRef.current) {

@@ -757,6 +757,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               ref={verticalScrollBarRef}
               data-native-scrollbar={props['data-native-scrollbar']}
               scrollContainerRef={scrollContainerRef}
+              parentRef={parentRef}
             />
           )}
         </FlexBox>
