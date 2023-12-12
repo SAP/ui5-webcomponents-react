@@ -5,5 +5,22 @@
     "visibility": "public",
     "type": "sap.ui.webc.main.ISelectOption",
     "description": "Currently selected <code>ui5-option</code> element."
+  },
+  {
+    "name": "value",
+    "visibility": "public",
+    "since": "1.20.0",
+    "formEvents": "change,liveChange",
+    "formProperty": "true",
+    "type": "string",
+    "description": "Defines the value of the component: <br> - when get - returns the value of the component, e.g. the <code>value</code> property of the selected option or its text content. <br> - when set - selects the option with matching <code>value</code> property or text content. <br><br> <b>Note:</b> If the given value does not match any existing option, the first option will get selected.",
+    "defaultValue": "\"\""
+  },
+  {
+    "name": "menu",
+    "visibility": "public",
+    "since": "1.17.0",
+    "type": "sap.ui.webc.base.types.DOMReference",
+    "description": "Defines a reference (ID or DOM element) of component's menu of options as alternative to define the select's dropdown. <br><br> <b>Note:</b> Usage of <code>ui5-select-menu</code> is recommended."
   }
 ]
