@@ -57,7 +57,7 @@ export interface ReactTableHooks {
   getResizerProps: any[];
 }
 
-export interface TriggerVertScroll {
+export interface TriggerScrollState {
   type: 'offset' | 'item';
   direction: 'vertical' | 'horizontal';
   args: [number, Omit<ScrollToOptions, 'behavior'>?];
@@ -83,7 +83,7 @@ export interface AnalyticalTableState {
   bodyHeight?: number;
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
-  triggerScroll?: TriggerVertScroll;
+  triggerScroll?: TriggerScrollState;
 }
 
 interface ScaleWidthModeOptions {
