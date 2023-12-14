@@ -63,6 +63,9 @@ export const stateReducer = (state, action, _prevState, instance) => {
       return { ...state, dndColumn: payload };
     case 'COLUMN_DND_END':
       return { ...state, dndColumn: '' };
+    // fallback if the component wasn't ready yet for scrolling (elements are not initialized), e.g. when calling `.scrollToItem` on mount
+    case 'TRIGGER_PROG_SCROLL':
+      return { ...state, triggerScroll: payload };
     default:
       return state;
   }
