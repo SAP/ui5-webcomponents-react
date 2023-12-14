@@ -1,3 +1,4 @@
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../..';
@@ -7,13 +8,13 @@ import {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSubComponentsBehavior,
+  AnalyticalTableVisibleRowCountMode,
   Button,
   Input
 } from '../..';
 import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -124,54 +125,76 @@ describe('AnalyticalTable', () => {
   });
 
   it('row count modes', () => {
-    cy.mount(
-      <div style={{ height: '200px' }}>
-        <AnalyticalTable data={data} columns={columns} visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto} />
-      </div>
+    [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
+      (visibleRowCountMode) => {
+        cy.mount(
+          <div style={{ height: '200px' }}>
+            <AnalyticalTable
+              data={data}
+              columns={columns}
+              visibleRowCountMode={visibleRowCountMode}
+              overscanCount={10}
+            />
+          </div>
+        );
+        cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
+        cy.findByText('X').should('be.visible');
+        cy.findByText('C').should('not.be.visible');
+        cy.get('[data-empty-row]').should('not.be.visible').should('have.length', 1);
+      }
     );
-    cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
-    cy.findByText('X').should('be.visible');
-    cy.findByText('C').should('not.be.visible');
-
-    cy.mount(
-      <AnalyticalTable
-        style={{ height: '200px' }}
-        data={data}
-        columns={columns}
-        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
-      />
+    [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
+      (visibleRowCountMode) => {
+        cy.mount(
+          <AnalyticalTable
+            style={{ height: '4400px' }}
+            data={generateMoreData(200)}
+            columns={columns}
+            visibleRowCountMode={visibleRowCountMode}
+          />
+        );
+        cy.findByRole('grid').should('have.attr', 'data-per-page', '99'); //rows(99*44) + header(44) = 4400
+        cy.findByText('Name-98').should('be.visible');
+        cy.findByText('Name-99').should('not.be.visible');
+        cy.get('[data-empty-row]').should('not.exist');
+      }
     );
-    cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
-    cy.findByText('X').should('be.visible');
-    cy.findByText('C').should('not.be.visible');
 
-    cy.wait(1000);
-
-    cy.mount(
-      <AnalyticalTable
-        style={{ height: '4400px' }}
-        data={generateMoreData(200)}
-        columns={columns}
-        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
-      />
+    [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
+      (visibleRowCountMode) => {
+        cy.mount(
+          <AnalyticalTable
+            style={{ height: '4400px' }}
+            data={data}
+            columns={columns}
+            visibleRowCountMode={visibleRowCountMode}
+          />
+        );
+        if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto) {
+          cy.get('[data-empty-row]').should('be.visible').should('have.length', 1);
+        } else {
+          cy.get('[data-empty-row]').should('be.visible').should('have.length', 95);
+        }
+      }
     );
-    cy.findByRole('grid').should('have.attr', 'data-per-page', '99'); //rows(99*44) + header(44) = 4400
-    cy.findByText('Name-98').should('be.visible');
-    cy.findByText('Name-99').should('not.be.visible');
 
-    //test if visibleRows prop is ignored when row-count-mode is "Auto"
-    cy.mount(
-      <AnalyticalTable
-        style={{ height: '200px' }}
-        data={data}
-        columns={columns}
-        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
-        visibleRows={1337}
-      />
+    //test if visibleRows prop is ignored when row-count-mode is "Auto" or "AutoWithEmptyRows"
+    [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
+      (visibleRowCountMode) => {
+        cy.mount(
+          <AnalyticalTable
+            style={{ height: '200px' }}
+            data={data}
+            columns={columns}
+            visibleRowCountMode={visibleRowCountMode}
+            visibleRows={1337}
+          />
+        );
+        cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
+        cy.findByText('X').should('be.visible');
+        cy.findByText('C').should('not.be.visible');
+      }
     );
-    cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
-    cy.findByText('X').should('be.visible');
-    cy.findByText('C').should('not.be.visible');
 
     //test default visibleRow count
     cy.mount(
