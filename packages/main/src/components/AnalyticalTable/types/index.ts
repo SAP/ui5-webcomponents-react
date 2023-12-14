@@ -1,3 +1,4 @@
+import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type { ComponentType, ReactNode, Ref } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
@@ -56,6 +57,12 @@ export interface ReactTableHooks {
   getResizerProps: any[];
 }
 
+export interface TriggerScrollState {
+  type: 'offset' | 'item';
+  direction: 'vertical' | 'horizontal';
+  args: [number, Omit<ScrollToOptions, 'behavior'>?];
+}
+
 export interface AnalyticalTableState {
   columnOrder: string[];
   columnResizing: Record<string, any>;
@@ -76,6 +83,7 @@ export interface AnalyticalTableState {
   bodyHeight?: number;
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
+  triggerScroll?: TriggerScrollState;
 }
 
 interface ScaleWidthModeOptions {
@@ -294,8 +302,16 @@ export interface DivWithCustomScrollProp extends HTMLDivElement {
 }
 
 export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> {
-  scrollToItem: (index: number, align?: AnalyticalTableScrollMode) => void;
-  scrollTo: (scrollOffset: number) => void; // overrides native scrollTo function
+  scrollToItem: (index: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void;
+  scrollTo: (scrollOffset: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void; // overrides native scrollTo function
+  horizontalScrollTo: (
+    scrollOffset: number,
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+  ) => void;
+  horizontalScrollToItem: (
+    index: number,
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+  ) => void;
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {

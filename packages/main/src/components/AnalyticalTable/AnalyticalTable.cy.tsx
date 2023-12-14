@@ -1,7 +1,7 @@
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { AnalyticalTablePropTypes } from '../..';
+import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
@@ -2598,6 +2598,66 @@ describe('AnalyticalTable', () => {
     cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'height', '220px');
     cy.findByTestId('btn').click();
     cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'height', '800px');
+  });
+
+  it('initial scroll-to', () => {
+    const ScrollTo = () => {
+      const tableRef = useRef<AnalyticalTableDomRef>(null);
+      useEffect(() => {
+        tableRef.current.scrollTo(520);
+      }, []);
+      return <AnalyticalTable data={generateMoreData(500)} columns={columns} ref={tableRef} />;
+    };
+    cy.mount(<ScrollTo />);
+    cy.findByText('Name-12').should('be.visible');
+    cy.findByText('Name-11').should('not.be.visible');
+
+    const ScrollToItem = () => {
+      const tableRef = useRef(null);
+      useEffect(() => {
+        tableRef.current.scrollToItem(12, { align: 'start' });
+      }, []);
+      return <AnalyticalTable data={generateMoreData(500)} columns={columns} ref={tableRef} />;
+    };
+    cy.mount(<ScrollToItem />);
+    cy.findByText('Name-12').should('be.visible');
+    cy.findByText('Name-11').should('not.be.visible');
+
+    const ScrollToHorizontal = () => {
+      const tableRef = useRef(null);
+      useEffect(() => {
+        tableRef.current.horizontalScrollTo(1020);
+      }, []);
+      return (
+        <AnalyticalTable
+          data={generateMoreData(500)}
+          columns={[
+            ...columns,
+            ...new Array(100).fill('').map((_, index) => ({ id: `${index}`, Header: () => index }))
+          ]}
+          ref={tableRef}
+        />
+      );
+    };
+    cy.mount(<ScrollToHorizontal />);
+    cy.findByText('13').should('be.visible');
+    cy.findByText('12').should('not.be.visible');
+    const ScrollToItemHorizontal = () => {
+      const tableRef = useRef(null);
+      useEffect(() => {
+        tableRef.current.horizontalScrollToItem(13, { align: 'start' });
+      }, []);
+      return (
+        <AnalyticalTable
+          data={generateMoreData(500)}
+          columns={new Array(100).fill('').map((_, index) => ({ id: `${index}`, Header: () => index }))}
+          ref={tableRef}
+        />
+      );
+    };
+    cy.mount(<ScrollToItemHorizontal />);
+    cy.findByText('13').should('be.visible');
+    cy.findByText('12').should('not.be.visible');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

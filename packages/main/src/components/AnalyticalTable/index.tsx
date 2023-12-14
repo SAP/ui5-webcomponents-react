@@ -8,7 +8,8 @@ import {
   useI18nBundle,
   useIsomorphicId,
   useIsomorphicLayoutEffect,
-  useIsRTL
+  useIsRTL,
+  useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
@@ -175,10 +176,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const classes = useStyles();
 
-  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(ref);
   const tableRef = useRef<DivWithCustomScrollProp>(null);
-
-  const isRtl = useIsRTL(analyticalTableRef);
+  const parentRef = useRef<DivWithCustomScrollProp>(null);
+  const verticalScrollBarRef = useRef<DivWithCustomScrollProp>(null);
 
   const getSubRows = useCallback((row) => getSubRowsByString(subRowsKey, row) || [], [subRowsKey]);
 
@@ -228,7 +228,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         markNavigatedRow,
         renderRowSubComponent,
         alwaysShowSubComponent,
-        scrollToRef,
         showOverlay,
         uniqueId,
         subRowsKey,
@@ -275,6 +274,40 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     setGlobalFilter
   } = tableInstanceRef.current;
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
+  const { triggerScroll } = tableState;
+
+  const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
+  //@ts-expect-error: types are compatible
+  const isRtl = useIsRTL(updatedRef);
+
+  const columnVirtualizer = useVirtualizer({
+    count: visibleColumnsWidth.length,
+    getScrollElement: () => tableRef.current,
+    estimateSize: useCallback((index) => visibleColumnsWidth[index], [visibleColumnsWidth]),
+    horizontal: true,
+    overscan: isRtl ? Infinity : overscanCountHorizontal,
+    indexAttribute: 'data-column-index',
+    // necessary as otherwise values are rounded which leads to wrong total width calculation leading to unnecessary scrollbar
+    measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined
+  });
+  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
+
+  if (parentRef.current) {
+    scrollToRef.current = {
+      ...scrollToRef.current,
+      horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
+      horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+    };
+  }
+  useEffect(() => {
+    if (triggerScroll && triggerScroll.direction === 'horizontal') {
+      if (triggerScroll.type === 'offset') {
+        columnVirtualizer.scrollToOffset(...triggerScroll.args);
+      } else {
+        columnVirtualizer.scrollToIndex(...triggerScroll.args);
+      }
+    }
+  }, [triggerScroll]);
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
@@ -553,40 +586,27 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     }
   }, [tableState.columnResizing, retainColumnWidth, tableState.tableColResized]);
 
-  const parentRef = useRef<DivWithCustomScrollProp>(null);
-  const verticalScrollBarRef = useRef<DivWithCustomScrollProp>(null);
-
   const handleBodyScroll = (e) => {
     if (typeof onTableScroll === 'function') {
       onTableScroll(e);
     }
-    if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== parentRef.current.scrollTop) {
-      if (!parentRef.current.isExternalVerticalScroll) {
-        verticalScrollBarRef.current.scrollTop = parentRef.current.scrollTop;
+    const targetScrollTop = e.currentTarget.scrollTop;
+    if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== targetScrollTop) {
+      if (!e.currentTarget.isExternalVerticalScroll) {
+        verticalScrollBarRef.current.scrollTop = targetScrollTop;
         verticalScrollBarRef.current.isExternalVerticalScroll = true;
       }
-      parentRef.current.isExternalVerticalScroll = false;
+      e.currentTarget.isExternalVerticalScroll = false;
     }
   };
 
-  const handleVerticalScrollBarScroll = () => {
-    if (parentRef.current && !verticalScrollBarRef.current.isExternalVerticalScroll) {
-      parentRef.current.scrollTop = verticalScrollBarRef.current.scrollTop;
+  const handleVerticalScrollBarScroll = useCallback((e) => {
+    if (parentRef.current && !e.currentTarget.isExternalVerticalScroll) {
+      parentRef.current.scrollTop = e.currentTarget.scrollTop;
       parentRef.current.isExternalVerticalScroll = true;
     }
-    verticalScrollBarRef.current.isExternalVerticalScroll = false;
-  };
-
-  const columnVirtualizer = useVirtualizer({
-    count: visibleColumnsWidth.length,
-    getScrollElement: () => tableRef.current,
-    estimateSize: useCallback((index) => visibleColumnsWidth[index], [visibleColumnsWidth]),
-    horizontal: true,
-    overscan: isRtl ? Infinity : overscanCountHorizontal,
-    indexAttribute: 'data-column-index',
-    // necessary as otherwise values are rounded which leads to wrong total width calculation leading to unnecessary scrollbar
-    measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined
-  });
+    e.currentTarget.isExternalVerticalScroll = false;
+  }, []);
 
   useEffect(() => {
     columnVirtualizer.measure();
@@ -602,12 +622,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     showVerticalEndBorder && classes.showVerticalEndBorder
   );
 
-  scrollToRef.current = {
-    ...scrollToRef.current,
-    horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
-    horizontalScrollToIndex: columnVirtualizer.scrollToIndex
-  };
-
   const handleOnLoadMore = (e) => {
     const rootNodes = rows.filter((row) => row.depth === 0);
     onLoadMore(
@@ -620,7 +634,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   return (
     <>
-      <div className={className} style={inlineStyle} ref={analyticalTableRef} {...rest}>
+      <div
+        className={className}
+        style={inlineStyle}
+        //@ts-expect-error: types are compatible
+        ref={componentRef}
+        {...rest}
+      >
         {header && (
           <TitleBar ref={titleBarRef} titleBarId={titleBarId}>
             {header}
@@ -739,6 +759,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
                   subRowsKey={subRowsKey}
                   subComponentsBehavior={subComponentsBehavior}
+                  triggerScroll={tableState.triggerScroll}
                 />
               </VirtualTableBodyContainer>
             )}
@@ -752,6 +773,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               ref={verticalScrollBarRef}
               data-native-scrollbar={props['data-native-scrollbar']}
               scrollContainerRef={scrollContainerRef}
+              parentRef={parentRef}
             />
           )}
         </FlexBox>
