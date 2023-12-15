@@ -343,9 +343,17 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const updateTableClientWidth = useCallback(() => {
     if (tableRef.current) {
-      dispatch({ type: 'TABLE_RESIZE', payload: { tableClientWidth: tableRef.current.clientWidth } });
+      dispatch({
+        type: 'TABLE_RESIZE',
+        payload: {
+          tableClientWidth:
+            !scaleXFactor || scaleXFactor === 1
+              ? tableRef.current.getBoundingClientRect().width
+              : tableRef.current.clientWidth
+        }
+      });
     }
-  }, [tableRef.current]);
+  }, [tableRef.current, scaleXFactor]);
 
   const updateRowsCount = useCallback(() => {
     if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {

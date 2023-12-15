@@ -38,6 +38,7 @@ export const stateReducer = (state, action, _prevState, instance) => {
       }
       return state;
     case 'TABLE_RESIZE':
+      // tableClientWidth is misleading, as only when scaled the `clientWidth` is used. In all other cases `getBoundingClientRect` is measuring the width.
       return { ...state, tableClientWidth: payload.tableClientWidth };
     case 'VISIBLE_ROWS':
       return { ...state, visibleRows: payload.visibleRows };
