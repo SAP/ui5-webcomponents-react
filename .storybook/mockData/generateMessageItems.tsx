@@ -13,7 +13,12 @@ const informationMessageItems = (count) => {
     return [];
   }
   return new Array(count).fill('').map((_, index) => (
-    <MessageItem titleText={'Information Message'} type={ValueState.Information} groupName={`Group${index}`}>
+    <MessageItem
+      key={`InformationMessage${index}`}
+      titleText={'Information Message'}
+      type={ValueState.Information}
+      groupName={`Group${index}`}
+    >
       {LoremIpsum}
     </MessageItem>
   ));
@@ -24,7 +29,12 @@ const successMessageItems = (count) => {
     return [];
   }
   return new Array(count).fill('').map((_, index) => (
-    <MessageItem titleText={'Success Message'} type={ValueState.Success} groupName={`Group${index}`}>
+    <MessageItem
+      key={`SuccessMessage${index}`}
+      titleText={'Success Message'}
+      type={ValueState.Success}
+      groupName={`Group${index}`}
+    >
       {LoremIpsum}
     </MessageItem>
   ));
@@ -35,7 +45,12 @@ const warningMessageItems = (count) => {
     return [];
   }
   return new Array(count).fill('').map((_, index) => (
-    <MessageItem titleText={'Warning Message'} type={ValueState.Warning} groupName={`Group${index}`}>
+    <MessageItem
+      key={`WarningMessage${index}`}
+      titleText={'Warning Message'}
+      type={ValueState.Warning}
+      groupName={`Group${index}`}
+    >
       {LoremIpsum}
     </MessageItem>
   ));
@@ -46,7 +61,12 @@ const errorMessageItems = (count) => {
     return [];
   }
   return new Array(count).fill('').map((_, index) => (
-    <MessageItem titleText={'Error Message'} type={ValueState.Error} groupName={`Group${index}`}>
+    <MessageItem
+      key={`ErrorMessage${index}`}
+      titleText={'Error Message'}
+      type={ValueState.Error}
+      groupName={`Group${index}`}
+    >
       {LoremIpsum}
     </MessageItem>
   ));
