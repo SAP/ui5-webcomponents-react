@@ -1,3 +1,4 @@
+import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
 import { isChromatic } from './utils';
@@ -28,7 +29,7 @@ if (isDevMode) {
 
 const config: StorybookConfig = {
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {}
   },
   stories: isChromatic
@@ -78,3 +79,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
