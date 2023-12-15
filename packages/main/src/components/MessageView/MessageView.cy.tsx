@@ -107,14 +107,14 @@ describe('MessageView', () => {
     };
     cy.mount(<TestComp />);
     cy.findByText('Error').click();
-    cy.findAllByText('Error').should('have.length', 2);
+    cy.findAllByText('Error').should('have.length', 1);
     cy.findByText('Error Message').should('be.visible');
     cy.get('[ui5-button]').click();
     cy.findAllByText('Error').should('have.length', 1);
     cy.findByText('Error Message').should('not.exist');
     cy.get('@select').should('have.been.calledOnce');
     cy.findByText('Information').click();
-    cy.findAllByText('Information').should('have.length', 2);
+    cy.findAllByText('Information').should('have.length', 1);
     cy.findByText('Information Message').should('be.visible');
     cy.findByText('nav back').click();
     cy.findAllByText('Information').should('have.length', 1);
@@ -142,6 +142,7 @@ describe('MessageView', () => {
       cy.get('[ui5-bar]').should('not.exist');
     });
   });
+
   it('MessageItem', () => {
     cy.mount(
       <MessageView>
@@ -160,7 +161,7 @@ describe('MessageView', () => {
     cy.findByText('SubtitleText').should('be.visible');
     cy.findByText('1337').should('be.visible');
     cy.get('[name="slim-arrow-right"]').should('be.visible').click();
-    cy.findByText('SubtitleText').should('not.be.visible');
-    cy.findByText('1337').should('not.be.visible');
+    cy.findByText('SubtitleText').should('not.exist');
+    cy.findByText('1337').should('not.exist');
   });
 });

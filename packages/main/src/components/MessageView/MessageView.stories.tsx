@@ -225,6 +225,7 @@ export const WithMessageViewButton: Story = {
           }
         >
           <MessageView
+            style={{ height: '500px', maxWidth: '600px' }}
             ref={messageViewRef}
             showDetailsPageHeader={false}
             groupItems
