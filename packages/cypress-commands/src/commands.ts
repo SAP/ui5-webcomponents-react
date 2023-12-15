@@ -68,18 +68,21 @@ declare global {
 
       /**
        * Click on an `ui5-option` of the `ui5-select` component by text.
+       *
+       * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
+       *
        * @param text text of the ui5-option that should be clicked
        * @example cy.get('[ui5-select]').clickUi5SelectOptionByText('Option2');
        *
-       * __Note:__ The select popover must be visible, otherwise the `change` event is not fired.
        */
       clickUi5SelectOptionByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
 
       /**
        * Click on chained `ui5-option`.
-       * @example cy.get('[ui5-option]').clickUi5SelectOption();
        *
-       * __Note:__ The select popover must be visible, otherwise the `change` event is not fired.
+       * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
+       *
+       * @example cy.get('[ui5-option]').clickUi5SelectOption();
        */
       clickUi5SelectOption(options?: Partial<ClickOptions>): Chainable<Element>;
     }
