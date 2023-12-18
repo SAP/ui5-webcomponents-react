@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.1...v1.23.2) (2023-12-18)
+
+**Note:** Version bump only for package @ui5/webcomponents-cypress-commands
+
 # [1.22.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.21.2...v1.22.0) (2023-11-03)
 
 ### Features
