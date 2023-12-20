@@ -608,7 +608,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   useEffect(() => {
     columnVirtualizer.measure();
-  }, [columnVirtualizer, tableState.columnOrder, tableState.columnResizing?.isResizingColumn]);
+  }, [columnVirtualizer, tableState.columnOrder, tableState.columnResizing?.isResizingColumn, columns]);
 
   const totalSize = columnVirtualizer.getTotalSize();
   const showVerticalEndBorder = tableState.tableClientWidth > totalSize;
