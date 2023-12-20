@@ -125,12 +125,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
 
 function getSpacerWidths(lastElementRef) {
   let spacerWidths = 0;
-  (function subtractSpacerWidths(ref) {
+  (function addUpSpacerWidths(ref) {
     if (ref) {
       if (ref.dataset.componentName === 'ToolbarSpacer') {
         spacerWidths += ref.offsetWidth;
       }
-      subtractSpacerWidths(ref.previousElementSibling);
+      addUpSpacerWidths(ref.previousElementSibling);
     }
   })(lastElementRef);
   return spacerWidths;
