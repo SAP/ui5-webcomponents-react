@@ -1,10 +1,28 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarSeparator.js';
+import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import { ToolbarSelect } from '../ToolbarSelect/index.js';
 
-interface ToolbarSeparatorV2Attributes {}
+interface ToolbarSeparatorV2Attributes {
+  /**
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
+   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
+   * Available options are:
+   *
+   * *`NeverOverflow`
+   * *`AlwaysOverflow`
+   * *`Default`
+   */
+  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
+  /**
+   * Defines if the toolbar overflow popup should close upon interaction with the item.
+   * It will close by default.
+   */
+  preventOverflowClosing?: boolean;
+}
 
 export interface ToolbarSeparatorV2DomRef extends ToolbarSeparatorV2Attributes, Ui5DomRef {}
 
@@ -21,13 +39,17 @@ export interface ToolbarSeparatorV2PropTypes extends ToolbarSeparatorV2Attribute
  */
 const ToolbarSeparatorV2 = withWebComponent<ToolbarSeparatorV2PropTypes, ToolbarSeparatorV2DomRef>(
   'ui5-toolbar-separator',
-  [],
-  [],
+  ['overflowPriority'],
+  ['preventOverflowClosing'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ToolbarSeparator.js')
 );
 
 ToolbarSeparatorV2.displayName = 'ToolbarSeparatorV2';
+
+ToolbarSelect.defaultProps = {
+  overflowPriority: ToolbarItemOverflowBehavior.Default
+};
 
 export { ToolbarSeparatorV2 };
