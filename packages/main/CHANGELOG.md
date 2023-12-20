@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.1...v1.23.2) (2023-12-18)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve programmatic scroll behavior & scroll types ([#5334](https://github.com/SAP/ui5-webcomponents-react/issues/5334)) ([610ffd2](https://github.com/SAP/ui5-webcomponents-react/commit/610ffd254886075de4e43bb9d8abc71419be0739)), closes [#5319](https://github.com/SAP/ui5-webcomponents-react/issues/5319)
+- **AnalyticalTable:** prevent unecessary horizontal scrollbar ([#5352](https://github.com/SAP/ui5-webcomponents-react/issues/5352)) ([05297a7](https://github.com/SAP/ui5-webcomponents-react/commit/05297a79b25090fcab8359cbb0e8df2b15cff94a))
+- **MessageView:** don't show unnecessary scrollbar in details view ([#5355](https://github.com/SAP/ui5-webcomponents-react/issues/5355)) ([422cf06](https://github.com/SAP/ui5-webcomponents-react/commit/422cf0651673eab4a8ebb4491d31240464842e19)), closes [#5350](https://github.com/SAP/ui5-webcomponents-react/issues/5350)
+
 ## [1.23.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.0...v1.23.1) (2023-12-07)
 
 ### Bug Fixes

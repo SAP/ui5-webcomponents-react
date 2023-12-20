@@ -6,7 +6,14 @@ import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { ButtonDesign, FlexBoxDirection, TitleLevel, ValueState, WrappingType } from '../../enums/index.js';
+import {
+  ButtonDesign,
+  FlexBoxDirection,
+  GlobalStyleClasses,
+  TitleLevel,
+  ValueState,
+  WrappingType
+} from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
@@ -115,7 +122,7 @@ const useStyles = createUseStyles(
       '&[data-key="Success"]:not([pressed])': { color: ThemingParameters.sapPositiveElementColor },
       '&[data-key="Information"]:not([pressed])': { color: ThemingParameters.sapInformativeElementColor }
     },
-    detailsContainer: {
+    details: {
       padding: '1rem'
     },
     detailsIcon: {
@@ -136,6 +143,12 @@ const useStyles = createUseStyles(
       lineHeight: 1.4,
       color: ThemingParameters.sapTextColor,
       marginBlockEnd: '1rem'
+    },
+    messagesContainer: {
+      height: '100%'
+    },
+    detailsContainer: {
+      height: '100%'
     }
   },
   { name: 'MessageView' }
@@ -188,7 +201,12 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     setListFilter(e.detail.selectedItem.dataset.key);
   };
 
-  const outerClasses = clsx(classes.container, className, selectedMessage && classes.showDetails);
+  const outerClasses = clsx(
+    classes.container,
+    GlobalStyleClasses.sapScrollBar,
+    className,
+    selectedMessage && classes.showDetails
+  );
 
   return (
     <div ref={componentRef} {...rest} className={outerClasses}>
@@ -197,49 +215,53 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
           selectMessage: setSelectedMessage
         }}
       >
-        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }}>
-          {filledTypes > 1 && (
-            <Bar
-              startContent={
-                <SegmentedButton onSelectionChange={handleListFilterChange}>
-                  <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
-                    {i18nBundle.getText(ALL)}
-                  </SegmentedButtonItem>
-                  {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
-                  {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
-                    if (count === 0) {
-                      return null;
-                    }
-                    return (
-                      <SegmentedButtonItem
-                        key={valueState}
-                        data-key={valueState}
-                        pressed={listFilter === valueState}
-                        icon={getIconNameForType(valueState)}
-                        className={classes.button}
-                      >
-                        {count}
+        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }} className={classes.messagesContainer}>
+          {!selectedMessage && (
+            <>
+              {filledTypes > 1 && (
+                <Bar
+                  startContent={
+                    <SegmentedButton onSelectionChange={handleListFilterChange}>
+                      <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
+                        {i18nBundle.getText(ALL)}
                       </SegmentedButtonItem>
-                    );
-                  })}
-                </SegmentedButton>
-              }
-            />
+                      {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
+                      {Object.entries(messageTypes).map(([valueState, count]: [ValueState, number]) => {
+                        if (count === 0) {
+                          return null;
+                        }
+                        return (
+                          <SegmentedButtonItem
+                            key={valueState}
+                            data-key={valueState}
+                            pressed={listFilter === valueState}
+                            icon={getIconNameForType(valueState)}
+                            className={classes.button}
+                          >
+                            {count}
+                          </SegmentedButtonItem>
+                        );
+                      })}
+                    </SegmentedButton>
+                  }
+                />
+              )}
+              <List onItemClick={onItemSelect} noDataText={i18nBundle.getText(LIST_NO_DATA)}>
+                {groupItems
+                  ? groupedMessages.map(([groupName, items]) => {
+                      return (
+                        <Fragment key={groupName}>
+                          {groupName && <GroupHeaderListItem>{groupName}</GroupHeaderListItem>}
+                          {items}
+                        </Fragment>
+                      );
+                    })
+                  : filteredChildren}
+              </List>
+            </>
           )}
-          <List onItemClick={onItemSelect} noDataText={i18nBundle.getText(LIST_NO_DATA)}>
-            {groupItems
-              ? groupedMessages.map(([groupName, items]) => {
-                  return (
-                    <Fragment key={groupName}>
-                      {groupName && <GroupHeaderListItem>{groupName}</GroupHeaderListItem>}
-                      {items}
-                    </Fragment>
-                  );
-                })
-              : filteredChildren}
-          </List>
         </div>
-        <div>
+        <div className={classes.detailsContainer}>
           {childrenArray.length > 0 ? (
             <>
               {showDetailsPageHeader && selectedMessage && (
@@ -250,7 +272,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                 />
               )}
               {selectedMessage && (
-                <FlexBox className={classes.detailsContainer}>
+                <FlexBox className={classes.details}>
                   <Icon
                     data-type={selectedMessage.type}
                     name={getIconNameForType(selectedMessage.type)}
