@@ -123,6 +123,19 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
   }) => void;
 }
 
+function getSpacerWidths(lastElementRef) {
+  let spacerWidths = 0;
+  (function subtractSpacerWidths(ref) {
+    if (ref) {
+      if (ref.dataset.componentName === 'ToolbarSpacer') {
+        spacerWidths += ref.offsetWidth;
+      }
+      subtractSpacerWidths(ref.previousElementSibling);
+    }
+  })(lastElementRef);
+  return spacerWidths;
+}
+
 const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 
 /**
@@ -218,10 +231,17 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     let lastElementResizeObserver;
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     const debouncedObserverFn = debounce(() => {
+      const spacerWidth = getSpacerWidths(lastElement);
       if (isRtl) {
-        setMinWidth(`${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH}px`);
+        setMinWidth(
+          `${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH - spacerWidth}px`
+        );
       } else {
-        setMinWidth(`${lastElement.offsetLeft + lastElement.getBoundingClientRect().width + OVERFLOW_BUTTON_WIDTH}px`);
+        setMinWidth(
+          `${
+            lastElement.offsetLeft + lastElement.getBoundingClientRect().width + OVERFLOW_BUTTON_WIDTH - spacerWidth
+          }px`
+        );
       }
     }, 200);
     if (numberOfAlwaysVisibleItems && overflowNeeded && lastElement) {

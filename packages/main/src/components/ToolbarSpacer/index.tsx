@@ -8,7 +8,7 @@ export type ToolbarSpacerPropTypes = CommonProps;
  * __Note:__ This component is only compatible with the `Toolbar` component and __not__ with `ToolbarV2`. If you're using `ToolbarV2`, please use `ToolbarSpacerV2` instead.
  */
 const ToolbarSpacer = forwardRef<HTMLSpanElement, ToolbarSpacerPropTypes>((props, ref) => {
-  return <span ref={ref} style={{ flexGrow: 1 }} className="spacer" {...props} />;
+  return <span ref={ref} style={{ flexGrow: 1 }} className="spacer" {...props} data-component-name="ToolbarSpacer" />;
 });
 
 ToolbarSpacer.displayName = 'ToolbarSpacer';

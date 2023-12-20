@@ -12,6 +12,7 @@ export const ActionsSpacer = ({ onClick, noHover }: ActionsSpacerProps) => {
       style={{ flexGrow: 1, height: '100%', cursor: noHover ? 'auto' : 'pointer' }}
       className="spacer"
       onClick={onClick}
+      data-component-name="ToolbarSpacer"
     />
   );
 };
