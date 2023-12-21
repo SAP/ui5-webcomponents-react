@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.2...v1.23.3) (2023-12-21)
+
+### Bug Fixes
+
+- **AnalyticalTable:** display `columns` correctly after update ([#5368](https://github.com/SAP/ui5-webcomponents-react/issues/5368)) ([7217f16](https://github.com/SAP/ui5-webcomponents-react/commit/7217f169182931092d77017ea4e23b98413b2657)), closes [#5365](https://github.com/SAP/ui5-webcomponents-react/issues/5365)
+- **Toolbar:** improve `numberOfAlwaysVisibleItems` behavior with spacers ([#5367](https://github.com/SAP/ui5-webcomponents-react/issues/5367)) ([bbf0352](https://github.com/SAP/ui5-webcomponents-react/commit/bbf035261db4b73fa54e3dcc86c043a715b426e4))
+- **ToolbarV2 subcomponents:** add missing props ([#5366](https://github.com/SAP/ui5-webcomponents-react/issues/5366)) ([1fd9f5a](https://github.com/SAP/ui5-webcomponents-react/commit/1fd9f5ae919b00e0cf53c1ef76640237622abb3f))
+
 ## [1.23.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.1...v1.23.2) (2023-12-18)
 
 ### Bug Fixes
