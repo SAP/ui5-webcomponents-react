@@ -123,17 +123,16 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
   }) => void;
 }
 
-function getSpacerWidths(lastElementRef) {
+function getSpacerWidths(ref) {
+  if (!ref) {
+    return 0;
+  }
+
   let spacerWidths = 0;
-  (function addUpSpacerWidths(ref) {
-    if (ref) {
-      if (ref.dataset.componentName === 'ToolbarSpacer') {
-        spacerWidths += ref.offsetWidth;
-      }
-      addUpSpacerWidths(ref.previousElementSibling);
-    }
-  })(lastElementRef);
-  return spacerWidths;
+  if (ref.dataset.componentName === 'ToolbarSpacer') {
+    spacerWidths += ref.offsetWidth;
+  }
+  return spacerWidths + getSpacerWidths(ref.previousElementSibling);
 }
 
 const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
