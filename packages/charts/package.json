@@ -29,7 +29,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "clsx": "2.0.0",
+    "clsx": "2.0.1",
     "react-content-loader": "6.2.1",
     "recharts": "2.10.3"
   },
