@@ -6819,7 +6819,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react-charts@workspace:packages/charts"
   dependencies:
-    clsx: "npm:2.0.0"
+    clsx: "npm:2.1.0"
     react-content-loader: "npm:6.2.1"
     recharts: "npm:2.10.3"
   peerDependencies:
@@ -6836,7 +6836,7 @@ __metadata:
   dependencies:
     "@tanstack/react-virtual": "npm:3.0.1"
     "@ui5/webcomponents-react-base": "workspace:~"
-    clsx: "npm:2.0.0"
+    clsx: "npm:2.1.0"
     react-jss: "npm:^10.10.0"
     react-table: "npm:7.8.0"
   peerDependencies:
@@ -8982,7 +8982,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:2.0.0, clsx@npm:^2.0.0":
+"clsx@npm:2.1.0":
+  version: 2.1.0
+  resolution: "clsx@npm:2.1.0"
+  checksum: c09c00ad14f638366ca814097e6cab533dfa1972a358da5b557be487168acbb25b4c1395e89ffa842a8a61ba87a462d2b4885bc9d4f8410b598f3cb339599cdb
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^2.0.0":
   version: 2.0.0
   resolution: "clsx@npm:2.0.0"
   checksum: c09f43b3144a0b7826b6b11b6a111b2c7440831004eecc02d333533c5e58ef0aa5f2dce071d3b25fbb8c8ea97b45df96c74bcc1d51c8c2027eb981931107b0cd
