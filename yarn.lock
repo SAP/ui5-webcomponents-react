@@ -6823,7 +6823,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~0.0.0-4237771ff
+    "@ui5/webcomponents-base": ~0.0.0-4237771ff || ~0.34.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     "@types/react":
@@ -6862,10 +6862,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": ~0.0.0-4237771ff
-    "@ui5/webcomponents-base": ~0.0.0-4237771ff
-    "@ui5/webcomponents-fiori": ~0.0.0-4237771ff
-    "@ui5/webcomponents-icons": ~0.0.0-4237771ff
+    "@ui5/webcomponents": ~0.0.0-4237771ff || ~0.33.0
+    "@ui5/webcomponents-base": ~0.0.0-4237771ff || ~0.34.0
+    "@ui5/webcomponents-fiori": ~0.0.0-4237771ff || ~0.33.0
+    "@ui5/webcomponents-icons": ~0.0.0-4237771ff || ~0.33.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
