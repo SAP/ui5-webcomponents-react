@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { CSSProperties, ReactNode } from 'react';
-import { ToolbarItemOverflowBehavior, ValueState } from '../../enums/index.js';
+import { ValueState } from '../../enums/index.js';
 import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 
@@ -22,21 +22,6 @@ interface ToolbarSelectAttributes {
    * **Note:** A disabled component is noninteractive.
    */
   disabled?: boolean;
-  /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
-   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
-   * Available options are:
-   *
-   * *`NeverOverflow`
-   * *`AlwaysOverflow`
-   * *`Default`
-   */
-  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
-  /**
-   * Defines if the toolbar overflow popup should close upon interaction with the item.
-   * It will close by default.
-   */
-  preventOverflowClosing?: boolean;
   /**
    * Defines the value state of the component.
    */
@@ -85,8 +70,8 @@ export interface ToolbarSelectPropTypes extends ToolbarSelectAttributes, Omit<Co
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',
-  ['accessibleName', 'accessibleNameRef', 'overflowPriority', 'valueState', 'width'],
-  ['disabled', 'preventOverflowClosing'],
+  ['accessibleName', 'accessibleNameRef', 'valueState', 'width'],
+  ['disabled'],
   [],
   ['change', 'close', 'open'],
   () => import('@ui5/webcomponents/dist/ToolbarSelect.js')
@@ -95,8 +80,7 @@ const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomR
 ToolbarSelect.displayName = 'ToolbarSelect';
 
 ToolbarSelect.defaultProps = {
-  valueState: ValueState.None,
-  overflowPriority: ToolbarItemOverflowBehavior.Default
+  valueState: ValueState.None
 };
 
 export { ToolbarSelect };

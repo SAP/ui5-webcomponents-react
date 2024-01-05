@@ -12,6 +12,14 @@ interface ColorPalettePopoverAttributes {
    */
   defaultColor?: CSSProperties['color'];
   /**
+   * Defines the open | closed state of the popover.
+   */
+  open?: boolean;
+  /**
+   * Defines the ID of the element that the popover is shown at.
+   */
+  opener?: string;
+  /**
    * Defines whether the user can choose the default color from a button.
    */
   showDefaultColor?: boolean;
@@ -29,15 +37,21 @@ export interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes
   /**
    * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
    *
-   * @deprecated The method is deprecated in favour of <code>showAt</code>.
+   * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    */
   openPopover: (opener: HTMLElement | EventTarget) => void;
   /**
    * Shows the ColorPalettePopover.
+   *
+   * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    */
   showAt: (opener: HTMLElement | EventTarget) => void;
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at.
+   */
+  opener?: string | HTMLElement;
 }
 
 export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttributes, CommonProps {
@@ -45,6 +59,10 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
    * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the `ColorPalettePopover` is closed due to user interaction.
+   */
+  onClose?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef>) => void;
   /**
    * Fired when the user selects a color.
    */
@@ -60,10 +78,10 @@ export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttribu
  */
 const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, ColorPalettePopoverDomRef>(
   'ui5-color-palette-popover',
-  ['defaultColor'],
-  ['showDefaultColor', 'showMoreColors', 'showRecentColors'],
+  ['defaultColor', 'opener'],
+  ['open', 'showDefaultColor', 'showMoreColors', 'showRecentColors'],
   [],
-  ['item-click'],
+  ['close', 'item-click'],
   () => import('@ui5/webcomponents/dist/ColorPalettePopover.js')
 );
 

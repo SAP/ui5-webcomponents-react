@@ -10,6 +10,7 @@ You can disable the `CheckBox` by setting the `disabled` property to `true`, or 
 The `CheckBox` exposes the following CSS Shadow Parts:
 
 - root - Used to style the outermost wrapper of the `CheckBox`
+- label - Used to style the label of the `CheckBox`
 
 ## Keyboard Handling
 

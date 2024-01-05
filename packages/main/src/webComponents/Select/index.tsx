@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Select.js';
 import type { SelectChangeEventDetail, SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../interfaces/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 
@@ -24,7 +24,7 @@ interface SelectAttributes {
    */
   disabled?: boolean;
   /**
-   * Defines the ID of the component's options menu, as an alternative to defining the selection's drop-down menu.
+   * Defines the ID of component's menu of options as alternative to define the select's dropdown.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
    */
@@ -38,16 +38,15 @@ interface SelectAttributes {
    */
   name?: string;
   /**
+   * Defines whether the component is read-only.
+   *
+   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   */
+  readonly?: boolean;
+  /**
    * Defines whether the component is required.
    */
   required?: boolean;
-  /**
-   * Defines the value state of the component.
-   */
-  valueState?: ValueState | keyof typeof ValueState;
-}
-
-export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
   /**
    * Defines the value of the component:
    * \- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
@@ -57,11 +56,12 @@ export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef 
    */
   value?: string;
   /**
-   * Defines a reference (ID or DOM element) of the component's options menu, as an alternative to defining the selection's drop-down menu.
-   *
-   * **Note:** Usage of `SelectMenu` is recommended.
+   * Defines the value state of the component.
    */
-  menu?: string | HTMLElement;
+  valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
   /**
    * Currently selected `Option` element.
    */
@@ -134,8 +134,8 @@ export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'on
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'menu', 'name', 'valueState'],
-  ['disabled', 'required'],
+  ['accessibleName', 'accessibleNameRef', 'menu', 'name', 'value', 'valueState'],
+  ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
   ['change', 'close', 'live-change', 'open'],
   () => import('@ui5/webcomponents/dist/Select.js')
