@@ -121,6 +121,12 @@ export const styles = {
   tabContainerComponent: {
     '&::part(content)': {
       display: 'none'
+    },
+    '&::part(tabstrip)': {
+      // padding-inline is used here to ensure the same responsive padding behavior as for the rest of the component
+      padding: 0,
+      paddingInline: 'var(--_ui5wcr_ObjectPage_tab_bar_inline_padding)',
+      boxShadow: `inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%)`
     }
   },
   content: {
