@@ -6843,8 +6843,8 @@ __metadata:
     react-content-loader: "npm:6.2.1"
     recharts: "npm:2.10.3"
   peerDependencies:
-    "@ui5/webcomponents-react": ~1.23.0
-    "@ui5/webcomponents-react-base": ~1.23.0
+    "@ui5/webcomponents-react": ~1.24.0
+    "@ui5/webcomponents-react-base": ~1.24.0
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-jss: ^10.10.0
   languageName: unknown
