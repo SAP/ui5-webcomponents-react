@@ -2,27 +2,10 @@
 
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
 import type { CSSProperties } from 'react';
-import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import { ToolbarSelect } from '../ToolbarSelect/index.js';
 
 interface ToolbarSpacerV2Attributes {
-  /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
-   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
-   * Available options are:
-   *
-   * *`NeverOverflow`
-   * *`AlwaysOverflow`
-   * *`Default`
-   */
-  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
-  /**
-   * Defines if the toolbar overflow popup should close upon interaction with the item.
-   * It will close by default.
-   */
-  preventOverflowClosing?: boolean;
   /**
    * Defines the width of the spacer.
    *
@@ -46,17 +29,13 @@ export interface ToolbarSpacerV2PropTypes extends ToolbarSpacerV2Attributes, Com
  */
 const ToolbarSpacerV2 = withWebComponent<ToolbarSpacerV2PropTypes, ToolbarSpacerV2DomRef>(
   'ui5-toolbar-spacer',
-  ['overflowPriority', 'width'],
-  ['preventOverflowClosing'],
+  ['width'],
+  [],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ToolbarSpacer.js')
 );
 
 ToolbarSpacerV2.displayName = 'ToolbarSpacerV2';
-
-ToolbarSelect.defaultProps = {
-  overflowPriority: ToolbarItemOverflowBehavior.Default
-};
 
 export { ToolbarSpacerV2 };

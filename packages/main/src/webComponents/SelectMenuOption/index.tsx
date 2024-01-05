@@ -44,7 +44,7 @@ export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, C
 }
 
 /**
- * The code>SelectMenuOption component represents an option in the `SelectMenu`.
+ * The `SelectMenuOption` component represents an option in the `SelectMenu`.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
