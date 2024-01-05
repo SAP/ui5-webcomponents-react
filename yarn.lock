@@ -6777,18 +6777,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/cra-template-webcomponents-react-seed@workspace:packages/cra-template-seed":
-  version: 0.0.0-use.local
-  resolution: "@ui5/cra-template-webcomponents-react-seed@workspace:packages/cra-template-seed"
-  languageName: unknown
-  linkType: soft
-
-"@ui5/cra-template-webcomponents-react@workspace:packages/cra-template":
-  version: 0.0.0-use.local
-  resolution: "@ui5/cra-template-webcomponents-react@workspace:packages/cra-template"
-  languageName: unknown
-  linkType: soft
-
 "@ui5/webcomponents-base@npm:1.20.1":
   version: 1.20.1
   resolution: "@ui5/webcomponents-base@npm:1.20.1"
