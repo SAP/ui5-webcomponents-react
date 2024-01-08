@@ -465,7 +465,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
       const subSections = section.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
-      if (lastSubSection) {
+      if (subSections.length > 1 && lastSubSection) {
         heightDiff +=
           objectPage.getBoundingClientRect().height -
           topHeaderHeight -
