@@ -48,6 +48,13 @@ interface SelectAttributes {
    */
   required?: boolean;
   /**
+   * Defines the value state of the component.
+   */
+  valueState?: ValueState | keyof typeof ValueState;
+}
+
+export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
+  /**
    * Defines the value of the component:
    * \- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
    * \- when set - selects the option with matching `value` property or text content.
@@ -56,12 +63,11 @@ interface SelectAttributes {
    */
   value?: string;
   /**
-   * Defines the value state of the component.
+   * Defines a reference (ID or DOM element) of component's menu of options as alternative to define the select's dropdown.
+   *
+   * **Note:** Usage of `SelectMenu` is recommended.
    */
-  valueState?: ValueState | keyof typeof ValueState;
-}
-
-export interface SelectDomRef extends SelectAttributes, Ui5DomRef {
+  menu?: string | HTMLElement;
   /**
    * Currently selected `Option` element.
    */
