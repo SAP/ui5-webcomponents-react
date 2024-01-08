@@ -12,7 +12,9 @@
       }
     ],
     "description": "Shows the ColorPalettePopover. <b>Note:</b> The method is deprecated and will be removed in future, use <code>showAt</code> instead.",
-    "deprecated": { "text": "The method is deprecated in favour of <code>showAt</code>." }
+    "deprecated": {
+      "text": "The method is deprecated in favour of <code>open</code> and <code>opener</code> properties."
+    }
   },
   {
     "name": "showAt",
@@ -26,6 +28,9 @@
         "description": "the element that the popover is shown at"
       }
     ],
-    "description": "Shows the ColorPalettePopover."
+    "description": "Shows the ColorPalettePopover.",
+    "deprecated": {
+      "text": "The method is deprecated in favour of <code>open</code> and <code>opener</code> properties."
+    }
   }
 ]

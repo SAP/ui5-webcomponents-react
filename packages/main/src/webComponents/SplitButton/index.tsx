@@ -12,6 +12,12 @@ interface SplitButtonAttributes {
    */
   accessibleName?: string;
   /**
+   * Defines whether the arrow button should have the active state styles or not.
+   *
+   * @since 1.24.0
+   */
+  activeArrowButton?: boolean;
+  /**
    * Defines the icon to be displayed in active state as graphical element within the component.
    */
   activeIcon?: string;
@@ -60,7 +66,7 @@ export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<Common
 const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   'ui5-split-button',
   ['accessibleName', 'activeIcon', 'design', 'icon'],
-  ['disabled'],
+  ['activeArrowButton', 'disabled'],
   [],
   ['arrow-click', 'click'],
   () => import('@ui5/webcomponents/dist/SplitButton.js')
