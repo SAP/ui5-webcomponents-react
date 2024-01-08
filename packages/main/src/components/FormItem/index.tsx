@@ -81,8 +81,9 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
         style={style}
         wrappingType={WrappingType.Normal}
         data-label-span={labelSpan}
+        showColon={!!label}
       >
-        {label ? `${label}:` : ''}
+        {label}
       </Label>
     );
   }
