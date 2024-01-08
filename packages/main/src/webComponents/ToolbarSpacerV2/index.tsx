@@ -5,30 +5,26 @@ import type { CSSProperties } from 'react';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
 import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import { ToolbarSelect } from '../ToolbarSelect/index.js';
 
 interface ToolbarSpacerV2Attributes {
-  /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
-   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
-   * Available options are:
-   *
-   * *`NeverOverflow`
-   * *`AlwaysOverflow`
-   * *`Default`
-   */
-  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
-  /**
-   * Defines if the toolbar overflow popup should close upon interaction with the item.
-   * It will close by default.
-   */
-  preventOverflowClosing?: boolean;
   /**
    * Defines the width of the spacer.
    *
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
   width?: CSSProperties['width'] | CSSProperties['height'];
+  /**
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
+   *
+   * *   `NeverOverflow`
+   * *   `AlwaysOverflow`
+   * *   `Default`
+   */
+  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
+  /**
+   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   */
+  preventOverflowClosing?: boolean;
 }
 
 export interface ToolbarSpacerV2DomRef extends ToolbarSpacerV2Attributes, Ui5DomRef {}
@@ -46,7 +42,7 @@ export interface ToolbarSpacerV2PropTypes extends ToolbarSpacerV2Attributes, Com
  */
 const ToolbarSpacerV2 = withWebComponent<ToolbarSpacerV2PropTypes, ToolbarSpacerV2DomRef>(
   'ui5-toolbar-spacer',
-  ['overflowPriority', 'width'],
+  ['width', 'overflowPriority'],
   ['preventOverflowClosing'],
   [],
   [],
@@ -55,7 +51,7 @@ const ToolbarSpacerV2 = withWebComponent<ToolbarSpacerV2PropTypes, ToolbarSpacer
 
 ToolbarSpacerV2.displayName = 'ToolbarSpacerV2';
 
-ToolbarSelect.defaultProps = {
+ToolbarSpacerV2.defaultProps = {
   overflowPriority: ToolbarItemOverflowBehavior.Default
 };
 
