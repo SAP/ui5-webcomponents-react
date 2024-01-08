@@ -2,11 +2,11 @@ import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/componen
 import Description from './PopoverDescription.md?raw';
 import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { BarChart, MicroBarChart } from '@ui5/webcomponents-react-charts';
 import { useState } from 'react';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
+import { BarDesign } from '../../enums/BarDesign';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { MessageStrip } from '../MessageStrip';
@@ -237,11 +237,11 @@ const PopoverComponent = () => {
             onAfterClose={handleClose}
             className={clsx('headerPartNoPadding', args.className)}
             header={
-              <Bar endContent={<Icon name="settings" />}>
+              <Bar endContent={<Icon name="settings" />} design={BarDesign.Header}>
                 <Title>Popover</Title>
               </Bar>
             }
-            footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
+            footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} design={BarDesign.Footer} />}
           >
             <List style={{ width: '200px' }}>
               <StandardListItem additionalText="3">List Item 1</StandardListItem>
