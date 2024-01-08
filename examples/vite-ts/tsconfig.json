@@ -22,9 +22,6 @@
   "references": [
     {
       "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.cypress.json"
     }
   ]
 }
