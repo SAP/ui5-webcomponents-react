@@ -18612,16 +18612,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-import@npm:^15.1.0":
-  version: 15.1.0
-  resolution: "postcss-import@npm:15.1.0"
+"postcss-import@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "postcss-import@npm:16.0.0"
   dependencies:
     postcss-value-parser: "npm:^4.0.0"
     read-cache: "npm:^1.0.0"
     resolve: "npm:^1.1.7"
   peerDependencies:
     postcss: ^8.0.0
-  checksum: 518aee5c83ea6940e890b0be675a2588db68b2582319f48c3b4e06535a50ea6ee45f7e63e4309f8754473245c47a0372632378d1d73d901310f295a92f26f17b
+  checksum: 7e9eccc2744dabdd542ba467b2df562c254d3b9e96b277752dbe525e3a8c47741cbbe802b40f64cbe92bc839244c2645cd0284ddb2938f8f38f2271fa427c932
   languageName: node
   linkType: hard
 
@@ -22391,7 +22391,7 @@ __metadata:
     npm-run-all: "npm:^4.1.5"
     postcss: "npm:^8.4.25"
     postcss-cli: "npm:^11.0.0"
-    postcss-import: "npm:^15.1.0"
+    postcss-import: "npm:^16.0.0"
     postcss-modules: "npm:^6.0.0"
     prettier: "npm:^3.0.0"
     react: "npm:18.2.0"
