@@ -356,7 +356,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [tableRef.current, scaleXFactor]);
 
   const updateRowsCount = useCallback(() => {
-    if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto && analyticalTableRef.current?.parentElement) {
+    if (
+      (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
+        visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows) &&
+      analyticalTableRef.current?.parentElement
+    ) {
       const parentElement = analyticalTableRef.current?.parentElement;
       const tableYPosition =
         parentElement &&
@@ -468,10 +472,16 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     if (typeof tableState.bodyHeight === 'number') {
       return tableState.bodyHeight;
     }
-    const rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
+    let rowNum;
+    if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows) {
+      rowNum = internalVisibleRowCount;
+    } else {
+      rowNum = rows.length < internalVisibleRowCount ? Math.max(rows.length, minRows) : internalVisibleRowCount;
+    }
 
     const rowHeight =
       visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto ||
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows ||
       tableState.interactiveRowsHavePopIn ||
       adjustTableHeightOnPopIn
         ? popInRowHeight
@@ -731,7 +741,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   classes={classes}
                   prepareRow={prepareRow}
                   rows={rows}
-                  minRows={minRows}
+                  itemCount={Math.max(
+                    minRows,
+                    rows.length,
+                    visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
+                      ? internalVisibleRowCount
+                      : 0
+                  )}
                   scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}

@@ -14,7 +14,7 @@ interface VirtualTableBodyProps {
   classes: Record<string, string>;
   prepareRow: (row: unknown) => void;
   rows: Record<string, any>[];
-  minRows: number;
+  itemCount: number;
   scrollToRef: MutableRefObject<ScrollToRefType>;
   isTreeTable: boolean;
   internalRowHeight: number;
@@ -48,7 +48,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     classes,
     prepareRow,
     rows,
-    minRows,
+    itemCount,
     scrollToRef,
     isTreeTable,
     internalRowHeight,
@@ -71,7 +71,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     triggerScroll
   } = props;
 
-  const itemCount = Math.max(minRows, rows.length);
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
   const lastNonEmptyRow = useRef(null);
