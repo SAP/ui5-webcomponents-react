@@ -1,0 +1,77 @@
+import{M as S,C as c,f as l,b as B}from"./chunk-HLWAVYOI-WPudlgZU.js";import{B as e}from"./index-NLXdvBtb.js";import"./employee-1rhW5wth.js";import{I as p}from"./index-WKa4-dpO.js";import{F as s,d as h}from"./index-ow_R__0g.js";import{b as j}from"./DomRefTable.module-qh4TB5pv.js";import{D as y}from"./DocsHeader-jPlMstyd.js";import{F as u}from"./Footer-aUBXXPq2.js";import{j as o}from"./jsx-runtime-DtaoT6pD.js";import"./index-OjgoNOWw.js";import{u as a}from"./index-RwE9nQVW.js";import"./iframe-Ds7lpwBG.js";import"../sb-preview/runtime.js";import"./react-18-1WT2dSvK.js";import"./index-QYh6idnL.js";import"./_baseForOwn-UZJwRxDU.js";import"./mapValues-HzTlT2lF.js";import"./_baseUniq-JVyScZ-n.js";import"./index-PPLHz8o0.js";import"./index-UBYxvHMA.js";import"./UI5Element-N46uHiF6.js";import"./i18nBundle-1uTNzT_G.js";import"./VersionInfo-doEI4kCH.js";import"./CustomElementsScopeUtils--FMJdKyV.js";import"./withWebComponent-m2csmhkT.js";import"./utils-7qe6Bov5.js";import"./useIsomorphicLayoutEffect-s31TYDr7.js";import"./slot-HSrR9XJ-.js";import"./Button-5EpXIGtS.js";import"./Icon-q2l1h21j.js";import"./Icons-JGtWxtgH.js";import"./AriaLabelHelper-RbKlVwzD.js";import"./MarkedEvents-aYv14vsS.js";import"./i18n-defaults-Hnw7H5Tc.js";import"./clsx-Zbgk8kpT.js";import"./react-jss.esm-tmBtHfec.js";import"./index-7OCPbIA1.js";import"./decline-tUGLActy.js";import"./i18n-defaults-CPLPRuO1.js";import"./information-rXvvQTyd.js";import"./alert-n6PTDijY.js";import"./class-map-lkLxloiQ.js";import"./index-O1qeqEwP.js";import"./i18n-defaults-PpubpVn0.js";import"./I18nContext-VUOpdMoH.js";import"./ThemingParameters-UghqSl-x.js";import"./index-Ad7wliO4.js";import"./ModalsContext-0q87fkkd.js";import"./CssSizeVariables-loCRUewX.js";import"./CustomVariables-jcpx1a4M.js";import"./GlobalStyleClasses-kWTEndz_.js";import"./addCustomCSSWithScoping-SeojittA.js";import"./index-YQlt53zR.js";import"./Integer-kog98579.js";import"./index-eFucXfmk.js";import"./Avatar-3tdvLPxl.js";import"./ResizeHandler-pjwwRwdX.js";import"./index-MYn8Qkr3.js";import"./index-MdLZ2Xb1.js";import"./Link-GBCkwT5X.js";import"./WrappingType-avPrqc94.js";import"./TableOfContent-9fTMDxxS.js";import"./index-VSCHd-WJ.js";import"./Label-lanRvJLA.js";import"./index-Ywbdq6yx.js";import"./index-hBjQiPGY.js";import"./Popover-QuSZvfFm.js";import"./PopupUtils-K8GVBVSe.js";import"./getActiveElement-IIKAy3xo.js";import"./PopupsCommon.css-T6pSPG1a.js";import"./FocusableElements-p1LB11Hl.js";import"./isElementHidden-d3-Fo4V6.js";import"./MediaRange-sEMt71Ve.js";import"./style-map-2OzZTNdj.js";import"./BrowserScrollbar.css-WTCBaVgb.js";const R=`## Usage Guidelines
+
+- If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.
+- When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be fully displayed.
+- Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.
+`;function f(r={}){const{wrapper:n}=Object.assign({},a(),r.components);return n?o.jsx(n,{...r,children:o.jsx(i,{})}):i();function i(){const t=Object.assign({h2:"h2",h1:"h1"},a(),r.components);return o.jsxs(o.Fragment,{children:[o.jsx(S,{title:"Data Display / Badge",component:e,argTypes:{children:{control:"text"},icon:{control:{disable:!0}}},args:{children:"Badge Text",icon:o.jsx(p,{name:"employee"})}}),`
+`,o.jsx(y,{since:"0.4.0"}),`
+`,o.jsx("br",{}),`
+`,o.jsx(t.h2,{id:"example",children:"Example"}),`
+`,o.jsx(c,{children:o.jsx(l,{name:"Default",children:d=>o.jsx(e,{...d})})}),`
+`,o.jsx(t.h2,{id:"properties",children:"Properties"}),`
+`,o.jsx(j,{story:"Default"}),`
+`,o.jsx(B,{children:R}),`
+`,o.jsx(t.h1,{id:"more-examples",children:"More Examples"}),`
+`,o.jsx(t.h2,{id:"all-available-badge-colors",children:"All available Badge colors"}),`
+`,o.jsx(c,{children:o.jsx(l,{name:"All colors",children:()=>o.jsxs(s,{wrap:h.Wrap,children:[o.jsx(e,{colorScheme:"1",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "1"'}),o.jsx(e,{colorScheme:"2",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "2"'}),o.jsx(e,{colorScheme:"3",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "3"'}),o.jsx(e,{colorScheme:"4",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "4"'}),o.jsx(e,{colorScheme:"5",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "5"'}),o.jsx(e,{colorScheme:"6",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "6"'}),o.jsx(e,{colorScheme:"7",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "7"'}),o.jsx(e,{colorScheme:"8",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "8"'}),o.jsx(e,{colorScheme:"9",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "9"'}),o.jsx(e,{colorScheme:"10",children:'colorScheme = "10"'})]})})}),`
+`,o.jsx(u,{})]})}}const g=r=>o.jsx(e,{...r});g.storyName="Default";g.parameters={storySource:{source:`args => {
+  return <Badge {...args} />;
+}`}};const x=()=>o.jsxs(s,{wrap:h.Wrap,children:[o.jsx(e,{colorScheme:"1",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "1"'}),o.jsx(e,{colorScheme:"2",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "2"'}),o.jsx(e,{colorScheme:"3",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "3"'}),o.jsx(e,{colorScheme:"4",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "4"'}),o.jsx(e,{colorScheme:"5",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "5"'}),o.jsx(e,{colorScheme:"6",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "6"'}),o.jsx(e,{colorScheme:"7",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "7"'}),o.jsx(e,{colorScheme:"8",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "8"'}),o.jsx(e,{colorScheme:"9",style:{marginRight:"10px",marginBottom:"10px"},children:'colorScheme = "9"'}),o.jsx(e,{colorScheme:"10",children:'colorScheme = "10"'})]});x.storyName="All colors";x.parameters={storySource:{source:`() => {
+  return <FlexBox wrap={FlexBoxWrap.Wrap}>
+          <Badge colorScheme="1" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "1"
+          </Badge>
+          <Badge colorScheme="2" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "2"
+          </Badge>
+          <Badge colorScheme="3" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "3"
+          </Badge>
+          <Badge colorScheme="4" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "4"
+          </Badge>
+          <Badge colorScheme="5" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "5"
+          </Badge>
+          <Badge colorScheme="6" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "6"
+          </Badge>
+          <Badge colorScheme="7" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "7"
+          </Badge>
+          <Badge colorScheme="8" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "8"
+          </Badge>
+          <Badge colorScheme="9" style={{
+      marginRight: "10px",
+      marginBottom: "10px"
+    }}>
+            colorScheme = "9"
+          </Badge>
+          <Badge colorScheme="10">colorScheme = "10"</Badge>
+        </FlexBox>;
+}`}};const m={title:"Data Display / Badge",component:e,args:{children:"Badge Text",icon:o.jsx(p,{name:"employee"})},argTypes:{children:{control:"text"},icon:{control:{disable:!0}}},tags:["stories-mdx"],includeStories:["defaultStory","allColors"]};m.parameters=m.parameters||{};m.parameters.docs={...m.parameters.docs||{},page:f};const Uo=["defaultStory","allColors"];export{Uo as __namedExportsOrder,x as allColors,m as default,g as defaultStory};
