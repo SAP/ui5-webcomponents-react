@@ -31,14 +31,8 @@ import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js
 
 addCustomCSSWithScoping(
   'ui5-tabcontainer',
-  // padding-inline is used here to ensure the same responsive padding behavior as for the rest of the component
   // todo: the additional text span adds 3px to the container - needs to be investigated why
   `
-  :host([data-component-name="ObjectPageTabContainer"]) .ui5-tc__header {
-    padding: 0;
-    padding-inline: var(--_ui5wcr_ObjectPage_tab_bar_inline_padding);
-    box-shadow: inset 0 -0.0625rem ${ThemingParameters.sapPageHeader_BorderColor}, 0 0.125rem 0.25rem 0 rgb(0 0 0 / 8%);
-  }
   :host([data-component-name="ObjectPageTabContainer"]) [id$="additionalText"] {
     display: none;
   }
@@ -465,7 +459,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
       const subSections = section.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
-      if (lastSubSection) {
+      if (subSections.length > 1 && lastSubSection) {
         heightDiff +=
           objectPage.getBoundingClientRect().height -
           topHeaderHeight -

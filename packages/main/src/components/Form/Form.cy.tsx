@@ -76,29 +76,29 @@ describe('Form', () => {
   it('size S - labels and fields should cover full width', () => {
     cy.viewport(393, 852); // iPhone 14 Pro
     cy.mount(component);
-    cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 12');
+    cy.get('[ui5-label]').contains('item 1').should('have.css', 'grid-column', '1 / span 12');
     cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '1 / span 12');
   });
 
   it('size M - label should cover 2/12, field 10/12', () => {
     cy.viewport(834, 1194); // iPad Pro
     cy.mount(component);
-    cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 2');
+    cy.get('[ui5-label]').contains('item 1').should('have.css', 'grid-column', '1 / span 2');
     cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '3 / span 10');
   });
 
   it('size L - label should cover 1/3, field 2/3', () => {
     cy.viewport(1280, 1024);
     cy.mount(component);
-    cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 4');
+    cy.get('[ui5-label]').contains('item 1').should('have.css', 'grid-column', '1 / span 4');
     cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '5 / span 8');
   });
 
   it('size XL - render two columns with 1/3 and 2/3 each', () => {
     cy.viewport(1920, 1080);
     cy.mount(component);
-    cy.findByText('item 1:').should('have.css', 'grid-column', '1 / span 4');
-    cy.findByText('item 3:').should('have.css', 'grid-column', '13 / span 4');
+    cy.get('[ui5-label]').contains('item 1').should('have.css', 'grid-column', '1 / span 4');
+    cy.get('[ui5-label]').contains('item 3').should('have.css', 'grid-column', '13 / span 4');
     cy.findByTestId('formInput').parent().should('have.css', 'grid-column', '5 / span 8');
     cy.findByTestId('formInput2').parent().should('have.css', 'grid-column', '17 / span 8');
   });
@@ -117,8 +117,8 @@ describe('Form', () => {
   it('a11y labels', () => {
     cy.mount(component);
     for (let i = 1; i <= 3; i++) {
-      cy.findByText(`item ${i}`).should('exist').should('not.be.visible');
-      cy.findByText(`item ${i}:`).should('be.visible');
+      cy.get('label').contains(`item ${i}`).should('exist').should('not.be.visible');
+      cy.get('[ui5-label]').contains(`item ${i}`).should('be.visible');
     }
     // custom `Label`
     cy.findAllByText(`item 4`).eq(0).should('be.visible');
@@ -137,16 +137,16 @@ describe('Form', () => {
         </FormItem>
       </Form>
     );
-    cy.findByText('Portal:').should('be.visible');
+    cy.get('[ui5-label]').contains('Portal').should('be.visible');
     cy.findByTestId('notSupported').should('not.exist');
   });
 
   it('conditionally render FormItems & FormGroups', () => {
     cy.mount(<ConditionRenderingExample />);
-    cy.findByText('Item 2').should('not.exist');
+    cy.findAllByText('Item 2').should('not.exist');
 
     cy.findByText('Toggle Input').click();
-    cy.findByText('Item 2').should('exist');
+    cy.findAllByText('Item 2').should('exist');
     cy.findByTestId('2').should('be.visible').as('item2');
     cy.get('@item2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '1');
 

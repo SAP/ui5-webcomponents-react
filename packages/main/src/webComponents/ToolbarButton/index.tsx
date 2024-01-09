@@ -52,26 +52,23 @@ interface ToolbarButtonAttributes {
    */
   tooltip?: string;
   /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
-   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
-   * Available options are:
-   *
-   * *`NeverOverflow`
-   * *`AlwaysOverflow`
-   * *`Default`
-   */
-  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
-  /**
-   * Defines if the toolbar overflow popup should close upon interaction with the item.
-   * It will close by default.
-   */
-  preventOverflowClosing?: boolean;
-  /**
    * Defines the width of the button.
    *
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    */
   width?: CSSProperties['width'] | CSSProperties['height'];
+  /**
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
+   *
+   * *   `NeverOverflow`
+   * *   `AlwaysOverflow`
+   * *   `Default`
+   */
+  overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
+  /**
+   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   */
+  preventOverflowClosing?: boolean;
 }
 
 export interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
@@ -112,7 +109,7 @@ export interface ToolbarButtonPropTypes extends ToolbarButtonAttributes, Omit<Co
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'text', 'tooltip', 'width', 'overflowPriority'],
   ['disabled', 'iconEnd', 'preventOverflowClosing'],
   [],
   ['click'],
