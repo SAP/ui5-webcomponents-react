@@ -599,12 +599,19 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       onTableScroll(e);
     }
     const targetScrollTop = e.currentTarget.scrollTop;
-    if (verticalScrollBarRef.current && verticalScrollBarRef.current.scrollTop !== targetScrollTop) {
-      if (!e.currentTarget.isExternalVerticalScroll) {
-        verticalScrollBarRef.current.scrollTop = targetScrollTop;
-        verticalScrollBarRef.current.isExternalVerticalScroll = true;
+
+    if (verticalScrollBarRef.current) {
+      const vertScrollbarScrollElement = verticalScrollBarRef.current.firstElementChild as HTMLDivElement;
+      if (vertScrollbarScrollElement.offsetHeight !== scrollContainerRef.current?.offsetHeight) {
+        vertScrollbarScrollElement.style.height = `${scrollContainerRef.current.offsetHeight}px`;
       }
-      e.currentTarget.isExternalVerticalScroll = false;
+      if (verticalScrollBarRef.current.scrollTop !== targetScrollTop) {
+        if (!e.currentTarget.isExternalVerticalScroll) {
+          verticalScrollBarRef.current.scrollTop = targetScrollTop;
+          verticalScrollBarRef.current.isExternalVerticalScroll = true;
+        }
+        e.currentTarget.isExternalVerticalScroll = false;
+      }
     }
   };
 
