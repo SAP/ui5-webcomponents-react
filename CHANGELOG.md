@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.3...v1.24.0) (2024-01-09)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve sync of scroll height of vertical scrollbar ([#5404](https://github.com/SAP/ui5-webcomponents-react/issues/5404)) ([83868c6](https://github.com/SAP/ui5-webcomponents-react/commit/83868c6dd285c5ed5b8050a72212c49fdae2a988)), closes [#5172](https://github.com/SAP/ui5-webcomponents-react/issues/5172)
+- **deps:** update dependency clsx to v2.1.0 ([#5377](https://github.com/SAP/ui5-webcomponents-react/issues/5377)) ([469d78b](https://github.com/SAP/ui5-webcomponents-react/commit/469d78b284e37bbfbc3862b8cf706b09b3c31464))
+- **FormItem:** display colons correctly in Firefox in rtl direction ([#5385](https://github.com/SAP/ui5-webcomponents-react/issues/5385)) ([ad9518d](https://github.com/SAP/ui5-webcomponents-react/commit/ad9518d10b55b9085d57353bc8ee66d1ea832ab9))
+- **ObjectPage:** prevent content flickering with single subsection ([#5392](https://github.com/SAP/ui5-webcomponents-react/issues/5392)) ([7e1965d](https://github.com/SAP/ui5-webcomponents-react/commit/7e1965d4f7c89b103f61379c140c79046205c706)), closes [#5391](https://github.com/SAP/ui5-webcomponents-react/issues/5391)
+- remove deprecated cra templates ([#5387](https://github.com/SAP/ui5-webcomponents-react/issues/5387)) ([82dfaa9](https://github.com/SAP/ui5-webcomponents-react/commit/82dfaa9c8d40446409ba7b298d37b5d87a53198b))
+- **vite-template:** correct ts-config ([#5403](https://github.com/SAP/ui5-webcomponents-react/issues/5403)) ([ce0f63d](https://github.com/SAP/ui5-webcomponents-react/commit/ce0f63dd882626c41b393f14ec6c05d5dcd48c98))
+
+### Features
+
+- **AnalyticalTable:** add `AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows` ([#5347](https://github.com/SAP/ui5-webcomponents-react/issues/5347)) ([ef32375](https://github.com/SAP/ui5-webcomponents-react/commit/ef32375a602ecffcacf6aa86c5fcb4ff3454998e)), closes [#5341](https://github.com/SAP/ui5-webcomponents-react/issues/5341)
+- update to `@ui5/webcomponents@1.21.0` ([#5390](https://github.com/SAP/ui5-webcomponents-react/issues/5390)) ([57cbe00](https://github.com/SAP/ui5-webcomponents-react/commit/57cbe005ca6c40eecf25479c990b837b5fd2c718))
+
 ## [1.23.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.2...v1.23.3) (2023-12-21)
 
 ### Bug Fixes
