@@ -361,6 +361,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
     | TableVisibleRowCountMode;
 
   /**
+   * todo
+   */
+  overflowRowsCount?: number;
+
+  /**
    * The number of rows visible without going into overflow.
    *
    * __Default:__ `15`

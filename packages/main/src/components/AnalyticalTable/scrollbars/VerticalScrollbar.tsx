@@ -47,11 +47,20 @@ const styles = {
 const useStyles = createUseStyles(styles, { name: 'VerticalScrollbar' });
 
 export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
-  const { internalRowHeight, tableRef, handleVerticalScrollBarScroll, tableBodyHeight, scrollContainerRef, parentRef } =
-    props;
+  const {
+    internalRowHeight,
+    tableRef,
+    handleVerticalScrollBarScroll,
+    tableBodyHeight,
+    scrollContainerRef,
+    parentRef,
+    overflowRowsCount
+  } = props;
   const [componentRef, containerRef] = useSyncRef(ref);
   const scrollElementRef = useRef(null);
   const classes = useStyles();
+
+  console.log(internalRowHeight);
 
   const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 
@@ -69,7 +78,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
     };
   }, []);
   const horizontalScrollbarSectionStyles = clsx(hasHorizontalScrollbar && classes.bottomSection);
-
+  // console.log(scrollContainerRef.current);
   return (
     <FlexBox
       direction={FlexBoxDirection.Column}
