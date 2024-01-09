@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true,
     "baseUrl": ".",
     "target": "es5",
     "lib": ["es5", "dom"],
