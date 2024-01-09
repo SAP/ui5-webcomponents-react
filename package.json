@@ -24,8 +24,6 @@
     "lint": "eslint packages --ext .ts,.tsx",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
-    "examples:recreate-seed": "rimraf examples/seed-test && npx create-react-app examples/seed-test --template file:./packages/cra-template-seed",
-    "examples:start-seed": "cd examples/seed-test && SKIP_PREFLIGHT_CHECK=true yarn start",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky install && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"

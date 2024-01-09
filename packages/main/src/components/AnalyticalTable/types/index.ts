@@ -344,15 +344,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   minRows?: number;
   /**
-   * Defines how the table will render visible rows.
+   * Defines how the table will render rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
    * - __"Auto":__ The number of visible rows displayed depends on the height of the surrounding container.
+   * - __"AutoWithEmptyRows":__ The number of rows displayed depends on the height of the surrounding container, if not enough visible rows are available, empty rows are displayed.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
    * __Default:__ `"Fixed"`
    *
-   * __Note:__ When `"Auto"` is enabled, we recommend to use a fixed height for the parent container.
+   * __Note:__ When `"Auto"` or `"AutoWithEmptyRows"` is enabled, we recommend using a fixed height for the parent container.
    */
   visibleRowCountMode?:
     | AnalyticalTableVisibleRowCountMode

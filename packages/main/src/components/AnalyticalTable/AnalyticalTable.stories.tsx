@@ -495,15 +495,31 @@ export const DynamicRowCount = {
     }
   },
   render: (args) => {
+    const [data, setData] = useState(args.data);
+    const handleClick = () => {
+      setData((prev) => {
+        if (prev.length > 4) {
+          return args.data.slice(0, 4);
+        } else {
+          return args.data;
+        }
+      });
+    };
     return (
-      <div style={{ height: `${args.containerHeight}px` }}>
-        <AnalyticalTable
-          data={args.data}
-          columns={args.columns}
-          visibleRowCountMode={args.visibleRowCountMode}
-          header={`Current height: ${args.containerHeight}px - Change the height in the table above`}
-        />
-      </div>
+      <>
+        <Button onClick={handleClick}>Toggle Number of Rows</Button>
+        <br />
+        <Text>Number of visible rows: {args.data.length}</Text>
+        <hr />
+        <div style={{ height: `${args.containerHeight}px` }}>
+          <AnalyticalTable
+            data={data}
+            columns={args.columns}
+            visibleRowCountMode={args.visibleRowCountMode}
+            header={`Current height: ${args.containerHeight}px - Change the height in the table above`}
+          />
+        </div>
+      </>
     );
   }
 };

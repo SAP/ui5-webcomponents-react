@@ -358,11 +358,15 @@ const TableWithSubcomponents = (props) => {
 
 </details>
 
-## Adjust the number of visible rows to the container height
+## Adjust the number of rows to the container height
 
-By adding the `visibleRowCountMode` prop and setting it to `AnalyticalTableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows.
+By adding the `visibleRowCountMode` prop and setting it to `AnalyticalTableVisibleRowCountMode.Auto` the table automatically fills the surrounding container with rows and when setting it to `AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows`, empty rows fill the container as well, if not enough visible rows are available.
 
-<ControlsWithNote of={ComponentStories.DynamicRowCount} include={['containerHeight']} hideHTMLPropsNote />
+<ControlsWithNote
+  of={ComponentStories.DynamicRowCount}
+  include={['containerHeight', 'visibleRowCountMode']}
+  hideHTMLPropsNote
+/>
 
 <Canvas sourceState="none" of={ComponentStories.DynamicRowCount} />
 
@@ -376,6 +380,7 @@ const TableComponent = (props) => {
         data={props.data}
         columns={props.columns}
         visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
+        // visibleRowCountMode={AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows}
         header={`Current height: ${props.containerHeight}px - Change the height in the table above`}
       />
     </div>

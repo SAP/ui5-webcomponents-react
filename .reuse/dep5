@@ -16,10 +16,6 @@ Files: packages/base/src/hooks/useIsomorphicLayoutEffect.ts
 Copyright: 2019 Tanner Linsley
 License: MIT
 
-Files: packages/cra-template-seed/template/src/hooks/useLocalStorageState.js
-Copyright: Kent C. Dodds
-License: MIT
-
 Files: packages/base/src/utils/debounce.ts
 Copyright: 2009-2021 Jeremy Ashkenas, Julian Gonggrijp, and DocumentCloud and Investigative Reporters & Editors
 License: MIT
