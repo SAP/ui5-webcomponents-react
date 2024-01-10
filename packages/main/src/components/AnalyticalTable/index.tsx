@@ -151,7 +151,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
-    overflowRowsCount = 0,
+    additionalEmptyRowsCount = 0,
     alwaysShowSubComponent: _omit,
     ...rest
   } = props;
@@ -648,8 +648,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     );
   };
 
-  // console.log(tableState.isScrollable, tableState.rowCollapsed);
-  console.log(!tableState.isScrollable ? overflowRowsCount : 0);
   return (
     <>
       <div
@@ -758,7 +756,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                       visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
                         ? internalVisibleRowCount
                         : 0
-                    ) + (!tableState.isScrollable ? overflowRowsCount : 0)
+                    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0)
                   }
                   scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
@@ -784,7 +782,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               </VirtualTableBodyContainer>
             )}
           </div>
-          {(overflowRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
+          {(additionalEmptyRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}
@@ -794,7 +792,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               data-native-scrollbar={props['data-native-scrollbar']}
               scrollContainerRef={scrollContainerRef}
               parentRef={parentRef}
-              overflowRowsCount={overflowRowsCount}
             />
           )}
         </FlexBox>

@@ -359,12 +359,16 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
     | AnalyticalTableVisibleRowCountMode
     | keyof typeof AnalyticalTableVisibleRowCountMode
     | TableVisibleRowCountMode;
-
   /**
-   * todo
+   * Specifies the number of additional empty rows added to the bottom of a table that is normally __non__ scrollable.
+   * Use this prop if you want to ensure that the table is scrollable.
+   *
+   * __Note:__ It's recommended to use this prop only if `infiniteScroll` is applied and where assessing scrollability is not possible across various resolutions or datasets.
+   * E.g., when using `visibleRowCountMode` with values `"Auto"` or `"AutoWithEmptyRows"`.
+   *
+   * __Note:__ This prop has no effect if the table is already scrollable without additional empty rows.
    */
-  overflowRowsCount?: number;
-
+  additionalEmptyRowsCount?: number;
   /**
    * The number of rows visible without going into overflow.
    *
