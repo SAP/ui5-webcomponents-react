@@ -155,25 +155,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const Test = {
-  render(args) {
-    return (
-      <AnalyticalTable
-        {...args}
-        data={args.data.slice(0, 10)}
-        filterable
-        adjustTableHeightOnPopIn
-        reactTableOptions={{ autoResetFilters: false }}
-        infiniteScroll
-        infiniteScrollThreshold={10}
-        visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Auto}
-        style={{ height: '80vh' }}
-        onLoadMore={console.log}
-      />
-    );
-  }
-};
-
 export const PluginDisableRowSelection: Story = {
   name: 'Plugin: useRowDisableSelection',
   args: {
