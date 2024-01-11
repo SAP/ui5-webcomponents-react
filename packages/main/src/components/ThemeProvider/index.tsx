@@ -18,10 +18,17 @@ const useStyles = createUseStyles(GlobalStyleClassesStyles, {
 
 export interface ThemeProviderPropTypes {
   children: ReactNode;
+  withoutModalsProvider?: boolean;
 }
 
+/**
+ * In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the ThemeProvider.
+ *
+ * __Note:__ Per default, the `ThemeProvider` adds another provider for the [Modals](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-modals--docs) API.
+ * If you don't use this, you can omit it by setting the prop `withoutModalsProvider` to `true`. (With v2.0, the `Modals` provider will be offered separately to reduce overhead)
+ */
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
-  const { children } = props;
+  const { children, withoutModalsProvider } = props;
   useStyles();
 
   useIsomorphicLayoutEffect(() => {
@@ -38,9 +45,7 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
 
   return (
     <ReactJssThemeProvider theme={ThemingParameters}>
-      <I18nProvider>
-        <ModalsProvider>{children}</ModalsProvider>
-      </I18nProvider>
+      <I18nProvider>{withoutModalsProvider ? children : <ModalsProvider>{children}</ModalsProvider>}</I18nProvider>
     </ReactJssThemeProvider>
   );
 };
