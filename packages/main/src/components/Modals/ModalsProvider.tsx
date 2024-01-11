@@ -32,8 +32,13 @@ export function ModalsProvider({ children }: ModalsProviderPropTypes) {
     isSyncedWithWindow.current = true;
   }
 
+  const GlobalModalsContext = isSyncedWithWindow.current
+    ? window['@ui5/webcomponents-react'].ModalsContext
+    : ModalsContext;
+  const globalSetModal = isSyncedWithWindow.current ? window['@ui5/webcomponents-react'].setModal : setModal;
+
   return (
-    <ModalsContext.Provider value={{ setModal }}>
+    <GlobalModalsContext.Provider value={{ setModal: globalSetModal }}>
       {modals.map((modal) => {
         if (modal?.Component) {
           return createPortal(
@@ -43,6 +48,6 @@ export function ModalsProvider({ children }: ModalsProviderPropTypes) {
         }
       })}
       {children}
-    </ModalsContext.Provider>
+    </GlobalModalsContext.Provider>
   );
 }
