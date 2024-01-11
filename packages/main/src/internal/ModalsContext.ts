@@ -18,14 +18,19 @@ interface IModalsContext<Props, DomRef> {
   setModal?: Dispatch<UpdateModalStateAction<Props, DomRef>>;
 }
 
-export const ModalsContext = createContext<IModalsContext<Record<string, any>, HTMLElement>>({
+const ModalsContext = createContext<IModalsContext<Record<string, any>, HTMLElement>>({
   setModal: null
 });
 
-export const useModalsContext = (): ContextType<typeof ModalsContext> => {
-  let context = ModalsContext;
-  if (typeof window !== 'undefined' && window['@ui5/webcomponents-react']?.ModalsContext) {
-    context = window['@ui5/webcomponents-react'].ModalsContext;
+export function getModalContext() {
+  if (!globalThis['@ui5/webcomponents-react']?.ModalsContext) {
+    globalThis['@ui5/webcomponents-react'] ??= {};
+    globalThis['@ui5/webcomponents-react'].ModalsContext = ModalsContext;
   }
-  return useContext(context);
+
+  return globalThis['@ui5/webcomponents-react'].ModalsContext;
+}
+
+export const useModalsContext = (): ContextType<typeof ModalsContext> => {
+  return useContext(getModalContext());
 };

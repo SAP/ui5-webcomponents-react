@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import React, { useReducer, useRef } from 'react';
+import React, { useMemo, useReducer } from 'react';
 import { createPortal } from 'react-dom';
 import type { ModalState, UpdateModalStateAction } from '../../internal/ModalsContext.js';
-import { ModalsContext } from '../../internal/ModalsContext.js';
+import { getModalContext } from '../../internal/ModalsContext.js';
 
 export interface ModalsProviderPropTypes {
   children: ReactNode;
@@ -23,17 +23,20 @@ const modalStateReducer = (state: ModalState[], action: UpdateModalStateAction) 
 export function ModalsProvider({ children }: ModalsProviderPropTypes) {
   const [modals, setModal] = useReducer(modalStateReducer, []);
 
-  const isSyncedWithWindow = useRef(false);
+  // necessary for static method
+  globalThis['@ui5/webcomponents-react'] ??= {};
+  globalThis['@ui5/webcomponents-react'].setModal = setModal;
 
-  if (!isSyncedWithWindow.current && typeof window !== 'undefined') {
-    window['@ui5/webcomponents-react'] ??= {};
-    window['@ui5/webcomponents-react'].ModalsContext = ModalsContext;
-    window['@ui5/webcomponents-react'].setModal = setModal;
-    isSyncedWithWindow.current = true;
-  }
+  const GlobalModalsContext = getModalContext();
+  const memoizedVal = useMemo(
+    () => ({
+      setModal: globalThis['@ui5/webcomponents-react'].setModal
+    }),
+    []
+  );
 
   return (
-    <ModalsContext.Provider value={{ setModal }}>
+    <GlobalModalsContext.Provider value={memoizedVal}>
       {modals.map((modal) => {
         if (modal?.Component) {
           return createPortal(
@@ -43,6 +46,6 @@ export function ModalsProvider({ children }: ModalsProviderPropTypes) {
         }
       })}
       {children}
-    </ModalsContext.Provider>
+    </GlobalModalsContext.Provider>
   );
 }
