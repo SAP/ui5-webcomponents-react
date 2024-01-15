@@ -80,15 +80,12 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
     initialChildren.current = false;
   }, [children, options?.resetOnChildrenChange]);
 
-  useEffect(
-    () => {
-      if (!initialCustomDep.current) {
-        setReset(true);
-      }
-      initialCustomDep.current = false;
-    },
-    options?.resetOnCustomDepsChange ?? []
-  );
+  useEffect(() => {
+    if (!initialCustomDep.current) {
+      setReset(true);
+    }
+    initialCustomDep.current = false;
+  }, options?.resetOnCustomDepsChange ?? []);
 
   useEffect(() => {
     if (options?.resetOnSizeChange) {
