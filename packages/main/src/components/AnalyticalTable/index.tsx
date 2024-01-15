@@ -151,6 +151,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onTableScroll,
     LoadingComponent,
     NoDataComponent,
+    additionalEmptyRowsCount = 0,
     alwaysShowSubComponent: _omit,
     ...rest
   } = props;
@@ -748,13 +749,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   classes={classes}
                   prepareRow={prepareRow}
                   rows={rows}
-                  itemCount={Math.max(
-                    minRows,
-                    rows.length,
-                    visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
-                      ? internalVisibleRowCount
-                      : 0
-                  )}
+                  itemCount={
+                    Math.max(
+                      minRows,
+                      rows.length,
+                      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
+                        ? internalVisibleRowCount
+                        : 0
+                    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0)
+                  }
                   scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
@@ -779,7 +782,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               </VirtualTableBodyContainer>
             )}
           </div>
-          {(tableState.isScrollable === undefined || tableState.isScrollable) && (
+          {(additionalEmptyRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}

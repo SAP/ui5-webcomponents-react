@@ -8,7 +8,6 @@ import {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
   Button,
   Input
 } from '../..';
@@ -1086,7 +1085,15 @@ describe('AnalyticalTable', () => {
           >
             Data 100
           </Button>
+          <Button
+            onClick={() => {
+              setData(data.slice(0, 10));
+            }}
+          >
+            Data 10
+          </Button>
           <AnalyticalTable
+            {...props}
             ref={tableRef}
             data-testid="at"
             data={internalData}
@@ -1135,6 +1142,15 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name91').should('be.visible');
     cy.findByText('Rows: 150').should('be.visible');
     cy.get('@more').should('have.been.calledThrice');
+
+    //additionalEmptyRowsCount
+    cy.mount(<TestComp onLoadMore={onLoadMore} additionalEmptyRowsCount={1} />);
+    cy.get('[data-empty-row="true"]').should('not.exist');
+    cy.findByText('Data 10').click();
+    cy.findByText('Rows: 10').should('be.visible');
+    cy.get('[data-empty-row="true"]').should('exist').should('not.be.visible');
+    cy.findByTestId('scrollInput').typeIntoUi5Input('11{enter}', { force: true });
+    cy.findByText('Rows: 60').should('be.visible');
   });
 
   it('InfiniteScroll: Tree', () => {
@@ -2658,6 +2674,17 @@ describe('AnalyticalTable', () => {
     cy.mount(<ScrollToItemHorizontal />);
     cy.findByText('13').should('be.visible');
     cy.findByText('12').should('not.be.visible');
+  });
+
+  it('additionalEmptyRowsCount', () => {
+    cy.mount(<AnalyticalTable data={data} columns={columns} minRows={4} />);
+    cy.get('[data-empty-row]').should('not.exist');
+    cy.mount(<AnalyticalTable data={data} columns={columns} minRows={4} additionalEmptyRowsCount={1} />);
+    cy.get('[data-empty-row]').should('exist').and('not.be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} minRows={4} additionalEmptyRowsCount={5} />);
+    cy.get('[data-empty-row]').should('exist').and('have.length', 5).and('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.get('[data-empty-row]').should('exist').and('have.length', 5).and('be.visible');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
