@@ -231,6 +231,7 @@ describe('ObjectStatus', () => {
         Content
       </ObjectStatus>
     );
+    cy.get('button').should('not.exist');
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('not.be.called');
     cy.findByRole('button').should('not.exist');
@@ -241,8 +242,13 @@ describe('ObjectStatus', () => {
         Content
       </ObjectStatus>
     );
+    cy.get('button').should('be.visible');
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('have.been.calledOnce');
+    cy.findByText('Content').realPress('Enter');
+    cy.get('@clickSpy').should('have.been.calledTwice');
+    cy.findByText('Content').realPress('Space');
+    cy.get('@clickSpy').should('have.been.calledThrice');
     cy.findByText('Object Status Button').should('exist').and('not.be.visible');
   });
 

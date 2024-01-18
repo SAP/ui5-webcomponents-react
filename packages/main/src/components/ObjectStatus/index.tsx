@@ -29,16 +29,18 @@ import styles from './ObjectStatus.jss.js';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**
-   * Indicates if the ObjectStatus text and icon can be clicked/tapped by the user.
+   * Indicates if the ObjectStatus is rendered as inactive `div` or interactive `button` and therefore can be clicked/tapped by the user or not.
    *
-   * **Note:** If you set this property to true, you have to also set the `children` or `icon` prop.
+   * **Note:** If this prop is set to `true`, you should also set the `children` or `icon` prop.
+   *
    *
    * @since 0.16.6
    */
   active?: boolean;
 
   /**
-   * Defines the icon in front of the `ObjectStatus` text.<br />
+   * Defines the icon in front of the `ObjectStatus` text.
+   *
    * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use `Icon` in order to preserve the intended design.
    */
   icon?: ReactNode;
@@ -58,10 +60,11 @@ export interface ObjectStatusPropTypes extends CommonProps {
   large?: boolean;
 
   /**
-   * Defines the text of the `ObjectStatus`.<br />
+   * Defines the text of the `ObjectStatus`.
+   *
    * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
-  children?: string | number | ReactNode;
+  children?: ReactNode;
 
   /**
    * Defines the value state of the <code>ObjectStatus</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
@@ -71,7 +74,8 @@ export interface ObjectStatusPropTypes extends CommonProps {
   state?: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
 
   /**
-   * Defines whether the default icon for each `ValueState` should be displayed.<br />
+   * Defines whether the default icon for each `ValueState` should be displayed.
+   *
    * __Note:__ If the `icon` prop was set, `showDefaultIcon` has no effect.
    */
   showDefaultIcon?: boolean;
@@ -93,9 +97,13 @@ export interface ObjectStatusPropTypes extends CommonProps {
   /**
    * Fires when the user clicks/taps on active text.
    *
+   * __Note:__ This prop has no effect if `active` is not set to `true`.
+   *
+   * __Note:__ In order to support legacy code, `HTMLDivElement` is still supported even though the `click` event is never fired if not `active`. It will be removed with our next major release.
+   *
    * @since 0.16.6
    */
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
 }
 
 const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementText, i18nTexts) => {
@@ -151,7 +159,7 @@ const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
 /**
  * Status information that can be either text with a value state, or an icon.
  */
-const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, ref) => {
+const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatusPropTypes>((props, ref) => {
   const {
     state,
     showDefaultIcon,
@@ -199,6 +207,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
   );
 
   const objStatusClasses = clsx(
+    classes.normalizeCSS,
     classes.objectStatus,
     classes[`${state as string}`.toLowerCase()],
     active && classes.active,
@@ -207,8 +216,11 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
     className
   );
 
+  const TagName = active ? 'button' : 'div';
+
   return (
-    <div
+    <TagName
+      // @ts-expect-error: both refs are allowed (attributes, etc. of HTMLButtonElement should only be used if `active` is `true`)
       ref={ref}
       className={objStatusClasses}
       style={style}
@@ -241,7 +253,7 @@ const ObjectStatus = forwardRef<HTMLDivElement, ObjectStatusPropTypes>((props, r
           {invisibleText}
         </span>
       )}
-    </div>
+    </TagName>
   );
 });
 
