@@ -57,6 +57,7 @@ overrides:
       - 'plugin:@typescript-eslint/recommended'
       - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
       - 'plugin:import/typescript'
+      - 'plugin:react/jsx-runtime'
     settings:
       import/resolver:
         typescript: true
