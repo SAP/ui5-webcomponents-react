@@ -99,7 +99,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * __Note:__ This prop has no effect if `active` is not set to `true`.
    *
-   * __Note:__ In order to support legacy code, `HTMLDivElement` is still supported even though the `click` event is never fired if not `active`. It will be removed with our next major release.
+   * __Note:__ In order to support legacy code, `HTMLDivElement` is still supported even though the `click` event is never fired if the component isn't `active`.
    *
    * @since 0.16.6
    */
