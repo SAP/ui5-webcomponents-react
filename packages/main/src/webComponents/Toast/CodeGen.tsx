@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Toast as OriginalToast, ToastDomRef, ToastPropTypes } from './index';
 

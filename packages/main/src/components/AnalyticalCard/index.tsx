@@ -2,7 +2,7 @@
 
 import { deprecationNotice, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import React, { forwardRef, useEffect } from 'react';
+import { forwardRef, useEffect } from 'react';
 import type { CommonProps } from '../../interfaces/index.js';
 import type { CardDomRef } from '../../webComponents/index.js';
 import { Card } from '../../webComponents/index.js';

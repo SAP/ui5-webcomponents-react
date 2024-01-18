@@ -1,6 +1,6 @@
 import { throttle } from '@ui5/webcomponents-react-base';
-import type { CSSProperties } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import type { CSSProperties, MouseEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
 import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants.js';
 
@@ -136,13 +136,13 @@ const TimelineTask = ({
   hideTooltip
 }: TimelineTaskProps) => {
   const [opacity, setOpacity] = useState(NORMAL_OPACITY);
-  const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const onMouseLeave = (evt: MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     hideTooltip();
     setOpacity(NORMAL_OPACITY);
   };
 
-  const mouseMoveHandler = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const mouseMoveHandler = (evt: MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, label, startTime, duration, color, false);
@@ -254,13 +254,13 @@ const TimelineMilestone = ({
 
   const [opacity, setOpacity] = useState(NORMAL_OPACITY);
 
-  const onMouseLeave = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const onMouseLeave = (evt: MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     hideTooltip();
     setOpacity(NORMAL_OPACITY);
   };
 
-  const mouseMoveHandler = (evt: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+  const mouseMoveHandler = (evt: MouseEvent<SVGRectElement, MouseEvent>) => {
     evt.stopPropagation();
     setOpacity(HOVER_OPACITY);
     showTooltip(evt.clientX, evt.clientY, label, time, 0, color, true);

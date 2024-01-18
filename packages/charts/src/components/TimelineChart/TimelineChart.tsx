@@ -1,7 +1,7 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
 import { throttle } from '@ui5/webcomponents-react-base';
-import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, MouseEvent, ReactNode } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody.js';
 import { TimelineChartPlaceholder } from './Placeholder.js';
 import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders.js';
@@ -204,7 +204,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       bodyConRef.current.scrollTo({ left: 0 });
     };
 
-    const onMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const onMouseDown = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (chartBodyScale > 1) {
         setIsGrabbed(true);
         setMPos(e.clientX);
@@ -215,7 +215,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       if (chartBodyScale > 1) setIsGrabbed(false);
     };
 
-    const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const mouseMoveHandler = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (isGrabbed) {
         const dx = e.clientX - mPos;
         // Make negative so that the scrolling can move in

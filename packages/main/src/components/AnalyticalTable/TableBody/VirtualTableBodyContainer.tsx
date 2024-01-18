@@ -1,6 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AnalyticalTablePropTypes } from '../types/index.js';
 
 interface VirtualTableBodyContainerProps {

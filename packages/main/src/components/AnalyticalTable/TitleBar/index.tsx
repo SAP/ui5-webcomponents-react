@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { forwardRef, isValidElement } from 'react';
+import { forwardRef, isValidElement } from 'react';
 import { Title } from '../../../webComponents/Title/index.js';
 
 const styles = {

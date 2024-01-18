@@ -2,7 +2,6 @@ import image from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import React from 'react';
 import { Input, Icon, StandardListItem, Avatar, ShellBarItem } from '../index';
 import { ShellBar } from './index';
 // @ts-expect-error: png's are not typed

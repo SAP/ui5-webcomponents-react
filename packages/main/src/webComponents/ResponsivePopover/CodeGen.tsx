@@ -4,7 +4,7 @@ import {
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes
 } from './index';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 export const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
   createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)

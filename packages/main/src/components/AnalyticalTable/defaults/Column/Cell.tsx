@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Cell = ({ cell: { value = '', isGrouped }, row, webComponentsReactProperties }) => {
   let cellContent = `${value ?? ''}`;
   if (isGrouped) {
