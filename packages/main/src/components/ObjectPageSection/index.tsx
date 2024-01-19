@@ -10,7 +10,8 @@ import styles from './ObjectPageSection.jss.js';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
-   * Defines the ID of the `ObjectPageSection`.<br />
+   * Defines the ID of the `ObjectPageSection`.
+   *
    * __Note:__ The `id` is taken into account when the section selection changes.
    */
   id: string;
