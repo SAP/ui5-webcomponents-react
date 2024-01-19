@@ -57,6 +57,7 @@ export const Default: Story = {
             const currentProduct = listItems[index % 4];
             return (
               <StandardListItem
+                selected={index === 1}
                 image={currentProduct.img}
                 description={`${currentProduct.description}${index}`}
                 key={`${currentProduct.text}${index}`}
@@ -73,25 +74,33 @@ export const Default: Story = {
 
 export const MultiSelect: Story = {
   render: () => {
-    const dialogRef = useRef(null);
+    const [dialogOpen, setDialogOpen] = useState(false);
     // predefined selection
     const selectedProducts = { 'HT-102': true, 'HT-203': true, 'HT-1038': true };
     // number of selected items
     const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>(selectedProducts);
+    const selectedItemsBeforeOpen = useRef(selectedItems);
     const [searchVal, setSearchVal] = useState();
     const [products, setProducts] = useState(Object.keys(selectedProducts));
 
-    const onButtonClick = () => {
-      dialogRef.current.show();
+    const handleBeforeOpen = () => {
+      selectedItemsBeforeOpen.current = selectedItems;
     };
-
+    const handleOpen = () => {
+      setDialogOpen(true);
+    };
+    const handleClose = () => {
+      setDialogOpen(false);
+    };
     // search
     const handleSearch = (e) => {
       setSearchVal(e.detail.value);
     };
+    // reset input value of search field
     const handleSearchReset = () => {
       setSearchVal(undefined);
     };
+    // select/unselect
     const handleItemClick = (e) => {
       const itemDescription = e.detail.item.dataset.description;
       setSelectedItems((prev) => {
@@ -111,22 +120,29 @@ export const MultiSelect: Story = {
     const handleConfirm = () => {
       setProducts(Object.keys(selectedItems));
     };
+    // cancel selection
+    const handleCancel = () => {
+      setSelectedItems(selectedItemsBeforeOpen.current);
+    };
 
     return (
       <>
-        <Button onClick={onButtonClick}>Open Dialog</Button>
+        <Button onClick={handleOpen}>Open Dialog</Button>
         <SelectDialog
+          open={dialogOpen}
           mode={ListMode.MultiSelect}
-          ref={dialogRef}
-          onSearchInput={handleSearch}
-          onSearch={handleSearch}
-          onSearchReset={handleSearchReset}
           numberOfSelectedItems={Object.keys(selectedItems).length}
           listProps={{ onItemClick: handleItemClick }}
           showClearButton
           rememberSelections
           onClear={handleClear}
           onConfirm={handleConfirm}
+          onAfterClose={handleClose}
+          onSearchInput={handleSearch}
+          onSearch={handleSearch}
+          onSearchReset={handleSearchReset}
+          onBeforeOpen={handleBeforeOpen}
+          onCancel={handleCancel}
         >
           {new Array(40)
             .fill('')

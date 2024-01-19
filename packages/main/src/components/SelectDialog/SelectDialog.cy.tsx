@@ -227,4 +227,51 @@ describe('SelectDialog', () => {
     cy.mount(<SelectDialog mode={ListMode.MultiSelect} numberOfSelectedItems={1337} open />);
     cy.findByText('Selected: 1337').should('be.visible');
   });
+
+  it('onCancel', () => {
+    const cancel = cy.spy().as('cancel');
+    const TestComp = ({
+      cancel,
+      mode
+    }: {
+      cancel: SelectDialogPropTypes['onCancel'];
+      mode: SelectDialogPropTypes['mode'];
+    }) => {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Open
+          </Button>
+          <SelectDialog
+            open={open}
+            onCancel={cancel}
+            onAfterClose={() => {
+              setOpen(false);
+            }}
+            mode={mode}
+          >
+            {listItems}
+          </SelectDialog>
+        </>
+      );
+    };
+    let callCount = 1;
+    [ListMode.SingleSelect, ListMode.MultiSelect].forEach((mode) => {
+      cy.mount(<TestComp cancel={cancel} mode={mode} />);
+      cy.findByText('Open').click();
+      cy.findByText('Cancel').click();
+      cy.get('@cancel').should('have.callCount', callCount);
+      callCount++;
+
+      cy.findByText('Open').click();
+      cy.realPress('Escape');
+      cy.get('@cancel').should('have.callCount', callCount);
+      callCount++;
+    });
+  });
 });
