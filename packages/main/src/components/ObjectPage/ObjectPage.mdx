@@ -37,6 +37,22 @@ With these objectes it's possible to e.g. configure the overflow button displaye
 
 <Canvas of={ComponentStories.SectionWithCustomHeader} />
 
+## TabBar ObjectPage with fullscreen section
+
+To render a single section in fullscreen mode, set its height to `100%`.
+
+**Note:** This is only supported for sections in `TabBar` mode! Using multiple sections with `height: 100%;` will most probably break your layout.
+
+<Canvas of={ComponentStories.FullScreenSingleSection} />
+
+### Example section
+
+```jsx
+<ObjectPageSection titleText="Section 2" id="section2" style={{ height: '100%' }}>
+  <div style={{ height: '100%', background: 'lightgreen' }} />
+</ObjectPageSection>
+```
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## DynamicPageTitle
