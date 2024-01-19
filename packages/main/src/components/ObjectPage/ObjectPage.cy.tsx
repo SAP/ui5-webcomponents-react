@@ -191,12 +191,11 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('be.visible');
 
     cy.findByTestId('op').scrollTo(0, 500);
+    cy.wait(500);
     cy.findByTestId('btn').click();
-    cy.wait(100);
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
     cy.findByTestId('btn').click();
-    cy.wait(100);
     cy.findByText('ObjectPageHeader').should('be.visible');
     cy.get('@onPinSpy').should('have.callCount', 7);
   });
