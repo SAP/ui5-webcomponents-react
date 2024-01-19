@@ -192,9 +192,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const scrollTimeout = useRef(0);
   const titleInHeader = headerTitle && showTitleInHeaderContent;
   const [sectionSpacer, setSectionSpacer] = useState(0);
-  const currentTabModeSection =
-    mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : null;
+  const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const sections = currentTabModeSection ?? children;
+
+  useEffect(() => {
+    const currentSection =
+      mode === ObjectPageMode.IconTabBar ? getSectionById(children, internalSelectedSectionId) : null;
+    setCurrentTabModeSection(currentSection);
+  }, [mode, children, internalSelectedSectionId]);
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
