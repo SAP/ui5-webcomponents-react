@@ -5,7 +5,7 @@ import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';

@@ -3,7 +3,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
-import React, { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
+import { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   Cell,

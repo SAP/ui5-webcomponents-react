@@ -1,6 +1,6 @@
 import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactElement } from 'react';
-import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
+import { Children, cloneElement, isValidElement, useMemo } from 'react';
 import { Splitter } from '../Splitter/index.js';
 import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
 

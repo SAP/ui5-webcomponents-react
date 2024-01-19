@@ -1,7 +1,7 @@
 import { SplitterElementContent } from '@sb/components/SplitterElementContent';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement } from '../..';
 import { SplitterLayout } from './index.js';
 

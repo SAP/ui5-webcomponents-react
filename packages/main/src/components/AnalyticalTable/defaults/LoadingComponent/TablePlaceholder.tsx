@@ -1,7 +1,6 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, FC } from 'react';
-import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { resolveCellAlignment } from '../../util/index.js';
 

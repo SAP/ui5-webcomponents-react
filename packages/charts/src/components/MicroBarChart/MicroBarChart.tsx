@@ -3,7 +3,7 @@
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
-import React, { createElement, forwardRef, useCallback, useMemo } from 'react';
+import { createElement, forwardRef, useCallback, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';

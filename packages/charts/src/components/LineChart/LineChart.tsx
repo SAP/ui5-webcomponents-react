@@ -1,7 +1,7 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, useCallback, useRef } from 'react';
+import { forwardRef, useCallback, useRef } from 'react';
 import type { LineProps } from 'recharts';
 import {
   Brush,

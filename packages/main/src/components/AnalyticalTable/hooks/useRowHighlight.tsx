@@ -1,4 +1,3 @@
-import React from 'react';
 import { ValueState } from '../../../enums/index.js';
 import type { ReactTableHooks } from '../types/index.js';
 

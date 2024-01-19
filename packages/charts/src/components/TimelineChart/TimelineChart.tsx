@@ -1,7 +1,7 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
 import { throttle } from '@ui5/webcomponents-react-base';
-import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
+import type * as React from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody.js';
 import { TimelineChartPlaceholder } from './Placeholder.js';
 import { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels } from './TimelineChartHeaders.js';
@@ -35,7 +35,7 @@ interface TimelineChartProps extends CommonProps {
    * The total width of the chart. If not supplied, the chart's
    * width expands to fill its conatainer.
    */
-  width?: CSSProperties['width'];
+  width?: React.CSSProperties['width'];
 
   /**
    * The height the row of the timeline.
@@ -53,7 +53,7 @@ interface TimelineChartProps extends CommonProps {
    *
    * **Note:** Use the `TimelineChartAnnotation` component here.
    */
-  annotations?: ReactNode | ReactNode[];
+  annotations?: React.ReactNode | React.ReactNode[];
 
   /**
    * Toggles the visibility of the annotations applied to the chart.
@@ -149,7 +149,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const numOfRows = dataset?.length ?? 0;
     const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
 
-    const style: CSSProperties = {
+    const style: React.CSSProperties = {
       height: `${height}px`,
       width: width,
       gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`
