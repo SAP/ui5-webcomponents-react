@@ -854,7 +854,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>
       {footer && mode === ObjectPageMode.IconTabBar && (
-        <div className={classes.footerSpacer} data-component-name="ObjectPageFooterSpacer" />
+        <div className={classes.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
       {footer && (
         <footer className={classes.footer} data-component-name="ObjectPageFooter">
