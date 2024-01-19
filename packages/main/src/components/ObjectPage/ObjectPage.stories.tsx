@@ -432,8 +432,8 @@ export const FullScreenSingleSection: Story = {
         <ObjectPageSection titleText="Section 2" id="section2" style={{ height: '100%' }}>
           <div style={{ height: '100%', background: 'lightgreen' }} />
         </ObjectPageSection>
-        <ObjectPageSection titleText="Section 3" id="section3" style={{ height: '100%' }}>
-          <div style={{ height: '100%', background: 'lightyellow' }} />
+        <ObjectPageSection titleText="Section with Overflow" id="section3" style={{ height: '100%', overflow: 'auto' }}>
+          <div style={{ height: '300%', background: 'lightyellow' }} />
         </ObjectPageSection>
       </ObjectPage>
     );
