@@ -2,7 +2,7 @@ import type { Virtualizer } from '@tanstack/react-virtual';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type { ScrollToRefType } from '../interfaces.js';
 import type { AnalyticalTablePropTypes, DivWithCustomScrollProp, TriggerScrollState } from '../types/index.js';

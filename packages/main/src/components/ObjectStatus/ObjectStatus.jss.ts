@@ -46,6 +46,9 @@ const createInvertedIndicationStyles = (baseColor: string) => ({
 });
 
 const styles = {
+  normalizeCSS: {
+    all: 'unset'
+  },
   objectStatus: {
     fontFamily: ThemingParameters.sapFontFamily,
     fontSize: ThemingParameters.sapFontSize,

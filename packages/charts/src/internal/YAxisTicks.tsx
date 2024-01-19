@@ -1,5 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { defaultMaxYAxisWidth } from './defaults.js';
 import { getTextWidth, truncateLongLabel } from './Utils.js';

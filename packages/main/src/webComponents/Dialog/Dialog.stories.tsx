@@ -2,7 +2,7 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
 import { clsx } from 'clsx';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BarDesign } from '../../enums';
 import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
 import { Dialog } from './CodeGen';

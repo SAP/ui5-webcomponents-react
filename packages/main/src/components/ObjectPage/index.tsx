@@ -3,16 +3,7 @@
 import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import React, {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import type { CommonProps } from '../../interfaces/index.js';
@@ -270,8 +261,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (firstSectionId === sectionId) {
         objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(`#ObjectPageSection-${sectionId}`)
-          ?.offsetTop;
+        const childOffset = objectPageRef.current?.querySelector<HTMLElement>(
+          `#ObjectPageSection-${sectionId}`
+        )?.offsetTop;
         if (!isNaN(childOffset)) {
           const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
           if (topHeaderHeight) {

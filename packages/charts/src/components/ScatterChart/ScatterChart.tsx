@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { forwardRef, useCallback, useRef } from 'react';
+import { forwardRef, useCallback, useRef } from 'react';
 import type { ReferenceLineProps } from 'recharts';
 import {
   CartesianGrid,

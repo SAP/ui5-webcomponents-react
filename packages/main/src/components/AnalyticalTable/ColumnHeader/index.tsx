@@ -13,7 +13,7 @@ import type {
   MouseEventHandler,
   ReactNode
 } from 'react';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';
 import { Icon } from '../../../webComponents/Icon/index.js';

@@ -1,5 +1,4 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { makeRenderer } from 'react-table';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../../../enums/index.js';

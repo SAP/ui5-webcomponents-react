@@ -3,7 +3,7 @@
 import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, DependencyList, ReactElement } from 'react';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../interfaces/index.js';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
@@ -80,15 +80,12 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
     initialChildren.current = false;
   }, [children, options?.resetOnChildrenChange]);
 
-  useEffect(
-    () => {
-      if (!initialCustomDep.current) {
-        setReset(true);
-      }
-      initialCustomDep.current = false;
-    },
-    options?.resetOnCustomDepsChange ?? []
-  );
+  useEffect(() => {
+    if (!initialCustomDep.current) {
+      setReset(true);
+    }
+    initialCustomDep.current = false;
+  }, options?.resetOnCustomDepsChange ?? []);
 
   useEffect(() => {
     if (options?.resetOnSizeChange) {
