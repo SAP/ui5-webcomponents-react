@@ -11,8 +11,11 @@ export const ObjectPageCssVariables = {
 export const styles = {
   objectPage: {
     [DynamicPageCssVariables.headerDisplay]: 'block',
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
     container: 'objectPage / inline-size',
     boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     height: '100%',
     maxHeight: '100vh',
@@ -23,7 +26,6 @@ export const styles = {
     overflowX: 'hidden',
     overflowY: 'auto',
     scrollBehavior: 'smooth',
-    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },

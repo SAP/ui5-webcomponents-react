@@ -719,9 +719,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   );
 
   const objectPageStyles: CSSProperties = {
-    ...style,
-    display: 'flex',
-    flexDirection: 'column'
+    ...style
   };
   if (headerCollapsed === true && (headerContent || titleInHeader)) {
     objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
