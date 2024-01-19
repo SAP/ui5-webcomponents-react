@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import React from 'react';
 
 interface ComparisonLine {
   x?: number;

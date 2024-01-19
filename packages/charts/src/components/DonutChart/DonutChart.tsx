@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { PieChartProps } from '../PieChart/PieChart.js';
 import { PieChart } from '../PieChart/PieChart.js';
 

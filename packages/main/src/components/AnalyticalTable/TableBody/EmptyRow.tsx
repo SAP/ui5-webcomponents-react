@@ -1,6 +1,5 @@
 import type { VirtualItem } from '@tanstack/react-virtual';
 import type { ReactNode } from 'react';
-import React from 'react';
 
 export const EmptyRow = ({
   virtualRow,
