@@ -111,6 +111,7 @@ describe('ObjectPage', () => {
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+    document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
       const handlePinChange = (pinned) => {
@@ -128,7 +129,7 @@ describe('ObjectPage', () => {
             toggle {`${!pinned}`}
           </Button>
           <ObjectPage
-            style={{ height: '100vh' }}
+            style={{ height: '95vh' }}
             headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<DynamicPageHeader>ObjectPageHeader</DynamicPageHeader>}
             headerContentPinnable
