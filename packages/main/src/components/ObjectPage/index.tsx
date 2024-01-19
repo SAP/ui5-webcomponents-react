@@ -416,7 +416,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const lastSubSection = subSections[subSections.length - 1];
       const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
 
-      if (currentTabModeSection && !lastSubSection) {
+      if ((currentTabModeSection && !lastSubSection) || (sections.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
       } else {
         setSectionSpacer(
@@ -844,7 +844,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         {placeholder ? placeholder : sections}
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>
-      {footer && mode === ObjectPageMode.IconTabBar && (
+      {footer && mode === ObjectPageMode.IconTabBar && !sectionSpacer && (
         <div className={classes.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
       {footer && (
