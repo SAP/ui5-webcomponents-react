@@ -18,7 +18,10 @@ export class PropTypesRenderer extends AbstractRenderer {
     this._slots = slots
       .map((s) => {
         if (s.name === 'default') {
-          s.name = 'children';
+          return {
+            ...s,
+            name: 'children'
+          } as CEM.Slot;
         }
         return s;
       })
