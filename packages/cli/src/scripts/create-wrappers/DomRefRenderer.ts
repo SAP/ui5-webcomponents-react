@@ -138,7 +138,7 @@ export class DomRefRenderer extends AbstractRenderer {
   }
 
   prepare(context: WebComponentWrapper) {
-    context.addTypeImport('@ui5/webcomponents-react', 'Ui5DomRef');
+    context.addTypeImport(process.env.INTERFACES_IMPORT_PATH ?? '@ui5/webcomponents-react', 'Ui5DomRef');
     context.typeExportSet.add(`${context.componentName}DomRef`);
 
     for (const member of this._members) {

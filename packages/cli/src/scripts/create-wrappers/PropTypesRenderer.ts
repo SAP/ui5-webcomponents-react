@@ -114,18 +114,20 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   prepare(context: WebComponentWrapper) {
-    context.addTypeImport('@ui5/webcomponents-react', 'CommonProps');
+    const interfacesImportPath = process.env.INTERFACES_IMPORT_PATH ?? '@ui5/webcomponents-react';
+
+    context.addTypeImport(interfacesImportPath, 'CommonProps');
     context.typeExportSet.add(`${context.componentName}PropTypes`);
     if (this._slots.some((s) => s.name === 'children' || s.name === '')) {
       context.addTypeImport('react', 'ReactNode');
     }
     if (this._slots.some((s) => s.name !== 'children' && s.name !== '')) {
-      context.addTypeImport('@ui5/webcomponents-react', 'UI5WCSlotsNode');
+      context.addTypeImport(interfacesImportPath, 'UI5WCSlotsNode');
     }
     // @ts-expect-error: the UI5 CEM is not spec compliant here
     const customEvents = this._events.filter((event) => event.type === 'CustomEvent');
     if (customEvents.length > 0) {
-      context.addTypeImport('@ui5/webcomponents-react', 'Ui5CustomEvent');
+      context.addTypeImport(interfacesImportPath, 'Ui5CustomEvent');
     }
 
     for (const event of this._events) {
