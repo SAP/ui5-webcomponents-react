@@ -16,7 +16,7 @@ function mapWebComponentTypeToTsType(type: string) {
     return primitive;
   }
   switch (type) {
-    case 'sap.ui.webc.base.types.DOMReference':
+    case 'HTMLElement | string | undefined':
       // opener props only accept strings as prop types
       return 'string';
 

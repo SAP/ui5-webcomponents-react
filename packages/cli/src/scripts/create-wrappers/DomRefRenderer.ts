@@ -12,15 +12,6 @@ function mapWebComponentTypeToTsType(type: string = 'unknown') {
     return primitive;
   }
   switch (type) {
-    case 'sap.ui.webc.base.types.DOMReference':
-      // opener props only accept strings as prop types
-      return 'string | HTMLElement';
-    case 'HTMLElement[]':
-      return 'HTMLElement[]';
-    case 'Date':
-      return 'Date';
-    case 'FileList':
-      return 'FileList';
     case 'function':
       return 'Function';
     default:
@@ -118,7 +109,8 @@ export class DomRefRenderer extends AbstractRenderer {
       type = this.generateFieldType(member);
     }
 
-    return `/**\n${descriptionParts.join('\n')}\n */\n${member.name}: ${type};`;
+    // @ts-expect-error: readonly is added by UI5 CEM
+    return `/**\n${descriptionParts.join('\n')}\n */\n${member.readonly ? 'readonly ' : ''}${member.name}: ${type};`;
   }
 
   private getMembersToProcess(context: WebComponentWrapper) {
