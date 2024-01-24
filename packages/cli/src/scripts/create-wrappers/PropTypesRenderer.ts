@@ -15,7 +15,14 @@ export class PropTypesRenderer extends AbstractRenderer {
   private _events: CEM.Event[] = [];
 
   public setSlots(slots: CEM.Slot[]) {
-    this._slots = slots;
+    this._slots = slots
+      .map((s) => {
+        if (s.name === 'default') {
+          s.name = 'children';
+        }
+        return s;
+      })
+      .toSorted((a, b) => a.name.localeCompare(b.name));
     return this;
   }
 
@@ -27,7 +34,7 @@ export class PropTypesRenderer extends AbstractRenderer {
   private getSlots() {
     return this._slots
       .map((slot) => {
-        const isDefaultSlot = slot.name === 'default' || slot.name === '';
+        const isDefaultSlot = slot.name === 'children' || slot.name === '';
         const descriptionParts = [];
         descriptionParts.push(` * ${propDescriptionFormatter(slot.description ?? '')}`);
 
@@ -57,11 +64,9 @@ export class PropTypesRenderer extends AbstractRenderer {
           }
         }
 
-        const slotName = isDefaultSlot ? 'children' : slot.name;
-
         // todo: detect slots which allow multiple slots
-        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slotName)}?: ${
-          isDefaultSlot ? 'ReactNode' : 'UI5WCSlotsNode'
+        return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slot.name)}?: ${
+          isDefaultSlot ? 'ReactNode | ReactNode[]' : 'UI5WCSlotsNode | UI5WCSlotsNode[]'
         }`;
       })
       .join('\n\n');
@@ -111,10 +116,10 @@ export class PropTypesRenderer extends AbstractRenderer {
   prepare(context: WebComponentWrapper) {
     context.addTypeImport('@ui5/webcomponents-react', 'CommonProps');
     context.typeExportSet.add(`${context.componentName}PropTypes`);
-    if (this._slots.some((s) => s.name === 'default' || s.name === '')) {
-      context.addTypeImport('@ui5/webcomponents-react', 'ReactNode');
+    if (this._slots.some((s) => s.name === 'children' || s.name === '')) {
+      context.addTypeImport('react', 'ReactNode');
     }
-    if (this._slots.some((s) => s.name !== 'default' && s.name !== '')) {
+    if (this._slots.some((s) => s.name !== 'children' && s.name !== '')) {
       context.addTypeImport('@ui5/webcomponents-react', 'UI5WCSlotsNode');
     }
     // @ts-expect-error: the UI5 CEM is not spec compliant here

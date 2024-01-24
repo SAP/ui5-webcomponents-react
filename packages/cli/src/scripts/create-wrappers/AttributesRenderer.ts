@@ -35,7 +35,7 @@ export class AttributesRenderer extends AbstractRenderer {
   private _attributes: CEM.Attribute[] = [];
 
   setAttributes(value: CEM.Attribute[]) {
-    this._attributes = value;
+    this._attributes = value.toSorted((a, b) => a.name.localeCompare(b.name));
     return this;
   }
 

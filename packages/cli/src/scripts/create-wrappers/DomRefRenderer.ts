@@ -60,7 +60,7 @@ export class DomRefRenderer extends AbstractRenderer {
   private _members: CEM.ClassMember[] = [];
 
   public setMembers(members: CEM.ClassMember[]) {
-    this._members = members;
+    this._members = members.toSorted((a, b) => a.name.localeCompare(b.name));
     return this;
   }
 
