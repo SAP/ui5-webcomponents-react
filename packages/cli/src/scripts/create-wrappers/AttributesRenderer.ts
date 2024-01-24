@@ -54,11 +54,10 @@ export class AttributesRenderer extends AbstractRenderer {
     let type = attribute.type?.text ?? 'unknown';
     type = mapWebComponentTypeToTsType(type);
 
-    const enumRegex = /sap\.ui\.webc\.(base|main|fiori)\.types\./;
-    const isEnum = enumRegex.test(type);
+    const references = attribute.type?.references;
+    const isEnum = references != null && references?.length > 0;
 
     if (isEnum) {
-      type = type.replace(enumRegex, '');
       type += ` | keyof typeof ${type}`;
     }
 
@@ -69,17 +68,10 @@ export class AttributesRenderer extends AbstractRenderer {
 
   prepare(context: WebComponentWrapper) {
     for (const attribute of this._attributes) {
-      switch (true) {
-        case attribute.type?.text.startsWith('sap.ui.webc.main.types.'): {
-          const name = attribute.type?.text.replace('sap.ui.webc.main.types.', '')!;
-          context.addDefaultTypeImport(`@ui5/webcomponents/dist/types/${name}.js`, name);
-          break;
-        }
-        case attribute.type?.text.startsWith('sap.ui.webc.base.types.'): {
-          const name = attribute.type?.text.replace('sap.ui.webc.base.types.', '')!;
-          context.addDefaultTypeImport(`@ui5/webcomponents-base/dist/types/${name}.js`, name);
-          break;
-        }
+      const references = attribute.type?.references;
+      if (references && references?.length > 0) {
+        const [reference] = references;
+        context.addDefaultTypeImport(`${reference.package}/${reference.module}`, reference.name);
       }
     }
   }

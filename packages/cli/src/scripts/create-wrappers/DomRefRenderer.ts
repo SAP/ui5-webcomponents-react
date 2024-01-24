@@ -32,23 +32,26 @@ function mapWebComponentTypeToTsType(type: string = 'unknown') {
   }
 }
 
-function resolveDomRefType(type: string = 'unknown') {
-  type = mapWebComponentTypeToTsType(type);
+function resolveDomRefType(type: CEM.Type | undefined) {
+  if (!type) {
+    return 'unknown';
+  }
 
-  const enumRegex = /sap\.ui\.webc\.(base|main|fiori)\.types\./;
-  const isEnum = enumRegex.test(type);
+  let resolvedType = mapWebComponentTypeToTsType(type.text);
+
+  const references = type?.references;
+  const isEnum = references != null && references?.length > 0;
 
   if (isEnum) {
-    type = type.replace(enumRegex, '');
-    const isArray = type.includes('[]');
-    type = type.replace('[]', '');
-    type += ` | keyof typeof ${type}`;
+    const isArray = resolvedType.includes('[]');
+    resolvedType = resolvedType.replace('[]', '');
+    resolvedType += ` | keyof typeof ${resolvedType}`;
     if (isArray) {
-      type = `(${type})[]`;
+      resolvedType = `(${resolvedType})[]`;
     }
   }
 
-  return type;
+  return resolvedType;
 }
 
 export class DomRefRenderer extends AbstractRenderer {
@@ -62,13 +65,13 @@ export class DomRefRenderer extends AbstractRenderer {
   }
 
   private generateFieldType(member: CEM.ClassField) {
-    return resolveDomRefType(member.type?.text);
+    return resolveDomRefType(member.type);
   }
 
   private generateMethodType(member: CEM.ClassMethod) {
     const parameters =
       member.parameters?.map((param) => {
-        return `${param.name}${param.optional ? '?' : ''}: ${resolveDomRefType(param.type?.text)}`;
+        return `${param.name}${param.optional ? '?' : ''}: ${resolveDomRefType(param.type)}`;
       }) ?? [];
     return `(${parameters.join(', ')}) => ${member.return?.type?.text ?? 'void'}`;
   }
@@ -81,14 +84,12 @@ export class DomRefRenderer extends AbstractRenderer {
         name = `[${name}]`;
       }
       parts.push(
-        ` * @param {${resolveDomRefType(param.type?.text)}} ${name} - ${propDescriptionFormatter(
-          param.description ?? ''
-        )}`
+        ` * @param {${resolveDomRefType(param.type)}} ${name} - ${propDescriptionFormatter(param.description ?? '')}`
       );
     });
     if (member.return) {
       parts.push(
-        ` * @returns {${resolveDomRefType(member.return.type?.text)} - ${propDescriptionFormatter(
+        ` * @returns {${resolveDomRefType(member.return.type)} - ${propDescriptionFormatter(
           member.return.description ?? ''
         )}`
       );
@@ -132,7 +133,7 @@ export class DomRefRenderer extends AbstractRenderer {
       }
       const existingType = context.attributesMap.get(member.name)!;
       // the types don't match, e.g. for `opener` attributes
-      return existingType !== resolveDomRefType(member.type?.text);
+      return existingType !== resolveDomRefType(member.type);
     });
   }
 
@@ -142,17 +143,10 @@ export class DomRefRenderer extends AbstractRenderer {
 
     for (const member of this._members) {
       if (member.kind === 'field') {
-        switch (true) {
-          case member.type?.text.startsWith('sap.ui.webc.main.types.'): {
-            const name = member.type?.text.replace('sap.ui.webc.main.types.', '')?.replace('[]', '')!;
-            context.addDefaultTypeImport(`@ui5/webcomponents/dist/types/${name}.js`, name);
-            break;
-          }
-          case member.type?.text.startsWith('sap.ui.webc.base.types.'): {
-            const name = member.type?.text.replace('sap.ui.webc.base.types.', '')?.replace('[]', '')!;
-            context.addDefaultTypeImport(`@ui5/webcomponents-base/dist/types/${name}.js`, name);
-            break;
-          }
+        const references = member.type?.references;
+        if (references && references?.length > 0) {
+          const [reference] = references;
+          context.addDefaultTypeImport(`${reference.package}/${reference.module}`, reference.name);
         }
       }
     }

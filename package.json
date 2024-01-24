@@ -24,7 +24,7 @@
     "lint": "eslint packages --ext .ts,.tsx",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
-    "create-webcomponents-wrapper-v2": "node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents",
+    "create-webcomponents-wrapper-v2": "WITH_WEB_COMPONENT_IMPORT_PATH='../../internal/withWebComponent.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents && prettier --write ./packages/main/src/webComponents",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"

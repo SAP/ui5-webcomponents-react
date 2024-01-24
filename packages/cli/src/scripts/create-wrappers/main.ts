@@ -35,9 +35,9 @@ export default async function createWrappers(packageName: string, outDir: string
 
   for (const module of customElementManifest.modules) {
     const declaration = module.declarations?.at(0) as CEM.CustomElementDeclaration;
-    const webComponentImport = `${packageName}/dist/${module.path}`;
+    const webComponentImport = `${packageName}/${module.path}`;
 
-    if (!declaration.tagName) {
+    if (!declaration?.tagName) {
       continue;
     }
 
@@ -46,7 +46,7 @@ export default async function createWrappers(packageName: string, outDir: string
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());
-    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.attributes ?? []));
+    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.members ?? []));
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
     wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
