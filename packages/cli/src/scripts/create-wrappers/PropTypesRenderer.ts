@@ -89,11 +89,9 @@ export class PropTypesRenderer extends AbstractRenderer {
 
         const domRef = `${context.componentName}DomRef`;
         let eventType = '(event: unknown) => void;';
-        // @ts-expect-error: the UI5 CEM is not spec compliant here
-        if (event.type === 'CustomEvent') {
+        if (event.type.text === 'CustomEvent') {
           eventType = `(event: Ui5CustomEvent<${domRef}, ${resolveEventDetailName(context, event.name)}>) => void;`;
-          // @ts-expect-error: the UI5 CEM is not spec compliant here
-        } else if (event.type === 'NativeEvent') {
+        } else if (event.type.text === 'Event') {
           switch (event.name) {
             case 'click':
               eventType = `MouseEventHandler<${domRef}>`;
@@ -124,18 +122,15 @@ export class PropTypesRenderer extends AbstractRenderer {
     if (this._slots.some((s) => s.name !== 'children' && s.name !== '')) {
       context.addTypeImport(interfacesImportPath, 'UI5WCSlotsNode');
     }
-    // @ts-expect-error: the UI5 CEM is not spec compliant here
-    const customEvents = this._events.filter((event) => event.type === 'CustomEvent');
+    const customEvents = this._events.filter((event) => event.type.text === 'CustomEvent');
     if (customEvents.length > 0) {
       context.addTypeImport(interfacesImportPath, 'Ui5CustomEvent');
     }
 
     for (const event of this._events) {
-      // @ts-expect-error: the UI5 CEM is not spec compliant here
-      if (event.type === 'CustomEvent') {
+      if (event.type.text === 'CustomEvent') {
         context.addTypeImport(context.modulePath, resolveEventDetailName(context, event.name));
-        // @ts-expect-error: the UI5 CEM is not spec compliant here
-      } else if (event.type === 'NativeEvent') {
+      } else if (event.type.text === 'Event') {
         switch (event.name) {
           case 'click':
             context.addTypeImport('react', 'MouseEventHandler');

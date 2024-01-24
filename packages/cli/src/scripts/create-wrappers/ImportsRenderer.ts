@@ -17,7 +17,7 @@ export class ImportsRenderer extends AbstractRenderer {
       .map(([mod]) => mod)
       .sort((a, b) => a.localeCompare(b));
     const sortedModules = [...context.importMap.keys()]
-      .filter((mod) => !unassignedImports.includes(mod))
+      // .filter((mod) => !unassignedImports.includes(mod))
       .sort((a, b) => a.localeCompare(b));
 
     return dedent`
