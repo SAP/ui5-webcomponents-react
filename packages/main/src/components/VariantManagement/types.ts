@@ -1,3 +1,5 @@
+// TODO resolve eslint error
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import type { ReactNode } from 'react';
