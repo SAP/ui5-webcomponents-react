@@ -23,7 +23,7 @@ import {
   EMPTY_VALUE,
   INDICATION_COLOR
 } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import styles from './ObjectStatus.jss.js';
 

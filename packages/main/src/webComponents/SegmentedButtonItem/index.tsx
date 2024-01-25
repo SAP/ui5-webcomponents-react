@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import type { ReactNode, MouseEventHandler } from 'react';
 import type { ButtonType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SegmentedButtonItemAttributes {
   /**

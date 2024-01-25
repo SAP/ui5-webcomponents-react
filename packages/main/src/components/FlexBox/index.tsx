@@ -5,7 +5,7 @@ import type { ElementType, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 import { styles } from './FlexBox.jss.js';
 
 const useStyles = createUseStyles(styles, { name: 'FlexBox' });

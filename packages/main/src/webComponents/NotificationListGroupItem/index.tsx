@@ -4,9 +4,8 @@ import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import type { NotificationListGroupItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import type { ReactNode } from 'react';
 import { Priority } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListGroupItemAttributes {
   /**

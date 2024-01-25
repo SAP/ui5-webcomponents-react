@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/Label.js';
 import type { ReactNode } from 'react';
 import type { WrappingType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface LabelAttributes {
   /**

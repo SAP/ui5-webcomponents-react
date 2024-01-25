@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/TableRow.js';
 import type { ReactNode } from 'react';
 import { TableRowType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableRowAttributes {
   /**

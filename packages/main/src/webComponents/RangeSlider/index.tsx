@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/RangeSlider.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface RangeSliderAttributes {
   /**

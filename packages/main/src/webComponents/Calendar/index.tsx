@@ -5,8 +5,8 @@ import type { CalendarSelectedDatesChangeEventDetail } from '@ui5/webcomponents/
 import type { ReactNode } from 'react';
 import type { CalendarType } from '../../enums/index.js';
 import { CalendarSelectionMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface CalendarAttributes {
   /**

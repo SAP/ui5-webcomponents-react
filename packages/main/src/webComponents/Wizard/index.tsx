@@ -4,8 +4,8 @@ import '@ui5/webcomponents-fiori/dist/Wizard.js';
 import type { WizardStepChangeEventDetail } from '@ui5/webcomponents-fiori/dist/Wizard.js';
 import type { ReactNode } from 'react';
 import { WizardContentLayout } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface WizardAttributes {
   /**

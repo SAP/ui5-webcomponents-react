@@ -6,7 +6,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { EMPTY_VALUE } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 import { TextStyles } from './Text.jss.js';
 
 export interface TextPropTypes extends CommonProps {

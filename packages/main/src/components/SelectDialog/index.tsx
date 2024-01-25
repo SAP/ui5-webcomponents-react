@@ -15,7 +15,7 @@ import { forwardRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
+import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonDomRef,
   DialogDomRef,

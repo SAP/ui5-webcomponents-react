@@ -6,8 +6,8 @@ import type { CSSProperties, ReactNode } from 'react';
 import { forwardRef, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import { GridPosition } from '../../enums/index.js';
-import type { CommonProps } from '../../interfaces/index.js';
 import { flattenFragments } from '../../internal/utils.js';
+import type { CommonProps } from '../../types/index.js';
 import { styles } from './Grid.jss.js';
 
 export interface GridPropTypes extends CommonProps {

@@ -153,7 +153,7 @@ const getEventParameters = (moduleName, eventSpec) => {
 
   const eventName = `${moduleName}${Utils.capitalizeFirstLetter(Utils.snakeToCamel(eventSpec.name))}EventDetail`;
 
-  const importStatements = [`import type { Ui5CustomEvent } from '../../interfaces/index.js';`];
+  const importStatements = [`import type { Ui5CustomEvent } from '../../types/index.js';`];
 
   if ((eventSpec.parameters ?? []).length === 0) {
     return {

@@ -7,8 +7,8 @@ import type {
   MenuItemClickEventDetail
 } from '@ui5/webcomponents/dist/Menu.js';
 import type { ReactNode } from 'react';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface MenuAttributes {
   /**
