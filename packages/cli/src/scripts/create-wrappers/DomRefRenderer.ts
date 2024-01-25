@@ -1,4 +1,4 @@
-import type * as CEM from 'custom-elements-manifest';
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
 import { mapWebComponentTypeToPrimitive, propDescriptionFormatter } from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
@@ -45,12 +45,14 @@ function resolveDomRefType(type: CEM.Type | undefined) {
   return resolvedType;
 }
 
+type UI5ClassMember = CEM.ClassField | CEM.ClassMethod;
+
 export class DomRefRenderer extends AbstractRenderer {
   public phase = RenderingPhase.domRef;
 
-  private _members: CEM.ClassMember[] = [];
+  private _members: UI5ClassMember[] = [];
 
-  public setMembers(members: CEM.ClassMember[]) {
+  public setMembers(members: UI5ClassMember[]) {
     this._members = members.toSorted((a, b) => a.name.localeCompare(b.name));
     return this;
   }
@@ -88,7 +90,7 @@ export class DomRefRenderer extends AbstractRenderer {
     return parts;
   }
 
-  private memberTyping(member: CEM.ClassMember, context: WebComponentWrapper) {
+  private memberTyping(member: UI5ClassMember, context: WebComponentWrapper) {
     const descriptionParts = [];
 
     descriptionParts.push(` * ${propDescriptionFormatter(member.description ?? '')}`);
@@ -102,15 +104,18 @@ export class DomRefRenderer extends AbstractRenderer {
     }
 
     let type: string;
+    let readonlyModifier = '';
     if (member.kind === 'method') {
       descriptionParts.push(...this.generateMethodJsDoc(member));
       type = this.generateMethodType(member);
     } else {
       type = this.generateFieldType(member);
+      if (member.readonly) {
+        readonlyModifier = 'readonly ';
+      }
     }
 
-    // @ts-expect-error: readonly is added by UI5 CEM
-    return `/**\n${descriptionParts.join('\n')}\n */\n${member.readonly ? 'readonly ' : ''}${member.name}: ${type};`;
+    return `/**\n${descriptionParts.join('\n')}\n */\n${readonlyModifier}${member.name}: ${type};`;
   }
 
   private getMembersToProcess(context: WebComponentWrapper) {

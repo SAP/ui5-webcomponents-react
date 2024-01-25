@@ -1,4 +1,4 @@
-import type * as CEM from 'custom-elements-manifest';
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
@@ -46,7 +46,11 @@ export default async function createWrappers(packageName: string, outDir: string
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());
-    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.members ?? []));
+    wrapper.addRenderer(
+      new AttributesRenderer().setAttributes(
+        declaration.members?.filter((member) => member.kind === 'field' && !member.readonly) ?? []
+      )
+    );
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
     wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(

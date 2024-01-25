@@ -1,4 +1,4 @@
-import type * as CEM from 'custom-elements-manifest';
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
 import {
   mapWebComponentTypeToPrimitive,
