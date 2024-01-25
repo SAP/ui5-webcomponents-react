@@ -25,7 +25,7 @@
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
-    "postinstall": "husky install && yarn prepare",
+    "postinstall": "husky && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"
   },
   "dependencies": {
@@ -75,7 +75,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "handlebars": "^4.7.7",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "identity-obj-proxy": "^3.0.0",
     "lerna": "^8.0.0",
     "lint-staged": "^15.0.0",
