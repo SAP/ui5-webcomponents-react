@@ -210,11 +210,18 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           updatedHeight += subComponentsHeight?.[virtualRow.index]?.subComponentHeight ?? 0;
         }
 
+        const measureRef =
+          isTreeTable && renderRowSubComponent && (row.isExpanded || alwaysShowSubComponent)
+            ? (node) => {
+                rowVirtualizer.measureElement(node);
+              }
+            : rowVirtualizer.measureElement;
+
         return (
           // eslint-disable-next-line react/jsx-key
           <div
             {...rowProps}
-            ref={rowVirtualizer.measureElement}
+            ref={measureRef}
             style={{
               ...(rowProps.style ?? {}),
               transform: `translateY(${virtualRow.start}px)`,

@@ -561,6 +561,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the subcomponent that should be displayed below each row.
    *
    * __Note:__ When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
+   *
+   * __Note:__ Subcomponents can affect performance, especially when used in a tree table (`isTreeTable={true}`). If you face performance issues, please try memoizing your subcomponent.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
   /**
