@@ -13,7 +13,7 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 
 const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
 
-function filterAttributes(member: CEM.ClassField | CEM.ClassMethod) {
+function filterAttributes(member: CEM.ClassField | CEM.ClassMethod): member is CEM.ClassField {
   return member.kind === 'field' && !member.readonly;
 }
 
@@ -50,15 +50,13 @@ export default async function createWrappers(packageName: string, outDir: string
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());
-    wrapper.addRenderer(
-      new AttributesRenderer().setAttributes(declaration.members?.filter((member) => filterAttributes(member)) ?? [])
-    );
+    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.members?.filter(filterAttributes) ?? []));
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
     wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
       new ComponentRenderer()
         .setDescription(declaration.description ?? '')
-        .setAttributes(declaration.members?.filter((member) => filterAttributes(member)) ?? [])
+        .setAttributes(declaration.members?.filter(filterAttributes) ?? [])
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])
         .setDynamicImportPath(webComponentImport)

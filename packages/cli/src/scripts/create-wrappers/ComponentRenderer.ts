@@ -8,7 +8,7 @@ export class ComponentRenderer extends AbstractRenderer {
   public phase = RenderingPhase.component;
 
   private dynamicImportPath: string | undefined;
-  private attributes: CEM.Attribute[] = [];
+  private attributes: CEM.ClassField[] = [];
   private slots: CEM.Slot[] = [];
   private events: CEM.Event[] = [];
   private description: string = '';
@@ -18,7 +18,7 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
-  setAttributes(attrs: CEM.Attribute[]) {
+  setAttributes(attrs: CEM.ClassField[]) {
     this.attributes.push(...attrs);
     return this;
   }
