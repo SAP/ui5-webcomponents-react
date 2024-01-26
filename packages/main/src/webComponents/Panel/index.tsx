@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Panel.js';
 import type { ReactNode } from 'react';
 import { PanelAccessibleRole, TitleLevel } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface PanelAttributes {
   /**
@@ -45,9 +45,9 @@ interface PanelAttributes {
   stickyHeader?: boolean;
 }
 
-export interface PanelDomRef extends PanelAttributes, Ui5DomRef {}
+interface PanelDomRef extends PanelAttributes, Ui5DomRef {}
 
-export interface PanelPropTypes extends PanelAttributes, CommonProps {
+interface PanelPropTypes extends PanelAttributes, Omit<CommonProps, keyof PanelAttributes> {
   /**
    * Defines the content of the component. The content is visible only when the component is expanded.
    */
@@ -94,3 +94,4 @@ Panel.defaultProps = {
 };
 
 export { Panel };
+export type { PanelDomRef, PanelPropTypes };

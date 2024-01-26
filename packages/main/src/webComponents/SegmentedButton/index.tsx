@@ -5,7 +5,7 @@ import type { SegmentedButtonSelectionChangeEventDetail } from '@ui5/webcomponen
 import type { ReactNode } from 'react';
 import { SegmentedButtonMode } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SegmentedButtonAttributes {
   /**
@@ -23,7 +23,7 @@ interface SegmentedButtonAttributes {
   mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
 }
 
-export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
+interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
   /**
    * Currently selected item.
    *
@@ -36,7 +36,9 @@ export interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5Dom
   readonly selectedItems: ReactNode | ReactNode[];
 }
 
-export interface SegmentedButtonPropTypes extends SegmentedButtonAttributes, CommonProps {
+interface SegmentedButtonPropTypes
+  extends SegmentedButtonAttributes,
+    Omit<CommonProps, keyof SegmentedButtonAttributes> {
   /**
    * Defines the items of `SegmentedButton`.
    *
@@ -76,3 +78,4 @@ SegmentedButton.defaultProps = {
 };
 
 export { SegmentedButton };
+export type { SegmentedButtonDomRef, SegmentedButtonPropTypes };

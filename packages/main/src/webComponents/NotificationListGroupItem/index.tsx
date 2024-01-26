@@ -5,7 +5,7 @@ import type { NotificationListGroupItemCloseEventDetail } from '@ui5/webcomponen
 import type { ReactNode } from 'react';
 import { Priority } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListGroupItemAttributes {
   /**
@@ -48,9 +48,11 @@ interface NotificationListGroupItemAttributes {
   selected?: boolean;
 }
 
-export interface NotificationListGroupItemDomRef extends NotificationListGroupItemAttributes, Ui5DomRef {}
+interface NotificationListGroupItemDomRef extends NotificationListGroupItemAttributes, Ui5DomRef {}
 
-export interface NotificationListGroupItemPropTypes extends NotificationListGroupItemAttributes, CommonProps {
+interface NotificationListGroupItemPropTypes
+  extends NotificationListGroupItemAttributes,
+    Omit<CommonProps, keyof NotificationListGroupItemAttributes> {
   /**
    * Defines the items of the `NotificationListGroupItem`, usually `NotificationListItem` items.
    */
@@ -94,9 +96,9 @@ export interface NotificationListGroupItemPropTypes extends NotificationListGrou
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
   ['busyDelay', 'priority', 'titleText'],
-  ['collapsed', 'showCounter', 'busy', 'read', 'showClose', 'selected'],
+  ['busy', 'collapsed', 'read', 'selected', 'showClose', 'showCounter'],
   ['actions'],
-  ['toggle', 'close'],
+  ['close', 'toggle'],
   () => import('@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js')
 );
 
@@ -108,3 +110,4 @@ NotificationListGroupItem.defaultProps = {
 };
 
 export { NotificationListGroupItem };
+export type { NotificationListGroupItemDomRef, NotificationListGroupItemPropTypes };

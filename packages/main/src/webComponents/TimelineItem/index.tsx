@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface TimelineItemAttributes {
   /**
@@ -30,9 +30,9 @@ interface TimelineItemAttributes {
   titleText?: string;
 }
 
-export interface TimelineItemDomRef extends TimelineItemAttributes, Ui5DomRef {}
+interface TimelineItemDomRef extends TimelineItemAttributes, Ui5DomRef {}
 
-export interface TimelineItemPropTypes extends TimelineItemAttributes, CommonProps {
+interface TimelineItemPropTypes extends TimelineItemAttributes, Omit<CommonProps, keyof TimelineItemAttributes> {
   /**
    * Determines the description of the `TimelineItem`.
    */
@@ -64,3 +64,4 @@ const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>
 TimelineItem.displayName = 'TimelineItem';
 
 export { TimelineItem };
+export type { TimelineItemDomRef, TimelineItemPropTypes };

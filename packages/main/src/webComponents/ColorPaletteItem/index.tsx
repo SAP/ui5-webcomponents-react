@@ -14,9 +14,11 @@ interface ColorPaletteItemAttributes {
   value?: CSSProperties['color'];
 }
 
-export interface ColorPaletteItemDomRef extends ColorPaletteItemAttributes, Ui5DomRef {}
+interface ColorPaletteItemDomRef extends ColorPaletteItemAttributes, Ui5DomRef {}
 
-export interface ColorPaletteItemPropTypes extends ColorPaletteItemAttributes, CommonProps {}
+interface ColorPaletteItemPropTypes
+  extends ColorPaletteItemAttributes,
+    Omit<CommonProps, keyof ColorPaletteItemAttributes> {}
 
 /**
  * The `ColorPaletteItem` component represents a color in the the `ColorPalette`
@@ -39,3 +41,4 @@ const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPalett
 ColorPaletteItem.displayName = 'ColorPaletteItem';
 
 export { ColorPaletteItem };
+export type { ColorPaletteItemDomRef, ColorPaletteItemPropTypes };

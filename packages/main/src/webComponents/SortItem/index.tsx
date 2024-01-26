@@ -15,9 +15,9 @@ interface SortItemAttributes {
   text?: string;
 }
 
-export interface SortItemDomRef extends SortItemAttributes, Ui5DomRef {}
+interface SortItemDomRef extends SortItemAttributes, Ui5DomRef {}
 
-export interface SortItemPropTypes extends SortItemAttributes, CommonProps {}
+interface SortItemPropTypes extends SortItemAttributes, Omit<CommonProps, keyof SortItemAttributes> {}
 
 /**
  *
@@ -40,3 +40,4 @@ const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>(
 SortItem.displayName = 'SortItem';
 
 export { SortItem };
+export type { SortItemDomRef, SortItemPropTypes };

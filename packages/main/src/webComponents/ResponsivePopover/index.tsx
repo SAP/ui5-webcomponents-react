@@ -10,7 +10,7 @@ import {
   PopupAccessibleRole
 } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ResponsivePopoverAttributes {
   /**
@@ -77,7 +77,7 @@ interface ResponsivePopoverAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttributes, 'opener'>, Ui5DomRef {
+interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttributes, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at
    */
@@ -105,7 +105,9 @@ export interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttribute
   applyFocus: () => Promise<void>;
 }
 
-export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes, CommonProps {
+interface ResponsivePopoverPropTypes
+  extends ResponsivePopoverAttributes,
+    Omit<CommonProps, keyof ResponsivePopoverAttributes> {
   /**
    * Defines the footer HTML Element.
    *
@@ -158,15 +160,15 @@ export interface ResponsivePopoverPropTypes extends ResponsivePopoverAttributes,
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
   [
-    'headerText',
-    'horizontalAlign',
-    'opener',
-    'placementType',
-    'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
-    'initialFocus'
+    'headerText',
+    'horizontalAlign',
+    'initialFocus',
+    'opener',
+    'placementType',
+    'verticalAlign'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
@@ -184,3 +186,4 @@ ResponsivePopover.defaultProps = {
 };
 
 export { ResponsivePopover };
+export type { ResponsivePopoverDomRef, ResponsivePopoverPropTypes };

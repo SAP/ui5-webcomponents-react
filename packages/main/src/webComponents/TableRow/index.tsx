@@ -30,9 +30,9 @@ interface TableRowAttributes {
   type?: TableRowType | keyof typeof TableRowType;
 }
 
-export interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
+interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
 
-export interface TableRowPropTypes extends TableRowAttributes, CommonProps {
+interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof TableRowAttributes> {
   /**
    * Defines the cells of the component.
    *
@@ -64,3 +64,4 @@ TableRow.defaultProps = {
 };
 
 export { TableRow };
+export type { TableRowDomRef, TableRowPropTypes };

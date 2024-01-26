@@ -26,9 +26,11 @@ interface MediaGalleryItemAttributes {
   selected?: boolean;
 }
 
-export interface MediaGalleryItemDomRef extends MediaGalleryItemAttributes, Ui5DomRef {}
+interface MediaGalleryItemDomRef extends MediaGalleryItemAttributes, Ui5DomRef {}
 
-export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, CommonProps {
+interface MediaGalleryItemPropTypes
+  extends MediaGalleryItemAttributes,
+    Omit<CommonProps, keyof MediaGalleryItemAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -70,3 +72,4 @@ MediaGalleryItem.defaultProps = {
 };
 
 export { MediaGalleryItem };
+export type { MediaGalleryItemDomRef, MediaGalleryItemPropTypes };

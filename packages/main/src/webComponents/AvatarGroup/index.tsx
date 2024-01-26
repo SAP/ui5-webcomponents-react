@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import type { AvatarColorScheme } from '../../enums/index.js';
 import { AvatarGroupType } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarGroupAttributes {
   /**
@@ -15,7 +15,7 @@ interface AvatarGroupAttributes {
   type?: AvatarGroupType | keyof typeof AvatarGroupType;
 }
 
-export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
+interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
   /**
    * Returns an array containing the `AvatarColorScheme` values that correspond to the avatars in the component.
    */
@@ -26,7 +26,9 @@ export interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
   readonly hiddenItems: ReactNode | ReactNode[];
 }
 
-export interface AvatarGroupPropTypes extends AvatarGroupAttributes, Omit<CommonProps, 'onClick'> {
+interface AvatarGroupPropTypes
+  extends AvatarGroupAttributes,
+    Omit<CommonProps, keyof AvatarGroupAttributes | 'onClick'> {
   /**
    * Defines the items of the component. Use the `Avatar` component as an item.
    *
@@ -81,3 +83,4 @@ AvatarGroup.defaultProps = {
 };
 
 export { AvatarGroup };
+export type { AvatarGroupDomRef, AvatarGroupPropTypes };

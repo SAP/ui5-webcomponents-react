@@ -44,9 +44,9 @@ interface MenuItemAttributes {
   text?: string;
 }
 
-export interface MenuItemDomRef extends MenuItemAttributes, Ui5DomRef {}
+interface MenuItemDomRef extends MenuItemAttributes, Ui5DomRef {}
 
-export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
+interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof MenuItemAttributes> {
   /**
    * Defines the items of this component.
    */
@@ -78,3 +78,4 @@ MenuItem.defaultProps = {
 };
 
 export { MenuItem };
+export type { MenuItemDomRef, MenuItemPropTypes };

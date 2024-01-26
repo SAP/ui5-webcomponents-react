@@ -2,9 +2,9 @@
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import type { ReactNode } from 'react';
-import { UploadState, ListItemType } from '../../enums/index.js';
+import { ListItemType, UploadState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode, Nullable } from '../../types/index.js';
+import type { CommonProps, Nullable, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface UploadCollectionItemAttributes {
   /**
@@ -61,7 +61,7 @@ interface UploadCollectionItemAttributes {
   selected?: boolean;
 }
 
-export interface UploadCollectionItemDomRef extends UploadCollectionItemAttributes, Ui5DomRef {
+interface UploadCollectionItemDomRef extends UploadCollectionItemAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -71,7 +71,9 @@ export interface UploadCollectionItemDomRef extends UploadCollectionItemAttribut
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttributes, CommonProps {
+interface UploadCollectionItemPropTypes
+  extends UploadCollectionItemAttributes,
+    Omit<CommonProps, keyof UploadCollectionItemAttributes> {
   /**
    * Hold the description of the `UploadCollectionItem`. Will be shown below the file name.
    */
@@ -137,7 +139,7 @@ export interface UploadCollectionItemPropTypes extends UploadCollectionItemAttri
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',
-  ['file', 'fileName', 'progress', 'uploadState', 'type'],
+  ['file', 'fileName', 'progress', 'type', 'uploadState'],
   [
     'disableDeleteButton',
     'fileNameClickable',
@@ -147,8 +149,8 @@ const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, Upl
     'navigated',
     'selected'
   ],
-  ['thumbnail', 'deleteButton'],
-  ['file-name-click', 'rename', 'retry', 'terminate', 'detail-click'],
+  ['deleteButton', 'thumbnail'],
+  ['detail-click', 'file-name-click', 'rename', 'retry', 'terminate'],
   () => import('@ui5/webcomponents-fiori/dist/UploadCollectionItem.js')
 );
 
@@ -162,3 +164,4 @@ UploadCollectionItem.defaultProps = {
 };
 
 export { UploadCollectionItem };
+export type { UploadCollectionItemDomRef, UploadCollectionItemPropTypes };

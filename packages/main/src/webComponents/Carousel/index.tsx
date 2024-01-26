@@ -4,13 +4,13 @@ import '@ui5/webcomponents/dist/Carousel.js';
 import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carousel.js';
 import type { ReactNode } from 'react';
 import {
-  CarouselArrowsPlacement,
   BackgroundDesign,
   BorderDesign,
+  CarouselArrowsPlacement,
   CarouselPageIndicatorStyle
 } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface CarouselAttributes {
   /**
@@ -69,7 +69,7 @@ interface CarouselAttributes {
   pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
 }
 
-export interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
+interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
   /**
    * Changes the currently displayed page.
    * @param {number} itemIndex - The index of the target page
@@ -77,7 +77,7 @@ export interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
   navigateTo: (itemIndex: number) => void;
 }
 
-export interface CarouselPropTypes extends CarouselAttributes, CommonProps {
+interface CarouselPropTypes extends CarouselAttributes, Omit<CommonProps, keyof CarouselAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -131,3 +131,4 @@ Carousel.defaultProps = {
 };
 
 export { Carousel };
+export type { CarouselDomRef, CarouselPropTypes };

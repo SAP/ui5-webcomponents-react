@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/RatingIndicator.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface RatingIndicatorAttributes {
   /**
@@ -49,9 +49,11 @@ interface RatingIndicatorAttributes {
   value?: number;
 }
 
-export interface RatingIndicatorDomRef extends RatingIndicatorAttributes, Ui5DomRef {}
+interface RatingIndicatorDomRef extends RatingIndicatorAttributes, Ui5DomRef {}
 
-export interface RatingIndicatorPropTypes extends RatingIndicatorAttributes, Omit<CommonProps, 'onChange'> {
+interface RatingIndicatorPropTypes
+  extends RatingIndicatorAttributes,
+    Omit<CommonProps, keyof RatingIndicatorAttributes | 'onChange'> {
   /**
    * The event is fired when the value changes.
    */
@@ -82,3 +84,4 @@ RatingIndicator.defaultProps = {
 };
 
 export { RatingIndicator };
+export type { RatingIndicatorDomRef, RatingIndicatorPropTypes };

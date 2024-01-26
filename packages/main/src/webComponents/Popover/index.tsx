@@ -10,7 +10,7 @@ import {
   PopupAccessibleRole
 } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface PopoverAttributes {
   /**
@@ -77,7 +77,7 @@ interface PopoverAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5DomRef {
+interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at
    */
@@ -105,7 +105,7 @@ export interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5Dom
   isOpen: () => boolean;
 }
 
-export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
+interface PopoverPropTypes extends PopoverAttributes, Omit<CommonProps, keyof PopoverAttributes> {
   /**
    * Defines the footer HTML Element.
    *
@@ -158,15 +158,15 @@ export interface PopoverPropTypes extends PopoverAttributes, CommonProps {
 const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
   'ui5-popover',
   [
-    'headerText',
-    'horizontalAlign',
-    'opener',
-    'placementType',
-    'verticalAlign',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
-    'initialFocus'
+    'headerText',
+    'horizontalAlign',
+    'initialFocus',
+    'opener',
+    'placementType',
+    'verticalAlign'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
   ['footer', 'header'],
@@ -184,3 +184,4 @@ Popover.defaultProps = {
 };
 
 export { Popover };
+export type { PopoverDomRef, PopoverPropTypes };

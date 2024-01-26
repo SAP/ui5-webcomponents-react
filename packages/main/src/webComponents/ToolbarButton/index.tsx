@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/ToolbarButton.js';
 import type { CSSProperties } from 'react';
 import { ButtonDesign, ToolbarItemOverflowBehavior } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarButtonAttributes {
   /**
@@ -71,7 +71,7 @@ interface ToolbarButtonAttributes {
   preventOverflowClosing?: boolean;
 }
 
-export interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
+interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -89,7 +89,9 @@ export interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef 
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface ToolbarButtonPropTypes extends ToolbarButtonAttributes, Omit<CommonProps, 'onClick'> {
+interface ToolbarButtonPropTypes
+  extends ToolbarButtonAttributes,
+    Omit<CommonProps, keyof ToolbarButtonAttributes | 'onClick'> {
   /**
    * Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
    *
@@ -109,7 +111,7 @@ export interface ToolbarButtonPropTypes extends ToolbarButtonAttributes, Omit<Co
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'text', 'tooltip', 'width', 'overflowPriority'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
   ['disabled', 'iconEnd', 'preventOverflowClosing'],
   [],
   ['click'],
@@ -124,3 +126,4 @@ ToolbarButton.defaultProps = {
 };
 
 export { ToolbarButton };
+export type { ToolbarButtonDomRef, ToolbarButtonPropTypes };

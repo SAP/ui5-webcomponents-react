@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/CardHeader.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CardHeaderAttributes {
   /**
@@ -23,9 +23,9 @@ interface CardHeaderAttributes {
   titleText?: string;
 }
 
-export interface CardHeaderDomRef extends CardHeaderAttributes, Ui5DomRef {}
+interface CardHeaderDomRef extends CardHeaderAttributes, Ui5DomRef {}
 
-export interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonProps, 'onClick'> {
+interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonProps, keyof CardHeaderAttributes | 'onClick'> {
   /**
    * Defines an action, displayed in the right most part of the header.
    *
@@ -73,3 +73,4 @@ const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
 CardHeader.displayName = 'CardHeader';
 
 export { CardHeader };
+export type { CardHeaderDomRef, CardHeaderPropTypes };

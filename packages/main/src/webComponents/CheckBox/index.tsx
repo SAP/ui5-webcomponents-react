@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/CheckBox.js';
 import type { WrappingType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface CheckBoxAttributes {
   /**
@@ -70,9 +70,9 @@ interface CheckBoxAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface CheckBoxDomRef extends CheckBoxAttributes, Ui5DomRef {}
+interface CheckBoxDomRef extends CheckBoxAttributes, Ui5DomRef {}
 
-export interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, 'onChange'> {
+interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, keyof CheckBoxAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
    */
@@ -106,3 +106,4 @@ CheckBox.defaultProps = {
 };
 
 export { CheckBox };
+export type { CheckBoxDomRef, CheckBoxPropTypes };

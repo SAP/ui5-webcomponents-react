@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/RangeSlider.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface RangeSliderAttributes {
   /**
@@ -53,9 +53,11 @@ interface RangeSliderAttributes {
   step?: number;
 }
 
-export interface RangeSliderDomRef extends RangeSliderAttributes, Ui5DomRef {}
+interface RangeSliderDomRef extends RangeSliderAttributes, Ui5DomRef {}
 
-export interface RangeSliderPropTypes extends RangeSliderAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface RangeSliderPropTypes
+  extends RangeSliderAttributes,
+    Omit<CommonProps, keyof RangeSliderAttributes | 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
@@ -75,7 +77,7 @@ export interface RangeSliderPropTypes extends RangeSliderAttributes, Omit<Common
  */
 const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   'ui5-range-slider',
-  ['endValue', 'startValue', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
+  ['accessibleName', 'endValue', 'labelInterval', 'max', 'min', 'startValue', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input'],
@@ -94,3 +96,4 @@ RangeSlider.defaultProps = {
 };
 
 export { RangeSlider };
+export type { RangeSliderDomRef, RangeSliderPropTypes };

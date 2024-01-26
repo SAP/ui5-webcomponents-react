@@ -7,9 +7,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableCellAttributes {}
 
-export interface TableCellDomRef extends TableCellAttributes, Ui5DomRef {}
+interface TableCellDomRef extends TableCellAttributes, Ui5DomRef {}
 
-export interface TableCellPropTypes extends TableCellAttributes, CommonProps {
+interface TableCellPropTypes extends TableCellAttributes, Omit<CommonProps, keyof TableCellAttributes> {
   /**
    * Specifies the content of the component.
    */
@@ -35,3 +35,4 @@ const TableCell = withWebComponent<TableCellPropTypes, TableCellDomRef>(
 TableCell.displayName = 'TableCell';
 
 export { TableCell };
+export type { TableCellDomRef, TableCellPropTypes };

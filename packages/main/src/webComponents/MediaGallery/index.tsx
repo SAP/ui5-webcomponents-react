@@ -9,7 +9,7 @@ import {
   MediaGalleryMenuVerticalAlign
 } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface MediaGalleryAttributes {
   /**
@@ -35,9 +35,9 @@ interface MediaGalleryAttributes {
   showAllThumbnails?: boolean;
 }
 
-export interface MediaGalleryDomRef extends MediaGalleryAttributes, Ui5DomRef {}
+interface MediaGalleryDomRef extends MediaGalleryAttributes, Ui5DomRef {}
 
-export interface MediaGalleryPropTypes extends MediaGalleryAttributes, CommonProps {
+interface MediaGalleryPropTypes extends MediaGalleryAttributes, Omit<CommonProps, keyof MediaGalleryAttributes> {
   /**
    * Defines the component items.
    *
@@ -87,3 +87,4 @@ MediaGallery.defaultProps = {
 };
 
 export { MediaGallery };
+export type { MediaGalleryDomRef, MediaGalleryPropTypes };

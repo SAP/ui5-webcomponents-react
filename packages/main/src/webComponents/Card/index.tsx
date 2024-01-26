@@ -16,9 +16,9 @@ interface CardAttributes {
   accessibleNameRef?: string;
 }
 
-export interface CardDomRef extends CardAttributes, Ui5DomRef {}
+interface CardDomRef extends CardAttributes, Ui5DomRef {}
 
-export interface CardPropTypes extends CardAttributes, CommonProps {
+interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -56,3 +56,4 @@ const Card = withWebComponent<CardPropTypes, CardDomRef>(
 Card.displayName = 'Card';
 
 export { Card };
+export type { CardDomRef, CardPropTypes };

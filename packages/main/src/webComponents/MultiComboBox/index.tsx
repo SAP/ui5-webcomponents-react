@@ -5,7 +5,7 @@ import type { MultiComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents
 import type { ReactNode } from 'react';
 import { ComboBoxFilter, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiComboBoxAttributes {
   /**
@@ -62,14 +62,16 @@ interface MultiComboBoxAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface MultiComboBoxDomRef extends MultiComboBoxAttributes, Ui5DomRef {
+interface MultiComboBoxDomRef extends MultiComboBoxAttributes, Ui5DomRef {
   /**
    * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
    */
   readonly open: boolean;
 }
 
-export interface MultiComboBoxPropTypes extends MultiComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface MultiComboBoxPropTypes
+  extends MultiComboBoxAttributes,
+    Omit<CommonProps, keyof MultiComboBoxAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -141,3 +143,4 @@ MultiComboBox.defaultProps = {
 };
 
 export { MultiComboBox };
+export type { MultiComboBoxDomRef, MultiComboBoxPropTypes };

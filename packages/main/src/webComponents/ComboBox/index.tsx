@@ -5,7 +5,7 @@ import type { ComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist
 import type { ReactNode } from 'react';
 import { ComboBoxFilter, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ComboBoxAttributes {
   /**
@@ -58,9 +58,11 @@ interface ComboBoxAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface ComboBoxDomRef extends ComboBoxAttributes, Ui5DomRef {}
+interface ComboBoxDomRef extends ComboBoxAttributes, Ui5DomRef {}
 
-export interface ComboBoxPropTypes extends ComboBoxAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface ComboBoxPropTypes
+  extends ComboBoxAttributes,
+    Omit<CommonProps, keyof ComboBoxAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the component items.
    */
@@ -130,3 +132,4 @@ ComboBox.defaultProps = {
 };
 
 export { ComboBox };
+export type { ComboBoxDomRef, ComboBoxPropTypes };

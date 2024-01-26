@@ -22,9 +22,9 @@ interface TimelineAttributes {
   layout?: TimelineLayout | keyof typeof TimelineLayout;
 }
 
-export interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
+interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
 
-export interface TimelinePropTypes extends TimelineAttributes, CommonProps {
+interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes> {
   /**
    * Determines the content of the `Timeline`.
    */
@@ -54,3 +54,4 @@ Timeline.defaultProps = {
 };
 
 export { Timeline };
+export type { TimelineDomRef, TimelinePropTypes };

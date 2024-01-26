@@ -46,7 +46,7 @@ interface TabContainerAttributes {
   tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
 }
 
-export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
+interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   /**
    * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements:
    *
@@ -68,7 +68,7 @@ export interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
   readonly allItems?: (TabDomRef | TabSeparatorDomRef)[];
 }
 
-export interface TabContainerPropTypes extends TabContainerAttributes, CommonProps {
+interface TabContainerPropTypes extends TabContainerAttributes, Omit<CommonProps, keyof TabContainerAttributes> {
   /**
    * Defines the tabs.
    *
@@ -127,3 +127,4 @@ TabContainer.defaultProps = {
 };
 
 export { TabContainer };
+export type { TabContainerDomRef, TabContainerPropTypes };

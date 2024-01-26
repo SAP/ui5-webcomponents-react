@@ -16,9 +16,11 @@ interface GroupHeaderListItemAttributes {
   selected?: boolean;
 }
 
-export interface GroupHeaderListItemDomRef extends GroupHeaderListItemAttributes, Ui5DomRef {}
+interface GroupHeaderListItemDomRef extends GroupHeaderListItemAttributes, Ui5DomRef {}
 
-export interface GroupHeaderListItemPropTypes extends GroupHeaderListItemAttributes, CommonProps {
+interface GroupHeaderListItemPropTypes
+  extends GroupHeaderListItemAttributes,
+    Omit<CommonProps, keyof GroupHeaderListItemAttributes> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -45,3 +47,4 @@ const GroupHeaderListItem = withWebComponent<GroupHeaderListItemPropTypes, Group
 GroupHeaderListItem.displayName = 'GroupHeaderListItem';
 
 export { GroupHeaderListItem };
+export type { GroupHeaderListItemDomRef, GroupHeaderListItemPropTypes };

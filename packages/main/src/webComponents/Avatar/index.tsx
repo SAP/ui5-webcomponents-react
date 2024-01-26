@@ -70,9 +70,9 @@ interface AvatarAttributes {
   size?: AvatarSize | keyof typeof AvatarSize;
 }
 
-export interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
+interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
 
-export interface AvatarPropTypes extends AvatarAttributes, CommonProps {
+interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes> {
   /**
    * Defines the optional badge that will be used for visual affordance. **Note:** While the slot allows for custom badges, to achieve the Fiori design, please use `Badge` with `Icon` in the corresponding `icon` slot, without text nodes.
    *
@@ -118,3 +118,4 @@ const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
 Avatar.displayName = 'Avatar';
 
 export { Avatar };
+export type { AvatarDomRef, AvatarPropTypes };
