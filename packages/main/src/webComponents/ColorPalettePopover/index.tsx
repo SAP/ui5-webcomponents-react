@@ -33,7 +33,7 @@ interface ColorPalettePopoverAttributes {
   showRecentColors?: boolean;
 }
 
-interface ColorPalettePopoverDomRef extends ColorPalettePopoverAttributes, Ui5DomRef {
+interface ColorPalettePopoverDomRef extends Omit<ColorPalettePopoverAttributes, 'opener'>, Ui5DomRef {
   /**
    * Shows the ColorPalettePopover.
    *
