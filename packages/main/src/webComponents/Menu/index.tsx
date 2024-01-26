@@ -8,7 +8,7 @@ import type {
 } from '@ui5/webcomponents/dist/Menu.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface MenuAttributes {
   /**
@@ -33,7 +33,7 @@ interface MenuAttributes {
   opener?: string;
 }
 
-export interface MenuDomRef extends Omit<MenuAttributes, 'opener'>, Ui5DomRef {
+interface MenuDomRef extends Omit<MenuAttributes, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the menu is shown at
    */
@@ -49,7 +49,7 @@ export interface MenuDomRef extends Omit<MenuAttributes, 'opener'>, Ui5DomRef {
   showAt: (opener: HTMLElement | EventTarget) => void;
 }
 
-export interface MenuPropTypes extends MenuAttributes, CommonProps {
+interface MenuPropTypes extends MenuAttributes, Omit<CommonProps, keyof MenuAttributes> {
   /**
    * Defines the items of this component.
    *
@@ -102,3 +102,4 @@ Menu.defaultProps = {
 };
 
 export { Menu };
+export type { MenuDomRef, MenuPropTypes };

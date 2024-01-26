@@ -5,7 +5,7 @@ import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Br
 import type { ReactNode } from 'react';
 import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface BreadcrumbsAttributes {
   /**
@@ -20,9 +20,9 @@ interface BreadcrumbsAttributes {
   separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
 }
 
-export interface BreadcrumbsDomRef extends BreadcrumbsAttributes, Ui5DomRef {}
+interface BreadcrumbsDomRef extends BreadcrumbsAttributes, Ui5DomRef {}
 
-export interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, CommonProps {
+interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, Omit<CommonProps, keyof BreadcrumbsAttributes> {
   /**
    * Defines the component items.
    *
@@ -63,3 +63,4 @@ Breadcrumbs.defaultProps = {
 };
 
 export { Breadcrumbs };
+export type { BreadcrumbsDomRef, BreadcrumbsPropTypes };

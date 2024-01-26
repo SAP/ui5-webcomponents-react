@@ -5,7 +5,7 @@ import type { FileUploaderChangeEventDetail } from '@ui5/webcomponents/dist/File
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface FileUploaderAttributes {
   /**
@@ -50,14 +50,16 @@ interface FileUploaderAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
+interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
   /**
    * FileList of all selected files.
    */
   readonly files: FileList;
 }
 
-export interface FileUploaderPropTypes extends FileUploaderAttributes, Omit<CommonProps, 'onChange'> {
+interface FileUploaderPropTypes
+  extends FileUploaderAttributes,
+    Omit<CommonProps, keyof FileUploaderAttributes | 'onChange'> {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    * **Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.
@@ -108,3 +110,4 @@ FileUploader.defaultProps = {
 };
 
 export { FileUploader };
+export type { FileUploaderDomRef, FileUploaderPropTypes };

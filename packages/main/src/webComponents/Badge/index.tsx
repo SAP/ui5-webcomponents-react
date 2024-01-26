@@ -14,9 +14,9 @@ interface BadgeAttributes {
   colorScheme?: string;
 }
 
-export interface BadgeDomRef extends BadgeAttributes, Ui5DomRef {}
+interface BadgeDomRef extends BadgeAttributes, Ui5DomRef {}
 
-export interface BadgePropTypes extends BadgeAttributes, CommonProps {
+interface BadgePropTypes extends BadgeAttributes, Omit<CommonProps, keyof BadgeAttributes> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -57,3 +57,4 @@ Badge.defaultProps = {
 };
 
 export { Badge };
+export type { BadgeDomRef, BadgePropTypes };

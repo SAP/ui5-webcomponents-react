@@ -4,7 +4,7 @@ import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { ButtonDesign } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface NotificationActionAttributes {
   /**
@@ -29,9 +29,11 @@ interface NotificationActionAttributes {
   text?: string;
 }
 
-export interface NotificationActionDomRef extends NotificationActionAttributes, Ui5DomRef {}
+interface NotificationActionDomRef extends NotificationActionAttributes, Ui5DomRef {}
 
-export interface NotificationActionPropTypes extends NotificationActionAttributes, Omit<CommonProps, 'onClick'> {
+interface NotificationActionPropTypes
+  extends NotificationActionAttributes,
+    Omit<CommonProps, keyof NotificationActionAttributes | 'onClick'> {
   /**
    * Fired, when the action is pressed.
    */
@@ -63,3 +65,4 @@ NotificationAction.defaultProps = {
 };
 
 export { NotificationAction };
+export type { NotificationActionDomRef, NotificationActionPropTypes };

@@ -5,7 +5,7 @@ import type { SelectChangeEventDetail, SelectLiveChangeEventDetail } from '@ui5/
 import type { ReactNode } from 'react';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface SelectAttributes {
   /**
@@ -52,7 +52,7 @@ interface SelectAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
+interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
   /**
    * Defines the value of the component:
    * \- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
@@ -73,7 +73,7 @@ export interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef 
   readonly selectedOption: ReactNode;
 }
 
-export interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, 'onChange'> {
+interface SelectPropTypes extends SelectAttributes, Omit<CommonProps, keyof SelectAttributes | 'onChange'> {
   /**
    * Defines the component options.
    *
@@ -153,3 +153,4 @@ Select.defaultProps = {
 };
 
 export { Select };
+export type { SelectDomRef, SelectPropTypes };

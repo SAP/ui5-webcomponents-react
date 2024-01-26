@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/TextArea.js';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode, Nullable } from '../../types/index.js';
+import type { Nullable, UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TextAreaAttributes {
   /**
@@ -81,9 +81,11 @@ interface TextAreaAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface TextAreaDomRef extends TextAreaAttributes, Ui5DomRef {}
+interface TextAreaDomRef extends TextAreaAttributes, Ui5DomRef {}
 
-export interface TextAreaPropTypes extends TextAreaAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface TextAreaPropTypes
+  extends TextAreaAttributes,
+    Omit<CommonProps, keyof TextAreaAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -148,3 +150,4 @@ TextArea.defaultProps = {
 };
 
 export { TextArea };
+export type { TextAreaDomRef, TextAreaPropTypes };

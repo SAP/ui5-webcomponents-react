@@ -11,9 +11,11 @@ interface SuggestionGroupItemAttributes {
   text?: string;
 }
 
-export interface SuggestionGroupItemDomRef extends SuggestionGroupItemAttributes, Ui5DomRef {}
+interface SuggestionGroupItemDomRef extends SuggestionGroupItemAttributes, Ui5DomRef {}
 
-export interface SuggestionGroupItemPropTypes extends SuggestionGroupItemAttributes, CommonProps {}
+interface SuggestionGroupItemPropTypes
+  extends SuggestionGroupItemAttributes,
+    Omit<CommonProps, keyof SuggestionGroupItemAttributes> {}
 
 /**
  * The `SuggestionGroupItem` is type of suggestion item, that can be used to split the `Input` suggestions into groups
@@ -36,3 +38,4 @@ const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, Sugge
 SuggestionGroupItem.displayName = 'SuggestionGroupItem';
 
 export { SuggestionGroupItem };
+export type { SuggestionGroupItemDomRef, SuggestionGroupItemPropTypes };

@@ -19,9 +19,9 @@ interface TitleAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
+interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
 
-export interface TitlePropTypes extends TitleAttributes, CommonProps {
+interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleAttributes> {
   /**
    * Defines the text of the component. This component supports nesting a `Link` component inside.
    *
@@ -53,3 +53,4 @@ Title.defaultProps = {
 };
 
 export { Title };
+export type { TitleDomRef, TitlePropTypes };

@@ -8,7 +8,7 @@ import type {
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DateTimePickerAttributes {
   /**
@@ -81,7 +81,7 @@ interface DateTimePickerAttributes {
   secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
 }
 
-export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRef {
+interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRef {
   /**
    * Currently selected date represented as a Local JavaScript Date instance.
    */
@@ -120,7 +120,9 @@ export interface DateTimePickerDomRef extends DateTimePickerAttributes, Ui5DomRe
   openPicker: () => Promise<void>;
 }
 
-export interface DateTimePickerPropTypes extends DateTimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface DateTimePickerPropTypes
+  extends DateTimePickerAttributes,
+    Omit<CommonProps, keyof DateTimePickerAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -158,15 +160,15 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, DateTimePickerD
   [
     'accessibleName',
     'accessibleNameRef',
-    'name',
-    'placeholder',
-    'value',
-    'valueState',
     'formatPattern',
     'maxDate',
     'minDate',
+    'name',
+    'placeholder',
     'primaryCalendarType',
-    'secondaryCalendarType'
+    'secondaryCalendarType',
+    'value',
+    'valueState'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -181,3 +183,4 @@ DateTimePicker.defaultProps = {
 };
 
 export { DateTimePicker };
+export type { DateTimePickerDomRef, DateTimePickerPropTypes };

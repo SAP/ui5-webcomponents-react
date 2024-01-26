@@ -15,9 +15,9 @@ interface ComboBoxItemAttributes {
   text?: string;
 }
 
-export interface ComboBoxItemDomRef extends ComboBoxItemAttributes, Ui5DomRef {}
+interface ComboBoxItemDomRef extends ComboBoxItemAttributes, Ui5DomRef {}
 
-export interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, CommonProps {}
+interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, Omit<CommonProps, keyof ComboBoxItemAttributes> {}
 
 /**
  * The `ComboBoxItem` represents the item for a `ComboBox`
@@ -40,3 +40,4 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>
 ComboBoxItem.displayName = 'ComboBoxItem';
 
 export { ComboBoxItem };
+export type { ComboBoxItemDomRef, ComboBoxItemPropTypes };

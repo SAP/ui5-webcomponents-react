@@ -15,9 +15,11 @@ interface FilterItemOptionAttributes {
   text?: string;
 }
 
-export interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
+interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
 
-export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, CommonProps {}
+interface FilterItemOptionPropTypes
+  extends FilterItemOptionAttributes,
+    Omit<CommonProps, keyof FilterItemOptionAttributes> {}
 
 /**
  *
@@ -40,3 +42,4 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemO
 FilterItemOption.displayName = 'FilterItemOption';
 
 export { FilterItemOption };
+export type { FilterItemOptionDomRef, FilterItemOptionPropTypes };

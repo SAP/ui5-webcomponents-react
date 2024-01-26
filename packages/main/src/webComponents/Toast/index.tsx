@@ -19,14 +19,14 @@ interface ToastAttributes {
   placement?: ToastPlacement | keyof typeof ToastPlacement;
 }
 
-export interface ToastDomRef extends ToastAttributes, Ui5DomRef {
+interface ToastDomRef extends ToastAttributes, Ui5DomRef {
   /**
    * Shows the component.
    */
   show: () => void;
 }
 
-export interface ToastPropTypes extends ToastAttributes, CommonProps {
+interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes> {
   /**
    * Defines the text of the component.
    *
@@ -59,3 +59,4 @@ Toast.defaultProps = {
 };
 
 export { Toast };
+export type { ToastDomRef, ToastPropTypes };

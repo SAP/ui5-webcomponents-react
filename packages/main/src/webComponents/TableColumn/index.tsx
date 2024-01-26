@@ -35,9 +35,9 @@ interface TableColumnAttributes {
   popinText?: string;
 }
 
-export interface TableColumnDomRef extends TableColumnAttributes, Ui5DomRef {}
+interface TableColumnDomRef extends TableColumnAttributes, Ui5DomRef {}
 
-export interface TableColumnPropTypes extends TableColumnAttributes, CommonProps {
+interface TableColumnPropTypes extends TableColumnAttributes, Omit<CommonProps, keyof TableColumnAttributes> {
   /**
    * Defines the content of the column header.
    */
@@ -68,3 +68,4 @@ TableColumn.defaultProps = {
 };
 
 export { TableColumn };
+export type { TableColumnDomRef, TableColumnPropTypes };

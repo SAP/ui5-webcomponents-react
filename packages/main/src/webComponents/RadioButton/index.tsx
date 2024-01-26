@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/RadioButton.js';
 import type { WrappingType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface RadioButtonAttributes {
   /**
@@ -69,9 +69,11 @@ interface RadioButtonAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface RadioButtonDomRef extends RadioButtonAttributes, Ui5DomRef {}
+interface RadioButtonDomRef extends RadioButtonAttributes, Ui5DomRef {}
 
-export interface RadioButtonPropTypes extends RadioButtonAttributes, Omit<CommonProps, 'onChange'> {
+interface RadioButtonPropTypes
+  extends RadioButtonAttributes,
+    Omit<CommonProps, keyof RadioButtonAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
    */
@@ -102,3 +104,4 @@ RadioButton.defaultProps = {
 };
 
 export { RadioButton };
+export type { RadioButtonDomRef, RadioButtonPropTypes };

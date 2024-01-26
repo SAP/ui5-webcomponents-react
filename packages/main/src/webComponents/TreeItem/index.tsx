@@ -2,9 +2,9 @@
 
 import '@ui5/webcomponents/dist/TreeItem.js';
 import type { ReactNode } from 'react';
-import { ValueState, ListItemType } from '../../enums/index.js';
+import { ListItemType, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeItemAttributes {
   /**
@@ -66,7 +66,7 @@ interface TreeItemAttributes {
   selected?: boolean;
 }
 
-export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
+interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -80,7 +80,7 @@ export interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
   toggle: () => void;
 }
 
-export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
+interface TreeItemPropTypes extends TreeItemAttributes, Omit<CommonProps, keyof TreeItemAttributes> {
   /**
    * Defines the items of the component.
    *
@@ -113,7 +113,7 @@ export interface TreeItemPropTypes extends TreeItemAttributes, CommonProps {
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['additionalText', 'additionalTextState', 'text', 'accessibleName', 'icon', 'type'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'type'],
   ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],
@@ -128,3 +128,4 @@ TreeItem.defaultProps = {
 };
 
 export { TreeItem };
+export type { TreeItemDomRef, TreeItemPropTypes };

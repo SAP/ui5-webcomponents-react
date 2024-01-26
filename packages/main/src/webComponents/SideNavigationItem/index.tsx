@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SideNavigationItemAttributes {
   /**
@@ -49,9 +49,11 @@ interface SideNavigationItemAttributes {
   text?: string;
 }
 
-export interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
+interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
 
-export interface SideNavigationItemPropTypes extends SideNavigationItemAttributes, Omit<CommonProps, 'onClick'> {
+interface SideNavigationItemPropTypes
+  extends SideNavigationItemAttributes,
+    Omit<CommonProps, keyof SideNavigationItemAttributes | 'onClick'> {
   /**
    * Defines nested items by passing `SideNavigationSubItem` to the default slot.
    */
@@ -74,7 +76,7 @@ export interface SideNavigationItemPropTypes extends SideNavigationItemAttribute
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
   ['href', 'icon', 'target', 'text'],
-  ['expanded', 'wholeItemToggleable', 'selected'],
+  ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')
@@ -83,3 +85,4 @@ const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNav
 SideNavigationItem.displayName = 'SideNavigationItem';
 
 export { SideNavigationItem };
+export type { SideNavigationItemDomRef, SideNavigationItemPropTypes };

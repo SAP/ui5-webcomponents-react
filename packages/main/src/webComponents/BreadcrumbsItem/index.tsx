@@ -34,9 +34,11 @@ interface BreadcrumbsItemAttributes {
   target?: string;
 }
 
-export interface BreadcrumbsItemDomRef extends BreadcrumbsItemAttributes, Ui5DomRef {}
+interface BreadcrumbsItemDomRef extends BreadcrumbsItemAttributes, Ui5DomRef {}
 
-export interface BreadcrumbsItemPropTypes extends BreadcrumbsItemAttributes, CommonProps {
+interface BreadcrumbsItemPropTypes
+  extends BreadcrumbsItemAttributes,
+    Omit<CommonProps, keyof BreadcrumbsItemAttributes> {
   /**
    * Defines the text of the component.
    *
@@ -66,3 +68,4 @@ const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsIt
 BreadcrumbsItem.displayName = 'BreadcrumbsItem';
 
 export { BreadcrumbsItem };
+export type { BreadcrumbsItemDomRef, BreadcrumbsItemPropTypes };

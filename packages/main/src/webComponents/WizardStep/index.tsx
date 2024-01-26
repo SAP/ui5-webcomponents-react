@@ -46,9 +46,9 @@ interface WizardStepAttributes {
   titleText?: string;
 }
 
-export interface WizardStepDomRef extends WizardStepAttributes, Ui5DomRef {}
+interface WizardStepDomRef extends WizardStepAttributes, Ui5DomRef {}
 
-export interface WizardStepPropTypes extends WizardStepAttributes, CommonProps {
+interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, keyof WizardStepAttributes> {
   /**
    * Defines the step content.
    */
@@ -76,3 +76,4 @@ const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
 WizardStep.displayName = 'WizardStep';
 
 export { WizardStep };
+export type { WizardStepDomRef, WizardStepPropTypes };

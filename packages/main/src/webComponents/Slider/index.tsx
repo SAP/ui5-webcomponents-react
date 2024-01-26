@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/Slider.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SliderAttributes {
   /**
@@ -49,9 +49,9 @@ interface SliderAttributes {
   step?: number;
 }
 
-export interface SliderDomRef extends SliderAttributes, Ui5DomRef {}
+interface SliderDomRef extends SliderAttributes, Ui5DomRef {}
 
-export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, keyof SliderAttributes | 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
    */
@@ -71,7 +71,7 @@ export interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, 'on
  */
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
-  ['value', 'accessibleName', 'labelInterval', 'max', 'min', 'step'],
+  ['accessibleName', 'labelInterval', 'max', 'min', 'step', 'value'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input'],
@@ -89,3 +89,4 @@ Slider.defaultProps = {
 };
 
 export { Slider };
+export type { SliderDomRef, SliderPropTypes };

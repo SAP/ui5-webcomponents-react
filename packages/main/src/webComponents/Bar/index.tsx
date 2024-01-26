@@ -13,9 +13,9 @@ interface BarAttributes {
   design?: BarDesign | keyof typeof BarDesign;
 }
 
-export interface BarDomRef extends BarAttributes, Ui5DomRef {}
+interface BarDomRef extends BarAttributes, Ui5DomRef {}
 
-export interface BarPropTypes extends BarAttributes, CommonProps {
+interface BarPropTypes extends BarAttributes, Omit<CommonProps, keyof BarAttributes> {
   /**
    * Defines the content in the middle of the bar.
    */
@@ -65,3 +65,4 @@ Bar.defaultProps = {
 };
 
 export { Bar };
+export type { BarDomRef, BarPropTypes };

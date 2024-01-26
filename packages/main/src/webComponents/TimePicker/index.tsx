@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/TimePicker.js';
 import type { TimePickerChangeEventDetail, TimePickerInputEventDetail } from '@ui5/webcomponents/dist/TimePicker.js';
 import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TimePickerAttributes {
   /**
@@ -43,7 +43,7 @@ interface TimePickerAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
+interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
   /**
    * Currently selected time represented as JavaScript Date instance
    */
@@ -79,7 +79,9 @@ export interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
   openPicker: () => Promise<void>;
 }
 
-export interface TimePickerPropTypes extends TimePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface TimePickerPropTypes
+  extends TimePickerAttributes,
+    Omit<CommonProps, keyof TimePickerAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *
@@ -128,3 +130,4 @@ TimePicker.defaultProps = {
 };
 
 export { TimePicker };
+export type { TimePickerDomRef, TimePickerPropTypes };

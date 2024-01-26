@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SelectMenuOptionAttributes {
   /**
@@ -30,9 +30,11 @@ interface SelectMenuOptionAttributes {
   selected?: boolean;
 }
 
-export interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {}
+interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {}
 
-export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, CommonProps {
+interface SelectMenuOptionPropTypes
+  extends SelectMenuOptionAttributes,
+    Omit<CommonProps, keyof SelectMenuOptionAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -52,7 +54,7 @@ export interface SelectMenuOptionPropTypes extends SelectMenuOptionAttributes, C
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['displayText', 'value', 'accessibleName'],
+  ['accessibleName', 'displayText', 'value'],
   ['disabled', 'selected'],
   [],
   ['detail-click'],
@@ -62,3 +64,4 @@ const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuO
 SelectMenuOption.displayName = 'SelectMenuOption';
 
 export { SelectMenuOption };
+export type { SelectMenuOptionDomRef, SelectMenuOptionPropTypes };

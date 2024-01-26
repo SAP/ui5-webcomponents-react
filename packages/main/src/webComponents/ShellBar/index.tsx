@@ -11,7 +11,7 @@ import type {
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ShellBarAttributes {
   /**
@@ -50,7 +50,7 @@ interface ShellBarAttributes {
   showSearchField?: boolean;
 }
 
-export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
+interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
   /**
    * Returns the `copilot` DOM ref.
    */
@@ -103,7 +103,7 @@ export interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
   closeOverflow: () => void;
 }
 
-export interface ShellBarPropTypes extends ShellBarAttributes, CommonProps {
+interface ShellBarPropTypes extends ShellBarAttributes, Omit<CommonProps, keyof ShellBarAttributes> {
   /**
    * Defines the `ShellBar` aditional items.
    *
@@ -207,3 +207,4 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
 ShellBar.displayName = 'ShellBar';
 
 export { ShellBar };
+export type { ShellBarDomRef, ShellBarPropTypes };

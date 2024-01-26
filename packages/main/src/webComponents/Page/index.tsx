@@ -29,9 +29,9 @@ interface PageAttributes {
   hideFooter?: boolean;
 }
 
-export interface PageDomRef extends PageAttributes, Ui5DomRef {}
+interface PageDomRef extends PageAttributes, Ui5DomRef {}
 
-export interface PagePropTypes extends PageAttributes, CommonProps {
+interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttributes> {
   /**
    * Defines the content HTML Element.
    */
@@ -82,3 +82,4 @@ Page.defaultProps = {
 };
 
 export { Page };
+export type { PageDomRef, PagePropTypes };

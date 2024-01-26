@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
-import type { ReactNode, MouseEventHandler } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 import { ButtonDesign, ButtonType } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -54,7 +54,7 @@ interface ButtonAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-export interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
+interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -72,7 +72,7 @@ export interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, 'onClick'> {
+interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -111,3 +111,4 @@ Button.defaultProps = {
 };
 
 export { Button };
+export type { ButtonDomRef, ButtonPropTypes };

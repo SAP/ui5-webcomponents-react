@@ -19,9 +19,11 @@ interface MultiComboBoxItemAttributes {
   text?: string;
 }
 
-export interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
+interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
 
-export interface MultiComboBoxItemPropTypes extends MultiComboBoxItemAttributes, CommonProps {}
+interface MultiComboBoxItemPropTypes
+  extends MultiComboBoxItemAttributes,
+    Omit<CommonProps, keyof MultiComboBoxItemAttributes> {}
 
 /**
  * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
@@ -44,3 +46,4 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComb
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';
 
 export { MultiComboBoxItem };
+export type { MultiComboBoxItemDomRef, MultiComboBoxItemPropTypes };
