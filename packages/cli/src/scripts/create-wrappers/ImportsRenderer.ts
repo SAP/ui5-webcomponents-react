@@ -16,13 +16,10 @@ export class ImportsRenderer extends AbstractRenderer {
       })
       .map(([mod]) => mod)
       .sort((a, b) => a.localeCompare(b));
-    const sortedModules = [...context.importMap.keys()]
-      // .filter((mod) => !unassignedImports.includes(mod))
-      .sort((a, b) => a.localeCompare(b));
+    const sortedModules = [...context.importMap.keys()].sort((a, b) => a.localeCompare(b));
 
-    return dedent`
-    ${unassignedImports.map((imp) => `import '${imp}';`).join('\n')}  
-    ${sortedModules
+    const unassignedImportsMerged = unassignedImports.map((imp) => `import '${imp}';`).join('\n');
+    const namedImportsMerged = sortedModules
       .map((module) => {
         const config = context.importMap.get(module)!;
         let regularImports = '';
@@ -39,17 +36,22 @@ export class ImportsRenderer extends AbstractRenderer {
           regularImports += `{ ${sortAndMergeMembers(config.named)} }`;
         }
 
-        let imports = '';
+        let imports = [];
         if (regularImports.length > 0) {
-          imports = `import ${regularImports} from '${module}';`;
+          imports.push(`import ${regularImports} from '${module}';`);
         }
 
         if (config.types.length > 0) {
-          imports += `import type { ${sortAndMergeMembers(config.types)} } from '${module}';`;
+          imports.push(`import type { ${sortAndMergeMembers(config.types)} } from '${module}';`);
         }
         return imports;
       })
-      .join('\n')}
+      .flat()
+      .join('\n');
+
+    return dedent`
+    ${unassignedImportsMerged}  
+    ${namedImportsMerged}
     `;
   }
 }
