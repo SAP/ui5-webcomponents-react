@@ -6816,7 +6816,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react-cli@workspace:packages/cli"
   dependencies:
-    custom-elements-manifest: "npm:^2.0.0"
     dedent: "npm:^1.5.1"
     turndown: "npm:^7.1.2"
   bin:
@@ -9779,13 +9778,6 @@ __metadata:
   version: 1.0.0
   resolution: "custom-elements-manifest@npm:1.0.0"
   checksum: 10c0/6e8e4dcc6ae4f846e92b6ec0ef5c8d155889dae6df7210cbf3e9c47387ffab83fce8fde96a1aaa9766304cb08afa17198da4ef8560745311bdf3ba280fc77b40
-  languageName: node
-  linkType: hard
-
-"custom-elements-manifest@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "custom-elements-manifest@npm:2.0.0"
-  checksum: 10c0/0499cc63e87813fbd895ad4d23657b371842ce2b632d83c1f5ab272784be4f9f78be693fe9a73370ae7fdb0bf5830cf6ee03ef8c3f27ae8922c8a156da71bebb
   languageName: node
   linkType: hard
 

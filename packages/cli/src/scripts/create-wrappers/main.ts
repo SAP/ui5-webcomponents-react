@@ -13,6 +13,10 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 
 const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
 
+function filterAttributes(member: CEM.ClassField | CEM.ClassMethod) {
+  return member.kind === 'field' && !member.readonly;
+}
+
 export default async function createWrappers(packageName: string, outDir: string) {
   const require = createRequire(import.meta.url);
   const customElementManifestPath = require.resolve(`${packageName}/dist/custom-elements.json`);
@@ -47,16 +51,14 @@ export default async function createWrappers(packageName: string, outDir: string
 
     wrapper.addRenderer(new ImportsRenderer());
     wrapper.addRenderer(
-      new AttributesRenderer().setAttributes(
-        declaration.members?.filter((member) => member.kind === 'field' && !member.readonly) ?? []
-      )
+      new AttributesRenderer().setAttributes(declaration.members?.filter((member) => filterAttributes(member)) ?? [])
     );
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
     wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
       new ComponentRenderer()
         .setDescription(declaration.description ?? '')
-        .setAttributes(declaration.attributes ?? [])
+        .setAttributes(declaration.members?.filter((member) => filterAttributes(member)) ?? [])
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])
         .setDynamicImportPath(webComponentImport)

@@ -52,14 +52,17 @@ export class ComponentRenderer extends AbstractRenderer {
         [${this.attributes
           .filter((attr) => attr.type?.text !== 'boolean')
           .map((attr) => `'${snakeCaseToCamelCase(attr.name)}'`)
+          .toSorted((a, b) => a.localeCompare(b))
           .join(', ')}], 
         [${this.attributes
           .filter((attr) => attr.type?.text === 'boolean')
           .map((attr) => `'${snakeCaseToCamelCase(attr.name)}'`)
+          .toSorted((a, b) => a.localeCompare(b))
           .join(', ')}],
         [${this.slots
           ?.filter((slot) => slot.name !== 'default')
           .map((slot) => `'${snakeCaseToCamelCase(slot.name)}'`)
+          .toSorted((a, b) => a.localeCompare(b))
           .join(', ')}],
         [${this.events?.map((event) => `'${event.name}'`).join(', ')}],
         () => import('${this.dynamicImportPath}') 
