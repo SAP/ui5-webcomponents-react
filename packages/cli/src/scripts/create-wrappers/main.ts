@@ -14,10 +14,14 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
 
 function filterAttributes(member: CEM.ClassField | CEM.ClassMethod): member is CEM.ClassField {
-  return member.kind === 'field' && !member.readonly;
+  return member.kind === 'field' && member.privacy === 'public' && !member.readonly;
 }
 
-export default async function createWrappers(packageName: string, outDir: string) {
+interface Options {
+  additionalComponentNote?: string;
+}
+
+export default async function createWrappers(packageName: string, outDir: string, options: Options) {
   const require = createRequire(import.meta.url);
   const customElementManifestPath = require.resolve(`${packageName}/dist/custom-elements-internal.json`);
 
@@ -60,6 +64,7 @@ export default async function createWrappers(packageName: string, outDir: string
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])
         .setDynamicImportPath(webComponentImport)
+        .setNote(options.additionalComponentNote ?? '')
     );
     wrapper.addRenderer(new ExportsRenderer());
 

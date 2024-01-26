@@ -10,6 +10,9 @@ const options = {
   out: {
     type: 'string' as const,
     short: 'o'
+  },
+  additionalComponentNote: {
+    type: 'string' as const
   }
 };
 const { values, positionals } = parseArgs({ options, allowPositionals: true });
@@ -20,7 +23,7 @@ console.log(command);
 
 switch (command) {
   case 'create-wrappers':
-    const { packageName, out } = values;
+    const { packageName, out, additionalComponentNote } = values;
     const missingParameters = [];
     if (!packageName) {
       missingParameters.push('--packageName');
@@ -43,7 +46,7 @@ switch (command) {
 
     const outDir = resolve(process.cwd(), values.out!);
     // eslint-disable-next-line @typescript-eslint/await-thenable
-    await createWrapperModule.default(packageName!, outDir);
+    await createWrapperModule.default(packageName!, outDir, { additionalComponentNote });
     process.exit(0);
     break;
   default:

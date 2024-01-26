@@ -24,7 +24,7 @@
     "lint": "eslint packages --ext .ts,.tsx",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
-    "create-webcomponents-wrapper-v2": "WITH_WEB_COMPONENT_IMPORT_PATH='../../internal/withWebComponent.js' INTERFACES_IMPORT_PATH='../../types/index.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents && prettier --log-level silent --write ./packages/main/src/webComponents",
+    "create-webcomponents-wrapper-v2": "WITH_WEB_COMPONENT_IMPORT_PATH='../../internal/withWebComponent.js' INTERFACES_IMPORT_PATH='../../types/index.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)' && prettier --log-level silent --write ./packages/main/src/webComponents",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"

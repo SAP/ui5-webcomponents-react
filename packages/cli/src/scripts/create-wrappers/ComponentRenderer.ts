@@ -12,6 +12,7 @@ export class ComponentRenderer extends AbstractRenderer {
   private slots: CEM.Slot[] = [];
   private events: CEM.Event[] = [];
   private description: string = '';
+  private note: string = '';
 
   setDynamicImportPath(value: string) {
     this.dynamicImportPath = value;
@@ -38,12 +39,21 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
+  setNote(value: string) {
+    this.note = value;
+    return this;
+  }
+
   prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
   }
 
   render(context: WebComponentWrapper): string {
-    const comment = `/**\n * ${summaryFormatter(this.description)}\n */`;
+    let comment = `/**\n * ${summaryFormatter(this.description)}\n *\n`;
+    if (this.note) {
+      comment += ` * __Note__: ${this.note}\n`;
+    }
+    comment += '*/';
 
     const component = dedent`
       const ${context.componentName} = withWebComponent<${context.componentName}PropTypes, ${
