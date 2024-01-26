@@ -13,7 +13,7 @@ export class PropTypesRenderer extends AbstractRenderer {
 
   private _slots: CEM.Slot[] = [];
   private _events: CEM.Event[] = [];
-  private nativeEvents = new Set<string>();
+  private eventNames = new Set<string>();
 
   public setSlots(slots: CEM.Slot[]) {
     this._slots = slots
@@ -33,6 +33,10 @@ export class PropTypesRenderer extends AbstractRenderer {
   public setEvents(events: CEM.Event[]) {
     this._events = events;
     return this;
+  }
+
+  private eventHasDetails(event: CEM.Event) {
+    return Array.isArray(event._ui5parameters) && event._ui5parameters.length > 0;
   }
 
   private getSlots() {
@@ -95,7 +99,6 @@ export class PropTypesRenderer extends AbstractRenderer {
         let eventType = '(event: unknown) => void;';
         const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
         if (event.type.text === 'CustomEvent') {
-          debugger;
           const hasDetails = Array.isArray(event._ui5parameters) && event._ui5parameters.length > 0;
           if (hasDetails) {
             eventType = `(event: Ui5CustomEvent<${domRef}, ${resolveEventDetailName(context, event.name)}>) => void;`;
@@ -137,11 +140,11 @@ export class PropTypesRenderer extends AbstractRenderer {
     }
 
     for (const event of this._events) {
+      const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
+      this.eventNames.add(reactEventName);
       if (event.type.text === 'CustomEvent') {
         context.addTypeImport(context.modulePath, resolveEventDetailName(context, event.name));
       } else if (event.type.text === 'Event') {
-        const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
-        this.nativeEvents.add(reactEventName);
         switch (event.name) {
           case 'click':
             context.addTypeImport('react', 'MouseEventHandler');
@@ -157,12 +160,12 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   render(context: WebComponentWrapper): string {
-    let CommonProps = 'CommonProps';
-    if (this.nativeEvents.size > 0) {
-      const commonPropsToOmit = Array.from(this.nativeEvents)
+    let CommonProps = `Omit<CommonProps, keyof ${context.componentName}Attributes>`;
+    if (this.eventNames.size > 0) {
+      const eventsToOmit = Array.from(this.eventNames)
         .toSorted((a, b) => a.localeCompare(b))
-        .map((evt) => `'${evt}'`)
-        .join(' | ');
+        .map((evt) => `'${evt}'`);
+      const commonPropsToOmit = [`keyof ${context.componentName}Attributes`, ...eventsToOmit].join(' | ');
       CommonProps = `Omit<CommonProps, ${commonPropsToOmit}>`;
     }
     return dedent`
