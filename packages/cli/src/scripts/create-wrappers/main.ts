@@ -19,7 +19,7 @@ function filterAttributes(member: CEM.ClassField | CEM.ClassMethod): member is C
 
 export default async function createWrappers(packageName: string, outDir: string) {
   const require = createRequire(import.meta.url);
-  const customElementManifestPath = require.resolve(`${packageName}/dist/custom-elements.json`);
+  const customElementManifestPath = require.resolve(`${packageName}/dist/custom-elements-internal.json`);
 
   const customElementManifest: CEM.Package = JSON.parse(
     await readFile(customElementManifestPath, { encoding: 'utf-8' })

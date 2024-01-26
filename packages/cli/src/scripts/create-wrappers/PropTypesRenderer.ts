@@ -13,6 +13,7 @@ export class PropTypesRenderer extends AbstractRenderer {
 
   private _slots: CEM.Slot[] = [];
   private _events: CEM.Event[] = [];
+  private nativeEvents = new Set<string>();
 
   public setSlots(slots: CEM.Slot[]) {
     this._slots = slots
@@ -92,8 +93,15 @@ export class PropTypesRenderer extends AbstractRenderer {
 
         const domRef = `${context.componentName}DomRef`;
         let eventType = '(event: unknown) => void;';
+        const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
         if (event.type.text === 'CustomEvent') {
-          eventType = `(event: Ui5CustomEvent<${domRef}, ${resolveEventDetailName(context, event.name)}>) => void;`;
+          debugger;
+          const hasDetails = Array.isArray(event._ui5parameters) && event._ui5parameters.length > 0;
+          if (hasDetails) {
+            eventType = `(event: Ui5CustomEvent<${domRef}, ${resolveEventDetailName(context, event.name)}>) => void;`;
+          } else {
+            eventType = `(event: Ui5CustomEvent<${domRef}>) => void;`;
+          }
         } else if (event.type.text === 'Event') {
           switch (event.name) {
             case 'click':
@@ -107,9 +115,7 @@ export class PropTypesRenderer extends AbstractRenderer {
           }
         }
 
-        return `/**\n${descriptionParts.join('\n')}\n */\non${capitalizeFirstLetter(
-          snakeCaseToCamelCase(event.name)
-        )}?: ${eventType}`;
+        return `/**\n${descriptionParts.join('\n')}\n */\n${reactEventName}?: ${eventType}`;
       })
       .join('\n\n');
   }
@@ -134,6 +140,8 @@ export class PropTypesRenderer extends AbstractRenderer {
       if (event.type.text === 'CustomEvent') {
         context.addTypeImport(context.modulePath, resolveEventDetailName(context, event.name));
       } else if (event.type.text === 'Event') {
+        const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
+        this.nativeEvents.add(reactEventName);
         switch (event.name) {
           case 'click':
             context.addTypeImport('react', 'MouseEventHandler');
@@ -149,8 +157,16 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   render(context: WebComponentWrapper): string {
+    let CommonProps = 'CommonProps';
+    if (this.nativeEvents.size > 0) {
+      const commonPropsToOmit = Array.from(this.nativeEvents)
+        .toSorted((a, b) => a.localeCompare(b))
+        .map((evt) => `'${evt}'`)
+        .join(' | ');
+      CommonProps = `Omit<CommonProps, ${commonPropsToOmit}>`;
+    }
     return dedent`
-    interface ${context.componentName}PropTypes extends ${context.componentName}Attributes, CommonProps {
+    interface ${context.componentName}PropTypes extends ${context.componentName}Attributes, ${CommonProps} {
       ${this.getSlots()}
       ${this.getEvents(context)}
     }
