@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/ToolbarButton.js';
 import type { CSSProperties } from 'react';
 import { ButtonDesign, ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarButtonAttributes {
   /**

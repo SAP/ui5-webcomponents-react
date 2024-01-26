@@ -15,8 +15,8 @@ import {
   WrappingType
 } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
+import type { CommonProps } from '../../types/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';

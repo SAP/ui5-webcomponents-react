@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/Switch.js';
 import { SwitchDesign } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SwitchAttributes {
   /**

@@ -6,7 +6,7 @@ import type { ElementType, ReactNode } from 'react';
 import { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 import { Title } from '../../webComponents/index.js';
 import { styles } from './Form.jss.js';
 import { FormContext } from './FormContext.js';

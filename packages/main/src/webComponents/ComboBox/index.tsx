@@ -4,9 +4,8 @@ import '@ui5/webcomponents/dist/ComboBox.js';
 import type { ComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/ComboBox.js';
 import type { ReactNode } from 'react';
 import { ComboBoxFilter, ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ComboBoxAttributes {
   /**

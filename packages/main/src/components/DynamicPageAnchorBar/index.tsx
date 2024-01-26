@@ -9,8 +9,8 @@ import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
 import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
+import type { CommonProps } from '../../types/index.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;

@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
 import type { CSSProperties } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPaletteItemAttributes {
   /**

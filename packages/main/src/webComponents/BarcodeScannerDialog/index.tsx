@@ -5,8 +5,8 @@ import type {
   BarcodeScannerDialogScanErrorEventDetail,
   BarcodeScannerDialogScanSuccessEventDetail
 } from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface BarcodeScannerDialogAttributes {}
 

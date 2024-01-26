@@ -17,8 +17,8 @@ import {
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
 } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
 import { flattenFragments } from '../../internal/utils.js';
+import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/index.js';
 import styles from './AnalyticalCardHeader.jss.js';
 

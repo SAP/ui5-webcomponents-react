@@ -3,9 +3,8 @@
 import '@ui5/webcomponents/dist/Avatar.js';
 import type { ReactNode } from 'react';
 import type { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarAttributes {
   /**

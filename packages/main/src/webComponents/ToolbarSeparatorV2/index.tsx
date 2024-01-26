@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ToolbarSeparator.js';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSeparatorV2Attributes {
   /**

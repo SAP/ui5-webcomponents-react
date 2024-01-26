@@ -3,7 +3,7 @@
 import { deprecationNotice, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect } from 'react';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 import type { CardDomRef } from '../../webComponents/index.js';
 import { Card } from '../../webComponents/index.js';
 import { classNames, styleData } from './AnalyticalCard.module.css.js';

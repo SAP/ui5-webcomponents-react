@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
 import type { CSSProperties } from 'react';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSpacerV2Attributes {
   /**
