@@ -4,10 +4,6 @@ import { capitalizeFirstLetter, propDescriptionFormatter, snakeCaseToCamelCase }
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
-function resolveEventDetailName(context: WebComponentWrapper, eventName: string) {
-  return `${context.componentName}${capitalizeFirstLetter(snakeCaseToCamelCase(eventName))}EventDetail`;
-}
-
 export class PropTypesRenderer extends AbstractRenderer {
   public phase = RenderingPhase.props;
 
@@ -36,7 +32,7 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   private eventHasDetails(event: CEM.Event) {
-    return Array.isArray(event._ui5parameters) && event._ui5parameters.length > 0;
+    return Array.isArray(event.type.references) && event.type.references.length > 0;
   }
 
   private getSlots() {
@@ -98,10 +94,10 @@ export class PropTypesRenderer extends AbstractRenderer {
         const domRef = `${context.componentName}DomRef`;
         let eventType = '(event: unknown) => void;';
         const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
-        if (event.type.text === 'CustomEvent') {
-          const hasDetails = Array.isArray(event._ui5parameters) && event._ui5parameters.length > 0;
+        if (event.type.text?.startsWith('CustomEvent')) {
+          const hasDetails = this.eventHasDetails(event);
           if (hasDetails) {
-            eventType = `(event: Ui5CustomEvent<${domRef}, ${resolveEventDetailName(context, event.name)}>) => void;`;
+            eventType = `(event: Ui5CustomEvent<${domRef}, ${event.type.references!.at(0)!.name}>) => void;`;
           } else {
             eventType = `(event: Ui5CustomEvent<${domRef}>) => void;`;
           }
@@ -134,7 +130,7 @@ export class PropTypesRenderer extends AbstractRenderer {
     if (this._slots.some((s) => s.name !== 'children' && s.name !== '')) {
       context.addTypeImport(interfacesImportPath, 'UI5WCSlotsNode');
     }
-    const customEvents = this._events.filter((event) => event.type.text === 'CustomEvent');
+    const customEvents = this._events.filter((event) => event.type.text.includes('CustomEvent'));
     if (customEvents.length > 0) {
       context.addTypeImport(interfacesImportPath, 'Ui5CustomEvent');
     }
@@ -142,8 +138,9 @@ export class PropTypesRenderer extends AbstractRenderer {
     for (const event of this._events) {
       const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
       this.eventNames.add(reactEventName);
-      if (event.type.text === 'CustomEvent') {
-        context.addTypeImport(context.modulePath, resolveEventDetailName(context, event.name));
+      if (event.type.text.startsWith('CustomEvent') && this.eventHasDetails(event)) {
+        const reference = event.type.references!.at(0)!;
+        context.addTypeImport(`${reference.package}/${reference.module}`, event.type.references!.at(0)!.name);
       } else if (event.type.text === 'Event') {
         switch (event.name) {
           case 'click':
