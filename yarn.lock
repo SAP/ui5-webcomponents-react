@@ -8635,7 +8635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0, chalk@npm:^2.0.1, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
+"chalk@npm:^2.0.0, chalk@npm:^2.0.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -9421,19 +9421,6 @@ __metadata:
     lru-cache: "npm:^4.0.1"
     which: "npm:^1.2.9"
   checksum: 4de7254653b658776be8e1050473349723d2ac8bc10b912fbeb159ad32d06c7fa2135b04b896b7cbe0141d274dae9d7543cc6e5c9c919e2062e44a66c2184665
-  languageName: node
-  linkType: hard
-
-"cross-spawn@npm:^6.0.5":
-  version: 6.0.5
-  resolution: "cross-spawn@npm:6.0.5"
-  dependencies:
-    nice-try: "npm:^1.0.4"
-    path-key: "npm:^2.0.1"
-    semver: "npm:^5.5.0"
-    shebang-command: "npm:^1.2.0"
-    which: "npm:^1.2.9"
-  checksum: e05544722e9d7189b4292c66e42b7abeb21db0d07c91b785f4ae5fefceb1f89e626da2703744657b287e86dcd4af57b54567cef75159957ff7a8a761d9055012
   languageName: node
   linkType: hard
 
@@ -17056,13 +17043,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nice-try@npm:^1.0.4":
-  version: 1.0.5
-  resolution: "nice-try@npm:1.0.5"
-  checksum: 95568c1b73e1d0d4069a3e3061a2102d854513d37bcfda73300015b7ba4868d3b27c198d1dbbd8ebdef4112fc2ed9e895d4a0f2e1cce0bd334f2a1346dc9205f
-  languageName: node
-  linkType: hard
-
 "node-dir@npm:^0.1.17":
   version: 0.1.17
   resolution: "node-dir@npm:0.1.17"
@@ -17430,24 +17410,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all@npm:^4.1.5":
-  version: 4.1.5
-  resolution: "npm-run-all@npm:4.1.5"
+"npm-run-all2@npm:^5.0.0":
+  version: 5.0.2
+  resolution: "npm-run-all2@npm:5.0.2"
   dependencies:
-    ansi-styles: "npm:^3.2.1"
-    chalk: "npm:^2.4.1"
-    cross-spawn: "npm:^6.0.5"
+    ansi-styles: "npm:^5.0.0"
+    cross-spawn: "npm:^7.0.3"
     memorystream: "npm:^0.3.1"
     minimatch: "npm:^3.0.4"
-    pidtree: "npm:^0.3.0"
-    read-pkg: "npm:^3.0.0"
+    pidtree: "npm:^0.5.0"
+    read-pkg: "npm:^5.2.0"
     shell-quote: "npm:^1.6.1"
-    string.prototype.padend: "npm:^3.0.0"
   bin:
     npm-run-all: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 736ee39bd35454d3efaa4a2e53eba6c523e2e17fba21a18edcce6b221f5cab62000bef16bb6ae8aff9e615831e6b0eb25ab51d52d60e6fa6f4ea880e4c6d31f4
+  checksum: 72de78d3f3bbfe940d644bd1c97cd54189651758175df55507eb8a5475f0e6978a036d8cd6e4a4585c913c1c6ab1a76b0ce9a653c2beeabff69a98b5eac09afe
   languageName: node
   linkType: hard
 
@@ -18250,13 +18228,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-key@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "path-key@npm:2.0.1"
-  checksum: dd2044f029a8e58ac31d2bf34c34b93c3095c1481942960e84dd2faa95bbb71b9b762a106aead0646695330936414b31ca0bd862bf488a937ad17c8c5d73b32b
-  languageName: node
-  linkType: hard
-
 "path-key@npm:^3.0.0, path-key@npm:^3.1.0":
   version: 3.1.1
   resolution: "path-key@npm:3.1.1"
@@ -18410,12 +18381,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pidtree@npm:^0.3.0":
-  version: 0.3.1
-  resolution: "pidtree@npm:0.3.1"
+"pidtree@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "pidtree@npm:0.5.0"
   bin:
     pidtree: bin/pidtree.js
-  checksum: cd69b0182f749f45ab48584e3442c48c5dc4512502c18d5b0147a33b042c41a4db4269b9ce2f7c48f11833ee5e79d81f5ebc6f7bf8372d4ea55726f60dc505a1
+  checksum: 4004b1c7429d02be941ad7ca2eac3bd93afa5cd59119633113013a33de52d76887de09a06a81943475bc1de3efe0a639515a5fee314f5ba074e6d849499e4b4f
   languageName: node
   linkType: hard
 
@@ -20594,7 +20565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.5.0, semver@npm:^5.6.0":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
   bin:
@@ -20758,28 +20729,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shebang-command@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "shebang-command@npm:1.2.0"
-  dependencies:
-    shebang-regex: "npm:^1.0.0"
-  checksum: 7b20dbf04112c456b7fc258622dafd566553184ac9b6938dd30b943b065b21dabd3776460df534cc02480db5e1b6aec44700d985153a3da46e7db7f9bd21326d
-  languageName: node
-  linkType: hard
-
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
   dependencies:
     shebang-regex: "npm:^3.0.0"
   checksum: a41692e7d89a553ef21d324a5cceb5f686d1f3c040759c50aab69688634688c5c327f26f3ecf7001ebfd78c01f3c7c0a11a7c8bfd0a8bc9f6240d4f40b224e4e
-  languageName: node
-  linkType: hard
-
-"shebang-regex@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "shebang-regex@npm:1.0.0"
-  checksum: 9abc45dee35f554ae9453098a13fdc2f1730e525a5eb33c51f096cc31f6f10a4b38074c1ebf354ae7bffa7229506083844008dfc3bb7818228568c0b2dc1fff2
   languageName: node
   linkType: hard
 
@@ -21313,17 +21268,6 @@ __metadata:
     regexp.prototype.flags: "npm:^1.4.3"
     side-channel: "npm:^1.0.4"
   checksum: 644523d05c1ee93bab7474e999a5734ee5f6ad2d7ad24ed6ea8706c270dc92b352bde0f2a5420bfbeed54e28cb6a770c3800e1988a5267a70fd5e677c7750abc
-  languageName: node
-  linkType: hard
-
-"string.prototype.padend@npm:^3.0.0":
-  version: 3.1.4
-  resolution: "string.prototype.padend@npm:3.1.4"
-  dependencies:
-    call-bind: "npm:^1.0.2"
-    define-properties: "npm:^1.1.4"
-    es-abstract: "npm:^1.20.4"
-  checksum: 11feb9ae51a32febc73bb3b38d29900405c736f47613badff773ab830f23faad796c43d51e18090cada975b82831f66bdcb6b5353739a019b7fcc321900205ad
   languageName: node
   linkType: hard
 
@@ -22395,7 +22339,7 @@ __metadata:
     identity-obj-proxy: "npm:^3.0.0"
     lerna: "npm:^8.0.0"
     lint-staged: "npm:^15.0.0"
-    npm-run-all: "npm:^4.1.5"
+    npm-run-all2: "npm:^5.0.0"
     postcss: "npm:^8.4.25"
     postcss-cli: "npm:^11.0.0"
     postcss-import: "npm:^16.0.0"
