@@ -67,17 +67,14 @@ function resolveModule(mod: CEM.JavaScriptModule) {
     const superclasses = resolveTree(declaration as CEM.CustomElementDeclaration);
     for (const superClass of superclasses) {
       for (const field of fieldsToMerge) {
-        const currentFields = customElementDeclaration[field];
         const superClassFields = superClass[field];
         if (!superClassFields) {
           continue;
         }
-        if (currentFields?.length) {
-          customElementDeclaration[field] = superClassFields.reduce(mergeArraysWithoutDuplicates, currentFields);
-        } else {
-          // @ts-expect-error: the part is the same
-          customElementDeclaration[field] = superClassFields;
-        }
+        customElementDeclaration[field] = superClassFields.reduce(
+          mergeArraysWithoutDuplicates,
+          customElementDeclaration[field] ?? []
+        );
       }
     }
   }

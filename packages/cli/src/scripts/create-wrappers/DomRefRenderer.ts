@@ -143,6 +143,11 @@ export class DomRefRenderer extends AbstractRenderer {
       if (member.kind === 'field') {
         resolveReferenceImports(member.type?.references ?? [], context);
       }
+      if (member.kind === 'method') {
+        const parameterReferences = member.parameters?.map((param) => param.type?.references ?? []);
+        resolveReferenceImports(parameterReferences?.flat() ?? [], context);
+        resolveReferenceImports(member.return?.type?.references ?? [], context);
+      }
     }
   }
 
