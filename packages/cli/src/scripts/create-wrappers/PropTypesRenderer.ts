@@ -11,6 +11,7 @@ export class PropTypesRenderer extends AbstractRenderer {
   private _slots: CEM.Slot[] = [];
   private _events: CEM.Event[] = [];
   private eventNames = new Set<string>();
+  private _numberOfAttributes = 0;
 
   public setSlots(slots: CEM.Slot[]) {
     this._slots = slots
@@ -29,6 +30,11 @@ export class PropTypesRenderer extends AbstractRenderer {
 
   public setEvents(events: CEM.Event[]) {
     this._events = events;
+    return this;
+  }
+
+  public setNumberOfAttributes(numberOfAttributes: number) {
+    this._numberOfAttributes = numberOfAttributes;
     return this;
   }
 
@@ -69,9 +75,8 @@ export class PropTypesRenderer extends AbstractRenderer {
           }
         }
 
-        // todo: detect slots which allow multiple slots
         return `/**\n${descriptionParts.join('\n')}\n */\n${snakeCaseToCamelCase(slot.name)}?: ${
-          isDefaultSlot ? 'ReactNode | ReactNode[]' : 'UI5WCSlotsNode | UI5WCSlotsNode[]'
+          isDefaultSlot ? 'ReactNode | ReactNode[]' : 'UI5WCSlotsNode'
         }`;
       })
       .join('\n\n');
@@ -157,14 +162,19 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   render(context: WebComponentWrapper): string {
-    let CommonProps = `Omit<CommonProps, keyof ${context.componentName}Attributes>`;
-    if (this.eventNames.size > 0) {
-      const eventsToOmit = Array.from(this.eventNames)
-        .toSorted((a, b) => a.localeCompare(b))
-        .map((evt) => `'${evt}'`);
-      const commonPropsToOmit = [`keyof ${context.componentName}Attributes`, ...eventsToOmit].join(' | ');
-      CommonProps = `Omit<CommonProps, ${commonPropsToOmit}>`;
+    const typesToOmit = [];
+    if (this._numberOfAttributes > 0) {
+      typesToOmit.push(`keyof ${context.componentName}Attributes`);
     }
+    if (this.eventNames.size > 0) {
+      typesToOmit.push(
+        ...Array.from(this.eventNames)
+          .toSorted((a, b) => a.localeCompare(b))
+          .map((evt) => `'${evt}'`)
+      );
+    }
+    const CommonProps = typesToOmit.length > 0 ? `Omit<CommonProps, ${typesToOmit.join(' | ')}>` : 'CommonProps';
+
     return dedent`
     interface ${context.componentName}PropTypes extends ${context.componentName}Attributes, ${CommonProps} {
       ${this.getSlots()}

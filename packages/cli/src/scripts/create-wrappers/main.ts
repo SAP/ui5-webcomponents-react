@@ -51,17 +51,24 @@ export default async function createWrappers(packageName: string, outDir: string
     }
 
     const wrapper = new WebComponentWrapper(declaration.tagName, declaration.name, webComponentImport);
+    const attributes = declaration.members?.filter(filterAttributes) ?? [];
+
     wrapper.addNamedImport(WITH_WEB_COMPONENT_IMPORT_PATH, 'withWebComponent');
     wrapper.addUnassignedImport(webComponentImport);
 
     wrapper.addRenderer(new ImportsRenderer());
-    wrapper.addRenderer(new AttributesRenderer().setAttributes(declaration.members?.filter(filterAttributes) ?? []));
+    wrapper.addRenderer(new AttributesRenderer().setAttributes(attributes));
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
-    wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
+    wrapper.addRenderer(
+      new PropTypesRenderer()
+        .setNumberOfAttributes(attributes.length)
+        .setSlots(declaration.slots ?? [])
+        .setEvents(declaration.events ?? [])
+    );
     wrapper.addRenderer(
       new ComponentRenderer()
         .setDescription(declaration.description ?? '')
-        .setAttributes(declaration.members?.filter(filterAttributes) ?? [])
+        .setAttributes(attributes)
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])
         .setDynamicImportPath(webComponentImport)
