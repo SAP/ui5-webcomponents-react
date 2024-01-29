@@ -48,6 +48,10 @@ export class AttributesRenderer extends AbstractRenderer {
       parts.push(` * @default ${attribute.default}`);
     }
 
+    if (attribute.deprecated) {
+      parts.push(` * @deprecated ${attribute.deprecated}`);
+    }
+
     return `/**\n${parts.join('\n')}\n */`;
   }
 
