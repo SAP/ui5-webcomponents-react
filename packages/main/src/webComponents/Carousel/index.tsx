@@ -2,13 +2,11 @@
 
 import '@ui5/webcomponents/dist/Carousel.js';
 import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carousel.js';
+import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
+import type BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
+import type CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
+import type CarouselPageIndicatorStyle from '@ui5/webcomponents/dist/types/CarouselPageIndicatorStyle.js';
 import type { ReactNode } from 'react';
-import {
-  BackgroundDesign,
-  BorderDesign,
-  CarouselArrowsPlacement,
-  CarouselPageIndicatorStyle
-} from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -20,51 +18,72 @@ interface CarouselAttributes {
    *
    * *   `Content` - the arrows are placed on the sides of the current page.
    * *   `Navigation` - the arrows are placed on the sides of the page indicator.
+   * @default "Content"
    */
   arrowsPlacement?: CarouselArrowsPlacement | keyof typeof CarouselArrowsPlacement;
+
   /**
    * Defines the carousel's background design.
+   * @default "Translucent"
    */
   backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
+
   /**
    * Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
+   * @default false
    */
   cyclic?: boolean;
+
   /**
    * Defines the visibility of the navigation arrows. If set to true the navigation arrows will be hidden.
    *
    * **Note:** The navigation arrows are never displayed on touch devices. In this case, the user can swipe to navigate through the items.
+   * @default false
    */
   hideNavigationArrows?: boolean;
+
   /**
    * Defines the visibility of the page indicator. If set to true the page indicator will be hidden.
+   * @default false
    */
   hidePageIndicator?: boolean;
+
   /**
    * Defines the number of items per page on large size (more than 1024px). One item per page shown by default.
+   * @default 1
    */
   itemsPerPageL?: number;
+
   /**
    * Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.
+   * @default 1
    */
   itemsPerPageM?: number;
+
   /**
    * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
+   * @default 1
    */
   itemsPerPageS?: number;
+
   /**
    * Defines the page indicator background design.
+   * @default "Solid"
    */
   pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
+
   /**
    * Defines the page indicator border design.
+   * @default "Solid"
    */
   pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
+
   /**
    * Defines the style of the page indicator. Available options are:
    *
    * *   `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
    * *   `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
+   * @default "Default"
    */
   pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
 }
@@ -73,11 +92,17 @@ interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
   /**
    * Changes the currently displayed page.
    * @param {number} itemIndex - The index of the target page
+   * @returns {void -
    */
   navigateTo: (itemIndex: number) => void;
+
+  /**
+   * The indices of the currently visible items of the component.
+   */
+  readonly visibleItemsIndices: Array<number>;
 }
 
-interface CarouselPropTypes extends CarouselAttributes, Omit<CommonProps, keyof CarouselAttributes> {
+interface CarouselPropTypes extends CarouselAttributes, Omit<CommonProps, keyof CarouselAttributes | 'onNavigate'> {
   /**
    * Defines the content of the component.
    */
@@ -95,9 +120,7 @@ interface CarouselPropTypes extends CarouselAttributes, Omit<CommonProps, keyof 
  * *   on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.
  * *   on mobile - the user can use swipe gestures.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Carousel)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
@@ -118,17 +141,6 @@ const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
 );
 
 Carousel.displayName = 'Carousel';
-
-Carousel.defaultProps = {
-  arrowsPlacement: CarouselArrowsPlacement.Content,
-  backgroundDesign: BackgroundDesign.Translucent,
-  itemsPerPageL: 1,
-  itemsPerPageM: 1,
-  itemsPerPageS: 1,
-  pageIndicatorBackgroundDesign: BackgroundDesign.Solid,
-  pageIndicatorBorderDesign: BorderDesign.Solid,
-  pageIndicatorStyle: CarouselPageIndicatorStyle.Default
-};
 
 export { Carousel };
 export type { CarouselDomRef, CarouselPropTypes };

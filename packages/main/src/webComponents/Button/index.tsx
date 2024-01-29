@@ -1,55 +1,69 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
+import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import type { MouseEventHandler, ReactNode } from 'react';
-import { ButtonDesign, ButtonType } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ButtonAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
+
   /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Defines the component design.
+   * @default "Default"
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
+
   /**
    * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * Defines the icon, displayed as graphical element within the component. The SAP-icons font provides numerous options.
    *
-   * Example: See all the available icons within the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * Example: See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
   /**
    * Defines whether the icon should be displayed after the component text.
+   * @default false
    */
   iconEnd?: boolean;
+
   /**
    * When set to `true`, the component will automatically submit the nearest HTML form element on `press`.
    *
    * **Note:** For the `submits` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
+   * @default false
    * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
   submits?: boolean;
+
   /**
    * Defines the tooltip of the component.
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
+
   /**
    * Defines whether the button has special form-related functionality.
    *
    * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * @default "Button"
    */
   type?: ButtonType | keyof typeof ButtonType;
 }
@@ -69,7 +83,11 @@ interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
    *     *   `Tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
    */
-  accessibilityAttributes: Record<string, unknown>;
+  accessibilityAttributes: {
+    expanded: 'true' | 'false';
+    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
+    controls: string;
+  };
 }
 
 interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'onClick'> {
@@ -90,9 +108,7 @@ interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof Butt
 /**
  * The `Button` component represents a simple push button. It enables users to trigger actions by clicking or tapping the `Button`, or by pressing certain keyboard keys, such as Enter.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Button)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
@@ -104,11 +120,6 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
 );
 
 Button.displayName = 'Button';
-
-Button.defaultProps = {
-  design: ButtonDesign.Default,
-  type: ButtonType.Button
-};
 
 export { Button };
 export type { ButtonDomRef, ButtonPropTypes };
