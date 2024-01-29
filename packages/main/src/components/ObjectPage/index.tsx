@@ -32,6 +32,8 @@ addCustomCSSWithScoping(
 
 const TAB_CONTAINER_HEADER_HEIGHT = 48;
 
+type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
+
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the upper, always static, title section of the `ObjectPage`.
@@ -61,7 +63,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
    */
-  children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
+  children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**
    * Defines the ID of the currently `ObjectPageSection` section.
    */
