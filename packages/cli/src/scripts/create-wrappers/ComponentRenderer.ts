@@ -74,7 +74,10 @@ export class ComponentRenderer extends AbstractRenderer {
           .map((slot) => `'${snakeCaseToCamelCase(slot.name)}'`)
           .toSorted((a, b) => a.localeCompare(b))
           .join(', ')}],
-        [${this.events?.map((event) => `'${event.name}'`).join(', ')}],
+        [${this.events
+          ?.map((event) => `'${event.name}'`)
+          .toSorted((a, b) => a.localeCompare(b))
+          .join(', ')}],
         () => import('${this.dynamicImportPath}') 
     );
     

@@ -1,6 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { createRequire } from 'node:module';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types.js';
+import { getCEM } from './cem-reader.js';
 
 interface ReferenceResolution {
   isDefault: boolean;
@@ -14,12 +13,7 @@ export function resolveReferenceImport(reference: CEM.Reference | undefined): Re
     return null;
   }
   const { name, package: pkgName, module: modulePath } = reference;
-
-  // load custom element manifest
-  const require = createRequire(import.meta.url);
-  const customElementManifestPath = require.resolve(`${pkgName!}/dist/custom-elements-internal.json`);
-
-  const customElementManifest: CEM.Package = JSON.parse(readFileSync(customElementManifestPath, { encoding: 'utf-8' }));
+  const customElementManifest = getCEM(pkgName!);
 
   // find module
   const resolvedModule = customElementManifest.modules.find((mod) => mod.path === modulePath);
