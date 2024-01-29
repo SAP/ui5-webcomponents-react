@@ -1,4 +1,5 @@
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types.js';
+import type { WebComponentWrapper } from '../scripts/create-wrappers/WebComponentWrapper.js';
 import { getCEM } from './cem-reader.js';
 
 interface ReferenceResolution {
@@ -8,7 +9,7 @@ interface ReferenceResolution {
   importSpecifier: string;
 }
 
-export function resolveReferenceImport(reference: CEM.Reference | undefined): ReferenceResolution | null {
+function resolveReferenceImport(reference: CEM.Reference | undefined): ReferenceResolution | null {
   if (!reference) {
     return null;
   }
@@ -31,4 +32,20 @@ export function resolveReferenceImport(reference: CEM.Reference | undefined): Re
     };
   }
   return null;
+}
+
+export function resolveReferenceImports(references: CEM.Reference[], context: WebComponentWrapper): void {
+  for (const ref of references) {
+    const reference = resolveReferenceImport(ref);
+    if (!reference) {
+      continue;
+    }
+    if (reference.isDefault) {
+      context.addDefaultImport(reference.importSpecifier, ref.name);
+    } else if (reference.named) {
+      context.addNamedImport(reference.importSpecifier, reference.named);
+    } else if (reference.isType) {
+      context.addTypeImport(reference.importSpecifier, ref.name);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
 import { mapWebComponentTypeToPrimitive, propDescriptionFormatter } from '../../util/formatters.js';
-import { resolveReferenceImport } from '../../util/referenceResolver.js';
+import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -141,19 +141,7 @@ export class DomRefRenderer extends AbstractRenderer {
 
     for (const member of this._members) {
       if (member.kind === 'field') {
-        for (const ref of member.type?.references ?? []) {
-          const reference = resolveReferenceImport(ref);
-          if (!reference) {
-            continue;
-          }
-          if (reference.isDefault) {
-            context.addDefaultImport(reference.importSpecifier, ref.name);
-          } else if (reference.named) {
-            context.addNamedImport(reference.importSpecifier, reference.named);
-          } else if (reference.isType) {
-            context.addDefaultTypeImport(reference.importSpecifier, ref.name);
-          }
-        }
+        resolveReferenceImports(member.type?.references ?? [], context);
       }
     }
   }

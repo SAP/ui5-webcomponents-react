@@ -5,6 +5,7 @@ import {
   propDescriptionFormatter,
   snakeCaseToCamelCase
 } from '../../util/formatters.js';
+import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -68,11 +69,7 @@ export class AttributesRenderer extends AbstractRenderer {
 
   prepare(context: WebComponentWrapper) {
     for (const attribute of this._attributes) {
-      const references = attribute.type?.references;
-      if (references && references?.length > 0) {
-        const [reference] = references;
-        context.addDefaultTypeImport(`${reference.package}/${reference.module}`, reference.name);
-      }
+      resolveReferenceImports(attribute.type?.references ?? [], context);
     }
   }
 

@@ -1,6 +1,7 @@
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
 import { capitalizeFirstLetter, propDescriptionFormatter, snakeCaseToCamelCase } from '../../util/formatters.js';
+import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -139,8 +140,7 @@ export class PropTypesRenderer extends AbstractRenderer {
       const reactEventName = `on${capitalizeFirstLetter(snakeCaseToCamelCase(event.name))}`;
       this.eventNames.add(reactEventName);
       if (event.type.text.startsWith('CustomEvent') && this.eventHasDetails(event)) {
-        const reference = event.type.references!.at(0)!;
-        context.addTypeImport(`${reference.package}/${reference.module}`, event.type.references!.at(0)!.name);
+        resolveReferenceImports(event.type?.references ?? [], context);
       } else if (event.type.text === 'Event') {
         switch (event.name) {
           case 'click':
