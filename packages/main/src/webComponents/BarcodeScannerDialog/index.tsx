@@ -13,27 +13,31 @@ interface BarcodeScannerDialogAttributes {}
 interface BarcodeScannerDialogDomRef extends BarcodeScannerDialogAttributes, Ui5DomRef {
   /**
    * Closes the dialog and the scan session.
+   * @returns {void -
    */
   close: () => void;
+
   /**
    * Shows a dialog with the camera videostream. Starts a scan session.
+   * @returns {void -
    */
   show: () => void;
 }
 
 interface BarcodeScannerDialogPropTypes
   extends BarcodeScannerDialogAttributes,
-    Omit<CommonProps, keyof BarcodeScannerDialogAttributes> {
-  /**
-   * Fires when the scan fails with error.
-   */
-  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
+    Omit<CommonProps, 'onScanError' | 'onScanSuccess'> {
   /**
    * Fires when the scan is completed successfuuly.
    */
   onScanSuccess?: (
     event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>
   ) => void;
+
+  /**
+   * Fires when the scan fails with error.
+   */
+  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
 }
 
 /**
@@ -41,11 +45,9 @@ interface BarcodeScannerDialogPropTypes
  *
  * A `scanSuccess` event fires whenever a barcode is identified and a `scanError` event fires when the scan failed (for example, due to missing permisions).
  *
- * Internally, the component uses the zxing-js/library third party OSS. For a list of supported barcode formats, see the <ui5-link target="_blank" href="https://github.com/zxing-js/library">zxing-js/library</ui5-link> documentation
+ * Internally, the component uses the zxing-js/library third party OSS. For a list of supported barcode formats, see the [zxing-js/library](https://github.com/zxing-js/library) documentation.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-BarcodeScannerDialog)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',

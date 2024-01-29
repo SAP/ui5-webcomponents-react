@@ -1,9 +1,5 @@
 import type { ReactElement, ReactNode, ReactPortal } from 'react';
 
-export type { CommonProps } from './CommonProps.js';
-export type { Ui5CustomEvent } from './Ui5CustomEvent.js';
-export type { Ui5DomRef } from './Ui5DomRef.js';
-
 type ReducedReactNode = Exclude<ReactNode, string | number | boolean | ReactPortal | Iterable<ReactNode>>;
 type InternalUI5WCSlotsNode =
   | ReducedReactNode

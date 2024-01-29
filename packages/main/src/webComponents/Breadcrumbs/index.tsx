@@ -2,8 +2,9 @@
 
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
 import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Breadcrumbs.js';
+import type BreadcrumbsDesign from '@ui5/webcomponents/dist/types/BreadcrumbsDesign.js';
+import type BreadcrumbsSeparatorStyle from '@ui5/webcomponents/dist/types/BreadcrumbsSeparatorStyle.js';
 import type { ReactNode } from 'react';
-import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -12,17 +13,22 @@ interface BreadcrumbsAttributes {
    * Defines the visual indication and behavior of the breadcrumbs.
    *
    * **Note:** The `Standard` breadcrumbs show the current page as the last item in the trail. The last item contains only plain text and is not a link.
+   * @default "Standard"
    */
   design?: BreadcrumbsDesign | keyof typeof BreadcrumbsDesign;
+
   /**
    * Determines the visual style of the separator between the breadcrumb items.
+   * @default "Slash"
    */
   separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
 }
 
 interface BreadcrumbsDomRef extends BreadcrumbsAttributes, Ui5DomRef {}
 
-interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, Omit<CommonProps, keyof BreadcrumbsAttributes> {
+interface BreadcrumbsPropTypes
+  extends BreadcrumbsAttributes,
+    Omit<CommonProps, keyof BreadcrumbsAttributes | 'onItemClick'> {
   /**
    * Defines the component items.
    *
@@ -42,9 +48,7 @@ interface BreadcrumbsPropTypes extends BreadcrumbsAttributes, Omit<CommonProps, 
  *
  * You can choose the type of separator to be used from a number of predefined options.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   'ui5-breadcrumbs',
@@ -56,11 +60,6 @@ const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
 );
 
 Breadcrumbs.displayName = 'Breadcrumbs';
-
-Breadcrumbs.defaultProps = {
-  design: BreadcrumbsDesign.Standard,
-  separatorStyle: BreadcrumbsSeparatorStyle.Slash
-};
 
 export { Breadcrumbs };
 export type { BreadcrumbsDomRef, BreadcrumbsPropTypes };
