@@ -18,6 +18,7 @@ import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonDomRef,
+  ButtonPropTypes,
   DialogDomRef,
   DialogPropTypes,
   IconDomRef,
@@ -139,12 +140,16 @@ export interface SelectDialogPropTypes
    * Defines the mode of the SelectDialog list.
    *
    * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
+   *
+   * @default ListMode.SingleSelect
    */
   mode?: ListPropTypes['mode'];
   /**
    * Defines props you can pass to the internal `List` component.
    *
    * __Note:__ `mode`, `children`, `growing`, `onLoadMore` and `footerText` are not supported.
+   *
+   * @default {}
    */
   listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
@@ -175,6 +180,10 @@ export interface SelectDialogPropTypes
   onConfirm?:
     | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: StandardListItemDomRef[] }>) => void)
     | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: StandardListItemDomRef[] }>) => void);
+  /**
+   * This event will be fired when the cancel button is clicked or ESC key is pressed.
+   */
+  onCancel?: ButtonPropTypes['onClick'] | DialogPropTypes['onBeforeClose'];
 }
 
 /**
@@ -188,8 +197,8 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     growing,
     headerText,
     headerTextAlignCenter,
-    listProps,
-    mode,
+    listProps = {},
+    mode = ListMode.SingleSelect,
     numberOfSelectedItems,
     rememberSelections,
     showClearButton,
@@ -201,7 +210,9 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     onSearchInput,
     onSearchReset,
     onBeforeOpen,
+    onBeforeClose,
     onAfterOpen,
+    onCancel,
     ...rest
   } = props;
 
@@ -213,11 +224,12 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>((listProps as any).ref);
 
   const handleBeforeOpen = (e) => {
+    const localSelectedItems = listRef.current?.getSelectedItems() ?? [];
     if (typeof onBeforeOpen === 'function') {
       onBeforeOpen(e);
     }
     if (mode === ListMode.MultiSelect && listRef.current?.hasData) {
-      setSelectedItems(listRef.current?.getSelectedItems() ?? []);
+      setSelectedItems(localSelectedItems);
     }
   };
 
@@ -265,8 +277,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     }
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
     selectDialogRef.current.close();
+    if (typeof onCancel === 'function') {
+      onCancel(e);
+    }
   };
 
   const handleClear = (e) => {
@@ -297,6 +312,15 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     }
   };
 
+  const handleBeforeClose = (e) => {
+    if (typeof onBeforeClose === 'function') {
+      onBeforeClose(e);
+    }
+    if (typeof onCancel === 'function' && e.detail.escPressed) {
+      onCancel(e);
+    }
+  };
+
   return (
     <Dialog
       {...rest}
@@ -306,6 +330,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       onAfterClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
       onAfterOpen={handleAfterOpen}
+      onBeforeClose={handleBeforeClose}
     >
       <div className={classes.headerContent} slot="header">
         {showClearButton && headerTextAlignCenter && (
@@ -385,11 +410,6 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     </Dialog>
   );
 });
-
-SelectDialog.defaultProps = {
-  mode: ListMode.SingleSelect,
-  listProps: {}
-};
 
 SelectDialog.displayName = 'SelectDialog';
 
