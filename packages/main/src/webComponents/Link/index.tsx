@@ -2,9 +2,9 @@
 
 import '@ui5/webcomponents/dist/Link.js';
 import type { LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type { ReactNode } from 'react';
-import type { WrappingType } from '../../enums/index.js';
-import { LinkDesign } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -13,32 +13,41 @@ interface LinkAttributes {
    * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
+
   /**
    * Receives id(or many ids) of the elements that label the input
    */
   accessibleNameRef?: string;
+
   /**
    * Defines the ARIA role of the component. **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   * @default "link"
    */
   accessibleRole?: string;
+
   /**
    * Defines the component design.
    *
    * **Note:** Avaialble options are `Default`, `Subtle`, and `Emphasized`.
+   * @default "Default"
    */
   design?: LinkDesign | keyof typeof LinkDesign;
+
   /**
    * Defines whether the component is disabled.
    *
    * **Note:** When disabled, the click event cannot be triggered by the user.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * Defines the component href.
    *
    * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
+
   /**
    * Defines the component target.
    *
@@ -53,9 +62,11 @@ interface LinkAttributes {
    * **This property must only be used when the `href` property is set.**
    */
   target?: string;
+
   /**
    * Defines how the text of a component will be displayed when there is not enough space.
    * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
+   * @default "None"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
@@ -74,7 +85,7 @@ interface LinkDomRef extends LinkAttributes, Ui5DomRef {
    *     *   `Menu`
    *     *   `Tree`
    */
-  accessibilityAttributes: Record<string, unknown>;
+  accessibilityAttributes: { expanded: 'true' | 'false'; hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree' };
 }
 
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'onClick'> {
@@ -92,9 +103,7 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
 /**
  * The `Link` is a hyperlink component that is used to navigate to other apps and web pages, or to trigger actions. It is a clickable text element, visualized in such a way that it stands out from the standard text. On hover, it changes its style to an underlined text to provide additional feedback to the user.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Link)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
@@ -106,11 +115,6 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
 );
 
 Link.displayName = 'Link';
-
-Link.defaultProps = {
-  accessibleRole: 'link',
-  design: LinkDesign.Default
-};
 
 export { Link };
 export type { LinkDomRef, LinkPropTypes };

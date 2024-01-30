@@ -9,6 +9,7 @@ interface FilterItemAttributes {
    * Defines the additional text of the component.
    */
   additionalText?: string;
+
   /**
    * Defines the text of the component.
    */
@@ -27,17 +28,16 @@ interface FilterItemPropTypes extends FilterItemAttributes, Omit<CommonProps, ke
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  values?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  values?: UI5WCSlotsNode;
 }
 
 /**
+ * ### Usage
  *
+ * For the `FilterItem`
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ViewSettingsDialog)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   'ui5-filter-item',

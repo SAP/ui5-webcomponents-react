@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Icon.js';
-import { IconDesign } from '../../enums/index.js';
+import type IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
@@ -12,21 +12,27 @@ interface IconAttributes {
    * **Note:** Every icon should have a text alternative in order to calculate its accessible name.
    */
   accessibleName?: string;
+
   /**
    * Defines the accessibility role of the component.
    */
   accessibleRole?: string;
+
   /**
    * Defines the component semantic design.
+   * @default "Default"
    */
   design?: IconDesign | keyof typeof IconDesign;
+
   /**
    * Defines if the icon is interactive (focusable and pressable)
+   * @default false
    */
   interactive?: boolean;
+
   /**
    * Defines the unique identifier (icon name) of the component.
-   * To browse all available icons, see the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">SAP Icons</ui5-link>, <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT">SAP Fiori Tools</ui5-link> and <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">SAP Business Suite</ui5-link> collections.
+   * To browse all available icons, see the [SAP Icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html), [SAP Fiori Tools](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT) and [SAP Business Suite](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html) collections.
    * Example:
    * `name='add'`, `name='delete'`, `name='employee'`.
    *
@@ -39,10 +45,12 @@ interface IconAttributes {
    * `name='business-suite/3d'`, `name='business-suite/1x2-grid-layout'`, `name='business-suite/4x4-grid-layout'`.
    */
   name?: string;
+
   /**
    * Defines whether the component should have a tooltip.
    *
    * **Note:** The tooltip text should be provided via the `accessible-name` property.
+   * @default false
    */
   showTooltip?: boolean;
 }
@@ -55,9 +63,7 @@ interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttr
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element,
  * or as an interactive element that can be focused and clicked.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Icon)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
@@ -69,10 +75,6 @@ const Icon = withWebComponent<IconPropTypes, IconDomRef>(
 );
 
 Icon.displayName = 'Icon';
-
-Icon.defaultProps = {
-  design: IconDesign.Default
-};
 
 export { Icon };
 export type { IconDomRef, IconPropTypes };

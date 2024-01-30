@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/FileUploader.js';
 import type { FileUploaderChangeEventDetail } from '@ui5/webcomponents/dist/FileUploader.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
-import { ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -14,20 +14,27 @@ interface FileUploaderAttributes {
    * **Note:** Please make sure you are adding the `.` in front on the file type, e.g. `.png` in case you want to accept png's only.
    */
   accept?: string;
+
   /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is completely noninteractive.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * If set to "true", the input field of component will not be rendered. Only the default slot that is passed will be rendered.
+   * @default false
    */
   hideInput?: boolean;
+
   /**
    * Allows multiple files to be chosen.
+   * @default false
    */
   multiple?: boolean;
+
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
@@ -36,16 +43,20 @@ interface FileUploaderAttributes {
    * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
+
   /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
    */
   placeholder?: string;
+
   /**
    * Defines the name/names of the file/files to upload.
    */
   value?: string;
+
   /**
    * Defines the value state of the component.
+   * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
 }
@@ -54,7 +65,7 @@ interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
   /**
    * FileList of all selected files.
    */
-  readonly files: FileList;
+  readonly files: FileList | null;
 }
 
 interface FileUploaderPropTypes
@@ -66,6 +77,7 @@ interface FileUploaderPropTypes
    * Also it is not recommended to use any non-interactable components, as it may lead to poor accessibility experience.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -78,7 +90,7 @@ interface FileUploaderPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  valueStateMessage?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  valueStateMessage?: UI5WCSlotsNode;
   /**
    * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
@@ -90,9 +102,7 @@ interface FileUploaderPropTypes
  * To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property.
  * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the `FileUploader`
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-FileUploader)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',
@@ -104,10 +114,6 @@ const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>
 );
 
 FileUploader.displayName = 'FileUploader';
-
-FileUploader.defaultProps = {
-  valueState: ValueState.None
-};
 
 export { FileUploader };
 export type { FileUploaderDomRef, FileUploaderPropTypes };
