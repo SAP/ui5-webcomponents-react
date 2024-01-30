@@ -1,113 +1,150 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
-import type { ResponsivePopoverBeforeCloseEventDetail } from '@ui5/webcomponents/dist/ResponsivePopover.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
+import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import type PopoverPlacementType from '@ui5/webcomponents/dist/types/PopoverPlacementType.js';
+import type PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
+import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import type { ReactNode } from 'react';
-import {
-  PopoverHorizontalAlign,
-  PopoverPlacementType,
-  PopoverVerticalAlign,
-  PopupAccessibleRole
-} from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ResponsivePopoverAttributes {
   /**
+   * Defines the accessible name of the component.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+
+  /**
+   * Allows setting a custom role.
+   * @default "Dialog"
+   */
+  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+
+  /**
    * Determines if there is no enough space, the component can be placed over the target.
+   * @default false
    */
   allowTargetOverlap?: boolean;
+
   /**
    * Defines the header text.
    *
    * **Note:** If `header` slot is provided, the `headerText` is ignored.
    */
   headerText?: string;
+
   /**
    * Determines whether the component arrow is hidden.
+   * @default false
    */
   hideArrow?: boolean;
+
   /**
    * Defines whether the block layer will be shown if modal property is set to true.
+   * @default false
    */
   hideBackdrop?: boolean;
+
   /**
    * Determines the horizontal alignment of the component.
+   * @default "Center"
    */
   horizontalAlign?: PopoverHorizontalAlign | keyof typeof PopoverHorizontalAlign;
-  /**
-   * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
-   */
-  modal?: boolean;
-  /**
-   * Defines the ID of the element that the popover is shown at
-   */
-  opener?: string;
-  /**
-   * Determines on which side the component is placed at.
-   */
-  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
-  /**
-   * Determines the vertical alignment of the component.
-   */
-  verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
-  /**
-   * Defines the accessible name of the component.
-   */
-  accessibleName?: string;
-  /**
-   * Defines the IDs of the elements that label the component.
-   */
-  accessibleNameRef?: string;
-  /**
-   * Allows setting a custom role.
-   */
-  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
    */
   initialFocus?: string;
+
+  /**
+   * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * @default false
+   */
+  modal?: boolean;
+
   /**
    * Indicates if the element is open
+   * @default false
    */
   open?: boolean;
+
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at
+   * @default undefined
+   */
+  opener?: string;
+
+  /**
+   * Determines on which side the component is placed at.
+   * @default "Right"
+   */
+  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+
   /**
    * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   * @default false
    */
   preventFocusRestore?: boolean;
+
+  /**
+   * Determines the vertical alignment of the component.
+   * @default "Center"
+   */
+  verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
 }
 
 interface ResponsivePopoverDomRef extends Omit<ResponsivePopoverAttributes, 'opener'>, Ui5DomRef {
   /**
-   * Defines the ID or DOM Reference of the element that the popover is shown at
+   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
+   * @returns {Promise<void>} - Promise that resolves when the focus is applied
    */
-  opener?: string | HTMLElement;
+  applyFocus: () => Promise<void>;
+
   /**
    * Closes the popover/dialog.
+   * @returns {void}
    */
   close: () => void;
+
   /**
    * Tells if the responsive popover is open.
    * @returns {boolean}
    */
   isOpen: () => boolean;
+
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at
+   */
+  opener: HTMLElement | string | undefined;
+
   /**
    * Shows popover on desktop and dialog on mobile.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
+   * @param {HTMLElement} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
-   * @returns {Promise<void>} Resolves when the responsive popover is open
+   * @returns {Promise<void>} - Resolves when the responsive popover is open
    */
-  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
-  /**
-   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   * @returns {Promise<void>} Promise that resolves when the focus is applied
-   */
-  applyFocus: () => Promise<void>;
+  showAt: (opener: HTMLElement, preventInitialFocus?: boolean) => Promise<void>;
 }
 
 interface ResponsivePopoverPropTypes
   extends ResponsivePopoverAttributes,
-    Omit<CommonProps, keyof ResponsivePopoverAttributes> {
+    Omit<
+      CommonProps,
+      keyof ResponsivePopoverAttributes | 'onAfterClose' | 'onAfterOpen' | 'onBeforeClose' | 'onBeforeOpen'
+    > {
+  /**
+   * Defines the content of the Popup.
+   */
+  children?: ReactNode | ReactNode[];
+
   /**
    * Defines the footer HTML Element.
    *
@@ -117,7 +154,8 @@ interface ResponsivePopoverPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  footer?: UI5WCSlotsNode;
+
   /**
    * Defines the header HTML Element.
    *
@@ -127,35 +165,32 @@ interface ResponsivePopoverPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
-  /**
-   * Defines the content of the Popup.
-   */
-  children?: ReactNode | ReactNode[];
-  /**
-   * Fired after the component is closed. **This event does not bubble.**
-   */
-  onAfterClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
-  /**
-   * Fired after the component is opened. **This event does not bubble.**
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
-  /**
-   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
-   */
-  onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, ResponsivePopoverBeforeCloseEventDetail>) => void;
+  header?: UI5WCSlotsNode;
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+
+  /**
+   * Fired after the component is opened. **This event does not bubble.**
+   */
+  onAfterOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+
+  /**
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+   */
+  onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, PopupBeforeCloseEventDetail>) => void;
+
+  /**
+   * Fired after the component is closed. **This event does not bubble.**
+   */
+  onAfterClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 }
 
 /**
  * The `ResponsivePopover` acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ResponsivePopover)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
@@ -177,13 +212,6 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';
-
-ResponsivePopover.defaultProps = {
-  horizontalAlign: PopoverHorizontalAlign.Center,
-  placementType: PopoverPlacementType.Right,
-  verticalAlign: PopoverVerticalAlign.Center,
-  accessibleRole: PopupAccessibleRole.Dialog
-};
 
 export { ResponsivePopover };
 export type { ResponsivePopoverDomRef, ResponsivePopoverPropTypes };
