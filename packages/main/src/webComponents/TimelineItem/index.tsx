@@ -9,21 +9,26 @@ interface TimelineItemAttributes {
   /**
    * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
   /**
    * Defines the name of the item, displayed before the `title-text`.
    */
   name?: string;
+
   /**
    * Defines if the `name` is clickable.
+   * @default false
    */
   nameClickable?: boolean;
+
   /**
    * Defines the subtitle text of the component.
    */
   subtitleText?: string;
+
   /**
    * Defines the title text of the component.
    */
@@ -32,7 +37,9 @@ interface TimelineItemAttributes {
 
 interface TimelineItemDomRef extends TimelineItemAttributes, Ui5DomRef {}
 
-interface TimelineItemPropTypes extends TimelineItemAttributes, Omit<CommonProps, keyof TimelineItemAttributes> {
+interface TimelineItemPropTypes
+  extends TimelineItemAttributes,
+    Omit<CommonProps, keyof TimelineItemAttributes | 'onNameClick'> {
   /**
    * Determines the description of the `TimelineItem`.
    */
@@ -46,11 +53,9 @@ interface TimelineItemPropTypes extends TimelineItemAttributes, Omit<CommonProps
 }
 
 /**
- * An entry posted on the timeline
+ * An entry posted on the timeline.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Timeline)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>(
   'ui5-timeline-item',

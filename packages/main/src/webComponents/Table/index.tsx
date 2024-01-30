@@ -1,51 +1,59 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import type {
-  TablePopinChangeEventDetail,
-  TableRowClickEventDetail,
-  TableSelectionChangeEventDetail
-} from '@ui5/webcomponents/dist/Table.js';
+import type { TablePopinChangeEventDetail, TableSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Table.js';
+import type { TableRowClickEventDetail } from '@ui5/webcomponents/dist/TableRow.js';
+import type TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
+import type TableMode from '@ui5/webcomponents/dist/types/TableMode.js';
 import type { ReactNode } from 'react';
-import { TableGrowingMode, TableMode } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TableAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
+
   /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
+   * @default false
    */
   busy?: boolean;
+
   /**
    * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   * @default 1000
    */
   busyDelay?: number;
+
   /**
-   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `onLoadMore` event is fired.
+   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
    *
    * Available options:
    *
-   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `onLoadMore` event.
-   * `Scroll` - The `onLoadMore` event is triggered when the user scrolls to the bottom of the table;
+   * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `load-more` event.
+   * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
    * `None` (default) - The growing is off.
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
+   * @default "None"
    */
   growing?: TableGrowingMode | keyof typeof TableGrowingMode;
+
   /**
    * Defines the subtext that will be displayed under the `growingButtonText`.
    *
    * **Note:** This property takes effect if `growing` is set to `Button`.
    */
   growingButtonSubtext?: string;
+
   /**
    * Defines the text that will be displayed inside the growing button at the bottom of the table, meant for loading more rows upon press.
    *
@@ -53,18 +61,24 @@ interface TableAttributes {
    * **Note:** This property takes effect if `growing` is set to `Button`.
    */
   growingButtonText?: string;
+
   /**
    * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
+   * @default false
    */
   hideNoData?: boolean;
+
   /**
    * Defines the mode of the component.
+   * @default "None"
    */
   mode?: TableMode | keyof typeof TableMode;
+
   /**
    * Defines the text that will be displayed when there is no data and `hideNoData` is not present.
    */
   noDataText?: string;
+
   /**
    * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport.
    *
@@ -76,13 +90,23 @@ interface TableAttributes {
    *     *   Mozilla Firefox lower than version 59
    * *   Scrolling behavior:
    *     *   If the Web Component is placed in layout containers that have the `overflow: hidden` or `overflow: auto` style definition, this can prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.
+   * @default false
    */
   stickyColumnHeader?: boolean;
 }
 
 interface TableDomRef extends TableAttributes, Ui5DomRef {}
 
-interface TablePropTypes extends TableAttributes, Omit<CommonProps, keyof TableAttributes> {
+interface TablePropTypes
+  extends TableAttributes,
+    Omit<CommonProps, keyof TableAttributes | 'onLoadMore' | 'onPopinChange' | 'onRowClick' | 'onSelectionChange'> {
+  /**
+   * Defines the component rows.
+   *
+   * **Note:** Use `TableRow` for the intended design.
+   */
+  children?: ReactNode | ReactNode[];
+
   /**
    * Defines the configuration for the columns of the component.
    *
@@ -94,27 +118,24 @@ interface TablePropTypes extends TableAttributes, Omit<CommonProps, keyof TableA
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  columns?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  columns?: UI5WCSlotsNode;
   /**
-   * Defines the component rows.
-   *
-   * **Note:** Use `TableRow` for the intended design.
+   * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  children?: ReactNode | ReactNode[];
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
+
+  /**
+   * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
+   */
+  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
+
   /**
    * Fired when the user presses the `More` button or scrolls to the table's end.
    *
    * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    */
   onLoadMore?: (event: Ui5CustomEvent<TableDomRef>) => void;
-  /**
-   * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
-   */
-  onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
-  /**
-   * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
-   */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
+
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
    */
@@ -128,9 +149,7 @@ interface TablePropTypes extends TableAttributes, Omit<CommonProps, keyof TableA
  *
  * Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Table)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
@@ -151,12 +170,6 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
 );
 
 Table.displayName = 'Table';
-
-Table.defaultProps = {
-  busyDelay: 1000,
-  growing: TableGrowingMode.None,
-  mode: TableMode.None
-};
 
 export { Table };
 export type { TableDomRef, TablePropTypes };

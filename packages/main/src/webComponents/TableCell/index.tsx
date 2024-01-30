@@ -9,7 +9,7 @@ interface TableCellAttributes {}
 
 interface TableCellDomRef extends TableCellAttributes, Ui5DomRef {}
 
-interface TableCellPropTypes extends TableCellAttributes, Omit<CommonProps, keyof TableCellAttributes> {
+interface TableCellPropTypes extends TableCellAttributes, CommonProps {
   /**
    * Specifies the content of the component.
    */
@@ -19,9 +19,7 @@ interface TableCellPropTypes extends TableCellAttributes, Omit<CommonProps, keyo
 /**
  * The `TableCell` component defines the structure of the data in a single `Table` cell.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Table)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const TableCell = withWebComponent<TableCellPropTypes, TableCellDomRef>(
   'ui5-table-cell',
