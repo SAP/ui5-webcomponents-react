@@ -10,15 +10,17 @@ interface ProductSwitchItemAttributes {
    *
    * Example:
    *
-   * ProductSwitchItem icon="palette"
+   * ui5-product-switch-item icon="palette"
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
   /**
    * Defines the subtitle of the component.
    */
   subtitleText?: string;
+
   /**
    * Defines a target where the `targetSrc` content must be open.
    *
@@ -29,12 +31,15 @@ interface ProductSwitchItemAttributes {
    * *   `_blank`
    * *   `_parent`
    * *   `_search`
+   * @default "_self"
    */
   target?: string;
+
   /**
    * Defines the component target URI. Supports standard hyperlink behavior.
    */
   targetSrc?: string;
+
   /**
    * Defines the title of the component.
    */
@@ -57,9 +62,7 @@ interface ProductSwitchItemPropTypes
  *
  * **Note:** `ProductSwitchItem` is not supported when used outside of `ProductSwitch`.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ProductSwitch)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSwitchItemDomRef>(
   'ui5-product-switch-item',

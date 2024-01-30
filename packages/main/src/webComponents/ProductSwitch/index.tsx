@@ -9,7 +9,7 @@ interface ProductSwitchAttributes {}
 
 interface ProductSwitchDomRef extends ProductSwitchAttributes, Ui5DomRef {}
 
-interface ProductSwitchPropTypes extends ProductSwitchAttributes, Omit<CommonProps, keyof ProductSwitchAttributes> {
+interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonProps {
   /**
    * Defines the items of the `ProductSwitch`.
    */
@@ -19,9 +19,7 @@ interface ProductSwitchPropTypes extends ProductSwitchAttributes, Omit<CommonPro
 /**
  * The `ProductSwitch` is an SAP Fiori specific web component that is used in `ShellBar` and allows the user to easily switch between products.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ProductSwitch)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomRef>(
   'ui5-product-switch',

@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Page.js';
+import type PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import type { ReactNode } from 'react';
-import { PageBackgroundDesign } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -10,21 +10,28 @@ interface PageAttributes {
   /**
    * Defines the background color of the `Page`.
    *
-   * **Note:** When a List is placed inside the page, we recommend using “List” to ensure better color contrast.
+   * **Note:** When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.
+   * @default "Solid"
    */
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
+
   /**
    * Disables vertical scrolling of page content. If set to true, there will be no vertical scrolling at all.
+   * @default false
    */
   disableScrolling?: boolean;
+
   /**
    * Defines if the footer should float over the content.
    *
    * **Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.
+   * @default true
    */
   floatingFooter?: boolean;
+
   /**
    * Defines the footer visibility.
+   * @default false
    */
   hideFooter?: boolean;
 }
@@ -36,6 +43,7 @@ interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttr
    * Defines the content HTML Element.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the footer HTML Element.
    *
@@ -46,6 +54,7 @@ interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttr
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
   footer?: UI5WCSlotsNode;
+
   /**
    * Defines the header HTML Element.
    *
@@ -61,9 +70,7 @@ interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttr
 /**
  * The `Page` is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Page)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Page = withWebComponent<PagePropTypes, PageDomRef>(
   'ui5-page',
@@ -75,11 +82,6 @@ const Page = withWebComponent<PagePropTypes, PageDomRef>(
 );
 
 Page.displayName = 'Page';
-
-Page.defaultProps = {
-  backgroundDesign: PageBackgroundDesign.Solid,
-  floatingFooter: true
-};
 
 export { Page };
 export type { PageDomRef, PagePropTypes };
