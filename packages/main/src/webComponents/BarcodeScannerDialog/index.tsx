@@ -13,13 +13,13 @@ interface BarcodeScannerDialogAttributes {}
 interface BarcodeScannerDialogDomRef extends BarcodeScannerDialogAttributes, Ui5DomRef {
   /**
    * Closes the dialog and the scan session.
-   * @returns {void -
+   * @returns {void}
    */
   close: () => void;
 
   /**
    * Shows a dialog with the camera videostream. Starts a scan session.
-   * @returns {void -
+   * @returns {void}
    */
   show: () => void;
 }

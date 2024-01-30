@@ -92,7 +92,7 @@ interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
   /**
    * Changes the currently displayed page.
    * @param {number} itemIndex - The index of the target page
-   * @returns {void -
+   * @returns {void}
    */
   navigateTo: (itemIndex: number) => void;
 

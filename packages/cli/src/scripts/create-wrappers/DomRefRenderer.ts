@@ -68,11 +68,11 @@ export class DomRefRenderer extends AbstractRenderer {
       );
     });
     if (member.return) {
-      parts.push(
-        ` * @returns {${resolveDomRefType(member.return.type)} - ${propDescriptionFormatter(
-          member.return.description ?? ''
-        )}`
-      );
+      let returnDescription = '';
+      if (member.return.description?.length) {
+        returnDescription = ` - ${propDescriptionFormatter(member.return.description ?? '')}`;
+      }
+      parts.push(` * @returns {${resolveDomRefType(member.return.type)}}${returnDescription}`);
     }
     return parts;
   }
