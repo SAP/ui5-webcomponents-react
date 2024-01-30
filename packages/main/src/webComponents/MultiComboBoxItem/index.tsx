@@ -6,13 +6,16 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface MultiComboBoxItemAttributes {
   /**
-   * Defines the selected state of the component.
-   */
-  selected?: boolean;
-  /**
    * Defines the additional text of the component.
    */
   additionalText?: string;
+
+  /**
+   * Defines the selected state of the component.
+   * @default false
+   */
+  selected?: boolean;
+
   /**
    * Defines the text of the component.
    */
@@ -26,13 +29,10 @@ interface MultiComboBoxItemPropTypes
     Omit<CommonProps, keyof MultiComboBoxItemAttributes> {}
 
 /**
- * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
+ * The `MultiComboBoxItem` represents the item for a `MultiComboBox`.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiComboBox)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComboBoxItemDomRef>(
   'ui5-mcb-item',

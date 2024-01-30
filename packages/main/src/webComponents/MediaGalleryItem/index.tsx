@@ -1,16 +1,18 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
+import type MediaGalleryItemLayout from '@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js';
 import type { ReactNode } from 'react';
-import { MediaGalleryItemLayout } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MediaGalleryItemAttributes {
   /**
    * Defines whether the component is in disabled state.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * Determines the layout of the item container.
    *
@@ -18,10 +20,13 @@ interface MediaGalleryItemAttributes {
    *
    * *   `Square`
    * *   `Wide`
+   * @default "Square"
    */
   layout?: MediaGalleryItemLayout | keyof typeof MediaGalleryItemLayout;
+
   /**
    * Defines the selected state of the component.
+   * @default false
    */
   selected?: boolean;
 }
@@ -34,7 +39,8 @@ interface MediaGalleryItemPropTypes
   /**
    * Defines the content of the component.
    */
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
+
   /**
    * Defines the content of the thumbnail.
    *
@@ -52,9 +58,7 @@ interface MediaGalleryItemPropTypes
  *
  * **Note:** `MediaGalleryItem` is not supported when used outside of `MediaGallery`.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-MediaGallery)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGalleryItemDomRef>(
   'ui5-media-gallery-item',
@@ -66,10 +70,6 @@ const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGaller
 );
 
 MediaGalleryItem.displayName = 'MediaGalleryItem';
-
-MediaGalleryItem.defaultProps = {
-  layout: MediaGalleryItemLayout.Square
-};
 
 export { MediaGalleryItem };
 export type { MediaGalleryItemDomRef, MediaGalleryItemPropTypes };

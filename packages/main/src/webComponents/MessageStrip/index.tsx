@@ -1,41 +1,49 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MessageStrip.js';
+import type MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import type { ReactNode } from 'react';
-import { MessageStripDesign } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MessageStripAttributes {
   /**
    * Defines the component type.
+   * @default "Information"
    */
   design?: MessageStripDesign | keyof typeof MessageStripDesign;
+
   /**
    * Defines whether the MessageStrip renders close button.
+   * @default false
    */
   hideCloseButton?: boolean;
+
   /**
    * Defines whether the MessageStrip will show an icon in the beginning. You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
+   * @default false
    */
   hideIcon?: boolean;
 }
 
 interface MessageStripDomRef extends MessageStripAttributes, Ui5DomRef {}
 
-interface MessageStripPropTypes extends MessageStripAttributes, Omit<CommonProps, keyof MessageStripAttributes> {
+interface MessageStripPropTypes
+  extends MessageStripAttributes,
+    Omit<CommonProps, keyof MessageStripAttributes | 'onClose'> {
   /**
    * Defines the text of the component.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the content to be displayed as graphical element within the component.
    *
    * **Note:** If no icon is given, the default icon for the component type will be used. The SAP-icons font provides numerous options.
    *
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="icon"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -53,9 +61,7 @@ interface MessageStripPropTypes extends MessageStripAttributes, Omit<CommonProps
 /**
  * The `MessageStrip` component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MessageStrip)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(
   'ui5-message-strip',
@@ -67,10 +73,6 @@ const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>
 );
 
 MessageStrip.displayName = 'MessageStrip';
-
-MessageStrip.defaultProps = {
-  design: MessageStripDesign.Information
-};
 
 export { MessageStrip };
 export type { MessageStripDomRef, MessageStripPropTypes };
