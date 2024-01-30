@@ -4,22 +4,26 @@ import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import type { SideNavigationSelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface SideNavigationAttributes {
   /**
    * Defines whether the `SideNavigation` is expanded or collapsed.
+   * @default false
    */
   collapsed?: boolean;
 }
 
 interface SideNavigationDomRef extends SideNavigationAttributes, Ui5DomRef {}
 
-interface SideNavigationPropTypes extends SideNavigationAttributes, Omit<CommonProps, keyof SideNavigationAttributes> {
+interface SideNavigationPropTypes
+  extends SideNavigationAttributes,
+    Omit<CommonProps, keyof SideNavigationAttributes | 'onSelectionChange'> {
   /**
    * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested inside the items.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the fixed items at the bottom of the `SideNavigation`. Use the `SideNavigationItem` component for the fixed items, and optionally the `SideNavigationSubItem` component to provide second-level items inside them. **Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items "flat" (do not pass sub-items)
    *
@@ -29,7 +33,8 @@ interface SideNavigationPropTypes extends SideNavigationAttributes, Omit<CommonP
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  fixedItems?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  fixedItems?: UI5WCSlotsNode;
+
   /**
    * Defines the header of the `SideNavigation`.
    *
@@ -41,7 +46,7 @@ interface SideNavigationPropTypes extends SideNavigationAttributes, Omit<CommonP
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  header?: UI5WCSlotsNode;
   /**
    * Fired when the selection has changed via user interaction
    */
@@ -55,9 +60,7 @@ interface SideNavigationPropTypes extends SideNavigationAttributes, Omit<CommonP
  * *   The main navigation section is related to the user’s current work context
  * *   The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-SideNavigation)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationDomRef>(
   'ui5-side-navigation',

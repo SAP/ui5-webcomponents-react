@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/StepInput.js';
-import { ValueState } from '../../enums/index.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -10,22 +10,30 @@ interface StepInputAttributes {
    * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
+
   /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Determines whether the component is displayed as disabled.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * Defines a maximum value of the component.
+   * @default undefined
    */
-  max?: number;
+  max?: number | undefined;
+
   /**
    * Defines a minimum value of the component.
+   * @default undefined
    */
-  min?: number;
+  min?: number | undefined;
+
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
@@ -34,34 +42,48 @@ interface StepInputAttributes {
    * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
+
   /**
    * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
    * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
+
   /**
    * Determines whether the component is displayed as read-only.
+   * @default false
    */
   readonly?: boolean;
+
   /**
    * Defines whether the component is required.
+   * @default false
    */
   required?: boolean;
+
   /**
    * Defines a step of increasing/decreasing the value of the component.
+   * @default 1
    */
   step?: number;
+
   /**
    * Defines a value of the component.
+   * @default 0
    */
   value?: number;
+
   /**
    * Determines the number of digits after the decimal point of the component.
+   * @default 0
    */
   valuePrecision?: number;
+
   /**
    * Defines the value state of the component.
+   * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
 }
@@ -93,9 +115,7 @@ interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, keyo
  *
  * The user can change the value of the component by pressing the increase/decrease buttons, by typing a number directly, by using the keyboard up/down and page up/down, or by using the mouse scroll wheel. Decimal values are supported.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-StepInput)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   'ui5-step-input',
@@ -118,13 +138,6 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
 );
 
 StepInput.displayName = 'StepInput';
-
-StepInput.defaultProps = {
-  step: 1,
-  value: 0,
-  valuePrecision: 0,
-  valueState: ValueState.None
-};
 
 export { StepInput };
 export type { StepInputDomRef, StepInputPropTypes };
