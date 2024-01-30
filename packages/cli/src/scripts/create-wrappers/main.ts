@@ -73,6 +73,7 @@ export default async function createWrappers(packageName: string, outDir: string
         .setEvents(declaration.events ?? [])
         .setDynamicImportPath(webComponentImport)
         .setNote(options.additionalComponentNote ?? '')
+        .setIsAbstract(declaration._ui5abstract ?? false)
     );
     wrapper.addRenderer(new ExportsRenderer());
 

@@ -13,6 +13,7 @@ export class ComponentRenderer extends AbstractRenderer {
   private events: CEM.Event[] = [];
   private description: string = '';
   private note: string = '';
+  private isAbstract: boolean = false;
 
   setDynamicImportPath(value: string) {
     this.dynamicImportPath = value;
@@ -44,12 +45,21 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
+  setIsAbstract(value: boolean) {
+    this.isAbstract = value;
+    return this;
+  }
+
   prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
   }
 
   render(context: WebComponentWrapper): string {
     let comment = `/**\n * ${summaryFormatter(this.description)}\n *\n`;
+
+    if (this.isAbstract) {
+      comment += ' * @abstract\n';
+    }
     if (this.note) {
       comment += ` * __Note__: ${this.note}\n`;
     }
