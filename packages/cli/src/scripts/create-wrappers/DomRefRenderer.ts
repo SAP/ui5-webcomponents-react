@@ -29,21 +29,7 @@ function resolveDomRefType(type: CEM.Type | undefined) {
     return 'unknown';
   }
 
-  let resolvedType = mapWebComponentTypeToTsType(type.text);
-
-  const references = type?.references;
-  const isEnum = references != null && references?.length > 0;
-
-  if (isEnum) {
-    const isArray = resolvedType.includes('[]');
-    resolvedType = resolvedType.replace('[]', '');
-    resolvedType += ` | keyof typeof ${resolvedType}`;
-    if (isArray) {
-      resolvedType = `(${resolvedType})[]`;
-    }
-  }
-
-  return resolvedType;
+  return mapWebComponentTypeToTsType(type.text);
 }
 
 type UI5ClassMember = CEM.ClassField | CEM.ClassMethod;
@@ -131,7 +117,9 @@ export class DomRefRenderer extends AbstractRenderer {
       }
       const existingType = context.attributesMap.get(member.name)!;
       // the types don't match, e.g. for `opener` attributes
-      return existingType !== resolveDomRefType(member.type);
+      const domRefType = resolveDomRefType(member.type);
+      // in attributes, some enum types are widened to keyof typeof REF
+      return ![domRefType, `${domRefType} | keyof typeof ${domRefType}`].includes(existingType);
     });
   }
 
