@@ -1,9 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DatePicker.js';
-import type { DatePickerChangeEventDetail, DatePickerInputEventDetail } from '@ui5/webcomponents/dist/DatePicker.js';
-import type { CalendarType } from '../../enums/index.js';
-import { ValueState } from '../../enums/index.js';
+import type {
+  DatePickerChangeEventDetail,
+  DatePickerInputEventDetail,
+  DatePickerValueStateChangeEventDetail
+} from '@ui5/webcomponents/dist/DatePicker.js';
+import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -12,20 +16,41 @@ interface DatePickerAttributes {
    * Defines the aria-label attribute for the component.
    */
   accessibleName?: string;
+
   /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Determines whether the component is displayed as disabled.
+   * @default false
    */
   disabled?: boolean;
+
+  /**
+   * Determines the format, displayed in the input field.
+   */
+  formatPattern?: string;
+
   /**
    * Defines the visibility of the week numbers column.
    *
    * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * @default false
    */
   hideWeekNumbers?: boolean;
+
+  /**
+   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+   */
+  maxDate?: string;
+
+  /**
+   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+   */
+  minDate?: string;
+
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
@@ -34,92 +59,100 @@ interface DatePickerAttributes {
    * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
+
   /**
    * Defines a short hint, intended to aid the user with data entry when the component has no value.
    *
    * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
+
+  /**
+   * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.
+   * @default undefined
+   */
+  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+
   /**
    * Determines whether the component is displayed as read-only.
+   * @default false
    */
   readonly?: boolean;
+
   /**
    * Defines whether the component is required.
+   * @default false
    */
   required?: boolean;
+
+  /**
+   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   * @default undefined
+   */
+  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+
   /**
    * Defines a formatted date value.
    */
   value?: string;
+
   /**
    * Defines the value state of the component.
+   * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
-  /**
-   * Determines the format, displayed in the input field.
-   */
-  formatPattern?: string;
-  /**
-   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
-   */
-  maxDate?: string;
-  /**
-   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
-   */
-  minDate?: string;
-  /**
-   * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.<br/>__Note:__ Calendar types other than Gregorian must be imported manually:<br />`import "@ui5/webcomponents-localization/dist/features/calendar/{primaryCalendarType}.js";`
-   */
-  primaryCalendarType?: CalendarType | keyof typeof CalendarType;
-  /**
-   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
-   */
-  secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
 }
 
 interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
   /**
-   * Currently selected date represented as a Local JavaScript Date instance.
-   */
-  readonly dateValue: Date;
-  /**
    * Closes the picker.
+   * @returns {void}
    */
   closePicker: () => void;
+
+  /**
+   * Currently selected date represented as a Local JavaScript Date instance.
+   */
+  readonly dateValue: Date | null;
+
   /**
    * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
-   * @returns {string} The date as string
+   * @returns {string} - The date as string
    */
   formatValue: (date: Date) => string;
+
   /**
    * Checks if a date is between the minimum and maximum date.
-   * @param {string} [value] - A value to be checked
+   * @param {string} value - A value to be checked
    * @returns {boolean}
    */
-  isInValidRange: (value?: string) => boolean;
+  isInValidRange: (value: string) => boolean;
+
   /**
    * Checks if the picker is open.
-   * @returns {boolean} true if the picker is open, false otherwise
+   * @returns {boolean} - true if the picker is open, false otherwise
    */
   isOpen: () => boolean;
+
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
-   * @param {string} [value] - A value to be tested against the current date format
+   * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
-  isValid: (value?: string) => boolean;
+  isValid: (value: string) => boolean;
+
   /**
    * Opens the picker.
-   * @returns {Promise<void>} Resolves when the picker is open
+   * @returns {Promise<void>} - Resolves when the picker is open
    */
   openPicker: () => Promise<void>;
 }
 
 interface DatePickerPropTypes
   extends DatePickerAttributes,
-    Omit<CommonProps, keyof DatePickerAttributes | 'onChange' | 'onInput'> {
+    Omit<CommonProps, keyof DatePickerAttributes | 'onChange' | 'onInput' | 'onValueStateChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -135,22 +168,24 @@ interface DatePickerPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
-   *
-   *__Note:__ This event is NOT the same as the native `onChange` [event of React](https://reactjs.org/docs/dom-elements.html#onchange). If you want to simulate that behavior, please use `onInput` instead.
    */
   onChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerChangeEventDetail>) => void;
+
   /**
    * Fired when the value of the component is changed at each key stroke.
    */
   onInput?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerInputEventDetail>) => void;
+
+  /**
+   * Fired before the value state of the component is updated internally. The event is preventable, meaning that if it's default action is prevented, the component will not update the value state.
+   */
+  onValueStateChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }
 
 /**
  * The `DatePicker` component provides an input field with assigned calendar which opens on user action. The `DatePicker` allows users to select a localized date using touch, mouse, or keyboard input. It consists of two parts: the date input field and the date picker.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-DatePicker)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   'ui5-date-picker',
@@ -169,15 +204,11 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'input'],
+  ['change', 'input', 'value-state-change'],
   () => import('@ui5/webcomponents/dist/DatePicker.js')
 );
 
 DatePicker.displayName = 'DatePicker';
-
-DatePicker.defaultProps = {
-  valueState: ValueState.None
-};
 
 export { DatePicker };
 export type { DatePickerDomRef, DatePickerPropTypes };
