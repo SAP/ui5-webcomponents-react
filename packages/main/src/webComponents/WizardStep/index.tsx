@@ -10,34 +10,42 @@ interface WizardStepAttributes {
    * When `branching` is enabled a dashed line would be displayed after the step, meant to indicate that the next step is not yet known and depends on user choice in the current step.
    *
    * **Note:** It is recommended to use `branching` on the last known step and later add new steps when it becomes clear how the wizard flow should continue.
+   * @default false
    */
   branching?: boolean;
+
   /**
    * Defines if the step is `disabled`. When disabled the step is displayed, but the user can't select the step by clicking or navigate to it with scrolling.
    *
    * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * Defines the `icon` of the step.
    *
    * **Note:** The icon is displayed in the `Wizard` navigation header.
    *
-   * The SAP-icons font provides numerous options. See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * The SAP-icons font provides numerous options. See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
   /**
    * Defines the step's `selected` state - the step that is currently active.
    *
    * **Note:** Step can't be `selected` and `disabled` at the same time. In this case the `selected` property would take precedence.
+   * @default false
    */
   selected?: boolean;
+
   /**
    * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
    */
   subtitleText?: string;
+
   /**
    * Defines the `titleText` of the step.
    *
@@ -59,10 +67,7 @@ interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, ke
  * A component that represents a logical step as part of the `Wizard`. It is meant to aggregate arbitrary HTML elements that form the content of a single step.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-Wizard)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   'ui5-wizard-step',
