@@ -18,6 +18,7 @@ function mapWebComponentTypeToTsType(type: string) {
   }
   switch (type) {
     case 'HTMLElement | string | undefined':
+    case 'HTMLElement | string':
       // opener props only accept strings as prop types
       return 'string';
 
