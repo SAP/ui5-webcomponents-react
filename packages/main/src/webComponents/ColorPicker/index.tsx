@@ -10,11 +10,12 @@ interface ColorPickerAttributes {
    * Defines the currently selected color of the component.
    *
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
+   * @default "rgba(255, 255, 255, 1)"
    */
   color?: CSSProperties['color'];
 }
 
-interface ColorPickerDomRef extends ColorPickerAttributes, Omit<Ui5DomRef, 'color'> {}
+interface ColorPickerDomRef extends ColorPickerAttributes, Ui5DomRef {}
 
 interface ColorPickerPropTypes
   extends ColorPickerAttributes,
@@ -28,9 +29,7 @@ interface ColorPickerPropTypes
 /**
  * The `ColorPicker` allows users to choose any color and provides different input options for selecting colors.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ColorPicker)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',

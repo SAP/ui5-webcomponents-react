@@ -33,14 +33,14 @@ function mapWebComponentTypeToTsType(type: string) {
 export class AttributesRenderer extends AbstractRenderer {
   public phase = RenderingPhase.attributes;
 
-  private _attributes: CEM.Attribute[] = [];
+  private _attributes: CEM.ClassField[] = [];
 
   setAttributes(value: CEM.Attribute[]) {
-    this._attributes = value.toSorted((a, b) => a.name.localeCompare(b.name));
+    this._attributes = value.toSorted((a, b) => a.name.localeCompare(b.name)) as CEM.ClassField[];
     return this;
   }
 
-  private descriptionBuilder(attribute: CEM.Attribute) {
+  private descriptionBuilder(attribute: CEM.ClassField) {
     const parts: string[] = [];
 
     parts.push(` * ${propDescriptionFormatter(attribute.description ?? '')}`);
@@ -55,7 +55,7 @@ export class AttributesRenderer extends AbstractRenderer {
     return `/**\n${parts.join('\n')}\n */`;
   }
 
-  private propTyping(attribute: CEM.Attribute, context: WebComponentWrapper) {
+  private propTyping(attribute: CEM.ClassField, context: WebComponentWrapper) {
     let type = attribute.type?.text ?? 'unknown';
     type = mapWebComponentTypeToTsType(type);
 
@@ -65,6 +65,11 @@ export class AttributesRenderer extends AbstractRenderer {
     if (isEnum) {
       type += ` | keyof typeof ${type}`;
     }
+    if (attribute._ui5validator === 'CSSColor') {
+      type = `CSSProperties['color']`;
+    } else if (attribute._ui5validator === 'CSSSize') {
+      type = `CSSProperties['width'] | CSSProperties['height']`;
+    }
 
     context.addAttribute(snakeCaseToCamelCase(attribute.name), type);
 
@@ -73,7 +78,12 @@ export class AttributesRenderer extends AbstractRenderer {
 
   prepare(context: WebComponentWrapper) {
     for (const attribute of this._attributes) {
-      resolveReferenceImports(attribute.type?.references ?? [], context);
+      // special css handling
+      if (attribute._ui5validator === 'CSSSize' || attribute._ui5validator === 'CSSColor') {
+        context.addTypeImport('react', 'CSSProperties');
+      } else {
+        resolveReferenceImports(attribute.type?.references ?? [], context);
+      }
     }
   }
 

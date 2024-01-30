@@ -117,7 +117,12 @@ export class DomRefRenderer extends AbstractRenderer {
       }
       const existingType = context.attributesMap.get(member.name)!;
       // the types don't match, e.g. for `opener` attributes
-      const domRefType = resolveDomRefType(member.type);
+      let domRefType = resolveDomRefType(member.type);
+      if (member._ui5validator === 'CSSColor') {
+        domRefType = `CSSProperties['color']`;
+      } else if (member._ui5validator === 'CSSSize') {
+        domRefType = `CSSProperties['width'] | CSSProperties['height']`;
+      }
       // in attributes, some enum types are widened to keyof typeof REF
       return ![domRefType, `${domRefType} | keyof typeof ${domRefType}`].includes(existingType);
     });
