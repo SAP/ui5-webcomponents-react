@@ -55,7 +55,7 @@ interface IconAttributes {
   showTooltip?: boolean;
 }
 
-interface IconDomRef extends IconAttributes, Ui5DomRef {}
+interface IconDomRef extends Required<IconAttributes>, Ui5DomRef {}
 
 interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttributes> {}
 

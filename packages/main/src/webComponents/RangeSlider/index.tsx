@@ -71,7 +71,7 @@ interface RangeSliderAttributes {
   step?: number;
 }
 
-interface RangeSliderDomRef extends RangeSliderAttributes, Ui5DomRef {}
+interface RangeSliderDomRef extends Required<RangeSliderAttributes>, Ui5DomRef {}
 
 interface RangeSliderPropTypes
   extends RangeSliderAttributes,

@@ -10,7 +10,7 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface BarcodeScannerDialogAttributes {}
 
-interface BarcodeScannerDialogDomRef extends BarcodeScannerDialogAttributes, Ui5DomRef {
+interface BarcodeScannerDialogDomRef extends Required<BarcodeScannerDialogAttributes>, Ui5DomRef {
   /**
    * Closes the dialog and the scan session.
    * @returns {void}

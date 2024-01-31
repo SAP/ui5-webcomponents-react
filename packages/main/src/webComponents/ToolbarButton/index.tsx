@@ -89,7 +89,7 @@ interface ToolbarButtonAttributes {
   width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
-interface ToolbarButtonDomRef extends ToolbarButtonAttributes, Ui5DomRef {
+interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

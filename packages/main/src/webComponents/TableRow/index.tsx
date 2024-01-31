@@ -26,7 +26,7 @@ interface TableRowAttributes {
   type?: TableRowType | keyof typeof TableRowType;
 }
 
-interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
+interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}
 
 interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof TableRowAttributes> {
   /**

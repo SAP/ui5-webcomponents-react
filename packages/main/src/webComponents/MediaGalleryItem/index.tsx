@@ -31,7 +31,7 @@ interface MediaGalleryItemAttributes {
   selected?: boolean;
 }
 
-interface MediaGalleryItemDomRef extends MediaGalleryItemAttributes, Ui5DomRef {}
+interface MediaGalleryItemDomRef extends Required<MediaGalleryItemAttributes>, Ui5DomRef {}
 
 interface MediaGalleryItemPropTypes
   extends MediaGalleryItemAttributes,

@@ -93,7 +93,7 @@ interface CheckBoxAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface CheckBoxDomRef extends CheckBoxAttributes, Ui5DomRef {}
+interface CheckBoxDomRef extends Required<CheckBoxAttributes>, Ui5DomRef {}
 
 interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, keyof CheckBoxAttributes | 'onChange'> {
   /**

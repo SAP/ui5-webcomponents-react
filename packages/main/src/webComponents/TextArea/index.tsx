@@ -103,7 +103,7 @@ interface TextAreaAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface TextAreaDomRef extends TextAreaAttributes, Ui5DomRef {}
+interface TextAreaDomRef extends Required<TextAreaAttributes>, Ui5DomRef {}
 
 interface TextAreaPropTypes
   extends TextAreaAttributes,

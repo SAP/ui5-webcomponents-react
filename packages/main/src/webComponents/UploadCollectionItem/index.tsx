@@ -79,7 +79,7 @@ interface UploadCollectionItemAttributes {
   uploadState?: UploadState | keyof typeof UploadState;
 }
 
-interface UploadCollectionItemDomRef extends UploadCollectionItemAttributes, Ui5DomRef {
+interface UploadCollectionItemDomRef extends Required<UploadCollectionItemAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

@@ -60,7 +60,7 @@ all hidden tabs are moved to a select list in the respective overflows and are a
   tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
 }
 
-interface TabContainerDomRef extends TabContainerAttributes, Ui5DomRef {
+interface TabContainerDomRef extends Required<TabContainerAttributes>, Ui5DomRef {
   /**
    * Returns all slotted tabs and their subTabs in a flattened array. The order of tabs is depth-first. For example, given the following slotted elements:
    *

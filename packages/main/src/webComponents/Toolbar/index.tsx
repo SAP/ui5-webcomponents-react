@@ -24,7 +24,7 @@ interface ToolbarAttributes {
   alignContent?: ToolbarAlign | keyof typeof ToolbarAlign;
 }
 
-interface ToolbarDomRef extends ToolbarAttributes, Ui5DomRef {
+interface ToolbarDomRef extends Required<ToolbarAttributes>, Ui5DomRef {
   /**
    * Returns if the overflow popup is open.
    * @returns {Promise<boolean>}

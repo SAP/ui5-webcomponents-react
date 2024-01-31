@@ -15,7 +15,7 @@ interface WizardAttributes {
   contentLayout?: WizardContentLayout | keyof typeof WizardContentLayout;
 }
 
-interface WizardDomRef extends WizardAttributes, Ui5DomRef {}
+interface WizardDomRef extends Required<WizardAttributes>, Ui5DomRef {}
 
 interface WizardPropTypes extends WizardAttributes, Omit<CommonProps, keyof WizardAttributes | 'onStepChange'> {
   /**

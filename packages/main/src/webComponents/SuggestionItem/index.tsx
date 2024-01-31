@@ -59,7 +59,7 @@ interface SuggestionItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface SuggestionItemDomRef extends SuggestionItemAttributes, Ui5DomRef {}
+interface SuggestionItemDomRef extends Required<SuggestionItemAttributes>, Ui5DomRef {}
 
 interface SuggestionItemPropTypes extends SuggestionItemAttributes, Omit<CommonProps, keyof SuggestionItemAttributes> {}
 

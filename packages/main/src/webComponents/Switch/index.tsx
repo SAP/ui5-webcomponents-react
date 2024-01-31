@@ -76,7 +76,7 @@ interface SwitchAttributes {
   tooltip?: string;
 }
 
-interface SwitchDomRef extends SwitchAttributes, Ui5DomRef {}
+interface SwitchDomRef extends Required<SwitchAttributes>, Ui5DomRef {}
 
 interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof SwitchAttributes | 'onChange'> {
   /**

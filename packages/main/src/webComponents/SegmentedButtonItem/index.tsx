@@ -72,7 +72,7 @@ interface SegmentedButtonItemAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {
+interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

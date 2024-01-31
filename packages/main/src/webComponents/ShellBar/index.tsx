@@ -63,7 +63,7 @@ interface ShellBarAttributes {
   showSearchField?: boolean;
 }
 
-interface ShellBarDomRef extends ShellBarAttributes, Ui5DomRef {
+interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

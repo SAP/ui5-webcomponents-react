@@ -24,7 +24,7 @@ interface ShellBarItemAttributes {
   text?: string;
 }
 
-interface ShellBarItemDomRef extends ShellBarItemAttributes, Ui5DomRef {}
+interface ShellBarItemDomRef extends Required<ShellBarItemAttributes>, Ui5DomRef {}
 
 interface ShellBarItemPropTypes
   extends ShellBarItemAttributes,

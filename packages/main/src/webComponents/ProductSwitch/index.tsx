@@ -7,7 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ProductSwitchAttributes {}
 
-interface ProductSwitchDomRef extends ProductSwitchAttributes, Ui5DomRef {}
+interface ProductSwitchDomRef extends Required<ProductSwitchAttributes>, Ui5DomRef {}
 
 interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonProps {
   /**

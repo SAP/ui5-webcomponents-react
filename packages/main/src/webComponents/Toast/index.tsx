@@ -22,7 +22,7 @@ interface ToastAttributes {
   placement?: ToastPlacement | keyof typeof ToastPlacement;
 }
 
-interface ToastDomRef extends ToastAttributes, Ui5DomRef {
+interface ToastDomRef extends Required<ToastAttributes>, Ui5DomRef {
   /**
    * Shows the component.
    * @returns {void}

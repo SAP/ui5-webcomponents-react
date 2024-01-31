@@ -34,7 +34,7 @@ interface CustomListItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface CustomListItemDomRef extends CustomListItemAttributes, Ui5DomRef {
+interface CustomListItemDomRef extends Required<CustomListItemAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

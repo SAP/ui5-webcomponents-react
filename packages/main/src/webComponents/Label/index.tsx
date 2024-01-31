@@ -38,7 +38,7 @@ interface LabelAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface LabelDomRef extends LabelAttributes, Ui5DomRef {}
+interface LabelDomRef extends Required<LabelAttributes>, Ui5DomRef {}
 
 interface LabelPropTypes extends LabelAttributes, Omit<CommonProps, keyof LabelAttributes> {
   /**

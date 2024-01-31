@@ -112,7 +112,7 @@ interface InputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface InputDomRef extends InputAttributes, Ui5DomRef {
+interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
    * @returns {void}

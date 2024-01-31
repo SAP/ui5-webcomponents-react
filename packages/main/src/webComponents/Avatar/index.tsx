@@ -85,7 +85,7 @@ interface AvatarAttributes {
   size?: AvatarSize | keyof typeof AvatarSize;
 }
 
-interface AvatarDomRef extends AvatarAttributes, Ui5DomRef {}
+interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
 
 interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes> {
   /**

@@ -44,7 +44,7 @@ interface SplitButtonAttributes {
   icon?: string;
 }
 
-interface SplitButtonDomRef extends SplitButtonAttributes, Ui5DomRef {}
+interface SplitButtonDomRef extends Required<SplitButtonAttributes>, Ui5DomRef {}
 
 interface SplitButtonPropTypes
   extends SplitButtonAttributes,

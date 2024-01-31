@@ -8,7 +8,7 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface ColorPaletteAttributes {}
 
-interface ColorPaletteDomRef extends ColorPaletteAttributes, Ui5DomRef {}
+interface ColorPaletteDomRef extends Required<ColorPaletteAttributes>, Ui5DomRef {}
 
 interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, 'onItemClick'> {
   /**

@@ -24,7 +24,7 @@ interface BreadcrumbsAttributes {
   separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
 }
 
-interface BreadcrumbsDomRef extends BreadcrumbsAttributes, Ui5DomRef {}
+interface BreadcrumbsDomRef extends Required<BreadcrumbsAttributes>, Ui5DomRef {}
 
 interface BreadcrumbsPropTypes
   extends BreadcrumbsAttributes,

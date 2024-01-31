@@ -42,7 +42,7 @@ interface MediaGalleryAttributes {
   showAllThumbnails?: boolean;
 }
 
-interface MediaGalleryDomRef extends MediaGalleryAttributes, Ui5DomRef {}
+interface MediaGalleryDomRef extends Required<MediaGalleryAttributes>, Ui5DomRef {}
 
 interface MediaGalleryPropTypes
   extends MediaGalleryAttributes,

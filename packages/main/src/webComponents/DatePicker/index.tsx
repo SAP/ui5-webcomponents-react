@@ -104,7 +104,7 @@ interface DatePickerAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
+interface DatePickerDomRef extends Required<DatePickerAttributes>, Ui5DomRef {
   /**
    * Closes the picker.
    * @returns {void}

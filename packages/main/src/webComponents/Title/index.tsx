@@ -22,7 +22,7 @@ interface TitleAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
+interface TitleDomRef extends Required<TitleAttributes>, Ui5DomRef {}
 
 interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleAttributes> {
   /**

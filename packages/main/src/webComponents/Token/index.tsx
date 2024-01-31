@@ -25,7 +25,7 @@ interface TokenAttributes {
   text?: string;
 }
 
-interface TokenDomRef extends TokenAttributes, Ui5DomRef {}
+interface TokenDomRef extends Required<TokenAttributes>, Ui5DomRef {}
 
 interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'onSelect'> {
   /**

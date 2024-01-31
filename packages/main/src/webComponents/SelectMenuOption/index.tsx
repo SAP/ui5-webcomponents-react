@@ -52,7 +52,7 @@ interface SelectMenuOptionAttributes {
   value?: string;
 }
 
-interface SelectMenuOptionDomRef extends SelectMenuOptionAttributes, Ui5DomRef {
+interface SelectMenuOptionDomRef extends Required<SelectMenuOptionAttributes>, Ui5DomRef {
   /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    *

@@ -54,7 +54,7 @@ interface TabAttributes {
   text?: string;
 }
 
-interface TabDomRef extends TabAttributes, Ui5DomRef {
+interface TabDomRef extends Required<TabAttributes>, Ui5DomRef {
   /**
    * Returns the DOM reference of the tab that is placed in the header. **Note:** Tabs, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs will return `null`. **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
    * @returns {ITab | null}

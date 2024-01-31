@@ -64,7 +64,7 @@ interface SideNavigationItemAttributes {
   wholeItemToggleable?: boolean;
 }
 
-interface SideNavigationItemDomRef extends SideNavigationItemAttributes, Ui5DomRef {}
+interface SideNavigationItemDomRef extends Required<SideNavigationItemAttributes>, Ui5DomRef {}
 
 interface SideNavigationItemPropTypes
   extends SideNavigationItemAttributes,

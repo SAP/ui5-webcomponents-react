@@ -32,7 +32,7 @@ interface ToolbarSpacerAttributes {
   width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
-interface ToolbarSpacerDomRef extends ToolbarSpacerAttributes, Ui5DomRef {}
+interface ToolbarSpacerDomRef extends Required<ToolbarSpacerAttributes>, Ui5DomRef {}
 
 interface ToolbarSpacerPropTypes extends ToolbarSpacerAttributes, Omit<CommonProps, keyof ToolbarSpacerAttributes> {}
 

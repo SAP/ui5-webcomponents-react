@@ -90,7 +90,7 @@ interface MultiComboBoxAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface MultiComboBoxDomRef extends MultiComboBoxAttributes, Ui5DomRef {
+interface MultiComboBoxDomRef extends Required<MultiComboBoxAttributes>, Ui5DomRef {
   /**
    * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
    */

@@ -23,7 +23,7 @@ interface ToolbarSeparatorAttributes {
   preventOverflowClosing?: boolean;
 }
 
-interface ToolbarSeparatorDomRef extends ToolbarSeparatorAttributes, Ui5DomRef {}
+interface ToolbarSeparatorDomRef extends Required<ToolbarSeparatorAttributes>, Ui5DomRef {}
 
 interface ToolbarSeparatorPropTypes
   extends ToolbarSeparatorAttributes,

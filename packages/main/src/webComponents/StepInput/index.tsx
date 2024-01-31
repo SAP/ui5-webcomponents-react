@@ -88,7 +88,7 @@ interface StepInputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface StepInputDomRef extends StepInputAttributes, Ui5DomRef {}
+interface StepInputDomRef extends Required<StepInputAttributes>, Ui5DomRef {}
 
 interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, keyof StepInputAttributes | 'onChange'> {
   /**

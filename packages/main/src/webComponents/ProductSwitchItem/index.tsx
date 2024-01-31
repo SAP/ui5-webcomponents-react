@@ -46,7 +46,7 @@ interface ProductSwitchItemAttributes {
   titleText?: string;
 }
 
-interface ProductSwitchItemDomRef extends ProductSwitchItemAttributes, Ui5DomRef {}
+interface ProductSwitchItemDomRef extends Required<ProductSwitchItemAttributes>, Ui5DomRef {}
 
 interface ProductSwitchItemPropTypes
   extends ProductSwitchItemAttributes,

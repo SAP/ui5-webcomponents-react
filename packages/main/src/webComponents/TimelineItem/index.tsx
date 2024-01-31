@@ -35,7 +35,7 @@ interface TimelineItemAttributes {
   titleText?: string;
 }
 
-interface TimelineItemDomRef extends TimelineItemAttributes, Ui5DomRef {}
+interface TimelineItemDomRef extends Required<TimelineItemAttributes>, Ui5DomRef {}
 
 interface TimelineItemPropTypes
   extends TimelineItemAttributes,

@@ -56,7 +56,7 @@ interface TimePickerAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface TimePickerDomRef extends TimePickerAttributes, Ui5DomRef {
+interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   /**
    * Closes the picker
    * @returns {Promise<void>} - Resolves when the picker is closed

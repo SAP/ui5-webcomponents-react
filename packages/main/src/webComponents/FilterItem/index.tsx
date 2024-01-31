@@ -16,7 +16,7 @@ interface FilterItemAttributes {
   text?: string;
 }
 
-interface FilterItemDomRef extends FilterItemAttributes, Ui5DomRef {}
+interface FilterItemDomRef extends Required<FilterItemAttributes>, Ui5DomRef {}
 
 interface FilterItemPropTypes extends FilterItemAttributes, Omit<CommonProps, keyof FilterItemAttributes> {
   /**

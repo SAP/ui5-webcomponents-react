@@ -31,7 +31,7 @@ interface BusyIndicatorAttributes {
   text?: string;
 }
 
-interface BusyIndicatorDomRef extends BusyIndicatorAttributes, Ui5DomRef {}
+interface BusyIndicatorDomRef extends Required<BusyIndicatorAttributes>, Ui5DomRef {}
 
 interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, Omit<CommonProps, keyof BusyIndicatorAttributes> {
   /**

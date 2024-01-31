@@ -62,7 +62,7 @@ interface IllustratedMessageAttributes {
   titleText?: string;
 }
 
-interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
+interface IllustratedMessageDomRef extends Required<IllustratedMessageAttributes>, Ui5DomRef {}
 
 interface IllustratedMessagePropTypes
   extends IllustratedMessageAttributes,

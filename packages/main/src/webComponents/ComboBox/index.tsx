@@ -82,7 +82,7 @@ interface ComboBoxAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface ComboBoxDomRef extends ComboBoxAttributes, Ui5DomRef {}
+interface ComboBoxDomRef extends Required<ComboBoxAttributes>, Ui5DomRef {}
 
 interface ComboBoxPropTypes
   extends ComboBoxAttributes,

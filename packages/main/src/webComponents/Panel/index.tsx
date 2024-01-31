@@ -57,7 +57,7 @@ interface PanelAttributes {
   stickyHeader?: boolean;
 }
 
-interface PanelDomRef extends PanelAttributes, Ui5DomRef {}
+interface PanelDomRef extends Required<PanelAttributes>, Ui5DomRef {}
 
 interface PanelPropTypes extends PanelAttributes, Omit<CommonProps, keyof PanelAttributes | 'onToggle'> {
   /**

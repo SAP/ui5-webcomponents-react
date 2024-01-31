@@ -88,7 +88,7 @@ interface ListAttributes {
   separators?: ListSeparators | keyof typeof ListSeparators;
 }
 
-interface ListDomRef extends ListAttributes, Ui5DomRef {}
+interface ListDomRef extends Required<ListAttributes>, Ui5DomRef {}
 
 interface ListPropTypes
   extends ListAttributes,

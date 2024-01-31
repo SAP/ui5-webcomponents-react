@@ -40,7 +40,7 @@ interface MenuAttributes {
   opener?: string;
 }
 
-interface MenuDomRef extends Omit<MenuAttributes, 'opener'>, Ui5DomRef {
+interface MenuDomRef extends Omit<Required<MenuAttributes>, 'opener'>, Ui5DomRef {
   /**
    * Closes the Menu.
    * @returns {void}

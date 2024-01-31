@@ -15,7 +15,7 @@ interface ColorPickerAttributes {
   color?: CSSProperties['color'];
 }
 
-interface ColorPickerDomRef extends ColorPickerAttributes, Ui5DomRef {}
+interface ColorPickerDomRef extends Required<ColorPickerAttributes>, Ui5DomRef {}
 
 interface ColorPickerPropTypes
   extends ColorPickerAttributes,

@@ -51,7 +51,7 @@ interface SideNavigationSubItemAttributes {
   text?: string;
 }
 
-interface SideNavigationSubItemDomRef extends SideNavigationSubItemAttributes, Ui5DomRef {}
+interface SideNavigationSubItemDomRef extends Required<SideNavigationSubItemAttributes>, Ui5DomRef {}
 
 interface SideNavigationSubItemPropTypes
   extends SideNavigationSubItemAttributes,

@@ -7,7 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableGroupRowAttributes {}
 
-interface TableGroupRowDomRef extends TableGroupRowAttributes, Ui5DomRef {}
+interface TableGroupRowDomRef extends Required<TableGroupRowAttributes>, Ui5DomRef {}
 
 interface TableGroupRowPropTypes extends TableGroupRowAttributes, CommonProps {
   /**

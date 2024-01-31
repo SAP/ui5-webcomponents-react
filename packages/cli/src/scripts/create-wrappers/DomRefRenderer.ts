@@ -150,7 +150,7 @@ export class DomRefRenderer extends AbstractRenderer {
       .filter((key) => membersToProcess.some((member) => member.name === key))
       .map((key) => `'${key}'`);
 
-    let extendsStatement = `${context.componentName}Attributes`;
+    let extendsStatement = `Required<${context.componentName}Attributes>`;
     if (attributesToOmit.length > 0) {
       extendsStatement = `Omit<${extendsStatement}, ${attributesToOmit.join(' | ')}>`;
     }

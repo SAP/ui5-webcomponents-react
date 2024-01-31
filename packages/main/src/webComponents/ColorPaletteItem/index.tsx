@@ -15,7 +15,7 @@ interface ColorPaletteItemAttributes {
   value?: CSSProperties['color'];
 }
 
-interface ColorPaletteItemDomRef extends ColorPaletteItemAttributes, Ui5DomRef {}
+interface ColorPaletteItemDomRef extends Required<ColorPaletteItemAttributes>, Ui5DomRef {}
 
 interface ColorPaletteItemPropTypes
   extends ColorPaletteItemAttributes,

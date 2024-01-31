@@ -43,7 +43,7 @@ interface BadgeAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface BadgeDomRef extends BadgeAttributes, Ui5DomRef {}
+interface BadgeDomRef extends Required<BadgeAttributes>, Ui5DomRef {}
 
 interface BadgePropTypes extends BadgeAttributes, Omit<CommonProps, keyof BadgeAttributes | 'onClick'> {
   /**

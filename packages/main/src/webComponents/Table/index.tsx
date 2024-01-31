@@ -95,7 +95,7 @@ interface TableAttributes {
   stickyColumnHeader?: boolean;
 }
 
-interface TableDomRef extends TableAttributes, Ui5DomRef {}
+interface TableDomRef extends Required<TableAttributes>, Ui5DomRef {}
 
 interface TablePropTypes
   extends TableAttributes,

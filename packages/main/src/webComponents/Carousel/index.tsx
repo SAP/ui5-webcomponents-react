@@ -88,7 +88,7 @@ interface CarouselAttributes {
   pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
 }
 
-interface CarouselDomRef extends CarouselAttributes, Ui5DomRef {
+interface CarouselDomRef extends Required<CarouselAttributes>, Ui5DomRef {
   /**
    * Changes the currently displayed page.
    * @param {number} itemIndex - The index of the target page

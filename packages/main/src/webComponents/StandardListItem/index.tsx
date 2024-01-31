@@ -74,7 +74,7 @@ interface StandardListItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface StandardListItemDomRef extends StandardListItemAttributes, Ui5DomRef {
+interface StandardListItemDomRef extends Required<StandardListItemAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

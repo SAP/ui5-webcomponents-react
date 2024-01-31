@@ -11,7 +11,7 @@ interface ComboBoxGroupItemAttributes {
   text?: string;
 }
 
-interface ComboBoxGroupItemDomRef extends ComboBoxGroupItemAttributes, Ui5DomRef {}
+interface ComboBoxGroupItemDomRef extends Required<ComboBoxGroupItemAttributes>, Ui5DomRef {}
 
 interface ComboBoxGroupItemPropTypes
   extends ComboBoxGroupItemAttributes,

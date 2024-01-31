@@ -22,7 +22,7 @@ interface MultiComboBoxItemAttributes {
   text?: string;
 }
 
-interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
+interface MultiComboBoxItemDomRef extends Required<MultiComboBoxItemAttributes>, Ui5DomRef {}
 
 interface MultiComboBoxItemPropTypes
   extends MultiComboBoxItemAttributes,

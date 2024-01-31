@@ -50,7 +50,7 @@ interface TreeAttributes {
   noDataText?: string;
 }
 
-interface TreeDomRef extends TreeAttributes, Ui5DomRef {
+interface TreeDomRef extends Required<TreeAttributes>, Ui5DomRef {
   /**
    * Perform Depth-First-Search walk on the tree and run a callback on each node
    * @param {WalkCallback} callback - function to execute on each node of the tree with 3 arguments: the node, the level and the index

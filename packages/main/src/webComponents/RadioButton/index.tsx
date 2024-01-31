@@ -85,7 +85,7 @@ interface RadioButtonAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface RadioButtonDomRef extends RadioButtonAttributes, Ui5DomRef {}
+interface RadioButtonDomRef extends Required<RadioButtonAttributes>, Ui5DomRef {}
 
 interface RadioButtonPropTypes
   extends RadioButtonAttributes,

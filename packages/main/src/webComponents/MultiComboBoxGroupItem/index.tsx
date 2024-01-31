@@ -11,7 +11,7 @@ interface MultiComboBoxGroupItemAttributes {
   text?: string;
 }
 
-interface MultiComboBoxGroupItemDomRef extends MultiComboBoxGroupItemAttributes, Ui5DomRef {}
+interface MultiComboBoxGroupItemDomRef extends Required<MultiComboBoxGroupItemAttributes>, Ui5DomRef {}
 
 interface MultiComboBoxGroupItemPropTypes
   extends MultiComboBoxGroupItemAttributes,

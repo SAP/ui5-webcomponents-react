@@ -64,7 +64,7 @@ interface NotificationListGroupItemAttributes {
   titleText?: string;
 }
 
-interface NotificationListGroupItemDomRef extends NotificationListGroupItemAttributes, Ui5DomRef {}
+interface NotificationListGroupItemDomRef extends Required<NotificationListGroupItemAttributes>, Ui5DomRef {}
 
 interface NotificationListGroupItemPropTypes
   extends NotificationListGroupItemAttributes,

@@ -42,7 +42,7 @@ interface UploadCollectionAttributes {
   noDataText?: string;
 }
 
-interface UploadCollectionDomRef extends UploadCollectionAttributes, Ui5DomRef {}
+interface UploadCollectionDomRef extends Required<UploadCollectionAttributes>, Ui5DomRef {}
 
 interface UploadCollectionPropTypes
   extends UploadCollectionAttributes,

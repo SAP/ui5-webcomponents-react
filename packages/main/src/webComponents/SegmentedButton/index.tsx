@@ -27,7 +27,7 @@ interface SegmentedButtonAttributes {
   mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
 }
 
-interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
+interface SegmentedButtonDomRef extends Required<SegmentedButtonAttributes>, Ui5DomRef {
   /**
    * Currently selected item.
    *

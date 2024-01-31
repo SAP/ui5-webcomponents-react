@@ -74,7 +74,7 @@ interface ToggleButtonAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
+interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

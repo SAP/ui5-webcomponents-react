@@ -26,7 +26,7 @@ interface MessageStripAttributes {
   hideIcon?: boolean;
 }
 
-interface MessageStripDomRef extends MessageStripAttributes, Ui5DomRef {}
+interface MessageStripDomRef extends Required<MessageStripAttributes>, Ui5DomRef {}
 
 interface MessageStripPropTypes
   extends MessageStripAttributes,

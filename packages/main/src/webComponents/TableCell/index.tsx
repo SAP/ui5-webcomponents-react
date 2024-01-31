@@ -7,7 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableCellAttributes {}
 
-interface TableCellDomRef extends TableCellAttributes, Ui5DomRef {}
+interface TableCellDomRef extends Required<TableCellAttributes>, Ui5DomRef {}
 
 interface TableCellPropTypes extends TableCellAttributes, CommonProps {
   /**

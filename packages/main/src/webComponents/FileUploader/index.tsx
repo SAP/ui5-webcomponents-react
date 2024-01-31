@@ -61,7 +61,7 @@ interface FileUploaderAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface FileUploaderDomRef extends FileUploaderAttributes, Ui5DomRef {
+interface FileUploaderDomRef extends Required<FileUploaderAttributes>, Ui5DomRef {
   /**
    * FileList of all selected files.
    */

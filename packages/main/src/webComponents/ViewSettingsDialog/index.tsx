@@ -17,7 +17,7 @@ interface ViewSettingsDialogAttributes {
   sortDescending?: boolean;
 }
 
-interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
+interface ViewSettingsDialogDomRef extends Required<ViewSettingsDialogAttributes>, Ui5DomRef {
   /**
    * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog needs to set its initial settings.
    * The `ViewSettingsDialog` throws an event called "before-open", which can be used as a trigger point.

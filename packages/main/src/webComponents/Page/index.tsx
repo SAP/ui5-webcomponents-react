@@ -36,7 +36,7 @@ interface PageAttributes {
   hideFooter?: boolean;
 }
 
-interface PageDomRef extends PageAttributes, Ui5DomRef {}
+interface PageDomRef extends Required<PageAttributes>, Ui5DomRef {}
 
 interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttributes> {
   /**

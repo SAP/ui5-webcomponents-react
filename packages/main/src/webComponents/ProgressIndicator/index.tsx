@@ -45,7 +45,7 @@ interface ProgressIndicatorAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface ProgressIndicatorDomRef extends ProgressIndicatorAttributes, Ui5DomRef {}
+interface ProgressIndicatorDomRef extends Required<ProgressIndicatorAttributes>, Ui5DomRef {}
 
 interface ProgressIndicatorPropTypes
   extends ProgressIndicatorAttributes,

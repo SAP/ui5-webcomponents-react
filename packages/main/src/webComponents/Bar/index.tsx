@@ -14,7 +14,7 @@ interface BarAttributes {
   design?: BarDesign | keyof typeof BarDesign;
 }
 
-interface BarDomRef extends BarAttributes, Ui5DomRef {}
+interface BarDomRef extends Required<BarAttributes>, Ui5DomRef {}
 
 interface BarPropTypes extends BarAttributes, Omit<CommonProps, keyof BarAttributes> {
   /**

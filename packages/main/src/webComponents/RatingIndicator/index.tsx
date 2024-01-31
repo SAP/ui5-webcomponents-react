@@ -61,7 +61,7 @@ interface RatingIndicatorAttributes {
   value?: number;
 }
 
-interface RatingIndicatorDomRef extends RatingIndicatorAttributes, Ui5DomRef {}
+interface RatingIndicatorDomRef extends Required<RatingIndicatorAttributes>, Ui5DomRef {}
 
 interface RatingIndicatorPropTypes
   extends RatingIndicatorAttributes,

@@ -11,7 +11,7 @@ interface SuggestionGroupItemAttributes {
   text?: string;
 }
 
-interface SuggestionGroupItemDomRef extends SuggestionGroupItemAttributes, Ui5DomRef {}
+interface SuggestionGroupItemDomRef extends Required<SuggestionGroupItemAttributes>, Ui5DomRef {}
 
 interface SuggestionGroupItemPropTypes
   extends SuggestionGroupItemAttributes,

@@ -74,7 +74,7 @@ interface SelectAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface SelectDomRef extends Omit<SelectAttributes, 'menu'>, Ui5DomRef {
+interface SelectDomRef extends Omit<Required<SelectAttributes>, 'menu'>, Ui5DomRef {
   /**
    * Defines a reference (ID or DOM element) of component's menu of options as alternative to define the select's dropdown.
    *

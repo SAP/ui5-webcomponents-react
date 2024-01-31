@@ -54,7 +54,7 @@ interface WizardStepAttributes {
   titleText?: string;
 }
 
-interface WizardStepDomRef extends WizardStepAttributes, Ui5DomRef {}
+interface WizardStepDomRef extends Required<WizardStepAttributes>, Ui5DomRef {}
 
 interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, keyof WizardStepAttributes> {
   /**

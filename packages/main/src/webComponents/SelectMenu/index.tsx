@@ -7,7 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SelectMenuAttributes {}
 
-interface SelectMenuDomRef extends SelectMenuAttributes, Ui5DomRef {}
+interface SelectMenuDomRef extends Required<SelectMenuAttributes>, Ui5DomRef {}
 
 interface SelectMenuPropTypes extends SelectMenuAttributes, CommonProps {
   /**

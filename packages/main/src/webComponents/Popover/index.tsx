@@ -101,7 +101,7 @@ interface PopoverAttributes {
   verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
 }
 
-interface PopoverDomRef extends Omit<PopoverAttributes, 'opener'>, Ui5DomRef {
+interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
    * @returns {Promise<void>} - Promise that resolves when the focus is applied

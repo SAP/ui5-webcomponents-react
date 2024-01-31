@@ -34,7 +34,7 @@ interface NotificationActionAttributes {
   text?: string;
 }
 
-interface NotificationActionDomRef extends NotificationActionAttributes, Ui5DomRef {}
+interface NotificationActionDomRef extends Required<NotificationActionAttributes>, Ui5DomRef {}
 
 interface NotificationActionPropTypes
   extends NotificationActionAttributes,

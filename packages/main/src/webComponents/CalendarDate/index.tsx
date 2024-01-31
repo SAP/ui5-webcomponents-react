@@ -11,7 +11,7 @@ interface CalendarDateAttributes {
   value?: string;
 }
 
-interface CalendarDateDomRef extends CalendarDateAttributes, Ui5DomRef {}
+interface CalendarDateDomRef extends Required<CalendarDateAttributes>, Ui5DomRef {}
 
 interface CalendarDatePropTypes extends CalendarDateAttributes, Omit<CommonProps, keyof CalendarDateAttributes> {}
 

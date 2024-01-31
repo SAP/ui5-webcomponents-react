@@ -41,7 +41,7 @@ interface TableColumnAttributes {
   popinText?: string;
 }
 
-interface TableColumnDomRef extends TableColumnAttributes, Ui5DomRef {}
+interface TableColumnDomRef extends Required<TableColumnAttributes>, Ui5DomRef {}
 
 interface TableColumnPropTypes extends TableColumnAttributes, Omit<CommonProps, keyof TableColumnAttributes> {
   /**

@@ -27,7 +27,7 @@ interface CardHeaderAttributes {
   titleText?: string;
 }
 
-interface CardHeaderDomRef extends CardHeaderAttributes, Ui5DomRef {}
+interface CardHeaderDomRef extends Required<CardHeaderAttributes>, Ui5DomRef {}
 
 interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonProps, keyof CardHeaderAttributes | 'onClick'> {
   /**

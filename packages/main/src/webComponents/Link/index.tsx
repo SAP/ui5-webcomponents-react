@@ -71,7 +71,7 @@ interface LinkAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface LinkDomRef extends LinkAttributes, Ui5DomRef {
+interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

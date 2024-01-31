@@ -67,7 +67,7 @@ interface DynamicSideContentAttributes {
   sideContentVisibility?: SideContentVisibility | keyof typeof SideContentVisibility;
 }
 
-interface DynamicSideContentDomRef extends DynamicSideContentAttributes, Ui5DomRef {
+interface DynamicSideContentDomRef extends Required<DynamicSideContentAttributes>, Ui5DomRef {
   /**
    * Toggles visibility of main and side contents on S screen size (mobile device).
    * @returns {void}

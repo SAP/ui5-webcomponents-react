@@ -58,7 +58,7 @@ interface ToolbarSelectAttributes {
   width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
-interface ToolbarSelectDomRef extends ToolbarSelectAttributes, Ui5DomRef {}
+interface ToolbarSelectDomRef extends Required<ToolbarSelectAttributes>, Ui5DomRef {}
 
 interface ToolbarSelectPropTypes
   extends ToolbarSelectAttributes,

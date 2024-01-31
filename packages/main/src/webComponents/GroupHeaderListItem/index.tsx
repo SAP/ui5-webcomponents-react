@@ -18,7 +18,7 @@ interface GroupHeaderListItemAttributes {
   selected?: boolean;
 }
 
-interface GroupHeaderListItemDomRef extends GroupHeaderListItemAttributes, Ui5DomRef {}
+interface GroupHeaderListItemDomRef extends Required<GroupHeaderListItemAttributes>, Ui5DomRef {}
 
 interface GroupHeaderListItemPropTypes
   extends GroupHeaderListItemAttributes,

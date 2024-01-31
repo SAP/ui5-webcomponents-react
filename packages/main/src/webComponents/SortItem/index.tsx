@@ -17,7 +17,7 @@ interface SortItemAttributes {
   text?: string;
 }
 
-interface SortItemDomRef extends SortItemAttributes, Ui5DomRef {}
+interface SortItemDomRef extends Required<SortItemAttributes>, Ui5DomRef {}
 
 interface SortItemPropTypes extends SortItemAttributes, Omit<CommonProps, keyof SortItemAttributes> {}
 

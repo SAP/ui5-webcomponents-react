@@ -56,7 +56,7 @@ interface MenuItemAttributes {
   text?: string;
 }
 
-interface MenuItemDomRef extends MenuItemAttributes, Ui5DomRef {}
+interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {}
 
 interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof MenuItemAttributes> {
   /**

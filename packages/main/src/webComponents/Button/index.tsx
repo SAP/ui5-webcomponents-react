@@ -68,7 +68,7 @@ interface ButtonAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-interface ButtonDomRef extends ButtonAttributes, Ui5DomRef {
+interface ButtonDomRef extends Required<ButtonAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

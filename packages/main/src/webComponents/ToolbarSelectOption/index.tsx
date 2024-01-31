@@ -13,7 +13,7 @@ interface ToolbarSelectOptionAttributes {
   selected?: boolean;
 }
 
-interface ToolbarSelectOptionDomRef extends ToolbarSelectOptionAttributes, Ui5DomRef {}
+interface ToolbarSelectOptionDomRef extends Required<ToolbarSelectOptionAttributes>, Ui5DomRef {}
 
 interface ToolbarSelectOptionPropTypes
   extends ToolbarSelectOptionAttributes,

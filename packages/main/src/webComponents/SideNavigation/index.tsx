@@ -14,7 +14,7 @@ interface SideNavigationAttributes {
   collapsed?: boolean;
 }
 
-interface SideNavigationDomRef extends SideNavigationAttributes, Ui5DomRef {}
+interface SideNavigationDomRef extends Required<SideNavigationAttributes>, Ui5DomRef {}
 
 interface SideNavigationPropTypes
   extends SideNavigationAttributes,

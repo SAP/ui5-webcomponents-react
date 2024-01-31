@@ -29,7 +29,7 @@ interface FlexibleColumnLayoutAttributes {
   layout?: FCLLayout | keyof typeof FCLLayout;
 }
 
-interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttributes, Ui5DomRef {
+interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines additional accessibility roles for further customization. It supports the following fields: - `startColumnRole`: the accessibility role for the `startColumn` - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns) - `midColumnRole`: the accessibility role for the `midColumn` - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns) - `endColumnRole`: the accessibility role for the `endColumn`
    */

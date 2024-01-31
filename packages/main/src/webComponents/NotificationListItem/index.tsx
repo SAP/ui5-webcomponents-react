@@ -61,7 +61,7 @@ interface NotificationListItemAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface NotificationListItemDomRef extends NotificationListItemAttributes, Ui5DomRef {}
+interface NotificationListItemDomRef extends Required<NotificationListItemAttributes>, Ui5DomRef {}
 
 interface NotificationListItemPropTypes
   extends NotificationListItemAttributes,

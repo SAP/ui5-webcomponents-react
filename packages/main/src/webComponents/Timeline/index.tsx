@@ -24,7 +24,7 @@ interface TimelineAttributes {
   layout?: TimelineLayout | keyof typeof TimelineLayout;
 }
 
-interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
+interface TimelineDomRef extends Required<TimelineAttributes>, Ui5DomRef {}
 
 interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes> {
   /**

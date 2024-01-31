@@ -65,7 +65,7 @@ interface SliderAttributes {
   value?: number;
 }
 
-interface SliderDomRef extends SliderAttributes, Ui5DomRef {}
+interface SliderDomRef extends Required<SliderAttributes>, Ui5DomRef {}
 
 interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, keyof SliderAttributes | 'onChange' | 'onInput'> {
   /**

@@ -85,7 +85,7 @@ interface TreeItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface TreeItemDomRef extends TreeItemAttributes, Ui5DomRef {
+interface TreeItemDomRef extends Required<TreeItemAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *

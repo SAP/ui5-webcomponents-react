@@ -55,7 +55,7 @@ interface CalendarAttributes {
   selectionMode?: CalendarSelectionMode | keyof typeof CalendarSelectionMode;
 }
 
-interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
+interface CalendarDomRef extends Required<CalendarAttributes>, Ui5DomRef {}
 
 interface CalendarPropTypes
   extends CalendarAttributes,
