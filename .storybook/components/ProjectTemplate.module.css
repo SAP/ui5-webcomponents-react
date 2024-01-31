@@ -1,8 +1,8 @@
 .card {
   width: 500px;
   height: 18rem;
-  margin-inline-end: 2rem;
   margin-block-end: 2rem;
+  flex-shrink: 0;
 }
 
 .cardContent {
