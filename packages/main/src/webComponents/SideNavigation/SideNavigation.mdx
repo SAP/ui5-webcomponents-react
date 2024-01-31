@@ -1,10 +1,8 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { SideNavigationItem } from '../SideNavigationItem';
-import SideNavigationItemDescription from '../SideNavigationItem/SideNavigationItemDescription.md?raw';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
-import SideNavigationSubItemDescription from '../SideNavigationSubItem/SideNavigationSubItemDescription.md?raw';
 import * as ComponentStories from './SideNavigation.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -26,12 +24,12 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 ## SideNavigationItem
 
-<Markdown>{SideNavigationItemDescription}</Markdown>
+<Description of={SideNavigationItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationItem} />
 
 ## SideNavigationSubItem
 
-<Markdown>{SideNavigationSubItemDescription}</Markdown>
+<Description of={SideNavigationSubItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationSubItem} />
 
 <Footer />

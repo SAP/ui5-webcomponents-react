@@ -2,9 +2,7 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { CardHeader } from '../CardHeader';
-import CardHeaderDescription from '../CardHeader/CardHeaderDescription.md?raw';
 import * as ComponentStories from './Card.stories';
-import CardDescription from './CardDescription.md?raw';
 import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/index';
 
 <Meta of={ComponentStories} />
@@ -21,8 +19,6 @@ import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/inde
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{CardDescription}</Markdown>
-
 ## More Examples
 
 ### Card with AnalyticalCardHeader
@@ -37,7 +33,6 @@ import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/inde
 
 <Description of={CardHeader} />
 <ArgTypesWithNote of={CardHeader} />
-<Markdown>{CardHeaderDescription}</Markdown>
 
 ## AnalyticalCardHeader
 

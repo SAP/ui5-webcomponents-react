@@ -1,8 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ProductSwitchItem } from '../ProductSwitchItem';
-import ProductSwitchItemDescription from '../ProductSwitchItem/ProductSwitchItemDescription.md?raw';
 import * as ComponentStories from './ProductSwitch.stories';
 
 <Meta of={ComponentStories} />
@@ -23,7 +22,7 @@ import * as ComponentStories from './ProductSwitch.stories';
 
 ## ProductSwitchItem
 
+<Description of={ProductSwitchItem} />
 <ArgTypesWithNote of={ProductSwitchItem} />
-<Markdown>{ProductSwitchItemDescription}</Markdown>
 
 <Footer />

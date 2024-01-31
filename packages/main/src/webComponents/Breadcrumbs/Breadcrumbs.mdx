@@ -1,8 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { BreadcrumbsItem } from '../BreadcrumbsItem';
-import BreadcrumbsItemDescription from '../BreadcrumbsItem/BreadcrumbsItemDescription.md?raw';
 import * as ComponentStories from './Breadcrumbs.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -24,7 +23,7 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 ## BreadcrumbsItem
 
-<Markdown>{BreadcrumbsItemDescription}</Markdown>
+<Description of={BreadcrumbsItem} />
 <ArgTypesWithNote exclude={excludePropsForAbstract} hideHTMLPropsNote of={BreadcrumbsItem} />
 
 <Footer />

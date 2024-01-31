@@ -1,8 +1,7 @@
 import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { ArgTypes, Canvas, Markdown, Meta } from '@storybook/blocks';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ShellBarItem } from '../ShellBarItem/index';
-import ShellBarItemDescription from '../ShellBarItem/ShellBarItemDescription.md?raw';
 import * as ComponentStories from './ShellBar.stories';
 import ShellBarDomRef from './ShellBarDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -54,8 +53,7 @@ const ShellBarComponent = () => {
 
 ## ShellBarItem
 
+<Description of={ShellBarItem} />
 <ArgTypes hideHTMLPropsNote exclude={excludePropsForAbstract} of={ShellBarItem} />
-
-<Markdown>{ShellBarItemDescription}</Markdown>
 
 <Footer />

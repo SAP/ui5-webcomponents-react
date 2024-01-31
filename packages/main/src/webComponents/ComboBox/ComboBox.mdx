@@ -1,11 +1,9 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { ComboBoxGroupItem } from '../ComboBoxGroupItem';
-import ComboBoxGroupItemDescription from '../ComboBoxGroupItem/ComboBoxGroupItemDescription.md?raw';
 import { ComboBoxItem } from '../ComboBoxItem';
-import ComboBoxItemDescription from '../ComboBoxItem/ComboBoxItemDescription.md?raw';
 import * as ComponentStories from './ComboBox.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -37,12 +35,12 @@ All available filter types controlled by the `filter` prop.
 
 ## ComboBoxItem
 
+<Description of={ComboBoxItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={ComboBoxItem} />
-<Markdown>{ComboBoxItemDescription}</Markdown>
 
 ## ComboBoxGroupItem
 
+<Description of={ComboBoxGroupItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={ComboBoxGroupItem} />
-<Markdown>{ComboBoxGroupItemDescription}</Markdown>
 
 <Footer />
