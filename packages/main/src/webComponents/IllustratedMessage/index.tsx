@@ -66,7 +66,7 @@ interface IllustratedMessageDomRef extends Required<IllustratedMessageAttributes
 
 interface IllustratedMessagePropTypes
   extends IllustratedMessageAttributes,
-    Omit<CommonProps, keyof IllustratedMessageAttributes> {
+    Omit<CommonProps, keyof IllustratedMessageAttributes | 'children' | 'subtitle'> {
   /**
    * Defines the component actions.
    */
