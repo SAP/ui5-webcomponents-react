@@ -63,6 +63,48 @@ interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttr
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element,
  * or as an interactive element that can be focused and clicked.
  *
+ * ### Usage
+ *
+ * 1\. **Get familiar with the icons collections.**
+ * Before displaying an icon, you need to explore the icons collections to find and import the desired icon.
+ * Currently there are 3 icons collection, available as 3 npm packages:
+ *
+ * *   [@ui5/webcomponents-icons](https://www.npmjs.com/package/@ui5/webcomponents-icons) represents the "SAP-icons" collection and includes the following [icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons).
+ * *   [@ui5/webcomponents-icons-tnt](https://www.npmjs.com/package/@ui5/webcomponents-icons-tnt) represents the "tnt" collection and includes the following [icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT).
+ * *   [@ui5/webcomponents-icons-icons-business-suite](https://www.npmjs.com/package/@ui5/webcomponents-icons-business-suite) represents the "business-suite" collection and includes the following [icons](https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols).
+ *
+ * 2\. **After exploring the icons collections, add one or more of the packages as dependencies to your project.**
+ * `npm i @ui5/webcomponents-icons`
+ * `npm i @ui5/webcomponents-icons-tnt`
+ * `npm i @ui5/webcomponents-icons-business-suite`
+ *
+ * 3\. **Then, import the desired icon**.
+ * `import "@ui5/{package_name}/dist/{icon_name}.js";`
+ *
+ * **For Example**:
+ * For the standard "SAP-icons" icon collection, import an icon from the `@ui5/webcomponents-icons` package:
+ * `import "@ui5/webcomponents-icons/dist/employee.js";`
+ *
+ * For the "tnt" (SAP Fiori Tools) icon collection, import an icon from the `@ui5/webcomponents-icons-tnt` package:
+ * `import "@ui5/webcomponents-icons-tnt/dist/antenna.js";`
+ *
+ * For the "business-suite" (SAP Business Suite) icon collection, import an icon from the `@ui5/webcomponents-icons-business-suite` package:
+ * `import "@ui5/webcomponents-icons-business-suite/dist/ab-testing.js";`
+ *
+ * 4\. **Display the icon using the `Icon` web component.**
+ * Set the icon collection ("SAP-icons", "tnt" or "business-suite" - "SAP-icons" is the default icon collection and can be skipped)
+ * and the icon name to the `name` property.
+ *
+ * `<Icon name="employee"></Icon>`
+ * `<Icon name="tnt/antenna"></Icon>`
+ * `<Icon name="business-suite/ab-testing"></Icon>`
+ *
+ *
+ * ### Keyboard Handling
+ *
+ * *   \[SPACE, ENTER, RETURN\] - Fires the `click` event if the `interactive` property is set to true.
+ * *   \[SHIFT\] - If \[SPACE\] or \[ENTER\],\[RETURN\] is pressed, pressing \[SHIFT\] releases the ui5-icon without triggering the click event.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(

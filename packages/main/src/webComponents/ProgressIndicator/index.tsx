@@ -54,6 +54,10 @@ interface ProgressIndicatorPropTypes
 /**
  * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
  *
+ * ### Responsive Behavior
+ *
+ * You can change the size of the Progress Indicator by changing its `width` or `height` CSS properties.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(

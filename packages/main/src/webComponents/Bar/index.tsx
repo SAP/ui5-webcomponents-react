@@ -48,6 +48,21 @@ interface BarPropTypes extends BarAttributes, Omit<CommonProps, keyof BarAttribu
 /**
  * The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
  *
+ * ### Usage
+ *
+ * With the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.
+ * **Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.
+ *
+ * ### Responsive Behavior
+ *
+ * The default slot will be centered in the available space between the startContent and the endContent areas, therefore it might not always be centered in the entire bar.
+ *
+ * ### Keyboard Handling
+ *
+ * #### Fast Navigation
+ *
+ * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Bar = withWebComponent<BarPropTypes, BarDomRef>(

@@ -76,6 +76,20 @@ interface MediaGalleryPropTypes
  * The `MediaGallery` component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the `MediaGalleryItem` component. The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size.
  * The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.
  *
+ * ### Keyboard Handling
+ *
+ * The `MediaGallery` provides advanced keyboard handling.
+ * When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items:
+ *
+ * *   \[UP/DOWN\] - Navigates up and down the items
+ * *   \[HOME\] - Navigates to first item
+ * *   \[END\] - Navigates to the last item
+ * *   \[SPACE/ENTER\] - Select an item
+ *
+ *
+ *
+ * `import "@ui5/webcomponents-fiori/dist/MediaGalleryItem";`
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>(

@@ -29,6 +29,16 @@ interface ColorPickerPropTypes
 /**
  * The `ColorPicker` allows users to choose any color and provides different input options for selecting colors.
  *
+ * ### Usage
+ *
+ * #### When to use:
+ *
+ * *   users need to select any color freely.
+ *
+ * #### When not to use:
+ *
+ * *   Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(

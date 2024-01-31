@@ -71,6 +71,11 @@ interface BadgePropTypes extends BadgeAttributes, Omit<CommonProps, keyof BadgeA
 /**
  * The `Badge` is a component which serves the purpose to attract the user attention to some piece of information (state, quantity, condition, etc.). It can contain icon and text information, and its design can be chosen from specific design types.
  *
+ * ### Usage Guidelines
+ *
+ * *   If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.
+ * *   Colors can be semantic or not semantic.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Badge = withWebComponent<BadgePropTypes, BadgeDomRef>(

@@ -175,6 +175,31 @@ interface ListPropTypes
  *
  * Additionally, the `List` provides header, footer, and customization for the list item separators.
  *
+ *
+ * ### Keyboard Handling
+ *
+ * #### Basic Navigation
+ *
+ * The `List` provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation:
+ *
+ * *   \[UP/DOWN\] - Navigates up and down the items
+ * *   \[HOME\] - Navigates to first item
+ * *   \[END\] - Navigates to the last item
+ *
+ * The user can use the following keyboard shortcuts to perform actions (such as select, delete), when the `mode` property is in use:
+ *
+ * *   \[SPACE\] - Select an item (if `type` is 'Active') when `mode` is selection
+ * *   \[DELETE\] - Delete an item if `mode` property is `Delete`
+ *
+ * #### Fast Navigation
+ *
+ * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
+ *
+ * `import "@ui5/webcomponents/dist/StandardListItem.js";` (for `StandardListItem`)
+ * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `CustomListItem`)
+ * `import "@ui5/webcomponents/dist/GroupHeaderListItem.js";` (for `GroupHeaderListItem`)
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const List = withWebComponent<ListPropTypes, ListDomRef>(

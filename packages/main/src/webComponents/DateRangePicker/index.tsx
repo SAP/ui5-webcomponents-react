@@ -206,6 +206,22 @@ interface DateRangePickerPropTypes
 /**
  * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
  *
+ * ### Usage
+ *
+ * The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the `DateRangePicker`
+ *
+ * ### Keyboard Handling
+ *
+ * The `DateRangePicker` provides advanced keyboard handling.
+ * When the `DateRangePicker` input field is focused the user can increment or decrement respectively the range start or end date, depending on where the cursor is. The following shortcuts are available:
+ *
+ * *   \[PAGEDOWN\] - Decrements the corresponding day of the month by one
+ * *   \[SHIFT\] + \[PAGEDOWN\] - Decrements the corresponding month by one
+ * *   \[SHIFT\] + \[CTRL\] + \[PAGEDOWN\] - Decrements the corresponding year by one
+ * *   \[PAGEUP\] - Increments the corresponding day of the month by one
+ * *   \[SHIFT\] + \[PAGEUP\] - Increments the corresponding month by one
+ * *   \[SHIFT\] + \[CTRL\] + \[PAGEUP\] - Increments the corresponding year by one
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(

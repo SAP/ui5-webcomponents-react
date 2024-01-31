@@ -103,6 +103,18 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
 /**
  * The `Link` is a hyperlink component that is used to navigate to other apps and web pages, or to trigger actions. It is a clickable text element, visualized in such a way that it stands out from the standard text. On hover, it changes its style to an underlined text to provide additional feedback to the user.
  *
+ * ### Usage
+ *
+ * You can set the `Link` to be enabled or disabled.
+ *
+ * To create a visual hierarchy in large lists of links, you can set the less important links as `Subtle` or the more important ones as `Emphasized`, by using the `design` property.
+ *
+ * If the `href` property is set, the link behaves as the HTML anchor tag (`<a><a/>`) and opens the specified URL in the given target frame (`target` property). To specify where the linked content is opened, you can use the `target` property.
+ *
+ * ### Responsive behavior
+ *
+ * If there is not enough space, the text of the `Link` becomes truncated. If the `wrappingType` property is set to `"Normal"`, the text is displayed on several lines instead of being truncated.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(

@@ -235,6 +235,24 @@ interface ShellBarPropTypes
 /**
  * The `ShellBar` is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.
  *
+ *
+ * ### Stable DOM Refs
+ *
+ * You can use the following stable DOM refs for the `ShellBar`:
+ *
+ * *   logo
+ * *   copilot
+ * *   notifications
+ * *   overflow
+ * *   profile
+ * *   product-switch
+ *
+ * ### Keyboard Handling
+ *
+ * #### Fast Navigation
+ *
+ * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(

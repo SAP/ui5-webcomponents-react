@@ -61,6 +61,16 @@ interface MessageStripPropTypes
 /**
  * The `MessageStrip` component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
+ * ### Usage
+ *
+ * For the `MessageStrip` component, you can define whether it displays an icon in the beginning and a close button. Moreover, its size and background can be controlled with CSS.
+ *
+ * ### Keyboard Handling
+ *
+ * #### Fast Navigation
+ *
+ * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(

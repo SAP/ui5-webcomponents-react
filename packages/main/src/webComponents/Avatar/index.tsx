@@ -118,6 +118,12 @@ interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof Avat
 /**
  * An image-like component that has different display options for representing images and icons in different shapes and sizes, depending on the use case. The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
  *
+ *
+ * ### Keyboard Handling
+ *
+ * *   \[SPACE, ENTER, RETURN\] - Fires the `click` event if the `interactive` property is set to true.
+ * *   \[SHIFT\] - If \[SPACE\] is pressed, pressing \[SHIFT\] releases the component without triggering the click event.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(

@@ -58,6 +58,15 @@ interface MediaGalleryItemPropTypes
  *
  * **Note:** `MediaGalleryItem` is not supported when used outside of `MediaGallery`.
  *
+ *
+ * ### Keyboard Handling
+ *
+ * The `MediaGallery` provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation:
+ *
+ * *   \[SPACE/ENTER/RETURN\] - Trigger `ui5-click` event
+ *
+ * )
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGalleryItemDomRef>(

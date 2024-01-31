@@ -108,6 +108,14 @@ interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof Butt
 /**
  * The `Button` component represents a simple push button. It enables users to trigger actions by clicking or tapping the `Button`, or by pressing certain keyboard keys, such as Enter.
  *
+ * ### Usage
+ *
+ * For the `Button` UI, you can define text, icon, or both. You can also specify whether the text or the icon is displayed first.
+ *
+ * You can choose from a set of predefined types that offer different styling to correspond to the triggered action.
+ *
+ * You can set the `Button` as enabled or disabled. An enabled `Button` can be pressed by clicking or tapping it. The button changes its style to provide visual feedback to the user that it is pressed or hovered over with the mouse cursor. A disabled `Button` appears inactive and cannot be pressed.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(

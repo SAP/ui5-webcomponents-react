@@ -91,6 +91,10 @@ interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof Swit
  * However, users are able to customize the width of `Switch` with pure CSS (`<Switch style="width: 200px">`), and set widths, depending on the texts they would use.
  * Note: the component would not automatically stretch to fit the whole text width.
  *
+ * ### Keyboard Handling
+ *
+ * The state can be changed by pressing the Space and Enter keys.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(

@@ -122,6 +122,27 @@ interface TabContainerPropTypes
 /**
  * The `TabContainer` represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
  *
+ * ### Structure
+ *
+ * The `TabContainer` can hold two types of entities:
+ *
+ * *   `Tab` - contains all the information on an item (text and icon)
+ * *   `TabSeparator` - used to separate tabs with a line
+ *
+ * ### Hierarchies
+ *
+ * Multiple sub tabs could be placed underneath one main tab. Nesting allows deeper hierarchies with indentations to indicate the level of each nested tab. When a tab has both sub tabs and own content its click area is split to allow the user to display the content or alternatively to expand / collapse the list of sub tabs.
+ *
+ * ### Keyboard Handling
+ *
+ * #### Fast Navigation
+ *
+ * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
+ *
+ * `import "@ui5/webcomponents/dist/Tab";` (for `Tab`)
+ * `import "@ui5/webcomponents/dist/TabSeparator";` (for `TabSeparator`)
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(

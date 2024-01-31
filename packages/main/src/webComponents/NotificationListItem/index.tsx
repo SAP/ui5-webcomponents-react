@@ -125,6 +125,11 @@ interface NotificationListItemPropTypes
  * *   can control whether the `titleText` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
  * *   add custom actions by using the `NotificationAction` component
  *
+ * ### Usage
+ *
+ * The component can be used in a standard `ui5-list`.
+ * `import "@ui5/webcomponents/dist/NotificationAction.js";` (optional)
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(

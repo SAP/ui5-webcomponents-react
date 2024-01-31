@@ -53,9 +53,7 @@ export function summaryFormatter(htmlDesc: string) {
   let description = htmlDesc.replace(/<h3 class="comment-api-title">Overview<\/h3>\n*/, '');
   description = description.replace(/<h3>ES6 Module Import<\/h3>\n*<code>.+<\/code>/, '');
 
-  let summary = description.split(/(?=<h3>)/).at(0) ?? '';
-
-  summary = turndownService.turndown(summary);
+  let summary = turndownService.turndown(description);
   summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
 

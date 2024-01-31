@@ -62,6 +62,10 @@ interface CardHeaderPropTypes extends CardHeaderAttributes, Omit<CommonProps, ke
 /**
  * The `CardHeader` is a component, meant to be used as a header of the `Card` component. It displays valuable information, that can be defined with several properties, such as: `titleText`, `subtitleText`, `status` and two slots: `avatar` and `action`.
  *
+ * ### Keyboard handling
+ *
+ * In case you enable `interactive` property, you can press the `CardHeader` by Space and Enter keys.
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
