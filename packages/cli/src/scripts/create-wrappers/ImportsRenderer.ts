@@ -2,8 +2,10 @@ import dedent from 'dedent';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
-function sortAndMergeMembers(members: string[]) {
-  return members.sort((a, b) => a.localeCompare(b)).join(', ');
+function sortAndMergeMembers(members: Set<string>) {
+  return Array.from(members)
+    .toSorted((a, b) => a.localeCompare(b))
+    .join(', ');
 }
 
 export class ImportsRenderer extends AbstractRenderer {
@@ -29,10 +31,10 @@ export class ImportsRenderer extends AbstractRenderer {
         if (config.default) {
           regularImports += config.default;
         }
-        if (config.default && config.named.length > 0) {
+        if (config.default && config.named.size > 0) {
           regularImports += ', ';
         }
-        if (config.named.length > 0) {
+        if (config.named.size > 0) {
           regularImports += `{ ${sortAndMergeMembers(config.named)} }`;
         }
 
@@ -41,7 +43,7 @@ export class ImportsRenderer extends AbstractRenderer {
           imports.push(`import ${regularImports} from '${module}';`);
         }
 
-        if (config.types.length > 0) {
+        if (config.types.size > 0) {
           imports.push(`import type { ${sortAndMergeMembers(config.types)} } from '${module}';`);
         }
         return imports;

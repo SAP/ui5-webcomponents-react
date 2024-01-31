@@ -4,8 +4,8 @@ interface ImportConfig {
   default: string | null;
   typeOnlyDefault: boolean;
   importUnassinged: boolean;
-  named: string[];
-  types: string[];
+  named: Set<string>;
+  types: Set<string>;
 }
 
 export class WebComponentWrapper {
@@ -36,7 +36,7 @@ export class WebComponentWrapper {
 
   addNamedImport(pkgName: string, localName: string) {
     const importConfig = this.getOrCreateImportConfig(pkgName);
-    importConfig.named.push(localName);
+    importConfig.named.add(localName);
     importConfig.importUnassinged = false;
     return this;
   }
@@ -50,7 +50,7 @@ export class WebComponentWrapper {
 
   addTypeImport(pkgName: string, localName: string) {
     const importConfig = this.getOrCreateImportConfig(pkgName);
-    importConfig.types.push(localName);
+    importConfig.types.add(localName);
     return this;
   }
 
@@ -96,8 +96,8 @@ export class WebComponentWrapper {
       this.importMap.set(pkgName, {
         default: null,
         typeOnlyDefault: false,
-        named: [],
-        types: [],
+        named: new Set(),
+        types: new Set(),
         importUnassinged: false
       });
     }
