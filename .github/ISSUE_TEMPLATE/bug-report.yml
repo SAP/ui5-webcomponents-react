@@ -16,7 +16,7 @@ body:
     id: example
     attributes:
       label: 'Isolated Example'
-      description: 'Please provide an isolated example if possible by forking [this codesandbox](https://codesandbox.io/s/ui5-web-components-for-react-vite-template-rcpmd4?file=/src/App.jsx).'
+      description: 'Please provide an isolated example if possible by forking [this StackBlitz template](https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/examples/vite-ts?file=src%2FApp.tsx).'
     validations:
       required: false
   - type: textarea
