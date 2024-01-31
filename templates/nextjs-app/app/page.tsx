@@ -1,8 +1,9 @@
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import { Avatar, ShellBar } from '@ui5/webcomponents-react';
-function App() {
+import { Avatar, ShellBar, ThemeProvider } from '@ui5/webcomponents-react';
+
+export default function Page() {
   return (
-    <>
+    <ThemeProvider>
       <ShellBar
         logo={
           <img
@@ -14,8 +15,6 @@ function App() {
         profile={<Avatar icon={employeeIcon} />}
       />
       {/* Add your code here */}
-    </>
+    </ThemeProvider>
   );
 }
-
-export default App;

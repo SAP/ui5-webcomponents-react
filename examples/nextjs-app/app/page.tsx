@@ -12,6 +12,7 @@ export default async function Home() {
 
   return (
     <>
+      NANANANANAAN
       <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
         <TodoList items={todoList} />
       </Page>
