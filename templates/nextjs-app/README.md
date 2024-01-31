@@ -1,4 +1,4 @@
-## UI5 Web Components React - Next.js App Router Example
+## UI5 Web Components React - Next.js App Router Template
 
 This template shows how to use the [Next.js](https://nextjs.org/) App Router with UI5 Web Components for React.
 

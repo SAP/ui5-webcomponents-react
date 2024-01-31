@@ -1,8 +1,6 @@
-## UI5 Web Components React - Next.js Pages Router Example
+## UI5 Web Components React - Next.js Pages Router Template
 
-This example shows how to use the [Next.js](https://nextjs.org/) Pages Router with UI5 Web Components for React.
-It includes the required adjustments in `pages/_app.tsx` and `pages/_document.tsx` as well as a very simple Todo
-App.
+This template shows how to use the [Next.js](https://nextjs.org/) Pages Router with UI5 Web Components for React.
 
 ## How to use this template
 
@@ -36,13 +34,6 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed
-on [http://localhost:3000/api/todods](http://localhost:3000/api/todos). This endpoint can be edited
-in `pages/api/todos.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated
-as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
