@@ -4,7 +4,6 @@ import { Toast } from './CodeGen';
 import { Button } from '../Button';
 import { ToastPlacement } from '../../enums/ToastPlacement';
 import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import Description from './ToastDescription.md?raw';
 import { useEffect, useRef } from 'react';
 import { isChromatic } from '@sb/utils';
 import ToastDomRef from './ToastDomRef.json';
@@ -82,8 +81,6 @@ export const MyComponentWithAToast() {
 ## Properties
 
 <ArgsTableWithNote story="Default" />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={ToastDomRef} />
 
