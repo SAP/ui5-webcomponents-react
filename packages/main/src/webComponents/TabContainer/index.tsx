@@ -84,7 +84,10 @@ interface TabContainerDomRef extends Required<TabContainerAttributes>, Ui5DomRef
 
 interface TabContainerPropTypes
   extends TabContainerAttributes,
-    Omit<CommonProps, keyof TabContainerAttributes | 'onTabSelect'> {
+    Omit<
+      CommonProps,
+      keyof TabContainerAttributes | 'children' | 'overflowButton' | 'startOverflowButton' | 'onTabSelect'
+    > {
   /**
    * Defines the tabs.
    *

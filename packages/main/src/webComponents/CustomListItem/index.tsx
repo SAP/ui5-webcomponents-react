@@ -46,7 +46,7 @@ interface CustomListItemDomRef extends Required<CustomListItemAttributes>, Ui5Do
 
 interface CustomListItemPropTypes
   extends CustomListItemAttributes,
-    Omit<CommonProps, keyof CustomListItemAttributes | 'onDetailClick'> {
+    Omit<CommonProps, keyof CustomListItemAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
   /**
    * Defines the content of the component.
    */

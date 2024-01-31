@@ -27,7 +27,7 @@ interface TokenAttributes {
 
 interface TokenDomRef extends Required<TokenAttributes>, Ui5DomRef {}
 
-interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'onSelect'> {
+interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'closeIcon' | 'onSelect'> {
   /**
    * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`.
    *

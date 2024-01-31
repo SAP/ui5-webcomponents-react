@@ -101,7 +101,9 @@ interface TreeItemDomRef extends Required<TreeItemAttributes>, Ui5DomRef {
   toggle: () => void;
 }
 
-interface TreeItemPropTypes extends TreeItemAttributes, Omit<CommonProps, keyof TreeItemAttributes | 'onDetailClick'> {
+interface TreeItemPropTypes
+  extends TreeItemAttributes,
+    Omit<CommonProps, keyof TreeItemAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
   /**
    * Defines the items of the component.
    *

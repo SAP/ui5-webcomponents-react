@@ -63,7 +63,7 @@ interface SelectMenuOptionDomRef extends Required<SelectMenuOptionAttributes>, U
 
 interface SelectMenuOptionPropTypes
   extends SelectMenuOptionAttributes,
-    Omit<CommonProps, keyof SelectMenuOptionAttributes | 'onDetailClick'> {
+    Omit<CommonProps, keyof SelectMenuOptionAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
   /**
    * Defines the content of the component.
    */

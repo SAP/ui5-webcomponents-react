@@ -17,7 +17,9 @@ interface WizardAttributes {
 
 interface WizardDomRef extends Required<WizardAttributes>, Ui5DomRef {}
 
-interface WizardPropTypes extends WizardAttributes, Omit<CommonProps, keyof WizardAttributes | 'onStepChange'> {
+interface WizardPropTypes
+  extends WizardAttributes,
+    Omit<CommonProps, keyof WizardAttributes | 'children' | 'onStepChange'> {
   /**
    * Defines the steps.
    *

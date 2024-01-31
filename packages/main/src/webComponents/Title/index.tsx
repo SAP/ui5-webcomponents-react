@@ -24,7 +24,7 @@ interface TitleAttributes {
 
 interface TitleDomRef extends Required<TitleAttributes>, Ui5DomRef {}
 
-interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleAttributes> {
+interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleAttributes | 'children'> {
   /**
    * Defines the text of the component. This component supports nesting a `Link` component inside.
    *

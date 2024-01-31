@@ -28,16 +28,16 @@ interface BarcodeScannerDialogPropTypes
   extends BarcodeScannerDialogAttributes,
     Omit<CommonProps, 'onScanError' | 'onScanSuccess'> {
   /**
+   * Fires when the scan fails with error.
+   */
+  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
+
+  /**
    * Fires when the scan is completed successfuuly.
    */
   onScanSuccess?: (
     event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>
   ) => void;
-
-  /**
-   * Fires when the scan fails with error.
-   */
-  onScanError?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanErrorEventDetail>) => void;
 }
 
 /**

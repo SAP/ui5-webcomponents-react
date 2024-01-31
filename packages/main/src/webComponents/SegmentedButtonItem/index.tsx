@@ -96,7 +96,7 @@ interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttribut
 
 interface SegmentedButtonItemPropTypes
   extends SegmentedButtonItemAttributes,
-    Omit<CommonProps, keyof SegmentedButtonItemAttributes | 'onClick'> {
+    Omit<CommonProps, keyof SegmentedButtonItemAttributes | 'children' | 'onClick'> {
   /**
    * Defines the text of the component.
    *

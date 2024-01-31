@@ -62,7 +62,7 @@ interface TabDomRef extends Required<TabAttributes>, Ui5DomRef {
   getTabInStripDomRef: () => ITab | null;
 }
 
-interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttributes> {
+interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttributes | 'children' | 'subTabs'> {
   /**
    * Holds the content associated with this tab.
    */

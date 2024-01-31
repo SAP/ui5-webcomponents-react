@@ -46,7 +46,10 @@ interface MediaGalleryDomRef extends Required<MediaGalleryAttributes>, Ui5DomRef
 
 interface MediaGalleryPropTypes
   extends MediaGalleryAttributes,
-    Omit<CommonProps, keyof MediaGalleryAttributes | 'onDisplayAreaClick' | 'onOverflowClick' | 'onSelectionChange'> {
+    Omit<
+      CommonProps,
+      keyof MediaGalleryAttributes | 'children' | 'onDisplayAreaClick' | 'onOverflowClick' | 'onSelectionChange'
+    > {
   /**
    * Defines the component items.
    *
@@ -56,9 +59,10 @@ interface MediaGalleryPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when selection is changed by user interaction.
+   * Fired when the display area is clicked.
+   * The display area is the central area that contains the enlarged content of the currently selected item.
    */
-  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, MediaGallerySelectionChangeEventDetail>) => void;
+  onDisplayAreaClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
 
   /**
    * Fired when the thumbnails overflow button is clicked.
@@ -66,10 +70,9 @@ interface MediaGalleryPropTypes
   onOverflowClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
 
   /**
-   * Fired when the display area is clicked.
-   * The display area is the central area that contains the enlarged content of the currently selected item.
+   * Fired when selection is changed by user interaction.
    */
-  onDisplayAreaClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, MediaGallerySelectionChangeEventDetail>) => void;
 }
 
 /**

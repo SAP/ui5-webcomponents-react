@@ -99,7 +99,16 @@ interface TableDomRef extends Required<TableAttributes>, Ui5DomRef {}
 
 interface TablePropTypes
   extends TableAttributes,
-    Omit<CommonProps, keyof TableAttributes | 'onLoadMore' | 'onPopinChange' | 'onRowClick' | 'onSelectionChange'> {
+    Omit<
+      CommonProps,
+      | keyof TableAttributes
+      | 'children'
+      | 'columns'
+      | 'onLoadMore'
+      | 'onPopinChange'
+      | 'onRowClick'
+      | 'onSelectionChange'
+    > {
   /**
    * Defines the component rows.
    *
@@ -120,9 +129,11 @@ interface TablePropTypes
    */
   columns?: UI5WCSlotsNode;
   /**
-   * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
+   * Fired when the user presses the `More` button or scrolls to the table's end.
+   *
+   * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    */
-  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
+  onLoadMore?: (event: Ui5CustomEvent<TableDomRef>) => void;
 
   /**
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
@@ -130,11 +141,9 @@ interface TablePropTypes
   onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
 
   /**
-   * Fired when the user presses the `More` button or scrolls to the table's end.
-   *
-   * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
+   * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
    */
-  onLoadMore?: (event: Ui5CustomEvent<TableDomRef>) => void;
+  onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 
   /**
    * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.

@@ -30,7 +30,7 @@ interface ToastDomRef extends Required<ToastAttributes>, Ui5DomRef {
   show: () => void;
 }
 
-interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes> {
+interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes | 'children'> {
   /**
    * Defines the text of the component.
    *

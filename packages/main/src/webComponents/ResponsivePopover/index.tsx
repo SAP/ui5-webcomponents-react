@@ -138,7 +138,14 @@ interface ResponsivePopoverPropTypes
   extends ResponsivePopoverAttributes,
     Omit<
       CommonProps,
-      keyof ResponsivePopoverAttributes | 'onAfterClose' | 'onAfterOpen' | 'onBeforeClose' | 'onBeforeOpen'
+      | keyof ResponsivePopoverAttributes
+      | 'children'
+      | 'footer'
+      | 'header'
+      | 'onAfterClose'
+      | 'onAfterOpen'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
     > {
   /**
    * Defines the content of the Popup.
@@ -167,9 +174,9 @@ interface ResponsivePopoverPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+   * Fired after the component is closed. **This event does not bubble.**
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+  onAfterClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 
   /**
    * Fired after the component is opened. **This event does not bubble.**
@@ -182,9 +189,9 @@ interface ResponsivePopoverPropTypes
   onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, PopupBeforeCloseEventDetail>) => void;
 
   /**
-   * Fired after the component is closed. **This event does not bubble.**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
-  onAfterClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 }
 
 /**

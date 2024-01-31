@@ -45,7 +45,10 @@ interface ViewSettingsDialogDomRef extends Required<ViewSettingsDialogAttributes
 
 interface ViewSettingsDialogPropTypes
   extends ViewSettingsDialogAttributes,
-    Omit<CommonProps, keyof ViewSettingsDialogAttributes | 'onBeforeOpen' | 'onCancel' | 'onConfirm'> {
+    Omit<
+      CommonProps,
+      keyof ViewSettingsDialogAttributes | 'filterItems' | 'sortItems' | 'onBeforeOpen' | 'onCancel' | 'onConfirm'
+    > {
   /**
    * Defines the `filterItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/FilterItem";`
    *
@@ -68,9 +71,9 @@ interface ViewSettingsDialogPropTypes
    */
   sortItems?: UI5WCSlotsNode;
   /**
-   * Fired when confirmation button is activated.
+   * Fired before the component is opened. **This event does not bubble.**
    */
-  onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 
   /**
    * Fired when cancel button is activated.
@@ -78,9 +81,9 @@ interface ViewSettingsDialogPropTypes
   onCancel?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogCancelEventDetail>) => void;
 
   /**
-   * Fired before the component is opened. **This event does not bubble.**
+   * Fired when confirmation button is activated.
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
+  onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
 }
 
 /**

@@ -45,7 +45,9 @@ interface BadgeAttributes {
 
 interface BadgeDomRef extends Required<BadgeAttributes>, Ui5DomRef {}
 
-interface BadgePropTypes extends BadgeAttributes, Omit<CommonProps, keyof BadgeAttributes | 'onClick'> {
+interface BadgePropTypes
+  extends BadgeAttributes,
+    Omit<CommonProps, keyof BadgeAttributes | 'children' | 'icon' | 'onClick'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

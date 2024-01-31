@@ -90,7 +90,17 @@ interface SelectDomRef extends Omit<Required<SelectAttributes>, 'menu'>, Ui5DomR
 
 interface SelectPropTypes
   extends SelectAttributes,
-    Omit<CommonProps, keyof SelectAttributes | 'onChange' | 'onClose' | 'onLiveChange' | 'onOpen'> {
+    Omit<
+      CommonProps,
+      | keyof SelectAttributes
+      | 'children'
+      | 'label'
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onClose'
+      | 'onLiveChange'
+      | 'onOpen'
+    > {
   /**
    * Defines the component options.
    *
@@ -137,6 +147,11 @@ interface SelectPropTypes
   onChange?: (event: Ui5CustomEvent<SelectDomRef, SelectChangeEventDetail>) => void;
 
   /**
+   * Fired after the component's dropdown menu closes.
+   */
+  onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
+
+  /**
    * Fired when the user navigates through the options, but the selection is not finalized, or when pressing the ESC key to revert the current selection.
    */
   onLiveChange?: (event: Ui5CustomEvent<SelectDomRef, SelectLiveChangeEventDetail>) => void;
@@ -145,11 +160,6 @@ interface SelectPropTypes
    * Fired after the component's dropdown menu opens.
    */
   onOpen?: (event: Ui5CustomEvent<SelectDomRef>) => void;
-
-  /**
-   * Fired after the component's dropdown menu closes.
-   */
-  onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 }
 
 /**

@@ -90,7 +90,9 @@ interface StepInputAttributes {
 
 interface StepInputDomRef extends Required<StepInputAttributes>, Ui5DomRef {}
 
-interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, keyof StepInputAttributes | 'onChange'> {
+interface StepInputPropTypes
+  extends StepInputAttributes,
+    Omit<CommonProps, keyof StepInputAttributes | 'valueStateMessage' | 'onChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

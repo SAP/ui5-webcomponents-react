@@ -22,7 +22,7 @@ interface GroupHeaderListItemDomRef extends Required<GroupHeaderListItemAttribut
 
 interface GroupHeaderListItemPropTypes
   extends GroupHeaderListItemAttributes,
-    Omit<CommonProps, keyof GroupHeaderListItemAttributes> {
+    Omit<CommonProps, keyof GroupHeaderListItemAttributes | 'children'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

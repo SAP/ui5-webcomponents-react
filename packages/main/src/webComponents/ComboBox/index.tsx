@@ -86,7 +86,16 @@ interface ComboBoxDomRef extends Required<ComboBoxAttributes>, Ui5DomRef {}
 
 interface ComboBoxPropTypes
   extends ComboBoxAttributes,
-    Omit<CommonProps, keyof ComboBoxAttributes | 'onChange' | 'onInput' | 'onSelectionChange'> {
+    Omit<
+      CommonProps,
+      | keyof ComboBoxAttributes
+      | 'children'
+      | 'icon'
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onInput'
+      | 'onSelectionChange'
+    > {
   /**
    * Defines the component items.
    */

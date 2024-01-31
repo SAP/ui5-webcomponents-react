@@ -107,7 +107,7 @@ interface TextAreaDomRef extends Required<TextAreaAttributes>, Ui5DomRef {}
 
 interface TextAreaPropTypes
   extends TextAreaAttributes,
-    Omit<CommonProps, keyof TextAreaAttributes | 'onChange' | 'onInput'> {
+    Omit<CommonProps, keyof TextAreaAttributes | 'valueStateMessage' | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

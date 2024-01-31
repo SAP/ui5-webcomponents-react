@@ -87,7 +87,7 @@ interface AvatarAttributes {
 
 interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
 
-interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes> {
+interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children'> {
   /**
    * Defines the optional badge that will be used for visual affordance. **Note:** While the slot allows for custom badges, to achieve the Fiori design, please use `Badge` with `Icon` in the corresponding `icon` slot, without text nodes.
    *

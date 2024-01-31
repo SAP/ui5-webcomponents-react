@@ -11,7 +11,6 @@ export class PropTypesRenderer extends AbstractRenderer {
   private _slots: CEM.Slot[] = [];
   private _events: CEM.Event[] = [];
   private eventNames = new Set<string>();
-  private _numberOfAttributes = 0;
 
   public setSlots(slots: CEM.Slot[]) {
     this._slots = slots
@@ -29,12 +28,7 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   public setEvents(events: CEM.Event[]) {
-    this._events = events;
-    return this;
-  }
-
-  public setNumberOfAttributes(numberOfAttributes: number) {
-    this._numberOfAttributes = numberOfAttributes;
+    this._events = events.toSorted((a, b) => a.name.localeCompare(b.name));
     return this;
   }
 
@@ -163,16 +157,18 @@ export class PropTypesRenderer extends AbstractRenderer {
 
   render(context: WebComponentWrapper): string {
     const typesToOmit = [];
-    if (this._numberOfAttributes > 0) {
+    if (context.attributesMap.size > 0) {
       typesToOmit.push(`keyof ${context.componentName}Attributes`);
     }
-    if (this.eventNames.size > 0) {
-      typesToOmit.push(
-        ...Array.from(this.eventNames)
-          .toSorted((a, b) => a.localeCompare(b))
-          .map((evt) => `'${evt}'`)
-      );
+
+    for (const slot of this._slots) {
+      typesToOmit.push(`'${snakeCaseToCamelCase(slot.name)}'`);
     }
+
+    if (this.eventNames.size > 0) {
+      typesToOmit.push(...Array.from(this.eventNames).map((evt) => `'${evt}'`));
+    }
+
     const CommonProps = typesToOmit.length > 0 ? `Omit<CommonProps, ${typesToOmit.join(' | ')}>` : 'CommonProps';
 
     return dedent`

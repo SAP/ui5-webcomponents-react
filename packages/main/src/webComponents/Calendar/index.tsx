@@ -59,7 +59,7 @@ interface CalendarDomRef extends Required<CalendarAttributes>, Ui5DomRef {}
 
 interface CalendarPropTypes
   extends CalendarAttributes,
-    Omit<CommonProps, keyof CalendarAttributes | 'onSelectedDatesChange'> {
+    Omit<CommonProps, keyof CalendarAttributes | 'children' | 'onSelectedDatesChange'> {
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`.
    */

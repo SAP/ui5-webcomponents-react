@@ -9,7 +9,7 @@ interface ProductSwitchAttributes {}
 
 interface ProductSwitchDomRef extends Required<ProductSwitchAttributes>, Ui5DomRef {}
 
-interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonProps {
+interface ProductSwitchPropTypes extends ProductSwitchAttributes, Omit<CommonProps, 'children'> {
   /**
    * Defines the items of the `ProductSwitch`.
    */

@@ -129,7 +129,14 @@ interface InputPropTypes
   extends InputAttributes,
     Omit<
       CommonProps,
-      keyof InputAttributes | 'onChange' | 'onInput' | 'onSuggestionItemPreview' | 'onSuggestionItemSelect'
+      | keyof InputAttributes
+      | 'children'
+      | 'icon'
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onInput'
+      | 'onSuggestionItemPreview'
+      | 'onSuggestionItemSelect'
     > {
   /**
    * Defines the suggestion items.
@@ -190,14 +197,14 @@ interface InputPropTypes
   onInput?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
-   * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
-   */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
-
-  /**
    * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
+
+  /**
+   * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
+   */
+  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**

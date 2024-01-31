@@ -18,7 +18,7 @@ interface FilterItemAttributes {
 
 interface FilterItemDomRef extends Required<FilterItemAttributes>, Ui5DomRef {}
 
-interface FilterItemPropTypes extends FilterItemAttributes, Omit<CommonProps, keyof FilterItemAttributes> {
+interface FilterItemPropTypes extends FilterItemAttributes, Omit<CommonProps, keyof FilterItemAttributes | 'values'> {
   /**
    * Defines the `values` list.
    *

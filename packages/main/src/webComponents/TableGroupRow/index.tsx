@@ -9,7 +9,7 @@ interface TableGroupRowAttributes {}
 
 interface TableGroupRowDomRef extends Required<TableGroupRowAttributes>, Ui5DomRef {}
 
-interface TableGroupRowPropTypes extends TableGroupRowAttributes, CommonProps {
+interface TableGroupRowPropTypes extends TableGroupRowAttributes, Omit<CommonProps, 'children'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

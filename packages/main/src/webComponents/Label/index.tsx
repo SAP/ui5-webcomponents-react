@@ -40,7 +40,7 @@ interface LabelAttributes {
 
 interface LabelDomRef extends Required<LabelAttributes>, Ui5DomRef {}
 
-interface LabelPropTypes extends LabelAttributes, Omit<CommonProps, keyof LabelAttributes> {
+interface LabelPropTypes extends LabelAttributes, Omit<CommonProps, keyof LabelAttributes | 'children'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

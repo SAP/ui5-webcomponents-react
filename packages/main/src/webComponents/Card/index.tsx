@@ -19,7 +19,7 @@ interface CardAttributes {
 
 interface CardDomRef extends Required<CardAttributes>, Ui5DomRef {}
 
-interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttributes> {
+interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttributes | 'children' | 'header'> {
   /**
    * Defines the content of the component.
    */

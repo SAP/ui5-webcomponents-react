@@ -68,7 +68,7 @@ interface SideNavigationItemDomRef extends Required<SideNavigationItemAttributes
 
 interface SideNavigationItemPropTypes
   extends SideNavigationItemAttributes,
-    Omit<CommonProps, keyof SideNavigationItemAttributes | 'onClick'> {
+    Omit<CommonProps, keyof SideNavigationItemAttributes | 'children' | 'onClick'> {
   /**
    * Defines nested items by passing `SideNavigationSubItem` to the default slot.
    */

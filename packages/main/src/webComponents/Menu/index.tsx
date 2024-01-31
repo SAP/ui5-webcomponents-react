@@ -64,7 +64,13 @@ interface MenuPropTypes
   extends MenuAttributes,
     Omit<
       CommonProps,
-      keyof MenuAttributes | 'onAfterClose' | 'onAfterOpen' | 'onBeforeClose' | 'onBeforeOpen' | 'onItemClick'
+      | keyof MenuAttributes
+      | 'children'
+      | 'onAfterClose'
+      | 'onAfterOpen'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
+      | 'onItemClick'
     > {
   /**
    * Defines the items of this component.
@@ -73,16 +79,9 @@ interface MenuPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when an item is being clicked.
-   * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
+   * Fired after the menu is closed. **This event does not bubble.**
    */
-  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
-
-  /**
-   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
-   * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
-   */
-  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
+  onAfterClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 
   /**
    * Fired after the menu is opened. **This event does not bubble.**
@@ -95,9 +94,16 @@ interface MenuPropTypes
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
 
   /**
-   * Fired after the menu is closed. **This event does not bubble.**
+   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
+   * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
    */
-  onAfterClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
+
+  /**
+   * Fired when an item is being clicked.
+   * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
+   */
+  onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 }
 
 /**

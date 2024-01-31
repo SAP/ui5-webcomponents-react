@@ -26,7 +26,7 @@ interface TimelineAttributes {
 
 interface TimelineDomRef extends Required<TimelineAttributes>, Ui5DomRef {}
 
-interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes> {
+interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes | 'children'> {
   /**
    * Determines the content of the `Timeline`.
    */

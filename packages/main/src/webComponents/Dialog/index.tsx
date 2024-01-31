@@ -114,7 +114,17 @@ interface DialogDomRef extends Required<DialogAttributes>, Ui5DomRef {
 
 interface DialogPropTypes
   extends DialogAttributes,
-    Omit<CommonProps, keyof DialogAttributes | 'onAfterClose' | 'onAfterOpen' | 'onBeforeClose' | 'onBeforeOpen'> {
+    Omit<
+      CommonProps,
+      | keyof DialogAttributes
+      | 'children'
+      | 'footer'
+      | 'header'
+      | 'onAfterClose'
+      | 'onAfterOpen'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
+    > {
   /**
    * Defines the content of the Popup.
    */
@@ -148,9 +158,9 @@ interface DialogPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+   * Fired after the component is closed. **This event does not bubble.**
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  onAfterClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 
   /**
    * Fired after the component is opened. **This event does not bubble.**
@@ -163,9 +173,9 @@ interface DialogPropTypes
   onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, PopupBeforeCloseEventDetail>) => void;
 
   /**
-   * Fired after the component is closed. **This event does not bubble.**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
-  onAfterClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 /**

@@ -95,6 +95,8 @@ interface ListPropTypes
     Omit<
       CommonProps,
       | keyof ListAttributes
+      | 'children'
+      | 'header'
       | 'onItemClick'
       | 'onItemClose'
       | 'onItemDelete'
@@ -134,13 +136,6 @@ interface ListPropTypes
   onItemClose?: (event: Ui5CustomEvent<ListDomRef, ListItemCloseEventDetail>) => void;
 
   /**
-   * Fired when the `Toggle` button of any item is clicked.
-   *
-   * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
-   */
-  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, ListItemToggleEventDetail>) => void;
-
-  /**
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
@@ -148,9 +143,11 @@ interface ListPropTypes
   onItemDelete?: (event: Ui5CustomEvent<ListDomRef, ListItemDeleteEventDetail>) => void;
 
   /**
-   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
+   * Fired when the `Toggle` button of any item is clicked.
+   *
+   * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    */
-  onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
+  onItemToggle?: (event: Ui5CustomEvent<ListDomRef, ListItemToggleEventDetail>) => void;
 
   /**
    * Fired when the user scrolls to the bottom of the list.
@@ -158,6 +155,11 @@ interface ListPropTypes
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
   onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
+
+  /**
+   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
+   */
+  onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
 }
 
 /**

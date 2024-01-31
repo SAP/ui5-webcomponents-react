@@ -70,7 +70,7 @@ interface FileUploaderDomRef extends Required<FileUploaderAttributes>, Ui5DomRef
 
 interface FileUploaderPropTypes
   extends FileUploaderAttributes,
-    Omit<CommonProps, keyof FileUploaderAttributes | 'onChange'> {
+    Omit<CommonProps, keyof FileUploaderAttributes | 'children' | 'valueStateMessage' | 'onChange'> {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    * **Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.

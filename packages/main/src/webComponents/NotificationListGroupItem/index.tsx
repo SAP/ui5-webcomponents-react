@@ -68,7 +68,7 @@ interface NotificationListGroupItemDomRef extends Required<NotificationListGroup
 
 interface NotificationListGroupItemPropTypes
   extends NotificationListGroupItemAttributes,
-    Omit<CommonProps, keyof NotificationListGroupItemAttributes | 'onClose' | 'onToggle'> {
+    Omit<CommonProps, keyof NotificationListGroupItemAttributes | 'actions' | 'children' | 'onClose' | 'onToggle'> {
   /**
    * Defines the actions, displayed in the top-right area.
    *
@@ -87,14 +87,14 @@ interface NotificationListGroupItemPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
-   */
-  onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
-
-  /**
    * Fired when the `Close` button is pressed.
    */
   onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, NotificationListItemBaseCloseEventDetail>) => void;
+
+  /**
+   * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
+   */
+  onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
 }
 
 /**

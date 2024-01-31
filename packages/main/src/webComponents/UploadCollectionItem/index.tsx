@@ -99,6 +99,9 @@ interface UploadCollectionItemPropTypes
     Omit<
       CommonProps,
       | keyof UploadCollectionItemAttributes
+      | 'children'
+      | 'deleteButton'
+      | 'thumbnail'
       | 'onDetailClick'
       | 'onFileNameClick'
       | 'onRename'
@@ -134,6 +137,11 @@ interface UploadCollectionItemPropTypes
    */
   thumbnail?: UI5WCSlotsNode;
   /**
+   * Fired when the user clicks on the detail button when type is `Detail`.
+   */
+  onDetailClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
+
+  /**
    * Fired when the file name is clicked.
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
@@ -148,13 +156,6 @@ interface UploadCollectionItemPropTypes
   onRename?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
   /**
-   * Fired when the terminate button is pressed.
-   *
-   * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
-   */
-  onTerminate?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
-
-  /**
    * Fired when the retry button is pressed.
    *
    * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
@@ -162,9 +163,11 @@ interface UploadCollectionItemPropTypes
   onRetry?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
   /**
-   * Fired when the user clicks on the detail button when type is `Detail`.
+   * Fired when the terminate button is pressed.
+   *
+   * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
+  onTerminate?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 }
 
 /**

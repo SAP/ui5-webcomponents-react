@@ -65,7 +65,10 @@ interface NotificationListItemDomRef extends Required<NotificationListItemAttrib
 
 interface NotificationListItemPropTypes
   extends NotificationListItemAttributes,
-    Omit<CommonProps, keyof NotificationListItemAttributes | 'onClose'> {
+    Omit<
+      CommonProps,
+      keyof NotificationListItemAttributes | 'actions' | 'avatar' | 'children' | 'footnotes' | 'onClose'
+    > {
   /**
    * Defines the actions, displayed in the top-right area.
    *

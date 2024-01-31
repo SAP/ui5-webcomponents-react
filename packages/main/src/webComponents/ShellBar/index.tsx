@@ -131,6 +131,12 @@ interface ShellBarPropTypes
     Omit<
       CommonProps,
       | keyof ShellBarAttributes
+      | 'children'
+      | 'logo'
+      | 'menuItems'
+      | 'profile'
+      | 'searchField'
+      | 'startButton'
       | 'onCoPilotClick'
       | 'onLogoClick'
       | 'onMenuItemClick'
@@ -202,19 +208,9 @@ interface ShellBarPropTypes
    */
   startButton?: UI5WCSlotsNode;
   /**
-   * Fired, when the notification icon is activated.
+   * Fired, when the co pilot is activated.
    */
-  onNotificationsClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarNotificationsClickEventDetail>) => void;
-
-  /**
-   * Fired, when the profile slot is present.
-   */
-  onProfileClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProfileClickEventDetail>) => void;
-
-  /**
-   * Fired, when the product switch icon is activated. **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
-   */
-  onProductSwitchClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProductSwitchClickEventDetail>) => void;
+  onCoPilotClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarCoPilotClickEventDetail>) => void;
 
   /**
    * Fired, when the logo is activated.
@@ -222,14 +218,24 @@ interface ShellBarPropTypes
   onLogoClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarLogoClickEventDetail>) => void;
 
   /**
-   * Fired, when the co pilot is activated.
-   */
-  onCoPilotClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarCoPilotClickEventDetail>) => void;
-
-  /**
    * Fired, when a menu item is activated **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    */
   onMenuItemClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarMenuItemClickEventDetail>) => void;
+
+  /**
+   * Fired, when the notification icon is activated.
+   */
+  onNotificationsClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarNotificationsClickEventDetail>) => void;
+
+  /**
+   * Fired, when the product switch icon is activated. **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
+   */
+  onProductSwitchClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProductSwitchClickEventDetail>) => void;
+
+  /**
+   * Fired, when the profile slot is present.
+   */
+  onProfileClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProfileClickEventDetail>) => void;
 }
 
 /**

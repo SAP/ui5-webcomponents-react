@@ -58,7 +58,7 @@ interface MenuItemAttributes {
 
 interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {}
 
-interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof MenuItemAttributes> {
+interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof MenuItemAttributes | 'children'> {
   /**
    * Defines the items of this component.
    */

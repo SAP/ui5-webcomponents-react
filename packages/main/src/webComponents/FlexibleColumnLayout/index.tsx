@@ -70,7 +70,10 @@ interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttrib
 
 interface FlexibleColumnLayoutPropTypes
   extends FlexibleColumnLayoutAttributes,
-    Omit<CommonProps, keyof FlexibleColumnLayoutAttributes | 'onLayoutChange'> {
+    Omit<
+      CommonProps,
+      keyof FlexibleColumnLayoutAttributes | 'endColumn' | 'midColumn' | 'startColumn' | 'onLayoutChange'
+    > {
   /**
    * Defines the content in the end column.
    *

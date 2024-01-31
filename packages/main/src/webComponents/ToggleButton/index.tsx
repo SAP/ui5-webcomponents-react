@@ -98,7 +98,7 @@ interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef
 
 interface ToggleButtonPropTypes
   extends ToggleButtonAttributes,
-    Omit<CommonProps, keyof ToggleButtonAttributes | 'onClick'> {
+    Omit<CommonProps, keyof ToggleButtonAttributes | 'children' | 'onClick'> {
   /**
    * Defines the text of the component.
    *

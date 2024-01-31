@@ -99,7 +99,7 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
 
 interface TimePickerPropTypes
   extends TimePickerAttributes,
-    Omit<CommonProps, keyof TimePickerAttributes | 'onChange' | 'onInput'> {
+    Omit<CommonProps, keyof TimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *

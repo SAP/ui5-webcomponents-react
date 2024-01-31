@@ -173,7 +173,10 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
 
 interface DateRangePickerPropTypes
   extends DateRangePickerAttributes,
-    Omit<CommonProps, keyof DateRangePickerAttributes | 'onChange' | 'onInput' | 'onValueStateChange'> {
+    Omit<
+      CommonProps,
+      keyof DateRangePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
+    > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

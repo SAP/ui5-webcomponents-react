@@ -86,7 +86,10 @@ interface StandardListItemDomRef extends Required<StandardListItemAttributes>, U
 
 interface StandardListItemPropTypes
   extends StandardListItemAttributes,
-    Omit<CommonProps, keyof StandardListItemAttributes | 'onDetailClick'> {
+    Omit<
+      CommonProps,
+      keyof StandardListItemAttributes | 'children' | 'deleteButton' | 'imageContent' | 'onDetailClick'
+    > {
   /**
    * Defines the text of the component.
    *

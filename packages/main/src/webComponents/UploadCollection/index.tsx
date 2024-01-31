@@ -46,7 +46,10 @@ interface UploadCollectionDomRef extends Required<UploadCollectionAttributes>, U
 
 interface UploadCollectionPropTypes
   extends UploadCollectionAttributes,
-    Omit<CommonProps, keyof UploadCollectionAttributes | 'onDrop' | 'onItemDelete' | 'onSelectionChange'> {
+    Omit<
+      CommonProps,
+      keyof UploadCollectionAttributes | 'children' | 'header' | 'onDrop' | 'onItemDelete' | 'onSelectionChange'
+    > {
   /**
    * Defines the items of the `UploadCollection`.
    * **Note:** Use `UploadCollectionItem` for the intended design.

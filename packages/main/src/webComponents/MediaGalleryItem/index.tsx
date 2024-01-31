@@ -35,7 +35,7 @@ interface MediaGalleryItemDomRef extends Required<MediaGalleryItemAttributes>, U
 
 interface MediaGalleryItemPropTypes
   extends MediaGalleryItemAttributes,
-    Omit<CommonProps, keyof MediaGalleryItemAttributes> {
+    Omit<CommonProps, keyof MediaGalleryItemAttributes | 'children' | 'thumbnail'> {
   /**
    * Defines the content of the component.
    */

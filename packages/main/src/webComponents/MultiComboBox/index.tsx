@@ -99,7 +99,17 @@ interface MultiComboBoxDomRef extends Required<MultiComboBoxAttributes>, Ui5DomR
 
 interface MultiComboBoxPropTypes
   extends MultiComboBoxAttributes,
-    Omit<CommonProps, keyof MultiComboBoxAttributes | 'onChange' | 'onInput' | 'onOpenChange' | 'onSelectionChange'> {
+    Omit<
+      CommonProps,
+      | keyof MultiComboBoxAttributes
+      | 'children'
+      | 'icon'
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onInput'
+      | 'onOpenChange'
+      | 'onSelectionChange'
+    > {
   /**
    * Defines the component items.
    */

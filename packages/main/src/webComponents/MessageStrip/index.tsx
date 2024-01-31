@@ -30,7 +30,7 @@ interface MessageStripDomRef extends Required<MessageStripAttributes>, Ui5DomRef
 
 interface MessageStripPropTypes
   extends MessageStripAttributes,
-    Omit<CommonProps, keyof MessageStripAttributes | 'onClose'> {
+    Omit<CommonProps, keyof MessageStripAttributes | 'children' | 'icon' | 'onClose'> {
   /**
    * Defines the text of the component.
    *

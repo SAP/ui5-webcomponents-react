@@ -10,7 +10,7 @@ interface ColorPaletteAttributes {}
 
 interface ColorPaletteDomRef extends Required<ColorPaletteAttributes>, Ui5DomRef {}
 
-interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, 'onItemClick'> {
+interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, 'children' | 'onItemClick'> {
   /**
    * Defines the `ColorPaletteItem` elements.
    */

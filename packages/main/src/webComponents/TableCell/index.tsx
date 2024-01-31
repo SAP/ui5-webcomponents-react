@@ -9,7 +9,7 @@ interface TableCellAttributes {}
 
 interface TableCellDomRef extends Required<TableCellAttributes>, Ui5DomRef {}
 
-interface TableCellPropTypes extends TableCellAttributes, CommonProps {
+interface TableCellPropTypes extends TableCellAttributes, Omit<CommonProps, 'children'> {
   /**
    * Specifies the content of the component.
    */

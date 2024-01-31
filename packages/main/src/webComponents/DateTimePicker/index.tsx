@@ -152,7 +152,10 @@ interface DateTimePickerDomRef extends Required<DateTimePickerAttributes>, Ui5Do
 
 interface DateTimePickerPropTypes
   extends DateTimePickerAttributes,
-    Omit<CommonProps, keyof DateTimePickerAttributes | 'onChange' | 'onInput' | 'onValueStateChange'> {
+    Omit<
+      CommonProps,
+      keyof DateTimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
+    > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *

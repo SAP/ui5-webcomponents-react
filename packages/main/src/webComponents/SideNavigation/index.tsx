@@ -18,7 +18,7 @@ interface SideNavigationDomRef extends Required<SideNavigationAttributes>, Ui5Do
 
 interface SideNavigationPropTypes
   extends SideNavigationAttributes,
-    Omit<CommonProps, keyof SideNavigationAttributes | 'onSelectionChange'> {
+    Omit<CommonProps, keyof SideNavigationAttributes | 'children' | 'fixedItems' | 'header' | 'onSelectionChange'> {
   /**
    * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested inside the items.
    */

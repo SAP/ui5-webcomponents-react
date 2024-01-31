@@ -48,7 +48,7 @@ interface SplitButtonDomRef extends Required<SplitButtonAttributes>, Ui5DomRef {
 
 interface SplitButtonPropTypes
   extends SplitButtonAttributes,
-    Omit<CommonProps, keyof SplitButtonAttributes | 'onArrowClick' | 'onClick'> {
+    Omit<CommonProps, keyof SplitButtonAttributes | 'children' | 'onArrowClick' | 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -56,14 +56,14 @@ interface SplitButtonPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the user clicks on the default action.
-   */
-  onClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
-
-  /**
    * Fired when the user clicks on the arrow action.
    */
   onArrowClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
+
+  /**
+   * Fired when the user clicks on the default action.
+   */
+  onClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
 }
 
 /**

@@ -59,12 +59,7 @@ export default async function createWrappers(packageName: string, outDir: string
     wrapper.addRenderer(new ImportsRenderer());
     wrapper.addRenderer(new AttributesRenderer().setAttributes(attributes));
     wrapper.addRenderer(new DomRefRenderer().setMembers(declaration.members ?? []));
-    wrapper.addRenderer(
-      new PropTypesRenderer()
-        .setNumberOfAttributes(attributes.length)
-        .setSlots(declaration.slots ?? [])
-        .setEvents(declaration.events ?? [])
-    );
+    wrapper.addRenderer(new PropTypesRenderer().setSlots(declaration.slots ?? []).setEvents(declaration.events ?? []));
     wrapper.addRenderer(
       new ComponentRenderer()
         .setDescription(declaration.description ?? '')

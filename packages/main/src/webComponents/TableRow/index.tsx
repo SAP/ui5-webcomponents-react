@@ -28,7 +28,7 @@ interface TableRowAttributes {
 
 interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}
 
-interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof TableRowAttributes> {
+interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof TableRowAttributes | 'children'> {
   /**
    * Defines the cells of the component.
    *

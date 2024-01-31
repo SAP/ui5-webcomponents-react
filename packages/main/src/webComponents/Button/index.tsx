@@ -90,7 +90,7 @@ interface ButtonDomRef extends Required<ButtonAttributes>, Ui5DomRef {
   };
 }
 
-interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'onClick'> {
+interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'children' | 'onClick'> {
   /**
    * Defines the text of the component.
    *

@@ -32,7 +32,7 @@ interface ToolbarDomRef extends Required<ToolbarAttributes>, Ui5DomRef {
   isOverflowOpen: () => Promise<boolean>;
 }
 
-interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof ToolbarAttributes> {
+interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof ToolbarAttributes | 'children'> {
   /**
    * Defines the items of the component. **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparator` and `ToolbarSpacer` are allowed here.
    */

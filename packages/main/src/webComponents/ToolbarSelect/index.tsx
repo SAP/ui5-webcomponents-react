@@ -62,7 +62,7 @@ interface ToolbarSelectDomRef extends Required<ToolbarSelectAttributes>, Ui5DomR
 
 interface ToolbarSelectPropTypes
   extends ToolbarSelectAttributes,
-    Omit<CommonProps, keyof ToolbarSelectAttributes | 'onChange' | 'onClose' | 'onOpen'> {
+    Omit<CommonProps, keyof ToolbarSelectAttributes | 'children' | 'onChange' | 'onClose' | 'onOpen'> {
   /**
    * Defines the component options.
    *
@@ -77,14 +77,14 @@ interface ToolbarSelectPropTypes
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
 
   /**
-   * Fired after the component's dropdown menu opens.
-   */
-  onOpen?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
-
-  /**
    * Fired after the component's dropdown menu closes.
    */
   onClose?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
+
+  /**
+   * Fired after the component's dropdown menu opens.
+   */
+  onOpen?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
 }
 
 /**

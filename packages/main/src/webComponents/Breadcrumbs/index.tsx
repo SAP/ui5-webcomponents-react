@@ -28,7 +28,7 @@ interface BreadcrumbsDomRef extends Required<BreadcrumbsAttributes>, Ui5DomRef {
 
 interface BreadcrumbsPropTypes
   extends BreadcrumbsAttributes,
-    Omit<CommonProps, keyof BreadcrumbsAttributes | 'onItemClick'> {
+    Omit<CommonProps, keyof BreadcrumbsAttributes | 'children' | 'onItemClick'> {
   /**
    * Defines the component items.
    *

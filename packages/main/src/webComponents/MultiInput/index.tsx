@@ -137,6 +137,10 @@ interface MultiInputPropTypes
     Omit<
       CommonProps,
       | keyof MultiInputAttributes
+      | 'children'
+      | 'icon'
+      | 'tokens'
+      | 'valueStateMessage'
       | 'onChange'
       | 'onInput'
       | 'onSuggestionItemPreview'
@@ -204,16 +208,6 @@ interface MultiInputPropTypes
    */
   valueStateMessage?: UI5WCSlotsNode;
   /**
-   * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
-   */
-  onValueHelpTrigger?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
-
-  /**
-   * Fired when a token is about to be deleted.
-   */
-  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
-
-  /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
   onChange?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
@@ -224,14 +218,24 @@ interface MultiInputPropTypes
   onInput?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
   /**
+   * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
+   */
+  onSuggestionItemPreview?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
+
+  /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 
   /**
-   * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
+   * Fired when a token is about to be deleted.
    */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
+  onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
+
+  /**
+   * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
+   */
+  onValueHelpTrigger?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 }
 
 /**

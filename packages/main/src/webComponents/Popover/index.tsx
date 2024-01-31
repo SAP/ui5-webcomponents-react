@@ -136,7 +136,17 @@ interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5
 
 interface PopoverPropTypes
   extends PopoverAttributes,
-    Omit<CommonProps, keyof PopoverAttributes | 'onAfterClose' | 'onAfterOpen' | 'onBeforeClose' | 'onBeforeOpen'> {
+    Omit<
+      CommonProps,
+      | keyof PopoverAttributes
+      | 'children'
+      | 'footer'
+      | 'header'
+      | 'onAfterClose'
+      | 'onAfterOpen'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
+    > {
   /**
    * Defines the content of the Popup.
    */
@@ -164,9 +174,9 @@ interface PopoverPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+   * Fired after the component is closed. **This event does not bubble.**
    */
-  onBeforeOpen?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
+  onAfterClose?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
 
   /**
    * Fired after the component is opened. **This event does not bubble.**
@@ -179,9 +189,9 @@ interface PopoverPropTypes
   onBeforeClose?: (event: Ui5CustomEvent<PopoverDomRef, PopupBeforeCloseEventDetail>) => void;
 
   /**
-   * Fired after the component is closed. **This event does not bubble.**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
-  onAfterClose?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
+  onBeforeOpen?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
 }
 
 /**

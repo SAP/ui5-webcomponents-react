@@ -71,20 +71,20 @@ interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAtt
 
 interface ColorPalettePopoverPropTypes
   extends ColorPalettePopoverAttributes,
-    Omit<CommonProps, keyof ColorPalettePopoverAttributes | 'onClose' | 'onItemClick'> {
+    Omit<CommonProps, keyof ColorPalettePopoverAttributes | 'children' | 'onClose' | 'onItemClick'> {
   /**
    * Defines the content of the component.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the user selects a color.
-   */
-  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, ColorPalettePopoverItemClickEventDetail>) => void;
-
-  /**
    * Fired when the `ColorPalettePopover` is closed due to user interaction.
    */
   onClose?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef>) => void;
+
+  /**
+   * Fired when the user selects a color.
+   */
+  onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, ColorPalettePopoverItemClickEventDetail>) => void;
 }
 
 /**

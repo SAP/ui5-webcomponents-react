@@ -88,7 +88,7 @@ interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
   accessibilityAttributes: { expanded: 'true' | 'false'; hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree' };
 }
 
-interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'onClick'> {
+interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.

@@ -9,7 +9,7 @@ interface SelectMenuAttributes {}
 
 interface SelectMenuDomRef extends Required<SelectMenuAttributes>, Ui5DomRef {}
 
-interface SelectMenuPropTypes extends SelectMenuAttributes, CommonProps {
+interface SelectMenuPropTypes extends SelectMenuAttributes, Omit<CommonProps, 'children'> {
   /**
    * Defines the options of the component.
    */
