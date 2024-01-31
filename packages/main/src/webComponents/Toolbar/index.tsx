@@ -6,7 +6,7 @@ import type { ToolbarAlign } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
-interface ToolbarV2Attributes {
+interface ToolbarAttributes {
   /**
    * Defines the accessible ARIA name of the component.
    */
@@ -21,9 +21,9 @@ interface ToolbarV2Attributes {
   alignContent?: ToolbarAlign | keyof typeof ToolbarAlign;
 }
 
-interface ToolbarV2DomRef extends ToolbarV2Attributes, Ui5DomRef {}
+interface ToolbarDomRef extends ToolbarAttributes, Ui5DomRef {}
 
-interface ToolbarV2PropTypes extends ToolbarV2Attributes, Omit<CommonProps, keyof ToolbarV2Attributes> {
+interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof ToolbarAttributes> {
   /**
    * Defines the items of the component. **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparatorV2` and `ToolbarSpacerV2` are allowed here.
    */
@@ -31,13 +31,13 @@ interface ToolbarV2PropTypes extends ToolbarV2Attributes, Omit<CommonProps, keyo
 }
 
 /**
- * The `ToolbarV2` component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.
+ * The `Toolbar` component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.
  *
  * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
  *
  * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
  */
-const ToolbarV2 = withWebComponent<ToolbarV2PropTypes, ToolbarV2DomRef>(
+const Toolbar = withWebComponent<ToolbarPropTypes, ToolbarDomRef>(
   'ui5-toolbar',
   ['accessibleName', 'accessibleNameRef', 'alignContent'],
   [],
@@ -46,7 +46,7 @@ const ToolbarV2 = withWebComponent<ToolbarV2PropTypes, ToolbarV2DomRef>(
   () => import('@ui5/webcomponents/dist/Toolbar.js')
 );
 
-ToolbarV2.displayName = 'ToolbarV2';
+Toolbar.displayName = 'Toolbar';
 
-export { ToolbarV2 };
-export type { ToolbarV2DomRef, ToolbarV2PropTypes };
+export { Toolbar };
+export type { ToolbarDomRef, ToolbarPropTypes };

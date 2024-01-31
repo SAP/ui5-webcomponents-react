@@ -1,11 +1,18 @@
 'use client';
 
-import '@ui5/webcomponents/dist/ToolbarSeparator.js';
+import '@ui5/webcomponents/dist/ToolbarSpacer.js';
+import type { CSSProperties } from 'react';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
-interface ToolbarSeparatorV2Attributes {
+interface ToolbarSpacerAttributes {
+  /**
+   * Defines the width of the spacer.
+   *
+   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
+   */
+  width?: CSSProperties['width'] | CSSProperties['height'];
   /**
    * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
    *
@@ -20,14 +27,12 @@ interface ToolbarSeparatorV2Attributes {
   preventOverflowClosing?: boolean;
 }
 
-interface ToolbarSeparatorV2DomRef extends ToolbarSeparatorV2Attributes, Ui5DomRef {}
+interface ToolbarSpacerDomRef extends ToolbarSpacerAttributes, Ui5DomRef {}
 
-interface ToolbarSeparatorV2PropTypes
-  extends ToolbarSeparatorV2Attributes,
-    Omit<CommonProps, keyof ToolbarSeparatorV2Attributes> {}
+interface ToolbarSpacerPropTypes extends ToolbarSpacerAttributes, Omit<CommonProps, keyof ToolbarSpacerAttributes> {}
 
 /**
- * The `ToolbarSeparatorV2` is an element, used for visual separation between two elements. It takes no space in calculating toolbar items width
+ * The `ToolbarSpacer` is an element, used for taking needed space for toolbar items to take 100% width. It takes no space in calculating toolbar items width
  *
  * @abstract
  *
@@ -35,20 +40,20 @@ interface ToolbarSeparatorV2PropTypes
  *
  * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
  */
-const ToolbarSeparatorV2 = withWebComponent<ToolbarSeparatorV2PropTypes, ToolbarSeparatorV2DomRef>(
-  'ui5-toolbar-separator',
-  ['overflowPriority'],
+const ToolbarSpacer = withWebComponent<ToolbarSpacerPropTypes, ToolbarSpacerDomRef>(
+  'ui5-toolbar-spacer',
+  ['overflowPriority', 'width'],
   ['preventOverflowClosing'],
   [],
   [],
-  () => import('@ui5/webcomponents/dist/ToolbarSeparator.js')
+  () => import('@ui5/webcomponents/dist/ToolbarSpacer.js')
 );
 
-ToolbarSeparatorV2.displayName = 'ToolbarSeparatorV2';
+ToolbarSpacer.displayName = 'ToolbarSpacer';
 
-ToolbarSeparatorV2.defaultProps = {
+ToolbarSpacer.defaultProps = {
   overflowPriority: ToolbarItemOverflowBehavior.Default
 };
 
-export { ToolbarSeparatorV2 };
-export type { ToolbarSeparatorV2DomRef, ToolbarSeparatorV2PropTypes };
+export { ToolbarSpacer };
+export type { ToolbarSpacerDomRef, ToolbarSpacerPropTypes };
