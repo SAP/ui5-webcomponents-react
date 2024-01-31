@@ -11,7 +11,8 @@
     "declarationDir": "./dist",
     "rootDir": "./src",
     "strict": true,
-    "types": ["node", "@types/turndown"]
+    "types": ["node", "@types/turndown"],
+    "skipLibCheck": true
   },
   "include": ["src"]
 }
