@@ -10,6 +10,7 @@ import {
   Text,
   ThemeProvider
 } from '@ui5/webcomponents-react';
+import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { addCustomCSSWithScoping } from '../../packages/main/src/internal/addCustomCSSWithScoping';
 import classes from './ProjectTemplate.module.css';
@@ -23,6 +24,7 @@ interface ProjectTemplatePropTypes {
   href: string;
   children: ReactNode;
   deprecationNotice?: string;
+  isTemplate?: boolean;
 }
 
 addCustomCSSWithScoping(
@@ -31,12 +33,12 @@ addCustomCSSWithScoping(
 );
 
 export function ProjectTemplate(props: ProjectTemplatePropTypes) {
-  const { title, subtitle, logo, logoAttribution, isTypeScript, children, href, deprecationNotice } = props;
+  const { title, subtitle, logo, logoAttribution, isTypeScript, children, href, deprecationNotice, isTemplate } = props;
 
   return (
     <ThemeProvider>
       <Card
-        className={classes.card}
+        className={clsx(classes.card, isTemplate && classes.template)}
         header={
           <CardHeader
             data-project-template=""
@@ -74,10 +76,14 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
           <Link design={LinkDesign.Emphasized} href={href}>
             View Example
           </Link>
-          <br />
-          <br />
-          <Text>What&apos;s included:</Text>
-          {children}
+          {!isTemplate && (
+            <>
+              <br />
+              <br />
+              <Text>What&apos;s included:</Text>
+              {children}
+            </>
+          )}
         </div>
       </Card>
     </ThemeProvider>
