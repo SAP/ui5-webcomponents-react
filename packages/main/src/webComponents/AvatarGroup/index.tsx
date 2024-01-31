@@ -2,39 +2,43 @@
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
 import type { AvatarGroupClickEventDetail } from '@ui5/webcomponents/dist/AvatarGroup.js';
+import type { IAvatar } from '@ui5/webcomponents/dist/Interfaces.js';
+import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
+import type AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import type { ReactNode } from 'react';
-import type { AvatarColorScheme } from '../../enums/index.js';
-import { AvatarGroupType } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarGroupAttributes {
   /**
    * Defines the mode of the `AvatarGroup`.
+   * @default "Group"
    */
   type?: AvatarGroupType | keyof typeof AvatarGroupType;
 }
 
-interface AvatarGroupDomRef extends AvatarGroupAttributes, Ui5DomRef {
+interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
   /**
    * Returns an array containing the `AvatarColorScheme` values that correspond to the avatars in the component.
    */
-  readonly colorScheme: (AvatarColorScheme | keyof typeof AvatarColorScheme)[];
+  readonly colorScheme: Array<AvatarColorScheme>;
+
   /**
    * Returns an array containing the `Avatar` instances that are currently not displayed due to lack of space.
    */
-  readonly hiddenItems: ReactNode | ReactNode[];
+  readonly hiddenItems: Array<IAvatar>;
 }
 
 interface AvatarGroupPropTypes
   extends AvatarGroupAttributes,
-    Omit<CommonProps, keyof AvatarGroupAttributes | 'onClick'> {
+    Omit<CommonProps, keyof AvatarGroupAttributes | 'children' | 'overflowButton' | 'onClick' | 'onOverflow'> {
   /**
    * Defines the items of the component. Use the `Avatar` component as an item.
    *
    * **Note:** The UX guidelines recommends using avatars with "Circle" shape. Moreover, if you use avatars with "Square" shape, there will be visual inconsistency as the built-in overflow action has "Circle" shape.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the overflow button of the component. **Note:** We recommend using the `Button` component.
    *
@@ -51,6 +55,7 @@ interface AvatarGroupPropTypes
    * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
    */
   onClick?: (event: Ui5CustomEvent<AvatarGroupDomRef, AvatarGroupClickEventDetail>) => void;
+
   /**
    * Fired when the count of visible `Avatar` elements in the component has changed
    */
@@ -63,9 +68,42 @@ interface AvatarGroupPropTypes
  * *   `Group` type: The avatars are displayed as partially overlapped on top of each other and the entire group has one click/tap area.
  * *   `Individual` type: The avatars are displayed side-by-side and each avatar has its own click/tap area.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Responsive Behavior
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-AvatarGroup)
+ * When the available space is less than the width required to display all avatars, an overflow visualization appears as a button placed at the end with the same shape and size as the avatars. The visualization displays the number of avatars that have overflowed and are not currently visible.
+ *
+ * ### Usage
+ *
+ * Use the `AvatarGroup` if:
+ *
+ * *   You want to display a group of avatars.
+ * *   You want to display several avatars which have something in common.
+ *
+ * Do not use the `AvatarGroup` if:
+ *
+ * *   You want to display a single avatar.
+ * *   You want to display a gallery for simple images.
+ * *   You want to use it for other visual content than avatars.
+ *
+ * ### Keyboard Handling
+ *
+ * The component provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation:
+ * `type` Individual:
+ *
+ * *   \[TAB\] - Move focus to the overflow button
+ * *   \[LEFT\] - Navigate one avatar to the left
+ * *   \[RIGHT\] - Navigate one avatar to the right
+ * *   \[HOME\] - Navigate to the first avatar
+ * *   \[END\] - Navigate to the last avatar
+ * *   \[SPACE\],\[ENTER\],\[RETURN\] - Trigger `ui5-click` event
+ *
+ *
+ * `type` Group:
+ *
+ * *   \[TAB\] - Move focus to the next interactive element after the component
+ * *   \[SPACE\],\[ENTER\],\[RETURN\] - Trigger `ui5-click` event
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',
@@ -77,10 +115,6 @@ const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
 );
 
 AvatarGroup.displayName = 'AvatarGroup';
-
-AvatarGroup.defaultProps = {
-  type: AvatarGroupType.Group
-};
 
 export { AvatarGroup };
 export type { AvatarGroupDomRef, AvatarGroupPropTypes };
