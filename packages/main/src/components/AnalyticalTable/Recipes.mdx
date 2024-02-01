@@ -225,8 +225,8 @@ const columns = [
 
 ## How to focus the content of a Dialog or Popover rendered inside a cell?
 
-If a Dialog or Popover is rendered inside a cell, the `focus` event is bubbling up to the table which implements its own logic for focus handling to support the keyboard navigation.
-This applies even if a React portal is used to mount the HTML element outside of the table, because React event propagation still applies as if it were rendered inside.
+If a Dialog or Popover is rendered inside a cell, the `focus` event is bubbling up to the table which implements its own logic for focus handling to support keyboard navigation.
+This applies even if a React portal is used to mount the HTML element outside the table, because React event propagation still applies as if it were rendered inside.
 
 To prevent this behavior, you can use the `stopPropagation` method of the `onFocus` event of the Dialog or Popover.
 
