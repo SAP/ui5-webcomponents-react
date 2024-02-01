@@ -16,7 +16,7 @@ body:
     id: example
     attributes:
       label: 'Isolated Example'
-      description: 'Please provide an isolated example if possible by forking [this StackBlitz template](https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/examples/vite-ts?file=src%2FApp.tsx).'
+      description: 'Please provide an isolated example if possible by forking [this StackBlitz template](https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/templates/vite-ts?file=src%2FApp.tsx).'
     validations:
       required: false
   - type: textarea
