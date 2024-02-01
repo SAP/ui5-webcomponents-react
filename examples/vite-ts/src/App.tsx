@@ -1,3 +1,4 @@
+import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import {
   Avatar,
   FlexBox,
@@ -23,7 +24,7 @@ function App() {
       <ShellBar
         logo={<img src="/vite.svg" alt={'Vite Logo'} />}
         primaryTitle="UI5 Web Components for React Template"
-        profile={<Avatar initials={'UI5'} />}
+        profile={<Avatar icon={employeeIcon} />}
       />
       <FlexBox
         direction={FlexBoxDirection.Column}

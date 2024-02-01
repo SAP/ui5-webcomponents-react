@@ -136,7 +136,7 @@ const preview: Preview = {
         method: 'alphabetical',
         order: [
           'Getting Started',
-          'Project Templates',
+          'Project Templates & Examples',
           'Change Log',
           'Migration Guide',
           'Knowledge Base',
