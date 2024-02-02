@@ -2,10 +2,10 @@
 
 import '@ui5/webcomponents/dist/MultiInput.js';
 import type {
+  IInputSuggestionItem,
   InputSuggestionItemPreviewEventDetail,
   InputSuggestionItemSelectEventDetail
 } from '@ui5/webcomponents/dist/Input.js';
-import type { IInputSuggestionItem } from '@ui5/webcomponents/dist/Interfaces.js';
 import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
 import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';

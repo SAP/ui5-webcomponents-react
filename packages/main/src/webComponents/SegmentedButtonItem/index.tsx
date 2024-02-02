@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
+import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import type { MouseEventHandler, ReactNode } from 'react';
@@ -80,18 +81,14 @@ interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttribut
    *     *   `true`
    *     *   `false`
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `ListBox`
-   *     *   `Menu`
-   *     *   `Tree`
+   *     *   `dialog`
+   *     *   `grid`
+   *     *   `listbox`
+   *     *   `menu`
+   *     *   `tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
    */
-  accessibilityAttributes: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes: AccessibilityAttributes;
 }
 
 interface SegmentedButtonItemPropTypes
@@ -116,7 +113,6 @@ interface SegmentedButtonItemPropTypes
  *
  * Clicking or tapping on a `SegmentedButtonItem` changes its state to `pressed`. The item returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any `SegmentedButtonItem`.
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(

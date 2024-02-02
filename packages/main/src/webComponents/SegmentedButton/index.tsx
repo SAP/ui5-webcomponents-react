@@ -1,8 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
-import type { ISegmentedButtonItem } from '@ui5/webcomponents/dist/Interfaces.js';
-import type { SegmentedButtonSelectionChangeEventDetail } from '@ui5/webcomponents/dist/SegmentedButton.js';
+import type {
+  ISegmentedButtonItem,
+  SegmentedButtonSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/SegmentedButton.js';
 import type SegmentedButtonMode from '@ui5/webcomponents/dist/types/SegmentedButtonMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';

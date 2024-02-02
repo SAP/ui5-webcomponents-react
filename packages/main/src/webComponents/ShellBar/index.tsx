@@ -10,7 +10,8 @@ import type {
   ShellBarMenuItemClickEventDetail,
   ShellBarNotificationsClickEventDetail,
   ShellBarProductSwitchClickEventDetail,
-  ShellBarProfileClickEventDetail
+  ShellBarProfileClickEventDetail,
+  ShellBarSearchButtonEventDetail
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -143,6 +144,7 @@ interface ShellBarPropTypes
       | 'onNotificationsClick'
       | 'onProductSwitchClick'
       | 'onProfileClick'
+      | 'onSearchButtonClick'
     > {
   /**
    * Defines the `ShellBar` aditional items.
@@ -236,6 +238,11 @@ interface ShellBarPropTypes
    * Fired, when the profile slot is present.
    */
   onProfileClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProfileClickEventDetail>) => void;
+
+  /**
+   * Fired, when the search button is activated. **Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.
+   */
+  onSearchButtonClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchButtonEventDetail>) => void;
 }
 
 /**
@@ -266,7 +273,15 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showCoPilot', 'showNotifications', 'showProductSwitch', 'showSearchField'],
   ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
-  ['co-pilot-click', 'logo-click', 'menu-item-click', 'notifications-click', 'product-switch-click', 'profile-click'],
+  [
+    'co-pilot-click',
+    'logo-click',
+    'menu-item-click',
+    'notifications-click',
+    'product-switch-click',
+    'profile-click',
+    'search-button-click'
+  ],
   () => import('@ui5/webcomponents-fiori/dist/ShellBar.js')
 );
 

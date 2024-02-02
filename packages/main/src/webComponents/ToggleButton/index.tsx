@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
+import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import type { MouseEventHandler, ReactNode } from 'react';
@@ -82,18 +83,14 @@ interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef
    *     *   `true`
    *     *   `false`
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `ListBox`
-   *     *   `Menu`
-   *     *   `Tree`
+   *     *   `dialog`
+   *     *   `grid`
+   *     *   `listbox`
+   *     *   `menu`
+   *     *   `tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
    */
-  accessibilityAttributes: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes: AccessibilityAttributes;
 }
 
 interface ToggleButtonPropTypes

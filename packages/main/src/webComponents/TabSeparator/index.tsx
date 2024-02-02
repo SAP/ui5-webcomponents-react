@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabSeparator.js';
-import type { ITab } from '@ui5/webcomponents/dist/Interfaces.js';
+import type { ITab } from '@ui5/webcomponents/dist/TabContainer.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 

@@ -1,8 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Select.js';
-import type { IOption } from '@ui5/webcomponents/dist/Interfaces.js';
-import type { SelectChangeEventDetail, SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
+import type { IOption, SelectChangeEventDetail, SelectLiveChangeEventDetail } from '@ui5/webcomponents/dist/Select.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';

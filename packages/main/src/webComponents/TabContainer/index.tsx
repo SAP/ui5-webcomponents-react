@@ -1,8 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabContainer.js';
-import type { ITab } from '@ui5/webcomponents/dist/Interfaces.js';
-import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
+import type { ITab, TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
 import type TabContainerBackgroundDesign from '@ui5/webcomponents/dist/types/TabContainerBackgroundDesign.js';
 import type TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
 import type TabsOverflowMode from '@ui5/webcomponents/dist/types/TabsOverflowMode.js';

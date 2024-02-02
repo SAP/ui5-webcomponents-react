@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Link.js';
-import type { LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import type { AccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
 import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type { ReactNode } from 'react';
@@ -79,13 +79,13 @@ interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
    *     *   `true`
    *     *   `false`
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `ListBox`
-   *     *   `Menu`
-   *     *   `Tree`
+   *     *   `dialog`
+   *     *   `grid`
+   *     *   `listbox`
+   *     *   `menu`
+   *     *   `tree`
    */
-  accessibilityAttributes: { expanded: 'true' | 'false'; hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree' };
+  accessibilityAttributes: AccessibilityAttributes;
 }
 
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {

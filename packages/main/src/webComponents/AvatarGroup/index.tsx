@@ -1,8 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
-import type { AvatarGroupClickEventDetail } from '@ui5/webcomponents/dist/AvatarGroup.js';
-import type { IAvatar } from '@ui5/webcomponents/dist/Interfaces.js';
+import type { AvatarGroupClickEventDetail, IAvatarGroupItem } from '@ui5/webcomponents/dist/AvatarGroup.js';
 import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import type AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import type { ReactNode } from 'react';
@@ -26,7 +25,7 @@ interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
   /**
    * Returns an array containing the `Avatar` instances that are currently not displayed due to lack of space.
    */
-  readonly hiddenItems: Array<IAvatar>;
+  readonly hiddenItems: Array<IAvatarGroupItem>;
 }
 
 interface AvatarGroupPropTypes

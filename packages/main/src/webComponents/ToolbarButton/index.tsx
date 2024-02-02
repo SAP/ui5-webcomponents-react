@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
+import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ToolbarButton.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import type { CSSProperties } from 'react';
@@ -97,18 +98,14 @@ interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomR
    *     *   `true`
    *     *   `false`
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `ListBox`
-   *     *   `Menu`
-   *     *   `Tree`
+   *     *   `dialog`
+   *     *   `grid`
+   *     *   `listbox`
+   *     *   `menu`
+   *     *   `tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
    */
-  accessibilityAttributes: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes: AccessibilityAttributes;
 }
 
 interface ToolbarButtonPropTypes

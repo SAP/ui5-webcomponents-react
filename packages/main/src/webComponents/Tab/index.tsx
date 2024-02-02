@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Tab.js';
-import type { ITab } from '@ui5/webcomponents/dist/Interfaces.js';
+import type { ITab } from '@ui5/webcomponents/dist/TabContainer.js';
 import type SemanticColor from '@ui5/webcomponents/dist/types/SemanticColor.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
