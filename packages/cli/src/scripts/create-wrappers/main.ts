@@ -32,9 +32,10 @@ export default async function createWrappers(packageName: string, outDir: string
 
   const tagNameToComponentName = customElementManifest.modules.reduce(
     (map, mod) => {
-      const declaration = mod.declarations?.at(0) as CEM.CustomElementDeclaration;
-      if (declaration) {
-        map[declaration.tagName!] = declaration.name;
+      for (const declaration of mod.declarations ?? []) {
+        if ('tagName' in declaration && declaration.tagName) {
+          map[declaration.tagName] = declaration.name;
+        }
       }
       return map;
     },
@@ -43,7 +44,9 @@ export default async function createWrappers(packageName: string, outDir: string
   setGlobalTagNameMap(tagNameToComponentName);
 
   for (const module of customElementManifest.modules) {
-    const declaration = module.declarations?.at(0) as CEM.CustomElementDeclaration;
+    const declaration = module.declarations?.find(
+      (decl) => 'customElement' in decl && decl.customElement
+    ) as CEM.CustomElementDeclaration;
     const webComponentImport = `${packageName}/${module.path}`;
 
     if (!declaration?.tagName) {
