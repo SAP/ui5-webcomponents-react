@@ -11,8 +11,11 @@ export const ObjectPageCssVariables = {
 export const styles = {
   objectPage: {
     [DynamicPageCssVariables.headerDisplay]: 'block',
+    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
     container: 'objectPage / inline-size',
     boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     height: '100%',
     maxHeight: '100vh',
@@ -22,7 +25,7 @@ export const styles = {
     backgroundColor: ThemingParameters.sapBackgroundColor,
     overflowX: 'hidden',
     overflowY: 'auto',
-    [DynamicPageCssVariables.titleFontSize]: ThemingParameters.sapObjectHeader_Title_FontSize,
+    scrollBehavior: 'smooth',
     '& section[id*="ObjectPageSection-"] > div[role="heading"]': {
       display: 'none'
     },
@@ -130,13 +133,16 @@ export const styles = {
     }
   },
   content: {
-    extend: ResponsiveContainerPadding
+    extend: ResponsiveContainerPadding,
+    flexGrow: 1,
+    position: 'relative'
   },
   footer: {
     position: 'sticky',
     bottom: '0.5rem',
     margin: '0 0.5rem'
   },
+  footerSpacer: { height: '1rem', flexShrink: 0 },
   subSectionPopover: {
     '&::part(content)': {
       padding: 0
