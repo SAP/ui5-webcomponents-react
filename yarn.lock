@@ -5525,7 +5525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-virtual@npm:3.0.4":
+"@tanstack/react-virtual@npm:~3.0.4":
   version: 3.0.4
   resolution: "@tanstack/react-virtual@npm:3.0.4"
   dependencies:
@@ -6743,7 +6743,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
-    "@tanstack/react-virtual": "npm:3.0.4"
+    "@tanstack/react-virtual": "npm:~3.0.4"
     "@ui5/webcomponents-react-base": "workspace:~"
     clsx: "npm:2.1.0"
     react-jss: "npm:^10.10.0"
