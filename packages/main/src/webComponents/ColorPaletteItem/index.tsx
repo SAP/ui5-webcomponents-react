@@ -10,24 +10,21 @@ interface ColorPaletteItemAttributes {
    * Defines the colour of the component.
    *
    * **Note:** The value should be a valid CSS color.
+   * @default undefined
    */
   value?: CSSProperties['color'];
 }
 
-interface ColorPaletteItemDomRef extends ColorPaletteItemAttributes, Ui5DomRef {}
+interface ColorPaletteItemDomRef extends Required<ColorPaletteItemAttributes>, Ui5DomRef {}
 
 interface ColorPaletteItemPropTypes
   extends ColorPaletteItemAttributes,
     Omit<CommonProps, keyof ColorPaletteItemAttributes> {}
 
 /**
- * The `ColorPaletteItem` component represents a color in the the `ColorPalette`
+ * The `ColorPaletteItem` component represents a color in the the `ColorPalette`.
  *
- * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ColorPalette)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPaletteItemDomRef>(
   'ui5-color-palette-item',

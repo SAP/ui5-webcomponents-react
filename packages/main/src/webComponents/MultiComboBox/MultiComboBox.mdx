@@ -1,15 +1,11 @@
 import { ArgsTableWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem';
 import { Token } from '../Token';
-import MultiComboBoxGroupItemDescription from '../MultiComboBoxGroupItem/MultiComboBoxGroupItemDescription.md?raw';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
-import MultiComboBoxItemDescription from '../MultiComboBoxItem/MultiComboBoxItemDescription.md?raw';
 import * as ComponentStories from './MultiComboBox.stories';
-import Description from './MultiComboBoxDescription.md?raw';
 import MultiComboBoxDomRef from './MultiComboBoxDomRef.json';
-import TokenDescription from '../Token/TokenDescription.md?raw';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
@@ -26,8 +22,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{Description}</Markdown>
-
 <DomRefTable rows={MultiComboBoxDomRef} />
 
 # More Examples
@@ -40,17 +34,17 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 ## MultiComboBoxItem
 
+<Description of={MultiComboBoxItem} />
 <ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItem} />
-<Markdown>{MultiComboBoxItemDescription}</Markdown>
 
 ## MultiComboBoxGroupItem
 
+<Description of={MultiComboBoxGroupItem} />
 <ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxGroupItem} />
-<Markdown>{MultiComboBoxGroupItemDescription}</Markdown>
 
 ## Token
 
+<Description of={Token} />
 <ArgsTableWithNote hideHTMLPropsNote of={Token} />
-<Markdown>{TokenDescription}</Markdown>
 
 <Footer />

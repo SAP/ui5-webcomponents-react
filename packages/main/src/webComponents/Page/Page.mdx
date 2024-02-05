@@ -1,7 +1,6 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Page.stories';
-import Description from './PageDescription.md?raw';
 
 <Meta of={ComponentStories} />
 
@@ -16,7 +15,5 @@ import Description from './PageDescription.md?raw';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <Footer />

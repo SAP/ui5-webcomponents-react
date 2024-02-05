@@ -1,10 +1,8 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Children, cloneElement, useState } from 'react';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { UploadCollectionItem } from '../UploadCollectionItem';
-import UploadCollectionItemDescription from '../UploadCollectionItem/UploadCollectionItemDescription.md?raw';
 import * as ComponentStories from './UploadCollection.stories';
 
 <Meta of={ComponentStories} />
@@ -146,7 +144,7 @@ Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
 
 ## UploadCollectionItem
 
-<Markdown>{UploadCollectionItemDescription}</Markdown>
+<Description of={UploadCollectionItem} />
 <ArgTypesWithNote of={UploadCollectionItem} />
 
 <Footer />

@@ -8,14 +8,17 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface BreadcrumbsItemAttributes {
   /**
    * Defines the accessible ARIA name of the item.
+   * @default undefined
    */
   accessibleName?: string;
+
   /**
    * Defines the link href.
    *
    * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
+
   /**
    * Defines the link target.
    *
@@ -30,15 +33,16 @@ interface BreadcrumbsItemAttributes {
    *
    *
    * **Note: **This property must only be used when the `href` property is set.****
+   * @default undefined
    */
-  target?: string;
+  target?: string | undefined;
 }
 
-interface BreadcrumbsItemDomRef extends BreadcrumbsItemAttributes, Ui5DomRef {}
+interface BreadcrumbsItemDomRef extends Required<BreadcrumbsItemAttributes>, Ui5DomRef {}
 
 interface BreadcrumbsItemPropTypes
   extends BreadcrumbsItemAttributes,
-    Omit<CommonProps, keyof BreadcrumbsItemAttributes> {
+    Omit<CommonProps, keyof BreadcrumbsItemAttributes | 'children'> {
   /**
    * Defines the text of the component.
    *
@@ -48,13 +52,10 @@ interface BreadcrumbsItemPropTypes
 }
 
 /**
- * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`
+ * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Breadcrumbs)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(
   'ui5-breadcrumbs-item',

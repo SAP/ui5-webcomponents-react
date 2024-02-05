@@ -6,20 +6,30 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface SideNavigationSubItemAttributes {
   /**
-   * Defines the link target URI. Supports standard hyperlink behavior. If a JavaScript action should be triggered, this should not be set, but instead an event handler for the `onClick` event should be registered.
+   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * Defines the link target URI. Supports standard hyperlink behavior. If a JavaScript action should be triggered, this should not be set, but instead an event handler for the `click` event should be registered.
    */
   href?: string;
+
   /**
    * Defines the icon of the item.
    *
    * The SAP-icons font provides numerous options.
-   * See all the available icons in the <ui5-link target="_blank" href="https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html">Icon Explorer</ui5-link>.
+   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
   /**
    * Defines whether the item is selected
+   * @default false
    */
   selected?: boolean;
+
   /**
    * Defines the component target.
    *
@@ -34,13 +44,14 @@ interface SideNavigationSubItemAttributes {
    * **This property must only be used when the `href` property is set.**
    */
   target?: string;
+
   /**
    * Defines the text of the item.
    */
   text?: string;
 }
 
-interface SideNavigationSubItemDomRef extends SideNavigationSubItemAttributes, Ui5DomRef {}
+interface SideNavigationSubItemDomRef extends Required<SideNavigationSubItemAttributes>, Ui5DomRef {}
 
 interface SideNavigationSubItemPropTypes
   extends SideNavigationSubItemAttributes,
@@ -55,15 +66,12 @@ interface SideNavigationSubItemPropTypes
  * The `SideNavigationSubItem` is intended to be used inside a `SideNavigationItem` only.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-SideNavigation)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
   ['href', 'icon', 'target', 'text'],
-  ['selected'],
+  ['disabled', 'selected'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js')

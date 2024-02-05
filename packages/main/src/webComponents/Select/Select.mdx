@@ -1,11 +1,7 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ArgsTableWithNote, ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { Option, SelectMenu, SelectMenuOption } from '../index.ts';
-import Description from './SelectDescription.md?raw';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import OptionDescription from '../Option/OptionDescription.md?raw';
-import SelectMenuDescription from '../SelectMenu/SelectMenuDescription.md?raw';
-import SelectMenuOptionDescription from '../SelectMenuOption/SelectMenuOptionDescription.md?raw';
 import SelectDomRef from './SelectDomRef.json';
 import * as ComponentStories from './Select.stories';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -23,8 +19,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={SelectDomRef} />
 
@@ -61,14 +55,12 @@ const onChange = (event) => {
 
 ## Option
 
+<Description of={Option} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Option} />
-
-<Markdown>{OptionDescription}</Markdown>
 
 ## SelectMenu
 
-<Markdown>{SelectMenuDescription}</Markdown>
-
+<Description of={SelectMenu} />
 <ArgsTableWithNote of={SelectMenu} />
 
 ### Example: Select with custom Options
@@ -77,8 +69,7 @@ const onChange = (event) => {
 
 ## SelectMenuOption
 
-<Markdown>{SelectMenuOptionDescription}</Markdown>
-
+<Description of={SelectMenuOption} />
 <ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SelectMenuOption} />
 
 <Footer />

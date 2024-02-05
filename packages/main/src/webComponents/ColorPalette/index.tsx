@@ -8,9 +8,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface ColorPaletteAttributes {}
 
-interface ColorPaletteDomRef extends ColorPaletteAttributes, Ui5DomRef {}
+interface ColorPaletteDomRef extends Required<ColorPaletteAttributes>, Ui5DomRef {}
 
-interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, keyof ColorPaletteAttributes> {
+interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, 'children' | 'onItemClick'> {
   /**
    * Defines the `ColorPaletteItem` elements.
    */
@@ -24,9 +24,11 @@ interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps
 /**
  * The `ColorPalette` provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Usage
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ColorPalette)
+ * The `ColorPalette` is meant for users that need to select a color from a predefined set. To define the colors, use the `ColorPaletteItem` component inside the default slot of the `ColorPalette`.
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>(
   'ui5-color-palette',

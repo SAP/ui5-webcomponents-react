@@ -1,17 +1,22 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
-import type { SegmentedButtonSelectionChangeEventDetail } from '@ui5/webcomponents/dist/SegmentedButton.js';
+import type {
+  ISegmentedButtonItem,
+  SegmentedButtonSelectionChangeEventDetail
+} from '@ui5/webcomponents/dist/SegmentedButton.js';
+import type SegmentedButtonMode from '@ui5/webcomponents/dist/types/SegmentedButtonMode.js';
 import type { ReactNode } from 'react';
-import { SegmentedButtonMode } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SegmentedButtonAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
+
   /**
    * Defines the component selection mode.
    *
@@ -19,26 +24,29 @@ interface SegmentedButtonAttributes {
    *
    * *   `SingleSelect`
    * *   `MultiSelect`
+   * @default "SingleSelect"
    */
   mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
 }
 
-interface SegmentedButtonDomRef extends SegmentedButtonAttributes, Ui5DomRef {
+interface SegmentedButtonDomRef extends Required<SegmentedButtonAttributes>, Ui5DomRef {
   /**
    * Currently selected item.
    *
-   * @deprecated This method will be removed in the next major release. Please use the <code>selectedItems</code> property instead.
+   * @deprecated since 1.14.0. This method will be removed in the next major release.
+   Please use the <code>selectedItems</code> property instead.
    */
-  readonly selectedItem: ReactNode;
+  readonly selectedItem: ISegmentedButtonItem | undefined;
+
   /**
    * Returns an array of the currently selected items.
    */
-  readonly selectedItems: ReactNode | ReactNode[];
+  readonly selectedItems: Array<ISegmentedButtonItem>;
 }
 
 interface SegmentedButtonPropTypes
   extends SegmentedButtonAttributes,
-    Omit<CommonProps, keyof SegmentedButtonAttributes> {
+    Omit<CommonProps, keyof SegmentedButtonAttributes | 'children' | 'onSelectionChange'> {
   /**
    * Defines the items of `SegmentedButton`.
    *
@@ -58,9 +66,7 @@ interface SegmentedButtonPropTypes
  *
  * **Note:** There can be just one selected `item` at a time.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-SegmentedButton)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
@@ -72,10 +78,6 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
 );
 
 SegmentedButton.displayName = 'SegmentedButton';
-
-SegmentedButton.defaultProps = {
-  mode: SegmentedButtonMode.SingleSelect
-};
 
 export { SegmentedButton };
 export type { SegmentedButtonDomRef, SegmentedButtonPropTypes };

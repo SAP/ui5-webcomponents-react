@@ -1,38 +1,50 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
+import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
-import { ListItemType, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeItemCustomAttributes {
   /**
-   * Defines whether the tree list item should display the selection element.
-   */
-  hideSelectionElement?: boolean;
-  /**
    * Defines the accessible name of the component.
    */
   accessibleName?: string;
+
   /**
    * Defines the state of the `additionalText`.
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   * @default "None"
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
+
   /**
    * Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
+   * @default false
    */
   expanded?: boolean;
+
   /**
    * Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
    * _Note:_ This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons. Set this to `true` for nodes you intend to load lazily, when the user clicks the expand button. It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
+   * @default false
    */
   hasChildren?: boolean;
+
+  /**
+   * Defines whether the tree list item should display the selection element.
+   * @default false
+   */
+  hideSelectionElement?: boolean;
+
   /**
    * If set, an icon will be displayed before the text of the tree list item.
    */
   icon?: string;
+
   /**
    * Defines whether the selection of a tree node is displayed as partially selected.
    *
@@ -44,41 +56,57 @@ interface TreeItemCustomAttributes {
    *
    *
    * **Note:** This property takes effect only when the `Tree` is in `MultiSelect` mode.
+   * @default false
    */
   indeterminate?: boolean;
+
   /**
    * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   * @default false
    */
   navigated?: boolean;
+
+  /**
+   * Defines the selected state of the `ListItem`.
+   * @default false
+   */
+  selected?: boolean;
+
   /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
    * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * @default "Active"
    */
   type?: ListItemType | keyof typeof ListItemType;
-  /**
-   * Defines the selected state of the `ListItem`.
-   */
-  selected?: boolean;
 }
 
-interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRef {
+interface TreeItemCustomDomRef extends Required<TreeItemCustomAttributes>, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
    * *   `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM. The value of each `aria-setsize` is an integer reflecting number of items in the complete set. **Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
    * *   `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM. The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
    */
-  accessibilityAttributes: Record<string, unknown>;
+  accessibilityAttributes: AccessibilityAttributes;
+
   /**
    * Call this method to manually switch the `expanded` state of a tree item.
+   * @returns {void}
    */
   toggle: () => void;
 }
 
 interface TreeItemCustomPropTypes
   extends TreeItemCustomAttributes,
-    Omit<CommonProps, keyof TreeItemCustomAttributes | 'content'> {
+    Omit<CommonProps, keyof TreeItemCustomAttributes | 'children' | 'content' | 'deleteButton' | 'onDetailClick'> {
+  /**
+   * Defines the items of the component.
+   *
+   * **Note:** Use `TreeItem` or `TreeItemCustom`
+   */
+  children?: ReactNode | ReactNode[];
+
   /**
    * Defines the content of the `TreeItem`.
    *
@@ -88,13 +116,8 @@ interface TreeItemCustomPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  content?: UI5WCSlotsNode | UI5WCSlotsNode[];
-  /**
-   * Defines the items of the component.
-   *
-   * **Note:** Use `TreeItem` or `TreeItemCustom`
-   */
-  children?: ReactNode | ReactNode[];
+  content?: UI5WCSlotsNode;
+
   /**
    * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
@@ -115,9 +138,7 @@ interface TreeItemCustomPropTypes
  * The `TreeItemCustom` represents a node in a tree structure, shown as a `List`.
  * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items. You can use this item to put any custom content inside the tree item.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Tree)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
   'ui5-tree-item-custom',
@@ -129,11 +150,6 @@ const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomD
 );
 
 TreeItemCustom.displayName = 'TreeItemCustom';
-
-TreeItemCustom.defaultProps = {
-  additionalTextState: ValueState.None,
-  type: ListItemType.Active
-};
 
 export { TreeItemCustom };
 export type { TreeItemCustomDomRef, TreeItemCustomPropTypes };

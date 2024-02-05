@@ -1,9 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Wizard.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import WizardDescription from './WizardDescription.md?raw';
-import WizardStepDescription from '../WizardStep/WizardStepDescription.md?raw';
 import { WizardStep } from '../WizardStep';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -142,14 +140,11 @@ const WizardComponent = () => {
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{WizardDescription}</Markdown>
-
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## WizardStep
 
-<Markdown>{WizardStepDescription}</Markdown>
-
+<Description of={WizardStep} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={WizardStep} />
 
 <Footer />

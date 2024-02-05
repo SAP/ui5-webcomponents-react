@@ -8,7 +8,7 @@ import type { CommonProps, Ui5DomRef } from '../types/index.js';
 import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
 
-const createEventPropName = (eventName) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
+const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
 type EventHandler = (event: CustomEvent<unknown>) => void;
 

@@ -66,8 +66,8 @@ export const DocsHeader = ({ since }) => {
       </FlexBox>
       <Subtitle />
       <InfoTable since={since} />
-      <Description />
       <TableOfContent />
+      <Description />
     </ThemeProvider>
   );
 };

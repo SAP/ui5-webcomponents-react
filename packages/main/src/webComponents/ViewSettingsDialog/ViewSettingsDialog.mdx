@@ -1,15 +1,10 @@
 import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
-import { useRef } from 'react';
-import FilterItemDescription from '../FilterItem/FilterItemDescription.md?raw';
 import { FilterItem } from '../FilterItem/index';
-import FilterItemOptionDescription from '../FilterItemOption/FilterItemOptionDescription.md?raw';
 import { FilterItemOption } from '../FilterItemOption/index';
 import { SortItem } from '../SortItem/index';
-import SortItemDescription from '../SortItem/SortItemDescription.md?raw';
 import * as ComponentStories from './ViewSettingsDialog.stories';
-import ViewSettingsDialogDescription from './ViewSettingsDialogDescription.md?raw';
 import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -26,8 +21,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{ViewSettingsDialogDescription}</Markdown>
 
 <DomRefTable rows={ViewSettingsDialogDomRef} />
 
@@ -66,18 +59,15 @@ const ViewSettingsDialogComponent = () => {
 
 <Description of={SortItem} />
 <ArgTypes exclude={excludePropsForAbstract} of={SortItem} />
-<Markdown>{SortItemDescription}</Markdown>
 
 ## FilterItem
 
 <Description of={FilterItem} />
 <ArgTypes exclude={excludePropsForAbstract} of={FilterItem} />
-<Markdown>{FilterItemDescription}</Markdown>
 
 ## FilterItemOption
 
 <Description of={FilterItemOption} />
 <ArgTypes exclude={excludePropsForAbstract} of={FilterItemOption} />
-<Markdown>{FilterItemOptionDescription}</Markdown>
 
 <Footer />
