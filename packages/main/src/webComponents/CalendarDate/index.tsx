@@ -11,7 +11,7 @@ interface CalendarDateAttributes {
   value?: string;
 }
 
-interface CalendarDateDomRef extends CalendarDateAttributes, Ui5DomRef {}
+interface CalendarDateDomRef extends Required<CalendarDateAttributes>, Ui5DomRef {}
 
 interface CalendarDatePropTypes extends CalendarDateAttributes, Omit<CommonProps, keyof CalendarDateAttributes> {}
 
@@ -19,10 +19,7 @@ interface CalendarDatePropTypes extends CalendarDateAttributes, Omit<CommonProps
  * The `CalendarDate` component defines a calendar date to be used inside `Calendar`
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Calendar)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>(
   'ui5-date',

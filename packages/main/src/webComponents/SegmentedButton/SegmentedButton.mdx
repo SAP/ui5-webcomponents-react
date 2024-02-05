@@ -1,8 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
-import SegmentedButtonItemDescription from '../SegmentedButtonItem/SegmentedButtonItemDescription.md?raw';
 import * as ComponentStories from './SegmentedButton.stories';
 import SegmentedButtonDomRef from './SegmentedButtonDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -27,7 +26,7 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 ## SegmentedButtonItem
 
-<Markdown>{SegmentedButtonItemDescription}</Markdown>
+<Description of={SegmentedButtonItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SegmentedButtonItem} />
 
 <Footer />

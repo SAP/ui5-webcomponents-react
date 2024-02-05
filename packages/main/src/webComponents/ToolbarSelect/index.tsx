@@ -2,8 +2,9 @@
 
 import '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
+import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { CSSProperties, ReactNode } from 'react';
-import { ToolbarItemOverflowBehavior, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -12,45 +13,56 @@ interface ToolbarSelectAttributes {
    * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
+
   /**
    * Receives id(or many ids) of the elements that label the select.
    */
   accessibleNameRef?: string;
+
   /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is noninteractive.
+   * @default false
    */
   disabled?: boolean;
-  /**
-   * Defines the value state of the component.
-   */
-  valueState?: ValueState | keyof typeof ValueState;
-  /**
-   * Defines the width of the select.
-   *
-   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
-   */
-  width?: CSSProperties['width'] | CSSProperties['height'];
+
   /**
    * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
    *
    * *   `NeverOverflow`
    * *   `AlwaysOverflow`
    * *   `Default`
+   * @default "Default"
    */
   overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
+
   /**
    * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   * @default false
    */
   preventOverflowClosing?: boolean;
+
+  /**
+   * Defines the value state of the component.
+   * @default "None"
+   */
+  valueState?: ValueState | keyof typeof ValueState;
+
+  /**
+   * Defines the width of the select.
+   *
+   * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
+   * @default undefined
+   */
+  width?: CSSProperties['width'] | CSSProperties['height'];
 }
 
-interface ToolbarSelectDomRef extends ToolbarSelectAttributes, Ui5DomRef {}
+interface ToolbarSelectDomRef extends Required<ToolbarSelectAttributes>, Ui5DomRef {}
 
 interface ToolbarSelectPropTypes
   extends ToolbarSelectAttributes,
-    Omit<CommonProps, keyof ToolbarSelectAttributes | 'onChange'> {
+    Omit<CommonProps, keyof ToolbarSelectAttributes | 'children' | 'onChange' | 'onClose' | 'onOpen'> {
   /**
    * Defines the component options.
    *
@@ -63,10 +75,12 @@ interface ToolbarSelectPropTypes
    * Fired when the selected option changes.
    */
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
+
   /**
    * Fired after the component's dropdown menu closes.
    */
   onClose?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
+
   /**
    * Fired after the component's dropdown menu opens.
    */
@@ -74,13 +88,11 @@ interface ToolbarSelectPropTypes
 }
 
 /**
- * The `ToolbarSelect` component is used to create a toolbar drop-down list. The items inside the `ToolbarSelect` define the available options by using the `ToolbarSelect-option` component.
+ * The `ToolbarSelect` component is used to create a toolbar drop-down list. The items inside the `ToolbarSelect` define the available options by using the `ToolbarSelectOption` component.
+ * `import "@ui5/webcomponents/dist/ToolbarSelectOption";` (comes with `ToolbarSelect`)
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',
@@ -92,11 +104,6 @@ const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomR
 );
 
 ToolbarSelect.displayName = 'ToolbarSelect';
-
-ToolbarSelect.defaultProps = {
-  valueState: ValueState.None,
-  overflowPriority: ToolbarItemOverflowBehavior.Default
-};
 
 export { ToolbarSelect };
 export type { ToolbarSelectDomRef, ToolbarSelectPropTypes };

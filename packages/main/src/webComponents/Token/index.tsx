@@ -9,21 +9,25 @@ interface TokenAttributes {
    * Defines whether the component is read-only.
    *
    * **Note:** A read-only component can not be deleted or selected, but still provides visual feedback upon user interaction.
+   * @default false
    */
   readonly?: boolean;
+
   /**
    * Defines whether the component is selected or not.
+   * @default false
    */
   selected?: boolean;
+
   /**
    * Defines the text of the token.
    */
   text?: string;
 }
 
-interface TokenDomRef extends TokenAttributes, Ui5DomRef {}
+interface TokenDomRef extends Required<TokenAttributes>, Ui5DomRef {}
 
-interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'onSelect'> {
+interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'closeIcon' | 'onSelect'> {
   /**
    * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`.
    *
@@ -33,7 +37,7 @@ interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenA
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  closeIcon?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  closeIcon?: UI5WCSlotsNode;
   /**
    * Fired when the the component is selected by user interaction with mouse or by clicking space.
    */
@@ -43,9 +47,7 @@ interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenA
 /**
  * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-MultiInput)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
   'ui5-token',

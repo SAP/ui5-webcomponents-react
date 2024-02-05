@@ -9,34 +9,45 @@ interface RatingIndicatorAttributes {
    * Defines the accessible ARIA name of the component.
    */
   accessibleName?: string;
+
   /**
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Defines whether the component is disabled.
    *
    * **Note:** A disabled component is completely noninteractive.
+   * @default false
    */
   disabled?: boolean;
+
   /**
    * The number of displayed rating symbols.
+   * @default 5
    */
   max?: number;
+
   /**
    * Defines whether the component is read-only.
    *
    * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * @default false
    */
   readonly?: boolean;
+
   /**
    * Defines whether the component is required.
+   * @default false
    */
   required?: boolean;
+
   /**
    * Defines the tooltip of the component.
    */
   tooltip?: string;
+
   /**
    * The indicated value of the rating.
    *
@@ -45,11 +56,12 @@ interface RatingIndicatorAttributes {
    * *   1.0 - 1.2 -> 1
    * *   1.3 - 1.7 -> 1.5
    * *   1.8 - 1.9 -> 2
+   * @default 0
    */
   value?: number;
 }
 
-interface RatingIndicatorDomRef extends RatingIndicatorAttributes, Ui5DomRef {}
+interface RatingIndicatorDomRef extends Required<RatingIndicatorAttributes>, Ui5DomRef {}
 
 interface RatingIndicatorPropTypes
   extends RatingIndicatorAttributes,
@@ -63,9 +75,27 @@ interface RatingIndicatorPropTypes
 /**
  * The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Usage
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-RatingIndicator)
+ * The recommended number of icons is between 5 and 7.
+ *
+ * ### Responsive Behavior
+ *
+ * You can change the size of the Rating Indicator by changing its `font-size` CSS property.
+ * Example: `<RatingIndicator style="font-size: 3rem;"></RatingIndicator>`
+ *
+ * ### Keyboard Handling
+ *
+ * When the `RatingIndicator` is focused, the user can change the rating with the following keyboard shortcuts:
+ *
+ * *   \[RIGHT/UP\] - Increases the value of the rating by one step. If the highest value is reached, does nothing
+ * *   \[LEFT/DOWN\] - Decreases the value of the rating by one step. If the lowest value is reached, does nothing.
+ * *   \[HOME\] - Sets the lowest value.
+ * *   \[END\] - Sets the highest value.
+ * *   \[SPACE/ENTER/RETURN\] - Increases the value of the rating by one step. If the highest value is reached, sets the rating to the lowest value.
+ * *   Any number - Changes value to the corresponding number. If typed number is larger than the number of values, sets the highest value.
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
@@ -77,11 +107,6 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicat
 );
 
 RatingIndicator.displayName = 'RatingIndicator';
-
-RatingIndicator.defaultProps = {
-  max: 5,
-  value: 0
-};
 
 export { RatingIndicator };
 export type { RatingIndicatorDomRef, RatingIndicatorPropTypes };

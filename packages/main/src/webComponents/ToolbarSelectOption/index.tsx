@@ -8,15 +8,16 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface ToolbarSelectOptionAttributes {
   /**
    * Defines the selected state of the component.
+   * @default false
    */
   selected?: boolean;
 }
 
-interface ToolbarSelectOptionDomRef extends ToolbarSelectOptionAttributes, Ui5DomRef {}
+interface ToolbarSelectOptionDomRef extends Required<ToolbarSelectOptionAttributes>, Ui5DomRef {}
 
 interface ToolbarSelectOptionPropTypes
   extends ToolbarSelectOptionAttributes,
-    Omit<CommonProps, keyof ToolbarSelectOptionAttributes> {
+    Omit<CommonProps, keyof ToolbarSelectOptionAttributes | 'children'> {
   /**
    * Defines the text of the component.
    *
@@ -26,13 +27,10 @@ interface ToolbarSelectOptionPropTypes
 }
 
 /**
- * The `ToolbarSelectOption` component defines the content of an option in the `ToolbarSelect`
+ * The `ToolbarSelectOption` component defines the content of an option in the `ToolbarSelect`.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Toolbar)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ToolbarSelectOption = withWebComponent<ToolbarSelectOptionPropTypes, ToolbarSelectOptionDomRef>(
   'ui5-toolbar-select-option',

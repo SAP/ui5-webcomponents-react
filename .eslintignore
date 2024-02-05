@@ -5,6 +5,9 @@ packages/base/types
 # build results for charts package
 packages/charts/dist
 
+# build results for cli package
+packages/cli/dist
+
 # build results for main package
 packages/main/dist
 packages/main/ssr

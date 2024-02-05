@@ -7,9 +7,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SelectMenuAttributes {}
 
-interface SelectMenuDomRef extends SelectMenuAttributes, Ui5DomRef {}
+interface SelectMenuDomRef extends Required<SelectMenuAttributes>, Ui5DomRef {}
 
-interface SelectMenuPropTypes extends SelectMenuAttributes, Omit<CommonProps, keyof SelectMenuAttributes> {
+interface SelectMenuPropTypes extends SelectMenuAttributes, Omit<CommonProps, 'children'> {
   /**
    * Defines the options of the component.
    */
@@ -21,9 +21,13 @@ interface SelectMenuPropTypes extends SelectMenuAttributes, Omit<CommonProps, ke
  *
  * The component gives the possibility to the user to customize the `Select`'s dropdown by slotting custom options and adding custom styles.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Usage
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-SelectMenu)
+ * To use `Select` with a `SelectMenu`, you need to set the `Select` `menu` property to reference `SelectMenu` either by ID or DOM reference.
+ *
+ * For the `SelectMenu`
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SelectMenu = withWebComponent<SelectMenuPropTypes, SelectMenuDomRef>(
   'ui5-select-menu',

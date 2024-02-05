@@ -1,13 +1,9 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { useState } from 'react';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { TreeItem } from '../TreeItem';
-import TreeItemDescription from '../TreeItem/TreeItemDescription.md?raw';
 import { TreeItemCustom } from '../TreeItemCustom';
-import TreeItemCustomDescription from '../TreeItemCustom/TreeItemCustomDescription.md?raw';
 import * as ComponentStories from './Tree.stories';
-import Description from './TreeDescription.md?raw';
 import TreeDomRef from './TreeDomRef.json';
 
 <Meta of={ComponentStories} />
@@ -23,8 +19,6 @@ import TreeDomRef from './TreeDomRef.json';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={TreeDomRef} />
 
@@ -79,12 +73,12 @@ const LazyLoadingTree = () => {
 
 ## TreeItem
 
+<Description of={TreeItem} />
 <ArgTypesWithNote of={TreeItem} />
-<Markdown>{TreeItemDescription}</Markdown>
 
 ## TreeItemCustom
 
+<Description of={TreeItemCustom} />
 <ArgTypesWithNote of={TreeItemCustom} />
-<Markdown>{TreeItemCustomDescription}</Markdown>
 
 <Footer />

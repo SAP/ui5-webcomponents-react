@@ -1,17 +1,11 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { ArgTypes, Canvas, Markdown, Meta } from '@storybook/blocks';
-import { useState } from 'react';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { TableCell } from '../TableCell';
-import TableCellDescription from '../TableCell/TableCellDescription.md?raw';
 import { TableColumn } from '../TableColumn';
-import TableColumnDescription from '../TableColumn/TableColumnDescription.md?raw';
 import { TableGroupRow } from '../TableGroupRow';
-import TableGroupRowDescription from '../TableGroupRow/TableGroupRowDescription.md?raw';
 import { TableRow } from '../TableRow';
-import TableRowDescription from '../TableRow/TableRowDescription.md?raw';
 import * as ComponentStories from './Table.stories';
-import Description from './TableDescription.md?raw';
 
 <Meta of={ComponentStories} />
 
@@ -26,8 +20,6 @@ import Description from './TableDescription.md?raw';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <br />
 
@@ -89,22 +81,22 @@ const GrowingTable = () => {
 
 ## TableColumn
 
+<Description of={TableColumn} />
 <ArgTypes of={TableColumn} />
-<Markdown>{TableColumnDescription}</Markdown>
 
 ## TableRow
 
+<Description of={TableRow} />
 <ArgTypes of={TableRow} />
-<Markdown>{TableRowDescription}</Markdown>
 
 ## TableGroupRow
 
+<Description of={TableGroupRow} />
 <ArgTypes of={TableGroupRow} />
-<Markdown>{TableGroupRowDescription}</Markdown>
 
 ## TableCell
 
+<Description of={TableCell} />
 <ArgTypes of={TableCell} />
-<Markdown>{TableCellDescription}</Markdown>
 
 <Footer />

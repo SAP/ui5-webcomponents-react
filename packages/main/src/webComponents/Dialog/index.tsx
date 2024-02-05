@@ -1,99 +1,139 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Dialog.js';
-import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
+import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
-import { PopupAccessibleRole, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DialogAttributes {
+  /**
+   * Defines the accessible name of the component.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
+  /**
+   * Defines the IDs of the elements that label the component.
+   */
+  accessibleNameRef?: string;
+
+  /**
+   * Allows setting a custom role.
+   * @default "Dialog"
+   */
+  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
+
   /**
    * Determines whether the component is draggable. If this property is set to true, the Dialog will be draggable by its header.
    *
    * **Note:** The component can be draggable only in desktop mode.
    *
    * **Note:** This property overrides the default HTML "draggable" attribute native behavior. When "draggable" is set to true, the native browser "draggable" behavior is prevented and only the Dialog custom logic ("draggable by its header") works.
+   * @default false
    */
   draggable?: boolean;
+
   /**
    * Defines the header text.
    *
    * **Note:** If `header` slot is provided, the `headerText` is ignored.
    */
   headerText?: string;
+
+  /**
+   * Defines the ID of the HTML Element, which will get the initial focus.
+   */
+  initialFocus?: string;
+
+  /**
+   * Indicates if the element is open
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   * @default false
+   */
+  preventFocusRestore?: boolean;
+
   /**
    * Configures the component to be resizable. If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages. In RTL languages, the resize handle will be placed in the bottom left corner.
    *
    * **Note:** The component can be resizable only in desktop mode.
    * **Note:** Upon resizing, externally defined height and width styling will be ignored.
+   * @default false
    */
   resizable?: boolean;
+
   /**
    * Defines the state of the `Dialog`.
    * **Note:** If `"Error"` and `"Warning"` state is set, it will change the accessibility role to "alertdialog", if the accessibleRole property is set to `"Dialog"`.
+   * @default "None"
    */
   state?: ValueState | keyof typeof ValueState;
+
   /**
    * Determines whether the component should be stretched to fullscreen.
    *
    * **Note:** The component will be stretched to approximately 90% of the viewport.
+   * @default false
    */
   stretch?: boolean;
-  /**
-   * Defines the accessible name of the component.
-   */
-  accessibleName?: string;
-  /**
-   * Defines the IDs of the elements that label the component.
-   */
-  accessibleNameRef?: string;
-  /**
-   * Allows setting a custom role.
-   */
-  accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
-  /**
-   * Defines the ID of the HTML Element, which will get the initial focus.
-   */
-  initialFocus?: string;
-  /**
-   * Indicates if the element is open
-   */
-  open?: boolean;
-  /**
-   * Defines if the focus should be returned to the previously focused element, when the popup closes.
-   */
-  preventFocusRestore?: boolean;
 }
 
-interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggable'> {
-  /**
-   * Shows the dialog.
-   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
-   * @returns {Promise<void>} Resolves when the dialog is open
-   */
-  show: (preventInitialFocus?: boolean) => Promise<void>;
+interface DialogDomRef extends Required<DialogAttributes>, Ui5DomRef {
   /**
    * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
-   * @returns {Promise<void>} Promise that resolves when the focus is applied
+   * @returns {Promise<void>} - Promise that resolves when the focus is applied
    */
   applyFocus: () => Promise<void>;
+
   /**
    * Closes the popup.
+   * @returns {void}
    */
   close: () => void;
+
   /**
    * Tells if the component is opened
    * @returns {boolean}
    */
   isOpen: () => boolean;
+
+  /**
+   * Shows the dialog.
+   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
+   * @returns {Promise<void>} - Resolves when the dialog is open
+   */
+  show: (preventInitialFocus?: boolean) => Promise<void>;
 }
 
-interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, keyof DialogAttributes | 'draggable'> {
+interface DialogPropTypes
+  extends DialogAttributes,
+    Omit<
+      CommonProps,
+      | keyof DialogAttributes
+      | 'children'
+      | 'footer'
+      | 'header'
+      | 'onAfterClose'
+      | 'onAfterOpen'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
+    > {
+  /**
+   * Defines the content of the Popup.
+   */
+  children?: ReactNode | ReactNode[];
+
   /**
    * Defines the footer HTML Element.
    *
-   * **Note:** When a `Bar` is used in the footer, you should remove the default dialog's paddings.
+   * **Note:** When a `ui5-bar` is used in the footer, you should remove the default dialog's paddings.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="footer"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -101,11 +141,12 @@ interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, keyof Dial
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  footer?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  footer?: UI5WCSlotsNode;
+
   /**
    * Defines the header HTML Element.
    *
-   * **Note:** When a `Bar` is used in the header, you should remove the default dialog's paddings.
+   * **Note:** When a `ui5-bar` is used in the header, you should remove the default dialog's paddings.
    *
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer. `accessibleName` should be used.
    *
@@ -115,23 +156,22 @@ interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, keyof Dial
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  header?: UI5WCSlotsNode | UI5WCSlotsNode[];
-  /**
-   * Defines the content of the Popup.
-   */
-  children?: ReactNode | ReactNode[];
+  header?: UI5WCSlotsNode;
   /**
    * Fired after the component is closed. **This event does not bubble.**
    */
   onAfterClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+
   /**
    * Fired after the component is opened. **This event does not bubble.**
    */
   onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    */
-  onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, DialogBeforeCloseEventDetail>) => void;
+  onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, PopupBeforeCloseEventDetail>) => void;
+
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    */
@@ -143,9 +183,16 @@ interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, keyof Dial
  *
  * The `Dialog` is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the `Dialog` is fully customizable.
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Structure
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-Dialog)
+ * A `Dialog` consists of a header, content, and a footer for action buttons. The `Dialog` is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property `draggable` accordingly.
+ *
+ * ### Responsive Behavior
+ *
+ * The `stretch` property can be used to stretch the `Dialog` on full screen. **Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.
+ * For more information see the sample "Bar in Header/Footer". **Note:** We recommend placing popup-like components (`Dialog` and `Popover`) outside any other components. Preferably, the popup-like components should be placed in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break the position and/or z-index management of the popup-like components. **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
@@ -157,11 +204,6 @@ const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
 );
 
 Dialog.displayName = 'Dialog';
-
-Dialog.defaultProps = {
-  state: ValueState.None,
-  accessibleRole: PopupAccessibleRole.Dialog
-};
 
 export { Dialog };
 export type { DialogDomRef, DialogPropTypes };

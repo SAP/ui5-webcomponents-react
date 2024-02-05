@@ -12,6 +12,9 @@
     },
     {
       "path": "./packages/cypress-commands"
+    },
+    {
+      "path": "./packages/cli"
     }
   ],
   "files": []

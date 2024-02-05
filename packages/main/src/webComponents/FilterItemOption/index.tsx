@@ -7,28 +7,29 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface FilterItemOptionAttributes {
   /**
    * Defines if the component is selected.
+   * @default false
    */
   selected?: boolean;
+
   /**
    * Defines the text of the component.
    */
   text?: string;
 }
 
-interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
+interface FilterItemOptionDomRef extends Required<FilterItemOptionAttributes>, Ui5DomRef {}
 
 interface FilterItemOptionPropTypes
   extends FilterItemOptionAttributes,
     Omit<CommonProps, keyof FilterItemOptionAttributes> {}
 
 /**
+ * ### Usage
  *
+ * For the `FilterItemOption`
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-ViewSettingsDialog)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemOptionDomRef>(
   'ui5-filter-item-option',

@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["ES2023", "dom"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmitOnError": true,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "types": ["node", "@types/turndown"],
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

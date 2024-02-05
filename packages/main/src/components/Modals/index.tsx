@@ -237,7 +237,7 @@ function showToast<ContainerElement>(
               type: 'reset',
               payload: { id }
             });
-          }, props.duration ?? Toast.defaultProps.duration);
+          }, props.duration ?? 3000);
         }
       },
       container,

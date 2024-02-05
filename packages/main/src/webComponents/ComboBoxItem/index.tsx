@@ -9,24 +9,22 @@ interface ComboBoxItemAttributes {
    * Defines the additional text of the component.
    */
   additionalText?: string;
+
   /**
    * Defines the text of the component.
    */
   text?: string;
 }
 
-interface ComboBoxItemDomRef extends ComboBoxItemAttributes, Ui5DomRef {}
+interface ComboBoxItemDomRef extends Required<ComboBoxItemAttributes>, Ui5DomRef {}
 
 interface ComboBoxItemPropTypes extends ComboBoxItemAttributes, Omit<CommonProps, keyof ComboBoxItemAttributes> {}
 
 /**
- * The `ComboBoxItem` represents the item for a `ComboBox`
+ * The `ComboBoxItem` represents the item for a `ComboBox`.
  *
  * @abstract
- *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/main-ComboBox)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>(
   'ui5-cb-item',

@@ -2,7 +2,6 @@ import { Canvas, Markdown, Meta, Story } from '@storybook/blocks';
 import { Link } from './index';
 import { LinkDesign } from '../../enums/LinkDesign';
 import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import Description from './LinkDescription.md?raw';
 import LinkDomRef from './LinkDomRef.json';
 
 <Meta
@@ -34,8 +33,6 @@ import LinkDomRef from './LinkDomRef.json';
 ## Properties
 
 <ArgsTableWithNote story="Default" />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={LinkDomRef} />
 

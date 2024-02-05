@@ -1,12 +1,9 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { SuggestionGroupItem } from '../SuggestionGroupItem';
-import SuggestionGroupItemDescription from '../SuggestionGroupItem/SuggestionGroupItemDescription.md?raw';
 import { SuggestionItem } from '../SuggestionItem';
-import SuggestionItemDescription from '../SuggestionItem/SuggestionItemDescription.md?raw';
 import * as ComponentStories from './Input.stories';
-import Description from './InputDescription.md?raw';
 import InputDomRef from './InputDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -23,8 +20,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={InputDomRef} />
 
@@ -47,12 +42,12 @@ and the `showSuggestions` prop is set to `true`.
 
 ## SuggestionItem
 
+<Description of={SuggestionItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
-<Markdown>{SuggestionItemDescription}</Markdown>
 
 ## SuggestionGroupItem
 
+<Description of={SuggestionGroupItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionGroupItem} />
-<Markdown>{SuggestionGroupItemDescription}</Markdown>
 
 <Footer />

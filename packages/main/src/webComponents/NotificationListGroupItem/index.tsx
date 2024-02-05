@@ -1,62 +1,74 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
-import type { NotificationListGroupItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import type Priority from '@ui5/webcomponents/dist/types/Priority.js';
+import type { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
 import type { ReactNode } from 'react';
-import { Priority } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListGroupItemAttributes {
   /**
-   * Defines if the group is collapsed or expanded.
-   */
-  collapsed?: boolean;
-  /**
-   * Defines if the items `counter` would be displayed.
-   */
-  showCounter?: boolean;
-  /**
    * Defines if a busy indicator would be displayed over the item.
+   * @default false
    */
   busy?: boolean;
+
   /**
    * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
+   * @default 1000
    */
   busyDelay?: number;
+
+  /**
+   * Defines if the group is collapsed or expanded.
+   * @default false
+   */
+  collapsed?: boolean;
+
   /**
    * Defines the `priority` of the item.
+   * @default "None"
    */
   priority?: Priority | keyof typeof Priority;
+
   /**
    * Defines if the `notification` is new or has been already read.
    *
    * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
+   * @default false
    */
   read?: boolean;
+
+  /**
+   * Defines the selected state of the `ListItem`.
+   * @default false
+   */
+  selected?: boolean;
+
   /**
    * Defines if the `close` button would be displayed.
+   * @default false
    */
   showClose?: boolean;
+
+  /**
+   * Defines if the items `counter` would be displayed.
+   * @default false
+   */
+  showCounter?: boolean;
+
   /**
    * Defines the `titleText` of the item.
    */
   titleText?: string;
-  /**
-   * Defines the selected state of the `ListItem`.
-   */
-  selected?: boolean;
 }
 
-interface NotificationListGroupItemDomRef extends NotificationListGroupItemAttributes, Ui5DomRef {}
+interface NotificationListGroupItemDomRef extends Required<NotificationListGroupItemAttributes>, Ui5DomRef {}
 
 interface NotificationListGroupItemPropTypes
   extends NotificationListGroupItemAttributes,
-    Omit<CommonProps, keyof NotificationListGroupItemAttributes> {
-  /**
-   * Defines the items of the `NotificationListGroupItem`, usually `NotificationListItem` items.
-   */
-  children?: ReactNode | ReactNode[];
+    Omit<CommonProps, keyof NotificationListGroupItemAttributes | 'actions' | 'children' | 'onClose' | 'onToggle'> {
   /**
    * Defines the actions, displayed in the top-right area.
    *
@@ -68,15 +80,21 @@ interface NotificationListGroupItemPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  actions?: UI5WCSlotsNode | UI5WCSlotsNode[];
+  actions?: UI5WCSlotsNode;
+
+  /**
+   * Defines the items of the `NotificationListGroupItem`, usually `NotificationListItem` items.
+   */
+  children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the `Close` button is pressed.
+   */
+  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, NotificationListItemBaseCloseEventDetail>) => void;
+
   /**
    * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
    */
   onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
-  /**
-   * Fired when the `Close` button is pressed.
-   */
-  onClose?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef, NotificationListGroupItemCloseEventDetail>) => void;
 }
 
 /**
@@ -89,9 +107,12 @@ interface NotificationListGroupItemPropTypes
  * *   Custom actions - with the use of `NotificationAction`
  * *   Items of the group
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
+ * ### Usage
  *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-NotificationListGroupItem)
+ * The component can be used in a standard `ui5-list`.
+ * `import "@ui5/webcomponents/dist/NotificationAction.js";` (optional)
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
@@ -103,11 +124,6 @@ const NotificationListGroupItem = withWebComponent<NotificationListGroupItemProp
 );
 
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';
-
-NotificationListGroupItem.defaultProps = {
-  busyDelay: 1000,
-  priority: Priority.None
-};
 
 export { NotificationListGroupItem };
 export type { NotificationListGroupItemDomRef, NotificationListGroupItemPropTypes };

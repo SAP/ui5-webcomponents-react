@@ -1,7 +1,6 @@
 import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Dialog.stories';
-import Description from './DialogDescription.md?raw';
 import DialogDomRef from './DialogDomRef.json';
 
 <Meta of={ComponentStories} />
@@ -17,8 +16,6 @@ import DialogDomRef from './DialogDomRef.json';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={DialogDomRef} />
 

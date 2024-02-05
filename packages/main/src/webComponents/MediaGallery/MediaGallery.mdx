@@ -1,10 +1,8 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { MediaGalleryItem } from '../MediaGalleryItem';
-import MediaGalleryItemDescription from '../MediaGalleryItem/MediaGalleryItemDescription.md?raw';
 import * as ComponentStories from './MediaGallery.stories';
-import Description from './MediaGalleryDescription.md?raw';
 
 <Meta of={ComponentStories} />
 
@@ -20,8 +18,6 @@ import Description from './MediaGalleryDescription.md?raw';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<Markdown>{Description}</Markdown>
-
 ## More Examples
 
 ### Custom Thumbnail Image
@@ -36,7 +32,7 @@ import Description from './MediaGalleryDescription.md?raw';
 
 ## MediaGalleryItem
 
-<Markdown>{MediaGalleryItemDescription}</Markdown>
+<Description of={MediaGalleryItem} />
 <ArgTypesWithNote of={MediaGalleryItem} />
 
 <Footer />

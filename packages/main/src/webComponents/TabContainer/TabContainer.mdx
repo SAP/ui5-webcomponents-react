@@ -1,12 +1,9 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { Tab } from '../Tab';
-import TabDescription from '../Tab/TabDescription.md?raw';
 import { TabSeparator } from '../TabSeparator';
-import TabSeparatorDescription from '../TabSeparator/TabSeparatorDescription.md?raw';
 import * as ComponentStories from './TabContainer.stories';
-import Description from './TabContainerDescription.md?raw';
 import TabContainerDomRef from './TabContainerDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -23,8 +20,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<Markdown>{Description}</Markdown>
 
 <DomRefTable rows={TabContainerDomRef} />
 
@@ -44,12 +39,12 @@ The <code>TabSeparator</code> represents a vertical line to separate tabs inside
 
 ## Tab
 
-<Markdown>{TabDescription}</Markdown>
+<Description of={Tab} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Tab} />
 
 ## TabSeparator
 
-<Markdown>{TabSeparatorDescription}</Markdown>
+<Description of={TabSeparator} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={TabSeparator} />
 
 <Footer />

@@ -1,8 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
+import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import type IllustrationMessageSize from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js';
 import type { ReactNode } from 'react';
-import { IllustrationMessageSize, IllustrationMessageType, TitleLevel } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -11,23 +12,33 @@ interface IllustratedMessageAttributes {
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
   /**
    * Defines the illustration name that will be displayed in the component.
+   * Example:
+   * `name='BeforeSearch'`, `name='UnableToUpload'`, etc..
    *
-   * **Note:** By default the `BeforeSearch` illustration is loaded.
-   * When using an illustration type, other than the default, it should be loaded in addition:
+   * **Note:** To use the TNT illustrations, you need to set the `tnt` or `Tnt` prefix in front of the icon's name.
+   * Example:
+   * `name='tnt/Avatar'` or `name='TntAvatar'`.
+   *
+   * **Note:** By default the `BeforeSearch` illustration is loaded. When using an illustration type, other than the default, it should be loaded in addition:
    * `import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js";`
    *
-   * **Note:** TNT illustrations cointain `Tnt` prefix in their name. You can import them removing the `Tnt` prefix like this:
+   * For TNT illustrations:
    * `import "@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js";`
+   * @default "BeforeSearch"
    */
-  name?: IllustrationMessageType | keyof typeof IllustrationMessageType;
+  name?: string;
+
   /**
    * Determines which illustration breakpoint variant is used.
    *
    * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component are displayed differently on the different breakpoints/illustration sizes.
+   * @default "Auto"
    */
   size?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
+
   /**
    * Defines the subtitle of the component.
    *
@@ -36,10 +47,13 @@ interface IllustratedMessageAttributes {
    * **Note:** Using `subtitle` slot, the default of this property will be overwritten.
    */
   subtitleText?: string;
+
   /**
    * Defines the semantic level of the title. **Note:** Used for accessibility purposes only.
+   * @default "H2"
    */
   titleLevel?: TitleLevel | keyof typeof TitleLevel;
+
   /**
    * Defines the title of the component.
    *
@@ -48,15 +62,16 @@ interface IllustratedMessageAttributes {
   titleText?: string;
 }
 
-interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
+interface IllustratedMessageDomRef extends Required<IllustratedMessageAttributes>, Ui5DomRef {}
 
 interface IllustratedMessagePropTypes
   extends IllustratedMessageAttributes,
-    Omit<CommonProps, keyof IllustratedMessageAttributes> {
+    Omit<CommonProps, keyof IllustratedMessageAttributes | 'children' | 'subtitle'> {
   /**
    * Defines the component actions.
    */
   children?: ReactNode | ReactNode[];
+
   /**
    * Defines the subtitle of the component.
    *
@@ -79,11 +94,23 @@ interface IllustratedMessagePropTypes
  * **Note:** Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import::
  * `import "@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js"`
  *
+ * ### Structure
+ *
+ * The IllustratedMessage consists of the following elements, which are displayed below each other in the following order:
+ *
+ * *   Illustration
+ * *   Title
+ * *   Subtitle
+ * *   Actions
+ *
+ * ### Usage
+ *
+ * `IllustratedMessage` is meant to be used inside container component, for example a `ui5-card`, a `ui5-dialog` or a `Page`
+ *
+ *
  *__Note:__ The `title` slot collides with the native HTML `title` attribute, so to customize the title (heading) of the component you need to pass it as slot. You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-illustratedmessage--default-story#fully-customizable-title).
  *
- * __Note:__ This component is a web component developed by the UI5 Web Components’ team.
- *
- * [UI5 Web Components Storybook](https://sap.github.io/ui5-webcomponents/playground/?path=/docs/fiori-IllustratedMessage)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
@@ -95,12 +122,6 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
 );
 
 IllustratedMessage.displayName = 'IllustratedMessage';
-
-IllustratedMessage.defaultProps = {
-  name: IllustrationMessageType.BeforeSearch,
-  size: IllustrationMessageSize.Auto,
-  titleLevel: TitleLevel.H2
-};
 
 export { IllustratedMessage };
 export type { IllustratedMessageDomRef, IllustratedMessagePropTypes };
