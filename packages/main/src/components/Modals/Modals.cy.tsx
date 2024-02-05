@@ -283,7 +283,7 @@ describe('Modals - hooks', () => {
   });
 
   it('useShowToast', () => {
-    cy.mount(<TestComponent hookFn={Modals.useShowMessageBox} modalProps={{ children: 'Toast Content' }} />);
+    cy.mount(<TestComponent hookFn={Modals.useShowToast} modalProps={{ children: 'Toast Content' }} />);
     cy.findByText('Open Modal').click();
     cy.findByText('Toast Content').should('exist');
   });
