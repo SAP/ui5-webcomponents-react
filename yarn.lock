@@ -5525,15 +5525,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-virtual@npm:3.0.2":
-  version: 3.0.2
-  resolution: "@tanstack/react-virtual@npm:3.0.2"
+"@tanstack/react-virtual@npm:~3.0.4":
+  version: 3.0.4
+  resolution: "@tanstack/react-virtual@npm:3.0.4"
   dependencies:
     "@tanstack/virtual-core": "npm:3.0.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/2e0ee88d8b22f391188f920d8b069089338f98a93bcb52f6a23968894592481acdf6fd0954d53960be5d04cf04d7488e2902a80cdb9afe2c4fbc761d3689cada
+  checksum: 10c0/6222dc1254843fa52bdb93deca74282e2b8aabd17337d7b35596441bb70d1d7e333b1679acfb50240847799d63ee24eb184958ad8c7f1ca84c4ff0c13aefa7ec
   languageName: node
   linkType: hard
 
@@ -6743,7 +6743,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
-    "@tanstack/react-virtual": "npm:3.0.2"
+    "@tanstack/react-virtual": "npm:~3.0.4"
     "@ui5/webcomponents-react-base": "workspace:~"
     clsx: "npm:2.1.0"
     react-jss: "npm:^10.10.0"
