@@ -3,11 +3,10 @@
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import type { NotificationListItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import type { ReactNode } from 'react';
-import { Priority } from '../../enums/index.js';
 import type { WrappingType } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { Priority } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListItemAttributes {
   /**
@@ -48,9 +47,11 @@ interface NotificationListItemAttributes {
   selected?: boolean;
 }
 
-export interface NotificationListItemDomRef extends NotificationListItemAttributes, Ui5DomRef {}
+interface NotificationListItemDomRef extends NotificationListItemAttributes, Ui5DomRef {}
 
-export interface NotificationListItemPropTypes extends NotificationListItemAttributes, CommonProps {
+interface NotificationListItemPropTypes
+  extends NotificationListItemAttributes,
+    Omit<CommonProps, keyof NotificationListItemAttributes> {
   /**
    * Defines the avatar, displayed in the `NotificationListItem`.
    *
@@ -113,9 +114,9 @@ export interface NotificationListItemPropTypes extends NotificationListItemAttri
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
-  ['wrappingType', 'busyDelay', 'priority', 'titleText'],
-  ['busy', 'read', 'showClose', 'selected'],
-  ['avatar', 'footnotes', 'actions'],
+  ['busyDelay', 'priority', 'titleText', 'wrappingType'],
+  ['busy', 'read', 'selected', 'showClose'],
+  ['actions', 'avatar', 'footnotes'],
   ['close'],
   () => import('@ui5/webcomponents-fiori/dist/NotificationListItem.js')
 );
@@ -128,3 +129,4 @@ NotificationListItem.defaultProps = {
 };
 
 export { NotificationListItem };
+export type { NotificationListItemDomRef, NotificationListItemPropTypes };

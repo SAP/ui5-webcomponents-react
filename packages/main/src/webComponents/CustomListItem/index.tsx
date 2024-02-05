@@ -3,9 +3,8 @@
 import '@ui5/webcomponents/dist/CustomListItem.js';
 import type { ReactNode } from 'react';
 import { ListItemType } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CustomListItemAttributes {
   /**
@@ -28,7 +27,7 @@ interface CustomListItemAttributes {
   selected?: boolean;
 }
 
-export interface CustomListItemDomRef extends CustomListItemAttributes, Ui5DomRef {
+interface CustomListItemDomRef extends CustomListItemAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -38,7 +37,7 @@ export interface CustomListItemDomRef extends CustomListItemAttributes, Ui5DomRe
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface CustomListItemPropTypes extends CustomListItemAttributes, CommonProps {
+interface CustomListItemPropTypes extends CustomListItemAttributes, Omit<CommonProps, keyof CustomListItemAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -82,3 +81,4 @@ CustomListItem.defaultProps = {
 };
 
 export { CustomListItem };
+export type { CustomListItemDomRef, CustomListItemPropTypes };

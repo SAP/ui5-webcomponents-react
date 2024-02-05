@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-import type { ReactNode, MouseEventHandler } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 import type { ButtonType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SegmentedButtonItemAttributes {
   /**
@@ -42,7 +42,7 @@ interface SegmentedButtonItemAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-export interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {
+interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -60,7 +60,9 @@ export interface SegmentedButtonItemDomRef extends SegmentedButtonItemAttributes
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttributes, Omit<CommonProps, 'onClick'> {
+interface SegmentedButtonItemPropTypes
+  extends SegmentedButtonItemAttributes,
+    Omit<CommonProps, keyof SegmentedButtonItemAttributes | 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -89,7 +91,7 @@ export interface SegmentedButtonItemPropTypes extends SegmentedButtonItemAttribu
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
   ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip', 'type'],
-  ['pressed', 'disabled'],
+  ['disabled', 'pressed'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/SegmentedButtonItem.js')
@@ -98,3 +100,4 @@ const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, Segme
 SegmentedButtonItem.displayName = 'SegmentedButtonItem';
 
 export { SegmentedButtonItem };
+export type { SegmentedButtonItemDomRef, SegmentedButtonItemPropTypes };

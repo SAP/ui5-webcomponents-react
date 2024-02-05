@@ -2,14 +2,14 @@
 
 import '@ui5/webcomponents/dist/TableGroupRow.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableGroupRowAttributes {}
 
-export interface TableGroupRowDomRef extends TableGroupRowAttributes, Ui5DomRef {}
+interface TableGroupRowDomRef extends TableGroupRowAttributes, Ui5DomRef {}
 
-export interface TableGroupRowPropTypes extends TableGroupRowAttributes, CommonProps {
+interface TableGroupRowPropTypes extends TableGroupRowAttributes, Omit<CommonProps, keyof TableGroupRowAttributes> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -36,3 +36,4 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomR
 TableGroupRow.displayName = 'TableGroupRow';
 
 export { TableGroupRow };
+export type { TableGroupRowDomRef, TableGroupRowPropTypes };

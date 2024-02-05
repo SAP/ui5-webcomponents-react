@@ -3,9 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 import type { ReactNode } from 'react';
 import { MediaGalleryItemLayout } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MediaGalleryItemAttributes {
   /**
@@ -27,9 +26,11 @@ interface MediaGalleryItemAttributes {
   selected?: boolean;
 }
 
-export interface MediaGalleryItemDomRef extends MediaGalleryItemAttributes, Ui5DomRef {}
+interface MediaGalleryItemDomRef extends MediaGalleryItemAttributes, Ui5DomRef {}
 
-export interface MediaGalleryItemPropTypes extends MediaGalleryItemAttributes, CommonProps {
+interface MediaGalleryItemPropTypes
+  extends MediaGalleryItemAttributes,
+    Omit<CommonProps, keyof MediaGalleryItemAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -71,3 +72,4 @@ MediaGalleryItem.defaultProps = {
 };
 
 export { MediaGalleryItem };
+export type { MediaGalleryItemDomRef, MediaGalleryItemPropTypes };

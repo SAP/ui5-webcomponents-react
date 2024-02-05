@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/Label.js';
 import type { ReactNode } from 'react';
 import type { WrappingType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface LabelAttributes {
   /**
@@ -32,9 +32,9 @@ interface LabelAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface LabelDomRef extends LabelAttributes, Ui5DomRef {}
+interface LabelDomRef extends LabelAttributes, Ui5DomRef {}
 
-export interface LabelPropTypes extends LabelAttributes, CommonProps {
+interface LabelPropTypes extends LabelAttributes, Omit<CommonProps, keyof LabelAttributes> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -67,3 +67,4 @@ const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
 Label.displayName = 'Label';
 
 export { Label };
+export type { LabelDomRef, LabelPropTypes };

@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ProgressIndicator.js';
 import { ValueState } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ProgressIndicatorAttributes {
   /**
@@ -35,9 +35,11 @@ interface ProgressIndicatorAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface ProgressIndicatorDomRef extends ProgressIndicatorAttributes, Ui5DomRef {}
+interface ProgressIndicatorDomRef extends ProgressIndicatorAttributes, Ui5DomRef {}
 
-export interface ProgressIndicatorPropTypes extends ProgressIndicatorAttributes, CommonProps {}
+interface ProgressIndicatorPropTypes
+  extends ProgressIndicatorAttributes,
+    Omit<CommonProps, keyof ProgressIndicatorAttributes> {}
 
 /**
  * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
@@ -63,3 +65,4 @@ ProgressIndicator.defaultProps = {
 };
 
 export { ProgressIndicator };
+export type { ProgressIndicatorDomRef, ProgressIndicatorPropTypes };

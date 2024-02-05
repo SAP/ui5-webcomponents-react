@@ -3,14 +3,14 @@
 import '@ui5/webcomponents/dist/ColorPalette.js';
 import type { ColorPaletteItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalette.js';
 import type { ReactNode } from 'react';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPaletteAttributes {}
 
-export interface ColorPaletteDomRef extends ColorPaletteAttributes, Ui5DomRef {}
+interface ColorPaletteDomRef extends ColorPaletteAttributes, Ui5DomRef {}
 
-export interface ColorPalettePropTypes extends ColorPaletteAttributes, CommonProps {
+interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps, keyof ColorPaletteAttributes> {
   /**
    * Defines the `ColorPaletteItem` elements.
    */
@@ -40,3 +40,4 @@ const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>
 ColorPalette.displayName = 'ColorPalette';
 
 export { ColorPalette };
+export type { ColorPaletteDomRef, ColorPalettePropTypes };

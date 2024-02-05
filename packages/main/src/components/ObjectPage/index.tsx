@@ -6,10 +6,10 @@ import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
-import type { CommonProps } from '../../interfaces/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
+import type { CommonProps } from '../../types/index.js';
 import type { AvatarPropTypes } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
@@ -31,6 +31,8 @@ addCustomCSSWithScoping(
 );
 
 const TAB_CONTAINER_HEADER_HEIGHT = 48;
+
+type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
@@ -61,7 +63,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
    */
-  children?: ReactElement<ObjectPageSectionPropTypes> | ReactElement<ObjectPageSectionPropTypes>[];
+  children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**
    * Defines the ID of the currently `ObjectPageSection` section.
    */

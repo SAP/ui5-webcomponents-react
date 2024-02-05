@@ -5,8 +5,8 @@ import type { LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
 import type { ReactNode } from 'react';
 import type { WrappingType } from '../../enums/index.js';
 import { LinkDesign } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface LinkAttributes {
   /**
@@ -60,7 +60,7 @@ interface LinkAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface LinkDomRef extends LinkAttributes, Ui5DomRef {
+interface LinkDomRef extends LinkAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -77,7 +77,7 @@ export interface LinkDomRef extends LinkAttributes, Ui5DomRef {
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, 'onClick'> {
+interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'onClick'> {
   /**
    * Defines the text of the component.
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
@@ -113,3 +113,4 @@ Link.defaultProps = {
 };
 
 export { Link };
+export type { LinkDomRef, LinkPropTypes };

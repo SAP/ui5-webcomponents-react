@@ -2,14 +2,14 @@
 
 import '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ProductSwitchAttributes {}
 
-export interface ProductSwitchDomRef extends ProductSwitchAttributes, Ui5DomRef {}
+interface ProductSwitchDomRef extends ProductSwitchAttributes, Ui5DomRef {}
 
-export interface ProductSwitchPropTypes extends ProductSwitchAttributes, CommonProps {
+interface ProductSwitchPropTypes extends ProductSwitchAttributes, Omit<CommonProps, keyof ProductSwitchAttributes> {
   /**
    * Defines the items of the `ProductSwitch`.
    */
@@ -35,3 +35,4 @@ const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomR
 ProductSwitch.displayName = 'ProductSwitch';
 
 export { ProductSwitch };
+export type { ProductSwitchDomRef, ProductSwitchPropTypes };

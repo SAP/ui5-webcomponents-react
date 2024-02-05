@@ -4,9 +4,8 @@ import '@ui5/webcomponents/dist/DatePicker.js';
 import type { DatePickerChangeEventDetail, DatePickerInputEventDetail } from '@ui5/webcomponents/dist/DatePicker.js';
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DatePickerAttributes {
   /**
@@ -79,7 +78,7 @@ interface DatePickerAttributes {
   secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
 }
 
-export interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
+interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
   /**
    * Currently selected date represented as a Local JavaScript Date instance.
    */
@@ -118,7 +117,9 @@ export interface DatePickerDomRef extends DatePickerAttributes, Ui5DomRef {
   openPicker: () => Promise<void>;
 }
 
-export interface DatePickerPropTypes extends DatePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface DatePickerPropTypes
+  extends DatePickerAttributes,
+    Omit<CommonProps, keyof DatePickerAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -156,15 +157,15 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   [
     'accessibleName',
     'accessibleNameRef',
-    'name',
-    'placeholder',
-    'value',
-    'valueState',
     'formatPattern',
     'maxDate',
     'minDate',
+    'name',
+    'placeholder',
     'primaryCalendarType',
-    'secondaryCalendarType'
+    'secondaryCalendarType',
+    'value',
+    'valueState'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -179,3 +180,4 @@ DatePicker.defaultProps = {
 };
 
 export { DatePicker };
+export type { DatePickerDomRef, DatePickerPropTypes };

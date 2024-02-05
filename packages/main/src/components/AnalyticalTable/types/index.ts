@@ -15,7 +15,7 @@ import type {
   ValueState,
   VerticalAlign
 } from '../../../enums/index.js';
-import type { CommonProps } from '../../../interfaces/index.js';
+import type { CommonProps } from '../../../types/index.js';
 
 export interface ReactTableHooks {
   useOptions: any[];

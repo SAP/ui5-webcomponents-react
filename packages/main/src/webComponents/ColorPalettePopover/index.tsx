@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import type { CSSProperties, ReactNode } from 'react';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPalettePopoverAttributes {
   /**
@@ -33,9 +33,9 @@ interface ColorPalettePopoverAttributes {
   showRecentColors?: boolean;
 }
 
-export interface ColorPalettePopoverDomRef extends Omit<ColorPalettePopoverAttributes, 'opener'>, Ui5DomRef {
+interface ColorPalettePopoverDomRef extends Omit<ColorPalettePopoverAttributes, 'opener'>, Ui5DomRef {
   /**
-   * Shows the ColorPalettePopover. **Note:** The method is deprecated and will be removed in future, use `showAt` instead.
+   * Shows the ColorPalettePopover.
    *
    * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
@@ -54,7 +54,9 @@ export interface ColorPalettePopoverDomRef extends Omit<ColorPalettePopoverAttri
   opener?: string | HTMLElement;
 }
 
-export interface ColorPalettePopoverPropTypes extends ColorPalettePopoverAttributes, CommonProps {
+interface ColorPalettePopoverPropTypes
+  extends ColorPalettePopoverAttributes,
+    Omit<CommonProps, keyof ColorPalettePopoverAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -88,3 +90,4 @@ const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, Color
 ColorPalettePopover.displayName = 'ColorPalettePopover';
 
 export { ColorPalettePopover };
+export type { ColorPalettePopoverDomRef, ColorPalettePopoverPropTypes };

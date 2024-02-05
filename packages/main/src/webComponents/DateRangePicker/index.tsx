@@ -7,9 +7,8 @@ import type {
 } from '@ui5/webcomponents/dist/DateRangePicker.js';
 import type { CalendarType } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DateRangePickerAttributes {
   /**
@@ -86,7 +85,7 @@ interface DateRangePickerAttributes {
   secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
 }
 
-export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5DomRef {
+interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5DomRef {
   /**
    * Returns the end date of the currently selected range as JavaScript Date instance.
    */
@@ -129,7 +128,9 @@ export interface DateRangePickerDomRef extends DateRangePickerAttributes, Ui5Dom
   openPicker: () => Promise<void>;
 }
 
-export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface DateRangePickerPropTypes
+  extends DateRangePickerAttributes,
+    Omit<CommonProps, keyof DateRangePickerAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -165,18 +166,18 @@ export interface DateRangePickerPropTypes extends DateRangePickerAttributes, Omi
 const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(
   'ui5-daterange-picker',
   [
-    'delimiter',
     'accessibleName',
     'accessibleNameRef',
-    'name',
-    'placeholder',
-    'value',
-    'valueState',
+    'delimiter',
     'formatPattern',
     'maxDate',
     'minDate',
+    'name',
+    'placeholder',
     'primaryCalendarType',
-    'secondaryCalendarType'
+    'secondaryCalendarType',
+    'value',
+    'valueState'
   ],
   ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
   ['valueStateMessage'],
@@ -192,3 +193,4 @@ DateRangePicker.defaultProps = {
 };
 
 export { DateRangePicker };
+export type { DateRangePickerDomRef, DateRangePickerPropTypes };

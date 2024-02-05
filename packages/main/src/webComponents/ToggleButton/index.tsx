@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
-import type { ReactNode, MouseEventHandler } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 import { ButtonDesign, ButtonType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToggleButtonAttributes {
   /**
@@ -58,7 +58,7 @@ interface ToggleButtonAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-export interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
+interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -76,7 +76,9 @@ export interface ToggleButtonDomRef extends ToggleButtonAttributes, Ui5DomRef {
   accessibilityAttributes: Record<string, unknown>;
 }
 
-export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<CommonProps, 'onClick'> {
+interface ToggleButtonPropTypes
+  extends ToggleButtonAttributes,
+    Omit<CommonProps, keyof ToggleButtonAttributes | 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -103,7 +105,7 @@ export interface ToggleButtonPropTypes extends ToggleButtonAttributes, Omit<Comm
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
   ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
-  ['pressed', 'disabled', 'iconEnd', 'submits'],
+  ['disabled', 'iconEnd', 'pressed', 'submits'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/ToggleButton.js')
@@ -117,3 +119,4 @@ ToggleButton.defaultProps = {
 };
 
 export { ToggleButton };
+export type { ToggleButtonDomRef, ToggleButtonPropTypes };

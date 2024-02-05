@@ -4,8 +4,8 @@ import '@ui5/webcomponents/dist/Title.js';
 import type { ReactNode } from 'react';
 import type { WrappingType } from '../../enums/index.js';
 import { TitleLevel } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TitleAttributes {
   /**
@@ -19,9 +19,9 @@ interface TitleAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-export interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
+interface TitleDomRef extends TitleAttributes, Ui5DomRef {}
 
-export interface TitlePropTypes extends TitleAttributes, CommonProps {
+interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleAttributes> {
   /**
    * Defines the text of the component. This component supports nesting a `Link` component inside.
    *
@@ -53,3 +53,4 @@ Title.defaultProps = {
 };
 
 export { Title };
+export type { TitleDomRef, TitlePropTypes };

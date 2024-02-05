@@ -4,9 +4,8 @@ import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import type { DynamicSideContentLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import type { ReactNode } from 'react';
 import { SideContentFallDown, SideContentPosition, SideContentVisibility } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface DynamicSideContentAttributes {
   /**
@@ -55,14 +54,16 @@ interface DynamicSideContentAttributes {
   sideContentVisibility?: SideContentVisibility | keyof typeof SideContentVisibility;
 }
 
-export interface DynamicSideContentDomRef extends DynamicSideContentAttributes, Ui5DomRef {
+interface DynamicSideContentDomRef extends DynamicSideContentAttributes, Ui5DomRef {
   /**
    * Toggles visibility of main and side contents on S screen size (mobile device).
    */
   toggleContents: () => void;
 }
 
-export interface DynamicSideContentPropTypes extends DynamicSideContentAttributes, CommonProps {
+interface DynamicSideContentPropTypes
+  extends DynamicSideContentAttributes,
+    Omit<CommonProps, keyof DynamicSideContentAttributes> {
   /**
    * Defines the main content.
    */
@@ -108,3 +109,4 @@ DynamicSideContent.defaultProps = {
 };
 
 export { DynamicSideContent };
+export type { DynamicSideContentDomRef, DynamicSideContentPropTypes };

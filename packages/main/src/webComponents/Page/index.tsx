@@ -3,9 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/Page.js';
 import type { ReactNode } from 'react';
 import { PageBackgroundDesign } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface PageAttributes {
   /**
@@ -30,9 +29,9 @@ interface PageAttributes {
   hideFooter?: boolean;
 }
 
-export interface PageDomRef extends PageAttributes, Ui5DomRef {}
+interface PageDomRef extends PageAttributes, Ui5DomRef {}
 
-export interface PagePropTypes extends PageAttributes, CommonProps {
+interface PagePropTypes extends PageAttributes, Omit<CommonProps, keyof PageAttributes> {
   /**
    * Defines the content HTML Element.
    */
@@ -83,3 +82,4 @@ Page.defaultProps = {
 };
 
 export { Page };
+export type { PageDomRef, PagePropTypes };

@@ -7,9 +7,8 @@ import type {
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import type { DragEventHandler, ReactNode } from 'react';
 import { ListMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface UploadCollectionAttributes {
   /**
@@ -37,9 +36,11 @@ interface UploadCollectionAttributes {
   noDataText?: string;
 }
 
-export interface UploadCollectionDomRef extends UploadCollectionAttributes, Ui5DomRef {}
+interface UploadCollectionDomRef extends UploadCollectionAttributes, Ui5DomRef {}
 
-export interface UploadCollectionPropTypes extends UploadCollectionAttributes, Omit<CommonProps, 'onDrop'> {
+interface UploadCollectionPropTypes
+  extends UploadCollectionAttributes,
+    Omit<CommonProps, keyof UploadCollectionAttributes | 'onDrop'> {
   /**
    * Defines the items of the `UploadCollection`.
    * **Note:** Use `UploadCollectionItem` for the intended design.
@@ -98,3 +99,4 @@ UploadCollection.defaultProps = {
 };
 
 export { UploadCollection };
+export type { UploadCollectionDomRef, UploadCollectionPropTypes };

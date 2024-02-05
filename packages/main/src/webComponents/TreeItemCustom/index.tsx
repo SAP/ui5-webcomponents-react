@@ -2,10 +2,9 @@
 
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import type { ReactNode } from 'react';
-import { ValueState, ListItemType } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { ListItemType, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeItemCustomAttributes {
   /**
@@ -63,7 +62,7 @@ interface TreeItemCustomAttributes {
   selected?: boolean;
 }
 
-export interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRef {
+interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRef {
   /**
    * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
    *
@@ -77,7 +76,9 @@ export interface TreeItemCustomDomRef extends TreeItemCustomAttributes, Ui5DomRe
   toggle: () => void;
 }
 
-export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Omit<CommonProps, 'content'> {
+interface TreeItemCustomPropTypes
+  extends TreeItemCustomAttributes,
+    Omit<CommonProps, keyof TreeItemCustomAttributes | 'content'> {
   /**
    * Defines the content of the `TreeItem`.
    *
@@ -121,7 +122,7 @@ export interface TreeItemCustomPropTypes extends TreeItemCustomAttributes, Omit<
 const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
   'ui5-tree-item-custom',
   ['accessibleName', 'additionalTextState', 'icon', 'type'],
-  ['hideSelectionElement', 'expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
+  ['expanded', 'hasChildren', 'hideSelectionElement', 'indeterminate', 'navigated', 'selected'],
   ['content', 'deleteButton'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/TreeItemCustom.js')
@@ -135,3 +136,4 @@ TreeItemCustom.defaultProps = {
 };
 
 export { TreeItemCustom };
+export type { TreeItemCustomDomRef, TreeItemCustomPropTypes };

@@ -1,9 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Token.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TokenAttributes {
   /**
@@ -22,9 +21,9 @@ interface TokenAttributes {
   text?: string;
 }
 
-export interface TokenDomRef extends TokenAttributes, Ui5DomRef {}
+interface TokenDomRef extends TokenAttributes, Ui5DomRef {}
 
-export interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, 'onSelect'> {
+interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'onSelect'> {
   /**
    * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`.
    *
@@ -60,3 +59,4 @@ const Token = withWebComponent<TokenPropTypes, TokenDomRef>(
 Token.displayName = 'Token';
 
 export { Token };
+export type { TokenDomRef, TokenPropTypes };

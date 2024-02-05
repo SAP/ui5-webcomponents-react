@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SuggestionItem.js';
-import { ValueState, ListItemType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { ListItemType, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SuggestionItemAttributes {
   /**
@@ -50,9 +50,9 @@ interface SuggestionItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-export interface SuggestionItemDomRef extends SuggestionItemAttributes, Ui5DomRef {}
+interface SuggestionItemDomRef extends SuggestionItemAttributes, Ui5DomRef {}
 
-export interface SuggestionItemPropTypes extends SuggestionItemAttributes, CommonProps {}
+interface SuggestionItemPropTypes extends SuggestionItemAttributes, Omit<CommonProps, keyof SuggestionItemAttributes> {}
 
 /**
  * The `SuggestionItem` represents the suggestion item of the `Input`
@@ -80,3 +80,4 @@ SuggestionItem.defaultProps = {
 };
 
 export { SuggestionItem };
+export type { SuggestionItemDomRef, SuggestionItemPropTypes };

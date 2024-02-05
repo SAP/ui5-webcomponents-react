@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ToolbarSelectOption.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSelectOptionAttributes {
   /**
@@ -12,9 +12,11 @@ interface ToolbarSelectOptionAttributes {
   selected?: boolean;
 }
 
-export interface ToolbarSelectOptionDomRef extends ToolbarSelectOptionAttributes, Ui5DomRef {}
+interface ToolbarSelectOptionDomRef extends ToolbarSelectOptionAttributes, Ui5DomRef {}
 
-export interface ToolbarSelectOptionPropTypes extends ToolbarSelectOptionAttributes, CommonProps {
+interface ToolbarSelectOptionPropTypes
+  extends ToolbarSelectOptionAttributes,
+    Omit<CommonProps, keyof ToolbarSelectOptionAttributes> {
   /**
    * Defines the text of the component.
    *
@@ -44,3 +46,4 @@ const ToolbarSelectOption = withWebComponent<ToolbarSelectOptionPropTypes, Toolb
 ToolbarSelectOption.displayName = 'ToolbarSelectOption';
 
 export { ToolbarSelectOption };
+export type { ToolbarSelectOptionDomRef, ToolbarSelectOptionPropTypes };

@@ -182,5 +182,9 @@
   {
     "id": "zh_TW",
     "language": "Chinese - Traditional"
+  },
+  {
+    "id": "en_US_sappsd",
+    "language": "Pseudo Translations"
   }
 ]

@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
 import type { CSSProperties } from 'react';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPickerAttributes {
   /**
@@ -14,9 +14,11 @@ interface ColorPickerAttributes {
   color?: CSSProperties['color'];
 }
 
-export interface ColorPickerDomRef extends ColorPickerAttributes, Omit<Ui5DomRef, 'color'> {}
+interface ColorPickerDomRef extends ColorPickerAttributes, Omit<Ui5DomRef, 'color'> {}
 
-export interface ColorPickerPropTypes extends ColorPickerAttributes, Omit<CommonProps, 'color' | 'onChange'> {
+interface ColorPickerPropTypes
+  extends ColorPickerAttributes,
+    Omit<CommonProps, keyof ColorPickerAttributes | 'onChange'> {
   /**
    * Fired when the the selected color is changed
    */
@@ -42,3 +44,4 @@ const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
 ColorPicker.displayName = 'ColorPicker';
 
 export { ColorPicker };
+export type { ColorPickerDomRef, ColorPickerPropTypes };

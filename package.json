@@ -25,16 +25,16 @@
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "create-webcomponents-wrapper": "node --experimental-json-modules ./packages/main/scripts/create-web-components-wrapper.mjs && node --experimental-json-modules ./scripts/generate-theming-parameters.js",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
-    "postinstall": "husky install && yarn prepare",
+    "postinstall": "husky && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "7.6.8",
-    "@storybook/addon-essentials": "7.6.8",
-    "@storybook/blocks": "7.6.8",
-    "@storybook/react": "7.6.8",
-    "@storybook/react-vite": "7.6.8",
-    "@storybook/theming": "7.6.8",
+    "@storybook/addon-a11y": "7.6.12",
+    "@storybook/addon-essentials": "7.6.12",
+    "@storybook/blocks": "7.6.12",
+    "@storybook/react": "7.6.12",
+    "@storybook/react-vite": "7.6.12",
+    "@storybook/theming": "7.6.12",
     "@ui5/webcomponents": "1.21.2",
     "@ui5/webcomponents-fiori": "1.21.2",
     "@ui5/webcomponents-icons": "1.21.2",
@@ -45,8 +45,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "7.23.7",
-    "@babel/preset-env": "7.23.8",
+    "@babel/core": "7.23.9",
+    "@babel/preset-env": "7.23.9",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
     "@cypress/code-coverage": "^3.10.0",
@@ -75,11 +75,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "handlebars": "^4.7.7",
-    "husky": "^8.0.0",
+    "husky": "^9.0.6",
     "identity-obj-proxy": "^3.0.0",
     "lerna": "^8.0.0",
     "lint-staged": "^15.0.0",
-    "npm-run-all": "^4.1.5",
+    "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.25",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.0.0",
@@ -87,7 +87,7 @@
     "prettier": "^3.0.0",
     "react-textarea-autosize": "^8.5.3",
     "rimraf": "^5.0.0",
-    "storybook": "7.6.8",
+    "storybook": "7.6.12",
     "turndown": "^7.0.0",
     "typedoc": "^0.25.0",
     "typescript": "5.3.3",
@@ -112,5 +112,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.1.0"
 }

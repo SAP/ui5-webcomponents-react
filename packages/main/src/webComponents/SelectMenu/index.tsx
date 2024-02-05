@@ -2,14 +2,14 @@
 
 import '@ui5/webcomponents/dist/SelectMenu.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SelectMenuAttributes {}
 
-export interface SelectMenuDomRef extends SelectMenuAttributes, Ui5DomRef {}
+interface SelectMenuDomRef extends SelectMenuAttributes, Ui5DomRef {}
 
-export interface SelectMenuPropTypes extends SelectMenuAttributes, CommonProps {
+interface SelectMenuPropTypes extends SelectMenuAttributes, Omit<CommonProps, keyof SelectMenuAttributes> {
   /**
    * Defines the options of the component.
    */
@@ -37,3 +37,4 @@ const SelectMenu = withWebComponent<SelectMenuPropTypes, SelectMenuDomRef>(
 SelectMenu.displayName = 'SelectMenu';
 
 export { SelectMenu };
+export type { SelectMenuDomRef, SelectMenuPropTypes };

@@ -7,10 +7,9 @@ import type {
   TableSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/Table.js';
 import type { ReactNode } from 'react';
-import { TableMode, TableGrowingMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { TableGrowingMode, TableMode } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TableAttributes {
   /**
@@ -81,9 +80,9 @@ interface TableAttributes {
   stickyColumnHeader?: boolean;
 }
 
-export interface TableDomRef extends TableAttributes, Ui5DomRef {}
+interface TableDomRef extends TableAttributes, Ui5DomRef {}
 
-export interface TablePropTypes extends TableAttributes, CommonProps {
+interface TablePropTypes extends TableAttributes, Omit<CommonProps, keyof TableAttributes> {
   /**
    * Defines the configuration for the columns of the component.
    *
@@ -160,3 +159,4 @@ Table.defaultProps = {
 };
 
 export { Table };
+export type { TableDomRef, TablePropTypes };

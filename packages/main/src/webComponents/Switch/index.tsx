@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/Switch.js';
 import { SwitchDesign } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SwitchAttributes {
   /**
@@ -63,9 +63,9 @@ interface SwitchAttributes {
   tooltip?: string;
 }
 
-export interface SwitchDomRef extends SwitchAttributes, Ui5DomRef {}
+interface SwitchDomRef extends SwitchAttributes, Ui5DomRef {}
 
-export interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, 'onChange'> {
+interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof SwitchAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
    */
@@ -98,3 +98,4 @@ Switch.defaultProps = {
 };
 
 export { Switch };
+export type { SwitchDomRef, SwitchPropTypes };

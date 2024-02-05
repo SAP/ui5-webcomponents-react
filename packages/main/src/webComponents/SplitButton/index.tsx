@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/SplitButton.js';
 import type { ReactNode } from 'react';
 import { ButtonDesign } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SplitButtonAttributes {
   /**
@@ -37,9 +37,11 @@ interface SplitButtonAttributes {
   icon?: string;
 }
 
-export interface SplitButtonDomRef extends SplitButtonAttributes, Ui5DomRef {}
+interface SplitButtonDomRef extends SplitButtonAttributes, Ui5DomRef {}
 
-export interface SplitButtonPropTypes extends SplitButtonAttributes, Omit<CommonProps, 'onClick'> {
+interface SplitButtonPropTypes
+  extends SplitButtonAttributes,
+    Omit<CommonProps, keyof SplitButtonAttributes | 'onClick'> {
   /**
    * Defines the text of the component.
    *
@@ -79,3 +81,4 @@ SplitButton.defaultProps = {
 };
 
 export { SplitButton };
+export type { SplitButtonDomRef, SplitButtonPropTypes };

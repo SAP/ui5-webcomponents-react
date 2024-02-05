@@ -11,9 +11,8 @@ import type {
 } from '@ui5/webcomponents/dist/Tree.js';
 import type { ReactNode } from 'react';
 import { ListMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeAttributes {
   /**
@@ -44,7 +43,7 @@ interface TreeAttributes {
   noDataText?: string;
 }
 
-export interface TreeDomRef extends TreeAttributes, Ui5DomRef {
+interface TreeDomRef extends TreeAttributes, Ui5DomRef {
   /**
    * Perform Depth-First-Search walk on the tree and run a callback on each node
    * @param {(treeNode: HTMLElement, level: number) => void} callback - function to execute on each node of the tree with 3 arguments: the node, the level and the index
@@ -52,7 +51,7 @@ export interface TreeDomRef extends TreeAttributes, Ui5DomRef {
   walk: (callback: (treeNode: HTMLElement, level: number) => void) => void;
 }
 
-export interface TreePropTypes extends TreeAttributes, CommonProps {
+interface TreePropTypes extends TreeAttributes, Omit<CommonProps, keyof TreeAttributes> {
   /**
    * Defines the items of the component. Tree items may have other tree items as children.
    *
@@ -122,3 +121,4 @@ Tree.defaultProps = {
 };
 
 export { Tree };
+export type { TreeDomRef, TreePropTypes };

@@ -2,9 +2,8 @@
 
 import '@ui5/webcomponents/dist/StepInput.js';
 import { ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface StepInputAttributes {
   /**
@@ -67,9 +66,9 @@ interface StepInputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface StepInputDomRef extends StepInputAttributes, Ui5DomRef {}
+interface StepInputDomRef extends StepInputAttributes, Ui5DomRef {}
 
-export interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, 'onChange'> {
+interface StepInputPropTypes extends StepInputAttributes, Omit<CommonProps, keyof StepInputAttributes | 'onChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -128,3 +127,4 @@ StepInput.defaultProps = {
 };
 
 export { StepInput };
+export type { StepInputDomRef, StepInputPropTypes };

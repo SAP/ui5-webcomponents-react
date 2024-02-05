@@ -3,9 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import type { SideNavigationSelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import type { ReactNode } from 'react';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { UI5WCSlotsNode, Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SideNavigationAttributes {
   /**
@@ -14,9 +13,9 @@ interface SideNavigationAttributes {
   collapsed?: boolean;
 }
 
-export interface SideNavigationDomRef extends SideNavigationAttributes, Ui5DomRef {}
+interface SideNavigationDomRef extends SideNavigationAttributes, Ui5DomRef {}
 
-export interface SideNavigationPropTypes extends SideNavigationAttributes, CommonProps {
+interface SideNavigationPropTypes extends SideNavigationAttributes, Omit<CommonProps, keyof SideNavigationAttributes> {
   /**
    * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested inside the items.
    */
@@ -72,3 +71,4 @@ const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationD
 SideNavigation.displayName = 'SideNavigation';
 
 export { SideNavigation };
+export type { SideNavigationDomRef, SideNavigationPropTypes };

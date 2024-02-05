@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/CalendarDate.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface CalendarDateAttributes {
   /**
@@ -11,9 +11,9 @@ interface CalendarDateAttributes {
   value?: string;
 }
 
-export interface CalendarDateDomRef extends CalendarDateAttributes, Ui5DomRef {}
+interface CalendarDateDomRef extends CalendarDateAttributes, Ui5DomRef {}
 
-export interface CalendarDatePropTypes extends CalendarDateAttributes, CommonProps {}
+interface CalendarDatePropTypes extends CalendarDateAttributes, Omit<CommonProps, keyof CalendarDateAttributes> {}
 
 /**
  * The `CalendarDate` component defines a calendar date to be used inside `Calendar`
@@ -36,3 +36,4 @@ const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>
 CalendarDate.displayName = 'CalendarDate';
 
 export { CalendarDate };
+export type { CalendarDateDomRef, CalendarDatePropTypes };

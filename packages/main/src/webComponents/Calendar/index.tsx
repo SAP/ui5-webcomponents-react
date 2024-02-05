@@ -5,8 +5,8 @@ import type { CalendarSelectedDatesChangeEventDetail } from '@ui5/webcomponents/
 import type { ReactNode } from 'react';
 import type { CalendarType } from '../../enums/index.js';
 import { CalendarSelectionMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface CalendarAttributes {
   /**
@@ -45,9 +45,9 @@ interface CalendarAttributes {
   secondaryCalendarType?: CalendarType | keyof typeof CalendarType;
 }
 
-export interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
+interface CalendarDomRef extends CalendarAttributes, Ui5DomRef {}
 
-export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
+interface CalendarPropTypes extends CalendarAttributes, Omit<CommonProps, keyof CalendarAttributes> {
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`.
    */
@@ -69,7 +69,7 @@ export interface CalendarPropTypes extends CalendarAttributes, CommonProps {
  */
 const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
-  ['selectionMode', 'formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType'],
+  ['formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType', 'selectionMode'],
   ['hideWeekNumbers'],
   [],
   ['selected-dates-change'],
@@ -83,3 +83,4 @@ Calendar.defaultProps = {
 };
 
 export { Calendar };
+export type { CalendarDomRef, CalendarPropTypes };

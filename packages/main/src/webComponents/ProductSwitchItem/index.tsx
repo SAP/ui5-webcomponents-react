@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ProductSwitchItemAttributes {
   /**
@@ -41,9 +41,11 @@ interface ProductSwitchItemAttributes {
   titleText?: string;
 }
 
-export interface ProductSwitchItemDomRef extends ProductSwitchItemAttributes, Ui5DomRef {}
+interface ProductSwitchItemDomRef extends ProductSwitchItemAttributes, Ui5DomRef {}
 
-export interface ProductSwitchItemPropTypes extends ProductSwitchItemAttributes, Omit<CommonProps, 'onClick'> {
+interface ProductSwitchItemPropTypes
+  extends ProductSwitchItemAttributes,
+    Omit<CommonProps, keyof ProductSwitchItemAttributes | 'onClick'> {
   /**
    * Fired when the `ProductSwitchItem` is activated either with a click/tap or by using the Enter or Space key.
    */
@@ -71,3 +73,4 @@ const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSw
 ProductSwitchItem.displayName = 'ProductSwitchItem';
 
 export { ProductSwitchItem };
+export type { ProductSwitchItemDomRef, ProductSwitchItemPropTypes };

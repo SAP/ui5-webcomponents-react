@@ -2,15 +2,14 @@
 
 import '@ui5/webcomponents/dist/MultiInput.js';
 import type {
-  MultiInputTokenDeleteEventDetail,
   MultiInputSuggestionItemPreviewEventDetail,
-  MultiInputSuggestionItemSelectEventDetail
+  MultiInputSuggestionItemSelectEventDetail,
+  MultiInputTokenDeleteEventDetail
 } from '@ui5/webcomponents/dist/MultiInput.js';
 import type { ReactNode } from 'react';
-import { ValueState, InputType } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { InputType, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiInputAttributes {
   /**
@@ -94,7 +93,7 @@ interface MultiInputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
+interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
   /**
    * The suggestion item on preview.
    */
@@ -105,7 +104,9 @@ export interface MultiInputDomRef extends MultiInputAttributes, Ui5DomRef {
   openPicker: () => void;
 }
 
-export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface MultiInputPropTypes
+  extends MultiInputAttributes,
+    Omit<CommonProps, keyof MultiInputAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the component tokens.
    *
@@ -211,9 +212,9 @@ export interface MultiInputPropTypes extends MultiInputAttributes, Omit<CommonPr
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['showValueHelpIcon', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
-  ['tokens', 'icon', 'valueStateMessage'],
-  ['token-delete', 'value-help-trigger', 'change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
+  ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions', 'showValueHelpIcon'],
+  ['icon', 'tokens', 'valueStateMessage'],
+  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select', 'token-delete', 'value-help-trigger'],
   () => import('@ui5/webcomponents/dist/MultiInput.js')
 );
 
@@ -225,3 +226,4 @@ MultiInput.defaultProps = {
 };
 
 export { MultiInput };
+export type { MultiInputDomRef, MultiInputPropTypes };

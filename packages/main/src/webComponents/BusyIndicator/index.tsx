@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/BusyIndicator.js';
 import type { ReactNode } from 'react';
 import { BusyIndicatorSize } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface BusyIndicatorAttributes {
   /**
@@ -25,9 +25,9 @@ interface BusyIndicatorAttributes {
   text?: string;
 }
 
-export interface BusyIndicatorDomRef extends BusyIndicatorAttributes, Ui5DomRef {}
+interface BusyIndicatorDomRef extends BusyIndicatorAttributes, Ui5DomRef {}
 
-export interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, CommonProps {
+interface BusyIndicatorPropTypes extends BusyIndicatorAttributes, Omit<CommonProps, keyof BusyIndicatorAttributes> {
   /**
    * Determines the content over which the component will appear.
    */
@@ -58,3 +58,4 @@ BusyIndicator.defaultProps = {
 };
 
 export { BusyIndicator };
+export type { BusyIndicatorDomRef, BusyIndicatorPropTypes };

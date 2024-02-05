@@ -4,7 +4,7 @@
 {{{this}}}
 {{/each}}
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface {{name}}Attributes {
 {{#each attributes}}
@@ -12,13 +12,13 @@ interface {{name}}Attributes {
 {{/each}}
 }
 
-export interface {{name}}DomRef extends {{name}}Attributes, {{{domRefExtends}}} {
+interface {{name}}DomRef extends {{name}}Attributes, {{{domRefExtends}}} {
 {{#each domRef}}
   {{{this}}}
 {{/each}}
 }
 
-export interface {{name}}PropTypes extends {{name}}Attributes, {{{propTypesExtends}}} {
+interface {{name}}PropTypes extends {{name}}Attributes, {{{propTypesExtends}}} {
 {{#each slotsAndEvents}}
   {{{this}}}
 {{/each}}
@@ -57,3 +57,4 @@ const {{name}} = withWebComponent<{{name}}PropTypes, {{name}}DomRef>(
 {{/if}}
 
 export { {{name}} };
+export type { {{name}}DomRef, {{name}}PropTypes };

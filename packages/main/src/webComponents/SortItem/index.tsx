@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SortItem.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface SortItemAttributes {
   /**
@@ -15,9 +15,9 @@ interface SortItemAttributes {
   text?: string;
 }
 
-export interface SortItemDomRef extends SortItemAttributes, Ui5DomRef {}
+interface SortItemDomRef extends SortItemAttributes, Ui5DomRef {}
 
-export interface SortItemPropTypes extends SortItemAttributes, CommonProps {}
+interface SortItemPropTypes extends SortItemAttributes, Omit<CommonProps, keyof SortItemAttributes> {}
 
 /**
  *
@@ -40,3 +40,4 @@ const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>(
 SortItem.displayName = 'SortItem';
 
 export { SortItem };
+export type { SortItemDomRef, SortItemPropTypes };

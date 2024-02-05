@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface FilterItemOptionAttributes {
   /**
@@ -15,9 +15,11 @@ interface FilterItemOptionAttributes {
   text?: string;
 }
 
-export interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
+interface FilterItemOptionDomRef extends FilterItemOptionAttributes, Ui5DomRef {}
 
-export interface FilterItemOptionPropTypes extends FilterItemOptionAttributes, CommonProps {}
+interface FilterItemOptionPropTypes
+  extends FilterItemOptionAttributes,
+    Omit<CommonProps, keyof FilterItemOptionAttributes> {}
 
 /**
  *
@@ -40,3 +42,4 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemO
 FilterItemOption.displayName = 'FilterItemOption';
 
 export { FilterItemOption };
+export type { FilterItemOptionDomRef, FilterItemOptionPropTypes };

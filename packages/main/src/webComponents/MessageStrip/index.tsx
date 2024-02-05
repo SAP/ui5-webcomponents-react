@@ -3,9 +3,8 @@
 import '@ui5/webcomponents/dist/MessageStrip.js';
 import type { ReactNode } from 'react';
 import { MessageStripDesign } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MessageStripAttributes {
   /**
@@ -22,9 +21,9 @@ interface MessageStripAttributes {
   hideIcon?: boolean;
 }
 
-export interface MessageStripDomRef extends MessageStripAttributes, Ui5DomRef {}
+interface MessageStripDomRef extends MessageStripAttributes, Ui5DomRef {}
 
-export interface MessageStripPropTypes extends MessageStripAttributes, CommonProps {
+interface MessageStripPropTypes extends MessageStripAttributes, Omit<CommonProps, keyof MessageStripAttributes> {
   /**
    * Defines the text of the component.
    *
@@ -74,3 +73,4 @@ MessageStrip.defaultProps = {
 };
 
 export { MessageStrip };
+export type { MessageStripDomRef, MessageStripPropTypes };

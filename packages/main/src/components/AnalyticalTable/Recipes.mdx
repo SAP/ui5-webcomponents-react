@@ -161,7 +161,7 @@ Please note that the internal react-table is resetting its hidden state after hi
 
 ## How to scale custom cells?
 
-Scaling of custom cells is not supported when used with `scaleWidthMode: AnalyticalTableScaleWidthMode.Grow` or `scaleWidthMode: AnalyticalTableScaleWidthMode.Smart`, as we're using the text of the cell for our calculation.
+Automatic scaling of custom cells is not supported when used with `scaleWidthMode: AnalyticalTableScaleWidthMode.Grow` or `scaleWidthMode: AnalyticalTableScaleWidthMode.Smart`, as we're using the text of the cell for our calculation.
 Since v1.22.0 you can use the column option `scaleWidthModeOptions` to pass a string for the internal width calculation of the header cell (`headerString`) and the body cells (`cellString`).
 
 ```jsx
@@ -221,6 +221,43 @@ const columns = [
 
 ```jsx
 <AnalyticalTable data={props.data} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Smart} />
+```
+
+## How to focus the content of a Dialog or Popover rendered inside a cell?
+
+If a Dialog or Popover is rendered inside a cell, the `focus` event is bubbling up to the table which implements its own logic for focus handling to support keyboard navigation.
+This applies even if a React portal is used to mount the HTML element outside the table, because React event propagation still applies as if it were rendered inside.
+
+To prevent this behavior, you can use the `stopPropagation` method of the `onFocus` event of the Dialog or Popover.
+
+```jsx
+const columns = [
+  {
+    id: 'custom',
+    Header: 'Custom cell with button and dialog',
+    Cell: () => {
+      const [open, toggle] = useReducer((prev) => !prev, false);
+      const uniqueId = useId();
+      return (
+        <>
+          <Button onClick={toggle}>Open</Button>
+          {createPortal(
+            <Dialog
+              open={open}
+              initialFocus={uniqueId}
+              onFocus={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <Input placeholder="Focus me!" id={uniqueId} />
+            </Dialog>,
+            document.body
+          )}
+        </>
+      );
+    }
+  }
+];
 ```
 
 <Footer />

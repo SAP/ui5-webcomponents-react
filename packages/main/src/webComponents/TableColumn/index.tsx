@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/TableColumn.js';
 import type { ReactNode } from 'react';
 import { TableColumnPopinDisplay } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableColumnAttributes {
   /**
@@ -35,9 +35,9 @@ interface TableColumnAttributes {
   popinText?: string;
 }
 
-export interface TableColumnDomRef extends TableColumnAttributes, Ui5DomRef {}
+interface TableColumnDomRef extends TableColumnAttributes, Ui5DomRef {}
 
-export interface TableColumnPropTypes extends TableColumnAttributes, CommonProps {
+interface TableColumnPropTypes extends TableColumnAttributes, Omit<CommonProps, keyof TableColumnAttributes> {
   /**
    * Defines the content of the column header.
    */
@@ -68,3 +68,4 @@ TableColumn.defaultProps = {
 };
 
 export { TableColumn };
+export type { TableColumnDomRef, TableColumnPropTypes };

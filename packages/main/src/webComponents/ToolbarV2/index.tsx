@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/Toolbar.js';
 import type { ReactNode } from 'react';
 import type { ToolbarAlign } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarV2Attributes {
   /**
@@ -21,9 +21,9 @@ interface ToolbarV2Attributes {
   alignContent?: ToolbarAlign | keyof typeof ToolbarAlign;
 }
 
-export interface ToolbarV2DomRef extends ToolbarV2Attributes, Ui5DomRef {}
+interface ToolbarV2DomRef extends ToolbarV2Attributes, Ui5DomRef {}
 
-export interface ToolbarV2PropTypes extends ToolbarV2Attributes, CommonProps {
+interface ToolbarV2PropTypes extends ToolbarV2Attributes, Omit<CommonProps, keyof ToolbarV2Attributes> {
   /**
    * Defines the items of the component. **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparatorV2` and `ToolbarSpacerV2` are allowed here.
    */
@@ -49,3 +49,4 @@ const ToolbarV2 = withWebComponent<ToolbarV2PropTypes, ToolbarV2DomRef>(
 ToolbarV2.displayName = 'ToolbarV2';
 
 export { ToolbarV2 };
+export type { ToolbarV2DomRef, ToolbarV2PropTypes };

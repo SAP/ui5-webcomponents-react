@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents-fiori/dist/WizardStep.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface WizardStepAttributes {
   /**
@@ -46,9 +46,9 @@ interface WizardStepAttributes {
   titleText?: string;
 }
 
-export interface WizardStepDomRef extends WizardStepAttributes, Ui5DomRef {}
+interface WizardStepDomRef extends WizardStepAttributes, Ui5DomRef {}
 
-export interface WizardStepPropTypes extends WizardStepAttributes, CommonProps {
+interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, keyof WizardStepAttributes> {
   /**
    * Defines the step content.
    */
@@ -76,3 +76,4 @@ const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
 WizardStep.displayName = 'WizardStep';
 
 export { WizardStep };
+export type { WizardStepDomRef, WizardStepPropTypes };

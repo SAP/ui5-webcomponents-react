@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/Icon.js';
 import { IconDesign } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface IconAttributes {
   /**
@@ -47,9 +47,9 @@ interface IconAttributes {
   showTooltip?: boolean;
 }
 
-export interface IconDomRef extends IconAttributes, Ui5DomRef {}
+interface IconDomRef extends IconAttributes, Ui5DomRef {}
 
-export interface IconPropTypes extends IconAttributes, CommonProps {}
+interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttributes> {}
 
 /**
  * The `Icon` component represents an SVG icon. There are two main scenarios how the `Icon` component is used: as a purely decorative element,
@@ -75,3 +75,4 @@ Icon.defaultProps = {
 };
 
 export { Icon };
+export type { IconDomRef, IconPropTypes };

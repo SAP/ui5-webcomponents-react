@@ -3,9 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import type { FlexibleColumnLayoutLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import { FCLLayout } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface FlexibleColumnLayoutAttributes {
   /**
@@ -22,7 +21,7 @@ interface FlexibleColumnLayoutAttributes {
   layout?: FCLLayout | keyof typeof FCLLayout;
 }
 
-export interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttributes, Ui5DomRef {
+interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttributes, Ui5DomRef {
   /**
    * Returns the current column layout, based on both the `layout` property and the screen size.
    *
@@ -69,7 +68,9 @@ export interface FlexibleColumnLayoutDomRef extends FlexibleColumnLayoutAttribut
   accessibilityTexts: Record<string, unknown>;
 }
 
-export interface FlexibleColumnLayoutPropTypes extends FlexibleColumnLayoutAttributes, CommonProps {
+interface FlexibleColumnLayoutPropTypes
+  extends FlexibleColumnLayoutAttributes,
+    Omit<CommonProps, keyof FlexibleColumnLayoutAttributes> {
   /**
    * Defines the content in the end column.
    *
@@ -131,3 +132,4 @@ FlexibleColumnLayout.defaultProps = {
 };
 
 export { FlexibleColumnLayout };
+export type { FlexibleColumnLayoutDomRef, FlexibleColumnLayoutPropTypes };

@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
 import type { CSSProperties } from 'react';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSpacerV2Attributes {
   /**
@@ -27,9 +27,11 @@ interface ToolbarSpacerV2Attributes {
   preventOverflowClosing?: boolean;
 }
 
-export interface ToolbarSpacerV2DomRef extends ToolbarSpacerV2Attributes, Ui5DomRef {}
+interface ToolbarSpacerV2DomRef extends ToolbarSpacerV2Attributes, Ui5DomRef {}
 
-export interface ToolbarSpacerV2PropTypes extends ToolbarSpacerV2Attributes, CommonProps {}
+interface ToolbarSpacerV2PropTypes
+  extends ToolbarSpacerV2Attributes,
+    Omit<CommonProps, keyof ToolbarSpacerV2Attributes> {}
 
 /**
  * The `ToolbarSpacerV2` is an element, used for taking needed space for toolbar items to take 100% width. It takes no space in calculating toolbar items width
@@ -42,7 +44,7 @@ export interface ToolbarSpacerV2PropTypes extends ToolbarSpacerV2Attributes, Com
  */
 const ToolbarSpacerV2 = withWebComponent<ToolbarSpacerV2PropTypes, ToolbarSpacerV2DomRef>(
   'ui5-toolbar-spacer',
-  ['width', 'overflowPriority'],
+  ['overflowPriority', 'width'],
   ['preventOverflowClosing'],
   [],
   [],
@@ -56,3 +58,4 @@ ToolbarSpacerV2.defaultProps = {
 };
 
 export { ToolbarSpacerV2 };
+export type { ToolbarSpacerV2DomRef, ToolbarSpacerV2PropTypes };

@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/Option.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface OptionAttributes {
   /**
@@ -32,9 +32,9 @@ interface OptionAttributes {
   value?: string;
 }
 
-export interface OptionDomRef extends OptionAttributes, Ui5DomRef {}
+interface OptionDomRef extends OptionAttributes, Ui5DomRef {}
 
-export interface OptionPropTypes extends OptionAttributes, CommonProps {
+interface OptionPropTypes extends OptionAttributes, Omit<CommonProps, keyof OptionAttributes> {
   /**
    * Defines the text of the component.
    *
@@ -64,3 +64,4 @@ const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
 Option.displayName = 'Option';
 
 export { Option };
+export type { OptionDomRef, OptionPropTypes };

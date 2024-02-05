@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface MultiComboBoxItemAttributes {
   /**
@@ -19,9 +19,11 @@ interface MultiComboBoxItemAttributes {
   text?: string;
 }
 
-export interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
+interface MultiComboBoxItemDomRef extends MultiComboBoxItemAttributes, Ui5DomRef {}
 
-export interface MultiComboBoxItemPropTypes extends MultiComboBoxItemAttributes, CommonProps {}
+interface MultiComboBoxItemPropTypes
+  extends MultiComboBoxItemAttributes,
+    Omit<CommonProps, keyof MultiComboBoxItemAttributes> {}
 
 /**
  * The `MultiComboBoxItem` represents the item for a `MultiComboBox`
@@ -44,3 +46,4 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComb
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';
 
 export { MultiComboBoxItem };
+export type { MultiComboBoxItemDomRef, MultiComboBoxItemPropTypes };

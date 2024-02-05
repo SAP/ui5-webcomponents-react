@@ -15,10 +15,10 @@ import {
   SPECIFY_VIEW_NAME,
   VIEW
 } from '../../i18n/i18n-defaults.js';
-import type { Ui5CustomEvent } from '../../interfaces/index.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import type { Ui5CustomEvent } from '../../types/index.js';
 import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
 import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';

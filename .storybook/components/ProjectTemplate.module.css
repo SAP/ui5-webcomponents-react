@@ -1,14 +1,19 @@
 .card {
-    width: 500px;
-    height: 18rem;
-    margin-inline-end: 2rem;
-    margin-block-end: 2rem;
+  width: 500px;
+  height: 18rem;
+  margin-block-end: 2rem;
+  flex-shrink: 0;
 }
 
 .cardContent {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .deprecationNotice {
-    margin-block-end: 0.5rem;
+  margin-block-end: 0.5rem;
+}
+
+.template {
+  width: 300px;
+  height: unset;
 }

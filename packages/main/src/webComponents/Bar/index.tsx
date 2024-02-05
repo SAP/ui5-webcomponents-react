@@ -3,9 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/Bar.js';
 import type { ReactNode } from 'react';
 import { BarDesign } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface BarAttributes {
   /**
@@ -14,9 +13,9 @@ interface BarAttributes {
   design?: BarDesign | keyof typeof BarDesign;
 }
 
-export interface BarDomRef extends BarAttributes, Ui5DomRef {}
+interface BarDomRef extends BarAttributes, Ui5DomRef {}
 
-export interface BarPropTypes extends BarAttributes, CommonProps {
+interface BarPropTypes extends BarAttributes, Omit<CommonProps, keyof BarAttributes> {
   /**
    * Defines the content in the middle of the bar.
    */
@@ -66,3 +65,4 @@ Bar.defaultProps = {
 };
 
 export { Bar };
+export type { BarDomRef, BarPropTypes };

@@ -7,9 +7,8 @@ import type {
 } from '@ui5/webcomponents/dist/Input.js';
 import type { ReactNode } from 'react';
 import { InputType, ValueState } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface InputAttributes {
   /**
@@ -89,7 +88,7 @@ interface InputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-export interface InputDomRef extends InputAttributes, Ui5DomRef {
+interface InputDomRef extends InputAttributes, Ui5DomRef {
   /**
    * The suggestion item on preview.
    */
@@ -100,7 +99,7 @@ export interface InputDomRef extends InputAttributes, Ui5DomRef {
   openPicker: () => void;
 }
 
-export interface InputPropTypes extends InputAttributes, Omit<CommonProps, 'onChange' | 'onInput'> {
+interface InputPropTypes extends InputAttributes, Omit<CommonProps, keyof InputAttributes | 'onChange' | 'onInput'> {
   /**
    * Defines the suggestion items.
    *
@@ -200,3 +199,4 @@ Input.defaultProps = {
 };
 
 export { Input };
+export type { InputDomRef, InputPropTypes };

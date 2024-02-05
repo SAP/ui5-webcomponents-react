@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/MenuItem.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface MenuItemAttributes {
   /**
@@ -44,9 +44,9 @@ interface MenuItemAttributes {
   text?: string;
 }
 
-export interface MenuItemDomRef extends MenuItemAttributes, Ui5DomRef {}
+interface MenuItemDomRef extends MenuItemAttributes, Ui5DomRef {}
 
-export interface MenuItemPropTypes extends MenuItemAttributes, CommonProps {
+interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof MenuItemAttributes> {
   /**
    * Defines the items of this component.
    */
@@ -78,3 +78,4 @@ MenuItem.defaultProps = {
 };
 
 export { MenuItem };
+export type { MenuItemDomRef, MenuItemPropTypes };

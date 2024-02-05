@@ -3,10 +3,9 @@
 import '@ui5/webcomponents/dist/Dialog.js';
 import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ReactNode } from 'react';
-import { ValueState, PopupAccessibleRole } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { PopupAccessibleRole, ValueState } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DialogAttributes {
   /**
@@ -67,7 +66,7 @@ interface DialogAttributes {
   preventFocusRestore?: boolean;
 }
 
-export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggable'> {
+interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggable'> {
   /**
    * Shows the dialog.
    * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
@@ -90,7 +89,7 @@ export interface DialogDomRef extends DialogAttributes, Omit<Ui5DomRef, 'draggab
   isOpen: () => boolean;
 }
 
-export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'draggable'> {
+interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, keyof DialogAttributes | 'draggable'> {
   /**
    * Defines the footer HTML Element.
    *
@@ -150,8 +149,8 @@ export interface DialogPropTypes extends DialogAttributes, Omit<CommonProps, 'dr
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['headerText', 'state', 'accessibleName', 'accessibleNameRef', 'accessibleRole', 'initialFocus'],
-  ['draggable', 'resizable', 'stretch', 'open', 'preventFocusRestore'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'headerText', 'initialFocus', 'state'],
+  ['draggable', 'open', 'preventFocusRestore', 'resizable', 'stretch'],
   ['footer', 'header'],
   ['after-close', 'after-open', 'before-close', 'before-open'],
   () => import('@ui5/webcomponents/dist/Dialog.js')
@@ -165,3 +164,4 @@ Dialog.defaultProps = {
 };
 
 export { Dialog };
+export type { DialogDomRef, DialogPropTypes };

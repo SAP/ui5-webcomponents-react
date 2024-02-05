@@ -5,6 +5,7 @@ import dedent from 'dedent';
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { setTimeout } from 'node:timers/promises';
 import prettier from 'prettier';
 import PATHS from '../../../config/paths.js';
 import {
@@ -23,9 +24,8 @@ import {
   getDomRefMethods,
   getDomRefObjects
 } from '../../../scripts/web-component-wrappers/utils.js';
-import publicVersionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 import internalVersionInfo from '../../../scripts/web-component-wrappers/version-info-internal.json' assert { type: 'json' };
-import { setTimeout } from 'node:timers/promises';
+import publicVersionInfo from '../../../scripts/web-component-wrappers/version-info.json' assert { type: 'json' };
 
 const versionInfo = { ...publicVersionInfo, ...internalVersionInfo };
 
@@ -153,7 +153,7 @@ const getEventParameters = (moduleName, eventSpec) => {
 
   const eventName = `${moduleName}${Utils.capitalizeFirstLetter(Utils.snakeToCamel(eventSpec.name))}EventDetail`;
 
-  const importStatements = [`import type { Ui5CustomEvent } from '../../interfaces/index.js';`];
+  const importStatements = [`import type { Ui5CustomEvent } from '../../types/index.js';`];
 
   if ((eventSpec.parameters ?? []).length === 0) {
     return {
@@ -195,14 +195,12 @@ const createWebComponentWrapper = async (
     domRefExtends = `Omit<Ui5DomRef, ${attributesToBeOmitted.join(' | ')}>`;
   }
 
-  let tsExtendsStatement = 'CommonProps';
+  const omitParts = [`keyof ${componentSpec.module}Attributes`];
   if (eventsToBeOmitted.length > 0 || attributesToBeOmitted.length > 0 || commonPropsToBeOmitted.length > 0) {
-    tsExtendsStatement = `Omit<CommonProps, ${[
-      ...attributesToBeOmitted,
-      ...eventsToBeOmitted,
-      ...commonPropsToBeOmitted
-    ].join(' | ')}>`;
+    omitParts.push(...attributesToBeOmitted, ...eventsToBeOmitted, ...commonPropsToBeOmitted);
   }
+  let tsExtendsStatement = `Omit<CommonProps, ${omitParts.join(' | ')}>`;
+
   let componentDescription;
   try {
     componentDescription = Utils.formatDescription(description, componentSpec);
@@ -235,10 +233,10 @@ const createWebComponentWrapper = async (
     description: componentDescription,
     ui5wcPackage: componentSpec.name.includes('fiori') ? 'fiori' : 'main',
     tagName: componentSpec.tagname,
-    regularProps,
-    booleanProps,
-    slotProps: slotProps.filter((name) => name !== 'children'),
-    eventProps,
+    regularProps: regularProps.toSorted((a, b) => a.localeCompare(b)),
+    booleanProps: booleanProps.toSorted((a, b) => a.localeCompare(b)),
+    slotProps: slotProps.filter((name) => name !== 'children').toSorted((a, b) => a.localeCompare(b)),
+    eventProps: eventProps.toSorted((a, b) => a.localeCompare(b)),
     defaultProps,
     domRef,
     baseComponentName: (typeof COMPONENTS_WITHOUT_DEMOS[componentSpec.module] === 'string'

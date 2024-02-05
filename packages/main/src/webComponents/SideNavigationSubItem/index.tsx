@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SideNavigationSubItemAttributes {
   /**
@@ -40,9 +40,11 @@ interface SideNavigationSubItemAttributes {
   text?: string;
 }
 
-export interface SideNavigationSubItemDomRef extends SideNavigationSubItemAttributes, Ui5DomRef {}
+interface SideNavigationSubItemDomRef extends SideNavigationSubItemAttributes, Ui5DomRef {}
 
-export interface SideNavigationSubItemPropTypes extends SideNavigationSubItemAttributes, Omit<CommonProps, 'onClick'> {
+interface SideNavigationSubItemPropTypes
+  extends SideNavigationSubItemAttributes,
+    Omit<CommonProps, keyof SideNavigationSubItemAttributes | 'onClick'> {
   /**
    * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
    */
@@ -70,3 +72,4 @@ const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, S
 SideNavigationSubItem.displayName = 'SideNavigationSubItem';
 
 export { SideNavigationSubItem };
+export type { SideNavigationSubItemDomRef, SideNavigationSubItemPropTypes };

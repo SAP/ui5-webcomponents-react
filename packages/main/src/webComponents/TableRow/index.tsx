@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/TableRow.js';
 import type { ReactNode } from 'react';
 import { TableRowType } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableRowAttributes {
   /**
@@ -30,9 +30,9 @@ interface TableRowAttributes {
   type?: TableRowType | keyof typeof TableRowType;
 }
 
-export interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
+interface TableRowDomRef extends TableRowAttributes, Ui5DomRef {}
 
-export interface TableRowPropTypes extends TableRowAttributes, CommonProps {
+interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof TableRowAttributes> {
   /**
    * Defines the cells of the component.
    *
@@ -64,3 +64,4 @@ TableRow.defaultProps = {
 };
 
 export { TableRow };
+export type { TableRowDomRef, TableRowPropTypes };

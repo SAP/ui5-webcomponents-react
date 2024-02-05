@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { SEPARATOR } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../interfaces/index.js';
+import type { CommonProps } from '../../types/index.js';
 
 const styles = {
   separator: {

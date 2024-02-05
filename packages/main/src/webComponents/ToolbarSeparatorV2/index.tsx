@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/ToolbarSeparator.js';
 import { ToolbarItemOverflowBehavior } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSeparatorV2Attributes {
   /**
@@ -20,9 +20,11 @@ interface ToolbarSeparatorV2Attributes {
   preventOverflowClosing?: boolean;
 }
 
-export interface ToolbarSeparatorV2DomRef extends ToolbarSeparatorV2Attributes, Ui5DomRef {}
+interface ToolbarSeparatorV2DomRef extends ToolbarSeparatorV2Attributes, Ui5DomRef {}
 
-export interface ToolbarSeparatorV2PropTypes extends ToolbarSeparatorV2Attributes, CommonProps {}
+interface ToolbarSeparatorV2PropTypes
+  extends ToolbarSeparatorV2Attributes,
+    Omit<CommonProps, keyof ToolbarSeparatorV2Attributes> {}
 
 /**
  * The `ToolbarSeparatorV2` is an element, used for visual separation between two elements. It takes no space in calculating toolbar items width
@@ -49,3 +51,4 @@ ToolbarSeparatorV2.defaultProps = {
 };
 
 export { ToolbarSeparatorV2 };
+export type { ToolbarSeparatorV2DomRef, ToolbarSeparatorV2PropTypes };

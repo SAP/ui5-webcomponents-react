@@ -1,8 +1,8 @@
 import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonPropTypes,
   DialogPropTypes,

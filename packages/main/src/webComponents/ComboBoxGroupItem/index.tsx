@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ComboBoxGroupItemAttributes {
   /**
@@ -11,9 +11,11 @@ interface ComboBoxGroupItemAttributes {
   text?: string;
 }
 
-export interface ComboBoxGroupItemDomRef extends ComboBoxGroupItemAttributes, Ui5DomRef {}
+interface ComboBoxGroupItemDomRef extends ComboBoxGroupItemAttributes, Ui5DomRef {}
 
-export interface ComboBoxGroupItemPropTypes extends ComboBoxGroupItemAttributes, CommonProps {}
+interface ComboBoxGroupItemPropTypes
+  extends ComboBoxGroupItemAttributes,
+    Omit<CommonProps, keyof ComboBoxGroupItemAttributes> {}
 
 /**
  * The `ComboBoxGroupItem` is type of suggestion item, that can be used to split the `ComboBox` suggestions into groups
@@ -36,3 +38,4 @@ const ComboBoxGroupItem = withWebComponent<ComboBoxGroupItemPropTypes, ComboBoxG
 ComboBoxGroupItem.displayName = 'ComboBoxGroupItem';
 
 export { ComboBoxGroupItem };
+export type { ComboBoxGroupItemDomRef, ComboBoxGroupItemPropTypes };

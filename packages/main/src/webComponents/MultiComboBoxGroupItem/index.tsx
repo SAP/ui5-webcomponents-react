@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface MultiComboBoxGroupItemAttributes {
   /**
@@ -11,9 +11,11 @@ interface MultiComboBoxGroupItemAttributes {
   text?: string;
 }
 
-export interface MultiComboBoxGroupItemDomRef extends MultiComboBoxGroupItemAttributes, Ui5DomRef {}
+interface MultiComboBoxGroupItemDomRef extends MultiComboBoxGroupItemAttributes, Ui5DomRef {}
 
-export interface MultiComboBoxGroupItemPropTypes extends MultiComboBoxGroupItemAttributes, CommonProps {}
+interface MultiComboBoxGroupItemPropTypes
+  extends MultiComboBoxGroupItemAttributes,
+    Omit<CommonProps, keyof MultiComboBoxGroupItemAttributes> {}
 
 /**
  * The `MultiComboBoxGroupItem` is type of suggestion item, that can be used to split the `MultiComboBox` suggestions into groups
@@ -36,3 +38,4 @@ const MultiComboBoxGroupItem = withWebComponent<MultiComboBoxGroupItemPropTypes,
 MultiComboBoxGroupItem.displayName = 'MultiComboBoxGroupItem';
 
 export { MultiComboBoxGroupItem };
+export type { MultiComboBoxGroupItemDomRef, MultiComboBoxGroupItemPropTypes };

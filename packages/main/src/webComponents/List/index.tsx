@@ -9,10 +9,9 @@ import type {
   ListSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/List.js';
 import type { ReactNode } from 'react';
-import { ListSeparators, ListMode, ListGrowingMode } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { ListGrowingMode, ListMode, ListSeparators } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ListAttributes {
   /**
@@ -69,9 +68,9 @@ interface ListAttributes {
   separators?: ListSeparators | keyof typeof ListSeparators;
 }
 
-export interface ListDomRef extends ListAttributes, Ui5DomRef {}
+interface ListDomRef extends ListAttributes, Ui5DomRef {}
 
-export interface ListPropTypes extends ListAttributes, CommonProps {
+interface ListPropTypes extends ListAttributes, Omit<CommonProps, keyof ListAttributes> {
   /**
    * Defines the items of the component.
    *
@@ -174,3 +173,4 @@ List.defaultProps = {
 };
 
 export { List };
+export type { ListDomRef, ListPropTypes };

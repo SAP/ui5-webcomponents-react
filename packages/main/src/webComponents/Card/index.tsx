@@ -2,9 +2,8 @@
 
 import '@ui5/webcomponents/dist/Card.js';
 import type { ReactNode } from 'react';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CardAttributes {
   /**
@@ -17,9 +16,9 @@ interface CardAttributes {
   accessibleNameRef?: string;
 }
 
-export interface CardDomRef extends CardAttributes, Ui5DomRef {}
+interface CardDomRef extends CardAttributes, Ui5DomRef {}
 
-export interface CardPropTypes extends CardAttributes, CommonProps {
+interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttributes> {
   /**
    * Defines the content of the component.
    */
@@ -57,3 +56,4 @@ const Card = withWebComponent<CardPropTypes, CardDomRef>(
 Card.displayName = 'Card';
 
 export { Card };
+export type { CardDomRef, CardPropTypes };

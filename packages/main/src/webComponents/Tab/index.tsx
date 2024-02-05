@@ -3,9 +3,8 @@
 import '@ui5/webcomponents/dist/Tab.js';
 import type { ReactNode } from 'react';
 import { SemanticColor } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { UI5WCSlotsNode, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TabAttributes {
   /**
@@ -46,14 +45,14 @@ interface TabAttributes {
   text?: string;
 }
 
-export interface TabDomRef extends TabAttributes, Ui5DomRef {
+interface TabDomRef extends TabAttributes, Ui5DomRef {
   /**
    * Returns the DOM reference of the tab that is placed in the header. **Note:** Tabs, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs will return `null`. **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
    */
   getTabInStripDomRef: () => void;
 }
 
-export interface TabPropTypes extends TabAttributes, CommonProps {
+interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttributes> {
   /**
    * Holds the content associated with this tab.
    */
@@ -97,3 +96,4 @@ Tab.defaultProps = {
 };
 
 export { Tab };
+export type { TabDomRef, TabPropTypes };

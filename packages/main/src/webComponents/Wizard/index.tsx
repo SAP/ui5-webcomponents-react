@@ -4,8 +4,8 @@ import '@ui5/webcomponents-fiori/dist/Wizard.js';
 import type { WizardStepChangeEventDetail } from '@ui5/webcomponents-fiori/dist/Wizard.js';
 import type { ReactNode } from 'react';
 import { WizardContentLayout } from '../../enums/index.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface WizardAttributes {
   /**
@@ -14,9 +14,9 @@ interface WizardAttributes {
   contentLayout?: WizardContentLayout | keyof typeof WizardContentLayout;
 }
 
-export interface WizardDomRef extends WizardAttributes, Ui5DomRef {}
+interface WizardDomRef extends WizardAttributes, Ui5DomRef {}
 
-export interface WizardPropTypes extends WizardAttributes, CommonProps {
+interface WizardPropTypes extends WizardAttributes, Omit<CommonProps, keyof WizardAttributes> {
   /**
    * Defines the steps.
    *
@@ -52,3 +52,4 @@ Wizard.defaultProps = {
 };
 
 export { Wizard };
+export type { WizardDomRef, WizardPropTypes };

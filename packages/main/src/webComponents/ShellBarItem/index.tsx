@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import type { ShellBarItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ShellBarItemAttributes {
   /**
@@ -22,9 +22,11 @@ interface ShellBarItemAttributes {
   text?: string;
 }
 
-export interface ShellBarItemDomRef extends ShellBarItemAttributes, Ui5DomRef {}
+interface ShellBarItemDomRef extends ShellBarItemAttributes, Ui5DomRef {}
 
-export interface ShellBarItemPropTypes extends ShellBarItemAttributes, Omit<CommonProps, 'onClick'> {
+interface ShellBarItemPropTypes
+  extends ShellBarItemAttributes,
+    Omit<CommonProps, keyof ShellBarItemAttributes | 'onClick'> {
   /**
    * Fired, when the item is pressed.
    */
@@ -52,3 +54,4 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>
 ShellBarItem.displayName = 'ShellBarItem';
 
 export { ShellBarItem };
+export type { ShellBarItemDomRef, ShellBarItemPropTypes };

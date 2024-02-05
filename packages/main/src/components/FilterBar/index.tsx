@@ -17,7 +17,7 @@ import {
   SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import type { CommonProps, Ui5CustomEvent } from '../../interfaces/index.js';
+import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonDomRef,
   DialogDomRef,

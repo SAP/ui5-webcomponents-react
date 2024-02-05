@@ -3,8 +3,8 @@
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
 import type { ReactNode } from 'react';
 import { TimelineLayout } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TimelineAttributes {
   /**
@@ -22,9 +22,9 @@ interface TimelineAttributes {
   layout?: TimelineLayout | keyof typeof TimelineLayout;
 }
 
-export interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
+interface TimelineDomRef extends TimelineAttributes, Ui5DomRef {}
 
-export interface TimelinePropTypes extends TimelineAttributes, CommonProps {
+interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes> {
   /**
    * Determines the content of the `Timeline`.
    */
@@ -54,3 +54,4 @@ Timeline.defaultProps = {
 };
 
 export { Timeline };
+export type { TimelineDomRef, TimelinePropTypes };

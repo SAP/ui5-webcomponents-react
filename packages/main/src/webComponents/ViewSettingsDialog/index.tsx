@@ -5,9 +5,8 @@ import type {
   ViewSettingsDialogCancelEventDetail,
   ViewSettingsDialogConfirmEventDetail
 } from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-import type { Ui5CustomEvent, CommonProps, Ui5DomRef } from '../../interfaces/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { Ui5CustomEvent, UI5WCSlotsNode, CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ViewSettingsDialogAttributes {
   /**
@@ -16,7 +15,7 @@ interface ViewSettingsDialogAttributes {
   sortDescending?: boolean;
 }
 
-export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
+interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, Ui5DomRef {
   /**
    * Sets a JavaScript object, as settings to the `ViewSettingsDialog`. This method can be used after the dialog is initially open, as the dialog needs to set its initial settings.
    * The `ViewSettingsDialog` throws an event called "before-open", which can be used as a trigger point.
@@ -39,7 +38,9 @@ export interface ViewSettingsDialogDomRef extends ViewSettingsDialogAttributes, 
   show: () => void;
 }
 
-export interface ViewSettingsDialogPropTypes extends ViewSettingsDialogAttributes, CommonProps {
+interface ViewSettingsDialogPropTypes
+  extends ViewSettingsDialogAttributes,
+    Omit<CommonProps, keyof ViewSettingsDialogAttributes> {
   /**
    * Defines the `filterItems` list. **Note:** If you want to use this slot, you need to import used item: `import "@ui5/webcomponents-fiori/dist/FilterItem";`
    *
@@ -93,3 +94,4 @@ const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSet
 ViewSettingsDialog.displayName = 'ViewSettingsDialog';
 
 export { ViewSettingsDialog };
+export type { ViewSettingsDialogDomRef, ViewSettingsDialogPropTypes };

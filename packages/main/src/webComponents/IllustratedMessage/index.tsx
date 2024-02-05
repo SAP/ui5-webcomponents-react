@@ -2,10 +2,9 @@
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import type { ReactNode } from 'react';
-import { IllustrationMessageType, IllustrationMessageSize, TitleLevel } from '../../enums/index.js';
-import type { CommonProps, Ui5DomRef } from '../../interfaces/index.js';
+import { IllustrationMessageSize, IllustrationMessageType, TitleLevel } from '../../enums/index.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface IllustratedMessageAttributes {
   /**
@@ -49,9 +48,11 @@ interface IllustratedMessageAttributes {
   titleText?: string;
 }
 
-export interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
+interface IllustratedMessageDomRef extends IllustratedMessageAttributes, Ui5DomRef {}
 
-export interface IllustratedMessagePropTypes extends IllustratedMessageAttributes, CommonProps {
+interface IllustratedMessagePropTypes
+  extends IllustratedMessageAttributes,
+    Omit<CommonProps, keyof IllustratedMessageAttributes> {
   /**
    * Defines the component actions.
    */
@@ -102,3 +103,4 @@ IllustratedMessage.defaultProps = {
 };
 
 export { IllustratedMessage };
+export type { IllustratedMessageDomRef, IllustratedMessagePropTypes };

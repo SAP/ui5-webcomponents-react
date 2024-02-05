@@ -19,7 +19,7 @@ We're happy to announce that starting from **v1.17.0**, UI5 Web Components for R
 
 ### Create a new project
 
-The best way to start using UI5 Web Components in Next.js is using one of our [templates](https://sap.github.io/ui5-webcomponents-react/?path=/docs/project-templates--docs).
+The best way to start using UI5 Web Components in Next.js is using one of our [templates](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/project-templates-examples--docs#templates).
 We have templates available for both the pages and the app router.
 
 ### Add to existing project
@@ -29,13 +29,13 @@ In case you already have an existing Next.js project and want to add UI5 Web Com
 As UI5 Web Components for React is using `react-jss` internally, you need to apply some changes to your `_app` and `_document` file (in case you are using the pages router).
 You can copy these changes either from the official [next.js-react-jss example](https://github.com/vercel/next.js/tree/canary/examples/with-react-jss) or from our [pages router template](https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-pages).
 
-In case you are already using the app router, you can copy the `react-jss` setup from the `app/CssRegistry.tsx` in our [app router template](https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-app). Make sure to add this component to your root layout! 
+In case you are already using the app router, you can copy the `react-jss` setup from the `app/CssRegistry.tsx` in our [app router template](https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-app). Make sure to add this component to your root layout!
 
 ### Common Pitfalls
 
 #### Icon and Feature Imports in Server Components
 
-Some UI5 Web Component features rely on the registration of a component during runtime on the client. 
+Some UI5 Web Component features rely on the registration of a component during runtime on the client.
 The most common of these are icon imports (e.g. `import '@ui5/webcomponents-icons/dist/add.js';`), feature imports (e.g. `import '@ui5/webcomponents/dist/features/FormSupport.js';` and asset imports (e.g. `import '@ui5/webcomponents-react/dist/Assets.js';`).
 
 In order to fulfill their purpose in your application, you must ensure that these imports are only used in client components (the file or a parent component must contain the `'use client';` directive).
