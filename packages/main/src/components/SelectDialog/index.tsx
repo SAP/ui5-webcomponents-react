@@ -160,6 +160,8 @@ export interface SelectDialogPropTypes
    * Defines the props of the confirm button.
    *
    * __Note:__`onClick` and `design` are not supported.
+   *
+   * @since 1.25.0
    */
   confirmButtonProps?: Omit<ButtonPropTypes, 'onClick' | 'design'>;
   /**
