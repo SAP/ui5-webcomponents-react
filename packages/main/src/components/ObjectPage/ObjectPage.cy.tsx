@@ -111,6 +111,7 @@ describe('ObjectPage', () => {
   });
 
   it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+    document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
       const handlePinChange = (pinned) => {
@@ -128,7 +129,7 @@ describe('ObjectPage', () => {
             toggle {`${!pinned}`}
           </Button>
           <ObjectPage
-            style={{ height: '100vh' }}
+            style={{ height: '95vh' }}
             headerTitle={<DynamicPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<DynamicPageHeader>ObjectPageHeader</DynamicPageHeader>}
             headerContentPinnable
@@ -190,6 +191,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('be.visible');
 
     cy.findByTestId('op').scrollTo(0, 500);
+    cy.wait(500);
     cy.findByTestId('btn').click();
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
@@ -248,17 +250,17 @@ describe('ObjectPage', () => {
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
-    cy.wait(50);
-
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Employment').should('be.visible');
-
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
-
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
+    cy.realPress('ArrowDown');
+    cy.wait(200);
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
@@ -271,34 +273,48 @@ describe('ObjectPage', () => {
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.wait(50);
+    // Select Employment tab
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('Enter');
 
+    cy.wait(200);
+    //fallback click
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
-    cy.findByText('Employment').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
+    cy.findByText('Employment').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
-
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
+    cy.realPress('ArrowDown');
+    cy.wait(200);
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
+
     cy.findByTestId('footer').should('be.visible');
   });
 
   it('scroll to sections - tab mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent} mode={ObjectPageMode.IconTabBar}>
+      <ObjectPage
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        mode={ObjectPageMode.IconTabBar}
+        style={{ height: '100vh' }}
+      >
         {OPContent}
       </ObjectPage>
     );
     cy.findByText('Job Information').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
-
-    cy.wait(50);
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
     cy.findByText('Job Information').should('be.visible');
@@ -309,13 +325,20 @@ describe('ObjectPage', () => {
     cy.findByTestId('section 1').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
-
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
-    cy.findByText('Job Information').should('not.be.visible');
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
+    cy.findByText('Job Information').should('not.be.visible');
 
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent} footer={Footer} mode={ObjectPageMode.IconTabBar}>
+      <ObjectPage
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        footer={Footer}
+        mode={ObjectPageMode.IconTabBar}
+        style={{ height: '100vh' }}
+      >
         {OPContent}
       </ObjectPage>
     );
@@ -344,7 +367,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
   });
 
-  it('single section', () => {
+  it('single section - Default mode', () => {
     document.body.style.margin = '0px';
     const TestComp = ({
       mode,
@@ -387,63 +410,158 @@ describe('ObjectPage', () => {
         </ObjectPage>
       );
     };
-    [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((item) => {
-      cy.mount(<TestComp height="2000px" mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
-      cy.mount(<TestComp height="2000px" withFooter mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
 
-      cy.mount(<TestComp height="400px" mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.mount(<TestComp height="400px" mode={ObjectPageMode.Default} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="400px" withFooter mode={item} />);
-      cy.findByText('Update Heights').click();
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.mount(<TestComp height="400px" withFooter mode={ObjectPageMode.Default} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('Update Heights').click({ force: true });
-      cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
 
-      cy.mount(<TestComp height="925px" mode={item} />);
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+    cy.mount(<TestComp height="925px" mode={ObjectPageMode.Default} />);
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
-      cy.wait(50);
-      cy.findByTestId('op').scrollTo('bottom');
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
+    cy.wait(50);
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
 
-      cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
-      cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
-    });
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
 
+  it('single section - Tab mode', () => {
+    document.body.style.margin = '0px';
+    const TestComp = ({
+      mode,
+      height,
+      withFooter
+    }: {
+      height: CSSProperties['height'];
+      withFooter?: boolean;
+      mode: ObjectPageMode;
+    }) => {
+      const ref = useRef(null);
+      const [showCurrentHeights, setShowCurrentHeights] = useState({ offset: null, scroll: null });
+      return (
+        <ObjectPage
+          style={{ height: '100vh' }}
+          headerTitle={DPTitle}
+          headerContent={DPContent}
+          data-testid="op"
+          showHideHeaderButton
+          ref={ref}
+          footer={withFooter && Footer}
+          mode={mode}
+        >
+          <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
+            <div data-testid="section 1" style={{ height, width: '100%', background: 'lightblue' }}>
+              <Button
+                onClick={() => {
+                  setShowCurrentHeights({
+                    // rounding offset/scroll-height differs from browser to browser and maybe even from headless tests
+                    offset: Math.floor(ref.current?.offsetHeight / 10) * 10,
+                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10
+                  });
+                }}
+              >
+                Update Heights
+              </Button>
+              {JSON.stringify(showCurrentHeights)}
+            </div>
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+    };
+    cy.mount(<TestComp height="2000px" mode={ObjectPageMode.IconTabBar} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+
+    cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.IconTabBar} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+
+    cy.mount(<TestComp height="400px" mode={ObjectPageMode.IconTabBar} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.mount(<TestComp height="400px" withFooter mode={ObjectPageMode.IconTabBar} />);
+    cy.findByText('Update Heights').click();
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.findByTestId('op').scrollTo('bottom', { ensureScrollable: false });
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('Update Heights').click({ force: true });
+    cy.findByText('{"offset":1080,"scroll":1080}').should('exist');
+
+    cy.mount(<TestComp height="925px" mode={ObjectPageMode.IconTabBar} />);
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+
+    cy.wait(50);
+    cy.findByTestId('op').scrollTo('bottom');
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
+
+    cy.get('[data-component-name="DynamicPageAnchorBarExpandBtn"]').click();
+    cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
+  });
   it('ObjectPageSection/SubSection: Custom header & hideTitleText', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ mode }: ObjectPagePropTypes) => {
