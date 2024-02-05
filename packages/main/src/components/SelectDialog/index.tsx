@@ -137,15 +137,15 @@ export interface SelectDialogPropTypes
    */
   rememberSelections?: boolean;
   /**
+   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   */
+  numberOfSelectedItems?: number;
+  /**
    * Defines the mode of the SelectDialog list.
    *
    * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
    *
    * @default ListMode.SingleSelect
-   */
-  numberOfSelectedItems?: number;
-  /**
-   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
    */
   mode?: ListPropTypes['mode'];
   /**
@@ -165,7 +165,7 @@ export interface SelectDialogPropTypes
    */
   confirmButtonProps?: Omit<ButtonPropTypes, 'onClick' | 'design'>;
   /**
-   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
    */
   onSearchInput?: (event: Ui5CustomEvent<InputDomRef, { value: string }>) => void;
   /**
