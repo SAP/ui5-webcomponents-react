@@ -15,6 +15,10 @@ export const enrichEventWithDetails = <T extends Record<string, unknown>, Return
   event: UIEvent,
   payload: T | null = null
 ) => {
+  // safeguard
+  if (!event) {
+    return event;
+  }
   if (event.hasOwnProperty('persist')) {
     // if there is a persist method, it's an SyntheticEvent so we need to persist it
     event.persist();
