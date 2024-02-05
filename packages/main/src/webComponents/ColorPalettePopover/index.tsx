@@ -54,19 +54,19 @@ interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAtt
    * Shows the ColorPalettePopover.
    *
    * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
-   * @param {HTMLElement} opener - the element that the popover is shown at
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @returns {void}
    */
-  openPopover: (opener: HTMLElement) => void;
+  openPopover: (opener: HTMLElement | EventTarget) => void;
 
   /**
    * Shows the ColorPalettePopover.
    *
    * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
-   * @param {HTMLElement} opener - the element that the popover is shown at
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @returns {void}
    */
-  showAt: (opener: HTMLElement) => void;
+  showAt: (opener: HTMLElement | EventTarget) => void;
 }
 
 interface ColorPalettePopoverPropTypes

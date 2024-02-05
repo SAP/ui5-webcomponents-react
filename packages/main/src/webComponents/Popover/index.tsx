@@ -127,11 +127,11 @@ interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5
 
   /**
    * Shows the popover.
-   * @param {HTMLElement} opener - the element that the popover is shown at
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - prevents applying the focus inside the popover
    * @returns {Promise<void>} - Resolved when the popover is open
    */
-  showAt: (opener: HTMLElement, preventInitialFocus?: boolean) => Promise<void>;
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
 }
 
 interface PopoverPropTypes

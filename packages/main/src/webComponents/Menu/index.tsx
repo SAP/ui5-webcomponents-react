@@ -54,10 +54,10 @@ interface MenuDomRef extends Omit<Required<MenuAttributes>, 'opener'>, Ui5DomRef
 
   /**
    * Shows the Menu near the opener element.
-   * @param {HTMLElement} opener - the element that the popover is shown at
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @returns {Promise<void>}
    */
-  showAt: (opener: HTMLElement) => Promise<void>;
+  showAt: (opener: HTMLElement | EventTarget) => Promise<void>;
 }
 
 interface MenuPropTypes

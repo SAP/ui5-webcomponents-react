@@ -127,11 +127,11 @@ interface ResponsivePopoverDomRef extends Omit<Required<ResponsivePopoverAttribu
 
   /**
    * Shows popover on desktop and dialog on mobile.
-   * @param {HTMLElement} opener - the element that the popover is shown at
+   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
    * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
    * @returns {Promise<void>} - Resolves when the responsive popover is open
    */
-  showAt: (opener: HTMLElement, preventInitialFocus?: boolean) => Promise<void>;
+  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
 }
 
 interface ResponsivePopoverPropTypes

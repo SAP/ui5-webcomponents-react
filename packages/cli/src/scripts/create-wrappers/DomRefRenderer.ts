@@ -15,6 +15,10 @@ function mapWebComponentTypeToTsType(type: string = 'unknown') {
   switch (type) {
     case 'function':
       return 'Function';
+    case 'HTMLElement':
+      // we need to extend HTMLElement with | EventTarget to allow opening popovers from event handlers
+      // example: <Button onClick={(e) => { popoverRef.current.openBy(e.target) }} />
+      return 'HTMLElement | EventTarget';
     default:
       if (!loggedTypes.has(type)) {
         console.log('-> DomRef type', type);
