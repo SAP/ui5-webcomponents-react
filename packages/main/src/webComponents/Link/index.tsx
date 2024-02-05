@@ -79,11 +79,11 @@ interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
    *     *   `true`
    *     *   `false`
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   *     *   `dialog`
-   *     *   `grid`
-   *     *   `listbox`
-   *     *   `menu`
-   *     *   `tree`
+   *     *   `Dialog`
+   *     *   `Grid`
+   *     *   `Listbox`
+   *     *   `Menu`
+   *     *   `Tree`
    */
   accessibilityAttributes: AccessibilityAttributes;
 }
