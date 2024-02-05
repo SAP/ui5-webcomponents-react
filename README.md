@@ -89,9 +89,9 @@ In about an hour you will create a business dashboard from scratch and get famil
 [Here](https://www.youtube.com/watch?v=zyOxgjoSnGw) you can find the video of our session for the SAP Devtoberfest 2023 (aired Sep 29, 2023). There we briefly explain why UI5 Web Components for React exist at all, where the project fits into the SAP UI stack and what advantages our wrapper has over implementations that use pure ui5-webcomponents.
 For the main part, we show how you could create a simple Movie Database UI, first by using our `Vite` template and then with our `Next.js` template.
 
-### Create a new React app using our Templates
+### Examples & Templates
 
-You can find a curated list of project templates on our [Project Templates page](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/project-templates--docs).
+You can find a curated list of project templates and examples on our [Project Templates & Examples page](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/project-templates-examples--docs).
 
 ### Add `@ui5/webcomponents-react` to an existing app
 
