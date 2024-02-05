@@ -5,6 +5,21 @@ import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
 
+function findFirstRealCell(e, cell, index = 1) {
+  if (
+    (cell.dataset.columnId !== '__ui5wcr__internal_highlight_column' &&
+      cell.dataset.columnId !== '__ui5wcr__internal_selection_column') ||
+    index > 2
+  ) {
+    return cell;
+  } else {
+    return findFirstRealCell(
+      e,
+      e.target.querySelector(`div[data-column-index="${index}"][data-row-index="0"]`),
+      index + 1
+    );
+  }
+}
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
   if (
     target.dataset.componentName === 'AnalyticalTableContainer' &&
@@ -123,7 +138,10 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
             getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
           }
         } else if (isFirstCellAvailable) {
-          const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
+          const firstCell = findFirstRealCell(
+            e,
+            e.target.querySelector('div[data-column-index="0"][data-row-index="0"]')
+          );
           firstCell.tabIndex = 0;
           firstCell.focus({ preventScroll: true });
           currentlyFocusedCell.current = firstCell;
