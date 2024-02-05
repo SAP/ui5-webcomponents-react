@@ -153,10 +153,12 @@ interface MultiInputPropTypes
    *
    * Example:
    *
-   * <Input show-suggestions>
-   *     <SuggestionItem text="Item #1"></SuggestionItem>
-   *     <SuggestionItem text="Item #2"></SuggestionItem>
-   * </Input>
+   * ```
+   * <MultiInput showSuggestions>
+   *     <SuggestionItem text="Item #1" />
+   *     <SuggestionItem text="Item #2" />
+   * </MultiInput>
+   * ```
    *
    *
    * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.

@@ -149,7 +149,7 @@ interface ShellBarPropTypes
   /**
    * Defines the `ShellBar` aditional items.
    *
-   * **Note:** You can use the  <ShellBarItem></ShellBarItem>.
+   * **Note:** You can use the `ShellBarItem`.
    */
   children?: ReactNode | ReactNode[];
 
@@ -167,7 +167,7 @@ interface ShellBarPropTypes
   /**
    * Defines the items displayed in menu after a click on the primary title.
    *
-   * **Note:** You can use the  <ui5-li></ui5-li> and its ancestors.
+   * **Note:** You can use the `StandardListItem` and its ancestors.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="menuItems"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.

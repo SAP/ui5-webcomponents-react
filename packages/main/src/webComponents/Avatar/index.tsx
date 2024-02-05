@@ -39,7 +39,7 @@ interface AvatarAttributes {
    *
    * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
    *
-   * <Avatar fallback-icon="alert">
+   * `<Avatar fallbackIcon="alert">`
    *
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
@@ -53,7 +53,7 @@ interface AvatarAttributes {
    *
    * import "@ui5/webcomponents-icons/dist/{icon\_name}.js"
    *
-   * <Avatar icon="employee">
+   * `<Avatar icon="employee">`
    *
    *
    * **Note:** If no icon or an empty one is provided, by default the "employee" icon should be displayed. See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
@@ -89,15 +89,21 @@ interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
 
 interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children'> {
   /**
-   * Defines the optional badge that will be used for visual affordance. **Note:** While the slot allows for custom badges, to achieve the Fiori design, please use `Badge` with `Icon` in the corresponding `icon` slot, without text nodes.
+   * Defines the optional badge that will be used for visual affordance.
+   *
+   * **Note:** While the slot allows for custom badges, to achieve the Fiori design, please use `Badge` with `Icon` in the corresponding `icon` slot, without text nodes.
    *
    * Example:
    *
-   * <Avatar>
-   *     <Badge slot="badge">
-   *         <Icon slot="icon" name="employee"></Icon>
-   *     </Badge>
-   * </Avatar>
+   * ```
+   * <Avatar
+   *    badge={
+   *      <Badge slot="badge">
+   *        <Icon slot="icon" name="employee"/>
+   *      </Badge>
+   *    }
+   * />
+   * ```
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="badge"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.

@@ -31,12 +31,28 @@ interface FlexibleColumnLayoutAttributes {
 
 interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines additional accessibility roles for further customization. It supports the following fields: - `startColumnRole`: the accessibility role for the `startColumn` - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns) - `midColumnRole`: the accessibility role for the `midColumn` - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns) - `endColumnRole`: the accessibility role for the `endColumn`
+   * An object of strings that defines additional accessibility roles for further customization. It supports the following fields:
+   *
+   * - `startColumnRole`: the accessibility role for the `startColumn`
+   * - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)
+   * - `midColumnRole`: the accessibility role for the `midColumn`
+   * - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)
+   * - `endColumnRole`: the accessibility role for the `endColumn`
    */
   accessibilityRoles: FlexibleColumnLayoutAccessibilityRoles;
 
   /**
-   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields: - `startColumnAccessibleName`: the accessibility name for the `startColumn` region - `midColumnAccessibleName`: the accessibility name for the `midColumn` region - `endColumnAccessibleName`: the accessibility name for the `endColumn` region - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label` - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`
+   * An object of strings that defines several additional accessibility texts for even further customization. It supports the following fields:
+   *
+   * - `startColumnAccessibleName`: the accessibility name for the `startColumn` region
+   * - `midColumnAccessibleName`: the accessibility name for the `midColumn` region
+   * - `endColumnAccessibleName`: the accessibility name for the `endColumn` region
+   * - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left
+   * - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right
+   * - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left
+   * - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
+   * - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`
+   * - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`
    */
   accessibilityTexts: FlexibleColumnLayoutAccessibilityTexts;
 
