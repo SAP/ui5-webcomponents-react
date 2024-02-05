@@ -143,6 +143,10 @@ export interface SelectDialogPropTypes
    *
    * @default ListMode.SingleSelect
    */
+  numberOfSelectedItems?: number;
+  /**
+   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
+   */
   mode?: ListPropTypes['mode'];
   /**
    * Defines props you can pass to the internal `List` component.
@@ -153,11 +157,13 @@ export interface SelectDialogPropTypes
    */
   listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
-   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   * Defines the props of the confirm button.
+   *
+   * __Note:__`onClick` and `design` are not supported.
    */
-  numberOfSelectedItems?: number;
+  confirmButtonProps?: Omit<ButtonPropTypes, 'onClick' | 'design'>;
   /**
-   * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
+   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
    */
   onSearchInput?: (event: Ui5CustomEvent<InputDomRef, { value: string }>) => void;
   /**
@@ -194,6 +200,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     children,
     className,
     confirmButtonText,
+    confirmButtonProps,
     growing,
     headerText,
     headerTextAlignCenter,
@@ -399,7 +406,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       </List>
       <div slot="footer" className={classes.footer}>
         {mode === ListMode.MultiSelect && (
-          <Button onClick={handleConfirm} design={ButtonDesign.Emphasized}>
+          <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}
           </Button>
         )}
