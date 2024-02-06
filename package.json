@@ -28,7 +28,8 @@
     "create-webcomponents-wrapper": "yarn run wrappers:main && yarn run wrappers:fiori && prettier --log-level silent --write ./packages/main/src/webComponents && eslint --fix ./packages/main/src/webComponents/*/index.tsx",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn prepare",
-    "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc"
+    "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc",
+    "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json"
   },
   "dependencies": {
     "@storybook/addon-a11y": "7.6.12",

@@ -22,7 +22,7 @@ const [command] = positionals;
 console.log(command);
 
 switch (command) {
-  case 'create-wrappers':
+  case 'create-wrappers': {
     const { packageName, out, additionalComponentNote } = values;
     const missingParameters = [];
     if (!packageName) {
@@ -47,9 +47,18 @@ switch (command) {
     const outDir = resolve(process.cwd(), values.out!);
     // eslint-disable-next-line @typescript-eslint/await-thenable
     await createWrapperModule.default(packageName!, outDir, { additionalComponentNote });
-    process.exit(0);
     break;
+  }
+
+  case 'resolve-cem': {
+    const resolveCEM = await import('../scripts/resolve-cem/main.js');
+    const outPath = resolve(process.cwd(), values.out!);
+    await resolveCEM.default(values.packageName!, outPath);
+    break;
+  }
   default:
     console.warn('Unknown command', command);
     process.exit(1);
 }
+
+process.exit(0);
