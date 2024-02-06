@@ -1,5 +1,8 @@
-import { Heading } from '@storybook/blocks';
-import React from 'react';
+import { DocsContext, Heading } from '@storybook/blocks';
+import { Link } from '@ui5/webcomponents-react';
+import { useContext } from 'react';
+import cemFiori from '../custom-element-manifests/fiori.json';
+import cemMain from '../custom-element-manifests/main.json';
 import classes from './DomRefTable.module.css';
 
 function Name(props) {
@@ -19,7 +22,22 @@ function Name(props) {
   return props.name;
 }
 
-export function DomRefTable({ rows }: { rows: any[] }) {
+export function DomRefTable() {
+  const docsContext = useContext(DocsContext);
+  const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
+  const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
+  const componentName = docsContext.componentStories().at(0).component.displayName;
+
+  const cem = packageAnnotation === 'package:@ui5/webcomponents' ? cemMain : cemFiori;
+  const componentMembers = cem.modules
+    .find((m) => m.path === `dist/${componentName}.js`)
+    ?.declarations.find((d) => d.customElement === true && d.name === componentName);
+
+  console.log('-> componentMembers', componentMembers);
+
+  const rows = componentMembers?.members ?? [];
+  const cssParts = componentMembers?.cssParts ?? [];
+
   return (
     <>
       <Heading>Attributes & Methods</Heading>
@@ -74,6 +92,39 @@ export function DomRefTable({ rows }: { rows: any[] }) {
           })}
         </tbody>
       </table>
+
+      {cssParts.length > 0 ? (
+        <>
+          <Heading>CSS Shadow Parts</Heading>
+          <p>
+            <Link target={'_blank'} href={'https://developer.mozilla.org/en-US/docs/Web/CSS/::part'}>
+              CSS Shadow Parts
+            </Link>{' '}
+            allow developers to style elements inside the Shadow DOM.
+          </p>
+          <p>
+            The <code>{componentName}</code> exposes the following CSS Shadow Parts:
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cssParts.map((part) => (
+                <tr key={part.name}>
+                  <td>
+                    <b>{part.name}</b>
+                  </td>
+                  <td>{part.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
     </>
   );
 }

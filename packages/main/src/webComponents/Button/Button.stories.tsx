@@ -13,7 +13,8 @@ const meta = {
     design: ButtonDesign.Default,
     icon: employeeIcon,
     children: 'Button Text'
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Button>;
 
 export default meta;
