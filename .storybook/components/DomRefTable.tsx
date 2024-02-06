@@ -1,26 +1,49 @@
 import { DocsContext, Heading } from '@storybook/blocks';
-import { Link } from '@ui5/webcomponents-react';
+import { Link, MessageStrip } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
-import { useContext } from 'react';
+import type { ReactNode } from 'react';
+import { Fragment, useContext } from 'react';
 import cemFiori from '../custom-element-manifests/fiori.json';
 import cemMain from '../custom-element-manifests/main.json';
 import classes from './DomRefTable.module.css';
 
-function Name(props) {
-  if (props.returnValue) {
+function CodeBlock(props: { children: ReactNode }) {
+  return (
+    <pre className={classes.domRefCodeBlock}>
+      <code className={classes.domRefCode}>{props.children}</code>
+    </pre>
+  );
+}
+
+function Name(props: CEM.ClassMember) {
+  if (props.kind === 'method') {
     return (
-      <>
-        {props.name}({props.parameters?.map((param) => `${param.name}${param.optional ? '?' : ''}`).join(', ')}):{' '}
-        <code>{props.returnValue.type}</code>
-      </>
+      <CodeBlock>
+        <span style={{ color: 'rgb(64, 120, 242)' }}>{props.name}</span>
+        <span style={{ color: 'rgb(56, 58, 66)' }}>(</span>
+        {props.parameters?.map((param, index) => (
+          <Fragment key={param.name}>
+            <span style={{ color: 'rgb(56, 58, 66)' }}>{param.name}</span>
+            {param.optional ? <span style={{ color: 'rgb(64, 120, 242)' }}>?</span> : null}
+            <span style={{ color: 'rgb(64, 120, 242)' }}>: </span>
+            <span style={{ color: 'rgb(80, 161, 79)' }}>{param.type.text}</span>
+            {index < props.parameters.length - 1 ? <span style={{ color: 'rgb(56, 58, 66)' }}>, </span> : null}
+          </Fragment>
+        ))}
+        <span style={{ color: 'rgb(56, 58, 66)' }}>)</span>
+        <span style={{ color: 'rgb(64, 120, 242)' }}>: </span>
+        <span style={{ color: 'rgb(80, 161, 79)' }}>{props.return.type.text}</span>
+      </CodeBlock>
     );
   }
-
-  if (props.readonly) {
-    return `${props.name} (readonly)`;
-  }
-
-  return props.name;
+  return (
+    <CodeBlock>
+      {props.readonly ? <span style={{ color: 'rgb(166, 38, 164)' }}>readonly </span> : null}
+      <span style={{ color: 'rgb(56, 58, 66)' }}>{props.name}</span>
+      <span style={{ color: 'rgb(64, 120, 242)' }}>: </span>
+      <span style={{ color: 'rgb(80, 161, 79)' }}>{props.type.text}</span>
+    </CodeBlock>
+  );
 }
 
 export function DomRefTable() {
@@ -29,6 +52,9 @@ export function DomRefTable() {
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
   const componentName = docsContext.componentStories().at(0).component.displayName;
+
+  const knownAttributes = new Set(Object.keys(docsContext.primaryStory.argTypes));
+  console.log('-> knownAttributes', knownAttributes);
 
   let cem: CEM.CustomElementManifest;
   switch (packageAnnotation) {
@@ -41,8 +67,6 @@ export function DomRefTable() {
   }
 
   let moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
-
-  console.log('-> moduleName', moduleName);
 
   const componentMembers = cem?.modules
     .find((m) => m.path === `dist/${moduleName}.js`)
@@ -60,6 +84,11 @@ export function DomRefTable() {
             This component exposes public attributes and methods. You can use them directly on the instance of the
             component, e.g. by using React Refs.
           </p>
+          <MessageStrip hideCloseButton style={{ marginBlockEnd: '10px' }}>
+            This table is showing <bold>additional</bold> attributes and methods which are not available as props.{' '}
+            <br />
+            All props (without event handlers, children, and slots) are available as attributes on the DOM ref as well.
+          </MessageStrip>
           <table>
             <thead>
               <tr>
@@ -70,12 +99,13 @@ export function DomRefTable() {
             </thead>
             <tbody>
               {rows.map((row) => {
+                if (knownAttributes.has(row.name)) {
+                  return null;
+                }
                 return (
                   <tr key={row.name}>
                     <td>
-                      <b>
-                        <Name {...row} />
-                      </b>
+                      <Name {...row} />
                     </td>
                     <td>
                       {!!row.parameters ? (
@@ -88,11 +118,6 @@ export function DomRefTable() {
                                   className={classes.parameterDetails}
                                   dangerouslySetInnerHTML={{ __html: parameter.description }}
                                 />
-                              ) : null}
-                              {parameter.type ? (
-                                <p className={classes.parameterDetails}>
-                                  <code>{parameter.type.text}</code>
-                                </p>
                               ) : null}
                             </div>
                           );

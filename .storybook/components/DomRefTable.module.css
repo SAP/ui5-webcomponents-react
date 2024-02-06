@@ -1,11 +1,30 @@
 .parameters:not(:last-child) {
-    margin-block-end: 1rem;
+  margin-block-end: 1rem;
 }
 
 .parameterName {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .parameterDetails {
-    padding-inline: 1rem;
+  padding-inline: 1rem;
+}
+
+.domRefCodeBlock {
+  display: contents;
+  overflow-x: auto;
+  padding: 0;
+  background: white;
+  color: black;
+  white-space: pre-wrap;
+  font-size: 14px;
+  margin: 0;
+}
+
+.domRefCode {
+  white-space: pre;
+
+  > span {
+    font-size: 14px;
+  }
 }
