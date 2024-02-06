@@ -1,8 +1,7 @@
-import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/blocks';
-import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
-import * as ComponentStories from './SelectDialog.stories';
 import { MessageStrip, Text } from '../..';
+import * as ComponentStories from './SelectDialog.stories';
 
 <Meta of={ComponentStories} />
 
@@ -17,8 +16,6 @@ import { MessageStrip, Text } from '../..';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<DomRefTable rows={DialogDomRef} />
 
 ## Opening SelectDialogs
 
@@ -90,6 +87,8 @@ const SelectDialogComponent = () => {
 <Canvas of={ComponentStories.MultiSelect} sourceState="none" />
 
 <details>
+
+{' '}
 
 <summary>Show Code</summary>
 

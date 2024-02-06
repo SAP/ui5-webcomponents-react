@@ -18,7 +18,8 @@ const meta = {
   args: { headerText: 'Select Product' },
   parameters: {
     chromatic: { delay: 1000 }
-  }
+  },
+  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog']
 } satisfies Meta<typeof OriginalSelectDialog>;
 
 export default meta;

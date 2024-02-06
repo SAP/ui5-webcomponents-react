@@ -1,35 +1,8 @@
-import { ArgsTableWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { useEffect, useState } from 'react';
-import { Button, MessageBox as OriginalMessageBox, MessageBoxActions, MessageBoxTypes } from '../..';
-// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
-import { MessageBox } from './CodeGen';
-import { isChromatic } from '@sb/utils';
-import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './MessageBox.stories';
 
-<Meta
-  title="Modals & Popovers / MessageBox"
-  component={OriginalMessageBox}
-  argTypes={{
-    header: {
-      control: { disable: true }
-    },
-    actions: {
-      control: { disable: true }
-    },
-    icon: {
-      control: { disable: true }
-    }
-  }}
-  args={{
-    open: false,
-    type: MessageBoxTypes.Confirm,
-    children: 'Press "Escape" to close the MessageBox.'
-  }}
-  parameters={{
-    chromatic: { delay: 1000 }
-  }}
-/>
+<Meta of={ComponentStories} />
 
 <DocsHeader />
 
@@ -37,35 +10,11 @@ import DialogDomRef from '../../webComponents/Dialog/DialogDomRef.json';
 
 ## Example
 
-<Canvas>
-  <Story name="Default">
-    {(args) => {
-      const [open, setOpen] = useState(isChromatic || args.open);
-      const onButtonClick = () => {
-        setOpen(true);
-      };
-      const handleClose = (e) => {
-        setOpen(false);
-        args.onClose(e);
-      };
-      useEffect(() => {
-        setOpen(args.open);
-      }, [args.open]);
-      return (
-        <>
-          <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox {...args} open={open} onClose={handleClose} />
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="Default" />
-
-<DomRefTable rows={DialogDomRef} />
+<ControlsWithNote of={ComponentStories.Default} />
 
 ## Opening and Closing MessageBoxes
 
@@ -162,40 +111,6 @@ const MessageBoxComponent = () => {
 
 ## MessageBox with custom actions
 
-<Canvas>
-  <Story
-    name="With Custom Action"
-    args={{
-      actions: [
-        MessageBoxActions.OK,
-        'Custom Action',
-        MessageBoxActions.Cancel,
-        <Button key="0" id="custom-action">
-          Custom Button
-        </Button>
-      ]
-    }}
-  >
-    {(args) => {
-      const [open, setOpen] = useState(false);
-      const onButtonClick = () => {
-        setOpen(true);
-      };
-      const handleClose = (e) => {
-        if (e.detail.action === 'Custom Action') {
-          // do something on "Custom Action" button click
-        }
-        setOpen(false);
-        args.onClose(e);
-      };
-      return (
-        <>
-          <Button onClick={onButtonClick}>Open Messagebox</Button>
-          <MessageBox {...args} open={open} onClose={handleClose} />
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas of={ComponentStories.WithCustomActions} />
 
 <Footer />

@@ -1,8 +1,8 @@
-import { DomRefTable } from '@sb/components/DomRefTable';
 import { Controls } from '@storybook/blocks';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 import React, { ComponentProps, ReactNode } from 'react';
 import classes from './ControlsWithNote.module.css';
+import { DomRefTable } from './DomRefTable';
 
 interface ControlsWithNotePropTypes {
   hideHTMLPropsNote?: boolean;
