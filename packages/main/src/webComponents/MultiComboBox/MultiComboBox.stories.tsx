@@ -14,7 +14,8 @@ const meta = {
   },
   args: {
     valueState: ValueState.None
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof MultiComboBox>;
 
 export default meta;
