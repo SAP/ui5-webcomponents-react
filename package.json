@@ -25,7 +25,7 @@
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "wrappers:main": "WITH_WEB_COMPONENT_IMPORT_PATH='../../internal/withWebComponent.js' INTERFACES_IMPORT_PATH='../../types/index.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)'",
     "wrappers:fiori": "WITH_WEB_COMPONENT_IMPORT_PATH='../../internal/withWebComponent.js' INTERFACES_IMPORT_PATH='../../types/index.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents-fiori --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)'",
-    "create-webcomponents-wrapper": "yarn run wrappers:main && yarn run wrappers:fiori && prettier --log-level silent --write ./packages/main/src/webComponents && eslint --fix ./packages/main/src/webComponents/*/index.tsx",
+    "create-webcomponents-wrapper": "yarn run build && yarn run wrappers:main && yarn run wrappers:fiori && prettier --log-level silent --write ./packages/main/src/webComponents && eslint --fix ./packages/main/src/webComponents/*/index.tsx && yarn run sb:prepare-cem",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn prepare",
     "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc",
