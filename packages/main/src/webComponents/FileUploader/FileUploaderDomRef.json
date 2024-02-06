@@ -1,9 +1,0 @@
-[
-  {
-    "name": "files",
-    "readonly": "true",
-    "visibility": "public",
-    "type": "FileList",
-    "description": "FileList of all selected files."
-  }
-]
