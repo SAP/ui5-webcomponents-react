@@ -20,7 +20,8 @@ const meta = {
     tabLayout: TabLayout.Standard,
     contentBackgroundDesign: TabContainerBackgroundDesign.Solid,
     headerBackgroundDesign: TabContainerBackgroundDesign.Solid
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof TabContainer>;
 
 export default meta;
