@@ -1,8 +1,9 @@
 import { DocsContext, Heading } from '@storybook/blocks';
-import { Link, MessageStrip } from '@ui5/webcomponents-react';
+import { Badge, BadgeDesign, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import type { ReactNode } from 'react';
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import cemFiori from '../custom-element-manifests/fiori.json';
 import cemMain from '../custom-element-manifests/main.json';
 import classes from './DomRefTable.module.css';
@@ -52,6 +53,7 @@ export function DomRefTable() {
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
   const componentName = docsContext.componentStories().at(0).component.displayName;
+  const popoverRef = useRef(null);
 
   const knownAttributes = new Set(Object.keys(docsContext.primaryStory.argTypes));
 
@@ -106,6 +108,22 @@ export function DomRefTable() {
                   <tr key={row.name}>
                     <td>
                       <Name {...row} />
+                      {row.deprecated && (
+                        <>
+                          <br />
+                          <Badge
+                            className={classes.deprecationInfoBadge}
+                            design={BadgeDesign.Critical}
+                            interactive
+                            onClick={(e) => {
+                              popoverRef.current.innerHTML = row.deprecated;
+                              popoverRef.current.showAt(e.currentTarget);
+                            }}
+                          >
+                            deprecated
+                          </Badge>
+                        </>
+                      )}
                     </td>
                     <td>
                       {!!row.parameters ? (
@@ -132,6 +150,7 @@ export function DomRefTable() {
               })}
             </tbody>
           </table>
+          {createPortal(<Popover ref={popoverRef} className={classes.deprecationInfoPopover} />, document.body)}
         </>
       ) : null}
 

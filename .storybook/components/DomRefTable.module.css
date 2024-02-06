@@ -28,3 +28,15 @@
     font-size: 14px;
   }
 }
+
+.deprecationInfoBadge {
+  margin-top: 0.5rem !important;
+}
+
+.deprecationInfoPopover {
+  max-width: 15rem;
+}
+
+.deprecationInfoPopover::part(content) {
+  padding: 0.5rem;
+}
