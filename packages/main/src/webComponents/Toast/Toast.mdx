@@ -1,0 +1,43 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Toast.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.9.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## Show a toast
+
+The `Toast` component has an imperative API for getting displayed. It will not be displayed just because it is part of the DOM.
+In order to show the Toast, you have to get a reference to the `Toast` DOM element and call the `show`-method.
+You can either access the DOM element by using a React `ref` or work with IDs.
+
+**Example**
+
+```jsx
+export const MyComponentWithAToast() {
+  const toast = useRef(null);
+
+  const showToast = () => {
+    toast.current.show();
+  };
+  return (
+    <ThemeProvider>
+      <Button onClick={showToast}>Show Toast</Button>
+      <Toast ref={toast}>This is my Toast!</Toast>
+    </ThemeProvider>
+  );
+}
+```
+
+<Footer />
