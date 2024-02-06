@@ -114,11 +114,15 @@ export function DomRefTable() {
                           <Badge
                             className={classes.deprecationInfoBadge}
                             design={BadgeDesign.Critical}
-                            interactive
-                            onClick={(e) => {
-                              popoverRef.current.innerHTML = row.deprecated;
-                              popoverRef.current.showAt(e.currentTarget);
-                            }}
+                            interactive={typeof row.deprecated === 'string'}
+                            onClick={
+                              typeof row.deprecated === 'string'
+                                ? (e) => {
+                                    popoverRef.current.innerHTML = row.deprecated;
+                                    popoverRef.current.showAt(e.currentTarget);
+                                  }
+                                : undefined
+                            }
                           >
                             deprecated
                           </Badge>
