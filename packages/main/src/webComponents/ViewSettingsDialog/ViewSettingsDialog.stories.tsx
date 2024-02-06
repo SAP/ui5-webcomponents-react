@@ -50,7 +50,8 @@ const meta = {
   },
   parameters: {
     chromatic: { delay: 999 }
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof OriginalViewSettingsDialog>;
 
 export default meta;
