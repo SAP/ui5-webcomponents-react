@@ -67,11 +67,15 @@ export function DomRefTable() {
 
   let moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
 
-  const componentMembers = cem?.modules
-    .find((m) => m.path === `dist/${moduleName}.js`)
-    ?.declarations.find((d) => d.customElement === true && d.name === moduleName);
+  const componentMembers =
+    cem?.modules
+      .find((m) => m.path === `dist/${moduleName}.js`)
+      ?.declarations.find((d) => d.customElement === true && d.name === moduleName) ?? [];
 
-  const rows: CEM.ClassMember[] = componentMembers?.members ?? [];
+  const rows: CEM.ClassMember[] =
+    componentMembers?.members?.filter((row) => {
+      return !(knownAttributes.has(row.name) && !row.type?.text?.includes('HTMLElement'));
+    }) ?? [];
   const cssParts: CEM.CssPart[] = componentMembers?.cssParts ?? [];
 
   return (
@@ -98,9 +102,6 @@ export function DomRefTable() {
             </thead>
             <tbody>
               {rows.map((row) => {
-                if (knownAttributes.has(row.name) && !row.type?.text?.includes('HTMLElement')) {
-                  return null;
-                }
                 return (
                   <tr key={row.name}>
                     <td>
