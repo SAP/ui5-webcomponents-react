@@ -16,7 +16,8 @@ const meta = {
         <SegmentedButtonItem>Button 3</SegmentedButtonItem>
       </>
     )
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof SegmentedButton>;
 
 export default meta;
