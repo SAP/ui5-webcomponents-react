@@ -54,7 +54,6 @@ export function DomRefTable() {
   const componentName = docsContext.componentStories().at(0).component.displayName;
 
   const knownAttributes = new Set(Object.keys(docsContext.primaryStory.argTypes));
-  console.log('-> knownAttributes', knownAttributes);
 
   let cem: CEM.CustomElementManifest;
   switch (packageAnnotation) {
@@ -99,7 +98,7 @@ export function DomRefTable() {
             </thead>
             <tbody>
               {rows.map((row) => {
-                if (knownAttributes.has(row.name)) {
+                if (knownAttributes.has(row.name) && !row.type?.text?.includes('HTMLElement')) {
                   return null;
                 }
                 return (
