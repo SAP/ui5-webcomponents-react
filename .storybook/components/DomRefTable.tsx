@@ -1,5 +1,6 @@
 import { DocsContext, Heading } from '@storybook/blocks';
 import { Link } from '@ui5/webcomponents-react';
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import { useContext } from 'react';
 import cemFiori from '../custom-element-manifests/fiori.json';
 import cemMain from '../custom-element-manifests/main.json';
@@ -35,8 +36,8 @@ export function DomRefTable() {
 
   console.log('-> componentMembers', componentMembers);
 
-  const rows = componentMembers?.members ?? [];
-  const cssParts = componentMembers?.cssParts ?? [];
+  const rows: CEM.ClassMember[] = componentMembers?.members ?? [];
+  const cssParts: CEM.CssPart[] = componentMembers?.cssParts ?? [];
 
   return (
     <>
@@ -76,7 +77,7 @@ export function DomRefTable() {
                           ) : null}
                           {parameter.type ? (
                             <p className={classes.parameterDetails}>
-                              <code>{parameter.type}</code>
+                              <code>{parameter.type.text}</code>
                             </p>
                           ) : null}
                         </div>
