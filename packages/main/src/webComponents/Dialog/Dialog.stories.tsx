@@ -20,7 +20,8 @@ const meta = {
     headerText: 'Dialog Header',
     open: false,
     className: 'footerPartNoPadding'
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof OriginalDialog>;
 
 export default meta;

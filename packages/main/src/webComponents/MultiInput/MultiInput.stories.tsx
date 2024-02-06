@@ -16,7 +16,8 @@ const meta = {
     type: InputType.Text,
     valueState: ValueState.None,
     style: { width: '400px' }
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof MultiInput>;
 
 export default meta;

@@ -1,10 +1,10 @@
+// @ts-expect-error: png's are not typed
 import image from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { Input, Icon, StandardListItem, Avatar, ShellBarItem } from '../index';
+import { Avatar, Icon, Input, ShellBarItem, StandardListItem } from '../index';
 import { ShellBar } from './index';
-// @ts-expect-error: png's are not typed
 
 const meta = {
   title: 'Layouts & Floorplans / ShellBar',
@@ -39,7 +39,8 @@ const meta = {
     showNotifications: true,
     showProductSwitch: true,
     children: <ShellBarItem count="3" text={'ShellBarItem'} icon={addIcon} />
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof ShellBar>;
 export default meta;
 type Story = StoryObj<typeof meta>;
