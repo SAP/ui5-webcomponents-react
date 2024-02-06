@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ListPropTypes, SelectDialogPropTypes } from '../..';
-import { Button, ListMode, SelectDialog, StandardListItem } from '../..';
+import { Button, ButtonDesign, ListMode, SelectDialog, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>
@@ -273,5 +273,18 @@ describe('SelectDialog', () => {
       cy.get('@cancel').should('have.callCount', callCount);
       callCount++;
     });
+  });
+
+  it('confirmButtonProps', () => {
+    cy.mount(
+      <SelectDialog
+        //@ts-expect-error: design is not a valid prop - only added for testing purpose
+        confirmButtonProps={{ disabled: true, design: ButtonDesign.Negative, 'data-testid': 'confirmBtn' }}
+        open
+        mode={ListMode.MultiSelect}
+      />
+    );
+    cy.findByTestId('confirmBtn').should('be.visible').and('have.attr', 'disabled');
+    cy.findByTestId('confirmBtn').should('have.attr', 'design', 'Emphasized');
   });
 });

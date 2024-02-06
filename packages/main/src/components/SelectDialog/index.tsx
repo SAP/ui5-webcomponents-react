@@ -137,6 +137,10 @@ export interface SelectDialogPropTypes
    */
   rememberSelections?: boolean;
   /**
+   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   */
+  numberOfSelectedItems?: number;
+  /**
    * Defines the mode of the SelectDialog list.
    *
    * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
@@ -153,9 +157,13 @@ export interface SelectDialogPropTypes
    */
   listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
-   * Defines the number of selected list items displayed above the list in `MultiSelect` mode. Programmatically setting the counter is necessary if all previously selected elements are to remain selected during search.
+   * Defines the props of the confirm button.
+   *
+   * __Note:__`onClick` and `design` are not supported.
+   *
+   * @since 1.25.0
    */
-  numberOfSelectedItems?: number;
+  confirmButtonProps?: Omit<ButtonPropTypes, 'onClick' | 'design'>;
   /**
    * This event will be fired when the value of the search field is changed by a user - e.g. at each key press
    */
@@ -194,6 +202,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     children,
     className,
     confirmButtonText,
+    confirmButtonProps,
     growing,
     headerText,
     headerTextAlignCenter,
@@ -399,7 +408,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       </List>
       <div slot="footer" className={classes.footer}>
         {mode === ListMode.MultiSelect && (
-          <Button onClick={handleConfirm} design={ButtonDesign.Emphasized}>
+          <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}
           </Button>
         )}
