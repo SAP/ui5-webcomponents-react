@@ -123,7 +123,9 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
             getFirstVisibleCell(e.target, currentlyFocusedCell, noData);
           }
         } else if (isFirstCellAvailable) {
-          const firstCell = e.target.querySelector('div[data-column-index="0"][data-row-index="0"]');
+          const firstCell = e.target.querySelector(
+            'div[data-column-index]:not([data-column-id^="__ui5wcr__internal"][data-row-index="0"])'
+          );
           firstCell.tabIndex = 0;
           firstCell.focus({ preventScroll: true });
           currentlyFocusedCell.current = firstCell;

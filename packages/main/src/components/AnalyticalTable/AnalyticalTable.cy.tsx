@@ -1,19 +1,21 @@
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSubComponentsBehavior,
+  AnalyticalTableSelectionMode,
+  AnalyticalTableVisibleRowCountMode,
+  ValueState,
   Button,
   Input
 } from '../..';
-import { AnalyticalTableSelectionMode, AnalyticalTableVisibleRowCountMode, ValueState } from '../../enums/index.js';
+import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -2586,6 +2588,33 @@ describe('AnalyticalTable', () => {
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'ui5-button');
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      />
+    );
+
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '1');
+
+    cy.mount(
+      <AnalyticalTable
+        data={generateMoreData(50)}
+        columns={columns}
+        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        withRowHighlight
+      />
+    );
+
+    cy.findByText('Name-0').should('be.visible');
+    cy.window().focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '2');
   });
 
   it('controlled bodyHeight', () => {
