@@ -1,0 +1,1 @@
+const l=(i,r=null)=>{if(!i)return i;i.hasOwnProperty("persist")&&i.persist();const t=i.detail===null||i.detail===void 0||typeof i.detail!="object";return Object.defineProperty(i,"detail",{value:t?{}:i.detail,writable:!0,configurable:!0}),Object.assign(i.detail,r),i};export{l as e};
