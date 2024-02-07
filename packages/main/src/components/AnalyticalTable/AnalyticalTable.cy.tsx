@@ -28,17 +28,7 @@ const generateMoreData = (count) => {
   }));
 };
 
-interface PropTypes {
-  onRowSelect: (
-    e?: CustomEvent<{
-      allRowsSelected: boolean;
-      row?: Record<string, unknown>;
-      isSelected?: boolean;
-      selectedFlatRows: Record<string, unknown>[];
-      selectedRowIds: Record<string | number, boolean>;
-    }>
-  ) => void;
-}
+type PropTypes = AnalyticalTablePropTypes['onRowSelect'];
 
 const columns = [
   {
@@ -2716,8 +2706,266 @@ describe('AnalyticalTable', () => {
     cy.get('[data-empty-row]').should('exist').and('have.length', 5).and('be.visible');
   });
 
+  it('TreeTable + SubComps + lazy-load', () => {
+    const initialData = [
+      {
+        displayId: '1337',
+        name: 'root1',
+        nodeId: 'root1',
+        parentId: null
+      },
+      {
+        displayId: '1337',
+        name: 'root2',
+        nodeId: 'root2',
+        parentId: null
+      }
+    ];
+
+    const columns = [
+      {
+        Header: 'Test',
+        accessor: 'name'
+      },
+      {
+        accessor: 'displayId'
+      }
+    ];
+
+    /**
+     * This example will render a tree table using AnalyticalTable.
+     * the children nodes will be lazy loaded from server when expanding the parent node.
+     *a "Load more" button is rendered if the parent node's children are not completely loaded.
+     */
+    const TestComp = () => {
+      // flattend data. will be transformed before passed to the tree table
+      const [raw, setRaw] = useState(initialData);
+      const rowById = useRef({});
+      const names = useRef(mockNames);
+
+      // simulate getting children from server. randomly generate a child node.
+      const fetchChildren = (nodeId) => {
+        return Promise.resolve({
+          value: [
+            {
+              displayId: `1337`,
+              name: `${nodeId}-${names.current[0]}`,
+              nodeId: `${nodeId}-${names.current[0]}`,
+              parentId: nodeId
+            }
+          ]
+        });
+      };
+
+      const getChildren = useCallback(
+        (nodeId) => {
+          return fetchChildren(nodeId).then((result) => {
+            names.current.shift();
+            setRaw([...raw, ...result.value]);
+          });
+        },
+        [raw]
+      );
+
+      const handleRowExpandChange = useCallback(
+        (event) => {
+          const row = event.detail.row;
+          if (!row.isExpanded && row.canExpand && !row.original.subRows?.length) {
+            void getChildren(row.original.nodeId, row.original.subRows?.length || 0);
+          }
+        },
+        [getChildren]
+      );
+
+      // render "Load more" button
+      // the "Load more" button will be rendered as the row's subcomponent if the row is the last child of its parent node
+      const renderLoadMore = (row) => {
+        const parentId = row.original.parentId;
+
+        // root node
+        const parentNode = rowById.current[parentId];
+        if (!parentNode) {
+          return null;
+        }
+
+        // current node is not the last node of the parent's children: do not render the Load more button
+        const currentChildrenCount = parentNode.subRows?.length || 0;
+        const currentRowIndex = parentNode.subRows?.findIndex((subRow) => subRow.nodeId === row.original.nodeId);
+        if (currentRowIndex !== currentChildrenCount - 1) {
+          return null;
+        }
+
+        const arrowWidth = 35;
+
+        return (
+          <div
+            style={{
+              paddingBottom: '0.25rem',
+              paddingInlineStart: `calc(var(--_ui5wcr-AnalyticalTableTreePaddingLevel${row.depth}) + ${arrowWidth}px)`
+            }}
+          >
+            <Button
+              design="Transparent"
+              onClick={() => {
+                getChildren && getChildren(parentId, currentChildrenCount);
+              }}
+            >
+              Load more for {parentNode.name}
+            </Button>
+          </div>
+        );
+      };
+
+      const customTableHook = (hooks) => {
+        hooks.prepareRow.push((row) => {
+          row.canExpand = true;
+        });
+      };
+
+      // transform data to the pattern which is accepted by the tree table
+      // NOTES: this algorithm is less likely related to the bug, because in our reality project there is a different algorithm to generate the tree table and the bug still occurs.
+      const data = useMemo(() => {
+        raw.forEach((item) => {
+          const newItem = { ...item };
+          rowById.current[newItem.nodeId] = {
+            ...(rowById[newItem.node] || {}),
+            ...newItem
+          };
+          if (!newItem.parentId) {
+            rowById.current[newItem.nodeId] = {
+              ...newItem,
+              ...(rowById.current[newItem.nodeId] || {})
+            };
+          } else {
+            if (!rowById.current[newItem.parentId]) {
+              rowById.current[newItem.parentId] = {
+                nodeId: newItem.parentId,
+                subRows: []
+              };
+            } else if (!rowById.current[newItem.parentId].subRows) {
+              rowById.current[newItem.parentId].subRows = [];
+            }
+            rowById.current[newItem.parentId].subRows.push(rowById.current[newItem.nodeId]);
+          }
+        });
+
+        return Object.values(rowById.current).filter((row) => !row.parentId);
+      }, [raw]);
+
+      return (
+        <AnalyticalTable
+          columns={columns}
+          data={data}
+          isTreeTable
+          onRowExpandChange={handleRowExpandChange}
+          reactTableOptions={{
+            autoResetExpanded: false
+          }}
+          renderRowSubComponent={renderLoadMore}
+          subComponentsBehavior={'IncludeHeight'}
+          tableHooks={[customTableHook]}
+          minRows={1}
+        />
+      );
+    };
+
+    cy.mount(<TestComp />);
+
+    cy.findByText('root1').siblings().click();
+    cy.findByText('Load more for root1').should('have.length', 1).click();
+    cy.findByText('Load more for root1').should('have.length', 1).click();
+
+    cy.findByText('root1-John').siblings().click();
+    cy.findByText('Load more for root1-John').should('have.length', 1).click();
+
+    cy.get('[aria-rowindex="6"]').should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, 260)');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
+
+const mockNames = [
+  'John',
+  'Jane',
+  'Bob',
+  'Alice',
+  'Charlie',
+  'David',
+  'Eva',
+  'Frank',
+  'Grace',
+  'Henry',
+  'Isabel',
+  'Jack',
+  'Kate',
+  'Liam',
+  'Mia',
+  'Noah',
+  'Olivia',
+  'Parker',
+  'Quinn',
+  'Ryan',
+  'Sophia',
+  'Thomas',
+  'Uma',
+  'Vincent',
+  'Willow',
+  'Xavier',
+  'Yara',
+  'Zane',
+  'Ava',
+  'Benjamin',
+  'Cora',
+  'Dylan',
+  'Emily',
+  'Finn',
+  'Gabriella',
+  'Hudson',
+  'Isla',
+  'Julian',
+  'Katherine',
+  'Leo',
+  'Mila',
+  'Nathan',
+  'Oliver',
+  'Penelope',
+  'Quentin',
+  'Rose',
+  'Samuel',
+  'Tessa',
+  'Ulysses',
+  'Victoria',
+  'Wesley',
+  'Xander',
+  'Yasmine',
+  'Zachary',
+  'Abigail',
+  'Brady',
+  'Chloe',
+  'Daniel',
+  'Eleanor',
+  'Felix',
+  'Giselle',
+  'Hayden',
+  'Isabella',
+  'Jasper',
+  'Kylie',
+  'Landon',
+  'Maddison',
+  'Natalie',
+  'Oscar',
+  'Paige',
+  'Quincy',
+  'Riley',
+  'Savannah',
+  'Theodore',
+  'Ursula',
+  'Violet',
+  'Wyatt',
+  'Ximena',
+  'Yannick',
+  'Zara'
+];
 
 const columnsWithPopIn = [
   {
