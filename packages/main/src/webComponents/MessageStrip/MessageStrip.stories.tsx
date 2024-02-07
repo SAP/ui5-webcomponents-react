@@ -14,7 +14,8 @@ const meta = {
   args: {
     design: MessageStripDesign.Information,
     children: 'MessageStrip Text'
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof MessageStrip>;
 
 export default meta;
