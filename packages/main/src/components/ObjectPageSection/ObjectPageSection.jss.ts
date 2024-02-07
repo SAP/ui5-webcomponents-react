@@ -44,11 +44,14 @@ const styles = {
     }
   },
   sectionContent: {
-    whiteSpace: 'normal'
+    whiteSpace: 'normal',
+    height: '100%'
   },
   sectionContentInner: {
     paddingBlock: '0.5rem',
-    fontFamily: ThemingParameters.sapFontFamily
+    fontFamily: ThemingParameters.sapFontFamily,
+    height: '100%',
+    boxSizing: 'border-box'
   }
 };
 

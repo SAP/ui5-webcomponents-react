@@ -416,3 +416,26 @@ export const SectionWithCustomHeader: Story = {
     );
   }
 };
+
+export const FullScreenSingleSection: Story = {
+  args: { selectedSectionId: 'section1' },
+  name: 'with fullscreen section',
+  render(args) {
+    return (
+      <ObjectPage {...args} mode={ObjectPageMode.IconTabBar}>
+        <ObjectPageSection titleText="Section 1" id="section1" style={{ height: '100%' }}>
+          <div style={{ height: '100%', background: 'lightblue' }}>
+            It is recommended to only use fullscreen sections in TabBar mode, otherwise your layout will most probably
+            break!
+          </div>
+        </ObjectPageSection>
+        <ObjectPageSection titleText="Section 2" id="section2" style={{ height: '100%' }}>
+          <div style={{ height: '100%', background: 'lightgreen' }} />
+        </ObjectPageSection>
+        <ObjectPageSection titleText="Section with Overflow" id="section3" style={{ height: '100%', overflow: 'auto' }}>
+          <div style={{ height: '300%', background: 'lightyellow' }} />
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+  }
+};
