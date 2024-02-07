@@ -3,7 +3,7 @@
   "description": "Cypress Custom Commands and Queries for UI5 Web Components",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "version": "1.23.2",
+  "version": "1.25.0",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",

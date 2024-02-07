@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.24.0...v1.25.0) (2024-02-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** calculate subcomponents correctly in tree table ([#5444](https://github.com/SAP/ui5-webcomponents-react/issues/5444)) ([350149c](https://github.com/SAP/ui5-webcomponents-react/commit/350149ce392b8cf0e4fb1ce14a41e30fd4d238ef)), closes [#5407](https://github.com/SAP/ui5-webcomponents-react/issues/5407)
+- **AnalyticalTable:** focus first named cell on TAB ([#5471](https://github.com/SAP/ui5-webcomponents-react/issues/5471)) ([28a03b3](https://github.com/SAP/ui5-webcomponents-react/commit/28a03b3ca67eb19566e471186a76fa416cb4db08)), closes [#5467](https://github.com/SAP/ui5-webcomponents-react/issues/5467)
+- **deps:** update dependency @tanstack/react-virtual to v3.0.2 ([#5425](https://github.com/SAP/ui5-webcomponents-react/issues/5425)) ([5ea23c6](https://github.com/SAP/ui5-webcomponents-react/commit/5ea23c6ce660d62162a26b5c75ebedcc2fe04efa))
+- **deps:** update dependency @tanstack/react-virtual to v3.0.4 ([#5462](https://github.com/SAP/ui5-webcomponents-react/issues/5462)) ([78b6a20](https://github.com/SAP/ui5-webcomponents-react/commit/78b6a2060af288b2cc93e364187fb5234dc0124b))
+- **Modals:** support multiple `ThemeProvider` ([#5414](https://github.com/SAP/ui5-webcomponents-react/issues/5414)) ([6c07525](https://github.com/SAP/ui5-webcomponents-react/commit/6c07525806c215d42265971268941eb21cc061c4)), closes [#5410](https://github.com/SAP/ui5-webcomponents-react/issues/5410)
+- **ObjectPage - TypeScript:** correct type of `children` ([#5445](https://github.com/SAP/ui5-webcomponents-react/issues/5445)) ([4da4c49](https://github.com/SAP/ui5-webcomponents-react/commit/4da4c492a6e1fa1ade6192630206773699eb7d4c))
+- **ObjectPage:** always allow scrolling to (sub)sections ([#5430](https://github.com/SAP/ui5-webcomponents-react/issues/5430)) ([c148f42](https://github.com/SAP/ui5-webcomponents-react/commit/c148f42a841c054b0c3d868a3f129692db61d1c1)), closes [#5344](https://github.com/SAP/ui5-webcomponents-react/issues/5344)
+- **ObjectStatus:** fire `onClick` on SPACE or ENTER press ([#5429](https://github.com/SAP/ui5-webcomponents-react/issues/5429)) ([5434770](https://github.com/SAP/ui5-webcomponents-react/commit/54347700426d91d96849e56a867d417989395532)), closes [#5427](https://github.com/SAP/ui5-webcomponents-react/issues/5427)
+- use `react-jsx` transform ([#5428](https://github.com/SAP/ui5-webcomponents-react/issues/5428)) ([d0b7354](https://github.com/SAP/ui5-webcomponents-react/commit/d0b7354de517b297dc5ca0926b254ec4133ab37c))
+
+### Features
+
+- **AnalyticalTable:** introduce `additionalEmptyRowsCount` prop ([#5412](https://github.com/SAP/ui5-webcomponents-react/issues/5412)) ([e33c227](https://github.com/SAP/ui5-webcomponents-react/commit/e33c227fc38ecf2f1b61b3749fe8f52f8f22302f)), closes [#5278](https://github.com/SAP/ui5-webcomponents-react/issues/5278)
+- **ObjectPage:** allow fullscreen sections in TabBar mode ([#5432](https://github.com/SAP/ui5-webcomponents-react/issues/5432)) ([d717db8](https://github.com/SAP/ui5-webcomponents-react/commit/d717db8e258bf4b1019e55a04d52432c5369b30e)), closes [#5430](https://github.com/SAP/ui5-webcomponents-react/issues/5430) [#4818](https://github.com/SAP/ui5-webcomponents-react/issues/4818)
+- **SelectDialog:** add `confirmButtonProps` prop ([#5468](https://github.com/SAP/ui5-webcomponents-react/issues/5468)) ([e3db1c0](https://github.com/SAP/ui5-webcomponents-react/commit/e3db1c0c5a67c4b73ed7270deb758d7e11a8c756)), closes [#5461](https://github.com/SAP/ui5-webcomponents-react/issues/5461)
+- **SelectDialog:** add `onCancel` event ([#5431](https://github.com/SAP/ui5-webcomponents-react/issues/5431)) ([d3f7655](https://github.com/SAP/ui5-webcomponents-react/commit/d3f7655190a98df6b15fb9bb86ce54ee49c323dd)), closes [#5416](https://github.com/SAP/ui5-webcomponents-react/issues/5416)
+- **ThemeProvider:** add `withoutModalsProvider` prop ([#5415](https://github.com/SAP/ui5-webcomponents-react/issues/5415)) ([a473036](https://github.com/SAP/ui5-webcomponents-react/commit/a4730361c73a662b52b310b93a464a0173034d95))
+- update `@ui5/webcomponents` to `~1.22.0` ([#5219](https://github.com/SAP/ui5-webcomponents-react/issues/5219)) ([250ad0d](https://github.com/SAP/ui5-webcomponents-react/commit/250ad0dd71c98eca3dab2b114b7828077101021d))
+
 # [1.24.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.23.3...v1.24.0) (2024-01-09)
 
 ### Bug Fixes
