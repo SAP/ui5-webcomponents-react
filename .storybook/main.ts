@@ -33,7 +33,7 @@ const config: StorybookConfig = {
     options: {}
   },
   stories: isChromatic
-    ? ['../packages/main/src/components/**/*.stories.@(tsx|jsx|mdx)']
+    ? ['../packages/main/src/components/**/*.stories.@(tsx|jsx)']
     : [
         '../docs/*.mdx',
         {
@@ -43,12 +43,12 @@ const config: StorybookConfig = {
         },
         {
           directory: '../packages/charts',
-          files: '**/*@(.stories.tsx|mdx)',
+          files: '**/*@(.stories.tsx)',
           titlePrefix: 'Charts'
         },
         {
           directory: '../packages/base',
-          files: '*.@(tsx|jsx|mdx)',
+          files: '*.@(tsx|jsx)',
           titlePrefix: 'Base'
         },
         {
