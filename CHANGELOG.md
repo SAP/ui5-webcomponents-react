@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.0...v1.25.1) (2024-02-07)
+
+### Bug Fixes
+
+- revert "fix: use `react-jsx` transform ([#5428](https://github.com/SAP/ui5-webcomponents-react/issues/5428))" ([#5475](https://github.com/SAP/ui5-webcomponents-react/issues/5475)) ([e3a02a6](https://github.com/SAP/ui5-webcomponents-react/commit/e3a02a6f9ad8b9353b5a9b7d038cfaa0704bdd3d))
+
 # [1.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.24.0...v1.25.0) (2024-02-07)
 
 ### Bug Fixes
