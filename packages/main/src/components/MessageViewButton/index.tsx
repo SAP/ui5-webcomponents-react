@@ -6,7 +6,7 @@ import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ValueState } from '../../enums/index.js';
 import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';

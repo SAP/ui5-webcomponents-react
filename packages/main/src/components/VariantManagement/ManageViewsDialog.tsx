@@ -7,7 +7,7 @@ import {
   useIsomorphicId
 } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
-import { isValidElement, Children, useEffect, useRef, useState } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import { BarDesign, FlexBoxAlignItems, FlexBoxDirection, ButtonDesign } from '../../enums/index.js';
@@ -154,7 +154,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const [childrenProps, setChildrenProps] = useState(
     Children.map(children, (child) => {
-      if (!isValidElement(child)) {
+      if (!React.isValidElement(child)) {
         return {};
       }
       return child.props;
@@ -163,7 +163,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   useEffect(() => {
     setChildrenProps(
       Children.map(children, (child) => {
-        if (!isValidElement(child)) {
+        if (!React.isValidElement(child)) {
           return {};
         }
         return child.props;

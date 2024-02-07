@@ -1,6 +1,6 @@
 import { throttle } from '@ui5/webcomponents-react-base';
-import { useEffect, useRef, useState } from 'react';
-import type * as React from 'react';
+import type { CSSProperties } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
 import { HOVER_OPACITY, NORMAL_OPACITY, THROTTLE_INTERVAL } from '../util/constants.js';
 
@@ -107,7 +107,7 @@ interface TimelineTaskProps {
    */
   totalDuration: number;
 
-  color: React.CSSProperties['color'];
+  color: CSSProperties['color'];
 
   timelineStart: number;
 
@@ -199,7 +199,7 @@ interface TimelineMilestoneProps {
    */
   totalDuration: number;
 
-  color?: React.CSSProperties['color'];
+  color?: CSSProperties['color'];
 
   timelineStart: number;
 

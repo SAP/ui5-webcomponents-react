@@ -4,7 +4,7 @@ import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js'
 import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
+import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   ButtonDesign,

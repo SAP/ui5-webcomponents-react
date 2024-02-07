@@ -3,7 +3,7 @@ import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { getI18nContext } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { useCallback, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 
 export interface I18nProviderPropTypes {
   children: ReactNode;

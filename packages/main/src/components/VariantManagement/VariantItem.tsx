@@ -1,7 +1,7 @@
 'use client';
 
 import { useSyncRef } from '@ui5/webcomponents-react-base';
-import { forwardRef, useContext, useEffect } from 'react';
+import React, { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import type { InputPropTypes } from '../../webComponents/index.js';
 import type { StandardListItemDomRef, StandardListItemPropTypes } from '../../webComponents/StandardListItem/index.js';

@@ -2,7 +2,7 @@ import { registerI18nLoader } from '@ui5/webcomponents-base/dist/asset-registrie
 import { setFetchDefaultLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { mount } from 'cypress/react18';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const TestComponent = () => {
   const i18nBundle = useI18nBundle('myApp');

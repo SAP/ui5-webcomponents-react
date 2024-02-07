@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useMemo, useReducer } from 'react';
+import React, { useMemo, useReducer } from 'react';
 import { createPortal } from 'react-dom';
 import type { ModalState, UpdateModalStateAction } from '../../internal/ModalsContext.js';
 import { getModalContext } from '../../internal/ModalsContext.js';

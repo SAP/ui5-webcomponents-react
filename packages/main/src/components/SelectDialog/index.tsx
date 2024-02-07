@@ -11,7 +11,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';

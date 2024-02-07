@@ -1,7 +1,7 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
-import { forwardRef, useCallback, useRef } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
 import {
   Legend,
   PolarAngleAxis,

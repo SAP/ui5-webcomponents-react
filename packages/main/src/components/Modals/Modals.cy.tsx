@@ -1,3 +1,4 @@
+import React from 'react';
 import { Bar, Button, MenuItem } from '../../webComponents/index.js';
 import { Modals } from './index.js';
 

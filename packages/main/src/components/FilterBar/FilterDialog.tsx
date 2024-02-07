@@ -2,8 +2,7 @@ import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
+import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
 import {
@@ -126,7 +125,7 @@ interface FilterDialogPropTypes {
   showRestoreButton: boolean;
   handleRestoreFilters: (e, source, filterElements) => void;
   handleDialogSave: (e, newRefs, updatedToggledFilters) => void;
-  handleSearchValueChange: Dispatch<SetStateAction<string>>;
+  handleSearchValueChange: React.Dispatch<React.SetStateAction<string>>;
   handleSelectionChange?: (
     event: Ui5CustomEvent<
       TableDomRef,
@@ -136,11 +135,11 @@ interface FilterDialogPropTypes {
   handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
   handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
   portalContainer: Element;
-  dialogRef: MutableRefObject<DialogDomRef>;
+  dialogRef: React.MutableRefObject<DialogDomRef>;
   isListView: boolean;
-  setIsListView: Dispatch<SetStateAction<boolean>>;
+  setIsListView: React.Dispatch<React.SetStateAction<boolean>>;
   filteredAttribute: string;
-  setFilteredAttribute: Dispatch<SetStateAction<string>>;
+  setFilteredAttribute: React.Dispatch<React.SetStateAction<string>>;
   onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 

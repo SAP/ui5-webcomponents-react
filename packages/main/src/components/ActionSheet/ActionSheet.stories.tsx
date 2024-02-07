@@ -4,7 +4,7 @@ import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import deleteIcon from '@ui5/webcomponents-icons/dist/delete.js';
 import emailIcon from '@ui5/webcomponents-icons/dist/email.js';
 import forwardIcon from '@ui5/webcomponents-icons/dist/forward.js';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums/index.js';
 import { Button } from '../../webComponents/index.js';
 import { ActionSheet } from './index.js';

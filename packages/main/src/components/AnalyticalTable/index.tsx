@@ -13,7 +13,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
-import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   useColumnOrder,

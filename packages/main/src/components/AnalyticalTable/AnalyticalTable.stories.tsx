@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
