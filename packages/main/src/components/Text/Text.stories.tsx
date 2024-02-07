@@ -1,34 +1,18 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Text } from './index';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Text } from './index.js';
 
-<Meta
-  title="Data Display / Text"
-  component={Text}
-  argTypes={{
+const meta = {
+  title: 'Data Display / Text',
+  component: Text,
+  argTypes: {
     children: { control: 'text' }
-  }}
-  args={{
+  },
+  args: {
     children: `If "renderWhitespace" is set to true, there will be thirteen white spaces after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat`
-  }}
-/>
+  }
+} satisfies Meta<typeof Text>;
 
-<DocsHeader />
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-<br />
-
-## Example
-
-<Canvas>
-  <Story name="Default">
-    {(args) => {
-      return <Text {...args} />;
-    }}
-  </Story>
-</Canvas>
-
-## Properties
-
-<ArgsTableWithNote story="Default" />
-
-<Footer />
+export const Default: Story = {};
