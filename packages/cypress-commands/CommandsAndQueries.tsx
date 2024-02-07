@@ -1,5 +1,5 @@
 import { Heading, Markdown } from '@storybook/blocks';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 interface CommandsAndQueries {
   id: number;

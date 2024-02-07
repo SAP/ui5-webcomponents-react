@@ -3,7 +3,7 @@
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, ReactNode } from 'react';
-import { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';

@@ -3,7 +3,7 @@
     "module": "esnext",
     "target": "ES2021",
     "lib": ["ES2022", "dom"],
-    "jsx": "react-jsx",
+    "jsx": "react",
     "baseUrl": ".",
     "rootDir": ".",
     "composite": true,

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import React, { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { AvatarSize } from '../../enums/index.js';
 

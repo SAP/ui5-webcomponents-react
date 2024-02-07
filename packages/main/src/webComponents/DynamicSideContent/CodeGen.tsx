@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const SideContent = (
   <div>
     <h1>Side Content</h1>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const StartContent = <span>Start Content</span>;
 export const CenterContent = <span>Center Content</span>;
 export const EndContent = <span>End Content</span>;

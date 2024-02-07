@@ -3,7 +3,7 @@
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';

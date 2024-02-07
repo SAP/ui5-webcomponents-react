@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../types/index.js';
 import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss.js';

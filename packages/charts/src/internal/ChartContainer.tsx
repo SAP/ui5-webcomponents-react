@@ -2,7 +2,7 @@ import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentType, CSSProperties, ReactElement, ReactNode } from 'react';
-import { Component, forwardRef } from 'react';
+import React, { Component, forwardRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
 

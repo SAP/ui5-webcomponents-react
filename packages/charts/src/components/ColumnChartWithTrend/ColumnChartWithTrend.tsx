@@ -2,7 +2,7 @@
 
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import type { TooltipProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';

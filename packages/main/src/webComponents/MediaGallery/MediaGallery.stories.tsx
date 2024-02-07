@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import {
   MediaGalleryLayout,
   MediaGalleryMenuHorizontalAlign,

@@ -1,5 +1,6 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
 interface FormGroupTitlePropTypes {

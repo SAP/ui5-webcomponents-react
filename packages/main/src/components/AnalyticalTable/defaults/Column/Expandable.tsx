@@ -2,6 +2,7 @@ import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arro
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../../../enums/index.js';
 import { Button, Icon } from '../../../../webComponents/index.js';

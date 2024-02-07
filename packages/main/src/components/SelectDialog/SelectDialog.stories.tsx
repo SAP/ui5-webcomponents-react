@@ -4,7 +4,7 @@ import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DialogDomRef } from '../..';
 import { Button, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';

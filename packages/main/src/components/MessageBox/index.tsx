@@ -4,7 +4,7 @@ import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { cloneElement, forwardRef, isValidElement } from 'react';
+import React, { cloneElement, forwardRef, isValidElement } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   ButtonDesign,

@@ -1,7 +1,7 @@
 import { ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, RefObject } from 'react';
-import { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
 import { CustomThemingParameters } from '../../../themes/CustomVariables.js';

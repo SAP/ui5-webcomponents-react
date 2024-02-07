@@ -1,5 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { ReactElement } from 'react';
+import React from 'react';
 import { DEFAULT_CHART_VERTICAL_COLS, TOLERANCE } from '../util/constants.js';
 
 interface TimelineChartGridProps {

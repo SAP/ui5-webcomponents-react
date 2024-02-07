@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Dialog as OriginalDialog, DialogDomRef, DialogPropTypes } from './index';
 

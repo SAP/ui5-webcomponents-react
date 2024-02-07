@@ -1,6 +1,6 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../Button';
 import { ColorPaletteItem } from '../ColorPaletteItem';

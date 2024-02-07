@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import { forwardRef, useCallback, useMemo } from 'react';
+import React, { forwardRef, useCallback, useMemo } from 'react';
 import {
   Bar,
   Brush,
