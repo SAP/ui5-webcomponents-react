@@ -11,6 +11,7 @@
     "vite.config.ts",
     ".storybook",
     "packages/**/*.stories.tsx",
+    "packages/**/CodeGen.tsx",
     "packages/cypress-commands/CommandsAndQueries.tsx"
   ]
 }

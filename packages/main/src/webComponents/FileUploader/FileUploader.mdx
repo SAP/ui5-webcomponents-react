@@ -1,0 +1,29 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta, Story } from '@storybook/blocks';
+import * as ComponentStories from './FileUploader.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader since="0.9.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## More Examples
+
+### FileUploader with Buttons
+
+<Canvas of={ComponentStories.WithButton} />
+
+### FileUploader without input field
+
+<Canvas of={ComponentStories.WithHiddenInput} />
+
+<Footer />

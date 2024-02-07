@@ -1,10 +1,9 @@
-import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Menu.stories';
 import { MessageStrip } from '../MessageStrip';
 import { MenuItem } from '../MenuItem';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import MenuDomRef from './MenuDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
@@ -18,8 +17,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<DomRefTable rows={MenuDomRef} />
 
 ## Opening Menus
 
@@ -119,3 +116,5 @@ const MenuComponent = () => {
 
 <Description of={MenuItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MenuItem} />
+
+<Footer />

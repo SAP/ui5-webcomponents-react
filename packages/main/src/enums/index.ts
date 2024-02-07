@@ -12,6 +12,7 @@ export * from './AvatarGroupType.js';
 export * from './AvatarShape.js';
 export * from './AvatarSize.js';
 export * from './BackgroundDesign.js';
+export * from './BadgeDesign.js';
 export * from './BarDesign.js';
 export * from './BorderDesign.js';
 export * from './BreadcrumbsDesign.js';

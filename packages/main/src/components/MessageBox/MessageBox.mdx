@@ -1,0 +1,116 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './MessageBox.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## Opening and Closing MessageBoxes
+
+Unlike `Popovers` or `Dialogs`, `MessageBoxes` do not need to be provided with a `ref` to be opened or closed. Instead, the `open` prop can be used for this.
+
+**Note:** `onClose` is either called by clicking on one of the action buttons in the footer or by pressing the `ESC` key.
+
+```jsx
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      <MessageBox open={open} onClose={handleClose}>
+        Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
+## Accessing actions in the onClose callback
+
+To add some logic to the respective actions you can use `event.detail.action` inside `onClose` which contains the name of the clicked action.
+
+```jsx
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event) => {
+    if (event.detail.action === MessageBoxActions.OK) {
+      // do something on "Ok" button click
+    } else if (event.detail.action === 'Custom Action') {
+      // do something on "Custom Action" click
+    } else {
+      // do something on "Cancel" or "Abort" button click
+    }
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      <MessageBox
+        open={open}
+        onClose={handleClose}
+        actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel, MessageBoxActions.Abort]}
+      >
+        Content
+      </MessageBox>
+    </>
+  );
+};
+```
+
+## Using MessageBoxes inside other components
+
+`MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `MessageBox` outside of the DOM hierarchy of the parent component.
+
+```JSX
+const MessageBoxComponent = () => {
+  const [open, setOpen] = useState(false);
+  const onButtonClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Messagebox</Button>
+      {createPortal(
+        <MessageBox open={open} onClose={handleClose}>
+          Content
+        </MessageBox>,
+        document.body
+      )}
+    </>
+  );
+};
+```
+
+# More Examples
+
+<br />
+
+## MessageBox with custom actions
+
+<Canvas of={ComponentStories.WithCustomActions} />
+
+<Footer />

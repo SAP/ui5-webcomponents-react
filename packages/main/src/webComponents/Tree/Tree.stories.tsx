@@ -22,7 +22,8 @@ const meta = {
   },
   args: {
     mode: ListMode.None
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Tree>;
 
 export default meta;

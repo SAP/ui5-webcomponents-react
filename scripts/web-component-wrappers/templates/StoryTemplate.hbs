@@ -1,5 +1,5 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { {{#if additionalComponentDocs}}ArgsTableWithNote, {{/if}}ControlsWithNote, DocsHeader, {{#if hasDomRef}}DomRefTable, {{/if}}Footer } from '@sb/components';
+import { {{#if additionalComponentDocs}}ArgsTableWithNote, {{/if}}ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 {{#each imports}}
 {{{this}}}
 {{/each}}
@@ -11,9 +11,6 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 {{#each additionalComponentDocs}}
 import {{this}}Description from '../{{this}}/{{this}}Description.md?raw';
 {{/each}}
-{{/if}}
-{{#if hasDomRef}}
-import {{name}}DomRef from './{{name}}DomRef.json';
 {{/if}}
 import * as ComponentStories from './{{name}}.stories';
 
@@ -33,10 +30,6 @@ import * as ComponentStories from './{{name}}.stories';
 
 {{#if hasDescription}}
 <Markdown>{Description}</Markdown>
-{{/if}}
-
-{{#if hasDomRef}}
-<DomRefTable rows={ {{name}}DomRef} />
 {{/if}}
 
 {{#if additionalComponentDocs}}

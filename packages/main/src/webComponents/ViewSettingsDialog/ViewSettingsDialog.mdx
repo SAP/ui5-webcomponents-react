@@ -1,11 +1,10 @@
-import { ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { FilterItem } from '../FilterItem/index';
 import { FilterItemOption } from '../FilterItemOption/index';
 import { SortItem } from '../SortItem/index';
 import * as ComponentStories from './ViewSettingsDialog.stories';
-import ViewSettingsDialogDomRef from './ViewSettingsDialogDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
@@ -21,8 +20,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<DomRefTable rows={ViewSettingsDialogDomRef} />
 
 ## Opening ViewSettingsDialog
 

@@ -1,17 +1,8 @@
 import { Controls } from '@storybook/blocks';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import React, { ComponentProps, ReactNode, useEffect, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  tableContainer: {
-    marginTop: '25px',
-    '& table': {
-      marginTop: '0 !important'
-    }
-  },
-  strip: { marginBottom: '10px' }
-});
+import React, { ComponentProps, ReactNode } from 'react';
+import classes from './ControlsWithNote.module.css';
+import { DomRefTable } from './DomRefTable';
 
 interface ControlsWithNotePropTypes {
   hideHTMLPropsNote?: boolean;
@@ -25,17 +16,16 @@ interface ControlsWithNotePropTypes {
 
 export function ControlsWithNote(props: ComponentProps<typeof Controls> & ControlsWithNotePropTypes) {
   const { hideHTMLPropsNote, noteText, ...rest } = props;
-  const classes = useStyles();
 
-  if (hideHTMLPropsNote) {
-    return <Controls {...rest} />;
-  }
   return (
-    <div className={classes.tableContainer}>
-      <MessageStrip design={MessageStripDesign.Information} hideCloseButton className={classes.strip}>
-        {noteText ?? 'This component supports all HTML attributes.'}
-      </MessageStrip>
+    <div className={classes.container}>
+      {!hideHTMLPropsNote && (
+        <MessageStrip design={MessageStripDesign.Information} hideCloseButton className={classes.strip}>
+          {noteText ?? 'This component supports all HTML attributes.'}
+        </MessageStrip>
+      )}
       <Controls {...rest} />
+      <DomRefTable />
     </div>
   );
 }

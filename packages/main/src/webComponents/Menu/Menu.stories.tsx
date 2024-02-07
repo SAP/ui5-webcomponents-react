@@ -13,7 +13,8 @@ const meta = {
   },
   parameters: {
     chromatic: { delay: 1000 }
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Menu>;
 
 export default meta;

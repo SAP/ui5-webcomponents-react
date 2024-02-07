@@ -1,0 +1,11 @@
+.container {
+  margin-block-start: 25px !important;
+}
+
+.container:has(> .strip) table {
+    margin-top: 0px;
+  }
+
+.strip {
+  margin-block-end: 10px;
+}

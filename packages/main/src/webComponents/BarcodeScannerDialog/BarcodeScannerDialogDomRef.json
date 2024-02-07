@@ -1,8 +1,0 @@
-[
-  { "name": "close", "visibility": "public", "description": "Closes the dialog and the scan session." },
-  {
-    "name": "show",
-    "visibility": "public",
-    "description": "Shows a dialog with the camera videostream. Starts a scan session."
-  }
-]

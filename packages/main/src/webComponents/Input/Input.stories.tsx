@@ -20,7 +20,8 @@ const meta = {
     type: InputType.Text,
     valueState: ValueState.None,
     icon: <Icon name={employeeIcon} />
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Input>;
 
 export default meta;

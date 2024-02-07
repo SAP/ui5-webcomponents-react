@@ -1,10 +1,9 @@
-import { ArgTypesWithNote, ControlsWithNote, DocsHeader, DomRefTable, Footer } from '@sb/components';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { SuggestionGroupItem } from '../SuggestionGroupItem';
 import { SuggestionItem } from '../SuggestionItem';
 import * as ComponentStories from './Input.stories';
-import InputDomRef from './InputDomRef.json';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
@@ -20,8 +19,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<DomRefTable rows={InputDomRef} />
 
 <br />
 
