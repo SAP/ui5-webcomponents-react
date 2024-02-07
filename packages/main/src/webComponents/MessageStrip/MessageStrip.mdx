@@ -1,0 +1,24 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './MessageStrip.stories';
+
+<Meta of={ComponentStories} />
+<DocsHeader since="0.4.0" />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+# More Examples
+
+## MessageStrip with Icon
+
+<Canvas of={ComponentStories.WithIcon} />
+
+<Footer />
