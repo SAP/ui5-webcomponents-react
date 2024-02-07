@@ -1,0 +1,36 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './RadioButton.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+# More Examples
+
+<br />
+
+## RadioButton groups
+
+Group radio buttons by using the `name` prop.
+
+<Canvas of={ComponentStories.RadioButtonGroups} />
+
+<br />
+<br />
+
+## RadioButton states
+
+<Canvas of={ComponentStories.RadioButtonStates} />
+
+<Footer />
