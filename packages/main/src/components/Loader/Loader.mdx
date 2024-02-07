@@ -1,0 +1,67 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Loader.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+
+# More Examples
+
+<br />
+
+## Card with Loader
+
+<Canvas of={ComponentStories.WithCard} />
+
+```jsx
+const LoaderComponent = () => {
+  const initialText =
+    'This is a text that will be updated 5 seconds after the header is clicked. The text will be visible until the new text has been fetched. To let the user know that the text is updating, the Loader will be displayed.';
+  const [text, setText] = useState(initialText);
+  const [loading, setLoading] = useState(false);
+  const onHeaderClick = () => {
+    setLoading(true);
+  };
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setText((prev) => (prev === initialText ? 'Updated (⌐■_■)' : initialText));
+        setLoading(false);
+      }, 5000);
+    }
+  }, [loading]);
+  return (
+    <Card
+      header={
+        <CardHeader
+          titleText="Click the header to update the text below."
+          interactive
+          avatar={<Icon name="activate" />}
+          onClick={onHeaderClick}
+        />
+      }
+      style={{ width: '400px' }}
+    >
+      <FlexBox direction={FlexBoxDirection.Column}>
+        {loading && <Loader />}
+        <Text style={spacing.sapUiContentPadding}>{text}</Text>
+      </FlexBox>
+    </Card>
+  );
+};
+```
+
+<Footer />

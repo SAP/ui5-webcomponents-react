@@ -1,4 +1,4 @@
-import { ArgsTableWithNote, DocsHeader, Footer } from '@sb/components';
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta, Story } from '@storybook/blocks';
 import * as ComponentStories from './Grid.stories';
 
@@ -10,12 +10,10 @@ import * as ComponentStories from './Grid.stories';
 
 ## Example
 
-<Canvas>
-  <Story of={ComponentStories.Default} />
-</Canvas>
+<Canvas of={ComponentStories.Default} />
 
 ## Properties
 
-<ArgsTableWithNote story="Default" />
+<ControlsWithNote of={ComponentStories.Default} />
 
 <Footer />

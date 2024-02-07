@@ -1,5 +1,5 @@
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
-import { ArgsTableWithNote, ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Option, SelectMenu, SelectMenuOption } from '../index.ts';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import * as ComponentStories from './Select.stories';
@@ -58,7 +58,7 @@ const onChange = (event) => {
 ## SelectMenu
 
 <Description of={SelectMenu} />
-<ArgsTableWithNote of={SelectMenu} />
+<ArgTypesWithNote of={SelectMenu} />
 
 ### Example: Select with custom Options
 
@@ -67,6 +67,6 @@ const onChange = (event) => {
 ## SelectMenuOption
 
 <Description of={SelectMenuOption} />
-<ArgsTableWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SelectMenuOption} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SelectMenuOption} />
 
 <Footer />
