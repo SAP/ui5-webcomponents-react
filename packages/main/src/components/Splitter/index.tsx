@@ -224,6 +224,8 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       }
     }
 
+    const isRtl = localRef.current?.matches(':dir(rtl)');
+
     if (!nextSibling[isSiblings[1]] && !isRtl) {
       (nextSibling as HTMLElement).style.flex = '1 0 0px';
     }
