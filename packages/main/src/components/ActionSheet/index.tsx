@@ -1,7 +1,7 @@
 'use client';
 
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
 import React, { forwardRef, useReducer, useRef } from 'react';
@@ -164,7 +164,6 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenToRender = flattenFragments(children);
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
-  const isRtl = useIsRTL(popoverRef);
 
   const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
@@ -210,6 +209,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
 
   const handleKeyDown = (e) => {
     const currentIndex = parseInt(e.target.dataset.actionBtnIndex);
+    const isRtl = actionBtnsRef.current?.matches(':dir(rtl)');
     switch (e.key) {
       case 'ArrowDown':
       case isRtl ? 'ArrowLeft' : 'ArrowRight':
