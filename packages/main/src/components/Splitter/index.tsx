@@ -178,7 +178,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
   const { vertical } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
-  const isRtl = useIsRTL({ current: localRef.current?.parentElement });
+  const isRtl = useIsRTL(localRef);
   const start = useRef(null);
   const classes = useStyles();
 

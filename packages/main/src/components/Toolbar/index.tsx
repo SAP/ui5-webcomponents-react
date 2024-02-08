@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useIsRTL,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, useI18nBundle, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import React, {
@@ -181,7 +175,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
-  const isRtl = useIsRTL(outerContainer);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const showMoreText = i18nBundle.getText(SHOW_MORE);
@@ -231,6 +224,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     const lastElement = contentRef.current.children[numberOfAlwaysVisibleItems - 1];
     const debouncedObserverFn = debounce(() => {
       const spacerWidth = getSpacerWidths(lastElement);
+      const isRtl = outerContainer.current?.matches(':dir(rtl)');
       if (isRtl) {
         setMinWidth(
           `${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH - spacerWidth}px`
@@ -251,7 +245,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       debouncedObserverFn.cancel();
       lastElementResizeObserver?.disconnect();
     };
-  }, [numberOfAlwaysVisibleItems, overflowNeeded, isRtl]);
+  }, [numberOfAlwaysVisibleItems, overflowNeeded]);
 
   const requestAnimationFrameRef = useRef<undefined | number>();
   const calculateVisibleItems = useCallback(() => {
