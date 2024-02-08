@@ -1,56 +1,57 @@
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { useState } from 'react';
 import type { SplitterLayoutPropTypes } from '../..';
-import { SplitterElement, SplitterLayout, Label, Button } from '../..';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { Button, Label, SplitterElement, SplitterLayout } from '../..';
+
+function TestComp({ vertical, dir }: { vertical: SplitterLayoutPropTypes['vertical']; dir: string }) {
+  const [mount, setMount] = useState(false);
+  const [dep, setDep] = useState(false);
+  return (
+    <SplitterLayout
+      dir={dir}
+      vertical={vertical}
+      style={{
+        width: '100vw',
+        height: '100vh'
+      }}
+      options={{ resetOnSizeChange: true, resetOnChildrenChange: true, resetOnCustomDepsChange: [dep] }}
+    >
+      <SplitterElement size="70%" data-testid="se1">
+        <Label>Left</Label>
+        <Button onClick={() => setMount(true)}>Add child</Button>
+        <Button onClick={() => setDep(true)}>Trigger dep</Button>
+      </SplitterElement>
+      <SplitterElement size={mount ? '25%' : '30%'} data-testid="se2">
+        <Label>Right</Label>
+      </SplitterElement>
+      {mount && (
+        <SplitterElement size="5%" data-testid="se3">
+          Additional Child
+        </SplitterElement>
+      )}
+    </SplitterLayout>
+  );
+}
+
+function moveSpacer(dir: string, vertical: boolean) {
+  cy.findAllByRole('separator').eq(0).click();
+  cy.wait(50);
+  const rtlSafeLeft = `Arrow${dir === 'rtl' && !vertical ? 'Right' : 'Left'}`;
+  const rtlSafeUp = `Arrow${dir === 'rtl' && !vertical ? 'Down' : 'Up'}`;
+  for (let i = 0; i < 5; i++) {
+    cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeLeft, force: true });
+    cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeLeft, force: true });
+    cy.wait(50);
+    cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeUp, force: true });
+    cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeUp, force: true });
+    cy.wait(50);
+  }
+}
 
 describe('SplitterLayout', () => {
-  it('Splitter Move & Reset', () => {
-    const TestComp = ({ vertical, dir }: { vertical: SplitterLayoutPropTypes['vertical']; dir: string }) => {
-      const [mount, setMount] = useState(false);
-      const [dep, setDep] = useState(false);
-      return (
-        <SplitterLayout
-          dir={dir}
-          vertical={vertical}
-          style={{
-            width: '100vw',
-            height: '100vh'
-          }}
-          options={{ resetOnSizeChange: true, resetOnChildrenChange: true, resetOnCustomDepsChange: [dep] }}
-        >
-          <SplitterElement size="70%" data-testid="se1">
-            <Label>Left</Label>
-            <Button onClick={() => setMount(true)}>Add child</Button>
-            <Button onClick={() => setDep(true)}>Trigger dep</Button>
-          </SplitterElement>
-          <SplitterElement size={mount ? '25%' : '30%'} data-testid="se2">
-            <Label>Right</Label>
-          </SplitterElement>
-          {mount && (
-            <SplitterElement size="5%" data-testid="se3">
-              Additional Child
-            </SplitterElement>
-          )}
-        </SplitterLayout>
-      );
-    };
-
-    function moveSpacer(dir, vertical) {
-      cy.findAllByRole('separator').eq(0).click();
-      cy.wait(50);
-      const rtlSafeLeft = `Arrow${dir === 'rtl' && !vertical ? 'Right' : 'Left'}`;
-      const rtlSafeUp = `Arrow${dir === 'rtl' && !vertical ? 'Down' : 'Up'}`;
-      for (let i = 0; i < 5; i++) {
-        cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeLeft, force: true });
-        cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeLeft, force: true });
-        cy.wait(50);
-        cy.findAllByRole('separator').eq(0).trigger('keydown', { code: rtlSafeUp, force: true });
-        cy.findAllByRole('separator').eq(0).trigger('keyup', { code: rtlSafeUp, force: true });
-        cy.wait(50);
-      }
-    }
-    ['ltr', 'rtl'].forEach((dir) => {
-      [false, true].forEach((vertical) => {
+  ['ltr', 'rtl'].forEach((dir) => {
+    [false, true].forEach((vertical) => {
+      it(`Splitter Move & Reset - ${dir} - vertical: ${vertical}`, () => {
         cy.viewport(2000, 2000);
         cy.mount(<TestComp vertical={vertical} dir={dir} />);
 

@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '../hooks/index.js';
 
 const useIsRTL = <RefType extends HTMLElement>(elementRef: RefObject<RefType>): boolean => {
-  const [isRTL, setRTL] = useState(false); // use config RTL as best guess
+  const [isRTL, setRTL] = useState(false); // initial value is always LTR (also for SSR)
   const isMounted = useRef(false);
 
   useIsomorphicLayoutEffect(() => {
