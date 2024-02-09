@@ -456,7 +456,6 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               chartElementProps.onClick = onDataPointClickInternal;
               chartElementProps.fill = element.color ?? 'black';
               chartElementProps.strokeWidth = element.width;
-              chartElementProps.activeBar = false;
               chartElementProps.shape = <ComparisonLine layout={layout} />;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.label = false;
