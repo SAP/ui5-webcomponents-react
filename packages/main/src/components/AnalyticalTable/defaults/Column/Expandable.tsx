@@ -1,7 +1,7 @@
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webcomponents-react-base';
-import type { CSSProperties } from 'react';
+import { clsx } from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../../../enums/index.js';
@@ -40,7 +40,9 @@ const useStyles = createUseStyles(
         height: CssSizeVariables.ui5WcrAnalyticalTableExpandIconHeight
       }
     },
-    button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' }
+    button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' },
+    nonExpandableCellSpacer: { width: CssSizeVariables.ui5WcrAnalyticalTableExpandIndicatorWidth },
+    withExpandableButton: { marginInlineEnd: '0.5rem' }
   },
   { name: 'ExpandableIndicatorStyles' }
 );
@@ -59,17 +61,8 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-  let paddingLeft;
-  if (row.canExpand) {
-    paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
-  } else {
-    paddingLeft = columnIndex === 0 ? `calc(${getPadding(row.depth)} + 2rem)` : 0;
-  }
-  const style: CSSProperties = {
-    paddingInlineStart: paddingLeft
-  };
+  const paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
   const rowProps = row.getToggleRowExpandedProps();
-
   const subComponentExpandable =
     typeof renderRowSubComponent === 'function' && !!renderRowSubComponent(row) && !alwaysShowSubComponent;
 
@@ -79,7 +72,7 @@ export const Expandable = (props) => {
         // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
         <span
           title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
-          style={{ ...rowProps.style, ...style }}
+          style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
           className={classes.container}
           aria-expanded={row.isExpanded}
           aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
@@ -102,7 +95,10 @@ export const Expandable = (props) => {
           )}
         </span>
       ) : (
-        <span style={style} />
+        <span
+          style={{ paddingInlineStart: paddingLeft }}
+          className={clsx(classes.nonExpandableCellSpacer, shouldRenderButton && classes.withExpandableButton)}
+        />
       )}
       {cell.render('Cell')}
     </>

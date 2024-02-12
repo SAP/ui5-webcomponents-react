@@ -402,6 +402,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the height of the rows and header row.
    *
    * __Note:__ This prop overrides the default height. If you want to use the default height after you have set a custom height, you will have to remove this prop and remount the component.
+   *
+   * __Note:__ To preserve the intended design, it is not recommended to set a row height with active elements such as buttons below `32px` for content density "Compact" and `44px` for content density "Cozy".
    */
   rowHeight?: number;
   /**
