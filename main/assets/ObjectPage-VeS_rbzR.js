@@ -1,0 +1,39 @@
+import{j as o}from"./jsx-runtime-DtaoT6pD.js";import{A as e,F as j}from"./ProjectTemplate-UBMe-mZG.js";import{C as x}from"./ControlsWithNote-jY2zZQT1.js";import{D as g}from"./DocsHeader-svLJJmMi.js";import{D as m,a}from"./index-hH76UEBP.js";import{C as b,D as c,W as f,a as u,S as w,F as y,O as d,b as l}from"./ObjectPage.stories-_2QrdOKY.js";import"./index-OjgoNOWw.js";import{M as P,C as i,b as S,e as r}from"./chunk-HLWAVYOI-TI0EeyFX.js";import{S as O}from"./SubcomponentsSection-pzdPLcqE.js";import{u as h}from"./index-RwE9nQVW.js";import"./react-jss.esm-tmBtHfec.js";import"./index-vwIUCXTk.js";import"./iframe-IqeNtHcI.js";import"../sb-preview/runtime.js";import"./UI5Element-J5BIXSmd.js";import"./i18nBundle-hBv5shGA.js";import"./VersionInfo-AzzP9wS2.js";import"./CustomElementsScopeUtils-IpwVqUeG.js";import"./withWebComponent--kEkWNJH.js";import"./utils-rNFQc6Ui.js";import"./useIsomorphicLayoutEffect-s31TYDr7.js";import"./slot-HSrR9XJ-.js";import"./event-lM5HanI-.js";import"./decline-TLe42uKS.js";import"./Icons-w8Ubykga.js";import"./i18n-defaults-iZnAAWr4.js";import"./information-mLcAhNUH.js";import"./alert-EvF5vfgw.js";import"./class-map-Y-YjCFqX.js";import"./Icon-9mGrp6sQ.js";import"./Keys-Mzj2D4aO.js";import"./parameters-bundle.css-mPCp9TQx.js";import"./Button-3dE37AvA.js";import"./AriaLabelHelper-RbKlVwzD.js";import"./MarkedEvents-aYv14vsS.js";import"./HasPopup-9BAMrqbD.js";import"./i18n-defaults-KF6OS2eD.js";import"./index-_9C7BQQF.js";import"./clsx-Zbgk8kpT.js";import"./index-QYh6idnL.js";import"./index-Fc47nGfS.js";import"./Label-z2EGRvw-.js";import"./WrappingType-avPrqc94.js";import"./index-3IBrtR0G.js";import"./index-e73Il5d6.js";import"./Link-qPsX_s-9.js";import"./index-YJF5AoZ_.js";import"./Popover-_i-9Nlxt.js";import"./Integer-kog98579.js";import"./PopupUtils-vEkjvavX.js";import"./getActiveElement-IIKAy3xo.js";import"./PopupsCommon.css-mpuHIMki.js";import"./FocusableElements-yiWWnti0.js";import"./isElementHidden-d3-Fo4V6.js";import"./getEffectiveScrollbarStyle-Gz48PLeD.js";import"./ResizeHandler-nsiBebAr.js";import"./MediaRange-sEMt71Ve.js";import"./style-map-5njKSr-C.js";import"./BrowserScrollbar.css-f5JVpLjm.js";import"./index-I2ZSoiFx.js";import"./i18n-defaults-i_6r8m_B.js";import"./I18nContext-VUOpdMoH.js";import"./ThemingParameters-UghqSl-x.js";import"./index-cXf_ADaj.js";import"./ModalsContext-T9gUbaXC.js";import"./CssSizeVariables-loCRUewX.js";import"./CustomVariables-jcpx1a4M.js";import"./GlobalStyleClasses-kWTEndz_.js";import"./addCustomCSSWithScoping-QKBhLXCa.js";import"./index-gHq51Mfr.js";import"./index-FJvtTNFY.js";import"./Avatar-DMnS_15W.js";import"./employee-E8ifPoB6.js";import"./index-8V_7KnVa.js";import"./index-RlqtYVCt.js";import"./sys-help-2-wmLSzyeg.js";import"./TableOfContent-Mf9Sts_t.js";import"./slim-arrow-down-l-nI7xFy.js";import"./slim-arrow-up-d4V0quRW.js";import"./index-ENBflQbU.js";import"./index-uwxBr6_k.js";import"./ToggleButton-1Sq3aN58.js";import"./stopPropagation-dV8jBYUw.js";import"./index-o0_voJ1z.js";import"./overflow-4uVQM2ZZ.js";import"./debounce-F9irgL9Y.js";import"./index-JHEO4Lvx.js";import"./Media-vad9mEnH.js";import"./UnableToLoad-pJslSGIb.js";import"./IllustratedMessage-h6zO9AbK.js";import"./Title-ais60r-G.js";import"./i18n-defaults-Ei6bbCx5.js";import"./parameters-bundle.css-jS5Rgmp1.js";import"./sapIllus-Dialog-UnableToLoad-RKCJaSIM.js";import"./sapIllus-Scene-UnableToLoad-mYVabPF8.js";import"./sapIllus-Spot-UnableToLoad-ZpsEKsf6.js";import"./Person-nLahJlpT.js";import"./general-leave-request-Goj0ARpH.js";import"./index-xzZob41h.js";import"./index-4swF5S0e.js";import"./useIsomorphicId-G0VPUEKO.js";import"./index-AxV6Iu70.js";import"./ListItem-1LwUItaT.js";import"./List-ULaz1AMe.js";import"./ItemNavigation-EEPw8WIo.js";import"./TabbableElements-L1VqloMt.js";import"./debounce-8VpZswfd.js";import"./BusyIndicator-62o_Wm2L.js";import"./CheckBox-qp300a4y.js";import"./ValueState-zUcANXoY.js";import"./accept-Zb_2NnI-.js";import"./RadioButton-IP9quRNR.js";import"./slim-arrow-right-rA-yMh-Z.js";import"./CustomListItem-cEe1cjD4.js";import"./slideUp-EM1U0pkt.js";import"./animate-Pj1TncyK.js";import"./AnimationMode-YaIoTL-7.js";import"./ResponsivePopover-BeCPNVpL.js";import"./Dialog-ew6cMbV-.js";import"./ResponsivePopoverCommon.css-ei-Y16T2.js";import"./index--b-WshdE.js";import"./index-AySXidz9.js";import"./ValueState-I_-hGNIb.js";import"./index-W_ChQs9m.js";import"./index-7trN1_hd.js";import"./StandardListItem-sBLJV7JF.js";import"./index-oleLcrtF.js";import"./react-18-1WT2dSvK.js";import"./_baseForOwn-a7AeJH13.js";import"./mapValues-_kP3xGjM.js";import"./_baseUniq-_JZHYp0e.js";import"./index-PPLHz8o0.js";import"./index-7I0hdIjK.js";function Yt(n={}){const{wrapper:p}=Object.assign({},h(),n.components);return p?o.jsx(p,Object.assign({},n,{children:o.jsx(s,{})})):s();function s(){const t=Object.assign({h2:"h2",h1:"h1",code:"code",p:"p",strong:"strong",h3:"h3",pre:"pre"},h(),n.components);return o.jsxs(o.Fragment,{children:[o.jsx(P,{of:b}),`
+`,o.jsx(g,{}),`
+`,o.jsx(t.h2,{id:"example",children:"Example"}),`
+`,o.jsx(i,{of:c}),`
+`,o.jsx(t.h2,{id:"properties",children:"Properties"}),`
+`,o.jsx(x,{of:c}),`
+`,o.jsx(t.h1,{id:"more-examples",children:"More Examples"}),`
+`,o.jsxs(t.h2,{id:"objectpage-with-illustratedmessage-unabletoload-placeholder",children:["ObjectPage with IllustratedMessage (",o.jsx(t.code,{children:"UnableToLoad"}),") placeholder"]}),`
+`,o.jsx(i,{of:f}),`
+`,o.jsx(t.h2,{id:"objectpage-with-custom-actions-and-navigationactions-overflow-button",children:"ObjectPage with custom actions and navigationActions overflow button"}),`
+`,o.jsxs(t.p,{children:["The ",o.jsx(t.code,{children:"DynamicPageTitle"})," offers two props (",o.jsx(t.code,{children:"actionsToolbarProps"})," and ",o.jsx(t.code,{children:"navigationActionsToolbarProps"}),") to configure the props of the ",o.jsx(t.code,{children:"actions"})," and ",o.jsx(t.code,{children:"navigationActions"}),` toolbars.
+With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `,o.jsx(t.code,{children:"overflowButton"}),` prop.
+`,o.jsx(t.code,{children:"navigationActionsToolbarProps"})," only has an effect, if the ",o.jsx(t.code,{children:"navigationActions"})," toolbar is used. (width < 1280px)"]}),`
+`,o.jsx(i,{of:u}),`
+`,o.jsxs(t.h2,{id:"objectpagesection-with-hidden-titletext-and-custom-header",children:["ObjectPageSection with hidden ",o.jsx(t.code,{children:"titleText"})," and custom ",o.jsx(t.code,{children:"header"})]}),`
+`,o.jsx(i,{of:w}),`
+`,o.jsx(t.h2,{id:"tabbar-objectpage-with-fullscreen-section",children:"TabBar ObjectPage with fullscreen section"}),`
+`,o.jsxs(t.p,{children:["To render a single section in fullscreen mode, set its height to ",o.jsx(t.code,{children:"100%"}),"."]}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Note:"})," This is only supported for sections in ",o.jsx(t.code,{children:"TabBar"})," mode! Using multiple sections with ",o.jsx(t.code,{children:"height: 100%;"})," on the same page will most probably break your layout."]}),`
+`,o.jsx(i,{of:y}),`
+`,o.jsx(t.h3,{id:"example-section",children:"Example section"}),`
+`,o.jsx(t.pre,{children:o.jsx(t.code,{className:"language-jsx",children:`<ObjectPageSection titleText="Section with Overflow" id="section3" style={{ height: '100%', overflow: 'auto' }}>
+  <div style={{ height: '300%', background: 'lightyellow' }} />
+</ObjectPageSection>
+`})}),`
+`,o.jsx(S,{children:O}),`
+`,o.jsx(t.h2,{id:"dynamicpagetitle",children:"DynamicPageTitle"}),`
+`,o.jsx(r,{of:m}),`
+`,o.jsx(e,{of:m}),`
+`,o.jsx(t.h2,{id:"dynamicpageheader",children:"DynamicPageHeader"}),`
+`,o.jsx(r,{of:a}),`
+`,o.jsx(e,{of:a}),`
+`,o.jsx(t.h2,{id:"objectpagesection",children:"ObjectPageSection"}),`
+`,o.jsx(r,{of:d}),`
+`,o.jsx(e,{of:d}),`
+`,o.jsx(t.h2,{id:"objectpagesubsection",children:"ObjectPageSubSection"}),`
+`,o.jsx(r,{of:l}),`
+`,o.jsx(e,{of:l}),`
+`,o.jsx(j,{})]})}}export{Yt as default};
