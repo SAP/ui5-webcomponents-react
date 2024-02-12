@@ -1,0 +1,43 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './ObjectStatus.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+
+# More Examples
+
+<br />
+
+## ObjectStatus with default icons
+
+<Canvas of={ComponentStories.WithDefaultIcons} />
+
+## ObjectStatus with custom Icon
+
+<Canvas of={ComponentStories.WithCustomIcon} />
+
+## ObjectStatus with Icon only
+
+<Canvas of={ComponentStories.WithIconOnly} />
+
+## Inverted Object Status
+
+The Object Status has an inverted visualisation, which is used in cases when the information is crucial for the user’s actions and needs to stand out visually.
+
+<Canvas of={ComponentStories.InvertedObjectStatus} />
+
+<Footer />
