@@ -31,6 +31,10 @@ const simpleDataSet = [
 const meta = {
   title: 'Data Display / AnalyticalCard',
   component: AnalyticalCard,
+  // todo: remove after chromatic supports >=Chrome 120
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   argTypes: {
     header: {
       control: { disable: true }
