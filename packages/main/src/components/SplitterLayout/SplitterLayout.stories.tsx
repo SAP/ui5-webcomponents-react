@@ -22,7 +22,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   parameters: {
-    chromatic: { diffThreshold: 0.6 }
+    chromatic: {
+      diffThreshold: 0.6,
+      // todo: remove after chromatic supports >=Chrome 120
+      disableSnapshot: true
+    }
   },
   render(args) {
     return (
