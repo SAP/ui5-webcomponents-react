@@ -13,7 +13,12 @@ const meta = {
   },
   args: { style: { width: isChromatic ? '1200px' : '100%', height: '800px' } },
   parameters: {
-    chromatic: { delay: 1000, diffThreshold: 0.4 }
+    chromatic: {
+      delay: 1000,
+      diffThreshold: 0.4,
+      // todo: remove after chromatic supports >=Chrome 120
+      disableSnapshot: true
+    }
   }
 } satisfies Meta<typeof SplitterLayout>;
 
@@ -23,9 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   parameters: {
     chromatic: {
-      diffThreshold: 0.6,
-      // todo: remove after chromatic supports >=Chrome 120
-      disableSnapshot: true
+      diffThreshold: 0.6
     }
   },
   render(args) {
