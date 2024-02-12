@@ -134,6 +134,7 @@ const useStyles = createUseStyles(
       }
     },
     icon: {
+      boxSizing: 'initial',
       color: CustomThemingParameters.SplitterIconColor
     },
     lineBefore: {
