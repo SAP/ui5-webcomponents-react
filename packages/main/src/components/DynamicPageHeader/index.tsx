@@ -28,8 +28,10 @@ interface InternalProps extends DynamicPageHeaderPropTypes {
 const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
 /**
- * The dynamic page header contains the header content of the dynamic page.
+ * The `DynamicPageHeader` component is part of the `DynamicPage` family and is used to serve as header section of the `DynamicPage` and `ObjectPage`.
  * This component can be collapsed and pinned by the anchorbar.
+ *
+ * __Note:__ When used inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
  */
 const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref) => {
   const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;

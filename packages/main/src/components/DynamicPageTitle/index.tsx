@@ -133,6 +133,8 @@ const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) 
 /**
  * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
+ *
+ * __Note:__ When used inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
  */
 const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((props, ref) => {
   const {

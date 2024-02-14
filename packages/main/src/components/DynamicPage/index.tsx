@@ -33,18 +33,23 @@ export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'child
    * Defines the upper, always static, title section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
+   *
+   * __Note:__ When the `DynamicPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
   headerTitle?: ReactElement;
   /**
    * Defines the dynamic header section of the `DynamicPage`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
+   *
+   * __Note:__ When the `DynamicPageHeader` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
   headerContent?: ReactElement;
   /**
    * React element which defines the footer content.
    *
    * __Note:__ To preserve the intended design, please use only non-content based `height` values (`px`, `rem`, `vh`, etc.) as height of the `DynamicPage`.
+   *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
    */
   footer?: ReactElement;
