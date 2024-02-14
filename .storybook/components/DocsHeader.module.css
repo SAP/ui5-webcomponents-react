@@ -1,0 +1,37 @@
+.infoTable {
+  margin: 1rem 0;
+  border-spacing: 0;
+  width: unset;
+}
+
+.infoTable th,
+.infoTable td {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-align: start;
+  height: 1.5rem;
+}
+
+.infoTable th {
+  padding-inline-end: 1.25rem;
+  vertical-align: baseline;
+}
+
+.copyBtn {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  display: none;
+}
+
+.hoverTr {
+  position: relative;
+}
+
+.hoverTr:hover .copyBtn {
+  display: inline-block;
+}
+
+.infoTable td[data-import-cell='true'] {
+  padding-inline-end: 2.5rem;
+}

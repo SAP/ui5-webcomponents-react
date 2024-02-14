@@ -15,7 +15,8 @@ const meta = {
   },
   args: {
     alignContent: ToolbarAlign
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Toolbar>;
 
 export default meta;

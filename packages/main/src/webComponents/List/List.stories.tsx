@@ -21,7 +21,8 @@ const meta = {
     mode: ListMode.None,
     separators: ListSeparators.All,
     growing: ListGrowingMode.None
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof List>;
 
 export default meta;

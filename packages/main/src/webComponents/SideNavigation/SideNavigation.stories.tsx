@@ -24,7 +24,8 @@ const meta = {
         <SideNavigationItem text="History" icon={historyIcon} />
       </>
     )
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof SideNavigation>;
 
 export default meta;
