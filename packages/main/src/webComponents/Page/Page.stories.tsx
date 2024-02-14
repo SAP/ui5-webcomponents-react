@@ -38,7 +38,8 @@ const meta = {
     children: { control: { disable: true } },
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof Page>;
 export default meta;
 type Story = StoryObj<typeof meta>;

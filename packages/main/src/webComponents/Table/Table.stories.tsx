@@ -14,7 +14,8 @@ const meta = {
     columns: { control: { disable: true } },
     children: { control: { disable: true } }
   },
-  args: {}
+  args: {},
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Table>;
 
 export default meta;

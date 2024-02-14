@@ -2,11 +2,20 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Toolbar.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { OverflowToolbarButton, OverflowToolbarToggleButton, MessageStrip, MessageStripDesign } from '../..';
+import {
+  OverflowToolbarButton,
+  OverflowToolbarToggleButton,
+  MessageStrip,
+  MessageStripDesign,
+  ToolbarSpacer,
+  ToolbarSeparator
+} from '../..';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader
+  subComponents={['OverflowToolbarButton', 'OverflowToolbarToggleButton', 'ToolbarSpacer', 'ToolbarSeparator']}
+/>
 
 <MessageStrip
   design={MessageStripDesign.Warning}
@@ -232,5 +241,17 @@ const ToolbarComponent = () => {
 <Description of={OverflowToolbarToggleButton} />
 
 <ArgTypesWithNote of={OverflowToolbarToggleButton} />
+
+## ToolbarSpacer
+
+<Description of={ToolbarSpacer} />
+
+<ArgTypesWithNote of={ToolbarSpacer} />
+
+## ToolbarSeparator
+
+<Description of={ToolbarSeparator} />
+
+<ArgTypesWithNote of={ToolbarSeparator} />
 
 <Footer />

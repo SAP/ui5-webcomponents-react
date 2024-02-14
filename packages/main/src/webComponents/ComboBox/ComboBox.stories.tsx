@@ -18,7 +18,8 @@ const meta = {
   args: {
     valueState: ValueState.None,
     icon: <Icon name={employeeIcon} />
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof ComboBox>;
 
 export default meta;

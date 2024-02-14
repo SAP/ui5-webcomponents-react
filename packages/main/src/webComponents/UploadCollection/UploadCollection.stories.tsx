@@ -19,7 +19,8 @@ const meta = {
   },
   args: {
     mode: ListMode.None
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof UploadCollection>;
 
 export default meta;

@@ -12,7 +12,8 @@ const meta = {
     size: BusyIndicatorSize.Medium,
     delay: 1000,
     active: true
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof BusyIndicator>;
 export default meta;
 
