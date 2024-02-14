@@ -16,7 +16,8 @@ const meta = {
   args: {
     primaryCalendarType: CalendarType.Gregorian,
     selectionMode: CalendarSelectionMode.Single
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Calendar>;
 
 export default meta;

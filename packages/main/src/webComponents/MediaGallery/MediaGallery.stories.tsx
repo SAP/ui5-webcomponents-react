@@ -19,7 +19,8 @@ const meta = {
     layout: MediaGalleryLayout.Auto,
     menuHorizontalAlign: MediaGalleryMenuHorizontalAlign.Left,
     menuVerticalAlign: MediaGalleryMenuVerticalAlign.Bottom
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof MediaGallery>;
 
 export default meta;

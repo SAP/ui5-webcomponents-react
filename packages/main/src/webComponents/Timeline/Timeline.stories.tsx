@@ -10,7 +10,8 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } }
   },
-  args: {}
+  args: {},
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof Timeline>;
 
 export default meta;

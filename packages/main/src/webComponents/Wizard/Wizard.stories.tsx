@@ -26,7 +26,8 @@ const meta = {
     style: {
       height: '400px'
     }
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof Wizard>;
 
 export default meta;

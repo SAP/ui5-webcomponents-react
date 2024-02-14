@@ -27,7 +27,8 @@ const meta = {
         avatar={<Icon name={personIcon} />}
       />
     )
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Card>;
 
 export default meta;

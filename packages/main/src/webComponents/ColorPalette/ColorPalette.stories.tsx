@@ -9,7 +9,8 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } }
   },
-  args: {}
+  args: {},
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof ColorPalette>;
 
 export default meta;

@@ -2,6 +2,7 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { NotificationAction } from '../NotificationAction';
+import { NotificationListItem } from '../NotificationListItem';
 import * as ComponentStories from './NotificationListGroupItem.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -20,6 +21,11 @@ import { excludePropsForAbstract } from '@sb/utils';
 <ControlsWithNote of={ComponentStories.Default} />
 
 <Markdown>{SubcomponentsSection}</Markdown>
+
+## NotificationListItem
+
+<Description of={NotificationListItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={NotificationListItem} />
 
 ## NotificationAction
 

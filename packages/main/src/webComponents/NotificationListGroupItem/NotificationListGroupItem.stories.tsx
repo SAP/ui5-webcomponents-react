@@ -24,7 +24,8 @@ const meta = {
         <NotificationAction icon="message-error" text="Reject all" />
       </>
     )
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof NotificationListGroupItem>;
 
 export default meta;

@@ -12,7 +12,8 @@ const meta = {
   args: {
     design: BreadcrumbsDesign.Standard,
     separatorStyle: BreadcrumbsSeparatorStyle.Slash
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;
