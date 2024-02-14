@@ -120,7 +120,7 @@ export const InfoTable = ({ since, subComponents }: InfoTableProps) => {
   );
 };
 
-export const DocsHeader = ({ since, subComponents }) => {
+export const DocsHeader = ({ since, subComponents }: InfoTableProps) => {
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
