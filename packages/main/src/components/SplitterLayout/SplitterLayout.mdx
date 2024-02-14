@@ -26,7 +26,54 @@ import { SplitterElement } from '../SplitterElement';
 
 ## SplitterLayout with non-resizable areas & areas with min-width
 
-<Canvas of={ComponentStories.LimitedAreas} />
+<Canvas of={ComponentStories.LimitedAreas} sourceState="none" />
+
+<details>
+
+<summary>Show Code</summary>
+
+```tsx
+function SplitterElementContent({ text, background = 'transparent' }) {
+  return (
+    <FlexBox style={{ height: '100%', width: '100%', background }} alignItems="Center" justifyContent="Center">
+      <Text>{text}</Text>
+    </FlexBox>
+  );
+}
+
+function SplitterLayoutComponent(props) {
+  return (
+    <SplitterLayout {...props}>
+      <SplitterElement size="10%">
+        <SplitterElementContent text="Content 1 - (size: 10%)" background="cadetblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 2" background="skyblue" />
+      </SplitterElement>
+      <SplitterElement minSize={200}>
+        <SplitterElementContent text="Content 3 (minSize: 200)" background="lightblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 4" background="paleturquoise" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 5" background="lightskyblue" />
+      </SplitterElement>
+      <SplitterElement resizable={false} size="150px">
+        <SplitterElementContent text="Content 6 (not resizable - size: 150px)" background="powderblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 7" background="aliceblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 8" background="lightsteelblue" />
+      </SplitterElement>
+    </SplitterLayout>
+  );
+}
+```
+
+</details>
 
 ## Nested SplitterLayouts
 
