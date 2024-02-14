@@ -1,10 +1,17 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta } from '@storybook/react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef } from 'react';
+import { createPortal } from 'react-dom';
 import { ToastPlacement } from '../../enums/index.js';
 import { Button } from '../Button/index.js';
-import { Toast } from './CodeGen.js';
+import type { ToastDomRef, ToastPropTypes } from './index.js';
 import { Toast as OriginalToast } from './index.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const Toast = forwardRef<ToastDomRef, ToastPropTypes>((args, ref) =>
+  createPortal(<OriginalToast {...args} ref={ref} />, document.body)
+);
+Toast.displayName = 'Toast';
 
 const meta = {
   title: 'Modals & Popovers / Toast',

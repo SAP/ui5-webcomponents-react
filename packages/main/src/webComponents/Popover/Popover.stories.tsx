@@ -2,7 +2,8 @@ import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import { clsx } from 'clsx';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { BarDesign } from '../../enums/BarDesign';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
@@ -14,8 +15,13 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { Popover } from './CodeGen';
+import type { PopoverDomRef, PopoverPropTypes } from './index';
 import { Popover as OriginalPopover } from './index';
+
+const Popover = forwardRef<PopoverDomRef, PopoverPropTypes>((args, ref) =>
+  createPortal(<OriginalPopover {...args} ref={ref} />, document.body)
+);
+Popover.displayName = 'Popover';
 
 const meta = {
   title: 'Modals & Popovers / Popover',

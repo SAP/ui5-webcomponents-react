@@ -1,11 +1,19 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { MessageBoxActions } from '../../enums/MessageBoxActions';
 import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
+import type { DialogDomRef } from '../../webComponents';
 import { Button } from '../../webComponents/Button/index';
-import { MessageBox } from './CodeGen';
+import type { MessageBoxPropTypes } from './index.js';
 import { MessageBox as OriginalMessageBox } from './index.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((args, ref) =>
+  createPortal(<OriginalMessageBox {...args} ref={ref} />, document.body)
+);
+MessageBox.displayName = 'MessageBox';
 
 const meta = {
   title: 'Modals & Popovers / MessageBox',

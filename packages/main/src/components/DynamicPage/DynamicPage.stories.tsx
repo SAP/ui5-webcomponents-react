@@ -33,7 +33,6 @@ import {
   VariantItem,
   VariantManagement
 } from '../..';
-import { SpacingSpan } from './CodeGen';
 import { DynamicPage } from './index.js';
 
 const meta = {
@@ -106,7 +105,7 @@ const meta = {
             <Label>Halway: 23L</Label>
             <Label>Rack: 34</Label>
           </FlexBox>
-          {SpacingSpan}
+          <span style={{ width: '1rem' }} />
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Availability:</Label>
             <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>

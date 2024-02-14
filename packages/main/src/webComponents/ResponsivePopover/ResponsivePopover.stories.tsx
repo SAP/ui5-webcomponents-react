@@ -1,7 +1,8 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import { clsx } from 'clsx';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
@@ -12,9 +13,15 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { ResponsivePopover } from './CodeGen.js';
+import type { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from './index';
 import { ResponsivePopover as OriginalResponsivePopover } from './index';
 import '@ui5/webcomponents-icons/dist/settings.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
+  createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)
+);
+ResponsivePopover.displayName = 'ResponsivePopover';
 
 const meta = {
   title: 'Modals & Popovers / ResponsivePopover',
