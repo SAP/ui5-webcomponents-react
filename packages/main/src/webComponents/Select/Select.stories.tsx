@@ -1,15 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import soccerIcon from '@ui5/webcomponents-icons/dist/soccer.js';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ValueState } from '../../enums/index.js';
 import { Icon } from '../Icon';
 import { Option } from '../Option/index.js';
+import type { SelectMenuDomRef, SelectMenuPropTypes } from '../SelectMenu';
+import { SelectMenu as OriginalSelectMenu } from '../SelectMenu';
 import { SelectMenuOption } from '../SelectMenuOption';
-import { SelectMenu } from './CodeGen';
 import { Select } from './index.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const SelectMenu = forwardRef<SelectMenuDomRef, SelectMenuPropTypes>((args, ref) =>
+  createPortal(<OriginalSelectMenu {...args} ref={ref} />, document.body)
+);
+SelectMenu.displayName = 'SelectMenu';
 
 const meta = {
   title: 'Inputs / Select',
@@ -45,7 +53,6 @@ export const WithSelectMenu: Story = {
   name: 'with SelectMenu',
   args: { menu: 'selectMenu' },
   render: (args) => {
-    const [open, setOpen] = useState(false);
     return (
       <>
         <Select {...args} />

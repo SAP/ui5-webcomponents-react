@@ -1,20 +1,37 @@
 import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import { useRef, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ButtonDesign, FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
+import type {
+  DialogDomRef,
+  DialogPropTypes,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes
+} from '../../webComponents';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-// todo replace once `createPortal` is supported
-import { Dialog } from '../../webComponents/Dialog/CodeGen.js';
+import { Dialog as OriginalDialog } from '../../webComponents/Dialog';
 import { Link } from '../../webComponents/Link/index.js';
-// todo replace once `createPortal` is supported
-import { ResponsivePopover } from '../../webComponents/ResponsivePopover/CodeGen.js';
+import { ResponsivePopover as OriginalResponsivePopover } from '../../webComponents/ResponsivePopover';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageViewButton } from '../MessageViewButton/index.js';
 import { MessageItem } from './MessageItem.js';
 import { MessageView } from './index.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
+  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
+);
+Dialog.displayName = 'Dialog';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
+  createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)
+);
+ResponsivePopover.displayName = 'ResponsivePopover';
 
 const meta = {
   title: 'User Feedback / MessageView',
