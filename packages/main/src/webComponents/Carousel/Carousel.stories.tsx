@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CarouselArrowsPlacement } from '../../enums/CarouselArrowsPlacement';
-import { Img1, Img2, Img3 } from './CodeGen';
 import { Carousel } from './index';
 
 const meta = {
@@ -21,9 +20,9 @@ export const Default: Story = {
   render(args) {
     return (
       <Carousel {...args}>
-        {Img1}
-        {Img2}
-        {Img3}
+        <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample1.jpg" alt="img-sample 1" />
+        <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample2.jpg" alt="img-sample 2" />
+        <img src="https://sap.github.io/ui5-webcomponents/assets/images/sample3.jpg" alt="img-sample 3" />
       </Carousel>
     );
   }

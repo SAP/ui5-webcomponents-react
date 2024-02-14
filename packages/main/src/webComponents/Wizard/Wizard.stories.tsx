@@ -13,7 +13,6 @@ import { Label } from '../Label/index.js';
 import { MessageStrip } from '../MessageStrip/index.js';
 import { Title } from '../Title/index.js';
 import { WizardStep } from '../WizardStep/index.js';
-import { Br } from './CodeGen.js';
 import { Wizard } from './index.js';
 
 const meta = {
@@ -113,7 +112,7 @@ export const Default: Story = {
             turpis a, molestie aliquet dui. Donec pulvinar, sapien
           </Label>
           <CheckBox onChange={handleStep2Completed} text="Step Completed" />
-          {Br}
+          <br />
           {!hidden['step3Btn'] && (
             <Button design={ButtonDesign.Emphasized} onClick={goToStep3}>
               Step 3
@@ -137,7 +136,7 @@ export const Default: Story = {
             turpis a, molestie aliquet dui. Donec pulvinar, sapien
           </Label>
           <Input placeholder="Item Price" onInput={handlePriceInput} />
-          {Br}
+          <br />
           {!hidden['finalizeBtn'] && (
             <Button design={ButtonDesign.Emphasized} onClick={finalizeWizard}>
               Finalize
