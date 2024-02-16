@@ -16,7 +16,7 @@ export interface SingleTodoHandle {
   getBreadCrumbItems: (todo?: Todo) => ReactNode;
 }
 
-// To simulate a slow loader increase the `delay` to simulate a failed request set `shouldThrow` to `true`
+// To simulate a slow loader increase the `delay`, to simulate a failed request set `shouldThrow` to `true`
 async function toDosLoader() {
   const todosPromise = fetchToDos({ delay: 500, shouldThrow: false });
   return defer({ todos: todosPromise });
