@@ -29,9 +29,9 @@ export const todos: Todo[] = [
   },
   {
     id: 4,
-    title: 'Contribute code or a monetary donation to an open-source software project',
+    title: 'Contribute code to an open-source software project',
     details:
-      'Support the open-source community by contributing your coding skills or making a monetary donation to a project you believe in. Your contribution can help improve software accessibility and innovation.',
+      'Support the open-source community by contributing your coding skills to a project you believe in. Your contribution can help improve software accessibility and innovation.',
     completed: false
   },
   {

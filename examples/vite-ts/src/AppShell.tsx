@@ -70,7 +70,7 @@ function AppShell() {
             onClick={() => {
               navigate(-1);
             }}
-            disabled={!!location.key && location.key !== 'default'}
+            disabled={!location.key || location.key === 'default'}
           />
         }
       >
