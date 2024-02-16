@@ -1,0 +1,8 @@
+.card {
+  box-sizing: border-box;
+}
+
+.list {
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
