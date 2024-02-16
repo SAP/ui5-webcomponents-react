@@ -22,7 +22,7 @@ async function toDosLoader() {
   return defer({ todos: todosPromise });
 }
 
-async function singleToDoLoader({ params }) {
+async function singleToDoLoader({ params }: { params: { id: string } }) {
   const todos = (await fetchToDos()) as Todo[];
   const paramId = parseInt(params.id, 10);
   return todos.find((item) => item.id === paramId) ?? null;
