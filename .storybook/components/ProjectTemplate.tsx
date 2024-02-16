@@ -84,19 +84,17 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
               className={classes.deprecationNotice}
             />
           )}
-          <span>
-            <Link design={LinkDesign.Emphasized} href={href}>
-              View Example
-            </Link>
-            {stackBlitzHref && (
-              <>
-                |
-                <Link design={LinkDesign.Emphasized} href={stackBlitzHref}>
-                  View in StackBlitz
-                </Link>
-              </>
-            )}
-          </span>
+          <Link design={LinkDesign.Emphasized} href={href}>
+            View Example
+          </Link>
+          {stackBlitzHref && (
+            <>
+              |
+              <Link design={LinkDesign.Emphasized} href={stackBlitzHref}>
+                View in StackBlitz
+              </Link>
+            </>
+          )}
           {!isTemplate && (
             <>
               <br />
