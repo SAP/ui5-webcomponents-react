@@ -25,6 +25,7 @@ interface ProjectTemplatePropTypes {
   children: ReactNode;
   deprecationNotice?: string;
   isTemplate?: boolean;
+  stackBlitzHref?: string;
 }
 
 addCustomCSSWithScoping(
@@ -33,7 +34,18 @@ addCustomCSSWithScoping(
 );
 
 export function ProjectTemplate(props: ProjectTemplatePropTypes) {
-  const { title, subtitle, logo, logoAttribution, isTypeScript, children, href, deprecationNotice, isTemplate } = props;
+  const {
+    title,
+    subtitle,
+    logo,
+    logoAttribution,
+    isTypeScript,
+    children,
+    href,
+    deprecationNotice,
+    isTemplate,
+    stackBlitzHref
+  } = props;
 
   return (
     <ThemeProvider>
@@ -72,10 +84,19 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
               className={classes.deprecationNotice}
             />
           )}
-
-          <Link design={LinkDesign.Emphasized} href={href}>
-            View Example
-          </Link>
+          <span>
+            <Link design={LinkDesign.Emphasized} href={href}>
+              View Example
+            </Link>
+            {stackBlitzHref && (
+              <>
+                |
+                <Link design={LinkDesign.Emphasized} href={stackBlitzHref}>
+                  View in StackBlitz
+                </Link>
+              </>
+            )}
+          </span>
           {!isTemplate && (
             <>
               <br />
