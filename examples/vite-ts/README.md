@@ -1,4 +1,4 @@
-# UI5 Web Components for React - Vite + TypeScript Template
+# UI5 Web Components for React - Vite + TypeScript + React Router Example
 
 ## How to use this template
 
@@ -38,6 +38,8 @@ npm run test
 ```
 
 Open tests in Chrome:
+
+**End-to-End-Tests**
 
 ```bash
 npm run testE2E:open
