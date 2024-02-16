@@ -3,7 +3,7 @@ import ErrorScreenIllustration from '@ui5/webcomponents-fiori/dist/illustrations
 import { BreadcrumbsItem, IllustratedMessage, ThemeProvider } from '@ui5/webcomponents-react';
 import { ReactNode, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, defer, LoaderFunctionArgs, RouterProvider } from 'react-router-dom';
 import './index.css';
 import AppShell from './AppShell.tsx';
 import { fetchToDos } from './mockImplementations/mockAPIs.ts';
@@ -22,7 +22,10 @@ async function toDosLoader() {
   return defer({ todos: todosPromise });
 }
 
-async function singleToDoLoader({ params }: { params: { id: string } }) {
+async function singleToDoLoader({ params }: LoaderFunctionArgs) {
+  if (!params.id) {
+    return null;
+  }
   const todos = (await fetchToDos()) as Todo[];
   const paramId = parseInt(params.id, 10);
   return todos.find((item) => item.id === paramId) ?? null;
