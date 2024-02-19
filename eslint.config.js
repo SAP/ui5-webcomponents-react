@@ -115,9 +115,7 @@ const storybookConfig = [
       'react/prop-types': 'off',
       // some samples can include unused vars to show the API / signature
       '@typescript-eslint/no-unused-vars': 'warn',
-      'react/no-unescaped-entities': 'off',
-      // the CSF-3 render() functions are not detected as react components
-      'react-hooks/rules-of-hooks': 'off'
+      'react/no-unescaped-entities': 'off'
     }
   }
 ];
