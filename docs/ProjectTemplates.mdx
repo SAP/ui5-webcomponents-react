@@ -1,6 +1,6 @@
-import { Footer, ProjectTemplate, TableOfContent } from '@sb/components';
+import { Footer, ProjectTemplate, TableOfContent, LabelWithWrapping } from '@sb/components';
 import { Meta } from '@storybook/blocks';
-import { FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label } from '@ui5/webcomponents-react';
+import { FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label, Link, WrappingType } from '@ui5/webcomponents-react';
 import NextLogo from '@sb/images/logo-nextjs.svg';
 import ViteLogo from '@sb/images/logo-vitejs.svg';
 
@@ -42,6 +42,7 @@ A curated list of minimal project templates and examples to get started using UI
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/templates/vite-ts'}
     isTypeScript
     isTemplate
+    stackBlitzHref="https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/templates/vite-ts?file=src%2FApp.tsx"
   />
 </FlexBox>
 
@@ -90,10 +91,20 @@ A curated list of minimal project templates and examples to get started using UI
     logoAttribution={'Vite.js Logo. Original Source: https://github.com/vitejs/vite/blob/main/docs/public/logo.svg '}
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/vite-ts'}
     isTypeScript
+    stackBlitzHref="https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/examples/vite-ts?file=src%2Fmain.tsx"
   >
     <ul>
       <li>
+        <LabelWithWrapping>Routing and Data Fetching using the createBrowserRouter of React Router</LabelWithWrapping>
+      </li>
+      <li>
         <Label>Cypress Component Test setup</Label>
+      </li>
+      <li>
+        <Label>Cypress E2E Test setup</Label>
+      </li>
+      <li>
+        <Label>Theming</Label>
       </li>
     </ul>
   </ProjectTemplate>

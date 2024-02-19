@@ -1,0 +1,3 @@
+.popover::part(content) {
+  padding: 0;
+}
