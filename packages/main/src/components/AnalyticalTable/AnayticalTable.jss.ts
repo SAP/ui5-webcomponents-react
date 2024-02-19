@@ -1,5 +1,17 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { IndicationColor } from '../../enums/index.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
+
+function generateIndicationColors() {
+  const indicationColorClasses = {};
+  Object.entries(IndicationColor).forEach(([key, value]) => {
+    const indicationNumber = parseInt(value.replace('Indication', ''));
+    indicationColorClasses[key.toLowerCase()] = {
+      background: ThemingParameters[`sapIndicationColor_${indicationNumber}`]
+    };
+  });
+  return indicationColorClasses;
+}
 
 const styles = {
   table: {
@@ -225,18 +237,19 @@ const styles = {
     fontWeight: 'normal',
     borderBlockEnd: `1px solid ${ThemingParameters.sapList_BorderColor}`
   },
-  valueStateSuccess: {
+  success: {
     backgroundColor: ThemingParameters.sapSuccessColor
   },
-  valueStateError: {
+  error: {
     backgroundColor: ThemingParameters.sapErrorColor
   },
-  valueStateWarning: {
+  warning: {
     backgroundColor: ThemingParameters.sapWarningColor
   },
-  valueStateInformation: {
+  information: {
     backgroundColor: ThemingParameters.sapInformationColor
   },
+  ...generateIndicationColors(),
   hiddenSmartColMeasure: {
     visibility: 'hidden',
     position: 'fixed',

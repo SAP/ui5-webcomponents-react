@@ -24,7 +24,7 @@
       "name": "Velez Powell",
       "age": 28
     },
-    "status": "Success"
+    "status": "Error"
   },
   {
     "name": "Sally Garner",
@@ -42,7 +42,7 @@
       "name": "Cameron Reyes",
       "age": 30
     },
-    "status": "None"
+    "status": "Indication01"
   },
   {
     "name": "Sofia Crosby",
@@ -51,7 +51,7 @@
       "name": "Booth Howard",
       "age": 32
     },
-    "status": "Information"
+    "status": "Indication02"
   },
   {
     "name": "Sophie Keller",
@@ -60,7 +60,7 @@
       "name": "Jenifer James",
       "age": 21
     },
-    "status": "Error"
+    "status": "Indication03"
   },
   {
     "name": "Dillon Witt",
@@ -69,7 +69,7 @@
       "name": "Alma Leblanc",
       "age": 74
     },
-    "status": "Warning"
+    "status": "Indication04"
   },
   {
     "name": "Alexandra Fields",
@@ -78,7 +78,7 @@
       "name": "Todd Crane",
       "age": 28
     },
-    "status": "Error"
+    "status": "Indication05"
   },
   {
     "name": "Sherman Larson",
@@ -87,7 +87,7 @@
       "name": "England Keith",
       "age": 51
     },
-    "status": "None"
+    "status": "Indication06"
   },
   {
     "name": "Elisa Kim",
@@ -96,7 +96,7 @@
       "name": "Barker Lopez",
       "age": 81
     },
-    "status": "None"
+    "status": "Indication07"
   },
   {
     "name": "Bridgett Sampson",
@@ -105,7 +105,7 @@
       "name": "Payne Ramsey",
       "age": 23
     },
-    "status": "Information"
+    "status": "Indication08"
   },
   {
     "name": "Lindsey Winters",

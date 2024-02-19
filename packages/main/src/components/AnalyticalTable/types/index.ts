@@ -7,6 +7,7 @@ import type {
   AnalyticalTableSelectionMode,
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
+  IndicationColor,
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
@@ -16,6 +17,13 @@ import type {
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
+
+export interface ScrollToRefType {
+  horizontalScrollToOffset: (offset: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  horizontalScrollToIndex: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  scrollToIndex: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  scrollToOffset: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+}
 
 export interface ReactTableHooks {
   useOptions: any[];
@@ -314,6 +322,8 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
   ) => void;
 }
 
+type HighlightColor = ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
+
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the columns array where you can define the configuration for each column.
@@ -433,12 +443,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Accessor for showing the row highlights. Only taken into account when `withRowHighlight` is set.
    *
-   * The value of this prop can either be a `string` pointing to a `ValueState` in your dataset
-   * or an accessor function which should return a `ValueState`.
+   * The value of this prop can either be a `string` pointing to a `ValueState` or an `IndicationColor` in your dataset
+   * or an accessor function which should return a `ValueState` or an `IndicationColor`.
    *
    * __Default:__ `"status"`
    */
-  highlightField?: string | ((row: Record<any, any>) => ValueState);
+  highlightField?: string | ((row: Record<any, any>) => HighlightColor);
   /**
    * Defines whether columns are filterable.
    */

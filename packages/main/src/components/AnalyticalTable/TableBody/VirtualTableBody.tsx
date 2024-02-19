@@ -4,8 +4,12 @@ import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
-import type { ScrollToRefType } from '../interfaces.js';
-import type { AnalyticalTablePropTypes, DivWithCustomScrollProp, TriggerScrollState } from '../types/index.js';
+import type {
+  AnalyticalTablePropTypes,
+  DivWithCustomScrollProp,
+  ScrollToRefType,
+  TriggerScrollState
+} from '../types/index.js';
 import { getSubRowsByString } from '../util/index.js';
 import { EmptyRow } from './EmptyRow.js';
 import { RowSubComponent as SubComponent } from './RowSubComponent.js';

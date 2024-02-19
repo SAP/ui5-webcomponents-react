@@ -10,7 +10,8 @@ import {
   AnalyticalTableVisibleRowCountMode,
   ValueState,
   Button,
-  Input
+  Input,
+  IndicationColor
 } from '../..';
 import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
@@ -1513,6 +1514,9 @@ describe('AnalyticalTable', () => {
       }
       return { ...item, highlight: ValueState.Success };
     });
+    const indicationData = new Array(9)
+      .fill('')
+      .map((_, index) => ({ status: IndicationColor[`Indication0${index}`] }));
     cy.mount(<AnalyticalTable header="Table Title" data={localData} columns={columns} withRowHighlight />);
     cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
       .should('have.length', 4)
@@ -1541,6 +1545,20 @@ describe('AnalyticalTable', () => {
           cy.wrap($highlightCell).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
         } else {
           cy.wrap($highlightCell).should('have.css', 'background-color', successColor);
+        }
+      });
+
+    //indication colors
+    cy.mount(<AnalyticalTable data={indicationData} columns={columns} withRowHighlight />);
+    cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
+      .should('have.length', 9)
+      .each(($highlightCell, index) => {
+        if (index === 0) {
+          // no color
+          cy.wrap($highlightCell).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+        } else {
+          const color = cssVarToRgb(ThemingParameters[`sapIndicationColor_${index}`]);
+          cy.wrap($highlightCell).should('have.css', 'background-color', color);
         }
       });
   });
