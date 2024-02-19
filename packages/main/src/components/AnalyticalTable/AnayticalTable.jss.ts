@@ -149,14 +149,6 @@ const styles = {
   trActive: {
     '&:hover': {
       cursor: 'pointer'
-    },
-    '&:active': {
-      backgroundColor: ThemingParameters.sapList_Active_Background,
-      '& $tableCell': {
-        borderInlineEnd: `1px solid ${ThemingParameters.sapList_Active_Background}`,
-        color: `${ThemingParameters.sapList_Active_TextColor}`,
-        '--sapTextColor': ThemingParameters.sapList_Active_TextColor
-      }
     }
   },
   tableGroupHeader: {
