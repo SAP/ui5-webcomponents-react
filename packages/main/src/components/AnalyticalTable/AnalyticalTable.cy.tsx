@@ -1922,8 +1922,14 @@ describe('AnalyticalTable', () => {
     cy.findByText('Selected: {"0":true,"1":true,"2":true,"3":true}').should('be.visible');
   });
 
-  it('a11y: grouped, filtered, sorted, headerLabel', () => {
-    cy.mount(<AnalyticalTable columns={columns} data={data} groupable filterable sortable />);
+  it('a11y: grouped, filtered, sorted, headerLabel, cellLabel', () => {
+    const customCellColumn = {
+      Header: 'Custom',
+      id: 'custom',
+      Cell: () => 'Custom Content',
+      cellLabel: ({ cell }) => `${cell.cellLabel} custom aria-label`
+    };
+    cy.mount(<AnalyticalTable columns={[...columns, customCellColumn]} data={data} groupable filterable sortable />);
     cy.findByText('Name').click();
     cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'ascending');
@@ -1972,6 +1978,11 @@ describe('AnalyticalTable', () => {
       'have.attr',
       'aria-label',
       'Custom Label '
+    );
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="4"]').should(
+      'have.attr',
+      'aria-label',
+      'Custom  custom aria-label'
     );
   });
 
