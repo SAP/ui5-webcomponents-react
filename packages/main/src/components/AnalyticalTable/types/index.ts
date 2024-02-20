@@ -94,6 +94,11 @@ export interface AnalyticalTableState {
   triggerScroll?: TriggerScrollState;
 }
 
+interface CellLabelParam {
+  instance: Record<string, any>;
+  cell: Record<string, any>;
+}
+
 interface ScaleWidthModeOptions {
   /**
    * Defines the string used for internal width calculation of custom header cells (e.g. `Header: () => <Link>Click me!</Link>`).
@@ -148,6 +153,14 @@ export interface AnalyticalTableColumnDefinition {
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
   Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
+  /**
+   * Defines a function that receives an object as a parameter, including the cell and table instance, and should return the `aria-label` of the current cell.
+   *
+   * __Note:__ Use this property if there is no textual content available through the dataset (e.g. no `accessor` field available), or if you want to provide additional context when navigating to the respective cell for screen readers.
+   *
+   * __Note:__ To retrieve the internal `aria-label`, utilize the `cell.cellLabel` property.
+   */
+  cellLabel?: (param?: CellLabelParam) => string;
   /**
    * Cell width, if not set the table will distribute all columns without a width evenly.
    */
