@@ -112,6 +112,9 @@ const meta = {
               <Button icon="delete" disabled={isOverlay} />
             </FlexBox>
           );
+        },
+        cellLabel: ({ cell }) => {
+          return `${cell.cellLabel} press TAB to focus active elements inside this cell`;
         }
       }
     ],

@@ -62,6 +62,11 @@ const setCellProps = (cellProps, { cell, instance }) => {
       updatedCellProps['aria-label'] += `${value ?? ''} ${translatableTexts.selectA11yText}`;
     }
   }
+  const { cellLabel } = cell.column;
+  if (typeof cellLabel === 'function') {
+    cell.cellLabel = updatedCellProps['aria-label'];
+    updatedCellProps['aria-label'] = cellLabel({ cell, instance });
+  }
   return [cellProps, updatedCellProps];
 };
 
