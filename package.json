@@ -76,6 +76,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.8.0",
+    "glob": "^10.3.10",
     "handlebars": "^4.7.7",
     "husky": "^9.0.6",
     "identity-obj-proxy": "^3.0.0",
