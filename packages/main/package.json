@@ -24,6 +24,7 @@
     "./package.json": "./package.json",
     "./jestSetup": "./jestSetup.js",
     "./jestSetup.js": "./jestSetup.js",
+    "./styles": "./dist/css/index.css",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
