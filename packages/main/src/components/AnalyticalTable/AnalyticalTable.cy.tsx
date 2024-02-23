@@ -2910,6 +2910,52 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="6"]').should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, 260)');
   });
 
+  const dataWithEmptyFields = [
+    {
+      age: 0,
+      friend: {
+        name: null,
+        age: undefined
+      }
+    },
+    {
+      name: 'A',
+      age: 1337,
+      friend: {
+        name: 'B',
+        age: -2
+      }
+    }
+  ];
+  it('useAnnounceEmptyCells', () => {
+    cy.mount(<AnalyticalTable data={dataWithEmptyFields} columns={columns} />);
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name ');
+    cy.mount(
+      <AnalyticalTable
+        data={dataWithEmptyFields}
+        columns={columns}
+        tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
+      />
+    );
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
+      'have.attr',
+      'aria-label',
+      'Name  Empty'
+    );
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age ');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should(
+      'have.attr',
+      'aria-label',
+      'Friend Name  Empty'
+    );
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
+      'have.attr',
+      'aria-label',
+      'Custom Label  Empty'
+    );
+    cy.get('[data-visible-row-index="2"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name ');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
