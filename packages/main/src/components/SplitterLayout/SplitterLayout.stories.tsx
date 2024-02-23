@@ -15,9 +15,7 @@ const meta = {
   parameters: {
     chromatic: {
       delay: 1000,
-      diffThreshold: 0.4,
-      // todo: remove after chromatic supports >=Chrome 120
-      disableSnapshot: true
+      diffThreshold: 0.4
     }
   }
 } satisfies Meta<typeof SplitterLayout>;
