@@ -1,6 +1,6 @@
-import { getCustomElementsScopingSuffix } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { Ref } from 'react';
 import { cloneElement } from 'react';
+import { getTagNameWithoutScopingSuffix } from '../../internal/utils.js';
 
 const inputTagNames = new Set([
   'UI5-COMBOBOX',
@@ -17,8 +17,7 @@ const inputTagNames = new Set([
 
 export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
-  const tagNameSuffix = getCustomElementsScopingSuffix().toUpperCase();
-  const tagNameWithoutSuffix = tagName.replace(`-${tagNameSuffix}`, '');
+  const tagNameWithoutSuffix = getTagNameWithoutScopingSuffix(tagName);
 
   let filterItemProps = {};
   if (inputTagNames.has(tagNameWithoutSuffix)) {
