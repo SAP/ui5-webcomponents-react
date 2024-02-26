@@ -27,4 +27,14 @@ describe('ThemeProvider', () => {
 
     cy.window().its('@ui5/webcomponents-react').should('not.be.empty');
   });
+
+  it('injects css via JS', () => {
+    cy.mount(<span>Hello World</span>);
+    cy.get('html').should('have.css', '--_ui5wcr_ObjectPage_SectionTitleLineHeight', '4rem');
+  });
+
+  it('does not inject CSS when staticCssInjected is true', () => {
+    cy.mount(<span>Hello World</span>, { themeProviderProps: { staticCssInjected: true } });
+    cy.get('html').should('not.have.css', '--_ui5wcr_ObjectPage_SectionTitleLineHeight');
+  });
 });
