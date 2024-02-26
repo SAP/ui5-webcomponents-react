@@ -123,7 +123,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
       </Text>
       {isOverflow && (
         <>
-          <span className={classes.ellipsis}>{showOverflowInPopover || collapsed ? '... ' : ' '}</span>
+          <span className={classes.ellipsis}>{showOverflowInPopover || collapsed ? '… ' : ' '}</span>
           <Link
             accessibleName={
               showOverflowInPopover
