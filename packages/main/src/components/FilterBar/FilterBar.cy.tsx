@@ -29,19 +29,19 @@ describe('FilterBar.cy.tsx', () => {
     );
 
     cy.findByText('Classification').should('be.visible');
-    cy.get('ui5-select').should('be.visible');
+    cy.get('[ui5-select]').should('be.visible');
 
     cy.findByText('Hide Filter Bar').click();
     cy.get('@toggleSpy').should('have.been.calledOnce');
 
     cy.findByText('Classification').should('not.be.visible');
-    cy.get('ui5-select').should('not.be.visible');
+    cy.get('[ui5-select]').should('not.be.visible');
 
     cy.findByText('Show Filter Bar').click();
     cy.get('@toggleSpy').should('have.been.calledTwice');
 
     cy.findByText('Classification').should('be.visible');
-    cy.get('ui5-select').should('be.visible');
+    cy.get('[ui5-select]').should('be.visible');
 
     cy.mount(
       <FilterBar onToggleFilters={toggle} hideToggleFiltersButton>
@@ -133,7 +133,7 @@ describe('FilterBar.cy.tsx', () => {
         cy.findByText('Show Values').click();
       }
 
-      const checkboxes = cy.get('ui5-checkbox');
+      const checkboxes = cy.get('[ui5-checkbox]');
       // hidden select-all checkbox is also counted
       checkboxes.should('have.length', 4);
 
@@ -238,7 +238,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 1);
 
-    cy.findByPlaceholderText('Search for filters').shadow().find('ui5-icon').click();
+    cy.findByPlaceholderText('Search for filters').shadow().find('[ui5-icon]').click();
 
     cy.findAllByText('INPUT').should('have.length', 2);
     cy.findAllByText('SWITCH').should('have.length', 2);

@@ -1,3 +1,4 @@
+import { getCustomElementsScopingSuffix } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { Ref } from 'react';
 import { cloneElement } from 'react';
 
@@ -16,11 +17,14 @@ const inputTagNames = new Set([
 
 export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
+  const tagNameSuffix = getCustomElementsScopingSuffix().toUpperCase();
+  const tagNameWithoutSuffix = tagName.replace(`-${tagNameSuffix}`, '');
+
   let filterItemProps = {};
-  if (inputTagNames.has(tagName)) {
+  if (inputTagNames.has(tagNameWithoutSuffix)) {
     filterItemProps = { value: ref.value ?? '' };
   }
-  if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
+  if (tagNameWithoutSuffix === 'UI5-SELECT' || tagNameWithoutSuffix === 'UI5-MULTI-COMBOBOX') {
     const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
       .map((item, index) => (item.selected ? index : false))
       .filter((el) => el !== false);
@@ -33,7 +37,7 @@ export const filterValue = (ref, child) => {
     });
     filterItemProps = { children: options };
   }
-  if (tagName === 'UI5-SWITCH' || tagName === 'UI5-CHECKBOX') {
+  if (tagNameWithoutSuffix === 'UI5-SWITCH' || tagNameWithoutSuffix === 'UI5-CHECKBOX') {
     filterItemProps = { checked: ref.checked };
   }
   return filterItemProps;

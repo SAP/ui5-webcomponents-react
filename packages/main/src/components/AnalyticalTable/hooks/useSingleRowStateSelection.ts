@@ -1,6 +1,12 @@
+import { getCustomElementsScopingSuffix } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import type { ReactTableHooks } from '../types/index.js';
+
+function getTagNameWithoutScoping(tagName) {
+  const tagNameSuffix = getCustomElementsScopingSuffix().toUpperCase();
+  return tagName.replace(`-${tagNameSuffix}`, '');
+}
 
 const getRowProps = (rowProps, { row, instance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;
@@ -9,7 +15,7 @@ const getRowProps = (rowProps, { row, instance }) => {
     if (
       e.target?.dataset?.name !== 'internal_selection_column' &&
       !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
-      webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)
+      webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(getTagNameWithoutScoping(e.target.tagName))
     ) {
       return;
     }
@@ -59,7 +65,11 @@ const getRowProps = (rowProps, { row, instance }) => {
           (!e.target.hasAttribute('aria-expanded') || (e.shiftKey && e.code === 'Space')) &&
           (e.key === 'Enter' || e.code === 'Space')
         ) {
-          if (!webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
+          if (
+            !webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
+              getTagNameWithoutScoping(e.target.tagName)
+            )
+          ) {
             e.preventDefault();
           }
           handleRowSelect(e);
