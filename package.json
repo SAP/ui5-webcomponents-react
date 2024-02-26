@@ -9,7 +9,7 @@
     "start": "yarn prepare && yarn create-cypress-commands-docs && npm-run-all -p start:watcher start:storybook",
     "start:watcher": "lerna run watch:css",
     "start:storybook": "storybook dev -p 6006",
-    "prepare": "lerna run build:i18n && lerna run build:css && rimraf node_modules/@types/mocha",
+    "prepare": "lerna run build:i18n && lerna run build:css && lerna run build:css-bundle && rimraf node_modules/@types/mocha",
     "build": "yarn prepare && tsc --build && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
     "build:storybook": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook build -o .out",
     "test:prepare": "rimraf temp && lerna run build",
