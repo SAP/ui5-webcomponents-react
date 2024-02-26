@@ -1,13 +1,12 @@
 'use client';
 
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import { EMPTY_VALUE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
-import { TextStyles } from './Text.jss.js';
+import { classNames, styleData } from './Text.module.css.js';
 
 export interface TextPropTypes extends CommonProps {
   /**
@@ -44,7 +43,6 @@ export interface TextPropTypes extends CommonProps {
   hyphenated?: boolean;
 }
 
-const useStyles = createUseStyles(TextStyles, { name: 'Text' });
 /**
  * The `Text` component can be used for embedding text into your app. You can hyphenate the text with the use of the `wrapping` prop.
  *
@@ -62,20 +60,26 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
     emptyIndicator,
     ...rest
   } = props;
-  const classes = useStyles();
+
+  useStylesheet(styleData, Text.displayName);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+
   const classNameString = clsx(
-    classes.text,
-    wrapping === false && classes.noWrap,
-    renderWhitespace && classes.renderWhitespace,
-    typeof maxLines === 'number' && classes.maxLines,
-    hyphenated && classes.hyphenated,
+    classNames.text,
+    wrapping === false && classNames.noWrap,
+    renderWhitespace && classNames.renderWhitespace,
+    typeof maxLines === 'number' && classNames.maxLines,
+    hyphenated && classNames.hyphenated,
     className
   );
 
   const showEmptyIndicator = emptyIndicator && !children;
   const computedChildren = showEmptyIndicator ? (
-    <span aria-hidden={showEmptyIndicator} data-component-name="TextEmptyIndicator" className={classes.emptyIndicator}>
+    <span
+      aria-hidden={showEmptyIndicator}
+      data-component-name="TextEmptyIndicator"
+      className={classNames.emptyIndicator}
+    >
       –
     </span>
   ) : (
@@ -91,7 +95,7 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
     >
       {computedChildren}
       {showEmptyIndicator && (
-        <span className={classes.pseudoInvisibleText} data-component-name="TextEmptyTextContainer">
+        <span className={classNames.pseudoInvisibleText} data-component-name="TextEmptyTextContainer">
           {i18nBundle.getText(EMPTY_VALUE)}
         </span>
       )}
