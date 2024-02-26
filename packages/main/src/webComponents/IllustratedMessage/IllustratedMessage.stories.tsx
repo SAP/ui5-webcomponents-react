@@ -10,7 +10,12 @@ const meta = {
     name: IllustrationMessageType.BeforeSearch
   },
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: false },
+    subtitle: { control: false },
+    name: {
+      control: 'select',
+      options: Object.values(IllustrationMessageType)
+    }
   }
 } satisfies Meta<typeof IllustratedMessage>;
 

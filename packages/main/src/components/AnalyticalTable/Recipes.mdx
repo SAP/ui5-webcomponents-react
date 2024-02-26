@@ -122,13 +122,15 @@ For more information please take a look at the [React Table v7 docs](https://git
 ## How to distinguish between `onRowClick` and `onRowSelect` on selection-cell click?
 
 When a selectable cell of the table is clicked, both `onRowClick` and `onRowSelect` are fired. Sometimes, but especially when the selection behavior is set to `RowSelector`, you don't want `onRowClick` to execute the logic you defined in your handler when clicking the selection-cell.
-To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property is falsy.
+To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property doesn't equal `"true"`.
 
 ```js
 // both events are fired if the clicked cell is selectable
 const onRowClick = (e) => {
-  if (!e.target.dataset.selectionCell) {
-    // only do something if other cells than the selection cell are clicked
+  if (e.target.dataset.selectionCell === 'true') {
+    // do something if the selection cell is clicked
+  } else {
+    // do something if other cells than the selection cell are clicked
   }
 };
 const onRowSelect = (e) => {
