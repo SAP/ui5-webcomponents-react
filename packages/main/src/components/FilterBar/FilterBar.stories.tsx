@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useReducer, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -131,45 +132,89 @@ export const Default: Story = {
   }
 };
 
+const initialState = {
+  age: 37,
+  countries: {},
+  currency: 'USD',
+  date: '',
+  dateRange: '',
+  search: ''
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_AGE':
+      return { ...state, age: action.payload };
+    case 'SET_COUNTRIES':
+      return { ...state, countries: action.payload };
+    case 'SET_CURRENCY':
+      return { ...state, currency: action.payload };
+    case 'SET_DATE':
+      return { ...state, date: action.payload };
+    case 'SET_DATE_RANGE':
+      return { ...state, dateRange: action.payload };
+    case 'SET_SEARCH':
+      return { ...state, search: action.payload };
+    case 'DIALOG_RESTORE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 export const WithLogic: Story = {
   render: (args) => {
-    const [age, setAge] = useState(37);
-    const [countries, setCountries] = useState<Record<string, boolean>>({});
-    const [currency, setCurrency] = useState('USD');
-    const [date, setDate] = useState('');
-    const [dateRange, setDateRange] = useState('');
-    const [search, setSearch] = useState('');
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { age, countries, currency, date, dateRange, search } = state;
+    const prevDialogOpenState = useRef();
 
     const handleSearch = (e) => {
-      setSearch(e.target.value);
+      dispatch({ type: 'SET_SEARCH', payload: e.target.value });
     };
 
     const handleAgeChange = (e) => {
-      setAge(e.target.value);
+      dispatch({ type: 'SET_AGE', payload: e.target.value });
     };
+
     const handleCountriesChange = (e) => {
-      setCountries(
-        e.detail.items.reduce((acc, cur) => {
-          return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
-        }, {})
-      );
+      const newCountries = e.detail.items.reduce((acc, cur) => {
+        return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
+      }, {});
+      dispatch({ type: 'SET_COUNTRIES', payload: newCountries });
     };
+
     const handleCurrencyChange = (e) => {
-      setCurrency(e.detail.selectedOption.textContent);
+      dispatch({ type: 'SET_CURRENCY', payload: e.detail.selectedOption.textContent });
     };
+
     const handleDateChange = (e) => {
       if (e.detail.valid) {
-        setDate(e.detail.value);
+        dispatch({ type: 'SET_DATE', payload: e.detail.value });
       }
     };
+
     const handleDateRangeChange = (e) => {
       if (e.detail.valid) {
-        setDateRange(e.detail.value);
+        dispatch({ type: 'SET_DATE_RANGE', payload: e.detail.value });
       }
     };
+
+    const handleFiltersDialogOpen = () => {
+      prevDialogOpenState.current = state;
+    };
+
+    const handleRestore = () => {
+      dispatch({ type: 'DIALOG_RESTORE', payload: prevDialogOpenState.current });
+    };
+
     return (
       <>
-        <FilterBar {...args} search={<Input onInput={handleSearch} />}>
+        <FilterBar
+          showResetButton
+          search={<Input onInput={handleSearch} />}
+          onRestore={handleRestore}
+          onFiltersDialogOpen={handleFiltersDialogOpen}
+        >
           <FilterGroupItem label="Age" active={!!age} required>
             <StepInput value={age} onChange={handleAgeChange} required />
           </FilterGroupItem>
