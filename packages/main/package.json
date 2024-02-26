@@ -24,6 +24,7 @@
     "./package.json": "./package.json",
     "./jestSetup": "./jestSetup.js",
     "./jestSetup.js": "./jestSetup.js",
+    "./styles.css": "./dist/css/index.css",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
@@ -48,8 +49,9 @@
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
     "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
-    "build:css": "postcss --dir ../../temp src/**/*.css",
-    "watch:css": "postcss --watch --dir ../../temp src/**/*.css"
+    "build:css": "postcss --base src --dir dist/css src/**/*.css",
+    "build:css-bundle": "node scripts/merge-css-modules.js",
+    "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
     "@tanstack/react-virtual": "~3.1.0",

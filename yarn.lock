@@ -22704,6 +22704,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.32.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-storybook: "npm:^0.8.0"
+    glob: "npm:^10.3.10"
     handlebars: "npm:^4.7.7"
     husky: "npm:^9.0.6"
     identity-obj-proxy: "npm:^3.0.0"
