@@ -1,12 +1,11 @@
 'use client';
 
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
 import React, { forwardRef, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/index.js';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
@@ -20,7 +19,7 @@ import type {
   ResponsivePopoverPropTypes
 } from '../../webComponents/index.js';
 import { Button, ResponsivePopover } from '../../webComponents/index.js';
-import styles from './ActionSheet.jss.js';
+import { classNames, styleData } from './ActionSheet.module.css.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
   /**
@@ -63,8 +62,6 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    */
   portalContainer?: Element;
 }
-
-const useStyles = createUseStyles(styles, { name: 'ActionSheet' });
 
 if (isPhone()) {
   addCustomCSSWithScoping(
@@ -154,8 +151,9 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     ...rest
   } = props;
 
+  useStylesheet(styleData, ActionSheet.displayName);
+
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const classes = useStyles();
   const [componentRef, popoverRef] = useSyncRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
@@ -268,11 +266,11 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
       {...rest}
       onAfterOpen={handleAfterOpen}
       ref={componentRef}
-      className={clsx(classes.actionSheet, isPhone() && classes.actionSheetMobile, className)}
+      className={clsx(classNames.actionSheet, isPhone() && classNames.actionSheetMobile, className)}
       data-actionsheet
     >
       <div
-        className={isPhone() ? classes.contentMobile : undefined}
+        className={isPhone() ? classNames.contentMobile : undefined}
         data-component-name="ActionSheetMobileContent"
         role={a11yConfig?.actionSheetMobileContent?.role ?? 'application'}
         onKeyDown={handleKeyDown}
