@@ -1,1 +1,0 @@
-import{g as s,c as m,d as c}from"./UI5Element-oLeGfnU4.js";import{r as t}from"./index-OjgoNOWw.js";function u(){const[r,a]=t.useState(s());return t.useEffect(()=>{const e=o=>{a(o)};return m(e),()=>{c(e)}},[]),r}export{u};
