@@ -176,7 +176,13 @@ describe('FilterBar.cy.tsx', () => {
         cy.findAllByTestId('SELECT').should('exist');
       } else {
         if (action === 'Reset') {
-          cy.get('@restoreSpy').should('have.callCount', 1);
+          cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').contains('Cancel').click();
+          cy.get('@restoreSpy').should('have.callCount', 0);
+          cy.findByText(action).click();
+          cy.closeUi5PopupWithEsc();
+          cy.get('@restoreSpy').should('have.callCount', 0);
+          cy.findByText(action).click();
+          cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').contains('OK').click();
           cy.findByText('OK').click();
           cy.get('@saveSpy').should('have.callCount', saveCallCount);
           saveCallCount++;
