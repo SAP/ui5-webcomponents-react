@@ -10,6 +10,8 @@ import {
   ButtonDesign,
   FlexBoxDirection,
   FlexBoxJustifyContent,
+  MessageBoxActions,
+  MessageBoxTypes,
   TableMode,
   TitleLevel,
   ToolbarStyle
@@ -31,7 +33,8 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_VALUES,
   VISIBLE,
-  VISIBLE_AND_ACTIVE
+  VISIBLE_AND_ACTIVE,
+  FILTER_DIALOG_RESET_WARNING
 } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
@@ -55,6 +58,7 @@ import {
 } from '../../webComponents/index.js';
 import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { MessageBox } from '../MessageBox/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBarDialog.jss.js';
@@ -170,6 +174,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const dialogRefs = useRef({});
   const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
+  const [messageBoxOpen, setMessageBoxOpen] = useState(false);
 
   const [forceRequired, setForceRequired] = useState<undefined | TableRowDomRef>();
 
@@ -192,6 +197,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const hideValuesText = i18nBundle.getText(HIDE_VALUES);
   const fieldText = i18nBundle.getText(FIELD);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
+  const resetWarningText = i18nBundle.getText(FILTER_DIALOG_RESET_WARNING);
 
   const handleSearch = (e) => {
     if (handleDialogSearch) {
@@ -219,12 +225,19 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     handleDialogClose(e);
   };
 
-  const handleRestore = (e) => {
-    setToggledFilters({});
-    handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
+  const handleRestore = () => {
+    setMessageBoxOpen(true);
   };
   const handleViewChange = (e) => {
     setIsListView(e.detail.selectedItem.dataset.id === 'list');
+  };
+
+  const handleMessageBoxClose = (e) => {
+    if (e.detail.action === 'OK') {
+      setToggledFilters({});
+      handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
+    }
+    setMessageBoxOpen(false);
   };
 
   const renderChildren = () => {
@@ -364,126 +377,149 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     return filterGroups;
   };
 
-  return createPortal(
-    <Dialog
-      open={open}
-      ref={dialogRef}
-      data-component-name="FilterBarDialog"
-      onAfterClose={handleClose}
-      onAfterOpen={onAfterFiltersDialogOpen}
-      resizable
-      draggable
-      className={classes.dialogComponent}
-      preventFocusRestore
-      initialFocus={`${uniqueId}-fb-dialog-search`}
-      header={
-        <Bar
-          design={BarDesign.Header}
-          startContent={
-            <Title level={TitleLevel.H4} title={filtersTitle}>
-              {filtersTitle}
-            </Title>
-          }
-          endContent={
-            showRestoreButton && (
-              <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
-                {resetText}
-              </Button>
-            )
-          }
-        />
-      }
-      footer={
-        <Bar
-          design={BarDesign.Footer}
-          endContent={
-            <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
-              <Button
-                onClick={handleSave}
-                data-component-name="FilterBarDialogSaveBtn"
-                design={ButtonDesign.Emphasized}
-              >
-                {okText}
-              </Button>
-              <Button
-                design={ButtonDesign.Transparent}
-                onClick={handleCancel}
-                data-component-name="FilterBarDialogCancelBtn"
-              >
-                {cancelText}
-              </Button>
-            </FlexBox>
-          }
-        />
-      }
-    >
-      <FlexBox direction={FlexBoxDirection.Column} className={classes.subheaderContainer}>
-        <Toolbar className={classes.subheader} toolbarStyle={ToolbarStyle.Clear}>
-          <Select
-            onChange={handleAttributeFilterChange}
-            title={fieldsByAttributeText}
-            accessibleName={fieldsByAttributeText}
-          >
-            <Option selected={filteredAttribute === 'all'} data-id="all">
-              {allText}
-            </Option>
-            <Option selected={filteredAttribute === 'visible'} data-id="visible">
-              {visibleText}
-            </Option>
-            <Option selected={filteredAttribute === 'active'} data-id="active">
-              {activeText}
-            </Option>
-            <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
-              {visibleAndActiveText}
-            </Option>
-            <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
-              {mandatoryText}
-            </Option>
-          </Select>
-          <ToolbarSpacer />
-          <Button design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
-            {showValues ? hideValuesText : showValuesText}
-          </Button>
-          <SegmentedButton onSelectionChange={handleViewChange}>
-            <SegmentedButtonItem icon={listIcon} data-id="list" pressed={isListView} accessibleName={listViewText} />
-            <SegmentedButtonItem
-              icon={group2Icon}
-              data-id="group"
-              pressed={!isListView}
-              accessibleName={groupViewText}
+  return (
+    <>
+      {createPortal(
+        <Dialog
+          open={open}
+          ref={dialogRef}
+          data-component-name="FilterBarDialog"
+          onAfterClose={handleClose}
+          onAfterOpen={onAfterFiltersDialogOpen}
+          resizable
+          draggable
+          className={classes.dialogComponent}
+          preventFocusRestore
+          initialFocus={`${uniqueId}-fb-dialog-search`}
+          header={
+            <Bar
+              design={BarDesign.Header}
+              startContent={
+                <Title level={TitleLevel.H4} title={filtersTitle}>
+                  {filtersTitle}
+                </Title>
+              }
+              endContent={
+                showRestoreButton && (
+                  <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
+                    {resetText}
+                  </Button>
+                )
+              }
             />
-          </SegmentedButton>
-        </Toolbar>
-        <FlexBox className={classes.searchInputContainer}>
-          <Input
-            id={`${uniqueId}-fb-dialog-search`}
-            noTypeahead
-            placeholder={searchForFiltersText}
-            onInput={handleSearch}
-            showClearIcon
-            icon={<Icon name={searchIcon} />}
-            ref={dialogSearchRef}
-            className={classes.searchInput}
-            data-component-name="FilterBarDialogSearchInput"
-          />
-        </FlexBox>
-      </FlexBox>
-      <Table
-        data-component-name="FilterBarDialogTable"
-        hideNoData={!isListView}
-        mode={TableMode.MultiSelect}
-        onSelectionChange={handleCheckBoxChange}
-        columns={
-          <>
-            <TableColumn>{fieldText}</TableColumn>
-            {!showValues && <TableColumn className={classes.tHactive}>{activeText}</TableColumn>}
-          </>
-        }
-      >
-        {isListView && renderChildren()}
-      </Table>
-      {!isListView && renderGroups()}
-    </Dialog>,
-    portalContainer ?? document.body
+          }
+          footer={
+            <Bar
+              design={BarDesign.Footer}
+              endContent={
+                <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+                  <Button
+                    onClick={handleSave}
+                    data-component-name="FilterBarDialogSaveBtn"
+                    design={ButtonDesign.Emphasized}
+                  >
+                    {okText}
+                  </Button>
+                  <Button
+                    design={ButtonDesign.Transparent}
+                    onClick={handleCancel}
+                    data-component-name="FilterBarDialogCancelBtn"
+                  >
+                    {cancelText}
+                  </Button>
+                </FlexBox>
+              }
+            />
+          }
+        >
+          <FlexBox direction={FlexBoxDirection.Column} className={classes.subheaderContainer}>
+            <Toolbar className={classes.subheader} toolbarStyle={ToolbarStyle.Clear}>
+              <Select
+                onChange={handleAttributeFilterChange}
+                title={fieldsByAttributeText}
+                accessibleName={fieldsByAttributeText}
+              >
+                <Option selected={filteredAttribute === 'all'} data-id="all">
+                  {allText}
+                </Option>
+                <Option selected={filteredAttribute === 'visible'} data-id="visible">
+                  {visibleText}
+                </Option>
+                <Option selected={filteredAttribute === 'active'} data-id="active">
+                  {activeText}
+                </Option>
+                <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
+                  {visibleAndActiveText}
+                </Option>
+                <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
+                  {mandatoryText}
+                </Option>
+              </Select>
+              <ToolbarSpacer />
+              <Button design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
+                {showValues ? hideValuesText : showValuesText}
+              </Button>
+              <SegmentedButton onSelectionChange={handleViewChange}>
+                <SegmentedButtonItem
+                  icon={listIcon}
+                  data-id="list"
+                  pressed={isListView}
+                  accessibleName={listViewText}
+                />
+                <SegmentedButtonItem
+                  icon={group2Icon}
+                  data-id="group"
+                  pressed={!isListView}
+                  accessibleName={groupViewText}
+                />
+              </SegmentedButton>
+            </Toolbar>
+            <FlexBox className={classes.searchInputContainer}>
+              <Input
+                id={`${uniqueId}-fb-dialog-search`}
+                noTypeahead
+                placeholder={searchForFiltersText}
+                onInput={handleSearch}
+                showClearIcon
+                icon={<Icon name={searchIcon} />}
+                ref={dialogSearchRef}
+                className={classes.searchInput}
+                data-component-name="FilterBarDialogSearchInput"
+              />
+            </FlexBox>
+          </FlexBox>
+          <Table
+            data-component-name="FilterBarDialogTable"
+            hideNoData={!isListView}
+            mode={TableMode.MultiSelect}
+            onSelectionChange={handleCheckBoxChange}
+            columns={
+              <>
+                <TableColumn>{fieldText}</TableColumn>
+                {!showValues && <TableColumn className={classes.tHactive}>{activeText}</TableColumn>}
+              </>
+            }
+          >
+            {isListView && renderChildren()}
+          </Table>
+          {!isListView && renderGroups()}
+        </Dialog>,
+        portalContainer ?? document.body
+      )}
+      {showRestoreButton &&
+        messageBoxOpen &&
+        createPortal(
+          <MessageBox
+            open
+            type={MessageBoxTypes.Warning}
+            actions={[MessageBoxActions.OK, MessageBoxActions.Cancel]}
+            onClose={handleMessageBoxClose}
+            data-component-name="FilterBarDialogResetMessageBox"
+          >
+            {resetWarningText}
+          </MessageBox>,
+          document.body
+        )}
+    </>
   );
 };

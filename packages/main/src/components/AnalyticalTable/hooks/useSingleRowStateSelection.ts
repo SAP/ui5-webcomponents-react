@@ -1,5 +1,6 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { getTagNameWithoutScopingSuffix } from '../../../internal/utils.js';
 import type { ReactTableHooks } from '../types/index.js';
 
 const getRowProps = (rowProps, { row, instance }) => {
@@ -9,7 +10,9 @@ const getRowProps = (rowProps, { row, instance }) => {
     if (
       e.target?.dataset?.name !== 'internal_selection_column' &&
       !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
-      webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)
+      webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
+        getTagNameWithoutScopingSuffix(e.target.tagName)
+      )
     ) {
       return;
     }
@@ -59,7 +62,11 @@ const getRowProps = (rowProps, { row, instance }) => {
           (!e.target.hasAttribute('aria-expanded') || (e.shiftKey && e.code === 'Space')) &&
           (e.key === 'Enter' || e.code === 'Space')
         ) {
-          if (!webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(e.target.tagName)) {
+          if (
+            !webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
+              getTagNameWithoutScopingSuffix(e.target.tagName)
+            )
+          ) {
             e.preventDefault();
           }
           handleRowSelect(e);

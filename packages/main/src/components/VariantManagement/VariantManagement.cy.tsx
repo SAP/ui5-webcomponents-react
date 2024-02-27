@@ -469,7 +469,7 @@ describe('VariantManagement', () => {
           author
         } = props;
 
-        cy.get(`ui5-table-row[data-id="${rowId}"]`).as('row');
+        cy.get(`[ui5-table-row][data-id="${rowId}"]`).as('row');
         if (showOnlyFavorites) {
           if (labelReadOnly) {
             if (favorite || isDefault) {
@@ -480,10 +480,10 @@ describe('VariantManagement', () => {
           } else {
             if (favorite || isDefault) {
               cy.findAllByText(rowId).should('have.length', 1);
-              cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+              cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
             } else {
               cy.findByText(rowId, { timeout: 100 }).should('not.exist');
-              cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+              cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
             }
           }
         } else {
@@ -491,7 +491,7 @@ describe('VariantManagement', () => {
             cy.findAllByText(rowId).should('have.length', 2);
           } else {
             cy.findAllByText(rowId).should('have.length', 1);
-            cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+            cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
           }
         }
 
