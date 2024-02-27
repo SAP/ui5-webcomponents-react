@@ -34,6 +34,14 @@ body:
       label: Additional Context
       description: Add any other context or screenshots about the feature request here.
 
+  - type: input
+    id: org
+    attributes:
+      label: Organization
+      description: Add your organization name.
+    validations:
+      required: false
+
   - type: markdown
     attributes:
       value: |
