@@ -400,7 +400,7 @@ describe('AnalyticalTable', () => {
 
     // column filter + select
     cy.findByText('Name').click();
-    cy.get(`ui5-input[show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
+    cy.get(`[ui5-input][show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
     cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
     cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.findByText('Katy Bradshaw').should('not.exist', { timeout: 100 });
@@ -675,7 +675,7 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Friend Name').click();
     cy.findByText('Group').click();
-    cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Expand Node"] > ui5-icon').click();
+    cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Expand Node"] > [ui5-icon]').click();
 
     cy.findByText('25').click();
     cy.get('@onRowSelectSpy').should('have.callCount', 2);
