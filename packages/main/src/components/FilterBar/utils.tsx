@@ -24,16 +24,22 @@ export const filterValue = (ref, child) => {
     filterItemProps = { value: ref.value ?? '' };
   }
   if (tagNameWithoutSuffix === 'UI5-SELECT' || tagNameWithoutSuffix === 'UI5-MULTI-COMBOBOX') {
-    const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
-      .map((item, index) => (item.selected ? index : false))
-      .filter((el) => el !== false);
-    const selectedIndicesSet = new Set(selectedIndices);
-    const options = child.props.children.props.children?.map((item, index) => {
-      if (selectedIndicesSet.has(index)) {
-        return cloneElement(item, { selected: true });
-      }
-      return cloneElement(item, { selected: false });
-    });
+    const filterChildren = child.props.children.props.children;
+    let options = undefined;
+    if (filterChildren) {
+      const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
+        .map((item, index) => (item.selected ? index : false))
+        .filter((el) => el !== false);
+      const selectedIndicesSet = new Set(selectedIndices);
+
+      const filterChildrenArr = Array.isArray(filterChildren) ? filterChildren : [filterChildren];
+      options = filterChildrenArr.map((item, index) => {
+        if (selectedIndicesSet.has(index)) {
+          return cloneElement(item, { selected: true });
+        }
+        return cloneElement(item, { selected: false });
+      });
+    }
     filterItemProps = { children: options };
   }
   if (tagNameWithoutSuffix === 'UI5-SWITCH' || tagNameWithoutSuffix === 'UI5-CHECKBOX') {
