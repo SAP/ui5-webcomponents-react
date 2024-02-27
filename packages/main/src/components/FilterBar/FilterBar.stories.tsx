@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useReducer, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useReducer, useRef } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,

@@ -1,4 +1,5 @@
-import { Input, Option, Select, Switch } from '../../webComponents/index.js';
+import React from 'react';
+import { Input, MultiComboBox, Option, Select, Switch } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
@@ -471,6 +472,25 @@ describe('FilterBar.cy.tsx', () => {
         cy.wrap($el).should('be.visible').and('not.have.attr', 'data-component-name', 'FilterBarSearch');
       }
     });
+  });
+
+  it('allow filter with single or empty children', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="Single Child">
+          <Select>
+            <Option>Option 1</Option>
+          </Select>
+        </FilterGroupItem>
+        <FilterGroupItem label="Empty Children">
+          <MultiComboBox />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.findByText('Filters').click();
+    cy.findByText('Show Values').click();
+    cy.get('[ui5-select]:not([title="Show Fields by Attribute"])').should('have.length', 2);
+    cy.get('[ui5-multi-combobox]').should('have.length', 2);
   });
 
   mountWithCustomTagName(FilterBar);
