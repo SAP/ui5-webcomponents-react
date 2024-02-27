@@ -1,4 +1,5 @@
 *.module.css.ts
+*.css.ts
 yarn.lock
 
 /.nx/cache
