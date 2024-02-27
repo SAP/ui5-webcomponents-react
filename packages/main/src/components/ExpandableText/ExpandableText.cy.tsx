@@ -17,8 +17,8 @@ describe('ExpandableText', () => {
       );
       getText(
         renderWhitespace
-          ? '             If renderWhitespace is set to true, there will be thirteen white spaces in front and af... Show more'
-          : 'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent... Show more'
+          ? '             If renderWhitespace is set to true, there will be thirteen white spaces in front and af… Show more'
+          : 'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show more'
       );
       cy.mount(
         <ExpandableText
@@ -32,8 +32,8 @@ describe('ExpandableText', () => {
       );
       getText(
         renderWhitespace
-          ? '             If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonu... Show more'
-          : 'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence. Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt... Show more'
+          ? '             If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonu… Show more'
+          : 'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence. Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt… Show more'
       );
 
       cy.mount(
@@ -55,7 +55,7 @@ describe('ExpandableText', () => {
     );
     cy.findByText('Show less').click();
     getText(
-      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent... Show more'
+      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show more'
     );
   });
 
@@ -67,12 +67,12 @@ describe('ExpandableText', () => {
     );
     cy.findByText('Show more').click();
     getText(
-      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent... Show less'
+      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show less'
     );
     cy.get('[ui5-responsive-popover]').should('have.attr', 'open');
     cy.realPress('Escape');
     getText(
-      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent... Show more'
+      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show more'
     );
   });
 
