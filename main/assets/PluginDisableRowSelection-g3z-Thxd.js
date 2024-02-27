@@ -1,0 +1,44 @@
+import{j as t}from"./jsx-runtime-DtaoT6pD.js";import{b as p,F as n}from"./ProjectTemplate-DHqiSl-5.js";import{M as a,b as l}from"./index-8-oB8fpj.js";import"./index-OjgoNOWw.js";import"./index-QYh6idnL.js";import"./chunk-HLWAVYOI-KKMZosJ3.js";import"./copy-sn9oDqVN.js";import{c as s}from"./AnalyticalTable.stories-zuxalSnb.js";import{u as m}from"./index-RwE9nQVW.js";import"./react-jss.esm-tmBtHfec.js";import"./index-2DnYnspj.js";import"./iframe-d8BRfYNK.js";import"../sb-preview/runtime.js";import"./UI5Element-d7BKyERc.js";import"./Language-gwOe_M78.js";import"./VersionInfo-zmLW7G4m.js";import"./CustomElementsScopeUtils-StEZUlti.js";import"./withWebComponent-c-uI2wMj.js";import"./utils-_oNUceU3.js";import"./useIsomorphicLayoutEffect-s31TYDr7.js";import"./slot-HSrR9XJ-.js";import"./event-lM5HanI-.js";import"./i18nBundle-kNlRgZSb.js";import"./decline-WQNFq9Fi.js";import"./Icons-Bde3sOsn.js";import"./i18n-defaults-SIMqfZL6.js";import"./information-2I5Ry-zV.js";import"./alert-NotaXBj3.js";import"./class-map-kWxrnrVL.js";import"./Icon-lAPI10Qw.js";import"./Keys-ZEuNsqmZ.js";import"./parameters-bundle.css-mPCp9TQx.js";import"./Button-ywDxCu8p.js";import"./AriaLabelHelper-RbKlVwzD.js";import"./MarkedEvents-aYv14vsS.js";import"./willShowContent-MSvI8sYo.js";import"./HasPopup-9BAMrqbD.js";import"./i18n-defaults-fXrRGy4a.js";import"./index-6OPsdmYb.js";import"./clsx-Zbgk8kpT.js";import"./index--4vSE_RY.js";import"./Label-T23s9s-4.js";import"./WrappingType-avPrqc94.js";import"./index-FAKBGe37.js";import"./index-03KLv694.js";import"./Link-YZ4obMbX.js";import"./index-YPnNQeLP.js";import"./Popover-AngQKyti.js";import"./Integer-kog98579.js";import"./PopupUtils-cNe84Tf4.js";import"./getActiveElement-IIKAy3xo.js";import"./PopupsCommon.css-OX3LG9lc.js";import"./FocusableElements-wiyFyaM0.js";import"./isElementHidden-d3-Fo4V6.js";import"./getEffectiveScrollbarStyle-Gz48PLeD.js";import"./ResizeHandler-iTCl5diO.js";import"./MediaRange-sEMt71Ve.js";import"./style-map-5XXpitLE.js";import"./BrowserScrollbar.css-HwP8mBZS.js";import"./index-lwweRvrD.js";import"./i18n-defaults-nru-HZH8.js";import"./I18nContext-VUOpdMoH.js";import"./ThemingParameters-UghqSl-x.js";import"./index-9LQRDEyt.js";import"./StyleContext-9nyrn-qG.js";import"./ModalsContext-T9gUbaXC.js";import"./CssSizeVariables-HFpqBBhk.js";import"./CustomVariables-jcpx1a4M.js";import"./GlobalStyleClasses-kWTEndz_.js";import"./addCustomCSSWithScoping-bUOmzhXF.js";import"./index-wIUrC_8I.js";import"./index-iwW60aUl.js";import"./Avatar-W5DY45OX.js";import"./employee-638U4O_O.js";import"./index-z38IqflO.js";import"./_baseForOwn-a7AeJH13.js";import"./mapValues-_kP3xGjM.js";import"./_baseUniq-_JZHYp0e.js";import"./index-PPLHz8o0.js";import"./index-7I0hdIjK.js";import"./react-18-1WT2dSvK.js";import"./delete-UoUi1lvW.js";import"./ListItem-_LDQuDuP.js";import"./List-MSYrmCtZ.js";import"./ItemNavigation-NQAhZIZ4.js";import"./TabbableElements-L1VqloMt.js";import"./debounce-8VpZswfd.js";import"./BusyIndicator-zDy1vG1r.js";import"./CheckBox-R0ombDRh.js";import"./ValueState-zUcANXoY.js";import"./accept-ewfbKnj8.js";import"./RadioButton-Gzi-c5c5.js";import"./slim-arrow-right-t2TVBiPa.js";import"./settings-VsCMqYpN.js";import"./useIsomorphicId-G0VPUEKO.js";import"./useIsRTL-ztCGrKk1.js";import"./directionChange-ei-C-idv.js";import"./index-ENBflQbU.js";import"./IndicationColor-5SfIXGxx.js";import"./filter-KJwSxYdM.js";import"./group-2-dXpkVFn6.js";import"./index-XSbEnnBJ.js";import"./stopPropagation-dV8jBYUw.js";import"./index-fhhB7zGJ.js";import"./CustomListItem-Gt6iUFGB.js";import"./index-fa2icVWI.js";import"./index-4hQ2xscG.js";import"./StandardListItem-loBQy1QM.js";import"./index-noS6d2Wn.js";import"./Input--jHo6f0i.js";import"./ResponsivePopoverCommon.css-AHy544DE.js";import"./ValueStateMessage.css-uJjTdMqG.js";import"./navigation-down-arrow-Q9fXPquy.js";import"./navigation-right-arrow-V_H1nz0t.js";import"./useCurrentTheme-Zt61TobN.js";import"./index-bzkw3A5Q.js";import"./ValueState-I_-hGNIb.js";import"./index-ZNjvKlHp.js";import"./index-qDIabODd.js";import"./Title-d3ahDXw6.js";import"./debounce-F9irgL9Y.js";import"./index-_Hvgr41l.js";import"./Select-dvQH0DD0.js";import"./InvisibleMessage-MKqKWFpD.js";import"./slim-arrow-down-8JstisaR.js";import"./ResponsivePopover-AVcu-lYn.js";import"./Dialog-fUDPeeBr.js";import"./index-shE4Trcn.js";import"./index-Afz7vceI.js";import"./GroupHeaderListItem-eh_aJjkj.js";import"./Token-SOH9lDEr.js";import"./ScrollEnablement--vukJQKV.js";import"./animate-Pj1TncyK.js";import"./sys-cancel-6LHi3-RO.js";import"./ToggleButton-lvu6XEXF.js";import"./ComboBoxItem-xNKn12Tw.js";import"./index-H-IccK4e.js";import"./index-upXUTyxt.js";import"./sys-help-2-pEGjeWPi.js";function zo(i={}){const{wrapper:r}=Object.assign({},m(),i.components);return r?t.jsx(r,Object.assign({},i,{children:t.jsx(e,{})})):e();function e(){const o=Object.assign({h1:"h1",p:"p",code:"code",ul:"ul",li:"li",strong:"strong",h2:"h2",pre:"pre"},m(),i.components);return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Data Display / AnalyticalTable / Plugin: useRowDisableSelection"}),`
+`,t.jsx(o.h1,{id:"analyticaltable-plugin-userowdisableselection",children:"AnalyticalTable Plugin: useRowDisableSelection"}),`
+`,t.jsx(p,{moduleNames:["AnalyticalTableHooks"],packageName:"@ui5/webcomponents-react"}),`
+`,t.jsxs(o.p,{children:["With the ",t.jsx(o.code,{children:"useRowDisableSelection"})," it's possible to disable the selection of specific rows. It can receive two types of parameters:"]}),`
+`,t.jsxs(o.ul,{children:[`
+`,t.jsxs(o.li,{children:[t.jsx(o.code,{children:"string"}),": Defines the key in the dataset for disabling rows. If the value of the key is ",t.jsx(o.code,{children:"true"}),", then the row will not be selectable."]}),`
+`,t.jsxs(o.li,{children:[t.jsx(o.code,{children:"Function(row) => boolean"}),": Programmatically disable rows for selection. The function receives the current row as parameter."]}),`
+`]}),`
+`,t.jsxs(o.p,{children:[t.jsx(o.strong,{children:"Note:"}),' The "Select All" checkbox is not available with this hook.']}),`
+`,t.jsx(l,{sourceState:"none",of:s}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const WithFunctionParameter = () => {
+  const disableRowFunc = (row) => row.original.age < 40;
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
+    />
+  );
+};
+
+const WithStringParameter = () => {
+const data = [
+    {
+        "name": "Peter Franco",
+        "age": 22,
+         ...
+        "disableSelection": Math.random() < 0.5
+    },
+    ...
+];
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
+    />
+  );
+};
+`})}),`
+`,t.jsx(n,{})]})}}export{zo as default};
