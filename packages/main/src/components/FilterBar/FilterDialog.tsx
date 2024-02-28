@@ -296,40 +296,40 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   };
 
   const handleCheckBoxChange = (e) => {
-    e.preventDefault();
+    if (e.target.hasAttribute('ui5-table')) {
+      // preventDefault should only be called if the target is the table, otherwise bubbled `selection-change` events
+      // also prevent their default behavior (e.g. the event of the MultiComboBox)
+      e.preventDefault();
+      const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
+        (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
+        {}
+      );
+      const rowsByKey = e.detail.selectedRows.reduce(
+        (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
+        {}
+      );
 
-    if (!e.target.hasAttribute('ui5-table')) {
-      return;
+      const changedRowKey =
+        e.detail.previouslySelectedRows > e.detail.selectedRows
+          ? compareObjects(prevRowsByKey, rowsByKey)
+          : compareObjects(rowsByKey, prevRowsByKey);
+
+      const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
+
+      // todo: workaround until specific rows can be disabled
+      if (element.dataset?.required === 'true') {
+        setForceRequired(element);
+        return;
+      }
+
+      if (typeof handleSelectionChange === 'function') {
+        handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
+      }
+
+      setToggledFilters((prev) => {
+        return { ...prev, [changedRowKey]: element.selected };
+      });
     }
-    const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
-      (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
-      {}
-    );
-    const rowsByKey = e.detail.selectedRows.reduce(
-      (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
-      {}
-    );
-
-    const changedRowKey =
-      e.detail.previouslySelectedRows > e.detail.selectedRows
-        ? compareObjects(prevRowsByKey, rowsByKey)
-        : compareObjects(rowsByKey, prevRowsByKey);
-
-    const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
-
-    // todo: workaround until specific rows can be disabled
-    if (element.dataset?.required === 'true') {
-      setForceRequired(element);
-      return;
-    }
-
-    if (typeof handleSelectionChange === 'function') {
-      handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
-    }
-
-    setToggledFilters((prev) => {
-      return { ...prev, [changedRowKey]: element.selected };
-    });
   };
 
   useEffect(() => {
