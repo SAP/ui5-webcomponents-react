@@ -7,6 +7,10 @@ const cssDir = fileURLToPath(new URL('../dist/css', import.meta.url));
 const cssIndexFile = fileURLToPath(new URL('../dist/css/index.css', import.meta.url));
 
 const cssModules = await glob(`${cssDir}/**/*.module.css`);
+
+// manually add ThemeProvider
+cssModules.unshift(fileURLToPath(new URL('../dist/css/components/ThemeProvider/ThemeProvider.css', import.meta.url)));
+
 const fileContent = [];
 
 for (const cssModule of cssModules) {
