@@ -1,1 +1,0 @@
-import{r as e}from"./index-OjgoNOWw.js";const t=Symbol.for("@ui5/webcomponents-react/StyleContext"),o=e.createContext({staticCssInjected:!1});function n(){return globalThis[t]??(globalThis[t]=o),globalThis[t]}function r(){return e.useContext(n())}export{n as g,r as u};
