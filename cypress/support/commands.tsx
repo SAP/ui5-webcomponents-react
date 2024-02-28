@@ -1,4 +1,7 @@
+import type { MountOptions, MountReturn } from 'cypress/react18';
 import { mount } from 'cypress/react18';
+import type { ReactNode } from 'react';
+import type { ThemeProviderPropTypes } from '@ui5/webcomponents-react';
 import { ThemeProvider } from '@ui5/webcomponents-react';
 
 declare global {
@@ -7,7 +10,14 @@ declare global {
       /**
        * Cypress mount with ThemeProvider
        */
-      mount: typeof mount;
+      mount: (
+        jsx: ReactNode,
+        options?: MountOptions & {
+          themeProviderProps?: Omit<ThemeProviderPropTypes, 'children'>;
+        },
+        rerenderKey?: string
+      ) => Cypress.Chainable<MountReturn>;
+
       /**
        * Assert that the subject is not clickable.
        *
@@ -32,8 +42,8 @@ declare global {
 /**
  * Cypress mount with ThemeProvider
  */
-Cypress.Commands.add('mount', (component, options) => {
-  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+Cypress.Commands.add('mount', (component, { themeProviderProps = {}, ...options } = {}) => {
+  return mount(<ThemeProvider {...themeProviderProps}>{component}</ThemeProvider>, options);
 });
 
 // copied from https://github.com/cypress-io/cypress/discussions/21150#discussioncomment-2620947 and edited slightly

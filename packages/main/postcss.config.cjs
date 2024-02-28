@@ -3,6 +3,7 @@ const path = require('node:path');
 const cssnano = require('cssnano');
 const postcssImport = require('postcss-import');
 const postcssModules = require('postcss-modules');
+const postcssNesting = require('postcss-nesting');
 const stringHash = require('string-hash');
 const postcssCSStoESM = require('../../scripts/postcss-css-to-esm.cjs');
 
@@ -11,6 +12,7 @@ const packageName = JSON.parse(fs.readFileSync('./package.json').toString()).nam
 module.exports = {
   plugins: [
     postcssImport(),
+    postcssNesting(),
     postcssModules({
       // generateScopedName: '[name]__[local]___[hash:base64:5]',
       generateScopedName: function (name, filename, css) {

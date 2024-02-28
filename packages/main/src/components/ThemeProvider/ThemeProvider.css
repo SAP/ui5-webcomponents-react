@@ -1,0 +1,88 @@
+/*The classes in this file are applied globally */
+
+@import './Sizes.css';
+@import '../../themes/base.css';
+@import '../../themes/sap_belize.css';
+@import '../../themes/sap_belize_hcb.css';
+@import '../../themes/sap_belize_hcw.css';
+@import '../../themes/sap_fiori_3.css';
+@import '../../themes/sap_fiori_3_dark.css';
+@import '../../themes/sap_fiori_3_hcb.css';
+@import '../../themes/sap_fiori_3_hcw.css';
+@import '../../themes/sap_horizon.css';
+@import '../../themes/sap_horizon_dark.css';
+@import '../../themes/sap_horizon_hcb.css';
+
+.inheritingSapScrollBar *:not([data-native-scrollbar]) {
+  &::-webkit-scrollbar {
+    background-color: var(--sapScrollBar_TrackColor);
+    -webkit-border-start: var(--_ui5wcr_Scrollbar_Border);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: var(--_ui5wcr_Scrollbar_BorderRadius);
+    background-color: var(--sapScrollBar_FaceColor);
+
+    &:hover {
+      background-color: var(--sapScrollBar_Hover_FaceColor);
+    }
+
+    &:horizontal {
+      height: var(--sapScrollBar_Dimension);
+    }
+
+    &:vertical {
+      width: var(--sapScrollBar_Dimension);
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: var(--sapScrollBar_TrackColor);
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: var(--sapScrollBar_Dimension);
+  }
+
+  &::-webkit-scrollbar:vertical {
+    width: var(--sapScrollBar_Dimension);
+  }
+}
+
+.sapScrollBar:not([data-native-scrollbar]) {
+  &::-webkit-scrollbar {
+    background-color: var(--sapScrollBar_TrackColor);
+    -webkit-border-start: var(--_ui5wcr_Scrollbar_Border);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: var(--_ui5wcr_Scrollbar_BorderRadius);
+    background-color: var(--sapScrollBar_FaceColor);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: var(--sapScrollBar_TrackColor);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    &:hover {
+      background-color: var(--sapScrollBar_Hover_FaceColor);
+    }
+
+    &:horizontal {
+      height: var(--sapScrollBar_Dimension);
+    }
+
+    &:vertical {
+      width: var(--sapScrollBar_Dimension);
+    }
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: var(--sapScrollBar_Dimension);
+  }
+
+  &::-webkit-scrollbar:vertical {
+    width: var(--sapScrollBar_Dimension);
+  }
+}

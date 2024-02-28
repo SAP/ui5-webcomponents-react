@@ -1,0 +1,10 @@
+
+[data-sap-theme="sap_fiori_3_hcb"] {
+  --_ui5wcr_Splitter_BarOutline: 0.15rem dotted var(--sapGroup_ContentBorderColor);
+  --_ui5wcr_ActionSheet_BoxShadow: var(--sapContent_HeaderShadow);
+  --_ui5wcr_Splitter_BarBorderFocus: solid var(--sapGroup_ContentBorderColor) 0.0625rem;
+  --_ui5wcr_Splitter_BarBorderStyle: solid var(--sapGroup_ContentBorderColor) 0.0625rem;
+  --_ui5wcr_ActionSheet_TopBorderRadius: var(--sapElement_BorderCornerRadius);
+  --_ui5wcr_Splitter_ContentBorderColor: var(--sapGroup_ContentBorderColor);
+  --_ui5wcr_Splitter_BarBorderHighContrastFix: none;
+}

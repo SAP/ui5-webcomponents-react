@@ -2442,6 +2442,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/selector-specificity@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@csstools/selector-specificity@npm:3.0.2"
+  peerDependencies:
+    postcss-selector-parser: ^6.0.13
+  checksum: 10c0/d0c7dae2f1e9536e3e17f00467320a704f3208c76283c29c57fd69d4b83dcf6d062f492ed687c5ffd5f47fada9f0657c2efc89ea18fd4b038f757669553e0095
+  languageName: node
+  linkType: hard
+
 "@custom-elements-manifest/analyzer@npm:^0.8.4":
   version: 0.8.4
   resolution: "@custom-elements-manifest/analyzer@npm:0.8.4"
@@ -19152,6 +19161,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-nesting@npm:^12.0.3":
+  version: 12.0.3
+  resolution: "postcss-nesting@npm:12.0.3"
+  dependencies:
+    "@csstools/selector-specificity": "npm:^3.0.2"
+    postcss-selector-parser: "npm:^6.0.13"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 10c0/b05bb2a2a7135ea88d646090a026d71b3a9bf66562e9678dd13810ea6d6878853b17529726b7448805d7b9f79b936f0b8020595f9031b8e3219b70283a70727d
+  languageName: node
+  linkType: hard
+
 "postcss-normalize-charset@npm:^6.0.1":
   version: 6.0.1
   resolution: "postcss-normalize-charset@npm:6.0.1"
@@ -19307,7 +19328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.15":
+"postcss-selector-parser@npm:^6.0.13, postcss-selector-parser@npm:^6.0.15":
   version: 6.0.15
   resolution: "postcss-selector-parser@npm:6.0.15"
   dependencies:
@@ -22715,6 +22736,7 @@ __metadata:
     postcss-cli: "npm:^11.0.0"
     postcss-import: "npm:^16.0.0"
     postcss-modules: "npm:^6.0.0"
+    postcss-nesting: "npm:^12.0.3"
     prettier: "npm:^3.0.0"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
