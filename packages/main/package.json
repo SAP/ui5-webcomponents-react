@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "1.25.1",
+  "version": "1.24.0",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "type": "module",
   "main": "dist/index.js",
@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "require": "./cjs/index.cjs",
       "types": "./dist/index.d.ts",
       "browser": "./dist/index.js",
       "node": "./ssr/index.js",
@@ -25,6 +26,9 @@
     "./jestSetup": "./jestSetup.js",
     "./jestSetup.js": "./jestSetup.js",
     "./styles.css": "./dist/css/index.css",
+    "./cjs": "./cjs/index.cjs",
+    "./cjs/*": "./cjs/*",
+    "./cjs/*.cjs": "./cjs/*.cjs",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
@@ -48,13 +52,15 @@
     "build:i18n": "node scripts/generateI18n.mjs",
     "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
+    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx --env-name cjs --out-file-extension .cjs --ignore '**/*Type*.js'",
+    "build:cjs:tsc": "tsc -p ./tsconfig.cjs.json --declarationDir cjs",
     "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
     "build:css": "postcss --base src --dir dist/css src/**/*.css",
     "build:css-bundle": "node scripts/merge-css-modules.js",
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "~3.1.0",
+    "@tanstack/react-virtual": "3.0.1",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.1.0",
     "react-jss": "^10.10.0",
@@ -63,10 +69,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~1.22.0",
-    "@ui5/webcomponents-base": "~1.22.0",
-    "@ui5/webcomponents-fiori": "~1.22.0",
-    "@ui5/webcomponents-icons": "~1.22.0",
+    "@ui5/webcomponents": "~1.21.0",
+    "@ui5/webcomponents-base": "~1.21.0",
+    "@ui5/webcomponents-fiori": "~1.21.0",
+    "@ui5/webcomponents-icons": "~1.21.0",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
@@ -89,6 +95,7 @@
   },
   "files": [
     "dist",
+    "cjs",
     "wrappers",
     "ssr",
     "CHANGELOG.md",
@@ -96,5 +103,14 @@
     "LICENSE",
     "NOTICE.txt",
     "README.md"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "7.23.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-export-default-from": "^7.22.17",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "babel-plugin-client-only-require": "^1.0.1"
+  }
 }

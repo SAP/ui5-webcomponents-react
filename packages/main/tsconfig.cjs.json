@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "resolveJsonModule": true,
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "lib": ["es6", "dom"],
+        "outDir": "./cjs",
+        "declarationDir": "./cjs",
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noEmit": true,
+        "downlevelIteration": true,
+        "skipLibCheck": false
+    }
+}

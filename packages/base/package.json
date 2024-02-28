@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "1.25.1",
+  "version": "1.24.0",
   "description": "Base for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
@@ -9,10 +9,12 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "require": "./cjs/index.cjs",
       "default": "./dist/index.js"
     },
     "./package.json": "./package.json",
     "./dist": "./dist/index.js",
+    "./cjs/*": "./cjs/*",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js"
   },
@@ -26,11 +28,12 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
+    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx --env-name cjs --out-file-extension .cjs --ignore '**/*Type*.js'",
     "clean": "rimraf dist"
   },
   "peerDependencies": {
     "@types/react": "*",
-    "@ui5/webcomponents-base": "~1.22.0",
+    "@ui5/webcomponents-base": "~1.21.0",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
@@ -41,6 +44,19 @@
       "optional": true
     }
   },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "7.23.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.23.2",
+    "@babel/plugin-proposal-export-default-from": "^7.22.17",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "7.22.20",
+    "@babel/preset-react": "7.22.15",
+    "@babel/preset-typescript": "7.23.0",
+    "babel-plugin-client-only-require": "^1.0.1"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -50,6 +66,7 @@
   "files": [
     "bin",
     "codemods",
+    "cjs",
     "dist",
     "CHANGELOG.md",
     "LICENSE",

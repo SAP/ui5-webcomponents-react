@@ -33,6 +33,7 @@
               }
           ],
           ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }],
+          ["@babel/plugin-proposal-decorators", { "version": "2023-05" }],
           "@babel/plugin-proposal-object-rest-spread",
           "@babel/plugin-proposal-class-properties",
           "@babel/plugin-proposal-export-default-from",
@@ -42,36 +43,6 @@
                 "mode": "cjs"
               }
             ]
-      ]
-    },
-    "ssr": {
-      "plugins": [
-        [
-          "./babel-plugin-ssr.mjs",
-          {
-            "mode": "ssr"
-          }
-        ]
-      ]
-    },
-    "client": {
-      "plugins": [
-        [
-          "./babel-plugin-ssr.mjs",
-          {
-            "mode": "client"
-          }
-        ]
-      ]
-    },
-    "wrapper": {
-      "plugins": [
-        [
-          "./babel-plugin-ssr.mjs",
-          {
-            "mode": "wrapper"
-          }
-        ]
       ]
     }
   },
