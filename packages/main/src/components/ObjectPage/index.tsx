@@ -88,13 +88,13 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**
-   * Set the current selected `ObjectPageSection` by `id`.
+   * Sets the current selected `ObjectPageSection` by `id`.
    *
    * __Note:__ If a valid `selectedSubSectionId` is set, this prop has no effect.
    */
   selectedSectionId?: string;
   /**
-   * Set the current selected `ObjectPageSubSection` by `id`.
+   * Sets the current selected `ObjectPageSubSection` by `id`.
    */
   selectedSubSectionId?: string;
   /**
