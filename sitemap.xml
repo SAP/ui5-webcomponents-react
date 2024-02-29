@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://sap.github.io/ui5-webcomponents-react/</loc>
+        <lastmod>2024-02-29</lastmod>
+    </url>
+    <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/getting-started--docs</loc>
         <lastmod>2024-02-29</lastmod>
     </url>
