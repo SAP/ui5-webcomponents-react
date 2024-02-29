@@ -33,6 +33,7 @@ import {
   TitleLevel,
   ValueState
 } from '../..';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {
   it('toggle header', () => {
@@ -837,6 +838,44 @@ describe('ObjectPage', () => {
     cy.get('[ui5-tabcontainer]').should('not.exist');
     cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
   });
+
+  it('onBeforeNavigate', () => {
+    const beforeNavigateHandlerDefaultPrevented = (e) => {
+      // deleted as not relevant for the test
+      delete e.detail.tab;
+      delete e.detail.tabIndex;
+      e.preventDefault();
+    };
+    const beforeNavigate = cy.spy(beforeNavigateHandlerDefaultPrevented).as('beforeNavigateSpy');
+    const sectionChange = cy.spy().as('sectionChangeSpy');
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        onBeforeNavigate={beforeNavigate}
+        onSelectedSectionChange={sectionChange}
+      >
+        {OPContent}
+      </ObjectPage>
+    );
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
+    cy.get('@beforeNavigateSpy')
+      .should('have.been.calledOnce')
+      .its('firstCall.args[0].detail')
+      .should('deep.equal', { sectionIndex: 2, sectionId: 'personal', subSectionId: undefined });
+    cy.get('@sectionChangeSpy').should('not.have.been.called');
+
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.realPress('Enter');
+    cy.get('@beforeNavigateSpy')
+      .should('have.been.calledTwice')
+      .its('secondCall.args[0].detail')
+      .should('deep.equal', { sectionIndex: 3, sectionId: 'employment', subSectionId: 'employment-job-information' });
+    cy.get('@sectionChangeSpy').should('not.have.been.called');
+  });
+
+  cypressPassThroughTestsFactory(ObjectPage);
 });
 
 const DPTitle = (

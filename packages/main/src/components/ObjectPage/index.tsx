@@ -1,5 +1,6 @@
 'use client';
 
+import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
 import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
@@ -18,8 +19,8 @@ import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/inde
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
-import type { CommonProps } from '../../types/index.js';
-import type { AvatarPropTypes } from '../../webComponents/index.js';
+import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
+import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
@@ -42,6 +43,14 @@ addCustomCSSWithScoping(
 const TAB_CONTAINER_HEADER_HEIGHT = 48;
 
 type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
+
+interface BeforeNavigateDetail {
+  sectionIndex: number;
+  sectionId: string;
+  subSectionId: string | undefined;
+}
+
+type ObjectPageTabSelectEventDetail = TabContainerTabSelectEventDetail & BeforeNavigateDetail;
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
@@ -79,11 +88,13 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**
-   * Defines the ID of the currently `ObjectPageSection` section.
+   * Set the current selected `ObjectPageSection` by `id`.
+   *
+   * __Note:__ If a valid `selectedSubSectionId` is set, this prop has no effect.
    */
   selectedSectionId?: string;
   /**
-   * Defines the ID of the currently `ObjectPageSubSection` section.
+   * Set the current selected `ObjectPageSubSection` by `id`.
    */
   selectedSubSectionId?: string;
   /**
@@ -133,6 +144,12 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   placeholder?: ReactNode;
   /**
+   * The event is fired before the selected section is changed using the navigation. It can be aborted by the application with `preventDefault()`, which means that there will be no navigation.
+   *
+   * __Note:__ This event is only fired when navigating via tab-bar.
+   */
+  onBeforeNavigate?: (event: Ui5CustomEvent<TabContainerDomRef, ObjectPageTabSelectEventDetail>) => void;
+  /**
    * Fired when the selected section changes.
    */
   onSelectedSectionChange?: (
@@ -177,6 +194,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     onSelectedSectionChange,
     onToggleHeaderContent,
     onPinnedStateChange,
+    onBeforeNavigate,
     ...rest
   } = props;
 
@@ -584,6 +602,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
 
+  const hasHeaderContent = !!headerContent;
   const renderTitleSection = useCallback(
     (inHeader = false) => {
       const titleInHeaderClass = inHeader ? classes.titleInHeader : undefined;
@@ -606,7 +625,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         'data-is-snapped-rendered-outside': snappedHeaderInObjPage
       });
     },
-    [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, !!headerContent]
+    [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, hasHeaderContent]
   );
 
   const isInitial = useRef(true);
@@ -668,6 +687,22 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   ]);
 
   const onTabItemSelect = (event) => {
+    if (typeof onBeforeNavigate === 'function') {
+      const selectedTabDataset = event.detail.tab.dataset;
+      const sectionIndex = parseInt(selectedTabDataset.index, 10);
+      const sectionId = selectedTabDataset.parentId ?? selectedTabDataset.sectionId;
+      const subSectionId = selectedTabDataset.isSubTab ? selectedTabDataset.sectionId : undefined;
+      onBeforeNavigate(
+        enrichEventWithDetails(event, {
+          sectionIndex,
+          sectionId,
+          subSectionId
+        })
+      );
+      if (event.defaultPrevented) {
+        return;
+      }
+    }
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
     if (isSubTab) {
@@ -845,6 +880,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                         data-section-id={item.props.id}
                         text={item.props.titleText}
                         selected={item.props.id === selectedSubSectionId || undefined}
+                        data-index={index}
                       >
                         {/*ToDo: workaround for nested tab selection*/}
                         <span style={{ display: 'none' }} />
