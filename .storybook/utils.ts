@@ -54,8 +54,10 @@ function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
           const name = ref.name.replace(/^I([A-Z])/g, '$1');
           const subComps = replaceSubComps[name] || [name];
           subComps.forEach((subComp: string) => {
-            recursiveFind(subComp);
-            subComponentsSet.add(subComp);
+            if (!subComponentsSet.has(subComp)) {
+              subComponentsSet.add(subComp);
+              recursiveFind(subComp);
+            }
           });
         });
       });
