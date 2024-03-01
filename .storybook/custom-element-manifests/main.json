@@ -692,6 +692,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/ButtonAccessibleRole.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "ButtonAccessibleRole",
+          "description": "Button accessible roles.",
+          "_ui5privacy": "public",
+          "_ui5since": "1.23",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents Default (button) ARIA role.",
+              "default": "Button",
+              "name": "Button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the ARIA role \"link\".",
+              "default": "Link",
+              "name": "Link",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonAccessibleRole",
+            "module": "dist/types/ButtonAccessibleRole.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/ButtonDesign.js",
       "declarations": [
         {
@@ -815,6 +858,238 @@
           "declaration": {
             "name": "ButtonType",
             "module": "dist/types/ButtonType.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/CalendarLegendItemType.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "CalendarLegendItemType",
+          "description": "Enum for calendar legend items' types.",
+          "_ui5privacy": "public",
+          "_ui5since": "1.23.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Set when no type is set.",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Working\" item in the calendar legend.",
+              "default": "Working",
+              "name": "Working",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"NonWorking\" item in the calendar legend.",
+              "default": "NonWorking",
+              "name": "NonWorking",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type01\" item in the calendar legend.",
+              "default": "Type01",
+              "name": "Type01",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type02\" item in the calendar legend.",
+              "default": "Type02",
+              "name": "Type02",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type03\" item in the calendar legend.",
+              "default": "Type03",
+              "name": "Type03",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type04\" item in the calendar legend.",
+              "default": "Type04",
+              "name": "Type04",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type05\" item in the calendar legend.",
+              "default": "Type05",
+              "name": "Type05",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type06\" item in the calendar legend.",
+              "default": "Type06",
+              "name": "Type06",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type07\" item in the calendar legend.",
+              "default": "Type07",
+              "name": "Type07",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type08\" item in the calendar legend.",
+              "default": "Type08",
+              "name": "Type08",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type09\" item in the calendar legend.",
+              "default": "Type09",
+              "name": "Type09",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type10\" item in the calendar legend.",
+              "default": "Type10",
+              "name": "Type10",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type11\" item in the calendar legend.",
+              "default": "Type11",
+              "name": "Type11",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type12\" item in the calendar legend.",
+              "default": "Type12",
+              "name": "Type12",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type13\" item in the calendar legend.",
+              "default": "Type13",
+              "name": "Type13",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type14\" item in the calendar legend.",
+              "default": "Type14",
+              "name": "Type14",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type15\" item in the calendar legend.",
+              "default": "Type15",
+              "name": "Type15",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type16\" item in the calendar legend.",
+              "default": "Type16",
+              "name": "Type16",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type17\" item in the calendar legend.",
+              "default": "Type17",
+              "name": "Type17",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type18\" item in the calendar legend.",
+              "default": "Type18",
+              "name": "Type18",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type19\" item in the calendar legend.",
+              "default": "Type19",
+              "name": "Type19",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the \"Type20\" item in the calendar legend.",
+              "default": "Type20",
+              "name": "Type20",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarLegendItemType",
+            "module": "dist/types/CalendarLegendItemType.js"
           }
         }
       ]
@@ -3211,7 +3486,7 @@
               "description": "Defines the design type of the component.",
               "default": "\"Set3\"",
               "privacy": "public",
-              "_ui5since": "1.20",
+              "_ui5since": "1.22.0",
               "_ui5validator": "String"
             },
             {
@@ -3234,7 +3509,7 @@
               "description": "Defines if the default state icon is shown.",
               "default": "false",
               "privacy": "public",
-              "_ui5since": "1.20",
+              "_ui5since": "1.22.0",
               "_ui5validator": "Boolean"
             },
             {
@@ -3246,7 +3521,7 @@
               "description": "Defines if the component is interactive (focusable and pressable).\n<br><b>Note:</b> The badge cannot be <code>interactive</code>\nwhen <code>design</code> property is <code>BadgeDesign.Set3</code>",
               "default": "false",
               "privacy": "public",
-              "_ui5since": "1.20",
+              "_ui5since": "1.22.0",
               "_ui5validator": "Boolean"
             },
             {
@@ -3265,7 +3540,7 @@
               "description": "Defines how the text of a component will be displayed when there is not enough space.\n<br><b>Note:</b> For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
               "default": "\"None\"",
               "privacy": "public",
-              "_ui5since": "1.20",
+              "_ui5since": "1.22.0",
               "_ui5validator": "WrappingType"
             }
           ],
@@ -3277,7 +3552,7 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on an interactive badge.\n<b>Note:</b> The event will be fired if the <code>interactive</code> property is <code>true</code>",
-              "_ui5since": "1.20"
+              "_ui5since": "1.22.0"
             }
           ],
           "superclass": {
@@ -3795,7 +4070,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
               "privacy": "public",
               "default": "{}",
               "_ui5since": "1.2.0",
@@ -3819,6 +4094,25 @@
               "privacy": "public",
               "_ui5since": "1.15.0",
               "_ui5validator": "ButtonType"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleRole",
+              "type": {
+                "text": "ButtonAccessibleRole",
+                "references": [
+                  {
+                    "name": "ButtonAccessibleRole",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonAccessibleRole.js"
+                  }
+                ]
+              },
+              "description": "Describes the accessibility role of the button.\n\nNOTE: Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+              "default": "\"Button\"",
+              "privacy": "public",
+              "_ui5since": "1.23",
+              "_ui5validator": "ButtonAccessibleRole"
             }
           ],
           "events": [
@@ -3877,6 +4171,22 @@
           "name": "Calendar",
           "slots": [
             {
+              "name": "calendarLegend",
+              "description": "Defines the calendar legend of the component.",
+              "_ui5since": "1.23.0",
+              "_ui5type": {
+                "text": "Array<CalendarLegend>",
+                "references": [
+                  {
+                    "name": "CalendarLegend",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/CalendarLegend.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
               "name": "default",
               "description": "Defines the selected date or dates (depending on the <code>selectionMode</code> property)\nfor this calendar as instances of <code>ui5-date</code>.",
               "_ui5propertyName": "dates",
@@ -3887,6 +4197,22 @@
                     "name": "CalendarDate",
                     "package": "@ui5/webcomponents",
                     "module": "dist/CalendarDate.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "specialDates",
+              "description": "Defines the special dates, visually emphasized in the calendar.",
+              "_ui5since": "1.23.0",
+              "_ui5type": {
+                "text": "Array<SpecialCalendarDate>",
+                "references": [
+                  {
+                    "name": "SpecialCalendarDate",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/SpecialCalendarDate.js"
                   }
                 ]
               },
@@ -4144,6 +4470,177 @@
           "declaration": {
             "name": "CalendarHeader",
             "module": "dist/CalendarHeader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CalendarLegend.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-calendar-legend</code> component is designed for use within the <code>ui5-calendar</code> to display a legend.\nEach <code>ui5-calendar-legend-item</code> represents a unique date type, specifying its visual style\nand a corresponding textual label.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/CalendarLegend.js\";</code>",
+          "name": "CalendarLegend",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of the component.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<CalendarLegendItem>",
+                "references": [
+                  {
+                    "name": "CalendarLegendItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/CalendarLegendItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "hideToday",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the Today item in the legend.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "hideSelectedDay",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the Selected day item in the legend.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "hideNonWorkingDay",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the Non-Working day item in the legend.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "hideWorkingDay",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the Working day item in the legend.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-calendar-legend",
+          "customElement": true,
+          "_ui5since": "1.23.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarLegend",
+            "module": "dist/CalendarLegend.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-calendar-legend",
+          "declaration": {
+            "name": "CalendarLegend",
+            "module": "dist/CalendarLegend.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CalendarLegendItem.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nEach <code>ui5-calendar-legend-item</code> represents a legend item, displaying a color with a label.\nThe color is determined by the <code>type</code> property and the label by the <code>text</code> property.\nIf a <code>ui5-special-date</code> is used within the <code>ui5-calendar</code> and a type is set, clicking on a <code>ui5-calendar-legend-item</code>\nwith the same type will emphasize the respective date(s) in the calendar.\n\n<h3>Usage</h3>\nThe <code>ui5-calendar-legend-item</code> is intended to be used within the <code>ui5-calendar-legend</code> component.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/CalendarLegendItem.js\";</code>",
+          "name": "CalendarLegendItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text content of the Calendar Legend Item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "CalendarLegendItemType",
+                "references": [
+                  {
+                    "name": "CalendarLegendItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarLegendItemType.js"
+                  }
+                ]
+              },
+              "description": "Defines the type of the Calendar Legend Item.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5validator": "CalendarLegendItemType"
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-calendar-legend-item",
+          "customElement": true,
+          "_ui5since": "1.23.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarLegendItem",
+            "module": "dist/CalendarLegendItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-calendar-legend-item",
+          "declaration": {
+            "name": "CalendarLegendItem",
+            "module": "dist/CalendarLegendItem.js"
           }
         }
       ]
@@ -5938,7 +6435,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType",
@@ -5981,6 +6478,22 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -7811,7 +8324,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-dialog</code> component is used to temporarily display some information in a\nsize-limited window in front of the regular app screen.\nIt is used to prompt the user for an action or a confirmation.\nThe <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe dialog combines concepts known from other technologies where the windows have\nnames such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.\n<br><br>\nThe <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window.\nTo open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other.\nThe content of the <code>ui5-dialog</code> is fully customizable.\n\n<h3>Structure</h3>\nA <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons.\nThe <code>ui5-dialog</code> is usually displayed at the center of the screen.\nIts position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.\n\n\n<h3>Responsive Behavior</h3>\nThe <code>stretch</code> property can be used to stretch the\n<code>ui5-dialog</code> on full screen.\n\n<b>Note:</b> When a <code>ui5-bar</code> is used in the header or in the footer, you should remove the default dialog's paddings.\n<br>\nFor more information see the sample \"Bar in Header/Footer\".\n\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Dialog\";</code>\n\n<b>Note: </b> We recommend placing popup-like components (<code>ui5-dialog</code> and <code>ui5-popover</code>)\noutside any other components. Preferably, the popup-like components should be placed\nin an upper level HTML element. Otherwise, in some cases the parent HTML elements can break\nthe position and/or z-index management of the popup-like components.\n\n<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>).",
+          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-dialog</code> component is used to temporarily display some information in a\nsize-limited window in front of the regular app screen.\nIt is used to prompt the user for an action or a confirmation.\nThe <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe dialog combines concepts known from other technologies where the windows have\nnames such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.\n<br><br>\nThe <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window.\nTo open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other.\nThe content of the <code>ui5-dialog</code> is fully customizable.\n\n<h3>Structure</h3>\nA <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons.\nThe <code>ui5-dialog</code> is usually displayed at the center of the screen.\nIts position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.\n\n\n<h3>Responsive Behavior</h3>\nThe <code>stretch</code> property can be used to stretch the\n<code>ui5-dialog</code> on full screen.\n\n<b>Note:</b> When a <code>ui5-bar</code> is used in the header or in the footer, you should remove the default dialog's paddings.\n<br>\nFor more information see the sample \"Bar in Header/Footer\".\n\n<h3>Keyboard Handling</h3>\n\n<h4>Basic Navigation</h4>\nWhen the <code>ui5-dialog</code> has the <code>draggable</code> property set to <code>true</code> and the header is focused, the user can move the dialog\nwith the following keyboard shortcuts:\n<br>\n<ul>\n<li>[UP/DOWN] arrow keys - Move the dialog up/down.</li>\n<li>[LEFT/RIGHT] arrow keys - Move the dialog left/right.</li>\n</ul>\n\n<h4>Resizing</h4>\nWhen the <code>ui5-dialog</code> has the <code>resizable</code> property set to <code>true</code> and the header is focused, the user can change the size of the dialog\nwith the following keyboard shortcuts:\n<br>\n<ul>\n<li>[SHIFT] + [UP/DOWN] - Decrease/Increase the height of the dialog.</li>\n<li>[SHIFT] + [LEFT/RIGHT] - Decrease/Increase the width of the dialog.</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Dialog\";</code>\n\n<b>Note: </b> We recommend placing popup-like components (<code>ui5-dialog</code> and <code>ui5-popover</code>)\noutside any other components. Preferably, the popup-like components should be placed\nin an upper level HTML element. Otherwise, in some cases the parent HTML elements can break\nthe position and/or z-index management of the popup-like components.\n\n<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>).",
           "name": "Dialog",
           "cssParts": [
             {
@@ -9210,7 +9723,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
               "privacy": "public",
               "default": "{}",
               "_ui5since": "1.1.0",
@@ -9723,7 +10236,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType"
@@ -9758,6 +10271,18 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String"
             },
             {
               "kind": "field",
@@ -10223,6 +10748,18 @@
               "privacy": "public",
               "_ui5since": "1.7.0",
               "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip for the menu item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String"
             }
           ],
           "superclass": {
@@ -10252,6 +10789,21 @@
           "declaration": {
             "name": "MenuItem",
             "module": "dist/MenuItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MenuListItem.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuListItem",
+            "module": "dist/MenuListItem.js"
           }
         }
       ]
@@ -12365,6 +12917,12 @@
           "kind": "class",
           "description": "<h3 class=\"comment-api-title\">Overview</h3>\nShows the progress of a process in a graphical way. To indicate the progress,\nthe inside of the component is filled with a color.\n\n<h3>Responsive Behavior</h3>\nYou can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ProgressIndicator.js\";</code>",
           "name": "ProgressIndicator",
+          "cssParts": [
+            {
+              "description": "Used to style the remaining bar of the <code>ui5-progress-indicator</code>",
+              "name": "remaining-bar"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -12479,6 +13037,16 @@
           "kind": "class",
           "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-radio-button</code> component enables users to select a single option from a set of options.\nWhen a <code>ui5-radio-button</code> is selected by the user, the\n<code>change</code> event is fired.\nWhen a <code>ui5-radio-button</code> that is within a group is selected, the one\nthat was previously selected gets automatically deselected. You can group radio buttons by using the <code>name</code> property.\n<br>\n<b>Note:</b> If <code>ui5-radio-button</code> is not part of a group, it can be selected once, but can not be deselected back.\n\n<h3>Keyboard Handling</h3>\n\nOnce the <code>ui5-radio-button</code> is on focus, it might be selected by pressing the Space and Enter keys.\n<br>\nThe Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio buttons in one group,\nwhile TAB and SHIFT + TAB can be used to enter or leave the radio button group.\n<br>\n<b>Note:</b> On entering radio button group, the focus goes to the currently selected radio button.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/RadioButton\";</code>",
           "name": "RadioButton",
+          "cssParts": [
+            {
+              "description": "Used to style the outer ring of the <code>ui5-radio-button</code>.",
+              "name": "outer-ring"
+            },
+            {
+              "description": "Used to style the inner ring of the <code>ui5-radio-button</code>.",
+              "name": "inner-ring"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -13892,7 +14460,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
               "privacy": "public",
               "default": "{}",
               "_ui5since": "1.2.0",
@@ -13920,6 +14488,29 @@
               "privacy": "public",
               "_ui5since": "1.15.0",
               "_ui5validator": "ButtonType",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleRole",
+              "type": {
+                "text": "ButtonAccessibleRole",
+                "references": [
+                  {
+                    "name": "ButtonAccessibleRole",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonAccessibleRole.js"
+                  }
+                ]
+              },
+              "description": "Describes the accessibility role of the button.\n\nNOTE: Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+              "default": "\"Button\"",
+              "privacy": "public",
+              "_ui5since": "1.23",
+              "_ui5validator": "ButtonAccessibleRole",
               "inheritedFrom": {
                 "name": "Button",
                 "module": "dist/Button.js"
@@ -14494,6 +15085,22 @@
             },
             {
               "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "selected",
               "type": {
                 "text": "boolean"
@@ -14938,6 +15545,80 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SpecialCalendarDate.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-special-date</code> component defines a special calendar date to be used inside <code>ui5-calendar</code>,\nwhich is visually distinguished from the rest of the dates.",
+          "name": "SpecialCalendarDate",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "CalendarLegendItemType",
+                "references": [
+                  {
+                    "name": "CalendarLegendItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarLegendItemType.js"
+                  }
+                ]
+              },
+              "description": "Defines the type of the special date.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5validator": "CalendarLegendItemType"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The date formatted according to the <code>formatPattern</code> property\nof the <code>ui5-calendar</code> that hosts the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "CalendarDate",
+                "module": "dist/CalendarDate.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "CalendarDate",
+            "package": "@ui5/webcomponents",
+            "module": "dist/CalendarDate.js"
+          },
+          "tagName": "ui5-special-date",
+          "customElement": true,
+          "_ui5since": "1.23.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SpecialCalendarDate",
+            "module": "dist/SpecialCalendarDate.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-special-date",
+          "declaration": {
+            "name": "SpecialCalendarDate",
+            "module": "dist/SpecialCalendarDate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SplitButton.js",
       "declarations": [
         {
@@ -15266,7 +15947,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType",
@@ -15309,6 +15990,22 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -15553,6 +16250,41 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the input operation has finished by pressing Enter or on focusout."
+            },
+            {
+              "name": "value-state-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<StepInputValueStateChangeEventDetail>",
+                "references": [
+                  {
+                    "name": "StepInputValueStateChangeEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/StepInput.js"
+                  }
+                ]
+              },
+              "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+              "_ui5allowPreventDefault": true,
+              "_ui5since": "1.23.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "string"
+                  },
+                  "name": "valueState",
+                  "_ui5privacy": "public",
+                  "description": "The new <code>valueState</code> that will be set."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "valid",
+                  "_ui5privacy": "public",
+                  "description": "Indicator if the value is in between the min and max value."
+                }
+              ]
             }
           ],
           "superclass": {
@@ -18397,7 +19129,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
               "privacy": "public",
               "default": "{}",
               "_ui5since": "1.2.0",
@@ -18425,6 +19157,29 @@
               "privacy": "public",
               "_ui5since": "1.15.0",
               "_ui5validator": "ButtonType",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleRole",
+              "type": {
+                "text": "ButtonAccessibleRole",
+                "references": [
+                  {
+                    "name": "ButtonAccessibleRole",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonAccessibleRole.js"
+                  }
+                ]
+              },
+              "description": "Describes the accessibility role of the button.\n\nNOTE: Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+              "default": "\"Button\"",
+              "privacy": "public",
+              "_ui5since": "1.23",
+              "_ui5validator": "ButtonAccessibleRole",
               "inheritedFrom": {
                 "name": "Button",
                 "module": "dist/Button.js"
@@ -18844,7 +19599,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
               "default": "{}",
               "privacy": "public",
               "_ui5validator": "Object"
@@ -19964,7 +20719,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType",
@@ -20007,6 +20762,22 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -20249,7 +21020,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType",
@@ -20292,6 +21063,22 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -20552,7 +21339,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType",
@@ -20595,6 +21382,22 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"

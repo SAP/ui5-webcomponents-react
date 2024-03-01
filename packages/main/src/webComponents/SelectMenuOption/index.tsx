@@ -40,6 +40,11 @@ interface SelectMenuOptionAttributes {
   selected?: boolean;
 
   /**
+   * Defines the text of the tooltip that would be displayed for the list item.
+   */
+  tooltip?: string;
+
+  /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Active"
    * @deprecated true
@@ -98,7 +103,7 @@ interface SelectMenuOptionPropTypes
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['accessibleName', 'displayText', 'type', 'value'],
+  ['accessibleName', 'displayText', 'tooltip', 'type', 'value'],
   ['disabled', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

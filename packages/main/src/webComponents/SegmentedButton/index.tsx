@@ -31,11 +31,11 @@ interface SegmentedButtonAttributes {
 
 interface SegmentedButtonDomRef extends Required<SegmentedButtonAttributes>, Ui5DomRef {
   /**
-   * Currently selected item.
-   *
-   * @deprecated since 1.14.0. This method will be removed in the next major release.
-   Please use the <code>selectedItems</code> property instead.
-   */
+* Currently selected item.
+*
+* @deprecated since 1.14.0. This method will be removed in the next major release.
+Please use the <code>selectedItems</code> property instead.
+*/
   readonly selectedItem: ISegmentedButtonItem | undefined;
 
   /**

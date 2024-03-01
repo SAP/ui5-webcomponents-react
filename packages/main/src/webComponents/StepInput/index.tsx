@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/StepInput.js';
+import type { StepInputValueStateChangeEventDetail } from '@ui5/webcomponents/dist/StepInput.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -92,7 +93,7 @@ interface StepInputDomRef extends Required<StepInputAttributes>, Ui5DomRef {}
 
 interface StepInputPropTypes
   extends StepInputAttributes,
-    Omit<CommonProps, keyof StepInputAttributes | 'valueStateMessage' | 'onChange'> {
+    Omit<CommonProps, keyof StepInputAttributes | 'valueStateMessage' | 'onChange' | 'onValueStateChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -110,6 +111,11 @@ interface StepInputPropTypes
    * Fired when the input operation has finished by pressing Enter or on focusout.
    */
   onChange?: (event: Ui5CustomEvent<StepInputDomRef>) => void;
+
+  /**
+   * Fired before the value state of the component is updated internally. The event is preventable, meaning that if it's default action is prevented, the component will not update the value state.
+   */
+  onValueStateChange?: (event: Ui5CustomEvent<StepInputDomRef, StepInputValueStateChangeEventDetail>) => void;
 }
 
 /**
@@ -151,7 +157,7 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   ],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change'],
+  ['change', 'value-state-change'],
   () => import('@ui5/webcomponents/dist/StepInput.js')
 );
 

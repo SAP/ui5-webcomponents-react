@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import type { MouseEventHandler, ReactNode } from 'react';
@@ -19,6 +20,12 @@ interface ToggleButtonAttributes {
    * Receives id(or many ids) of the elements that label the component.
    */
   accessibleNameRef?: string;
+
+  /**
+   * Describes the accessibility role of the button. NOTE: Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
+   * @default "Button"
+   */
+  accessibleRole?: ButtonAccessibleRole | keyof typeof ButtonAccessibleRole;
 
   /**
    * Defines the component design.
@@ -85,7 +92,7 @@ interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
    *     *   `Dialog`
    *     *   `Grid`
-   *     *   `Listbox`
+   *     *   `ListBox`
    *     *   `Menu`
    *     *   `Tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
@@ -119,7 +126,7 @@ interface ToggleButtonPropTypes
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'icon', 'tooltip', 'type'],
   ['disabled', 'iconEnd', 'pressed', 'submits'],
   [],
   ['click'],

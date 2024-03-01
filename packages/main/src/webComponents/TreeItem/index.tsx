@@ -77,6 +77,11 @@ interface TreeItemAttributes {
   text?: string;
 
   /**
+   * Defines the text of the tooltip that would be displayed for the list item.
+   */
+  tooltip?: string;
+
+  /**
    * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
    * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
@@ -135,7 +140,7 @@ interface TreeItemPropTypes
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'type'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'tooltip', 'type'],
   ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

@@ -190,7 +190,25 @@ interface DialogPropTypes
  * ### Responsive Behavior
  *
  * The `stretch` property can be used to stretch the `Dialog` on full screen. **Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.
- * For more information see the sample "Bar in Header/Footer". **Note:** We recommend placing popup-like components (`Dialog` and `Popover`) outside any other components. Preferably, the popup-like components should be placed in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break the position and/or z-index management of the popup-like components. **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
+ * For more information see the sample "Bar in Header/Footer".
+ *
+ * ### Keyboard Handling
+ *
+ * #### Basic Navigation
+ *
+ * When the `Dialog` has the `draggable` property set to `true` and the header is focused, the user can move the dialog with the following keyboard shortcuts:
+ *
+ * *   \[UP/DOWN\] arrow keys - Move the dialog up/down.
+ * *   \[LEFT/RIGHT\] arrow keys - Move the dialog left/right.
+ *
+ * #### Resizing
+ *
+ * When the `Dialog` has the `resizable` property set to `true` and the header is focused, the user can change the size of the dialog with the following keyboard shortcuts:
+ *
+ * *   \[SHIFT\] + \[UP/DOWN\] - Decrease/Increase the height of the dialog.
+ * *   \[SHIFT\] + \[LEFT/RIGHT\] - Decrease/Increase the width of the dialog.
+ *
+ * **Note:** We recommend placing popup-like components (`Dialog` and `Popover`) outside any other components. Preferably, the popup-like components should be placed in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break the position and/or z-index management of the popup-like components. **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

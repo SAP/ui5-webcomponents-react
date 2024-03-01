@@ -1238,7 +1238,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Recommended to use when the item contains an image.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
+              "description": "Recommended to use when the item contains an image.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
               "default": "Square",
               "name": "Square",
               "readonly": true
@@ -1247,7 +1247,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Recommended to use when the item contains video content.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
+              "description": "Recommended to use when the item contains video content.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
               "default": "Wide",
               "name": "Wide",
               "readonly": true
@@ -2813,7 +2813,7 @@
                   }
                 ]
               },
-              "description": "Defines the semantic level of the title.\n\n<b>Note:</b> Used for accessibility purposes only.",
+              "description": "Defines the semantic level of the title.\n\n<b>Note:</b> Used for accessibility purposes only.\n\n<br/>\n\n<b>Note:</b> Doesn't take effect when <code>title</code> slot is being used.",
               "default": "\"H2\"",
               "privacy": "public",
               "_ui5since": "1.20.0",
@@ -6021,7 +6021,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType"
@@ -6056,6 +6056,18 @@
               "privacy": "public",
               "_ui5since": "1.10.0",
               "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String"
             },
             {
               "kind": "field",

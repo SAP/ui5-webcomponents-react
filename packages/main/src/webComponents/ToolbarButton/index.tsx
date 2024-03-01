@@ -100,7 +100,7 @@ interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomR
    * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
    *     *   `Dialog`
    *     *   `Grid`
-   *     *   `Listbox`
+   *     *   `ListBox`
    *     *   `Menu`
    *     *   `Tree`
    * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.

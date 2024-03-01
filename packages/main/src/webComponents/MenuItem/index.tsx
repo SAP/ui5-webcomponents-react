@@ -54,6 +54,11 @@ interface MenuItemAttributes {
    * Defines the text of the tree item.
    */
   text?: string;
+
+  /**
+   * Defines the text of the tooltip for the menu item.
+   */
+  tooltip?: string;
 }
 
 interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {}
@@ -77,7 +82,7 @@ interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof 
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text'],
+  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text', 'tooltip'],
   ['busy', 'disabled', 'startsSection'],
   [],
   [],

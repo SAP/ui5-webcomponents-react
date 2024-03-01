@@ -6,7 +6,7 @@ import type CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSe
 import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CalendarAttributes {
   /**
@@ -59,11 +59,36 @@ interface CalendarDomRef extends Required<CalendarAttributes>, Ui5DomRef {}
 
 interface CalendarPropTypes
   extends CalendarAttributes,
-    Omit<CommonProps, keyof CalendarAttributes | 'children' | 'onSelectedDatesChange'> {
+    Omit<
+      CommonProps,
+      keyof CalendarAttributes | 'calendarLegend' | 'children' | 'specialDates' | 'onSelectedDatesChange'
+    > {
+  /**
+   * Defines the calendar legend of the component.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="calendarLegend"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   */
+  calendarLegend?: UI5WCSlotsNode;
+
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property) for this calendar as instances of `CalendarDate`.
    */
   children?: ReactNode | ReactNode[];
+
+  /**
+   * Defines the special dates, visually emphasized in the calendar.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="specialDates"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   */
+  specialDates?: UI5WCSlotsNode;
   /**
    * Fired when the selected dates change. **Note:** If you call `preventDefault()` for this event, the component will not create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    */
@@ -150,7 +175,7 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
   ['formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType', 'selectionMode'],
   ['hideWeekNumbers'],
-  [],
+  ['calendarLegend', 'specialDates'],
   ['selected-dates-change'],
   () => import('@ui5/webcomponents/dist/Calendar.js')
 );
