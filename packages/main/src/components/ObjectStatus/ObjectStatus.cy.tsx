@@ -39,7 +39,7 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapTextColor,
       backgroundColor: ThemingParameters.sapNeutralBackground,
-      iconColor: ThemingParameters.sapButton_Neutral_TextColor
+      iconColor: ThemingParameters.sapTextColor
     },
     hiddenText: undefined
   },
