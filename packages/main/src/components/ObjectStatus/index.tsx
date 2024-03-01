@@ -2,19 +2,18 @@
 
 import {
   VALUE_STATE_ERROR,
-  VALUE_STATE_WARNING,
   VALUE_STATE_INFORMATION,
-  VALUE_STATE_SUCCESS
+  VALUE_STATE_SUCCESS,
+  VALUE_STATE_WARNING
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import type { IndicationColor } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import {
@@ -25,7 +24,7 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
-import styles from './ObjectStatus.jss.js';
+import { classNames, styleData } from './ObjectStatus.module.css.js';
 
 export interface ObjectStatusPropTypes extends CommonProps {
   /**
@@ -154,8 +153,6 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
   return [icon, invisibleText];
 };
 
-const useStyles = createUseStyles(styles, { name: 'ObjectStatus' });
-
 /**
  * Status information that can be either text with a value state, or an icon.
  */
@@ -177,7 +174,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const i18nBundleWc = useI18nBundle('@ui5/webcomponents');
-  const classes = useStyles();
+  useStylesheet(styleData, ObjectStatus.displayName);
 
   const indicationColorText = i18nBundle.getText(INDICATION_COLOR);
   const errorStateText = i18nBundleWc.getText(VALUE_STATE_ERROR);
@@ -198,7 +195,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     <span
       aria-hidden={showEmptyIndicator}
       data-component-name="ObjectStatusEmptyIndicator"
-      className={classes.emptyIndicator}
+      className={classNames.emptyIndicator}
     >
       –
     </span>
@@ -207,12 +204,12 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   );
 
   const objStatusClasses = clsx(
-    classes.normalizeCSS,
-    classes.objectStatus,
-    classes[`${state as string}`.toLowerCase()],
-    active && classes.active,
-    inverted && !showEmptyIndicator && classes.inverted,
-    large && classes.large,
+    classNames.normalizeCSS,
+    classNames.objectStatus,
+    classNames[`${state as string}`.toLowerCase()],
+    active && classNames.active,
+    inverted && !showEmptyIndicator && classNames.inverted,
+    large && classNames.large,
     className
   );
 
@@ -230,26 +227,29 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       role={active ? 'button' : 'group'}
       {...rest}
     >
-      <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
+      <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
         {active ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
       </span>
       {iconToRender && (
-        <span className={classes.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
+        <span className={classNames.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
           {iconToRender}
         </span>
       )}
       {computedChildren && (
-        <span className={classes.text} data-component-name="ObjectStatusTextContainer">
+        <span className={classNames.text} data-component-name="ObjectStatusTextContainer">
           {computedChildren}
           {showEmptyIndicator && (
-            <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleEmptyTextContainer">
+            <span
+              className={classNames.pseudoInvisibleText}
+              data-component-name="ObjectStatusInvisibleEmptyTextContainer"
+            >
               {i18nBundle.getText(EMPTY_VALUE)}
             </span>
           )}
         </span>
       )}
       {!!invisibleText && computedChildren && (
-        <span className={classes.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleTextContainer">
+        <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleTextContainer">
           {invisibleText}
         </span>
       )}
