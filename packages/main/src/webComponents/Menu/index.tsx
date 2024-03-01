@@ -104,6 +104,11 @@ interface MenuPropTypes
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
+
+  /**
+   * Private event, published for testing purposes only! Types will be provided once publicly available.
+   */
+  onItemFocus?: any;
 }
 
 /**
@@ -130,7 +135,7 @@ const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   ['busyDelay', 'headerText', 'opener'],
   ['busy', 'open'],
   [],
-  ['after-close', 'after-open', 'before-close', 'before-open', 'item-click'],
+  ['after-close', 'after-open', 'before-close', 'before-open', 'item-click', 'item-focus'],
   () => import('@ui5/webcomponents/dist/Menu.js')
 );
 
