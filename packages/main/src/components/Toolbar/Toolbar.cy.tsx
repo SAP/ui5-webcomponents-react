@@ -440,8 +440,7 @@ describe('Toolbar', () => {
     cy.get(`[ui5-toggle-button]`)
       .find('button')
       .should('have.attr', 'aria-expanded', 'false')
-      //todo: this will be fixed with next ui5-wc version - then use "menu" again
-      .should('have.attr', 'aria-haspopup', 'Menu')
+      .should('have.attr', 'aria-haspopup', 'menu')
       .click();
 
     cy.get(`[ui5-toggle-button]`).find('button').should('have.attr', 'aria-expanded', 'true');
