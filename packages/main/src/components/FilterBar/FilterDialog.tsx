@@ -2,7 +2,7 @@ import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
-import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createUseStyles } from 'react-jss';
@@ -101,7 +101,11 @@ todo: FilterBarDialogPanelTable
  `
 );
 
-const getActiveFilters = (activeFilterAttribute, filter) => {
+type ActiveFilterAttributes = 'all' | 'visible' | 'active' | 'visibleAndActive' | 'mandatory';
+const getActiveFilters = (
+  activeFilterAttribute: ActiveFilterAttributes,
+  filter: ReactElement<FilterGroupItemInternalProps>
+) => {
   switch (activeFilterAttribute) {
     case 'all':
       return true;
@@ -177,7 +181,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const [forceRequired, setForceRequired] = useState<undefined | TableRowDomRef>();
   const [showBtnsOnHover, setShowBtnsOnHover] = useState(true);
   const [isListView, setIsListView] = useState(true);
-  const [filteredAttribute, setFilteredAttribute] = useState('all');
+  const [filteredAttribute, setFilteredAttribute] = useState<ActiveFilterAttributes>('all');
   const [currentReorderedItem, setCurrentReorderedItem] = useState<OnReorderParams | Record<string, never>>({});
   const tableRef = useRef(null);
   const handleReorder = (e: OnReorderParams) => {
