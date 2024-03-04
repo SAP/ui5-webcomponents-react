@@ -8,13 +8,18 @@ import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { clsx } from 'clsx';
 import React, { forwardRef, useContext, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import type { ButtonPropTypes, TableRowDomRef } from '../..';
-import { BusyIndicator, Button, FlexBoxAlignItems, Icon, TableCell, TableRow } from '../..';
-import { BusyIndicatorSize, ButtonDesign, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
+import {
+  BusyIndicatorSize,
+  ButtonDesign,
+  FlexBoxAlignItems,
+  FlexBoxDirection,
+  FlexBoxJustifyContent
+} from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import { Label } from '../../webComponents/index.js';
+import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
+import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import styles from './FilterGroupItem.jss.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';
