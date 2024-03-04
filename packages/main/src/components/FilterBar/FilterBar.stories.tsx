@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useReducer, useRef } from 'react';
+import React, { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -391,6 +391,114 @@ export const InDynamicPage: Story = {
           <Text style={{ color: 'white' }}>Content</Text>
         </div>
       </DynamicPage>
+    );
+  }
+};
+
+export const WithReordering: Story = {
+  args: { enableReordering: true },
+  render(args) {
+    const uniqueId = useId();
+    const [orderedChildren, setOrderedChildren] = useState([
+      <FilterGroupItem key={`A`} label="StepInput" required orderId={`${uniqueId}-0`}>
+        <StepInput required />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
+        <RatingIndicator />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
+        <MultiInput
+          tokens={
+            <>
+              <Token text="Argentina" selected />
+              <Token text="Bulgaria" />
+              <Token text="England" />
+              <Token text="Finland" />
+            </>
+          }
+        />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
+        <Input placeholder="Placeholder" />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
+        <Switch />
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-5`}
+        label="SELECT w/ initial selected"
+        visibleInFilterBar={false}
+        orderId={`${uniqueId}-5`}
+      >
+        <Select>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+        </Select>
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-6`} label="SELECT w/o initial selected" orderId={`${uniqueId}-6`}>
+        <Select>
+          <Option data-key="Test 1" selected icon="add">
+            Test 1
+          </Option>
+          <Option data-key="Test 2" icon="add">
+            Test 2
+          </Option>
+          <Option data-key="Test 3" icon="add">
+            Test 3
+          </Option>
+          <Option data-key="Test 4" icon="add">
+            Test 4
+          </Option>
+          <Option data-key="Test 5" icon="add">
+            Test 5
+          </Option>
+        </Select>
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-7`}
+        label="MultBox w/ initial selected"
+        groupName="Group 1"
+        orderId={`${uniqueId}-7`}
+      >
+        <MultiComboBox>
+          <MultiComboBoxItem text="MultiComboBoxItem 1" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+          <MultiComboBoxItem text="MultiComboBoxItem 3" />
+          <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
+        </MultiComboBox>
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-8`}
+        label="ComboBox w/o initial selected"
+        groupName="Group 2"
+        orderId={`${uniqueId}-8`}
+      >
+        <ComboBox>
+          <ComboBoxItem text="ComboBoxItem 1" />
+          <ComboBoxItem text="ComboBoxItem 2" />
+          <ComboBoxItem text="ComboBoxItem 3" />
+          <ComboBoxItem text="ComboBoxItem 4" />
+        </ComboBox>
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-9`} label="Date Picker" groupName="Group 2" orderId={`${uniqueId}-9`}>
+        <DateRangePicker style={{ minWidth: 'auto' }} />
+      </FilterGroupItem>
+    ]);
+
+    const handleFiltersDialogSave = (e) => {
+      setOrderedChildren((prev) => {
+        return e.detail.reorderedChildren.orderedIds.map((orderId) => {
+          const obj = prev.find((item) => item.props.orderId === orderId);
+          return { ...obj };
+        });
+      });
+    };
+    return (
+      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering>
+        {orderedChildren}
+      </FilterBar>
     );
   }
 };

@@ -27,7 +27,7 @@ import type {
 } from '../../webComponents/index.js';
 import { Button, Icon } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
-import type { FilterGroupItemPropTypes } from '../FilterGroupItem/index.js';
+import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBar.jss.js';
@@ -114,6 +114,12 @@ export interface FilterBarPropTypes extends CommonProps {
    * Defines whether the "Restore" button is displayed in the `FilterBar`.
    */
   showRestoreOnFB?: boolean;
+  /**
+   * Allow changing the order of filters in the filter configuration dialog.
+   *
+   * __Note:__ Setting the `orderId` of each `FilterGroupItem` is mandatory for this feature to work.
+   */
+  enableReordering?: boolean;
   /**
    * Sets the components outer HTML tag.
    *
@@ -228,6 +234,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     showRestoreOnFB,
     showResetButton,
     hideToggleFiltersButton,
+    enableReordering,
     style,
     className,
     slot,
@@ -261,11 +268,12 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchValue, setSearchValue] = useState<string>(undefined);
+  const [dialogRefs, setDialogRefs] = useState({});
+  const [toggledFilters, setToggledFilters] = useState({});
+
   const searchRef = useRef(null);
   const filterRefs = useRef({});
   const dialogRef = useRef<DialogDomRef>(null);
-  const [dialogRefs, setDialogRefs] = useState({});
-  const [toggledFilters, setToggledFilters] = useState({});
   const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>();
   const filterBarButtonsRef = useRef(null);
@@ -281,10 +289,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const goText = i18nBundle.getText(GO);
   const searchText = i18nBundle.getText(SEARCH);
   const filtersText = !hideToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
-
-  // dialog
-  const [isListView, setIsListView] = useState(true);
-  const [filteredAttribute, setFilteredAttribute] = useState('all');
 
   useEffect(() => {
     Children.toArray(children).forEach((item) => {
@@ -332,15 +336,14 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   };
 
   const [executeGo, setExecuteGo] = useState(false);
-  const handleDialogSave = (e, newRefs, updatedToggledFilters) => {
+  const handleDialogSave = (e, newRefs, updatedToggledFilters, orderedChildren) => {
     setDialogRefs(newRefs);
-
     const details = {
       elements: newRefs,
       toggledElements: { ...toggledFilters, ...updatedToggledFilters },
-      ...getFilterElements()
+      ...getFilterElements(),
+      reorderedChildren: enableReordering ? orderedChildren : {}
     };
-
     setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
     if (onFiltersDialogSave) {
       onFiltersDialogSave(enrichEventWithDetails(e, details));
@@ -364,7 +367,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       onFiltersDialogClose(enrichEventWithDetails(e));
     }
     setDialogOpen(false);
-    filterBtnRef.current?.focus();
+    void filterBtnRef.current?.focus();
   };
 
   const handleGoOnFb = (e) => {
@@ -380,7 +383,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           const key = child.key as ReactKeyWithoutBigInt;
           if (toggledFilters?.[key] !== undefined) {
             // @ts-expect-error: child should always be a FilterGroupItem w/o portal
-            return cloneElement<FilterGroupItemPropTypes, HTMLDivElement>(child, {
+            return cloneElement<FilterGroupItemInternalProps, HTMLDivElement>(child, {
               visibleInFilterBar: toggledFilters[key]
             });
           }
@@ -393,7 +396,10 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const prevChildren = useRef({});
 
   const renderChildren = () => {
-    const childProps = { considerGroupName, ['data-in-fb']: true, ['data-with-toolbar']: !hideToolbar } as any;
+    const childProps: Partial<FilterGroupItemInternalProps & { 'data-with-toolbar'?: boolean }> = {
+      considerGroupName,
+      ['data-with-toolbar']: !hideToolbar
+    };
 
     return safeChildren()
       .filter((item): item is ReactElement => {
@@ -639,10 +645,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           onAfterFiltersDialogOpen={onAfterFiltersDialogOpen}
           portalContainer={portalContainer}
           dialogRef={dialogRef}
-          isListView={isListView}
-          setIsListView={setIsListView}
-          filteredAttribute={filteredAttribute}
-          setFilteredAttribute={setFilteredAttribute}
+          enableReordering={enableReordering}
         >
           {safeChildren()}
         </FilterDialog>
@@ -664,7 +667,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         {mountFilters && (
           <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
             {search && (
-              <FilterGroupItem data-in-fb visibleInFilterBar data-with-toolbar={!hideToolbar}>
+              <FilterGroupItem visibleInFilterBar data-with-toolbar={!hideToolbar}>
                 <div ref={searchRef} className={classes.searchContainer}>
                   {renderSearchWithValue(search, searchValue, {
                     placeholder: searchText,

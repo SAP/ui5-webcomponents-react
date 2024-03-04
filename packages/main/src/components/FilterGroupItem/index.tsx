@@ -1,18 +1,23 @@
 'use client';
 
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
+import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
+import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
+import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
+import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { clsx } from 'clsx';
-import type { ReactElement } from 'react';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
-import { FlexBoxDirection, BusyIndicatorSize } from '../../enums/index.js';
+import type { ButtonPropTypes, TableRowDomRef } from '../..';
+import { BusyIndicator, Button, FlexBoxAlignItems, Icon, TableCell, TableRow } from '../..';
+import { BusyIndicatorSize, ButtonDesign, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
-import type { CommonProps } from '../../types/index.js';
-import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
-import { Icon, TableCell, TableRow } from '../../webComponents/index.js';
-import { Label } from '../../webComponents/Label/index.js';
+import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
+import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
+import { Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import styles from './FilterGroupItem.jss.js';
+import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';
 
 addCustomCSSWithScoping(
   'ui5-table-row',
@@ -26,132 +31,178 @@ addCustomCSSWithScoping(
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
-export interface FilterGroupItemPropTypes extends CommonProps {
-  /**
-   * Content of the `FilterGroupItem`.
-   *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.
-   */
-  children: ReactElement;
-  /**
-   * Defines the label of the `FilterGroupItem`.<br />
-   * __Note:__ This label is used for the search in the filter configuration dialog.
-   */
-  label?: string;
-  /**
-   * Defines the group name of the filter.<br />
-   * __Note:__ If no `groupName` is set, the name defaults to "Basic".
-   */
-  groupName?: string;
-  /**
-   * Defines the tooltip of the label.<br />
-   * __Note:__ If no `labelTooltip` is set, it uses the `label` text as tooltip.
-   */
-  labelTooltip?: string;
-  /**
-   * Defines whether a loading indicator should be shown in the `FilterGroupItem`.
-   */
-  loading?: boolean;
-  /**
-   * Defines whether the filter is required.<br />
-   * __Note:__ Required filters cannot be removed from the `FilterBar`.
-   */
-  required?: boolean;
-  /**
-   * Defines whether the filter is visible.
-   */
-  visible?: boolean;
-  /**
-   * Defines whether the filter is visible in the `FilterBar` or only in the filter configuration dialog.
-   */
-  visibleInFilterBar?: boolean;
-  /**
-   * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
-   */
-  considerGroupName?: boolean;
-  /**
-   * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
-   */
-  active?: boolean;
-}
-
 /**
  * Represents a filter belonging to the `FilterBar`.
  */
-export const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes>((props, ref) => {
-  const classes = useStyles();
-  const {
-    groupName = 'default',
-    considerGroupName,
-    label = '',
-    labelTooltip,
-    required = false,
-    visible = true,
-    visibleInFilterBar,
-    children,
-    loading,
-    className,
-    slot,
-    active,
-    ...rest
-  } = props;
+const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & FilterGroupItemInternalProps>(
+  (props, ref) => {
+    const classes = useStyles();
+    const {
+      groupName = 'default',
+      considerGroupName,
+      label = '',
+      labelTooltip,
+      required = false,
+      visible = true,
+      visibleInFilterBar,
+      children,
+      loading,
+      className,
+      slot,
+      active,
+      orderId,
+      ...rest
+    } = props;
+    const tableRowRef = useRef<TableRowDomRef>(null);
 
-  const inFB = props['data-in-fb'];
-  const withValues = props['data-with-values'];
-  const selected = props['data-selected'];
+    const selected = props['data-selected'];
+    const reactKey = props['data-react-key'];
+    const index = props['data-index'];
 
-  if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+    const {
+      isFilterInDialog,
+      isListView,
+      onReorder,
+      withValues,
+      enableReordering,
+      showBtnsOnHover,
+      setShowBtnsOnHover,
+      handleFocusFallback,
+      currentReorderedItemOrderId
+    } = useContext(FilterBarDialogContext);
+    const inFB = !isFilterInDialog;
+    const withReordering = enableReordering && !withValues && isListView;
 
-  // todo use context instead of data attributes
-  if (!inFB) {
-    return (
-      //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
-      <TableRow
-        data-react-key={props['data-react-key']}
-        selected={selected}
-        data-required={required}
-        data-component-name="FilterBarDialogTableRow"
-      >
-        <TableCell>
-          <FlexBox direction={FlexBoxDirection.Column} className={classes.labelContainer}>
-            <Label
-              className={classes.dialogCellLabel}
-              title={labelTooltip ?? label}
-              required={required}
-              showColon={!!label && withValues}
-            >
-              {label}
-            </Label>
-            {withValues && children}
-          </FlexBox>
-        </TableCell>
-        {!withValues && (
-          <TableCell className={classes.dialogActiveCell}>
-            {active && <Icon name={circleTask2Icon} className={classes.dialogActiveIcon} />}
+    const handleFocus = () => {
+      setShowBtnsOnHover(false);
+    };
+
+    const handleReorder = (e: Parameters<ButtonPropTypes['onClick']>[0]) => {
+      onReorder({
+        index,
+        direction: e.currentTarget.dataset.reorder as ReorderDirections,
+        target: tableRowRef.current,
+        orderId
+      });
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        const directionMap = {
+          Home: 'top',
+          End: 'bottom',
+          ArrowUp: 'up',
+          ArrowDown: 'down'
+        };
+
+        const direction = directionMap[e.key];
+        if (direction) {
+          onReorder({ index, direction, target: e.currentTarget, orderId });
+        }
+      }
+    };
+
+    useEffect(() => {
+      if (withReordering && tableRowRef.current && currentReorderedItemOrderId === orderId && index) {
+        handleFocusFallback();
+      }
+    }, [withReordering, currentReorderedItemOrderId, orderId, index]);
+
+    if (!required && (!visible || (inFB && !visibleInFilterBar))) return null;
+
+    if (!inFB) {
+      return (
+        //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
+        <TableRow
+          ref={tableRowRef}
+          data-text={label}
+          data-react-key={reactKey}
+          selected={selected}
+          data-required={required}
+          data-component-name="FilterBarDialogTableRow"
+          className={clsx(
+            classes.dialogTableRow,
+            withReordering && classes.withReorderBtns,
+            withReordering && showBtnsOnHover && classes.withReorderHoverBtns
+          )}
+          onFocus={withReordering ? handleFocus : undefined}
+          onKeyDown={withReordering ? handleKeyDown : undefined}
+          data-order-id={orderId}
+        >
+          <TableCell>
+            <FlexBox direction={FlexBoxDirection.Column} className={clsx(classes.labelContainer)}>
+              <Label
+                className={classes.dialogCellLabel}
+                title={labelTooltip ?? label}
+                required={required}
+                showColon={!!label && withValues}
+              >
+                {label}
+              </Label>
+              {withValues && children}
+            </FlexBox>
           </TableCell>
-        )}
-      </TableRow>
+          {!withValues && isListView && (
+            <TableCell className={classes.dialogActiveCell}>
+              {withReordering && (
+                <FlexBox
+                  fitContainer
+                  justifyContent={FlexBoxJustifyContent.Center}
+                  alignItems={FlexBoxAlignItems.Center}
+                  className={classes.reorderBtnsContainer}
+                >
+                  <Button
+                    onClick={handleReorder}
+                    design={ButtonDesign.Transparent}
+                    icon={moveToTopIcon}
+                    data-reorder="top"
+                  />
+                  <Button
+                    onClick={handleReorder}
+                    design={ButtonDesign.Transparent}
+                    icon={moveUpIcon}
+                    data-reorder="up"
+                  />
+                  <Button
+                    onClick={handleReorder}
+                    design={ButtonDesign.Transparent}
+                    icon={moveDownIcon}
+                    data-reorder="down"
+                  />
+                  <Button
+                    onClick={handleReorder}
+                    design={ButtonDesign.Transparent}
+                    icon={moveToBottomIcon}
+                    data-reorder="bottom"
+                  />
+                </FlexBox>
+              )}
+              {active && <Icon name={circleTask2Icon} className={classes.dialogActiveIcon} />}
+            </TableCell>
+          )}
+        </TableRow>
+      );
+    }
+
+    return (
+      <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classes.filterItem, className)}>
+        <div className={classes.innerFilterItemContainer}>
+          <FlexBox>
+            <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
+              {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
+          ${label}`}
+            </Label>
+          </FlexBox>
+          {loading ? (
+            <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
+          ) : (
+            children
+          )}
+        </div>
+      </div>
     );
   }
-
-  return (
-    <div ref={ref} slot={slot} {...rest} className={clsx(classes.filterItem, className)}>
-      <div className={classes.innerFilterItemContainer}>
-        <FlexBox>
-          <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
-            {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
-          ${label}`}
-          </Label>
-        </FlexBox>
-        {loading ? (
-          <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
-        ) : (
-          children
-        )}
-      </div>
-    </div>
-  );
-});
+);
 
 FilterGroupItem.displayName = 'FilterGroupItem';
 
@@ -161,3 +212,6 @@ FilterGroupItem.defaultProps = {
   required: false,
   label: ''
 };
+
+export { FilterGroupItem };
+export type { FilterGroupItemPropTypes };
