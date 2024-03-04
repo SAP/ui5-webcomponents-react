@@ -254,7 +254,7 @@ function FilterBarWithReordering(props) {
     });
   };
   return (
-    <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering>
+    <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
       {orderedChildren}
     </FilterBar>
   );

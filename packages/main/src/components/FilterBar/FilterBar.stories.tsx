@@ -447,7 +447,7 @@ export const WithReordering: Story = {
       });
     };
     return (
-      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering>
+      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
         {orderedChildren}
       </FilterBar>
     );

@@ -219,31 +219,39 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const fieldText = i18nBundle.getText(FIELD);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
-  const filteredChildren = children.filter((item) => {
-    return (
-      !!item?.props &&
-      item.props?.visible &&
-      (item.props?.label?.toLowerCase().includes(searchString.toLowerCase()) || searchString.length === 0) &&
-      getActiveFilters(filteredAttribute, item)
-    );
-  });
+  const visibleChildren = () =>
+    children.filter((item) => {
+      return !!item?.props && item.props?.visible;
+    });
 
-  const [orderedChildren, setOrderedChildren] = useState(filteredChildren);
+  const [orderedChildren, setOrderedChildren] = useState([]);
+
+  useEffect(() => {
+    if (children.length) {
+      setOrderedChildren(visibleChildren());
+    }
+  }, [children]);
 
   const renderChildren = () => {
-    return orderedChildren.map((child, index) => {
-      const filterBarItemRef = filterBarRefs.current[child.key];
-      let filterItemProps = {};
-      if (filterBarItemRef) {
-        filterItemProps = filterValue(filterBarItemRef, child);
-      }
-      if (!child.props.children) return child;
+    const searchStringLower = searchString.toLowerCase();
+    const filteredChildren =
+      searchStringLower.length > 0 || filteredAttribute !== 'all'
+        ? orderedChildren.filter(
+            (item) =>
+              (searchStringLower === '' || item.props.label?.toLowerCase().includes(searchStringLower)) &&
+              getActiveFilters(filteredAttribute, item)
+          )
+        : orderedChildren;
 
+    return filteredChildren.map((child, index) => {
+      const filterBarItemRef = filterBarRefs.current[child.key];
       let isSelected =
         child.props.visibleInFilterBar || child.props.required || child.type.displayName !== 'FilterGroupItem';
-      if (Object.hasOwn(toggledFilters, child.key)) {
+      if (toggledFilters.hasOwnProperty(child.key)) {
         isSelected = toggledFilters[child.key];
       }
+
+      const filterItemProps = filterBarItemRef ? filterValue(filterBarItemRef, child) : {};
 
       return cloneElement<FilterGroupItemInternalProps>(child, {
         'data-selected': isSelected,
@@ -252,7 +260,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         children: {
           ...child.props.children,
           props: {
-            ...child.props.children.props,
+            ...(child.props.children.props || {}),
             ...filterItemProps
           },
           ref: (node) => {

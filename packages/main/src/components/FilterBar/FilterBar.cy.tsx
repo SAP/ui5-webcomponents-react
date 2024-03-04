@@ -231,15 +231,13 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('S');
-    cy.findByPlaceholderText('Search for filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('S{enter}');
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('W', { force: true });
-    cy.findByPlaceholderText('Search for filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('W{enter}', { force: true });
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
