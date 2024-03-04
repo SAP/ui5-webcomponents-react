@@ -311,6 +311,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const handleMessageBoxClose = (e) => {
     if (e.detail.action === 'OK') {
       setToggledFilters({});
+      setOrderedChildren(visibleChildren());
       handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
     }
     setMessageBoxOpen(false);
