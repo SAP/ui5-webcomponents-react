@@ -43,7 +43,7 @@ import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
-import type { DialogDomRef, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
+import type { DialogDomRef, SegmentedButtonPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -181,7 +181,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const [currentReorderedItem, setCurrentReorderedItem] = useState<OnReorderParams | Record<string, never>>({});
   const tableRef = useRef(null);
   const handleReorder = (e: OnReorderParams) => {
-    console.log('reorder', e);
     setCurrentReorderedItem(e);
   };
 
@@ -190,7 +189,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     const orderId = currentReorderedItem?.target?.dataset.orderId;
     if (orderId && tableRef.current && orderId !== prevOderId.current) {
       // we have to retrigger the internal item navigation logic after reordering,
-      //  otherwise keyboard nav and general focus handling is not working properly
+      // otherwise keyboard nav and general focus handling is not working properly
       setTimeout(() => {
         const itemNav = tableRef.current._itemNavigation;
         itemNav._getItems = () => Array.from(tableRef.current.querySelectorAll('[ui5-table-row]'));
@@ -274,14 +273,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setSearchString(e.target.value);
   };
   const handleSave = (e) => {
-    console.log(
-      orderedChildren,
-      orderedChildren.map((child) => child.props.orderId)
-    );
-    handleDialogSave(e, dialogRefs.current, toggledFilters, {
-      orderedReactFilters: orderedChildren,
-      orderedIds: orderedChildren.map((child) => child.props.orderId)
-    });
+    const orderedChildrenIds = enableReordering ? orderedChildren.map((child) => child.props.orderId) : [];
+    handleDialogSave(e, dialogRefs.current, toggledFilters, orderedChildrenIds);
   };
 
   const handleClose = (e) => {
@@ -303,8 +296,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const handleRestore = () => {
     setMessageBoxOpen(true);
   };
-  const handleViewChange = (e) => {
-    //todo change deprecated property
+  const handleViewChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
     setIsListView(e.detail.selectedItem.dataset.id === 'list');
   };
 

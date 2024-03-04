@@ -147,6 +147,7 @@ export interface FilterBarPropTypes extends CommonProps {
       toggledElements?: Record<string, HTMLElement>;
       filters: HTMLElement[];
       search: HTMLElement;
+      orderIds: string[];
     }>
   ) => void;
   /**
@@ -336,13 +337,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   };
 
   const [executeGo, setExecuteGo] = useState(false);
-  const handleDialogSave = (e, newRefs, updatedToggledFilters, orderedChildren) => {
+  const handleDialogSave = (e, newRefs, updatedToggledFilters, orderIds) => {
     setDialogRefs(newRefs);
     const details = {
       elements: newRefs,
       toggledElements: { ...toggledFilters, ...updatedToggledFilters },
       ...getFilterElements(),
-      reorderedChildren: enableReordering ? orderedChildren : {}
+      orderIds
     };
     setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
     if (onFiltersDialogSave) {
