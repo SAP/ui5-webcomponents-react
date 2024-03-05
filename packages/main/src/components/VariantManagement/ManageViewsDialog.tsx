@@ -1,4 +1,4 @@
-import { isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
+import { isDesktop, isPhone, isTablet } from '@ui5/webcomponents-base/dist/Device.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import {
   enrichEventWithDetails,
@@ -41,7 +41,8 @@ const _popupHeaderFontFamily = `var(${cssVarVersionInfoPrefix}popup_header_font_
 
 const styles = {
   manageViewsDialog: {
-    width: isPhone() || isTablet() ? '100%' : '70vw',
+    // isTablet is true for some desktops with touch screens
+    width: isPhone() || (isTablet() && !isDesktop()) ? '100%' : '70vw',
     '&::part(content), &::part(header)': {
       padding: 0
     },
