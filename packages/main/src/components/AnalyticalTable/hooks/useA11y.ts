@@ -30,9 +30,8 @@ const setCellProps = (cellProps, { cell, instance }) => {
   const isFirstUserCol = userCols[0]?.id === column.id || userCols[0]?.accessor === column.accessor;
   updatedCellProps['data-is-first-column'] = isFirstUserCol;
   updatedCellProps['aria-label'] = column.headerLabel || (typeof column.Header === 'string' ? column.Header : '');
-  if (updatedCellProps['aria-label']) {
-    updatedCellProps['aria-label'] += ' ';
-  }
+  updatedCellProps['aria-label'] &&= `${updatedCellProps['aria-label']} `;
+  updatedCellProps['aria-label'] += value || value === 0 ? `${value} ` : '';
 
   if ((isFirstUserCol && rowIsExpandable) || (row.isGrouped && row.canExpand)) {
     updatedCellProps.onKeyDown = row.getToggleRowExpandedProps?.()?.onKeyDown;
@@ -56,10 +55,10 @@ const setCellProps = (cellProps, { cell, instance }) => {
   ) {
     if (row.isSelected) {
       updatedCellProps['aria-selected'] = 'true';
-      updatedCellProps['aria-label'] += `${value ?? ''} ${translatableTexts.unselectA11yText}`;
+      updatedCellProps['aria-label'] += ` ${translatableTexts.unselectA11yText}`;
     } else {
       updatedCellProps['aria-selected'] = 'false';
-      updatedCellProps['aria-label'] += `${value ?? ''} ${translatableTexts.selectA11yText}`;
+      updatedCellProps['aria-label'] += ` ${translatableTexts.selectA11yText}`;
     }
   }
   const { cellLabel } = cell.column;
