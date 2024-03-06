@@ -1,7 +1,13 @@
 'use client';
 
 import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
-import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import {
+  debounce,
+  deprecationNotice,
+  enrichEventWithDetails,
+  ThemingParameters,
+  useSyncRef
+} from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import React, {
@@ -103,6 +109,8 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   alwaysShowContentHeader?: boolean;
   /**
    * Defines whether the title is displayed in the content section of the header or above the image.
+   *
+   * @deprecated: This feature will be removed with our next major release.
    */
   showTitleInHeaderContent?: boolean;
   /**
@@ -228,6 +236,17 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const sections = currentTabModeSection ?? children;
+
+  const deprecationNoticeDisplayed = useRef(false);
+  useEffect(() => {
+    if (showTitleInHeaderContent && !deprecationNoticeDisplayed.current) {
+      deprecationNotice(
+        'showTitleInHeaderContent',
+        'showTitleInHeaderContent is deprecated and will be removed with the next major release.'
+      );
+      deprecationNoticeDisplayed.current = true;
+    }
+  }, [showTitleInHeaderContent]);
 
   useEffect(() => {
     const currentSection =
