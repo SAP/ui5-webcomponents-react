@@ -41,6 +41,11 @@ addons.setConfig({
   enableShortcuts: false,
 
   sidebar: {
-    showRoots: true
+    showRoots: true,
+    filters: {
+      patterns: (item) => {
+        return !item.tags.includes('excludeFromSidebar');
+      }
+    }
   }
 });
