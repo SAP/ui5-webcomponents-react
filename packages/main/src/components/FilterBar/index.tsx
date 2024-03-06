@@ -36,6 +36,7 @@ import { filterValue, renderSearchWithValue, syncRef } from './utils.js';
 
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();
+const isDesktop = Device.isDesktop();
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -261,7 +262,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       if (filterBarCollapsed !== undefined) {
         return filterBarCollapsed;
       }
-      return !isTablet;
+      // isTablet is true for some desktops with touch screens
+      return !(isTablet && !isDesktop);
     }
     return true;
   })();
