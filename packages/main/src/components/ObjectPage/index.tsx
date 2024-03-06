@@ -110,7 +110,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines whether the title is displayed in the content section of the header or above the image.
    *
-   * @deprecated: This feature will no longer be supported with our next major release.
+   * @deprecated: This feature will be removed with our next major release.
    */
   showTitleInHeaderContent?: boolean;
   /**
