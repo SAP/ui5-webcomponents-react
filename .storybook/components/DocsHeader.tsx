@@ -132,7 +132,7 @@ export const DocsHeader = ({ since, subComponents, mergeSubComponents }: InfoTab
         <Links />
       </FlexBox>
       <Subtitle />
-      <InfoTable since={since} subComponents={subComponents} mergeSubComponents />
+      <InfoTable since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
       <TableOfContent />
       <Description />
     </ThemeProvider>

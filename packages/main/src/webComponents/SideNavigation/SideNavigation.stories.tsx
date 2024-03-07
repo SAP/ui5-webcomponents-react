@@ -20,7 +20,12 @@ const meta = {
   args: {
     fixedItems: (
       <>
-        <SideNavigationItem text="Useful Links" icon={chainLinkIcon} />
+        <SideNavigationItem
+          text="External Link"
+          icon={chainLinkIcon}
+          href="https://www.sap.com/index.html"
+          target="_blank"
+        />
         <SideNavigationItem text="History" icon={historyIcon} />
       </>
     )

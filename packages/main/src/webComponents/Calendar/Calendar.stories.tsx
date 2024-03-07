@@ -41,7 +41,7 @@ export const SpecialDate: Story = {
 };
 
 export const CalendarLegendStory: Story = {
-  name: 'CalenderLegend',
+  name: 'CalendarLegend',
   args: {
     calendarLegend: (
       <CalendarLegend>
