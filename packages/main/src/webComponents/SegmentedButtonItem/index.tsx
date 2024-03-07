@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import type { MouseEventHandler, ReactNode } from 'react';
@@ -21,21 +22,33 @@ interface SegmentedButtonItemAttributes {
   accessibleNameRef?: string;
 
   /**
+   * Describes the accessibility role of the button.
+   *
+   * **Note:** Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
+   * @default "Button"
+   */
+  accessibleRole?: ButtonAccessibleRole | keyof typeof ButtonAccessibleRole;
+
+  /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Default"
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
 
   /**
-   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled.
+   * A disabled component can't be pressed or
+   * focused, and it is not in the tab chain.
    * @default false
    */
   disabled?: boolean;
 
   /**
-   * Defines the icon, displayed as graphical element within the component. The SAP-icons font provides numerous options.
+   * Defines the icon, displayed as graphical element within the component.
+   * The SAP-icons font provides numerous options.
    *
-   * Example: See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * Example:
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
 
@@ -60,6 +73,7 @@ interface SegmentedButtonItemAttributes {
 
   /**
    * Defines the tooltip of the component.
+   *
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
@@ -67,7 +81,8 @@ interface SegmentedButtonItemAttributes {
   /**
    * Defines whether the button has special form-related functionality.
    *
-   * **Note:** For the `type` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** For the `type` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    * @default "Button"
    */
   type?: ButtonType | keyof typeof ButtonType;
@@ -75,18 +90,23 @@ interface SegmentedButtonItemAttributes {
 
 interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   * An object of strings that defines several additional accessibility attribute values
+   * for customization depending on the use case.
    *
-   * *   `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   *     *   `true`
-   *     *   `false`
-   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `Listbox`
-   *     *   `Menu`
-   *     *   `Tree`
-   * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   * It supports the following fields:
+   *
+   * - `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   * - `true`
+   * - `false`
+   *
+   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
+   * - `Dialog`
+   * - `Grid`
+   * - `ListBox`
+   * - `Menu`
+   * - `Tree`
+   *
+   * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
    */
   accessibilityAttributes: AccessibilityAttributes;
 }
@@ -101,9 +121,11 @@ interface SegmentedButtonItemPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
+   * Fired when the component is activated either with a
+   * mouse/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `disabled` property is set to `true`.
+   * **Note:** The event will not be fired if the `disabled`
+   * property is set to `true`.
    */
   onClick?: MouseEventHandler<SegmentedButtonItemDomRef>;
 }
@@ -111,13 +133,18 @@ interface SegmentedButtonItemPropTypes
 /**
  * Users can use the `SegmentedButtonItem` as part of a `SegmentedButton`.
  *
- * Clicking or tapping on a `SegmentedButtonItem` changes its state to `pressed`. The item returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any `SegmentedButtonItem`.
+ * Clicking or tapping on a `SegmentedButtonItem` changes its state to `pressed`.
+ * The item returns to its initial state when the user clicks or taps on it again.
+ * By applying additional custom CSS-styling classes, apps can give a different style to any
+ * `SegmentedButtonItem`.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'tooltip', 'type'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'icon', 'tooltip', 'type'],
   ['disabled', 'iconEnd', 'pressed', 'submits'],
   [],
   ['click'],

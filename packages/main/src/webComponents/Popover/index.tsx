@@ -29,7 +29,8 @@ interface PopoverAttributes {
   accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
 
   /**
-   * Determines if there is no enough space, the component can be placed over the target.
+   * Determines if there is no enough space, the component can be placed
+   * over the target.
    * @default false
    */
   allowTargetOverlap?: boolean;
@@ -65,7 +66,9 @@ interface PopoverAttributes {
   initialFocus?: string;
 
   /**
-   * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the component should close when
+   * clicking/tapping outside of the popover.
+   * If enabled, it blocks any interaction with the background.
    * @default false
    */
   modal?: boolean;
@@ -89,7 +92,8 @@ interface PopoverAttributes {
   placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
 
   /**
-   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   * Defines if the focus should be returned to the previously focused element,
+   * when the popup closes.
    * @default false
    */
   preventFocusRestore?: boolean;
@@ -103,7 +107,8 @@ interface PopoverAttributes {
 
 interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
-   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
+   * Focuses the element denoted by `initialFocus`, if provided,
+   * or the first focusable element otherwise.
    * @returns {Promise<void>} - Promise that resolves when the focus is applied
    */
   applyFocus: () => Promise<void>;
@@ -195,17 +200,32 @@ interface PopoverPropTypes
 }
 
 /**
- * The `Popover` component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.
+ * The `Popover` component displays additional information for an object
+ * in a compact way and without leaving the page.
+ * The Popover can contain various UI elements, such as fields, tables, images, and charts.
+ * It can also include actions in the footer.
  *
  * ### Structure
  *
  * The popover has three main areas:
  *
- * *   Header (optional)
- * *   Content
- * *   Footer (optional)
+ * - Header (optional)
+ * - Content
+ * - Footer (optional)
  *
- * **Note:** The `Popover` is closed when the user clicks or taps outside the popover or selects an action within the popover. You can prevent this with the `modal` property. **Note:** We recommend placing popup-like components (`Dialog` and `Popover`) outside any other components. Preferably, the popup-like components should be placed in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break the position and/or z-index management of the popup-like components. **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
+ * **Note:** The `Popover` is closed when the user clicks
+ * or taps outside the popover
+ * or selects an action within the popover. You can prevent this with the
+ * `modal` property.
+ *
+ *
+ *
+ * **Note: ** We recommend placing popup-like components (`Dialog` and `Popover`)
+ * outside any other components. Preferably, the popup-like components should be placed
+ * in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break
+ * the position and/or z-index management of the popup-like components.
+ *
+ * **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

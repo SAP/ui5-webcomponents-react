@@ -18,7 +18,8 @@ interface ComboBoxGroupItemPropTypes
     Omit<CommonProps, keyof ComboBoxGroupItemAttributes> {}
 
 /**
- * The `ComboBoxGroupItem` is type of suggestion item, that can be used to split the `ComboBox` suggestions into groups.
+ * The `ComboBoxGroupItem` is type of suggestion item,
+ * that can be used to split the `ComboBox` suggestions into groups.
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

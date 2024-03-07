@@ -20,7 +20,9 @@ interface LinkAttributes {
   accessibleNameRef?: string;
 
   /**
-   * Defines the ARIA role of the component. **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   * Defines the ARIA role of the component.
+   *
+   * **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
    * @default "link"
    */
   accessibleRole?: string;
@@ -53,11 +55,11 @@ interface LinkAttributes {
    *
    * **Notes:**
    *
-   * *   `_self`
-   * *   `_top`
-   * *   `_blank`
-   * *   `_parent`
-   * *   `_search`
+   * - `_self`
+   * - `_top`
+   * - `_blank`
+   * - `_parent`
+   * - `_search`
    *
    * **This property must only be used when the `href` property is set.**
    */
@@ -65,6 +67,7 @@ interface LinkAttributes {
 
   /**
    * Defines how the text of a component will be displayed when there is not enough space.
+   *
    * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
    * @default "None"
    */
@@ -73,17 +76,20 @@ interface LinkAttributes {
 
 interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   * An object of strings that defines several additional accessibility attribute values
+   * for customization depending on the use case.
    *
-   * *   `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   *     *   `true`
-   *     *   `false`
-   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `Listbox`
-   *     *   `Menu`
-   *     *   `Tree`
+   * It supports the following fields:
+   *
+   * - `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   * - `true`
+   * - `false`
+   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
+   * - `Dialog`
+   * - `Grid`
+   * - `ListBox`
+   * - `Menu`
+   * - `Tree`
    */
   accessibilityAttributes: AccessibilityAttributes;
 }
@@ -91,29 +97,43 @@ interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {
   /**
    * Defines the text of the component.
+   *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the component is triggered either with a mouse/tap or by using the Enter key.
+   * Fired when the component is triggered either with a mouse/tap
+   * or by using the Enter key.
    */
   onClick?: (event: Ui5CustomEvent<LinkDomRef, LinkClickEventDetail>) => void;
 }
 
 /**
- * The `Link` is a hyperlink component that is used to navigate to other apps and web pages, or to trigger actions. It is a clickable text element, visualized in such a way that it stands out from the standard text. On hover, it changes its style to an underlined text to provide additional feedback to the user.
+ * The `Link` is a hyperlink component that is used to navigate to other
+ * apps and web pages, or to trigger actions.
+ * It is a clickable text element, visualized in such a way that it stands out
+ * from the standard text.
+ * On hover, it changes its style to an underlined text to provide additional feedback to the user.
  *
  * ### Usage
  *
  * You can set the `Link` to be enabled or disabled.
  *
- * To create a visual hierarchy in large lists of links, you can set the less important links as `Subtle` or the more important ones as `Emphasized`, by using the `design` property.
+ * To create a visual hierarchy in large lists of links, you can set the less important links as
+ * `Subtle` or the more important ones as `Emphasized`,
+ * by using the `design` property.
  *
- * If the `href` property is set, the link behaves as the HTML anchor tag (`<a><a/>`) and opens the specified URL in the given target frame (`target` property). To specify where the linked content is opened, you can use the `target` property.
+ * If the `href` property is set, the link behaves as the HTML
+ * anchor tag (`<a></a>`) and opens the specified URL in the given target frame (`target` property).
+ * To specify where the linked content is opened, you can use the `target` property.
  *
  * ### Responsive behavior
  *
- * If there is not enough space, the text of the `Link` becomes truncated. If the `wrappingType` property is set to `"Normal"`, the text is displayed on several lines instead of being truncated.
+ * If there is not enough space, the text of the `Link` becomes truncated.
+ * If the `wrappingType` property is set to `"Normal"`, the text is displayed
+ * on several lines instead of being truncated.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

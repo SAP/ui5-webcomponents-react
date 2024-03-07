@@ -21,6 +21,7 @@ interface TreeItemAttributes {
 
   /**
    * Defines the state of the `additionalText`.
+   *
    * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
    * @default "None"
    */
@@ -34,7 +35,10 @@ interface TreeItemAttributes {
 
   /**
    * Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
-   * _Note:_ This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons. Set this to `true` for nodes you intend to load lazily, when the user clicks the expand button. It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
+   *
+   * **Note:** This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons.
+   * Set this to `true` for nodes you intend to load lazily, when the user clicks the expand button.
+   * It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
    * @default false
    */
   hasChildren?: boolean;
@@ -47,12 +51,13 @@ interface TreeItemAttributes {
   /**
    * Defines whether the selection of a tree node is displayed as partially selected.
    *
-   * **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user interaction, meaning that the resulting visual state depends on the values of the `indeterminate` and `selected` properties:
+   * **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user
+   * interaction, meaning that the resulting visual state depends on the values of the `indeterminate`
+   * and `selected` properties:
    *
-   * *   If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.
-   * *   If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.
-   * *   If a tree node has `selected` set to `false`, it is displayed as not selected regardless of the value of the `indeterminate` property.
-   *
+   * -  If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.
+   * -  If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.
+   * -  If a tree node has `selected` set to `false`, it is displayed as not selected regardless of the value of the `indeterminate` property.
    *
    * **Note:** This property takes effect only when the `Tree` is in `MultiSelect` mode.
    * @default false
@@ -60,7 +65,8 @@ interface TreeItemAttributes {
   indeterminate?: boolean;
 
   /**
-   * The navigated state of the list item. If set to `true`, a navigation indicator is displayed at the end of the list item.
+   * The navigated state of the list item.
+   * If set to `true`, a navigation indicator is displayed at the end of the list item.
    * @default false
    */
   navigated?: boolean;
@@ -77,9 +83,16 @@ interface TreeItemAttributes {
   text?: string;
 
   /**
-   * Defines the visual indication and behavior of the list items. Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
+   * Defines the text of the tooltip that would be displayed for the list item.
+   */
+  tooltip?: string;
+
+  /**
+   * Defines the visual indication and behavior of the list items.
+   * Available options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.
    *
-   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover, while with type `Inactive` and `Detail` - will not.
+   * **Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,
+   * while with type `Inactive` and `Detail` - will not.
    * @default "Active"
    */
   type?: ListItemType | keyof typeof ListItemType;
@@ -87,10 +100,17 @@ interface TreeItemAttributes {
 
 interface TreeItemDomRef extends Required<TreeItemAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   * An object of strings that defines several additional accessibility attribute values
+   * for customization depending on the use case.
    *
-   * *   `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM. The value of each `aria-setsize` is an integer reflecting number of items in the complete set. **Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
-   * *   `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM. The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *  It supports the following fields:
+   *
+   * - `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.
+   * 	The value of each `aria-setsize` is an integer reflecting number of items in the complete set.
+   *
+   * 	**Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
+   * 	- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.
+   * 	The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
    */
   accessibilityAttributes: AccessibilityAttributes;
 
@@ -112,7 +132,10 @@ interface TreeItemPropTypes
   children?: ReactNode | ReactNode[];
 
   /**
-   * Defines the delete button, displayed in "Delete" mode. **Note:** While the slot allows custom buttons, to match design guidelines, please use the `Button` component. **Note:** When the slot is not present, a built-in delete button will be displayed.
+   * Defines the delete button, displayed in "Delete" mode.
+   * **Note:** While the slot allows custom buttons, to match
+   * design guidelines, please use the `Button` component.
+   * **Note:** When the slot is not present, a built-in delete button will be displayed.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="deleteButton"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -129,13 +152,17 @@ interface TreeItemPropTypes
 
 /**
  * The `TreeItem` represents a node in a tree structure, shown as a `List`.
- * This is the item to use inside a `Tree`. You can represent an arbitrary tree structure by recursively nesting tree items.
+ *
+ * This is the item to use inside a `Tree`.
+ * You can represent an arbitrary tree structure by recursively nesting tree items.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'type'],
+  ['accessibleName', 'additionalText', 'additionalTextState', 'icon', 'text', 'tooltip', 'type'],
   ['expanded', 'hasChildren', 'indeterminate', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

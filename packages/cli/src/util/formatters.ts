@@ -47,7 +47,7 @@ export function propDescriptionFormatter(html: string) {
 }
 
 export function summaryFormatter(htmlDesc: string) {
-  let summary = htmlDesc.replace(/###Overview\n*/, '').replace(/### ES6 Module Import\n*`.+`/, '');
+  let summary = htmlDesc.replace(/###\s?Overview\n*/, '').replace(/### ES6 Module Import\n*`.+`/, '');
   summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
 

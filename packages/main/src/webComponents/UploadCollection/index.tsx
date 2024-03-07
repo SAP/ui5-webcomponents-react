@@ -17,16 +17,20 @@ interface UploadCollectionAttributes {
   accessibleName?: string;
 
   /**
-   * By default there will be drag and drop overlay shown over the `UploadCollection` when files are dragged. If you don't intend to use drag and drop, set this property.
+   * By default there will be drag and drop overlay shown over the `UploadCollection` when files
+   * are dragged. If you don't intend to use drag and drop, set this property.
    *
-   * **Note:** It is up to the application developer to add handler for `drop` event and handle it. `UploadCollection` only displays an overlay.
+   * **Note:** It is up to the application developer to add handler for `drop` event and handle it.
+   * `UploadCollection` only displays an overlay.
    * @default false
    */
   hideDragOverlay?: boolean;
 
   /**
    * Defines the mode of the `UploadCollection`.
-   * **Note:** Mode "Delete" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
+   *
+   * **Note:**
+   * Mode "Delete" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
    * @default "None"
    */
   mode?: ListMode | keyof typeof ListMode;
@@ -52,6 +56,7 @@ interface UploadCollectionPropTypes
     > {
   /**
    * Defines the items of the `UploadCollection`.
+   *
    * **Note:** Use `UploadCollectionItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
@@ -59,7 +64,9 @@ interface UploadCollectionPropTypes
   /**
    * Defines the `UploadCollection` header.
    *
-   * **Note:** If `header` slot is provided, the labelling of the `UploadCollection` is a responsibility of the application developer. `accessibleName` should be used.
+   * **Note:** If `header` slot is provided,
+   * the labelling of the `UploadCollection` is a responsibility of the application developer.
+   * `accessibleName` should be used.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="header"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -81,7 +88,8 @@ interface UploadCollectionPropTypes
   onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionItemDeleteEventDetail>) => void;
 
   /**
-   * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
+   * Fired when selection is changed by user interaction
+   * in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (
     event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>
@@ -89,7 +97,11 @@ interface UploadCollectionPropTypes
 }
 
 /**
- * This component allows you to represent files before uploading them to a server, with the help of `UploadCollectionItem`. It also allows you to show already uploaded files.
+ * This component allows you to represent files before uploading them to a server, with the help of `UploadCollectionItem`.
+ * It also allows you to show already uploaded files.
+ *
+ *
+ *
  * `import "@ui5/webcomponents-fiori/dist/UploadCollectionItem.js";` (for `UploadCollectionItem`)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

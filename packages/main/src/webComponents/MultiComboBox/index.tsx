@@ -46,14 +46,16 @@ interface MultiComboBoxAttributes {
   noTypeahead?: boolean;
 
   /**
-   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * Defines a short hint intended to aid the user with data entry when the
+   * component has no value.
    */
   placeholder?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -130,7 +132,9 @@ interface MultiComboBoxPropTypes
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -161,30 +165,35 @@ interface MultiComboBoxPropTypes
 }
 
 /**
- * The `MultiComboBox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items. The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options. The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ * The `MultiComboBox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.
  *
+ * The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.
+ * The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
  * ### Structure
- *
  * The `MultiComboBox` consists of the following elements:
  *
- * *   Tokenizer - a list of tokens with selected options.
- * *   Input field - displays the selected option/s as token/s. Users can type to filter the list.
- * *   Drop-down arrow - expands\\collapses the option list.
- * *   Option list - the list of available options.
+ * -  Tokenizer - a list of tokens with selected options.
+ * -  Input field - displays the selected option/s as token/s. Users can type to filter the list.
+ * -  Drop-down arrow - expands\collapses the option list.
+ * -  Option list - the list of available options.
  *
  * ### Keyboard Handling
  *
  * The `MultiComboBox` provides advanced keyboard handling.
  *
  * #### Picker
- *
- * If the `MultiComboBox` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
+ * If the `MultiComboBox` is focused,
+ * you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys.
+ * Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys
+ * to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
  *
  * #### Tokens
  *
- * *   Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
- * *   Delete - deletes the token and focuses the previous token.
- * *   Backspace - deletes the token and focus the next token.
+ * -  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
+ * -  Delete -  deletes the token and focuses the previous token.
+ * -  Backspace -  deletes the token and focus the next token.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

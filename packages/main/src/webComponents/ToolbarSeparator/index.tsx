@@ -7,17 +7,15 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSeparatorAttributes {
   /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
-   *
-   * *   `NeverOverflow`
-   * *   `AlwaysOverflow`
-   * *   `Default`
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
+   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
    * @default "Default"
    */
   overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
 
   /**
-   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   * Defines if the toolbar overflow popup should close upon intereaction with the item.
+   * It will close by default.
    * @default false
    */
   preventOverflowClosing?: boolean;
@@ -30,7 +28,8 @@ interface ToolbarSeparatorPropTypes
     Omit<CommonProps, keyof ToolbarSeparatorAttributes> {}
 
 /**
- * The `ToolbarSeparator` is an element, used for visual separation between two elements. It takes no space in calculating toolbar items width.
+ * The `ToolbarSeparator` is an element, used for visual separation between two elements.
+ * It takes no space in calculating toolbar items width.
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
