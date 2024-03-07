@@ -1,13 +1,8 @@
 import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
-import type { CSSProperties } from 'react';
-import React from 'react';
+import { clsx } from 'clsx';
+import React, { type ElementType } from 'react';
 import { createUseStyles } from 'react-jss';
-
-interface FormGroupTitlePropTypes {
-  titleText: string;
-
-  style?: CSSProperties;
-}
+import type { FormGroupPropTypes } from './index.js';
 
 const useStyles = createUseStyles(
   {
@@ -27,17 +22,19 @@ const useStyles = createUseStyles(
   },
   { name: 'FormGroupTitle' }
 );
-export function FormGroupTitle({ titleText, style }: FormGroupTitlePropTypes) {
+export function FormGroupTitle({ as, className, titleText, style, ...rest }: Omit<FormGroupPropTypes, 'children'>) {
   const classes = useStyles();
+  const CustomTag = as as ElementType;
   return (
-    <h6
-      className={classes.title}
+    <CustomTag
+      {...rest}
+      className={clsx(classes.title, className)}
       title={titleText}
       aria-label={titleText}
       data-component-name="FormGroupTitle"
       style={style}
     >
       {titleText}
-    </h6>
+    </CustomTag>
   );
 }

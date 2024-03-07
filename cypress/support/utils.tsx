@@ -1,5 +1,5 @@
 import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion.js';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 
 export function cypressPassThroughTestsFactory(Component: ComponentType, props?: Record<string, unknown>) {
   it('Pass Through HTML Standard Props', () => {
@@ -35,15 +35,33 @@ export function cypressPassThroughTestsFactory(Component: ComponentType, props?:
   });
 }
 
+interface MountWithCustomTagNameOptions {
+  testTitle?: string;
+  defaultTagName?: string;
+  only?: boolean;
+  wrapperComponent?: ComponentType<any>;
+}
 export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagNameMap }>(
   Component: ComponentType<P>,
-  props?: P
+  props?: P,
+  options: MountWithCustomTagNameOptions = {}
 ) {
-  it('mount with custom tag name', () => {
+  const { testTitle = 'mount with custom tag name', defaultTagName, only, wrapperComponent } = options;
+  const test = only ? it.only : it;
+  test(testTitle, () => {
     const testId = 'component-to-be-tested';
-    const as = props?.as || 'header';
-    cy.mount(<Component as={as} data-testid={testId} {...props} />);
-    cy.get(`${as}[data-testid="${testId}"]`).should('be.visible');
+    const as = props?.as ?? 'header';
+    if (wrapperComponent) {
+      const Wrapper = wrapperComponent;
+      cy.mount(
+        <Wrapper>
+          <Component as={as} data-testid={testId} {...props} />
+        </Wrapper>
+      );
+    } else {
+      cy.mount(<Component as={as} data-testid={testId} {...props} />);
+    }
+    cy.get(`${defaultTagName ?? as}[data-testid="${testId}"]`).should('be.visible');
   });
 }
 
