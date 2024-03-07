@@ -200,7 +200,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Automatically decides the <code>Illustration</code> size (<code>Base</code>, <code>Spot</code>,\n<code>Dialog</code>, or <code>Scene</code>) depending on the <code>IllustratedMessage</code> container width.\n\n<b>Note:</b> <code>Auto</code> is the only option where the illustration size is changed according to\nthe available container width. If any other <code>IllustratedMessageSize</code> is chosen, it remains\nuntil changed by the app developer.",
+              "description": "Automatically decides the <code>Illustration</code> size (<code>Base</code>, <code>Dot</code>, <code>Spot</code>,\n<code>Dialog</code>, or <code>Scene</code>) depending on the <code>IllustratedMessage</code> container width.\n\n**Note:** `Auto` is the only option where the illustration size is changed according to\nthe available container width. If any other `IllustratedMessageSize` is chosen, it remains\nuntil changed by the app developer.",
               "default": "Auto",
               "name": "Auto",
               "readonly": true
@@ -209,9 +209,18 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Base <code>Illustration</code> size (XS breakpoint). Suitable for cards (two columns).\n\n<b>Note:</b> When <code>Base</code> is in use, no illustration is displayed.",
+              "description": "Base `Illustration` size (XS breakpoint). Suitable for cards (two columns).\n\n**Note:** When `Base` is in use, no illustration is displayed.",
               "default": "Base",
               "name": "Base",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Dot <code>Illustration</code> size (XS breakpoint). Suitable for table rows.",
+              "default": "Dot",
+              "name": "Dot",
               "readonly": true
             },
             {
@@ -227,7 +236,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Dialog <code>Illustration</code> size (M breakpoint). Suitable for dialogs.",
+              "description": "Dialog `Illustration` size (M breakpoint). Suitable for dialogs.",
               "default": "Dialog",
               "name": "Dialog",
               "readonly": true
@@ -236,7 +245,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Scene <code>Illustration</code> size (L breakpoint). Suitable for a <code>Page</code> or a table.",
+              "description": "Scene `Illustration` size (L breakpoint). Suitable for a `Page` or a table.",
               "default": "Scene",
               "name": "Scene",
               "readonly": true
@@ -1231,14 +1240,14 @@
         {
           "kind": "enum",
           "name": "MediaGalleryItemLayout",
-          "description": "Defines the layout of the content displayed in the <code>ui5-media-gallery-item</code>.",
+          "description": "Defines the layout of the content displayed in the `ui5-media-gallery-item`.",
           "_ui5privacy": "public",
           "members": [
             {
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Recommended to use when the item contains an image.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
+              "description": "Recommended to use when the item contains an image.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
               "default": "Square",
               "name": "Square",
               "readonly": true
@@ -1247,7 +1256,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Recommended to use when the item contains video content.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
+              "description": "Recommended to use when the item contains video content.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
               "default": "Wide",
               "name": "Wide",
               "readonly": true
@@ -1273,7 +1282,7 @@
         {
           "kind": "enum",
           "name": "MediaGalleryLayout",
-          "description": "Defines the layout type of the thumbnails list of the <code>ui5-media-gallery</code> component.",
+          "description": "Defines the layout type of the thumbnails list of the `ui5-media-gallery` component.",
           "_ui5privacy": "public",
           "members": [
             {
@@ -1324,7 +1333,7 @@
         {
           "kind": "enum",
           "name": "MediaGalleryMenuHorizontalAlign",
-          "description": "Defines the horizontal alignment of the thumbnails menu of the <code>ui5-media-gallery</code> component.",
+          "description": "Defines the horizontal alignment of the thumbnails menu of the `ui5-media-gallery` component.",
           "_ui5privacy": "public",
           "members": [
             {
@@ -1366,7 +1375,7 @@
         {
           "kind": "enum",
           "name": "MediaGalleryMenuVerticalAlign",
-          "description": "Types for the vertical alignment of the thumbnails menu of the <code>ui5-media-gallery</code> component.",
+          "description": "Types for the vertical alignment of the thumbnails menu of the `ui5-media-gallery` component.",
           "_ui5privacy": "public",
           "members": [
             {
@@ -1791,14 +1800,14 @@
         {
           "kind": "enum",
           "name": "WizardContentLayout",
-          "description": "Enumeration for different content layouts of the <code>ui5-wizard</code>.",
+          "description": "Enumeration for different content layouts of the `ui5-wizard`.",
           "_ui5privacy": "public",
           "members": [
             {
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Display the content of the <code>ui5-wizard</code> as multiple steps in a scroll section.",
+              "description": "Display the content of the `ui5-wizard` as multiple steps in a scroll section.",
               "default": "MultipleSteps",
               "name": "MultipleSteps",
               "readonly": true
@@ -1807,7 +1816,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Display the content of the <code>ui5-wizard</code> as single step.",
+              "description": "Display the content of the `ui5-wizard` as single step.",
               "default": "SingleStep",
               "name": "SingleStep",
               "readonly": true
@@ -1850,7 +1859,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n<h3>Usage</h3>\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n<br>\n<b>Note:</b> Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n<h3>Responsive Behavior</h3>\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/Bar.js\";</code>",
+          "description": "### Overview\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n### Usage\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n\n**Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n### Responsive Behavior\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Bar.js\";`",
           "name": "Bar",
           "cssParts": [
             {
@@ -1941,7 +1950,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>BarcodeScannerDialog</code> component provides barcode scanning functionality for all devices that support the <code>MediaDevices.getUserMedia()</code> native API.\nOpening the dialog launches the device camera and scans for known barcode formats.\n<br>\n<br>\nA <code>scanSuccess</code> event fires whenever a barcode is identified\nand a <code>scanError</code> event fires when the scan failed (for example, due to missing permisions).\n<br>\n<br>\nInternally, the component  uses the zxing-js/library third party OSS.\n\nFor a list of supported barcode formats, see the <ui5-link target=\"_blank\" href=\"https://github.com/zxing-js/library\">zxing-js/library</ui5-link> documentation.",
+          "description": "### Overview\n\nThe `BarcodeScannerDialog` component provides barcode scanning functionality for all devices that support the `MediaDevices.getUserMedia()` native API.\nOpening the dialog launches the device camera and scans for known barcode formats.\n\nA `scanSuccess` event fires whenever a barcode is identified\nand a `scanError` event fires when the scan failed (for example, due to missing permisions).\n\nInternally, the component  uses the zxing-js/library third party OSS.\n\nFor a list of supported barcode formats, see the [zxing-js/library](https://github.com/zxing-js/library) documentation.",
           "name": "BarcodeScannerDialog",
           "members": [
             {
@@ -2063,7 +2072,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe DynamicSideContent (<code>ui5-dynamic-side-content</code>) is a layout component that allows additional content\nto be displayed in a way that flexibly adapts to different screen sizes. The side\ncontent appears in a container next to or directly below the main content\n(it doesn't overlay). When the side content is triggered, the main content becomes\nnarrower (if appearing side-by-side). The side content contains a separate scrollbar\nwhen appearing next to the main content.\n\n\n<h3>Usage</h3>\n\n<i>When to use?</i>\n\nUse this component if you want to display relevant information that is not critical\nfor users to complete a task. Users should have access to all the key functions and\ncritical information in the app even if they do not see the side content. This is\nimportant because on smaller screen sizes it may be difficult to display the side\ncontent in a way that is easily accessible for the user.\n\n<i>When not to use?</i>\n\nDon't use it if you want to display navigation or critical information that prevents\nusers from completing a task when they have no access to the side content.\n\n\n<h3>Responsive Behavior</h3>\n\nScreen width > 1440px\n\n<ul><li>Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px\neach).</li>\n<li>If the application defines a trigger, the side content can be hidden.</li></ul>\n\nScreen width <= 1440px and > 1024px\n\n<ul><li>Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of\n320px each). If the side content width falls below 320 px, it automatically slides\nunder the main content, unless the app development team specifies that it should\ndisappear.</li></ul>\n\nScreen width <= 1024px and > 720px\n\n<ul><li>The side content ratio is fixed to 340px, and the main content takes the rest\nof the width. Only if the <code>sideContentFallDown</code> is set to <code>OnMinimumWidth</code>\nand screen width is <= 960px and > 720px the side content falls below the main content.</li></ul>\n\nScreen width <= 720px (for example on a mobile device)\n\n<ul><li>In this case, the side content automatically disappears from the screen (unless\nspecified to stay under the content by setting of <code>sideContentVisibility</code>\nproperty to <code>AlwaysShow</code>) and can be triggered from a pre-set trigger\n(specified within the app). When the side content is triggered, it replaces the main\ncontent. We recommend that you always place the trigger for the side content in the\nsame location, such as in the app footer.</li></ul>\n\nA special case allows switching the comparison mode between the main and side content.\nIn this case, the screen is split into 50:50 percent for main vs. side content. The\nresponsive behavior of the equal split is the same as in the standard view - the\nside content disappears on screen widths of less than 720 px and can only be\nviewed by triggering it.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/DynamicSideContent\";</code>",
+          "description": "### Overview\n\nThe DynamicSideContent (`ui5-dynamic-side-content`) is a layout component that allows additional content\nto be displayed in a way that flexibly adapts to different screen sizes. The side\ncontent appears in a container next to or directly below the main content\n(it doesn't overlay). When the side content is triggered, the main content becomes\nnarrower (if appearing side-by-side). The side content contains a separate scrollbar\nwhen appearing next to the main content.\n\n### Usage\n\n*When to use?*\n\nUse this component if you want to display relevant information that is not critical\nfor users to complete a task. Users should have access to all the key functions and\ncritical information in the app even if they do not see the side content. This is\nimportant because on smaller screen sizes it may be difficult to display the side\ncontent in a way that is easily accessible for the user.\n\n*When not to use?*\n\nDon't use it if you want to display navigation or critical information that prevents\nusers from completing a task when they have no access to the side content.\n\n### Responsive Behavior\n\nScreen width \\> 1440px\n\n- Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px\neach).\n- If the application defines a trigger, the side content can be hidden.\n\nScreen width \\<\\= 1440px and \\> 1024px\n\n- Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of\n320px each). If the side content width falls below 320 px, it automatically slides\nunder the main content, unless the app development team specifies that it should\ndisappear.\n\nScreen width \\<\\= 1024px and \\> 720px\n\n- The side content ratio is fixed to 340px, and the main content takes the rest\nof the width. Only if the `sideContentFallDown` is set to `OnMinimumWidth`\nand screen width is \\<\\= 960px and \\> 720px the side content falls below the main content.\n\nScreen width \\<\\= 720px (for example on a mobile device)\n\n- In this case, the side content automatically disappears from the screen (unless\nspecified to stay under the content by setting of `sideContentVisibility`\nproperty to `AlwaysShow`) and can be triggered from a pre-set trigger\n(specified within the app). When the side content is triggered, it replaces the main\ncontent. We recommend that you always place the trigger for the side content in the\nsame location, such as in the app footer.\n\nA special case allows switching the comparison mode between the main and side content.\nIn this case, the screen is split into 50:50 percent for main vs. side content. The\nresponsive behavior of the equal split is the same as in the standard view - the\nside content disappears on screen widths of less than 720 px and can only be\nviewed by triggering it.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/DynamicSideContent.js\";`",
           "name": "DynamicSideContent",
           "slots": [
             {
@@ -2119,7 +2128,7 @@
                   }
                 ]
               },
-              "description": "Defines whether the side content is positioned before the main content (left side\nin LTR mode), or after the the main content (right side in LTR mode).\n\n<br><br>\n<b>The available values are:</b>\n\n<ul>\n<li><code>Start</code></li>\n<li><code>End</code></li>\n</ul>",
+              "description": "Defines whether the side content is positioned before the main content (left side\nin LTR mode), or after the the main content (right side in LTR mode).",
               "default": "\"End\"",
               "privacy": "public",
               "_ui5validator": "SideContentPosition"
@@ -2137,7 +2146,7 @@
                   }
                 ]
               },
-              "description": "Defines on which breakpoints the side content is visible.\n\n<br><br>\n<b>The available values are:</b>\n\n<ul>\n<li><code>AlwaysShow</code></li>\n<li><code>ShowAboveL</code></li>\n<li><code>ShowAboveM</code></li>\n<li><code>ShowAboveS</code></li>\n<li><code>NeverShow</code></li>\n</ul>",
+              "description": "Defines on which breakpoints the side content is visible.",
               "default": "\"ShowAboveS\"",
               "privacy": "public",
               "_ui5validator": "SideContentVisibility"
@@ -2155,7 +2164,7 @@
                   }
                 ]
               },
-              "description": "Defines on which breakpoints the side content falls down below the main content.\n\n<br><br>\n<b>The available values are:</b>\n\n<ul>\n<li><code>BelowXL</code></li>\n<li><code>BelowL</code></li>\n<li><code>BelowM</code></li>\n<li><code>OnMinimumWidth</code></li>\n</ul>",
+              "description": "Defines on which breakpoints the side content falls down below the main content.",
               "default": "\"OnMinimumWidth\"",
               "privacy": "public",
               "_ui5validator": "SideContentFallDown"
@@ -2270,12 +2279,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n<h3>Usage</h3>\n\nFor the <code>ui5-filter-item</code>\n<h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents-fiori/dist/FilterItem.js\";</code>",
+          "description": "### Overview\n\n### Usage\n\nFor the `ui5-filter-item`\n### ES6 Module Import\n\n`import @ui5/webcomponents-fiori/dist/FilterItem.js\";`",
           "name": "FilterItem",
           "slots": [
             {
               "name": "values",
-              "description": "Defines the <code>values</code> list.",
+              "description": "Defines the `values` list.",
               "_ui5type": {
                 "text": "Array<FilterItemOption>",
                 "references": [
@@ -2350,7 +2359,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n\n<h3>Usage</h3>\n\nFor the <code>ui5-filter-item-option</code>\n<h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents-fiori/dist/FilterItemOption.js\";</code>",
+          "description": "### Overview\n\n### Usage\n\nFor the `ui5-filter-item-option`\n### ES6 Module Import\n\n`import @ui5/webcomponents-fiori/dist/FilterItemOption.js\";`",
           "name": "FilterItemOption",
           "members": [
             {
@@ -2413,7 +2422,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>FlexibleColumnLayout</code> implements the list-detail-detail paradigm by displaying up to three pages in separate columns.\nThere are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.\n\n<h3>Usage</h3>\n\nUse this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.).\nThe Component is flexible in a sense that the application can focus the user's attention on one particular column.\n\n<h3>Responsive Behavior</h3>\n\nThe <code>FlexibleColumnLayout</code> automatically displays the maximum possible number of columns based on <code>layout</code> property and the window size.\nThe component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px,\nand 3 columns for sizes bigger than 1023px.\n\n<br><br>\n<h3>Keyboard Handling</h3>\n\n<h4>Basic Navigation</h4>\n<ul>\n<li>[SPACE, ENTER, RETURN] - If focus is on the layout toggle button (arrow button), once activated, it triggers the associated action (such as expand/collapse the column).</li>\n<li>This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code></li>\n</ul>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js\";</code>",
+          "description": "### Overview\n\nThe `FlexibleColumnLayout` implements the list-detail-detail paradigm by displaying up to three pages in separate columns.\nThere are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.\n\n### Usage\n\nUse this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.).\nThe Component is flexible in a sense that the application can focus the user's attention on one particular column.\n\n### Responsive Behavior\n\nThe `FlexibleColumnLayout` automatically displays the maximum possible number of columns based on `layout` property and the window size.\nThe component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px,\nand 3 columns for sizes bigger than 1023px.\n\n### Keyboard Handling\n\n#### Basic Navigation\n\n- [SPACE, ENTER, RETURN] - If focus is on the layout toggle button (arrow button), once activated, it triggers the associated action (such as expand/collapse the column).\n- This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js\";`",
           "name": "FlexibleColumnLayout",
           "slots": [
             {
@@ -2455,7 +2464,7 @@
                   }
                 ]
               },
-              "description": "Defines the columns layout and their proportion.\n<br><br>\n<b>Note:</b> The layout also depends on the screen size - one column for screens smaller than 599px,\ntwo columns between 599px and 1023px and three columns for sizes bigger than 1023px.\n<br><br>\n<b>For example:</b> layout=<code>TwoColumnsStartExpanded</code> means the layout will display up to two columns\nin 67%/33% proportion.",
+              "description": "Defines the columns layout and their proportion.\n\n**Note:** The layout also depends on the screen size - one column for screens smaller than 599px,\ntwo columns between 599px and 1023px and three columns for sizes bigger than 1023px.\n\n**For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns\nin 67%/33% proportion.",
               "default": "\"OneColumn\"",
               "privacy": "public",
               "_ui5validator": "FCLLayout"
@@ -2485,7 +2494,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields:\n - <code>startColumnAccessibleName</code>: the accessibility name for the <code>startColumn</code> region\n - <code>midColumnAccessibleName</code>: the accessibility name for the <code>midColumn</code> region\n - <code>endColumnAccessibleName</code>: the accessibility name for the <code>endColumn</code> region\n - <code>startArrowLeftText</code>: the text that the first arrow (between the <code>begin</code> and <code>mid</code> columns) will have when pointing to the left\n - <code>startArrowRightText</code>: the text that the first arrow (between the <code>begin</code> and <code>mid</code> columns) will have when pointing to the right\n - <code>endArrowLeftText</code>: the text that the second arrow (between the <code>mid</code> and <code>end</code> columns) will have when pointing to the left\n - <code>endArrowRightText</code>: the text that the second arrow (between the <code>mid</code> and <code>end</code> columns) will have when pointing to the right\n - <code>startArrowContainerAccessibleName</code>: the text that the first arrow container (between the <code>begin</code> and <code>mid</code> columns) will have as <code>aria-label</code>\n - <code>endArrowContainerAccessibleName</code>: the text that the second arrow container (between the <code>mid</code> and <code>end</code> columns) will have as <code>aria-label</code>",
+              "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields:\n - `startColumnAccessibleName`: the accessibility name for the `startColumn` region\n - `midColumnAccessibleName`: the accessibility name for the `midColumn` region\n - `endColumnAccessibleName`: the accessibility name for the `endColumn` region\n - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left\n - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right\n - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left\n - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right\n - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`\n - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.11",
@@ -2504,7 +2513,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - <code>startColumnRole</code>: the accessibility role for the <code>startColumn</code>\n - <code>startArrowContainerRole</code>: the accessibility role for the first arrow container (between the <code>begin</code> and <code>mid</code> columns)\n - <code>midColumnRole</code>: the accessibility role for the <code>midColumn</code>\n - <code>endArrowContainerRole</code>: the accessibility role for the second arrow container (between the <code>mid</code> and <code>end</code> columns)\n - <code>endColumnRole</code>: the accessibility role for the <code>endColumn</code>",
+              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `startColumnRole`: the accessibility role for the `startColumn`\n - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)\n - `midColumnRole`: the accessibility role for the `midColumn`\n - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)\n - `endColumnRole`: the accessibility role for the `endColumn`",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.1.0",
@@ -2523,7 +2532,7 @@
                   }
                 ]
               },
-              "description": "Returns the current column layout, based on both the <code>layout</code> property and the screen size.\n<br><br>\n<b>For example:</b> [\"67%\", \"33%\", 0], [\"100%\", 0, 0], [\"25%\", \"50%\", \"25%\"], etc,\nwhere the numbers represents the width of the start, middle and end columns.",
+              "description": "Returns the current column layout, based on both the `layout` property and the screen size.\n\n**For example:** [\"67%\", \"33%\", 0], [\"100%\", 0, 0], [\"25%\", \"50%\", \"25%\"], etc,\nwhere the numbers represents the width of the start, middle and end columns.",
               "default": "undefined",
               "privacy": "public",
               "readonly": true
@@ -2534,7 +2543,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Returns if the <code>start</code> column is visible.",
+              "description": "Returns if the `start` column is visible.",
               "default": "true",
               "privacy": "public",
               "readonly": true
@@ -2545,7 +2554,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Returns if the <code>middle</code> column is visible.",
+              "description": "Returns if the `middle` column is visible.",
               "default": "false",
               "privacy": "public",
               "readonly": true
@@ -2556,7 +2565,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Returns if the <code>end</code> column is visible.",
+              "description": "Returns if the `end` column is visible.",
               "default": "false",
               "privacy": "public",
               "readonly": true
@@ -2691,18 +2700,18 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nAn IllustratedMessage is a recommended combination of a solution-oriented message, an engaging\nillustration, and conversational tone to better communicate an empty or a success state than just show\na message alone.\n\nEach illustration has default internationalised title and subtitle texts. Also they can be managed with\n<code>titleText</code> and <code>subtitleText</code> properties.\n\nTo display the desired illustration, use the <code>name</code> property, where you can find the list of all available illustrations.\n<br><br>\n<b>Note:</b> By default the “BeforeSearch” illustration is loaded. To use other illustrations, make sure you import them in addition, for example:\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\"</code>\n<br>\n<b>Note:</b> Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import::\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js\"</code>\n\n<h3>Structure</h3>\nThe IllustratedMessage consists of the following elements, which are displayed below each other in the following order:\n<br>\n<ul>\n<li>Illustration</li>\n<li>Title</li>\n<li>Subtitle</li>\n<li>Actions</li>\n</ul>\n\n<h3>Usage</h3>\n<code>ui5-illustrated-message</code> is meant to be used inside container component, for example a <code>ui5-card</code>,\na <code>ui5-dialog</code> or a <code>ui5-page</code>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/IllustratedMessage.js\";</code>",
+          "description": "### Overview\nAn IllustratedMessage is a recommended combination of a solution-oriented message, an engaging\nillustration, and conversational tone to better communicate an empty or a success state than just show\na message alone.\n\nEach illustration has default internationalised title and subtitle texts. Also they can be managed with\n`titleText` and `subtitleText` properties.\n\nTo display the desired illustration, use the `name` property, where you can find the list of all available illustrations.\n\n**Note:** By default the “BeforeSearch” illustration is loaded. To use other illustrations, make sure you import them in addition, for example:\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\"`\n\n**Note:** Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import::\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js\"`\n\n### Structure\nThe IllustratedMessage consists of the following elements, which are displayed below each other in the following order:\n\n- Illustration\n- Title\n- Subtitle\n- Actions\n\n### Usage\n`ui5-illustrated-message` is meant to be used inside container component, for example a `ui5-card`,\na `ui5-dialog` or a `ui5-page`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/IllustratedMessage.js\";`",
           "name": "IllustratedMessage",
           "cssParts": [
             {
-              "description": "Used to style the subtitle wrapper of the <code>ui5-illustrated-message</code>",
+              "description": "Used to style the subtitle wrapper of the `ui5-illustrated-message`",
               "name": "subtitle"
             }
           ],
           "slots": [
             {
               "name": "title",
-              "description": "Defines the title of the component.\n<br><br>\n<b>Note:</b> Using this slot, the default title text of illustration and the value of <code>title</code> property will be overwritten.",
+              "description": "Defines the title of the component.\n\n**Note:** Using this slot, the default title text of illustration and the value of `title` property will be overwritten.",
               "_ui5since": "1.7.0",
               "_ui5type": {
                 "text": "Array<HTMLElement> & string"
@@ -2711,7 +2720,7 @@
             },
             {
               "name": "subtitle",
-              "description": "Defines the subtitle of the component.\n<br><br>\n<b>Note:</b> Using this slot, the default subtitle text of illustration and the value of <code>subtitleText</code> property will be overwritten.",
+              "description": "Defines the subtitle of the component.\n\n**Note:** Using this slot, the default subtitle text of illustration and the value of `subtitleText` property will be overwritten.",
               "_ui5since": "1.0.0-rc.16",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -2742,7 +2751,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the illustration name that will be displayed in the component.\n<br>\nExample:\n<br>\n<code>name='BeforeSearch'</code>, <code>name='UnableToUpload'</code>, etc..\n<br>\n<br>\n<b>Note:</b> To use the TNT illustrations,\nyou need to set the <code>tnt</code> or <code>Tnt</code> prefix in front of the icon's name.\n<br>\nExample:\n<br>\n<code>name='tnt/Avatar'</code> or <code>name='TntAvatar'</code>.\n<br>\n<br>\n<b>Note:</b> By default the <code>BeforeSearch</code> illustration is loaded.\nWhen using an illustration type, other than the default, it should be loaded in addition:\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\";</code>\n<br>\n<br>\nFor TNT illustrations:\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\";</code>",
+              "description": "Defines the illustration name that will be displayed in the component.\n\nExample:\n\n`name='BeforeSearch'`, `name='UnableToUpload'`, etc..\n\n**Note:** To use the TNT illustrations,\nyou need to set the `tnt` or `Tnt` prefix in front of the icon's name.\n\nExample:\n\n`name='tnt/Avatar'` or `name='TntAvatar'`.\n\n**Note:** By default the `BeforeSearch` illustration is loaded.\nWhen using an illustration type, other than the default, it should be loaded in addition:\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\";`\n\nFor TNT illustrations:\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\";`",
               "default": "\"BeforeSearch\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -2760,7 +2769,7 @@
                   }
                 ]
               },
-              "description": "Determines which illustration breakpoint variant is used.\n<br><br>\n\nAs <code>IllustratedMessage</code> adapts itself around the <code>Illustration</code>, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
+              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
               "default": "\"Auto\"",
               "privacy": "public",
               "_ui5since": "1.5.0",
@@ -2772,7 +2781,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the subtitle of the component.\n<br><br>\n<b>Note:</b> Using this property, the default subtitle text of illustration will be overwritten.\n<br><br>\n<b>Note:</b> Using <code>subtitle</code> slot, the default of this property will be overwritten.",
+              "description": "Defines the subtitle of the component.\n\n**Note:** Using this property, the default subtitle text of illustration will be overwritten.\n\n**Note:** Using `subtitle` slot, the default of this property will be overwritten.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -2783,7 +2792,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the title of the component.\n<br><br>\n<b>Note:</b> Using this property, the default title text of illustration will be overwritten.",
+              "description": "Defines the title of the component.\n\n**Note:** Using this property, the default title text of illustration will be overwritten.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -2813,7 +2822,7 @@
                   }
                 ]
               },
-              "description": "Defines the semantic level of the title.\n\n<b>Note:</b> Used for accessibility purposes only.",
+              "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
               "default": "\"H2\"",
               "privacy": "public",
               "_ui5since": "1.20.0",
@@ -2857,17 +2866,17 @@
         {
           "kind": "interface",
           "name": "IMediaGalleryItem",
-          "description": "Interface for components that can be slotted inside <code>ui5-media-gallery</code> as items.",
+          "description": "Interface for components that can be slotted inside `ui5-media-gallery` as items.",
           "_ui5privacy": "public"
         },
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-media-gallery</code> component allows the user to browse through multimedia items. Currently,\nthe supported items are images and videos. The items should be defined using the <code>ui5-media-gallery-item</code>\ncomponent.\n\nThe items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item\nis displayed in larger size.\n<br>\nThe component is responsive by default and adjusts the position of the menu with respect to viewport size,\nbut the application is able to further customize the layout via the provided API.\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-media-gallery</code> provides advanced keyboard handling.\n<br>\nWhen the thumbnails menu is focused the following keyboard\nshortcuts allow the user to navigate through the thumbnail items:\n<br>\n\n<ul>\n<li>[UP/DOWN] - Navigates up and down the items</li>\n<li>[HOME] - Navigates to first item</li>\n<li>[END] - Navigates to the last item</li>\n<li>[SPACE/ENTER] - Select an item</li>\n</ul>\n<br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/MediaGallery\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem\";</code>",
+          "description": "### Overview\n\nThe `ui5-media-gallery` component allows the user to browse through multimedia items. Currently,\nthe supported items are images and videos. The items should be defined using the `ui5-media-gallery-item`\ncomponent.\n\nThe items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item\nis displayed in larger size.\n\nThe component is responsive by default and adjusts the position of the menu with respect to viewport size,\nbut the application is able to further customize the layout via the provided API.\n\n### Keyboard Handling\nThe `ui5-media-gallery` provides advanced keyboard handling.\n\nWhen the thumbnails menu is focused the following keyboard\nshortcuts allow the user to navigate through the thumbnail items:\n\n- [UP/DOWN] - Navigates up and down the items\n- [HOME] - Navigates to first item\n- [END] - Navigates to the last item\n- [SPACE/ENTER] - Select an item\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/MediaGallery.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem.js\";`",
           "name": "MediaGallery",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the component items.\n\n<br><br>\n<b>Note:</b> Only one selected item is allowed.\n\n<br><br>\n<b>Note:</b> Use the <code>ui5-media-gallery-item</code> component to define the desired items.",
+              "description": "Defines the component items.\n\n**Note:** Only one selected item is allowed.\n\n**Note:** Use the `ui5-media-gallery-item` component to define the desired items.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<IMediaGalleryItem>",
@@ -2889,7 +2898,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "If set to <code>true</code>, all thumbnails are rendered in a scrollable container.\nIf <code>false</code>, only up to five thumbnails are rendered, followed by\nan overflow button that shows the count of the remaining thumbnails.",
+              "description": "If set to `true`, all thumbnails are rendered in a scrollable container.\nIf `false`, only up to five thumbnails are rendered, followed by\nan overflow button that shows the count of the remaining thumbnails.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -2900,7 +2909,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "If enabled, a <code>display-area-click</code> event is fired\nwhen the user clicks or taps on the display area.\n<br>\nThe display area is the central area that contains\nthe enlarged content of the currently selected item.",
+              "description": "If enabled, a `display-area-click` event is fired\nwhen the user clicks or taps on the display area.\n\nThe display area is the central area that contains\nthe enlarged content of the currently selected item.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3000,7 +3009,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the display area is clicked.<br>\nThe display area is the central area that contains\nthe enlarged content of the currently selected item."
+              "description": "Fired when the display area is clicked.\nThe display area is the central area that contains\nthe enlarged content of the currently selected item."
             }
           ],
           "superclass": {
@@ -3039,7 +3048,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-media-gallery-item</code> web component represents the items displayed in the\n<code>ui5-media-gallery</code> web component.\n<br><br>\n<b>Note:</b> <code>ui5-media-gallery-item</code> is not supported when used outside of <code>ui5-media-gallery</code>.\n<br><br>\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-media-gallery</code> provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n<br>\n<ul>\n<li>[SPACE/ENTER/RETURN] - Trigger <code>ui5-click</code> event</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem.js\";</code> (comes with <code>ui5-media-gallery</code>)",
+          "description": "### Overview\nThe `ui5-media-gallery-item` web component represents the items displayed in the\n`ui5-media-gallery` web component.\n\n**Note:** `ui5-media-gallery-item` is not supported when used outside of `ui5-media-gallery`.\n\n### Keyboard Handling\nThe `ui5-media-gallery` provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [SPACE/ENTER/RETURN] - Trigger `ui5-click` event\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem.js\";` (comes with `ui5-media-gallery`)",
           "name": "MediaGalleryItem",
           "slots": [
             {
@@ -3096,7 +3105,7 @@
                   }
                 ]
               },
-              "description": "Determines the layout of the item container.\n<br><br>\nAvailable options are:\n<ul>\n<li><code>Square</code></li>\n<li><code>Wide</code></li>\n</ul>",
+              "description": "Determines the layout of the item container.",
               "default": "\"Square\"",
               "privacy": "public",
               "_ui5validator": "MediaGalleryItemLayout"
@@ -3145,7 +3154,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The <code>ui5-notification-action</code> represents an abstract action,\nused in the <code>ui5-li-notification</code> and the <code>ui5-li-notification-group</code> items.",
+          "description": "The `ui5-notification-action` represents an abstract action,\nused in the `ui5-li-notification` and the `ui5-li-notification-group` items.",
           "name": "NotificationAction",
           "members": [
             {
@@ -3154,7 +3163,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the text of the <code>ui5-notification-action</code>.",
+              "description": "Defines the text of the `ui5-notification-action`.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -3165,7 +3174,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the action is disabled.\n<br><br>\n<b>Note:</b> a disabled action can't be pressed or focused, and it is not in the tab chain.",
+              "description": "Defines if the action is disabled.\n\n**Note:** a disabled action can't be pressed or focused, and it is not in the tab chain.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3194,7 +3203,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>icon</code> source URI.\n<br><br>\n<b>Note:</b>\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n<ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -3253,12 +3262,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-li-notification-group</code> is a special type of list item,\nthat unlike others can group items within self, usually <code>ui5-li-notification</code> items.\n<br>\n\nThe component consists of:\n<ul>\n<li><code>Toggle</code> button to expand and collapse the group</li>\n<li><code>Priority</code> icon to display the priority of the group</li>\n<li><code>TitleText</code> to entitle the group</li>\n<li>Custom actions - with the use of <code>ui5-notification-action</code></li>\n<li>Items of the group</li>\n</ul>\n\n<h3>Usage</h3>\nThe component can be used in a standard <code>ui5-list</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/NotificationListGroupItem.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/NotificationAction.js\";</code> (optional)",
+          "description": "### Overview\nThe `ui5-li-notification-group` is a special type of list item,\nthat unlike others can group items within self, usually `ui5-li-notification` items.\n\nThe component consists of:\n\n- `Toggle` button to expand and collapse the group\n- `Priority` icon to display the priority of the group\n- `TitleText` to entitle the group\n- Custom actions - with the use of `ui5-notification-action`\n- Items of the group\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListGroupItem.js\";`\n\n`import \"@ui5/webcomponents/dist/NotificationAction.js\";` (optional)",
           "name": "NotificationListGroupItem",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the items of the <code>ui5-li-notification-group</code>,\nusually <code>ui5-li-notification</code> items.",
+              "description": "Defines the items of the `ui5-li-notification-group`,\nusually `ui5-li-notification` items.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<NotificationListItemBase>",
@@ -3274,7 +3283,7 @@
             },
             {
               "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n<br><br>\n<b>Note:</b> use the <code>ui5-notification-action</code> component.",
+              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
               "_ui5type": {
                 "text": "Array<NotificationAction>",
                 "references": [
@@ -3306,7 +3315,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the items <code>counter</code> would be displayed.",
+              "description": "Defines if the items `counter` would be displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3317,7 +3326,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>titleText</code> of the item.",
+              "description": "Defines the `titleText` of the item.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String",
@@ -3339,7 +3348,7 @@
                   }
                 ]
               },
-              "description": "Defines the <code>priority</code> of the item.",
+              "description": "Defines the `priority` of the item.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5validator": "Priority",
@@ -3354,7 +3363,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>close</code> button would be displayed.",
+              "description": "Defines if the `close` button would be displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -3369,7 +3378,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>notification</code> is new or has been already read.\n<br><br>\n<b>Note:</b> if set to <code>false</code> the <code>titleText</code> has bold font,\nif set to true - it has a normal font.",
+              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -3415,7 +3424,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the <code>ListItem</code>.",
+              "description": "Defines the selected state of the `ListItem`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3428,7 +3437,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the <code>ui5-li-notification-group</code> is expanded/collapsed by user interaction."
+              "description": "Fired when the `ui5-li-notification-group` is expanded/collapsed by user interaction."
             },
             {
               "name": "close",
@@ -3443,7 +3452,7 @@
                   }
                 ]
               },
-              "description": "Fired when the <code>Close</code> button is pressed.",
+              "description": "Fired when the `Close` button is pressed.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -3496,7 +3505,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-li-notification</code> is a type of list item, meant to display notifications.\n<br>\n\nThe component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>titleText</code>, descriptive <code>content</code>\nand <code>footnotes</code> to fully describe a notification.\n<br>\n\nThe user can:\n<ul>\n<li>display a <code>Close</code> button</li>\n<li>can control whether the <code>titleText</code> and <code>description</code> should wrap or truncate\nand display a <code>ShowMore</code> button to switch between less and more information</li>\n<li>add custom actions by using the <code>ui5-notification-action</code> component</li>\n</ul>\n\n<h3>Usage</h3>\nThe component can be used in a standard <code>ui5-list</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/NotificationListItem.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/NotificationAction.js\";</code> (optional)",
+          "description": "### Overview\nThe `ui5-li-notification` is a type of list item, meant to display notifications.\n\nThe component has a rich set of various properties that allows the user to set `avatar`, `titleText`, descriptive `content`\nand `footnotes` to fully describe a notification.\n\nThe user can:\n\n- display a `Close` button\n- can control whether the `titleText` and `description` should wrap or truncate\nand display a `ShowMore` button to switch between less and more information\n- add custom actions by using the `ui5-notification-action` component\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListItem.js\";`\n\n`import \"@ui5/webcomponents/dist/NotificationAction.js\";` (optional)",
           "name": "NotificationListItem",
           "cssParts": [
             {
@@ -3507,7 +3516,7 @@
           "slots": [
             {
               "name": "avatar",
-              "description": "Defines the avatar, displayed in the <code>ui5-li-notification</code>.\n\n<br><br>\n<b>Note:</b> Consider using the <code>ui5-avatar</code> to display icons, initials or images.\n<br>\n<b>Note:</b>In order to be complaint with the UX guidlines and for best experience,\nwe recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the <code>ui5-avatar</code>\nyou can set its <code>size</code> property to <code>XS</code> to get the required size - <code>&lt;ui5-avatar size=\"XS\">&lt;/ui5-avatar></code>.",
+              "description": "Defines the avatar, displayed in the `ui5-li-notification`.\n\n**Note:** Consider using the `ui5-avatar` to display icons, initials or images.\n\n**Note:** In order to be complaint with the UX guidlines and for best experience,\nwe recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `ui5-avatar`\nyou can set its `size` property to `XS` to get the required size - `<ui5-avatar size=\"XS\"></ui5-avatar>`.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -3523,7 +3532,7 @@
             },
             {
               "name": "default",
-              "description": "Defines the content of the <code>ui5-li-notification</code>,\nusually a description of the notification.\n\n<br><br>\n<b>Note:</b> Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "description": "Defines the content of the `ui5-li-notification`,\nusually a description of the notification.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
               "_ui5propertyName": "description",
               "_ui5type": {
                 "text": "Array<Node>"
@@ -3532,7 +3541,7 @@
             },
             {
               "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n<br><br>\n<b>Note:</b> use the <code>ui5-notification-action</code> component.",
+              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
               "_ui5type": {
                 "text": "Array<NotificationAction>",
                 "references": [
@@ -3560,7 +3569,7 @@
                   }
                 ]
               },
-              "description": "Defines if the <code>titleText</code> and <code>description</code> should wrap,\nthey truncate by default.\n\n<br><br>\n<b>Note:</b> by default the <code>titleText</code> and <code>description</code>,\nand a <code>ShowMore/Less</code> button would be displayed.",
+              "description": "Defines if the `titleText` and `description` should wrap,\nthey truncate by default.\n\n**Note:** by default the `titleText` and `description`,\nand a `ShowMore/Less` button would be displayed.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
@@ -3572,7 +3581,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>titleText</code> of the item.",
+              "description": "Defines the `titleText` of the item.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String",
@@ -3594,7 +3603,7 @@
                   }
                 ]
               },
-              "description": "Defines the <code>priority</code> of the item.",
+              "description": "Defines the `priority` of the item.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5validator": "Priority",
@@ -3609,7 +3618,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>close</code> button would be displayed.",
+              "description": "Defines if the `close` button would be displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -3624,7 +3633,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>notification</code> is new or has been already read.\n<br><br>\n<b>Note:</b> if set to <code>false</code> the <code>titleText</code> has bold font,\nif set to true - it has a normal font.",
+              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -3670,7 +3679,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the <code>ListItem</code>.",
+              "description": "Defines the selected state of the `ListItem`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3699,7 +3708,7 @@
                   }
                 ]
               },
-              "description": "Fired when the <code>Close</code> button is pressed.",
+              "description": "Fired when the `Close` button is pressed.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -3743,12 +3752,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The base class of the <code>NotificationListItem</code> and <code>NotificationListGroupItem</code>.",
+          "description": "The base class of the `NotificationListItem` and `NotificationListGroupItem`.",
           "name": "NotificationListItemBase",
           "slots": [
             {
               "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n<br><br>\n<b>Note:</b> use the <code>ui5-notification-action</code> component.",
+              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
               "_ui5type": {
                 "text": "Array<NotificationAction>",
                 "references": [
@@ -3769,7 +3778,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>titleText</code> of the item.",
+              "description": "Defines the `titleText` of the item.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -3787,7 +3796,7 @@
                   }
                 ]
               },
-              "description": "Defines the <code>priority</code> of the item.",
+              "description": "Defines the `priority` of the item.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5validator": "Priority"
@@ -3798,7 +3807,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>close</code> button would be displayed.",
+              "description": "Defines if the `close` button would be displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3809,7 +3818,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>notification</code> is new or has been already read.\n<br><br>\n<b>Note:</b> if set to <code>false</code> the <code>titleText</code> has bold font,\nif set to true - it has a normal font.",
+              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3843,7 +3852,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the <code>ListItem</code>.",
+              "description": "Defines the selected state of the `ListItem`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3863,7 +3872,7 @@
                   }
                 ]
               },
-              "description": "Fired when the <code>Close</code> button is pressed.",
+              "description": "Fired when the `Close` button is pressed.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -3903,7 +3912,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-page</code> is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n<h3>Structure</h3>\n<h4>Header</h4>\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n<h4>Content</h4>\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  <code>enableScrolling</code> to <code>false</code>.\n<h4>Footer</h4>\nThe footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.\nThis is enabled with the <code>floatingFooter</code> property.\n\n<b>Note:</b> <code>ui5-page</code> occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the <code>ui5-page</code> to be rendered.\n<b>Note:</b> In order for the <code>ui5-page</code> to be displayed, the parent element should have fixed height.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/Page.js\";</code>",
+          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.\nThis is enabled with the `floatingFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
           "name": "Page",
           "cssParts": [
             {
@@ -3952,7 +3961,7 @@
                   }
                 ]
               },
-              "description": "Defines the background color of the <code>ui5-page</code>.\n<br><br>\n<b>Note:</b> When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.\n<br><br>",
+              "description": "Defines the background color of the `ui5-page`.\n\n**Note:** When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.",
               "default": "\"Solid\"",
               "privacy": "public",
               "_ui5validator": "PageBackgroundDesign"
@@ -3974,7 +3983,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the footer should float over the content.\n<br><br>\n<b>Note:</b> When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
+              "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
               "default": "true",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -4028,17 +4037,17 @@
         {
           "kind": "interface",
           "name": "IProductSwitchItem",
-          "description": "Interface for components that may be slotted inside <code>ui5-product-switch</code> as items",
+          "description": "Interface for components that may be slotted inside `ui5-product-switch` as items",
           "_ui5privacy": "public"
         },
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-product-switch</code> is an SAP Fiori specific web component that is used in <code>ui5-shellbar</code>\nand allows the user to easily switch between products.\n<br><br>\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-product-switch</code> provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n<br>\n<ul>\n<li>[TAB] - Move focus to the next interactive element after the <code>ui5-product-switch</code></li>\n<li>[UP/DOWN] - Navigates up and down the items </li>\n<li>[LEFT/RIGHT] - Navigates left and right the items</li>\n</ul>\n<br>\n<br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/ProductSwitch.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";</code> (for <code>ui5-product-switch-item</code>)",
+          "description": "### Overview\n\nThe `ui5-product-switch` is an SAP Fiori specific web component that is used in `ui5-shellbar`\nand allows the user to easily switch between products.\n\n### Keyboard Handling\nThe `ui5-product-switch` provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [TAB] - Move focus to the next interactive element after the `ui5-product-switch`\n- [UP/DOWN] - Navigates up and down the items\n- [LEFT/RIGHT] - Navigates left and right the items\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ProductSwitch.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";` (for `ui5-product-switch-item`)",
           "name": "ProductSwitch",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the items of the <code>ui5-product-switch</code>.",
+              "description": "Defines the items of the `ui5-product-switch`.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<IProductSwitchItem>",
@@ -4090,7 +4099,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-product-switch-item</code> web component represents the items displayed in the\n<code>ui5-product-switch</code> web component.\n<br><br>\n<b>Note:</b> <code>ui5-product-switch-item</code> is not supported when used outside of <code>ui5-product-switch</code>.\n<br><br>\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-product-switch</code> provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n<br>\n<ul>\n<li>[SPACE/ENTER/RETURN] - Trigger <code>ui5-click</code> event</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";</code>",
+          "description": "### Overview\nThe `ui5-product-switch-item` web component represents the items displayed in the\n`ui5-product-switch` web component.\n\n**Note:** `ui5-product-switch-item` is not supported when used outside of `ui5-product-switch`.\n\n### Keyboard Handling\nThe `ui5-product-switch` provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [SPACE/ENTER/RETURN] - Trigger `ui5-click` event\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";`",
           "name": "ProductSwitchItem",
           "members": [
             {
@@ -4123,7 +4132,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the icon to be displayed as a graphical element within the component.\n<br><br>\nExample:\n<br>\n<pre>ui5-product-switch-item icon=\"palette\"</pre>\n\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the icon to be displayed as a graphical element within the component.\n\nExample:\n\n`<ui5-product-switch-item icon=\"palette\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4134,7 +4143,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines a target where the <code>targetSrc</code> content must be open.\n<br><br>\nAvailable options are:\n<ul>\n<li><code>_self</code></li>\n<li><code>_top</code></li>\n<li><code>_blank</code></li>\n<li><code>_parent</code></li>\n<li><code>_search</code></li>\n</ul>",
+              "description": "Defines a target where the `targetSrc` content must be open.\n\nAvailable options are:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`",
               "default": "\"_self\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4158,7 +4167,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the <code>ui5-product-switch-item</code> is activated either with a\nclick/tap or by using the Enter or Space key."
+              "description": "Fired when the `ui5-product-switch-item` is activated either with a\nclick/tap or by using the Enter or Space key."
             }
           ],
           "superclass": {
@@ -4204,18 +4213,18 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-shellbar</code> is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n<br><br>\n\n<h3>Stable DOM Refs</h3>\n\nYou can use the following stable DOM refs for the <code>ui5-shellbar</code>:\n<ul>\n<li>logo</li>\n<li>copilot</li>\n<li>notifications</li>\n<li>overflow</li>\n<li>profile</li>\n<li>product-switch</li>\n</ul>\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/ShellBar\";</code>",
+          "description": "### Overview\n\nThe `ui5-shellbar` is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n\n### Stable DOM Refs\n\nYou can use the following stable DOM refs for the `ui5-shellbar`:\n\n- logo\n- copilot\n- notifications\n- overflow\n- profile\n- product-switch\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBar.js\";`",
           "name": "ShellBar",
           "cssParts": [
             {
-              "description": "Used to style the outermost wrapper of the <code>ui5-shellbar</code>",
+              "description": "Used to style the outermost wrapper of the `ui5-shellbar`",
               "name": "root"
             }
           ],
           "slots": [
             {
               "name": "default",
-              "description": "Defines the <code>ui5-shellbar</code> aditional items.\n<br><br>\n<b>Note:</b>\nYou can use the &nbsp;&lt;ui5-shellbar-item>&lt;/ui5-shellbar-item>.",
+              "description": "Defines the `ui5-shellbar` aditional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<ShellBarItem>",
@@ -4231,7 +4240,7 @@
             },
             {
               "name": "profile",
-              "description": "You can pass <code>ui5-avatar</code> to set the profile image/icon.\nIf no profile slot is set - profile will be excluded from actions.\n\nNote: We recommend not using the <code>size</code> attribute of <code>ui5-avatar</code> because\nit should have specific size by design in the context of <code>ui5-shellbar</code> profile.",
+              "description": "You can pass `ui5-avatar` to set the profile image/icon.\nIf no profile slot is set - profile will be excluded from actions.\n\n**Note:** We recommend not using the `size` attribute of `ui5-avatar` because\nit should have specific size by design in the context of `ui5-shellbar` profile.",
               "_ui5since": "1.0.0-rc.6",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -4240,7 +4249,7 @@
             },
             {
               "name": "logo",
-              "description": "Defines the logo of the <code>ui5-shellbar</code>.\nFor example, you can use <code>ui5-avatar</code> or <code>img</code> elements as logo.",
+              "description": "Defines the logo of the `ui5-shellbar`.\nFor example, you can use `ui5-avatar` or `img` elements as logo.",
               "_ui5since": "1.0.0-rc.8",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -4249,7 +4258,7 @@
             },
             {
               "name": "menuItems",
-              "description": "Defines the items displayed in menu after a click on the primary title.\n<br><br>\n<b>Note:</b>\nYou can use the &nbsp;&lt;ui5-li>&lt;/ui5-li> and its ancestors.",
+              "description": "Defines the items displayed in menu after a click on the primary title.\n\n**Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors.",
               "_ui5since": "0.10",
               "_ui5type": {
                 "text": "Array<ListItemBase>",
@@ -4265,7 +4274,7 @@
             },
             {
               "name": "searchField",
-              "description": "Defines the <code>ui5-input</code>, that will be used as a search field.",
+              "description": "Defines the `ui5-input`, that will be used as a search field.",
               "_ui5type": {
                 "text": "Array<Input>",
                 "references": [
@@ -4280,7 +4289,7 @@
             },
             {
               "name": "startButton",
-              "description": "Defines a <code>ui5-button</code> in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a back or home button.\nIt gets overstyled to match ShellBar's styling.",
+              "description": "Defines a `ui5-button` in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a back or home button.\nIt gets overstyled to match ShellBar's styling.",
               "_ui5type": {
                 "text": "Array<IButton>",
                 "references": [
@@ -4301,7 +4310,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>primaryTitle</code>.\n<br><br>\n<b>Note:</b> The <code>primaryTitle</code> would be hidden on S screen size (less than approx. 700px).",
+              "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4312,7 +4321,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>secondaryTitle</code>.\n<br><br>\n<b>Note:</b> The <code>secondaryTitle</code> would be hidden on S and M screen sizes (less than approx. 1300px).",
+              "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4323,7 +4332,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>notificationsCount</code>,\ndisplayed in the notification icon top-right corner.",
+              "description": "Defines the `notificationsCount`,\ndisplayed in the notification icon top-right corner.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4356,7 +4365,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines, if the product CoPilot icon would be displayed.\n<br><b>Note:</b> By default the co-pilot is displayed as static SVG.\nIf you need an animated co-pilot, you can import the <code>\"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js\"</code> module as add-on feature.",
+              "description": "Defines, if the product CoPilot icon would be displayed.\n\n**Note:** By default the co-pilot is displayed as static SVG.\nIf you need an animated co-pilot, you can import the `\"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js\"` module as add-on feature.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -4367,7 +4376,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines, if the Search Field would be displayed when there is a valid <code>searchField</code> slot.\n<br><b>Note:</b> By default the Search Field is not displayed.",
+              "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -4385,7 +4394,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - <code>logoRole</code>: the accessibility role for the <code>logo</code>",
+              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `logoRole`: the accessibility role for the `logo`",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.6.0",
@@ -4404,7 +4413,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility texts\nfor even further customization.\n\nIt supports the following fields:\n- <code>profileButtonTitle</code>: defines the tooltip for the profile button\n- <code>logoTitle</code>: defines the tooltip for the logo",
+              "description": "An object of strings that defines several additional accessibility texts\nfor even further customization.\n\nIt supports the following fields:\n- `profileButtonTitle`: defines the tooltip for the profile button\n- `logoTitle`: defines the tooltip for the logo",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.1.0",
@@ -4423,7 +4432,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.10.0",
@@ -4446,7 +4455,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>logo</code> DOM ref.",
+              "description": "Returns the `logo` DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4458,7 +4467,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>copilot</code> DOM ref.",
+              "description": "Returns the `copilot` DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4470,7 +4479,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>notifications</code> icon DOM ref.",
+              "description": "Returns the `notifications` icon DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4482,7 +4491,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>overflow</code> icon DOM ref.",
+              "description": "Returns the `overflow` icon DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4494,7 +4503,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>profile</code> icon DOM ref.",
+              "description": "Returns the `profile` icon DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4506,7 +4515,7 @@
               "type": {
                 "text": "HTMLElement | null"
               },
-              "description": "Returns the <code>product-switch</code> icon DOM ref.",
+              "description": "Returns the `product-switch` icon DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -4578,7 +4587,7 @@
                   }
                 ]
               },
-              "description": "Fired, when the product switch icon is activated.\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
+              "description": "Fired, when the product switch icon is activated.\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.",
               "_ui5allowPreventDefault": true,
               "_ui5parameters": [
                 {
@@ -4656,7 +4665,7 @@
                   }
                 ]
               },
-              "description": "Fired, when a menu item is activated\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
+              "description": "Fired, when a menu item is activated\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.",
               "_ui5since": "0.10",
               "_ui5parameters": [
                 {
@@ -4682,7 +4691,7 @@
                   }
                 ]
               },
-              "description": "Fired, when the search button is activated.\n<b>Note:</b> You can prevent expanding/collapsing of the search field by calling <code>event.preventDefault()</code>.",
+              "description": "Fired, when the search button is activated.\n\n**Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.",
               "_ui5allowPreventDefault": true
             }
           ],
@@ -4722,7 +4731,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The <code>ui5-shellbar-item</code> represents a custom item, that\nmight be added to the <code>ui5-shellbar</code>.\n<br><br>\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/ShellBarItem\";</code>",
+          "description": "The `ui5-shellbar-item` represents a custom item, that\nmight be added to the `ui5-shellbar`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBarItem.js\";`",
           "name": "ShellBarItem",
           "members": [
             {
@@ -4742,7 +4751,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the item text.\n  <br><br>\n  <b>Note:</b> The text is only displayed inside the overflow popover list view.",
+              "description": "Defines the item text.\n \n  **Note:** The text is only displayed inside the overflow popover list view.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -4814,12 +4823,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>SideNavigation</code> is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n<ul>\n<li>The header is meant for displaying user related information - profile data, avatar, etc.</li>\n<li>The main navigation section is related to the user’s current work context</li>\n<li>The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on). </li>\n</ul>\n\n<h3>Usage</h3>\n\nUse the available <code>ui5-side-navigation-item</code> and <code>ui5-side-navigation-sub-item</code> components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";</code> (for <code>ui5-side-navigation-item</code>)\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";</code> (for <code>ui5-side-navigation-sub-item</code>)",
+          "description": "### Overview\n\nThe `SideNavigation` is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n\n- The header is meant for displaying user related information - profile data, avatar, etc.\n- The main navigation section is related to the user’s current work context\n- The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).\n\n### Usage\n\nUse the available `ui5-side-navigation-item` and `ui5-side-navigation-sub-item` components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";` (for `ui5-side-navigation-item`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";` (for `ui5-side-navigation-sub-item`)",
           "name": "SideNavigation",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the main items of the <code>ui5-side-navigation</code>. Use the <code>ui5-side-navigation-item</code> component\nfor the top-level items, and the <code>ui5-side-navigation-sub-item</code> component for second-level items, nested\ninside the items.",
+              "description": "Defines the main items of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the top-level items, and the `ui5-side-navigation-sub-item` component for second-level items, nested\ninside the items.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<SideNavigationItem>",
@@ -4835,7 +4844,7 @@
             },
             {
               "name": "header",
-              "description": "Defines the header of the <code>ui5-side-navigation</code>.\n\n<br><br>\n<b>Note:</b> The header is displayed when the component is expanded - the property <code>collapsed</code> is false;",
+              "description": "Defines the header of the `ui5-side-navigation`.\n\n**Note:** The header is displayed when the component is expanded - the property `collapsed` is false;",
               "_ui5since": "1.0.0-rc.11",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -4844,7 +4853,7 @@
             },
             {
               "name": "fixedItems",
-              "description": "Defines the fixed items at the bottom of the <code>ui5-side-navigation</code>. Use the <code>ui5-side-navigation-item</code> component\nfor the fixed items, and optionally the <code>ui5-side-navigation-sub-item</code> component to provide second-level items inside them.\n\n<b>Note:</b> In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
+              "description": "Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
               "_ui5type": {
                 "text": "Array<SideNavigationItem>",
                 "references": [
@@ -4865,7 +4874,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines whether the <code>ui5-side-navigation</code> is expanded or collapsed.",
+              "description": "Defines whether the `ui5-side-navigation` is expanded or collapsed.",
               "privacy": "public",
               "default": "false",
               "_ui5validator": "Boolean"
@@ -4942,12 +4951,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-side-navigation-item</code> is used within <code>ui5-side-navigation</code> only.\nVia the <code>ui5-side-navigation-item</code> you control the content of the <code>SideNavigation</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";</code>",
+          "description": "### Overview\n\nThe `ui5-side-navigation-item` is used within `ui5-side-navigation` only.\nVia the `ui5-side-navigation-item` you control the content of the `SideNavigation`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";`",
           "name": "SideNavigationItem",
           "slots": [
             {
               "name": "default",
-              "description": "Defines nested items by passing <code>ui5-side-navigation-sub-item</code> to the default slot.",
+              "description": "Defines nested items by passing `ui5-side-navigation-sub-item` to the default slot.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<SideNavigationSubItem>",
@@ -4980,7 +4989,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).\nIf set to true, clicking the whole item will toggle the sub items, and it won't fire the <code>click</code> event.\nBy default, only clicking the arrow icon will toggle the sub items.",
+              "description": "Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).\nIf set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.\nBy default, only clicking the arrow icon will toggle the sub items.",
               "privacy": "public",
               "default": "false",
               "_ui5since": "1.0.0-rc.11",
@@ -5007,7 +5016,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the icon of the item.\n<br><br>\n\nThe SAP-icons font provides numerous options.\n<br>\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "\"\"",
               "_ui5validator": "String",
@@ -5037,7 +5046,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the <code>click</code> event should be registered.",
+              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5053,7 +5062,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the component target.\n<br><br>\n<b>Notes:</b>\n\n<ul>\n<li><code>_self</code></li>\n<li><code>_top</code></li>\n<li><code>_blank</code></li>\n<li><code>_parent</code></li>\n<li><code>_search</code></li>\n</ul>\n\n<b>This property must only be used when the <code>href</code> property is set.</b>",
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5131,7 +5140,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A class to serve as a foundation\nfor the <code>SideNavigationItem</code> and <code>SideNavigationSubItem</code> classes.",
+          "description": "A class to serve as a foundation\nfor the `SideNavigationItem` and `SideNavigationSubItem` classes.",
           "name": "SideNavigationItemBase",
           "members": [
             {
@@ -5151,7 +5160,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the icon of the item.\n<br><br>\n\nThe SAP-icons font provides numerous options.\n<br>\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "\"\"",
               "_ui5validator": "String"
@@ -5173,7 +5182,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the <code>click</code> event should be registered.",
+              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5185,7 +5194,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the component target.\n<br><br>\n<b>Notes:</b>\n\n<ul>\n<li><code>_self</code></li>\n<li><code>_top</code></li>\n<li><code>_blank</code></li>\n<li><code>_parent</code></li>\n<li><code>_search</code></li>\n</ul>\n\n<b>This property must only be used when the <code>href</code> property is set.</b>",
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5242,7 +5251,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-side-navigation-sub-item</code> is intended to be used inside a <code>ui5-side-navigation-item</code> only.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";</code>",
+          "description": "### Overview\n\nThe `ui5-side-navigation-sub-item` is intended to be used inside a `ui5-side-navigation-item` only.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";`",
           "name": "SideNavigationSubItem",
           "superclass": {
             "name": "SideNavigationItemBase",
@@ -5276,7 +5285,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the icon of the item.\n<br><br>\n\nThe SAP-icons font provides numerous options.\n<br>\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "\"\"",
               "_ui5validator": "String",
@@ -5306,7 +5315,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the <code>click</code> event should be registered.",
+              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5322,7 +5331,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the component target.\n<br><br>\n<b>Notes:</b>\n\n<ul>\n<li><code>_self</code></li>\n<li><code>_top</code></li>\n<li><code>_blank</code></li>\n<li><code>_parent</code></li>\n<li><code>_search</code></li>\n</ul>\n\n<b>This property must only be used when the <code>href</code> property is set.</b>",
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
               "privacy": "public",
               "default": "\"\"",
               "_ui5since": "1.19.0",
@@ -5390,7 +5399,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n\n<h3>Usage</h3>\n\nFor the <code>ui5-sort-item</code>\n<h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents-fiori/dist/SortItem.js\";</code>",
+          "description": "### Overview\n\n### Usage\n\nFor the `ui5-sort-item`\n### ES6 Module Import\n\n`import @ui5/webcomponents-fiori/dist/SortItem.js\";`",
           "name": "SortItem",
           "members": [
             {
@@ -5454,17 +5463,17 @@
         {
           "kind": "interface",
           "name": "ITimelineItem",
-          "description": "Interface for components that may be slotted inside <code>ui5-timeline</code> as items",
+          "description": "Interface for components that may be slotted inside `ui5-timeline` as items",
           "_ui5privacy": "public"
         },
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-timeline</code> component shows entries (such as objects, events, or posts) in chronological order.\nA common use case is to provide information about changes to an object, or events related to an object.\nThese entries can be generated by the system (for example, value XY changed from A to B), or added manually.\nThere are two distinct variants of the timeline: basic and social. The basic timeline is read-only,\nwhile the social timeline offers a high level of interaction and collaboration, and is integrated within SAP Jam.",
+          "description": "### Overview\n\nThe `ui5-timeline` component shows entries (such as objects, events, or posts) in chronological order.\nA common use case is to provide information about changes to an object, or events related to an object.\nThese entries can be generated by the system (for example, value XY changed from A to B), or added manually.\nThere are two distinct variants of the timeline: basic and social. The basic timeline is read-only,\nwhile the social timeline offers a high level of interaction and collaboration, and is integrated within SAP Jam.",
           "name": "Timeline",
           "slots": [
             {
               "name": "default",
-              "description": "Determines the content of the <code>ui5-timeline</code>.",
+              "description": "Determines the content of the `ui5-timeline`.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<ITimelineItem>",
@@ -5493,7 +5502,7 @@
                   }
                 ]
               },
-              "description": "Defines the items orientation.\n\n<br><br>\n<b>Note:</b>\nAvailable options are:\n<ul>\n<li><code>Vertical</code></li>\n<li><code>Horizontal</code></li>\n</ul>",
+              "description": "Defines the items orientation.",
               "default": "\"Vertical\"",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
@@ -5548,11 +5557,11 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nAn entry posted on the timeline.",
+          "description": "### Overview\n\nAn entry posted on the timeline.",
           "name": "TimelineItem",
           "slots": [
             {
-              "description": "Determines the description of the <code>ui5-timeline-item</code>.",
+              "description": "Determines the description of the `ui5-timeline-item`.",
               "name": "default",
               "_ui5privacy": "public",
               "_ui5type": {
@@ -5567,7 +5576,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the icon to be displayed as graphical element within the <code>ui5-timeline-item</code>.\nSAP-icons font provides numerous options.\n<br><br>\n\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the icon to be displayed as graphical element within the `ui5-timeline-item`.\nSAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -5578,7 +5587,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the name of the item, displayed before the <code>title-text</code>.",
+              "description": "Defines the name of the item, displayed before the `title-text`.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -5589,7 +5598,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the <code>name</code> is clickable.",
+              "description": "Defines if the `name` is clickable.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5624,7 +5633,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the item name is pressed either with a\nclick/tap or by using the Enter or Space key.\n<br><br>\n<b>Note:</b> The event will not be fired if the <code>name-clickable</code>\nattribute is not set."
+              "description": "Fired when the item name is pressed either with a\nclick/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `name-clickable`\nattribute is not set."
             }
           ],
           "superclass": {
@@ -5670,17 +5679,17 @@
         {
           "kind": "interface",
           "name": "IUploadCollectionItem",
-          "description": "Interface for components that may be slotted inside <code>ui5-upload-collection</code> as items",
+          "description": "Interface for components that may be slotted inside `ui5-upload-collection` as items",
           "_ui5privacy": "public"
         },
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThis component allows you to represent files before uploading them to a server, with the help of <code>ui5-upload-collection-item</code>.\nIt also allows you to show already uploaded files.\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";</code> (for <code>ui5-upload-collection-item</code>)",
+          "description": "### Overview\nThis component allows you to represent files before uploading them to a server, with the help of `ui5-upload-collection-item`.\nIt also allows you to show already uploaded files.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";` (for `ui5-upload-collection-item`)",
           "name": "UploadCollection",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the items of the <code>ui5-upload-collection</code>.\n<br><b>Note:</b> Use <code>ui5-upload-collection-item</code> for the intended design.",
+              "description": "Defines the items of the `ui5-upload-collection`.\n\n**Note:** Use `ui5-upload-collection-item` for the intended design.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<IUploadCollectionItem>",
@@ -5696,7 +5705,7 @@
             },
             {
               "name": "header",
-              "description": "Defines the <code>ui5-upload-collection</code> header.\n<br><br>\n<b>Note:</b> If <code>header</code> slot is provided,\nthe labelling of the <code>UploadCollection</code> is a responsibility of the application developer.\n<code>accessibleName</code> should be used.",
+              "description": "Defines the `ui5-upload-collection` header.\n\n**Note:** If `header` slot is provided,\nthe labelling of the `UploadCollection` is a responsibility of the application developer.\n`accessibleName` should be used.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -5717,7 +5726,7 @@
                   }
                 ]
               },
-              "description": "Defines the mode of the <code>ui5-upload-collection</code>.\n\n<br><b>Note:</b>\nMode \"Delete\" has no effect. The delete button is controlled by the <code>hideDeleteButton</code> property of UploadCollectionItem",
+              "description": "Defines the mode of the `ui5-upload-collection`.\n\n**Note:**\nMode \"Delete\" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5validator": "ListMode"
@@ -5750,7 +5759,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "By default there will be drag and drop overlay shown over the <code>ui5-upload-collection</code> when files\nare dragged. If you don't intend to use drag and drop, set this property.\n<br><br>\n<b>Note:</b> It is up to the application developer to add handler for <code>drop</code> event and handle it.\n<code>ui5-upload-collection</code> only displays an overlay.",
+              "description": "By default there will be drag and drop overlay shown over the `ui5-upload-collection` when files\nare dragged. If you don't intend to use drag and drop, set this property.\n\n**Note:** It is up to the application developer to add handler for `drop` event and handle it.\n`ui5-upload-collection` only displays an overlay.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5775,7 +5784,7 @@
               "type": {
                 "text": "Event"
               },
-              "description": "Fired when an element is dropped inside the drag and drop overlay.\n<br><br>\n<b>Note:</b> The <code>drop</code> event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the <code>ui5-upload-collection</code>."
+              "description": "Fired when an element is dropped inside the drag and drop overlay.\n\n**Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `ui5-upload-collection`."
             },
             {
               "name": "item-delete",
@@ -5798,7 +5807,7 @@
                   },
                   "name": "item",
                   "_ui5privacy": "public",
-                  "description": "The <code>ui5-upload-collection-item</code> which was deleted."
+                  "description": "The `ui5-upload-collection-item` which was deleted."
                 }
               ]
             },
@@ -5815,7 +5824,7 @@
                   }
                 ]
               },
-              "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
+              "description": "Fired when selection is changed by user interaction\nin `SingleSelect` and `MultiSelect` modes.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -5864,11 +5873,11 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nA component to be used within the <code>ui5-upload-collection</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";</code>",
+          "description": "### Overview\nA component to be used within the `ui5-upload-collection`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";`",
           "name": "UploadCollectionItem",
           "slots": [
             {
-              "description": "Hold the description of the <code>ui5-upload-collection-item</code>. Will be shown below the file name.",
+              "description": "Hold the description of the `ui5-upload-collection-item`. Will be shown below the file name.",
               "name": "default",
               "_ui5privacy": "public",
               "_ui5type": {
@@ -5877,7 +5886,7 @@
             },
             {
               "name": "thumbnail",
-              "description": "A thumbnail, which will be shown in the beginning of the <code>ui5-upload-collection-item</code>.\n<br><br>\n<b>Note:</b> Use <code>ui5-icon</code> or <code>img</code> for the intended design.",
+              "description": "A thumbnail, which will be shown in the beginning of the `ui5-upload-collection-item`.\n\n**Note:** Use `ui5-icon` or `img` for the intended design.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -5885,7 +5894,7 @@
             },
             {
               "name": "deleteButton",
-              "description": "Defines the delete button, displayed in \"Delete\" mode.\n<b>Note:</b> While the slot allows custom buttons, to match\ndesign guidelines, please use the <code>ui5-button</code> component.\n<b>Note:</b> When the slot is not present, a built-in delete button will be displayed.",
+              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
               "_ui5since": "1.9.0",
               "_ui5type": {
                 "text": "Array<IButton>",
@@ -5907,7 +5916,7 @@
               "type": {
                 "text": "File | null | undefined"
               },
-              "description": "Holds an instance of <code>File</code> associated with this item.",
+              "description": "Holds an instance of `File` associated with this item.",
               "default": "null",
               "privacy": "public",
               "_ui5validator": "Object",
@@ -5930,7 +5939,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.",
+              "description": "If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5952,7 +5961,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "By default, the delete button will always be shown, regardless of the <code>ui5-upload-collection</code>'s property <code>mode</code>.\nSetting this property to <code>true</code> will hide the delete button.",
+              "description": "By default, the delete button will always be shown, regardless of the `ui5-upload-collection`'s property `mode`.\nSetting this property to `true` will hide the delete button.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5963,7 +5972,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Hides the retry button when <code>uploadState</code> property is <code>Error</code>.",
+              "description": "Hides the retry button when `uploadState` property is `Error`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5974,7 +5983,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Hides the terminate button when <code>uploadState</code> property is <code>Uploading</code>.",
+              "description": "Hides the terminate button when `uploadState` property is `Uploading`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -5985,7 +5994,7 @@
               "type": {
                 "text": "number"
               },
-              "description": "The upload progress in percentage.\n<br><br>\n<b>Note:</b> Expected values are in the interval [0, 100].",
+              "description": "The upload progress in percentage.\n\n**Note:** Expected values are in the interval [0, 100].",
               "default": "0",
               "privacy": "public",
               "_ui5validator": "Integer"
@@ -6003,7 +6012,7 @@
                   }
                 ]
               },
-              "description": "If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed.\nAlso if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired.\nIf set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.",
+              "description": "If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed.\nAlso if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired.\nIf set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.",
               "default": "\"Ready\"",
               "privacy": "public",
               "_ui5validator": "UploadState"
@@ -6021,7 +6030,7 @@
                   }
                 ]
               },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
               "default": "\"Active\"",
               "privacy": "public",
               "_ui5validator": "ListItemType"
@@ -6039,7 +6048,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n<ul>\n\t\t<li><code>ariaSetsize</code>: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\t\tThe value of each <code>aria-setsize</code> is an integer reflecting number of items in the complete set.\n\t\t<b>Note: </b> If the size of the entire set is unknown, set <code>aria-setsize=\"-1\"</code>.\n\t\t</li>\n\t\t<li><code>ariaPosinset</code>: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\t\tThe value of each <code>aria-posinset</code> is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.\n\t\t</li>\n</ul>",
+              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.15.0",
@@ -6051,7 +6060,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "The navigated state of the list item.\nIf set to <code>true</code>, a navigation indicator is displayed at the end of the list item.",
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
               "default": "false",
               "privacy": "public",
               "_ui5since": "1.10.0",
@@ -6059,11 +6068,23 @@
             },
             {
               "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
               "name": "selected",
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the <code>ListItem</code>.",
+              "description": "Defines the selected state of the `ListItem`.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -6080,7 +6101,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the file name is clicked.\n<br><br>\n<b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>."
+              "description": "Fired when the file name is clicked.\n\n**Note:** This event is only available when `fileNameClickable` property is `true`."
             },
             {
               "name": "rename",
@@ -6088,7 +6109,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the <code>fileName</code> property gets changed.\n<br><br>\n<b>Note:</b> An edit button is displayed on each item,\nwhen the <code>ui5-upload-collection-item</code> <code>type</code> property is set to <code>Detail</code>."
+              "description": "Fired when the `fileName` property gets changed.\n\n**Note:** An edit button is displayed on each item,\nwhen the `ui5-upload-collection-item` `type` property is set to `Detail`."
             },
             {
               "name": "terminate",
@@ -6096,7 +6117,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the terminate button is pressed.\n<br><br>\n<b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>."
+              "description": "Fired when the terminate button is pressed.\n\n**Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`."
             },
             {
               "name": "retry",
@@ -6104,7 +6125,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the retry button is pressed.\n<br><br>\n<b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>."
+              "description": "Fired when the retry button is pressed.\n\n**Note:** Retry button is displayed when `uploadState` property is set to `Error`."
             },
             {
               "name": "detail-click",
@@ -6112,7 +6133,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>."
+              "description": "Fired when the user clicks on the detail button when type is `Detail`."
             }
           ],
           "superclass": {
@@ -6158,12 +6179,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table.\nIt consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists,\nfor which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively)\nThese options can be used to create sorters for a table.\n\nThe <code>ui5-view-settings-dialog</code> interrupts the current application processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe <code>ui5-view-settings-dialog</code> is modal, which means that user action is required before returning to the parent window is possible.\n\n<h3>Structure</h3>\nA <code>ui5-view-settings-dialog</code> consists of a header, content, and a footer for action buttons.\nThe <code>ui5-view-settings-dialog</code> is usually displayed at the center of the screen.\n\n<h3>Responsive Behavior</h3>\n<code>ui5-view-settings-dialog</code> stretches on full screen on phones.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/ViewSettingsDialog\";</code>",
+          "description": "### Overview\nThe `ui5-view-settings-dialog` component helps the user to sort data within a list or a table.\nIt consists of several lists like `Sort order` which is built-in and `Sort By` and `Filter By` lists,\nfor which you must be provide items(`ui5-sort-item` & `ui5-filter-item` respectively)\nThese options can be used to create sorters for a table.\n\nThe `ui5-view-settings-dialog` interrupts the current application processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe `ui5-view-settings-dialog` is modal, which means that user action is required before returning to the parent window is possible.\n\n### Structure\nA `ui5-view-settings-dialog` consists of a header, content, and a footer for action buttons.\nThe `ui5-view-settings-dialog` is usually displayed at the center of the screen.\n\n### Responsive Behavior\n`ui5-view-settings-dialog` stretches on full screen on phones.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js\";`",
           "name": "ViewSettingsDialog",
           "slots": [
             {
               "name": "sortItems",
-              "description": "Defines the list of items against which the user could sort data.\n<b>Note:</b> If you want to use this slot, you need to import used item: <code>import \"@ui5/webcomponents-fiori/dist/SortItem\";</code>",
+              "description": "Defines the list of items against which the user could sort data.\n\n**Note:** If you want to use this slot, you need to import used item: `import \"@ui5/webcomponents-fiori/dist/SortItem.js\";`",
               "_ui5type": {
                 "text": "Array<SortItem>",
                 "references": [
@@ -6178,7 +6199,7 @@
             },
             {
               "name": "filterItems",
-              "description": "Defines the <code>filterItems</code> list.\n<b>Note:</b> If you want to use this slot, you need to import used item: <code>import \"@ui5/webcomponents-fiori/dist/FilterItem\";</code>",
+              "description": "Defines the `filterItems` list.\n\n**Note:** If you want to use this slot, you need to import used item: `import \"@ui5/webcomponents-fiori/dist/FilterItem.js\";`",
               "_ui5type": {
                 "text": "Array<FilterItem>",
                 "references": [
@@ -6240,7 +6261,7 @@
                   "_ui5privacy": "public"
                 }
               ],
-              "description": "Sets a JavaScript object, as settings to the <code>ui5-view-settings-dialog</code>.\nThis method can be used after the dialog is initially open, as the dialog needs\nto set its initial settings.<br>\nThe <code>ui5-view-settings-dialog</code> throws an event called \"before-open\",\nwhich can be used as a trigger point.<br>\nThe object should have the following format:<br>\n<pre>\n{\nsortOrder: \"Ascending\",\nsortBy: \"Name\",\nfilters: [\n\t{\"Filter 1\": [\"Some filter 1\", \"Some filter 2\"]},\n\t{\"Filter 2\": [\"Some filter 4\"]},\n]\n}\n</pre>",
+              "description": "Sets a JavaScript object, as settings to the `ui5-view-settings-dialog`.\nThis method can be used after the dialog is initially open, as the dialog needs\nto set its initial settings.\nThe `ui5-view-settings-dialog` throws an event called \"before-open\",\nwhich can be used as a trigger point.\nThe object should have the following format:",
               "privacy": "public"
             }
           ],
@@ -6274,7 +6295,7 @@
                   },
                   "name": "sortBy",
                   "_ui5privacy": "public",
-                  "description": "The currently selected <code>ui5-sort-item</code> text attribute."
+                  "description": "The currently selected `ui5-sort-item` text attribute."
                 },
                 {
                   "type": {
@@ -6282,7 +6303,7 @@
                   },
                   "name": "sortByItem",
                   "_ui5privacy": "public",
-                  "description": "The currently selected <code>ui5-sort-item</code>."
+                  "description": "The currently selected `ui5-sort-item`."
                 },
                 {
                   "type": {
@@ -6331,7 +6352,7 @@
                   },
                   "name": "sortBy",
                   "_ui5privacy": "public",
-                  "description": "The currently selected <code>ui5-sort-item</code> text attribute."
+                  "description": "The currently selected `ui5-sort-item` text attribute."
                 },
                 {
                   "type": {
@@ -6339,7 +6360,7 @@
                   },
                   "name": "sortByItem",
                   "_ui5privacy": "public",
-                  "description": "The currently selected <code>ui5-sort-item</code>."
+                  "description": "The currently selected `ui5-sort-item`."
                 },
                 {
                   "type": {
@@ -6365,7 +6386,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. <b>This event does not bubble.</b>"
+              "description": "Fired before the component is opened. **This event does not bubble.**"
             }
           ],
           "superclass": {
@@ -6404,22 +6425,22 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-wizard</code> helps users to complete a complex task by dividing it into sections and guiding them through it.\nIt has two main areas - a navigation area at the top showing the step sequence and a content area below it.\n\n<h3>Structure</h3>\n<h4>Navigation area</h4>\nThe top most area of the <code>ui5-wizard</code> is occupied by the navigation area.\nIt shows the sequence of steps, where the recommended number of steps is between 3 and 8 steps.\n<ul>\n<li> Steps can have different visual representations - numbers or icons.</li>\n<li> Steps might have labels for better readability - titleText and subTitleText.</li>\n<li> Steps are defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.</li>\n</ul>\n\n<b>Note:</b> If no selected step is defined, the first step will be auto selected.\n<br>\n<b>Note:</b> If multiple selected steps are defined, the last step will be selected.\n\n<h3>Keyboard Handling</h3>\nThe user can navigate using the following keyboard shortcuts:\n<br>\n\n<h4>Wizard Progress Navigation</h4>\n<ul>\n\t<li>[LEFT], [DOWN] - Focus moves backward to the WizardProgressNavAnchors.</li>\n\t<li>[UP], [RIGHT] - Focus moves forward to the WizardProgressNavAnchor.</li>\n\t<li>[SPACE] or [ENTER], [RETURN] - Selects an active step</li>\n\t<li>[HOME] or [PAGE UP] - Focus goes to the first step</li>\n\t<li>[END] or [PAGE DOWN] - Focus goes to the last step</li>\n</ul>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n\n<h4>Content</h4>\nThe content occupies the main part of the page. It can hold any type of HTML elements.\nIt's defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.\n\n<h3>Scrolling</h3>\nThe component handles user scrolling by selecting the closest step, based on the current scroll position\nand scrolls to particular place, when the user clicks on the step within the navigation area.\n<br><br>\n\n<b>Important:</b> In order the component's scrolling behaviour to work, it has to be limited from the outside parent element in terms of height.\nThe component or its parent has to be given percentage or absolute height. Otherwise, the component will be scrolled out with the entire page.\n<br><br>\n<b>For example:</b>\n<br><br>\n<code>&lt;ui5-dialog style=\"height: 80%\"&gt;<br></code>\n<code>&#9;&lt;ui5-wizard&gt;&lt;/ui5-wizard&gt;<br></code>\n<code>&lt;/ui5-dialog&gt;</code>\n\n<h4>Moving to next step</h4>\nThe <code>ui5-wizard-step</code> provides the necessary API and it's up to the user of the component to use it to move to the next step.\nYou have to set its <code>selected</code> property (and remove the <code>disabled</code> one if set) to <code>true</code>.\nThe <code>ui5-wizard</code> will automatically scroll to the content of the newly selected step.\n<br><br>\n\nThe Fiori 3 guidelines recommends having a \"nextStep\" button in the content area.\nYou can place a button, or any other type of element to trigger step change, inside the <code>ui5-wizard-step</code>,\nand show/hide it when certain fields are filled or user defined criteria is met.\n\n<h3>Usage</h3>\n<h4>When to use:</h4>\nWhen the user has to accomplish a long or unfamiliar task.\n\n<h4>When not to use:</h4>\nWhen the task has less than 3 steps.\n\n<h3>Responsive Behavior</h3>\nOn small widths the step's titleText, subtitleText and separators in the navigation area shrink and from particular point the steps are grouped together and overlap.\nTapping on them will show a popover to select the step to navigate to. On mobile device, the grouped steps are presented within a dialog.\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/Wizard.js\";</code> (includes &lt;ui5-wizard-step/&gt;)",
+          "description": "### Overview\n\nThe `ui5-wizard` helps users to complete a complex task by dividing it into sections and guiding them through it.\nIt has two main areas - a navigation area at the top showing the step sequence and a content area below it.\n\n### Structure\n#### Navigation area\nThe top most area of the `ui5-wizard` is occupied by the navigation area.\nIt shows the sequence of steps, where the recommended number of steps is between 3 and 8 steps.\n\n-  Steps can have different visual representations - numbers or icons.\n-  Steps might have labels for better readability - titleText and subTitleText.\n-  Steps are defined by using the `ui5-wizard-step` as slotted element within the `ui5-wizard`.\n\n**Note:** If no selected step is defined, the first step will be auto selected.\n\n**Note:** If multiple selected steps are defined, the last step will be selected.\n\n### Keyboard Handling\nThe user can navigate using the following keyboard shortcuts:\n\n#### Wizard Progress Navigation\n\n\t- [LEFT], [DOWN] - Focus moves backward to the WizardProgressNavAnchors.\n\t- [UP], [RIGHT] - Focus moves forward to the WizardProgressNavAnchor.\n\t- [SPACE] or [ENTER], [RETURN] - Selects an active step\n\t- [HOME] or [PAGE UP] - Focus goes to the first step\n\t- [END] or [PAGE DOWN] - Focus goes to the last step\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n#### Content\nThe content occupies the main part of the page. It can hold any type of HTML elements.\nIt's defined by using the `ui5-wizard-step` as slotted element within the `ui5-wizard`.\n\n### Scrolling\nThe component handles user scrolling by selecting the closest step, based on the current scroll position\nand scrolls to particular place, when the user clicks on the step within the navigation area.\n\n**Important:** In order the component's scrolling behaviour to work, it has to be limited from the outside parent element in terms of height.\nThe component or its parent has to be given percentage or absolute height. Otherwise, the component will be scrolled out with the entire page.\n\n**For example:**\n\n```html\n<ui5-dialog style=\"height: 80%\">\n\t<ui5-wizard></ui5-wizard>\n</ui5-dialog>\n```\n\n#### Moving to next step\nThe `ui5-wizard-step` provides the necessary API and it's up to the user of the component to use it to move to the next step.\nYou have to set its `selected` property (and remove the `disabled` one if set) to `true`.\nThe `ui5-wizard` will automatically scroll to the content of the newly selected step.\n\nThe Fiori 3 guidelines recommends having a \"nextStep\" button in the content area.\nYou can place a button, or any other type of element to trigger step change, inside the `ui5-wizard-step`,\nand show/hide it when certain fields are filled or user defined criteria is met.\n\n### Usage\n#### When to use:\nWhen the user has to accomplish a long or unfamiliar task.\n\n#### When not to use:\nWhen the task has less than 3 steps.\n\n### Responsive Behavior\nOn small widths the step's titleText, subtitleText and separators in the navigation area shrink and from particular point the steps are grouped together and overlap.\nTapping on them will show a popover to select the step to navigate to. On mobile device, the grouped steps are presented within a dialog.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/Wizard.js\";` (includes <ui5-wizard-step/>)",
           "name": "Wizard",
           "cssParts": [
             {
-              "description": "Used to style the progress navigator of the <code>ui5-wizard</code>.",
+              "description": "Used to style the progress navigator of the `ui5-wizard`.",
               "name": "navigator"
             },
             {
-              "description": "Used to style a <code>ui5-wizard-step</code> container.",
+              "description": "Used to style a `ui5-wizard-step` container.",
               "name": "step-content"
             }
           ],
           "slots": [
             {
               "name": "default",
-              "description": "Defines the steps.\n<br><br>\n<b>Note:</b> Use the available <code>ui5-wizard-step</code> component.",
+              "description": "Defines the steps.\n\n**Note:** Use the available `ui5-wizard-step` component.",
               "_ui5propertyName": "steps",
               "_ui5type": {
                 "text": "Array<WizardStep>",
@@ -6448,7 +6469,7 @@
                   }
                 ]
               },
-              "description": "Defines how the content of the <code>ui5-wizard</code> would be visualized.",
+              "description": "Defines how the content of the `ui5-wizard` would be visualized.",
               "privacy": "public",
               "default": "\"MultipleSteps\"",
               "_ui5since": "1.14.0",
@@ -6548,7 +6569,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nA component that represents a logical step as part of the <code>ui5-wizard</code>.\nIt is meant to aggregate arbitrary HTML elements that form the content of a single step.\n\n<h3>Structure</h3>\n<ul>\n<li>Each wizard step has arbitrary content.</li>\n<li>Each wizard step might have texts - defined by the <code>titleText</code> and <code>subtitleText</code> properties.</li>\n<li>Each wizard step might have an icon - defined by the <code>icon</code> property.</li>\n<li>Each wizard step might display a number in place of the <code>icon</code>, when it's missing.</li>\n</ul>\n\n<h3>Usage</h3>\nThe <code>ui5-wizard-step</code> component should be used only as slot of the <code>ui5-wizard</code> component\nand should not be used standalone.",
+          "description": "### Overview\n\nA component that represents a logical step as part of the `ui5-wizard`.\nIt is meant to aggregate arbitrary HTML elements that form the content of a single step.\n\n### Structure\n\n- Each wizard step has arbitrary content.\n- Each wizard step might have texts - defined by the `titleText` and `subtitleText` properties.\n- Each wizard step might have an icon - defined by the `icon` property.\n- Each wizard step might display a number in place of the `icon`, when it's missing.\n\n### Usage\nThe `ui5-wizard-step` component should be used only as slot of the `ui5-wizard` component\nand should not be used standalone.",
           "name": "WizardStep",
           "slots": [
             {
@@ -6567,7 +6588,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>titleText</code> of the step.\n<br><br>\n\n<b>Note:</b> The text is displayed in the <code>ui5-wizard</code> navigation header.",
+              "description": "Defines the `titleText` of the step.\n\n**Note:** The text is displayed in the `ui5-wizard` navigation header.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
@@ -6579,7 +6600,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>subtitleText</code> of the step.\n<br><br>\n\n<b>Note:</b> the text is displayed in the <code>ui5-wizard</code> navigation header.",
+              "description": "Defines the `subtitleText` of the step.\n\n**Note:** the text is displayed in the `ui5-wizard` navigation header.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
@@ -6591,7 +6612,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Defines the <code>icon</code> of the step.\n<br><br>\n\n<b>Note:</b> The icon is displayed in the <code>ui5-wizard</code> navigation header.\n<br><br>\n\nThe SAP-icons font provides numerous options.\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>.",
+              "description": "Defines the `icon` of the step.\n\n**Note:** The icon is displayed in the `ui5-wizard` navigation header.\n\nThe SAP-icons font provides numerous options.\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -6602,7 +6623,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the step is <code>disabled</code>. When disabled the step is displayed,\nbut the user can't select the step by clicking or navigate to it with scrolling.\n<br><br>\n\n<b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time.\nIn this case the <code>selected</code> property would take precedence.",
+              "description": "Defines if the step is `disabled`. When disabled the step is displayed,\nbut the user can't select the step by clicking or navigate to it with scrolling.\n\n**Note:** Step can't be `selected` and `disabled` at the same time.\nIn this case the `selected` property would take precedence.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -6613,7 +6634,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the step's <code>selected</code> state - the step that is currently active.\n<br><br>\n\n<b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time.\nIn this case the <code>selected</code> property would take precedence.",
+              "description": "Defines the step's `selected` state - the step that is currently active.\n\n**Note:** Step can't be `selected` and `disabled` at the same time.\nIn this case the `selected` property would take precedence.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -6624,7 +6645,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "When <code>branching</code> is enabled a dashed line would be displayed after the step,\nmeant to indicate that the next step is not yet known and depends on user choice in the current step.\n<br><br>\n\n<b>Note:</b> It is recommended to use <code>branching</code> on the last known step\nand later add new steps when it becomes clear how the wizard flow should continue.",
+              "description": "When `branching` is enabled a dashed line would be displayed after the step,\nmeant to indicate that the next step is not yet known and depends on user choice in the current step.\n\n**Note:** It is recommended to use `branching` on the last known step\nand later add new steps when it becomes clear how the wizard flow should continue.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
