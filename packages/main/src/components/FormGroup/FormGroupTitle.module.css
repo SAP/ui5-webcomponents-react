@@ -1,0 +1,16 @@
+.title {
+  grid-column: 1 / span 12;
+  height: var(--_ui5wcr-FormGroupTitleHeight);
+  line-height: var(--_ui5wcr-FormGroupTitleHeight);
+  font-family: var(--sapFontHeaderFamily);
+  color: var(--sapGroup_TitleTextColor);
+  font-size: var(--sapFontHeader6Size);
+  margin: 0;
+  margin-block-start: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  /*  overwrite h5 styles */
+  font-weight: unset;
+  margin-block-end: unset;
+}
