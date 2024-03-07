@@ -18,11 +18,9 @@ interface TabAttributes {
    *
    * The design is applied to:
    *
-   * *   the component icon
-   * *   the `text` when the component overflows
-   * *   the tab selection line
-   *
-   *
+   * - the component icon
+   * - the `text` when the component overflows
+   * - the tab selection line
    *
    * Available designs are: `"Default"`, `"Neutral"`, `"Positive"`, `"Critical"` and `"Negative"`.
    *
@@ -38,7 +36,9 @@ interface TabAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the icon source URI to be displayed as graphical element within the component. The SAP-icons font provides numerous built-in icons. See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * Defines the icon source URI to be displayed as graphical element within the component.
+   * The SAP-icons font provides numerous built-in icons.
+   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
 
@@ -56,7 +56,11 @@ interface TabAttributes {
 
 interface TabDomRef extends Required<TabAttributes>, Ui5DomRef {
   /**
-   * Returns the DOM reference of the tab that is placed in the header. **Note:** Tabs, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs will return `null`. **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
+   * Returns the DOM reference of the tab that is placed in the header.
+   *
+   * **Note:** Tabs, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs will return `null`.
+   *
+   * **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
    * @returns {ITab | null}
    */
   getTabInStripDomRef: () => ITab | null;
@@ -83,7 +87,9 @@ interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttribu
 }
 
 /**
- * The `Tab` represents a selectable item inside a `TabContainer`. It defines both the item in the tab strip (top part of the `TabContainer`) and the content that is presented to the user once the tab is selected.
+ * The `Tab` represents a selectable item inside a `TabContainer`.
+ * It defines both the item in the tab strip (top part of the `TabContainer`) and the
+ * content that is presented to the user once the tab is selected.
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

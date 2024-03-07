@@ -27,7 +27,8 @@ interface SelectAttributes {
   disabled?: boolean;
 
   /**
-   * Defines a reference (ID or DOM element) of component's menu of options as alternative to define the select's dropdown.
+   * Defines a reference (ID or DOM element) of component's menu of options
+   * as alternative to define the select's dropdown.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
    * @default undefined
@@ -35,18 +36,23 @@ interface SelectAttributes {
   menu?: string;
 
   /**
-   * Determines the name with which the component will be submitted in an HTML form. The value of the component will be the value of the currently selected `Option`.
+   * Determines the name with which the component will be submitted in an HTML form.
+   * The value of the component will be the value of the currently selected `Option`.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the `Select` so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the `Select` so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -59,10 +65,13 @@ interface SelectAttributes {
 
   /**
    * Defines the value of the component:
-   * \- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
-   * \- when set - selects the option with matching `value` property or text content.
    *
-   * **Note:** If the given value does not match any existing option, the first option will get selected.
+   * - when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
+   *
+   * - when set - selects the option with matching `value` property or text content.
+   *
+   * **Note:** If the given value does not match any existing option,
+   * the first option will get selected.
    */
   value?: string;
 
@@ -75,7 +84,8 @@ interface SelectAttributes {
 
 interface SelectDomRef extends Omit<Required<SelectAttributes>, 'menu'>, Ui5DomRef {
   /**
-   * Defines a reference (ID or DOM element) of component's menu of options as alternative to define the select's dropdown.
+   * Defines a reference (ID or DOM element) of component's menu of options
+   * as alternative to define the select's dropdown.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
    */
@@ -103,18 +113,22 @@ interface SelectPropTypes
   /**
    * Defines the component options.
    *
-   * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
+   * **Note:** Only one selected option is allowed.
+   * If more than one option is defined as selected, the last one would be considered as the selected one.
    *
    * **Note:** Use the `Option` component to define the desired options.
    */
   children?: ReactNode | ReactNode[];
 
   /**
-   * Defines the HTML element that will be displayed in the component input part, representing the selected option.
+   * Defines the HTML element that will be displayed in the component input part,
+   * representing the selected option.
    *
-   * **Note:** If not specified and `SelectMenuOption` is used, either the option's `display-text` or its textContent will be displayed.
+   * **Note:** If not specified and `SelectMenuOption` is used,
+   * either the option's `display-text` or its textContent will be displayed.
    *
-   * **Note:** If not specified and `Option` is used, the option's textContent will be displayed.
+   * **Note:** If not specified and `Option` is used,
+   * the option's textContent will be displayed.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="label"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -129,9 +143,11 @@ interface SelectPropTypes
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
-   * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   * **Note:** If the component has `suggestionItems`,
+   * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -151,7 +167,8 @@ interface SelectPropTypes
   onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 
   /**
-   * Fired when the user navigates through the options, but the selection is not finalized, or when pressing the ESC key to revert the current selection.
+   * Fired when the user navigates through the options, but the selection is not finalized,
+   * or when pressing the ESC key to revert the current selection.
    */
   onLiveChange?: (event: Ui5CustomEvent<SelectDomRef, SelectLiveChangeEventDetail>) => void;
 
@@ -166,22 +183,32 @@ interface SelectPropTypes
  *
  * ### Usage
  *
- * There are two main usages of the `ui5-select>`. 1. With Option (`Option`) web component:
- * The available options of the Select are defined by using the Option component. The Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.
+ * There are two main usages of the `ui5-select>`.
  *
- * 2\. With SelectMenu (`SelectMenu`) and SelectMenuOption (`SelectMenuOption`) web components:
- * The SelectMenu can be used as alternative to define the Select's dropdown and can be used via the `menu` property of the Select to reference SelectMenu by its ID. The component gives the possibility to customize the Select's dropdown by slotting entirely custom options (via the SelectMenuOption component) and adding custom styles. **Note:** SelectMenu is a popover and placing it top-level in the HTML page is recommended, because some page styles (for example transitions) can misplace the SelectMenu.
+ * 1. With Option (`Option`) web component:
+ *
+ * The available options of the Select are defined by using the Option component.
+ * The Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.
+ *
+ * 2. With SelectMenu (`SelectMenu`) and SelectMenuOption (`SelectMenuOption`) web components:
+ *
+ * The SelectMenu can be used as alternative to define the Select's dropdown
+ * and can be used via the `menu` property of the Select to reference SelectMenu by its ID.
+ * The component gives the possibility to customize the Select's dropdown
+ * by slotting entirely custom options (via the SelectMenuOption component) and adding custom styles.
+ *
+ * **Note:** SelectMenu is a popover and placing it top-level in the HTML page is recommended,
+ * because some page styles (for example transitions) can misplace the SelectMenu.
  *
  * ### Keyboard Handling
- *
  * The `Select` provides advanced keyboard handling.
  *
- * *   \[F4, ALT+UP, ALT+DOWN, SPACE, ENTER\] - Opens/closes the drop-down.
- * *   \[UP, DOWN\] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.
- * *   \[SPACE, ENTER\] - If the drop-down is opened - selects the focused option.
- * *   \[ESC\] - Closes the drop-down without changing the selection.
- * *   \[HOME\] - Navigates to first option
- * *   \[END\] - Navigates to the last option
+ * - [F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - Opens/closes the drop-down.
+ * - [UP, DOWN] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.
+ * - [SPACE, ENTER] - If the drop-down is opened - selects the focused option.
+ * - [ESC] - Closes the drop-down without changing the selection.
+ * - [HOME] - Navigates to first option
+ * - [END] - Navigates to the last option
  *
  *
  *

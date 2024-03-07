@@ -39,7 +39,8 @@ interface TreeAttributes {
   headerText?: string;
 
   /**
-   * Defines the mode of the component. Since the tree uses a `List` to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.
+   * Defines the mode of the component. Since the tree uses a `List` to display its structure,
+   * the tree modes are exactly the same as the list modes, and are all applicable.
    * @default "None"
    */
   mode?: ListMode | keyof typeof ListMode;
@@ -83,7 +84,8 @@ interface TreePropTypes
   /**
    * Defines the component header.
    *
-   * **Note:** When the `header` slot is set, the `headerText` property is ignored.
+   * **Note:** When the `header` slot is set, the
+   * `headerText` property is ignored.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="header"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -100,7 +102,8 @@ interface TreePropTypes
   /**
    * Fired when the Delete button of any tree item is pressed.
    *
-   * **Note:** A Delete button is displayed on each item, when the component `mode` property is set to `Delete`.
+   * **Note:** A Delete button is displayed on each item,
+   * when the component `mode` property is set to `Delete`.
    */
   onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, TreeItemDeleteEventDetail>) => void;
 
@@ -115,12 +118,17 @@ interface TreePropTypes
   onItemMouseover?: (event: Ui5CustomEvent<TreeDomRef, TreeItemMouseoverEventDetail>) => void;
 
   /**
-   * Fired when a tree item is expanded or collapsed. _Note:_ You can call `preventDefault()` on the event object to suppress the event, if needed. This may be handy for example if you want to dynamically load tree items upon the user expanding a node. Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
+   * Fired when a tree item is expanded or collapsed.
+   *
+   * **Note:** You can call `preventDefault()` on the event object to suppress the event, if needed.
+   * This may be handy for example if you want to dynamically load tree items upon the user expanding a node.
+   * Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    */
   onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
 
   /**
-   * Fired when selection is changed by user interaction in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
+   * Fired when selection is changed by user interaction
+   * in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<TreeDomRef, TreeSelectionChangeEventDetail>) => void;
 }
@@ -132,28 +140,30 @@ interface TreePropTypes
  *
  * #### When to use:
  *
- * *   To display hierarchically structured items.
- * *   To select one or more items out of a set of hierarchically structured items.
+ * - To display hierarchically structured items.
+ * - To select one or more items out of a set of hierarchically structured items.
  *
  * #### When not to use:
  *
- * *   To display items not hierarchically structured. In this case, use the List component.
- * *   To select one item from a very small number of non-hierarchical items. Select or ComboBox might be more appropriate.
- * *   The hierarchy turns out to have only two levels. In this case, use List with group items.
+ * - To display items not hierarchically structured. In this case, use the List component.
+ * - To select one item from a very small number of non-hierarchical items. Select or ComboBox might be more appropriate.
+ * - The hierarchy turns out to have only two levels. In this case, use List with group items.
  *
  * ### Keyboard Handling
  *
- * The `Tree` provides advanced keyboard handling. The user can use the following keyboard shortcuts in order to navigate trough the tree:
+ * The `Tree` provides advanced keyboard handling.
+ * The user can use the following keyboard shortcuts in order to navigate trough the tree:
  *
- * *   \[UP/DOWN\] - Navigates up and down the tree items that are currently visible.
- * *   \[RIGHT\] - Drills down the tree by expanding the tree nodes.
- * *   \[LEFT\] - Goes up the tree and collapses the tree nodes.
+ * - [UP/DOWN] - Navigates up and down the tree items that are currently visible.
+ * - [RIGHT] - Drills down the tree by expanding the tree nodes.
+ * - [LEFT] - Goes up the tree and collapses the tree nodes.
  *
+ * The user can use the following keyboard shortcuts to perform selection,
+ * when the `mode` property is in use:
  *
- * The user can use the following keyboard shortcuts to perform selection, when the `mode` property is in use:
+ * - [SPACE] - Selects the currently focused item upon keyup.
+ * - [ENTER]  - Selects the currently focused item upon keydown.
  *
- * *   \[SPACE\] - Selects the currently focused item upon keyup.
- * *   \[ENTER\] - Selects the currently focused item upon keydown.
  *
  *
  * `import "@ui5/webcomponents/dist/TreeItem.js";`

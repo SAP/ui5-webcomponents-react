@@ -19,7 +19,7 @@ interface ShellBarItemAttributes {
   /**
    * Defines the item text.
    *
-   * **Note:** The text is only displayed inside the overflow popover list view.
+   *   **Note:** The text is only displayed inside the overflow popover list view.
    */
   text?: string;
 }
@@ -36,7 +36,10 @@ interface ShellBarItemPropTypes
 }
 
 /**
- * The `ShellBarItem` represents a custom item, that might be added to the `ShellBar`.
+ * The `ShellBarItem` represents a custom item, that
+ * might be added to the `ShellBar`.
+ *
+ *
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

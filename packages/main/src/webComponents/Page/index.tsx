@@ -16,7 +16,8 @@ interface PageAttributes {
   backgroundDesign?: PageBackgroundDesign | keyof typeof PageBackgroundDesign;
 
   /**
-   * Disables vertical scrolling of page content. If set to true, there will be no vertical scrolling at all.
+   * Disables vertical scrolling of page content.
+   * If set to true, there will be no vertical scrolling at all.
    * @default false
    */
   disableScrolling?: boolean;
@@ -70,21 +71,23 @@ interface PagePropTypes
 }
 
 /**
- * The `Page` is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer.
- *
+ * The `Page` is a container component that holds one whole screen of an application.
+ * The page has three distinct areas that can hold content - a header, content area and a footer.
  * ### Structure
- *
  * #### Header
- *
  * The top most area of the page is occupied by the header. The standard header includes a navigation button and a title.
- *
  * #### Content
- *
- * The content occupies the main part of the page. Only the content area is scrollable by default. This can be prevented by setting `enableScrolling` to `false`.
- *
+ * The content occupies the main part of the page. Only the content area is scrollable by default.
+ * This can be prevented by setting  `enableScrolling` to `false`.
  * #### Footer
+ * The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.
+ * This is enabled with the `floatingFooter` property.
  *
- * The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the `floatingFooter` property. **Note:** `Page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure that there is enough space for the `Page` to be rendered. **Note:** In order for the `Page` to be displayed, the parent element should have fixed height.
+ * **Note:** `Page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure
+ * that there is enough space for the `Page` to be rendered.
+ * **Note:** In order for the `Page` to be displayed, the parent element should have fixed height.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

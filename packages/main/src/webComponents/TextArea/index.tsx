@@ -45,9 +45,12 @@ interface TextAreaAttributes {
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
@@ -59,7 +62,8 @@ interface TextAreaAttributes {
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -75,16 +79,21 @@ interface TextAreaAttributes {
    *
    * **Notes:**
    *
-   * *   If the `growing` property is enabled, this property defines the minimum rows to be displayed in the textarea.
-   * *   The CSS `height` property wins over the `rows` property, if both are set.
+   * - If the `growing` property is enabled, this property defines the minimum rows to be displayed
+   * in the textarea.
+   * - The CSS `height` property wins over the `rows` property, if both are set.
    * @default 0
    */
   rows?: number;
 
   /**
-   * Determines whether the characters exceeding the maximum allowed character count are visible in the component.
+   * Determines whether the characters exceeding the maximum allowed character count are visible
+   * in the component.
    *
-   * If set to `false`, the user is not allowed to enter more characters than what is set in the `maxlength` property. If set to `true` the characters exceeding the `maxlength` value are selected on paste and the counter below the component displays their number.
+   * If set to `false`, the user is not allowed to enter more characters than what is set in the
+   * `maxlength` property.
+   * If set to `true` the characters exceeding the `maxlength` value are selected on
+   * paste and the counter below the component displays their number.
    * @default false
    */
   showExceededText?: boolean;
@@ -97,7 +106,9 @@ interface TextAreaAttributes {
   /**
    * Defines the value state of the component.
    *
-   * **Note:** If `maxlength` property is set, the component turns into "Warning" state once the characters exceeds the limit. In this case, only the "Error" state is considered and can be applied.
+   * **Note:** If `maxlength` property is set,
+   * the component turns into "Warning" state once the characters exceeds the limit.
+   * In this case, only the "Error" state is considered and can be applied.
    * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
@@ -107,13 +118,17 @@ interface TextAreaDomRef extends Required<TextAreaAttributes>, Ui5DomRef {}
 
 interface TextAreaPropTypes
   extends TextAreaAttributes,
-    Omit<CommonProps, keyof TextAreaAttributes | 'valueStateMessage' | 'onChange' | 'onInput'> {
+    Omit<
+      CommonProps,
+      keyof TextAreaAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onScroll' | 'onSelect'
+    > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
-   * **Note:** The `valueStateMessage` would be displayed if the component has `valueState` of type `Information`, `Warning` or `Error`.
+   * **Note:** The `valueStateMessage` would be displayed if the component has
+   * `valueState` of type `Information`, `Warning` or `Error`.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -128,15 +143,29 @@ interface TextAreaPropTypes
   onChange?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 
   /**
-   * Fired when the value of the component changes at each keystroke or when something is pasted.
+   * Fired when the value of the component changes at each keystroke or when
+   * something is pasted.
    */
   onInput?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
+
+  /**
+   * Fired when textarea is scrolled.
+   */
+  onScroll?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
+
+  /**
+   * Fired when some text has been selected.
+   */
+  onSelect?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 }
 
 /**
  * The `TextArea` component is used to enter multiple lines of text.
  *
- * When empty, it can hold a placeholder similar to a `Input`. You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
+ * When empty, it can hold a placeholder similar to a `Input`.
+ * You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
@@ -155,7 +184,7 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
   ],
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],
-  ['change', 'input'],
+  ['change', 'input', 'scroll', 'select'],
   () => import('@ui5/webcomponents/dist/TextArea.js')
 );
 

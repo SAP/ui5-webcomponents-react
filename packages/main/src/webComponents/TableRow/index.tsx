@@ -20,7 +20,10 @@ interface TableRowAttributes {
   selected?: boolean;
 
   /**
-   * Defines the visual indication and behavior of the component. **Note:** When set to `Active`, the item will provide visual response upon press, while with type `Inactive`\-will not.
+   * Defines the visual indication and behavior of the component.
+   *
+   * **Note:** When set to `Active`, the item will provide visual response upon press,
+   * while with type `Inactive`-will not.
    * @default "Inactive"
    */
   type?: TableRowType | keyof typeof TableRowType;

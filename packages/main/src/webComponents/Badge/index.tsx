@@ -9,9 +9,11 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface BadgeAttributes {
   /**
-   * Defines the color scheme of the component. There are 10 predefined schemes. To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   * Defines the color scheme of the component.
+   * There are 10 predefined schemes.
+   * To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
    *
-   * **Note:** Color schemes have no visual representation in High Contrast Black (sap\_belize\_hcb) theme.
+   * **Note:** Color schemes have no visual representation in High Contrast Black (sap_belize_hcb) theme.
    * @default "1"
    */
   colorScheme?: string;
@@ -30,14 +32,18 @@ interface BadgeAttributes {
 
   /**
    * Defines if the component is interactive (focusable and pressable).
-   * **Note:** The badge cannot be `interactive` when `design` property is `BadgeDesign.Set3`
+   *
+   * **Note:** The badge cannot be `interactive`
+   * when `design` property is `BadgeDesign.Set3`
    * @default false
    */
   interactive?: boolean;
 
   /**
    * Defines how the text of a component will be displayed when there is not enough space.
-   * **Note:** For option "Normal" the text will wrap and the words will not be broken based on hyphenation.
+   *
+   * **Note:** For option "Normal" the text will wrap and the
+   * words will not be broken based on hyphenation.
    * @default "None"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
@@ -50,6 +56,7 @@ interface BadgePropTypes
     Omit<CommonProps, keyof BadgeAttributes | 'children' | 'icon' | 'onClick'> {
   /**
    * Defines the text of the component.
+   *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
@@ -65,18 +72,25 @@ interface BadgePropTypes
    */
   icon?: UI5WCSlotsNode;
   /**
-   * Fired when the user clicks on an interactive badge. **Note:** The event will be fired if the `interactive` property is `true`
+   * Fired when the user clicks on an interactive badge.
+   *
+   * **Note:** The event will be fired if the `interactive` property is `true`
    */
   onClick?: (event: Ui5CustomEvent<BadgeDomRef>) => void;
 }
 
 /**
- * The `Badge` is a component which serves the purpose to attract the user attention to some piece of information (state, quantity, condition, etc.). It can contain icon and text information, and its design can be chosen from specific design types.
+ * The `Badge` is a component which serves
+ * the purpose to attract the user attention to some piece
+ * of information (state, quantity, condition, etc.).
+ * It can contain icon and text information, and its design can be chosen from specific design types.
  *
  * ### Usage Guidelines
  *
- * *   If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.
- * *   Colors can be semantic or not semantic.
+ * - If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.
+ * - Colors can be semantic or not semantic.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

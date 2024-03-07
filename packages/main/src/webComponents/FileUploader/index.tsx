@@ -38,9 +38,12 @@ interface FileUploaderAttributes {
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
@@ -73,6 +76,7 @@ interface FileUploaderPropTypes
     Omit<CommonProps, keyof FileUploaderAttributes | 'children' | 'valueStateMessage' | 'onChange'> {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
+   *
    * **Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.
    * Also it is not recommended to use any non-interactable components, as it may lead to poor accessibility experience.
    */
@@ -82,7 +86,9 @@ interface FileUploaderPropTypes
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -92,15 +98,26 @@ interface FileUploaderPropTypes
    */
   valueStateMessage?: UI5WCSlotsNode;
   /**
-   * Event is fired when the value of the file path has been changed. **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
+   * Event is fired when the value of the file path has been changed.
+   *
+   * **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
   onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderChangeEventDetail>) => void;
 }
 
 /**
- * The `FileUploader` opens a file explorer dialog and enables users to upload files. The component consists of input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot. Furthermore, you can set the property "hideInput" to "true" to hide the input field.
- * To get all selected files, you can simply use the read-only "files" property. To restrict the types of files the user can select, you can use the "accept" property.
- * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties. For the `FileUploader`
+ * The `FileUploader` opens a file explorer dialog and enables users to upload files.
+ * The component consists of input field, but you can provide an HTML element by your choice
+ * to trigger the file upload, by using the default slot.
+ * Furthermore, you can set the property "hideInput" to "true" to hide the input field.
+ *
+ * To get all selected files, you can simply use the read-only "files" property.
+ * To restrict the types of files the user can select, you can use the "accept" property.
+ *
+ * And, similar to all input based components, the FileUploader supports "valueState", "placeholder", "name", and "disabled" properties.
+ *
+ * For the `FileUploader`
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

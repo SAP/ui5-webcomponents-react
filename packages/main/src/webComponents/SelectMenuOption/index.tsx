@@ -9,7 +9,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface SelectMenuOptionAttributes {
   /**
-   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the component.
+   *
+   * **Note**: If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
 
@@ -22,7 +24,8 @@ interface SelectMenuOptionAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the text, displayed inside the `Select` input filed when the option gets selected.
+   * Defines the text, displayed inside the `Select` input filed
+   * when the option gets selected.
    */
   displayText?: string;
 
@@ -40,6 +43,11 @@ interface SelectMenuOptionAttributes {
   selected?: boolean;
 
   /**
+   * Defines the text of the tooltip that would be displayed for the list item.
+   */
+  tooltip?: string;
+
+  /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Active"
    * @deprecated true
@@ -47,7 +55,8 @@ interface SelectMenuOptionAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 
   /**
-   * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
+   * Defines the value of the `Select` inside an HTML Form element when this component is selected.
+   * For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
 }
@@ -94,11 +103,12 @@ interface SelectMenuOptionPropTypes
  *
  * For the `SelectMenuOption`
  *
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['accessibleName', 'displayText', 'type', 'value'],
+  ['accessibleName', 'displayText', 'tooltip', 'type', 'value'],
   ['disabled', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

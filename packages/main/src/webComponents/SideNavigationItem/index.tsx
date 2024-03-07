@@ -7,7 +7,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface SideNavigationItemAttributes {
   /**
-   * Defines whether the component is disabled. A disabled component can't be pressed or focused, and it is not in the tab chain.
+   * Defines whether the component is disabled.
+   * A disabled component can't be pressed or
+   * focused, and it is not in the tab chain.
    * @default false
    */
   disabled?: boolean;
@@ -19,7 +21,10 @@ interface SideNavigationItemAttributes {
   expanded?: boolean;
 
   /**
-   * Defines the link target URI. Supports standard hyperlink behavior. If a JavaScript action should be triggered, this should not be set, but instead an event handler for the `click` event should be registered.
+   * Defines the link target URI. Supports standard hyperlink behavior.
+   * If a JavaScript action should be triggered,
+   * this should not be set, but instead an event handler
+   * for the `click` event should be registered.
    */
   href?: string;
 
@@ -27,6 +32,7 @@ interface SideNavigationItemAttributes {
    * Defines the icon of the item.
    *
    * The SAP-icons font provides numerous options.
+   *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
@@ -42,11 +48,11 @@ interface SideNavigationItemAttributes {
    *
    * **Notes:**
    *
-   * *   `_self`
-   * *   `_top`
-   * *   `_blank`
-   * *   `_parent`
-   * *   `_search`
+   * - `_self`
+   * - `_top`
+   * - `_blank`
+   * - `_parent`
+   * - `_search`
    *
    * **This property must only be used when the `href` property is set.**
    */
@@ -58,7 +64,9 @@ interface SideNavigationItemAttributes {
   text?: string;
 
   /**
-   * Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present). If set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event. By default, only clicking the arrow icon will toggle the sub items.
+   * Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).
+   * If set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.
+   * By default, only clicking the arrow icon will toggle the sub items.
    * @default false
    */
   wholeItemToggleable?: boolean;
@@ -74,13 +82,17 @@ interface SideNavigationItemPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the component is activated either with a click/tap or by using the Enter or Space key.
+   * Fired when the component is activated either with a
+   * click/tap or by using the Enter or Space key.
    */
   onClick?: (event: Ui5CustomEvent<SideNavigationItemDomRef>) => void;
 }
 
 /**
- * The `SideNavigationItem` is used within `SideNavigation` only. Via the `SideNavigationItem` you control the content of the `SideNavigation`.
+ * The `SideNavigationItem` is used within `SideNavigation` only.
+ * Via the `SideNavigationItem` you control the content of the `SideNavigation`.
+ *
+ *
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

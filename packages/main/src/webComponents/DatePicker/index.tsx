@@ -36,40 +36,51 @@ interface DatePickerAttributes {
   /**
    * Defines the visibility of the week numbers column.
    *
-   * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * **Note:** For calendars other than Gregorian,
+   * the week numbers are not displayed regardless of what is set.
    * @default false
    */
   hideWeekNumbers?: boolean;
 
   /**
-   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * Determines the maximum date available for selection.
+   *
+   * **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
 
   /**
-   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * Determines the minimum date available for selection.
+   *
+   * **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
 
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
   /**
-   * Defines a short hint, intended to aid the user with data entry when the component has no value.
+   * Defines a short hint, intended to aid the user with data entry when the
+   * component has no value.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
+   * Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    * @default undefined
    */
   placeholder?: string | undefined;
 
   /**
-   * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.
+   * Sets a calendar type used for display.
+   * If not set, the calendar type of the global configuration is used.
    * @default undefined
    */
   primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
@@ -87,7 +98,8 @@ interface DatePickerAttributes {
   required?: boolean;
 
   /**
-   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   * Defines the secondary calendar type.
+   * If not set, the calendar will only show the primary calendar type.
    * @default undefined
    */
   secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
@@ -117,7 +129,8 @@ interface DatePickerDomRef extends Required<DatePickerAttributes>, Ui5DomRef {
   readonly dateValue: Date | null;
 
   /**
-   * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
+   * Formats a Java Script date object into a string representing a locale date
+   * according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    * @returns {string} - The date as string
    */
@@ -160,7 +173,9 @@ interface DatePickerPropTypes
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -180,63 +195,83 @@ interface DatePickerPropTypes
   onInput?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerInputEventDetail>) => void;
 
   /**
-   * Fired before the value state of the component is updated internally. The event is preventable, meaning that if it's default action is prevented, the component will not update the value state.
+   * Fired before the value state of the component is updated internally.
+   * The event is preventable, meaning that if it's default action is
+   * prevented, the component will not update the value state.
    */
   onValueStateChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }
 
 /**
- * The `DatePicker` component provides an input field with assigned calendar which opens on user action. The `DatePicker` allows users to select a localized date using touch, mouse, or keyboard input. It consists of two parts: the date input field and the date picker.
+ * The `DatePicker` component provides an input field with assigned calendar which opens on user action.
+ * The `DatePicker` allows users to select a localized date using touch,
+ * mouse, or keyboard input. It consists of two parts: the date input field and the
+ * date picker.
  *
  * ### Usage
  *
  * The user can enter a date by:
  *
- * *   Using the calendar that opens in a popup
- * *   Typing it in directly in the input field
+ * - Using the calendar that opens in a popup
+ * - Typing it in directly in the input field
  *
- *
- *
- * When the user makes an entry and presses the enter key, the calendar shows the corresponding date. When the user directly triggers the calendar display, the actual date is displayed.
+ * When the user makes an entry and presses the enter key, the calendar shows the corresponding date.
+ * When the user directly triggers the calendar display, the actual date is displayed.
  *
  * ### Formatting
  *
- * If a date is entered by typing it into the input field, it must fit to the used date format.
+ * If a date is entered by typing it into
+ * the input field, it must fit to the used date format.
  *
- * Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see [UTS #35: Unicode Locale Data Markup Language](http://unicode.org/reports/tr35/#Date_Field_Symbol_Table).
+ * Supported format options are pattern-based on Unicode LDML Date Format notation.
+ * For more information, see [UTS #35: Unicode Locale Data Markup Language](http://unicode.org/reports/tr35/#Date_Field_Symbol_Table).
  *
- * For example, if the `format-pattern` is "yyyy-MM-dd", a valid value string is "2015-07-30" and the same is displayed in the input.
+ * For example, if the `format-pattern` is "yyyy-MM-dd",
+ * a valid value string is "2015-07-30" and the same is displayed in the input.
  *
  * ### Keyboard Handling
+ * The `DatePicker` provides advanced keyboard handling.
+ * If the `DatePicker` is focused,
+ * you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys.
+ * Once the drop-down is opened, you can use the `UP`, `DOWN`, `LEFT`, `RIGHT` arrow keys
+ * to navigate through the dates and select one by pressing the `Space` or `Enter` keys. Moreover you can
+ * use TAB to reach the buttons for changing month and year.
  *
- * The `DatePicker` provides advanced keyboard handling. If the `DatePicker` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP`, `DOWN`, `LEFT`, `RIGHT` arrow keys to navigate through the dates and select one by pressing the `Space` or `Enter` keys. Moreover you can use TAB to reach the buttons for changing month and year.
- * If the `DatePicker` input field is focused and its corresponding picker dialog is not opened, then users can increment or decrement the date referenced by `dateValue` property by using the following shortcuts:
+ * If the `DatePicker` input field is focused and its corresponding picker dialog is not opened,
+ * then users can increment or decrement the date referenced by `dateValue` property
+ * by using the following shortcuts:
  *
- * *   \[PAGEDOWN\] - Decrements the corresponding day of the month by one
- * *   \[SHIFT\] + \[PAGEDOWN\] - Decrements the corresponding month by one
- * *   \[SHIFT\] + \[CTRL\] + \[PAGEDOWN\] - Decrements the corresponding year by one
- * *   \[PAGEUP\] - Increments the corresponding day of the month by one
- * *   \[SHIFT\] + \[PAGEUP\] - Increments the corresponding month by one
- * *   \[SHIFT\] + \[CTRL\] + \[PAGEUP\] - Increments the corresponding year by one
+ * - [PAGEDOWN] - Decrements the corresponding day of the month by one
+ * - [SHIFT] + [PAGEDOWN] - Decrements the corresponding month by one
+ * - [SHIFT] + [CTRL] + [PAGEDOWN] - Decrements the corresponding year by one
+ * - [PAGEUP] - Increments the corresponding day of the month by one
+ * - [SHIFT] + [PAGEUP] - Increments the corresponding month by one
+ * - [SHIFT] + [CTRL] + [PAGEUP] - Increments the corresponding year by one
  *
  * ### Calendar types
- *
- * The component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian. By default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar, you need to set the `primaryCalendarType` property and import one or more of the following modules:
+ * The component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian.
+ * By default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar,
+ * you need to set the `primaryCalendarType` property and import one or more of the following modules:
  *
  * `import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";`
+ *
  * `import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";`
+ *
  * `import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";`
+ *
  * `import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";`
  *
  * Or, you can use the global configuration and set the `calendarType` key:
  *
- * ```
+ * ```html
  * <script data-id="sap-ui-config" type="application/json">
- * {
- * "calendarType": "Japanese"
- * }
- * </script>
+ * 	{
+ * 		"calendarType": "Japanese"
+ * 	}
+ * <script>
  * ```
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

@@ -12,12 +12,16 @@ interface MenuItemAttributes {
   accessibleName?: string;
 
   /**
-   * Defines the `additionalText`, displayed in the end of the menu item. **Note:** The additional text would not be displayed if the item has a submenu.
+   * Defines the `additionalText`, displayed in the end of the menu item.
+   *
+   * **Note:** The additional text would not be displayed if the item has a submenu.
    */
   additionalText?: string;
 
   /**
-   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover. Note: If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
+   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.
+   *
+   * **Note:** If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
    * @default false
    */
   busy?: boolean;
@@ -37,9 +41,11 @@ interface MenuItemAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the icon to be displayed as graphical element within the component. The SAP-icons font provides numerous options.
+   * Defines the icon to be displayed as graphical element within the component.
+   * The SAP-icons font provides numerous options.
    *
    * **Example:**
+   *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
@@ -54,6 +60,11 @@ interface MenuItemAttributes {
    * Defines the text of the tree item.
    */
   text?: string;
+
+  /**
+   * Defines the text of the tooltip for the menu item.
+   */
+  tooltip?: string;
 }
 
 interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {}
@@ -66,18 +77,23 @@ interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof 
 }
 
 /**
- * `MenuItem` is the item to use inside a `Menu`. An arbitrary hierarchy structure can be represented by recursively nesting menu items.
+ * `MenuItem` is the item to use inside a `Menu`.
+ * An arbitrary hierarchy structure can be represented by recursively nesting menu items.
  *
  * ### Usage
  *
- * `MenuItem` is an abstract element, representing a node in a `Menu`. The menu itself is rendered as a list, and each `MenuItem` is represented by a list item (`StandardListItem`) in that list. Therefore, you should only use `MenuItem` directly in your apps. The `StandardListItem` list item is internal for the list, and not intended for public use.
+ * `MenuItem` is an abstract element, representing a node in a `Menu`. The menu itself is rendered as a list,
+ * and each `MenuItem` is represented by a list item (`StandardListItem`) in that list. Therefore, you should only use
+ * `MenuItem` directly in your apps. The `StandardListItem` list item is internal for the list, and not intended for public use.
+ *
+ *
  *
  * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text'],
+  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text', 'tooltip'],
   ['busy', 'disabled', 'startsSection'],
   [],
   [],

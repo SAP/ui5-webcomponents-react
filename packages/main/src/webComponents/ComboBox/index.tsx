@@ -46,14 +46,16 @@ interface ComboBoxAttributes {
   noTypeahead?: boolean;
 
   /**
-   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * Defines a short hint intended to aid the user with data entry when the
+   * component has no value.
    */
   placeholder?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -116,7 +118,9 @@ interface ComboBoxPropTypes
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the `ComboBox` is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the `ComboBox` is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -144,29 +148,32 @@ interface ComboBoxPropTypes
 }
 
 /**
- * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options. It is commonly used to enable users to select an option from a predefined list.
+ * The `ComboBox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.
+ *
+ * It is commonly used to enable users to select an option from a predefined list.
  *
  * ### Structure
- *
  * The `ComboBox` consists of the following elements:
  *
- * *   Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.
- * *   Drop-down arrow - expands\\collapses the option list.
- * *   Option list - the list of available options.
+ * -  Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.
+ * -  Drop-down arrow - expands\collapses the option list.
+ * -  Option list - the list of available options.
  *
  * ### Keyboard Handling
  *
  * The `ComboBox` provides advanced keyboard handling.
  *
- * *   \[F4\], \[ALT\]+\[UP\], or \[ALT\]+\[DOWN\] - Toggles the picker.
- * *   \[ESC\] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.
- * *   \[ENTER\] or \[RETURN\] - If picker is open, takes over the currently selected item and closes it.
- * *   \[DOWN\] - Selects the next matching item in the picker.
- * *   \[UP\] - Selects the previous matching item in the picker.
- * *   \[PAGEDOWN\] - Moves selection down by page size (10 items by default).
- * *   \[PAGEUP\] - Moves selection up by page size (10 items by default).
- * *   \[HOME\] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.
- * *   \[END\] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.
+ * - [F4], [ALT]+[UP], or [ALT]+[DOWN] - Toggles the picker.
+ * - [ESC] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.
+ * - [ENTER] or [RETURN] - If picker is open, takes over the currently selected item and closes it.
+ * - [DOWN] - Selects the next matching item in the picker.
+ * - [UP] - Selects the previous matching item in the picker.
+ * - [PAGEDOWN] - Moves selection down by page size (10 items by default).
+ * - [PAGEUP] - Moves selection up by page size (10 items by default).
+ * - [HOME] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.
+ * - [END] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

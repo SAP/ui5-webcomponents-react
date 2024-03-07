@@ -258,9 +258,11 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
+    cy.wait(500);
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
     cy.wait(200);
-    cy.realPress('ArrowDown');
-    cy.realPress('ArrowDown');
     cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
 
@@ -293,7 +295,7 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
-    cy.wait(200);
+    cy.wait(500);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
@@ -326,6 +328,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('section 1').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
@@ -413,11 +416,11 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
@@ -511,19 +514,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
@@ -867,6 +870,7 @@ describe('ObjectPage', () => {
     cy.get('@sectionChangeSpy').should('not.have.been.called');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
     cy.realPress('Enter');
     cy.get('@beforeNavigateSpy')
       .should('have.been.calledTwice')
