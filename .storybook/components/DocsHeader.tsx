@@ -45,15 +45,16 @@ const Links = () => {
 interface InfoTableProps {
   since?: string;
   subComponents?: string[];
+  mergeSubComponents?: boolean;
 }
 
-export const InfoTable = ({ since, subComponents }: InfoTableProps) => {
+export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
   const context = useContext(DocsContext);
   const groups = context.componentStories().at(0).kind.split('/');
   const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
 
   const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''));
-  const subComps = subComponents ?? wcSubComponents;
+  const subComps = mergeSubComponents ? [...subComponents, ...wcSubComponents] : subComponents ?? wcSubComponents;
 
   const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
 
@@ -120,7 +121,7 @@ export const InfoTable = ({ since, subComponents }: InfoTableProps) => {
   );
 };
 
-export const DocsHeader = ({ since, subComponents }: InfoTableProps) => {
+export const DocsHeader = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
@@ -129,7 +130,7 @@ export const DocsHeader = ({ since, subComponents }: InfoTableProps) => {
         <Links />
       </FlexBox>
       <Subtitle />
-      <InfoTable since={since} subComponents={subComponents} />
+      <InfoTable since={since} subComponents={subComponents} mergeSubComponents />
       <TableOfContent />
       <Description />
     </ThemeProvider>

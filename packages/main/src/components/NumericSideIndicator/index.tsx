@@ -28,7 +28,7 @@ export interface NumericSideIndicatorPropTypes extends CommonProps {
 }
 
 /**
- * Holds a set of side indicator attributes used in the NumericHeader component.
+ * Holds a set of side indicator attributes used in the AnalyticalCardHeader component.
  */
 export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndicatorPropTypes>((props, ref) => {
   const { number, state, titleText, unit, className, ...rest } = props;
