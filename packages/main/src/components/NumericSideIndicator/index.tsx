@@ -1,12 +1,12 @@
 'use client';
 
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import { ValueColor } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { Text } from '../Text/index.js';
-import { NumericSideIndicatorStyles } from './NumericSideIndicator.jss.js';
+import { classNames, styleData } from './NumericSideIndicator.module.css.js';
 
 export interface NumericSideIndicatorPropTypes extends CommonProps {
   /**
@@ -27,21 +27,20 @@ export interface NumericSideIndicatorPropTypes extends CommonProps {
   unit?: string;
 }
 
-const useStyles = createUseStyles(NumericSideIndicatorStyles, { name: 'NumericSideIndicator' });
-
 /**
- * Holds a set of side indicator attributes used in the NumericHeader component.
+ * Holds a set of side indicator attributes used in the AnalyticalCardHeader component.
  */
 export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndicatorPropTypes>((props, ref) => {
   const { number, state, titleText, unit, className, ...rest } = props;
-  const classes = useStyles();
+
+  useStylesheet(styleData, NumericSideIndicator.displayName);
 
   return (
-    <div ref={ref} className={clsx(classes.numericSideIndicator, className)} {...rest}>
-      <span className={classes.title}>{titleText}</span>
-      <div className={clsx(classes.valueContainer, Reflect.get(classes, `state${state}`))}>
-        <Text className={classes.number}>{number}</Text>
-        <Text className={classes.unit}>{unit}</Text>
+    <div ref={ref} className={clsx(classNames.numericSideIndicator, className)} {...rest}>
+      <span className={classNames.title}>{titleText}</span>
+      <div className={clsx(classNames.valueContainer, Reflect.get(classNames, `state${state}`))}>
+        <Text className={classNames.number}>{number}</Text>
+        <Text className={classNames.unit}>{unit}</Text>
       </div>
     </div>
   );
