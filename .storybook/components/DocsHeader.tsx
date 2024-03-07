@@ -54,7 +54,9 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
   const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
 
   const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''));
-  const subComps = mergeSubComponents ? [...subComponents, ...wcSubComponents] : subComponents ?? wcSubComponents;
+  const subComps = mergeSubComponents
+    ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
+    : subComponents ?? wcSubComponents;
 
   const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
 
