@@ -44,7 +44,7 @@ interface MountWithCustomTagNameOptions {
 export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagNameMap }>(
   Component: ComponentType<P>,
   props?: P,
-  options?: MountWithCustomTagNameOptions
+  options: MountWithCustomTagNameOptions = {}
 ) {
   const { testTitle = 'mount with custom tag name', defaultTagName, only, wrapperComponent } = options;
   const test = only ? it.only : it;
