@@ -150,10 +150,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const lastRange = useRef(currentRange);
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const rangeInfo = Device.getCurrentRange(form.contentRect.width);
-      if (rangeInfo && lastRange.current !== rangeInfo.name) {
-        lastRange.current = rangeInfo.name;
-        setCurrentRange(rangeInfo.name);
+      const width = form.contentRect.width;
+      if (width) {
+        const rangeInfo = Device.getCurrentRange(form.contentRect.width);
+        if (rangeInfo && lastRange.current !== rangeInfo.name) {
+          lastRange.current = rangeInfo.name;
+          setCurrentRange(rangeInfo.name);
+        }
       }
     });
 

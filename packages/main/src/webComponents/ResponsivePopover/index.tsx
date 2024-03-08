@@ -29,7 +29,8 @@ interface ResponsivePopoverAttributes {
   accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
 
   /**
-   * Determines if there is no enough space, the component can be placed over the target.
+   * Determines if there is no enough space, the component can be placed
+   * over the target.
    * @default false
    */
   allowTargetOverlap?: boolean;
@@ -65,7 +66,9 @@ interface ResponsivePopoverAttributes {
   initialFocus?: string;
 
   /**
-   * Defines whether the component should close when clicking/tapping outside of the popover. If enabled, it blocks any interaction with the background.
+   * Defines whether the component should close when
+   * clicking/tapping outside of the popover.
+   * If enabled, it blocks any interaction with the background.
    * @default false
    */
   modal?: boolean;
@@ -89,7 +92,8 @@ interface ResponsivePopoverAttributes {
   placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
 
   /**
-   * Defines if the focus should be returned to the previously focused element, when the popup closes.
+   * Defines if the focus should be returned to the previously focused element,
+   * when the popup closes.
    * @default false
    */
   preventFocusRestore?: boolean;
@@ -103,7 +107,8 @@ interface ResponsivePopoverAttributes {
 
 interface ResponsivePopoverDomRef extends Omit<Required<ResponsivePopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
-   * Focuses the element denoted by `initialFocus`, if provided, or the first focusable element otherwise.
+   * Focuses the element denoted by `initialFocus`, if provided,
+   * or the first focusable element otherwise.
    * @returns {Promise<void>} - Promise that resolves when the focus is applied
    */
   applyFocus: () => Promise<void>;
@@ -195,11 +200,13 @@ interface ResponsivePopoverPropTypes
 }
 
 /**
- * The `ResponsivePopover` acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
+ * The `ResponsivePopover` acts as a Popover on desktop and tablet, while on phone it acts as a Dialog.
+ * The component improves tremendously the user experience on mobile.
  *
  * ### Usage
- *
  * Use it when you want to make sure that all the content is visible on any device.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

@@ -8,7 +8,8 @@ interface TokenAttributes {
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component can not be deleted or selected, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component can not be deleted or selected,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -29,7 +30,8 @@ interface TokenDomRef extends Required<TokenAttributes>, Ui5DomRef {}
 
 interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenAttributes | 'closeIcon' | 'onSelect'> {
   /**
-   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used. Accepts `Icon`.
+   * Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used.
+   * Accepts `Icon`.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="closeIcon"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -46,6 +48,8 @@ interface TokenPropTypes extends TokenAttributes, Omit<CommonProps, keyof TokenA
 
 /**
  * Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

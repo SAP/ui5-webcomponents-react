@@ -95,12 +95,14 @@ interface MenuPropTypes
 
   /**
    * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
+   *
    * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
 
   /**
    * Fired when an item is being clicked.
+   *
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
@@ -111,17 +113,22 @@ interface MenuPropTypes
  *
  * ### Usage
  *
- * `Menu` contains `MenuItem` components. An arbitrary hierarchy structure can be represented by recursively nesting menu items.
+ * `Menu` contains `MenuItem` components.
+ * An arbitrary hierarchy structure can be represented by recursively nesting menu items.
  *
  * ### Keyboard Handling
  *
- * The `Menu` provides advanced keyboard handling. The user can use the following keyboard shortcuts in order to navigate trough the tree:
+ * The `Menu` provides advanced keyboard handling.
+ * The user can use the following keyboard shortcuts in order to navigate trough the tree:
  *
- * *   `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.
- * *   `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested in the currently clicked menu item.
- * *   `Arrow Left` or `Escape` - Closes the currently opened sub-menu.
+ * - `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.
+ * - `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested
+ * in the currently clicked menu item.
+ * - `Arrow Left` or `Escape` - Closes the currently opened sub-menu.
  *
  * Note: if the text ditrection is set to Right-to-left (RTL), `Arrow Right` and `Arrow Left` functionality is swapped.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

@@ -24,15 +24,13 @@ interface BreadcrumbsItemAttributes {
    *
    * Available options are:
    *
-   * *   `_self`
-   * *   `_top`
-   * *   `_blank`
-   * *   `_parent`
-   * *   `_search`
+   * - `_self`
+   * - `_top`
+   * - `_blank`
+   * - `_parent`
+   * - `_search`
    *
-   *
-   *
-   * **Note: **This property must only be used when the `href` property is set.****
+   * **Note:** This property must only be used when the `href` property is set.
    * @default undefined
    */
   target?: string | undefined;

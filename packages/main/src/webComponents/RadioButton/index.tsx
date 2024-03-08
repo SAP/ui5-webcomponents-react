@@ -20,7 +20,9 @@ interface RadioButtonAttributes {
   /**
    * Defines whether the component is checked or not.
    *
-   * **Note:** The property value can be changed with user interaction, either by clicking/tapping on the component, or by using the Space or Enter key.
+   * **Note:** The property value can be changed with user interaction,
+   * either by clicking/tapping on the component,
+   * or by using the Space or Enter key.
    * @default false
    */
   checked?: boolean;
@@ -34,22 +36,29 @@ interface RadioButtonAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the name of the component. Radio buttons with the same `name` will form a radio button group.
+   * Defines the name of the component.
+   * Radio buttons with the same `name` will form a radio button group.
    *
-   * **Note:** The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
+   * **Note:**
+   * The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
    *
-   * **Note:** Only one radio button can be selected per group.
+   * **Note:**
+   * Only one radio button can be selected per group.
    *
-   * **Important:** For the `name` property to have effect when submitting forms, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect when submitting forms, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form.
    */
   name?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -66,8 +75,12 @@ interface RadioButtonAttributes {
   text?: string;
 
   /**
-   * Defines the form value of the component. When a form with a radio button group is submitted, the group's value will be the value of the currently selected radio button.
-   * **Important:** For the `value` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * Defines the form value of the component.
+   * When a form with a radio button group is submitted, the group's value
+   * will be the value of the currently selected radio button.
+   *
+   * **Important:** For the `value` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   value?: string;
 
@@ -79,6 +92,7 @@ interface RadioButtonAttributes {
 
   /**
    * Defines whether the component text wraps when there is not enough space.
+   *
    * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
    * @default "None"
    */
@@ -97,14 +111,24 @@ interface RadioButtonPropTypes
 }
 
 /**
- * The `RadioButton` component enables users to select a single option from a set of options. When a `RadioButton` is selected by the user, the `change` event is fired. When a `RadioButton` that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
+ * The `RadioButton` component enables users to select a single option from a set of options.
+ * When a `RadioButton` is selected by the user, the
+ * `change` event is fired.
+ * When a `RadioButton` that is within a group is selected, the one
+ * that was previously selected gets automatically deselected. You can group radio buttons by using the `name` property.
+ *
  * **Note:** If `RadioButton` is not part of a group, it can be selected once, but can not be deselected back.
  *
  * ### Keyboard Handling
  *
  * Once the `RadioButton` is on focus, it might be selected by pressing the Space and Enter keys.
- * The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio buttons in one group, while TAB and SHIFT + TAB can be used to enter or leave the radio button group.
+ *
+ * The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio buttons in one group,
+ * while TAB and SHIFT + TAB can be used to enter or leave the radio button group.
+ *
  * **Note:** On entering radio button group, the focus goes to the currently selected radio button.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
