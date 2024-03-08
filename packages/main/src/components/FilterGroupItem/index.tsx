@@ -1,10 +1,12 @@
 'use client';
 
+import { isMac as isMacFn } from '@ui5/webcomponents-base';
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
 import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
 import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -15,6 +17,15 @@ import {
   FlexBoxDirection,
   FlexBoxJustifyContent
 } from '../../enums/index.js';
+import {
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW
+} from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
@@ -33,6 +44,8 @@ addCustomCSSWithScoping(
 }
 `
 );
+
+const isMac = isMacFn();
 
 const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
 
@@ -58,11 +71,13 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       orderId,
       ...rest
     } = props;
+    const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const tableRowRef = useRef<TableRowDomRef>(null);
 
     const selected = props['data-selected'];
     const reactKey = props['data-react-key'];
     const index = props['data-index'];
+    const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
 
     const {
       isFilterInDialog,
@@ -155,6 +170,8 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
           data-order-id={orderId}
+          //todo: check
+          aria-label={withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS) : undefined}
         >
           <TableCell>
             <FlexBox direction={FlexBoxDirection.Column} className={clsx(classes.labelContainer)}>
@@ -184,6 +201,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     icon={moveToTopIcon}
                     data-reorder="top"
                     disabled={itemPosition === 'first'}
+                    tooltip={`${i18nBundle.getText(MOVE_TO_TOP, ` (${isomporphicReorderKey}+Home)`)})`}
                   />
                   <Button
                     onClick={handleReorder}
@@ -191,6 +209,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     icon={moveUpIcon}
                     data-reorder="up"
                     disabled={itemPosition === 'first'}
+                    tooltip={`${i18nBundle.getText(MOVE_UP, ` (${isomporphicReorderKey}+${i18nBundle.getText(UP_ARROW)})`)}`}
                   />
                   <Button
                     onClick={handleReorder}
@@ -198,6 +217,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     icon={moveDownIcon}
                     data-reorder="down"
                     disabled={itemPosition === 'last'}
+                    tooltip={`${i18nBundle.getText(MOVE_DOWN, ` (${isomporphicReorderKey}+${i18nBundle.getText(DOWN_ARROW)})`)}`}
                   />
                   <Button
                     onClick={handleReorder}
@@ -205,6 +225,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     icon={moveToBottomIcon}
                     data-reorder="bottom"
                     disabled={itemPosition === 'last'}
+                    tooltip={`${i18nBundle.getText(MOVE_TO_BOTTOM, ` (${isomporphicReorderKey}+End`)})`}
                   />
                 </FlexBox>
               )}
