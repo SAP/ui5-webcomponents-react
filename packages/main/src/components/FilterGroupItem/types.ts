@@ -55,9 +55,8 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Defines the unique id used to identify reordered filter items.
    *
-   * __Note:__ This prop is mandatory if `enableReordering` is set to `true`.
+   * __Note:__ This prop is mandatory if `enableReordering` is set to `true` on the `FilterBar`, otherwise it has no effect.
    *
-   * __Note:__ If `enableReordering` is not defined, `orderId` has no effect.
    */
   orderId?: string;
 }

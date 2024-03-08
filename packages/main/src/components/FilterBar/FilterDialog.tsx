@@ -133,7 +133,7 @@ interface FilterDialogPropTypes {
   filterBarRefs: any;
   open: boolean;
   handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
-  children: any;
+  children: ReactElement<FilterGroupItemInternalProps>[];
   showRestoreButton: boolean;
   handleRestoreFilters: (e, source, filterElements) => void;
   handleDialogSave: (e, newRefs, updatedToggledFilters, orderedChildren) => void;

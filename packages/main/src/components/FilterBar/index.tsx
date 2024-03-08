@@ -214,6 +214,7 @@ const resizeObserverEntryWidth = (entry) => {
 };
 
 type ReactKeyWithoutBigInt = string | number;
+type SafeChildrenFn = () => ReactElement<FilterGroupItemInternalProps>[];
 
 const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
@@ -379,7 +380,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   };
 
-  const safeChildren = () => {
+  const safeChildren: SafeChildrenFn = () => {
     if (Object.keys(toggledFilters).length > 0) {
       return Children.toArray(children).map((child) => {
         if (isValidElement(child)) {
