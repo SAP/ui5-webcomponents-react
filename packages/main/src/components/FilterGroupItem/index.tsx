@@ -170,8 +170,10 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
           data-order-id={orderId}
-          //todo: check
-          aria-label={withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS) : undefined}
+          aria-live={withReordering ? 'polite' : undefined}
+          aria-label={
+            withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS, isomporphicReorderKey) : undefined
+          }
         >
           <TableCell>
             <FlexBox direction={FlexBoxDirection.Column} className={clsx(classes.labelContainer)}>
