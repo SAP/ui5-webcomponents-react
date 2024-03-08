@@ -10599,6 +10599,40 @@
               },
               "description": "Fired after the menu is closed. **This event does not bubble.**",
               "_ui5since": "1.10.0"
+            },
+            {
+              "name": "item-focus",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<MenuItemFocusEventDetail>",
+                "references": [
+                  {
+                    "name": "MenuItemFocusEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Menu.js"
+                  }
+                ]
+              },
+              "description": "Fired when a menu item receives focus.",
+              "_ui5since": "1.23.1",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "ref",
+                  "_ui5privacy": "public",
+                  "description": "The currently focused element representing a <code>ui5-menu-item</code>."
+                },
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The <code>ui5-menu-item</code> represented by the focused element."
+                }
+              ]
             }
           ],
           "superclass": {
