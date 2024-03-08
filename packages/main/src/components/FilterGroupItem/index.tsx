@@ -1,6 +1,6 @@
 'use client';
 
-import { isMac as isMacFn } from '@ui5/webcomponents-base';
+import { isMac as isMacFn } from '@ui5/webcomponents-base/dist/Device.js';
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
 import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
