@@ -6,7 +6,7 @@ import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
 import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { clsx } from 'clsx';
-import React, { forwardRef, useContext, useEffect, useRef } from 'react';
+import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   BusyIndicatorSize,
@@ -77,12 +77,28 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     } = useContext(FilterBarDialogContext);
     const inFB = !isFilterInDialog;
     const withReordering = enableReordering && !withValues && isListView;
+    const [itemPosition, setItemPosition] = useState<undefined | 'last' | 'first'>(undefined);
 
-    const handleFocus = () => {
+    const handleFocus = (e) => {
       setShowBtnsOnHover(false);
+      if (e.currentTarget.nextSibling === null) {
+        setItemPosition('last');
+      } else if (index === 0) {
+        setItemPosition('first');
+      } else {
+        setItemPosition(undefined);
+      }
     };
 
+    useEffect(() => {
+      if (index === 0) {
+        // fallback
+        setItemPosition('first');
+      }
+    }, [index]);
+
     const handleReorder = (e: Parameters<ButtonPropTypes['onClick']>[0]) => {
+      setItemPosition(undefined);
       onReorder({
         index,
         direction: e.currentTarget.dataset.reorder as ReorderDirections,
@@ -102,6 +118,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
 
         const direction = directionMap[e.key];
         if (direction) {
+          setItemPosition(undefined);
           onReorder({ index, direction, target: e.currentTarget, orderId });
         }
       }
@@ -166,24 +183,28 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     design={ButtonDesign.Transparent}
                     icon={moveToTopIcon}
                     data-reorder="top"
+                    disabled={itemPosition === 'first'}
                   />
                   <Button
                     onClick={handleReorder}
                     design={ButtonDesign.Transparent}
                     icon={moveUpIcon}
                     data-reorder="up"
+                    disabled={itemPosition === 'first'}
                   />
                   <Button
                     onClick={handleReorder}
                     design={ButtonDesign.Transparent}
                     icon={moveDownIcon}
                     data-reorder="down"
+                    disabled={itemPosition === 'last'}
                   />
                   <Button
                     onClick={handleReorder}
                     design={ButtonDesign.Transparent}
                     icon={moveToBottomIcon}
                     data-reorder="bottom"
+                    disabled={itemPosition === 'last'}
                   />
                 </FlexBox>
               )}
