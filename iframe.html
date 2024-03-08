@@ -19,7 +19,7 @@
     window.FRAMEWORK_OPTIONS = {};
     window.CHANNEL_OPTIONS = {};
     window.FEATURES = {"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":false,"storyStoreV7":true,"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false,"disallowImplicitActionsInRenderV8":false};
-    window.STORIES = [{"titlePrefix":"","directory":"./docs","files":"*.mdx","importPathMatcher":"^\\.[\\\\/](?:docs\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Knowledge Base","files":"*.mdx","directory":"./docs/knowledge-base","importPathMatcher":"^\\.[\\\\/](?:docs\\/knowledge-base\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Charts","files":"**/*@(.stories.tsx|mdx)","directory":"./packages/charts","importPathMatcher":"^\\.[\\\\/](?:packages\\/charts(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?(\\.stories\\.tsx|mdx))$"},{"titlePrefix":"Base","files":"*.@(tsx|jsx|mdx)","directory":"./packages/base","importPathMatcher":"^\\.[\\\\/](?:packages\\/base\\/(?!\\.)(?=.)[^/]*?\\.(tsx|jsx|mdx))$"},{"titlePrefix":"Testing with Cypress","files":"**/*.mdx","directory":"./packages/cypress-commands","importPathMatcher":"^\\.[\\\\/](?:packages\\/cypress-commands(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.mdx","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.stories.@(tsx|jsx)","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(tsx|jsx))$"}];
+    window.STORIES = [{"titlePrefix":"","directory":"./docs","files":"*.mdx","importPathMatcher":"^\\.[\\\\/](?:docs\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Knowledge Base","files":"*.mdx","directory":"./docs/knowledge-base","importPathMatcher":"^\\.[\\\\/](?:docs\\/knowledge-base\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Charts","files":"**/*@(.stories.tsx)","directory":"./packages/charts","importPathMatcher":"^\\.[\\\\/](?:packages\\/charts(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?(\\.stories\\.tsx))$"},{"titlePrefix":"Base","files":"*.@(tsx|jsx)","directory":"./packages/base","importPathMatcher":"^\\.[\\\\/](?:packages\\/base\\/(?!\\.)(?=.)[^/]*?\\.(tsx|jsx))$"},{"titlePrefix":"Testing with Cypress","files":"**/*.mdx","directory":"./packages/cypress-commands","importPathMatcher":"^\\.[\\\\/](?:packages\\/cypress-commands(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.mdx","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.stories.@(tsx|jsx)","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(tsx|jsx))$"}];
     window.DOCS_OPTIONS = {"defaultName":"Docs","autodocs":true};
 
     
@@ -415,24 +415,6 @@
     padding: 0;
   }
 
-  .infoTable {
-    margin: 1rem 0;
-    border-spacing: 0;
-    width: unset;
-  }
-
-  .infoTable th,
-  .infoTable td {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    text-align: start;
-    height: 1.5rem;
-  }
-
-  .infoTable th {
-    padding-inline-end: 1.25rem;
-  }
-
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
   .docs-story > div > div[scale] {
     min-height: 20px;
@@ -445,7 +427,7 @@
   }
 </script>
 
-  <script type="module" crossorigin src="./assets/iframe-osxsEg1I.js"></script>
+  <script type="module" crossorigin src="./assets/iframe-WacV7gDs.js"></script>
 </head>
 
 <body>
