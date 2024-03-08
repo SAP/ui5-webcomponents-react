@@ -65,8 +65,8 @@ import { MessageBox } from '../MessageBox/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import styles from './FilterBarDialog.jss.js';
+import type { FilterBarPropTypes } from './types.js';
 import { filterValue, syncRef } from './utils.js';
-import type { FilterBarPropTypes } from './index.js';
 
 addCustomCSSWithScoping(
   'ui5-table',
