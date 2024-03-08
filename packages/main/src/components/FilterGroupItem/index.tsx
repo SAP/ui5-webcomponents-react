@@ -108,7 +108,12 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     };
 
     useEffect(() => {
-      if (withReordering && tableRowRef.current && currentReorderedItemOrderId === orderId && index) {
+      if (
+        withReordering &&
+        tableRowRef.current &&
+        currentReorderedItemOrderId === orderId &&
+        typeof index === 'number'
+      ) {
         handleFocusFallback();
       }
     }, [withReordering, currentReorderedItemOrderId, orderId, index]);
