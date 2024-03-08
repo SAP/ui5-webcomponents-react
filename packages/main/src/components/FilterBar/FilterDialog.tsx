@@ -184,6 +184,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const [filteredAttribute, setFilteredAttribute] = useState<ActiveFilterAttributes>('all');
   const [currentReorderedItem, setCurrentReorderedItem] = useState<OnReorderParams | Record<string, never>>({});
   const tableRef = useRef(null);
+  const okBtnRef = useRef(null);
   const handleReorder = (e: OnReorderParams) => {
     setCurrentReorderedItem(e);
   };
@@ -319,6 +320,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
     }
     setMessageBoxOpen(false);
+    okBtnRef.current.focus();
   };
 
   const [updatedIndex, setUpdatedIndex] = useState(undefined);
@@ -507,6 +509,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               endContent={
                 <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
                   <Button
+                    ref={okBtnRef}
                     onClick={handleSave}
                     data-component-name="FilterBarDialogSaveBtn"
                     design={ButtonDesign.Emphasized}

@@ -175,7 +175,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
             withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS, isomporphicReorderKey) : undefined
           }
         >
-          <TableCell>
+          <TableCell data-component-name="FilterBarDialogTableCellFilter">
             <FlexBox direction={FlexBoxDirection.Column} className={clsx(classes.labelContainer)}>
               <Label
                 className={classes.dialogCellLabel}
@@ -189,13 +189,14 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
             </FlexBox>
           </TableCell>
           {!withValues && isListView && (
-            <TableCell className={classes.dialogActiveCell}>
+            <TableCell className={classes.dialogActiveCell} data-component-name="FilterBarDialogTableCellActive">
               {withReordering && (
                 <FlexBox
                   fitContainer
                   justifyContent={FlexBoxJustifyContent.Center}
                   alignItems={FlexBoxAlignItems.Center}
                   className={classes.reorderBtnsContainer}
+                  data-component-name="FilterBarDialogTableCellReorderBtns"
                 >
                   <Button
                     onClick={handleReorder}
@@ -204,6 +205,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     data-reorder="top"
                     disabled={itemPosition === 'first'}
                     tooltip={`${i18nBundle.getText(MOVE_TO_TOP, ` (${isomporphicReorderKey}+Home)`)})`}
+                    data-component-name="FilterBarDialogReorderBtnTop"
                   />
                   <Button
                     onClick={handleReorder}
@@ -212,6 +214,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     data-reorder="up"
                     disabled={itemPosition === 'first'}
                     tooltip={`${i18nBundle.getText(MOVE_UP, ` (${isomporphicReorderKey}+${i18nBundle.getText(UP_ARROW)})`)}`}
+                    data-component-name="FilterBarDialogReorderBtnUp"
                   />
                   <Button
                     onClick={handleReorder}
@@ -220,6 +223,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     data-reorder="down"
                     disabled={itemPosition === 'last'}
                     tooltip={`${i18nBundle.getText(MOVE_DOWN, ` (${isomporphicReorderKey}+${i18nBundle.getText(DOWN_ARROW)})`)}`}
+                    data-component-name="FilterBarDialogReorderBtnDown"
                   />
                   <Button
                     onClick={handleReorder}
@@ -228,6 +232,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                     data-reorder="bottom"
                     disabled={itemPosition === 'last'}
                     tooltip={`${i18nBundle.getText(MOVE_TO_BOTTOM, ` (${isomporphicReorderKey}+End`)})`}
+                    data-component-name="FilterBarDialogReorderBtnBottom"
                   />
                 </FlexBox>
               )}
@@ -238,13 +243,14 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       );
     }
 
+    const labelWithGroupName = considerGroupName && groupName !== 'default' ? `${label} (${groupName})` : label;
+
     return (
       <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classes.filterItem, className)}>
         <div className={classes.innerFilterItemContainer}>
           <FlexBox>
             <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
-              {`${considerGroupName && groupName !== 'default' ? `${groupName}: ` : ''}
-          ${label}`}
+              {labelWithGroupName}
             </Label>
           </FlexBox>
           {loading ? (

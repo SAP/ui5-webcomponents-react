@@ -494,7 +494,12 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           </Toolbar>
         )}
         {mountFilters && (
-          <div className={filterAreaClasses} style={{ position: 'relative' }} ref={filterAreaRef}>
+          <div
+            className={filterAreaClasses}
+            style={{ position: 'relative' }}
+            ref={filterAreaRef}
+            data-component-name="FilterBarFilterArea"
+          >
             {search && (
               <FilterGroupItem visibleInFilterBar data-with-toolbar={!hideToolbar}>
                 <div ref={searchRef} className={classes.searchContainer}>

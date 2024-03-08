@@ -51,7 +51,6 @@ const styles = {
     '&[selected="true"]::part(row):focus, &[selected="true"]::part(row):active': {
       [ActiveIconDisplayVariable]: 'none',
       [ReorderBtnsDisplayVariable]: 'flex',
-      // todo in sapui5 the bg and border color changes on click - clarify if we should do it like sapui5
       backgroundColor: `${ThemingParameters.sapList_SelectionBackgroundColor}`,
       borderBottom: `1px solid ${ThemingParameters.sapList_SelectionBorderColor})`
     }
