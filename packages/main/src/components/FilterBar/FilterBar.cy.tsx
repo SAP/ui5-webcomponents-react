@@ -614,9 +614,8 @@ describe('FilterBar.cy.tsx', () => {
       cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
       cy.findByText('Reset').realClick();
       cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('have.attr', 'open');
-      cy.realPress('Enter');
+      cy.get('[data-action="OK"]').realClick();
       cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('not.exist');
-      cy.wait(300);
       cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
 
       // event
