@@ -504,135 +504,132 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-multi-combobox]').should('have.length', 2);
   });
 
-  for (let i = 0; i < 20; i++) {
-    it.only('reorder', () => {
-      const save = cy.spy().as('saveSpy');
-      cy.mount(<FilterBarWithReordering onFiltersDialogSave={save} />);
+  it('reorder', () => {
+    const save = cy.spy().as('saveSpy');
+    cy.mount(<FilterBarWithReordering onFiltersDialogSave={save} />);
 
-      cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
-      cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'RatingIndicator');
-      cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'MultiInput');
-      cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'Switch');
+    cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
+    cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'RatingIndicator');
+    cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'MultiInput');
+    cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'Switch');
 
-      cy.findByText('Filters').realClick();
-      cy.get('[ui5-dialog]').should('have.attr', 'open');
-      cy.wait(200);
-      cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');
-      cy.get('[data-text="MultiInput"]').as('multiInputRow');
-      cy.get('[data-text="StepInput"]').as('stepInputRow');
-      // active icon should be displayed if not hovered or focused
-      cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
-      // if no row was focused before, show reorder buttons on hover, but only for visible filters (selected rows)
-      cy.get('@multiInputRow').shadow().find('tr').realHover();
-      cy.get('@multiInputRow').find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
-      cy.get('@multiInputRow').find('[name="circle-task-2"]').should('not.be.visible');
-      cy.get('@notSelected').shadow().find('tr').realHover();
-      cy.get('@notSelected')
-        .find('[data-component-name="FilterBarDialogTableCellReorderBtns"]')
-        .should('not.be.visible');
-      cy.get('@notSelected').find('[name="circle-task-2"]').should('not.exist');
-      cy.realPress('Tab');
-      cy.get('@multiInputRow').shadow().find('tr').realHover();
-      // don't show reorder buttons if a row was focused before
-      cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
-      cy.get('@multiInputRow')
-        .find('[data-component-name="FilterBarDialogTableCellReorderBtns"]')
-        .should('not.be.visible');
-      cy.focused().should('have.attr', 'data-text', 'StepInput');
-      cy.focused().find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
+    cy.findByText('Filters').realClick();
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
+    cy.wait(200);
+    cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');
+    cy.get('[data-text="MultiInput"]').as('multiInputRow');
+    cy.get('[data-text="StepInput"]').as('stepInputRow');
+    // active icon should be displayed if not hovered or focused
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
+    // if no row was focused before, show reorder buttons on hover, but only for visible filters (selected rows)
+    cy.get('@multiInputRow').shadow().find('tr').realHover();
+    cy.get('@multiInputRow').find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('not.be.visible');
+    cy.get('@notSelected').shadow().find('tr').realHover();
+    cy.get('@notSelected').find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('not.be.visible');
+    cy.get('@notSelected').find('[name="circle-task-2"]').should('not.exist');
+    cy.realPress('Tab');
+    cy.get('@multiInputRow').shadow().find('tr').realHover();
+    // don't show reorder buttons if a row was focused before
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
+    cy.get('@multiInputRow')
+      .find('[data-component-name="FilterBarDialogTableCellReorderBtns"]')
+      .should('not.be.visible');
+    cy.focused().should('have.attr', 'data-text', 'StepInput');
+    cy.focused().find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
 
-      // reorder via keyboard
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
-      cy.realPress(['Meta', 'ArrowDown']);
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
-      // for some reason, the focus is not set after moving a row in cypress
-      cy.get('@stepInputRow').invoke('focus');
-      cy.realPress(['Meta', 'End']);
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
-      cy.realPress(['Meta', 'ArrowUp']);
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
-      cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
-      cy.get('@stepInputRow').invoke('focus');
-      cy.realPress(['Meta', 'Home']);
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+    // reorder via keyboard
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.realPress(['Meta', 'ArrowDown']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
+    // for some reason, the focus is not set after moving a row in cypress
+    cy.get('@stepInputRow').invoke('focus');
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
+    cy.realPress(['Meta', 'ArrowUp']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').invoke('focus');
+    cy.realPress(['Meta', 'Home']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
 
-      // reorder via button click
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
-      cy.get('@topBtn').should('have.attr', 'disabled', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
-      cy.get('@upBtn').should('have.attr', 'disabled', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
-      cy.get('@downBtn').should('not.have.attr', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
-      cy.get('@bottomBtn').should('not.have.attr', 'disabled');
+    // reorder via button click
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
+    cy.get('@topBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
+    cy.get('@upBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
+    cy.get('@downBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
+    cy.get('@bottomBtn').should('not.have.attr', 'disabled');
 
-      cy.get('@downBtn').realClick();
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
-      cy.get('@stepInputRow').realClick();
-      cy.get('@bottomBtn').realClick();
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@downBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').realClick();
+    cy.get('@bottomBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
 
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
-      cy.get('@topBtn').should('not.have.attr', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
-      cy.get('@upBtn').should('not.have.attr', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
-      cy.get('@downBtn').should('have.attr', 'disabled', 'disabled');
-      cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
-      cy.get('@bottomBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
+    cy.get('@topBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
+    cy.get('@upBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
+    cy.get('@downBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
+    cy.get('@bottomBtn').should('have.attr', 'disabled', 'disabled');
 
-      cy.get('@stepInputRow').realClick();
-      cy.get('@upBtn').realClick();
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
-      cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
-      cy.get('@stepInputRow').realClick();
-      cy.get('@topBtn').realClick();
-      cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('@stepInputRow').realClick();
+    cy.get('@upBtn').realClick();
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').realClick();
+    cy.get('@topBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
 
-      // check if keyboard nav still works
-      cy.wait(100);
-      cy.realPress('End');
-      cy.focused().should('have.attr', 'data-text', 'SELECT w/ initial selected');
-      cy.realPress('ArrowUp');
-      cy.focused().should('have.attr', 'data-text', 'Switch');
-      cy.realPress('Home');
-      cy.focused().should('have.attr', 'data-text', 'StepInput');
-      cy.realPress('ArrowDown');
-      cy.focused().should('have.attr', 'data-text', 'RatingIndicator');
+    // check if keyboard nav still works
+    cy.wait(100);
+    cy.realPress('End');
+    cy.focused().should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'data-text', 'Switch');
+    cy.realPress('Home');
+    cy.focused().should('have.attr', 'data-text', 'StepInput');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-text', 'RatingIndicator');
 
-      // reset behavior
-      cy.realPress(['Meta', 'End']);
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.findByText('Reset').realClick();
-      cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('have.attr', 'open');
-      cy.get('[data-action="OK"]').realClick();
-      cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('not.exist');
-      cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+    // reset behavior
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.findByText('Reset').realClick();
+    cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('have.attr', 'open');
+    cy.get('[data-action="OK"]').realClick();
+    cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('not.exist');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
 
-      // event
-      cy.focused().should('have.attr', 'data-component-name', 'FilterBarDialogSaveBtn');
-      cy.realPress(['Shift', 'Tab']);
-      cy.focused().should('have.attr', 'data-text', 'RatingIndicator');
-      cy.realPress(['Meta', 'End']);
-      cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
-      cy.findByText('OK').realClick();
-      cy.get('@saveSpy').should('have.been.calledOnce');
+    // event
+    cy.focused().should('have.attr', 'data-component-name', 'FilterBarDialogSaveBtn');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'data-text', 'RatingIndicator');
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.findByText('OK').realClick();
+    cy.get('@saveSpy').should('have.been.calledOnce');
 
-      cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
-      cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'MultiInput');
-      cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'Input');
-      cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
-    });
-  }
+    cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
+    cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'MultiInput');
+    cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'Input');
+    cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
+  });
+
   mountWithCustomTagName(FilterBar);
 
   cypressPassThroughTestsFactory(FilterBar);
