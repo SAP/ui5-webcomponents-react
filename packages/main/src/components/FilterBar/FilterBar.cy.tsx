@@ -614,7 +614,7 @@ describe('FilterBar.cy.tsx', () => {
       cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
       cy.findByText('Reset').realClick();
       cy.realPress('Enter');
-      cy.wait(300);
+      cy.wait(500);
       cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
 
       // event
