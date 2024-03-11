@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "clsx": "2.1.0",
-    "react-content-loader": "6.2.1",
+    "react-content-loader": "7.0.0",
     "recharts": "2.12.2"
   },
   "peerDependencies": {
