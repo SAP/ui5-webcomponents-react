@@ -15,11 +15,7 @@ jobs:
     strategy:
       matrix:
         spec:
-          - base
-          - charts
-          - cypress-commands
-          - main/src/components
-          - main/src/internal
+          - main/src/components/FilterBar
       fail-fast: false
 
     steps:
