@@ -20,6 +20,7 @@ export * from './BreadcrumbsSeparatorStyle.js';
 export * from './BusyIndicatorSize.js';
 export * from './ButtonDesign.js';
 export * from './ButtonType.js';
+export * from './CalendarLegendItemType.js';
 export * from './CalendarSelection.js';
 export * from './CalendarSelectionMode.js';
 export * from './CalendarType.js';
