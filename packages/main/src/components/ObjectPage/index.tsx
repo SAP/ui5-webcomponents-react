@@ -235,7 +235,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const titleInHeader = headerTitle && showTitleInHeaderContent;
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
-  const sections = currentTabModeSection ?? children;
+  const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
 
   const deprecationNoticeDisplayed = useRef(false);
   useEffect(() => {
@@ -356,11 +356,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       isProgrammaticallyScrolled.current = true;
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
-      const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
         return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
-      fireOnSelectedChangedEvent({}, currentIndex, currentId, sections[0]);
+      fireOnSelectedChangedEvent({}, currentIndex, currentId, sectionNodes[0]);
     }
   };
 
@@ -466,15 +466,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const tabContainerContainerRef = useRef(null);
   useEffect(() => {
     const objectPage = objectPageRef.current;
-    const sections = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
-    const lastSection = sections[sections.length - 1];
+    const sectionNodes = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
+    const lastSectionNode = sectionNodes[sectionNodes.length - 1];
 
     const observer = new ResizeObserver(([sectionElement]) => {
-      const subSections = lastSection.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
+      const subSections = lastSectionNode.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
       const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
 
-      if ((currentTabModeSection && !lastSubSection) || (sections.length === 1 && !lastSubSection)) {
+      if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
       } else {
         setSectionSpacer(
@@ -486,8 +486,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
     });
 
-    if (objectPage && lastSection) {
-      observer.observe(lastSection, { box: 'border-box' });
+    if (objectPage && lastSectionNode) {
+      observer.observe(lastSectionNode, { box: 'border-box' });
     }
 
     return () => {
@@ -514,11 +514,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (mode === ObjectPageMode.IconTabBar) {
         const sectionId = e.detail.sectionId;
         setInternalSelectedSectionId(sectionId);
-        const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+        const sectionNodes = objectPageRef.current?.querySelectorAll(
+          'section[data-component-name="ObjectPageSection"]'
+        );
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
           return isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
         });
-        debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
+        debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
       }
       const subSectionId = e.detail.subSectionId;
       scrollTimeout.current = performance.now() + 200;
@@ -537,7 +539,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
 
   useEffect(() => {
-    const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+    const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
     const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ TAB_CONTAINER_HEADER_HEIGHT;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
@@ -564,7 +566,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
     );
 
-    sections.forEach((el) => {
+    sectionNodes.forEach((el) => {
       observer.observe(el);
     });
 
@@ -575,17 +577,17 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   // Fallback when scrolling faster than the IntersectionObserver can observe (in most cases faster than 60fps)
   useEffect(() => {
-    const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+    const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     if (isAfterScroll) {
-      let currentSection = sections[sections.length - 1];
+      let currentSection = sectionNodes[sectionNodes.length - 1];
       let currentIndex: number;
-      for (let i = 0; i <= sections.length - 1; i++) {
-        const section = sections[i];
+      for (let i = 0; i <= sectionNodes.length - 1; i++) {
+        const sectionNode = sectionNodes[i];
         if (
           objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
-          section.getBoundingClientRect().bottom
+          sectionNode.getBoundingClientRect().bottom
         ) {
-          currentSection = section;
+          currentSection = sectionNode;
           currentIndex = i;
           break;
         }
@@ -595,7 +597,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         setInternalSelectedSectionId(currentSectionId);
         debouncedOnSectionChange(
           scrollEvent.current,
-          currentIndex ?? sections.length - 1,
+          currentIndex ?? sectionNodes.length - 1,
           currentSectionId,
           currentSection
         );
