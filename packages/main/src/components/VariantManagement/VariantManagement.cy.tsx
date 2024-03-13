@@ -140,6 +140,7 @@ describe('VariantManagement', () => {
       cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
       cy.realPress('Tab');
       cy.realPress('Escape');
+      cy.get('[ui5-dialog]').should('not.exist');
       cy.contains('Only alphanumeric chars in Save View input').click();
       cy.findByText('Save As').click();
       cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
