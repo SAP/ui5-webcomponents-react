@@ -4793,9 +4793,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:^9.0.0":
-  version: 9.2.6
-  resolution: "@semantic-release/github@npm:9.2.6"
+"@semantic-release/github@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@semantic-release/github@npm:10.0.0"
   dependencies:
     "@octokit/core": "npm:^5.0.0"
     "@octokit/plugin-paginate-rest": "npm:^9.0.0"
@@ -4815,7 +4815,7 @@ __metadata:
     url-join: "npm:^5.0.0"
   peerDependencies:
     semantic-release: ">=20.1.0"
-  checksum: 10c0/1fd4777d70139c4bf05b59c8585f42df0900f1d257ca532992b317e3876df0855443b65edd9eb8cb9f08affad8a08503c7e616a712507b8310ec5c6aa47c23f7
+  checksum: 10c0/df6b7d14f62b5d574923f228f111232f5bd0f8b0f34ececcfcdc519ad9f36dc8556df91b917c47b1082edc894c00d7daaa7726eb3dd004ece80b339f3044c56b
   languageName: node
   linkType: hard
 
@@ -22760,7 +22760,7 @@ __metadata:
     "@babel/preset-react": "npm:7.23.3"
     "@babel/preset-typescript": "npm:7.23.3"
     "@cypress/code-coverage": "npm:^3.10.0"
-    "@semantic-release/github": "npm:^9.0.0"
+    "@semantic-release/github": "npm:^10.0.0"
     "@storybook/addon-a11y": "npm:7.6.17"
     "@storybook/addon-essentials": "npm:7.6.17"
     "@storybook/blocks": "npm:7.6.17"
