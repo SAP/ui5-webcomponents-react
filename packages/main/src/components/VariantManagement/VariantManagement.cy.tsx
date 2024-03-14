@@ -97,7 +97,7 @@ describe('VariantManagement', () => {
     cy.get('@onSaveManageViews').should('have.been.calledOnce');
   });
 
-  for (let i = 0; i <= 20; i++) {
+  for (let i = 0; i < 20; i++) {
     it.only('saveViewInputProps & manageViewsInputProps', () => {
       // manageViewsInputProps
       cy.mount(<WithCustomValidation />);
@@ -138,8 +138,18 @@ describe('VariantManagement', () => {
       cy.get('[ui5-dialog]').should('have.attr', 'open');
       cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
       cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-      cy.realPress('Tab');
-      cy.realPress('Escape');
+      cy.realPress('Tab')
+        .then(() => {
+          // fallback if focus isn't inside the dialog (happens only in headless CI mode)
+          console.log(document.activeElement);
+          cy.get('[text="Set as Default"]').then(($cb) => {
+            $cb[0].focus();
+          });
+        })
+        .then(() => {
+          cy.realPress('Escape');
+        });
+
       cy.get('[ui5-dialog]').should('not.exist');
       cy.contains('Only alphanumeric chars in Save View input').click();
       cy.findByText('Save As').click();
