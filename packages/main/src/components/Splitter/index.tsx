@@ -2,14 +2,7 @@
 
 import horizontalGripIcon from '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import verticalGripIcon from '@ui5/webcomponents-icons/dist/vertical-grip.js';
-import {
-  CssSizeVariables,
-  ThemingParameters,
-  useCurrentTheme,
-  useI18nBundle,
-  useIsRTL,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useCurrentTheme, useI18nBundle, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/index.js';
@@ -33,8 +26,8 @@ const useStyles = createUseStyles(
         cursor: 'col-resize',
         borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
         borderRight: CustomThemingParameters.SplitterBarBorderStyle,
-        minWidth: CssSizeVariables.ui5WcrSplitterSize,
-        width: CssSizeVariables.ui5WcrSplitterSize,
+        minWidth: 'var(--_ui5wcr-SplitterSize)',
+        width: 'var(--_ui5wcr-SplitterSize)',
         height: '100%',
         flexDirection: 'column',
         '&:focus': {
@@ -48,7 +41,7 @@ const useStyles = createUseStyles(
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '0.0625rem 100%',
-          width: CssSizeVariables.ui5WcrSplitterSize,
+          width: 'var(--_ui5wcr-SplitterSize)',
           height: '4rem'
         },
         '& $lineBefore': {
@@ -66,8 +59,8 @@ const useStyles = createUseStyles(
         borderTop: CustomThemingParameters.SplitterBarBorderStyle,
         borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.ui5WcrSplitterSize,
-        height: CssSizeVariables.ui5WcrSplitterSize,
+        minHeight: 'var(--_ui5wcr-SplitterSize)',
+        height: 'var(--_ui5wcr-SplitterSize)',
         width: '100%',
         flexDirection: 'row',
         '&:focus': {
@@ -82,7 +75,7 @@ const useStyles = createUseStyles(
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.ui5WcrSplitterSize
+          height: 'var(--_ui5wcr-SplitterSize)'
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
@@ -97,15 +90,15 @@ const useStyles = createUseStyles(
       },
       '&[data-splitter-vertical=verticalRtl]': {
         cursor: 'row-resize',
-        minHeight: CssSizeVariables.ui5WcrSplitterSize,
-        height: CssSizeVariables.ui5WcrSplitterSize,
+        minHeight: 'var(--_ui5wcr-SplitterSize)',
+        height: 'var(--_ui5wcr-SplitterSize)',
         width: '100%',
         flexDirection: 'row',
 
         '& $lineBefore, & $lineAfter': {
           backgroundSize: '100% 0.0625rem ',
           width: '5rem',
-          height: CssSizeVariables.ui5WcrSplitterSize
+          height: 'var(--_ui5wcr-SplitterSize)'
         },
         '& $lineBefore': {
           backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
