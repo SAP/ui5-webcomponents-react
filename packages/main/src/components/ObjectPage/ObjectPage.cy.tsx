@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import type { CSSProperties } from 'react';
-import { useReducer, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
   Avatar,
@@ -877,6 +877,26 @@ describe('ObjectPage', () => {
       .its('secondCall.args[0].detail')
       .should('deep.equal', { sectionIndex: 3, sectionId: 'employment', subSectionId: 'employment-job-information' });
     cy.get('@sectionChangeSpy').should('not.have.been.called');
+  });
+
+  it('IconTabBar mode: only mount single section', () => {
+    const cbSpy = cy.spy().as('cb');
+    const CallBackComp = () => {
+      useEffect(() => {
+        cbSpy();
+      }, []);
+      return null;
+    };
+    cy.mount(
+      <ObjectPage mode={ObjectPageMode.IconTabBar}>
+        <ObjectPageSection id="1">Dummy</ObjectPageSection>
+        <ObjectPageSection id="2">
+          <CallBackComp />
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.findByText('Dummy').should('be.visible');
+    cy.get('@cb').should('not.been.called');
   });
 
   cypressPassThroughTestsFactory(ObjectPage);
