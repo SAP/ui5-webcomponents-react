@@ -138,8 +138,12 @@ describe('VariantManagement', () => {
       cy.get('[ui5-dialog]').should('have.attr', 'open');
       cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
       cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-      // Fallback: click on the Apply Automatically checkbox to prevent strange behavior in CI tests because of valueStateMessage popover
-      cy.get('[text="Apply Automatically"]').realClick();
+      cy.get('[text="Apply Automatically"]')
+        .realClick()
+        .then(() => {
+          expect(document.activeElement).to.have.attr('ui5-checkbox');
+        });
+
       cy.realPress('Escape');
       cy.get('[ui5-dialog]').should('not.exist');
       cy.contains('Only alphanumeric chars in Save View input').click();
