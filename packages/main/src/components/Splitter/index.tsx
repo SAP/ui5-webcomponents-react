@@ -22,21 +22,25 @@ const useStyles = createUseStyles(
       alignItems: 'center',
       justifyContent: 'center',
       boxSizing: 'border-box',
-      '&[data-splitter-vertical=horizontal]': {
+      '&[data-splitter-vertical]': {
         cursor: 'col-resize',
-        borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
-        borderRight: CustomThemingParameters.SplitterBarBorderStyle,
+        '&:focus': {
+          outlineOffset: '-0.20rem',
+          outline: CustomThemingParameters.SplitterBarOutline
+        },
+        '& $icon': {
+          zIndex: 1
+        }
+      },
+      '&[data-splitter-vertical=horizontal]': {
+        borderInline: CustomThemingParameters.SplitterBarBorderStyle,
         minWidth: 'var(--_ui5wcr-SplitterSize)',
         width: 'var(--_ui5wcr-SplitterSize)',
         height: '100%',
         flexDirection: 'column',
         '&:focus': {
-          borderTop: CustomThemingParameters.SplitterBarBorderFix,
-          borderRight: CustomThemingParameters.SplitterBarBorderFocus,
-          borderBottom: CustomThemingParameters.SplitterBarBorderFix,
-          borderLeft: CustomThemingParameters.SplitterBarBorderFocus,
-          outlineOffset: '-0.20rem',
-          outline: CustomThemingParameters.SplitterBarOutline
+          borderBlock: CustomThemingParameters.SplitterBarBorderFix,
+          borderInline: CustomThemingParameters.SplitterBarBorderFocus
         },
 
         '& $lineBefore, & $lineAfter': {
@@ -48,28 +52,21 @@ const useStyles = createUseStyles(
           backgroundImage: `linear-gradient(to top, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         },
         '& $icon': {
-          padding: '0.5rem 0',
-          zIndex: 1
+          padding: '0.5rem 0'
         },
         '& $lineAfter': {
           backgroundImage: `linear-gradient(to bottom, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
         }
       },
       '&[data-splitter-vertical=vertical]': {
-        borderTop: CustomThemingParameters.SplitterBarBorderStyle,
-        borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
-        cursor: 'row-resize',
+        borderBlock: CustomThemingParameters.SplitterBarBorderStyle,
         minHeight: 'var(--_ui5wcr-SplitterSize)',
         height: 'var(--_ui5wcr-SplitterSize)',
         width: '100%',
         flexDirection: 'row',
         '&:focus': {
-          borderTop: CustomThemingParameters.SplitterBarBorderFocus,
-          borderRight: CustomThemingParameters.SplitterBarBorderFix,
-          borderBottom: CustomThemingParameters.SplitterBarBorderFocus,
-          borderLeft: CustomThemingParameters.SplitterBarBorderFix,
-          outlineOffset: '-0.20rem',
-          outline: CustomThemingParameters.SplitterBarOutline
+          borderBlock: CustomThemingParameters.SplitterBarBorderFocus,
+          borderInline: CustomThemingParameters.SplitterBarBorderFix
         },
 
         '& $lineBefore, & $lineAfter': {
@@ -78,37 +75,19 @@ const useStyles = createUseStyles(
           height: 'var(--_ui5wcr-SplitterSize)'
         },
         '& $lineBefore': {
-          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
+          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`,
+          '&:dir(rtl)': {
+            backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
+          }
         },
         '& $icon': {
-          padding: '0 0.5rem',
-          zIndex: 1
+          padding: '0 0.5rem'
         },
         '& $lineAfter': {
-          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        }
-      },
-      '&[data-splitter-vertical=verticalRtl]': {
-        cursor: 'row-resize',
-        minHeight: 'var(--_ui5wcr-SplitterSize)',
-        height: 'var(--_ui5wcr-SplitterSize)',
-        width: '100%',
-        flexDirection: 'row',
-
-        '& $lineBefore, & $lineAfter': {
-          backgroundSize: '100% 0.0625rem ',
-          width: '5rem',
-          height: 'var(--_ui5wcr-SplitterSize)'
-        },
-        '& $lineBefore': {
-          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        },
-        '& $icon': {
-          padding: '0 0.5rem',
-          zIndex: 1
-        },
-        '& $lineAfter': {
-          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
+          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`,
+          '&:dir(rtl)': {
+            backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
+          }
         }
       },
       '&:hover': {
@@ -382,7 +361,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
-      data-splitter-vertical={isRtl && vertical ? 'verticalRtl' : vertical ? 'vertical' : 'horizontal'}
+      data-splitter-vertical={vertical ? 'vertical' : 'horizontal'}
       title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
