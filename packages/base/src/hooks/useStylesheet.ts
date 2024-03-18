@@ -9,18 +9,37 @@ function getUseInsertionEffect(isSSR: boolean) {
   return isSSR ? React.useEffect : Reflect.get(React, 'useInsertionEffect') || React.useLayoutEffect;
 }
 
+function trackComponentStyleMount(componentMap: Map<string, number>, componentName: string) {
+  if (componentMap.has(componentName)) {
+    componentMap.set(componentName, componentMap.get(componentName)! + 1);
+  } else {
+    componentMap.set(componentName, 1);
+  }
+}
+
+function trackComponentStyleUnmount(componentMap: Map<string, number>, componentName: string) {
+  if (componentMap.has(componentName)) {
+    componentMap.set(componentName, componentMap.get(componentName)! - 1);
+  }
+}
+
 export function useStylesheet(styles: StyleDataCSP, componentName: string) {
   const styleContext = useStyleContext();
-  const { staticCssInjected } = styleContext;
+  const { staticCssInjected, componentsMap } = styleContext;
 
   getUseInsertionEffect(typeof window === 'undefined')(() => {
     if (!staticCssInjected) {
       createOrUpdateStyle(styles, 'data-ui5wcr-component', componentName);
+      trackComponentStyleMount(componentsMap, componentName);
     }
 
     return () => {
       if (!staticCssInjected) {
-        removeStyle('data-ui5wcr-component', componentName);
+        trackComponentStyleUnmount(componentsMap, componentName);
+        const numberOfMountedComponents = componentsMap.get(componentName);
+        if (typeof numberOfMountedComponents === 'number' && numberOfMountedComponents <= 0) {
+          removeStyle('data-ui5wcr-component', componentName);
+        }
       }
     };
   }, [styles, staticCssInjected]);
