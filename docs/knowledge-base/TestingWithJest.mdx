@@ -7,6 +7,13 @@ import { Footer, TableOfContent } from '@sb/components';
 # Testing with Jest
 
 <MessageStrip
+  design={MessageStripDesign.Negative}
+  hideCloseButton
+  children="This section of our documentation is not maintained anymore and may contain outdated information! It will be removed with our next major release (v2.0.0)."
+  style={{ marginBlockEnd: '0.5rem' }}
+/>
+
+<MessageStrip
   design={MessageStripDesign.Warning}
   hideCloseButton
   children={

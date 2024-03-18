@@ -1,0 +1,108 @@
+.btn {
+  /* Defaults for `Information` and `None` value states */
+  text-shadow: var(--sapContent_TextShadow);
+  color: var(--sapButton_Information_TextColor);
+  background: var(--sapButton_Information_Background);
+  border-color: var(--sapButton_Information_BorderColor);
+
+  &::part(button)::after {
+    border-color: var(--sapContent_FocusColor);
+  }
+
+  &:hover {
+    color: var(--sapButton_Information_Hover_TextColor);
+    background: var(--sapButton_Information_Hover_Background);
+    border-color: var(--sapButton_Information_Hover_BorderColor);
+  }
+
+  &:active {
+    color: var(--sapButton_Information_Active_TextColor);
+    background: var(--sapButton_Information_Active_Background);
+    border-color: var(--sapButton_Information_Active_BorderColor);
+
+    &::part(button)::after {
+      border-color: var(--sapContent_FocusColor);
+    }
+  }
+
+  &[data-type='Error'] {
+    text-shadow: var(--sapContent_ContrastTextShadow);
+    color: var(--sapButton_Negative_TextColor);
+    background: var(--sapButton_Negative_Background);
+    border-color: var(--sapButton_Negative_BorderColor);
+
+    &::part(button)::after {
+      border-color: var(--sapContent_ContrastFocusColor);
+    }
+
+    &:hover {
+      color: var(--sapButton_Negative_Hover_TextColor);
+      background: var(--sapButton_Negative_Hover_Background);
+      border-color: var(--sapButton_Negative_Hover_BorderColor);
+    }
+
+    &:active {
+      color: var(--sapButton_Negative_Active_TextColor);
+      background: var(--sapButton_Negative_Active_Background);
+      border-color: var(--sapButton_Negative_Active_BorderColor);
+
+      &::part(button)::after {
+        border-color: var(--sapContent_FocusColor);
+      }
+    }
+  }
+
+  &[data-type='Warning'] {
+    text-shadow: var(--sapContent_ContrastTextShadow);
+    color: var(--sapButton_Critical_TextColor);
+    background: var(--sapButton_Critical_Background);
+    border-color: var(--sapButton_Critical_BorderColor);
+
+    &::part(button)::after {
+      border-color: var(--sapContent_ContrastFocusColor);
+    }
+
+    &:hover {
+      color: var(--sapButton_Critical_Hover_TextColor);
+      background: var(--sapButton_Critical_Hover_Background);
+      border-color: var(--sapButton_Critical_Hover_BorderColor);
+    }
+
+    &:active {
+      color: var(--sapButton_Critical_Active_TextColor);
+      background: var(--sapButton_Critical_Active_Background);
+      border-color: var(--sapButton_Critical_Active_BorderColor);
+
+      &::part(button)::after {
+        border-color: var(--sapContent_FocusColor);
+      }
+    }
+  }
+
+  &[data-type='Success'] {
+    text-shadow: var(--sapContent_ContrastTextShadow);
+    color: var(--sapButton_Success_TextColor);
+    background: var(--sapButton_Success_Background);
+    border-color: var(--sapButton_Success_BorderColor);
+
+    &::part(button)::after {
+      border-color: var(--sapContent_ContrastFocusColor);
+    }
+
+    &:hover {
+      color: var(--sapButton_Success_Hover_TextColor);
+      background: var(--sapButton_Success_Hover_Background);
+      border-color: var(--sapButton_Success_Hover_BorderColor);
+    }
+
+    &:active {
+      color: var(--sapButton_Success_Active_TextColor);
+      background: var(--sapButton_Success_Active_Background);
+      border-color: var(--sapButton_Success_Active_BorderColor);
+
+      &::part(button)::after {
+        border-color: var(--sapContent_FocusColor);
+      }
+    }
+  }
+}

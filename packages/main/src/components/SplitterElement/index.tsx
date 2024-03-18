@@ -1,26 +1,12 @@
 'use client';
 
-import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useIsomorphicLayoutEffect, useSyncRef, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef, useContext, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 import type { CommonProps } from '../../types/index.js';
-
-const useStyles = createUseStyles(
-  {
-    splitterElement: {
-      display: 'flex',
-      overflow: 'hidden',
-      position: 'relative',
-      willChange: 'flex-basis',
-      minWidth: '0px',
-      minHeight: '0px'
-    }
-  },
-  { name: 'SplitterElement' }
-);
+import { classNames, styleData } from './SplitterElement.module.css.js';
 
 export interface SplitterElementPropTypes extends CommonProps {
   /**
@@ -60,7 +46,8 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
   const defaultFlexStyles = size !== 'auto' ? { flex: `0 1 ${size}` } : { flex: '1 0 min-content', ...safariStyles };
   const [flexStyles, setFlexStyles] = useState(defaultFlexStyles);
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
-  const classes = useStyles();
+
+  useStylesheet(styleData, SplitterElement.displayName);
 
   useEffect(() => {
     const elementObserver = new ResizeObserver(([element]) => {
@@ -101,7 +88,7 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
   return (
     <div
       ref={componentRef}
-      className={clsx(classes.splitterElement, classes[vertical ? 'vertical' : 'horizontal'], className)}
+      className={clsx(classNames.splitterElement, className)}
       style={{
         minHeight: vertical && minSize ? `${minSize}px` : undefined,
         minWidth: !vertical && minSize ? `${minSize}px` : undefined,
