@@ -1,17 +1,14 @@
 'use client';
 
-import { debounce, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, DependencyList, ReactElement } from 'react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 import type { CommonProps } from '../../types/index.js';
 import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
-import { styles } from './SplitterLayout.jss.js';
+import { classNames, styleData } from './SplitterLayout.module.css.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements.js';
-
-const useStyles = createUseStyles(styles, { name: 'SplitterLayout' });
 
 interface SplitterLayoutOptions {
   /**
@@ -61,7 +58,6 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
   const { vertical, children, title, style, className, options, ...rest } = props;
   const [componentRef, sLRef] = useSyncRef(ref);
   const [reset, setReset] = useState(undefined);
-  const classes = useStyles();
   const prevSize = useRef({ width: undefined, height: undefined });
   const initialChildren = useRef(true);
   const initialCustomDep = useRef(true);
@@ -72,6 +68,8 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
     height: style?.height,
     vertical
   });
+
+  useStylesheet(styleData, SplitterLayout.displayName);
 
   useEffect(() => {
     if (!initialChildren.current && options?.resetOnChildrenChange) {
@@ -127,7 +125,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
         }
         title={title}
         {...rest}
-        className={clsx(classes.splitterLayout, className)}
+        className={clsx(classNames.splitterLayout, className)}
         ref={componentRef}
         data-splitter-vertical={vertical}
       >
