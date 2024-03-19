@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **useStylesheet:** only remove styles when all components are unmounted ([#5616](https://github.com/SAP/ui5-webcomponents-react/issues/5616)) ([0bc5069](https://github.com/SAP/ui5-webcomponents-react/commit/0bc506990140cd5c94b12dc8cd7f17b546ccd97d)), closes [#5608](https://github.com/SAP/ui5-webcomponents-react/issues/5608)
+
 # [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
 
 ### Bug Fixes

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **CalendarLegendItemType:** export enum in root ([#5598](https://github.com/SAP/ui5-webcomponents-react/issues/5598)) ([8b95cae](https://github.com/SAP/ui5-webcomponents-react/commit/8b95cae18700686cf439183ae024d4637acd8cb8))
+- **ObjectPage:** add safeguards for single section spacer calculation ([#5604](https://github.com/SAP/ui5-webcomponents-react/issues/5604)) ([f01d47c](https://github.com/SAP/ui5-webcomponents-react/commit/f01d47cf781914d64c828de71e1d8d43bd217f0d)), closes [#5600](https://github.com/SAP/ui5-webcomponents-react/issues/5600)
+- **ObjectPage:** prevent initially mounting all children in `IconTabBar` mode ([#5601](https://github.com/SAP/ui5-webcomponents-react/issues/5601)) ([9e02606](https://github.com/SAP/ui5-webcomponents-react/commit/9e026063207d5264b75355609c90f630d59c4ed9))
+- **useStylesheet:** only remove styles when all components are unmounted ([#5616](https://github.com/SAP/ui5-webcomponents-react/issues/5616)) ([0bc5069](https://github.com/SAP/ui5-webcomponents-react/commit/0bc506990140cd5c94b12dc8cd7f17b546ccd97d)), closes [#5608](https://github.com/SAP/ui5-webcomponents-react/issues/5608)
+
 # [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
 
 ### Bug Fixes
