@@ -468,18 +468,18 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     const objectPage = objectPageRef.current;
     const sectionNodes = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
     const lastSectionNode = sectionNodes[sectionNodes.length - 1];
+    const tabContainerContainer = tabContainerContainerRef.current;
 
     const observer = new ResizeObserver(([sectionElement]) => {
       const subSections = lastSectionNode.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
       const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
-
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
-      } else {
+      } else if (!!tabContainerContainer) {
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
-            tabContainerContainerRef.current.getBoundingClientRect().bottom -
+            tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
             TAB_CONTAINER_HEADER_HEIGHT
         );
