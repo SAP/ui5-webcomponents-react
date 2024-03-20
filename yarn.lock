@@ -4275,7 +4275,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-a11y@npm:^8.0.2":
+"@storybook/addon-a11y@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/addon-a11y@npm:8.0.2"
   dependencies:
@@ -4349,7 +4349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^8.0.2":
+"@storybook/addon-essentials@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/addon-essentials@npm:8.0.2"
   dependencies:
@@ -4416,7 +4416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/blocks@npm:8.0.2, @storybook/blocks@npm:^8.0.2":
+"@storybook/blocks@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/blocks@npm:8.0.2"
   dependencies:
@@ -4807,7 +4807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-api@npm:8.0.2, @storybook/manager-api@npm:^8.0.2":
+"@storybook/manager-api@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/manager-api@npm:8.0.2"
   dependencies:
@@ -4843,7 +4843,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preview-api@npm:8.0.2, @storybook/preview-api@npm:^8.0.2":
+"@storybook/preview-api@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/preview-api@npm:8.0.2"
   dependencies:
@@ -4882,7 +4882,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-vite@npm:^8.0.2":
+"@storybook/react-vite@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/react-vite@npm:8.0.2"
   dependencies:
@@ -4904,7 +4904,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:8.0.2, @storybook/react@npm:^8.0.2":
+"@storybook/react@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/react@npm:8.0.2"
   dependencies:
@@ -4967,7 +4967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/theming@npm:8.0.2, @storybook/theming@npm:^8.0.2":
+"@storybook/theming@npm:8.0.2":
   version: 8.0.2
   resolution: "@storybook/theming@npm:8.0.2"
   dependencies:
@@ -20623,7 +20623,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:^8.0.2":
+"storybook@npm:8.0.2":
   version: 8.0.2
   resolution: "storybook@npm:8.0.2"
   dependencies:
@@ -21780,14 +21780,14 @@ __metadata:
     "@babel/preset-typescript": "npm:7.23.3"
     "@cypress/code-coverage": "npm:^3.10.0"
     "@semantic-release/github": "npm:^10.0.0"
-    "@storybook/addon-a11y": "npm:^8.0.2"
-    "@storybook/addon-essentials": "npm:^8.0.2"
-    "@storybook/blocks": "npm:^8.0.2"
-    "@storybook/manager-api": "npm:^8.0.2"
-    "@storybook/preview-api": "npm:^8.0.2"
-    "@storybook/react": "npm:^8.0.2"
-    "@storybook/react-vite": "npm:^8.0.2"
-    "@storybook/theming": "npm:^8.0.2"
+    "@storybook/addon-a11y": "npm:8.0.2"
+    "@storybook/addon-essentials": "npm:8.0.2"
+    "@storybook/blocks": "npm:8.0.2"
+    "@storybook/manager-api": "npm:8.0.2"
+    "@storybook/preview-api": "npm:8.0.2"
+    "@storybook/react": "npm:8.0.2"
+    "@storybook/react-vite": "npm:8.0.2"
+    "@storybook/theming": "npm:8.0.2"
     "@testing-library/cypress": "npm:^10.0.0"
     "@types/node": "npm:^20.0.0"
     "@types/react": "npm:^18.2.23"
@@ -21833,7 +21833,7 @@ __metadata:
     react-textarea-autosize: "npm:^8.5.3"
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.0"
-    storybook: "npm:^8.0.2"
+    storybook: "npm:8.0.2"
     tocbot: "npm:^4.12.0"
     turndown: "npm:^7.0.0"
     typedoc: "npm:^0.25.0"
