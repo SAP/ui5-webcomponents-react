@@ -10,38 +10,7 @@ npm install @ui5/webcomponents-react-base
 
 ## Usage
 
-This package is a collection of internal utils for the `@ui5/webcomponents-react` project and is not intended to be used
-as a standalone library in applications. The only intended public usage is running the codemod cli:
-
-_The codemod cli is exposed starting from `@ui5/webcomponents-react-base@0.16.2`._
-
-```shell
-# if you only have .js and .jsx files in your project
-npx ui5wcr-codemod [transformer-name] [file-or-directory-to-run-on]
-
-# if you are using TypeScript (.ts and .tsx)
-npx ui5wcr-codemod [transformer-name] [file-or-directory-to-run-on] --typescript
-```
-
-### Available Transformers
-
-#### `transformLibToDist`
-
-`@ui5/webcomponents-react@0.15.0` changed all import paths from `/lib` to `/dist`. You can migrate your codebase (e.g. your `src` folder) by running:
-
-```shell
-npx ui5wcr-codemod transformLibToDist src
-# add --typescript if you are using TypeScript
-```
-
-#### `renamePropsV18`
-
-`@ui5/webcomponents-react@0.18.0` renamed lots of props in order to have a more consistent API. You can migrate your codebase (e.g. your `src` folder) by running:
-
-```shell
-npx ui5wcr-codemod renamePropsV18 src
-# add --typescript if you are using TypeScript
-```
+This package is a collection of utils for the `@ui5/webcomponents-react` project. Please only use [public utils](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-public-utils--docs) described in our documentation, as all others are not subject to semantic versioning and can therefore change without notice.
 
 ## Contribute
 
