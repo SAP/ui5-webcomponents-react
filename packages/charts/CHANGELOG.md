@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **deps:** update dependency react-content-loader to v7 ([#5587](https://github.com/SAP/ui5-webcomponents-react/issues/5587)) ([86479e3](https://github.com/SAP/ui5-webcomponents-react/commit/86479e36f3764e868a66f209d7a1b363eb98dda2))
+- **deps:** update dependency recharts to v2.12.3 ([#5614](https://github.com/SAP/ui5-webcomponents-react/issues/5614)) ([c0069e2](https://github.com/SAP/ui5-webcomponents-react/commit/c0069e2f431d416c56a981c067fbd44894a76aa0))
+
 # [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
 
 ### Bug Fixes

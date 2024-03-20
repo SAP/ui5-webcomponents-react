@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **CalendarLegendItemType:** export enum in root ([#5598](https://github.com/SAP/ui5-webcomponents-react/issues/5598)) ([8b95cae](https://github.com/SAP/ui5-webcomponents-react/commit/8b95cae18700686cf439183ae024d4637acd8cb8))
+- **deps:** update dependency react-content-loader to v7 ([#5587](https://github.com/SAP/ui5-webcomponents-react/issues/5587)) ([86479e3](https://github.com/SAP/ui5-webcomponents-react/commit/86479e36f3764e868a66f209d7a1b363eb98dda2))
+- **deps:** update dependency recharts to v2.12.3 ([#5614](https://github.com/SAP/ui5-webcomponents-react/issues/5614)) ([c0069e2](https://github.com/SAP/ui5-webcomponents-react/commit/c0069e2f431d416c56a981c067fbd44894a76aa0))
+- **deps:** update dependency turndown to v7.1.3 ([#5613](https://github.com/SAP/ui5-webcomponents-react/issues/5613)) ([6b2966d](https://github.com/SAP/ui5-webcomponents-react/commit/6b2966d4953514ca531f288b1641cfc2d33cac22))
+- **ObjectPage:** add safeguards for single section spacer calculation ([#5604](https://github.com/SAP/ui5-webcomponents-react/issues/5604)) ([f01d47c](https://github.com/SAP/ui5-webcomponents-react/commit/f01d47cf781914d64c828de71e1d8d43bd217f0d)), closes [#5600](https://github.com/SAP/ui5-webcomponents-react/issues/5600)
+- **ObjectPage:** prevent initially mounting all children in `IconTabBar` mode ([#5601](https://github.com/SAP/ui5-webcomponents-react/issues/5601)) ([9e02606](https://github.com/SAP/ui5-webcomponents-react/commit/9e026063207d5264b75355609c90f630d59c4ed9))
+- **useStylesheet:** only remove styles when all components are unmounted ([#5616](https://github.com/SAP/ui5-webcomponents-react/issues/5616)) ([0bc5069](https://github.com/SAP/ui5-webcomponents-react/commit/0bc506990140cd5c94b12dc8cd7f17b546ccd97d)), closes [#5608](https://github.com/SAP/ui5-webcomponents-react/issues/5608)
+
 # [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
 
 ### Bug Fixes
