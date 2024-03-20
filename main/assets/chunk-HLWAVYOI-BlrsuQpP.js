@@ -1,0 +1,7 @@
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["./index-IhRI2_F9.js","./index-7dsiwP88.js","./index-OjgoNOWw.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
+import{_ as l}from"./iframe-KtFHT45j.js";import{R as o,r as a}from"./index-OjgoNOWw.js";import{c as p}from"./client-YBMdkTkG.js";import{h,i as d,H as E,k as R}from"./index-J4kAUfVD.js";var n=new Map,f=({callback:e,children:t})=>{let r=a.useRef();return a.useLayoutEffect(()=>{r.current!==e&&(r.current=e,e())},[e]),t},x=async(e,t)=>{let r=await w(t);return new Promise(s=>{r.render(o.createElement(f,{callback:()=>s(null)},e))})},_=(e,t)=>{let r=n.get(e);r&&(r.unmount(),n.delete(e))},w=async e=>{let t=n.get(e);return t||(t=p.createRoot(e),n.set(e,t)),t},D={code:h,a:d,...E},g=class extends a.Component{constructor(){super(...arguments),this.state={hasError:!1}}static getDerivedStateFromError(){return{hasError:!0}}componentDidCatch(e){let{showException:t}=this.props;t(e)}render(){let{hasError:e}=this.state,{children:t}=this.props;return e?null:o.createElement(o.Fragment,null,t)}},A=class{constructor(){this.render=async(e,t,r)=>{let s={...D,...t==null?void 0:t.components},c=R;return new Promise((u,i)=>{l(()=>import("./index-IhRI2_F9.js"),__vite__mapDeps([0,1,2]),import.meta.url).then(({MDXProvider:m})=>x(o.createElement(g,{showException:i,key:Math.random()},o.createElement(m,{components:s},o.createElement(c,{context:e,docsParameter:t}))),r)).then(()=>u())})},this.unmount=e=>{_(e)}}};export{A as D,D as d};
