@@ -82,6 +82,12 @@ export class PropTypesRenderer extends AbstractRenderer {
         const descriptionParts = [];
 
         descriptionParts.push(` * ${propDescriptionFormatter(event.description ?? '')}`);
+        if (event._ui5allowPreventDefault) {
+          descriptionParts.push(` *`);
+          descriptionParts.push(
+            ` * __Note__: Call \`event.preventDefault()\` inside the handler of this event to prevent its default action/s.`
+          );
+        }
         if (event.deprecated) {
           descriptionParts.push(` *`);
           if (typeof event.deprecated === 'string') {

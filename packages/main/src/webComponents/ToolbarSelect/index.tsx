@@ -72,6 +72,8 @@ interface ToolbarSelectPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the selected option changes.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
 

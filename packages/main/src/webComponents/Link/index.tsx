@@ -104,6 +104,8 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
   /**
    * Fired when the component is triggered either with a mouse/tap
    * or by using the Enter key.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onClick?: (event: Ui5CustomEvent<LinkDomRef, LinkClickEventDetail>) => void;
 }

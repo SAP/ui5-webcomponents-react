@@ -123,6 +123,8 @@ interface StepInputPropTypes
    * Fired before the value state of the component is updated internally.
    * The event is preventable, meaning that if it's default action is
    * prevented, the component will not update the value state.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onValueStateChange?: (event: Ui5CustomEvent<StepInputDomRef, StepInputValueStateChangeEventDetail>) => void;
 }

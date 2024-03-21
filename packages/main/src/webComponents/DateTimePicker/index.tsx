@@ -186,11 +186,15 @@ interface DateTimePickerPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerChangeEventDetail>) => void;
 
   /**
    * Fired when the value of the component is changed at each key stroke.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onInput?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerInputEventDetail>) => void;
 
@@ -198,6 +202,8 @@ interface DateTimePickerPropTypes
    * Fired before the value state of the component is updated internally.
    * The event is preventable, meaning that if it's default action is
    * prevented, the component will not update the value state.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onValueStateChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }

@@ -93,6 +93,8 @@ interface SwitchDomRef extends Required<SwitchAttributes>, Ui5DomRef {}
 interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof SwitchAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<SwitchDomRef>) => void;
 }

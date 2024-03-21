@@ -96,6 +96,8 @@ interface TreePropTypes
   header?: UI5WCSlotsNode;
   /**
    * Fired when a tree item is activated.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<TreeDomRef, TreeItemClickEventDetail>) => void;
 
@@ -123,6 +125,8 @@ interface TreePropTypes
    * **Note:** You can call `preventDefault()` on the event object to suppress the event, if needed.
    * This may be handy for example if you want to dynamically load tree items upon the user expanding a node.
    * Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
+   *
+   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
 
