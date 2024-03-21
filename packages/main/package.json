@@ -54,7 +54,7 @@
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "~3.1.0",
+    "@tanstack/react-virtual": "~3.2.0",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.1.0",
     "react-jss": "^10.10.0",
