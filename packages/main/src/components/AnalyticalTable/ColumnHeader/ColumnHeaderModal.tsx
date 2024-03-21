@@ -141,7 +141,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   };
 
   const horizontalAlign = (() => {
-    switch (column.hAlign as AnalyticalTableColumnDefinition['hAlign']) {
+    switch (column.hAlign) {
       case TextAlign.Begin:
         return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
       case TextAlign.End:
