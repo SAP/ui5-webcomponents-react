@@ -209,14 +209,14 @@ interface DateRangePickerPropTypes
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerChangeEventDetail>) => void;
 
   /**
    * Fired when the value of the component is changed at each key stroke.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onInput?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerInputEventDetail>) => void;
 
@@ -225,7 +225,7 @@ interface DateRangePickerPropTypes
    * The event is preventable, meaning that if it's default action is
    * prevented, the component will not update the value state.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onValueStateChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }

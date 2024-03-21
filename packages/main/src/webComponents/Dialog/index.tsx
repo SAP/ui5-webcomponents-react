@@ -182,14 +182,14 @@ interface DialogPropTypes
   /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, PopupBeforeCloseEventDetail>) => void;
 
   /**
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }

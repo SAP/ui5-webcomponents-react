@@ -113,7 +113,7 @@ interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, keyof 
   /**
    * Fired when the component checked state changes.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<CheckBoxDomRef>) => void;
 }

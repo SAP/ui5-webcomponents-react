@@ -115,7 +115,7 @@ interface TabContainerPropTypes
   /**
    * Fired when a tab is selected.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerTabSelectEventDetail>) => void;
 }

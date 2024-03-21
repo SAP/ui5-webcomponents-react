@@ -85,7 +85,7 @@ export class PropTypesRenderer extends AbstractRenderer {
         if (event._ui5allowPreventDefault) {
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ` * __Note__: Call \`event.preventDefault()\` inside the handler of this event to prevent its default action/s.`
+            ` * **Note:** Call \`event.preventDefault()\` inside the handler of this event to prevent its default action/s.`
           );
         }
         if (event.deprecated) {

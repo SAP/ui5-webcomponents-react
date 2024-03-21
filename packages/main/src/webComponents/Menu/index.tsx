@@ -93,7 +93,7 @@ interface MenuPropTypes
   /**
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
 
@@ -102,7 +102,7 @@ interface MenuPropTypes
    *
    * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
 
@@ -111,7 +111,7 @@ interface MenuPropTypes
    *
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 

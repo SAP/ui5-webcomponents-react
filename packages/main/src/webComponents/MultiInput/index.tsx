@@ -233,7 +233,7 @@ interface MultiInputPropTypes
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 

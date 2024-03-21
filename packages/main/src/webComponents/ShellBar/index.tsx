@@ -255,7 +255,7 @@ interface ShellBarPropTypes
   /**
    * Fired, when the notification icon is activated.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onNotificationsClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarNotificationsClickEventDetail>) => void;
 
@@ -264,7 +264,7 @@ interface ShellBarPropTypes
    *
    * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onProductSwitchClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProductSwitchClickEventDetail>) => void;
 
@@ -278,7 +278,7 @@ interface ShellBarPropTypes
    *
    * **Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSearchButtonClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchButtonEventDetail>) => void;
 }

@@ -104,7 +104,7 @@ interface CalendarPropTypes
    * **Note:** If you call `preventDefault()` for this event, the component will not
    * create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectedDatesChangeEventDetail>) => void;
 }

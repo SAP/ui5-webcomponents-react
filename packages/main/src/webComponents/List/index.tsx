@@ -130,7 +130,7 @@ interface ListPropTypes
    * Fired when an item is activated, unless the item's `type` property
    * is set to `Inactive`.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<ListDomRef, ListItemClickEventDetail>) => void;
 
@@ -168,7 +168,7 @@ interface ListPropTypes
    * Fired when selection is changed by user interaction
    * in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
    *
-   * __Note__: Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
 }
