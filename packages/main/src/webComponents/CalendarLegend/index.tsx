@@ -50,6 +50,8 @@ interface CalendarLegendPropTypes
  *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of __@ui5/webcomponents__.
  */
 const CalendarLegend = withWebComponent<CalendarLegendPropTypes, CalendarLegendDomRef>(
   'ui5-calendar-legend',

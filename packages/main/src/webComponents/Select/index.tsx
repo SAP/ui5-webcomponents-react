@@ -31,6 +31,8 @@ interface SelectAttributes {
    * as alternative to define the select's dropdown.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
+   *
+   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   menu?: string;
@@ -53,6 +55,8 @@ interface SelectAttributes {
    *
    * **Note:** A read-only component is not editable,
    * but still provides visual feedback upon user interaction.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default false
    */
   readonly?: boolean;
@@ -72,6 +76,8 @@ interface SelectAttributes {
    *
    * **Note:** If the given value does not match any existing option,
    * the first option will get selected.
+   *
+   * **Note:** Available since [v1.20.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.0) of **@ui5/webcomponents**.
    */
   value?: string;
 
@@ -88,6 +94,8 @@ interface SelectDomRef extends Omit<Required<SelectAttributes>, 'menu'>, Ui5DomR
    * as alternative to define the select's dropdown.
    *
    * **Note:** Usage of `SelectMenu` is recommended.
+   *
+   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
    */
   menu: HTMLElement | string | undefined;
 
@@ -135,6 +143,8 @@ interface SelectPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
    */
   label?: UI5WCSlotsNode;
 
@@ -158,6 +168,8 @@ interface SelectPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the selected option changes.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<SelectDomRef, SelectChangeEventDetail>) => void;
 
@@ -169,6 +181,8 @@ interface SelectPropTypes
   /**
    * Fired when the user navigates through the options, but the selection is not finalized,
    * or when pressing the ESC key to revert the current selection.
+   *
+   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
    */
   onLiveChange?: (event: Ui5CustomEvent<SelectDomRef, SelectLiveChangeEventDetail>) => void;
 

@@ -40,6 +40,8 @@ interface BreadcrumbsPropTypes
    * Fires when a `BreadcrumbsItem` is clicked.
    *
    * **Note:** You can prevent browser location change by calling `event.preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<BreadcrumbsDomRef, BreadcrumbsItemClickEventDetail>) => void;
 }

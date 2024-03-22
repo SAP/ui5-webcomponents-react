@@ -31,6 +31,8 @@ interface ShellBarItemPropTypes
     Omit<CommonProps, keyof ShellBarItemAttributes | 'onClick'> {
   /**
    * Fired, when the item is pressed.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onClick?: (event: Ui5CustomEvent<ShellBarItemDomRef, ShellBarItemClickEventDetail>) => void;
 }
@@ -41,8 +43,8 @@ interface ShellBarItemPropTypes
  *
  *
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>(
   'ui5-shellbar-item',

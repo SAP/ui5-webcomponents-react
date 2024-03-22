@@ -44,6 +44,8 @@ interface SelectMenuOptionAttributes {
 
   /**
    * Defines the text of the tooltip that would be displayed for the list item.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 
@@ -105,6 +107,8 @@ interface SelectMenuOptionPropTypes
  *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',

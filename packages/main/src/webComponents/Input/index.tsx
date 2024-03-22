@@ -53,6 +53,8 @@ interface InputAttributes {
 
   /**
    * Defines whether the value will be autcompleted to match an item
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
@@ -80,6 +82,8 @@ interface InputAttributes {
 
   /**
    * Defines whether the clear icon of the input will be shown.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default false
    */
   showClearIcon?: boolean;
@@ -123,6 +127,8 @@ interface InputAttributes {
 interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @returns {void}
    */
   openPicker: () => void;
@@ -210,6 +216,8 @@ interface InputPropTypes
 
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 }

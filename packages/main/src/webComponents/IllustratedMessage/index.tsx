@@ -10,6 +10,8 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 interface IllustratedMessageAttributes {
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents-fiori**.
    */
   accessibleNameRef?: string;
 
@@ -44,6 +46,8 @@ interface IllustratedMessageAttributes {
    *
    * As `IllustratedMessage` adapts itself around the `Illustration`, the other
    * elements of the component are displayed differently on the different breakpoints/illustration sizes.
+   *
+   * **Note:** Available since [v1.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.5.0) of **@ui5/webcomponents-fiori**.
    * @default "Auto"
    */
   size?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
@@ -63,6 +67,8 @@ interface IllustratedMessageAttributes {
    * **Note:** Used for accessibility purposes only.
    *
    * **Note:** Doesn't take effect when `title` slot is being used.
+   *
+   * **Note:** Available since [v1.20.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.0) of **@ui5/webcomponents-fiori**.
    * @default "H2"
    */
   titleLevel?: TitleLevel | keyof typeof TitleLevel;
@@ -108,6 +114,8 @@ interface IllustratedMessagePropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents-fiori**.
    */
   title?: UI5WCSlotsNode;
 }

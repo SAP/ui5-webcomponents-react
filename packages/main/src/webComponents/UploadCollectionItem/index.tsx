@@ -48,6 +48,8 @@ interface UploadCollectionItemAttributes {
   /**
    * The navigated state of the list item.
    * If set to `true`, a navigation indicator is displayed at the end of the list item.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
    * @default false
    */
   navigated?: boolean;
@@ -68,6 +70,8 @@ interface UploadCollectionItemAttributes {
 
   /**
    * Defines the text of the tooltip that would be displayed for the list item.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents-fiori**.
    */
   tooltip?: string;
 
@@ -103,6 +107,8 @@ interface UploadCollectionItemDomRef extends Required<UploadCollectionItemAttrib
    * 	**Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
    * 	- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.
    * 	The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityAttributes: AccessibilityAttributes;
 
@@ -142,6 +148,8 @@ interface UploadCollectionItemPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents-fiori**.
    */
   deleteButton?: UI5WCSlotsNode;
 

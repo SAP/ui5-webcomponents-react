@@ -78,3 +78,7 @@ export function mapWebComponentTypeToPrimitive(type: string): string | null {
       return null;
   }
 }
+
+export function sinceFilter(ui5since: string | undefined) {
+  return ui5since && !ui5since.startsWith('0') && !ui5since.includes('-rc');
+}

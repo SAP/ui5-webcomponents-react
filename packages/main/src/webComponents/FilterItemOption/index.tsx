@@ -29,8 +29,8 @@ interface FilterItemOptionPropTypes
  * For the `FilterItemOption`
  *
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemOptionDomRef>(
   'ui5-filter-item-option',

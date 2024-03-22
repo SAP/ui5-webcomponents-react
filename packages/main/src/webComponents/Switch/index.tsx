@@ -11,6 +11,8 @@ interface SwitchAttributes {
    *
    * **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an `accessibleName`.
    * Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
@@ -19,6 +21,8 @@ interface SwitchAttributes {
    *
    * **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an `accessibleName`.
    * Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
@@ -57,11 +61,15 @@ interface SwitchAttributes {
    * **Note:** When set, a native `input` HTML element
    * will be created inside the component so that it can be submitted as
    * part of an HTML form. Do not use this property unless you need to submit a form.
+   *
+   * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
    */
   name?: string;
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
    * @default false
    */
   required?: boolean;
@@ -84,6 +92,8 @@ interface SwitchAttributes {
    * Defines the tooltip of the component.
    *
    * **Note:** If applicable an external label reference should always be the preferred option to provide context to the `Switch` component over a tooltip.
+   *
+   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 }
@@ -93,6 +103,8 @@ interface SwitchDomRef extends Required<SwitchAttributes>, Ui5DomRef {}
 interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof SwitchAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<SwitchDomRef>) => void;
 }

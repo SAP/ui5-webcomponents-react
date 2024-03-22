@@ -12,12 +12,16 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface TableAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 

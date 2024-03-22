@@ -11,6 +11,8 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface LinkAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
@@ -23,6 +25,8 @@ interface LinkAttributes {
    * Defines the ARIA role of the component.
    *
    * **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   *
+   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    * @default "link"
    */
   accessibleRole?: string;
@@ -90,6 +94,8 @@ interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
    * - `ListBox`
    * - `Menu`
    * - `Tree`
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibilityAttributes: AccessibilityAttributes;
 }
@@ -104,6 +110,8 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
   /**
    * Fired when the component is triggered either with a mouse/tap
    * or by using the Enter key.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onClick?: (event: Ui5CustomEvent<LinkDomRef, LinkClickEventDetail>) => void;
 }

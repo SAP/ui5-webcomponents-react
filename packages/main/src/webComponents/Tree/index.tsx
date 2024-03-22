@@ -18,11 +18,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface TreeAttributes {
   /**
    * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
   /**
    * Defines the IDs of the elements that label the component.
+   *
+   * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
@@ -96,6 +100,8 @@ interface TreePropTypes
   header?: UI5WCSlotsNode;
   /**
    * Fired when a tree item is activated.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<TreeDomRef, TreeItemClickEventDetail>) => void;
 
@@ -123,6 +129,8 @@ interface TreePropTypes
    * **Note:** You can call `preventDefault()` on the event object to suppress the event, if needed.
    * This may be handy for example if you want to dynamically load tree items upon the user expanding a node.
    * Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
 

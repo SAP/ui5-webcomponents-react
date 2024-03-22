@@ -1,6 +1,6 @@
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
-import { snakeCaseToCamelCase, summaryFormatter } from '../../util/formatters.js';
+import { sinceFilter, snakeCaseToCamelCase, summaryFormatter } from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
@@ -14,6 +14,7 @@ export class ComponentRenderer extends AbstractRenderer {
   private description: string = '';
   private note: string = '';
   private isAbstract: boolean = false;
+  private since: string | undefined;
 
   setDynamicImportPath(value: string) {
     this.dynamicImportPath = value;
@@ -50,6 +51,11 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
+  setSince(value: string | undefined) {
+    this.since = value;
+    return this;
+  }
+
   prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
   }
@@ -57,11 +63,16 @@ export class ComponentRenderer extends AbstractRenderer {
   render(context: WebComponentWrapper): string {
     let comment = `/**\n * ${summaryFormatter(this.description)}\n *\n`;
 
-    if (this.isAbstract) {
-      comment += ' * @abstract\n';
-    }
     if (this.note) {
       comment += ` * __Note__: ${this.note}\n`;
+    }
+    if (sinceFilter(this.since)) {
+      comment += ` *\n`;
+      comment += ` * @since [${this.since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${this.since}) of __${context.packageName}__.\n`;
+    }
+
+    if (this.isAbstract) {
+      comment += ' * @abstract\n';
     }
     comment += '*/';
 

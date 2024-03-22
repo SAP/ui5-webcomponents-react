@@ -72,6 +72,8 @@ interface ToolbarSelectPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the selected option changes.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
 
@@ -94,8 +96,10 @@ interface ToolbarSelectPropTypes
  *
  * `import "@ui5/webcomponents/dist/ToolbarSelectOption.js";` (comes with `ToolbarSelect`)
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
+ * @abstract
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',

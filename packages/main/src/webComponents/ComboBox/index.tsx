@@ -41,6 +41,8 @@ interface ComboBoxAttributes {
 
   /**
    * Defines whether the value will be autocompleted to match an item
+   *
+   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
@@ -68,6 +70,8 @@ interface ComboBoxAttributes {
 
   /**
    * Defines whether the clear icon of the combobox will be shown.
+   *
+   * **Note:** Available since [v1.20.1](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.1) of **@ui5/webcomponents**.
    * @default false
    */
   showClearIcon?: boolean;

@@ -13,12 +13,16 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface SegmentedButtonAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.3](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.3) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Defines the component selection mode.
+   *
+   * **Note:** Available since [v1.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
    * @default "SingleSelect"
    */
   mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
@@ -35,6 +39,8 @@ Please use the `selectedItems` property instead.
 
   /**
    * Returns an array of the currently selected items.
+   *
+   * **Note:** Available since [v1.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
    */
   readonly selectedItems: Array<ISegmentedButtonItem>;
 }

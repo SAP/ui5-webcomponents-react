@@ -150,11 +150,15 @@ interface TextAreaPropTypes
 
   /**
    * Fired when textarea is scrolled.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   onScroll?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 
   /**
    * Fired when some text has been selected.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   onSelect?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 }
