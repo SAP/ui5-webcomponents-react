@@ -200,7 +200,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
     },
     [onDataPointClick, preventOnClickCall.current]
   );
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
 
   const xMeasure = measures.find(({ axis }) => axis === 'x');
   const yMeasure = measures.find(({ axis }) => axis === 'y');

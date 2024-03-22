@@ -200,7 +200,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     [onDataPointClick, preventOnClickCall.current]
   );
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures, chartConfig.legendPosition);
