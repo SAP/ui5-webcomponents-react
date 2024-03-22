@@ -18,6 +18,8 @@ interface TabContainerAttributes {
 
   /**
    * Sets the background color of the Tab Container's content as `Solid`, `Transparent`, or `Translucent`.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   contentBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
@@ -31,6 +33,8 @@ interface TabContainerAttributes {
 
   /**
    * Sets the background color of the Tab Container's header as `Solid`, `Transparent`, or `Translucent`.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   headerBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
@@ -63,6 +67,8 @@ all hidden tabs are moved to a select list in the respective overflows and are a
    * **Note:**
    * Only one overflow at the end would be displayed by default,
    * but when set to `StartAndEnd`, there will be two overflows on both ends, and tab order will not change on tab selection.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    * @default "End"
    */
   tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
@@ -110,6 +116,8 @@ interface TabContainerPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   startOverflowButton?: UI5WCSlotsNode;
   /**

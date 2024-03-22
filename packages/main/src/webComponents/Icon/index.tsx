@@ -17,11 +17,15 @@ interface IconAttributes {
 
   /**
    * Defines the accessibility role of the component.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleRole?: string;
 
   /**
    * Defines the component semantic design.
+   *
+   * **Note:** Available since [v1.9.2](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.2) of **@ui5/webcomponents**.
    * @default "Default"
    */
   design?: IconDesign | keyof typeof IconDesign;

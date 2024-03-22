@@ -84,8 +84,8 @@ interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, ke
  * The `WizardStep` component should be used only as slot of the `Wizard` component
  * and should not be used standalone.
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   'ui5-wizard-step',

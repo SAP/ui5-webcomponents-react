@@ -17,12 +17,16 @@ interface ColorPalettePopoverAttributes {
 
   /**
    * Defines the open | closed state of the popover.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default false
    */
   open?: boolean;
 
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   opener?: string;
@@ -51,6 +55,8 @@ interface ColorPalettePopoverAttributes {
 interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string | undefined;
 
@@ -65,6 +71,8 @@ interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAtt
 
   /**
    * Shows the ColorPalettePopover.
+   *
+   * **Note:** Available since [v1.1.1](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.1) of **@ui5/webcomponents**.
    *
    * @deprecated The method is deprecated in favour of `open` and `opener` properties.
    * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
@@ -82,6 +90,8 @@ interface ColorPalettePopoverPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the `ColorPalettePopover` is closed due to user interaction.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    */
   onClose?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef>) => void;
 

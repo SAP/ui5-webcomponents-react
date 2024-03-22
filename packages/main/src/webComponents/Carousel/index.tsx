@@ -24,6 +24,8 @@ interface CarouselAttributes {
 
   /**
    * Defines the carousel's background design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Translucent"
    */
   backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
@@ -71,12 +73,16 @@ interface CarouselAttributes {
 
   /**
    * Defines the page indicator background design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
 
   /**
    * Defines the page indicator border design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
@@ -87,6 +93,8 @@ interface CarouselAttributes {
    *
    * - `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
    * - `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
+   *
+   * **Note:** Available since [v1.10](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10) of **@ui5/webcomponents**.
    * @default "Default"
    */
   pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;

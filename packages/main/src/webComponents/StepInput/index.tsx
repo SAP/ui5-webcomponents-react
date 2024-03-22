@@ -125,6 +125,8 @@ interface StepInputPropTypes
    * prevented, the component will not update the value state.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   onValueStateChange?: (event: Ui5CustomEvent<StepInputDomRef, StepInputValueStateChangeEventDetail>) => void;
 }

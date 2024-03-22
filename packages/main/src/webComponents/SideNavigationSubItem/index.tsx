@@ -9,6 +9,8 @@ interface SideNavigationSubItemAttributes {
    * Defines whether the component is disabled.
    * A disabled component can't be pressed or
    * focused, and it is not in the tab chain.
+   *
+   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
    * @default false
    */
   disabled?: boolean;
@@ -18,6 +20,8 @@ interface SideNavigationSubItemAttributes {
    * If a JavaScript action should be triggered,
    * this should not be set, but instead an event handler
    * for the `click` event should be registered.
+   *
+   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
    */
   href?: string;
 
@@ -48,6 +52,8 @@ interface SideNavigationSubItemAttributes {
    * - `_search`
    *
    * **This property must only be used when the `href` property is set.**
+   *
+   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
    */
   target?: string;
 
@@ -74,8 +80,8 @@ interface SideNavigationSubItemPropTypes
  *
  *
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',

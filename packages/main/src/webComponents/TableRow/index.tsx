@@ -9,6 +9,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface TableRowAttributes {
   /**
    * Indicates if the table row is navigated.
+   *
+   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    * @default false
    */
   navigated?: boolean;

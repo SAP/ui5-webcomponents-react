@@ -86,6 +86,8 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
    * - `ListBox`
    * - `Menu`
    * - `Tree`
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityAttributes: ShellBarAccessibilityAttributes;
 
@@ -94,6 +96,8 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
    *
    * It supports the following fields:
    *  - `logoRole`: the accessibility role for the `logo`
+   *
+   * **Note:** Available since [v1.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.6.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityRoles: ShellBarAccessibilityRoles;
 
@@ -104,6 +108,8 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
    * It supports the following fields:
    * - `profileButtonTitle`: defines the tooltip for the profile button
    * - `logoTitle`: defines the tooltip for the logo
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityTexts: ShellBarAccessibilityTexts;
 

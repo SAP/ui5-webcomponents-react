@@ -12,6 +12,8 @@ interface RatingIndicatorAttributes {
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
@@ -40,12 +42,16 @@ interface RatingIndicatorAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    * @default false
    */
   required?: boolean;
 
   /**
    * Defines the tooltip of the component.
+   *
+   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 

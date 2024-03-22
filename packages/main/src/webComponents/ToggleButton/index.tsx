@@ -18,6 +18,8 @@ interface ToggleButtonAttributes {
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
@@ -25,6 +27,8 @@ interface ToggleButtonAttributes {
    * Describes the accessibility role of the button.
    *
    * **Note:** Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
+   *
+   * **Note:** Available since [v1.23](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23) of **@ui5/webcomponents**.
    * @default "Button"
    */
   accessibleRole?: ButtonAccessibleRole | keyof typeof ButtonAccessibleRole;
@@ -79,6 +83,8 @@ interface ToggleButtonAttributes {
    * Defines the tooltip of the component.
    *
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 
@@ -87,6 +93,8 @@ interface ToggleButtonAttributes {
    *
    * **Note:** For the `type` property to have effect, you must add the following import to your project:
    * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    * @default "Button"
    */
   type?: ButtonType | keyof typeof ButtonType;
@@ -111,6 +119,8 @@ interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef
    * - `Tree`
    *
    * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   accessibilityAttributes: AccessibilityAttributes;
 }

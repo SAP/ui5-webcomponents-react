@@ -8,6 +8,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface OptionAttributes {
   /**
    * Defines the additional text displayed at the end of the option element.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    */
   additionalText?: string;
 
@@ -58,8 +60,8 @@ interface OptionPropTypes extends OptionAttributes, Omit<CommonProps, keyof Opti
  *
  *
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',

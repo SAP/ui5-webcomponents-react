@@ -20,12 +20,16 @@ interface BadgeAttributes {
 
   /**
    * Defines the design type of the component.
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default "Set3"
    */
   design?: BadgeDesign | keyof typeof BadgeDesign;
 
   /**
    * Defines if the default state icon is shown.
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default false
    */
   hideStateIcon?: boolean;
@@ -35,6 +39,8 @@ interface BadgeAttributes {
    *
    * **Note:** The badge cannot be `interactive`
    * when `design` property is `BadgeDesign.Set3`
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default false
    */
   interactive?: boolean;
@@ -44,6 +50,8 @@ interface BadgeAttributes {
    *
    * **Note:** For option "Normal" the text will wrap and the
    * words will not be broken based on hyphenation.
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
@@ -75,6 +83,8 @@ interface BadgePropTypes
    * Fired when the user clicks on an interactive badge.
    *
    * **Note:** The event will be fired if the `interactive` property is `true`
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    */
   onClick?: (event: Ui5CustomEvent<BadgeDomRef>) => void;
 }

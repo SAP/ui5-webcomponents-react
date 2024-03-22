@@ -42,6 +42,8 @@ interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttrib
    *  - `midColumnRole`: the accessibility role for the `midColumn`
    *  - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)
    *  - `endColumnRole`: the accessibility role for the `endColumn`
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityRoles: FlexibleColumnLayoutAccessibilityRoles;
 

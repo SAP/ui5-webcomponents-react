@@ -8,6 +8,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface MenuItemAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
@@ -15,6 +17,8 @@ interface MenuItemAttributes {
    * Defines the `additionalText`, displayed in the end of the menu item.
    *
    * **Note:** The additional text would not be displayed if the item has a submenu.
+   *
+   * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
    */
   additionalText?: string;
 
@@ -22,12 +26,16 @@ interface MenuItemAttributes {
    * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.
    *
    * **Note:** If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
+   *
+   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default false
    */
   busy?: boolean;
 
   /**
    * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.
+   *
+   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default 1000
    */
   busyDelay?: number;
@@ -63,6 +71,8 @@ interface MenuItemAttributes {
 
   /**
    * Defines the text of the tooltip for the menu item.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 }
@@ -88,8 +98,10 @@ interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof 
  *
  *
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of __@ui5/webcomponents__.
+ * @abstract
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',

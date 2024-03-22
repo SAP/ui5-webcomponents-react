@@ -19,11 +19,15 @@ interface ResponsivePopoverAttributes {
 
   /**
    * Defines the IDs of the elements that label the component.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
   /**
    * Allows setting a custom role.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Dialog"
    */
   accessibleRole?: PopupAccessibleRole | keyof typeof PopupAccessibleRole;
@@ -75,12 +79,16 @@ interface ResponsivePopoverAttributes {
 
   /**
    * Indicates if the element is open
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default false
    */
   open?: boolean;
 
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   opener?: string;
@@ -127,6 +135,8 @@ interface ResponsivePopoverDomRef extends Omit<Required<ResponsivePopoverAttribu
 
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string | undefined;
 

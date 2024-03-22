@@ -9,6 +9,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface TimelineAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents-fiori**.
    */
   accessibleName?: string;
 

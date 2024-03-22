@@ -1,6 +1,6 @@
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import dedent from 'dedent';
-import { mapWebComponentTypeToPrimitive, propDescriptionFormatter } from '../../util/formatters.js';
+import { mapWebComponentTypeToPrimitive, propDescriptionFormatter, sinceFilter } from '../../util/formatters.js';
 import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
@@ -85,6 +85,14 @@ export class DomRefRenderer extends AbstractRenderer {
     const descriptionParts = [];
 
     descriptionParts.push(` * ${propDescriptionFormatter(member.description ?? '')}`);
+
+    if (sinceFilter(member._ui5since)) {
+      descriptionParts.push(` *`);
+      descriptionParts.push(
+        ` * **Note:** Available since [v${member._ui5since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${member._ui5since}) of **${context.packageName}**.`
+      );
+    }
+
     if (member.deprecated) {
       descriptionParts.push(` *`);
       if (typeof member.deprecated === 'string') {

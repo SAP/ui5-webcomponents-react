@@ -9,11 +9,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface CheckBoxAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
   /**
    * Receives id(or many ids) of the elements that label the component
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
@@ -42,6 +46,8 @@ interface CheckBoxAttributes {
    * and not in the tab chain. This setting is used for forms in review mode.
    *
    * **Note:** When the property `disabled` is set to `true` this property has no effect.
+   *
+   * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default false
    */
   displayOnly?: boolean;
@@ -83,6 +89,8 @@ interface CheckBoxAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @default false
    */
   required?: boolean;
