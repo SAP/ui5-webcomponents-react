@@ -61,44 +61,49 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-  const paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
+  const paddingLeft = getPadding(row.depth);
   const rowProps = row.getToggleRowExpandedProps();
   const subComponentExpandable =
     typeof renderRowSubComponent === 'function' && !!renderRowSubComponent(row) && !alwaysShowSubComponent;
 
   return (
     <>
-      {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
+      {columnIndex === 0 && (
         // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
-        <span
-          title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
-          style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
-          className={classes.container}
-          aria-expanded={row.isExpanded}
-          aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
-        >
-          {shouldRenderButton ? (
-            <Button
-              icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-              design={ButtonDesign.Transparent}
-              onClick={rowProps.onClick}
-              className={classes.button}
-            />
+        <>
+          {row.canExpand || subComponentExpandable ? (
+            <span
+              title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
+              style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
+              className={classes.container}
+              aria-expanded={row.isExpanded}
+              aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
+            >
+              {shouldRenderButton ? (
+                <Button
+                  icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+                  design={ButtonDesign.Transparent}
+                  onClick={rowProps.onClick}
+                  className={classes.button}
+                />
+              ) : (
+                <Icon
+                  onClick={rowProps.onClick}
+                  interactive
+                  name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+                  data-component-name="AnalyticalTableExpandIcon"
+                  className={classes.icon}
+                />
+              )}
+            </span>
           ) : (
-            <Icon
-              onClick={rowProps.onClick}
-              interactive
-              name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-              data-component-name="AnalyticalTableExpandIcon"
-              className={classes.icon}
+            <span
+              style={{ paddingInlineStart: paddingLeft }}
+              data-component-name="AnalyticalTableNonExpandableCellSpacer"
+              className={clsx(classes.nonExpandableCellSpacer, shouldRenderButton && classes.withExpandableButton)}
             />
           )}
-        </span>
-      ) : (
-        <span
-          style={{ paddingInlineStart: paddingLeft }}
-          className={clsx(classes.nonExpandableCellSpacer, shouldRenderButton && classes.withExpandableButton)}
-        />
+        </>
       )}
       {cell.render('Cell')}
     </>
