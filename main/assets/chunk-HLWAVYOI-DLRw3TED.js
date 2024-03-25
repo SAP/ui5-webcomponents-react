@@ -1,7 +1,0 @@
-function __vite__mapDeps(indexes) {
-  if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-DtGqrCZN.js","./index-Cu9bd8lq.js"]
-  }
-  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
-}
-import{_ as l}from"./iframe-n3P_SYtG.js";import{a as o,r as a}from"./index-Cu9bd8lq.js";import{c as p}from"./client-Cby6Sz3m.js";import{f as h,g as d,H as E,h as f}from"./index-CBGl-KWI.js";var n=new Map,x=({callback:e,children:t})=>{let r=a.useRef();return a.useLayoutEffect(()=>{r.current!==e&&(r.current=e,e())},[e]),t},R=async(e,t)=>{let r=await g(t);return new Promise(s=>{r.render(o.createElement(x,{callback:()=>s(null)},e))})},_=(e,t)=>{let r=n.get(e);r&&(r.unmount(),n.delete(e))},g=async e=>{let t=n.get(e);return t||(t=p.createRoot(e),n.set(e,t)),t},w={code:h,a:d,...E},D=class extends a.Component{constructor(){super(...arguments),this.state={hasError:!1}}static getDerivedStateFromError(){return{hasError:!0}}componentDidCatch(e){let{showException:t}=this.props;t(e)}render(){let{hasError:e}=this.state,{children:t}=this.props;return e?null:o.createElement(o.Fragment,null,t)}},A=class{constructor(){this.render=async(e,t,r)=>{let s={...w,...t==null?void 0:t.components},c=f;return new Promise((u,m)=>{l(()=>import("./index-DtGqrCZN.js"),__vite__mapDeps([0,1]),import.meta.url).then(({MDXProvider:i})=>R(o.createElement(D,{showException:m,key:Math.random()},o.createElement(i,{components:s},o.createElement(c,{context:e,docsParameter:t}))),r)).then(()=>u())})},this.unmount=e=>{_(e)}}};export{A as D,w as d};
