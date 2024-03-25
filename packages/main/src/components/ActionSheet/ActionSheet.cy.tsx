@@ -54,27 +54,27 @@ describe('ActionSheet', () => {
         ))}
       </TestComp>
     );
-    cy.focused().should('have.text', 'Button0');
+    cy.focused().parent().should('have.text', 'Button0');
     cy.realPress('ArrowDown');
-    cy.focused().should('have.text', 'Button1');
+    cy.focused().parent().should('have.text', 'Button1');
     cy.realPress('ArrowRight');
     cy.realPress('ArrowRight');
-    cy.focused().should('have.text', 'Button3');
+    cy.focused().parent().should('have.text', 'Button3');
     cy.realPress('PageUp');
-    cy.focused().should('have.text', 'Button0');
+    cy.focused().parent().should('have.text', 'Button0');
     cy.realPress('PageDown');
-    cy.focused().should('have.text', 'Button5');
+    cy.focused().parent().should('have.text', 'Button5');
     cy.realPress('End');
-    cy.focused().should('have.text', 'Button14');
+    cy.focused().parent().should('have.text', 'Button14');
     cy.realPress('ArrowUp');
-    cy.focused().should('have.text', 'Button13');
+    cy.focused().parent().should('have.text', 'Button13');
     cy.realPress('ArrowLeft');
     cy.realPress('ArrowLeft');
-    cy.focused().should('have.text', 'Button11');
+    cy.focused().parent().should('have.text', 'Button11');
     cy.realPress('PageDown');
-    cy.focused().should('have.text', 'Button14');
+    cy.focused().parent().should('have.text', 'Button14');
     cy.realPress('Home');
-    cy.focused().should('have.text', 'Button0');
+    cy.focused().parent().should('have.text', 'Button0');
 
     // todo: rtl detection of wcr and ui5wc doesn't work for some reason in cypress
     // cy.mount(

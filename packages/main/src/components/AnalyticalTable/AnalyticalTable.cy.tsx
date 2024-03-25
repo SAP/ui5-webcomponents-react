@@ -2522,15 +2522,15 @@ describe('AnalyticalTable', () => {
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowLeft');
     cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '2');
     cy.realPress(['Shift', 'Tab']);
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
 
     const renderSubComp = (row) => {
       if (row.id === '2') {
@@ -2600,23 +2600,23 @@ describe('AnalyticalTable', () => {
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowUp');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowLeft');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowRight');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
 
     cy.mount(
       <AnalyticalTable
