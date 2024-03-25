@@ -321,6 +321,12 @@ describe('AnalyticalTable', () => {
     cy.findByText('1-100').should('be.visible');
   });
 
+  it('tree - no subrows spacer', () => {
+    const data = [...dataTree, { name: 'No Subrows', age: 1337 }];
+    cy.mount(<AnalyticalTable columns={columns} data={data} isTreeTable />);
+    cy.get('[data-component-name="AnalyticalTableNonExpandableCellSpacer"]').should('have.length', 1);
+  });
+
   it('tree selection & filtering', () => {
     const TreeSelectFilterTable = (props: PropTypes) => {
       const [filter, setFilter] = useState('');
