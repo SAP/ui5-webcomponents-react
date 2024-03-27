@@ -226,16 +226,16 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       data-type={type}
     >
       {needsCustomHeader && (
-        <header slot="header" className={classNames.header}>
+        <div slot="header" className={classNames.header}>
           {iconToRender}
           {iconToRender && <span className={classNames.spacer} />}
           <Title id={`${messageBoxId}-title`} level={TitleLevel.H1}>
             {titleToRender()}
           </Title>
-        </header>
+        </div>
       )}
       <Text id={`${messageBoxId}-text`}>{children}</Text>
-      <footer slot="footer" className={classNames.footer}>
+      <div slot="footer" className={classNames.footer}>
         {internalActions.map((action, index) => {
           if (typeof action !== 'string' && isValidElement(action)) {
             return cloneElement<ButtonPropTypes | { 'data-action': string }>(action, {
@@ -263,7 +263,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
           }
           return null;
         })}
-      </footer>
+      </div>
     </Dialog>
   );
 });
