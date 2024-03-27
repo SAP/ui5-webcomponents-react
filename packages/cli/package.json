@@ -1,6 +1,5 @@
 {
   "name": "@ui5/webcomponents-react-cli",
-  "private": true,
   "description": "CLI for UI5 Web Components for React",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
