@@ -7,12 +7,11 @@ import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } fro
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
-import type { ReducedReactNode } from '../../types/index.js';
+import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
 
-type ReducedReactNodeWithBoolean = ReducedReactNode | boolean;
 type FormItemContent =
   | ReducedReactNodeWithBoolean
   | Iterable<ReducedReactNodeWithBoolean>

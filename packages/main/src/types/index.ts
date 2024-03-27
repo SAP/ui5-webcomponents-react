@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode, ReactPortal } from 'react';
 
 export type ReducedReactNode = Exclude<ReactNode, string | number | boolean | ReactPortal | Iterable<ReactNode>>;
+export type ReducedReactNodeWithBoolean = Exclude<ReactNode, string | number | ReactPortal | Iterable<ReactNode>>;
 
 type InternalUI5WCSlotsNode =
   | ReducedReactNode
