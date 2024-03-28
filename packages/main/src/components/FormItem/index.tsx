@@ -7,9 +7,15 @@ import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } fro
 import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
+import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
+
+type FormItemContent =
+  | ReducedReactNodeWithBoolean
+  | Iterable<ReducedReactNodeWithBoolean>
+  | ReactElement /* necessary for React v16 & v17 ReactNode type*/;
 
 export interface FormItemPropTypes {
   /**
@@ -17,9 +23,11 @@ export interface FormItemPropTypes {
    */
   label?: string | ReactElement;
   /**
-   * Content of the FormItem. Can be an arbitrary React Node.
+   * Content of the FormItem.
+   *
+   * __Note:__ Text, numbers and React portals are ignored.
    */
-  children: ReactNode | ReactNode[];
+  children: FormItemContent;
 }
 
 interface InternalProps extends FormItemPropTypes {
