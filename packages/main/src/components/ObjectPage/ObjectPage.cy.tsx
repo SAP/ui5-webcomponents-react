@@ -872,10 +872,11 @@ describe('ObjectPage', () => {
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
     cy.wait(500);
     cy.realPress('Enter');
-    cy.get('@beforeNavigateSpy')
-      .should('have.been.calledTwice')
-      .its('secondCall.args[0].detail')
-      .should('deep.equal', { sectionIndex: 3, sectionId: 'employment', subSectionId: 'employment-job-information' });
+    cy.get('@beforeNavigateSpy').should('have.been.calledTwice').its('secondCall.args[0].detail').should('deep.equal', {
+      sectionIndex: 3,
+      sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
+      subSectionId: 'employment-job-information'
+    });
     cy.get('@sectionChangeSpy').should('not.have.been.called');
   });
 
@@ -976,7 +977,7 @@ const OPContent = [
       <div style={{ height: '400px', width: '100%', background: 'blue' }} />
     </ObjectPageSubSection>
   </ObjectPageSection>,
-  <ObjectPageSection key="3" titleText="Employment" id="employment" aria-label="Employment">
+  <ObjectPageSection key="3" titleText="Employment" id={`~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`} aria-label="Employment">
     <ObjectPageSubSection titleText="Job Information" id="employment-job-information" aria-label="Job Information">
       <div style={{ height: '100px', width: '100%', background: 'orange' }}></div>
     </ObjectPageSubSection>

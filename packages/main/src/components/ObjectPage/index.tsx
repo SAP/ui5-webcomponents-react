@@ -320,7 +320,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const scrollToSectionById = (id?: string, isSubSection = false) => {
     const section = objectPageRef.current?.querySelector<HTMLElement>(
-      `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${id}`
+      `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
     );
     scrollTimeout.current = performance.now() + 500;
     if (section) {
