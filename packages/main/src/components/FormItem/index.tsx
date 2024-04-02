@@ -44,8 +44,7 @@ const useStyles = createUseStyles(
       justifySelf: 'var(--_ui5wcr_form_label_text_align)',
       textAlign: 'var(--_ui5wcr_form_label_text_align)',
       '&[data-label-span="12"]': {
-        justifySelf: 'start',
-        paddingBlockEnd: '0.25rem'
+        justifySelf: 'start'
       },
       '&:has(+ $content > [ui5-checkbox])': {
         alignSelf: 'center'
@@ -68,7 +67,7 @@ const useStyles = createUseStyles(
       gridColumnEnd: 'span var(--_ui5wcr_form_content_span)',
       '&[data-label-span="12"]': {
         gridColumnEnd: 'span 12',
-        paddingBlockEnd: '0.625rem'
+        paddingBlockEnd: '0.75rem'
       }
     },
     lastGroupItem: {
