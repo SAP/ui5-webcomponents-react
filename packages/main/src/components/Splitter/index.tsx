@@ -18,6 +18,7 @@ export interface SplitterPropTypes extends CommonProps {
 
 const verticalPositionInfo = {
   start: 'top',
+  startUppercase: 'Top',
   end: 'bottom',
   position: 'Y',
   positionRect: 'y',
@@ -28,6 +29,7 @@ const verticalPositionInfo = {
 
 const horizontalPositionInfo = {
   start: 'left',
+  startUppercase: 'Left',
   end: 'right',
   position: 'X',
   positionRect: 'x',
@@ -92,6 +94,9 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     }
   };
 
+  /**
+   * If the cursor is dragged outside the splitter (into another SplitterElement or outside the SplitterLayout), SplitterElements should increase/decrease their size to max/min.
+   */
   const handleFallback = (e, touchEvent: boolean) => {
     const prevSibling = localRef.current[isSiblings[0]] as HTMLElement;
     const nextSibling = localRef.current[isSiblings[1]] as HTMLElement;
@@ -102,7 +107,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       : e[`client${positionKeys.position}`];
 
     // left
-    if (currentPos - localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] < 0) {
+    if (currentPos - localRef.current?.[`offset${positionKeys.startUppercase}`] < 0) {
       prevSibling.style.flex = '0 0 0px';
       // Check if minSize is set on previous sibling
       if (prevSibling.style?.[positionKeys.min]) {
@@ -134,14 +139,11 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     }
   };
 
-  const handleSplitterClick = (e) => {
-    e.currentTarget.focus();
-  };
-
   const handleMoveSplitterStart = (e) => {
     if (e.type === 'pointerdown' && e.pointerType !== 'touch') {
       return;
     }
+    e.currentTarget.focus();
     e.preventDefault();
     setIsDragging(e.pointerType ?? 'mouse');
     resizerClickOffset.current = e.nativeEvent[positionKeys.offset];
@@ -245,7 +247,6 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     <div
       className={classNames.splitter}
       tabIndex={0}
-      onClick={handleSplitterClick}
       onKeyDown={onHandleKeyDown}
       onPointerDown={handleMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
@@ -263,9 +264,14 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
           tabIndex={-1}
           icon={vertical ? horizontalGripIcon : verticalGripIcon}
           design={ButtonDesign.Transparent}
+          data-component-name="SplitterLayoutSplitterGrip"
         />
       ) : (
-        <Icon className={classNames.icon} name={vertical ? horizontalGripIcon : verticalGripIcon} />
+        <Icon
+          className={classNames.icon}
+          name={vertical ? horizontalGripIcon : verticalGripIcon}
+          data-component-name="SplitterLayoutSplitterGrip"
+        />
       )}
       <div className={classNames.lineAfter} />
     </div>
