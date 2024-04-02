@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from './index.js';
 
-//todo: remove custom description once JSDoc parsing is fixed
+//todo: remove custom description once JSDoc transforming is fixed
 const description = cem.modules
   .find((item) => item.path === 'dist/Icon.js')
   .declarations.find((item) => item.kind === 'class').description;
