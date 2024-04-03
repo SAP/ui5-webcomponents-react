@@ -1312,7 +1312,15 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
     cy.get('[data-component-name="Loader"]').should('be.visible');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
-    cy.findByText('No Data').should('be.visible');
+    cy.findByText('No data').should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} filterable globalFilterValue="test123" />);
+    cy.findByText('No data found. Try adjusting the filter settings.').should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} filterable />);
+    cy.findByText('Lorem').should('be.visible');
+    cy.findByText('Name').realClick();
+    cy.get('[ui5-input]').typeIntoUi5Input('test123');
+    cy.findByText('Lorem').should('not.exist');
+    cy.findByText('No data found. Try adjusting the filter settings.').should('be.visible');
   });
 
   it('Alternate Row Color', () => {

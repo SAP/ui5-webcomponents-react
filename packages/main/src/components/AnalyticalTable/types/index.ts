@@ -80,6 +80,7 @@ export interface AnalyticalTableState {
   hiddenColumns: string[];
   selectedRowIds: Record<string | number, any>;
   sortBy: Record<string | number, any>[];
+  globalFilter?: string;
   tableClientWidth?: number;
   dndColumn?: string;
   popInColumns?: Record<string | number, any>[];
@@ -418,7 +419,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   showOverlay?: boolean;
   /**
-   * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
+   * Defines the text shown if the data array is empty or a filtered table doesn't return results.
+   *
+   * __Note:__ If `noDataText` isn't set, the default text displayed is "No data". For filtered tables, it will show "No data found. Try adjusting the filter settings." instead.
    */
   noDataText?: string;
   /**
