@@ -150,15 +150,15 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             );
           }
           const cells = lastNonEmptyRow.current.cells;
-
           return (
             <EmptyRow
               key={`empty_row_${virtualRow.index}`}
               virtualRow={virtualRow}
               className={clsx(classes.tr, alternate && classes.alternateRowColor)}
             >
-              {cells.map((item) => {
-                const cellProps = item.getCellProps();
+              {columnVirtualizer.getVirtualItems().map((item) => {
+                const cell = cells[item.index];
+                const cellProps = cell.getCellProps();
                 const {
                   'aria-colindex': _0,
                   'aria-selected': _1,
@@ -173,7 +173,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     data-empty-row-cell="true"
                     tabIndex={-1}
                     aria-hidden
-                    style={{ ...emptyRowCellProps.style, cursor: 'unset' }}
+                    style={{ ...emptyRowCellProps.style, cursor: 'unset', width: item.size }}
                   />
                 );
               })}
