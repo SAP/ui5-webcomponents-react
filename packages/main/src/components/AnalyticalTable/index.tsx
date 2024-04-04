@@ -43,6 +43,8 @@ import {
   FILTERED,
   GROUPED,
   INVALID_TABLE,
+  LIST_NO_DATA,
+  NO_DATA_FILTERED,
   SELECT_ALL,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
@@ -186,6 +188,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   tableInstanceRef.current = useTable(
     {
       columns,
@@ -274,8 +277,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
+
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
   const { triggerScroll } = tableState;
+
+  const noDataTextI18n = i18nBundle.getText(LIST_NO_DATA);
+  const noDataTextFiltered = i18nBundle.getText(NO_DATA_FILTERED);
+  const noDataTextLocal =
+    noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
   const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
   //@ts-expect-error: types are compatible
@@ -720,14 +729,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 )
               );
             })}
-            {loading && rawData?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-            {loading && rawData?.length === 0 && (
+            {loading && rows?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+            {loading && rows?.length === 0 && (
               <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
-            {!loading && rawData?.length === 0 && (
-              <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+            {!loading && rows?.length === 0 && (
+              <NoDataComponent noDataText={noDataTextLocal} className={classes.noDataContainer} style={noDataStyles} />
             )}
-            {rawData?.length > 0 && tableRef.current && (
+            {rows?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
                 rowCollapsedFlag={tableState.rowCollapsed}
                 dispatch={dispatch}
@@ -847,7 +856,6 @@ AnalyticalTable.defaultProps = {
   groupBy: [],
   NoDataComponent: DefaultNoDataComponent,
   LoadingComponent: DefaultLoadingComponent,
-  noDataText: 'No Data',
   reactTableOptions: {},
   tableHooks: [],
   visibleRows: 15,
