@@ -70,12 +70,13 @@ interface SideNavigationSubItemPropTypes
     Omit<CommonProps, keyof SideNavigationSubItemAttributes | 'onClick'> {
   /**
    * Fired when the component is activated either with a
-   * click/tap or by using the Enter or Space key.
+   * click/tap or by using the [Enter] or [Space] keys.
    */
   onClick?: (event: Ui5CustomEvent<SideNavigationSubItemDomRef>) => void;
 }
 
 /**
+ * Represents a single navigation action within `SideNavigationItem`.
  * The `SideNavigationSubItem` is intended to be used inside a `SideNavigationItem` only.
  *
  *

@@ -3,12 +3,15 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
+import { SideNavigationGroup } from '../SideNavigationGroup';
 import * as ComponentStories from './SideNavigation.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.10.0" />
+[//]: # 'todo: remove once `_ui5type.references` is available in CEM again'
+
+<DocsHeader since="0.10.0" subComponents={['SideNavigationItem', 'SideNavigationSubItem', 'SideNavigationGroup']} />
 
 <br />
 
@@ -31,5 +34,10 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <Description of={SideNavigationSubItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationSubItem} />
+
+## SideNavigationGroup
+
+<Description of={SideNavigationGroup} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationGroup} />
 
 <Footer />
