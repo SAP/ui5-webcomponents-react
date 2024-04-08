@@ -18,6 +18,7 @@ export * from './BorderDesign.js';
 export * from './BreadcrumbsDesign.js';
 export * from './BreadcrumbsSeparatorStyle.js';
 export * from './BusyIndicatorSize.js';
+export * from './BusyIndicatorTextPlacement.js';
 export * from './ButtonDesign.js';
 export * from './ButtonType.js';
 export * from './CalendarLegendItemType.js';
