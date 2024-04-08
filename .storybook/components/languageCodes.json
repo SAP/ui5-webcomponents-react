@@ -16,6 +16,10 @@
     "language": "Catalan"
   },
   {
+    "id": "cnr",
+    "language": "Montenegrin"
+  },
+  {
     "id": "cs",
     "language": "Czech"
   },
@@ -112,6 +116,10 @@
     "language": "Latvian"
   },
   {
+    "id": "mk",
+    "language": "Macedonian"
+  },
+  {
     "id": "ms",
     "language": "Malay"
   },
@@ -154,6 +162,10 @@
   {
     "id": "sl",
     "language": "Slovenian"
+  },
+  {
+    "id": "sr",
+    "language": "Serbian"
   },
   {
     "id": "sv",
