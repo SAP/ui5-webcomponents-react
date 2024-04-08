@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/CustomListItem.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -14,6 +15,15 @@ interface CustomListItemAttributes {
    * **Note**: If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
+
+  /**
+   * Defines the highlight state of the list items.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  highlight?: HighlightTypes | keyof typeof HighlightTypes;
 
   /**
    * The navigated state of the list item.
@@ -106,7 +116,7 @@ interface CustomListItemPropTypes
  */
 const CustomListItem = withWebComponent<CustomListItemPropTypes, CustomListItemDomRef>(
   'ui5-li-custom',
-  ['accessibleName', 'tooltip', 'type'],
+  ['accessibleName', 'highlight', 'tooltip', 'type'],
   ['navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

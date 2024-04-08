@@ -49,7 +49,7 @@ interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof To
  * The `Toolbar` provides advanced keyboard handling.
  *
  * - The control is not interactive, but can contain of interactive elements
- * - [TAB] - iterates through elements
+ * - [Tab] - iterates through elements
  *
  *
  *

@@ -152,7 +152,7 @@ interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, keyof 
  *
  * The user can use the following keyboard shortcuts to toggle the checked state of the `CheckBox`.
  *
- * - [SPACE, ENTER] - Toggles between different states: checked, not checked.
+ * - [Space],[Enter] - Toggles between different states: checked, not checked.
  *
  *
  *

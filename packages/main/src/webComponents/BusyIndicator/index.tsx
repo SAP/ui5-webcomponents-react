@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/BusyIndicator.js';
 import type BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
+import type BusyIndicatorTextPlacement from '@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -29,6 +30,12 @@ interface BusyIndicatorAttributes {
    * Defines text to be displayed below the component. It can be used to inform the user of the current operation.
    */
   text?: string;
+
+  /**
+   * Defines the placement of the text.
+   * @default "Bottom"
+   */
+  textPlacement?: BusyIndicatorTextPlacement | keyof typeof BusyIndicatorTextPlacement;
 }
 
 interface BusyIndicatorDomRef extends Required<BusyIndicatorAttributes>, Ui5DomRef {}
@@ -73,7 +80,7 @@ interface BusyIndicatorPropTypes
  */
 const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomRef>(
   'ui5-busy-indicator',
-  ['delay', 'size', 'text'],
+  ['delay', 'size', 'text', 'textPlacement'],
   ['active'],
   [],
   [],

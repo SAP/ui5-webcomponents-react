@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -28,6 +29,15 @@ interface SelectMenuOptionAttributes {
    * when the option gets selected.
    */
   displayText?: string;
+
+  /**
+   * Defines the highlight state of the list items.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  highlight?: HighlightTypes | keyof typeof HighlightTypes;
 
   /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
@@ -112,7 +122,7 @@ interface SelectMenuOptionPropTypes
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['accessibleName', 'displayText', 'tooltip', 'type', 'value'],
+  ['accessibleName', 'displayText', 'highlight', 'tooltip', 'type', 'value'],
   ['disabled', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type UploadState from '@ui5/webcomponents-fiori/dist/types/UploadState.js';
 import type { ReactNode } from 'react';
@@ -44,6 +45,15 @@ interface UploadCollectionItemAttributes {
    * @default false
    */
   hideTerminateButton?: boolean;
+
+  /**
+   * Defines the highlight state of the list items.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents-fiori**.
+   * @default "None"
+   */
+  highlight?: HighlightTypes | keyof typeof HighlightTypes;
 
   /**
    * The navigated state of the list item.
@@ -209,7 +219,7 @@ interface UploadCollectionItemPropTypes
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',
-  ['fileName', 'progress', 'tooltip', 'type', 'uploadState'],
+  ['fileName', 'highlight', 'progress', 'tooltip', 'type', 'uploadState'],
   [
     'disableDeleteButton',
     'fileNameClickable',
