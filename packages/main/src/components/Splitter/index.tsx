@@ -98,6 +98,9 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
    * If the cursor is dragged outside the splitter (into another SplitterElement or outside the SplitterLayout), SplitterElements should increase/decrease their size to max/min.
    */
   const handleFallback = (e, touchEvent: boolean) => {
+    if (!localRef.current) {
+      return;
+    }
     const prevSibling = localRef.current[isSiblings[0]] as HTMLElement;
     const nextSibling = localRef.current[isSiblings[1]] as HTMLElement;
     const prevSiblingRect = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect();
@@ -107,7 +110,10 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       : e[`client${positionKeys.position}`];
 
     // left
-    if (currentPos - localRef.current?.[`offset${positionKeys.startUppercase}`] < 0) {
+    if (
+      !localRef.current.contains(e.target) &&
+      currentPos - localRef.current[`offset${positionKeys.startUppercase}`] + 1 /* border */ < 0
+    ) {
       prevSibling.style.flex = '0 0 0px';
       // Check if minSize is set on previous sibling
       if (prevSibling.style?.[positionKeys.min]) {
