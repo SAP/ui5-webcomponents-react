@@ -10,10 +10,11 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface BreadcrumbsAttributes {
   /**
-   * Defines the visual indication and behavior of the breadcrumbs.
+   * Defines the visual appearance of the last BreadcrumbsItem.
    *
-   * **Note:** The `Standard` breadcrumbs show the current page as the last item in the trail.
-   * The last item contains only plain text and is not a link.
+   * The Breadcrumbs supports two visual appearances for the last BreadcrumbsItem:
+   * - "Standard" - displaying the last item as "current page" (bold and without separator)
+   * - "NoCurrentPage" - displaying the last item as a regular BreadcrumbsItem, followed by separator
    * @default "Standard"
    */
   design?: BreadcrumbsDesign | keyof typeof BreadcrumbsDesign;
@@ -58,15 +59,15 @@ interface BreadcrumbsPropTypes
  * ### Keyboard Handling
  * The `Breadcrumbs` provides advanced keyboard handling.
  *
- * - [F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - If the dropdown arrow is focused - opens/closes the drop-down.
- * - [SPACE, ENTER] - Activates the focused item and triggers the `item-click` event.
- * - [ESC] - Closes the drop-down.
- * - [LEFT] - If the drop-down is closed - navigates one item to the left.
- * - [RIGHT] - If the drop-down is closed - navigates one item to the right.
- * - [UP] - If the drop-down is open - moves focus to the next item.
- * - [DOWN] - If the drop-down is open - moves focus to the previous item.
- * - [HOME] - Navigates to the first item.
- * - [END] - Navigates to the last item.
+ * - [F4], [Alt] + [Up], [Alt] + [Down], [Space], or [Enter] - If the dropdown arrow is focused - opens/closes the drop-down.
+ * - [Space],[Enter] - Activates the focused item and triggers the `item-click` event.
+ * - [Escape] - Closes the drop-down.
+ * - [Left] - If the drop-down is closed - navigates one item to the left.
+ * - [Right] - If the drop-down is closed - navigates one item to the right.
+ * - [Up] - If the drop-down is open - moves focus to the next item.
+ * - [Down] - If the drop-down is open - moves focus to the previous item.
+ * - [Home] - Navigates to the first item.
+ * - [End] - Navigates to the last item.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

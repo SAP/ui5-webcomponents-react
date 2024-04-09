@@ -60,6 +60,17 @@ interface ListAttributes {
   growing?: ListGrowingMode | keyof typeof ListGrowingMode;
 
   /**
+   * Defines the text that will be displayed inside the growing button.
+   *
+   * **Note:** If not specified a built-in text will be displayed.
+   *
+   * **Note:** This property takes effect if the `growing` property is set to the `Button`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   */
+  growingButtonText?: string;
+
+  /**
    * Defines the component header text.
    *
    * **Note:** If `header` is set this property is ignored.
@@ -196,18 +207,18 @@ interface ListPropTypes
  * When a list is focused the user can use the following keyboard
  * shortcuts in order to perform a navigation:
  *
- * - [UP/DOWN] - Navigates up and down the items
- * - [HOME] - Navigates to first item
- * - [END] - Navigates to the last item
+ * - [Up] or [Down] - Navigates up and down the items
+ * - [Home] - Navigates to first item
+ * - [End] - Navigates to the last item
  *
  * The user can use the following keyboard shortcuts to perform actions (such as select, delete),
  * when the `mode` property is in use:
  *
- * - [SPACE] - Select an item (if `type` is 'Active') when `mode` is selection
- * - [DELETE] - Delete an item if `mode` property is `Delete`
+ * - [Space] - Select an item (if `type` is 'Active') when `mode` is selection
+ * - [Delete] - Delete an item if `mode` property is `Delete`
  *
  * #### Fast Navigation
- * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
  * In order to use this functionality, you need to import the following module:
  * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
  *
@@ -230,6 +241,7 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
     'busyDelay',
     'footerText',
     'growing',
+    'growingButtonText',
     'headerText',
     'mode',
     'noDataText',

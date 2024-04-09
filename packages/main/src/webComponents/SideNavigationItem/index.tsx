@@ -89,14 +89,14 @@ interface SideNavigationItemPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the component is activated either with a
-   * click/tap or by using the Enter or Space key.
+   * click/tap or by using the [Enter] or [Space] keys.
    */
   onClick?: (event: Ui5CustomEvent<SideNavigationItemDomRef>) => void;
 }
 
 /**
- * The `SideNavigationItem` is used within `SideNavigation` only.
- * Via the `SideNavigationItem` you control the content of the `SideNavigation`.
+ * Represents a navigation action. It can provide sub items.
+ * The `SideNavigationItem` is used within `SideNavigation` or `SideNavigationGroup` only.
  *
  *
  *

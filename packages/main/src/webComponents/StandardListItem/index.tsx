@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/StandardListItem.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
@@ -32,6 +33,15 @@ interface StandardListItemAttributes {
    * Defines the description displayed right under the item text, if such is present.
    */
   description?: string;
+
+  /**
+   * Defines the highlight state of the list items.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  highlight?: HighlightTypes | keyof typeof HighlightTypes;
 
   /**
    * Defines the `icon` source URI.
@@ -171,7 +181,17 @@ interface StandardListItemPropTypes
  */
 const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardListItemDomRef>(
   'ui5-li',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'description', 'icon', 'image', 'tooltip', 'type'],
+  [
+    'accessibleName',
+    'additionalText',
+    'additionalTextState',
+    'description',
+    'highlight',
+    'icon',
+    'image',
+    'tooltip',
+    'type'
+  ],
   ['iconEnd', 'navigated', 'selected'],
   ['deleteButton', 'imageContent'],
   ['detail-click'],

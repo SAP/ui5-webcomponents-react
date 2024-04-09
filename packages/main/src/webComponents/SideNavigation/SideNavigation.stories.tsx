@@ -5,6 +5,7 @@ import groupIcon from '@ui5/webcomponents-icons/dist/group.js';
 import historyIcon from '@ui5/webcomponents-icons/dist/history.js';
 import homeIcon from '@ui5/webcomponents-icons/dist/home.js';
 import locateMeIcon from '@ui5/webcomponents-icons/dist/locate-me.js';
+import { SideNavigationGroup } from '../SideNavigationGroup/index.js';
 import { SideNavigationItem } from '../SideNavigationItem/index.js';
 import { SideNavigationSubItem } from '../SideNavigationSubItem/index.js';
 import { SideNavigation } from './index.js';
@@ -50,6 +51,29 @@ export const Default: Story = {
           <SideNavigationSubItem text="Local" />
           <SideNavigationSubItem text="Others" />
         </SideNavigationItem>
+      </SideNavigation>
+    );
+  }
+};
+
+export const Grouped: Story = {
+  render: (args) => {
+    return (
+      <SideNavigation {...args}>
+        <SideNavigationGroup text="Group 1" expanded>
+          <SideNavigationItem text="Home" icon={homeIcon} />
+          <SideNavigationItem text="People" expanded icon={groupIcon}>
+            <SideNavigationSubItem text="From My Team" />
+            <SideNavigationSubItem text="From Other Teams" />
+          </SideNavigationItem>
+        </SideNavigationGroup>
+        <SideNavigationGroup text="Group 2">
+          <SideNavigationItem text="Locations" icon={locateMeIcon} selected />
+          <SideNavigationItem text="Events" icon={calendarIcon}>
+            <SideNavigationSubItem text="Local" />
+            <SideNavigationSubItem text="Others" />
+          </SideNavigationItem>
+        </SideNavigationGroup>
       </SideNavigation>
     );
   }

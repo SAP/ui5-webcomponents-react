@@ -69,7 +69,7 @@ interface ProductSwitchItemPropTypes
  * When focused, the user can use the following keyboard
  * shortcuts in order to perform a navigation:
  *
- * - [SPACE/ENTER/RETURN] - Trigger `ui5-click` event
+ * - [Space] / [Enter] or [Return] - Trigger `ui5-click` event
  *
  *
  *

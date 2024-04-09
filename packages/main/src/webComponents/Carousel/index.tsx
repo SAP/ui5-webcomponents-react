@@ -12,6 +12,20 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface CarouselAttributes {
   /**
+   * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   */
+  accessibleName?: string;
+
+  /**
+   * Defines the IDs of the elements that label the input.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   */
+  accessibleNameRef?: string;
+
+  /**
    * Defines the position of arrows.
    *
    * Available options are:
@@ -156,11 +170,11 @@ interface CarouselPropTypes
  * When the `Carousel` is focused the user can navigate between the items
  * with the following keyboard shortcuts:
  *
- * - [UP/DOWN] - Navigates to previous and next item
- * - [LEFT/RIGHT] - Navigates to previous and next item
+ * - [Up] or [Down] - Navigates to previous and next item
+ * - [Left] or [Right] - Navigates to previous and next item
  *
  * ### Fast Navigation
- * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
  * In order to use this functionality, you need to import the following module:
  *
  * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
@@ -172,6 +186,8 @@ interface CarouselPropTypes
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
   [
+    'accessibleName',
+    'accessibleNameRef',
     'arrowsPlacement',
     'backgroundDesign',
     'itemsPerPageL',

@@ -61,7 +61,7 @@ export const SimulateUpload: Story = {
         key={'0'}
         file={null}
         fileName={'file-name.txt'}
-        thumbnail={<img src="https://sap.github.io/ui5-webcomponents/assets/images/logo.png" />}
+        thumbnail={<img src="https://sap.github.io/ui5-webcomponents/images/logo.png" />}
       >
         <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
       </UploadCollectionItem>

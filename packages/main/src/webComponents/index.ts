@@ -70,6 +70,7 @@ export * from './SelectMenuOption/index.js';
 export * from './ShellBar/index.js';
 export * from './ShellBarItem/index.js';
 export * from './SideNavigation/index.js';
+export * from './SideNavigationGroup/index.js';
 export * from './SideNavigationItem/index.js';
 export * from './SideNavigationSubItem/index.js';
 export * from './Slider/index.js';

@@ -34,7 +34,7 @@ export const Default: Story = {
   args: {
     avatar: (
       <Avatar size={AvatarSize.XS}>
-        <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+        <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_1.png" />
       </Avatar>
     ),
     footnotes: (
@@ -86,7 +86,7 @@ export const MultipleNotifications: Story = {
           priority={Priority.High}
           avatar={
             <Avatar size={AvatarSize.XS}>
-              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+              <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_1.png" />
             </Avatar>
           }
           footnotes={

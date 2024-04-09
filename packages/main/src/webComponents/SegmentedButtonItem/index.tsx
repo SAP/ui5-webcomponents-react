@@ -24,11 +24,7 @@ interface SegmentedButtonItemAttributes {
   accessibleNameRef?: string;
 
   /**
-   * Describes the accessibility role of the button.
-   *
-   * **Note:** Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
-   *
-   * **Note:** Available since [v1.23](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23) of **@ui5/webcomponents**.
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Button"
    */
   accessibleRole?: ButtonAccessibleRole | keyof typeof ButtonAccessibleRole;
@@ -85,12 +81,7 @@ interface SegmentedButtonItemAttributes {
   tooltip?: string;
 
   /**
-   * Defines whether the button has special form-related functionality.
-   *
-   * **Note:** For the `type` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Button"
    */
   type?: ButtonType | keyof typeof ButtonType;
@@ -98,25 +89,7 @@ interface SegmentedButtonItemAttributes {
 
 interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
-   *
-   * It supports the following fields:
-   *
-   * - `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   * - `true`
-   * - `false`
-   *
-   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   * - `Dialog`
-   * - `Grid`
-   * - `ListBox`
-   * - `Menu`
-   * - `Tree`
-   *
-   * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
-   *
-   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    */
   accessibilityAttributes: AccessibilityAttributes;
 }
