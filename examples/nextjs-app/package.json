@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.23.3",
-    "@ui5/webcomponents-fiori": "1.23.3",
-    "@ui5/webcomponents-react": "1.26.1",
+    "@ui5/webcomponents": "1.24.0",
+    "@ui5/webcomponents-fiori": "1.24.0",
+    "@ui5/webcomponents-react": "1.27.0",
     "@types/node": "20.12.5",
     "@types/react": "18.2.74",
     "@types/react-dom": "18.2.24",
