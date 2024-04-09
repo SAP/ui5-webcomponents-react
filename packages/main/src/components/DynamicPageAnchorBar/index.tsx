@@ -1,6 +1,7 @@
 'use client';
 
-import iconPushPin from '@ui5/webcomponents-icons/dist/pushpin-off.js';
+import iconPushPinOff from '@ui5/webcomponents-icons/dist/pushpin-off.js';
+import iconPushPinOn from '@ui5/webcomponents-icons/dist/pushpin-on.js';
 import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
 import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
@@ -9,9 +10,10 @@ import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import { createUseStyles } from 'react-jss';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
-import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
+import { cssVarVersionInfoPrefix, getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
+import type { ButtonDomRef } from '../../webComponents/index.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
 const _buttonBaseHeight = `${cssVarVersionInfoPrefix}button_base_height`;
@@ -127,6 +129,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     onHoverToggleButton
   } = props;
 
+  const showHideHeaderBtnRef = useRef<ButtonDomRef>(null);
   const classes = useStyles();
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
@@ -148,6 +151,16 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     }
   }, [headerPinned]);
 
+  useEffect(() => {
+    const tagName = getUi5TagWithSuffix('ui5-button');
+    const showHideHeaderBtn = showHideHeaderBtnRef.current;
+    customElements.whenDefined(tagName).then(() => {
+      if (showHideHeaderBtn) {
+        showHideHeaderBtn.accessibilityAttributes = { expanded: !!headerContentVisible };
+      }
+    });
+  }, [!!headerContentVisible]);
+
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
   };
@@ -156,12 +169,13 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     <section
       data-component-name="DynamicPageAnchorBar"
       style={style}
-      role={a11yConfig?.dynamicPageAnchorBar?.role ?? 'navigation'}
+      role={a11yConfig?.dynamicPageAnchorBar?.role}
       className={showHideHeaderButton || headerContentPinnable ? classes.container : null}
       ref={ref}
     >
       {showHideHeaderButton && (
         <Button
+          ref={showHideHeaderBtnRef}
           icon={!headerContentVisible ? iconArrowDown : iconArrowUp}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(
@@ -180,7 +194,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
       )}
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
-          icon={iconPushPin}
+          icon={headerPinned ? iconPushPinOn : iconPushPinOff}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(classes.anchorBarActionButton, classes.anchorBarActionButtonPinnable)}
           style={anchorButtonVariables}
