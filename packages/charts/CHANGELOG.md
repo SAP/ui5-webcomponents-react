@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.12.4 ([#5665](https://github.com/SAP/ui5-webcomponents-react/issues/5665)) ([ce4f64f](https://github.com/SAP/ui5-webcomponents-react/commit/ce4f64f2fcf39ff182edeea57cf5534e5a663491))
+
+### Features
+
+- update `@ui5/webcomponents` mono repo to `~1.24.0` ([#5682](https://github.com/SAP/ui5-webcomponents-react/issues/5682)) ([0a6ee9e](https://github.com/SAP/ui5-webcomponents-react/commit/0a6ee9e475765fb4f51fbf180028a3699139c0b9))
+
 ## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
 
 ### Bug Fixes
