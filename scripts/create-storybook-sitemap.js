@@ -12,12 +12,12 @@ const options = {
 const { values } = parseArgs({ options });
 
 const storybookDir = resolve(process.cwd(), values.directory);
-const stories = readFileSync(resolve(storybookDir, 'stories.json'), 'utf-8');
+const stories = readFileSync(resolve(storybookDir, 'index.json'), 'utf-8');
 const storiesJson = JSON.parse(stories);
 
-const docs = Object.values(storiesJson.stories)
+const docs = Object.values(storiesJson.entries)
   .filter((story) => {
-    return story.story === 'Docs';
+    return story.name === 'Docs';
   })
   .map((story) => {
     return `?path=/docs/${story.id}`;
