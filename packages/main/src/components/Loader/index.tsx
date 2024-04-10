@@ -1,14 +1,13 @@
 'use client';
 
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import React, { forwardRef, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { LoaderType } from '../../enums/index.js';
 import { PLEASE_WAIT } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
-import { styles } from './Loader.jss.js';
+import { classNames, styleData } from './Loader.module.css.js';
 
 export interface LoaderPropTypes extends CommonProps {
   /**
@@ -27,7 +26,6 @@ export interface LoaderPropTypes extends CommonProps {
   progress?: CSSProperties['width'];
 }
 
-const useStyles = createUseStyles(styles, { name: 'Loader' });
 /**
  * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
@@ -35,10 +33,10 @@ const useStyles = createUseStyles(styles, { name: 'Loader' });
 const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
   const { className, type, progress, slot, style, delay, ...rest } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, Loader.displayName);
   const [isVisible, setIsVisible] = useState(delay === 0);
 
-  const loaderClasses = clsx(classes.loader, className, classes[`loader${type}`]);
+  const loaderClasses = clsx(classNames.loader, className, classNames[`loader${type}`]);
   const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
 
   useEffect(() => {
