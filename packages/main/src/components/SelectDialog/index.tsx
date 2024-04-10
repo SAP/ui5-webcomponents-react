@@ -36,7 +36,7 @@ interface ListDomRefWithPrivateAPIs extends ListDomRef {
 }
 
 export interface SelectDialogPropTypes
-  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'>,
+  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children' | 'state'>,
     Pick<ListPropTypes, 'growing' | 'onLoadMore'> {
   /**
    * Defines the list items of the component.
