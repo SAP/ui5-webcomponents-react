@@ -19,13 +19,6 @@
   }
 }
 
-.helpText {
-  font-family: var(--sapFontFamily);
-  font-size: var(--sapFontSize);
-  color: var(--sapTextColor);
-  font-weight: normal;
-}
-
 .cardHeaderClickable {
   cursor: pointer;
 }
@@ -58,7 +51,7 @@
   white-space: normal;
   word-wrap: break-word;
   overflow: hidden;
-  text-align: left;
+  text-align: start;
   text-overflow: ellipsis;
   margin: 0.5rem 0 0;
   width: 100%;
@@ -76,7 +69,7 @@
   -webkit-box-orient: vertical;
   white-space: normal;
   word-wrap: break-word;
-  text-align: left;
+  text-align: start;
   text-overflow: ellipsis;
 }
 
@@ -84,7 +77,7 @@
   font-size: var(--sapFontSmallSize);
   color: var(--sapTile_TextColor);
   line-height: normal;
-  text-align: right;
+  text-align: end;
   margin-inline-start: 1rem;
   margin-block-start: 0.125rem;
 }
@@ -93,12 +86,6 @@
   margin-inline-start: 0.25rem;
   padding-inline-start: 0.25rem;
   border-inline-start: 1px solid var(--sapTile_TextColor);
-}
-
-.helpIcon {
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 
 .kpiContent {
@@ -113,7 +100,7 @@
   justify-content: flex-start;
   position: relative;
   white-space: nowrap;
-  text-align: right;
+  text-align: end;
   text-overflow: ellipsis;
   font-size: 2.25rem;
   font-family: var(--sapFontFamily);
@@ -177,9 +164,9 @@
   font-weight: normal;
   white-space: normal;
   overflow: hidden;
-  text-align: left;
+  text-align: start;
   text-overflow: ellipsis;
-  margin-top: 0.25rem;
+  margin-block-start: 0.25rem;
   width: 100%;
   display: -webkit-box;
   line-height: 14px;
