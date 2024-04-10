@@ -92,7 +92,7 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
     <div
       ref={ref}
       className={gridClasses}
-      style={{ gridRowGap: vSpacing, gridColumnGap: hSpacing, ...style }}
+      style={{ rowGap: vSpacing, columnGap: hSpacing, ...style }}
       slot={slot}
       {...rest}
     >
