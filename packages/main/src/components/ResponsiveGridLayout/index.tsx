@@ -98,8 +98,8 @@ const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutProp
       className={finalClassNames}
       style={
         {
-          gridRowGap: rowGap,
-          gridColumnGap: columnGap,
+          rowGap: rowGap,
+          columnGap: columnGap,
           '--_ui5wcr-rgl-columns-s': columnsS,
           '--_ui5wcr-rgl-columns-m': columnsM,
           '--_ui5wcr-rgl-columns-l': columnsL,
