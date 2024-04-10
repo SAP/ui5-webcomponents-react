@@ -1,6 +1,6 @@
 // copied from https://github.com/SAP/ui5-webcomponents/blob/main/packages/tools/lib/postcss-css-to-esm/index.js
 import scopeVariables from '@ui5/webcomponents-tools/lib/css-processors/scope-variables.mjs';
-import versionInfo from '@ui5/webcomponents-base/dist/generated/versionInfo.js';
+import versionInfo from '@ui5/webcomponents-base/dist/generated/VersionInfo.js';
 import fs from 'node:fs';
 import path, { basename } from 'node:path';
 
