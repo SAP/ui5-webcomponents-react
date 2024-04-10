@@ -1,0 +1,76 @@
+.dialog {
+  &::part(header) {
+    padding-block-end: 0.25rem;
+    flex-direction: column;
+    margin-block-end: 0;
+  }
+
+  &::part(content) {
+    padding: 0;
+  }
+}
+
+.headerContent {
+  display: grid;
+  grid-template-columns: fit-content(100px) minmax(0, 1fr) fit-content(100px);
+  grid-template-areas:
+    'titleStart titleCenter cancel'
+    'input input input';
+  grid-template-rows: var(--_ui5wcr-DialogHeaderHeight) var(--_ui5wcr-DialogSubHeaderHeight);
+  width: 100%;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--sapFontLargeSize);
+  font-family: var(--sapFontHeaderFamily);
+  grid-column-start: titleStart;
+  grid-column-end: titleCenter;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titleCenterAlign {
+  grid-area: titleCenter;
+  justify-self: center;
+}
+
+.hiddenClearBtn {
+  grid-area: titleStart;
+  visibility: hidden;
+}
+
+.clearBtn {
+  grid-area: cancel;
+  justify-self: end;
+}
+
+.input {
+  grid-area: input;
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  box-sizing: border-box;
+
+  > * {
+    margin-inline-start: 0.5rem;
+  }
+}
+
+.inputIcon {
+  cursor: pointer;
+  color: var(--sapContent_IconColor);
+}
+
+.infoBar {
+  padding: 0 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
