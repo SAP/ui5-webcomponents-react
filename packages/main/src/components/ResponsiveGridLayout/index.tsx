@@ -1,11 +1,11 @@
 'use client';
 
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../types/index.js';
-import { ResponsiveGridLayoutStyles } from './ResponsiveGridLayout.jss.js';
+import { classNames, styleData } from './ResponsiveGridLayout.module.css.js';
 
 export interface ResponsiveGridLayoutPropTypes extends CommonProps {
   /**
@@ -64,8 +64,6 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 }
 
-const useStyles = createUseStyles(ResponsiveGridLayoutStyles, { name: 'ResponsiveGridLayout' });
-
 /**
  * The Responsive Grid Layout positions UI elements in a multi-column flow layout.
  * They can be configured to display a variable number of columns depending on available screen size.
@@ -91,8 +89,8 @@ const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutProp
     className,
     ...rest
   } = props;
-  const classes = useStyles();
-  const finalClassNames = clsx(classes.container, className);
+  useStylesheet(styleData, ResponsiveGridLayout.displayName);
+  const finalClassNames = clsx(classNames.container, className);
 
   return (
     <div
@@ -100,8 +98,8 @@ const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutProp
       className={finalClassNames}
       style={
         {
-          gridRowGap: rowGap,
-          gridColumnGap: columnGap,
+          rowGap: rowGap,
+          columnGap: columnGap,
           '--_ui5wcr-rgl-columns-s': columnsS,
           '--_ui5wcr-rgl-columns-m': columnsM,
           '--_ui5wcr-rgl-columns-l': columnsL,
