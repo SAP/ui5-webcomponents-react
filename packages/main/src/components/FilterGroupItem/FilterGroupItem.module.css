@@ -37,7 +37,7 @@
 }
 
 .dialogCellLabel {
-  margin-bottom: 0.25rem;
+  margin-block-end: 0.25rem;
   color: var(--sapTextColor);
 }
 
@@ -67,7 +67,7 @@
     --_ui5wcr-ActiveIconDisplayVariable: none;
     --_ui5wcr-ReorderBtnsDisplay: flex;
     background-color: var(--sapList_SelectionBackgroundColor);
-    border-bottom: 1px solid var(--sapList_SelectionBorderColor);
+    border-block-end: 1px solid var(--sapList_SelectionBorderColor);
   }
 }
 

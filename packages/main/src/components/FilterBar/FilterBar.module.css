@@ -50,13 +50,6 @@
   min-width: 108px;
 }
 
-.loadingContainer {
-  margin-block-end: 0.5rem;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
 .filterBarButtons {
   display: flex;
   align-items: center;
