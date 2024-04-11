@@ -12,31 +12,39 @@
 }
 
 @container (max-width: 599px) {
-  --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_s);
-  --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_s);
-  --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
-  grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+  .form {
+    --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_s);
+    --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_s);
+    --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
+    grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+  }
 }
 
-@container (min-width: 600px) and (max-width: 1023px): {
-  --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_m);
-  --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_m);
-  --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
-  grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+@container (min-width: 600px) and (max-width: 1023px) {
+  .form {
+    --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_m);
+    --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_m);
+    --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
+    grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+  }
 }
 
-@container (min-width: 1024px) and (max-width: 1439px): {
-  --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_l);
-  --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_l);
-  --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
-  grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+@container (min-width: 1024px) and (max-width: 1439px) {
+  .form {
+    --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_l);
+    --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_l);
+    --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
+    grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+  }
 }
 
-@container (min-width: 1440px): {
-  --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_xl);
-  --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_xl);
-  --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
-  grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+@container (min-width: 1440px) {
+  .form {
+    --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_xl);
+    --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_xl);
+    --_ui5wcr_form_content_span: calc(12 - var(--_ui5wcr_form_label_span));
+    grid-template-columns: repeat(calc(12 * var(--_ui5wcr_form_columns)), 1fr);
+  }
 }
 
 .solid {
