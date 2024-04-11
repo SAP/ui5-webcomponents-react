@@ -152,17 +152,17 @@
     background-color: var(--sapList_Hover_Background);
   }
 
-  [data-is-selected] {
+  &[data-is-selected] {
     border-block-end: 1px solid var(--sapList_SelectionBorderColor);
     background-color: var(--sapList_SelectionBackgroundColor);
   }
 
-  [data-is-selected]:hover {
+  &[data-is-selected]:hover {
     background-color: var(--sapList_Hover_SelectionBackground);
   }
 }
 
-.trActive:hover {
+.trActive {
   cursor: pointer;
 }
 
