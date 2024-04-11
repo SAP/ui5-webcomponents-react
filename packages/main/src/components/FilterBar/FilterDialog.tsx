@@ -147,6 +147,7 @@ interface FilterDialogPropTypes {
   onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
   dialogRef: MutableRefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
+  isPhone?: boolean;
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -164,7 +165,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     onAfterFiltersDialogOpen,
     portalContainer,
     dialogRef,
-    enableReordering
+    enableReordering,
+    isPhone
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useIsomorphicId();
@@ -476,6 +478,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           open={open}
           ref={dialogRef}
           data-component-name="FilterBarDialog"
+          data-is-phone={isPhone}
           onAfterClose={handleClose}
           onAfterOpen={onAfterFiltersDialogOpen}
           resizable

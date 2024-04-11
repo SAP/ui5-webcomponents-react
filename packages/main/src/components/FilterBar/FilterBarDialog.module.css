@@ -31,16 +31,14 @@
   }
 }
 
-@media (max-width: 599px) {
-  .dialogComponent {
-    height: 100%;
-    width: 100%;
-    max-height: 100%;
-    max-width: 100%;
-    border-radius: 0;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-  }
+.dialogComponent[data-is-phone='true'] {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
 }
 
 .header {

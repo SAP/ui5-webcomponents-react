@@ -473,6 +473,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           portalContainer={portalContainer}
           dialogRef={dialogRef}
           enableReordering={enableReordering}
+          isPhone={isPhone}
         >
           {safeChildren()}
         </FilterDialog>
