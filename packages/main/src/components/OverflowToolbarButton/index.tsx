@@ -23,6 +23,8 @@ export interface OverflowToolbarButtonPropTypes extends Omit<ButtonPropTypes, 'c
 
 /**
  * The `OverflowToolbarButton` represents a push button that shows its text only when in the overflow area of a `Toolbar`.
+ *
+ * __Note:__ This component is only compatible with the `Toolbar` component and __not__ with `ToolbarV2`.
  */
 const OverflowToolbarButton = forwardRef<ButtonDomRef, OverflowToolbarButtonPropTypes>((props, ref) => {
   const { children, ...rest } = props;

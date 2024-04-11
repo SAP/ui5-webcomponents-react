@@ -1,7 +1,17 @@
 // copied from https://github.com/SAP/ui5-webcomponents/blob/main/packages/tools/lib/postcss-css-to-esm/index.js
-const fs = require('node:fs');
-const path = require('node:path');
-const { basename } = require('node:path');
+import versionInfo from '@ui5/webcomponents-base/dist/generated/VersionInfo.js';
+import fs from 'node:fs';
+import path, { basename } from 'node:path';
+
+// patched version of: import scopeVariables from '@ui5/webcomponents-tools/lib/css-processors/scope-variables.mjs';
+function scopeVariables(cssText, packageJSON) {
+  const escapeVersion = (version) => 'v' + version?.replaceAll(/[^0-9A-Za-z\-_]/g, '-');
+  const versionStr = escapeVersion(packageJSON.version);
+
+  const expr = /(--_?ui5)([-_])([^,:)\s]+)/g;
+
+  return cssText.replaceAll(expr, `$1-${versionStr}$2$3`);
+}
 
 const getTSContent = (targetFile, packageName, css, exportTokens) => {
   const typeImport = `import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/types.js';`;
@@ -19,10 +29,11 @@ const proccessCSS = (css) => {
   css = css.replace(/\.background-image.*{.*}/, '');
   css = css.replace(/\.sapContrast[ ]*:root[\s\S]*?}/, '');
   css = css.replace(/--sapFontUrl.*\);?/, '');
+  css = scopeVariables(css, versionInfo);
   return JSON.stringify(css);
 };
 
-module.exports = function (opts) {
+function cssToEsmPostcssPlugin(opts) {
   opts = opts || {};
 
   const packageName = opts.packageName;
@@ -56,5 +67,8 @@ module.exports = function (opts) {
       }
     }
   };
-};
-module.exports.postcss = true;
+}
+
+cssToEsmPostcssPlugin.postcss = true;
+
+export default cssToEsmPostcssPlugin;
