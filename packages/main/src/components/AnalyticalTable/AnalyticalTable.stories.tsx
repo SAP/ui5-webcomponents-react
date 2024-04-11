@@ -23,9 +23,6 @@ import { AnalyticalTable } from './index.js';
 const meta = {
   title: 'Data Display / AnalyticalTable',
   component: AnalyticalTable,
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   args: {
     data: dataLarge,
     columns: [
