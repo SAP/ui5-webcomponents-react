@@ -7,10 +7,7 @@
     justify-self: start;
   }
 
-  &:has(
-      + .content
-        > *:is([ui5-checkbox], [ui5-checkbox], [ui5-radio-button], [ui5-switch], [ui5-range-slider], [ui5-slider])
-    ) {
+  &:has(+ .content > *:is([ui5-checkbox], [ui5-radio-button], [ui5-switch], [ui5-range-slider], [ui5-slider])) {
     align-self: center;
   }
 }
