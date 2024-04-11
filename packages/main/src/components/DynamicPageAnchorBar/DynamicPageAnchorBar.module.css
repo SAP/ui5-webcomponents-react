@@ -1,0 +1,47 @@
+.container {
+  position: absolute;
+  left: 50%;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 4rem;
+    top: 50%;
+    height: 0.0625rem;
+  }
+
+  &:before {
+    right: 100%;
+    background-image: linear-gradient(to left, var(--sapObjectHeader_BorderColor), transparent);
+  }
+
+  &:after {
+    left: 100%;
+    background-image: linear-gradient(to right, var(--sapObjectHeader_BorderColor), transparent);
+  }
+}
+
+.anchorBarActionButton {
+  --_ui5wcr_anchor-btn-center: calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2);
+  position: absolute;
+  inset-block-start: calc(-1 * var(--_ui5wcr_anchor-btn-center));
+  inset-inline-start: calc(50% - var(--_ui5wcr_anchor-btn-center));
+  z-index: 3;
+
+  &:not([pressed]) {
+    background-color: var(--sapObjectHeader_Background);
+  }
+}
+
+.anchorBarActionButtonExpandable {
+  + .anchorBarActionButtonPinnable {
+    inset-inline-start: calc(50% - var(--_ui5wcr_anchor-btn-center) + 1rem);
+  }
+}
+
+.anchorBarActionPinnableAndExpandable {
+  &.anchorBarActionButtonExpandable {
+    inset-inline-start: calc(50% - var(--_ui5wcr_anchor-btn-center) - 1rem);
+  }
+}
