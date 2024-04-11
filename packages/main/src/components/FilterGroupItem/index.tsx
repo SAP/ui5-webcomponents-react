@@ -6,10 +6,9 @@ import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
 import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
 import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import {
   BusyIndicatorSize,
   ButtonDesign,
@@ -18,12 +17,12 @@ import {
   FlexBoxJustifyContent
 } from '../../enums/index.js';
 import {
-  MOVE_TO_TOP,
-  MOVE_UP,
+  DOWN_ARROW,
+  FILTER_DIALOG_REORDER_FILTERS,
   MOVE_DOWN,
   MOVE_TO_BOTTOM,
-  FILTER_DIALOG_REORDER_FILTERS,
-  DOWN_ARROW,
+  MOVE_TO_TOP,
+  MOVE_UP,
   UP_ARROW
 } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
@@ -32,7 +31,7 @@ import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js
 import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
 import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import styles from './FilterGroupItem.jss.js';
+import { classNames, styleData } from './FilterGroupItem.module.css.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';
 
 addCustomCSSWithScoping(
@@ -47,14 +46,12 @@ addCustomCSSWithScoping(
 
 const isMac = isMacFn();
 
-const useStyles = createUseStyles(styles, { name: 'FilterGroupItem' });
-
 /**
  * Represents a filter belonging to the `FilterBar`.
  */
 const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & FilterGroupItemInternalProps>(
   (props, ref) => {
-    const classes = useStyles();
+    useStylesheet(styleData, FilterGroupItem.displayName);
     const {
       groupName = 'default',
       considerGroupName,
@@ -163,9 +160,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           data-required={required}
           data-component-name="FilterBarDialogTableRow"
           className={clsx(
-            classes.dialogTableRow,
-            withReordering && classes.withReorderBtns,
-            withReordering && showBtnsOnHover && classes.withReorderHoverBtns
+            classNames.dialogTableRow,
+            withReordering && classNames.withReorderBtns,
+            withReordering && showBtnsOnHover && classNames.withReorderHoverBtns
           )}
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
@@ -176,9 +173,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           }
         >
           <TableCell data-component-name="FilterBarDialogTableCellFilter">
-            <FlexBox direction={FlexBoxDirection.Column} className={clsx(classes.labelContainer)}>
+            <FlexBox direction={FlexBoxDirection.Column} className={clsx(classNames.labelContainer)}>
               <Label
-                className={classes.dialogCellLabel}
+                className={classNames.dialogCellLabel}
                 title={labelTooltip ?? label}
                 required={required}
                 showColon={!!label && withValues}
@@ -189,13 +186,13 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
             </FlexBox>
           </TableCell>
           {!withValues && isListView && (
-            <TableCell className={classes.dialogActiveCell} data-component-name="FilterBarDialogTableCellActive">
+            <TableCell className={classNames.dialogActiveCell} data-component-name="FilterBarDialogTableCellActive">
               {withReordering && (
                 <FlexBox
                   fitContainer
                   justifyContent={FlexBoxJustifyContent.Center}
                   alignItems={FlexBoxAlignItems.Center}
-                  className={classes.reorderBtnsContainer}
+                  className={classNames.reorderBtnsContainer}
                   data-component-name="FilterBarDialogTableCellReorderBtns"
                 >
                   <Button
@@ -236,7 +233,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                   />
                 </FlexBox>
               )}
-              {active && <Icon name={circleTask2Icon} className={classes.dialogActiveIcon} />}
+              {active && <Icon name={circleTask2Icon} className={classNames.dialogActiveIcon} />}
             </TableCell>
           )}
         </TableRow>
@@ -246,15 +243,15 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     const labelWithGroupName = considerGroupName && groupName !== 'default' ? `${label} (${groupName})` : label;
 
     return (
-      <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classes.filterItem, className)}>
-        <div className={classes.innerFilterItemContainer}>
+      <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classNames.filterItem, className)}>
+        <div className={classNames.innerFilterItemContainer}>
           <FlexBox>
             <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
               {labelWithGroupName}
             </Label>
           </FlexBox>
           {loading ? (
-            <BusyIndicator className={classes.loadingContainer} active size={BusyIndicatorSize.Small} />
+            <BusyIndicator className={classNames.loadingContainer} active size={BusyIndicatorSize.Small} />
           ) : (
             children
           )}

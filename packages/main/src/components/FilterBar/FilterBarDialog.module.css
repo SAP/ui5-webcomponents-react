@@ -1,0 +1,83 @@
+.tHactive {
+  width: 25%;
+
+  &::part(column) {
+    text-align: center;
+  }
+}
+
+.groupPanel {
+  &::part(content) {
+    padding: 0;
+  }
+}
+
+.searchInputContainer {
+  height: var(--_ui5wcr-ToolbarHeight);
+  padding-bottom: 0.25rem;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.dialogComponent {
+  width: 40rem;
+
+  &::part(content),
+  &::part(footer),
+  &::part(header) {
+    padding: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .dialogComponent {
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+  }
+}
+
+.header {
+  width: 100%;
+  padding-inline: 1rem;
+  padding-block: 0.25rem 0;
+
+  * {
+    margin-block: 0.25rem;
+    margin-inline: 0;
+  }
+
+  [ui5-input] {
+    width: 100%;
+  }
+}
+
+.subheaderContainer {
+  padding-block: 0;
+  padding-inline: 1rem;
+  box-shadow: var(--sapContent_HeaderShadow);
+}
+
+.subheader {
+  padding-block-end: 0.25rem;
+
+  [data-component-name='ToolbarContent'] > :last-child {
+    margin: 0;
+  }
+
+  [data-component-name='ToolbarContent'] > :first-child {
+    margin-inline: 0 0.25rem;
+  }
+}
+
+.footer {
+  :not(:last-child) {
+    margin-inline-end: 0.25rem;
+  }
+}

@@ -1,11 +1,10 @@
 'use client';
 
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { debounce, Device, enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement } from 'react';
 import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ToolbarStyle } from '../../enums/index.js';
 import {
   ADAPT_FILTERS,
@@ -23,7 +22,7 @@ import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
-import styles from './FilterBar.jss.js';
+import { classNames, styleData } from './FilterBar.module.css.js';
 import { FilterDialog } from './FilterDialog.js';
 import type { FilterBarChild, FilterBarPropTypes, ReactKeyWithoutBigInt, SafeChildrenFn } from './types.js';
 import { filterValue, renderSearchWithValue, syncRef } from './utils.js';
@@ -41,7 +40,6 @@ const resizeObserverEntryWidth = (entry) => {
   return entry.target.getBoundingClientRect().width;
 };
 
-const useStyles = createUseStyles(styles, { name: 'FilterBar' });
 /**
  * The `FilterBar` displays filters in a user-friendly manner to populate values for a query. It consists of a row containing the `VariantManagement` or a title, the related buttons, and an area underneath displaying the filters. The filters are arranged in a logical row that is divided depending on the space available and the width of the filters. The area containing the filters can be hidden or shown using the "Hide FilterBar / Show FilterBar" button, the "Filters" button shows the filter dialog.
  In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting the respective checkbox.
@@ -142,11 +140,11 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   }, [setShowFilters, hideToolbar, filterBarCollapsed]);
 
-  const classes = useStyles();
+  useStylesheet(styleData, FilterBar.displayName);
 
   const filterAreaClasses = clsx(
-    classes.filterArea,
-    showFilters && (!isPhone || (isPhone && hideToolbar)) ? classes.filterAreaOpen : classes.filterAreaClosed
+    classNames.filterArea,
+    showFilters && (!isPhone || (isPhone && hideToolbar)) ? classNames.filterAreaOpen : classNames.filterAreaClosed
   );
 
   const getFilterElements = () => {
@@ -318,7 +316,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   };
 
-  const cssClasses = clsx(classes.outerContainer, className, !hideToolbar && classes.outerContainerWithToolbar);
+  const cssClasses = clsx(classNames.outerContainer, className, !hideToolbar && classNames.outerContainerWithToolbar);
 
   useEffect(() => {
     prevSearchInputPropsValueRef.current = search?.props?.value;
@@ -343,7 +341,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         <Button
           onClick={handleToggle}
           design={ButtonDesign.Transparent}
-          className={classes.showFiltersBtn}
+          className={classNames.showFiltersBtn}
           aria-live="polite"
         >
           {showFilters ? hideFilterBarText : showFilterBarText}
@@ -450,7 +448,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       // deduct width of buttons container of the empty space in the last row to calculate number of spacers (-1 because of "lastSpacer")
       const numberOfSpacers = Math.floor((emptySpaceLastRow - filterBarButtonsWidth) / firstChildWidth) - 1;
       for (let i = 0; i < numberOfSpacers; i++) {
-        spacers.push(<div key={`filter-spacer-${i}`} className={classes.spacer} />);
+        spacers.push(<div key={`filter-spacer-${i}`} className={classNames.spacer} />);
       }
       return spacers;
     }
@@ -487,7 +485,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         {...rest}
       >
         {!hideToolbar && (
-          <Toolbar className={classes.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
+          <Toolbar className={classNames.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
             {header}
             {hasButtons && <ToolbarSpacer />}
             {ToolbarButtons}
@@ -502,7 +500,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           >
             {search && (
               <FilterGroupItem visibleInFilterBar data-with-toolbar={!hideToolbar}>
-                <div ref={searchRef} className={classes.searchContainer}>
+                <div ref={searchRef} className={classNames.searchContainer}>
                   {renderSearchWithValue(search, searchValue, {
                     placeholder: searchText,
                     icon: <Icon name={searchIcon} />,
@@ -521,9 +519,9 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
                     width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
                     minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px'
                   }}
-                  className={classes.lastSpacer}
+                  className={classNames.lastSpacer}
                 >
-                  <div className={classes.filterBarButtons} ref={filterBarButtonsRef}>
+                  <div className={classNames.filterBarButtons} ref={filterBarButtonsRef}>
                     {ToolbarButtons}
                   </div>
                 </div>

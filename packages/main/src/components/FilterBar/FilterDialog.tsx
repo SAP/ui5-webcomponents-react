@@ -1,11 +1,10 @@
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react';
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import {
   BarDesign,
   ButtonDesign,
@@ -64,7 +63,7 @@ import { FlexBox } from '../FlexBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
-import styles from './FilterBarDialog.jss.js';
+import { classNames, styleData } from './FilterBarDialog.module.css.js';
 import type { FilterBarPropTypes } from './types.js';
 import { filterValue, syncRef } from './utils.js';
 
@@ -127,8 +126,6 @@ const compareObjects = (firstObj, secondObj) =>
     Object.keys(secondObj).every((second) => firstObj[second] !== secondObj[first])
   );
 
-const useStyles = createUseStyles(styles, { name: 'FilterBarDialog' });
-
 interface FilterDialogPropTypes {
   filterBarRefs: any;
   open: boolean;
@@ -169,7 +166,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     dialogRef,
     enableReordering
   } = props;
-  const classes = useStyles();
+  useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useIsomorphicId();
   const [searchString, setSearchString] = useState('');
   const [toggledFilters, setToggledFilters] = useState({});
@@ -442,7 +439,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         return (
           <Panel
             headerText={item === 'default' ? basicText : item}
-            className={classes.groupPanel}
+            className={classNames.groupPanel}
             key={`${item === 'default' ? basicText : item}${index}`}
           >
             <Table
@@ -483,7 +480,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           onAfterOpen={onAfterFiltersDialogOpen}
           resizable
           draggable
-          className={classes.dialogComponent}
+          className={classNames.dialogComponent}
           preventFocusRestore
           initialFocus={`${uniqueId}-fb-dialog-search`}
           header={
@@ -507,7 +504,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             <Bar
               design={BarDesign.Footer}
               endContent={
-                <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classes.footer}>
+                <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classNames.footer}>
                   <Button
                     ref={okBtnRef}
                     onClick={handleSave}
@@ -528,8 +525,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             />
           }
         >
-          <FlexBox direction={FlexBoxDirection.Column} className={classes.subheaderContainer}>
-            <Toolbar className={classes.subheader} toolbarStyle={ToolbarStyle.Clear}>
+          <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
+            <Toolbar className={classNames.subheader} toolbarStyle={ToolbarStyle.Clear}>
               <Select
                 onChange={handleAttributeFilterChange}
                 title={fieldsByAttributeText}
@@ -570,7 +567,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
                 />
               </SegmentedButton>
             </Toolbar>
-            <FlexBox className={classes.searchInputContainer}>
+            <FlexBox className={classNames.searchInputContainer}>
               <Input
                 id={`${uniqueId}-fb-dialog-search`}
                 noTypeahead
@@ -579,7 +576,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
                 showClearIcon
                 icon={<Icon name={searchIcon} />}
                 ref={dialogSearchRef}
-                className={classes.searchInput}
+                className={classNames.searchInput}
                 data-component-name="FilterBarDialogSearchInput"
               />
             </FlexBox>
@@ -593,7 +590,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             columns={
               <>
                 <TableColumn>{fieldText}</TableColumn>
-                {!showValues && <TableColumn className={classes.tHactive}>{activeText}</TableColumn>}
+                {!showValues && <TableColumn className={classNames.tHactive}>{activeText}</TableColumn>}
               </>
             }
           >
