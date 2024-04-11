@@ -1,0 +1,79 @@
+import{j as t}from"./jsx-runtime-Du8NFWEI.js";import{useMDXComponents as i}from"./index-_byTH_QA.js";import"./chunk-HLWAVYOI-DJ2gfFQL.js";import{M as a}from"./index-Df4SLfph.js";import{F as r}from"./ProjectTemplate-DLXyzwCe.js";import"./index-Dl6G-zuu.js";import"./index-D1_ZHIBm.js";import"./copy-Dz4oTMJU.js";import"./iframe-Cgu3Z_Xz.js";import"../sb-preview/runtime.js";import"./react-18-Bamk9FSf.js";import"./inheritsLoose-D8L2VVdp.js";import"./_baseForOwn-DFjKyXZi.js";import"./mapValues-BvzalXkB.js";import"./_baseUniq-DRxb5hvO.js";import"./index-2V9fy1S2.js";import"./index-DrFu-skq.js";import"./react-jss.esm-BPPChJW9.js";import"./theming.esm-5daRW75o.js";import"./index-C4Z2DdbH.js";import"./UI5Element-Lw3nTtTN.js";import"./Boot-B0Gt2ObV.js";import"./ManagedStyles-DX5mlBXq.js";import"./CustomElementsScopeUtils-CeSGtO6z.js";import"./withWebComponent-zM8JcmxY.js";import"./utils-syHHPmsO.js";import"./useIsomorphicLayoutEffect-gsbYElqV.js";import"./slot-Df15G--e.js";import"./event-CegLCnR0.js";import"./i18nBundle-Duvqe7kG.js";import"./decline-TOiDlE0p.js";import"./Icons-DfCrNAdQ.js";import"./i18n-defaults-CFK4Zk7G.js";import"./information-ooFgY1vE.js";import"./alert-D4nm4k8k.js";import"./class-map-mIG3ftuK.js";import"./Icon-Dbo8BIv6.js";import"./Keys-BgUkNma0.js";import"./parameters-bundle.css-DjgCrOcY.js";import"./Button-BFndOBlc.js";import"./AriaLabelHelper-CzOXVcye.js";import"./MarkedEvents-BPv6Lv4o.js";import"./willShowContent-BOkh0bwj.js";import"./HasPopup-Cecjtg2t.js";import"./i18n-defaults-D1sujP0E.js";import"./index-loc45roa.js";import"./clsx-B-dksMZM.js";import"./index-Cc05QQ_G.js";import"./Label-D6k6fzJu.js";import"./WrappingType-CW8URInd.js";import"./index-CaPha2EA.js";import"./index-2xiDAT_j.js";import"./Link-G_0GWmft.js";import"./index-C_6K3ioR.js";import"./Popover-B7UMWr5A.js";import"./Integer-Dh6YzFpK.js";import"./PopupUtils-DmBeTAQh.js";import"./getActiveElement-BL9Yqj8a.js";import"./PopupsCommon.css-BmjVxBVQ.js";import"./FocusableElements-4YGFH9ta.js";import"./isElementHidden-Bpu2V8BK.js";import"./getEffectiveScrollbarStyle-DWzHjL-d.js";import"./ResizeHandler-OFvM0oAF.js";import"./MediaRange-CQ-a3KRn.js";import"./style-map-CweQHFZo.js";import"./BrowserScrollbar.css-B3MoNUKh.js";import"./index-D9yM4vYh.js";import"./i18n-defaults-Ck1tOeoE.js";import"./I18nContext-BcGksm2n.js";import"./ThemingParameters--AGRs54p.js";import"./index-BPVTr8FI.js";import"./useStylesheet-D5wp95d6.js";import"./ModalsContext-qaxSwC3j.js";import"./addCustomCSSWithScoping-de5_lUMj.js";import"./index-M5EhQ5Lx.js";import"./index-BWcJ3XII.js";import"./Avatar-CHcvLeex.js";import"./employee-C3y4a2zL.js";import"./index-B9R_3nq3.js";function o(n){const e={a:"a",code:"code",h1:"h1",p:"p",pre:"pre",strong:"strong",...i(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"IDs via dataset"}),`
+`,t.jsx(e.h1,{id:"using-dataset-as-container-for-ids-and-other-values",children:"Using dataset as container for IDs and other values"}),`
+`,t.jsxs(e.p,{children:["Many components like the ",t.jsx(e.code,{children:"Select"}),", ",t.jsx(e.code,{children:"List"}),", ",t.jsx(e.code,{children:"Table"}),`, etc. are registering an event that handles the selection of child elements/components.
+In the handler of the event you receive the corresponding element(s), where you can e.g. access the `,t.jsx(e.code,{children:"textContent"})," to retrieve the selected text."]}),`
+`,t.jsxs(e.p,{children:[`In many cases the "text" is only there for users of the application, the actual value for e.g. the backend is often an id or a key.
+To also include these in the callback of the event, we recommend using `,t.jsx(e.a,{href:"https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset",rel:"nofollow",children:"HTMLElement.dataset"}),`.
+With the help of the `,t.jsx(e.code,{children:"data-"})," API you can define any primitive value (like numbers, strings) as an attribute on an element. This data will be available on the change event as part of the dataset object of the selected element(s)."]}),`
+`,t.jsx(e.p,{children:"Here you can find a few examples:"}),`
+`,t.jsx(e.p,{children:t.jsx(e.strong,{children:"Select:"})}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const data = [
+  { id: 1, text: 'Option 1' },
+  { id: 2, text: 'Option 2' }
+];
+
+const onChange = (event) => {
+  // event.detail.selectedOption is a reference to the selected HTML Element
+  // dataset contains all attributes that were passed with the data- prefix.
+  console.log(event.detail.selectedOption.dataset.id);
+};
+
+<Select onChange={onChange}>
+  {data.map((item) => (
+    <Option key={item.id} data-id={item.id}>
+      {item.text}
+    </Option>
+  ))}
+</Select>;
+`})}),`
+`,t.jsx(e.p,{children:t.jsx(e.strong,{children:"List:"})}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const onSelectionChange = (event) => {
+  const { targetItem } = event.detail;
+  console.log(targetItem.dataset.custom);
+};
+
+<List mode={ListMode.MultiSelect} onSelectionChange={onSelectionChange}>
+  <StandardListItem additionalText="3" data-custom="custom value of list item 1">
+    List Item 1
+  </StandardListItem>
+  <StandardListItem additionalText="2" data-custom="custom value of list item 2">
+    List Item 2
+  </StandardListItem>
+  <StandardListItem additionalText="1" data-custom="custom value of list item 3">
+    List Item 3
+  </StandardListItem>
+</List>;
+`})}),`
+`,t.jsx(e.p,{children:t.jsx(e.strong,{children:"MultiInput with suggestion items:"})}),`
+`,t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const onTokenDelete = (event) => {
+  const { token } = event.detail;
+  console.log(token.dataset.code);
+};
+const onSuggestionItemSelect = (event) => {
+  const { item } = event.detail;
+  console.log(item.dataset.code);
+};
+
+<MultiInput
+  onTokenDelete={onTokenDelete}
+  onSuggestionItemSelect={onSuggestionItemSelect}
+  showSuggestions
+  tokens={
+    <>
+      <Token data-code="ARG" text="Argentina" />
+      <Token data-code="BGR" text="Bulgaria" />
+      <Token data-code="FIN" text="Finland" />
+      <Token data-code="MEX" text="Mexico" />
+      <Token data-code="PHL" text="Philippines" />
+    </>
+  }
+>
+  <SuggestionItem data-code="GBR" icon="globe" text="United Kingdom" />
+  <SuggestionItem data-code="USA" icon="globe" text="United States" />
+  <SuggestionItem data-code="DEU" icon="globe" text="Germany" />
+  <SuggestionItem data-code="ISL" icon="globe" text="Iceland" />
+  <SuggestionItem data-code="MDA" icon="globe" text="Moldova" />
+  <SuggestionItem data-code="MAR" icon="globe" text="Morocco" />
+</MultiInput>;
+`})}),`
+`,t.jsx(r,{})]})}function Et(n={}){const{wrapper:e}={...i(),...n.components};return e?t.jsx(e,{...n,children:t.jsx(o,{...n})}):o(n)}export{Et as default};
