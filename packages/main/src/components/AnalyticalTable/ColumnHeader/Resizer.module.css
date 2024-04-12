@@ -1,0 +1,15 @@
+.resizer {
+  display: inline-block;
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  inset-block-end: 0;
+  inset-block-start: 0;
+  z-index: 1;
+  cursor: col-resize;
+
+  &:hover,
+  &:active {
+    background-color: var(--sapContent_DragAndDropActiveColor);
+  }
+}

@@ -9,12 +9,12 @@ import {
   useIsomorphicId,
   useIsomorphicLayoutEffect,
   useIsRTL,
+  useStylesheet,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import {
   useColumnOrder,
   useExpanded,
@@ -51,7 +51,7 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { Text } from '../Text/index.js';
-import styles from './AnayticalTable.jss.js';
+import { classNames, styleData } from './AnalyticalTable.module.css.js';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
 import { DefaultColumn } from './defaults/Column/index.js';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
@@ -91,8 +91,6 @@ import { VerticalResizer } from './VerticalResizer.js';
 const sortTypesFallback = {
   undefined: () => undefined
 };
-
-const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
@@ -158,6 +156,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     ...rest
   } = props;
 
+  useStylesheet(styleData, AnalyticalTable.displayName);
+
   useEffect(() => {
     if (props.alwaysShowSubComponent != undefined) {
       deprecationNotice(
@@ -176,8 +176,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
   const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
-
-  const classes = useStyles();
 
   const tableRef = useRef<DivWithCustomScrollProp>(null);
   const parentRef = useRef<DivWithCustomScrollProp>(null);
@@ -218,7 +216,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         tableRef,
         selectionMode,
         selectionBehavior,
-        classes,
+        classes: classNames,
         onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
@@ -641,10 +639,10 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const showVerticalEndBorder = tableState.tableClientWidth > totalSize;
 
   const tableClasses = clsx(
-    classes.table,
+    classNames.table,
     GlobalStyleClasses.sapScrollBar,
-    withNavigationHighlight && classes.hasNavigationIndicator,
-    showVerticalEndBorder && classes.showVerticalEndBorder
+    withNavigationHighlight && classNames.hasNavigationIndicator,
+    showVerticalEndBorder && classNames.showVerticalEndBorder
   );
 
   const handleOnLoadMore = (e) => {
@@ -673,12 +671,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
         <FlexBox
-          className={classes.tableContainerWithScrollBar}
+          className={classNames.tableContainerWithScrollBar}
           data-component-name="AnalyticalTableContainerWithScrollbar"
         >
           {showOverlay && (
             <>
-              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden>
                 {invalidTableA11yText}
               </span>
               <div
@@ -686,7 +684,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
                 role="region"
                 data-component-name="AnalyticalTableOverlay"
-                className={classes.overlay}
+                className={classNames.overlay}
               />
             </>
           )}
@@ -703,8 +701,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             data-native-scrollbar={props['data-native-scrollbar']}
             className={tableClasses}
           >
-            <div className={classes.tableHeaderBackgroundElement} />
-            <div className={classes.tableBodyBackgroundElement} />
+            <div className={classNames.tableHeaderBackgroundElement} />
+            <div className={classNames.tableBodyBackgroundElement} />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {
@@ -734,7 +732,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
             {!loading && rows?.length === 0 && (
-              <NoDataComponent noDataText={noDataTextLocal} className={classes.noDataContainer} style={noDataStyles} />
+              <NoDataComponent
+                noDataText={noDataTextLocal}
+                className={classNames.noDataContainer}
+                style={noDataStyles}
+              />
             )}
             {rows?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
@@ -743,7 +745,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={columnVirtualizer.getTotalSize()}
                 parentRef={parentRef}
-                classes={classes}
+                classes={classNames}
                 infiniteScroll={infiniteScroll}
                 infiniteScrollThreshold={infiniteScrollThreshold}
                 onLoadMore={handleOnLoadMore}
@@ -755,7 +757,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               >
                 <VirtualTableBody
                   scrollContainerRef={scrollContainerRef}
-                  classes={classes}
+                  classes={classNames}
                   prepareRow={prepareRow}
                   rows={rows}
                   itemCount={
@@ -822,7 +824,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       <Text
         aria-hidden="true"
         id={`scaleModeHelper-${uniqueId}`}
-        className={classes.hiddenSmartColMeasure}
+        className={classNames.hiddenSmartColMeasure}
         data-component-name="AnalyticalTableScaleModeHelper"
       >
         {''}
@@ -830,7 +832,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       <Text
         aria-hidden="true"
         id={`scaleModeHelperHeader-${uniqueId}`}
-        className={clsx(classes.hiddenSmartColMeasure, classes.hiddenSmartColMeasureHeader)}
+        className={clsx(classNames.hiddenSmartColMeasure, classNames.hiddenSmartColMeasureHeader)}
         data-component-name="AnalyticalTableScaleModeHelperHeader"
       >
         {''}
