@@ -1,6 +1,6 @@
 'use client';
 
-import { debounce, Device, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactElement, ReactNode } from 'react';
 import React, {
@@ -13,7 +13,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
@@ -24,7 +23,7 @@ import type { ToolbarPropTypes } from '../Toolbar/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ActionsSpacer } from './ActionsSpacer.js';
-import { DynamicPageTitleStyles } from './DynamicPageTitle.jss.js';
+import { classNames, styleData } from './DynamicPageTitle.module.css.js';
 
 export interface DynamicPageTitlePropTypes extends CommonProps {
   /**
@@ -111,8 +110,6 @@ interface InternalProps extends DynamicPageTitlePropTypes {
   'data-is-snapped-rendered-outside'?: boolean;
 }
 
-const useStyles = createUseStyles(DynamicPageTitleStyles, { name: 'DynamicPageTitle' });
-
 const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) =>
   flattenFragments(actions, Infinity).map((action) => {
     if (isValidElement(action)) {
@@ -155,14 +152,14 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
     ...rest
   } = props as InternalProps;
 
-  const classes = useStyles();
+  useStylesheet(styleData, DynamicPageTitle.displayName);
   const [componentRef, dynamicPageTitleRef] = useSyncRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isMounted = useRef(false);
   const [isPhone, setIsPhone] = useState(
     Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
   );
-  const containerClasses = clsx(classes.container, isPhone && classes.phone, className);
+  const containerClasses = clsx(classNames.container, isPhone && classNames.phone, className);
 
   const [actionsOverflowRef, syncedActionsOverflowRef] = useSyncRef<PopoverDomRef>(
     actionsToolbarProps?.overflowPopoverRef ?? null
@@ -243,7 +240,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
           {breadcrumbs && (
-            <div className={classes.breadcrumbs} onClick={stopPropagation}>
+            <div className={classNames.breadcrumbs} onClick={stopPropagation}>
               {breadcrumbs}
             </div>
           )}
@@ -253,7 +250,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
               role={undefined}
               {...navigationActionsToolbarProps}
               overflowButton={navigationActionsToolbarProps?.overflowButton}
-              className={clsx(classes.toolbar, navigationActionsToolbarProps?.className)}
+              className={clsx(classNames.toolbar, navigationActionsToolbarProps?.className)}
               onClick={handleNavigationActionsToolbarClick}
               data-component-name="DynamicPageTitleNavActions"
               onOverflowChange={navigationActionsToolbarProps?.onOverflowChange}
@@ -270,22 +267,22 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       )}
       <FlexBox
         alignItems={FlexBoxAlignItems.Center}
-        className={classes.middleSection}
+        className={classNames.middleSection}
         data-component-name="DynamicPageTitleMiddleSection"
       >
-        <FlexBox className={classes.titleMainSection}>
+        <FlexBox className={classNames.titleMainSection}>
           {header && (
-            <div className={classes.title} data-component-name="DynamicPageTitleHeader">
+            <div className={classNames.title} data-component-name="DynamicPageTitleHeader">
               {header}
             </div>
           )}
           {subHeader && showSubHeaderRight && (
-            <div className={classes.subTitle} data-component-name="DynamicPageTitleSubHeader">
+            <div className={classNames.subTitle} data-component-name="DynamicPageTitleSubHeader">
               {subHeader}
             </div>
           )}
           {children && (
-            <div className={classes.content} data-component-name="DynamicPageTitleContent">
+            <div className={classNames.content} data-component-name="DynamicPageTitleContent">
               {children}
             </div>
           )}
@@ -299,7 +296,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
             design={ToolbarDesign.Auto}
             toolbarStyle={ToolbarStyle.Clear}
             active
-            className={clsx(classes.toolbar, actionsToolbarProps?.className)}
+            className={clsx(classNames.toolbar, actionsToolbarProps?.className)}
             onClick={handleActionsToolbarClick}
             data-component-name="DynamicPageTitleActions"
             onOverflowChange={actionsToolbarProps?.onOverflowChange}
@@ -317,7 +314,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       {subHeader && !showSubHeaderRight && (
         <FlexBox>
           <div
-            className={clsx(classes.subTitle, classes.subTitleBottom)}
+            className={clsx(classNames.subTitle, classNames.subTitleBottom)}
             data-component-name="DynamicPageTitleSubHeader"
           >
             {subHeader}

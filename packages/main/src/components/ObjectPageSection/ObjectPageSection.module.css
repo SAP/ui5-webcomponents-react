@@ -1,0 +1,56 @@
+.section [data-component-name='ObjectPageSubSection']:not(:first-child) {
+  padding-block-start: 0.5rem;
+}
+
+.headerContainer {
+  padding-block: 0.5rem;
+  color: var(--sapGroup_TitleTextColor);
+  font-family: var(--sapFontFamily);
+}
+
+.titleContainer {
+  border-block-start: var(--_ui5wcr_ObjectPage_SectionBorderTop);
+  box-sizing: border-box;
+  height: 2.25rem;
+}
+
+.title {
+  height: var(--_ui5wcr_ObjectPage_SectionTitleHeight);
+  line-height: var(--_ui5wcr_ObjectPage_SectionTitleLineHeight);
+  color: var(--sapGroup_TitleTextColor);
+  font-size: var(--sapFontHeader4Size);
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--_ui5wcr_ObjectPage_SectionTitleFontFamily);
+  text-decoration: var(--_ui5wcr_ObjectPage_SectionTitleTextDecoration);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.wrap {
+  .titleContainer {
+    height: unset;
+  }
+  .title {
+    white-space: normal;
+    height: unset;
+    line-height: normal;
+  }
+}
+
+.sectionContent {
+  white-space: normal;
+  height: 100%;
+}
+
+.sectionContentInner {
+  padding-block: 0.5rem;
+  font-family: var(--sapFontFamily);
+  height: 100%;
+  box-sizing: border-box;
+}

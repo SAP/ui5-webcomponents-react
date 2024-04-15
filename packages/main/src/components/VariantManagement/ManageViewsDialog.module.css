@@ -1,0 +1,46 @@
+.manageViewsDialog {
+  width: 100%;
+
+  &::part(content),
+  &::part(header) {
+    padding: 0;
+  }
+
+  &::part(footer) {
+    padding: 0;
+    border-block-start: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .manageViewsDialog {
+    width: 70vw;
+  }
+}
+
+.headerText {
+  margin: 0;
+  text-align: center;
+  align-self: start;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  display: inline-block;
+  padding-inline-start: 1rem;
+  font-family: '72override', var(--_ui5_popup_header_font_family);
+  font-size: 1rem;
+  min-height: var(--_ui5_popup_default_header_height);
+  max-height: var(--_ui5_popup_default_header_height);
+  line-height: var(--_ui5_popup_default_header_height);
+}
+
+.search {
+  width: calc(100% - 2rem);
+  margin-block-end: 0.5rem;
+}
+
+.inputIcon {
+  cursor: pointer;
+  color: var(--sapContent_IconColor);
+}

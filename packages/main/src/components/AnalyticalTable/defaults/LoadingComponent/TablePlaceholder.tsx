@@ -1,50 +1,11 @@
-import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, FC } from 'react';
 import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { resolveCellAlignment } from '../../util/index.js';
+import { classNames, styleData } from './TablePlaceholder.module.css.js';
 
 const getArrayOfLength = (len) => Array.from(Array(len).keys());
-
-const useStyles = createUseStyles(
-  {
-    '@keyframes placeholderShimmer': {
-      '0%': {
-        backgroundPositionX: '100%'
-      },
-      '100%': {
-        backgroundPositionX: '0'
-      }
-    },
-    animation: {
-      animationDuration: '2s',
-      animationFillMode: 'forwards',
-      animationIterationCount: 'infinite',
-      animationName: '$placeholderShimmer',
-      animationTimingFunction: 'linear',
-      backgroundImage: ThemingParameters.sapContent_Placeholderloading_Gradient,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '1000px 104px'
-    },
-    row: {
-      display: 'flex',
-      alignItems: 'center',
-      height: CssSizeVariables.ui5WcrAnalyticalTableRowHeight
-    },
-    cellContainer: {
-      display: 'flex',
-      paddingInline: '0.25rem',
-      boxSizing: 'border-box'
-    },
-    cell: {
-      height: ThemingParameters.sapFontSize,
-      width: '60%',
-      borderRadius: ThemingParameters.sapElement_BorderCornerRadius
-    }
-  },
-  { name: 'AnalyticalTablePlaceholder ' }
-);
 
 interface TablePlaceholderPropTypes {
   columns: any[];
@@ -55,7 +16,7 @@ interface TablePlaceholderPropTypes {
 export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
   const { columns, rows, style } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, TablePlaceholder.displayName);
 
   return (
     <div
@@ -68,15 +29,15 @@ export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
     >
       {getArrayOfLength(rows).map((_, index) => {
         return (
-          <div className={classes.row} key={`row-${index}`}>
+          <div className={classNames.row} key={`row-${index}`}>
             {columns.map((col) => {
               return (
                 <div
                   key={`row${index}-${col.id}`}
-                  className={classes.cellContainer}
+                  className={classNames.cellContainer}
                   style={{ width: col.totalWidth, ...resolveCellAlignment(col) }}
                 >
-                  <div className={clsx(classes.cell, classes.animation)} />
+                  <div className={clsx(classNames.cell, classNames.animation)} />
                 </div>
               );
             })}

@@ -1,0 +1,39 @@
+.objectPageSubSection:focus {
+  outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  outline-offset: calc(-1 * var(--sapContent_FocusWidth));
+}
+
+.headerContainer {
+  margin-block-end: 0.5rem;
+
+  > :first-child {
+    margin-inline: 0 0.25rem;
+  }
+  > :last-child:not(:first-child) {
+    margin-inline: 0.25rem 0;
+  }
+  > *:not(:first-child):not(:last-child) {
+    margin-inline: 0.25rem;
+  }
+}
+
+.subSectionTitle {
+  font-size: var(--sapFontHeader5Size);
+  color: var(--sapGroup_TitleTextColor);
+  flex-grow: 1;
+}
+
+.subSectionContent {
+  background-color: var(--_ui5wcr_ObjectPage_SubSectionBackgroundColor);
+  border-radius: var(--_ui5wcr_ObjectPage_SubSectionBorderRadius);
+  padding-inline: 0.5rem;
+  padding-block: 1rem;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

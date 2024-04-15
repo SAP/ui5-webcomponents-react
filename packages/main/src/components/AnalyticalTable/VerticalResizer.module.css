@@ -1,0 +1,30 @@
+.container {
+  overflow: hidden;
+  position: relative;
+  height: 5px;
+  text-align: center;
+  cursor: row-resize;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--sapContent_DragAndDropActiveColor);
+    color: var(--sapHighlightTextColor);
+  }
+
+  &:before {
+    font-size: 10px;
+    font-family: var(--sapFontFamily);
+    inset-block-start: 0;
+    position: absolute;
+    content: '⦁⦁⦁⦁';
+    line-height: 5px;
+    pointer-events: none;
+  }
+}
+
+.resizer {
+  position: absolute;
+  opacity: 0.5;
+  background-color: var(--sapContent_DragAndDropActiveColor);
+  height: 5px;
+}

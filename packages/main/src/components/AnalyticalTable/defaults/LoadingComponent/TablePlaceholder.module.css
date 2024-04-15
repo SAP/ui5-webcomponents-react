@@ -1,0 +1,37 @@
+@keyframes placeholderShimmer {
+  0% {
+    background-position-x: 100%;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+
+.animation {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeholderShimmer;
+  animation-timing-function: linear;
+  background-image: var(--sapContent_Placeholderloading_Gradient);
+  background-repeat: no-repeat;
+  background-size: 1000px 104px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  height: var(--_ui5wcr-AnalyticalTableRowHeight);
+}
+
+.cellContainer {
+  display: flex;
+  padding-inline: 0.25rem;
+  box-sizing: border-box;
+}
+
+.cell {
+  height: var(--sapFontSize);
+  width: 60%;
+  border-radius: var(--sapElement_BorderCornerRadius);
+}
