@@ -48,7 +48,7 @@
   height: 1px;
   z-index: 2;
 
-  > section[role='navigation'] {
+  > section[data-component-name='DynamicPageAnchorBar'] {
     inset-block-start: 0;
   }
 }
