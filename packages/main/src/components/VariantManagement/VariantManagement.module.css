@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  cursor: pointer;
+  color: var(--sapLinkColor);
+  text-shadow: none;
+
+  &:hover {
+    color: var(--sapLink_Hover_Color);
+  }
+
+  &:active {
+    color: var(--sapLink_Active_Color);
+  }
+}
+
+.disabled {
+  .title {
+    color: var(--sapGroup_TitleTextColor);
+    cursor: default;
+
+    &:hover {
+      color: var(--sapGroup_TitleTextColor);
+    }
+  }
+}
+
+.dirtyState {
+  color: var(--sapGroup_TitleTextColor);
+  padding-inline: 0.125rem;
+  font-family: var(--sapFontBoldFamily);
+  font-size: var(--sapFontSize);
+  flex-grow: 1;
+}
+
+.dirtyStateText {
+  font-size: var(--sapFontSmallSize);
+  font-weight: normal;
+}
+
+.navDownBtn {
+  margin-inline-start: 0.125rem;
+}
+
+.footer {
+  > :last-child {
+    margin-inline-end: 0;
+  }
+}
+
+.inputIcon {
+  cursor: pointer;
+  color: var(--sapContent_IconColor);
+}
+
+.searchInputContainer {
+  padding: 0.25rem 1rem;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.popover {
+  min-width: 25rem;
+
+  &::part(content) {
+    padding: 0;
+  }
+
+  &::part(footer) {
+    padding: 0;
+    border-block-start: none;
+  }
+}

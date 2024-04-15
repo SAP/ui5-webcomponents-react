@@ -2,17 +2,10 @@
 
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
-import {
-  CssSizeVariables,
-  enrichEventWithDetails,
-  ThemingParameters,
-  useI18nBundle,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
@@ -30,70 +23,7 @@ import type {
 import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import { Toolbar } from '../Toolbar/index.js';
-
-const useStyles = createUseStyles(
-  {
-    dialog: {
-      '&::part(header)': {
-        paddingBottom: '0.25rem',
-        flexDirection: 'column',
-        marginBottom: 0
-      },
-      '&::part(content)': {
-        padding: 0
-      }
-    },
-    headerContent: {
-      display: 'grid',
-      gridTemplateColumns: 'fit-content(100px) minmax(0, 1fr) fit-content(100px)',
-      gridTemplateAreas: `
-      "titleStart titleCenter cancel"
-      "input input input"
-      `,
-      gridTemplateRows: `${CssSizeVariables.ui5WcrDialogHeaderHeight} ${CssSizeVariables.ui5WcrDialogSubHeaderHeight}`,
-      width: '100%',
-      alignItems: 'center'
-    },
-    title: {
-      fontSize: ThemingParameters.sapFontLargeSize,
-      fontFamily: ThemingParameters.sapFontHeaderFamily,
-      gridColumnStart: 'titleStart',
-      gridColumnEnd: 'titleCenter',
-      maxWidth: '100%',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
-    },
-    titleCenterAlign: {
-      gridArea: 'titleCenter',
-      justifySelf: 'center'
-    },
-    hiddenClearBtn: {
-      gridArea: 'titleStart',
-      visibility: 'hidden'
-    },
-    clearBtn: {
-      gridArea: 'cancel',
-      justifySelf: 'end'
-    },
-    input: {
-      gridArea: 'input',
-      width: '100%'
-    },
-    footer: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'end',
-      width: '100%',
-      boxSizing: 'border-box',
-      '& > *': {
-        marginInlineStart: '0.5rem'
-      }
-    },
-    inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-    infoBar: { padding: '0 0.5rem', position: 'sticky', top: 0, zIndex: 1 }
-  },
-  { name: 'SelectDialog' }
-);
+import { classNames, styleData } from './SelectDialog.module.css.js';
 
 interface ListDomRefWithPrivateAPIs extends ListDomRef {
   get hasData(): boolean;
@@ -106,7 +36,7 @@ interface ListDomRefWithPrivateAPIs extends ListDomRef {
 }
 
 export interface SelectDialogPropTypes
-  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children'>,
+  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children' | 'state'>,
     Pick<ListPropTypes, 'growing' | 'onLoadMore'> {
   /**
    * Defines the list items of the component.
@@ -225,7 +155,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, SelectDialog.displayName);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
@@ -335,32 +265,34 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       {...rest}
       data-component-name="SelectDialog"
       ref={componentRef}
-      className={clsx(classes.dialog, className)}
+      className={clsx(classNames.dialog, className)}
       onAfterClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
       onAfterOpen={handleAfterOpen}
       onBeforeClose={handleBeforeClose}
     >
-      <div className={classes.headerContent} slot="header">
+      <div className={classNames.headerContent} slot="header">
         {showClearButton && headerTextAlignCenter && (
           <Button
             onClick={handleClear}
             design={ButtonDesign.Transparent}
-            className={classes.hiddenClearBtn}
+            className={classNames.hiddenClearBtn}
             tabIndex={-1}
             aria-hidden="true"
           >
             {i18nBundle.getText(CLEAR)}
           </Button>
         )}
-        <Title className={clsx(classes.title, headerTextAlignCenter && classes.titleCenterAlign)}>{headerText}</Title>
+        <Title className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}>
+          {headerText}
+        </Title>
         {showClearButton && (
-          <Button onClick={handleClear} design={ButtonDesign.Transparent} className={classes.clearBtn}>
+          <Button onClick={handleClear} design={ButtonDesign.Transparent} className={classNames.clearBtn}>
             {i18nBundle.getText(CLEAR)}
           </Button>
         )}
         <Input
-          className={classes.input}
+          className={classNames.input}
           accessibleName={i18nBundle.getText(SEARCH)}
           value={searchValue}
           placeholder={i18nBundle.getText(SEARCH)}
@@ -375,13 +307,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                   name={iconDecline}
                   interactive
                   onClick={handleResetSearch}
-                  className={classes.inputIcon}
+                  className={classNames.inputIcon}
                 />
               )}
               <Icon
                 interactive
                 name={iconSearch}
-                className={classes.inputIcon}
+                className={classNames.inputIcon}
                 onClick={handleSearchSubmit}
                 accessibleName={i18nBundle.getText(SEARCH)}
                 title={i18nBundle.getText(SEARCH)}
@@ -392,7 +324,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       </div>
 
       {mode === ListMode.MultiSelect && (!!selectedItems.length || numberOfSelectedItems > 0) && (
-        <Toolbar design={ToolbarDesign.Info} className={classes.infoBar}>
+        <Toolbar design={ToolbarDesign.Info} className={classNames.infoBar}>
           <Text>{`${i18nBundle.getText(SELECTED)}: ${numberOfSelectedItems ?? selectedItems.length}`}</Text>
         </Toolbar>
       )}
@@ -406,7 +338,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       >
         {children}
       </List>
-      <div slot="footer" className={classes.footer}>
+      <div slot="footer" className={classNames.footer}>
         {mode === ListMode.MultiSelect && (
           <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}

@@ -1,18 +1,17 @@
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
-  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   PUBLIC,
   SAVE,
   SAVE_VIEW,
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   VIEW
 } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
@@ -22,21 +21,8 @@ import type { Ui5CustomEvent } from '../../types/index.js';
 import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
 import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { classNames, styleData } from './SaveViewDialog.module.css.js';
 import type { VariantManagementPropTypes } from './types.js';
-
-const useStyles = createUseStyles(
-  {
-    dialog: {
-      '&::part(footer)': {
-        borderBlockStart: 'none',
-        padding: 0
-      }
-    },
-    input: { width: '100%', marginBlock: '0.1875rem' },
-    checkBoxesContainer: { paddingInline: '0.5rem' }
-  },
-  { name: 'SaveViewDialogStyles' }
-);
 
 interface SaveViewDialogPropTypes {
   onAfterClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
@@ -67,7 +53,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const saveViewDialogRef = useRef<DialogDomRef | null>(null);
   const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const classes = useStyles();
+  useStylesheet(styleData, 'SaveViewDialog');
   const uniqueId = useIsomorphicId();
 
   const cancelText = i18nBundle.getText(CANCEL);
@@ -164,7 +150,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   return createPortal(
     <Dialog
       open
-      className={classes.dialog}
+      className={classNames.dialog}
       ref={saveViewDialogRef}
       headerText={headingText}
       onAfterClose={onAfterClose}
@@ -196,7 +182,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           {...saveViewInputProps}
           valueState={saveViewInputProps?.valueState ?? (!variantNameInvalid ? 'None' : 'Error')}
           valueStateMessage={saveViewInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
-          className={clsx(classes.input, saveViewInputProps?.className)}
+          className={clsx(classNames.input, saveViewInputProps?.className)}
           id={`view-${uniqueId}`}
           value={variantName}
           onInput={handleInputChange}
@@ -204,7 +190,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
         <FlexBox
           alignItems={FlexBoxAlignItems.Start}
           direction={FlexBoxDirection.Column}
-          className={classes.checkBoxesContainer}
+          className={classNames.checkBoxesContainer}
         >
           {showSetAsDefault && <CheckBox onChange={handleChangeDefault} text={defaultCbLabel} checked={isDefault} />}
           {showShare && <CheckBox onChange={handleChangePublic} text={publicCbLabel} checked={isPublic} />}

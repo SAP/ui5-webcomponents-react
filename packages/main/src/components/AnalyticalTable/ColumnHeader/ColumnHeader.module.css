@@ -1,0 +1,51 @@
+.thContainer {
+  &:first-child > [role='columnheader'] {
+    border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+
+  &:last-child > [role='columnheader'] {
+    border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+}
+
+.verticalEndBorder:last-child > [role='columnheader'] {
+  border-inline-end: 1px solid var(--sapList_BorderColor);
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-family: var(--_ui5wcr-AnalyticalTable-HeaderFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.text {
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+  text-align: start;
+}
+
+.iconContainer {
+  display: flex;
+  position: absolute;
+  color: var(--sapContent_IconColor);
+  inset-inline-end: 0.5rem;
+}
+
+.selectAllCheckBoxContainer {
+  display: flex;
+  justify-content: center;
+}

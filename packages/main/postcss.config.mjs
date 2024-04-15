@@ -1,15 +1,15 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const cssnano = require('cssnano');
-const postcssImport = require('postcss-import');
-const postcssModules = require('postcss-modules');
-const postcssNesting = require('postcss-nesting');
-const stringHash = require('string-hash');
-const postcssCSStoESM = require('../../scripts/postcss-css-to-esm.cjs');
+import fs from 'node:fs';
+import path from 'node:path';
+import cssnano from 'cssnano';
+import postcssImport from 'postcss-import';
+import postcssModules from 'postcss-modules';
+import postcssNesting from 'postcss-nesting';
+import stringHash from 'string-hash';
+import postcssCSStoESM from '../../scripts/postcss-css-to-esm.mjs';
 
 const packageName = JSON.parse(fs.readFileSync('./package.json').toString()).name;
 
-module.exports = {
+export default {
   plugins: [
     postcssImport(),
     postcssNesting(),

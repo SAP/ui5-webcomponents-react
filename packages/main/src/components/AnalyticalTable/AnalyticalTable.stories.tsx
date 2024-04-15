@@ -262,7 +262,7 @@ export const DynamicRowCount = {
       <>
         <Button onClick={handleClick}>Toggle Number of Rows</Button>
         <br />
-        <Text>Number of visible rows: {args.data.length}</Text>
+        <Text>Number of visible rows: {data.length}</Text>
         <hr />
         <div style={{ height: `${args.containerHeight}px` }}>
           <AnalyticalTable

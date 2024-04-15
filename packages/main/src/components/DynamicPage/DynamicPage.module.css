@@ -1,0 +1,85 @@
+.dynamicPage {
+  container: DynamicPage / inline-size;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+  font-family: var(--sapFontFamily);
+  background-color: var(--sapBackgroundColor);
+  overflow-x: hidden;
+  overflow-y: auto;
+  --_ui5wcr_DynamicPage_header_display: block;
+  --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_FontSize);
+}
+
+.headerCollapsed {
+  --_ui5wcr_DynamicPage_header_display: none;
+  --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
+}
+
+@container (max-width: 599px) {
+  .header,
+  .title,
+  .contentContainer {
+    padding-inline: 1rem;
+  }
+}
+
+@container (min-width: 600px) and (max-width: 1439px) {
+  .header,
+  .title,
+  .contentContainer {
+    padding-inline: 2rem;
+  }
+}
+
+@container (min-width: 1440px) {
+  .header,
+  .title,
+  .contentContainer {
+    padding-inline: 3rem;
+  }
+}
+
+.anchorBar {
+  position: sticky;
+  box-shadow: var(--sapContent_HeaderShadow);
+  height: 1px;
+  z-index: 2;
+
+  > section[data-component-name='DynamicPageAnchorBar'] {
+    inset-block-start: 0;
+  }
+}
+
+.contentContainer {
+  padding-block-start: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  font-family: var(--sapFontFamily);
+  z-index: 0;
+}
+
+.backgroundStandard {
+  background: var(--sapBackgroundColor);
+}
+
+.backgroundSolid {
+  background: var(--sapBackgroundColor);
+}
+
+.backgroundList {
+  background: var(--sapGroup_ContentBackground);
+}
+
+.backgroundTransparent {
+  background: transparent;
+}
+
+.footer {
+  bottom: 0.5rem;
+  margin: 0 0.5rem;
+  inset-inline: 0;
+}
