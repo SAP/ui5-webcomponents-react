@@ -1,0 +1,43 @@
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["./Token-BrMFaoTZ.js","./UI5Element-Lw3nTtTN.js","./Boot-B0Gt2ObV.js","./ManagedStyles-DX5mlBXq.js","./CustomElementsScopeUtils-CeSGtO6z.js","./withWebComponent-zM8JcmxY.js","./utils-syHHPmsO.js","./index-Dl6G-zuu.js","./jsx-runtime-Du8NFWEI.js","./useIsomorphicLayoutEffect-gsbYElqV.js","./slot-Df15G--e.js","./event-CegLCnR0.js","./ResizeHandler-OFvM0oAF.js","./ItemNavigation-D6hdzFqV.js","./Keys-BgUkNma0.js","./getActiveElement-BL9Yqj8a.js","./ScrollEnablement-BARm334I.js","./animate-DFaKyidW.js","./Integer-Dh6YzFpK.js","./i18nBundle-Duvqe7kG.js","./ValueState-Bn-H2OaL.js","./ResponsivePopover-HpPk1-5r.js","./PopupUtils-DmBeTAQh.js","./i18n-defaults-D1sujP0E.js","./class-map-mIG3ftuK.js","./style-map-CweQHFZo.js","./Popover-B7UMWr5A.js","./PopupsCommon.css-BmjVxBVQ.js","./FocusableElements-4YGFH9ta.js","./isElementHidden-Bpu2V8BK.js","./AriaLabelHelper-CzOXVcye.js","./getEffectiveScrollbarStyle-DWzHjL-d.js","./MediaRange-CQ-a3KRn.js","./parameters-bundle.css-DjgCrOcY.js","./BrowserScrollbar.css-B3MoNUKh.js","./Dialog-B6GQcnMo.js","./Icon-Dbo8BIv6.js","./Icons-DfCrNAdQ.js","./information-BLcQOnlv.js","./i18n-defaults-BdfZArTM.js","./alert-D4nm4k8k.js","./Button-BFndOBlc.js","./MarkedEvents-BPv6Lv4o.js","./willShowContent-BOkh0bwj.js","./HasPopup-Cecjtg2t.js","./Title-DGYUJTtS.js","./WrappingType-CW8URInd.js","./decline-D5dgPGzi.js","./List-CgPFTYVO.js","./TabbableElements-Ds_LZU0v.js","./debounce-jW346lN3.js","./BusyIndicator-C42nFNla.js","./Label-D6k6fzJu.js","./CheckBox-BbNurf_2.js","./accept-CVuU4iIn.js","./RadioButton-CEFXfY4T.js","./StandardListItem-Cf0A4_oS.js","./ListItem-D5YfpJT4.js","./slim-arrow-right-CIeoJHfT.js","./Avatar-CHcvLeex.js","./employee-C3y4a2zL.js","./ResponsivePopoverCommon.css-BaDBkjTP.js","./ValueStateMessage.css-BFehkgYE.js","./Input-LFjnQulv.js","./sys-cancel-DgeHt7MG.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
+import{_ as o}from"./iframe-DCNwc-dR.js";import"./Token-BrMFaoTZ.js";import{w as n}from"./withWebComponent-zM8JcmxY.js";const e=n("ui5-token",["text"],["readonly","selected"],["closeIcon"],["select"],()=>o(()=>import("./Token-BrMFaoTZ.js").then(t=>t.b),__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64]),import.meta.url));e.displayName="Token";try{e.displayName="Token",e.__docgenInfo={description:`Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+
+
+
+__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)`,displayName:"Token",props:{closeIcon:{defaultValue:null,description:`Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used.
+Accepts \`Icon\`.
+
+__Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (\`slot="closeIcon"\`).
+Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+
+__Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
+Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).`,name:"closeIcon",required:!1,type:{name:"UI5WCSlotsNode"}},onSelect:{defaultValue:null,description:"Fired when the the component is selected by user interaction with mouse or by clicking space.",name:"onSelect",required:!1,type:{name:"(event: Ui5CustomEvent<TokenDomRef, never>) => void"}},readonly:{defaultValue:{value:"false"},description:`Defines whether the component is read-only.
+
+**Note:** A read-only component can not be deleted or selected,
+but still provides visual feedback upon user interaction.`,name:"readonly",required:!1,type:{name:"boolean"}},selected:{defaultValue:{value:"false"},description:"Defines whether the component is selected or not.",name:"selected",required:!1,type:{name:"boolean"}},text:{defaultValue:null,description:"Defines the text of the token.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}try{e.displayName="Token",e.__docgenInfo={description:`Tokens are small items of information (similar to tags) that mainly serve to visualize previously selected items.
+
+
+
+__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)`,displayName:"Token",props:{closeIcon:{defaultValue:null,description:`Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used.
+Accepts \`Icon\`.
+
+__Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (\`slot="closeIcon"\`).
+Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+
+__Note:__ When passing a custom React component to this prop, you have to make sure your component reads the \`slot\` prop and appends it to the most outer element of your component.
+Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).`,name:"closeIcon",required:!1,type:{name:"UI5WCSlotsNode"}},onSelect:{defaultValue:null,description:"Fired when the the component is selected by user interaction with mouse or by clicking space.",name:"onSelect",required:!1,type:{name:"(event: Ui5CustomEvent<TokenDomRef, never>) => void"}},readonly:{defaultValue:{value:"false"},description:`Defines whether the component is read-only.
+
+**Note:** A read-only component can not be deleted or selected,
+but still provides visual feedback upon user interaction.`,name:"readonly",required:!1,type:{name:"boolean"}},selected:{defaultValue:{value:"false"},description:"Defines whether the component is selected or not.",name:"selected",required:!1,type:{name:"boolean"}},text:{defaultValue:null,description:"Defines the text of the token.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}export{e as T};
