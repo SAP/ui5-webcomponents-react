@@ -238,6 +238,10 @@
   border-block-end: 1px solid var(--sapList_BorderColor);
 }
 
+.navigation {
+  background-color: var(--sapList_SelectionBorderColor);
+}
+
 .success {
   background-color: var(--sapSuccessColor);
 }

@@ -28,7 +28,7 @@ import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
+import { DynamicPageCssVariables } from '../DynamicPage/utils.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';

@@ -1419,6 +1419,7 @@ describe('AnalyticalTable', () => {
   });
 
   it('navigated row', () => {
+    const navigationColor = cssVarToRgb(ThemingParameters.sapList_SelectionBorderColor);
     const TestComp = () => {
       const [selectedRow, setSelectedRow] = useState<{ id?: boolean }>({});
       const onRowSelect = (e) => {
@@ -1443,9 +1444,15 @@ describe('AnalyticalTable', () => {
     };
     cy.mount(<TestComp />);
     cy.findByText('A').click();
-    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]')
+      .should('be.visible')
+      .should('have.length', 1)
+      .should('have.css', 'background-color', navigationColor);
     cy.findByText('B').click();
-    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]')
+      .should('be.visible')
+      .should('have.length', 1)
+      .should('have.css', 'background-color', navigationColor);
   });
 
   it('select row with custom row key', () => {
