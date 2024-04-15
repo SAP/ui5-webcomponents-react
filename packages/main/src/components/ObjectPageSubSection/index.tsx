@@ -1,15 +1,14 @@
 'use client';
 
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import type { TitleLevel } from '../../enums/index.js';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
-import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { CommonProps } from '../../types/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { classNames, styleData } from './ObjectPageSubSection.module.css.js';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
@@ -51,45 +50,6 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   titleTextUppercase?: boolean;
 }
 
-const styles = {
-  objectPageSubSection: {
-    '&:focus': {
-      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`,
-      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`
-    }
-  },
-  headerContainer: {
-    marginBlockEnd: '0.5rem',
-    '& >:first-child': {
-      marginInline: '0 0.25rem'
-    },
-    '& >:last-child:not(:first-child)': {
-      marginInline: '0.25rem 0'
-    },
-    '& > *:not(:first-child):not(:last-child)': {
-      marginInline: '0.25rem'
-    }
-  },
-  subSectionTitle: {
-    fontSize: ThemingParameters.sapFontHeader5Size,
-    color: ThemingParameters.sapGroup_TitleTextColor,
-    flexGrow: 1
-  },
-  subSectionContent: {
-    backgroundColor: CustomThemingParameters.ObjectPageSubSectionBackgroundColor,
-    borderRadius: CustomThemingParameters.ObjectPageSubSectionBorderRadius,
-    paddingInline: '0.5rem',
-    paddingBlock: '1rem'
-  },
-  spacer: {
-    flexGrow: 1
-  },
-  uppercase: {
-    textTransform: 'uppercase'
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'ObjectPageSubSection' });
 /**
  * Second-level information container of an `ObjectPage`.<br />
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
@@ -108,8 +68,10 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
     ...rest
   } = props;
   const htmlId = `ObjectPageSubSection-${id}`;
-  const classes = useStyles();
-  const subSectionClassName = clsx(classes.objectPageSubSection, className);
+
+  useStylesheet(styleData, ObjectPageSubSection.displayName);
+
+  const subSectionClassName = clsx(classNames.objectPageSubSection, className);
 
   return (
     <div
@@ -126,24 +88,24 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
         direction={FlexBoxDirection.Row}
         justifyContent={FlexBoxJustifyContent.SpaceBetween}
         alignItems={FlexBoxAlignItems.Center}
-        className={classes.headerContainer}
+        className={classNames.headerContainer}
         data-component-name="ObjectPageSubSectionHeaderContainer"
       >
         {!hideTitleText ? (
           <div
             role="heading"
             aria-level={parseInt(titleTextLevel.slice(1))}
-            className={clsx(classes.subSectionTitle, titleTextUppercase && classes.uppercase)}
+            className={clsx(classNames.subSectionTitle, titleTextUppercase && classNames.uppercase)}
             data-component-name="ObjectPageSubSectionTitleText"
           >
             {titleText}
           </div>
         ) : (
-          <span aria-hidden="true" className={classes.spacer} />
+          <span aria-hidden="true" className={classNames.spacer} />
         )}
         {actions && actions}
       </FlexBox>
-      <div className={classes.subSectionContent} data-component-name="ObjectPageSubSectionContent">
+      <div className={classNames.subSectionContent} data-component-name="ObjectPageSubSectionContent">
         {children}
       </div>
     </div>
