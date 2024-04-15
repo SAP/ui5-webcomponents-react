@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -131,45 +131,89 @@ export const Default: Story = {
   }
 };
 
+const initialState = {
+  age: 37,
+  countries: {},
+  currency: 'USD',
+  date: '',
+  dateRange: '',
+  search: ''
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_AGE':
+      return { ...state, age: action.payload };
+    case 'SET_COUNTRIES':
+      return { ...state, countries: action.payload };
+    case 'SET_CURRENCY':
+      return { ...state, currency: action.payload };
+    case 'SET_DATE':
+      return { ...state, date: action.payload };
+    case 'SET_DATE_RANGE':
+      return { ...state, dateRange: action.payload };
+    case 'SET_SEARCH':
+      return { ...state, search: action.payload };
+    case 'DIALOG_RESTORE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 export const WithLogic: Story = {
   render: (args) => {
-    const [age, setAge] = useState(37);
-    const [countries, setCountries] = useState<Record<string, boolean>>({});
-    const [currency, setCurrency] = useState('USD');
-    const [date, setDate] = useState('');
-    const [dateRange, setDateRange] = useState('');
-    const [search, setSearch] = useState('');
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { age, countries, currency, date, dateRange, search } = state;
+    const prevDialogOpenState = useRef();
 
     const handleSearch = (e) => {
-      setSearch(e.target.value);
+      dispatch({ type: 'SET_SEARCH', payload: e.target.value });
     };
 
     const handleAgeChange = (e) => {
-      setAge(e.target.value);
+      dispatch({ type: 'SET_AGE', payload: e.target.value });
     };
+
     const handleCountriesChange = (e) => {
-      setCountries(
-        e.detail.items.reduce((acc, cur) => {
-          return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
-        }, {})
-      );
+      const newCountries = e.detail.items.reduce((acc, cur) => {
+        return { ...acc, [cur.getAttribute('text').toLowerCase()]: true };
+      }, {});
+      dispatch({ type: 'SET_COUNTRIES', payload: newCountries });
     };
+
     const handleCurrencyChange = (e) => {
-      setCurrency(e.detail.selectedOption.textContent);
+      dispatch({ type: 'SET_CURRENCY', payload: e.detail.selectedOption.textContent });
     };
+
     const handleDateChange = (e) => {
       if (e.detail.valid) {
-        setDate(e.detail.value);
+        dispatch({ type: 'SET_DATE', payload: e.detail.value });
       }
     };
+
     const handleDateRangeChange = (e) => {
       if (e.detail.valid) {
-        setDateRange(e.detail.value);
+        dispatch({ type: 'SET_DATE_RANGE', payload: e.detail.value });
       }
     };
+
+    const handleFiltersDialogOpen = () => {
+      prevDialogOpenState.current = state;
+    };
+
+    const handleRestore = () => {
+      dispatch({ type: 'DIALOG_RESTORE', payload: prevDialogOpenState.current });
+    };
+
     return (
       <>
-        <FilterBar {...args} search={<Input onInput={handleSearch} />}>
+        <FilterBar
+          showResetButton
+          search={<Input onInput={handleSearch} />}
+          onRestore={handleRestore}
+          onFiltersDialogOpen={handleFiltersDialogOpen}
+        >
           <FilterGroupItem label="Age" active={!!age} required>
             <StepInput value={age} onChange={handleAgeChange} required />
           </FilterGroupItem>
@@ -347,6 +391,65 @@ export const InDynamicPage: Story = {
           <Text style={{ color: 'white' }}>Content</Text>
         </div>
       </DynamicPage>
+    );
+  }
+};
+
+export const WithReordering: Story = {
+  render(args) {
+    const uniqueId = useId();
+    const [orderedChildren, setOrderedChildren] = useState([
+      <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
+        <StepInput required />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
+        <RatingIndicator />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
+        <MultiInput
+          tokens={
+            <>
+              <Token text="Argentina" selected />
+              <Token text="Bulgaria" />
+              <Token text="England" />
+              <Token text="Finland" />
+            </>
+          }
+        />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
+        <Input placeholder="Placeholder" />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
+        <Switch />
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-5`}
+        label="SELECT w/ initial selected"
+        visibleInFilterBar={false}
+        orderId={`${uniqueId}-5`}
+      >
+        <Select>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+        </Select>
+      </FilterGroupItem>
+    ]);
+
+    const handleFiltersDialogSave = (e) => {
+      setOrderedChildren((prev) => {
+        return e.detail.orderIds.map((orderId) => {
+          const obj = prev.find((item) => item.props.orderId === orderId);
+          return { ...obj };
+        });
+      });
+    };
+    return (
+      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
+        {orderedChildren}
+      </FilterBar>
     );
   }
 };

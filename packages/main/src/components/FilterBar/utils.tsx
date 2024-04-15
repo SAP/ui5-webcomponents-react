@@ -1,5 +1,6 @@
 import type { Ref } from 'react';
 import { cloneElement } from 'react';
+import { getTagNameWithoutScopingSuffix } from '../../internal/utils.js';
 
 const inputTagNames = new Set([
   'UI5-COMBOBOX',
@@ -16,24 +17,32 @@ const inputTagNames = new Set([
 
 export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
+  const tagNameWithoutSuffix = getTagNameWithoutScopingSuffix(tagName);
+
   let filterItemProps = {};
-  if (inputTagNames.has(tagName)) {
+  if (inputTagNames.has(tagNameWithoutSuffix)) {
     filterItemProps = { value: ref.value ?? '' };
   }
-  if (tagName === 'UI5-SELECT' || tagName === 'UI5-MULTI-COMBOBOX') {
-    const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
-      .map((item, index) => (item.selected ? index : false))
-      .filter((el) => el !== false);
-    const selectedIndicesSet = new Set(selectedIndices);
-    const options = child.props.children.props.children?.map((item, index) => {
-      if (selectedIndicesSet.has(index)) {
-        return cloneElement(item, { selected: true });
-      }
-      return cloneElement(item, { selected: false });
-    });
+  if (tagNameWithoutSuffix === 'UI5-SELECT' || tagNameWithoutSuffix === 'UI5-MULTI-COMBOBOX') {
+    const filterChildren = child.props.children.props.children;
+    let options = undefined;
+    if (filterChildren) {
+      const selectedIndices = Array.from(ref.children as HTMLCollectionOf<any>)
+        .map((item, index) => (item.selected ? index : false))
+        .filter((el) => el !== false);
+      const selectedIndicesSet = new Set(selectedIndices);
+
+      const filterChildrenArr = Array.isArray(filterChildren) ? filterChildren : [filterChildren];
+      options = filterChildrenArr.map((item, index) => {
+        if (selectedIndicesSet.has(index)) {
+          return cloneElement(item, { selected: true });
+        }
+        return cloneElement(item, { selected: false });
+      });
+    }
     filterItemProps = { children: options };
   }
-  if (tagName === 'UI5-SWITCH' || tagName === 'UI5-CHECKBOX') {
+  if (tagNameWithoutSuffix === 'UI5-SWITCH' || tagNameWithoutSuffix === 'UI5-CHECKBOX') {
     filterItemProps = { checked: ref.checked };
   }
   return filterItemProps;

@@ -1,0 +1,38 @@
+.actionSheet::part(content) {
+  padding: 0.1875rem 0.375rem;
+}
+
+.actionSheet [ui5-button] {
+  margin: var(--_ui5wcr-ButtonTopBottomPadding);
+  display: block;
+}
+
+.actionSheet [ui5-button]:not([data-cancel-btn])::part(button) {
+  justify-content: start;
+}
+
+.actionSheet::part(header) {
+  background: transparent;
+  box-shadow: var(--_ui5wcr_ActionSheet_HeaderBoxShadow);
+}
+
+/* actionSheetMobile */
+.actionSheetMobile::part(content) {
+  padding: 0 !important;
+}
+
+/* contentMobile */
+.contentMobile {
+  background-color: var(--sapGroup_ContentBackground);
+  padding: 0.25rem 0.5rem;
+  box-sizing: border-box;
+  overflow: auto;
+  max-height: 82vh;
+  border-top-left-radius: var(--_ui5wcr_ActionSheet_TopBorderRadius);
+  border-top-right-radius: var(--_ui5wcr_ActionSheet_TopBorderRadius);
+  box-shadow: var(--_ui5wcr_ActionSheet_BoxShadow);
+}
+
+.contentMobile > * {
+  margin: 0.25rem 0;
+}

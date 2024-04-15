@@ -100,6 +100,14 @@ body:
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
 
+  - type: input
+    id: org
+    attributes:
+      label: Organization
+      description: Add your organization name.
+    validations:
+      required: false
+
   - type: markdown
     attributes:
       value: |

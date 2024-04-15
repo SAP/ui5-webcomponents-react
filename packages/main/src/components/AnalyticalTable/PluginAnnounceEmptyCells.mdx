@@ -1,0 +1,42 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/blocks';
+import { Footer } from '@sb/components';
+import * as ComponentStories from './AnalyticalTableHooks.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin Hooks / useAnnounceEmptyCells" />
+
+# AnalyticalTable Plugin: useAnnounceEmptyCells
+
+<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+
+The `useAnnounceEmptyCells` plugin hook adds screen reader announcements for empty cells.
+
+**Note:** Some screen readers (depending on their configuration) automatically detect empty cells, potentially resulting in duplicate announcements of empty cells.
+
+## Example
+
+<Canvas sourceState="none" of={ComponentStories.PluginAnnounceEmptyCells} />
+
+```jsx
+<AnalyticalTable
+  data={data}
+  columns={columns}
+  visibleRows={5}
+  tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
+/>
+```
+
+**First data entry with empty values or undefined fields:**
+
+```js
+{
+  age: undefined,
+  friend: {
+    name: '',
+    age: 0
+  },
+  status: 'Error'
+}
+```
+
+<Footer />

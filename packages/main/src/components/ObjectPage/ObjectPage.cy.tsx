@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import type { CSSProperties } from 'react';
-import { useReducer, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
   Avatar,
@@ -33,6 +33,7 @@ import {
   TitleLevel,
   ValueState
 } from '../..';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {
   it('toggle header', () => {
@@ -257,9 +258,11 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
+    cy.wait(500);
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
     cy.wait(200);
-    cy.realPress('ArrowDown');
-    cy.realPress('ArrowDown');
     cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
 
@@ -292,7 +295,7 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
-    cy.wait(200);
+    cy.wait(500);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
@@ -325,6 +328,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('section 1').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
@@ -412,11 +416,11 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
@@ -510,19 +514,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
@@ -837,6 +841,66 @@ describe('ObjectPage', () => {
     cy.get('[ui5-tabcontainer]').should('not.exist');
     cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
   });
+
+  it('onBeforeNavigate', () => {
+    const beforeNavigateHandlerDefaultPrevented = (e) => {
+      // deleted as not relevant for the test
+      delete e.detail.tab;
+      delete e.detail.tabIndex;
+      e.preventDefault();
+    };
+    const beforeNavigate = cy.spy(beforeNavigateHandlerDefaultPrevented).as('beforeNavigateSpy');
+    const sectionChange = cy.spy().as('sectionChangeSpy');
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        onBeforeNavigate={beforeNavigate}
+        onSelectedSectionChange={sectionChange}
+      >
+        {OPContent}
+      </ObjectPage>
+    );
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
+    cy.get('@beforeNavigateSpy')
+      .should('have.been.calledOnce')
+      .its('firstCall.args[0].detail')
+      .should('deep.equal', { sectionIndex: 2, sectionId: 'personal', subSectionId: undefined });
+    cy.get('@sectionChangeSpy').should('not.have.been.called');
+
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
+    cy.realPress('Enter');
+    cy.get('@beforeNavigateSpy').should('have.been.calledTwice').its('secondCall.args[0].detail').should('deep.equal', {
+      sectionIndex: 3,
+      sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
+      subSectionId: 'employment-job-information'
+    });
+    cy.get('@sectionChangeSpy').should('not.have.been.called');
+  });
+
+  it('IconTabBar mode: only mount single section', () => {
+    const cbSpy = cy.spy().as('cb');
+    const CallBackComp = () => {
+      useEffect(() => {
+        cbSpy();
+      }, []);
+      return null;
+    };
+    cy.mount(
+      <ObjectPage mode={ObjectPageMode.IconTabBar}>
+        <ObjectPageSection id="1">Dummy</ObjectPageSection>
+        <ObjectPageSection id="2">
+          <CallBackComp />
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.findByText('Dummy').should('be.visible');
+    cy.get('@cb').should('not.been.called');
+  });
+
+  cypressPassThroughTestsFactory(ObjectPage);
 });
 
 const DPTitle = (
@@ -913,7 +977,7 @@ const OPContent = [
       <div style={{ height: '400px', width: '100%', background: 'blue' }} />
     </ObjectPageSubSection>
   </ObjectPageSection>,
-  <ObjectPageSection key="3" titleText="Employment" id="employment" aria-label="Employment">
+  <ObjectPageSection key="3" titleText="Employment" id={`~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`} aria-label="Employment">
     <ObjectPageSubSection titleText="Job Information" id="employment-job-information" aria-label="Job Information">
       <div style={{ height: '100px', width: '100%', background: 'orange' }}></div>
     </ObjectPageSubSection>

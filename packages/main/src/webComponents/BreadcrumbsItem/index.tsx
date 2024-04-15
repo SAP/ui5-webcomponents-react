@@ -24,15 +24,13 @@ interface BreadcrumbsItemAttributes {
    *
    * Available options are:
    *
-   * *   `_self`
-   * *   `_top`
-   * *   `_blank`
-   * *   `_parent`
-   * *   `_search`
+   * - `_self`
+   * - `_top`
+   * - `_blank`
+   * - `_parent`
+   * - `_search`
    *
-   *
-   *
-   * **Note: **This property must only be used when the `href` property is set.****
+   * **Note:** This property must only be used when the `href` property is set.
    * @default undefined
    */
   target?: string | undefined;
@@ -54,8 +52,8 @@ interface BreadcrumbsItemPropTypes
 /**
  * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`.
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(
   'ui5-breadcrumbs-item',

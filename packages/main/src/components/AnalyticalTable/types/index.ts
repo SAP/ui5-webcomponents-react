@@ -80,6 +80,7 @@ export interface AnalyticalTableState {
   hiddenColumns: string[];
   selectedRowIds: Record<string | number, any>;
   sortBy: Record<string | number, any>[];
+  globalFilter?: string;
   tableClientWidth?: number;
   dndColumn?: string;
   popInColumns?: Record<string | number, any>[];
@@ -241,7 +242,7 @@ export interface AnalyticalTableColumnDefinition {
   sortInverted?: boolean;
   /**
    *  - Used to compare 2 rows of data and order them correctly.
-   *   - If a **function** is passed, it must be **memoized**. The sortType function should return 1 if rowA is larger, and -1 if rowB is larger. `react-table` will take care of the rest.
+   *   - If a function is passed, it must be **memoized**. The sortType function should return 1 if rowA is larger and -1 if rowB is larger. `react-table` will handle the rest; there's no need to manage the inversion of sort numbers (depending on sort direction) manually.
    *   - String options: `basic`, `datetime`, `alphanumeric`.
    *   - The resolved function from the string/function will be used to sort the column's data.
    *     - If a `string` is passed, the function with that name located on either the custom `sortTypes` option or the built-in sorting types object will be used.
@@ -418,7 +419,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   showOverlay?: boolean;
   /**
-   * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
+   * Defines the text shown if the data array is empty or a filtered table doesn't return results.
+   *
+   * __Note:__ If `noDataText` isn't set, the default text displayed is "No data". For filtered tables, it will show "No data found. Try adjusting the filter settings." instead.
    */
   noDataText?: string;
   /**
@@ -464,6 +467,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   highlightField?: string | ((row: Record<any, any>) => HighlightColor);
   /**
    * Defines whether columns are filterable.
+   *
+   * __Note:__ The table is implementing "top-down" (parent/root node first) filtering.
    */
   filterable?: boolean;
   /**

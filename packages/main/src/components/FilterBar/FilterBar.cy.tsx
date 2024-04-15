@@ -1,7 +1,19 @@
-import { Input, Option, Select, Switch } from '../../webComponents/index.js';
+import React, { useId, useState } from 'react';
+import {
+  Input,
+  MultiComboBox,
+  MultiInput,
+  Option,
+  RatingIndicator,
+  Select,
+  StepInput,
+  Switch,
+  Token
+} from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem';
 import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
+import type { FilterBarPropTypes } from './index.js';
 import { FilterBar } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
@@ -29,19 +41,19 @@ describe('FilterBar.cy.tsx', () => {
     );
 
     cy.findByText('Classification').should('be.visible');
-    cy.get('ui5-select').should('be.visible');
+    cy.get('[ui5-select]').should('be.visible');
 
     cy.findByText('Hide Filter Bar').click();
     cy.get('@toggleSpy').should('have.been.calledOnce');
 
     cy.findByText('Classification').should('not.be.visible');
-    cy.get('ui5-select').should('not.be.visible');
+    cy.get('[ui5-select]').should('not.be.visible');
 
     cy.findByText('Show Filter Bar').click();
     cy.get('@toggleSpy').should('have.been.calledTwice');
 
     cy.findByText('Classification').should('be.visible');
-    cy.get('ui5-select').should('be.visible');
+    cy.get('[ui5-select]').should('be.visible');
 
     cy.mount(
       <FilterBar onToggleFilters={toggle} hideToggleFiltersButton>
@@ -133,7 +145,7 @@ describe('FilterBar.cy.tsx', () => {
         cy.findByText('Show Values').click();
       }
 
-      const checkboxes = cy.get('ui5-checkbox');
+      const checkboxes = cy.get('[ui5-checkbox]');
       // hidden select-all checkbox is also counted
       checkboxes.should('have.length', 4);
 
@@ -176,7 +188,15 @@ describe('FilterBar.cy.tsx', () => {
         cy.findAllByTestId('SELECT').should('exist');
       } else {
         if (action === 'Reset') {
-          cy.get('@restoreSpy').should('have.callCount', 1);
+          cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').contains('Cancel').click();
+          cy.get('@restoreSpy').should('have.callCount', 0);
+          cy.findByText(action).click();
+          cy.closeUi5PopupWithEsc();
+          cy.focused().parent().should('have.attr', 'data-component-name', 'FilterBarDialogSaveBtn');
+          cy.get('@restoreSpy').should('have.callCount', 0);
+          cy.findByText(action).click();
+          cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').contains('OK').click();
+          cy.focused().parent().should('have.attr', 'data-component-name', 'FilterBarDialogSaveBtn');
           cy.findByText('OK').click();
           cy.get('@saveSpy').should('have.callCount', saveCallCount);
           saveCallCount++;
@@ -224,21 +244,19 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('S');
-    cy.findByPlaceholderText('Search for filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('S{enter}');
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 2);
 
-    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('W', { force: true });
-    cy.findByPlaceholderText('Search for filters').trigger('input');
+    cy.findByPlaceholderText('Search for filters').typeIntoUi5Input('W{enter}', { force: true });
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 2);
     cy.findAllByText('SELECT').should('have.length', 1);
 
-    cy.findByPlaceholderText('Search for filters').shadow().find('ui5-icon').click();
+    cy.findByPlaceholderText('Search for filters').shadow().find('[ui5-icon]').click();
 
     cy.findAllByText('INPUT').should('have.length', 2);
     cy.findAllByText('SWITCH').should('have.length', 2);
@@ -391,7 +409,7 @@ describe('FilterBar.cy.tsx', () => {
     );
 
     cy.findByText('Filters (42)').click();
-    cy.focused().should('have.attr', 'data-component-name', 'FilterBarDialogSearchInput');
+    cy.get('[data-component-name="FilterBarDialogSearchInput"]').should('have.attr', 'focused');
 
     cy.get('[ui5-table-row]').should('have.length', 3);
 
@@ -467,7 +485,212 @@ describe('FilterBar.cy.tsx', () => {
     });
   });
 
+  it('allow filter with single or empty children', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="Single Child">
+          <Select>
+            <Option>Option 1</Option>
+          </Select>
+        </FilterGroupItem>
+        <FilterGroupItem label="Empty Children">
+          <MultiComboBox />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.findByText('Filters').click();
+    cy.findByText('Show Values').click();
+    cy.get('[ui5-select]:not([title="Show Fields by Attribute"])').should('have.length', 2);
+    cy.get('[ui5-multi-combobox]').should('have.length', 2);
+  });
+
+  it('reorder', () => {
+    const save = cy.spy().as('saveSpy');
+    cy.mount(<FilterBarWithReordering onFiltersDialogSave={save} />);
+
+    cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
+    cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'RatingIndicator');
+    cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'MultiInput');
+    cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'Switch');
+
+    cy.findByText('Filters').realClick();
+    cy.get('[ui5-dialog]').should('have.attr', 'open');
+    cy.wait(200);
+    cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');
+    cy.get('[data-text="MultiInput"]').as('multiInputRow');
+    cy.get('[data-text="StepInput"]').as('stepInputRow');
+    // active icon should be displayed if not hovered or focused
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
+    // if no row was focused before, show reorder buttons on hover, but only for visible filters (selected rows)
+    cy.get('@multiInputRow').shadow().find('tr').realHover();
+    cy.get('@multiInputRow').find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('not.be.visible');
+    cy.get('@notSelected').shadow().find('tr').realHover();
+    cy.get('@notSelected').find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('not.be.visible');
+    cy.get('@notSelected').find('[name="circle-task-2"]').should('not.exist');
+    cy.realPress('Tab');
+    cy.get('@multiInputRow').shadow().find('tr').realHover();
+    // don't show reorder buttons if a row was focused before
+    cy.get('@multiInputRow').find('[name="circle-task-2"]').should('be.visible');
+    cy.get('@multiInputRow')
+      .find('[data-component-name="FilterBarDialogTableCellReorderBtns"]')
+      .should('not.be.visible');
+    cy.focused().parent().should('have.attr', 'data-text', 'StepInput');
+    cy.focused().parent().find('[data-component-name="FilterBarDialogTableCellReorderBtns"]').should('be.visible');
+
+    // reorder via keyboard
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.realPress(['Meta', 'ArrowDown']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
+    // for some reason, the focus is not set after moving a row in cypress
+    cy.get('@stepInputRow').invoke('focus');
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
+    cy.realPress(['Meta', 'ArrowUp']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').invoke('focus');
+    cy.realPress(['Meta', 'Home']);
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+
+    // reorder via button click
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
+    cy.get('@topBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
+    cy.get('@upBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
+    cy.get('@downBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
+    cy.get('@bottomBtn').should('not.have.attr', 'disabled');
+
+    cy.get('@downBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').realClick();
+    cy.get('@bottomBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'MultiInput');
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'StepInput');
+
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnTop"]').as('topBtn');
+    cy.get('@topBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnUp"]').as('upBtn');
+    cy.get('@upBtn').should('not.have.attr', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnDown"]').as('downBtn');
+    cy.get('@downBtn').should('have.attr', 'disabled', 'disabled');
+    cy.get('@stepInputRow').find('[data-component-name="FilterBarDialogReorderBtnBottom"]').as('bottomBtn');
+    cy.get('@bottomBtn').should('have.attr', 'disabled', 'disabled');
+
+    cy.get('@stepInputRow').realClick();
+    cy.get('@upBtn').realClick();
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.get('[ui5-table-row]').eq(4).should('have.attr', 'data-text', 'StepInput');
+    cy.get('@stepInputRow').realClick();
+    cy.get('@topBtn').realClick();
+    cy.get('[ui5-table-row]').eq(0).should('have.attr', 'data-text', 'StepInput');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+
+    // check if keyboard nav still works
+    cy.wait(100);
+    cy.realPress('End');
+    cy.focused().parent().should('have.attr', 'data-text', 'SELECT w/ initial selected');
+    cy.realPress('ArrowUp');
+    cy.focused().parent().should('have.attr', 'data-text', 'Switch');
+    cy.realPress('Home');
+    cy.focused().parent().should('have.attr', 'data-text', 'StepInput');
+    cy.realPress('ArrowDown');
+    cy.focused().parent().should('have.attr', 'data-text', 'RatingIndicator');
+
+    // reset behavior
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.findByText('Reset').realClick();
+    cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('have.attr', 'open');
+    cy.get('[data-action="OK"]').realClick();
+    cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').should('not.exist');
+    cy.get('[ui5-table-row]').eq(1).should('have.attr', 'data-text', 'RatingIndicator');
+
+    // event
+    cy.focused().parent().should('have.attr', 'data-component-name', 'FilterBarDialogSaveBtn');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().parent().should('have.attr', 'data-text', 'RatingIndicator');
+    cy.realPress(['Meta', 'End']);
+    cy.get('[ui5-table-row]').eq(5).should('have.attr', 'data-text', 'RatingIndicator');
+    cy.findByText('OK').realClick();
+    cy.get('@saveSpy').should('have.been.calledOnce');
+
+    cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
+    cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'MultiInput');
+    cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'Input');
+    cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
+  });
+
   mountWithCustomTagName(FilterBar);
 
   cypressPassThroughTestsFactory(FilterBar);
 });
+
+function FilterBarWithReordering(props: Partial<FilterBarPropTypes>) {
+  {
+    const uniqueId = useId();
+    const [orderedChildren, setOrderedChildren] = useState([
+      <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
+        <StepInput required />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
+        <RatingIndicator />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
+        <MultiInput
+          tokens={
+            <>
+              <Token text="Argentina" selected />
+              <Token text="Bulgaria" />
+              <Token text="England" />
+              <Token text="Finland" />
+            </>
+          }
+        />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
+        <Input placeholder="Placeholder" />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
+        <Switch />
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-5`}
+        label="SELECT w/ initial selected"
+        visibleInFilterBar={false}
+        orderId={`${uniqueId}-5`}
+      >
+        <Select>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+        </Select>
+      </FilterGroupItem>
+    ]);
+
+    const handleFiltersDialogSave = (e) => {
+      props.onFiltersDialogSave?.(e);
+      setOrderedChildren((prev) => {
+        return e.detail.orderIds.map((orderId) => {
+          const obj = prev.find((item) => item.props.orderId === orderId);
+          return { ...obj };
+        });
+      });
+    };
+    return (
+      <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
+        {orderedChildren}
+      </FilterBar>
+    );
+  }
+}

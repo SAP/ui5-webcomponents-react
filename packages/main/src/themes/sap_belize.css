@@ -1,0 +1,8 @@
+
+[data-sap-theme="sap_belize"] {
+  --_ui5wcr_ActionSheet_BoxShadow: var(--sapContent_HeaderShadow);
+  --_ui5wcr_Scrollbar_BorderRadius: 0;
+  --_ui5wcr_Splitter_BarBorderFocus: .0625rem dotted var(--sapContent_FocusColor);
+  --_ui5wcr_ActionSheet_TopBorderRadius: var(--sapElement_BorderCornerRadius);
+  --_ui5wcr_Splitter_BarBorderHighContrastFix: .0625rem dotted var(--sapContent_FocusColor);
+}

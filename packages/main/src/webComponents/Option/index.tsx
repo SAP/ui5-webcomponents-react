@@ -8,6 +8,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface OptionAttributes {
   /**
    * Defines the additional text displayed at the end of the option element.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    */
   additionalText?: string;
 
@@ -22,7 +24,9 @@ interface OptionAttributes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * **Note:**
+   * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
+   * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    * @default null
    */
   icon?: string | null | undefined;
@@ -34,7 +38,8 @@ interface OptionAttributes {
   selected?: boolean;
 
   /**
-   * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
+   * Defines the value of the `Select` inside an HTML Form element when this component is selected.
+   * For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
 }
@@ -53,8 +58,10 @@ interface OptionPropTypes extends OptionAttributes, Omit<CommonProps, keyof Opti
 /**
  * The `Option` component defines the content of an option in the `Select`.
  *
- * @abstract
+ *
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',

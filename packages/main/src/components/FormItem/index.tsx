@@ -1,15 +1,21 @@
 'use client';
 
-import { useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
+import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
+import { classNames, styleData } from './FormItem.module.css.js';
+
+type FormItemContent =
+  | ReducedReactNodeWithBoolean
+  | Iterable<ReducedReactNodeWithBoolean>
+  | ReactElement /* necessary for React v16 & v17 ReactNode type*/;
 
 export interface FormItemPropTypes {
   /**
@@ -17,9 +23,11 @@ export interface FormItemPropTypes {
    */
   label?: string | ReactElement;
   /**
-   * Content of the FormItem. Can be an arbitrary React Node.
+   * Content of the FormItem.
+   *
+   * __Note:__ Text, numbers and React portals are ignored.
    */
-  children: ReactNode | ReactNode[];
+  children: FormItemContent;
 }
 
 interface InternalProps extends FormItemPropTypes {
@@ -27,57 +35,13 @@ interface InternalProps extends FormItemPropTypes {
   rowIndex?: number;
 }
 
-const CENTER_ALIGNED_CHILDREN = new Set(['CheckBox', 'RadioButton', 'Switch', 'RangeSlider', 'Slider']);
-
-const useStyles = createUseStyles(
-  {
-    label: {
-      gridColumnEnd: 'span var(--_ui5wcr_form_label_span)',
-      justifySelf: 'var(--_ui5wcr_form_label_text_align)',
-      textAlign: 'var(--_ui5wcr_form_label_text_align)',
-      '&[data-label-span="12"]': {
-        justifySelf: 'start',
-        paddingBlockEnd: '0.25rem'
-      },
-      '&:has(+ $content > [ui5-checkbox])': {
-        alignSelf: 'center'
-      },
-      '&:has(+ $content > [ui5-radio-button])': {
-        alignSelf: 'center'
-      },
-      '&:has(+ $content > [ui5-switch])': {
-        alignSelf: 'center'
-      },
-      '&:has(+ $content > [ui5-range-slider])': {
-        alignSelf: 'center'
-      },
-      '&:has(+ $content > [ui5-slider])': {
-        alignSelf: 'center'
-      }
-    },
-    content: {
-      display: 'flex',
-      gridColumnEnd: 'span var(--_ui5wcr_form_content_span)',
-      '&[data-label-span="12"]': {
-        gridColumnEnd: 'span 12',
-        paddingBlockEnd: '0.625rem'
-      }
-    },
-    lastGroupItem: {
-      marginBlockEnd: '1rem'
-    }
-  },
-  { name: 'FormItem' }
-);
-
 function FormItemLabel({ label, style, className }: { label: ReactNode; style?: CSSProperties; className?: string }) {
-  const classes = useStyles();
   const { labelSpan } = useFormContext();
 
   if (typeof label === 'string') {
     return (
       <Label
-        className={clsx(classes.label, className)}
+        className={clsx(classNames.label, className)}
         style={style}
         wrappingType={WrappingType.Normal}
         data-label-span={labelSpan}
@@ -95,7 +59,7 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
       {
         showColon: showColon ?? true,
         wrappingType: wrappingType ?? WrappingType.Normal,
-        className: clsx(classes.label, className, label.props.className),
+        className: clsx(classNames.label, className, label.props.className),
         style: {
           ...style,
           ...(labelStyle || {})
@@ -136,7 +100,7 @@ const FormItem = (props: FormItemPropTypes) => {
     recalcTrigger
   } = useFormContext();
   const groupContext = useFormGroupContext();
-  const classes = useStyles();
+  useStylesheet(styleData, FormItem.displayName);
 
   useEffect(() => {
     registerItem?.(uniqueId, 'formItem', groupContext.id);
@@ -170,15 +134,13 @@ const FormItem = (props: FormItemPropTypes) => {
         label={label}
         style={{
           gridColumnStart,
-          gridRowStart: labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined,
-          // TODO remove this line as soon as Firefox enables :has by default. https://caniuse.com/css-has
-          alignSelf: CENTER_ALIGNED_CHILDREN.has((children as any)?.type?.displayName) ? 'center' : undefined
+          gridRowStart: labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined
         }}
-        className={clsx(labelSpan !== 12 && lastGroupItem && classes.lastGroupItem)}
+        className={clsx(labelSpan !== 12 && lastGroupItem && classNames.lastGroupItem)}
       />
       <div
         data-id={uniqueId}
-        className={clsx(classes.content, lastGroupItem && classes.lastGroupItem)}
+        className={clsx(classNames.content, lastGroupItem && classNames.lastGroupItem)}
         style={{
           gridColumnStart: contentGridColumnStart,
           gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined

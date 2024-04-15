@@ -23,7 +23,21 @@ export const excludePropsForAbstract = ['className', 'style'];
 
 export function useGetCem() {
   const docsContext = useContext(DocsContext);
-  const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
+  const { attachedCSFFiles } = docsContext;
+
+  const storyTagsSet: Set<string> | undefined = attachedCSFFiles?.size
+    ? Array.from(attachedCSFFiles).reduce((acc, cur) => {
+        const tags: string[] | undefined = cur?.meta?.tags;
+        if (tags?.length) {
+          tags.forEach((tag) => {
+            acc.add(tag);
+          });
+        }
+        return acc;
+      }, new Set<string>())
+    : undefined;
+
+  const storyTags = storyTagsSet?.size ? Array.from(storyTagsSet) : [];
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
   switch (packageAnnotation) {
     case 'package:@ui5/webcomponents':
@@ -54,8 +68,10 @@ function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
           const name = ref.name.replace(/^I([A-Z])/g, '$1');
           const subComps = replaceSubComps[name] || [name];
           subComps.forEach((subComp: string) => {
-            recursiveFind(subComp);
-            subComponentsSet.add(subComp);
+            if (!subComponentsSet.has(subComp)) {
+              subComponentsSet.add(subComp);
+              recursiveFind(subComp);
+            }
           });
         });
       });

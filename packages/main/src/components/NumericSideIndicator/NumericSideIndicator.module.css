@@ -1,0 +1,67 @@
+.numericSideIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;
+  position: relative;
+}
+
+.title {
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSmallSize);
+  color: var(--sapTile_TextColor);
+  text-align: end;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+  max-width: 100%;
+}
+
+.valueContainer {
+  position: relative;
+}
+
+.number,
+.unit {
+  font-size: var(--sapFontSmallSize);
+  color: var(--sapTile_TitleTextColor);
+  white-space: pre-line;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.stateGood {
+  color: var(--sapPositiveTextColor);
+
+  .number,
+  .unit {
+    color: var(--sapPositiveTextColor);
+  }
+}
+
+.stateError {
+  color: var(--sapNegativeTextColor);
+
+  .number,
+  .unit {
+    color: var(--sapNegativeTextColor);
+  }
+}
+
+.stateCritical {
+  color: var(--sapCriticalTextColor);
+
+  .number,
+  .unit {
+    color: var(--sapCriticalTextColor);
+  }
+}
+
+.stateNeutral {
+  color: var(--sapNeutralTextColor);
+
+  .number,
+  .unit {
+    color: var(--sapNeutralTextColor);
+  }
+}

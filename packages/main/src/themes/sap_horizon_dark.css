@@ -1,0 +1,21 @@
+[data-sap-theme='sap_horizon_dark'] {
+  --_ui5wcr_Toolbar_FocusShadow: inset 0 0 0 0.125rem var(--sapContent_FocusColor);
+  --_ui5wcr_Toolbar_FocusOutline: none;
+  --_ui5wcr_ActionSheet_HeaderBoxShadow: var(--sapContent_HeaderShadow);
+  --_ui5wcr_ObjectPage_SectionBorderTop: none;
+  --_ui5wcr_Splitter_ContentBorderColor: var(--sapGroup_ContentBorderColor);
+  --_ui5wcr_ObjectPage_PaddingBlockStart: 0.5rem;
+  --_ui5wcr_ObjectPage_SectionTitleHeight: 2.75rem;
+  --_ui5wcr-AnalyticalTable-OuterCellBorder: 1px solid transparent;
+  --_ui5wcr-AnalyticalTable-HeaderFontFamily: var(--sapFontBoldFamily);
+  --_ui5wcr-AnalyticalTable-OuterBorderBlock: none;
+  --_ui5wcr-AnalyticalTable-OuterBorderInline: none;
+  --_ui5wcr_ActionSheet_MobileHeaderBoxShadow: var(--sapContent_Shadow2);
+  --_ui5wcr_ActionSheet_MobileHeaderTextColor: var(--sapPageHeader_TextColor);
+  --_ui5wcr_ObjectPage_SectionTitleFontFamily: var(--sapFontBoldFamily);
+  --_ui5wcr_ObjectPage_SectionTitleLineHeight: 4rem;
+  --_ui5wcr_ObjectPage_SubSectionBorderRadius: var(--sapElement_BorderCornerRadius);
+  --_ui5wcr_ActionSheet_MobileHeaderBackground: var(--sapPageHeader_Background);
+  --_ui5wcr_ActionSheet_MobileHeaderBorderRadius: var(--sapPopover_BorderCornerRadius);
+  --_ui5wcr_ObjectPage_SubSectionBackgroundColor: var(--sapGroup_ContentBackground);
+}

@@ -43,27 +43,34 @@ interface MultiInputAttributes {
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
   /**
    * Defines whether the value will be autcompleted to match an item
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
 
   /**
-   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * Defines a short hint intended to aid the user with data entry when the
+   * component has no value.
    */
   placeholder?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -76,6 +83,8 @@ interface MultiInputAttributes {
 
   /**
    * Defines whether the clear icon of the input will be shown.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default false
    */
   showClearIcon?: boolean;
@@ -83,13 +92,15 @@ interface MultiInputAttributes {
   /**
    * Defines whether the component should show suggestions, if such are present.
    *
-   * **Note:** You need to import the `InputSuggestions` module from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
+   * **Note:** You need to import the `InputSuggestions` module
+   * from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    * @default false
    */
   showSuggestions?: boolean;
 
   /**
-   * Determines whether a value help icon will be visualized in the end of the input. Pressing the icon will fire `value-help-trigger` event.
+   * Determines whether a value help icon will be visualized in the end of the input.
+   * Pressing the icon will fire `value-help-trigger` event.
    * @default false
    */
   showValueHelpIcon?: boolean;
@@ -99,8 +110,10 @@ interface MultiInputAttributes {
    *
    * **Notes:**
    *
-   * *   The particular effect of this property differs depending on the browser and the current language settings, especially for type `Number`.
-   * *   The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.
+   * - The particular effect of this property differs depending on the browser
+   * and the current language settings, especially for type `Number`.
+   * - The property is mostly intended to be used with touch devices
+   * that use different soft keyboard layouts depending on the given input type.
    * @default "Text"
    */
   type?: InputType | keyof typeof InputType;
@@ -122,6 +135,8 @@ interface MultiInputAttributes {
 interface MultiInputDomRef extends Required<MultiInputAttributes>, Ui5DomRef {
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @returns {void}
    */
   openPicker: () => void;
@@ -151,22 +166,15 @@ interface MultiInputPropTypes
   /**
    * Defines the suggestion items.
    *
-   * Example:
-   *
-   * ```
-   * <MultiInput showSuggestions>
-   *     <SuggestionItem text="Item #1" />
-   *     <SuggestionItem text="Item #2" />
-   * </MultiInput>
-   * ```
-   *
-   *
-   * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.
+   * **Note:** The suggestions would be displayed only if the `showSuggestions`
+   * property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
    * **Note:** Importing the Input Suggestions Support feature:
+   *
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   *
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -195,12 +203,15 @@ interface MultiInputPropTypes
 
   /**
    * Defines the value state message that will be displayed as pop up under the component.
+   * The value state message slot should contain only one root element.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
-   * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   * **Note:** If the component has `suggestionItems`,
+   * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -215,17 +226,21 @@ interface MultiInputPropTypes
   onChange?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
   /**
-   * Fired when the value of the component changes at each keystroke, and when a suggestion item has been selected.
+   * Fired when the value of the component changes at each keystroke,
+   * and when a suggestion item has been selected.
    */
   onInput?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
   /**
-   * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
+   * Fired when the user navigates to a suggestion item via the ARROW keys,
+   * as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
 
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 
@@ -235,18 +250,22 @@ interface MultiInputPropTypes
   onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
 
   /**
-   * Fired when the value help icon is pressed and F4 or ALT/OPTION + ARROW\_UP/ARROW\_DOWN keyboard keys are used.
+   * Fired when the value help icon is pressed
+   * and F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used.
    */
   onValueHelpTrigger?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 }
 
 /**
- * ### Overview
+ * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`.
  *
- * A `MultiInput` field allows the user to enter multiple values, which are displayed as `Token`. User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when:
+ * User can choose interaction for creating tokens.
+ * Fiori Guidelines say that user should create tokens when:
  *
- * *   Type a value in the input and press enter or focus out the input field (`change` event is fired)
- * *   Select a value from the suggestion list (`suggestion-item-select` event is fired)
+ * - Type a value in the input and press enter or focus out the input field (`change` event is fired)
+ * - Select a value from the suggestion list (`suggestion-item-select` event is fired)
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

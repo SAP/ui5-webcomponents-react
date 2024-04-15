@@ -1,0 +1,27 @@
+.base {
+  align-self: center;
+  opacity: 0;
+  padding-inline-end: 1rem;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.imageContainer {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 3rem;
+  width: 3rem;
+  max-width: 3rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}

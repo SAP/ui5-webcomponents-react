@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
 import React, {
@@ -17,7 +17,6 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import {
   BarDesign,
   ButtonDesign,
@@ -47,68 +46,8 @@ import { ManageViewsDialog } from './ManageViewsDialog.js';
 import { SaveViewDialog } from './SaveViewDialog.js';
 import type { VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
+import { classNames, styleData } from './VariantManagement.module.css.js';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center'
-  },
-  title: {
-    cursor: 'pointer',
-    color: ThemingParameters.sapLinkColor,
-    textShadow: 'none',
-    '&:hover': {
-      color: ThemingParameters.sapLink_Hover_Color
-    },
-    '&:active': {
-      color: ThemingParameters.sapLink_Active_Color
-    }
-  },
-  disabled: {
-    '& $title': {
-      color: ThemingParameters.sapGroup_TitleTextColor,
-      cursor: 'default',
-      '&:hover': {
-        color: 'ThemingParameters.sapGroup_TitleTextColor'
-      }
-    }
-  },
-  dirtyState: {
-    color: ThemingParameters.sapGroup_TitleTextColor,
-    paddingInline: '0.125rem',
-    fontWeight: 'bold',
-    font: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    flexGrow: 1
-  },
-  dirtyStateText: {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    fontWeight: 'normal'
-  },
-  navDownBtn: {
-    marginInlineStart: '0.125rem'
-  },
-  footer: {
-    '& > :last-child': {
-      marginInlineEnd: 0
-    }
-  },
-  inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInputContainer: { padding: '0.25rem 1rem' },
-  searchInput: { width: '100%' },
-  popover: {
-    minWidth: '25rem',
-    '&::part(content), &::part(footer)': {
-      padding: 0
-    },
-    '&::part(footer)': {
-      borderBlockStart: 'none'
-    }
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
@@ -143,7 +82,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, VariantManagement.displayName);
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
@@ -261,9 +200,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
   const selectViewText = i18nBundle.getText(SELECT_VIEW);
 
-  const variantManagementClasses = clsx(classes.container, disabled && classes.disabled, className);
+  const variantManagementClasses = clsx(classNames.container, disabled && classNames.disabled, className);
 
-  const dirtyStateClasses = clsx(classes.dirtyState, dirtyStateText !== '*' && classes.dirtyStateText);
+  const dirtyStateClasses = clsx(classNames.dirtyState, dirtyStateText !== '*' && classNames.dirtyStateText);
 
   const selectVariantEventRef = useRef();
   useEffect(() => {
@@ -344,13 +283,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>
-          <Title level={level} className={classes.title}>
+          <Title level={level} className={classNames.title}>
             {selectedVariant?.children}
           </Title>
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
-          className={clsx(classes.navDownBtn, 'ui5-content-density-compact')}
+          className={clsx(classNames.navDownBtn, 'ui5-content-density-compact')}
           tooltip={selectViewText}
           accessibleName={selectViewText}
           onClick={disabled ? undefined : handleOpenVariantManagement}
@@ -361,7 +300,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         {canRenderPortal
           ? createPortal(
               <ResponsivePopover
-                className={classes.popover}
+                className={classNames.popover}
                 ref={popoverRef}
                 headerText={titleText}
                 placementType={placement}
@@ -369,7 +308,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                   (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
                     <Bar
                       design={BarDesign.Footer}
-                      className={classes.footer}
+                      className={classNames.footer}
                       endContent={
                         <>
                           {!inErrorState && showSaveBtn && (
@@ -409,15 +348,15 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     mode={ListMode.SingleSelect}
                     header={
                       showInput ? (
-                        <div className={classes.searchInputContainer} tabIndex={-1}>
+                        <div className={classNames.searchInputContainer} tabIndex={-1}>
                           <Input
-                            className={classes.searchInput}
+                            className={classNames.searchInput}
                             accessibleName={a11ySearchText}
                             value={searchValue}
                             placeholder={searchText}
                             onInput={handleSearchInput}
                             showClearIcon
-                            icon={<Icon name={searchIcon} className={classes.inputIcon} />}
+                            icon={<Icon name={searchIcon} className={classNames.inputIcon} />}
                           />
                         </div>
                       ) : undefined

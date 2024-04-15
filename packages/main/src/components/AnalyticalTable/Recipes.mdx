@@ -122,13 +122,15 @@ For more information please take a look at the [React Table v7 docs](https://git
 ## How to distinguish between `onRowClick` and `onRowSelect` on selection-cell click?
 
 When a selectable cell of the table is clicked, both `onRowClick` and `onRowSelect` are fired. Sometimes, but especially when the selection behavior is set to `RowSelector`, you don't want `onRowClick` to execute the logic you defined in your handler when clicking the selection-cell.
-To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property is falsy.
+To achieve this, you can check the `target` inside the `onRowClick` handler for the `data-selection-cell` attribute contained in the [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) and only execute your logic if this property doesn't equal `"true"`.
 
 ```js
 // both events are fired if the clicked cell is selectable
 const onRowClick = (e) => {
-  if (!e.target.dataset.selectionCell) {
-    // only do something if other cells than the selection cell are clicked
+  if (e.target.dataset.selectionCell === 'true') {
+    // do something if the selection cell is clicked
+  } else {
+    // do something if other cells than the selection cell are clicked
   }
 };
 const onRowSelect = (e) => {
@@ -223,12 +225,16 @@ const columns = [
 <AnalyticalTable data={props.data} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Smart} />
 ```
 
-## How to focus the content of a Dialog or Popover rendered inside a cell?
+## How to render a Dialog or Popover inside a custom Cell?
 
-If a Dialog or Popover is rendered inside a cell, the `focus` event is bubbling up to the table which implements its own logic for focus handling to support keyboard navigation.
-This applies even if a React portal is used to mount the HTML element outside the table, because React event propagation still applies as if it were rendered inside.
+In general, we recommend mounting modals like Dialogs or Popovers outside the `AnalyticalTable`.
+Still, it's possible to also render them inside a custom cell, but there are some things to consider:
 
-To prevent this behavior, you can use the `stopPropagation` method of the `onFocus` event of the Dialog or Popover.
+- Use `createPortal` to render the modal outside the `AnalyticalTable` to prevent visual issues.
+- Use conditional rendering to prevent the modal from being rendered for every cell.
+- Events for i.a. the keyboard navigation are bubbling up to the modal, so in case of `focus`, `key`, `click`, etc. event issues, prevent the event from bubbling up to the modal by calling `event.stopPropagation()` in the respective handler.
+
+Here you can find an example of how to prevent the `focus` event from bubbling up:
 
 ```jsx
 const columns = [

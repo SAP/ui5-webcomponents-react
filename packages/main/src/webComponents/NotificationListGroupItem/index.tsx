@@ -35,7 +35,8 @@ interface NotificationListGroupItemAttributes {
   /**
    * Defines if the `notification` is new or has been already read.
    *
-   * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
+   * **Note:** if set to `false` the `titleText` has bold font,
+   * if set to true - it has a normal font.
    * @default false
    */
   read?: boolean;
@@ -83,7 +84,8 @@ interface NotificationListGroupItemPropTypes
   actions?: UI5WCSlotsNode;
 
   /**
-   * Defines the items of the `NotificationListGroupItem`, usually `NotificationListItem` items.
+   * Defines the items of the `NotificationListGroupItem`,
+   * usually `NotificationListItem` items.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -98,18 +100,22 @@ interface NotificationListGroupItemPropTypes
 }
 
 /**
- * The `NotificationListGroupItem` is a special type of list item, that unlike others can group items within self, usually `NotificationListItem` items.
+ * The `NotificationListGroupItem` is a special type of list item,
+ * that unlike others can group items within self, usually `NotificationListItem` items.
+ *
  * The component consists of:
  *
- * *   `Toggle` button to expand and collapse the group
- * *   `Priority` icon to display the priority of the group
- * *   `TitleText` to entitle the group
- * *   Custom actions - with the use of `NotificationAction`
- * *   Items of the group
+ * - `Toggle` button to expand and collapse the group
+ * - `Priority` icon to display the priority of the group
+ * - `TitleText` to entitle the group
+ * - Custom actions - with the use of `NotificationAction`
+ * - Items of the group
  *
  * ### Usage
- *
  * The component can be used in a standard `ui5-list`.
+ *
+ *
+ *
  * `import "@ui5/webcomponents/dist/NotificationAction.js";` (optional)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

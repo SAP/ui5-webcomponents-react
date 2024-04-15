@@ -237,7 +237,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const onClickInternal = useOnClickInternal(onClick);
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(

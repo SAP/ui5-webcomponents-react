@@ -34,22 +34,28 @@ interface ToolbarDomRef extends Required<ToolbarAttributes>, Ui5DomRef {
 
 interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof ToolbarAttributes | 'children'> {
   /**
-   * Defines the items of the component. **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparator` and `ToolbarSpacer` are allowed here.
+   * Defines the items of the component.
+   *
+   *   **Note:** Currently only `ToolbarButton`, `ToolbarSelect`, `ToolbarSeparator` and `ToolbarSpacer` are allowed here.
    */
   children?: ReactNode | ReactNode[];
 }
 
 /**
- * The `Toolbar` component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.
+ * The `Toolbar` component is used to create a horizontal layout with items.
+ * The items can be overflowing in a popover, when the space is not enough to show all of them.
  *
  * ### Keyboard Handling
- *
  * The `Toolbar` provides advanced keyboard handling.
  *
- * *   The control is not interactive, but can contain of interactive elements
- * *   \[TAB\] - iterates through elements
+ * - The control is not interactive, but can contain of interactive elements
+ * - [Tab] - iterates through elements
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
  */
 const Toolbar = withWebComponent<ToolbarPropTypes, ToolbarDomRef>(
   'ui5-toolbar',

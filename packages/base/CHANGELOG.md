@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
+
+### Features
+
+- update `@ui5/webcomponents` mono repo to `~1.24.0` ([#5682](https://github.com/SAP/ui5-webcomponents-react/issues/5682)) ([0a6ee9e](https://github.com/SAP/ui5-webcomponents-react/commit/0a6ee9e475765fb4f51fbf180028a3699139c0b9))
+
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **useStylesheet:** only remove styles when all components are unmounted ([#5616](https://github.com/SAP/ui5-webcomponents-react/issues/5616)) ([0bc5069](https://github.com/SAP/ui5-webcomponents-react/commit/0bc506990140cd5c94b12dc8cd7f17b546ccd97d)), closes [#5608](https://github.com/SAP/ui5-webcomponents-react/issues/5608)
+
+# [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
+
+### Bug Fixes
+
+- **AnalyticalTable:** indent non-expandable rows in tree table correctly ([#5481](https://github.com/SAP/ui5-webcomponents-react/issues/5481)) ([dc2fe02](https://github.com/SAP/ui5-webcomponents-react/commit/dc2fe02e826b52f99d7451482f2cace77202d584)), closes [#5478](https://github.com/SAP/ui5-webcomponents-react/issues/5478)
+
+### Features
+
+- update `@ui5/webcomponents` to `~1.23.0` ([#5581](https://github.com/SAP/ui5-webcomponents-react/issues/5581)) ([602fd11](https://github.com/SAP/ui5-webcomponents-react/commit/602fd117bdba1824f4d868a9fd09ab4ff00dffec))
+- update `@ui5/webcomponents` to `~1.23.1` ([#5586](https://github.com/SAP/ui5-webcomponents-react/issues/5586)) ([51e9858](https://github.com/SAP/ui5-webcomponents-react/commit/51e9858b6cf68d36eca8fc4d2e48bedc311b6fe8))
+
 ## [1.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.0...v1.25.1) (2024-02-07)
 
 ### Bug Fixes

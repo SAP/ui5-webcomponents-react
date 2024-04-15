@@ -1,11 +1,11 @@
 'use client';
 
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import type { CommonProps } from '../../types/index.js';
-import { DynamicPageHeaderStyles } from './DynamicPageHeader.jss.js';
+import { classNames, styleData } from './DynamicPageHeader.module.css.js';
 
 export interface DynamicPageHeaderPropTypes extends CommonProps {
   /**
@@ -24,8 +24,6 @@ interface InternalProps extends DynamicPageHeaderPropTypes {
    */
   topHeaderHeight?: number;
 }
-
-const useStyles = createUseStyles(DynamicPageHeaderStyles, { name: 'DynamicPageHeader' });
 
 /**
  * The `DynamicPageHeader` component is part of the `DynamicPage` family and is used to serve as header section of the `DynamicPage` and `ObjectPage`.
@@ -47,11 +45,16 @@ const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref)
     return style;
   }, [headerPinned, topHeaderHeight, style]);
 
-  const classes = useStyles();
-  const classNames = clsx(classes.header, className);
+  useStylesheet(styleData, DynamicPageHeader.displayName);
 
   return (
-    <div ref={ref} {...rest} className={classNames} data-component-name="DynamicPageHeader" style={headerStyles}>
+    <div
+      ref={ref}
+      {...rest}
+      className={clsx(classNames.header, className)}
+      data-component-name="DynamicPageHeader"
+      style={headerStyles}
+    >
       {children}
     </div>
   );

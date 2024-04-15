@@ -1,0 +1,93 @@
+.outerContainer {
+  background: var(--sapObjectHeader_Background);
+}
+
+.outerContainerWithToolbar {
+  padding-block: 0.5rem 1px;
+  padding-inline: 2rem;
+  box-shadow: var(--sapContent_HeaderShadow);
+}
+
+.filterBarHeader {
+  display: flex;
+  align-items: center;
+  background: var(--sapObjectHeader_Background);
+  min-height: 3rem;
+  padding-block-end: 0.5rem;
+  box-shadow: none;
+  flex-wrap: wrap;
+
+  [data-component-name='ToolbarContent'] > *:first-child {
+    margin-inline-start: 0;
+  }
+}
+
+.filterArea {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-block-start: 1rem;
+  margin-block-end: 1rem;
+  background: var(--sapObjectHeader_Background);
+  transition:
+    max-height 0.2s ease-out,
+    opacity 0.2s ease-in;
+}
+
+.filterAreaClosed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.filterAreaOpen {
+  opacity: 1;
+}
+
+.showFiltersBtn {
+  min-width: 108px;
+}
+
+.filterBarButtons {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  inset-inline: auto 0;
+  margin-inline-end: 1rem;
+  margin-block-end: 1rem;
+
+  > *:not(:first-child) {
+    margin-inline-start: 0.25rem;
+  }
+
+  > *:not(:last-child) {
+    margin-inline-end: 0.25rem;
+  }
+}
+
+.searchContainer {
+  > [ui5-input] {
+    width: 100%;
+  }
+}
+
+.spacer {
+  height: 0;
+  margin-block-start: 0;
+  margin-inline-end: 1rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: calc(var(--_ui5wcr_filter_group_item_flex_basis));
+  max-width: calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2);
+}
+
+.lastSpacer {
+  height: var(--_ui5wcr-ElementHeight);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: calc(var(--_ui5wcr_filter_group_item_flex_basis));
+  max-width: calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2);
+  margin-inline-end: 1rem;
+}

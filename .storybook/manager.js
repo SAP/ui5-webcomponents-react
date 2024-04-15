@@ -1,4 +1,4 @@
-import { addons } from '@storybook/addons';
+import { addons } from '@storybook/manager-api';
 import { Fiori4ReactTheme } from './theme';
 
 addons.setConfig({
@@ -10,22 +10,27 @@ addons.setConfig({
   isFullscreen: false,
   /**
    * display left panel that shows a list of stories
-   * @type {Boolean}
+   * @type {number}
    */
-  showNav: true,
-  /**
-   * display horizontal panel that displays addon configurations
-   * @type {Boolean}
-   */
-  showPanel: true,
+  navSize: 240,
   /**
    * display floating search box to search through stories
    * @type {Boolean}
    */
   showSearchBox: false,
   /**
+   * The size of the addon panel when in the bottom position
+   * @type {number}
+   */
+  bottomPanelHeight: 300,
+  /**
+   * The size of the addon panel when in the right position
+   * @type {number}
+   */
+  rightPanelWidth: 300,
+  /**
    * show horizontal addons panel as a vertical panel on the right
-   * @type {Boolean}
+   * @type {string}
    */
   panelPosition: 'right',
   /**
@@ -41,6 +46,11 @@ addons.setConfig({
   enableShortcuts: false,
 
   sidebar: {
-    showRoots: true
+    showRoots: true,
+    filters: {
+      patterns: (item) => {
+        return !item.tags.includes('excludeFromSidebar');
+      }
+    }
   }
 });

@@ -7,7 +7,8 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface TimelineItemAttributes {
   /**
-   * Defines the icon to be displayed as graphical element within the `TimelineItem`. SAP-icons font provides numerous options.
+   * Defines the icon to be displayed as graphical element within the `TimelineItem`.
+   * SAP-icons font provides numerous options.
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
@@ -45,9 +46,11 @@ interface TimelineItemPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the item name is pressed either with a click/tap or by using the Enter or Space key.
+   * Fired when the item name is pressed either with a
+   * click/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `name-clickable` attribute is not set.
+   * **Note:** The event will not be fired if the `name-clickable`
+   * attribute is not set.
    */
   onNameClick?: (event: Ui5CustomEvent<TimelineItemDomRef>) => void;
 }

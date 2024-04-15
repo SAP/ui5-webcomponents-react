@@ -246,7 +246,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       const hideDataLabel =
         typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
       if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
-      return Pie.renderLabelLineItem(undefined, props);
+      return Pie.renderLabelLineItem({}, props);
     },
     [chartConfig.activeSegment, measure.hideDataLabel]
   );

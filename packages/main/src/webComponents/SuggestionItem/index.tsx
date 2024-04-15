@@ -26,7 +26,9 @@ interface SuggestionItemAttributes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * **Note:**
+   * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
+   * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
 
@@ -51,9 +53,11 @@ interface SuggestionItemAttributes {
   text?: string;
 
   /**
-   * Defines the visual indication and behavior of the item. Available options are `Active` (by default), `Inactive` and `Detail`.
+   * Defines the visual indication and behavior of the item.
+   * Available options are `Active` (by default), `Inactive` and `Detail`.
    *
-   * **Note:** When set to `Active`, the item will provide visual response upon press and hover, while when `Inactive` or `Detail` - will not.
+   * **Note:** When set to `Active`, the item will provide visual response upon press and hover,
+   * while when `Inactive` or `Detail` - will not.
    * @default "Active"
    */
   type?: ListItemType | keyof typeof ListItemType;
@@ -66,8 +70,8 @@ interface SuggestionItemPropTypes extends SuggestionItemAttributes, Omit<CommonP
 /**
  * The `SuggestionItem` represents the suggestion item of the `Input`.
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemDomRef>(
   'ui5-suggestion-item',

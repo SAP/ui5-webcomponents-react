@@ -12,6 +12,7 @@ const addons = [
       docs: false
     }
   },
+  getAbsolutePath('@storybook/react-vite'),
   {
     name: '@storybook/addon-docs',
     options: {
@@ -63,17 +64,8 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true
   },
-  features: {
-    // storyStoreV7: false
-  },
   typescript: {
-    // reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   propFilter: prop => {
-    //     return prop.parent ? !/(@types\/react|@emotion|@storybook)/.test(prop.parent.fileName) : true;
-    //   }
-    // }
+    reactDocgen: 'react-docgen-typescript'
   },
   staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
 };

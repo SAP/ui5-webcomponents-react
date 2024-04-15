@@ -31,13 +31,16 @@ interface ColorPickerPropTypes
  *
  * ### Usage
  *
- * #### When to use:
+ * #### When to use
+ * Use the color picker if:
  *
- * *   users need to select any color freely.
+ * -  users need to select any color freely.
  *
- * #### When not to use:
+ * #### When not to use
  *
- * *   Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.
+ * -  Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

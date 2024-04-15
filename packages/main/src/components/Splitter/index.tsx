@@ -2,152 +2,13 @@
 
 import horizontalGripIcon from '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import verticalGripIcon from '@ui5/webcomponents-icons/dist/vertical-grip.js';
-import {
-  CssSizeVariables,
-  ThemingParameters,
-  useCurrentTheme,
-  useI18nBundle,
-  useIsRTL,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { useCurrentTheme, useI18nBundle, useIsRTL, useSyncRef, useStylesheet } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { ButtonDesign } from '../../enums/index.js';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
-import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { CommonProps } from '../../types/index.js';
 import { Button, Icon } from '../../webComponents/index.js';
-
-const useStyles = createUseStyles(
-  {
-    splitter: {
-      touchAction: 'none',
-      position: 'relative',
-      display: 'flex',
-      willChange: 'flex',
-      backgroundColor: ThemingParameters.sapShell_Background,
-      alignItems: 'center',
-      justifyContent: 'center',
-      boxSizing: 'border-box',
-      '&[data-splitter-vertical=horizontal]': {
-        cursor: 'col-resize',
-        borderLeft: CustomThemingParameters.SplitterBarBorderStyle,
-        borderRight: CustomThemingParameters.SplitterBarBorderStyle,
-        minWidth: CssSizeVariables.ui5WcrSplitterSize,
-        width: CssSizeVariables.ui5WcrSplitterSize,
-        height: '100%',
-        flexDirection: 'column',
-        '&:focus': {
-          borderTop: CustomThemingParameters.SplitterBarBorderFix,
-          borderRight: CustomThemingParameters.SplitterBarBorderFocus,
-          borderBottom: CustomThemingParameters.SplitterBarBorderFix,
-          borderLeft: CustomThemingParameters.SplitterBarBorderFocus,
-          outlineOffset: '-0.20rem',
-          outline: CustomThemingParameters.SplitterBarOutline
-        },
-
-        '& $lineBefore, & $lineAfter': {
-          backgroundSize: '0.0625rem 100%',
-          width: CssSizeVariables.ui5WcrSplitterSize,
-          height: '4rem'
-        },
-        '& $lineBefore': {
-          backgroundImage: `linear-gradient(to top, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        },
-        '& $icon': {
-          padding: '0.5rem 0',
-          zIndex: 1
-        },
-        '& $lineAfter': {
-          backgroundImage: `linear-gradient(to bottom, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        }
-      },
-      '&[data-splitter-vertical=vertical]': {
-        borderTop: CustomThemingParameters.SplitterBarBorderStyle,
-        borderBottom: CustomThemingParameters.SplitterBarBorderStyle,
-        cursor: 'row-resize',
-        minHeight: CssSizeVariables.ui5WcrSplitterSize,
-        height: CssSizeVariables.ui5WcrSplitterSize,
-        width: '100%',
-        flexDirection: 'row',
-        '&:focus': {
-          borderTop: CustomThemingParameters.SplitterBarBorderFocus,
-          borderRight: CustomThemingParameters.SplitterBarBorderFix,
-          borderBottom: CustomThemingParameters.SplitterBarBorderFocus,
-          borderLeft: CustomThemingParameters.SplitterBarBorderFix,
-          outlineOffset: '-0.20rem',
-          outline: CustomThemingParameters.SplitterBarOutline
-        },
-
-        '& $lineBefore, & $lineAfter': {
-          backgroundSize: '100% 0.0625rem ',
-          width: '5rem',
-          height: CssSizeVariables.ui5WcrSplitterSize
-        },
-        '& $lineBefore': {
-          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        },
-        '& $icon': {
-          padding: '0 0.5rem',
-          zIndex: 1
-        },
-        '& $lineAfter': {
-          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        }
-      },
-      '&[data-splitter-vertical=verticalRtl]': {
-        cursor: 'row-resize',
-        minHeight: CssSizeVariables.ui5WcrSplitterSize,
-        height: CssSizeVariables.ui5WcrSplitterSize,
-        width: '100%',
-        flexDirection: 'row',
-
-        '& $lineBefore, & $lineAfter': {
-          backgroundSize: '100% 0.0625rem ',
-          width: '5rem',
-          height: CssSizeVariables.ui5WcrSplitterSize
-        },
-        '& $lineBefore': {
-          backgroundImage: `linear-gradient(to right, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        },
-        '& $icon': {
-          padding: '0 0.5rem',
-          zIndex: 1
-        },
-        '& $lineAfter': {
-          backgroundImage: `linear-gradient(to left, ${CustomThemingParameters.SplitterContentBorderColor}, transparent)`
-        }
-      },
-      '&:hover': {
-        '& $lineBefore, & $lineAfter': {
-          flexGrow: 1,
-          transition: 'all 0.1s ease-in'
-        }
-      }
-    },
-    gripButton: {
-      minWidth: '1.5rem !important',
-      height: '1.625rem',
-      zIndex: '1',
-      '&:active': {
-        zIndex: '2'
-      }
-    },
-    icon: {
-      boxSizing: 'initial',
-      color: CustomThemingParameters.SplitterIconColor
-    },
-    lineBefore: {
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    },
-    lineAfter: {
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }
-  },
-  { name: 'Splitter' }
-);
+import { classNames, styleData } from './Splitter.module.css.js';
 
 export interface SplitterPropTypes extends CommonProps {
   height: string | number;
@@ -157,6 +18,7 @@ export interface SplitterPropTypes extends CommonProps {
 
 const verticalPositionInfo = {
   start: 'top',
+  startUppercase: 'Top',
   end: 'bottom',
   position: 'Y',
   positionRect: 'y',
@@ -167,6 +29,7 @@ const verticalPositionInfo = {
 
 const horizontalPositionInfo = {
   start: 'left',
+  startUppercase: 'Left',
   end: 'right',
   position: 'X',
   positionRect: 'x',
@@ -181,7 +44,8 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const isRtl = useIsRTL(localRef);
   const start = useRef(null);
-  const classes = useStyles();
+
+  useStylesheet(styleData, Splitter.displayName);
 
   const previousSiblingSize = useRef<number>(null);
   const nextSiblingSize = useRef<number>(null);
@@ -230,7 +94,13 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     }
   };
 
+  /**
+   * If the cursor is dragged outside the splitter (into another SplitterElement or outside the SplitterLayout), SplitterElements should increase/decrease their size to max/min.
+   */
   const handleFallback = (e, touchEvent: boolean) => {
+    if (!localRef.current) {
+      return;
+    }
     const prevSibling = localRef.current[isSiblings[0]] as HTMLElement;
     const nextSibling = localRef.current[isSiblings[1]] as HTMLElement;
     const prevSiblingRect = (localRef.current[isSiblings[0]] as HTMLElement).getBoundingClientRect();
@@ -240,7 +110,10 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       : e[`client${positionKeys.position}`];
 
     // left
-    if (currentPos - localRef.current.getBoundingClientRect()?.[positionKeys.positionRect] < 0) {
+    if (
+      !localRef.current.contains(e.target) &&
+      currentPos - localRef.current[`offset${positionKeys.startUppercase}`] + 1 /* border */ < 0
+    ) {
       prevSibling.style.flex = '0 0 0px';
       // Check if minSize is set on previous sibling
       if (prevSibling.style?.[positionKeys.min]) {
@@ -272,14 +145,11 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     }
   };
 
-  const handleSplitterClick = (e) => {
-    e.currentTarget.focus();
-  };
-
   const handleMoveSplitterStart = (e) => {
     if (e.type === 'pointerdown' && e.pointerType !== 'touch') {
       return;
     }
+    e.currentTarget.focus();
     e.preventDefault();
     setIsDragging(e.pointerType ?? 'mouse');
     resizerClickOffset.current = e.nativeEvent[positionKeys.offset];
@@ -381,31 +251,35 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
 
   return (
     <div
-      className={classes.splitter}
+      className={classNames.splitter}
       tabIndex={0}
-      onClick={handleSplitterClick}
       onKeyDown={onHandleKeyDown}
       onPointerDown={handleMoveSplitterStart}
       onMouseDown={handleMoveSplitterStart}
       ref={componentRef}
       role="separator"
-      data-splitter-vertical={isRtl && vertical ? 'verticalRtl' : vertical ? 'vertical' : 'horizontal'}
+      data-splitter-vertical={vertical ? 'vertical' : 'horizontal'}
       title={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
       aria-orientation={vertical ? 'vertical' : 'horizontal'}
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
     >
-      <div className={classes.lineBefore} />
+      <div className={classNames.lineBefore} />
       {isHighContrast ? (
         <Button
-          className={classes.gripButton}
+          className={classNames.gripButton}
           tabIndex={-1}
           icon={vertical ? horizontalGripIcon : verticalGripIcon}
           design={ButtonDesign.Transparent}
+          data-component-name="SplitterLayoutSplitterGrip"
         />
       ) : (
-        <Icon className={classes.icon} name={vertical ? horizontalGripIcon : verticalGripIcon} />
+        <Icon
+          className={classNames.icon}
+          name={vertical ? horizontalGripIcon : verticalGripIcon}
+          data-component-name="SplitterLayoutSplitterGrip"
+        />
       )}
-      <div className={classes.lineAfter} />
+      <div className={classNames.lineAfter} />
     </div>
   );
 });

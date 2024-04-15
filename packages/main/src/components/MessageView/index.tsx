@@ -1,11 +1,10 @@
 'use client';
 
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import { ThemingParameters, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import {
   ButtonDesign,
   FlexBoxDirection,
@@ -21,13 +20,14 @@ import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
-import { List } from '../../webComponents/List/index.js';
 import type { ListPropTypes } from '../../webComponents/List/index.js';
+import { List } from '../../webComponents/List/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { MessageItemPropTypes } from './MessageItem.js';
+import { classNames, styleData } from './MessageView.module.css.js';
 import { getIconNameForType } from './utils.js';
 
 export interface MessageViewDomRef extends HTMLDivElement {
@@ -97,72 +97,16 @@ export const resolveMessageGroups = (children: ReactElement<MessageItemPropTypes
   });
 };
 
-const useStyles = createUseStyles(
-  {
-    container: {
-      width: '100%',
-      overflowX: 'hidden',
-      overflowY: 'auto',
-      display: 'flex',
-      height: '100%',
-      '& > *': {
-        width: '100%',
-        flexShrink: 0,
-        transition: 'transform 200ms ease-in-out'
-      }
-    },
-    showDetails: {
-      '& > *': {
-        transform: 'translateX(-100%)'
-      }
-    },
-    button: {
-      '&[data-key="Error"]:not([pressed])': { color: ThemingParameters.sapNegativeElementColor },
-      '&[data-key="Warning"]:not([pressed])': { color: ThemingParameters.sapCriticalElementColor },
-      '&[data-key="Success"]:not([pressed])': { color: ThemingParameters.sapPositiveElementColor },
-      '&[data-key="Information"]:not([pressed])': { color: ThemingParameters.sapInformativeElementColor }
-    },
-    details: {
-      padding: '1rem'
-    },
-    detailsIcon: {
-      flexShrink: 0,
-      margin: '0 1rem 0 0.5rem',
-      '&[data-type="Error"]': { color: ThemingParameters.sapNegativeElementColor },
-      '&[data-type="Warning"]': { color: ThemingParameters.sapCriticalElementColor },
-      '&[data-type="Success"]': { color: ThemingParameters.sapPositiveElementColor },
-      '&[data-type="Information"],&[data-type="None"]': { color: ThemingParameters.sapInformativeElementColor }
-    },
-    detailsTextContainer: { overflow: 'hidden' },
-    detailsTitle: {
-      marginBlockEnd: '1rem'
-    },
-    detailsText: {
-      fontFamily: ThemingParameters.sapFontFamily,
-      fontSize: ThemingParameters.sapFontSize,
-      lineHeight: 1.4,
-      color: ThemingParameters.sapTextColor,
-      marginBlockEnd: '1rem'
-    },
-    messagesContainer: {
-      height: '100%'
-    },
-    detailsContainer: {
-      height: '100%'
-    }
-  },
-  { name: 'MessageView' }
-);
-
 /**
  * The `MessageView` is used to display a summarized list of different types of messages (error, warning, success, and information messages).
  */
 const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, ref) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
 
+  useStylesheet(styleData, MessageView.displayName);
+
   const [componentRef, internalRef] = useSyncRef<MessageViewDomRef>(ref);
 
-  const classes = useStyles();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const [listFilter, setListFilter] = useState<ValueState | 'All'>('All');
@@ -202,10 +146,10 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
   };
 
   const outerClasses = clsx(
-    classes.container,
+    classNames.container,
     GlobalStyleClasses.sapScrollBar,
     className,
-    selectedMessage && classes.showDetails
+    selectedMessage && classNames.showDetails
   );
 
   return (
@@ -215,7 +159,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
           selectMessage: setSelectedMessage
         }}
       >
-        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }} className={classes.messagesContainer}>
+        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }} className={classNames.messagesContainer}>
           {!selectedMessage && (
             <>
               {filledTypes > 1 && (
@@ -236,7 +180,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                             data-key={valueState}
                             pressed={listFilter === valueState}
                             icon={getIconNameForType(valueState)}
-                            className={classes.button}
+                            className={classNames.button}
                           >
                             {count}
                           </SegmentedButtonItem>
@@ -261,7 +205,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
             </>
           )}
         </div>
-        <div className={classes.detailsContainer}>
+        <div className={classNames.detailsContainer}>
           {childrenArray.length > 0 ? (
             <>
               {showDetailsPageHeader && selectedMessage && (
@@ -272,17 +216,17 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                 />
               )}
               {selectedMessage && (
-                <FlexBox className={classes.details}>
+                <FlexBox className={classNames.details}>
                   <Icon
                     data-type={selectedMessage.type}
                     name={getIconNameForType(selectedMessage.type)}
-                    className={classes.detailsIcon}
+                    className={classNames.detailsIcon}
                   />
-                  <FlexBox direction={FlexBoxDirection.Column} className={classes.detailsTextContainer}>
-                    <Title level={TitleLevel.H5} className={classes.detailsTitle} wrappingType={WrappingType.Normal}>
+                  <FlexBox direction={FlexBoxDirection.Column} className={classNames.detailsTextContainer}>
+                    <Title level={TitleLevel.H5} className={classNames.detailsTitle} wrappingType={WrappingType.Normal}>
                       {selectedMessage.titleText}
                     </Title>
-                    <div className={classes.detailsText}>{selectedMessage.children}</div>
+                    <div className={classNames.detailsText}>{selectedMessage.children}</div>
                   </FlexBox>
                 </FlexBox>
               )}

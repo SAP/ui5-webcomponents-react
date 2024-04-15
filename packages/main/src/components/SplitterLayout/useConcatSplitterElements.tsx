@@ -1,4 +1,3 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactElement } from 'react';
 import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
 import { Splitter } from '../Splitter/index.js';
@@ -58,7 +57,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
       const size = childrenArray[index]?.props?.size;
       if (size && size !== 'auto') {
         childrenArray[index] = cloneElement(childrenArray[index], {
-          size: `calc(${size} - ${CssSizeVariables.ui5WcrSplitterSize})`
+          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`
         });
       }
     });
