@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { glob } from 'glob';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { basename } from 'node:path';
@@ -9,7 +10,13 @@ const cssIndexFile = fileURLToPath(new URL('../dist/css/index.css', import.meta.
 const cssModules = await glob(`${cssDir}/**/*.module.css`);
 
 // manually add ThemeProvider
-cssModules.unshift(fileURLToPath(new URL('../dist/css/components/ThemeProvider/ThemeProvider.css', import.meta.url)));
+const themeProviderCssPath = fileURLToPath(
+  new URL('../dist/css/components/ThemeProvider/ThemeProvider.css', import.meta.url)
+);
+
+if (fs.existsSync(themeProviderCssPath)) {
+  cssModules.unshift(themeProviderCssPath);
+}
 
 const fileContent = [];
 
