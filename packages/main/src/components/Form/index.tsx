@@ -235,7 +235,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     if (onlyFormItems) {
       // if the last column only contains one row, balance it with the previous column
-      if (columnsWithItems.at(-1)?.length === 1) {
+      if (columnsWithItems.at(-1)?.length === 1 && columnsWithItems.at(-2)?.length > 1) {
         columnsWithItems.at(-1).unshift(columnsWithItems.at(-2).pop());
       }
       columnsWithItems.forEach((columnItems, columnIndex) => {
