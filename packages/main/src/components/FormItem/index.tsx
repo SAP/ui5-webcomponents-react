@@ -157,6 +157,7 @@ const FormItem = (props: FormItemPropTypes) => {
           gridColumnStart: contentGridColumnStart,
           gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined
         }}
+        data-label-span={labelSpan}
         data-row-index={calculatedGridRowStart}
       >
         {flattenFragments(children).map((child, index) => {
