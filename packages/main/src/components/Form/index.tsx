@@ -15,6 +15,8 @@ const recalcReducerFn = (prev: number) => {
   return prev + 1;
 };
 
+type DisplayRange = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
+
 export interface FormPropTypes extends CommonProps {
   /**
    * Components that are placed into Form.
@@ -129,13 +131,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const [items, setItems] = useState<Map<string, ItemInfo>>(() => new Map());
   useStylesheet(styleData, Form.displayName);
 
-  const columnsMap = new Map();
+  const columnsMap = new Map<DisplayRange, number>();
   columnsMap.set('Phone', columnsS);
   columnsMap.set('Tablet', columnsM);
   columnsMap.set('Desktop', columnsL);
   columnsMap.set('LargeDesktop', columnsXL);
 
-  const labelSpanMap = new Map();
+  const labelSpanMap = new Map<DisplayRange, number>();
   labelSpanMap.set('Phone', labelSpanS);
   labelSpanMap.set('Tablet', labelSpanM);
   labelSpanMap.set('Desktop', labelSpanL);
