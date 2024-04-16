@@ -35,7 +35,14 @@ interface InternalProps extends FormItemPropTypes {
   rowIndex?: number;
 }
 
-function FormItemLabel({ label, style, className }: { label: ReactNode; style?: CSSProperties; className?: string }) {
+interface FormItemLabelProps {
+  label: ReactNode;
+  style?: CSSProperties;
+  className?: string;
+  rowIndex: number | undefined;
+}
+
+function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps) {
   const { labelSpan } = useFormContext();
 
   if (typeof label === 'string') {
@@ -46,6 +53,7 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
         wrappingType={WrappingType.Normal}
         data-label-span={labelSpan}
         showColon={!!label}
+        data-row-index-label={rowIndex}
       >
         {label}
       </Label>
@@ -54,7 +62,7 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
 
   if (isValidElement(label)) {
     const { showColon, wrappingType, style: labelStyle, children } = label.props;
-    return cloneElement<LabelPropTypes & { 'data-label-span'?: number }>(
+    return cloneElement<LabelPropTypes & { 'data-label-span'?: number; 'data-row-index-label'?: number }>(
       label,
       {
         showColon: showColon ?? true,
@@ -64,7 +72,8 @@ function FormItemLabel({ label, style, className }: { label: ReactNode; style?: 
           ...style,
           ...(labelStyle || {})
         },
-        'data-label-span': labelSpan
+        'data-label-span': labelSpan,
+        'data-row-index-label': rowIndex
       },
       children ?? ''
     );
@@ -127,6 +136,8 @@ const FormItem = (props: FormItemPropTypes) => {
   })();
 
   const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
+  const calculatedGridRowStartLabel =
+    labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined;
 
   return (
     <>
@@ -134,8 +145,9 @@ const FormItem = (props: FormItemPropTypes) => {
         label={label}
         style={{
           gridColumnStart,
-          gridRowStart: labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined
+          gridRowStart: calculatedGridRowStartLabel
         }}
+        rowIndex={calculatedGridRowStartLabel}
         className={clsx(labelSpan !== 12 && lastGroupItem && classNames.lastGroupItem)}
       />
       <div
@@ -145,7 +157,7 @@ const FormItem = (props: FormItemPropTypes) => {
           gridColumnStart: contentGridColumnStart,
           gridRowStart: rowIndex != null ? calculatedGridRowStart : undefined
         }}
-        data-label-span={labelSpan}
+        data-row-index={calculatedGridRowStart}
       >
         {flattenFragments(children).map((child, index) => {
           // @ts-expect-error: type can't be string because of `isValidElement`

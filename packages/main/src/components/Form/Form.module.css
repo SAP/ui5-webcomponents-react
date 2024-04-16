@@ -8,6 +8,14 @@
   row-gap: 0.25rem;
   column-gap: 0.5rem;
 
+  /* first row padding if form title is set*/
+  & > [ui5-title] ~ [data-row-index-label='2']:has(+ [data-row-index='3']) {
+    margin-block-start: 0.5rem;
+  }
+  & > [ui5-title] ~ [data-row-index-label='2'] + [data-row-index='2'] {
+    margin-block-start: 0.5rem;
+  }
+
   --_ui5wcr_form_label_text_align: end;
 }
 
@@ -56,9 +64,12 @@
 }
 
 .formTitle {
-  border-block-end: 1px solid var(--sapGroup_TitleBorderColor);
-  margin-block-end: 1.75rem;
+  box-sizing: border-box;
+  border-block-end: var(--_ui5wcr_Form_HeaderBorderWidth) solid var(--sapGroup_TitleBorderColor);
   grid-column: 1 / -1;
+  font-size: var(--sapGroup_Title_FontSize);
+  height: 2.75rem;
+  line-height: 2.75rem;
 }
 
 .labelSpan12 {
