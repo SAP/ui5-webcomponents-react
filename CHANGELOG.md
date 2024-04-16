@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.27.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.27.0...v1.27.1) (2024-04-16)
+
+### Bug Fixes
+
+- **DynamicPage & ObjectPage:** improve a11y of header-features section ([#5684](https://github.com/SAP/ui5-webcomponents-react/issues/5684)) ([0790ad4](https://github.com/SAP/ui5-webcomponents-react/commit/0790ad42e58f96f07f83dc778599fa19ffa65d62)), closes [#5670](https://github.com/SAP/ui5-webcomponents-react/issues/5670) [#5669](https://github.com/SAP/ui5-webcomponents-react/issues/5669) [#5666](https://github.com/SAP/ui5-webcomponents-react/issues/5666)
+- **Form:** fix reading and tab order when only FormItems are used ([#5714](https://github.com/SAP/ui5-webcomponents-react/issues/5714)) ([9c84db5](https://github.com/SAP/ui5-webcomponents-react/commit/9c84db55a389a0f8813b258443c8f515d10296b3)), closes [#5704](https://github.com/SAP/ui5-webcomponents-react/issues/5704)
+
 # [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
 
 ### Bug Fixes
