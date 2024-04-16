@@ -26,7 +26,10 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build:css": "postcss --base src --dir dist/css src/**/*.css",
+    "build:css-bundle": "node ../../config/merge-css-modules.js",
+    "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
     "clsx": "2.1.0",
