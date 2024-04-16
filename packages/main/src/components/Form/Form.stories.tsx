@@ -45,9 +45,6 @@ export const Default: Story = {
   render: (props) => {
     return (
       <Form {...props}>
-        <FormItem label="Sole Form Item">
-          <Input type={InputType.Text} />
-        </FormItem>
         <FormGroup titleText="Personal Data">
           <FormItem label="Name">
             <Input type={InputType.Text} />
@@ -101,25 +98,6 @@ export const Default: Story = {
           </FormItem>
           <FormItem label="I want to receive the newsletter">
             <CheckBox />
-          </FormItem>
-        </FormGroup>
-        <FormGroup titleText="Contact">
-          <FormItem label="Website">
-            <Link href={'https://sap.github.io/ui5-webcomponents-react'}>
-              https://sap.github.io/ui5-webcomponents-react
-            </Link>
-          </FormItem>
-          <FormItem label="Email">
-            <Link>some.one@sap.com</Link>
-          </FormItem>
-          <FormItem label="Slack">
-            <Link href={'https://openui5.slack.com/archives/CSQEJ2J04'}>#webcomponents-react</Link>
-          </FormItem>
-          <FormItem label="Company">
-            <Text>SAP</Text>
-          </FormItem>
-          <FormItem label="Company Headquarter">
-            <Text>Walldorf, Germany</Text>
           </FormItem>
         </FormGroup>
       </Form>
