@@ -14,14 +14,6 @@ export interface ContainerProps extends CommonProps {
   resizeDebounce: number;
 }
 
-// eslint-disable-next-line no-underscore-dangle
-const __testingProps__: any = {};
-
-if (process.env.NODE_ENV === 'test') {
-  __testingProps__.width = 400;
-  __testingProps__.height = 400;
-}
-
 const loaderStyles: CSSProperties = {
   position: 'absolute',
   top: 0,
@@ -59,9 +51,7 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
         <>
           {loading && <Loader style={loaderStyles} />}
           <ErrorBoundary>
-            <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
-              {children}
-            </ResponsiveContainer>
+            <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>
           </ErrorBoundary>
         </>
       ) : (
