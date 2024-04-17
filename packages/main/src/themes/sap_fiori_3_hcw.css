@@ -6,4 +6,5 @@
   --_ui5wcr_ActionSheet_TopBorderRadius: var(--sapElement_BorderCornerRadius);
   --_ui5wcr_Splitter_ContentBorderColor: var(--sapGroup_ContentBorderColor);
   --_ui5wcr_Splitter_BarBorderHighContrastFix: none;
+  --_ui5wcr_Form_HeaderBorderWidth: calc(3 * var(--sapList_BorderWidth));
 }

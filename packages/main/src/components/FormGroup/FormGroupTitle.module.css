@@ -6,7 +6,6 @@
   color: var(--sapGroup_TitleTextColor);
   font-size: var(--sapFontHeader6Size);
   margin: 0;
-  margin-block-start: 1rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
