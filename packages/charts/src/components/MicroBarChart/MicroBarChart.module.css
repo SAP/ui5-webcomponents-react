@@ -46,7 +46,7 @@
 }
 
 .text {
-  padding-left: 6px;
+  padding-inline-start: 6px;
   display: inline-block;
   overflow: hidden;
   font-size: var(--sapFontSmallSize);
