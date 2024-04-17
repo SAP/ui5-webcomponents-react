@@ -24,6 +24,7 @@ export type GroupContextType = {
 };
 
 export type ItemInfo = {
+  id: string;
   type: FormElementTypes;
   formItemIds: Set<string>;
 };

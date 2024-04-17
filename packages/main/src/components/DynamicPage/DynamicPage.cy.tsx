@@ -298,6 +298,44 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageContent"]').should('have.css', 'padding-block-end', '16px');
     cy.findByText('footer').should('be.visible');
   });
+
+  it('DynamicPageAnchorBar - a11y', () => {
+    cy.mount(
+      <DynamicPage
+        headerContent={<DynamicPageHeader>headerContent</DynamicPageHeader>}
+        headerTitle={<DynamicPageTitle header={<div>Header</div>}>Status</DynamicPageTitle>}
+        footer={<div>footer</div>}
+      />
+    );
+    cy.get('[icon="pushpin-off"]')
+      .should('be.visible')
+      .find('button')
+      .should('have.attr', 'aria-label', 'Pin Header')
+      .and('have.attr', 'aria-pressed', 'false')
+      .click();
+
+    cy.get('[icon="pushpin-off"]').should('not.exist');
+    cy.get('[icon="pushpin-on"]')
+      .should('be.visible')
+      .find('button')
+      .should('have.attr', 'aria-label', 'Unpin Header')
+      .and('have.attr', 'aria-pressed', 'true');
+
+    cy.get('[icon="slim-arrow-up"]')
+      .should('be.visible')
+      .find('button')
+      .should('have.attr', 'aria-label', 'Collapse Header')
+      .and('have.attr', 'aria-expanded', 'true')
+      .click();
+
+    cy.get('[icon="slim-arrow-up"]').should('not.exist');
+    cy.get('[icon="slim-arrow-down"]')
+      .should('be.visible')
+      .find('button')
+      .should('have.attr', 'aria-label', 'Expand Header')
+      .and('have.attr', 'aria-expanded', 'false');
+  });
+
   it('a11y config', () => {
     cy.mount(
       <DynamicPage
@@ -309,7 +347,7 @@ describe('DynamicPage', () => {
     cy.get('[data-component-name="DynamicPageFooter"]').should('have.attr', 'role', 'contentinfo');
     cy.get('[data-component-name="DynamicPageFooter"]').should('not.have.attr', 'aria-label');
     cy.get('[data-component-name="DynamicPageFooter"]').should('not.have.attr', 'aria-labelledby');
-    cy.get('[data-component-name="DynamicPageAnchorBar"]').should('have.attr', 'role', 'navigation');
+    cy.get('[data-component-name="DynamicPageAnchorBar"]').should('not.have.attr', 'role', 'navigation');
 
     cy.mount(
       <DynamicPage
