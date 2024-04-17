@@ -1,10 +1,9 @@
 'use client';
 
-import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import React, { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import {
   Cell,
   Label as RechartsLabel,
@@ -25,14 +24,8 @@ import type { IPolarChartConfig } from '../../interfaces/IPolarChartConfig.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
+import { classNames, styleData } from './PieChart.module.css.js';
 import { PieChartPlaceholder } from './Placeholder.js';
-
-const useStyles = createUseStyles(
-  {
-    piechart: { '& g:focus,& path:focus': { outline: 'none' } }
-  },
-  { name: 'PieChartStyles' }
-);
 
 interface MeasureConfig extends Omit<IChartMeasure, 'accessor' | 'label' | 'color' | 'hideDataLabel'> {
   /**
@@ -114,7 +107,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, PieChart.displayName);
 
   const chartConfig = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
@@ -286,7 +279,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
         margin={chartConfig.margin}
         className={clsx(
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
-          classes.piechart
+          classNames.piechart
         )}
       >
         <Pie
