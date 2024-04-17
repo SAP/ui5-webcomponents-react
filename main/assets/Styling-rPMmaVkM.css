@@ -1,0 +1,1 @@
+.containerCustomElement{background-color:var(--sapBackgroundColor);font-family:var(--sapFontFamily);height:50px;display:flex;justify-content:center;align-items:center}.thGreen::part(column){background-color:#90ee90}.trBlue::part(row){background-color:#add8e6}
