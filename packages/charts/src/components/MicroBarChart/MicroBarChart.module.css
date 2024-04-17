@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--sapFontFamily);
+  font-weight: normal;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.barContainer {
+  cursor: auto;
+}
+
+.barContainerActive {
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.3 !important;
+  }
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.valueContainer {
+  display: flex;
+  background-color: var(--sapContent_Placeholderloading_Background);
+}
+
+.valueBar {
+  height: 100%;
+}
+
+.label {
+  color: var(--sapContent_LabelColor);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: var(--sapFontSmallSize);
+  max-width: 70%;
+}
+
+.text {
+  padding-left: 6px;
+  display: inline-block;
+  overflow: hidden;
+  font-size: var(--sapFontSmallSize);
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--sapTextColor);
+  text-align: right;
+}
