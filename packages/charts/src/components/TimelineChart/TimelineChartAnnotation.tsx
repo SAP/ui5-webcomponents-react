@@ -1,8 +1,9 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
 import React, { forwardRef } from 'react';
 import { DEFAULT_ROW_HEIGHT } from './util/constants.js';
-import { useStyles } from './util/styles.js';
+import { classNames, styleData } from './util/TimelineChart.module.css.js';
 
 interface TimelineChartAnnotationProps extends CommonProps {
   /**
@@ -48,7 +49,8 @@ interface TimelineChartAnnotationProps extends CommonProps {
  */
 const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotationProps>((props, ref) => {
   const { width = 'auto', height, rowIndex = 0, rowHeight = DEFAULT_ROW_HEIGHT, figure, ...rest } = props;
-  const classes = useStyles();
+
+  useStylesheet(styleData, TimelineChartAnnotation.displayName);
 
   const style: CSSProperties = {
     width: width,
@@ -57,7 +59,13 @@ const TimelineChartAnnotation = forwardRef<HTMLDivElement, TimelineChartAnnotati
   };
 
   return (
-    <div ref={ref} className={classes.annotation} {...rest} style={style} data-component-name="TimelineChartAnnotation">
+    <div
+      ref={ref}
+      className={classNames.annotation}
+      {...rest}
+      style={style}
+      data-component-name="TimelineChartAnnotation"
+    >
       {figure}
     </div>
   );
