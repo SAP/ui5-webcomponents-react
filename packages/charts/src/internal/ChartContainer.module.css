@@ -1,0 +1,18 @@
+.container {
+  font-size: var(--sapFontSmallSize);
+  color: var(--sapTextColor);
+  font-family: var(--sapFontFamily);
+  width: 100%;
+  /*todo remove in v2*/
+  height: 400px;
+  position: relative;
+}
+
+:global(.has-click-handler) {
+  :global(.recharts-pie-sector),
+  :global(.recharts-bar-rectangles),
+  :global(.recharts-active-dot),
+  :global(.recharts-area-dot) {
+    cursor: pointer;
+  }
+}

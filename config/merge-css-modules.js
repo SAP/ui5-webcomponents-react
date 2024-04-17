@@ -1,15 +1,17 @@
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { basename, resolve } from 'node:path';
 import { glob } from 'glob';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { basename } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const cssDir = fileURLToPath(new URL('../dist/css', import.meta.url));
-const cssIndexFile = fileURLToPath(new URL('../dist/css/index.css', import.meta.url));
+const cssDir = resolve(process.cwd(), 'dist', 'css');
+const cssIndexFile = resolve(cssDir, 'index.css');
 
 const cssModules = await glob(`${cssDir}/**/*.module.css`);
 
 // manually add ThemeProvider
-cssModules.unshift(fileURLToPath(new URL('../dist/css/components/ThemeProvider/ThemeProvider.css', import.meta.url)));
+const themeProviderCssPath = resolve(cssDir, 'components', 'ThemeProvider', 'ThemeProvider.css');
+if (existsSync(themeProviderCssPath)) {
+  cssModules.unshift(themeProviderCssPath);
+}
 
 const fileContent = [];
 

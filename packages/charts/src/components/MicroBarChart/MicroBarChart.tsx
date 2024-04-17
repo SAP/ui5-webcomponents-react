@@ -1,10 +1,9 @@
 'use client';
 
-import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import React, { createElement, forwardRef, useCallback, useMemo } from 'react';
-import { createUseStyles } from 'react-jss';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
@@ -12,6 +11,7 @@ import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { BarChartPlaceholder } from '../BarChart/Placeholder.js';
+import { classNames, styleData } from './MicroBarChart.module.css.js';
 
 interface MeasureConfig extends Omit<IChartMeasure, 'color'> {
   /**
@@ -86,65 +86,13 @@ const resolveColor = (index: number, color = null) => {
   return ThemingParameters[`sapChart_Sequence_${(index % 11) + 1}`];
 };
 
-const MicroBarChartStyles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    fontFamily: ThemingParameters.sapFontFamily,
-    fontWeight: 'normal',
-    width: '100%',
-    height: '100%',
-    justifyContent: 'space-around'
-  },
-  barContainer: {
-    cursor: 'auto'
-  },
-  barContainerActive: {
-    '&:active': { opacity: '0.3 !important' },
-    cursor: 'pointer'
-  },
-  labelContainer: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  valueContainer: {
-    display: 'flex',
-    backgroundColor: ThemingParameters.sapContent_Placeholderloading_Background
-  },
-  valueBar: { height: '100%' },
-  label: {
-    color: ThemingParameters.sapContent_LabelColor,
-    display: 'block',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    fontSize: ThemingParameters.sapFontSmallSize,
-    maxWidth: '70%'
-  },
-  text: {
-    paddingLeft: '6px',
-    display: 'inline-block',
-    overflow: 'hidden',
-    fontSize: ThemingParameters.sapFontSmallSize,
-    boxSizing: 'border-box',
-
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    color: ThemingParameters.sapTextColor,
-    textAlign: 'right'
-  }
-};
-
-const useStyles = createUseStyles(MicroBarChartStyles, { name: 'MicroBarChart' });
-
 /**
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref) => {
   const { loading, dataset, onDataPointClick, style, className, slot, ChartPlaceholder, ...rest } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, MicroBarChart.displayName);
 
   const dimension = useMemo<IChartDimension>(
     () => ({
@@ -186,7 +134,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
     },
     [measure.accessor, onDataPointClick]
   );
-  const barContainerClasses = clsx(classes.barContainer, onDataPointClick && classes.barContainerActive);
+  const barContainerClasses = clsx(classNames.barContainer, onDataPointClick && classNames.barContainerActive);
   const { maxValue: _0, dimension: _1, measure: _2, ...propsWithoutOmitted } = rest;
   return (
     <ChartContainer
@@ -200,7 +148,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
       resizeDebounce={250}
       {...propsWithoutOmitted}
     >
-      <div className={classes.container}>
+      <div className={classNames.container}>
         {dataset?.map((item, index) => {
           const dimensionValue = getValueByDataKey(item, dimension.accessor);
           const measureValue = getValueByDataKey(item, measure.accessor);
@@ -219,23 +167,24 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
           }
           return (
             <div key={dimensionValue} className={barContainerClasses} onClick={onBarClick(item, index)}>
-              <div className={classes.labelContainer}>
-                <span className={classes.label} title={formattedDimension}>
+              <div className={classNames.labelContainer}>
+                <span className={classNames.label} title={formattedDimension}>
                   {formattedDimension}
                 </span>
-                <span className={classes.text} title={formattedMeasure}>
+                <span className={classNames.text} title={formattedMeasure}>
                   {measure.hideDataLabel ? '' : formattedMeasure}
                 </span>
               </div>
               <div
-                className={classes.valueContainer}
+                className={classNames.valueContainer}
                 style={{
                   opacity: measure?.opacity ?? 1,
                   height: barHeight
                 }}
               >
                 <div
-                  className={classes.valueBar}
+                  className={classNames.valueBar}
+                  data-component-name="MicroBarChartValueBar"
                   style={{
                     width: `${(measureValue / maxValue) * 100}%`,
                     backgroundColor: resolveColor(index, measure?.colors?.[index])

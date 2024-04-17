@@ -49,6 +49,8 @@ const FormGroup = (props: FormGroupPropTypes) => {
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
 
+  const localRowIndex = labelSpan === 12 ? rowIndex - 1 : rowIndex;
+
   return (
     <GroupContext.Provider value={{ id: uniqueId }}>
       <>
@@ -59,7 +61,9 @@ const FormGroup = (props: FormGroupPropTypes) => {
             ...style,
             display: titleText ? 'unset' : 'none',
             gridColumnStart: columnIndex * 12 + 1,
-            gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex
+            gridRowStart: localRowIndex,
+            // smaller margin for groups in first row with form title
+            marginBlockStart: localRowIndex === 2 ? '0.5rem' : '1rem'
           }}
           as={as}
         />

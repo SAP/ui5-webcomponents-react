@@ -1,0 +1,6 @@
+.piechart {
+  g:focus,
+  path:focus {
+    outline: none;
+  }
+}

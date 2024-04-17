@@ -150,7 +150,7 @@ describe('Form', () => {
     cy.findByText('Toggle Input').click();
     cy.findAllByText('Item 2').should('exist');
     cy.findByTestId('2').should('be.visible').as('item2');
-    cy.get('@item2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '1');
+    cy.get('@item2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '2');
 
     cy.findByText('Toggle Group').click();
     cy.findByText('Group 1')

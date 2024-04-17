@@ -12,6 +12,7 @@ export enum CustomVariables {
   AnalyticalTableOuterBorderBlock = '--_ui5wcr-AnalyticalTable-OuterBorderBlock',
   AnalyticalTableOuterBorderInline = '--_ui5wcr-AnalyticalTable-OuterBorderInline',
   AnalyticalTableOuterCellBorder = '--_ui5wcr-AnalyticalTable-OuterCellBorder',
+  FormHeaderBorderWidth = '--_ui5wcr_Form_HeaderBorderWidth',
   ObjectPageSectionBorderTop = '--_ui5wcr_ObjectPage_SectionBorderTop',
   ObjectPageSectionTitleFontFamily = '--_ui5wcr_ObjectPage_SectionTitleFontFamily',
   ObjectPageSectionTitleHeight = '--_ui5wcr_ObjectPage_SectionTitleHeight',

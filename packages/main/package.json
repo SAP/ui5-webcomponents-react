@@ -50,11 +50,11 @@
     "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
     "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
     "build:css": "postcss --base src --dir dist/css src/**/*.css",
-    "build:css-bundle": "node scripts/merge-css-modules.js",
+    "build:css-bundle": "node ../../config/merge-css-modules.js",
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "~3.2.0",
+    "@tanstack/react-virtual": "~3.3.0",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.1.0",
     "react-jss": "^10.10.0",

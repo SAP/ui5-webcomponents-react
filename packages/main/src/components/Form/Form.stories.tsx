@@ -45,9 +45,6 @@ export const Default: Story = {
   render: (props) => {
     return (
       <Form {...props}>
-        <FormItem label="Sole Form Item">
-          <Input type={InputType.Text} />
-        </FormItem>
         <FormGroup titleText="Personal Data">
           <FormItem label="Name">
             <Input type={InputType.Text} />
@@ -101,25 +98,6 @@ export const Default: Story = {
           </FormItem>
           <FormItem label="I want to receive the newsletter">
             <CheckBox />
-          </FormItem>
-        </FormGroup>
-        <FormGroup titleText="Contact">
-          <FormItem label="Website">
-            <Link href={'https://sap.github.io/ui5-webcomponents-react'}>
-              https://sap.github.io/ui5-webcomponents-react
-            </Link>
-          </FormItem>
-          <FormItem label="Email">
-            <Link>some.one@sap.com</Link>
-          </FormItem>
-          <FormItem label="Slack">
-            <Link href={'https://openui5.slack.com/archives/CSQEJ2J04'}>#webcomponents-react</Link>
-          </FormItem>
-          <FormItem label="Company">
-            <Text>SAP</Text>
-          </FormItem>
-          <FormItem label="Company Headquarter">
-            <Text>Walldorf, Germany</Text>
           </FormItem>
         </FormGroup>
       </Form>
@@ -327,6 +305,74 @@ export const DisplayEditMode: Story = {
           </FormGroup>
         </Form>
       </>
+    );
+  }
+};
+
+export const FormWithOneGroup: Story = {
+  args: {
+    titleText: 'Address',
+    columnsM: 2,
+    columnsL: 3,
+    columnsXL: 4,
+    labelSpanS: 12,
+    labelSpanM: 12,
+    labelSpanL: 12,
+    labelSpanXL: 12,
+    children: null
+  },
+  render(props) {
+    return (
+      <Form {...props}>
+        <FormItem label="Name">
+          <Input id="name" />
+        </FormItem>
+
+        <FormItem label="Street/No">
+          <Input></Input>
+        </FormItem>
+
+        <FormItem label="ZIP Code/City">
+          <Input />
+        </FormItem>
+
+        <FormItem label="Country">
+          <Select id="country">
+            <Option value="England">England</Option>
+            <Option value="Germany">Germany</Option>
+            <Option value="USA">USA</Option>
+          </Select>
+        </FormItem>
+
+        <FormItem label="Web">
+          <Input type="URL" />
+        </FormItem>
+
+        <FormItem label="Twitter">
+          <Input />
+        </FormItem>
+
+        <FormItem label="Email">
+          <Input type="Email" />
+        </FormItem>
+
+        <FormItem label="Tel.">
+          <Input type="Tel" />
+        </FormItem>
+
+        <FormItem label="SMS">
+          <Input type="Tel" />
+        </FormItem>
+        <FormItem label="Mobile">
+          <Input type="Tel" />
+        </FormItem>
+        <FormItem label="Pager">
+          <Input type="Tel" />
+        </FormItem>
+        <FormItem label="Fax">
+          <Input type="Tel" />
+        </FormItem>
+      </Form>
     );
   }
 };
