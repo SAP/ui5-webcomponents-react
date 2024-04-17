@@ -1,9 +1,10 @@
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
 import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants.js';
 import { TimelineChartBodyCtx } from '../util/context.js';
-import { useStyles } from '../util/styles.js';
+import { classNames, styleData } from '../util/TimelineChart.module.css.js';
 import { TimelineChartGrid } from './TimelineChartGrid.js';
 import { TimelineChartLayer } from './TimelineChartLayer.js';
 import { TimelineChartRowGroup } from './TimelineChartRow.js';
@@ -47,7 +48,8 @@ const TimelineChartBody = ({
   valueFormat,
   resetScroll
 }: TimelineChartBodyProps) => {
-  const classes = useStyles();
+  useStylesheet(styleData, TimelineChartBody.displayName);
+
   const tooltipRef = useRef<TimelineTooltipHandle>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const scaleExpRef = useRef(0);
@@ -101,7 +103,7 @@ const TimelineChartBody = ({
   const showArrows = () => setDisplayArrows(true);
 
   return (
-    <div data-component-name="TimelineChartBody" ref={bodyRef} className={classes.chartBody} style={style}>
+    <div data-component-name="TimelineChartBody" ref={bodyRef} className={classNames.chartBody} style={style}>
       <TimelineChartLayer name="TimelineChartGridLayer" ignoreClick>
         <TimelineChartGrid
           isDiscrete={isDiscrete}
@@ -147,6 +149,8 @@ const TimelineChartBody = ({
   );
 };
 
+TimelineChartBody.displayName = 'TimelineChartBody';
+
 interface TimelineTooltipHandle {
   onHoverItem: (
     mouseX: number,
@@ -181,7 +185,8 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   });
   const divRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLSpanElement>(null);
-  const classes = useStyles();
+
+  useStylesheet(styleData, 'TimelineChartTooltip');
 
   const onHoverItem = (
     mouseX: number,
@@ -212,21 +217,21 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
   }));
 
   return (
-    <div data-component-name="TimelineChartTooltipContainer" className={classes.tooltipContainer} ref={divRef}>
+    <div data-component-name="TimelineChartTooltipContainer" className={classNames.tooltipContainer} ref={divRef}>
       {state.visible ? (
         <span
           data-component-name="TimelineChartTooltip"
-          className={classes.tooltip}
+          className={classNames.tooltip}
           ref={popupRef}
           style={{
             insetInlineStart: state.x,
             insetBlockStart: state.y
           }}
         >
-          <span className={classes.tooltipLabel}>
+          <span className={classNames.tooltipLabel}>
             <strong>{state.label}</strong>
           </span>
-          <span className={classes.tooltipColorBar} style={{ backgroundColor: state.color }}></span>
+          <span className={classNames.tooltipColorBar} style={{ backgroundColor: state.color }}></span>
           <span>
             Start: {valueFormat != null ? valueFormat(state.startTime) : state.startTime}
             {unit}
@@ -247,5 +252,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     </div>
   );
 });
+
+TimelineChartTooltip.displayName = 'TimelineChartTooltip';
 
 export { TimelineChartBody };
