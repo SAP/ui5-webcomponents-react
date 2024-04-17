@@ -184,6 +184,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
               >
                 <div
                   className={classNames.valueBar}
+                  data-component-name="MicroBarChartValueBar"
                   style={{
                     width: `${(measureValue / maxValue) * 100}%`,
                     backgroundColor: resolveColor(index, measure?.colors?.[index])
