@@ -1,9 +1,9 @@
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactElement } from 'react';
 import React, { useEffect, useState } from 'react';
 import type { ITimelineChartRow } from './types/TimelineChartTypes.js';
 import { DEFAULT_CHART_VERTICAL_COLS, SPACING, TICK_LENGTH, TOLERANCE } from './util/constants.js';
-import { useStyles } from './util/styles.js';
+import { classNames, styleData } from './util/TimelineChart.module.css.js';
 
 interface TimelineChartRowLabelsProps {
   width: number;
@@ -13,7 +13,8 @@ interface TimelineChartRowLabelsProps {
 }
 
 const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineChartRowLabelsProps) => {
-  const classes = useStyles();
+  useStylesheet(styleData, TimelineChartRowLabels.displayName);
+
   const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
@@ -27,10 +28,10 @@ const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineC
 
   return (
     <div style={{ height: height }}>
-      <div className={classes.rowLabels} style={style}>
+      <div className={classNames.rowLabels} style={style}>
         {rowLabels.map((label, index) => {
           return (
-            <div key={index} className={classes.rowLabelsItem} style={itemStyle}>
+            <div key={index} className={classNames.rowLabelsItem} style={itemStyle}>
               <span style={{ paddingInline: '10px' }} title={`Item ${label}`}>
                 {label}
               </span>
@@ -41,6 +42,8 @@ const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineC
     </div>
   );
 };
+
+TimelineChartRowLabels.displayName = 'TimelineChartRowLabels';
 
 interface TimelineChartColumnLabelProps {
   width: number;
@@ -64,7 +67,8 @@ const TimelineChartColumnLabel = ({
   unscaledWidth,
   valueFormat
 }: TimelineChartColumnLabelProps) => {
-  const classes = useStyles();
+  useStylesheet(styleData, TimelineChartColumnLabel.displayName);
+
   const [labelArray, setLabelArray] = useState<string[]>([]);
   useEffect(() => {
     if (isDiscrete) {
@@ -84,9 +88,9 @@ const TimelineChartColumnLabel = ({
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
 
   return (
-    <div className={classes.columnLabel} style={style} data-component-name="TimeLineChartColumnLabel">
+    <div className={classNames.columnLabel} style={style} data-component-name="TimeLineChartColumnLabel">
       <div
-        className={classes.columnTitlePlaceHolder}
+        className={classNames.columnTitlePlaceHolder}
         style={{
           height: `${halfHeaderHeight}px`,
           lineHeight: `${halfHeaderHeight}px`
@@ -94,7 +98,7 @@ const TimelineChartColumnLabel = ({
       ></div>
       {isDiscrete ? (
         <div
-          className={classes.columnLabelItems}
+          className={classNames.columnLabelItems}
           style={{
             height: `${halfHeaderHeight}px`,
             gridTemplateColumns: `repeat(${totalDuration}, 1fr)`,
@@ -105,7 +109,7 @@ const TimelineChartColumnLabel = ({
             return (
               <span
                 data-component-name="TimelineChartColumnLabel"
-                className={classes.onlyOutline}
+                className={classNames.onlyOutline}
                 key={index}
                 title={`${label}`}
               >
@@ -145,6 +149,8 @@ const TimelineChartColumnLabel = ({
     </div>
   );
 };
+
+TimelineChartColumnLabel.displayName = 'TimelineChartColumnLabel';
 
 const generateIntermediateTicks = (
   start: number,
@@ -204,18 +210,21 @@ interface TimelineChartRowTitleProps {
 }
 
 const TimelineChartRowTitle = ({ width, height, rowTitle }: TimelineChartRowTitleProps) => {
-  const classes = useStyles();
+  useStylesheet(styleData, TimelineChartRowTitle.displayName);
+
   const style: CSSProperties = {
     width: width,
     height: height,
     color: ThemingParameters.sapTitleColor
   };
   return (
-    <div className={classes.onlyOutline} style={style}>
-      <div className={classes.rowTitleTop}></div>
-      <div className={classes.rowTitleBottom}>{rowTitle}</div>
+    <div className={classNames.onlyOutline} style={style}>
+      <div className={classNames.rowTitleTop}></div>
+      <div className={classNames.rowTitleBottom}>{rowTitle}</div>
     </div>
   );
 };
+
+TimelineChartRowTitle.displayName = 'TimelineChartRowTitle';
 
 export { TimelineChartColumnLabel, TimelineChartRowTitle, TimelineChartRowLabels };

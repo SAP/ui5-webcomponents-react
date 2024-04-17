@@ -23,7 +23,7 @@ describe('MicroBarChart', () => {
   it('Basic', () => {
     cy.mount(<MicroBarChart dataset={dataset} dimension={dimension} measure={measure} />);
     cy.get('.recharts-responsive-container').should('be.visible');
-    cy.get('div[class^=MicroBarChart-valueBar]').should('have.length', 3);
+    cy.get('[data-component-name="MicroBarChartValueBar"]').should('have.length', 3);
 
     cy.findByText(text1).should('be.visible');
     cy.findByText(text2).should('be.visible');
@@ -39,7 +39,7 @@ describe('MicroBarChart', () => {
       />
     );
     cy.get('.recharts-responsive-container').should('be.visible');
-    cy.get('div[class^=MicroBarChart-valueBar]').should('have.length', 3);
+    cy.get('[data-component-name="MicroBarChartValueBar"]').should('have.length', 3);
 
     cy.findByText(`${text1} - formatted`).should('be.visible');
     cy.findByText(`${text2} - formatted`).should('be.visible');

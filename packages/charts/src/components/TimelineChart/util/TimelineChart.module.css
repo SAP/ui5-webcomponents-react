@@ -1,0 +1,108 @@
+.onlyOutline {
+  outline: 0.5px solid var(--sapList_BorderColor);
+}
+
+.main {
+  outline: 0.5px solid var(--sapList_BorderColor);
+  background-color: var(--sapBaseColor);
+  display: grid;
+  gap: 0;
+}
+
+.bodyContainer {
+  overflow: hidden;
+}
+
+.columnTitle {
+  position: absolute;
+  border-block-end: 0.5px solid var(--sapList_BorderColor);
+  margin-block-end: -0.5px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--sapTitleColor);
+}
+
+.annotation {
+  position: absolute;
+}
+
+.rowLabels {
+  outline: 0.5px solid var(--sapList_BorderColor);
+  color: var(--sapTitleColor);
+}
+
+.rowLabelsItem {
+  width: 100%;
+  outline: 0.5px solid var(--sapList_BorderColor);
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.columnLabel {
+  outline: 0.5px solid var(--sapList_BorderColor);
+  color: var(--sapTitleColor);
+}
+
+.columnTitlePlaceHolder {
+  text-align: center;
+  border-block-end: 0.5px solid var(--sapList_BorderColor);
+  font-size: 13px;
+}
+
+.columnLabelItems {
+  font-size: 10px;
+  display: grid;
+  text-align: center;
+}
+
+.rowTitleTop {
+  height: 50%;
+}
+
+.rowTitleBottom {
+  height: 50%;
+  text-align: center;
+  font-size: 13px;
+}
+
+.chartBody {
+  position: relative;
+  outline: 1px solid var(--sapList_BorderColor);
+}
+
+.tooltipContainer {
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.tooltip {
+  min-width: 80px;
+  display: inline-grid;
+  gap: 2px;
+  padding: 10px;
+  outline: 2px solid var(--sapList_BorderColor);
+  border-radius: 8px;
+  color: var(--sapTextColor);
+  background-color: var(--sapBackgroundColor);
+  position: absolute;
+}
+
+.tooltipLabel {
+  text-align: center;
+}
+
+.tooltipColorBar {
+  width: 100%;
+  height: 4px;
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+}

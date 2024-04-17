@@ -1,5 +1,5 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
-import { throttle } from '@ui5/webcomponents-react-base';
+import { throttle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactNode } from 'react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { TimelineChartBody } from './chartbody/TimelineChartBody.js';
@@ -18,7 +18,7 @@ import {
   ROW_TITLE_WIDTH
 } from './util/constants.js';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error.js';
-import { useStyles } from './util/styles.js';
+import { classNames, styleData } from './util/TimelineChart.module.css.js';
 
 interface TimelineChartProps extends CommonProps {
   /**
@@ -166,7 +166,8 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const [chartBodyScale, setChartBodyScale] = useState(1);
     const [isGrabbed, setIsGrabbed] = useState(false);
     const [mPos, setMPos] = useState(0);
-    const classes = useStyles();
+
+    useStylesheet(styleData, TimelineChart.displayName);
 
     useEffect(() => {
       const ro = new ResizeObserver((entries) => {
@@ -242,7 +243,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
 
     return (
       <div ref={fRef} {...rest}>
-        <div className={classes.main} ref={ref} style={style} data-component-name="TimelineChart">
+        <div className={classNames.main} ref={ref} style={style} data-component-name="TimelineChart">
           <div style={{ width: ROW_TITLE_WIDTH, height: height }}>
             <TimelineChartRowTitle width={ROW_TITLE_WIDTH} height={COLUMN_HEADER_HEIGHT} rowTitle={rowTitle} />
             <TimelineChartRowLabels
@@ -254,7 +255,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
           </div>
           <div
             data-component-name="TimelineChartBodyContainer"
-            className={classes.bodyContainer}
+            className={classNames.bodyContainer}
             ref={bodyConRef}
             style={{
               width: unscaledBodyWidth,
@@ -266,7 +267,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             onMouseMove={onMouseMove.current}
           >
             <div
-              className={classes.columnTitle}
+              className={classNames.columnTitle}
               style={{
                 width: unscaledBodyWidth,
                 height: COLUMN_HEADER_HEIGHT / 2,
