@@ -1,0 +1,20 @@
+.expandableText {
+    composes: text from '../Text/Text.module.css';
+}
+
+.text {
+  display: inline;
+}
+
+.ellipsis {
+  word-spacing: 0.125rem;
+}
+
+.popover {
+  max-width: 30rem;
+}
+
+.popover::part(content) {
+  padding: 1rem;
+}
+
