@@ -1,10 +1,10 @@
 import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentType, CSSProperties, ReactElement, ReactNode } from 'react';
 import React, { Component, forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import { ResponsiveContainer } from 'recharts';
+import { classNames, styleData } from './ChartContainer.module.css.js';
 
 export interface ContainerProps extends CommonProps {
   children: ReactElement;
@@ -14,40 +14,12 @@ export interface ContainerProps extends CommonProps {
   resizeDebounce: number;
 }
 
-// eslint-disable-next-line no-underscore-dangle
-const __testingProps__: any = {};
-
-if (process.env.NODE_ENV === 'test') {
-  __testingProps__.width = 400;
-  __testingProps__.height = 400;
-}
-
 const loaderStyles: CSSProperties = {
   position: 'absolute',
   top: 0,
   left: 0,
   right: 0
 };
-
-const chartContainerStyles = {
-  container: {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    color: ThemingParameters.sapTextColor,
-    fontFamily: ThemingParameters.sapFontFamily,
-    width: '100%',
-    height: '400px',
-    position: 'relative'
-  },
-  '@global': {
-    '.has-click-handler': {
-      '& .recharts-pie-sector, .recharts-bar-rectangles, .recharts-active-dot, .recharts-area-dot': {
-        cursor: 'pointer'
-      }
-    }
-  }
-};
-
-const useStyles = createUseStyles(chartContainerStyles, { name: 'ChartContainer' });
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: number }> {
   state = {
@@ -70,17 +42,16 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: num
 
 const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
   const { Placeholder, loading = false, dataset, className, slot, children, resizeDebounce, ...rest } = props;
-  const classes = useStyles();
+
+  useStylesheet(styleData, ChartContainer.displayName);
 
   return (
-    <div ref={ref} className={clsx(classes.container, className)} slot={slot} {...rest}>
+    <div ref={ref} className={clsx(classNames.container, className)} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
           {loading && <Loader style={loaderStyles} />}
           <ErrorBoundary>
-            <ResponsiveContainer debounce={resizeDebounce} {...__testingProps__}>
-              {children}
-            </ResponsiveContainer>
+            <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>
           </ErrorBoundary>
         </>
       ) : (
