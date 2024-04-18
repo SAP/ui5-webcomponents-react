@@ -29,7 +29,7 @@ export interface ThemeProviderPropTypes {
    * This will prevent the ThemeProvider from injecting the CSS during runtime again.
    *
    * * __main:__ `import '@ui5/webcomponents-react/styles.css'`
-   * * __charts:__ `import '@ui5/webcomponents-react/styles.css'`
+   * * __charts:__ `import '@ui5/webcomponents-react-charts/styles.css'`
    */
   staticCssInjected?: boolean;
 }
