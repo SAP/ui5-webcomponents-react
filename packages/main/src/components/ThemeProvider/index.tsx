@@ -25,8 +25,11 @@ export interface ThemeProviderPropTypes {
   withoutModalsProvider?: boolean;
 
   /**
-   * You can set this flag to true in case you have imported our static CSS Bundle (`import '@ui5/webcomponents-react/styles.css'`) in your application.
+   * You can set this flag to true in case you have imported our static CSS Bundle/s in your application.
    * This will prevent the ThemeProvider from injecting the CSS during runtime again.
+   *
+   * * __main:__ `import '@ui5/webcomponents-react/styles.css'`
+   * * __charts:__ `import '@ui5/webcomponents-react/styles.css'`
    */
   staticCssInjected?: boolean;
 }
@@ -36,6 +39,8 @@ export interface ThemeProviderPropTypes {
  *
  * __Note:__ Per default, the `ThemeProvider` adds another provider for the [Modals](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-modals--docs) API.
  * If you don't use this, you can omit it by setting the prop `withoutModalsProvider` to `true`. (With v2.0, the `Modals` provider will be offered separately to reduce overhead)
+ *
+ * __Note:__ Per default, the `ThemeProvider` injects the CSS for the components during runtime. If you have imported our static CSS bundle/s in your application, you can set the prop `staticCssInjected` to `true` to prevent the ThemeProvider from injecting the CSS again.
  */
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
   const { children, withoutModalsProvider, staticCssInjected } = props;
