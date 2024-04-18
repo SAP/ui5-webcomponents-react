@@ -120,6 +120,14 @@ Almost all components allow setting `className` or `style` to style the componen
 Only [inherited CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties) that are not set inside the shadow root or internally passed properties will change the styles of the internal elements.
 Another special case are abstract components like the `SuggestionItem`. The `ui5-suggestion-item` element is mainly there to pass props to the actual component inside the shadow root and is therefore not stylable.
 
+## Explicitly import CSS bundles
+
+By default, the `ThemeProvider` injects the CSS of the components during runtime. If you want to import the CSS bundles explicitly, you can set the `staticCssInjected` prop to `true`.
+This approach provides you with control over the order in which CSS files are injected, making it easier to override styles.
+
+- **main** package import: `import '@ui5/webcomponents-react/styles.css'`
+- **charts** package import: `import '@ui5/webcomponents-react/styles.css'`
+
 ## CSS Shadow Parts
 
 When using web components like the [Table](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-table--docs), you will sometimes see a "CSS Shadow Parts" section.
